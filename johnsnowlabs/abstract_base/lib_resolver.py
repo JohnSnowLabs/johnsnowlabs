@@ -97,12 +97,24 @@ class Py4JJslLibDependencyResolverABC(ABC):
                 f'Please install one of the following Pyspark Versions : {1} TODO')
 
         if cls.has_secret:
-            url = compat_map[matching_jsl_spark_release][install_type].url.format(
-                secret=secret, lib_version=cls.lib_version.as_str())
+            if settings.enforce_versions:
+                url = compat_map[matching_jsl_spark_release][install_type].url.format(
+                    secret=secret, lib_version=cls.lib_version.as_str())
+            else:
+                # Read Version from secret
+                url = compat_map[matching_jsl_spark_release][install_type].url.format(
+                    secret=secret, lib_version=secret.split('-')[0])
 
         else:
-            url = compat_map[matching_jsl_spark_release][install_type].url.format(
-                lib_version=cls.lib_version.as_str())
+            if settings.enforce_versions:
+                url = compat_map[matching_jsl_spark_release][install_type].url.format(
+                    lib_version=cls.lib_version.as_str())
+            else:
+                # read from updated settings instead of already instantiated Objects, which will not reflect setting updates
+                url = compat_map[matching_jsl_spark_release][install_type].url.format(
+                    lib_version=LatestCompatibleProductVersion.from_settings(cls.product_name))
+                url.replace(cls.lib_version.as_str(), LatestCompatibleProductVersion.from_settings(cls.product_name))
+
         # NAME-VERSION-INSTALL_TYPE-for-spark-SPARK_VERSION-.[jar/tar/wheel]
         name = f'{cls.product_name.value}-{cls.lib_version.as_str()}' \
                f'-{install_type.name}-for-spark-{matching_jsl_spark_release.value.as_str()}.{suffix}'

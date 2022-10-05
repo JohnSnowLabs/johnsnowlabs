@@ -82,7 +82,6 @@ def start(
         already_launched = True
     from johnsnowlabs.auto_install.lib_resolvers import OcrLibResolver, HcLibResolver, NlpLibResolver
     launched_products: List[str] = []
-    print("DEBUG START!")
     hardware_target = JvmHardwareTarget.from_str(hardware_target)
 
     # Get all Local Jar Paths, downloads them if missing

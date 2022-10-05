@@ -86,18 +86,7 @@ class SparkVersion(BaseEnum):
 # nlp_display = LibVersion('4.0.0')
 # nlu = LibVersion('4.0.0')
 
-class LatestCompatibleProductVersion(BaseEnum):
-    jsl_lib = LibVersion(settings.raw_version_jsl_lib)
-    healthcare = LibVersion(settings.raw_version_medical)
-    spark_nlp = LibVersion(settings.raw_version_nlp)
-    ocr = LibVersion(settings.raw_version_ocr)
-    nlu = LibVersion(settings.raw_version_nlu)
-    nlp_display = LibVersion(settings.raw_version_nlp_display)
-    pyspark = LibVersion(settings.raw_version_pyspark)
-    finance = LibVersion('finance')
-    spark = LibVersion(settings.raw_version_pyspark)
-    java = LibVersion('java')
-    python = LibVersion('python')
+
 
 
 class LicenseType(BaseEnum):
@@ -205,3 +194,35 @@ class JslSuiteStatus:
     nlu_info: Optional[InstalledProductInfo] = None
     sparknlp_display_info: Optional[InstalledProductInfo] = None
     pyspark_info: Optional[InstalledProductInfo] = None
+
+
+class LatestCompatibleProductVersion(BaseEnum):
+    jsl_lib = LibVersion(settings.raw_version_jsl_lib)
+    healthcare = LibVersion(settings.raw_version_medical)
+    spark_nlp = LibVersion(settings.raw_version_nlp)
+    ocr = LibVersion(settings.raw_version_ocr)
+    nlu = LibVersion(settings.raw_version_nlu)
+    nlp_display = LibVersion(settings.raw_version_nlp_display)
+    pyspark = LibVersion(settings.raw_version_pyspark)
+    finance = LibVersion('finance')
+    spark = LibVersion(settings.raw_version_pyspark)
+    java = LibVersion('java')
+    python = LibVersion('python')
+
+    @staticmethod
+    def from_settings(p : ProductName):
+        if p == ProductName.hc:
+            return settings.raw_version_medical
+        if p == ProductName.ocr:
+            return settings.raw_version_ocr
+        if p == ProductName.nlp:
+            return settings.raw_version_nlp
+
+    @staticmethod
+    def sct_from_settings(p : ProductName):
+        if p == ProductName.hc:
+            return settings.raw_version_secret_medical
+        if p == ProductName.ocr:
+            return settings.raw_version_secret_ocr
+        if p == ProductName.nlp:
+            return settings.raw_version_nlp

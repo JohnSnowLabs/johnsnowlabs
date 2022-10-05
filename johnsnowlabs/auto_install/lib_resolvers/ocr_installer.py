@@ -32,9 +32,7 @@ class OcrLibResolver(Py4JJslLibDependencyResolverABC, metaclass=ABCMeta):
     compatible_spark_to_py_map = {
         SparkVersion.spark3xx: {
             PyInstallTypes.wheel: UrlDependency(
-                #  https://pypi.johnsnowlabs.com/4.0.1-b4298fec3858c165888360931a1a29f9121ccc88/spark-ocr/spark_ocr-4.0.1-py3-none-any.whl
                 url='https://pypi.johnsnowlabs.com/{secret}/spark-ocr/spark_ocr-{lib_version}-py3-none-any.whl',
-                # url='https://pypi.johnsnowlabs.com/{secret}/spark-ocr/spark_ocr-{lib_version}%2Bspark32-py3-none-any.whl',
                 dependency_type=PyInstallTypes.wheel,
                 spark_version=SparkVersion.spark32x,
                 product_name=product_name,
