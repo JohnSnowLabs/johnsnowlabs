@@ -172,8 +172,10 @@ def check_and_install_dependencies(product: AbstractSoftwareProduct,
             else:
                 print(f'{installed_software.logo} {installed_software.name} not installed! ❌')
 
-        print(
-            f'🔁{Fore.LIGHTRED_EX} If you are on Google Colab, please restart your Notebook for changes to take effect {Fore.RESET}🔁')
+        # Trigger Imports after install. so module is reloaded and no re-start is required
+        from johnsnowlabs import medical, finance, legal, ocr
+        # print(f'🔁{Fore.LIGHTRED_EX} If you are on Google Colab, please restart your Notebook for changes to take effect {Fore.RESET}🔁')
+
     else:
         print(f'👌 Everything is already installed, no changes made')
 
