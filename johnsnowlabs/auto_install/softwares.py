@@ -143,6 +143,7 @@ class NluSoftware(AbstractSoftwareProduct):
     latest_version = LatestCompatibleProductVersion.nlu.value
     py_module_name = 'nlu'
     pypi_name = 'nlu'
+    install_deps = False
 
     @classmethod
     def get_installed_version_via_import(cls):
