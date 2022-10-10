@@ -32,6 +32,7 @@ class AbstractSoftwareProduct(ABC):
     py_module_name: Optional[str] = None
     pypi_name: Optional[str] = None
     # Only defined for JSL libs below
+    install_deps: Optional[bool] = True
     compatible_spark_versions: List[SparkVersion]
     latest_version: Optional[LibVersion] = None
     jsl_url_resolver: Optional[Py4JJslLibDependencyResolverABC] = None
@@ -132,6 +133,8 @@ class AbstractSoftwareProduct(ABC):
 
         -m pip download <module> -d path
         """
+        if not cls.install_deps:
+            include_dependencies = False
         if not version and cls.latest_version:
             version = cls.latest_version
         if cls.pypi_name:
