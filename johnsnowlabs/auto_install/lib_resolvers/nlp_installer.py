@@ -50,14 +50,14 @@ class NlpLibResolver(Py4JJslLibDependencyResolverABC, metaclass=ABCMeta):
         SparkVersion.spark3xx: {
             # TODO HARDCODE HASH!!! OR grap from enum or somwhere comfy. Maybe configs/settings file?
             PyInstallTypes.wheel: UrlDependency(
-                url='https://files.pythonhosted.org/packages/3b/b1/9cba3f35fed9030eb0b55a04fea7e89e4eeaf340f8ebf5e9b43e95c9b338/spark_nlp-{lib_version}-py2.py3-none-any.whl',
+                url='https://files.pythonhosted.org/packages/b5/e6/1fb212bebabf13c8242a6ce5de5af6465165e457d90d43958600f22c551a/spark_nlp-{lib_version}-py2.py3-none-any.whl',
                 dependency_type=PyInstallTypes.wheel,
                 spark_version=SparkVersion.spark3xx,
                 product_name=product_name,
                 file_name=product_name.name,
                 dependency_version=lib_version),
             PyInstallTypes.tar: UrlDependency(
-                url='https://files.pythonhosted.org/packages/fd/99/9345ba8d7303ac45402ad18c71c604b7bccc1f113409f306ba46bbec4612/spark-nlp-{lib_version}.tar.gz',
+                url='https://files.pythonhosted.org/packages/f4/7e/9e4a789d30f9e917c41267bc852ca63dd9bd9b326d90bd558edbe3fd23fe/spark-nlp-{lib_version}.tar.gz',
                 dependency_type=PyInstallTypes.tar,
                 spark_version=SparkVersion.spark3xx,
                 product_name=product_name,
