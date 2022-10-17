@@ -67,13 +67,16 @@ def install_standard_pypi_lib(pypi_name: str,
     :param upgrade: use --upgrade flag or not 
     :return:
     """
+    if isinstance(version,LibVersion ):
+        version = version.as_str()
+
     if not pypi_name:
         raise Exception(f'Tried to install software which has no pypi file_name! Aborting.')
     print(f'Installing {pypi_name} to {python_path}')
     c = f'{python_path} -m pip install {pypi_name}'
     print(f'Running: {c}')
     if version:
-        c = c + f'=={version.as_str()} '
+        c = c + f'=={version} '
     else:
         c = c + ' '
 

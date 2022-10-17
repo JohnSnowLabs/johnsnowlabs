@@ -2,8 +2,8 @@ from os.path import expanduser
 import os
 
 # libs, these versions are used for auto-installs and version  checks
-raw_version_jsl_lib = '4.2.1'
-raw_version_nlp = '4.2.0'
+raw_version_jsl_lib = '4.2.2'
+raw_version_nlp = '4.2.1'
 raw_version_medical = '4.2.0'
 raw_version_secret_medical = '4.2.0'
 raw_version_secret_ocr = '4.1.0'
