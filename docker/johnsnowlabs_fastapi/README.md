@@ -1,4 +1,4 @@
-# Docker version of johnsnowlabs library with FastAPI
+# Docker version of johnsnowlabs library with FastAPI for Legal NLP
 `johnsnowlabs` version can be installed in a Docker container with Spark+Java+Python. We provide that image
 for you in this folder, and also some extra code: a FastAPI sample app with one endpoint to serve a pipeline.
 
