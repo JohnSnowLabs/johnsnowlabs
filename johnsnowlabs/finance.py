@@ -71,7 +71,10 @@ try:
             GenericClassifierApproach, \
             Router, \
             NerQuestionGenerator, \
-            DocumentHashCoder
+            DocumentHashCoder, \
+            Replacer
+        from sparknlp_jsl.modelTracer import ModelTracer
+
 
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader
