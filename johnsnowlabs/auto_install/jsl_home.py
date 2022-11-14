@@ -55,11 +55,10 @@ def download_deps_and_create_info(deps: List[UrlDependency],
                 err_msg = f"""🚨 Cannot install {ProductLogo.from_name(p.product_name.name).value}{p.product_name.value} because provided license file secret is outdated or it is invalid.
 How to Fix this: 
 Option1: Run {Fore.LIGHTGREEN_EX}jsl.install(force_browser=True){Fore.RESET} to get a Browser Window pop-up where you can refresh your license data
-Option2: Run {Fore.LIGHTGREEN_EX}jsl.install(secrets_file="path/to/fresh_credentials.json"){Fore.RESET} after downloading a fresh license from https://my.johnsnowlabs.com/subscriptions   
+Option2: Run {Fore.LIGHTGREEN_EX}jsl.install(json_license_path="path/to/fresh_credentials.json"){Fore.RESET} after downloading a fresh license from https://my.johnsnowlabs.com/subscriptions   
 Option3: Run {Fore.LIGHTGREEN_EX}jsl.install(refresh_install=True,force_browser=True){Fore.RESET} to refresh everything 
 Option4: Set {Fore.LIGHTGREEN_EX}jsl.settings.enforce_versions=False{Fore.RESET} and run{Fore.LIGHTGREEN_EX} jsl.install(refresh_install=True,force_browser=True){Fore.RESET} to disable this protection mechanism and try to install anyways. Not Recommended, can yield unforeseen consequences 
 """
-                #
 
                 print(err_msg)
                 raise Exception(err_msg)
@@ -86,6 +85,8 @@ def setup_jsl_home(
         overwrite=False,
         log=True,
         refresh_install=False,
+        visual=False, nlp=True, spark_nlp=True
+
 ) -> None:
     """Folder structure :
     Creates Folder for JSL home and downloads all Py4J wheels/Jars
@@ -127,7 +128,7 @@ def setup_jsl_home(
     if jsl_home_exist() and is_jsl_home_outdated() and log:
         print(f'🤓 Looks like {settings.root_dir} is outdated, updating it')
     if not jsl_home_exist() or is_jsl_home_outdated() or refresh_install:
-        print(f'👷 Setting up if John Snow Labs home exists in {settings.root_dir} this might take a few minutes.')
+        print(f'👷 Setting up  John Snow Labs home in {settings.root_dir}, this might take a few minutes.')
         # Delete everything except license data and re-create folder
         shutil.rmtree(settings.java_dir)
         shutil.rmtree(settings.py_dir)
@@ -136,10 +137,9 @@ def setup_jsl_home(
         force_update = True
 
     # Get Urls for P4J based libs
-    if force_update or suite and suite.get_missing_products():
+    if force_update or suite and suite.get_missing_products(nlp, visual, spark_nlp):
         java_deps, py_deps = get_py4j_dependency_urls(
-            secrets=secrets,
-            spark_version=spark_version,
+            secrets=secrets, spark_version=spark_version, visual=visual, nlp=nlp, spark_nlp=spark_nlp,
             jvm_install_type=jvm_install_type,
             py_install_type=py_install_type)
 
@@ -158,9 +158,9 @@ def setup_jsl_home(
 
 def get_install_suite_from_jsl_home(create_jsl_home_if_missing: bool = True,
                                     jvm_hardware_target: JvmHardwareTarget = JvmHardwareTarget.cpu,
-                                    hc: bool = True,
-                                    ocr: bool = True,
                                     nlp: bool = True,
+                                    visual: bool = False,
+                                    spark_nlp: bool = True,
                                     only_jars: bool = False,
                                     recursive_call=False,
                                     # Secret Flow Params
@@ -183,7 +183,6 @@ def get_install_suite_from_jsl_home(create_jsl_home_if_missing: bool = True,
                                     ) -> InstallSuite:
     """Read all info files from JSL home if exists. If not exists, sets up JSL home"""
 
-
     license_data: JslSecrets = JslSecrets.build_or_try_find_secrets(browser_login=browser_login,
                                                                     force_browser=force_browser,
                                                                     access_token=access_token,
@@ -200,6 +199,7 @@ def get_install_suite_from_jsl_home(create_jsl_home_if_missing: bool = True,
                                                                     fin_license=fin_license,
                                                                     leg_license=leg_license,
                                                                     store_in_jsl_home=store_in_jsl_home,
+
                                                                     )
 
     if create_jsl_home_if_missing:
@@ -236,22 +236,24 @@ def get_install_suite_from_jsl_home(create_jsl_home_if_missing: bool = True,
         info=info
     )
 
-    missing = suite.get_missing_products()
+    missing = suite.get_missing_products(nlp, visual, spark_nlp)
     if missing and recursive_call and log:
         print(f'🚨 Looks like some of the missing jars could not be fetched...')
-        suite.log_missing_jars(ocr, hc, nlp)
+        suite.log_missing_jars(visual, nlp, spark_nlp)
 
     if missing and not recursive_call:
         print(f'🤓 Looks like you are missing some jars, trying fetching them ...')
         setup_jsl_home(license_data,
                        jvm_install_type=jvm_hardware_target,
-                       only_jars=only_jars, log=False)
+                       only_jars=only_jars, log=False, nlp=nlp,
+                       visual=visual,
+                       spark_nlp=spark_nlp, )
         # After re-setting up jsl_home, call this method again
         return get_install_suite_from_jsl_home(
             jvm_hardware_target=jvm_hardware_target,
-            hc=hc,
-            ocr=ocr,
             nlp=nlp,
+            visual=visual,
+            spark_nlp=spark_nlp,
             only_jars=only_jars,
             recursive_call=True,
             browser_login=browser_login,

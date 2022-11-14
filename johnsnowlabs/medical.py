@@ -64,7 +64,7 @@ try:
 
         from sparknlp_jsl.annotator import MedicalNerModel as NerModel
         from sparknlp_jsl.annotator import MedicalNerApproach as NerApproach
-        from sparknlp_jsl.annotator import MedicalBertForTokenClassifier as BertForTokenClassifier
+        from sparknlp_jsl.annotator import MedicalBertForTokenClassifier as BertForTokenClassification
         from sparknlp_jsl.annotator import \
             MedicalDistilBertForSequenceClassification as DistilBertForSequenceClassification
         from sparknlp_jsl.annotator import MedicalBertForSequenceClassification as BertForSequenceClassification
