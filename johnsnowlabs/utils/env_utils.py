@@ -50,5 +50,6 @@ def env_required_license():
 def set_py4j_logger_to_error_on_databricks():
     # Only call this when in Databricks
     import logging
-    logger = spark._jvm.org.apache.log4j
+    from pyspark.sql import SparkSession
+    logger = SparkSession.builder.getOrCreate()._jvm.org.apache.log4j
     logging.getLogger("py4j.java_gateway").setLevel(logging.ERROR)
