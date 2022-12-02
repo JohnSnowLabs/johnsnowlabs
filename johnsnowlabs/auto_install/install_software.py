@@ -24,6 +24,10 @@ def check_and_install_dependencies(product: AbstractSoftwareProduct,
                                    py_setup_dir: str = None,
                                    offline_zip_dir: str = None,
                                    include_dependencies: bool = True,
+                                   visual: bool = False,
+                                   spark_nlp: bool = True,
+                                   enterpise_nlp: bool = True,
+
                                    ):
     """
     Iterates the dependency DAG in DFS order for input product and downloads installs all dependencies
@@ -69,7 +73,6 @@ def check_and_install_dependencies(product: AbstractSoftwareProduct,
     import site
     from importlib import reload
     reload(site)
-    running_in_databricks = is_running_in_databricks()
     offline_py_dir = None
     license_dir = None
     java_dir = None
@@ -93,6 +96,8 @@ def check_and_install_dependencies(product: AbstractSoftwareProduct,
 
     # Boolean Checkers
     is_spark_nlp = lambda node: node.name == ProductName.nlp.value
+    is_ocr = lambda node: node.name == ProductName.ocr.value
+    is_healthcare = lambda node: node.name == ProductName.hc.value
     exist_install_result = lambda node: node in install_results
     licensed_nodes_left_to_install = lambda: licensed_nodes and install_licensed
     optional_nodes_left_to_install = lambda: optional_nodes and install_optional
@@ -104,6 +109,13 @@ def check_and_install_dependencies(product: AbstractSoftwareProduct,
             else licensed_nodes.pop() if licensed_nodes_left_to_install() \
             else optional_nodes.pop() if optional_nodes_left_to_install() \
             else None
+
+        if not visual and is_ocr(v):
+            continue
+        if not enterpise_nlp and is_healthcare(v):
+            continue
+        if not spark_nlp and is_spark_nlp(v):
+            continue
 
         v: AbstractSoftwareProduct
         # Collect all children of this vertex for next iteration
@@ -148,7 +160,7 @@ def check_and_install_dependencies(product: AbstractSoftwareProduct,
                 Software.spark_nlp.install(re_install=True,
                                            version=LatestCompatibleProductVersion.spark_nlp.value,
                                            py_path=python_exec_path, download_folder=offline_py_dir,
-                                           include_dependencies=include_dependencies,)
+                                           include_dependencies=include_dependencies, )
         if not get_pip_lib_version('pyspark', py_exec=python_exec_path).equals(
                 LatestCompatibleProductVersion.pyspark.value):
             # Re-install NLP incase some other library up/downgraded it while we installed it
@@ -173,25 +185,30 @@ def check_and_install_dependencies(product: AbstractSoftwareProduct,
                 print(f'{installed_software.logo} {installed_software.name} not installed! ❌')
 
         # Trigger Imports after install. so module is reloaded and no re-start is required
-        from johnsnowlabs import medical, finance, legal, ocr
+        from johnsnowlabs import medical, finance, legal, visual
+        from importlib import reload
+        for mod in [medical, finance, legal, visual]:
+            reload(mod)
         # print(f'🔁{Fore.LIGHTRED_EX} If you are on Google Colab, please restart your Notebook for changes to take effect {Fore.RESET}🔁')
 
     else:
         print(f'👌 Everything is already installed, no changes made')
 
 
-def finalize_zip_folder(offline_zip_dir, new_java_dir, py_dir,new_license_dir):
+def finalize_zip_folder(offline_zip_dir, new_java_dir, py_dir, new_license_dir):
     # Copy files from local jsl home and create zip file
     copy_jars_from_jsl_home_to_offline_zip_dir(new_java_dir)
     copy_py_installs_from_jsl_home_to_offline_zip_dir(py_dir)
     copy_licenses_from_jsl_home_to_zip_dir(new_license_dir)
     zip_folder(offline_zip_dir)
 
+
 def copy_py_installs_from_jsl_home_to_offline_zip_dir(new_py_dir):
     for f in os.listdir(settings.py_dir):
-        if '.gz' in f or '.whl' in f :
+        if '.gz' in f or '.whl' in f:
             print(f'Adding {f} to zip')
             shutil.copy(f'{settings.py_dir}/{f}', new_py_dir)
+
 
 def copy_jars_from_jsl_home_to_offline_zip_dir(new_java_dir):
     for f in os.listdir(settings.java_dir):

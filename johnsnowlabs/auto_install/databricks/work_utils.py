@@ -7,6 +7,7 @@ from typing import Callable, Union, Optional
 
 from databricks_api import DatabricksAPI
 
+import johnsnowlabs.utils.testing.test_settings
 from johnsnowlabs.auto_install.databricks.dbfs import *
 from johnsnowlabs.auto_install.databricks.install_utils import create_cluster
 from johnsnowlabs.utils.file_utils import path_tail, str_to_file
@@ -125,7 +126,7 @@ def executable_as_script(py_executable: Union[str, ModuleType, Callable]):
 
 def executable_to_str(executable_to_convert: Union[str, ModuleType, Callable]):
     # write a python code-string/module/function into a temp file and return resulting python file
-    Path(settings.tmp_notebook_dir).mkdir(parents=True, exist_ok=True)
+    Path(johnsnowlabs.utils.testing.test_settings.tmp_notebook_dir).mkdir(parents=True, exist_ok=True)
     from random import randrange
     if isinstance(executable_to_convert, str) and not os.path.exists(executable_to_convert):
         # Executable script
@@ -139,7 +140,7 @@ def executable_to_str(executable_to_convert: Union[str, ModuleType, Callable]):
             # Within a Python shell, we cannot getFile(), so we have this fallback name
             file_name = f'{randrange(1333777)}tmp.py'
 
-    out_path = f'{settings.tmp_notebook_dir}/{file_name}'
+    out_path = f'{johnsnowlabs.utils.testing.test_settings.tmp_notebook_dir}/{file_name}'
 
     if isinstance(executable_to_convert, str):
         print(f'Detected Python Code String')

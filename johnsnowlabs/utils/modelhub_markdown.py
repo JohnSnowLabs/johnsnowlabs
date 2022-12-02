@@ -3,11 +3,12 @@ from pathlib import Path
 
 import pandas as pd
 
+import johnsnowlabs.utils.testing.test_settings
 from johnsnowlabs import settings
 from johnsnowlabs.utils.file_utils import path_tail
 from johnsnowlabs.utils.py_process import execute_py_script_string_as_new_proc
 
-Path(settings.tmp_markdown_dir).mkdir(exist_ok=True, parents=True)
+Path(johnsnowlabs.utils.testing.test_settings.tmp_markdown_dir).mkdir(exist_ok=True, parents=True)
 
 
 def get_py_snippet_from_modelhub(url):

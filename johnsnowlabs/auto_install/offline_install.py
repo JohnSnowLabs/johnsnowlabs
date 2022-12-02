@@ -83,6 +83,7 @@ def get_py4j_dependency_urls(
         py_install_type: PyInstallTypes = PyInstallTypes.wheel,
         spark_version=None,
         get_all_jvm_hardware_targets: bool = False,
+        visual=False, nlp=True, spark_nlp=True
 ) -> \
         Tuple[List[UrlDependency], List[UrlDependency]]:
     """
@@ -98,24 +99,26 @@ def get_py4j_dependency_urls(
     messages = []
     java_dependencies = []
     py_dependencies = []
-    if jvm_install_type == JvmHardwareTarget.gpu or get_all_jvm_hardware_targets:
-        java_dependencies.append(
-            NlpLibResolver.get_jar_urls(hardware_target=jvm_install_type, spark_version_to_match=spark_version))
-    elif jvm_install_type == JvmHardwareTarget.cpu or get_all_jvm_hardware_targets:
-        java_dependencies.append(
-            NlpLibResolver.get_jar_urls(hardware_target=jvm_install_type, spark_version_to_match=spark_version))
-    elif jvm_install_type == JvmHardwareTarget.m1 or get_all_jvm_hardware_targets:
-        java_dependencies.append(
-            NlpLibResolver.get_jar_urls(hardware_target=jvm_install_type, spark_version_to_match=spark_version))
 
-    if py_install_type == PyInstallTypes.wheel:
-        py_dependencies.append(
-            NlpLibResolver.get_py_urls(install_type=py_install_type, spark_version_to_match=spark_version))
-    else:
-        py_dependencies.append(
-            NlpLibResolver.get_py_urls(install_type=py_install_type, spark_version_to_match=spark_version))
+    if spark_nlp:
+        if jvm_install_type == JvmHardwareTarget.gpu or get_all_jvm_hardware_targets:
+            java_dependencies.append(
+                NlpLibResolver.get_jar_urls(hardware_target=jvm_install_type, spark_version_to_match=spark_version))
+        elif jvm_install_type == JvmHardwareTarget.cpu or get_all_jvm_hardware_targets:
+            java_dependencies.append(
+                NlpLibResolver.get_jar_urls(hardware_target=jvm_install_type, spark_version_to_match=spark_version))
+        elif jvm_install_type == JvmHardwareTarget.m1 or get_all_jvm_hardware_targets:
+            java_dependencies.append(
+                NlpLibResolver.get_jar_urls(hardware_target=jvm_install_type, spark_version_to_match=spark_version))
 
-    if secrets and secrets.HC_SECRET:
+        if py_install_type == PyInstallTypes.wheel:
+            py_dependencies.append(
+                NlpLibResolver.get_py_urls(install_type=py_install_type, spark_version_to_match=spark_version))
+        else:
+            py_dependencies.append(
+                NlpLibResolver.get_py_urls(install_type=py_install_type, spark_version_to_match=spark_version))
+
+    if secrets and secrets.HC_SECRET and nlp:
         java_dependencies.append(
             HcLibResolver.get_jar_urls(secret=secrets.HC_SECRET, spark_version_to_match=spark_version))
         if py_install_type == PyInstallTypes.wheel:
@@ -125,7 +128,7 @@ def get_py4j_dependency_urls(
             py_dependencies.append(HcLibResolver.get_py_urls(secret=secrets.HC_SECRET, install_type=py_install_type,
                                                              spark_version_to_match=spark_version))
 
-    if secrets and secrets.OCR_SECRET:
+    if secrets and secrets.OCR_SECRET and visual:
         java_dependencies.append(
             OcrLibResolver.get_jar_urls(secret=secrets.OCR_SECRET, spark_version_to_match=spark_version))
         if py_install_type == PyInstallTypes.wheel:

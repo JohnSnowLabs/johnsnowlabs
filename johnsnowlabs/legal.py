@@ -54,7 +54,12 @@ try :
             ChunkMapperFilterer, \
             DateNormalizer, \
             GenericClassifierModel, \
-            ReIdentification
+            ReIdentification, \
+            Replacer
+        from sparknlp_jsl.modelTracer import ModelTracer
+
+
+
         # DrugNormalizer, \
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.annotator.resolution.resolver_merger import ResolverMerger

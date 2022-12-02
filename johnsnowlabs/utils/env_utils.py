@@ -32,8 +32,24 @@ def try_import_in_venv(lib, py_path):
 
 def is_running_in_databricks():
     """ Check if the currently running Python Process is running in Databricks or not
-     If any Environment Variable file_name contains 'DATABRICKS' this will return True, otherwise False"""
+     If any Environment Variable name contains 'DATABRICKS' this will return True, otherwise False"""
     for k in os.environ.keys():
         if 'DATABRICKS' in k:
             return True
     return False
+
+
+def env_required_license():
+    if 'JSL_AWS_PLATFORM' in os.environ.keys() and str(os.environ['JSL_AWS_PLATFORM']) == '1':
+        return False
+    if 'JSL_AZURE_PLATFORM' in os.environ.keys() and str(os.environ['JSL_AZURE_PLATFORM']) == '1':
+        return False
+    return True
+
+
+def set_py4j_logger_to_error_on_databricks():
+    # Only call this when in Databricks
+    import logging
+    from pyspark.sql import SparkSession
+    logger = SparkSession.builder.getOrCreate()._jvm.org.apache.log4j
+    logging.getLogger("py4j.java_gateway").setLevel(logging.ERROR)

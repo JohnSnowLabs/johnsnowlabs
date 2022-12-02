@@ -36,8 +36,11 @@ try:
             DateNormalizer, \
             GenericClassifierModel, \
             ReIdentification, \
-            ZeroShotNerModel
+            ZeroShotNerModel, \
+            Replacer
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
+        from sparknlp_jsl.modelTracer import ModelTracer
+
 
         from sparknlp_jsl.base import FeaturesAssembler
 
@@ -61,7 +64,7 @@ try:
 
         from sparknlp_jsl.annotator import MedicalNerModel as NerModel
         from sparknlp_jsl.annotator import MedicalNerApproach as NerApproach
-        from sparknlp_jsl.annotator import MedicalBertForTokenClassifier as BertForTokenClassifier
+        from sparknlp_jsl.annotator import MedicalBertForTokenClassifier as BertForTokenClassification
         from sparknlp_jsl.annotator import \
             MedicalDistilBertForSequenceClassification as DistilBertForSequenceClassification
         from sparknlp_jsl.annotator import MedicalBertForSequenceClassification as BertForSequenceClassification

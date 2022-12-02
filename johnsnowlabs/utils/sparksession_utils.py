@@ -54,7 +54,7 @@ def start(
         aws_key_id: Optional[str] = None,
         # Manual License specification Auth
         enterprise_nlp_secret: Optional[str] = None,
-        ocr_secret: Optional[str] = None,
+        visual_secret: Optional[str] = None,
         hc_license: Optional[str] = None,
         ocr_license: Optional[str] = None,
         fin_license: Optional[str] = None,
@@ -68,9 +68,10 @@ def start(
         spark_conf: Optional[Dict[str, str]] = None,
         master_url: str = 'local[*]',
         jar_paths: List[str] = None,
-        exclude_nlp: bool = False,
-        exclude_healthcare: bool = False,
-        exclude_ocr: bool = False,
+        # spark_nlp corresponds to enterprise NLP jar
+        spark_nlp: bool = True,
+        nlp: bool = True,
+        visual: bool = False,
         hardware_target: str = JvmHardwareTarget.cpu.value,
         model_cache_folder: str = None,
 
@@ -82,7 +83,7 @@ def start(
         print('Spark Session already created, some configs may not take.')
         already_launched = True
         if settings.on_databricks:
-            print("Looks like you are on databricks. A Sparksession is launched by Databricks, jsl.start() will not ")
+            print("Looks like you are on databricks which has a session pre-started. jsl.start() is not required. ")
 
     from johnsnowlabs.auto_install.lib_resolvers import OcrLibResolver, HcLibResolver, NlpLibResolver
     launched_products: List[str] = []
@@ -98,7 +99,7 @@ def start(
                                             secrets_file=json_license_path,
                                             hc_license=hc_license,
                                             hc_secret=enterprise_nlp_secret,
-                                            ocr_secret=ocr_secret,
+                                            ocr_secret=visual_secret,
                                             ocr_license=ocr_license,
                                             aws_access_key=aws_access_key,
                                             aws_key_id=aws_key_id,
@@ -108,22 +109,23 @@ def start(
 
     # Collect all local Jar Paths we have access to for the SparkSession
     jars = []
-    if not exclude_nlp and Software.spark_nlp.check_installed(None) \
-            and suite.nlp.get_java_path():
+    if spark_nlp and Software.spark_nlp.check_installed(None) and suite.nlp.get_java_path():
         jars.append(suite.nlp.get_java_path())
         import sparknlp
         launched_products.append(f'{Software.spark_nlp.logo}{Software.spark_nlp.name}=={sparknlp.version()}')
 
-    if suite.secrets:
-        if suite.hc and not exclude_healthcare and Software.spark_hc.check_installed(None) and suite.hc.get_java_path():
+    if suite.secrets or not settings.license_required:
+        if suite.hc and nlp and Software.spark_hc.check_installed(None) and suite.hc.get_java_path():
             jars.append(suite.hc.get_java_path())
-            authenticate_enviroment_HC(suite)
+            if settings.license_required:
+                authenticate_enviroment_HC(suite)
             import sparknlp_jsl
             launched_products.append(f'{Software.spark_hc.logo}{Software.spark_hc.name}=={sparknlp_jsl.version()}')
 
-        if suite.ocr and not exclude_ocr and Software.spark_ocr.check_installed(None) and suite.ocr.get_java_path():
+        if suite.ocr and visual and Software.spark_ocr.check_installed(None) and suite.ocr.get_java_path():
             jars.append(suite.ocr.get_java_path())
-            authenticate_enviroment_OCR(suite)
+            if settings.license_required:
+                authenticate_enviroment_OCR(suite)
             import sparkocr
             launched_products.append(f'{Software.spark_ocr.logo}{Software.spark_ocr.name}=={sparkocr.version()}')
     import pyspark
@@ -170,12 +172,14 @@ def start(
     from colorama import Fore
     if not already_launched:
         print(
-            f'👌 Launched {Fore.LIGHTGREEN_EX + hardware_target.value}-Optimized JVM{Fore.RESET} SparkSession with Jars for: {", ".join(launched_products)}')
+            f'👌 Launched {Fore.LIGHTGREEN_EX + hardware_target.value} optimized{Fore.RESET} session with with: {", ".join(launched_products)}')
 
     return spark
 
 
 def exist_in_jvm(java_class):
+    # Check if a class path is present in JVM.
+    # Only call this after Spark Session is started
     from pyspark import SparkContext
     from pyspark.ml.util import _jvm
     from py4j.java_gateway import UserHelpAutoCompletion

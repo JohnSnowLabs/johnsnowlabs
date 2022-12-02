@@ -136,19 +136,20 @@ def install_jsl_suite_to_cluster(
         install_suite: InstallSuite,
         install_optional: bool = True,
 ):
-    if install_suite.nlp.get_py_path() and install_suite.nlp.get_java_path():
-        install_py4j_lib_via_hdfs(db, cluster_id, install_suite.nlp)
-        print(f'{Software.spark_nlp.logo + Software.spark_nlp.name} Installed Spark NLP! ✅')
     if install_suite.hc.get_py_path() and install_suite.hc.get_java_path():
         install_py4j_lib_via_hdfs(db, cluster_id, install_suite.hc)
         print(f'Installed {Software.spark_hc.logo + Software.spark_hc.name} Spark NLP for Healthcare ✅')
     if install_suite.ocr.get_py_path() and install_suite.ocr.get_java_path():
         install_py4j_lib_via_hdfs(db, cluster_id, install_suite.ocr)
         print(f'Installed {Software.spark_ocr.logo + Software.spark_ocr.name} Spark OCR ✅')
-
     py_deps = [Software.nlu.pypi_name, Software.sparknlp_display.pypi_name, Software.jsl_lib.pypi_name_databricks]
     for dep in py_deps:
         install_py_lib_via_pip(db, cluster_id, dep)
+
+    # Install Sparkr-NLP as last library, so we have the correct version
+    if install_suite.nlp.get_py_path() and install_suite.nlp.get_java_path():
+        install_py4j_lib_via_hdfs(db, cluster_id, install_suite.nlp)
+        print(f'{Software.spark_nlp.logo + Software.spark_nlp.name} Installed Spark NLP! ✅')
 
 
 def block_till_cluster_ready_state(db: DatabricksAPI, cluster_id: str):
