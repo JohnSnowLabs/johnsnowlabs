@@ -2,7 +2,7 @@
 from .abstract_base.lib_resolver import try_import_lib
 
 # get helpers into global space
-from johnsnowlabs import nlp, settings, display, lab
+from johnsnowlabs import nlp, settings, viz, lab
 
 
 # These we may only import, if the corresponding package is installed
