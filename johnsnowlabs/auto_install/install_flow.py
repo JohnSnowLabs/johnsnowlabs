@@ -50,15 +50,19 @@ def install(
         offline: bool = False,
         install_optional: bool = True,
         install_licensed: bool = True,
-        only_download_jars: bool = False,
+        slim_install: bool = False,  # Only Downloads jars
         product: Optional[str] = ProductName.jsl_full.value,
         include_dependencies: bool = True,
+        nlp: bool = True,
+        spark_nlp: bool = True,
+        visual: bool = False,
+
         # License usage & Caching
         local_license_number: int = 0,
         remote_license_number: int = 0,
         store_in_jsl_home: bool = True,
         # Install File Types
-        jvm_install_type: str = JvmHardwareTarget.cpu.value,
+        hardware_platform: str = JvmHardwareTarget.cpu.value,
         py_install_type: str = PyInstallTypes.wheel.value,
         only_refresh_credentials: bool = False,
         refresh_install: bool = False,
@@ -84,11 +88,11 @@ def install(
         headers=None,
 
 ):
-    if refresh_install and os.path.exists(settings.root_dir) :
+    if refresh_install and os.path.exists(settings.root_dir):
         shutil.rmtree(settings.root_dir)
     # Input Validation
     py_install_type = PyInstallTypes.from_str(py_install_type)
-    jvm_install_type = JvmHardwareTarget.from_str(jvm_install_type)
+    hardware_platform = JvmHardwareTarget.from_str(hardware_platform)
     product = Software.for_name(product)
 
     # Get Credentials from Auth Flow
@@ -114,7 +118,7 @@ def install(
     if offline:
         # Offline Install
         get_printable_dependency_urls(secrets=secrets,
-                                      jvm_install_type=jvm_install_type,
+                                      jvm_install_type=hardware_platform,
                                       py_install_type=py_install_type)
         if not offline_zip_dir:
             return
@@ -123,13 +127,14 @@ def install(
         # Cache credentials, Wheels and Jars in ~/.johnsnowlabs
         setup_jsl_home(
             secrets=secrets,
-            jvm_install_type=jvm_install_type,
+            jvm_install_type=hardware_platform,
             py_install_type=py_install_type,
-            refresh_install=refresh_install)
+            refresh_install=refresh_install,
+            visual=visual, nlp=nlp, spark_nlp=spark_nlp, )
 
     # Databricks Install
     if databricks_host and databricks_token and not offline:
-        suite = get_install_suite_from_jsl_home(jvm_hardware_target=jvm_install_type)
+        suite = get_install_suite_from_jsl_home(jvm_hardware_target=hardware_platform,visual=visual, nlp=nlp, spark_nlp=spark_nlp,)
         if databricks_cluster_id:
             install_jsl_suite_to_cluster(
                 db=get_db_client_for_token(databricks_host, databricks_token),
@@ -158,11 +163,14 @@ def install(
                                   headers=headers, )
 
     # Local Py-Install
-    elif not only_download_jars:
+    elif not slim_install:
         check_and_install_dependencies(product=product, secrets=secrets, install_optional=install_optional,
                                        install_licensed=install_licensed,
                                        python_exec_path=python_exec_path,
                                        py_setup_dir=venv_creation_path,
                                        offline_zip_dir=offline_zip_dir,
-                                       include_dependencies=include_dependencies
+                                       include_dependencies=include_dependencies,
+                                       visual=visual,
+                                       spark_nlp=spark_nlp,
+                                       enterpise_nlp = nlp
                                        )

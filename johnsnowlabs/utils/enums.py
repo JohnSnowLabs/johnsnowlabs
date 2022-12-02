@@ -80,15 +80,6 @@ class SparkVersion(BaseEnum):
     spark300 = LibVersion('3.0.0')
 
 
-# hc = LibVersion('4.0.2')
-# nlp = LibVersion('4.0.2')
-# ocr = LibVersion('4.0.0')
-# nlp_display = LibVersion('4.0.0')
-# nlu = LibVersion('4.0.0')
-
-
-
-
 class LicenseType(BaseEnum):
     trial = 'Trial'
     research = 'Research'
@@ -98,11 +89,6 @@ class LicensePlattform(BaseEnum):
     none = None
     databricks = 'Databricks'
     floating = 'Floating'
-
-
-class LicensePlattform(BaseEnum):
-    none = None
-    research = 'Research'
 
 
 class ProductName(BaseEnum):
@@ -140,7 +126,6 @@ class ProductName(BaseEnum):
             return ProductName.hc
         if s == 'Legal NLP':
             return ProductName.hc
-
 
         raise ValueError(f'Unknown product name from jsl-api {s}')
 
@@ -210,7 +195,7 @@ class LatestCompatibleProductVersion(BaseEnum):
     python = LibVersion('python')
 
     @staticmethod
-    def from_settings(p : ProductName):
+    def from_settings(p: ProductName):
         if p == ProductName.hc:
             return settings.raw_version_medical
         if p == ProductName.ocr:
@@ -219,7 +204,7 @@ class LatestCompatibleProductVersion(BaseEnum):
             return settings.raw_version_nlp
 
     @staticmethod
-    def sct_from_settings(p : ProductName):
+    def sct_from_settings(p: ProductName):
         if p == ProductName.hc:
             return settings.raw_version_secret_medical
         if p == ProductName.ocr:

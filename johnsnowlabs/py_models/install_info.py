@@ -109,17 +109,18 @@ class InstallSuite(WritableBaseModel):
     # Pure Python Libs
     pure_py_jsl: Optional[LocalPyLib] = None
 
-    def get_missing_products(self, ):
+    def get_missing_products(self, nlp, visual, spark_nlp):
         missing = []
         from johnsnowlabs.auto_install.softwares import Software
-        if self.secrets.OCR_LICENSE:
+        if self.secrets.OCR_LICENSE and visual:
             if not self.ocr.java_lib or not self.ocr.get_java_path():
                 missing.append(Software.spark_ocr)
-        if self.secrets.HC_LICENSE:
+        if self.secrets.HC_LICENSE and nlp:
             if not self.hc.java_lib or not self.hc.get_java_path():
                 missing.append(Software.spark_hc)
-        if not self.nlp.java_lib or not self.nlp.get_java_path():
-            missing.append(Software.spark_nlp)
+        if spark_nlp:
+            if not self.nlp.java_lib or not self.nlp.get_java_path():
+                missing.append(Software.spark_nlp)
         return missing
 
     def log_missing_jars(self,

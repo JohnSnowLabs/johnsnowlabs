@@ -24,7 +24,7 @@ def try_import_lib(lib: str, print_failure=False):
 
 class Py4JJslLibDependencyResolverABC(ABC):
     """
-    We define a resolver for all JAR based dependencies
+    We define a resolver for all Py4J based dependencies
     Each JslLibDependencyResolver util must implement the following :
     - get_jar_urls(lib_version,spark_version_to_match,Optional[secret])->UrlDependency
     - get_mvn_coordinates(lib_version,spark_version_to_match,Optional[secret])->RepoDependency
@@ -49,7 +49,7 @@ class Py4JJslLibDependencyResolverABC(ABC):
     compatible_spark_to_jar_map: Dict[SparkVersion,
                                       Dict[JvmHardwareTarget, UrlDependency]]
 
-    # key = Supported Spark Version, Value = Py Locations
+    # key = Supported Spark Version, Value = Dict with key=tar/wheel and value = URL? URL formatable with secret
     compatible_spark_to_py_map: Dict[SparkVersion,
                                      Dict[PyInstallTypes, UrlDependency]]
 
