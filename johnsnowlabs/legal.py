@@ -20,7 +20,7 @@ try :
 
 
 
-        from sparknlp_jsl.finance import SentenceEntityResolverModel, \
+        from sparknlp_jsl.legal import SentenceEntityResolverModel, \
             ChunkMapperModel, \
             AssertionDLModel, \
             RelationExtractionDLModel, \
