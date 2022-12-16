@@ -58,6 +58,9 @@ def create_cluster(
         AWS_ACCESS_KEY_ID=install_suite.secrets.AWS_ACCESS_KEY_ID,
         AWS_SECRET_ACCESS_KEY=install_suite.secrets.AWS_SECRET_ACCESS_KEY,
     )
+    # Env vars may not be None, so we drop any that are None
+    default_spark_env_vars = {k: v for k, v in default_spark_env_vars.items() if v is not None}
+
 
     if not spark_conf:
         spark_conf = default_spark_conf
