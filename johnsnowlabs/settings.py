@@ -5,13 +5,13 @@ from johnsnowlabs.utils.env_utils import is_running_in_databricks, set_py4j_logg
     env_required_license
 
 
-raw_version_medical = '4.2.3'
-raw_version_secret_medical = '4.2.3'
+raw_version_medical = '4.2.4'
+raw_version_secret_medical = '4.2.4'
 
 raw_version_secret_ocr = '4.2.1'
 raw_version_ocr = '4.2.1'
 
-raw_version_jsl_lib = '4.2.3'
+raw_version_jsl_lib = '4.2.4'
 raw_version_nlp = '4.2.4'
 raw_version_nlu = '4.0.1rc4'
 raw_version_pyspark = '3.1.2'
