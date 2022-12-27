@@ -37,9 +37,11 @@ try:
             GenericClassifierModel, \
             ReIdentification, \
             ZeroShotNerModel, \
-            Replacer
+            Replacer,\
+            AssertionChunkConverter
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
+        from sparknlp_jsl import training_log_parser
 
 
         from sparknlp_jsl.base import FeaturesAssembler

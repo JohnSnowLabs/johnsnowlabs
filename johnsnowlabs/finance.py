@@ -17,7 +17,7 @@ try:
         # from sparknlp_jsl.finance import FinanceNerQuestionGenerator as QuestionGenerator
         from sparknlp_jsl.finance.chunk_classification.deid.document_hashcoder import FinanceDocumentHashCoder as DocumentHashCoder
         from sparknlp_jsl.finance.seq_generation.qa_ner_generator import FinanceNerQuestionGenerator as NerQuestionGenerator
-
+        from sparknlp_jsl.annotator import AssertionChunkConverter
         from sparknlp_jsl.finance import SentenceEntityResolverModel, \
             ChunkMapperModel, \
             AssertionDLModel, \
@@ -28,7 +28,10 @@ try:
             AssertionDLApproach, \
             ZeroShotNerModel
 
-        from sparknlp_jsl.annotator import MedicalDistilBertForSequenceClassification as DistilBertForSequenceClassification
+        from sparknlp_jsl import training_log_parser
+
+        from sparknlp_jsl.annotator import MedicalDistilBertForSequenceClassification as DistilBertForSequenceClassification, \
+    AssertionChunkConverter
 
         # These are licensed annos shared across all libs
         from sparknlp_jsl.annotator import \
