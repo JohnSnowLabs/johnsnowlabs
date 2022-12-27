@@ -1,3 +1,5 @@
+
+
 from .auto_install.health_checks.report import check_health, list_remote_licenses, list_local_licenses
 from .utils.sparksession_utils import start
 from .auto_install.install_flow import install
@@ -16,6 +18,9 @@ if try_import_lib('sparknlp'):
     from sparknlp.training import *
     from sparknlp.functions import *
     from sparknlp.pretrained import PretrainedPipeline
+    from sparknlp import annotation
+
+
 
 if try_import_lib('pyspark'):
     from pyspark.sql import DataFrame
