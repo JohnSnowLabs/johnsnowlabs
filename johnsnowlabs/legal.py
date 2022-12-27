@@ -1,9 +1,8 @@
 from johnsnowlabs.abstract_base.lib_resolver import try_import_lib
 from johnsnowlabs.utils.print_messages import log_broken_lib
 
-try :
+try:
     if try_import_lib('sparknlp_jsl') and try_import_lib('sparknlp'):
-
         # Substitutions
         from sparknlp_jsl.legal import LegalBertForTokenClassification as BertForTokenClassification
         from sparknlp_jsl.legal import LegalNerApproach as NerApproach
@@ -12,13 +11,14 @@ try :
         from sparknlp_jsl.legal import LegalBertForSequenceClassification as BertForSequenceClassification
         from sparknlp_jsl.legal import LegalClassifierDLApproach as ClassifierDLApproach
         from sparknlp_jsl.legal import LegalClassifierDLModel as ClassifierDLModel
-        from sparknlp_jsl.annotator import MedicalDistilBertForSequenceClassification as DistilBertForSequenceClassification
+        from sparknlp_jsl.annotator import \
+            MedicalDistilBertForSequenceClassification as DistilBertForSequenceClassification
         # from sparknlp_jsl.legal import LegalDocumentHashCoder as DocumentHashCoder
         # from sparknlp_jsl.legal import LegalNerQuestionGenerator as QuestionGenerator
-        from sparknlp_jsl.legal.chunk_classification.deid.document_hashcoder import LegalDocumentHashCoder as DocumentHashCoder
+        from sparknlp_jsl.legal.chunk_classification.deid.document_hashcoder import \
+            LegalDocumentHashCoder as DocumentHashCoder
         from sparknlp_jsl.legal.seq_generation.qa_ner_generator import LegalNerQuestionGenerator as NerQuestionGenerator
-
-
+        from sparknlp_jsl.annotator import AssertionChunkConverter
 
         from sparknlp_jsl.legal import SentenceEntityResolverModel, \
             ChunkMapperModel, \
@@ -58,8 +58,6 @@ try :
             Replacer
         from sparknlp_jsl.modelTracer import ModelTracer
 
-
-
         # DrugNormalizer, \
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.annotator.resolution.resolver_merger import ResolverMerger
@@ -76,14 +74,15 @@ try :
             GenericClassifierApproach, \
             Router, \
             NerQuestionGenerator, \
-            DocumentHashCoder
+            DocumentHashCoder, \
+            AssertionChunkConverter
+        from sparknlp_jsl import training_log_parser
 
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader
         from sparknlp_jsl.eval import NerDLMetrics, NerDLEvaluation, SymSpellEvaluation, POSEvaluation, \
             NerCrfEvaluation, NorvigSpellEvaluation
 
-        pass
 
 except:
     if try_import_lib('sparknlp_jsl') and try_import_lib('sparknlp'):
