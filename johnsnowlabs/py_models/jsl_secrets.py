@@ -478,13 +478,13 @@ class JslSecrets(WritableBaseModel):
         for license_file in os.listdir(settings.license_dir):
             if license_file == 'info.json':
                 continue
-            secrets = JslSecrets.parse_file(f'{settings.license_dir}/{license_file}')
+            secrets = JslSecrets.parse_file(os.path.join(settings.license_dir, license_file))
             if secrets.HC_SECRET and hc_secrets and \
                     JslSecrets.is_other_older_secret(hc_secrets, secrets.HC_SECRET):
-                invalid_licenses.append(f'{settings.license_dir}/{license_file}')
+                invalid_licenses.append(os.path.join(settings.license_dir, license_file))
             elif secrets.OCR_SECRET and ocr_secret \
                     and JslSecrets.is_other_older_secret(ocr_secret, secrets.OCR_SECRET):
-                invalid_licenses.append(f'{settings.license_dir}/{license_file}')
+                invalid_licenses.append(os.path.join(settings.license_dir, license_file))
 
         for license_path in invalid_licenses:
             print(f'Updating license file {license_path}')
@@ -582,14 +582,14 @@ class JslSecrets(WritableBaseModel):
             license_info = LicenseInfo(jsl_secrets=secrets, products=products, id=str(len(license_infos.infos)))
             license_infos.infos[file_name] = license_info
             license_infos.write(settings.creds_info_file)
-            out_dir = f'{settings.license_dir}/{file_name}'
+            out_dir = os.path.join(settings.license_dir, file_name)
             secrets.write(out_dir)
             print(f'📋 Stored new John Snow Labs License in {out_dir}')
         else:
             file_name = file_name.format(number='0')
             license_info = LicenseInfo(jsl_secrets=secrets, products=products, id='0')
             LicenseInfos(infos={file_name: license_info}).write(settings.creds_info_file)
-            out_dir = f'{settings.license_dir}/{file_name}'
+            out_dir = os.path.join(settings.license_dir, file_name)
             secrets.write(out_dir)
             print(f'📋 Stored John Snow Labs License in {out_dir}')
             # We might load again JSL-Secrets from local
