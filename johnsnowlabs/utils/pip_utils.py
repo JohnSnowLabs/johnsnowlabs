@@ -67,34 +67,41 @@ def install_standard_pypi_lib(pypi_name: str,
     :param upgrade: use --upgrade flag or not 
     :return:
     """
-    if isinstance(version,LibVersion ):
+    if isinstance(version, LibVersion):
         version = version.as_str()
 
     if not pypi_name:
         raise Exception(f'Tried to install software which has no pypi file_name! Aborting.')
     print(f'Installing {pypi_name} to {python_path}')
-    c = f'{python_path} -m pip install {pypi_name}'
-    print(f'Running: {c}')
+    c = f'"{python_path}" -m pip install {pypi_name}'
     if version:
         c = c + f'=={version} '
     else:
         c = c + ' '
-
+    
+    subprocess_args = [c]
+    print(f'Running: {c}')
+    
     if upgrade:
         c = c + '--upgrade '
+        subprocess_args.append('--upgrade')
     if re_install:
         c = c + ' --force-reinstall'
+        subprocess_args.append('--force-reinstall')
 
     if download_folder:
         if version:
             c = f'{python_path} -m pip download {pypi_name}=={version} -d {download_folder}'
         else:
             c = f'{python_path} -m pip download {pypi_name} -d {download_folder}'
+        subprocess_args = [c]
 
     if not include_dependencies:
         c = c + ' --no-deps'
+        subprocess_args.append('--no-deps')
 
-    os.system(c)
+    #os.system(c)
+    out = subprocess.run(subprocess_args, shell=True, check=True, capture_output=True)
     if module_name and not download_folder:
         try:
             # See if install worked

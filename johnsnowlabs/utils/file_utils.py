@@ -3,23 +3,23 @@ from typing import Dict, Any
 
 
 def dump_dataclass_to_json(data_class_instance, out_file_path, overwrite_if_exist: bool = True):
-    with open(out_file_path, 'w') as json_file:
+    with open(out_file_path, 'w', encoding="utf8") as json_file:
         json.dump(data_class_instance.__dict__, json_file, indent=4)
 
 
 def json_path_as_dict(path) -> Dict[Any, Any]:
-    with open(path) as f:
+    with open(path, "r", encoding="utf8") as f:
         return json.load(f)
 
 
 def str_to_file(str_, path):
-    with open(path, "w") as text_file:
+    with open(path, "w", encoding="utf8") as text_file:
         text_file.write(str_)
     return path
 
 
 def file_to_str(path):
-    with open(path, 'r') as file:
+    with open(path, 'r', encoding="utf8") as file:
         return file.read()
 
 
