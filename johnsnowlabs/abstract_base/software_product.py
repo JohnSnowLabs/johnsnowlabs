@@ -144,7 +144,7 @@ class AbstractSoftwareProduct(ABC):
                 # Unless we toggle enforce_versions=False
                 suite = get_install_suite_from_jsl_home()
                 if cls.name == ProductName.hc.value and suite.hc and suite.hc.py_lib:
-                    return install_standard_pypi_lib(f'{settings.py_dir}/{suite.hc.py_lib.file_name}',
+                    return install_standard_pypi_lib(os.path.join(settings.py_dir, suite.hc.py_lib.file_name),
                                                      cls.py_module_name,
                                                      python_path=py_path, upgrade=upgrade, re_install=re_install,
                                                      # version=version,
@@ -152,14 +152,14 @@ class AbstractSoftwareProduct(ABC):
                                                      include_dependencies=include_dependencies,
                                                      )
                 elif cls.name == ProductName.ocr.value and suite.ocr and suite.ocr.py_lib:
-                    return install_standard_pypi_lib(f'{settings.py_dir}/{suite.ocr.py_lib.file_name}',
+                    return install_standard_pypi_lib(os.path.join(settings.py_dir, suite.ocr.py_lib.file_name),
                                                      cls.py_module_name,
                                                      python_path=py_path, upgrade=upgrade, re_install=re_install,
                                                      # version=version,
                                                      download_folder=download_folder,
                                                      include_dependencies=include_dependencies, )
                 elif cls.name == ProductName.nlp.value and suite.nlp and suite.nlp.py_lib:
-                    return install_standard_pypi_lib(f'{settings.py_dir}/{suite.nlp.py_lib.file_name}',
+                    return install_standard_pypi_lib(os.path.join(settings.py_dir, suite.nlp.py_lib.file_name),
                                                      cls.py_module_name,
                                                      python_path=py_path, upgrade=upgrade, re_install=re_install,
                                                      # version=version,

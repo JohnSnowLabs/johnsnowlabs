@@ -1,4 +1,4 @@
-from os.path import expanduser
+from os.path import expanduser, join
 
 # libs, these versions are used for auto-installs and version  checks
 from johnsnowlabs.utils.env_utils import is_running_in_databricks, set_py4j_logger_to_error_on_databricks, \
@@ -37,18 +37,18 @@ else:
         # on Docker and other setups, ~ may resolve to `/`, so we need special handling here
         root_dir = f'{expanduser("~")}.johnsnowlabs'
     else:
-        root_dir = f'{expanduser("~")}/.johnsnowlabs'
+        root_dir = join(home, '.johnsnowlabs')
 
 ## Directories
-license_dir = f'{root_dir}/licenses'
-java_dir = f'{root_dir}/java_installs'
-py_dir = f'{root_dir}/py_installs'
+license_dir = join(root_dir, "licenses")
+java_dir = join(root_dir, 'java_installs')
+py_dir = join(root_dir, 'py_installs')
 
 # Info Files
-root_info_file = f'{root_dir}/info.json'
-java_info_file = f'{java_dir}/info.json'
-py_info_file = f'{py_dir}/info.json'
-creds_info_file = f'{license_dir}/info.json'
+root_info_file = join(root_dir, 'info.json')
+java_info_file = join(java_dir, 'info.json')
+py_info_file = join(py_dir, 'info.json')
+creds_info_file = join(license_dir, 'info.json')
 
 # databricks paths
 dbfs_home_dir = 'dbfs:/johnsnowlabs'
