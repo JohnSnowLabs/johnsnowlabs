@@ -1,9 +1,17 @@
 from typing import Union
 
-from johnsnowlabs.auto_install.lib_resolvers import OcrLibResolver, HcLibResolver, NlpLibResolver
 from johnsnowlabs.abstract_base.software_product import AbstractSoftwareProduct
-from johnsnowlabs.utils.enums import ProductName, ProductLogo, LatestCompatibleProductVersion, \
-    ProductSlogan
+from johnsnowlabs.auto_install.lib_resolvers import (
+    OcrLibResolver,
+    HcLibResolver,
+    NlpLibResolver,
+)
+from johnsnowlabs.utils.enums import (
+    ProductName,
+    ProductLogo,
+    LatestCompatibleProductVersion,
+    ProductSlogan,
+)
 from johnsnowlabs.utils.env_utils import try_import
 from johnsnowlabs.utils.venv_utils import VenvWrapper
 
@@ -31,6 +39,26 @@ class SparkSoftware(AbstractSoftwareProduct):
     latest_version = LatestCompatibleProductVersion.spark.value
 
 
+class PillowSoftware(AbstractSoftwareProduct):
+    # TODO needs custom install for windows! (?)
+    name = ProductName.pyspark.value
+    logo = ProductLogo.pyspark.value
+    slogan = ProductSlogan.pyspark.value
+    hard_dependencies = {PythonSoftware}
+    latest_version = LatestCompatibleProductVersion.pyspark.value
+    py_module_name = "pillow"
+    pypi_name = "Pillow"
+    #
+    # @classmethod
+    # def get_installed_version_via_import(cls):
+    #     try:
+    #         import pyspark
+    #
+    #         return pyspark.__version__
+    #     except:
+    #         return False
+
+
 class PysparkSoftware(AbstractSoftwareProduct):
     # TODO needs custom install for windows! (?)
     name = ProductName.pyspark.value
@@ -38,13 +66,14 @@ class PysparkSoftware(AbstractSoftwareProduct):
     slogan = ProductSlogan.pyspark.value
     hard_dependencies = {PythonSoftware}
     latest_version = LatestCompatibleProductVersion.pyspark.value
-    py_module_name = 'pyspark'
-    pypi_name = 'pyspark'
+    py_module_name = "pyspark"
+    pypi_name = "pyspark"
 
     @classmethod
     def get_installed_version_via_import(cls):
         try:
             import pyspark
+
             return pyspark.__version__
         except:
             return False
@@ -57,14 +86,15 @@ class SparkNlpSoftware(AbstractSoftwareProduct):
     hard_dependencies = {SparkSoftware, PysparkSoftware}
     latest_version = LatestCompatibleProductVersion.spark_nlp.value
     jsl_url_resolver = NlpLibResolver
-    py_module_name = 'sparknlp'
-    pypi_name = 'spark-nlp'
+    py_module_name = "sparknlp"
+    pypi_name = "spark-nlp"
     is_py4j = True
 
     @classmethod
     def get_installed_version_via_import(cls):
         try:
             import sparknlp
+
             return sparknlp.version()
         except:
             return False
@@ -77,8 +107,8 @@ class SparkHcSoftware(AbstractSoftwareProduct):
     hard_dependencies = {SparkNlpSoftware}
     latest_version = LatestCompatibleProductVersion.healthcare.value
     jsl_url_resolver = HcLibResolver
-    py_module_name = 'sparknlp_jsl'
-    pypi_name = 'spark-nlp-jsl'
+    py_module_name = "sparknlp_jsl"
+    pypi_name = "spark-nlp-jsl"
     licensed = True
     is_py4j = True
 
@@ -86,6 +116,7 @@ class SparkHcSoftware(AbstractSoftwareProduct):
     def get_installed_version_via_import(cls):
         try:
             import sparknlp_jsl
+
             return sparknlp_jsl.version()
         except:
             return False
@@ -95,12 +126,16 @@ class SparkOcrSoftware(AbstractSoftwareProduct):
     name = ProductName.ocr.value
     logo = ProductLogo.ocr.value
     slogan = ProductSlogan.ocr.value
-    hard_dependencies = {SparkSoftware, PysparkSoftware, SparkNlpSoftware, }
+    hard_dependencies = {
+        SparkSoftware,
+        PysparkSoftware,
+        SparkNlpSoftware,
+    }
     optional_dependencies = {SparkHcSoftware}
     latest_version = LatestCompatibleProductVersion.ocr.value
     jsl_url_resolver = OcrLibResolver
-    py_module_name = 'sparkocr'  #
-    pypi_name = 'spark-ocr'
+    py_module_name = "sparkocr"  #
+    pypi_name = "spark-ocr"
     licensed = True
     is_py4j = True
 
@@ -108,6 +143,7 @@ class SparkOcrSoftware(AbstractSoftwareProduct):
     def get_installed_version_via_import(cls):
         try:
             import sparkocr
+
             return sparkocr.version()
         except:
             return False
@@ -120,13 +156,14 @@ class NlpDisplaySoftware(AbstractSoftwareProduct):
     hard_dependencies = {SparkSoftware}
     licensed_dependencies = {SparkHcSoftware}
     latest_version = LatestCompatibleProductVersion.nlp_display.value
-    py_module_name = 'sparknlp_display'
-    pypi_name = 'spark-nlp-display'
+    py_module_name = "sparknlp_display"
+    pypi_name = "spark-nlp-display"
 
     @classmethod
     def get_installed_version_via_import(cls):
         try:
             import sparknlp_display
+
             return sparknlp_display.version()
         except:
             return False
@@ -139,16 +176,19 @@ class NluSoftware(AbstractSoftwareProduct):
 
     hard_dependencies = {SparkNlpSoftware}
     licensed_dependencies = {SparkHcSoftware, SparkOcrSoftware}
-    optional_dependencies = {NlpDisplaySoftware}  # Todo streamlit,sklearn,plotly, nlp-display
+    optional_dependencies = {
+        NlpDisplaySoftware
+    }  # Todo streamlit,sklearn,plotly, nlp-display
     latest_version = LatestCompatibleProductVersion.nlu.value
-    py_module_name = 'nlu'
-    pypi_name = 'nlu'
+    py_module_name = "nlu"
+    pypi_name = "nlu"
     install_deps = False
 
     @classmethod
     def get_installed_version_via_import(cls):
         try:
             import nlu
+
             return nlu.version()
         except:
             return False
@@ -156,13 +196,14 @@ class NluSoftware(AbstractSoftwareProduct):
     @classmethod
     def health_check(cls) -> bool:
         import nlu
+
         try:
-            pipe = nlu.load('sentiment')
-            df = pipe.predict('I love peanut butter and jelly!')
+            pipe = nlu.load("sentiment")
+            df = pipe.predict("I love peanut butter and jelly!")
             for c in df.columns:
                 print(df[c])
         except Exception as err:
-            print(f'Failure testing nlu. Err = {err}')
+            print(f"Failure testing nlu. Err = {err}")
             return False
         return True
 
@@ -177,31 +218,38 @@ class JohnSnowLabsSoftware(AbstractSoftwareProduct):
     licensed_dependencies = {SparkHcSoftware, SparkOcrSoftware}
     optional_dependencies = {NlpDisplaySoftware, NluSoftware}
     latest_version = LatestCompatibleProductVersion.jsl_lib.value
-    py_module_name = 'johnsnowlabs'
-    pypi_name = 'johnsnowlabs'
-    pypi_name_databricks = 'johnsnowlabs_for_databricks'
+    py_module_name = "johnsnowlabs"
+    pypi_name = "ckls_test_module"
+    pypi_name_databricks = "johnsnowlabs_for_databricks"
+
 
 class JslFullSoftware(AbstractSoftwareProduct):
     name = ProductName.jsl_full.value
     logo = ProductLogo.jsl_full.value
     slogan = ProductSlogan.jsl_full.value
 
-    optional_dependencies = {NlpDisplaySoftware, NluSoftware}  # Todo streamlit,sklearn,plotly?
+    optional_dependencies = {
+        NlpDisplaySoftware,
+        NluSoftware,
+    }  # Todo streamlit,sklearn,plotly?
     hard_dependencies = {JohnSnowLabsSoftware, SparkNlpSoftware, PysparkSoftware}
     licensed_dependencies = {SparkHcSoftware, SparkOcrSoftware}
 
     @classmethod
     def check_installed(cls, python_exec_path=None) -> bool:
         if python_exec_path:
-            return VenvWrapper.is_lib_in_py_exec(python_exec_path, cls.py_module_name, False)
+            return VenvWrapper.is_lib_in_py_exec(
+                python_exec_path, cls.py_module_name, False
+            )
         # If python_exec_path=None, then check is for current Python py_executable
         return all(try_import(dep.py_module_name) for dep in cls.licensed_dependencies)
 
 
 class Software:
     """Accessor to all classes that implement AbstractSoftwareProduct.
-     This also gives access to all enums
-     """
+    This also gives access to all enums
+    """
+
     spark_nlp: AbstractSoftwareProduct = SparkNlpSoftware
     spark_hc: AbstractSoftwareProduct = SparkHcSoftware
     spark_ocr: AbstractSoftwareProduct = SparkOcrSoftware

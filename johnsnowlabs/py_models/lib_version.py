@@ -3,20 +3,23 @@ from typing import Optional
 
 class LibVersion:
     """Representation of a library version in format A.B.C
-    where elements can digits or X which matches all others digits """
+    where elements can digits or X which matches all others digits"""
 
-    def __init__(self,
-                 major_or_canonical_str: str,
-                 minor: Optional[str] = None,
-                 patch: Optional[str] = None, ):
+    def __init__(
+        self,
+        major_or_canonical_str: str,
+        minor: Optional[str] = None,
+        patch: Optional[str] = None,
+    ):
         self.major, self.minor, self.patch = None, None, None
 
-        if '.' in major_or_canonical_str:
+        if "." in major_or_canonical_str:
 
-            splits = major_or_canonical_str.lower().split('.')
+            splits = major_or_canonical_str.lower().split(".")
             if len(splits) == 0:
                 raise ValueError(
-                    'When using canonical representation to construct a LibVersion, format A.B.C must be used')
+                    "When using canonical representation to construct a LibVersion, format A.B.C must be used"
+                )
             self.major = splits[0]
             if len(splits) > 1:
                 self.minor = splits[1]
@@ -28,7 +31,7 @@ class LibVersion:
             self.minor = minor
             self.patch = patch
 
-    def equals(self: 'LibVersion', lib2: 'LibVersion') -> bool:
+    def equals(self: "LibVersion", lib2: "LibVersion") -> bool:
         """
         Compare two LibVersions of format A.B.C , consisting of either Digits 0-9 or x .
         X equals to any other version, i.e.  3.X.X equals 3.5.1
@@ -37,18 +40,18 @@ class LibVersion:
         :return:
         """
         if self.major == lib2.major:
-            if self.minor == 'x' or lib2.minor == 'x':
+            if self.minor == "x" or lib2.minor == "x":
                 return True
 
             if self.minor == lib2.minor:
-                if self.patch == 'x' or lib2.patch == 'x':
+                if self.patch == "x" or lib2.patch == "x":
                     return True
 
                 if self.patch == lib2.patch:
                     return True
         return False
 
-    def is_other_greater(self: 'LibVersion', other: 'LibVersion') -> bool:
+    def is_other_greater(self: "LibVersion", other: "LibVersion") -> bool:
         # basically  checks self < other
         if self.as_str() == other.as_str():
             return False
@@ -72,22 +75,30 @@ class LibVersion:
         if not self.patch and other.patch:
             return False
         # Patch could also be a str
-        if isinstance(self.patch, int) and isinstance(other.patch, int) and self.patch < other.patch:
+        if (
+            isinstance(self.patch, int)
+            and isinstance(other.patch, int)
+            and self.patch < other.patch
+        ):
             return True
-        if isinstance(self.patch, int) and isinstance(other.patch, int) and self.patch > other.patch:
+        if (
+            isinstance(self.patch, int)
+            and isinstance(other.patch, int)
+            and self.patch > other.patch
+        ):
             return False
 
         # One lib must be rc, parse it
-        if isinstance(self.patch, str) and 'rc' in self.patch:
-            self_patch, self_rc = self.patch.split('rc')
+        if isinstance(self.patch, str) and "rc" in self.patch:
+            self_patch, self_rc = self.patch.split("rc")
             self_patch = int(self_patch)
             self_rc = int(self_rc)
         else:
             self_patch = self.patch
             self_rc = None
 
-        if isinstance(other.patch, str) and 'rc' in self.patch:
-            other_patch, other_rc = self.patch.split('rc')
+        if isinstance(other.patch, str) and "rc" in self.patch:
+            other_patch, other_rc = self.patch.split("rc")
             other_patch = int(other_patch)
             other_rc = int(other_rc)
 
@@ -121,7 +132,4 @@ class LibVersion:
     def as_str(self) -> str:
         """Return LibVersion object as canonical str representation"""
         # We filter out all values != None soo version checks match up
-        return '.'.join(filter(lambda x: x, [self.major, self.minor, self.patch]))
-
-
-from distutils.version import LooseVersion, StrictVersion
+        return ".".join(filter(lambda x: x, [self.major, self.minor, self.patch]))

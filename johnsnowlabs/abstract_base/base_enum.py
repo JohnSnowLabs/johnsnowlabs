@@ -2,7 +2,6 @@ from enum import Enum, EnumMeta
 
 
 class MetaEnum(EnumMeta):
-
     def __contains__(cls, item):
         try:
             cls(item)
