@@ -78,7 +78,6 @@ def install_standard_pypi_lib(
         )
     print(f"Installing {pypi_name} to {python_path}")
     c = f"{python_path} -m pip install {pypi_name}"
-    print(f"Running: {c}")
     if version:
         c = c + f"=={version} "
     else:

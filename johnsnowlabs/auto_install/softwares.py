@@ -219,7 +219,7 @@ class JohnSnowLabsSoftware(AbstractSoftwareProduct):
     optional_dependencies = {NlpDisplaySoftware, NluSoftware}
     latest_version = LatestCompatibleProductVersion.jsl_lib.value
     py_module_name = "johnsnowlabs"
-    pypi_name = "ckls_test_module"
+    pypi_name = "johnsnowlabs"
     pypi_name_databricks = "johnsnowlabs_for_databricks"
 
 

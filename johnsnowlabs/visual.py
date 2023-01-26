@@ -1,6 +1,6 @@
+from johnsnowlabs.utils.print_messages import log_outdated_lib, log_broken_lib
 from johnsnowlabs.abstract_base.lib_resolver import try_import_lib
 from johnsnowlabs.auto_install.softwares import Software
-from johnsnowlabs.utils.print_messages import log_outdated_lib, log_broken_lib
 
 warning_logged = False
 if try_import_lib("sparkocr") and try_import_lib("sparknlp"):
