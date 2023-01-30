@@ -1,11 +1,11 @@
+import re
 import time
 from pprint import pprint
-import re
-from johnsnowlabs.auto_install.softwares import Software
 
+from johnsnowlabs.auto_install import jsl_home
+from johnsnowlabs.auto_install.softwares import Software
 from johnsnowlabs.py_models.install_info import InstallSuite, LocalPy4JLib, LocalPyLib
 from johnsnowlabs.py_models.lib_version import LibVersion
-from johnsnowlabs.auto_install import jsl_home
 from .dbfs import *
 
 # https://pypi.org/project/databricks-api/
@@ -23,34 +23,33 @@ def get_db_client_for_password(host, email, password) -> DatabricksAPI:
 
 
 def create_cluster(
-        db: DatabricksAPI,
-        install_suite: InstallSuite = None,
-        num_workers=1,
-        cluster_name=settings.db_cluster_name,
-        node_type_id=settings.db_node_type_id,
-        driver_node_type_id=settings.db_driver_node_type,
-        spark_env_vars=None,
-        autotermination_minutes=60,
-        spark_version=settings.db_spark_version,
-        spark_conf=None,
-        auto_scale=None,
-        aws_attributes=None,
-        ssh_public_keys=None,
-        custom_tags=None,
-        cluster_log_conf=None,
-        enable_elastic_disk=None,
-        cluster_source=None,
-        instance_pool_id=None,
-        headers=None,
-        block_till_cluster_ready: bool = True,
-
+    db: DatabricksAPI,
+    install_suite: InstallSuite = None,
+    num_workers=1,
+    cluster_name=settings.db_cluster_name,
+    node_type_id=settings.db_node_type_id,
+    driver_node_type_id=settings.db_driver_node_type,
+    spark_env_vars=None,
+    autotermination_minutes=60,
+    spark_version=settings.db_spark_version,
+    spark_conf=None,
+    auto_scale=None,
+    aws_attributes=None,
+    ssh_public_keys=None,
+    custom_tags=None,
+    cluster_log_conf=None,
+    enable_elastic_disk=None,
+    cluster_source=None,
+    instance_pool_id=None,
+    headers=None,
+    block_till_cluster_ready: bool = True,
 ) -> str:
     if not install_suite:
         install_suite = jsl_home.get_install_suite_from_jsl_home()
 
     default_spark_conf = {
-        'spark.kryoserializer.buffer.max': '2000M',
-        'spark.serializer': 'org.apache.spark.serializer.KryoSerializer',
+        "spark.kryoserializer.buffer.max": "2000M",
+        "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
     }
     default_spark_env_vars = dict(
         SPARK_NLP_LICENSE=install_suite.secrets.HC_LICENSE,
@@ -59,8 +58,9 @@ def create_cluster(
         AWS_SECRET_ACCESS_KEY=install_suite.secrets.AWS_SECRET_ACCESS_KEY,
     )
     # Env vars may not be None, so we drop any that are None
-    default_spark_env_vars = {k: v for k, v in default_spark_env_vars.items() if v is not None}
-
+    default_spark_env_vars = {
+        k: v for k, v in default_spark_env_vars.items() if v is not None
+    }
 
     if not spark_conf:
         spark_conf = default_spark_conf
@@ -90,9 +90,11 @@ def create_cluster(
         cluster_source=cluster_source,
         instance_pool_id=instance_pool_id,
         headers=headers,
-    )['cluster_id']
-    print(f'👌 Created cluster with id={cluster_id} on host={db.client.url}')
-    install_jsl_suite_to_cluster(db=db, cluster_id=cluster_id, install_suite=install_suite)
+    )["cluster_id"]
+    print(f"👌 Created cluster with id={cluster_id} on host={db.client.url}")
+    install_jsl_suite_to_cluster(
+        db=db, cluster_id=cluster_id, install_suite=install_suite
+    )
     if block_till_cluster_ready:
         block_till_cluster_ready_state(db, cluster_id)
 
@@ -102,15 +104,19 @@ def create_cluster(
 def list_db_runtime_versions(db: DatabricksAPI):
     versions = db.cluster.list_spark_versions()
     # pprint(versions)
-    for version in versions['versions']:
-        print(version['key'])
-        print(version['name'])
+    for version in versions["versions"]:
+        print(version["key"])
+        print(version["name"])
         # version_regex = r'[0-9].[0-9].[0-9]'
 
-        spark_version = re.findall(r'Apache Spark [0-9].[0-9]', version['name'])[0].lstrip('Apache Spark ')
-        scala_version = re.findall(r'Scala [0-9].[0-9][0-9]', version['name'])[0].lstrip('Scala ')
-        has_gpu = len(re.findall('GPU', version['name'])) > 0
-        spark_version = spark_version + '.x'
+        spark_version = re.findall(r"Apache Spark [0-9].[0-9]", version["name"])[
+            0
+        ].lstrip("Apache Spark ")
+        scala_version = re.findall(r"Scala [0-9].[0-9][0-9]", version["name"])[
+            0
+        ].lstrip("Scala ")
+        has_gpu = len(re.findall("GPU", version["name"])) > 0
+        spark_version = spark_version + ".x"
         print(LibVersion(spark_version).as_str(), has_gpu, scala_version)
 
 
@@ -134,36 +140,46 @@ def list_node_types(db: DatabricksAPI):
 
 
 def install_jsl_suite_to_cluster(
-        db: DatabricksAPI,
-        cluster_id: str,
-        install_suite: InstallSuite,
-        install_optional: bool = True,
+    db: DatabricksAPI,
+    cluster_id: str,
+    install_suite: InstallSuite,
+    install_optional: bool = True,
 ):
     if install_suite.hc.get_py_path() and install_suite.hc.get_java_path():
         install_py4j_lib_via_hdfs(db, cluster_id, install_suite.hc)
-        print(f'Installed {Software.spark_hc.logo + Software.spark_hc.name} Spark NLP for Healthcare ✅')
+        print(
+            f"Installed {Software.spark_hc.logo + Software.spark_hc.name} Spark NLP for Healthcare ✅"
+        )
     if install_suite.ocr.get_py_path() and install_suite.ocr.get_java_path():
         install_py4j_lib_via_hdfs(db, cluster_id, install_suite.ocr)
-        print(f'Installed {Software.spark_ocr.logo + Software.spark_ocr.name} Spark OCR ✅')
-    py_deps = [Software.nlu.pypi_name, Software.sparknlp_display.pypi_name, Software.jsl_lib.pypi_name_databricks]
+        print(
+            f"Installed {Software.spark_ocr.logo + Software.spark_ocr.name} Spark OCR ✅"
+        )
+    py_deps = [
+        Software.nlu.pypi_name,
+        Software.sparknlp_display.pypi_name,
+        Software.jsl_lib.pypi_name_databricks,
+    ]
     for dep in py_deps:
         install_py_lib_via_pip(db, cluster_id, dep)
 
     # Install Sparkr-NLP as last library, so we have the correct version
     if install_suite.nlp.get_py_path() and install_suite.nlp.get_java_path():
         install_py4j_lib_via_hdfs(db, cluster_id, install_suite.nlp)
-        print(f'{Software.spark_nlp.logo + Software.spark_nlp.name} Installed Spark NLP! ✅')
+        print(
+            f"{Software.spark_nlp.logo + Software.spark_nlp.name} Installed Spark NLP! ✅"
+        )
 
 
 def block_till_cluster_ready_state(db: DatabricksAPI, cluster_id: str):
     status = None
     while status != DatabricksClusterStates.RUNNING:
         # https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterstate
-        status = DatabricksClusterStates(db.cluster.get_cluster(cluster_id)['state'])
-        print(f'Cluster-Id={cluster_id} not ready, status={status.value}')
+        status = DatabricksClusterStates(db.cluster.get_cluster(cluster_id)["state"])
+        print(f"Cluster-Id={cluster_id} not ready, status={status.value}")
         time.sleep(10)
 
-    print(f'👌 Cluster-Id {cluster_id} is ready!')
+    print(f"👌 Cluster-Id {cluster_id} is ready!")
 
 
 def install_py_lib_via_pip(db: DatabricksAPI, cluster_id: str, pypi_lib: str):
@@ -179,7 +195,7 @@ def install_py_lib_via_pip(db: DatabricksAPI, cluster_id: str, pypi_lib: str):
     # By not defining repo, we will use default pip index
     payload = [dict(pypi=dict(package=pypi_lib))]
     db.managed_library.install_libraries(cluster_id=cluster_id, libraries=payload)
-    print(f'Installed {pypi_lib} ✅')
+    print(f"Installed {pypi_lib} ✅")
 
 
 def install_py4j_lib_via_hdfs(db: DatabricksAPI, cluster_id: str, lib: LocalPy4JLib):
@@ -193,8 +209,12 @@ def install_py4j_lib_via_hdfs(db: DatabricksAPI, cluster_id: str, lib: LocalPy4J
     :return:
     """
     copy_p4j_lib_to_hdfs_if_not_present(db, lib)
-    payload = [dict(jar=get_db_path(lib.java_lib)),
-               dict(whl=get_db_path(lib.py_lib), )]
+    payload = [
+        dict(jar=get_db_path(lib.java_lib)),
+        dict(
+            whl=get_db_path(lib.py_lib),
+        ),
+    ]
     db.managed_library.install_libraries(cluster_id=cluster_id, libraries=payload)
 
 
@@ -210,35 +230,45 @@ def copy_py_lib_to_hdfs_if_not_present(db: DatabricksAPI, lib: LocalPyLib):
         copy_lib_to_dbfs_cluster(db, lib.py_lib)
 
 
-def is_lib_on_dbfs_cluster(db: DatabricksAPI, local_info: Union[JvmInstallInfo, PyInstallInfo]):
+def is_lib_on_dbfs_cluster(
+    db: DatabricksAPI, local_info: Union[JvmInstallInfo, PyInstallInfo]
+):
     dbfs_path = get_db_path(local_info)
     return dbfs_file_exists(db, dbfs_path)
 
 
-def copy_lib_to_dbfs_cluster(db: DatabricksAPI, local_info: Union[JvmInstallInfo, PyInstallInfo]):
+def copy_lib_to_dbfs_cluster(
+    db: DatabricksAPI, local_info: Union[JvmInstallInfo, PyInstallInfo]
+):
     dbfs_path = get_db_path(local_info)
     if isinstance(local_info, JvmInstallInfo):
-        local_path = f'{settings.java_dir}/{local_info.file_name}'
+        local_path = f"{settings.java_dir}/{local_info.file_name}"
     elif isinstance(local_info, PyInstallInfo):
-        local_path = f'{settings.py_dir}/{local_info.file_name}'
+        local_path = f"{settings.py_dir}/{local_info.file_name}"
     else:
-        raise Exception(f'Invalid lib install type to copy {type(local_info)}')
+        raise Exception(f"Invalid lib install type to copy {type(local_info)}")
     return copy_from_local_to_hdfs(db, local_path=local_path, dbfs_path=dbfs_path)
-
 
 
 def wait_till_cluster_running(db: DatabricksAPI, cluster_id: str):
     # https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterstate
     import time
+
     while 1:
         time.sleep(5)
-        status = DatabricksClusterStates(db.cluster.get_cluster(cluster_id)['state'])
+        status = DatabricksClusterStates(db.cluster.get_cluster(cluster_id)["state"])
         if status == DatabricksClusterStates.RUNNING:
             return True
-        elif status in [DatabricksClusterStates.PENDING, DatabricksClusterStates.RESIZING,
-                        DatabricksClusterStates.RESIZING]:
+        elif status in [
+            DatabricksClusterStates.PENDING,
+            DatabricksClusterStates.RESIZING,
+            DatabricksClusterStates.RESIZING,
+        ]:
             continue
-        elif status in [DatabricksClusterStates.TERMINATED, DatabricksClusterStates.TERMINATING,
-                        DatabricksClusterStates.ERROR,
-                        DatabricksClusterStates.UNKNOWN]:
+        elif status in [
+            DatabricksClusterStates.TERMINATED,
+            DatabricksClusterStates.TERMINATING,
+            DatabricksClusterStates.ERROR,
+            DatabricksClusterStates.UNKNOWN,
+        ]:
             return False

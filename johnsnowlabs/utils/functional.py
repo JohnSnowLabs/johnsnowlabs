@@ -10,8 +10,14 @@ def extract_callee_args_as_kwargs(func: Callable) -> Dict[str, any]:
     :return: value kwargs of the func at the time of calling the extract_args_as_kwargs function
     """
     import inspect
+
     # Get the names of the functions parameters
-    param_names = list(map(lambda x: x.name, inspect.signature(func).parameters.values()))
+    param_names = list(
+        map(lambda x: x.name, inspect.signature(func).parameters.values())
+    )
     # We go 2 frame up, one for the dict comprehension, and one for extract_args_as_kwargs func itself
-    kwargs = {n: inspect.getouterframes(inspect.currentframe())[2].frame.f_locals[n] for n in param_names}
+    kwargs = {
+        n: inspect.getouterframes(inspect.currentframe())[2].frame.f_locals[n]
+        for n in param_names
+    }
     return kwargs

@@ -1,16 +1,16 @@
-from dataclasses import dataclass
-from http.server import BaseHTTPRequestHandler, HTTPServer
+import base64
+import hashlib
 import json
-from typing import List, Dict
-from urllib.request import Request, urlopen
 import os
+import random
+import string
+import webbrowser
+from http.server import BaseHTTPRequestHandler, HTTPServer
+from typing import List, Dict
+
 # imports related to get access token with PKCE Oauth
 from urllib import parse
-import string
-import base64
-import random
-import hashlib
-import webbrowser
+from urllib.request import Request, urlopen
 
 from johnsnowlabs.utils.enums import ProductName
 
@@ -18,6 +18,8 @@ MYJSL_ORIGIN = os.environ.get("MYJSL_ORIGIN", "https://my.johnsnowlabs.com")
 
 # save_path that license should be downloaded there
 LICENSE_PATH = "downloaded-license.json"
+
+
 # using urllib to avoid additional package dependencies like requests
 
 
@@ -27,12 +29,18 @@ class LibSecretResponse:
     secret: str
     isLatest: bool
 
-    def __init__(self, product: str, version: str, secret: str, isLatest: bool, ):
+    def __init__(
+        self,
+        product: str,
+        version: str,
+        secret: str,
+        isLatest: bool,
+    ):
         self.product = ProductName.from_jsl_api(product)
         self.version = version
         self.secret = secret
         self.isLatest = isLatest
-        self.version_secret = secret.split('-')[0]
+        self.version_secret = secret.split("-")[0]
 
 
 class LicenseResponse:
@@ -42,8 +50,15 @@ class LicenseResponse:
     endDate: bool
     platform: bool
 
-    def __init__(self, products: List[Dict[str, str]], id: str, type: str, endDate: str, platform: str):
-        self.products = [ProductName.from_jsl_api(p['name']) for p in products]
+    def __init__(
+        self,
+        products: List[Dict[str, str]],
+        id: str,
+        type: str,
+        endDate: str,
+        platform: str,
+    ):
+        self.products = [ProductName.from_jsl_api(p["name"]) for p in products]
         self.id = id
         self.type = type
         self.endDate = endDate
@@ -56,6 +71,7 @@ class LicenseResponse:
 def is_in_colab_notebook():
     try:
         from IPython import get_ipython
+
         return "google.colab" in str(get_ipython())
     except:
         return False
@@ -116,21 +132,21 @@ def get_access_token(email, password):
 
 
 def get_user_lib_secrets(access_token):
-    secrets_query = '''query ReleasesQuery {
+    secrets_query = """query ReleasesQuery {
 	releases {
 		product
 		version
 		secret
 		isLatest
 	}
-}'''
+}"""
     data = http_request(
         f"{MYJSL_ORIGIN}/graphql", {"query": secrets_query}, access_token=access_token
     )
     if data:
         if "errors" in data:
             raise Exception("Invalid or Expired token.")
-        return [LibSecretResponse(**r) for r in data['data']['releases']]
+        return [LibSecretResponse(**r) for r in data["data"]["releases"]]
     else:
         raise Exception("Something went wrong...")
 
