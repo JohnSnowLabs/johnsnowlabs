@@ -77,7 +77,7 @@ def install_standard_pypi_lib(
             f"Tried to install software which has no pypi file_name! Aborting."
         )
     print(f"Installing {pypi_name} to {python_path}")
-    c = f"{python_path} -m pip install {pypi_name}"
+    c = f'"{python_path}" -m pip install {pypi_name}'
     if version:
         c = c + f"=={version} "
     else:
