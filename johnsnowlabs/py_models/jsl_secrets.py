@@ -1,4 +1,3 @@
-from pathlib import Path
 import glob
 import json
 import os
@@ -440,14 +439,14 @@ class JslSecrets(WritableBaseModel):
 
     @staticmethod
     def json_path_as_dict(path):
-        with open(path) as f:
+        with open(path, encoding="utf8") as f:
             return json.load(f)
 
     @staticmethod
     def from_json_file_path(secrets_path):
         if not os.path.exists(secrets_path):
             raise FileNotFoundError(f"No file found for secrets_path={secrets_path}")
-        f = open(secrets_path)
+        f = open(secrets_path, encoding="utf8")
         creds = JslSecrets.from_json_dict(json.load(f))
         f.close()
         return creds
@@ -610,19 +609,19 @@ class JslSecrets(WritableBaseModel):
         for license in os.listdir(settings.license_dir):
             if license == "info.json":
                 continue
-            secrets = JslSecrets.parse_file(f"{settings.license_dir}/{license}")
+            secrets = JslSecrets.parse_file(os.path.join(settings.license_dir, license))
             if (
                 secrets.HC_SECRET
                 and hc_secrets
                 and JslSecrets.is_other_older_secret(hc_secrets, secrets.HC_SECRET)
             ):
-                invalid_licenses.append(f"{settings.license_dir}/{license}")
+                invalid_licenses.append(os.path.join(settings.license_dir, license))
             elif (
                 secrets.OCR_SECRET
                 and ocr_secret
                 and JslSecrets.is_other_older_secret(ocr_secret, secrets.OCR_SECRET)
             ):
-                invalid_licenses.append(f"{settings.license_dir}/{license}")
+                invalid_licenses.append(os.path.join(settings.license_dir, license))
 
         for license_path in invalid_licenses:
             print(f"Updating license file {license_path}")
@@ -762,7 +761,7 @@ class JslSecrets(WritableBaseModel):
             )
             license_infos.infos[file_name] = license_info
             license_infos.write(settings.creds_info_file)
-            out_dir = f"{settings.license_dir}/{file_name}"
+            out_dir = os.path.join(settings.license_dir, file_name)
             secrets.write(out_dir)
             print(f"📋 Stored new John Snow Labs License in {out_dir}")
         else:
@@ -771,7 +770,7 @@ class JslSecrets(WritableBaseModel):
             LicenseInfos(infos={file_name: license_info}).write(
                 settings.creds_info_file
             )
-            out_dir = f"{settings.license_dir}/{file_name}"
+            out_dir = os.path.join(settings.license_dir, file_name)
             secrets.write(out_dir)
             print(f"📋 Stored John Snow Labs License in {out_dir}")
             # We might load again JSL-Secrets from local

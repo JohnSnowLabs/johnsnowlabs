@@ -1,3 +1,4 @@
+import os
 from os.path import expanduser
 
 from johnsnowlabs.utils.env_utils import (
@@ -7,7 +8,7 @@ from johnsnowlabs.utils.env_utils import (
 )
 
 # These versions are used for auto-installs and version  checks
-raw_version_jsl_lib = "4.2.6rc1"
+raw_version_jsl_lib = "4.2.8"
 raw_version_nlp = "4.2.8"
 raw_version_nlu = "4.0.1rc4"
 raw_version_pyspark = "3.1.2"
@@ -16,8 +17,8 @@ raw_version_nlp_display = "4.1"
 raw_version_medical = "4.2.8"
 raw_version_secret_medical = "4.2.8"
 
-raw_version_secret_ocr = "4.2.4"
-raw_version_ocr = "4.2.4"
+raw_version_secret_ocr = "4.3.0"
+raw_version_ocr = "4.3.0"
 
 pypi_page = "https://pypi.org/project/johnsnowlabs"
 
@@ -43,15 +44,15 @@ else:
         root_dir = f'{expanduser("~")}/.johnsnowlabs'
 
 ## Directories
-license_dir = f"{root_dir}/licenses"
-java_dir = f"{root_dir}/java_installs"
-py_dir = f"{root_dir}/py_installs"
+license_dir = os.path.join(root_dir, "licenses")
+java_dir = os.path.join(root_dir, "java_installs")
+py_dir = os.path.join(root_dir, "py_installs")
 
 # Info Files
-root_info_file = f"{root_dir}/info.json"
-java_info_file = f"{java_dir}/info.json"
-py_info_file = f"{py_dir}/info.json"
-creds_info_file = f"{license_dir}/info.json"
+root_info_file = os.path.join(root_dir, "info.json")
+java_info_file = os.path.join(java_dir, "info.json")
+py_info_file = os.path.join(py_dir, "info.json")
+creds_info_file = os.path.join(license_dir, "info.json")
 
 # databricks paths
 dbfs_home_dir = "dbfs:/johnsnowlabs"

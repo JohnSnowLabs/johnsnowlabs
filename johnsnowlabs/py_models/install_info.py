@@ -37,9 +37,9 @@ class LocalPyLib(WritableBaseModel):
     def get_py_path(self):
         if not self.py_lib:
             return False
-        if not os.path.exists(f"{settings.py_dir}/{self.py_lib.file_name}"):
+        if not os.path.exists(os.path.join(settings.py_dir, self.py_lib.file_name)):
             return False
-        return f"{settings.py_dir}/{self.py_lib.file_name}"
+        return os.path.join(settings.py_dir, self.py_lib.file_name)
 
 
 class LocalPy4JLib(WritableBaseModel):

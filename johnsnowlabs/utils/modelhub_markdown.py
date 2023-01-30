@@ -28,7 +28,7 @@ def modelhub_md_to_pyscript(path):
     end_s = "```"
     data = []
     started = False
-    with open(path, "r") as f:
+    with open(path, "r", encoding="utf8") as f:
         for l in f:
             if start_s in l:
                 started = True

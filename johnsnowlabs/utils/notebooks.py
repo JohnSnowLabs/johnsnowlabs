@@ -26,7 +26,7 @@ def nbformat_to_ipynb(out_path, nb):
 
 
 def ipynb_to_nbformat(in_path):
-    with open(in_path) as f:
+    with open(in_path, encoding="utf8") as f:
         return nbformat.read(f, as_version=4)
 
 
@@ -37,7 +37,7 @@ def get_all_nb_in_local_folder(p):
 
 def convert_notebook(notebookPath):
     out_path = f"{johnsnowlabs.utils.testing.test_settings.tmp_notebook_dir}/{path_tail(notebookPath)}.nb_converted.py"
-    with open(notebookPath) as fh:
+    with open(notebookPath, encoding="utf8") as fh:
         nb = nbformat.reads(fh.read(), nbformat.NO_CONVERT)
     exporter = PythonExporter()
     source, meta = exporter.from_notebook_node(nb)
