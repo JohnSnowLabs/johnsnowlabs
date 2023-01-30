@@ -606,22 +606,22 @@ class JslSecrets(WritableBaseModel):
         hc_secrets = new_secrets.HC_SECRET
         ocr_secret = new_secrets.OCR_SECRET
         invalid_licenses = []
-        for license in os.listdir(settings.license_dir):
-            if license == "info.json":
+        for license_file in os.listdir(settings.license_dir):
+            if license_file == "info.json":
                 continue
-            secrets = JslSecrets.parse_file(os.path.join(settings.license_dir, license))
+            secrets = JslSecrets.parse_file(os.path.join(settings.license_dir, license_file))
             if (
                 secrets.HC_SECRET
                 and hc_secrets
                 and JslSecrets.is_other_older_secret(hc_secrets, secrets.HC_SECRET)
             ):
-                invalid_licenses.append(os.path.join(settings.license_dir, license))
+                invalid_licenses.append(os.path.join(settings.license_dir, license_file))
             elif (
                 secrets.OCR_SECRET
                 and ocr_secret
                 and JslSecrets.is_other_older_secret(ocr_secret, secrets.OCR_SECRET)
             ):
-                invalid_licenses.append(os.path.join(settings.license_dir, license))
+                invalid_licenses.append(os.path.join(settings.license_dir, license_file))
 
         for license_path in invalid_licenses:
             print(f"Updating license file {license_path}")

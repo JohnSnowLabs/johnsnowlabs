@@ -214,20 +214,20 @@ def ensure_correct_choice(licenses_count):
 
 def get_user_license_choice(licenses):
     print("Please select the license to use.")
-    for idx, license in enumerate(licenses):
-        products = ",".join(s["file_name"] for s in license["products"])
-        if license["platform"] is None:
+    for idx, license_dict in enumerate(licenses):
+        products = ",".join(s["file_name"] for s in license_dict["products"])
+        if license_dict["platform"] is None:
             scope = "Airgap"
         else:
-            scope = license["platform"]["file_name"]
-            type = license["platform"]["type"]
+            scope = license_dict["platform"]["file_name"]
+            platform_type = license_dict["platform"]["type"]
             if scope == "Floating":
-                if type:
-                    scope = scope + "," + type.capitalize()
+                if platform_type:
+                    scope = scope + "," + platform_type.capitalize()
 
         print(
             "{}. Libraries: {}\n   License Type: {}\n   Expiration Date: {}\n   Scope: {}".format(
-                idx + 1, products, license["type"], license["endDate"], scope
+                idx + 1, products, license_dict["type"], license_dict["endDate"], scope
             )
         )
 
