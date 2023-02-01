@@ -211,11 +211,11 @@ def check_and_install_dependencies(
                 )
 
         # Trigger Imports after install. so module is reloaded and no re-start is required
-        from johnsnowlabs import medical, finance, legal, visual
+        from johnsnowlabs import medical, finance, legal, visual, nlp
         from importlib import reload
 
         # reload all module which m ight have changes
-        to_reload = [medical, finance, legal, visual]
+        to_reload = [medical, finance, legal, visual, nlp]
         if try_import("PIL"):
             import PIL
 
