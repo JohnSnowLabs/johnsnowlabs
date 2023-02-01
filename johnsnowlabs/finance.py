@@ -38,6 +38,7 @@ try:
 
         # These are licensed annos shared across all libs
         from sparknlp_jsl.annotator import (
+            SentenceDetector as TextSplitter,
             MedicalDistilBertForSequenceClassification as DistilBertForSequenceClassification,
             AssertionChunkConverter,
             AssertionLogRegModel,
