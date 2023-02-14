@@ -10,6 +10,10 @@ try:
     if try_import_lib("sparknlp_jsl") and try_import_lib("sparknlp"):
         # Pretrained
         from sparknlp_jsl.annotator import (
+            GenericSVMClassifierApproach,
+            GenericSVMClassifierModel,
+            GenericLogRegClassifierApproach,
+            GenericClassifierModel,
             AssertionLogRegModel,
             AssertionDLModel,
             DeIdentificationModel,
@@ -66,22 +70,19 @@ try:
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
-        from sparknlp_jsl import training_log_parser
+        from sparknlp_jsl import (training_log_parser, Deid)
 
         from sparknlp_jsl.base import FeaturesAssembler
 
         from sparknlp_jsl.annotator.resolution.resolver_merger import ResolverMerger
 
-        from sparknlp_jsl.annotator import MedicalNerModel as NerModel
-        from sparknlp_jsl.annotator import MedicalNerApproach as NerApproach
-        from sparknlp_jsl.annotator import (
-            MedicalBertForTokenClassifier as BertForTokenClassification,
-        )
         from sparknlp_jsl.annotator import (
             MedicalDistilBertForSequenceClassification as DistilBertForSequenceClassification,
-        )
-        from sparknlp_jsl.annotator import (
             MedicalBertForSequenceClassification as BertForSequenceClassification,
+            MedicalBertForTokenClassifier as BertForTokenClassification,
+            MedicalNerModel as NerModel,
+            MedicalNerApproach as NerApproach,
+
         )
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader
