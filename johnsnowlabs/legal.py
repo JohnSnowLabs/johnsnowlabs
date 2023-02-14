@@ -34,6 +34,10 @@ try:
 
         # These are licensed annos shared across all libs
         from sparknlp_jsl.annotator import (
+            GenericSVMClassifierApproach,
+            GenericSVMClassifierModel,
+            GenericLogRegClassifierApproach,
+            GenericClassifierModel,
             SentenceDetector as TextSplitter,
             MedicalDistilBertForSequenceClassification as DistilBertForSequenceClassification,
             AssertionChunkConverter,
@@ -82,7 +86,8 @@ try:
 
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
 
-        from sparknlp_jsl import training_log_parser
+        from sparknlp_jsl import (training_log_parser, Deid)
+
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader
         from sparknlp_jsl.eval import (
