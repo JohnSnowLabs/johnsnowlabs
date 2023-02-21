@@ -263,7 +263,7 @@ def open_authorized_url(url, in_colab=False):
 
 def get_access_key_from_browser():
     in_colab = is_in_colab_notebook()
-    client_id = "sI4MKSmLHOX2Pg7XhM3McJS2oyKG5PHcp0BlANEW"
+    client_id = "2hfGX0iZ5lvyxvLaK3IEzS9Bc9LGfTYCwVvKFfjY"
 
     class OauthRequestHandler(BaseHTTPRequestHandler):
         code = None
