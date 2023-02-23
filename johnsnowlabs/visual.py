@@ -5,6 +5,8 @@ from johnsnowlabs.auto_install.softwares import Software
 warning_logged = False
 if try_import_lib("sparkocr") and try_import_lib("sparknlp"):
     try:
+        from sparkocr.base import *
+
         from sparkocr.transformers import *
         from sparkocr.enums import *
         import pkg_resources
