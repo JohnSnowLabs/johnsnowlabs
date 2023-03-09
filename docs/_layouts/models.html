@@ -1,0 +1,74 @@
+---
+layout: base
+---
+
+<div class="layout--page js-page-root">
+  <div class="page__main js-page-main page__viewport full-width cell cell--auto">
+    <div class="page__main-inner">
+      <div class="page__header d-print-none">{%- include header.html -%}</div>
+      <div class="page__content">
+        <div class="article__header--overlay">
+          <div class="hero hero--center hero--dark overlay" style="min-height: 0; padding-top: 0; padding-bottom: 0;">
+            <div class="hero__content grid--container models-hero-container">
+              <div class="article__header models-hero-header">
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                <div class="models-hero-header__upload-button-wrapper">
+                  <a href="https://modelshub.johnsnowlabs.com/" class="button models-hero-header__upload-button">
+                    <i class="fa fa-upload"></i>
+                    &nbsp;
+                    Upload Your Model
+                  </a>
+                </div>
+                <header>
+                  <h1>NLP Models Hub</h1>
+                </header>
+              </div>
+              <p class="overlay__excerpt">
+                A place for sharing and discovering Spark NLP models and
+                pipelines
+              </p>
+              <!-- form here -->
+              <div class="models-hero" id="app">
+                <form class="search-form models-hero__group">
+                  <input type="text" class="search-form__input" placeholder="Search models and pipelines" disabled />
+                  <span class="search-form__button"><i class="fas fa-circle-notch fa-spin"></i></span>
+                </form>
+                <form class="filter-form models-hero__group">
+                  <span class="filter-form__group">
+                    <span class="filter-form__text">Show</span>
+                    <select name="task" class="select filter-form__select filter-form__select--task" disabled>
+                    </select>
+                  </span>
+                  <span class="filter-form__group">
+                    <span class="filter-form__text">models & pipelines in</span>
+                    <select name="language" class="select filter-form__select filter-form__select--language" disabled>
+                    </select>
+                  </span>
+                  <span class="filter-form__group">
+                    <span class="filter-form__text">for</span>
+                    <select name="edition" class="select filter-form__select filter-form__select--edition" disabled>
+                    </select>
+                  </span>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid--reverse">
+          <div class="col-aside d-print-none js-col-aside"></div>
+          <div class="col-main cell cell--auto">
+            <div class="js-article-content">
+              <div id="results"></div>
+              {{ content }}
+            </div>
+          </div>
+        </div>
+        <div class="page__footer d-print-none">{%- include footer.html -%}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="/static/models.js?t=1666962246795"></script>
+
+{%- include pageview.html -%}

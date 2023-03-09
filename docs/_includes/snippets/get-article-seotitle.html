@@ -1,0 +1,7 @@
+{%- assign _seotitle = include.article.seotitle | default: layout.seotitle -%}
+
+{%- if _seotitle -%}
+  {%- assign __return = _seotitle -%}
+{%- else -%}
+  {%- assign __return = nil -%}
+{%- endif -%}
