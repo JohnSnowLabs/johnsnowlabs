@@ -10,26 +10,33 @@ from johnsnowlabs.utils.venv_utils import VenvWrapper
 
 
 class AutoInstallTestCase(unittest.TestCase):
-    venv_creation_dir = '/home/ckl/old_home/ckl/Documents/freelance/johnsnowlabs_lib/tmp/venv/tmp_test_venv'
-    zip_dir = '/home/ckl/Documents/freelance/jsl/johnsnowlabs/tmp/offline'
+    venv_creation_dir = "/home/ckl/old_home/ckl/Documents/freelance/johnsnowlabs_lib/tmp/venv/tmp_test_venv"
+    zip_dir = "/home/ckl/Documents/freelance/jsl/johnsnowlabs/tmp/offline"
 
     def test_quick_bad(self):
-        jsl.settings.enforce_versions = False
-        jsl.install(enterprise_nlp_secret=sct.enterprise_nlp_sct)
+        nlp.settings.enforce_versions = False
+        nlp.install(enterprise_nlp_secret=sct.enterprise_nlp_sct)
 
     def test_install_to_databricks_creating_new_cluster(self):
-        cluster_id = jsl.install(json_license_path=sct.db_lic, databricks_host=sct.ckl_host,
-                                 databricks_token=sct.ckl_token)
+        cluster_id = nlp.install(
+            json_license_path=sct.db_lic,
+            databricks_host=sct.ckl_host,
+            databricks_token=sct.ckl_token,
+        )
 
     def test_install_to_databricks_existing_cluster(self):
         # TODO WIP
-        cluster_id = '1006-022913-lb94q2m0'
-        jsl.install(json_license_path=sct.db_lic, databricks_host=sct.ckl_host, databricks_cluster_id=cluster_id)
+        cluster_id = "1006-022913-lb94q2m0"
+        nlp.install(
+            json_license_path=sct.db_lic,
+            databricks_host=sct.ckl_host,
+            databricks_cluster_id=cluster_id,
+        )
         db = get_db_client_for_token(sct.ckl_host, sct.ckl_token)
         # install_py_lib_via_pip(db, cluster_id, 'nlu')
 
     def test_install_to_current_env_browser_pop_up(self):
-        jsl.install(force_browser=True, local_license_number=0)
+        nlp.install(force_browser=True, remote_license_number=2, 0)
         import sparknlp
         import sparknlp_jsl
         import sparkocr
@@ -38,7 +45,7 @@ class AutoInstallTestCase(unittest.TestCase):
 
     def test_install_to_current_env(self):
         settings.enforce_versions = False
-        jsl.install(json_license_path=sct.old_lic, refresh_install=True)
+        nlp.install(json_license_path=sct.old_lic, refresh_install=True)
         # import sparknlp
         import sparknlp_jsl
         import sparkocr
@@ -47,78 +54,100 @@ class AutoInstallTestCase(unittest.TestCase):
 
     def test_install_to_different_python_env(self):
         # Install to env which is not the one we are currently running
-        os.system(f'rm -r {self.venv_creation_dir} ')
-        f = '/home/ckl/old_home/ckl/Documents/freelance/johnsnowlabs_lib/tmp/licenses/ocr_40.json'
+        os.system(f"rm -r {self.venv_creation_dir} ")
+        f = "/home/ckl/old_home/ckl/Documents/freelance/johnsnowlabs_lib/tmp/licenses/ocr_40.json"
         VenvWrapper.create_venv(self.venv_creation_dir)
         py_path = VenvWrapper.glob_py_exec_from_venv(self.venv_creation_dir)
-        jsl.install(json_license_path=f, python_exec_path=py_path)
-        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, 'sparknlp'))
-        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, 'sparkocr'))
-        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, 'sparknlp_display'))
-        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, 'nlu'))
-        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, 'internal_with_finleg'))  # ---> sparknlp_jsl
-        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, 'jsl_tmp'))  # --> johnsnowlabs
-        os.system(f'rm -r {self.venv_creation_dir} ')
+        nlp.install(json_license_path=f, python_exec_path=py_path)
+        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, "sparknlp"))
+        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, "sparkocr"))
+        self.assertTrue(
+            VenvWrapper.is_lib_in_venv(self.venv_creation_dir, "sparknlp_display")
+        )
+        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, "nlu"))
+        self.assertTrue(
+            VenvWrapper.is_lib_in_venv(self.venv_creation_dir, "internal_with_finleg")
+        )  # ---> sparknlp_jsl
+        self.assertTrue(
+            VenvWrapper.is_lib_in_venv(self.venv_creation_dir, "jsl_tmp")
+        )  # --> johnsnowlabs
+        os.system(f"rm -r {self.venv_creation_dir} ")
 
     def test_create_fresh_venv_and_install_to_it(self):
         # let jsl-lib create a fresh venv for us
-        os.system(f'rm -r {self.venv_creation_dir} ')
-        f = '/home/ckl/old_home/ckl/Documents/freelance/johnsnowlabs_lib/tmp/licenses/ocr_40.json'
-        jsl.install(json_license_path=f, venv_creation_path=self.venv_creation_dir)
-        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, 'sparknlp'))
-        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, 'sparkocr'))
-        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, 'sparknlp_display'))
-        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, 'nlu'))
-        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, 'sparknlp_jsl'))
-        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, 'johnsnowlabs'))
-        os.system(f'rm -r {self.venv_creation_dir} ')
+        os.system(f"rm -r {self.venv_creation_dir} ")
+        f = "/home/ckl/old_home/ckl/Documents/freelance/johnsnowlabs_lib/tmp/licenses/ocr_40.json"
+        nlp.install(json_license_path=f, venv_creation_path=self.venv_creation_dir)
+        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, "sparknlp"))
+        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, "sparkocr"))
+        self.assertTrue(
+            VenvWrapper.is_lib_in_venv(self.venv_creation_dir, "sparknlp_display")
+        )
+        self.assertTrue(VenvWrapper.is_lib_in_venv(self.venv_creation_dir, "nlu"))
+        self.assertTrue(
+            VenvWrapper.is_lib_in_venv(self.venv_creation_dir, "sparknlp_jsl")
+        )
+        self.assertTrue(
+            VenvWrapper.is_lib_in_venv(self.venv_creation_dir, "johnsnowlabs")
+        )
+        os.system(f"rm -r {self.venv_creation_dir} ")
 
     def test_list_license_status(self):
-        jsl.check_health(check_licenses=True)
-        jsl.list_remote_licenses()
-        jsl.list_local_licenses()
+        nlp.check_health(check_licenses=True)
+        nlp.list_remote_licenses()
+        nlp.list_local_licenses()
 
     def test_oudated_message(self):
         from johnsnowlabs.auto_install.softwares import Software
-        log_outdated_lib(Software.spark_ocr, '79')
+
+        log_outdated_lib(Software.spark_ocr, "79")
 
     def test_offline_install_print(self):
-        jsl.install(offline=True)
+        nlp.install(offline=True)
 
     def test_offline_install_zip(self):
-        os.system(f'rm -r {self.zip_dir} ')
-        jsl.install(offline=True, offline_zip_dir=self.zip_dir, install_optional=True, include_dependencies=True)
+        os.system(f"rm -r {self.zip_dir} ")
+        nlp.install(
+            offline=True,
+            offline_zip_dir=self.zip_dir,
+            install_optional=True,
+            include_dependencies=True,
+        )
 
     def test_browser_install(self):
-        jsl.install(force_browser=True, local_license_number=2)
-        # jsl.install(local_license_number=2, force_browser=True)
+        nlp.install(force_browser=True, local_license_number=2)
+        # nlp.install(local_license_number=2, force_browser=True)
 
     def test_upgrade_licensed_lib_via_secret_only(self):
-        new_secret = ''
-        jsl.install(ocr_secret=new_secret)
+        new_secret = ""
+        nlp.install(ocr_secret=new_secret)
 
     def test_json_license_install(self):
-        jsl.install(json_license_path=sct.latest_lic)
+        nlp.install(json_license_path=sct.latest_lic)
         import sparknlp
         import sparknlp_jsl
         import sparknlp
         import sparknlp_jsl
+
         # import sparkocr
         import nlu
         import sparknlp_display
-        # jsl.install(json_license_path=old_lic)
+
+        # nlp.install(json_license_path=old_lic)
 
     def test_json_license_install_outdated(self):
-        jsl.settings.enforce_versions = False
-        jsl.install(json_license_path=sct.old_lic)
+        nlp.settings.enforce_versions = False
+        nlp.install(json_license_path=sct.old_lic)
         import sparknlp
         import sparknlp_jsl
         import sparknlp
         import sparknlp_jsl
+
         # import sparkocr
         import nlu
         import sparknlp_display
-        # jsl.install(json_license_path=old_lic)
+
+        # nlp.install(json_license_path=old_lic)
 
     def test_create_and_install_cluster(self):
         install_suite = get_install_suite_from_jsl_home()
@@ -129,11 +158,11 @@ class AutoInstallTestCase(unittest.TestCase):
         # os.system(old_lic'{sys.py_executable} -py_executable pip uninstall spark-nlp-display -y')
         # os.system(old_lic'{sys.py_executable} -py_executable pip uninstall nlu -y')
 
-        os.system(f'{sys.executable} -m pip uninstall spark-nlp-jsl -y')
-        os.system(f'{sys.executable} -m pip uninstall spark-nlp-jsl -y')
-        os.system(f'{sys.executable} -m pip uninstall spark-ocr -y')
+        os.system(f"{sys.executable} -m pip uninstall spark-nlp-jsl -y")
+        os.system(f"{sys.executable} -m pip uninstall spark-nlp-jsl -y")
+        os.system(f"{sys.executable} -m pip uninstall spark-ocr -y")
         # os.system(old_lic'{sys.py_executable} -py_executable pip uninstall jsl_tmp -y')
-        os.system(f'{sys.executable} -m pip uninstall spark-nlp-internal -y')
+        os.system(f"{sys.executable} -m pip uninstall spark-nlp-internal -y")
 
     @classmethod
     def tearDownClass(cls):
@@ -155,12 +184,12 @@ class AutoInstallTestCase(unittest.TestCase):
 
     def test_refresh_credentials(self):
         # Use this to upgrade all secrets on every license file, if greater
-        jsl.install(json_license_path=sct.latest_lic, only_refresh_credentials=True)
+        nlp.install(json_license_path=sct.latest_lic, only_refresh_credentials=True)
 
     def test_refresh_install(self):
         # Use this to upgrade all secrets on every license file, if greater
-        jsl.install(json_license_path=sct.latest_lic, refresh_install=True)
+        nlp.install(json_license_path=sct.latest_lic, refresh_install=True)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

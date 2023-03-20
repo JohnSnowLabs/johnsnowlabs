@@ -1,15 +1,17 @@
 import re
 import time
 from pprint import pprint
+from typing import List, Optional
 
 from johnsnowlabs.auto_install import jsl_home
 from johnsnowlabs.auto_install.softwares import Software
 from johnsnowlabs.py_models.install_info import InstallSuite, LocalPy4JLib, LocalPyLib
 from johnsnowlabs.py_models.lib_version import LibVersion
-from .dbfs import *
+from johnsnowlabs.utils.env_utils import is_running_in_databricks
 
 # https://pypi.org/project/databricks-api/
 from ...utils.enums import DatabricksClusterStates
+from .dbfs import *
 
 
 def get_db_client_for_token(host, token) -> DatabricksAPI:
@@ -51,9 +53,19 @@ def create_cluster(
         "spark.kryoserializer.buffer.max": "2000M",
         "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
     }
+    lic = {
+        "SECRET": install_suite.secrets.HC_SECRET,
+        "SPARK_OCR_SECRET": install_suite.secrets.OCR_SECRET,
+        "SPARK_NLP_LICENSE": install_suite.secrets.HC_LICENSE,
+        "SPARK_OCR_LICENSE": install_suite.secrets.OCR_LICENSE,
+    }
+    lic = {k: v for k, v in lic.items() if v is not None}
+
+    license_path = "/johnsnowlabs/license.json"
+    put_file_on_dbfs(db, license_path, lic, overwrite=True)
+
     default_spark_env_vars = dict(
-        SPARK_NLP_LICENSE=install_suite.secrets.HC_LICENSE,
-        SPARK_OCR_LICENSE=install_suite.secrets.OCR_LICENSE,
+        SPARK_NLP_LICENSE_FILE=f"/dbfs{license_path}",
         AWS_ACCESS_KEY_ID=install_suite.secrets.AWS_ACCESS_KEY_ID,
         AWS_SECRET_ACCESS_KEY=install_suite.secrets.AWS_SECRET_ACCESS_KEY,
     )
@@ -143,8 +155,19 @@ def install_jsl_suite_to_cluster(
     db: DatabricksAPI,
     cluster_id: str,
     install_suite: InstallSuite,
-    install_optional: bool = True,
 ):
+    py_deps = [
+        {"package": Software.nlu.pypi_name, "version": settings.raw_version_nlu},
+        {
+            "package": Software.sparknlp_display.pypi_name,
+            "version": settings.raw_version_nlp_display,
+        },
+        {
+            "package": Software.jsl_lib.pypi_name_databricks,
+            "version": settings.raw_version_jsl_lib,
+        },
+    ]
+    uninstall_old_libraries(db, cluster_id, py_deps)
     if install_suite.hc.get_py_path() and install_suite.hc.get_java_path():
         install_py4j_lib_via_hdfs(db, cluster_id, install_suite.hc)
         print(
@@ -155,13 +178,9 @@ def install_jsl_suite_to_cluster(
         print(
             f"Installed {Software.spark_ocr.logo + Software.spark_ocr.name} Spark OCR ✅"
         )
-    py_deps = [
-        Software.nlu.pypi_name,
-        Software.sparknlp_display.pypi_name,
-        Software.jsl_lib.pypi_name_databricks,
-    ]
+
     for dep in py_deps:
-        install_py_lib_via_pip(db, cluster_id, dep)
+        install_py_lib_via_pip(db, cluster_id, dep["package"], dep["version"])
 
     # Install Sparkr-NLP as last library, so we have the correct version
     if install_suite.nlp.get_py_path() and install_suite.nlp.get_java_path():
@@ -169,6 +188,13 @@ def install_jsl_suite_to_cluster(
         print(
             f"{Software.spark_nlp.logo + Software.spark_nlp.name} Installed Spark NLP! ✅"
         )
+
+    # On databricks environment should restart current cluster to apply uninstalls and installations
+    if is_running_in_databricks():
+        try:
+            restart_cluster(db, cluster_id)
+        except:
+            pass
 
 
 def block_till_cluster_ready_state(db: DatabricksAPI, cluster_id: str):
@@ -182,18 +208,66 @@ def block_till_cluster_ready_state(db: DatabricksAPI, cluster_id: str):
     print(f"👌 Cluster-Id {cluster_id} is ready!")
 
 
-def install_py_lib_via_pip(db: DatabricksAPI, cluster_id: str, pypi_lib: str):
+def uninstall_old_libraries(
+    db: DatabricksAPI,
+    cluster_id: str,
+    pypi_deps: List[dict],
+):
+    """
+    Tell Cluster to uninstall old libraries
+    # https://docs.databricks.com/dev-tools/api/latest/libraries.html
+    https://docs.databricks.com/dev-tools/api/latest/libraries.html#install
+    :param db:
+    :param cluster_id:
+    :param pypi_deps:
+    :return:
+    """
+    uninstalls = []
+    statuses = db.managed_library.cluster_status(cluster_id=cluster_id)
+    file_names = [
+        "spark_nlp",
+        "spark_nlp_jsl",
+        "spark_ocr",
+    ]
+    pypi_packages = [d["package"] for d in pypi_deps]
+    for status in statuses.get("library_statuses", []):
+        installation_types = ["jar", "whl", "pypi"]
+        for typ in installation_types:
+            path = status["library"].get(typ)
+            if path:
+                if typ == "pypi":
+                    pkg = path.get("package")
+                    if pkg in pypi_packages:
+                        uninstalls.append({typ: {"package": pkg}})
+                else:
+                    for fil in file_names:
+                        path = path.replace("/dbfs/", "dbfs:/")
+                        if fil in path.replace("-", "_"):
+                            uninstalls.append({typ: path})
+    if uninstalls:
+        db.managed_library.uninstall_libraries(
+            cluster_id=cluster_id, libraries=uninstalls
+        )
+
+
+def install_py_lib_via_pip(
+    db: DatabricksAPI, cluster_id: str, pypi_lib: str, version: Optional[str] = None
+):
     """
     Tell Cluster to install via public pypi
     # https://docs.databricks.com/dev-tools/api/latest/libraries.html
     https://docs.databricks.com/dev-tools/api/latest/libraries.html#install
     :param db:
     :param cluster_id:
-    :param lib:
+    :param pypi_lib:
+    :param version:
     :return:
     """
     # By not defining repo, we will use default pip index
-    payload = [dict(pypi=dict(package=pypi_lib))]
+    pypi = dict(package=pypi_lib)
+    if version:
+        pypi["version"] = version
+    payload = [dict(pypi=pypi)]
     db.managed_library.install_libraries(cluster_id=cluster_id, libraries=payload)
     print(f"Installed {pypi_lib} ✅")
 
@@ -272,3 +346,7 @@ def wait_till_cluster_running(db: DatabricksAPI, cluster_id: str):
             DatabricksClusterStates.UNKNOWN,
         ]:
             return False
+
+
+def restart_cluster(db: DatabricksAPI, cluster_id: str):
+    db.cluster.restart_cluster(cluster_id=cluster_id)
