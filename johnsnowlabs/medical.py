@@ -67,10 +67,11 @@ try:
             DocumentMLClassifierApproach,
             DocumentMLClassifierModel,
             Resolution2Chunk,
+            MedicalQuestionAnswering,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
-        from sparknlp_jsl import (training_log_parser, Deid)
+        from sparknlp_jsl import training_log_parser, Deid
 
         from sparknlp_jsl.base import FeaturesAssembler
 
@@ -82,7 +83,6 @@ try:
             MedicalBertForTokenClassifier as BertForTokenClassification,
             MedicalNerModel as NerModel,
             MedicalNerApproach as NerApproach,
-
         )
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader
