@@ -1,0 +1,27 @@
+.image {
+  max-width: 100%;
+  @extend .image--md;
+}
+.image--md {
+  width: map-get($image, width);
+}
+.image--xl {
+  width: map-get($image, width-xl);
+}
+.image--lg {
+  width: map-get($image, width-lg);
+}
+.image--sm {
+  width: map-get($image, width-sm);
+}
+.image--xs {
+  width: map-get($image, width-xs);
+}
+.image__shadow {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.image__align--center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
