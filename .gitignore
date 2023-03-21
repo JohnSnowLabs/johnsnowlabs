@@ -68,10 +68,10 @@ _SUCCESS*
 .worksheet
 
 ### Eclipse Patch ###
-# Eclipse Core
+# Eclipse Core		
 .project
 
-# JDT-specific (Eclipse Java Development Tools)
+# JDT-specific (Eclipse Java Development Tools)		
 .classpath
 
 ### Intellij ###
@@ -165,7 +165,7 @@ fabric.properties
 # Crashlytics plugin (for Android Studio and IntelliJ)
 
 ### Intellij+all Patch ###
-# Ignores the whole idea jsl_folder
+# Ignores the whole idea folder
 # See https://github.com/joeblau/gitignore.io/issues/186 and https://github.com/joeblau/gitignore.io/issues/360
 
 .idea/
@@ -258,6 +258,11 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/vendor/
+
+# Frontend
+docs/_frontend/node_modules
+docs/_frontend/static
 
 # PyBuilder
 target/
@@ -296,6 +301,9 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# VS Code
+**/.vscode
+
 ### SBT ###
 # Simple Build Tool
 # http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control
@@ -327,6 +335,15 @@ python/tensorflow/bert/models/**
 **/tmp_*
 docs/_site/**
 docs/.sass-cache/**
-
+docs/*.json
+docs/.jekyll-metadata
 tst_shortcut_sd/
 src/*/resources/*.classes
+/word_segmenter_metrics/
+/special_class.ser
+.bsp/sbt.json
+python/docs/_build/**
+python/docs/reference/_autosummary/**
+
+# MS Visio Code
+**/.vscode/
