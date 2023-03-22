@@ -1,0 +1,46 @@
+.article__info {
+  font-size: map-get($base, font-size-sm);
+  color: $text-color-l;
+  .left-col {
+    float: left;
+    @include media-breakpoint-down(md) {
+      float: none;
+    }
+    & > .edit-on-github-btn {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 300;
+      font-family: Roboto, sans-serif;
+      padding: 7px 10px;
+      border: 1px solid #888888;
+      border-radius: 6px;
+      color: #888888 !important;
+      cursor: pointer;
+      text-decoration: none !important;
+    }
+    & > .edit-on-github-btn > .fa-github {
+      font-size: 25px;
+      margin-right: 7px;
+      vertical-align: middle;
+    }
+    & > .edit-on-github-btn > .edit-on-github-label {
+      vertical-align: middle;
+    }
+  }
+  .right-col {
+    float: right;
+    margin-left: map-get($button, padding-x-sm);
+    margin-top: 5px;
+    @include media-breakpoint-down(md) {
+      float: none;
+    }
+    & > li {
+      &:not(:last-child) {
+        @include split-line(right, default, $text-color-l);
+        padding-right: map-get($spacers, 2);
+        margin-right: map-get($spacers, 2);
+        line-height: map-get($base, line-height-xs);
+      }
+    }
+  }
+}
