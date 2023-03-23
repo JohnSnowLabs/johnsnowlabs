@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Serving Spark NLP&#58 MLFlow on Databricks
+redirect_to: https://sparknlp.org/docs/en/licensed_serving_spark_nlp_via_api_databricks_mlflow
 permalink: /docs/en/licensed_serving_spark_nlp_via_api_databricks_mlflow
 key: docs-experiment_tracking
 modify_date: "2022-02-18"

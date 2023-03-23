@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Visual NLP | John Snow Labs
 title: Visual NLP (Spark OCR)
+redirect_to: https://sparknlp.org/docs/en/ocr
 permalink: /docs/en/ocr
 key: docs-ocr
 modify_date: "2020-04-08"

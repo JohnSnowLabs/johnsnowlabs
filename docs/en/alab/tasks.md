@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Tasks
+redirect_to: https://sparknlp.org/docs/en/alab/tasks
 permalink: /docs/en/alab/tasks
 key: docs-training
 modify_date: "2022-12-11"

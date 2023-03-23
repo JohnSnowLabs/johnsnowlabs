@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: NLP Lab | John Snow Labs
 title: Playground
+redirect_to: https://sparknlp.org/docs/en/alab/playground
 permalink: /docs/en/alab/playground
 key: docs-training
 modify_date: "2023-02-10"

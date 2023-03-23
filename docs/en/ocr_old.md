@@ -2,6 +2,7 @@
 layout: docs
 header: true
 title: Spark OCR 2.3.x (Licensed)
+redirect_to: https://sparknlp.org/docs/en/ocr_old
 permalink: /docs/en/ocr_old
 key: docs-ocr-old
 modify_date: "2020-02-04"

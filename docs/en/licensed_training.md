@@ -2,6 +2,7 @@
 layout: docs
 header: true
 title: Training
+redirect_to: https://sparknlp.org/docs/en/licensed_training
 permalink: /docs/en/licensed_training
 key: docs-training
 modify_date: "2020-08-10"

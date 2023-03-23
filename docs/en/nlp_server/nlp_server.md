@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: NLP Server | John Snow Labs
 title: NLP Server
+redirect_to: https://sparknlp.org/docs/en/nlp_server/nlp_server
 permalink: /docs/en/nlp_server/nlp_server
 key: docs-nlp-server
 modify_date: "2021-04-17"

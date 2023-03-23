@@ -4,6 +4,7 @@ header: true
 seotitle: Install Software - John Snow Labs
 pagetitle: Install Software - John Snow Labs
 title: Installation
+redirect_to: https://sparknlp.org/docs/en/nlp_server/installation
 permalink: /docs/en/nlp_server/installation
 key: docs-nlp-server
 modify_date: "2021-09-22"

@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Infrastructure Configuration
+redirect_to: https://sparknlp.org/docs/en/alab/infrastructure
 permalink: /docs/en/alab/infrastructure
 key: docs-training
 modify_date: "2022-11-28"

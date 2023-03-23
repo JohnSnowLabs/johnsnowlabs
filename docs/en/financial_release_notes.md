@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Finance NLP | John Snow Labs
 title: Finance NLP Release Notes
+redirect_to: https://sparknlp.org/docs/en/financial_release_notes
 permalink: /docs/en/financial_release_notes
 key: docs-financial-release-notes
 modify_date: 2021-07-14

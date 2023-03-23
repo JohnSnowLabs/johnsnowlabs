@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Release Notes | John Snow Labs
 title: Release Notes
+redirect_to: https://sparknlp.org/docs/en/alab/release_notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
 modify_date: "2023-02-27"

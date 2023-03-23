@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: User Management
+redirect_to: https://sparknlp.org/docs/en/alab/user_management
 permalink: /docs/en/alab/user_management
 key: docs-training
 modify_date: "2021-10-12"

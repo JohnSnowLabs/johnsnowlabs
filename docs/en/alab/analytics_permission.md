@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Analytics Permission
+redirect_to: https://sparknlp.org/docs/en/alab/analytics_permission
 permalink: /docs/en/alab/analytics_permission
 key: docs-training
 modify_date: "2022-10-14"

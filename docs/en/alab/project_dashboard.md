@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Dashboard
+redirect_to: https://sparknlp.org/docs/en/alab/project_dashboard
 permalink: /docs/en/alab/project_dashboard
 key: docs-training
 modify_date: "2022-11-07"

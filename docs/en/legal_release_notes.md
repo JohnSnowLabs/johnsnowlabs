@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Legal NLP | John Snow Labs
 title: Legal NLP Release Notes
+redirect_to: https://sparknlp.org/docs/en/legal_release_notes
 permalink: /docs/en/legal_release_notes
 key: docs-legal-release-notes
 modify_date: 2021-07-14

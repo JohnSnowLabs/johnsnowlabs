@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Visual NLP(Spark OCR)
 title: Visual NLP(Spark OCR) release notes 4.2.1
+redirect_to: https://sparknlp.org/docs/en/spark_ocr_versions/release_notes_4_2_1
 permalink: /docs/en/spark_ocr_versions/release_notes_4_2_1
 key: docs-release-notes
 modify_date: "2022-11-28"

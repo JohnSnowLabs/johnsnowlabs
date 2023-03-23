@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: NLP Server | John Snow Labs
 title: Release Notes
+redirect_to: https://sparknlp.org/docs/en/nlp_server/nlp_server_versions/release_notes
 permalink: /docs/en/nlp_server/nlp_server_versions/release_notes
 key: docs-nlp-server
 modify_date: "2022-06-17"

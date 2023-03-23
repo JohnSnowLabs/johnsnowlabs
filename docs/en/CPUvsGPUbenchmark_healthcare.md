@@ -2,6 +2,7 @@
 layout: docs
 header: true
 title: GPU vs CPU benchmark
+redirect_to: https://sparknlp.org/docs/en/CPUvsGPUbenchmark_healthcare
 permalink: /docs/en/CPUvsGPUbenchmark_healthcare
 key: docs-concepts
 modify_date: "2021-08-31"

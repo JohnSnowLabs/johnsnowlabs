@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: NLP Server | John Snow Labs
 title: Video Tutorials
+redirect_to: https://sparknlp.org/docs/en/nlp_server/video_tutorials
 permalink: /docs/en/nlp_server/video_tutorials
 key: docs-video-tutorials
 modify_date: "2022-09-23"

@@ -3,6 +3,7 @@ layout: docs
 comment: no
 header: true
 title: Import Documents
+redirect_to: https://sparknlp.org/docs/en/alab/import
 permalink: /docs/en/alab/import
 key: docs-training
 modify_date: "2020-11-18"

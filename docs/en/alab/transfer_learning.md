@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Training Parameters  
+redirect_to: https://sparknlp.org/docs/en/alab/transfer_learning
 permalink: /docs/en/alab/transfer_learning
 key: docs-training
 modify_date: "2022-10-24"

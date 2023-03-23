@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Backup and Restore
+redirect_to: https://sparknlp.org/docs/en/alab/backup_restore
 permalink: /docs/en/alab/backup_restore
 key: docs-training
 modify_date: "2022-10-13"

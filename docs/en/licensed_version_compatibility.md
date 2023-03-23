@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark OCR | John Snow Labs
 title: Version Compatibility
+redirect_to: https://sparknlp.org/docs/en/licensed_version_compatibility
 permalink: /docs/en/licensed_version_compatibility
 key: docs-licensed-version-compatibility
 modify_date: 2023-03-18

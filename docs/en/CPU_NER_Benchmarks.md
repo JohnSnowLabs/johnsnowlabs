@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
 title: CPU NER Benchmarks
+redirect_to: https://sparknlp.org/docs/en/CPU_NER_Benchmarks
 permalink: /docs/en/cpu-ner-benchmark
 key: docs-benchmark
 modify_date: "2021-10-04"

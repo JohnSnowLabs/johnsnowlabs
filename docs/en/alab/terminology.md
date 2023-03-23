@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Terminology
+redirect_to: https://sparknlp.org/docs/en/alab/terminology
 permalink: /docs/en/alab/terminology
 key: docs-training
 modify_date: "2020-12-08"

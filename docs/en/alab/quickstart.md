@@ -4,6 +4,7 @@ header: true
 seotitle: NLP Lab | John Snow Labs
 title: NLP Lab (Annotation Lab)
 excerpt: A lightning fast tool for document annotation.
+redirect_to: https://sparknlp.org/docs/en/alab/quickstart
 permalink: /docs/en/alab/quickstart
 key: docs-quickstart
 modify_date: "2022-10-15"

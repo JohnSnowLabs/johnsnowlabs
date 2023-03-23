@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Clinical, Financial, Legal Spark NLP | John Snow Labs
 title: Enterprise Spark NLP Installation
+redirect_to: https://sparknlp.org/docs/en/licensed_install
 permalink: /docs/en/licensed_install
 key: docs-licensed-install
 modify_date: "2021-03-09"

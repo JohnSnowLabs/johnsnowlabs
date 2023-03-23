@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Finance NLP | John Snow Labs
 title: Version Compatibility
+redirect_to: https://sparknlp.org/docs/en/financial_version_compatibility
 permalink: /docs/en/financial_version_compatibility
 key: docs-financial-version-compatibility
 modify_date: 2021-09-14

@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Audit Trail
+redirect_to: https://sparknlp.org/docs/en/alab/audit_trail
 permalink: /docs/en/alab/audit_trail
 key: docs-training
 modify_date: "2022-10-31"

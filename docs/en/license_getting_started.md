@@ -2,6 +2,7 @@
 layout: docs
 header: true
 title: Enterprise Spark NLP
+redirect_to: https://sparknlp.org/docs/en/license_getting_started
 permalink: /docs/en/license_getting_started
 key: docs-licensed-install
 modify_date: "2021-03-09"

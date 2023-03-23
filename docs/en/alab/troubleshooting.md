@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: FAQ
+redirect_to: https://sparknlp.org/docs/en/alab/troubleshooting
 permalink: /docs/en/alab/troubleshooting
 key: docs-training
 modify_date: "2022-11-20"

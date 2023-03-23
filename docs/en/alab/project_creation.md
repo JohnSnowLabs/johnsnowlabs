@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Project Creation
+redirect_to: https://sparknlp.org/docs/en/alab/project_creation
 permalink: /docs/en/alab/project_creation
 key: docs-training
 modify_date: "2022-11-01"

@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Installation
+redirect_to: https://sparknlp.org/docs/en/alab/install
 permalink: /docs/en/alab/install
 key: docs-training
 modify_date: "2022-11-06"

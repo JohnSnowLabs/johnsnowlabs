@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Video Tutorials
+redirect_to: https://sparknlp.org/docs/en/alab/tutorials
 permalink: /docs/en/alab/tutorials
 key: docs-training
 modify_date: "2021-01-26"

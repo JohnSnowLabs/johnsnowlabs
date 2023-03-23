@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Spark NLP for Healthcare Release Notes 4.3.2
+redirect_to: https://sparknlp.org/docs/en/spark_nlp_healthcare_versions/release_notes_4_3_2
 permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_4_3_2
 key: docs-licensed-release-notes
 modify_date: 2023-03-18

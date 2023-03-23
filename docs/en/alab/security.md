@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Security and Privacy
+redirect_to: https://sparknlp.org/docs/en/alab/security
 permalink: /docs/en/alab/security
 key: docs-training
 modify_date: "2021-09-29"

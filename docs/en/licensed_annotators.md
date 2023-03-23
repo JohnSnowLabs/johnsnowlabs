@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP | John Snow Labs
 title: Enterprise NLP Annotators
+redirect_to: https://sparknlp.org/docs/en/licensed_annotators
 permalink: /docs/en/licensed_annotators
 key: docs-licensed-annotators
 modify_date: "2020-08-10"

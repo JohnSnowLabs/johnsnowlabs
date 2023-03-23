@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Utility & Helper Modules
+redirect_to: https://sparknlp.org/docs/en/utility_helper_modules
 permalink: /docs/en/utility_helper_modules
 key: docs-utility-helper-modules
 modify_date: '2022-12-13'

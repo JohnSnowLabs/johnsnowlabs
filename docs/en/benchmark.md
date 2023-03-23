@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Developers Guideline
+redirect_to: https://sparknlp.org/docs/en/benchmark
 permalink: /docs/en/benchmark
 key: docs-benchmark
 modify_date: "2021-10-04"

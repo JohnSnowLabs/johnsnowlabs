@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Annotation Settings
+redirect_to: https://sparknlp.org/docs/en/alab/tips
 permalink: /docs/en/alab/tips
 key: docs-training
 modify_date: "2021-12-09"

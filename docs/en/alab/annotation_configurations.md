@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Configurations
+redirect_to: https://sparknlp.org/docs/en/alab/annotation_configurations
 permalink: /docs/en/alab/annotation_configurations
 key: docs-training
 modify_date: "2022-12-11"

@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: NLP Lab | John Snow Labs
 title: Prompts
+redirect_to: https://sparknlp.org/docs/en/alab/prompts
 permalink: /docs/en/alab/prompts
 key: docs-training
 modify_date: "2023-02-10"

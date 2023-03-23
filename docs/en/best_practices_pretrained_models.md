@@ -2,6 +2,7 @@
 layout: docs
 header: true
 title: Best Practices Using Pretrained Models Together
+redirect_to: https://sparknlp.org/docs/en/best_practices_pretrained_models
 permalink: /docs/en/best_practices_pretrained_models
 key: docs-concepts
 modify_date: "2021-08-31"

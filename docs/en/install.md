@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP
 title: Installation
+redirect_to: https://sparknlp.org/docs/en/install
 permalink: /docs/en/install
 key: docs-install
 modify_date: "2022-12-21"

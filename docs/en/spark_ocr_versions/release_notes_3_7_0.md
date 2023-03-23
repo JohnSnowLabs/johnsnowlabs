@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP
 title: Spark NLP release notes 3.7.0
+redirect_to: https://sparknlp.org/docs/en/spark_ocr_versions/release_notes_3_7_0
 permalink: /docs/en/spark_ocr_versions/release_notes_3_7_0
 key: docs-release-notes
 modify_date: "2022-01-06"

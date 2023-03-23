@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Evaluation
+redirect_to: https://sparknlp.org/docs/en/evaluation
 permalink: /docs/en/evaluation
 key: docs-evaluation
 modify_date: "2020-06-05"

@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Productivity
+redirect_to: https://sparknlp.org/docs/en/alab/productivity
 permalink: /docs/en/alab/productivity
 key: docs-training
 modify_date: "2022-12-11"

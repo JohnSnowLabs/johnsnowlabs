@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark OCR | John Snow Labs
 title: Structures and helpers
+redirect_to: https://sparknlp.org/docs/en/ocr_structures
 permalink: /docs/en/ocr_structures
 key: docs-ocr-structures
 modify_date: "2020-04-08"

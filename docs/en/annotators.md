@@ -2,6 +2,7 @@
 layout: docs
 header: true
 title: Annotators
+redirect_to: https://sparknlp.org/docs/en/annotators
 permalink: /docs/en/annotators
 key: docs-annotators
 modify_date: "2021-04-17"

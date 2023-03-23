@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: NLP Lab | John Snow Labs
 title: Rules
+redirect_to: https://sparknlp.org/docs/en/alab/rules
 permalink: /docs/en/alab/rules
 key: docs-training
 modify_date: "2022-12-10"

@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP
 title: Pipelines
+redirect_to: https://sparknlp.org/docs/en/pipelines
 permalink: /docs/en/pipelines
 key: docs-pipelines
 modify_date: "2021-11-20"

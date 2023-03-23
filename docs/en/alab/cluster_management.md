@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Cluster Management
+redirect_to: https://sparknlp.org/docs/en/alab/cluster_management
 permalink: /docs/en/alab/cluster_management
 key: docs-training
 modify_date: "2022-10-13"

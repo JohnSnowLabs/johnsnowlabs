@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Models Hub
+redirect_to: https://sparknlp.org/docs/en/alab/models_hub
 permalink: /docs/en/alab/models_hub
 key: docs-training
 modify_date: "2022-12-01"

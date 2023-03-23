@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Active Learning  
+redirect_to: https://sparknlp.org/docs/en/alab/active_learning
 permalink: /docs/en/alab/active_learning
 key: docs-training
 modify_date: "2022-10-21"

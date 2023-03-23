@@ -3,6 +3,7 @@ layout: docs
 header: true
 title: Install NLP Libraries
 seotitle: Install NLP Libraries | John Snow Labs
+redirect_to: https://sparknlp.org/docs/en/install_NLP_libraries
 permalink: /docs/en/install_NLP_libraries
 key: docs-install
 modify_date: "2021-09-30"

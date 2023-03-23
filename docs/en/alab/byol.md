@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: License Management
+redirect_to: https://sparknlp.org/docs/en/alab/byol
 permalink: /docs/en/alab/byol
 key: docs-training
 modify_date: "2022-11-27"

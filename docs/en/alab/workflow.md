@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Workflows
+redirect_to: https://sparknlp.org/docs/en/alab/workflow
 permalink: /docs/en/alab/workflow
 key: docs-training
 modify_date: "2022-11-02"

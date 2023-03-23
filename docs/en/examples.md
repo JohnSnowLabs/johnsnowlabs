@@ -3,6 +3,7 @@ layout: docs
 header: true
 title: Examples
 key: docs-examples
+redirect_to: https://sparknlp.org/docs/en/examples
 permalink: /docs/en/examples
 modify_date: "2022-12-21"
 ---

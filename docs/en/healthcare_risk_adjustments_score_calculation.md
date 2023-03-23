@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP | John Snow Labs
 title: Risk Adjustments Score Calculation
+redirect_to: https://sparknlp.org/docs/en/healthcare_risk_adjustments_score_calculation
 permalink: /docs/en/healthcare_risk_adjustments_score_calculation
 key: docs-licensed-risk-adjustments-score-calculation
 modify_date: "2022-12-26"

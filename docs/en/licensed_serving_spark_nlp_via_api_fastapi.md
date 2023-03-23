@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Serving Spark NLP&#58 FastAPI
+redirect_to: https://sparknlp.org/docs/en/licensed_serving_spark_nlp_via_api_fastapi
 permalink: /docs/en/licensed_serving_spark_nlp_via_api_fastapi
 key: docs-experiment_tracking
 modify_date: "2022-02-18"

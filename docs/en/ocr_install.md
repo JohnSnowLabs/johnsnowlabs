@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark OCR | John Snow Labs
 title: Installation
+redirect_to: https://sparknlp.org/docs/en/ocr_install
 permalink: /docs/en/ocr_install
 key: docs-ocr-install
 modify_date: "2020-04-08"

@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Train New Model
+redirect_to: https://sparknlp.org/docs/en/alab/training_configurations
 permalink: /docs/en/alab/training_configurations
 key: docs-training
 modify_date: "2022-12-01"

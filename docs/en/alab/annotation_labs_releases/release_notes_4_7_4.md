@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Annotation Lab Release Notes 4.7.4
+redirect_to: https://sparknlp.org/docs/en/alab/annotation_labs_releases/release_notes_4_7_4
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_4_7_4
 key: docs-licensed-release-notes
 modify_date: 2023-02-27

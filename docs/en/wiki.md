@@ -2,6 +2,7 @@
 layout: docs
 header: true
 title: Wiki
+redirect_to: https://sparknlp.org/docs/en/wiki
 permalink: /docs/en/wiki
 key: docs-concepts
 modify_date: "2022-09-27"

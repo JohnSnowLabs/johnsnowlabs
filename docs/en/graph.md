@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle:
 title: Tensorflow Graph
+redirect_to: https://sparknlp.org/docs/en/graph
 permalink: /docs/en/graph
 key: docs-graph
 modify_date: "2020-02-03"

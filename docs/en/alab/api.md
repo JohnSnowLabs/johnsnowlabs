@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: API Integration
+redirect_to: https://sparknlp.org/docs/en/alab/api
 permalink: /docs/en/alab/api
 key: docs-training
 modify_date: "2022-10-13"

@@ -4,6 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Embeddings
+redirect_to: https://sparknlp.org/docs/en/alab/embeddings
 permalink: /docs/en/alab/embeddings
 key: docs-training
 modify_date: "2022-10-18"

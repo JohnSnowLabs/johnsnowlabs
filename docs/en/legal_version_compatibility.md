@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Legal NLP | John Snow Labs
 title: Version Compatibility
+redirect_to: https://sparknlp.org/docs/en/legal_version_compatibility
 permalink: /docs/en/legal_version_compatibility
 key: docs-legal-version-compatibility
 modify_date: 2021-09-14
