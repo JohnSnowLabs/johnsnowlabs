@@ -24,15 +24,11 @@ article_header:
   theme: dark
 data:
   sections:
-    - title: The most widely used NLP library in the enterprise
+    - title: Powered by the most widely used NLP library in the enterprise
       top: yes
       excerpt: Source:2020 NLP Industry Survey, by <b>Gradient Flow</b>.
       bigimage: /assets/images/2020.png
       threeblocks:
-        - title: 100% Open Source
-          image:
-            src: /assets/images/open_source.svg
-          excerpt: Including pre-trained <b>models</b> and <b>pipelines</b>
         - title: Natively scalable
           image:
             src: /assets/images/one_node_to_many.svg
@@ -40,7 +36,19 @@ data:
         - title: Multiple Languages
           image:
             src: /assets/images/chat_symbols.svg
-          excerpt: Full <b>Python</b>, <b>Scala</b>, and <b>Java</b> support
+          excerpt: Full <b>Python</b>, <b>Scala</b>, <b>Kotlin</b>, <b>Java</b>, <b>R</b> support
+        - title: Powerful One-Liners
+          image:
+          src: /assets/images/open_source.svg
+          excerpt: Over ten thousand NLP models in hundreds of languages are at your fingertips with just one line of code
+        - title: Elegant & Rich Python APIs
+          image:
+          src: /assets/images/open_source.svg
+          excerpt: Opinionated best practices oriented APIs to Johnsnowlabs Software and works with common Python Data Structures
+        - title: 100% Open Source
+          image:
+          src: /assets/images/open_source.svg
+          excerpt: Including pre-trained <b>models</b> and <b>pipelines</b>
 
     - title: Transformers at Scale
       transformers: yes
@@ -48,7 +56,7 @@ data:
 
     - title: Quick and Easy
       install: yes
-      excerpt: Spark NLP is available on <a href="https://pypi.org/project/spark-nlp" target="_blank">PyPI</a>, <a href="https://anaconda.org/JohnSnowLabs/spark-nlp" target="_blank">Conda</a>, and <a href="https://mvnrepository.com/artifact/com.johnsnowlabs.nlp" target="_blank">Maven</a>
+      excerpt: Johnsnowlabs is available on <a href="https://pypi.org/project/johnsnowlabs/" target="_blank">PyPI</a> and <a href="https://anaconda.org/JohnSnowLabs/johnsnowlabs" target="_blank">Conda</a>
       actions:
         - text: Install Spark NLP
           type: big_btn

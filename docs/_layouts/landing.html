@@ -200,25 +200,22 @@ article_header:
                 <div class="cell cell--12 cell--lg-7 cell--md-7 cell--sm-12">
                   <div class="highlight-box">
     {% highlight bash %}
-    # Install Spark NLP from PyPI
-    $ pip install spark-nlp==4.3.2 pyspark==3.3.0
+  # Install Johnsnowlabs from PyPI
+  $ pip install johnsnowlabs
 
-    # Install Spark NLP from Anaconda/Conda
-    $ conda install -c johnsnowlabs spark-nlp
-
-    # Load Spark NLP with Spark Shell
-    $ spark-shell --packages com.johnsnowlabs.nlp:spark-nlp_2.12:4.3.2
-
-    # Load Spark NLP with PySpark
-    $ pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:4.3.2
-
-    # Load Spark NLP with Spark Submit
-    $ spark-submit --packages com.johnsnowlabs.nlp:spark-nlp_2.12:4.3.2
-
-    # Load Spark NLP as an external Fat JAR
-    $ spark-shell --jars spark-nlp-assembly-4.3.2.jar
+  # Install Johnsnowlabs from Anaconda/Conda
+  $ conda install -c johnsnowlabs johnsnowlabs
     {% endhighlight %}
                     </div>
+
+                  <div class="highlight-box">
+                    {% highlight python %}
+  # Install Enterprise Libraries from Python via browser pop-up
+  from johnsnowlabs import nlp
+  nlp.install()
+                    {% endhighlight %}
+                  </div>
+
                 </div>
               </div>
             </div>
