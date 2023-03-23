@@ -50,9 +50,6 @@ data:
           src: /assets/images/open_source.svg
           excerpt: Including pre-trained <b>models</b> and <b>pipelines</b>
 
-    - title: Transformers at Scale
-      transformers: yes
-      features: false
 
     - title: Quick and Easy
       install: yes
@@ -62,7 +59,7 @@ data:
           type: big_btn
           url: /docs/en/install
 
-    - title: Right Out of The Box
+    - title: Feature Slide Show (TODO)
       top: yes
       classmenu: three_a
       classtitle: grey big_h3
@@ -75,7 +72,7 @@ data:
           type: trans_white
           url: /models
 
-    - title: Benchmark
+    - title: Benchmark Slide-Show (TODO)
       excerpt: Spark NLP 2.5.x obtained the best performing academic peer-reviewed results
       benchmark: yes
       features: false
