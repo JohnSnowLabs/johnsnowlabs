@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP
 title: Developers Guideline
+redirect_to: https://sparknlp.org/docs/en/developers
 permalink: /docs/en/developers
 key: docs-developers
 modify_date: "2021-11-21"

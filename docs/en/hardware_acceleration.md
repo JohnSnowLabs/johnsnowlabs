@@ -2,6 +2,7 @@
 layout: docs
 header: true
 title: Hardware Acceleration
+redirect_to: https://sparknlp.org/docs/en/hardware_acceleration
 permalink: /docs/en/hardware_acceleration
 key: docs-concepts
 modify_date: "2022-12-21"

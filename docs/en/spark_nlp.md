@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Spark NLP
+redirect_to: https://sparknlp.org/docs/en/spark_nlp
 permalink: /docs/en/spark-nlp
 key: docs-spark_nlp
 modify_date: "2023-02-09"
