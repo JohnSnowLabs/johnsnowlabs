@@ -1,9 +1,9 @@
 ---
 layout: landing
 comment: no
-title: 'Spark NLP: <span>State of the Art Natural Language Processing</span>'
-excerpt: Spark NLP is a state-of-the-art natural language processing library, the first one to offer production-grade versions of the latest deep learning NLP research results. It is the the most widely used open-source NLP library in the enterprise.
-seotitle: Spark NLP - John Snow Labs
+title: 'John Snow Labs <span>State of the Art Natural Language Processing in Python</span>'
+excerpt: Gateway to a complete Natural Language Processing Ecosystem
+seotitle: John Snow Labs NLP - John Snow Labs
 permalink: /
 header: true
 article_header:
@@ -24,50 +24,51 @@ article_header:
   theme: dark
 data:
   sections:
-    - title: The most widely used NLP library in the enterprise
-      top: yes
-      excerpt: Source:2020 NLP Industry Survey, by <b>Gradient Flow</b>.
-      bigimage: /assets/images/2020.png
-      threeblocks:
-        - title: 100% Open Source
+    - threeblocks:
+        - title: Powerful One-Liners
           image:
             src: /assets/images/open_source.svg
           excerpt: Including pre-trained <b>models</b> and <b>pipelines</b>
-        - title: Natively scalable
+        - title: Natively Python
           image:
             src: /assets/images/one_node_to_many.svg
           excerpt: The only <b>NLP</b> library built <b>natively</b> on Apache Spark
-        - title: Multiple Languages
+        - title: Open Source
           image:
             src: /assets/images/chat_symbols.svg
           excerpt: Full <b>Python</b>, <b>Scala</b>, and <b>Java</b> support
+    - title: Powered by the most widely used NLP library in the enterprise
+      top: yes
+      excerpt: <b>Gradient Flow</b> NLP Survey, 2021.
+      bigimage: /assets/images/2021.png
+      
 
-    - title: Transformers at Scale
-      transformers: yes
-      features: false
+    # - title: Transformers at Scale
+    #   transformers: yes
+    #   features: false
 
     - title: Quick and Easy
       install: yes
       excerpt: Spark NLP is available on <a href="https://pypi.org/project/spark-nlp" target="_blank">PyPI</a>, <a href="https://anaconda.org/JohnSnowLabs/spark-nlp" target="_blank">Conda</a>, and <a href="https://mvnrepository.com/artifact/com.johnsnowlabs.nlp" target="_blank">Maven</a>
       actions:
-        - text: Install Spark NLP
+        - text: Install John Snow Labs
           type: big_btn
           url: /docs/en/install
 
-    - title: Right Out of The Box
-      top: yes
-      classmenu: three_a
-      classtitle: grey big_h3
-      excerpt: Spark NLP ships with many <b>NLP features</b>, pre-trained <b>models</b> and <b>pipelines</b>
-      features: true
-      # theme: dark
-      # background_color: "#123"
-      actions:
-        - text: Models Hub
-          type: trans_white
-          url: /models
+    # - title: Right Out of The Box
+    #   top: yes
+    #   classmenu: three_a
+    #   classtitle: grey big_h3
+    #   excerpt: Spark NLP ships with many <b>NLP features</b>, pre-trained <b>models</b> and <b>pipelines</b>
+    #   features: true
+    #   # theme: dark
+    #   # background_color: "#123"
+    #   actions:
+    #     - text: Models Hub
+    #       type: trans_white
+    #       url: /models
 
-    - title: Benchmark
+    - title: Complete NLP Ecosystem
       excerpt: Spark NLP 2.5.x obtained the best performing academic peer-reviewed results
       benchmark: yes
       features: false
