@@ -199,50 +199,26 @@ article_header:
                 </div>
                 <div class="cell cell--12 cell--lg-7 cell--md-7 cell--sm-12">
                   <div class="highlight-box">
-    {% highlight bash %}
+{% highlight python %}
   # Install Johnsnowlabs from PyPI
-  $ pip install johnsnowlabs
+  ! pip install johnsnowlabs
+  # Load & Predict with NER model
+  from johnsnowlabs import nlp
+  nlp.load('ner').predict("Dr. John Snow is an English physician born in 1813")
+{% endhighlight %}
 
-  # Install Johnsnowlabs from Anaconda/Conda
-  $ conda install -c johnsnowlabs johnsnowlabs
-    {% endhighlight %}
+
+
+
                     </div>
 
-                  <div class="highlight-box">
-                    {% highlight python %}
-  # Install Enterprise Libraries from Python via browser pop-up
-  from johnsnowlabs import nlp
-  nlp.install()
-                    {% endhighlight %}
-                  </div>
-
                 </div>
               </div>
             </div>
           </div>
 
         {%- endif -%}
-        {%- if _section.transformers -%}
 
-        <div class="transformer-section">
-          <div class="grid--container">
-            <div class="grid">
-              <div class="cell cell--12 cell--lg-12">
-                <div class="transformer-top">
-                  <h2 class="h2_title grey">Transformers at Scale</h2>
-                  <div class="transformer-descr">
-                    <b>Spark NLP</b> is the only open-source NLP library in <b>production</b> that offers state-of-the-art transformers such as
-                    <b>BERT</b>, <b>CamemBERT</b>, <b>ALBERT</b>, <b>ELECTRA</b>, <b>XLNet</b>, <b>DistilBERT</b>, <b>RoBERTa</b>, <b>DeBERTa</b>,
-                    <b>XLM-RoBERTa</b>, <b>Longformer</b>, <b>ELMO</b>, <b>Universal Sentence Encoder</b>, <b>Google T5</b>, <b>MarianMT</b>, and <b>OpenAI GPT2</b> not only to <b>Python</b>, and <b>R</b>
-                    but also to <b>JVM</b> ecosystem (<b>Java</b>, <b>Scala</b>, and <b>Kotlin</b>) at <b>scale</b> by extending <b>Apache Spark</b> natively
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {%- endif -%}
         {%- if _section.landingmodels -%}
 
           <div class="quick_easy landing_models">
@@ -268,235 +244,6 @@ article_header:
               </div>
             </div>
           </div>
-
-        {%- endif -%}
-
-        {%- if _section.features -%}
-        <div class="features-section">
-          <div class="grid--container">
-            <div class="grid">
-              <div class="cell cell--12 cell--lg-12">
-                <div class="features-inner">
-                <h4 class="blue h4_title">NLP Features</h4>
-                <div class="features-ul">
-                  <ul class="list1">
-                    <li>Tokenization</li>
-                    <li>Word Segmentation</li>
-                    <li>Stop Words Removal</li>
-                    <li>Normalizer</li>
-                    <li>Stemmer</li>
-                    <li>Lemmatizer</li>
-                    <li>NGrams</li>
-                    <li>Regex Matching</li>
-                    <li>Text Matching</li>
-                    <li>Chunking</li>
-                    <li>Date Matcher</li>
-                    <li><strong>Part-of-speech</strong> tagging</li>
-                    <li>Sentence Detector (DL models)</li>
-                    <li><strong>Dependency</strong> parsing</li>
-                    <li><strong>SpanBERT</strong> Coreference Resolution</li>
-                    <li><strong>Sentiment</strong> Detection (ML models)</li>
-                    <li><strong>Spell</strong> Checker (ML & DL models)</li>
-                    <li>Doc2Vec Embeddings (<strong>Word2Vec</strong>)</li>
-                    <li>Word2Vec Embeddings (<strong>Word2Vec</strong>)</li>
-                    <li>Word Embeddings (<strong>GloVe</strong> & <strong>Word2Vec</strong>)</li>
-                    <li><strong>BERT</strong> Embeddings</li>
-                    <li><strong>DistilBERT</strong> Embeddings</li>
-                    <li><strong>CamemBERT</strong> Embeddings</li>
-                    <li><strong>RoBERTa</strong> Embeddings</li>
-                    <li><strong>DeBERTa</strong> Embeddings</li>
-                    <li><strong>XLM-RoBERTa</strong> Embeddings</li>
-                    <li><strong>Longformer</strong> Embeddings</li>
-                    <li><strong>ALBERT</strong> Embeddings</li>
-                    <li><strong>XLNet</strong> Embeddings</li>
-                    <li><strong>ELMO</strong> Embeddings</li>
-
-                  </ul>
-                  <ul class="list1">
-
-                    <li><strong>Universal Sentence</strong> Encoder</li>
-                    <li><strong>Sentence</strong> Embeddings</li>
-                    <li><strong>Chunk</strong> Embeddings</li>
-                    <li>Neural <strong>Machine Translation</strong> (MarianMT)</li>
-                    <li><strong>Text-To-Text</strong> Transfer Transformer <strong>(Google T5)</strong></li>
-                    <li><strong>Generative Pre-trained</strong> Transformer 2 <strong>(OpenAI GPT-2)</strong></li>
-                    <li>Vision Transformer (ViT) <strong>Image Classification</strong></li>
-                    <li>Automatic Speech Recognition <strong>(Wav2Vec2)</strong></li>
-                    <li>Table Question Answering <strong>(TAPAS)</strong></li>
-                    <li>Unsupervised <strong>keywords extraction</strong></li>
-                    <li>Language <strong>Detection</strong> & <strong>Identification</strong> (up to 375 languages)</li>
-                    <li>Multi-class Text <strong>Classification</strong> (DL model)</li>
-                    <li>Multi-label Text <strong>Classification</strong> (DL model)</li>
-                    <li>Multi-class <strong>Sentiment Analysis</strong> (DL model)</li>
-                    <li>BERT for <strong>Token & Sequence Classification</strong></li>
-                    <li>DistilBERT for <strong>Token & Sequence Classification</strong></li>
-                    <li>CamemBERT for <strong>Token Classification</strong></li>
-                    <li>ALBERT for <strong>Token & Sequence Classification</strong></li>
-                    <li>RoBERTa for <strong>Token & Sequence Classification</strong></li>
-                    <li>DeBERTa for <strong>Token & Sequence Classification</strong></li>
-                    <li>XLM-RoBERTa for <strong>Token & Sequence Classification</strong></li>
-                    <li>XLNet for <strong>Token & Sequence Classification</strong></li>
-                    <li>Longformer for <strong>Token & Sequence Classification</strong></li>
-                    <li>Transformer-based <strong>Question Answering</strong></li>
-                    <li><strong>Named entity</strong> recognition (DL model)</li>
-                    <li>Easy <strong>TensorFlow</strong> integration</li>
-                    <li><strong>GPU</strong> Support</li>
-                    <li>Full integration with <strong>Spark ML</strong> functions</li>
-                    <li><strong>9400+</strong> pre-trained <strong>models </strong> in <strong>200+ languages! </strong>
-                    <li><strong>3200+</strong> pre-trained <strong>pipelines </strong> in <strong>200+ languages! </strong>
-                  </ul>
-                </div>
-{% highlight python %}
-    from sparknlp.pretrained import PretrainedPipeline
-    import sparknlp
-
-    # Start Spark Session with Spark NLP
-    spark = sparknlp.start()
-
-    # Download a pre-trained pipeline
-    pipeline = PretrainedPipeline('explain_document_dl', lang='en')
-
-    # Annotate your testing dataset
-    text = "The Mona Lisa is a 16th century oil painting created by Leonardo. It's held at the Louvre in Paris."
-    result = pipeline.annotate(text)
-
-    # What's in the pipeline
-    list(result.keys())
-    Output: ['entities', 'stem', 'checked', 'lemma', 'document', 'pos', 'token', 'ner', 'embeddings', 'sentence']
-
-    # Check the results
-    result['entities']
-    Output: ['Mona Lisa', 'Leonardo', 'Louvre', 'Paris']
-{% endhighlight %}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {%- endif -%}
-        {%- if _section.benchmark -%}
-
-        <div class="benchmark-section">
-          <div class="grid--container">
-            <div class="grid">
-              <div class="cell cell--12 cell--lg-5">
-                <div class="benchmark-top">
-                  <h2 class="h2_title grey">Benchmark</h2>
-                  <div class="benchmark-descr">Spark NLP 4.x obtained the best performing academic peer-reviewed results</div>
-                </div>
-                <div class="benchmark-inner">
-                  <h4 class="h4_title blue">Training NER</h4>
-                  <ul class="list1">
-                    <li>State-of-the-art <strong>Deep Learning</strong> algorithms</li>
-                    <li>Achieve <strong>high accuracy</strong> within a few minutes</li>
-                    <li>Achieve high accuracy with a <strong>few lines of codes</strong></li>
-                    <li>Blazing fast training</li>
-                    <li>Use <strong>CPU</strong> or <strong>GPU</strong></li>
-                    <li>700+ Pretrained Embeddings including <strong>GloVe</strong>, <strong>Word2Vec</strong>,
-                    <strong>BERT</strong>, <strong>DistilBERT</strong>, <strong>CamemBERT</strong>, <strong>RoBERTa</strong>, <strong>DeBERTa</strong>, <strong>XLM-RoBERTa</strong>, <strong>Longformer</strong>, <strong>ELMO</strong>, <strong>ELECTRA</strong>, <strong>ALBERT</strong>, <strong>XLNet</strong>, <strong>BioBERT</strong>, etc.  </li>
-                    <li>Multi-lingual NER models in <strong>Arabic, Bengali, Chinese, Danish, Dutch, English, Finnish, French, German, Hebrew, Italian, Japanese, Korean, Norwegian, Persian, Polish, Portuguese, Russian, Spanish, Swedish, Urdu, and many more!</strong></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="cell cell--12 cell--lg-7" style="text-align: center; padding: 10px">
-                {% highlight bash %}
-
-                {% endhighlight %}
-                <div class="table-wrapper">
-                    <div class="table-wrapper-inner">
-                      <table class="table2">
-                        <thead>
-                            <th>SYSTEM</th>
-                            <th>YEAR</th>
-                            <th>LANGUAGE</th>
-                            <th>CONLL ‘03</th>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td><strong>Spark NLP v4</strong></td>
-                            <td>2022</td>
-                            <td>Python/Scala/Java/R</td>
-                            <td><strong>93 (test F1) <br> 96 (dev F1)</strong></td>
-                          </tr>
-                          <tr>
-                            <td><strong>Spark NLP v3</strong></td>
-                            <td>2021</td>
-                            <td>Python/Scala/Java/R</td>
-                            <td><strong>93 (test F1) <br> 95 (dev F1)</strong></td>
-                          </tr>
-                          <tr>
-                            <td>spaCy v3</td>
-                            <td>2021<br></td>
-                            <td>Python</td>
-                            <td>91.6</td>
-                          </tr>
-                          <tr>
-                            <td>Stanza (StanfordNLP)</td>
-                            <td>2020<br></td>
-                            <td>Python</td>
-                            <td>92.1</td>
-                          </tr>
-                          <tr>
-                            <td>Flair</td>
-                            <td>2018</td>
-                            <td>Python</td>
-                            <td>93.1</td>
-                          </tr>
-                          <tr>
-                            <td>CoreNLP</td>
-                            <td>2015</td>
-                            <td>Java</td>
-                            <td>89.6</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                </div>
-
-                <div class="table-wrapper">
-                  <div class="table-wrapper-inner">
-                    <table class="table2">
-                      <thead>
-                          <th>SYSTEM</th>
-                          <th>YEAR</th>
-                          <th>LANGUAGE</th>
-                          <th>ONTONOTES</th>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td><strong>Spark NLP v3</strong></td>
-                          <td>2021</td>
-                          <td>Python/Scala/Java/R</td>
-                          <td><strong>90.0 (test F1) <br> 92.5 (dev F1)</strong></td>
-                        </tr>
-                        <tr>
-                          <td>spaCy RoBERTa</td>
-                          <td>2020<br></td>
-                          <td>Python</td>
-                          <td>89.8 (dev F1)</td>
-                        </tr>
-                        <tr>
-                          <td>Stanza (StanfordNLP)</td>
-                          <td>2020<br></td>
-                          <td>Python</td>
-                          <td>88.8 (dev F1)</td>
-                        </tr>
-                        <tr>
-                          <td>Flair</td>
-                          <td>2018</td>
-                          <td>Python</td>
-                          <td>89.7</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-              </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
 
         {%- endif -%}
         {%- if _section.children -%}

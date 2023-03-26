@@ -24,33 +24,23 @@ article_header:
   theme: dark
 data:
   sections:
-    - title: Powered by the most widely used NLP library in the enterprise
-      top: yes
-      excerpt: Source:2020 NLP Industry Survey, by <b>Gradient Flow</b>.
-      bigimage: /assets/images/2020.png
-      threeblocks:
-        - title: Natively scalable
+    - threeblocks:
+        - title: Natively Python
           image:
             src: /assets/images/one_node_to_many.svg
-          excerpt: The only <b>NLP</b> library built <b>natively</b> on Apache Spark
-        - title: Multiple Languages
-          image:
-            src: /assets/images/chat_symbols.svg
-          excerpt: Full <b>Python</b>, <b>Scala</b>, <b>Kotlin</b>, <b>Java</b>, <b>R</b> support
+          excerpt: Opinionated & Best Practices oriented APIs to Johnsnowlabs Ecosystem and works with common Python Data Structures
         - title: Powerful One-Liners
           image:
-          src: /assets/images/open_source.svg
-          excerpt: Over ten thousand NLP models in hundreds of languages are at your fingertips with just one line of code
-        - title: Elegant & Rich Python APIs
+            src: /assets/images/open_source.svg
+          excerpt: Over ten thousand NLP and Machine Vision models in hundreds of languages are at your fingertips with just one line of code
+        - title: Open Source
           image:
-          src: /assets/images/open_source.svg
-          excerpt: Opinionated best practices oriented APIs to Johnsnowlabs Software and works with common Python Data Structures
-        - title: 100% Open Source
-          image:
-          src: /assets/images/open_source.svg
-          excerpt: Including pre-trained <b>models</b> and <b>pipelines</b>
-
-
+           src: /assets/images/open_source.svg
+          excerpt: Built on most used Open-Source Software with millions of downloads & backed by an active community
+    - title: Powered by the most widely used NLP library in the enterprise
+      top: yes
+      excerpt: Source:2021 NLP Industry Survey, by <b>Gradient Flow</b>.
+      bigimage: /assets/images/2023.png
     - title: Quick and Easy
       install: yes
       excerpt: Johnsnowlabs is available on <a href="https://pypi.org/project/johnsnowlabs/" target="_blank">PyPI</a> and <a href="https://anaconda.org/JohnSnowLabs/johnsnowlabs" target="_blank">Conda</a>
@@ -58,7 +48,6 @@ data:
         - text: Install Spark NLP
           type: big_btn
           url: /docs/en/install
-
     - title: Feature Slide Show (TODO)
       top: yes
       classmenu: three_a
@@ -71,14 +60,12 @@ data:
         - text: Models Hub
           type: trans_white
           url: /models
-
     - title: Benchmark Slide-Show (TODO)
       excerpt: Spark NLP 2.5.x obtained the best performing academic peer-reviewed results
       benchmark: yes
       features: false
       # theme: dark
       # background_color: "#123"
-
     - title: Trusted By
       trusted: true
       top: yes
