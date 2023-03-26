@@ -6,6 +6,7 @@ subtitle: Run 300+ live demos and notebooks
 full_width: true
 permalink: /legal_text_classification
 key: demo
+nav_key: demo
 article_header:
   type: demo
 license: false
@@ -20,7 +21,7 @@ data:
           activemenu: legal_text_classification
       source: yes
       source: 
-        - title: Classify 275 types of clauses (Binary - clause detected or not)
+        - title: Classify hundreds types of clauses (Binary - clause detected or not)
           id: legal_clauses_classification    
           image: 
               src: /assets/images/Legal_Clauses_Classification.svg

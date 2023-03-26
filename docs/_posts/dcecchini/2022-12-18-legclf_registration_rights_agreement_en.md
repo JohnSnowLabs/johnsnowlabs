@@ -7,6 +7,7 @@ date: 2022-12-18
 tags: [en, legal, classification, licensed, document, longformer, registration, rights, agreement, tensorflow]
 task: Text Classification
 language: en
+nav_key: models
 edition: Legal NLP 1.0.0
 spark_version: 3.0
 supported: true
@@ -40,6 +41,7 @@ If your document needs to process more than 4096 tokens, you can try the followi
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 document_assembler = nlp.DocumentAssembler()\

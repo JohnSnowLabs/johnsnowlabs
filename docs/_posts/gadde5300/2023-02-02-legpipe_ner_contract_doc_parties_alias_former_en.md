@@ -7,9 +7,11 @@ date: 2023-02-02
 tags: [legal, bert, licensed, agreements, en]
 task: Named Entity Recognition
 language: en
+nav_key: models
 edition: Legal NLP 1.0.0
 spark_version: 3.0
 supported: true
+recommended: true
 annotator: PipelineModel
 article_header:
   type: cover
@@ -44,6 +46,7 @@ Other models can be found to detect other parts of the document, as Headers/Subh
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 legal_pipeline = nlp.PretrainedPipeline("legpipe_ner_contract_doc_parties_alias_former", "en", "legal/models")
 

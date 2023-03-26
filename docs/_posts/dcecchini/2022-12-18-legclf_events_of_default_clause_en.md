@@ -7,6 +7,7 @@ date: 2022-12-18
 tags: [en, legal, classification, licensed, clause, bert, events, of, default, tensorflow]
 task: Text Classification
 language: en
+nav_key: models
 edition: Legal NLP 1.0.0
 spark_version: 3.0
 supported: true
@@ -25,7 +26,7 @@ This model is a Binary Classifier (True, False) for the events-of-default clause
 - etc.
 Take into consideration the embeddings of this model allows up to 512 tokens. If you have more than that, consider splitting in smaller pieces (you can also check the same tutorial link provided above).
 
-This model can be combined with any of the other 200+ Legal Clauses Classifiers you will find in Models Hub, getting as an output a series of True/False values for each of the legal clause model you have added.
+This model can be combined with any of the other "hundreds" of Legal Clauses Classifiers you will find in Models Hub, getting as an output a series of True/False values for each of the legal clause model you have added.
 
 ## Predicted Entities
 
@@ -43,6 +44,7 @@ This model can be combined with any of the other 200+ Legal Clauses Classifiers 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 document_assembler = nlp.DocumentAssembler()\

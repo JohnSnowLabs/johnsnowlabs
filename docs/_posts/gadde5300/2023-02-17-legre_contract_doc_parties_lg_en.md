@@ -7,6 +7,7 @@ date: 2023-02-17
 tags: [legal, licensed, agreements, en, tensorflow]
 task: Relation Extraction
 language: en
+nav_key: models
 edition: Legal NLP 1.0.0
 spark_version: 3.0
 supported: true
@@ -50,6 +51,7 @@ This is a `lg` model with Unidirectional Relations, meaning that the model retri
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol("text")\

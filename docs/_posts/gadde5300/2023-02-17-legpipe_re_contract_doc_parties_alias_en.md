@@ -7,6 +7,7 @@ date: 2023-02-17
 tags: [legal, licensed, agreements, en, pipeline]
 task: Relation Extraction
 language: en
+nav_key: models
 edition: Legal NLP 1.0.0
 spark_version: 3.0
 supported: true
@@ -41,6 +42,7 @@ This is a Legal Relation Extraction Pretrained Pipeline to get the relations lin
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 legal_pipeline = nlp.PretrainedPipeline("legpipe_re_contract_doc_parties_alias", "en", "finance/models")

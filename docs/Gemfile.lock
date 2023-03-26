@@ -305,7 +305,6 @@ DEPENDENCIES
   github-pages (= 227)
   jekyll (~> 3.9)
   jekyll-incremental (= 0.1.0)!
-  jekyll-redirect-from
   nokogiri (>= 1.13.9)
   wdm (~> 0.1.0)
   webrick

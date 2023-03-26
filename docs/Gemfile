@@ -11,10 +11,6 @@ gem "webrick"
 
 gem "jekyll", "~> 3.9"
 
-gem 'jekyll-redirect-from'
-
 group "jekyll-plugins" do
     gem "jekyll-incremental", "0.1.0", path: "_plugins/jekyll-incremental"
 end
-
-

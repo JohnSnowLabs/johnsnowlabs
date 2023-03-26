@@ -7,6 +7,7 @@ date: 2022-11-09
 tags: [termination, en, licensed]
 task: Text Classification
 language: en
+nav_key: models
 edition: Legal NLP 1.0.0
 spark_version: 3.0
 supported: true
@@ -29,7 +30,7 @@ If you have big legal documents, and you want to look for clauses, we recommend 
 
 Take into consideration the embeddings of this model allows up to 512 tokens. If you have more than that, consider splitting in smaller pieces (you can also check the same tutorial link provided above).
 
-This model can be combined with any of the other 200+ Legal Clauses Classifiers you will find in Models Hub, getting as an output a series of True/False values for each of the legal clause model you have added.
+This model can be combined with any of the other "hundreds" of Legal Clauses Classifiers you will find in Models Hub, getting as an output a series of True/False values for each of the legal clause model you have added.
 
 There are other models in this dataset with similar title, but the difference is the dataset it was trained on. This one was trained with `cuad` dataset.
 
@@ -62,7 +63,7 @@ docClassifier = nlp.ClassifierDLModel.pretrained("legclf_cuad_termination_clause
     .setInputCols(["sentence_embeddings"])\
     .setOutputCol("category")
     
-nlpPipeline = Pipeline(stages=[
+nlpPipeline = nlp.Pipeline(stages=[
     documentAssembler, 
     embeddings,
     docClassifier])

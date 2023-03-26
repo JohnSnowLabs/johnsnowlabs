@@ -7,6 +7,7 @@ date: 2022-11-25
 tags: [en, legal, ofac, classification, clauses, licensed]
 task: Text Classification
 language: en
+nav_key: models
 edition: Legal NLP 1.0.0
 spark_version: 3.0
 supported: true
@@ -27,7 +28,7 @@ This model is a Binary Classifier (True, False) for the `ofac` clause type. To u
 
         Take into consideration the embeddings of this model allows up to 512 tokens. If you have more than that, consider splitting in smaller pieces (you can also check the same tutorial link provided above).
 
-        This model can be combined with any of the other 200+ Legal Clauses Classifiers you will find in Models Hub, getting as an output a series of True/False values for each of the legal clause model you have added.
+        This model can be combined with any of the other "hundreds" of Legal Clauses Classifiers you will find in Models Hub, getting as an output a series of True/False values for each of the legal clause model you have added.
 
 ## Predicted Entities
 
@@ -47,7 +48,7 @@ This model is a Binary Classifier (True, False) for the `ofac` clause type. To u
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 
 ```python
- documentAssembler = nlp.DocumentAssembler() \
+documentAssembler = nlp.DocumentAssembler() \
          .setInputCol("clause_text") \
          .setOutputCol("document")
 

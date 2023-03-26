@@ -7,6 +7,7 @@ date: 2023-02-16
 tags: [bert, broker_reports, licensed, agreements, finance, en, tensorflow]
 task: Text Classification
 language: en
+nav_key: models
 edition: Finance NLP 1.0.0
 spark_version: 3.0
 supported: true
@@ -37,6 +38,7 @@ This Text Classifier will identify whether a broker's report suggests to Buy,Sel
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.DocumentAssembler() \
     .setInputCol('text') \

@@ -41,6 +41,16 @@ secret_json_keys = [
     "JSL_FINANCE_LICENSE",
 ]
 
+license_file_keys = [
+    "JSL_NLP_LICENSE_FILE",
+    "SPARK_NLP_LICENSE_FILE",
+    "SPARK_OCR_LICENSE_FILE",
+    "JSL_OCR_LICENSE_FILE",
+    "JSL_LICENSE_FILE",
+    "JSL_LEGAL_LICENSE_FILE",
+    "JSL_FINANCE_LICENSE_FILE",
+]
+
 already_logged = False
 ocr_validation_logged = False
 hc_validation_logged = False
@@ -245,7 +255,9 @@ class JslSecrets(WritableBaseModel):
             elif secrets_file:
                 # Load from JSON file from provided secret file
                 secrets = JslSecrets.from_json_file_path(secrets_file)
-
+            elif any([key for key in license_file_keys if key in os.environ]):
+                key = next(k for k in license_file_keys if os.environ.get(k))
+                secrets = JslSecrets.from_json_file_path(os.environ[key])
             if not secrets and not force_browser:
                 # Try auto Resolve credentials if none are supplied
                 secrets = JslSecrets.search_default_locations(

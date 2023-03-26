@@ -1,10 +1,13 @@
 # https://pypi.org/project/databricks-api/
+import base64
+import json
+from os.path import dirname
 from typing import Union
 
 from databricks_api import DatabricksAPI
 
 from johnsnowlabs import settings
-from johnsnowlabs.py_models.install_info import PyInstallInfo, JvmInstallInfo
+from johnsnowlabs.py_models.install_info import JvmInstallInfo, PyInstallInfo
 from johnsnowlabs.utils.file_utils import path_tail
 
 
@@ -38,6 +41,20 @@ def copy_from_local_to_hdfs(
         # contents=None,
         src_path=local_path,
     )
+
+
+def put_file_on_dbfs(
+    db: DatabricksAPI, path: str, content: any, overwrite: bool = True
+):
+    try:
+        directory = dirname(path)
+        db.dbfs.mkdirs(directory)
+    except:
+        pass
+    if type(content) != "string":
+        content = json.dumps(content)
+    content = base64.b64encode(content.encode()).decode()
+    db.dbfs.put(path=path, overwrite=overwrite, contents=content)
 
 
 def get_db_path(local_info: Union[JvmInstallInfo, PyInstallInfo, str]):

@@ -7,9 +7,11 @@ date: 2023-02-11
 tags: [licensed, clinical, en, social_determinants, ner, public_health, sdoh]
 task: Named Entity Recognition
 language: en
+nav_key: models
 edition: Healthcare NLP 4.2.8
 spark_version: 3.0
 supported: true
+recommended: true
 annotator: MedicalNerModel
 article_header:
   type: cover

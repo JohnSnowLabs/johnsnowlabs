@@ -13,88 +13,13 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Pay-As-You-Go on AWS Marketplace
-The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a *pay-as-you-go* product on AWS Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the AWS product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on AWS Marketplace navigate to the [product page](https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions in the video below. 
+## AWS Marketplace
+The entire suite of John Snow Labs NLP and Visual NLP libraries are offered as a pay-as-you-go product on AWS Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the AWS product to allow you to start experimenting on your own data right away. To subscribe to the pay-as-you-go product on AWS Marketplace navigate to the [product page](https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions in the video below. 
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='agbV1CwMt1g' -%}<div class="video-descr">Subscribe to John Snow Labs NLP Libraries via AWS Marketplace</div></div></div>
 
 
 **Note**: 30-day free trial are available for AWS and Azure subscriptions. 
-
-## Prepaid on AWS Marketplace
-The entire suite of John Snow Labs NLP and Visual NLP libraries are also offered as a *prepaid* subscription on AWS Marketplace, pre-installed and ready to use. 30+ Notebooks are included in the AWS product to allow you to start experimenting on your own data right away. 
-
-The following video explains how to create a subscription for the prepaid product and how to deploy the product on a EC2 machine. 
-
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='tbEslv31IKI' -%}<div class="video-descr">Subscribe to John Snow Labs NLP Libraries via AWS Marketplace</div></div></div>
-
-
-
-### Requirement for using the prepaid AWS product:
-
-An IAM profile with a specific policy must be attached to the AWS Marketplace John Snow Labs – NLP Libraries Prepaid product to enable proper functionality. This is necessary in order to allow communication with my.johnsnowlabs.com for exchanging information on the license entitlements. 
-
-For seting up the proper role with the required permissions follow the steps below:
-
-- In the AWS Console, navigate to the AWS Marketplace Subscriptions and find the John Snow Labs - NLP Libraries Prepaid offer, then click `Launch new instance`.
-
-<img class="image image__shadow" src="/assets/images/prepaid/Step1.png" style="width:100%;"/>
-
-- On the next dialog, click Continue to launch through EC2.Review and update the settings if necessary.
-
-<img class="image image__shadow" src="/assets/images/prepaid/Step2.png" style="width:100%;"/>
-
-- Expand the Advanced Details section and navigate to the IAM instance profile line. If this is the first time running through these steps, click Create new IAM profile, which opens a new tab.
-
-<img class="image image__shadow" src="/assets/images/prepaid/Step4.png" style="width:100%;"/>
-<img class="image image__shadow" src="/assets/images/prepaid/Step5.png" style="width:100%;"/>
-
-- Click Create Role. Keep the AWS service selection, on the second section choose EC2 and then click Next.
-
-<img class="image image__shadow" src="/assets/images/prepaid/Step6.png" style="width:100%;"/>
-
-
-- Click Create Policy. This opens a new tab. Switch to JSON view and paste in the following:
-
- ```json
- {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "license-manager:GetLicense",
-                "license-manager:CheckoutLicense"
-            ] ,
-            "Resource": "*"
-        }
-    ]
-}
- ``` 
-
-<img class="image image__shadow" src="/assets/images/prepaid/Step8.png" style="width:100%;"/>
-
-  - Navigate to: Next: Tags > Next: Review. Then, define a name for the new policy.
-
-<img class="image image__shadow" src="/assets/images/prepaid/Step9.png" style="width:100%;"/>
-
-  - Click Create Policy. After the policy is saved, exit this tab and return to IAM profile tab. Click the refresh button to see your new policy, select it and then click Next.
-
-<img class="image image__shadow" src="/assets/images/prepaid/Step11.png" style="width:100%;"/>
-
-  - Name the role and click Create Role. After saving, exit this tab.
-  - Navigate back to the Launch an instance tab where you want to use the profile you just created. Click the refresh button and select the profile in IAM Instance Profile dropdown. Finally review your EC2 instance settings and then Launch Instance.
-
-<img class="image image__shadow" src="/assets/images/prepaid/Step7.png" style="width:100%;"/>
-
-For more instructions on IAM roles please visit [IAM roles for Amazon EC2 - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html).
-
-
-
-
-
-
-**Note**: 30-day free trial are available for AWS subscriptions. 
 
 
 ## Installation with johnsnowlabs

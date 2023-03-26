@@ -6,6 +6,7 @@ name: explain_clinical_doc_era
 date: 2020-09-30
 task: [Named Entity Recognition, Assertion Status, Relation Extraction, Pipeline Healthcare]
 language: en
+nav_key: models
 edition: Healthcare NLP 2.6.0
 spark_version: 2.4
 tags: [pipeline, en, licensed, clinical]
@@ -19,7 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 A pretrained pipeline with ``ner_clinical_events``, ``assertion_dl`` and ``re_temporal_events_clinical`` trained with ``embeddings_healthcare_100d``. It will extract clinical entities, assign assertion status and find temporal relationships between clinical entities.
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL/){:.button.button-orange}
 [Open in Colab](https://githubtocolab.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.Pretrained_Clinical_Pipelines.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}{:target="_blank"}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_era_en_2.5.5_2.4_1597845753750.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_era_en_2.5.5_2.4_1597845753750.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
