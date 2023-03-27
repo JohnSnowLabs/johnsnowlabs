@@ -25,55 +25,156 @@ article_header:
 data:
   sections:
     - threeblocks:
-        - title: Powerful One-Liners
-          image:
-            src: /assets/images/open_source.svg
-          excerpt: Including pre-trained <b>models</b> and <b>pipelines</b>
         - title: Natively Python
           image:
-            src: /assets/images/one_node_to_many.svg
-          excerpt: The only <b>NLP</b> library built <b>natively</b> on Apache Spark
+            src: /assets/images/home/natively_python.svg
+          excerpt: Seamless integration of John Snow Labs' ecosystem with common Python libraries.
+        - title: Powerful One-Liners
+          image:
+            src: /assets/images/home/powerfull_oneliners.svg
+          excerpt: 10,000+ models in 250+ languages are at your fingertips with one line of code.
         - title: Open Source
           image:
-            src: /assets/images/chat_symbols.svg
-          excerpt: Full <b>Python</b>, <b>Scala</b>, and <b>Java</b> support
+            src: /assets/images/home/open_source_home.svg
+          excerpt: Open Source software, widely deployed, back by an active community.
     - title: Powered by the most widely used NLP library in the enterprise
       top: yes
-      excerpt: <b>Gradient Flow</b> NLP Survey, 2021.
-      bigimage: /assets/images/2021.png
+      excerpt: Gradient Flow NLP Survey, 2021.
+      bigimage: /assets/images/home/nlp_libraries.png
       
-
-    # - title: Transformers at Scale
-    #   transformers: yes
-    #   features: false
 
     - title: Quick and Easy
       install: yes
-      excerpt: Spark NLP is available on <a href="https://pypi.org/project/spark-nlp" target="_blank">PyPI</a>, <a href="https://anaconda.org/JohnSnowLabs/spark-nlp" target="_blank">Conda</a>, and <a href="https://mvnrepository.com/artifact/com.johnsnowlabs.nlp" target="_blank">Maven</a>
+      excerpt: NLU is available on <a href="https://pypi.org/project/spark-nlp" target="_blank">PyPI</a>, <a href="https://anaconda.org/JohnSnowLabs/spark-nlp" target="_blank">Conda</a>, <a href="https://mvnrepository.com/artifact/com.johnsnowlabs.nlp" target="_blank">Maven</a> 
       actions:
-        - text: Install John Snow Labs
+        - text: Install NLU
           type: big_btn
           url: /docs/en/install
 
-    # - title: Right Out of The Box
-    #   top: yes
-    #   classmenu: three_a
-    #   classtitle: grey big_h3
-    #   excerpt: Spark NLP ships with many <b>NLP features</b>, pre-trained <b>models</b> and <b>pipelines</b>
-    #   features: true
-    #   # theme: dark
-    #   # background_color: "#123"
-    #   actions:
-    #     - text: Models Hub
-    #       type: trans_white
-    #       url: /models
-
-    - title: Complete NLP Ecosystem
-      excerpt: Spark NLP 2.5.x obtained the best performing academic peer-reviewed results
-      benchmark: yes
-      features: false
-      # theme: dark
-      # background_color: "#123"
+    - title: Complete NLP Ecosystem   
+      ecosystem: yes
+      tab-header:
+        - text: <span>Free</span>NLP-Display
+        - text: <span>Free</span>Spark NLP
+        - text: <span>Free</span>NLP-Test
+        - text: <span>Free</span>NLP-Lab
+        - text: Healthcare
+        - text: Finance
+        - text: Legal
+        - text: Visual/OCR
+      tab-body:
+        - text: Spark NLP
+          description: is a state-of-the-art natural language processing library, the first one to offer production-grade versions of the latest deep learning NLP research results. It is the the most widely use...
+          img: /assets/images/home/spark_ecosys.png
+          tab-body-links:
+            - texts: Install
+              url: /install
+            - texts: Docs
+              url: /docs
+            - texts: Models
+              url: /models
+            - texts: Notebooks
+              url: /notebooks
+            - texts: Demos
+              url: /demos
+        - text: NLP-Display
+          description: is a state-of-the-art natural language processing library, the first one to offer production-grade versions of the latest deep learning NLP research results. It is the the most widely use...
+          img: /assets/images/home/nlp_display.jpg
+          tab-body-links:
+            - texts: Install
+              url: /install
+            - texts: Docs
+              url: /docs
+            - texts: Models
+              url: /models
+            - texts: Notebooks
+              url: /notebooks
+            - texts: Demos
+              url: /demos
+        - text: NLP-Test
+          description: is a state-of-the-art natural language processing library, the first one to offer production-grade versions of the latest deep learning NLP research results. It is the the most widely use...
+          img: /assets/images/home/nlp_lab.png
+          tab-body-links:
+            - texts: Install
+              url: /install
+            - texts: Docs
+              url: /docs
+            - texts: Models
+              url: /models
+            - texts: Notebooks
+              url: /notebooks
+            - texts: Demos
+              url: /demos
+        - text: NLP-Lab
+          description: is a state-of-the-art natural language processing library, the first one to offer production-grade versions of the latest deep learning NLP research results. It is the the most widely use...
+          img: /assets/images/home/nlp_lab.png
+          tab-body-links:
+            - texts: Install
+              url: /install
+            - texts: Docs
+              url: /docs
+            - texts: Models
+              url: /models
+            - texts: Notebooks
+              url: /notebooks
+            - texts: Demos
+              url: /demos
+        - text: Healthcare
+          description: is a state-of-the-art natural language processing library, the first one to offer production-grade versions of the latest deep learning NLP research results. It is the the most widely use...
+          img: /assets/images/home/HealthcareNLP.jpg
+          tab-body-links:
+            - texts: Install
+              url: /install
+            - texts: Docs
+              url: /docs
+            - texts: Models
+              url: /models
+            - texts: Notebooks
+              url: /notebooks
+            - texts: Demos
+              url: /demos
+        - text: Finance
+          description: is a state-of-the-art natural language processing library, the first one to offer production-grade versions of the latest deep learning NLP research results. It is the the most widely use...
+          img: /assets/images/home/finance_nlp.png
+          tab-body-links:
+            - texts: Install
+              url: /install
+            - texts: Docs
+              url: /docs
+            - texts: Models
+              url: /models
+            - texts: Notebooks
+              url: /notebooks
+            - texts: Demos
+              url: /demos
+        - text: Legal
+          description: is a state-of-the-art natural language processing library, the first one to offer production-grade versions of the latest deep learning NLP research results. It is the the most widely use...
+          img: /assets/images/home/legal_nlp.png
+          tab-body-links:
+            - texts: Install
+              url: /install
+            - texts: Docs
+              url: /docs
+            - texts: Models
+              url: /models
+            - texts: Notebooks
+              url: /notebooks
+            - texts: Demos
+              url: /demos
+        - text: Visual/OCR
+          description: is a state-of-the-art natural language processing library, the first one to offer production-grade versions of the latest deep learning NLP research results. It is the the most widely use...
+          img: /assets/images/home/visual_ocr.png
+          tab-body-links:
+            - texts: Install
+              url: /install
+            - texts: Docs
+              url: /docs
+            - texts: Models
+              url: /models
+            - texts: Notebooks
+              url: /notebooks
+            - texts: Demos
+              url: /demos
 
     - title: Trusted By
       trusted: true
@@ -375,9 +476,9 @@ data:
             style: "padding: 20px;"
             is_row: true
 
-    - title: <h4 class="h4_title white">Active Community Support</h4>
+    - title: Active Community Support
       theme: dark
-      top: yes
+      bottom: yes
       topclass: bottom_section
       excerpt:
       classmenu: three_a
