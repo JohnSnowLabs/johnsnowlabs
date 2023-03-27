@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP
 title: Experiment Tracking
+redirect_to: https://sparknlp.org/docs/en/mlflow
 permalink: /docs/en/mlflow
 key: docs-experiment_tracking
 modify_date: "2021-11-21"

@@ -3,6 +3,7 @@ layout: docs
 header: true
 title: Quick Start
 seotitle: Spark NLP - Getting Started
+redirect_to: https://sparknlp.org/docs/en/quickstart
 permalink: /docs/en/quickstart
 key: docs-quickstart
 modify_date: "2021-03-20"

@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP
 title: Helper functions
+redirect_to: https://sparknlp.org/docs/en/auxiliary
 permalink: /docs/en/auxiliary
 key: docs-auxiliary
 modify_date: "2019-11-28"
