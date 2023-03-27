@@ -9,17 +9,14 @@ require 'nokogiri'
 SEARCH_URL = (ENV["SEARCH_ORIGIN"] || 'https://search.modelshub.johnsnowlabs.com') + '/'
 ELASTICSEARCH_INDEX_NAME = ENV["ELASTICSEARCH_INDEX_NAME"] || 'models'
 
-WEBSITE = ENV["WEBSITE"] || ""
+ORIGIN = ENV["ORIGIN"] || ""
 
 OUTDATED_EDITIONS = ['Spark NLP 2.0', 'Spark NLP 2.1', 'Healthcare NLP 2.0']
 SPARK_NLP_ORIGIN = "https://sparknlp.org"
 JOHNSNOWLABS_ORIGIN = "https://nlp.johnsnowlabs.com"
 
 $remote_editions = Set.new
-if WEBSITE.empty?
-  print("Cannot proceed further. Please set ENV variable WEBSITE")
-  exit(1) 
-end
+
 class Version < Array
   def initialize name
     m = /(\d+\.\d+)\z/.match(name)
@@ -131,7 +128,7 @@ class Extractor
     end
   end
 
-  def website
+  def origin
     m = /\|\s*License:\s*\|\s*Licensed\s*\|/m.match(@content)
     m ? JOHNSNOWLABS_ORIGIN : SPARK_NLP_ORIGIN
   end
@@ -294,7 +291,7 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
   end
   post.data['edition'] = edition_name(post.data['edition'])
 
-  post.data["website"] = extractor.website
+  post.data["origin"] = extractor.origin
 
   models_json[post.url] = {
     title: post.data['title'],
@@ -364,7 +361,7 @@ Jekyll::Hooks.register :posts, :post_render do |post|
     recommended: recommended,
     annotator: post.data['annotator'],
     uniq_key: key,
-    website: post.data["website"],
+    origin: post.data["origin"],
   }
 
   uniq = "#{post.data['name']}_#{post.data['language']}"
@@ -389,27 +386,17 @@ Jekyll::Hooks.register :posts, :post_render do |post|
   name_language_editions_sparkversion_to_models_mapping[key] = [] unless name_language_editions_sparkversion_to_models_mapping.has_key? key
   name_language_editions_sparkversion_to_models_mapping[key] << model
   all_posts_id << model[:id]
-  # Change redirects for open source model pages
-  redirect_to= "https://sparknlp.org" + post.url
-  if post.data["website"] == "https://sparknlp.org"
-    puts post.url
-    post.content = post.output= %Q(<!DOCTYPE html>
-<html lang="en-US">
-  <meta charset="utf-8">
-  <title>Redirecting&hellip;</title>
-  <link rel="canonical" href="#{redirect_to}">
-  <script>location="#{redirect_to}"</script>
-  <meta http-equiv="refresh" content="0; url=#{redirect_to}">
-  <meta name="robots" content="noindex">
-  <h1>Redirecting&hellip;</h1>
-  <a href="#{redirect_to}">Click here if you are not redirected.</a>
-</html>
-    )
-  end
+ 
 end
 
 client = nil
 unless ENV['ELASTICSEARCH_URL'].to_s.empty?
+
+  if ORIGIN.empty?
+    print("Cannot proceed further. Please set ENV variable ORIGIN")
+    exit(1) 
+  end
+
   puts "Connecting to Elasticsearch..."
   client = Elasticsearch::Client.new(
     url: ENV['ELASTICSEARCH_URL'],
@@ -496,7 +483,7 @@ unless ENV['ELASTICSEARCH_URL'].to_s.empty?
             "annotator": {
               "type": "keyword"
             },
-            "website": {
+            "origin": {
               "type": "keyword"
             }
         }
@@ -550,8 +537,8 @@ Jekyll::Hooks.register :site, :post_render do |site|
   bulk_indexer.execute
 
   if client and (not is_incremental or ENV["FULL_BUILD"])
-    # For full build, remove all documents not in site.posts and belonging to the website
-    client.delete_by_query index: ELASTICSEARCH_INDEX_NAME, body: {query: {bool: { must: { match: {website: WEBSITE }}, must_not: {ids: {values: all_posts_id}}}}}
+    # For full build, remove all documents not in site.posts and belonging to the origin
+    client.delete_by_query index: ELASTICSEARCH_INDEX_NAME, body: {query: {bool: { must: { match: {origin: ORIGIN }}, must_not: {ids: {values: all_posts_id}}}}}
   end
 end
 
@@ -610,6 +597,6 @@ Jekyll::Hooks.register :clean, :on_obsolete do |files|
               .select {|v| v.include?('/docs/_site') and v.end_with?('.html')}
               .map {|v| v.split('/docs/_site')[1]}
   if client
-    client.delete_by_query index: ELASTICSEARCH_INDEX_NAME, body: {query: {bool: {must: [ {ids: {values: all_deleted_posts}}, {match: {website: WEBSITE }} ]}}}
+    client.delete_by_query index: ELASTICSEARCH_INDEX_NAME, body: {query: {bool: {must: [ {ids: {values: all_deleted_posts}}, {match: {origin: ORIGIN }} ]}}}
   end
 end
