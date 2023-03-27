@@ -386,7 +386,22 @@ Jekyll::Hooks.register :posts, :post_render do |post|
   name_language_editions_sparkversion_to_models_mapping[key] = [] unless name_language_editions_sparkversion_to_models_mapping.has_key? key
   name_language_editions_sparkversion_to_models_mapping[key] << model
   all_posts_id << model[:id]
- 
+  # Change redirects for open source model pages
+  if post.data["origin"] == SPARK_NLP_ORIGIN
+    redirect_to= SPARK_NLP_ORIGIN + post.url
+    post.content = post.output= %Q(<!DOCTYPE html>
+<html lang="en-US">
+  <meta charset="utf-8">
+  <title>Redirecting&hellip;</title>
+  <link rel="canonical" href="#{redirect_to}">
+  <script>location="#{redirect_to}"</script>
+  <meta http-equiv="refresh" content="0; url=#{redirect_to}">
+  <meta name="robots" content="noindex">
+  <h1>Redirecting&hellip;</h1>
+  <a href="#{redirect_to}">Click here if you are not redirected.</a>
+</html>
+    )
+  end
 end
 
 client = nil
