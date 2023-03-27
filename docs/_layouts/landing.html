@@ -57,40 +57,41 @@ article_header:
         {%- endif -%}
 
 
+        {%- if _section.trusted -%}
+          <div class="trusted_section">
+            <div class="grid--container">
+              <div class="grid">
+                <div class="cell cell--12 cell--lg-12">
+                  <h2 class="h2_title">{{ _section.title }}</h2>
+                </div>
+              </div>
+              {%- if _section.children -%}              
+                <div class="grid grid--p-3">
+                  {%- for child in _section.children -%}
+                    <div class="cell cell--6 cell--md-3 cell--lg-2 ">
+                      <div class="feature-item sponsor">
+                        <figure class="mx-auto df" style="{{ child.image.style }}">
+                          <img src="{{ child.image.src }}" />
+                        </figure>
+                      </div>
+                    </div>
+                  {%- endfor-%}
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+
         {%- if _section.threeblocks -%}
-        {%- assign _size = _section.threeblocks | size  -%}
         <div class="grid--container">
           <div class="grid grid--p-3">
 
-            {%- for child in _section.threeblocks -%}
+            {%- for child in _section.threeblocks -%}            
 
-            {%- if _size >= 2 -%}
-            {%- assign _cell_sm_col = 12 -%}
-            {%- else -%}
-            {%- assign _cell_sm_col = 12 | divided_by: _size -%}
-            {%- endif -%}
+            <div class="cell cell--12 cell--md-4 cell--lg-4 cell--sm-12">
 
-            {%- if _size >= 2 -%}
-            {%- assign _cell_md_col = 4 -%}
-            {%- else -%}
-            {%- assign _cell_md_col = 12 | divided_by: _size -%}
-            {%- endif -%}
-
-            {%- if _size >= 4 -%}
-            {%- assign _cell_lg_col = 3 -%}
-            {%- else -%}
-            {%- assign _cell_lg_col = 12 | divided_by: _size -%}
-            {%- endif -%}
-
-            {%- if _size >= 6 -%}
-            {%- assign _cell_lg_col = 2 -%}
-            {%- else -%}
-            {%- assign _cell_lg_col = 12 | divided_by: _size -%}
-            {%- endif -%}
-
-            <div class="cell cell--12 cell--md-{{ _cell_md_col }} cell--lg-{{ _cell_lg_col }} cell--sm-{{ _cell_sm_col }}">
-
-              <div class="feature-item topthree {{ _section.featureitem }} ">
+              <div class="feature-item topthree">
                 {%- if child.image and child.image.src -%}
 
                 {%- if child.image.url -%}
@@ -105,7 +106,7 @@ article_header:
 
                 {%- if child.image.is_row -%}
                   {%- endif -%}
-                  <figure class="mx-auto" style="{{ child.image.style }}">
+                  <figure class="mx-auto">
                     <img src="{{ _item_image_src }}" />
                   </figure>
                   {%- if child.image.is_row -%}
@@ -114,28 +115,10 @@ article_header:
 
                 <h4>{{ child.title }}</h4>
 
-
                 {%- if child.excerpt-%}
                 <p>{{ child.excerpt }}</p>
                 {%- endif -%}
-
-                {%- if child.actions -%}
-                <ul class="menu">
-                  {%- for _action in child.actions -%}
-                  {%- include snippets/get-nav-url.html path=_action.url -%}
-                  {%- assign _url = __return -%}
-                  {%- assign _type = _action.type | default: 'outline-info' -%}
-                  <li><a class="button button--{{ _type }} button--pill button--lg"
-                      href="{{ _url }}">{{ _action.text }}</a></li>
-                  {%- endfor -%}
-                </ul>
-                {%- endif -%}
               </div>
-
-              {%- if child.content-%}
-              <p>{{ child.content }}</p>
-              {%- endif -%}
-
             </div>
             {%- endfor-%}
 
@@ -339,82 +322,6 @@ article_header:
         {%- endif -%}
 
 
-        {%- if _section.children -%}
-        {%- assign _size = _section.children | size  -%}
-        <div class="grid--container">
-          <div class="grid grid--p-3">
-
-            {%- for child in _section.children -%}
-
-            {%- if _size >= 2 -%}
-            {%- assign _cell_md_col = 3 -%}
-            {%- else -%}
-            {%- assign _cell_md_col = 12 | divided_by: _size -%}
-            {%- endif -%}
-
-            {%- if _size >= 4 -%}
-            {%- assign _cell_lg_col = 3 -%}
-            {%- else -%}
-            {%- assign _cell_lg_col = 12 | divided_by: _size -%}
-            {%- endif -%}
-
-            {%- if _size >= 6 -%}
-            {%- assign _cell_lg_col = 2 -%}
-            {%- else -%}
-            {%- assign _cell_lg_col = 12 | divided_by: _size -%}
-            {%- endif -%}
-
-            <div class="cell cell--6 cell--md-{{ _cell_md_col }} cell--lg-{{ _cell_lg_col }} ">
-
-              <div class="feature-item {{ _section.featureitem }} ">
-                {%- if child.image and child.image.src -%}
-
-                {%- if child.image.url -%}
-                {%- include snippets/get-nav-url.html path=child.image.url -%}
-                {%- assign _item_image_url = __return -%}
-                {%- else -%}
-                {%- assign _item_image_url = nil -%}
-                {%- endif -%}
-
-                {%- include snippets/get-nav-url.html path=child.image.src -%}
-                {%- assign _item_image_src = __return -%}
-
-                {%- if child.image.is_row -%}
-                  {%- endif -%}
-                  <figure class="mx-auto df" style="{{ child.image.style }}">
-                    <img src="{{ _item_image_src }}" />
-                  </figure>
-                  {%- if child.image.is_row -%}
-                {%- endif -%}
-                {%- endif -%}
-
-                {%- if child.excerpt-%}
-                <p>{{ child.excerpt }}</p>
-                {%- endif -%}
-
-                {%- if child.actions -%}
-                <ul class="menu">
-                  {%- for _action in child.actions -%}
-                  {%- include snippets/get-nav-url.html path=_action.url -%}
-                  {%- assign _url = __return -%}
-                  {%- assign _type = _action.type | default: 'outline-info' -%}
-                  <li><a class="button button--{{ _type }} button--pill button--lg"
-                      href="{{ _url }}">{{ _action.text }}</a></li>
-                  {%- endfor -%}
-                </ul>
-                {%- endif -%}
-              </div>
-
-              {%- if child.content-%}
-              <p>{{ child.content }}</p>
-              {%- endif -%}
-
-            </div>
-            {%- endfor-%}
-
-          </div>
-        </div>
-        {%- endif -%}
 
         {%- if _section.image.full_width == true -%}
       </div> {% comment %} end hero__content {% endcomment %}

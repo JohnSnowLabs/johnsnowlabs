@@ -629,9 +629,11 @@ p.code_snip_dots {
 	padding: 70px 15px;
 	height: 100%;
 	figure {
+		aspect-ratio: auto;		
+	}
+	&.topthree figure {			
 		width: 60px;
 		margin: 0 auto 20px;
-		aspect-ratio: auto;
 	}
 	h4 {
 		font-weight: 500;
