@@ -55,126 +55,45 @@ data:
       ecosystem: yes
       tab-header:
         - text: <span>Free</span>Spark NLP
-        - text: <span>Free</span>NLP-Display
-        - text: <span>Free</span>NLP-Test
-        - text: <span>Free</span>NLP-Lab
-        - text: Healthcare
-        - text: Finance
-        - text: Legal
-        - text: Visual/OCR
+        - text: <span>Free</span>NLP Display
+        - text: <span>Free</span>NLP Test
+        - text: <span>Free</span>NLP Lab
+        - text: Healthcare NLP
+        - text: Finance NLP
+        - text: Legal NLP
+        - text: Visual NLP
       tab-body:
         - text: Spark NLP
           description: Open-Source text processing library for Python, Java, and Scala. It provides production-grade, scalable, and trainable versions of the latest research in natural language processing.
           img: /assets/images/home/spark_ecosys.png
-          tab-body-links:
-            - texts: Install
-              url: /install
-            - texts: Docs
-              url: /docs
-            - texts: Models
-              url: /models
-            - texts: Notebooks
-              url: /notebooks
-            - texts: Demos
-              url: /demos
+
         - text: NLP Display
           description: Open-Source Python library for visualizing the annotations generated with Spark NLP. 
           img: /assets/images/home/nlp_display.jpg
-          tab-body-links:
-            - texts: Install
-              url: /install
-            - texts: Docs
-              url: /docs
-            - texts: Models
-              url: /models
-            - texts: Notebooks
-              url: /notebooks
-            - texts: Demos
-              url: /demos
+
         - text: NLP Test
           description: Open-Source library for generating & running over 50 test types on the most popular NLP libraries & tasks with 1 line of code.
           img: /assets/images/home/nlp_test.jpg
-          tab-body-links:
-            - texts: Install
-              url: /install
-            - texts: Docs
-              url: /docs
-            - texts: Models
-              url: /models
-            - texts: Notebooks
-              url: /notebooks
-            - texts: Demos
-              url: /demos
+
         - text: NLP Lab
           description: Free End-to-End No Code NLP Platform for all enterprise teams that want to collaborately annotate documents and train models.
           img: /assets/images/home/nlp_lab.png
-          tab-body-links:
-            - texts: Install
-              url: /install
-            - texts: Docs
-              url: /docs
-            - texts: Models
-              url: /models
-            - texts: Notebooks
-              url: /notebooks
-            - texts: Demos
-              url: /demos
+
         - text: Healthcare NLP
           description: State-of-the-Art NLP Library specialized in handling clinical and biomedical data. 
           img: /assets/images/home/HealthcareNLP.jpg
-          tab-body-links:
-            - texts: Install
-              url: /install
-            - texts: Docs
-              url: /docs
-            - texts: Models
-              url: /models
-            - texts: Notebooks
-              url: /notebooks
-            - texts: Demos
-              url: /demos
+
         - text: Finance NLP
           description: State-of-the-Art NLP Library specialized in handling financial documents. 
           img: /assets/images/home/finance_nlp.png
-          tab-body-links:
-            - texts: Install
-              url: /install
-            - texts: Docs
-              url: /docs
-            - texts: Models
-              url: /models
-            - texts: Notebooks
-              url: /notebooks
-            - texts: Demos
-              url: /demos
+
         - text: Legal NLP
           description: State-of-the-Art NLP Library specialized in handling legal documents
           img: /assets/images/home/legal_nlp.png
-          tab-body-links:
-            - texts: Install
-              url: /install
-            - texts: Docs
-              url: /docs
-            - texts: Models
-              url: /models
-            - texts: Notebooks
-              url: /notebooks
-            - texts: Demos
-              url: /demos
+
         - text: Visual NLP
           description: Commercial extension of Spark NLP for optical character recognition from images, scanned PDF documents, Microsoft DOCX and DICOM files.
           img: /assets/images/home/visual_nlp.png
-          tab-body-links:
-            - texts: Install
-              url: /install
-            - texts: Docs
-              url: /docs
-            - texts: Models
-              url: /models
-            - texts: Notebooks
-              url: /notebooks
-            - texts: Demos
-              url: /demos
 
     - title: Trusted By
       trusted: yes
@@ -404,7 +323,7 @@ data:
       actions:
         - text: View Demo
           type: trans
-          url: /demo
+          url: /demos
         - text: Examples
           type: trans
           url: https://github.com/JohnSnowLabs/spark-nlp/tree/master/examples
