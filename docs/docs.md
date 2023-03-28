@@ -6,6 +6,6 @@ excerpt: A comprehensive hub of documents and videos explaining the NLP librarie
 seotitle: John Snow Labs - NLP Documentation
 permalink: /docs
 key: docs-nlp_products
-modify_date: "2021-03-20"
+modify_date: "2023-03-28"
 ---
 
