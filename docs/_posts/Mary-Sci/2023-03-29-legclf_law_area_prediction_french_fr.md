@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Legal Law Area Prediction Classifier in French
+title: Legal Law Area Prediction Classifier (French)
 author: John Snow Labs
 name: legclf_law_area_prediction_french
 date: 2023-03-29
