@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Legal Law Area Prediction Classifier in German
+title: Legal Law Area Prediction Classifier (German)
 author: John Snow Labs
 name: legclf_law_area_prediction_german
 date: 2023-03-29
