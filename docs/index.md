@@ -2,8 +2,8 @@
 layout: landing
 comment: no
 title: 'John Snow Labs <span>State of the Art Natural Language Processing in Python</span>'
-excerpt: Gateway to a complete Natural Language Processing Ecosystem
-seotitle: John Snow Labs NLP - John Snow Labs
+excerpt: Unified access to 15,000+ free NLP models with one line of code, open-source Responsible & Explainable NLP, and enterprise libraries for Healthcare, Legal, Finance, and Visual NLP.
+seotitle: John Snow Labs - State of the Art NLP in Python
 permalink: /
 header: true
 article_header:
@@ -45,7 +45,7 @@ data:
 
     - title: Quick and Easy
       install: yes
-      excerpt: NLU is available on <a href="https://pypi.org/project/spark-nlp" target="_blank">PyPI</a>, <a href="https://anaconda.org/JohnSnowLabs/spark-nlp" target="_blank">Conda</a>, <a href="https://mvnrepository.com/artifact/com.johnsnowlabs.nlp" target="_blank">Maven</a> 
+      excerpt: Available on <a href="https://pypi.org/project/spark-nlp" target="_blank">PyPI</a> and <a href="https://anaconda.org/JohnSnowLabs/spark-nlp" target="_blank">Conda</a>. 
       actions:
         - text: Install NLU
           type: big_btn
@@ -72,27 +72,27 @@ data:
           img: /assets/images/home/nlp_display.jpg
 
         - text: NLP Test
-          description: Open-Source library for generating & running over 50 test types on the most popular NLP libraries & tasks with 1 line of code.
+          description: Deliver safe and effective models with an open-source library by generating & running over 50 test types on the most popular NLP libraries & tasks.
           img: /assets/images/home/nlp_test.jpg
 
         - text: NLP Lab
-          description: Free End-to-End No Code NLP Platform for all enterprise teams that want to collaborately annotate documents and train models.
+          description: Free End-to-End No Code NLP Platform for teams that want to collaborately annotate documents and train models.
           img: /assets/images/home/nlp_lab.png
 
         - text: Healthcare NLP
-          description: State-of-the-Art NLP Library specialized in handling clinical and biomedical data. 
+          description: State-of-the-Art NLP Library for understanding clinical and biomedical text. 
           img: /assets/images/home/HealthcareNLP.jpg
 
         - text: Finance NLP
-          description: State-of-the-Art NLP Library specialized in handling financial documents. 
+          description: State-of-the-Art NLP Library for understanding financial documents. 
           img: /assets/images/home/finance_nlp.png
 
         - text: Legal NLP
-          description: State-of-the-Art NLP Library specialized in handling legal documents
+          description: State-of-the-Art NLP Library for understanding legal documents.
           img: /assets/images/home/legal_nlp.png
 
         - text: Visual NLP
-          description: Commercial extension of Spark NLP for optical character recognition from images, scanned PDF documents, Microsoft DOCX and DICOM files.
+          description: Visual document understanding library for extracting information from images, scanned documents, PDFs, DOCX, and DICOM files.
           img: /assets/images/home/visual_nlp.png
 
     - title: Trusted By
