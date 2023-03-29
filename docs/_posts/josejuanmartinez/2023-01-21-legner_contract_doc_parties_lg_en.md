@@ -50,6 +50,7 @@ This model can be used all along with its Relation Extraction model to retrieve 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = nlp.DocumentAssembler()\
         .setInputCol("text")\
@@ -66,6 +67,8 @@ tokenizer = nlp.Tokenizer()\
 embeddings = nlp.RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_base", "en") \
         .setInputCols("sentence", "token") \
         .setOutputCol("embeddings")\
+        .setMaxSentenceLength(512)\
+        .setCaseSensitive(True)
 
 ner_model = legal.NerModel.pretrained('legner_contract_doc_parties_lg', 'en', 'legal/models')\
         .setInputCols(["sentence", "token", "embeddings"])\
@@ -101,99 +104,29 @@ res = model.transform(spark.createDataFrame([text]).toDF("text"))
 ## Results
 
 ```bash
-+------------+---------+
-|       token|ner_label|
-+------------+---------+
-|INTELLECTUAL|    B-DOC|
-|    PROPERTY|    I-DOC|
-|   AGREEMENT|    I-DOC|
-|        This|        O|
-|INTELLECTUAL|    B-DOC|
-|    PROPERTY|    I-DOC|
-|   AGREEMENT|    I-DOC|
-|           (|        O|
-|        this|        O|
-|           "|        O|
-|   Agreement|        O|
-|         "),|        O|
-|       dated|        O|
-|          as|        O|
-|          of|        O|
-|    December|B-EFFDATE|
-|          31|I-EFFDATE|
-|           ,|I-EFFDATE|
-|        2018|I-EFFDATE|
-|           (|        O|
-|         the|        O|
-|           "|        O|
-|   Effective|        O|
-|        Date|        O|
-|          ")|        O|
-|          is|        O|
-|     entered|        O|
-|        into|        O|
-|          by|        O|
-|         and|        O|
-|     between|        O|
-|   Armstrong|  B-PARTY|
-|    Flooring|  I-PARTY|
-|           ,|  I-PARTY|
-|         Inc|  I-PARTY|
-|          .,|        O|
-|           a|        O|
-|    Delaware|        O|
-| corporation|        O|
-|          ("|        O|
-|      Seller|  B-ALIAS|
-|          ")|        O|
-|         and|        O|
-|         AFI|  B-PARTY|
-|   Licensing|  I-PARTY|
-|         LLC|  I-PARTY|
-|           ,|        O|
-|           a|        O|
-|    Delaware|        O|
-|     limited|        O|
-|   liability|        O|
-|     company|        O|
-|          ("|        O|
-|   Licensing|  B-ALIAS|
-|           "|        O|
-|         and|        O|
-|    together|        O|
-|        with|        O|
-|      Seller|  B-ALIAS|
-|           ,|        O|
-|           "|        O|
-|     Arizona|  B-ALIAS|
-|          ")|        O|
-|         and|        O|
-|         AHF|  B-PARTY|
-|     Holding|  I-PARTY|
-|           ,|  I-PARTY|
-|         Inc|  I-PARTY|
-|           .|        O|
-|           (|        O|
-|    formerly|        O|
-|       known|        O|
-|          as|        O|
-|      Tarzan|        O|
-|      HoldCo|        O|
-|           ,|        O|
-|         Inc|        O|
-|         .),|        O|
-|           a|        O|
-|    Delaware|        O|
-| corporation|        O|
-|          ("|        O|
-|       Buyer|  B-ALIAS|
-|          ")|        O|
-|         and|        O|
-|   Armstrong|  B-PARTY|
-|    Hardwood|  I-PARTY|
-|    Flooring|  I-PARTY|
-|     Company|  I-PARTY|
-------------------------
++-----------------------------------+-----------+
+|chunk                              |ner_label  |
++-----------------------------------+-----------+
+|INTELLECTUAL PROPERTY AGREEMENT    |DOC        |
+|December 31, 2018                  |EFFDATE    |
+|Armstrong Flooring, Inc            |PARTY      |
+|Seller                             |ALIAS      |
+|AFI Licensing LLC                  |PARTY      |
+|Licensing                          |ALIAS      |
+|Seller                             |PARTY      |
+|Arizona                            |ALIAS      |
+|AHF Holding, Inc.                  |ORG        |
+|Tarzan HoldCo, Inc                 |FORMER_NAME|
+|Buyer                              |ALIAS      |
+|Armstrong Hardwood Flooring Company|PARTY      |
+|Company                            |ALIAS      |
+|Buyer                              |PARTY      |
+|Buyer Entities                     |ALIAS      |
+|Arizona                            |PARTY      |
+|Buyer Entities                     |PARTY      |
+|Party                              |ALIAS      |
+|Parties                            |ALIAS      |
++-----------------------------------+-----------+
 ```
 
 {:.model-param}
@@ -217,19 +150,20 @@ Manual annotations on CUAD dataset
 ## Benchmarking
 
 ```bash
-label	 tp	 fp	 fn	 prec	 rec	 f1
-I-PARTY	 513	 58	 85	 0.8984238	 0.85785955	 0.87767327
-B-EFFDATE	 57	 5	 7	 0.91935486	 0.890625	 0.90476185
-I-ORG	 208	 32	 49	 0.8666667	 0.8093385	 0.8370222
-B-DOC	 80	 9	 21	 0.8988764	 0.7920792	 0.8421053
-B-FORMER_NAME	 5	 0	 0	 1.0	 1.0	 1.0
-I-EFFDATE	 214	 11	 6	 0.95111114	 0.9727273	 0.96179783
-I-FORMER_NAME	 7	 1	 0	 0.875	 1.0	 0.93333334
-I-ALIAS	 14	 5	 13	 0.7368421	 0.5185185	 0.6086956
-I-DOC	 166	 16	 52	 0.9120879	 0.7614679	 0.83
-B-ORG	 131	 28	 42	 0.8238994	 0.75722545	 0.7891567
-B-PARTY	 174	 40	 57	 0.8130841	 0.7532467	 0.7820225
-B-ALIAS	 170	 17	 13	 0.90909094	 0.92896175	 0.9189189
-Macro-average	 1739 222 345 0.8837032 0.8368375 0.859632
-Micro-average	 1739 222 345 0.8867925 0.834453 0.859827
+label          precision  recall  f1-score  support 
+B-ALIAS        0.95       0.95    0.95      193     
+B-DOC          0.87       0.85    0.86      118     
+I-DOC          0.92       0.83    0.87      245     
+B-PARTY        0.83       0.79    0.81      246     
+I-PARTY        0.90       0.88    0.89      630     
+B-ORG          0.91       0.84    0.87      207     
+I-ORG          0.93       0.87    0.90      355     
+I-ALIAS        0.77       0.83    0.80      29      
+B-EFFDATE      0.91       0.91    0.91      81      
+I-EFFDATE      0.95       0.97    0.96      261     
+B-FORMER_NAME  0.97       1.00    0.99      39      
+I-FORMER_NAME  0.99       1.00    0.99      93      
+micro-avg      0.91       0.88    0.90      2497    
+macro-avg      0.91       0.89    0.90      2497    
+weighted-avg   0.91       0.88    0.90      2497    
 ```
