@@ -8,7 +8,7 @@ tags: [en, licensed, clinical, resolver, chunk_mapping, pipeline, icd10cm]
 task: Pipeline Healthcare
 language: en
 edition: Healthcare NLP 4.3.2
-spark_version: 3.0
+spark_version: 3.2
 supported: true
 annotator: PipelineModel
 article_header:
@@ -23,8 +23,8 @@ This pretrained pipeline maps entities with their corresponding ICD-10-CM codes.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_resolver_pipeline_en_4.3.2_3.0_1680100624612.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_resolver_pipeline_en_4.3.2_3.0_1680100624612.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_resolver_pipeline_en_4.3.2_3.2_1680102556141.zip){:.button.button-orange}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_resolver_pipeline_en_4.3.2_3.2_1680102556141.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -40,6 +40,7 @@ resolver_pipeline = PretrainedPipeline("icd10cm_resolver_pipeline", "en", "clini
 text = """A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years and anisakiasis. Also, it was reported that fetal and neonatal hemorrhage"""
 
 result = resolver_pipeline.fullAnnotate(text)
+
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
