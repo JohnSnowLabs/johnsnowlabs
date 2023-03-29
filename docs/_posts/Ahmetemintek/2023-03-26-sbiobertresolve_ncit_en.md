@@ -62,18 +62,20 @@ ner_converter = NerConverterInternal() \
     .setOutputCol("ner_chunk")\
     .setPreservePosition(False)
 
-chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+chunk2doc = Chunk2Doc()\
+    .setInputCols("ner_chunk")\
+    .setOutputCol("ner_chunk_doc")
 
 sbert_embedder = BertSentenceEmbeddings\
-.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-.setInputCols(["ner_chunk_doc"])\
-.setOutputCol("sbert_embeddings")
+    .pretrained("sbiobert_base_cased_mli","en","clinical/models")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("sbert_embeddings")
 
 resolver = SentenceEntityResolverModel\
-  .pretrained("sbiobertresolve_ncit","en", "clinical/models") \
-  .setInputCols(["ner_chunk", "sbert_embeddings"]) \
-  .setOutputCol("resolution")\
-  .setDistanceFunction("EUCLIDEAN")
+    .pretrained("sbiobertresolve_ncit","en", "clinical/models") \
+    .setInputCols(["ner_chunk", "sbert_embeddings"]) \
+    .setOutputCol("resolution")\
+    .setDistanceFunction("EUCLIDEAN")
 
 
 nlpPipeline = Pipeline(stages=[document_assembler, 
@@ -118,7 +120,9 @@ val ner_converter = new NerConverter()
   .setInputCols(Array("sentence","token","ner"))
   .setOutputCol("ner_chunk")
 
-val chunk2doc = new Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+val chunk2doc = new Chunk2Doc()
+  .setInputCols("ner_chunk")
+  .setOutputCol("ner_chunk_doc")
 
 val sbert_embedder = BertSentenceEmbeddings
   .pretrained("sbiobert_base_cased_mli","en","clinical/models")
