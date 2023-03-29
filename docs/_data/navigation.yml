@@ -260,10 +260,10 @@ jsl:
         url: /docs/en/jsl/nlp_pipes
         key: nlp_pipes
       - title: NLP Display
-        url: https://nlp.johnsnowlabs.com/docs/en/display
+        url: /docs/en/display
         key: nlp_display
       - title: NLP Lab
-        url: https://nlp.johnsnowlabs.com/docs/en/utility_helper_modules
+        url: /docs/en/utility_helper_modules
         key: nlp_display
       - title: NLP Utilities
         url:    /docs/en/jsl/utils_for_spark_nlp
