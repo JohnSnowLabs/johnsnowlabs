@@ -33,14 +33,21 @@ This improved model including flan-T5 base, samsun and alpaca, to achieve better
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")|\
+    .setOutputCol("documents")
 
-document_assembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("documents")
-
-med_summarizer  = MedicalSummarizer    .pretrained("summarizer_generic_jsl", "en", "clinical/models")    .setInputCols("documents")    .setOutputCol("summary")    .setMaxNewTokens(100)   .setMaxTextLength(1024)
+med_summarizer  = MedicalSummarizer.pretrained("summarizer_generic_jsl", "en", "clinical/models")\
+    .setInputCols("documents")\
+    .setOutputCol("summary")\
+    .setMaxNewTokens(100)\
+    .setMaxTextLength(1024)
+    
 pipeline = Pipeline(stages=[document_assembler, med_summarizer])
 
-text = "Patient with hypertension, syncope, and spinal stenosis - for recheck.
+text = """Patient with hypertension, syncope, and spinal stenosis - for recheck.
 (Medical Transcription Sample Report)
 SUBJECTIVE:
 The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
@@ -48,15 +55,14 @@ PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
 Reviewed and unchanged from the dictation on 12/03/2003.
 MEDICATIONS:
 Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.
-ALLERGIES:..."
+ALLERGIES:..."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
 pipeline.fit(data).transform(data)
-
 ```
-```scala
 
+```scala
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("documents")
@@ -69,7 +75,7 @@ val med_summarizer  = MedicalSummarizer
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, med_summarizer))
 
-val text = "Patient with hypertension, syncope, and spinal stenosis - for recheck.
+val text = """Patient with hypertension, syncope, and spinal stenosis - for recheck.
 (Medical Transcription Sample Report)
 SUBJECTIVE:
 The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
@@ -77,13 +83,13 @@ PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
 Reviewed and unchanged from the dictation on 12/03/2003.
 MEDICATIONS:
 Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.
-ALLERGIES:..."
+ALLERGIES:..."""
 
 val data = Seq(text).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
-
 ```
+
 </div>
 
 ## Results
