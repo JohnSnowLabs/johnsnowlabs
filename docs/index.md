@@ -314,6 +314,9 @@ data:
             url: https://www.medunigraz.at/
             style: "padding: 20px;"
 
+    - title: 
+      example: yes
+
     - title: Active Community Support
       theme: dark
       bottom: yes
