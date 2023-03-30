@@ -503,7 +503,7 @@ h2.h2_doc {
 	border-radius: 8px;
 	.code_bg {
 		position: relative;
-		padding: 0;
+		padding: 1;
 		z-index: 4;
 		&::after {
 			content: '';

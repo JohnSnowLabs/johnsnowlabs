@@ -10,13 +10,13 @@ article_header:
   actions:
     - text: Get Started
       type: active
-      url: /docs/en/quickstart
+      url: /docs/en/jsl/install
     - text: View Demo
       type: trans
       url: /demos
     - text: '<i class="fab fa-github"></i> GitHub'
       type: trans
-      url: https://github.com/johnsnowlabs/spark-nlp
+      url: https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings
     # - text: '<i class="fab fa-slack-hash"></i> Slack'
     #   type: outline-theme-dark
     #   url: https://join.slack.com/t/spark-nlp/shared_invite/enQtNjA4MTE2MDI1MDkxLWVjNWUzOGNlODg1Y2FkNGEzNDQ1NDJjMjc3Y2FkOGFmN2Q3ODIyZGVhMzU0NGM3NzRjNDkyZjZlZTQ0YzY1N2I
@@ -45,11 +45,11 @@ data:
 
     - title: Quick and Easy
       install: yes
-      excerpt: Available on <a href="https://pypi.org/project/spark-nlp" target="_blank">PyPI</a> and <a href="https://anaconda.org/JohnSnowLabs/spark-nlp" target="_blank">Conda</a>. 
+      excerpt: Available on <a href="https://pypi.org/project/johnsnowlabs/" target="_blank">PyPI</a> and <a href="https://anaconda.org/JohnSnowLabs/spark-nlp" target="_blank">Conda</a>. 
       actions:
-        - text: Install NLU
+        - text: Install JohnSnowLabs
           type: big_btn
-          url: /docs/en/install
+          url: /docs/en/jsl/install
 
     - title: Complete NLP Ecosystem   
       ecosystem: yes
@@ -69,7 +69,7 @@ data:
 
         - text: NLP Display
           description: Open-Source Python library for visualizing the annotations generated with Spark NLP. 
-          img: /assets/images/home/nlp_display.jpg
+          img: /assets/images/nlpdisplay.png
 
         - text: NLP Test
           description: Deliver safe and effective models with an open-source library by generating & running over 50 test types on the most popular NLP libraries & tasks.
