@@ -228,3 +228,4 @@ plugins:
   - jekyll-sitemap
   - jemoji
   - jekyll-incremental
+  - jekyll-redirect-from

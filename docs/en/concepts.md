@@ -2,6 +2,7 @@
 layout: docs
 header: true
 title: General Concepts
+redirect_to: https://sparknlp.org/docs/en/concepts
 permalink: /docs/en/concepts
 key: docs-concepts
 modify_date: "2022-12-21"

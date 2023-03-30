@@ -3,6 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP
 title: Third Party Projects
+redirect_to: https://sparknlp.org/docs/en/third-party-projects
 permalink: /docs/en/third-party-projects
 key: docs-third-party-projects
 modify_date: "2021-10-25"
