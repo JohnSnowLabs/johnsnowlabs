@@ -169,20 +169,81 @@ article_header:
           <div class="quick_easy">
             <div class="grid--container">
               <div class="grid">
-                <div class="cell cell--12 cell--lg-7 cell--md-7 cell--sm-12">
+                <div class="cell cell--12 cell--lg-8 cell--md-12 cell--sm-12">
                   <div class="code_snippet tal">
                     <em>1</em><em>1</em><em>1</em>
-                    <div class="code_snippet_inner">
+
+                    <!-- <div class="code_snippet_inner">
                       <p># <strong class="snip_dark_blue">Install John Snow Labs library from PyPI</strong></p>
                       <p>$ pip install <strong class="snip_dark_blue">johnsnowlabs</strong></p>
                       <p>from johnsnowlabs <strong class="ai_bg1">import</strong> <strong class="snip_dark_blue">nlp</strong></p>
                       <p><strong class="snip_dark_blue">nlp</strong><strong class="c_orange">.load</strong>(<strong class="snip_red">'ner'</strong>)<strong class="c_orange">.predict</strong>(<strong class="snip_red">'John Snow was a doctor in 1854.'</strong>)</p>
                       <p>|<strong class="snip_dark_blue">NER</strong>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;|<strong class="snip_dark_blue">Type</strong>&emsp;&emsp;&emsp;&emsp;&emsp;|<strong class="snip_dark_blue">Confidence</strong>|</p>
                       <p>|<strong class="snip_dark_blue">John Snow</strong>&emsp;&emsp;|<strong class="snip_dark_blue">Person</strong>&emsp;&emsp;&emsp;&emsp;|<strong class="ai_bg1">0.99</strong>&emsp;&emsp;&emsp;&emsp;|</p>
-                    </div>                    
+                    </div> -->  
+                    <div class="code_snippet_inner">
+                      <p class="code_bg">nlp.load(<strong class="c_orange">'ner'</strong>).predict(<strong class="c_orange">"Dr. John Snow is an British physician born in 1813"</strong>)</p>
+                      <div class="table_code_wrapper mb50">
+                        <div class="table_code_inner">
+                          <table class="table_code">
+                            <thead>
+                              <tr>
+                                <th></th>
+                                <th>entities</th>
+                                <th>entities_class</th>
+                                <th>entities_confidence</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>0</td>
+                                <td>John Snow</td>
+                                <td>PERSON</td>
+                                <td>0.9746</td>
+                              </tr>
+                              <tr>
+                                <td>0</td>
+                                <td>British</td>
+                                <td>NORP</td>
+                                <td>0.9928</td>
+                              </tr>
+                              <tr>
+                                <td>0</td>
+                                <td>1813</td>
+                                <td>DATE</td>
+                                <td>0.5841</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>                      
+                      </div>                    
+                      <p class="code_bg">nlp.load(<strong class="c_orange">'sentiment'</strong>).predict(<strong class="c_orange">"Well this was easy!"</strong>)</p>
+                      <div class="table_code_wrapper">
+                        <div class="table_code_inner">
+                          <table class="table_code">
+                            <thead>
+                              <tr>
+                                <th></th>
+                                <th>entities</th>
+                                <th>entities_class</th>
+                                <th>entities_confidence</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>0</td>
+                                <td>Well this wsa easy!</td>
+                                <td>pas</td>
+                                <td>0.999901</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>                    
+                    </div>                   
                   </div>
                 </div>
-                <div class="cell cell--12 cell--lg-5 cell--md-5 cell--sm-12">
+                <div class="cell cell--12 cell--lg-4 cell--md-12 cell--sm-12">
                   <div class="quick_easy_inner tal">
                     <h3 class="grey h3_title">{{ _section.title }}</h3>
                     {%- if _section.excerpt-%}
@@ -203,82 +264,6 @@ article_header:
           </div>
 
         {%- endif -%}
-
-        {%- if _section.example -%}
-
-        <div class="quick_easy">
-          <div class="grid--container">
-            <div class="grid">
-              <div class="cell cell--12 cell--lg-12">
-                <div class="code_snippet tal">
-                  <em>1</em><em>1</em><em>1</em>
-                  <div class="code_snippet_inner">
-                    <p class="code_bg">nlp.load(<strong class="c_orange">'ner'</strong>).predict(<strong class="c_orange">"Dr. John Snow is an British physician born in 1813"</strong>)</p>
-                    <div class="table_code_wrapper mb50">
-                      <div class="table_code_inner">
-                        <table class="table_code">
-                          <thead>
-                            <tr>
-                              <th></th>
-                              <th>entities</th>
-                              <th>entities_class</th>
-                              <th>entities_confidence</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>0</td>
-                              <td>John Snow</td>
-                              <td>PERSON</td>
-                              <td>0.9746</td>
-                            </tr>
-                            <tr>
-                              <td>0</td>
-                              <td>British</td>
-                              <td>NORP</td>
-                              <td>0.9928</td>
-                            </tr>
-                            <tr>
-                              <td>0</td>
-                              <td>1813</td>
-                              <td>DATE</td>
-                              <td>0.5841</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>                      
-                    </div>                    
-                    <p class="code_bg">nlp.load(<strong class="c_orange">'sentiment'</strong>).predict(<strong class="c_orange">"Well this was easy!"</strong>)</p>
-                    <div class="table_code_wrapper">
-                      <div class="table_code_inner">
-                        <table class="table_code">
-                          <thead>
-                            <tr>
-                              <th></th>
-                              <th>entities</th>
-                              <th>entities_class</th>
-                              <th>entities_confidence</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>0</td>
-                              <td>Well this wsa easy!</td>
-                              <td>pas</td>
-                              <td>0.999901</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>                    
-                  </div>                    
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      {%- endif -%}
 
         {%- if _section.transformers -%}
 

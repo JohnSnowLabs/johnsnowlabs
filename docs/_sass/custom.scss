@@ -498,7 +498,7 @@ h2.h2_doc {
 }
 
 .code_snippet {
-	padding: 38px 96px;
+	padding: 38px 30px;
 	background: rgba(244, 247, 252, 0.8);
 	border-radius: 8px;
 	.code_bg {
@@ -509,10 +509,10 @@ h2.h2_doc {
 			content: '';
 			position: absolute;
 			top: -15px;
-			left: -96px;
+			left: -30px;
 			background: #E7EEF9;
 			display: block;
-			width: calc(100% + 192px);
+			width: calc(100% + 60px);
 			height: calc(100% + 30px);
 			z-index: -1;
 		}
@@ -663,8 +663,7 @@ p.code_snip_dots {
 		}
 	}	
 	.quick_easy_inner {
-		padding-left: 81px;
-		margin-top: 44px;
+		margin-top: 80px;
 		h3 {
 			font-weight: 800;
 			font-size: 40px;
@@ -3596,6 +3595,11 @@ code {
 	}
 	.quick_easy .quick_easy_inner {
 		padding-left: 0;
+		text-align: center !important;
+		margin-top: 50px;
+		.descr_quick {
+			text-align: center;
+		}
 		h3 {
 			font-size: 33px;
 			line-height: 36px;
@@ -3746,12 +3750,6 @@ code {
 			padding: 0;
 		}
 	}
-	.heros .quick_easy {
-		.descr_quick,
-		h3 {
-			text-align: left;
-		}
-	}
 	.benchmark-top {
 		padding-top: 0;
 	}
@@ -3796,6 +3794,13 @@ code {
 	.header__title {
 		width: 100%;
 		margin: 0;
+	}
+	.code_snippet {
+		padding: 38px 15px;
+		.code_bg::after {
+			left: -15px;
+			width: calc(100% + 30px);
+		}
 	}
 	.menu.three_a li {
 		margin-bottom: 15px;
@@ -3907,9 +3912,6 @@ code {
 	}
 	.cell--sm-12 {
 		width: 100% !important;
-	}
-	.quick_easy .quick_easy_inner {
-		text-align: center !important;
 	}
 	.topthree {
 		width: 70%;
