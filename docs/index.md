@@ -69,7 +69,7 @@ data:
 
         - text: NLP Display
           description: Open-Source Python library for visualizing the annotations generated with Spark NLP. 
-          img: /assets/images/home/nlp_display.jpg
+          img: /assets/images/home/nlp_display.png
 
         - text: NLP Test
           description: Deliver safe and effective models with an open-source library by generating & running over 50 test types on the most popular NLP libraries & tasks.
