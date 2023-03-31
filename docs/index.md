@@ -45,7 +45,7 @@ data:
 
     - title: Quick and Easy
       install: yes
-      excerpt: Available on <a href="https://pypi.org/project/johnsnowlabs/" target="_blank">PyPI</a> and <a href="https://anaconda.org/JohnSnowLabs/spark-nlp" target="_blank">Conda</a>. 
+      excerpt: Available on <a href="https://pypi.org/project/johnsnowlabs/" target="_blank">PyPI</a> and <a href="https://anaconda.org/johnsnowlabs/johnsnowlabs" target="_blank">Conda</a>. 
       actions:
         - text: Install JohnSnowLabs
           type: big_btn
