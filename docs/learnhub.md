@@ -24,7 +24,7 @@ modify_date: "2019-05-16"
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/spark-nlp-blog/">Spark NLP</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/healthcare-nlp-blog/">Healthcare NLP</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/visual-nlp-blog/">Spark OCR</a></li>
-                    <li><a target="_blank" href="https://www.johnsnowlabs.com/annotation-lab-blog/">Annotation Lab</a></li>
+                    <li><a target="_blank" href="https://www.johnsnowlabs.com/annotation-lab-blog/">NLP Lab</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/auto-nlp-blog/">Auto NLP</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/multimodal-ai-blog/">Multimodal AI</a></li>
                 </ul>
@@ -48,7 +48,7 @@ modify_date: "2019-05-16"
                 <ul class="learn-hub-list">
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/ai-in-healthcare-blog/">AI in Healthcare</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/no-code-ai-blog/">No-Code AI</a></li>
-                    <li><a target="_blank" href="https://www.johnsnowlabs.com/responsible-nlp-blog/">Responsible NL</a></li>
+                    <li><a target="_blank" href="https://www.johnsnowlabs.com/responsible-nlp-blog/">Responsible NLP</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/data-philanthropy-blog/">Data Philanthropy</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/announcements-blog/">Announcements</a></li>
                     <li><a target="_blank" href="https://www.johnsnowlabs.com/awards-blog/">Awards</a></li>
