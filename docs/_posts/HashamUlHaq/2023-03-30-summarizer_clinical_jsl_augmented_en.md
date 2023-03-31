@@ -37,12 +37,15 @@ Summarize clinical notes, encounters, critical care notes, discharge notes, repo
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-document = sparknlp.annotators.DocumentAssembler().setInputCol('text').setOutputCol('document')
 
-summarizer = sparknlp_jsl.annotators.MedicalSummarizer\
-    .pretrained("summarizer_clinical_jsl").setInputCols(['document'])\
-    .setOutputCol('summary')\
+```python
+document = DocumentAssembler()\
+    .setInputCol('text')\
+    .setOutputCol('document')
+
+summarizer = MedicalSummarizer.pretrained("summarizer_clinical_jsl_augmented")\
+    .setInputCols(["document"])\
+    .setOutputCol("summary")\
     .setMaxTextLength(512)\
     .setMaxNewTokens(512)
 
@@ -51,14 +54,14 @@ pipeline = sparknlp.base.Pipeline(stages=[
     summarizer  
 ])
 
-text = ""'Patient with hypertension, syncope, and spinal stenosis - for recheck.
+text = """Patient with hypertension, syncope, and spinal stenosis - for recheck.
 (Medical Transcription Sample Report)
 SUBJECTIVE:
 The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
 PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
 Reviewed and unchanged from the dictation on 12/03/2003.
 MEDICATIONS:
-Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.'""
+Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
@@ -69,14 +72,17 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val summarizer = MedicalSummarizer
-    .pretrained("summarizer_clinical_jsl")
-    .setInputCols(['document'])
-    .setOutputCol('summary')
+val summarizer = MedicalSummarizer.pretrained("summarizer_clinical_jsl_augmented")
+    .setInputCols("document")
+    .setOutputCol("summary")
     .setMaxTextLength(512)
     .setMaxNewTokens(512)
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, summarizer))
+val pipeline = new Pipeline()
+    .setStages(Array(
+        document_assembler, 
+        summarizer
+     ))
 ```
 </div>
 
