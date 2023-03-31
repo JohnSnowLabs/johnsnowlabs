@@ -258,7 +258,7 @@ returns :
 </div><div class="h3-box" markdown="1">
 
 #### New NLU helper Methods
-You can see all features showcased in the [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/colab/spark_nlp_utilities/NLU_utils_for_Spark_NLP.ipynb)  notebook or on [the new docs page for Spark NLP utils](https://nlu.johnsnowlabs.com/docs/en/jsl/namespace/utils_for_spark_nlp)
+You can see all features showcased in the [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/colab/spark_nlp_utilities/NLU_utils_for_Spark_NLP.ipynb)  notebook or on [the new docs page for Spark NLP utils](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace/utils_for_spark_nlp)
 
 </div><div class="h3-box" markdown="1">
 
@@ -706,7 +706,7 @@ All healthcare models added in NLU 4.0 :
 #### All NLU 4.0 Core Models
 
 All core models added in NLU 4.0 :
-Can be found on the [NLU website](https://nlu.johnsnowlabs.com/docs/en/jsl/release_notes) because of Github Limitations
+Can be found on the [NLU website](https://nlp.johnsnowlabs.com/docs/en/jsl/release_notes) because of Github Limitations
 
 
 
@@ -2773,12 +2773,12 @@ and their respective ISO-639-3 and ISO 630-2 codes are :
 </div><div class="h3-box" markdown="1">
 
 #### Additional NLU resources
-* [140+ NLU Tutorials](https://nlu.johnsnowlabs.com/docs/en/jsl/notebooks)
+* [140+ NLU Tutorials](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
 * [NLU in Action](https://nlp.johnsnowlabs.com/demo)
-* [Streamlit visualizations docs](https://nlu.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
+* [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU documentation](https://nlu.johnsnowlabs.com/docs/en/jsl/install)
+* [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
 </div><div class="h3-box" markdown="1">
@@ -2836,12 +2836,12 @@ Integrates models from [Spark NLP For Healthcare 3.4.2](https://nlp.johnsnowlabs
 </div><div class="h3-box" markdown="1">
 
 #### Additional NLU resources
-* [140+ NLU Tutorials](https://nlu.johnsnowlabs.com/docs/en/jsl/notebooks)
+* [140+ NLU Tutorials](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
 * [NLU in Action](https://nlp.johnsnowlabs.com/demo)
-* [Streamlit visualizations docs](https://nlu.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
+* [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU documentation](https://nlu.johnsnowlabs.com/docs/en/jsl/install)
+* [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
 </div><div class="h3-box" markdown="1">
@@ -2965,12 +2965,12 @@ and Relation extractors for Temporality and Causality of Drugs and Adverse Event
 </div><div class="h3-box" markdown="1">
 
 #### Additional NLU resources
-* [140+ NLU Tutorials](https://nlu.johnsnowlabs.com/docs/en/jsl/notebooks)
+* [140+ NLU Tutorials](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
 * [NLU in Action](https://nlp.johnsnowlabs.com/demo)
-* [Streamlit visualizations docs](https://nlu.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
+* [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU documentation](https://nlu.johnsnowlabs.com/docs/en/jsl/install)
+* [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
 </div><div class="h3-box" markdown="1">
@@ -3001,7 +3001,7 @@ This release features `11 new annotator classes` and `80` new models, including 
 from various file types, support for `GPT2` and new pretrained `T5` models for **Text Generation** and dozens more of new transformer based models
 for **Token and Sequence Classification**.
 This includes `8 new Sequence classifier models` which can be pretrained in Huggingface and imported into Spark NLP and NLU.
-Finally, the NLU tutorial page of the [140+ notebooks has been updated](https://nlu.johnsnowlabs.com/docs/en/jsl/notebooks)
+Finally, the NLU tutorial page of the [140+ notebooks has been updated](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
 
 
 #### **New** NLU OCR Features
@@ -3010,7 +3010,7 @@ Finally, the NLU tutorial page of the [140+ notebooks has been updated](https://
 You need a Spark OCR license for using these, which is available for [free here](https://www.johnsnowlabs.com/spark-nlp-try-free/) and refer to the new
 [OCR tutorial notebook](https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/colab/ocr/ocr_for_img_pdf_docx_files.ipynb)        
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/colab/ocr/ocr_for_img_pdf_docx_files.ipynb)
-Find more details on the [NLU OCR documentation page](https://nlu.johnsnowlabs.com/docs/en/jsl/nlu_for_ocr)
+Find more details on the [NLU OCR documentation page](https://nlp.johnsnowlabs.com/docs/en/jsl/nlu_for_ocr)
 
 
 #### **New** NLU Healthcare Features
@@ -3179,12 +3179,12 @@ Integration for the 28 new models from the amazing [Spark NLP for healthcare 3.4
 #### Additional NLU resources
 
 * [NLU OCR tutorial notebook](https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/colab/ocr/ocr_for_img_pdf_docx_files.ipynb)
-* [140+ NLU Tutorials](https://nlu.johnsnowlabs.com/docs/en/jsl/notebooks)
+* [140+ NLU Tutorials](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
 * [NLU in Action](https://nlp.johnsnowlabs.com/demo)
-* [Streamlit visualizations docs](https://nlu.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
+* [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU documentation](https://nlu.johnsnowlabs.com/docs/en/jsl/install)
+* [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
 
@@ -3478,11 +3478,11 @@ Added documentation section regarding compatibility of NLU, Spark NLP and Spark 
 
 #### Additional NLU ressources
 * [140+ NLU Tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
-* [Streamlit visualizations docs](https://nlu.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
+* [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
 * [NLU in Action](https://nlp.johnsnowlabs.com/demo)
-* [NLU documentation](https://nlu.johnsnowlabs.com/docs/en/jsl/install)
+* [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
 
@@ -3791,11 +3791,11 @@ you have a Pyarrow version installed that works with your Pyspark version.
 
 #### Additional NLU ressources
 * [140+ NLU Tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
-* [Streamlit visualizations docs](https://nlu.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
+* [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
 * [NLU in Action](https://nlp.johnsnowlabs.com/demo)
-* [NLU documentation](https://nlu.johnsnowlabs.com/docs/en/jsl/install)
+* [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
 
@@ -3861,7 +3861,7 @@ nlu.load('embed_sentence.bert').viz_streamlit_sentence_embed_manifold(text)
 |     `key`                                      |  `str`              | `"NLU_streamlit"`               | Key for the Streamlit elements drawn  |
 |`additional_classifiers_for_coloring`           |         `List[str]`|`['sentiment.imdb']` | List of additional NLU references to load for generting hue colors  |
 | `show_model_select`                            |  `bool`                                          | `True`                                                                                 | Show a model selection dropdowns that makes any of the 1000+ models avaiable in 1 click  |
-| `model_select_position`                        |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |   
+| `model_select_position`                        |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |   
 | `show_logo`                                    |  `bool`                                            | `True`                                                                                   | Show logo  |
 | `display_infos`                                |  `bool`                                            | `False`                                                                                  | Display additonal information about ISO codes and the NLU namespace structure.|  
 | `n_jobs`                                       |          `Optional[int]` | `3`|   `False` | How many cores to use for paralellzing when using Sklearn Dimension Reduction algorithms.  |  
@@ -4090,11 +4090,11 @@ See https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html for mor
 
 #### Additional NLU ressources
 * [140+ NLU Tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
-* [Streamlit visualizations docs](https://nlu.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
+* [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
 * [NLU in Action](https://nlp.johnsnowlabs.com/demo)
-* [NLU documentation](https://nlu.johnsnowlabs.com/docs/en/jsl/install)
+* [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
 
@@ -4162,7 +4162,7 @@ nlu.load('bert',verbose=True).viz_streamlit_word_embed_manifold(default_texts=TH
 | `key` |  `str` | `"NLU_streamlit"` | Key for the Streamlit elements drawn |
 | `additional_classifiers_for_coloring`|         `List[str]`|`['pos', 'sentiment.imdb']` | List of additional NLU references to load for generting hue colors |
 | `show_model_select`        |  `bool` | `True` | Show a model selection dropdowns that makes any of the 1000+ models avaiable in 1 click |
-| `model_select_position`    |  `str` |   `'side'` | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
+| `model_select_position`    |  `str` |   `'side'` | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
 | `show_logo` |  `bool` | `True` | Show logo |
 | `display_infos` |  `bool` | `False` | Display additonal information about ISO codes and the NLU namespace structure. |
 | `n_jobs`| `Optional[int]` | `False` | How many cores to use for paralellzing when using Sklearn Dimension Reduction algorithms.  |
@@ -6241,11 +6241,11 @@ In the following table the NLU and Spark-NLP references are listed:
 - Fixed bugs that occured when loading a model from disk.
 
 * [140+ NLU Tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
-* [Streamlit visualizations docs](https://nlu.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
+* [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 1100+ models & pipelines in 192+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
 * [NLU in Action](https://nlp.johnsnowlabs.com/demo)
-* [NLU documentation](https://nlu.johnsnowlabs.com/docs/en/jsl/install)
+* [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
 #### Install NLU in 1 line!
@@ -6268,7 +6268,7 @@ and can see with your own eyes how context is encoded by transformer models like
 Besides that, you can also compare the results of the 200+ NER models John Snow Labs provides and see how peformances changes with varrying ebeddings, like Contextual, Static and Domain Specific Embeddings.
 
 #### Install
-[For detailed instructions refer to the NLU install documentation here](https://nlu.johnsnowlabs.com/docs/en/jsl/install)   
+[For detailed instructions refer to the NLU install documentation here](https://nlp.johnsnowlabs.com/docs/en/jsl/install)   
 You need `Open JDK 8` installed and the following python packages
 ```bash
 pip install nlu streamlit pyspark==3.0.1 sklearn plotly 
@@ -6282,7 +6282,7 @@ streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples
 ```
 
 #### Quick Starter cheat sheet - All you need to know in 1 picture for NLU + Streamlit
-For NLU models to load, see [the NLU Namespace](https://nlu.johnsnowlabs.com/docs/en/jsl/namespace) or the [John Snow Labs Modelshub](https://modelshub.johnsnowlabs.com/models)  or go [straight to the source](https://github.com/JohnSnowLabs/nlu/blob/master/nlu/namespace.py).
+For NLU models to load, see [the NLU Namespace](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace) or the [John Snow Labs Modelshub](https://modelshub.johnsnowlabs.com/models)  or go [straight to the source](https://github.com/JohnSnowLabs/nlu/blob/master/nlu/namespace.py).
 ![NLU Streamlit Cheatsheet](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/img/NLU_Streamlit_Cheetsheet.png)
 
 
@@ -6320,9 +6320,9 @@ streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples
 ```
 
 #### How to use NLU?
-All you need to know about NLU is that there is the [`nlu.load()`](https://nlu.johnsnowlabs.com/docs/en/jsl/load_api) method which returns a `NLUPipeline` object
-which has a [`.predict()`](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api) that works on most [common data types in the pydata stack like Pandas dataframes](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#supported-data-types) .     
-Ontop of that, there are various visualization methods a NLUPipeline provides easily integrate in Streamlit as re-usable components. [`viz() method`](https://nlu.johnsnowlabs.com/docs/en/jsl/viz_examples)
+All you need to know about NLU is that there is the [`nlu.load()`](https://nlp.johnsnowlabs.com/docs/en/jsl/load_api) method which returns a `NLUPipeline` object
+which has a [`.predict()`](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api) that works on most [common data types in the pydata stack like Pandas dataframes](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#supported-data-types) .     
+Ontop of that, there are various visualization methods a NLUPipeline provides easily integrate in Streamlit as re-usable components. [`viz() method`](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples)
 
 
 
@@ -6332,14 +6332,14 @@ Ontop of that, there are various visualization methods a NLUPipeline provides ea
 
 |Method                                                         |               Description                 |
 |---------------------------------------------------------------|-------------------------------------------|
-| [`nlu.load('<Model>').predict(data)`](TODO.com)                                     | Load any of the [1000+ models](https://nlp.johnsnowlabs.com/models) by providing the model name any predict on most Pythontic [data strucutres like Pandas, strings, arrays of strings and more](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#supported-data-types) |
+| [`nlu.load('<Model>').predict(data)`](TODO.com)                                     | Load any of the [1000+ models](https://nlp.johnsnowlabs.com/models) by providing the model name any predict on most Pythontic [data strucutres like Pandas, strings, arrays of strings and more](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#supported-data-types) |
 | [`nlu.load('<Model>').viz_streamlit(data)`](TODO.com)                               | Display full NLU exploration dashboard, that showcases every feature avaiable with dropdown selectors for 1000+ models|
 | [`nlu.load('<Model>').viz_streamlit_similarity([string1, string2])`](TODO.com)      | Display similarity matrix and scalar similarity for every word embedding loaded and 2 strings. |
 | [`nlu.load('<Model>').viz_streamlit_ner(data)`](TODO.com)                           | Visualize predicted NER tags from Named Entity Recognizer model|
 | [`nlu.load('<Model>').viz_streamlit_dep_tree(data)`](TODO.com)                      | Visualize Dependency Tree together with Part of Speech labels|
 | [`nlu.load('<Model>').viz_streamlit_classes(data)`](TODO.com)                       | Display all extracted class features and confidences for every classifier loaded in pipeline|
 | [`nlu.load('<Model>').viz_streamlit_token(data)`](TODO.com)                         | Display all detected token features and informations in Streamlit |
-| [`nlu.load('<Model>').viz(data, write_to_streamlit=True)`](TODO.com)                | Display the raw visualization without any UI elements. See [viz docs for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/viz_examples). By default all aplicable nlu model references will be shown. |
+| [`nlu.load('<Model>').viz(data, write_to_streamlit=True)`](TODO.com)                | Display the raw visualization without any UI elements. See [viz docs for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples). By default all aplicable nlu model references will be shown. |
 | [`nlu.enable_streamlit_caching()`](#test)  | Enable caching the `nlu.load()` call. Once enabled, the `nlu.load()` method will automatically cached. **This is recommended** to run first and for large peformance gans |
 
 
@@ -6375,7 +6375,7 @@ nlu.load('ner').viz_streamlit(['I love NLU and Streamlit!','I hate buggy softwar
 |-----------------------|--------------------------------------------------|----------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
 | `text`                  |  `Union [str, List[str], pd.DataFrame, pd.Series]` | `'NLU and Streamlit go together like peanutbutter and jelly'`                            | Default text for the `Classification`, `Named Entitiy Recognizer`, `Token Information` and `Dependency Tree` visualizations
 | `similarity_texts`      |  `Union[List[str],Tuple[str,str]]`                 | `('Donald Trump Likes to part', 'Angela Merkel likes to party')`                         | Default texts for the `Text similarity` visualization. Should contain `exactly 2 strings` which will be compared `token embedding wise`. For each embedding active, a `token wise similarity matrix` and a `similarity scalar`
-| `model_selection`       |  `List[str]`                                       | `[]`                                                                                         | List of nlu references to display in the model selector, see [the NLU Namespace](https://nlu.johnsnowlabs.com/docs/en/jsl/namespace) or the [John Snow Labs Modelshub](https://modelshub.johnsnowlabs.com/models)  or go [straight to the source](https://github.com/JohnSnowLabs/nlu/blob/master/nlu/namespace.py) for more info
+| `model_selection`       |  `List[str]`                                       | `[]`                                                                                         | List of nlu references to display in the model selector, see [the NLU Namespace](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace) or the [John Snow Labs Modelshub](https://modelshub.johnsnowlabs.com/models)  or go [straight to the source](https://github.com/JohnSnowLabs/nlu/blob/master/nlu/namespace.py) for more info
 | `title`                 |  `str`                                             | `'NLU ❤️ Streamlit - Prototype your NLP startup in 0 lines of code🚀'`                      | Title of the Streamlit app
 | `sub_title`             |  `str`                                             | `'Play with over 1000+ scalable enterprise NLP models'`                                  | Sub title of the Streamlit app
 | `visualizers`           |  `List[str]`                                       | `( "dependency_tree", "ner",  "similarity", "token_information", 'classification')`      | Define which visualizations should be displayed. By default all visualizations are displayed.
@@ -6386,7 +6386,7 @@ nlu.load('ner').viz_streamlit(['I love NLU and Streamlit!','I hate buggy softwar
 | `display_infos`         |  `bool`                                            | `False`                                                                                  | Display additonal information about ISO codes and the NLU namespace structure.
 | `set_wide_layout_CSS`     |  `bool`                                                             |  `True`                                                                                   | Whether to inject custom CSS or not.
 |     `key`                 |  `str`                                                              | `"NLU_streamlit"`    | Key for the Streamlit elements drawn
-| `model_select_position`   |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
+| `model_select_position`   |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
 | `show_code_snippets`      |  `bool`                                                             |  `False`                                                                                 | Display Python code snippets above visualizations that can be used to re-create the visualization
 |`num_similarity_cols`                               | `int`               |  `2`                            |  How many columns should for the layout in Streamlit when rendering the similarity matrixes.
 
@@ -6408,14 +6408,14 @@ nlu.load('sentiment').viz_streamlit_classes(['I love NLU and Streamlit!','I love
 | Argument    | Type        |                                                            Default         |Description |
 |--------------------------- | ---------- |-----------------------------------------------------------| ------------------------------------------------------- |
 | `text`                    | `Union[str,list,pd.DataFrame, pd.Series, pyspark.sql.DataFrame ]`   |     `'I love NLU and Streamlit and sunny days!'`                  | Text to predict classes for. Will predict on each input of the iteratable or dataframe if type is not str.|
-| `output_level`            | `Optional[str]`                                                     |       `document`        | [Outputlevel of NLU pipeline, see `pipe.predict()` docsmore info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-level-parameter)|
+| `output_level`            | `Optional[str]`                                                     |       `document`        | [Outputlevel of NLU pipeline, see `pipe.predict()` docsmore info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-level-parameter)|
 | `include_text_col`        |  `bool`                                                              |`True`               | Whether to include a e text column in the output table or just the prediction data |
 | `title`                   | `Optional[str]`                                                     |   `Text Classification`            | Title of the Streamlit building block that will be visualized to screen |
-| `metadata`                | `bool`                                                              |  `False`             | [whether to output addition metadata or not, see `pipe.predict(meta=true)` docs for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-metadata) |
-| `positions`               |  `bool`                                                             |   `False`            | [whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
+| `metadata`                | `bool`                                                              |  `False`             | [whether to output addition metadata or not, see `pipe.predict(meta=true)` docs for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-metadata) |
+| `positions`               |  `bool`                                                             |   `False`            | [whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
 | `set_wide_layout_CSS`     |  `bool`                                                             |  `True`                                                                                   | Whether to inject custom CSS or not.
 |     `key`                 |  `str`                                                              | `"NLU_streamlit"`    | Key for the Streamlit elements drawn
-| `model_select_position`   |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
+| `model_select_position`   |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
 | `generate_code_sample`      |  `bool`                                                             |  `False`                                                                                 | Display Python code snippets above visualizations that can be used to re-create the visualization
 | `show_model_select`   |  `bool`                                          | `True`                                                                                 | Show a model selection dropdowns that makes any of the 1000+ models avaiable in 1 click
 | `show_logo`             |  `bool`                                            | `True`                                                                                   | Show logo
@@ -6452,12 +6452,12 @@ nlu.load('ner').viz_streamlit_ner('Donald Trump from America and Angela Merkel f
 | `show_table`               | `bool`                 |   `True`                                                                                                   | Whether show to predicted pandas table or not|
 | `title`                    | `Optional[str]`        |  `'Named Entities'`                                                                                        |  Title of the Streamlit building block that will be visualized to screen |
 | `sub_title`                    | `Optional[str]`        |  `'"Recognize various Named Entities (NER) in text entered and filter them. You can select from over 100 languages in the dropdown. On the left side.",'`                                                                                        |  Sub-title of the Streamlit building block that will be visualized to screen |
-| `colors`                   |  `Dict[str,str]`       |   `{}`                                                                                                     | Dict with `KEY=ENTITY_LABEL` and `VALUE=COLOR_AS_HEX_CODE`,which will change color of highlighted entities.[See custom color labels docs for more info.](https://nlu.johnsnowlabs.com/docs/en/jsl/viz_examples#define-custom-colors-for-labels) |
+| `colors`                   |  `Dict[str,str]`       |   `{}`                                                                                                     | Dict with `KEY=ENTITY_LABEL` and `VALUE=COLOR_AS_HEX_CODE`,which will change color of highlighted entities.[See custom color labels docs for more info.](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples#define-custom-colors-for-labels) |
 | `set_wide_layout_CSS`      |  `bool`                                                             |  `True`                                                                                   | Whether to inject custom CSS or not.
 |     `key`                  |  `str`                                                              | `"NLU_streamlit"`    | Key for the Streamlit elements drawn
 | `generate_code_sample`       |  `bool`                                                             |  `False`                                                                                 | Display Python code snippets above visualizations that can be used to re-create the visualization
 | `show_model_select`        |  `bool`                                          | `True`                                                                                 | Show a model selection dropdowns that makes any of the 1000+ models avaiable in 1 click
-| `model_select_position`    |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
+| `model_select_position`    |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
 | `show_text_input`        |  `bool`                                                              | `True`                                                                                 | Show text input field to input text in
 | `show_logo`             |  `bool`                                            | `True`                                                                                   | Show logo
 | `display_infos`         |  `bool`                                            | `False`                                                                                  | Display additonal information about ISO codes and the NLU namespace structure.
@@ -6487,7 +6487,7 @@ nlu.load('dep.typed').viz_streamlit_dep_tree('POS tags define a grammatical labe
 |     `key`                  |  `str`                                                              | `"NLU_streamlit"`    | Key for the Streamlit elements drawn
 | `generate_code_sample`       |  `bool`                                                             |  `False`                                                                                 | Display Python code snippets above visualizations that can be used to re-create the visualization
 | `show_model_select`        |  `bool`                                          | `True`                                                                                 | Show a model selection dropdowns that makes any of the 1000+ models avaiable in 1 click
-| `model_select_position`    |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
+| `model_select_position`    |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
 | `show_logo`             |  `bool`                                            | `True`                                                                                   | Show logo
 | `display_infos`         |  `bool`                                            | `False`                                                                                  | Display additonal information about ISO codes and the NLU namespace structure.
 
@@ -6513,14 +6513,14 @@ nlu.load('stemm pos spell').viz_streamlit_token('I liek pentut buttr and jelly !
 | `title`                | `Optional[str]`                                                              |  `'Named Entities'`             |  Title of the Streamlit building block that will be visualized to screen |
 | `show_feature_select`        |  `bool`                                                              |`True`               | Whether to include the token feature selector|
 | `features`            | `Optional[List[str]]`                                                     |       `None`        |Features to to display. By default all Features will be displayed|
-| `metadata`                | `bool`                                                              |  `False`             | [Whether to output addition metadata or not, see `pipe.predict(meta=true)` docs for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-metadata) |
-| `output_level`            | `Optional[str]`                                                     |       `'token'`        | [Outputlevel of NLU pipeline, see `pipe.predict()` docsmore info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-level-parameter)|
-| `positions`               |  `bool`                                                             |   `False`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
+| `metadata`                | `bool`                                                              |  `False`             | [Whether to output addition metadata or not, see `pipe.predict(meta=true)` docs for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-metadata) |
+| `output_level`            | `Optional[str]`                                                     |       `'token'`        | [Outputlevel of NLU pipeline, see `pipe.predict()` docsmore info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-level-parameter)|
+| `positions`               |  `bool`                                                             |   `False`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
 | `set_wide_layout_CSS`      |  `bool`                                                             |  `True`                                                                                   | Whether to inject custom CSS or not.
 |     `key`                  |  `str`                                                              | `"NLU_streamlit"`    | Key for the Streamlit elements drawn
 | `generate_code_sample`       |  `bool`                                                             |  `False`                                                                                 | Display Python code snippets above visualizations that can be used to re-create the visualization
 | `show_model_select`        |  `bool`                                          | `True`                                                                                 | Show a model selection dropdowns that makes any of the 1000+ models avaiable in 1 click
-| `model_select_position`    |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
+| `model_select_position`    |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
 | `show_logo`             |  `bool`                                            | `True`                                                                                   | Show logo
 | `display_infos`         |  `bool`                                            | `False`                                                                                  | Display additonal information about ISO codes and the NLU namespace structure.
 
@@ -6557,7 +6557,7 @@ nlu.load('bert').viz_streamlit_word_similarity(['I love love loooove NLU! <3','I
 |     `key`                               |  `str`              | `"NLU_streamlit"`               | Key for the Streamlit elements drawn
 | `generate_code_sample`                  |  `bool`             |  `False`                        | Display Python code snippets above visualizations that can be used to re-create the visualization
 | `show_model_select`                     |  `bool`             | `True`                          | Show a model selection dropdowns that makes any of the 1000+ models avaiable in 1 click
-| `model_select_position`                 |  `str`              |   `'side'`                      | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlu.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
+| `model_select_position`                 |  `str`              |   `'side'`                      | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
 |`write_raw_pandas`                       | `bool`              |  `False`                        | Write the raw pandas similarity df to streamlit
 |`display_embed_information`              | `bool`              |  `True`                         | Show additional embedding information like `dimension`, `nlu_reference`, `spark_nlp_reference`, `sotrage_reference`, `modelhub link` and more.
 |`dist_metrics`                           | `List[str]`         |  `['cosine']`                   | Which distance metrics to apply. If multiple are selected, there will be multiple plots for each embedding and metric. `num_plots = num_metric*num_embeddings`. Can use multiple at the same time, any of of `cityblock`,`cosine`,`euclidean`,`l2`,`l1`,`manhattan`,`nan_euclidean`. Provided via [Sklearn `metrics.pairwise` package](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics.pairwise)
@@ -6693,11 +6693,11 @@ hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented wit
 
 
 * [140+ tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
-* [New Streamlit visualizations docs](https://nlu.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
+* [New Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 1100+ models & pipelines in 192+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
 * [NLU in Action](https://nlp.johnsnowlabs.com/demo)
-* [NLU documentation](https://nlu.johnsnowlabs.com/docs/en/jsl/install)
+* [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
 
@@ -6743,7 +6743,7 @@ Finally, new multilingual models for `Afrikaans`, `Welsh`, `Maltese`, `Tamil`, a
 The latest NLU release integrated the beautiful Spark-NLP-Display package visualizations. You do not need to worry about installing it, when you try to visualize something, NLU will check if
 Spark-NLP-Display is installed, if it is missing it will be dynamically installed into your python executable environment, so you don't need to worry about anything!
 
-See the [visualization tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/visualization/NLU_visualizations_tutorial.ipynb)  and [visualization docs](https://nlu.johnsnowlabs.com/docs/en/jsl/viz_examples) for more info.
+See the [visualization tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/visualization/NLU_visualizations_tutorial.ipynb)  and [visualization docs](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples) for more info.
 
 ![Cheat Sheet visualization](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/nlu/VizExamples/viz_module/cheat_sheet.png)
 
@@ -6890,11 +6890,11 @@ All of the [140+ NLU tutorial Notebooks](https://github.com/JohnSnowLabs/nlu/tre
 - fixed a bug that caused some models to crash when loaded for HDD
 
 * [140+ updates tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
-* [Updated visualization docs](https://nlu.johnsnowlabs.com/docs/en/jsl/viz_examples)
+* [Updated visualization docs](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples)
 * [Models Hub](https://nlp.johnsnowlabs.com/models) with new models
 * [Spark NLP publications](https://medium.com/spark-nlp)
 * [NLU in Action](https://nlp.johnsnowlabs.com/demo)
-* [NLU documentation](https://nlu.johnsnowlabs.com/docs/en/jsl/install)
+* [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
 #### Install NLU in 1 line!aaa
@@ -6927,8 +6927,8 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 - Authorized mode for licensed features
 
 #### New Documentation
-- [NLU for Healthcare Examples](https://nlu.johnsnowlabs.com/docs/en/jsl/examples_hc#usage-examples-of-nluload)
-- [Instrunctions to authorize your environment to use Licensed features](https://nlu.johnsnowlabs.com/docs/en/jsl/examples_hc#authorize-access-to-licensed-features-and-install-healthcare-dependencies)
+- [NLU for Healthcare Examples](https://nlp.johnsnowlabs.com/docs/en/jsl/examples_hc#usage-examples-of-nluload)
+- [Instrunctions to authorize your environment to use Licensed features](https://nlp.johnsnowlabs.com/docs/en/jsl/examples_hc#authorize-access-to-licensed-features-and-install-healthcare-dependencies)
 
 
 #### New Notebooks
@@ -7184,8 +7184,8 @@ This new output level is used for relation extractors and will give you 1 row pe
 
 #### Additional NLU ressources
 
-- [NLU Website](https://nlu.johnsnowlabs.com/)
-- [All NLU Tutorial Notebooks](https://nlu.johnsnowlabs.com/docs/en/jsl/notebooks)
+- [NLU Website](https://nlp.johnsnowlabs.com/)
+- [All NLU Tutorial Notebooks](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
 - [NLU Videos and Blogposts on NLU](https://nlp.johnsnowlabs.com/learn#pythons-nlu-library)
 - [NLU on Github](https://github.com/JohnSnowLabs/nlu)
 - [Suggestions or Questions? Contact us in Slack!](https://join.slack.com/t/spark-nlp/shared_invite/zt-lutct9gm-kuUazcyFKhuGY3_0AMkxqA)
@@ -7367,8 +7367,8 @@ conda install -os_components johnsnowlabs nlu
 
 #### Additional NLU ressources
 
-- [NLU Website](https://nlu.johnsnowlabs.com/)
-- [All NLU Tutorial Notebooks](https://nlu.johnsnowlabs.com/docs/en/jsl/notebooks)
+- [NLU Website](https://nlp.johnsnowlabs.com/)
+- [All NLU Tutorial Notebooks](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
 - [NLU Videos and Blogposts on NLU](https://nlp.johnsnowlabs.com/learn#pythons-nlu-library)
 - [NLU on Github](https://github.com/JohnSnowLabs/nlu)
 - [Suggestions or Questions? Contact us in Slack!](https://join.slack.com/t/spark-nlp/shared_invite/zt-lutct9gm-kuUazcyFKhuGY3_0AMkxqA)
@@ -7854,8 +7854,8 @@ conda install -os_components johnsnowlabs nlu
 ```
 
 #### Additional NLU ressources
-- [NLU Website](https://nlu.johnsnowlabs.com/)
-- [All NLU Tutorial Notebooks](https://nlu.johnsnowlabs.com/docs/en/jsl/notebooks)
+- [NLU Website](https://nlp.johnsnowlabs.com/)
+- [All NLU Tutorial Notebooks](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
 - [NLU Videos and Blogposts on NLU](https://nlp.johnsnowlabs.com/learn#pythons-nlu-library)
 - [NLU on Github](https://github.com/JohnSnowLabs/nlu)
 
@@ -8167,8 +8167,8 @@ conda install -os_components johnsnowlabs nlu
 ```
 
 #### Additional NLU ressources
-- [NLU Website](https://nlu.johnsnowlabs.com/)
-- [All NLU Tutorial Notebooks](https://nlu.johnsnowlabs.com/docs/en/jsl/notebooks)
+- [NLU Website](https://nlp.johnsnowlabs.com/)
+- [All NLU Tutorial Notebooks](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
 - [NLU Videos and Blogposts on NLU](https://nlp.johnsnowlabs.com/learn#pythons-nlu-library)
 - [NLU on Github](https://github.com/JohnSnowLabs/nlu)
 
@@ -8186,7 +8186,7 @@ NLU 1.1.0 has over 720+ new pretrained models and pipelines while extending the 
 
 
 #### NLU 1.1.0  New Features
-* **720+** new models you can find an overview of all NLU models [here](https://nlu.johnsnowlabs.com/docs/en/jsl/namespace) and further documentation in the [models hub](https://nlp.johnsnowlabs.com/models)
+* **720+** new models you can find an overview of all NLU models [here](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace) and further documentation in the [models hub](https://nlp.johnsnowlabs.com/models)
 * **NEW:** Introducing MarianTransformer annotator for machine translation based on MarianNMT models. Marian is an efficient, free Neural Machine Translation framework mainly being developed by the Microsoft Translator team (646+ pretrained models & pipelines in 192+ languages)
 * **NEW:** Introducing T5Transformer annotator for Text-To-Text Transfer Transformer (Google T5) models to achieve state-of-the-art results on multiple NLP tasks such as Translation, Summarization, Question Answering, Sentence Similarity, and so on
 * **NEW:** Introducing brand new and refactored language detection and identification models. The new LanguageDetectorDL is faster, more accurate, and supports up to 375 languages
@@ -8550,8 +8550,8 @@ conda install -os_components johnsnowlabs nlu
 
 
 #### Additional NLU ressources
-- [NLU Website](https://nlu.johnsnowlabs.com/)
-- [All NLU Tutorial Notebooks](https://nlu.johnsnowlabs.com/docs/en/jsl/notebooks)
+- [NLU Website](https://nlp.johnsnowlabs.com/)
+- [All NLU Tutorial Notebooks](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
 - [NLU Videos and Blogposts on NLU](https://nlp.johnsnowlabs.com/learn#pythons-nlu-library)
 - [NLU on Github](https://github.com/JohnSnowLabs/nlu)
 
@@ -8567,7 +8567,7 @@ The Multi Label Classifier is using Bidirectional GRU and CNNs inside TensorFlow
 - Multi Label Classifier
     - The Multi Label Classifier learns a 1 to many mapping between text and labels. This means it can predict multiple labels at the same time for a given input string. This is very helpful for tasks similar to content tag prediction (HashTags/RedditTags/YoutubeTags/Toxic/E2e etc..)
     - Support up to 100 classes
-    - Pre-trained Multi Label Classifiers are already avaiable as [Toxic](https://nlu.johnsnowlabs.com/docs/en/jsl/examples#toxic-classifier) and [E2E](https://nlu.johnsnowlabs.com/docs/en/jsl/examples#e2e-classifier) classifiers
+    - Pre-trained Multi Label Classifiers are already avaiable as [Toxic](https://nlp.johnsnowlabs.com/docs/en/jsl/examples#toxic-classifier) and [E2E](https://nlp.johnsnowlabs.com/docs/en/jsl/examples#e2e-classifier) classifiers
 
 ####  Multi Label Classifier
 - [ Train Multi Label Classifier on E2E dataset Demo](https://colab.research.google.com/drive/15ZqfNUqliRKP4UgaFcRg5KOSTkqrtDXy?usp=sharing)
@@ -8728,7 +8728,7 @@ pyspark_pipe.transform(spark_df)
 #### NLU 1.0.4 New Notebooks,Tutorials and Docs
 - [NER training demo](https://colab.research.google.com/drive/1_GwhdXULq45GZkw3157fAOx4Wqo-fmFV?usp=sharing)
 - [Multi Class Text Classifier Training Demo updated to showcase usage of different Embeddings](https://colab.research.google.com/drive/12FA2TVvvRWw4pRhxDnK32WAzl9dbF6Qw?usp=sharing)
-- [New Documentation Page on how to train Models with NLU](https://nlu.johnsnowlabs.com/docs/en/jsl/training)
+- [New Documentation Page on how to train Models with NLU](https://nlp.johnsnowlabs.com/docs/en/jsl/training)
 - Databricks Notebook showcasing Scaling with NLU
 
 
@@ -8785,7 +8785,7 @@ We are glad to announce nlu 1.0.2 is released!
 - Integration of CI pipeline with Github Actions
 
 #### New Documentation is out!
-Check it out here :  http://nlu.johnsnowlabs.com/
+Check it out here :  http://nlp.johnsnowlabs.com/
 
 
 ## NLU Version 1.0.1

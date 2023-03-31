@@ -28,14 +28,14 @@ Outputs of running `jsl.start()` tell you which jars are loaded and versions of 
 
 ## Authorization Flow Parameters 
 Most of the authorization Flows and Parameters of `jsl.install()` are supported.                 
-Review detailed [docs here](https://nlu.johnsnowlabs.com/docs/en/jsl/install#authorization-flows-overview)  
+Review detailed [docs here](https://nlp.johnsnowlabs.com/docs/en/jsl/install#authorization-flows-overview)  
 
 | Parameter               | Description                                                                                                                                                                                                          | Example                                          | Default |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|---------|
 | `None`                  | Load license automatically via one of the **Auto-Detection Mechanisms**                                                                                                                                              | `jsl.start()`                                    | `False` |
 | `browser_login`         | Browser based authorization, Button to click on Notebooks and Browser Pop-Up otherwise.                                                                                                                              | `jsl.start(browser_login=True)`                  | `False` |
-| `access_token`          | Vist [my.johnsnowlabs.com](https://my.johnsnowlabs.com/) to extract a token which you can provide to enable license access. See [Access Token Example](http://nlu.johnsnowlabs.com/docs/en/jsl/install#via-access-token) | `jsl.start(access_token='myToken')`              | `None`  |
-| `secrets_file`          | Define JSON license file with keys  defined by [License Variable Overview](https://nlu.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables) and provide file path                     | `jsl.start(secrets_file='path/to/license.json')` | `None`  |
+| `access_token`          | Vist [my.johnsnowlabs.com](https://my.johnsnowlabs.com/) to extract a token which you can provide to enable license access. See [Access Token Example](http://nlp.johnsnowlabs.com/docs/en/jsl/install#via-access-token) | `jsl.start(access_token='myToken')`              | `None`  |
+| `secrets_file`          | Define JSON license file with keys  defined by [License Variable Overview](https://nlp.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables) and provide file path                     | `jsl.start(secrets_file='path/to/license.json')` | `None`  |
 | `store_in_jsl_home`     | Disable caching of new licenses to `~./jsl_home`                                                                                                                                                                     | `jsl.start(store_in_jsl_home=False)`             | `True`  |
 | `local_license_number`  | Specify which license to use, if you have access to multiple locally cached                                                                                                                                          | `jsl.start(license_number=5)`                    | `0`     |
 | `remote_license_number` | Specify which license to use, if you have access to multiple via OAUTH on [my.jsl.com](https://my.johnsnowlabs.com/)                                                                                                 | `jsl.start(license_number=5)`                    | `0`     |
@@ -43,7 +43,7 @@ Review detailed [docs here](https://nlu.johnsnowlabs.com/docs/en/jsl/install#aut
 </div><div class="h3-box" markdown="1">
 
 ### Manually specify License Parameters 
-These can be omitted according to the [License Variable Overview](https://nlu.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables)
+These can be omitted according to the [License Variable Overview](https://nlp.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables)
 
 | Parameter               | Description                            |
 |-------------------------|----------------------------------------|
