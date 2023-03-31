@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This improved model including flan-T5 base, samsun and alpaca, to achieve better performance in medical summarization.
+This improved model can achieve better performance in medical summarization.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
