@@ -91,7 +91,7 @@ Param Name [ classes ] :  Param Info : get the tags used to trained this NerDLMo
 
 ## Namespace
 The NLP name space describes the collection of all models, pipelines and components available in NLP and supported by the nlp.load() method.       
-You can view it on the [Name Space page](https://nlu.johnsnowlabs.com/docs/en/jsl/load_api)
+You can view it on the [Name Space page](https://nlp.johnsnowlabs.com/docs/en/jsl/load_api)
 
 
 </div></div>
