@@ -80,7 +80,7 @@ Returns :
 
 
 ```python
-nlp.load('ner').viz('Bill goes to New York')
+nlp.load('ner').viz('Billy goes to New York')
 ```
 Returns:    
 ![ner_viz_opensource](docs/assets/images/readme/ner_viz_opensource.png)
@@ -100,7 +100,7 @@ from johnsnowlabs import nlp
 nlp.install()
 # Start a licensed session
 nlp.start()
-nlp.load('en.med_ner.oncology_wip').predict("Woman is on  chemotherapy, carboplatin 300 mg/m2.")
+nlp.load('en.med_ner.oncology_wip').predict("Woman is on chemotherapy, carboplatin 300 mg/m2.")
 ```
 
 ## Usage 
@@ -114,7 +114,7 @@ See the [General Concepts Documentation](https://nlp.johnsnowlabs.com/docs/en/co
 nlp.load('en.resolve.icd10cm.augmented')
     .viz('Patient with history of prior tobacco use, nausea, nose bleeding and chronic renal insufficiency.')
 ```
-returns:        
+Returns:        
 ![ner_viz_opensource](docs/assets/images/readme/ner_viz_oncology.png)
 
 
@@ -124,7 +124,7 @@ returns:
 nlp.load('relation.temporal_events')\
     .viz('The patient developed cancer after a mercury poisoning in 1999 ')
 ```
-returns:
+Returns:
 ![relationv_viz](docs/assets/images/readme/relationv_viz.png)
 
 ## Helpful Resources
