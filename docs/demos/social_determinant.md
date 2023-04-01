@@ -93,4 +93,16 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb
+        - title: Extract Community Condition Entities from Social Determinants of Health Texts
+          id: extract_community_condition_entities_social_determinants_health_texts         
+          image: 
+              src: /assets/images/Extract_Community_Condition_Entities_from_Social_Determinants_of_Health_Texts.svg
+          excerpt: This demo extracts community condition information related to Social Determinants of Health from various kinds of biomedical documents.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER_SDOH_COMMUNITY_CONDITION/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb
 ---
