@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Detect Clinical Entities (ner_jsl)
+title: Detect Clinical Entities
 author: John Snow Labs
 name: ner_jsl_limited_80p_for_benchmarks
 date: 2023-04-02
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-`Important Note: This model is trained with a partial dataset that is sued to train [ner_jsl](https://nlp.johnsnowlabs.com/2022/10/19/ner_jsl_en.html); and meant to be used for benchmarking purposes.
+`Important Note:` This model is trained with a partial dataset that is sued to train [ner_jsl](https://nlp.johnsnowlabs.com/2022/10/19/ner_jsl_en.html); and meant to be used for benchmarking purposes.
 
 Pretrained named entity recognition deep learning model for clinical terminology. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state-of-the-art model for NER: Chiu & Nicols, Named Entity Recognition with Bidirectional LSTM-CNN. This model is the official version of jsl_ner_wip_clinical model.
 
