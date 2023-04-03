@@ -49,7 +49,7 @@ med_text_generator  = MedicalTextGenerator.pretrained("text_generator_generic_js
 
 pipeline = Pipeline(stages=[document_assembler, med_text_generator])
 
-data = spark.createDataFrame([["the patient is admitted to the clinic with a severe back pain and "]]).toDF("document_prompt")
+data = spark.createDataFrame([["the patient is admitted to the clinic with a severe back pain and "]]).toDF("prompt")
 
 pipeline.fit(data).transform(data)
 
@@ -69,7 +69,7 @@ val med_text_generator  = MedicalTextGenerator.pretrained("text_generator_generi
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, med_text_generator))
 
-val data = Seq(Array("the patient is admitted to the clinic with a severe back pain and ")).toDS.toDF("text")
+val data = Seq(Array("the patient is admitted to the clinic with a severe back pain and ")).toDS.toDF("prompt")
 
 val result = pipeline.fit(data).transform(data)
 
