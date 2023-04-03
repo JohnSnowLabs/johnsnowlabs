@@ -50,7 +50,7 @@ med_text_generator  = MedicalTextGenerator.pretrained("text_generator_biomedical
 
 pipeline = Pipeline(stages=[document_assembler, med_text_generator])
 
-data = spark.createDataFrame([["Covid 19 is"], ["The most common cause of stomach pain is"]]).toDF("document_prompt")
+data = spark.createDataFrame([["Covid 19 is"], ["The most common cause of stomach pain is"]]).toDF("prompt")
 
 pipeline.fit(data).transform(data)
 
@@ -70,7 +70,7 @@ val med_text_generator  = MedicalTextGenerator.pretrained("text_generator_biomed
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, med_text_generator))
 
-val data = Seq(Array("Covid 19 is", "The most common cause of stomach pain is")).toDS.toDF("text")
+val data = Seq(Array("Covid 19 is", "The most common cause of stomach pain is")).toDS.toDF("prompt")
 
 val result = pipeline.fit(data).transform(data)
 ```
