@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-MedicalTextGenerator is a T5-based model for text generation. It can generate texts given a few tokens as an into and can generate up to 512 tokens.
+This model is a modified version of Flan-T5 (LLM) based text generation model that is finetuned with natural instruction datasets by John Snow Labs.  Given a few tokens as an intro, it can generate human-like, conceptually meaningful texts  up to 512 tokens given an input text (max 1024 tokens).
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

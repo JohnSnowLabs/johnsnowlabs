@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Summarize clinical notes, encounters, critical care notes, discharge notes, reports, etc.
+This model is a Flan-T5 (LLM) based summarization model that is finetuned with biomedical datasets (Pubmed abstracts) by John Snow Labs.  It can generate summaries up to 512 tokens given an input text (max 1024 tokens).
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -33,6 +33,7 @@ Summarize clinical notes, encounters, critical care notes, discharge notes, repo
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 document_assembler = DocumentAssembler()\

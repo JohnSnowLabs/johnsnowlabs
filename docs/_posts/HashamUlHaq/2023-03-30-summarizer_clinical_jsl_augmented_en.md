@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Summarize clinical notes, encounters, critical care notes, discharge notes, reports, etc. This model is made robust by augmenting the training methodology, and dataset.
+This model is a modified version of Flan-T5 (LLM) based summarization model that is at first finetuned with natural instructions and then finetuned with clinical notes, encounters, critical care notes, discharge notes, reports, curated  by John Snow Labs. This model is further optimized by augmenting the training methodology, and dataset. It can generate summaries from clinical notes up to 512 tokens given the input text (max 1024 tokens).
 
 ## Predicted Entities
 
@@ -43,7 +43,7 @@ document = DocumentAssembler()\
     .setInputCol('text')\
     .setOutputCol('document')
 
-summarizer = MedicalSummarizer.pretrained("summarizer_clinical_jsl_augmented")\
+summarizer = MedicalSummarizer.pretrained("summarizer_clinical_jsl_augmented", "en", "clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("summary")\
     .setMaxTextLength(512)\
@@ -72,7 +72,7 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val summarizer = MedicalSummarizer.pretrained("summarizer_clinical_jsl_augmented")
+val summarizer = MedicalSummarizer.pretrained("summarizer_clinical_jsl_augmented", "en", "clinical/models")
     .setInputCols("document")
     .setOutputCol("summary")
     .setMaxTextLength(512)
