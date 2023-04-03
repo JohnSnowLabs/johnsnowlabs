@@ -4,7 +4,7 @@ title: Voice of the Patients
 author: John Snow Labs
 name: ner_vop_wip
 date: 2023-03-30
-tags: [en, licensed]
+tags: [en, licensed, public_health, voice_of_patients]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 4.4.0
@@ -59,7 +59,7 @@ ner = MedicalNerModel.pretrained("ner_vop_wip", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("ner")
 
-ner_converter = NerConverter() \
+ner_converter = NerConverterInternal() \
     .setInputCols(["sentence", "token", "ner"]) \
     .setOutputCol("ner_chunk")
 pipeline = Pipeline(stages=[document_assembler,
@@ -94,7 +94,7 @@ val ner = MedicalNerModel.pretrained("ner_vop_wip", "en", "clinical/models")
     .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
     
-val ner_converter = new NerConverter()
+val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
 
