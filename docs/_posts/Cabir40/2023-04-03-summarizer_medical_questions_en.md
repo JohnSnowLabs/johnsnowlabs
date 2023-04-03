@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Summarize clinical notes, encounters, critical care notes, discharge notes, reports, etc.
+This model can generate questions related to the provided medical information.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -33,6 +33,7 @@ Summarize clinical notes, encounters, critical care notes, discharge notes, repo
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 document_assembler = DocumentAssembler()\
@@ -50,14 +51,7 @@ pipeline = sparknlp.base.Pipeline(stages=[
     summarizer  
 ])
 
-text = ""'Patient with hypertension, syncope, and spinal stenosis - for recheck.
-(Medical Transcription Sample Report)
-SUBJECTIVE:
-The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
-PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
-Reviewed and unchanged from the dictation on 12/03/2003.
-MEDICATIONS:
-Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash."
+text = """Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss,  from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I'm taking weekly supplement of vitamin D and 1000 mcg b12 daily. I'm taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I'm facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you."""
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
@@ -78,14 +72,7 @@ val summarizer  = MedicalSummarizer.pretrained("summarizer_medical_questions", "
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, summarizer))
 
-val text = ""'Patient with hypertension, syncope, and spinal stenosis - for recheck.
-(Medical Transcription Sample Report)
-SUBJECTIVE:
-The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
-PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
-Reviewed and unchanged from the dictation on 12/03/2003.
-MEDICATIONS:
-Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash."
+val text = """Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 month ago. I was feeling weak, light headed,poor digestion, panic attacks, depression, left chest pain, increased heart rate, rapidly weight loss,  from 4 months. Because of this, I stayed in the hospital and just discharged from hospital. I had many other blood tests, brain mri, ultrasound scan, endoscopy because of some dumb doctors bcs they were not able to diagnose actual problem. Finally I got an appointment with a homeopathy doctor finally he find that i was suffering from hyperthyroid and my TSH was 0.15 T3 and T4 is normal . Also i have b12 deficiency and vitamin D deficiency so I'm taking weekly supplement of vitamin D and 1000 mcg b12 daily. I'm taking homeopathy medicine for 40 days and took 2nd test after 30 days. My TSH is 0.5 now. I feel a little bit relief from weakness and depression but I'm facing with 2 new problem from last week that is breathtaking problem and very rapid heartrate. I just want to know if i should start allopathy medicine or homeopathy is okay? Bcs i heard that thyroid take time to start recover. So please let me know if both of medicines take same time. Because some of my friends advising me to start allopathy and never take a chance as i can develop some serious problems.Sorry for my poor english😐Thank you."""
 
 val data = Seq(Array(text)).toDS.toDF("text")
 
@@ -98,7 +85,8 @@ val result = pipeline.fit(data).transform(data)
 
 ```bash
 
-['A 78-year-old female with hypertension, syncope, and spinal stenosis returns for recheck. She denies chest pain, palpations, orthopnea, nocturnal dyspnea, or edema. She is on multiple medications and has Elocon cream and Synalar cream for rash.']
+['What are the treatments for hyperthyroidism?']
+
 ```
 
 {:.model-param}
