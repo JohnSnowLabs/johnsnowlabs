@@ -159,7 +159,7 @@ data:
             url: https://www.thetradedesk.com/us
         - title:
           image:
-            src: https://clarivate.com/wp-content/themes/clarivate/src/img/logo.svg
+            src: /assets/images/home/Clarivate_Analytics_logo.svg.png
             url: https://clarivate.com
         - title:
           image:
@@ -228,9 +228,8 @@ data:
             style: "padding: 10px;"
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Merck_%26_Co.svg/500px-Merck_%26_Co.svg.png
+            src: /assets/images/home/merck.jpg
             url: https://www.merck.com/
-            style: "padding: 10px;"
         - title:
           image:
             src: https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Roche_Logo.svg/500px-Roche_Logo.svg.png
