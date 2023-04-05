@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is a modified version of Flan-T5 (LLM) based text generation model, which is basically the same as official [Flan-T5-base model] [https://huggingface.co/google/flan-t5-base] released by Google.  Given a few tokens as an intro, it can generate human-like, conceptually meaningful texts  up to 512 tokens given an input text (max 1024 tokens).
+This model is a modified version of Flan-T5 (LLM) based text generation model, which is basically the same as official [Flan-T5-base model](https://huggingface.co/google/flan-t5-base) released by Google.  Given a few tokens as an intro, it can generate human-like, conceptually meaningful texts  up to 512 tokens given an input text (max 1024 tokens).
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
