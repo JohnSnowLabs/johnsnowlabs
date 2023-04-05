@@ -42,7 +42,7 @@ document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("documents")
 
-flant5 = finance.FinanceSummarizer().pretrained('finsum_flant5_base','en','finance/models')\
+flant5 = finance.Summarizer().pretrained('finsum_flant5_base','en','finance/models')\
     .setInputCols(["documents"])\
     .setOutputCol("flan_t5_output")\
     .setTask("summarize: ")
