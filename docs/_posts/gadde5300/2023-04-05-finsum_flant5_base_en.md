@@ -44,7 +44,7 @@ document_assembler = nlp.DocumentAssembler()\
 
 flant5 = finance.Summarizer().pretrained('finsum_flant5_base','en','finance/models')\
     .setInputCols(["documents"])\
-    .setOutputCol("flan_t5_output")
+    .setOutputCol("summary")
 
 pipeline = nlp.Pipeline(stages=[document_assembler, flant5])
 
@@ -54,7 +54,7 @@ data = spark.createDataFrame([
 
 results = pipeline.fit(data).transform(data)
 
-results.select("flan_t5_output.result").show(truncate=False)
+results.select("summary.result").show(truncate=False)
 ```
 
 </div>
