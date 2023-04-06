@@ -36,10 +36,11 @@ This model is a modified version of Flan-T5 (LLM) based summarization model that
 
 ```python
 document_assembler = DocumentAssembler()\
-    .setInputCol("text")|\
+    .setInputCol("text")\
     .setOutputCol("documents")
 
-med_summarizer  = MedicalSummarizer.pretrained("summarizer_generic_jsl", "en", "clinical/models")\
+med_summarizer  = MedicalSummarizer()\
+    .pretrained("summarizer_generic_jsl", "en", "clinical/models")\
     .setInputCols("documents")\
     .setOutputCol("summary")\
     .setMaxNewTokens(100)\
@@ -67,7 +68,7 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("documents")
 
-val med_summarizer  = MedicalSummarizer
+val med_summarizer  = MedicalSummarizer()
     .pretrained("summarizer_generic_jsl", "en", "clinical/models")
     .setInputCols("documents")
     .setOutputCol("summary")
@@ -115,3 +116,15 @@ val result = pipeline.fit(data).transform(data)
 |Edition:|Official|
 |Language:|en|
 |Size:|920.0 MB|
+
+## Benchmarking
+### Benchmark on Samsum Dataset
+
+| model_name | model_size | rouge | bleu | bertscore_precision | bertscore_recall: | bertscore_f1 |
+|--|--|--|--|--|--|--|
+philschmid/flan-t5-base-samsum | 240M | 0.2734 | 0.1813 | 0.8938 | 0.9133 | 0.9034 | 
+linydub/bart-large-samsum | 500M | 0.3060 | 0.2168 | 0.8961 | 0.9065 | 0.9013 |
+philschmid/bart-large-cnn-samsum | 500M | 0.3794 | 0.1262 | 0.8599 | 0.9153 | 0.8867 | 
+transformersbook/pegasus-samsum | 570M | 0.3049 | 0.1543 | 0.8942 | 0.9183 | 0.9061 | 
+summarizer_generic_jsl | 240M | 0.2703 | 0.1932 | 0.8944 | 0.9161 | 0.9051 |
+
