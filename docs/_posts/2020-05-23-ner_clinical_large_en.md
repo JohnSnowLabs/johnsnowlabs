@@ -109,7 +109,7 @@ The output is a dataframe with a sentence per row and a ``"ner"`` column contain
 |Type:|ner|
 |Compatibility:|Spark NLP 2.5.0+|
 |Edition:|Official|
-|License:|Licenced|
+|License:|Licensed|
 |Input Labels:|[sentence, token, embeddings]|
 |Output Labels:|[ner]|
 |Language:|[en]|
