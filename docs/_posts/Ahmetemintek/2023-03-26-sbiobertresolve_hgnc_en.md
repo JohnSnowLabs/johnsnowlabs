@@ -27,7 +27,7 @@ This model maps extracted gene names and their short-form abbreviations to HGNC 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_hgnc_en_4.3.2_3.0_1679847290330.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_hgnc_en_4.3.2_3.0_1679847290330.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_hgnc_en_4.3.2_3.0_1679847290330.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use

@@ -37,7 +37,7 @@ Also, please note that the Chinese texts are not separated by white space. The e
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/finance/FINNER_FINANCE_CHINESE){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_finance_chinese_sm_zh_1.0.0_3.0_1675554138686.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_finance_chinese_sm_zh_1.0.0_3.0_1675554138686.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finner_finance_chinese_sm_zh_1.0.0_3.0_1675554138686.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
