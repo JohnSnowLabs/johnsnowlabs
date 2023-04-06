@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Word Embeddings lookup annotator that maps tokens to vectors.
+This model is trained on a list of clinical and biomedical datasets curated in-house, using the word2vec algorithm. The dataset curation cut-off date is March 2023 and the model is expected to have a better generalization on recent content. The size of the model is around 1 GB and has 200 dimensions. Our benchmark tests indicate that our legacy clinical embeddings (embeddings _clinical) can be replaced with this one.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
