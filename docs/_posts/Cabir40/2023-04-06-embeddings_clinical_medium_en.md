@@ -32,6 +32,7 @@ Word Embeddings lookup annotator that maps tokens to vectors.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_medium","en","clinical/models")\
@@ -39,6 +40,7 @@ embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_medium","en","c
     .setOutputCol("word_embeddings")
 
 ```
+
 ```scala
 
 val embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_medium","en","clinical/models")
