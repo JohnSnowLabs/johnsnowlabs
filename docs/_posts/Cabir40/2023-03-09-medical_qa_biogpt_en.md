@@ -30,7 +30,7 @@ It can generate two types of answers, short and long. Types of questions are sup
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/BIOGPT_MEDICAL_QUESTION_ANSWERING/){:.button.button-orange}{:target="_blank"}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/31.Medical_Question_Answering.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}{:target="_blank"}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medical_qa_biogpt_en_4.3.1_3.0_1678355315206.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medical_qa_biogpt_en_4.3.1_3.0_1678355315206.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/medical_qa_biogpt_en_4.3.1_3.0_1678355315206.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use

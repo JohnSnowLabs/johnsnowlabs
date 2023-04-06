@@ -30,7 +30,7 @@ Given a document, the legclf_wood_industry_bert model, it is a Bert Sentence Emb
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_wood_industry_bert_en_1.0.0_3.0_1678111777594.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_wood_industry_bert_en_1.0.0_3.0_1678111777594.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legclf_wood_industry_bert_en_1.0.0_3.0_1678111777594.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use

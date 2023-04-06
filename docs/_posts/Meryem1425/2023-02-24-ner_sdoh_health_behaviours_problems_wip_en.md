@@ -28,7 +28,7 @@ This model extracts health and behaviours problems related to Social Determinant
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_health_behaviours_problems_wip_en_4.3.1_3.0_1677198610586.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_health_behaviours_problems_wip_en_4.3.1_3.0_1677198610586.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_health_behaviours_problems_wip_en_4.3.1_3.0_1677198610586.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
