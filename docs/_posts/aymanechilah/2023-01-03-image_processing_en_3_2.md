@@ -243,3 +243,13 @@ val result_multiple = pipeline_multiple.transform(image_example_df).cache()
 input_image=input_image
 output_image=output_image
 %}
+
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|image_processing|
+|Compatibility:|Healthcare NLP 4.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
