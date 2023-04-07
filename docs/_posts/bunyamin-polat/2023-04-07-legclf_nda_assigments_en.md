@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Understanding Restriction level of NDA Assignment Clauses
+title: Understanding Restriction level of Assignment Clauses
 author: John Snow Labs
 name: legclf_nda_assigments
 date: 2023-04-07
