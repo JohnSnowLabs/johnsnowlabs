@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Understanding Perpetuity Sentences in Return of Confidential Information Clauses
+title: Understanding Perpetuity in "Return of Confidential Information" Clauses
 author: John Snow Labs
 name: legclf_nda_perpetuity
 date: 2023-04-07
