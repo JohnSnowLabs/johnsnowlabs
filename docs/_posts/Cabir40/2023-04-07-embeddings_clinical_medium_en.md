@@ -32,6 +32,7 @@ This model is trained on a list of clinical and biomedical datasets curated in-h
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_medium","en","clinical/models")\
