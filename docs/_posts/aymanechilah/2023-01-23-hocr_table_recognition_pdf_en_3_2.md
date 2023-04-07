@@ -221,3 +221,13 @@ col0	col1	col2	col3	col4
 24	22	Section 250 deduction ( attach Form 8993 )			3.41
 25	23	Total dividends and inclusions . Add column ( ...	2341.23	None	None
 ```
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|hocr_table_recognition_pdf|
+|Type:|ocr|
+|Compatibility:|Visual NLP 4.2.4+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|

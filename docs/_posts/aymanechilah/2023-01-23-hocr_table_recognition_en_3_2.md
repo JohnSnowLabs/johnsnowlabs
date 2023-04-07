@@ -207,6 +207,15 @@ col0	col1	col2	col3
 21	OWNER'S COSTS			218,000
 22	CONTINGENCY			534.0001
 ```
+## Model Information
 
+{:.table-model}
+|---|---|
+|Model Name:|hocr_table_recognition|
+|Type:|ocr|
+|Compatibility:|Visual NLP 4.2.4+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
 
 

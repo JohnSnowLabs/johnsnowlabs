@@ -198,3 +198,12 @@ val tables_results = pipeline_table.transform(df).cache()
 |{file:/content/cT...|{0, 0, 214.0, 437...|{file:/content/cT...|{file:/content/cT...|      0|2022-09-28 18:54:...|file:/content/cTD...|{file:/content/cT...|385071|[[[[0, 0, 408, 32...|{file:/content/cT...|{0, 0, 0.0, 0.0,...|95.43954744611467|     null|                 ...|[{[{ , 0, 170.0, ...|
 +--------------------+--------------------+--------------------+--------------------+-------+--------------------+--------------------+--------------------+------+--------------------+--------------------+--------------------+-----------------+---------+--------------------+--------------------+
 ```
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|table_recognition|
+|Compatibility:|Healthcare NLP 4.1.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|

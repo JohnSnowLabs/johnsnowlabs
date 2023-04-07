@@ -123,3 +123,14 @@ text
 2	Alexandria is the second-largest city in Egypt and a major economic centre, extending about 32 km (20 mi) along the coast of the Mediterranean Sea in the north central part of the country. Its low elevation on the Nile delta makes it highly vulnerable to rising sea levels. Alexandria is an important industrial center because of its natural gas and oil pipelines from Suez. Alexandria is also a popular tourist destination.
 3	Alexandria was founded around a small, ancient Egyptian town c. 332 BC by Alexander the Great,[4] king of Macedon and leader of the Greek League of Corinth, during his conquest of the Achaemenid Empire. Alexandria became an important center of Hellenistic civilization and remained the capital of Ptolemaic Egypt and Roman and Byzantine Egypt for almost 1,000 years, until the Muslim conquest of Egypt in AD 641, when a new capital was founded at Fustat (later absorbed into Cairo). Hellenistic Alexandria was best known for the Lighthouse of Alexandria (Pharos), one of the Seven Wonders of the Ancient World; its Great Library (the largest in the ancient world); and the Necropolis, one of the Seven Wonders of the Middle Ages. Alexandria was at one time the second most powerful city of the ancient Mediterranean region, after Rome. Ongoing maritime archaeology in the harbor of Alexandria, which began in 1994, is revealing details of Alexandria both before the arrival of Alexander, when a city named Rhacotis existed there, and during the Ptolemaic dynasty.
 4	8 i , . ! 9 i , . ! 10 i , . ! 11 i , . ! 12 i , . ! 13 i , . ! 14 i , . !```
+```
+
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|pdf_processing|
+|Compatibility:|Healthcare NLP 4.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|

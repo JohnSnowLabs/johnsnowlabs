@@ -151,6 +151,16 @@ CHANGE DUE $0.00
 SBUX CARD X3228 NEW BALANCE: 37.45
 CARD IS REGISTERED
 ```
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|ocr_base_printed_v2_opt|
+|Type:|ocr|
+|Compatibility:|Visual NLP 4.2.4+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
 
 
 
