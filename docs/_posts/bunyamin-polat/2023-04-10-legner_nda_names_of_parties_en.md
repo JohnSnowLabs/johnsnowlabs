@@ -36,6 +36,7 @@ This is a NER model, aimed to be run **only** after detecting the `NAMES_OF_PART
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.DocumentAssembler()\
         .setInputCol("text")\
@@ -76,7 +77,7 @@ empty_data = spark.createDataFrame([[""]]).toDF("text")
 
 model = nlpPipeline.fit(empty_data)
 
-text = ["""This Confidentiality Agreement ( this "Agreement") is dated effective as of the 4th day of June 2001, between Amerada Hess Corporation, a Delaware corporation ("AHC"), and Triton Energy Limited, a Cayman Islands company ( the "Company")."""]
+text = ["""This Confidentiality Agreement (this "Agreement") is dated effective as of the 4th day of June 2001, between Amerada Hess Corporation, a Delaware corporation ("AHC"), and Triton Energy Limited, a Cayman Islands company (the "Company")."""]
 
 result = model.transform(spark.createDataFrame([text]).toDF("text"))
 ```
