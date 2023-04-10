@@ -22,7 +22,7 @@ This Generic Classifier model is intended for detecting if the patient is under 
 
 `Under_Treatment`: The patient is under treatment.
 
-`Not_Under_Treatment_Or_Not_Mentioned`: The patient id not under treatment or it is not mentioned in the clinical notes.
+`Not_Under_Treatment_Or_Not_Mentioned`: The patient is not under treatment or it is not mentioned in the clinical notes.
 
 ## Predicted Entities
 
@@ -40,6 +40,7 @@ This Generic Classifier model is intended for detecting if the patient is under 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -107,7 +108,7 @@ val pipeline = new PipelineModel().setStages(Array(
     features_asm,
     generic_classifier))
 
-val data = Seq("""Sarah, a 55-year-old woman with a history of high cholesterol and a family history of heart disease, presented to her primary care physician with complaints of chest pain and shortness of breath. After a thorough evaluation, Sarah was diagnosed with coronary artery disease (CAD), a condition that can lead to heart attacks and other serious complications.
+val data = Seq(Array("""Sarah, a 55-year-old woman with a history of high cholesterol and a family history of heart disease, presented to her primary care physician with complaints of chest pain and shortness of breath. After a thorough evaluation, Sarah was diagnosed with coronary artery disease (CAD), a condition that can lead to heart attacks and other serious complications.
 
 To manage her CAD, Sarah was started on a treatment plan that included medication to lower her cholesterol and blood pressure, as well as aspirin to prevent blood clots. In addition to medication, Sarah was advised to make lifestyle modifications such as improving her diet, quitting smoking, and increasing physical activity.
 
@@ -119,7 +120,7 @@ With regular follow-up appointments and adherence to her treatment plan, Sarah's
 """John, a 60-year-old man with a history of smoking and high blood pressure, presented to his primary care physician with complaints of chest pain and shortness of breath. Further tests revealed that John had a blockage in one of his coronary arteries, which required urgent intervention. However, John was hesitant to undergo treatment, citing concerns about potential complications and side effects of medications and procedures.
 
 Despite the physician's recommendations and attempts to educate John about the risks of leaving the blockage untreated, John ultimately chose not to pursue any treatment. Over the next several months, John continued to experience symptoms, which progressively worsened, and he ultimately required hospitalization for a heart attack. The medical team attempted to intervene at that point, but the damage to John's heart was severe, and his prognosis was poor.
-""").toDS.toDF("text")
+""")).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
@@ -165,5 +166,4 @@ Not_Under_Treatment_Or_Not_Mentioned       0.86      0.68      0.76       222
                             accuracy         -         -       0.86       672
                            macro-avg       0.86      0.81      0.83       672
                         weighted-avg       0.86      0.86      0.85       672
-
 ```
