@@ -40,6 +40,7 @@ This Generic Classifier model is intended for detecting if the patient has menta
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -141,7 +142,7 @@ val pipeline = new PipelineModel().setStages(Array(
     features_asm,
     generic_classifier))
 
-val data = Seq("""James is a 28-year-old man who has been struggling with schizophrenia for the past five years. He was diagnosed with the condition after experiencing a psychotic episode in his early 20s. The following is a case study that explores James' background, symptoms, diagnosis, treatment, and outcomes.
+val data = Seq(Array("""James is a 28-year-old man who has been struggling with schizophrenia for the past five years. He was diagnosed with the condition after experiencing a psychotic episode in his early 20s. The following is a case study that explores James' background, symptoms, diagnosis, treatment, and outcomes.
 
 Background:
 
@@ -165,7 +166,7 @@ With ongoing treatment, James' symptoms have become more manageable. He still ex
 """,
  """Patient John is a 60-year-old man who presents to a primary care clinic for a routine check-up. He reports feeling generally healthy, with no significant medical concerns. However, he reveals that he is a smoker and drinks alcohol on a regular basis. The patient also mentions that he has a history of working long hours and has limited time for physical activity and social interactions.
 
-Based on this information, it appears that Patient John's overall health may be affected by several social determinants of health, including tobacco and alcohol use, lack of physical activity, and social isolation. To address these issues, the healthcare provider may recommend a comprehensive physical exam and develop a treatment plan that includes lifestyle modifications, such as smoking cessation and reduction of alcohol intake. Additionally, the patient may benefit from referrals to local organizations that provide resources for physical activity and social engagement. The healthcare provider may also recommend strategies to reduce work-related stress and promote work-life balance. By addressing these social determinants of health, healthcare providers can help promote Patient John's overall health and prevent future health problems.""").toDS.toDF("text")
+Based on this information, it appears that Patient John's overall health may be affected by several social determinants of health, including tobacco and alcohol use, lack of physical activity, and social isolation. To address these issues, the healthcare provider may recommend a comprehensive physical exam and develop a treatment plan that includes lifestyle modifications, such as smoking cessation and reduction of alcohol intake. Additionally, the patient may benefit from referrals to local organizations that provide resources for physical activity and social engagement. The healthcare provider may also recommend strategies to reduce work-related stress and promote work-life balance. By addressing these social determinants of health, healthcare providers can help promote Patient John's overall health and prevent future health problems.""")).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
@@ -208,7 +209,7 @@ Internal SDOH Project
               label  precision    recall  f1-score   support
     Mental_Disorder       0.79      0.85      0.82       223
 No_Or_Not_Mentioned       0.85      0.78      0.82       240
-           accuracy          -       -        0.82       463
+           accuracy        -         -        0.82       463
           macro-avg       0.82      0.82      0.82       463
        weighted-avg       0.82      0.82      0.82       463
 ```
