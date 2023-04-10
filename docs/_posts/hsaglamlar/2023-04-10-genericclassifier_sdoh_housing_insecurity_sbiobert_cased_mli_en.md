@@ -40,6 +40,7 @@ This Generic Classifier model is intended for detecting whether the patient has 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -122,7 +123,7 @@ val pipeline = new PipelineModel().setStages(Array(
     features_asm,
     generic_classifier))
 
-val data = Seq("""Patient: Mary H.
+val data = Seq(Array("""Patient: Mary H.
 
 Background: Mary is a 40-year-old woman who has been diagnosed with asthma and allergies. She has been managing her conditions with medication and regular follow-up appointments with her healthcare provider. She lives in a rented apartment with her husband and two children and has been stably housed for the past five years.
 
@@ -149,7 +150,7 @@ Social history: Sarah is currently single and has no children. She has a high sc
 
 Assessment: The clinician assesses Sarah's mental health and determines that she is experiencing symptoms of anxiety and depression related to her housing insecurity. The clinician also assesses Sarah's housing situation and determines that she is at risk for homelessness if she is unable to secure stable housing soon.
 
-Plan: The clinician refers Sarah to a social worker who can help her connect with local housing resources, including subsidized housing programs and emergency shelters. The clinician also prescribes an antidepressant medication to help manage her symptoms of anxiety and depression. The clinician advises Sarah to continue to seek employment opportunities that may offer higher pay and stability.""").toDS.toDF("text")
+Plan: The clinician refers Sarah to a social worker who can help her connect with local housing resources, including subsidized housing programs and emergency shelters. The clinician also prescribes an antidepressant medication to help manage her symptoms of anxiety and depression. The clinician advises Sarah to continue to seek employment opportunities that may offer higher pay and stability.""")).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
@@ -189,12 +190,10 @@ Internal SDOH Project
 ## Benchmarking
 
 ```bash
-                       precision    recall  f1-score   support
-
+                label  precision    recall  f1-score   support
    Housing_Insecurity       0.83      0.81      0.82        64
 No_Housing_Insecurity       0.86      0.87      0.86        83
-
-             accuracy                           0.84       147
+             accuracy         -         -       0.84       147
             macro-avg       0.84      0.84      0.84       147
          weighted-avg       0.84      0.84      0.84       147
 ```
