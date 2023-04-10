@@ -159,12 +159,10 @@ Internal SDOH Project
 ## Benchmarking
 
 ```bash
-                                      precision    recall  f1-score   support
-
+                               label  precision    recall  f1-score   support
 Not_Under_Treatment_Or_Not_Mentioned       0.86      0.68      0.76       222
                      Under_Treatment       0.86      0.94      0.90       450
-
-                            accuracy                           0.86       672
+                            accuracy         -         -       0.86       672
                            macro-avg       0.86      0.81      0.83       672
                         weighted-avg       0.86      0.86      0.85       672
 
