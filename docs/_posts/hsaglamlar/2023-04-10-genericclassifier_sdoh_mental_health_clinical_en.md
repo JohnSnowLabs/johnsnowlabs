@@ -205,8 +205,7 @@ Internal SDOH Project
 ## Benchmarking
 
 ```bash
-                     precision    recall  f1-score   support
-
+              label  precision    recall  f1-score   support
     Mental_Disorder       0.79      0.85      0.82       223
 No_Or_Not_Mentioned       0.85      0.78      0.82       240
            accuracy          -       -        0.82       463
