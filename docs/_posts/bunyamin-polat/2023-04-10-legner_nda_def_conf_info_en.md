@@ -36,6 +36,7 @@ This is a NER model, aimed to be run **only** after detecting the `DEF_OF_CONF_I
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.DocumentAssembler()\
         .setInputCol("text")\
