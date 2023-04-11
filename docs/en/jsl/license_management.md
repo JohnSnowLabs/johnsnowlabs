@@ -3,7 +3,7 @@ layout: docs
 header: true
 seotitle: NLU | John Snow Labs
 title: License Management & Caching
-permalink: /docs/en/nlp./license_management
+permalink: /docs/en/nlp/license_management
 key: docs-concepts
 modify_date: "2020-05-08"
 header: true

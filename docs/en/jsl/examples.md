@@ -1251,8 +1251,7 @@ and NLU will return a pandas DF with one row per image detected
 nlu.load('en.classify_image.base_patch16_224').predict('/content/images/images')
 ```
 
-TODO SCREENSHOT 
-
+![vit](/assets/images/nlu/visual/vit_example.png)
 
 
 ## Image Classification (SWIN)
@@ -1271,16 +1270,8 @@ and NLU will return a pandas DF with one row per image detected
 ```python
 nlu.load('en.classify_image.swin.tiny').predict('/content/images/images')
 ```
-TODO SCREENSHOT
 
-
-
-
-
-
-
-
-
+![swin](/assets/images/nlu/visual/swin_example.png)
 
 ## T5
 [Example of every T5 task](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
