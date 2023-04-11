@@ -31,11 +31,11 @@ document_assembler = nlp.DocumentAssembler()\
 
 
 med_summarizer  = medical.Summarizer\
-    .pretrained("summarizer-generic-jsl", "en", "clinical/models")\
+    .pretrained("summarizer_generic_jsl", "en", "clinical/models")\
     .setInputCols("documents")\
     .setOutputCol("summary")\
     .setMaxNewTokens(100)\
-   .setMaxTextLength(1024)\
+    .setMaxTextLength(1024)\
 
 
 pipeline = nlp.Pipeline(stages=[document_assembler, med_summarizer])
@@ -67,7 +67,7 @@ val document_assembler = new nlp.DocumentAssembler()
     .setOutputCol("documents")
 
 
-val med_summarizer  = medical.Summarizer.pretrained("flat_t5_ft_caching", "en", "clinical/models")
+val med_summarizer  = medical.Summarizer.pretrained("summarizer_generic_jsl", "en", "clinical/models")
     .setInputCols("documents")
     .setOutputCol("summary")
     .setMaxNewTokens(100)
@@ -101,7 +101,7 @@ document_assembler = nlp.DocumentAssembler()\
 
 
 med_summarizer  = legal.Summarizer\
-    .pretrained("summarizer-generic-jsl", "en", "clinical/models")\
+    .pretrained("summarizer_generic_jsl", "en", "clinical/models")\
     .setInputCols("documents")\
     .setOutputCol("summary")\
     .setMaxNewTokens(100)\
@@ -138,7 +138,7 @@ val document_assembler = new nlp.DocumentAssembler()
     .setOutputCol("documents")
 
 
-val med_summarizer  = legal.Summarizer.pretrained("flat_t5_ft_caching", "en", "clinical/models")
+val med_summarizer  = legal.Summarizer.pretrained("summarizer_generic_jsl", "en", "clinical/models")
     .setInputCols("documents")
     .setOutputCol("summary")
     .setMaxNewTokens(100)
@@ -174,7 +174,7 @@ document_assembler = nlp.DocumentAssembler()\
 
 
 med_summarizer  = finance.Summarizer\
-    .pretrained("summarizer-generic-jsl", "en", "clinical/models")\
+    .pretrained("summarizer_generic_jsl", "en", "clinical/models")\
     .setInputCols("documents")\
     .setOutputCol("summary")\
     .setMaxNewTokens(100)\
@@ -210,7 +210,7 @@ val document_assembler = new nlp.DocumentAssembler()
     .setOutputCol("documents")
 
 
-val med_summarizer  = finance.Summarizer.pretrained("flat_t5_ft_caching", "en", "clinical/models")
+val med_summarizer  = finance.Summarizer.pretrained("summarizer_generic_jsl", "en", "clinical/models")
     .setInputCols("documents")
     .setOutputCol("summary")
     .setMaxNewTokens(100)
