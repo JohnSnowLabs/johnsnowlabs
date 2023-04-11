@@ -8,7 +8,7 @@ permalink: /docs/en/jsl/examples
 modify_date: "2023-03-27"
 show_nav: true
 sidebar:
-  nav: jsl
+nav: jsl
 ---
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
@@ -25,7 +25,7 @@ You can also pass multiple whitespace separated references.
 ## Named Entity Recognition (NER) 18 class
 [NER ONTO example](https://colab.research.google.com/drive/1_sgbJV3dYPZ_Q7acCgKWgqZkWcKAfg79?usp=sharing)
 
-Predicts the following 18 NER classes from the ONTO dataset : 
+Predicts the following 18 NER classes from the ONTO dataset :
 
 <div class="table-wrapper"><div class="table-inner" markdown="1">
 
@@ -72,7 +72,7 @@ nlp.load('ner').predict('Angela Merkel from Germany and the American Donald Trum
 ## Named Entity Recognition (NER) 5 Class
 [NER CONLL example](https://colab.research.google.com/drive/1CYzHfQyFCdvIOVO2Z5aggVI9c0hDEOrw?usp=sharing)
 
-Predicts the following NER classes from the CONLL dataset : 
+Predicts the following NER classes from the CONLL dataset :
 
 {:.table-model-big}
 |Tag | 	Description |
@@ -81,7 +81,7 @@ Predicts the following NER classes from the CONLL dataset :
 |B-ORG | An organisation like **Microsoft** or **PETA**|
 |B-LOC | A location like **Germany**|
 |B-MISC | Anything else like **Playstation** |
-|O| Everything that is not an entity. | 
+|O| Everything that is not an entity. |
 
 ```python
 nlp.load('ner.conll').predict('Angela Merkel from Germany and the American Donald Trump dont share many opinions')
@@ -90,17 +90,17 @@ nlp.load('ner.conll').predict('Angela Merkel from Germany and the American Donal
 <div class="table-wrapper"><div class="table-inner" markdown="1">
 
 {:.table-model-big.mb0}
-|embeddings| 	ner_tag| 	entities| 
+|embeddings| 	ner_tag| 	entities|
 |----------|-----------|-------------|
-|[[-0.563759982585907, 0.26958999037742615, 0.3...	|PER |	Angela Merkel | 
-|[[-0.563759982585907, 0.26958999037742615, 0.3...	|LOC |	Germany | 
-|[[-0.563759982585907, 0.26958999037742615, 0.3...	|MISC |	American | 
-|[[-0.563759982585907, 0.26958999037742615, 0.3...	|PER |	Donald Trump | 
+|[[-0.563759982585907, 0.26958999037742615, 0.3...	|PER |	Angela Merkel |
+|[[-0.563759982585907, 0.26958999037742615, 0.3...	|LOC |	Germany |
+|[[-0.563759982585907, 0.26958999037742615, 0.3...	|MISC |	American |
+|[[-0.563759982585907, 0.26958999037742615, 0.3...	|PER |	Donald Trump |
 
 </div></div></div><div class="h3-box" markdown="1">
 
 ## Part of speech  (POS)
-POS Classifies each token with one of the following tags 
+POS Classifies each token with one of the following tags
 
 [Part of Speech example](https://colab.research.google.com/drive/1tW833T3HS8F5Lvn6LgeDd5LW5226syKN?usp=sharing)
 
@@ -160,13 +160,13 @@ nlp.load('pos').predict('Part of speech assigns each token in a sentence a gramm
 |speech|       NN|     
 |assigns|      NNS|    
 |each|         DT|     
-|token|            NN| 
+|token|            NN|
 |in|           IN|     
 |a |           DT|     
 |sentence|     NN|     
 |a |           DT|     
 |grammatical|  JJ|     
-|label          |NN|   
+|label          |NN|
 
 </div><div class="h3-box" markdown="1">
 
@@ -190,7 +190,7 @@ nlp.load('emotion').predict('I love NLU!')
 ## Sentiment Classifier
 [Sentiment Classifier Example](https://colab.research.google.com/drive/1k5x1zxnG4bBkmYAc-bc63sMA4-oQ6-dP?usp=sharing)
 
-Classifies binary sentiment for every sentence, either positive or negative.      
+Classifies binary sentiment for every sentence, either positive or negative.
 
 ```python
 nlp.load('sentiment').predict("I hate this guy Sami")
@@ -206,7 +206,7 @@ nlp.load('sentiment').predict("I hate this guy Sami")
 </div></div></div><div class="h3-box" markdown="1">
 
 ## Question Classifier 50 class
-[50 Class Questions Classifier example](https://colab.research.google.com/drive/1OwlmLzwkcJKhuz__RUH74O9HqFZutxzS?usp=sharing)        
+[50 Class Questions Classifier example](https://colab.research.google.com/drive/1OwlmLzwkcJKhuz__RUH74O9HqFZutxzS?usp=sharing)
 
 Classifies between 50 different types of questions trained on the Trec50 dataset
 When setting predict(meta=True) nlu will output the probabilities for all other 49 question classes.
@@ -425,7 +425,7 @@ nlp.load('en.sentiment.twitter').predict('@elonmusk Tesla stock price is too hig
 ## Language Classifier
 [Languages Classifier example](https://colab.research.google.com/drive/1CzMfRFJZsj4j1fhormDQdHOIV5IybC57?usp=sharing)         
 Classifies the following 20 languages :        
- Bulgarian, Czech, German, Greek, English, Spanish, Finnish, French, Croatian, Hungarian, Italy, Norwegian, Polish, Portuguese, Romanian, Russian, Slovak, Swedish, Turkish, and Ukrainian
+Bulgarian, Czech, German, Greek, English, Spanish, Finnish, French, Croatian, Hungarian, Italy, Norwegian, Polish, Portuguese, Romanian, Russian, Slovak, Swedish, Turkish, and Ukrainian
 
 ```python
 nlp.load('lang').predict(['NLU is an open-source text processing library for advanced natural language processing for the Python.','NLU est une bibliothèque de traitement de texte open source pour le traitement avancé du langage naturel pour les langages de programmation Python.'])
@@ -437,12 +437,12 @@ nlp.load('lang').predict(['NLU is an open-source text processing library for adv
 |language_confidence|  document|  language|
 |------------------|-----------|-------------|
 |0.985407  |NLU is an open-source text processing library ...]|   en|    
-|0.999822  |NLU est une bibliothèque de traitement de text...]|   fr|    
+|0.999822  |NLU est une bibliothèque de traitement de text...]|   fr|
 
 </div></div></div><div class="h3-box" markdown="1">
 
 ## E2E Classifier
-[E2E Classifier example](https://colab.research.google.com/drive/1OSkiXGEpKlm9HWDoVb42uLNQQgb7nqNZ?usp=sharing)     
+[E2E Classifier example](https://colab.research.google.com/drive/1OSkiXGEpKlm9HWDoVb42uLNQQgb7nqNZ?usp=sharing)
 
 This is a multi class classifier trained on the E2E [dataset for Natural language generation](http://www.macs.hw.ac.uk/InteractionLab/E2E/#)
 
@@ -455,7 +455,7 @@ nlp.load('e2e').predict('E2E is a dataset for training generative models')
 {:.table-model-big.mb0}
 |sentence_embeddings | 	e2e | 	e2e_confidence| 	sentence|
 |--------------------|------|-----------------|--------------|
-|[0.021445205435156822, -0.039284929633140564, ...,]|	customer rating[high]| 	0.703248 | 	E2E is a dataset for training generative models | 
+|[0.021445205435156822, -0.039284929633140564, ...,]|	customer rating[high]| 	0.703248 | 	E2E is a dataset for training generative models |
 |None|	name[The Waterman]	| 0.703248	|None|
 |None|	eatType[restaurant]	| 0.703248	|None|
 |None|	priceRange[£20-25]	| 0.703248	|None|
@@ -473,7 +473,7 @@ nlp.load('en.classify.toxic').predict('You are to stupid')
 <div class="table-wrapper"><div class="table-inner" markdown="1">
 
 {:.table-model-big.mb0}
-|	toxic_confidence | 	toxic | 	sentence_embeddings| 	document| 
+|	toxic_confidence | 	toxic | 	sentence_embeddings| 	document|
 |-------------------|---------|------------------------|------------|
 | 0.978273 | 	[toxic,insult]	| [[-0.03398505970835686, 0.0007853527786210179,...,] |	You are to stupid|
 
@@ -489,9 +489,9 @@ nlp.load('yake').predict("NLU is a Python Library for beginners and experts in N
 
 
 {:.table-model-big.mb0}
-|keywords_score_confidence | 	keywords | 	sentence | 
+|keywords_score_confidence | 	keywords | 	sentence |
 |--------------------------|-------------|------------|
-| 0.454232	| [nlu, nlp, python library] | 	NLU is a Python Library for beginners and expe... | 
+| 0.454232	| [nlu, nlp, python library] | 	NLU is a Python Library for beginners and expe... |
 
 ## Word Embeddings Bert
 [BERT Word Embeddings example](https://colab.research.google.com/drive/1Rg1vdSeq6sURc48RV8lpS47ja0bYwQmt?usp=sharing)
@@ -516,7 +516,7 @@ nlp.load('bert').predict('NLU offers the latest embeddings in one line ')
 
 </div></div></div><div class="h3-box" markdown="1">
 
-## Word Embeddings Biobert 
+## Word Embeddings Biobert
 [BIOBERT Word Embeddings example](https://colab.research.google.com/drive/1llANd-XGD8vkGNMcqTi_8Dr_Ys6cr83W?usp=sharing)         
 Bert model pretrained on Bio dataset
 
@@ -551,16 +551,16 @@ nlp.load('covidbert').predict('Albert uses a collection of many berts to generat
 <div class="table-wrapper"><div class="table-inner" markdown="1">
 
 {:.table-model-big.mb0}
-|	token | 	covid_embeddings| 
+|	token | 	covid_embeddings|
 |---------|--------------------|
-|He| 	[-1.0551927089691162, -1.534174919128418, 1.29...,] | 
-|was| 	[-0.14796507358551025, -1.3928604125976562, 0....,] | 
-|suprised| 	[1.0647121667861938, -0.3664901852607727, 0.54...,] | 
-|by| 	[-0.15271103382110596, -0.6812090277671814, -0...,] | 
-|the| 	[-0.45744237303733826, -1.4266574382781982, -0...,] | 
-|diversity| 	[-0.05339818447828293, -0.5118572115898132, 0....,] | 
-|of| 	[-0.2971905767917633, -1.0936176776885986, -0....,] | 
-|NLU| 	[-0.9573594331741333, -0.18001675605773926, -1...,] | 
+|He| 	[-1.0551927089691162, -1.534174919128418, 1.29...,] |
+|was| 	[-0.14796507358551025, -1.3928604125976562, 0....,] |
+|suprised| 	[1.0647121667861938, -0.3664901852607727, 0.54...,] |
+|by| 	[-0.15271103382110596, -0.6812090277671814, -0...,] |
+|the| 	[-0.45744237303733826, -1.4266574382781982, -0...,] |
+|diversity| 	[-0.05339818447828293, -0.5118572115898132, 0....,] |
+|of| 	[-0.2971905767917633, -1.0936176776885986, -0....,] |
+|NLU| 	[-0.9573594331741333, -0.18001675605773926, -1...,] |
 
 </div></div></div><div class="h3-box" markdown="1">
 
@@ -599,7 +599,7 @@ nlp.load('electra').predict('He was suprised by the diversity of NLU')
 <div class="table-wrapper"><div class="table-inner" markdown="1">
 
 {:.table-model-big.mb0}
-|token | 	electra_embeddings | 
+|token | 	electra_embeddings |
 |------|---------------|
 |He | 	[0.29674115777015686, -0.21371933817863464, -0...,]|
 |was | 	[-0.4278327524662018, -0.5352768898010254, -0....,]|
@@ -668,7 +668,7 @@ nlp.load('xlnet').predict('XLNET computes contextualized word representations us
 
 </div></div></div><div class="h3-box" markdown="1">
 
-## Word Embeddings Glove 
+## Word Embeddings Glove
 [GLOVE Word Embeddings example](https://colab.research.google.com/drive/1IQxf4pJ_EnrIDyd0fAX-dv6u0YQWae2g?usp=sharing)
 
 ```python
@@ -696,7 +696,7 @@ nlp.load('glove').predict('Glove embeddings are generated by aggregating global 
 
 </div></div></div><div class="h3-box" markdown="1">
 
-## Multiple Token Embeddings at once 
+## Multiple Token Embeddings at once
 
 [Compare 6 Embeddings at once with NLU and T-SNE example](https://colab.research.google.com/drive/1DBk55f9iERI9BDA4kmZ8yO6J65jGmcEA?usp=sharing)
 
@@ -708,7 +708,7 @@ nlp.load('bert albert electra elmo xlnet use glove').predict('Get all of them at
 <div class="table-wrapper"><div class="table-inner" markdown="1">
 
 {:.table-model-big.mb0}
-|xlnet_embeddings	| use_embeddings | 	elmo_embeddings 	| electra_embeddings | 	glove_embeddings | 	sentence| 	albert_embeddings| 	biobert_embeddings| 	bert_embeddings| 
+|xlnet_embeddings	| use_embeddings | 	elmo_embeddings 	| electra_embeddings | 	glove_embeddings | 	sentence| 	albert_embeddings| 	biobert_embeddings| 	bert_embeddings|
 |-------------------|---------------|------------------------|-----------------|--------------------|----------|--------------------|---------------------|-------------------|
 [[-0.003953204490244389, -1.5821468830108643, ...,]|	[-0.019299551844596863, -0.04762779921293259, ...,]|	[[0.04002974182367325, -0.43536433577537537, -...,]|	[[0.19559216499328613, -0.46693214774131775, -...,]|	[[0.1443299949169159, 0.4395099878311157, 0.58...,]|	Get all of them at once, watch your RAM tough!| 	[[-0.4743960201740265, -0.581386387348175, 0.7...,]|	[[-0.00012563914060592651, -1.372296929359436,...,]|	[[-0.7687976360321045, 0.8489367961883545, -0....,]|
 
@@ -720,7 +720,7 @@ nlp.load('bert albert electra elmo xlnet use glove').predict('Get all of them at
 <div class="table-wrapper"><div class="table-inner" markdown="1">
 
 {:.table-model-big.mb0}
-| 	sentence | 	bert_sentence_embeddings| 
+| 	sentence | 	bert_sentence_embeddings|
 |------------|-----------------------------|
 |He was  suprised by the diversity of NLU	| [-1.0726687908172607, 0.4481312036514282, -0.0...,] |
 
@@ -736,7 +736,7 @@ nlp.load('embed_sentence.electra').predict('He was suprised by the diversity of 
 <div class="table-wrapper"><div class="table-inner" markdown="1">
 
 {:.table-model-big.mb0}
-|	sentence | 	electra_sentence_embeddings | 
+|	sentence | 	electra_sentence_embeddings |
 |-----------|--------------------------------|
 |He was suprised by the diversity of NLU	| [0.005376118700951338, 0.18036000430583954, -0...,] |
 
@@ -769,11 +769,11 @@ nlp.load('spell').predict('I liek pentut buttr ant jely')
 |  token | checked    |
 |--------|--------|
 |I|    I |    
-|liek| like | 
+|liek| like |
 |peantut|  pentut |   
 |buttr|    buttr |   
 |and|  and |  
-|jelli|    jely |    
+|jelli|    jely |
 
 </div><div class="h3-box" markdown="1">
 
@@ -790,13 +790,13 @@ nlp.load('dep.untyped').predict('Untyped Dependencies represent a grammatical tr
 {:.table-model-big.mb0}
 |  token |    pos |  dependency |   
 |--------|---------|---------------|
-|Untyped|  NNP|   ROOT| 
-|Dependencies| NNP|   represent| 
-|represent|    VBD|   Untyped| 
-|a|    DT|    structure| 
-|grammatical|  JJ|    structure| 
-|tree| NN|    structure| 
-|structure|    NN|    represent| 
+|Untyped|  NNP|   ROOT|
+|Dependencies| NNP|   represent|
+|represent|    VBD|   Untyped|
+|a|    DT|    structure|
+|grammatical|  JJ|    structure|
+|tree| NN|    structure|
+|structure|    NN|    represent|
 
 </div></div></div><div class="h3-box" markdown="1">
 
@@ -810,7 +810,7 @@ nlp.load('dep').predict('Typed Dependencies represent a grammatical tree structu
 <div class="table-wrapper"><div class="table-inner" markdown="1">
 
 {:.table-model-big.mb0}
-|token|    pos|   dependency|    labled_dependency | 
+|token|    pos|   dependency|    labled_dependency |
 |----|-----|--------------|------------------|
 |Typed|    NNP |  ROOT|  root|  
 |Dependencies| NNP |  represent|     nsubj|     
@@ -824,7 +824,7 @@ nlp.load('dep').predict('Typed Dependencies represent a grammatical tree structu
 |edge| NN |   where|     nsubj|     
 |has|  VBZ |  ROOT|  root|  
 |a|    DT |   label|     nsubj|     
-|label|    NN |   has|   nsubj|     
+|label|    NN |   has|   nsubj|
 
 </div></div></div><div class="h3-box" markdown="1">
 
@@ -865,10 +865,10 @@ nlp.load('stem').predict('NLU can get you the stem of a word')
 |get | get |  
 |you | you |  
 |the | the |  
-|stem |    stem | 
+|stem |    stem |
 |of |  of |   
 |a |   a |    
-|word |    word | 
+|word |    word |
 
 </div><div class="h3-box" markdown="1">
 
@@ -883,14 +883,14 @@ nlp.load('stopwords').predict('I want you to remove stopwords from this sentence
 |-----|------------|
 |I|    remove |   
 |want| stopwords |   
-|you|  sentence | 
-|to|   None | 
-|remove|   None | 
-|stopwords|    None | 
-|from| None | 
-|this| None | 
-|sentence| None | 
-|please|   None | 
+|you|  sentence |
+|to|   None |
+|remove|   None |
+|stopwords|    None |
+|from| None |
+|this| None |
+|sentence| None |
+|please|   None |
 
 </div><div class="h3-box" markdown="1">
 
@@ -901,18 +901,18 @@ nlp.load('lemma').predict('Lemmatizing generates a less noisy version of the inp
 ```
 
 {:.table-model-big.mb0}
-|token|    lemma| 
+|token|    lemma|
 |------|------|
 |Lemmatizing|  Lemmatizing|   
 |generates|    generate|  
-|a|    a| 
+|a|    a|
 |less| less|  
-|noisy|    noisy| 
+|noisy|    noisy|
 |version|  version|   
 |of|   of|    
 |the|  the|   
-|inputted| input| 
-|tokens|   token| 
+|inputted| input|
+|tokens|   token|
 
 </div><div class="h3-box" markdown="1">
 
@@ -925,12 +925,12 @@ nlp.load('norm').predict('@CKL_IT says that #normalizers are pretty useful to cl
 <div class="table-wrapper"><div class="table-inner" markdown="1">
 
 {:.table-model-big.mb0}
-|normalized     | token   | 
+|normalized     | token   |
 |------------|----------|
-|CKLIT|    @CKL_IT    | 
-|says| says| 
-|that| that| 
-|normalizers|  #normalizers| 
+|CKLIT|    @CKL_IT    |
+|says| says|
+|that| that|
+|normalizers|  #normalizers|
 |are|  are|  
 |pretty|   pretty|   
 |useful|   useful|   
@@ -938,9 +938,9 @@ nlp.load('norm').predict('@CKL_IT says that #normalizers are pretty useful to cl
 |clean|    clean|    
 |structuredstrings|    #structured_strings|  
 |in|   in|   
-|NLU|  #NLU| 
-|like| like| 
-|tweets|   tweets|   
+|NLU|  #NLU|
+|like| like|
+|tweets|   tweets|
 
 </div></div></div><div class="h3-box" markdown="1">
 
@@ -976,9 +976,9 @@ nlp.load('match.datetime').predict('In the years 2000/01/01 to 2010/01/01 a lot 
 
 </div></div></div><div class="h3-box" markdown="1">
 
-## Entity Chunking    
+## Entity Chunking
 Checkout [see here](https://nlp.johnsnowlabs.com/docs/en/jsl/examples#part-of-speech--pos) for all possible POS labels or        
-Splits text into rows based on matched grammatical entities.     
+Splits text into rows based on matched grammatical entities.
 
 [Entity Chunking Example](https://colab.research.google.com/drive/1svpqtC3cY6JnRGeJngIPl2raqxdowpyi?usp=sharing)
 
@@ -1019,7 +1019,7 @@ component_list['default_chunker'].setRegexParsers(['<DT>?<JJ>*<NN>+'])  | Info: 
 <div class="table-wrapper"><div class="table-inner" markdown="1">
 
 {:.table-model-big.mb0}
-|	chunk | 	pos | 
+|	chunk | 	pos |
 |-------|-----------|
 |market	    |[NNP, CC, NNP, VBD, TO, DT, JJ, JJ, NN, JJ, TO...|
 |town hall	|[NNP, CC, NNP, VBD, TO, DT, JJ, JJ, NN, JJ, TO...|
@@ -1103,7 +1103,7 @@ df
 
 </div><div class="h3-box" markdown="1">
 
-## Translation 
+## Translation
 [Translation example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/translation_demo.ipynb)
 You can translate between more than 192 Languages pairs with the [Marian Models](https://marian-nmt.github.io/publications/)
 You need to specify the language your data is in as `start_language` and the language you want to translate to as `target_language`.    
@@ -1232,9 +1232,9 @@ answers
 | How much money has Donald Trump? | SUM                           | SUM($100,000,000)        | [1, 0]                           |                             1 | How much money has Donald Trump?  |
 | Who is the youngest?             | NONE                          | Elon Musk                | [0, 1]                           |                             1 | Who is the youngest?              |
 
- 
 
-## Image Classification (VIT) 
+
+## Image Classification (VIT)
 [Image Classification Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb)        
 Image Classifier Based on [VIT](https://arxiv.org/abs/2010.11929)
 Lets download a folder of images and predict on it
@@ -1251,8 +1251,7 @@ and NLU will return a pandas DF with one row per image detected
 nlu.load('en.classify_image.base_patch16_224').predict('/content/images/images')
 ```
 
-TODO SCREENSHOT 
-
+![vit](/assets/images/nlu/visual/vit_example.png)
 
 
 ## Image Classification (SWIN)
@@ -1271,16 +1270,8 @@ and NLU will return a pandas DF with one row per image detected
 ```python
 nlu.load('en.classify_image.swin.tiny').predict('/content/images/images')
 ```
-TODO SCREENSHOT
 
-
-
-
-
-
-
-
-
+![swin](/assets/images/nlu/visual/swin_example.png)
 
 ## T5
 [Example of every T5 task](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
@@ -1302,7 +1293,7 @@ TODO SCREENSHOT
 
 
 {:.table-model-big.mb0}
-|Task Name | Explanation | 
+|Task Name | Explanation |
 |----------|--------------|
 |[1.CoLA](https://nyu-mll.github.io/CoLA/)                   | Classify if a sentence is gramaticaly correct|
 |[2.RTE](https://dl.acm.org/doi/10.1007/11736790_9)                    | Classify whether if a statement can be deducted from a sentence|
@@ -1328,7 +1319,7 @@ TODO SCREENSHOT
 
 </div><div class="h3-box" markdown="1">
 
-## Text Summarization 
+## Text Summarization
 [Summarization example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
 
 `Summarizes` a paragraph into a shorter version with the same semantic meaning, based on [Text summarization](https://arxiv.org/abs/1506.03340)
@@ -1352,13 +1343,13 @@ pipe.predict(data)
 
 
 {:.table-model-big.mb0}
-| Predicted summary| Text | 
+| Predicted summary| Text |
 |------------------|-------|
-| manchester united face newcastle in the premier league on wednesday . louis van gaal's side currently sit two points clear of liverpool in fourth . the belgian duo took to the dance floor on monday night with some friends .            | the belgian duo took to the dance floor on monday night with some friends . manchester united face newcastle in the premier league on wednesday . red devils will be looking for just their second league away win in seven . louis van gaal’s side currently sit two points clear of liverpool in fourth . | 
+| manchester united face newcastle in the premier league on wednesday . louis van gaal's side currently sit two points clear of liverpool in fourth . the belgian duo took to the dance floor on monday night with some friends .            | the belgian duo took to the dance floor on monday night with some friends . manchester united face newcastle in the premier league on wednesday . red devils will be looking for just their second league away win in seven . louis van gaal’s side currently sit two points clear of liverpool in fourth . |
 
 </div><div class="h3-box" markdown="1">
 
-## Binary Sentence similarity/ Paraphrasing 
+## Binary Sentence similarity/ Paraphrasing
 [Binary sentence similarity example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
 Classify whether one sentence is a re-phrasing or similar to another sentence      
 This is a sub-task of [GLUE](https://arxiv.org/pdf/1804.07461.pdf) and based on [MRPC - Binary Paraphrasing/ sentence similarity classification ](https://www.aclweb.org/anthology/I05-5002.pdf)
@@ -1388,8 +1379,8 @@ t5.predict(data)
 {:.table-model-big.mb0}
 | Sentence1 | Sentence2 | prediction|
 |------------|------------|----------|
-|We acted because we saw the existing evidence in a new light , through the prism of our experience on 11 September , " Rumsfeld said .| Rather , the US acted because the administration saw " existing evidence in a new light , through the prism of our experience on September 11 " . | equivalent | 
-| I like to eat peanutbutter for breakfast| I like to play football | not_equivalent | 
+|We acted because we saw the existing evidence in a new light , through the prism of our experience on 11 September , " Rumsfeld said .| Rather , the US acted because the administration saw " existing evidence in a new light , through the prism of our experience on September 11 " . | equivalent |
+| I like to eat peanutbutter for breakfast| I like to play football | not_equivalent |
 
 </div><div class="h3-box" markdown="1">
 
@@ -1445,9 +1436,9 @@ t5.predict(data)
 {:.table-model-big.mb0}
 | Sentence1 | Sentence2 | prediction|
 |------------|------------|----------|
-|What attributes would have made you highly desirable in ancient Rome?        | How I GET OPPERTINUTY TO JOIN IT COMPANY AS A FRESHER? | 0 | 
-|What was it like in Ancient rome?  | What was Ancient rome like?| 5.0 | 
-|What was live like as a King in Ancient Rome??       | What is it like to live in Rome? | 3.2 | 
+|What attributes would have made you highly desirable in ancient Rome?        | How I GET OPPERTINUTY TO JOIN IT COMPANY AS A FRESHER? | 0 |
+|What was it like in Ancient rome?  | What was Ancient rome like?| 5.0 |
+|What was live like as a King in Ancient Rome??       | What is it like to live in Rome? | 3.2 |
 
 </div><div class="h3-box" markdown="1">
 
@@ -1485,7 +1476,7 @@ pipe.predict(data)
 |sentence  | prediction|
 |------------|------------|
 | Anna and Mike is going skiing and they is liked is | unacceptable |      
-| Anna and Mike like to dance | acceptable | 
+| Anna and Mike like to dance | acceptable |
 
 </div><div class="h3-box" markdown="1">
 
@@ -1560,9 +1551,9 @@ This will output a Pandas Dataframe similar to this :
 |-----|---------|
 Alibaba Group founder| 	Who is Jack ma? |        
 |Jack Ma	|Who is founder of Alibaba Group? |  
-Wednesday	| When did Jack Ma re-appear? | 
-surged 5%	| How did Alibaba stocks react? | 
-100 rural teachers	| Whom did Jack Ma meet? | 
+Wednesday	| When did Jack Ma re-appear? |
+surged 5%	| How did Alibaba stocks react? |
+100 rural teachers	| Whom did Jack Ma meet? |
 Chinese regulators	|Who did Jack Ma hide from?|
 
 </div><div class="h3-box" markdown="1">
