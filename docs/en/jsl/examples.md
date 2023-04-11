@@ -1134,6 +1134,154 @@ df
 
 </div><div class="h3-box" markdown="1">
 
+
+
+
+## Automatic Speech Recognition (ASR) with HuBERT
+[ASR Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/automatic_speech_recognition/automatic_speech_recognition_overview_ASR.ipynb)       
+Recognize speech in Audio files with [HuBERT](https://arxiv.org/abs/2106.07447)
+```python
+# Let's download an audio file 
+!wget https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/resources/en/audio/samples/wavs/ngm_12484_01067234848.wav
+FILE_PATH = "ngm_12484_01067234848.wav"
+
+asr_df = nlp.load('en.speech2text.hubert').predict('ngm_12484_01067234848.wav')
+asr_df
+
+```
+
+{:.table-model-big.mb0}
+| 	text                                        |
+|----------------------------------------------|
+| PEOPLE WHO DIED WHILE LIVING IN OTHER PLACES |
+
+</div><div class="h3-box" markdown="1">
+
+
+## Automatic Speech Recognition (ASR) with Wav2Vec2
+[ASR Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/automatic_speech_recognition/automatic_speech_recognition_overview_ASR.ipynb)       
+Recognize speech in Audio files with [HuBERT](https://arxiv.org/abs/2106.07447)
+```python
+# Let's download an audio file 
+!wget https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/resources/en/audio/samples/wavs/ngm_12484_01067234848.wav
+FILE_PATH = "ngm_12484_01067234848.wav"
+
+asr_df = nlp.load('en.speech2text.wav2vec2.v2_base_960h').predict('ngm_12484_01067234848.wav')
+asr_df
+
+```
+
+{:.table-model-big.mb0}
+| 	text                                        |
+|----------------------------------------------|
+| PEOPLE WHO DIED WHILE LIVING IN OTHER PLACES |
+
+</div><div class="h3-box" markdown="1">
+
+
+
+
+## Table Question Answering (TAPAS)
+[TAPS Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb)
+
+Table Question Answering on Pandas DataFrames powered by [TAPAS: Weakly Supervised Table Parsing via Pre-training](https://aclanthology.org/2020.acl-main.398.pdf)
+
+
+First we need a pandas dataframe on for which we want to ask questions. The so called "context"
+```python
+import pandas as pd 
+
+context_df = pd.DataFrame({
+    'name':['Donald Trump','Elon Musk'], 
+    'money': ['$100,000,000','$20,000,000,000,000'], 
+    'married': ['yes','no'], 
+    'age' : ['75','55'] })
+context_df
+
+```
+
+Then we create an array of questions
+```python
+questions = [
+    "Who earns less than 200,000,000?",
+    "Who earns more than 200,000,000?",
+    "Who earns 100,000,000?",
+    "How much money has Donald Trump?",
+    "Who is the youngest?",
+]
+questions
+
+```
+
+Now Combine the data, pass it to NLU and get answers for your questions
+```python
+import nlu
+# Now we combine both to a tuple and we are done! We can now pass this to the .predict() method
+tapas_data  = (context_df, questions)
+# Lets load a TAPAS QA model and predict on (context,question). 
+# It will give us an aswer for every question in the questions array, based on the context in context_df
+answers = nlu.load('en.answer_question.tapas.wtq.large_finetuned').predict(tapas_data)
+answers
+```
+
+| sentence                         | tapas_qa_UNIQUE_aggregation   | tapas_qa_UNIQUE_answer   | tapas_qa_UNIQUE_cell_positions   |   tapas_qa_UNIQUE_cell_scores | tapas_qa_UNIQUE_origin_question   |
+|:---------------------------------|:------------------------------|:-------------------------|:---------------------------------|------------------------------:|:----------------------------------|
+| Who earns less than 200,000,000? | NONE                          | Donald Trump             | [0, 0]                           |                             1 | Who earns less than 200,000,000?  |
+| Who earns more than 200,000,000? | NONE                          | Elon Musk                | [0, 1]                           |                             1 | Who earns more than 200,000,000?  |
+| Who earns 100,000,000?           | NONE                          | Donald Trump             | [0, 0]                           |                             1 | Who earns 100,000,000?            |
+| How much money has Donald Trump? | SUM                           | SUM($100,000,000)        | [1, 0]                           |                             1 | How much money has Donald Trump?  |
+| Who is the youngest?             | NONE                          | Elon Musk                | [0, 1]                           |                             1 | Who is the youngest?              |
+
+ 
+
+## Image Classification (VIT) 
+[Image Classification Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb)        
+Image Classifier Based on [VIT](https://arxiv.org/abs/2010.11929)
+Lets download a folder of images and predict on it
+```python 
+!wget -q https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/resources/en/images/images.zip
+import shutil
+shutil.unpack_archive("images.zip", "images", "zip")
+! ls /content/images/images/
+```
+
+Once we have image data its easy to label it, we just pass the folder with images to nlu.predict()
+and NLU will return a pandas DF with one row per image detected
+```python
+nlu.load('en.classify_image.base_patch16_224').predict('/content/images/images')
+```
+
+TODO SCREENSHOT 
+
+
+
+## Image Classification (SWIN)
+[Image Classification Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb)        
+Image Classifier Based on [SWIN](https://arxiv.org/abs/2103.14030)
+Lets download a folder of images and predict on it
+```python 
+!wget -q https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/resources/en/images/images.zip
+import shutil
+shutil.unpack_archive("images.zip", "images", "zip")
+! ls /content/images/images/
+```
+
+Once we have image data its easy to label it, we just pass the folder with images to nlu.predict()
+and NLU will return a pandas DF with one row per image detected
+```python
+nlu.load('en.classify_image.swin.tiny').predict('/content/images/images')
+```
+TODO SCREENSHOT
+
+
+
+
+
+
+
+
+
+
 ## T5
 [Example of every T5 task](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
 ### Overview of every task available with T5
