@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model can answer clinical questions related to symptoms, drugs, tests, and diseases.
+This model is based on BioGPT finetuned with medical conversations happening in a clinical settings and can answer clinical questions related to symptoms, drugs, tests, and diseases.
 
 ## Predicted Entities
 
@@ -37,14 +37,15 @@ This model can answer clinical questions related to symptoms, drugs, tests, and 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler() \
     .setInputCol("text") \
     .setOutputCol("documents")
 
-gpt_qa = sparknlp_jsl.annotators.MedicalTextGenerator\
-    .pretrained('biogpt_chat_jsl', 'en', 'clinical/models')\
-    .setInputCols('documents').setOutputCol('answer')
+gpt_qa = MedicalTextGenerator.pretrained("biogpt_chat_jsl", "en", "clinical/models")\
+    .setInputCols('documents')\
+    .setOutputCol('answer')
 
 pipeline = Pipeline().setStages([document_assembler, gpt_qa])
 
@@ -57,12 +58,12 @@ val document_assembler = new DocumentAssembler() \
     .setInputCol("text") \
     .setOutputCol("documents")
 
-val gpt_qa = new MedicalTextGenerator\
-    .pretrained('biogpt_chat_jsl', 'en', 'clinical/models')\
-    .setInputCols('documents').setOutputCol('answer')
-
+val gpt_qa = new MedicalTextGenerator.pretrained("biogpt_chat_jsl", "en", "clinical/models")\
+    .setInputCols("documents")
+    .setOutputCol("answer")
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, gpt_qa))
+
 val data = Seq(Array("question: what is metformin used for? answer:")).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
