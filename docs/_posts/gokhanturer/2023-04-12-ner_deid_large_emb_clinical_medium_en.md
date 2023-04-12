@@ -38,6 +38,7 @@ We sticked to official annotation guideline (AG) for 2014 i2b2 Deid challenge wh
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
