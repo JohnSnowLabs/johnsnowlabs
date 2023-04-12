@@ -36,6 +36,7 @@ This model detects Drug, Dosage, and administration instructions in text using p
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
