@@ -94,7 +94,7 @@ val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_large"
     .setInputCols(Array("sentence", "token"))\
     .setOutputCol("embeddings")
 
-val posology_ner_model = BertForTokenClassification.pretrained('ner_posology_emb_clinical_large' "en", "clinical/models")
+val posology_ner_model = MedicalNerModel.pretrained('ner_posology_emb_clinical_large' "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("posology_ner")
 
