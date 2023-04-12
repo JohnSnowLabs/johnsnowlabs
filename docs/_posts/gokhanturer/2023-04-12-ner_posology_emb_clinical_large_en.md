@@ -36,6 +36,7 @@ This model detects Drug, Dosage, and administration instructions in text using p
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 documentAssembler = DocumentAssembler()\
@@ -74,7 +75,7 @@ empty_data = spark.createDataFrame([[""]]).toDF("text")
 
 posology_ner_model = posology_ner_pipeline.fit(empty_data)
 
-results = posology_ner_model.transform(spark.createDataFrame([["The patient is a 40-year-old white male who presents with a chief complaint of 'chest pain'. The patient is diabetic and has a prior history of coronary artery disease. The patient presents today stating that chest pain started yesterday evening.  He has been advised Aspirin 81 milligrams QDay. insulin 50 units in a.m. HCTZ 50 mg QDay. Nitroglycerin 1/150 sublingually."]]).toDF("text"))
+results = posology_ner_model.transform(spark.createDataFrame([["The patient has been advised Aspirin 81 milligrams QDay. insulin 50 units in a.m. HCTZ 50 mg QDay. Nitroglycerin 1/150 sublingually."]]).toDF("text"))
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
