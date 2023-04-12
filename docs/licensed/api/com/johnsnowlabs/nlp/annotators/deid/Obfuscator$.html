@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 4.3.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.Obfuscator</title>
-          <meta name="description" content="Spark NLP 4.3.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.Obfuscator" />
-          <meta name="keywords" content="Spark NLP 4.3.2 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.Obfuscator" />
+          <title>Spark NLP 4.4.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.Obfuscator</title>
+          <meta name="description" content="Spark NLP 4.4.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.Obfuscator" />
+          <meta name="keywords" content="Spark NLP 4.4.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.Obfuscator" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 4.3.2 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 4.4.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -507,9 +507,9 @@
       
       
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.Obfuscator#displaceDate" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="displaceDate(oriStr:String,days:Int,dateFormats:Array[String]):Option[String]"></a><a id="displaceDate(String,Int,Array[String]):Option[String]"></a>
+      <a id="displaceDate(oriStr:String,days:Int,dateFormats:Array[String],language:String):Option[String]"></a><a id="displaceDate(String,Int,Array[String],String):Option[String]"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/Obfuscator$.html#displaceDate(oriStr:String,days:Int,dateFormats:Array[String]):Option[String]" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/Obfuscator$.html#displaceDate(oriStr:String,days:Int,dateFormats:Array[String],language:String):Option[String]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -518,7 +518,7 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">displaceDate</span><span class="params">(<span name="oriStr">oriStr: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="days">days: <span class="extype" name="scala.Int">Int</span></span>, <span name="dateFormats">dateFormats: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="#dateFormatsDefault:Array[String]">dateFormatsDefault</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">displaceDate</span><span class="params">(<span name="oriStr">oriStr: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="days">days: <span class="extype" name="scala.Int">Int</span></span>, <span name="dateFormats">dateFormats: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="#dateFormatsDefault:Array[String]">dateFormatsDefault</a></span></span></span>, <span name="language">language: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="Language$.html">Language.English</a></span></span></span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
       
@@ -608,6 +608,38 @@
       </span>
       <span class="symbol">
         <span class="name">getDefaultRandomDate</span><span class="params">(<span name="hash">hash: <span class="extype" name="scala.Long">Long</span></span>, <span name="ddateformat">ddateformat: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;MM-dd-YYYY&quot;</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.Obfuscator#getLocale" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getLocale(language:String):java.util.Locale"></a><a id="getLocale(String):Locale"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/Obfuscator$.html#getLocale(language:String):java.util.Locale" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getLocale</span><span class="params">(<span name="language">language: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="Language$.html">Language.English</a></span></span></span>)</span><span class="result">: <span class="extype" name="java.util.Locale">Locale</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.Obfuscator#getOrdinalDays" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getOrdinalDays:Map[Long,String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/Obfuscator$.html#getOrdinalDays:Map[Long,String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getOrdinalDays</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Long">Long</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
       
