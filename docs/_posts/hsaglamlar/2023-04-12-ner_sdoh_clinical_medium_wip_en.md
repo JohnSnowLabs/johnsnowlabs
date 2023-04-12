@@ -4,7 +4,7 @@ title: Social Determinants of Health (clinical_medium)
 author: John Snow Labs
 name: ner_sdoh_clinical_medium_wip
 date: 2023-04-12
-tags: [en, licenced, clinical_medium, social_determinants, ner, public_health, sdoh, licensed]
+tags: [en, clinical_medium, social_determinants, ner, public_health, sdoh, licensed]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 4.3.2
