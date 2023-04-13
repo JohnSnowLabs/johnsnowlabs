@@ -42,7 +42,7 @@ document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("documents")
 
-flant5 = Finance.Summarizer().pretrained('finsum_flant5_finetuned_sec10k','en','finance/models')\
+flant5 = finance.Summarizer().pretrained('finsum_flant5_finetuned_sec10k','en','finance/models')\
     .setInputCols(["documents"])\
     .setOutputCol("summary")\
     .setMaxNewTokens(1000)
