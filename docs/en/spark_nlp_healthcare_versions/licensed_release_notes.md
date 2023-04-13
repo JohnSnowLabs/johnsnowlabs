@@ -99,6 +99,7 @@ transformersbook/pegasus-samsum | 500M | 0.1924 | 0.0965 | 0.8920 | 0.8149 | 0.8
 **summarizer_clinical_jsl_augmented** | **250M** | **0.5119** | **0.4545** | **0.9282** | **0.9526** | **0.9402** |
 
 🔎 Benchmark on MIMIC Summarization Dataset
+
 | model_name | model_size | Rouge | Bleu | bertscore_precision | bertscore_recall: | bertscore_f1 |
 |--|--|--|--|--|--|--|
 philschmid/flan-t5-base-samsum | 250M | 0.1910 | 0.1037 | 0.8708 | 0.9056 | 0.8879 |
