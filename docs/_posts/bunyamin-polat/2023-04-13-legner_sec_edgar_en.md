@@ -36,6 +36,7 @@ This Legal NER model extracts `ORG`, `INST`, `LAW`, `COURT`, `PER`, `LOC`, `MISC
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.DocumentAssembler()\
       .setInputCol("text")\
@@ -50,10 +51,10 @@ tokenizer = nlp.Tokenizer()\
       .setOutputCol("token")
 
 embeddings = nlp.RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_base","en") \
-        .setInputCols(["sentence", "token"]) \
-        .setOutputCol("embeddings")\
-        .setMaxSentenceLength(512)\
-        .setCaseSensitive(True)
+      .setInputCols(["sentence", "token"]) \
+      .setOutputCol("embeddings")\
+      .setMaxSentenceLength(512)\
+      .setCaseSensitive(True)
 
 ner_model = legal.NerModel.pretrained("legner_sec_edgar", "en", "legal/models")\
       .setInputCols(["sentence", "token", "embeddings"])\
