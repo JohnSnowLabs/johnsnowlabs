@@ -309,3 +309,8 @@ jsl:
       - title:  Module Structure
         url:    /docs/en/jsl/import-structure
 
+deidentification_lab:
+  - title: De-identification lab
+    children:
+      - title: Getting Started
+        url: /docs/en/deidentification_lab/getting_started
