@@ -62,7 +62,9 @@ embeddingsSentence = nlp.SentenceEmbeddings() \
         .setOutputCol('sentence_embeddings')\
         .setPoolingStrategy('AVERAGE')
 
-classifierdl = nlp.MultiClassifierDLModel.pretrained("legmulticlf_covid19_exceptions_english", "en", "legal/models")
+classifierdl = nlp.MultiClassifierDLModel.pretrained("legmulticlf_covid19_exceptions_english", "en", "legal/models") \
+         .setInputCols(["sentence_embeddings"])\
+         .setOutputCol("class")
   
 clf_pipeline = nlp.Pipeline(stages=[document_assembler, 
                                     tokenizer, 
