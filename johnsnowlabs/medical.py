@@ -1,5 +1,6 @@
 import traceback
 
+
 from johnsnowlabs.abstract_base.lib_resolver import try_import_lib
 from johnsnowlabs.auto_install.softwares import Software
 from johnsnowlabs.utils.print_messages import log_outdated_lib, log_broken_lib
@@ -9,6 +10,9 @@ warning_logged = False
 try:
     if try_import_lib("sparknlp_jsl") and try_import_lib("sparknlp"):
         # Pretrained
+        from sparknlp_jsl.annotator.windowed.windowed_sentence import (
+            WindowedSentenceModel,
+        )
         from sparknlp_jsl.annotator import (
             GenericSVMClassifierApproach,
             GenericSVMClassifierModel,
@@ -67,11 +71,11 @@ try:
             DocumentMLClassifierApproach,
             DocumentMLClassifierModel,
             Resolution2Chunk,
-            MedicalQuestionAnswering,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
         from sparknlp_jsl import training_log_parser, Deid
+        from sparknlp_jsl.training_log_parser import ner_log_parser
 
         from sparknlp_jsl.base import FeaturesAssembler
 
@@ -83,6 +87,9 @@ try:
             MedicalBertForTokenClassifier as BertForTokenClassification,
             MedicalNerModel as NerModel,
             MedicalNerApproach as NerApproach,
+            MedicalQuestionAnswering as QuestionAnswering,
+            MedicalTextGenerator as TextGenerator,
+            MedicalSummarizer as Summarizer,
         )
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader

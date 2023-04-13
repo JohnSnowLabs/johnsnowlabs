@@ -5,6 +5,11 @@ from johnsnowlabs.utils.print_messages import log_broken_lib
 
 try:
     if try_import_lib("sparknlp_jsl") and try_import_lib("sparknlp"):
+        from sparknlp_jsl.annotator.windowed.windowed_sentence import (
+            WindowedSentenceModel,
+        )
+        from sparknlp_jsl.training_log_parser import ner_log_parser
+
         from sparknlp_jsl.base import FeaturesAssembler
 
         from sparknlp_jsl.legal import (
@@ -30,6 +35,9 @@ try:
             SentenceEntityResolverApproach,
             AssertionDLApproach,
             ZeroShotNerModel,
+            LegalQuestionAnswering as QuestionAnswering,
+            LegalTextGenerator as TextGenerator,
+            LegalSummarizer as Summarizer,
         )
 
         # These are licensed annos shared across all libs
@@ -86,7 +94,7 @@ try:
 
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
 
-        from sparknlp_jsl import (training_log_parser, Deid)
+        from sparknlp_jsl import training_log_parser, Deid
 
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader
