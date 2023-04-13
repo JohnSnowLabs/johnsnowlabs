@@ -36,18 +36,19 @@ This Financial NER model extracts `ORG`, `INST`, `LAW`, `COURT`, `PER`, `LOC`, `
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.DocumentAssembler()\
-        .setInputCol("text")\
-        .setOutputCol("document")
+      .setInputCol("text")\
+      .setOutputCol("document")
         
 sentence_detector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl", "en")\
-        .setInputCols(["document"])\
-        .setOutputCol("sentence")
+      .setInputCols(["document"])\
+      .setOutputCol("sentence")
 
 tokenizer = nlp.Tokenizer()\
-        .setInputCols(["sentence"])\
-        .setOutputCol("token")
+      .setInputCols(["sentence"])\
+      .setOutputCol("token")
 
 embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base", "en") \
       .setInputCols("sentence", "token") \
@@ -56,12 +57,12 @@ embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base", "en"
       .setCaseSensitive(True)
 
 ner_model = finance.NerModel.pretrained("finner_sec_edgar", "en", "finance/models")\
-        .setInputCols(["sentence", "token", "embeddings"])\
-        .setOutputCol("ner")
+      .setInputCols(["sentence", "token", "embeddings"])\
+      .setOutputCol("ner")
 
 ner_converter = nlp.NerConverter()\
-        .setInputCols(["sentence", "token", "ner"])\
-        .setOutputCol("ner_chunk")
+      .setInputCols(["sentence", "token", "ner"])\
+      .setOutputCol("ner_chunk")
 
 nlpPipeline = nlp.Pipeline(stages=[
         document_assembler,
