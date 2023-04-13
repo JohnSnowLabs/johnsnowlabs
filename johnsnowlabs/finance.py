@@ -8,9 +8,12 @@ try:
     if try_import_lib("sparknlp_jsl") and try_import_lib("sparknlp"):
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.base import FeaturesAssembler
+        from sparknlp_jsl.annotator.windowed.windowed_sentence import (
+            WindowedSentenceModel,
+        )
+        from sparknlp_jsl.training_log_parser import ner_log_parser
 
         from sparknlp_jsl.finance import (
-
             GenericClassifierModel,
             FinanceNerQuestionGenerator as NerQuestionGenerator,
             FinanceDocumentHashCoder as DocumentHashCoder,
@@ -36,6 +39,9 @@ try:
             SentenceEntityResolverApproach,
             AssertionDLApproach,
             ZeroShotNerModel,
+            FinanceQuestionAnswering as QuestionAnswering,
+            FinanceTextGenerator as TextGenerator,
+            FinanceSummarizer as Summarizer,
         )
 
         # These are licensed annos shared across all libs
@@ -89,7 +95,7 @@ try:
         )
 
         from sparknlp_jsl.modelTracer import ModelTracer
-        from sparknlp_jsl import (training_log_parser, Deid)
+        from sparknlp_jsl import training_log_parser, Deid
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader
         from sparknlp_jsl.eval import (
