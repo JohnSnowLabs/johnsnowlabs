@@ -14,12 +14,6 @@ if try_import_lib("sparkocr") and try_import_lib("sparknlp"):
     from johnsnowlabs import visual
 
 
-def refresh_imports():
-    import inspect
-
-    inspect.__globals__
-
-
 def new_version_online():
     from .utils.pip_utils import get_latest_lib_version_on_pypi
 
