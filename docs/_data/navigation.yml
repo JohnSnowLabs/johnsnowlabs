@@ -314,3 +314,7 @@ deidentification_lab:
     children:
       - title: Getting Started
         url: /docs/en/deidentification_lab/getting_started
+      - title: Installation
+        url: /docs/en/deidentification_lab/installation
+      - title: User Guide
+        url: /docs/en/deidentification_lab/user_guide
