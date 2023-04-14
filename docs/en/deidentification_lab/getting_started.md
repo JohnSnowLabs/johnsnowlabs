@@ -30,7 +30,8 @@ De-identification is essential for companies working with sensitive and highly r
  - 2014 i2b2 de-identification challenge dataset
  - A sample from MIMIC-III dataset
 </div>
-
+<p></p>
+<img class="image image__shadow image__align--center" src="/assets/images/deidentification_lab/deidentification_lab_accuracy.png" style="width:100%;"/>
 
 ## Performance
 
@@ -47,5 +48,11 @@ Ease of use refers to how user-friendly a de-identification product is for its i
 ## Usability
 
 <div>
-Ease of use refers to how user-friendly a de-identification product is for its intended users. Ease of use can involve aspects such as usability, accessibility, simplicity, intuitiveness, customizability, feedback, support, documentation, etc. A high ease of use de-identification product should be able to offer a smooth and pleasant user experience by facilitating data input and output, providing clear and concise instructions, offering options and preferences, giving helpful and timely response. DE-IDENTIFICATION Lab from John Snow Labs can be customized according to the customer's specific needs and preferences. For example, the customer, thought a two-step process using an intuitive User Interface, can choose which PII or PHI entities to de-identify, which de-identification methods to apply, which output format to use etc
+ De-identification Lab has been built keeping in mind usability, accessibility, simplicity and intuitiveness. It offers a smooth and pleasant user experience. The customer, thought a simple two-step process, using an intuitive User Interface, can choose which PII or PHI entities to de-identify, which de-identification methods to apply and where to store the de-iddentified files. 
+
+  De-identification Lab supports a variety of document formats ranging from unstructured text (txt), PDF (text and image), DICOM files including the metadata and filenames. 
+
+
 </div>
+<p></p>
+<img class="image image__shadow image__align--center" src="/assets/images/deidentification_lab/deidentification_formats.jpg" style="width:25%;"/>
