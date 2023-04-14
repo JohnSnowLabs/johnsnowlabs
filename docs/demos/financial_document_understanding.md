@@ -1,7 +1,7 @@
 ---
 layout: demopagenew
 title: Financial Document Understanding - Finance NLP Demos & Notebooks
-seotitle: 'Visual NLP: Financial Document Understanding - John Snow Labs'
+seotitle: 'Financial NLP: Financial Document Understanding - John Snow Labs'
 subtitle: Run 300+ live demos and notebooks
 full_width: true
 permalink: /financial_document_understanding
@@ -56,5 +56,17 @@ data:
             url: https://demo.johnsnowlabs.com/ocr/FORM_RECOGNITION/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/FormRecognition/SparkOcrFormRecognition.ipynb                
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/FormRecognition/SparkOcrFormRecognition.ipynb
+        - title: Financial Visual Question Answering
+          id: financial_visual_question_answering 
+          image: 
+              src: /assets/images/Financial_Visual_Question_Answering.svg
+          excerpt: Ask questions to financial documents in image format and get answers without any OCR involved.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/FIN_VISUAL_QUESTION_ANSWERING/
+          - text: Colab
+            type: blue_btn
+            url: 
 ---
