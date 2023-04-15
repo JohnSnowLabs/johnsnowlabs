@@ -1,10 +1,10 @@
 ---
 layout: demopagenew
-title: Biomedical Research  - Biomedical NLP Demos & Notebooks
-seotitle: 'Biomedical NLP: Biomedical Research  - John Snow Labs'
+title: Analyze Biomedical Research - Biomedical NLP Demos & Notebooks
+seotitle: 'Biomedical NLP: Analyze Biomedical Research - John Snow Labs'
 subtitle: Run 300+ live demos and notebooks
 full_width: true
-permalink: /biomedical_research
+permalink: /analyze_biomedical_research
 key: demo
 nav_key: demo
 article_header:
@@ -17,22 +17,10 @@ data:
   sections:  
     - secheader: yes
       secheader:
-        - subtitle: Biomedical Research - Live Demos & Notebooks
-          activemenu: biomedical_research
+        - subtitle: Analyze Biomedical Research - Live Demos & Notebooks
+          activemenu: analyze_biomedical_research
       source: yes
-      source:           
-        - title: Medical Question Answering (BioGPT)
-          id: medical_question_answering_biogpt
-          image: 
-              src: /assets/images/Medical_Question_Answering_BioGPT.svg
-          excerpt: Automatically generate answers to questions with context in clinical documents.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/BIOGPT_MEDICAL_QUESTION_ANSWERING/
-          - text: Colab
-            type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/31.Medical_Question_Answering.ipynb
+      source:
         - title: Detect drugs interactions
           id: detect_drugs_interactions
           image: 
@@ -104,17 +92,5 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/NER_MEDMENTIONS_COARSE/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_MEDMENTIONS_COARSE.ipynb
-        - title: Medical Question Answering
-          id: medical_question_answering
-          image: 
-              src: /assets/images/MedicalQuestionAnswerin.svg
-          excerpt: Automatically generate answers to questions with context in clinical documents
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_QUESTION_ANSWERING/
-          - text: Colab
-            type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MEDICAL_QUESTION_ANSWERING.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_MEDMENTIONS_COARSE.ipynb        
 ---

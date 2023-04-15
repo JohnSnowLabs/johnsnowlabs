@@ -1,10 +1,10 @@
 ---
 layout: demopagenew
-title: Clinical Trials - Healthcare NLP Demos & Notebooks
-seotitle: 'Healthcare NLP: Clinical Trials - John Snow Labs'
+title: Analyze Clinical Trial Protocols - Healthcare NLP Demos & Notebooks
+seotitle: 'Healthcare NLP: Analyze Clinical Trial Protocols - John Snow Labs'
 subtitle: Run 300+ live demos and notebooks
 full_width: true
-permalink: /clinical_trials
+permalink: /analyze_clinical_trial_protocols
 key: demo
 nav_key: demo
 article_header:
@@ -17,8 +17,8 @@ data:
   sections:  
     - secheader: yes
       secheader:
-        - subtitle: Clinical Trials - Live Demos & Notebooks
-          activemenu: clinical_trials
+        - subtitle: Analyze Clinical Trial Protocols - Live Demos & Notebooks
+          activemenu: analyze_clinical_trial_protocols
       source: yes
       source:         
         - title: Recognize Concepts in Drug Development Trials

@@ -21,6 +21,18 @@ data:
           activemenu: public_health
       source: yes
       source:
+        - title: Voice of the Patients
+          id: voice_patients           
+          image: 
+              src: /assets/images/Voice_of_the_Patients.svg
+          excerpt: This demo extracts healthcare-related terms from the documents transferred from the patient’s own sentences.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/VOICE_OF_THE_PATIENTS/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_THE_PATIENTS.ipynb
         - title: Classify Self-Reported Age from Posts  
           id: classify_self_report_age_tweet   
           image: 
@@ -80,17 +92,5 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/PUBLIC_HEALTH_MENTIONS/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_MENTION.ipynb
-        - title: Voice of the Patients
-          id: voice_patients           
-          image: 
-              src: /assets/images/Voice_of_the_Patients.svg
-          excerpt: This demo extracts healthcare-related terms from the documents transferred from the patient’s own sentences.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/VOICE_OF_THE_PATIENTS/
-          - text: Colab
-            type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_THE_PATIENTS.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_MENTION.ipynb        
 ---

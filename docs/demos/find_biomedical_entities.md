@@ -1,10 +1,10 @@
 ---
 layout: demopagenew
-title: Genes, Variants, Phenotypes - Biomedical NLP Demos & Notebooks
-seotitle: 'Biomedical NLP: Genes, Variants, Phenotypes - John Snow Labs'
+title: Find Biomedical Entities - Biomedical NLP Demos & Notebooks
+seotitle: 'Biomedical NLP: Find Biomedical Entities - John Snow Labs'
 subtitle: Run 300+ live demos and notebooks
 full_width: true
-permalink: /genes_variants_phenotypes
+permalink: /find_biomedical_entities
 key: demo
 nav_key: demo
 article_header:
@@ -16,12 +16,12 @@ show_date: false
 data:
   sections:  
     - title: Biomedical NLP
-      excerpt: Genes, Variants, Phenotypes
+      excerpt: Find Biomedical Entities
       secheader: yes
       secheader:
         - title: Biomedical NLP
-          subtitle: Genes, Variants, Phenotypes
-          activemenu: genes_variants_phenotypes
+          subtitle: Find Biomedical Entities
+          activemenu: find_biomedical_entities
       source: yes
       source:
         - title: Detect chemical compounds and genes
