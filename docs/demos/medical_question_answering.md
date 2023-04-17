@@ -25,7 +25,7 @@ data:
           id: medical_question_answering_biogpt
           image: 
               src: /assets/images/Medical_Question_Answering_BioGPT.svg
-          excerpt: Automatically generate answers to questions with context in clinical documents.
+          excerpt: Automatically generate answers to questions with context in biomedical documents.
           actions:
           - text: Live Demo
             type: normal

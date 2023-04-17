@@ -105,16 +105,7 @@
       </div>
       <div class="col-side">    
         <ul class="acc-top"><li class="acc-top-item">Biomedical NLP<i class="fas fa-chevron-down"></i></li></ul>
-        <ul class="acc-body">          
-          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "find_biomedical_entities" %} class="active"  {% endif %} {% endfor %} {% endif %} >
-            <a href="/find_biomedical_entities">Find Biomedical Entities</a>
-          </li>
-          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "analyze_clinical_trial_protocols" %} class="active"  {% endif %} {% endfor %} {% endif %} >
-            <a href="/analyze_clinical_trial_protocols">Analyze Clinical Trial Protocols</a>
-          </li>
-          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "analyze_biomedical_research" %} class="active"  {% endif %} {% endfor %} {% endif %} >
-            <a href="/analyze_biomedical_research">Analyze Biomedical Research</a>
-          </li>
+        <ul class="acc-body">
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "medical_question_answering" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/medical_question_answering">Medical Question Answering</a>
           </li>
@@ -123,6 +114,15 @@
           </li>
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "medical_text_summarization" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/medical_text_summarization">Medical Text Summarization</a>
+          </li>          
+          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "find_biomedical_entities" %} class="active"  {% endif %} {% endfor %} {% endif %} >
+            <a href="/find_biomedical_entities">Find Biomedical Entities</a>
+          </li>
+          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "analyze_clinical_trial_protocols" %} class="active"  {% endif %} {% endfor %} {% endif %} >
+            <a href="/analyze_clinical_trial_protocols">Analyze Clinical Trial Protocols</a>
+          </li>
+          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "analyze_biomedical_research" %} class="active"  {% endif %} {% endfor %} {% endif %} >
+            <a href="/analyze_biomedical_research">Analyze Biomedical Research</a>
           </li>
         </ul> 
         <ul class="acc-top"><li class="acc-top-item">Medical NLP: World Languages<i class="fas fa-chevron-down"></i></li></ul>

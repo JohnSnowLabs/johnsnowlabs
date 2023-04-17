@@ -25,7 +25,7 @@ data:
           id: medical_text_generation
           image: 
               src: /assets/images/MedicalQuestionAnswerin.svg
-          excerpt: This demo showcases the capabilities of our medical text generation model.
+          excerpt: This demo can generate human-like, conceptually meaningful biomedical texts.
           actions:
           - text: Live Demo
             type: normal
