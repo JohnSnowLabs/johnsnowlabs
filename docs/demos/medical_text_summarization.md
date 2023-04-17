@@ -49,7 +49,7 @@ data:
           id: medical_text_summarization_question
           image: 
               src: /assets/images/MedicalQuestionAnswerin.svg
-          excerpt: This demo showcases the capabilities of a specialized Flan-T5 model that has been fine-tuned to summarize medical questions and generate related summaries and questions.
+          excerpt: This demo shows the summarization of medical questions and the generation of relevant summaries and questions.
           actions:
           - text: Live Demo
             type: normal
