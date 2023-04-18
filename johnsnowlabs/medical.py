@@ -1,6 +1,4 @@
 import traceback
-
-
 from johnsnowlabs.abstract_base.lib_resolver import try_import_lib
 from johnsnowlabs.auto_install.softwares import Software
 from johnsnowlabs.utils.env_utils import reverse_compatibility_import
@@ -11,6 +9,7 @@ warning_logged = False
 try:
     if try_import_lib("sparknlp_jsl") and try_import_lib("sparknlp"):
         from sparknlp_jsl.functions import *
+        from sparknlp_jsl.training import *
         from sparknlp_jsl.annotator.windowed.windowed_sentence import (
             WindowedSentenceModel,
         )
@@ -72,6 +71,7 @@ try:
             DocumentMLClassifierApproach,
             DocumentMLClassifierModel,
             Resolution2Chunk,
+            MedicalQuestionAnswering,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
@@ -102,7 +102,6 @@ try:
             NerCrfEvaluation,
             NorvigSpellEvaluation,
         )
-
 
 except Exception as err:
     log_broken_lib(Software.spark_hc)

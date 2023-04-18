@@ -3,13 +3,13 @@ layout: docs
 header: true
 seotitle: NLU | John Snow Labs
 title: License Management & Caching
-permalink: /docs/en/nlp./license_management
+permalink: /docs/en/nlp/license_management
 key: docs-concepts
 modify_date: "2020-05-08"
 header: true
 show_nav: true
 sidebar:
-    nav: nlp.
+nav: jsl
 ---
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
@@ -33,18 +33,18 @@ This shows you all licenses for your account in https://my.johnsnowlabs.com/.
 Use this to decide which license number to install when installing via browser or access token.
 
 ```python
-nlp..list_remote_licenses()
+nlp.list_remote_licenses()
 ```
 
 </div><div class="h3-box" markdown="1">
 
 ### List all locally cached licenses
 
-Use this to decide which license number to use when using nlp..start() or nlp..install() to specify which local license
+Use this to decide which license number to use when using nlp.start() or nlp.install() to specify which local license
 you want to load.
 
 ```python
-nlp..list_local_licenses()
+nlp.list_local_licenses()
 ```
 
 </div><div class="h3-box" markdown="1">

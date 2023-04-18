@@ -8,7 +8,7 @@ permalink: /docs/en/jsl/examples_hc
 modify_date: "2023-03-27"
 show_nav: true
 sidebar:
-  nav: jsl
+nav: jsl
 ---
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
@@ -21,8 +21,8 @@ You can also pass multiple whitespace separated references.
 
 </div><div class="h3-box" markdown="1">
 
-## Medical Named Entity Recognition (NER) 
-[Medical NER tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/medical_named_entity_recognition/overview_medical_entity_recognizers.ipynb)    
+## Medical Named Entity Recognition (NER)
+[Medical NER tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/medical_named_entity_recognition/overview_medical_entity_recognizers.ipynb)
 
 NLU provided a separate and highly tuned **medical NER** models for various Healthcare domains.    
 These medical NER models are trained to extract various `medical named entities`.
@@ -69,31 +69,31 @@ enterprise_zero_shot_ner = nlp.load('en.zero_shot.ner_roberta')
 
 # Configure entity definitions
 enterprise_zero_shot_ner['zero_shot_ner'].setEntityDefinitions(
-    {
-        "PROBLEM": [
-            "What is the disease?",
-            "What is his symptom?",
-            "What is her disease?",
-            "What is his disease?",
-            "What is the problem?",
-            "What does a patient suffer",
-            "What was the reason that the patient is admitted to the clinic?",
-        ],
-        "DRUG": [
-            "Which drug?",
-            "Which is the drug?",
-            "What is the drug?",
-            "Which drug does he use?",
-            "Which drug does she use?",
-            "Which drug do I use?",
-            "Which drug is prescribed for a symptom?",
-        ],
-        "ADMISSION_DATE": ["When did patient admitted to a clinic?"],
-        "PATIENT_AGE": [
-            "How old is the patient?",
-            "What is the gae of the patient?",
-        ],
-    }
+  {
+    "PROBLEM": [
+      "What is the disease?",
+      "What is his symptom?",
+      "What is her disease?",
+      "What is his disease?",
+      "What is the problem?",
+      "What does a patient suffer",
+      "What was the reason that the patient is admitted to the clinic?",
+    ],
+    "DRUG": [
+      "Which drug?",
+      "Which is the drug?",
+      "What is the drug?",
+      "Which drug does he use?",
+      "Which drug does she use?",
+      "Which drug do I use?",
+      "Which drug is prescribed for a symptom?",
+    ],
+    "ADMISSION_DATE": ["When did patient admitted to a clinic?"],
+    "PATIENT_AGE": [
+      "How old is the patient?",
+      "What is the gae of the patient?",
+    ],
+  }
 )
 
 ```
@@ -102,12 +102,12 @@ Then we can already use this pipeline to predict labels
 ```python
 # Predict entities
 df = enterprise_zero_shot_ner.predict(
-    [
-        "The doctor pescribed Majezik for my severe headache.",
-        "The patient was admitted to the hospital for his colon cancer.",
-        "27 years old patient was admitted to clinic on Sep 1st by Dr."+
-        "X for a right-sided pleural effusion for thoracentesis.",
-    ]
+  [
+    "The doctor pescribed Majezik for my severe headache.",
+    "The patient was admitted to the hospital for his colon cancer.",
+    "27 years old patient was admitted to clinic on Sep 1st by Dr."+
+    "X for a right-sided pleural effusion for thoracentesis.",
+  ]
 )
 df
 ```
@@ -130,7 +130,7 @@ These classes usually are international `disease` , `medicine` , or `procedure` 
 
 ```python
 data = ["""He has a starvation ketosis but nothing found for significant for dry oral mucosa"""]
- nlp.load('med_ner.jsl.wip.clinical resolve.icd10pcs').predict(data)
+nlp.load('med_ner.jsl.wip.clinical resolve.icd10pcs').predict(data)
 ```
 
 | sentence_results                                                                                                     | sentence_resolution_results   | entities@clinical_results                                                                                                                  | meta_entities@clinical_entity                                                                                                                | meta_entities@clinical_confidence                                                                                                      |
@@ -150,7 +150,7 @@ See the [Models Hub for all avaiable Entity Resolution Models](https://nlp.johns
 Classify for pairs of entities what kind of `relation` exists between them.       
 It classifies for every  `named entity` , which type of `relationship` exists to the `other entities`.        
 More precisely, internally the relation extractor classifies  `every pair of entities`  into one out of `C` potential relation classes.  
-There could be no relation between a `pair of entities` or there could a relation, which is specified by ` the predicted relation label` .   
+There could be no relation between a `pair of entities` or there could a relation, which is specified by ` the predicted relation label` .
 
 
 You can specify `predict(data,output_level='relation` to have one row per classified relation in your resulting dataframe.  
@@ -242,7 +242,7 @@ Normalize raw text from clinical documents, e.g. scraped web pages or xml docume
 **Parameters are**
 - lowercase: whether to convert strings to lowercase. Default is False.
 - `policy`: rule to remove patterns from text. Valid policy values are: `all` `abbreviations`, `dosages`
-Defaults is `all`. `abbreviation` policy used to expend common drugs abbreviations, `dosages` policy used to convert drugs dosages and values to the standard form (see examples bellow).
+  Defaults is `all`. `abbreviation` policy used to expend common drugs abbreviations, `dosages` policy used to convert drugs dosages and values to the standard form (see examples bellow).
 
 ```python
 data = ["Agnogenic one half cup","adalimumab 54.5 + 43.2 gm","aspirin 10 meq/ 5 ml oral sol","interferon alfa-2b 10 million unit ( 1 ml ) injec","Sodium Chloride/Potassium Chloride 13bag"]
@@ -272,7 +272,7 @@ import nlu
 import json
 # Define helper functions to write NER rules to file 
 """Generate json with dict contexts at target path"""
-def dump_dict_to_json_file(dict, path): 
+def dump_dict_to_json_file(dict, path):
   with open(path, 'w') as f: json.dump(dict, f)
 
 """Dump raw text file """
@@ -282,9 +282,9 @@ sample_text = """A 28-year-old female with a history of gestational diabetes mel
 
 # Define Gender NER matching rules
 gender_rules = {
-    "entity": "Gender",
-    "ruleScope": "sentence",
-    "completeMatchRegex": "true"    }
+  "entity": "Gender",
+  "ruleScope": "sentence",
+  "completeMatchRegex": "true"    }
 
 # Define dict data in csv format
 gender_data = '''male,man,male,boy,gentleman,he,him
@@ -348,7 +348,7 @@ If you upload the `spark_nlp_for_healthcare.json` file to the standard colab dir
 
 </div><div class="h3-box" markdown="1">
 
-### Authorize anywhere via providing via JSON file 
+### Authorize anywhere via providing via JSON file
 You can specify the location of your `spark_nlp_for_healthcare.json` like this :
 ```python
 path = '/path/to/spark_nlp_for_healthcare.json'
