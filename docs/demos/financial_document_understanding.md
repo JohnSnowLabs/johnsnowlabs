@@ -68,5 +68,5 @@ data:
             url: https://demo.johnsnowlabs.com/finance/FIN_VISUAL_QUESTION_ANSWERING/
           - text: Colab
             type: blue_btn
-            url: 
+            url:  
 ---
