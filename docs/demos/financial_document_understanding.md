@@ -68,5 +68,17 @@ data:
             url: https://demo.johnsnowlabs.com/finance/FIN_VISUAL_QUESTION_ANSWERING/
           - text: Colab
             type: blue_btn
-            url:  
+            url: 
+        - title: Extract tables and ask questions in Natural Language about Financial Reports
+          id: extract_tables_questions_natural_language_financial_reports 
+          image: 
+              src: /assets/images/Extract_tables_and_ask_questions_in_Natural_Language_about_Financial_Reports.svg
+          excerpt: This demo showcases how to use Visual NLP to extract tables and Finance NLP Table Question Answering to retrieve answers to questions asked in Natural Language.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/FIN_TABLE_QUESTION_ANSWERING_PDF/
+          - text: Colab
+            type: blue_btn
+            url: 
 ---

@@ -189,4 +189,16 @@ data:
           - text: Colab
             type: blue_btn
             url:
+        - title: Name Entity Recognition on Broker Reports
+          id: name_entity_recognition_broker_reports   
+          image: 
+              src: /assets/images/Name_Entity_Recognition_on_Broker_Reports.svg
+          excerpt: This demo showcases how you can apply NER models to extract financial entities from broker reports, as Currency, Amount, Revenue, Rating, Target Price or Ticker, etc.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/NER_BROKER_REPORTS/
+          - text: Colab
+            type: blue_btn
+            url:
 ---

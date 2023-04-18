@@ -148,6 +148,12 @@
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "financial_document_understanding" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/financial_document_understanding">Financial Document Understanding</a>
           </li>
+          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "legal_document_understanding" %} class="active"  {% endif %} {% endfor %} {% endif %} >
+            <a href="/legal_document_understanding">Legal Document Understanding</a>
+          </li>
+          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "legal_question_answering_visual" %} class="active"  {% endif %} {% endfor %} {% endif %} >
+            <a href="/legal_question_answering_visual">Legal Question Answering</a>
+          </li>
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "extract_handwritten_texts" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/extract_handwritten_texts">Extract handwritten texts</a>
           </li>
@@ -193,7 +199,7 @@
             <a href="/text_summarization">Text Summarization</a>
           </li>
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "financial_question_answering" %} class="active"  {% endif %} {% endfor %} {% endif %} >
-            <a href="/financial_question_answering">Finance Question Answering in Financial NLP</a>
+            <a href="/financial_question_answering">Finance Question Answering</a>
           </li>
         </ul>
         <ul class="acc-top"><li class="acc-top-item">Legal NLP<i class="fas fa-chevron-down"></i></li></ul>
@@ -223,7 +229,7 @@
             <a href="/long_document_splitting">Long Document Splitting</a>
           </li>
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "legal_question_answering" %} class="active"  {% endif %} {% endfor %} {% endif %} >
-            <a href="/legal_question_answering">Legal Question Answering in Legal NLP</a>
+            <a href="/legal_question_answering">Legal Question Answering</a>
           </li>
         </ul>   
       </div>
