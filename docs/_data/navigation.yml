@@ -318,3 +318,7 @@ deidentification_lab:
         url: /docs/en/deidentification_lab/installation
       - title: User Guide
         url: /docs/en/deidentification_lab/user_guide
+      - title: Release Notes
+        url: /docs/en/deidentification_lab/release_notes
+      - title: FAQs
+        url: /docs/en/deidentification_lab/faq
