@@ -18,12 +18,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../../static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../../static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../../static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -33,8 +33,8 @@
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../../../static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../../../static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js"></script>
     <script src="../../../../static/jquery.js"></script>
@@ -335,7 +335,7 @@ document.write(`
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    regexPatternsDictionary</span>
-<span class="sd">        ictionary with regular expression patterns that match some protected entity</span>
+<span class="sd">        Dictionary with regular expression patterns that match some protected entity</span>
 <span class="sd">    mode</span>
 <span class="sd">        Mode for Anonimizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
 <span class="sd">    obfuscateDate</span>
@@ -393,7 +393,7 @@ document.write(`
 <span class="sd">            fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</span>
 <span class="sd">    sameLengthFormattedEntities</span>
 <span class="sd">        List of formatted entities to generate the same length outputs as original ones during obfuscation.</span>
-<span class="sd">        The formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE</span>
+<span class="sd">        The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE</span>
 <span class="sd">    selectiveObfuscationModesPath</span>
 <span class="sd">        Dictionary path where is the json that contains the selective obfuscation modes</span>
 
@@ -553,7 +553,7 @@ document.write(`
 <div class="viewcode-block" id="DeIdentification.region"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.region">[docs]</a>    <span class="n">region</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;region&quot;</span><span class="p">,</span> <span class="s2">&quot;The country format eu or usa&quot;</span><span class="p">,</span>
                    <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="DeIdentification.unnormalizedDateMode"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.unnormalizedDateMode">[docs]</a>    <span class="n">unnormalizedDateMode</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;unnormalizedDateMode&quot;</span><span class="p">,</span> <span class="s2">&quot;Obfuscate or mask&quot;</span><span class="p">,</span>
+<div class="viewcode-block" id="DeIdentification.unnormalizedDateMode"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.unnormalizedDateMode">[docs]</a>    <span class="n">unnormalizedDateMode</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;unnormalizedDateMode&quot;</span><span class="p">,</span> <span class="s2">&quot;Sets the mode to use if the date is not formatted&quot;</span><span class="p">,</span>
                                  <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.ageRanges"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.ageRanges">[docs]</a>    <span class="n">ageRanges</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;ageRanges&quot;</span><span class="p">,</span>
@@ -866,12 +866,12 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setUnnormalizedDateMode"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setUnnormalizedDateMode">[docs]</a>    <span class="k">def</span> <span class="nf">setUnnormalizedDateMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets mask or obfuscate</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the mode to use if the date is not formatted.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : str</span>
-
+<span class="sd">            The mode to use if the date is not formatted. [mask, obfuscate, skip] Default: obfuscate</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">unnormalizedDateMode</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
@@ -901,8 +901,7 @@ document.write(`
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : List[str]</span>
-<span class="sd">        The formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.</span>
-<span class="sd">        It can be also used &quot;ALL&quot; and &quot;NONE&quot; as a parameter.</span>
+<span class="sd">        The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">sameLengthFormattedEntities</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
@@ -912,10 +911,10 @@ document.write(`
 <div class="viewcode-block" id="DeIdentification.setSelectiveObfuscationModes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes">[docs]</a>    <span class="k">def</span> <span class="nf">setSelectiveObfuscationModes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets a Json path which has a dictionary of modes to enable multi-mode deidentification.</span>
 <span class="sd">            &#39;obfuscate&#39;: Replace the values with random values.</span>
-<span class="sd">            &#39;mask_same_length_chars&#39;: Replace the name with the asterix with same length minus two plus brackets on both end.</span>
+<span class="sd">            &#39;mask_same_length_chars&#39;: Replace the name with the asterisks with same length minus two plus brackets on both end.</span>
 <span class="sd">            &#39;mask_entity_labels&#39;: Replace the values with the entity value.</span>
-<span class="sd">            &#39;mask_fixed_length_chars&#39;: Replace the name with the asterix with fixed length. You should also invoke &quot;setFixedMaskLength()&quot;</span>
-<span class="sd">            &#39;skip&#39;: Skip the values without replacing</span>
+<span class="sd">            &#39;mask_fixed_length_chars&#39;: Replace the name with the asterisks with fixed length. You can also invoke &quot;setFixedMaskLength()&quot;</span>
+<span class="sd">            &#39;skip&#39;: Skip the values (intact)</span>
 <span class="sd">        The entities which have not been given in dictionary will deidentify according to setMode()</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1000,7 +999,7 @@ document.write(`
 <span class="sd">    fixedMaskLength: this is the length of the masking sequence that will be used when the &#39;fixed_length_chars&#39; masking policy is selected.</span>
 <span class="sd">    sameLengthFormattedEntities</span>
 <span class="sd">        List of formatted entities to generate the same length outputs as original ones during obfuscation.</span>
-<span class="sd">        The formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.</span>
+<span class="sd">        The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.</span>
 <span class="sd">    selectiveObfuscationModesPath</span>
 <span class="sd">        Dictionary path where is the json that contains the selective obfuscation modes</span>
 
@@ -1160,7 +1159,7 @@ document.write(`
 <div class="viewcode-block" id="DeIdentificationModel.region"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.region">[docs]</a>    <span class="n">region</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;region&quot;</span><span class="p">,</span> <span class="s2">&quot;The country format eu or usa&quot;</span><span class="p">,</span>
                    <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="DeIdentificationModel.unnormalizedDateMode"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.unnormalizedDateMode">[docs]</a>    <span class="n">unnormalizedDateMode</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;unnormalizedDateMode&quot;</span><span class="p">,</span> <span class="s2">&quot;Obfuscate or mask&quot;</span><span class="p">,</span>
+<div class="viewcode-block" id="DeIdentificationModel.unnormalizedDateMode"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.unnormalizedDateMode">[docs]</a>    <span class="n">unnormalizedDateMode</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;unnormalizedDateMode&quot;</span><span class="p">,</span> <span class="s2">&quot;the mode to use if the date is not formatted. [mask, obfuscate, skip] Default: obfuscate&quot;</span><span class="p">,</span>
                                  <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.ageRanges"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.ageRanges">[docs]</a>    <span class="n">ageRanges</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;ageRanges&quot;</span><span class="p">,</span>
@@ -1423,12 +1422,12 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setUnnormalizedDateMode"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setUnnormalizedDateMode">[docs]</a>    <span class="k">def</span> <span class="nf">setUnnormalizedDateMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets mask or obfuscate</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the mode to use if the date is not formatted.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : str</span>
-
+<span class="sd">            the mode to use if the date is not formatted. [mask, obfuscate, skip] Default: obfuscate</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">unnormalizedDateMode</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
@@ -1458,8 +1457,7 @@ document.write(`
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : List[str]</span>
-<span class="sd">        The formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.</span>
-<span class="sd">        It can be also used &quot;ALL&quot; and &quot;NONE&quot; as a parameter.</span>
+<span class="sd">        The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">sameLengthFormattedEntities</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
@@ -1495,9 +1493,15 @@ document.write(`
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -1507,7 +1511,7 @@ document.write(`
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner"></div>
+            
           </footer>
         
       </main>
@@ -1515,8 +1519,8 @@ document.write(`
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../../../static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../../../static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1534,7 +1538,7 @@ document.write(`
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://sphinx-doc.org/">Sphinx</a> 5.3.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     <br/>
   </p>
 </div>
@@ -1545,7 +1549,7 @@ document.write(`
     <div class="footer-items__end">
       
         <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.1.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
 </p></div>
       
     </div>
