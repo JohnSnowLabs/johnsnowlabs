@@ -12,9 +12,8 @@ sidebar:
 ---
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
+</div>
 
 ## User Guide
 
-<div>
-Release notes goes here
-</div>
+<div>Release notes goes here</div>
