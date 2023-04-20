@@ -44,5 +44,17 @@ data:
             url: https://demo.johnsnowlabs.com/legal/LEGAL_DETECT_HANDWRITTEN/
           - text: Colab
             type: blue_btn
-            url:             
+            url:  
+        - title: Legal Visual Question Answering
+          id: legal_visual_question_answering            
+          image: 
+              src: /assets/images/Legal_Visual_Question_Answering.svg
+          excerpt: Ask questions to legal documents in image format and get answers without any OCR involved.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/legal/LEGAL_VISUAL_QUESTION_ANSWERING/
+          - text: Colab
+            type: blue_btn
+            url:           
 ---
