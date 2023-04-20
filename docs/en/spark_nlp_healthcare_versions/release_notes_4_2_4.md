@@ -346,7 +346,7 @@ We are releasing a new `training_log_parser` module that helps to parse NER and 
 
 ||Description|ner_log_parser|assertion_log_parser|
 |-|-|-|-|
-|How to import | You can import this module for NER and Assertion as shown here |`from sparknlp_jsl.utils.training_log_parser import ner_log_parser`   | `from sparknlp_jsl.utils.training_log_parser import assertion_log_parser`  |
+|How to import | You can import this module for NER and Assertion as shown here |`from sparknlp_jsl.training_log_parser import ner_log_parser`   | `from sparknlp_jsl.training_log_parser import assertion_log_parser`  |
 | `get_charts`  | Plots the figures of metrics ( precision, recall, f1) vs epochs  | `ner_log_parser.get_charts(log_file, threshold)`  | `assertion_log_parser.get_charts(log_file, labels, threshold)`  |  
 |`loss_plot` | Plots the figures of validation and test loss values vs epochs.  | `ner_log_parser.loss_plot(path)`  | `assertion_log_parser.loss_plot(path)`  |  
 | `get_best_f1_scores`  | Returns the best Micro and Macro F1 Scores on test set  | `ner_log_parser.get_best_f1_scores(path)`   | `assertion_log_parser.get_best_f1_scores(path)`  |
@@ -356,7 +356,7 @@ We are releasing a new `training_log_parser` module that helps to parse NER and 
 *Import*
 
 ```python
-from sparknlp_jsl.utils.training_log_parser import ner_log_parser, assertion_log_parser
+from sparknlp_jsl.training_log_parser import ner_log_parser, assertion_log_parser
 
 ner_parser = ner_log_parser()
 assertion_parser = assertion_log_parser()
