@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Legal Finetuned FLAN-T5 Summarization ( SEC 10k Filings )
+title: Legal Finetuned FLAN-T5 Summarization 
 author: John Snow Labs
 name: legsum_flant5_legal_augmented
 date: 2023-04-14
