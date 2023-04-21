@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-FLAN-T5 is an enhanced version of the original T5 model and is designed to produce better quality and more coherent text generation. It is trained on a large dataset of diverse texts and can generate high-quality summaries of articles, documents, and other text-based inputs.
+FLAN-T5 is an enhanced version of the original T5 model and is designed to produce better quality and more coherent text generation. It is trained on a large dataset of diverse texts and can generate high-quality summaries of articles, documents, and other text-based inputs. The model can also be utilized to generate financial text.
 
 ## Predicted Entities
 
@@ -52,7 +52,7 @@ flant5 = finance.TextGenerator.pretrained('fingen_flant5_base','en','finance/mod
 pipeline = nlp.Pipeline(stages=[document_assembler, flant5])
 
 data = spark.createDataFrame([
-  [1, "what is Sec 10-k filing?"]
+  [1, "Explain what is Sec 10-k filing "]
 ]).toDF('id', 'text')
 
 results = pipeline.fit(data).transform(data)
@@ -65,11 +65,11 @@ results.select("summary.result").show(truncate=False)
 ## Results
 
 ```bash
-+---------------------+
-|result               |
-+---------------------+
-|[a consolidated form]|
-+---------------------+
++--------------------------------------------------------------------------------------------------------------------+
+|result                                                                                                              |
++--------------------------------------------------------------------------------------------------------------------+
+|[Sec 10k filing is a form of tax filing that requires a party to file jointly or several entities for tax purposes.]|
++--------------------------------------------------------------------------------------------------------------------+
 ```
 
 {:.model-param}
