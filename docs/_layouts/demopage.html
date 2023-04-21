@@ -18,7 +18,7 @@ full_width: true
         {%- if _section.secheader -%}
 
           {%- for child in _section.secheader -%}
-          <div class="subtitle">{{ child.title }} <img src="/assets/images/arrow.svg" /><strong>{{ child.subtitle }}</strong></div>           
+          <div class="subtitle">{{ child.title }} <img src="/assets/images/arrow.svg" alt="" /><strong>{{ child.subtitle }}</strong></div>           
           {%- endfor-%}
           
         {%- endif -%}
@@ -49,10 +49,10 @@ full_width: true
                 {%- if child.image.is_row -%}
                   {%- endif -%}
                   <figure class="tab_fig_blue">
-                    <img src="{{ _item_image_src }}" />
+                    <img src="{{ _item_image_src }}" alt="" />
                   </figure>
                   <figure class="tab_fig_white">
-                    <img src="{{ _item_image2_src }}" />
+                    <img src="{{ _item_image2_src }}" alt="" />
                   </figure>
                   {%- if child.image.is_row -%}
                 {%- endif -%}
