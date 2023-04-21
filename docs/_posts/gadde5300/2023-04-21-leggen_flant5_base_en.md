@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-FLAN-T5 is an enhanced version of the original T5 model and is designed to produce better quality and more coherent text generation. It is trained on a large dataset of diverse texts and can generate high-quality summaries of articles, documents, and other text-based inputs.
+FLAN-T5 is an enhanced version of the original T5 model and is designed to produce better quality and more coherent text generation. It is trained on a large dataset of diverse texts and can generate high-quality summaries of articles, documents, and other text-based inputs. The model can also be utilized to generate legal texts.
 
 ## Predicted Entities
 
@@ -50,7 +50,7 @@ flant5 = legal.TextGenerator.pretrained('leggen_flant5_base','en','legal/models'
   
 pipeline = nlp.Pipeline(stages=[document_assembler, flant5])
 data = spark.createDataFrame([
-  [1, "What is a NDA?"]
+  [1, "Explain loan Clauses"]
 ]).toDF('id', 'text')
 results = pipeline.fit(data).transform(data)
 results.select("summary.result").show(truncate=False)
@@ -61,11 +61,11 @@ results.select("summary.result").show(truncate=False)
 ## Results
 
 ```bash
-+----------------------------+
-|result                      |
-+----------------------------+
-|[a non-disclosure agreement]|
-+----------------------------+
++--------------------------------------------------------------------------------------------+
+|result                                                                                      |
++--------------------------------------------------------------------------------------------+
+|[Loan clauses are clauses in the U.S. Constitution that provide for the repayment of loans.]|
++--------------------------------------------------------------------------------------------+
 ```
 
 {:.model-param}
