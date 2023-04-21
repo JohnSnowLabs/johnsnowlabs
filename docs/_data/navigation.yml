@@ -316,6 +316,8 @@ deidentification_lab:
         url:    /docs/en/deidentification_lab/getting_started
       - title:  Installation
         url:    /docs/en/deidentification_lab/installation
+      - title: Features
+        url: /docs/en/deidentification_lab/features
       - title:  User Guide
         url:    /docs/en/deidentification_lab/user_guide
       - title:  Release Notes
