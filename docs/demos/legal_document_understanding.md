@@ -21,7 +21,7 @@ data:
           activemenu: legal_document_understanding
       source: yes
       source: 
-        - title: Detect Signatures in Legal Document Images 
+        - title: Detect Signatures in Legal Documents 
           id: detect_signatures_legal_document_images
           image: 
               src: /assets/images/Detect_Signatures_in_Legal_Document.svg
@@ -33,7 +33,7 @@ data:
           - text: Colab
             type: blue_btn
             url:  
-        - title: Detect handwritten information in Legal Document
+        - title: Detect Handwriting in Legal Documents
           id: detect_handwritten_information_legal_document
           image: 
               src: /assets/images/Detect_handwritten_information_in_Legal_Document.svg
