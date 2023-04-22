@@ -29,7 +29,7 @@ De-identification Lab supports a variety of document formats ranging from unstru
 
 <div>De-identification Lab allows the Deidentification of the following entities identified within the document content or the file name. This includes all 18 identifiers of PHI as per the HIPAA Privacy Rule de-identification standard.</div>
 <br>
-<img class="image image__shadow image__align--center" src="/assets/images/deidentification_lab/deid_supported_entities.png" style="width:100%;"/>
+<img class="image image__shadow image__align--center" src="/assets/images/deidentification_lab/deid_supported_entities_1_0_0.png" style="width:100%;"/>
 
 ## Techniques and Strategies
 <div>

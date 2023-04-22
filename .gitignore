@@ -347,3 +347,5 @@ python/docs/reference/_autosummary/**
 
 # MS Visio Code
 **/.vscode/
+/docs/#_posts/
+/docs/#demos/
