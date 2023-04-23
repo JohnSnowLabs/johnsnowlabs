@@ -2,7 +2,7 @@
 layout: model
 title: Summarize Radiology Reports
 author: John Snow Labs
-name: summarizer_jsl_radiology
+name: summarizer_radiology
 date: 2023-04-23
 tags: [clinical, licensed, en, summarization, tensorflow]
 task: Summarization
@@ -28,8 +28,8 @@ This model is capable of summarizing radiology reports while preserving the impo
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/summarizer_jsl_radiology_en_4.4.0_3.0_1682218525772.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/summarizer_jsl_radiology_en_4.4.0_3.0_1682218525772.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/summarizer_radiology_en_4.4.0_3.0_1682218525772.zip){:.button.button-orange}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/summarizer_radiology_en_4.4.0_3.0_1682218525772.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -37,11 +37,13 @@ This model is capable of summarizing radiology reports while preserving the impo
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document = DocumentAssembler().setInputCol('text').setOutputCol('document')
 
-summarizer = MedicalSummarizer.pretrained("summarizer_jsl_radiology", "en", "clinical/models").setInputCols(['document'])\
-    .setOutputCol('summary')\
+summarizer = MedicalSummarizer.pretrained("summarizer_radiology", "en", "clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("summary")\
     .setMaxTextLength(512)\
     .setMaxNewTokens(512)
 
@@ -84,9 +86,9 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val summarizer = MedicalSummarizer.pretrained("summarizer_clinical_jsl", "en", "clinical/models")
-    .setInputCols(['document'])
-    .setOutputCol('summary')
+val summarizer = MedicalSummarizer.pretrained("summarizer_radiology", "en", "clinical/models")
+    .setInputCols("document")
+    .setOutputCol("summary")
     .setMaxTextLength(512)
     .setMaxNewTokens(512)
 
@@ -134,7 +136,7 @@ The patient has peripheral vascular disease with claudication. The right lower e
 
 {:.table-model}
 |---|---|
-|Model Name:|summarizer_jsl_radiology|
+|Model Name:|summarizer_radiology|
 |Compatibility:|Healthcare NLP 4.4.0+|
 |License:|Licensed|
 |Edition:|Official|
