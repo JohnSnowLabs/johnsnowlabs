@@ -43,6 +43,7 @@ This Financial NER model extracts the following entities from the Greek legislat
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.DocumentAssembler()\
         .setInputCol("text")\
