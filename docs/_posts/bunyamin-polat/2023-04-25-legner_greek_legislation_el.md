@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This Financial NER model extracts the following entities from the Greek legislation:
+This Legal NER model extracts the following entities from the Greek legislations:
 
 - `FACILITY`: Facilities, such as police stations, departments, etc.
 - `GPE`: Geopolitical Entity; any reference to a geopolitical entity (e.g., country, city, Greek administrative unit, etc.)
