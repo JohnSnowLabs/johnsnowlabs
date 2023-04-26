@@ -3,11 +3,13 @@ import importlib
 import os
 import site
 import subprocess
+from typing import List
+
 
 logged_imports = []
 
 
-def inject_modules(imports: list[str], g):
+def inject_modules(imports: List[str], g):
     # Imports a list of modules in the global scope g
     for module_name in imports:
         try:
@@ -63,7 +65,7 @@ def reverse_compatibility_import(script_path, g):
     :param script_path: tge script path, should be fetched with __file__ from calling module
     :param g: globals() from calling script into which we inject imports
     """
-    inject_modules(collect_all_imports(ast.parse(open(script_path).read())), g)
+    inject_modules(collect_all_imports(ast.parse(open(script_path, encoding="utf8").read())), g)
 
 
 def try_import(lib):
