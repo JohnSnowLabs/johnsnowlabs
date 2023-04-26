@@ -8,8 +8,8 @@ from johnsnowlabs.utils.env_utils import (
 )
 
 # These versions are used for auto-installs and version  checks
-raw_version_jsl_lib = "4.4.2"
-raw_version_nlp = "4.4.0"
+raw_version_jsl_lib = "4.4.3"
+raw_version_nlp = "4.4.1"
 raw_version_nlu = "4.2.0"
 raw_version_pyspark = "3.1.2"
 raw_version_nlp_display = "4.1"
