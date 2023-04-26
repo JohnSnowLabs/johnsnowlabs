@@ -8,7 +8,7 @@ tags: [licensed, en, clinical, profiling, ner_profiling, ner]
 task: [Named Entity Recognition, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 4.4.0
-spark_version: 3.2
+spark_version: 3.0
 supported: true
 annotator: PipelineModel
 article_header:
@@ -27,8 +27,8 @@ Here are the NER models that this pretrained pipeline includes:
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_profiling_clinical_en_4.4.0_3.2_1682514770037.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_profiling_clinical_en_4.4.0_3.2_1682514770037.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_profiling_clinical_en_4.4.0_3.0_1682519093353.zip){:.button.button-orange}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_profiling_clinical_en_4.4.0_3.0_1682519093353.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -36,8 +36,8 @@ Here are the NER models that this pretrained pipeline includes:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-
 ```python
+
 from sparknlp.pretrained import PretrainedPipeline
 
 ner_profiling_pipeline = PretrainedPipeline("ner_profiling_clinical", "en", "clinical/models")
@@ -46,6 +46,7 @@ result = ner_profiling_pipeline.annotate("""A 28-year-old female with a history 
 
 ```
 ```scala
+
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_profiling_pipeline = PretrainedPipeline("ner_profiling_clinical", "en", "clinical/models")
@@ -56,6 +57,7 @@ val result = ner_profiling_pipeline.annotate("""A 28-year-old female with a hist
 
 {:.nlu-block}
 ```python
+
 import nlu
 
 nlu.load("en.med_ner.profiling_clinical").predict("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM ), one prior episode of HTG-induced pancreatitis three years prior to presentation , associated with an acute hepatitis , and obesity with a body mass index ( BMI ) of 33.5 kg/m2 , presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting.""")
