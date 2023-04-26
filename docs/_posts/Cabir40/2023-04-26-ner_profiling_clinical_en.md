@@ -4,7 +4,7 @@ title: Named Entity Recognition Profiling (Clinical)
 author: John Snow Labs
 name: ner_profiling_clinical
 date: 2023-04-26
-tags: [licensed, en, clinical, text_generation]
+tags: [licensed, en, clinical, profiling, ner_profiling, ner]
 task: [Named Entity Recognition, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 4.4.0
@@ -36,17 +36,16 @@ Here are the NER models that this pretrained pipeline includes:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
 
+```python
 from sparknlp.pretrained import PretrainedPipeline
 
-ner_profiling_pipeline = PretrainedPipeline('ner_profiling_clinical', 'en', 'clinical/models')
+ner_profiling_pipeline = PretrainedPipeline("ner_profiling_clinical", "en", "clinical/models")
 
 result = ner_profiling_pipeline.annotate("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM ), one prior episode of HTG-induced pancreatitis three years prior to presentation , associated with an acute hepatitis , and obesity with a body mass index ( BMI ) of 33.5 kg/m2 , presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting.""")
 
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_profiling_pipeline = PretrainedPipeline("ner_profiling_clinical", "en", "clinical/models")
@@ -57,7 +56,6 @@ val result = ner_profiling_pipeline.annotate("""A 28-year-old female with a hist
 
 {:.nlu-block}
 ```python
-
 import nlu
 
 nlu.load("en.med_ner.profiling_clinical").predict("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM ), one prior episode of HTG-induced pancreatitis three years prior to presentation , associated with an acute hepatitis , and obesity with a body mass index ( BMI ) of 33.5 kg/m2 , presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting.""")
