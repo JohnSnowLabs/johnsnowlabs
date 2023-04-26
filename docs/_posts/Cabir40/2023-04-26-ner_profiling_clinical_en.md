@@ -8,7 +8,7 @@ tags: [licensed, en, clinical, profiling, ner_profiling, ner]
 task: [Named Entity Recognition, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 4.4.0
-spark_version: 3.0
+spark_version: 3.2
 supported: true
 annotator: PipelineModel
 article_header:
@@ -27,8 +27,8 @@ Here are the NER models that this pretrained pipeline includes:
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_profiling_clinical_en_4.4.0_3.0_1682519093353.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_profiling_clinical_en_4.4.0_3.0_1682519093353.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_profiling_clinical_en_4.4.0_3.2_1682521444252.zip){:.button.button-orange}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_profiling_clinical_en_4.4.0_3.2_1682521444252.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
