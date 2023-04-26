@@ -39,7 +39,7 @@ def inject_modules(imports: List[str], g):
                 print(f"Warning: Could not import module={module_name} error = {e}")
 
 
-def collect_all_imports(source_code) -> list[str]:
+def collect_all_imports(source_code) -> List[str]:
     # collect all import statements from source code string
     tree = ast.parse(source_code)
     imports = []
@@ -65,7 +65,9 @@ def reverse_compatibility_import(script_path, g):
     :param script_path: tge script path, should be fetched with __file__ from calling module
     :param g: globals() from calling script into which we inject imports
     """
-    inject_modules(collect_all_imports(ast.parse(open(script_path, encoding="utf8").read())), g)
+    inject_modules(
+        collect_all_imports(ast.parse(open(script_path, encoding="utf8").read())), g
+    )
 
 
 def try_import(lib):
