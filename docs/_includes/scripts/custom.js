@@ -178,3 +178,18 @@ try{
 } catch(e){}
 
 document.getElementById("year").innerHTML = new Date().getFullYear();
+
+
+try {
+  let links = document.links;
+
+  for (let i = 0, linksLength = links.length; i < linksLength; i++) {
+    if (links[i].hostname != window.location.hostname) {
+        links[i].target = '_blank';
+    }
+    if ((links[i].hostname.indexOf("johnsnowlabs.com") === -1) && (links[i].hostname != window.location.hostname)) {
+      links[i].rel = 'nofollow';
+    }
+  }  
+} catch(e){}
+

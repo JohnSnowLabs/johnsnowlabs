@@ -32,5 +32,5 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_GENERATION/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/33.Medical_Text_Generation.ipynb                
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/33.1.Medical_Text_Generation.ipynb              
 ---
