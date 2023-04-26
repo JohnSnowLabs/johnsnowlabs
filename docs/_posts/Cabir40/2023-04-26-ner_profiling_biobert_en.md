@@ -4,7 +4,7 @@ title: Named Entity Recognition Profiling (Biobert)
 author: John Snow Labs
 name: ner_profiling_biobert
 date: 2023-04-26
-tags: [licensed, en, clinical, profiling, ner_profiling, ner]
+tags: [licensed, en, clinical, biobert, profiling, ner_profiling, ner]
 task: [Named Entity Recognition, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 4.4.0
