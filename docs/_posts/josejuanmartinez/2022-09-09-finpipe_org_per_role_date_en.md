@@ -23,7 +23,7 @@ This is a pretrained pipeline to extract Companies (ORG), People (PERSON), Job t
 
 ## Predicted Entities
 
-`ORG`, `PERSON`, `ROLE`, `DATE`
+`ORG`, `ADDRESS`, `ROLE`, `DATE`,`SUSPICIOUS_ITEMS`, `PERSON_NAME`, `SUSPICIOUS_ACTION`, `SUSPICIOUS_KEYWORD`
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/finance/FINPIPE_ORG_PER_DATE_ROLES/){:.button.button-orange}
