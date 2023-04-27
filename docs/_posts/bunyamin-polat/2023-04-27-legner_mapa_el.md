@@ -38,6 +38,7 @@ This model extracts `ADDRESS`, `AMOUNT`, `DATE`, `ORGANISATION`, and `PERSON` en
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.DocumentAssembler()\
         .setInputCol("text")\
@@ -120,12 +121,12 @@ The dataset is available [here](https://huggingface.co/datasets/joelito/mapa).
 
 ```bash
 label         precision  recall  f1-score  support 
-ADDRESS       0.89       1.0     0.94      16      
+ADDRESS       0.89       1.00    0.94      16      
 AMOUNT        0.82       0.75    0.78      12      
 DATE          0.98       0.98    0.98      65      
 ORGANISATION  0.85       0.85    0.85      40      
-PERSON        0.9        0.95    0.92      38      
+PERSON        0.90       0.95    0.92      38      
 macro-avg     0.91       0.93    0.92      171     
-macro-avg     0.89       0.91    0.9       171     
+macro-avg     0.89       0.91    0.90      171     
 weighted-avg  0.91       0.93    0.92      171     
 ```
