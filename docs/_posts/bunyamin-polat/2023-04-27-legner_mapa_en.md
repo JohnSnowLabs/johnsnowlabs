@@ -38,6 +38,7 @@ This model extracts `ADDRESS`, `DATE`, `ORGANISATION`, and `PERSON` entities fro
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.DocumentAssembler()\
         .setInputCol("text")\
@@ -123,7 +124,7 @@ ADDRESS       1.00       1.00    1.00      5
 DATE          0.98       1.00    0.99      40      
 ORGANISATION  0.83       0.71    0.77      14      
 PERSON        0.98       0.85    0.91      48      
-macro-avg     0.96       0.9     0.93      107     
+macro-avg     0.96       0.90    0.93      107     
 macro-avg     0.95       0.89    0.92      107     
-weighted-avg  0.96       0.9     0.93      107     
+weighted-avg  0.96       0.90    0.93      107     
 ```
