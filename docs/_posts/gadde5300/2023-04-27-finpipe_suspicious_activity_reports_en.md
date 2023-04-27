@@ -47,25 +47,27 @@ deid_pipeline = PretrainedPipeline("finpipe_suspicious_activity_reports", "en", 
 ## Results
 
 ```bash
-Suspicious Activity Report Labels
-------------------------------
-SUSPICIOUS
-April 25, 2023
-John Doe
-Senior Compliance Officer
-SUSPICIOUS_ACTION
-Unusual
-SUSPICIOUS_KEYWORD
-Money Laundering
-SUSPICIOUS_ITEMS
-deposits
-cash
-Currency
-sums of money
-bank accounts
-tax
-April 24, 2023
-XYZ Bank
++-------------------------+------------------+
+|chunk                    |ner_label         |
++-------------------------+------------------+
+|SUSPICIOUS               |SUSPICIOUS_KEYWORD|
+|April 25, 2023           |DATE              |
+|John Doe                 |PERSON_NAME       |
+|Senior Compliance Officer|ROLE              |
+|SUSPICIOUS_ACTION        |SUSPICIOUS_KEYWORD|
+|Unusual                  |SUSPICIOUS_KEYWORD|
+|SUSPICIOUS_KEYWORD       |SUSPICIOUS_KEYWORD|
+|Money Laundering         |SUSPICIOUS_ACTION |
+|SUSPICIOUS_ITEMS         |SUSPICIOUS_KEYWORD|
+|deposits                 |SUSPICIOUS_ITEMS  |
+|cash                     |SUSPICIOUS_ITEMS  |
+|Currency                 |SUSPICIOUS_ITEMS  |
+|sums of money            |SUSPICIOUS_ITEMS  |
+|bank accounts            |SUSPICIOUS_ITEMS  |
+|tax                      |SUSPICIOUS_ITEMS  |
+|April 24, 2023           |DATE              |
+|XYZ Bank                 |ORG               |
++-------------------------+------------------+
 ```
 
 {:.model-param}
