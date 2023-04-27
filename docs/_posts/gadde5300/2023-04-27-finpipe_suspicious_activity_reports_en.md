@@ -20,6 +20,10 @@ use_language_switcher: "Python-Scala-Java"
 
 This is a finance Pretrained pipeline aimed to extract entities from suspicious activity reports that are filed by financial institutions, and those associated with their business, with the Financial Crimes Enforcement Network.
 
+## Predicted Entities
+
+`ORG`, `ADDRESS`, `ROLE`, `DATE`,`SUSPICIOUS_ITEMS`, `PERSON_NAME`, `SUSPICIOUS_ACTION`, `SUSPICIOUS_KEYWORD`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
