@@ -39,7 +39,7 @@ This is a finance Pretrained pipeline aimed to extract entities from suspicious 
 ```python
 from johnsnowlabs import PretrainedPipeline
 
-deid_pipeline = PretrainedPipeline("finpipe_suspicious_activity_reports", "en", "finance/models")
+sar_pipeline = PretrainedPipeline("finpipe_suspicious_activity_reports", "en", "finance/models")
 ```
 
 </div>
