@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This Text Generation Mode has been fine-tuned on FLANT5 Using SEC filings data. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text generation tasks.
+This Text Generation model has been fine-tuned on FLANT5 Using SEC filings data. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text generation tasks.
 
 ## Predicted Entities
 
