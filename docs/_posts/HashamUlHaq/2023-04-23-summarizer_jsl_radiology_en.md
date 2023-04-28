@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is capable of summarizing radiology reports while preserving the important information
+This model is capable of summarizing radiology reports while preserving the important information such as imaging tests and findings.
 
 ## Predicted Entities
 
