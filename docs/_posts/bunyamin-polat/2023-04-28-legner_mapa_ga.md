@@ -52,7 +52,7 @@ tokenizer = nlp.Tokenizer()\
         .setInputCols(["sentence"])\
         .setOutputCol("token")
 
-embeddings = nlp.RoBertaEmbeddings.pretrained("roberta_base_czech_legal","gle")\
+embeddings = nlp.RoBertaEmbeddings.pretrained("roberta_base_irish_legal","gle")\
         .setInputCols(["sentence", "token"])\
         .setOutputCol("embeddings")\
         .setMaxSentenceLength(512)\
