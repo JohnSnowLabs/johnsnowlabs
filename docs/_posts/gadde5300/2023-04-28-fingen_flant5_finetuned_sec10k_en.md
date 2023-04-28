@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This language model has been fine-tuned on the FLANT5 using the SEC 10K Filings data. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text generation tasks.
+This Text Generation Mode has been fine-tuned on FLANT5 Using SEC filings data. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text generation tasks.
 
 ## Predicted Entities
 
@@ -44,7 +44,7 @@ document_assembler = nlp.DocumentAssembler()\
 
 flant5 = finance.TextGenerator.pretrained('fingen_flant5_finetuned_sec10k','en','finance/models')\
     .setInputCols(["question"])\
-    .setOutputCol("summary")
+    .setOutputCol("generated_text")
     .setMaxNewTokens(150)\
     .setStopAtEos(True)
   
@@ -53,7 +53,7 @@ data = spark.createDataFrame([
   [1, """Deferred revenue primarily consists of customer billings or payments received in advance of revenues being recognized from the company’s subscription and services contracts"""]
 ]).toDF('id', 'text')
 results = pipeline.fit(data).transform(data)
-results.select("summary.result").show(truncate=False)
+results.select("generated_text.result").show(truncate=False)
 ```
 
 </div>
