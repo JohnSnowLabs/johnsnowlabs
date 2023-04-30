@@ -4,7 +4,7 @@ title: Legal Alias Pipeline
 author: John Snow Labs
 name: legpipe_alias
 date: 2023-04-30
-tags: [en, legal, nda, ner, pipeline, alias, licensed]
+tags: [en, legal, ner, pipeline, alias, licensed]
 task: Pipeline Legal
 language: en
 edition: Legal NLP 1.0.0
