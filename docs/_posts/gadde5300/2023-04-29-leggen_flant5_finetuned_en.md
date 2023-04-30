@@ -52,7 +52,7 @@ flant5 = legal.TextGenerator.pretrained('leggen_flant5_finetuned,'en','legal/mod
 pipeline = nlp.Pipeline(stages=[document_assembler, flant5])
 
 data = spark.createDataFrame([
-  [1,'''Explain sec10k filing''']
+  [1,'''This exhibit has been redacted and is the subject of a confidential treatment request. redacted material is marked with [* * *] and has been filed separately with the securities and exchange commission. this agreement (this "agreement"), dated december 30, 2016 (the "effective date"), is''']
 ]).toDF('id', 'text')
 results = pipeline.fit(data).transform(data)
 results.select("generated_text.result").show(truncate=False)
@@ -63,11 +63,11 @@ results.select("generated_text.result").show(truncate=False)
 ## Results
 
 ```bash
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|result                                                                                                                                                                                                                                                                                                                                       |
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|[The Sec10K filing is a form of filing that is required by the Securities and Exchange Commission to be filed in the United States. The filing must be filed in the United States, and must be signed by all parties involved. The filing must be filed in the United States, and must be signed by all parties involved.]|
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|result                                                                                                                                                                                                                                                                                                                                                                                             |
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|[The parties agree that this Agreement shall be binding upon and inure to the benefit of the parties, their successors and assigns. The parties further agree that any disputes arising out of or related to this Agreement shall be resolved through binding arbitration. The parties agree to submit to binding arbitration in accordance with the rules of the American Arbitration Association]|
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
 
 {:.model-param}
