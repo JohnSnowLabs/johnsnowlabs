@@ -12,7 +12,7 @@ spark_version: 3.0
 supported: true
 annotator: PipelineModel
 article_header:
-  type: cover
+type: cover
 use_language_switcher: "Python-Scala-Java"
 ---
 
@@ -32,6 +32,7 @@ This pipeline allows you to detect names in quotes and brackets like ("Recipient
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 legal_pipeline = nlp.PretrainedPipeline("legpipe_alias", "en", "legal/models")
 
