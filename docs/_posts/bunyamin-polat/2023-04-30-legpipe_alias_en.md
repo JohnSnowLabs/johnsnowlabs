@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline allows you to detect names in quotes and brackets like ("Recipient"), ("Disclosing Parties"), very common in Legal Agreements to reference the parties.
+This pipeline allows you to detect names in quotes and brackets like: ("Supplier"), ("Recipient"), ("Disclosing Parties"), etc. very common in Legal Agreements to reference the parties.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
