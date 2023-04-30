@@ -39,8 +39,7 @@ legal_pipeline = nlp.PretrainedPipeline("legpipe_alias", "en", "legal/models")
 text = ["""MUTUAL NON-DISCLOSURE AGREEMENT 
 This Mutual Non-Disclosure Agreement (the “Agreement”) is made on _________ by and between:  
 John Snow Labs, a Delaware corporation, registered at 16192 Coastal Highway, Lewes, Delaware 19958 (“John Snow Labs”), and 
-Bosonit, S.L, a Spanish corporation, registered at Portales 71, 2º floor, Offices 7,8,9 and 
-10. (“Company”), (each a “party” and together the “parties”). 
+Acentos, S.L, a Spanish corporation, registered at Gran Via 71, 2º floor (“Company”), (each a “party” and together the “parties”). 
 Recitals: 
 John Snow Labs and Company intend to explore the possibility of a business relationship between each other, whereby each party (“Discloser”) may disclose sensitive information to the other party (“Recipient”). 
 The parties agree as follows:"""]
