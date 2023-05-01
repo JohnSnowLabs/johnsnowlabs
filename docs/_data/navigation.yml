@@ -149,10 +149,8 @@ annotation-lab:
         children:
           - title: Video Tutorials
             url: /docs/en/alab/video_tutorials
-          - subtitle: Blog Posts
-            children:
-            - title: Entity Extraction From Hotel Reviews
-              url: /docs/en/alab/blog_reviews_part_1
+          - title: Step-by-Step Tutorials
+            url: /docs/en/alab/step_by_step_tutorials
       - title: FAQ
         url: /docs/en/alab/troubleshooting
       - title: Release Notes
