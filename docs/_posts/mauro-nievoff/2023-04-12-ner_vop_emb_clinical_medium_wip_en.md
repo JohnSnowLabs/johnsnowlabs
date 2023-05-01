@@ -27,8 +27,8 @@ Note: ‘wip’ suffix indicates that the model development is work-in-progress 
 `Allergen`, `SubstanceQuantity`, `RaceEthnicity`, `Measurements`, `InjuryOrPoisoning`, `Treatment`, `Modifier`, `TestResult`, `MedicalDevice`, `Vaccine`, `Frequency`, `HealthStatus`, `Route`, `RelationshipStatus`, `Procedure`, `Duration`, `DateTime`, `AdmissionDischarge`, `Disease`, `Test`, `Substance`, `Laterality`, `Symptom`, `ClinicalDept`, `Dosage`, `Age`, `Drug`, `VitalTest`, `PsychologicalCondition`, `Form`, `BodyPart`, `Employment`, `Gender`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOICE_OF_THE_PATIENTS/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_THE_PATIENTS.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_emb_clinical_medium_wip_en_4.4.0_3.2_1681315530573.zip){:.button.button-orange}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_emb_clinical_medium_wip_en_4.4.0_3.2_1681315530573.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -38,6 +38,7 @@ Note: ‘wip’ suffix indicates that the model development is work-in-progress 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
