@@ -89,6 +89,10 @@ For a project, it is important to know what entities are to be extracted, and th
  - EXPENSIVE – This label should be used to identify mentions of high prices or luxury amenities in the reviews. This includes expressions resembling, “Though the room was costly”, “The hotel had an expensive spa”. 
 
  - CHEAP - This label should be used to identify mentions of low prices or budget amenities in the reviews. This includes expressions resembling “The hotel served free breakfast”, “The room was cheaper than I thought”.  
+
+ - SERVICE – This label should be used to identify certain services provided by the hotel. For example, free breakfast, tour guide for the city, etc. This label should be imported as a rule which is based on words which are associated to a sentiment. 
+
+ - PRODUCT – This label should be used to identify certain products provided by the hotel. For example, shampoo, face wash, clean towels, etc. This should also be imported as a rule which contains general names of products to match with. Any occurrence with words - say shampoo – will be labeled as PRODUCT.  
  
 
 Labels such as SATISFIED, ANGRY, DISAPPOINTED, EXPENSIVE, and CHEAP are usually used for classification tasks. They must be used carefully. The sentiments must be linked to some services or products. One way is to make relations between the sentiments and the services. Another way is to add rules for sentiments and designate some words associated with that sentiment. This will be covered in detail in the next part of the blog. After choosing the content type and template, click on the “Next” button to navigate to “Reuse Resources” tab which allows you to reuse labels from already available models, rules, and prompts. You can discover existing resources via the search box, based on either the name of the label or the name of the model. In this project, I will mix labels linked to models, rules and prompts. The model I chose ([NER_ONTO_100](https://sparknlp.org/2020/02/03/onto_100_en.html)) contains many pre-defined labels that can be used for annotating entities in our project, such as, DATE, PERSON, GPE, CARDINAL, QUANTITY, etc. 
