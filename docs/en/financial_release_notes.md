@@ -15,6 +15,7 @@ sidebar:
 
 ## Releases log
 
+{:.table-model-big}
 | 	                                                                                                            |                                                                                                                                                      |                                                                                                             |                                                                                                        |
 |--------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
 | [1.0.0](https://medium.com/spark-nlp/spark-nlp-for-finance-is-released-cfa3cc7b9faa)                         | [1.1.0](https://medium.com/spark-nlp/finance-nlp-1-1-0-for-spark-nlp-has-been-released-9adf8339fe0a)                                                 | [1.2.0](https://gaddesaishailesh.medium.com/finance-nlp-1-2-0-for-spark-nlp-has-been-released-6250a52eb704) | [1.3.0](https://medium.com/@muhendisbp/finance-nlp-1-3-0-for-spark-nlp-has-been-released-7b4ed8a10f9c) |

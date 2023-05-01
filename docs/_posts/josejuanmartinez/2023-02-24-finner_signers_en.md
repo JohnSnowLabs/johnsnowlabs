@@ -30,7 +30,7 @@ This is a Legal NER Model, aimed to process the last page of the agreements when
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/legal/LEGALNER_SIGNERS/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_signers_en_1.0.0_3.0_1677258652137.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_signers_en_1.0.0_3.0_1677258652137.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finner_signers_en_1.0.0_3.0_1677258652137.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use

@@ -29,7 +29,7 @@ Given a proposal on a socially important issue, this model classifies it accordi
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_proposal_topic_en_1.0.0_3.0_1676594573703.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_proposal_topic_en_1.0.0_3.0_1676594573703.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legclf_proposal_topic_en_1.0.0_3.0_1676594573703.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use

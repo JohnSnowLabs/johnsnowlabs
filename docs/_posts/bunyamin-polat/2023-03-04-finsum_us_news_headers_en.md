@@ -29,7 +29,7 @@ This model is fine-tuned with US news articles from `bloomberg.com`, `cnbc.com`,
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finsum_us_news_headers_en_1.0.0_3.0_1677962901205.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finsum_us_news_headers_en_1.0.0_3.0_1677962901205.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finsum_us_news_headers_en_1.0.0_3.0_1677962901205.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use

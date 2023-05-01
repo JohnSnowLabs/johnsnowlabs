@@ -241,6 +241,15 @@ output_image=output_image
   </body>
 </html>
 ```
+## Model Information
 
+{:.table-model}
+|---|---|
+|Model Name:|ocr_small_printed|
+|Type:|ocr|
+|Compatibility:|Visual NLP 3.3.3+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
 
 

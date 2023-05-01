@@ -29,7 +29,7 @@ This is a Multilabel Text Classification model that can help you classify 8 type
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legmulticlf_unfair_tos_en_1.0.0_3.0_1678283272065.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legmulticlf_unfair_tos_en_1.0.0_3.0_1678283272065.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legmulticlf_unfair_tos_en_1.0.0_3.0_1678283272065.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use

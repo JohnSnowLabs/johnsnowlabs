@@ -116,6 +116,16 @@ results.select(results.answers).show(truncate=False)
 |[ When it finish the Coffee Break? ->  11:44 to 11:39 a.m.,  Who is giving the Introductory Remarks? ->  lee a. waller, trrf vice presi- dent,  Who is going to take part of the individual interviews? ->  trrf treasurer]|
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|docvqa_donut_base|
+|Type:|ocr|
+|Compatibility:|Visual NLP 4.3.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
 
 
 

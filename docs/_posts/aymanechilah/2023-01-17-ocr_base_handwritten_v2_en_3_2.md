@@ -143,5 +143,14 @@ Let's # check the performance !
 I hope it will be awesome
 ```
 
+## Model Information
 
+{:.table-model}
+|---|---|
+|Model Name:|ocr_base_handwritten_v2|
+|Type:|ocr|
+|Compatibility:|Visual NLP 4.2.4+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
 

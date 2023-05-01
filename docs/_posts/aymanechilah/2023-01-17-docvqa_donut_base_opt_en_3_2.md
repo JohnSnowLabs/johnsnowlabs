@@ -114,6 +114,13 @@ val results.select(results.answers).show(truncate=False)
 |[ When it finish the Coffee Break? ->  11:39 a.m.,  Who is giving the Introductory Remarks? ->  lee a. waller, trrf vice presi- ident,  Who is going to take part of the individual interviews? ->  trrf]|
 +---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ```
+## Model Information
 
+{:.table-model}
+|---|---|
+|Model Name:|docvqa_donut_base_opt|
+|Type:|ocr|
+|Compatibility:|Visual NLP 4.3.0+|
+|License:|Licensed|
 
 

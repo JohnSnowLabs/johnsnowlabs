@@ -121,3 +121,12 @@ Change Cue BO LOO
 oBUX Card «3228 New Balance: 37.45
 Card is registertd
 ```
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|ocr_restapi|
+|Compatibility:|Healthcare NLP 4.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|

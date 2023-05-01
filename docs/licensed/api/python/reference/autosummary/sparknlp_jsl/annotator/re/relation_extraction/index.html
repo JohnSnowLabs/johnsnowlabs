@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../../../../static/styles/theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../../../../static/styles/bootstrap.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
-<link href="../../../../../../static/styles/pydata-sphinx-theme.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../../../../static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../../static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../../../../static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=12da95d707ffb74b382d" rel="stylesheet" />
+  <link href="../../../../../../static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -34,8 +34,8 @@
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../../../../static/scripts/bootstrap.js?digest=12da95d707ffb74b382d" />
-<link rel="preload" as="script" href="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d" />
+  <link rel="preload" as="script" href="../../../../../../static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js"></script>
     <script src="../../../../../../static/jquery.js"></script>
@@ -358,6 +358,11 @@ document.write(`
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../seq2seq/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-15"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_encoder_decoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_summarizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_summarizer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_text_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_text_generator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../windowed/windowed_sentence/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed.windowed_sentence</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -781,6 +786,10 @@ of type “Biomarker” and “RelativeDay”.</p>
 </dd>
 <dt><strong>relationPairsCaseSensitive</strong></dt><dd><p>Determines whether relation pairs are case sensitive.</p>
 </dd>
+<dt><strong>relationTypePerPair</strong></dt><dd><p>List of entity pairs per relations which limit the entities can form a relation.
+For example, {“CAUSE”: [“PROBLEM”, “SYMPTOM”]} which only let a “CAUSE” relation to hold
+between a problem (“PROBLEM) and a symptom (“SYMTOM”).</p>
+</dd>
 <dt><strong>maxSyntacticDistance</strong></dt><dd><p>Maximal syntactic distance, as threshold (Default: 0)</p>
 </dd>
 <dt><strong>customLabels</strong></dt><dd><p>Custom relation labels.</p>
@@ -1011,6 +1020,25 @@ value : bool</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationTypePerPair">
+<span class="sig-name descname"><span class="pre">setRelationTypePerPair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">relationTypePairs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/re/relation_extraction.html#RelationExtractionModel.setRelationTypePerPair"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationTypePerPair" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the list of entity pairs allowed for a given relation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>relationTypePairs</strong><span class="classifier">dict[str, list[str]]</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.getRelationTypePerPair">
+<span class="sig-name descname"><span class="pre">getRelationTypePerPair</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/re/relation_extraction.html#RelationExtractionModel.getRelationTypePerPair"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.getRelationTypePerPair" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the list of entity pairs allowed for a given relation</p>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.pretrained">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/re/relation_extraction.html#RelationExtractionModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Download a pre-trained RelationExtractionModel.</p>
@@ -1057,6 +1085,10 @@ For example, [“Biomarker-RelativeDay”] will process all relations between en
 of type “Biomarker” and “RelativeDay”.</p>
 </dd>
 <dt><strong>relationPairsCaseSensitive</strong></dt><dd><p>Determines whether relation pairs are case sensitive.</p>
+</dd>
+<dt><strong>relationTypePerPair</strong></dt><dd><p>List of entity pairs per relations which limit the entities can form a relation.
+For example, {“CAUSE”: [“PROBLEM”, “SYMPTOM”]} which only let a “CAUSE” relation to hold
+between a problem (“PROBLEM) and a symptom (“SYMTOM”).</p>
 </dd>
 <dt><strong>maxSyntacticDistance</strong></dt><dd><p>Maximal syntactic distance, as threshold (Default: 0)</p>
 </dd>
@@ -1198,6 +1230,10 @@ of type “Biomarker” and “RelativeDay”.</p>
 </dd>
 <dt><strong>relationPairsCaseSensitive</strong></dt><dd><p>Determines whether relation pairs are case sensitive.</p>
 </dd>
+<dt><strong>relationTypePerPair</strong></dt><dd><p>List of entity pairs per relations which limit the entities can form a relation.
+For example, {“CAUSE”: [“PROBLEM”, “SYMPTOM”]} which only let a “CAUSE” relation to hold
+between a problem (“PROBLEM) and a symptom (“SYMTOM”).</p>
+</dd>
 <dt><strong>maxSyntacticDistance</strong></dt><dd><p>Maximal syntactic distance, as threshold (Default: 0)</p>
 </dd>
 <dt><strong>customLabels</strong></dt><dd><p>Custom relation labels.</p>
@@ -1318,9 +1354,15 @@ of type “Biomarker” and “RelativeDay”.</p>
               
               
                 <footer class="bd-footer-article">
-                  <!-- Previous / next buttons -->
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -1377,56 +1419,13 @@ of type “Biomarker” and “RelativeDay”.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationPairsCaseSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setRelationPairsCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setCustomLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setCustomLabels()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.getClasses"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.getClasses()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationTypePerPair"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setRelationTypePerPair()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.getRelationTypePerPair"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.getRelationTypePerPair()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.pretrained"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.pretrained()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel"><code class="docutils literal notranslate"><span class="pre">PosologyREModel</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel"><code class="docutils literal notranslate"><span class="pre">GenericREModel</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach">RelationExtractionApproach</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.inputAnnotatorTypes">inputAnnotatorTypes</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.outputAnnotatorType">outputAnnotatorType</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.name">name</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.fromEntityBeginCol">fromEntityBeginCol</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.fromEntityEndCol">fromEntityEndCol</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.fromEntityLabelCol">fromEntityLabelCol</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.toEntityBeginCol">toEntityBeginCol</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.toEntityEndCol">toEntityEndCol</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.toEntityLabelCol">toEntityLabelCol</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.relationDirectionCol">relationDirectionCol</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.customLabels">customLabels</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.pretrainedModelPath">pretrainedModelPath</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.overrideExistingLabels">overrideExistingLabels</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.maxSyntacticDistance">maxSyntacticDistance</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setMaxSyntacticDistance">setMaxSyntacticDistance</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setFromEntity">setFromEntity</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setToEntity">setToEntity</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setCustomLabels">setCustomLabels</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setRelationDirectionCol">setRelationDirectionCol</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setPretrainedModelPath">setPretrainedModelPath</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach.setverrideExistingLabels">setОverrideExistingLabels</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel">RelationExtractionModel</a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.inputAnnotatorTypes">inputAnnotatorTypes</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.outputAnnotatorType">outputAnnotatorType</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.name">name</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.predictionThreshold">predictionThreshold</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.relationPairs">relationPairs</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.relationPairsCaseSensitive">relationPairsCaseSensitive</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.maxSyntacticDistance">maxSyntacticDistance</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.customLabels">customLabels</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.classes">classes</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setMaxSyntacticDistance">setMaxSyntacticDistance</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setPredictionThreshold">setPredictionThreshold</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationPairs">setRelationPairs</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationPairsCaseSensitive">setRelationPairsCaseSensitive</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setCustomLabels">setCustomLabels</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.getClasses">getClasses</a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.pretrained">pretrained</a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.PosologyREModel">PosologyREModel</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.GenericREModel">GenericREModel</a></li>
 </ul>
 </li>
 </ul>
@@ -1447,7 +1446,7 @@ of type “Biomarker” and “RelativeDay”.</p>
             
           </div>
           <footer class="bd-footer-content">
-            <div class="bd-footer-content__inner"></div>
+            
           </footer>
         
       </main>
@@ -1455,8 +1454,8 @@ of type “Biomarker” and “RelativeDay”.</p>
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../../../../../static/scripts/bootstrap.js?digest=12da95d707ffb74b382d"></script>
-<script src="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=12da95d707ffb74b382d"></script>
+  <script src="../../../../../../static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../../../../static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
 <div class="bd-footer__inner bd-page-width">
@@ -1474,7 +1473,7 @@ of type “Biomarker” and “RelativeDay”.</p>
       
         <div class="footer-item">
   <p class="sphinx-version">
-    Created using <a href="https://sphinx-doc.org/">Sphinx</a> 5.3.0.
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
     <br/>
   </p>
 </div>
@@ -1485,7 +1484,7 @@ of type “Biomarker” and “RelativeDay”.</p>
     <div class="footer-items__end">
       
         <div class="footer-item"><p class="theme-version">
-  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.1.
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
 </p></div>
       
     </div>

@@ -395,8 +395,6 @@ Jekyll::Hooks.register :posts, :post_render do |post|
   <title>Redirecting&hellip;</title>
   <link rel="canonical" href="#{redirect_to}">
   <script>location="#{redirect_to}"</script>
-  <meta http-equiv="refresh" content="0; url=#{redirect_to}">
-  <meta name="robots" content="noindex">
   <h1>Redirecting&hellip;</h1>
   <a href="#{redirect_to}">Click here if you are not redirected.</a>
 </html>

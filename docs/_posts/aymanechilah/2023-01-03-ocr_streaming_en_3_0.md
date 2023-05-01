@@ -138,3 +138,12 @@ spark.table("result").select(Array("timestamp","pagenum", "path", "text")).show(
 |2022-07-20 21:56:...|      0|file:/content/dat...|6/13/22, 11:47 AM...|
 +--------------------+-------+--------------------+--------------------+
 ```
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|ocr_streaming|
+|Compatibility:|Healthcare NLP 4.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|

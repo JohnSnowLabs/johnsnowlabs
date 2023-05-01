@@ -99,3 +99,10 @@ tabs({
     tabsContentSelector: '.tabs-box .highlighter-rouge', 
     activeClass: 'tabheader_active'
 });
+tabs({
+    tabsWrapperSelector: '.tabs-wrapper', 
+    tabsParentSelector: '.tabs-python-scala-head', 
+    tabsSelector: '.tab-python-scala-li', 
+    tabsContentSelector: '.tabs-item', 
+    activeClass: 'tabheader_active'
+});
