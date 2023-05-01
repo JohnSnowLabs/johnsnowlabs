@@ -22,8 +22,8 @@ use_language_switcher: "Python-Scala-Java"
 This model is a modified version of Flan-T5 (LLM) based text generation model that is finetuned with natural instruction datasets by John Snow Labs.  Given a few tokens as an intro, it can generate human-like, conceptually meaningful texts  up to 512 tokens given an input text (max 1024 tokens).
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_GENERATION/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/33.1.Medical_Text_Generation.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/text_generator_generic_jsl_base_en_4.3.2_3.0_1680519245746.zip){:.button.button-orange}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/text_generator_generic_jsl_base_en_4.3.2_3.0_1680519245746.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
