@@ -2,11 +2,11 @@
 layout: docs
 comment: no
 header: true
-seotitle: Annotation Lab | John Snow Labs
+seotitle: NLP Lab | John Snow Labs
 title: Extract Insights from Customer Reviews with NLP Lab
-permalink: /docs/en/alab/blog_reviews_part_1
+permalink: /docs/en/alab/NER_project_creation
 key: docs-training
-modify_date: "2022-10-17"
+modify_date: "2023-05-01"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
