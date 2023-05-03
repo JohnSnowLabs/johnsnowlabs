@@ -142,13 +142,13 @@ try {
       currentVersionContainer.textContent = itemTitle;       
       if(item.previousElementSibling) {
         previosVersionContainer.textContent = item.previousElementSibling.innerText; 
-        previosVersionContainer.parentElement.href += item.previousElementSibling.innerText.replaceAll('.', '_');
+        previosVersionContainer.parentElement.href = 'release_notes_' + item.previousElementSibling.innerText.replaceAll('.', '_');
       } else {
         previosVersionContainer.parentElement.parentElement.classList.add('hide');
       }
       if(item.nextElementSibling) {
         nextVersionContainer.textContent = item.nextElementSibling.innerText;
-        nextVersionContainer.parentElement.href += item.nextElementSibling.innerText.replaceAll('.', '_');
+        nextVersionContainer.parentElement.href = 'release_notes_' + item.nextElementSibling.innerText.replaceAll('.', '_');
       } else {
         nextVersionContainer.parentElement.parentElement.classList.add('hide');
       }         

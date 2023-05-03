@@ -1,6 +1,6 @@
 ---
 layout: docs
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: Starting a Spark Session
 permalink: /docs/en/jsl/start-a-sparksession
 key: docs-install

@@ -20,7 +20,7 @@ A **Project Owner** or a **Manager** can use the completed tasks (completions) f
 ## Deploy a new training job
 
 Users can perform multiple training jobs at the same time, depending on the available resources/license(s). Users can opt to create new training jobs independently from already running training/pre-annotation/OCR jobs. If resources/licenses are available when pressing the `Train Model` button a new training server is launched.
-The running servers can be seen by visiting the [Clusters](docs/en/alab/cluster_management) page.
+The running servers can be seen by visiting the [Clusters](/docs/en/alab/cluster_management) page.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.2.0/clusters.png" style="width:100%;"/>
 

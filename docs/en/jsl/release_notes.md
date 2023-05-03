@@ -1,7 +1,7 @@
 ---
 layout: docs
 header: true
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: NLU release notes
 permalink: /docs/en/jsl/release_notes
 key: docs-release-notes
@@ -265,7 +265,7 @@ You can see all features showcased in the [![Open In Colab](https://colab.resear
 #### nlu.viz(pipe,data)
 Visualize input data with an already configured Spark NLP pipeline,  
 for Algorithms of type (Ner,Assertion, Relation, Resolution, Dependency)  
-using [Spark NLP Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)  
+using [Spark NLP Display](https://nlp.johnsnowlabs.com/docs/en/display)  
 Automatically infers applicable viz type and output columns to use for visualization.  
 Example:
 ```python
@@ -679,7 +679,7 @@ All healthcare models added in NLU 4.0 :
 | es         | [es.med_ner.living_species](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_es_3_0.html)                                             | [ner_living_species](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_es_3_0.html)                                                                   | Named Entity Recognition | MedicalNerModel                      | Named Entity Recognition[es.med_ner.living_species](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_es_3_0.html)                                             |
 | es         | [es.med_ner.living_species.bert](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_bert_es_3_0.html)                                   | [ner_living_species_bert](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_bert_es_3_0.html)                                                         | Named Entity Recognition | MedicalNerModel                      | Named Entity Recognition[es.med_ner.living_species.bert](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_bert_es_3_0.html)                                   |
 | es         | [es.med_ner.living_species.roberta](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_roberta_es_3_0.html)                             | [ner_living_species_roberta](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_roberta_es_3_0.html)                                                   | Named Entity Recognition | MedicalNerModel                      | Named Entity Recognition[es.med_ner.living_species.roberta](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_roberta_es_3_0.html)                             |
-| es         | [es.med_ner.living_species.300](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_300_es_3_0.html)                                     | [ner_living_species_300](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_300_es_3_0.html)                                                           | Named Entity Recognition | MedicalNerModel                      | Named Entity Recognition[es.med_ner.living_species.300](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_300_es_3_0.html)                                     |
+| es         | [es.med_ner.living_species.300](https://nlp.johnsnowlabs.com/2022/07/29/ner_living_species_300_es_3_0.html)                                     | [ner_living_species_300](https://nlp.johnsnowlabs.com/2022/07/29/ner_living_species_300_es_3_0.html)                                                           | Named Entity Recognition | MedicalNerModel                      | Named Entity Recognition[es.med_ner.living_species.300](https://nlp.johnsnowlabs.com/2022/07/29/ner_living_species_300_es_3_0.html)                                     |
 | es         | [es.med_ner.living_species](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_es_3_0.html)                                             | [ner_living_species](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_es_3_0.html)                                                                   | Named Entity Recognition | MedicalNerModel                      | Named Entity Recognition[es.med_ner.living_species](https://nlp.johnsnowlabs.com/2022/06/22/ner_living_species_es_3_0.html)                                             |
 | fr         | [fr.med_ner.living_species](https://nlp.johnsnowlabs.com/2022/06/23/ner_living_species_fr_3_0.html)                                             | [ner_living_species](https://nlp.johnsnowlabs.com/2022/06/23/ner_living_species_fr_3_0.html)                                                                   | Named Entity Recognition | MedicalNerModel                      | Named Entity Recognition[fr.med_ner.living_species](https://nlp.johnsnowlabs.com/2022/06/23/ner_living_species_fr_3_0.html)                                             |
 | fr         | [fr.med_ner.living_species.bert](https://nlp.johnsnowlabs.com/2022/06/23/ner_living_species_bert_fr_3_0.html)                                   | [ner_living_species_bert](https://nlp.johnsnowlabs.com/2022/06/23/ner_living_species_bert_fr_3_0.html)                                                         | Named Entity Recognition | MedicalNerModel                      | Named Entity Recognition[fr.med_ner.living_species.bert](https://nlp.johnsnowlabs.com/2022/06/23/ner_living_species_bert_fr_3_0.html)                                   |
@@ -6712,7 +6712,7 @@ hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented wit
 
 ## NLU Version 3.0.1
 We are very excited to announce NLU 3.0.1 has been released!
-This is one of the most visually appealing releases, with the integration of the [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display) library and visualizations for `dependency trees`, `entity resolution`, `entity assertion`, `relationship between entities` and `named
+This is one of the most visually appealing releases, with the integration of the [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/display) library and visualizations for `dependency trees`, `entity resolution`, `entity assertion`, `relationship between entities` and `named
 entity recognition`. In addition to this, the schema of how columns are named by NLU has been reworked and all 140+ tutorial notebooks have been updated to reflect the latest changes in NLU 3.0.0+
 Finally, new multilingual models for `Afrikaans`, `Welsh`, `Maltese`, `Tamil`, and`Vietnamese` are now available.
 
@@ -6720,7 +6720,7 @@ Finally, new multilingual models for `Afrikaans`, `Welsh`, `Maltese`, `Tamil`, a
 
 
 #### New Features and Enhancements
-- 1 line to visualization for `NER`, `Dependency`, `Resolution`, `Assertion` and `Relation` via [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display) integration
+- 1 line to visualization for `NER`, `Dependency`, `Resolution`, `Assertion` and `Relation` via [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/display) integration
 - Improved column naming schema
 - [Over 140 + NLU tutorial Notebooks updated](https://github.com/JohnSnowLabs/nlu/tree/master/examples) and improved to reflect latest changes in NLU 3.0.0 +
 - New multilingual models for `Afrikaans`, `Welsh`, `Maltese`, `Tamil`, and`Vietnamese`

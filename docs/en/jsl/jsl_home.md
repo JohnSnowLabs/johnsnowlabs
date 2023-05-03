@@ -1,6 +1,6 @@
 ---
 layout: docs
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: John Snow Labs Configurations
 permalink: /docs/en/jsl/john-snow-labs-home
 key: docs-install

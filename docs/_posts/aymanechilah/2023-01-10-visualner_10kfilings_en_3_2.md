@@ -140,7 +140,7 @@ val results.withColumn("filename", path_array.getItem(f.size(path_array)- 1))
 ## Example
 
 {%- capture input_image -%}
-![Screenshot](/assets/images/examples_ocr/image10.jpg)
+![Screenshot](/assets/images/examples_ocr/image10.png)
 {%- endcapture -%}
 
 {%- capture output_image -%}

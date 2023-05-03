@@ -1,7 +1,7 @@
 ---
 layout: docs
 header: true
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: Quick Start
 permalink: /docs/en/jsl/quickstart_visual
 key: docs-concepts

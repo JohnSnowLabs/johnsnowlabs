@@ -1,6 +1,6 @@
 ---
 layout: docs
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: John Snow labs Usage & Overview
 permalink: /docs/en/jsl/import-structure
 key: docs-install
@@ -28,9 +28,9 @@ The following Functions, Classes and Modules will available in the global namesp
 
 ## The **nlp** Module
 -------------------
-`nlp` module with classes and methods from [Spark NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/quickstart)  like `nlp.BertForSequenceClassification`  and `nlp.map_annotations()`
-- `nlp.AnnotatorName` via Spark NLP [Annotators](https://nlp.johnsnowlabs.com/docs/en/jsl/annotators) and [Transformers](https://nlp.johnsnowlabs.com/docs/en/jsl/transformers) i.e. `nlp.BertForSequenceClassification`
-- Spark NLP [Helper Functions](https://nlp.johnsnowlabs.com/docs/en/jsl/auxiliary) i.e. `nlp.map_annotations()`
+`nlp` module with classes and methods from [Spark NLP](https://nlp.johnsnowlabs.com/docs/en/quickstart)  like `nlp.BertForSequenceClassification`  and `nlp.map_annotations()`
+- `nlp.AnnotatorName` via Spark NLP [Annotators](https://nlp.johnsnowlabs.com/docs/en/annotators) and [Transformers](https://nlp.johnsnowlabs.com/docs/en/transformers) i.e. `nlp.BertForSequenceClassification`
+- Spark NLP [Helper Functions](https://nlp.johnsnowlabs.com/docs/en/auxiliary) i.e. `nlp.map_annotations()`
 - `nlp.F` via `import pyspark.sql.functions as F` under the hood
 - `nlp.T` via `import pyspark.sql.types as T` under the hood
 - `nlp.SQL` via `import pyspark.sql as SQL` under the hood
@@ -53,7 +53,7 @@ The following Functions, Classes and Modules will available in the global namesp
 
 ## The **viz** Module
 
-`viz` module with classes from [Spark NLP Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)
+`viz` module with classes from [Spark NLP Display](https://nlp.johnsnowlabs.com/docs/en/display)
 - `viz.NerVisualizer` for visualizing prediction outputs of Ner based Spark Pipelines
 - `viz.DependencyParserVisualizer` for visualizing prediction outputs of DependencyParser based Spark Pipelines
 - `viz.RelationExtractionVisualizer` for visualizing prediction outputs of RelationExtraction based Spark Pipelines
@@ -64,12 +64,12 @@ The following Functions, Classes and Modules will available in the global namesp
 
 ## The **ocr** Module
 
-`ocr` module with annotator classes and methods from [Spark OCR](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr) like `ocr.VisualDocumentClassifier`  and `ocr.helpful_method()
-- [Pipeline Components](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components) i.e. `ocr.ImageToPdf`
-- [Table Recognizers](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_table_recognition) i.e. `ocr.ImageTableDetector`
-- [Visual Document Understanding](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_visual_document_understanding) i.e. `ocr.VisualDocumentClassifier`
-- [Object detectors](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_object_detection) i.e. `ocr.ImageHandwrittenDetector`
-- [Enums, Structures and helpers](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_structures) i.e. `ocr.Color`
+`ocr` module with annotator classes and methods from [Spark OCR](https://nlp.johnsnowlabs.com/docs/en/ocr) like `ocr.VisualDocumentClassifier`  and `ocr.helpful_method()
+- [Pipeline Components](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components) i.e. `ocr.ImageToPdf`
+- [Table Recognizers](https://nlp.johnsnowlabs.com/docs/en/ocr_table_recognition) i.e. `ocr.ImageTableDetector`
+- [Visual Document Understanding](https://nlp.johnsnowlabs.com/docs/en/ocr_visual_document_understanding) i.e. `ocr.VisualDocumentClassifier`
+- [Object detectors](https://nlp.johnsnowlabs.com/docs/en/ocr_object_detection) i.e. `ocr.ImageHandwrittenDetector`
+- [Enums, Structures and helpers](https://nlp.johnsnowlabs.com/docs/en/ocr_structures) i.e. `ocr.Color`
 - To see all the imports see [the source](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/johnsnowlabs/ocr.py)
 
 </div><div class="h3-box" markdown="1">
@@ -77,10 +77,10 @@ The following Functions, Classes and Modules will available in the global namesp
 ## The **medical** Module
 
 
-`medical` module with annotator classes and methods from [Spark NLP for Medicine](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)  like `medical.RelationExtractionDL`  and `medical.profile()`
-- [Medical Annotators](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators) , i.e. `medical.DeIdentification`
-- [Training Methods](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_training)  i.e. `medical.AnnotationToolJsonReader`
-- [Evaluation Methods](https://nlp.johnsnowlabs.com/docs/en/jsl/evaluation), i.e. `medical.NerDLEvaluation`
+`medical` module with annotator classes and methods from [Spark NLP for Medicine](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)  like `medical.RelationExtractionDL`  and `medical.profile()`
+- [Medical Annotators](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators) , i.e. `medical.DeIdentification`
+- [Training Methods](https://nlp.johnsnowlabs.com/docs/en/licensed_training)  i.e. `medical.AnnotationToolJsonReader`
+- [Evaluation Methods](https://nlp.johnsnowlabs.com/docs/en/evaluation), i.e. `medical.NerDLEvaluation`
 - **NOTE:** Any class which has `Medical` in its name is available, but the `Medical` prefix has been omitted. I.e. `medical.NerModel` maps to `sparknlp_jsl.annotator.MedicalNerModel`
   - This is achieved via `from sparknlp_jsl.annotator import MedicalNerModel as NerModel` under the hood.
 - To see all the imports see [the source](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/johnsnowlabs/medical.py)
@@ -89,10 +89,10 @@ The following Functions, Classes and Modules will available in the global namesp
 
 ## The **legal** Module
 
-`legal` module with annotator classes and methods from [Spark NLP for Legal](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)  like `legal.RelationExtractionDL`  and `legal.profile()`
-- [Legal Annotators](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators) , i.e. `legal.DeIdentification`
-- [Training Methods](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_training)  i.e. `legal.AnnotationToolJsonReader`
-- [Evaluation Methods](https://nlp.johnsnowlabs.com/docs/en/jsl/evaluation), i.e. `legal.NerDLEvaluation`
+`legal` module with annotator classes and methods from [Spark NLP for Legal](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)  like `legal.RelationExtractionDL`  and `legal.profile()`
+- [Legal Annotators](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators) , i.e. `legal.DeIdentification`
+- [Training Methods](https://nlp.johnsnowlabs.com/docs/en/licensed_training)  i.e. `legal.AnnotationToolJsonReader`
+- [Evaluation Methods](https://nlp.johnsnowlabs.com/docs/en/evaluation), i.e. `legal.NerDLEvaluation`
 - **NOTE:** Any class which has `Legal` in its name is available, but the `Legal` prefix has been omitted. I.e. `legal.NerModel` maps to `sparknlp_jsl.annotator.LegalNerModel`
   - This is achieved via `from sparknlp_jsl.annotator import LegalNerModel as NerModel` under the hood.
 - To see all the imports see [the source](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/johnsnowlabs/legal.py)
@@ -102,10 +102,10 @@ The following Functions, Classes and Modules will available in the global namesp
 ## The **finance** Module
 
 
-`finance` module with annotator classes and methods from [Spark NLP for Finance](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)  like `finance.RelationExtractionDL`  and `finance.profile()`
-- [Finance Annotators](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators) , i.e. `finance.DeIdentification`
-- [Training Methods](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_training)  i.e. `finance.AnnotationToolJsonReader`
-- [Evaluation Methods](https://nlp.johnsnowlabs.com/docs/en/jsl/evaluation), i.e. `finance.NerDLEvaluation`
+`finance` module with annotator classes and methods from [Spark NLP for Finance](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)  like `finance.RelationExtractionDL`  and `finance.profile()`
+- [Finance Annotators](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators) , i.e. `finance.DeIdentification`
+- [Training Methods](https://nlp.johnsnowlabs.com/docs/en/licensed_training)  i.e. `finance.AnnotationToolJsonReader`
+- [Evaluation Methods](https://nlp.johnsnowlabs.com/docs/en/evaluation), i.e. `finance.NerDLEvaluation`
 - **NOTE:** Any class which has `Finance` in its name is available, but the `Finance` prefix has been omitted. I.e. `finance.NerModel` maps to `sparknlp_jsl.annotator.FinanceNerModel`
   - This is achieved via `from sparknlp_jsl.annotator import FinanceNerModel as NerModel` under the hood.
 - To see all the imports see [the source](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/johnsnowlabs/finance.py)
