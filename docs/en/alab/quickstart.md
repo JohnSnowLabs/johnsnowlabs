@@ -37,7 +37,7 @@ All that **without writing a line of code**!
 
 </div>
 <div class="block-box-inner alab-top-image df">
-    <figure><img class="image image--xl" src="/assets/images/annotation_lab/flower_22.png"/></figure>
+    <figure><img class="image image--xl" src="/assets/images/annotation_lab/flower_22.png" alt="annotation lab"/></figure>
 </div>
 </div>
 
@@ -48,7 +48,7 @@ All that **without writing a line of code**!
 <div class="block-box" markdown="1">
 <div class="has_i" markdown="1">
 ## Productivity 
-<img class="image image--xl" src="/assets/images/annotation_lab/Productivity.svg"/>
+<img class="image image--xl" src="/assets/images/annotation_lab/Productivity.svg" alt="john snow labs annotation lab"/>
 </div>
 
 - Never start from scratch
@@ -59,7 +59,7 @@ All that **without writing a line of code**!
 <div class="block-box" markdown="1">
 <div class="has_i" markdown="1">
 ## Auto NLP 
-<img class="image image--xl" src="/assets/images/annotation_lab/AutoNLP.svg"/>
+<img class="image image--xl" src="/assets/images/annotation_lab/AutoNLP.svg" alt="john snow labs annotation lab"/>
 </div>
 
 - Active learning
@@ -73,7 +73,7 @@ All that **without writing a line of code**!
 <div class="block-box" markdown="1">
 <div class="has_i" markdown="1">
 ## Teamwork 
-<img class="image image--xl" src="/assets/images/annotation_lab/Teamwork.svg"/>
+<img class="image image--xl" src="/assets/images/annotation_lab/Teamwork.svg" alt="john snow labs annotation lab"/>
 </div>
 
 - Projects & Teams
@@ -85,11 +85,11 @@ All that **without writing a line of code**!
 <div class="block-box" markdown="1">
 <div class="has_i" markdown="1">
 ## Resources
-<img class="image image--xl" src="/assets/images/annotation_lab/best_practices.svg"/>
+<img class="image image--xl" src="/assets/images/annotation_lab/best_practices.svg" alt="john snow labs annotation lab"/>
 </div>
 
-- <a href="https://www.johnsnowlabs.com/john-snow-labs-data-annotator-for-human-in-the-loop-ai-is-now-included-with-all-subscriptions/">General tutorials</a>
-- <a href="https://www.nlpsummit.org/auto-nlp-pretrain-tune-deploy-state-of-the-art-models/">Annotation best practices</a>
+- <a href="https://www.johnsnowlabs.com/john-snow-labs-data-annotator-for-human-in-the-loop-ai-is-now-included-with-all-subscriptions/" target="_blank">General tutorials</a>
+- <a href="https://www.nlpsummit.org/auto-nlp-pretrain-tune-deploy-state-of-the-art-models/" rel="nofollow" target="_blank">Annotation best practices</a>
 - <a href="https://nlp.johnsnowlabs.com/learn#data-annotator--active-learning">Tips and tricks</a>
 
 </div>

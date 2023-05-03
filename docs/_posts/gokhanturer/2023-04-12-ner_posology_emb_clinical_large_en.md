@@ -26,7 +26,7 @@ This model detects Drug, Dosage, and administration instructions in text using p
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/NER_POSOLOGY/){:.button.button-orange}
-<button class="button button-orange" disabled>Open in Colab</button>
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_POSOLOGY.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_posology_emb_clinical_large_en_4.3.2_3.0_1681303545819.zip){:.button.button-orange}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_posology_emb_clinical_large_en_4.3.2_3.0_1681303545819.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
