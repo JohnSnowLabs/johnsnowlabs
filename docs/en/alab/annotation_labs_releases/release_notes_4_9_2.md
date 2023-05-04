@@ -1,13 +1,11 @@
 ---
 layout: docs
-comment: no
 header: true
-seotitle: Release Notes | John Snow Labs
-title: Release Notes
-permalink: /docs/en/alab/release_notes
-key: docs-training
-modify_date: "2023-05-04"
-use_language_switcher: "Python-Scala"
+seotitle: Annotation Lab | John Snow Labs
+title: Annotation Lab Release Notes 4.9.2
+permalink: /docs/en/alab/annotation_labs_releases/release_notes_4_9_2
+key: docs-licensed-release-notes
+modify_date: 2023-05-04
 show_nav: true
 sidebar:
   nav: annotation-lab
@@ -30,12 +28,14 @@ Here are the highlights of this release:
 ## Enhanced Annotation Process Monitoring through Edit Time Indicators 
 This version allows users to view the time taken to finalize a completion and the number of edits made to any version of annotations, providing more transparency in the annotation process. The feature introduces two new terms, "Lead Time" and "Edit Time." "Lead Time" refers to the time taken to annotate a completion, whether from scratch or cloned from a prediction. "Edit Time" represents the time invested in annotating a cloned completion. In addition to this, users can also see the number of modifications made to cloned completions. This feature can help managers track the time invested in various phases of completion and help in optimizing the annotation process.
 
+
 ![Screen Shot 2023-04-19 at 4 20 40 PM](https://user-images.githubusercontent.com/10557387/234759868-f04242d9-d9c5-4ab2-8b16-431408515862.png)
 
 
 ## Tracking of Annotation Versions and Edits 
 
 The latest update includes a new feature aimed at providing users with a more comprehensive understanding of completion progress and edit history. By utilizing the Versions tab, users can now track the source of a copied completion as well as the number of edits made between consecutive completions. This allows users to easily monitor the evolution of a completion and better understand the amount of work required for each completion. When a completion is created based on a filtered prediction or cloned from an existing completion, the number of edits made to the previous version will be displayed. Additionally, for completions based on predictions, the confidence score range selected will be available in the format of (min: 0 | max: 1) for copied completions. This feature is designed to provide greater transparency in completion progress and streamline the tracking of edit history.
+
 
 ![Screen Shot 2023-04-27 at 7 12 03 PM](https://user-images.githubusercontent.com/17021686/234876484-d40266ea-7866-4167-a096-165ff4a2c442.png)
 
@@ -131,49 +131,11 @@ If a license has less than 30 days of validity remaining but other licenses have
   
   Previously, an issue occurred when the pre-annotation pod was deleted from the backend or the pre-annotation server crashed, causing the cluster page to become unresponsive and display an empty list. This issue also arose when users attempted to deploy the pre-annotation server from the tasks page. However, this problem has now been resolved.
 
+
 </div><div class="prev_ver h3-box" markdown="1">
 
 ## Versions
 
 </div>
 
-<ul class="pagination owl-carousel pagination_big">]
-    <li class="active"><a href="annotation_labs_releases/release_notes_4_9_2">4.9.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_8_4">4.8.4</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_3">4.8.3</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_2">4.8.2</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_1">4.8.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_7_4">4.7.4</a></li>   
-    <li><a href="annotation_labs_releases/release_notes_4_7_1">4.7.1</a></li>        
-    <li><a href="annotation_labs_releases/release_notes_4_6_5">4.6.5</a></li>    
-    <li><a href="annotation_labs_releases/release_notes_4_6_3">4.6.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_6_2">4.6.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_5_1">4.5.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_5_0">4.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_4_1">4.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_4_0">4.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_3_0">4.3.0</a></li>
-	<li><a href="annotation_labs_releases/release_notes_4_2_0">4.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_1_0">4.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_5_0">3.5.0</a></li>
-	<li><a href="annotation_labs_releases/release_notes_3_4_1">3.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_4_0">3.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_3_1">3.3.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_3_0">3.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_2_0">3.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_1_1">3.1.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_1_0">3.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_0_1">3.0.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_0_0">3.0.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_8_0">2.8.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_2">2.7.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_1">2.7.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_0">2.7.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_6_0">2.6.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_5_0">2.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_4_0">2.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_3_0">2.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_2_2">2.2.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_1_0">2.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_0_1">2.0.1</a></li>
-</ul>
+{%- include docs-annotation-pagination.html -%}
