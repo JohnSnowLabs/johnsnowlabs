@@ -17,10 +17,10 @@ sidebar:
 
 Release date: **03-04-2023**
 
-NLP Lab v4.8.2, which includes bugfixes for AKS setup. The following are some of the key updates included in this release:
+NLP Lab v4.8.2 includes bugfixes for AKS setup. This version includes fixes for the following issues:
 
-- PDF is not imported to NLP lab due to delay in file sync between deployed pods in different nodes of AKS system
-- Backup Cronjob is not created in AKS deployment
+- PDF is not imported to NLP Lab due to delay in file sync between deployed pods in different nodes of AKS system
+- Backup cronjob is not created in AKS deployment
 
 </div><div class="prev_ver h3-box" markdown="1">
 

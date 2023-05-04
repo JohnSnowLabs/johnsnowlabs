@@ -17,13 +17,13 @@ sidebar:
 
 Release date: **13-04-2023**
 
-NLP Lab v4.8.4, which includes stabilization and bugfixes. The following are some of the key updates included in this release:
+NLP Lab v4.8.4 release includes stabilization and bugfixes. Here are some of the key updates included in this release:
 
-- Improvements in keycloak resources api calls with proper error handling
+- Improvements in Keycloak resources API calls with proper error handling
 - Get_server error is seen in annotationlab pod when user navigate to clusters page
 - When the user selects a new label, the chunk that was previously unselected becomes labeled
-- The user is not able to select multi-line text in the visual NER task using the post-annotation gesture
-- For a multi-paged task, user is not able to annotate texts with a label when text is selected first.
+- The user is not able to select multi-line text in the Visual NER task using the post-annotation gesture
+- For a multi-paged task, user is not able to annotate texts with a label when text is selected first
 - Training fails when the training type is Assertion
 - Deployment crashes for Prompt without false_prompts parameter
 
