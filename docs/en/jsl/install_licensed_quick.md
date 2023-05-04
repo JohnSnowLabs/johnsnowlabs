@@ -1,6 +1,6 @@
 ---
 layout: docs
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: Installation
 permalink: /docs/en/jsl/install_licensed_quick
 key: docs-install

@@ -216,14 +216,14 @@ Results* :
 We are releasing new **Randomized Clinical Trial (RCT)** classification models and pretrained pipelines that can classify the sections within the abstracts of scientific articles regarding randomized clinical trials (RCT).
 
 + Classification Models:
-	+ `rct_binary_classifier_use` ([Models Hub page](https://nlp.johnsnowlabs.com/2022/04/24/rct_binary_classifier_use_en_3_0.html))
-	+ `rct_binary_classifier_biobert` ([Models Hub page](https://nlp.johnsnowlabs.com/2022/04/25/rct_binary_classifier_biobert_en_3_0.html))
+	+ `rct_binary_classifier_use` ([Models Hub page](https://nlp.johnsnowlabs.com/2022/05/27/rct_binary_classifier_use_en_3_0.html))
+	+ `rct_binary_classifier_biobert` ([Models Hub page](https://nlp.johnsnowlabs.com/2022/05/27/rct_binary_classifier_biobert_en_3_0.html))
 	+ `bert_sequence_classifier_binary_rct_biobert` ([Models Hub page](https://nlp.johnsnowlabs.com/2022/04/25/bert_sequence_classifier_binary_rct_biobert_en_3_0.html))
 
 + Pretrained Pipelines:
-	+ `rct_binary_classifier_use_pipeline` ([Models Hub page](https://nlp.johnsnowlabs.com/2022/04/25/rct_binary_classifier_use_pipeline_en_3_0.html))
-	+ `rct_binary_classifier_biobert_pipeline` ([Models Hub page](https://nlp.johnsnowlabs.com/2022/04/25/rct_binary_classifier_biobert_pipeline_en_3_0.html))
-	+ `bert_sequence_classifier_binary_rct_biobert_pipeline` ([Models Hub page](https://nlp.johnsnowlabs.com/2022/04/25/bert_sequence_classifier_binary_rct_biobert_pipeline_en_3_0.html))
+	+ `rct_binary_classifier_use_pipeline` ([Models Hub page](https://nlp.johnsnowlabs.com/2022/06/06/rct_binary_classifier_use_pipeline_en_3_0.html))
+	+ `rct_binary_classifier_biobert_pipeline` ([Models Hub page](https://nlp.johnsnowlabs.com/2022/06/06/rct_binary_classifier_biobert_pipeline_en_3_0.html))
+	+ `bert_sequence_classifier_binary_rct_biobert_pipeline` ([Models Hub page](https://nlp.johnsnowlabs.com/2022/06/06/bert_sequence_classifier_binary_rct_biobert_pipeline_en_3_0.html))
 
  *Classification Model Example* :
 

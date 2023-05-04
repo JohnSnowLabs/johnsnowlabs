@@ -367,10 +367,8 @@ from sparknlp_jsl import Deid
 
 deid_implementor= Deid(
 # required: Spark session with spark-nlp-jsl jar
-spark
-)
+spark,
 
-res= deid_implementor.deidentify(
 # required: The path of the input file. Default is None. File type must be 'csv' or 'json'.
 input_file_path="data.csv",
 
@@ -422,6 +420,9 @@ token="token",
 #optional: Date shift column name. Default is "date_shift".
 #date_shift_column_name= "date_shift"
 
+#optional: Json file path for multi-mode Deid. Default is NONE.
+#multi_mode_file_path= "multi_mode_file_path.json"
+
 #optional: The date tag. Default is "DATE".
 #date_tag="DATE"
 
@@ -450,6 +451,8 @@ token="token",
 #unnormalized_mode="obfuscate"
 )
 
+res= deid_implementor.deidentify()
+
 ```
 
 ```
@@ -470,10 +473,8 @@ from sparknlp_jsl import Deid
 
 deid_implementor= Deid(
 # required: Spark session with spark-nlp-jsl jar
-spark
-)
+spark,
 
-res= deid_implementor.deidentify(
 # required: The path of the input file. Default is None. File type must be 'csv' or 'json'.
 input_file_path="data.csv",
 
@@ -488,6 +489,9 @@ fields={"text": "mask"},
 
 #optional: The masking policy. Default is "entity_labels".
 masking_policy="entity_labels",
+
+#optional: Json file path for multi-mode Deid. Default is NONE.
+#multi_mode_file_path= "multi_mode_file_path.json",
 
 #optional: Age group obfuscation. Default is False.
 #age_group_obfuscation=True
@@ -508,6 +512,8 @@ masking_policy="entity_labels",
 #unnormalized_mode="obfuscate"
 )
 
+res= deid_implementor.deidentify()
+
 ```
 
 ```
@@ -525,14 +531,11 @@ masking_policy="entity_labels",
 
 ```python
 
-from sparknlp_jsl import Deid
+from sparknlp_jsl.utils.deidentification_utils import structured_deidentifier
 
-deid_implementor= Deid(
+res= structured_deidentifier(
 # required: Spark session with spark-nlp-jsl jar
 spark
-)
-
-res= deid_implementor.structured_deidentifier(
 
 #required: The path of the input file. Default is None. File type must be 'csv' or 'json'.
 input_file_path="data.csv",

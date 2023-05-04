@@ -1,7 +1,7 @@
 ---
 layout: docs
 header: true
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: The nlp.viz() function
 key: viz-examples
 permalink: /docs/en/jsl/viz_examples
@@ -18,7 +18,7 @@ sidebar:
 You can use the build in visualization module on any pipeline or model returned by `nlp.load()`.
 Simply call `viz()` and an applicable visualization will be deducted.    
 Alternatively, you can also manually specify, which visualization you want to invoke.   
-These visualizations are provided via [Spark-NLP-Display package](https://nlp.johnsnowlabs.com/docs/en/jsl/display)
+These visualizations are provided via [Spark-NLP-Display package](https://nlp.johnsnowlabs.com/docs/en/display)
 
 ![NER visualization](/assets/images/nlu/VizExamples/viz_module/cheat_sheet.png)
 

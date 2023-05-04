@@ -21,19 +21,7 @@ data:
           activemenu: medical_text_summarization
       source: yes
       source:
-        - title: BioMedical Text Summarization
-          id: biomedical_text_summarization
-          image: 
-              src: /assets/images/Detect_mentions_of_general_medical_terms.svg
-          excerpt: This demo features a biomedical text summarization model that can effectively summarize complex medical information into concise summaries.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/BIOMEDICAL_TEXT_SUMMARIZATION/
-          - text: Colab
-            type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb
-        - title: Medical Text Summarization
+        - title: Clinical Text Summarization
           id: medical_text_summarization
           image: 
               src: /assets/images/MedicalQuestionAnswerin.svg
@@ -44,7 +32,19 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb 
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb
+        - title: Biomedical Text Summarization
+          id: biomedical_text_summarization
+          image: 
+              src: /assets/images/Detect_mentions_of_general_medical_terms.svg
+          excerpt: This demo features a biomedical text summarization model that can effectively summarize complex medical information into concise summaries.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/BIOMEDICAL_TEXT_SUMMARIZATION/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb         
         - title: Medical Text Summarization and Question
           id: medical_text_summarization_question
           image: 

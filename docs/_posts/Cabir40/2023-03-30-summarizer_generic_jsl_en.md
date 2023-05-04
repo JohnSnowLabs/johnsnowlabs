@@ -19,16 +19,16 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
+
 This model is a modified version of Flan-T5 (LLM) based summarization model that is finetuned with additional data curated by John Snow Labs. This model is further optimized by augmenting the training methodology, and dataset. It can generate summaries from clinical notes up to 512 tokens given the input text (max 1024 tokens)
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/summarizer_generic_jsl_en_4.3.2_3.0_1680192338463.zip){:.button.button-orange}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/summarizer_generic_jsl_en_4.3.2_3.0_1680192338463.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
-
 
 
 <div class="tabs-box" markdown="1">

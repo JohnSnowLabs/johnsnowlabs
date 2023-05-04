@@ -32,9 +32,9 @@ These models grab the text directly from your input file and returns it as a Pan
 
 | NLU Spell            | Transformer Class                                                                       |
 |----------------------|-----------------------------------------------------------------------------------------|
-| nlp.load(`img2text`) | [ImageToText](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#imagetotext) |
-| nlp.load(`pdf2text`) | [PdfToText](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#pdftotext)     |
-| nlp.load(`doc2text`) | [DocToText](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#doctotext)     |
+| nlp.load(`img2text`) | [ImageToText](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#imagetotext) |
+| nlp.load(`pdf2text`) | [PdfToText](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#pdftotext)     |
+| nlp.load(`doc2text`) | [DocToText](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#doctotext)     |
 
 
 **Overview of OCR Table Extractors**          
@@ -43,9 +43,9 @@ containing Pandas DataFrame for every table detected
 
 | NLU Spell             | Transformer Class                                                                             |
 |-----------------------|-----------------------------------------------------------------------------------------------|
-| nlp.load(`pdf2table`) | [PdfToTextTable](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#pdftotexttable) |              
-| nlp.load(`ppt2table`) | [PptToTextTable](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#ppttotexttable) |              
-| nlp.load(`doc2table`) | [DocToTextTable](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#doctotexttable) |              
+| nlp.load(`pdf2table`) | [PdfToTextTable](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#pdftotexttable) |              
+| nlp.load(`ppt2table`) | [PptToTextTable](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#ppttotexttable) |              
+| nlp.load(`doc2table`) | [DocToTextTable](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#doctotexttable) |              
 
 </div><div class="h3-box" markdown="1">
 

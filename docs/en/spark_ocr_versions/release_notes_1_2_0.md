@@ -25,15 +25,15 @@ Improved support Databricks and processing selectable pdfs.
 #### Enhancements
 
 * Adapted Spark OCR for run on Databricks.
-* Added rewriting positions in [ImageToText](ocr_pipeline_components#imagetotext) when run together with PdfToText.
-* Added 'positionsCol' param to [ImageToText](ocr_pipeline_components#imagetotext).
-* Improved support Spark NLP. Changed [start](/ocr_install#using-start-function) function.
+* Added rewriting positions in [ImageToText](../ocr_pipeline_components#imagetotext) when run together with PdfToText.
+* Added 'positionsCol' param to [ImageToText](../ocr_pipeline_components#imagetotext).
+* Improved support Spark NLP. Changed [start](../ocr_install#using-start-function) function.
 
 #### New Features
 
-* Added [showImage](ocr_structures#showimages) implicit to Dataframe for display images in Scala Databricks notebooks.
-* Added [display_images](ocr_structures#display_images) function for display images in Python Databricks notebooks.
-* Added propagation selectable pdf file in [TextToPdf](ocr_pipeline_components#texttopdf). Added 'inputContent' param to 'TextToPdf'.
+* Added [showImage](../ocr_structures#showimages) implicit to Dataframe for display images in Scala Databricks notebooks.
+* Added [display_images](../ocr_structures#display_images) function for display images in Python Databricks notebooks.
+* Added propagation selectable pdf file in [TextToPdf](../ocr_pipeline_components#texttopdf). Added 'inputContent' param to 'TextToPdf'.
 
 
 </div><div class="prev_ver h3-box" markdown="1">
