@@ -1,7 +1,7 @@
 ---
 layout: docs
 header: true
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: 1-liner Tutorial Notebooks
 key: notebooks
 permalink: /docs/en/jsl/notebooks

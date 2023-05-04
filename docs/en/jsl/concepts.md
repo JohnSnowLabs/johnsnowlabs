@@ -99,7 +99,7 @@ OUTPUT:
 
 
 ### Custom Pipes
-Alternatively you can compose [Annotators](https://nlp.johnsnowlabs.com/docs/en/jsl/annotators) into a pipeline which offers the highest degree of customization 
+Alternatively you can compose [Annotators](https://nlp.johnsnowlabs.com/docs/en/annotators) into a pipeline which offers the highest degree of customization 
 ```python
 from johnsnowlabs import nlp
 spark = nlp.start(nlp=False)
