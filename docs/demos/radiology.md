@@ -68,4 +68,16 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/RE_RADIOLOGY.ipynb
+        - title: Efficient Radiology Report Summarization
+          id: efficient_radiology_report_summarization
+          image: 
+              src: /assets/images/Summarize_Radiology_Reports.svg
+          excerpt: This demo features our advanced language processing model, designed to quickly and accurately distill radiology reports by pinpointing and retaining the most crucial information.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION_RADIOLOGY/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb
 ---
