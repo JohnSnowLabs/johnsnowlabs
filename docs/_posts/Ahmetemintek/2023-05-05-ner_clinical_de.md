@@ -36,6 +36,7 @@ Pretrained named entity recognition deep learning model for clinical terms in Ge
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
         .setInputCol("text")\
@@ -57,7 +58,7 @@ clinical_ner = MedicalNerModel.pretrained("ner_clinical", "de", "clinical/models
         .setInputCols(["sentence", "token", "embeddings"]) \
         .setOutputCol("ner")
 
-ner_converter = NerConverter()\
+ner_converter = NerConverterInternal()\
          .setInputCols(["sentence", "token", "ner"])\
          .setOutputCol("ner_chunk")
 
@@ -97,13 +98,15 @@ val ner = MedicalNerModel.pretrained("ner_clinical", "de", "clinical/models")
         .setInputCols(Array("sentence", "token", "embeddings"))
         .setOutputCol("ner")
 
-val ner_converter = new NerConverter()
+val ner_converter = new NerConverterInternal()
          .setInputCols(Array("sentence", "token", "ner"))
          .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter))
 
-val data = Seq("""The human KCNJ9 (Kir 3.3, GIRK3) is a member of the G-protein-activated inwardly rectifying potassium (GIRK) channel family. Here we describe the genomicorganization of the KCNJ9 locus on chromosome 1q21-23 as a candidate gene forType II diabetes mellitus in the Pima Indian population. The gene spansapproximately 7.6 kb and contains one noncoding and two coding exons separated byapproximately 2.2 and approximately 2.6 kb introns, respectively. We identified14 single nucleotide polymorphisms (SNPs), including one that predicts aVal366Ala substitution, and an 8 base-pair (bp) insertion/deletion. Ourexpression studies revealed the presence of the transcript in various humantissues including pancreas, and two major insulin-responsive tissues: fat andskeletal muscle. The characterization of the KCNJ9 gene should facilitate furtherstudies on the function of the KCNJ9 protein and allow evaluation of thepotential role of the locus in Type II diabetes. BACKGROUND: At present, it is one of the most important issues for the treatment of breast cancer to develop the standard therapy for patients previously treated with anthracyclines and taxanes.""").toDS().toDF("text")
+val data = Seq("""Verschlechterung von Schmerzen oder Schwäche in den Beinen , Verlust der Darm - oder Blasenfunktion oder andere besorgniserregende Symptome. 
+Der Patient erhielt empirisch Ampicillin , Gentamycin und Flagyl sowie Narcan zur Umkehrung von Fentanyl .
+ALT war 181 , AST war 156 , LDH war 336 , alkalische Phosphatase war 214 und Bilirubin war insgesamt 12,7 .""").toDS().toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
@@ -150,8 +153,7 @@ val result = pipeline.fit(data).transform(data)
 ## Benchmarking
 
 ```bash
-    label      precision    recall  f1-score   support
-
+       label  precision    recall  f1-score   support
    B-PROBLEM       0.78      0.77      0.77       407
       B-TEST       0.77      0.92      0.84       220
  B-TREATMENT       0.82      0.71      0.76       241
@@ -159,8 +161,7 @@ val result = pipeline.fit(data).transform(data)
       I-TEST       0.66      0.93      0.77        57
  I-TREATMENT       0.68      0.76      0.72        76
            O       0.96      0.97      0.96      4323
-
-    accuracy                           0.92      5710
-   macro avg       0.79      0.83      0.81      5710
-weighted avg       0.92      0.92      0.92      5710
+    accuracy       -         -         0.92      5710
+   macro-avg       0.79      0.83      0.81      5710
+weighted-avg       0.92      0.92      0.92      5710
 ```
