@@ -113,8 +113,8 @@ Definitions of Predicted Entities:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
 
+```python
 documentAssembler = DocumentAssembler()\
 	.setInputCol("text")\
 	.setOutputCol("document")
@@ -239,7 +239,6 @@ val result = pipeline.fit(sample_text).transform(sample_text)
 
 ```bash
                                   label  precision    recall  f1-score   support
-
                   B-Admission_Discharge       0.87      0.98      0.92       421
                                   B-Age       0.97      0.97      0.97      2143
                               B-Alcohol       0.90      0.85      0.87       101
@@ -389,7 +388,7 @@ I-Sexually_Active_or_Sexual_Orientation       0.57      1.00      0.73         4
                    I-Vital_Signs_Header       0.94      0.97      0.96      1063
                                I-Weight       0.93      0.88      0.90       237
                                       O       0.97      0.96      0.97    200407
-                               accuracy         -        -        0.93    386755
+                               accuracy        -         -        0.93    386755
                               macro-avg       0.77      0.79      0.77    386755
                            weighted-avg       0.93      0.93      0.93    386755
 ```
