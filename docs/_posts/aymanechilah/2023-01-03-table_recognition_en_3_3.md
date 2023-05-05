@@ -187,17 +187,30 @@ val tables_results = pipeline_table.transform(df).cache()
 ```
 </div>
 
-## Result
 
-![Screenshot](/assets/images/examples_ocr/image9_out.png)
+## Example
 
-```bash
-+--------------------+--------------------+--------------------+--------------------+-------+--------------------+--------------------+--------------------+------+--------------------+--------------------+--------------------+-----------------+---------+--------------------+--------------------+
-|         table_image|              region|  image_with_regions|             image_1|pagenum|    modificationTime|                path|               image|length|               cells|        output_image|               table|       confidence|exception|                text|           positions|
-+--------------------+--------------------+--------------------+--------------------+-------+--------------------+--------------------+--------------------+------+--------------------+--------------------+--------------------+-----------------+---------+--------------------+--------------------+
-|{file:/content/cT...|{0, 0, 214.0, 437...|{file:/content/cT...|{file:/content/cT...|      0|2022-09-28 18:54:...|file:/content/cTD...|{file:/content/cT...|385071|[[[[0, 0, 408, 32...|{file:/content/cT...|{0, 0, 0.0, 0.0,...|95.43954744611467|     null|                 ...|[{[{ , 0, 170.0, ...|
-+--------------------+--------------------+--------------------+--------------------+-------+--------------------+--------------------+--------------------+------+--------------------+--------------------+--------------------+-----------------+---------+--------------------+--------------------+
-```
+### Input Image
+
+![Screenshot](/assets/images/examples_ocr/table1_1_doc.png)
+
+### Table Structure Recognition
+
+{%- capture td_image -%}
+![Screenshot](/assets/images/examples_ocr/table1_2_detection.png)
+{%- endcapture -%}
+
+{%- capture tsr_detection -%}
+![Screenshot](/assets/images/examples_ocr/table1_3_structure.png)
+{%- endcapture -%}
+
+
+{% include templates/input_output_image.md
+input_image=td_image
+output_image=tsr_detection
+%}
+
+
 ## Model Information
 
 {:.table-model}
