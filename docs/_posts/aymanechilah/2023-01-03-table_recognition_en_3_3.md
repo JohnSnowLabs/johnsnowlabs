@@ -29,7 +29,7 @@ On the ICDAR2013 table competition dataset, CascadeTabNet achieved an F1-score o
 ## Predicted Entities
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/ocr/IMAGE_TABLE_DETECTION/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/tutorials/Certification_Trainings/2.2.Spark_OCR_training_Table_recognition.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 <button class="button button-orange" disabled>Download</button>
 
