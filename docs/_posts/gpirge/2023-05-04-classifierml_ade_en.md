@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is trained with the DocumentMLClassifierApproach annotator and classifies a text/sentence into two categories:
+This model is trained with the `DocumentMLClassifierApproach` annotator and classifies a text/sentence into two categories:
 
 True : The sentence is talking about a possible ADE
 
