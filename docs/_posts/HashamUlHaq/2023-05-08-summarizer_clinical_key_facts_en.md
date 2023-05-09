@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is trained to summarize clinical guidelines for Asthma and Breast Cancer. It summarizes input documents in four different sections: Overview, Causes, Symptoms, Treatments. The context length of this model is 768 tokens.
+Based on Flan-T5-large, this model is finetuned to summarize clinical guidelines (only for Asthma and Breast Cancer as of now) into four different sections: Overview, Causes, Symptoms, Treatments. The context length of this model is 768 tokens.
 
 ## Predicted Entities
 
