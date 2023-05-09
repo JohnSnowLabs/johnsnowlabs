@@ -52,13 +52,13 @@ tokenizer = Tokenizer()\
     .setOutputCol("token")
 
 word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")\
-        .setInputCols(["document","token"])\
-        .setOutputCol("word_embeddings")
+    .setInputCols(["document","token"])\
+    .setOutputCol("word_embeddings")
 
 sentence_embeddings = SentenceEmbeddings() \
-        .setInputCols(["document", "word_embeddings"]) \
-        .setOutputCol("sentence_embeddings") \
-        .setPoolingStrategy("AVERAGE")
+    .setInputCols(["document", "word_embeddings"]) \
+    .setOutputCol("sentence_embeddings") \
+    .setPoolingStrategy("AVERAGE")
 
 features_asm = FeaturesAssembler()\
     .setInputCols(["sentence_embeddings"])\
