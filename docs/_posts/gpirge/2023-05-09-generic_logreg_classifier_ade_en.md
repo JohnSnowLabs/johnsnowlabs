@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Generic Classifier for Adverse Drug Events
+title: Generic Classifier for Adverse Drug Events (LogReg)
 author: John Snow Labs
 name: generic_logreg_classifier_ade
 date: 2023-05-09
