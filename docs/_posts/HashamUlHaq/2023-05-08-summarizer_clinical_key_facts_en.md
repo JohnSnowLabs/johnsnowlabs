@@ -2,7 +2,7 @@
 layout: model
 title: Summarize clinical guidelines
 author: John Snow Labs
-name: summarizer_clinical_key_facts
+name: summarizer_clinical_guidelines_large
 date: 2023-05-08
 tags: [en, summarizer, clinical, licensed, tensorflow]
 task: Summarization
@@ -28,8 +28,8 @@ This model is trained to summarize clinical guidelines for Asthma and Breast Can
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/summarizer_clinical_key_facts_en_4.4.0_3.0_1683577432272.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/summarizer_clinical_key_facts_en_4.4.0_3.0_1683577432272.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/summarizer_clinical_guidelines_large_en_4.4.0_3.0_1683577432272.zip){:.button.button-orange}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/summarizer_clinical_guidelines_large_en_4.4.0_3.0_1683577432272.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -42,7 +42,7 @@ document = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-summarizer = MedicalSummarizer.pretrained("summarizer_clinical_key_facts", "en", "clinical/models")\
+summarizer = MedicalSummarizer.pretrained("summarizer_clinical_guidelines_large", "en", "clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("summary")\
     .setMaxTextLength(768)\
@@ -95,7 +95,7 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val summarizer = MedicalSummarizer.pretrained("summarizer_clinical_key_facts", "en", "clinical/models")
+val summarizer = MedicalSummarizer.pretrained("summarizer_clinical_guidelines_large", "en", "clinical/models")
     .setInputCols("document")
     .setOutputCol("summary")
     .setMaxTextLength(768)
@@ -154,7 +154,7 @@ Overview of the disease: Breast cancer is the most common type of cancer among w
 
 {:.table-model}
 |---|---|
-|Model Name:|summarizer_clinical_key_facts|
+|Model Name:|summarizer_clinical_guidelines_large|
 |Compatibility:|Healthcare NLP 4.4.0+|
 |License:|Licensed|
 |Edition:|Official|
