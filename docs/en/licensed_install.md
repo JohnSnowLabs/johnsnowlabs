@@ -306,7 +306,8 @@ Select the Path (from variable) -> Click on edit → Click on New → add %HADOO
 6. Configure conda env 
 
    i) Open cmd and execute the following commands
-   
+  
+  ```
 - conda --version
 - java --version
 - conda create -n sparknlp python=3.8 -y
@@ -319,11 +320,14 @@ Select the Path (from variable) -> Click on edit → Click on New → add %HADOO
 - conda activate sparknlp
 - conda env config vars set PYSPARK_DRIVER_python_OPTS=notebook
 - conda activate sparknlp
+```
 
     ii) Start the spark nlp
-
+    
+```
 - cd C:\spark\bin
 - pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:4.4.1
+```
 
 ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/b4213eef-af82-4ebd-a968-4a0669807331)
 
