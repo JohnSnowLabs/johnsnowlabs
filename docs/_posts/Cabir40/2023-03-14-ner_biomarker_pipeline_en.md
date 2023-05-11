@@ -50,6 +50,14 @@ val text = "Here , we report the first case of an intraductal tubulopapillary ne
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.biomarker.pipeline").predict("""Here , we report the first case of an intraductal tubulopapillary neoplasm of the pancreas with clear cell morphology . Immunohistochemistry revealed positivity for Pan-CK , CK7 , CK8/18 , MUC1 , MUC6 , carbonic anhydrase IX , CD10 , EMA , β-catenin and e-cadherin """)
+```
+
 </div>
 
 ## Results

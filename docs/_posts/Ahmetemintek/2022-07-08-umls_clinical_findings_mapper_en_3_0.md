@@ -132,6 +132,14 @@ val test_data = Seq("A 28-year-old female with a history of obesity with BMI of 
 
 val result = mapper_pipeline.fit(test_data).transform(test_data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.umls_clinical_findings_mapper").predict("""A 28-year-old female with a history of obesity with BMI of 33.5 kg/m2, presented with a one-week history of vomiting.""")
+```
+
 </div>
 
 ## Results

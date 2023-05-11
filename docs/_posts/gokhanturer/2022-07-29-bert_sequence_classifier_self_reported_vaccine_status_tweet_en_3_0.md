@@ -85,6 +85,14 @@ val example = Seq(Array("I came to a point finally and i've vaccinated, didnt fe
 
 val result = pipeline.fit(example).transform(example)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.self_reported_vaccine_status").predict("""If Pfizer believes we need a booster shot, we need it. Who knows their product better? Following the guidance of @CDCgov is how I wound up w/ Covid-19 and having to shut down my K-2 classroom for an entire week. I will do whatever it takes to protect my students, friends, family.""")
+```
+
 </div>
 
 ## Results

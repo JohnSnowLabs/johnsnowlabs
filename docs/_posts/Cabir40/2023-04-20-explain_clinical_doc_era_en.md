@@ -50,6 +50,14 @@ val text = """She is admitted to The John Hopkins Hospital 2 days ago with a his
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.explain_doc.era").predict("""She is admitted to The John Hopkins Hospital 2 days ago with a history of gestational diabetes mellitus diagnosed. She denied pain and any headache. She was seen by the endocrinology service and she was discharged on 03/02/2018 on 40 units of insulin glargine, 12 units of insulin lispro, and metformin 1000 mg two times a day. She had close follow-up with endocrinology post discharge. """)
+```
+
 </div>
 
 ## Results

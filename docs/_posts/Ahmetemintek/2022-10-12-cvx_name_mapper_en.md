@@ -86,6 +86,14 @@ val data = Seq("DTaP", "MYCOBAX", "cholera, live attenuated").toDS.toDF("text")
 
 val result= pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.cvx_name").predict("""cholera, live attenuated""")
+```
+
 </div>
 
 ## Results

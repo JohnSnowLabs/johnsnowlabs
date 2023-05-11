@@ -50,6 +50,14 @@ val text = "Abdomen , soft , nontender . NIH stroke scale on presentation was 23
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.nihss_pipeline").predict("""Abdomen , soft , nontender . NIH stroke scale on presentation was 23 to 24 for , one for consciousness , two for month and year and two for eye / grip , one to two for gaze , two for face , eight for motor , one for limited ataxia , one to two for sensory , three for best language and two for attention . On the neurologic examination the patient was intermittently""")
+```
+
 </div>
 
 ## Results

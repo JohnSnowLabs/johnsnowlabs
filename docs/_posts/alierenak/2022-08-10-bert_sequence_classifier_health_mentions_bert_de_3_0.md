@@ -82,6 +82,14 @@ val data = Seq(Array("Die Temperaturen klettern am Wochenende.",
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("de.classify.bert_sequence.health_mentions_bert").predict("""Zu den Symptomen gehört u.a. eine verringerte Greifkraft.""")
+```
+
 </div>
 
 ## Results

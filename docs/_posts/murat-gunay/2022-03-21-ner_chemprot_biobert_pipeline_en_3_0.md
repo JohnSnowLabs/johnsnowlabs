@@ -45,6 +45,14 @@ val pipeline = new PretrainedPipeline("ner_chemprot_biobert_pipeline", "en", "cl
 
 pipeline.annotate("Keratinocyte growth factor and acidic fibroblast growth factor are mitogens for primary cultures of mammary epithelium.")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.chemprot_biobert.pipeline").predict("""Keratinocyte growth factor and acidic fibroblast growth factor are mitogens for primary cultures of mammary epithelium.""")
+```
+
 </div>
 
 ## Results

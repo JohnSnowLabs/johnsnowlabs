@@ -55,6 +55,14 @@ val pipeline = new PretrainedPipeline("re_date_clinical_pipeline", "en", "clinic
 
 pipeline.fullAnnotate("This 73 y/o patient had CT on 1/12/95, with progressive memory and cognitive decline since 8/11/94.")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.date_clinical.pipeline").predict("""This 73 y/o patient had CT on 1/12/95, with progressive memory and cognitive decline since 8/11/94.""")
+```
+
 </div>
 
 

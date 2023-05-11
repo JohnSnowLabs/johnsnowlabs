@@ -147,6 +147,14 @@ val data = Seq("He was seen by the endocrinology service and she was discharged 
 val results = resolver_pipeline.fit(data).transform(data)
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.resolve.atc").predict("""She was immediately given hydrogen peroxide 30 mg and amoxicillin twice daily for 10 days to treat the infection on her leg. She has a history of taking magnesium hydroxide.""")
+```
+
 </div>
 
 ## Results

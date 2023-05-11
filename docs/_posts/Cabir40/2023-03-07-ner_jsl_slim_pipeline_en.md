@@ -53,6 +53,14 @@ val result = pipeline.fullAnnotate(text)
 
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.jsl_slim.pipeline").predict("""Hyperparathyroidism was considered upon the fourth occasion. The history of weakness and generalized joint pains were present. He also had history of epigastric pain diagnosed informally as gastritis. He had previously had open reduction and internal fixation for the initial two fractures under general anesthesia. He sustained mandibular fracture.""")
+```
+
 </div>
 
 ## Results

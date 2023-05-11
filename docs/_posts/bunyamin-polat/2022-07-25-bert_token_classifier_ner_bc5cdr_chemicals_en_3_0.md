@@ -108,6 +108,14 @@ val data = Seq("""The possibilities that these cardiovascular findings might be 
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.token_bert.bc5cdr_chemicals").predict("""The possibilities that these cardiovascular findings might be the result of non-selective inhibition of monoamine oxidase or of amphetamine and metamphetamine are discussed. The results have shown that the degradation product p-choloroaniline is not a significant factor in chlorhexidine-digluconate associated erosive cystitis. A high percentage of kanamycin - colistin and povidone-iodine irrigations were associated with erosive cystitis and suggested a possible complication with human usage.""")
+```
+
 </div>
 
 ## Results

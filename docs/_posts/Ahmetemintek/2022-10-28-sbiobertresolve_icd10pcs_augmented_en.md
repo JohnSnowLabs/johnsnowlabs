@@ -139,6 +139,14 @@ val data = Seq("Given the severity of her abdominal examination and her persiste
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.resolve.icd10pcs_augmented").predict("""Given the severity of her abdominal examination and her persistence of her symptoms, it is detected that need for laparoscopic appendectomy and possible open appendectomy as well as pyeloplasty. We recommend performing a mediastinoscopy""")
+```
+
 </div>
 
 ## Results

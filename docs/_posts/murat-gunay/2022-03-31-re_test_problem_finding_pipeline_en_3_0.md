@@ -55,6 +55,14 @@ val pipeline = new PretrainedPipeline("re_test_problem_finding_pipeline", "en", 
 
 pipeline.fullAnnotate("Targeted biopsy of this lesion for histological correlation should be considered.")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.test_problem_finding.pipeline").predict("""Targeted biopsy of this lesion for histological correlation should be considered.""")
+```
+
 </div>
 
 

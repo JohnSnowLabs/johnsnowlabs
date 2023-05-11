@@ -51,6 +51,15 @@ val pipeline = new PretrainedPipeline("oncology_diagnosis_pipeline", "en", "clin
 val result = pipeline.fullAnnotate("""Two years ago, the patient presented with a 4-cm tumor in her left breast. She was diagnosed with ductal carcinoma.
 According to her last CT, she has no lung metastases.""")(0)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.oncology_diagnosis.pipeline").predict("""Two years ago, the patient presented with a 4-cm tumor in her left breast. She was diagnosed with ductal carcinoma.
+According to her last CT, she has no lung metastases.""")
+```
+
 </div>
 
 ## Results

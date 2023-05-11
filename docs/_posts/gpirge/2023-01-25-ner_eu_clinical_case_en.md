@@ -107,6 +107,14 @@ val data = Seq(Array("""A 3-year-old boy with autistic disorder on hospital of p
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.clinical_case_eu").predict("""A 3-year-old boy with autistic disorder on hospital of pediatric ward A at university hospital. He has no family history of illness or autistic spectrum disorder. The child was diagnosed with a severe communication disorder, with social interaction difficulties and sensory processing delay. Blood work was normal (thyroid-stimulating hormone (TSH), hemoglobin, mean corpuscular volume (MCV), and ferritin). Upper endoscopy also showed a submucosal tumor causing subtotal obstruction of the gastric outlet. Because a gastrointestinal stromal tumor was suspected, distal gastrectomy was performed. Histopathological examination revealed spindle cell proliferation in the submucosal layer.""")
+```
+
 </div>
 
 ## Results

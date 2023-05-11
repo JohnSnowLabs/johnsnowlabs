@@ -50,6 +50,14 @@ val text = "Indomethacin resulted in histopathologic findings typical of interst
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.diseases_biobert.pipeline").predict("""Indomethacin resulted in histopathologic findings typical of interstitial cystitis, such as leaky bladder epithelium and mucosal mastocytosis. The true incidence of nonsteroidal anti-inflammatory drug-induced cystitis in humans must be clarified by prospective clinical trials. An open-label phase II study of low-dose thalidomide in androgen-independent prostate cancer.""")
+```
+
 </div>
 
 ## Results

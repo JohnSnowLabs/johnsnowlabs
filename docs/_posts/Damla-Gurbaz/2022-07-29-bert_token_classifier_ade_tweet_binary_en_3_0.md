@@ -107,6 +107,14 @@ val data = Seq(Array("I used to be on paxil but that made me more depressed and 
 
 val result = model.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.bert_token.binary_ade_tweet").predict("""Maybe cos of the insulin blocking effect of seroquel but i do feel sugar crashes when eat fast carbs.""")
+```
+
 </div>
 
 ## Results

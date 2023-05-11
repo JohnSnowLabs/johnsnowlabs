@@ -120,6 +120,14 @@ val data = Seq("The patient is a 40-year-old man with history of heavy smoking."
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.oncology_demographics").predict("""The patient is a 40-year-old man with history of heavy smoking.""")
+```
+
 </div>
 
 ## Results

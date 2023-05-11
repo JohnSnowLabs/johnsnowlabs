@@ -145,6 +145,14 @@ val data = Seq("A mastectomy was performed two months ago, and a 3 cm mass was e
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.oncology_wip").predict("""A mastectomy was performed two months ago, and a 3 cm mass was extracted.""")
+```
+
 </div>
 
 ## Results

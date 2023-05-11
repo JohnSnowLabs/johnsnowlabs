@@ -49,6 +49,15 @@ val pipeline = new PretrainedPipeline("oncology_general_pipeline", "en", "clinic
 val result = pipeline.fullAnnotate("""The patient underwent a left mastectomy for a left breast cancer two months ago.
 The tumor is positive for ER and PR.""")(0)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.oncology_general.pipeline").predict("""The patient underwent a left mastectomy for a left breast cancer two months ago.
+The tumor is positive for ER and PR.""")
+```
+
 </div>
 
 ## Results

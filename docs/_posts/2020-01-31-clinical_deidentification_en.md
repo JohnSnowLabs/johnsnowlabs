@@ -36,7 +36,7 @@ This pipeline can be used to de-identify PHI information from medical texts. The
 
 <div class="tabs-box" markdown="1">
 
-{% include programmingLanguageSelectScalaPython.html %}
+{% include programmingLanguageSelectScalaPythonNLU.html %}
 
 ```python
 from sparknlp.pretrained import PretrainedPipeline
@@ -64,6 +64,18 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
 val model = new PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
 val result = deid_pipeline.annotate(sample)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.de_identify.clinical_pipeline").predict("""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
+```
+
 </div>
 
 {:.model-param}

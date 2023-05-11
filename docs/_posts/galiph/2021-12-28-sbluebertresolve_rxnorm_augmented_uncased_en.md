@@ -80,6 +80,14 @@ val light_model = LightPipeline(rxnorm_pipelineModel)
 
 val result = light_model.fullAnnotate(Array("Coumadin 5 mg", "aspirin", "avandia 4 mg"))
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.resolve.rxnorm.augmented_uncased").predict("""Coumadin 5 mg""")
+```
+
 </div>
 
 ## Results

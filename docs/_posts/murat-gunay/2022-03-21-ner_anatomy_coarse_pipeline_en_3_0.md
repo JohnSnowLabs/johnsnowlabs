@@ -45,6 +45,14 @@ val pipeline = new PretrainedPipeline("ner_anatomy_coarse_pipeline", "en", "clin
 
 pipeline.annotate("content in the lung tissue")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.anatomy_coarse.pipeline").predict("""content in the lung tissue""")
+```
+
 </div>
 
 ## Results

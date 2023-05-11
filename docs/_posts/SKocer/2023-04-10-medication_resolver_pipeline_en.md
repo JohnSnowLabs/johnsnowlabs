@@ -52,6 +52,14 @@ val med_resolver_pipeline = new PretrainedPipeline("medication_resolver_pipeline
 
 val result = med_resolver_pipeline.fullAnnotate("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.""")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.resolve.medication").predict("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.""")
+```
+
 </div>
 
 ## Results

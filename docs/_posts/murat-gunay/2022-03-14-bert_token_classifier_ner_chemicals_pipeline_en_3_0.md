@@ -42,6 +42,14 @@ val chemicals_pipeline = new PretrainedPipeline("bert_token_classifier_ner_chemi
 
 chemicals_pipeline.annotate("The results have shown that the product p - choloroaniline is not a significant factor in chlorhexidine - digluconate associated erosive cystitis. A high percentage of kanamycin - colistin and povidone - iodine irrigations were associated with erosive cystitis.")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.token_bert.chemicals_pipeline").predict("""The results have shown that the product p - choloroaniline is not a significant factor in chlorhexidine - digluconate associated erosive cystitis. A high percentage of kanamycin - colistin and povidone - iodine irrigations were associated with erosive cystitis.""")
+```
+
 </div>
 
 ## Results

@@ -115,6 +115,14 @@ val data = Seq(Array("Hellen works in London, Paris and Berlin. My name is Clara
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.zero_shot.ner_roberta").predict("""Hellen works in London, Paris and Berlin. My name is Clara, I live in New York and Hellen lives in Paris.""")
+```
+
 </div>
 
 ## Results

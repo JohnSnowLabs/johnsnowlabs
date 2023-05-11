@@ -50,6 +50,14 @@ val text = "The patient presented to the emergency room last evening."
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.events_admission_clinical.pipeline").predict("""The patient presented to the emergency room last evening.""")
+```
+
 </div>
 
 ## Results

@@ -124,6 +124,14 @@ val data = Seq("""The patient was diagnosed with breast cancer. Her family histo
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.assert.oncology_problem_wip").predict("""The patient was diagnosed with breast cancer. Her family history is positive for other cancers.""")
+```
+
 </div>
 
 ## Results

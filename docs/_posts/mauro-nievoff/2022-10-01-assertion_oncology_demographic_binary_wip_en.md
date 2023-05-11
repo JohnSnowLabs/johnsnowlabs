@@ -122,6 +122,14 @@ val data = Seq("One sister was diagnosed with breast cancer at the age of 40.").
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.assert.oncology_demographic_binary_wip").predict("""One sister was diagnosed with breast cancer at the age of 40.""")
+```
+
 </div>
 
 ## Results
