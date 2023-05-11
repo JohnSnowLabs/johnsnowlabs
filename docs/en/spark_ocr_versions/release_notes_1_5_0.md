@@ -28,7 +28,7 @@ FoundationOne report parsing support.
 
 #### New Features
 
-* Added [FoundationOneReportParser](ocr_pipeline_components#foundationonereportparser) which support parsing patient info,
+* Added [FoundationOneReportParser](/docs/en/ocr_pipeline_components#foundationonereportparser) which support parsing patient info,
 genomic and biomarker findings.
 
 

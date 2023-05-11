@@ -29,9 +29,9 @@ More details please read in [Table Detection & Extraction in Spark OCR](https://
 
 #### New Features
 
-* [ImageTableDetector](ocr_table_recognition#imagetabledetector) is a DL model for detect tables on the image.
-* [ImageTableCellDetector](ocr_table_recognition#imagetablecelldetector) is a transformer for detect regions of cells in the table image.
-* [ImageCellsToTextTable](ocr_table_recognition#imagecellstotexttable) is a transformer for extract text from the detected cells.
+* [ImageTableDetector](/docs/en/ocr_table_recognition#imagetabledetector) is a DL model for detect tables on the image.
+* [ImageTableCellDetector](/docs/en/ocr_table_recognition#imagetablecelldetector) is a transformer for detect regions of cells in the table image.
+* [ImageCellsToTextTable](/docs/en/ocr_table_recognition#imagecellstotexttable) is a transformer for extract text from the detected cells.
 
 #### New notebooks
 

@@ -24,10 +24,10 @@ Handwritten detection and visualization improvement.
 
 #### New Features
 
-* Added [ImageHandwrittenDetector](ocr_object_detection#imagehandwrittendetector) for detecting 'signature', 'date', 'name',
+* Added [ImageHandwrittenDetector](/docs/en/ocr_object_detection#imagehandwrittendetector) for detecting 'signature', 'date', 'name',
  'title', 'address' and others handwritten text.
-* Added rendering labels and scores in [ImageDrawRegions](ocr_pipeline_components#imagedrawregions).
-* Added possibility to scale image to fixed size in [ImageScaler](ocr_pipeline_components#imagescaler)
+* Added rendering labels and scores in [ImageDrawRegions](/docs/en/ocr_pipeline_components#imagedrawregions).
+* Added possibility to scale image to fixed size in [ImageScaler](/docs/en/ocr_pipeline_components#imagescaler)
  with keeping original ratio.
 
 
