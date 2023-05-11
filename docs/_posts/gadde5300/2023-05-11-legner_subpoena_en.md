@@ -22,7 +22,7 @@ This is a legal NER mode trained on Subpoenas, which is aimed to extract the fol
 
 ## Predicted Entities
 
-
+`ADDRESS`, `MATTER_VS`, `APPOINTMENT_HOUR`, `DOCUMENT_TOPIC`, `DOCUMENT_PERSON`, `COURT_ADDRESS`, `APPOINTMENT_DATE`, `COUNTY`, `CASE`, `SIGNER`, `COURT`, `DOCUMENT_DATE_TO`, `DOCUMENT_TYPE`, `STATE`, `DOCUMENT_DATE_FROM`, `RECEIVER`, `MATTER`, `SUBPOENA_DATE`, `DOCUMENT_DATE_YEAR`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
