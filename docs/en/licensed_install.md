@@ -321,7 +321,9 @@ Select the Path (from variable) -> Click on edit → Click on New → add %HADOO
 5. Configure Conda env  
 
    i)   Download Miniconda for python 3.8 from [https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe](https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe)
+
    ii)  Install miniconda exe file.  
+   
    iii) Under system variables -> Select the Path (from variable) -> Click on edit -> (ADD the miniconda install location)/bin (Same steps as    above)
    
 ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/331b1089-7eed-46e5-83e4-48bff30995e0)
