@@ -273,6 +273,7 @@ Either create a conda env for python 3.6, install *pyspark==3.1.2 spark-nlp nump
 ### Windows Server
 
 1. Install JAVA 18  - [https://adoptium.net/temurin/releases/?version=18](https://adoptium.net/temurin/releases/?version=18)  
+Install JAVA 8  - [https://adoptium.net/temurin/releases/?version=8](https://adoptium.net/temurin/releases/?version=8) 
 
     i) Once installed , we can check java is installed or not using following command  Open Cmd and type java --version 
 
