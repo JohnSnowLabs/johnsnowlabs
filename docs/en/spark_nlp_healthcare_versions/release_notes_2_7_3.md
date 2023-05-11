@@ -115,7 +115,7 @@ A brand-new end-to-end trained BERT model, resulting in massive improvements. An
 model                           | Spark NLP ML model | Spark NLP DL model | benchmark
 ---------------------------------|-----------|-----------|-----------
 re_temporal_events_clinical     | 68.29     | 71.0      | 80.2 [1](https://arxiv.org/pdf/2012.08790.pdf)
-re_clinical                     | 56.45     | **69.2**      | 68.2      [2](ncbi.nlm.nih.gov/pmc/articles/PMC7153059/)
+re_clinical                     | 56.45     | **69.2**      | 68.2      [2](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7153059/)
 re_human_pheotype_gene_clinical | -         | **87.9**      | 67.2 [3](https://arxiv.org/pdf/1903.10728.pdf)
 re_drug_drug_interaction        | -         | 72.1      | 83.8 [4](https://www.aclweb.org/anthology/2020.knlp-1.4.pdf)
 re_chemprot                     | 76.69     | **94.1**      | 83.64 [5](https://www.aclweb.org/anthology/D19-1371.pdf)

@@ -15,7 +15,7 @@ sidebar:
 
 This is the second article of the “Serving Spark NLP via API” series, showcasing how to serve Spark NLP using [FastAPI](https://fastapi.tiangolo.com/) and [LightPipelines](https://medium.com/spark-nlp/spark-nlp-101-lightpipeline-a544e93f20f1) for a quick inference. Don’t forget to check the other articles in this series, namely:
 
-* How to serve Spark NLP using Microsoft [Synapse ML](https://microsoft.github.io/SynapseML/), available [here](https://nlp.johnsnowlabs.com/docs/en/serving_spark_nlp_via_api_synapseml).
+* How to serve Spark NLP using Microsoft [Synapse ML](https://microsoft.github.io/SynapseML/), available [here](https://nlp.johnsnowlabs.com/docs/en/licensed_serving_spark_nlp_via_api_synapseml).
 
 * How to serve Spark NLP using [Databricks](https://databricks.com/) Jobs and [MLFlow](https://mlflow.org/) Rest APIs, available [here](https://nlp.johnsnowlabs.com/docs/en/serving_spark_nlp_via_api_databricks_mlflow).
 

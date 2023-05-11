@@ -14,7 +14,7 @@ sidebar:
 
 
 This page gives you an overview of every OCR model in NLU which are provided by [Spark
-OCR](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr).
+OCR](https://nlp.johnsnowlabs.com/docs/en/ocr).
 
 
 
