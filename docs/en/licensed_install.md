@@ -272,7 +272,7 @@ Either create a conda env for python 3.6, install *pyspark==3.1.2 spark-nlp nump
 
 ### Windows Server
 
-1. Install JAVA 18  - https://adoptium.net/temurin/releases/?version=18  
+1. Install JAVA 18  - [https://adoptium.net/temurin/releases/?version=18](https://adoptium.net/temurin/releases/?version=18)  
 
     i) Once installed , we can check java is installed or not using following command  Open Cmd and type java --version 
 
@@ -288,7 +288,7 @@ Either create a conda env for python 3.6, install *pyspark==3.1.2 spark-nlp nump
 
 3. Install Apache Spark  and Microsoft Visual C++ 2010
 
-    i)  Download Apache Spark - 3.2  from https://archive.apache.org/dist/spark/spark-3.2.3/spark-3.2.3-bin-hadoop3.2.tgz  
+    i)  Download Apache Spark - 3.2  from [https://archive.apache.org/dist/spark/spark-3.2.3/spark-3.2.3-bin-hadoop3.2.tgz](https://archive.apache.org/dist/spark/spark-3.2.3/spark-3.2.3-bin-hadoop3.2.tgz)  
     ii) Extract the archive file to location C:\\spark. (C:\\spark folder should have folder bin - so it should belike C\\spark\\bin )  
     iii)  Intsall Microsoft Visual C++ 2010 from Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package MFC Security Update 
 
@@ -320,7 +320,7 @@ Select the Path (from variable) -> Click on edit → Click on New → add %HADOO
 
 5. Configure Conda env  
 
-   i)   Download Miniconda for python 3.8 from https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe
+   i)   Download Miniconda for python 3.8 from [https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe](https://repo.anaconda.com/miniconda/Miniconda3-py38_4.11.0-Windows-x86_64.exe)
    ii)  Install miniconda exe file.  
    iii) Under system variables -> Select the Path (from variable) -> Click on edit -> (ADD the miniconda install location)/bin (Same steps as    above)
    
