@@ -23,7 +23,7 @@ Added preserving of original file formatting
 
 #### Enhancements
 
-* Added keepLayout param to the [ImageToText](ocr_pipeline_components#imagetotext)
+* Added keepLayout param to the [ImageToText](/docs/en/ocr_pipeline_components#imagetotext)
 
 #### New and updated notebooks
 

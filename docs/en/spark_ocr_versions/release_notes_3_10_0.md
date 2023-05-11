@@ -25,10 +25,10 @@ Form recognition using LayoutLMv2 and text detection.
 
 #### New Features
 
-* Added [VisualDocumentNERv2](ocr_visual_document_understanding#visualdocumentnerv2) transformer
-* Added DL based [ImageTextDetector](ocr_object_detection#imagetextdetector) transformer
-* Support rotated regions in [ImageSplitRegions](ocr_pipeline_components#imagesplitregions)
-* Support rotated regions in [ImageDrawRegions](ocr_pipeline_components#imagedrawregions)
+* Added [VisualDocumentNERv2](/docs/en/ocr_visual_document_understanding#visualdocumentnerv2) transformer
+* Added DL based [ImageTextDetector](/docs/en/ocr_object_detection#imagetextdetector) transformer
+* Support rotated regions in [ImageSplitRegions](/docs/en/ocr_pipeline_components#imagesplitregions)
+* Support rotated regions in [ImageDrawRegions](/docs/en/ocr_pipeline_components#imagedrawregions)
 
 
 #### New Models
