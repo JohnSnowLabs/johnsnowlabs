@@ -26,8 +26,6 @@ It is based on Facebook's RoBERTa model released in 2019. It is a large multi-li
 
 ## Predicted Entities
 
-
-
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -35,8 +33,6 @@ It is based on Facebook's RoBERTa model released in 2019. It is a large multi-li
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/public/models/xlm_roberta_large_xx_3.3.0_3.0_1632906808175.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
-
-
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
