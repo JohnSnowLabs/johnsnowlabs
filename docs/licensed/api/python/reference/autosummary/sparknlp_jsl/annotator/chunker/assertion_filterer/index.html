@@ -370,6 +370,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
@@ -573,20 +574,6 @@ regex : Filter using a regex</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setWhiteList">
-<span class="sig-name descname"><span class="pre">setWhiteList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/assertion_filterer.html#AssertionFilterer.setWhiteList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setWhiteList" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets list of entities to process. The rest will be ignored.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">list</span></dt><dd><p>If defined, list of entities to process. The rest will be ignored.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setCaseSensitive">
 <span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/assertion_filterer.html#AssertionFilterer.setCaseSensitive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setCaseSensitive" title="Permalink to this definition">#</a></dt>
 <dd><p>Determines whether the definitions of the white listed entities are case sensitive.</p>
@@ -594,34 +581,6 @@ regex : Filter using a regex</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>value</strong><span class="classifier">bool</span></dt><dd><p>Whether white listed entities are case sensitive or not.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setRegex">
-<span class="sig-name descname"><span class="pre">setRegex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/assertion_filterer.html#AssertionFilterer.setRegex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setRegex" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets llist of regex to process. The rest will be ignored.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">list</span></dt><dd><p>List of dash-separated pairs of named entities</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setCriteria">
-<span class="sig-name descname"><span class="pre">setCriteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/assertion_filterer.html#AssertionFilterer.setCriteria"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setCriteria" title="Permalink to this definition">#</a></dt>
-<dd><p>Set tag representing what is the criteria to filter the chunks. possibles values (assertion|isIn|regex)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>pairs</strong><span class="classifier">list</span></dt><dd><p>List of dash-separated pairs of named entities</p>
 </dd>
 </dl>
 </dd>
@@ -674,10 +633,7 @@ regex : Filter using a regex</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.regex"><code class="docutils literal notranslate"><span class="pre">AssertionFilterer.regex</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.criteria"><code class="docutils literal notranslate"><span class="pre">AssertionFilterer.criteria</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.entitiesConfidence"><code class="docutils literal notranslate"><span class="pre">AssertionFilterer.entitiesConfidence</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setWhiteList"><code class="docutils literal notranslate"><span class="pre">AssertionFilterer.setWhiteList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">AssertionFilterer.setCaseSensitive()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setRegex"><code class="docutils literal notranslate"><span class="pre">AssertionFilterer.setRegex()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setCriteria"><code class="docutils literal notranslate"><span class="pre">AssertionFilterer.setCriteria()</span></code></a></li>
 </ul>
 </li>
 </ul>

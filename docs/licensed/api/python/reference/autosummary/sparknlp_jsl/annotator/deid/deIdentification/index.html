@@ -370,6 +370,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
@@ -550,9 +551,14 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentence&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setUseAbbreviations</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">])</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go"> Ner entities</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clinical_sensitive_entities</span> <span class="o">=</span> <span class="n">MedicalNerModel</span> \
@@ -566,8 +572,10 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">deIdentification</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;ner_chunk&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;sentence&quot;</span><span class="p">])</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;dei&quot;</span><span class="p">)</span> \
-<span class="gp">... </span>    <span class="c1"># file with custom regex pattern for custom entities    ...     .setRegexPatternsDictionary(&quot;path/to/dic_regex_patterns_main_categories.txt&quot;) \</span>
-<span class="gp">... </span>    <span class="c1"># file with custom obfuscator names for the entities    ...     .setObfuscateRefFile(&quot;path/to/obfuscate_fixed_entities.txt&quot;) \</span>
+<span class="gp">... </span>    <span class="c1"># file with custom regex pattern for custom entities\</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setRegexPatternsDictionary</span><span class="p">(</span><span class="s2">&quot;path/to/dic_regex_patterns_main_categories.txt&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="c1"># file with custom obfuscator names for the entities\</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setObfuscateRefFile</span><span class="p">(</span><span class="s2">&quot;path/to/obfuscate_fixed_entities.txt&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setRefFileFormat</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setRefSep</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setMode</span><span class="p">(</span><span class="s2">&quot;obfuscate&quot;</span><span class="p">)</span> \
@@ -776,7 +784,8 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getBlackList">
 <span class="sig-name descname"><span class="pre">getBlackList</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.getBlackList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getBlackList" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Return the blackList value.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLanguage">
@@ -1228,7 +1237,8 @@ s : list</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getSameLengthFormattedEntities">
 <span class="sig-name descname"><span class="pre">getSameLengthFormattedEntities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.getSameLengthFormattedEntities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getSameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the sameLengthFormattedEntities value.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes">
@@ -1354,9 +1364,14 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentence&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setUseAbbreviations</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="go">&gt;&gt; embeddings = WordEmbeddingsModel     ...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)     ...     .setInputCols([&quot;sentence&quot;, &quot;token&quot;])     ...     .setOutputCol(&quot;embeddings&quot;)</span>
+<span class="go">&gt;&gt; embeddings = WordEmbeddingsModel \</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go"> Ner entities</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clinical_sensitive_entities</span> <span class="o">=</span> <span class="n">MedicalNerModel</span> \
@@ -1878,7 +1893,8 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getRegexEntities">
 <span class="sig-name descname"><span class="pre">getRegexEntities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.getRegexEntities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getRegexEntities" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Return teh regexEntities value.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setUseShifDays">
@@ -1966,7 +1982,8 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getSameLengthFormattedEntities">
 <span class="sig-name descname"><span class="pre">getSameLengthFormattedEntities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.getSameLengthFormattedEntities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getSameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Return the sameLengthFormattedEntities value.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.pretrained">
