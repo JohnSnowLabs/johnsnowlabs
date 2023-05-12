@@ -69,8 +69,7 @@ val chunk_assembler = new Doc2Chunk()
       .setInputCols("document")
       .setOutputCol("icd_chunk")
 
-val chunkerMapper = ChunkMapperModel
-       .pretrained("icd10cm_cause_claim_mapper", "en", "clinical/models")
+val chunkerMapper = ChunkMapperModel.pretrained("icd10cm_cause_claim_mapper", "en", "clinical/models")
        .setInputCols(Array("icd_chunk"))
        .setOutputCol("mappings")
        .setRels(Array("icd10cm_cause", "icd10cm_claim_analysis_code")) 
