@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps ICD10CM codes, subsequently providing corresponding causes and generating claim analysis codes for each respective ICD10CM code.
+This pretrained model maps ICD10CM codes, subsequently providing corresponding causes and generating claim analysis codes for each respective ICD10CM code. If there is no equivalent claim analysis code, the result will be 'NONE'.
 
 ## Predicted Entities
 
@@ -58,7 +58,7 @@ model = pipeline.fit(spark.createDataFrame([['']]).toDF('text'))
 
 lp = LightPipeline(model)
 
-res = lp.fullAnnotate(["D69.51", "G43.83", "Z83.51"])
+res = lp.fullAnnotate(["D69.51", "G43.83", "A18.03"])
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
@@ -77,7 +77,7 @@ val chunkerMapper = ChunkMapperModel
 
 val mapper_pipeline = new Pipeline().setStages(Array(document_assembler, chunk_assembler, chunkerMapper))
 
-val data = Seq(Array("D69.51", "G43.83", "Z83.51")).toDS.toDF("text")
+val data = Seq(Array("D69.51", "G43.83", "A18.03")).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data) 
 ```
@@ -86,21 +86,22 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-+------+------------------------------------+---------------------------+
-|icd10 |mappings                            |relation                   |
-+------+------------------------------------+---------------------------+
-|D69.51|Unintentional injuries              |icd10cm_cause              |
-|D69.51|Adverse effects of medical treatment|icd10cm_cause              |
-|D69.51|D69.51                              |icd10cm_claim_analysis_code|
-|D69.51|D69.51                              |icd10cm_claim_analysis_code|
-|G43.83|Headache disorders                  |icd10cm_cause              |
-|G43.83|Migraine                            |icd10cm_cause              |
-|G43.83|Tension-type headache               |icd10cm_cause              |
-|G43.83|G43.83                              |icd10cm_claim_analysis_code|
-|G43.83|G43.83                              |icd10cm_claim_analysis_code|
-|G43.83|G43.83                              |icd10cm_claim_analysis_code|
-|Z83.51|NONE                                |null                       |
-+------+------------------------------------+---------------------------+
++---------+------------------------------------+---------------------------+
+|ner_chunk|mapping_result                      |relation                   |
++---------+------------------------------------+---------------------------+
+|D69.51   |Unintentional injuries              |icd10cm_cause              |
+|D69.51   |Adverse effects of medical treatment|icd10cm_cause              |
+|D69.51   |D69.51                              |icd10cm_claim_analysis_code|
+|D69.51   |D69.51                              |icd10cm_claim_analysis_code|
+|G43.83   |Headache disorders                  |icd10cm_cause              |
+|G43.83   |Migraine                            |icd10cm_cause              |
+|G43.83   |Tension-type headache               |icd10cm_cause              |
+|G43.83   |G43.83                              |icd10cm_claim_analysis_code|
+|G43.83   |G43.83                              |icd10cm_claim_analysis_code|
+|G43.83   |G43.83                              |icd10cm_claim_analysis_code|
+|A18.03   |Whooping cough                      |icd10cm_cause              |
+|A18.03   |A18.03                              |icd10cm_claim_analysis_code|
++---------+------------------------------------+---------------------------+
 
 ```
 
