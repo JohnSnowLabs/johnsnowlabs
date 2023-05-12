@@ -36,6 +36,7 @@ This model is trained to extract clinical abbreviations and acronyms in text.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -49,7 +50,7 @@ tokenizer = Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-clinical_embeddings = WordEmbeddingsModel.pretrained('embeddings_clinical_medium', "en", "clinical/models")\
+clinical_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_medium", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
@@ -87,7 +88,7 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
 
-val clinical_embeddings = WordEmbeddingsModel.pretrained('embeddings_clinical_medium', "en", "clinical/models")
+val clinical_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_medium", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
@@ -95,7 +96,7 @@ val ner_model = MedicalNerModel.pretrained("ner_abbreviation_emb_clinical_medium
     .setInputCols(Array("sentence", "token","embeddings"))
     .setOutputCol("ner")
 
-val ner_converter = NerConverterInternal()
+val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
 
