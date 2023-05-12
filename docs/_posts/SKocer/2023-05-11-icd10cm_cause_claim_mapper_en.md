@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps ICD10CM codes, subsequently providing corresponding causes and generating claim analysis codes for each respective ICD10CM code. If there is no equivalent claim analysis code, the result will be 'NONE'.
+This pretrained model maps ICD-10-CM codes, subsequently providing corresponding causes and generating claim analysis codes for each respective ICD-10-CM code. If there is no equivalent claim analysis code, the result will be 'NONE'.
 
 ## Predicted Entities
 
