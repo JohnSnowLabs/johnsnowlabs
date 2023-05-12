@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps ICD-10-CM codes, subsequently providing corresponding causes and generating claim analysis codes for each respective ICD-10-CM code. If there is no equivalent claim analysis code, the result will be 'NONE'.
+This pretrained model maps ICD-10-CM codes, subsequently providing corresponding causes and generating claim analysis codes for each respective ICD-10-CM code. If there is no equivalent claim analysis code, the result will be `None`.
 
 ## Predicted Entities
 
@@ -62,17 +62,17 @@ res = lp.fullAnnotate(["D69.51", "G43.83", "A18.03"])
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
-       .setInputCol("text")
-       .setOutputCol("document")
+      .setInputCol("text")
+      .setOutputCol("document")
 
 val chunk_assembler = new Doc2Chunk()
       .setInputCols("document")
       .setOutputCol("icd_chunk")
 
 val chunkerMapper = ChunkMapperModel.pretrained("icd10cm_cause_claim_mapper", "en", "clinical/models")
-       .setInputCols(Array("icd_chunk"))
-       .setOutputCol("mappings")
-       .setRels(Array("icd10cm_cause", "icd10cm_claim_analysis_code")) 
+      .setInputCols(Array("icd_chunk"))
+      .setOutputCol("mappings")
+      .setRels(Array("icd10cm_cause", "icd10cm_claim_analysis_code")) 
 
 val mapper_pipeline = new Pipeline().setStages(Array(document_assembler, chunk_assembler, chunkerMapper))
 
@@ -101,7 +101,6 @@ val result = pipeline.fit(data).transform(data)
 |A18.03   |Whooping cough                      |icd10cm_cause              |
 |A18.03   |A18.03                              |icd10cm_claim_analysis_code|
 +---------+------------------------------------+---------------------------+
-
 ```
 
 {:.model-param}
