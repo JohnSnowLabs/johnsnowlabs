@@ -85,22 +85,16 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-+---------+------------------------------------+---------------------------+
-|ner_chunk|mapping_result                      |relation                   |
-+---------+------------------------------------+---------------------------+
-|D69.51   |Unintentional injuries              |icd10cm_cause              |
-|D69.51   |Adverse effects of medical treatment|icd10cm_cause              |
-|D69.51   |D69.51                              |icd10cm_claim_analysis_code|
-|D69.51   |D69.51                              |icd10cm_claim_analysis_code|
-|G43.83   |Headache disorders                  |icd10cm_cause              |
-|G43.83   |Migraine                            |icd10cm_cause              |
-|G43.83   |Tension-type headache               |icd10cm_cause              |
-|G43.83   |G43.83                              |icd10cm_claim_analysis_code|
-|G43.83   |G43.83                              |icd10cm_claim_analysis_code|
-|G43.83   |G43.83                              |icd10cm_claim_analysis_code|
-|A18.03   |Whooping cough                      |icd10cm_cause              |
-|A18.03   |A18.03                              |icd10cm_claim_analysis_code|
-+---------+------------------------------------+---------------------------+
++------------+------------------------------------+---------------------------+
+|icd10cm_code|cause                               |icd10cm_claim_analysis_code|
++------------+------------------------------------+---------------------------+
+|D69.51      |Unintentional injuries              |D69.51                     |
+|D69.51      |Adverse effects of medical treatment|D69.51                     |
+|G43.83      |Headache disorders                  |G43.83                     |
+|G43.83      |Tension-type headache               |G43.83                     |
+|G43.83      |Migraine                            |G43.83                     |
+|A18.03      |Whooping cough                      |A18.03                     |  
++------------+------------------------------------+---------------------------+
 ```
 
 {:.model-param}
