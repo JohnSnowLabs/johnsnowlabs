@@ -36,6 +36,7 @@ This model is trained to extract clinical abbreviations and acronyms in text.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -49,7 +50,7 @@ tokenizer = Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-clinical_embeddings = WordEmbeddingsModel.pretrained('embeddings_clinical_large', "en", "clinical/models")\
+clinical_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_large", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
@@ -71,6 +72,7 @@ pipeline = Pipeline(stages=[
     ])
 
 sample_df = spark.createDataFrame([["Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet."]]).toDF("text")
+
 result = ner_pipeline.fit(sample_df).transform(sample_df)
 ```
 ```scala
@@ -94,7 +96,7 @@ val ner_model = MedicalNerModel.pretrained("ner_abbreviation_emb_clinical_large"
     .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
-val ner_converter = NerConverterInternal()
+val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
 
