@@ -131,6 +131,14 @@ val data = Seq(text).toDS.toDF("text")
 
 val result= pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.kegg_disease").predict("""A 55-year-old female with a history of myopia, kniest dysplasia and prostate cancer. She was on glipizide , and dapagliflozin for congenital nephrogenic diabetes insipidus.""")
+```
+
 </div>
 
 ## Results

@@ -130,6 +130,14 @@ val data = Seq("""19.32 day 20 rivaroxaban diary. still residual aches and pains
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.adverse_drug_events.conversational").predict("""19.32 day 20 rivaroxaban diary. still residual aches and pains; only had 4 paracetamol today.""")
+```
+
 </div>
 
 ## Results

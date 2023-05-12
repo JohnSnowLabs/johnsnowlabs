@@ -121,6 +121,14 @@ val data = Seq("The final diagnosis was metastatic breast carcinoma, and it was 
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.oncology_tnm").predict("""The final diagnosis was metastatic breast carcinoma, and it was classified as T2N1M1 stage IV. The histological grade of this 4 cm tumor was grade 2.""")
+```
+
 </div>
 
 ## Results

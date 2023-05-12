@@ -111,6 +111,14 @@ val data = Seq("Mr. Known lastname 9880 is a pleasant, cooperative gentleman wit
 
 val result = nlpPipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.sdoh_mentions").predict("""Mr. Known lastname 9880 is a pleasant, cooperative gentleman with a long standing history (20 years) diverticulitis. He is married and has 3 children. He works in a bank. He denies any alcohol or intravenous drug use. He has been smoking for many years.""")
+```
+
 </div>
 
 ## Results

@@ -46,6 +46,14 @@ val pipeline= PretrainedPipeline("umls_disease_syndrome_resolver_pipeline", "en"
 val pipeline.annotate("A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria")
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.umls_disease_syndrome_resolver").predict("""A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria""")
+```
+
 </div>
 
 ## Results

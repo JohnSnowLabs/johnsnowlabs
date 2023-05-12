@@ -50,6 +50,14 @@ val text = "Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITI
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.clinical-abbreviation.pipeline").predict("""Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.""")
+```
+
 </div>
 
 ## Results

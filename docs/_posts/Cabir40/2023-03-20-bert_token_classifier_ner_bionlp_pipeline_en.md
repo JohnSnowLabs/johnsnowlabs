@@ -50,6 +50,14 @@ val text = "Both the erbA IRES and the erbA/myb virus constructs transformed ery
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.token_bert.biolp.pipeline").predict("""Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay.""")
+```
+
 </div>
 
 ## Results

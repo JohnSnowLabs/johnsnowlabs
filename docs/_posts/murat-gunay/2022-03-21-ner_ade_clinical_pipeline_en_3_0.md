@@ -45,6 +45,14 @@ val pipeline = new PretrainedPipeline("ner_ade_clinical_pipeline", "en", "clinic
 
 pipeline.annotate("Been taking Lipitor for 15 years, have experienced severe fatigue a lot!!!. Doctor moved me to voltaren 2 months ago, so far, have only experienced cramps")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.ade_clinical.pipeline").predict("""Been taking Lipitor for 15 years, have experienced severe fatigue a lot!!!. Doctor moved me to voltaren 2 months ago, so far, have only experienced cramps""")
+```
+
 </div>
 
 ## Results

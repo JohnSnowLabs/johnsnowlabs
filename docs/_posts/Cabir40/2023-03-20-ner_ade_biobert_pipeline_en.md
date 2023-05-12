@@ -50,6 +50,14 @@ val text = "Been taking Lipitor for 15 years , have experienced severe fatigue a
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.biobert_ade.pipeline").predict("""Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps""")
+```
+
 </div>
 
 ## Results

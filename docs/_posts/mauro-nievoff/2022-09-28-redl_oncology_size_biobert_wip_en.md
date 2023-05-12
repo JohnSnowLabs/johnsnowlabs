@@ -149,6 +149,14 @@ val data = Seq("The patient presented a 2 cm mass in her left breast, and the tu
 val result = pipeline.fit(data).transform(data)
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.oncology_size_biobert").predict("""The patient presented a 2 cm mass in her left breast, and the tumor in her other breast was 3 cm long.""")
+```
+
 </div>
 
 ## Results

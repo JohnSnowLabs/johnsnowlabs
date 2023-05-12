@@ -98,6 +98,14 @@ val data = Seq("Retired schoolteacher, now substitutes. Lives with wife in locat
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.generic.sdoh_alchol_binary_sbiobert_cased").predict("""Retired schoolteacher, now substitutes. Lives with wife in location 1439. Has a 27 yo son and a 25 yo daughter. He uses alcohol and cigarettes""")
+```
+
 </div>
 
 ## Results

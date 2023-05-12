@@ -49,6 +49,14 @@ val med_resolver_pipeline = new PretrainedPipeline("icd9_resolver_pipeline", "en
 
 val result = med_resolver_pipeline.fullAnnotate("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years and anisakiasis. Also, it was reported that fetal and neonatal hemorrhage""")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.resolve.icd9.pipeline").predict("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years and anisakiasis. Also, it was reported that fetal and neonatal hemorrhage""")
+```
+
 </div>
 
 ## Results

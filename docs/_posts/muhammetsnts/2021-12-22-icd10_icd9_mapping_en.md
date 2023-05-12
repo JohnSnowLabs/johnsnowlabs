@@ -45,6 +45,14 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 val pipeline = new PretrainedPipeline("icd10_icd9_mapping", "en", "clinical/models")
 val result = pipeline.annotate('E669 R630 J988')
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.icd10_icd9.mapping").predict("""E669 R630 J988""")
+```
+
 </div>
 
 ## Results

@@ -50,6 +50,14 @@ val text = "DOSAGE AND ADMINISTRATION The initial dosage of hydrocortisone table
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.drugs_greedy.pipeline").predict("""DOSAGE AND ADMINISTRATION The initial dosage of hydrocortisone tablets may vary from 20 mg to 240 mg of hydrocortisone per day depending on the specific disease entity being treated.""")
+```
+
 </div>
 
 ## Results

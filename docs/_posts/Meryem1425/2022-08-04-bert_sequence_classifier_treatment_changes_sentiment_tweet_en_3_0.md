@@ -83,6 +83,14 @@ val data = Seq(Array("I love when they say things like this. I took that ambien 
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.bert_sequence.treatment_sentiment_tweets").predict("""I am a 30 year old man who is not overweight but is still on the verge of needing a Lipitor prescription.""")
+```
+
 </div>
 
 ## Results

@@ -122,6 +122,14 @@ val data = Seq("""The result of the biopsy was positive. We recommend to perform
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.assert.oncology_test_binary").predict("""The result of the biopsy was positive. We recommend to perform a CT scan.""")
+```
+
 </div>
 
 ## Results

@@ -119,6 +119,16 @@ val df = Seq(text).toDS.toDF("text")
 
 val results = pipeline.fit(df).transform(df)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("es.med_ner.deid.subentity_roberta").predict("""
+Antonio Pérez Juan, nacido en Cadiz, España. Aún no estaba vacunado, se infectó con Covid-19 el dia 14 de Marzo y tuvo que ir al Hospital. Fue tratado con anticuerpos monoclonales en la Clinica San Carlos.
+""")
+```
+
 </div>
 
 

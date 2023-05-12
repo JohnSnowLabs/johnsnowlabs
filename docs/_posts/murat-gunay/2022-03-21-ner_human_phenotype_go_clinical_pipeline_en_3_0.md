@@ -43,6 +43,14 @@ val pipeline = new PretrainedPipeline("ner_human_phenotype_go_clinical_pipeline"
 
 pipeline.annotate("Another disease that shares two of the tumor components of CT, namely GIST and tricarboxylic acid cycle is the Carney-Stratakis syndrome (CSS) or dyad.")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.human_phenotype_clinical.pipeline").predict("""Another disease that shares two of the tumor components of CT, namely GIST and tricarboxylic acid cycle is the Carney-Stratakis syndrome (CSS) or dyad.""")
+```
+
 </div>
 
 ## Results

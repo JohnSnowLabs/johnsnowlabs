@@ -88,6 +88,14 @@ val data = Seq("Another uncle of mine had a heart attack and passed away. Will b
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.health_mentions").predict("""Another uncle of mine had a heart attack and passed away. Will be cremated Saturday I think I ve gone numb again RIP Uncle Mike""")
+```
+
 </div>
 
 ## Results
