@@ -24,7 +24,7 @@ If you look for a `small` version of the model, you can find it [here](https://n
 
 ## Predicted Entities
 
-
+`AGE`, `AMOUNT`, `COUNTABLE_ITEM`, `DATE_PERIOD`, `ECONOMIC_ACTION`, `ECONOMIC_KPI`, `ENVIRONMENTAL_ACTION`, `ENVIRONMENTAL_KPI`, `ENVIRONMENTAL_UNIT`, `ESG_ROLE`, `FACILITY_PLACE`, `ISO`, `PERCENTAGE`, `PROFESSIONAL_GROUP`, `RELATIVE_METRIC`, `SOCIAL_ACTION`, `SOCIAL_KPI`, `TARGET_GROUP`, `TARGET_GROUP_BUSINESS`, `WASTE`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -38,6 +38,7 @@ If you look for a `small` version of the model, you can find it [here](https://n
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
