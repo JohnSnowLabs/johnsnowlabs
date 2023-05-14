@@ -37,6 +37,7 @@ Based on Flan-T5-large, this model is finetuned to summarize clinical guidelines
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document = DocumentAssembler()\
     .setInputCol("text")\
@@ -55,9 +56,7 @@ pipeline = Pipeline(stages=[
 
 text = """Clinical Guidelines for Breast Cancer:
 
-
 Breast cancer is the most common type of cancer among women. It occurs when the cells in the breast start growing abnormally, forming a lump or mass. This can result in the spread of cancerous cells to other parts of the body. Breast cancer may occur in both men and women but is more prevalent in women.
-
 
 The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
 - A personal or family history of breast cancer
@@ -68,14 +67,12 @@ The exact cause of breast cancer is unknown. However, several risk factors can i
 - Obesity
 - Hormonal factors, such as taking hormone replacement therapy
 
-
 Breast cancer may not present symptoms during its early stages. Symptoms typically manifest as the disease progresses. Some notable symptoms include:
 - A lump or thickening in the breast or underarm area
 - Changes in the size or shape of the breast
 - Nipple discharge
 - Nipple changes in appearance, such as inversion or flattening
 - Redness or swelling in the breast
-
 
 Treatment for breast cancer depends on several factors, including the stage of the cancer, the location of the tumor, and the individual's overall health. Common treatment options include:
 - Surgery (such as lumpectomy or mastectomy)
