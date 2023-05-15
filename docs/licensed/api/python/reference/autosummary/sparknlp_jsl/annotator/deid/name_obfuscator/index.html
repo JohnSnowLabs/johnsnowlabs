@@ -338,7 +338,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../qa/gpt_generation_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.gpt_generation_params</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qa/beam_search_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.beam_search_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qa/medical_qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.medical_qa</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qa/qa_ner_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.qa_ner_generator</span></code></a></li>
 </ul>
@@ -481,6 +481,9 @@ This module can replace name, patient,and doctor entities with consistent fakers
 </dd>
 <dt><strong>nameEntities</strong></dt><dd><p>The nameEntities used to select entities during obfuscation. The supported name entities are NAME, PATIENT, and DOCTOR. Default: ‘NAME’</p>
 </dd>
+<dt><strong>genderAwareness</strong></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names.
+If value is true, it might decrease performance. Default: False</p>
+</dd>
 <dt><strong>Examples</strong></dt><dd></dd>
 <dt><strong>——-</strong></dt><dd></dd>
 <dt><strong>&gt;&gt;&gt; import sparknlp</strong></dt><dd></dd>
@@ -609,6 +612,11 @@ This module can replace name, patient,and doctor entities with consistent fakers
 <span class="sig-name descname"><span class="pre">nameEntities</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/name_obfuscator.html#NameChunkObfuscatorApproach.nameEntities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.nameEntities" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.genderAwareness">
+<span class="sig-name descname"><span class="pre">genderAwareness</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/name_obfuscator.html#NameChunkObfuscatorApproach.genderAwareness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.genderAwareness" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setObfuscateRefFile">
 <span class="sig-name descname"><span class="pre">setObfuscateRefFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/name_obfuscator.html#NameChunkObfuscatorApproach.setObfuscateRefFile"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setObfuscateRefFile" title="Permalink to this definition">#</a></dt>
@@ -735,6 +743,23 @@ Default: ‘NAME’</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setGenderAwareness">
+<span class="sig-name descname"><span class="pre">setGenderAwareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/name_obfuscator.html#NameChunkObfuscatorApproach.setGenderAwareness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setGenderAwareness" title="Permalink to this definition">#</a></dt>
+<dd><p>Set whether to use gender-aware names or not during obfuscation.
+This param effects only names.
+If value is true, it might decrease performance.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l</strong><span class="classifier">str</span></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -775,6 +800,9 @@ This module can replace name, patient,and doctor entities with consistent fakers
 </dd>
 <dt><strong>nameEntities</strong></dt><dd><p>The nameEntities used to select entities during obfuscation. The supported name entities are NAME, PATIENT, and DOCTOR. Default: ‘NAME’</p>
 </dd>
+<dt><strong>genderAwareness</strong></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names.
+If value is true, it might decrease performance. Default: False</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -811,6 +839,11 @@ This module can replace name, patient,and doctor entities with consistent fakers
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.nameEntities">
 <span class="sig-name descname"><span class="pre">nameEntities</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/name_obfuscator.html#NameChunkObfuscator.nameEntities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.nameEntities" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.genderAwareness">
+<span class="sig-name descname"><span class="pre">genderAwareness</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/name_obfuscator.html#NameChunkObfuscator.genderAwareness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.genderAwareness" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -898,6 +931,23 @@ Default: ‘NAME’</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.setGenderAwareness">
+<span class="sig-name descname"><span class="pre">setGenderAwareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/name_obfuscator.html#NameChunkObfuscator.setGenderAwareness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.setGenderAwareness" title="Permalink to this definition">#</a></dt>
+<dd><p>Set whether to use gender-aware names or not during obfuscation.
+This param effects only names.
+If value is true, it might decrease performance.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l</strong><span class="classifier">str</span></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.pretrained">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/name_obfuscator.html#NameChunkObfuscator.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Downloads and loads a pretrained model.</p>
@@ -970,6 +1020,7 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.language"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscatorApproach.language</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.sameLength"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscatorApproach.sameLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.nameEntities"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscatorApproach.nameEntities</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.genderAwareness"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscatorApproach.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setObfuscateRefFile"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscatorApproach.setObfuscateRefFile()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setRefFileFormat"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscatorApproach.setRefFileFormat()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setRefSep"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscatorApproach.setRefSep()</span></code></a></li>
@@ -978,6 +1029,7 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setLanguage"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscatorApproach.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setSameLength"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscatorApproach.setSameLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setNameEntities"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscatorApproach.setNameEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscatorApproach.setGenderAwareness()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscator</span></code></a><ul class="nav section-nav flex-column">
@@ -988,11 +1040,13 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.language"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscator.language</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.sameLength"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscator.sameLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.nameEntities"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscator.nameEntities</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.genderAwareness"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscator.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.setSeed"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscator.setSeed()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.setObfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscator.setObfuscateRefSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.setLanguage"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscator.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.setSameLength"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscator.setSameLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.setNameEntities"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscator.setNameEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscator.setGenderAwareness()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.pretrained"><code class="docutils literal notranslate"><span class="pre">NameChunkObfuscator.pretrained()</span></code></a></li>
 </ul>
 </li>

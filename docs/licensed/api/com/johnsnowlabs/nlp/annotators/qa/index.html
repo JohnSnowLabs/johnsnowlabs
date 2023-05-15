@@ -537,7 +537,7 @@
       
       
     </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="MedicalQuestionAnsweringextendsAnnotatorModel[com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering]withGPTGenerationParamswithHasCaseSensitivePropertieswithHasBatchedAnnotate[com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering]withParamsAndFeaturesWritablewithWriteTensorflowModelwithHasEnginewithCheckLicense"></a><a id="MedicalQuestionAnswering:MedicalQuestionAnswering"></a>
+      <a id="MedicalQuestionAnsweringextendsMedicalTextGenerator"></a><a id="MedicalQuestionAnswering:MedicalQuestionAnswering"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html" title="Permalink">
         <i class="material-icons"></i>
@@ -548,7 +548,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="MedicalQuestionAnswering is a GPT based model for answering questions given a context." href="MedicalQuestionAnswering.html"><span class="name">MedicalQuestionAnswering</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="MedicalQuestionAnswering.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>] with <a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a> with <span class="extype" name="com.johnsnowlabs.nlp.HasCaseSensitiveProperties">HasCaseSensitiveProperties</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasBatchedAnnotate">HasBatchedAnnotate</span>[<a href="MedicalQuestionAnswering.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>] with <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span> with <span class="extype" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">WriteTensorflowModel</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
+        <a title="MedicalQuestionAnswering is a GPT based model for answering questions given a context." href="MedicalQuestionAnswering.html"><span class="name">MedicalQuestionAnswering</span></a><span class="result"> extends <a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></span>
       </span>
       
       <p class="shortcomment cmt">MedicalQuestionAnswering is a GPT based model for answering questions given a context.</p><div class="fullcomment"><div class="comment cmt"><p>MedicalQuestionAnswering is a GPT based model for answering questions given a context. Unlike span based models, it
@@ -615,7 +615,7 @@ to answer the question or find NER entities.</p><p>Pretrained models can be load
   .setInputCols(<span class="lit">"question_document"</span>, <span class="lit">"context_document"</span>)
   .setOutputCol(<span class="lit">"answer"</span>)</pre></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.qa.ReadMedicalQuestionAnsweringModel" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="ReadMedicalQuestionAnsweringModelextendsReadTensorflowModel"></a><a id="ReadMedicalQuestionAnsweringModel:ReadMedicalQuestionAnsweringModel"></a>
+      <a id="ReadMedicalQuestionAnsweringModelextendsReadTensorflowModelwithReadSentencePieceModel"></a><a id="ReadMedicalQuestionAnsweringModel:ReadMedicalQuestionAnsweringModel"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/ReadMedicalQuestionAnsweringModel.html" title="Permalink">
         <i class="material-icons"></i>
@@ -626,7 +626,7 @@ to answer the question or find NER entities.</p><p>Pretrained models can be load
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="" href="ReadMedicalQuestionAnsweringModel.html"><span class="name">ReadMedicalQuestionAnsweringModel</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.ml.tensorflow.ReadTensorflowModel">ReadTensorflowModel</span></span>
+        <a title="" href="ReadMedicalQuestionAnsweringModel.html"><span class="name">ReadMedicalQuestionAnsweringModel</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.ml.tensorflow.ReadTensorflowModel">ReadTensorflowModel</span> with <span class="extype" name="com.johnsnowlabs.ml.tensorflow.sentencepiece.ReadSentencePieceModel">ReadSentencePieceModel</span></span>
       </span>
       
       

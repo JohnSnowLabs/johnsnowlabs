@@ -353,6 +353,10 @@ document.write(`
 <span class="sd">        The sameLength used to select the same length names as original ones during obfuscation. Default: true</span>
 <span class="sd">    nameEntities</span>
 <span class="sd">        The nameEntities used to select entities during obfuscation. The supported name entities are NAME, PATIENT, and DOCTOR. Default: &#39;NAME&#39;</span>
+<span class="sd">    genderAwareness</span>
+<span class="sd">        Whether to use gender-aware names or not during obfuscation. This param effects only names.</span>
+<span class="sd">        If value is true, it might decrease performance. Default: False</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    -------</span>
 <span class="sd">    &gt;&gt;&gt; import sparknlp</span>
@@ -445,6 +449,10 @@ document.write(`
 <div class="viewcode-block" id="NameChunkObfuscatorApproach.nameEntities"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.nameEntities">[docs]</a>    <span class="n">nameEntities</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;nameEntities&quot;</span><span class="p">,</span>
                          <span class="s2">&quot;The nameEntities used to select entities during obfuscation.&quot;</span><span class="p">,</span>
                          <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
+<div class="viewcode-block" id="NameChunkObfuscatorApproach.genderAwareness"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.genderAwareness">[docs]</a>    <span class="n">genderAwareness</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+                            <span class="s2">&quot;genderAwareness&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Whether to use gender-aware names or not during obfuscation.&quot;</span><span class="p">,</span>
+                            <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
     <span class="nd">@keyword_only</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -527,7 +535,7 @@ document.write(`
 <span class="sd">        l : bool</span>
 <span class="sd">          The sameLength used to select the same length names as original ones during obfuscation. Default: true</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="n">l</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">sameLength</span><span class="o">=</span><span class="n">l</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="NameChunkObfuscatorApproach.setNameEntities"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setNameEntities">[docs]</a>    <span class="k">def</span> <span class="nf">setNameEntities</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The nameEntities used to select entities during obfuscation.</span>
@@ -540,6 +548,19 @@ document.write(`
 <span class="sd">        The nameEntities used to select entities during obfuscation. The supported name entities are NAME, PATIENT, and DOCTOR. Default: &#39;NAME&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">nameEntities</span><span class="o">=</span><span class="n">n</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="NameChunkObfuscatorApproach.setGenderAwareness"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setGenderAwareness">[docs]</a>    <span class="k">def</span> <span class="nf">setGenderAwareness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set whether to use gender-aware names or not during obfuscation.</span>
+<span class="sd">        This param effects only names.</span>
+<span class="sd">        If value is true, it might decrease performance.</span>
+<span class="sd">        Default: False</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        l : str</span>
+<span class="sd">          Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">genderAwareness</span><span class="o">=</span><span class="n">l</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_create_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">java_model</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates the model using the java model.</span>
@@ -581,7 +602,11 @@ document.write(`
 <span class="sd">        The sameLength used to select the same length names as original ones during obfuscation. Default: true</span>
 <span class="sd">    nameEntities</span>
 <span class="sd">        The nameEntities used to select entities during obfuscation. The supported name entities are NAME, PATIENT, and DOCTOR. Default: &#39;NAME&#39;</span>
+<span class="sd">    genderAwareness</span>
+<span class="sd">        Whether to use gender-aware names or not during obfuscation. This param effects only names.</span>
+<span class="sd">        If value is true, it might decrease performance. Default: False</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
 <div class="viewcode-block" id="NameChunkObfuscator.inputAnnotatorTypes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.inputAnnotatorTypes">[docs]</a>    <span class="n">inputAnnotatorTypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AnnotatorType</span><span class="o">.</span><span class="n">CHUNK</span><span class="p">]</span></div>
 <div class="viewcode-block" id="NameChunkObfuscator.outputAnnotatorType"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.outputAnnotatorType">[docs]</a>    <span class="n">outputAnnotatorType</span> <span class="o">=</span> <span class="n">AnnotatorType</span><span class="o">.</span><span class="n">CHUNK</span></div>
 
@@ -596,6 +621,10 @@ document.write(`
 <div class="viewcode-block" id="NameChunkObfuscator.nameEntities"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.nameEntities">[docs]</a>    <span class="n">nameEntities</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;nameEntities&quot;</span><span class="p">,</span>
                          <span class="s2">&quot;The nameEntities used to select entities during obfuscation.&quot;</span><span class="p">,</span>
                          <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
+<div class="viewcode-block" id="NameChunkObfuscator.genderAwareness"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.genderAwareness">[docs]</a>    <span class="n">genderAwareness</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+                            <span class="s2">&quot;genderAwareness&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Whether to use gender-aware names or not during obfuscation.&quot;</span><span class="p">,</span>
+                            <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="NameChunkObfuscator.setSeed"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.setSeed">[docs]</a>    <span class="k">def</span> <span class="nf">setSeed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the seed to select the names on obfuscation. With the seed, you can reply an execution several times</span>
@@ -657,14 +686,24 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">nameEntities</span><span class="o">=</span><span class="n">n</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="NameChunkObfuscator.setGenderAwareness"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.setGenderAwareness">[docs]</a>    <span class="k">def</span> <span class="nf">setGenderAwareness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set whether to use gender-aware names or not during obfuscation.</span>
+<span class="sd">        This param effects only names.</span>
+<span class="sd">        If value is true, it might decrease performance.</span>
+<span class="sd">        Default: False</span>
 
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        l : str</span>
+<span class="sd">          Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">genderAwareness</span><span class="o">=</span><span class="n">l</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscator&quot;</span><span class="p">,</span> <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">NameChunkObfuscator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">classname</span><span class="o">=</span><span class="n">classname</span><span class="p">,</span>
             <span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span>
         <span class="p">)</span>
-
 
     <span class="nd">@staticmethod</span>
 <div class="viewcode-block" id="NameChunkObfuscator.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
