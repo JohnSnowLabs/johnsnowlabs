@@ -89,8 +89,8 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
     
-val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_large", "en", "clinical/models")\
-    .setInputCols(Array("sentence", "token"))\
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_large", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
 val anatomy_ner_model = MedicalNerModel.pretrained("ner_anatomy_emb_clinical_large" "en", "clinical/models")
@@ -108,7 +108,7 @@ val posology_pipeline = new PipelineModel().setStages(Array(document_assembler,
                                                    anatomy_ner_model,
                                                    anatomy_ner_converter))
 
-val data = Seq(""" This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.\nGeneral: Well-developed female, in no acute distress, afebrile.\nHEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.\nNeck: No lymphadenopathy.\nChest: Clear.\nAbdomen: Positive bowel sounds and soft.\nDermatologic: She has got redness along the lateral portion of her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.""").toDS.toDF("text")
+val data = Seq("""This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.\nGeneral: Well-developed female, in no acute distress, afebrile.\nHEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.\nNeck: No lymphadenopathy.\nChest: Clear.\nAbdomen: Positive bowel sounds and soft.\nDermatologic: She has got redness along the lateral portion of her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.""").toDS.toDF("text")
 
 val result = model.fit(data).transform(data)
 ```
@@ -149,7 +149,7 @@ val result = model.fit(data).transform(data)
 
 ## References
 
-Trained on the Anatomical Entity Mention (AnEM) corpus with 'embeddings_clinical'. http://www.nactem.ac.uk/anatomy/
+Trained on the Anatomical Entity Mention (AnEM) corpus with  http://www.nactem.ac.uk/anatomy/
 
 ## Benchmarking
 
