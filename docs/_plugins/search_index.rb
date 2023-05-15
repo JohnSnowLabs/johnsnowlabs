@@ -14,6 +14,18 @@ ORIGIN = ENV["ORIGIN"] || ""
 OUTDATED_EDITIONS = ['Spark NLP 2.0', 'Spark NLP 2.1', 'Healthcare NLP 2.0']
 SPARK_NLP_ORIGIN = "https://sparknlp.org"
 JOHNSNOWLABS_ORIGIN = "https://nlp.johnsnowlabs.com"
+OPEN_SOURCE_MODEL_TO_NOT_REDIRECT = [ "/2020/01/22/glove_100d.html",
+"/2021/11/22/lemma_antbnc_en.html",
+"/2020/07/14/stopwords_hi.html",
+"/2020/12/05/arabic_w2v_cc_300d_ar.html",
+"/2022/05/04/bert_ner_ANER_ar_3_0.html",
+"/2022/03/07/stopwords_iso_vi_3_0.html",
+"/2021/01/03/translate_mul_en_xx.html",
+"/2020/04/17/tfhub_use.html",
+"/2022/04/01/spellcheck_dl_en_2_4.html",
+"/2020/05/03/lemma_nl.html",
+"/2021/11/04/bert_sequence_classifier_question_statement_en.html",
+"/2021/01/02/sentence_detector_dl_en.html"]
 
 $remote_editions = Set.new
 
@@ -387,7 +399,7 @@ Jekyll::Hooks.register :posts, :post_render do |post|
   name_language_editions_sparkversion_to_models_mapping[key] << model
   all_posts_id << model[:id]
   # Change redirects for open source model pages
-  if post.data["origin"] == SPARK_NLP_ORIGIN
+  if post.data["origin"] == SPARK_NLP_ORIGIN and not OPEN_SOURCE_MODEL_TO_NOT_REDIRECT.include?(post.url)
     redirect_to= SPARK_NLP_ORIGIN + post.url
     post.content = post.output= %Q(<!DOCTYPE html>
 <html lang="en-US">

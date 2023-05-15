@@ -3,7 +3,6 @@ layout: docs
 header: true
 seotitle: Spark NLP
 title: Productionizing Spark NLP
-redirect_to: https://sparknlp.org/docs/en/production-readiness
 permalink: /docs/en/production-readiness
 key: docs-experiment_tracking
 modify_date: "2021-11-21"
