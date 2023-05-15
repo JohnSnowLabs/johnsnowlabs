@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Detect Anatomical Regions
+title: Detect Anatomical Regions ((embeddings_clinical_medium)
 author: John Snow Labs
 name: ner_anatomy_emb_clinical_medium
 date: 2023-05-15
