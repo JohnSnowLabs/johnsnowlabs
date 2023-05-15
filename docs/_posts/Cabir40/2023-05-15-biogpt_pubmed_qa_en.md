@@ -8,7 +8,7 @@ tags: [licensed, clinical, en, biogpt, pubmed, qa, question_answering, tensorflo
 task: Question Answering
 language: en
 edition: Healthcare NLP 4.4.2
-spark_version: [3.2, 3.0]
+spark_version: 3.0
 supported: true
 engine: tensorflow
 annotator: MedicalQuestionAnswering
@@ -29,8 +29,8 @@ Types of questions are supported: `"short"` (producing yes/no/maybe) answers and
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/biogpt_pubmed_qa_en_4.4.2_3.2_1684165576397.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/biogpt_pubmed_qa_en_4.4.2_3.2_1684165576397.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/biogpt_pubmed_qa_en_4.4.2_3.0_1684165576397.zip){:.button.button-orange}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/biogpt_pubmed_qa_en_4.4.2_3.0_1684165576397.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -38,13 +38,14 @@ Types of questions are supported: `"short"` (producing yes/no/maybe) answers and
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = MultiDocumentAssembler()\
     .setInputCols("question", "context")\
     .setOutputCols("document_question", "document_context")
 
 med_qa = MedicalQuestionAnswering\
-    .pretrained("biogpt_pubmed_qa","en","clinical/models")\
+    .pretrained("biogpt_pubmed_qa", "en", "clinical/models")\
     .setInputCols(["document_question", "document_context"])\
     .setOutputCol("answer")\
     .setMaxNewTokens(30)\
