@@ -3,7 +3,6 @@ layout: docs
 header: true
 seotitle: Spark NLP
 title: Training
-redirect_to: https://sparknlp.org/docs/en/training
 permalink: /docs/en/training
 key: docs-training
 modify_date: "2019-10-23"
