@@ -37,6 +37,7 @@ The flan_t5_base_jsl_qa model is designed to work seamlessly with the MedicalQue
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = MultiDocumentAssembler()\
     .setInputCols("question", "context")\
@@ -57,8 +58,6 @@ long_question = "What is the effect of directing attention on memory?"
 data = spark.createDataFrame([[long_question, paper_abstract]]).toDF("question", "context")
 
 result = pipeline.fit(data).transform(data)
-
-
 ```
 ```scala
 val document_assembler = new MultiDocumentAssembler()
