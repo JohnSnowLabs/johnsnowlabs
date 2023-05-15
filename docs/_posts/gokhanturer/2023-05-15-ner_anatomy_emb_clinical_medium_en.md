@@ -147,7 +147,7 @@ val result = model.fit(data).transform(data)
 
 ## References
 
-Trained on the Anatomical Entity Mention (AnEM) corpus with 'embeddings_clinical'. http://www.nactem.ac.uk/anatomy/
+Trained on the Anatomical Entity Mention (AnEM) corpus with  http://www.nactem.ac.uk/anatomy/
 
 ## Benchmarking
 
