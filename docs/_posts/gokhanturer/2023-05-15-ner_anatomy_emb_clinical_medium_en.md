@@ -36,6 +36,7 @@ Pretrained named entity recognition deep learning model for anatomy terms. The S
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -57,7 +58,7 @@ anatomy_ner = MedicalNerModel.pretrained('ner_anatomy_emb_clinical_medium' "en",
     .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("anatomy_ner")
     
-anatomy_ner_converter = NerConverter() \
+anatomy_ner_converter = NerConverterInternal() \
     .setInputCols(["sentence", "token", "anatomy_ner"]) \
     .setOutputCol("anatomy_ner_chunk")
 
@@ -73,7 +74,7 @@ empty_data = spark.createDataFrame([[""]]).toDF("text")
 
 posology_ner_model = posology_ner_pipeline.fit(empty_data)
 
-results = posology_ner_model.transform(spark.createDataFrame([['This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.\nGeneral: Well-developed female, in no acute distress, afebrile.\nHEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.\nNeck: No lymphadenopathy.\nChest: Clear.\nAbdomen: Positive bowel sounds and soft.\nDermatologic: She has got redness along the lateral portion of her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.']]).toDF("text"))
+results = posology_ner_model.transform(spark.createDataFrame([['''This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.\nGeneral: Well-developed female, in no acute distress, afebrile.\nHEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.\nNeck: No lymphadenopathy.\nChest: Clear.\nAbdomen: Positive bowel sounds and soft.\nDermatologic: She has got redness along the lateral portion of her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.''']]).toDF("text"))
 ```
 ```scala
 
@@ -89,15 +90,15 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence")
     .setOutputCol("token")
     
-val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_medium", "en", "clinical/models")\
-    .setInputCols(Array("sentence", "token"))\
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_medium", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 ​
-val anatomy_ner_model = BertForTokenClassification.pretrained('ner_anatomy_emb_clinical_medium' "en", "clinical/models")
+val anatomy_ner_model = MedicalNerModel.pretrained("ner_anatomy_emb_clinical_medium", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("anatomy_ner")
 ​
-val anatomy_ner_converter = new NerConverter()
+val anatomy_ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("anatomy_ner_chunk")
 ​
@@ -151,7 +152,7 @@ Trained on the Anatomical Entity Mention (AnEM) corpus with 'embeddings_clinical
 ## Benchmarking
 
 ```bash
-                                 precision    recall  f1-score   support
+                          label     precision  recall   f1-score    support
                tissue_structure       0.81      0.67      0.73       130
                           Organ       0.87      0.79      0.83        52
                            Cell       0.89      1.00      0.94       118
@@ -163,7 +164,7 @@ Trained on the Anatomical Entity Mention (AnEM) corpus with 'embeddings_clinical
    Immaterial_anatomical_entity       1.00      0.67      0.80         6
                          Tissue       0.88      0.88      0.88        32
 Developing_anatomical_structure       1.00      0.20      0.33         5
-                      micro avg       0.86      0.80      0.83       498
-                      macro avg       0.88      0.69      0.75       498
-                   weighted avg       0.86      0.80      0.82       498
+                      micro-avg       0.86      0.80      0.83       498
+                      macro-avg       0.88      0.69      0.75       498
+                   weighted-avg       0.86      0.80      0.82       498
 ```
