@@ -9,7 +9,17 @@
 
 {%- else -%}
 
-<div class="tabs-model-aproach-head tac" markdown="1"></div>
+{% if include.approach %}
+
+<div class="annotator_type tac mont">Approach</div>
+
+{% endif %}
+
+{% if include.model %}
+
+<div class="annotator_type tac mont">Model</div>
+
+{% endif %}
 
 {% endif %}
 
