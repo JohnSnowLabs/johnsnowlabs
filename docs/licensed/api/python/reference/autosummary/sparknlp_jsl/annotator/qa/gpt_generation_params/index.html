@@ -370,6 +370,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
@@ -469,6 +470,11 @@ document.write(`
 <span class="sig-name descname"><span class="pre">maxNewTokens</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/gpt_generation_params.html#GPTGenerationParams.maxNewTokens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.maxNewTokens" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.noRepeatNgramSize">
+<span class="sig-name descname"><span class="pre">noRepeatNgramSize</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/gpt_generation_params.html#GPTGenerationParams.noRepeatNgramSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.noRepeatNgramSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setIgnoreTokenIds">
 <span class="sig-name descname"><span class="pre">setIgnoreTokenIds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/gpt_generation_params.html#GPTGenerationParams.setIgnoreTokenIds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setIgnoreTokenIds" title="Permalink to this definition">#</a></dt>
@@ -540,6 +546,21 @@ document.write(`
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setNoRepeatNgramSize">
+<span class="sig-name descname"><span class="pre">setNoRepeatNgramSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/gpt_generation_params.html#GPTGenerationParams.setNoRepeatNgramSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setNoRepeatNgramSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets size of n-grams that can only occur once.</p>
+<p>If set to int &gt; 0, all ngrams of that size can only occur once.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>value</strong><span class="classifier">int</span></dt><dd><p>N-gram size can only occur once</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setRandomSeed">
 <span class="sig-name descname"><span class="pre">setRandomSeed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/gpt_generation_params.html#GPTGenerationParams.setRandomSeed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setRandomSeed" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets random seed.</p>
@@ -596,11 +617,13 @@ document.write(`
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.topK"><code class="docutils literal notranslate"><span class="pre">GPTGenerationParams.topK</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.ignoreTokenIds"><code class="docutils literal notranslate"><span class="pre">GPTGenerationParams.ignoreTokenIds</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.maxNewTokens"><code class="docutils literal notranslate"><span class="pre">GPTGenerationParams.maxNewTokens</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.noRepeatNgramSize"><code class="docutils literal notranslate"><span class="pre">GPTGenerationParams.noRepeatNgramSize</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setIgnoreTokenIds"><code class="docutils literal notranslate"><span class="pre">GPTGenerationParams.setIgnoreTokenIds()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setMaxContextLength"><code class="docutils literal notranslate"><span class="pre">GPTGenerationParams.setMaxContextLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setDoSample"><code class="docutils literal notranslate"><span class="pre">GPTGenerationParams.setDoSample()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setTopK"><code class="docutils literal notranslate"><span class="pre">GPTGenerationParams.setTopK()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setMaxNewTokens"><code class="docutils literal notranslate"><span class="pre">GPTGenerationParams.setMaxNewTokens()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setNoRepeatNgramSize"><code class="docutils literal notranslate"><span class="pre">GPTGenerationParams.setNoRepeatNgramSize()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setRandomSeed"><code class="docutils literal notranslate"><span class="pre">GPTGenerationParams.setRandomSeed()</span></code></a></li>
 </ul>
 </li>
