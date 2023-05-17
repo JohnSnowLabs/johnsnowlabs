@@ -26,7 +26,7 @@ This model is a Visual NER team aimed to extract the main key points in the summ
 `REGISTRANT`, `ADDRESS`, `PHONE`, `DATE`, `EMPLOYERIDNB`, `EXCHANGE`, `STATE`, `STOCKCLASS`, `STOCKVALUE`, `TRADINGSYMBOL`, `FILENUMBER`
 
 {:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/ocr/VISUAL_DOCUMENT_KEYVALUES_NER/){:.button.button-orange.button-orange-trans.co.button-icon}
+[Live Demo](https://demo.johnsnowlabs.com/finance/VISUALNER_10KFILINGS/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/finance-nlp/90.2.Financial_Visual_NER.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/visualner_10kfilings_en_4.0.0_3.2_1663769328577.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
 
