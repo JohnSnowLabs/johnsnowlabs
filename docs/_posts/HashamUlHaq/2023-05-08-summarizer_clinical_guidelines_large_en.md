@@ -143,7 +143,13 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-Overview of the disease: Breast cancer is the most common type of cancer among women, occurring when the cells in the breast start growing abnormally, forming a lump or mass. It can result in the spread of cancerous cells to other parts of the body. Causes: The exact cause of breast cancer is unknown, but several risk factors can increase the likelihood of developing it, such as a personal or family history, a genetic mutation, exposure to radiation, age, early onset of menstruation or late menopause, obesity, and hormonal factors. Symptoms: Symptoms of breast cancer typically manifest as the disease progresses, including a lump or thickening in the breast or underarm area, changes in the size or shape of the breast, nipple discharge, nipple changes in appearance, and redness or swelling in the breast. Treatment recommendations: Treatment for breast cancer depends on several factors, including the stage of the cancer, the location of the tumor, and the individual's overall health. Common treatment options include surgery, radiation therapy, chemotherapy, hormone therapy, and targeted therapy. Early detection is crucial for successful treatment of breast cancer. Women are advised to routinely perform self-examinations and undergo regular mammogram testing starting at age 40.
+Overview of the disease: Breast cancer is the most common type of cancer among women, occurring when the cells in the breast start growing abnormally, forming a lump or mass. It can result in the spread of cancerous cells to other parts of the body. 
+
+Causes: The exact cause of breast cancer is unknown, but several risk factors can increase the likelihood of developing it, such as a personal or family history, a genetic mutation, exposure to radiation, age, early onset of menstruation or late menopause, obesity, and hormonal factors. 
+
+Symptoms: Symptoms of breast cancer typically manifest as the disease progresses, including a lump or thickening in the breast or underarm area, changes in the size or shape of the breast, nipple discharge, nipple changes in appearance, and redness or swelling in the breast. 
+
+Treatment recommendations: Treatment for breast cancer depends on several factors, including the stage of the cancer, the location of the tumor, and the individual's overall health. Common treatment options include surgery, radiation therapy, chemotherapy, hormone therapy, and targeted therapy. Early detection is crucial for successful treatment of breast cancer. Women are advised to routinely perform self-examinations and undergo regular mammogram testing starting at age 40.
 ```
 
 {:.model-param}
