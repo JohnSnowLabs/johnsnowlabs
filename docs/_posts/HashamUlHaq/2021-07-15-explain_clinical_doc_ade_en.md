@@ -48,6 +48,14 @@ val era_pipeline = new PretrainedPipeline("explain_clinical_doc_ade", "en", "cli
 val result = era_pipeline.fullAnnotate("""Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps""")(0)
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.explain_doc.clinical_ade").predict("""Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps""")
+```
+
 </div>
 
 ## Results

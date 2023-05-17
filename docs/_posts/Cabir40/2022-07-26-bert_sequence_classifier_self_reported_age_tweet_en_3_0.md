@@ -85,6 +85,14 @@ val data = Seq(Array("Who knew I would spend my Saturday mornings at 21 still wa
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.self_reported_age").predict("""My girl, Fancy, just turned 17. She’s getting up there, but she still has the energy of a puppy""")
+```
+
 </div>
 
 ## Results

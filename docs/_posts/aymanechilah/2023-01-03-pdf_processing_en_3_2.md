@@ -29,9 +29,9 @@ In addition to these datasets, Tesseract also uses a technique called adaptive t
 ## Predicted Entities
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/ocr/PDF_TO_TEXT/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/tutorials/Certification_Trainings/2.1.Pdf_processing.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-<button class="button button-orange" disabled>Download</button>
+
 
 ## How to use
 

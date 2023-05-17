@@ -131,6 +131,14 @@ Last week she was also found to have a lung metastasis.").toDS.toDF("text")
 val result = pipeline.fit(data).transform(data)
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.oncology_diseases_wip").predict("""Two years ago, the patient presented with a tumor in her left breast and adenopathies. She was diagnosed with invasive ductal carcinoma.Last week she was also found to have a lung metastasis.""")
+```
+
 </div>
 
 ## Results

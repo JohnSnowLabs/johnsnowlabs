@@ -1,6 +1,6 @@
 ---
 layout: docs
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: Release Testing Utilities
 permalink: /docs/en/jsl/testing-utils
 key: docs-install

@@ -45,6 +45,14 @@ val ner_pipeline = PretrainedPipeline("ner_model_finder","en","clinical/models")
 
 val result = ner_pipeline.annotate("medication")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.ner.model_finder.pipeline").predict("""Put your text here.""")
+```
+
 </div>
 
 ## Results

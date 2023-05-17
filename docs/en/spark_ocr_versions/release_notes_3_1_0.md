@@ -26,16 +26,16 @@ More details please read in [GPU image preprocessing in Spark OCR](https://mediu
 
 #### New Features
 
-* [GPUImageTransformer](ocr_pipeline_components#gpuimagetransformer) with support: scaling, erosion, delation, Otsu and Huang thresholding.
-* Added [display_images](ocr_structures#displayimages) util function for displaying images from Spark DataFrame in Jupyter notebooks.
+* [GPUImageTransformer](/docs/en/ocr_pipeline_components#gpuimagetransformer) with support: scaling, erosion, delation, Otsu and Huang thresholding.
+* Added [display_images](/docs/en/ocr_structures#displayimages) util function for displaying images from Spark DataFrame in Jupyter notebooks.
 
 #### Enhancements
 
-* Improve [display_image](ocr_structures#displayimage) util function.
+* Improve [display_image](/docs/en/ocr_structures#displayimage) util function.
 
 #### Bug fixes
 
-* Fixed issue with extra dependencies in [start](ocr_install#using-start-function) function
+* Fixed issue with extra dependencies in [start](/docs/en/ocr_install#using-start-function) function
 
 #### New notebooks
 

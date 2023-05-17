@@ -71,6 +71,14 @@ val example = Array("Witth the hell of phisical terapy the patient was imbulated
 
 pipeline.fullAnnotate(example)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.spell.clinical.pipeline").predict("""Witth the hell of phisical terapy the patient was imbulated and on postoperative, the impatient tolerating a post curgical soft diet.""")
+```
+
 </div>
 
 

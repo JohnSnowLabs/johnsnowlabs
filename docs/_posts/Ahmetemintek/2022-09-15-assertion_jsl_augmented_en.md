@@ -129,6 +129,14 @@ val result = nlpPipeline.fit(data).transform(data)
 
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.assert.jsl_augmented").predict("""Patient had a headache for the last 2 weeks, and appears anxious when she walks fast. No alopecia noted. She denies pain. Her father is paralyzed and it is a stressor for her. She was bullied by her boss and got antidepressant. We prescribed sleeping pills for her current insomnia""")
+```
+
 </div>
 
 ## Results

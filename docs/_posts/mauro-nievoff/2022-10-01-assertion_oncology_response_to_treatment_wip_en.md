@@ -124,6 +124,14 @@ val data = Seq("""The patient presented no evidence of recurrence.""").toDF("tex
 val result = pipeline.fit(data).transform(data)
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.assert.oncology_response_to_treatment_wip").predict("""The patient presented no evidence of recurrence.""")
+```
+
 </div>
 
 ## Results

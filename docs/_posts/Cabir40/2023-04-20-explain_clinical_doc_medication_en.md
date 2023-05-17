@@ -50,6 +50,14 @@ val text = "The patient is a 30-year-old female with a long history of insulin d
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.explain_dco.clinical_medication.pipeline").predict("""The patient is a 30-year-old female with a long history of insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI.  She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime.""")
+```
+
 </div>
 
 ## Results

@@ -106,6 +106,14 @@ val data = Seq(Array("""El diagnóstico fueron varios. Principal: Neumonía en e
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("es.med_ner.tweet_disease_mention").predict("""El diagnóstico fueron varios. Principal: Neumonía en el pulmón derecho. Sinusitis de caballo, Faringitis aguda e infección de orina, también elevada. Gripe No. Estuvo hablando conmigo, sin exagerar, mas de media hora, dándome ánimo y fuerza y que sabe, porque ha visto""")
+```
+
 </div>
 
 ## Results

@@ -50,6 +50,14 @@ val text = "FINAL REPORT HISTORY : Chest tube leak , to assess for pneumothorax.
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.chexpert.pipeline").predict("""FINAL REPORT HISTORY : Chest tube leak , to assess for pneumothorax. FINDINGS : In comparison with study of ___ , the endotracheal tube and Swan - Ganz catheter have been removed . The left chest tube remains in place and there is no evidence of pneumothorax. Mild atelectatic changes are seen at the left base.""")
+```
+
 </div>
 
 ## Results

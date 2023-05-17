@@ -30,8 +30,8 @@ New functionality for de-identification problem.
 #### New Features
 
 * Support storing for binaryFormat. Added support storing Image and PDF files.
-* Support selectable pdf for [TextToPdf](ocr_pipeline_components#texttopdf) transformer.
-* Added [UpdateTextPosition](ocr_pipeline_components#updatetextposition) transformer.
+* Support selectable pdf for [TextToPdf](/docs/en/ocr_pipeline_components#texttopdf) transformer.
+* Added [UpdateTextPosition](/docs/en/ocr_pipeline_components#updatetextposition) transformer.
 
 
 </div><div class="prev_ver h3-box" markdown="1">

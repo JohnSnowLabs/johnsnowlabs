@@ -142,6 +142,14 @@ val data = Seq("Patient with severe fever and sore throat. He shows no stomach p
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.assert.biobert_l10210").predict("""Patient with severe fever and sore throat. He shows no stomach pain and he maintained on an epidural and PCA for pain control. He also became short of breath with climbing a flight of stairs. After CT, lung tumor located at the right lower lobe. Father with Alzheimer.""")
+```
+
 </div>
 
 

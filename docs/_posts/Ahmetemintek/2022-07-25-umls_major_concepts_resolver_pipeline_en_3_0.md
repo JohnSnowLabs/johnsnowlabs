@@ -45,6 +45,14 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 val pipeline= PretrainedPipeline("umls_major_concepts_resolver_pipeline", "en", "clinical/models")
 val pipeline.annotate("The patient complains of pustules after falling from stairs. She has been advised Arthroscopy by her primary care pyhsician")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.umls_major_concepts_resolver").predict("""The patient complains of pustules after falling from stairs. She has been advised Arthroscopy by her primary care pyhsician""")
+```
+
 </div>
 
 ## Results

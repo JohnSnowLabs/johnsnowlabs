@@ -118,6 +118,14 @@ val data = Seq(test_sentence).toDF(“text”)
 
 Val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.token_bert.supplement").predict("""Excellent!. The state of health improves, nervousness disappears, and night sleep improves. It also promotes hair and nail growth. I recommend :)""")
+```
+
 </div>
 
 

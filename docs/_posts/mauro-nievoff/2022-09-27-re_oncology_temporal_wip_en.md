@@ -145,6 +145,14 @@ val data = Seq("Her breast cancer was diagnosed three years ago, and a bilateral
 val result = pipeline.fit(data).transform(data)
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.oncology_temporal_wip").predict("""Her breast cancer was diagnosed three years ago, and a bilateral mastectomy was performed last month.""")
+```
+
 </div>
 
 ## Results

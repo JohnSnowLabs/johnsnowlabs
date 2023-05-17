@@ -154,6 +154,14 @@ val data = Seq("""In April 2011, she first noticed a lump in her right breast.""
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.oncology_location_biobert_wip").predict("""In April 2011, she first noticed a lump in her right breast.""")
+```
+
 </div>
 
 ## Results

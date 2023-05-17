@@ -47,6 +47,14 @@ val pipeline= new PretrainedPipeline("icd10_icd9_mapping", "en", "clinical/model
 
 val result= pipeline.fullAnnotate('Z833 A0100 A000')
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.icd10_icd9.mapping").predict("""Z833 A0100 A000""")
+```
+
 </div>
 
 ## Results

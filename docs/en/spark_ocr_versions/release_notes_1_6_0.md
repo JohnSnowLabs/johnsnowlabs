@@ -24,9 +24,9 @@ Support parsing data from tables for selectable PDFs.
 
 #### New Features
 
-* Added [PdfToTextTable](ocr_pipeline_components#pdftotexttable) transformer for extract tables from Pdf document per each page.
-* Added [ImageCropper](ocr_pipeline_components#imagecropper) transformer for crop images.
-* Added [ImageBrandsToText](ocr_pipeline_components#imagebrandstotext) transformer for detect text in defined areas.
+* Added [PdfToTextTable](/docs/en/ocr_pipeline_components#pdftotexttable) transformer for extract tables from Pdf document per each page.
+* Added [ImageCropper](/docs/en/ocr_pipeline_components#imagecropper) transformer for crop images.
+* Added [ImageBrandsToText](/docs/en/ocr_pipeline_components#imagebrandstotext) transformer for detect text in defined areas.
 
 
 </div><div class="prev_ver h3-box" markdown="1">

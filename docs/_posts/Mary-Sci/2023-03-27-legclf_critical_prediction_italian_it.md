@@ -1,6 +1,6 @@
 ---
 layout: model
-title: legclf_critical_prediction_italian
+title: Legal Criticality Prediction Classifier (Italian)
 author: John Snow Labs
 name: legclf_critical_prediction_italian
 date: 2023-03-27

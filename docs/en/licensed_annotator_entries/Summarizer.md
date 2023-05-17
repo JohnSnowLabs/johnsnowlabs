@@ -11,7 +11,7 @@ Summarizer annotator that uses a generative deep learning model to create summar
 
 Available models can be found at the [Models Hub](https://nlp.johnsnowlabs.com/models?annotator=MedicalSummarizer).
 
-For more extended examples on document pre-processing see the [Spark NLP Workshop](...)
+For more extended examples on document pre-processing see the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb)
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}

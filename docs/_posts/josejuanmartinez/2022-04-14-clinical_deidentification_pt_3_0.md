@@ -98,6 +98,38 @@ Referido por: Miguel Santos - Avenida dos Aliados, 22 Portugal E-mail: nnavcu@ho
 
 val result = deid_pipeline.annotate(sample)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("pt.deid.clinical").predict("""Dados do paciente.
+Nome: Mauro.
+Apelido: Gonçalves.
+NIF: 368503.
+NISS: 26 63514095.
+Endereço: Calle Miguel Benitez 90.
+CÓDIGO POSTAL: 28016.
+Dados de cuidados.
+Data de nascimento: 03/03/1946.
+País: Portugal.
+Idade: 70 anos Sexo: M.
+Data de admissão: 12/12/2016.
+Doutor: Ignacio Navarro Cuéllar NºCol: 28 28 70973.
+Relatório clínico do paciente: Paciente de 70 anos, mineiro reformado, sem alergias medicamentosas conhecidas, que apresenta como história pessoal: acidente de trabalho antigo com fracturas vertebrais e das costelas; operado por doença de Dupuytren na mão direita e iliofemoral esquerda; Diabetes Mellitus tipo II, hipercolesterolemia e hiperuricemia; alcoolismo activo, fumador de 20 cigarros / dia.
+Foi encaminhado dos cuidados primários porque apresentou uma vez hematúria macroscópica pós-morte e depois microhaematúria persistente, com micturição normal.
+O exame físico mostrou um bom estado geral, com abdómen e genitália normais; o exame rectal foi compatível com adenoma de próstata de grau I/IV.
+A urinálise mostrou 4 glóbulos vermelhos/campo e 0-5 leucócitos/campo; o resto do sedimento estava normal.
+Hemograma normal; a bioquímica mostrou glicemia de 169 mg/dl e triglicéridos de 456 mg/dl; função hepática e renal normal. PSA de 1,16 ng/ml.
+A citologia da urina era repetidamente desconfiada por malignidade.
+A radiografia simples abdominal mostra alterações degenerativas na coluna lombar e calcificações vasculares tanto no hipocôndrio como na pélvis.
+A ecografia urológica revelou cistos corticais simples no rim direito, uma bexiga inalterada com boa capacidade e uma próstata com 30g de peso.
+O IVUS mostrou normofuncionalismo renal bilateral, calcificações na silhueta renal direita e ureteres artrosados com imagens de adição no terço superior de ambos os ureteres, relacionadas com pseudodiverticulose ureteral. O cistograma mostra uma bexiga com boa capacidade, mas com paredes trabeculadas em relação à bexiga de stress. A tomografia computorizada abdominal é normal.
+A cistoscopia revelou a existência de pequenos tumores na bexiga, e a ressecção transuretral foi realizada com o resultado anatomopatológico do carcinoma urotelial superficial da bexiga.
+Referido por: Miguel Santos - Avenida dos Aliados, 22 Portugal E-mail: nnavcu@hotmail.com.
+""")
+```
+
 </div>
 
 ## Results

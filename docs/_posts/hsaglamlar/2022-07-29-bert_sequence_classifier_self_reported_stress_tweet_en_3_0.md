@@ -88,6 +88,14 @@ val data = Seq(Array("Do you feel stressed!",
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.self_reported_stress").predict("""Depression and anxiety will probably end up killing me – I feel so stressed all the time and just feel awful.""")
+```
+
 </div>
 
 ## Results

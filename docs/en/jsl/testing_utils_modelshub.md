@@ -1,6 +1,6 @@
 ---
 layout: docs
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: Utilities for Testing Models & Modelshub Code Snippets
 permalink: /docs/en/jsl/testing-utils-modelshub
 key: docs-install

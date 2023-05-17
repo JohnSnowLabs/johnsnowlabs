@@ -56,6 +56,14 @@ val data = Seq("""The patient was prescribed Amlodopine Vallarta 10-320mg, Evipl
 
 val result = medication_resolver_pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.resolve.medication_transform.pipeline").predict("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.""")
+```
+
 </div>
 
 ## Results

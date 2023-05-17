@@ -89,6 +89,14 @@ val data = Seq(Array(
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.bert_sequence.depression_twitter").predict("""Do what makes you happy, be with who makes you smile, laugh as much as you breathe, and love as long as you live!""")
+```
+
 </div>
 
 ## Results

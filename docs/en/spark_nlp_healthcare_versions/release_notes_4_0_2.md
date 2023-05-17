@@ -41,8 +41,8 @@ sidebar:
 | model name                                                                                                                                                                    | description                                                                             | predicted entities                                         |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------|------------------------------------------------------------|
 |[bert_sequence_classifier_ade_augmented](https://nlp.johnsnowlabs.com/2022/07/27/bert_sequence_classifier_ade_augmented_en_3_0.html)                                           | this model classify tweets reporting ADEs (Adverse Drug Events).                        | `ADE` `noADE`                                              |
-|[bert_sequence_classifier_health_mandates_stance_tweet](https://nlp.johnsnowlabs.com/2022/07/28/bert_sequence_classifier_health_mandates_stance_tweet_en_3_0.html)             | this model classifies stance in tweets about health mandates.                             | `FAVOR` `AGAINST` `NONE`                                   |
-|[bert_sequence_classifier_health_mandates_premise_tweet](https://nlp.johnsnowlabs.com/2022/07/29/bert_sequence_classifier_health_mandates_premise_tweet_en_3_0.html)           | this model classifies premise in tweets about health mandates.                            | `has_premse` `has_no_premse`                               |
+|[bert_sequence_classifier_health_mandates_stance_tweet](https://nlp.johnsnowlabs.com/2022/08/08/bert_sequence_classifier_health_mandates_stance_tweet_en_3_0.html)             | this model classifies stance in tweets about health mandates.                             | `FAVOR` `AGAINST` `NONE`                                   |
+|[bert_sequence_classifier_health_mandates_premise_tweet](https://nlp.johnsnowlabs.com/2022/08/08/bert_sequence_classifier_health_mandates_premise_tweet_en_3_0.html)           | this model classifies premise in tweets about health mandates.                            | `has_premse` `has_no_premse`                               |
 |[bert_sequence_classifier_treatement_changes_sentiment_tweet](https://nlp.johnsnowlabs.com/2022/07/28/bert_sequence_classifier_treatement_changes_sentiment_tweet_en_3_0.html) | this model classifies treatment changes reviews in tweets as `negative` and `positive`.  | `positive` `negative`                                      |
 |[bert_sequence_classifier_drug_reviews_webmd](https://nlp.johnsnowlabs.com/2022/07/28/bert_sequence_classifier_drug_reviews_webmd_en_3_0.html)                                 | this model classifies drug reviews from WebMD as `negative` and `positive`.               | `positive` `negative`                                      |
 |[bert_sequence_classifier_self_reported_age_tweet](https://nlp.johnsnowlabs.com/2022/07/26/bert_sequence_classifier_self_reported_age_tweet_en_3_0.html)                       | this model classifies if there is a self-reported age in social media data.                   | `self_report_age` `no_report`                              |
@@ -120,7 +120,7 @@ We are releasing a medication NER pretrained pipeline to extract medications in 
 
 + `ner_medication_pipeline`: This pretrained pipeline can detect medication entities and label them as `DRUG` in clinical text.
 
-See [Models Hub Page](https://nlp.johnsnowlabs.com/2022/07/26/ner_medication_pipeline_en_3_0.html) for more details.
+See [Models Hub Page](https://nlp.johnsnowlabs.com/2022/07/28/ner_medication_pipeline_en_3_0.html) for more details.
 
 *Example* :
 

@@ -87,6 +87,14 @@ val data = Seq("The patient is a 29-year-old female with a history of renal tran
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.bert_sequence.sdoh.environment_status").predict("""He was deemed Child's B in 2156-5-17 with ongoing ethanol abuse, admitted to Intensive Care Unit due to acute decompensation of chronic liver disease due to alcoholic hepatitis and Escherichia coli sepsis. after being hit in the head with the a bottle and dropping to the floor in the apartment. They had Trauma work him up including a head computerized tomography scan which was negative. He had abdominal pain for approximately one month with increasing abdominal girth, was noted to be febrile to 100 degrees on presentation and was tachycardiac 130, stable blood pressures. He was noted to have distended abdomen with diffuse tenderness computerized tomography scan of the abdomen which showed ascites and large nodule of the liver, splenomegaly, paraesophageal varices and loops of thickened bowel.""")
+```
+
 </div>
 
 ## Results
