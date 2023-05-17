@@ -4,7 +4,7 @@ comment: no
 header: true
 seotitle: Annotation Lab | John Snow Labs
 title: Video Tutorials
-permalink: /docs/en/alab/video_tutorials
+permalink: /docs/en/alab/tutorials
 key: docs-training
 modify_date: "2021-01-26"
 use_language_switcher: "Python-Scala"
