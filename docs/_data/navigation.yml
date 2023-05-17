@@ -145,12 +145,8 @@ annotation-lab:
         url: /docs/en/alab/healthcare
       - title: Security and Privacy
         url: /docs/en/alab/security
-      - subtitle: Tutorials
-        children:
-          - title: Video Tutorials
-            url: /docs/en/alab/video_tutorials
-          - title: Step-by-Step Tutorials
-            url: /docs/en/alab/step_by_step_tutorials
+      - title: Video Tutorials
+        url: /docs/en/alab/tutorials
       - title: FAQ
         url: /docs/en/alab/troubleshooting
       - title: Release Notes
