@@ -52,7 +52,6 @@ val result = pipeline.fullAnnotate(text)
 ```
 
 
-
 {:.nlu-block}
 ```python
 import nlu
