@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Given a clause classified as `RETURN_OF_CONF_INFO` using the `legmulticlf_mnda_sections_paragraph_other` classifier, you can subclassify the sentences as `PERPETUITY` or `OTHER` from it using the `legclf_nda_perpetuity` model. It has been trained with the SOTA approach
+Given a clause classified as `RETURN_OF_CONF_INFO` using the `legmulticlf_mnda_sections_paragraph_other` classifier, you can subclassify the sentences as `PERPETUITY` or `OTHER` from it using the `legclf_nda_perpetuity_bert` model. It has been trained with the SOTA approach
 
 ## Predicted Entities
 
