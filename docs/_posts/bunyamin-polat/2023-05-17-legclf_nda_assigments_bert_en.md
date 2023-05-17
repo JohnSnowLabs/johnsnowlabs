@@ -37,6 +37,7 @@ Given a clause classified as `ASSIGNMENT ` using the `legmulticlf_mnda_sections_
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
