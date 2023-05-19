@@ -22,7 +22,7 @@ sidebar:
 We are thrilled to unveil the latest set of upgrades and advancements for Spark NLP for Healthcare. This edition brings to the fore a host of remarkable enhancements and updates, which are as follows:
 
 + The medical QA models now incorporates Flan-T5 models, significantly expanding its capacity.
-+ We introduce a newly finetuned biogpt-chat-jsl model, fine-tuned with clinical guidelines to produce more precise descriptions when prompted.
++ We introduce a newly finetuned biogpt-chat-jsl model, fine-tuned with clinical conditions to produce more precise descriptions when prompted.
 + The brand-new medical summarizer model is designed to provide summarizations of clinical guidelines under predefined categories such as causes, symptoms, and more. 
 + Text summarization method utilizing a map-reduce approach for section-wise summarization.
 + New chunk mapper model to map ICD10CM codes with corresponding causes and claim analysis codes according to CDC guidelines.
@@ -71,9 +71,9 @@ question = "How is transgastric endoscopic performed?"
 </div><div class="h3-box" markdown="1">
 
 
-#### Introducing a Newly Finetuned biogpt-chat-jsl Model, based on Clinical Guidelines.
+#### Introducing a Newly Finetuned biogpt-chat-jsl Model, based on Clinical Conditions.
 
-We are excited to present our newly fine-tuned biogpt-chat-jsl model. This model, known as biogpt_chat_jsl_conditions, is based on the robust BioGPT architecture and has been meticulously fine-tuned with questions pertaining to a wide array of medical conditions.
+We are excited to present our newly fine-tuned biogpt-chat-jsl model. This model, known as `biogpt_chat_jsl_conditions`, is based on the robust BioGPT architecture and has been meticulously fine-tuned with questions pertaining to a wide array of medical conditions.
 
 Our team has concentrated on emphasizing the Q&A aspect, making it less conversational but highly focused on delivering accurate and insightful answers. This enhanced focus on question answering ensures that users can extract critical and relevant information quickly and accurately. This strategic fine-tuning with clinical guidelines strengthens the model's ability to provide superior results in the realm of medical NLP. 
 
@@ -91,9 +91,9 @@ text = "What are the potential causes and risk factors for developing cardiovasc
 *Result*:
 
 ```bash
-[Cardiovascular disease ( CVD ) is a general term for conditions affecting the heart or blood vessels. It can be caused
-by a variety of factors, including smoking, high blood pressure, diabetes, high cholesterol, and obesity. Certain
-medical conditions, such as chronic kidney disease, can also increase the risk of developing CVD.]
+[Cardiovascular disease ( CVD ) is a general term for conditions affecting the heart or blood vessels. 
+It can be caused by a variety of factors, including smoking, high blood pressure, diabetes, high cholesterol, and obesity. 
+Certain medical conditions, such as chronic kidney disease, can also increase the risk of developing CVD.]
 ```
 
 
@@ -102,7 +102,7 @@ medical conditions, such as chronic kidney disease, can also increase the risk o
 
 #### The Brand-New Medical Summarizer Model Designed To Provide Summarizations Of Clinical Guidelines Under Predefined Categories Such As Causes, Symptoms, And More.
 
-We are pleased to introduce the summarizer_clinical_guidelines_large model as part of our latest enhancements. This innovative Medical Summarizer Model is adept at providing succinct summarizations of clinical guidelines. At present, the model is equipped to handle guidelines for Asthma and Breast Cancer, though we plan to expand this repertoire in future iterations.
+We are pleased to introduce the `summarizer_clinical_guidelines_large` model as part of our latest enhancements. This innovative Medical Summarizer Model is adept at providing succinct summarizations of clinical guidelines. At present, the model is equipped to handle guidelines for Asthma and Breast Cancer, though we plan to expand this repertoire in future iterations.
 
 One of the notable features of this model is its ability to neatly categorize summarizations into four distinct sections: Overview, Causes, Symptoms, and Treatments. This systematic segregation facilitates ease of understanding and aids in extracting specific information more efficiently.
 
