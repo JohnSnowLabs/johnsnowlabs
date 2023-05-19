@@ -22,8 +22,8 @@ sidebar:
 We are thrilled to unveil the latest set of upgrades and advancements for Spark NLP for Healthcare. This edition brings to the fore a host of remarkable enhancements and updates, which are as follows:
 
 + The medical QA models now incorporates Flan-T5 models, significantly expanding its capacity.
-+ We introduce a newly finetuned biogpt-chat-jsl model, fine-tuned with clinical guidelines to produce more precise descriptions when prompted.
-+ The brand-new medical summarizer model is designed to provide summarizations of clinical conditions under predefined categories such as causes, symptoms, and more. 
++ We introduce a newly finetuned biogpt-chat-jsl model, fine-tuned with clinical conditions to produce more precise descriptions when prompted.
++ The brand-new medical summarizer model is designed to provide summarizations of clinical guidelines under predefined categories such as causes, symptoms, and more. 
 + Text summarization method utilizing a map-reduce approach for section-wise summarization.
 + New chunk mapper model to map ICD10CM codes with corresponding causes and claim analysis codes according to CDC guidelines.
 + The PHI obfuscation (De-identification module) now offers the ability to customize the casings of fake entities for each entity type.

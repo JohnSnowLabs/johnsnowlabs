@@ -21,8 +21,8 @@ sidebar:
 We are thrilled to unveil the latest set of upgrades and advancements for Spark NLP for Healthcare. This edition brings to the fore a host of remarkable enhancements and updates, which are as follows:
 
 + The medical QA models now incorporates Flan-T5 models, significantly expanding its capacity.
-+ We introduce a newly finetuned biogpt-chat-jsl model, fine-tuned with clinical guidelines to produce more precise descriptions when prompted.
-+ The brand-new medical summarizer model is designed to provide summarizations of clinical conditions under predefined categories such as causes, symptoms, and more. 
++ We introduce a newly finetuned biogpt-chat-jsl model, fine-tuned with clinical conditions to produce more precise descriptions when prompted.
++ The brand-new medical summarizer model is designed to provide summarizations of clinical guidelines under predefined categories such as causes, symptoms, and more. 
 + Text summarization method utilizing a map-reduce approach for section-wise summarization.
 + New chunk mapper model to map ICD10CM codes with corresponding causes and claim analysis codes according to CDC guidelines.
 + The PHI obfuscation (De-identification module) now offers the ability to customize the casings of fake entities for each entity type.
@@ -101,7 +101,7 @@ medical conditions, such as chronic kidney disease, can also increase the risk o
 
 #### The Brand-New Medical Summarizer Model Designed To Provide Summarizations Of Clinical Guidelines Under Predefined Categories Such As Causes, Symptoms, And More.
 
-We are pleased to introduce the summarizer_clinical_guidelines_large model as part of our latest enhancements. This innovative Medical Summarizer Model is adept at providing succinct summarizations of clinical guidelines. At present, the model is equipped to handle guidelines for Asthma and Breast Cancer, though we plan to expand this repertoire in future iterations.
+We are pleased to introduce the `summarizer_clinical_guidelines_large` model as part of our latest enhancements. This innovative Medical Summarizer Model is adept at providing succinct summarizations of clinical guidelines. At present, the model is equipped to handle guidelines for Asthma and Breast Cancer, though we plan to expand this repertoire in future iterations.
 
 One of the notable features of this model is its ability to neatly categorize summarizations into four distinct sections: Overview, Causes, Symptoms, and Treatments. This systematic segregation facilitates ease of understanding and aids in extracting specific information more efficiently.
 
