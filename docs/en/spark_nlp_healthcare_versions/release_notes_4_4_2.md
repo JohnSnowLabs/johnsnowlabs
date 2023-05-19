@@ -91,9 +91,9 @@ text = "What are the potential causes and risk factors for developing cardiovasc
 *Result*:
 
 ```bash
-[Cardiovascular disease ( CVD ) is a general term for conditions affecting the heart or blood vessels. It can be caused
-by a variety of factors, including smoking, high blood pressure, diabetes, high cholesterol, and obesity. Certain
-medical conditions, such as chronic kidney disease, can also increase the risk of developing CVD.]
+[Cardiovascular disease ( CVD ) is a general term for conditions affecting the heart or blood vessels. 
+It can be caused by a variety of factors, including smoking, high blood pressure, diabetes, high cholesterol, and obesity. 
+Certain medical conditions, such as chronic kidney disease, can also increase the risk of developing CVD.]
 ```
 
 
@@ -102,7 +102,7 @@ medical conditions, such as chronic kidney disease, can also increase the risk o
 
 #### The Brand-New Medical Summarizer Model Designed To Provide Summarizations Of Clinical Guidelines Under Predefined Categories Such As Causes, Symptoms, And More.
 
-We are pleased to introduce the summarizer_clinical_guidelines_large model as part of our latest enhancements. This innovative Medical Summarizer Model is adept at providing succinct summarizations of clinical guidelines. At present, the model is equipped to handle guidelines for Asthma and Breast Cancer, though we plan to expand this repertoire in future iterations.
+We are pleased to introduce the `summarizer_clinical_guidelines_large` model as part of our latest enhancements. This innovative Medical Summarizer Model is adept at providing succinct summarizations of clinical guidelines. At present, the model is equipped to handle guidelines for Asthma and Breast Cancer, though we plan to expand this repertoire in future iterations.
 
 One of the notable features of this model is its ability to neatly categorize summarizations into four distinct sections: Overview, Causes, Symptoms, and Treatments. This systematic segregation facilitates ease of understanding and aids in extracting specific information more efficiently.
 

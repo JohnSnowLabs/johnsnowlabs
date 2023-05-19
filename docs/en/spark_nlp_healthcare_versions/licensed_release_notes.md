@@ -72,7 +72,7 @@ question = "How is transgastric endoscopic performed?"
 
 #### Introducing a Newly Finetuned biogpt-chat-jsl Model, based on Clinical Conditions.
 
-We are excited to present our newly fine-tuned biogpt-chat-jsl model. This model, known as biogpt_chat_jsl_conditions, is based on the robust BioGPT architecture and has been meticulously fine-tuned with questions pertaining to a wide array of medical conditions.
+We are excited to present our newly fine-tuned biogpt-chat-jsl model. This model, known as `biogpt_chat_jsl_conditions`, is based on the robust BioGPT architecture and has been meticulously fine-tuned with questions pertaining to a wide array of medical conditions.
 
 Our team has concentrated on emphasizing the Q&A aspect, making it less conversational but highly focused on delivering accurate and insightful answers. This enhanced focus on question answering ensures that users can extract critical and relevant information quickly and accurately. This strategic fine-tuning with clinical guidelines strengthens the model's ability to provide superior results in the realm of medical NLP. 
 
@@ -90,9 +90,8 @@ text = "What are the potential causes and risk factors for developing cardiovasc
 *Result*:
 
 ```bash
-[Cardiovascular disease ( CVD ) is a general term for conditions affecting the heart or blood vessels. It can be caused
-by a variety of factors, including smoking, high blood pressure, diabetes, high cholesterol, and obesity. Certain
-medical conditions, such as chronic kidney disease, can also increase the risk of developing CVD.]
+[Cardiovascular disease ( CVD ) is a general term for conditions affecting the heart or blood vessels. 
+It can be caused by a variety of factors, including smoking, high blood pressure, diabetes, high cholesterol, and obesity. Certain medical conditions, such as chronic kidney disease, can also increase the risk of developing CVD.]
 ```
 
 
