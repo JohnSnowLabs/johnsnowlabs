@@ -29,8 +29,8 @@ Note: ‘wip’ suffix indicates that the model development is work-in-progress 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/VOICE_OF_THE_PATIENTS/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_wip_embeddings_clinical_large_en_4.4.2_3.0_1684511324500.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_wip_embeddings_clinical_large_en_4.4.2_3.0_1684511324500.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_wip_emb_clinical_large_en_4.4.2_3.0_1684511324500.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_wip_emb_clinical_large_en_4.4.2_3.0_1684511324500.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
