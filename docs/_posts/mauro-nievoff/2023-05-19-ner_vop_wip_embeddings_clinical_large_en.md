@@ -2,7 +2,7 @@
 layout: model
 title: Voice of the Patients (embeddings_clinical_large)
 author: John Snow Labs
-name: ner_vop_wip_embeddings_clinical_large
+name: ner_vop_wip_emb_clinical_large
 date: 2023-05-19
 tags: [licensed, clinical, en, ner, vop, patient]
 task: Named Entity Recognition
@@ -55,7 +55,7 @@ word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical_large", 
     .setInputCols(["sentence", "token"]) \
     .setOutputCol("embeddings")                
 
-ner = MedicalNerModel.pretrained("ner_vop_wip_embeddings_clinical_large", "en", "clinical/models") \
+ner = MedicalNerModel.pretrained("ner_vop_wip_emb_clinical_large", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("ner")
 
@@ -90,7 +90,7 @@ val word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical_larg
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")                
     
-val ner = MedicalNerModel.pretrained("ner_vop_wip_embeddings_clinical_large", "en", "clinical/models")
+val ner = MedicalNerModel.pretrained("ner_vop_wip_emb_clinical_large", "en", "clinical/models")
     .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
     
@@ -180,7 +180,7 @@ val result = pipeline.fit(data).transform(data)
 
 {:.table-model}
 |---|---|
-|Model Name:|ner_vop_wip_embeddings_clinical_large|
+|Model Name:|ner_vop_wip_emb_clinical_large|
 |Compatibility:|Healthcare NLP 4.4.2+|
 |License:|Licensed|
 |Edition:|Official|
