@@ -78,7 +78,7 @@ icd10_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm
 
 nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, icd10_resolver])
 
-data_ner = spark.createDataFrame([["A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with acute hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection."]]).toDF("text")
+data_ner = spark.createDataFrame([["A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection."]]).toDF("text")
 
 results = nlpPipeline.fit(data_ner).transform(data_ner)
 ```
@@ -125,7 +125,7 @@ val icd10_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, icd10_resolver))
 
-val data = Seq("A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with acute hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.").toDF("text")
+val data = Seq("A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection.").toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
@@ -145,7 +145,6 @@ nlu.load("en.resolve.icd10cm.augmented").predict("""A 28-year-old female with a 
 +-------------------------------------+-------+------------+-------------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------+
 |        gestational diabetes mellitus|PROBLEM|       O24.4|gestational diabetes mellitus [gestational diabetes mellitus], gestational diabetes mellitus [gestational... |O24.4, O24.41, O24.43, Z86.32, Z87.5, O24.31, O24.11, O24.1, O24.81...|
 |subsequent type two diabetes mellitus|PROBLEM|      O24.11|pre-existing type 2 diabetes mellitus [pre-existing type 2 diabetes mellitus], disorder associated with t... |O24.11, E11.8, E11, E13.9, E11.9, E11.3, E11.44, Z86.3, Z86.39, E11...|
-|                   an acute hepatitis|PROBLEM|         B15|acute hepatitis a [acute hepatitis a], acute hepatitis [acute hepatitis], acute infectious hepatitis[acu...  |B15, K72.0, B17.9, B17.2, Z03.89, B15.9, K75.2, K71.2, B19.9, B16, ...|
 |                              obesity|PROBLEM|       E66.9|obesity [obesity], abdominal obesity [abdominal obesity], obese [obese], central obesity [central obesity... |E66.9, E66.8, Z68.41, Q13.0, E66, E66.01, Z86.39, E34.9, H35.50, Z8...|
 |                    a body mass index|PROBLEM|      Z68.41|finding of body mass index [finding of body mass index], observation of body mass index [observation of b... |Z68.41, E66.9, R22.9, Z68.1, R22.3, R22.1, Z68, R22.2, R22.0, R41.8...|
 |                             polyuria|PROBLEM|         R35|polyuria [polyuria], nocturnal polyuria [nocturnal polyuria], polyuric state [polyuric state], polyuric ...  |R35, R35.81, R35.8, E23.2, R35.89, R31, R35.0, R82.99, N40.1, E72.3...|
