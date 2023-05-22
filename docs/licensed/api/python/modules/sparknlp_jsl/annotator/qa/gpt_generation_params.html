@@ -339,6 +339,10 @@ document.write(`
                          <span class="s2">&quot;Maximum number of new tokens to be generated&quot;</span><span class="p">,</span>
                          <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="GPTGenerationParams.noRepeatNgramSize"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/qa/gpt_generation_params/index.html#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.noRepeatNgramSize">[docs]</a>    <span class="n">noRepeatNgramSize</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;noRepeatNgramSize&quot;</span><span class="p">,</span>
+                              <span class="s2">&quot;If set to int &gt; 0, all ngrams of that size can only occur once&quot;</span><span class="p">,</span>
+                              <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="GPTGenerationParams.setIgnoreTokenIds"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/qa/gpt_generation_params/index.html#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setIgnoreTokenIds">[docs]</a>    <span class="k">def</span> <span class="nf">setIgnoreTokenIds</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;A list of token ids which are ignored in the decoder&#39;s output.</span>
 
@@ -389,6 +393,18 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">maxNewTokens</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="GPTGenerationParams.setNoRepeatNgramSize"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/qa/gpt_generation_params/index.html#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setNoRepeatNgramSize">[docs]</a>    <span class="k">def</span> <span class="nf">setNoRepeatNgramSize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets size of n-grams that can only occur once.</span>
+
+<span class="sd">        If set to int &gt; 0, all ngrams of that size can only occur once.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : int</span>
+<span class="sd">            N-gram size can only occur once</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">noRepeatNgramSize</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="GPTGenerationParams.setRandomSeed"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/qa/gpt_generation_params/index.html#sparknlp_jsl.annotator.qa.gpt_generation_params.GPTGenerationParams.setRandomSeed">[docs]</a>    <span class="k">def</span> <span class="nf">setRandomSeed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seed</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets random seed.</span>
 
@@ -409,7 +425,8 @@ document.write(`
             <span class="n">doSample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">topK</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
             <span class="n">ignoreTokenIds</span><span class="o">=</span><span class="p">[],</span>
-            <span class="n">maxNewTokens</span><span class="o">=</span><span class="mi">30</span></div>
+            <span class="n">maxNewTokens</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+            <span class="n">noRepeatNgramSize</span><span class="o">=</span><span class="mi">0</span></div>
         <span class="p">)</span>
 </pre></div>
 
