@@ -2,8 +2,9 @@
 layout: landing
 comment: no
 title: 'John Snow Labs <span>State of the Art Natural Language Processing in Python</span>'
-excerpt: Unified access to 15,000+ free NLP models with one line of code, open-source Responsible & Explainable NLP, and enterprise libraries for Healthcare, Legal, Finance, and Visual NLP.
-seotitle: John Snow Labs - State of the Art NLP in Python
+excerpt: Spark NLP is Unified access to 15,000+ free models with one line of code, open-source Responsible & Explainable NLP, and enterprise libraries for Healthcare, Legal, Finance, and Visual NLP.
+seotitle: Spark NLP – State of the Art NLP in Python, Java, and Scala – John Snow Labs.
+seotitle: Spark NLP – State of the Art NLP in Python, Java, and Scala – John Snow Labs.
 permalink: /
 header: true
 article_header:
