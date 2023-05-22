@@ -335,7 +335,15 @@ article_header:
                     {%- if _section.tab-body -%}
                       {%- for _tab-body in _section.tab-body -%}
                         <div class="tabs-item">
-                          <h3 class="h3_title blue">{{ _tab-body.text }}</h3>
+                          <h3 class="h3_title blue">
+                            {% if _tab-body.link %}
+                              <a target="_blank" href="{{ _tab-body.link }}">
+                            {% endif %}
+                                {{ _tab-body.text }}
+                            {% if _tab-body.link %}
+                              </a>
+                            {% endif %}
+                          </h3>
                           <div class="ecosystem-description">{{ _tab-body.description }}</div>
                           <figure><img src="{{ _tab-body.img }}" alt=""></figure>
 
