@@ -701,6 +701,17 @@ document.write(`
         <span class="nb">super</span><span class="p">(</span><span class="n">_MedicalQuestionAnsweringLoader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="s2">&quot;com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering.loadSavedModel&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">jspark</span><span class="p">)</span>
 
+<span class="k">class</span> <span class="nc">_MedicalQuestionAnsweringConverter</span><span class="p">(</span><span class="n">ExtendedJavaWrapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Converter class for the MedicalQuestionAnswering annotator.</span>
+
+<span class="sd">    This class is used to convert a MedicalTextGenerator to MedicalQuestionAnswering</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">jspark</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_MedicalQuestionAnsweringConverter</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="s2">&quot;com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering.loadMedicalTextGenerator&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">jspark</span><span class="p">)</span>
+
+
+
 <span class="k">class</span> <span class="nc">_MedicalSummarizerLoader</span><span class="p">(</span><span class="n">ExtendedJavaWrapper</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Loader class for the MedicalSummarizer annotator.</span>
 
