@@ -145,7 +145,7 @@ results.select("chunk").show(truncate = false)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
-[ChunkConverter](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/chunk_converter/index.html#sparknlp_jsl.annotator.chunker.chunk_converter.ChunkConverter)
+[ChunkConverter](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/chunk_converter/index.html#sparknlp_jsl.annotator.chunker.chunk_converter.ChunkConverter.html)
 {%- endcapture -%}
 
 

@@ -172,10 +172,10 @@ These newly introduced parameters notably amplify the functionality of the annot
 
 We are introducing the following parameters:
 
-`setRefineSummary`: Activate this for a more refined summarization, albeit at a slightly increased computational cost.
-`setRefineSummaryTargetLength`: Set your desired summary length in tokens (separated by whitespace). This feature is only operative when setRefineSummary is activated.
-`setRefineChunkSize`: Define the size of refined chunks according to your preference. This size should match the LLM context window size in tokens. This feature is only operative when `setRefineSummary` is enabled.
-`setRefineMaxAttempts`: Set the maximum number of attempts for re-summarizing chunks that exceed the `setRefineSummaryTargetLength` before discontinuation. This feature is only operative when setRefineSummary is enabled.
+- `setRefineSummary`: Activate this for a more refined summarization, albeit at a slightly increased computational cost.
+- `setRefineSummaryTargetLength`: Set your desired summary length in tokens (separated by whitespace). This feature is only operative when setRefineSummary is activated.
+- `setRefineChunkSize`: Define the size of refined chunks according to your preference. This size should match the LLM context window size in tokens. This feature is only operative when `setRefineSummary` is enabled.
+- `setRefineMaxAttempts`: Set the maximum number of attempts for re-summarizing chunks that exceed the `setRefineSummaryTargetLength` before discontinuation. This feature is only operative when setRefineSummary is enabled.
 
 These advancements in the MedicalSummarizer annotator underline our unwavering commitment to delivering cutting-edge tools that enable healthcare professionals and researchers to conduct more efficient and precise medical text analysis.
 
