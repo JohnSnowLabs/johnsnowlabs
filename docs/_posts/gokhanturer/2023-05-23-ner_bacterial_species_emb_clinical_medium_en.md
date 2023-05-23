@@ -36,6 +36,7 @@ Detect different types of species of bacteria in text using pretrained NER model
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -92,7 +93,7 @@ val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_large"
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
-val anatomy_ner_model = MedicalNerModel.pretrained('ner_bacterial_species_emb_clinical_medium' "en", "clinical/models")
+val anatomy_ner_model = MedicalNerModel.pretrained("ner_bacterial_species_emb_clinical_medium", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("anatomy_ner")
 
