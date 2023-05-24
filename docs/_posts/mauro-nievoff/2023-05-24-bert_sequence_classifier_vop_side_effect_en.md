@@ -70,7 +70,7 @@ val documenter = new DocumentAssembler()
     .setOutputCol("document")
 
 val tokenizer = new Tokenizer()
-    .setInputCols("sentences")
+    .setInputCols("document")
     .setOutputCol("token")
 
 val sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_vop_side_effect", "en", "clinical/models")
@@ -124,12 +124,10 @@ Hello,I”m 20 year old girl. I”m diagnosed with hyperthyroid 1 month ago. I w
 ## Benchmarking
 
 ```bash
-              precision    recall  f1-score   support
-
+         col  precision    recall  f1-score   support
        False   0.881423  0.822878  0.851145       271
         True   0.717647  0.802632  0.757764       152
-
     accuracy   -         -         0.815603       423
-   macro avg   0.799535  0.812755  0.804455       423
-weighted avg   0.822572  0.815603  0.817590       423
+   macro-avg   0.799535  0.812755  0.804455       423
+weighted-avg   0.822572  0.815603  0.817590       423
 ```
