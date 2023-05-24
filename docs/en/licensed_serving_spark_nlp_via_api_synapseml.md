@@ -17,7 +17,7 @@ This is the first article of the “Serving Spark NLP via API” series, showcas
 
 Don’t forget to check the other articles in this series, namely:
 
-* How to server Spark NLP using [FastAPI](https://fastapi.tiangolo.com/) and [LightPipelines](https://medium.com/spark-nlp/spark-nlp-101-lightpipeline-a544e93f20f1), available [here](https://nlp.johnsnowlabs.com/docs/en/serving_spark_nlp_via_api_fastapi).
+* How to server Spark NLP using [FastAPI](https://fastapi.tiangolo.com/) and [LightPipelines](https://medium.com/spark-nlp/spark-nlp-101-lightpipeline-a544e93f20f1), available [here](https://nlp.johnsnowlabs.com/docs/en/licensed_serving_spark_nlp_via_api_fastapi).
 
 * How to serve Spark NLP using [Databricks](https://databricks.com/) Jobs and [MLFlow](https://mlflow.org/) Rest APIs, available [here](https://nlp.johnsnowlabs.com/docs/en/serving_spark_nlp_via_api_databricks_mlflow).
 

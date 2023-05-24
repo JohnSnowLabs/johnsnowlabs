@@ -82,6 +82,14 @@ val data = Seq(Array("bis vor ein paar wochen hatte ich auch manchmal migräne, 
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("de.classify.bert_sequence.health_mentions_gbert").predict("""bis vor ein paar wochen hatte ich auch manchmal migräne, aber aktuell habe ich keine probleme""")
+```
+
 </div>
 
 ## Results

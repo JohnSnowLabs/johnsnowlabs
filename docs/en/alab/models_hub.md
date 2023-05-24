@@ -13,7 +13,7 @@ sidebar:
   nav: annotation-lab
 ---
 
-Annotation Lab offers tight integration with [NLP Models Hub](https://nlp.johnsnowlabs.com/models). Any compatible model and embeddings can be downloaded and made available to the Annotation Lab users for pre-annotations either from within the application or via manual upload.
+Annotation Lab offers tight integration with [NLP Models](https://nlp.johnsnowlabs.com/models). Any compatible model and embeddings can be downloaded and made available to the Annotation Lab users for pre-annotations either from within the application or via manual upload.
 
 NLP Models HUB page is accessible from the left navigation panel by users in the _Admins_ group.
 

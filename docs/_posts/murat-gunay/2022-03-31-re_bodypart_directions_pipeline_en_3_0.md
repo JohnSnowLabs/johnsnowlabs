@@ -55,6 +55,14 @@ val pipeline = new PretrainedPipeline("re_bodypart_directions_pipeline", "en", "
 
 pipeline.fullAnnotate("MRI demonstrated infarction in the upper brain stem , left cerebellum and  right basil ganglia")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.bodypart_directions.pipeline").predict("""MRI demonstrated infarction in the upper brain stem , left cerebellum and  right basil ganglia""")
+```
+
 </div>
 
 

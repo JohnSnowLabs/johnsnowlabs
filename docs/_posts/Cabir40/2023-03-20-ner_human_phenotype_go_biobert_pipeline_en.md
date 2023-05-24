@@ -50,6 +50,14 @@ val text = "Another disease that shares two of the tumor components of CT, namel
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.phenotype_go_biobert.pipeline").predict("""Another disease that shares two of the tumor components of CT, namely GIST and tricarboxylic acid cycle is the Carney-Stratakis syndrome (CSS) or dyad.""")
+```
+
 </div>
 
 ## Results

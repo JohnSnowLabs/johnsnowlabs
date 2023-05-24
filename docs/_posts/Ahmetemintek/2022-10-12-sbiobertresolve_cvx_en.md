@@ -77,6 +77,14 @@ val light_model = LightPipeline(cvx_pipelineModel)
 
 val result = light_model.fullAnnotate(Array("Sinovac", "Moderna", "BIOTHRAX"))
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.resolve.cvx").predict("""Put your text here.""")
+```
+
 </div>
 
 ## Results

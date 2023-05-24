@@ -113,7 +113,6 @@ result.show(truncate = false)
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
-approach=approach
 model_description=model_description
 model_input_anno=model_input_anno
 model_output_anno=model_output_anno

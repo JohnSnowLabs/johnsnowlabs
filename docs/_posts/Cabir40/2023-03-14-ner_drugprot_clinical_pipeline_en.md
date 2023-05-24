@@ -50,6 +50,14 @@ val text = "Anabolic effects of clenbuterol on skeletal muscle are mediated by b
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.clinical_drugprot.pipeline").predict("""Anabolic effects of clenbuterol on skeletal muscle are mediated by beta 2-adrenoceptor activation.""")
+```
+
 </div>
 
 ## Results

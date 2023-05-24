@@ -89,6 +89,14 @@ val data = Seq("00322").toDS.toDF("text")
 
 val result= pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.icd9_icd10").predict("""Put your text here.""")
+```
+
 </div>
 
 ## Results

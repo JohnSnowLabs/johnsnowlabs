@@ -133,6 +133,14 @@ val data = Seq("A 35-year-old male with a history of primary leiomyosarcoma of n
 
 val result = pipeline.fit(data).transform(data) 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.icd10cm").predict("""A 35-year-old male with a history of primary leiomyosarcoma of neck, gestational diabetes mellitus diagnosed eight years prior to presentation and presented with a one-week history of polydipsia, poor appetite, and vomiting.""")
+```
+
 </div>
 
 ## Results

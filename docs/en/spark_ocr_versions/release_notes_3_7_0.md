@@ -24,21 +24,21 @@ Improve table recognition and render OCR results to the PDF with original image
 
 #### New Features
 
-* Added [ImageToTextPdf](ocr_pipeline_components#imagetotextpdf) transformer for storing recognized text to the searchable
+* Added [ImageToTextPdf](/docs/en/ocr_pipeline_components#imagetotextpdf) transformer for storing recognized text to the searchable
 PDF with original image
-* Added [PdfAssembler](ocr_pipeline_components#pdfassembler) for assembling multipage PDF document from single page PDF
+* Added [PdfAssembler](/docs/en/ocr_pipeline_components#pdfassembler) for assembling multipage PDF document from single page PDF
 documents
 
 
 #### Enhancements
 
 * Added support dbfs for store models. This allow to use models on Databricks.
-* Improved [ImageTableCellDetector](ocr_table_recognition#imagetablecelldetector) algorithms
-* Added params for tuning [ImageTableCellDetector](ocr_table_recognition#imagetablecelldetector) algorithms
-* Added possibility to render detected lines to the original image in [ImageTableCellDetector](ocr_table_recognition#imagetablecelldetector)
-* Added support to store recognized results to CSV in [ImageCellsToTextTable](ocr_table_recognition#imagecellstotexttable)
-* Added [display_table](ocr_structures#displaytable) and [display_tables](ocr_structures#displaytables) functions
-* Added [display_pdf_file](ocr_structures#displaypdffile) function for displaying pdf in embedded pdf viewer
+* Improved [ImageTableCellDetector](/docs/en/ocr_table_recognition#imagetablecelldetector) algorithms
+* Added params for tuning [ImageTableCellDetector](/docs/en/ocr_table_recognition#imagetablecelldetector) algorithms
+* Added possibility to render detected lines to the original image in [ImageTableCellDetector](/docs/en/ocr_table_recognition#imagetablecelldetector)
+* Added support to store recognized results to CSV in [ImageCellsToTextTable](/docs/en/ocr_table_recognition#imagecellstotexttable)
+* Added [display_table](/docs/en/ocr_structures#displaytable) and [display_tables](/docs/en/ocr_structures#displaytables) functions
+* Added [display_pdf_file](/docs/en/ocr_structures#displaypdffile) function for displaying pdf in embedded pdf viewer
 * Updated license validator
 
 

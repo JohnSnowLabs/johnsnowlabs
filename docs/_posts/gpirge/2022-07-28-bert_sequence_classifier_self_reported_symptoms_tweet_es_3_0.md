@@ -90,6 +90,14 @@ val data = Seq(Array("Las vacunas 3 y hablamos inminidad vivo  Son bichito vivo 
                      "Tos, dolor de garganta y fiebre, los síntomas más reportados por los porteños con coronavirus")).toDS.toDF("text")
 val result = model.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("es.classify.self_reported_symptoms").predict("""Yo pense que me estaba dando el  coronavirus porque cuando me levante  casi no podia respirar pero que si era que tenia la nariz topada de mocos.""")
+```
+
 </div>
 
 ## Results

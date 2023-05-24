@@ -82,6 +82,14 @@ val snomed_pipelineModel= new PipelineModel().setStages(Array(document_assembler
 val snomed_lp = LightPipeline(snomed_pipelineModel)
 val result = snomed_lp.fullAnnotate("atherosclerosis")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.resolve.snomed.findings_aux_concepts").predict("""Put your text here.""")
+```
+
 </div>
 
 ## Results

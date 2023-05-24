@@ -1,7 +1,7 @@
 ---
 layout: docs
 header: true
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: Streamlit visualization Examples
 key: streamlit-viz-examples
 permalink: /docs/en/jsl/streamlit_viz_examples

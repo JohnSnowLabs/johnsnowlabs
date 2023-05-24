@@ -120,6 +120,14 @@ val data = Seq("A biopsy was conducted using an ultrasound guided thick-needle. 
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.oncology_test").predict("""A biopsy was conducted using an ultrasound guided thick-needle. His chest computed tomography (CT) scan was negative.""")
+```
+
 </div>
 
 ## Results

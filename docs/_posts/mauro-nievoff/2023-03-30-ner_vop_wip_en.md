@@ -27,10 +27,10 @@ Note: ‘wip’ suffix indicates that the model development is work-in-progress 
 `SubstanceQuantity`, `Measurements`, `Treatment`, `Modifier`, `RaceEthnicity`, `Allergen`, `TestResult`, `InjuryOrPoisoning`, `Frequency`, `MedicalDevice`, `Procedure`, `Duration`, `DateTime`, `HealthStatus`, `Route`, `Vaccine`, `Disease`, `Symptom`, `RelationshipStatus`, `Dosage`, `Substance`, `VitalTest`, `AdmissionDischarge`, `Test`, `Laterality`, `ClinicalDept`, `PsychologicalCondition`, `Age`, `BodyPart`, `Drug`, `Employment`, `Form`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_wip_en_4.4.0_3.2_1680207981665.zip){:.button.button-orange}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_wip_en_4.4.0_3.2_1680207981665.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOICE_OF_THE_PATIENTS/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_THE_PATIENTS.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_wip_en_4.4.0_3.0_1680207981665.zip){:.button.button-orange}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_wip_en_4.4.0_3.0_1680207981665.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 

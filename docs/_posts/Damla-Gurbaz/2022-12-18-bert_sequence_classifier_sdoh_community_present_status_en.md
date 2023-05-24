@@ -86,6 +86,14 @@ val data = Seq("Atrial Septal Defect with Right Atrial Thrombus Pulmonary Hypert
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.bert_sequence.sdoh_community_present_status").predict("""Right inguinal hernia repair in childhood Cervical discectomy 3 years ago Umbilical hernia repair 2137. Retired schoolteacher, now substitutes. Lives with wife in location 1439. Has a 27 yo son and a 25 yo daughter. Name (NI) past or present smoking hx, no EtOH.""")
+```
+
 </div>
 
 ## Results

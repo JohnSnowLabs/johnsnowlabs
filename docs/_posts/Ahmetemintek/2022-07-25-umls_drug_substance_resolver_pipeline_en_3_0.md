@@ -45,6 +45,14 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 val pipeline= PretrainedPipeline("umls_drug_substance_resolver_pipeline", "en", "clinical/models")
 val pipeline.annotate("The patient was given  metformin, lenvatinib and Magnesium hydroxide 100mg/1ml")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.umls_drug_substance_resolver").predict("""The patient was given  metformin, lenvatinib and Magnesium hydroxide 100mg/1ml""")
+```
+
 </div>
 
 ## Results

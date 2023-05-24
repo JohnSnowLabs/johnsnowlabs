@@ -3,7 +3,6 @@ layout: docs
 header: true
 seotitle: Spark NLP
 title: Transformers
-redirect_to: https://sparknlp.org/docs/en/transformers
 permalink: /docs/en/transformers
 key: docs-transformers
 modify_date: "2022-09-27"

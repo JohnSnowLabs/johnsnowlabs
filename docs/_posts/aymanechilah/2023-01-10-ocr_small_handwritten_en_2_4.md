@@ -25,7 +25,7 @@ The abstract from the paper is the following:  Text recognition is a long-standi
 ## Predicted Entities
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/ocr/RECOGNIZE_HANDWRITTEN/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageToTextHandwritten.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/ocr_small_handwritten_en_3.3.3_2.4_1645080334390.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
 

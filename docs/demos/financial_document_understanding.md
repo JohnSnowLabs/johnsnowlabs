@@ -81,4 +81,28 @@ data:
           - text: Colab
             type: blue_btn
             url: 
+        - title: Finance Visual QA in IDS
+          id: finance_visual_qa_ids 
+          image: 
+              src: /assets/images/Finance_Visual_QA_in_IDS.svg
+          excerpt: Ask questions about ID documents, including ID Cards, Passports, and Driving Licenses in image format, and get answers without any OCR involved.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/FINLEG_VISUAL_QUESTION_ANSWERING/
+          - text: Colab
+            type: blue_btn
+            url:
+        - title: Financial Visual NER on Receipts
+          id: financial_visual_ner_receipts 
+          image: 
+              src: /assets/images/Financial_Visual_NER_on_Receipts.svg
+          excerpt: This demo shows how to carry out Visual NLP for NER purposes on Receipts.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/FINANCIAL_VISUAL_NER/
+          - text: Colab
+            type: blue_btn
+            url:
 ---

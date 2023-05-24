@@ -43,6 +43,14 @@ val pipeline = new PretrainedPipeline("ner_drugprot_clinical_pipeline", "en", "c
 
 pipeline.annotate("Anabolic effects of clenbuterol on skeletal muscle are mediated by beta 2-adrenoceptor activation.")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.clinical_drugprot.pipeline").predict("""Anabolic effects of clenbuterol on skeletal muscle are mediated by beta 2-adrenoceptor activation.""")
+```
+
 </div>
 
 ## Results

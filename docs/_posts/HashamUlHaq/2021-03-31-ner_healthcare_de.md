@@ -100,6 +100,14 @@ val data = Seq("Das Kleinzellige Bronchialkarzinom (Kleinzelliger Lungenkrebs, S
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("de.med_ner.healthcare").predict("""Das Kleinzellige Bronchialkarzinom (Kleinzelliger Lungenkrebs, SCLC) ist ein hochmalignes bronchogenes Karzinom""")
+```
+
 </div>
 
 ## Results

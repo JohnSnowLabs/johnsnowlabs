@@ -112,6 +112,14 @@ val data = Seq("""Mother states that there is a family hx of alcohol on both mat
 
 val result = nlpPipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.sdoh_slim_wip").predict(""" Mother states that he does smoke, there is a family hx of alcohol on both maternal and paternal sides of the family, maternal grandfather who died of alcohol related complications and paternal grandmother with severe alcoholism. Pts own drinking began at age 16, living in LA, had a DUI at age 17 after totaling a new car that his mother bought for him, he was married. """)
+```
+
 </div>
 
 ## Results

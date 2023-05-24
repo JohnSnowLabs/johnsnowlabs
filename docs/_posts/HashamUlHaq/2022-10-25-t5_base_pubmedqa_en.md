@@ -28,8 +28,8 @@ The T5 transformer model described in the seminal paper “Exploring the Limits 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/t5_base_pubmedqa_en_4.1.0_3.2_1666670271455.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/t5_base_pubmedqa_en_4.1.0_3.2_1666670271455.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/t5_base_pubmedqa_en_4.1.0_3.0_1666670271455.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/t5_base_pubmedqa_en_4.1.0_3.0_1666670271455.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -78,6 +78,14 @@ val data = Seq(Array(
 )).toDF("id", "text")
 
 val results = pipeline.fit(data).transform(data)
+```
+
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.t5.base_pubmedqa").predict("""content:SUBJECT: Normal physical traits but no period MESSAGE: I'm a 40 yr. old woman that has infantile reproductive organs and have never experienced a mensus. I have had Doctors look but they all say I just have infantile female reproductive organs. When I try to look for answers on the internet I cannot find anything. ALL my \""")
 ```
 
 </div>

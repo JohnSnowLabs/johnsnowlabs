@@ -23,7 +23,7 @@ We are very excited to release Spark OCR 3.0.0!
 
 Spark OCR 3.0.0 extends the support for Apache Spark 3.0.x and 3.1.x major releases on Scala 2.12 with both Hadoop 2.7. and 3.2. We will support all 4 major Apache Spark and PySpark releases of 2.3.x, 2.4.x, 3.0.x, and 3.1.x.
 
-Spark OCR started to support Tensorflow models. First model is [VisualDocumentClassifier](ocr_pipeline_components#visualdocumentclassifier).
+Spark OCR started to support Tensorflow models. First model is [VisualDocumentClassifier](/docs/en/ocr_pipeline_components#visualdocumentclassifier).
 
 #### New Features
 
@@ -44,7 +44,7 @@ Spark OCR started to support Tensorflow models. First model is [VisualDocumentCl
 * Support 2x new EMR 6.x: 
   * EMR 6.1.0 (Apache Spark 3.0.0 / Hadoop 3.2.1)
   * EMR 6.2.0 (Apache Spark 3.0.1 / Hadoop 3.2.1)
-* [VisualDocumentClassifier](ocr_pipeline_components#visualdocumentclassifier) model for classification documents using text and layout data.
+* [VisualDocumentClassifier](/docs/en/ocr_pipeline_components#visualdocumentclassifier) model for classification documents using text and layout data.
 * Added support Vietnamese language.
 
 #### New notebooks

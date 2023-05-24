@@ -50,6 +50,14 @@ val text = "The patient was prescribed 1 capsule of Advil 10 mg for 5 days and m
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.posology_biobert.pipeline").predict("""The patient was prescribed 1 capsule of Advil 10 mg for 5 days and magnesium hydroxide 100mg/1ml suspension PO. He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals, and metformin 1000 mg two times a day.""")
+```
+
 </div>
 
 ## Results

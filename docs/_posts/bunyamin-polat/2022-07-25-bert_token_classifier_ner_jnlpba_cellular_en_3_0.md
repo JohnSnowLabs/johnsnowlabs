@@ -106,6 +106,14 @@ val data = Seq("""The results suggest that activation of protein kinase C, but n
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.token_bert.jnlpba_cellular").predict("""The results suggest that activation of protein kinase C, but not new protein synthesis, is required for IL-2 induction of IFN-gamma and GM-CSF cytoplasmic mRNA. It also was observed that suppression of cytokine gene expression by these agents was independent of the inhibition of proliferation. These data indicate that IL-2 and IL-12 may have distinct signaling pathways leading to the induction of IFN-gammaand GM-CSFgene expression, andthatthe NK3.3 cell line may serve as a novel model for dissecting the biochemical and molecular events involved in these pathways. A functional T-cell receptor signaling pathway is required for p95vav activity. Stimulation of the T-cell antigen receptor ( TCR ) induces activation of multiple tyrosine kinases, resulting in phosphorylation of numerous intracellular substrates. One substrate is p95vav, which is expressed exclusively in hematopoietic and trophoblast cells.""")
+```
+
 </div>
 
 ## Results
