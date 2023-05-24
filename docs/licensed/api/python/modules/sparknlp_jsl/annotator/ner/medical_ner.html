@@ -624,10 +624,10 @@ document.write(`
                                  <span class="s2">&quot;Whether to override already learned tags when using a pretrained model to initialize the new model. Default is &#39;true&#39;.&quot;</span><span class="p">,</span>
                                  <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MedicalNerApproach.tagsMapping"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.tagsMapping">[docs]</a>    <span class="n">tagsMapping</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;tagsMapping&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;A map specifying how old tags are mapped to new ones. It only works if setOverrideExistingTags &quot;</span>
-                        <span class="o">+</span> <span class="s2">&quot;is false. The mapping is specified as a list of comma separared strings, &quot;</span>
-                          <span class="s2">&quot;e.g. [</span><span class="se">\&quot;</span><span class="s2">B-PER, B-VIP</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">I-PER, I-VIP</span><span class="se">\&quot;</span><span class="s2">,...]&quot;</span><span class="p">,</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
+    <span class="c1"># tagsMapping = Param(Params._dummy(), &quot;tagsMapping&quot;,</span>
+    <span class="c1">#                     &quot;A map specifying how old tags are mapped to new ones. It only works if setOverrideExistingTags &quot;</span>
+    <span class="c1">#                     + &quot;is false. The mapping is specified as a list of comma separared strings, &quot;</span>
+    <span class="c1">#                       &quot;e.g. [\&quot;B-PER, B-VIP\&quot;, \&quot;I-PER, I-VIP\&quot;,...]&quot;, TypeConverters.toListString)</span>
 
 <div class="viewcode-block" id="MedicalNerApproach.earlyStoppingCriterion"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.earlyStoppingCriterion">[docs]</a>    <span class="n">earlyStoppingCriterion</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;earlyStoppingCriterion&quot;</span><span class="p">,</span>
                                    <span class="s2">&quot;If set, this param specifies the criterion to stop training if performance is not improving. &quot;</span>
@@ -846,7 +846,10 @@ document.write(`
 <span class="sd">        value : List[str]</span>
 <span class="sd">            List of comma-separated entities.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">tagsMapping</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;setTagsMapping&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="MedicalNerApproach.setEarlyStoppingCriterion"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setEarlyStoppingCriterion">[docs]</a>    <span class="k">def</span> <span class="nf">setEarlyStoppingCriterion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">criterion</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets early stopping criterion. A value 0 means no early stopping.</span>
@@ -1088,6 +1091,12 @@ document.write(`
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the class counts for each of the classes during training.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s1">&#39;getTrainingClassDistributionJava&#39;</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MedicalNerModel.getClasses"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.getClasses">[docs]</a>    <span class="k">def</span> <span class="nf">getClasses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the list of entities which are recognized</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;getClasses&quot;</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
 <div class="viewcode-block" id="MedicalNerModel.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ner_dl&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
