@@ -124,7 +124,7 @@ Hello,I”m 20 year old girl. I”m diagnosed with hyperthyroid 1 month ago. I w
 ## Benchmarking
 
 ```bash
-         col  precision    recall  f1-score   support
+       label  precision    recall  f1-score   support
        False   0.881423  0.822878  0.851145       271
         True   0.717647  0.802632  0.757764       152
     accuracy   -         -         0.815603       423
