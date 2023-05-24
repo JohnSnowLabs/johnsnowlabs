@@ -48,7 +48,7 @@ tokenizer = Tokenizer() \
 
 sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_vop_side_effect", "en", "clinical/models")\
     .setInputCols(["document",'token'])\
-    .setOutputCol("class")
+    .setOutputCol("prediction")
 
 pipeline = Pipeline(stages=[
     document_assembler, 
@@ -62,7 +62,7 @@ data = spark.createDataFrame(["I felt kind of dizzy after taking that medication
 result = pipeline.fit(data).transform(data)
 
 # Checking results
-result.select("text", "class.result").show(truncate=False)
+result.select("text", "prediction.result").show(truncate=False)
 ```
 ```scala
 val documenter = new DocumentAssembler() 
@@ -75,7 +75,7 @@ val tokenizer = new Tokenizer()
 
 val sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_vop_side_effect", "en", "clinical/models")
     .setInputCols(Array("document","token"))
-    .setOutputCol("class")
+    .setOutputCol("prediction")
 
 val pipeline = new Pipeline().setStages(Array(documenter, tokenizer, sequenceClassifier))
 
