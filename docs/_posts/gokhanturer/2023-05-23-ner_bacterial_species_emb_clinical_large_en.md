@@ -22,6 +22,8 @@ Detect different types of species of bacteria in text using pretrained NER model
 
 ## Predicted Entities
 
+`SPECIES`
+
 
 
 {:.btn-box}
@@ -58,7 +60,7 @@ species_ner = MedicalNerModel.pretrained("ner_bacterial_species_emb_clinical_lar
     .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("species_ner")
     
-species_ner_converter = NerConverter() \
+species_ner_converter = NerConverterInternal() \
     .setInputCols(["sentence", "token", "species_ner"]) \
     .setOutputCol("species_ner_chunk")
 
@@ -97,7 +99,7 @@ val species_ner_model = MedicalNerModel.pretrained("ner_bacterial_species_emb_cl
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("species_ner")
 
-val species_ner_converter = new NerConverter()
+val species_ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "species_ner"))
     .setOutputCol("species_ner_chunk")
 
