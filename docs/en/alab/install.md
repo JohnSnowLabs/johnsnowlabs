@@ -81,9 +81,27 @@ We have an aesthetically pleasing Sign-In Page with a section highlighting the k
 
 ## AWS Marketplace
 
+The NLP Lab needs to be installed on a virtual machine. One of the most straightforward is an installation from AWS Marketplace (also available on Azure). There is no fee for the NLP Lab. However, you still have to pay for the underlying AWS EC2 instance (not Free Tier Eligible). You will be charged per second running. If you terminate the instance, it will be fully deleted, and you won’t be charged anymore. If you forget to Stop or Terminate the instance, you will be charged approx. 300 USD per month.
+
 Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions on the video below to subscribe and deploy.
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='ebaewU4BcQA' -%}<div class="video-descr">Deploy NLP Lab via AWS Marketplace</div></div></div>
+
+## Securing NLP Lab on AWS
+
+The Annotation Lab has a private IP address and listens on an unsecured HTTP port. You can ask your DevOps department to incorporate the resource to your standards to access from the internet in a secure manner. Alternatively, we have prepared a simple cloud formation script, which will create front end proxy (CloudFront, ELB, and auxiliary Lambda Function). All of those resources are Free Tier Eligible. You can download the script in YAML format go to AWS CloudFormation. Click Create a stack, “Upload a template file”. Give the Stack a name and enter the NLP Lab instance ID (from the EC2 console) as a parameter.
+
+![createStack](/assets/images/annotation_lab/aws/createStack.png)
+
+Next -> Next -> Acknowledge that AWS CloudFormation might create IAM resources. -> Submit. Wait a few minutes until all resources are created.  
+
+![ack](/assets/images/annotation_lab/aws/ack.png)
+
+Once created, go do the Outputs tab and click on the NLP Lab URL. You may need to refresh the view. 
+
+![output](/assets/images/annotation_lab/aws/output.png)
+
+Now, to access the NLP Lab, you go to the CloudFront URL and log in with username “admin” and passwd equal to the EC2 Instance ID noted earlier. 
 
 ## Azure Marketplace
 
