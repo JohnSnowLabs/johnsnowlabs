@@ -81,7 +81,7 @@ We have an aesthetically pleasing Sign-In Page with a section highlighting the k
 
 ## AWS Marketplace
 
-The NLP Lab needs to be installed on a virtual machine. One of the most straightforward is an installation from AWS Marketplace (also available on Azure). There is no fee for the NLP Lab. However, you still have to pay for the underlying AWS EC2 instance (not Free Tier Eligible). You will be charged per second running. If you terminate the instance, it will be fully deleted, and you won’t be charged anymore. If you forget to Stop or Terminate the instance, you will be charged approx. 300 USD per month.
+The NLP Lab needs to be installed on a virtual machine. One of the most straight forward method is an installation from AWS Marketplace (also available on Azure). There is no fee for the NLP Lab. However, you still have to pay for the underlying AWS EC2 instance (not Free Tier Eligible).
 
 Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions on the video below to subscribe and deploy.
 
