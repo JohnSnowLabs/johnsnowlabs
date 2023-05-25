@@ -278,16 +278,12 @@ Either create a conda env for python 3.6, install *pyspark==3.1.2 spark-nlp nump
 
     ii) Once installed , We can check if java is installed by opening cmd and type `java -version` command
 
-![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/56176cf8-0184-4147-9923-bb00452bcf20)
-
+    ![image-20230517-140723](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/c262961e-4923-449a-b1b1-46d233c3b94d)
 
 
 2. Install Microsoft Visual C++ 2010
 
     i)  Install Microsoft Visual C++ 2010 from [Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package MFC Security Update](https://www.microsoft.com/en-us/download/details.aspx?id=26999) 
-    
-    ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/18b15859-2f44-4efa-b588-9e8128d4e11c)
-
 
 
 
@@ -301,28 +297,30 @@ Either create a conda env for python 3.6, install *pyspark==3.1.2 spark-nlp nump
 
 4. Configure Hadoop ENV variables  
 
-    `Windows Explorer` → `This PC` -> `Right Click select properties`  -> `Click on  Advanced system settings` -> `Click on Environment Variables  Under system variables` 
+    - `Windows Explorer` → `This PC` -> Right Click select `properties`  -> Click on  `Advanced` system settings -> Click on `Environment Variables` Under system variables 
     
-    
-    
-    
-    
-    `Under system variables` -> `Click on new`
+    ![image-20230517-141616](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/d0c53899-5d49-4fdf-a3d4-1023e5250faa)
 
-
-    Add HADOOP_HOME as below  
+    
+    
+    - Add HADOOP_HOME as below  
+    
+    Under system variables -> Click on `new`
 
     VARIABLE Name: `HADOOP_HOME` 
 
     VARIABLE Value: `C:\hadoop`
 
-    ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/1d6b6ccf-7d6d-4d44-ac3c-b9aee77d862d)
 
-    Select the Path (from variable) -> Click on `edit` → Click on `New` → add  `%HADOOP_HOME%\bin`
+    ![image-20230517-141745](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/062d9918-46d7-4ba1-8736-0cc33da13f9d)
 
-    ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/a30486b5-0994-4dcb-9e6a-484d97e4de61)
-    
-    ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64216738/5a0aa693-40b8-4fbf-8487-06ab11fa5eab)
+
+    - Select the `Path` (from variable) -> Click on `edit` → Click on `New` → add  `%HADOOP_HOME%\bin`
+
+    ![image-20230517-141922](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/eca7f39c-e4c6-43fe-8a43-fa8c3a8af7b9)
+
+    ![image-20230517-141957](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/48426b70-a82f-4628-82a4-aff1bb5408b4)
+
 
 
 5. Dowload and Install Conda and set Conda ENV variables  
