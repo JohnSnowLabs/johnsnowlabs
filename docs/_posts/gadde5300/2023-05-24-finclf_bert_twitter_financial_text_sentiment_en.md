@@ -111,7 +111,7 @@ label              precision    recall  f1-score   support
     Negative       0.75      0.60      0.67        15
      Neutral       0.89      0.87      0.88       207
     Positive       0.83      0.87      0.85       134
-    accuracy         -             -     0.86       356
+    accuracy         -          -      0.86       356
    macro-avg       0.82      0.78      0.80       356
 weighted-avg       0.86      0.86      0.86       356
 
