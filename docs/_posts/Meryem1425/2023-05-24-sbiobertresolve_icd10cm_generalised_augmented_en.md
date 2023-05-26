@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps extracted medical entities to ICD10-CM codes using sbiobert_base_cased_mli Sentence Bert Embeddings. It predicts ICD codes up to 3 characters (according to ICD10 code structure the first three characters represent general type of the injury or disease).
+This model maps extracted medical entities to ICD-10-CM codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It predicts ICD-10-CM codes up to 3 characters (according to ICD-10-CM code structure the first three characters represent general type of the injury or disease).
 
 ## Predicted Entities
 
@@ -32,7 +32,7 @@ This model maps extracted medical entities to ICD10-CM codes using sbiobert_base
 
 ## How to use
 
-`sbiobertresolve_icd10cm_generalised` resolver model must be used with `sbiobert_base_cased_mli` as embeddings.
+`sbiobertresolve_icd10cm_generalised_augmented` resolver model must be used with `sbiobert_base_cased_mli` as embeddings.
 
 
 <div class="tabs-box" markdown="1">
