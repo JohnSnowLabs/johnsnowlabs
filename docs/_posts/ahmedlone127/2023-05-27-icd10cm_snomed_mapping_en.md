@@ -8,7 +8,7 @@ tags: [en, licensed, icd10cm, snomed, pipeline, chunk_mapping]
 task: Chunk Mapping
 language: en
 edition: Healthcare NLP 4.3.1
-spark_version: 3.2
+spark_version: 3.0
 supported: true
 annotator: PipelineModel
 article_header:
@@ -27,8 +27,8 @@ This pretrained pipeline is built on the top of `icd10cm_snomed_mapper` model.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_snomed_mapping_en_4.3.1_3.2_1685183824011.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_snomed_mapping_en_4.3.1_3.2_1685183824011.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_snomed_mapping_en_4.3.1_3.0_1685183877582.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_snomed_mapping_en_4.3.1_3.0_1685183877582.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
