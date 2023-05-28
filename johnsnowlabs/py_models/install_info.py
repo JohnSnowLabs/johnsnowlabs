@@ -104,15 +104,18 @@ class InstallFolder(WritableBaseModel):
 
 
 class InstallSuite(WritableBaseModel):
-    info: RootInfo
+    info: Optional[RootInfo] = None
     secrets: Optional[JslSecrets] = None
     # Py4J Libs
-    nlp: LocalPy4JLib
+    nlp: Optional[LocalPy4JLib] = None
     ocr: Optional[LocalPy4JLib] = None
     hc: Optional[LocalPy4JLib] = None
     # Pure Python Libs
     pure_py_jsl: Optional[LocalPyLib] = None
 
+    @staticmethod
+    def empty():
+        return InstallSuite()
     def get_missing_products(self, nlp, visual, spark_nlp):
         missing = []
         from johnsnowlabs.auto_install.softwares import Software
