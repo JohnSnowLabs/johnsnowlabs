@@ -44,7 +44,7 @@ document_assembler = nlp.DocumentAssembler()\
 
 flant5 = legal.TextGenerator.pretrained('leggen_flant5_base','en','legal/models')\
     .setInputCols(["question"])\
-    .setOutputCol("summary")
+    .setOutputCol("generated_text")
     .setMaxNewTokens(150)\
     .setStopAtEos(True)
   
@@ -53,7 +53,7 @@ data = spark.createDataFrame([
   [1, "Explain loan Clauses"]
 ]).toDF('id', 'text')
 results = pipeline.fit(data).transform(data)
-results.select("summary.result").show(truncate=False)
+results.select("generated_text.result").show(truncate=False)
 ```
 
 </div>

@@ -77,6 +77,14 @@ val pipeline = new Pipeline().setStages(Array(document_assembler, tokenizer, seq
 val data = Seq("All the panic about the global pandemic has been stressing me out!").toDF("text")
 val result = pipeline.fit(data).transform(data) 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.stressor").predict("""All the panic about the global pandemic has been stressing me out!""")
+```
+
 </div>
 
 ## Results

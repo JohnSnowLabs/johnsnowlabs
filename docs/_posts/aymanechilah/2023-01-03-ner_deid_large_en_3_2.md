@@ -26,7 +26,7 @@ It protects specific health information that could identify living or deceased i
 ## Predicted Entities
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/ocr/DEID_IMAGE/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/tutorials/Certification_Trainings/3.1.SparkOcrImageDeIdentification.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_large_en_3.0.0_3.0_1617209688468.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
 

@@ -50,6 +50,14 @@ val text = "Immunohistochemical staining was positive for S-100 in all 9 cases s
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.biomedical_bc2gm.pipeline").predict("""Immunohistochemical staining was positive for S-100 in all 9 cases stained, positive for HMB-45 in 9 (90%) of 10, and negative for cytokeratin in all 9 cases in which myxoid melanoma remained in the block after previous sections.""")
+```
+
 </div>
 
 ## Results

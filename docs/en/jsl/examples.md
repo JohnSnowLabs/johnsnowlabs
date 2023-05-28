@@ -1,14 +1,14 @@
 ---
 layout: docs
 header: true
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: 1-liners reference
 key: docs-examples
 permalink: /docs/en/jsl/examples
 modify_date: "2023-03-27"
 show_nav: true
 sidebar:
-nav: jsl
+    nav: jsl
 ---
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">

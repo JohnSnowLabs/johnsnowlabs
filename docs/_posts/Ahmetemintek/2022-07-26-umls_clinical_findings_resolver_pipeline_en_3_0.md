@@ -45,6 +45,14 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 val pipeline= PretrainedPipeline("umls_clinical_findings_resolver_pipeline", "en", "clinical/models")
 val pipeline.annotate("HTG-induced pancreatitis associated with an acute hepatitis, and obesity")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.umls_clinical_findings_resolver").predict("""HTG-induced pancreatitis associated with an acute hepatitis, and obesity""")
+```
+
 </div>
 
 ## Results

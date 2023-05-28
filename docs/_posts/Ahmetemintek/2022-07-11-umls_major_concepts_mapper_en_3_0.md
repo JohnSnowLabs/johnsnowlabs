@@ -131,6 +131,14 @@ val test_data = Seq("The patient complains of pustules after falling from stairs
 
 val result = mapper_pipeline.fit(test_data).transform(test_data) 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.umls_major_concepts_mapper").predict("""The patient complains of pustules after falling from stairs. Also,  she has a history of quadriceps tendon rupture""")
+```
+
 </div>
 
 ## Results

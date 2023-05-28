@@ -83,6 +83,14 @@ val data = Seq(Array("Durch jahrelanges Rauchen habe ich meine Lunge einfach zu 
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("de.classify.bert_sequence.health_mentions_gbert_large").predict("""die Schatzsuche war das Highlight beim Kindergeburtstag, die kids haben noch lange davon gesprochen""")
+```
+
 </div>
 
 ## Results

@@ -48,6 +48,14 @@ val pipeline = new PretrainedPipeline("oncology_therapy_pipeline", "en", "clinic
 
 val result = pipeline.fullAnnotate("""The patient underwent a mastectomy two years ago. She is currently receiving her second cycle of adriamycin and cyclophosphamide, and is in good overall condition.""")(0)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.oncology_therpay.pipeline").predict("""The patient underwent a mastectomy two years ago. She is currently receiving her second cycle of adriamycin and cyclophosphamide, and is in good overall condition.""")
+```
+
 </div>
 
 ## Results

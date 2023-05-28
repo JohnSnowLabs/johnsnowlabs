@@ -15,7 +15,7 @@ sidebar:
 <div class="h3-box" markdown="1">
 
 A Spark NLP Enterprise license includes access to unique annotators.
-At the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings_JSL) you can see different types of annotators in action.
+At the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings) you can see different types of annotators in action.
 
 By clicking on any annotator, you will see different sections:
 - The `Approach`, or class to train models.

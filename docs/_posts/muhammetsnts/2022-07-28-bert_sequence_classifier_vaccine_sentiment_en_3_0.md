@@ -85,6 +85,14 @@ val data = Seq(Array("A little bright light for an otherwise dark week. Thanks r
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.bert_sequence_vaccine_sentiment").predict("""A little bright light for an otherwise dark week. Thanks researchers, and frontline workers. Onwards.""")
+```
+
 </div>
 
 ## Results

@@ -1,7 +1,7 @@
 ---
 layout: docs
 header: true
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: Quick Start
 permalink: /docs/en/jsl/quickstart_visual
 key: docs-concepts
@@ -38,17 +38,17 @@ nlp.load('img2text').predict('path/to/haiku.png')
 {:.table-model-big}
 | 1-liner                                                                              | Transformer Class                                                                             |
 |--------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|
-| `nlp.load('img2text').predict('path/to/cat.png')`                                    | [ImageToText](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#imagetotext)       |
-| `nlp.load('pdf2text').predict('path/to/taxes.pdf')`                                  | [PdfToText](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#pdftotext)           |
-| `nlp.load('doc2text').predict('path/to/my_homework.docx')`                           | [DocToText](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#doctotext)           |
-| `nlp.load('pdf2table').predict('path/to/data_tables.pdf')`                           | [PdfToTextTable](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#pdftotexttable) |              
-| `nlp.load('ppt2table').predict('path/to/great_presentation_with_tabular_data.pptx')` | [PptToTextTable](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#ppttotexttable) |              
-| `nlp.load('doc2table').predict('path/to/tabular_income_data.docx')`                  | [DocToTextTable](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components#doctotexttable) |              
+| `nlp.load('img2text').predict('path/to/cat.png')`                                    | [ImageToText](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#imagetotext)       |
+| `nlp.load('pdf2text').predict('path/to/taxes.pdf')`                                  | [PdfToText](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#pdftotext)           |
+| `nlp.load('doc2text').predict('path/to/my_homework.docx')`                           | [DocToText](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#doctotext)           |
+| `nlp.load('pdf2table').predict('path/to/data_tables.pdf')`                           | [PdfToTextTable](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#pdftotexttable) |              
+| `nlp.load('ppt2table').predict('path/to/great_presentation_with_tabular_data.pptx')` | [PptToTextTable](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#ppttotexttable) |              
+| `nlp.load('doc2table').predict('path/to/tabular_income_data.docx')`                  | [DocToTextTable](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#doctotexttable) |              
 
 
 
 ## Custom Pipelines
-You can create [Visual Annotator & PretrainedPipeline based pipelines](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_pipeline_components) using all the classes 
+You can create [Visual Annotator & PretrainedPipeline based pipelines](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components) using all the classes 
 attached to the `visual` module which gives you the highest degree of freedom
 
 ```python

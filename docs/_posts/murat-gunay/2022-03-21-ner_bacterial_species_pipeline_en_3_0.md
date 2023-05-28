@@ -45,6 +45,14 @@ val pipeline = new PretrainedPipeline("ner_bacterial_species_pipeline", "en", "c
 
 pipeline.annotate("EXAMPLE_TEXT")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.bacterial_species.pipeline").predict("""Put your text here.""")
+```
+
 </div>
 
 {:.model-param}

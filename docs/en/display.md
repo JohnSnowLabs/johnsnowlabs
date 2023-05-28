@@ -3,7 +3,6 @@ layout: docs
 header: true
 seotitle: Spark NLP
 title: Spark NLP Display
-redirect_to: https://sparknlp.org/docs/en/display
 permalink: /docs/en/display
 key: docs-display
 modify_date: "2020-11-17"

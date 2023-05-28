@@ -56,5 +56,29 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION_QA/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb           
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb   
+        - title: Efficient Radiology Report Summarization
+          id: efficient_radiology_report_summarization
+          image: 
+              src: /assets/images/Summarize_Radiology_Reports.svg
+          excerpt: This demo features our advanced language processing model, designed to quickly and accurately distill radiology reports by pinpointing and retaining the most crucial information.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION_RADIOLOGY/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb 
+        - title: Clinical Text Summarization (Spanish)
+          id: clinical_text_summarization_spanish
+          image: 
+              src: /assets/images/Clinical_Summarization_ES.svg
+          excerpt: This demo showcases the capabilities of a special summary model for Spanish medical texts. 
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLINICAL_TEXT_SUMMARIZATION_ES/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/CLINICAL_TEXT_SUMMARIZATION_ES.ipynb      
 ---

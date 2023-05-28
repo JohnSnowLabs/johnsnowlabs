@@ -112,7 +112,7 @@ Models Hub Page : https://nlp.johnsnowlabs.com/2021/06/01/ner_deid_generic_augme
 
 + `ner_deid_subentity_augmented`: Detects PHI 23 entities (`MEDICALRECORD`, `ORGANIZATION`, `DOCTOR`, `USERNAME`, `PROFESSION`, `HEALTHPLAN`, `URL`, `CITY`, `DATE`, `LOCATION-OTHER`, `STATE`, `PATIENT`, `DEVICE`, `COUNTRY`, `ZIP`, `PHONE`, `HOSPITAL`, `EMAIL`, `IDNUM`, `SREET`, `BIOID`, `FAX`, `AGE`)
 
-Models Hub Page : https://nlp.johnsnowlabs.com/2021/06/01/ner_deid_subentity_augmented_en.html
+Models Hub Page : https://nlp.johnsnowlabs.com/2021/09/03/ner_deid_subentity_augmented_en.html
 
 |entity| ner_deid_enriched (v3.0.3 and before)| ner_deid_subentity_augmented (v3.1.0)|
 |-------------|:------:|:--------:|

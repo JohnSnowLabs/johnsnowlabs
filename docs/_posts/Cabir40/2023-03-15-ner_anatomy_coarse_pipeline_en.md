@@ -50,6 +50,14 @@ val text = "content in the lung tissue"
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.anatomy_coarse.pipeline").predict("""content in the lung tissue""")
+```
+
 </div>
 
 ## Results

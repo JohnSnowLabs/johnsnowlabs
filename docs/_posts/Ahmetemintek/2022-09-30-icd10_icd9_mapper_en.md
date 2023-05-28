@@ -104,6 +104,14 @@ val result= pipeline.fit(data).transform(data)
 
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.icd10_ic9").predict("""Diabetes Mellitus""")
+```
+
 </div>
 
 ## Results

@@ -124,6 +124,14 @@ val result = pipeline.fit(data).transform(data)
 
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.assert.oncology_treatment_binary").predict("""The patient underwent a mastectomy two years ago. We recommend to start chemotherapy.""")
+```
+
 </div>
 
 ## Results

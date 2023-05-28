@@ -46,6 +46,14 @@ val pipeline = new PretrainedPipeline("snomed_icd10cm_mapping", "en", "clinical/
 
 val result = pipeline.fullAnnotate(128041000119107 292278006 293072005)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.snomed_to_icd10cm.pipe").predict("""Put your text here.""")
+```
+
 </div>
 
 ## Results

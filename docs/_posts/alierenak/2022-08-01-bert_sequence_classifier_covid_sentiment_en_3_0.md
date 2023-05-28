@@ -89,6 +89,14 @@ val data = Seq(Array("British Department of Health confirms first two cases of i
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.bert_sequence.covid_sentiment").predict("""so my trip to visit my australian exchange student just got canceled bc of coronavirus. im heartbroken :(""")
+```
+
 </div>
 
 ## Results

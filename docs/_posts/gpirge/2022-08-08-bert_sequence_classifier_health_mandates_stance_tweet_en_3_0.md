@@ -93,6 +93,14 @@ val data = Seq(Array("It's too dangerous to hold the RNC, but let's send student
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.health_stance").predict("""Just a quick update to my U.S. followers, I'll be making a stop in all 50 states this spring!  No tickets needed, just don't wash your hands, cough on each other.""")
+```
+
 </div>
 
 ## Results

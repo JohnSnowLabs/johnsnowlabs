@@ -50,6 +50,14 @@ val text = "Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("de.deid.ner_subentity.pipeline").predict("""Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.""")
+```
+
 </div>
 
 ## Results

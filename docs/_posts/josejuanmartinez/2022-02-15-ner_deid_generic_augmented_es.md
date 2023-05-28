@@ -123,6 +123,16 @@ val df = Seq(text).toDF("text")
 
 val results = pipeline.fit(df).transform(df)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("es.med_ner.deid.generic_augmented").predict("""
+Antonio Miguel Martínez, un varón de 35 años de edad, de profesión auxiliar de enfermería y nacido en Cadiz, España. Aún no estaba vacunado, se infectó con Covid-19 el dia 14 de Marzo y tuvo que ir al Hospital. Fue tratado con anticuerpos monoclonales en la Clinica San Carlos.
+""")
+```
+
 </div>
 
 

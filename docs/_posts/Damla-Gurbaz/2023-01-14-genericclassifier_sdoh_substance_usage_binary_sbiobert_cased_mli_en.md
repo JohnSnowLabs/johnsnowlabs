@@ -98,6 +98,14 @@ val data = Seq("The patient quit smoking approximately two years ago with an app
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.generic.sdoh_substance_binary_sbiobert_cased").predict("""Lives in apartment with 16-year-old daughter. Denies EtOH use currently although reports occasional use in past. Utox on admission positive for opiate (on as rx) as well as cocaine. 4-6 cigarettes a day on and off for 10 years. Denies h/o illicit drug use besides marijuana although admitted to cocaine use after being found to have urine positive for cocaine.""")
+```
+
 </div>
 
 ## Results
