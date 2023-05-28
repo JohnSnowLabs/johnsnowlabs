@@ -26,8 +26,8 @@ This Generic Classifier model is intended for detecting tobacco use in clinical 
 `Present`, `Past`, `Never`, `None`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_TOBACCO/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_CLASSIFICATION.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/genericclassifier_sdoh_tobacco_usage_sbiobert_cased_mli_en_4.2.4_3.0_1673697468673.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/genericclassifier_sdoh_tobacco_usage_sbiobert_cased_mli_en_4.2.4_3.0_1673697468673.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
