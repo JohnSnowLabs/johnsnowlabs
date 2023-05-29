@@ -2,7 +2,7 @@
 layout: model
 title: Detect PHI for Deidentification purposes (Arabic)
 author: John Snow Labs
-name: arabic_medical_ner_model_specific_17_entities
+name: ner_deid_subentity
 date: 2023-05-29
 tags: [licensed, ner, clinical, deidentification, arabic, ar]
 task: Named Entity Recognition
@@ -29,8 +29,8 @@ Deidentification NER (Arabic) is a Named Entity Recognition model that annotates
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.1.Clinical_Multi_Language_Deidentification.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/arabic_medical_ner_model_specific_17_entities_ar_4.4.2_3.0_1685387641635.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/arabic_medical_ner_model_specific_17_entities_ar_4.4.2_3.0_1685387641635.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_subentity_ar_4.4.2_3.0_1685387641635.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_subentity_ar_4.4.2_3.0_1685387641635.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -145,7 +145,7 @@ val results = pipeline.fit(data).transform(data)
 
 {:.table-model}
 |---|---|
-|Model Name:|arabic_medical_ner_model_specific_17_entities|
+|Model Name:|ner_deid_subentity|
 |Compatibility:|Healthcare NLP 4.4.2+|
 |License:|Licensed|
 |Edition:|Official|
@@ -163,5 +163,24 @@ Data augmentation techniques
 ## Benchmarking
 
 ```bash
-label     tp    fp    fn  total  precision  recall      f1      PATIENT  196.0  26.0  32.0  228.0     0.8829  0.8596  0.8711     HOSPITAL  193.0  41.0  37.0  230.0     0.8248  0.8391  0.8319         DATE  877.0  14.0   8.0  885.0     0.9843   0.991  0.9876 ORGANIZATION   41.0  11.0   6.0   47.0     0.7885  0.8723  0.8283         CITY  260.0   8.0   5.0  265.0     0.9701  0.9811  0.9756       STREET  103.0   3.0   0.0  103.0     0.9717     1.0  0.9856     USERNAME    8.0   0.0   0.0    8.0        1.0     1.0     1.0          SEX  300.0   9.0  69.0  369.0     0.9709   0.813   0.885        IDNUM   13.0   1.0   0.0   13.0     0.9286     1.0   0.963        EMAIL  112.0   5.0   0.0  112.0     0.9573     1.0  0.9782          ZIP   80.0   4.0   0.0   80.0     0.9524     1.0  0.9756MEDICALRECORD   17.0   1.0   0.0   17.0     0.9444     1.0  0.9714   PROFESSION  303.0  27.0  32.0  335.0     0.9182  0.9045  0.9113        PHONE   38.0   4.0   2.0   40.0     0.9048    0.95  0.9268      COUNTRY  158.0  10.0   8.0  166.0     0.9405  0.9518  0.9461       DOCTOR  440.0  23.0  34.0  474.0     0.9503  0.9283  0.9392          AGE  610.0  18.0   7.0  617.0     0.9713  0.9887  0.9799        macro     -     -     -      -       -       -      0.9386        micro     -     -     -      -       -       -      0.9434
+        label     tp    fp    fn  total  precision  recall      f1
+      PATIENT  196.0  26.0  32.0  228.0     0.8829  0.8596  0.8711
+     HOSPITAL  193.0  41.0  37.0  230.0     0.8248  0.8391  0.8319
+         DATE  877.0  14.0   8.0  885.0     0.9843   0.991  0.9876
+ ORGANIZATION   41.0  11.0   6.0   47.0     0.7885  0.8723  0.8283
+         CITY  260.0   8.0   5.0  265.0     0.9701  0.9811  0.9756
+       STREET  103.0   3.0   0.0  103.0     0.9717     1.0  0.9856
+     USERNAME    8.0   0.0   0.0    8.0        1.0     1.0     1.0
+          SEX  300.0   9.0  69.0  369.0     0.9709   0.813   0.885
+        IDNUM   13.0   1.0   0.0   13.0     0.9286     1.0   0.963
+        EMAIL  112.0   5.0   0.0  112.0     0.9573     1.0  0.9782
+          ZIP   80.0   4.0   0.0   80.0     0.9524     1.0  0.9756
+MEDICALRECORD   17.0   1.0   0.0   17.0     0.9444     1.0  0.9714
+   PROFESSION  303.0  27.0  32.0  335.0     0.9182  0.9045  0.9113
+        PHONE   38.0   4.0   2.0   40.0     0.9048    0.95  0.9268
+      COUNTRY  158.0  10.0   8.0  166.0     0.9405  0.9518  0.9461
+       DOCTOR  440.0  23.0  34.0  474.0     0.9503  0.9283  0.9392
+          AGE  610.0  18.0   7.0  617.0     0.9713  0.9887  0.9799
+        macro     -     -     -      -       -       -      0.9386
+        micro     -     -     -      -       -       -      0.9434
 ```
