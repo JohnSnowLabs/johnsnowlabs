@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Financial Finetuned FLAN-T5 Text Generation ( FIQA - Financial Opinion Mining and Question Answering )
+title: Financial Finetuned FLAN-T5 Text Generation (FIQA dataset)
 author: John Snow Labs
 name: fingen_flant5_finetuned_fiqa
 date: 2023-05-29
