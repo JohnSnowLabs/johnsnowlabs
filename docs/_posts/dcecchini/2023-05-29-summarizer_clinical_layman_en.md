@@ -42,10 +42,9 @@ document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-summarizer = MedicalSummarizer.pretrained("summarizer_biomedical_pubmed", "en", "clinical/models")\
+summarizer = MedicalSummarizer.pretrained("summarizer_clinical_layman", "en", "clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("summary")\
-    .setMaxTextLength(512)\
     .setMaxNewTokens(512)
 
 pipeline = sparknlp.base.Pipeline(stages=[
