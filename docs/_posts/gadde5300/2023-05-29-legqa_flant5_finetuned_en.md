@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This Question Answering model has been fine-tuned on FLANT5 using legal data. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text generation tasks. This model provides a powerful and efficient solution for accurately answering legal questions and delivering insightful information in the legal domain.
+This Question Answering model has been fine-tuned on FLANT5 using legal data. FLAN-T5 is a state-of-the-art language model developed by Google AI that utilizes the T5 architecture for text generation tasks. This model provides a powerful and efficient solution for accurately answering legal questions and delivering insightful information in the legal domain.
 
 ## Predicted Entities
 
