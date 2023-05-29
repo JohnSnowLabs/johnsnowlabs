@@ -54,9 +54,8 @@ sidebar:
 ## 4. Experiments in the playground
 </div>
 
-- 
-- 
-- 
+- Test rules, prompts and models
+- Crucial as it allows quality assurance based on testing
 
 </div>
 </div>
