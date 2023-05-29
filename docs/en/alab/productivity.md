@@ -122,7 +122,7 @@ Below are the charts included in the Team Productivity section.
 
 **Total number of completions submitted over time**
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/submitted_completions_over_time.png" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.9.0/total_submissions_over_time.png" style="width:100%;"/>
 
 <br />
 
