@@ -419,13 +419,13 @@ document.write(`
 <span class="sd">    ...     .setOutputCol(&quot;sentence&quot;) \\</span>
 <span class="sd">    ...     .setUseAbbreviations(True)</span>
 <span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; tokenizer = Tokenizer() \</span>
-<span class="sd">    ...     .setInputCols([&quot;sentence&quot;]) \</span>
+<span class="sd">    &gt;&gt;&gt; tokenizer = Tokenizer() \\</span>
+<span class="sd">    ...     .setInputCols([&quot;sentence&quot;]) \\</span>
 <span class="sd">    ...     .setOutputCol(&quot;token&quot;)</span>
 <span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; embeddings = WordEmbeddingsModel \</span>
-<span class="sd">    ...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \</span>
-<span class="sd">    ...     .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \</span>
+<span class="sd">    &gt;&gt;&gt; embeddings = WordEmbeddingsModel \\</span>
+<span class="sd">    ...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \\</span>
+<span class="sd">    ...     .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \\</span>
 <span class="sd">    ...     .setOutputCol(&quot;embeddings&quot;)</span>
 <span class="sd">    ...</span>
 <span class="sd">     Ner entities</span>
@@ -440,9 +440,9 @@ document.write(`
 <span class="sd">    &gt;&gt;&gt; deIdentification = DeIdentification() \\</span>
 <span class="sd">    ...     .setInputCols([&quot;ner_chunk&quot;, &quot;token&quot;, &quot;sentence&quot;]) \\</span>
 <span class="sd">    ...     .setOutputCol(&quot;dei&quot;) \\</span>
-<span class="sd">    ...     # file with custom regex pattern for custom entities\</span>
+<span class="sd">    ...     # file with custom regex pattern for custom entities\\</span>
 <span class="sd">    ...     .setRegexPatternsDictionary(&quot;path/to/dic_regex_patterns_main_categories.txt&quot;) \\</span>
-<span class="sd">    ...     # file with custom obfuscator names for the entities\</span>
+<span class="sd">    ...     # file with custom obfuscator names for the entities\\</span>
 <span class="sd">    ...     .setObfuscateRefFile(&quot;path/to/obfuscate_fixed_entities.txt&quot;) \\</span>
 <span class="sd">    ...     .setRefFileFormat(&quot;csv&quot;) \\</span>
 <span class="sd">    ...     .setRefSep(&quot;#&quot;) \\</span>
@@ -579,6 +579,8 @@ document.write(`
         <span class="nb">super</span><span class="p">(</span><span class="n">DeIdentification</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.annotators.deid.DeIdentification&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="DeIdentification.getBlackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getBlackList">[docs]</a>    <span class="k">def</span> <span class="nf">getBlackList</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the blackList value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blackList</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setLanguage"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLanguage">[docs]</a>    <span class="k">def</span> <span class="nf">setLanguage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
@@ -906,6 +908,8 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">sameLengthFormattedEntities</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.getSameLengthFormattedEntities"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getSameLengthFormattedEntities">[docs]</a>    <span class="k">def</span> <span class="nf">getSameLengthFormattedEntities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the sameLengthFormattedEntities value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">regexEntities</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setSelectiveObfuscationModes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes">[docs]</a>    <span class="k">def</span> <span class="nf">setSelectiveObfuscationModes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
@@ -1024,13 +1028,13 @@ document.write(`
 <span class="sd">    ...     .setOutputCol(&quot;sentence&quot;) \\</span>
 <span class="sd">    ...     .setUseAbbreviations(True)</span>
 <span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; tokenizer = Tokenizer() \</span>
-<span class="sd">    ...     .setInputCols([&quot;sentence&quot;]) \</span>
+<span class="sd">    &gt;&gt;&gt; tokenizer = Tokenizer() \\</span>
+<span class="sd">    ...     .setInputCols([&quot;sentence&quot;]) \\</span>
 <span class="sd">    ...     .setOutputCol(&quot;token&quot;)</span>
 <span class="sd">    ...</span>
-<span class="sd">    &gt;&gt; embeddings = WordEmbeddingsModel \</span>
-<span class="sd">    ...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \</span>
-<span class="sd">    ...     .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \</span>
+<span class="sd">    &gt;&gt; embeddings = WordEmbeddingsModel \\</span>
+<span class="sd">    ...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \\</span>
+<span class="sd">    ...     .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \\</span>
 <span class="sd">    ...     .setOutputCol(&quot;embeddings&quot;)</span>
 <span class="sd">    ...</span>
 <span class="sd">     Ner entities</span>
@@ -1399,6 +1403,8 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">returnEntityMappings</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.getRegexEntities"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getRegexEntities">[docs]</a>    <span class="k">def</span> <span class="nf">getRegexEntities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return teh regexEntities value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">regexEntities</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setUseShifDays"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setUseShifDays">[docs]</a>    <span class="k">def</span> <span class="nf">setUseShifDays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
@@ -1462,6 +1468,8 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">sameLengthFormattedEntities</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.getSameLengthFormattedEntities"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getSameLengthFormattedEntities">[docs]</a>    <span class="k">def</span> <span class="nf">getSameLengthFormattedEntities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the sameLengthFormattedEntities value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">regexEntities</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
