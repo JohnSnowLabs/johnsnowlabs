@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Detect Generic PHI for Deidentification purposes (Arabic)
+title: Detect Generic PHI for Deidentification (Arabic)
 author: John Snow Labs
 name: ner_deid_generic
 date: 2023-05-30
@@ -20,7 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 
 Named Entity Recognition annotators allow for a generic model to be trained by using a Deep Learning architecture (Char CNNs - BiLSTM - CRF - word embeddings) inspired on a former state of the art model for NER: Chiu & Nicols, Named Entity Recognition with Bidirectional LSTM,CNN. 
 
-Deidentification NER (Arabic) is a Named Entity Recognition model that annotates text to find protected health information that may need to be de-identified. It detects 8 entities. This NER model is trained with a combination of custom datasets,  and several data augmentation mechanisms. This model  Word2Vec Arabic Clinical Embeddings.
+Deidentification NER (Arabic) is a Named Entity Recognition model that annotates text to find protected health information that may need to be de-identified. It detects 8 entities. This NER model is trained with a combination of custom datasets, and several data augmentation mechanisms. This model  Word2Vec Arabic Clinical Embeddings.
 
 ## Predicted Entities
 
@@ -38,6 +38,7 @@ Deidentification NER (Arabic) is a Named Entity Recognition model that annotates
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
         .setInputCol("text")\
@@ -54,7 +55,6 @@ tokenizer = Tokenizer()\
 embeddings = WordEmbeddingsModel.pretrained("arabic_w2v_cc_300d", "ar")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
-
 
 clinical_ner_subentity = MedicalNerModel.pretrained("ner_deid_generic", "ar", "clinical/models")\
         .setInputCols(["sentence","token","embeddings"])\
@@ -90,8 +90,8 @@ text = '''
 data = spark.createDataFrame([[text]]).toDF("text")
 results = nlpPipeline .fit(data).transform(data)
 
-
 ```
+
 ```scala
 val documentAssembler = new DocumentAssembler()
 .setInputCol("text")
@@ -187,5 +187,15 @@ Data augmentation techniques
 ## Benchmarking
 
 ```bash
-label     tp    fp    fn  total  precision  recall      f1   CONTACT  146.0   0.0   6.0  152.0        1.0  0.9605  0.9799      NAME  685.0  25.0  25.0  710.0     0.9648  0.9648  0.9648      DATE  876.0  14.0   9.0  885.0     0.9843  0.9898   0.987        ID   28.0   9.0   2.0   30.0     0.7568  0.9333  0.8358       SEX  300.0   8.0  69.0  369.0      0.974   0.813  0.8863  LOCATION  689.0  48.0  38.0  727.0     0.9349  0.9477  0.9413PROFESSION  303.0  20.0  32.0  335.0     0.9381  0.9045   0.921       AGE  608.0   7.0   9.0  617.0     0.9886  0.9854   0.987     macro     -     -     -      -       -       -      0.9378     micro     -     -     -      -       -       -      0.9572
+     label     tp    fp    fn  total  precision  recall      f1
+   CONTACT  146.0   0.0   6.0  152.0        1.0  0.9605  0.9799
+      NAME  685.0  25.0  25.0  710.0     0.9648  0.9648  0.9648
+      DATE  876.0  14.0   9.0  885.0     0.9843  0.9898   0.987
+        ID   28.0   9.0   2.0   30.0     0.7568  0.9333  0.8358
+       SEX  300.0   8.0  69.0  369.0      0.974   0.813  0.8863
+  LOCATION  689.0  48.0  38.0  727.0     0.9349  0.9477  0.9413
+PROFESSION  303.0  20.0  32.0  335.0     0.9381  0.9045   0.921
+       AGE  608.0   7.0   9.0  617.0     0.9886  0.9854   0.987
+     macro     -     -     -      -       -       -      0.9378
+     micro     -     -     -      -       -       -      0.9572
 ```
