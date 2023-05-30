@@ -27,8 +27,8 @@ This pretrained model maps entities with their corresponding ICD-10-CM codes.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_mapper_en_4.4.2_3.0_1685464316195.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_mapper_en_4.4.2_3.0_1685464316195.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10cm_mapper_en_4.4.2_3.0_1685478700624.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10cm_mapper_en_4.4.2_3.0_1685478700624.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -130,7 +130,7 @@ val mapper_pipeline = new Pipeline().setStages(Array(
 
 val data = Seq("A 35-year-old male with a history of chronic renal insufficiency, type 2 diabetes mellitus diagnosed eight years prior, hypertension, and hyperlipidemia, presented with a two-week history of polydipsia, poor appetite, and vomiting.").toDS.toDF("text")
 
-val result = pipeline.fit(data).transform(data) 
+val result = pipeline.fit(data).transform(data)
 ```
 </div>
 
