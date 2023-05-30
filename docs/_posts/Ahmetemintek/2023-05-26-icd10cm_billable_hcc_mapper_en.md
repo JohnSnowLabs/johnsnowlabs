@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps ICD-10-CM codes with their corresponding billable and HCC scores. If there is no HCC score for the corresponding icd10cm code, result will be returned as 0.
+This pretrained model maps ICD-10-CM codes with their corresponding billable and HCC scores. If there is no HCC score for the corresponding icd-10-cm code, result will be returned as 0.
 
 ## Predicted Entities
 
@@ -81,16 +81,11 @@ val result= pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-+------------+--------+---------+
-|icd10cm_code|mappings|relation |
-+------------+--------+---------+
-|D66         |1       |billable |
-|D66         |46      |hcc_score|
-|S22.00      |0       |billable |
-|S22.00      |0       |hcc_score|
-|Z3A.10      |1       |billable |
-|Z3A.10      |0       |hcc_score|
-+------------+--------+---------+
+| icd10cm_code | billable | hcc_score |
+|--------------|----------|-----------|
+| D66          | 1        | 46        |
+| S22.00       | 0        | 0         |
+| Z3A.10       | 1        | 0         |
 ```
 
 {:.model-param}
