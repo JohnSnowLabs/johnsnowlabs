@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Detect PHI for Deidentification purposes (Arabic)
+title: Detect Subentity PHI for Deidentification (Arabic)
 author: John Snow Labs
 name: ner_deid_subentity
 date: 2023-05-29
@@ -20,7 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 
 Named Entity Recognition annotators allow for a generic model to be trained by using a Deep Learning architecture (Char CNNs - BiLSTM - CRF - word embeddings) inspired on a former state of the art model for NER: Chiu & Nicols, Named Entity Recognition with Bidirectional LSTM,CNN. 
 
-Deidentification NER (Arabic) is a Named Entity Recognition model that annotates text to find protected health information that may need to be de-identified. It detects 17 entities. This NER model is trained with a combination of custom datasets,  and several data augmentation mechanisms. This model  Word2Vec Arabic Clinical Embeddings.
+Deidentification NER (Arabic) is a Named Entity Recognition model that annotates text to find protected health information that may need to be de-identified. It detects 17 entities. This NER model is trained with a combination of custom datasets, and several data augmentation mechanisms. This model  Word2Vec Arabic Clinical Embeddings.
 
 ## Predicted Entities
 
@@ -38,6 +38,7 @@ Deidentification NER (Arabic) is a Named Entity Recognition model that annotates
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
         .setInputCol("text")\
@@ -81,6 +82,7 @@ data = spark.createDataFrame([[text]]).toDF("text")
 results = nlpPipeline .fit(data).transform(data)
 
 ```
+
 ```scala
 val documentAssembler = new DocumentAssembler()
 .setInputCol("text")
