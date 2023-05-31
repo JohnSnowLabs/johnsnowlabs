@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Sentence Entity Resolver for HCC codes (Augmented)
+title: Sentence Entity Resolver for Hierarchical Condition Categories (HCC) codes (Augmented)
 author: John Snow Labs
 name: sbiobertresolve_hcc_augmented
 date: 2023-05-31
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps extracted medical entities to HCC codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
+This model maps extracted medical entities to Hierarchical Condition Categories (HCC) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
 
 ## Predicted Entities
 
@@ -58,22 +58,21 @@ ner_model = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models") 
 		.setOutputCol("ner")
 
 ner_converter = NerConverterInternal() \
-    .setInputCols(["sentence", "token", "ner"]) \
-    .setOutputCol("ner_chunk")\
-    .setWhiteList(["PROBLEM"])
+ 	       .setInputCols(["sentence", "token", "ner"]) \
+	       .setOutputCol("ner_chunk")\
+	       .setWhiteList(["PROBLEM"])
 
 chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
 
-sbert_embedder = BertSentenceEmbeddings\
-.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-.setInputCols(["ner_chunk_doc"])\
-.setOutputCol("sbert_embeddings")
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
+	       .setInputCols(["ner_chunk_doc"])\
+	       .setOutputCol("sbert_embeddings")
 
 resolver = SentenceEntityResolverModel\
-  .pretrained("sbiobertresolve_hcc_augmented","en", "clinical/models") \
-  .setInputCols(["ner_chunk", "sbert_embeddings"]) \
-  .setOutputCol("resolution")\
-  .setDistanceFunction("EUCLIDEAN")
+	       .pretrained("sbiobertresolve_hcc_augmented","en", "clinical/models") \
+	       .setInputCols(["ner_chunk", "sbert_embeddings"]) \
+	       .setOutputCol("resolution")\
+	       .setDistanceFunction("EUCLIDEAN")
 
 
 nlpPipeline = Pipeline(stages=[document_assembler, 
@@ -143,14 +142,16 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-| ner_chunk                   | entity   |   hcc_code   | all_codes                       | resolutions                                                                                                                 |   
-|:----------------------------|:---------|-------------:|:--------------------------------|:----------------------------------------------------------------------------------------------------------------------------|
-| hypertension                | PROBLEM  |            0 | [0]                             | [hypertension [essential (primary) hypertension]]                                                                           | 
-| chronic renal insufficiency | PROBLEM  |            0 | [0, 136]                        | [chronic renal insufficiency [chronic kidney disease, unspecified], end stage chronic renal failure [chronic kidney         | 
-| COPD                        | PROBLEM  |          111 | [111, 80, 0, 23, 47]            | [copd [chronic obstructive pulmonary disease, unspecified], coning [compression of brain], esp [other symptoms and ]]       | 
-| gastitis                    | PROBLEM  |            0 | [0]                             | [gastritis [gastritis, unspecified, without bleeding]]                                                                      |
-| TIA                         | PROBLEM  |            0 | [0, 12, 48]                     | [tia [transient cerebral ischemic attack, unspecified], tsh-oma [benign neoplasm of pituitary gland], itp [immune t         | 
-| hypotension                 | PROBLEM  |            0 | [0]                             | [hypotension [hypotension]]                                                                                                 |
++---------------------------+-------+----------+--------------------+---------------------------------------------------------------------------+
+|                  ner_chunk| entity|icd10_code|           all_codes|                                                                resolutions|
++---------------------------+-------+----------+--------------------+---------------------------------------------------------------------------+
+|               hypertension|PROBLEM|         0|                 [0]|                          [hypertension [essential (primary) hypertension]]|
+|chronic renal insufficiency|PROBLEM|         0|            [0, 136]|[chronic renal insufficiency [chronic kidney disease, unspecified], end ...|
+|                       COPD|PROBLEM|       111|[111, 80, 0, 23, 47]|[copd [chronic obstructive pulmonary disease, unspecified], coning [comp...|
+|                  gastritis|PROBLEM|         0|                 [0]|                     [gastritis [gastritis, unspecified, without bleeding]]|
+|                        TIA|PROBLEM|         0|         [0, 12, 48]|[tia [transient cerebral ischemic attack, unspecified], tsh-oma [benign ...|
+|                hypotension|PROBLEM|         0|                 [0]|                                                [hypotension [hypotension]]|
++---------------------------+-------+----------+--------------------+---------------------------------------------------------------------------+
 
 ```
 
