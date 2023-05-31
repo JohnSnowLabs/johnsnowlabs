@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 4.4.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel</title>
-          <meta name="description" content="Spark NLP 4.4.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
-          <meta name="keywords" content="Spark NLP 4.4.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
+          <title>Spark NLP 4.4.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel</title>
+          <meta name="description" content="Spark NLP 4.4.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
+          <meta name="keywords" content="Spark NLP 4.4.3 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 4.4.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 4.4.3 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -1057,6 +1057,28 @@ The similarity is based on the Levenshtein Distance between the words.
       </span>
       
       
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#entityCasingModes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="entityCasingModes:com.johnsnowlabs.nlp.serialization.StructFeature[Map[String,Array[String]]]"></a><a id="entityCasingModes:StructFeature[Map[String,Array[String]]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#entityCasingModes:com.johnsnowlabs.nlp.serialization.StructFeature[Map[String,Array[String]]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">entityCasingModes</span><span class="result">: <span class="extype" name="com.johnsnowlabs.nlp.serialization.StructFeature">StructFeature</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Dictionary with entity casing modes that match some entities
+'lowercase': Converts all characters to lower case using the rules of the default locale.</p><div class="fullcomment"><div class="comment cmt"><p>Dictionary with entity casing modes that match some entities
+'lowercase': Converts all characters to lower case using the rules of the default locale.
+'uppercase': Converts all characters to upper case using the rules of the default locale.
+'capitalize': Converts the first character to upper case and converts others to lower case.
+'titlecase': Converts the first character in every token to upper case and converts others to lower case.
+</p></div></div>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -1241,6 +1263,26 @@ The similarity is based on the Levenshtein Distance between the words.
       <p class="shortcomment cmt">Select the fixed mask length: this is the length of the masking sequence that will be used when the 'fixed_length_chars' masking
 policy is selected.</p><div class="fullcomment"><div class="comment cmt"><p>Select the fixed mask length: this is the length of the masking sequence that will be used when the 'fixed_length_chars' masking
 policy is selected.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#genderAwareness" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="genderAwareness:org.apache.spark.ml.param.BooleanParam"></a><a id="genderAwareness:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#genderAwareness:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">genderAwareness</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt"> Whether to use gender-aware names or not during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p> Whether to use gender-aware names or not during obfuscation.
+ This param effects only names.
+ If value is true, it might decrease performance.
+ Default: False
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#get" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="get[K,V](feature:com.johnsnowlabs.nlp.serialization.MapFeature[K,V]):Option[Map[K,V]]"></a><a id="get[K,V](MapFeature[K,V]):Option[Map[K,V]]"></a>
@@ -1472,6 +1514,22 @@ This method is called for each sentence in the input collection of Annotations
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#getEntityCasingModes" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getEntityCasingModes:Option[Map[String,Array[String]]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#getEntityCasingModes:Option[Map[String,Array[String]]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getEntityCasingModes</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]]</span>
+      </span>
+      
+      
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#getFakersEntity" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getFakersEntity(entity:String,result:String):Seq[String]"></a><a id="getFakersEntity(String,String):Seq[String]"></a>
       <span class="permalink">
@@ -1650,6 +1708,38 @@ This method is called for each sentence in the input collection of Annotations
       <p class="shortcomment cmt">Returns the NER Annotations for each Annotation instance in the input Sequence
 </p><div class="fullcomment"><div class="comment cmt"><p>Returns the NER Annotations for each Annotation instance in the input Sequence
 </p></div><dl class="paramcmts block"><dt class="param">annotations</dt><dd class="cmt"><p>a Sequence of Annotation instances</p></dd><dt>returns</dt><dd class="cmt"><p>a Sequence of Sequence[IndexedToken], each Sequence represents tokens from each input Annotation</p></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#getNumberOfChars" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getNumberOfChars(df:org.apache.spark.sql.DataFrame):Int"></a><a id="getNumberOfChars(DataFrame):Int"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#getNumberOfChars(df:org.apache.spark.sql.DataFrame):Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getNumberOfChars</span><span class="params">(<span name="df">df: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#getNumberOfPages" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="getNumberOfPages(df:org.apache.spark.sql.DataFrame):Int"></a><a id="getNumberOfPages(DataFrame):Int"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#getNumberOfPages(df:org.apache.spark.sql.DataFrame):Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getNumberOfPages</span><span class="params">(<span name="df">df: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>)</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#getObfuscateDate" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getObfuscateDate:Boolean"></a>
       <span class="permalink">
@@ -1963,6 +2053,22 @@ This method is called for each sentence in the input collection of Annotations
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#hasOcrColumns" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="hasOcrColumns(dataset:org.apache.spark.sql.DataFrame):Boolean"></a><a id="hasOcrColumns(DataFrame):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#hasOcrColumns(dataset:org.apache.spark.sql.DataFrame):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hasOcrColumns</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      
     </li><li name="org.apache.spark.ml.param.Params#hasParam" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hasParam(paramName:String):Boolean"></a><a id="hasParam(String):Boolean"></a>
       <span class="permalink">
@@ -2920,7 +3026,7 @@ For date entities this method doesn't apply.
       
       <p class="shortcomment cmt">List of formatted entities to generate the same length outputs as original ones during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>List of formatted entities to generate the same length outputs as original ones during obfuscation.
 The supported and default formatted entities are:
-&quot;phone&quot;, &quot;fax&quot;, &quot;id&quot;, &quot;idnum&quot;, &quot;bioid&quot;, &quot;medicalrecord&quot;, &quot;zip&quot;, &quot;vin&quot;, &quot;ssn&quot;, &quot;dln&quot;, &quot;plate&quot;, &quot;license&quot;.
+&quot;phone&quot;, &quot;fax&quot;, &quot;id&quot;, &quot;idnum&quot;, &quot;bioid&quot;, &quot;medicalrecord&quot;, &quot;zip&quot;, &quot;vin&quot;, &quot;ssn&quot;, &quot;dln&quot;, &quot;plate&quot;, &quot;license&quot;, &quot;IRS&quot;, &quot;CFN&quot;.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.util.MLWritable#save" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="save(path:String):Unit"></a><a id="save(String):Unit"></a>
@@ -3341,6 +3447,27 @@ The similarity is based on the Levenshtein Distance between the words.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#setEntityCasingModes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setEntityCasingModes(value:Map[String,Array[String]]):DeIdentificationModel.this.type"></a><a id="setEntityCasingModes(Map[String,Array[String]]):DeIdentificationModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#setEntityCasingModes(value:Map[String,Array[String]]):DeIdentificationModel.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setEntityCasingModes</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Set dictionary with entity casing modes that match some entities.</p><div class="fullcomment"><div class="comment cmt"><p>Set dictionary with entity casing modes that match some entities.
+'lowercase': Converts all characters to lower case using the rules of the default locale.
+'uppercase': Converts all characters to upper case using the rules of the default locale.
+'capitalize': Converts the first character to upper case and converts others to lower case.
+'titlecase': Converts the first character in every token to upper case and converts others to lower case.
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setFixedMaskLength" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="setFixedMaskLength(value:Int):DeIdentificationParams.this.type"></a><a id="setFixedMaskLength(Int):DeIdentificationModel.this.type"></a>
       <span class="permalink">
@@ -3359,6 +3486,26 @@ The similarity is based on the Levenshtein Distance between the words.
       <p class="shortcomment cmt">fixed mask length: this is the length of the masking sequence that will be used when the 'fixed_length_chars' masking
 policy is selected.</p><div class="fullcomment"><div class="comment cmt"><p>fixed mask length: this is the length of the masking sequence that will be used when the 'fixed_length_chars' masking
 policy is selected.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setGenderAwareness" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setGenderAwareness(value:Boolean):DeIdentificationParams.this.type"></a><a id="setGenderAwareness(Boolean):DeIdentificationModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#setGenderAwareness(value:Boolean):DeIdentificationParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setGenderAwareness</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to use gender-aware names or not during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to use gender-aware names or not during obfuscation.
+This param effects only names.
+If value is true, it might decrease performance.
+Default: False
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setIgnoreRegex" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setIgnoreRegex(s:Boolean):DeIdentificationParams.this.type"></a><a id="setIgnoreRegex(Boolean):DeIdentificationModel.this.type"></a>
@@ -3737,7 +3884,7 @@ For date entities this method doesn't apply.
       
       <p class="shortcomment cmt">List of formatted entities to generate the same length outputs as original ones during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>List of formatted entities to generate the same length outputs as original ones during obfuscation.
 The supported and default formatted entities are:
-PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.
+PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE, IRS, CFN.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#setSeed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setSeed(s:Int):DeIdentificationModel.this.type"></a><a id="setSeed(Int):DeIdentificationModel.this.type"></a>
