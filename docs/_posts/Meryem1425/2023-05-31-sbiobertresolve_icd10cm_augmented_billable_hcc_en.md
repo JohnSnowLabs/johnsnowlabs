@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps extracted medical entities to ICD-10-CM codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings and it supports 7-digit codes with HCC status. It has been updated by dropping the invalid codes that exist in the previous versions. In the result, look for the `all_k_aux_labels` parameter in the metadata to get HCC status. The HCC status can be divided to get further information: `billable status`, `hcc status`, and `hcc score`.
+This model maps extracted medical entities to ICD-10-CM codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings and it supports 7-digit codes with HCC status. It has been updated by dropping the invalid codes that exist in the previous versions. In the result, look for the `all_k_aux_labels` parameter in the metadata to get HCC status. The HCC status can be divided to get further information: `billable status`, `hcc status`, and `hcc score`. For example if the result is `1||1||8`: `the billable status is 1`, `hcc status is 1`, and `hcc score is 8`.
 
 ## Predicted Entities
 
@@ -32,7 +32,7 @@ This model maps extracted medical entities to ICD-10-CM codes using `sbiobert_ba
 
 ## How to use
 
-`sbiobertresolve_icd10cm_augmented_billable_hcc` resolver model must be used with `sbiobert_base_cased_mli` as embeddings `ner_clinical` as NER model. `PROBLEM` set in `.setWhiteList()`.
+`sbiobertresolve_icd10cm_augmented_billable_hcc` resolver model must be used with `sbiobert_base_cased_mli` as embeddings.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
