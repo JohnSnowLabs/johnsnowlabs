@@ -20,7 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 
 This model maps clinical entities and concepts to ICD-10-CM codes using sentence bert embeddings. In this model, synonyms having low cosine similarity to unnormalized terms are dropped. It also returns the official resolution text within the brackets inside the metadata. The model is augmented with synonyms, and previous augmentations are flexed according to cosine distances to unnormalized terms (ground truths).
 
-Outputs 7-digit billable ICD codes. In the result, look for aux_label parameter in the metadata to get Hierarchical Condition Categories (HCC) status. The HCC status can be divided to get further information: billable status, hcc status, and hcc score.For example, in the example shared below the billable status is 1, hcc status is 1, and hcc score is 11.
+Outputs 7-digit billable ICD codes. In the result, look for aux_label parameter in the metadata to get Hierarchical Condition Categories (HCC) status. This column can be divided to get further details: `billable status || hcc status || hcc score`. For example, if `all_k_aux_labels` is like `1||1||19` which means the `billable status` is 1, `hcc status` is 1, and `hcc score` is 19.
 
 ## Predicted Entities
 
