@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 4.4.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams</title>
-          <meta name="description" content="Spark NLP 4.4.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams" />
-          <meta name="keywords" content="Spark NLP 4.4.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams" />
+          <title>Spark NLP 4.4.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams</title>
+          <meta name="description" content="Spark NLP 4.4.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams" />
+          <meta name="keywords" content="Spark NLP 4.4.3 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 4.4.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 4.4.3 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -786,6 +786,26 @@ The similarity is based on the Levenshtein Distance between the words.</p>
       
       <p class="shortcomment cmt">Select the fixed mask length: this is the length of the masking sequence that will be used when the 'fixed_length_chars' masking
 policy is selected.</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#genderAwareness" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="genderAwareness:org.apache.spark.ml.param.BooleanParam"></a><a id="genderAwareness:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationParams.html#genderAwareness:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">genderAwareness</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt"> Whether to use gender-aware names or not during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p> Whether to use gender-aware names or not during obfuscation.
+ This param effects only names.
+ If value is true, it might decrease performance.
+ Default: False
+</p></div></div>
     </li><li name="org.apache.spark.ml.param.Params#get" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="get[T](param:org.apache.spark.ml.param.Param[T]):Option[T]"></a><a id="get[T](Param[T]):Option[T]"></a>
       <span class="permalink">
@@ -1340,7 +1360,7 @@ For date entities this method doesn't apply.</p>
       
       <p class="shortcomment cmt">List of formatted entities to generate the same length outputs as original ones during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>List of formatted entities to generate the same length outputs as original ones during obfuscation.
 The supported and default formatted entities are:
-&quot;phone&quot;, &quot;fax&quot;, &quot;id&quot;, &quot;idnum&quot;, &quot;bioid&quot;, &quot;medicalrecord&quot;, &quot;zip&quot;, &quot;vin&quot;, &quot;ssn&quot;, &quot;dln&quot;, &quot;plate&quot;, &quot;license&quot;.
+&quot;phone&quot;, &quot;fax&quot;, &quot;id&quot;, &quot;idnum&quot;, &quot;bioid&quot;, &quot;medicalrecord&quot;, &quot;zip&quot;, &quot;vin&quot;, &quot;ssn&quot;, &quot;dln&quot;, &quot;plate&quot;, &quot;license&quot;, &quot;IRS&quot;, &quot;CFN&quot;.
 </p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#seed" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
       <a id="seed:org.apache.spark.ml.param.IntParam"></a><a id="seed:IntParam"></a>
@@ -1575,6 +1595,26 @@ The similarity is based on the Levenshtein Distance between the words.</p>
       
       <p class="shortcomment cmt">fixed mask length: this is the length of the masking sequence that will be used when the 'fixed_length_chars' masking
 policy is selected.</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setGenderAwareness" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setGenderAwareness(value:Boolean):DeIdentificationParams.this.type"></a><a id="setGenderAwareness(Boolean):DeIdentificationParams.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationParams.html#setGenderAwareness(value:Boolean):DeIdentificationParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setGenderAwareness</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to use gender-aware names or not during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to use gender-aware names or not during obfuscation.
+This param effects only names.
+If value is true, it might decrease performance.
+Default: False
+</p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setIgnoreRegex" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setIgnoreRegex(s:Boolean):DeIdentificationParams.this.type"></a><a id="setIgnoreRegex(Boolean):DeIdentificationParams.this.type"></a>
       <span class="permalink">
@@ -1844,7 +1884,7 @@ For date entities this method doesn't apply.</p>
       
       <p class="shortcomment cmt">List of formatted entities to generate the same length outputs as original ones during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>List of formatted entities to generate the same length outputs as original ones during obfuscation.
 The supported and default formatted entities are:
-PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.
+PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE, IRS, CFN.
 </p></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setSeed" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
       <a id="setSeed(s:Int):DeIdentificationParams.this.type"></a><a id="setSeed(Int):DeIdentificationParams.this.type"></a>
