@@ -2774,7 +2774,7 @@ and their respective ISO-639-3 and ISO 630-2 codes are :
 
 #### Additional NLU resources
 * [140+ NLU Tutorials](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
@@ -2837,7 +2837,7 @@ Integrates models from [Spark NLP For Healthcare 3.4.2](https://nlp.johnsnowlabs
 
 #### Additional NLU resources
 * [140+ NLU Tutorials](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
@@ -2966,7 +2966,7 @@ and Relation extractors for Temporality and Causality of Drugs and Adverse Event
 
 #### Additional NLU resources
 * [140+ NLU Tutorials](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
@@ -3180,7 +3180,7 @@ Integration for the 28 new models from the amazing [Spark NLP for healthcare 3.4
 
 * [NLU OCR tutorial notebook](https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/colab/ocr/ocr_for_img_pdf_docx_files.ipynb)
 * [140+ NLU Tutorials](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
@@ -3481,7 +3481,7 @@ Added documentation section regarding compatibility of NLU, Spark NLP and Spark 
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
@@ -3794,7 +3794,7 @@ you have a Pyarrow version installed that works with your Pyspark version.
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
@@ -4093,7 +4093,7 @@ See https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html for mor
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
@@ -6244,7 +6244,7 @@ In the following table the NLU and Spark-NLP references are listed:
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 1100+ models & pipelines in 192+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
@@ -6696,7 +6696,7 @@ hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented wit
 * [New Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 1100+ models & pipelines in 192+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
@@ -6893,7 +6893,7 @@ All of the [140+ NLU tutorial Notebooks](https://github.com/JohnSnowLabs/nlu/tre
 * [Updated visualization docs](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples)
 * [Models Hub](https://nlp.johnsnowlabs.com/models) with new models
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
