@@ -18,7 +18,9 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical entities and concepts to ICD-10-CM codes using `sbert_jsl_medium_uncased` sentence bert embeddings and it supports 7-digit codes with HCC status. It also returns the official resolution text within the brackets inside the metadata. The model is augmented with synonyms, and previous augmentations are flexed according to cosine distances to unnormalized terms (ground truths).
+This model maps clinical entities and concepts to ICD-10-CM codes using `sbert_jsl_medium_uncased` sentence bert embeddings and it supports 7-digit codes with Hierarchical Condition Categories (HCC) status. It also returns the official resolution text within the brackets inside the metadata. The model is augmented with synonyms, and previous augmentations are flexed according to cosine distances to unnormalized terms (ground truths). 
+
+In the result, look for the `all_k_aux_labels` parameter in the metadata to get HCC status. This column can be divided to get further details: billable status || hcc status || hcc score. For example, if `all_k_aux_labels` is like `1||1||19` which means the `billable status` is 1, hcc status is 1, and `hcc score` is 19.
 
 ## Predicted Entities
 
