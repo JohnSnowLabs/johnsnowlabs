@@ -218,7 +218,7 @@ val result = assertionModel.transform(data)
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[AssertionFilterer](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/chunker/AssertionFilterer)
+[AssertionFilterer](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/chunker/AssertionFilterer.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}

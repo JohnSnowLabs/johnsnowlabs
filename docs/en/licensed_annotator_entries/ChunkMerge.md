@@ -23,7 +23,7 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[ChunkMergeModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/merge/ChunkMergeModel)
+[ChunkMergeModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/merge/ChunkMergeModel.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
@@ -401,7 +401,7 @@ val model = nlpPipeline.fit(data)
 {%- endcapture -%}
 
 {%- capture approach_api_link -%}
-[ChunkMergeApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/merge/ChunkMergeApproach)
+[ChunkMergeApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/merge/ChunkMergeApproach.html)
 {%- endcapture -%}
 
 {%- capture approach_python_api_link -%}

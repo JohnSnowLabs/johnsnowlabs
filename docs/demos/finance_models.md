@@ -32,5 +32,17 @@ data:
             url: https://demo.johnsnowlabs.com/finance/MODELS_FINANCE/ 
           - text: Colab
             type: blue_btn
-            url:      
+            url:    
+        - title: Explore Financial Large Language Models
+          id: explore_financial_large_language_models
+          image: 
+              src: /assets/images/Explore_Financial.svg
+          excerpt: This demo showcases our advanced Finance Large Language Models, which are designed to perform a range of tasks including Summarization, Question Answering, and Text Generation.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/FINANCE_LLM/
+          - text: Colab
+            type: blue_btn
+            url:  
 ---
