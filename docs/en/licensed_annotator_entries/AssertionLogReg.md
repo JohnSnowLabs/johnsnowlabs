@@ -36,7 +36,7 @@ ASSERTION
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[AssertionLogRegModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/logreg/AssertionLogRegModel)
+[AssertionLogRegModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/logreg/AssertionLogRegModel.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
@@ -349,7 +349,7 @@ val assertionModel = assertionPipeline.fit(dataset)
 {%- endcapture -%}
 
 {%- capture approach_api_link -%}
-[AssertionLogRegApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/logreg/AssertionLogRegApproach)
+[AssertionLogRegApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/logreg/AssertionLogRegApproach.html)
 {%- endcapture -%}
 
 {%- capture approach_python_api_link -%}

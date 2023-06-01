@@ -106,7 +106,7 @@ val snomedModel = bertExtractor.fit(snomedData)
 {%- endcapture -%}
 
 {%- capture api_link -%}
-[SentenceEntityResolverApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/SentenceEntityResolverApproach)
+[SentenceEntityResolverApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/SentenceEntityResolverApproach.html)
 {%- endcapture -%}
 
 {%- capture python_api_link -%}

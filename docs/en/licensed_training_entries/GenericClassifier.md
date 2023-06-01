@@ -83,7 +83,7 @@ val clf_model = pipeline.fit(data)
 {%- endcapture -%}
 
 {%- capture api_link -%}
-[GenericClassifierApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach)
+[GenericClassifierApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html)
 {%- endcapture -%}
 
 {%- capture python_api_link -%}

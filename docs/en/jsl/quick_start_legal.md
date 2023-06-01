@@ -136,7 +136,7 @@ Source: SESA CO.., 11/7/2016
 
 
 ### Custom Pipes
-Alternatively you can compose [Legal Annotators](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators) & [Open Source Annotators](https://nlp.johnsnowlabs.com/docs/en/jsl/annotators) into a pipeline which offers the highest degree of customization.
+Alternatively you can compose [Legal Annotators](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators) & [Open Source Annotators](https://nlp.johnsnowlabs.com/docs/en/annotators) into a pipeline which offers the highest degree of customization.
 
 ```python
 from johnsnowlabs import nlp,legal

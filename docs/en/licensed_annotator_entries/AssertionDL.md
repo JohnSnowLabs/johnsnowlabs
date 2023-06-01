@@ -358,7 +358,7 @@ val assertionModel = pipeline.fit(data)
 
 
 {%- capture model_api_link -%}
-[AssertionDLModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLModel)
+[AssertionDLModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLModel.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
@@ -652,7 +652,7 @@ val assertionResults = assertionModel.transform(data).cache()
 
 
 {%- capture approach_api_link -%}
-[AssertionDLApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLApproach)
+[AssertionDLApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLApproach.html)
 {%- endcapture -%}
 
 {%- capture approach_python_api_link -%}

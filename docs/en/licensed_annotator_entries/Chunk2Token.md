@@ -163,7 +163,7 @@ val trainingPipeline = new Pipeline().setStages(Array(document, sentenceDetector
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[Chunk2Token](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/Chunk2Token)
+[Chunk2Token](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/Chunk2Token.html)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
