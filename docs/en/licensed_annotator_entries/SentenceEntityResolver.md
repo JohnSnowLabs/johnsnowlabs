@@ -419,7 +419,7 @@ val result = pipeline.fit(data).transform(data)
 
 
 {%- capture model_api_link -%}
-[SentenceEntityResolverModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/SentenceEntityResolverModel)
+[SentenceEntityResolverModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/SentenceEntityResolverModel.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
@@ -685,7 +685,7 @@ val snomedModel = bertExtractor.fit(snomedData)
 {%- endcapture -%}
 
 {%- capture approach_api_link -%}
-[SentenceEntityResolverApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/SentenceEntityResolverApproach)
+[SentenceEntityResolverApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/SentenceEntityResolverApproach.html)
 {%- endcapture -%}
 
 {%- capture approach_python_api_link -%}

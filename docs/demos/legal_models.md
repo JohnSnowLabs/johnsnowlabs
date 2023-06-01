@@ -32,5 +32,17 @@ data:
             url: https://demo.johnsnowlabs.com/finance/MODELS_LEGAL/
           - text: Colab
             type: blue_btn
-            url:      
+            url:  
+        - title: Explore Legal Large Language Models 
+          id: explore_legal_large_language_models
+          image: 
+              src: /assets/images/Explore_Legal_Large.svg
+          excerpt: This demo showcases our advanced Legal Large Language Models, which are designed to perform a range of tasks including Summarization, Question Answering, and Text Generation.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/legal/LEGAL_LLM/
+          - text: Colab
+            type: blue_btn
+            url:     
 ---

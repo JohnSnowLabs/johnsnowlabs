@@ -5,7 +5,7 @@ seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
 permalink: /docs/en/spark_ocr_versions/ocr_release_notes
 key: docs-ocr-release-notes
-modify_date: "2023-03-14"
+modify_date: "2023-05-30"
 show_nav: true
 sidebar:
     nav: spark-ocr
@@ -13,51 +13,30 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 4.3.3
+## 4.4.2
 
-Release date: 14-03-2023
+Release date: 30-05-2023
 
-We're glad to announce that Visual NLP 😎 4.3.3 has been released.
+We are glad to announce that Visual NLP 😎 4.4.2 has been released. This is a small release with mostly bug fixes and minor improvements.
 
-### Highlights
-* New parameter keepOriginalEncoding in PdfToHocr.
-* New Yolo-based table and form detector. 
-* Memory consumption in VisualQuestionAnswering and ImageTableDetector models has been improved.
-* Fixes in AlabReader
-* Fixes in HocrToTextTable.
+#### Fixes
+* ImageTextDetectorV2 initialization bug happening in some cluster environments is now fixed.
+* PdfToText and PdfToHocr now return document dimensions using the same data type(integer).
+* Remaining 2 vulnerabilities from release 4.4.1 in JAR package are now gone. 
+* Fixed the problem causing the following exception in HocrToTextTable:  java.lang.UnsupportedOperationException.
 
-#### New parameter keepOriginalEncoding in PdfToHocr
-Now you can choose to make PdfToHocr return an ASCII normalized version of the characters present in the PDF(keepOriginalEncoding=False) or to return the original Unicode character(keepOriginalEncoding=True).
-Source PDF,
-![image](/assets/images/ocr/source.png)
+New Features
++ Bounding boxes spawning multiple lines are now supported in PositionFinder!
 
-Keeping the encoding,
-![image](/assets/images/ocr/keeping.png)
+original:
+![image](/assets/images/ocr/position_finder_1.png)
+masked:
+![image](/assets/images/ocr/position_finder_2.png)
 
-Not keeping it,
-![image](/assets/images/ocr/notkeeping.png)
+Here for "Lockheed Martin" PositionFinder will return two bounding boxes. Remember that you can still link the two bounding boxes to the original entity by using the 'chunk index'.
 
-
-#### New Yolo-based Table and Form detector
-This new model allows to distinguish between forms and tables, so you can apply different downstream processing afterwards.
-
-![image](/assets/images/ocr/form_tables.jpg)
-
-Check a full example of utilization in [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableAndFormDetection.ipynb).
-
-
-#### Memory consumption in VisualQuestionAnswering and ImageTableDetector models has been improved
-Memory utilization has been improved to make it more GC friendly. The practical result is that big jobs are more stable, and less likely to get restarted because of exhausting resources.
-
-
-#### Fixes in AlabReader
-AlabReader has been improved to fix some bugs, and to improve the performance.
-
-#### Fixes in HocrToTextTable
-HocrToTextTable has been improved in order to better handle some corner cases in which the last rows of tables were being missed.
-
-This release of Visual NLP is compatible with version 4.3.1 of Spark-NLP and version 4.3.1 of Spark NLP for Healthcare.
-
+* Support for Spark 3.4.
+* [Guidelines for building Visual NLP into a Java app.](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/java/build_env_setup.md)
 
 </div><div class="prev_ver h3-box" markdown="1">
 

@@ -140,7 +140,7 @@ Phone 74 617 042, 1407 west stassney lane, Edmonton, E-MAIL: Carliss@hotmail.com
 
 
 ### Custom Pipes
-Alternatively you can compose [Annotators](https://nlp.johnsnowlabs.com/docs/en/jsl/annotators) into a pipeline which offers the highest degree of customization 
+Alternatively you can compose [Annotators](https://nlp.johnsnowlabs.com/docs/en/annotators) into a pipeline which offers the highest degree of customization 
 ```python
 from johnsnowlabs import nlp,medical
 spark = nlp.start()

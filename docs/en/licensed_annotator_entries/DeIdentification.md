@@ -25,7 +25,7 @@ DOCUMENT
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[DeIdentificationModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel)
+[DeIdentificationModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
@@ -735,7 +735,7 @@ val pipeline = new Pipeline().setStages(Array(
 {%- endcapture -%}
 
 {%- capture approach_api_link -%}
-[DeIdentification](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/deid/DeIdentification)
+[DeIdentification](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html)
 {%- endcapture -%}
 
 {%- capture approach_python_api_link -%}

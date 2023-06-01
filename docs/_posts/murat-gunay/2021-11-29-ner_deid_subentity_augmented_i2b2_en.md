@@ -62,7 +62,7 @@ deid_ner = MedicalNerModel.pretrained("ner_deid_subentity_augmented_i2b2", "en",
       .setInputCols(["sentence", "token", "embeddings"]) \
       .setOutputCol("ner")
 
-ner_converter = NerConverter()\
+ner_converter = NerConverterInternal()\
       .setInputCols(["sentence", "token", "ner"])\
       .setOutputCol("ner_chunk_subentity")
 
@@ -74,9 +74,9 @@ nlpPipeline = Pipeline(stages=[
       deid_ner, 
       ner_converter])
 
-model = nlpPipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
+data = spark.createDataFrame([["""A. Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 years old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine."""]]).toDF("text")
 
-results = model.transform(spark.createDataFrame(pd.DataFrame({"text": ["""A. Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 years old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine."""]})))
+result = nlpPipeline.fit(data).transform(data)
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
@@ -99,7 +99,7 @@ val deid_ner = MedicalNerModel.pretrained("ner_deid_subentity_augmented_i2b2", "
       .setInputCols(Array("sentence", "token", "embeddings")) 
       .setOutputCol("ner")
 
-val ner_converter = NerConverter()
+val ner_converter = NerConverterInternal()
       .setInputCols(Array("sentence", "token", "ner"))
       .setOutputCol("ner_chunk_subentity")
 
@@ -111,7 +111,9 @@ val nlpPipeline = new Pipeline().setStages(Array(
       deid_ner, 
       ner_converter))
 
-val result = nlpPipeline.fit(Seq("""A. Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 years old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine.""").toDS.toDF("text")).transform(data)
+val data = Seq("""A. Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 years old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine.""").toDS.toDF("text")
+
+val result = nlpPipeline.fit(data).transform(data)
 ```
 
 
@@ -166,27 +168,27 @@ In-house annotations based on `2014 i2b2 Deid dataset`.
 (on official test set from 2014 i2b2 Deid Data-set)
 
 ```bash
-label  precision    recall  f1-score   support
-AGE       0.96      0.96      0.96       764
-CITY       0.83      0.84      0.84       260
-COUNTRY       0.79      0.85      0.82       117
-DATE       0.97      0.97      0.97      4980
-DEVICE       0.88      0.88      0.88         8
-DOCTOR       0.94      0.88      0.91      1912
-HOSPITAL       0.91      0.83      0.87       875
-IDNUM       0.84      0.85      0.84       195
-LOCATION-OTHER       0.86      0.46      0.60        13
-MEDICALRECORD       0.98      0.95      0.96       422
-ORGANIZATION       0.83      0.59      0.69        82
-PATIENT       0.93      0.93      0.93       879
-PHONE       0.93      0.91      0.92       215
+label       precision    recall  f1-score   support
+AGE              0.96      0.96      0.96       764
+CITY             0.83      0.84      0.84       260
+COUNTRY          0.79      0.85      0.82       117
+DATE             0.97      0.97      0.97      4980
+DEVICE           0.88      0.88      0.88         8
+DOCTOR           0.94      0.88      0.91      1912
+HOSPITAL         0.91      0.83      0.87       875
+IDNUM            0.84      0.85      0.84       195
+LOCATION-OTHER   0.86      0.46      0.60        13
+MEDICALRECORD    0.98      0.95      0.96       422
+ORGANIZATION     0.83      0.59      0.69        82
+PATIENT          0.93      0.93      0.93       879
+PHONE            0.93      0.91      0.92       215
 PROFESSION       0.84      0.75      0.79       179
-STATE       0.95      0.86      0.90       190
-STREET       0.96      0.97      0.97       136
-USERNAME       1.00      0.96      0.98        92
-ZIP       0.98      0.99      0.98       140
-micro-avg       0.95      0.92      0.94     11459
-macro-avg       0.86      0.81      0.83     11459
-weighted-avg       0.95      0.92      0.93     11459
+STATE            0.95      0.86      0.90       190
+STREET           0.96      0.97      0.97       136
+USERNAME         1.00      0.96      0.98        92
+ZIP              0.98      0.99      0.98       140
+micro-avg        0.95      0.92      0.94     11459
+macro-avg        0.86      0.81      0.83     11459
+weighted-avg     0.95      0.92      0.93     11459
 ```
 `FAX` and `EMAIL` has been removed from official i2b2 test-set since there is not enough data to train in the official i2b2 train-set.

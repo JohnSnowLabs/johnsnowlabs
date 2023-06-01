@@ -5,7 +5,7 @@ seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Spark NLP for Healthcare Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
 key: docs-licensed-release-notes
-modify_date: 2023-05-02
+modify_date: 2023-05-18
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,480 +13,475 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 4.4.1
+## 4.4.2
 
 #### Highlights
 
-We are pleased to announce the latest enhancements and features for Spark NLP for Healthcare. This release showcases significant improvements and updates, including:
 
-+ Introducing a new biogpt-chat-jsl model (LLM), fine-tuned for clinical conversations in healthcare settings.
-+ A specialized medical summarizer model (LLM) designed specifically for radiology report analysis.
-+ Eight new Voice of Patient (VOP) Named Entity Recognition (NER) models for detecting clinical terms expressed in patients' own words.
-+ Advanced Chunk Mapper models for precise mapping of NDC and HCPCS codes.
-+ Innovative Social Determinants of Health (SDOH) text classification models.
-+ Enhanced NER profiling with updated pre-trained pipelines, enabling the simultaneous execution of 100 clinical NER models.
-+ The implementation of a negative label feature for increased accuracy in the Zero Shot Relation Extraction Model.
-+ Allowing users to select specific entity tags in NameChunkObfuscator, 
-+ Multi-mode deidentification & obfuscation support in a single pass with the streamlined Deid module.
-+ Core improvements and bug fixes:
-    - Aligning ChunkMapperModel output metadata with `SentenceEntityResolverModel` metadata for seamless compatibility.
-    - Resolving issues with the `MedicalNerApproach` `setTagsMapping` parameter.
-    - Removing "non-sense" UNK tokens from text generators (e.g. BioGPt) for enhanced output quality.
-+ New and updated notebooks
-+ New and updated demos
-+ 17 new clinical models and pipelines added & updated in total
+We are thrilled to unveil the latest set of upgrades and advancements for Spark NLP for Healthcare. This edition brings to the fore a host of remarkable enhancements and updates, which are as follows:
+
++ The medical QA models now incorporates Flan-T5 models, significantly expanding its capacity.
++ We introduce a newly finetuned biogpt-chat-jsl model, fine-tuned with clinical conditions to produce more precise descriptions when prompted.
++ The brand-new medical summarizer model is designed to provide summarizations of clinical guidelines under predefined categories such as causes, symptoms, and more. 
++ Text summarization method utilizing a map-reduce approach for section-wise summarization.
++ New chunk mapper model to map ICD10CM codes with corresponding causes and claim analysis codes according to CDC guidelines.
++ The PHI obfuscation (De-identification module) now offers the ability to customize the casings of fake entities for each entity type.
++ Users now have the option to enable or disable the 'gender awareness' feature in the De-identification module.
++ A set of four new classifier models has been introduced, further broadening the scope of our toolkit.
++ We now offer new clinical NER models specifically designed for extracting clinical terms in the German language.
++ Core functionalities have been fine-tuned with numerous improvements and bug fixes.
++ We are introducing new and updated notebooks, and demonstrations, providing a more user-friendly experience.
++ We have added and updated a substantial number of new clinical models and pipelines, further solidifying our offering in the healthcare domain.
+
+We are confident that these enhancements will elevate your Spark NLP for Healthcare experience, enabling more accurate and streamlined processing of healthcare-related natural language data.
 
 
-We are committed to delivering exceptional tools and resources for healthcare professionals and researchers, and we look forward to your valuable feedback on these latest updates.
 
 </div><div class="h3-box" markdown="1">
 
-#### Introducing A New biogpt-chat-jsl Model (LLM), Fine-Tuned For Clinical Conversations In Healthcare Settings.
 
-We are excited to present the `biogpt_chat_jsl_conversational` text generator model, an advanced adaptation of the BioGPT-JSL model, meticulously fine-tuned with authentic medical conversations from clinical environments. This model is adept at answering clinical queries related to symptoms, medications, diagnostic tests, and various diseases.
+#### The Medical QA Models Now Incorporates Flan-T5 Models, Significantly Expanding Its Capacity
 
-In comparison to its predecessor, the `biogpt_chat_jsl` model, the new `biogpt_chat_jsl_conversational` model generates more succinct and focused responses, significantly enhancing the efficiency and user experience of our software. This cutting-edge model is poised to revolutionize the way healthcare professionals and researchers engage with clinical information.
+The newly incorporated `flan_t5_base_jsl_qa` model is meticulously designed to function seamlessly with the MedicalQuestionAnswering annotator. This innovative model is engineered to offer an efficacious solution for providing accurate answers and insightful information across a broad spectrum of domains. It is important to note that this is a general model and has not yet been fine-tuned for clinical texts. However, we are planning to carry out this specialized fine-tuning in our upcoming releases, further enhancing its applicability and precision in the clinical context.
 
 *Example*:
 
 ```python
-gpt_qa = MedicalTextGenerator.pretrained("biogpt_chat_jsl_conversational", "en", "clinical/models")\
-    .setInputCols("documents")\
+med_qa = MedicalQuestionAnswering.pretrained("flan_t5_base_jsl_qa", "en", "clinical/models")\
+    .setInputCols(["document_question", "document_context"])\
     .setOutputCol("answer")\
-    .setMaxNewTokens(100)
+    .setCustomPrompt("Question: {QUESTION}. Context: {DOCUMENT}")\
+    .setMaxNewTokens(70)\
+    .setTopK(1)
+    
 
-sample_text = "How to treat asthma?"
+paper_abstract = "We have previously reported the feasibility of diagnostic and therapeutic peritoneoscopy including liver biopsy, gastrojejunostomy, and tubal ligation by an oral transgastric approach. We present results of per-oral transgastric splenectomy in a porcine model. The goal of this study was to determine the technical feasibility of per-oral transgastric splenectomy using a flexible endoscope. We performed acute experiments on 50-kg pigs. All animals were fed liquids for 3 days prior to procedure. The procedures were performed under general anesthesia with endotracheal intubation. The flexible endoscope was passed per orally into the stomach and puncture of the gastric wall was performed with a needle knife. The puncture was extended to create a 1.5-cm incision using a pull-type sphincterotome, and a double-channel endoscope was advanced into the peritoneal cavity. The peritoneal cavity was insufflated with air through the endoscope. The spleen was visualized. The splenic vessels were ligated with endoscopic loops and clips, and then mesentery was dissected using electrocautery. Endoscopic splenectomy was performed on six pigs. There were no complications during gastric incision and entrance into the peritoneal cavity. Visualization of the spleen and other intraperitoneal organs was very good. Ligation of the splenic vessels and mobilization of the spleen were achieved using commercially available devices and endoscopic accessories."
+
+question = "How is transgastric endoscopic performed?"
 ```
 
 *Result*:
 
 ```bash
-answer: You have to take montelukast + albuterol tablet once or twice in day according to severity of symptoms. Montelukast is used as a maintenance therapy to relieve symptoms of asthma. Albuterol is used as a rescue therapy when symptoms are severe. You can also use inhaled corticosteroids ( ICS ) like budesonide or fluticasone for long term treatment.
+['Transgastric endoscopic surgery is a type of surgery that involves removing the obstructions from the heart and lungs. It involves removing the trachea, a small artery, and a small sphincter. The trachea is then removed and the sphincter is removed.']
 ```
 
 
 </div><div class="h3-box" markdown="1">
 
-#### A Specialized Medical Summarizer Model (LLM) Designed Specifically For Radiology Report Analysis.
 
-We are proud to unveil the `summarizer_radiology` model, a highly specialized tool engineered to efficiently distill radiology reports by pinpointing and retaining the most crucial information. This model enables users to rapidly access a succinct synopsis of a report's key findings without compromising on essential details.
+#### Introducing a Newly Finetuned biogpt-chat-jsl Model, based on Clinical Conditions.
 
-The `summarizer_radiology` model represents a significant advancement in the field of medical text analysis, offering unparalleled support to healthcare professionals in swiftly grasping the salient points of complex radiology reports and ultimately enhancing patient care outcomes.
+We are excited to present our newly fine-tuned biogpt-chat-jsl model. This model, known as `biogpt_chat_jsl_conditions`, is based on the robust BioGPT architecture and has been meticulously fine-tuned with questions pertaining to a wide array of medical conditions.
+
+Our team has concentrated on emphasizing the Q&A aspect, making it less conversational but highly focused on delivering accurate and insightful answers. This enhanced focus on question answering ensures that users can extract critical and relevant information quickly and accurately. This strategic fine-tuning with clinical guidelines strengthens the model's ability to provide superior results in the realm of medical NLP. 
 
 *Example*:
 
 ```python
-summarizer = MedicalSummarizer.pretrained("summarizer_radiology", "en", "clinical/models")\
+gpt_qa = MedicalTextGenerator.pretrained("biogpt_chat_jsl_conditions", "en", "clinical/models")\
+    .setInputCols("documents")\
+    .setOutputCol("answer")\
+    .setMaxNewTokens(199)
+
+text = "What are the potential causes and risk factors for developing cardiovascular disease?"
+```
+
+*Result*:
+
+```bash
+[Cardiovascular disease ( CVD ) is a general term for conditions affecting the heart or blood vessels. 
+It can be caused by a variety of factors, including smoking, high blood pressure, diabetes, high cholesterol, and obesity. Certain medical conditions, such as chronic kidney disease, can also increase the risk of developing CVD.]
+```
+
+
+</div><div class="h3-box" markdown="1">
+
+
+#### The Brand-New Medical Summarizer Model Designed To Provide Summarizations Of Clinical Guidelines Under Predefined Categories Such As Causes, Symptoms, And More.
+
+We are pleased to introduce the `summarizer_clinical_guidelines_large` model as part of our latest enhancements. This innovative Medical Summarizer Model is adept at providing succinct summarizations of clinical guidelines. At present, the model is equipped to handle guidelines for Asthma and Breast Cancer, though we plan to expand this repertoire in future iterations.
+
+One of the notable features of this model is its ability to neatly categorize summarizations into four distinct sections: Overview, Causes, Symptoms, and Treatments. This systematic segregation facilitates ease of understanding and aids in extracting specific information more efficiently.
+
+An additional technical specification to note is the model's context length, which stands at 768 tokens. This parameter ensures an optimal balance between detail and brevity, allowing for comprehensive yet concise summarizations.
+
+
+*Example*:
+
+```python
+summarizer = MedicalSummarizer.pretrained("summarizer_clinical_guidelines_large", "en", "clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("summary")\
+    .setMaxTextLength(768)\
+    .setMaxNewTokens(512)
+
+
+text = """Clinical Guidelines for Breast Cancer:
+Breast cancer is the most common type of cancer among women. It occurs when the cells in the breast start growing abnormally, forming a lump or mass. This can result in the spread of cancerous cells to other parts of the body. Breast cancer may occur in both men and women but is more prevalent in women.
+The exact cause of breast cancer is unknown. However, several risk factors can increase your likelihood of developing breast cancer, such as:
+- A personal or family history of breast cancer
+- A genetic mutation, such as BRCA1 or BRCA2
+- Exposure to radiation
+- Age (most commonly occurring in women over 50)
+- Early onset of menstruation or late menopause
+- Obesity
+- Hormonal factors, such as taking hormone replacement therapy
+Breast cancer may not present symptoms during its early stages. Symptoms typically manifest as the disease progresses. Some notable symptoms include:
+- A lump or thickening in the breast or underarm area
+- Changes in the size or shape of the breast
+- Nipple discharge
+- Nipple changes in appearance, such as inversion or flattening
+- Redness or swelling in the breast
+Treatment for breast cancer depends on several factors, including the stage of the cancer, the location of the tumor, and the individual's overall health. Common treatment options include:
+- Surgery (such as lumpectomy or mastectomy)
+- Radiation therapy
+- Chemotherapy
+- Hormone therapy
+- Targeted therapy
+Early detection is crucial for the successful treatment of breast cancer. Women are advised to routinely perform self-examinations and undergo regular mammogram testing starting at age 40. If you notice any changes in your breast tissue, consult with your healthcare provider immediately.""" 
+```
+
+
+*Result*:
+
+```bash
+Overview of the disease: Breast cancer is the most common type of cancer among women, occurring when the cells in the breast start growing abnormally, forming a lump or mass. It can result in the spread of cancerous cells to other parts of the body. 
+
+Causes: The exact cause of breast cancer is unknown, but several risk factors can increase the likelihood of developing it, such as a personal or family history, a genetic mutation, exposure to radiation, age, early onset of menstruation or late menopause, obesity, and hormonal factors. 
+
+Symptoms: Symptoms of breast cancer typically manifest as the disease progresses, including a lump or thickening in the breast or underarm area, changes in the size or shape of the breast, nipple discharge, nipple changes in appearance, and redness or swelling in the breast. 
+
+Treatment recommendations: Treatment for breast cancer depends on several factors, including the stage of the cancer, the location of the tumor, and the individual's overall health. Common treatment options include surgery, radiation therapy, chemotherapy, hormone therapy, and targeted therapy. Early detection is crucial for successful treatment of breast cancer. Women are advised to routinely perform self-examinations and undergo regular mammogram testing starting at age 40.
+```
+
+
+</div><div class="h3-box" markdown="1">
+
+
+
+
+
+#### Text Summarization Method Utilizing A Map-Reduce Approach For Section-Wise Summarization.
+
+We are pleased to announce the augmentation of our `MedicalSummarizer` annotator with the integration of advanced parameters. This enhancement broadens the scope of your medical summarization activities, granting you increased flexibility and helping to navigate the constraints of token limitations.
+
+These newly introduced parameters notably amplify the functionality of the annotator, equipping users with the ability to generate detailed and accurate summaries of medical documents. The MedicalSummarizer now utilizes a map-reduce approach, a method that progressively condenses separate text sections until the summary achieves the desired length.
+
+We are introducing the following parameters:
+
+- `setRefineSummary`: Activate this for a more refined summarization, albeit at a slightly increased computational cost.
+- `setRefineSummaryTargetLength`: Set your desired summary length in tokens (separated by whitespace). This feature is only operative when setRefineSummary is activated.
+- `setRefineChunkSize`: Define the size of refined chunks according to your preference. This size should match the LLM context window size in tokens. This feature is only operative when `setRefineSummary` is enabled.
+- `setRefineMaxAttempts`: Set the maximum number of attempts for re-summarizing chunks that exceed the `setRefineSummaryTargetLength` before discontinuation. This feature is only operative when setRefineSummary is enabled.
+
+These advancements in the MedicalSummarizer annotator underline our unwavering commitment to delivering cutting-edge tools that enable healthcare professionals and researchers to conduct more efficient and precise medical text analysis.
+
+*Example*:
+
+```python
+MedicalSummarizer.pretrained()\
     .setInputCols(["document"])\
     .setOutputCol("summary")\
     .setMaxTextLength(512)\
-    .setMaxNewTokens(512)
+    .setMaxNewTokens(512)\
+    .setDoSample(True)\
+    .setRefineSummary(True)\
+    .setRefineSummaryTargetLength(100)\
+    .setRefineMaxAttempts(3)\
+    .setRefineChunkSize(512)\
+            
 
-sample_text = """INDICATIONS: Peripheral vascular disease with claudication.
-RIGHT:
-  1. Normal arterial imaging of right lower extremity.
-  2. Peak systolic velocity is normal.
-  3. Arterial waveform is triphasic.
-  4. Ankle brachial index is 0.96.
-LEFT:
-  1. Normal arterial imaging of left lower extremity.
-  2. Peak systolic velocity is normal.
-  3. Arterial waveform is triphasic throughout except in posterior tibial artery where it is biphasic.
-  4. Ankle brachial index is 1.06.
-IMPRESSION:
-  Normal arterial imaging of both lower lobes.
-"""
+text = """The patient is a pleasant 17-year-old gentleman who was playing basketball today in gym. Two hours prior to presentation, he started to fall and someone stepped on his ankle and kind of twisted his right ankle and he cannot bear weight on it now. It hurts to move or bear weight. No other injuries noted. He does not think he has had injuries to his ankle in the past.
+SOCIAL HISTORY: He does not drink or smoke.
+MEDICAL DECISION MAKING:
+He had an x-ray of his ankle that showed a small ossicle versus avulsion fracture of the talonavicular joint on the lateral view. He has had no pain over the metatarsals themselves. This may be a fracture based upon his exam. He does want to have me to put him in a splint. He was given Motrin here. He will be discharged home to follow up with Dr. X from Orthopedics.
+DISPOSITION: Crutches and splint were administered here. I gave him a prescription for Motrin and some Darvocet if he needs to length his sleep and if he has continued pain to follow up with Dr. X. Return if any worsening problems."""
+
 ```
 
 *Result*:
 
 ```bash
-The patient has peripheral vascular disease with claudication. The right lower extremity shows normal arterial imaging, but the peak systolic velocity is normal. The arterial waveform is triphasic throughout, except for the posterior tibial artery, which is biphasic. The ankle brachial index is 0.96. The impression is normal arterial imaging of both lower lobes.
+['An ankle exam revealed an osteocorotony in an injured man, who had pain on both Metatatsals. The physician prescribed sprained knee walker, thigh splinting for pain and crutches, but a calconavenous joint had a fracture. A physician will consult an orthopedic specialist for relief, follow up by the doctor, follow-down based on pain.']
 ```
 
 
 </div><div class="h3-box" markdown="1">
 
 
-#### Eight New Voice of Patient (VOP) Named Entity Recognition (NER) Models For Detecting Clinical Terms Expressed In Patients' Own Words.
-
-We are thrilled to introduce eight innovative Voice of Patient (VOP) Named Entity Recognition (NER) models, meticulously crafted to extract clinical terms from patients' unique linguistic expressions. These models empower healthcare professionals to analyze patient data with enhanced accuracy and efficiency, paving the way for more precise diagnoses and tailored treatment plans.
-
-By leveraging the capabilities of these VOP NER models, healthcare providers can better understand patients' perspectives, bridging the communication gap and fostering more effective patient-centered care.
 
 
-| model name                                 | description                              |            predicted entities             |
-|--------------------------------------------|------------------------------------------|-------------------------------------------|
-| [`ner_vop_anatomy_wip`](https://nlp.johnsnowlabs.com/2023/04/20/ner_vop_anatomy_wip_en.html)                 | Detecting anatomical terms expressed in patients' own words. | `Laterality`, `BodyPart` |
-| [`ner_vop_clinical_dept_wip`](https://nlp.johnsnowlabs.com/2023/04/20/ner_vop_clinical_dept_wip_en.html)     | Detecting medical devices and clinical department mentions terms expressed in patients' own words. | `MedicalDevice`, `AdmissionDischarge`, `ClinicalDept` |
-| [`ner_vop_demographic_wip`](https://nlp.johnsnowlabs.com/2023/04/20/ner_vop_demographic_wip_en.html)         | Detecting demographic terms expressed in patients' own words. | `SubstanceQuantity`, `RaceEthnicity`, `RelationshipStatus`, `Substance`, `Age`, `Employment`, `Gender` |
-| [`ner_vop_problem_reduced_wip`](https://nlp.johnsnowlabs.com/2023/04/20/ner_vop_problem_reduced_wip_en.html) | Detecting clinical condition terms expressed in patients' own words. | `Modifier`, `HealthStatus`, `Problem` |
-| [`ner_vop_problem_wip`](https://nlp.johnsnowlabs.com/2023/04/20/ner_vop_problem_wip_en.html)                 | Detecting clinical condition terms expressed in patients' own words using a granular taxonomy. | `InjuryOrPoisoning`, `Modifier`, `HealthStatus`, `Symptom`, `Disease`, `PsychologicalCondition` |
-| [`ner_vop_temporal_wip`](https://nlp.johnsnowlabs.com/2023/04/20/ner_vop_temporal_wip_en.html)               | Detecting temporal references terms expressed in patients' own words.| `Frequency`, `Duration`, `DateTime`|
-| [`ner_vop_test_wip`](https://nlp.johnsnowlabs.com/2023/04/20/ner_vop_test_wip_en.html)                       | Detecting test mention terms expressed in patients' own words. | `Measurements`, `TestResult`, `Test`, `VitalTest`|
-| [`ner_vop_treatment_wip`](https://nlp.johnsnowlabs.com/2023/04/20/ner_vop_treatment_wip_en.html)             | Detecting treatment terms expressed in patients' own words. | `Treatment`, `Frequency`, `Procedure`, `Route`, `Duration`, `Dosage`, `Drug`, `Form`|
+
+
+#### New Chunk Mapper Model To Map ICD10CM Codes With Corresponding Causes and Claim Analysis Codes According To CDC Guidelines.
+
+This model is designed to map ICD-10-CM codes and deliver corresponding causes and generate claim analysis codes for each respective ICD-10-CM code, adhering to the guidelines provided by the Centers for Disease Control and Prevention (CDC).
+
+This model efficiently interfaces with the complex structure of ICD-10-CM coding, facilitating the extraction of meaningful and contextually relevant information. In instances where an equivalent claim analysis code is not available, the model will return a None result.
+
 
 *Example*:
 
 ```python
-ner = MedicalNerModel.pretrained("ner_vop_problem_wip", "en", "clinical/models") \
-    .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("ner")
-
-sample_text = """I"ve been experiencing joint pain and fatigue lately, so I went to the rheumatology department. After some tests, they diagnosed me with rheumatoid arthritis and started me on a treatment plan to manage the symptoms."""
-```
-
-*Results*:
-
-| chunk                | ner_label   |
-|:---------------------|:------------|
-| pain                 | Symptom     |
-| fatigue              | Symptom     |
-| rheumatoid arthritis | Disease     |
-
-
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Advanced Chunk Mapper Models For Precise Mapping Of NDC And HCPCS Codes:
-
-We are delighted to present our cutting-edge chunk mapper models, meticulously crafted for the accurate mapping of National Drug Code (NDC) and Healthcare Common Procedure Coding System (HCPCS) codes. These innovative models enable users to swiftly and effortlessly identify the relevant codes, optimizing the coding and billing process while bolstering accuracy.
-
-The introduction of these advanced chunk mapper models demonstrates our commitment to delivering state-of-the-art solutions that streamline healthcare administration tasks, ultimately contributing to improved efficiency and patient care outcomes.
-
-+ [hcpcs_ndc_mapper](https://nlp.johnsnowlabs.com/2023/04/13/hcpcs_ndc_mapper_en.html) model maps Healthcare Common Procedure Coding System (HCPCS) codes to their corresponding National Drug Codes (NDC) and their drug brand names.
-
-*Example*:
-
-```python
-...
-chunkerMapper = DocMapperModel.pretrained("hcpcs_ndc_mapper", "en", "clinical/models")\
-      .setInputCols(["hcpcs_chunk"])\
+chunkerMapper = ChunkMapperModel.pretrained("icd10cm_cause_claim_mapper", "en", "clinical/models")\
+      .setInputCols(["icd_chunk"])\
       .setOutputCol("mappings")\
-      .setRels(["ndc_code", "brand_name"])
+      .setRels(["icd10cm_cause", "icd10cm_claim_analysis_code"])
 
-text= ["Q5106", "J9211", "J7508"]
+text = ["D69.51", "G43.83", "A18.03"]
+
 ```
 
- *Result:*
+*Result*:
 
-| hcpcs_chunk | mappings                              | relation   |
-|-------------|---------------------------------------|------------|
-| Q5106       | 59353-0003-10                         | ndc_code   |
-| Q5106       | RETACRIT (PF) 3000 U/1 ML             | brand_name |
-| J9211       | 59762-2596-01                         | ndc_code   |
-| J9211       | IDARUBICIN HYDROCHLORIDE (PF) 1 MG/ML | brand_name |
-| J7508       | 00469-0687-73                         | ndc_code   |
-| J7508       | ASTAGRAF XL 5 MG                      | brand_name |
-
-
-+ [ndc_hcpcs_mapper](https://nlp.johnsnowlabs.com/2023/04/13/ndc_hcpcs_mapper_en.html) model maps NDC with their corresponding HCPCS codes and their descriptions.
-
-*Example*:
-
-```python
-...
-chunkerMapper = DocMapperModel.pretrained("ndc_hcpcs_mapper", "en", "clinical/models")\
-      .setInputCols(["ndc_chunk"])\
-      .setOutputCol("hcpcs")\
-      .setRels(["hcpcs_code", "hcpcs_description"])
-
-text= ["16714-0892-01", "00990-6138-03", "43598-0650-11"]
-```
-
- *Result:*
-
-| ndc_chunk     | mappings                     | relation          |
-|---------------|------------------------------|-------------------|
-| 16714-0892-01 | J0878                        | hcpcs_code        |
-| 16714-0892-01 | INJECTION, DAPTOMYCIN, 1 MG  | hcpcs_description |
-| 00990-6138-03 | A4217                        | hcpcs_code        |
-| 00990-6138-03 | STERILE WATER/SALINE, 500 ML | hcpcs_description |
-| 43598-0650-11 | J9340                        | hcpcs_code        |
-| 43598-0650-11 | INJECTION, THIOTEPA, 15 MG   | hcpcs_description |
+|icd10cm_code|cause                               |icd10cm_claim_analysis_code|
+|------------|------------------------------------|---------------------------|
+|D69.51      |Unintentional injuries              |D69.51                     |
+|D69.51      |Adverse effects of medical treatment|D69.51                     |
+|G43.83      |Headache disorders                  |G43.83                     |
+|G43.83      |Tension-type headache               |G43.83                     |
+|G43.83      |Migraine                            |G43.83                     |
+|A18.03      |Whooping cough                      |A18.03                     | 
 
 
 </div><div class="h3-box" markdown="1">
 
 
-#### Innovative Social Determinants Of Health (SDOH) Text Classification Models.
-
-We are excited to announce the release of three new Social Determinants of Health (SDOH) text classification models, specifically tailored to analyze and classify information related to insurance status, insurance coverage, and SDOH insurance type. These cutting-edge models enable healthcare professionals and researchers to better understand the nuanced interplay of insurance factors that influence health outcomes and access to care.
-
-By leveraging these innovative SDOH classification models, stakeholders can gain valuable insights into the insurance landscape and its impact on health disparities, ultimately informing more targeted interventions and policies to improve patient care and well-being.
 
 
-| model name                                 | description                              |            predicted entities             |
-|--------------------------------------------|------------------------------------------|-------------------------------------------|
-| [`genericclassifier_sdoh_insurance_status_sbiobert_cased_mli`](https://nlp.johnsnowlabs.com/2023/04/27/genericclassifier_sdoh_insurance_status_sbiobert_cased_mli_en.html) | Detecting whether the patient has insurance or not | `Insured`, `Uninsured`, `Unknown` |
-| [`genericclassifier_sdoh_insurance_coverage_sbiobert_cased_mli`](https://nlp.johnsnowlabs.com/2023/04/28/genericclassifier_sdoh_insurance_coverage_sbiobert_cased_mli_en.html) | Detecting insurance coverage | `Good`, `Poor`, `Unknown` |
-| [`genericclassifier_sdoh_insurance_type_sbiobert_cased_mli`](https://nlp.johnsnowlabs.com/2023/04/28/genericclassifier_sdoh_insurance_type_sbiobert_cased_mli_en.html)  | Detecting insurance type | `Employer`, `Medicaid`, `Medicare`, `Military`, `Private`, `Other` |
+
+
+#### The PHI Obfuscation (De-Identification Module) Now Offers The Ability To Customize The Casings Of Fake Entities For Each Entity Type.
+
+This update introduces the `entityCasingModes` parameter in the `Deidentification` classes, a feature that enables you to define a Json path containing a dictionary of modes for casing selections.
+
+This powerful capability lets you dictate how the casing of entities or data elements should be altered during the deidentification process, providing you with greater control and flexibility over your data.
+
+The `entityCasingModes` parameter offers the following casing modes:
+
+- `lowercase`: Transforms all characters to lowercase following the rules of the default locale.
+- `uppercase`: Changes all characters to uppercase based on the default locale's rules.
+- `capitalize`: Adjusts the first character to uppercase and alters the remaining characters to lowercase.
+- `titlecase`: Modifies the first character in every token (word) to uppercase and changes the remaining characters to lowercase.
+
+With the ability to set the `entityCasingModes` parameter with the appropriate casing mode for each entity type, you now have enhanced control over the deidentification process and how it manages the casing of those elements. This update underlines our commitment to providing advanced and user-centric tools that cater to your specific needs in healthcare data processing.
 
 *Example*:
 
 ```python
-features_asm = FeaturesAssembler()\
-    .setInputCols(["sentence_embeddings"])\
-    .setOutputCol("features")
+casing_dict= {
+    "lowercase": ["IDNUM","MEDICALRECORD"] ,
+    "uppercase": ["city","street"],
+    "capitalize": [ "AGE"],
+    "titlecase":["DOCTOR", "PATIENT", "HOSPITAL"],
+}
 
- generic_classifier = GenericClassifierModel.pretrained("genericclassifier_sdoh_insurance_type_sbiobert_cased_mli", 'en', 'clinical/models')\
-    .setInputCols(["features"])\
+import json
+with open('entity_casing.json', 'w', encoding='utf-8') as f:
+    json.dump(casing_dict, f, ensure_ascii=False, indent=4)
+
+obfuscation = DeIdentification()\
+    .setInputCols(["sentence", "token", "ner_subentity_chunk"]) \
+    .setOutputCol("deidentified") \
+    .setMode("obfuscate")\
+    .setObfuscateDate(True)\
+    .setEntityCasingModes("./entity_casing.json")
+
+text ='''
+Record date: 08-24-2007. SSN : S5067003218XYZ. Adress: Keats Street, San Francisco .
+Victoria Davis is a 61-year-old , born in Los Angeles, white female.
+Her surgery took place at Emory University Hospital on August 21, 2007.
+The right total knee replacement performed by Dr. Anderson Johnson and Dr. Amelia Martinez. 
+Davis was transfused with 2 units of autologous blood postoperatively.
+'''
+```
+
+*Result*:
+
+|    | sentence                                                                                    | mask                                                                          | deidentified                                                                                    |
+|---:|:--------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------|
+|  0 | Record date: 08-24-2007.                                                                    | Record date: \<DATE>.                                                         | Record date: 09-01-2007.                                                                        |
+|  1 | SSN : S5067003218XYZ.                                                                       | SSN : \<MEDICALRECORD>.                                                       | SSN : r7150154340vuf.                                                                           |
+|  2 | Adress: Keats Street, San Francisco .                                                       | Adress: \<CITY>, \<STATE> .                                                   | Adress: HAROLD, COLORADO .                                                                      |
+|  3 | Victoria Davis is a 61-year-old , born in Los Angeles, white female.                        | \<PATIENT> is a \<AGE> , born in \<CITY>, white female.                       | Marivic Friend is a 62-year-old , born in AUSTIN, white female.                                 |
+|  4 | Her surgery took place at Emory University Hospital on August 21, 2007.                     | Her surgery took place at \<HOSPITAL> on \<DATE>.                             | Her surgery took place at Healthsouth Rehabilitation Hospital The Woodlands on August 29, 2007. |
+|  5 | The right total knee replacement performed by Dr. Anderson Johnson and Dr. Amelia Martinez. | The right total knee replacement performed by Dr. \<DOCTOR> and Dr. \<DOCTOR>.| The right total knee replacement performed by Dr. Marland Sensor and Dr. Freada Gin.            |
+|  6 | Davis was transfused with 2 units of autologous blood postoperatively.                      | \<PATIENT> was transfused with 2 units of autologous blood postoperatively.   | Zadok Phlegm was transfused with 2 units of autologous blood postoperatively.                   |
+
+
+
+</div><div class="h3-box" markdown="1">
+
+#### Users Now Have The Option To Enable Or Disable The 'Gender Awareness' Feature In The De-Identification Module.
+
+Users now have the ability to enable or disable the 'Gender Awareness' feature, providing greater control over the deidentification process. This feature is operated via the `setGenderAwareness` parameter in the Deidentification class. By setting this parameter to `True`, the deidentification algorithm will consider the gender information associated with names. This additional layer of awareness allows for a more precise and accurate process of anonymization.
+
+The option to activate or deactivate 'Gender Awareness' provides you with increased flexibility to adapt the deidentification process to your specific needs, further enhancing the accuracy and utility of the De-Identification module. 
+
+*Example*:
+
+```python
+obfuscation = DeIdentification()\
+    .setInputCols(["sentence", "token", "ner_chunk"]) \
+    .setOutputCol("deidentified") \
+    .setMode("obfuscate")\
+    .setObfuscateDate(True)\
+    .setGenderAwareness(True)
+
+data = [
+'William Walker is a 62 y.o. patient admitted',
+'Jack Davies was seen by attending his Doctor.',
+'Cecilia Reyes was scheduled for assessment.',
+'Jessica Smith was discharged on 10/02/2022', 
+'Evelyn White was seen by physician', 
+'Riley John MD. was started on prophylaxis',   
+]
+```
+
+*Result*:
+
+|    | sentence                                      | deid_entity_label                            | obfuscated                                          |
+|---:|:----------------------------------------------|:---------------------------------------------|:----------------------------------------------------|
+|  0 | William Walker is a 62 y.o. patient admitted  | \<PATIENT> is a \<AGE> y.o. patient admitted | Emillio Epps is a 77 y.o. patient admitted          |
+|  1 | Jack Davies was seen by attending his Doctor. | \<PATIENT> was seen by attending his Doctor. | Mitsuru Hitchcock was seen by attending his Doctor. |
+|  2 | Cecilia Reyes was scheduled for assessment.   | \<PATIENT> was scheduled for assessment.     | Celeste Pies was scheduled for assessment.          |
+|  3 | Jessica Smith was discharged on 10/02/2022    | \<PATIENT> was discharged on \<DATE>         | Chancey Banner was discharged on 12/03/2022         |
+|  4 | Evelyn White was seen by physician            | \<PATIENT> was seen by physician             | Mistee Pipe was seen by physician                   |
+|  5 | Riley John MD. was started on prophylaxis     | \<DOCTOR> MD. was started on prophylaxis     | Yandel Alvine MD. was started on prophylaxis        |
+
+
+</div><div class="h3-box" markdown="1">
+
+
+#### A Set Of Four New Classifier Models Has Been Introduced, Further Broadening The Scope Of Our Toolkit.
+
+We are excited to announce 4 new classification models.
+
+| model name                          | annotator                       | predicted entities |
+|-------------------------------------|---------------------------------|-----------------|
+| [`classifierml_ade`]()              | DocumentMLClassifierApproach    | `True`, `False` |
+| [`classifier_logreg_ade`]()         | DocumentLogRegClassifierModel   | `True`, `False` |
+| [`generic_svm_classifier_ade`]()    | GenericSVMClassifierModel       | `True`, `False` |
+| [`generic_logreg_classifier_ade`]() | GenericLogRegClassifierModel    | `True`, `False` |
+
+
+*Example*:
+
+```python
+logreg = DocumentLogRegClassifierModel.pretrained("classifier_logreg_ade", "en", "clinical/models")\
+    .setInputCols("token")\
     .setOutputCol("prediction")
 
-text_list = [
-"""The patient has VA insurance.""", 
-"""She is under Medicare insurance""",
-"""The patient has good coverage of Private insurance""",
-"""Medical File for John Smith, Male, Age 42 Chief Complaint: Patient complains of nausea, vomiting, and shortness of breath...""",
-"""Certainly, here is an example case study for a patient with private insurance: Case Study for Emily Chen, Female, Age 38 ...""",
-"""Medical File for John Doe, Male, Age 72 Chief Complaint: Patient reports shortness of breath and fatigue. History of Pres..."""]
+    ["""I feel great after taking tylenol."""], 
+    ["""Detection of activated eosinophils in nasal polyps of an aspirin-induced asthma patient."""]
+```
+
+*Result*:
+
+|text                                                                                    |result |
+|----------------------------------------------------------------------------------------|-------|
+|I feel great after taking tylenol                                                       |[False]|
+|Detection of activated eosinophils in nasal polyps of an aspirin-induced asthma patient.|[True] |
+
+
+
+</div><div class="h3-box" markdown="1">
+
+
+
+
+#### We Now Offer New Clinical NER Models Specifically Designed For Extracting Clinical Terms In The German Language.
+
+We are excited to announce the German `ner_clinical` models, that can detect `Problem`, `Test` and `Treatment` entities.
+
+
+*Example*:
+
+```python
+clinical_ner = MedicalNerModel.pretrained("ner_clinical", "de", "clinical/models") \
+        .setInputCols(["sentence", "token", "embeddings"]) \
+        .setOutputCol("ner")
+
+sample_text= """Verschlechterung von Schmerzen oder Schwäche in den Beinen , Verlust der Darm - oder Blasenfunktion oder andere besorgniserregende Symptome. 
+Der Patient erhielt empirisch Ampicillin , Gentamycin und Flagyl sowie Narcan zur Umkehrung von Fentanyl .
+ALT war 181 , AST war 156 , LDH war 336 , alkalische Phosphatase war 214 und Bilirubin war insgesamt 12,7 ."""
 ```
 
 
 *Result*:
 
-|                                                                                             text|    result|
-|-------------------------------------------------------------------------------------------------|----------|
-|                                                                    The patient has VA insurance.| Military |
-|                                                                  She is under Medicare insurance| Medicare |
-|Medical File for John Smith, Male, Age 42 Chief Complaint: Patient complains of nausea, vomiti...| Medicaid |
-|Certainly, here is an example case study for a patient with private insurance: Case Study for ...|  Private |
-|  Medical File for John Doe, Male, Age 72 Chief Complaint: Patient reports shortness of breath...| Medicare |
-
-
-</div><div class="h3-box" markdown="1">
-
-
-
-#### Updated NER Profiling Pretrained Pipelines With New NER Models to Allow Running 100 Clinical NER Models At Once
-
-We are proud to announce the latest updates to our `ner_profiling_clinical` and `ner_profiling_biobert` pre-trained pipelines, which now feature the integration of new Named Entity Recognition (NER) models. When executing these pipelines on your text, you can now benefit from the predictions generated by an impressive 100 clinical NER models in `ner_profiling_clinical` and 22 clinical NER models in `ner_profiling_biobert`.
-
-These enhancements to our pre-trained pipelines showcase our commitment to providing healthcare professionals and researchers with state-of-the-art tools, enabling more efficient and accurate analysis of clinical text to support data-driven decision-making and improved patient care outcomes.
-
-You can check [ner_profiling_clinical](https://nlp.johnsnowlabs.com/2023/04/26/ner_profiling_clinical_en.html) and [ner_profiling_biobert](https://nlp.johnsnowlabs.com/2023/04/26/ner_profiling_biobert_en.html) Models Hub pages for more details and the NER model lists that these pipelines include.
-
-
-</div><div class="h3-box" markdown="1">
-
-#### The Implementation Of A Negative Label Feature For Increased Accuracy In The Zero Shot Relation Extraction Model
-
-We are pleased to introduce the addition of a new `setNegativeRelationships` parameter to the `ZeroShotRelationExtractionModel` annotator, empowering users to exercise more effective control over the model's predictions for enhanced accuracy. This innovative parameter generates negative examples of relations and subsequently removes them, resulting in improved precision for positive labels.
-
-This advanced feature demonstrates our ongoing commitment to delivering state-of-the-art solutions for healthcare professionals and researchers, facilitating more accurate analysis of complex relationships within clinical text and ultimately contributing to better patient care and outcomes.
-
-*Example*:
-
-```python
-re_model = sparknlp_jsl.annotator.ZeroShotRelationExtractionModel \
-    .pretrained() \
-    .setRelationalCategories({
-        "CURE": ["{TREATMENT} cures {PROBLEM}."],
-        "IMPROVE": ["{TREATMENT} improves {PROBLEM}.", "{TREATMENT} cures {PROBLEM}."],
-        "REVEAL": ["{TEST} reveals {PROBLEM}."]})\
-    .setMultiLabel(False)\
-    .setInputCols(["re_ner_chunks", "sentences"]) \
-    .setOutputCol("relations")\
-    .setNegativeRelationships(["IMPROVE"])
-
-sample_text = "Paracetamol can alleviate headache or sickness. An MRI test can be used to find cancer."
-```
-
-*Without Setting setNegativeRelationships*:
-
-|relation|     chunk1|  entity1|  chunk2|entity2|                    hypothesis|confidence|
-|--------|-----------|---------|--------|-------|------------------------------|----------|
-|  REVEAL|An MRI test|     TEST|  cancer|PROBLEM|   An MRI test reveals cancer.| 0.9760039|
-| IMPROVE|Paracetamol|TREATMENT|sickness|PROBLEM|Paracetamol improves sickness.|0.98819494|
-| IMPROVE|Paracetamol|TREATMENT|headache|PROBLEM|Paracetamol improves headache.| 0.9929625|
-
-
-*After Setting setNegativeRelationships*:
-
-|relation|     chunk1|entity1|chunk2|entity2|                 hypothesis|confidence|
-|--------|-----------|-------|------|-------|---------------------------|----------|
-|  REVEAL|An MRI test|   TEST|cancer|PROBLEM|An MRI test reveals cancer.| 0.9760039|
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Allowing users To Select Specific Entity Tags In NameChunkObfuscator
-
-We are excited to introduce the new `setNameEntities` parameter for the `NameChunkObfuscator` annotator, enabling users to specify the labels they wish to obfuscate using an array list. The default value is set to ["NAME"], offering greater flexibility and customization when working with sensitive information.
-
-This enhancement to the `NameChunkObfuscator` reflects our dedication to providing user-centric tools that cater to the diverse needs of healthcare professionals and researchers, ensuring the protection of sensitive data while maintaining the utility of the information for analysis and decision-making.
-
-*Example*:
-
-```python
-nameChunkObfuscator = NameChunkObfuscatorApproach()\
-  .setInputCols("ner_chunk")\
-  .setOutputCol("replacement")\
-  .setNameEntities(["PATIENT","DOCTOR","NAME"])
-
-sample_text = '''John Davies Hendrickson is a 62 y.o. patient admitted. 
-Dr. Lorand was scheduled for emergency assessment. 
-John Davies Hendrickson is a teacher and Dr. Lorand is a Doctor.
-Olivera is 25 years-old.
-Dr. Roland offered his patient Olivera a healthy diet.  
-John Davies Hendrickson Lorand has biggest name'''
-
-```
-
-As can be seen in the table below, `DOCTOR` and `PATIENT` chunks are consistently replaced with the same obfuscation chunks.
-
-|                     ner_chunk|  label|                   replacement|
-|------------------------------|-------|------------------------------|
-|       John Davies Hendrickson|PATIENT|       Aesculapius Amalasuntha|
-|                        Lorand| DOCTOR|                        Fulvia|
-|       John Davies Hendrickson|PATIENT|       Aesculapius Amalasuntha|
-|                        Lorand| DOCTOR|                        Fulvia|
-|                       Olivera|PATIENT|                       Killian|
-|                        Roland| DOCTOR|                        Rudolf|
-|                       Olivera| DOCTOR|                       Killian|
-|John Davies Hendrickson Lorand|PATIENT|Deipnosophistae Hermaphroditus|
-
-
-|    | Sentence                                                         | Obfuscated                                                       |
-|---:|:-----------------------------------------------------------------|:-----------------------------------------------------------------|
-|  0 | John Davies Hendrickson is a 62 y.o. patient admitted.           | Aesculapius Amalasuntha is a 62 y.o. patient admitted.           |
-|  1 | Dr. Lorand was scheduled for emergency assessment.               | Dr. Fulvia was scheduled for emergency assessment.               |
-|  2 | John Davies Hendrickson is a teacher and Dr. Lorand is a Doctor. | Aesculapius Amalasuntha is a teacher and Dr. Fulvia is a Doctor. |
-|  3 | Olivera is 25 years-old.                                         | Killian is 25 years-old.                                         |
-|  4 | Dr. Roland offered his patient Olivera a healthy diet.           | Dr. Rudolf offered his patient Killian a healthy diet.           |
-|  5 | John Davies Hendrickson Lorand has biggest name                  | Deipnosophistae Hermaphroditus has biggest name                  |
+|chunk                 |ner_label|
+|----------------------|---------|
+|Schmerzen             |PROBLEM  |
+|Schwäche in den Beinen|PROBLEM  |
+|Verlust der Darm      |PROBLEM  |
+|Blasenfunktion        |PROBLEM  |
+|Symptome              |PROBLEM  |
+|empirisch Ampicillin  |TREATMENT|
+|Gentamycin            |TREATMENT|
+|Flagyl                |TREATMENT|
+|Narcan                |TREATMENT|
+|Fentanyl              |TREATMENT|
+|ALT                   |TEST     |
+|AST                   |TEST     |
+|LDH                   |TEST     |
+|alkalische Phosphatase|TEST     |
+|Bilirubin             |TEST     |
 
 
 
 </div><div class="h3-box" markdown="1">
 
-#### Multi-mode Deidentification And Obfuscation Support In A Single Pass With The Streamlined Deid Module
-
-We are proud to announce the enhancement of our Deid module with the introduction of a one-pass, multi-mode deidentification feature. This powerful new capability significantly improves the module's functionality, enabling users to deidentify their data with increased efficiency, accuracy, and flexibility.
-
-To utilize this feature for a single column, simply set the `multi_mode_file_path` parameter with the JSON file path describing the desired multi-mode configuration. This streamlined approach demonstrates our commitment to providing state-of-the-art tools that cater to the evolving needs of healthcare professionals and researchers, ensuring the protection of sensitive information while maintaining data utility for analysis and decision-making.
-
-*Example*:
-
-```python
-#json to choose deid mode
-sample_json= {
-	"obfuscate": ["NAME", "PHONE"] ,
-	"mask_entity_labels": ["AGE"],
-	"skip": ["SSN"],
-	"mask_same_length_chars":["DATE"],
-	"mask_fixed_length_chars":["ZIP", "LOCATION"]
-}
-
-import json
-with open('sample_multi-mode.json', 'w', encoding='utf-8') as f:
-    json.dump(sample_json, f, ensure_ascii=False, indent=4)
-
-#Deidentification with multi mode for one column
-deid_implementor= Deid(spark,
-                       input_file_path="deid_data.csv",
-                       output_file_path="deidentified.csv",
-                       custom_pipeline=model,
-                       multi_mode_file_path="sample_multi-mode.json")
-                       
-```
 
 
-For multiple columns, we can set one specific JSON file path multi mode for each column.
 
-*Example*:
 
-```python
-#json to choose deid mode for the 2nd column
-sample_json_column2= {
-	"obfuscate": ["SSN", "AGE"] ,
-	"mask_entity_labels": ["DATE"],
-	"skip": ["ID"],
-	"mask_same_length_chars":["NAME"],
-	"mask_fixed_length_chars":["ZIP", "LOCATION"]
-}
+#### Core Functionalities Have Been Fine-Tuned With Numerous Improvements and Bug Fixes
 
-import json
-with open('sample_multi-mode_column2.json', 'w', encoding='utf-8') as f:
-    json.dump(sample_json_column2, f, ensure_ascii=False, indent=4)
-
-#Deidentification with multi mode for multiple columns
-deid_implementor= Deid(spark,
-                       input_file_path="deid_multiple_data.csv",
-                       output_file_path="deidentified.csv",
-                       custom_pipeline=model,
-                       fields={"text": "sample_multi-mode.json", "text_1":"sample_multi-mode_column2.json"}, masking_policy="fixed_length_chars", 
-                       fixed_mask_length=2, separator=",")
-                       
-```
-For more detail please check [Clinical Deidentification Utility Module](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.5.Clinical_Deidentification_Utility_Module.ipynb)
-
-</div><div class="h3-box" markdown="1">
-
-#### Core Improvements and Bug Fixes
-
-- Aligning ChunkMapperModel output metadata with `SentenceEntityResolverModel` metadata for seamless compatibility.
-- Resolving issues with the `MedicalNerApproach` `setTagsMapping` parameter.
-- Removing "non-sense" UNK tokens from text generators (e.g. BioGPt) for enhanced output quality
+- Updated default models and documentation for `pretrained()` functions in most annotators.
+- Use custom signatures when saving a `MedicalBertForSequenceClassification` model
 
 
 
 </div><div class="h3-box" markdown="1">
 
-#### New and Updated Notebooks
-
-- New [Comparison Medical Text Summarization Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.1.Comparison_Medical_Text_Summarization.ipynb) for summarization of clinical context can be used with new `MedicalSummarizer` annotator.
-- New [Biogpt Chat JSL Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/33.Biogpt_Chat_JSL.ipynb) for test generation of clinical context can be used with new `MedicalTextGenerator` annotator.
-- New [Text Classification with Contextual Window Splitting](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/30.2.Text_Classification_with_Contextual_Window_Splitting.ipynb) for text classification with contextual window splitting can be used with the new `WindowedSentenceModel` annotator.
-- New [Review Functions of ALab Module Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Annotation_Lab/Review_Functions_of_ALab_Module_SparkNLP_JSL.ipynb) for ALAB module review functions.
-- Updated [Clinical Deidentification Utility Module](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.5.Clinical_Deidentification_Utility_Module.ipynb) with the latest improvement.
+#### We Are Introducing New and Updated Notebooks And Demonstrations, Providing a More User-Friendly Experience.
 
 
-</div><div class="h3-box" markdown="1">
-
-#### New and Updated Demos
-
-+ [Medical Large Language Modeling](https://demo.johnsnowlabs.com/healthcare/MEDICAL_LLM/) demo
-+ [Medical Summarization Radiology](https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION_RADIOLOGY/) demo
-+ [BIOGPT CHAT JSL](https://demo.johnsnowlabs.com/healthcare/BIOGPT_CHAT_JSL/) demo
-+ [MODELS](https://demo.johnsnowlabs.com/healthcare/MODELS/) demo
-
-	- With MODELS demos, you can select all healthcare models as Task and Annotator based and you can see information about the models.
-
-![image](https://user-images.githubusercontent.com/64752006/235436656-161ab6f4-11c5-4d56-80a4-b1b4c6f06865.png)
-
+- New [Porting_QA_Models_From_Text_Generator_Backbone](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/31.1.Porting_QA_Models_From_Text_Generator_Backbone.ipynb) notebook for porting QA models from Text_Generator Models.
+- Updated [Biogpt_Chat_JSL](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/33.Biogpt_Chat_JSL.ipynb) notebook with latest model.
+- Updated [Medical_Text_Summarization](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb) notebook with lastest improvement.
+- Updated [Medical_Question_Answering](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/31.Medical_Question_Answering.ipynb) norebook with latest model.
+- New [SOCIAL DETERMINANT CLASSIFICATION GENERIC](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_CLASSIFICATION_GENERIC/) demo
+- New [SPANISH CLINICAL TEXT SUMMARIZATION](https://demo.johnsnowlabs.com/healthcare/CLINICAL_TEXT_SUMMARIZATION_ES/) demo
 
 
 </div><div class="h3-box" markdown="1">
 
-#### 17 New Clinical Models and Pipelines Added & Updated in Total
+#### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
 
-
-+ `biogpt_chat_jsl_conversational`
-+ `summarizer_radiology`
-+ `ner_profiling_biobert`
-+ `ner_profiling_clinical`
-+ `ner_vop_anatomy_wip`
-+ `ner_vop_clinical_dept_wip`
-+ `ner_vop_demographic_wip`
-+ `ner_vop_problem_reduced_wip`
-+ `ner_vop_problem_wip`
-+ `ner_vop_temporal_wip`
-+ `ner_vop_test_wip`
-+ `ner_vop_treatment_wip`
-+ `ndc_hcpcs_mapper`
-+ `hcpcs_ndc_mapper`
-+ `genericclassifier_sdoh_insurance_status_sbiobert_cased_mli`
-+ `genericclassifier_sdoh_insurance_coverage_sbiobert_cased_mli`
-+ `genericclassifier_sdoh_insurance_type_sbiobert_cased_mli`
-
++ `flan_t5_base_jsl_qa`
++ `biogpt_chat_jsl_conditions`
++ `summarizer_clinical_guidelines_large`
++ `ner_clinical` -> `de`
++ `classifier_logreg_ade`
++ `classifierml_ade`
++ `generic_svm_classifier_ade`
++ `generic_logreg_classifier_ade`
++ `ner_anatomy_emb_clinical_large`
++ `ner_anatomy_emb_clinical_medium`
++ `ner_abbreviation_emb_clinical_large`
++ `ner_abbreviation_emb_clinical_medium`
++ `icd10cm_cause_claim_mapper`
++ `spellcheck_drug_norvig`
 
 
 
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
+
 
 
 

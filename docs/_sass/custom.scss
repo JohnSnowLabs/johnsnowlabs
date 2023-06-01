@@ -407,6 +407,12 @@ h2.h2_doc {
 		line-height: 50px;
 		color: #536B76;
 		margin: 82px 0 32px;
+		a  {
+			font-weight: 800;
+			&:hover {
+				text-decoration: none;
+			}
+		}
 	}
 	p {
 		text-align: left;
@@ -606,6 +612,12 @@ p.code_snip_dots {
 		font-size: 30px;
 		line-height: 36px;
 		margin-bottom: 20px;
+		a {
+			font-weight: 800;
+			&:hover {
+				text-decoration: none;
+			}
+		}
 	}
 	.tabs-item {
 		figure {

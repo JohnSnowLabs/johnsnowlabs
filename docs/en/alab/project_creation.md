@@ -12,6 +12,7 @@ show_nav: true
 sidebar:
     nav: annotation-lab
 ---
+<div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
 ## New project 
 
@@ -21,6 +22,8 @@ Every project in Annotation Lab should have the following information:
 - a configuration which specifies the type of annotations that will be created.
 
 You can create a new project using the dedicated wizard which will guide users through each step of the project creation and configuration process. Those steps are illustrated below. 
+
+</div><div class="h3-box" markdown="1">
 
 ### Project Description
 
@@ -39,6 +42,7 @@ To open the project creation wizard click on the `+ New Project` button on the `
 
 <img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.1.0/reserved.gif" style="width:100%;"/>
 
+</div><div class="h3-box" markdown="1">
 
 ### Adding Team Members
 
@@ -60,6 +64,7 @@ In the `Add Team Member` page users can add/remove/update the team members even 
 
 > **NOTE:** The priority assigned for users in the `Add Team Member` page is taken into account by the Model Training script for differentiating among the available ground truth completions (when more than one is available for a task) in view of choosing the higer priority completion which will be used for model training. Learn more [here](/docs/en/alab/training_configurations#selection-of-completions).
 
+</div><div class="h3-box" markdown="1">
 
 ### Project Configuration
 
@@ -67,21 +72,29 @@ The Project Configuration itself is a multi-step process. The wizard will guide 
 
 ![projectConfiguration](https://user-images.githubusercontent.com/46840490/193033349-534cc2ab-2e5a-4caa-a050-0ee650949b21.gif)
 
+</div><div class="h3-box" markdown="1">
+
 ## Clone
 You can create a copy of a project, by using the Clone option. The option to clone the project is also listed in the kebab menu of each project. The cloned project is differentiated as it contains cloned suffix in its project name.
 
 <img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.1.0/dashboardCloneImportExport.png" style="width:100%;"/>
   
+</div><div class="h3-box" markdown="1">
+
 ## Export  
 
 Projects can be exported. The option to export a project is listed in the kebab menu of each project. All project-related items such as tasks, project configuration, project members, task assignments, and comments are included in the export file.
 
 > **NOTE:**  Project export does not contain the model trained in the project as models are independent and not attached to a particular project.
-  
+
+</div><div class="h3-box" markdown="1">
+
 ## Import  
 
 A project can be imported by uploading the project zip archive in the upload dialog box. When the project is imported back to Annotation Lab, all elements of the original project configuration will be included in the new copy. 
-  
+
+</div><div class="h3-box" markdown="1">
+
 ## Project Grouping
 
 As the number of projects can grow significantly over time, for an easier management and organization of those,  Annotation Lab allows project grouping. As such, a project owner can assign a group to one or several of his/her projects. Each group can be assigned a color which will be used to highlight projects included in that group. Once a project is assigned to a group, the group name will appear as a tag on the project tile. At any time a project can be remove from one group and added to another group.
@@ -94,5 +107,4 @@ Projects can be organized in custom groups, and each project card will inherit t
 
 ![DashboardGroupGIF](https://user-images.githubusercontent.com/46840490/193201637-57a7e7b6-9d25-48b4-9196-e6bed61fa2ad.gif)
 
-
-
+</div></div>

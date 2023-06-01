@@ -73,6 +73,7 @@ def start(
     visual: bool = False,
     hardware_target: str = JvmHardwareTarget.cpu.value,
     model_cache_folder: str = None,
+    create_jsl_home_if_missing: bool = True,
 ) -> "pyspark.sql.SparkSession":
     from pyspark.sql import SparkSession
 
@@ -93,6 +94,7 @@ def start(
 
     # Get all Local Jar Paths, downloads them if missing
     suite = get_install_suite_from_jsl_home(
+        create_jsl_home_if_missing=create_jsl_home_if_missing,
         only_jars=True,
         jvm_hardware_target=hardware_target,
         force_browser=browser_login,

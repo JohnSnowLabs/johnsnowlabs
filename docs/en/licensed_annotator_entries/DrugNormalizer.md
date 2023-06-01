@@ -112,7 +112,7 @@ val trainingPipeline = new Pipeline().setStages(Array(document, drugNormalizer))
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[DrugNormalizer](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/DrugNormalizer)
+[DrugNormalizer](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/DrugNormalizer.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
