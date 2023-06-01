@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps ICD-10-CM codes with their corresponding billable and HCC scores. If there is no HCC score for the corresponding icd-10-cm code, result will be returned as 0.
+This pretrained model maps ICD-10-CM codes with their corresponding billable and HCC scores. If there is no HCC score for the corresponding ICD-10-CM code, result will be returned as 0.
 
 ## Predicted Entities
 
@@ -36,6 +36,7 @@ This pretrained model maps ICD-10-CM codes with their corresponding billable and
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
