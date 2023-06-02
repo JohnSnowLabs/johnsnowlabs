@@ -191,6 +191,7 @@ This table shows the comparison for each chunk between two annotators specified 
 **Comparison of annotations by model and annotator (Ground Truth) on each chunk**
 
 This table shows the comparison for each chunk betweent the pre-annotation model and the annotator. 
+
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/prediction_vs_groundtruth.png" style="width:100%;"/>
 
 **All chunks annotated by an annotator**
