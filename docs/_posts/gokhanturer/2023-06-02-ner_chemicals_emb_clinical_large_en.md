@@ -54,27 +54,27 @@ word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_large", "e
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-species_ner = MedicalNerModel.pretrained("ner_chemicals_emb_clinical_large", "en", "clinical/models" ) \
+chemicals_ner = MedicalNerModel.pretrained("ner_chemicals_emb_clinical_large", "en", "clinical/models" ) \
     .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("species_ner")
+    .setOutputCol("chemicals_ner")
     
-species_ner_converter = NerConverter() \
+chemicals_ner_converter = NerConverter() \
     .setInputCols(["sentence", "token", "species_ner"]) \
-    .setOutputCol("species_ner_chunk")
+    .setOutputCol("chemicals_ner_chunk")
 
-species_ner_pipeline = Pipeline(stages=[
+chemicals_ner_pipeline = Pipeline(stages=[
     documentAssembler, 
     sentenceDetector,
     tokenizer,
     word_embeddings,
-    species_ner,
-    species_ner_converter])
+    chemicals_ner,
+    chemicals_ner_converter])
 
 empty_data = spark.createDataFrame([[""]]).toDF("text")
 
-species_ner_model = species_ner_pipeline.fit(empty_data)
+chemicals_ner_model = chemicals_ner_pipeline.fit(empty_data)
 
-results = species_ner_model.transform(spark.createDataFrame([['''Differential cell - protective function of two resveratrol (trans - 3, 5, 4 - trihydroxystilbene) glucosides against oxidative stress. Resveratrol (trans - 3, 5, 4  - trihydroxystilbene ; RSV) , a natural polyphenol, exerts a beneficial effect on health and diseases. 
+results = chemicals_ner_model.transform(spark.createDataFrame([['''Differential cell - protective function of two resveratrol (trans - 3, 5, 4 - trihydroxystilbene) glucosides against oxidative stress. Resveratrol (trans - 3, 5, 4  - trihydroxystilbene ; RSV) , a natural polyphenol, exerts a beneficial effect on health and diseases. 
 RSV targets and activates the NAD(+) - dependent protein deacetylase SIRT1; in turn, SIRT1 induces an intracellular antioxidative mechanism by inducing mitochondrial superoxide dismutase (SOD2). Most RSV found in plants is glycosylated, and the effect of these glycosylated forms on SIRT1 has not been studied. ''']]).toDF("text"))
 ```
 ```scala
@@ -96,18 +96,18 @@ val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_large"
 
 val anatomy_ner_model = MedicalNerModel.pretrained("ner_chemicals_emb_clinical_large", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
-    .setOutputCol("anatomy_ner")
+    .setOutputCol("chemicals_ner")
 
 val anatomy_ner_converter = new NerConverter()
-    .setInputCols(Array("sentence", "token", "ner"))
-    .setOutputCol("anatomy_ner_chunk")
+    .setInputCols(Array("sentence", "token", "chemicals_ner"))
+    .setOutputCol("chemicals_ner_chunk")
 
-val posology_pipeline = new PipelineModel().setStages(Array(document_assembler, 
+val chemicals_pipeline = new PipelineModel().setStages(Array(document_assembler, 
                                                    sentence_detector,
                                                    tokenizer,
                                                    word_embeddings,
-                                                   anatomy_ner_model,
-                                                   anatomy_ner_converter))
+                                                   chemicals_ner_model,
+                                                   chemicals_ner_converter))
 
 val data = Seq(""" Differential cell - protective function of two resveratrol (trans - 3, 5, 4 - trihydroxystilbene) glucosides against oxidative stress. Resveratrol (trans - 3, 5, 4  - trihydroxystilbene ; RSV) , a natural polyphenol, exerts a beneficial effect on health and diseases. 
 RSV targets and activates the NAD(+) - dependent protein deacetylase SIRT1; in turn, SIRT1 induces an intracellular antioxidative mechanism by inducing mitochondrial superoxide dismutase (SOD2). Most RSV found in plants is glycosylated, and the effect of these glycosylated forms on SIRT1 has not been studied.""").toDS.toDF("text")
