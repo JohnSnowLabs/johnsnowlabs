@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sparknlp_jsl.finance.graph.relation_extraction.relation_extraction_dl &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl.finance.graph.relation_extraction.relation_extraction_dl &#8212; Spark NLP 4.0.0 documentation</title>
   
   
   
@@ -313,17 +313,14 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for sparknlp_jsl.finance.graph.relation_extraction.relation_extraction_dl</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sparknlp.internal</span> <span class="kn">import</span> <span class="n">ExtendedJavaWrapper</span>
-<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="n">RelationExtractionDLModel</span> <span class="k">as</span> <span class="n">M</span>
-
-
+<span></span><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="k">class</span> <span class="nc">_RelationExtractionDLModelLoader</span><span class="p">(</span><span class="n">ExtendedJavaWrapper</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">jspark</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">_RelationExtractionDLModelLoader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="s2">&quot;com.johnsnowlabs.finance.graph.relation_extraction.RelationExtractionDLModel.loadSavedModel&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">jspark</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="RelationExtractionDLModel"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/finance/graph/relation_extraction/relation_extraction_dl/index.html#sparknlp_jsl.finance.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel">[docs]</a><span class="k">class</span> <span class="nc">RelationExtractionDLModel</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+<div class="viewcode-block" id="RelationExtractionDLModel"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/finance/graph/relation_extraction/relation_extraction_dl/index.html#sparknlp_jsl.finance.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel">[docs]</a><span class="k">class</span> <span class="nc">RelationExtractionDLModel</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Extracts and classifies instances of relations between named entities.</span>
 <span class="sd">    In contrast with RelationExtractionModel, RelationExtractionDLModel is based on BERT.</span>
@@ -344,114 +341,71 @@ document.write(`
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
+<span class="sd">    document_assembler = nlp.DocumentAssembler()\</span>
+<span class="sd">        .setInputCol(&quot;text&quot;)\</span>
+<span class="sd">        .setOutputCol(&quot;document&quot;)</span>
 
-<span class="sd">    &gt;&gt;&gt; import sparknlp</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.base import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp_jsl.common import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.annotator import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.training import *</span>
-<span class="sd">    &gt;&gt;&gt; import sparknlp_jsl</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp_jsl.base import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp_jsl.annotator import *</span>
-<span class="sd">    &gt;&gt;&gt; from pyspark.ml import Pipeline</span>
-<span class="sd">    &gt;&gt;&gt; documentAssembler = DocumentAssembler() \\</span>
-<span class="sd">    ...   .setInputCol(&quot;text&quot;) \\</span>
-<span class="sd">    ...   .setOutputCol(&quot;document&quot;)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; tokenizer = Tokenizer() \\</span>
-<span class="sd">    ...   .setInputCols([&quot;document&quot;]) \\</span>
-<span class="sd">    ...   .setOutputCol(&quot;tokens&quot;)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; embedder = WordEmbeddingsModel \\</span>
-<span class="sd">    ...   .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \\</span>
-<span class="sd">    ...   .setInputCols([&quot;document&quot;, &quot;tokens&quot;]) \\</span>
-<span class="sd">    ...   .setOutputCol(&quot;embeddings&quot;)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; posTagger = PerceptronModel \\</span>
-<span class="sd">    ...   .pretrained(&quot;pos_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \\</span>
-<span class="sd">    ...   .setInputCols([&quot;document&quot;, &quot;tokens&quot;]) \\</span>
-<span class="sd">    ...   .setOutputCol(&quot;posTags&quot;)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; nerTagger = MedicalNerModel \\</span>
-<span class="sd">    ...   .pretrained(&quot;ner_events_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \\</span>
-<span class="sd">    ...   .setInputCols([&quot;document&quot;, &quot;tokens&quot;, &quot;embeddings&quot;]) \\</span>
-<span class="sd">    ...   .setOutputCol(&quot;ner_tags&quot;)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; nerConverter = NerConverter() \\</span>
-<span class="sd">    ...   .setInputCols([&quot;document&quot;, &quot;tokens&quot;, &quot;ner_tags&quot;]) \\</span>
-<span class="sd">    ...   .setOutputCol(&quot;nerChunks&quot;)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; depencyParser = DependencyParserModel \\</span>
-<span class="sd">    ...   .pretrained(&quot;dependency_conllu&quot;, &quot;en&quot;) \\</span>
-<span class="sd">    ...   .setInputCols([&quot;document&quot;, &quot;posTags&quot;, &quot;tokens&quot;]) \\</span>
-<span class="sd">    ...   .setOutputCol(&quot;dependencies&quot;)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; relationPairs = [</span>
-<span class="sd">    ...   &quot;direction-external_body_part_or_region&quot;,</span>
-<span class="sd">    ...   &quot;external_body_part_or_region-direction&quot;,</span>
-<span class="sd">    ...   &quot;direction-internal_organ_or_component&quot;,</span>
-<span class="sd">    ...   &quot;internal_organ_or_component-direction&quot;</span>
-<span class="sd">    ... ]</span>
-<span class="sd">    &gt;&gt;&gt; re_ner_chunk_filter = RENerChunksFilter()\\</span>
-<span class="sd">    ...   .setInputCols([&quot;ner_chunks&quot;, &quot;dependencies&quot;])\\</span>
-<span class="sd">    ...   .setOutputCol(&quot;re_ner_chunks&quot;)\\</span>
-<span class="sd">    ...   .setMaxSyntacticDistance(4)\\</span>
-<span class="sd">    ...   .setRelationPairs([&quot;internal_organ_or_component-direction&quot;])</span>
-<span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; re_model = RelationExtractionDLModel.pretrained(&quot;redl_bodypart_direction_biobert&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \\</span>
-<span class="sd">    ...     .setInputCols([&quot;re_ner_chunks&quot;, &quot;sentences&quot;]) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;relations&quot;) \\</span>
-<span class="sd">    ...     .setPredictionThreshold(0.5)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; pipeline = Pipeline(stages=[</span>
-<span class="sd">    ...     documentAssembler,</span>
-<span class="sd">    ...     tokenizer,</span>
-<span class="sd">    ...     embedder,</span>
-<span class="sd">    ...     posTagger,</span>
-<span class="sd">    ...     nerTagger,</span>
-<span class="sd">    ...     nerConverter,</span>
-<span class="sd">    ...     depencyParser,</span>
-<span class="sd">    ...     re_ner_chunk_filter ,</span>
-<span class="sd">    ...     re_model])</span>
+<span class="sd">    sentence_detector = nlp.SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl&quot;, &quot;xx&quot;)\</span>
+<span class="sd">        .setInputCols([&quot;document&quot;])\</span>
+<span class="sd">        .setOutputCol(&quot;sentence&quot;)</span>
+<span class="sd">        </span>
+<span class="sd">    tokenizer = nlp.Tokenizer()\</span>
+<span class="sd">        .setInputCols([&quot;sentence&quot;])\</span>
+<span class="sd">        .setOutputCol(&quot;token&quot;)</span>
 
-<span class="sd">    &gt;&gt;&gt; model = pipeline.fit(trainData)</span>
-<span class="sd">    &gt;&gt;&gt; data = spark.createDataFrame([[&quot;MRI demonstrated infarction in the upper brain stem , left cerebellum and  right basil ganglia&quot;]]).toDF(&quot;text&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; result = pipeline.fit(data).transform(data)</span>
-<span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; result.selectExpr(&quot;explode(relations) as relations&quot;)</span>
-<span class="sd">    ...  .select(</span>
-<span class="sd">    ...    &quot;relations.metadata.chunk1&quot;,</span>
-<span class="sd">    ...    &quot;relations.metadata.entity1&quot;,</span>
-<span class="sd">    ...    &quot;relations.metadata.chunk2&quot;,</span>
-<span class="sd">    ...    &quot;relations.metadata.entity2&quot;,</span>
-<span class="sd">    ...    &quot;relations.result&quot;</span>
-<span class="sd">    ...  )</span>
-<span class="sd">    ...  .where(&quot;result != 0&quot;)</span>
-<span class="sd">    ...  .show(truncate=False)</span>
-<span class="sd">    ...</span>
-<span class="sd">    ... # Show results</span>
-<span class="sd">    ... result.selectExpr(&quot;explode(relations) as relations&quot;) \\</span>
-<span class="sd">    ...   .select(</span>
-<span class="sd">    ...      &quot;relations.metadata.chunk1&quot;,</span>
-<span class="sd">    ...      &quot;relations.metadata.entity1&quot;,</span>
-<span class="sd">    ...      &quot;relations.metadata.chunk2&quot;,</span>
-<span class="sd">    ...      &quot;relations.metadata.entity2&quot;,</span>
-<span class="sd">    ...      &quot;relations.result&quot;</span>
-<span class="sd">    ...   ).where(&quot;result != 0&quot;) \\</span>
-<span class="sd">    ...   .show(truncate=False)</span>
-<span class="sd">    +------+---------+-------------+---------------------------+------+</span>
-<span class="sd">    |chunk1|entity1  |chunk2       |entity2                    |result|</span>
-<span class="sd">    +------+---------+-------------+---------------------------+------+</span>
-<span class="sd">    |upper |Direction|brain stem   |Internal_organ_or_component|1     |</span>
-<span class="sd">    |left  |Direction|cerebellum   |Internal_organ_or_component|1     |</span>
-<span class="sd">    |right |Direction|basil ganglia|Internal_organ_or_component|1     |</span>
-<span class="sd">    +------+---------+-------------+---------------------------+------+</span>
+<span class="sd">    embeddings = nlp.BertEmbeddings.pretrained(&quot;bert_embeddings_sec_bert_base&quot;,&quot;en&quot;)\</span>
+<span class="sd">        .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\</span>
+<span class="sd">        .setOutputCol(&quot;embeddings&quot;)</span>
+
+<span class="sd">    ner_model = finance.NerModel.pretrained(&quot;finner_orgs_prods_alias&quot;,&quot;en&quot;,&quot;finance/models&quot;)\</span>
+<span class="sd">        .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\</span>
+<span class="sd">        .setOutputCol(&quot;ner_org&quot;)</span>
+
+<span class="sd">    ner_converter = nlp.NerConverter()\</span>
+<span class="sd">        .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;ner_org&quot;])\</span>
+<span class="sd">        .setOutputCol(&quot;ner_chunk_org&quot;)</span>
+
+<span class="sd">    token_classifier = nlp.DeBertaForTokenClassification.pretrained(&quot;deberta_v3_base_token_classifier_ontonotes&quot;, &quot;en&quot;)\</span>
+<span class="sd">        .setInputCols([&quot;sentence&quot;, &quot;token&quot;])\</span>
+<span class="sd">        .setOutputCol(&quot;ner_date&quot;)\</span>
+<span class="sd">        .setCaseSensitive(True)\</span>
+<span class="sd">        .setMaxSentenceLength(512) </span>
+
+<span class="sd">    ner_converter_date = nlp.NerConverter()\</span>
+<span class="sd">        .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;ner_date&quot;])\</span>
+<span class="sd">        .setOutputCol(&quot;ner_chunk_date&quot;)\</span>
+<span class="sd">        .setWhiteList([&quot;DATE&quot;])</span>
+
+<span class="sd">    chunk_merger = finance.ChunkMergeApproach()\</span>
+<span class="sd">        .setInputCols(&quot;ner_chunk_org&quot;, &quot;ner_chunk_date&quot;)\</span>
+<span class="sd">        .setOutputCol(&#39;ner_chunk&#39;)</span>
+
+<span class="sd">    re_model = finance.RelationExtractionDLModel.pretrained(&quot;finre_acquisitions_subsidiaries&quot;, &quot;en&quot;, &quot;finance/models&quot;)\</span>
+<span class="sd">        .setPredictionThreshold(0.3)\</span>
+<span class="sd">        .setInputCols([&quot;ner_chunk&quot;, &quot;document&quot;])\</span>
+<span class="sd">        .setOutputCol(&quot;relations&quot;)</span>
+
+<span class="sd">    pipeline = Pipeline(stages=[</span>
+<span class="sd">        document_assembler,</span>
+<span class="sd">        sentence_detector,</span>
+<span class="sd">        tokenizer,</span>
+<span class="sd">        embeddings,</span>
+<span class="sd">        ner_model,</span>
+<span class="sd">        ner_converter,</span>
+<span class="sd">        token_classifier,</span>
+<span class="sd">        ner_converter_date,</span>
+<span class="sd">        chunk_merger,</span>
+<span class="sd">        re_model</span>
+<span class="sd">    ])</span>
+
+<span class="sd">    result = pipeline.fit(data).transform(data)</span>
+
+
 
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="RelationExtractionDLModel.name"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/finance/graph/relation_extraction/relation_extraction_dl/index.html#sparknlp_jsl.finance.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;RelationExtractionDLModel&quot;</span></div>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.finance.graph.relation_extraction.RelationExtractionDLModel&quot;</span><span class="p">,</span>
-                 <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.finance.graph.relation_extraction.RelationExtractionDLModel&quot;</span><span class="p">,</span> <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">RelationExtractionDLModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">classname</span><span class="o">=</span><span class="n">classname</span><span class="p">,</span>
             <span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span>
@@ -467,19 +421,6 @@ document.write(`
 
     <span class="nd">@staticmethod</span>
 <div class="viewcode-block" id="RelationExtractionDLModel.pretrained"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/finance/graph/relation_extraction/relation_extraction_dl/index.html#sparknlp_jsl.finance.graph.relation_extraction.relation_extraction_dl.RelationExtractionDLModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download a pre-trained RelationExtractionDLModel.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            name (str): Name of the pre-trained model.</span>
-<span class="sd">            lang (str): Language of the pre-trained model.</span>
-<span class="sd">            remote_loc (str): Remote location of the pre-trained model. If None, use the</span>
-<span class="sd">            open-source location. Other values are &quot;clinical/models&quot;,</span>
-<span class="sd">            &quot;finance/models&quot;, or &quot;legal/models&quot;.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            RelationExtractionDLModel: A pre-trained RelationExtractionDLModel.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">sparknlp_jsl.pretrained</span> <span class="kn">import</span> <span class="n">InternalResourceDownloader</span>
         <span class="k">return</span> <span class="n">InternalResourceDownloader</span><span class="o">.</span><span class="n">downloadModel</span><span class="p">(</span><span class="n">RelationExtractionDLModel</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span>
                                                         <span class="n">j_dwn</span><span class="o">=</span><span class="s1">&#39;InternalsPythonResourceDownloader&#39;</span><span class="p">)</span></div></div>
 </pre></div>

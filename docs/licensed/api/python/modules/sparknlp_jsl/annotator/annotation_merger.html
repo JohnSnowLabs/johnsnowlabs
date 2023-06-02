@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sparknlp_jsl.annotator.annotation_merger &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl.annotator.annotation_merger &#8212; Spark NLP 4.0.0 documentation</title>
   
   
   
@@ -318,12 +318,11 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for sparknlp_jsl.annotator.annotation_merger</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sparknlp</span> <span class="kn">import</span> <span class="n">Finisher</span>
-<span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
+<span></span><span class="kn">from</span> <span class="nn">sparknlp.common</span> <span class="kn">import</span> <span class="o">*</span>
 
-
-<div class="viewcode-block" id="AnnotationMerger"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/annotation_merger/index.html#sparknlp_jsl.annotator.annotation_merger.AnnotationMerger">[docs]</a><span class="k">class</span> <span class="nc">AnnotationMerger</span><span class="p">(</span><span class="n">AnnotatorModelInternal</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merges Annotations from multiple columns.</span>
+<div class="viewcode-block" id="AnnotationMerger"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/annotation_merger/index.html#sparknlp_jsl.annotator.annotation_merger.AnnotationMerger">[docs]</a><span class="k">class</span> <span class="nc">AnnotationMerger</span><span class="p">(</span><span class="n">AnnotatorModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Merges Annotations from multiple columns.</span>
 
 <span class="sd">    ====================== ======================</span>
 <span class="sd">    Input Annotation types Output Annotation type</span>
@@ -339,23 +338,22 @@ document.write(`
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">&gt;&gt;&gt; empty_data = spark.createDataFrame([[&quot;&quot;]]).toDF(&quot;text&quot;)</span>
+<span class="sd">&gt;&gt;&gt; docs = [[&quot;&quot;]]</span>
+<span class="sd">&gt;&gt;&gt; test_data = spark.createDataFrame(docs).toDF(&quot;text&quot;)</span>
 <span class="sd">&gt;&gt;&gt; document1 = DocumentAssembler().setInputCol(&quot;text&quot;).setOutputCol(&quot;document1&quot;)</span>
 <span class="sd">&gt;&gt;&gt; document2 = DocumentAssembler().setInputCol(&quot;text&quot;).setOutputCol(&quot;document2&quot;)</span>
-<span class="sd">&gt;&gt;&gt; annotation_merger = AnnotationMerger()\\</span>
-<span class="sd">...     .setInputCols(&quot;document1&quot;, &quot;document2&quot;)\\</span>
-<span class="sd">...     .setInputType(&quot;document&quot;)\\</span>
+<span class="sd">&gt;&gt;&gt; annotation_merger = AnnotationMerger()\</span>
+<span class="sd">...     .setInputCols(&quot;document1&quot;, &quot;document2&quot;)\</span>
+<span class="sd">...     .setInputType(&quot;document&quot;)\</span>
 <span class="sd">...     .setOutputCol(&quot;all_docs&quot;)</span>
 <span class="sd">&gt;&gt;&gt;</span>
-<span class="sd">&gt;&gt;&gt; pipelineModel = Pipeline().setStages([document1, document2, annotation_merger]).fit(empty_data)</span>
-<span class="sd">&gt;&gt;&gt; lp = LightPipeline(pipelineModel)</span>
+<span class="sd">&gt;&gt;&gt; pipeline = Pipeline().setStages([document1, document2, annotation_merger]).fit(docs)</span>
+<span class="sd">&gt;&gt;&gt; lp = LightPipeline(pipeline)</span>
 <span class="sd">&gt;&gt;&gt; lp.fullAnnotate(&quot;one doc to be replicated&quot;)</span>
 <span class="sd">[{&#39;document1&#39;: [Annotation(document, 0, 23, one doc to be replicated, {})], &#39;document2&#39;: [Annotation(document, 0, 23, one doc to be replicated, {})], &#39;all_docs&#39;: [Annotation(document, 0, 23, one doc to be replicated, {}), Annotation(document, 0, 23, one doc to be replicated, {})]}]</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="AnnotationMerger.inputAnnotatorTypes"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/annotation_merger/index.html#sparknlp_jsl.annotator.annotation_merger.AnnotationMerger.inputAnnotatorTypes">[docs]</a>    <span class="n">inputAnnotatorTypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AnnotatorType</span><span class="o">.</span><span class="n">DOCUMENT</span><span class="p">,</span> <span class="n">AnnotatorType</span><span class="o">.</span><span class="n">TOKEN</span><span class="p">]</span></div>
-<div class="viewcode-block" id="AnnotationMerger.outputAnnotatorType"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/annotation_merger/index.html#sparknlp_jsl.annotator.annotation_merger.AnnotationMerger.outputAnnotatorType">[docs]</a>    <span class="n">outputAnnotatorType</span> <span class="o">=</span> <span class="p">[</span><span class="n">AnnotatorType</span><span class="o">.</span><span class="n">DOCUMENT</span><span class="p">,</span> <span class="n">AnnotatorType</span><span class="o">.</span><span class="n">TOKEN</span><span class="p">]</span></div>
-<div class="viewcode-block" id="AnnotationMerger.skipLPInputColsValidation"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/annotation_merger/index.html#sparknlp_jsl.annotator.annotation_merger.AnnotationMerger.skipLPInputColsValidation">[docs]</a>    <span class="n">skipLPInputColsValidation</span> <span class="o">=</span> <span class="kc">True</span></div>
 
+
+<span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="AnnotationMerger.name"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/annotation_merger/index.html#sparknlp_jsl.annotator.annotation_merger.AnnotationMerger.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;AnnotationMerger&quot;</span></div>
 
 <div class="viewcode-block" id="AnnotationMerger.inputType"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/annotation_merger/index.html#sparknlp_jsl.annotator.annotation_merger.AnnotationMerger.inputType">[docs]</a>    <span class="n">inputType</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;inputType&quot;</span><span class="p">,</span>
@@ -373,28 +371,11 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">inputType</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.annotator.AnnotationMerger&quot;</span><span class="p">,</span> <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.AnnotationMerger&quot;</span><span class="p">,</span> <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">AnnotationMerger</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">classname</span><span class="o">=</span><span class="n">classname</span><span class="p">,</span>
-            <span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span>
+            <span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span></div>
         <span class="p">)</span>
-
-<div class="viewcode-block" id="AnnotationMerger.setInputCols"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/annotation_merger/index.html#sparknlp_jsl.annotator.annotation_merger.AnnotationMerger.setInputCols">[docs]</a>    <span class="k">def</span> <span class="nf">setInputCols</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets column names of input annotations.</span>
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        *value : str</span>
-<span class="sd">            Input columns for the annotator</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Overloaded setInputCols to evade validation until updated on Spark-NLP side</span>
-        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">str</span> <span class="ow">or</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
-            <span class="c1"># self.inputColsValidation(value)</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="nb">list</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">inputCols</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;InputCols datatype not supported. It must be either str or list&quot;</span><span class="p">)</span></div></div>
 </pre></div>
 
                 </article>

@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sparknlp_jsl.finance.sequence_classification.finance_classifier_dl &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl.finance.sequence_classification.finance_classifier_dl &#8212; Spark NLP 4.0.0 documentation</title>
   
   
   
@@ -327,136 +327,9 @@ document.write(`
 <span class="c1">#  See the License for the specific language governing permissions and</span>
 <span class="c1">#  limitations under the License.</span>
 
-<span class="kn">import</span> <span class="nn">sys</span>
 
-<span class="kn">from</span> <span class="nn">sparknlp</span> <span class="kn">import</span> <span class="n">annotator</span>
-<span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="n">DocumentAssembler</span>
-<span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">sparknlp.annotator.classifier_dl.classifier_dl</span> <span class="kn">import</span> <span class="n">ClassifierDLModel</span> <span class="k">as</span> <span class="n">M</span>
-<span class="kn">from</span> <span class="nn">sparknlp.annotator.classifier_dl.classifier_dl</span> <span class="kn">import</span> <span class="n">ClassifierDLApproach</span> <span class="k">as</span> <span class="n">A</span>
-
-
-<div class="viewcode-block" id="FinanceClassifierDLApproach"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_classifier_dl/index.html#sparknlp_jsl.finance.sequence_classification.finance_classifier_dl.FinanceClassifierDLApproach">[docs]</a><span class="k">class</span> <span class="nc">FinanceClassifierDLApproach</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trains a ClassifierDL for generic Multi-class Text Classification.</span>
-
-<span class="sd">    ClassifierDL uses the state-of-the-art Universal Sentence Encoder as an</span>
-<span class="sd">    input for text classifications.</span>
-<span class="sd">    The ClassifierDL annotator uses a deep learning model (DNNs) we have built</span>
-<span class="sd">    inside TensorFlow and supports up to 100 classes.</span>
-
-<span class="sd">    For instantiated/pretrained models, see :class:`.ClassifierDLModel`.</span>
-
-<span class="sd">    For extended examples of usage, see the Spark NLP Workshop</span>
-<span class="sd">    `Spark NLP Workshop  &lt;https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Public/5.Text_Classification_with_ClassifierDL.ipynb&gt;`__.</span>
-
-<span class="sd">    ======================= ======================</span>
-<span class="sd">    Input Annotation types  Output Annotation type</span>
-<span class="sd">    ======================= ======================</span>
-<span class="sd">    ``SENTENCE_EMBEDDINGS`` ``CATEGORY``</span>
-<span class="sd">    ======================= ======================</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    lr</span>
-<span class="sd">        Learning Rate, by default 0.005</span>
-<span class="sd">    batchSize</span>
-<span class="sd">        Batch size, by default 64</span>
-<span class="sd">    dropout</span>
-<span class="sd">        Dropout coefficient, by default 0.5</span>
-<span class="sd">    maxEpochs</span>
-<span class="sd">        Maximum number of epochs to train, by default 30</span>
-<span class="sd">    configProtoBytes</span>
-<span class="sd">        ConfigProto from tensorflow, serialized into byte array.</span>
-<span class="sd">    validationSplit</span>
-<span class="sd">        Choose the proportion of training dataset to be validated against the</span>
-<span class="sd">        model on each Epoch. The value should be between 0.0 and 1.0 and by</span>
-<span class="sd">        default it is 0.0 and off.</span>
-<span class="sd">    enableOutputLogs</span>
-<span class="sd">        Whether to use stdout in addition to Spark logs, by default False</span>
-<span class="sd">    outputLogsPath</span>
-<span class="sd">        Folder path to save training logs. If no path is specified, the logs won&#39;t</span>
-<span class="sd">        be stored in disk. The path can be a local file path,</span>
-<span class="sd">        a distributed file path (HDFS, DBFS), or a cloud storage (S3).</span>
-<span class="sd">    labelColumn</span>
-<span class="sd">        Column with label per each token</span>
-<span class="sd">    verbose</span>
-<span class="sd">        Level of verbosity during training</span>
-<span class="sd">    randomSeed</span>
-<span class="sd">        Random seed for shuffling</span>
-
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    - This annotator accepts a label column of a single item in either type of</span>
-<span class="sd">      String, Int, Float, or Double.</span>
-<span class="sd">    - UniversalSentenceEncoder, Transformer based embeddings, or</span>
-<span class="sd">      SentenceEmbeddings can be used for the ``inputCol``.</span>
-
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; import sparknlp</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.base import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.annotator import *</span>
-<span class="sd">    &gt;&gt;&gt; from pyspark.ml import Pipeline</span>
-
-<span class="sd">    In this example, the training data ``&quot;sentiment.csv&quot;`` has the form of::</span>
-
-<span class="sd">        text,label</span>
-<span class="sd">        This movie is the best movie I have wached ever! In my opinion this movie can win an award.,0</span>
-<span class="sd">        This was a terrible movie! The acting was bad really bad!,1</span>
-<span class="sd">        ...</span>
-
-<span class="sd">    Then traning can be done like so:</span>
-
-<span class="sd">    &gt;&gt;&gt; smallCorpus = spark.read.option(&quot;header&quot;,&quot;True&quot;).csv(&quot;src/test/resources/classifier/sentiment.csv&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; documentAssembler = DocumentAssembler() \\</span>
-<span class="sd">    ...     .setInputCol(&quot;text&quot;) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;document&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; useEmbeddings = UniversalSentenceEncoder.pretrained() \\</span>
-<span class="sd">    ...     .setInputCols(&quot;document&quot;) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;sentence_embeddings&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; docClassifier = ClassifierDLApproach() \\</span>
-<span class="sd">    ...     .setInputCols(&quot;sentence_embeddings&quot;) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;category&quot;) \\</span>
-<span class="sd">    ...     .setLabelColumn(&quot;label&quot;) \\</span>
-<span class="sd">    ...     .setBatchSize(64) \\</span>
-<span class="sd">    ...     .setMaxEpochs(20) \\</span>
-<span class="sd">    ...     .setLr(5e-3) \\</span>
-<span class="sd">    ...     .setDropout(0.5)</span>
-<span class="sd">    &gt;&gt;&gt; pipeline = Pipeline().setStages([</span>
-<span class="sd">    ...     documentAssembler,</span>
-<span class="sd">    ...     useEmbeddings,</span>
-<span class="sd">    ...     docClassifier</span>
-<span class="sd">    ... ])</span>
-<span class="sd">    &gt;&gt;&gt; pipelineModel = pipeline.fit(smallCorpus)</span>
-
-<span class="sd">    See Also</span>
-<span class="sd">    --------</span>
-<span class="sd">    MultiClassifierDLApproach : for multi-class classification</span>
-<span class="sd">    SentimentDLApproach : for sentiment analysis</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="nf">_create_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">java_model</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates the model using the java model.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            java_model (str): The name of the java model.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">FinanceClassifierDLModel</span><span class="p">(</span><span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span><span class="p">)</span>
-
-    <span class="nd">@keyword_only</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.finance.sequence_classification.FinanceClassifierDLApproach&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_setDefault</span><span class="p">(</span>
-            <span class="n">maxEpochs</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
-            <span class="n">lr</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="mf">0.005</span><span class="p">),</span>
-            <span class="n">batchSize</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
-            <span class="n">dropout</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="mf">0.5</span><span class="p">),</span>
-            <span class="n">enableOutputLogs</span><span class="o">=</span><span class="kc">False</span></div>
-        <span class="p">)</span>
-
-
-<div class="viewcode-block" id="FinanceClassifierDLModel"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_classifier_dl/index.html#sparknlp_jsl.finance.sequence_classification.finance_classifier_dl.FinanceClassifierDLModel">[docs]</a><span class="k">class</span> <span class="nc">FinanceClassifierDLModel</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+<span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="viewcode-block" id="FinanceClassifierDLModel"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_classifier_dl/index.html#sparknlp_jsl.finance.sequence_classification.finance_classifier_dl.FinanceClassifierDLModel">[docs]</a><span class="k">class</span> <span class="nc">FinanceClassifierDLModel</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;FinanceClassifierDL for generic Multi-class Text Classification.</span>
 
 <span class="sd">    ClassifierDL uses the state-of-the-art Universal Sentence Encoder as an</span>
@@ -470,9 +343,9 @@ document.write(`
 <span class="sd">    Pretrained models can be loaded with :meth:`.pretrained` of the companion</span>
 <span class="sd">    object:</span>
 
-<span class="sd">    &gt;&gt;&gt; classifierDL = ClassifierDLModel.pretrained() \\</span>
-<span class="sd">    ...     .setInputCols([&quot;sentence_embeddings&quot;]) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;classification&quot;)</span>
+<span class="sd">    classifierDL = nlp.ClassifierDLModel.pretrained() \\</span>
+<span class="sd">            .setInputCols([&quot;sentence_embeddings&quot;]) \\</span>
+<span class="sd">            .setOutputCol(&quot;classification&quot;)</span>
 
 <span class="sd">    The default model is ``&quot;classifierdl_use_trec6&quot;``, if no name is provided.</span>
 <span class="sd">    It uses embeddings from the UniversalSentenceEncoder and is trained on the</span>
@@ -481,9 +354,6 @@ document.write(`
 
 <span class="sd">    For available pretrained models please see the</span>
 <span class="sd">    `Models Hub &lt;https://nlp.johnsnowlabs.com/models?task=Text+Classification&gt;`__.</span>
-
-<span class="sd">    For extended examples of usage, see the</span>
-<span class="sd">    `Spark NLP Workshop &lt;https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Public/5.Text_Classification_with_ClassifierDL.ipynb&gt;`__.</span>
 
 <span class="sd">    ======================= ======================</span>
 <span class="sd">    Input Annotation types  Output Annotation type</span>
@@ -500,48 +370,24 @@ document.write(`
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; import sparknlp</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.base import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.annotator import *</span>
-<span class="sd">    &gt;&gt;&gt; from pyspark.ml import Pipeline</span>
-<span class="sd">    &gt;&gt;&gt; documentAssembler = DocumentAssembler() \\</span>
-<span class="sd">    ...     .setInputCol(&quot;text&quot;) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;document&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; sentence = SentenceDetector() \\</span>
-<span class="sd">    ...     .setInputCols(&quot;document&quot;) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;sentence&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; useEmbeddings = UniversalSentenceEncoder.pretrained() \\</span>
-<span class="sd">    ...     .setInputCols(&quot;document&quot;) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;sentence_embeddings&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; sarcasmDL = ClassifierDLModel.pretrained(&quot;classifierdl_use_sarcasm&quot;) \\</span>
-<span class="sd">    ...     .setInputCols(&quot;sentence_embeddings&quot;) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;sarcasm&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; pipeline = Pipeline() \\</span>
-<span class="sd">    ...     .setStages([</span>
-<span class="sd">    ...       documentAssembler,</span>
-<span class="sd">    ...       sentence,</span>
-<span class="sd">    ...       useEmbeddings,</span>
-<span class="sd">    ...       sarcasmDL</span>
-<span class="sd">    ...     ])</span>
-<span class="sd">    &gt;&gt;&gt; data = spark.createDataFrame([</span>
-<span class="sd">    ...     [&quot;I&#39;m ready!&quot;],</span>
-<span class="sd">    ...     [&quot;If I could put into words how much I love waking up at 6 am on Mondays I would.&quot;]</span>
-<span class="sd">    ... ]).toDF(&quot;text&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; result = pipeline.fit(data).transform(data)</span>
-<span class="sd">    &gt;&gt;&gt; result.selectExpr(&quot;explode(arrays_zip(sentence, sarcasm)) as out&quot;) \\</span>
-<span class="sd">    ...     .selectExpr(&quot;out.sentence.result as sentence&quot;, &quot;out.sarcasm.result as sarcasm&quot;) \\</span>
-<span class="sd">    ...     .show(truncate=False)</span>
-<span class="sd">    +-------------------------------------------------------------------------------+-------+</span>
-<span class="sd">    |sentence                                                                       |sarcasm|</span>
-<span class="sd">    +-------------------------------------------------------------------------------+-------+</span>
-<span class="sd">    |I&#39;m ready!                                                                     |normal |</span>
-<span class="sd">    |If I could put into words how much I love waking up at 6 am on Mondays I would.|sarcasm|</span>
-<span class="sd">    +-------------------------------------------------------------------------------+-------+</span>
 
-<span class="sd">    See Also</span>
-<span class="sd">    --------</span>
-<span class="sd">    MultiClassifierDLModel : for multi-class classification</span>
-<span class="sd">    SentimentDLModel : for sentiment analysis</span>
+<span class="sd">    documentAssembler = nlp.DocumentAssembler() \</span>
+<span class="sd">        .setInputCol(&quot;text&quot;) \</span>
+<span class="sd">        .setOutputCol(&quot;document&quot;)</span>
+
+<span class="sd">    useEmbeddings = nlp.UniversalSentenceEncoder.pretrained() \</span>
+<span class="sd">        .setInputCols(&quot;document&quot;) \</span>
+<span class="sd">        .setOutputCol(&quot;sentence_embeddings&quot;)</span>
+
+<span class="sd">    docClassifier = nlp.ClassifierDLModel.pretrained(&quot;finclf_equity_item&quot;, &quot;en&quot;, &quot;finance/models&quot;)\</span>
+<span class="sd">        .setInputCols([&quot;sentence_embeddings&quot;])\</span>
+<span class="sd">        .setOutputCol(&quot;category&quot;)</span>
+<span class="sd">    </span>
+<span class="sd">    nlpPipeline = Pipeline(stages=[</span>
+<span class="sd">        documentAssembler, </span>
+<span class="sd">        useEmbeddings,</span>
+<span class="sd">        docClassifier])</span>
+<span class="sd"> </span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="FinanceClassifierDLModel.name"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_classifier_dl/index.html#sparknlp_jsl.finance.sequence_classification.finance_classifier_dl.FinanceClassifierDLModel.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;FinanceClassifierDLModel&quot;</span></div>
@@ -555,19 +401,6 @@ document.write(`
 
     <span class="nd">@staticmethod</span>
 <div class="viewcode-block" id="FinanceClassifierDLModel.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_classifier_dl/index.html#sparknlp_jsl.finance.sequence_classification.finance_classifier_dl.FinanceClassifierDLModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download a pre-trained FinanceClassifierDLModel.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            name (str): Name of the pre-trained model.</span>
-<span class="sd">            lang (str): Language of the pre-trained model.</span>
-<span class="sd">            remote_loc (str): Remote location of the pre-trained model. If None, use the</span>
-<span class="sd">            open-source location. Other values are &quot;clinical/models&quot;,</span>
-<span class="sd">            &quot;finance/models&quot;, or &quot;legal/models&quot;.</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            FinanceClassifierDLModel: A pre-trained FinanceClassifierDLModel.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">sparknlp_jsl.pretrained</span> <span class="kn">import</span> <span class="n">InternalResourceDownloader</span>
         <span class="k">return</span> <span class="n">InternalResourceDownloader</span><span class="o">.</span><span class="n">downloadModel</span><span class="p">(</span><span class="n">FinanceClassifierDLModel</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span>
                                                         <span class="n">j_dwn</span><span class="o">=</span><span class="s1">&#39;InternalsPythonResourceDownloader&#39;</span><span class="p">)</span></div></div>
 </pre></div>

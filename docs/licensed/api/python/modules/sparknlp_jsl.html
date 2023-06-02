@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sparknlp_jsl &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl &#8212; Spark NLP 4.0.0 documentation</title>
   
   
   
@@ -310,20 +310,17 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for sparknlp_jsl</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">re</span>
+<span></span><span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl</span> <span class="kn">import</span> <span class="n">finance</span>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl</span> <span class="kn">import</span> <span class="n">legal</span>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl</span> <span class="kn">import</span> <span class="n">annotator</span>
 <span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">read_version</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Deidentifier</span> <span class="k">as</span> <span class="n">Deid</span>
+
 <span class="kn">import</span> <span class="nn">com.johnsnowlabs</span>
 <span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">legal</span> <span class="o">=</span> <span class="n">legal</span>
 <span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">finance</span> <span class="o">=</span> <span class="n">finance</span>
-<span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">annotator</span> <span class="o">=</span> <span class="n">annotator</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.annotator&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotator</span>
 
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.nlp.annotators.assertion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotator</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.nlp.annotators.assertion.logreg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotator</span>
@@ -336,9 +333,7 @@ document.write(`
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.nlp.annotators.merge&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotator</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.nlp.annotators.keyword&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotator</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.nlp.annotators.re&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotator</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.nlp.annotators.qa&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotator</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.nlp.annotators.chunker&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotator</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.nlp.annotators.seq2seq&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">annotator</span>
 
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.finance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">finance</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.finance.token_classification&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">finance</span>
@@ -371,19 +366,7 @@ document.write(`
 <div class="viewcode-block" id="size_regex"><a class="viewcode-back" href="../reference/autosummary/sparknlp_jsl/index.html#sparknlp_jsl.size_regex">[docs]</a><span class="n">size_regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s2">&quot;([0-9])+[GMK]&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="start"><a class="viewcode-back" href="../reference/autosummary/sparknlp_jsl/index.html#sparknlp_jsl.start">[docs]</a><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="n">secret</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">gpu</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">m1</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">public</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span><span class="nb">dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Starts a SparkSession with Spark NLP Licensed</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        secret (str): Your secret key</span>
-<span class="sd">        gpu (bool): Whether to use GPU or not</span>
-<span class="sd">        m1 (bool): Whether to use M1 or not</span>
-<span class="sd">        public (str): Spark NLP version</span>
-<span class="sd">        params (dict): SparkSession params</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        SparkSession: SparkSession with Spark NLP Licensed</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<div class="viewcode-block" id="start"><a class="viewcode-back" href="../reference/autosummary/sparknlp_jsl/index.html#sparknlp_jsl.start">[docs]</a><span class="k">def</span> <span class="nf">start</span><span class="p">(</span><span class="n">secret</span><span class="p">,</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">m1</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">public</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="k">if</span> <span class="s1">&#39;_instantiatedSession&#39;</span> <span class="ow">in</span> <span class="nb">dir</span><span class="p">(</span><span class="n">SparkSession</span><span class="p">)</span> <span class="ow">and</span> <span class="n">SparkSession</span><span class="o">.</span><span class="n">_instantiatedSession</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -434,29 +417,12 @@ document.write(`
 
 
 <div class="viewcode-block" id="get_credentials"><a class="viewcode-back" href="../reference/autosummary/sparknlp_jsl/index.html#sparknlp_jsl.get_credentials">[docs]</a><span class="k">def</span> <span class="nf">get_credentials</span><span class="p">(</span><span class="n">spark</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets John Snow Labs credentials</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        spark (SparkSession): SparkSession</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        tuple: (secretKey, keyId, token)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">creds</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">getAwsCredentials</span><span class="p">()</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">creds</span><span class="o">.</span><span class="n">secretKey</span><span class="p">(),</span> <span class="n">creds</span><span class="o">.</span><span class="n">keyId</span><span class="p">(),</span> <span class="n">creds</span><span class="o">.</span><span class="n">token</span><span class="p">())</span></div>
 
 
-<span class="k">def</span> <span class="nf">__check_size_and_overwrite</span><span class="p">(</span><span class="n">key</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">defaultValue</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span><span class="nb">dict</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Checks if the size is valid and overwrites it.</span>
-
-<span class="sd">    If the value contained in params[key] is not valid, use the default value.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        key (str): which key on the params dict to check</span>
-<span class="sd">        defaultValue (any): The default value for the key</span>
-<span class="sd">        params (_type_): Dictionary containing the parameters</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">__check_size_and_overwrite</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">defaultValue</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">params</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)):</span>
         <span class="n">value</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
         <span class="n">matched</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">size_regex</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">matched</span><span class="p">:</span>
@@ -466,63 +432,25 @@ document.write(`
 
 
 <div class="viewcode-block" id="pub_version"><a class="viewcode-back" href="../reference/autosummary/sparknlp_jsl/index.html#sparknlp_jsl.pub_version">[docs]</a><span class="k">def</span> <span class="nf">pub_version</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets the public version of Spark NLP</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        str: Public version of Spark NLP</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">read_version</span><span class="o">.</span><span class="n">get_version_from_file</span><span class="p">(</span><span class="s1">&#39;PUBLIC_VERSION&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="version"><a class="viewcode-back" href="../reference/autosummary/sparknlp_jsl/index.html#sparknlp_jsl.version">[docs]</a><span class="k">def</span> <span class="nf">version</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets the version of Spark NLP</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        str: Version of Spark NLP</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">read_version</span><span class="o">.</span><span class="n">get_version_from_file</span><span class="p">(</span><span class="s1">&#39;VERSION&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="library_settings"><a class="viewcode-back" href="../reference/autosummary/sparknlp_jsl/index.html#sparknlp_jsl.library_settings">[docs]</a><span class="k">def</span> <span class="nf">library_settings</span><span class="p">(</span><span class="n">spark</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets the library settings</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        spark (SparkSession): SparkSession</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        str: Library settings</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">configs</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">LibrarySettings</span><span class="o">.</span><span class="n">getAllConfigsAsString</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">configs</span></div>
 
 
 <span class="k">def</span> <span class="nf">__set_s3_credentials_as_spark_properties</span><span class="p">(</span><span class="n">spark</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets S3 credentials as Spark properties</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        spark (SparkSession): SparkSession</span>
-<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">credentials</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">license</span><span class="o">.</span><span class="n">LicenseValidator</span><span class="o">.</span><span class="n">getS3Credentials</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">credentials</span><span class="o">.</span><span class="n">isDefined</span><span class="p">():</span>
         <span class="n">awsid</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">_2</span><span class="p">()</span>
         <span class="n">secret</span> <span class="o">=</span> <span class="n">credentials</span><span class="o">.</span><span class="n">get</span><span class="p">()</span><span class="o">.</span><span class="n">_1</span><span class="p">()</span>
         <span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.jsl.settings.pretrained.credentials.secret_access_key&quot;</span><span class="p">,</span> <span class="n">secret</span><span class="p">)</span>
         <span class="n">spark</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;spark.jsl.settings.pretrained.credentials.access_key_id&quot;</span><span class="p">,</span> <span class="n">awsid</span><span class="p">)</span>
-
-<span class="c1"># auto register and start refresh for databricks environments</span>
-<span class="k">if</span> <span class="s2">&quot;DATABRICKS_RUNTIME_VERSION&quot;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span> <span class="ow">and</span> <span class="s2">&quot;AWS_ACCESS_KEY_ID&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span>
-        <span class="n">SparkSession</span><span class="o">.</span><span class="n">getActiveSession</span><span class="p">()</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">registerListenerAndStartRefresh</span><span class="p">()</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Warning::Can not fetch aws credentials. you need to start the library manually using sparknlp_jsl.start().&quot;</span><span class="p">)</span>
-
-<span class="c1"># set ipython kernel name as env variable</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">get_ipython</span>
-    <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;IPYTHON_NAME&quot;</span><span class="p">]</span> <span class="o">=</span>  <span class="nb">str</span><span class="p">(</span><span class="n">get_ipython</span><span class="p">())</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="k">pass</span>
 </pre></div>
 
                 </article>

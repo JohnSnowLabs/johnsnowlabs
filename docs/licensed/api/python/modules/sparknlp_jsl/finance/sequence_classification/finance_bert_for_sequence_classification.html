@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification &#8212; Spark NLP 4.0.0 documentation</title>
   
   
   
@@ -313,25 +313,44 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator.classification.medical_bert_for_sequence_classification</span> <span class="kn">import</span> <span class="n">MedicalBertForSequenceClassification</span> <span class="k">as</span> <span class="n">M</span>
-
-<div class="viewcode-block" id="FinanceBertForSequenceClassification"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_bert_for_sequence_classification/index.html#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification">[docs]</a><span class="k">class</span> <span class="nc">FinanceBertForSequenceClassification</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+<span></span><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="viewcode-block" id="FinanceBertForSequenceClassification"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_bert_for_sequence_classification/index.html#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification">[docs]</a><span class="k">class</span> <span class="nc">FinanceBertForSequenceClassification</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    FinanceBertForTokenClassification  can load Bert Models with sequence classification/regression head on top</span>
-<span class="sd">    (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks.</span>
+<span class="sd">    The classification models were trained on financial texts, one of them is the generic model that classifies the financial texts into three categories as followings:</span>
 
-<span class="sd">    Pretrained models can be loaded with :meth:`.pretrained` of the companion</span>
-<span class="sd">    object:</span>
+<span class="sd">    Environmental</span>
+<span class="sd">    Social</span>
+<span class="sd">    Governance</span>
 
-<span class="sd">    For available pretrained models please see the `Models Hub</span>
-<span class="sd">    &lt;https://nlp.johnsnowlabs.com/models?task=Named+Entity+Recognition&gt;`__.</span>
+<span class="sd">    Another model is the augmented model classifies the same text into more specific categories as followings:</span>
 
-<span class="sd">    Models from the HuggingFace 🤗 Transformers library are also compatible with</span>
-<span class="sd">    Spark NLP 🚀. To see which models are compatible and how to import them see</span>
-<span class="sd">    `Import Transformers into Spark NLP 🚀</span>
-<span class="sd">    &lt;https://github.com/JohnSnowLabs/spark-nlp/discussions/5669&gt;`_.</span>
-
+<span class="sd">    Business_Ethics</span>
+<span class="sd">    Data_Security</span>
+<span class="sd">    Access_And_Affordability</span>
+<span class="sd">    Business_Model_Resilience</span>
+<span class="sd">    Competitive_Behavior</span>
+<span class="sd">    Critical_Incident_Risk_Management</span>
+<span class="sd">    Customer_Welfare</span>
+<span class="sd">    Director_Removal</span>
+<span class="sd">    Employee_Engagement_Inclusion_And_Diversity</span>
+<span class="sd">    Employee_Health_And_Safety</span>
+<span class="sd">    Human_Rights_And_Community_Relations</span>
+<span class="sd">    Labor_Practices</span>
+<span class="sd">    Management_Of_Legal_And_Regulatory_Framework</span>
+<span class="sd">    Physical_Impacts_Of_Climate_Change</span>
+<span class="sd">    Product_Quality_And_Safety</span>
+<span class="sd">    Product_Design_And_Lifecycle_Management</span>
+<span class="sd">    Selling_Practices_And_Product_Labeling</span>
+<span class="sd">    Supply_Chain_Management</span>
+<span class="sd">    Systemic_Risk_Management</span>
+<span class="sd">    Waste_And_Hazardous_Materials_Management</span>
+<span class="sd">    Water_And_Wastewater_Management</span>
+<span class="sd">    Air_Quality</span>
+<span class="sd">    Customer_Privacy</span>
+<span class="sd">    Ecological_Impacts</span>
+<span class="sd">    Energy_Management</span>
+<span class="sd">    GHG_Emissions</span>
+<span class="sd">    </span>
 <span class="sd">    ====================== ======================</span>
 <span class="sd">    Input Annotation types Output Annotation type</span>
 <span class="sd">    ====================== ======================</span>
@@ -351,30 +370,40 @@ document.write(`
 <span class="sd">    maxSentenceLength</span>
 <span class="sd">        Max sentence length to process, by default 128</span>
 
+<span class="sd">    </span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; import sparknlp</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.base import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.annotator import *</span>
-<span class="sd">    &gt;&gt;&gt; from pyspark.ml import Pipeline</span>
-<span class="sd">    &gt;&gt;&gt; documentAssembler = DocumentAssembler() \\</span>
-<span class="sd">    ...     .setInputCol(&quot;text&quot;) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;document&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; tokenizer = Tokenizer() \\</span>
-<span class="sd">    ...     .setInputCols([&quot;document&quot;]) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;token&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; tokenClassifier = FinanceBertForSequenceClassification.pretrained() \\</span>
-<span class="sd">    ...     .setInputCols([&quot;token&quot;, &quot;document&quot;]) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;label&quot;) \\</span>
-<span class="sd">    ...     .setCaseSensitive(True)</span>
-<span class="sd">    &gt;&gt;&gt; pipeline = Pipeline().setStages([</span>
-<span class="sd">    ...     documentAssembler,</span>
-<span class="sd">    ...     tokenizer,</span>
-<span class="sd">    ...     tokenClassifier</span>
-<span class="sd">    ... ])</span>
-<span class="sd">    &gt;&gt;&gt; data = spark.createDataFrame([[&quot;I felt a bit drowsy and had blurred vision after taking Aspirin.&quot;]]).toDF(&quot;text&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; result = pipeline.fit(data).transform(data)</span>
-<span class="sd">    &gt;&gt;&gt; result.select(&quot;label.result&quot;).show(truncate=False)</span>
+
+<span class="sd">    document_assembler = nlp.DocumentAssembler()\</span>
+<span class="sd">        .setInputCol(&#39;text&#39;)\</span>
+<span class="sd">        .setOutputCol(&#39;document&#39;)</span>
+
+<span class="sd">    tokenizer = nlp.Tokenizer()\</span>
+<span class="sd">        .setInputCols([&#39;document&#39;])\</span>
+<span class="sd">        .setOutputCol(&#39;token&#39;)</span>
+
+<span class="sd">    sequenceClassifier_gen = finance.BertForSequenceClassification.pretrained(&quot;finclf_esg&quot;, &quot;en&quot;, &quot;finance/models&quot;)\</span>
+<span class="sd">        .setInputCols([&quot;document&quot;,&#39;token&#39;])\</span>
+<span class="sd">        .setOutputCol(&quot;generic_class&quot;)\</span>
+<span class="sd">        .setCaseSensitive(True)\</span>
+<span class="sd">        .setMaxSentenceLength(512)</span>
+
+<span class="sd">    sequenceClassifier_aug = finance.BertForSequenceClassification.pretrained(&quot;finclf_augmented_esg&quot;, &quot;en&quot;, &quot;finance/models&quot;)\</span>
+<span class="sd">        .setInputCols([&quot;document&quot;,&#39;token&#39;])\</span>
+<span class="sd">        .setOutputCol(&quot;augmented_class&quot;)\</span>
+<span class="sd">        .setCaseSensitive(True)\</span>
+<span class="sd">        .setMaxSentenceLength(512)</span>
+
+<span class="sd">    pipeline = Pipeline(stages=[</span>
+<span class="sd">        document_assembler, </span>
+<span class="sd">        tokenizer,</span>
+<span class="sd">        sequenceClassifier_gen,</span>
+<span class="sd">        sequenceClassifier_aug</span>
+<span class="sd">    ])</span>
+
+<span class="sd">    result = pipeline.fit(data).transform(data)</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="FinanceBertForSequenceClassification.name"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_bert_for_sequence_classification/index.html#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;FinanceBertForSequenceClassification&quot;</span></div>
 
@@ -398,7 +427,8 @@ document.write(`
 <span class="sd">        ----------</span>
 <span class="sd">        folder : str</span>
 <span class="sd">            Folder of the saved model</span>
-<span class="sd">        spark_session : pyspark.sql.SparkSession</span>
+<span class="sd">            </span>
+<span class="sd">        spark_session : </span>
 <span class="sd">            The current SparkSession</span>
 
 <span class="sd">        Returns</span>
@@ -406,47 +436,49 @@ document.write(`
 <span class="sd">        FinanceBertForSequenceClassification</span>
 <span class="sd">            The restored model</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">sparknlp_jsl.internal</span> <span class="kn">import</span> <span class="n">_FinanceBertForSequenceClassificationLoader</span>
         <span class="n">jModel</span> <span class="o">=</span> <span class="n">_FinanceBertForSequenceClassificationLoader</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">spark_session</span><span class="o">.</span><span class="n">_jsparkSession</span><span class="p">)</span><span class="o">.</span><span class="n">_java_obj</span>
         <span class="k">return</span> <span class="n">FinanceBertForSequenceClassification</span><span class="p">(</span><span class="n">java_model</span><span class="o">=</span><span class="n">jModel</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="FinanceBertForSequenceClassification.loadSavedModelOpenSource"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_bert_for_sequence_classification/index.html#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.loadSavedModelOpenSource">[docs]</a>    <span class="k">def</span> <span class="nf">loadSavedModelOpenSource</span><span class="p">(</span><span class="n">bertForTokenClassifierPath</span><span class="p">,</span> <span class="n">tfModelPath</span><span class="p">,</span> <span class="n">spark_session</span><span class="p">):</span>
+<div class="viewcode-block" id="FinanceBertForSequenceClassification.loadSavedModelOpenSource"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_bert_for_sequence_classification/index.html#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.loadSavedModelOpenSource">[docs]</a>    <span class="k">def</span> <span class="nf">loadSavedModelOpenSource</span><span class="p">(</span><span class="n">bertForSequenceClassifierPath</span><span class="p">,</span> <span class="n">tfModelPath</span><span class="p">,</span> <span class="n">spark_session</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads a locally saved model.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        bertForTokenClassifierPath : str</span>
+<span class="sd">        bertForSequenceClassifierPath : str</span>
 <span class="sd">            Folder of the bertForTokenClassifier</span>
 <span class="sd">        tfModelPath : str</span>
 <span class="sd">            Folder taht contains the tf model</span>
-<span class="sd">        spark_session : pyspark.sql.SparkSession</span>
+<span class="sd">        spark_session : </span>
 <span class="sd">            The current SparkSession</span>
 <span class="sd">        Returns</span>
 <span class="sd">        -------</span>
 <span class="sd">        FinanceBertForSequenceClassification</span>
 <span class="sd">            The restored model</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">sparknlp_jsl.internal</span> <span class="kn">import</span> <span class="n">_FinanceBertForSequenceClassificationLoaderOpensource</span>
-        <span class="n">jModel</span> <span class="o">=</span> <span class="n">_FinanceBertForSequenceClassificationLoaderOpensource</span><span class="p">(</span><span class="n">bertForTokenClassifierPath</span><span class="p">,</span> <span class="n">tfModelPath</span><span class="p">,</span>
+        <span class="n">jModel</span> <span class="o">=</span> <span class="n">_FinanceBertForSequenceClassificationLoaderOpensource</span><span class="p">(</span><span class="n">bertForSequenceClassifierPath</span><span class="p">,</span> <span class="n">tfModelPath</span><span class="p">,</span>
                                                                        <span class="n">spark_session</span><span class="o">.</span><span class="n">_jsparkSession</span><span class="p">)</span><span class="o">.</span><span class="n">_java_obj</span>
         <span class="k">return</span> <span class="n">FinanceBertForSequenceClassification</span><span class="p">(</span><span class="n">java_model</span><span class="o">=</span><span class="n">jModel</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="FinanceBertForSequenceClassification.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_bert_for_sequence_classification/index.html#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;bert_sequence_classifier_ade&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;clinical/models&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download a pre-trained FinanceBertForSequenceClassification.</span>
+<div class="viewcode-block" id="FinanceBertForSequenceClassification.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_bert_for_sequence_classification/index.html#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;finclf_esg&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;finance/models&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Downloads and loads a pretrained model.</span>
 
-<span class="sd">        Args:</span>
-<span class="sd">            name (str): Name of the pre-trained model.</span>
-<span class="sd">            lang (str): Language of the pre-trained model.</span>
-<span class="sd">            remote_loc (str): Remote location of the pre-trained model. If None, use the</span>
-<span class="sd">            open-source location. Other values are &quot;clinical/models&quot;,</span>
-<span class="sd">            &quot;finance/models&quot;, or &quot;legal/models&quot;.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str, optional</span>
+<span class="sd">            Name of the pretrained model.</span>
+<span class="sd">        lang : str, optional</span>
+<span class="sd">            Language of the pretrained model, by default &quot;en&quot;</span>
+<span class="sd">        remote_loc : str, optional</span>
+<span class="sd">            Optional remote address of the resource, by default None. Will use</span>
+<span class="sd">            Spark NLPs repositories otherwise.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            FinanceBertForSequenceClassification: A pre-trained FinanceBertForSequenceClassification.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        FinanceBertForSequenceClassification</span>
+<span class="sd">            The restored model</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">sparknlp_jsl.pretrained</span> <span class="kn">import</span> <span class="n">InternalResourceDownloader</span>
         <span class="k">return</span> <span class="n">InternalResourceDownloader</span><span class="o">.</span><span class="n">downloadModel</span><span class="p">(</span><span class="n">FinanceBertForSequenceClassification</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span>
                                                         <span class="n">j_dwn</span><span class="o">=</span><span class="s1">&#39;InternalsPythonResourceDownloader&#39;</span><span class="p">)</span></div></div>
 </pre></div>

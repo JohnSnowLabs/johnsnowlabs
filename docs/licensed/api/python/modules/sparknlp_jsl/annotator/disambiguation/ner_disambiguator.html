@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sparknlp_jsl.annotator.disambiguation.ner_disambiguator &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl.annotator.disambiguation.ner_disambiguator &#8212; Spark NLP 4.0.0 documentation</title>
   
   
   
@@ -318,11 +318,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for sparknlp_jsl.annotator.disambiguation.ner_disambiguator</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">sparknlp_jsl.utils.licensed_annotator_type</span> <span class="kn">import</span> <span class="n">InternalAnnotatorType</span>
+<span></span><span class="kn">from</span> <span class="nn">sparknlp.common</span> <span class="kn">import</span> <span class="o">*</span>
 
-
-<div class="viewcode-block" id="NerDisambiguator"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguator">[docs]</a><span class="k">class</span> <span class="nc">NerDisambiguator</span><span class="p">(</span><span class="n">AnnotatorApproachInternal</span><span class="p">):</span>
+<div class="viewcode-block" id="NerDisambiguator"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguator">[docs]</a><span class="k">class</span> <span class="nc">NerDisambiguator</span><span class="p">(</span><span class="n">AnnotatorApproach</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Links words of interest, such as names of persons, locations and companies, from an input text document to</span>
 <span class="sd">    a corresponding unique entity in a target Knowledge Base (KB). Words of interest are called Named Entities (NEs),</span>
 <span class="sd">    mentions, or surface forms.</span>
@@ -413,9 +411,6 @@ document.write(`
 <span class="sd">    +------------------+------------------------------------------------------------------------------------------------------------------------+</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-
-<div class="viewcode-block" id="NerDisambiguator.inputAnnotatorTypes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguator.inputAnnotatorTypes">[docs]</a>    <span class="n">inputAnnotatorTypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AnnotatorType</span><span class="o">.</span><span class="n">CHUNK</span><span class="p">,</span><span class="n">AnnotatorType</span><span class="o">.</span><span class="n">SENTENCE_EMBEDDINGS</span> <span class="p">]</span></div>
-<div class="viewcode-block" id="NerDisambiguator.outputAnnotatorType"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguator.outputAnnotatorType">[docs]</a>    <span class="n">outputAnnotatorType</span> <span class="o">=</span> <span class="n">InternalAnnotatorType</span><span class="o">.</span><span class="n">DISAMBIGUATION</span></div>
 <div class="viewcode-block" id="NerDisambiguator.embeddingTypeParam"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguator.embeddingTypeParam">[docs]</a>    <span class="n">embeddingTypeParam</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
                                <span class="s2">&quot;embeddingTypeParam&quot;</span><span class="p">,</span>
                                <span class="s2">&quot;Could be &#39;bow&#39; for word embeddings or &#39;sentence&#39; for sentences&quot;</span><span class="p">,</span>
@@ -545,16 +540,11 @@ document.write(`
                          <span class="n">nearMatchingGapParam</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">narrowWithApproximateMatching</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">predictionsLimit</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
                          <span class="n">embeddingTypeParam</span><span class="o">=</span><span class="s2">&quot;sentence&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_create_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">java_model</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates the model using the java model.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            java_model (str): The name of the java model.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">_create_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">java_model</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">NerDisambiguatorModel</span><span class="p">(</span><span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="NerDisambiguatorModel"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguatorModel">[docs]</a><span class="k">class</span> <span class="nc">NerDisambiguatorModel</span><span class="p">(</span><span class="n">AnnotatorModelInternal</span><span class="p">):</span>
+<div class="viewcode-block" id="NerDisambiguatorModel"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguatorModel">[docs]</a><span class="k">class</span> <span class="nc">NerDisambiguatorModel</span><span class="p">(</span><span class="n">AnnotatorModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Links words of interest, such as names of persons, locations and companies, from an input text document to</span>
 <span class="sd">    a corresponding unique entity in a target Knowledge Base (KB). Words of interest are called Named Entities (NEs),</span>
 <span class="sd">    mentions, or surface forms.</span>
@@ -645,8 +635,6 @@ document.write(`
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="NerDisambiguatorModel.inputAnnotatorTypes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguatorModel.inputAnnotatorTypes">[docs]</a>    <span class="n">inputAnnotatorTypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AnnotatorType</span><span class="o">.</span><span class="n">CHUNK</span><span class="p">,</span><span class="n">AnnotatorType</span><span class="o">.</span><span class="n">SENTENCE_EMBEDDINGS</span> <span class="p">]</span></div>
-<div class="viewcode-block" id="NerDisambiguatorModel.outputAnnotatorType"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguatorModel.outputAnnotatorType">[docs]</a>    <span class="n">outputAnnotatorType</span> <span class="o">=</span> <span class="n">InternalAnnotatorType</span><span class="o">.</span><span class="n">DISAMBIGUATION</span></div>
 <div class="viewcode-block" id="NerDisambiguatorModel.name"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguatorModel.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;NerDisambiguatorModel&quot;</span></div>
 
 <div class="viewcode-block" id="NerDisambiguatorModel.embeddingTypeParam"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguatorModel.embeddingTypeParam">[docs]</a>    <span class="n">embeddingTypeParam</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
@@ -763,26 +751,10 @@ document.write(`
 
     <span class="nd">@staticmethod</span>
 <div class="viewcode-block" id="NerDisambiguatorModel.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguatorModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;disambiguator_per&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Downloads and loads a pretrained model.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        name : str, optional</span>
-<span class="sd">            Name of the pretrained model.</span>
-<span class="sd">        lang : str, optional</span>
-<span class="sd">            Language of the pretrained model, by default &quot;en&quot;</span>
-<span class="sd">        remote_loc : str, optional</span>
-<span class="sd">            Optional remote address of the resource, by default None. Will use</span>
-<span class="sd">            Spark NLPs repositories otherwise.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        NerDisambiguatorModel</span>
-<span class="sd">            The restored model</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">ResourceDownloader</span>
         <span class="k">return</span> <span class="n">ResourceDownloader</span><span class="o">.</span><span class="n">downloadModel</span><span class="p">(</span><span class="n">NerDisambiguatorModel</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">,</span>
                                                 <span class="n">j_dwn</span><span class="o">=</span><span class="s1">&#39;InternalsPythonResourceDownloader&#39;</span><span class="p">)</span></div></div>
+
 </pre></div>
 
                 </article>

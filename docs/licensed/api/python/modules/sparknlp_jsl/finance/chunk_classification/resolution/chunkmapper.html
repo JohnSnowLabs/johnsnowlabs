@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper &#8212; Spark NLP 4.0.0 documentation</title>
   
   
   
@@ -313,103 +313,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator.chunker.chunkmapper</span> <span class="kn">import</span> <span class="n">ChunkMapperApproach</span> <span class="k">as</span> <span class="n">A</span>
-<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator.chunker.chunkmapper</span> <span class="kn">import</span> <span class="n">ChunkMapperModel</span> <span class="k">as</span> <span class="n">M</span>
+<span></span><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="o">*</span>
 
-
-<div class="viewcode-block" id="ChunkMapperApproach"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/finance/chunk_classification/resolution/chunkmapper/index.html#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach">[docs]</a><span class="k">class</span> <span class="nc">ChunkMapperApproach</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Loads a JsonDictionary that have the relations to be mapped in the ChunkMapperModel.</span>
-
-<span class="sd">    ====================== =======================</span>
-<span class="sd">    Input Annotation types Output Annotation type</span>
-<span class="sd">    ====================== =======================</span>
-<span class="sd">    ``CHUNK``              ``LABEL_DEPENDENCY``</span>
-<span class="sd">    ====================== =======================</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    dictionary</span>
-<span class="sd">        Dictionary path where is the json that contains the mappinmgs columns</span>
-<span class="sd">    rel</span>
-<span class="sd">        Relation that we going to use to map the chunk</span>
-<span class="sd">    lowerCase</span>
-<span class="sd">        Parameter to decide if we going to use the chunk mapper or not</span>
-
-<span class="sd">    Examples</span>
-<span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; import sparknlp</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.base import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp_jsl.common import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.annotator import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.training import *</span>
-<span class="sd">    &gt;&gt;&gt; import sparknlp_jsl</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp_jsl.base import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp_jsl.annotator import *</span>
-<span class="sd">    &gt;&gt;&gt; from pyspark.ml import Pipeline</span>
-<span class="sd">    &gt;&gt;&gt; documenter = DocumentAssembler()\\</span>
-<span class="sd">    ...     .setInputCol(&quot;text&quot;)\\</span>
-<span class="sd">    ...     .setOutputCol(&quot;documents&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; sentence_detector = SentenceDetector() \\</span>
-<span class="sd">    ...     .setInputCols(&quot;documents&quot;) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;sentences&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; tokenizer = Tokenizer() \\</span>
-<span class="sd">    ...     .setInputCols(&quot;sentences&quot;) \\</span>
-<span class="sd">    ...     .setOutputCol(&quot;tokens&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; embeddings = WordEmbeddingsModel() \\</span>
-<span class="sd">    ...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\\</span>
-<span class="sd">    ...     .setInputCols([&quot;sentences&quot;, &quot;tokens&quot;])\\</span>
-<span class="sd">    ...     .setOutputCol(&quot;embeddings&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; ner_model = MedicalNerModel()\\</span>
-<span class="sd">    ...     .pretrained(&quot;ner_posology_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\\</span>
-<span class="sd">    ...     .setInputCols([&quot;sentences&quot;, &quot;tokens&quot;, &quot;embeddings&quot;])\</span>
-<span class="sd">    ...     .setOutputCol(&quot;ner&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; ner_converter = NerConverterInternal()\\</span>
-<span class="sd">    ...     .setInputCols(&quot;sentences&quot;, &quot;tokens&quot;, &quot;ner&quot;)\\</span>
-<span class="sd">    ...     .setOutputCol(&quot;ner_chunks&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; chunkerMapperapproach = ChunkMapperApproach()\\</span>
-<span class="sd">    ...    .setInputCols([&quot;ner_chunk&quot;])\\</span>
-<span class="sd">    ...    .setOutputCol(&quot;mappings&quot;)\\</span>
-<span class="sd">    ...    .setDictionary(&quot;/home/jsl/mappings2.json&quot;) \\</span>
-<span class="sd">    ...    .setRels([&quot;action&quot;]) \\</span>
-<span class="sd">    &gt;&gt;&gt; sampleData = &quot;The patient was given Warfarina Lusa and amlodipine 10 MG.&quot;</span>
-<span class="sd">    &gt;&gt;&gt; pipeline = Pipeline().setStages([</span>
-<span class="sd">    ...     documenter,</span>
-<span class="sd">    ...     sentence_detector,</span>
-<span class="sd">    ...     tokenizer,</span>
-<span class="sd">    ...     embeddings,</span>
-<span class="sd">    ...     ner_model,</span>
-<span class="sd">    ...     ner_converter])</span>
-<span class="sd">    &gt;&gt;&gt; results = pipeline.fit(data).transform(data)</span>
-<span class="sd">    &gt;&gt;&gt; results.select(&quot;mappings&quot;).show(truncate=False)</span>
-<span class="sd">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="sd">|mappings                                                                                                                                                                                                                                                                                                                                                                                               |</span>
-<span class="sd">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="sd">|[{labeled_dependency, 22, 35, Analgesic, {chunk -&gt; 0, relation -&gt; action, confidence -&gt; 0.56995, all_relations -&gt; Antipyretic, entity -&gt; Warfarina Lusa, sentence -&gt; 0}, []}, {labeled_dependency, 41, 50, NONE, {entity -&gt; amlodipine, sentence -&gt; 0, chunk -&gt; 1, confidence -&gt; 0.9989}, []}, {labeled_dependency, 55, 56, NONE, {entity -&gt; MG, sentence -&gt; 0, chunk -&gt; 2, confidence -&gt; 0.9123}, []}]|</span>
-<span class="sd">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-
-<span class="sd">&quot;&quot;&quot;</span>
-<div class="viewcode-block" id="ChunkMapperApproach.name"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/finance/chunk_classification/resolution/chunkmapper/index.html#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperApproach.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ChunkMapperApproach&quot;</span></div>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
-                 <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.finance.chunk_classification.resolution.ChunkMapperApproach&quot;</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">ChunkMapperApproach</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="n">classname</span><span class="o">=</span><span class="n">classname</span>
-        <span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_create_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">java_model</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates the model using the java model.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            java_model (str): The name of the java model.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">ChunkMapperModel</span><span class="p">(</span><span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="ChunkMapperModel"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/finance/chunk_classification/resolution/chunkmapper/index.html#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel">[docs]</a><span class="k">class</span> <span class="nc">ChunkMapperModel</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+<div class="viewcode-block" id="ChunkMapperModel"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/finance/chunk_classification/resolution/chunkmapper/index.html#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel">[docs]</a><span class="k">class</span> <span class="nc">ChunkMapperModel</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    The chunk mapper Approach load a JsonDictionary that have the relations to be mapped in the ChunkMapperModel</span>
-
 <span class="sd">    ====================== =======================</span>
 <span class="sd">    Input Annotation types Output Annotation type</span>
 <span class="sd">    ====================== =======================</span>
@@ -427,60 +334,23 @@ document.write(`
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
-<span class="sd">    &gt;&gt;&gt; import sparknlp</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.base import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp_jsl.common import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.annotator import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp.training import *</span>
-<span class="sd">    &gt;&gt;&gt; import sparknlp_jsl</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp_jsl.base import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp_jsl.annotator import *</span>
-<span class="sd">    &gt;&gt;&gt; from pyspark.ml import Pipeline</span>
-<span class="sd">    &gt;&gt;&gt; documenter = DocumentAssembler()\</span>
-<span class="sd">    ...     .setInputCol(&quot;text&quot;)\</span>
-<span class="sd">    ...     .setOutputCol(&quot;documents&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; sentence_detector = SentenceDetector() \</span>
-<span class="sd">    ...     .setInputCols(&quot;documents&quot;) \</span>
-<span class="sd">    ...     .setOutputCol(&quot;sentences&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; tokenizer = Tokenizer() \</span>
-<span class="sd">    ...     .setInputCols(&quot;sentences&quot;) \</span>
-<span class="sd">    ...     .setOutputCol(&quot;tokens&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; embeddings = WordEmbeddingsModel() \</span>
-<span class="sd">    ...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\</span>
-<span class="sd">    ...     .setInputCols([&quot;sentences&quot;, &quot;tokens&quot;])\</span>
-<span class="sd">    ...     .setOutputCol(&quot;embeddings&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; ner_model = MedicalNerModel()\</span>
-<span class="sd">    ...     .pretrained(&quot;ner_posology_large&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\</span>
-<span class="sd">    ...     .setInputCols([&quot;sentences&quot;, &quot;tokens&quot;, &quot;embeddings&quot;])\</span>
-<span class="sd">    ...     .setOutputCol(&quot;ner&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; ner_converter = NerConverterInternal()\</span>
-<span class="sd">    ...     .setInputCols(&quot;sentences&quot;, &quot;tokens&quot;, &quot;ner&quot;)\</span>
-<span class="sd">    ...     .setOutputCol(&quot;ner_chunks&quot;)</span>
-<span class="sd">    &gt;&gt;&gt; chunkerMapperapproach = ChunkMapperModel()\</span>
-<span class="sd">    ...    .pretrained()\</span>
-<span class="sd">    ...    .setInputCols([&quot;ner_chunk&quot;])\</span>
-<span class="sd">    ...    .setOutputCol(&quot;mappings&quot;)\</span>
-<span class="sd">    ...    .setRels([&quot;action&quot;]) \</span>
-<span class="sd">    &gt;&gt;&gt; sampleData = &quot;The patient was given Warfarina Lusa and amlodipine 10 MG.&quot;</span>
-<span class="sd">    &gt;&gt;&gt; pipeline = Pipeline().setStages([</span>
-<span class="sd">    ...     documenter,</span>
-<span class="sd">    ...     sentence_detector,</span>
-<span class="sd">    ...     tokenizer,</span>
-<span class="sd">    ...     embeddings,</span>
-<span class="sd">    ...     ner_model,</span>
-<span class="sd">    ...     ner_converter])</span>
-<span class="sd">    &gt;&gt;&gt; results = pipeline.fit(data).transform(data)</span>
-<span class="sd">    &gt;&gt;&gt; results = results \</span>
-<span class="sd">    ...     .selectExpr(&quot;explode(drug_chunk_embeddings) AS drug_chunk&quot;) \</span>
-<span class="sd">    ...     .selectExpr(&quot;drug_chunk.result&quot;, &quot;slice(drug_chunk.embeddings, 1, 5) AS drug_embedding&quot;) \</span>
-<span class="sd">    ...     .cache()</span>
-<span class="sd">    &gt;&gt;&gt; results.show(truncate=False)</span>
-<span class="sd">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="sd">|mappings                                                                                                                                                                                                                                                                                                                                                                                               |</span>
-<span class="sd">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="sd">|[{labeled_dependency, 22, 35, Analgesic, {chunk -&gt; 0, relation -&gt; action, confidence -&gt; 0.56995, all_relations -&gt; Antipyretic, entity -&gt; Warfarina Lusa, sentence -&gt; 0}, []}, {labeled_dependency, 41, 50, NONE, {entity -&gt; amlodipine, sentence -&gt; 0, chunk -&gt; 1, confidence -&gt; 0.9989}, []}, {labeled_dependency, 55, 56, NONE, {entity -&gt; MG, sentence -&gt; 0, chunk -&gt; 2, confidence -&gt; 0.9123}, []}]|</span>
-<span class="sd">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
-<span class="sd">-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+<span class="sd">    documentAssembler = nlp.DocumentAssembler()\</span>
+<span class="sd">        .setInputCol(&quot;text&quot;)\</span>
+<span class="sd">        .setOutputCol(&quot;document&quot;)</span>
+
+<span class="sd">    chunkAssembler = nlp.Doc2Chunk() \</span>
+<span class="sd">        .setInputCols(&quot;document&quot;) \</span>
+<span class="sd">        .setOutputCol(&quot;chunk&quot;) \</span>
+<span class="sd">        .setIsArray(False)</span>
+
+<span class="sd">    CM = finance.ChunkMapperModel().pretrained(&quot;finmapper_edgar_companyname&quot;, &quot;en&quot;, &quot;finance/models&quot;)\</span>
+<span class="sd">        .setInputCols([&quot;chunk&quot;])\</span>
+<span class="sd">        .setOutputCol(&quot;mappings&quot;)</span>
+
+
+<span class="sd">    cm_pipeline = Pipeline(stages=[documentAssembler, chunkAssembler, CM])</span>
+<span class="sd">    result = cm_pipeline.fit(data).transform(data)</span>
+<span class="sd">  </span>
 <span class="sd">&quot;&quot;&quot;</span>
 <div class="viewcode-block" id="ChunkMapperModel.name"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/finance/chunk_classification/resolution/chunkmapper/index.html#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ChunkMapperModel&quot;</span></div>
 
@@ -492,20 +362,24 @@ document.write(`
         <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="ChunkMapperModel.pretrained"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/finance/chunk_classification/resolution/chunkmapper/index.html#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;clinical/models&quot;</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download a pre-trained ChunkMapperModel.</span>
+<div class="viewcode-block" id="ChunkMapperModel.pretrained"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/finance/chunk_classification/resolution/chunkmapper/index.html#sparknlp_jsl.finance.chunk_classification.resolution.chunkmapper.ChunkMapperModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;finance/models&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Downloads and loads a pretrained model.</span>
 
-<span class="sd">        Args:</span>
-<span class="sd">            name (str): Name of the pre-trained model.</span>
-<span class="sd">            lang (str): Language of the pre-trained model.</span>
-<span class="sd">            remote_loc (str): Remote location of the pre-trained model. If None, use the</span>
-<span class="sd">            open-source location. Other values are &quot;clinical/models&quot;,</span>
-<span class="sd">            &quot;finance/models&quot;, or &quot;legal/models&quot;.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str, optional</span>
+<span class="sd">            Name of the pretrained model.</span>
+<span class="sd">        lang : str, optional</span>
+<span class="sd">            Language of the pretrained model, by default &quot;en&quot;</span>
+<span class="sd">        remote_loc : str, optional</span>
+<span class="sd">            Optional remote address of the resource, by default None. Will use</span>
+<span class="sd">            Spark NLPs repositories otherwise.</span>
 
-<span class="sd">        Returns:</span>
-<span class="sd">            ChunkMapperModel: A pre-trained ChunkMapperModel.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ChunkMapperModel</span>
+<span class="sd">            The restored model</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">sparknlp_jsl.pretrained</span> <span class="kn">import</span> <span class="n">InternalResourceDownloader</span>
         <span class="k">return</span> <span class="n">InternalResourceDownloader</span><span class="o">.</span><span class="n">downloadModel</span><span class="p">(</span><span class="n">ChunkMapperModel</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span>
                                                         <span class="n">j_dwn</span><span class="o">=</span><span class="s1">&#39;InternalsPythonResourceDownloader&#39;</span><span class="p">)</span></div></div>
 </pre></div>

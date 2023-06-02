@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sparknlp_jsl.annotator.doc2_chunk_internal &#8212; Spark NLP  documentation</title>
+    <title>sparknlp_jsl.annotator.doc2_chunk_internal &#8212; Spark NLP 4.0.0 documentation</title>
   
   
   
@@ -337,7 +337,7 @@ document.write(`
 <span class="kn">from</span> <span class="nn">pyspark.ml.param</span> <span class="kn">import</span> <span class="n">TypeConverters</span><span class="p">,</span> <span class="n">Params</span><span class="p">,</span> <span class="n">Param</span>
 <span class="kn">from</span> <span class="nn">sparknlp.internal</span> <span class="kn">import</span> <span class="n">AnnotatorTransformer</span>
 
-<span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="n">AnnotatorProperties</span><span class="p">,</span> <span class="n">AnnotatorType</span>
+<span class="kn">from</span> <span class="nn">sparknlp.common</span> <span class="kn">import</span> <span class="n">AnnotatorProperties</span>
 
 
 <div class="viewcode-block" id="Doc2ChunkInternal"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/doc2_chunk_internal/index.html#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal">[docs]</a><span class="k">class</span> <span class="nc">Doc2ChunkInternal</span><span class="p">(</span><span class="n">AnnotatorTransformer</span><span class="p">,</span> <span class="n">AnnotatorProperties</span><span class="p">):</span>
@@ -377,7 +377,7 @@ document.write(`
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; import sparknlp</span>
 <span class="sd">    &gt;&gt;&gt; from sparknlp.base import *</span>
-<span class="sd">    &gt;&gt;&gt; from sparknlp_jsl.common import *</span>
+<span class="sd">    &gt;&gt;&gt; from sparknlp.common import *</span>
 <span class="sd">    &gt;&gt;&gt; from sparknlp.annotator import *</span>
 <span class="sd">    &gt;&gt;&gt; from sparknlp.training import *</span>
 <span class="sd">    &gt;&gt;&gt; from pyspark.ml import Pipeline</span>
@@ -404,7 +404,6 @@ document.write(`
 <span class="sd">    --------</span>
 <span class="sd">    Chunk2Doc : for converting `CHUNK` annotations to `DOCUMENT`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="Doc2ChunkInternal.inputAnnotatorTypes"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/doc2_chunk_internal/index.html#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.inputAnnotatorTypes">[docs]</a>    <span class="n">inputAnnotatorTypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AnnotatorType</span><span class="o">.</span><span class="n">DOCUMENT</span><span class="p">,</span><span class="n">AnnotatorType</span><span class="o">.</span><span class="n">TOKEN</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="Doc2ChunkInternal.chunkCol"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/doc2_chunk_internal/index.html#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.chunkCol">[docs]</a>    <span class="n">chunkCol</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;chunkCol&quot;</span><span class="p">,</span> <span class="s2">&quot;column that contains string. Must be part of DOCUMENT&quot;</span><span class="p">,</span> <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 <div class="viewcode-block" id="Doc2ChunkInternal.startCol"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/doc2_chunk_internal/index.html#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.startCol">[docs]</a>    <span class="n">startCol</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;startCol&quot;</span><span class="p">,</span> <span class="s2">&quot;column that has a reference of where chunk begins&quot;</span><span class="p">,</span> <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
@@ -416,20 +415,13 @@ document.write(`
 
     <span class="nd">@keyword_only</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">(</span><span class="n">Doc2ChunkInternal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.annotator.Doc2ChunkInternal&quot;</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Doc2ChunkInternal</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.Doc2ChunkInternal&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_setDefault</span><span class="p">(</span>
             <span class="n">isArray</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
 
     <span class="nd">@keyword_only</span>
 <div class="viewcode-block" id="Doc2ChunkInternal.setParams"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/doc2_chunk_internal/index.html#sparknlp_jsl.annotator.doc2_chunk_internal.Doc2ChunkInternal.setParams">[docs]</a>    <span class="k">def</span> <span class="nf">setParams</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets params for this Doc2ChunkInternal.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        Doc2ChunkInternal</span>
-<span class="sd">            Doc2ChunkInternal with params set</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_input_kwargs</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
 
@@ -493,6 +485,7 @@ document.write(`
 <span class="sd">            Name of the Id Column</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">lowerCase</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div></div>
+
 </pre></div>
 
                 </article>
