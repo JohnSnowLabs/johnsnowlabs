@@ -58,7 +58,7 @@ chemicals_ner = MedicalNerModel.pretrained("ner_chemicals_emb_clinical_large", "
     .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("chemicals_ner")
     
-chemicals_ner_converter = NerConverter() \
+chemicals_ner_converter = NerConverterInternal() \
     .setInputCols(["sentence", "token", "species_ner"]) \
     .setOutputCol("chemicals_ner_chunk")
 
@@ -98,7 +98,7 @@ val anatomy_ner_model = MedicalNerModel.pretrained("ner_chemicals_emb_clinical_l
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("chemicals_ner")
 
-val anatomy_ner_converter = new NerConverter()
+val anatomy_ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "chemicals_ner"))
     .setOutputCol("chemicals_ner_chunk")
 
