@@ -36,6 +36,7 @@ Extract different types of chemical compounds mentioned in text using pretrained
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
