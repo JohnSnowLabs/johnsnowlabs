@@ -338,14 +338,6 @@ document.write(`
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../_sources/reference/autosummary/sparknlp_jsl/base/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -370,7 +362,8 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright 2022, John Snow Labs.
+      © Copyright <span id="year"></span>, John Snow Labs.
+      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
       <br/>
     
   </p>

@@ -416,7 +416,8 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright 2022, John Snow Labs.
+      © Copyright <span id="year"></span>, John Snow Labs.
+      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
       <br/>
     
   </p>
