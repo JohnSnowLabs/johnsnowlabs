@@ -36,6 +36,7 @@ Extract different types of chemical compounds mentioned in text using pretrained
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -98,7 +99,7 @@ val chemicals_ner_model = MedicalNerModel.pretrained("ner_chemicals_emb_clinical
     .setOutputCol("chemicals_ner")
 
 val chemicals_ner_converter = new NerConverter()
-    .setInputCols(Array("sentence", "token", "ner"))
+    .setInputCols(Array("sentence", "token", "chemicals_ner"))
     .setOutputCol("chemicals_ner_chunk")
 
 val chemicals_pipeline = new PipelineModel().setStages(Array(document_assembler, 
