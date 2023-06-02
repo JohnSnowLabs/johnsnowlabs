@@ -28,7 +28,7 @@ CATEGORY
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[DocumentLogRegClassifierModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/DocumentLogRegClassifierModel)
+[DocumentLogRegClassifierModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/DocumentLogRegClassifierModel.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
@@ -302,7 +302,7 @@ val model = pipeline.fit(trainingData)
 {%- endcapture -%}
 
 {%- capture approach_api_link -%}
-[DocumentLogRegClassifierApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/DocumentLogRegClassifierApproach)
+[DocumentLogRegClassifierApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/DocumentLogRegClassifierApproach.html)
 {%- endcapture -%}
 
 {%- capture approach_python_api_link -%}

@@ -438,7 +438,7 @@ val trained_pipeline = new Pipeline().setStages(Array(
 
 
 {%- capture model_api_link -%}
-[RENerChunksFilter](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/re/RENerChunksFilter)
+[RENerChunksFilter](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/re/RENerChunksFilter.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}

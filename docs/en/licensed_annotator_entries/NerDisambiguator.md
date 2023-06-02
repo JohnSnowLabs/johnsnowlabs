@@ -29,7 +29,7 @@ DISAMBIGUATION
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[NerDisambiguatorModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/disambiguation/NerDisambiguatorModel)
+[NerDisambiguatorModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/disambiguation/NerDisambiguatorModel.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
@@ -379,7 +379,7 @@ val nlpPipeline = new Pipeline().setStages(Array(
 
 
 {%- capture approach_api_link -%}
-[NerDisambiguator](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/disambiguation/NerDisambiguator)
+[NerDisambiguator](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/disambiguation/NerDisambiguator.html)
 {%- endcapture -%}
 
 {%- capture approach_python_api_link -%}

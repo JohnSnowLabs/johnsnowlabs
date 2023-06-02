@@ -152,7 +152,7 @@ val pipeline = new Pipeline().setStages(Array(docAssembler, sentenceDetector, to
 
 
 {%- capture model_api_link -%}
-[IOBTagger](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/ner/IOBTagger)
+[IOBTagger](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/ner/IOBTagger.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}

@@ -74,7 +74,7 @@ Below are the charts included in the Tasks section.
 
 **Total vs distinct count of labels across all completions**
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.9.0/total_vs_distinct_values.png" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/total_vs_distinct_by_label_across_completions.png" style="width:100%;"/>
 
 **Average number of tokens by label**
 
@@ -82,11 +82,7 @@ Below are the charts included in the Tasks section.
 
 **Total number of label occurrences that include numeric values**
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.9.0/numeric_values_across_labels.png" style="width:100%;"/>
-
-**Average length of tasks completed by each Annotator**
-
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.9.0/average_task_length.png" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/numeric_values_across_labels.png" style="width:100%;"/>
 
 <br />
 
@@ -96,21 +92,17 @@ To access Team Productivity charts, navigate on the second tab of the <es>Analyt
 
 Below are the charts included in the Team Productivity section.
 
-<!-- **Total number of completions in the Project**
+**Total number of completions in the Project**
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/total_completions.png" style="width:100%;"/>
 
 **Total number of completions in the Project in the last 30 days**
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/total_completions_in_last_30_days.png" style="width:100%;"/> -->
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/total_completions_in_last_30_days.png" style="width:100%;"/>
 
-**Visual Representation of the completions**
+**Total number of completions for each Annotator**
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.9.0/team_productivity_analytics.png" style="width:100%;"/>
-
-**Total completions vs Ground Truth completions per Annotator**
-
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.9.0/total_completions_vs_ground_truth.png" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/total_number_of_completions_per_annotator.png" style="width:100%;"/>
 
 **Total number of completions submitted over time for each Annotator**
 
@@ -118,7 +110,7 @@ Below are the charts included in the Team Productivity section.
 
 **Average time spent by the Annotator in each task**
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.9.0/average_time_per_task.png" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/average_time_annotator_spent_on_one_task.png" style="width:100%;"/>
 
 **Total number of completions submitted over time**
 
@@ -130,7 +122,7 @@ Below are the charts included in the Team Productivity section.
 
 Starting from version 2.8.0, Inter Annotator Agreement(IAA) charts allow the comparison between annotations produced by <es>Annotators</es>, <es>Reviewers</es>, or <es>Managers</es>.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.9.0/iaa_analytics.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/iaa_analytics.gif" style="width:100%;"/>
 
 Inter Annotator Agreement charts can be used by <es>Annotators</es>, <es>Reviewers</es>, and <es>Managers</es> for identifying contradictions or disagreements within the starred completions (Ground Truth). When multiple annotators work on same tasks, IAA charts are handy to measure how well the annotations created by different annotators align. IAA chart can also be used to identify outliers in the labeled data, or to compare manual annotations with model predictions.
 
@@ -152,7 +144,7 @@ Below are the charts included in the Inter-Annotator Agreement section.
 
 **Comparison of annotations by annotator on each chunk**
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.9.0/annotators_comparison_by_chunks.png" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/analytics/annotators_comparison_by_chunk.png" style="width:100%;"/>
 
 **Comparison of annotations by model and annotator (Ground Truth) on each chunk**
 

@@ -25,7 +25,7 @@ CATEGORY
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[GenericClassifierModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierModel)
+[GenericClassifierModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierModel.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
@@ -221,7 +221,7 @@ val clf_model = pipeline.fit(data)
 {%- endcapture -%}
 
 {%- capture approach_api_link -%}
-[GenericClassifierApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach)
+[GenericClassifierApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/generic_classifier/GenericClassifierApproach.html)
 {%- endcapture -%}
 
 {%- capture approach_python_api_link -%}

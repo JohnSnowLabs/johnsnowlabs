@@ -10,6 +10,7 @@ language: en
 edition: Healthcare NLP 3.4.0
 spark_version: 3.0
 supported: true
+recommended: true
 engine: tensorflow
 annotator: MedicalBertForTokenClassifier
 article_header:
