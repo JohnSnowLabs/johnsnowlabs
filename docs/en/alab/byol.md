@@ -30,7 +30,7 @@ Once a valid license is uploaded, all the licensed (Healthcare, Finance, Legal, 
 
 Annotation Lab supports floating licenses with different scopes (_ocr: training_, _ocr: inference_, _healthcare: inference_, _healthcare: training_, _finance: inference_, _finance: training_, _legal: inference_, _legal: training_). Depending on the scope of the available license, users can perform model training and/or deploy pre-annotation servers.
 Licenses are a must for training Healthcare, Finance, and Legal models and deploying these models as pre-annotation servers.
-Floating licenses can be acquired on self-service via [my.JohnSnowLabs.com](https://my.johnsnowlabs.com/).
+Floating licenses can be acquired on self-service via [license.johnsnowlabs.com](https://license.johnsnowlabs.com/).
 
 One floating license is bound to only one server (pre-annotation server, OCR server, training job) at a time. To run multiple model training jobs and/or pre-annotations servers, users must provide multiple floating licenses.
 
