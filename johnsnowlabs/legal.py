@@ -86,12 +86,12 @@ try:
             ContextualParserApproach,
             GenericClassifierApproach,
             Router,
-            NerQuestionGenerator,
             AssertionChunkConverter,
             NameChunkObfuscatorApproach,
             NameChunkObfuscator,
             # Resolution2Chunk,
             ResolverMerger,
+            NerTemplateRenderModel,
         )
         from sparknlp_jsl.modelTracer import ModelTracer
 

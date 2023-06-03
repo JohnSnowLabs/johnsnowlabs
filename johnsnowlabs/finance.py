@@ -5,7 +5,6 @@ from johnsnowlabs.utils.env_utils import reverse_compatibility_import
 from johnsnowlabs.utils.print_messages import log_broken_lib
 
 try:
-
     if try_import_lib("sparknlp_jsl") and try_import_lib("sparknlp"):
         from sparknlp_jsl.functions import *
         from sparknlp_jsl.training import *
@@ -87,7 +86,6 @@ try:
             ContextualParserApproach,
             GenericClassifierApproach,
             Router,
-            NerQuestionGenerator,
             Replacer,
             # NEW
             ContextualParserModel,
@@ -95,6 +93,7 @@ try:
             NameChunkObfuscator,
             Resolution2Chunk,
             ResolverMerger,
+            NerTemplateRenderModel,
         )
 
         from sparknlp_jsl.modelTracer import ModelTracer

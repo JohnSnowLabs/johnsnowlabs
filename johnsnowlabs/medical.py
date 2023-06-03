@@ -1,4 +1,5 @@
 import traceback
+
 from johnsnowlabs.abstract_base.lib_resolver import try_import_lib
 from johnsnowlabs.auto_install.softwares import Software
 from johnsnowlabs.utils.env_utils import reverse_compatibility_import
@@ -72,6 +73,7 @@ try:
             DocumentMLClassifierModel,
             Resolution2Chunk,
             MedicalQuestionAnswering,
+            NerTemplateRenderModel,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
