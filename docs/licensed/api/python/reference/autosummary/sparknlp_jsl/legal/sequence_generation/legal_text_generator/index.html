@@ -412,10 +412,16 @@ document.write(`
 </dd>
 <dt><strong>topK</strong></dt><dd><p>The number of highest probability vocabulary tokens to consider, by default 1</p>
 </dd>
+<dt><strong>noRepeatNgramSize</strong></dt><dd><p>The number of tokens that can’t be repeated in the same order. Useful for preventing loops.
+The default is 0.</p>
+</dd>
 <dt><strong>ignoreTokenIds</strong></dt><dd><p>A list of token ids which are ignored in the decoder’s output, by
 default []</p>
 </dd>
 <dt><strong>randomSeed: int</strong></dt><dd><p>Random seed. Set to positive integer to get reproducible results, by default None.</p>
+</dd>
+<dt><strong>customPrompt</strong></dt><dd><p>Custom prompt template. The only available variable is {DOCUMENT} and it is populated with
+the contents of the input document</p>
 </dd>
 <dt><strong>Examples</strong></dt><dd></dd>
 <dt><strong>——–</strong></dt><dd></dd>
@@ -461,12 +467,12 @@ default []</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_text_generator.LegalTextGenerator.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legal/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/legal/sequence_generation/legal_text_generator.html#LegalTextGenerator.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_text_generator.LegalTextGenerator.pretrained" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'leggen_flant5_finetuned'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legal/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/legal/sequence_generation/legal_text_generator.html#LegalTextGenerator.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_text_generator.LegalTextGenerator.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Downloads and loads a pretrained model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the pretrained model</p>
+<dt><strong>name</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the pretrained model, by default “leggen_flant5_finetuned”</p>
 </dd>
 <dt><strong>lang</strong><span class="classifier">str, optional</span></dt><dd><p>Language of the pretrained model, by default “en”</p>
 </dd>
