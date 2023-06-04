@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 4.4.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorApproach</title>
-          <meta name="description" content="Spark NLP 4.4.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorApproach" />
-          <meta name="keywords" content="Spark NLP 4.4.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorApproach" />
+          <title>Spark NLP 4.4.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorApproach</title>
+          <meta name="description" content="Spark NLP 4.4.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorApproach" />
+          <meta name="keywords" content="Spark NLP 4.4.3 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorApproach" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 4.4.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 4.4.3 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -954,6 +954,26 @@ See <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tuto
                 <span class="name">@varargs</span><span class="args">()</span>
               
         </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorParams#genderAwareness" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="genderAwareness:org.apache.spark.ml.param.BooleanParam"></a><a id="genderAwareness:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/NameChunkObfuscatorApproach.html#genderAwareness:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">genderAwareness</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to use gender-aware names or not during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to use gender-aware names or not during obfuscation.
+This param effects only names.
+If value is true, it might decrease performance.
+Default: False
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NameChunkObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorParams">NameChunkObfuscatorParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#get" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="get[T](param:org.apache.spark.ml.param.Param[T]):Option[T]"></a><a id="get[T](Param[T]):Option[T]"></a>
       <span class="permalink">
@@ -1512,6 +1532,25 @@ Default:'en'
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorParams#nameEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="nameEntities:org.apache.spark.ml.param.StringArrayParam"></a><a id="nameEntities:StringArrayParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/NameChunkObfuscatorApproach.html#nameEntities:org.apache.spark.ml.param.StringArrayParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">nameEntities</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.StringArrayParam">StringArrayParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">The nameEntities used to select entities during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>The nameEntities used to select entities during obfuscation.
+The supported name entities are NAME, PATIENT, and DOCTOR.
+Default: NAME
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NameChunkObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorParams">NameChunkObfuscatorParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -1861,6 +1900,26 @@ with the same output.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorParams#setGenderAwareness" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setGenderAwareness(value:Boolean):NameChunkObfuscatorParams.this.type"></a><a id="setGenderAwareness(Boolean):NameChunkObfuscatorApproach.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/NameChunkObfuscatorApproach.html#setGenderAwareness(value:Boolean):NameChunkObfuscatorParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setGenderAwareness</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorApproach">NameChunkObfuscatorApproach</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to use gender-aware names or not during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to use gender-aware names or not during obfuscation.
+This param effects only names.
+If value is true, it might decrease performance.
+Default: False
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NameChunkObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorParams">NameChunkObfuscatorParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#setInputCols" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setInputCols(value:String*):HasInputAnnotationCols.this.type"></a><a id="setInputCols(String*):NameChunkObfuscatorApproach.this.type"></a>
       <span class="permalink">
@@ -1929,6 +1988,25 @@ Default:'en'
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CanBeLazy</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorParams#setNameEntities" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setNameEntities(value:Array[String]):NameChunkObfuscatorParams.this.type"></a><a id="setNameEntities(Array[String]):NameChunkObfuscatorApproach.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/NameChunkObfuscatorApproach.html#setNameEntities(value:Array[String]):NameChunkObfuscatorParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setNameEntities</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorApproach">NameChunkObfuscatorApproach</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">The nameEntities used to select entities during obfuscation.</p><div class="fullcomment"><div class="comment cmt"><p>The nameEntities used to select entities during obfuscation.
+The supported name entities are NAME, PATIENT, and DOCTOR.
+Default: NAME
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="NameChunkObfuscatorParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorParams">NameChunkObfuscatorParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorApproach#setObfuscateRefFile" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
       <a id="setObfuscateRefFile(f:String):NameChunkObfuscatorApproach.this.type"></a><a id="setObfuscateRefFile(String):NameChunkObfuscatorApproach.this.type"></a>
       <span class="permalink">
