@@ -362,10 +362,10 @@ We are excited to announce 4 new classification models.
 
 | model name                          | annotator                       | predicted entities |
 |-------------------------------------|---------------------------------|-----------------|
-| [`classifierml_ade`]()              | DocumentMLClassifierApproach    | `True`, `False` |
-| [`classifier_logreg_ade`]()         | DocumentLogRegClassifierModel   | `True`, `False` |
-| [`generic_svm_classifier_ade`]()    | GenericSVMClassifierModel       | `True`, `False` |
-| [`generic_logreg_classifier_ade`]() | GenericLogRegClassifierModel    | `True`, `False` |
+| [`classifierml_ade`](https://nlp.johnsnowlabs.com/2023/05/16/classifierml_ade_en.html)              | DocumentMLClassifierApproach    | `True`, `False` |
+| [`classifier_logreg_ade`](https://nlp.johnsnowlabs.com/2023/05/16/classifier_logreg_ade_en.html)         | DocumentLogRegClassifierModel   | `True`, `False` |
+| [`generic_svm_classifier_ade`](https://nlp.johnsnowlabs.com/2023/05/09/generic_svm_classifier_ade_en.html)    | GenericSVMClassifierModel       | `True`, `False` |
+| [`generic_logreg_classifier_ade`](https://nlp.johnsnowlabs.com/2023/05/09/generic_logreg_classifier_ade_en.html) | GenericLogRegClassifierModel    | `True`, `False` |
 
 
 *Example*:
