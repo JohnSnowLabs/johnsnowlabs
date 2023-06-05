@@ -146,7 +146,7 @@ annotation-lab:
       - title: Security and Privacy
         url: /docs/en/alab/security
       - title: Video Tutorials
-        url: /docs/en/alab/tutorials
+        url: /docs/en/alab/step_by_step_tutorials
       - title: FAQ
         url: /docs/en/alab/troubleshooting
       - title: Release Notes

@@ -15,7 +15,7 @@ sidebar:
 
 ## Trial License Integration, Comment and Tag Functionality, and Enhanced Task Export Filters NLP Lab 4.10
 
-We are thrilled to announce the release of NLP Lab version 4.10, which comes with an array of exciting new features aimed at enhancing user experience and improving the efficiency of the platform. Among the notable additions are the integration of a trial license, enabling users to explore the full potential of NLP Lab, and the seamless automatic import of the trial license into the platform. 
+The release of NLP Lab version 4.10 comes with an array of exciting new features aimed at enhancing user experience and improving the efficiency of the platform. Among the notable additions are the integration of a get trial license feature, enabling users to explore the full potential of NLP Lab, and the seamless automatic import of the trial license into the platform. 
 
 Additionally, users can now conveniently add comments in the Labeling Page, providing a more collaborative and organized environment for annotation tasks. Another valuable feature introduced in this release is the ability to add tags directly in the Labeling Screen, allowing for better categorization and management of labeled data. Lastly, the update includes an expanded range of filters when exporting tasks, empowering users to customize and streamline their task exports.
 
@@ -23,7 +23,7 @@ Here are the highlights of this release:
 
 ## Get trial license from License page
 
-In version 4.10.0, we have implemented an updated License page layout, providing a simpler process for acquiring a trial license. Users can now request a trial license directly from the License page, eliminating the need to navigate to external pages. This new workflow introduces a dedicated "Get License" tab, while the Import License and Existing Licenses tabs remain unchanged.
+In version 4.10, we have implemented an updated License page layout, providing a simpler process for acquiring a trial license. Users can now request a trial license directly from the License page, eliminating the need to navigate to external pages. This new workflow introduces a dedicated "Get License" tab, while the Import License and Existing Licenses tabs remain unchanged.
 
 To obtain a trial license, users are required to fill out the form on the "Get License" tab, providing their organizational email. Once the form is submitted, a validation link is sent to the provided email address and the trial license is automatically imported to the NLP Lab when the link is clicked, making it readily available for use.
 ![trial-license](/assets/images/annotation_lab/4.10.0/1.png)
@@ -42,7 +42,7 @@ NLP Lab 4.10 introduces an enhanced tags feature for labeling pages. This featur
 
 ## Filters for exporting tasks
 
-This version of NLP Lab (v4.10.0) comes with a new feature: selective annotation exports. Users can now choose which annotations to export by using two new filters on the export page. These new filters can be combined with other filter options like tags, Only ground truth, and Exclude tasks without Completions. 
+This version of NLP Lab comes with a new feature: selective annotation exports. Users can now choose which annotations to export by using two new filters on the export page. These new filters can be combined with other filter options like tags, Only ground truth, and Exclude tasks without Completions. 
 1. Filter Exported Annotations by Task:
   this filter allows users to select annotations based on the task (NER, Classification, Assertion, Relation Extraction) 
 2. Select Annotations to Include In the Export:
@@ -53,7 +53,7 @@ This version of NLP Lab (v4.10.0) comes with a new feature: selective annotation
 
 ### Add video template to the project content type
 
-The current release, re-introduces the Video content type to the project configuration page. This provides the users with a flexible way to annotate projects that are based on video content.
+The current release, re-introduces the Video content type to the project configuration page. This provides users with a flexible way to annotate projects that are based on video content.
 
 ![videotemplate](/assets/images/annotation_lab/4.10.0/5.png)
 
