@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-The `fingen_flant5_finetuned_fiqa` model is the Text Generation model that has been fine-tuned on FLAN-T5 using FIQA dataset. FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text-generation tasks.
+The `fingen_flant5_finetuned_fiqa` model is the Text Generation model that has been fine-tuned on FLAN-T5 using FIQA dataset. FLAN-T5 is a state-of-the-art language model developed by Google AI that utilizes the T5 architecture for text-generation tasks.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
