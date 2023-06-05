@@ -40,7 +40,7 @@
     <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js"></script>
     <script src="../../../../../../static/jquery.js"></script>
     <script src="../../../../../../static/underscore.js"></script>
-    <script src="../../../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
@@ -420,12 +420,12 @@ param mix-ins, because this sets the UID from the Java model.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_generation.finance_summarizer.FinanceSummarizer.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'medical_summarizer_small'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finance/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/finance/sequence_generation/finance_summarizer.html#FinanceSummarizer.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.finance_summarizer.FinanceSummarizer.pretrained" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finsum_flant5_finetuned_sec10k'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finance/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/finance/sequence_generation/finance_summarizer.html#FinanceSummarizer.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.sequence_generation.finance_summarizer.FinanceSummarizer.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Downloads and loads a pretrained model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the pretrained model, by default “biogpt_pubmed_qa”</p>
+<dt><strong>name</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the pretrained model, by default “finsum_flant5_finetuned_sec10k”</p>
 </dd>
 <dt><strong>lang</strong><span class="classifier">str, optional</span></dt><dd><p>Language of the pretrained model, by default “en”</p>
 </dd>
@@ -492,6 +492,15 @@ Spark NLPs repositories otherwise.</p>
 </li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../_sources/reference/autosummary/sparknlp_jsl/finance/sequence_generation/finance_summarizer/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
 </div></div>
               
             
@@ -516,8 +525,7 @@ Spark NLPs repositories otherwise.</p>
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

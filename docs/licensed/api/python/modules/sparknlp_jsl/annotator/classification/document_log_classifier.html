@@ -39,7 +39,7 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js"></script>
     <script src="../../../../static/jquery.js"></script>
     <script src="../../../../static/underscore.js"></script>
-    <script src="../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
@@ -596,17 +596,17 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">classificationModel</span><span class="o">=</span><span class="n">model</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="DocumentLogRegClassifierModel.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/classification/document_log_classifier/index.html#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="DocumentLogRegClassifierModel.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/classification/document_log_classifier/index.html#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;classifier_logreg_ade&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;clinical/models&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Downloads and loads a pretrained model.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        name : str, optional</span>
-<span class="sd">            Name of the pretrained model.</span>
+<span class="sd">            Name of the pretrained model, by default &quot;classifier_logreg_ade&quot;</span>
 <span class="sd">        lang : str, optional</span>
 <span class="sd">            Language of the pretrained model, by default &quot;en&quot;</span>
 <span class="sd">        remote_loc : str, optional</span>
-<span class="sd">            Optional remote address of the resource, by default None. Will use</span>
+<span class="sd">            Optional remote address of the resource, by default &quot;clinical/models&quot;. Will use</span>
 <span class="sd">            Spark NLPs repositories otherwise.</span>
 
 <span class="sd">        Returns</span>
@@ -661,8 +661,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

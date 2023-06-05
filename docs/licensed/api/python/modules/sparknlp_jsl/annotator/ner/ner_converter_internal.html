@@ -39,7 +39,7 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js"></script>
     <script src="../../../../static/jquery.js"></script>
     <script src="../../../../static/underscore.js"></script>
-    <script src="../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
@@ -320,9 +320,10 @@ document.write(`
   <h1>Source code for sparknlp_jsl.annotator.ner.ner_converter_internal</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator.source_tracking_metadata_params</span> <span class="kn">import</span> <span class="n">SourceTrackingMetadataParams</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator.filtering_params</span> <span class="kn">import</span> <span class="n">FilteringParams</span>
 
 
-<div class="viewcode-block" id="CommonNerConverterInternalParams"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/ner_converter_internal/index.html#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams">[docs]</a><span class="k">class</span> <span class="nc">CommonNerConverterInternalParams</span><span class="p">:</span>
+<div class="viewcode-block" id="CommonNerConverterInternalParams"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/ner_converter_internal/index.html#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams">[docs]</a><span class="k">class</span> <span class="nc">CommonNerConverterInternalParams</span><span class="p">(</span><span class="n">FilteringParams</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Base class for NerConverterInternal classes</span>
 
 <span class="sd">    Contains the common parameters and methods used in all internal classes.</span>
@@ -348,18 +349,6 @@ document.write(`
 <span class="sd">        type are separated by those words, these entities can be combined to produce a single, larger chunk.</span>
 <span class="sd">    </span>
 <span class="sd">    &quot;&quot;&quot;</span>
-<div class="viewcode-block" id="CommonNerConverterInternalParams.whiteList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/ner_converter_internal/index.html#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.whiteList">[docs]</a>    <span class="n">whiteList</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
-        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-        <span class="s2">&quot;whiteList&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels&quot;</span><span class="p">,</span>
-        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">,</span></div>
-    <span class="p">)</span>
-<div class="viewcode-block" id="CommonNerConverterInternalParams.blackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/ner_converter_internal/index.html#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.blackList">[docs]</a>    <span class="n">blackList</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
-        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-        <span class="s2">&quot;blackList&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels&quot;</span><span class="p">,</span>
-        <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">,</span></div>
-    <span class="p">)</span>
 <div class="viewcode-block" id="CommonNerConverterInternalParams.preservePosition"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/ner_converter_internal/index.html#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.preservePosition">[docs]</a>    <span class="n">preservePosition</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
         <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
         <span class="s2">&quot;preservePosition&quot;</span><span class="p">,</span>
@@ -385,7 +374,7 @@ document.write(`
         <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">,</span></div>
     <span class="p">)</span>
     
-<div class="viewcode-block" id="CommonNerConverterInternalParams.setWhiteList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/ner_converter_internal/index.html#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setWhiteList">[docs]</a>    <span class="k">def</span> <span class="nf">setWhiteList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entities</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
+<div class="viewcode-block" id="CommonNerConverterInternalParams.setAllowList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/ner_converter_internal/index.html#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setAllowList">[docs]</a>    <span class="k">def</span> <span class="nf">setAllowList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entities</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the `whiteList` parameter value.</span>
 
 <span class="sd">        Parameters</span>
@@ -398,12 +387,12 @@ document.write(`
 <span class="sd">        &gt;&gt;&gt; ner_converter = NerConverterInternal()\\</span>
 <span class="sd">        ...    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\\</span>
 <span class="sd">        ...    .setOutputCol(&quot;ner_chunk&quot;)\\</span>
-<span class="sd">        ...    .setWhiteList([&quot;PER&quot;, &quot;LOC&quot;])</span>
+<span class="sd">        ...    .setAllowList([&quot;PER&quot;, &quot;LOC&quot;])</span>
 
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">whiteList</span><span class="o">=</span><span class="n">entities</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="CommonNerConverterInternalParams.setBlackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/ner_converter_internal/index.html#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setBlackList">[docs]</a>    <span class="k">def</span> <span class="nf">setBlackList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entities</span><span class="p">):</span>
+<div class="viewcode-block" id="CommonNerConverterInternalParams.setDenyList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/ner_converter_internal/index.html#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setDenyList">[docs]</a>    <span class="k">def</span> <span class="nf">setDenyList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entities</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the `blackList` parameter value.</span>
 
 <span class="sd">        Parameters</span>
@@ -416,7 +405,7 @@ document.write(`
 <span class="sd">        &gt;&gt;&gt; ner_converter = NerConverterInternal()\\</span>
 <span class="sd">        ...    .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner&quot;])\\</span>
 <span class="sd">        ...    .setOutputCol(&quot;ner_chunk&quot;)\\</span>
-<span class="sd">        ...    .setBlackList([&quot;PER&quot;, &quot;LOC&quot;])</span>
+<span class="sd">        ...    .setDenyList([&quot;PER&quot;, &quot;LOC&quot;])</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">blackList</span><span class="o">=</span><span class="n">entities</span><span class="p">)</span></div>
 
@@ -789,8 +778,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

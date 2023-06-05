@@ -40,7 +40,7 @@
     <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js"></script>
     <script src="../../../../../../static/jquery.js"></script>
     <script src="../../../../../../static/underscore.js"></script>
-    <script src="../../../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
@@ -329,6 +329,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../ner/medical_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.medical_ner</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_chunker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_converter_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_converter_internal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/ner_template_render/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_template_render</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.zero_shot_ner</span></code></a></li>
 </ul>
 </li>
@@ -338,7 +339,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../qa/gpt_generation_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.gpt_generation_params</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qa/beam_search_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.beam_search_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qa/medical_qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.medical_qa</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qa/qa_ner_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.qa_ner_generator</span></code></a></li>
 </ul>
@@ -370,6 +371,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
@@ -512,6 +514,87 @@ param mix-ins, because this sets the UID from the Java model.</p>
 <span class="sig-name descname"><span class="pre">maxTextLength</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.maxTextLength"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.maxTextLength" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineSummary">
+<span class="sig-name descname"><span class="pre">refineSummary</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.refineSummary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineSummary" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineSummaryTargetLength">
+<span class="sig-name descname"><span class="pre">refineSummaryTargetLength</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.refineSummaryTargetLength"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineSummaryTargetLength" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineChunkSize">
+<span class="sig-name descname"><span class="pre">refineChunkSize</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.refineChunkSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineChunkSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineMaxAttempts">
+<span class="sig-name descname"><span class="pre">refineMaxAttempts</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.refineMaxAttempts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineMaxAttempts" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.noRepeatNgramSize">
+<span class="sig-name descname"><span class="pre">noRepeatNgramSize</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.noRepeatNgramSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.noRepeatNgramSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineSummary">
+<span class="sig-name descname"><span class="pre">setRefineSummary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.setRefineSummary"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineSummary" title="Permalink to this definition">#</a></dt>
+<dd><p>Set true to perform refined summarization at increased computation cost.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>b</strong><span class="classifier">bool</span></dt><dd><p>whether to perform refined summaries  or not</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineSummaryTargetLength">
+<span class="sig-name descname"><span class="pre">setRefineSummaryTargetLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.setRefineSummaryTargetLength"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineSummaryTargetLength" title="Permalink to this definition">#</a></dt>
+<dd><p>Target length of summarizations in Tokens (delimited by whitespace). Takes only effect when refineSummary=True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>i</strong><span class="classifier">int</span></dt><dd><p>Target length of summarizations in Tokens (delimited by whitespace). Takes only effect when refineSummary=True</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineChunkSize">
+<span class="sig-name descname"><span class="pre">setRefineChunkSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.setRefineChunkSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineChunkSize" title="Permalink to this definition">#</a></dt>
+<dd><p>How large should refined chunks Be. Should be equal to LLM context window size in tokens. Takes only effect when refineSummary=True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>i</strong><span class="classifier">int</span></dt><dd><p>How large should refined chunks Be. Should be equal to LLM context window size in tokens. Takes only effect when refineSummary=True</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineMaxAttempts">
+<span class="sig-name descname"><span class="pre">setRefineMaxAttempts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.setRefineMaxAttempts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineMaxAttempts" title="Permalink to this definition">#</a></dt>
+<dd><p>How many times should chunks be re-summarized while they are above SummaryTargetLength before stopping. Takes only effect when refineSummary=True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>i</strong><span class="classifier">int</span></dt><dd><p>How many times should chunks be re-summarized while they are above SummaryTargetLength before stopping. Takes only effect when refineSummary=True</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setConfigProtoBytes">
 <span class="sig-name descname"><span class="pre">setConfigProtoBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.setConfigProtoBytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setConfigProtoBytes" title="Permalink to this definition">#</a></dt>
@@ -598,6 +681,21 @@ top-k-filtering.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setNoRepeatNgramSize">
+<span class="sig-name descname"><span class="pre">setNoRepeatNgramSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.setNoRepeatNgramSize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setNoRepeatNgramSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets size of n-grams that can only occur once.</p>
+<p>If set to int &gt; 0, all ngrams of that size can only occur once.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>value</strong><span class="classifier">int</span></dt><dd><p>N-gram size can only occur once</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRandomSeed">
 <span class="sig-name descname"><span class="pre">setRandomSeed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder.html#MedicalEncoderDecoder.setRandomSeed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRandomSeed" title="Permalink to this definition">#</a></dt>
 <dd><p>Set random seed</p>
@@ -676,12 +774,22 @@ top-k-filtering.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.useCache"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.useCache</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.randomSeed"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.randomSeed</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.maxTextLength"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.maxTextLength</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineSummary"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.refineSummary</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineSummaryTargetLength"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.refineSummaryTargetLength</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineChunkSize"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.refineChunkSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineMaxAttempts"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.refineMaxAttempts</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.noRepeatNgramSize"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.noRepeatNgramSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineSummary"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setRefineSummary()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineSummaryTargetLength"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setRefineSummaryTargetLength()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineChunkSize"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setRefineChunkSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineMaxAttempts"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setRefineMaxAttempts()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setConfigProtoBytes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setStopAtEos"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setStopAtEos()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setIgnoreTokenIds"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setIgnoreTokenIds()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setDoSample"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setDoSample()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setTopK"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setTopK()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setMaxNewTokens"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setMaxNewTokens()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setNoRepeatNgramSize"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setNoRepeatNgramSize()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRandomSeed"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setRandomSeed()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setMaxTextLength"><code class="docutils literal notranslate"><span class="pre">MedicalEncoderDecoder.setMaxTextLength()</span></code></a></li>
 </ul>
@@ -692,6 +800,15 @@ top-k-filtering.</p>
 </li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../_sources/reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
 </div></div>
               
             
@@ -716,8 +833,7 @@ top-k-filtering.</p>
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

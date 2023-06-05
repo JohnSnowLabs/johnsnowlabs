@@ -40,7 +40,7 @@
     <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js"></script>
     <script src="../../../../../../static/jquery.js"></script>
     <script src="../../../../../../static/underscore.js"></script>
-    <script src="../../../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
@@ -329,6 +329,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../ner/medical_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.medical_ner</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_chunker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_converter_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_converter_internal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/ner_template_render/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_template_render</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.zero_shot_ner</span></code></a></li>
 </ul>
 </li>
@@ -338,7 +339,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa</span></code></a><input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../gpt_generation_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.gpt_generation_params</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../beam_search_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.beam_search_params</span></code></a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.medical_qa</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qa_ner_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.qa_ner_generator</span></code></a></li>
 </ul>
@@ -370,6 +371,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
@@ -475,12 +477,18 @@ description of question types</p>
 </dd>
 <dt><strong>topK</strong></dt><dd><p>The number of highest probability vocabulary tokens to consider, by default 1</p>
 </dd>
+<dt><strong>noRepeatNgramSize</strong></dt><dd><p>The number of tokens that can’t be repeated in the same order. Useful for preventing loops.
+The default is 0.</p>
+</dd>
 <dt><strong>ignoreTokenIds</strong></dt><dd><p>A list of token ids which are ignored in the decoder’s output, by
 default []</p>
+</dd>
+<dt><strong>customPrompt</strong></dt><dd><p>Custom prompt template. Available variables {QUESTION} and {CONTEXT}</p>
 </dd>
 <dt><strong>useCache</strong></dt><dd><p>Cache internal state of the model to improve performance, by default is True.
 Disable it only if you are processing short texts or you want to spare memory usage.</p>
 </dd>
+<dt><strong>custom</strong></dt><dd></dd>
 <dt><strong>Examples</strong></dt><dd></dd>
 <dt><strong>——–</strong></dt><dd></dd>
 <dt><strong>&gt;&gt;&gt; context = “This study aims to evaluate local failure patterns in node negative breast cancer patients …”</strong></dt><dd></dd>
@@ -524,6 +532,11 @@ Disable it only if you are processing short texts or you want to spare memory us
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.customPrompt">
+<span class="sig-name descname"><span class="pre">customPrompt</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/medical_qa.html#MedicalQuestionAnswering.customPrompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.customPrompt" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.useCache">
 <span class="sig-name descname"><span class="pre">useCache</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/medical_qa.html#MedicalQuestionAnswering.useCache"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.useCache" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -564,6 +577,20 @@ Disable it only if you are processing short texts or you want to spare memory us
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>question type</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.setCustomPrompt">
+<span class="sig-name descname"><span class="pre">setCustomPrompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/medical_qa.html#MedicalQuestionAnswering.setCustomPrompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.setCustomPrompt" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the custom prompt template. Available variables {QUESTION} and {CONTEXT}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>prompt template</p>
 </dd>
 </dl>
 </dd>
@@ -638,13 +665,35 @@ Disable it only if you are processing short texts or you want to spare memory us
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.loadMedicalTextGenerator">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadMedicalTextGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">med_text_generator_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/medical_qa.html#MedicalQuestionAnswering.loadMedicalTextGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.loadMedicalTextGenerator" title="Permalink to this definition">#</a></dt>
+<dd><p>Turns a MedicalTextGenerator into a MedicalQuestionAnswering model</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>med_text_generator_path</strong><span class="classifier">str</span></dt><dd><p>Path to the MedicalTextGenerator model</p>
+</dd>
+<dt><strong>spark_session</strong><span class="classifier">pyspark.sql.SparkSession</span></dt><dd><p>The current SparkSession</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt>MedicalQuestionAnswering</dt><dd><p>A MedicalQuestionAnswering model</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'biogpt_pubmed_qa'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/medical_qa.html#MedicalQuestionAnswering.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.pretrained" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'flan_t5_base_jsl_qa'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/medical_qa.html#MedicalQuestionAnswering.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Downloads and loads a pretrained model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the pretrained model, by default “biogpt_pubmed_qa”</p>
+<dt><strong>name</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the pretrained model, by default “medical_qa_biogpt”</p>
 </dd>
 <dt><strong>lang</strong><span class="classifier">str, optional</span></dt><dd><p>Language of the pretrained model, by default “en”</p>
 </dd>
@@ -705,15 +754,18 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.outputAnnotatorType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.configProtoBytes"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.configProtoBytes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.questionType"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.questionType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.customPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.customPrompt</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.useCache"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.useCache</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.setConfigProtoBytes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.setUseCache"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.setUseCache()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.setQuestionType"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.setQuestionType()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.setCustomPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.setCustomPrompt()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.setQuestionAnswerTerminals"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.setQuestionAnswerTerminals()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.setQuestionPrompts"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.setQuestionPrompts()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.setQuestionSkipLastToken"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.setQuestionSkipLastToken()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.getQuestionTypes"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.getQuestionTypes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.loadSavedModel"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.loadSavedModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.loadMedicalTextGenerator"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.loadMedicalTextGenerator()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.pretrained"><code class="docutils literal notranslate"><span class="pre">MedicalQuestionAnswering.pretrained()</span></code></a></li>
 </ul>
 </li>
@@ -723,6 +775,15 @@ Spark NLPs repositories otherwise.</p>
 </li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../_sources/reference/autosummary/sparknlp_jsl/annotator/qa/medical_qa/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
 </div></div>
               
             
@@ -747,8 +808,7 @@ Spark NLPs repositories otherwise.</p>
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>
