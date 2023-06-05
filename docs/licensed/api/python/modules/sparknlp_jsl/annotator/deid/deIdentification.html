@@ -39,7 +39,7 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js"></script>
     <script src="../../../../static/jquery.js"></script>
     <script src="../../../../static/underscore.js"></script>
-    <script src="../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
@@ -396,6 +396,21 @@ document.write(`
 <span class="sd">        The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE</span>
 <span class="sd">    selectiveObfuscationModesPath</span>
 <span class="sd">        Dictionary path where is the json that contains the selective obfuscation modes</span>
+<span class="sd">            &#39;obfuscate&#39;: Replace the values with random values.</span>
+<span class="sd">            &#39;mask_same_length_chars&#39;: Replace the name with the asterisks with same length minus two plus brackets on both end.</span>
+<span class="sd">            &#39;mask_entity_labels&#39;: Replace the values with the entity value.</span>
+<span class="sd">            &#39;mask_fixed_length_chars&#39;: Replace the name with the asterisks with fixed length. You can also invoke &quot;setFixedMaskLength()&quot;</span>
+<span class="sd">            &#39;skip&#39;: Skip the values (intact)</span>
+<span class="sd">        The entities which have not been given in dictionary will deidentify according to setMode()</span>
+<span class="sd">    entityCasingModesPath</span>
+<span class="sd">        Dictionary path where is the json that contains the entity casing modes.</span>
+<span class="sd">            &#39;lowercase&#39;: Converts all characters to lower case using the rules of the default locale.</span>
+<span class="sd">            &#39;uppercase&#39;: Converts all characters to upper case using the rules of the default locale.</span>
+<span class="sd">            &#39;capitalize&#39;: Converts the first character to upper case and converts others to lower case.</span>
+<span class="sd">            &#39;titlecase&#39;: Converts the first character in every token to upper case and converts others to lower case.</span>
+<span class="sd">    genderAwareness</span>
+<span class="sd">        Whether to use gender-aware names or not during obfuscation. This param effects only names.</span>
+<span class="sd">        If value is true, it might decrease performance. Default: False</span>
 
 
 <span class="sd">    Examples</span>
@@ -419,13 +434,13 @@ document.write(`
 <span class="sd">    ...     .setOutputCol(&quot;sentence&quot;) \\</span>
 <span class="sd">    ...     .setUseAbbreviations(True)</span>
 <span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; tokenizer = Tokenizer() \</span>
-<span class="sd">    ...     .setInputCols([&quot;sentence&quot;]) \</span>
+<span class="sd">    &gt;&gt;&gt; tokenizer = Tokenizer() \\</span>
+<span class="sd">    ...     .setInputCols([&quot;sentence&quot;]) \\</span>
 <span class="sd">    ...     .setOutputCol(&quot;token&quot;)</span>
 <span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; embeddings = WordEmbeddingsModel \</span>
-<span class="sd">    ...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \</span>
-<span class="sd">    ...     .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \</span>
+<span class="sd">    &gt;&gt;&gt; embeddings = WordEmbeddingsModel \\</span>
+<span class="sd">    ...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \\</span>
+<span class="sd">    ...     .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \\</span>
 <span class="sd">    ...     .setOutputCol(&quot;embeddings&quot;)</span>
 <span class="sd">    ...</span>
 <span class="sd">     Ner entities</span>
@@ -440,9 +455,9 @@ document.write(`
 <span class="sd">    &gt;&gt;&gt; deIdentification = DeIdentification() \\</span>
 <span class="sd">    ...     .setInputCols([&quot;ner_chunk&quot;, &quot;token&quot;, &quot;sentence&quot;]) \\</span>
 <span class="sd">    ...     .setOutputCol(&quot;dei&quot;) \\</span>
-<span class="sd">    ...     # file with custom regex pattern for custom entities\</span>
+<span class="sd">    ...     # file with custom regex pattern for custom entities\\</span>
 <span class="sd">    ...     .setRegexPatternsDictionary(&quot;path/to/dic_regex_patterns_main_categories.txt&quot;) \\</span>
-<span class="sd">    ...     # file with custom obfuscator names for the entities\</span>
+<span class="sd">    ...     # file with custom obfuscator names for the entities\\</span>
 <span class="sd">    ...     .setObfuscateRefFile(&quot;path/to/obfuscate_fixed_entities.txt&quot;) \\</span>
 <span class="sd">    ...     .setRefFileFormat(&quot;csv&quot;) \\</span>
 <span class="sd">    ...     .setRefSep(&quot;#&quot;) \\</span>
@@ -574,11 +589,23 @@ document.write(`
                                           <span class="s2">&quot;Dictionary path where is the json that contains the selective obfuscation modes&quot;</span><span class="p">,</span>
                                           <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="DeIdentification.entityCasingModesPath"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.entityCasingModesPath">[docs]</a>    <span class="n">entityCasingModesPath</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+                                  <span class="s2">&quot;entityCasingModesPath&quot;</span><span class="p">,</span>
+                                  <span class="s2">&quot;Dictionary path where is the json that contains the entity casing modes&quot;</span><span class="p">,</span>
+                                  <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DeIdentification.genderAwareness"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.genderAwareness">[docs]</a>    <span class="n">genderAwareness</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+                            <span class="s2">&quot;genderAwareness&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Whether to use gender-aware names or not during obfuscation.&quot;</span><span class="p">,</span>
+                            <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
+
     <span class="nd">@keyword_only</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">DeIdentification</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.annotators.deid.DeIdentification&quot;</span><span class="p">)</span>
 
 <div class="viewcode-block" id="DeIdentification.getBlackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getBlackList">[docs]</a>    <span class="k">def</span> <span class="nf">getBlackList</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the blackList value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blackList</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setLanguage"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLanguage">[docs]</a>    <span class="k">def</span> <span class="nf">setLanguage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
@@ -906,9 +933,11 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">sameLengthFormattedEntities</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.getSameLengthFormattedEntities"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getSameLengthFormattedEntities">[docs]</a>    <span class="k">def</span> <span class="nf">getSameLengthFormattedEntities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">regexEntities</span><span class="p">)</span></div>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the sameLengthFormattedEntities value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sameLengthFormattedEntities</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="DeIdentification.setSelectiveObfuscationModes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes">[docs]</a>    <span class="k">def</span> <span class="nf">setSelectiveObfuscationModes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+<div class="viewcode-block" id="DeIdentification.setSelectiveObfuscationModes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes">[docs]</a>    <span class="k">def</span> <span class="nf">setSelectiveObfuscationModes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets a Json path which has a dictionary of modes to enable multi-mode deidentification.</span>
 <span class="sd">            &#39;obfuscate&#39;: Replace the values with random values.</span>
 <span class="sd">            &#39;mask_same_length_chars&#39;: Replace the name with the asterisks with same length minus two plus brackets on both end.</span>
@@ -921,7 +950,33 @@ document.write(`
 <span class="sd">        path : str</span>
 <span class="sd">            Dictionary path where is the json that contains the selective obfuscation modes</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">dictionary</span><span class="o">=</span><span class="n">p</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">selectiveObfuscationModesPath</span><span class="o">=</span><span class="n">path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DeIdentification.setEntityCasingModes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setEntityCasingModes">[docs]</a>    <span class="k">def</span> <span class="nf">setEntityCasingModes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets a Json path which has a dictionary of modes to select casing modes.</span>
+<span class="sd">            &#39;lowercase&#39;: Converts all characters to lower case using the rules of the default locale.</span>
+<span class="sd">            &#39;uppercase&#39;: Converts all characters to upper case using the rules of the default locale.</span>
+<span class="sd">            &#39;capitalize&#39;: Converts the first character to upper case and converts others to lower case.</span>
+<span class="sd">            &#39;titlecase&#39;: Converts the first character in every token to upper case and converts others to lower case.</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        path : str</span>
+<span class="sd">            Dictionary path where is the json that contains the entity casing modes.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">entityCasingModesPath</span><span class="o">=</span><span class="n">path</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DeIdentification.setGenderAwareness"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setGenderAwareness">[docs]</a>    <span class="k">def</span> <span class="nf">setGenderAwareness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set whether to use gender-aware names or not during obfuscation.</span>
+<span class="sd">        This param effects only names.</span>
+<span class="sd">        If value is true, it might decrease performance.</span>
+<span class="sd">        Default: False</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        l : str</span>
+<span class="sd">          Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">genderAwareness</span><span class="o">=</span><span class="n">l</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_create_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">java_model</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates the model using the java model.</span>
@@ -1002,6 +1057,10 @@ document.write(`
 <span class="sd">        The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.</span>
 <span class="sd">    selectiveObfuscationModesPath</span>
 <span class="sd">        Dictionary path where is the json that contains the selective obfuscation modes</span>
+<span class="sd">    genderAwareness</span>
+<span class="sd">        Whether to use gender-aware names or not during obfuscation. This param effects only names.</span>
+<span class="sd">        If value is true, it might decrease performance. Default: False</span>
+
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -1024,13 +1083,13 @@ document.write(`
 <span class="sd">    ...     .setOutputCol(&quot;sentence&quot;) \\</span>
 <span class="sd">    ...     .setUseAbbreviations(True)</span>
 <span class="sd">    ...</span>
-<span class="sd">    &gt;&gt;&gt; tokenizer = Tokenizer() \</span>
-<span class="sd">    ...     .setInputCols([&quot;sentence&quot;]) \</span>
+<span class="sd">    &gt;&gt;&gt; tokenizer = Tokenizer() \\</span>
+<span class="sd">    ...     .setInputCols([&quot;sentence&quot;]) \\</span>
 <span class="sd">    ...     .setOutputCol(&quot;token&quot;)</span>
 <span class="sd">    ...</span>
-<span class="sd">    &gt;&gt; embeddings = WordEmbeddingsModel \</span>
-<span class="sd">    ...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \</span>
-<span class="sd">    ...     .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \</span>
+<span class="sd">    &gt;&gt; embeddings = WordEmbeddingsModel \\</span>
+<span class="sd">    ...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) \\</span>
+<span class="sd">    ...     .setInputCols([&quot;sentence&quot;, &quot;token&quot;]) \\</span>
 <span class="sd">    ...     .setOutputCol(&quot;embeddings&quot;)</span>
 <span class="sd">    ...</span>
 <span class="sd">     Ner entities</span>
@@ -1172,8 +1231,14 @@ document.write(`
                              <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.sameLengthFormattedEntities"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.sameLengthFormattedEntities">[docs]</a>    <span class="n">sameLengthFormattedEntities</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;sameLengthFormattedEntities&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;List of formatted entities to generate the same length outputs as original ones during obfuscation&quot;</span><span class="p">,</span>
-                      <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
+                                        <span class="s2">&quot;List of formatted entities to generate the same length outputs as original ones during obfuscation&quot;</span><span class="p">,</span>
+                                        <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DeIdentificationModel.genderAwareness"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.genderAwareness">[docs]</a>    <span class="n">genderAwareness</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+                            <span class="s2">&quot;genderAwareness&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;Whether to use gender-aware names or not during obfuscation.&quot;</span><span class="p">,</span>
+                            <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.getBlackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getBlackList">[docs]</a>    <span class="k">def</span> <span class="nf">getBlackList</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the value of blackList or its default value.</span>
@@ -1399,6 +1464,8 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">returnEntityMappings</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.getRegexEntities"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getRegexEntities">[docs]</a>    <span class="k">def</span> <span class="nf">getRegexEntities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return teh regexEntities value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">regexEntities</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setUseShifDays"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setUseShifDays">[docs]</a>    <span class="k">def</span> <span class="nf">setUseShifDays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
@@ -1462,20 +1529,35 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">sameLengthFormattedEntities</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.getSameLengthFormattedEntities"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getSameLengthFormattedEntities">[docs]</a>    <span class="k">def</span> <span class="nf">getSameLengthFormattedEntities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">regexEntities</span><span class="p">)</span></div>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the sameLengthFormattedEntities value.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sameLengthFormattedEntities</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="DeIdentificationModel.setGenderAwareness"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setGenderAwareness">[docs]</a>    <span class="k">def</span> <span class="nf">setGenderAwareness</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set whether to use gender-aware names or not during obfuscation.</span>
+<span class="sd">        This param effects only names.</span>
+<span class="sd">        If value is true, it might decrease performance.</span>
+<span class="sd">        Default: False</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        l : str</span>
+<span class="sd">          Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">genderAwareness</span><span class="o">=</span><span class="n">l</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="DeIdentificationModel.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="DeIdentificationModel.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;deidentify_enriched_clinical&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;clinical/models&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Downloads and loads a pretrained model.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        name : str, optional</span>
-<span class="sd">            Name of the pretrained model.</span>
+<span class="sd">            Name of the pretrained model, by default &quot;deidentify_enriched_clinical&quot;</span>
 <span class="sd">        lang : str, optional</span>
 <span class="sd">            Language of the pretrained model, by default &quot;en&quot;</span>
 <span class="sd">        remote_loc : str, optional</span>
-<span class="sd">            Optional remote address of the resource, by default None. Will use</span>
+<span class="sd">            Optional remote address of the resource, by default clinical/models. Will use</span>
 <span class="sd">            Spark NLPs repositories otherwise.</span>
 
 <span class="sd">        Returns</span>
@@ -1530,8 +1612,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

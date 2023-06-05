@@ -39,7 +39,7 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js"></script>
     <script src="../../../../static/jquery.js"></script>
     <script src="../../../../static/underscore.js"></script>
-    <script src="../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
@@ -320,44 +320,155 @@ document.write(`
   <h1>Source code for sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
 
-<div class="viewcode-block" id="MedicalEncoderDecoder"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder">[docs]</a><span class="k">class</span> <span class="nc">MedicalEncoderDecoder</span><span class="p">(</span><span class="n">AnnotatorModelInternal</span><span class="p">,</span> <span class="n">HasBatchedAnnotate</span><span class="p">,</span> <span class="n">HasCaseSensitiveProperties</span><span class="p">,</span> <span class="n">HasEngine</span><span class="p">):</span>
+
+<div class="viewcode-block" id="MedicalEncoderDecoder"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder">[docs]</a><span class="k">class</span> <span class="nc">MedicalEncoderDecoder</span><span class="p">(</span>
+    <span class="n">AnnotatorModelInternal</span><span class="p">,</span> <span class="n">HasBatchedAnnotate</span><span class="p">,</span> <span class="n">HasCaseSensitiveProperties</span><span class="p">,</span> <span class="n">HasEngine</span>
+<span class="p">):</span>
 <div class="viewcode-block" id="MedicalEncoderDecoder.name"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;MedicalEncoderDecoder&quot;</span></div>
 
 <div class="viewcode-block" id="MedicalEncoderDecoder.inputAnnotatorTypes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.inputAnnotatorTypes">[docs]</a>    <span class="n">inputAnnotatorTypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AnnotatorType</span><span class="o">.</span><span class="n">DOCUMENT</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="MedicalEncoderDecoder.outputAnnotatorType"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.outputAnnotatorType">[docs]</a>    <span class="n">outputAnnotatorType</span> <span class="o">=</span> <span class="n">AnnotatorType</span><span class="o">.</span><span class="n">DOCUMENT</span></div>
 
-<div class="viewcode-block" id="MedicalEncoderDecoder.configProtoBytes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.configProtoBytes">[docs]</a>    <span class="n">configProtoBytes</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-                             <span class="s2">&quot;configProtoBytes&quot;</span><span class="p">,</span>
-                             <span class="s2">&quot;ConfigProto from tensorflow, serialized into byte array. Get with config_proto.SerializeToString()&quot;</span><span class="p">,</span>
-                             <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListInt</span><span class="p">)</span></div>
+<div class="viewcode-block" id="MedicalEncoderDecoder.configProtoBytes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.configProtoBytes">[docs]</a>    <span class="n">configProtoBytes</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;configProtoBytes&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ConfigProto from tensorflow, serialized into byte array. Get with config_proto.SerializeToString()&quot;</span><span class="p">,</span>
+        <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListInt</span><span class="p">,</span></div>
+    <span class="p">)</span>
 
-<div class="viewcode-block" id="MedicalEncoderDecoder.doSample"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.doSample">[docs]</a>    <span class="n">doSample</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;doSample&quot;</span><span class="p">,</span> <span class="s2">&quot;Whether or not to use sampling; use greedy decoding otherwise&quot;</span><span class="p">,</span>
-                     <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
+<div class="viewcode-block" id="MedicalEncoderDecoder.doSample"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.doSample">[docs]</a>    <span class="n">doSample</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;doSample&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Whether or not to use sampling; use greedy decoding otherwise&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">,</span></div>
+    <span class="p">)</span>
 
-<div class="viewcode-block" id="MedicalEncoderDecoder.topK"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.topK">[docs]</a>    <span class="n">topK</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;topK&quot;</span><span class="p">,</span>
-                 <span class="s2">&quot;The number of highest probability vocabulary tokens to keep for top-k-filtering&quot;</span><span class="p">,</span>
-                 <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">)</span></div>
+<div class="viewcode-block" id="MedicalEncoderDecoder.topK"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.topK">[docs]</a>    <span class="n">topK</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;topK&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;The number of highest probability vocabulary tokens to keep for top-k-filtering&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">,</span></div>
+    <span class="p">)</span>
 
-<div class="viewcode-block" id="MedicalEncoderDecoder.ignoreTokenIds"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.ignoreTokenIds">[docs]</a>    <span class="n">ignoreTokenIds</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;ignoreTokenIds&quot;</span><span class="p">,</span>
-                           <span class="s2">&quot;A list of token ids which are ignored in the decoder&#39;s output&quot;</span><span class="p">,</span>
-                           <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListInt</span><span class="p">)</span></div>
+<div class="viewcode-block" id="MedicalEncoderDecoder.ignoreTokenIds"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.ignoreTokenIds">[docs]</a>    <span class="n">ignoreTokenIds</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;ignoreTokenIds&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;A list of token ids which are ignored in the decoder&#39;s output&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListInt</span><span class="p">,</span></div>
+    <span class="p">)</span>
 
-<div class="viewcode-block" id="MedicalEncoderDecoder.maxNewTokens"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.maxNewTokens">[docs]</a>    <span class="n">maxNewTokens</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;maxNewTokens&quot;</span><span class="p">,</span>
-                         <span class="s2">&quot;Maximum number of new tokens to be generated&quot;</span><span class="p">,</span>
-                         <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">)</span></div>
+<div class="viewcode-block" id="MedicalEncoderDecoder.maxNewTokens"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.maxNewTokens">[docs]</a>    <span class="n">maxNewTokens</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;maxNewTokens&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Maximum number of new tokens to be generated&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">,</span></div>
+    <span class="p">)</span>
 
-<div class="viewcode-block" id="MedicalEncoderDecoder.stopAtEos"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.stopAtEos">[docs]</a>    <span class="n">stopAtEos</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;stopAtEos&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;Stop text generation when the end-of-sentence token is encountered.&quot;</span><span class="p">,</span>
-                      <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
+<div class="viewcode-block" id="MedicalEncoderDecoder.stopAtEos"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.stopAtEos">[docs]</a>    <span class="n">stopAtEos</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;stopAtEos&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Stop text generation when the end-of-sentence token is encountered.&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">,</span></div>
+    <span class="p">)</span>
 
-<div class="viewcode-block" id="MedicalEncoderDecoder.task"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.task">[docs]</a>    <span class="n">task</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;task&quot;</span><span class="p">,</span> <span class="s2">&quot;Transformer&#39;s task&quot;</span><span class="p">,</span> <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
+<div class="viewcode-block" id="MedicalEncoderDecoder.task"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.task">[docs]</a>    <span class="n">task</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;task&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Transformer&#39;s task&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">,</span></div>
+    <span class="p">)</span>
 
-<div class="viewcode-block" id="MedicalEncoderDecoder.useCache"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.useCache">[docs]</a>    <span class="n">useCache</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;useCache&quot;</span><span class="p">,</span> <span class="s2">&quot;Use caching to enhance performance&quot;</span><span class="p">,</span> <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
+<div class="viewcode-block" id="MedicalEncoderDecoder.useCache"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.useCache">[docs]</a>    <span class="n">useCache</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;useCache&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Use caching to enhance performance&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">,</span></div>
+    <span class="p">)</span>
 
-<div class="viewcode-block" id="MedicalEncoderDecoder.randomSeed"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.randomSeed">[docs]</a>    <span class="n">randomSeed</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;randomSeed&quot;</span><span class="p">,</span> <span class="s2">&quot;Random seed&quot;</span><span class="p">,</span> <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">)</span></div>
+<div class="viewcode-block" id="MedicalEncoderDecoder.randomSeed"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.randomSeed">[docs]</a>    <span class="n">randomSeed</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;randomSeed&quot;</span><span class="p">,</span> <span class="s2">&quot;Random seed&quot;</span><span class="p">,</span> <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span></div>
+    <span class="p">)</span>
 
-<div class="viewcode-block" id="MedicalEncoderDecoder.maxTextLength"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.maxTextLength">[docs]</a>    <span class="n">maxTextLength</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;maxTextLength&quot;</span><span class="p">,</span> <span class="s2">&quot;Max text length to process&quot;</span><span class="p">,</span> <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">)</span></div>
+<div class="viewcode-block" id="MedicalEncoderDecoder.maxTextLength"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.maxTextLength">[docs]</a>    <span class="n">maxTextLength</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;maxTextLength&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Max text length to process&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">,</span></div>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="MedicalEncoderDecoder.refineSummary"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineSummary">[docs]</a>    <span class="n">refineSummary</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;refineSummary&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Set true to perform refined summarization at increased computation cost.&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">,</span></div>
+    <span class="p">)</span>
+<div class="viewcode-block" id="MedicalEncoderDecoder.refineSummaryTargetLength"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineSummaryTargetLength">[docs]</a>    <span class="n">refineSummaryTargetLength</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;refineSummaryTargetLength&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Target length of summarizations in Tokens (delimited by whitespace). Takes only effect when refineSummary=True&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">,</span></div>
+    <span class="p">)</span>
+<div class="viewcode-block" id="MedicalEncoderDecoder.refineChunkSize"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineChunkSize">[docs]</a>    <span class="n">refineChunkSize</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;refineChunkSize&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;How large should refined chunks Be. Should be equal to LLM context window size in tokens. Takes only effect when refineSummary=True&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">,</span></div>
+    <span class="p">)</span>
+<div class="viewcode-block" id="MedicalEncoderDecoder.refineMaxAttempts"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.refineMaxAttempts">[docs]</a>    <span class="n">refineMaxAttempts</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;refineMaxAttempts&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;How many times should chunks be re-summarized while they are above SummaryTargetLength before stopping. Takes only effect when refineSummary=True&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">,</span></div>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="MedicalEncoderDecoder.setRefineSummary"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineSummary">[docs]</a>    <span class="k">def</span> <span class="nf">setRefineSummary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set true to perform refined summarization at increased computation cost.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        b : bool</span>
+<span class="sd">            whether to perform refined summaries  or not</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">refineSummary</span><span class="o">=</span><span class="n">b</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="MedicalEncoderDecoder.setRefineSummaryTargetLength"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineSummaryTargetLength">[docs]</a>    <span class="k">def</span> <span class="nf">setRefineSummaryTargetLength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Target length of summarizations in Tokens (delimited by whitespace). Takes only effect when refineSummary=True</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        i : int</span>
+<span class="sd">            Target length of summarizations in Tokens (delimited by whitespace). Takes only effect when refineSummary=True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">refineSummaryTargetLength</span><span class="o">=</span><span class="n">i</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MedicalEncoderDecoder.setRefineChunkSize"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineChunkSize">[docs]</a>    <span class="k">def</span> <span class="nf">setRefineChunkSize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;How large should refined chunks Be. Should be equal to LLM context window size in tokens. Takes only effect when refineSummary=True</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        i : int</span>
+<span class="sd">            How large should refined chunks Be. Should be equal to LLM context window size in tokens. Takes only effect when refineSummary=True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">refineChunkSize</span><span class="o">=</span><span class="n">i</span><span class="p">)</span></div>
+<div class="viewcode-block" id="MedicalEncoderDecoder.setRefineMaxAttempts"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRefineMaxAttempts">[docs]</a>    <span class="k">def</span> <span class="nf">setRefineMaxAttempts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;How many times should chunks be re-summarized while they are above SummaryTargetLength before stopping. Takes only effect when refineSummary=True</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        i : int</span>
+<span class="sd">            How many times should chunks be re-summarized while they are above SummaryTargetLength before stopping. Takes only effect when refineSummary=True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">refineMaxAttempts</span><span class="o">=</span><span class="n">i</span><span class="p">)</span></div>
+
+
+
+
+
+<div class="viewcode-block" id="MedicalEncoderDecoder.noRepeatNgramSize"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.noRepeatNgramSize">[docs]</a>    <span class="n">noRepeatNgramSize</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;noRepeatNgramSize&quot;</span><span class="p">,</span>
+                              <span class="s2">&quot;If set to int &gt; 0, all ngrams of that size can only occur once&quot;</span><span class="p">,</span>
+                              <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MedicalEncoderDecoder.setConfigProtoBytes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setConfigProtoBytes">[docs]</a>    <span class="k">def</span> <span class="nf">setConfigProtoBytes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets configProto from tensorflow, serialized into byte array.</span>
@@ -420,6 +531,18 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">maxNewTokens</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="MedicalEncoderDecoder.setNoRepeatNgramSize"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setNoRepeatNgramSize">[docs]</a>    <span class="k">def</span> <span class="nf">setNoRepeatNgramSize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets size of n-grams that can only occur once.</span>
+
+<span class="sd">        If set to int &gt; 0, all ngrams of that size can only occur once.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : int</span>
+<span class="sd">            N-gram size can only occur once</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">noRepeatNgramSize</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="MedicalEncoderDecoder.setRandomSeed"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_encoder_decoder/index.html#sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder.MedicalEncoderDecoder.setRandomSeed">[docs]</a>    <span class="k">def</span> <span class="nf">setRandomSeed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set random seed</span>
 
@@ -443,8 +566,7 @@ document.write(`
     <span class="nd">@keyword_only</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="p">,</span> <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MedicalEncoderDecoder</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="n">classname</span><span class="o">=</span><span class="n">classname</span><span class="p">,</span>
-            <span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span>
+            <span class="n">classname</span><span class="o">=</span><span class="n">classname</span><span class="p">,</span> <span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_setDefault</span><span class="p">(</span>
             <span class="n">doSample</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -454,7 +576,8 @@ document.write(`
             <span class="n">task</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="n">useCache</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">maxTextLength</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
-            <span class="n">stopAtEos</span><span class="o">=</span><span class="kc">False</span></div>
+            <span class="n">stopAtEos</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">noRepeatNgramSize</span><span class="o">=</span><span class="mi">0</span></div>
         <span class="p">)</span>
 </pre></div>
 
@@ -500,8 +623,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

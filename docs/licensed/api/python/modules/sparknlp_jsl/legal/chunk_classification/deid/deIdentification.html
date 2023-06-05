@@ -39,7 +39,7 @@
     <script data-url_root="../../../../../" id="documentation_options" src="../../../../../static/documentation_options.js"></script>
     <script src="../../../../../static/jquery.js"></script>
     <script src="../../../../../static/underscore.js"></script>
-    <script src="../../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
@@ -330,7 +330,7 @@ document.write(`
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    regexPatternsDictionary</span>
-<span class="sd">        ictionary with regular expression patterns that match some protected entity</span>
+<span class="sd">        Dictionary with regular expression patterns that match some protected entity</span>
 <span class="sd">    mode</span>
 <span class="sd">        Mode for Anonimizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
 <span class="sd">    obfuscateDate</span>
@@ -379,7 +379,9 @@ document.write(`
 <span class="sd">        With this property you select if you want to return mapping column</span>
 <span class="sd">    blackList</span>
 <span class="sd">        List of entities ignored for masking or obfuscation.The default values are: &quot;SSN&quot;,&quot;PASSPORT&quot;,&quot;DLN&quot;,&quot;NPI&quot;,&quot;C_CARD&quot;,&quot;IBAN&quot;,&quot;DEA&quot;</span>
-
+<span class="sd">    sameLengthFormattedEntities</span>
+<span class="sd">        List of formatted entities to generate the same length outputs as original ones during obfuscation.</span>
+<span class="sd">        The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, ZIP, VIN, SSN, DLN, LICENSE, PLATE</span>
 <span class="sd">    maskingPolicy</span>
 <span class="sd">        Select the masking policy:</span>
 <span class="sd">            same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence.</span>
@@ -387,6 +389,23 @@ document.write(`
 <span class="sd">            If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</span>
 <span class="sd">            entity_labels: Replace the values with the corresponding entity labels.</span>
 <span class="sd">            fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</span>
+<span class="sd">    selectiveObfuscationModesPath</span>
+<span class="sd">        Dictionary path where is the json that contains the selective obfuscation modes</span>
+<span class="sd">            &#39;obfuscate&#39;: Replace the values with random values.</span>
+<span class="sd">            &#39;mask_same_length_chars&#39;: Replace the name with the asterisks with same length minus two plus brackets on both end.</span>
+<span class="sd">            &#39;mask_entity_labels&#39;: Replace the values with the entity value.</span>
+<span class="sd">            &#39;mask_fixed_length_chars&#39;: Replace the name with the asterisks with fixed length. You can also invoke &quot;setFixedMaskLength()&quot;</span>
+<span class="sd">            &#39;skip&#39;: Skip the values (intact)</span>
+<span class="sd">        The entities which have not been given in dictionary will deidentify according to setMode()</span>
+<span class="sd">    entityCasingModesPath</span>
+<span class="sd">        Dictionary path where is the json that contains the entity casing modes.</span>
+<span class="sd">            &#39;lowercase&#39;: Converts all characters to lower case using the rules of the default locale.</span>
+<span class="sd">            &#39;uppercase&#39;: Converts all characters to upper case using the rules of the default locale.</span>
+<span class="sd">            &#39;capitalize&#39;: Converts the first character to upper case and converts others to lower case.</span>
+<span class="sd">            &#39;titlecase&#39;: Converts the first character in every token to upper case and converts others to lower case.</span>
+<span class="sd">    genderAwareness</span>
+<span class="sd">        Whether to use gender-aware names or not during obfuscation. This param effects only names.</span>
+<span class="sd">        If value is true, it might decrease performance. Default: False</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -493,7 +512,7 @@ document.write(`
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    regexPatternsDictionary</span>
-<span class="sd">        ictionary with regular expression patterns that match some protected entity</span>
+<span class="sd">        Dictionary with regular expression patterns that match some protected entity</span>
 <span class="sd">    mode</span>
 <span class="sd">        Mode for Anonimizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
 <span class="sd">    obfuscateDate</span>
@@ -544,8 +563,14 @@ document.write(`
 <span class="sd">            If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.</span>
 <span class="sd">            entity_labels: Replace the values with the corresponding entity labels.</span>
 <span class="sd">            fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</span>
-
-<span class="sd">    fixedMaskLength: this is the length of the masking sequence that will be used when the &#39;fixed_length_chars&#39; masking policy is selected.</span>
+<span class="sd">    fixedMaskLength</span>
+<span class="sd">        This is the length of the masking sequence that will be used when the &#39;fixed_length_chars&#39; masking policy is selected.</span>
+<span class="sd">    genderAwareness</span>
+<span class="sd">        Whether to use gender-aware names or not during obfuscation. This param effects only names.</span>
+<span class="sd">        If value is true, it might decrease performance. Default: False</span>
+<span class="sd">    sameLengthFormattedEntities</span>
+<span class="sd">        List of formatted entities to generate the same length outputs as original ones during obfuscation.</span>
+<span class="sd">        The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -625,12 +650,12 @@ document.write(`
         <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="DeIdentificationModel.pretrained"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/legal/chunk_classification/deid/deIdentification/index.html#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="DeIdentificationModel.pretrained"><a class="viewcode-back" href="../../../../../reference/autosummary/sparknlp_jsl/legal/chunk_classification/deid/deIdentification/index.html#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;legner_deid&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;legal/models&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Download a pre-trained DeIdentificationModel.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            name (str): Name of the pre-trained model.</span>
-<span class="sd">            lang (str): Language of the pre-trained model.</span>
+<span class="sd">            name (str): Name of the pre-trained model, by default &quot;legner_deid&quot;</span>
+<span class="sd">            lang (str): Language of the pre-trained model, by default &quot;en&quot;</span>
 <span class="sd">            remote_loc (str): Remote location of the pre-trained model. If None, use the</span>
 <span class="sd">            open-source location. Other values are &quot;clinical/models&quot;,</span>
 <span class="sd">            &quot;finance/models&quot;, or &quot;legal/models&quot;.</span>
@@ -638,8 +663,8 @@ document.write(`
 <span class="sd">        Returns:</span>
 <span class="sd">            DeIdentificationModel: A pre-trained DeIdentificationModel.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">ResourceDownloader</span>
-        <span class="k">return</span> <span class="n">ResourceDownloader</span><span class="o">.</span><span class="n">downloadModel</span><span class="p">(</span><span class="n">DeIdentificationModel</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span>
+        <span class="kn">from</span> <span class="nn">sparknlp_jsl.pretrained</span> <span class="kn">import</span> <span class="n">InternalResourceDownloader</span>
+        <span class="k">return</span> <span class="n">InternalResourceDownloader</span><span class="o">.</span><span class="n">downloadModel</span><span class="p">(</span><span class="n">DeIdentificationModel</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span>
                                                 <span class="n">j_dwn</span><span class="o">=</span><span class="s1">&#39;InternalsPythonResourceDownloader&#39;</span><span class="p">)</span></div></div>
 </pre></div>
 
@@ -685,8 +710,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

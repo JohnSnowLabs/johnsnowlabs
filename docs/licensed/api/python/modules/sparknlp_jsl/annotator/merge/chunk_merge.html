@@ -39,7 +39,7 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js"></script>
     <script src="../../../../static/jquery.js"></script>
     <script src="../../../../static/underscore.js"></script>
-    <script src="../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
@@ -318,73 +318,8 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <h1>Source code for sparknlp_jsl.annotator.merge.chunk_merge</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
-
-
-<div class="viewcode-block" id="FilteringParams"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams">[docs]</a><span class="k">class</span> <span class="nc">FilteringParams</span><span class="p">:</span>
-
-<div class="viewcode-block" id="FilteringParams.blackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.blackList">[docs]</a>    <span class="n">blackList</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;blackList&quot;</span><span class="p">,</span> <span class="s2">&quot;If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels&quot;</span><span class="p">,</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="FilteringParams.setBlackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setBlackList">[docs]</a>    <span class="k">def</span> <span class="nf">setBlackList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        value : List[str]</span>
-<span class="sd">            If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">blackList</span> <span class="o">=</span> <span class="n">value</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="FilteringParams.whiteList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.whiteList">[docs]</a>    <span class="n">whiteList</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;whiteList&quot;</span><span class="p">,</span> <span class="s2">&quot;If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels&quot;</span><span class="p">,</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="FilteringParams.setWhiteList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setWhiteList">[docs]</a>    <span class="k">def</span> <span class="nf">setWhiteList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        value : List[str]</span>
-<span class="sd">            If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">whiteList</span> <span class="o">=</span> <span class="n">value</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="FilteringParams.criteria"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.criteria">[docs]</a>    <span class="n">criteria</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;criteria&quot;</span><span class="p">,</span> <span class="s2">&quot;Tag representing dates in the obfuscate reference file (Default: isin)&quot;</span><span class="p">,</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="FilteringParams.setCriteria"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setCriteria">[docs]</a>    <span class="k">def</span> <span class="nf">setCriteria</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets Tag representing dates in the obfuscate reference file (Default: isin)</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        value : string</span>
-<span class="sd">            Tag representing dates in the obfuscate reference file (Default: isin)</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">criteria</span> <span class="o">=</span> <span class="n">value</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="FilteringParams.regex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.regex">[docs]</a>    <span class="n">regex</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;regex&quot;</span><span class="p">,</span> <span class="s2">&quot;If defined, list of regex to process the chunks&quot;</span><span class="p">,</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="FilteringParams.setRegex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setRegex">[docs]</a>    <span class="k">def</span> <span class="nf">setRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets If defined, list of regex to process the chunks</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        value : List[str]</span>
-<span class="sd">            If defined, list of regex to process the chunks</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">regex</span> <span class="o">=</span> <span class="n">value</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="FilteringParams.entitiesConfidence"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.entitiesConfidence">[docs]</a>    <span class="n">entitiesConfidence</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;entitiesConfidence&quot;</span><span class="p">,</span> <span class="s2">&quot;null&quot;</span><span class="p">,</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">identity</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="FilteringParams.filterValue"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.filterValue">[docs]</a>    <span class="n">filterValue</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;filterValue&quot;</span><span class="p">,</span> <span class="s2">&quot;possibles values result|entity&quot;</span><span class="p">,</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="FilteringParams.setFilterValue"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setFilterValue">[docs]</a>    <span class="k">def</span> <span class="nf">setFilterValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets possibles values result|entity</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        value : string</span>
-<span class="sd">            possibles values result|entity</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">filterValue</span> <span class="o">=</span> <span class="n">value</span><span class="p">)</span></div></div>
-
+<span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator.filtering_params</span> <span class="kn">import</span> <span class="n">FilteringParams</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
 
 <div class="viewcode-block" id="MergeCommonParams"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.MergeCommonParams">[docs]</a><span class="k">class</span> <span class="nc">MergeCommonParams</span><span class="p">:</span>
 
@@ -740,8 +675,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

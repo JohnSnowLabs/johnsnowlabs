@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 4.4.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering</title>
-          <meta name="description" content="Spark NLP 4.4.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering" />
-          <meta name="keywords" content="Spark NLP 4.4.0 ScalaDoc com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering" />
+          <title>Spark NLP 4.4.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering</title>
+          <meta name="description" content="Spark NLP 4.4.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering" />
+          <meta name="keywords" content="Spark NLP 4.4.3 ScalaDoc com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 4.4.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 4.4.3 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -159,8 +159,8 @@
                         <a href="" title="MedicalQuestionAnswering is a GPT based model for answering questions given a context.">MedicalQuestionAnswering</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
-                        <a class="class" href="NerQuestionGenerator.html" title=""></a>
-                        <a href="NerQuestionGenerator.html" title="">NerQuestionGenerator</a>
+                        <a class="class" href="NerQuestionGenerator.html" title="Automatically generates questions for NER."></a>
+                        <a href="NerQuestionGenerator.html" title="Automatically generates questions for NER.">NerQuestionGenerator</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
                         <a class="trait" href="ReadMedicalQuestionAnsweringModel.html" title=""></a>
@@ -194,7 +194,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">MedicalQuestionAnswering</span><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>] with <a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a> with <span class="extype" name="com.johnsnowlabs.nlp.HasCaseSensitiveProperties">HasCaseSensitiveProperties</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasBatchedAnnotate">HasBatchedAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>] with <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span> with <span class="extype" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">WriteTensorflowModel</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
+        <span class="name">MedicalQuestionAnswering</span><span class="result"> extends <a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></span>
       </span>
       </h4>
 
@@ -245,7 +245,7 @@ capable of answering various types of questions, including yes-no or full text o
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span>, <span class="extype" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">WriteTensorflowModel</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasBatchedAnnotate">HasBatchedAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>], <span class="extype" name="com.johnsnowlabs.nlp.HasCaseSensitiveProperties">HasCaseSensitiveProperties</span>, <a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a>, <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>], <span class="extype" name="com.johnsnowlabs.nlp.CanBeLazy">CanBeLazy</span>, <span class="extype" name="com.johnsnowlabs.nlp.RawAnnotator">RawAnnotator</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>], <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">HasInputAnnotationCols</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">HasOutputAnnotatorType</span>, <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="org.apache.spark.ml.Model">Model</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>], <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span>, <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a>, <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span>, <span class="extype" name="com.johnsnowlabs.ml.tensorflow.sentencepiece.WriteSentencePieceModel">WriteSentencePieceModel</span>, <span class="extype" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">WriteTensorflowModel</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasBatchedAnnotate">HasBatchedAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>], <span class="extype" name="com.johnsnowlabs.nlp.HasCaseSensitiveProperties">HasCaseSensitiveProperties</span>, <a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a>, <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>], <span class="extype" name="com.johnsnowlabs.nlp.CanBeLazy">CanBeLazy</span>, <span class="extype" name="com.johnsnowlabs.nlp.RawAnnotator">RawAnnotator</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>], <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">HasInputAnnotationCols</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">HasOutputAnnotatorType</span>, <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="org.apache.spark.ml.Model">Model</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>], <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span>, <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div><div class="toggleContainer block">
             <span class="toggle">
               Known Subclasses
@@ -276,7 +276,7 @@ capable of answering various types of questions, including yes-no or full text o
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering"><span>MedicalQuestionAnswering</span></li><li class="in" name="com.johnsnowlabs.license.CheckLicense"><span>CheckLicense</span></li><li class="in" name="com.johnsnowlabs.nlp.HasEngine"><span>HasEngine</span></li><li class="in" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel"><span>WriteTensorflowModel</span></li><li class="in" name="com.johnsnowlabs.nlp.HasBatchedAnnotate"><span>HasBatchedAnnotate</span></li><li class="in" name="com.johnsnowlabs.nlp.HasCaseSensitiveProperties"><span>HasCaseSensitiveProperties</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams"><span>GPTGenerationParams</span></li><li class="in" name="com.johnsnowlabs.nlp.AnnotatorModel"><span>AnnotatorModel</span></li><li class="in" name="com.johnsnowlabs.nlp.CanBeLazy"><span>CanBeLazy</span></li><li class="in" name="com.johnsnowlabs.nlp.RawAnnotator"><span>RawAnnotator</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol"><span>HasOutputAnnotationCol</span></li><li class="in" name="com.johnsnowlabs.nlp.HasInputAnnotationCols"><span>HasInputAnnotationCols</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType"><span>HasOutputAnnotatorType</span></li><li class="in" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable"><span>ParamsAndFeaturesWritable</span></li><li class="in" name="com.johnsnowlabs.nlp.HasFeatures"><span>HasFeatures</span></li><li class="in" name="org.apache.spark.ml.util.DefaultParamsWritable"><span>DefaultParamsWritable</span></li><li class="in" name="org.apache.spark.ml.util.MLWritable"><span>MLWritable</span></li><li class="in" name="org.apache.spark.ml.Model"><span>Model</span></li><li class="in" name="org.apache.spark.ml.Transformer"><span>Transformer</span></li><li class="in" name="org.apache.spark.ml.PipelineStage"><span>PipelineStage</span></li><li class="in" name="org.apache.spark.internal.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.ml.param.Params"><span>Params</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.ml.util.Identifiable"><span>Identifiable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering"><span>MedicalQuestionAnswering</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator"><span>MedicalTextGenerator</span></li><li class="in" name="com.johnsnowlabs.license.CheckLicense"><span>CheckLicense</span></li><li class="in" name="com.johnsnowlabs.nlp.HasEngine"><span>HasEngine</span></li><li class="in" name="com.johnsnowlabs.ml.tensorflow.sentencepiece.WriteSentencePieceModel"><span>WriteSentencePieceModel</span></li><li class="in" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel"><span>WriteTensorflowModel</span></li><li class="in" name="com.johnsnowlabs.nlp.HasBatchedAnnotate"><span>HasBatchedAnnotate</span></li><li class="in" name="com.johnsnowlabs.nlp.HasCaseSensitiveProperties"><span>HasCaseSensitiveProperties</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams"><span>GPTGenerationParams</span></li><li class="in" name="com.johnsnowlabs.nlp.AnnotatorModel"><span>AnnotatorModel</span></li><li class="in" name="com.johnsnowlabs.nlp.CanBeLazy"><span>CanBeLazy</span></li><li class="in" name="com.johnsnowlabs.nlp.RawAnnotator"><span>RawAnnotator</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol"><span>HasOutputAnnotationCol</span></li><li class="in" name="com.johnsnowlabs.nlp.HasInputAnnotationCols"><span>HasInputAnnotationCols</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType"><span>HasOutputAnnotatorType</span></li><li class="in" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable"><span>ParamsAndFeaturesWritable</span></li><li class="in" name="com.johnsnowlabs.nlp.HasFeatures"><span>HasFeatures</span></li><li class="in" name="org.apache.spark.ml.util.DefaultParamsWritable"><span>DefaultParamsWritable</span></li><li class="in" name="org.apache.spark.ml.util.MLWritable"><span>MLWritable</span></li><li class="in" name="org.apache.spark.ml.Model"><span>Model</span></li><li class="in" name="org.apache.spark.ml.Transformer"><span>Transformer</span></li><li class="in" name="org.apache.spark.ml.PipelineStage"><span>PipelineStage</span></li><li class="in" name="org.apache.spark.internal.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.ml.param.Params"><span>Params</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.ml.util.Identifiable"><span>Identifiable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -571,7 +571,7 @@ type
 </p></div><dl class="paramcmts block"><dt class="param">batchedAnnotations</dt><dd class="cmt"><p>
   Annotations that correspond to inputAnnotationCols generated by previous annotators if any</p></dd><dt>returns</dt><dd class="cmt"><p>
   any number of annotations processed for every input annotation. Not necessary one to one
-  relationship</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a> → HasBatchedAnnotate</dd></dl></div>
+  relationship</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a> → <a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a> → HasBatchedAnnotate</dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasBatchedAnnotate#batchProcess" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="batchProcess(rows:Iterator[_]):Iterator[org.apache.spark.sql.Row]"></a><a id="batchProcess(Iterator[_]):Iterator[Row]"></a>
       <span class="permalink">
@@ -756,7 +756,7 @@ type
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#configProtoBytes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#configProtoBytes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="configProtoBytes:org.apache.spark.ml.param.IntArrayParam"></a><a id="configProtoBytes:IntArrayParam"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#configProtoBytes:org.apache.spark.ml.param.IntArrayParam" title="Permalink">
@@ -773,7 +773,7 @@ type
       
       <p class="shortcomment cmt">ConfigProto from tensorflow, serialized into byte array.</p><div class="fullcomment"><div class="comment cmt"><p>ConfigProto from tensorflow, serialized into byte array. Get with
 config_proto.SerializeToString()
-</p></div></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.RawAnnotator#copy" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="copy(extra:org.apache.spark.ml.param.ParamMap):M"></a><a id="copy(ParamMap):MedicalQuestionAnswering"></a>
       <span class="permalink">
@@ -806,6 +806,23 @@ config_proto.SerializeToString()
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#customPrompt" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+      <a id="customPrompt:org.apache.spark.ml.param.Param[String]"></a><a id="customPrompt:Param[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#customPrompt:org.apache.spark.ml.param.Param[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">customPrompt</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Custom model prompt
+</p>
     </li><li name="org.apache.spark.ml.param.Params#defaultCopy" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="defaultCopy[T&lt;:org.apache.spark.ml.param.Params](extra:org.apache.spark.ml.param.ParamMap):T"></a><a id="defaultCopy[T&lt;:Params](ParamMap):T"></a>
       <span class="permalink">
@@ -1153,7 +1170,7 @@ config_proto.SerializeToString()
                 <span class="name">@native</span><span class="args">()</span>
               
         </dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#getConfigProtoBytes" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#getConfigProtoBytes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getConfigProtoBytes:Option[Array[Byte]]"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#getConfigProtoBytes:Option[Array[Byte]]" title="Permalink">
@@ -1168,7 +1185,7 @@ config_proto.SerializeToString()
         <span class="name">getConfigProtoBytes</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Byte">Byte</span>]]</span>
       </span>
       
-      <p class="shortcomment cmt"></p>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#getDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getDefault[T](param:org.apache.spark.ml.param.Param[T]):Option[T]"></a><a id="getDefault[T](Param[T]):Option[T]"></a>
       <span class="permalink">
@@ -1297,10 +1314,10 @@ config_proto.SerializeToString()
       </span>
       
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#getModelIfNotSet" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
-      <a id="getModelIfNotSet:com.johnsnowlabs.ml.tensorflow.TensorflowBioGPT"></a><a id="getModelIfNotSet:TensorflowBioGPT"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#getMaxTextLength" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getMaxTextLength:Int"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#getModelIfNotSet:com.johnsnowlabs.ml.tensorflow.TensorflowBioGPT" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#getMaxTextLength:Int" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1309,10 +1326,60 @@ config_proto.SerializeToString()
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">getModelIfNotSet</span><span class="result">: <a href="../../../ml/tensorflow/TensorflowBioGPT.html" class="extype" name="com.johnsnowlabs.ml.tensorflow.TensorflowBioGPT">TensorflowBioGPT</a></span>
+        <span class="name">getMaxTextLength</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
       </span>
       
-      <p class="shortcomment cmt"></p>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#getModelIfNotSet" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getModelIfNotSet:com.johnsnowlabs.ml.tensorflow.TensorflowMedicalEncoderDecoder"></a><a id="getModelIfNotSet:TensorflowMedicalEncoderDecoder"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#getModelIfNotSet:com.johnsnowlabs.ml.tensorflow.TensorflowMedicalEncoderDecoder" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getModelIfNotSet</span><span class="result">: <span class="extype" name="com.johnsnowlabs.ml.tensorflow.TensorflowMedicalEncoderDecoder">TensorflowMedicalEncoderDecoder</span></span>
+      </span>
+      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#getModelType" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getModelType:String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#getModelType:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getModelType</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Get model type
+</p><div class="fullcomment"><div class="comment cmt"><p>Get model type
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams#getNoRepeatNgramSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getNoRepeatNgramSize:Int"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#getNoRepeatNgramSize:Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getNoRepeatNgramSize</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#getOrDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getOrDefault[T](param:org.apache.spark.ml.param.Param[T]):T"></a><a id="getOrDefault[T](Param[T]):T"></a>
       <span class="permalink">
@@ -1393,6 +1460,39 @@ config_proto.SerializeToString()
       </span>
       
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#getSignatures" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getSignatures:Option[Map[String,String]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#getSignatures:Option[Map[String,String]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getSignatures</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#getStopAtEos" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getStopAtEos:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#getStopAtEos:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getStopAtEos</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Checks whether text generation stops  when the end-of-sentence token is encountered.</p><div class="fullcomment"><div class="comment cmt"><p>Checks whether text generation stops  when the end-of-sentence token is encountered.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams#getTopK" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
       <a id="getTopK:Int"></a>
       <span class="permalink">
@@ -1409,7 +1509,7 @@ config_proto.SerializeToString()
       </span>
       
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#getUseCache" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#getUseCache" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getUseCache:Boolean"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#getUseCache:Boolean" title="Permalink">
@@ -1424,7 +1524,7 @@ config_proto.SerializeToString()
         <span class="name">getUseCache</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
-      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#hasDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="hasDefault[T](param:org.apache.spark.ml.param.Param[T]):Boolean"></a><a id="hasDefault[T](Param[T]):Boolean"></a>
       <span class="permalink">
@@ -1559,7 +1659,7 @@ config_proto.SerializeToString()
       
       <p class="shortcomment cmt">Input annotator type : DOCUMENT, DOCUMENT
 </p><div class="fullcomment"><div class="comment cmt"><p>Input annotator type : DOCUMENT, DOCUMENT
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a> → HasInputAnnotationCols</dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a> → <a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a> → HasInputAnnotationCols</dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#inputCols" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="inputCols:org.apache.spark.ml.param.StringArrayParam"></a><a id="inputCols:StringArrayParam"></a>
       <span class="permalink">
@@ -1883,7 +1983,24 @@ config_proto.SerializeToString()
       <p class="shortcomment cmt">Maximum number of new tokens to be generated (Default: 30)
 </p><div class="fullcomment"><div class="comment cmt"><p>Maximum number of new tokens to be generated (Default: 30)
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#merges" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#maxTextLength" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="maxTextLength:org.apache.spark.ml.param.IntParam"></a><a id="maxTextLength:IntParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#maxTextLength:org.apache.spark.ml.param.IntParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">maxTextLength</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.IntParam">IntParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Maximum length of context text.</p><div class="fullcomment"><div class="comment cmt"><p>Maximum length of context text. (Default: <code>1024</code>)
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#merges" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="merges:com.johnsnowlabs.nlp.serialization.MapFeature[(String,String),Int]"></a><a id="merges:MapFeature[(String,String),Int]"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#merges:com.johnsnowlabs.nlp.serialization.MapFeature[(String,String),Int]" title="Permalink">
@@ -1899,7 +2016,26 @@ config_proto.SerializeToString()
       </span>
       
       <p class="shortcomment cmt">Holding merges.txt coming from RoBERTa model
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Holding merges.txt coming from RoBERTa model
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#modelType" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="modelType:org.apache.spark.ml.param.Param[String]"></a><a id="modelType:Param[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#modelType:org.apache.spark.ml.param.Param[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">modelType</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Model type
+</p><div class="fullcomment"><div class="comment cmt"><p>Model type
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#msgHelper" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="msgHelper(schema:org.apache.spark.sql.types.StructType):String"></a><a id="msgHelper(StructType):String"></a>
       <span class="permalink">
@@ -1932,6 +2068,24 @@ config_proto.SerializeToString()
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams#noRepeatNgramSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="noRepeatNgramSize:org.apache.spark.ml.param.IntParam"></a><a id="noRepeatNgramSize:IntParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#noRepeatNgramSize:org.apache.spark.ml.param.IntParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">noRepeatNgramSize</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.IntParam">IntParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">If set to int &gt; <code>0</code>, all ngrams of that size can only occur once (Default: <code>0</code>)
+</p><div class="fullcomment"><div class="comment cmt"><p>If set to int &gt; <code>0</code>, all ngrams of that size can only occur once (Default: <code>0</code>)
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a></dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="notify():Unit"></a>
       <span class="permalink">
@@ -1985,7 +2139,7 @@ config_proto.SerializeToString()
         <span class="name">onWrite</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="spark">spark: <span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a> → ParamsAndFeaturesWritable</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a> → <a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a> → ParamsAndFeaturesWritable</dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#optionalInputAnnotatorTypes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="optionalInputAnnotatorTypes:Array[String]"></a>
       <span class="permalink">
@@ -2019,7 +2173,7 @@ config_proto.SerializeToString()
       
       <p class="shortcomment cmt">Output annotator type : DOCUMENT
 </p><div class="fullcomment"><div class="comment cmt"><p>Output annotator type : DOCUMENT
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a> → HasOutputAnnotatorType</dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a> → <a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a> → HasOutputAnnotatorType</dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasOutputAnnotationCol#outputCol" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="outputCol:org.apache.spark.ml.param.Param[String]"></a><a id="outputCol:Param[String]"></a>
       <span class="permalink">
@@ -2289,10 +2443,10 @@ config_proto.SerializeToString()
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasCaseSensitiveProperties</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#setConfigProtoBytes" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setConfigProtoBytes(bytes:Array[Int]):MedicalQuestionAnswering.this.type"></a><a id="setConfigProtoBytes(Array[Int]):MedicalQuestionAnswering.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#setConfigProtoBytes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setConfigProtoBytes(bytes:Array[Int]):MedicalTextGenerator.this.type"></a><a id="setConfigProtoBytes(Array[Int]):MedicalQuestionAnswering.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setConfigProtoBytes(bytes:Array[Int]):MedicalQuestionAnswering.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setConfigProtoBytes(bytes:Array[Int]):MedicalTextGenerator.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2304,7 +2458,24 @@ config_proto.SerializeToString()
         <span class="name">setConfigProtoBytes</span><span class="params">(<span name="bytes">bytes: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt"></p>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#setCustomPrompt" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
+      <a id="setCustomPrompt(value:String):MedicalQuestionAnswering.this.type"></a><a id="setCustomPrompt(String):MedicalQuestionAnswering.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setCustomPrompt(value:String):MedicalQuestionAnswering.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setCustomPrompt</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Set custom model prompt
+</p>
     </li><li name="com.johnsnowlabs.nlp.HasFeatures#setDefault" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setDefault[T](feature:com.johnsnowlabs.nlp.serialization.StructFeature[T],value:()=&gt;T):HasFeatures.this.type"></a><a id="setDefault[T](StructFeature[T],()⇒T):MedicalQuestionAnswering.this.type"></a>
       <span class="permalink">
@@ -2513,10 +2684,26 @@ config_proto.SerializeToString()
       </span>
       
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#setMerges" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setMerges(value:Map[(String,String),Int]):MedicalQuestionAnswering.this.type"></a><a id="setMerges(Map[(String,String),Int]):MedicalQuestionAnswering.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#setMaxTextLength" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setMaxTextLength(value:Int):MedicalTextGenerator.this.type"></a><a id="setMaxTextLength(Int):MedicalQuestionAnswering.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setMerges(value:Map[(String,String),Int]):MedicalQuestionAnswering.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setMaxTextLength(value:Int):MedicalTextGenerator.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setMaxTextLength</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#setMerges" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setMerges(value:Map[(String,String),Int]):MedicalTextGenerator.this.type"></a><a id="setMerges(Map[(String,String),Int]):MedicalQuestionAnswering.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setMerges(value:Map[(String,String),Int]):MedicalTextGenerator.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2528,11 +2715,43 @@ config_proto.SerializeToString()
         <span class="name">setMerges</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.Map">Map</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>), <span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt"></p>
-    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#setModelIfNotSet" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setModelIfNotSet(spark:org.apache.spark.sql.SparkSession,tfWrapper:com.johnsnowlabs.ml.tensorflow.TensorflowWrapper):MedicalQuestionAnswering.this.type"></a><a id="setModelIfNotSet(SparkSession,TensorflowWrapper):MedicalQuestionAnswering.this.type"></a>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#setModelIfNotSet" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setModelIfNotSet(spark:org.apache.spark.sql.SparkSession,model:com.johnsnowlabs.ml.tensorflow.TensorflowMedicalEncoderDecoder):MedicalTextGenerator.this.type"></a><a id="setModelIfNotSet(SparkSession,TensorflowMedicalEncoderDecoder):MedicalQuestionAnswering.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setModelIfNotSet(spark:org.apache.spark.sql.SparkSession,tfWrapper:com.johnsnowlabs.ml.tensorflow.TensorflowWrapper):MedicalQuestionAnswering.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setModelIfNotSet(spark:org.apache.spark.sql.SparkSession,model:com.johnsnowlabs.ml.tensorflow.TensorflowMedicalEncoderDecoder):MedicalTextGenerator.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setModelIfNotSet</span><span class="params">(<span name="spark">spark: <span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span></span>, <span name="model">model: <span class="extype" name="com.johnsnowlabs.ml.tensorflow.TensorflowMedicalEncoderDecoder">TensorflowMedicalEncoderDecoder</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#setModelIfNotSet" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setModelIfNotSet(spark:org.apache.spark.sql.SparkSession,tfWrapper:com.johnsnowlabs.ml.tensorflow.TensorflowWrapper,spp:com.johnsnowlabs.ml.tensorflow.sentencepiece.SentencePieceWrapper,useCache:Boolean):MedicalTextGenerator.this.type"></a><a id="setModelIfNotSet(SparkSession,TensorflowWrapper,SentencePieceWrapper,Boolean):MedicalQuestionAnswering.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setModelIfNotSet(spark:org.apache.spark.sql.SparkSession,tfWrapper:com.johnsnowlabs.ml.tensorflow.TensorflowWrapper,spp:com.johnsnowlabs.ml.tensorflow.sentencepiece.SentencePieceWrapper,useCache:Boolean):MedicalTextGenerator.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setModelIfNotSet</span><span class="params">(<span name="spark">spark: <span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span></span>, <span name="tfWrapper">tfWrapper: <span class="extype" name="com.johnsnowlabs.ml.tensorflow.TensorflowWrapper">TensorflowWrapper</span></span>, <span name="spp">spp: <span class="extype" name="com.johnsnowlabs.ml.tensorflow.sentencepiece.SentencePieceWrapper">SentencePieceWrapper</span></span>, <span name="useCache">useCache: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#setModelIfNotSet" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setModelIfNotSet(spark:org.apache.spark.sql.SparkSession,tfWrapper:com.johnsnowlabs.ml.tensorflow.TensorflowWrapper):MedicalTextGenerator.this.type"></a><a id="setModelIfNotSet(SparkSession,TensorflowWrapper):MedicalQuestionAnswering.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setModelIfNotSet(spark:org.apache.spark.sql.SparkSession,tfWrapper:com.johnsnowlabs.ml.tensorflow.TensorflowWrapper):MedicalTextGenerator.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2544,7 +2763,41 @@ config_proto.SerializeToString()
         <span class="name">setModelIfNotSet</span><span class="params">(<span name="spark">spark: <span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span></span>, <span name="tfWrapper">tfWrapper: <span class="extype" name="com.johnsnowlabs.ml.tensorflow.TensorflowWrapper">TensorflowWrapper</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt"></p>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#setModelType" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setModelType(value:String):MedicalTextGenerator.this.type"></a><a id="setModelType(String):MedicalQuestionAnswering.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setModelType(value:String):MedicalTextGenerator.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setModelType</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Set model type
+</p><div class="fullcomment"><div class="comment cmt"><p>Set model type
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams#setNoRepeatNgramSize" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setNoRepeatNgramSize(value:Int):GPTGenerationParams.this.type"></a><a id="setNoRepeatNgramSize(Int):MedicalQuestionAnswering.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setNoRepeatNgramSize(value:Int):GPTGenerationParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setNoRepeatNgramSize</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasOutputAnnotationCol#setOutputCol" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="setOutputCol(value:String):HasOutputAnnotationCol.this.type"></a><a id="setOutputCol(String):MedicalQuestionAnswering.this.type"></a>
       <span class="permalink">
@@ -2711,6 +2964,39 @@ config_proto.SerializeToString()
       </span>
       
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#setSignatures" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setSignatures(value:Map[String,String]):MedicalTextGenerator.this.type"></a><a id="setSignatures(Map[String,String]):MedicalQuestionAnswering.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setSignatures(value:Map[String,String]):MedicalTextGenerator.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setSignatures</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#setStopAtEos" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setStopAtEos(value:Boolean):MedicalTextGenerator.this.type"></a><a id="setStopAtEos(Boolean):MedicalQuestionAnswering.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setStopAtEos(value:Boolean):MedicalTextGenerator.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setStopAtEos</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Determines whether text generation stops when the end-of-sentence token is encountered.</p><div class="fullcomment"><div class="comment cmt"><p>Determines whether text generation stops when the end-of-sentence token is encountered.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams#setTopK" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setTopK(value:Int):GPTGenerationParams.this.type"></a><a id="setTopK(Int):MedicalQuestionAnswering.this.type"></a>
       <span class="permalink">
@@ -2727,10 +3013,10 @@ config_proto.SerializeToString()
       </span>
       
       <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="GPTGenerationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.GPTGenerationParams">GPTGenerationParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#setUseCache" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="setUseCache(value:Boolean):MedicalQuestionAnswering.this.type"></a><a id="setUseCache(Boolean):MedicalQuestionAnswering.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#setUseCache" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setUseCache(value:Boolean):MedicalTextGenerator.this.type"></a><a id="setUseCache(Boolean):MedicalQuestionAnswering.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setUseCache(value:Boolean):MedicalQuestionAnswering.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setUseCache(value:Boolean):MedicalTextGenerator.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2742,11 +3028,11 @@ config_proto.SerializeToString()
         <span class="name">setUseCache</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
       </span>
       
-      
-    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#setVocabulary" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
-      <a id="setVocabulary(value:Map[String,Int]):MedicalQuestionAnswering.this.type"></a><a id="setVocabulary(Map[String,Int]):MedicalQuestionAnswering.this.type"></a>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#setVocabulary" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setVocabulary(value:Map[String,Int]):MedicalTextGenerator.this.type"></a><a id="setVocabulary(Map[String,Int]):MedicalQuestionAnswering.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setVocabulary(value:Map[String,Int]):MedicalQuestionAnswering.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#setVocabulary(value:Map[String,Int]):MedicalTextGenerator.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -2758,7 +3044,42 @@ config_proto.SerializeToString()
         <span class="name">setVocabulary</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Int">Int</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt"></p>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#signatures" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="signatures:com.johnsnowlabs.nlp.serialization.MapFeature[String,String]"></a><a id="signatures:MapFeature[String,String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#signatures:com.johnsnowlabs.nlp.serialization.MapFeature[String,String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">signatures</span><span class="result">: <span class="extype" name="com.johnsnowlabs.nlp.serialization.MapFeature">MapFeature</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">It contains TF model signatures for the laded saved model
+</p><div class="fullcomment"><div class="comment cmt"><p>It contains TF model signatures for the laded saved model
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#stopAtEos" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="stopAtEos:org.apache.spark.ml.param.BooleanParam"></a><a id="stopAtEos:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#stopAtEos:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">stopAtEos</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Stop text generation when the end-of-sentence token is encountered.</p><div class="fullcomment"><div class="comment cmt"><p>Stop text generation when the end-of-sentence token is encountered.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
     </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
       <span class="permalink">
@@ -2921,8 +3242,8 @@ config_proto.SerializeToString()
         <span class="name">uid</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a> → Identifiable</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#useCache" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering">MedicalQuestionAnswering</a> → <a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a> → Identifiable</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#useCache" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="useCache:org.apache.spark.ml.param.BooleanParam"></a><a id="useCache:BooleanParam"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#useCache:org.apache.spark.ml.param.BooleanParam" title="Permalink">
@@ -2938,7 +3259,8 @@ config_proto.SerializeToString()
       </span>
       
       <p class="shortcomment cmt">Cache internal state of the model to improve performance
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Cache internal state of the model to improve performance
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.RawAnnotator#validate" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="validate(schema:org.apache.spark.sql.types.StructType):Boolean"></a><a id="validate(StructType):Boolean"></a>
       <span class="permalink">
@@ -2955,7 +3277,7 @@ config_proto.SerializeToString()
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>RawAnnotator</dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.qa.MedicalQuestionAnswering#vocabulary" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+    </li><li name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator#vocabulary" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="vocabulary:com.johnsnowlabs.nlp.serialization.MapFeature[String,Int]"></a><a id="vocabulary:MapFeature[String,Int]"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#vocabulary:com.johnsnowlabs.nlp.serialization.MapFeature[String,Int]" title="Permalink">
@@ -2971,7 +3293,8 @@ config_proto.SerializeToString()
       </span>
       
       <p class="shortcomment cmt">Vocabulary used to encode the words to ids with bpeTokenizer.encode
-</p>
+</p><div class="fullcomment"><div class="comment cmt"><p>Vocabulary used to encode the words to ids with bpeTokenizer.encode
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">
@@ -3072,6 +3395,22 @@ config_proto.SerializeToString()
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ParamsAndFeaturesWritable → DefaultParamsWritable → MLWritable</dd></dl></div>
+    </li><li name="com.johnsnowlabs.ml.tensorflow.sentencepiece.WriteSentencePieceModel#writeSentencePieceModel" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="writeSentencePieceModel(path:String,spark:org.apache.spark.sql.SparkSession,spp:com.johnsnowlabs.ml.tensorflow.sentencepiece.SentencePieceWrapper,suffix:String,filename:String):Unit"></a><a id="writeSentencePieceModel(String,SparkSession,SentencePieceWrapper,String,String):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/qa/MedicalQuestionAnswering.html#writeSentencePieceModel(path:String,spark:org.apache.spark.sql.SparkSession,spp:com.johnsnowlabs.ml.tensorflow.sentencepiece.SentencePieceWrapper,suffix:String,filename:String):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">writeSentencePieceModel</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="spark">spark: <span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span></span>, <span name="spp">spp: <span class="extype" name="com.johnsnowlabs.ml.tensorflow.sentencepiece.SentencePieceWrapper">SentencePieceWrapper</span></span>, <span name="suffix">suffix: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="filename">filename: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>WriteSentencePieceModel</dd></dl></div>
     </li><li name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel#writeTensorflowHub" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="writeTensorflowHub(path:String,tfPath:String,spark:org.apache.spark.sql.SparkSession,suffix:String):Unit"></a><a id="writeTensorflowHub(String,String,SparkSession,String):Unit"></a>
       <span class="permalink">
@@ -3130,10 +3469,14 @@ config_proto.SerializeToString()
         </div>
 
         <div id="inheritedMembers">
-        <div class="parent" name="com.johnsnowlabs.license.CheckLicense">
+        <div class="parent" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">
+              <h3>Inherited from <a href="../seq2seq/MedicalTextGenerator.html" class="extype" name="com.johnsnowlabs.nlp.annotators.seq2seq.MedicalTextGenerator">MedicalTextGenerator</a></h3>
+            </div><div class="parent" name="com.johnsnowlabs.license.CheckLicense">
               <h3>Inherited from <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></h3>
             </div><div class="parent" name="com.johnsnowlabs.nlp.HasEngine">
               <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span></h3>
+            </div><div class="parent" name="com.johnsnowlabs.ml.tensorflow.sentencepiece.WriteSentencePieceModel">
+              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.ml.tensorflow.sentencepiece.WriteSentencePieceModel">WriteSentencePieceModel</span></h3>
             </div><div class="parent" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">
               <h3>Inherited from <span class="extype" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">WriteTensorflowModel</span></h3>
             </div><div class="parent" name="com.johnsnowlabs.nlp.HasBatchedAnnotate">

@@ -40,7 +40,7 @@
     <script data-url_root="../../../" id="documentation_options" src="../../../static/documentation_options.js"></script>
     <script src="../../../static/jquery.js"></script>
     <script src="../../../static/underscore.js"></script>
-    <script src="../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../static/doctools.js"></script>
     <script src="../../../static/sphinx_highlight.js"></script>
     <script src="../../../static/toggleprompt.js"></script>
@@ -337,6 +337,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="annotator/annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="annotator/doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="annotator/feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="annotator/filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="annotator/resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="annotator/router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="annotator/source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
@@ -374,7 +375,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="utils/alab_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.alab_utils</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils/conll_parse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.conll_parse</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="utils/deidentification_module/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.deidentification_module</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils/deidentification_utils/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.deidentification_utils</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils/imports/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.imports</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils/licensed_annotator_type/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.licensed_annotator_type</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="utils/log_parse/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.utils.log_parse</span></code></a></li>
@@ -395,6 +396,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="base/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.base</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="compatibility/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.compatibility</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="custom_transformer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.custom_transformer</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="deidentification_module/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.deidentification_module</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="eval/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.eval</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="functions/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.functions</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.internal</span></code></a></li>
@@ -584,6 +586,15 @@ params (dict): SparkSession params</p>
 </li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/reference/autosummary/sparknlp_jsl/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
 </div></div>
               
             
@@ -608,8 +619,7 @@ params (dict): SparkSession params</p>
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

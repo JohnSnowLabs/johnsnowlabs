@@ -39,7 +39,7 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js"></script>
     <script src="../../../../static/jquery.js"></script>
     <script src="../../../../static/underscore.js"></script>
-    <script src="../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
@@ -522,6 +522,9 @@ document.write(`
 <span class="sd">        Whether to override the already learned tags when using a pretrained model</span>
 <span class="sd">        to initialize the new model. A value of `True` (default) will override</span>
 <span class="sd">        existing tags.</span>
+<span class="sd">    sentenceTokenIndex: bool</span>
+<span class="sd">        Whether to include the token index for each sentence in annotation metadata, by default False.</span>
+<span class="sd">        If the value is True, the process might be slowed down.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -624,10 +627,10 @@ document.write(`
                                  <span class="s2">&quot;Whether to override already learned tags when using a pretrained model to initialize the new model. Default is &#39;true&#39;.&quot;</span><span class="p">,</span>
                                  <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="MedicalNerApproach.tagsMapping"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.tagsMapping">[docs]</a>    <span class="n">tagsMapping</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;tagsMapping&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;A map specifying how old tags are mapped to new ones. It only works if setOverrideExistingTags &quot;</span>
-                        <span class="o">+</span> <span class="s2">&quot;is false. The mapping is specified as a list of comma separared strings, &quot;</span>
-                          <span class="s2">&quot;e.g. [</span><span class="se">\&quot;</span><span class="s2">B-PER, B-VIP</span><span class="se">\&quot;</span><span class="s2">, </span><span class="se">\&quot;</span><span class="s2">I-PER, I-VIP</span><span class="se">\&quot;</span><span class="s2">,...]&quot;</span><span class="p">,</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
+    <span class="c1"># tagsMapping = Param(Params._dummy(), &quot;tagsMapping&quot;,</span>
+    <span class="c1">#                     &quot;A map specifying how old tags are mapped to new ones. It only works if setOverrideExistingTags &quot;</span>
+    <span class="c1">#                     + &quot;is false. The mapping is specified as a list of comma separared strings, &quot;</span>
+    <span class="c1">#                       &quot;e.g. [\&quot;B-PER, B-VIP\&quot;, \&quot;I-PER, I-VIP\&quot;,...]&quot;, TypeConverters.toListString)</span>
 
 <div class="viewcode-block" id="MedicalNerApproach.earlyStoppingCriterion"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.earlyStoppingCriterion">[docs]</a>    <span class="n">earlyStoppingCriterion</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;earlyStoppingCriterion&quot;</span><span class="p">,</span>
                                    <span class="s2">&quot;If set, this param specifies the criterion to stop training if performance is not improving. &quot;</span>
@@ -641,6 +644,10 @@ document.write(`
 <div class="viewcode-block" id="MedicalNerApproach.randomValidationSplitPerEpoch"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.randomValidationSplitPerEpoch">[docs]</a>    <span class="n">randomValidationSplitPerEpoch</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;randomValidationSplitPerEpoch&quot;</span><span class="p">,</span>
                                   <span class="s2">&quot;Do a random validation split after each epoch rather than at the beginning of training only. &quot;</span>
                                   <span class="s2">&quot;Default value is &#39;true&#39;.&quot;</span><span class="p">,</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MedicalNerApproach.sentenceTokenIndex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.sentenceTokenIndex">[docs]</a>    <span class="n">sentenceTokenIndex</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;sentenceTokenIndex&quot;</span><span class="p">,</span>
+                               <span class="s2">&quot;Whether to include the token index for each sentence in annotation metadata.&quot;</span><span class="p">,</span>
+                               <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MedicalNerApproach.setConfigProtoBytes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setConfigProtoBytes">[docs]</a>    <span class="k">def</span> <span class="nf">setConfigProtoBytes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets configProto from tensorflow, serialized into byte array.</span>
@@ -846,7 +853,10 @@ document.write(`
 <span class="sd">        value : List[str]</span>
 <span class="sd">            List of comma-separated entities.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">tagsMapping</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;setTagsMapping&quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="MedicalNerApproach.setEarlyStoppingCriterion"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setEarlyStoppingCriterion">[docs]</a>    <span class="k">def</span> <span class="nf">setEarlyStoppingCriterion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">criterion</span><span class="p">:</span><span class="nb">float</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets early stopping criterion. A value 0 means no early stopping.</span>
@@ -878,6 +888,18 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">randomValidationSplitPerEpoch</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="MedicalNerApproach.setSentenceTokenIndex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setSentenceTokenIndex">[docs]</a>    <span class="k">def</span> <span class="nf">setSentenceTokenIndex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Sets whether to include the token index for each sentence in annotation metadata,</span>
+<span class="sd">         by default False. If the value is True, the process might be slowed down.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : bool</span>
+<span class="sd">            Whether to include the token index for each sentence in annotation metadata, by default False.</span>
+<span class="sd">            If the value is True, the process might be slowed down.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">sentenceTokenIndex</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
+
     <span class="nd">@keyword_only</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">MedicalNerApproach</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.annotators.ner.MedicalNerApproach&quot;</span><span class="p">)</span>
@@ -897,7 +919,8 @@ document.write(`
             <span class="n">overrideExistingTags</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">earlyStoppingCriterion</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
             <span class="n">earlyStoppingPatience</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-            <span class="n">randomValidationSplitPerEpoch</span><span class="o">=</span><span class="kc">False</span></div>
+            <span class="n">randomValidationSplitPerEpoch</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">sentenceTokenIndex</span><span class="o">=</span><span class="kc">False</span></div>
         <span class="p">)</span>
 
 
@@ -965,6 +988,9 @@ document.write(`
 <span class="sd">        Tags used to trained this NerDLModel</span>
 <span class="sd">    labelCasing:</span>
 <span class="sd">        Setting all labels of the NER models upper/lower case. values upper|lower</span>
+<span class="sd">    sentenceTokenIndex</span>
+<span class="sd">        Whether to include the token index for each sentence in annotation metadata, by default False.</span>
+<span class="sd">        If the value is True, the process might be slowed down.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -1015,7 +1041,8 @@ document.write(`
             <span class="n">includeConfidence</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">includeAllConfidenceScores</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">batchSize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
-            <span class="n">inferenceBatchSize</span><span class="o">=</span><span class="mi">1</span>
+            <span class="n">inferenceBatchSize</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+            <span class="n">sentenceTokenIndex</span><span class="o">=</span><span class="kc">False</span>
         <span class="p">)</span>
 
 <div class="viewcode-block" id="MedicalNerModel.configProtoBytes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.configProtoBytes">[docs]</a>    <span class="n">configProtoBytes</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;configProtoBytes&quot;</span><span class="p">,</span>
@@ -1042,6 +1069,10 @@ document.write(`
 <div class="viewcode-block" id="MedicalNerModel.labelCasing"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.labelCasing">[docs]</a>    <span class="n">labelCasing</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;labelCasing&quot;</span><span class="p">,</span>
                         <span class="s2">&quot;Setting all labels of the NER models upper/lower case. values upper|lower&quot;</span><span class="p">,</span>
                         <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MedicalNerModel.sentenceTokenIndex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.sentenceTokenIndex">[docs]</a>    <span class="n">sentenceTokenIndex</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;sentenceTokenIndex&quot;</span><span class="p">,</span>
+                               <span class="s2">&quot;Whether to include the token index for each sentence in annotation metadata.&quot;</span><span class="p">,</span>
+                               <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MedicalNerModel.setConfigProtoBytes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.setConfigProtoBytes">[docs]</a>    <span class="k">def</span> <span class="nf">setConfigProtoBytes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">conf</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets configProto from tensorflow, serialized into byte array.</span>
@@ -1084,27 +1115,28 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">labelCasing</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="MedicalNerModel.setSentenceTokenIndex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.setSentenceTokenIndex">[docs]</a>    <span class="k">def</span> <span class="nf">setSentenceTokenIndex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Sets whether to include the token index for each sentence in annotation metadata,</span>
+<span class="sd">        by default False. If the value is True, the process might be slowed down.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : bool</span>
+<span class="sd">            Whether to include the token index for each sentence in annotation metadata, by default False.</span>
+<span class="sd">            If the value is True, the process might be slowed down.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">sentenceTokenIndex</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="MedicalNerModel.getTrainingClassDistribution"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.getTrainingClassDistribution">[docs]</a>    <span class="k">def</span> <span class="nf">getTrainingClassDistribution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the class counts for each of the classes during training.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s1">&#39;getTrainingClassDistributionJava&#39;</span><span class="p">)</span></div>
 
-    <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="MedicalNerModel.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ner_dl&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Download a pre-trained MedicalNerModel.</span>
-<span class="sd">        </span>
-<span class="sd">        Args:</span>
-<span class="sd">            name (str): Name of the pre-trained model.</span>
-<span class="sd">            lang (str): Language of the pre-trained model.</span>
-<span class="sd">            remote_loc (str): Remote location of the pre-trained model. If None, use the</span>
-<span class="sd">            open-source location. Other values are &quot;clinical/models&quot;,</span>
-<span class="sd">            &quot;finance/models&quot;, or &quot;legal/models&quot;.</span>
-<span class="sd">        </span>
-<span class="sd">        Returns:</span>
-<span class="sd">            MedicalNerModel: A pre-trained MedicalNerModel.</span>
+<div class="viewcode-block" id="MedicalNerModel.getClasses"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.getClasses">[docs]</a>    <span class="k">def</span> <span class="nf">getClasses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the list of entities which are recognized</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">ResourceDownloader</span>
-        <span class="k">return</span> <span class="n">ResourceDownloader</span><span class="o">.</span><span class="n">downloadModel</span><span class="p">(</span><span class="n">MedicalNerModel</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;getClasses&quot;</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
 <div class="viewcode-block" id="MedicalNerModel.loadSavedModel"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.loadSavedModel">[docs]</a>    <span class="k">def</span> <span class="nf">loadSavedModel</span><span class="p">(</span><span class="n">ner_model_path</span><span class="p">,</span> <span class="n">folder</span><span class="p">,</span> <span class="n">spark_session</span><span class="p">):</span>
@@ -1122,12 +1154,12 @@ document.write(`
         <span class="k">return</span> <span class="n">MedicalNerModel</span><span class="p">(</span><span class="n">java_model</span><span class="o">=</span><span class="n">jModel</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ner_clinical&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;clinical/models&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="MedicalNerModel.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;ner_jsl&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;clinical/models&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Download a pre-trained MedicalNerModel.</span>
 <span class="sd">        </span>
 <span class="sd">        Args:</span>
-<span class="sd">            name (str): Name of the pre-trained model.</span>
-<span class="sd">            lang (str): Language of the pre-trained model.</span>
+<span class="sd">            name (str): Name of the pre-trained model, by default &quot;ner_jsl&quot;</span>
+<span class="sd">            lang (str): Language of the pre-trained model, by default &quot;en&quot;</span>
 <span class="sd">            remote_loc (str): Remote location of the pre-trained model. If None, use the</span>
 <span class="sd">            open-source location. Other values are &quot;clinical/models&quot;,</span>
 <span class="sd">            &quot;finance/models&quot;, or &quot;legal/models&quot;.</span>
@@ -1137,7 +1169,7 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">sparknlp_jsl.pretrained</span> <span class="kn">import</span> <span class="n">InternalResourceDownloader</span>
         <span class="k">return</span> <span class="n">InternalResourceDownloader</span><span class="o">.</span><span class="n">downloadModel</span><span class="p">(</span><span class="n">MedicalNerModel</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span>
-                                                        <span class="n">j_dwn</span><span class="o">=</span><span class="s1">&#39;InternalsPythonResourceDownloader&#39;</span><span class="p">)</span></div>
+                                                        <span class="n">j_dwn</span><span class="o">=</span><span class="s1">&#39;InternalsPythonResourceDownloader&#39;</span><span class="p">)</span></div></div>
 </pre></div>
 
                 </article>
@@ -1182,8 +1214,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

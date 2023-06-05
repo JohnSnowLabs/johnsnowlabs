@@ -40,7 +40,7 @@
     <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js"></script>
     <script src="../../../../../../static/jquery.js"></script>
     <script src="../../../../../../static/underscore.js"></script>
-    <script src="../../../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
@@ -329,6 +329,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../ner/medical_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.medical_ner</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_chunker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_converter_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_converter_internal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/ner_template_render/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_template_render</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.zero_shot_ner</span></code></a></li>
 </ul>
 </li>
@@ -338,7 +339,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../qa/gpt_generation_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.gpt_generation_params</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qa/beam_search_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.beam_search_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qa/medical_qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.medical_qa</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qa/qa_ner_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.qa_ner_generator</span></code></a></li>
 </ul>
@@ -370,6 +371,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
@@ -436,131 +438,23 @@ document.write(`
 <h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams" title="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FilteringParams</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.merge.chunk_merge.MergeCommonParams" title="sparknlp_jsl.annotator.merge.chunk_merge.MergeCommonParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MergeCommonParams</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.merge.chunk_merge.MergeCommonParams" title="sparknlp_jsl.annotator.merge.chunk_merge.MergeCommonParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MergeCommonParams</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.merge.chunk_merge.MergePrioritizationParams" title="sparknlp_jsl.annotator.merge.chunk_merge.MergePrioritizationParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MergePrioritizationParams</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.merge.chunk_merge.MergePrioritizationParams" title="sparknlp_jsl.annotator.merge.chunk_merge.MergePrioritizationParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MergePrioritizationParams</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.merge.chunk_merge.MergeResourceParams" title="sparknlp_jsl.annotator.merge.chunk_merge.MergeResourceParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MergeResourceParams</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.merge.chunk_merge.MergeResourceParams" title="sparknlp_jsl.annotator.merge.chunk_merge.MergeResourceParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MergeResourceParams</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.merge.chunk_merge.ChunkMergeApproach" title="sparknlp_jsl.annotator.merge.chunk_merge.ChunkMergeApproach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChunkMergeApproach</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.merge.chunk_merge.ChunkMergeApproach" title="sparknlp_jsl.annotator.merge.chunk_merge.ChunkMergeApproach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChunkMergeApproach</span></code></a></p></td>
 <td><p>Merges two chunk columns coming from two annotators(NER, ContextualParser or any other annotator producing</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.merge.chunk_merge.ChunkMergeModel" title="sparknlp_jsl.annotator.merge.chunk_merge.ChunkMergeModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChunkMergeModel</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.merge.chunk_merge.ChunkMergeModel" title="sparknlp_jsl.annotator.merge.chunk_merge.ChunkMergeModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChunkMergeModel</span></code></a></p></td>
 <td><p>The model produced by ChunkMergerAproach.</p></td>
 </tr>
 </tbody>
 </table>
-<dl class="py class">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FilteringParams</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#FilteringParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams" title="Permalink to this definition">#</a></dt>
-<dd><dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.blackList">
-<span class="sig-name descname"><span class="pre">blackList</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#FilteringParams.blackList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.blackList" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.whiteList">
-<span class="sig-name descname"><span class="pre">whiteList</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#FilteringParams.whiteList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.whiteList" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.criteria">
-<span class="sig-name descname"><span class="pre">criteria</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#FilteringParams.criteria"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.criteria" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.regex">
-<span class="sig-name descname"><span class="pre">regex</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#FilteringParams.regex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.regex" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.entitiesConfidence">
-<span class="sig-name descname"><span class="pre">entitiesConfidence</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#FilteringParams.entitiesConfidence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.entitiesConfidence" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.filterValue">
-<span class="sig-name descname"><span class="pre">filterValue</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#FilteringParams.filterValue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.filterValue" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setBlackList">
-<span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#FilteringParams.setBlackList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setBlackList" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">List[str]</span></dt><dd><p>If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setWhiteList">
-<span class="sig-name descname"><span class="pre">setWhiteList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#FilteringParams.setWhiteList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setWhiteList" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">List[str]</span></dt><dd><p>If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setCriteria">
-<span class="sig-name descname"><span class="pre">setCriteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#FilteringParams.setCriteria"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setCriteria" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets Tag representing dates in the obfuscate reference file (Default: isin)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">string</span></dt><dd><p>Tag representing dates in the obfuscate reference file (Default: isin)</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setRegex">
-<span class="sig-name descname"><span class="pre">setRegex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#FilteringParams.setRegex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setRegex" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets If defined, list of regex to process the chunks</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">List[str]</span></dt><dd><p>If defined, list of regex to process the chunks</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setFilterValue">
-<span class="sig-name descname"><span class="pre">setFilterValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#FilteringParams.setFilterValue"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setFilterValue" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets possibles values result|entity</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">string</span></dt><dd><p>possibles values result|entity</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-</dd></dl>
-
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.merge.chunk_merge.MergeCommonParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MergeCommonParams</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/merge/chunk_merge.html#MergeCommonParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.merge.chunk_merge.MergeCommonParams" title="Permalink to this definition">#</a></dt>
@@ -970,20 +864,6 @@ Parameters
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams"><code class="docutils literal notranslate"><span class="pre">FilteringParams</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.blackList"><code class="docutils literal notranslate"><span class="pre">FilteringParams.blackList</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.whiteList"><code class="docutils literal notranslate"><span class="pre">FilteringParams.whiteList</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.criteria"><code class="docutils literal notranslate"><span class="pre">FilteringParams.criteria</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.regex"><code class="docutils literal notranslate"><span class="pre">FilteringParams.regex</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.entitiesConfidence"><code class="docutils literal notranslate"><span class="pre">FilteringParams.entitiesConfidence</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.filterValue"><code class="docutils literal notranslate"><span class="pre">FilteringParams.filterValue</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setBlackList"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setBlackList()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setWhiteList"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setWhiteList()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setCriteria"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setCriteria()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setRegex"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setRegex()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.FilteringParams.setFilterValue"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setFilterValue()</span></code></a></li>
-</ul>
-</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.MergeCommonParams"><code class="docutils literal notranslate"><span class="pre">MergeCommonParams</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.MergeCommonParams.mergeOverlapping"><code class="docutils literal notranslate"><span class="pre">MergeCommonParams.mergeOverlapping</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge.chunk_merge.MergeCommonParams.setMergeOverlapping"><code class="docutils literal notranslate"><span class="pre">MergeCommonParams.setMergeOverlapping()</span></code></a></li>
@@ -1032,6 +912,15 @@ Parameters
 </li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../_sources/reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
 </div></div>
               
             
@@ -1056,8 +945,7 @@ Parameters
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>
