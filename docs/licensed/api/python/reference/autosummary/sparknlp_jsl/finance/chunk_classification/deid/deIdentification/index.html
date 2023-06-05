@@ -40,7 +40,7 @@
     <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../static/documentation_options.js"></script>
     <script src="../../../../../../../static/jquery.js"></script>
     <script src="../../../../../../../static/underscore.js"></script>
-    <script src="../../../../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../../../static/doctools.js"></script>
     <script src="../../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../../static/toggleprompt.js"></script>
@@ -404,10 +404,10 @@ regex patterns with setRegexPatternsDictionary, where each line is a mapping of 
 </tr>
 </tbody>
 </table>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>regexPatternsDictionary</strong></dt><dd><p>ictionary with regular expression patterns that match some protected entity</p>
+<dd class="field-odd"><dl>
+<dt><strong>regexPatternsDictionary</strong></dt><dd><p>Dictionary with regular expression patterns that match some protected entity</p>
 </dd>
 <dt><strong>mode</strong></dt><dd><p>Mode for Anonimizer [‘mask’|’obfuscate’]</p>
 </dd>
@@ -456,6 +456,9 @@ The default value is false.</p>
 </dd>
 <dt><strong>blackList</strong></dt><dd><p>List of entities ignored for masking or obfuscation.The default values are: “SSN”,”PASSPORT”,”DLN”,”NPI”,”C_CARD”,”IBAN”,”DEA”</p>
 </dd>
+<dt><strong>sameLengthFormattedEntities</strong></dt><dd><p>List of formatted entities to generate the same length outputs as original ones during obfuscation.
+The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, ZIP, VIN, SSN, DLN, LICENSE, PLATE, CFN, IRS</p>
+</dd>
 <dt><strong>maskingPolicy</strong></dt><dd><dl class="simple">
 <dt>Select the masking policy:</dt><dd><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence.
 Example, Smith -&gt; [<a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a>].
@@ -464,6 +467,27 @@ entity_labels: Replace the values with the corresponding entity labels.
 fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p>
 </dd>
 </dl>
+</dd>
+<dt><strong>selectiveObfuscationModesPath</strong></dt><dd><dl class="simple">
+<dt>Dictionary path where is the json that contains the selective obfuscation modes</dt><dd><p>‘obfuscate’: Replace the values with random values.
+‘mask_same_length_chars’: Replace the name with the asterisks with same length minus two plus brackets on both end.
+‘mask_entity_labels’: Replace the values with the entity value.
+‘mask_fixed_length_chars’: Replace the name with the asterisks with fixed length. You can also invoke “setFixedMaskLength()”
+‘skip’: Skip the values (intact)</p>
+</dd>
+</dl>
+<p>The entities which have not been given in dictionary will deidentify according to setMode()</p>
+</dd>
+<dt><strong>entityCasingModesPath</strong></dt><dd><dl class="simple">
+<dt>Dictionary path where is the json that contains the entity casing modes.</dt><dd><p>‘lowercase’: Converts all characters to lower case using the rules of the default locale.
+‘uppercase’: Converts all characters to upper case using the rules of the default locale.
+‘capitalize’: Converts the first character to upper case and converts others to lower case.
+‘titlecase’: Converts the first character in every token to upper case and converts others to lower case.</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>genderAwareness</strong></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names.
+If value is true, it might decrease performance. Default: False</p>
 </dd>
 </dl>
 </dd>
@@ -562,7 +586,7 @@ regex patterns with setRegexPatternsDictionary, where each line is a mapping of 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>regexPatternsDictionary</strong></dt><dd><p>ictionary with regular expression patterns that match some protected entity</p>
+<dt><strong>regexPatternsDictionary</strong></dt><dd><p>Dictionary with regular expression patterns that match some protected entity</p>
 </dd>
 <dt><strong>mode</strong></dt><dd><p>Mode for Anonimizer [‘mask’|’obfuscate’]</p>
 </dd>
@@ -617,6 +641,12 @@ fixed_length_chars: Replace the obfuscated entity with a masking sequence compos
 </dl>
 </dd>
 <dt><strong>fixedMaskLength: this is the length of the masking sequence that will be used when the ‘fixed_length_chars’ masking policy is selected.</strong></dt><dd></dd>
+<dt><strong>sameLengthFormattedEntities</strong></dt><dd><p>List of formatted entities to generate the same length outputs as original ones during obfuscation.
+The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE.</p>
+</dd>
+<dt><strong>genderAwareness</strong></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names.
+If value is true, it might decrease performance. Default: False</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -690,11 +720,11 @@ fixed_length_chars: Replace the obfuscated entity with a masking sequence compos
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/finance/chunk_classification/deid/deIdentification.html#DeIdentificationModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.pretrained" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finner_deid'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finance/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/finance/chunk_classification/deid/deIdentification.html#DeIdentificationModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.chunk_classification.deid.deIdentification.DeIdentificationModel.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Download a pre-trained DeIdentificationModel.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model.
-lang (str): Language of the pre-trained model.
+<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model, by default “finner_deid”
+lang (str): Language of the pre-trained model, by default “en”
 remote_loc (str): Remote location of the pre-trained model. If None, use the
 open-source location. Other values are “clinical/models”,
 “finance/models”, or “legal/models”.</p>
@@ -756,6 +786,15 @@ open-source location. Other values are “clinical/models”,
 </li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../../_sources/reference/autosummary/sparknlp_jsl/finance/chunk_classification/deid/deIdentification/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
 </div></div>
               
             
@@ -780,8 +819,7 @@ open-source location. Other values are “clinical/models”,
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

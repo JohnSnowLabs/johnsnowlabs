@@ -39,7 +39,7 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js"></script>
     <script src="../../../../static/jquery.js"></script>
     <script src="../../../../static/underscore.js"></script>
-    <script src="../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
@@ -319,9 +319,9 @@ document.write(`
                   
   <h1>Source code for sparknlp_jsl.annotator.seq2seq.medical_text_generator</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator.qa.gpt_generation_params</span> <span class="kn">import</span> <span class="n">GPTGenerationParams</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator.qa.beam_search_params</span> <span class="kn">import</span> <span class="n">BeamSearchParams</span>
 
-<div class="viewcode-block" id="MedicalTextGenerator"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_text_generator/index.html#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator">[docs]</a><span class="k">class</span> <span class="nc">MedicalTextGenerator</span><span class="p">(</span><span class="n">AnnotatorModelInternal</span><span class="p">,</span> <span class="n">GPTGenerationParams</span><span class="p">,</span> <span class="n">HasBatchedAnnotate</span><span class="p">,</span> <span class="n">HasCaseSensitiveProperties</span><span class="p">,</span> <span class="n">HasEngine</span><span class="p">):</span>
+<div class="viewcode-block" id="MedicalTextGenerator"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_text_generator/index.html#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator">[docs]</a><span class="k">class</span> <span class="nc">MedicalTextGenerator</span><span class="p">(</span><span class="n">AnnotatorModelInternal</span><span class="p">,</span> <span class="n">BeamSearchParams</span><span class="p">,</span> <span class="n">HasBatchedAnnotate</span><span class="p">,</span> <span class="n">HasCaseSensitiveProperties</span><span class="p">,</span> <span class="n">HasEngine</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    MedicalTextGenerator is a GPT based model for text generation.</span>
 
@@ -343,6 +343,9 @@ document.write(`
 <span class="sd">        Whether or not to use sampling; use greedy decoding otherwise, by default False</span>
 <span class="sd">    topK</span>
 <span class="sd">        The number of highest probability vocabulary tokens to consider, by default 1</span>
+<span class="sd">    noRepeatNgramSize</span>
+<span class="sd">        The number of tokens that can&#39;t be repeated in the same order. Useful for preventing loops.</span>
+<span class="sd">        The default is 0.</span>
 <span class="sd">    ignoreTokenIds</span>
 <span class="sd">        A list of token ids which are ignored in the decoder&#39;s output, by</span>
 <span class="sd">        default []</span>
@@ -480,7 +483,7 @@ document.write(`
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        name : str, optional</span>
-<span class="sd">            Name of the pretrained model</span>
+<span class="sd">            Name of the pretrained model, by default &quot;text_generator_biomedical_biogpt_base&quot;</span>
 <span class="sd">        lang : str, optional</span>
 <span class="sd">            Language of the pretrained model, by default &quot;en&quot;</span>
 <span class="sd">        remote_loc : str, optional</span>
@@ -539,8 +542,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>
