@@ -57,7 +57,7 @@ Designed explicitly for deidentification tasks in Arabic language, these models 
 
 | NER model                                  | pipeline | description                              |            predicted entities             |
 |--------------------------------------------|----------|------------------------------------------|-------------------------------------------|
-| [`ner_deid_subentity`](https://nlp.johnsnowlabs.com/2023/05/29/ner_deid_subentity_ar.html) | [`ner_deid_subentity_pipeline`](https://nlp.johnsnowlabs.com/2023/05/31/ner_deid_subentity_pipeline_ar.html) | This model/pipeline can detect protected health information (PHI) entities with 17 different labels.| `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `SEX`, `IDNUM`, `EMAIL`, `ZIP`, `MEDICALRECORD`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE` |
+| [`ner_deid_subentity`](https://nlp.johnsnowlabs.com/2023/05/31/ner_deid_subentity_ar.html) | [`ner_deid_subentity_pipeline`](https://nlp.johnsnowlabs.com/2023/05/31/ner_deid_subentity_pipeline_ar.html) | This model/pipeline can detect protected health information (PHI) entities with 17 different labels.| `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `SEX`, `IDNUM`, `EMAIL`, `ZIP`, `MEDICALRECORD`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE` |
 | [`ner_deid_generic`](https://nlp.johnsnowlabs.com/2023/05/30/ner_deid_generic_ar.html)     | [`ner_deid_generic_pipeline`](https://nlp.johnsnowlabs.com/2023/05/31/ner_deid_generic_pipeline_ar.html)  |  This model/pipeline can detect PHI entities with 8 different labels. | `CONTACT`, `NAME`, `DATE`, `ID`, `SEX`, `LOCATION`, `PROFESSION`, `AGE` |
 
 
@@ -100,7 +100,7 @@ You can check the  [Multi Language Deidentification Notebook](https://github.com
 
 #### New Medical Summarizer Model Fine-Tuned With A Custom Dataset To Minimize Clinical Jargon In Laymen Terms
 
-We are delighted to announce the release of our [summarizer_clinical_laymen](https://nlp.johnsnowlabs.com/2023/05/29/summarizer_clinical_laymen_en.html) model, a refined variant of our Flan-T5 (LLM) based summarization model. This model has been carefully fine-tuned with a custom dataset curated by John Snow Labs, expressly designed to minimize the use of clinical terminology in the generated summaries. The summarizer_clinical_laymen model is capable of producing summaries of up to **512 tokens** from an input text of a maximum of 1024 tokens.
+We are delighted to announce the release of our [summarizer_clinical_laymen](https://nlp.johnsnowlabs.com/2023/05/31/summarizer_clinical_laymen_en.html) model, a refined variant of our Flan-T5 (LLM) based summarization model. This model has been carefully fine-tuned with a custom dataset curated by John Snow Labs, expressly designed to minimize the use of clinical terminology in the generated summaries. The summarizer_clinical_laymen model is capable of producing summaries of up to **512 tokens** from an input text of a maximum of 1024 tokens.
 
 This innovation embodies our commitment to providing user-friendly and accessible NLP solutions, making it easier for non-clinical personnel and patients to comprehend medical summaries without losing critical information.
 
@@ -117,7 +117,9 @@ text = """Jennifer was seen in my office for evaluation for elective surgical we
 
 *Result*:
 
-```This is a clinical note about a 34-year-old woman who is interested in having weight loss surgery. She has been overweight for over 20 years and wants to have more energy and improve her self-image. She has tried many diets and weight loss programs, but has not been successful in keeping the weight off. She has a history of hypertension and shortness of breath, but is not allergic to any medications. She will have an upper endoscopy and will be contacted by a nutritionist and social worker. The plan is to have her weight loss surgery through the gastric bypass rather than Lap-Band.```
+```
+This is a clinical note about a 34-year-old woman who is interested in having weight loss surgery. She has been overweight for over 20 years and wants to have more energy and improve her self-image. She has tried many diets and weight loss programs, but has not been successful in keeping the weight off. She has a history of hypertension and shortness of breath, but is not allergic to any medications. She will have an upper endoscopy and will be contacted by a nutritionist and social worker. The plan is to have her weight loss surgery through the gastric bypass rather than Lap-Band.
+```
 
 
 </div><div class="h3-box" markdown="1">
