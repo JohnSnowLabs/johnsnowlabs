@@ -19,7 +19,16 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-FLAN-T5 is a state-of-the-art language model developed by Google AI that utilizes the T5 architecture for text summarization tasks. It is trained on a large dataset of diverse texts and can generate high-quality summaries of articles, documents, and other text-based inputs.
+FLAN-T5 is a state-of-the-art language model developed by Google researchers that utilizes the T5 architecture for text summarization tasks. It is trained on a large dataset of diverse texts and can generate high-quality summaries of articles, documents, and other text-based inputs.
+
+```markdown
+title={Scaling Instruction-Finetuned Language Models},
+author={Chung, Hyung Won, et al},
+journal={ArXiv},
+year={2022},
+link={https://arxiv.org/abs/2210.11416}
+}
+```
 
 ## Predicted Entities
 
