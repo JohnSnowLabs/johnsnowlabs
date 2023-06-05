@@ -43,7 +43,7 @@ redirect_to: https://sparknlp.org/api/python/reference/index.html
     <script data-url_root="../" id="documentation_options" src="../static/documentation_options.js"></script>
     <script src="../static/jquery.js"></script>
     <script src="../static/underscore.js"></script>
-    <script src="../static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../static/sphinx_javascript_frameworks_compat.js"></script>
     <script src="../static/doctools.js"></script>
     <script src="../static/sphinx_highlight.js"></script>
     <script src="../static/toggleprompt.js"></script>
@@ -409,15 +409,6 @@ methods.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modules">Modules</a></li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../_sources/reference/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
-
 </div></div>
               
             
@@ -442,7 +433,8 @@ methods.</p>
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright 2022, John Snow Labs.
+      © Copyright <span id="year"></span>, John Snow Labs.
+      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
       <br/>
     
   </p>
