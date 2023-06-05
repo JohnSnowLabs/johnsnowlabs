@@ -6,7 +6,7 @@ seotitle: Release Notes | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2023-05-04"
+modify_date: "2023-06-02"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,121 +15,107 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 4.9.2
+## 4.10
 
 Release date: **04-05-2023**
 
-## Enhanced Analytics, Improved Labeling Experience, and stabilization in NLP Lab 4.9 
+## Trial License Integration, Comment and Tag Functionality, and Enhanced Task Export Filters NLP Lab 4.10
 
-NLP Lab version 4.9 is now available with new features to enhance the analytics capabilities of the platform. The latest release provides managers with more insights into their projects and team productivity, enabling more efficient progress monitoring and better DL model outcomes. The addition of Time Indicators and Edit Counts on each annotation version is a notable feature that allows annotators to track statistics of the edits made in the completions, providing them with valuable insights into their work and the evolution of the Annotation Guidelines.
+The release of NLP Lab version 4.10 comes with an array of exciting new features aimed at enhancing user experience and improving the efficiency of the platform. Among the notable additions are the integration of a get trial license feature, enabling users to explore the full potential of NLP Lab, and the seamless automatic import of the trial license into the platform. 
 
-To ensure that labeling page space is used optimally, the layout has been improved to use every corner of the page. This means that the labeling page now provides a more streamlined and efficient experience for users. In addition, the new version includes bug fixes and stabilization, which are customary in every software release. These features are designed to enhance the user experience and improve the accuracy and efficiency of NLP Lab.
+Additionally, users can now conveniently add comments in the Labeling Page, providing a more collaborative and organized environment for annotation tasks. Another valuable feature introduced in this release is the ability to add tags directly in the Labeling Screen, allowing for better categorization and management of labeled data. Lastly, the update includes an expanded range of filters when exporting tasks, empowering users to customize and streamline their task exports.
+
 Here are the highlights of this release:
 
+## Get trial license from License page
 
-## Enhanced Annotation Process Monitoring through Edit Time Indicators 
-This version allows users to view the time taken to finalize a completion and the number of edits made to any version of annotations, providing more transparency in the annotation process. The feature introduces two new terms, "Lead Time" and "Edit Time." "Lead Time" refers to the time taken to annotate a completion, whether from scratch or cloned from a prediction. "Edit Time" represents the time invested in annotating a cloned completion. In addition to this, users can also see the number of modifications made to cloned completions. This feature can help managers track the time invested in various phases of completion and help in optimizing the annotation process.
+Version offers an updated License page layout, providing a simpler process for acquiring a trial license. Users can now request a trial license directly from the License page, eliminating the need to navigate to external pages. This new workflow introduces a dedicated "Get License" tab, while the Import License and Existing Licenses tabs remain unchanged.
 
-![Screen Shot 2023-04-19 at 4 20 40 PM](https://user-images.githubusercontent.com/10557387/234759868-f04242d9-d9c5-4ab2-8b16-431408515862.png)
+To obtain a trial license, users are required to fill out the form on the "Get License" tab, providing their organizational email. Once the form is submitted, a validation link is sent to the provided email address and the trial license is automatically imported to the NLP Lab when the link is clicked, making it readily available for use.
+![trial-license](/assets/images/annotation_lab/4.10.0/1.png)
 
+## Comments in the Labeling Page
 
-## Tracking of Annotation Versions and Edits 
+NLP Lab 4.10 introduces an enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature significantly improves work efficiency and productivity and enhances communication between team members, leading to faster delivery and more effective collaboration. To access this feature, users can find the New Burger menu located at the top right of the labeling page. Within the burger menu, users will find an option for Comments, which displays the total number of comments. By clicking this option, a new pop-up window will appear, providing access to various commenting features.
 
-The latest update includes a new feature aimed at providing users with a more comprehensive understanding of completion progress and edit history. By utilizing the Versions tab, users can now track the source of a copied completion as well as the number of edits made between consecutive completions. This allows users to easily monitor the evolution of a completion and better understand the amount of work required for each completion. When a completion is created based on a filtered prediction or cloned from an existing completion, the number of edits made to the previous version will be displayed. Additionally, for completions based on predictions, the confidence score range selected will be available in the format of (min: 0 | max: 1) for copied completions. This feature is designed to provide greater transparency in completion progress and streamline the tracking of edit history.
+![Comments](/assets/images/annotation_lab/4.10.0/2.gif)
 
-![Screen Shot 2023-04-27 at 7 12 03 PM](https://user-images.githubusercontent.com/17021686/234876484-d40266ea-7866-4167-a096-165ff4a2c442.png)
+## Tags from the Labeling Screen
 
-## New Analytics Update: Enhanced Charts Provide Managers with Deeper Insights into Project Performance
+NLP Lab 4.10 introduces an enhanced tags feature for labeling pages. This feature provide users with a convenient way to create, add, and remove tags from tasks directly on the labeling page. It significantly contributes to better organization and enahnced productivity streamlining task management by offering users increased flexibility in categorizing and tracking their labeled data. Similar to the comment feature described above, the tag feature can be accessed through the burger menu located at the top right corner. The burger menu displays the total number of tags associated with its functions. By clicking the burger menu option, a new popup window appears, allowing users to add existing tags or create new ones. 
 
-NLP Lab 4.9.0 includes several improvements aimed at enhancing the user experience and efficacity of analytics charts.
+![tags](/assets/images/annotation_lab/4.10.0/3.gif)
 
-- Improvements have been made to the Inter-annotator Agreement (IAA) charts. In cases where there is an insufficient amount of data to populate the IAA charts due to non-overlapping tasks completed by users, the UI now displays a message that informs the user that there is not enough data available to calculate the IAA chart.  This enhancement aims to improve the transparency of IAA charts by alerting users to any insufficient data, providing guidance on how to resolve the issue, and promoting the assignment of overlapping tasks to ensure the availability of sufficient data. 
+## Filters for exporting tasks
 
-![Screen Shot 2023-04-27 at 2 50 49 PM](https://user-images.githubusercontent.com/17021686/234815237-5959f0fb-cd3c-4465-9201-ad0b4db0d82c.png)
+This version of NLP Lab comes with a new feature: selective annotation exports. Users can now choose which annotations to export by using two new filters on the export page. These new filters can be combined with other filter options like tags, Only ground truth, and Exclude tasks without Completions. 
+1. Filter Exported Annotations by Task:
+  this filter allows users to select annotations based on the task (NER, Classification, Assertion, Relation Extraction) 
+2. Select Annotations to Include In the Export:
+  this filter can be used to select available labels, classes, assertion labels, or relations.
+![add-filter-for-export](/assets/images/annotation_lab/4.10.0/4.gif)
 
--	Updates were made to the Total number of completions per annotator chart. The chart has been renamed as "Total Completions vs Ground Truth Completions Per Annotator" to provide a more accurate description of the data it represents. The chart now includes two columns for each annotator, displaying the total number of completions and the number of ground truth completions side by side. This enhancement is designed to provide users with a more detailed and accurate understanding of the number of draft completions, helping them to track successive changes/corrections on the same tasks and address discrepancies in their work productivity. 
-
-![Screen Shot 2023-04-27 at 3 49 41 PM](https://user-images.githubusercontent.com/17021686/234830605-6c99c13b-6bbd-41eb-ba68-f9b981e13bf0.png)
-
-- This version includes a new "Completion By Status" pie chart. This chart provides users with a visual representation of the statuses of completions in their projects. The chart displays two categories of completions: ground truth completions (indicated by a star) and draft completions. The pie chart also includes a new text description at the bottom of the chart informing users on the average number of draft completions per task. This feature aims to provide users with a better understanding of the number of edits and corrections required to complete a task and how the number of corrections affects the project's overall completion rate. Additionally, the Team Productivity section has been reorganized to provide a more user-friendly experience. The Total completions, Completion by status, and Time Period have been added as three separate columns in a single row. This new layout aims to make it easier for users to access the information they need and provides a more streamlined experience.
-
-![Screen Shot 2023-04-27 at 4 21 55 PM](https://user-images.githubusercontent.com/17021686/234838187-92bc59e9-a05a-4896-9dfb-5f78a5cc375a.png)
-
-- In previous versions, some users reported inconsistencies in the Average Time Annotator Spend on One Task chart. Specifically, some bars in the chart represented the same value for the amount of time annotators spent on a single task but differed in height. This issue has been resolved in version 4.9. The chart now accurately displays the same value for the amount of time annotators spend on a single task with consistent bar height. Overall, this update represents our ongoing commitment to improving the functionality and user experience of the NLP Lab platform, ensuring that users can trust the accuracy and consistency of the data they rely on for their projects.
-
-!["Screenshot 2023-04-25 at 2 49 11 PM](https://user-images.githubusercontent.com/17021686/234850188-17910f92-02ff-4034-97d9-e1683c6862b8.png)
-
-- Another new feature added to the "Annotators Comparison (by chunks)" chart is a column titled "Context" that provides users with additional information about each chunk of data being annotated. The Context column displays 50 characters before and after each chunk in the task content, allowing users to view the context in which the chunk appears. This additional information helps users check the consistency of annotations across team members by making it easier to understand the correctness of annotations and to identify the errors in the data. Overall, this update represents an important improvement in supporting the IAA processes, specifically in making informed decisions about how to annotate each chunk of data.
-
-![Screen Shot 2023-04-20 at 7 06 32 PM](https://user-images.githubusercontent.com/17021686/234850747-a8fd7622-9afe-490e-8f96-6d72860b9914.png)
-
--	Two bar charts have also been updated "Total vs distinct values by label across completions" and "Numeric values across labels". Previously, these charts displayed percentages and now they display the label counts instead. By providing users with the Label count, users can more easily understand the distribution of labels across completions and numeric values across labels. This change can help users make more informed decisions about how to annotate data, resulting in improved accuracy and consistency in their annotations.
-
-![LableVariability](https://user-images.githubusercontent.com/17021686/234852569-36a0f70c-25bc-464b-bf3b-a6cac54166b5.JPG)
-
-- A new bar chart was also added to the Tasks tab of the Analytics page, called "Average Task Length". It displays the average length of tasks completed by each annotator, measured in the number of characters. The chart is calculated based on the total number of tasks assigned to a user that contain at least one completion created by the respective user, regardless of the status of the task. This chart provides valuable insights into the performance of annotators, allowing them to compare each other’s productivity patterns and trends related to task length. By understanding how long each task is on average, users can make more informed decisions about how to allocate resources and manage their projects effectively.
-
-![Screen Shot 2023-04-27 at 3 15 30 PM](https://user-images.githubusercontent.com/17021686/234821487-69e9850b-a813-40a5-8a20-3858e2781b66.png)
 ## Improvements
 
-### Serve the Next Task in Line for Reviewers
-After a reviewer completes a task review, the system will automatically serve the next task to the reviewer, saving time and streamlining the process. This feature can be enabled through the configuration page by checking the "Serve next reviewing task after review" option. With this feature, reviewers can continue working without the need to manually request the next task. This can help ensure that the review process is always moving forward and that reviewers have a continuous stream of work.
+### Add video template to the project content type
 
-<img width="1211" alt="Screenshot 2023-04-27 at 9 50 54 AM" src="https://user-images.githubusercontent.com/33893292/234756985-1d56d40b-de90-4df4-96e5-26ab0bd535ae.png">
+The current release, re-introduces the Video content type to the project configuration page. This provides the users with a flexible way to annotate projects that are based on video content.
 
-### License ID Available on License Page
-A recent update to the system has introduced enhancements to the license import process. Specifically, users can now view a License ID for each license on the "Existing Licenses" page, which is also included in the "popup" used for importing licenses. It is worth noting that the option to log in via MyJSL has been removed from the "Existing Licenses" tab and is only accessible on the Import License page. However, it is important to bear in mind that manually imported licenses will not display a License ID. These changes are intended to facilitate the recognition of licenses and improve the user-friendliness of the license page.
+![videotemplate](/assets/images/annotation_lab/4.10.0/5.png)
 
-### Improved Task Status Indicators for Pre-Annotation Results
-In the current system, a red circle is displayed when pre-annotation fails to produce results for a task. However, this can be misleading as it implies an error has occurred. To rectify this, we replaced the red circle with a gray circle for tasks that yield zero pre-annotation results. This modification aims to provide users with a more precise representation of the pre-annotation process, clarifying that no errors have taken place.
+### Image path for visual NER task export JSON should always be in list
+The inconsistency with regards to the format of the image property value in the exported task JSON was eliminated in the current version. When there was a single image task, the image property had a value of string type, but for multiple images, it was of list type. To ensure consistency, the image property will now always have a value of list type.
 
-### Improved Task Status Indicators for Pre-Annotation ResultsOptimezed Layout for Expanded Annotation Page
-The recent update enables a better use of empty spaces in the annotation area when it is expanded. To increase the annotating area, the sidebars are now hidden, and the top title area is also hidden to provide the maximum area for annotators to work on.
+### Remove items in chart with empty value  for "Tasks by Status" chart
 
-### Improved Layout for Side Bar Tabs
-In the previous versions, when the "move side panel to the bottom" option was enabled, the sidebar was relocated to the bottom of the screen but with the same layout. The layout in this mode has been modified to utilize the entire horizontal space. This was accomplished by dividing the sidebar tabs into distinct widgets, eliminating the need for users to switch between tabs.
+In the previous versions, "Tasks by status" chart displayed redundant values(0.00%) when there are no tasks for the specific status category. In the current release, these redundant values have been removed from "Tasks by status" chart in the analytics page.
 
-<img width="1257" alt="Screenshot 2023-04-20 at 5 50 11 PM" src="https://user-images.githubusercontent.com/33893292/234782191-9b8ace96-141f-4d64-80f7-76c1fd04fe90.png">
+![taskschart](/assets/images/annotation_lab/4.10.0/6.png)
 
-### Display of License Expiration Warnings
-If a license has less than 30 days of validity remaining but other licenses have more than 30 days, no warning banner will be shown. On the other hand, if all licenses are about to expire, with a validity of less than 30 days, a warning banner will be displayed indicating the expiration date. The purpose of this feature is to provide clear and timely information to users regarding the status of their licenses.
+### Tasks and Project filters based on multiple tags
 
-## Bug Fixes
-- **Enable "Show all Regions" in labeling setting by default**
+Filtering tasks based on tags, inside the task view's tag filter has been updated to allow users to select multiple tags from the Tags dropdown. This allows filtering of the tasks based on multiple criteria. In our  previous versions, users were limited to selecting only one tag at a time, making the filtering mechanism restrictive when attempting to narrow down tasks based on multiple tags simultaneously. The new functionality increases productivity by allowing users to apply multiple filter criteria for retreiving the desired list of tasks, matching at least one of the selected tags.
+
+![filter](/assets/images/annotation_lab/4.10.0/7.gif)
+
+Additionally, the same improved filter behaivour can be found in project page too. This provides users with increased flexibility and efficiency in filtering tasks based on multiple tags, thereby improving task and project management and facilitating a more streamlined workflow.
+
+### Bug Fixes
+- **ALAB-2212 Audio/Video cannot be played after the completion is submitted** 
   
-  By default, the "Show labels inside the regions" setting in the labeling page was disabled as a general setting. However, you now have the option to enable it by default if you enable the "Show all regions in tree" option in the project configuration. The same applies to the layout settings, where the "Show all regions in Tree" option can also enable the "Show labels inside the regions" setting by default.
+    In previous versions, users were not able to play/pause Audio/Video after the completion is submited. The bug has been resolved in the latest release, allowing users to play/pause Audio/Video after the completion is submitted.
 
-- **Rule matches any matching sequence of characters in a token in a task**
+- **ALAB-2312 When the group color is white the project name, description and instructions cannot be seen on the project card**
+    
+    In the latest release, the problem with the visibility of the project name, description, and instructions on the projects page has been resolved. Previously, when assigning the group color white to the project group, the text was not visible because it blended with the white background.
+    
+- **ALAB-3133 Validation is missing in the UI from the configuration when invalid orientation is added**
 
-  Previously, when users selected the "Complete Match Regex" option and generated predictions via rule-preannotations, partially matching tokens were being labeled. With this release, when the "Complete Match Regex" option is selected, only tokens that exactly match the provided regex will be labeled. This update improves the accuracy and reliability of the preannotation process.
+    This release includes the addition of validation for incorrect orientation in project configuration, accompanied by appropriate error messaging.  Hence, project configurations will only permit the inclusion of "Vertical Layout," "Horizontal Layout," and "Horizontal-Sticky Layout.
 
-- **Error while Running Visual NER training**
+![filter](/assets/images/annotation_lab/4.10.0/8.gif)
 
-  An issue affecting the training process of Visual NER projects has been resolved in this release. Previously, Visual NER training fails when attempting to use the same image/PDF for multiple tasks in projects and running training. With the implementation of the fix, training can now be successfully executed on these types of projects.
- 
-- **Issue in db connection when multiple models are downloaded while crud operation is being performed by server users** 
-   
-   The number of default database connections has been increased from 5 to 10 and can be configured using an environment variable to meet specific needs. This update addresses issues that may arise during heavy communication between the application and the database, such as when multiple models are downloaded simultaneously.
-
-- **Pretrained VisualNER labels are listed in the dropdown when creating relation prompts** 
-   
-   The pre-trained and trained Visual NER labels can be found in the form that creates relation prompts. Since their labels are not related to NER labels they have been removed from the form list.
-
-- **When the admin user view as an annotator on the labeling page, tasks that are not assigned to the admin are seen**
-
-  This release addresses an issue on the labeling page for project owners who view the labeling page as an annotator. Previously, when the "Only Assigned" checkbox was selected, tasks that were not assigned to the admin were still visible. The issue has been resolved, and only tasks that are assigned to the admin will be displayed when the "Only Assigned" checkbox is checked.
-
-- **Save changes pop-up should not be visible when no changes are made to the annotations in a multi-page pdf**
+- **Databricks license should not be imported into NLP Lab**
   
-  Previously, even if a page had no unsaved annotations when the user moved to the next page, a pop-up message asking "Do you want to save changes?" would appear. However, now the user can navigate to the next page without any pop-up messages when no changes have been made.
+  It is no longer possible to import Spark NLP licenses generated for Databricks into the NLP Lab. Users will be presented with an error message in the UI if they attempt to upload such licenses.
 
-- **User is not able to pre-annotate chunks enclosed in big brackets with the help of rules** 
-  
-  In the previous version, the user was unable to pre-annotate chunks enclosed in large brackets using rules. However, this issue has been resolved in the current version.
+![filter](/assets/images/annotation_lab/4.10.0/9.png)
 
-- **When the pre-annotation pod is deleted from the backend, the cluster page freezes with an empty list**
-  
-  Previously, an issue occurred when the pre-annotation pod was deleted from the backend or the pre-annotation server crashed, causing the cluster page to become unresponsive and display an empty list. This issue also arose when users attempted to deploy the pre-annotation server from the tasks page. However, this problem has now been resolved.
+- **By modifying the URL, the user can access pages of projects that have not been shared with them.**
+
+  In previous versions, users were able to access configuration pages of projects that had not been shared with them by modifying the URL. However, this issue has been resolved in the current version.
+
+- **Pretrained assertions are listed in dropdown when creating relation prompts**
+
+  When creating relation prompts, a list of labels is displayed. However, the list previously included assertion labels, which are not supported for creating relation prompts. As a result, the assertion label will no longer be shown when users create relation prompts.
+
+- **ALAB-3365 Single-word annotation is split into multiple blocks when the user is annotating a task** 
+
+  In earlier version, annotating a single word would result in it being split into multiple blocks instead of being annotated as a single word. This issue occurred when highlighting only a few characters of the word without selecting any label initially and later attempting to annotate the entire word. This bug has been fixed in the latest release.
+
+- **ALAB-3368 Pre-annotation button becomes irresponsive in a project with 1000s of pre-annotated task** 
+
+  Previously, after running pre-annotation on thousands of tasks, the pre-annotation status was missing from the task cards on the Tasks page. Additionally, the pre-annotation button was unresponsive. These issues have been resolved in the latest release. The responsiveness of the pre-annotation button has also users can navigate seamlessly between different pages on the Tasks page.
 
 </div><div class="prev_ver h3-box" markdown="1">
 
@@ -138,7 +124,8 @@ If a license has less than 30 days of validity remaining but other licenses have
 </div>
 
 <ul class="pagination owl-carousel pagination_big">]
-    <li class="active"><a href="annotation_labs_releases/release_notes_4_9_2">4.9.2</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_4_10_0">4.10.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_4_9_2">4.9.2</a></li> 
     <li><a href="annotation_labs_releases/release_notes_4_8_4">4.8.4</a></li> 
     <li><a href="annotation_labs_releases/release_notes_4_8_3">4.8.3</a></li> 
     <li><a href="annotation_labs_releases/release_notes_4_8_2">4.8.2</a></li> 
