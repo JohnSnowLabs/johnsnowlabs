@@ -1987,7 +1987,15 @@ Below is a sample format:
 
 ## Export Options
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/annotation_export.png" style="width:100%;"/>
+![add-filter-for-export](/assets/images/annotation_lab/4.10.0/4.gif)
+
+**Filter Exported Annotations by Task**
+
+This filter allows users to select annotations based on the task (NER, Classification, Assertion, Relation Extraction)
+
+**Select Annotations to Include In the Export**
+
+This filter can be used to select available labels, classes, assertion labels, or relations.
 
 **Tags**
 

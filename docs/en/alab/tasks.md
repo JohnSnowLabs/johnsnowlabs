@@ -101,6 +101,10 @@ The number of tasks visible on the screeen is customizable by selecting the pred
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_filters.gif" style="width:100%;"/>
 
+From version 4.10 onwards, filtering tasks has been updated to allow users to select multiple tags from the Tags dropdown. This will allow users to filter tasks based on multiple tags. Additionally, the same improved filter behaivour can be found in project page too. This provides users with increased flexibility and efficiency in filtering tasks based on multiple tags, thereby improving task and project management and facilitating a more streamlined workflow.
+
+![filter](/assets/images/annotation_lab/4.10.0/7.gif)
+
 ## Task Search by Text, Label and Choice
 
 Annotation Lab offers advanced search features that help users identify the tasks they need based on the text or based on the annotations defined so far. Currently supported search queries are:

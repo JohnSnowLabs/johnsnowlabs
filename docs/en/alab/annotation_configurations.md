@@ -231,6 +231,20 @@ we'll obtain the output illustrated below:
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/labeling_scroll_bar.gif" style="width:100%;"/>
 
+## Comments on the Labeling Page
+
+Since version 4.10.0, NLP Lab offers enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature enhances the communication between the annotators, improves work efficiency and enhances productivity. In order to use this feature, there is a New Burger menu at the top right corner of the labeling page. The dropdown through this menu allows users to add, update, and delete comments.
+
+![Comments](/assets/images/annotation_lab/4.10.0/2.gif)
+
+## Tags from the Labeling Screen
+
+From version 4.10 onwards, NLP Lab introduces an enhanced tags feature for labeling pages. This addition offers users a convenient method to create, attach, and delete tags directly on the labeling page. It greatly enhances organization and boosts productivity by streamlining task management, granting users greater flexibility in classifying and monitoring their labeled data. Similar to the aforementioned comment feature, this can also be accessed from the burger menu at the top right corner of the labeling page. From the dropdown, select "Assign Tags".
+
+![tags](/assets/images/annotation_lab/4.10.0/3.gif)
+
+Once the users select the tag/tags, they will be displayed against the tasks on the tasks page.
+
 ## Toggle Preview Window
 
 Label configuration editor and <es>Preview Window</es> covers 50/50 part of the screen. It can make editing larger XML configurations difficult. For a better editing experience, we can use the Toggle Preview Window button to have the editor use full screen width.

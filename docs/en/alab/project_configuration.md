@@ -25,9 +25,9 @@ We currently support multiple predefined project configurations. The most popula
 
 **Content Type**
 
-The first step when creating a new project or customizing an existing one is to choose what content you need to annotate. Five content types are currently supported: `Audio`, `HTML`, `Image`, `PDF` and `Text`. For each content type a list of available templates is available. You can pick any one of those as a starting point in your project configuration.
+The first step when creating a new project or customizing an existing one is to choose what content you need to annotate. Five content types are currently supported: `Video`, `Audio`, `HTML`, `Image`, `PDF` and `Text`. For each content type a list of available templates is available. You can pick any one of those as a starting point in your project configuration.
 
- <img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.2.0/template.png" style="width:100%"/>
+ <img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.10.0/add_video_type.png" style="width:100%"/>
 
 For customizing a predefined configuration, choose a `Content Type` and then a template from the list. Then navigate to the `Customize Labels` tab and manually edit/update the configuration to contain the labels you need.
 

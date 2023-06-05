@@ -36,6 +36,14 @@ One floating license is bound to only one server (pre-annotation server, OCR ser
 
 Annotation Lab supports either floating licenses or air-gapped licenses. Mixing floating and air-gapped licenses on the same Annotation Lab instance is not allowed.
 
+### Get Trial Licenses from License Page
+
+The license page has been updated since version 4.10.0 to offer an updated page layout. The users will not have to navigate to a different page to request a trial license. The license can be requested directly from the License page. This new feature can be accessed by clcking the "Get License" tab, along side "Import Licenses" and "Existing Licenses" tabs.
+
+In order to obtain a trial license, users need to complete the form available on the "Get License" tab. This form requires users to provide their organizational email. Once the form is submitted, a validation link will be sent to the provided email address. By clicking on the validation link, the trial license will be automatically imported into NLP Lab, making it instantly accessible for use.
+
+![trial-license](/assets/images/annotation_lab/4.10.0/1.png)
+
 ### Usage of NLP Licenses
 
 The number of available floating licenses can influence the creation of multiple training and pre-annotation servers. For example, to deploy 5 pre-annotation servers using Spark NLP for Healthcare models or embeddings, across 5 different projects, you will need 5 floating licenses.
