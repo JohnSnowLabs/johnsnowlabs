@@ -12,6 +12,8 @@ This annotator creates Tensorflow graphs.
 
 This class is used to build a TensorFlow graph from a given model name and a set of input columns. 
 
+> For more information and examples of `TFGraphBuilder` annotator, you can check the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop), and in special, the notebook [17.0.Graph_builder_for_DL_models.ipynb](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/17.0.Graph_builder_for_DL_models.ipynb).
+
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -29,9 +31,9 @@ There is no output file. The setGraphFile function creates a file with a .pb ext
 {%- capture model_python_medical -%}
 
 graph_folder = "graph/graphs_100d"
-graph_name = "300200"
+graph_name = "re_graph"
 
-re_graph_builder = TFGraphBuilder()\
+re_graph_builder = medical.TFGraphBuilder()\
     .setModelName("relation_extraction")\
     .setInputCols(["embeddings", "pos_tags", "train_ner_chunks", "dependencies"]) \
     .setLabelColumn("rel")\
