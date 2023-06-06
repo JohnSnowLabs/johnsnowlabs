@@ -8,7 +8,7 @@ tags: [licensed, en, clinical, ner, ner_jsl, bertfortokenclassification]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 4.3.0
-spark_version: 3.0
+spark_version: 3.2
 supported: true
 annotator: PipelineModel
 article_header:
@@ -23,8 +23,8 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_jsl](
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_jsl_pipeline_en_4.3.0_3.0_1686088401077.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_jsl_pipeline_en_4.3.0_3.0_1686088401077.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_jsl_pipeline_en_4.3.0_3.2_1686088562944.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_jsl_pipeline_en_4.3.0_3.2_1686088562944.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
