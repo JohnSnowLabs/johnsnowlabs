@@ -40,7 +40,7 @@
     <script data-url_root="../../../../../../../" id="documentation_options" src="../../../../../../../static/documentation_options.js"></script>
     <script src="../../../../../../../static/jquery.js"></script>
     <script src="../../../../../../../static/underscore.js"></script>
-    <script src="../../../../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../../../static/doctools.js"></script>
     <script src="../../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../../static/toggleprompt.js"></script>
@@ -723,11 +723,11 @@ spark_session (SparkSession): SparkSession.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ner_clinical'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/finance/token_classification/ner/finance_ner.html#FinanceNerModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.pretrained" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finner_sec_10k_summary'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finance/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/finance/token_classification/ner/finance_ner.html#FinanceNerModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Download a pre-trained FinanceNerModel.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model.
-lang (str): Language of the pre-trained model.
+<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model, by default “finner_sec_10k_summary”
+lang (str): Language of the pre-trained model, by default “en”
 remote_loc (str): Remote location of the pre-trained model. If None, use the
 open-source location. Other values are “clinical/models”,
 “finance/models”, or “legal/models”.</p>
@@ -787,6 +787,15 @@ open-source location. Other values are “clinical/models”,
 </li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../../_sources/reference/autosummary/sparknlp_jsl/finance/token_classification/ner/finance_ner/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
 </div></div>
               
             
@@ -811,8 +820,7 @@ open-source location. Other values are “clinical/models”,
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

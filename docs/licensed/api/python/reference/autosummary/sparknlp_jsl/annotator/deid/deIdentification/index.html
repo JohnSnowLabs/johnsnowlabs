@@ -40,7 +40,7 @@
     <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js"></script>
     <script src="../../../../../../static/jquery.js"></script>
     <script src="../../../../../../static/underscore.js"></script>
-    <script src="../../../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
@@ -329,6 +329,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../ner/medical_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.medical_ner</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_chunker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_converter_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_converter_internal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/ner_template_render/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_template_render</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.zero_shot_ner</span></code></a></li>
 </ul>
 </li>
@@ -338,7 +339,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../qa/gpt_generation_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.gpt_generation_params</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qa/beam_search_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.beam_search_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qa/medical_qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.medical_qa</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qa/qa_ner_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.qa_ner_generator</span></code></a></li>
 </ul>
@@ -370,6 +371,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
@@ -462,9 +464,9 @@ regex patterns with setRegexPatternsDictionary, where each line is a mapping of 
 </tr>
 </tbody>
 </table>
-<dl class="field-list simple">
+<dl class="field-list">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
+<dd class="field-odd"><dl>
 <dt><strong>regexPatternsDictionary</strong></dt><dd><p>Dictionary with regular expression patterns that match some protected entity</p>
 </dd>
 <dt><strong>mode</strong></dt><dd><p>Mode for Anonimizer [‘mask’|’obfuscate’]</p>
@@ -526,7 +528,26 @@ fixed_length_chars: Replace the obfuscated entity with a masking sequence compos
 <dt><strong>sameLengthFormattedEntities</strong></dt><dd><p>List of formatted entities to generate the same length outputs as original ones during obfuscation.
 The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE</p>
 </dd>
-<dt><strong>selectiveObfuscationModesPath</strong></dt><dd><p>Dictionary path where is the json that contains the selective obfuscation modes</p>
+<dt><strong>selectiveObfuscationModesPath</strong></dt><dd><dl class="simple">
+<dt>Dictionary path where is the json that contains the selective obfuscation modes</dt><dd><p>‘obfuscate’: Replace the values with random values.
+‘mask_same_length_chars’: Replace the name with the asterisks with same length minus two plus brackets on both end.
+‘mask_entity_labels’: Replace the values with the entity value.
+‘mask_fixed_length_chars’: Replace the name with the asterisks with fixed length. You can also invoke “setFixedMaskLength()”
+‘skip’: Skip the values (intact)</p>
+</dd>
+</dl>
+<p>The entities which have not been given in dictionary will deidentify according to setMode()</p>
+</dd>
+<dt><strong>entityCasingModesPath</strong></dt><dd><dl class="simple">
+<dt>Dictionary path where is the json that contains the entity casing modes.</dt><dd><p>‘lowercase’: Converts all characters to lower case using the rules of the default locale.
+‘uppercase’: Converts all characters to upper case using the rules of the default locale.
+‘capitalize’: Converts the first character to upper case and converts others to lower case.
+‘titlecase’: Converts the first character in every token to upper case and converts others to lower case.</p>
+</dd>
+</dl>
+</dd>
+<dt><strong>genderAwareness</strong></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names.
+If value is true, it might decrease performance. Default: False</p>
 </dd>
 </dl>
 </dd>
@@ -550,9 +571,14 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentence&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setUseAbbreviations</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">])</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go"> Ner entities</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clinical_sensitive_entities</span> <span class="o">=</span> <span class="n">MedicalNerModel</span> \
@@ -566,8 +592,10 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 <span class="gp">&gt;&gt;&gt; </span><span class="n">deIdentification</span> <span class="o">=</span> <span class="n">DeIdentification</span><span class="p">()</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;ner_chunk&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;sentence&quot;</span><span class="p">])</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;dei&quot;</span><span class="p">)</span> \
-<span class="gp">... </span>    <span class="c1"># file with custom regex pattern for custom entities    ...     .setRegexPatternsDictionary(&quot;path/to/dic_regex_patterns_main_categories.txt&quot;) \</span>
-<span class="gp">... </span>    <span class="c1"># file with custom obfuscator names for the entities    ...     .setObfuscateRefFile(&quot;path/to/obfuscate_fixed_entities.txt&quot;) \</span>
+<span class="gp">... </span>    <span class="c1"># file with custom regex pattern for custom entities\</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setRegexPatternsDictionary</span><span class="p">(</span><span class="s2">&quot;path/to/dic_regex_patterns_main_categories.txt&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="c1"># file with custom obfuscator names for the entities\</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setObfuscateRefFile</span><span class="p">(</span><span class="s2">&quot;path/to/obfuscate_fixed_entities.txt&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setRefFileFormat</span><span class="p">(</span><span class="s2">&quot;csv&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setRefSep</span><span class="p">(</span><span class="s2">&quot;#&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setMode</span><span class="p">(</span><span class="s2">&quot;obfuscate&quot;</span><span class="p">)</span> \
@@ -773,10 +801,21 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 <span class="sig-name descname"><span class="pre">selectiveObfuscationModesPath</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.selectiveObfuscationModesPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.selectiveObfuscationModesPath" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.entityCasingModesPath">
+<span class="sig-name descname"><span class="pre">entityCasingModesPath</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.entityCasingModesPath"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.entityCasingModesPath" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.genderAwareness">
+<span class="sig-name descname"><span class="pre">genderAwareness</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.genderAwareness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.genderAwareness" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getBlackList">
 <span class="sig-name descname"><span class="pre">getBlackList</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.getBlackList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getBlackList" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Return the blackList value.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLanguage">
@@ -1228,11 +1267,12 @@ s : list</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getSameLengthFormattedEntities">
 <span class="sig-name descname"><span class="pre">getSameLengthFormattedEntities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.getSameLengthFormattedEntities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getSameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Returns the sameLengthFormattedEntities value.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes">
-<span class="sig-name descname"><span class="pre">setSelectiveObfuscationModes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setSelectiveObfuscationModes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setSelectiveObfuscationModes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setSelectiveObfuscationModes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes" title="Permalink to this definition">#</a></dt>
 <dd><dl class="simple">
 <dt>Sets a Json path which has a dictionary of modes to enable multi-mode deidentification.</dt><dd><p>‘obfuscate’: Replace the values with random values.
 ‘mask_same_length_chars’: Replace the name with the asterisks with same length minus two plus brackets on both end.
@@ -1248,6 +1288,42 @@ path : str</p>
 <blockquote>
 <div><p>Dictionary path where is the json that contains the selective obfuscation modes</p>
 </div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setEntityCasingModes">
+<span class="sig-name descname"><span class="pre">setEntityCasingModes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setEntityCasingModes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setEntityCasingModes" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Sets a Json path which has a dictionary of modes to select casing modes.</dt><dd><p>‘lowercase’: Converts all characters to lower case using the rules of the default locale.
+‘uppercase’: Converts all characters to upper case using the rules of the default locale.
+‘capitalize’: Converts the first character to upper case and converts others to lower case.
+‘titlecase’: Converts the first character in every token to upper case and converts others to lower case.</p>
+</dd>
+</dl>
+<section id="parameters">
+<h4>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h4>
+<dl class="simple">
+<dt>path<span class="classifier">str</span></dt><dd><p>Dictionary path where is the json that contains the entity casing modes.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setGenderAwareness">
+<span class="sig-name descname"><span class="pre">setGenderAwareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setGenderAwareness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setGenderAwareness" title="Permalink to this definition">#</a></dt>
+<dd><p>Set whether to use gender-aware names or not during obfuscation.
+This param effects only names.
+If value is true, it might decrease performance.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l</strong><span class="classifier">str</span></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -1332,6 +1408,9 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 </dd>
 <dt><strong>selectiveObfuscationModesPath</strong></dt><dd><p>Dictionary path where is the json that contains the selective obfuscation modes</p>
 </dd>
+<dt><strong>genderAwareness</strong></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names.
+If value is true, it might decrease performance. Default: False</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -1354,9 +1433,14 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentence&quot;</span><span class="p">)</span> \
 <span class="gp">... </span>    <span class="o">.</span><span class="n">setUseAbbreviations</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
-<span class="go">&gt;&gt; embeddings = WordEmbeddingsModel     ...     .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;)     ...     .setInputCols([&quot;sentence&quot;, &quot;token&quot;])     ...     .setOutputCol(&quot;embeddings&quot;)</span>
+<span class="go">&gt;&gt; embeddings = WordEmbeddingsModel \</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
 <span class="gp">...</span>
 <span class="go"> Ner entities</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">clinical_sensitive_entities</span> <span class="o">=</span> <span class="n">MedicalNerModel</span> \
@@ -1561,6 +1645,11 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.sameLengthFormattedEntities">
 <span class="sig-name descname"><span class="pre">sameLengthFormattedEntities</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.sameLengthFormattedEntities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.sameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.genderAwareness">
+<span class="sig-name descname"><span class="pre">genderAwareness</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.genderAwareness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.genderAwareness" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1878,7 +1967,8 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getRegexEntities">
 <span class="sig-name descname"><span class="pre">getRegexEntities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.getRegexEntities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getRegexEntities" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Return teh regexEntities value.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setUseShifDays">
@@ -1966,20 +2056,38 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getSameLengthFormattedEntities">
 <span class="sig-name descname"><span class="pre">getSameLengthFormattedEntities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.getSameLengthFormattedEntities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getSameLengthFormattedEntities" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Return the sameLengthFormattedEntities value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setGenderAwareness">
+<span class="sig-name descname"><span class="pre">setGenderAwareness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setGenderAwareness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setGenderAwareness" title="Permalink to this definition">#</a></dt>
+<dd><p>Set whether to use gender-aware names or not during obfuscation.
+This param effects only names.
+If value is true, it might decrease performance.
+Default: False</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>l</strong><span class="classifier">str</span></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.pretrained" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'deidentify_enriched_clinical'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Downloads and loads a pretrained model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the pretrained model.</p>
+<dt><strong>name</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the pretrained model, by default “deidentify_enriched_clinical”</p>
 </dd>
 <dt><strong>lang</strong><span class="classifier">str, optional</span></dt><dd><p>Language of the pretrained model, by default “en”</p>
 </dd>
-<dt><strong>remote_loc</strong><span class="classifier">str, optional</span></dt><dd><p>Optional remote address of the resource, by default None. Will use
+<dt><strong>remote_loc</strong><span class="classifier">str, optional</span></dt><dd><p>Optional remote address of the resource, by default clinical/models. Will use
 Spark NLPs repositories otherwise.</p>
 </dd>
 </dl>
@@ -2066,6 +2174,8 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.outputAsDocument"><code class="docutils literal notranslate"><span class="pre">DeIdentification.outputAsDocument</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.sameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentification.sameLengthFormattedEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.selectiveObfuscationModesPath"><code class="docutils literal notranslate"><span class="pre">DeIdentification.selectiveObfuscationModesPath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.entityCasingModesPath"><code class="docutils literal notranslate"><span class="pre">DeIdentification.entityCasingModesPath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentification.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getBlackList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLanguage"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setRegexPatternsDictionary"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setRegexPatternsDictionary()</span></code></a></li>
@@ -2100,6 +2210,8 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setSameLengthFormattedEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getSameLengthFormattedEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setSelectiveObfuscationModes()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setEntityCasingModes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setEntityCasingModes()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setGenderAwareness()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel</span></code></a><ul class="nav section-nav flex-column">
@@ -2136,6 +2248,7 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.ageRanges"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.ageRanges</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.outputAsDocument"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.outputAsDocument</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.sameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.sameLengthFormattedEntities</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getBlackList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setLanguage"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMode"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setMode()</span></code></a></li>
@@ -2166,6 +2279,7 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setOutputAsDocument"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setOutputAsDocument()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setSameLengthFormattedEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getSameLengthFormattedEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setGenderAwareness()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.pretrained"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.pretrained()</span></code></a></li>
 </ul>
 </li>
@@ -2175,6 +2289,15 @@ Spark NLPs repositories otherwise.</p>
 </li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../_sources/reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
 </div></div>
               
             
@@ -2199,8 +2322,7 @@ Spark NLPs repositories otherwise.</p>
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

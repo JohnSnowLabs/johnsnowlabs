@@ -39,7 +39,7 @@
     <script data-url_root="../" id="documentation_options" src="../static/documentation_options.js"></script>
     <script src="../static/jquery.js"></script>
     <script src="../static/underscore.js"></script>
-    <script src="../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../static/doctools.js"></script>
     <script src="../static/sphinx_highlight.js"></script>
     <script src="../static/toggleprompt.js"></script>
@@ -320,6 +320,105 @@ document.write(`
 <span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">read_version</span>
 <span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">Deidentifier</span> <span class="k">as</span> <span class="n">Deid</span>
 <span class="kn">import</span> <span class="nn">com.johnsnowlabs</span>
+
+
+
+<span class="kn">from</span> <span class="nn">pyspark.ml.wrapper</span> <span class="kn">import</span> <span class="n">JavaModel</span>
+<span class="kn">from</span> <span class="nn">pyspark.ml.wrapper</span> <span class="kn">import</span> <span class="n">JavaParams</span>
+
+<span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">_from_java</span><span class="p">(</span><span class="n">java_stage</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_from_java_spk34</span><span class="p">(</span><span class="n">java_stage</span><span class="p">:</span> <span class="s2">&quot;JavaObject&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Given a Java object, create and return a Python wrapper of it.</span>
+<span class="sd">        Used for ML persistence.</span>
+
+<span class="sd">        Meta-algorithms such as Pipeline should override this method as a classmethod.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">__get_class</span><span class="p">(</span><span class="n">clazz</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Loads Python class from its name.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">fromlist</span><span class="o">=</span><span class="p">[</span><span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+            <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">stage_name</span> <span class="o">=</span> <span class="n">java_stage</span><span class="o">.</span><span class="n">getClass</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;org.apache.spark&quot;</span><span class="p">,</span> <span class="s2">&quot;pyspark&quot;</span><span class="p">)</span>
+        <span class="c1"># Generate a default new instance from the stage_name class.</span>
+        <span class="n">py_type</span> <span class="o">=</span> <span class="n">__get_class</span><span class="p">(</span><span class="n">stage_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">py_type</span><span class="p">,</span> <span class="n">JavaParams</span><span class="p">):</span>
+            <span class="c1"># Load information from java_stage to the instance.</span>
+            <span class="n">py_stage</span> <span class="o">=</span> <span class="n">py_type</span><span class="p">()</span>
+            <span class="n">py_stage</span><span class="o">.</span><span class="n">_java_obj</span> <span class="o">=</span> <span class="n">java_stage</span>
+
+            <span class="c1"># SPARK-10931: Temporary fix so that persisted models would own params from Estimator</span>
+            <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">py_type</span><span class="p">,</span> <span class="n">JavaModel</span><span class="p">):</span>
+                <span class="n">py_stage</span><span class="o">.</span><span class="n">_create_params_from_java</span><span class="p">()</span>
+
+            <span class="n">py_stage</span><span class="o">.</span><span class="n">_resetUid</span><span class="p">(</span><span class="n">java_stage</span><span class="o">.</span><span class="n">uid</span><span class="p">())</span>
+            <span class="n">py_stage</span><span class="o">.</span><span class="n">_transfer_params_from_java</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">py_type</span><span class="p">,</span> <span class="s2">&quot;_from_java&quot;</span><span class="p">):</span>
+            <span class="n">py_stage</span> <span class="o">=</span> <span class="n">py_type</span><span class="o">.</span><span class="n">_from_java</span><span class="p">(</span><span class="n">java_stage</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">&quot;This Java stage cannot be loaded into Python currently: </span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">stage_name</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">py_stage</span>
+
+    <span class="k">def</span> <span class="nf">_from_java_pre_spk34</span><span class="p">(</span><span class="n">java_stage</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Given a Java object, create and return a Python wrapper of it.</span>
+<span class="sd">        Used for ML persistence.</span>
+
+<span class="sd">        Meta-algorithms such as Pipeline should override this method as a classmethod.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span> <span class="nf">__get_class</span><span class="p">(</span><span class="n">clazz</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Loads Python class from its name.</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">clazz</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="n">module</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="nb">__import__</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">comp</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+                <span class="n">m</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">comp</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">m</span>
+
+        <span class="n">stage_name</span> <span class="o">=</span> <span class="n">java_stage</span><span class="o">.</span><span class="n">getClass</span><span class="p">()</span><span class="o">.</span><span class="n">getName</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;org.apache.spark&quot;</span><span class="p">,</span> <span class="s2">&quot;pyspark&quot;</span><span class="p">)</span>
+        <span class="c1"># Generate a default new instance from the stage_name class.</span>
+        <span class="n">py_type</span> <span class="o">=</span> <span class="n">__get_class</span><span class="p">(</span><span class="n">stage_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">py_type</span><span class="p">,</span> <span class="n">JavaParams</span><span class="p">):</span>
+            <span class="c1"># Load information from java_stage to the instance.</span>
+            <span class="n">py_stage</span> <span class="o">=</span> <span class="n">py_type</span><span class="p">()</span>
+            <span class="n">py_stage</span><span class="o">.</span><span class="n">_java_obj</span> <span class="o">=</span> <span class="n">java_stage</span>
+
+            <span class="c1"># SPARK-10931: Temporary fix so that persisted models would own params from Estimator</span>
+            <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="n">py_type</span><span class="p">,</span> <span class="n">JavaModel</span><span class="p">):</span>
+                <span class="n">py_stage</span><span class="o">.</span><span class="n">_create_params_from_java</span><span class="p">()</span>
+
+            <span class="n">py_stage</span><span class="o">.</span><span class="n">_resetUid</span><span class="p">(</span><span class="n">java_stage</span><span class="o">.</span><span class="n">uid</span><span class="p">())</span>
+            <span class="n">py_stage</span><span class="o">.</span><span class="n">_transfer_params_from_java</span><span class="p">()</span>
+        <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">py_type</span><span class="p">,</span> <span class="s2">&quot;_from_java&quot;</span><span class="p">):</span>
+            <span class="n">py_stage</span> <span class="o">=</span> <span class="n">py_type</span><span class="o">.</span><span class="n">_from_java</span><span class="p">(</span><span class="n">java_stage</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;This Java stage cannot be loaded into Python currently: </span><span class="si">%r</span><span class="s2">&quot;</span>
+                                      <span class="o">%</span> <span class="n">stage_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">py_stage</span>
+
+
+    <span class="k">try</span> <span class="p">:</span>
+        <span class="k">return</span> <span class="n">_from_java_spk34</span><span class="p">(</span><span class="n">java_stage</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">_from_java_pre_spk34</span><span class="p">(</span><span class="n">java_stage</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">pyspark.ml.wrapper</span>
+<span class="c1"># Monkey Patch which enables pre Spark 3.4.0 Class Resolution</span>
+<span class="n">pyspark</span><span class="o">.</span><span class="n">ml</span><span class="o">.</span><span class="n">wrapper</span><span class="o">.</span><span class="n">JavaParams</span><span class="o">.</span><span class="n">_from_java</span> <span class="o">=</span> <span class="n">_from_java</span>
+
+
+
 <span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">legal</span> <span class="o">=</span> <span class="n">legal</span>
 <span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">finance</span> <span class="o">=</span> <span class="n">finance</span>
 <span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">annotator</span> <span class="o">=</span> <span class="n">annotator</span>
@@ -351,6 +450,7 @@ document.write(`
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.finance.graph&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">finance</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.finance.graph.relation_extraction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">finance</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.finance.sequence_classification&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">finance</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.finance.sequence_generation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">finance</span>
 
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.legal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">legal</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.legal.token_classification&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">legal</span>
@@ -363,6 +463,7 @@ document.write(`
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.legal.graph&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">legal</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.legal.graph.relation_extraction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">legal</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.legal.sequence_classification&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">legal</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">modules</span><span class="p">[</span><span class="s1">&#39;com.johnsnowlabs.legal.sequence_generation&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">legal</span>
 
 <div class="viewcode-block" id="annotators"><a class="viewcode-back" href="../reference/autosummary/sparknlp_jsl/index.html#sparknlp_jsl.annotators">[docs]</a><span class="n">annotators</span> <span class="o">=</span> <span class="n">annotator</span></div>
 <div class="viewcode-block" id="transformer_seq_classification"><a class="viewcode-back" href="../reference/autosummary/sparknlp_jsl/index.html#sparknlp_jsl.transformer_seq_classification">[docs]</a><span class="n">transformer_seq_classification</span> <span class="o">=</span> <span class="n">annotator</span></div>
@@ -567,8 +668,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

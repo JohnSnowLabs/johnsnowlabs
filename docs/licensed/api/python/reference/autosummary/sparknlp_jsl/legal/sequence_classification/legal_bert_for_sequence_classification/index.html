@@ -40,7 +40,7 @@
     <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js"></script>
     <script src="../../../../../../static/jquery.js"></script>
     <script src="../../../../../../static/underscore.js"></script>
-    <script src="../../../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
@@ -500,11 +500,11 @@ folder : str</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_bert_for_sequence_classification.LegalBertForSequenceClassification.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bert_sequence_classifier_ade'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/legal/sequence_classification/legal_bert_for_sequence_classification.html#LegalBertForSequenceClassification.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_bert_for_sequence_classification.LegalBertForSequenceClassification.pretrained" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legclf_reddit_advice'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finance/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/legal/sequence_classification/legal_bert_for_sequence_classification.html#LegalBertForSequenceClassification.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_bert_for_sequence_classification.LegalBertForSequenceClassification.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Download a pre-trained LegalBertForSequenceClassification.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model.
-lang (str): Language of the pre-trained model.
+<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model, by default “legclf_reddit_advice”
+lang (str): Language of the pre-trained model, by default “en”
 remote_loc (str): Remote location of the pre-trained model. If None, use the
 open-source location. Other values are “clinical/models”,
 “finance/models”, or “legal/models”.</p>
@@ -564,6 +564,15 @@ open-source location. Other values are “clinical/models”,
 </li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../_sources/reference/autosummary/sparknlp_jsl/legal/sequence_classification/legal_bert_for_sequence_classification/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
 </div></div>
               
             
@@ -588,8 +597,7 @@ open-source location. Other values are “clinical/models”,
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>
