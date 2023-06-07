@@ -15,6 +15,95 @@ sidebar:
 See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for detailed information on Release History and Features.
 
 
+## 4.4.7
+Release date: 7-06-2023
+
+The John Snow Labs 4.4.6 Library released with the following pre-installed and recommended dependencies
+
+| Library                                                                     | Version |
+|-----------------------------------------------------------------------------|---------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_release_notes)        | `4.4.2` |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)  | `4.4.3` |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/financial_release_notes) | `1.X.X` |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/legal_release_notes)       | `1.X.X` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                         | `4.2.1` |
+| [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)           | `4.1`   |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)            | `4.4.1` |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                 | `3.1.2` |
+
+
+
+
+
+## 4.4.6
+Release date: 28-05-2023
+
+The John Snow Labs 4.4.6 Library released with the following pre-installed and recommended dependencies
+
+| Library                                                                     | Version |
+|-----------------------------------------------------------------------------|---------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_release_notes)        | `4.4.1` |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)  | `4.4.2` |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/financial_release_notes) | `1.X.X` |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/legal_release_notes)       | `1.X.X` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                         | `4.2.0` |
+| [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)           | `4.1`   |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)            | `4.4.1` |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                 | `3.1.2` |
+
+
+
+- `create_jsl_home_if_missing` parameter added to `nlp.start()` which can be set to `False` to disable the creation of the
+  `~/.johnsnowlabs` directory. This is useful when jars are provided directly via `jar_paths` parameter.
+
+- Dynamic Wheel resolution for spark nlp, enabling you to set
+  settings.nlp_version='4.4.2' and it will automatically use the appropriate  jars and wheels when
+  starting a session or building an envirornment.
+
+
+- Bump Enterprise NLP version to 4.4.2
+- Bump OCR version to 4.4.1
+
+- Fixed erronous handling of enterprise-secrets which have
+  `<VERSION>.<PR-NUM>.<COMMIT_HASH>` pattern,
+
+## 4.4.5
+Release date: 3-05-2023
+
+The John Snow Labs 4.4.5 Library released with the following pre-installed and recommended dependencies
+
+| Library                                                                     | Version |
+|-----------------------------------------------------------------------------|---------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_release_notes)        | `4.4.0` |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)  | `4.4.1` |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/financial_release_notes) | `1.X.X` |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/legal_release_notes)       | `1.X.X` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                         | `4.2.0` |
+| [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)           | `4.1`   |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)            | `4.4.1` |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                 | `3.1.2` |
+
+
+
+
+## 4.4.4
+Release date: 26-04-2023
+
+The John Snow Labs 4.4.4 Library released with the following pre-installed and recommended dependencies
+
+| Library                                                                     | Version |
+|-----------------------------------------------------------------------------|---------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_release_notes)        | `4.4.0` |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)  | `4.4.0` |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/financial_release_notes) | `1.X.X` |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/legal_release_notes)       | `1.X.X` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                         | `4.2.0` |
+| [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)           | `4.1`   |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)            | `4.4.1` |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                 | `3.1.2` |
+
+
+
 
 
 
