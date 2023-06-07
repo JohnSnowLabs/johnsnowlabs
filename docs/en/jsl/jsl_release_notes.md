@@ -18,7 +18,8 @@ See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for
 ## 4.4.7
 Release date: 7-06-2023
 
-The John Snow Labs 4.4.6 Library released with the following pre-installed and recommended dependencies
+The John Snow Labs 4.4.7 Library released with the following pre-installed and recommended dependencies
+
 
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
