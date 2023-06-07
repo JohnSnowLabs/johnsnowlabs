@@ -74,6 +74,8 @@ try:
             Resolution2Chunk,
             MedicalQuestionAnswering,
             NerTemplateRenderModel,
+            AverageEmbeddings,
+            Doc2ChunkInternal,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer

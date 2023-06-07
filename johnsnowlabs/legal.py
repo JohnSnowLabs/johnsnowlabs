@@ -92,6 +92,8 @@ try:
             # Resolution2Chunk,
             ResolverMerger,
             NerTemplateRenderModel,
+            AverageEmbeddings,
+            Doc2ChunkInternal,
         )
         from sparknlp_jsl.modelTracer import ModelTracer
 
