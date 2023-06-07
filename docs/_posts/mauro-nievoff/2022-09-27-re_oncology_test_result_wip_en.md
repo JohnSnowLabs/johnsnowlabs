@@ -144,6 +144,14 @@ val data = Seq("Pathology showed tumor cells, which were positive for estrogen a
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.oncology.test_result").predict("""Pathology showed tumor cells, which were positive for estrogen and progesterone receptors.""")
+```
+
 </div>
 
 ## Results

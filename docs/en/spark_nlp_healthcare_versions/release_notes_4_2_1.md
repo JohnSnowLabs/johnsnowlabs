@@ -400,7 +400,7 @@ sample_text= """The patient is a 21-day-old Caucasian male here for 2 days, ther
 
 #### New Certification Training Notebooks for the `johnsnowlabs` Library
 
-Now we have 46 new [Healtcare Certification Training notebooks](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings_JSL/Healthcare) for the users who want to use the new `johnsnowlabs` library.
+Now we have 46 new [Healtcare Certification Training notebooks](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings/Healthcare) for the users who want to use the new `johnsnowlabs` library.
 
 </div><div class="prev_ver h3-box" markdown="1">
 

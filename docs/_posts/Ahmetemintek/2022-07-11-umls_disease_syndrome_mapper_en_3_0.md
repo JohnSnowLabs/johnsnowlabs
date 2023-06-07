@@ -131,6 +131,14 @@ val test_data = Seq("A 35-year-old male with a history of obesity and gestationa
 
 val result = mapper_pipeline.fit(test_data).transform(test_data) 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.umls_disease_syndrome_mapper").predict("""A 35-year-old male with a history of obesity and gestational diabetes mellitus and acyclovir allergy""")
+```
+
 </div>
 
 ## Results

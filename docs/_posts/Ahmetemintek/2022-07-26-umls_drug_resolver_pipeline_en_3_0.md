@@ -45,6 +45,14 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 val pipeline= PretrainedPipeline("umls_drug_resolver_pipeline", "en", "clinical/models")
 val pipeline.annotate("The patient was given Adapin 10 MG, coumadn 5 mg")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.umls_drug_resolver").predict("""The patient was given Adapin 10 MG, coumadn 5 mg""")
+```
+
 </div>
 
 ## Results

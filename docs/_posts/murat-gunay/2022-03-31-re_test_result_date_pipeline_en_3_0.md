@@ -55,6 +55,14 @@ val pipeline = new PretrainedPipeline("re_test_result_date_pipeline", "en", "cli
 
 pipeline.fullAnnotate("He was advised chest X-ray or CT scan after checking his SpO2 which was <= 93%")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.date_test_result.pipeline").predict("""He was advised chest X-ray or CT scan after checking his SpO2 which was <= 93%""")
+```
+
 </div>
 
 

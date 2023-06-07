@@ -11,7 +11,7 @@ Summarizer annotator that uses a generative deep learning model to create summar
 
 Available models can be found at the [Models Hub](https://nlp.johnsnowlabs.com/models?annotator=MedicalSummarizer).
 
-For more extended examples on document pre-processing see the [Spark NLP Workshop](...)
+For more extended examples on document pre-processing see the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb)
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -29,13 +29,17 @@ document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("documents")
 
-
 med_summarizer  = medical.Summarizer\
     .pretrained("summarizer_generic_jsl", "en", "clinical/models")\
     .setInputCols("documents")\
     .setOutputCol("summary")\
-    .setMaxNewTokens(100)\
-    .setMaxTextLength(1024)\
+    .setMaxTextLength(512)\
+    .setMaxNewTokens(512)\
+    .setDoSample(True)\
+    .setRefineSummary(True)\
+    .setRefineSummaryTargetLength(100)\
+    .setRefineMaxAttempts(3)\
+    .setRefineChunkSize(512)\
 
 
 pipeline = nlp.Pipeline(stages=[document_assembler, med_summarizer])
@@ -70,7 +74,13 @@ val document_assembler = new nlp.DocumentAssembler()
 val med_summarizer  = medical.Summarizer.pretrained("summarizer_generic_jsl", "en", "clinical/models")
     .setInputCols("documents")
     .setOutputCol("summary")
-    .setMaxNewTokens(100)
+    .setMaxTextLength(512)
+    .setMaxNewTokens(512)
+    .setDoSample(true)
+    .setRefineSummary(true)
+    .setRefineSummaryTargetLength(100)
+    .setRefineMaxAttempts(3)
+    .setRefineChunkSize(512)
 
 
 val pipeline = new nlp.Pipeline().setStages(Array(document_assembler, med_summarizer))
@@ -104,8 +114,13 @@ med_summarizer  = legal.Summarizer\
     .pretrained("summarizer_generic_jsl", "en", "clinical/models")\
     .setInputCols("documents")\
     .setOutputCol("summary")\
-    .setMaxNewTokens(100)\
-   .setMaxTextLength(1024)\
+    .setMaxTextLength(512)\
+    .setMaxNewTokens(512)\
+    .setDoSample(True)\
+    .setRefineSummary(True)\
+    .setRefineSummaryTargetLength(100)\
+    .setRefineMaxAttempts(3)\
+    .setRefineChunkSize(512)\
 
 
 pipeline = nlp.Pipeline(stages=[document_assembler, med_summarizer])
@@ -141,7 +156,13 @@ val document_assembler = new nlp.DocumentAssembler()
 val med_summarizer  = legal.Summarizer.pretrained("summarizer_generic_jsl", "en", "clinical/models")
     .setInputCols("documents")
     .setOutputCol("summary")
-    .setMaxNewTokens(100)
+    .setMaxTextLength(512)
+    .setMaxNewTokens(512)
+    .setDoSample(true)
+    .setRefineSummary(true)
+    .setRefineSummaryTargetLength(100)
+    .setRefineMaxAttempts(3)
+    .setRefineChunkSize(512)
 
 
 val pipeline = new nlp.Pipeline().setStages(Array(document_assembler, med_summarizer))
@@ -178,7 +199,12 @@ med_summarizer  = finance.Summarizer\
     .setInputCols("documents")\
     .setOutputCol("summary")\
     .setMaxNewTokens(100)\
-   .setMaxTextLength(1024)\
+    .setMaxTextLength(1024)\
+    .setDoSample(True)\
+    .setRefineSummary(True)\
+    .setRefineSummaryTargetLength(100)\
+    .setRefineMaxAttempts(3)\
+    .setRefineChunkSize(512)\
 
 
 pipeline = nlp.Pipeline(stages=[document_assembler, med_summarizer])
@@ -213,7 +239,13 @@ val document_assembler = new nlp.DocumentAssembler()
 val med_summarizer  = finance.Summarizer.pretrained("summarizer_generic_jsl", "en", "clinical/models")
     .setInputCols("documents")
     .setOutputCol("summary")
-    .setMaxNewTokens(100)
+    .setMaxTextLength(512)
+    .setMaxNewTokens(512)
+    .setDoSample(True)
+    .setRefineSummary(True)
+    .setRefineSummaryTargetLength(100)
+    .setRefineMaxAttempts(3)
+    .setRefineChunkSize(512)
 
 
 val pipeline = new nlp.Pipeline().setStages(Array(document_assembler, med_summarizer))

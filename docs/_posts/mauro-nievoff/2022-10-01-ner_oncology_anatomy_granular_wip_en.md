@@ -121,6 +121,14 @@ val data = Seq("The patient presented a mass in her left breast, and a possible 
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.oncology_anatomy_granular_wip").predict("""The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.""")
+```
+
 </div>
 
 ## Results

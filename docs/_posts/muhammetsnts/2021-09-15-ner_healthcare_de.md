@@ -112,6 +112,14 @@ val data = Seq("""Das Kleinzellige Bronchialkarzinom (Kleinzelliger Lungenkrebs,
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("de.med_ner.healthcare").predict("""Das Kleinzellige Bronchialkarzinom (Kleinzelliger Lungenkrebs, SCLC) ist Hernia femoralis, Akne, einseitig, ein hochmalignes bronchogenes Karzinom, das überwiegend im Zentrum der Lunge, in einem Hauptbronchus entsteht. Die mittlere Prävalenz wird auf 1/20.000 geschätzt.""")
+```
+
 </div>
 
 

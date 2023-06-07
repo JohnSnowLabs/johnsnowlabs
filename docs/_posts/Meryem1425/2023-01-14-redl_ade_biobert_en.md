@@ -172,6 +172,14 @@ val data = Seq("""Been taking Lipitor for 15 years , have experienced severe fat
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.ade").predict("""Been taking Lipitor for 15 years , have experienced severe fatigue a lot. The doctor moved me to voltarene 2 months ago, so far I have only had muscle cramps.""")
+```
+
 </div>
 
 ## Results

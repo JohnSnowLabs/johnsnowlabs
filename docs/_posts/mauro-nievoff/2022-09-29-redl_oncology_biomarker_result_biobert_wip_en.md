@@ -154,6 +154,14 @@ val data = Seq("Immunohistochemistry was negative for thyroid transcription fact
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.oncology_biomarker_result_biobert_wip").predict("""Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.""")
+```
+
 </div>
 
 ## Results

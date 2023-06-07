@@ -45,6 +45,14 @@ val pipeline = new PretrainedPipeline("re_human_phenotype_gene_clinical_pipeline
 
 pipeline.annotate("Bilateral colobomatous microphthalmia and developmental delay in whom genetic studies identified a homozygous TENM3")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.human_gene_clinical.pipeline").predict("""Bilateral colobomatous microphthalmia and developmental delay in whom genetic studies identified a homozygous TENM3""")
+```
+
 </div>
 
 ## Results

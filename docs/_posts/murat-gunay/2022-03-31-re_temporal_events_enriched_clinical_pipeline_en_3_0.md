@@ -45,6 +45,14 @@ val pipeline = new PretrainedPipeline("re_temporal_events_enriched_clinical_pipe
 
 pipeline.annotate("The patient is a 56-year-old right-handed female with longstanding intermittent right low back pain, who was involved in a motor vehicle accident in September of 2005. At that time, she did not notice any specific injury, but five days later, she started getting abnormal right low back pain.")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.temproal_enriched.pipeline").predict("""The patient is a 56-year-old right-handed female with longstanding intermittent right low back pain, who was involved in a motor vehicle accident in September of 2005. At that time, she did not notice any specific injury, but five days later, she started getting abnormal right low back pain.""")
+```
+
 </div>
 
 ## Results

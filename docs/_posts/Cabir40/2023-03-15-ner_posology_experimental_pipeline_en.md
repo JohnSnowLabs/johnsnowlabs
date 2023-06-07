@@ -54,6 +54,16 @@ Calcium-DTPA: Ca-DTPA will be administered intravenously on Days 1-3 to clear th
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.posology_experimental.pipeline").predict("""Y-90 Humanized Anti-Tac: 10 mCi (if a bone marrow transplant was part of the patient's previous therapy) or 15 mCi of yttrium labeled anti-TAC; followed by calcium trisodium Inj (Ca DTPA)..
+
+Calcium-DTPA: Ca-DTPA will be administered intravenously on Days 1-3 to clear the radioactive agent from the body.""")
+```
+
 </div>
 
 ## Results

@@ -106,6 +106,14 @@ val data = Seq(Array("""Con diagnóstico probable de cirrosis hepática (no cono
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("es.classify.bert_token.negation_uncertainty").predict("""Con diagnóstico probable de cirrosis hepática (no conocida previamente) y peritonitis espontanea primaria con tratamiento durante 8 dias con ceftriaxona en el primer ingreso (no se realizó paracentesis control por escasez de liquido). Lesión tumoral en hélix izquierdo de 0,5 cms. de diámetro susceptible de ca basocelular perlado.""")
+```
+
 </div>
 
 ## Results

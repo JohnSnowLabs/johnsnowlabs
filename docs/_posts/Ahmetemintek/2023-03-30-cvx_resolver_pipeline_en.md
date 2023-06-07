@@ -48,6 +48,14 @@ val resolver_pipeline = new PretrainedPipeline("cvx_resolver_pipeline", "en", "c
 
 val result = resolver_pipeline.fullAnnotate("The patient has a history of influenza vaccine, tetanus and DTaP")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.resolve.cvx_pipeline").predict("""The patient has a history of influenza vaccine, tetanus and DTaP""")
+```
+
 </div>
 
 ## Results

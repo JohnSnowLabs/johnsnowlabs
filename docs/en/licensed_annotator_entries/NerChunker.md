@@ -332,7 +332,7 @@ val pipeline=new Pipeline().setStages(Array(
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[NerChunker](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/ner/NerChunker)
+[NerChunker](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/ner/NerChunker.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}

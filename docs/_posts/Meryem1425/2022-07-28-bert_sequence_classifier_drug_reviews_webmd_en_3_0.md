@@ -85,6 +85,14 @@ val data = Seq(Array("While it has worked for me, the sweating and chills especi
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.drug_reviews").predict("""While it has worked for me, the sweating and chills especially at night when trying to sleep are very off putting and I am not sure if I will stick with it very much longer. My eyese no longer feel like there is something in them and my mouth is definitely not as dry as before but the side effects are too invasive for my liking.""")
+```
+
 </div>
 
 ## Results

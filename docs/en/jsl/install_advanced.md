@@ -1,6 +1,6 @@
 ---
 layout: docs
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: Installation
 permalink: /docs/en/jsl/install_advanced
 key: docs-install
@@ -19,8 +19,8 @@ To install the johnsnowlabs Python library and all of John Snow Labs open **sour
 pip install johnsnowlabs
 ```
 
-This installs [Spark-NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/quickstart), [NLU](https://nlp.johnsnowlabs.com/)
-, [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)
+This installs [Spark-NLP](https://nlp.johnsnowlabs.com/docs/en/quickstart), [NLU](https://nlp.johnsnowlabs.com/)
+, [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/display)
 , [Pyspark](https://spark.apache.org/docs/latest/api/python/) and other open
 source [sub-dependencies](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/setup.py).
 
@@ -35,8 +35,8 @@ from johnsnowlabs import *
 nlp.load('emotion').predict('Wow that easy!')
 ```
 The quickest way to get access to **licensed libraries** like 
-[Finance NLP, Legal NLP, Healthcare NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_install) or
-[Visual NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr) is to run the following in python:
+[Finance NLP, Legal NLP, Healthcare NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_install) or
+[Visual NLP](https://nlp.johnsnowlabs.com/docs/en/ocr) is to run the following in python:
 ```python
 from johnsnowlabs import *
 nlp.install()
@@ -497,7 +497,7 @@ Join our channel, to ask for help and share your feedback. Developers and users 
 ## Where to go next
 
 If you want to get your hands dirty with any of the features check out the [NLU examples page](examples),
-or [Licensed Annotators Overview](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)
+or [Licensed Annotators Overview](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)
 Detailed information about Johnsnowlabs Libraries APIs, concepts, components and more can be found on the following pages :
 
 {:.list4}

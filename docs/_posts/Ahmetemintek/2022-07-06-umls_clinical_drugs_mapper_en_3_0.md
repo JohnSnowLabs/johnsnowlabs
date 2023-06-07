@@ -133,6 +133,15 @@ val test_data = Seq("She was immediately given hydrogen peroxide 30 mg, and has 
 
 val result = pipeline.fit(test_data).transform(test_data) 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.umls_clinical_drugs_mapper").predict("""She was immediately given hydrogen peroxide 30 mg, and has been advised Neosporin Cream for 5 days. 
+               She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg.""")
+```
+
 </div>
 
 ## Results

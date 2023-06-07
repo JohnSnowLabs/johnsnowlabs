@@ -375,7 +375,7 @@ val result = pipeline.fit(data).transform(data)
 
 
 {%- capture model_api_link -%}
-[RelationExtractionDLModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/re/RelationExtractionDLModel)
+[RelationExtractionDLModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/re/RelationExtractionDLModel.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}

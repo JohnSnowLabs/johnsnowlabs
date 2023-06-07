@@ -106,6 +106,14 @@ val data = Seq("""First identified in chicken, vigilin homologues have now been 
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.token_bert.linnaeus_species").predict("""First identified in chicken, vigilin homologues have now been found in human (6), Xenopus laevis (7), Drosophila melanogaster (8) and Schizosaccharomyces pombe.""")
+```
+
 </div>
 
 ## Results

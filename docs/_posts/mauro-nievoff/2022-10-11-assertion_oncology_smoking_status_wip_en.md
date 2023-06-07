@@ -121,6 +121,14 @@ val data = Seq("""The patient quit smoking three years ago.""").toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.assert.oncology_smoking_status").predict("""The patient quit smoking three years ago.""")
+```
+
 </div>
 
 ## Results

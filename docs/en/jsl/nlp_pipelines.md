@@ -1,7 +1,7 @@
 ---
 layout: docs
 header: true
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: NLP Pipelines
 key: docs-examples
 permalink: /docs/en/jsl/nlp_pipes

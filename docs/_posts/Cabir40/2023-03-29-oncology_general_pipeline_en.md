@@ -52,6 +52,15 @@ The tumor is positive for ER and PR."
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.oncology_general.pipeline").predict("""The patient underwent a left mastectomy for a left breast cancer two months ago.
+The tumor is positive for ER and PR.""")
+```
+
 </div>
 
 ## Results

@@ -1,7 +1,7 @@
 ---
 layout: docs
 header: true
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: Utils for Spark NLP
 key: utils_for_spark_nlp
 permalink: /docs/en/jsl/utils_for_spark_nlp
@@ -18,7 +18,7 @@ You can see all features showcased in the demo notebook [![Open In Colab](https:
 ## nlp.viz(pipe,data)
 Visualize input data with an already configured Spark NLP pipeline,  
 for Algorithms of type (Ner,Assertion, Relation, Resolution, Dependency)  
-using [Spark NLP Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)  
+using [Spark NLP Display](https://nlp.johnsnowlabs.com/docs/en/display)  
 Automatically infers applicable viz type and output columns to use for visualization.  
 Example:
 ```python

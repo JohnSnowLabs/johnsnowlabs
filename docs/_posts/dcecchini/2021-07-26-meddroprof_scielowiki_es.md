@@ -120,6 +120,14 @@ val data = Seq("""La paciente es la mayor de 2 hermanos, tiene un hermano de 13 
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("es.med_ner.scielowiki").predict("""La paciente es la mayor de 2 hermanos, tiene un hermano de 13 años estudiando 1o ESO. Sus padres son ambos ATS , trabajan en diferentes centros de salud estudiando 1o ESO""")
+```
+
 </div>
 
 

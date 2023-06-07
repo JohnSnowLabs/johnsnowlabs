@@ -46,6 +46,14 @@ val pipeline = new PretrainedPipeline("snomed_umls_mapping", "en", "clinical/mod
 
 val result = pipeline.fullAnnotate(733187009 449433008 51264003)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.snomed.umls.mapping").predict("""Put your text here.""")
+```
+
 </div>
 
 ## Results

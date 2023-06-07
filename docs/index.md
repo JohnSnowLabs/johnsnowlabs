@@ -2,8 +2,9 @@
 layout: landing
 comment: no
 title: 'John Snow Labs <span>State of the Art Natural Language Processing in Python</span>'
-excerpt: Unified access to 15,000+ free NLP models with one line of code, open-source Responsible & Explainable NLP, and enterprise libraries for Healthcare, Legal, Finance, and Visual NLP.
-seotitle: John Snow Labs - State of the Art NLP in Python
+excerpt: Spark NLP is Unified access to 15,000+ free models with one line of code, open-source Responsible & Explainable NLP, and enterprise libraries for Healthcare, Legal, Finance, and Visual NLP.
+seotitle: Spark NLP – State of the Art NLP in Python, Java, and Scala – John Snow Labs.
+seotitle: Spark NLP – State of the Art NLP in Python, Java, and Scala – John Snow Labs.
 permalink: /
 header: true
 article_header:
@@ -37,7 +38,7 @@ data:
           image:
             src: /assets/images/home/open_source_home.svg
           excerpt: Open Source software, widely deployed, back by an active community.
-    - title: Powered by the most widely used NLP library in the enterprise
+    - title: Powered by the most widely used <a target="_blank" href="https://www.johnsnowlabs.com/spark-nlp/">NLP library</a> in the enterprise
       top: yes
       excerpt: Gradient Flow NLP Survey, 2021.
       bigimage: /assets/images/home/nlp_libraries.png
@@ -76,22 +77,27 @@ data:
           img: /assets/images/home/nlp_test.jpg
 
         - text: NLP Lab
+          link: https://www.johnsnowlabs.com/nlp-lab/
           description: Free End-to-End No Code NLP Platform for teams that want to collaborately annotate documents and train models.
           img: /assets/images/home/nlp_lab.png
 
         - text: Healthcare NLP
+          link: https://www.johnsnowlabs.com/healthcare-nlp/
           description: State-of-the-Art NLP Library for understanding clinical and biomedical text. 
           img: /assets/images/home/HealthcareNLP.jpg
 
         - text: Finance NLP
+          link: https://www.johnsnowlabs.com/finance-nlp/
           description: State-of-the-Art NLP Library for understanding financial documents. 
           img: /assets/images/home/finance_nlp.png
 
         - text: Legal NLP
+          link: https://www.johnsnowlabs.com/legal-nlp/
           description: State-of-the-Art NLP Library for understanding legal documents.
           img: /assets/images/home/legal_nlp.png
 
         - text: Visual NLP
+          link: https://www.johnsnowlabs.com/visual-nlp/
           description: Visual document understanding library for extracting information from images, scanned documents, PDFs, DOCX, and DICOM files.
           img: /assets/images/home/visual_nlp.png
 

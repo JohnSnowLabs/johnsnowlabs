@@ -1,9 +1,10 @@
 ---
 layout: docs
 header: true
-seotitle: NLP Lab | John Snow Labs
-title: NLP Lab (Annotation Lab)
-excerpt: A lightning fast tool for document annotation.
+seotitle: NLP Annotation Lab - Free No Code AI Platform by John Snow Labs
+pagetitle: NLP Annotation Lab - Free No Code AI Platform by John Snow Labs
+title: NLP Annotation Lab&#58; Free No Code AI Platform
+excerpt: NLP Annotation Lab is the fastest tool for document annotation. Free No Code AI platform to annotate text, images and PDF.
 permalink: /docs/en/alab/quickstart
 key: docs-quickstart
 modify_date: "2022-10-15"

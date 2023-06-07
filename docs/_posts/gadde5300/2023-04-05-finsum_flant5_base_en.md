@@ -19,7 +19,29 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-FLAN-T5 is a state-of-the-art language model developed by Facebook AI that utilizes the T5 architecture for text summarization tasks. It is trained on a large dataset of diverse texts and can generate high-quality summaries of articles, documents, and other text-based inputs.
+FLAN-T5 is a state-of-the-art language model developed by Google researchers that utilizes the T5 architecture for text summarization tasks. It is trained on a large dataset of diverse texts and can generate high-quality summaries of articles, documents, and other text-based inputs.
+
+References:
+
+```bibtex
+@article{flant5_paper,
+  title={Scaling instruction-finetuned language models},
+  author={Chung, Hyung Won and Hou, Le and Longpre, Shayne and Zoph, Barret and Tay, Yi and Fedus, William and Li, Eric and Wang, Xuezhi and Dehghani, Mostafa and Brahma, Siddhartha and others},
+  journal={arXiv preprint arXiv:2210.11416},
+  year={2022}
+}
+
+@article{t5_paper,
+  title={Exploring the limits of transfer learning with a unified text-to-text transformer},
+  author={Raffel, Colin and Shazeer, Noam and Roberts, Adam and Lee, Katherine and Narang, Sharan and Matena, Michael and Zhou, Yanqi and Li, Wei and Liu, Peter J},
+  journal={The Journal of Machine Learning Research},
+  volume={21},
+  number={1},
+  pages={5485--5551},
+  year={2020},
+  publisher={JMLRORG}
+}
+```
 
 ## Predicted Entities
 

@@ -13,19 +13,12 @@ sidebar:
   nav: annotation-lab
 ---
 
-<style>
-es {
-    font-weight:400;
-    font-style: italic;
-}
-</style>
-
 The Playground feature of the NLP Lab allows users to deploy and test models, rules, and/or prompts without going through the project setup wizard. This simplifies the initial resources exploration, and facilitates experiments on custom data.  Any model, rule, or prompt can now be selected and deployed for testing by clicking on the "Open in Playground" button.
 
 
 ## Experiment with Rules
 
-Rules can be  deployed to the Playground from the rules page. When a particular rule is deployed in the playground, the user can also change the parameters of the rules via the rule definition form from the right side of the page. After saving the changes users need to click on the "Deploy" button to refresh the results of the pre-annotation on the provided text.
+Rules can be deployed to the Playground from the rules page. When a particular rule is deployed in the playground, the user can also change the parameters of the rules via the rule definition form from the right side of the page. After saving the changes users need to click on the "Deploy" button to refresh the results of the pre-annotation on the provided text.
 
 ![ruledeploy](https://user-images.githubusercontent.com/33893292/209978724-355fd3a2-aab4-4c38-869d-4f3432c657d3.gif)
 
@@ -56,7 +49,7 @@ This feature enables users to check how their resources (models, rules and promp
 Another benefit of experimenting with NLP prompts and rules in the playground is the immediate feedback that you receive. When you make changes to the parameters of your rules or to the questions in your prompts, the updates are deployed instantly. Manually deploying the server is not necessary any more for changes made to Rules/Prompts to be reflected in the preannotation results. Once the changes are saved, by simply clicking on the Test button, updated results are presented. 
 This allows you to experiment with a range of variables and see how each one affects the correctness and completeness of the results. The real-time feedback and immediate deployment of changes in the playground make it a powerful tool for pushing the boundaries of what is possible with language processing.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.7.1/automatic_deployment.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.7.1/219060474-0c6fc8ab-f946-4ea5-886c-659f357b7f7d.gif" style="width:100%;"/>
 
 ## Playground Server Destroyed after 5 Minutes of Inactivity
 

@@ -1,6 +1,6 @@
 ---
 layout: docs
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: Utilities for Testing Notebooks
 permalink: /docs/en/jsl/testing-utils-notebooks
 key: docs-install

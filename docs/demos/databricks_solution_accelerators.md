@@ -41,7 +41,7 @@ data:
           actions:
           - text: Databricks Notebook
             type: normal
-            url: https://databricks.com/solutions/accelerators/nlp-oncology/  
+            url: https://databricks.com/solutions/accelerators/nlp-oncology 
         - title: Adverse Drug Event Detection
           id: adverse_drug_event_detection
           image: 
@@ -50,7 +50,7 @@ data:
           actions:
           - text: Databricks Notebook
             type: normal
-            url: https://databricks.com/solutions/accelerators/adverse-drug-event-detection/ 
+            url: https://databricks.com/solutions/accelerators/adverse-drug-event-detection
         - title: Medicare Risk Adjustment
           id: medicare_risk_adjustment
           image: 
@@ -59,15 +59,14 @@ data:
           actions:
           - text: Databricks Notebook
             type: normal
-            url: https://www.databricks.com/solutions/accelerators/medicare-risk-adjustment/  
-        - title: Toxicity Detection for Gaming
-          hide: yes
-          id: toxicity_detection_gaming
+            url: https://www.databricks.com/solutions/accelerators/medicare-risk-adjustment
+        - title: Knowledge Graph
+          id: knowledge_graph
           image: 
-              src: /assets/images/Extract_public_companies_key_data_10_filings.svg
-          excerpt: Foster healthier gaming communities with real-time detection of toxic language.
+              src: /assets/images/Detect_demographics_and_vital_signs_using_rules.svg
+          excerpt: Build patient cohorts by identifying commonalities between entities.
           actions:
           - text: Databricks Notebook
             type: normal
-            url: https://databricks.com/solutions/accelerators/toxicity-detection-for-gaming         
+            url: https://www.databricks.com/solutions/accelerators/cohort-building       
 ---

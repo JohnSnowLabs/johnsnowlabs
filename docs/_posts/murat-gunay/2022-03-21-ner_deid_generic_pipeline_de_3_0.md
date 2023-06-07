@@ -47,6 +47,14 @@ val pipeline = new PretrainedPipeline("ner_deid_generic_pipeline", "de", "clinic
 
 pipeline.annotate("Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("de.med_ner.deid_generic.pipeline").predict("""Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.""")
+```
+
 </div>
 
 ## Results

@@ -89,6 +89,9 @@
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "risk_factors" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/risk_factors">Risk Factors</a>
           </li>
+          <li>
+            <a target="_blank" href="https://demo.johnsnowlabs.com/healthcare/MODELS/">Explore Healthcare NLP Models</a>
+          </li>
         </ul> 
         <ul class="acc-top"><li class="acc-top-item">Voice of Patients<i class="fas fa-chevron-down"></i></li></ul>
         <ul class="acc-body">          
@@ -115,15 +118,18 @@
       <div class="col-side">   
         <ul class="acc-top"><li class="acc-top-item">Medical Large Language Models<i class="fas fa-chevron-down"></i></li></ul>
         <ul class="acc-body">
-          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "medical_question_answering" %} class="active"  {% endif %} {% endfor %} {% endif %} >
-            <a href="/medical_question_answering">Medical Question Answering</a>
-          </li>
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "medical_text_generation" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/medical_text_generation">Medical Text Generation</a>
           </li>
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "medical_text_summarization" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/medical_text_summarization">Medical Text Summarization</a>
-          </li>   
+          </li>
+          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "medical_question_answering" %} class="active"  {% endif %} {% endfor %} {% endif %} >
+            <a href="/medical_question_answering">Medical Question Answering</a>
+          </li>  
+          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "explore_medical_llm" %} class="active"  {% endif %} {% endfor %} {% endif %} >
+            <a href="/explore_medical_llm">Explore Medical LLM</a>
+          </li> 
         </ul>  
         <ul class="acc-top"><li class="acc-top-item">Biomedical NLP<i class="fas fa-chevron-down"></i></li></ul>
         <ul class="acc-body">       
@@ -186,9 +192,6 @@
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "financial_deidentification" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/financial_deidentification">Financial Deidentification</a>
           </li>
-          <li data-hide="hide" {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "financial_table_understanding" %} class="active"  {% endif %} {% endfor %} {% endif %} >
-            <a href="/financial_table_understanding">Understand Tables</a>
-          </li>
           <li data-hide="hide" {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "financial_visual_document_classification" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/financial_visual_document_classification">Financial Visual Document Classification</a>
           </li>
@@ -200,6 +203,9 @@
           </li>
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "financial_question_answering" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/financial_question_answering">Financial Question Answering</a>
+          </li>
+          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "finance_models" %} class="active"  {% endif %} {% endfor %} {% endif %} >
+            <a href="/finance_models">Finance Models</a>
           </li>
         </ul>
         <ul class="acc-top"><li class="acc-top-item">Legal NLP<i class="fas fa-chevron-down"></i></li></ul>
@@ -230,6 +236,9 @@
           </li>
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "legal_question_answering" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/legal_question_answering">Legal Question Answering</a>
+          </li>
+          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "legal_models" %} class="active"  {% endif %} {% endfor %} {% endif %} >
+            <a href="/legal_models">Legal Models</a>
           </li>
         </ul>   
       </div>

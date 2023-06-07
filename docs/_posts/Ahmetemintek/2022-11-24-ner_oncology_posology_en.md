@@ -127,6 +127,14 @@ val data = Seq("The patient underwent a regimen consisting of adriamycin (60 mg/
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.oncology_posology").predict("""The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.""")
+```
+
 </div>
 
 ## Results
