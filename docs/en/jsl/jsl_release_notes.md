@@ -20,6 +20,7 @@ Release date: 7-06-2023
 
 The John Snow Labs 4.4.7 Library released with the following pre-installed and recommended dependencies
 
+
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_release_notes)        | `4.4.2` |
