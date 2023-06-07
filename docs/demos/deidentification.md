@@ -45,6 +45,30 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/DEID_PHI_TEXT_MULTI.ipynb   
+        - title: Detect PHI Entities from Deidentification (Arabic)
+          id: detect_phi_entities_deidentification_arabic
+          image: 
+              src: /assets/images/Detect_PHI_for_Deidentification.svg
+          excerpt: Detect protected health information in Arabic clinical documents using Spark NLP models, identifying up to 17 entities.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS_AR/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.1.Clinical_Multi_Language_Deidentification.ipynb
+        - title: Consistency on Deidentification
+          id: consistency_deidentification
+          image: 
+              src: /assets/images/Consistency_on_Deidentification.svg
+          excerpt: Our De-Identification process shown in this demo ensures data clarity, usability and consistency while prioritizing privacy and security.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/DEIDENTIFICATION_CONSISTENCY/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb
         - title: Deidentify structured data
           id: deidentify_structured_data
           image: 
@@ -56,7 +80,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/DEID_EHR_DATA
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/DEID_EHR_DATA.ipynb    
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/DEID_EHR_DATA.ipynb   
         - title: Deidentify DICOM documents
           id: deidentify_dicom_documents
           image: 
