@@ -118,6 +118,9 @@
       <div class="col-side">   
         <ul class="acc-top"><li class="acc-top-item">Medical Large Language Models<i class="fas fa-chevron-down"></i></li></ul>
         <ul class="acc-body">
+          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "explore_medical_llm" %} class="active"  {% endif %} {% endfor %} {% endif %} >
+            <a href="/explore_medical_llm">Explore Medical LLM</a>
+          </li>
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "medical_text_generation" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/medical_text_generation">Medical Text Generation</a>
           </li>
@@ -127,9 +130,6 @@
           <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "medical_question_answering" %} class="active"  {% endif %} {% endfor %} {% endif %} >
             <a href="/medical_question_answering">Medical Question Answering</a>
           </li>  
-          <li {% if _section.secheader %} {% for child in _section.secheader %} {% if child.activemenu == "explore_medical_llm" %} class="active"  {% endif %} {% endfor %} {% endif %} >
-            <a href="/explore_medical_llm">Explore Medical LLM</a>
-          </li> 
         </ul>  
         <ul class="acc-top"><li class="acc-top-item">Biomedical NLP<i class="fas fa-chevron-down"></i></li></ul>
         <ul class="acc-body">       
