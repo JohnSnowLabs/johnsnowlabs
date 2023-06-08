@@ -40,7 +40,7 @@
     <script data-url_root="../../../../../../" id="documentation_options" src="../../../../../../static/documentation_options.js"></script>
     <script src="../../../../../../static/jquery.js"></script>
     <script src="../../../../../../static/underscore.js"></script>
-    <script src="../../../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
@@ -329,6 +329,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../ner/medical_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.medical_ner</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_chunker</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/ner_converter_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_converter_internal</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../ner/ner_template_render/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.ner_template_render</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../ner/zero_shot_ner/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.zero_shot_ner</span></code></a></li>
 </ul>
 </li>
@@ -338,7 +339,7 @@ document.write(`
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../qa/gpt_generation_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.gpt_generation_params</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../qa/beam_search_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.beam_search_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qa/medical_qa/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.medical_qa</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../qa/qa_ner_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.qa.qa_ner_generator</span></code></a></li>
 </ul>
@@ -370,6 +371,7 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
@@ -430,6 +432,7 @@ document.write(`
                   
   <section id="module-sparknlp_jsl.annotator.chunker.chunkmapper">
 <span id="sparknlp-jsl-annotator-chunker-chunkmapper"></span><h1><a class="reference internal" href="#module-sparknlp_jsl.annotator.chunker.chunkmapper" title="sparknlp_jsl.annotator.chunker.chunkmapper"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker.chunkmapper</span></code></a><a class="headerlink" href="#module-sparknlp_jsl.annotator.chunker.chunkmapper" title="Permalink to this heading">#</a></h1>
+<p>ChunkMapper class</p>
 <section id="module-contents">
 <h2>Module Contents<a class="headerlink" href="#module-contents" title="Permalink to this heading">#</a></h2>
 <section id="classes">
@@ -437,10 +440,10 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams" title="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChunkMapperFuzzyMatchingParams</span></code></a></p></td>
-<td><p></p></td>
+<td><p>Contains shared parameters of FuzzyMatching annotators.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams" title="sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CommonChunkMapperParams</span></code></a></p></td>
-<td><p></p></td>
+<td><p>CommonChunkMapperParams</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperApproach" title="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperApproach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChunkMapperApproach</span></code></a></p></td>
 <td><p>The chunk mapper Approach load a JsonDictionary that have the relations to be mapped in the ChunkMapperModel</p></td>
@@ -453,7 +456,8 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ChunkMapperFuzzyMatchingParams</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams" title="Permalink to this definition">#</a></dt>
-<dd><dl class="py attribute">
+<dd><p>Contains shared parameters of FuzzyMatching annotators.</p>
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.enableTokenFingerprintMatching">
 <span class="sig-name descname"><span class="pre">enableTokenFingerprintMatching</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.enableTokenFingerprintMatching"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.enableTokenFingerprintMatching" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -520,75 +524,162 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setEnableTokenFingerprintMatching">
-<span class="sig-name descname"><span class="pre">setEnableTokenFingerprintMatching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setEnableTokenFingerprintMatching"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setEnableTokenFingerprintMatching" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setEnableTokenFingerprintMatching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setEnableTokenFingerprintMatching"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setEnableTokenFingerprintMatching" title="Permalink to this definition">#</a></dt>
+<dd><p>Whether to apply partial token Ngram fingerprint matching.</p>
+<p>This will create matching keys with partial Ngrams driven by three params:
+- minTokenNgramFingerprint
+- maxTokenNgramFingerprint
+- maxTokenNgramDropping</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>etfm (bool): Whether to apply partial token Ngram fingerprint matching.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setEnableCharFingerprintMatching">
 <span class="sig-name descname"><span class="pre">setEnableCharFingerprintMatching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ecfm</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setEnableCharFingerprintMatching"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setEnableCharFingerprintMatching" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Whether to apply char Ngram fingerprint matching.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ecfm (bool): Whether to apply char Ngram fingerprint matching.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setEnableFuzzyMatching">
-<span class="sig-name descname"><span class="pre">setEnableFuzzyMatching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">efm</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setEnableFuzzyMatching"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setEnableFuzzyMatching" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setEnableFuzzyMatching</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">efm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setEnableFuzzyMatching"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setEnableFuzzyMatching" title="Permalink to this definition">#</a></dt>
+<dd><p>Whether to apply fuzzy matching.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>efm (bool): Whether to apply fuzzy matching.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxTokenNgramFingerprint">
-<span class="sig-name descname"><span class="pre">setMaxTokenNgramFingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mxtnf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMaxTokenNgramFingerprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxTokenNgramFingerprint" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setMaxTokenNgramFingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mxtnf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMaxTokenNgramFingerprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxTokenNgramFingerprint" title="Permalink to this definition">#</a></dt>
+<dd><p>The max number of tokens for partial Ngrams in Fingerprint.</p>
+<p>The parameter enableTokenFingerprintMatching must be set to true.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>mxtnf (int): The max number of tokens for partial Ngrams in Fingerprint.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMinTokenNgramFingerprint">
-<span class="sig-name descname"><span class="pre">setMinTokenNgramFingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mntnf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMinTokenNgramFingerprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMinTokenNgramFingerprint" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setMinTokenNgramFingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mntnf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMinTokenNgramFingerprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMinTokenNgramFingerprint" title="Permalink to this definition">#</a></dt>
+<dd><p>The min number of tokens for partial Ngrams in Fingerprint.</p>
+<p>The parameter enableTokenFingerprintMatching must be set to true.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>mntnf (int): The min number of tokens for partial Ngrams in Fingerprint.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingTokens">
-<span class="sig-name descname"><span class="pre">setMaxTokenNgramDroppingTokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingTokens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingTokens" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setMaxTokenNgramDroppingTokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingTokens"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingTokens" title="Permalink to this definition">#</a></dt>
+<dd><p>Maximum number of tokens allowed to be dropped from the full chunk.</p>
+<p>The parameter enableTokenNgramMatching must be set to true.
+Whenever it is desired for all Ngrams to be used as keys, no matter how short the final
+chunk may be, this parameter should be set to a very high value: e.g., <cite>sys.maxsize</cite>.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>etd (int): Maximum number of tokens allowed to be dropped from the full chunk.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingCharsRatio">
-<span class="sig-name descname"><span class="pre">setMaxTokenNgramDroppingCharsRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingCharsRatio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingCharsRatio" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setMaxTokenNgramDroppingCharsRatio</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingCharsRatio"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingCharsRatio" title="Permalink to this definition">#</a></dt>
+<dd><p>Maximum amount of tokens to allow dropping based on the maximum ratio of chars allowed to be dropped from the full chunk.</p>
+<p>The parameter enableTokenNgramMatching must be set to true.
+Whenever it is desired for all Ngrams to be used as keys, no matter how short the
+final chunk is, this param should be set to 1.0.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>etd (float): Maximum amount of tokens to allow dropping based on the maximum ratio of chars allowed to be dropped from the full chunk.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingOperator">
-<span class="sig-name descname"><span class="pre">setMaxTokenNgramDroppingOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingOperator" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setMaxTokenNgramDroppingOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingOperator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxTokenNgramDroppingOperator" title="Permalink to this definition">#</a></dt>
+<dd><p>Maximum amount of tokens to allow dropping based on the maximum ratio of chars allowed to be dropped from the full chunk.</p>
+<p>The parameter enableTokenNgramMatching must be set to true.
+Whenever it is desired for all Ngrams to be used as keys, no matter how short, this
+param should be set to <cite>1.0</cite>.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>etd (float): Maximum amount of tokens to allow dropping based on the maximum ratio of chars allowed to be dropped from the full chunk.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxCharNgramFingerprint">
-<span class="sig-name descname"><span class="pre">setMaxCharNgramFingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMaxCharNgramFingerprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxCharNgramFingerprint" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setMaxCharNgramFingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMaxCharNgramFingerprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMaxCharNgramFingerprint" title="Permalink to this definition">#</a></dt>
+<dd><p>Maximum number of chars for Ngrams in Fingerprint.</p>
+<p>The parameter enableCharFingerprintMatching must be set to true.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>etfm (int): Maximum number of chars for Ngrams in Fingerprint.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMinCharNgramFingerprint">
-<span class="sig-name descname"><span class="pre">setMinCharNgramFingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMinCharNgramFingerprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMinCharNgramFingerprint" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setMinCharNgramFingerprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setMinCharNgramFingerprint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setMinCharNgramFingerprint" title="Permalink to this definition">#</a></dt>
+<dd><p>Minimum number of chars for Ngrams in Fingerprint.</p>
+<p>The parameter enableCharFingerprintMatching must be set to true.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>etfm (int): Minimum number of chars for Ngrams in Fingerprint.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setFuzzyMatchingDistances">
-<span class="sig-name descname"><span class="pre">setFuzzyMatchingDistances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setFuzzyMatchingDistances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setFuzzyMatchingDistances" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<span class="sig-name descname"><span class="pre">setFuzzyMatchingDistances</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmd</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setFuzzyMatchingDistances"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setFuzzyMatchingDistances" title="Permalink to this definition">#</a></dt>
+<dd><p>Distance function to use for fuzzy matching.</p>
+<p>The parameter enableFuzzyMatching must be set to true.</p>
+<p>Possible values are: levenshtein, longest-common-subsequence, cosine, and/or jaccard.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>fmd (str or list): Distance function(s) to use for fuzzy matching.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setFuzzyMatchingDistanceThresholds">
 <span class="sig-name descname"><span class="pre">setFuzzyMatchingDistanceThresholds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fmdth</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setFuzzyMatchingDistanceThresholds"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setFuzzyMatchingDistanceThresholds" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Thresholds for fuzzy matching.</p>
+<p>The parameter enableFuzzyMatching must be set to true.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>fmdth (float or list): Threshold(s) for fuzzy matching.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setFuzzyDistanceScalingMode">
 <span class="sig-name descname"><span class="pre">setFuzzyDistanceScalingMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fdsm</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperFuzzyMatchingParams.setFuzzyDistanceScalingMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperFuzzyMatchingParams.setFuzzyDistanceScalingMode" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Scaling mode for Integer Edit Distances.</p>
+<p>Possible values are: left, right, long, short, none.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>fdsm (str): Scaling mode for Integer Edit Distances.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CommonChunkMapperParams</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#CommonChunkMapperParams"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams" title="Permalink to this definition">#</a></dt>
-<dd><dl class="py attribute">
+<dd><p>CommonChunkMapperParams</p>
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams.allowMultiTokenChunk">
 <span class="sig-name descname"><span class="pre">allowMultiTokenChunk</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#CommonChunkMapperParams.allowMultiTokenChunk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams.allowMultiTokenChunk" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -616,49 +707,51 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams.setAllowMultiTokenChunk">
 <span class="sig-name descname"><span class="pre">setAllowMultiTokenChunk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#CommonChunkMapperParams.setAllowMultiTokenChunk"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams.setAllowMultiTokenChunk" title="Permalink to this definition">#</a></dt>
-<dd><p>Whether  if we skip relations with multitokens
-Parameters
-———-
-mc : bool</p>
-<blockquote>
-<div><p>“Whether  to decide if we want to send multi-chunk tokens or only single token chunks</p>
-</div></blockquote>
+<dd><p>Whether to skip relations with multitokens.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>mc (bool): Whether to skip relations with multitokens.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams.setMultivaluesRelations">
 <span class="sig-name descname"><span class="pre">setMultivaluesRelations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#CommonChunkMapperParams.setMultivaluesRelations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams.setMultivaluesRelations" title="Permalink to this definition">#</a></dt>
-<dd><p>Whether  to decide if we want to send multi-chunk tokens or only single token chunks
-Parameters
-———-</p>
-<blockquote>
-<div><dl class="simple">
-<dt>mc<span class="classifier">bool</span></dt><dd><p>“Whether  to decide if we want to send multi-chunk tokens or only single token chunks</p>
+<dd><p>Whether to send multi-chunk tokens or only single token chunks.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>mc (bool): Whether to send multi-chunk tokens or only single token chunks.</p>
 </dd>
 </dl>
-</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams.setRel">
 <span class="sig-name descname"><span class="pre">setRel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#CommonChunkMapperParams.setRel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams.setRel" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the relation for the model.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>r (str): Relation for the model.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams.setRels">
 <span class="sig-name descname"><span class="pre">setRels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#CommonChunkMapperParams.setRels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams.setRels" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the relations to be mapped in the dictionary.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>rs (list): relations to be mapped in the dictionary.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams.setLowerCase">
 <span class="sig-name descname"><span class="pre">setLowerCase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#CommonChunkMapperParams.setLowerCase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.CommonChunkMapperParams.setLowerCase" title="Permalink to this definition">#</a></dt>
-<dd><p>Set if we want to save the keys of the dictionary in lower case or not
-Parameters
-———-
-lc : bool</p>
-<blockquote>
-<div><p>Parameter that select if you want to use the keys in lower case or not</p>
-</div></blockquote>
+<dd><p>Whether to save the keys of the dictionary in lower case or not.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>lc (bool): True to use the keys in lower case; False to save in the original casing.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -701,13 +794,32 @@ lc : bool</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.base</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">documenter</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;documents&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetector</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;documents&quot;</span><span class="p">)</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">)</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;tokens&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">])</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">()</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;ner_posology_large&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">])</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;ner&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner_chunks&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">chunkerMapperapproach</span> <span class="o">=</span> <span class="n">ChunkMapperApproach</span><span class="p">()</span>    <span class="o">...</span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;ner_chunk&quot;</span><span class="p">])</span>    <span class="o">...</span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;mappings&quot;</span><span class="p">)</span>    <span class="o">...</span>    <span class="o">.</span><span class="n">setDictionary</span><span class="p">(</span><span class="s2">&quot;/home/jsl/mappings2.json&quot;</span><span class="p">)</span>     <span class="o">...</span>    <span class="o">.</span><span class="n">setRels</span><span class="p">([</span><span class="s2">&quot;action&quot;</span><span class="p">])</span>     <span class="o">&gt;&gt;&gt;</span> <span class="n">sampleData</span> <span class="o">=</span> <span class="s2">&quot;The patient was given Warfarina Lusa and amlodipine 10 MG.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">documenter</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;documents&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetector</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;documents&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;tokens&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">()</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;ner_posology_large&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;ner&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner_chunks&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chunkerMapperapproach</span> <span class="o">=</span> <span class="n">ChunkMapperApproach</span><span class="p">()</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;ner_chunk&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;mappings&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setDictionary</span><span class="p">(</span><span class="s2">&quot;/home/jsl/mappings2.json&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setRels</span><span class="p">([</span><span class="s2">&quot;action&quot;</span><span class="p">])</span> \
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sampleData</span> <span class="o">=</span> <span class="s2">&quot;The patient was given Warfarina Lusa and amlodipine 10 MG.&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">()</span><span class="o">.</span><span class="n">setStages</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="n">documenter</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">sentence_detector</span><span class="p">,</span>
@@ -801,13 +913,32 @@ path : str</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.base</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">documenter</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;documents&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetector</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;documents&quot;</span><span class="p">)</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">)</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;tokens&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">()</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">])</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">()</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;ner_posology_large&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">])</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;ner&quot;</span><span class="p">)</span>    <span class="o">...</span>     <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner_chunks&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">chunkerMapperapproach</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">()</span>    <span class="o">...</span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">()</span>    <span class="o">...</span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;ner_chunk&quot;</span><span class="p">])</span>    <span class="o">...</span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;mappings&quot;</span><span class="p">)</span>    <span class="o">...</span>    <span class="o">.</span><span class="n">setRels</span><span class="p">([</span><span class="s2">&quot;action&quot;</span><span class="p">])</span>     <span class="o">&gt;&gt;&gt;</span> <span class="n">sampleData</span> <span class="o">=</span> <span class="s2">&quot;The patient was given Warfarina Lusa and amlodipine 10 MG.&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">documenter</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;documents&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetector</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;documents&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;tokens&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">()</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;ner_posology_large&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;sentences&quot;</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">,</span> <span class="s2">&quot;ner&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner_chunks&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chunkerMapperapproach</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">()</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">pretrained</span><span class="p">()</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;ner_chunk&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;mappings&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setRels</span><span class="p">([</span><span class="s2">&quot;action&quot;</span><span class="p">])</span> \
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sampleData</span> <span class="o">=</span> <span class="s2">&quot;The patient was given Warfarina Lusa and amlodipine 10 MG.&quot;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">()</span><span class="o">.</span><span class="n">setStages</span><span class="p">([</span>
 <span class="gp">... </span>    <span class="n">documenter</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">sentence_detector</span><span class="p">,</span>
@@ -816,7 +947,10 @@ path : str</p>
 <span class="gp">... </span>    <span class="n">ner_model</span><span class="p">,</span>
 <span class="gp">... </span>    <span class="n">ner_converter</span><span class="p">])</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">results</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;explode(drug_chunk_embeddings) AS drug_chunk&quot;</span><span class="p">)</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;drug_chunk.result&quot;</span><span class="p">,</span> <span class="s2">&quot;slice(drug_chunk.embeddings, 1, 5) AS drug_embedding&quot;</span><span class="p">)</span>     <span class="o">...</span>     <span class="o">.</span><span class="n">cache</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">results</span> <span class="o">=</span> <span class="n">results</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;explode(drug_chunk_embeddings) AS drug_chunk&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;drug_chunk.result&quot;</span><span class="p">,</span> <span class="s2">&quot;slice(drug_chunk.embeddings, 1, 5) AS drug_embedding&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">cache</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">results</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="go">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
 <span class="go">|mappings                                                                                                                                                                                                                                                                                                                                                                                               |</span>
@@ -848,11 +982,11 @@ path : str</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperModel.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperModel.pretrained" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'drug_action_treatment_mapper'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/chunker/chunkmapper.html#ChunkMapperModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperModel.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Download a pre-trained ChunkMapperModel.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model.
-lang (str): Language of the pre-trained model.
+<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model, by default “drug_action_treatment_mapper”
+lang (str): Language of the pre-trained model, by default “en”
 remote_loc (str): Remote location of the pre-trained model. If None, use the
 open-source location. Other values are “clinical/models”,
 “finance/models”, or “legal/models”.</p>
@@ -964,6 +1098,15 @@ open-source location. Other values are “clinical/models”,
 </li>
 </ul>
   </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../../../../../../_sources/reference/autosummary/sparknlp_jsl/annotator/chunker/chunkmapper/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
 </div></div>
               
             
@@ -988,8 +1131,7 @@ open-source location. Other values are “clinical/models”,
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>
