@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: Annotation Lab | John Snow Labs
+seotitle: NLP Lab | John Snow Labs
 title: Training Parameters  
 permalink: /docs/en/alab/transfer_learning
 key: docs-training
