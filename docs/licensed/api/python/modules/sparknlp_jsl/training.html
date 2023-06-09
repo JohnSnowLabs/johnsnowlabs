@@ -39,7 +39,7 @@
     <script data-url_root="../../" id="documentation_options" src="../../static/documentation_options.js"></script>
     <script src="../../static/jquery.js"></script>
     <script src="../../static/underscore.js"></script>
-    <script src="../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../static/doctools.js"></script>
     <script src="../../static/sphinx_highlight.js"></script>
     <script src="../../static/toggleprompt.js"></script>
@@ -523,11 +523,15 @@ document.write(`
 
 
 <div class="viewcode-block" id="CodiEspReader"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/training/index.html#sparknlp_jsl.training.CodiEspReader">[docs]</a><span class="k">class</span> <span class="nc">CodiEspReader</span><span class="p">(</span><span class="n">ExtendedJavaWrapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parser for the CodiEsp dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;IOB&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CodiEspReader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;com.johnsnowlabs.nlp.training.CodiEspReader&quot;</span><span class="p">,</span> <span class="n">scheme</span><span class="p">)</span>
 
 <div class="viewcode-block" id="CodiEspReader.readDatasetTaskX"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/training/index.html#sparknlp_jsl.training.CodiEspReader.readDatasetTaskX">[docs]</a>    <span class="k">def</span> <span class="nf">readDatasetTaskX</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spark</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">textFolder</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">):</span>
-        <span class="c1"># ToDo Replace with std pyspark</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reads the CodiEsp dataset into a spark data frame.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: Replace with std pyspark</span>
         <span class="n">jSession</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">_jsparkSession</span>
 
         <span class="n">jdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_java_obj</span><span class="o">.</span><span class="n">readDatasetTaskX</span><span class="p">(</span><span class="n">jSession</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">textFolder</span><span class="p">,</span> <span class="n">sep</span><span class="p">)</span>
@@ -536,11 +540,15 @@ document.write(`
 
 
 <div class="viewcode-block" id="CantemistReader"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/training/index.html#sparknlp_jsl.training.CantemistReader">[docs]</a><span class="k">class</span> <span class="nc">CantemistReader</span><span class="p">(</span><span class="n">ExtendedJavaWrapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Parser for the Cantemist dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s2">&quot;IOB&quot;</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">CantemistReader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;com.johnsnowlabs.nlp.training.CantemistReader&quot;</span><span class="p">,</span> <span class="n">scheme</span><span class="p">)</span>
 
 <div class="viewcode-block" id="CantemistReader.readDatasetTaskNer"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/training/index.html#sparknlp_jsl.training.CantemistReader.readDatasetTaskNer">[docs]</a>    <span class="k">def</span> <span class="nf">readDatasetTaskNer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spark</span><span class="p">,</span> <span class="n">textFolder</span><span class="p">):</span>
-        <span class="c1"># ToDo Replace with std pyspark</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reads the Cantemist dataset into a spark data frame.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># TODO: Replace with std pyspark</span>
         <span class="n">jSession</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">_jsparkSession</span>
 
         <span class="n">jdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_java_obj</span><span class="o">.</span><span class="n">readDatasetTaskNer</span><span class="p">(</span><span class="n">jSession</span><span class="p">,</span> <span class="n">textFolder</span><span class="p">)</span>
@@ -553,6 +561,8 @@ document.write(`
 
 
 <div class="viewcode-block" id="SynonymAugmentationUMLS"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/training/index.html#sparknlp_jsl.training.SynonymAugmentationUMLS">[docs]</a><span class="k">class</span> <span class="nc">SynonymAugmentationUMLS</span><span class="p">(</span><span class="n">ExtendedJavaWrapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Augments datasets with synonyms from UMLS.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spark</span><span class="p">,</span> <span class="n">umls_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">code_col</span><span class="o">=</span><span class="s2">&quot;code&quot;</span><span class="p">,</span> <span class="n">description_col</span><span class="o">=</span><span class="s2">&quot;description&quot;</span><span class="p">,</span> <span class="n">case_sensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_spark</span> <span class="o">=</span> <span class="n">spark</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SynonymAugmentationUMLS</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;com.johnsnowlabs.nlp.training.SynonymAugmentationUMLS&quot;</span><span class="p">,</span>
@@ -561,6 +571,8 @@ document.write(`
 <div class="viewcode-block" id="SynonymAugmentationUMLS.augmentCsv"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/training/index.html#sparknlp_jsl.training.SynonymAugmentationUMLS.augmentCsv">[docs]</a>    <span class="k">def</span> <span class="nf">augmentCsv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">corpus_csv_path</span><span class="p">,</span> <span class="n">ner_pipeline</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;ENG&quot;</span><span class="p">,</span> <span class="n">do_product</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                    <span class="n">augmentation_mode</span><span class="o">=</span><span class="s2">&quot;plain_text&quot;</span><span class="p">,</span> <span class="n">synonym_source</span><span class="o">=</span><span class="s2">&quot;umls&quot;</span><span class="p">,</span> <span class="n">regex_parsers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                    <span class="n">euclidean_distance_threshold</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">cosine_distance_threshold</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">synonym_limit</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">casing_functions</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Augment based on CSV file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">regex_parsers</span><span class="p">,</span> <span class="n">casing_functions</span> <span class="o">=</span> <span class="n">regex_parsers</span> <span class="ow">or</span> <span class="p">[],</span> <span class="n">casing_functions</span> <span class="ow">or</span> <span class="p">[</span><span class="s1">&#39;infer&#39;</span><span class="p">]</span>
         <span class="n">jdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_java_obj</span><span class="o">.</span><span class="n">augmentCsv</span><span class="p">(</span><span class="n">corpus_csv_path</span><span class="p">,</span> <span class="n">ner_pipeline</span><span class="o">.</span><span class="n">_to_java</span><span class="p">(),</span> <span class="n">language</span><span class="p">,</span> <span class="n">do_product</span><span class="p">,</span>
                                         <span class="n">augmentation_mode</span><span class="p">,</span> <span class="n">synonym_source</span><span class="p">,</span> <span class="n">regex_parsers</span><span class="p">,</span>
@@ -570,6 +582,8 @@ document.write(`
 <div class="viewcode-block" id="SynonymAugmentationUMLS.augmentDataFrame"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/training/index.html#sparknlp_jsl.training.SynonymAugmentationUMLS.augmentDataFrame">[docs]</a>    <span class="k">def</span> <span class="nf">augmentDataFrame</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">corpus_df</span><span class="p">,</span> <span class="n">ner_pipeline</span><span class="p">,</span> <span class="n">language</span><span class="o">=</span><span class="s2">&quot;ENG&quot;</span><span class="p">,</span> <span class="n">do_product</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                          <span class="n">augmentation_mode</span><span class="o">=</span><span class="s2">&quot;plain_text&quot;</span><span class="p">,</span> <span class="n">synonym_source</span><span class="o">=</span><span class="s2">&quot;umls&quot;</span><span class="p">,</span> <span class="n">regex_parsers</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
                          <span class="n">euclidean_distance_threshold</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">cosine_distance_threshold</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">synonym_limit</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">casing_functions</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Augment based on Spark Dataframe.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">regex_parsers</span><span class="p">,</span> <span class="n">casing_functions</span> <span class="o">=</span> <span class="n">regex_parsers</span> <span class="ow">or</span> <span class="p">[],</span> <span class="n">casing_functions</span> <span class="ow">or</span> <span class="p">[</span><span class="s1">&#39;infer&#39;</span><span class="p">]</span>
         <span class="n">jdf</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_java_obj</span><span class="o">.</span><span class="n">augmentDataFrame</span><span class="p">(</span><span class="n">corpus_df</span><span class="o">.</span><span class="n">_jdf</span><span class="p">,</span> <span class="n">ner_pipeline</span><span class="o">.</span><span class="n">_to_java</span><span class="p">(),</span> <span class="n">language</span><span class="p">,</span> <span class="n">do_product</span><span class="p">,</span>
                                               <span class="n">augmentation_mode</span><span class="p">,</span> <span class="n">synonym_source</span><span class="p">,</span> <span class="n">regex_parsers</span><span class="p">,</span>
@@ -758,8 +772,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>

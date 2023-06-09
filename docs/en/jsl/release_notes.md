@@ -13,6 +13,802 @@ sidebar:
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
+## NLU Version 4.2.1
+
+Bugfixes for saving and reloading pipelines on databricks 
+
+## NLU Version 4.2.0
+
+
+## Support for Speech2Text, Images-Classification, Tabular Data, Zero-Shot-NER,  via Wav2Vec2, Tapas, VIT , 4000+ New Models, 90+ Languages,   in John Snow Labs  NLU 4.2.0
+
+
+We are incredibly excited to announce NLU 4.2.0 has been released with new 4000+ models in 90+ languages and support for new 8 Deep Learning Architectures.
+4 new tasks are included for the very first time,
+**Zero-Shot-NER**, **Automatic Speech Recognition**, **Image Classification** and **Table Question Answering** powered
+by [Wav2Vec 2.0](https://arxiv.org/pdf/2006.11477.pdf), [HuBERT](https://arxiv.org/abs/2106.07447),  [TAPAS](https://aclanthology.org/2020.acl-main.398.pdf), [VIT](https://arxiv.org/pdf/2010.11929.pdf), [SWIN](https://arxiv.org/abs/2103.14030), [Zero-Shot-NER](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#zeroshotnermodel).
+
+Additionally, [CamemBERT](https://arxiv.org/abs/1911.03894) based architectures are available for Sequence and Token Classification powered by Spark-NLPs
+[CamemBertForSequenceClassification](https://nlp.johnsnowlabs.com/docs/en/transformers#camembertforsequenceclassification) and [CamemBertForTokenClassification](https://nlp.johnsnowlabs.com/docs/en/transformers#camembertfortokenclassification)
+
+# Automatic Speech Recognition  (ASR)
+[Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/automatic_speech_recognition/automatic_speech_recognition_overview_ASR.ipynb)
+[Wav2Vec 2.0](https://arxiv.org/pdf/2006.11477.pdf) and [HuBERT](https://arxiv.org/abs/2106.07447)  enable ASR for the very first time in NLU.
+**Wav2Vec2** is a transformer model for speech recognition that uses unsupervised pre-training on large amounts of unlabeled speech data to improve the accuracy of automatic speech recognition (ASR) systems. It is based on a self-supervised learning approach that learns to predict masked portions of speech signal, and has shown promising results in reducing the amount of labeled training data required for ASR tasks.
+
+These Models are powered by Spark-NLP's [Wav2Vec2ForCTC Annotator](https://nlp.johnsnowlabs.com/docs/en/transformers#wav2vec2forctc)
+![Wav2Vec2](https://user-images.githubusercontent.com/5762953/192140859-f165317e-4a8f-4b32-9d11-6063db19c503.png)
+
+**HuBERT** models match or surpass the SOTA approaches for speech representation learning for speech recognition, generation, and compression. The Hidden-Unit BERT (HuBERT) approach was proposed for self-supervised speech representation learning, which utilizes an offline clustering step to provide aligned target labels for a BERT-like prediction loss.
+
+These Models is powered by Spark-NLP's [HubertForCTC Annotator](https://nlp.johnsnowlabs.com/docs/en/transformers#hubertforctc)
+
+![HUBERT](https://user-images.githubusercontent.com/5762953/217865459-375756c3-a110-4917-8319-1deecb55304d.png)
+
+**Usage**
+
+You just need an audio-file on disk and pass the path to it or a folder of audio-files.
+
+```python
+import nlu
+# Let's download an audio file 
+!wget https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/resources/en/audio/samples/wavs/ngm_12484_01067234848.wav
+# Let's listen to it 
+from IPython.display import Audio
+FILE_PATH = "ngm_12484_01067234848.wav"
+asr_df = nlu.load('en.speech2text.wav2vec2.v2_base_960h').predict('ngm_12484_01067234848.wav')
+asr_df
+```
+
+| text                                          |
+|:---------------------------------------------|
+| PEOPLE WHO DIED WHILE LIVING IN OTHER PLACES |
+
+
+
+To test out **HuBERT** you just need to update the parameter for `load()`
+```python
+asr_df = nlu.load('en.speech2text.hubert').predict('ngm_12484_01067234848.wav')
+asr_df
+```
+
+
+# Image Classification
+[Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb)
+
+For the first time ever NLU introduces state-of-the-art image classifiers based on   
+[VIT](https://arxiv.org/pdf/2010.11929.pdf) and [Swin](https://arxiv.org/abs/2103.14030) giving you access to hundreds of image classifiers for various domains.
+
+Inspired by the Transformer scaling successes in NLP, the researchers experimented with applying a standard Transformer directly to images, with the fewest possible modifications. To do so, images are split into patches and the sequence of linear embeddings of these patches were provided as an input to a Transformer. Image patches were actually treated the same way as tokens (words) in an NLP application. Image classification models were trained in supervised fashion.
+
+You can check [Scale Vision Transformers (ViT) Beyond Hugging Face](https://hackernoon.com/scale-vision-transformers-vit-beyond-hugging-face) article to learn deeper how ViT works and how it is implemeted in Spark NLP.
+This is Powerd by Spark-NLP's [VitForImageClassification Annotator](https://nlp.johnsnowlabs.com/docs/en/transformers#vitforimageclassification)
+
+![VIT](https://camo.githubusercontent.com/b27f01b616e81636a6135573bbf37a006619ab0853f7dd55ea4fb0e9e89dd33d/68747470733a2f2f692e696d6775722e636f6d2f676e31736369742e706e67)
+
+
+Swin is a hierarchical Transformer whose representation is computed with Shifted windows.
+The shifted windowing scheme brings greater efficiency by limiting self-attention computation to non-overlapping local windows while also allowing for cross-window connection.
+This hierarchical architecture has the flexibility to model at various scales and has linear computational complexity  with respect to image size. These qualities of Swin Transformer make it compatible with a broad range of vision tasks
+This is powerd by Spark-NLP's [Swin For Image Classification](https://nlp.johnsnowlabs.com/docs/en/transformers#swinforimageclassification)
+[Swin Transformer: Hierarchical Vision Transformer using Shifted Windows](https://arxiv.org/abs/2103.14030) by Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, Baining Guo.
+
+![swin](https://user-images.githubusercontent.com/5762953/217882453-bfc4d585-f21b-4401-bdcb-14788973c159.png)
+
+**Usage:**
+```python
+# Download an image
+os.system('wget https://raw.githubusercontent.com/JohnSnowLabs/nlu/release/4.2.0/tests/datasets/ocr/vit/ox.jpg') 
+# Load VIT model and predict on image file
+vit = nlu.load('en.classify_image.base_patch16_224').predict('ox.jpg')
+```
+
+Lets download a folder of images and predict on it
+```python 
+!wget -q https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/resources/en/images/images.zip
+import shutil
+shutil.unpack_archive("images.zip", "images", "zip")
+! ls /content/images/images/
+```
+
+Once we have image data its easy to label it, we just pass the folder with images to nlu.predict()
+and NLU will return a pandas DF with one row per image detected
+```python
+nlu.load('en.classify_image.base_patch16_224').predict('/content/images/images')
+```
+
+
+![image_classification 1.png](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_2_0/image_classification.png)
+
+
+To use **SWIN** we just update the parameter to `load()`
+```python
+load('en.classify_image.swin.tiny').predict('/content/images/images')
+```
+
+-----------
+
+
+# Visual Table Question Answering
+TapasForQuestionAnswering can load TAPAS Models with a cell selection head and optional aggregation head on top for question-answering tasks on tables (linear layers on top of the hidden-states output to compute logits and optional logits_aggregation), e.g. for SQA, WTQ or WikiSQL-supervised tasks. TAPAS is a BERT-based model specifically designed (and pre-trained) for answering questions about tabular data.
+
+[Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb)
+
+Powered by [TAPAS: Weakly Supervised Table Parsing via Pre-training](https://aclanthology.org/2020.acl-main.398.pdf)
+![TAPAS](https://user-images.githubusercontent.com/5762953/192140733-e08a1e99-0aee-455d-af29-73af497a03ef.png)
+
+**Usage:**
+
+First we need a pandas dataframe on for which we want to ask questions. The so called "context"
+```python
+import pandas as pd 
+
+context_df = pd.DataFrame({
+    'name':['Donald Trump','Elon Musk'], 
+    'money': ['$100,000,000','$20,000,000,000,000'], 
+    'married': ['yes','no'], 
+    'age' : ['75','55'] })
+context_df
+
+```
+
+Then we create an array of questions
+```python
+questions = [
+    "Who earns less than 200,000,000?",
+    "Who earns more than 200,000,000?",
+    "Who earns 100,000,000?",
+    "How much money has Donald Trump?",
+    "Who is the youngest?",
+]
+questions
+
+```
+
+Now Combine the data, pass it to NLU and get answers for your questions
+```python
+import nlu
+# Now we combine both to a tuple and we are done! We can now pass this to the .predict() method
+tapas_data  = (context_df, questions)
+# Lets load a TAPAS QA model and predict on (context,question). 
+# It will give us an aswer for every question in the questions array, based on the context in context_df
+answers = nlu.load('en.answer_question.tapas.wtq.large_finetuned').predict(tapas_data)
+answers
+```
+
+| sentence                         | tapas_qa_UNIQUE_aggregation   | tapas_qa_UNIQUE_answer   | tapas_qa_UNIQUE_cell_positions   |   tapas_qa_UNIQUE_cell_scores | tapas_qa_UNIQUE_origin_question   |
+|:---------------------------------|:------------------------------|:-------------------------|:---------------------------------|------------------------------:|:----------------------------------|
+| Who earns less than 200,000,000? | NONE                          | Donald Trump             | [0, 0]                           |                             1 | Who earns less than 200,000,000?  |
+| Who earns more than 200,000,000? | NONE                          | Elon Musk                | [0, 1]                           |                             1 | Who earns more than 200,000,000?  |
+| Who earns 100,000,000?           | NONE                          | Donald Trump             | [0, 0]                           |                             1 | Who earns 100,000,000?            |
+| How much money has Donald Trump? | SUM                           | SUM($100,000,000)        | [1, 0]                           |                             1 | How much money has Donald Trump?  |
+| Who is the youngest?             | NONE                          | Elon Musk                | [0, 1]                           |                             1 | Who is the youngest?              |
+
+
+-----
+
+## Zero-Shot NER
+
+[Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/medical_named_entity_recognition/zero_shot_ner.ipynb)
+Based on John Snow Labs Enterprise-NLP [ZeroShotNerModel](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#zeroshotnermodel)
+This architecture is based on `RoBertaForQuestionAnswering`.
+Zero shot models excel at generalization, meaning that the model can accurately predict entities in very different data sets without the need to fine tune the model or train from scratch for each different domain.
+Even though a model trained to solve a specific problem can achieve better accuracy than a zero-shot model in this specific task,
+it probably won’t be be useful in a different task.
+That is where zero-shot models shows its usefulness by being able to achieve good results in various domains.
+
+**Usage:**
+
+We just need to load the zero-shot NER model and configure a set of entity definitions.
+```python
+import nlu 
+# load zero-shot ner model
+enterprise_zero_shot_ner = nlu.load('en.zero_shot.ner_roberta')
+
+# Configure entity definitions
+enterprise_zero_shot_ner['zero_shot_ner'].setEntityDefinitions(
+    {
+        "PROBLEM": [
+            "What is the disease?",
+            "What is his symptom?",
+            "What is her disease?",
+            "What is his disease?",
+            "What is the problem?",
+            "What does a patient suffer",
+            "What was the reason that the patient is admitted to the clinic?",
+        ],
+        "DRUG": [
+            "Which drug?",
+            "Which is the drug?",
+            "What is the drug?",
+            "Which drug does he use?",
+            "Which drug does she use?",
+            "Which drug do I use?",
+            "Which drug is prescribed for a symptom?",
+        ],
+        "ADMISSION_DATE": ["When did patient admitted to a clinic?"],
+        "PATIENT_AGE": [
+            "How old is the patient?",
+            "What is the gae of the patient?",
+        ],
+    }
+)
+
+```
+
+Then we can already use this pipeline to predict labels
+```python
+# Predict entities
+df = enterprise_zero_shot_ner.predict(
+    [
+        "The doctor pescribed Majezik for my severe headache.",
+        "The patient was admitted to the hospital for his colon cancer.",
+        "27 years old patient was admitted to clinic on Sep 1st by Dr."+
+        "X for a right-sided pleural effusion for thoracentesis.",
+    ]
+)
+df
+```
+
+| document                                                                                                              | entities_zero_shot                               | entities_zero_shot_class   |   entities_zero_shot_confidence |   entities_zero_shot_origin_chunk |   entities_zero_shot_origin_sentence |
+|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------|:---------------------------|--------------------------------:|----------------------------------:|-------------------------------------:|
+| The doctor pescribed Majezik for my severe headache.                                                                  | Majezik                                          | DRUG                       |                        0.646716 |                                 0 |                                    0 |
+| The doctor pescribed Majezik for my severe headache.                                                                  | severe headache                                  | PROBLEM                    |                        0.552635 |                                 1 |                                    0 |
+| The patient was admitted to the hospital for his colon cancer.                                                        | colon cancer                                     | PROBLEM                    |                        0.88985  |                                 0 |                                    0 |
+| 27 years old patient was admitted to clinic on Sep 1st by Dr. X for a right-sided pleural effusion for thoracentesis. | 27 years old                                     | PATIENT_AGE                |                        0.694308 |                                 0 |                                    0 |
+| 27 years old patient was admitted to clinic on Sep 1st by Dr. X for a right-sided pleural effusion for thoracentesis. | Sep 1st                                          | ADMISSION_DATE             |                        0.956461 |                                 1 |                                    0 |
+| 27 years old patient was admitted to clinic on Sep 1st by Dr. X for a right-sided pleural effusion for thoracentesis. | a right-sided pleural effusion for thoracentesis | PROBLEM                    |                        0.500266 |                                 2 |                                    0 |
+
+------ 
+
+# New Notebooks
+- [Image Classification with VIT and Swin](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb)
+- [Zero-Shot-NER](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/medical_named_entity_recognition/zero_shot_ner.ipynb)
+- [Table Question Answering with TAPAS](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb)
+- [Automatic Speech Recognition with Wav2Vec2 and HuBERT ](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/automatic_speech_recognition/automatic_speech_recognition_overview_ASR.ipynb)
+
+
+
+
+# New Models Overview
+
+Supported Languages are:
+`ab`, `am`, `ar`, `ba`, `bem`, `bg`, `bn`, `ca`, `co`, `cs`, `da`, `de`, `dv`, `el`, `en`, `es`, `et`, `eu`, `fa`, `fi`, `fon`, `fr`, `fy`, `ga`, `gam`, `gl`, `gu`, `ha`, `he`, `hi`, `hr`, `hu`, `id`, `ig`, `is`, `it`, `ja`, `jv`, `kin`, `kn`, `ko`, `kr`, `ku`, `ky`, `la`, `lg`, `lo`, `lt`, `lu`, `luo`, `lv`, `lwt`, `ml`, `mn`, `mr`, `ms`, `mt`, `nb`, `nl`, `no`, `pcm`, `pl`, `pt`, `ro`, `ru`, `rw`, `sg`, `si`, `sk`, `sl`, `sq`, `st`, `su`, `sv`, `sw`, `swa`, `ta`, `te`, `th`, `ti`, `tl`, `tn`, `tr`, `tt`, `tw`, `uk`, `unk`, `ur`, `uz`, `vi`, `wo`, `xx`, `yo`, `yue`, `zh`, `zu`
+
+
+
+# Automatic Speech Recognition Models Overview
+
+
+| Language | NLU Reference                                                                                                                                                           | Spark NLP  Reference                                                                                                                                                     | Annotator Class |
+|:---------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------|
+| ab       | [ab.speech2text.wav2vec_xlsr.gpu.by_hf_test](https://nlp.johnsnowlabs.com/2022/09/26/asr_xls_r_ab_test_by_hf_test_gpu_ab.html)                                          | [asr_xls_r_ab_test_by_hf_test_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_xls_r_ab_test_by_hf_test_gpu_ab.html)                                                     | Wav2Vec2ForCTC  |
+| ba       | [ba.speech2text.wav2vec_xlsr.v2_large_300m_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xls_r_300m_bashkir_cv7_opt_gpu_ba.html)                      | [asr_wav2vec2_large_xls_r_300m_bashkir_cv7_opt_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xls_r_300m_bashkir_cv7_opt_gpu_ba.html)                   | Wav2Vec2ForCTC  |
+| bem      | [bem.speech2text.wav2vec_xlsr.v2_large_gpu.by_csikasote](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_bemba_gpu_bem.html)                            | [asr_wav2vec2_large_xlsr_bemba_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_bemba_gpu_bem.html)                                                  | Wav2Vec2ForCTC  |
+| bg       | [bg.speech2text.wav2vec_xlsr.v2_large_300m_d2_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xls_r_300m_d2_gpu_bg.html)                                | [asr_wav2vec2_large_xls_r_300m_d2_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xls_r_300m_d2_gpu_bg.html)                                             | Wav2Vec2ForCTC  |
+| ca       | [ca.speech2text.wav2vec2.voxpopuli.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_100k_voxpopuli_catala_by_ccoreilly_gpu_ca.html)             | [asr_wav2vec2_large_100k_voxpopuli_catala_by_ccoreilly_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_100k_voxpopuli_catala_by_ccoreilly_gpu_ca.html)   | Wav2Vec2ForCTC  |
+| cs       | [cs.speech2text.wav2vec_xlsr.v2_large.by_arampacha](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_czech_cs.html)                                      | [asr_wav2vec2_large_xlsr_czech](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_czech_cs.html)                                                           | Wav2Vec2ForCTC  |
+| da       | [da.speech2text.wav2vec2.v2_base](https://nlp.johnsnowlabs.com/2022/09/25/asr_alvenir_wav2vec2_base_nst_cv9_da.html)                                                    | [asr_alvenir_wav2vec2_base_nst_cv9](https://nlp.johnsnowlabs.com/2022/09/25/asr_alvenir_wav2vec2_base_nst_cv9_da.html)                                                   | Wav2Vec2ForCTC  |
+| de       | [de.speech2text.wav2vec_xlsr.v3_large.by_marcel](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_german_demo_de.html)                                   | [asr_wav2vec2_large_xlsr_german_demo](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_german_demo_de.html)                                               | Wav2Vec2ForCTC  |
+| el       | [el.speech2text.wav2vec_xlsr.v3_large_gpu.by_skylord](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_greek_2_gpu_el.html)                              | [asr_wav2vec2_large_xlsr_greek_2_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_greek_2_gpu_el.html)                                               | Wav2Vec2ForCTC  |
+| en       | [en.speech2text.wav2vec_xlsr.v2gpu.by_bakhtullah123](https://nlp.johnsnowlabs.com/2022/09/25/asr_xlsr_training_gpu_en.html)                                             | [asr_xlsr_training_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_xlsr_training_gpu_en.html)                                                                           | Wav2Vec2ForCTC  |
+| fa       | [fa.speech2text.wav2vec2.v2_gpu_s117_exp](https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_pretraining_s117_gpu_fa.html)                                           | [asr_exp_w2v2t_pretraining_s117_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_pretraining_s117_gpu_fa.html)                                                 | Wav2Vec2ForCTC  |
+| fa       | [fa.speech2text.wav2vec_xlsr.v2_s44_exp](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xls_r_s44_fa.html)                                                       | [asr_exp_w2v2t_xls_r_s44](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xls_r_s44_fa.html)                                                                       | Wav2Vec2ForCTC  |
+| fi       | [fi.speech2text.wav2vec2.voxpopuli.v2_base](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_fi.html)                                            | [asr_wav2vec2_base_10k_voxpopuli](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_fi.html)                                                       | Wav2Vec2ForCTC  |
+| fi       | [fi.speech2text.wav2vec_xlsrby_aapot](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_xlsr_1b_finnish_lm_by_aapot_fi.html)                                         | [asr_wav2vec2_xlsr_1b_finnish_lm_by_aapot](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_xlsr_1b_finnish_lm_by_aapot_fi.html)                                     | Wav2Vec2ForCTC  |
+| fon      | [fon.speech2text.wav2vec_xlsr](https://nlp.johnsnowlabs.com/2022/09/24/asr_fonxlsr_fon.html)                                                                            | [asr_fonxlsr](https://nlp.johnsnowlabs.com/2022/09/24/asr_fonxlsr_fon.html)                                                                                              | Wav2Vec2ForCTC  |
+| fr       | [fr.speech2text.wav2vec_xlsr.v2_s800_exp](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s800_fr.html)                                                   | [asr_exp_w2v2t_xlsr_53_s800](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s800_fr.html)                                                                 | Wav2Vec2ForCTC  |
+| gu       | [gu.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_gpu_gu.html)                                                 | [asr_wav2vec2_large_xlsr_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_gpu_gu.html)                                                               | Wav2Vec2ForCTC  |
+| hi       | [hi.speech2text.wav2vec2.by_harveenchadha](https://nlp.johnsnowlabs.com/2022/09/26/asr_hindi_model_with_lm_vakyansh_hi.html)                                            | [asr_hindi_model_with_lm_vakyansh](https://nlp.johnsnowlabs.com/2022/09/26/asr_hindi_model_with_lm_vakyansh_hi.html)                                                     | Wav2Vec2ForCTC  |
+| hi       | [hi.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_hindi_gpu_hi.html)                                           | [asr_wav2vec2_large_xlsr_hindi_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_hindi_gpu_hi.html)                                                   | Wav2Vec2ForCTC  |
+| hu       | [hu.speech2text.wav2vec2.voxpopuli.v2_base_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_gpu_hu.html)                                    | [asr_wav2vec2_base_10k_voxpopuli_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_gpu_hu.html)                                               | Wav2Vec2ForCTC  |
+| hu       | [hu.speech2text.wav2vec_xlsr.v2_large_gpu.by_gchhablani](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_gpu_hu.html)                                   | [asr_wav2vec2_large_xlsr_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_gpu_hu.html)                                                               | Wav2Vec2ForCTC  |
+| id       | [id.speech2text.wav2vec_xlsr.v2_s449_exp](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s449_id.html)                                                   | [asr_exp_w2v2t_xlsr_53_s449](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s449_id.html)                                                                 | Wav2Vec2ForCTC  |
+| it       | [it.speech2text.wav2vec2.v2_gpu_s149_vp_exp](https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_vp_100k_s149_gpu_it.html)                                            | [asr_exp_w2v2t_vp_100k_s149_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_vp_100k_s149_gpu_it.html)                                                         | Wav2Vec2ForCTC  |
+| it       | [it.speech2text.wav2vec_xlsr.v2_s417_exp](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xls_r_s417_it.html)                                                     | [asr_exp_w2v2t_xls_r_s417](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xls_r_s417_it.html)                                                                     | Wav2Vec2ForCTC  |
+| ja       | [ja.speech2text.wav2vec_xlsr.v2_large](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_japanese_hiragana_ja.html)                                       | [asr_wav2vec2_large_xlsr_japanese_hiragana](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_japanese_hiragana_ja.html)                                   | Wav2Vec2ForCTC  |
+| ko       | [ko.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_korean_gpu_ko.html)                                          | [asr_wav2vec2_large_xlsr_korean_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_korean_gpu_ko.html)                                                 | Wav2Vec2ForCTC  |
+| kr       | [kr.speech2text.wav2vec_xlsr.v2](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_xlsr_korean_senior_kr.html)                                                       | [asr_wav2vec2_xlsr_korean_senior](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_xlsr_korean_senior_kr.html)                                                       | Wav2Vec2ForCTC  |
+| kr       | [kr.speech2text.wav2vec_xlsr.v2_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_korean_senior_gpu_kr.html)                                               | [asr_wav2vec2_xlsr_korean_senior_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_korean_senior_gpu_kr.html)                                               | Wav2Vec2ForCTC  |
+| ku       | [ku.speech2text.wav2vec_xlsr.gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_xlsr_kurmanji_kurdish_gpu_ku.html)                                                        | [asr_xlsr_kurmanji_kurdish_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_xlsr_kurmanji_kurdish_gpu_ku.html)                                                           | Wav2Vec2ForCTC  |
+| ky       | [ky.speech2text.wav2vec_xlsr.v2_large](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_kyrgyz_ky.html)                                               | [asr_wav2vec2_large_xlsr_53_kyrgyz](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_kyrgyz_ky.html)                                                   | Wav2Vec2ForCTC  |
+| ky       | [ky.speech2text.wav2vec_xlsr.v2_large_gpu.by_iarfmoose](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_kyrgyz_by_iarfmoose_gpu_ky.html)                | [asr_wav2vec2_large_xlsr_kyrgyz_by_iarfmoose_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_kyrgyz_by_iarfmoose_gpu_ky.html)                       | Wav2Vec2ForCTC  |
+| la       | [la.speech2text.wav2vec2.v2_base](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_base_latin_la.html)                                                              | [asr_wav2vec2_base_latin](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_base_latin_la.html)                                                                       | Wav2Vec2ForCTC  |
+| la       | [la.speech2text.wav2vec2.v2_base_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_latin_gpu_la.html)                                                      | [asr_wav2vec2_base_latin_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_latin_gpu_la.html)                                                               | Wav2Vec2ForCTC  |
+| lg       | [lg.speech2text.wav2vec_xlsr.v2_multilingual_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_multilingual_56_gpu_lg.html)                                | [asr_wav2vec2_xlsr_multilingual_56_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_multilingual_56_gpu_lg.html)                                           | Wav2Vec2ForCTC  |
+| lt       | [lt.speech2text.wav2vec_xlsr.v2_large_gpu.by_dundar](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_53_lithuanian_by_dundar_gpu_lt.html)               | [asr_wav2vec2_large_xlsr_53_lithuanian_by_dundar_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_53_lithuanian_by_dundar_gpu_lt.html)               | Wav2Vec2ForCTC  |
+| lv       | [lv.speech2text.wav2vec_xlsr.v2_large](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_latvian_lv.html)                                              | [asr_wav2vec2_large_xlsr_53_latvian](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_latvian_lv.html)                                                 | Wav2Vec2ForCTC  |
+| lv       | [lv.speech2text.wav2vec_xlsr.v2_large_gpu.by_jimregan](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_latvian_gpu_lv.html)                             | [asr_wav2vec2_large_xlsr_latvian_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_latvian_gpu_lv.html)                                               | Wav2Vec2ForCTC  |
+| mn       | [mn.speech2text.wav2vec_xlsr.v2_large_gpu.by_manandey](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_mongolian_by_manandey_gpu_mn.html)               | [asr_wav2vec2_large_xlsr_mongolian_by_manandey_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_mongolian_by_manandey_gpu_mn.html)                   | Wav2Vec2ForCTC  |
+| nl       | [nl.speech2text.wav2vec_xlsr.v2_s972_exp](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s972_nl.html)                                                   | [asr_exp_w2v2t_xlsr_53_s972](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s972_nl.html)                                                                 | Wav2Vec2ForCTC  |
+| pt       | [pt.speech2text.wav2vec_xlsr.voxforge1.gpu.by_lgris](https://nlp.johnsnowlabs.com/2022/09/24/asr_bp_voxforge1_xlsr_gpu_pt.html)                                         | [asr_bp_voxforge1_xlsr_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_bp_voxforge1_xlsr_gpu_pt.html)                                                                   | Wav2Vec2ForCTC  |
+| ro       | [ro.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_romanian_by_gmihaila_gpu_ro.html)                         | [asr_wav2vec2_large_xlsr_53_romanian_by_gmihaila_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_romanian_by_gmihaila_gpu_ro.html)               | Wav2Vec2ForCTC  |
+| sg       | [sg.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_swiss_german_gpu_sg.html)                                 | [asr_wav2vec2_large_xlsr_53_swiss_german_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_swiss_german_gpu_sg.html)                               | Wav2Vec2ForCTC  |
+| su       | [su.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_sundanese_gpu_su.html)                                       | [asr_wav2vec2_large_xlsr_sundanese_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_sundanese_gpu_su.html)                                           | Wav2Vec2ForCTC  |
+| sv       | [sv.speech2text.wav2vec_xlsr.v2_large_gpu.by_marma](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_swedish_gpu_sv.html)                                | [asr_wav2vec2_large_xlsr_swedish_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_swedish_gpu_sv.html)                                               | Wav2Vec2ForCTC  |
+| tt       | [tt.speech2text.wav2vec_xlsr.v2_large_small](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_W2V2_TATAR_SMALL_tt.html)                               | [asr_wav2vec2_large_xlsr_53_W2V2_TATAR_SMALL](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_W2V2_TATAR_SMALL_tt.html)                               | Wav2Vec2ForCTC  |
+| tw       | [tw.speech2text.wav2vec_xlsr.v2](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2large_xlsr_akan_tw.html)                                                           | [asr_wav2vec2large_xlsr_akan](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2large_xlsr_akan_tw.html)                                                               | Wav2Vec2ForCTC  |
+| uz       | [uz.speech2text.wav2vec2](https://nlp.johnsnowlabs.com/2022/09/26/asr_uzbek_stt_uz.html)                                                                                | [asr_uzbek_stt](https://nlp.johnsnowlabs.com/2022/09/26/asr_uzbek_stt_uz.html)                                                                                           | Wav2Vec2ForCTC  |
+| vi       | [vi.speech2text.wav2vec_xlsr.v2_large_gpu.by_not_tanh](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_53_vietnamese_by_not_tanh_gpu_vi.html)           | [asr_wav2vec2_large_xlsr_53_vietnamese_by_not_tanh_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_53_vietnamese_by_not_tanh_gpu_vi.html)           | Wav2Vec2ForCTC  |
+| wo       | [wo.speech2text.wav2vec_xlsr.v2_300m_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_av2vec2_xls_r_300m_wolof_lm_gpu_wo.html)                                          | [asr_av2vec2_xls_r_300m_wolof_lm_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_av2vec2_xls_r_300m_wolof_lm_gpu_wo.html)                                               | Wav2Vec2ForCTC  |
+| yue      | [yue.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_cantonese_by_ctl_gpu_yue.html)                              | [asr_wav2vec2_large_xlsr_cantonese_by_ctl_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_cantonese_by_ctl_gpu_yue.html)                            | Wav2Vec2ForCTC  |
+
+
+
+# Image Classification Models Overview
+
+
+| Language | NLU Reference                                                                                                                                                                                                                                             | Spark NLP  Reference                                                                                                                                                                                                                                         | Annotator Class           |
+|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------|
+| en       | [en.classify_image.Check_GoodBad_Teeth](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_GoodBad_Teeth_en_3_0.html)                                                                                                                     | [image_classifier_vit_Check_GoodBad_Teeth](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_GoodBad_Teeth_en_3_0.html)                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.Check_Gum_Teeth](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_Gum_Teeth_en_3_0.html)                                                                                                                             | [image_classifier_vit_Check_Gum_Teeth](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_Gum_Teeth_en_3_0.html)                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.Check_Missing_Teeth](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_Missing_Teeth_en_3_0.html)                                                                                                                     | [image_classifier_vit_Check_Missing_Teeth](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_Missing_Teeth_en_3_0.html)                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.Infrastructures](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Infrastructures_en_3_0.html)                                                                                                                             | [image_classifier_vit_Infrastructures](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Infrastructures_en_3_0.html)                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.Insectodoptera](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Insectodoptera_en_3_0.html)                                                                                                                               | [image_classifier_vit_Insectodoptera](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Insectodoptera_en_3_0.html)                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.Tomato_Leaf_Classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Tomato_Leaf_Classifier_en_3_0.html)                                                                                                               | [image_classifier_vit_Tomato_Leaf_Classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Tomato_Leaf_Classifier_en_3_0.html)                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.Visual_transformer_chihuahua_cookies](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Visual_transformer_chihuahua_cookies_en_3_0.html)                                                                                   | [image_classifier_vit_Visual_transformer_chihuahua_cookies](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Visual_transformer_chihuahua_cookies_en_3_0.html)                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image._spectrogram](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit__spectrogram_en_3_0.html)                                                                                                                                   | [image_classifier_vit__spectrogram](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit__spectrogram_en_3_0.html)                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.age_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_age_classifier_en_3_0.html)                                                                                                                               | [image_classifier_vit_age_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_age_classifier_en_3_0.html)                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.airplanes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_airplanes_en_3_0.html)                                                                                                                                         | [image_classifier_vit_airplanes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_airplanes_en_3_0.html)                                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.animal_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_animal_classifier_en_3_0.html)                                                                                                                         | [image_classifier_vit_animal_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_animal_classifier_en_3_0.html)                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.anomaly](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_anomaly_en_3_0.html)                                                                                                                                             | [image_classifier_vit_anomaly](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_anomaly_en_3_0.html)                                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.apes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_apes_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_apes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_apes_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.autotrain_cifar10__base](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_autotrain_cifar10__base_en_3_0.html)                                                                                                             | [image_classifier_vit_autotrain_cifar10__base](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_autotrain_cifar10__base_en_3_0.html)                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.autotrain_dog_vs_food](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_autotrain_dog_vs_food_en_3_0.html)                                                                                                                 | [image_classifier_vit_autotrain_dog_vs_food](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_autotrain_dog_vs_food_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.baked_goods](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_baked_goods_en_3_0.html)                                                                                                                                     | [image_classifier_vit_baked_goods](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_baked_goods_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.base_beans](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_beans_en_3_0.html)                                                                                                                                       | [image_classifier_vit_base_beans](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_beans_en_3_0.html)                                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.base_cats_vs_dogs](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_cats_vs_dogs_en_3_0.html)                                                                                                                         | [image_classifier_vit_base_cats_vs_dogs](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_cats_vs_dogs_en_3_0.html)                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.base_cifar10](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_cifar10_en_3_0.html)                                                                                                                                   | [image_classifier_vit_base_cifar10](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_cifar10_en_3_0.html)                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.base_food101](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_food101_en_3_0.html)                                                                                                                                   | [image_classifier_vit_base_food101](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_food101_en_3_0.html)                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.base_movie_scenes_v1](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_movie_scenes_v1_en_3_0.html)                                                                                                                   | [image_classifier_vit_base_movie_scenes_v1](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_movie_scenes_v1_en_3_0.html)                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.base_mri](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_mri_en_3_0.html)                                                                                                                                           | [image_classifier_vit_base_mri](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_mri_en_3_0.html)                                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_en_3_0.html)                                                                                                                           | [image_classifier_vit_base_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224.by_google](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_en_3_0.html)                                                                                                                 | [image_classifier_vit_base_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224_cifar10](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_cifar10_en_3_0.html)                                                                                                           | [image_classifier_vit_base_patch16_224_cifar10](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_cifar10_en_3_0.html)                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224_finetuned_eurosat](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_finetuned_eurosat_en_3_0.html)                                                                                       | [image_classifier_vit_base_patch16_224_finetuned_eurosat](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_finetuned_eurosat_en_3_0.html)                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224_finetuned_kvasirv2_colonoscopy](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_finetuned_kvasirv2_colonoscopy_en_3_0.html)                                                             | [image_classifier_vit_base_patch16_224_finetuned_kvasirv2_colonoscopy](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_finetuned_kvasirv2_colonoscopy_en_3_0.html)                                                             | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224_in21k_snacks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_in21k_snacks_en_3_0.html)                                                                                                 | [image_classifier_vit_base_patch16_224_in21k_snacks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_in21k_snacks_en_3_0.html)                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224_in21k_ucSat](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_in21k_ucSat_en_3_0.html)                                                                                                   | [image_classifier_vit_base_patch16_224_in21k_ucSat](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_in21k_ucSat_en_3_0.html)                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224_recylce_ft](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_recylce_ft_en_3_0.html)                                                                                                     | [image_classifier_vit_base_patch16_224_recylce_ft](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_recylce_ft_en_3_0.html)                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_384](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_384_en_3_0.html)                                                                                                                           | [image_classifier_vit_base_patch16_384](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_384_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_384.by_google](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_384_en_3_0.html)                                                                                                                 | [image_classifier_vit_base_patch16_384](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_384_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_patch32_384.by_google](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch32_384_en_3_0.html)                                                                                                                 | [image_classifier_vit_base_patch32_384](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch32_384_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_xray_pneumonia](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_xray_pneumonia_en_3_0.html)                                                                                                                     | [image_classifier_vit_base_xray_pneumonia](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_xray_pneumonia_en_3_0.html)                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.baseball_stadium_foods](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_baseball_stadium_foods_en_3_0.html)                                                                                                               | [image_classifier_vit_baseball_stadium_foods](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_baseball_stadium_foods_en_3_0.html)                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.beer_vs_wine](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_beer_vs_wine_en_3_0.html)                                                                                                                                   | [image_classifier_vit_beer_vs_wine](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_beer_vs_wine_en_3_0.html)                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.beer_whisky_wine_detection](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_beer_whisky_wine_detection_en_3_0.html)                                                                                                       | [image_classifier_vit_beer_whisky_wine_detection](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_beer_whisky_wine_detection_en_3_0.html)                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.blocks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_blocks_en_3_0.html)                                                                                                                                               | [image_classifier_vit_blocks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_blocks_en_3_0.html)                                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.cifar10](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_cifar10_en_3_0.html)                                                                                                                                             | [image_classifier_vit_cifar10](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_cifar10_en_3_0.html)                                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.cifar_10_2](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_cifar_10_2_en_3_0.html)                                                                                                                                       | [image_classifier_vit_cifar_10_2](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_cifar_10_2_en_3_0.html)                                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.computer_stuff](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_computer_stuff_en_3_0.html)                                                                                                                               | [image_classifier_vit_computer_stuff](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_computer_stuff_en_3_0.html)                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.croupier_creature_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_croupier_creature_classifier_en_3_0.html)                                                                                                   | [image_classifier_vit_croupier_creature_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_croupier_creature_classifier_en_3_0.html)                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.deit_base_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_base_patch16_224_en_3_0.html)                                                                                                                 | [image_classifier_vit_deit_base_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_base_patch16_224_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.deit_base_patch16_224.by_facebook](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_base_patch16_224_en_3_0.html)                                                                                                     | [image_classifier_vit_deit_base_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_base_patch16_224_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.deit_flyswot](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_flyswot_en_3_0.html)                                                                                                                                   | [image_classifier_vit_deit_flyswot](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_flyswot_en_3_0.html)                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.deit_small_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_small_patch16_224_en_3_0.html)                                                                                                               | [image_classifier_vit_deit_small_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_small_patch16_224_en_3_0.html)                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.deit_small_patch16_224.by_facebook](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_small_patch16_224_en_3_0.html)                                                                                                   | [image_classifier_vit_deit_small_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_small_patch16_224_en_3_0.html)                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.deit_tiny_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_tiny_patch16_224_en_3_0.html)                                                                                                                 | [image_classifier_vit_deit_tiny_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_tiny_patch16_224_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.deit_tiny_patch16_224.by_facebook](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_tiny_patch16_224_en_3_0.html)                                                                                                     | [image_classifier_vit_deit_tiny_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_tiny_patch16_224_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.demo](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_demo_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_demo](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_demo_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.denver_nyc_paris](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_denver_nyc_paris_en_3_0.html)                                                                                                                           | [image_classifier_vit_denver_nyc_paris](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_denver_nyc_paris_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.diam](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_diam_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_diam](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_diam_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.digital](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_digital_en_3_0.html)                                                                                                                                             | [image_classifier_vit_digital](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_digital_en_3_0.html)                                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.dog](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_en_3_0.html)                                                                                                                                                     | [image_classifier_vit_dog](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_en_3_0.html)                                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.dog_breed_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_breed_classifier_en_3_0.html)                                                                                                                   | [image_classifier_vit_dog_breed_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_breed_classifier_en_3_0.html)                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.dog_food__base_patch16_224_in21k](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_food__base_patch16_224_in21k_en_3_0.html)                                                                                           | [image_classifier_vit_dog_food__base_patch16_224_in21k](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_food__base_patch16_224_in21k_en_3_0.html)                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.dog_races](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_races_en_3_0.html)                                                                                                                                         | [image_classifier_vit_dog_races](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_races_en_3_0.html)                                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.dog_vs_chicken](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_vs_chicken_en_3_0.html)                                                                                                                               | [image_classifier_vit_dog_vs_chicken](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_vs_chicken_en_3_0.html)                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.doggos_lol](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_doggos_lol_en_3_0.html)                                                                                                                                       | [image_classifier_vit_doggos_lol](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_doggos_lol_en_3_0.html)                                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.dogs](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dogs_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_dogs](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dogs_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.dwarf_goats](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dwarf_goats_en_3_0.html)                                                                                                                                     | [image_classifier_vit_dwarf_goats](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dwarf_goats_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.electric_2](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_electric_2_en_3_0.html)                                                                                                                                       | [image_classifier_vit_electric_2](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_electric_2_en_3_0.html)                                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.electric_pole_type_classification](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_electric_pole_type_classification_en_3_0.html)                                                                                         | [image_classifier_vit_electric_pole_type_classification](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_electric_pole_type_classification_en_3_0.html)                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.ex_for_evan](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_ex_for_evan_en_3_0.html)                                                                                                                                     | [image_classifier_vit_ex_for_evan](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_ex_for_evan_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.finetuned_eurosat_kornia](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_finetuned_eurosat_kornia_en_3_0.html)                                                                                                           | [image_classifier_vit_finetuned_eurosat_kornia](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_finetuned_eurosat_kornia_en_3_0.html)                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.flowers](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_flowers_en_3_0.html)                                                                                                                                             | [image_classifier_vit_flowers](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_flowers_en_3_0.html)                                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.food](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_food_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_food](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_food_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.fruits](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_fruits_en_3_0.html)                                                                                                                                               | [image_classifier_vit_fruits](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_fruits_en_3_0.html)                                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.garbage_classification](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_garbage_classification_en_3_0.html)                                                                                                               | [image_classifier_vit_garbage_classification](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_garbage_classification_en_3_0.html)                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.grain](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_grain_en_3_0.html)                                                                                                                                                 | [image_classifier_vit_grain](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_grain_en_3_0.html)                                                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.greens](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_greens_en_3_0.html)                                                                                                                                               | [image_classifier_vit_greens](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_greens_en_3_0.html)                                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.hot_dog_or_sandwich](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hot_dog_or_sandwich_en_3_0.html)                                                                                                                     | [image_classifier_vit_hot_dog_or_sandwich](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hot_dog_or_sandwich_en_3_0.html)                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.hotdog_not_hotdog](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hotdog_not_hotdog_en_3_0.html)                                                                                                                         | [image_classifier_vit_hotdog_not_hotdog](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hotdog_not_hotdog_en_3_0.html)                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.housing_categories](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_housing_categories_en_3_0.html)                                                                                                                       | [image_classifier_vit_housing_categories](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_housing_categories_en_3_0.html)                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.hugging_geese](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hugging_geese_en_3_0.html)                                                                                                                                 | [image_classifier_vit_hugging_geese](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hugging_geese_en_3_0.html)                                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.ice_cream](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_ice_cream_en_3_0.html)                                                                                                                                         | [image_classifier_vit_ice_cream](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_ice_cream_en_3_0.html)                                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.iiif_manuscript_](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_iiif_manuscript__en_3_0.html)                                                                                                                           | [image_classifier_vit_iiif_manuscript_](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_iiif_manuscript__en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.indian_snacks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_indian_snacks_en_3_0.html)                                                                                                                                 | [image_classifier_vit_indian_snacks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_indian_snacks_en_3_0.html)                                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.koala_panda_wombat](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_koala_panda_wombat_en_3_0.html)                                                                                                                       | [image_classifier_vit_koala_panda_wombat](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_koala_panda_wombat_en_3_0.html)                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.lawn_weeds](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lawn_weeds_en_3_0.html)                                                                                                                                       | [image_classifier_vit_lawn_weeds](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lawn_weeds_en_3_0.html)                                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.llama_alpaca_guanaco_vicuna](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_alpaca_guanaco_vicuna_en_3_0.html)                                                                                                     | [image_classifier_vit_llama_alpaca_guanaco_vicuna](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_alpaca_guanaco_vicuna_en_3_0.html)                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.llama_alpaca_snake](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_alpaca_snake_en_3_0.html)                                                                                                                       | [image_classifier_vit_llama_alpaca_snake](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_alpaca_snake_en_3_0.html)                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.llama_or_potato](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_or_potato_en_3_0.html)                                                                                                                             | [image_classifier_vit_llama_or_potato](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_or_potato_en_3_0.html)                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.llama_or_what](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_or_what_en_3_0.html)                                                                                                                                 | [image_classifier_vit_llama_or_what](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_or_what_en_3_0.html)                                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.lotr](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lotr_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_lotr](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lotr_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.lucky_model](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lucky_model_en_3_0.html)                                                                                                                                     | [image_classifier_vit_lucky_model](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lucky_model_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.lung_cancer](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lung_cancer_en_3_0.html)                                                                                                                                     | [image_classifier_vit_lung_cancer](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lung_cancer_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.mit_indoor_scenes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_mit_indoor_scenes_en_3_0.html)                                                                                                                         | [image_classifier_vit_mit_indoor_scenes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_mit_indoor_scenes_en_3_0.html)                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.modelversion01](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_modelversion01_en_3_0.html)                                                                                                                               | [image_classifier_vit_modelversion01](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_modelversion01_en_3_0.html)                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.my_bean_VIT](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_my_bean_VIT_en_3_0.html)                                                                                                                                     | [image_classifier_vit_my_bean_VIT](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_my_bean_VIT_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.new_york_tokyo_london](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_new_york_tokyo_london_en_3_0.html)                                                                                                                 | [image_classifier_vit_new_york_tokyo_london](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_new_york_tokyo_london_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.occupation_prediction](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_occupation_prediction_en_3_0.html)                                                                                                                 | [image_classifier_vit_occupation_prediction](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_occupation_prediction_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.opencampus_age_detection](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_opencampus_age_detection_en_3_0.html)                                                                                                           | [image_classifier_vit_opencampus_age_detection](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_opencampus_age_detection_en_3_0.html)                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.orcs_and_friends](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_orcs_and_friends_en_3_0.html)                                                                                                                           | [image_classifier_vit_orcs_and_friends](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_orcs_and_friends_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.oz_fauna](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_oz_fauna_en_3_0.html)                                                                                                                                           | [image_classifier_vit_oz_fauna](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_oz_fauna_en_3_0.html)                                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.pasta_pizza_ravioli](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_pasta_pizza_ravioli_en_3_0.html)                                                                                                                     | [image_classifier_vit_pasta_pizza_ravioli](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_pasta_pizza_ravioli_en_3_0.html)                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.pasta_shapes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_pasta_shapes_en_3_0.html)                                                                                                                                   | [image_classifier_vit_pasta_shapes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_pasta_shapes_en_3_0.html)                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.places](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_places_en_3_0.html)                                                                                                                                               | [image_classifier_vit_places](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_places_en_3_0.html)                                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.planes_airlines](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_planes_airlines_en_3_0.html)                                                                                                                             | [image_classifier_vit_planes_airlines](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_planes_airlines_en_3_0.html)                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.planes_trains_automobiles](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_planes_trains_automobiles_en_3_0.html)                                                                                                         | [image_classifier_vit_planes_trains_automobiles](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_planes_trains_automobiles_en_3_0.html)                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.puppies_classify](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_puppies_classify_en_3_0.html)                                                                                                                           | [image_classifier_vit_puppies_classify](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_puppies_classify_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.rare_bottle](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_rare_bottle_en_3_0.html)                                                                                                                                     | [image_classifier_vit_rare_bottle](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_rare_bottle_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.roomclassifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_roomclassifier_en_3_0.html)                                                                                                                               | [image_classifier_vit_roomclassifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_roomclassifier_en_3_0.html)                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.rust_image_classification_1](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_rust_image_classification_1_en_3_0.html)                                                                                                     | [image_classifier_vit_rust_image_classification_1](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_rust_image_classification_1_en_3_0.html)                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.skin_type](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_skin_type_en_3_0.html)                                                                                                                                         | [image_classifier_vit_skin_type](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_skin_type_en_3_0.html)                                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.snacks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_snacks_en_3_0.html)                                                                                                                                               | [image_classifier_vit_snacks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_snacks_en_3_0.html)                                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.south_indian_foods](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_south_indian_foods_en_3_0.html)                                                                                                                       | [image_classifier_vit_south_indian_foods](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_south_indian_foods_en_3_0.html)                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.string_instrument_detector](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_string_instrument_detector_en_3_0.html)                                                                                                       | [image_classifier_vit_string_instrument_detector](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_string_instrument_detector_en_3_0.html)                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.vc_bantai__withoutAMBI_adunest](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_vc_bantai__withoutAMBI_adunest_en_3_0.html)                                                                                               | [image_classifier_vit_vc_bantai__withoutAMBI_adunest](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_vc_bantai__withoutAMBI_adunest_en_3_0.html)                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.trainer_rare_puppers](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_trainer_rare_puppers_en_3_0.html)                                                                                                                   | [image_classifier_vit_trainer_rare_puppers](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_trainer_rare_puppers_en_3_0.html)                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.world_landmarks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_world_landmarks_en_3_0.html)                                                                                                                             | [image_classifier_vit_world_landmarks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_world_landmarks_en_3_0.html)                                                                                                                             | ViTForImageClassification |
+
+
+
+
+---------------------------------------- 
+---------------------------------------- 
+
+
+
+
+## NLU Version 4.1.0
+Approximately 1000 new state-of-the-art transformer models for Question Answering (QA)  for over 10 languages, up to 700% speedup on GPU, 100+ Embeddings such as Bert, Bert Sentence, CamemBert, DistilBert, Roberta, Roberta Sentence, Universal Sentence Encoder, Word, XLM Roberta, XLM Roberta Sentence, 40 sequence classification models, +400 token classification  odels for over 10 languages various Spark NLP helper methods and much more in 1 line of code with John Snow Labs NLU 4.1.0
+
+---------------------------------------- 
+#### NLU 4.1.0 Core Overview
+
+- On the NLU core side we have over 1000 new state-of-the-art models in over 10 languages.
+
+- Additionally up to 700% speedup **transformer-based Word Embeddings** on **GPU** and up to **97% speedup on CPU** for **tensorflow operations**, support for Apple M1 chips, Pyspark 3.2 and 3.3 support.
+  Ontop of this, we are now supporting Apple M1 based architectures and every Pyspark 3.X version, while deprecating support for Pyspark 2.X.
+
+- Finally, NLU-Core features various new helper methods for working with Spark NLP and embellishes now the entire universe of Annotators defined by Spark NLP.
+
+
+-----------------------------
+
+#### NLU captures every Annotator of Spark NLP
+
+The entire universe of Annotators in Spark NLP  is now embellished by NLU Components by using generalizable annotation extractors methods and configs internally to support enable the new NLU util methods.
+The following annotator classes are newly captured:
+
+- BertEmbeddings[release_notes.md](release_notes.md)
+- BertForQuestionAnswering
+- BertForSequenceClassification
+- BertForTokenClassification
+- BertSentenceEmbeddings
+- CamemBertEmbeddings
+- ClassifierDLModel
+- ContextSpellCheckerModel
+- DistilBertEmbeddings
+- DistilBertForSequenceClassification
+- DistilBertForTokenClassification
+- LemmatizerModel
+- LongformerForTokenClassification
+- NerCrfModel
+- NerDLModel
+- PerceptronModel
+- RoBertaEmbeddings
+- RoBertaForQuestionAnswering
+- RoBertaForSequenceClassification
+- RoBertaForTokenClassification
+- RoBertaSentenceEmbeddings
+- SentenceDetectorDLModel
+- StopWordsCleaner
+- T5Transformer
+- UniversalSentenceEncoder
+- WordEmbeddingsModel
+- XlmRoBertaEmbeddings
+- XlmRoBertaForTokenClassification
+- XlmRoBertaSentenceEmbeddings
+
+-------------------- 
+
+#### Embeddings
+
+Embeddings provides dense vector representations for natural language by using a deep, pre-trained neural network with the Transformer architecture. On the NLU core side we have over 150 new embeddings models. We have new BertEmbeddings, BertSentenceEmbeddings, CamemBertEmbeddings, DistilBertEmbeddings, RoBertaEmbeddings, UniversalSentenceEncoder, XlmRoBertaEmbeddings, XlmRoBertaSentenceEmbeddings for in different languages.
+
+- German BertEmbeddings
+
+```python
+
+nlu.load("de.embed.electra.base").predict("""Ich liebe Spark NLP""")
+
+```
+
+
+|   token  | word_embedding_electra   |
+|-----------------------------------------:|:--------------------------|
+|      Ich | -0.09518987685441971, -0.016133345663547516                 |
+|   liebe | -0.07025116682052612, -0.35387516021728516                  |
+| Spark   | -0.33390265703201294, 0.08874476701021194 |
+| NLP     | -0.2969835698604584, 0.1980721354484558 |
+
+
+- English BertEmbeddings
+
+```python
+
+text = ["I love NLP"]
+df = nlu.load('en.embed_sentence.bert.pubmed').predict(text, output_level='token')
+df
+
+```
+
+
+|   token  | sentence_embedding_bert   |
+|-----------------------------------------:|:--------------------------|
+|      I | -0.06332794576883316, -0.5097940564155579                 |
+|   love | -0.06332794576883316, -0.5097940564155579                  |
+| NLP  | -0.06332794576883316, -0.5097940564155579 |
+
+
+- Japan BertEmbeddings
+
+```python
+
+nlu.load("ja.embed.bert.base").predict("""私はSpark NLPを愛しています""")
+
+```
+
+
+|   token  | word_embedding_bert   |
+|-----------------------------------------:|:--------------------------|
+|      私はSpark | 0.3989057242870331, -0.20664098858833313                 |
+|   NLPを愛しています | 0.05264343321323395, -0.19963961839675903                  |
+
+
+- XLM RoBerta Embeddings MultiLanguage
+
+```python
+
+text = ["I love NLP", "Me encanta usar SparkNLP"]
+embeddings_df = nlu.load('xx.embed.xlmr_roberta.base_v2').predict(text, output_level='sentence')
+embeddings_df
+
+```
+
+
+|   sentence  | word_embedding_xlmr_roberta  |
+|-----------------------------------------:|:--------------------------|
+|      I love NLP | -0.07450243085622787, 0.022609828040003777                 |
+|  Me encanta usar SparkNLP | 0.0961054190993309, 0.03734250366687775                  |
+
+
+- RoBerta Embeddings English
+
+```python
+
+text = ["""I love Spark NLP"""]
+embeddings_df = nlu.load('en.embed.roberta').predict(text, output_level='token')
+embeddings_df
+
+```
+
+|   token  | word_embedding_roberta   |
+|-----------------------------------------:|:--------------------------|
+|      I | -0.06406927853822708, 0.16723069548606873                 |
+|   love | -0.06369957327842712, 0.21014901995658875                  |
+| Spark   | -0.1004200279712677, 0.03312099352478981 |
+| NLP     | -0.09467814117670059, -0.02236207202076912 |
+
+
+#### Question Answering
+
+Question Answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. On the NLU core side we have over 200+ new question answering models.
+
+
+- Bert For Question Answering
+
+```python
+
+nlu.load("answer_question.bert.base_uncased.by_ksabeh").predict("""What is my name?|||"My name is Clara and I live in Berkeley.""")
+
+```
+
+|   answer_confidence  | context   | question |
+|-----------------------------------------:|:--------------------------:|:---------------------- |
+|      0.3143375 | "My name is Clara and I live in Berkeley.  |    What is my name?       |
+
+
+#### Sequence Classification
+
+Sequence classification is the task of predicting a class label given a sequence of observations. On the NLU core side we have over 40 new sequence classification models.
+
+
+- Bert For Sequence Classification
+
+```python
+
+nlu.load("classify.bert.by_mrm8488").predict("""Camera - You are awarded a SiPix Digital Camera! call 09061221066 from landline. Delivery within 28 days.""")
+
+```
+
+|   classified_sequence  | classified_sequence_confidence   | sentence |
+|-----------------------------------------:|:--------------------------:|:---------------------- |
+|      1 | 0.89954  |    Camera - You are awarded a SiPix Digital Camera! call 09061221066 from landline.       |
+|     0   |     0.93745     |                        Delivery within 28 days.         |
+
+
+- DistilBert For Sequence Classification
+
+```python
+
+nlu.load("de.classify.distil_bert.base").predict("Natürlich kann ich von zuwanderern mehr erwarten. muss ich sogar. sie müssen die sprache lernen, sie müssen die gepflogenheiten lernen und sich in die gesellschaft einfügen. dass muss ich nicht weil ich mich schon in die gesellschaft eingefügt habe. egal wo du hin ziehst, nirgendwo wird dir soviel zucker in den arsch geblasen wie in deutschland.")
+
+```
+
+|   classified_sequence  | classified_sequence_confidence   | sentence |
+|-----------------------------------------:|:--------------------------:|:---------------------- |
+|   non_toxic | 0.955292  |    Natürlich kann ich von zuwanderern mehr erwarten.       |
+|    non_toxic  |     0.968591     |   muss ich sogar.         |
+|    non_toxic  |     0.841958     |   sie müssen die sprache lernen, sie müssen die gepflogenheiten lernen und sich in die gesellschaft einfügen.         |
+|    non_toxic  |     0.934119     |   dass muss ich nicht weil ich mich schon in die gesellschaft eingefügt habe.         |
+|    non_toxic  |     0.771795	     |   egal wo du hin ziehst, nirgendwo wird dir soviel zucker in den arsch geblasen wie in deutschland.         |
+
+
+
+- RoBerta For Sequence Classification
+
+```python
+
+nlu.load("en.classify.roberta.finetuned").predict("I love you very much!")
+
+```
+
+|   classified_sequence  | classified_sequence_confidence   | sentence |
+|-----------------------------------------:|:--------------------------:|:---------------------- |
+|   LABEL_0 | 0.597792  |    I love you very much!       |
+
+
+
+#### Lemmatizer
+
+Lemmatization in linguistics is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form. On the NLU core side we have over 30 new lemmatizer models.
+
+
+#### ClassifierDLModel
+
+ClassifierDL for generic Multi-class Text Classification. ClassifierDL uses the state-of-the-art Universal Sentence Encoder as an input for text classifications. The ClassifierDL annotator uses a deep learning model (DNNs) we have built inside TensorFlow and supports up to 100 classes. On the NLU core side we have over 5 new ClassifierDLModel models.
+
+
+#### ContextSpellCheckerModel
+
+Spell Checking is a sequence to sequence mapping problem. Given an input sequence, potentially containing a certain number of errors, ContextSpellChecker will rank correction sequences according to three things:
+
+1. Different correction candidates for each word — word level.
+2. The surrounding text of each word, i.e. it’s context — sentence level.
+3. The relative cost of different correction candidates according to the edit operations at the character level it requires — subword level.
+
+On the NLU core side we have over 5 new ClassifierDLModel models.
+
+
+
+#### Token Classification
+
+Token classification is a natural language understanding task in which a label is assigned to some tokens in a text. Some popular token classification subtasks are Named Entity Recognition (NER) and Part-of-Speech (PoS) tagging. NER models could be trained to identify specific entities in a text, such as dates, individuals and places; and PoS tagging would identify, for example, which words in a text are verbs, nouns, and punctuation marks. We have new 463 models XlmRoBertaForTokenClassification, BertForTokenClassification, DistilBertForTokenClassification, DistilBertEmbeddings, LongformerForTokenClassification, RoBertaForTokenClassification for in different languages.
+
+
+- BertForTokenClassification English
+
+```python
+
+nlu.load("en.ner.bc5cdr.biobert.disease").predict("I love you very much!")
+
+```
+
+|index|document|entities\_wikiner\_glove\_840B\_300|entities\_wikiner\_glove\_840B\_300\_class|entities\_wikiner\_glove\_840B\_300\_confidence|entities\_wikiner\_glove\_840B\_300\_origin\_chunk|entities\_wikiner\_glove\_840B\_300\_origin\_sentence|word\_embedding\_glove|
+|---|---|---|---|---|---|---|---|
+|0|I love you very much\!|I love you very much\!|MISC|0\.66433334|0|0|\[ 0\.19410001  0\.22603001 -0\.43764001 \]|
+
+
+- BertForTokenClassification German
+
+```python
+
+nlu.load("de.ner.distil_bert.base_cased").predict("Ich liebe Spark NLP")
+
+```
+
+|index|classified\_token|document|entities\_distil\_bert|entities\_distil\_bert\_class|entities\_distil\_bert\_origin\_chunk|entities\_distil\_bert\_origin\_sentence|
+|---|---|---|---|---|---|---|
+|0|O,O,B-OTHderiv,O|Ich liebe Spark NLP|Spark|OTHderiv|0|0|
+
+
+
+- XlmRoBertaForTokenClassification Igbo
+
+```python
+
+nlu.load("ig.ner.xlmr_roberta.base").predict("Ahụrụ m n'anya na-atọ m ụtọ")
+
+```
+
+|index|classified\_token|document|entities\_xlmr\_roberta|entities\_xlmr\_roberta\_class|entities\_xlmr\_roberta\_origin\_chunk|entities\_xlmr\_roberta\_origin\_sentence|
+|---|---|---|---|---|---|---|
+|0|B-ORG,I-ORG,I-ORG,I-ORG,I-ORG,I-ORG|Ahụrụ m n'anya na-atọ m ụtọ|Ahụrụ m n'anya na-atọ m ụtọ|ORG|0|0|
+
+
+#### NerCrfModel
+
+This Named Entity Recognizer is based on a CRF Algorithm. Conditional random fields (CRFs) are a class of statistical modeling methods often applied in pattern recognition and machine learning and used for structured prediction. Whereas a classifier predicts a label for a single sample without considering "neighbouring" samples, a CRF can take context into account. To do so, the predictions are modelled as a graphical model, which represents the presence of dependencies between the predictions. What kind of graph is used depends on the application. For example, in natural language processing, "linear chain" CRFs are popular, for which each prediction is dependent only on its immediate neighbours. In image processing, the graph typically connects locations to nearby and/or similar locations to enforce that they receive similar predictions.
+
+
+- NerCrfModel
+
+```python
+
+nlu.load('en.ner.ner.crf').predict("Donald Trump and Angela Merkel dont share many oppinions")
+
+```
+
+|index|document|entities\_wikiner\_glove\_840B\_300|entities\_wikiner\_glove\_840B\_300\_class|entities\_wikiner\_glove\_840B\_300\_confidence|entities\_wikiner\_glove\_840B\_300\_origin\_chunk|entities\_wikiner\_glove\_840B\_300\_origin\_sentence|word\_embedding\_glove|
+|---|---|---|---|---|---|---|---|
+|0|Donald Trump and Angela Merkel dont share many oppinions|Donald Trump|PER|0\.78524995|0|0|\[\-0\.074014   -0\.23684999  0\.17772 \]|
+|0|Donald Trump and Angela Merkel dont share many oppinions|Angela Merkel|PER|0\.7701|1|0|\[\-0\.074014   -0\.23684999  0\.17772  \]|
+
+#### NerDLModel
+
+This Named Entity recognition annotator is a generic NER model based on Neural Networks.
+Neural Network architecture is Char CNNs - BiLSTM - CRF that achieves state-of-the-art in most datasets.
+This is the instantiated model of the NerDLApproach. For training your own model, please see the documentation of that class.
+We have new 6 models.
+
+
+- NerDLModel Japanese
+
+```python
+
+nlu.load('ja.ner.ner.base').predict("宮本茂氏は、日本の任天堂のゲームプロデューサーです。")
+
+```
+
+|index|document|entities\_xtreme\_glove\_840B\_300|word\_embedding\_glove|
+|---|---|---|---|
+|0|宮本茂氏は、日本の任天堂のゲームプロデューサーです。|NaN|\[0\. 0\. \]|
+
+
+- NerDLModel English
+
+```python
+
+text = ["My name is John!"]
+
+nlu.load('en.ner.conll.ner.large').predict(text, output_level='token')
+
+```
+
+|index|entities\_wikiner\_glove\_840B\_300|entities\_wikiner\_glove\_840B\_300\_class|entities\_wikiner\_glove\_840B\_300\_confidence|entities\_wikiner\_glove\_840B\_300\_origin\_chunk|entities\_wikiner\_glove\_840B\_300\_origin\_sentence|token|word\_embedding\_glove|
+|---|---|---|---|---|---|---|---|
+|0|My name is John\!|MISC|0\.63266003|0|0|My|\[-2\.19990000e-01  2\.57800013e-01 -4\.25859988e-01 ]|
+|0|My name is John\!|MISC|0\.63266003|0|0|name|\[ 2\.32309997e-01 -2\.41020005e-02]|
+|0|My name is John\!|MISC|0\.63266003|0|0|is|\[-8\.49609971e-02  5\.01999974e-01  2\.38230010e-03]|
+|0|My name is John\!|MISC|0\.63266003|0|0|John|\[-2\.96090007e-01 -8\.18260014e-02  9\.67490021e-03 ]|
+|0|My name is John\!|MISC|0\.63266003|0|0|\!|\[-2\.65540004e-01  3\.35310012e-01  2\.18600005e-01 ]|
+
+
+
+#### PerceptronModel
+
+We have new 26 models.
+
+#### StopWordsCleaner
+This model removes ‘stop words’ from text. Stop words are words so common that they can be removed without significantly altering the meaning of a text. Removing stop words is useful when one wants to deal with only the most semantically important words in a text, and ignore words that are rarely semantically relevant, such as articles and prepositions. We have new 33 models.
+
+______________________
+______________________
+
+
 ## NLU Version 4.0.0
 OCR Visual Tables into Pandas DataFrames from PDF/DOC(X)/PPT files, 1000+ new state-of-the-art transformer models for Question Answering (QA)  for over 30 languages, up to 700% speedup on GPU, 20 Biomedical models for over 8 languages, 50+ Terminology Code Mappers between RXNORM, NDC, UMLS,ICD10, ICDO, UMLS, SNOMED and MESH, Deidentification in Romanian, various Spark NLP helper methods and much more in 1 line of code with John Snow Labs NLU 4.0.0
 

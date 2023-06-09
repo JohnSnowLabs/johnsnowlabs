@@ -39,7 +39,7 @@
     <script data-url_root="../../../../" id="documentation_options" src="../../../../static/documentation_options.js"></script>
     <script src="../../../../static/jquery.js"></script>
     <script src="../../../../static/underscore.js"></script>
-    <script src="../../../../static/sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../../static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
@@ -433,12 +433,12 @@ document.write(`
         <span class="k">return</span> <span class="n">FinanceBertForSequenceClassification</span><span class="p">(</span><span class="n">java_model</span><span class="o">=</span><span class="n">jModel</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="FinanceBertForSequenceClassification.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_bert_for_sequence_classification/index.html#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;bert_sequence_classifier_ade&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;clinical/models&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="FinanceBertForSequenceClassification.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_bert_for_sequence_classification/index.html#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;finclf_bert_banking77&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;finance/models&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Download a pre-trained FinanceBertForSequenceClassification.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            name (str): Name of the pre-trained model.</span>
-<span class="sd">            lang (str): Language of the pre-trained model.</span>
+<span class="sd">            name (str): Name of the pre-trained model, by default &quot;finclf_bert_banking77&quot;</span>
+<span class="sd">            lang (str): Language of the pre-trained model, by default &quot;en&quot;</span>
 <span class="sd">            remote_loc (str): Remote location of the pre-trained model. If None, use the</span>
 <span class="sd">            open-source location. Other values are &quot;clinical/models&quot;,</span>
 <span class="sd">            &quot;finance/models&quot;, or &quot;legal/models&quot;.</span>
@@ -493,8 +493,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright <span id="year"></span>, John Snow Labs.
-      <script>document.getElementById("year").innerHTML = new Date().getFullYear();</script>
+      © Copyright 2022, John Snow Labs.
       <br/>
     
   </p>
