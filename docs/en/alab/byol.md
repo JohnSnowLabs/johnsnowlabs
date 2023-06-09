@@ -2,11 +2,11 @@
 layout: docs
 comment: no
 header: true
-seotitle: Annotation Lab | John Snow Labs
+seotitle: NLP Lab | John Snow Labs
 title: License Management
 permalink: /docs/en/alab/byol
 key: docs-training
-modify_date: "2022-11-27"
+modify_date: "2023-06-08"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -36,11 +36,11 @@ One floating license is bound to only one server (pre-annotation server, OCR ser
 
 Annotation Lab supports either floating licenses or air-gapped licenses. Mixing floating and air-gapped licenses on the same Annotation Lab instance is not allowed.
 
-### Get Trial Licenses from License Page
+### In-App Trial License Generation
 
-The license page has been updated since version 4.10.0 to offer an updated page layout. The users will not have to navigate to a different page to request a trial license. The license can be requested directly from the License page. This new feature can be accessed by clcking the "Get License" tab, along side "Import Licenses" and "Existing Licenses" tabs.
+Version 4.10 offers an updated License page layout that streamlines the process of obtaining a trial license. This updated design enables users to initiate a trial license request directly from the License page, thereby eliminating the need for external page navigation. This enhanced workflow incorporates a new “Get License” tab, while maintaining the status quo of the Import License and Existing Licenses tabs.
 
-In order to obtain a trial license, users need to complete the form available on the "Get License" tab. This form requires users to provide their organizational email. Once the form is submitted, a validation link will be sent to the provided email address. By clicking on the validation link, the trial license will be automatically imported into NLP Lab, making it instantly accessible for use.
+To obtain a trial license, users are required to fill out the form on the “Get License” tab, providing their organizational email. Once the form is submitted, a validation link is sent to the provided email address, and the trial license is automatically imported to the NLP Lab when the link is clicked, making it readily available for use.
 
 ![trial-license](/assets/images/annotation_lab/4.10.0/1.png)
 
