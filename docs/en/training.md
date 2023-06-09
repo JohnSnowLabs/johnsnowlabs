@@ -3,7 +3,6 @@ layout: docs
 header: true
 seotitle: Spark NLP
 title: Training
-redirect_to: https://sparknlp.org/docs/en/training
 permalink: /docs/en/training
 key: docs-training
 modify_date: "2019-10-23"
@@ -109,7 +108,7 @@ NER DL uses Char CNNs - BiLSTM - CRF Neural Network architecture. Spark NLP defi
 - Embeddings Dimension
 - Number of Chars
 
-Spark NLP infers these values from the training dataset used in [NerDLApproach annotator](annotators.md#ner-dl) and tries to load the graph embedded on spark-nlp package.
+Spark NLP infers these values from the training dataset used in [NerDLApproach annotator](annotators#ner-dl) and tries to load the graph embedded on spark-nlp package.
 Currently, Spark NLP has graphs for the most common combination of tags, embeddings, and number of chars values:
 
 {:.table-model-big.w7}

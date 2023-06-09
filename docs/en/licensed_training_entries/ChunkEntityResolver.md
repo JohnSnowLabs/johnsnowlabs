@@ -138,7 +138,7 @@ val model = snomedExtractor.fit(snomedData)
 {%- endcapture -%}
 
 {%- capture api_link -%}
-[ChunkEntityResolverApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/ChunkEntityResolverApproach)
+[ChunkEntityResolverApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/ChunkEntityResolverApproach.html)
 {%- endcapture -%}
 
 

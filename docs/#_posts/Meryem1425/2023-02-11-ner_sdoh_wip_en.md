@@ -27,8 +27,8 @@ This model extracts terminology related to Social Determinants of Health from va
 `Other_SDoH_Keywords`, `Education`, `Population_Group`, `Quality_Of_Life`, `Housing`, `Substance_Frequency`, `Smoking`, `Eating_Disorder`, `Obesity`, `Healthcare_Institution`, `Financial_Status`, `Age`, `Chidhood_Event`, `Exercise`, `Communicable_Disease`, `Hypertension`, `Other_Disease`, `Violence_Or_Abuse`, `Spiritual_Beliefs`, `Employment`, `Social_Exclusion`, `Access_To_Care`, `Marital_Status`, `Diet`, `Social_Support`, `Disability`, `Mental_Health`, `Alcohol`, `Insurance_Status`, `Substance_Quantity`, `Hyperlipidemia`, `Family_Member`, `Legal_Issues`, `Race_Ethnicity`, `Gender`, `Geographic_Entity`, `Sexual_Orientation`, `Transportation`, `Sexual_Activity`, `Language`, `Substance_Use`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_NER/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_wip_en_4.2.8_3.0_1676135569606.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_wip_en_4.2.8_3.0_1676135569606.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

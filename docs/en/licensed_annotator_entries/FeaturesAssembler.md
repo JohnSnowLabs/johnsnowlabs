@@ -23,7 +23,7 @@ NONE
 {%- endcapture -%}
 
 {%- capture approach_api_link -%}
-[FeaturesAssembler](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/FeaturesAssembler)
+[FeaturesAssembler](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/FeaturesAssembler.html)
 {%- endcapture -%}
 
 {%- capture approach_python_api_link -%}

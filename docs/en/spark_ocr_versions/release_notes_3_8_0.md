@@ -23,8 +23,8 @@ Support Microsoft PPT and PPTX documents.
 
 #### New Features
 
-* Added [PptToPdf](ocr_pipeline_components#ppttopdf) transformer for converting PPT and PPTX slides to the PDF document.
-* Added [PptToTextTable](ocr_pipeline_components#ppttotexttable) transformer for extracting tables from PPT and PPTX slides.
+* Added [PptToPdf](/docs/en/ocr_pipeline_components#ppttopdf) transformer for converting PPT and PPTX slides to the PDF document.
+* Added [PptToTextTable](/docs/en/ocr_pipeline_components#ppttotexttable) transformer for extracting tables from PPT and PPTX slides.
 
 
 #### New and updated notebooks

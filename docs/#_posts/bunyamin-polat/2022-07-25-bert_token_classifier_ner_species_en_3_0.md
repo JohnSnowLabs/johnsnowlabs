@@ -108,6 +108,14 @@ val data = Seq("""As determined by 16S rRNA gene sequence analysis, strain 6C (T
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.token_bert.species").predict("""As determined by 16S rRNA gene sequence analysis, strain 6C (T) represents a distinct species belonging to the class Betaproteobacteria and is most closely related to Thiomonas intermedia DSM 18155 (T) and Thiomonas perometabolis DSM 18570 (T) .""")
+```
+
 </div>
 
 ## Results

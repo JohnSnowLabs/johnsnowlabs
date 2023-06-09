@@ -46,6 +46,14 @@ val era_pipeline = new PretrainedPipeline("explain_clinical_doc_era", "en", "cli
 val result = era_pipeline.fullAnnotate("""The clinical course suggests that the interstitial pneumonitis was induced by hydroxyurea.""")(0)
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.explain_doc.clinical_ade").predict("""The clinical course suggests that the interstitial pneumonitis was induced by hydroxyurea.""")
+```
+
 </div>
 
 ## Results

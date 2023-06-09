@@ -43,6 +43,14 @@ val pipeline = new PretrainedPipeline("ner_events_biobert_pipeline", "en", "clin
 
 pipeline.annotate("The patient presented to the emergency room last evening")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.biobert_events.pipeline").predict("""The patient presented to the emergency room last evening""")
+```
+
 </div>
 
 ## Results

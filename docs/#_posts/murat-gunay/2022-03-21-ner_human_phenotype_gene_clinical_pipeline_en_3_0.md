@@ -43,6 +43,14 @@ val pipeline = new PretrainedPipeline("ner_human_phenotype_gene_clinical_pipelin
 
 pipeline.annotate("Here we presented a case (BS type) of a 17 years old female presented with polyhydramnios, polyuria, nephrocalcinosis and hypokalemia, which was alleviated after treatment with celecoxib and vitamin D(3).")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.human_phnotype_gene_clinical.pipeline").predict("""Here we presented a case (BS type) of a 17 years old female presented with polyhydramnios, polyuria, nephrocalcinosis and hypokalemia, which was alleviated after treatment with celecoxib and vitamin D(3).""")
+```
+
 </div>
 
 ## Results

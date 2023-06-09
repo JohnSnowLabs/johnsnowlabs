@@ -23,11 +23,11 @@ Support Microsoft Docx documents.
 
 #### New Features
 
-* Added [DocToText](ocr_pipeline_components#doctotext) transformer for extract text
+* Added [DocToText](/docs/en/ocr_pipeline_components#doctotext) transformer for extract text
 from DOCX documents.
-* Added [DocToTextTable](ocr_pipeline_components#doctotexttable) transformer for extract
+* Added [DocToTextTable](/docs/en/ocr_pipeline_components#doctotexttable) transformer for extract
 table data from DOCX documents.
-* Added [DocToPdf](ocr_pipeline_components#doctopdf) transformer for convert DOCX
+* Added [DocToPdf](/docs/en/ocr_pipeline_components#doctopdf) transformer for convert DOCX
  documents to PDF format.
 
 #### Bugfixes

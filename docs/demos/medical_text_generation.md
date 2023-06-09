@@ -32,5 +32,17 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_GENERATION/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/33.1.Medical_Text_Generation.ipynb              
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/33.1.Medical_Text_Generation.ipynb  
+        - title: Accurate Clinical Question Answering with BioGPT-Based Language Model
+          id: accurate_clinical_question_answering_biogpt_based_language_bodel
+          image: 
+              src: /assets/images/Medical_Question_Answering_with_BioGPT-JSL.svg
+          excerpt: This demo highlights a powerful BioGPT-based language model that can accurately address clinical questions concerning symptoms, medications, diagnostic tests, and various diseases.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/BIOGPT_CHAT_JSL/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/33.Biogpt_Chat_JSL.ipynb            
 ---

@@ -33,19 +33,6 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/ocr/PDF_TEXT_TABLE.ipynb
-        - title: Detect tables in scanned documents
-          hide: yes
-          id: detect_tables_in_documents
-          image: 
-              src: /assets/images/Detect_tables_in_documents.svg
-          excerpt: Detect tables on the image by a pretrained model based on CascadeTabNet.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/ocr/TABLE_DETECTION/ 
-          - text: Colab
-            type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableDetection.ipynb
         - title: Detect and extract tables in scanned PDFs 
           id: detect_tables_extract_text 
           image: 

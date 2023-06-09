@@ -108,6 +108,14 @@ val result = bert_clf_pipeline.fit(data).transform(data)
 ```
 
 
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.vaccine_sentiment").predict("""A little bright light for an otherwise dark week. Thanks researchers, and frontline workers. Onwards.""")
+```
+
 </div>
 
 ## Results

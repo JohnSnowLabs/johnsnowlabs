@@ -85,6 +85,14 @@ val example = Seq(Array("I am fed up with this toxic relation.I hate my husband.
 
 val result = pipeline.fit(example).transform(example)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.self_reported_partner_violence").predict("""Can i say something real quick I ve never been one to publicly drag an ex partner and sometimes I regret that. I ve been reflecting on the harm, abuse and violence that was done to me and those bitches are truly lucky I chose peace amp therapy because they are trash forreal.""")
+```
+
 </div>
 
 ## Results

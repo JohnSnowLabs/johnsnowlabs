@@ -84,6 +84,14 @@ val data = Seq(Array("Is it bad for a 19 year old it's been getting worser.",
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.exact_age").predict("""I was about 10. So not quite as young as you but young.""")
+```
+
 </div>
 
 ## Results

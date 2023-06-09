@@ -108,6 +108,14 @@ val data = Seq("""The main isolated compounds were triterpenes (alpha - amyrin, 
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.token_bert.bc4chemd_chemicals").predict("""The main isolated compounds were triterpenes (alpha - amyrin, beta - amyrin, lupeol, betulin, betulinic acid, uvaol, erythrodiol and oleanolic acid) and phenolic acid derivatives from 4 - hydroxybenzoic acid (gallic and protocatechuic acids and isocorilagin).""")
+```
+
 </div>
 
 ## Results

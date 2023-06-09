@@ -50,6 +50,14 @@ val text = "HTG-induced pancreatitis associated with an acute hepatitis, and obe
 
 val result = pipeline.annotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.umls_clinical_findings_resolver").predict("""HTG-induced pancreatitis associated with an acute hepatitis, and obesity""")
+```
+
 </div>
 
 ## Results

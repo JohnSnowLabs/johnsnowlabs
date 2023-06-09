@@ -85,6 +85,14 @@ val data = Seq(Array(
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.bert_sequence.depression_binary").predict("""I am really feeling like there are no good men. I think I would rather be alone than deal with any man again. Has anyone else felt like this? Did your feelings ever change?""")
+```
+
 </div>
 
 ## Results

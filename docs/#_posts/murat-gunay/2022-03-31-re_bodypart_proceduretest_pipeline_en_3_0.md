@@ -55,6 +55,14 @@ val pipeline = new PretrainedPipeline("re_bodypart_proceduretest_pipeline", "en"
 
 pipeline.fullAnnotate("TECHNIQUE IN DETAIL: After informed consent was obtained from the patient and his mother, the chest was scanned with portable ultrasound.")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.bodypart_proceduretest.pipeline").predict("""TECHNIQUE IN DETAIL: After informed consent was obtained from the patient and his mother, the chest was scanned with portable ultrasound.""")
+```
+
 </div>
 
 

@@ -115,7 +115,7 @@ val reideintification = new finance.ReIdentification()
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[ReIdentification](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/deid/ReIdentification)
+[ReIdentification](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/deid/ReIdentification.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}

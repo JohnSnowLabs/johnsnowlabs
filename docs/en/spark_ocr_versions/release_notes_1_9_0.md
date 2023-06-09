@@ -23,8 +23,8 @@ Extension of  FoundationOne report parser and support HOCR output format.
 
 #### New Features
 
-* Added [ImageToHocr](ocr_pipeline_components#imagetohocr) transformer for recognize text from image and store it to HOCR format.
-* Added parsing gene lists from 'Appendix' in [FoundationOneReportParser](ocr_pipeline_components#foundationonereportparser) transformer.
+* Added [ImageToHocr](/docs/en/ocr_pipeline_components#imagetohocr) transformer for recognize text from image and store it to HOCR format.
+* Added parsing gene lists from 'Appendix' in [FoundationOneReportParser](/docs/en/ocr_pipeline_components#foundationonereportparser) transformer.
 
 
 </div><div class="prev_ver h3-box" markdown="1">

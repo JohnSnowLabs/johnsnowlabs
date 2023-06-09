@@ -50,6 +50,14 @@ val text = "Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson O
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.deid.subentity_ner_augmented_i2b2.pipeline").predict("""Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 302-786-5227.""")
+```
+
 </div>
 
 ## Results

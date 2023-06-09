@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: Annotation Lab | John Snow Labs
+seotitle: NLP Lab | John Snow Labs
 title: Terminology
 permalink: /docs/en/alab/terminology
 key: docs-training

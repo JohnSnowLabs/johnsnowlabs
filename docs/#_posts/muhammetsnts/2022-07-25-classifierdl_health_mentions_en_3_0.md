@@ -106,6 +106,14 @@ val pipeline = new Pipeline().setStages(Array(document_assembler, tokenizer, emb
 val data = Seq("I feel a bit drowsy & have a little blurred vision after taking an insulin.").toDF("text")
 val result = pipeline.fit(data).transform(data) 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.health").predict("""I feel a bit drowsy & have a little blurred vision after taking an insulin.""")
+```
+
 </div>
 
 ## Results

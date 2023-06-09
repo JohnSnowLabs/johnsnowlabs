@@ -88,6 +88,14 @@ val data = Seq(Array(
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify .bert_sequence.depression").predict("""None that I know of. Any mental health issue needs to be cared for like any other health issue. Doctors and medications can help.""")
+```
+
 </div>
 
 ## Results

@@ -44,9 +44,9 @@ class UrlDependency(WritableBaseModel):
     ):
         if not UrlDependency.internet_on():
             print(
-                f"Warning! It looks like there is no active internet connection on this machine"
+                f"Warning! It looks like there is no active internet connection on this machine "
+                f"Trying to continue but might run into problems..."
             )
-            print(f"Trying to continue but might run into problems...")
 
         if not self.validate():
             raise ValueError(f"Trying to download Invalid URL! {self.url}")

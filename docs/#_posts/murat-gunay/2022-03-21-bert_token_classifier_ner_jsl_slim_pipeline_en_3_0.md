@@ -43,6 +43,14 @@ val pipeline = new PretrainedPipeline("bert_token_classifier_ner_jsl_slim_pipeli
 
 pipeline.annotate("HISTORY: 30-year-old female presents for digital bilateral mammography secondary to a soft tissue lump palpated by the patient in the upper right shoulder. The patient has a family history of breast cancer within her mother at age 58. Patient denies personal history of breast cancer.")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.token_bert.jsl_slim.pipeline").predict("""HISTORY: 30-year-old female presents for digital bilateral mammography secondary to a soft tissue lump palpated by the patient in the upper right shoulder. The patient has a family history of breast cancer within her mother at age 58. Patient denies personal history of breast cancer.""")
+```
+
 </div>
 
 ## Results

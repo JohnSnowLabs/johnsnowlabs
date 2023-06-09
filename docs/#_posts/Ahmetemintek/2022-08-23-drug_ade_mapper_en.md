@@ -129,6 +129,15 @@ val data = Seq("The patient was prescribed 1000 mg fish oil and multivitamins. S
 
 val result= pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.drug_ade").predict("""The patient was prescribed 1000 mg fish oil and multivitamins. 
+            She was discharged on zopiclone and ambrisentan""")
+```
+
 </div>
 
 ## Results

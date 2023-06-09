@@ -130,6 +130,14 @@ val data = Seq(text).toDS.toDF("text")
 
 val result= pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.kegg_drug").predict("""She is given OxyContin, folic acid, levothyroxine, Norvasc, aspirin, Neurontin""")
+```
+
 </div>
 
 ## Results

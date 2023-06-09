@@ -25,11 +25,11 @@ This release comes with new models, new features, bug fixes, and notebook exampl
 
 #### New Features
 
-* Added [ImageTextDetectorV2](ocr_object_detection#imagetextdetectorv2) Python Spark-OCR Transformer for detecting printed and handwritten text
+* Added [ImageTextDetectorV2](/docs/en/ocr_object_detection#imagetextdetectorv2) Python Spark-OCR Transformer for detecting printed and handwritten text
  using CRAFT architecture with Refiner Net.
-* Added [ImageTextRecognizerV2](ocr_pipeline_components#imagetotextv2) Python Spark-OCR Transformer for recognizing
+* Added [ImageTextRecognizerV2](/docs/en/ocr_pipeline_components#imagetotextv2) Python Spark-OCR Transformer for recognizing
  printed and handwritten text based on Deep Learning Transformer Architecture.
-* Added [FormRelationExtractor](ocr_visual_document_understanding#formrelationextractor) for detecting relations between key and value entities in forms.
+* Added [FormRelationExtractor](/docs/en/ocr_visual_document_understanding#formrelationextractor) for detecting relations between key and value entities in forms.
 * Added the capability of fine tuning VisualDocumentNerV2 models for key-value pairs extraction.
 
 #### New Models

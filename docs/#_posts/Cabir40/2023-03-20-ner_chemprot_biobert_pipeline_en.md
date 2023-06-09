@@ -50,6 +50,14 @@ val text = "Keratinocyte growth factor and acidic fibroblast growth factor are m
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.chemprot_biobert.pipeline").predict("""Keratinocyte growth factor and acidic fibroblast growth factor are mitogens for primary cultures of mammary epithelium.""")
+```
+
 </div>
 
 ## Results

@@ -86,6 +86,33 @@ EMAIL: bferrabosco@poste.it"
 
 val result = deid_pipeline.annotate(sample)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("it.deid.clinical").predict("""RAPPORTO DI RICOVERO
+NOME: Lodovico Fibonacci
+CODICE FISCALE: MVANSK92F09W408A
+INDIRIZZO: Viale Burcardo 7
+CITTÀ : Napoli
+CODICE POSTALE: 80139
+DATA DI NASCITA: 03/03/1946
+ETÀ: 70 anni 
+SESSO: M
+EMAIL: lpizzo@tim.it
+DATA DI AMMISSIONE: 12/12/2016
+DOTTORE: Eva Viviani
+RAPPORTO CLINICO: 70 anni, pensionato, senza allergie farmacologiche note, che presenta la seguente storia: ex incidente sul lavoro con fratture vertebrali e costali; operato per la malattia di Dupuytren alla mano destra e un bypass ileo-femorale sinistro; diabete di tipo II, ipercolesterolemia e iperuricemia; alcolismo attivo, fuma 20 sigarette/giorno.
+È stato indirizzato a noi perché ha presentato un'ematuria macroscopica post-evacuazione in un'occasione e una microematuria persistente in seguito, con un'evacuazione normale.
+L'esame fisico ha mostrato buone condizioni generali, con addome e genitali normali; l'esame digitale rettale era coerente con un adenoma prostatico di grado I/IV.
+L'analisi delle urine ha mostrato 4 globuli rossi/campo e 0-5 leucociti/campo; il resto del sedimento era normale.
+L'emocromo è normale; la biochimica ha mostrato una glicemia di 169 mg/dl e trigliceridi 456 mg/dl; la funzione epatica e renale sono normali. PSA di 1,16 ng/ml.
+
+INDIRIZZATO A: Dott. Bruno Ferrabosco - ASL Napoli 1 Centro, Dipartimento di Endocrinologia e Nutrizione - Stretto Scamarcio 320, 80138 Napoli
+EMAIL: bferrabosco@poste.it""")
+```
+
 </div>
 
 ## Results

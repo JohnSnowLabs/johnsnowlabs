@@ -55,6 +55,14 @@ val pipeline = new PretrainedPipeline("ner_radiology_pipeline", "en", "clinical/
 
 pipeline.fullAnnotate("Breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.radiology.pipeline").predict("""Breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.""")
+```
+
 </div>
 
 

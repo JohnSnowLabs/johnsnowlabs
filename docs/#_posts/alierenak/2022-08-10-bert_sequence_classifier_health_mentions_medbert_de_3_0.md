@@ -82,6 +82,14 @@ val data = Seq(Array("Diabetes habe ich schon seit meiner Kindheit, seit der Pub
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("de.classify.bert_sequence.health_mentions_medbert").predict("""Die Hochzeitszeitung ist zum Glück sehr schön geworden. Das Brautpaar gat sich gefreut.""")
+```
+
 </div>
 
 ## Results

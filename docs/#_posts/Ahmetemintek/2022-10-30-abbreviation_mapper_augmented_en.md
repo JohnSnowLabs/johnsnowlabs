@@ -137,6 +137,17 @@ val data = Seq(sample_text).toDS.toDF("text")
 
 val result= pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.abbreviation_augmented").predict("""Gravid with estimated fetal weight of 6-6/12 pounds.
+           LABORATORY DATA: Laboratory tests include a CBC which is normal. 
+           VDRL: Nonreactive
+           HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.""")
+```
+
 </div>
 
 ## Results

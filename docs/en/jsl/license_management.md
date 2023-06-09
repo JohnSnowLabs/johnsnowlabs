@@ -1,16 +1,17 @@
 ---
 layout: docs
 header: true
-seotitle: NLU | John Snow Labs
+seotitle: NLP | John Snow Labs
 title: License Management & Caching
-permalink: /docs/en/nlp/license_management
+permalink: /docs/en/jsl/license_management
 key: docs-concepts
 modify_date: "2020-05-08"
 header: true
 show_nav: true
 sidebar:
-nav: jsl
+    nav: jsl
 ---
+
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
@@ -29,7 +30,7 @@ Use the following functions to see all your avaiable licenses.
 
 ### List all available licenses
 
-This shows you all licenses for your account in https://my.johnsnowlabs.com/.         
+This shows you all licenses for your account in [https://my.johnsnowlabs.com/](https://my.johnsnowlabs.com/) .         
 Use this to decide which license number to install when installing via browser or access token.
 
 ```python
@@ -62,7 +63,5 @@ If there are multiples possible sources for licenses, the following order takes 
 
 JSON files are scanned if they have any keys that match up with names of secrets.         
 Name of the json file does not matter, file just needs to end with .json.
-
-</div><div class="h3-box" markdown="1">
 
 </div></div>

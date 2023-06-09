@@ -90,6 +90,14 @@ val test_data = Seq("24 completed weeks of gestation").toDS.toDF("text")
 
 val result = mapper_pipeline.fit(test_data).transform(test_data) 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.icd9").predict("""24 completed weeks of gestation""")
+```
+
 </div>
 
 ## Results

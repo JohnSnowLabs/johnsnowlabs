@@ -131,6 +131,14 @@ val test_data = Seq("The patient was given  metformin, lenvatinib and lavender 7
 
 val result = mapper_pipeline.fit(test_data).transform(test_data) 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.umls_drug_substance_mapper").predict("""The patient was given  metformin, lenvatinib and lavender 700 ml/ml""")
+```
+
 </div>
 
 ## Results

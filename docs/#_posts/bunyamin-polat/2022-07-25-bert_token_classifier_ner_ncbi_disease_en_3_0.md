@@ -106,6 +106,14 @@ val data = Seq("""Kniest dysplasia is a moderately severe type II collagenopathy
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.token_bert.ncbi_disease").predict("""Kniest dysplasia is a moderately severe type II collagenopathy, characterized by short trunk and limbs, kyphoscoliosis, midface hypoplasia, severe myopia, and hearing loss.""")
+```
+
 </div>
 
 ## Results
