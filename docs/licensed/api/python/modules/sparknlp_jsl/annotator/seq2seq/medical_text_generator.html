@@ -351,6 +351,9 @@ document.write(`
 <span class="sd">        default []</span>
 <span class="sd">    randomSeed: int</span>
 <span class="sd">        Random seed. Set to positive integer to get reproducible results, by default None.</span>
+<span class="sd">    customPrompt</span>
+<span class="sd">        Custom prompt template. The only available variable is {DOCUMENT} and it is populated with</span>
+<span class="sd">        the contents of the input document</span>
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    &gt;&gt;&gt; data = spark.createDataFrame([[&quot;Covid 18 is &quot;]]).toDF(&quot;prompt&quot;)</span>
@@ -399,6 +402,9 @@ document.write(`
                          <span class="s2">&quot;Model type&quot;</span><span class="p">,</span>
                          <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="MedicalTextGenerator.customPrompt"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_text_generator/index.html#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.customPrompt">[docs]</a>    <span class="n">customPrompt</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;customPrompt&quot;</span><span class="p">,</span>
+                         <span class="s2">&quot;Custom prompt template&quot;</span><span class="p">,</span>
+                         <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 <div class="viewcode-block" id="MedicalTextGenerator.setMaxTextLength"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_text_generator/index.html#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setMaxTextLength">[docs]</a>    <span class="k">def</span> <span class="nf">setMaxTextLength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set max text length to process</span>
 
@@ -430,6 +436,17 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">stopAtEos</span><span class="o">=</span><span class="n">b</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="MedicalTextGenerator.setCustomPrompt"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_text_generator/index.html#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setCustomPrompt">[docs]</a>    <span class="k">def</span> <span class="nf">setCustomPrompt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the custom prompt template. The only available variable is {DOCUMENT}, which is populated with the</span>
+<span class="sd">        contents of the input document</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : str</span>
+<span class="sd">            prompt template</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">customPrompt</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="MedicalTextGenerator.setConfigProtoBytes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_text_generator/index.html#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setConfigProtoBytes">[docs]</a>    <span class="k">def</span> <span class="nf">setConfigProtoBytes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets configProto from tensorflow, serialized into byte array.</span>
 
@@ -452,7 +469,8 @@ document.write(`
             <span class="n">caseSensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">stopAtEos</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">useCache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">maxTextLength</span><span class="o">=</span><span class="mi">512</span>
+            <span class="n">maxTextLength</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
+            <span class="n">customPrompt</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
         <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
