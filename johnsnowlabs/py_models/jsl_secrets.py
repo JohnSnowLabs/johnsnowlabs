@@ -2,7 +2,7 @@ import glob
 import json
 import os
 from pathlib import Path
-from typing import Optional, Union, Dict, List
+from typing import Dict, List, Optional, Union
 
 from pydantic import validator
 
@@ -12,13 +12,11 @@ from johnsnowlabs.py_models.lib_version import LibVersion
 from johnsnowlabs.py_models.primitive import LibVersionIdentifier, Secret
 from johnsnowlabs.utils.enums import ProductName
 from johnsnowlabs.utils.file_utils import json_path_as_dict
-from johnsnowlabs.utils.my_jsl_api import (
-    get_user_licenses,
-    download_license,
-    get_access_token,
-    get_access_key_from_browser,
-    get_user_lib_secrets,
-)
+from johnsnowlabs.utils.my_jsl_api import (download_license,
+                                           get_access_key_from_browser,
+                                           get_access_token, get_secrets,
+                                           get_user_lib_secrets,
+                                           get_user_licenses)
 
 secret_json_keys = [
     "JSL_SECRET",
@@ -91,7 +89,7 @@ class JslSecrets(WritableBaseModel):
             ):
                 hc_validation_logged = True
                 print(
-                    f"🚨 Outdated Medical Secrets in license file. Version={HC_SECRET.split('-')[0]} but should be Version={settings.raw_version_medical}"
+                    f"🚨 Outdated Medical Secrets in license file. Version={(HC_SECRET.split('-')[0] if HC_SECRET else None)} but should be Version={settings.raw_version_medical}"
                 )
                 if settings.enforce_secret_on_version:
                     raise ValueError("Invalid HC Secret")
@@ -123,7 +121,7 @@ class JslSecrets(WritableBaseModel):
             ):
                 ocr_validation_logged = True
                 print(
-                    f"🚨 Outdated OCR Secrets in license file. Version={OCR_SECRET.split('-')[0]} but should be Version={settings.raw_version_ocr}"
+                    f"🚨 Outdated OCR Secrets in license file. Version={(OCR_SECRET.split('-')[0] if OCR_SECRET else None)} but should be Version={settings.raw_version_ocr}"
                 )
                 if settings.enforce_secret_on_version:
                     raise ValueError("Invalid OCR Secret")
@@ -266,6 +264,12 @@ class JslSecrets(WritableBaseModel):
             if not secrets and not force_browser:
                 # Search Env Vars
                 secrets = JslSecrets.search_env_vars()
+            
+            if settings.enforce_versions and not JslSecrets.is_hc_secret_correct_version(secrets.HC_SECRET) and not JslSecrets.is_ocr_secret_correct_version(secrets.OCR_SECRET):
+                # Make sure secrets and versions re enforced
+                print("👷 Trying to install compatible secrets. Use nlp.settings.enforce_versions=False if you want to install outdated secrets.")
+                JslSecrets.enforce_versions(secrets)
+
         except Exception as err:
             print(
                 f"🚨 Failure Trying to read license {err}\n",
@@ -469,6 +473,34 @@ class JslSecrets(WritableBaseModel):
         creds = JslSecrets.from_json_dict(json.load(f))
         f.close()
         return creds
+
+    @staticmethod
+    def enforce_versions(data: "JslSecrets"):
+        secrets  = get_secrets(data.HC_LICENSE or data.OCR_LICENSE or data.JSL_FINANCE_LICENSE or data.JSL_LEGAL_LICENSE)
+        # Fix lib secrets in license data to correct version
+        ocr_candidates = list(
+            filter(
+                lambda x: x.version_secret == settings.raw_version_secret_ocr
+                and x.product == ProductName.ocr,
+                secrets,
+            )
+        )
+        hc_handidates = list(
+            filter(
+                lambda x: x.version_secret == settings.raw_version_secret_medical
+                and x.product == ProductName.hc,
+                secrets,
+            )
+        )
+        data.NLP_VERSION = settings.raw_version_nlp
+        if hc_handidates:
+            data.HC_SECRET = hc_handidates[0].secret
+            data.HC_VERSION = hc_handidates[0].version
+        if ocr_candidates:
+            data.OCR_SECRET = ocr_candidates[0].secret
+            data.OCR_VERSION = ocr_candidates[0].version
+
+        return data
 
     @staticmethod
     def from_access_token(access_token, license_number=0):
