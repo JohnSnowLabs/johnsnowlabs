@@ -48,7 +48,7 @@ tokenizer = Tokenizer() \
 
 sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_vop_hcp_consult", "en", "clinical/models")\
     .setInputCols(["document",'token'])\
-    .setOutputCol("class")
+    .setOutputCol("prediction")
 
 pipeline = Pipeline(stages=[
     document_assembler, 
@@ -72,7 +72,7 @@ val tokenizer = new Tokenizer()
 
 val sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_vop_hcp_consult", "en", "clinical/models")
     .setInputCols(Array("document","token"))
-    .setOutputCol("class")
+    .setOutputCol("prediction")
 
 val pipeline = new Pipeline().setStages(Array(documenter, tokenizer, sequenceClassifier))
 
@@ -121,12 +121,10 @@ In-house annotated health-related text in colloquial language.
 ## Benchmarking
 
 ```bash
-                  precision    recall  f1-score   support
-
+           label  precision    recall  f1-score   support
 Consulted_By_HCP   0.670412  0.730612  0.699219       245
            Other   0.848624  0.807860  0.827740       458
-
-        accuracy                       0.780939       703
-       macro avg   0.759518  0.769236  0.763480       703
-    weighted avg   0.786516  0.780939  0.782950       703
+        accuracy   -         -         0.780939       703
+       macro_avg   0.759518  0.769236  0.763480       703
+    weighted_avg   0.786516  0.780939  0.782950       703
 ```
