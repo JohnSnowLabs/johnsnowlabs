@@ -294,7 +294,6 @@ class JslSecrets(WritableBaseModel):
 
     @staticmethod
     def dict_has_jsl_secrets(secret_dict: Dict[str, str]) -> bool:
-
         for key in secret_json_keys:
             if key in secret_dict:
                 return True
@@ -407,6 +406,14 @@ class JslSecrets(WritableBaseModel):
                 JSL_LEGAL_LICENSE=leg_license,
                 JSL_FINANCE_LICENSE=fin_license,
             )
+        else:
+            # Check for License json
+            if "JOHNSNOWLABS_LICENSE_JSON" in os.environ:
+                json_dict = json.loads(os.environ["JOHNSNOWLABS_LICENSE_JSON"])
+                if JslSecrets.dict_has_jsl_secrets(json_dict):
+                    print("👌 License detected in Environment Variables")
+                    return JslSecrets.from_json_dict(json_dict)
+
         return False
 
     @staticmethod
