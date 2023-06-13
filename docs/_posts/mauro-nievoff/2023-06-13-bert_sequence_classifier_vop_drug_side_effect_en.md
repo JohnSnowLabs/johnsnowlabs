@@ -48,7 +48,7 @@ tokenizer = Tokenizer() \
 
 sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_vop_drug_side_effect", "en", "clinical/models")\
     .setInputCols(["document",'token'])\
-    .setOutputCol("class")
+    .setOutputCol("prediction")
 
 pipeline = Pipeline(stages=[
     document_assembler,
@@ -72,7 +72,7 @@ val tokenizer = new Tokenizer()
 
 val sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_vop_drug_side_effect", "en", "clinical/models")
     .setInputCols(Array("document","token"))
-    .setOutputCol("class")
+    .setOutputCol("prediction")
 
 val pipeline = new Pipeline().setStages(Array(documenter, tokenizer, sequenceClassifier))
 
@@ -121,12 +121,10 @@ Hello,I’m 20 year old girl. I’m diagnosed with hyperthyroid 1 month ago. I w
 ## Benchmarking
 
 ```bash
-              precision    recall  f1-score   support
-
+       label  precision    recall  f1-score   support
      Drug_AE   0.861111  0.788136  0.823009       118
        Other   0.875622  0.921466  0.897959       191
-
-    accuracy                       0.870550       309
-   macro avg   0.868367  0.854801  0.860484       309
-weighted avg   0.870081  0.870550  0.869337       309
+    accuracy   -         -         0.870550       309
+   macro_avg   0.868367  0.854801  0.860484       309
+weighted_avg   0.870081  0.870550  0.869337       309
 ```
