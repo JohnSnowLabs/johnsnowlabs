@@ -19,7 +19,7 @@ sidebar:
 
 Release date: **12-06-2023**
 
-We are pleased to announce the release of v4.10.1 which includes the following bug fixes:
+The v4.10.1 version release includes the following bug fixes
 
 ### Improvement
 - Remove recognized text seen on the top of the Visual NER task
