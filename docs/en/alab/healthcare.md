@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: Annotation Lab | John Snow Labs
+seotitle: NLP Lab | John Snow Labs
 title: NLP Libraries Integration
 permalink: /docs/en/alab/healthcare
 key: docs-training

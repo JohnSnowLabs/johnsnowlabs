@@ -30,15 +30,14 @@ The corpus used for model training is provided by European Clinical Case Corpus 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_eu_clinical_case_en_4.2.7_3.2_1674657662344.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_eu_clinical_case_en_4.2.7_3.2_1674657662344.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_eu_clinical_case_en_4.2.7_3.0_1674657662344.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_eu_clinical_case_en_4.2.7_3.0_1674657662344.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
-
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
 	.setInputCol("text")\
@@ -184,6 +183,6 @@ clinical_condition   93.0   47.0  81.0  174.0     0.6643  0.5345  0.5924
            patient  119.0   16.0   5.0  124.0     0.8815  0.9597  0.9189
     clinical_event  331.0  126.0  89.0  420.0     0.7243  0.7881  0.7548
           bodypart  171.0   58.0  84.0  255.0     0.7467  0.6706  0.7066
-            macro     -      -      -     -         -       -     0.7651
-            micro     -      -      -     -         -       -     0.7454
+             macro    -      -      -     -         -       -     0.7651
+             micro    -      -      -     -         -       -     0.7454
 ```

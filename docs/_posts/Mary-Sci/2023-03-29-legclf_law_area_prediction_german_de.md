@@ -5,7 +5,7 @@ author: John Snow Labs
 name: legclf_law_area_prediction_german
 date: 2023-03-29
 tags: [de, licensed, classification, legal, tensorflow]
-task: Text Generation
+task: Text Classification
 language: de
 edition: Legal NLP 1.0.0
 spark_version: 3.0

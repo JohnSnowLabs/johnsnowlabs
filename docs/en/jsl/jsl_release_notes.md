@@ -15,10 +15,12 @@ sidebar:
 See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for detailed information on Release History and Features.
 
 
-## 4.4.2
+
+## 4.4.8
 Release date: 7-14-2023
 
 The John Snow Labs 4.4.8 Library released with the following pre-installed and recommended dependencies
+
 
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
@@ -37,6 +39,7 @@ The John Snow Labs 4.4.8 Library released with the following pre-installed and r
 Release date: 7-06-2023
 
 The John Snow Labs 4.4.7 Library released with the following pre-installed and recommended dependencies
+
 
 | Library                                                                     | Version |
 |-----------------------------------------------------------------------------|---------|
