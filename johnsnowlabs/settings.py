@@ -8,9 +8,9 @@ from johnsnowlabs.utils.env_utils import (
 )
 
 # These versions are used for auto-installs and version  checks
-raw_version_jsl_lib = "4.4.7"
+raw_version_jsl_lib = "4.4.8"
 raw_version_nlp = "4.4.1"
-raw_version_nlu = "4.2.1"
+raw_version_nlu = "4.2.2"
 
 raw_version_pyspark = "3.1.2"
 raw_version_nlp_display = "4.1"
@@ -65,7 +65,8 @@ db_jar_jobs_dir = f"{dbfs_home_dir}/jar_jobs"
 db_cluster_name = "John-Snow-Labs-Databricks-Auto-Cluster🚀"
 db_driver_node_type = "i3.xlarge"
 db_node_type_id = "i3.xlarge"
-db_spark_version = "10.5.x-scala2.12"
+# db_spark_version = "10.5.x-scala2.12"
+db_spark_version = "12.2.x-scala2.12"
 
 db_job_name = "John-Snow-Labs-Job {job} 🚀"
 db_run_name = "John-Snow-Labs-Run 🚀"
