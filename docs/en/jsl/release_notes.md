@@ -13,6 +13,24 @@ sidebar:
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
+
+## NLU Version 4.2.2
+
+
+- support for Medical Summarizers
+
+
+New Medical Summarizers:
+- 'en.summarize.clinical_jsl'
+- 'en.summarize.clinical_jsl_augmented'
+- 'en.summarize.biomedical_pubmed'
+- 'en.summarize.generic_jsl'
+- 'en.summarize.clinical_questions'
+- 'en.summarize.radiology'
+- 'en.summarize.clinical_guidelines_large'
+- 'en.summarize.clinical_laymen'
+
+
 ## NLU Version 4.2.1
 
 Bugfixes for saving and reloading pipelines on databricks 
