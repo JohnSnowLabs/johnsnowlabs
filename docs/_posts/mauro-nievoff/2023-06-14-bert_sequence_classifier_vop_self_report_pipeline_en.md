@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline includes the Medical Bert for Sequence Classification model to classify texts depending on if they are self-reported or if they refer to another person.
+This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify texts depending on if they are self-reported or if they refer to another person. The pipeline is built on the top of  [bert_sequence_classifier_vop_self_report](https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_self_report_en.html) model.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
