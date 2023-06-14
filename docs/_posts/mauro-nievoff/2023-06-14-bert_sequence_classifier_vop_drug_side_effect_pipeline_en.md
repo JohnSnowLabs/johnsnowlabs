@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline includes the Medical Bert for Sequence Classification model to classify health-related text in colloquial language according to the presence or absence of mentions of side effects related to drugs.
+This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify health-related text in colloquial language according to the presence or absence of mentions of side effects related to drugs. The pipeline is built on the top of [bert_sequence_classifier_vop_drug_side_effect](https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_drug_side_effect_en.html) model.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
