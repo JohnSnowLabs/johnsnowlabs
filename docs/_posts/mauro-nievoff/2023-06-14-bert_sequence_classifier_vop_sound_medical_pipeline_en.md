@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline includes the Medical Bert for Sequence Classification model to identify whether the suggestion that is mentioned in the text is medically sound.
+This pretrained pipeline includes the Medical Bert for Sequence Classification model to identify whether the suggestion that is mentioned in the text is medically sound. The pipeline is built on the top of  [bert_sequence_classifier_vop_sound_medical](https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_sound_medical_en.html) model.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
