@@ -21,6 +21,18 @@ data:
           activemenu: public_health
       source: yes
       source:
+        - title: VOP
+          id: vop           
+          image: 
+              src: /assets/images/Voice_Of_Patient.svg
+          excerpt: This demo extracts and classifies healthcare-related terms from the documents transferred from the patient’s own sentences.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/VOP/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_THE_PATIENTS.ipynb
         - title: Voice of the Patients
           id: voice_patients           
           image: 
@@ -33,6 +45,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_THE_PATIENTS.ipynb
+        - title: Side Effect Classifier(VOP)   
+          id: side_effect_classifier_vop 
+          image: 
+              src: /assets/images/Side_Effect.svg
+          excerpt: This demo showcases a classification model designed to detect mentions of side effects in patient-written texts.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/VOP_CLASSIFICATION_SIDE_EFFECT/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/19.MedicalBertForSequenceClassification_in_SparkNLP.ipynb
         - title: Classify Self-Reported Age from Posts  
           id: classify_self_report_age_tweet   
           image: 
@@ -44,7 +68,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/PUBLIC_HEALTH_AGE/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_MB4SC.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_MB4SC.ipynb        
         - title: Detect Adverse Drug Events from Posts   
           id: detect_adverse_drug_events_tweet    
           image: 
