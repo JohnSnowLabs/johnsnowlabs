@@ -268,7 +268,7 @@ class JslSecrets(WritableBaseModel):
             if settings.enforce_versions and not JslSecrets.is_hc_secret_correct_version(secrets.HC_SECRET) and not JslSecrets.is_ocr_secret_correct_version(secrets.OCR_SECRET):
                 # Make sure secrets and versions re enforced
                 print("👷 Trying to install compatible secrets. Use nlp.settings.enforce_versions=False if you want to install outdated secrets.")
-                JslSecrets.enforce_versions(secrets)
+                secrets = JslSecrets.enforce_versions(secrets)
 
         except Exception as err:
             print(
@@ -475,7 +475,7 @@ class JslSecrets(WritableBaseModel):
         return creds
 
     @staticmethod
-    def enforce_versions(data: "JslSecrets"):
+    def enforce_versions(data: "JslSecrets") -> "JslSecrets":
         secrets  = get_secrets(data.HC_LICENSE or data.OCR_LICENSE or data.JSL_FINANCE_LICENSE or data.JSL_LEGAL_LICENSE)
         # Fix lib secrets in license data to correct version
         ocr_candidates = list(
