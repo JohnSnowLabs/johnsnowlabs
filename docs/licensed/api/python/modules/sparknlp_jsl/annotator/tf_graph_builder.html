@@ -345,11 +345,45 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">dataset</span></div>
 
+
 <div class="viewcode-block" id="TFGraphBuilder"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder">[docs]</a><span class="k">class</span> <span class="nc">TFGraphBuilder</span><span class="p">(</span><span class="n">Estimator</span><span class="p">,</span> <span class="n">DefaultParamsWritable</span><span class="p">,</span> <span class="n">DefaultParamsReadable</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates Tensorflow graphs.</span>
-
 <span class="sd">    This class is used to build a TensorFlow graph from a given model name and</span>
 <span class="sd">    a set of input columns.</span>
+
+<span class="sd">        Additionally, Graphs are data structures that contain a set of tf.Operation objects,</span>
+<span class="sd">    which represent units of computation;</span>
+<span class="sd">    and tf.Tensor objects, which represent the units of data that flow between operations.</span>
+<span class="sd">    They are defined in a tf.Graph context. Since these graphs are data structures,</span>
+<span class="sd">    they can be saved, run, and restored all without the original Python code.</span>
+
+<span class="sd">        A TF graph is a data structure that represents a computation.</span>
+<span class="sd">    It is made up of a series of nodes, each of which represents an operation,</span>
+<span class="sd">    and edges, which represent the flow of data between operations.</span>
+
+<span class="sd">        TF graphs are used to represent the computation of DL models.</span>
+<span class="sd">    The nodes in the graph represent the different layers of the model, and the edges represent the connections between the layers.</span>
+
+<span class="sd">        The biggest idea about TF is that all the numerical computations are expressed as a computational graph.</span>
+<span class="sd">    In other words, the backbone of any TF program is a Graph.</span>
+<span class="sd">    Anything that happens in your model is represented by the computational graph.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+
+<span class="sd">    &gt;&gt;&gt; graph_folder = &quot;./tf_graphs&quot;</span>
+<span class="sd">    &gt;&gt;&gt; re_graph_folder = TFGraphBuilder() \\</span>
+<span class="sd">    ...     .setModelName(&quot;relation_extraction&quot;) \\</span>
+<span class="sd">    ...     .setInputCols([&quot;embeddings&quot;, &quot;pos_tags&quot;, &quot;train_ner_chunks&quot;, &quot;dependencies&quot;]) \\</span>
+<span class="sd">    ...     .setLabelColumn(&quot;rel&quot;) \\</span>
+<span class="sd">    ...     .setGraphFolder(graph_folder) \\</span>
+<span class="sd">    ...     .setGraphFile(&quot;re_graph.pb&quot;) \\</span>
+<span class="sd">    ...     .setHiddenLayers([300,200]) \\</span>
+<span class="sd">    ...     .setHiddenAct(&quot;relu&quot;) \\</span>
+<span class="sd">    ...     .setHiddenActL2(True) \\</span>
+<span class="sd">    ...     .setHiddenWeightsL2(False) \\</span>
+<span class="sd">    ...     .setBatchNorm(False)</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="TFGraphBuilder.modelName"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.modelName">[docs]</a>    <span class="n">modelName</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
                       <span class="s2">&quot;modelName&quot;</span><span class="p">,</span>
@@ -407,24 +441,19 @@ document.write(`
                       <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TFGraphBuilder.isLicensed"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.isLicensed">[docs]</a>    <span class="n">isLicensed</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-                      <span class="s2">&quot;isLicensed&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;Medical model, used in MedicalNerAprroach and NerDLApproach.&quot;</span><span class="p">,</span>
-                      <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
+                       <span class="s2">&quot;isLicensed&quot;</span><span class="p">,</span>
+                       <span class="s2">&quot;Medical model, used in MedicalNerAprroach and NerDLApproach.&quot;</span><span class="p">,</span>
+                       <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TFGraphBuilder.useRelationDirection"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.useRelationDirection">[docs]</a>    <span class="n">useRelationDirection</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
                                  <span class="s2">&quot;useRelationDirection&quot;</span><span class="p">,</span>
                                  <span class="s2">&quot;Whether relation direcition is encoded in RelationExtractionApproach.&quot;</span><span class="p">,</span>
                                  <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
-    <span class="n">useRelationDirection</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-                                 <span class="s2">&quot;useRelationDirection&quot;</span><span class="p">,</span>
-                                 <span class="s2">&quot;Whether relation direcition is encoded in RelationExtractionApproach.&quot;</span><span class="p">,</span>
-                                 <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span>
-
 <div class="viewcode-block" id="TFGraphBuilder.outputAct"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.outputAct">[docs]</a>    <span class="n">outputAct</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-                                 <span class="s2">&quot;outputAct&quot;</span><span class="p">,</span>
-                                 <span class="s2">&quot;Output activation function, used in GenericClassifier. Possible value are: softmax and sigmoid.&quot;</span><span class="p">,</span>
-                                 <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
+                      <span class="s2">&quot;outputAct&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;Output activation function, used in GenericClassifier. Possible value are: softmax and sigmoid.&quot;</span><span class="p">,</span>
+                      <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="TFGraphBuilder.setHiddenAct"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setHiddenAct">[docs]</a>    <span class="k">def</span> <span class="nf">setHiddenAct</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Activation function for hidden layers, used in RelationExtractionApproach.</span>
@@ -444,6 +473,10 @@ document.write(`
 
 <div class="viewcode-block" id="TFGraphBuilder.setHiddenActL2"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setHiddenActL2">[docs]</a>    <span class="k">def</span> <span class="nf">setHiddenActL2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;L2 regularization of hidden layer weights, used in RelationExtractionApproach.</span>
+<span class="sd">        L2 regularization (aka weight decay) is a regularization technique</span>
+<span class="sd">        used to prevent overfitting in machine learning models, including deep neural networks.</span>
+<span class="sd">        It involves adding a regularization term to the loss function,</span>
+<span class="sd">        which encourages the model&#39;s weights to have smaller values.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -475,6 +508,11 @@ document.write(`
 
 <div class="viewcode-block" id="TFGraphBuilder.setBatchNorm"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setBatchNorm">[docs]</a>    <span class="k">def</span> <span class="nf">setBatchNorm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Batch normalization, used in RelationExtractionApproach.</span>
+<span class="sd">        It is used to enable batch normalization for the model.</span>
+<span class="sd">        Batch normalization is a technique that helps to improve the stability and performance of deep neural networks.</span>
+<span class="sd">        It works by normalizing the activations of each layer in the network,</span>
+<span class="sd">        which helps to prevent the network from becoming too sensitive to changes in the input data.</span>
+<span class="sd">        This can lead to faster training times and better accuracy.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -506,10 +544,12 @@ document.write(`
 
 <div class="viewcode-block" id="TFGraphBuilder.setHiddenLayers"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setHiddenLayers">[docs]</a>    <span class="k">def</span> <span class="nf">setHiddenLayers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;A list of hidden layer sizes for RelationExtractionApproach.</span>
+<span class="sd">        Used to set the number and size of hidden layers in the model.</span>
+<span class="sd">        The number of hidden layers determines the complexity of the model, while the size of the hidden layers determines the number of neurons in each layer.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        *value : int</span>
+<span class="sd">        value : int</span>
 <span class="sd">            A list of hidden layer sizes for RelationExtractionApproach</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">hiddenLayers</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
@@ -521,6 +561,10 @@ document.write(`
 
 <div class="viewcode-block" id="TFGraphBuilder.setMaxSequenceLength"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setMaxSequenceLength">[docs]</a>    <span class="k">def</span> <span class="nf">setMaxSequenceLength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the maximum sequence length for AssertionDLApproach.</span>
+<span class="sd">        Used to set the maximum length of a sequence (of tokens) that the model can handle.</span>
+<span class="sd">        If the value is set too low, longer sequences may be truncated, potentially losing valuable information.</span>
+<span class="sd">        On the other hand, setting the value too high may consume excessive memory and</span>
+<span class="sd">        slow down the training or inference process.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -536,6 +580,9 @@ document.write(`
 
 <div class="viewcode-block" id="TFGraphBuilder.setHiddenUnitsNumber"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setHiddenUnitsNumber">[docs]</a>    <span class="k">def</span> <span class="nf">setHiddenUnitsNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the number of hidden units for AssertionDLApproach and MedicalNerApproach.</span>
+<span class="sd">        Used to set the number of neurons in the hidden layers of the model.</span>
+<span class="sd">        It may be an option to increase or decrease this value depending on the complexity of the problem that</span>
+<span class="sd">        the neural network is being trained to solve.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>

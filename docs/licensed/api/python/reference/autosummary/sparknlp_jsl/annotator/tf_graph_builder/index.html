@@ -314,6 +314,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../embeddings/average_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.average_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../embeddings/bert_sentence_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../embeddings/entity_chunk_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../embeddings/extractive_summarization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.extractive_summarization</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -369,6 +370,7 @@ document.write(`
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
@@ -457,9 +459,45 @@ a set of input columns.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TFGraphBuilder</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/tf_graph_builder.html#TFGraphBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder" title="Permalink to this definition">#</a></dt>
-<dd><p>Creates Tensorflow graphs.</p>
-<p>This class is used to build a TensorFlow graph from a given model name and
+<dd><p>Creates Tensorflow graphs.
+This class is used to build a TensorFlow graph from a given model name and
 a set of input columns.</p>
+<blockquote>
+<div><p>Additionally, Graphs are data structures that contain a set of tf.Operation objects,</p>
+</div></blockquote>
+<p>which represent units of computation;
+and tf.Tensor objects, which represent the units of data that flow between operations.
+They are defined in a tf.Graph context. Since these graphs are data structures,
+they can be saved, run, and restored all without the original Python code.</p>
+<blockquote>
+<div><p>A TF graph is a data structure that represents a computation.</p>
+</div></blockquote>
+<p>It is made up of a series of nodes, each of which represents an operation,
+and edges, which represent the flow of data between operations.</p>
+<blockquote>
+<div><p>TF graphs are used to represent the computation of DL models.</p>
+</div></blockquote>
+<p>The nodes in the graph represent the different layers of the model, and the edges represent the connections between the layers.</p>
+<blockquote>
+<div><p>The biggest idea about TF is that all the numerical computations are expressed as a computational graph.</p>
+</div></blockquote>
+<p>In other words, the backbone of any TF program is a Graph.
+Anything that happens in your model is represented by the computational graph.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">graph_folder</span> <span class="o">=</span> <span class="s2">&quot;./tf_graphs&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">re_graph_folder</span> <span class="o">=</span> <span class="n">TFGraphBuilder</span><span class="p">()</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setModelName</span><span class="p">(</span><span class="s2">&quot;relation_extraction&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;embeddings&quot;</span><span class="p">,</span> <span class="s2">&quot;pos_tags&quot;</span><span class="p">,</span> <span class="s2">&quot;train_ner_chunks&quot;</span><span class="p">,</span> <span class="s2">&quot;dependencies&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setLabelColumn</span><span class="p">(</span><span class="s2">&quot;rel&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setGraphFolder</span><span class="p">(</span><span class="n">graph_folder</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setGraphFile</span><span class="p">(</span><span class="s2">&quot;re_graph.pb&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setHiddenLayers</span><span class="p">([</span><span class="mi">300</span><span class="p">,</span><span class="mi">200</span><span class="p">])</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setHiddenAct</span><span class="p">(</span><span class="s2">&quot;relu&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setHiddenActL2</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setHiddenWeightsL2</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span> \
+<span class="gp">... </span>    <span class="o">.</span><span class="n">setBatchNorm</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.modelName">
 <span class="sig-name descname"><span class="pre">modelName</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/tf_graph_builder.html#TFGraphBuilder.modelName"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.modelName" title="Permalink to this definition">#</a></dt>
@@ -531,11 +569,6 @@ a set of input columns.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">useRelationDirection</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/tf_graph_builder.html#TFGraphBuilder.useRelationDirection"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.outputAct">
 <span class="sig-name descname"><span class="pre">outputAct</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/tf_graph_builder.html#TFGraphBuilder.outputAct"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.outputAct" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -564,7 +597,11 @@ Possible value are: relu, sigmoid, tanh, linear</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setHiddenActL2">
 <span class="sig-name descname"><span class="pre">setHiddenActL2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/tf_graph_builder.html#TFGraphBuilder.setHiddenActL2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setHiddenActL2" title="Permalink to this definition">#</a></dt>
-<dd><p>L2 regularization of hidden layer weights, used in RelationExtractionApproach.</p>
+<dd><p>L2 regularization of hidden layer weights, used in RelationExtractionApproach.
+L2 regularization (aka weight decay) is a regularization technique
+used to prevent overfitting in machine learning models, including deep neural networks.
+It involves adding a regularization term to the loss function,
+which encourages the model’s weights to have smaller values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -604,7 +641,12 @@ Possible value are: relu, sigmoid, tanh, linear</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setBatchNorm">
 <span class="sig-name descname"><span class="pre">setBatchNorm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/tf_graph_builder.html#TFGraphBuilder.setBatchNorm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setBatchNorm" title="Permalink to this definition">#</a></dt>
-<dd><p>Batch normalization, used in RelationExtractionApproach.</p>
+<dd><p>Batch normalization, used in RelationExtractionApproach.
+It is used to enable batch normalization for the model.
+Batch normalization is a technique that helps to improve the stability and performance of deep neural networks.
+It works by normalizing the activations of each layer in the network,
+which helps to prevent the network from becoming too sensitive to changes in the input data.
+This can lead to faster training times and better accuracy.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -644,11 +686,13 @@ Possible value are: relu, sigmoid, tanh, linear</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setHiddenLayers">
 <span class="sig-name descname"><span class="pre">setHiddenLayers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/tf_graph_builder.html#TFGraphBuilder.setHiddenLayers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setHiddenLayers" title="Permalink to this definition">#</a></dt>
-<dd><p>A list of hidden layer sizes for RelationExtractionApproach.</p>
+<dd><p>A list of hidden layer sizes for RelationExtractionApproach.
+Used to set the number and size of hidden layers in the model.
+The number of hidden layers determines the complexity of the model, while the size of the hidden layers determines the number of neurons in each layer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>*value</strong><span class="classifier">int</span></dt><dd><p>A list of hidden layer sizes for RelationExtractionApproach</p>
+<dt><strong>value</strong><span class="classifier">int</span></dt><dd><p>A list of hidden layer sizes for RelationExtractionApproach</p>
 </dd>
 </dl>
 </dd>
@@ -664,7 +708,11 @@ Possible value are: relu, sigmoid, tanh, linear</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setMaxSequenceLength">
 <span class="sig-name descname"><span class="pre">setMaxSequenceLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/tf_graph_builder.html#TFGraphBuilder.setMaxSequenceLength"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setMaxSequenceLength" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the maximum sequence length for AssertionDLApproach.</p>
+<dd><p>Sets the maximum sequence length for AssertionDLApproach.
+Used to set the maximum length of a sequence (of tokens) that the model can handle.
+If the value is set too low, longer sequences may be truncated, potentially losing valuable information.
+On the other hand, setting the value too high may consume excessive memory and
+slow down the training or inference process.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -684,7 +732,10 @@ Possible value are: relu, sigmoid, tanh, linear</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setHiddenUnitsNumber">
 <span class="sig-name descname"><span class="pre">setHiddenUnitsNumber</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/annotator/tf_graph_builder.html#TFGraphBuilder.setHiddenUnitsNumber"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setHiddenUnitsNumber" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the number of hidden units for AssertionDLApproach and MedicalNerApproach.</p>
+<dd><p>Sets the number of hidden units for AssertionDLApproach and MedicalNerApproach.
+Used to set the number of neurons in the hidden layers of the model.
+It may be an option to increase or decrease this value depending on the complexity of the problem that
+the neural network is being trained to solve.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -893,7 +944,6 @@ file name.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.batchNorm"><code class="docutils literal notranslate"><span class="pre">TFGraphBuilder.batchNorm</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.isLicensed"><code class="docutils literal notranslate"><span class="pre">TFGraphBuilder.isLicensed</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.useRelationDirection"><code class="docutils literal notranslate"><span class="pre">TFGraphBuilder.useRelationDirection</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">TFGraphBuilder.useRelationDirection</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.outputAct"><code class="docutils literal notranslate"><span class="pre">TFGraphBuilder.outputAct</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.setHiddenAct"><code class="docutils literal notranslate"><span class="pre">TFGraphBuilder.setHiddenAct()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder.getHiddenAct"><code class="docutils literal notranslate"><span class="pre">TFGraphBuilder.getHiddenAct()</span></code></a></li>

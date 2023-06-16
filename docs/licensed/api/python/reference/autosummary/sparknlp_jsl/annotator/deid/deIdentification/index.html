@@ -314,6 +314,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/average_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.average_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/bert_sentence_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/entity_chunk_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../embeddings/extractive_summarization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.extractive_summarization</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -369,6 +370,7 @@ document.write(`
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
@@ -502,6 +504,10 @@ both : Takes the entities from the obfuscatorRefFile and the faker module random
 </dd>
 <dt><strong>regexOverride</strong></dt><dd><p>If is true prioritize the regex entities, if is false prioritize the ner.</p>
 </dd>
+<dt><strong>language</strong></dt><dd><p>The language used to select the regex file and some faker entities.
+The values are the following:
+‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p>
+</dd>
 <dt><strong>seed</strong></dt><dd><p>It is the seed to select the entities on obfuscate mode.With the seed you can reply a execution several times with the same ouptut.</p>
 </dd>
 <dt><strong>ignoreRegex</strong></dt><dd><p>Select if you want to use regex file loaded in the model.If true the default regex file will be not used.The default value is false.</p>
@@ -547,7 +553,7 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 </dl>
 </dd>
 <dt><strong>genderAwareness</strong></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names.
-If value is true, it might decrease performance. Default: False</p>
+If the value is true, it might decrease performance. Default: False</p>
 </dd>
 </dl>
 </dd>
@@ -820,11 +826,13 @@ If value is true, it might decrease performance. Default: False</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLanguage">
 <span class="sig-name descname"><span class="pre">setLanguage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setLanguage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLanguage" title="Permalink to this definition">#</a></dt>
-<dd><p>The language used to select the regex file and some faker entities.’en’(english),’de’() or ‘es’(Spanish)</p>
+<dd><p>The language used to select the regex file and some faker entities.
+‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian).
+Default:’en’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>l</strong><span class="classifier">str</span></dt><dd><p>The language used to select the regex file and some faker entities.’en’(english),’de’() or ‘es’(Spanish)</p>
+<dt><strong>l</strong><span class="classifier">str</span></dt><dd><p>The language used to select the regex file and some faker entities.’en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p>
 </dd>
 </dl>
 </dd>
@@ -1348,7 +1356,7 @@ regex patterns with setRegexPatternsDictionary, where each line is a mapping of 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>regexPatternsDictionary</strong></dt><dd><p>ictionary with regular expression patterns that match some protected entity</p>
+<dt><strong>regexPatternsDictionary</strong></dt><dd><p>Dictionary with regular expression patterns that match some protected entity</p>
 </dd>
 <dt><strong>mode</strong></dt><dd><p>Mode for Anonimizer [‘mask’|’obfuscate’]</p>
 </dd>
@@ -1370,12 +1378,16 @@ The similarity is based on the Levenshtein Distance between the words.</p>
 <dt><strong>sameEntityThreshold</strong></dt><dd><p>Similarity threshold [0.0-1.0] to consider two appearances of an entity as <cite>the same</cite> (default: 0.9).</p>
 </dd>
 <dt><strong>obfuscateRefSource</strong></dt><dd><p>The source of obfuscation of to obfuscate the entities.For dates entities doesnt apply tha method.
-The values ar the following:
+The values are the following:
 file: Takes the entities from the obfuscatorRefFile
 faker: Takes the entities from the Faker module
 both: Takes the entities from the obfuscatorRefFile and the faker module randomly.</p>
 </dd>
 <dt><strong>regexOverride</strong></dt><dd><p>If is true prioritize the regex entities, if is false prioritize the ner.</p>
+</dd>
+<dt><strong>language</strong></dt><dd><p>The language used to select the regex file and some faker entities.
+The values are the following:
+‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p>
 </dd>
 <dt><strong>seed</strong></dt><dd><p>It is the seed to select the entities on obfuscate mode.With the seed you can reply a execution several times with the same ouptut.</p>
 </dd>
@@ -1548,11 +1560,6 @@ If value is true, it might decrease performance. Default: False</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">dateFormats</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.dateFormats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.consistentObfuscation">
 <span class="sig-name descname"><span class="pre">consistentObfuscation</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.consistentObfuscation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.consistentObfuscation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1608,11 +1615,6 @@ If value is true, it might decrease performance. Default: False</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id13">
-<span class="sig-name descname"><span class="pre">mode</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id13" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.language">
 <span class="sig-name descname"><span class="pre">language</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.language"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.language" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1661,11 +1663,14 @@ If value is true, it might decrease performance. Default: False</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setLanguage">
 <span class="sig-name descname"><span class="pre">setLanguage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setLanguage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setLanguage" title="Permalink to this definition">#</a></dt>
-<dd><p>The language used to select the regex file and some faker entities.’en’(english),’de’() or ‘es’(Spanish)</p>
+<dd><p>The language used to select the regex file and some faker entities.
+The values are the following:
+‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian).
+Default:’en’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>lang</strong><span class="classifier">str</span></dt><dd><p>The language used to select the regex file and some faker entities.’en’(english),’de’() or ‘es’(Spanish)</p>
+<dt><strong>lang</strong><span class="classifier">str</span></dt><dd><p>The language used to select the regex file and some faker entities.’en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p>
 </dd>
 </dl>
 </dd>
@@ -1691,7 +1696,7 @@ If value is true, it might decrease performance. Default: False</p>
 <span class="sig-name descname"><span class="pre">setMaskingPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setMaskingPolicy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMaskingPolicy" title="Permalink to this definition">#</a></dt>
 <dd><dl class="simple">
 <dt>Sets the masking policy:</dt><dd><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence.
-Example, Smith -&gt; [<a href="#id14"><span class="problematic" id="id15">**</span></a><a href="#id16"><span class="problematic" id="id17">*</span></a>].
+Example, Smith -&gt; [<a href="#id13"><span class="problematic" id="id14">**</span></a><a href="#id15"><span class="problematic" id="id16">*</span></a>].
 If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.
 entity_labels: Replace the values with the corresponding entity labels.
 fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p>
@@ -2228,7 +2233,6 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.days"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.days</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.dateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateToYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.minYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.minYear</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.consistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.consistentObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.sameEntityThreshold"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.sameEntityThreshold</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.obfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.obfuscateRefSource</span></code></a></li>
@@ -2240,7 +2244,6 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.returnEntityMappings"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.returnEntityMappings</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.blackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.blackList</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.regexEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.regexEntities</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.mode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.language"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.language</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.useShifDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.useShifDays</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.region"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.region</span></code></a></li>

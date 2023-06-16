@@ -314,6 +314,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/average_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.average_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/bert_sentence_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/entity_chunk_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../embeddings/extractive_summarization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.extractive_summarization</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -369,6 +370,7 @@ document.write(`
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
@@ -448,11 +450,11 @@ document.write(`
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NerQuestionGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.qa.NerQuestionGenerator'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/qa_ner_generator.html#NerQuestionGenerator"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator" title="Permalink to this definition">#</a></dt>
 <dd><p>Automatically generates questions for NER.</p>
-<p>This annotator takes a NER chunk (obtained by, e.g., <cite>NerConverterInternal</cite>) and
+<p>This annotator takes an NER chunk (obtained by, e.g., <cite>NerConverterInternal</cite>) and
 generates a questions based on two entity types, a pronoun and a strategy.</p>
 <p>The question is generated in the form of [QUESTIONPRONOUN] [ENTITY1] [ENTITY2] [QUESTIONMARK].</p>
-<p>The generated question can be used by <cite>QuestionAnswerer</cite> or <cite>ZeroShotNer</cite> annotators
-to answer the question or find NER entities.</p>
+<p>The generated question can be used by <a href="#id1"><span class="problematic" id="id2">`</span></a>QuestionAnswerer`annotator
+to find answers to the generated questions.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Input Annotation types</p></th>
@@ -539,7 +541,7 @@ entities2 (list): List with the entity types of entities that appear second in t
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator.setQuestionMark">
 <span class="sig-name descname"><span class="pre">setQuestionMark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/qa_ner_generator.html#NerQuestionGenerator.setQuestionMark"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator.setQuestionMark" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets wheter we want to add a question mark at the end of the question.</p>
+<dd><p>Sets whether we want to add a question mark at the end of the question.</p>
 <p>Defaults to False.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>value (bool): True if we want to add a question mark at the end of the question, False otherwise.</p>
@@ -566,32 +568,32 @@ in Entity 1 will be grouped with all chunks in Entity 2.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator.setEntities1">
-<span class="sig-name descname"><span class="pre">setEntities1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/qa_ner_generator.html#NerQuestionGenerator.setEntities1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator.setEntities1" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setEntities1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/qa_ner_generator.html#NerQuestionGenerator.setEntities1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator.setEntities1" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the list of entity types that appear first in the question.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>e1 (list): List of entity types.</p>
+<dt>Args:</dt><dd><p>entities (list): List of entity types.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator.setEntities2">
-<span class="sig-name descname"><span class="pre">setEntities2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/qa_ner_generator.html#NerQuestionGenerator.setEntities2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator.setEntities2" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setEntities2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/qa_ner_generator.html#NerQuestionGenerator.setEntities2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator.setEntities2" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the list of entity types that appear second in the question.</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>e2 (list): List of entity types.</p>
+<dt>Args:</dt><dd><p>entities (list): List of entity types.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator.setQuestionPronoun">
-<span class="sig-name descname"><span class="pre">setQuestionPronoun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/qa_ner_generator.html#NerQuestionGenerator.setQuestionPronoun"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator.setQuestionPronoun" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setQuestionPronoun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pronoun</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/qa/qa_ner_generator.html#NerQuestionGenerator.setQuestionPronoun"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.qa.qa_ner_generator.NerQuestionGenerator.setQuestionPronoun" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets the pronoun to be used in the question.</p>
 <p>E.g., ‘When’, ‘Where’, ‘Why’, ‘How’, ‘Who’, ‘What’.
 Defaults to empty string (“”).</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>rs (str): The pronoun to be used.</p>
+<dt>Args:</dt><dd><p>pronoun (str): The pronoun to be used.</p>
 </dd>
 </dl>
 </dd></dl>
