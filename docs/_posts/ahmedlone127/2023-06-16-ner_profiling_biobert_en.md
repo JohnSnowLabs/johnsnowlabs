@@ -8,7 +8,7 @@ tags: [licensed, en, clinical, biobert, profiling, ner_profiling, ner]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 4.4.4
-spark_version: 3.2
+spark_version: 3.4
 supported: true
 annotator: PipelineModel
 article_header:
@@ -31,8 +31,8 @@ Here are the NER models that this pretrained pipeline includes:
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_profiling_biobert_en_4.4.4_3.2_1686917723403.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_profiling_biobert_en_4.4.4_3.2_1686917723403.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_profiling_biobert_en_4.4.4_3.4_1686921060675.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_profiling_biobert_en_4.4.4_3.4_1686921060675.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
