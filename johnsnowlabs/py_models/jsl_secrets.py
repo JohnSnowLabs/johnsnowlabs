@@ -265,7 +265,7 @@ class JslSecrets(WritableBaseModel):
                 # Search Env Vars
                 secrets = JslSecrets.search_env_vars()
             
-            if settings.enforce_versions and not JslSecrets.is_hc_secret_correct_version(secrets.HC_SECRET) and not JslSecrets.is_ocr_secret_correct_version(secrets.OCR_SECRET):
+            if secrets and settings.enforce_versions and not JslSecrets.is_hc_secret_correct_version(secrets.HC_SECRET) and not JslSecrets.is_ocr_secret_correct_version(secrets.OCR_SECRET):
                 # Make sure secrets and versions re enforced
                 print("👷 Trying to install compatible secrets. Use nlp.settings.enforce_versions=False if you want to install outdated secrets.")
                 secrets = JslSecrets.enforce_versions(secrets)
