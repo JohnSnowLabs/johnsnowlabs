@@ -37,26 +37,26 @@ Assertion status model used to predict if an NER chunk refers to a positive find
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
-document_assembler = DocumentAssembler()\\
-    .setInputCol("text")\\
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
     .setOutputCol("document")
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\\
-    .setInputCols(["document"])\\
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+    .setInputCols(["document"])\
     .setOutputCol("sentence")
-tokenizer = Tokenizer() \\
-    .setInputCols(["sentence"]) \\
+tokenizer = Tokenizer() \
+    .setInputCols(["sentence"]) \
     .setOutputCol("token")
-word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical_large", "en", "clinical/models")\\
-    .setInputCols(["sentence", "token"]) \\
+word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical_large", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"]) \
     .setOutputCol("embeddings")                
-ner = MedicalNerModel.pretrained("ner_vop_emb_clinical_large", "en", "clinical/models") \\
-    .setInputCols(["sentence", "token", "embeddings"]) \\
+ner = MedicalNerModel.pretrained("ner_vop_emb_clinical_large", "en", "clinical/models") \
+    .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("ner")
-ner_converter = NerConverterInternal() \\
-    .setInputCols(["sentence", "token", "ner"]) \\
+ner_converter = NerConverterInternal() \
+    .setInputCols(["sentence", "token", "ner"]) \
     .setOutputCol("ner_chunk")
-assertion = AssertionDLModel.pretrained("assertion_vop_three_class_emb_clinical_large_wip", "en", "clinical/models") \\
-    .setInputCols(["sentence", "ner_chunk", "embeddings"]) \\
+assertion = AssertionDLModel.pretrained("assertion_vop_3cl_emb_clinical_large_wip", "en", "clinical/models") \
+    .setInputCols(["sentence", "ner_chunk", "embeddings"]) \
     .setOutputCol("assertion")
 pipeline = Pipeline(stages=[document_assembler,
                             sentence_detector,
@@ -92,7 +92,7 @@ val ner = MedicalNerModel.pretrained("ner_vop_emb_clinical_large", "en", "clinic
 val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
-val clinical_assertion = AssertionDLModel.pretrained("assertion_vop_three_class_emb_clinical_large_wip","en","clinical/models")
+val clinical_assertion = AssertionDLModel.pretrained("assertion_vop_3cl_emb_clinical_large_wip","en","clinical/models")
     .setInputCols("sentence","ner_chunk","embeddings")
     .setOutputCol("assertion")
         
