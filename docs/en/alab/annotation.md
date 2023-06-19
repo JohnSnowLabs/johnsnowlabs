@@ -50,9 +50,9 @@ Dedicated action icons are available on the completions widgets to allow users t
 
 <img class="image image__shadow" src="https://user-images.githubusercontent.com/45035063/204707502-acaba8b8-43d0-4354-8c14-4f66132131ad.png" style="width:100%;"/>
 
-It is an important to ensure a complete audit trail of all user actions. Annotation Lab tracks the history and details of any deleted completions. It means it is possible to see the name of the completion creator, date of creation, and deletion.
+It is an important to ensure a complete audit trail of all user actions. Annotation Lab tracks the history and details of any deleted completions. It means it is possible to see the name of the completion creator, date of creation, and deletion. As of version 4.9, the users can also view the "Lead Time" which is the time taken to annotate the completion, and "Edit Time" which is the time taken to make changes to the completion after creating a copy of the completion. By utilizing the "Versions" tab users can now track the source of a copied completion as well as the number of edits made between consecutive completions.
 
-<img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/completion_history.png" style="width:40%;"/>
+<img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.9.0/completion_history.png" style="width:40%;"/>
 
 <br />
 
