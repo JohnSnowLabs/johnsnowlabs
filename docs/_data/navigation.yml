@@ -101,6 +101,10 @@ annotation-lab:
             url: /docs/en/alab/tasks
           - title: Workflows
             url: /docs/en/alab/workflow
+      - subtitle: XML-like Tags
+        children:
+          - title: Overview
+            url: /docs/en/alab/tags_overview
       - subtitle: Annotation
         children:
           - title: Manual annotation
