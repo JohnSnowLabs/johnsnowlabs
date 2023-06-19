@@ -105,6 +105,10 @@ annotation-lab:
         children:
           - title: Overview
             url: /docs/en/alab/tags_overview
+          - title: Video
+            url: /docs/en/alab/tags_video
+          - title: Audio
+            url: /docs/en/alab/tags_audio
       - subtitle: Annotation
         children:
           - title: Manual annotation
