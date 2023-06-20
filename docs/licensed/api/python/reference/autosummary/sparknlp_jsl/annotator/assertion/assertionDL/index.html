@@ -314,6 +314,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/average_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.average_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/bert_sentence_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/entity_chunk_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../embeddings/extractive_summarization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.extractive_summarization</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -369,6 +370,7 @@ document.write(`
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
@@ -521,54 +523,55 @@ a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p>
 </dd>
 <dt><strong>scopeWindow</strong></dt><dd><p>The scope window of the assertion expression</p>
 </dd>
-<dt><strong>Examples</strong></dt><dd></dd>
-<dt><strong>——–</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; import sparknlp</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp.base import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp.annotator import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp_jsl.annotator import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp.training import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from pyspark.ml import Pipeline</strong></dt><dd></dd>
-<dt><a href="#id1"><span class="problematic" id="id2">**</span></a>&gt;&gt;&gt; document_assembler = DocumentAssembler() **</dt><dd></dd>
-<dt><a href="#id3"><span class="problematic" id="id4">**</span></a>…    .setInputCol(“text”) **</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“document”)</strong></dt><dd></dd>
-<dt><a href="#id5"><span class="problematic" id="id6">**</span></a>&gt;&gt;&gt; chunk = Doc2Chunk()**</dt><dd></dd>
-<dt><a href="#id7"><span class="problematic" id="id8">**</span></a>…    .setInputCols(“document”)**</dt><dd></dd>
-<dt><a href="#id9"><span class="problematic" id="id10">**</span></a>…    .setOutputCol(“chunk”)**</dt><dd></dd>
-<dt><a href="#id11"><span class="problematic" id="id12">**</span></a>…    .setChunkCol(“target”)**</dt><dd></dd>
-<dt><a href="#id13"><span class="problematic" id="id14">**</span></a>…    .setStartCol(“start”)**</dt><dd></dd>
-<dt><a href="#id15"><span class="problematic" id="id16">**</span></a>…    .setStartColByTokenIndex(True)**</dt><dd></dd>
-<dt><a href="#id17"><span class="problematic" id="id18">**</span></a>…    .setFailOnMissing(False)**</dt><dd></dd>
-<dt><strong>…    .setLowerCase(True)</strong></dt><dd></dd>
-<dt><a href="#id19"><span class="problematic" id="id20">**</span></a>&gt;&gt;&gt; tokenizer = Tokenizer() **</dt><dd></dd>
-<dt><a href="#id21"><span class="problematic" id="id22">**</span></a>…    .setInputCols([“document”]) **</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“token”)</strong></dt><dd></dd>
-<dt><a href="#id23"><span class="problematic" id="id24">**</span></a>&gt;&gt;&gt; embeddings = WordEmbeddingsModel.pretrained(“embeddings_clinical”, “en”, “clinical/models”) **</dt><dd></dd>
-<dt><a href="#id25"><span class="problematic" id="id26">**</span></a>…    .setInputCols([“document”, “token”]) **</dt><dd></dd>
-<dt><a href="#id27"><span class="problematic" id="id28">**</span></a>…    .setOutputCol(“word_embeddings”) **</dt><dd></dd>
-<dt><strong>…    .setCaseSensitive(False)</strong></dt><dd></dd>
-<dt><a href="#id29"><span class="problematic" id="id30">**</span></a>&gt;&gt;&gt; assertion = AssertionDLApproach() **</dt><dd></dd>
-<dt><a href="#id31"><span class="problematic" id="id32">**</span></a>…    .setLabelCol(“label”) **</dt><dd></dd>
-<dt><a href="#id33"><span class="problematic" id="id34">**</span></a>…    .setInputCols([“document”, “chunk”, “word_embeddings”]) **</dt><dd></dd>
-<dt><a href="#id35"><span class="problematic" id="id36">**</span></a>…    .setOutputCol(“assertion”) **</dt><dd></dd>
-<dt><a href="#id37"><span class="problematic" id="id38">**</span></a>…    .setBatchSize(128) **</dt><dd></dd>
-<dt><a href="#id39"><span class="problematic" id="id40">**</span></a>…    .setDropout(0.012) **</dt><dd></dd>
-<dt><a href="#id41"><span class="problematic" id="id42">**</span></a>…    .setLearningRate(0.015) **</dt><dd></dd>
-<dt><a href="#id43"><span class="problematic" id="id44">**</span></a>…    .setEpochs(1) **</dt><dd></dd>
-<dt><a href="#id45"><span class="problematic" id="id46">**</span></a>…    .setStartCol(“start”) **</dt><dd></dd>
-<dt><a href="#id47"><span class="problematic" id="id48">**</span></a>…    .setScopeWindow([3, 4]) **</dt><dd></dd>
-<dt><a href="#id49"><span class="problematic" id="id50">**</span></a>…    .setEndCol(“end”) **</dt><dd></dd>
-<dt><strong>…    .setMaxSentLen(250)</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; assertionPipeline = Pipeline(stages=[</strong></dt><dd></dd>
-<dt><strong>…    document_assembler,</strong></dt><dd></dd>
-<dt><strong>…    chunk,</strong></dt><dd></dd>
-<dt><strong>…    tokenizer,</strong></dt><dd></dd>
-<dt><strong>…    embeddings,</strong></dt><dd></dd>
-<dt><strong>…    assertion])</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; assertion_model = assertionPipeline.fit(dataset)</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.training</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chunk</span> <span class="o">=</span> <span class="n">Doc2Chunk</span><span class="p">()</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;chunk&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setChunkCol</span><span class="p">(</span><span class="s2">&quot;target&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setStartCol</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setStartColByTokenIndex</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setFailOnMissing</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setLowerCase</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;document&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;document&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;word_embeddings&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assertion</span> <span class="o">=</span> <span class="n">AssertionDLApproach</span><span class="p">()</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setLabelCol</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;document&quot;</span><span class="p">,</span> <span class="s2">&quot;chunk&quot;</span><span class="p">,</span> <span class="s2">&quot;word_embeddings&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;assertion&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setBatchSize</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setDropout</span><span class="p">(</span><span class="mf">0.012</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setLearningRate</span><span class="p">(</span><span class="mf">0.015</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setEpochs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setStartCol</span><span class="p">(</span><span class="s2">&quot;start&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setScopeWindow</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setEndCol</span><span class="p">(</span><span class="s2">&quot;end&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setMaxSentLen</span><span class="p">(</span><span class="mi">250</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assertionPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span>   <span class="n">document_assembler</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">chunk</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">tokenizer</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">embeddings</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">assertion</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assertion_model</span> <span class="o">=</span> <span class="n">assertionPipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.inputAnnotatorTypes">
 <span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/assertion/assertionDL.html#AssertionDLApproach.inputAnnotatorTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
@@ -893,63 +896,68 @@ annotator inputs. To train a custom model, use AssertionDLApproach.</p>
 </dd>
 <dt><strong>scopeWindow</strong></dt><dd><p>The scope window of the assertion expression</p>
 </dd>
-<dt><strong>Examples</strong></dt><dd></dd>
-<dt><strong>——–</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; import sparknlp</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp.base import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp_jsl.common import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp.annotator import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp.training import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; import sparknlp_jsl</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp_jsl.base import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp_jsl.annotator import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from pyspark.ml import Pipeline</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; data = spark.createDataFrame([[“Patient with severe fever and sore throat”],</strong></dt><dd></dd>
-<dt><strong>…                               [“Patient shows no stomach pain”],</strong></dt><dd></dd>
-<dt><strong>…                               [“She was maintained on an epidural and PCA for pain control.”]</strong></dt><dd></dd>
-<dt><strong>…                              ]).toDF(“text”)</strong></dt><dd></dd>
-<dt><a href="#id51"><span class="problematic" id="id52">**</span></a>&gt;&gt;&gt; documentAssembler = DocumentAssembler()**</dt><dd></dd>
-<dt><a href="#id53"><span class="problematic" id="id54">**</span></a>…    .setInputCol(“text”) **</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“document”)</strong></dt><dd></dd>
-<dt><a href="#id55"><span class="problematic" id="id56">**</span></a>&gt;&gt;&gt; sentenceDetector = SentenceDetector()**</dt><dd></dd>
-<dt><a href="#id57"><span class="problematic" id="id58">**</span></a>…    .setInputCols([“document”])**</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“sentence”)</strong></dt><dd></dd>
-<dt><a href="#id59"><span class="problematic" id="id60">**</span></a>&gt;&gt;&gt; tokenizer = Tokenizer()**</dt><dd></dd>
-<dt><a href="#id61"><span class="problematic" id="id62">**</span></a>…    .setInputCols([“sentence”])**</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“token”)</strong></dt><dd></dd>
-<dt><a href="#id63"><span class="problematic" id="id64">**</span></a>&gt;&gt;&gt; embeddings = WordEmbeddingsModel.pretrained(“embeddings_clinical”, “en”, “clinical/models”) **</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“embeddings”)</strong></dt><dd></dd>
-<dt><a href="#id65"><span class="problematic" id="id66">**</span></a>&gt;&gt;&gt; nerModel = MedicalNerModel.pretrained(“ner_clinical”, “en”, “clinical/models”) **</dt><dd></dd>
-<dt><a href="#id67"><span class="problematic" id="id68">**</span></a>…    .setInputCols([“sentence”, “token”, “embeddings”]) **</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“ner”)</strong></dt><dd></dd>
-<dt><a href="#id69"><span class="problematic" id="id70">**</span></a>&gt;&gt;&gt; nerConverter = NerConverter() **</dt><dd></dd>
-<dt><a href="#id71"><span class="problematic" id="id72">**</span></a>…    .setInputCols([“sentence”, “token”, “ner”])**</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“ner_chunk”)</strong></dt><dd></dd>
-<dt><a href="#id73"><span class="problematic" id="id74">**</span></a>&gt;&gt;&gt; clinicalAssertion = AssertionDLModel.pretrained(“assertion_dl”, “en”, “clinical/models”) **</dt><dd></dd>
-<dt><a href="#id75"><span class="problematic" id="id76">**</span></a>…    .setInputCols([“sentence”, “ner_chunk”, “embeddings”]) **</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“assertion”)</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; assertionPipeline = Pipeline(stages=[</strong></dt><dd></dd>
-<dt><strong>…  documentAssembler,</strong></dt><dd></dd>
-<dt><strong>…  sentenceDetector,</strong></dt><dd></dd>
-<dt><strong>…  tokenizer,</strong></dt><dd></dd>
-<dt><strong>…  embeddings,</strong></dt><dd></dd>
-<dt><strong>…  nerModel,</strong></dt><dd></dd>
-<dt><strong>…  nerConverter,</strong></dt><dd></dd>
-<dt><strong>…  clinicalAssertion</strong></dt><dd></dd>
-<dt><strong>… ])</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; assertionModel = assertionPipeline.fit(data)</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; result = assertionModel.transform(data)</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; result.selectExpr(“ner_chunk.result as ner”, “assertion.result”).show(3, truncate=False)</strong></dt><dd></dd>
-<dt><strong>+——————————–+——————————–+</strong></dt><dd></dd>
-<dt><strong>|ner                             |result                          |</strong></dt><dd></dd>
-<dt><strong>+——————————–+——————————–+</strong></dt><dd></dd>
-<dt><strong>|[severe fever, sore throat]     |[present, present]              |</strong></dt><dd></dd>
-<dt><strong>|[stomach pain]                  |[absent]                        |</strong></dt><dd></dd>
-<dt><strong>|[an epidural, PCA, pain control]|[present, present, hypothetical]|</strong></dt><dd></dd>
-<dt><strong>+——————————–+——————————–+</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.training</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s2">&quot;Patient with severe fever and sore throat&quot;</span><span class="p">],</span>
+<span class="gp">... </span>                              <span class="p">[</span><span class="s2">&quot;Patient shows no stomach pain&quot;</span><span class="p">],</span>
+<span class="gp">... </span>                              <span class="p">[</span><span class="s2">&quot;She was maintained on an epidural and PCA for pain control.&quot;</span><span class="p">]</span>
+<span class="gp">... </span>                             <span class="p">])</span><span class="o">.</span><span class="n">toDF</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">SentenceDetector</span><span class="p">()</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;document&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;sentence&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;embeddings_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nerModel</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;ner_clinical&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nerConverter</span> <span class="o">=</span> <span class="n">NerConverter</span><span class="p">()</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;token&quot;</span><span class="p">,</span> <span class="s2">&quot;ner&quot;</span><span class="p">])</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;ner_chunk&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clinicalAssertion</span> <span class="o">=</span> <span class="n">AssertionDLModel</span><span class="o">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s2">&quot;assertion_dl&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="s2">&quot;clinical/models&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;sentence&quot;</span><span class="p">,</span> <span class="s2">&quot;ner_chunk&quot;</span><span class="p">,</span> <span class="s2">&quot;embeddings&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;assertion&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assertionPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+<span class="gp">... </span> <span class="n">documentAssembler</span><span class="p">,</span>
+<span class="gp">... </span> <span class="n">sentenceDetector</span><span class="p">,</span>
+<span class="gp">... </span> <span class="n">tokenizer</span><span class="p">,</span>
+<span class="gp">... </span> <span class="n">embeddings</span><span class="p">,</span>
+<span class="gp">... </span> <span class="n">nerModel</span><span class="p">,</span>
+<span class="gp">... </span> <span class="n">nerConverter</span><span class="p">,</span>
+<span class="gp">... </span> <span class="n">clinicalAssertion</span>
+<span class="gp">... </span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">assertionModel</span> <span class="o">=</span> <span class="n">assertionPipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">result</span> <span class="o">=</span> <span class="n">assertionModel</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">result</span><span class="o">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s2">&quot;ner_chunk.result as ner&quot;</span><span class="p">,</span> <span class="s2">&quot;assertion.result&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">+--------------------------------+--------------------------------+</span>
+<span class="go">|ner                             |result                          |</span>
+<span class="go">+--------------------------------+--------------------------------+</span>
+<span class="go">|[severe fever, sore throat]     |[present, present]              |</span>
+<span class="go">|[stomach pain]                  |[absent]                        |</span>
+<span class="go">|[an epidural, PCA, pain control]|[present, present, hypothetical]|</span>
+<span class="go">+--------------------------------+--------------------------------+</span>
+</pre></div>
+</div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.inputAnnotatorTypes">
 <span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/assertion/assertionDL.html#AssertionDLModel.inputAnnotatorTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
