@@ -41,6 +41,8 @@ This is a labeling task, and requires the `Label` tags to assign variables. The 
 
 ### Audio Transcription
 
+The transcription task is further divided into two parts - either by transcription per region or transcripting whole audio. If you are transcripting per region then it will become both labeling and transcription task. For this case the configuration would look as shown below.
+
 ![Audio-transcription](/assets/images/annotation_lab/xml-tags/audio_transcription.png)
 
-As shown in the image above, audio transcription requires a `TextArea` tag to enable a text box. The parameters **name** and **toName** are mandatory.
+As shown in the image above, audio transcription requires a `TextArea` tag to enable a text box. The parameters **name** and **toName** are mandatory. For transcription of whole audio, the `Label` tags from the above image will disappear.
