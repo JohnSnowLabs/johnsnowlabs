@@ -32,7 +32,7 @@ This task mainly uses the `Image` and `Choices` tags. You can optionally provide
 
 ### Visual NER Labeling
 
-To label entities in an image, you need to create rectangular labels spanning across the entity to be labeled. To enable this, you have to use `RectangleLabels` tag that creates labeled rectangles. The **name** and **toName** parameters are mandatory.
+To label entities in an image, you need to create rectangular labels spanning across the entity to be labeled. To enable this, you have to use `RectangleLabels` tag that creates labeled rectangles.They are used to apply labels to bounding box semantic segmentation tasks. The **name** and **toName** parameters are mandatory.
 
 ![Visual-NER](/assets/images/annotation_lab/xml-tags/visual_ner.png)
 

@@ -20,7 +20,7 @@ The `Text` tag shows text that can be labeled. The text template is divided into
 
 ### Information Extraction
 
-For simple NER related tasks, the configuration just needs the `Text` and `Labels` tags. For example, you have the following JSON to label, as shown below.
+For simple NER related tasks, the configuration just needs the `Text` and `Labels` tags. The `Labels` tag provides a set of labels for labeling regions in your tasks. Use the `Labels` tag to create a set of labels that can be assigned to identified region and specify the values of labels to assign to regions. For example, you have the following JSON to label, as shown below.
 
 ```bash
 {
@@ -40,7 +40,7 @@ For the case of relation extraction, the configuration additionally needs a `Rel
 
 ### Classification
 
-For a classification task, the configuration needs the `Text` and `Choices` tags. For instance, you have the input JSON as shown below.
+For a classification task, the configuration needs the `Text` and `Choices` tags. For instance, you have the input JSON as shown below. The `Choices` tag is used to create a group of choices (a set of `Choice` tags), with radio buttons or checkboxes. It can be used for single or multi-class classification.
 
 ```bash
 {
@@ -59,6 +59,6 @@ In the case of multi-class classification, the configuration would look as shown
 
 ### Text summarization
 
-For a simple text summarization, the configuration just needs the `Text` and `TextArea` tags.
+For a simple text summarization, the configuration just needs the `Text` and `TextArea` tags. The `TextArea` tag is used to display a text area for the user input. It is mainly used for transcription, paraphrasing, or captioning task.
 
 ![Text-summarization](/assets/images/annotation_lab/xml-tags/text_summarization.png)
