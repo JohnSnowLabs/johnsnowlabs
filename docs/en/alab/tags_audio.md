@@ -13,7 +13,7 @@ sidebar:
   nav: annotation-lab
 ---
 
-The audio template is split into three parts: audio classification, Emotion segmentation, and transcription. To play the audio, you need an `Audio` tag which requires a **name** and a **value** parameter.
+The audio template is split into three parts: audio classification, emotion segmentation, and transcription. To play the audio, you need an `Audio` tag which requires a **name** and a **value** parameter.
 
 ### Audio Classification
 
