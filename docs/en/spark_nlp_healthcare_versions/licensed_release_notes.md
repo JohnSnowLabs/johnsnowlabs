@@ -19,6 +19,7 @@ sidebar:
 
 We are delighted to announce a suite of remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. This release comes with 40+ new clinical pretrained models and pipelines, and is a testament to our commitment to continuously innovate and improve, furnishing you with a more sophisticated and powerful toolkit for healthcare natural language processing.
 
++ Enhanced PySpark v3.4.X support for advanced Natural Language Processing
 + New module focused on extracting the most relevant information with Extractive Summarization
 + Customized prompts in `TextGenerator` Annotator
 + Arabic language obfuscation support in Deidentification
@@ -38,6 +39,11 @@ We believe that these enhancements will elevate your experience with Spark NLP f
 
 
 </div><div class="h3-box" markdown="1">
+
+
+#### Enhanced PySpark v3.4.X Support for Advanced Natural Language Processing
+
+SparkNLP, now offers enhanced support for PySpark v3.4, enabling data scientists and NLP practitioners to leverage the latest features and capabilities of Apache Spark while working with text data.
 
 
 #### New Module Focused On Extracting The Most Relevant Information With Extractive Summarization
