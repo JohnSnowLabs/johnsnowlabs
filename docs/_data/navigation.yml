@@ -119,20 +119,8 @@ annotation-lab:
             url: /docs/en/alab/tags_pdf
       - subtitle: Test 
         children:
-          - title: Overview
-            url: /docs/en/alab/tags_overview
-          - title: Video
-            url: /docs/en/alab/tags_video
-          - title: Audio
-            url: /docs/en/alab/tags_audio
-          - title: Text
-            url: /docs/en/alab/tags_text
-          - title: Image
-            url: /docs/en/alab/tags_image
-          - title: PDF
-            url: /docs/en/alab/tags_pdf
           - title: Test
-            url: /docs/en/alab/tags_pdf
+            url: /docs/en/alab/tags_overview
       - subtitle: Annotation
         children:
           - title: Manual annotation
