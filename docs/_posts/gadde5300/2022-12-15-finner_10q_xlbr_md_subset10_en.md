@@ -2,9 +2,9 @@
 layout: model
 title: Finance NER (10Q, md, 12 entities)
 author: John Snow Labs
-name: finner_10q_xlbr_md_subset10
+name: finner_10q_xblr_md_subset10
 date: 2022-12-15
-tags: [10q, xlbr, en, licensed]
+tags: [10q, xblr, en, licensed]
 task: Named Entity Recognition
 language: en
 nav_key: models
@@ -29,8 +29,8 @@ This is a large (`md`) model, trained with 200K sentences.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_md_subset10_en_1.0.0_3.0_1671083035029.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_md_subset10_en_1.0.0_3.0_1671083035029.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_10q_xblr_md_subset10_en_1.0.0_3.0_1671083035029.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xblr_md_subset10_en_1.0.0_3.0_1671083035029.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -58,7 +58,7 @@ embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
   .setOutputCol("embeddings")\
   .setMaxSentenceLength(512)
 
-nerTagger = finance.NerModel.pretrained('finner_10q_xlbr_md_subset10', 'en', 'finance/models')\
+nerTagger = finance.NerModel.pretrained('finner_10q_xblr_md_subset10', 'en', 'finance/models')\
    .setInputCols(["sentence", "token", "embeddings"])\
    .setOutputCol("ner")
               
@@ -127,7 +127,7 @@ result_df.show(50, truncate=100)
 
 {:.table-model}
 |---|---|
-|Model Name:|finner_10q_xlbr_md_subset10|
+|Model Name:|finner_10q_xblr_md_subset10|
 |Compatibility:|Finance NLP 1.0.0+|
 |License:|Licensed|
 |Edition:|Official|
