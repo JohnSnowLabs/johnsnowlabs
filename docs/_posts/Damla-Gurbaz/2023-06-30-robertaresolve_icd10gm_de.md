@@ -4,7 +4,7 @@ title: Sentence Entity Resolver for ICD-10-GM
 author: John Snow Labs
 name: robertaresolve_icd10gm
 date: 2023-06-30
-tags: [icd10gm, sbertresolver, de, clinical, licensed]
+tags: [icd10gm, robertaresolve, de, clinical, licensed]
 task: Entity Resolution
 language: de
 edition: Healthcare NLP 4.4.4
@@ -36,6 +36,7 @@ This model maps extracted medical entities to ICD10-GM codes for the German lang
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler() \
     .setInputCol("text") \
@@ -82,12 +83,12 @@ val tokenizer = new Tokenizer()
     .setOutputCol("token")
 
 val roberta_embeddings = XlmRoBertaEmbeddings.pretrained("xlmroberta_embeddings_paraphrase_mpnet_base_v2", "xx")
-    .setInputCols(Array("document",'token'))
+    .setInputCols(Array("document","token"))
     .setOutputCol("word_embeddings")
     .setCaseSensitive(True)
 
 val sentence_embeddings = new SentenceEmbeddings()
-    .setInputCols(array("document", "word_embeddings"))
+    .setInputCols(Array("document", "word_embeddings"))
     .setOutputCol("sentence_embeddings")
 
 val icd10gm_resolver = SentenceEntityResolverModel.pretrained("robertaresolve_icd10gm", "de", "clinical/models")
