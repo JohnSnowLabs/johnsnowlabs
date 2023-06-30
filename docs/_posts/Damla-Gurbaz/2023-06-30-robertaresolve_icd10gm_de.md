@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps extracted medical entities to ICD10-GM codes for the German language using `xlmroberta_embeddings_paraphrase_mpnet_base_v2` (xx) embeddings.
+This model maps extracted medical entities to ICD10-GM codes for the German language using `xlmroberta_embeddings_paraphrase_mpnet_base_v2` embeddings.
 
 ## Predicted Entities
 
