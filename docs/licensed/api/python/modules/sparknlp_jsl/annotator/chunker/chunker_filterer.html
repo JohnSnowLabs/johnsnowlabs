@@ -547,10 +547,9 @@ document.write(`
 <span class="sd">           Tag representing what is the criteria to filter the chunks. Possibles values are:</span>
 <span class="sd">           - isIn: Filter by the chunk</span>
 <span class="sd">           - regex: Filter using a regex</span>
-<span class="sd">    entitiesConfidence: str</span>
-<span class="sd">        Path to csv with  pairs (entity,confidenceThreshold).</span>
-<span class="sd">        Filter the chunks with  entities which have confidence lower than the</span>
-<span class="sd">        confidence threshold.</span>
+<span class="sd">    entitiesConfidence: dict[str, float]</span>
+<span class="sd">        Pairs (entity,confidenceThreshold) to filter the chunks with  entities</span>
+<span class="sd">        which have confidence lower than the confidence threshold.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -648,6 +647,10 @@ document.write(`
                      <span class="s2">&quot;Select mode&quot;</span><span class="p">,</span>
                      <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="ChunkFilterer.entitiesConfidence"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.entitiesConfidence">[docs]</a>    <span class="n">entitiesConfidence</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;entitiesConfidence&quot;</span><span class="p">,</span>
+                         <span class="s2">&quot;Pairs (entity,confidenceThreshold)&quot;</span><span class="p">,</span>
+                         <span class="n">TypeConverters</span><span class="o">.</span><span class="n">identity</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="ChunkFilterer.setWhiteList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.setWhiteList">[docs]</a>    <span class="k">def</span> <span class="nf">setWhiteList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="nb">list</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets list of entities to process. The rest will be ignored.</span>
 
@@ -702,6 +705,18 @@ document.write(`
 <span class="sd">           possibles values result|entity.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">filterValue</span><span class="o">=</span><span class="n">filter_by</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="ChunkFilterer.setEntitiesConfidence"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer.setEntitiesConfidence">[docs]</a>    <span class="k">def</span> <span class="nf">setEntitiesConfidence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">entities_confidence</span><span class="p">:</span><span class="nb">dict</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the entitiesConfidence parameter.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        entities_confidence : dict[str, float]</span>
+<span class="sd">            Pairs (entity,confidenceThreshold) to filter the chunks with  entities</span>
+<span class="sd">            which have confidence lower than the confidence threshold.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;setEntitiesConfidence&quot;</span><span class="p">,</span> <span class="n">entities_confidence</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.annotators.chunker.ChunkFilterer&quot;</span><span class="p">,</span> <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">ChunkFilterer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>

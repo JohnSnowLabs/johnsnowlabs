@@ -314,6 +314,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/average_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.average_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/bert_sentence_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/entity_chunk_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../embeddings/extractive_summarization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.extractive_summarization</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -369,6 +370,7 @@ document.write(`
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
@@ -480,6 +482,9 @@ default []</p>
 </dd>
 <dt><strong>randomSeed: int</strong></dt><dd><p>Random seed. Set to positive integer to get reproducible results, by default None.</p>
 </dd>
+<dt><strong>customPrompt</strong></dt><dd><p>Custom prompt template. The only available variable is {DOCUMENT} and it is populated with
+the contents of the input document</p>
+</dd>
 <dt><strong>Examples</strong></dt><dd></dd>
 <dt><strong>——–</strong></dt><dd></dd>
 <dt><strong>&gt;&gt;&gt; data = spark.createDataFrame([[“Covid 18 is “]]).toDF(“prompt”)</strong></dt><dd></dd>
@@ -535,6 +540,11 @@ default []</p>
 <span class="sig-name descname"><span class="pre">modelType</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_text_generator.html#MedicalTextGenerator.modelType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.modelType" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.customPrompt">
+<span class="sig-name descname"><span class="pre">customPrompt</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_text_generator.html#MedicalTextGenerator.customPrompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.customPrompt" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setMaxTextLength">
 <span class="sig-name descname"><span class="pre">setMaxTextLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_text_generator.html#MedicalTextGenerator.setMaxTextLength"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setMaxTextLength" title="Permalink to this definition">#</a></dt>
@@ -571,6 +581,21 @@ default []</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>b</strong><span class="classifier">bool</span></dt><dd><p>whether to stop at end-of-sentence token or not</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setCustomPrompt">
+<span class="sig-name descname"><span class="pre">setCustomPrompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/seq2seq/medical_text_generator.html#MedicalTextGenerator.setCustomPrompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setCustomPrompt" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the custom prompt template. The only available variable is {DOCUMENT}, which is populated with the
+contents of the input document</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>prompt template</p>
 </dd>
 </dl>
 </dd>
@@ -684,9 +709,11 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.useCache"><code class="docutils literal notranslate"><span class="pre">MedicalTextGenerator.useCache</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.maxTextLength"><code class="docutils literal notranslate"><span class="pre">MedicalTextGenerator.maxTextLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.modelType"><code class="docutils literal notranslate"><span class="pre">MedicalTextGenerator.modelType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.customPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalTextGenerator.customPrompt</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setMaxTextLength"><code class="docutils literal notranslate"><span class="pre">MedicalTextGenerator.setMaxTextLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setUseCache"><code class="docutils literal notranslate"><span class="pre">MedicalTextGenerator.setUseCache()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setStopAtEos"><code class="docutils literal notranslate"><span class="pre">MedicalTextGenerator.setStopAtEos()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setCustomPrompt"><code class="docutils literal notranslate"><span class="pre">MedicalTextGenerator.setCustomPrompt()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">MedicalTextGenerator.setConfigProtoBytes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.loadSavedModel"><code class="docutils literal notranslate"><span class="pre">MedicalTextGenerator.loadSavedModel()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.pretrained"><code class="docutils literal notranslate"><span class="pre">MedicalTextGenerator.pretrained()</span></code></a></li>
