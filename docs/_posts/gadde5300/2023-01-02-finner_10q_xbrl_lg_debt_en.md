@@ -1,10 +1,10 @@
 ---
 layout: model
-title: Finance Liability NER (10Q, lg)
+title: Finance Debt NER (10-K, 10-Q, lg, XBRL)
 author: John Snow Labs
-name: finner_10q_xlbr_lg_liability
+name: finner_10q_xbrl_lg_debt
 date: 2023-01-02
-tags: [10q, xlbr, en, licensed]
+tags: [10q, xbrl, en, licensed]
 task: Named Entity Recognition
 language: en
 nav_key: models
@@ -18,19 +18,19 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is an NER model containing 20 numeric financial Liability entities from different 10Q reports. The tokens being annotated are the amounts, not any other surrounding word, but the context will determine what kind of amount is from the list of the 20 available.
+This model is a Named Entity Recognition (NER) model focused on financial numeric items. It identifies 20 numeric financial Debt entities from diverse 10-Q and 10-K reports. These entities are annotated using eXtensible Business Reporting Language (XBRL) tags. The annotation process primarily targets numerical tokens, and the context plays a crucial role in accurately assigning the appropriate entity type from the 139 most common financial entities available in the dataset.
 
 This is a large (`lg`) model, trained with 200K sentences.
 
 ## Predicted Entities
 
-`DebtInstrumentCarryingAmount`, `LineOfCreditFacilityRemainingBorrowingCapacity`, `DeferredFinanceCostsGross`, `DebtInstrumentBasisSpreadOnVariableRate1`, `LongTermDebtFairValue`, `DeferredFinanceCostsNet`, `ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1`, `ConcentrationRiskPercentage1`, `LossContingencyAccrualAtCarryingValue`, `MinorityInterestOwnershipPercentageByNoncontrollingOwners`, `DebtInstrumentFaceAmount`, `OperatingLeaseWeightedAverageRemainingLeaseTerm1`, `DebtInstrumentMaturityDate`, `LineOfCreditFacilityCurrentBorrowingCapacity`, `RevenueRemainingPerformanceObligation`, `PreferredStockSharesAuthorized`, `LineOfCreditFacilityUnusedCapacityCommitmentFeePercentage`, `MinorityInterestOwnershipPercentageByParent`, `UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate`, `DebtInstrumentTerm`, `DebtInstrumentConvertibleConversionPrice1`
+`AccrualForEnvironmentalLossContingencies`, `LineOfCreditFacilityInterestRateAtPeriodEnd`, `LineOfCreditFacilityMaximumBorrowingCapacity`, `DebtInstrumentFairValue`, `OperatingLeaseLiability`, `LesseeOperatingLeaseRenewalTerm`, `DebtWeightedAverageInterestRate`, `LineOfCredit`, `GuaranteeObligationsMaximumExposure`, `EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized`, `LettersOfCreditOutstandingAmount`, `ContractWithCustomerLiability`, `DebtInstrumentUnamortizedDiscount`, `LongTermDebt`, `BusinessCombinationContingentConsiderationLiability`, `DebtInstrumentInterestRateStatedPercentage`, `DebtInstrumentInterestRateEffectivePercentage`, `UnrecognizedTaxBenefits`, `BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibles`, `EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedShareBasedAwardsOtherThanOptions`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_lg_liability_en_1.0.0_3.0_1672654931057.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_lg_liability_en_1.0.0_3.0_1672654931057.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_10q_xbrl_lg_debt_en_1.0.0_3.0_1672655212398.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xbrl_lg_debt_en_1.0.0_3.0_1672655212398.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -59,7 +59,7 @@ embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
   .setOutputCol("embeddings")\
   .setMaxSentenceLength(512)
 
-nerTagger = finance.NerModel.pretrained('finner_10q_xlbr_lg_liability', 'en', 'finance/models')\
+nerTagger = finance.NerModel.pretrained('finner_10q_xbrl_lg_debt', 'en', 'finance/models')\
    .setInputCols(["sentence", "token", "embeddings"])\
    .setOutputCol("ner")
               
@@ -90,32 +90,32 @@ result_df.show(50, truncate=100)
 
 ```bash
 
-+---------+--------------------------+----------+
-|token    |ner_label                 |confidence|
-+---------+--------------------------+----------+
-|As       |O                         |1.0       |
-|such     |O                         |1.0       |
-|,        |O                         |1.0       |
-|the      |O                         |1.0       |
-|if       |O                         |1.0       |
-|-        |O                         |1.0       |
-|converted|O                         |1.0       |
-|value    |O                         |1.0       |
-|of       |O                         |1.0       |
-|the      |O                         |1.0       |
-|Notes    |O                         |0.9998    |
-|was      |O                         |1.0       |
-|less     |O                         |1.0       |
-|than     |O                         |1.0       |
-|the      |O                         |1.0       |
-|principal|O                         |1.0       |
-|amount   |O                         |1.0       |
-|of       |O                         |0.9999    |
-|$        |O                         |0.9999    |
-|345.0    |B-DebtInstrumentFaceAmount|0.9064    |
-|million  |O                         |0.9999    |
-|.        |O                         |1.0       |
-+---------+--------------------------+----------+
++---------+--------------+----------+
+|token    |ner_label     |confidence|
++---------+--------------+----------+
+|As       |O             |1.0       |
+|such     |O             |1.0       |
+|,        |O             |1.0       |
+|the      |O             |1.0       |
+|if       |O             |1.0       |
+|-        |O             |1.0       |
+|converted|O             |1.0       |
+|value    |O             |1.0       |
+|of       |O             |1.0       |
+|the      |O             |1.0       |
+|Notes    |O             |1.0       |
+|was      |O             |1.0       |
+|less     |O             |1.0       |
+|than     |O             |1.0       |
+|the      |O             |1.0       |
+|principal|O             |1.0       |
+|amount   |O             |1.0       |
+|of       |O             |1.0       |
+|$        |O             |1.0       |
+|345.0    |B-LongTermDebt|0.8872    |
+|million  |O             |1.0       |
+|.        |O             |1.0       |
++---------+--------------+----------+
 
 ```
 
@@ -124,7 +124,7 @@ result_df.show(50, truncate=100)
 
 {:.table-model}
 |---|---|
-|Model Name:|finner_10q_xlbr_lg_liability|
+|Model Name:|finner_10q_xbrl_lg_debt|
 |Compatibility:|Finance NLP 1.0.0+|
 |License:|Licensed|
 |Edition:|Official|
