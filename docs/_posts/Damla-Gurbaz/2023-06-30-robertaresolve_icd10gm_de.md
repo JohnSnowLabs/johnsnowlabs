@@ -71,7 +71,7 @@ icd10gm_model = icd10gm_pipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
 
 icd10gm_lp = LightPipeline(icd10gm_model)
 
-icd_lp.fullAnnotate("Dyspnoe")
+icd10gm_lp.fullAnnotate("Dyspnoe")
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
@@ -107,7 +107,7 @@ val icd10gm_model = icd10gm_pipeline.fit(Seq("").toDS.toDF("text"))
 
 val icd10gm_lp = LightPipeline(icd10gm_model)
 
-val icd_lp.fullAnnotate("Dyspnoe")
+val icd10gm_lp.fullAnnotate("Dyspnoe")
 ```
 </div>
 
