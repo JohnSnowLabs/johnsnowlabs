@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained pipeline maps extracted entities to ICD10-GM codes. You’ll just feed your text and it will return the corresponding ICD10-GM codes.
+This pretrained pipeline maps extracted entities to ICD10-GM codes. You’ll just feed clinical terms and it will return the corresponding ICD10-GM codes.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
