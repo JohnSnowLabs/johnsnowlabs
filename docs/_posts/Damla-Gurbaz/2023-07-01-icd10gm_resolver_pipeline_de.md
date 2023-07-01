@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline to Resolve ICD10-GM Codes (German)
+title: Pipeline to Resolve ICD-10-GM Codes (German)
 author: John Snow Labs
 name: icd10gm_resolver_pipeline
 date: 2023-07-01
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained pipeline maps extracted entities to ICD10-GM codes. You’ll just feed clinical terms and it will return the corresponding ICD10-GM codes.
+This pretrained pipeline maps extracted entities in the German language to ICD-10-GM codes. You’ll just feed clinical terms and it will return the corresponding ICD-10-GM codes.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -37,18 +37,15 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("icd10gm_resolver_pipeline", "de", "clinical/models")
 
-text = """Dyspnoe"""
-
-result = pipeline.fullAnnotate(text)
+result = pipeline.fullAnnotate("Dyspnoe")
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val pipeline = new PretrainedPipeline("icd10gm_resolver_pipeline", "de", "clinical/models")
 
-val text = """Dyspnoe"""
-
-val result = pipeline.fullAnnotate(text)
+val result = pipeline.fullAnnotate("Dyspnoe")
 ```
 </div>
 
