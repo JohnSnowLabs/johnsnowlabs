@@ -4,7 +4,7 @@ title: Extract Income and Social Status Entities from Social Determinants of Hea
 author: John Snow Labs
 name: ner_sdoh_income_social_status
 date: 2023-07-02
-tags: [income, social_status, violence, childhood, legal, en, licebsed, licensed]
+tags: [education, employment, income, financial_status, maritial_status, sdoh, social_determinants, public_health, en, licensed]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 4.4.4
@@ -29,7 +29,7 @@ SDOH NER model is designed to detect and label social determinants of health (SD
 
 ## Predicted Entities
 
-`Chidhood_Event`, `Legal_Issues`, `Social_Exclusion`, `Social_Support`, `Violence_Or_Abuse`
+`Education`, `Employment`, `Financial_Status`, `Income`, `Marital_Status`, `Population_Group`
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_NER/){:.button.button-orange}
