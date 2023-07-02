@@ -59,9 +59,7 @@ NLP Lab's versatility enables it to support project configurations combining NER
 Section-Based Annotation is now available for Visual NER projects, specifically designed for image-based tasks. This feature is particularly beneficial when dealing with lengthy PDFs that are divided into sections by page. Users have the ability to specify the specific pages that are relevant to their needs.
 With Section-Based Annotation, NLP Lab offers a more granular approach to annotation and analysis, allowing users to focus on specific sections and achieve more accurate and efficient results.
 
-
 ![Types of SBA 1](/assets/images/annotation_lab/5.1.0/1.gif)
-
 
 
 ## Task Splitting 
@@ -79,6 +77,7 @@ Text tasks can be divided into paragraphs by using a dynamic regex such as "\n".
 This selection enables users to partition text documents into individual sentences, using single or multiple delimiters. The full-stop sign '.' is the default delimiter used to identify sentence boundaries. Since a sentence may end with various delimiters. users have the flexibility to include multiple delimiters for sentence segmentation.
 
 ![split-document-into-sections](/assets/images/annotation_lab/5.1.0/2.gif)
+
 
 **IMPORTANT REMARKS:**
 - The Split by Paragraph and Split by Sentence options are not applicable for Visual NER projects.
@@ -119,6 +118,7 @@ Successive sections with the same name can be merged into one section. This feat
 
 For Visual NER projects, the rules for defining relevant sections are limited to index, keywords, and regex.
 
+
 ![visNER_section_rulse](/assets/images/annotation_lab/5.1.0/6.gif)
 
 ## Section Specific Taxonomies
@@ -127,11 +127,13 @@ The section-based annotation options provide users with the flexibility to custo
 
 ![SectionBasedLabelOption](/assets/images/annotation_lab/5.1.0/7.gif)
 
+
 In the case of Named Entity Recognition (NER) labels, users can simply click on individual labels and choose the specific sections where they want the label to be visible. By doing so, users have the ability to define the sections within the task where each NER label should appear, ensuring that the annotation is precise and applicable to the intended sections.
 
 Similarly, for choices, users can navigate to the three-dot menu, typically located next to each choice name. By selecting this menu, users can access the configuration settings to designate the relevant sections where the particular choice should be displayed. This feature allows users to tailor the choices available for annotation in specific sections, making the annotation process more precise and efficient.
 
 ![ChoiceSecitonOption](/assets/images/annotation_lab/5.1.0/8.png)
+
 
 By providing the ability to configure labels and choices at the section level, users can ensure that their annotation efforts are focused on the most relevant parts of the text. This ensures that the annotation process is efficient, saving valuable time and resources. Ultimately, this level of customization empowers users to create high-quality annotations tailored to their specific tasks and objectives.
 
@@ -148,6 +150,7 @@ It's also important to note that LLMs do not have a memory of previous requests.
 
 
 ![Preannotation for SBA](/assets/images/annotation_lab/5.1.0/9.gif)
+
 
 ## Model Training with Section-Level Annotations
 In projects that support Section-Based Annotation, each section is treated as an individual document during the training process. This means that the annotations contained within a given section, along with the section's text, are provided to the training pipeline. By considering the specific content and context of the relevant sections, the training process becomes more targeted and accurate, resulting in improved model performance.
@@ -181,7 +184,6 @@ In section-based tasks, cloning a completion entails automatically duplicating t
 
 In other words, the process of copying completions ensures that the section structure, along with its corresponding annotations, is replicated in the new completion. This feature allows users to work on multiple iterations or variations of the task, each with its distinct relevant section, without losing any work - annotations, and labels - done in the original completion.
 
-
 ![Copying a completion](/assets/images/annotation_lab/5.1.0/12.gif)
 
 By supporting the duplication of completions while preserving the section-based context, the annotation system grants users the flexibility to modify and refine their work as needed. It enables users to submit different versions of completions, each with its unique relevant section, facilitating a more nuanced and specific analysis of the underlying data.
@@ -190,9 +192,6 @@ By supporting the duplication of completions while preserving the section-based 
 If there are multiple completions submitted by different annotators and the user decides to create a new completion from scratch, the relevant sections will be generated based on the rules that were initially set when the task was imported.
 
 **IMPORTANT REMARKS:** Changes made to the section rules do not apply to existing imported tasks. The updated rules are only applied to newly imported tasks.
-
-
-
 
 </div><div class="prev_ver h3-box" markdown="1">
 

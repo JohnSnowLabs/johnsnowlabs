@@ -17,6 +17,7 @@ sidebar:
 
 Release date: **04-05-2023**
 
+
 ## Enhanced Analytics, Improved Labeling Experience, and stabilization in NLP Lab 4.9 
 
 NLP Lab version 4.9 is now available with new features to enhance the analytics capabilities of the platform. The latest release provides managers with more insights into their projects and team productivity, enabling more efficient progress monitoring and better DL model outcomes. The addition of Time Indicators and Edit Counts on each annotation version is a notable feature that allows annotators to track statistics of the edits made in the completions, providing them with valuable insights into their work and the evolution of the Annotation Guidelines.
