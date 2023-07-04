@@ -160,17 +160,16 @@ The training dataset is available [here](https://github.com/qingyu-qc/gpt_bionlp
 ## Benchmarking
 
 ```bash
-| label                | precision | recall | f1-score | support |
-|----------------------|-----------|--------|----------|---------|
-| Case_Report          | 0.88      | 0.85   | 0.86     | 252     |
-| Diagnosis            | 0.86      | 0.86   | 0.86     | 886     |
-| Epidemic_Forecasting | 0.72      | 0.69   | 0.70     | 77      |
-| Mechanism            | 0.84      | 0.85   | 0.85     | 609     |
-| Prevention           | 0.92      | 0.91   | 0.92     | 1419    |
-| Transmission         | 0.67      | 0.61   | 0.64     | 146     |
-| Treatment            | 0.90      | 0.87   | 0.88     | 1221    |
-| micro-avg            | 0.88      | 0.86   | 0.87     | 4610    |
-| macro-avg            | 0.83      | 0.80   | 0.82     | 4610    |
-| weighted-avg         | 0.88      | 0.86   | 0.87     | 4610    |
-| samples-avg          | 0.89      | 0.89   | 0.88     | 4610    |
+label                 precision  recall  f1-score  support 
+Case_Report           0.88       0.85    0.86      252     
+Diagnosis             0.86       0.86    0.86      886     
+Epidemic_Forecasting  0.72       0.69    0.70      77      
+Mechanism             0.84       0.85    0.85      609     
+Prevention            0.92       0.91    0.92      1419    
+Transmission          0.67       0.61    0.64      146     
+Treatment             0.90       0.87    0.88      1221    
+micro-avg             0.88       0.86    0.87      4610    
+macro-avg             0.83       0.80    0.82      4610    
+weighted-avg          0.88       0.86    0.87      4610    
+samples-avg           0.89       0.89    0.88      4610  
 ```
