@@ -161,20 +161,19 @@ The training dataset is available [here](https://github.com/qingyu-qc/gpt_bionlp
 ## Benchmarking
 
 ```bash
-| label                              | precision | recall | f1-score | support |
-|------------------------------------|-----------|--------|----------|---------|
-| Activating_Invasion_And_Metastasis | 0.83      | 0.60   | 0.69     | 42      |
-| Avoiding_Immune_Destruction        | 0.70      | 0.64   | 0.67     | 11      |
-| Cellular_Energetics                | 1.00      | 0.64   | 0.78     | 11      |
-| Enabling_Replicative_Immortality   | 0.71      | 0.77   | 0.74     | 13      |
-| Evading_Growth_Suppressors         | 0.76      | 0.52   | 0.62     | 31      |
-| Genomic_Instability_And_Mutation   | 0.90      | 0.88   | 0.89     | 49      |
-| Inducing_Angiogenesis              | 0.80      | 0.63   | 0.71     | 19      |
-| Resisting_Cell_Death               | 0.80      | 0.73   | 0.76     | 62      |
-| Sustaining_Proliferative_Signaling | 0.87      | 0.69   | 0.77     | 67      |
-| Tumor_Promoting_Inflammation       | 0.84      | 0.63   | 0.72     | 43      |
-| micro-avg                          | 0.83      | 0.68   | 0.75     | 348     |
-| macro-avg                          | 0.82      | 0.67   | 0.73     | 348     |
-| weighted-avg                       | 0.83      | 0.68   | 0.75     | 348     |
-| samples-avg                        | 0.79      | 0.74   | 0.73     | 348     |
+label                               precision  recall  f1-score  support 
+Activating_Invasion_And_Metastasis  0.83       0.60    0.69      42      
+Avoiding_Immune_Destruction         0.70       0.64    0.67      11      
+Cellular_Energetics                 1.00       0.64    0.78      11      
+Enabling_Replicative_Immortality    0.71       0.77    0.74      13      
+Evading_Growth_Suppressors          0.76       0.52    0.62      31      
+Genomic_Instability_And_Mutation    0.90       0.88    0.89      49      
+Inducing_Angiogenesis               0.80       0.63    0.71      19      
+Resisting_Cell_Death                0.80       0.73    0.76      62      
+Sustaining_Proliferative_Signaling  0.87       0.69    0.77      67      
+Tumor_Promoting_Inflammation        0.84       0.63    0.72      43      
+micro-avg                           0.83       0.68    0.75      348     
+macro-avg                           0.82       0.67    0.73      348     
+weighted-avg                        0.83       0.68    0.75      348     
+samples-avg                         0.79       0.74    0.73      348     
 ```
