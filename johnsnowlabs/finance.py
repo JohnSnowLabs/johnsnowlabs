@@ -97,6 +97,8 @@ try:
             Doc2ChunkInternal,
             Chunk2Token,
             ExtractiveSummarization,
+            ChunkFiltererApproach,
+
         )
 
         from sparknlp_jsl.modelTracer import ModelTracer
