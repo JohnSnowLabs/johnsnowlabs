@@ -94,6 +94,8 @@ try:
             NerTemplateRenderModel,
             AverageEmbeddings,
             Doc2ChunkInternal,
+            Chunk2Token,
+            ExtractiveSummarization,
         )
         from sparknlp_jsl.modelTracer import ModelTracer
 
