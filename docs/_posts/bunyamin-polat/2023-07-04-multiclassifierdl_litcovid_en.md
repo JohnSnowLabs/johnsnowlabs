@@ -48,6 +48,7 @@ There are 7 topics you will need to decide whether the article is related to. Th
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
