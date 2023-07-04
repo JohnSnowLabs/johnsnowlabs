@@ -51,6 +51,7 @@ There are 10 cancer hallmarks you will need to decide whether the article is rel
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
