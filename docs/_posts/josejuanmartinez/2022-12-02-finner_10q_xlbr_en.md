@@ -1,12 +1,12 @@
 ---
 layout: model
-title: Finance NER (10Q, lg, 139 entities)
+title: Finance Numeric NER (10-Q, 10-K, lg, 139 entities, XBRL)
 author: John Snow Labs
-name: finner_10q_xlbr
+name: finner_10q_xbrl
 date: 2022-12-02
-tags: [10q, xlbr, en, licensed]
+tags: [10q, xbrl, en, licensed]
 task: Named Entity Recognition
-language: en
+language: en 
 nav_key: models
 edition: Finance NLP 1.0.0
 spark_version: 3.0
@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is an NER model containing 139 numeric financial entities from different 10Q reports. The tokens being annotated are the amounts, not any other surrounding word, but the context will determine what kind of amount is from the list of the 139 available.
+This model is a Named Entity Recognition (NER) model focused on financial numeric items. It identifies 139 frequently occurring financial entities extracted from diverse 10-Q and 10-K reports. These entities are annotated using eXtensible Business Reporting Language (XBRL) tags. The annotation process primarily targets numerical tokens, and the context plays a crucial role in accurately assigning the appropriate entity type from the 139 most common financial entities available in the dataset.
 
 This is a large (`lg`) model, trained with 200K sentences.
 
@@ -28,13 +28,12 @@ This is a large (`lg`) model, trained with 200K sentences.
 `DeferredFinanceCostsNet`, `DisposalGroupIncludingDiscontinuedOperationConsideration`, `DebtInstrumentCarryingAmount`, `CommonStockSharesAuthorized`, `RestructuringCharges`, `DeferredFinanceCostsGross`, `OperatingLeasesRentExpenseNet`, `EquityMethodInvestmentOwnershipPercentage`, `ClassOfWarrantOrRightExercisePriceOfWarrantsOrRights1`, `DebtInstrumentTerm`, `DebtInstrumentRedemptionPricePercentage`, `CommonStockCapitalSharesReservedForFutureIssuance`, `LossContingencyAccrualAtCarryingValue`, `SaleOfStockPricePerShare`, `MinorityInterestOwnershipPercentageByParent`, `PropertyPlantAndEquipmentUsefulLife`, `TreasuryStockAcquiredAverageCostPerShare`, `Goodwill`, `SupplementalInformationForPropertyCasualtyInsuranceUnderwritersPriorYearClaimsAndClaimsAdjustmentExpense`, `CommonStockParOrStatedValuePerShare`, `OperatingLeaseWeightedAverageDiscountRatePercent`, `DebtInstrumentConvertibleConversionPrice1`, `AmortizationOfIntangibleAssets`, `PreferredStockSharesAuthorized`, `OperatingLeasePayments`, `DebtInstrumentMaturityDate`, `ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodWeightedAverageGrantDateFairValue`, `EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate`, `AllocatedShareBasedCompensationExpense`, `PreferredStockDividendRatePercentage`, `StockRepurchaseProgramRemainingAuthorizedRepurchaseAmount1`, `TreasuryStockValueAcquiredCostMethod`, `ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedInPeriodTotalFairValue`, `IncomeTaxExpenseBenefit`, `DerivativeFixedInterestRate`, `RelatedPartyTransactionExpensesFromTransactionsWithRelatedParty`, `PublicUtilitiesRequestedRateIncreaseDecreaseAmount`, `RestructuringAndRelatedCostExpectedCost1`, `StockRepurchaseProgramAuthorizedAmount1`, `ShareBasedCompensation`, `ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriodWeightedAverageGrantDateFairValue`, `LongTermDebtFairValue`, `LineOfCreditFacilityUnusedCapacityCommitmentFeePercentage`, `LineOfCreditFacilityCurrentBorrowingCapacity`, `ShareBasedCompensationArrangementByShareBasedPaymentAwardAwardVestingPeriod1`, `SharebasedCompensationArrangementBySharebasedPaymentAwardAwardVestingRightsPercentage`, `PaymentsToAcquireBusinessesGross`, `MinorityInterestOwnershipPercentageByNoncontrollingOwners`, `AntidilutiveSecuritiesExcludedFromComputationOfEarningsPerShareAmount`, `NumberOfReportableSegments`, `BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibleAssetsOtherThanGoodwill`, `OperatingLeaseCost`, `BusinessCombinationConsiderationTransferred1`, `UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate`, `CommonStockDividendsPerShareDeclared`, `AreaOfRealEstateProperty`, `LesseeOperatingLeaseTermOfContract`, `RevenueRemainingPerformanceObligation`, `RelatedPartyTransactionAmountsOfTransaction`, `InterestExpense`, `OperatingLeaseExpense`, `StockIssuedDuringPeriodSharesNewIssues`, `DebtInstrumentFaceAmount`, `CapitalizedContractCostAmortization`, `DebtInstrumentBasisSpreadOnVariableRate1`, `ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsNonvestedNumber`, `GainsLossesOnExtinguishmentOfDebt`, `LineOfCreditFacilityRemainingBorrowingCapacity`, `OperatingLeaseRightOfUseAsset`, `OperatingLeaseWeightedAverageRemainingLeaseTerm1`, `OperatingLossCarryforwards`, `ConcentrationRiskPercentage1`, `GuaranteeObligationsMaximumExposure`, `StockRepurchasedAndRetiredDuringPeriodShares`, `LesseeOperatingLeaseRenewalTerm`, `ContractWithCustomerLiabilityRevenueRecognized`, `DefinedBenefitPlanContributionsByEmployer`, `ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsGrantsInPeriodGross`, `RepaymentsOfDebt`, `EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized`, `BusinessAcquisitionPercentageOfVotingInterestsAcquired`, `DebtInstrumentInterestRateEffectivePercentage`, `AcquiredFiniteLivedIntangibleAssetsWeightedAverageUsefulLife`, `DebtInstrumentUnamortizedDiscount`, `ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAuthorized`, `BusinessCombinationContingentConsiderationLiability`, `DebtInstrumentInterestRateStatedPercentage`, `LeaseAndRentalExpense`, `RevenueFromContractWithCustomerExcludingAssessedTax`, `SharePrice`, `CommonStockSharesOutstanding`, `ContractWithCustomerLiability`, `DerivativeNotionalAmount`, `RevenueFromRelatedParties`, `ShareBasedCompensationArrangementByShareBasedPaymentAwardOptionsExercisesInPeriodTotalIntrinsicValue`, `Revenues`, `EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedShareBasedAwardsOtherThanOptions`, `AccrualForEnvironmentalLossContingencies`, `ProceedsFromIssuanceOfCommonStock`, `EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense`, `IncomeLossFromEquityMethodInvestments`, `NumberOfOperatingSegments`, `UnrecognizedTaxBenefits`, `RevenueFromContractWithCustomerIncludingAssessedTax`, `LossContingencyDamagesSoughtValue`, `SharebasedCompensationArrangementBySharebasedPaymentAwardExpirationPeriod`, `TreasuryStockSharesAcquired`, `FiniteLivedIntangibleAssetUsefulLife`, `BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedIntangibles`, `EffectiveIncomeTaxRateContinuingOperations`, `LossContingencyEstimateOfPossibleLoss`, `ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfSharesAvailableForGrant`, `BusinessCombinationAcquisitionRelatedCosts`, `StockRepurchasedDuringPeriodShares`, `CashAndCashEquivalentsFairValueDisclosure`, `LineOfCreditFacilityInterestRateAtPeriodEnd`, `ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsGrantsInPeriod`, `CumulativeEffectOfNewAccountingPrincipleInPeriodOfAdoption`, `LettersOfCreditOutstandingAmount`, `EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1`, `NumberOfRealEstateProperties`, `DebtWeightedAverageInterestRate`, `SaleOfStockNumberOfSharesIssuedInTransaction`, `AssetImpairmentCharges`, `Depreciation`, `DebtInstrumentFairValue`, `DefinedContributionPlanCostRecognized`, `InterestExpenseDebt`, `LossContingencyPendingClaimsNumber`, `PaymentsToAcquireBusinessesNetOfCashAcquired`, `BusinessAcquisitionEquityInterestsIssuedOrIssuableNumberOfSharesIssued`, `GoodwillImpairmentLoss`, `LineOfCredit`, `AmortizationOfFinancingCosts`, `EquityMethodInvestments`, `LineOfCreditFacilityCommitmentFeePercentage`, `LongTermDebt`, `LineOfCreditFacilityMaximumBorrowingCapacity`, `OperatingLeaseLiability`
 
 {:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/finance/FINNER_10Q_XLBR){:.button.button-orange}
+[Live Demo](https://demo.johnsnowlabs.com/finance/FINNER_10Q_XBRL){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_en_1.0.0_3.0_1669977147020.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_en_1.0.0_3.0_1669977147020.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xbrl_en_1.0.0_3.0_1669977147020.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xbrl_en_1.0.0_3.0_1669977147020.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
-
 
 
 <div class="tabs-box" markdown="1">
@@ -59,7 +58,7 @@ embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
   .setOutputCol("embeddings")\
   .setMaxSentenceLength(512)
 
-nerTagger = finance.NerModel.pretrained('finner_10q_xlbr', 'en', 'finance/models')\
+nerTagger = finance.NerModel.pretrained('finner_10q_xbrl', 'en', 'finance/models')\
    .setInputCols(["sentence", "token", "embeddings"])\
    .setOutputCol("ner")
               
@@ -126,7 +125,7 @@ result_df.show(50, truncate=100)
 
 {:.table-model}
 |---|---|
-|Model Name:|finner_10q_xlbr|
+|Model Name:|finner_10q_xbrl|
 |Compatibility:|Finance NLP 1.0.0+|
 |License:|Licensed|
 |Edition:|Official|

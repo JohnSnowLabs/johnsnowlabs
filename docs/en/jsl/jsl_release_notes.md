@@ -14,7 +14,6 @@ sidebar:
 <div class="main-docs" markdown="1">
 See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for detailed information on Release History and Features.
 
-
 ## 4.4.9
 Release date: 8-4-2023
 
@@ -31,7 +30,6 @@ The John Snow Labs 4.4.9 Library released with the following pre-installed and r
 | [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)           | `4.4`   |
 | [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)            | `4.4.1` |
 | [Pyspark](https://spark.apache.org/docs/latest/api/python/)                 | `3.1.2` |
-
 
 
 
