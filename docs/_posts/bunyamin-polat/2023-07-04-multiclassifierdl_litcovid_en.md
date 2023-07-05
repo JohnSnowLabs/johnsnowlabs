@@ -19,18 +19,19 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Multi-label document classification identifies semantic categories at the document-level. The semantic categories are effective for grasping the main topics and searching for relevant literature in the biomedical domain. Unlike multi-class classification, which assigns only one label to an instance, multi-label classification can assign up to N labels to an instance. LitCovid is manually annotated multi-label document classification datasets for COVID-19 topics (7 labels).
+Multi-label document classification is a technique that identifies semantic categories for entire documents. In the biomedical field, these semantic categories are valuable for understanding the main topics and conducting literature searches. Unlike multi-class classification, which assigns only one label to each instance, multi-label classification allows for assigning multiple labels, up to N, to a single instance. LitCovid is a manually annotated multi-label document classification dataset specifically designed for COVID-19 topics, consisting of seven labels.
 
-The multilabel classification model decides relevant COVID-19 topics of the article based on its abstract.
+The objective of the multilabel classification model is to determine the relevant COVID-19 topics of an article based on its abstract. You will need to determine whether the article is related to any of the following seven topics, each with its own definition:
 
-There are 7 topics you will need to decide whether the article is related to. The followings are the topics and their definitions.
-- Mechanism: underlying cause(s) of COVID-19 infections and transmission and possible drug mechanism of action. 
-- Transmission: characteristics and modes of COVID-19 transmissions. 
-- Diagnosis: COVID-19 assessment through symptoms, test results, and radiological features for COVID-19. 
-- Treatment: treatment strategies, therapeutic procedures, and vaccine development for COVID-19. 
-- Prevention: prevention, control, mitigation, and management strategies for COVID-19. 
-- Case_Report: descriptions of specific patient cases related to COVID-19. 
-- Epidemic_Forecasting: estimation on the trend of COVID-19 spread and related modeling approach.
+- **Mechanism:** explores the underlying causes of COVID-19 infections and transmission, as well as potential mechanisms of action for drugs.
+- **Transmission:** focuses on the characteristics and modes of COVID-19 transmission.
+- **Diagnosis:** pertains to the assessment of COVID-19 through symptoms, test results, and radiological features.
+- **Treatment:** involves strategies for treating COVID-19, including therapeutic procedures and vaccine development.
+- **Prevention:** addresses prevention, control, mitigation, and management strategies for COVID-19.
+- **Case_Report:** entails descriptions of specific patient cases related to COVID-19.
+- **Epidemic_Forecasting:** involves estimating the trend of COVID-19 spread and utilizing related modeling approaches.
+
+This model is inspired from [Large language models in biomedical natural language processing: benchmarks, baselines, and recommendations](https://arxiv.org/abs/2305.16326) and augmented internally for better coverage and performance.
 
 ## Predicted Entities
 
