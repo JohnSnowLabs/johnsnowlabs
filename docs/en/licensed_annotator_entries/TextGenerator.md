@@ -11,7 +11,7 @@ TextGenerator uses the basic BioGPT model to perform various tasks related to me
 
 Available models can be found at the [Models Hub](https://nlp.johnsnowlabs.com/models?annotator=MedicalTextGenerator).
 
-For more extended examples on document pre-processing see the [Spark NLP Workshop](...).
+For more extended examples on document pre-processing see the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop).
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
