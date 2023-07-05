@@ -24,8 +24,8 @@ Pretrained named entity recognition deep learning model for clinical terminology
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_clinical_nl_4.4.4_3.0_1688590388744.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_clinical_nl_4.4.4_3.0_1688590388744.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_clinical_nl_4.4.4_3.0_1688590745618.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_token_classifier_ner_clinical_nl_4.4.4_3.0_1688590745618.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -34,15 +34,27 @@ Pretrained named entity recognition deep learning model for clinical terminology
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
-documentAssembler = DocumentAssembler()	.setInputCol("text")	.setOutputCol("document")
+documentAssembler = DocumentAssembler()\
+	.setInputCol("text")\
+	.setOutputCol("document")
 
-sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "xx")   .setInputCols(["document"])  .setOutputCol("sentence")
+sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "xx")\
+  .setInputCols(["document"])\
+  .setOutputCol("sentence")
 
-tokenizer = Tokenizer()  .setInputCols("sentence")  .setOutputCol("token")
+tokenizer = Tokenizer()\
+  .setInputCols("sentence")\
+  .setOutputCol("token")
 
-tokenClassifier = MedicalBertForTokenClassifier.pretrained("bert_token_classifier_ner_clinical", "nl", "clinical/models")  .setInputCols(["token", "sentence"])  .setOutputCol("ner")  .setCaseSensitive(True)
+tokenClassifier = MedicalBertForTokenClassifier()\
+  .pretrained("bert_token_classifier_ner_clinical", "nl", "clinical/models")\
+  .setInputCols(["token", "sentence"])\
+  .setOutputCol("ner")\
+  .setCaseSensitive(True)
 
-ner_converter = NerConverterInternal()  .setInputCols(["sentence","token","ner"])  .setOutputCol("ner_chunk")
+ner_converter = NerConverterInternal()\
+  .setInputCols(["sentence","token","ner"])\
+  .setOutputCol("ner_chunk")
 
 pipeline =  Pipeline(stages=[
 		documentAssembler,
@@ -63,14 +75,16 @@ val documentAssembler = new DocumentAssembler()
 	.setInputCol("text")
 	.setOutputCol("document")
 
-val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "xx") 	.setInputCols(Array("document"))
+val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "xx")
+	.setInputCols(Array("document"))
 	.setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
 	.setInputCols("sentence")
 	.setOutputCol("token")
 
-val tokenClassifier = MedicalBertForTokenClassifier.pretrained("bert_token_classifier_ner_clinical", "nl", "clinical/models")
+val tokenClassifier = MedicalBertForTokenClassifier()
+  .pretrained("bert_token_classifier_ner_clinical", "nl", "clinical/models")
   .setInputCols(Array("token", "sentence"))
   .setOutputCol("ner")
   .setCaseSensitive(True)
