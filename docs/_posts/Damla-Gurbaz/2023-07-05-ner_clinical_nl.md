@@ -32,18 +32,31 @@ Pretrained named entity recognition deep learning model for clinical terms. The 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-document_assembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
+document_assembler = DocumentAssembler()\
+  .setInputCol("text")\
+  .setOutputCol("document")
 
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "xx")    .setInputCols(["document"])    .setOutputCol("sentence")
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "xx")\
+  .setInputCols(["document"])\
+  .setOutputCol("sentence")
 
-tokenizer = Tokenizer()    .setInputCols(["sentence"])    .setOutputCol("token")
+tokenizer = Tokenizer()\
+  .setInputCols(["sentence"])\
+  .setOutputCol("token")
 
-embeddings = WordEmbeddingsModel.pretrained("w2v_cc_300d", "nl")     .setInputCols(["sentence", "token"])     .setOutputCol("embeddings")
+embeddings = WordEmbeddingsModel.pretrained("w2v_cc_300d", "nl")\
+  .setInputCols(["sentence", "token"])\
+  .setOutputCol("embeddings")
 
-ner_model = MedicalNerModel.pretrained("ner_clinical", "nl", "clinical/models")    .setInputCols(["sentence", "token","embeddings"])    .setOutputCol("ner")
+ner_model = MedicalNerModel.pretrained("ner_clinical", "nl", "clinical/models")\
+  .setInputCols(["sentence", "token","embeddings"])\
+  .setOutputCol("ner")
 
-ner_converter = NerConverterInternal()    .setInputCols(['sentence', 'token', 'ner'])    .setOutputCol('ner_chunk')
+ner_converter = NerConverterInternal()\
+.setInputCols(['sentence', 'token', 'ner'])\
+.setOutputCol('ner_chunk')
 
 pipeline = Pipeline(stages=[
     document_assembler, 
