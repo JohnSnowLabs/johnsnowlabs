@@ -33,28 +33,29 @@ Pretrained named entity recognition deep learning model for clinical terminology
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
-	.setInputCol("text")\
-	.setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
 
 sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "xx")\
-  .setInputCols(["document"])\
-  .setOutputCol("sentence")
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
 tokenizer = Tokenizer()\
-  .setInputCols("sentence")\
-  .setOutputCol("token")
+    .setInputCols("sentence")\
+    .setOutputCol("token")
 
 tokenClassifier = MedicalBertForTokenClassifier()\
-  .pretrained("bert_token_classifier_ner_clinical", "nl", "clinical/models")\
-  .setInputCols(["token", "sentence"])\
-  .setOutputCol("ner")\
-  .setCaseSensitive(True)
+   .pretrained("bert_token_classifier_ner_clinical", "nl", "clinical/models")\
+   .setInputCols(["token", "sentence"])\
+   .setOutputCol("ner")\
+   .setCaseSensitive(True)
 
 ner_converter = NerConverterInternal()\
-  .setInputCols(["sentence","token","ner"])\
-  .setOutputCol("ner_chunk")
+   .setInputCols(["sentence", "token", "ner"])\
+   .setOutputCol("ner_chunk")
 
 pipeline =  Pipeline(stages=[
 		documentAssembler,
@@ -72,26 +73,26 @@ result = pipeline.fit(df).transform(df)
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
-	.setInputCol("text")
-	.setOutputCol("document")
+   .setInputCol("text")
+   .setOutputCol("document")
 
 val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "xx")
-	.setInputCols(Array("document"))
-	.setOutputCol("sentence")
+   .setInputCols(Array("document"))
+   .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
-	.setInputCols("sentence")
-	.setOutputCol("token")
+   .setInputCols("sentence")
+   .setOutputCol("token")
 
 val tokenClassifier = MedicalBertForTokenClassifier()
-  .pretrained("bert_token_classifier_ner_clinical", "nl", "clinical/models")
-  .setInputCols(Array("token", "sentence"))
-  .setOutputCol("ner")
-  .setCaseSensitive(True)
+   .pretrained("bert_token_classifier_ner_clinical", "nl", "clinical/models")
+   .setInputCols(Array("token", "sentence"))
+   .setOutputCol("ner")
+   .setCaseSensitive(True)
 
 val ner_converter = new NerConverterInternal()
-	.setInputCols(Array("sentence","token","ner"))
-	.setOutputCol("ner_chunk")
+   .setInputCols(Array("sentence", "token", "ner"))
+   .setOutputCol("ner_chunk")
 
 val pipeline =  new Pipeline().setStages(Array(
 		documentAssembler,
