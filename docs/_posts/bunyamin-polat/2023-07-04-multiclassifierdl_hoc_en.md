@@ -19,21 +19,22 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Multi-label document classification identifies semantic categories at the document-level. The semantic categories are effective for grasping the main topics and searching for relevant literature in the biomedical domain. Unlike multi-class classification, which assigns only one label to an instance, multi-label classification can assign up to N labels to an instance. HoC is manually annotated multi-label document classification datasets for hallmarks of cancer (10 labels). 
+The process of multi-label document classification involves identifying semantic categories at the document level. In the biomedical domain, these semantic categories are useful for understanding the main topics and searching for relevant literature. Unlike multi-class classification, which assigns only one label to an instance, multi-label classification can assign multiple labels, up to N, to an instance. For the hallmarks of cancer, a manually annotated multi-label document classification dataset called HoC has been created, consisting of 10 labels.
 
-The multilabel classification model makes a semantic classification of the article according to the hallmarks of cancer based on its abstract.
+The purpose of the multilabel classification model is to semantically classify an article based on its abstract, specifically related to the hallmarks of cancer. The model determines whether the article is associated with any of the 10 cancer hallmarks listed below:
 
-There are 10 cancer hallmarks you will need to decide whether the article is related to, including:
-- Activating_Invasion_And_Metastasis
-- Avoiding_Immune_Destruction
-- Cellular_Energetics
-- Enabling_Replicative_Immortality
-- Evading_Growth_Suppressors
-- Genomic_Instability_And_Mutation
-- Inducing_Angiogenesis
-- Resisting_Cell_Death
-- Sustaining_Proliferative_Signaling
-- Tumor_Promoting_Inflammation
+- Activating Invasion And Metastasis
+- Avoiding Immune Destruction
+- Cellular Energetics
+- Enabling Replicative Immortality
+- Evading Growth Suppressors
+- Genomic Instability And Mutation
+- Inducing Angiogenesis
+- Resisting Cell Death
+- Sustaining Proliferative Signaling
+- Tumor Promoting Inflammation
+
+This model is inspired from [Large language models in biomedical natural language processing: benchmarks, baselines, and recommendations](https://arxiv.org/abs/2305.16326) and augmented internally for better coverage and performance.
 
 ## Predicted Entities
 
