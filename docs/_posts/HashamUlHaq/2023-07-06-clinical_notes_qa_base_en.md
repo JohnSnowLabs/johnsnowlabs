@@ -8,7 +8,7 @@ tags: [en, licensed, clinical, question_answering, tensorflow]
 task: Question Answering
 language: en
 edition: Healthcare NLP 4.4.4
-spark_version: 3.2
+spark_version: 3.0
 supported: true
 engine: tensorflow
 annotator: MedicalQuestionAnswering
@@ -28,8 +28,8 @@ This model is capable of open-book question answering on Medical Notes.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_notes_qa_base_en_4.4.4_3.2_1688657782760.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_notes_qa_base_en_4.4.4_3.2_1688657782760.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_notes_qa_base_en_4.4.4_3.0_1688657782760.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_notes_qa_base_en_4.4.4_3.0_1688657782760.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -37,13 +37,14 @@ This model is capable of open-book question answering on Medical Notes.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = MultiDocumentAssembler()\
     .setInputCols("question", "context")\
     .setOutputCols("document_question", "document_context")
 
 med_qa  = sparknlp_jsl.annotators.MedicalQuestionAnswering()\
-    .pretrained("clinical_notes_qa_base","en","clinical/models")\
+    .pretrained("clinical_notes_qa_base", "en", "clinical/models")\
     .setInputCols(["document_question", "document_context"])\
     .setCustomPrompt("Context: {context} \n Question: {question} \n Answer: ")\
     .setOutputCol("answer")\
