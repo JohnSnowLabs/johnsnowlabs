@@ -84,10 +84,10 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/PlanTL-GOB-ES/roberta-large-bne-sqac
-- https://arxiv.org/abs/1907.11692
-- http://www.bne.es/en/Inicio/index.html
-- https://github.com/PlanTL-GOB-ES/lm-spanish
-- https://www.apache.org/licenses/LICENSE-2.0
-- http://journal.sepln.org/sepln/ojs/ojs/index.php/pln/article/view/6405
-- https://paperswithcode.com/sota?task=question-answering&dataset=SQAC
+- [https://huggingface.co/PlanTL-GOB-ES/roberta-large-bne-sqac](https://huggingface.co/PlanTL-GOB-ES/roberta-large-bne-sqac)
+- [https://arxiv.org/abs/1907.11692](https://arxiv.org/abs/1907.11692)
+- [https://www.bne.es/en/Inicio/index.html](https://www.bne.es/en/Inicio/index.html)
+- [https://github.com/PlanTL-GOB-ES/lm-spanish](https://github.com/PlanTL-GOB-ES/lm-spanish)
+- [https://www.apache.org/licenses/LICENSE-2.0](https://www.apache.org/licenses/LICENSE-2.0)
+- [https://journal.sepln.org/sepln/ojs/ojs/index.php/pln/article/view/6405](https://journal.sepln.org/sepln/ojs/ojs/index.php/pln/article/view/6405)
+- [https://paperswithcode.com/sota?task=question-answering&dataset=SQAC](https://paperswithcode.com/sota?task=question-answering&dataset=SQAC)

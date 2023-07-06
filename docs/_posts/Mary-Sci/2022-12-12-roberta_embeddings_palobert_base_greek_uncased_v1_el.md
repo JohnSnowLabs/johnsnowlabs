@@ -90,6 +90,6 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/gealexandri/palobert-base-greek-uncased-v1
-- https://arxiv.org/abs/1907.11692
-- http://www.paloservices.com/
+- [https://huggingface.co/gealexandri/palobert-base-greek-uncased-v1](https://huggingface.co/gealexandri/palobert-base-greek-uncased-v1)
+- [https://arxiv.org/abs/1907.11692](https://arxiv.org/abs/1907.11692)
+- [https://www.paloservices.com/](https://www.paloservices.com/)

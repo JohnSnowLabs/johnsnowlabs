@@ -31,6 +31,7 @@ Pretrained BERT Embedding model, adapted from Hugging Face and curated to provid
 
 
 <div class="tabs-box" markdown="1">
+
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 documentAssembler = DocumentAssembler() \
@@ -72,18 +73,18 @@ result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/nlpaueb/legal-bert-small-uncased
-- https://www.sec.gov/edgar.shtml
-- https://twitter.com/KiddoThe2B
-- http://nlp.cs.aueb.gr
-- https://archive.org/details/legal_bert_fp
-- https://aclanthology.org/2020.findings-emnlp.261
-- http://hudoc.echr.coe.int/eng
-- http://www.legislation.gov.uk
-- https://www.tensorflow.org/tfrc
-- https://edu.google.com/programs/credits/research
-- https://case.law
-- https://iliaschalkidis.github.io
-- https://github.com/iliaschalkidis
-- https://github.com/google-research/bert
-- http://eur-lex.europa.eu
+- [https://huggingface.co/nlpaueb/legal-bert-small-uncased](https://huggingface.co/nlpaueb/legal-bert-small-uncased)
+- [https://www.sec.gov/edgar.shtml](https://www.sec.gov/edgar.shtml)
+- [https://twitter.com/KiddoThe2B](https://twitter.com/KiddoThe2B)
+- [https://nlp.cs.aueb.gr](https://nlp.cs.aueb.gr)
+- [https://archive.org/details/legal_bert_fp](https://archive.org/details/legal_bert_fp)
+- [https://aclanthology.org/2020.findings-emnlp.261](https://aclanthology.org/2020.findings-emnlp.261)
+- [https://hudoc.echr.coe.int/eng](https://hudoc.echr.coe.int/eng)
+- [https://www.legislation.gov.uk](https://www.legislation.gov.uk)
+- [https://www.tensorflow.org/tfrc](https://www.tensorflow.org/tfrc)
+- [https://edu.google.com/programs/credits/research](https://edu.google.com/programs/credits/research)
+- [https://case.law](https://case.law)
+- [https://iliaschalkidis.github.io](https://iliaschalkidis.github.io)
+- [https://github.com/iliaschalkidis](https://github.com/iliaschalkidis)
+- [https://github.com/google-research/bert](https://github.com/google-research/bert)
+- [https://eur-lex.europa.eu](https://eur-lex.europa.eu)

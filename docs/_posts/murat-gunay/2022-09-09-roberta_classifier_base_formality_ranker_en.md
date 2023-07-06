@@ -95,8 +95,8 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/SkolkovoInstitute/roberta-base-formality-ranker
-- https://github.com/raosudha89/GYAFC-corpus
-- https://aclanthology.org/N18-1012
-- http://www.seas.upenn.edu/~nlp/resources/formality-corpus.tgz
-- https://aclanthology.org/Q16-1005
+- [https://huggingface.co/SkolkovoInstitute/roberta-base-formality-ranker](https://huggingface.co/SkolkovoInstitute/roberta-base-formality-ranker)
+- [https://github.com/raosudha89/GYAFC-corpus](https://github.com/raosudha89/GYAFC-corpus)
+- [https://aclanthology.org/N18-1012](https://aclanthology.org/N18-1012)
+- [https://www.seas.upenn.edu/~nlp/resources/formality-corpus.tgz](https://www.seas.upenn.edu/~nlp/resources/formality-corpus.tgz)
+- [https://aclanthology.org/Q16-1005](https://aclanthology.org/Q16-1005)

@@ -90,6 +90,6 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/Davlan/bert-base-multilingual-cased-finetuned-hausa
-- http://data.statmt.org/cc-100/
-- https://github.com/masakhane-io/masakhane-ner
+- [https://huggingface.co/Davlan/bert-base-multilingual-cased-finetuned-hausa](https://huggingface.co/Davlan/bert-base-multilingual-cased-finetuned-hausa)
+- [https://data.statmt.org/cc-100/](https://data.statmt.org/cc-100/)
+- [https://github.com/masakhane-io/masakhane-ner](https://github.com/masakhane-io/masakhane-ner)

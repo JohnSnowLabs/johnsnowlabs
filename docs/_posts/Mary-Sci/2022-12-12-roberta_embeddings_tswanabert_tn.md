@@ -90,14 +90,14 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/MoseliMotsoehli/TswanaBert
-- https://wortschatz.uni-leipzig.de/en/download
-- http://doi.org/10.5281/zenodo.3668495
-- http://setswana.blogspot.com/
-- https://omniglot.com/writing/tswana.php
-- http://www.dailynews.gov.bw/
-- http://www.mmegi.bw/index.php
-- https://tsena.co.bw
-- http://www.botswana.co.za/Cultural_Issues-travel/botswana-country-guide-en-route.html
-- https://www.poemhunter.com/poem/2013-setswana/
-- https://www.poemhunter.com/poem/ngwana-wa-mosetsana/
+- [https://huggingface.co/MoseliMotsoehli/TswanaBert](https://huggingface.co/MoseliMotsoehli/TswanaBert)
+- [https://wortschatz.uni-leipzig.de/en/download](https://wortschatz.uni-leipzig.de/en/download)
+- [https://doi.org/10.5281/zenodo.3668495](https://doi.org/10.5281/zenodo.3668495)
+- [https://setswana.blogspot.com/](https://setswana.blogspot.com/)
+- [https://omniglot.com/writing/tswana.php](https://omniglot.com/writing/tswana.php)
+- [https://www.dailynews.gov.bw/](https://www.dailynews.gov.bw/)
+- [https://www.mmegi.bw/index.php](https://www.mmegi.bw/index.php)
+- [https://tsena.co.bw](https://tsena.co.bw)
+- [https://www.botswana.co.za/Cultural_Issues-travel/botswana-country-guide-en-route.html](https://www.botswana.co.za/Cultural_Issues-travel/botswana-country-guide-en-route.html)
+- [https://www.poemhunter.com/poem/2013-setswana/](https://www.poemhunter.com/poem/2013-setswana/)
+- [https://www.poemhunter.com/poem/ngwana-wa-mosetsana/](https://www.poemhunter.com/poem/ngwana-wa-mosetsana/)

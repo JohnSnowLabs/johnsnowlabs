@@ -78,7 +78,7 @@ embeddings_df
 
 [1]: [Wikipedia dataset](https://dumps.wikimedia.org/)
 
-[2]: [BooksCorpus dataset](http://yknzhu.wixsite.com/mbweb)
+[2]: [BooksCorpus dataset](https://yknzhu.wixsite.com/mbweb)
 
 [3]: [Stanford Queston Answering (SQuAD 2.0) dataset](https://rajpurkar.github.io/SQuAD-explorer/)
 

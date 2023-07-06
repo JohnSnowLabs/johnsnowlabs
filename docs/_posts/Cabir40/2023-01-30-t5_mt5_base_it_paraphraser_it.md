@@ -81,9 +81,9 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/aiknowyou/mt5-base-it-paraphraser
-- https://arxiv.org/abs/2010.11934
-- https://colab.research.google.com/drive/1DGeF190gJ3DjRFQiwhFuZalp427iqJNQ
-- https://gist.github.com/avidale/44cd35bfcdaf8bedf51d97c468cc8001
-- http://creativecommons.org/licenses/by-nc-sa/4.0/
-- http://creativecommons.org/licenses/by-nc-sa/4.0/
+- [https://huggingface.co/aiknowyou/mt5-base-it-paraphraser](https://huggingface.co/aiknowyou/mt5-base-it-paraphraser)
+- [https://arxiv.org/abs/2010.11934](https://arxiv.org/abs/2010.11934)
+- [https://colab.research.google.com/drive/1DGeF190gJ3DjRFQiwhFuZalp427iqJNQ](https://colab.research.google.com/drive/1DGeF190gJ3DjRFQiwhFuZalp427iqJNQ)
+- [https://gist.github.com/avidale/44cd35bfcdaf8bedf51d97c468cc8001](https://gist.github.com/avidale/44cd35bfcdaf8bedf51d97c468cc8001)
+- [https://creativecommons.org/licenses/by-nc-sa/4.0/](https://creativecommons.org/licenses/by-nc-sa/4.0/)
+- [https://creativecommons.org/licenses/by-nc-sa/4.0/](https://creativecommons.org/licenses/by-nc-sa/4.0/)

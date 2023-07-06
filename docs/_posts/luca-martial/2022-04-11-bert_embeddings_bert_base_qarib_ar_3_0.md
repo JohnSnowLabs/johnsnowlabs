@@ -97,7 +97,7 @@ nlu.load("ar.embed.bert_base_qarib").predict("""أنا أحب شرارة NLP""")
 
 ## References
 
-- https://huggingface.co/qarib/bert-base-qarib
-- http://opus.nlpl.eu/
-- https://github.com/qcri/QARIB/Training_QARiB.md
-- https://github.com/qcri/QARIB/Using_QARiB.md
+- [https://huggingface.co/qarib/bert-base-qarib](https://huggingface.co/qarib/bert-base-qarib)
+- [https://opus.nlpl.eu/](https://opus.nlpl.eu/)
+- [https://github.com/qcri/QARIB/Training_QARiB.md](https://github.com/qcri/QARIB/Training_QARiB.md)
+- [https://github.com/qcri/QARIB/Using_QARiB.md](https://github.com/qcri/QARIB/Using_QARiB.md)

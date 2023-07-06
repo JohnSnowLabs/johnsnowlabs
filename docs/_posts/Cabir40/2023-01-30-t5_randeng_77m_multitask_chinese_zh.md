@@ -81,17 +81,17 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/IDEA-CCNL/Randeng-T5-77M-MultiTask-Chinese
-- https://github.com/IDEA-CCNL/Fengshenbang-LM
-- https://fengshenbang-doc.readthedocs.io/
-- http://jmlr.org/papers/v21/20-074.html
-- https://github.com/IDEA-CCNL/Fengshenbang-LM/
-- https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/pretrain_t5
-- https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/mt5_summary
-- https://github.com/IDEA-CCNL/Fengshenbang-LM/
-- https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/pretrain_t5
-- https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/mt5_summary
-- https://arxiv.org/abs/2209.02970
-- https://arxiv.org/abs/2209.02970
-- https://github.com/IDEA-CCNL/Fengshenbang-LM/
-- https://github.com/IDEA-CCNL/Fengshenbang-LM/
+- [https://huggingface.co/IDEA-CCNL/Randeng-T5-77M-MultiTask-Chinese](https://huggingface.co/IDEA-CCNL/Randeng-T5-77M-MultiTask-Chinese)
+- [https://github.com/IDEA-CCNL/Fengshenbang-LM](https://github.com/IDEA-CCNL/Fengshenbang-LM)
+- [https://fengshenbang-doc.readthedocs.io/](https://fengshenbang-doc.readthedocs.io/)
+- [https://jmlr.org/papers/v21/20-074.html](https://jmlr.org/papers/v21/20-074.html)
+- [https://github.com/IDEA-CCNL/Fengshenbang-LM/](https://github.com/IDEA-CCNL/Fengshenbang-LM/)
+- [https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/pretrain_t5](https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/pretrain_t5)
+- [https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/mt5_summary](https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/mt5_summary)
+- [https://github.com/IDEA-CCNL/Fengshenbang-LM/](https://github.com/IDEA-CCNL/Fengshenbang-LM/)
+- [https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/pretrain_t5](https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/pretrain_t5)
+- [https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/mt5_summary](https://github.com/IDEA-CCNL/Fengshenbang-LM/tree/main/fengshen/examples/mt5_summary)
+- [https://arxiv.org/abs/2209.02970](https://arxiv.org/abs/2209.02970)
+- [https://arxiv.org/abs/2209.02970](https://arxiv.org/abs/2209.02970)
+- [https://github.com/IDEA-CCNL/Fengshenbang-LM/](https://github.com/IDEA-CCNL/Fengshenbang-LM/)
+- [https://github.com/IDEA-CCNL/Fengshenbang-LM/](https://github.com/IDEA-CCNL/Fengshenbang-LM/)

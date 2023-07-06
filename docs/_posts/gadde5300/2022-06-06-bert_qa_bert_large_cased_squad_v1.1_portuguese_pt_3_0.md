@@ -100,12 +100,12 @@ nlu.load("pt.answer_question.squad.bert.large_cased").predict("""What's my name?
 
 ## References
 
-- https://huggingface.co/pierreguillou/bert-large-cased-squad-v1.1-portuguese
-- https://github.com/piegu/language-models/blob/master/question_answering_BERT_large_cased_squad_v11_pt.ipynb
-- https://nbviewer.jupyter.org/github/piegu/language-models/blob/master/question_answering_BERT_large_cased_squad_v11_pt.ipynb
-- https://medium.com/@pierre_guillou/nlp-como-treinar-um-modelo-de-question-answering-em-qualquer-linguagem-baseado-no-bert-large-1c899262dd96#c2f5
-- https://ailab.unb.br/
-- https://www.linkedin.com/in/pierreguillou/
-- http://www.deeplearningbrasil.com.br/
-- https://neuralmind.ai/
-- https://medium.com/@pierre_guillou/nlp-como-treinar-um-modelo-de-question-answering-em-qualquer-linguagem-baseado-no-bert-large-1c899262dd96
+- [https://huggingface.co/pierreguillou/bert-large-cased-squad-v1.1-portuguese](https://huggingface.co/pierreguillou/bert-large-cased-squad-v1.1-portuguese)
+- [https://github.com/piegu/language-models/blob/master/question_answering_BERT_large_cased_squad_v11_pt.ipynb](https://github.com/piegu/language-models/blob/master/question_answering_BERT_large_cased_squad_v11_pt.ipynb)
+- [https://nbviewer.jupyter.org/github/piegu/language-models/blob/master/question_answering_BERT_large_cased_squad_v11_pt.ipynb](https://nbviewer.jupyter.org/github/piegu/language-models/blob/master/question_answering_BERT_large_cased_squad_v11_pt.ipynb)
+- [https://medium.com/@pierre_guillou/nlp-como-treinar-um-modelo-de-question-answering-em-qualquer-linguagem-baseado-no-bert-large-1c899262dd96#c2f5](https://medium.com/@pierre_guillou/nlp-como-treinar-um-modelo-de-question-answering-em-qualquer-linguagem-baseado-no-bert-large-1c899262dd96#c2f5)
+- [https://ailab.unb.br/](https://ailab.unb.br/)
+- [https://www.linkedin.com/in/pierreguillou/](https://www.linkedin.com/in/pierreguillou/)
+- [https://www.deeplearningbrasil.com.br/](https://www.deeplearningbrasil.com.br/)
+- [https://neuralmind.ai/](https://neuralmind.ai/)
+- [https://medium.com/@pierre_guillou/nlp-como-treinar-um-modelo-de-question-answering-em-qualquer-linguagem-baseado-no-bert-large-1c899262dd96](https://medium.com/@pierre_guillou/nlp-como-treinar-um-modelo-de-question-answering-em-qualquer-linguagem-baseado-no-bert-large-1c899262dd96)

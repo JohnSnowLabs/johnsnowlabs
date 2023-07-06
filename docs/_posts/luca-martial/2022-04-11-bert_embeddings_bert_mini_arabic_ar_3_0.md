@@ -97,10 +97,10 @@ nlu.load("ar.embed.bert_mini_arabic").predict("""أنا أحب شرارة NLP"""
 
 ## References
 
-- https://huggingface.co/asafaya/bert-mini-arabic
-- https://traces1.inria.fr/oscar/
-- http://commoncrawl.org/
-- https://dumps.wikimedia.org/backup-index.html
-- https://github.com/google-research/bert
-- https://www.tensorflow.org/tfrc
-- https://github.com/alisafaya/Arabic-BERT
+- [https://huggingface.co/asafaya/bert-mini-arabic](https://huggingface.co/asafaya/bert-mini-arabic)
+- [https://traces1.inria.fr/oscar/](https://traces1.inria.fr/oscar/)
+- [https://commoncrawl.org/](https://commoncrawl.org/)
+- [https://dumps.wikimedia.org/backup-index.html](https://dumps.wikimedia.org/backup-index.html)
+- [https://github.com/google-research/bert](https://github.com/google-research/bert)
+- [https://www.tensorflow.org/tfrc](https://www.tensorflow.org/tfrc)
+- [https://github.com/alisafaya/Arabic-BERT](https://github.com/alisafaya/Arabic-BERT)

@@ -106,9 +106,9 @@ nlu.load("es.pos.roberta_large_bne_capitel_pos").predict("""Amo Spark NLP""")
 
 ## References
 
-- https://huggingface.co/PlanTL-GOB-ES/roberta-large-bne-capitel-pos
-- https://arxiv.org/abs/1907.11692
-- http://www.bne.es/en/Inicio/index.html
-- https://sites.google.com/view/capitel2020
-- https://github.com/PlanTL-GOB-ES/lm-spanish
-- https://arxiv.org/abs/2107.07253
+- [https://huggingface.co/PlanTL-GOB-ES/roberta-large-bne-capitel-pos](https://huggingface.co/PlanTL-GOB-ES/roberta-large-bne-capitel-pos)
+- [https://arxiv.org/abs/1907.11692](https://arxiv.org/abs/1907.11692)
+- [https://www.bne.es/en/Inicio/index.html](https://www.bne.es/en/Inicio/index.html)
+- [https://sites.google.com/view/capitel2020](https://sites.google.com/view/capitel2020)
+- [https://github.com/PlanTL-GOB-ES/lm-spanish](https://github.com/PlanTL-GOB-ES/lm-spanish)
+- [https://arxiv.org/abs/2107.07253](https://arxiv.org/abs/2107.07253)

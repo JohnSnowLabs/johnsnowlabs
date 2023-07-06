@@ -97,10 +97,10 @@ nlu.load("it.embed.bert_base_italian_xxl_uncased").predict("""Adoro Spark NLP"""
 
 ## References
 
-- https://huggingface.co/dbmdz/bert-base-italian-xxl-uncased
-- http://opus.nlpl.eu/
-- https://traces1.inria.fr/oscar/
-- https://github.com/dbmdz/berts/issues/7
-- https://github.com/stefan-it/turkish-bert/tree/master/electra
-- https://github.com/stefan-it/italian-bertelectra
-- https://github.com/dbmdz/berts/issues/new
+- [https://huggingface.co/dbmdz/bert-base-italian-xxl-uncased](https://huggingface.co/dbmdz/bert-base-italian-xxl-uncased)
+- [https://opus.nlpl.eu/](https://opus.nlpl.eu/)
+- [https://traces1.inria.fr/oscar/](https://traces1.inria.fr/oscar/)
+- [https://github.com/dbmdz/berts/issues/7](https://github.com/dbmdz/berts/issues/7)
+- [https://github.com/stefan-it/turkish-bert/tree/master/electra](https://github.com/stefan-it/turkish-bert/tree/master/electra)
+- [https://github.com/stefan-it/italian-bertelectra](https://github.com/stefan-it/italian-bertelectra)
+- [https://github.com/dbmdz/berts/issues/new](https://github.com/dbmdz/berts/issues/new)

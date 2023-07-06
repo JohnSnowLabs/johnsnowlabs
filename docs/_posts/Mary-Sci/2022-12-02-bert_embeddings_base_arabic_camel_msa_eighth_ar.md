@@ -90,15 +90,15 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/CAMeL-Lab/bert-base-arabic-camelbert-msa-eighth
-- https://arxiv.org/abs/2103.06678
-- https://github.com/CAMeL-Lab/CAMeLBERT
-- https://catalog.ldc.upenn.edu/LDC2011T11
-- http://www.abuelkhair.net/index.php/en/arabic/abu-el-khair-corpus
-- https://vlo.clarin.eu/search;jsessionid=31066390B2C9E8C6304845BA79869AC1?1&q=osian
-- https://archive.org/details/arwiki-20190201
-- https://oscar-corpus.com/
-- https://github.com/google-research/bert
-- https://github.com/google-research/bert/blob/eedf5716ce1268e56f0a50264a88cafad334ac61/tokenization.py#L286-L297
-- https://github.com/CAMeL-Lab/camel_tools
-- https://github.com/CAMeL-Lab/CAMeLBERT
+- [https://huggingface.co/CAMeL-Lab/bert-base-arabic-camelbert-msa-eighth](https://huggingface.co/CAMeL-Lab/bert-base-arabic-camelbert-msa-eighth)
+- [https://arxiv.org/abs/2103.06678](https://arxiv.org/abs/2103.06678)
+- [https://github.com/CAMeL-Lab/CAMeLBERT](https://github.com/CAMeL-Lab/CAMeLBERT)
+- [https://catalog.ldc.upenn.edu/LDC2011T11](https://catalog.ldc.upenn.edu/LDC2011T11)
+- [https://www.abuelkhair.net/index.php/en/arabic/abu-el-khair-corpus](https://www.abuelkhair.net/index.php/en/arabic/abu-el-khair-corpus)
+- [https://vlo.clarin.eu/search;jsessionid=31066390B2C9E8C6304845BA79869AC1?1&q=osian](https://vlo.clarin.eu/search;jsessionid=31066390B2C9E8C6304845BA79869AC1?1&q=osian)
+- [https://archive.org/details/arwiki-20190201](https://archive.org/details/arwiki-20190201)
+- [https://oscar-corpus.com/](https://oscar-corpus.com/)
+- [https://github.com/google-research/bert](https://github.com/google-research/bert)
+- [https://github.com/google-research/bert/blob/eedf5716ce1268e56f0a50264a88cafad334ac61/tokenization.py#L286-L297](https://github.com/google-research/bert/blob/eedf5716ce1268e56f0a50264a88cafad334ac61/tokenization.py#L286-L297)
+- [https://github.com/CAMeL-Lab/camel_tools](https://github.com/CAMeL-Lab/camel_tools)
+- [https://github.com/CAMeL-Lab/CAMeLBERT](https://github.com/CAMeL-Lab/CAMeLBERT)

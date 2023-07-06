@@ -90,10 +90,10 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/dbmdz/bert-base-italian-uncased
-- http://opus.nlpl.eu/
-- https://traces1.inria.fr/oscar/
-- https://github.com/dbmdz/berts/issues/7
-- https://github.com/stefan-it/turkish-bert/tree/master/electra
-- https://github.com/stefan-it/italian-bertelectra
-- https://github.com/dbmdz/berts/issues/new
+- [https://huggingface.co/dbmdz/bert-base-italian-cased](https://huggingface.co/dbmdz/bert-base-italian-cased)
+- [https://opus.nlpl.eu/](https://opus.nlpl.eu/)
+- [https://traces1.inria.fr/oscar/](https://traces1.inria.fr/oscar/)
+- [https://github.com/dbmdz/berts/issues/7](https://github.com/dbmdz/berts/issues/7)
+- [https://github.com/stefan-it/turkish-bert/tree/master/electra](https://github.com/stefan-it/turkish-bert/tree/master/electra)
+- [https://github.com/stefan-it/italian-bertelectra](https://github.com/stefan-it/italian-bertelectra)
+- [https://github.com/dbmdz/berts/issues/new](https://github.com/dbmdz/berts/issues/new)

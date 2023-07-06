@@ -102,9 +102,9 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/HooshvareLab/bert-fa-base-uncased-ner-peyma
-- https://github.com/hooshvare/parsbert
-- http://nsurl.org/tasks/task-7-named-entity-recognition-ner-for-farsi/
-- https://github.com/hooshvare/parsbert-ner/blob/master/persian-ner-pipeline.ipynb
-- https://colab.research.google.com/github/hooshvare/parsbert-ner/blob/master/persian-ner-pipeline.ipynb
-- https://github.com/hooshvare/parsbert/issues
+- [https://huggingface.co/HooshvareLab/bert-fa-base-uncased-ner-peyma](https://huggingface.co/HooshvareLab/bert-fa-base-uncased-ner-peyma)
+- [https://github.com/hooshvare/parsbert](https://github.com/hooshvare/parsbert)
+- [https://nsurl.org/tasks/task-7-named-entity-recognition-ner-for-farsi/](https://nsurl.org/tasks/task-7-named-entity-recognition-ner-for-farsi/)
+- [https://github.com/hooshvare/parsbert-ner/blob/master/persian-ner-pipeline.ipynb](https://github.com/hooshvare/parsbert-ner/blob/master/persian-ner-pipeline.ipynb)
+- [https://colab.research.google.com/github/hooshvare/parsbert-ner/blob/master/persian-ner-pipeline.ipynb](https://colab.research.google.com/github/hooshvare/parsbert-ner/blob/master/persian-ner-pipeline.ipynb)
+- [https://github.com/hooshvare/parsbert/issues](https://github.com/hooshvare/parsbert/issues)

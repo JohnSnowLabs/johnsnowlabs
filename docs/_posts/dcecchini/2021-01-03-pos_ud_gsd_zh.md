@@ -137,7 +137,7 @@ The model was trained on the [Universal Dependencies (UD)](https://universaldepe
 
 Reference:
 
-     > Zeman, Daniel; Nivre, Joakim; Abrams, Mitchell; et al., 2020, Universal Dependencies 2.7, LINDAT/CLARIAH-CZ digital library at the Institute of Formal and Applied Linguistics (ÚFAL), Faculty of Mathematics and Physics, Charles University, http://hdl.handle.net/11234/1-3424.
+Zeman, Daniel; Nivre, Joakim; Abrams, Mitchell; et al., 2020, Universal Dependencies 2.7, LINDAT/CLARIAH-CZ digital library at the Institute of Formal and Applied Linguistics (ÚFAL), Faculty of Mathematics and Physics, Charles University, [https://hdl.handle.net/11234/1-3424](https://hdl.handle.net/11234/1-3424).
 
 ## Benchmarking
 

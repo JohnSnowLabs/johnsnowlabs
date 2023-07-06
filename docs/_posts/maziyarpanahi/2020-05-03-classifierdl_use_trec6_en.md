@@ -109,7 +109,7 @@ trec6_df[["document", "trec6"]]
 
 {:.h2_title}
 ## Data Source
-This model is trained on the 6 class version of TREC dataset. http://search.r-project.org/library/textdata/html/dataset_trec.html
+This model is trained on the 6 class version of TREC dataset. [https://search.r-project.org/library/textdata/html/dataset_trec.html](https://search.r-project.org/library/textdata/html/dataset_trec.html)
 
 {:.h2_title}
 ## Benchmarking

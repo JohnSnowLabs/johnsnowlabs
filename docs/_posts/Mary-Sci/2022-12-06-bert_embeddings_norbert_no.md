@@ -90,11 +90,11 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/ltgoslo/norbert
-- http://vectors.nlpl.eu/repository/20/216.zip
-- http://norlm.nlpl.eu/
-- https://github.com/ltgoslo/NorBERT
-- https://arxiv.org/abs/2104.06546
-- https://www.eosc-nordic.eu/
-- https://www.mn.uio.no/ifi/english/research/projects/sant/index.html
-- https://www.mn.uio.no/ifi/english/research/groups/ltg/
+- [https://huggingface.co/ltgoslo/norbert](https://huggingface.co/ltgoslo/norbert)
+- [https://vectors.nlpl.eu/repository/20/216.zip](https://vectors.nlpl.eu/repository/20/216.zip)
+- [https://norlm.nlpl.eu/](https://norlm.nlpl.eu/)
+- [https://github.com/ltgoslo/NorBERT](https://github.com/ltgoslo/NorBERT)
+- [https://arxiv.org/abs/2104.06546](https://arxiv.org/abs/2104.06546)
+- [https://www.eosc-nordic.eu/](https://www.eosc-nordic.eu/)
+- [https://www.mn.uio.no/ifi/english/research/projects/sant/index.html](https://www.mn.uio.no/ifi/english/research/projects/sant/index.html)
+- [https://www.mn.uio.no/ifi/english/research/groups/ltg/](https://www.mn.uio.no/ifi/english/research/groups/ltg/)

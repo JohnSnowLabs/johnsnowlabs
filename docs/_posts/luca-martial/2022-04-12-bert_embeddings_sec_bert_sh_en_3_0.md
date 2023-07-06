@@ -104,6 +104,6 @@ nlu.load("en.embed.sec_bert_sh").predict("""I love Spark NLP""")
 
 ## References
 
-- https://huggingface.co/nlpaueb/sec-bert-shape
-- https://arxiv.org/abs/2203.06482
-- http://nlp.cs.aueb.gr/
+- [https://huggingface.co/nlpaueb/sec-bert-base](https://huggingface.co/nlpaueb/sec-bert-base)
+- [https://arxiv.org/abs/2203.06482](https://arxiv.org/abs/2203.06482)
+- [https://nlp.cs.aueb.gr/](https://nlp.cs.aueb.gr/)
