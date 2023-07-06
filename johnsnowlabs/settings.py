@@ -9,18 +9,20 @@ from johnsnowlabs.utils.env_utils import (
 
 # These versions are used for auto-installs and version  checks
 
-raw_version_jsl_lib = "4.4.6"
-raw_version_nlp = "4.4.1"
+
+raw_version_jsl_lib = "4.4.10"
+raw_version_nlp = "4.4.4"
+
 raw_version_nlu = "4.2.2"
 
 raw_version_pyspark = "3.1.2"
 raw_version_nlp_display = "4.1"
 
-raw_version_medical = "4.4.3"
-raw_version_secret_medical = "4.4.3"
+raw_version_medical = "4.4.4"
+raw_version_secret_medical = "4.4.4"
 
-raw_version_secret_ocr = "4.4.2"
-raw_version_ocr = "4.4.2"
+raw_version_secret_ocr = "4.4.3"
+raw_version_ocr = "4.4.3"
 
 pypi_page = "https://pypi.org/project/johnsnowlabs"
 json_indent = 4

@@ -35,8 +35,6 @@ In the metadata, the `all_k_aux_labels` can be divided to get further informatio
 
 ## How to use
 
-
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python

@@ -76,6 +76,9 @@ try:
             NerTemplateRenderModel,
             AverageEmbeddings,
             Doc2ChunkInternal,
+            Chunk2Token,
+            ExtractiveSummarization,
+            ChunkFiltererApproach,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
