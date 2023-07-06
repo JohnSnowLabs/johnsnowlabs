@@ -314,6 +314,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/average_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.average_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/bert_sentence_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../embeddings/entity_chunk_embeddings/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../embeddings/extractive_summarization/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.embeddings.extractive_summarization</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../generic_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.generic_classifier</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -369,6 +370,7 @@ document.write(`
 </ul>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
@@ -471,7 +473,11 @@ regex patterns with setRegexPatternsDictionary, where each line is a mapping of 
 </dd>
 <dt><strong>mode</strong></dt><dd><p>Mode for Anonimizer [‘mask’|’obfuscate’]</p>
 </dd>
-<dt><strong>obfuscateDate</strong></dt><dd><p>When mode==’obfuscate’ whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible. When setting to <code class="docutils literal notranslate"><span class="pre">true</span></code>, make sure dateFormats param fits the needs (default: false)</p>
+<dt><strong>obfuscateDate</strong></dt><dd><p>When mode==’obfuscate’ whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.
+When setting to <code class="docutils literal notranslate"><span class="pre">true</span></code>, make sure dateFormats param fits the needs (default: false)
+If the value is true and obfuscation is failed, then unnormalizedDateMode param will be activated.
+When setting to ‘false’, then the date will be masked to &lt;DATE&gt;
+Default: false</p>
 </dd>
 <dt><strong>obfuscateRefFile</strong></dt><dd><p>File with the terms to be used for Obfuscation</p>
 </dd>
@@ -481,11 +487,11 @@ regex patterns with setRegexPatternsDictionary, where each line is a mapping of 
 </dd>
 <dt><strong>dateTag</strong></dt><dd><p>Tag representing dates in the obfuscate reference file (default: DATE)</p>
 </dd>
-<dt><strong>days</strong></dt><dd><p>Number of days to obfuscate the dates by displacement. If not provided a random integer between 1 and 60 will be used</p>
+<dt><strong>days</strong></dt><dd><p>A number of days to obfuscate the dates by displacement. If not provided a random integer between 1 and 60 will be used</p>
 </dd>
 <dt><strong>dateToYear</strong></dt><dd><p>True if we want the model to transform dates into years, False otherwise.</p>
 </dd>
-<dt><strong>minYear</strong></dt><dd><p>Minimum year to be used when transforming dates into years.</p>
+<dt><strong>minYear</strong></dt><dd><p>Minimum year to be used when transforming dates into years. Default: ‘1929’</p>
 </dd>
 <dt><strong>dateFormats</strong></dt><dd><p>List of date formats to automatically displace if parsed</p>
 </dd>
@@ -494,7 +500,7 @@ The similarity is based on the Levenshtein Distance between the words.</p>
 </dd>
 <dt><strong>sameEntityThreshold</strong></dt><dd><p>Similarity threshold [0.0-1.0] to consider two appearances of an entity as <code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">same</span></code> (default: 0.9).</p>
 </dd>
-<dt><strong>obfuscateRefSource</strong></dt><dd><p>The source of obfuscation of to obfuscate the entities.For dates entities doesnt apply tha method.
+<dt><strong>obfuscateRefSource</strong></dt><dd><p>The source of obfuscation of to obfuscate the entities. For dates entities, This property is invalid.
 The values ar the following:
 file: Takes the entities from the obfuscatorRefFile
 faker: Takes the entities from the Faker module
@@ -502,23 +508,30 @@ both : Takes the entities from the obfuscatorRefFile and the faker module random
 </dd>
 <dt><strong>regexOverride</strong></dt><dd><p>If is true prioritize the regex entities, if is false prioritize the ner.</p>
 </dd>
-<dt><strong>seed</strong></dt><dd><p>It is the seed to select the entities on obfuscate mode.With the seed you can reply a execution several times with the same ouptut.</p>
+<dt><strong>language</strong></dt><dd><p>The language used to select the regex file and some faker entities.
+The values are the following:
+‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p>
 </dd>
-<dt><strong>ignoreRegex</strong></dt><dd><p>Select if you want to use regex file loaded in the model.If true the default regex file will be not used.The default value is false.</p>
+<dt><strong>seed</strong></dt><dd><p>It is the seed to select the entities on obfuscate mode. With the seed,
+you can reply to an execution several times with the same output.</p>
 </dd>
-<dt><strong>isRandomDateDisplacement</strong></dt><dd><p>Use a random displacement days in dates entities,that random number is based on the [[DeIdentificationParams.seed]]
-If true use random displacement days in dates entities,if false use the [[DeIdentificationParams.days]]
+<dt><strong>ignoreRegex</strong></dt><dd><p>Select if you want to use the regex file loaded in the model. If true the default regex file will be not used.
+The default value is false.</p>
+</dd>
+<dt><strong>isRandomDateDisplacement</strong></dt><dd><p>Use a random displacement days in dates entities, that random number is based on the <a href="#id1"><span class="problematic" id="id2">:param:`seed`</span></a>
+If true use random displacement days in dates entities, if false use the <a href="#id3"><span class="problematic" id="id4">:param:`days`</span></a>
 The default value is false.</p>
 </dd>
 <dt><strong>mappingsColumn</strong></dt><dd><p>This is the mapping column that will return the Annotations chunks with the fake entities.</p>
 </dd>
-<dt><strong>returnEntityMappings</strong></dt><dd><p>With this property you select if you want to return mapping column</p>
+<dt><strong>returnEntityMappings</strong></dt><dd><p>With this property, you can select if you want to return mapping column</p>
 </dd>
-<dt><strong>blackList</strong></dt><dd><p>List of entities ignored for masking or obfuscation.The default values are: “SSN”,”PASSPORT”,”DLN”,”NPI”,”C_CARD”,”IBAN”,”DEA”</p>
+<dt><strong>blackList</strong></dt><dd><p>List of entities that will be ignored in the regex file. The rest will be processed.
+The default values are “IBAN”,”ZIP”,”NPI”,”URL”,”DLN”,”PASSPORT”,”EMAIL”,”C_CARD”,”DEA”,”SSN”</p>
 </dd>
 <dt><strong>maskingPolicy</strong></dt><dd><dl class="simple">
 <dt>Select the masking policy:</dt><dd><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence.
-Example, Smith -&gt; [<a href="#id1"><span class="problematic" id="id2">**</span></a><a href="#id3"><span class="problematic" id="id4">*</span></a>].
+Example, Smith -&gt; [<a href="#id5"><span class="problematic" id="id6">**</span></a><a href="#id7"><span class="problematic" id="id8">*</span></a>].
 If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.
 entity_labels: Replace the values with the corresponding entity labels.
 fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p>
@@ -536,7 +549,7 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 ‘skip’: Skip the values (intact)</p>
 </dd>
 </dl>
-<p>The entities which have not been given in dictionary will deidentify according to setMode()</p>
+<p>The entities which have not been given in dictionary will deidentify according to <a href="#id9"><span class="problematic" id="id10">:param:`mode`</span></a></p>
 </dd>
 <dt><strong>entityCasingModesPath</strong></dt><dd><dl class="simple">
 <dt>Dictionary path where is the json that contains the entity casing modes.</dt><dd><p>‘lowercase’: Converts all characters to lower case using the rules of the default locale.
@@ -547,7 +560,7 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 </dl>
 </dd>
 <dt><strong>genderAwareness</strong></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names.
-If value is true, it might decrease performance. Default: False</p>
+If the value is true, it might decrease performance. Default: False</p>
 </dd>
 </dl>
 </dd>
@@ -820,11 +833,13 @@ If value is true, it might decrease performance. Default: False</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLanguage">
 <span class="sig-name descname"><span class="pre">setLanguage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setLanguage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLanguage" title="Permalink to this definition">#</a></dt>
-<dd><p>The language used to select the regex file and some faker entities.’en’(english),’de’() or ‘es’(Spanish)</p>
+<dd><p>The language used to select the regex file and some faker entities.
+‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian).
+Default:’en’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>l</strong><span class="classifier">str</span></dt><dd><p>The language used to select the regex file and some faker entities.’en’(english),’de’() or ‘es’(Spanish)</p>
+<dt><strong>l</strong><span class="classifier">str</span></dt><dd><p>The language used to select the regex file and some faker entities.’en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p>
 </dd>
 </dl>
 </dd>
@@ -838,7 +853,7 @@ If value is true, it might decrease performance. Default: False</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Path wher is de dictionary</p>
+<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Path where the dictionary is</p>
 </dd>
 <dt><strong>read_as: ReadAs</strong></dt><dd><p>Format of the file</p>
 </dd>
@@ -852,11 +867,11 @@ If value is true, it might decrease performance. Default: False</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setMode">
 <span class="sig-name descname"><span class="pre">setMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setMode" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets mode for Anonimizer [‘mask’|’obfuscate’]</p>
+<dd><p>Sets mode for Anonymizer [‘mask’|’obfuscate’]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>m</strong><span class="classifier">str</span></dt><dd><p>Mode for Anonimizer [‘mask’|’obfuscate’]</p>
+<dt><strong>m</strong><span class="classifier">str</span></dt><dd><p>Mode for Anonymizer [‘mask’|’obfuscate’]</p>
 </dd>
 </dl>
 </dd>
@@ -868,7 +883,7 @@ If value is true, it might decrease performance. Default: False</p>
 <span class="sig-name descname"><span class="pre">setMaskingPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setMaskingPolicy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setMaskingPolicy" title="Permalink to this definition">#</a></dt>
 <dd><dl class="simple">
 <dt>Sets the masking policy:</dt><dd><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence.
-Example, Smith -&gt; [<a href="#id5"><span class="problematic" id="id6">**</span></a><a href="#id7"><span class="problematic" id="id8">*</span></a>].
+Example, Smith -&gt; [<a href="#id11"><span class="problematic" id="id12">**</span></a><a href="#id13"><span class="problematic" id="id14">*</span></a>].
 If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.
 entity_labels: Replace the values with the corresponding entity labels.
 fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p>
@@ -936,7 +951,7 @@ fixed_length_chars: Replace the obfuscated entity with a masking sequence compos
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>f</strong><span class="classifier">str</span></dt><dd><p>Separator character in refFile</p>
+<dt><strong>c</strong><span class="classifier">str</span></dt><dd><p>Separator character in refFile</p>
 </dd>
 </dl>
 </dd>
@@ -950,7 +965,7 @@ fixed_length_chars: Replace the obfuscated entity with a masking sequence compos
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>f</strong><span class="classifier">str</span></dt><dd><p>Tag representing dates in the obfuscate reference file (default: DATE)</p>
+<dt><strong>t</strong><span class="classifier">str</span></dt><dd><p>Tag representing dates in the obfuscate reference file (default: DATE)</p>
 </dd>
 </dl>
 </dd>
@@ -960,11 +975,11 @@ fixed_length_chars: Replace the obfuscated entity with a masking sequence compos
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setZipCodeTag">
 <span class="sig-name descname"><span class="pre">setZipCodeTag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setZipCodeTag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setZipCodeTag" title="Permalink to this definition">#</a></dt>
-<dd><p>“Tag representing zip codes in the obfuscate reference file (default: ZIPCODE)”</p>
+<dd><p>Tag representing zip codes in the obfuscate reference file (default: ZIP)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>f</strong><span class="classifier">str</span></dt><dd><p>Tag representing zip codes  in the obfuscate reference file (default: ZIPCODE)</p>
+<dt><strong>t</strong><span class="classifier">str</span></dt><dd><p>Tag representing zip codes in the obfuscate reference file (default: ZIP)</p>
 </dd>
 </dl>
 </dd>
@@ -974,13 +989,15 @@ fixed_length_chars: Replace the obfuscated entity with a masking sequence compos
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setObfuscateDate">
 <span class="sig-name descname"><span class="pre">setObfuscateDate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setObfuscateDate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setObfuscateDate" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets auxiliary label which maps resolved entities to additional labels</p>
+<dd><p>When mode==’obfuscate’ whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.
+When setting to <code class="docutils literal notranslate"><span class="pre">true</span></code>, make sure dateFormats param fits the needs.
+If the value is <code class="docutils literal notranslate"><span class="pre">true</span></code> and obfuscation is failed, then unnormalizedDateMode param will be activated.
+When setting to <code class="docutils literal notranslate"><span class="pre">false</span></code>, then the date will be masked to &lt;DATE&gt;
+Default: false</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>When mode==”obfuscate” whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.
-When setting to <cite>true</cite>, make sure dateFormats param fits the needs (default: false)
-WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
+<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>When mode==’obfuscate’ whether to obfuscate dates or not. Default: false</p>
 </dd>
 </dl>
 </dd>
@@ -1018,11 +1035,11 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setMinYear">
 <span class="sig-name descname"><span class="pre">setMinYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setMinYear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setMinYear" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets minimum year to be used when transforming dates into years.</p>
+<dd><p>Sets minimum year to be used when transforming dates into years. Default: ‘1929’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">int</span></dt><dd><p>Minimum year to be used when transforming dates into years.</p>
+<dt><strong>s</strong><span class="classifier">int</span></dt><dd><p>Minimum year to be used when transforming dates into years. Default: ‘1929’</p>
 </dd>
 </dl>
 </dd>
@@ -1036,7 +1053,7 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>List of date formats to automatically displace if parsed</p>
+<dt><strong>s</strong><span class="classifier">str</span></dt><dd><p>List of date formats to automatically displace if parsed</p>
 </dd>
 </dl>
 </dd>
@@ -1046,11 +1063,13 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setConsistentObfuscation">
 <span class="sig-name descname"><span class="pre">setConsistentObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setConsistentObfuscation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setConsistentObfuscation" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets whether to replace very similar entities in a document with the same randomized term (default: true).The similarity is based on the Levenshtein Distance between the words.</p>
+<dd><p>Sets whether to replace very similar entities in a document with the same randomized term (default: true).
+The similarity is based on the Levenshtein Distance between the words.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">str</span></dt><dd><p>Whether to replace very similar entities in a document with the same randomized term .The similarity is based on the Levenshtein Distance between the words.</p>
+<dt><strong>s</strong><span class="classifier">str</span></dt><dd><p>Whether to replace very similar entities in a document with the same randomized term.
+The similarity is based on the Levenshtein Distance between the words.</p>
 </dd>
 </dl>
 </dd>
@@ -1088,7 +1107,9 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setRegexOverride">
 <span class="sig-name descname"><span class="pre">setRegexOverride</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setRegexOverride"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setRegexOverride" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets whether to prioritize regex over ner entities</p>
+<dd><p>Sets whether to prioritize regex over ner entities.
+If the value is true, prioritize the regex entities; if the value is false, prioritize the ner.
+The default value is false.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1102,12 +1123,14 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setIgnoreRegex">
 <span class="sig-name descname"><span class="pre">setIgnoreRegex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setIgnoreRegex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setIgnoreRegex" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets if you want to use regex.</p>
+<dd><p>Sets whether you want to use regex or not. If the value is ‘True’,
+it can increase performance but might decrease accuracy. Default: False.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">bool</span></dt><dd><p>Whether to use regex.</p>
+<dt><strong>s</strong><span class="classifier">bool</span></dt><dd><p>Whether to use regex or not. If the value is ‘True’,</p>
 </dd>
+<dt><strong>it can increase performance but might decrease accuracy. Default: False.</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -1116,11 +1139,12 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSeed">
 <span class="sig-name descname"><span class="pre">setSeed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setSeed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSeed" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the seed to select the entities on obfuscate mode</p>
+<dd><p>Sets the seed to select the entities on obfuscate mode. With the seed,
+you can reply to an execution several times with the same output.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">int</span></dt><dd><p>The seed to select the entities on obfuscate mode</p>
+<dt><strong>s</strong><span class="classifier">int</span></dt><dd><p>The seed to select the entities on obfuscate mode.</p>
 </dd>
 </dl>
 </dd>
@@ -1148,7 +1172,7 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Mapping column that will return the Annotations chunks with the fake entities</p>
+<dt><strong>s</strong><span class="classifier">str</span></dt><dd><p>Mapping column that will return the Annotations chunks with the fake entities</p>
 </dd>
 </dl>
 </dd>
@@ -1162,7 +1186,7 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">bool</span></dt><dd><p>Whether to return the mappings column.</p>
+<dt><strong>s</strong><span class="classifier">bool</span></dt><dd><p>Whether to return the mapping column.</p>
 </dd>
 </dl>
 </dd>
@@ -1172,23 +1196,25 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setBlackList">
 <span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setBlackList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setBlackList" title="Permalink to this definition">#</a></dt>
-<dd><p>List of entities ignored for masking or obfuscation.
+<dd><p>Sets a list of entities that will be ignored in the regex file. The rest will be processed.
+The default values are “IBAN”,”ZIP”,”NPI”,”URL”,”DLN”,”PASSPORT”,”EMAIL”,”C_CARD”,”DEA”,”SSN”
 Parameters
 ———-
 s : list</p>
 <blockquote>
-<div><p>List of entities ignored for masking or obfuscation.The default values are: values are “SSN”,”PASSPORT”,”DLN”,”NPI”,”C_CARD”,”IBAN”,”DEA”</p>
+<div><p>List of entities that will be ignored in the regex file. The rest will be processed.</p>
 </div></blockquote>
+<p>The default values are “IBAN”,”ZIP”,”NPI”,”URL”,”DLN”,”PASSPORT”,”EMAIL”,”C_CARD”,”DEA”,”SSN”</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setUseShifDays">
 <span class="sig-name descname"><span class="pre">setUseShifDays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setUseShifDays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setUseShifDays" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets if you want to use the random shift day when de document has this metadata.</p>
+<dd><p>Sets if you want to use the random shift day when the document has this in its metadata. Default: False</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">bool</span></dt><dd><p>Whether to use regex.</p>
+<dt><strong>s</strong><span class="classifier">bool</span></dt><dd><p>Whether to use the random shift day when the document has this in its metadata. Default: False</p>
 </dd>
 </dl>
 </dd>
@@ -1198,11 +1224,17 @@ s : list</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setRegion">
 <span class="sig-name descname"><span class="pre">setRegion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setRegion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setRegion" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets if you the country ountry coude format</p>
+<dd><p>With this property, you can select particular dateFormats. This property is especially used when obfuscating dates.
+For example:
+Decide whether the first part of 11/11/2023 is a day or the second part is a day when obfuscating dates.
+The values are following:
+‘eu’ for European Union
+‘us’ for the USA
+Default: ‘eu’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">str</span></dt><dd><p>Whether to use region.</p>
+<dt><strong>s</strong><span class="classifier">str</span></dt><dd><p>The region to use select date formats. Options: ‘eu’ for European Union, ‘us’ for the USA, Default: ‘eu’</p>
 </dd>
 </dl>
 </dd>
@@ -1274,7 +1306,7 @@ s : list</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes">
 <span class="sig-name descname"><span class="pre">setSelectiveObfuscationModes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentification.setSelectiveObfuscationModes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes" title="Permalink to this definition">#</a></dt>
 <dd><dl class="simple">
-<dt>Sets a Json path which has a dictionary of modes to enable multi-mode deidentification.</dt><dd><p>‘obfuscate’: Replace the values with random values.
+<dt>Sets a Json path which has a dictionary of modes to enable multi-mode deIdentification.</dt><dd><p>‘obfuscate’: Replace the values with random values.
 ‘mask_same_length_chars’: Replace the name with the asterisks with same length minus two plus brackets on both end.
 ‘mask_entity_labels’: Replace the values with the entity value.
 ‘mask_fixed_length_chars’: Replace the name with the asterisks with fixed length. You can also invoke “setFixedMaskLength()”
@@ -1319,7 +1351,8 @@ Default: False</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>l</strong><span class="classifier">str</span></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False</p>
+<dt><strong>l</strong><span class="classifier">str</span></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names.
+If value is true, it might decrease performance. Default: False</p>
 </dd>
 </dl>
 </dd>
@@ -1348,11 +1381,15 @@ regex patterns with setRegexPatternsDictionary, where each line is a mapping of 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>regexPatternsDictionary</strong></dt><dd><p>ictionary with regular expression patterns that match some protected entity</p>
+<dt><strong>regexPatternsDictionary</strong></dt><dd><p>Dictionary with regular expression patterns that match some protected entity</p>
 </dd>
 <dt><strong>mode</strong></dt><dd><p>Mode for Anonimizer [‘mask’|’obfuscate’]</p>
 </dd>
-<dt><strong>obfuscateDate</strong></dt><dd><p>When mode==’obfuscate’ whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible. When setting to <cite>true</cite>, make sure dateFormats param fits the needs (default: false)</p>
+<dt><strong>obfuscateDate</strong></dt><dd><p>When mode==’obfuscate’ whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.
+When setting to <code class="docutils literal notranslate"><span class="pre">true</span></code>, make sure dateFormats param fits the needs.
+If the value is true and obfuscation is failed, then unnormalizedDateMode param will be activated.
+When setting to ‘false’, then the date will be masked to &lt;DATE&gt;
+Default: false</p>
 </dd>
 <dt><strong>dateTag</strong></dt><dd><p>Tag representing dates in the obfuscate reference file (default: DATE)</p>
 </dd>
@@ -1370,12 +1407,16 @@ The similarity is based on the Levenshtein Distance between the words.</p>
 <dt><strong>sameEntityThreshold</strong></dt><dd><p>Similarity threshold [0.0-1.0] to consider two appearances of an entity as <cite>the same</cite> (default: 0.9).</p>
 </dd>
 <dt><strong>obfuscateRefSource</strong></dt><dd><p>The source of obfuscation of to obfuscate the entities.For dates entities doesnt apply tha method.
-The values ar the following:
+The values are the following:
 file: Takes the entities from the obfuscatorRefFile
 faker: Takes the entities from the Faker module
 both: Takes the entities from the obfuscatorRefFile and the faker module randomly.</p>
 </dd>
 <dt><strong>regexOverride</strong></dt><dd><p>If is true prioritize the regex entities, if is false prioritize the ner.</p>
+</dd>
+<dt><strong>language</strong></dt><dd><p>The language used to select the regex file and some faker entities.
+The values are the following:
+‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p>
 </dd>
 <dt><strong>seed</strong></dt><dd><p>It is the seed to select the entities on obfuscate mode.With the seed you can reply a execution several times with the same ouptut.</p>
 </dd>
@@ -1389,13 +1430,14 @@ The default value is false.</p>
 </dd>
 <dt><strong>returnEntityMappings</strong></dt><dd><p>With this property you select if you want to return mapping column</p>
 </dd>
-<dt><strong>blackList</strong></dt><dd><p>List of entities ignored for masking or obfuscation.The default values are: “SSN”,”PASSPORT”,”DLN”,”NPI”,”C_CARD”,”IBAN”,”DEA”</p>
+<dt><strong>blackList</strong></dt><dd><p>List of entities that will be ignored in the regex file. The rest will be processed.
+The default values are “IBAN”,”ZIP”,”NPI”,”URL”,”DLN”,”PASSPORT”,”EMAIL”,”C_CARD”,”DEA”,”SSN”</p>
 </dd>
 <dt><strong>regexEntities</strong></dt><dd><p>Keep the regex entities used in the regexPatternDictionary</p>
 </dd>
 <dt><strong>maskingPolicy</strong></dt><dd><dl class="simple">
 <dt>Select the masking policy:</dt><dd><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence.
-Example, Smith -&gt; [<a href="#id9"><span class="problematic" id="id10">**</span></a><a href="#id11"><span class="problematic" id="id12">*</span></a>].
+Example, Smith -&gt; [<a href="#id15"><span class="problematic" id="id16">**</span></a><a href="#id17"><span class="problematic" id="id18">*</span></a>].
 If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.
 entity_labels: Replace the values with the corresponding entity labels.
 fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p>
@@ -1548,11 +1590,6 @@ If value is true, it might decrease performance. Default: False</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id0">
-<span class="sig-name descname"><span class="pre">dateFormats</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.dateFormats"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id0" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.consistentObfuscation">
 <span class="sig-name descname"><span class="pre">consistentObfuscation</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.consistentObfuscation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.consistentObfuscation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1608,11 +1645,6 @@ If value is true, it might decrease performance. Default: False</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id13">
-<span class="sig-name descname"><span class="pre">mode</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.mode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#id13" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.language">
 <span class="sig-name descname"><span class="pre">language</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.language"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.language" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1661,11 +1693,14 @@ If value is true, it might decrease performance. Default: False</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setLanguage">
 <span class="sig-name descname"><span class="pre">setLanguage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setLanguage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setLanguage" title="Permalink to this definition">#</a></dt>
-<dd><p>The language used to select the regex file and some faker entities.’en’(english),’de’() or ‘es’(Spanish)</p>
+<dd><p>The language used to select the regex file and some faker entities.
+The values are the following:
+‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian).
+Default:’en’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>lang</strong><span class="classifier">str</span></dt><dd><p>The language used to select the regex file and some faker entities.’en’(english),’de’() or ‘es’(Spanish)</p>
+<dt><strong>lang</strong><span class="classifier">str</span></dt><dd><p>The language used to select the regex file and some faker entities.’en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.</p>
 </dd>
 </dl>
 </dd>
@@ -1675,11 +1710,11 @@ If value is true, it might decrease performance. Default: False</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMode">
 <span class="sig-name descname"><span class="pre">setMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMode" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets mode for Anonimizer [‘mask’|’obfuscate’]</p>
+<dd><p>Sets mode for Anonymizer [‘mask’|’obfuscate’]</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>mode</strong><span class="classifier">str</span></dt><dd><p>Mode for Anonimizer [‘mask’|’obfuscate’]</p>
+<dt><strong>mode</strong><span class="classifier">str</span></dt><dd><p>Mode for Anonymizer [‘mask’|’obfuscate’]</p>
 </dd>
 </dl>
 </dd>
@@ -1691,7 +1726,7 @@ If value is true, it might decrease performance. Default: False</p>
 <span class="sig-name descname"><span class="pre">setMaskingPolicy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mask</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setMaskingPolicy"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMaskingPolicy" title="Permalink to this definition">#</a></dt>
 <dd><dl class="simple">
 <dt>Sets the masking policy:</dt><dd><p>same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence.
-Example, Smith -&gt; [<a href="#id14"><span class="problematic" id="id15">**</span></a><a href="#id16"><span class="problematic" id="id17">*</span></a>].
+Example, Smith -&gt; [<a href="#id19"><span class="problematic" id="id20">**</span></a><a href="#id21"><span class="problematic" id="id22">*</span></a>].
 If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned.
 entity_labels: Replace the values with the corresponding entity labels.
 fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.</p>
@@ -1727,11 +1762,11 @@ fixed_length_chars: Replace the obfuscated entity with a masking sequence compos
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setDateTag">
 <span class="sig-name descname"><span class="pre">setDateTag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setDateTag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setDateTag" title="Permalink to this definition">#</a></dt>
-<dd><p>Set file with the terms to be used for Obfuscation</p>
+<dd><p>Set Tag representing what are the NER entity (default: DATE)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>tag</strong><span class="classifier">str</span></dt><dd><p>File with the terms to be used for Obfuscation</p>
+<dt><strong>tag</strong><span class="classifier">str</span></dt><dd><p>Tag representing what are the NER entity (default: DATE)</p>
 </dd>
 </dl>
 </dd>
@@ -1741,7 +1776,7 @@ fixed_length_chars: Replace the obfuscated entity with a masking sequence compos
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setZipCodeTag">
 <span class="sig-name descname"><span class="pre">setZipCodeTag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setZipCodeTag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setZipCodeTag" title="Permalink to this definition">#</a></dt>
-<dd><p>“Tag representing zip codes in the obfuscate reference file (default: ZIP)”</p>
+<dd><p>Tag representing zip codes in the obfuscate reference file (default: ZIP)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1755,13 +1790,15 @@ fixed_length_chars: Replace the obfuscated entity with a masking sequence compos
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setObfuscateDate">
 <span class="sig-name descname"><span class="pre">setObfuscateDate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setObfuscateDate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setObfuscateDate" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets auxiliary label which maps resolved entities to additional labels</p>
+<dd><p>When mode==’obfuscate’ whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.
+When setting to <code class="docutils literal notranslate"><span class="pre">true</span></code>, make sure dateFormats param fits the needs.
+If the value is <code class="docutils literal notranslate"><span class="pre">true</span></code> and obfuscation is failed, then unnormalizedDateMode param will be activated.
+When setting to <code class="docutils literal notranslate"><span class="pre">false</span></code>, then the date will be masked to &lt;DATE&gt;
+Default: false</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>When mode==”obfuscate” whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.
-When setting to <cite>true</cite>, make sure dateFormats param fits the needs (default: false)
-WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
+<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>When mode==’obfuscate’ whether to obfuscate dates or not. Default: false</p>
 </dd>
 </dl>
 </dd>
@@ -1799,7 +1836,7 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMinYear">
 <span class="sig-name descname"><span class="pre">setMinYear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setMinYear"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMinYear" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets minimum year to be used when transforming dates into years.</p>
+<dd><p>Sets minimum year to be used when transforming dates into years. Default: ‘1929’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1827,12 +1864,14 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setConsistentObfuscation">
 <span class="sig-name descname"><span class="pre">setConsistentObfuscation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setConsistentObfuscation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setConsistentObfuscation" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets whether to replace very similar entities in a document with the same randomized term (default: true).The similarity is based on the Levenshtein Distance between the words.</p>
+<dd><p>Sets whether to replace very similar entities in a document with the same randomized term (default: true).
+The similarity is based on the Levenshtein Distance between the words.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">str</span></dt><dd><p>Whether to replace very similar entities in a document with the same randomized term (default: true).The similarity is based on the Levenshtein Distance between the words.</p>
+<dt><strong>s</strong><span class="classifier">str</span></dt><dd><p>Whether to replace very similar entities in a document with the same randomized term (default: true).</p>
 </dd>
+<dt><strong>The similarity is based on the Levenshtein Distance between the words.</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -1869,7 +1908,9 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setRegexOverride">
 <span class="sig-name descname"><span class="pre">setRegexOverride</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setRegexOverride"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setRegexOverride" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets whether to prioritize regex over ner entities</p>
+<dd><p>Sets whether to prioritize regex over ner entities.
+If the value is true, prioritize the regex entities; if the value is false, prioritize the ner.
+The default value is false.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1883,12 +1924,14 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setSeed">
 <span class="sig-name descname"><span class="pre">setSeed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setSeed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setSeed" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the seed to select the entities on obfuscate mode</p>
+<dd><p>Sets the seed to select the entities on obfuscate mode. With the seed,
+you can reply to an execution several times with the same output.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">int</span></dt><dd><p>The seed to select the entities on obfuscate mode</p>
+<dt><strong>s</strong><span class="classifier">int</span></dt><dd><p>The seed to select the entities on obfuscate mode. With the seed,</p>
 </dd>
+<dt><strong>you can reply to an execution several times with the same output.</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -1897,12 +1940,14 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setIgnoreRegex">
 <span class="sig-name descname"><span class="pre">setIgnoreRegex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setIgnoreRegex"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setIgnoreRegex" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets if you want to use regex.</p>
+<dd><p>Sets whether you want to use regex or not. If the value is ‘True’,
+it can increase performance but might decrease accuracy. Default: False.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">bool</span></dt><dd><p>Whether to use regex.</p>
+<dt><strong>s</strong><span class="classifier">bool</span></dt><dd><p>Whether to use regex or not. If the value is ‘True’,</p>
 </dd>
+<dt><strong>it can increase performance but might decrease accuracy. Default: False.</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -1929,7 +1974,7 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Mapping column that will return the Annotations chunks with the fake entities</p>
+<dt><strong>s</strong><span class="classifier">str</span></dt><dd><p>Mapping column that will return the Annotations chunks with the fake entities</p>
 </dd>
 </dl>
 </dd>
@@ -1939,12 +1984,14 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setBlackList">
 <span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setBlackList"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setBlackList" title="Permalink to this definition">#</a></dt>
-<dd><p>List of entities ignored for masking or obfuscation.</p>
+<dd><p>Sets list of entities that will be ignored in the regex file. The rest will be processed.
+The default values are “IBAN”,”ZIP”,”NPI”,”URL”,”DLN”,”PASSPORT”,”EMAIL”,”C_CARD”,”DEA”,”SSN”</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">list</span></dt><dd><p>List of entities ignored for masking or obfuscation.The default values are: “SSN”,”PASSPORT”,”DLN”,”NPI”,”C_CARD”,”IBAN”,”DEA”</p>
+<dt><strong>s</strong><span class="classifier">list</span></dt><dd><p>List of entities that will be ignored in the regex file. The rest will be processed.</p>
 </dd>
+<dt><strong>The default values are “IBAN”,”ZIP”,”NPI”,”URL”,”DLN”,”PASSPORT”,”EMAIL”,”C_CARD”,”DEA”,”SSN”</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -1957,7 +2004,7 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">bool</span></dt><dd><p>Whether to save the mappings column.</p>
+<dt><strong>s</strong><span class="classifier">bool</span></dt><dd><p>Whether to save the mapping column.</p>
 </dd>
 </dl>
 </dd>
@@ -1967,17 +2014,17 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getRegexEntities">
 <span class="sig-name descname"><span class="pre">getRegexEntities</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.getRegexEntities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getRegexEntities" title="Permalink to this definition">#</a></dt>
-<dd><p>Return teh regexEntities value.</p>
+<dd><p>Return the regexEntities value.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setUseShifDays">
 <span class="sig-name descname"><span class="pre">setUseShifDays</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setUseShifDays"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setUseShifDays" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets if you want to use the random shift day when de document has this metadata.</p>
+<dd><p>Sets if you want to use the random shift day when the document has this in its metadata. Default: False</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">bool</span></dt><dd><p>Whether to use regex.</p>
+<dt><strong>s</strong><span class="classifier">bool</span></dt><dd><p>Whether to use the random shift day when the document has this in its metadata. Default: False</p>
 </dd>
 </dl>
 </dd>
@@ -1987,11 +2034,17 @@ WHen setting to ‘false’ then the date will be mask to &lt;DATE&gt;</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setRegion">
 <span class="sig-name descname"><span class="pre">setRegion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/deid/deIdentification.html#DeIdentificationModel.setRegion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setRegion" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets if you the country ountry coude format</p>
+<dd><p>With this property, you can select particular dateFormats. This property is especially used when obfuscating dates.
+For example:
+Decide whether the first part of 11/11/2023 is a day or the second part is a day when obfuscating dates.
+The values are following:
+‘eu’ for European Union
+‘us’ for the USA
+Default: ‘eu’</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>s</strong><span class="classifier">str</span></dt><dd><p>Whether to use regex.</p>
+<dt><strong>s</strong><span class="classifier">str</span></dt><dd><p>The region to use select date formats. Options: ‘eu’ for European Union, ‘us’ for the USA, Default: ‘eu’</p>
 </dd>
 </dl>
 </dd>
@@ -2069,8 +2122,9 @@ Default: False</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
-<dt><strong>l</strong><span class="classifier">str</span></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False</p>
+<dt><strong>l</strong><span class="classifier">str</span></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names.</p>
 </dd>
+<dt><strong>If value is true, it might decrease performance. Default: False</strong></dt><dd></dd>
 </dl>
 </dd>
 </dl>
@@ -2228,7 +2282,6 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.days"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.days</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.dateToYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateToYear</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.minYear"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.minYear</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.dateFormats</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.consistentObfuscation"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.consistentObfuscation</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.sameEntityThreshold"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.sameEntityThreshold</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.obfuscateRefSource"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.obfuscateRefSource</span></code></a></li>
@@ -2240,7 +2293,6 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.returnEntityMappings"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.returnEntityMappings</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.blackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.blackList</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.regexEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.regexEntities</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.mode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.language"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.language</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.useShifDays"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.useShifDays</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.region"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.region</span></code></a></li>
