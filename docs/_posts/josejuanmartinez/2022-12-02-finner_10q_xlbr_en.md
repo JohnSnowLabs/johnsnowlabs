@@ -39,6 +39,10 @@ This is a large (`lg`) model, trained with 200K sentences.
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
+from johnsnowlabs import nlp, finance
+import pyspark.sql.functions as F
+
+spark = nlp.start()
 
 documentAssembler = nlp.DocumentAssembler() \
    .setInputCol("text") \
@@ -58,7 +62,7 @@ embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
   .setOutputCol("embeddings")\
   .setMaxSentenceLength(512)
 
-nerTagger = finance.NerModel.pretrained('finner_10q_xbrl', 'en', 'finance/models')\
+ner_model = finance.NerModel.pretrained('finner_10q_xbrl', 'en', 'finance/models')\
    .setInputCols(["sentence", "token", "embeddings"])\
    .setOutputCol("ner")
               
@@ -68,13 +72,11 @@ pipeline = nlp.Pipeline(stages=[documentAssembler,
                             embeddings,
                             ner_model
                                 ])
+
 text = """Common Stock The authorized capital of the Company is 200,000,000 common shares , par value $ 0.001 , of which 12,481,724 are issued or outstanding ."""
-
 df = spark.createDataFrame([[text]]).toDF("text")
-fit = pipeline.fit(df)
 
-result = fit.transform(df)
-
+result = pipeline.fit(df).transform(df)
 result_df = result.select(F.explode(F.arrays_zip(result.token.result,result.ner.result, result.ner.metadata)).alias("cols"))\
                   .select(F.expr("cols['0']").alias("token"),
                           F.expr("cols['1']").alias("ner_label"),
