@@ -1,10 +1,10 @@
 ---
 layout: model
-title: Finance Revenue NER (10Q, lg)
+title: Finance Revenue NER (10-Q, 10-K, XBRL, lg)
 author: John Snow Labs
-name: finner_10q_xlbr_lg_revenue
+name: finner_10q_xbrl_lg_revenue
 date: 2023-01-02
-tags: [10q, xlbr, en, licensed]
+tags: [10q, 10k, xbrl, en, licensed]
 task: Named Entity Recognition
 language: en
 nav_key: models
@@ -18,9 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is an NER model containing 7 numeric financial Revenue entities from different 10Q reports. The tokens being annotated are the amounts, not any other surrounding word, but the context will determine what kind of amount is from the list of the 7 available.
-
-This is a large (`lg`) model, trained with 200K sentences.
+This model is a Named Entity Recognition (NER) model focused on financial numeric items. It identifies 7 numeric financial entities from diverse 10-Q and 10-K reports. These entities are annotated using eXtensible Business Reporting Language (XBRL) tags. The annotation process primarily targets numerical tokens, and the context plays a crucial role in accurately assigning the appropriate entity type from the 139 most common financial entities available in the dataset.
 
 ## Predicted Entities
 
@@ -29,8 +27,8 @@ This is a large (`lg`) model, trained with 200K sentences.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_lg_revenue_en_1.0.0_3.0_1672653078889.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xlbr_lg_revenue_en_1.0.0_3.0_1672653078889.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xbrl_lg_revenue_en_1.0.0_3.0_1672653078889.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finner_10q_xbrl_lg_revenue_en_1.0.0_3.0_1672653078889.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -59,7 +57,7 @@ embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
   .setOutputCol("embeddings")\
   .setMaxSentenceLength(512)
 
-nerTagger = finance.NerModel.pretrained('finner_10q_xlbr_lg_revenue', 'en', 'finance/models')\
+nerTagger = finance.NerModel.pretrained('finner_10q_xbrl_lg_revenue', 'en', 'finance/models')\
    .setInputCols(["sentence", "token", "embeddings"])\
    .setOutputCol("ner")
               
@@ -140,7 +138,7 @@ result_df.show(50, truncate=100)
 
 {:.table-model}
 |---|---|
-|Model Name:|finner_10q_xlbr_lg_revenue|
+|Model Name:|finner_10q_xbrl_lg_revenue|
 |Compatibility:|Finance NLP 1.0.0+|
 |License:|Licensed|
 |Edition:|Official|

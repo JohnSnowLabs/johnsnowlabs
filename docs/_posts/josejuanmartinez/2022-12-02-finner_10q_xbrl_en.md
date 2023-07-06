@@ -4,7 +4,7 @@ title: Finance Numeric NER (10-Q, 10-K, lg, 139 entities, XBRL)
 author: John Snow Labs
 name: finner_10q_xbrl
 date: 2022-12-02
-tags: [10q, xbrl, en, licensed]
+tags: [10q, 10k, xbrl, en, licensed]
 task: Named Entity Recognition
 language: en 
 nav_key: models
