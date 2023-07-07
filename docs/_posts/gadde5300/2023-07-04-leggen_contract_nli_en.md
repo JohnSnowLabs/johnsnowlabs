@@ -94,8 +94,7 @@ Reference:
 ```bibtex
 @inproceedings{koreeda-manning-2021-contractnli-dataset,
     title = "{C}ontract{NLI}: A Dataset for Document-level Natural Language Inference for Contracts",
-    author = "Koreeda, Yuta  and
-      Manning, Christopher",
+    author = "Koreeda, Yuta  and Manning, Christopher",
     booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2021",
     month = nov,
     year = "2021",
@@ -103,7 +102,6 @@ Reference:
     publisher = "Association for Computational Linguistics",
     url = "https://aclanthology.org/2021.findings-emnlp.164",
     pages = "1907--1919",
-    abstract = "Reviewing contracts is a time-consuming procedure that incurs large expenses to companies and social inequality to those who cannot afford it. In this work, we propose {``}document-level natural language inference (NLI) for contracts{''}, a novel, real-world application of NLI that addresses such problems. In this task, a system is given a set of hypotheses (such as {``}Some obligations of Agreement may survive termination.{''}) and a contract, and it is asked to classify whether each hypothesis is {``}entailed by{''}, {``}contradicting to{''} or {``}not mentioned by{''} (neutral to) the contract as well as identifying {``}evidence{''} for the decision as spans in the contract. We annotated and release the largest corpus to date consisting of 607 annotated contracts. We then show that existing models fail badly on our task and introduce a strong baseline, which (a) models evidence identification as multi-label classification over spans instead of trying to predict start and end tokens, and (b) employs more sophisticated context segmentation for dealing with long documents. We also show that linguistic characteristics of contracts, such as negations by exceptions, are contributing to the difficulty of this task and that there is much room for improvement.",
 }
 
 ```
