@@ -55,8 +55,8 @@ ner_model = MedicalNerModel.pretrained("ner_clinical", "nl", "clinical/models")\
   .setOutputCol("ner")
 
 ner_converter = NerConverterInternal()\
-.setInputCols(['sentence', 'token', 'ner'])\
-.setOutputCol('ner_chunk')
+  .setInputCols(['sentence', 'token', 'ner'])\
+  .setOutputCol('ner_chunk')
 
 pipeline = Pipeline(stages=[
     document_assembler, 
