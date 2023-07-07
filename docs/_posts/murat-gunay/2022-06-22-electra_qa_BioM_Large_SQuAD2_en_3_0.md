@@ -93,6 +93,6 @@ nlu.load("en.answer_question.squadv2.electra.large").predict("""What is my name?
 
 ## References
 
-- https://huggingface.co/sultan/BioM-ELECTRA-Large-SQuAD2
-- http://participants-area.bioasq.org/results/9b/phaseB/
-- https://github.com/salrowili/BioM-Transformers
+- [https://huggingface.co/sultan/BioM-ELECTRA-Large-SQuAD2](https://huggingface.co/sultan/BioM-ELECTRA-Large-SQuAD2)
+- [https://participants-area.bioasq.org/results/9b/phaseB/](https://participants-area.bioasq.org/results/9b/phaseB/)
+- [https://github.com/salrowili/BioM-Transformers](https://github.com/salrowili/BioM-Transformers)

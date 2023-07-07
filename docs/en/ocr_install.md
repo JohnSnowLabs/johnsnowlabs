@@ -17,7 +17,7 @@ sidebar:
 Spark OCR is built on top of **Apache Spark**. 
 Currently, it supports 3.0.*, 2.4.* and 2.3.* versions of Spark.
 
-It is recommended to have basic knowledge of the framework and a working environment before using Spark OCR. Refer to Spark [documentation](http://spark.apache.org/docs/2.4.4/index.html) to get started with Spark.
+It is recommended to have basic knowledge of the framework and a working environment before using Spark OCR. Refer to Spark [documentation](https://spark.apache.org/docs/2.4.4/index.html) to get started with Spark.
 
 
 Spark OCR requires:

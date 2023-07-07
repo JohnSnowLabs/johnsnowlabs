@@ -120,4 +120,4 @@ val result = pipeline.fit(data).transform(data)
 {:.h2_title}
 ## Data Source
 Trained on SNOMED (INT version) Findings with ``sbiobert_base_cased_mli`` sentence embeddings.
-http://www.snomed.org/
+[https://www.snomed.org/](https://www.snomed.org/)

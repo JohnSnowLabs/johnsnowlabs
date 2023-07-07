@@ -113,14 +113,14 @@ lp.annotate(text)
 ## Results
 
 ```bash
-{'mappings': ['http://www.wikidata.org/entity/Q245343',
+{'mappings': ['https://www.wikidata.org/entity/Q245343',
    'Barclays@en-ca',
-   'http://www.wikidata.org/prop/direct/P355',
+   'https://www.wikidata.org/prop/direct/P355',
    'is_parent_of',
    'London Stock Exchange@en',
    'BARC',
    'בנק ברקליס@he',
-   'http://www.wikidata.org/entity/Q29488227'],
+   'https://www.wikidata.org/entity/Q29488227'],
 ...
 ```
 

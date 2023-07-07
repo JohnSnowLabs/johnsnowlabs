@@ -94,5 +94,5 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/DTAI-KULeuven/mbert-corona-tweets-belgium-curfew-support
-- http://arxiv.org/abs/2104.09947
+- [https://huggingface.co/DTAI-KULeuven/mbert-corona-tweets-belgium-curfew-support](https://huggingface.co/DTAI-KULeuven/mbert-corona-tweets-belgium-curfew-support)
+- [https://arxiv.org/abs/2104.09947](https://arxiv.org/abs/2104.09947)

@@ -101,17 +101,17 @@ nlu.load("en.answer_question.roberta.tiny_768d").predict("""What's my name?|||"M
 
 ## References
 
-- https://huggingface.co/deepset/tinyroberta-6l-768d
-- https://www.linkedin.com/company/deepset-ai/
-- https://arxiv.org/pdf/1909.10351.pdf
-- https://haystack.deepset.ai/community/join
-- https://github.com/deepset-ai/haystack
-- https://github.com/deepset-ai/FARM
-- http://www.deepset.ai/jobs
-- https://twitter.com/deepset_ai
-- https://github.com/deepset-ai/haystack/discussions
-- https://github.com/deepset-ai/haystack/
-- https://deepset.ai
-- https://haystack.deepset.ai/guides/model-distillation
-- https://deepset.ai/germanquad
-- https://deepset.ai/german-bert
+- [https://huggingface.co/deepset/tinyroberta-6l-768d](https://huggingface.co/deepset/tinyroberta-6l-768d)
+- [https://www.linkedin.com/company/deepset-ai/](https://www.linkedin.com/company/deepset-ai/)
+- [https://arxiv.org/pdf/1909.10351.pdf](https://arxiv.org/pdf/1909.10351.pdf)
+- [https://haystack.deepset.ai/community/join](https://haystack.deepset.ai/community/join)
+- [https://github.com/deepset-ai/haystack](https://github.com/deepset-ai/haystack)
+- [https://github.com/deepset-ai/FARM](https://github.com/deepset-ai/FARM)
+- [https://www.deepset.ai/jobs](https://www.deepset.ai/jobs)
+- [https://twitter.com/deepset_ai](https://twitter.com/deepset_ai)
+- [https://github.com/deepset-ai/haystack/discussions](https://github.com/deepset-ai/haystack/discussions)
+- [https://github.com/deepset-ai/haystack/](https://github.com/deepset-ai/haystack/)
+- [https://deepset.ai](https://deepset.ai)
+- [https://haystack.deepset.ai/guides/model-distillation](https://haystack.deepset.ai/guides/model-distillation)
+- [https://deepset.ai/germanquad](https://deepset.ai/germanquad)
+- [https://deepset.ai/german-bert](https://deepset.ai/german-bert)

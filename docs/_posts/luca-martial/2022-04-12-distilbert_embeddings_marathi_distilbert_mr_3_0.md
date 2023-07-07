@@ -97,8 +97,8 @@ nlu.load("mr.embed.distilbert").predict("""मला स्पार्क ए�
 
 ## References
 
-- https://huggingface.co/DarshanDeshpande/marathi-distilbert
-- https://github.com/DarshanDeshpande
-- https://www.linkedin.com/in/darshan-deshpande/
-- https://github.com/Baras64
-- http://​www.linkedin.com/in/harsh-abhi
+- [https://huggingface.co/DarshanDeshpande/marathi-distilbert](https://huggingface.co/DarshanDeshpande/marathi-distilbert)
+- [https://github.com/DarshanDeshpande](https://github.com/DarshanDeshpande)
+- [https://www.linkedin.com/in/darshan-deshpande/](https://www.linkedin.com/in/darshan-deshpande/)
+- [https://github.com/Baras64](https://github.com/Baras64)
+- [https://​www.linkedin.com/in/harsh-abhi](https://​www.linkedin.com/in/harsh-abhi)

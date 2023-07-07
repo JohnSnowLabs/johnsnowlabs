@@ -994,7 +994,7 @@ If multiple datasets or tune parameters are defined , they are connected with  a
 
 These substrings define up the `<domain>` part of the NLU reference
 - Legal [cuad](https://arxiv.org/abs/2103.06268)
-- COVID 19 Biomedical [biosaq](http://bioasq.org/)
+- COVID 19 Biomedical [biosaq](https://bioasq.org/)
 - Biomedical Literature [pubmed](https://pubmed.ncbi.nlm.nih.gov/)
 - Twitter [tweet](https://aclanthology.org/P19-1496.pdf)
 - Wikipedia [wiki](https://www.wikipedia.org/)

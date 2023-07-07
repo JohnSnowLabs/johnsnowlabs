@@ -95,10 +95,9 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/SkolkovoInstitute/roberta_toxicity_classifier
-- https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge
-- https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification
-- https://www.kaggle.com/c/jigsaw-multilingual-toxic-comment-classification
-- https://arxiv.org/abs/1907.11692
-- http://creativecommons.org/licenses/by-nc-sa/4.0/
-- http://creativecommons.org/licenses/by-nc-sa/4.0/
+- [https://huggingface.co/SkolkovoInstitute/roberta_toxicity_classifier](https://huggingface.co/SkolkovoInstitute/roberta_toxicity_classifier)
+- [https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge)
+- [https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification](https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification)
+- [https://www.kaggle.com/c/jigsaw-multilingual-toxic-comment-classification](https://www.kaggle.com/c/jigsaw-multilingual-toxic-comment-classification)
+- [https://arxiv.org/abs/1907.11692](https://arxiv.org/abs/1907.11692)
+- [https://creativecommons.org/licenses/by-nc-sa/4.0/](https://creativecommons.org/licenses/by-nc-sa/4.0/)

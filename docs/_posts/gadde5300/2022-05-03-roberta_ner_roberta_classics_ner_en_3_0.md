@@ -111,8 +111,8 @@ nlu.load("en.ner.roberta_classics_ner").predict("""I love Spark NLP""")
 
 ## References
 
-- https://huggingface.co/sven-nm/roberta_classics_ner
-- https://www.epische-bauformen.uni-rostock.de/
-- http://infoscience.epfl.ch/record/291236?&ln=en
-- https://github.com/impresso/CLEF-HIPE-2020-scorer
-- https://github.com/AjaxMultiCommentary
+- [https://huggingface.co/sven-nm/roberta_classics_ner](https://huggingface.co/sven-nm/roberta_classics_ner)
+- [https://www.epische-bauformen.uni-rostock.de/](https://www.epische-bauformen.uni-rostock.de/)
+- [https://infoscience.epfl.ch/record/291236?&ln=en](https://infoscience.epfl.ch/record/291236?&ln=en)
+- [https://github.com/impresso/CLEF-HIPE-2020-scorer](https://github.com/impresso/CLEF-HIPE-2020-scorer)
+- [https://github.com/AjaxMultiCommentary](https://github.com/AjaxMultiCommentary)

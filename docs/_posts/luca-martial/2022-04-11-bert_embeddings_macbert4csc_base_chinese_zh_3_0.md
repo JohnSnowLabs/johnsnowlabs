@@ -97,10 +97,10 @@ nlu.load("zh.embed.macbert4csc_base_chinese").predict("""I love Spark NLP""")
 
 ## References
 
-- https://huggingface.co/shibing624/macbert4csc-base-chinese
-- https://github.com/shibing624/pycorrector
-- https://pan.baidu.com/s/1BV5tr9eONZCI0wERFvr0gQ
-- http://nlp.ee.ncu.edu.tw/resource/csc.html
-- https://github.com/wdimmy/Automatic-Corpus-Generation/blob/master/corpus/train.sgml
-- https://github.com/shibing624/pycorrector/tree/master/pycorrector/macbert
-- https://arxiv.org/abs/2004.13922
+- [https://huggingface.co/shibing624/macbert4csc-base-chinese](https://huggingface.co/shibing624/macbert4csc-base-chinese)
+- [https://github.com/shibing624/pycorrector](https://github.com/shibing624/pycorrector)
+- [https://pan.baidu.com/s/1BV5tr9eONZCI0wERFvr0gQ](https://pan.baidu.com/s/1BV5tr9eONZCI0wERFvr0gQ)
+- [https://nlp.ee.ncu.edu.tw/resource/csc.html](https://nlp.ee.ncu.edu.tw/resource/csc.html)
+- [https://github.com/wdimmy/Automatic-Corpus-Generation/blob/master/corpus/train.sgml](https://github.com/wdimmy/Automatic-Corpus-Generation/blob/master/corpus/train.sgml)
+- [https://github.com/shibing624/pycorrector/tree/master/pycorrector/macbert](https://github.com/shibing624/pycorrector/tree/master/pycorrector/macbert)
+- [https://arxiv.org/abs/2004.13922](https://arxiv.org/abs/2004.13922)

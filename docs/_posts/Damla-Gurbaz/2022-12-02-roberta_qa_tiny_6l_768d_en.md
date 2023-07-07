@@ -85,19 +85,19 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/deepset/tinyroberta-6l-768d
-- https://arxiv.org/pdf/1909.10351.pdf
-- https://github.com/deepset-ai/haystack
-- https://haystack.deepset.ai/guides/model-distillation
-- https://github.com/deepset-ai/haystack/
-- https://workablehr.s3.amazonaws.com/uploads/account/logo/476306/logo
-- https://deepset.ai/german-bert
-- https://deepset.ai/germanquad
-- https://github.com/deepset-ai/FARM
-- https://github.com/deepset-ai/haystack/
-- https://twitter.com/deepset_ai
-- https://www.linkedin.com/company/deepset-ai/
-- https://haystack.deepset.ai/community/join
-- https://github.com/deepset-ai/haystack/discussions
-- https://deepset.ai
-- http://www.deepset.ai/jobs
+- [https://huggingface.co/deepset/tinyroberta-6l-768d](https://huggingface.co/deepset/tinyroberta-6l-768d)
+- [https://arxiv.org/pdf/1909.10351.pdf](https://arxiv.org/pdf/1909.10351.pdf)
+- [https://github.com/deepset-ai/haystack](https://github.com/deepset-ai/haystack)
+- [https://haystack.deepset.ai/guides/model-distillation](https://haystack.deepset.ai/guides/model-distillation)
+- [https://github.com/deepset-ai/haystack/](https://github.com/deepset-ai/haystack/)
+- [https://workablehr.s3.amazonaws.com/uploads/account/logo/476306/logo](https://workablehr.s3.amazonaws.com/uploads/account/logo/476306/logo)
+- [https://deepset.ai/german-bert](https://deepset.ai/german-bert)
+- [https://deepset.ai/germanquad](https://deepset.ai/germanquad)
+- [https://github.com/deepset-ai/FARM](https://github.com/deepset-ai/FARM)
+- [https://github.com/deepset-ai/haystack/](https://github.com/deepset-ai/haystack/)
+- [https://twitter.com/deepset_ai](https://twitter.com/deepset_ai)
+- [https://www.linkedin.com/company/deepset-ai/](https://www.linkedin.com/company/deepset-ai/)
+- [https://haystack.deepset.ai/community/join](https://haystack.deepset.ai/community/join)
+- [https://github.com/deepset-ai/haystack/discussions](https://github.com/deepset-ai/haystack/discussions)
+- [https://deepset.ai](https://deepset.ai)
+- [https://www.deepset.ai/jobs](https://www.deepset.ai/jobs)

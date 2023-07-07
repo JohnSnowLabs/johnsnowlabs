@@ -81,6 +81,6 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/thu-coai/LongLM-small
-- https://jianguanthu.github.io/
-- http://coai.cs.tsinghua.edu.cn/
+- [https://huggingface.co/thu-coai/LongLM-small](https://huggingface.co/thu-coai/LongLM-small)
+- [https://jianguanthu.github.io/](https://jianguanthu.github.io/)
+- [https://coai.cs.tsinghua.edu.cn/](https://coai.cs.tsinghua.edu.cn/)

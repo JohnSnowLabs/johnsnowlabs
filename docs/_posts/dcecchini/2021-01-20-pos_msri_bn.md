@@ -123,7 +123,7 @@ pos_df
 
 ## Data Source
 
-The model was trained on the _Indian Language POS-Tagged Corpus_ from [NLTK](http://www.nltk.org) collected by A Kumaran (Microsoft Research, India).
+The model was trained on the _Indian Language POS-Tagged Corpus_ from [NLTK](https://www.nltk.org) collected by A Kumaran (Microsoft Research, India).
 
 ## Benchmarking
 

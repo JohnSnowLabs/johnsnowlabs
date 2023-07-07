@@ -102,7 +102,7 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/m3hrdadfi/icelandic-ner-bert
-- https://github.com/m3hrdadfi/icelandic-ner/issues
-- https://en.ru.is/
-- http://hdl.handle.net/20.500.12537/42
+- [https://huggingface.co/m3hrdadfi/icelandic-ner-bert](https://huggingface.co/m3hrdadfi/icelandic-ner-bert)
+- [https://github.com/m3hrdadfi/icelandic-ner/issues](https://github.com/m3hrdadfi/icelandic-ner/issues)
+- [https://en.ru.is/](https://en.ru.is/)
+- [https://hdl.handle.net/20.500.12537/42](https://hdl.handle.net/20.500.12537/42)

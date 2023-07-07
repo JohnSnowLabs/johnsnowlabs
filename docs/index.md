@@ -190,7 +190,7 @@ data:
         - title:
           image:
             src: https://cdn-static.findly.com/wp-content/uploads/sites/803/2019/03/Highmarkhealth.jpg
-            url: http://www.highmarkhealth.org/
+            url: https://www.highmarkhealth.org/
         - title:
           image:
             src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/1280px-Oracle_logo.svg.png

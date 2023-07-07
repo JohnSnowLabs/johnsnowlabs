@@ -98,10 +98,9 @@ nlu.load("es.embed.roberta_base_bne").predict("""Me encanta chispa nlp""")
 
 ## References
 
-- https://huggingface.co/PlanTL-GOB-ES/roberta-base-bne
-- https://arxiv.org/abs/1907.11692
-- http://www.bne.es/en/Inicio/index.html
-- http://www.bne.es/en/Inicio/index.html
-- https://arxiv.org/abs/1907.11692
-- https://github.com/PlanTL-GOB-ES/lm-spanish
-- https://arxiv.org/abs/2107.07253
+- [https://huggingface.co/PlanTL-GOB-ES/roberta-base-bne](https://huggingface.co/PlanTL-GOB-ES/roberta-base-bne)
+- [https://arxiv.org/abs/1907.11692](https://arxiv.org/abs/1907.11692)
+- [https://www.bne.es/en/Inicio/index.html](https://www.bne.es/en/Inicio/index.html)
+- [https://arxiv.org/abs/1907.11692](https://arxiv.org/abs/1907.11692)
+- [https://github.com/PlanTL-GOB-ES/lm-spanish](https://github.com/PlanTL-GOB-ES/lm-spanish)
+- [https://arxiv.org/abs/2107.07253](https://arxiv.org/abs/2107.07253)
