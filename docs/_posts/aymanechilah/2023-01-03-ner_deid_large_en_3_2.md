@@ -252,7 +252,7 @@ output_image=output_image
 
 ## Data Source
 
-Trained on augmented 2010 i2b2 challenge data with 'embeddings_clinical'.
+Trained on augmented version of 2010 i2b2 challenge dataset with 'embeddings_clinical'.
 [https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/](https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/)
 
 ## Benchmarking

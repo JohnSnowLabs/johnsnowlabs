@@ -166,7 +166,7 @@ nlu.load("en.assert.healthcare").predict("""Patient with severe fever and sore t
 
 ## Data Source
 
-Trained on i2b2 assertion data
+Trained with augmented version of i2b2 dataset.
 
 ## Benchmarking
 
