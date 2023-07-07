@@ -161,7 +161,7 @@ nlu.load("en.assert.biobert").predict("""Patient has a headache for the last 2 w
 
 ## Data Source
 
-Trained on i2b2 assertion data.
+Trained with augmented version of i2b2 dataset.
 
 ## Benchmarking
 

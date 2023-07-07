@@ -139,7 +139,7 @@ nlu.load("en.med_ner.drugs").predict("""The human KCNJ9 (Kir 3.3, GIRK3) is a me
 
 ## Data Source
 
-Trained on i2b2_med7 + FDA with 'embeddings_clinical'.
+Trained on augmented version of i2b2_med7 + FDA with 'embeddings_clinical'.
 https://www.i2b2.org/NLP/Medication
 
 ## Benchmarking
