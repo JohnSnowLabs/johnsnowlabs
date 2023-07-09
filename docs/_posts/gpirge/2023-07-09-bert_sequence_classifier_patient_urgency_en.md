@@ -45,6 +45,7 @@ Low: Non-urgent, needs treatment when time permits.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -55,7 +56,7 @@ tokenizer = Tokenizer() \
     .setOutputCol("token")
 
 sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_patient_urgency", "en", "clinical/models")\
-    .setInputCols(["document",'token'])\
+    .setInputCols(["document", "token"])\
     .setOutputCol("prediction")
 
 clf_Pipeline = Pipeline(stages=[
@@ -80,7 +81,7 @@ val tokenizer = new Tokenizer()
     .setOutputCol("token")
 
 val sequenceClassifier = new MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_patient_urgency", "en", "clinical/models")
-    .setInputCols("token")
+    .setInputCols(Array("document", "token"))
     .setOutputCol("prediction")
 
 val clf_Pipeline = new Pipeline().setStages(Array(document_assembler, tokenizer, sequenceClassifier))
@@ -131,6 +132,6 @@ In-house annotated health-related text.
          Low       0.89      0.76      0.82        54
       Medium       0.65      0.78      0.71        63
     accuracy       -         -         0.84       269
-   macro avg       0.82      0.81      0.81       269
-weighted avg       0.85      0.84      0.85       269
+   macro-avg       0.82      0.81      0.81       269
+weighted-avg       0.85      0.84      0.85       269
 ```
