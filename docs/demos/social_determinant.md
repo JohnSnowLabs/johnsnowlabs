@@ -21,6 +21,18 @@ data:
           activemenu: social_determinant
       source: yes
       source:
+        - title: Explore Social Determinants of Health with Spark NLP Models 
+          id: explore_social_determinants_health_spark_nlp_models         
+          image: 
+              src: /assets/images/Social_Determinants_of_Health.svg
+          excerpt: This demo shows how social determinant terms can be detected using Spark NLP Healthcare NER and Text Classification.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/SDOH/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Model.ipynb
         - title: Detect Social Determinants of Health Entities 
           id: detect_social_determinants_health_entities         
           image: 
