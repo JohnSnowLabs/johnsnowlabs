@@ -90,19 +90,19 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/deepset/gbert-large
-- https://arxiv.org/pdf/2010.10906.pdf
-- https://arxiv.org/pdf/2010.10906.pdf
-- http://deepset.ai/
-- https://haystack.deepset.ai/
-- https://deepset.ai/german-bert
-- https://deepset.ai/germanquad
-- https://github.com/deepset-ai/haystack
-- https://docs.haystack.deepset.ai
-- https://haystack.deepset.ai/community
-- https://twitter.com/deepset_ai
-- https://www.linkedin.com/company/deepset-ai/
-- https://haystack.deepset.ai/community
-- https://github.com/deepset-ai/haystack/discussions
-- https://deepset.ai
-- http://www.deepset.ai/jobs
+- [https://huggingface.co/deepset/gbert-large](https://huggingface.co/deepset/gbert-large)
+- [https://arxiv.org/pdf/2010.10906.pdf](https://arxiv.org/pdf/2010.10906.pdf)
+- [https://arxiv.org/pdf/2010.10906.pdf](https://arxiv.org/pdf/2010.10906.pdf)
+- [https://deepset.ai/](https://deepset.ai/)
+- [https://haystack.deepset.ai/](https://haystack.deepset.ai/)
+- [https://deepset.ai/german-bert](https://deepset.ai/german-bert)
+- [https://deepset.ai/germanquad](https://deepset.ai/germanquad)
+- [https://github.com/deepset-ai/haystack](https://github.com/deepset-ai/haystack)
+- [https://docs.haystack.deepset.ai](https://docs.haystack.deepset.ai)
+- [https://haystack.deepset.ai/community](https://haystack.deepset.ai/community)
+- [https://twitter.com/deepset_ai](https://twitter.com/deepset_ai)
+- [https://www.linkedin.com/company/deepset-ai/](https://www.linkedin.com/company/deepset-ai/)
+- [https://haystack.deepset.ai/community](https://haystack.deepset.ai/community)
+- [https://github.com/deepset-ai/haystack/discussions](https://github.com/deepset-ai/haystack/discussions)
+- [https://deepset.ai](https://deepset.ai)
+- [https://www.deepset.ai/jobs](https://www.deepset.ai/jobs)

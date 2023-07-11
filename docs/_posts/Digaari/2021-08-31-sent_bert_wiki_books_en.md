@@ -78,6 +78,6 @@ sent_embeddings_df
 
 [1]: [Wikipedia dataset](https://dumps.wikimedia.org/)
 
-[2]: [BooksCorpus dataset](http://yknzhu.wixsite.com/mbweb)
+[2]: [BooksCorpus dataset](https://yknzhu.wixsite.com/mbweb)
 
 This Model has been imported from: https://tfhub.dev/google/experts/bert/wiki_books/2

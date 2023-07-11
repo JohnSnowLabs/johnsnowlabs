@@ -105,7 +105,7 @@ sarcasm_df[["document", "sarcasm"]]
 
 ## Data Source
 
-http://www.cs.utah.edu/~riloff/pdfs/official-emnlp13-sarcasm.pdf
+[https://www.cs.utah.edu/~riloff/pdfs/official-emnlp13-sarcasm.pdf](https://www.cs.utah.edu/~riloff/pdfs/official-emnlp13-sarcasm.pdf)
 
 ## Benchmarking
 

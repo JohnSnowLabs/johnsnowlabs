@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained pipeline is built on the top of [ner_deid_generic](https://nlp.johnsnowlabs.com/2023/05/29/ner_deid_generic_ar.html) model.
+This pretrained pipeline is built on the top of [ner_deid_generic](https://nlp.johnsnowlabs.com/2023/05/30/ner_deid_generic_ar.html) model.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

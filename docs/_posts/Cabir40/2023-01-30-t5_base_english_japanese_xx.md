@@ -81,12 +81,11 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/sonoisa/t5-base-english-japanese
-- https://en.wikipedia.org
-- https://ja.wikipedia.org
-- https://oscar-corpus.com
-- http://data.statmt.org/cc-100/
-- http://data.statmt.org/cc-100/
-- https://github.com/sonoisa/t5-japanese
-- https://creativecommons.org/licenses/by-sa/4.0/deed.ja
-- http://commoncrawl.org/terms-of-use/
+- [https://huggingface.co/sonoisa/t5-base-english-japanese](https://huggingface.co/sonoisa/t5-base-english-japanese)
+- [https://en.wikipedia.org](https://en.wikipedia.org)
+- [https://ja.wikipedia.org](https://ja.wikipedia.org)
+- [https://oscar-corpus.com](https://oscar-corpus.com)
+- [https://data.statmt.org/cc-100/](https://data.statmt.org/cc-100/)
+- [https://github.com/sonoisa/t5-japanese](https://github.com/sonoisa/t5-japanese)
+- [https://creativecommons.org/licenses/by-sa/4.0/deed.ja](https://creativecommons.org/licenses/by-sa/4.0/deed.ja)
+- [https://commoncrawl.org/terms-of-use/](https://commoncrawl.org/terms-of-use/)

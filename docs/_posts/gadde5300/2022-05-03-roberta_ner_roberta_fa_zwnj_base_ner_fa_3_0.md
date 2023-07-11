@@ -110,8 +110,8 @@ nlu.load("fa.ner.roberta_fa_zwnj_base_ner").predict("""من عاشق جرقه nl
 
 ## References
 
-- https://huggingface.co/HooshvareLab/roberta-fa-zwnj-base-ner
-- https://github.com/HaniehP/PersianNER
-- http://nsurl.org/2019-2/tasks/task-7-named-entity-recognition-ner-for-farsi/
-- https://elisa-ie.github.io/wikiann/
-- https://github.com/hooshvare/parsner/issues
+- [https://huggingface.co/HooshvareLab/roberta-fa-zwnj-base-ner](https://huggingface.co/HooshvareLab/roberta-fa-zwnj-base-ner)
+- [https://github.com/HaniehP/PersianNER](https://github.com/HaniehP/PersianNER)
+- [https://nsurl.org/2019-2/tasks/task-7-named-entity-recognition-ner-for-farsi/](https://nsurl.org/2019-2/tasks/task-7-named-entity-recognition-ner-for-farsi/)
+- [https://elisa-ie.github.io/wikiann/](https://elisa-ie.github.io/wikiann/)
+- [https://github.com/hooshvare/parsner/issues](https://github.com/hooshvare/parsner/issues)

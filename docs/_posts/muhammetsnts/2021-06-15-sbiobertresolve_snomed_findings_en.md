@@ -125,4 +125,4 @@ nlu.load("en.resolve.snomed.findings").predict("""This is an 82 - year-old male 
 
 ## Data Source
 
-http://www.snomed.org/
+[https://www.snomed.org/](https://www.snomed.org/)

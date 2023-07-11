@@ -94,7 +94,7 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/SkolkovoInstitute/russian_toxicity_classifier
-- https://www.kaggle.com/blackmoon/russian-language-toxic-comments/metadata
-- https://www.kaggle.com/alexandersemiletov/toxic-russian-comments
-- http://creativecommons.org/licenses/by-nc-sa/4.0/
+- [https://huggingface.co/SkolkovoInstitute/russian_toxicity_classifier](https://huggingface.co/SkolkovoInstitute/russian_toxicity_classifier)
+- [https://www.kaggle.com/blackmoon/russian-language-toxic-comments/metadata](https://www.kaggle.com/blackmoon/russian-language-toxic-comments/metadata)
+- [https://www.kaggle.com/alexandersemiletov/toxic-russian-comments](https://www.kaggle.com/alexandersemiletov/toxic-russian-comments)
+- [https://creativecommons.org/licenses/by-nc-sa/4.0/](https://creativecommons.org/licenses/by-nc-sa/4.0/)

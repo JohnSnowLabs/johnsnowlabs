@@ -94,10 +94,10 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/ckiplab/bert-base-han-chinese-ws
-- https://github.com/ckiplab/han-transformers
-- http://lingcorpus.iis.sinica.edu.tw/cgi-bin/kiwi/akiwi/kiwi.sh
-- http://lingcorpus.iis.sinica.edu.tw/cgi-bin/kiwi/dkiwi/kiwi.sh
-- http://lingcorpus.iis.sinica.edu.tw/cgi-bin/kiwi/pkiwi/kiwi.sh
-- http://asbc.iis.sinica.edu.tw
-- https://ckip.iis.sinica.edu.tw/
+- [https://huggingface.co/ckiplab/bert-base-han-chinese-ws](https://huggingface.co/ckiplab/bert-base-han-chinese-ws)
+- [https://github.com/ckiplab/han-transformers](https://github.com/ckiplab/han-transformers)
+- [https://lingcorpus.iis.sinica.edu.tw/cgi-bin/kiwi/akiwi/kiwi.sh](https://lingcorpus.iis.sinica.edu.tw/cgi-bin/kiwi/akiwi/kiwi.sh)
+- [https://lingcorpus.iis.sinica.edu.tw/cgi-bin/kiwi/dkiwi/kiwi.sh](https://lingcorpus.iis.sinica.edu.tw/cgi-bin/kiwi/dkiwi/kiwi.sh)
+- [https://lingcorpus.iis.sinica.edu.tw/cgi-bin/kiwi/pkiwi/kiwi.sh](https://lingcorpus.iis.sinica.edu.tw/cgi-bin/kiwi/pkiwi/kiwi.sh)
+- [https://asbc.iis.sinica.edu.tw](https://asbc.iis.sinica.edu.tw)
+- [https://ckip.iis.sinica.edu.tw/](https://ckip.iis.sinica.edu.tw/)

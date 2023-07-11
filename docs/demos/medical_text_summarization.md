@@ -57,6 +57,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb   
+        - title: Section-Based Summarization of Clinical Guidelines
+          id: section_based_summarization_clinical_guidelines
+          image: 
+              src: /assets/images/Clinical_Text_Summarization.svg
+          excerpt: This demo showcases our summarization model capable of summarizing clinical guidelines into four distinct sections.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_SUMMARIZATION_GUIDELINES/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb
         - title: Efficient Radiology Report Summarization
           id: efficient_radiology_report_summarization
           image: 

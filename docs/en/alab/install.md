@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: Annotation Lab | John Snow Labs
+seotitle: NLP Lab | John Snow Labs
 title: Installation
 permalink: /docs/en/alab/install
 key: docs-training
@@ -81,9 +81,92 @@ We have an aesthetically pleasing Sign-In Page with a section highlighting the k
 
 ## AWS Marketplace
 
+The NLP Lab needs to be installed on a virtual machine. One of the most straight forward method is an installation from AWS Marketplace (also available on Azure). There is no fee for the NLP Lab. However, you still have to pay for the underlying AWS EC2 instance (not Free Tier Eligible).
+
 Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions on the video below to subscribe and deploy.
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='ebaewU4BcQA' -%}<div class="video-descr">Deploy NLP Lab via AWS Marketplace</div></div></div>
+
+## Secure access to NLP Lab on AWS
+
+When installed via the AWS Marketplace, NLP Lab has a private IP address and listens on an unsecured HTTP port. You can ask your DevOps department to incorporate the resource to your standard procedures to access from the internet in a secure manner. Alternatively, a Cloud Formation script is available that can be used to create a front end proxy (CloudFront, ELB, and auxiliary Lambda Function). Those resources are Free Tier Eligible. 
+
+Create the AWS Cloud Formation Script in YAML format:
+   
+   ```console
+   vi cloudformation_https.yaml
+   ```
+
+   ```console
+AWSTemplateFormatVersion: '2010-09-09'
+Metadata:
+  License: Apache-2.0
+Description: 'AWS CloudFormation To access NLP Lab via https:
+  Create an Amazon EC2 instance running the NLP Lab Amazon Linux AMI. Once the
+  NLP Lab instance is created, provide instance hostname as input. This Cloudfromation
+  Creates Cloudfront. You can use Cloudfront Domain URL to access NLP Lab
+  via https protocol.
+  '
+Parameters:
+  NLPlabInstanceHostName:
+    Description: HostName of the NLP Lab InstanceID
+    Type: String
+    ConstraintDescription: HostName of the NLP Lab InstanceID
+
+Resources:
+  CloudFront:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: True
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - DELETE
+            - GET
+            - HEAD
+            - OPTIONS
+            - PATCH
+            - POST
+            - PUT
+          DefaultTTL: 0
+          MaxTTL: 0
+          MinTTL: 0
+          Compress: True
+          ForwardedValues:
+            QueryString: true
+            Headers:
+              - '*'
+            Cookies:
+              Forward: all
+          TargetOriginId: EC2CustomOrigin
+          ViewerProtocolPolicy: redirect-to-https
+        Origins:
+          - DomainName: !Ref NLPlabInstanceHostName
+            Id: EC2CustomOrigin
+            CustomOriginConfig:
+              HTTPPort: '80'
+              OriginProtocolPolicy: http-only
+Outputs:
+  CloudfrontURL:
+    Description: Cloudfront URL to access NLP Lab
+    Value: !Join ["", ['https://', !GetAtt [CloudFront, DomainName]]]
+
+   ```
+   
+
+ Click Create a stack, “Upload a template file”. Give the Stack a name and enter the NLP Lab instance ID (from the EC2 console) as a parameter.
+
+![createStack](/assets/images/annotation_lab/aws/createStack.png)
+
+Next -> Next -> Acknowledge that AWS CloudFormation might create IAM resources. -> Submit. Wait a few minutes until all resources are created.  
+
+![ack](/assets/images/annotation_lab/aws/ack.png)
+
+Once created, go do the Outputs tab and click on the NLP Lab URL. You may need to refresh the view. 
+
+![output](/assets/images/annotation_lab/aws/output.png)
+
+Now, to access the NLP Lab, you go to the CloudFront URL and log in with username “admin” and password equal to the EC2 Instance ID noted earlier. 
 
 ## Azure Marketplace
 

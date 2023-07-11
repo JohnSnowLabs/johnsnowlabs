@@ -35,7 +35,7 @@ sudo apt-get install -y libjpeg8-dev
 sudo apt-get install -y libtiff5-dev
 sudo apt-get install -y zlib1g-dev
 ​
-wget http://www.leptonica.org/source/leptonica-1.74.4.tar.gz
+wget https://www.leptonica.org/source/leptonica-1.74.4.tar.gz
 tar xvf leptonica-1.74.4.tar.gz
 cd leptonica-1.74.4
 ./configure

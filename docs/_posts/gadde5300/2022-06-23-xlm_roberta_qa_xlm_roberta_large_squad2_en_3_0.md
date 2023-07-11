@@ -101,18 +101,18 @@ nlu.load("en.answer_question.squadv2.xlm_roberta.large").predict("""What's my na
 
 ## References
 
-- https://huggingface.co/deepset/xlm-roberta-large-squad2
-- https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/
-- https://www.linkedin.com/company/deepset-ai/
-- https://twitter.com/deepset_ai
-- http://www.deepset.ai/jobs
-- https://haystack.deepset.ai/community/join
-- https://public-mlflow.deepset.ai/#/experiments/124/runs/3a540e3f3ecf4dd98eae8fc6d457ff20
-- https://github.com/deepset-ai/haystack/
-- https://github.com/deepset-ai/FARM
-- https://deepset.ai/germanquad
-- https://github.com/deepmind/xquad
-- https://deepset.ai
-- https://deepset.ai/german-bert
-- https://github.com/deepset-ai/haystack/discussions
-- https://github.com/facebookresearch/MLQA
+- [https://huggingface.co/deepset/xlm-roberta-large-squad2](https://huggingface.co/deepset/xlm-roberta-large-squad2)
+- [https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/](https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/)
+- [https://www.linkedin.com/company/deepset-ai/](https://www.linkedin.com/company/deepset-ai/)
+- [https://twitter.com/deepset_ai](https://twitter.com/deepset_ai)
+- [https://www.deepset.ai/jobs](https://www.deepset.ai/jobs)
+- [https://haystack.deepset.ai/community/join](https://haystack.deepset.ai/community/join)
+- [https://public-mlflow.deepset.ai/#/experiments/124/runs/3a540e3f3ecf4dd98eae8fc6d457ff20](https://public-mlflow.deepset.ai/#/experiments/124/runs/3a540e3f3ecf4dd98eae8fc6d457ff20)
+- [https://github.com/deepset-ai/haystack/](https://github.com/deepset-ai/haystack/)
+- [https://github.com/deepset-ai/FARM](https://github.com/deepset-ai/FARM)
+- [https://deepset.ai/germanquad](https://deepset.ai/germanquad)
+- [https://github.com/deepmind/xquad](https://github.com/deepmind/xquad)
+- [https://deepset.ai](https://deepset.ai)
+- [https://deepset.ai/german-bert](https://deepset.ai/german-bert)
+- [https://github.com/deepset-ai/haystack/discussions](https://github.com/deepset-ai/haystack/discussions)
+- [https://github.com/facebookresearch/MLQA](https://github.com/facebookresearch/MLQA)

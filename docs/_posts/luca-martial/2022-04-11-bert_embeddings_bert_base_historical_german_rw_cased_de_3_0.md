@@ -97,12 +97,12 @@ nlu.load("de.embed.bert_base_historical_german_rw_cased").predict("""Ich liebe F
 
 ## References
 
-- https://huggingface.co/redewiedergabe/bert-base-historical-german-rw-cased
-- https://textgrid.de/digitale-bibliothek
-- https://www1.ids-mannheim.de/kl/projekte/korpora/archiv/gri.html
-- https://repos.ids-mannheim.de/mkhz-beschreibung.html
-- http://www.deutschestextarchiv.de/doku/textquellen#grenzboten
-- https://www.projekt-gutenberg.org
-- https://github.com/redewiedergabe/tagger
-- https://www.aclweb.org/anthology/N19-4010
-- https://arxiv.org/abs/1508.01991
+- [https://huggingface.co/redewiedergabe/bert-base-historical-german-rw-cased](https://huggingface.co/redewiedergabe/bert-base-historical-german-rw-cased)
+- [https://textgrid.de/digitale-bibliothek](https://textgrid.de/digitale-bibliothek)
+- [https://www1.ids-mannheim.de/kl/projekte/korpora/archiv/gri.html](https://www1.ids-mannheim.de/kl/projekte/korpora/archiv/gri.html)
+- [https://repos.ids-mannheim.de/mkhz-beschreibung.html](https://repos.ids-mannheim.de/mkhz-beschreibung.html)
+- [https://www.deutschestextarchiv.de/doku/textquellen#grenzboten](https://www.deutschestextarchiv.de/doku/textquellen#grenzboten)
+- [https://www.projekt-gutenberg.org](https://www.projekt-gutenberg.org)
+- [https://github.com/redewiedergabe/tagger](https://github.com/redewiedergabe/tagger)
+- [https://www.aclweb.org/anthology/N19-4010](https://www.aclweb.org/anthology/N19-4010)
+- [https://arxiv.org/abs/1508.01991](https://arxiv.org/abs/1508.01991)

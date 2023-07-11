@@ -110,4 +110,4 @@ trec50_df[["document", "trec50"]]
 
 {:.h2_title}
 ## Data Source
-This model is trained on the 50 class version of TREC dataset. http://search.r-project.org/library/textdata/html/dataset_trec.html
+This model is trained on the 50 class version of TREC dataset. [https://search.r-project.org/library/textdata/html/dataset_trec.html](https://search.r-project.org/library/textdata/html/dataset_trec.html)

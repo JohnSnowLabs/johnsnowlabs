@@ -47,7 +47,7 @@ class DatabricksTestCase(unittest.TestCase):
 
     def test_create_fresh_cluster(self):
         nlp.install(
-            json_license_path=sct.db_lic,
+            json_license_path=sct.db_lic_by_jsl,
             databricks_host=sct.ckl_host,
             databricks_token=sct.ckl_token,
         )
@@ -83,7 +83,7 @@ class DatabricksTestCase(unittest.TestCase):
         import johnsnowlabs.auto_install.health_checks.hc_test
 
         # Make cluster
-        # cluster_id = nlp.install(json_license_path=sct.db_lic, databricks_host=sct.ckl_host,
+        # cluster_id = nlp.install(json_license_path=sct.db_lic_by_jsl, databricks_host=sct.ckl_host,
         #                          databricks_token=sct.ckl_token)
         cluster_id = "1006-050402-4nsqdu8h"
         # Test modules

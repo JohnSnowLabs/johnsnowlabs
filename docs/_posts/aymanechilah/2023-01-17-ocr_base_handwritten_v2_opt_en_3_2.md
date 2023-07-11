@@ -26,7 +26,8 @@ Ocr base handwritten model v2 optimized with ONNX for recognise handwritten text
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/RECOGNIZE_HANDWRITTEN/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageToTextHandwritten_V2_opt.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/ocr_base_handwritten_v2_opt_en_4.2.2_3.0_1670608549000.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/ocr_base_handwritten_v2_opt_en_4.2.2_3.0_1670608549000.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/ocr_base_handwritten_v2_opt_en_4.2.2_3.0_1670608549000.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 
 ## How to use

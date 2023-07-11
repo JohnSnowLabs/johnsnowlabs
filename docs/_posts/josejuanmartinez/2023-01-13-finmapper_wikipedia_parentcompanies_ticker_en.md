@@ -92,13 +92,13 @@ res= model.transform(test_data)
 
 ```bash
 {'mappings': ['ABSA Group Limited',
-   'ABSA Group Limited@http://www.wikidata.org/entity/Q58641733',
+   'ABSA Group Limited@https://www.wikidata.org/entity/Q58641733',
    'ABSA Group Limited@ABSA Group Limited@en',
-   'ABSA Group Limited@http://www.wikidata.org/prop/direct/P749',
+   'ABSA Group Limited@https://www.wikidata.org/prop/direct/P749',
    'ABSA Group Limited@is_parent_of',
    'ABSA Group Limited@JOHANNESBURG STOCK EXCHANGE@en',
    'ABSA Group Limited@باركليز@ar',
-   'ABSA Group Limited@http://www.wikidata.org/entity/Q245343'],
+   'ABSA Group Limited@https://www.wikidata.org/entity/Q245343'],
 ```
 
 {:.model-param}

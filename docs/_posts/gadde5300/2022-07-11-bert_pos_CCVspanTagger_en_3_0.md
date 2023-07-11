@@ -99,5 +99,5 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/RJ3vans/CCVspanTagger
-- http://rgcl.wlv.ac.uk/~richard/Evans2020_SentenceSimplificationForTextProcessing.pdf
+- [https://huggingface.co/RJ3vans/CCVspanTagger](https://huggingface.co/RJ3vans/CCVspanTagger)
+- [https://rgcl.wlv.ac.uk/~richard/Evans2020_SentenceSimplificationForTextProcessing.pdf](https://rgcl.wlv.ac.uk/~richard/Evans2020_SentenceSimplificationForTextProcessing.pdf)

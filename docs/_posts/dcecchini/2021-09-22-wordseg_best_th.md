@@ -124,7 +124,7 @@ df
 
 ## Data Source
 
-The model was trained on the [BEST](http://thailang.nectec.or.th/best) corpus from the National Electronics and Computer Technology Center (NECTEC).
+The model was trained on the [BEST](https://thailang.nectec.or.th/best) corpus from the National Electronics and Computer Technology Center (NECTEC).
 
 References:
 

@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: Annotation Lab | John Snow Labs
+seotitle: NLP Lab | John Snow Labs
 title: Analytics Permission
 permalink: /docs/en/alab/analytics_permission
 key: docs-training

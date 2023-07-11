@@ -6,13 +6,14 @@ import random
 import string
 import webbrowser
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from typing import List, Dict
-
+from typing import Dict, List
 # imports related to get access token with PKCE Oauth
 from urllib import parse
 from urllib.request import Request, urlopen
 
 from johnsnowlabs.utils.enums import ProductName
+
+LICENSE_SERVER_ORIGIN = os.environ.get("LICENSE_SERVER_ORIGIN", "https://license.johnsnowlabs.com")
 
 MYJSL_ORIGIN = os.environ.get("MYJSL_ORIGIN", "https://my.johnsnowlabs.com")
 
@@ -130,6 +131,18 @@ def get_access_token(email, password):
     access_token = data["data"]["getAccessToken"]["ok"]["token"]
     return access_token
 
+def get_secrets(license):
+    try:
+        data = http_request(url=f"{LICENSE_SERVER_ORIGIN}/johnsnowlabs/releases/", method="GET", access_token=license)
+        if data:
+            return [LibSecretResponse(
+                isLatest=r.get("is_latest"),
+                product=r.get("product"),
+                secret=r.get("secret"),
+                version=r.get("version"),
+            ) for r in data]
+    except Exception:
+        raise ValueError("Usage of invalid/expired license.")
 
 def get_user_lib_secrets(access_token):
     secrets_query = """query ReleasesQuery {
@@ -237,7 +250,7 @@ def get_user_license_choice(licenses):
 
 def open_authorized_url(url, in_colab=False):
     if in_colab:
-        from IPython.display import display, Javascript
+        from IPython.display import Javascript, display
 
         display(
             Javascript(
@@ -321,7 +334,7 @@ def get_access_key_from_browser():
         open_authorized_url(url, in_colab)
         httpd.handle_request()
         if in_colab:
-            from IPython.display import display, Javascript
+            from IPython.display import Javascript, display
 
             display(Javascript("document.body.removeChild(a);"))
 

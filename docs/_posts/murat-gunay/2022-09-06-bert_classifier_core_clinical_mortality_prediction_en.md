@@ -95,6 +95,6 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/bvanaken/CORe-clinical-mortality-prediction
-- https://www.aclweb.org/anthology/2021.eacl-main.75.pdf
-- http://core.app.datexis.com/
+- [https://huggingface.co/bvanaken/CORe-clinical-mortality-prediction](https://huggingface.co/bvanaken/CORe-clinical-mortality-prediction)
+- [https://www.aclweb.org/anthology/2021.eacl-main.75.pdf](https://www.aclweb.org/anthology/2021.eacl-main.75.pdf)
+- [https://core.app.datexis.com/](https://core.app.datexis.com/)

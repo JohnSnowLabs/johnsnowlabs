@@ -101,12 +101,12 @@ nlu.load("en.answer_question.squadv2.roberta.distilled_base_v2").predict("""What
 
 ## References
 
-- https://huggingface.co/squirro/distilroberta-base-squad_v2
-- https://paperswithcode.com/sota?task=Question+Answering&dataset=The+Stanford+Question+Answering+Dataset
-- https://www.linkedin.com/showcase/the-squirro-academy
-- https://twitter.com/Squirro
-- https://www.instagram.com/squirro/
-- http://squirro.com
-- https://www.linkedin.com/company/squirroag
-- https://www.facebook.com/squirro
-- https://rajpurkar.github.io/SQuAD-explorer/
+- [https://huggingface.co/squirro/distilroberta-base-squad_v2](https://huggingface.co/squirro/distilroberta-base-squad_v2)
+- [https://paperswithcode.com/sota?task=Question+Answering&dataset=The+Stanford+Question+Answering+Dataset](https://paperswithcode.com/sota?task=Question+Answering&dataset=The+Stanford+Question+Answering+Dataset)
+- [https://www.linkedin.com/showcase/the-squirro-academy](https://www.linkedin.com/showcase/the-squirro-academy)
+- [https://twitter.com/Squirro](https://twitter.com/Squirro)
+- [https://www.instagram.com/squirro/](https://www.instagram.com/squirro/)
+- [https://squirro.com](https://squirro.com)
+- [https://www.linkedin.com/company/squirroag](https://www.linkedin.com/company/squirroag)
+- [https://www.facebook.com/squirro](https://www.facebook.com/squirro)
+- [https://rajpurkar.github.io/SQuAD-explorer/](https://rajpurkar.github.io/SQuAD-explorer/)

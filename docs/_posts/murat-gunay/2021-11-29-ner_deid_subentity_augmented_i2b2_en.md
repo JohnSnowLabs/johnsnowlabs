@@ -161,7 +161,7 @@ nlu.load("en.med_ner.deid_subentity_augmented_i2b2").predict("""A. Record date :
 
 ## Data Source
 
-In-house annotations based on `2014 i2b2 Deid dataset`.
+In-house annotations based on augmented version of `2014 i2b2 Deid dataset`.
 
 ## Benchmarking
 

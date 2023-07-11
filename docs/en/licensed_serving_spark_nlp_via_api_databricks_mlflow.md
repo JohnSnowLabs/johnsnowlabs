@@ -57,7 +57,7 @@ Let’s have an overview of how to use Databricks Jobs API and MLFlow Serve as a
 
 ### About Databricks
 
-[Databricks ](http://databricks.com)is an enterprise software company founded by the creators of Apache Spark. The company has also created MLflow, the Serialization and Experiment tracking library you can use (inside or outside databricks), as described in the section “Experiment Tracking”.
+[Databricks ](https://databricks.com)is an enterprise software company founded by the creators of Apache Spark. The company has also created MLflow, the Serialization and Experiment tracking library you can use (inside or outside databricks), as described in the section “Experiment Tracking”.
 
 Databricks develops a web-based platform for working with Spark, that provides automated cluster management and IPython-style notebooks. Their infrastructured is provided for training and production purposes, and is integrated in cloud platforms as Azure and AWS.
 
@@ -69,7 +69,7 @@ Spark NLP is a proud partner of Databricks and we offer a seamless integration w
 
 ### About MLFlow
 
-[MLFlow ](http://mlflow.com)is a serialization and Experiment Tracking platform, which also natively supports Spark NLP. We have a documentation entry about MLFlow in the “Experiment Tracking” section. It’s highly recommended that you take a look before moving forward in this document, since we will use some of the concepts explained there.
+[MLFlow ](https://mlflow.com)is a serialization and Experiment Tracking platform, which also natively supports Spark NLP. We have a documentation entry about MLFlow in the “Experiment Tracking” section. It’s highly recommended that you take a look before moving forward in this document, since we will use some of the concepts explained there.
 
 We will use MLFlow serialization to serve our Spark NLP models.
 

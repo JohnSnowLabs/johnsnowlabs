@@ -29,7 +29,7 @@ data:
           actions:
           - text: Live Demo
             type: normal
-            url: https://demo.johnsnowlabs.com/finance/MODELS_LEGAL/
+            url: https://demo.johnsnowlabs.com/legal/MODELS_LEGAL/
           - text: Colab
             type: blue_btn
             url:  

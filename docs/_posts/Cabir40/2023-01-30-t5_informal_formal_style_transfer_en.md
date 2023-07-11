@@ -82,8 +82,8 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/rajistics/informal_formal_style_transfer
-- https://github.com/PrithivirajDamodaran/Styleformer
-- https://www.aclweb.org/anthology/D19-5502.pdf
-- http://cs230.stanford.edu/projects_winter_2020/reports/32069807.pdf
-- https://arxiv.org/pdf/1804.06437.pdf
+- [https://huggingface.co/rajistics/informal_formal_style_transfer](https://huggingface.co/rajistics/informal_formal_style_transfer)
+- [https://github.com/PrithivirajDamodaran/Styleformer](https://github.com/PrithivirajDamodaran/Styleformer)
+- [https://www.aclweb.org/anthology/D19-5502.pdf](https://www.aclweb.org/anthology/D19-5502.pdf)
+- [https://cs230.stanford.edu/projects_winter_2020/reports/32069807.pdf](https://cs230.stanford.edu/projects_winter_2020/reports/32069807.pdf)
+- [https://arxiv.org/pdf/1804.06437.pdf](https://arxiv.org/pdf/1804.06437.pdf)

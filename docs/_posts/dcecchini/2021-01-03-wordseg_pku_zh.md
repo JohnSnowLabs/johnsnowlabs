@@ -98,7 +98,7 @@ ner_df
 
 ## Data Source
 
-The model is trained on the Pekin University (PKU) data set available on the Second International Chinese Word Segmentation Bakeoff [SIGHAN 2005](http://sighan.cs.uchicago.edu/bakeoff2005/).
+The model is trained on the Pekin University (PKU) data set available on the Second International Chinese Word Segmentation Bakeoff [SIGHAN 2005](https://sighan.cs.uchicago.edu/bakeoff2005/).
 
 ## Benchmarking
 
