@@ -23,6 +23,7 @@ raw_version_secret_medical = "4.4.4"
 
 raw_version_secret_ocr = "4.4.3"
 raw_version_ocr = "4.4.3"
+raw_version_pydantic = "1.10.11"
 
 pypi_page = "https://pypi.org/project/johnsnowlabs"
 json_indent = 4
