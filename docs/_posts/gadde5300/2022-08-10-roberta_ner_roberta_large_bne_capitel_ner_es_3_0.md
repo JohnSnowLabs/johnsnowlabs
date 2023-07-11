@@ -102,9 +102,9 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/BSC-TeMU/roberta-large-bne-capitel-ner
-- http://www.bne.es/en/Inicio/index.html
-- https://arxiv.org/abs/2107.07253
-- https://github.com/PlanTL-SANIDAD/lm-spanish
-- https://arxiv.org/abs/1907.11692
-- https://sites.google.com/view/capitel2020
+- [https://huggingface.co/BSC-TeMU/roberta-large-bne-capitel-ner](https://huggingface.co/BSC-TeMU/roberta-large-bne-capitel-ner)
+- [https://www.bne.es/en/Inicio/index.html](https://www.bne.es/en/Inicio/index.html)
+- [https://arxiv.org/abs/2107.07253](https://arxiv.org/abs/2107.07253)
+- [https://github.com/PlanTL-SANIDAD/lm-spanish](https://github.com/PlanTL-SANIDAD/lm-spanish)
+- [https://arxiv.org/abs/1907.11692](https://arxiv.org/abs/1907.11692)
+- [https://sites.google.com/view/capitel2020](https://sites.google.com/view/capitel2020)

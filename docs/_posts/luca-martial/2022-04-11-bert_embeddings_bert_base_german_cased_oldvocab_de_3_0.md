@@ -97,15 +97,15 @@ nlu.load("de.embed.bert_base_german_cased_oldvocab").predict("""Ich liebe Funken
 
 ## References
 
-- https://huggingface.co/deepset/bert-base-german-cased-oldvocab
-- https://github.com/deepset-ai/FARM/issues/60
-- https://deepset.ai/german-bert
-- https://deepset.ai/germanquad
-- https://github.com/deepset-ai/FARM
-- https://github.com/deepset-ai/haystack/
-- https://twitter.com/deepset_ai
-- https://www.linkedin.com/company/deepset-ai/
-- https://haystack.deepset.ai/community/join
-- https://github.com/deepset-ai/haystack/discussions
-- https://deepset.ai
-- http://www.deepset.ai/jobs
+- [https://huggingface.co/deepset/bert-base-german-cased-oldvocab](https://huggingface.co/deepset/bert-base-german-cased-oldvocab)
+- [https://github.com/deepset-ai/FARM/issues/60](https://github.com/deepset-ai/FARM/issues/60)
+- [https://deepset.ai/german-bert](https://deepset.ai/german-bert)
+- [https://deepset.ai/germanquad](https://deepset.ai/germanquad)
+- [https://github.com/deepset-ai/FARM](https://github.com/deepset-ai/FARM)
+- [https://github.com/deepset-ai/haystack/](https://github.com/deepset-ai/haystack/)
+- [https://twitter.com/deepset_ai](https://twitter.com/deepset_ai)
+- [https://www.linkedin.com/company/deepset-ai/](https://www.linkedin.com/company/deepset-ai/)
+- [https://haystack.deepset.ai/community/join](https://haystack.deepset.ai/community/join)
+- [https://github.com/deepset-ai/haystack/discussions](https://github.com/deepset-ai/haystack/discussions)
+- [https://deepset.ai](https://deepset.ai)
+- [https://www.deepset.ai/jobs](https://www.deepset.ai/jobs)

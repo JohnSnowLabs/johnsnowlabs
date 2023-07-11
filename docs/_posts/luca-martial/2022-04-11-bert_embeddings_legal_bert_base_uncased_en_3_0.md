@@ -98,11 +98,11 @@ nlu.load("en.embed.legal_bert_base_uncased").predict("""I love Spark NLP""")
 
 ## References
 
-- https://huggingface.co/nlpaueb/legal-bert-base-uncased
-- https://aclanthology.org/2020.findings-emnlp.261/
-- https://eur-lex.europa.eu/
-- https://www.legislation.gov.uk/
-- https://case.law/
-- https://www.sec.gov/edgar.shtml
-- https://archive.org/details/legal_bert_fp
-- http://nlp.cs.aueb.gr/
+- [https://huggingface.co/nlpaueb/legal-bert-base-uncased](https://huggingface.co/nlpaueb/legal-bert-base-uncased)
+- [https://aclanthology.org/2020.findings-emnlp.261/](https://aclanthology.org/2020.findings-emnlp.261/)
+- [https://eur-lex.europa.eu/](https://eur-lex.europa.eu/)
+- [https://www.legislation.gov.uk/](https://www.legislation.gov.uk/)
+- [https://case.law/](https://case.law/)
+- [https://www.sec.gov/edgar.shtml](https://www.sec.gov/edgar.shtml)
+- [https://archive.org/details/legal_bert_fp](https://archive.org/details/legal_bert_fp)
+- [https://nlp.cs.aueb.gr/](https://nlp.cs.aueb.gr/)

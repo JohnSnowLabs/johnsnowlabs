@@ -85,14 +85,14 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/squirro/distilroberta-base-squad_v2
-- https://rajpurkar.github.io/SQuAD-explorer/
-- http://squirro.com
-- https://open.spotify.com/show/6NPLcv9EyaD2DcNT8v89Kb
-- https://podcasts.apple.com/us/podcast/redefining-ai/id1613934397
-- https://www.linkedin.com/company/squirroag
-- https://www.linkedin.com/showcase/the-squirro-academy
-- https://twitter.com/Squirro
-- https://www.facebook.com/squirro
-- https://www.instagram.com/squirro/
-- https://paperswithcode.com/sota?task=Question+Answering&dataset=The+Stanford+Question+Answering+Dataset
+- [https://huggingface.co/squirro/distilroberta-base-squad_v2](https://huggingface.co/squirro/distilroberta-base-squad_v2)
+- [https://rajpurkar.github.io/SQuAD-explorer/](https://rajpurkar.github.io/SQuAD-explorer/)
+- [https://squirro.com](https://squirro.com)
+- [https://open.spotify.com/show/6NPLcv9EyaD2DcNT8v89Kb](https://open.spotify.com/show/6NPLcv9EyaD2DcNT8v89Kb)
+- [https://podcasts.apple.com/us/podcast/redefining-ai/id1613934397](https://podcasts.apple.com/us/podcast/redefining-ai/id1613934397)
+- [https://www.linkedin.com/company/squirroag](https://www.linkedin.com/company/squirroag)
+- [https://www.linkedin.com/showcase/the-squirro-academy](https://www.linkedin.com/showcase/the-squirro-academy)
+- [https://twitter.com/Squirro](https://twitter.com/Squirro)
+- [https://www.facebook.com/squirro](https://www.facebook.com/squirro)
+- [https://www.instagram.com/squirro/](https://www.instagram.com/squirro/)
+- [https://paperswithcode.com/sota?task=Question+Answering&dataset=The+Stanford+Question+Answering+Dataset](https://paperswithcode.com/sota?task=Question+Answering&dataset=The+Stanford+Question+Answering+Dataset)

@@ -100,13 +100,13 @@ nlu.load("pt.answer_question.squad.bert.base_cased.by_pierreguillou").predict(""
 
 ## References
 
-- https://huggingface.co/pierreguillou/bert-base-cased-squad-v1.1-portuguese
-- https://colab.research.google.com/
-- https://ailab.unb.br/
-- https://medium.com/@pierre_guillou/nlp-modelo-de-question-answering-em-qualquer-idioma-baseado-no-bert-base-estudo-de-caso-em-12093d385e78
-- https://www.linkedin.com/in/pierreguillou/
-- https://medium.com/@pierre_guillou/nlp-modelo-de-question-answering-em-qualquer-idioma-baseado-no-bert-base-estudo-de-caso-em-12093d385e78#c572
-- http://www.deeplearningbrasil.com.br/
-- https://neuralmind.ai/
-- https://colab.research.google.com/drive/18ueLdi_V321Gz37x4gHq8mb4XZSGWfZx?usp=sharing
-- https://github.com/piegu/language-models/blob/master/colab_question_answering_BERT_base_cased_squad_v11_pt.ipynb
+- [https://huggingface.co/pierreguillou/bert-base-cased-squad-v1.1-portuguese](https://huggingface.co/pierreguillou/bert-base-cased-squad-v1.1-portuguese)
+- [https://colab.research.google.com/](https://colab.research.google.com/)
+- [https://ailab.unb.br/](https://ailab.unb.br/)
+- [https://medium.com/@pierre_guillou/nlp-modelo-de-question-answering-em-qualquer-idioma-baseado-no-bert-base-estudo-de-caso-em-12093d385e78](https://medium.com/@pierre_guillou/nlp-modelo-de-question-answering-em-qualquer-idioma-baseado-no-bert-base-estudo-de-caso-em-12093d385e78)
+- [https://www.linkedin.com/in/pierreguillou/](https://www.linkedin.com/in/pierreguillou/)
+- [https://medium.com/@pierre_guillou/nlp-modelo-de-question-answering-em-qualquer-idioma-baseado-no-bert-base-estudo-de-caso-em-12093d385e78#c572](https://medium.com/@pierre_guillou/nlp-modelo-de-question-answering-em-qualquer-idioma-baseado-no-bert-base-estudo-de-caso-em-12093d385e78#c572)
+- [https://www.deeplearningbrasil.com.br/](https://www.deeplearningbrasil.com.br/)
+- [https://neuralmind.ai/](https://neuralmind.ai/)
+- [https://colab.research.google.com/drive/18ueLdi_V321Gz37x4gHq8mb4XZSGWfZx?usp=sharing](https://colab.research.google.com/drive/18ueLdi_V321Gz37x4gHq8mb4XZSGWfZx?usp=sharing)
+- [https://github.com/piegu/language-models/blob/master/colab_question_answering_BERT_base_cased_squad_v11_pt.ipynb](https://github.com/piegu/language-models/blob/master/colab_question_answering_BERT_base_cased_squad_v11_pt.ipynb)

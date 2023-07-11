@@ -90,4 +90,4 @@ nlu.load("en.spell.clinical").predict("""]) \
 
 ## Data Source
 
-The dataset used contains data drawn from MT Samples clinical notes, i2b2 clinical notes, and PubMed abstracts.
+The dataset used contains data drawn from MT Samples clinical notes, augmented version of i2b2 clinical notes, and PubMed abstracts.

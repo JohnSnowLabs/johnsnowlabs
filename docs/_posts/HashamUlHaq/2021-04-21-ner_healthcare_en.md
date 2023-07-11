@@ -152,7 +152,8 @@ nlu.load("en.med_ner.healthcare").predict("""A 28-year-old female with a history
 ## Data Source
 
 
-Trained on 2010 i2b2 challenge data. https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
+Trained with augmented version of 2010 i2b2 dataset. 
+https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
 
 
 ## Benchmarking

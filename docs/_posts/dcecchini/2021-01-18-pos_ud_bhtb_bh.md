@@ -119,7 +119,7 @@ pos_df
 
 ## Data Source
 
-The model was trained on the [Universal Dependencies](http://universaldependencies.org) version 2.7.
+The model was trained on the [Universal Dependencies](https://universaldependencies.org) version 2.7.
 
 
 Reference:

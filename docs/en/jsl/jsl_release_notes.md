@@ -73,6 +73,7 @@ The John Snow Labs 4.4.9 Library released with the following pre-installed and r
 | [Pyspark](https://spark.apache.org/docs/latest/api/python/)                 | `3.1.2` |
 
 
+
 ## 4.4.8
 Release date: 7-14-2023
 
@@ -89,8 +90,6 @@ The John Snow Labs 4.4.8 Library released with the following pre-installed and r
 | [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)           | `4.1`   |
 | [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)            | `4.4.1` |
 | [Pyspark](https://spark.apache.org/docs/latest/api/python/)                 | `3.1.2` |
-
-
 
 
 

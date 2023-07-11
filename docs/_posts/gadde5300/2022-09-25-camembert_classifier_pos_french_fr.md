@@ -98,19 +98,19 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/qanastek/pos-french-camembert
-- https://github.com/qanastek/ANTILLES
-- https://arxiv.org/abs/1911.03894
-- https://www.linkedin.com/in/yanis-labrak-8a7412145/
-- https://cv.archives-ouvertes.fr/richard-dufour
-- https://lia.univ-avignon.fr/
-- https://www.ls2n.fr/equipe/taln/
-- https://pypi.org/project/transformers/
-- https://universaldependencies.org/treebanks/fr_gsd/index.html
-- https://github.com/ryanmcd/uni-dep-tb
-- http://pageperso.lif.univ-mrs.fr/frederic.bechet/download.html
-- http://pageperso.lif.univ-mrs.fr/frederic.bechet/index-english.html
-- https://github.com/qanastek/ANTILLES
-- https://universaldependencies.org/format.html
-- https://github.com/qanastek/ANTILLES/blob/main/ANTILLES/test.conllu
-- https://zenidoc.fr/
+- [https://huggingface.co/qanastek/pos-french-camembert](https://huggingface.co/qanastek/pos-french-camembert)
+- [https://github.com/qanastek/ANTILLES](https://github.com/qanastek/ANTILLES)
+- [https://arxiv.org/abs/1911.03894](https://arxiv.org/abs/1911.03894)
+- [https://www.linkedin.com/in/yanis-labrak-8a7412145/](https://www.linkedin.com/in/yanis-labrak-8a7412145/)
+- [https://cv.archives-ouvertes.fr/richard-dufour](https://cv.archives-ouvertes.fr/richard-dufour)
+- [https://lia.univ-avignon.fr/](https://lia.univ-avignon.fr/)
+- [https://www.ls2n.fr/equipe/taln/](https://www.ls2n.fr/equipe/taln/)
+- [https://pypi.org/project/transformers/](https://pypi.org/project/transformers/)
+- [https://universaldependencies.org/treebanks/fr_gsd/index.html](https://universaldependencies.org/treebanks/fr_gsd/index.html)
+- [https://github.com/ryanmcd/uni-dep-tb](https://github.com/ryanmcd/uni-dep-tb)
+- [https://pageperso.lif.univ-mrs.fr/frederic.bechet/download.html](https://pageperso.lif.univ-mrs.fr/frederic.bechet/download.html)
+- [https://pageperso.lif.univ-mrs.fr/frederic.bechet/index-english.html](https://pageperso.lif.univ-mrs.fr/frederic.bechet/index-english.html)
+- [https://github.com/qanastek/ANTILLES](https://github.com/qanastek/ANTILLES)
+- [https://universaldependencies.org/format.html](https://universaldependencies.org/format.html)
+- [https://github.com/qanastek/ANTILLES/blob/main/ANTILLES/test.conllu](https://github.com/qanastek/ANTILLES/blob/main/ANTILLES/test.conllu)
+- [https://zenidoc.fr/](https://zenidoc.fr/)

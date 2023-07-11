@@ -103,9 +103,9 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/fran-martinez/scibert_scivocab_cased_ner_jnlpba
-- https://github.com/fran-martinez/bio_ner_bert
-- http://www.geniaproject.org/shared-tasks/bionlp-jnlpba-shared-task-2004
-- https://arxiv.org/pdf/1903.10676.pdf
-- https://www.semanticscholar.org/
-- https://allenai.org/
+- [https://huggingface.co/fran-martinez/scibert_scivocab_cased_ner_jnlpba](https://huggingface.co/fran-martinez/scibert_scivocab_cased_ner_jnlpba)
+- [https://github.com/fran-martinez/bio_ner_bert](https://github.com/fran-martinez/bio_ner_bert)
+- [https://www.geniaproject.org/shared-tasks/bionlp-jnlpba-shared-task-2004](https://www.geniaproject.org/shared-tasks/bionlp-jnlpba-shared-task-2004)
+- [https://arxiv.org/pdf/1903.10676.pdf](https://arxiv.org/pdf/1903.10676.pdf)
+- [https://www.semanticscholar.org/](https://www.semanticscholar.org/)
+- [https://allenai.org/](https://allenai.org/)

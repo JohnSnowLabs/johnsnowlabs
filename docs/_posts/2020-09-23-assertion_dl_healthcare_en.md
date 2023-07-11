@@ -123,7 +123,8 @@ nlu.load("en.assert.healthcare").predict("""Patient has a headache for the last 
 
 {:.h2_title}
 ## Data Source
-Trained using ``embeddings_clinical`` on 2010 i2b2/VA challenge on concepts, assertions, and relations in clinical text from https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
+Trained with augmented version of 2010 i2b2/VA dataset on concepts, assertions, and relations in clinical text with ``embeddings_clinical``.
+https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
 
 {:.h2_title}
 ## Benchmarking

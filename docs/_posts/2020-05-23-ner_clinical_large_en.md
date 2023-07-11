@@ -117,7 +117,7 @@ The output is a dataframe with a sentence per row and a ``"ner"`` column contain
 
 {:.h2_title}
 ## Data Source
-Trained on augmented 2010 i2b2 challenge data with 'embeddings_clinical'.
+Trained with augmented version of 2010 i2b2 dataset with 'embeddings_clinical'.
 https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
 
 {:.h2_title}

@@ -191,7 +191,7 @@ nlu.load("en.relation.clinical").predict("""A 28-year-old female with a history 
 
 ## Data Source
 
-Trained on 2010 i2b2 relation challenge.
+Trained with augmented version of 2010 i2b2 relation dataset.
 
 ## Benchmarking
 
