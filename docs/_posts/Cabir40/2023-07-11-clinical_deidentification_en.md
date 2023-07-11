@@ -38,14 +38,14 @@ from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
 
-deid_pipeline.annotate("""Record date : 2093-01-13, Name : Hendrickson, ORA, 25 years-old, #719435. IP: 203.120.223.13, the driver's license no:A334455B. The SSN:324598674 and e-mail: hale@gmail.com. Patient's VIN : 1HGBH41JXMN109286. Date : 01/13/93, PCP : David Hale.""")
+deid_pipeline.annotate("""Record date : 2093-01-13, Name : Hendrickson, ORA, 25 years-old, #719435. IP: 203.120.223.13, the driver's license no:A334455B. The SSN: 324598674 and e-mail: hale@gmail.com. Patient's VIN : 1HGBH41JXMN109286. Date : 01/13/93, PCP : David Hale.""")
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
 
-val result = deid_pipeline.annotate("""Record date : 2093-01-13, Name : Hendrickson, ORA, 25 years-old, #719435. IP: 203.120.223.13, the driver's license no:A334455B. The SSN:324598674 and e-mail: hale@gmail.com. Patient's VIN : 1HGBH41JXMN109286. Date : 01/13/93, PCP : David Hale.""")
+val result = deid_pipeline.annotate("""Record date : 2093-01-13, Name : Hendrickson, ORA, 25 years-old, #719435. IP: 203.120.223.13, the driver's license no:A334455B. The SSN: 324598674 and e-mail: hale@gmail.com. Patient's VIN : 1HGBH41JXMN109286. Date : 01/13/93, PCP : David Hale.""")
 ```
 </div>
 
@@ -54,38 +54,38 @@ val result = deid_pipeline.annotate("""Record date : 2093-01-13, Name : Hendrick
 ```bash
 {'masked': ['Record date : <DATE>, Name : <PATIENT>, <AGE> years-old, <MEDICALRECORD>.',
   "IP: <IPADDR>, the driver's license <DLN>.",
-  'The <IDNUM> and e-mail: <EMAIL>.',
+  'The SSN: <SSN> and e-mail: <EMAIL>.',
   "Patient's VIN : <VIN>.",
   'Date : <DATE>, PCP : <DOCTOR>.'],
-'obfuscated': ['Record date : 2093-03-02, Name : Maricela Curet, 29 years-old, #522110.',
-  "IP: 004.004.004.004, the driver's license UO:G770582I.",
-  'The FGL:033356710 and e-mail: Liana@yahoo.com.',
-  "Patient's VIN : 0IHKM14KISD510079.",
-  'Date : 03/02/93, PCP : Myrtie Hawk.'],
-'ner_chunk': ['2093-01-13',
+ 'obfuscated': ['Record date : 2093-02-25, Name : Albertine Grates, 30 years-old, #100581.',
+  "IP: 003.003.003.003, the driver's license EL:I131599D.",
+  'The SSN: 060014689 and e-mail: Tory@yahoo.com.',
+  "Patient's VIN : 8JFSU78UTYV898505.",
+  'Date : 02/25/93, PCP : Elvera Maria.'],
+ 'ner_chunk': ['2093-01-13',
   'Hendrickson, ORA',
   '25',
   '#719435',
   '203.120.223.13',
   'no:A334455B',
-  'SSN:324598674',
+  '324598674',
   'hale@gmail.com',
   '1HGBH41JXMN109286',
   '01/13/93',
   'David Hale'],
-'masked_fixed_length_chars': ['Record date : ****, Name : ****, **** years-old, ****.',
+ 'masked_fixed_length_chars': ['Record date : ****, Name : ****, **** years-old, ****.',
   "IP: ****, the driver's license ****.",
-  'The **** and e-mail: ****.',
+  'The SSN: **** and e-mail: ****.',
   "Patient's VIN : ****.",
   'Date : ****, PCP : ****.'],
-'sentence': ['Record date : 2093-01-13, Name : Hendrickson, ORA, 25 years-old, #719435.',
+ 'sentence': ['Record date : 2093-01-13, Name : Hendrickson, ORA, 25 years-old, #719435.',
   "IP: 203.120.223.13, the driver's license no:A334455B.",
-  'The SSN:324598674 and e-mail: hale@gmail.com.',
+  'The SSN: 324598674 and e-mail: hale@gmail.com.',
   "Patient's VIN : 1HGBH41JXMN109286.",
   'Date : 01/13/93, PCP : David Hale.'],
-'masked_with_chars': ['Record date : [********], Name : [**************], ** years-old, [*****].',
+ 'masked_with_chars': ['Record date : [********], Name : [**************], ** years-old, [*****].',
   "IP: [************], the driver's license [*********].",
-  'The [***********] and e-mail: [************].',
+  'The SSN: [*******] and e-mail: [************].',
   "Patient's VIN : [***************].",
   'Date : [******], PCP : [********].']}
 ```
