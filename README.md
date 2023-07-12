@@ -30,7 +30,7 @@ Powered by John Snow Labs Enterprise-Grade Ecosystem:
 ! pip install johnsnowlabs
 
 from johnsnowlabs import nlp
-nlp.load('emotion').predict('Wow that easy!')
+nlp.load('emotion').predict('Wow that was easy!')
 
 ```
 
