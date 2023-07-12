@@ -2,8 +2,8 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes
-permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
+title: Spark NLP for Healthcare Release Notes 5.0.0
+permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_5_5_5
 key: docs-licensed-release-notes
 modify_date: 2023-07-12
 show_nav: true
@@ -602,9 +602,6 @@ alab.get_relation_extraction_data(
 + `sbiobert_base_cased_mli_onnx`
 
 
-
-
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
@@ -613,11 +610,9 @@ For all Spark NLP for Healthcare models, please check: [Models Hub Page](https:/
 </div><div class="h3-box" markdown="1">
 
 
+</div><div class="h3-box" markdown="1">
 
-
-<div class="prev_ver h3-box" markdown="1">
-
-## Previous versions
+## Versions
 
 </div>
 {%- include docs-healthcare-pagination.html -%}
