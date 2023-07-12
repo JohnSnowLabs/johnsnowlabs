@@ -3,7 +3,7 @@ layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Spark NLP for Healthcare Release Notes 5.0.0
-permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_5_5_5
+permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_5_0_0
 key: docs-licensed-release-notes
 modify_date: 2023-07-12
 show_nav: true
@@ -55,9 +55,9 @@ In our experiment, we compared the Few-Shot Classifier trained on partial data, 
 
 |                           | macro-f1-score | weighted-f1-score | accuracy  |
 |---------------------------|----------------|-------------------|-----------|
-| ClassifierDL_full_Data    | 0.84       | 0.84        | 0.84  |
-| ClassifierDL_partial_Data | 0.83       | 0.84        | 0.84  |
-| FewShot_partial_Data      | 0.86       | 0.87        | 0.87  |
+| ClassifierDL_full_Data    | 0.85       | 0.84        | 0.84  |
+| ClassifierDL_partial_Data | 0.84       | 0.84        | 0.84  |
+| FewShot_partial_Data      | 0.87       | 0.87        | 0.87  |
 
 The `FewShotClassifier` is designed to process sentence embeddings as input. It generates category annotations, providing labels along with confidence scores that range from 0 to 1. Input annotation types supported by this model include `SENTENCE_EMBEDDINGS`, while the output annotation type is `CATEGORY`.
 
@@ -215,7 +215,7 @@ sample_text = """The patient is a 54-year-old female with a complex medical hist
 |sexual satisfaction   |620  |638|Sexual_Activity     |
 
 
-please check [Social Determinant of Health Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Model.ipynb)  for more information
+please check [Social Determinant of Health Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Model.ipynb)  for more information
 
 
 </div><div class="h3-box" markdown="1">
@@ -243,9 +243,9 @@ ner_profiling_pipeline = PretrainedPipeline("ner_profiling_oncology", 'en', 'cli
 ```
 
 For results and different examples, please see 
--   [Voice of Patient Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/35.Voice_of_Patient_Model.ipynb)
--   [Social Determinant of Health Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Model.ipynb)  
--   [Oncology Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb)
+-   [Voice of Patient Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/35.Voice_of_Patient_Model.ipynb)
+-   [Social Determinant of Health Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Model.ipynb)  
+-   [Oncology Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb)
 
 
 
@@ -333,17 +333,17 @@ text = """Dhr. Van Dijk, 58 jaar oud, kwam naar de kliniek met klachten van aanh
 
 |chunk                                |begin|end|ner_label|confidence|
 |-------------------------------------|-----|---|---------|----------|
-|aanhoudende hoest                    |66   |82 |PROBLEM  |0.81    |
+|aanhoudende hoest                    |66   |82 |PROBLEM  |0.82    |
 |koorts                               |85   |90 |PROBLEM  |0.99    |
 |kortademigheid                       |95   |108|PROBLEM  |0.99    |
-|röntgenfoto van de borst             |137  |160|TEST     |0.60    |
-|bloedonderzoek                       |163  |176|TEST     |0.91    |
+|röntgenfoto van de borst             |137  |160|TEST     |0.61    |
+|bloedonderzoek                       |163  |176|TEST     |0.92    |
 |een CT-scan                          |181  |191|TEST     |0.73    |
-|ernstige longontsteking              |240  |262|PROBLEM  |0.77    |
+|ernstige longontsteking              |240  |262|PROBLEM  |0.78    |
 |een verhoogd aantal witte bloedcellen|265  |301|PROBLEM  |0.45    |
 |COPD                                 |315  |318|PROBLEM  |0.98    |
-|antibiotica kuur                     |332  |347|TREATMENT|0.62    |
-|een sterke hoestsiroop               |352  |373|TREATMENT|0.46    |
+|antibiotica kuur                     |332  |347|TREATMENT|0.63    |
+|een sterke hoestsiroop               |352  |373|TREATMENT|0.47    |
 |een voedzaam dieet                   |418  |435|TREATMENT|0.69    |
 
 
@@ -472,21 +472,21 @@ sample_text = 'The patient was prescribed 1 capsule of Advil for 5 days. He was 
 
 |sentence_id |chunks	       |entities  |confidence |
 |------------|-----------------|----------|-----------|
-|0     	     |1	               |DOSAGE	  |0.99 |
-|0	         |capsule          |FORM	    |0.98 |
-|0	         |Advil	           |DRUG	    |0.99 |
-|0	         |for 5 days	     |DURATION  |0.71 |
+|0     	     |1                |DOSAGE    |0.99 |
+|0	         |capsule          |FORM      |0.99 |
+|0	         |Advil	           |DRUG      |0.99 |
+|0	         |for 5 days       |DURATION  |0.71 |
 |1    	     |40 units	       |DOSAGE	  |0.85 |
-|1           |insulin glargine |DRUG	    |0.82 |
-|1	         |at night	       |FREQUENCY |0.81  |
+|1           |insulin glargine |DRUG      |0.83 |
+|1	         |at night         |FREQUENCY |0.81  |
 
 *Filtered by confidence scores*:
 
 |sentence_id |chunks    |entitie  |confidence |
 |------------|----------|---------|-----------|
-|0     	     |1	        |DOSAGE	  |0.99 |
-|0	         |capsule   |FORM	    |0.98 |
-|0	         |Advil	    |DRUG	    |0.99 |
+|0     	     |1         |DOSAGE   |0.99 |
+|0	         |capsule   |FORM     |0.99 |
+|0	         |Advil	    |DRUG     |0.99 |
 
 
 
@@ -567,9 +567,9 @@ alab.get_relation_extraction_data(
 #### Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand
 
 - New [Text Classification with Few Shot Classifier Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/30.3.Text_Classification_with_FewShotClassifier.ipynb)
-- New [Voice of Patient Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/35.Voice_of_Patient_Model.ipynb)
-- New [Social Determinant of Health Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Model.ipynb)
-- Updated [Oncology Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb) for latest models
+- New [Voice of Patient Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/35.Voice_of_Patient_Model.ipynb)
+- New [Social Determinant of Health Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Model.ipynb)
+- Updated [Oncology Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb) for latest models
 - New All-In-One [Social Determinant of Health Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/)
 - Updated [Medical LLM Demo](https://demo.johnsnowlabs.com/healthcare/MEDICAL_LLM/)
 - Updated [German ICD10GM Resolver Demo](https://demo.johnsnowlabs.com/healthcare/ER_ICD10_GM_DE/)
@@ -602,12 +602,12 @@ alab.get_relation_extraction_data(
 + `sbiobert_base_cased_mli_onnx`
 
 
+
+
+
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
-
-
-</div><div class="h3-box" markdown="1">
 
 
 </div><div class="h3-box" markdown="1">
