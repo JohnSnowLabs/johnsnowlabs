@@ -13,6 +13,7 @@ from johnsnowlabs.utils.env_utils import (
 raw_version_jsl_lib = "5.0.0"
 raw_version_nlp = "5.0.0"
 
+
 raw_version_nlu = "4.2.2"
 
 raw_version_pyspark = "3.1.2"
