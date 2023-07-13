@@ -339,7 +339,11 @@ document.write(`
 <span class="sd">    mode</span>
 <span class="sd">        Mode for Anonimizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
 <span class="sd">    obfuscateDate</span>
-<span class="sd">        When mode==&#39;obfuscate&#39; whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible. When setting to ``true``, make sure dateFormats param fits the needs (default: false)</span>
+<span class="sd">        When mode==&#39;obfuscate&#39; whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.</span>
+<span class="sd">        When setting to ``true``, make sure dateFormats param fits the needs (default: false)</span>
+<span class="sd">        If the value is true and obfuscation is failed, then unnormalizedDateMode param will be activated.</span>
+<span class="sd">        When setting to &#39;false&#39;, then the date will be masked to &lt;DATE&gt;</span>
+<span class="sd">        Default: false</span>
 <span class="sd">    obfuscateRefFile</span>
 <span class="sd">        File with the terms to be used for Obfuscation</span>
 <span class="sd">    refFileFormat</span>
@@ -349,11 +353,11 @@ document.write(`
 <span class="sd">    dateTag</span>
 <span class="sd">        Tag representing dates in the obfuscate reference file (default: DATE)</span>
 <span class="sd">    days</span>
-<span class="sd">        Number of days to obfuscate the dates by displacement. If not provided a random integer between 1 and 60 will be used</span>
+<span class="sd">        A number of days to obfuscate the dates by displacement. If not provided a random integer between 1 and 60 will be used</span>
 <span class="sd">    dateToYear</span>
 <span class="sd">        True if we want the model to transform dates into years, False otherwise.</span>
 <span class="sd">    minYear</span>
-<span class="sd">        Minimum year to be used when transforming dates into years.</span>
+<span class="sd">        Minimum year to be used when transforming dates into years. Default: &#39;1929&#39;</span>
 <span class="sd">    dateFormats</span>
 <span class="sd">        List of date formats to automatically displace if parsed</span>
 <span class="sd">    consistentObfuscation</span>
@@ -362,28 +366,34 @@ document.write(`
 <span class="sd">    sameEntityThreshold</span>
 <span class="sd">        Similarity threshold [0.0-1.0] to consider two appearances of an entity as ``the same`` (default: 0.9).</span>
 <span class="sd">    obfuscateRefSource</span>
-<span class="sd">        The source of obfuscation of to obfuscate the entities.For dates entities doesnt apply tha method.</span>
+<span class="sd">        The source of obfuscation of to obfuscate the entities. For dates entities, This property is invalid.</span>
 <span class="sd">        The values ar the following:</span>
 <span class="sd">        file: Takes the entities from the obfuscatorRefFile</span>
 <span class="sd">        faker: Takes the entities from the Faker module</span>
 <span class="sd">        both : Takes the entities from the obfuscatorRefFile and the faker module randomly.</span>
-
 <span class="sd">    regexOverride</span>
 <span class="sd">        If is true prioritize the regex entities, if is false prioritize the ner.</span>
+<span class="sd">    language</span>
+<span class="sd">        The language used to select the regex file and some faker entities.</span>
+<span class="sd">        The values are the following:</span>
+<span class="sd">        &#39;en&#39;(English), &#39;de&#39;(German), &#39;es&#39;(Spanish), &#39;fr&#39;(French), &#39;ar&#39;(Arabic) or &#39;ro&#39;(Romanian). Default:&#39;en&#39;.</span>
 <span class="sd">    seed</span>
-<span class="sd">        It is the seed to select the entities on obfuscate mode.With the seed you can reply a execution several times with the same ouptut.</span>
+<span class="sd">        It is the seed to select the entities on obfuscate mode. With the seed,</span>
+<span class="sd">        you can reply to an execution several times with the same output.</span>
 <span class="sd">    ignoreRegex</span>
-<span class="sd">       Select if you want to use regex file loaded in the model.If true the default regex file will be not used.The default value is false.</span>
+<span class="sd">       Select if you want to use the regex file loaded in the model. If true the default regex file will be not used.</span>
+<span class="sd">       The default value is false.</span>
 <span class="sd">    isRandomDateDisplacement</span>
-<span class="sd">        Use a random displacement days in dates entities,that random number is based on the [[DeIdentificationParams.seed]]</span>
-<span class="sd">        If true use random displacement days in dates entities,if false use the [[DeIdentificationParams.days]]</span>
+<span class="sd">        Use a random displacement days in dates entities, that random number is based on the :param:`seed`</span>
+<span class="sd">        If true use random displacement days in dates entities, if false use the :param:`days`</span>
 <span class="sd">        The default value is false.</span>
 <span class="sd">    mappingsColumn</span>
 <span class="sd">        This is the mapping column that will return the Annotations chunks with the fake entities.</span>
 <span class="sd">    returnEntityMappings</span>
-<span class="sd">        With this property you select if you want to return mapping column</span>
+<span class="sd">        With this property, you can select if you want to return mapping column</span>
 <span class="sd">    blackList</span>
-<span class="sd">        List of entities ignored for masking or obfuscation.The default values are: &quot;SSN&quot;,&quot;PASSPORT&quot;,&quot;DLN&quot;,&quot;NPI&quot;,&quot;C_CARD&quot;,&quot;IBAN&quot;,&quot;DEA&quot;</span>
+<span class="sd">        List of entities that will be ignored in the regex file. The rest will be processed.</span>
+<span class="sd">        The default values are &quot;IBAN&quot;,&quot;ZIP&quot;,&quot;NPI&quot;,&quot;URL&quot;,&quot;DLN&quot;,&quot;PASSPORT&quot;,&quot;EMAIL&quot;,&quot;C_CARD&quot;,&quot;DEA&quot;,&quot;SSN&quot;</span>
 <span class="sd">    maskingPolicy</span>
 <span class="sd">        Select the masking policy:</span>
 <span class="sd">            same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence.</span>
@@ -401,7 +411,7 @@ document.write(`
 <span class="sd">            &#39;mask_entity_labels&#39;: Replace the values with the entity value.</span>
 <span class="sd">            &#39;mask_fixed_length_chars&#39;: Replace the name with the asterisks with fixed length. You can also invoke &quot;setFixedMaskLength()&quot;</span>
 <span class="sd">            &#39;skip&#39;: Skip the values (intact)</span>
-<span class="sd">        The entities which have not been given in dictionary will deidentify according to setMode()</span>
+<span class="sd">        The entities which have not been given in dictionary will deidentify according to :param:`mode`</span>
 <span class="sd">    entityCasingModesPath</span>
 <span class="sd">        Dictionary path where is the json that contains the entity casing modes.</span>
 <span class="sd">            &#39;lowercase&#39;: Converts all characters to lower case using the rules of the default locale.</span>
@@ -410,7 +420,7 @@ document.write(`
 <span class="sd">            &#39;titlecase&#39;: Converts the first character in every token to upper case and converts others to lower case.</span>
 <span class="sd">    genderAwareness</span>
 <span class="sd">        Whether to use gender-aware names or not during obfuscation. This param effects only names.</span>
-<span class="sd">        If value is true, it might decrease performance. Default: False</span>
+<span class="sd">        If the value is true, it might decrease performance. Default: False</span>
 
 
 <span class="sd">    Examples</span>
@@ -559,7 +569,7 @@ document.write(`
                                  <span class="s2">&quot;With this property you select if you want to return mapping column&quot;</span><span class="p">,</span>
                                  <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 <div class="viewcode-block" id="DeIdentification.blackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.blackList">[docs]</a>    <span class="n">blackList</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;blackList&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;List of entities ignored for masking or obfuscation.The default values are: </span><span class="se">\&quot;</span><span class="s2">SSN</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">PASSPORT</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">DLN</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">NPI</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">C_CARD</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">IBAN</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">DEA</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;List of entities that will be ignored in the regex file. The rest will be processed.The default values are: </span><span class="se">\&quot;</span><span class="s2">SSN</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">PASSPORT</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">DLN</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">NPI</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">C_CARD</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">IBAN</span><span class="se">\&quot;</span><span class="s2">,</span><span class="se">\&quot;</span><span class="s2">DEA</span><span class="se">\&quot;</span><span class="s2">&quot;</span><span class="p">,</span>
                       <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
 <div class="viewcode-block" id="DeIdentification.language"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.language">[docs]</a>    <span class="n">language</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;language&quot;</span><span class="p">,</span> <span class="s2">&quot;The language used to select the regex file and some faker entities&quot;</span><span class="p">,</span>
                      <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
@@ -609,12 +619,14 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blackList</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setLanguage"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLanguage">[docs]</a>    <span class="k">def</span> <span class="nf">setLanguage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The language used to select the regex file and some faker entities.&#39;en&#39;(english),&#39;de&#39;() or &#39;es&#39;(Spanish)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The language used to select the regex file and some faker entities.</span>
+<span class="sd">        &#39;en&#39;(English), &#39;de&#39;(German), &#39;es&#39;(Spanish), &#39;fr&#39;(French), &#39;ar&#39;(Arabic) or &#39;ro&#39;(Romanian).</span>
+<span class="sd">        Default:&#39;en&#39;</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        l : str</span>
-<span class="sd">          The language used to select the regex file and some faker entities.&#39;en&#39;(english),&#39;de&#39;() or &#39;es&#39;(Spanish)</span>
+<span class="sd">          The language used to select the regex file and some faker entities.&#39;en&#39;(English), &#39;de&#39;(German), &#39;es&#39;(Spanish), &#39;fr&#39;(French), &#39;ar&#39;(Arabic) or &#39;ro&#39;(Romanian). Default:&#39;en&#39;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="n">l</span><span class="p">)</span></div>
 
@@ -624,7 +636,7 @@ document.write(`
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        path : str</span>
-<span class="sd">            Path wher is de dictionary</span>
+<span class="sd">            Path where the dictionary is</span>
 <span class="sd">        read_as: ReadAs</span>
 <span class="sd">            Format of the file</span>
 <span class="sd">        options: dict</span>
@@ -636,12 +648,12 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">regexPatternsDictionary</span><span class="o">=</span><span class="n">ExternalResource</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">read_as</span><span class="p">,</span> <span class="n">options</span><span class="p">))</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setMode"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setMode">[docs]</a>    <span class="k">def</span> <span class="nf">setMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets mode for Anonimizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets mode for Anonymizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        m : str</span>
-<span class="sd">            Mode for Anonimizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
+<span class="sd">            Mode for Anonymizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">m</span><span class="p">)</span></div>
 
@@ -696,7 +708,7 @@ document.write(`
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        f : str</span>
+<span class="sd">        c : str</span>
 <span class="sd">            Separator character in refFile</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">refSep</span><span class="o">=</span><span class="n">c</span><span class="p">)</span></div>
@@ -706,30 +718,32 @@ document.write(`
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        f : str</span>
+<span class="sd">        t : str</span>
 <span class="sd">            Tag representing dates in the obfuscate reference file (default: DATE)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">dateTag</span><span class="o">=</span><span class="n">t</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setZipCodeTag"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setZipCodeTag">[docs]</a>    <span class="k">def</span> <span class="nf">setZipCodeTag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;&quot;Tag representing zip codes in the obfuscate reference file (default: ZIPCODE)&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tag representing zip codes in the obfuscate reference file (default: ZIP)</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        f : str</span>
-<span class="sd">            Tag representing zip codes  in the obfuscate reference file (default: ZIPCODE)</span>
+<span class="sd">        t : str</span>
+<span class="sd">            Tag representing zip codes in the obfuscate reference file (default: ZIP)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">zipCodeTag</span><span class="o">=</span><span class="n">t</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setObfuscateDate"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setObfuscateDate">[docs]</a>    <span class="k">def</span> <span class="nf">setObfuscateDate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets auxiliary label which maps resolved entities to additional labels</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;When mode==&#39;obfuscate&#39; whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.</span>
+<span class="sd">        When setting to ``true``, make sure dateFormats param fits the needs.</span>
+<span class="sd">        If the value is ``true`` and obfuscation is failed, then unnormalizedDateMode param will be activated.</span>
+<span class="sd">        When setting to ``false``, then the date will be masked to &lt;DATE&gt;</span>
+<span class="sd">        Default: false</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        value : str</span>
-<span class="sd">            When mode==&quot;obfuscate&quot; whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.</span>
-<span class="sd">            When setting to `true`, make sure dateFormats param fits the needs (default: false)</span>
-<span class="sd">            WHen setting to &#39;false&#39; then the date will be mask to &lt;DATE&gt;</span>
+<span class="sd">            When mode==&#39;obfuscate&#39; whether to obfuscate dates or not. Default: false</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">obfuscateDate</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
 
@@ -754,12 +768,12 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">dateToYear</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setMinYear"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setMinYear">[docs]</a>    <span class="k">def</span> <span class="nf">setMinYear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets minimum year to be used when transforming dates into years.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets minimum year to be used when transforming dates into years. Default: &#39;1929&#39;</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : int</span>
-<span class="sd">            Minimum year to be used when transforming dates into years.</span>
+<span class="sd">            Minimum year to be used when transforming dates into years. Default: &#39;1929&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">minYear</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
@@ -768,18 +782,20 @@ document.write(`
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        name : str</span>
+<span class="sd">        s : str</span>
 <span class="sd">            List of date formats to automatically displace if parsed</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">dateFormats</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setConsistentObfuscation"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setConsistentObfuscation">[docs]</a>    <span class="k">def</span> <span class="nf">setConsistentObfuscation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether to replace very similar entities in a document with the same randomized term (default: true).The similarity is based on the Levenshtein Distance between the words.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether to replace very similar entities in a document with the same randomized term (default: true).</span>
+<span class="sd">        The similarity is based on the Levenshtein Distance between the words.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : str</span>
-<span class="sd">            Whether to replace very similar entities in a document with the same randomized term .The similarity is based on the Levenshtein Distance between the words.</span>
+<span class="sd">            Whether to replace very similar entities in a document with the same randomized term.</span>
+<span class="sd">            The similarity is based on the Levenshtein Distance between the words.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">consistentObfuscation</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
@@ -804,7 +820,9 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">obfuscateRefSource</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setRegexOverride"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setRegexOverride">[docs]</a>    <span class="k">def</span> <span class="nf">setRegexOverride</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether to prioritize regex over ner entities</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether to prioritize regex over ner entities.</span>
+<span class="sd">        If the value is true, prioritize the regex entities; if the value is false, prioritize the ner.</span>
+<span class="sd">        The default value is false.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -814,22 +832,25 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">regexOverride</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setIgnoreRegex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setIgnoreRegex">[docs]</a>    <span class="k">def</span> <span class="nf">setIgnoreRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets if you want to use regex.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether you want to use regex or not. If the value is &#39;True&#39;,</span>
+<span class="sd">        it can increase performance but might decrease accuracy. Default: False.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : bool</span>
-<span class="sd">            Whether to use regex.</span>
+<span class="sd">            Whether to use regex or not. If the value is &#39;True&#39;,</span>
+<span class="sd">        it can increase performance but might decrease accuracy. Default: False.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">ignoreRegex</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setSeed"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSeed">[docs]</a>    <span class="k">def</span> <span class="nf">setSeed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the seed to select the entities on obfuscate mode</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the seed to select the entities on obfuscate mode. With the seed,</span>
+<span class="sd">        you can reply to an execution several times with the same output.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : int</span>
-<span class="sd">            The seed to select the entities on obfuscate mode</span>
+<span class="sd">            The seed to select the entities on obfuscate mode.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
@@ -848,7 +869,7 @@ document.write(`
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        name : str</span>
+<span class="sd">        s : str</span>
 <span class="sd">            Mapping column that will return the Annotations chunks with the fake entities</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">mappingsColumn</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
@@ -859,36 +880,44 @@ document.write(`
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : bool</span>
-<span class="sd">            Whether to return the mappings column.</span>
+<span class="sd">            Whether to return the mapping column.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">returnEntityMappings</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setBlackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setBlackList">[docs]</a>    <span class="k">def</span> <span class="nf">setBlackList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of entities ignored for masking or obfuscation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets a list of entities that will be ignored in the regex file. The rest will be processed.</span>
+<span class="sd">        The default values are &quot;IBAN&quot;,&quot;ZIP&quot;,&quot;NPI&quot;,&quot;URL&quot;,&quot;DLN&quot;,&quot;PASSPORT&quot;,&quot;EMAIL&quot;,&quot;C_CARD&quot;,&quot;DEA&quot;,&quot;SSN&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : list</span>
-<span class="sd">            List of entities ignored for masking or obfuscation.The default values are: values are &quot;SSN&quot;,&quot;PASSPORT&quot;,&quot;DLN&quot;,&quot;NPI&quot;,&quot;C_CARD&quot;,&quot;IBAN&quot;,&quot;DEA&quot;</span>
+<span class="sd">            List of entities that will be ignored in the regex file. The rest will be processed.</span>
+<span class="sd">        The default values are &quot;IBAN&quot;,&quot;ZIP&quot;,&quot;NPI&quot;,&quot;URL&quot;,&quot;DLN&quot;,&quot;PASSPORT&quot;,&quot;EMAIL&quot;,&quot;C_CARD&quot;,&quot;DEA&quot;,&quot;SSN&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">blackList</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setUseShifDays"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setUseShifDays">[docs]</a>    <span class="k">def</span> <span class="nf">setUseShifDays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets if you want to use the random shift day when de document has this metadata.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets if you want to use the random shift day when the document has this in its metadata. Default: False</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : bool</span>
-<span class="sd">            Whether to use regex.</span>
+<span class="sd">            Whether to use the random shift day when the document has this in its metadata. Default: False</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">useShifDays</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setRegion"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setRegion">[docs]</a>    <span class="k">def</span> <span class="nf">setRegion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets if you the country ountry coude format</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; With this property, you can select particular dateFormats. This property is especially used when obfuscating dates.</span>
+<span class="sd">        For example:</span>
+<span class="sd">        Decide whether the first part of 11/11/2023 is a day or the second part is a day when obfuscating dates.</span>
+<span class="sd">        The values are following:</span>
+<span class="sd">        &#39;eu&#39; for European Union</span>
+<span class="sd">        &#39;us&#39; for the USA</span>
+<span class="sd">        Default: &#39;eu&#39;</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : str</span>
-<span class="sd">            Whether to use region.</span>
+<span class="sd">           The region to use select date formats. Options: &#39;eu&#39; for European Union, &#39;us&#39; for the USA, Default: &#39;eu&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
@@ -938,7 +967,7 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sameLengthFormattedEntities</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentification.setSelectiveObfuscationModes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes">[docs]</a>    <span class="k">def</span> <span class="nf">setSelectiveObfuscationModes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets a Json path which has a dictionary of modes to enable multi-mode deidentification.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets a Json path which has a dictionary of modes to enable multi-mode deIdentification.</span>
 <span class="sd">            &#39;obfuscate&#39;: Replace the values with random values.</span>
 <span class="sd">            &#39;mask_same_length_chars&#39;: Replace the name with the asterisks with same length minus two plus brackets on both end.</span>
 <span class="sd">            &#39;mask_entity_labels&#39;: Replace the values with the entity value.</span>
@@ -974,7 +1003,8 @@ document.write(`
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        l : str</span>
-<span class="sd">          Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False</span>
+<span class="sd">          Whether to use gender-aware names or not during obfuscation. This param effects only names.</span>
+<span class="sd">          If value is true, it might decrease performance. Default: False</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">genderAwareness</span><span class="o">=</span><span class="n">l</span><span class="p">)</span></div>
 
@@ -1000,11 +1030,15 @@ document.write(`
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    regexPatternsDictionary</span>
-<span class="sd">        ictionary with regular expression patterns that match some protected entity</span>
+<span class="sd">        Dictionary with regular expression patterns that match some protected entity</span>
 <span class="sd">    mode</span>
 <span class="sd">        Mode for Anonimizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
 <span class="sd">    obfuscateDate</span>
-<span class="sd">        When mode==&#39;obfuscate&#39; whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible. When setting to `true`, make sure dateFormats param fits the needs (default: false)</span>
+<span class="sd">        When mode==&#39;obfuscate&#39; whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.</span>
+<span class="sd">        When setting to ``true``, make sure dateFormats param fits the needs.</span>
+<span class="sd">        If the value is true and obfuscation is failed, then unnormalizedDateMode param will be activated.</span>
+<span class="sd">        When setting to &#39;false&#39;, then the date will be masked to &lt;DATE&gt;</span>
+<span class="sd">        Default: false</span>
 <span class="sd">    dateTag</span>
 <span class="sd">        Tag representing dates in the obfuscate reference file (default: DATE)</span>
 <span class="sd">    days</span>
@@ -1022,12 +1056,16 @@ document.write(`
 <span class="sd">        Similarity threshold [0.0-1.0] to consider two appearances of an entity as `the same` (default: 0.9).</span>
 <span class="sd">    obfuscateRefSource</span>
 <span class="sd">        The source of obfuscation of to obfuscate the entities.For dates entities doesnt apply tha method.</span>
-<span class="sd">        The values ar the following:</span>
+<span class="sd">        The values are the following:</span>
 <span class="sd">        file: Takes the entities from the obfuscatorRefFile</span>
 <span class="sd">        faker: Takes the entities from the Faker module</span>
 <span class="sd">        both: Takes the entities from the obfuscatorRefFile and the faker module randomly.</span>
 <span class="sd">    regexOverride</span>
 <span class="sd">        If is true prioritize the regex entities, if is false prioritize the ner.</span>
+<span class="sd">    language</span>
+<span class="sd">        The language used to select the regex file and some faker entities.</span>
+<span class="sd">        The values are the following:</span>
+<span class="sd">        &#39;en&#39;(English), &#39;de&#39;(German), &#39;es&#39;(Spanish), &#39;fr&#39;(French), &#39;ar&#39;(Arabic) or &#39;ro&#39;(Romanian). Default:&#39;en&#39;.</span>
 <span class="sd">    seed</span>
 <span class="sd">        It is the seed to select the entities on obfuscate mode.With the seed you can reply a execution several times with the same ouptut.</span>
 <span class="sd">    ignoreRegex</span>
@@ -1041,7 +1079,8 @@ document.write(`
 <span class="sd">    returnEntityMappings</span>
 <span class="sd">        With this property you select if you want to return mapping column</span>
 <span class="sd">    blackList</span>
-<span class="sd">        List of entities ignored for masking or obfuscation.The default values are: &quot;SSN&quot;,&quot;PASSPORT&quot;,&quot;DLN&quot;,&quot;NPI&quot;,&quot;C_CARD&quot;,&quot;IBAN&quot;,&quot;DEA&quot;</span>
+<span class="sd">        List of entities that will be ignored in the regex file. The rest will be processed.</span>
+<span class="sd">        The default values are &quot;IBAN&quot;,&quot;ZIP&quot;,&quot;NPI&quot;,&quot;URL&quot;,&quot;DLN&quot;,&quot;PASSPORT&quot;,&quot;EMAIL&quot;,&quot;C_CARD&quot;,&quot;DEA&quot;,&quot;SSN&quot;</span>
 <span class="sd">    regexEntities</span>
 <span class="sd">        Keep the regex entities used in the regexPatternDictionary</span>
 <span class="sd">    maskingPolicy</span>
@@ -1167,9 +1206,7 @@ document.write(`
                        <span class="s2">&quot;Y if we want the model to transform dates into years, N otherwise.&quot;</span><span class="p">,</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 <div class="viewcode-block" id="DeIdentificationModel.minYear"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.minYear">[docs]</a>    <span class="n">minYear</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;minYear&quot;</span><span class="p">,</span> <span class="s2">&quot;Minimum year to be used when transforming dates into years.&quot;</span><span class="p">,</span>
                     <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">)</span></div>
-    <span class="n">dateFormats</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;dateFormats&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;List of date formats to automatically displace if parsed&quot;</span><span class="p">,</span>
-                        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span>
+
 <div class="viewcode-block" id="DeIdentificationModel.consistentObfuscation"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.consistentObfuscation">[docs]</a>    <span class="n">consistentObfuscation</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;consistentObfuscation&quot;</span><span class="p">,</span>
                                   <span class="s2">&quot;Whether to replace very similar entities in a document with the same randomized term (default: true).&quot;</span><span class="p">,</span>
                                   <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
@@ -1207,10 +1244,9 @@ document.write(`
 <div class="viewcode-block" id="DeIdentificationModel.regexEntities"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.regexEntities">[docs]</a>    <span class="n">regexEntities</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;regexEntities&quot;</span><span class="p">,</span>
                           <span class="s2">&quot;Keep the regex entities used in the regexPatternDictionary&quot;</span><span class="p">,</span>
                           <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
-    <span class="n">mode</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="s2">&quot;Mode for Anonimizer [&#39;mask&#39;|&#39;ofuscate&#39;]&quot;</span><span class="p">,</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span>
 
 <div class="viewcode-block" id="DeIdentificationModel.language"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.language">[docs]</a>    <span class="n">language</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;language&quot;</span><span class="p">,</span>
-                     <span class="s2">&quot;The language used to select the regex file and some faker entities.&#39;en&#39;(english),&#39;de&#39;() or &#39;es&#39;(Spanish)&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;The language used to select the regex file and some faker entities.&quot;</span><span class="p">,</span>
                      <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 <div class="viewcode-block" id="DeIdentificationModel.useShifDays"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.useShifDays">[docs]</a>    <span class="n">useShifDays</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;useShifDays&quot;</span><span class="p">,</span> <span class="s2">&quot;Select if you want to use the reandmo shift per record&quot;</span><span class="p">,</span>
                         <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
@@ -1234,7 +1270,6 @@ document.write(`
                                         <span class="s2">&quot;List of formatted entities to generate the same length outputs as original ones during obfuscation&quot;</span><span class="p">,</span>
                                         <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
 
-
 <div class="viewcode-block" id="DeIdentificationModel.genderAwareness"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.genderAwareness">[docs]</a>    <span class="n">genderAwareness</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
                             <span class="s2">&quot;genderAwareness&quot;</span><span class="p">,</span>
                             <span class="s2">&quot;Whether to use gender-aware names or not during obfuscation.&quot;</span><span class="p">,</span>
@@ -1246,22 +1281,25 @@ document.write(`
         <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blackList</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setLanguage"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setLanguage">[docs]</a>    <span class="k">def</span> <span class="nf">setLanguage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lang</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;The language used to select the regex file and some faker entities.&#39;en&#39;(english),&#39;de&#39;() or &#39;es&#39;(Spanish)</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The language used to select the regex file and some faker entities.</span>
+<span class="sd">        The values are the following:</span>
+<span class="sd">        &#39;en&#39;(English), &#39;de&#39;(German), &#39;es&#39;(Spanish), &#39;fr&#39;(French), &#39;ar&#39;(Arabic) or &#39;ro&#39;(Romanian).</span>
+<span class="sd">        Default:&#39;en&#39;</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        lang : str</span>
-<span class="sd">          The language used to select the regex file and some faker entities.&#39;en&#39;(english),&#39;de&#39;() or &#39;es&#39;(Spanish)</span>
+<span class="sd">          The language used to select the regex file and some faker entities.&#39;en&#39;(English), &#39;de&#39;(German), &#39;es&#39;(Spanish), &#39;fr&#39;(French), &#39;ar&#39;(Arabic) or &#39;ro&#39;(Romanian). Default:&#39;en&#39;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="n">lang</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setMode"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMode">[docs]</a>    <span class="k">def</span> <span class="nf">setMode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets mode for Anonimizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets mode for Anonymizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        mode : str</span>
-<span class="sd">            Mode for Anonimizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
+<span class="sd">            Mode for Anonymizer [&#39;mask&#39;|&#39;obfuscate&#39;]</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">)</span></div>
 
@@ -1292,17 +1330,17 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">fixedMaskLength</span><span class="o">=</span><span class="n">length</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setDateTag"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setDateTag">[docs]</a>    <span class="k">def</span> <span class="nf">setDateTag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set file with the terms to be used for Obfuscation</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set Tag representing what are the NER entity (default: DATE)</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        tag : str</span>
-<span class="sd">            File with the terms to be used for Obfuscation</span>
+<span class="sd">            Tag representing what are the NER entity (default: DATE)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">dateTag</span><span class="o">=</span><span class="n">tag</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setZipCodeTag"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setZipCodeTag">[docs]</a>    <span class="k">def</span> <span class="nf">setZipCodeTag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;&quot;Tag representing zip codes in the obfuscate reference file (default: ZIP)&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Tag representing zip codes in the obfuscate reference file (default: ZIP)</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1312,14 +1350,16 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">zipCodeTag</span><span class="o">=</span><span class="n">tag</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setObfuscateDate"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setObfuscateDate">[docs]</a>    <span class="k">def</span> <span class="nf">setObfuscateDate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets auxiliary label which maps resolved entities to additional labels</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;When mode==&#39;obfuscate&#39; whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.</span>
+<span class="sd">        When setting to ``true``, make sure dateFormats param fits the needs.</span>
+<span class="sd">        If the value is ``true`` and obfuscation is failed, then unnormalizedDateMode param will be activated.</span>
+<span class="sd">        When setting to ``false``, then the date will be masked to &lt;DATE&gt;</span>
+<span class="sd">        Default: false</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        value : str</span>
-<span class="sd">            When mode==&quot;obfuscate&quot; whether to obfuscate dates or not. This param helps in consistency to make dateFormats more visible.</span>
-<span class="sd">            When setting to `true`, make sure dateFormats param fits the needs (default: false)</span>
-<span class="sd">            WHen setting to &#39;false&#39; then the date will be mask to &lt;DATE&gt;</span>
+<span class="sd">            When mode==&#39;obfuscate&#39; whether to obfuscate dates or not. Default: false</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">obfuscateDate</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
 
@@ -1344,7 +1384,7 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">dateToYear</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setMinYear"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMinYear">[docs]</a>    <span class="k">def</span> <span class="nf">setMinYear</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets minimum year to be used when transforming dates into years.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets minimum year to be used when transforming dates into years. Default: &#39;1929&#39;</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1364,12 +1404,14 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">dateFormats</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setConsistentObfuscation"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setConsistentObfuscation">[docs]</a>    <span class="k">def</span> <span class="nf">setConsistentObfuscation</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether to replace very similar entities in a document with the same randomized term (default: true).The similarity is based on the Levenshtein Distance between the words.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether to replace very similar entities in a document with the same randomized term (default: true).</span>
+<span class="sd">        The similarity is based on the Levenshtein Distance between the words.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : str</span>
-<span class="sd">            Whether to replace very similar entities in a document with the same randomized term (default: true).The similarity is based on the Levenshtein Distance between the words.</span>
+<span class="sd">            Whether to replace very similar entities in a document with the same randomized term (default: true).</span>
+<span class="sd">        The similarity is based on the Levenshtein Distance between the words.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">consistentObfuscation</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
@@ -1394,7 +1436,9 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">obfuscateRefSource</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setRegexOverride"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setRegexOverride">[docs]</a>    <span class="k">def</span> <span class="nf">setRegexOverride</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether to prioritize regex over ner entities</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether to prioritize regex over ner entities.</span>
+<span class="sd">        If the value is true, prioritize the regex entities; if the value is false, prioritize the ner.</span>
+<span class="sd">        The default value is false.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -1404,22 +1448,26 @@ document.write(`
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">regexOverride</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setSeed"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setSeed">[docs]</a>    <span class="k">def</span> <span class="nf">setSeed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the seed to select the entities on obfuscate mode</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the seed to select the entities on obfuscate mode. With the seed,</span>
+<span class="sd">        you can reply to an execution several times with the same output.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : int</span>
-<span class="sd">            The seed to select the entities on obfuscate mode</span>
+<span class="sd">            The seed to select the entities on obfuscate mode. With the seed,</span>
+<span class="sd">        you can reply to an execution several times with the same output.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setIgnoreRegex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setIgnoreRegex">[docs]</a>    <span class="k">def</span> <span class="nf">setIgnoreRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets if you want to use regex.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets whether you want to use regex or not. If the value is &#39;True&#39;,</span>
+<span class="sd">        it can increase performance but might decrease accuracy. Default: False.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : bool</span>
-<span class="sd">            Whether to use regex.</span>
+<span class="sd">            Whether to use regex or not. If the value is &#39;True&#39;,</span>
+<span class="sd">        it can increase performance but might decrease accuracy. Default: False.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">ignoreRegex</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
@@ -1438,18 +1486,20 @@ document.write(`
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        name : str</span>
+<span class="sd">        s : str</span>
 <span class="sd">            Mapping column that will return the Annotations chunks with the fake entities</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">mappingsColumn</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setBlackList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setBlackList">[docs]</a>    <span class="k">def</span> <span class="nf">setBlackList</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;List of entities ignored for masking or obfuscation.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets list of entities that will be ignored in the regex file. The rest will be processed.</span>
+<span class="sd">        The default values are &quot;IBAN&quot;,&quot;ZIP&quot;,&quot;NPI&quot;,&quot;URL&quot;,&quot;DLN&quot;,&quot;PASSPORT&quot;,&quot;EMAIL&quot;,&quot;C_CARD&quot;,&quot;DEA&quot;,&quot;SSN&quot;</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : list</span>
-<span class="sd">            List of entities ignored for masking or obfuscation.The default values are: &quot;SSN&quot;,&quot;PASSPORT&quot;,&quot;DLN&quot;,&quot;NPI&quot;,&quot;C_CARD&quot;,&quot;IBAN&quot;,&quot;DEA&quot;</span>
+<span class="sd">            List of entities that will be ignored in the regex file. The rest will be processed.</span>
+<span class="sd">        The default values are &quot;IBAN&quot;,&quot;ZIP&quot;,&quot;NPI&quot;,&quot;URL&quot;,&quot;DLN&quot;,&quot;PASSPORT&quot;,&quot;EMAIL&quot;,&quot;C_CARD&quot;,&quot;DEA&quot;,&quot;SSN&quot;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">blackList</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
@@ -1459,32 +1509,38 @@ document.write(`
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : bool</span>
-<span class="sd">            Whether to save the mappings column.</span>
+<span class="sd">            Whether to save the mapping column.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">returnEntityMappings</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.getRegexEntities"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getRegexEntities">[docs]</a>    <span class="k">def</span> <span class="nf">getRegexEntities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return teh regexEntities value.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the regexEntities value.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">getOrDefault</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">regexEntities</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setUseShifDays"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setUseShifDays">[docs]</a>    <span class="k">def</span> <span class="nf">setUseShifDays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets if you want to use the random shift day when de document has this metadata.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets if you want to use the random shift day when the document has this in its metadata. Default: False</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : bool</span>
-<span class="sd">            Whether to use regex.</span>
+<span class="sd">            Whether to use the random shift day when the document has this in its metadata. Default: False</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">useShifDays</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DeIdentificationModel.setRegion"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setRegion">[docs]</a>    <span class="k">def</span> <span class="nf">setRegion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets if you the country ountry coude format</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; With this property, you can select particular dateFormats. This property is especially used when obfuscating dates.</span>
+<span class="sd">        For example:</span>
+<span class="sd">        Decide whether the first part of 11/11/2023 is a day or the second part is a day when obfuscating dates.</span>
+<span class="sd">        The values are following:</span>
+<span class="sd">        &#39;eu&#39; for European Union</span>
+<span class="sd">        &#39;us&#39; for the USA</span>
+<span class="sd">        Default: &#39;eu&#39;</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        s : str</span>
-<span class="sd">            Whether to use regex.</span>
+<span class="sd">           The region to use select date formats. Options: &#39;eu&#39; for European Union, &#39;us&#39; for the USA, Default: &#39;eu&#39;</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">region</span><span class="o">=</span><span class="n">s</span><span class="p">)</span></div>
 
@@ -1542,7 +1598,8 @@ document.write(`
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        l : str</span>
-<span class="sd">          Whether to use gender-aware names or not during obfuscation. This param effects only names. If value is true, it might decrease performance. Default: False</span>
+<span class="sd">          Whether to use gender-aware names or not during obfuscation. This param effects only names.</span>
+<span class="sd">        If value is true, it might decrease performance. Default: False</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">genderAwareness</span><span class="o">=</span><span class="n">l</span><span class="p">)</span></div>
 
@@ -1565,8 +1622,8 @@ document.write(`
 <span class="sd">        DeIdentificationModel</span>
 <span class="sd">            The restored model</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">ResourceDownloader</span>
-        <span class="k">return</span> <span class="n">ResourceDownloader</span><span class="o">.</span><span class="n">downloadModel</span><span class="p">(</span><span class="n">DeIdentificationModel</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span>
+        <span class="kn">from</span> <span class="nn">sparknlp_jsl.pretrained</span> <span class="kn">import</span> <span class="n">InternalResourceDownloader</span>
+        <span class="k">return</span> <span class="n">InternalResourceDownloader</span><span class="o">.</span><span class="n">downloadModel</span><span class="p">(</span><span class="n">DeIdentificationModel</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span>
                                                 <span class="n">j_dwn</span><span class="o">=</span><span class="s1">&#39;InternalsPythonResourceDownloader&#39;</span><span class="p">)</span></div></div>
 </pre></div>
 

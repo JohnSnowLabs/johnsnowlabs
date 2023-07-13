@@ -318,7 +318,38 @@ document.write(`
 
 
 <div class="viewcode-block" id="profile"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profile">[docs]</a><span class="k">def</span> <span class="nf">profile</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model, default version: 24, year: 2019.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model, default version: 28, combined.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApply</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -326,17 +357,191 @@ document.write(`
                                                            <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">medicaid</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="profileV24Y17"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV24Y17">[docs]</a><span class="k">def</span> <span class="nf">profileV24Y17</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 24, year 2017.</span>
+<div class="viewcode-block" id="profileESRDV21Y19"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileESRDV21Y19">[docs]</a><span class="k">def</span> <span class="nf">profileESRDV21Y19</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;DI&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC ESRD model version 21, year: 2019.</span>
+<span class="sd">        Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">        When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">                &quot;DI&quot;, &quot;GC&quot;, &quot;GI&quot;, &quot;DNE&quot;, &quot;GNE&quot;</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
-    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV24Y17</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
+    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyESRDV21Y19</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
+                                                                     <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
+                                                                     <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">medicaid</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="profileV28"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV28">[docs]</a><span class="k">def</span> <span class="nf">profileV28</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 28, Combined.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
+    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV28</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
                                                               <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
                                                               <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">medicaid</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="profileV28Y24"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV28Y24">[docs]</a><span class="k">def</span> <span class="nf">profileV28Y24</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 28, year 2024.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
+    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV28Y24</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
+                                                                 <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
+                                                                 <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">medicaid</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="profileV24Y17"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV24Y17">[docs]</a><span class="k">def</span> <span class="nf">profileV24Y17</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 24, year 2017.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
+    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV24Y17</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
+                                                                 <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
+                                                                 <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">medicaid</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="profileV24Y18"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV24Y18">[docs]</a><span class="k">def</span> <span class="nf">profileV24Y18</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 24, year 2018.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV24Y18</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -346,6 +551,37 @@ document.write(`
 
 <div class="viewcode-block" id="profileV24Y19"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV24Y19">[docs]</a><span class="k">def</span> <span class="nf">profileV24Y19</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 24, year 2019.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV24Y19</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -355,6 +591,37 @@ document.write(`
 
 <div class="viewcode-block" id="profileV24Y20"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV24Y20">[docs]</a><span class="k">def</span> <span class="nf">profileV24Y20</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 24, year 2020.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV24Y20</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -364,6 +631,37 @@ document.write(`
 
 <div class="viewcode-block" id="profileV24Y21"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV24Y21">[docs]</a><span class="k">def</span> <span class="nf">profileV24Y21</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 24, year 2021.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV24Y21</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -373,6 +671,37 @@ document.write(`
 
 <div class="viewcode-block" id="profileV24Y22"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV24Y22">[docs]</a><span class="k">def</span> <span class="nf">profileV24Y22</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 24, year 2022.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV24Y22</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -380,17 +709,119 @@ document.write(`
                                                                  <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">medicaid</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="profileV23Y18"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV23Y18">[docs]</a><span class="k">def</span> <span class="nf">profileV23Y18</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 23, year 2018.</span>
+<div class="viewcode-block" id="profileV24"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV24">[docs]</a><span class="k">def</span> <span class="nf">profileV24</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 24, combined.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
-    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV23Y18</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
+    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV24</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
                                                               <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
                                                               <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">medicaid</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="profileV23Y18"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV23Y18">[docs]</a><span class="k">def</span> <span class="nf">profileV23Y18</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 23, year 2018.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
+    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV23Y18</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
+                                                                 <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
+                                                                 <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">medicaid</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="profileV23Y19"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV23Y19">[docs]</a><span class="k">def</span> <span class="nf">profileV23Y19</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 23, year 2019.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV23Y19</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -400,6 +831,37 @@ document.write(`
 
 <div class="viewcode-block" id="profileV23"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV23">[docs]</a><span class="k">def</span> <span class="nf">profileV23</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 23, combined.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV23</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -409,6 +871,37 @@ document.write(`
 
 <div class="viewcode-block" id="profileV22Y17"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV22Y17">[docs]</a><span class="k">def</span> <span class="nf">profileV22Y17</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 22, year 2017.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV22Y17</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -418,6 +911,37 @@ document.write(`
 
 <div class="viewcode-block" id="profileV22Y18"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV22Y18">[docs]</a><span class="k">def</span> <span class="nf">profileV22Y18</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 22, year 2018.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV22Y18</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -427,6 +951,37 @@ document.write(`
 
 <div class="viewcode-block" id="profileV22Y19"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV22Y19">[docs]</a><span class="k">def</span> <span class="nf">profileV22Y19</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 22, year 2019.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV22Y19</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -436,6 +991,37 @@ document.write(`
 
 <div class="viewcode-block" id="profileV22Y20"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV22Y20">[docs]</a><span class="k">def</span> <span class="nf">profileV22Y20</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 22, year 2020.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV22Y20</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -445,6 +1031,37 @@ document.write(`
 
 <div class="viewcode-block" id="profileV22Y21"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV22Y21">[docs]</a><span class="k">def</span> <span class="nf">profileV22Y21</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 22, year 2021.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV22Y21</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -454,6 +1071,37 @@ document.write(`
 
 <div class="viewcode-block" id="profileV22Y22"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV22Y22">[docs]</a><span class="k">def</span> <span class="nf">profileV22Y22</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 22, year 2022.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV22Y22</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
@@ -463,6 +1111,37 @@ document.write(`
 
 <div class="viewcode-block" id="profileV22"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileV22">[docs]</a><span class="k">def</span> <span class="nf">profileV22</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CNA&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">medicaid</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;CMS-HCC model version 22, combined.</span>
+<span class="sd">    Returns the HCC risk profile of a given patient information.</span>
+<span class="sd">    When calculating, we also take into account the coding pattern(intensity) adjustment and normalization factor.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">                 A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">              The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">              The sex of the patient; {&quot;M&quot;, &quot;F&quot;}</span>
+<span class="sd">        elig : str</span>
+<span class="sd">               The eligibility segment of the patient.</span>
+<span class="sd">               Allowed values are as follows:</span>
+<span class="sd">               - &quot;CFA&quot;: Community Full Benefit Dual Aged</span>
+<span class="sd">               - &quot;CFD&quot;: Community Full Benefit Dual Disabled</span>
+<span class="sd">               - &quot;CNA&quot;: Community NonDual Aged</span>
+<span class="sd">               - &quot;CND&quot;: Community NonDual Disabled</span>
+<span class="sd">               - &quot;CPA&quot;: Community Partial Benefit Dual Aged</span>
+<span class="sd">               - &quot;CPD&quot;: Community Partial Benefit Dual Disabled</span>
+<span class="sd">               - &quot;INS&quot;: Long Term Institutional</span>
+<span class="sd">               - &quot;NE&quot;: New Enrollee</span>
+<span class="sd">               - &quot;SNPNE&quot;: SNP NE</span>
+<span class="sd">        orec: str</span>
+<span class="sd">              Original reason for entitlement code.</span>
+<span class="sd">              - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">              - &quot;1&quot;: Disability insurance benefits</span>
+<span class="sd">              - &quot;2&quot;: End-stage renal disease</span>
+<span class="sd">              - &quot;3&quot;: Both DIB and ESRD</span>
+<span class="sd">        medicaid: bool</span>
+<span class="sd">                  If the patient is in Medicaid or not.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
     <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyV22</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
