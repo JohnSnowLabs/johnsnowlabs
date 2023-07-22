@@ -30,7 +30,7 @@ Powered by John Snow Labs Enterprise-Grade Ecosystem:
 ! pip install johnsnowlabs
 
 from johnsnowlabs import nlp
-nlp.load('emotion').predict('Wow that easy!')
+nlp.load('emotion').predict('Wow that was easy!')
 
 ```
 
@@ -131,7 +131,7 @@ returns:
 Take a look at the official Johnsnowlabs page page: [https://nlp.johnsnowlabs.com](https://nlp.johnsnowlabs.com/)  for user documentation and examples
 
 
-| Ressource                                                                                                            |                                Description|
+| Resource                                                                                                            |                                Description|
 |----------------------------------------------------------------------------------------------------------------------|-------------------------------------------|
 | [General Concepts](https://nlu.johnsnowlabs.com/docs/en/concepts)                                                    | General concepts in the Johnsnowlabs library
 | [Overview of 1-liners](https://nlu.johnsnowlabs.com/docs/en/examples)                                                | Most common used models and their results
