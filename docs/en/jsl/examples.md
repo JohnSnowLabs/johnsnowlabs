@@ -1253,6 +1253,24 @@ nlu.load('en.classify_image.base_patch16_224').predict('/content/images/images')
 
 ![vit](/assets/images/nlu/visual/vit_example.png)
 
+## Image Classification (ConvNext)
+[Image Classification Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/convnext_image_classification_overview.ipynb)        
+Image Classifier Based on [ConvNext](https://arxiv.org/abs/2201.03545)
+Lets download a folder of images and predict on it
+```python 
+!wget -q https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/resources/en/images/images.zip
+import shutil
+shutil.unpack_archive("images.zip", "images", "zip")
+! ls /content/images/images/
+```
+
+Once we have image data its easy to label it, we just pass the folder with images to nlu.predict()
+and NLU will return a pandas DF with one row per image detected
+```python
+nlu.load('en.classify_image.convnext.tiny').predict('/content/images/images')
+```
+
+![convnext](/assets/images/nlu/visual/convnext_example.png)
 
 ## Image Classification (SWIN)
 [Image Classification Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb)        
