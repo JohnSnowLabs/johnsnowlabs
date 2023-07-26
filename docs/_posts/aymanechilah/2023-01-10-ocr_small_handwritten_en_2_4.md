@@ -46,8 +46,7 @@ text_detector = ImageTextDetectorV2 \
     .setOutputCol("text_regions") \
     .setWithRefiner(True) \
     .setSizeThreshold(-1) \
-    .setLinkThreshold(0.3) \
-    .setWidth(500)
+    .setLinkThreshol    .setWidth(500)
 
 # Try "ocr_base_handwritten" for better quality
 ocr = ImageToTextV2.pretrained("ocr_small_handwritten", "en", "clinical/ocr") \
