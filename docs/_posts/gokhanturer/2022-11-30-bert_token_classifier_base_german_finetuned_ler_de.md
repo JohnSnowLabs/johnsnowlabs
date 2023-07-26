@@ -94,10 +94,10 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/mrm8488/bert-base-german-finetuned-ler
-- https://github.com/elenanereiss/Legal-Entity-Recognition
-- https://github.com/elenanereiss/Legal-Entity-Recognition
-- http://www.rechtsprechung-im-internet.de
-- https://colab.research.google.com/drive/156Qrd7NsUHwA3nmQ6gXdZY0NzOvqk9AT?usp=sharing
-- https://github.com/elenanereiss/Legal-Entity-Recognition/blob/master/docs/Annotationsrichtlinien.pdf
-- https://twitter.com/mrm8488
+- [https://huggingface.co/mrm8488/bert-base-german-finetuned-ler](https://huggingface.co/mrm8488/bert-base-german-finetuned-ler)
+- [https://github.com/elenanereiss/Legal-Entity-Recognition](https://github.com/elenanereiss/Legal-Entity-Recognition)
+- [https://github.com/elenanereiss/Legal-Entity-Recognition](https://github.com/elenanereiss/Legal-Entity-Recognition)
+- [https://www.rechtsprechung-im-internet.de](https://www.rechtsprechung-im-internet.de)
+- [https://colab.research.google.com/drive/156Qrd7NsUHwA3nmQ6gXdZY0NzOvqk9AT?usp=sharing](https://colab.research.google.com/drive/156Qrd7NsUHwA3nmQ6gXdZY0NzOvqk9AT?usp=sharing)
+- [https://github.com/elenanereiss/Legal-Entity-Recognition/blob/master/docs/Annotationsrichtlinien.pdf](https://github.com/elenanereiss/Legal-Entity-Recognition/blob/master/docs/Annotationsrichtlinien.pdf)
+- [https://twitter.com/mrm8488](https://twitter.com/mrm8488)

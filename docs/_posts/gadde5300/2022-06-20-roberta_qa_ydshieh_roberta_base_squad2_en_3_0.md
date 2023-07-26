@@ -101,17 +101,17 @@ nlu.load("en.answer_question.squadv2.roberta.base.by_ydshieh").predict("""What's
 
 ## References
 
-- https://huggingface.co/ydshieh/roberta-base-squad2
-- https://www.linkedin.com/company/deepset-ai/
-- https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/
-- https://haystack.deepset.ai/community/join
-- https://github.com/deepset-ai/FARM/issues/552
-- https://github.com/deepset-ai/FARM
-- http://www.deepset.ai/jobs
-- https://twitter.com/deepset_ai
-- https://github.com/deepset-ai/FARM/blob/master/examples/question_answering.py
-- https://github.com/deepset-ai/haystack/discussions
-- https://github.com/deepset-ai/haystack/
-- https://deepset.ai
-- https://deepset.ai/germanquad
-- https://deepset.ai/german-bert
+- [https://huggingface.co/ydshieh/roberta-base-squad2](https://huggingface.co/ydshieh/roberta-base-squad2)
+- [https://www.linkedin.com/company/deepset-ai/](https://www.linkedin.com/company/deepset-ai/)
+- [https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/](https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/)
+- [https://haystack.deepset.ai/community/join](https://haystack.deepset.ai/community/join)
+- [https://github.com/deepset-ai/FARM/issues/552](https://github.com/deepset-ai/FARM/issues/552)
+- [https://github.com/deepset-ai/FARM](https://github.com/deepset-ai/FARM)
+- [https://www.deepset.ai/jobs](https://www.deepset.ai/jobs)
+- [https://twitter.com/deepset_ai](https://twitter.com/deepset_ai)
+- [https://github.com/deepset-ai/FARM/blob/master/examples/question_answering.py](https://github.com/deepset-ai/FARM/blob/master/examples/question_answering.py)
+- [https://github.com/deepset-ai/haystack/discussions](https://github.com/deepset-ai/haystack/discussions)
+- [https://github.com/deepset-ai/haystack/](https://github.com/deepset-ai/haystack/)
+- [https://deepset.ai](https://deepset.ai)
+- [https://deepset.ai/germanquad](https://deepset.ai/germanquad)
+- [https://deepset.ai/german-bert](https://deepset.ai/german-bert)

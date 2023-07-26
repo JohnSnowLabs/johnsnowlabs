@@ -99,5 +99,5 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/RJ3vans/SignTagger
-- http://rgcl.wlv.ac.uk/~richard/Evans2020_SentenceSimplificationForTextProcessing.pdf
+- [https://huggingface.co/RJ3vans/SignTagger](https://huggingface.co/RJ3vans/SignTagger)
+- [https://rgcl.wlv.ac.uk/~richard/Evans2020_SentenceSimplificationForTextProcessing.pdf](https://rgcl.wlv.ac.uk/~richard/Evans2020_SentenceSimplificationForTextProcessing.pdf)

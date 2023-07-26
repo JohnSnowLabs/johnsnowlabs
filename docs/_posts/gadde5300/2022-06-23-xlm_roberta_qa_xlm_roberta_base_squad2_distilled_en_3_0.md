@@ -101,14 +101,14 @@ nlu.load("en.answer_question.squadv2.xlm_roberta.distilled_base").predict("""Wha
 
 ## References
 
-- https://huggingface.co/deepset/xlm-roberta-base-squad2-distilled
-- https://www.linkedin.com/company/deepset-ai/
-- https://twitter.com/deepset_ai
-- http://www.deepset.ai/jobs
-- https://haystack.deepset.ai/community/join
-- https://github.com/deepset-ai/haystack/
-- https://github.com/deepset-ai/FARM
-- https://deepset.ai/germanquad
-- https://deepset.ai
-- https://deepset.ai/german-bert
-- https://github.com/deepset-ai/haystack/discussions
+- [https://huggingface.co/deepset/xlm-roberta-base-squad2-distilled](https://huggingface.co/deepset/xlm-roberta-base-squad2-distilled)
+- [https://www.linkedin.com/company/deepset-ai/](https://www.linkedin.com/company/deepset-ai/)
+- [https://twitter.com/deepset_ai](https://twitter.com/deepset_ai)
+- [https://www.deepset.ai/jobs](https://www.deepset.ai/jobs)
+- [https://haystack.deepset.ai/community/join](https://haystack.deepset.ai/community/join)
+- [https://github.com/deepset-ai/haystack/](https://github.com/deepset-ai/haystack/)
+- [https://github.com/deepset-ai/FARM](https://github.com/deepset-ai/FARM)
+- [https://deepset.ai/germanquad](https://deepset.ai/germanquad)
+- [https://deepset.ai](https://deepset.ai)
+- [https://deepset.ai/german-bert](https://deepset.ai/german-bert)
+- [https://github.com/deepset-ai/haystack/discussions](https://github.com/deepset-ai/haystack/discussions)

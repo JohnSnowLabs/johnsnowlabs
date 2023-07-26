@@ -100,6 +100,6 @@ nlu.load("it.answer_question.squad.bert.base_uncased").predict("""What's my name
 
 ## References
 
-- https://huggingface.co/antoniocappiello/bert-base-italian-uncased-squad-it
-- http://sag.art.uniroma2.it/demo-software/squadit/
-- https://github.com/crux82/squad-it/blob/master/README.md#evaluating-a-neural-model-over-squad-it
+- [https://huggingface.co/antoniocappiello/bert-base-italian-uncased-squad-it](https://huggingface.co/antoniocappiello/bert-base-italian-uncased-squad-it)
+- [https://sag.art.uniroma2.it/demo-software/squadit/](https://sag.art.uniroma2.it/demo-software/squadit/)
+- [https://github.com/crux82/squad-it/blob/master/README.md#evaluating-a-neural-model-over-squad-it](https://github.com/crux82/squad-it/blob/master/README.md#evaluating-a-neural-model-over-squad-it)

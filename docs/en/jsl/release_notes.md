@@ -13,6 +13,820 @@ sidebar:
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
+
+## NLU Version 4.2.2
+
+
+- support for Medical Summarizers
+
+
+New Medical Summarizers:
+- 'en.summarize.clinical_jsl'
+- 'en.summarize.clinical_jsl_augmented'
+- 'en.summarize.biomedical_pubmed'
+- 'en.summarize.generic_jsl'
+- 'en.summarize.clinical_questions'
+- 'en.summarize.radiology'
+- 'en.summarize.clinical_guidelines_large'
+- 'en.summarize.clinical_laymen'
+
+
+## NLU Version 4.2.1
+
+Bugfixes for saving and reloading pipelines on databricks 
+
+## NLU Version 4.2.0
+
+
+## Support for Speech2Text, Images-Classification, Tabular Data, Zero-Shot-NER,  via Wav2Vec2, Tapas, VIT , 4000+ New Models, 90+ Languages,   in John Snow Labs  NLU 4.2.0
+
+
+We are incredibly excited to announce NLU 4.2.0 has been released with new 4000+ models in 90+ languages and support for new 8 Deep Learning Architectures.
+4 new tasks are included for the very first time,
+**Zero-Shot-NER**, **Automatic Speech Recognition**, **Image Classification** and **Table Question Answering** powered
+by [Wav2Vec 2.0](https://arxiv.org/pdf/2006.11477.pdf), [HuBERT](https://arxiv.org/abs/2106.07447),  [TAPAS](https://aclanthology.org/2020.acl-main.398.pdf), [VIT](https://arxiv.org/pdf/2010.11929.pdf), [SWIN](https://arxiv.org/abs/2103.14030), [Zero-Shot-NER](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#zeroshotnermodel).
+
+Additionally, [CamemBERT](https://arxiv.org/abs/1911.03894) based architectures are available for Sequence and Token Classification powered by Spark-NLPs
+[CamemBertForSequenceClassification](https://nlp.johnsnowlabs.com/docs/en/transformers#camembertforsequenceclassification) and [CamemBertForTokenClassification](https://nlp.johnsnowlabs.com/docs/en/transformers#camembertfortokenclassification)
+
+# Automatic Speech Recognition  (ASR)
+[Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/automatic_speech_recognition/automatic_speech_recognition_overview_ASR.ipynb)
+[Wav2Vec 2.0](https://arxiv.org/pdf/2006.11477.pdf) and [HuBERT](https://arxiv.org/abs/2106.07447)  enable ASR for the very first time in NLU.
+**Wav2Vec2** is a transformer model for speech recognition that uses unsupervised pre-training on large amounts of unlabeled speech data to improve the accuracy of automatic speech recognition (ASR) systems. It is based on a self-supervised learning approach that learns to predict masked portions of speech signal, and has shown promising results in reducing the amount of labeled training data required for ASR tasks.
+
+These Models are powered by Spark-NLP's [Wav2Vec2ForCTC Annotator](https://nlp.johnsnowlabs.com/docs/en/transformers#wav2vec2forctc)
+![Wav2Vec2](https://user-images.githubusercontent.com/5762953/192140859-f165317e-4a8f-4b32-9d11-6063db19c503.png)
+
+**HuBERT** models match or surpass the SOTA approaches for speech representation learning for speech recognition, generation, and compression. The Hidden-Unit BERT (HuBERT) approach was proposed for self-supervised speech representation learning, which utilizes an offline clustering step to provide aligned target labels for a BERT-like prediction loss.
+
+These Models is powered by Spark-NLP's [HubertForCTC Annotator](https://nlp.johnsnowlabs.com/docs/en/transformers#hubertforctc)
+
+![HUBERT](https://user-images.githubusercontent.com/5762953/217865459-375756c3-a110-4917-8319-1deecb55304d.png)
+
+**Usage**
+
+You just need an audio-file on disk and pass the path to it or a folder of audio-files.
+
+```python
+import nlu
+# Let's download an audio file 
+!wget https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/resources/en/audio/samples/wavs/ngm_12484_01067234848.wav
+# Let's listen to it 
+from IPython.display import Audio
+FILE_PATH = "ngm_12484_01067234848.wav"
+asr_df = nlu.load('en.speech2text.wav2vec2.v2_base_960h').predict('ngm_12484_01067234848.wav')
+asr_df
+```
+
+| text                                          |
+|:---------------------------------------------|
+| PEOPLE WHO DIED WHILE LIVING IN OTHER PLACES |
+
+
+
+To test out **HuBERT** you just need to update the parameter for `load()`
+```python
+asr_df = nlu.load('en.speech2text.hubert').predict('ngm_12484_01067234848.wav')
+asr_df
+```
+
+
+# Image Classification
+[Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb)
+
+For the first time ever NLU introduces state-of-the-art image classifiers based on   
+[VIT](https://arxiv.org/pdf/2010.11929.pdf) and [Swin](https://arxiv.org/abs/2103.14030) giving you access to hundreds of image classifiers for various domains.
+
+Inspired by the Transformer scaling successes in NLP, the researchers experimented with applying a standard Transformer directly to images, with the fewest possible modifications. To do so, images are split into patches and the sequence of linear embeddings of these patches were provided as an input to a Transformer. Image patches were actually treated the same way as tokens (words) in an NLP application. Image classification models were trained in supervised fashion.
+
+You can check [Scale Vision Transformers (ViT) Beyond Hugging Face](https://hackernoon.com/scale-vision-transformers-vit-beyond-hugging-face) article to learn deeper how ViT works and how it is implemeted in Spark NLP.
+This is Powerd by Spark-NLP's [VitForImageClassification Annotator](https://nlp.johnsnowlabs.com/docs/en/transformers#vitforimageclassification)
+
+![VIT](https://camo.githubusercontent.com/b27f01b616e81636a6135573bbf37a006619ab0853f7dd55ea4fb0e9e89dd33d/68747470733a2f2f692e696d6775722e636f6d2f676e31736369742e706e67)
+
+
+Swin is a hierarchical Transformer whose representation is computed with Shifted windows.
+The shifted windowing scheme brings greater efficiency by limiting self-attention computation to non-overlapping local windows while also allowing for cross-window connection.
+This hierarchical architecture has the flexibility to model at various scales and has linear computational complexity  with respect to image size. These qualities of Swin Transformer make it compatible with a broad range of vision tasks
+This is powerd by Spark-NLP's [Swin For Image Classification](https://nlp.johnsnowlabs.com/docs/en/transformers#swinforimageclassification)
+[Swin Transformer: Hierarchical Vision Transformer using Shifted Windows](https://arxiv.org/abs/2103.14030) by Ze Liu, Yutong Lin, Yue Cao, Han Hu, Yixuan Wei, Zheng Zhang, Stephen Lin, Baining Guo.
+
+![swin](https://user-images.githubusercontent.com/5762953/217882453-bfc4d585-f21b-4401-bdcb-14788973c159.png)
+
+**Usage:**
+```python
+# Download an image
+os.system('wget https://raw.githubusercontent.com/JohnSnowLabs/nlu/release/4.2.0/tests/datasets/ocr/vit/ox.jpg') 
+# Load VIT model and predict on image file
+vit = nlu.load('en.classify_image.base_patch16_224').predict('ox.jpg')
+```
+
+Lets download a folder of images and predict on it
+```python 
+!wget -q https://s3.amazonaws.com/auxdata.johnsnowlabs.com/public/resources/en/images/images.zip
+import shutil
+shutil.unpack_archive("images.zip", "images", "zip")
+! ls /content/images/images/
+```
+
+Once we have image data its easy to label it, we just pass the folder with images to nlu.predict()
+and NLU will return a pandas DF with one row per image detected
+```python
+nlu.load('en.classify_image.base_patch16_224').predict('/content/images/images')
+```
+
+
+![image_classification 1.png](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_2_0/image_classification.png)
+
+
+To use **SWIN** we just update the parameter to `load()`
+```python
+load('en.classify_image.swin.tiny').predict('/content/images/images')
+```
+
+-----------
+
+
+# Visual Table Question Answering
+TapasForQuestionAnswering can load TAPAS Models with a cell selection head and optional aggregation head on top for question-answering tasks on tables (linear layers on top of the hidden-states output to compute logits and optional logits_aggregation), e.g. for SQA, WTQ or WikiSQL-supervised tasks. TAPAS is a BERT-based model specifically designed (and pre-trained) for answering questions about tabular data.
+
+[Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb)
+
+Powered by [TAPAS: Weakly Supervised Table Parsing via Pre-training](https://aclanthology.org/2020.acl-main.398.pdf)
+![TAPAS](https://user-images.githubusercontent.com/5762953/192140733-e08a1e99-0aee-455d-af29-73af497a03ef.png)
+
+**Usage:**
+
+First we need a pandas dataframe on for which we want to ask questions. The so called "context"
+```python
+import pandas as pd 
+
+context_df = pd.DataFrame({
+    'name':['Donald Trump','Elon Musk'], 
+    'money': ['$100,000,000','$20,000,000,000,000'], 
+    'married': ['yes','no'], 
+    'age' : ['75','55'] })
+context_df
+
+```
+
+Then we create an array of questions
+```python
+questions = [
+    "Who earns less than 200,000,000?",
+    "Who earns more than 200,000,000?",
+    "Who earns 100,000,000?",
+    "How much money has Donald Trump?",
+    "Who is the youngest?",
+]
+questions
+
+```
+
+Now Combine the data, pass it to NLU and get answers for your questions
+```python
+import nlu
+# Now we combine both to a tuple and we are done! We can now pass this to the .predict() method
+tapas_data  = (context_df, questions)
+# Lets load a TAPAS QA model and predict on (context,question). 
+# It will give us an aswer for every question in the questions array, based on the context in context_df
+answers = nlu.load('en.answer_question.tapas.wtq.large_finetuned').predict(tapas_data)
+answers
+```
+
+| sentence                         | tapas_qa_UNIQUE_aggregation   | tapas_qa_UNIQUE_answer   | tapas_qa_UNIQUE_cell_positions   |   tapas_qa_UNIQUE_cell_scores | tapas_qa_UNIQUE_origin_question   |
+|:---------------------------------|:------------------------------|:-------------------------|:---------------------------------|------------------------------:|:----------------------------------|
+| Who earns less than 200,000,000? | NONE                          | Donald Trump             | [0, 0]                           |                             1 | Who earns less than 200,000,000?  |
+| Who earns more than 200,000,000? | NONE                          | Elon Musk                | [0, 1]                           |                             1 | Who earns more than 200,000,000?  |
+| Who earns 100,000,000?           | NONE                          | Donald Trump             | [0, 0]                           |                             1 | Who earns 100,000,000?            |
+| How much money has Donald Trump? | SUM                           | SUM($100,000,000)        | [1, 0]                           |                             1 | How much money has Donald Trump?  |
+| Who is the youngest?             | NONE                          | Elon Musk                | [0, 1]                           |                             1 | Who is the youngest?              |
+
+
+-----
+
+## Zero-Shot NER
+
+[Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/medical_named_entity_recognition/zero_shot_ner.ipynb)
+Based on John Snow Labs Enterprise-NLP [ZeroShotNerModel](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#zeroshotnermodel)
+This architecture is based on `RoBertaForQuestionAnswering`.
+Zero shot models excel at generalization, meaning that the model can accurately predict entities in very different data sets without the need to fine tune the model or train from scratch for each different domain.
+Even though a model trained to solve a specific problem can achieve better accuracy than a zero-shot model in this specific task,
+it probably won’t be be useful in a different task.
+That is where zero-shot models shows its usefulness by being able to achieve good results in various domains.
+
+**Usage:**
+
+We just need to load the zero-shot NER model and configure a set of entity definitions.
+```python
+import nlu 
+# load zero-shot ner model
+enterprise_zero_shot_ner = nlu.load('en.zero_shot.ner_roberta')
+
+# Configure entity definitions
+enterprise_zero_shot_ner['zero_shot_ner'].setEntityDefinitions(
+    {
+        "PROBLEM": [
+            "What is the disease?",
+            "What is his symptom?",
+            "What is her disease?",
+            "What is his disease?",
+            "What is the problem?",
+            "What does a patient suffer",
+            "What was the reason that the patient is admitted to the clinic?",
+        ],
+        "DRUG": [
+            "Which drug?",
+            "Which is the drug?",
+            "What is the drug?",
+            "Which drug does he use?",
+            "Which drug does she use?",
+            "Which drug do I use?",
+            "Which drug is prescribed for a symptom?",
+        ],
+        "ADMISSION_DATE": ["When did patient admitted to a clinic?"],
+        "PATIENT_AGE": [
+            "How old is the patient?",
+            "What is the gae of the patient?",
+        ],
+    }
+)
+
+```
+
+Then we can already use this pipeline to predict labels
+```python
+# Predict entities
+df = enterprise_zero_shot_ner.predict(
+    [
+        "The doctor pescribed Majezik for my severe headache.",
+        "The patient was admitted to the hospital for his colon cancer.",
+        "27 years old patient was admitted to clinic on Sep 1st by Dr."+
+        "X for a right-sided pleural effusion for thoracentesis.",
+    ]
+)
+df
+```
+
+| document                                                                                                              | entities_zero_shot                               | entities_zero_shot_class   |   entities_zero_shot_confidence |   entities_zero_shot_origin_chunk |   entities_zero_shot_origin_sentence |
+|:----------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------|:---------------------------|--------------------------------:|----------------------------------:|-------------------------------------:|
+| The doctor pescribed Majezik for my severe headache.                                                                  | Majezik                                          | DRUG                       |                        0.646716 |                                 0 |                                    0 |
+| The doctor pescribed Majezik for my severe headache.                                                                  | severe headache                                  | PROBLEM                    |                        0.552635 |                                 1 |                                    0 |
+| The patient was admitted to the hospital for his colon cancer.                                                        | colon cancer                                     | PROBLEM                    |                        0.88985  |                                 0 |                                    0 |
+| 27 years old patient was admitted to clinic on Sep 1st by Dr. X for a right-sided pleural effusion for thoracentesis. | 27 years old                                     | PATIENT_AGE                |                        0.694308 |                                 0 |                                    0 |
+| 27 years old patient was admitted to clinic on Sep 1st by Dr. X for a right-sided pleural effusion for thoracentesis. | Sep 1st                                          | ADMISSION_DATE             |                        0.956461 |                                 1 |                                    0 |
+| 27 years old patient was admitted to clinic on Sep 1st by Dr. X for a right-sided pleural effusion for thoracentesis. | a right-sided pleural effusion for thoracentesis | PROBLEM                    |                        0.500266 |                                 2 |                                    0 |
+
+------ 
+
+# New Notebooks
+- [Image Classification with VIT and Swin](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb)
+- [Zero-Shot-NER](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/medical_named_entity_recognition/zero_shot_ner.ipynb)
+- [Table Question Answering with TAPAS](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb)
+- [Automatic Speech Recognition with Wav2Vec2 and HuBERT ](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/automatic_speech_recognition/automatic_speech_recognition_overview_ASR.ipynb)
+
+
+
+
+# New Models Overview
+
+Supported Languages are:
+`ab`, `am`, `ar`, `ba`, `bem`, `bg`, `bn`, `ca`, `co`, `cs`, `da`, `de`, `dv`, `el`, `en`, `es`, `et`, `eu`, `fa`, `fi`, `fon`, `fr`, `fy`, `ga`, `gam`, `gl`, `gu`, `ha`, `he`, `hi`, `hr`, `hu`, `id`, `ig`, `is`, `it`, `ja`, `jv`, `kin`, `kn`, `ko`, `kr`, `ku`, `ky`, `la`, `lg`, `lo`, `lt`, `lu`, `luo`, `lv`, `lwt`, `ml`, `mn`, `mr`, `ms`, `mt`, `nb`, `nl`, `no`, `pcm`, `pl`, `pt`, `ro`, `ru`, `rw`, `sg`, `si`, `sk`, `sl`, `sq`, `st`, `su`, `sv`, `sw`, `swa`, `ta`, `te`, `th`, `ti`, `tl`, `tn`, `tr`, `tt`, `tw`, `uk`, `unk`, `ur`, `uz`, `vi`, `wo`, `xx`, `yo`, `yue`, `zh`, `zu`
+
+
+
+# Automatic Speech Recognition Models Overview
+
+
+| Language | NLU Reference                                                                                                                                                           | Spark NLP  Reference                                                                                                                                                     | Annotator Class |
+|:---------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------|
+| ab       | [ab.speech2text.wav2vec_xlsr.gpu.by_hf_test](https://nlp.johnsnowlabs.com/2022/09/26/asr_xls_r_ab_test_by_hf_test_gpu_ab.html)                                          | [asr_xls_r_ab_test_by_hf_test_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_xls_r_ab_test_by_hf_test_gpu_ab.html)                                                     | Wav2Vec2ForCTC  |
+| ba       | [ba.speech2text.wav2vec_xlsr.v2_large_300m_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xls_r_300m_bashkir_cv7_opt_gpu_ba.html)                      | [asr_wav2vec2_large_xls_r_300m_bashkir_cv7_opt_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xls_r_300m_bashkir_cv7_opt_gpu_ba.html)                   | Wav2Vec2ForCTC  |
+| bem      | [bem.speech2text.wav2vec_xlsr.v2_large_gpu.by_csikasote](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_bemba_gpu_bem.html)                            | [asr_wav2vec2_large_xlsr_bemba_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_bemba_gpu_bem.html)                                                  | Wav2Vec2ForCTC  |
+| bg       | [bg.speech2text.wav2vec_xlsr.v2_large_300m_d2_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xls_r_300m_d2_gpu_bg.html)                                | [asr_wav2vec2_large_xls_r_300m_d2_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xls_r_300m_d2_gpu_bg.html)                                             | Wav2Vec2ForCTC  |
+| ca       | [ca.speech2text.wav2vec2.voxpopuli.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_100k_voxpopuli_catala_by_ccoreilly_gpu_ca.html)             | [asr_wav2vec2_large_100k_voxpopuli_catala_by_ccoreilly_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_100k_voxpopuli_catala_by_ccoreilly_gpu_ca.html)   | Wav2Vec2ForCTC  |
+| cs       | [cs.speech2text.wav2vec_xlsr.v2_large.by_arampacha](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_czech_cs.html)                                      | [asr_wav2vec2_large_xlsr_czech](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_czech_cs.html)                                                           | Wav2Vec2ForCTC  |
+| da       | [da.speech2text.wav2vec2.v2_base](https://nlp.johnsnowlabs.com/2022/09/25/asr_alvenir_wav2vec2_base_nst_cv9_da.html)                                                    | [asr_alvenir_wav2vec2_base_nst_cv9](https://nlp.johnsnowlabs.com/2022/09/25/asr_alvenir_wav2vec2_base_nst_cv9_da.html)                                                   | Wav2Vec2ForCTC  |
+| de       | [de.speech2text.wav2vec_xlsr.v3_large.by_marcel](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_german_demo_de.html)                                   | [asr_wav2vec2_large_xlsr_german_demo](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_german_demo_de.html)                                               | Wav2Vec2ForCTC  |
+| el       | [el.speech2text.wav2vec_xlsr.v3_large_gpu.by_skylord](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_greek_2_gpu_el.html)                              | [asr_wav2vec2_large_xlsr_greek_2_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_greek_2_gpu_el.html)                                               | Wav2Vec2ForCTC  |
+| en       | [en.speech2text.wav2vec_xlsr.v2gpu.by_bakhtullah123](https://nlp.johnsnowlabs.com/2022/09/25/asr_xlsr_training_gpu_en.html)                                             | [asr_xlsr_training_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_xlsr_training_gpu_en.html)                                                                           | Wav2Vec2ForCTC  |
+| fa       | [fa.speech2text.wav2vec2.v2_gpu_s117_exp](https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_pretraining_s117_gpu_fa.html)                                           | [asr_exp_w2v2t_pretraining_s117_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_pretraining_s117_gpu_fa.html)                                                 | Wav2Vec2ForCTC  |
+| fa       | [fa.speech2text.wav2vec_xlsr.v2_s44_exp](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xls_r_s44_fa.html)                                                       | [asr_exp_w2v2t_xls_r_s44](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xls_r_s44_fa.html)                                                                       | Wav2Vec2ForCTC  |
+| fi       | [fi.speech2text.wav2vec2.voxpopuli.v2_base](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_fi.html)                                            | [asr_wav2vec2_base_10k_voxpopuli](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_fi.html)                                                       | Wav2Vec2ForCTC  |
+| fi       | [fi.speech2text.wav2vec_xlsrby_aapot](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_xlsr_1b_finnish_lm_by_aapot_fi.html)                                         | [asr_wav2vec2_xlsr_1b_finnish_lm_by_aapot](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_xlsr_1b_finnish_lm_by_aapot_fi.html)                                     | Wav2Vec2ForCTC  |
+| fon      | [fon.speech2text.wav2vec_xlsr](https://nlp.johnsnowlabs.com/2022/09/24/asr_fonxlsr_fon.html)                                                                            | [asr_fonxlsr](https://nlp.johnsnowlabs.com/2022/09/24/asr_fonxlsr_fon.html)                                                                                              | Wav2Vec2ForCTC  |
+| fr       | [fr.speech2text.wav2vec_xlsr.v2_s800_exp](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s800_fr.html)                                                   | [asr_exp_w2v2t_xlsr_53_s800](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s800_fr.html)                                                                 | Wav2Vec2ForCTC  |
+| gu       | [gu.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_gpu_gu.html)                                                 | [asr_wav2vec2_large_xlsr_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_gpu_gu.html)                                                               | Wav2Vec2ForCTC  |
+| hi       | [hi.speech2text.wav2vec2.by_harveenchadha](https://nlp.johnsnowlabs.com/2022/09/26/asr_hindi_model_with_lm_vakyansh_hi.html)                                            | [asr_hindi_model_with_lm_vakyansh](https://nlp.johnsnowlabs.com/2022/09/26/asr_hindi_model_with_lm_vakyansh_hi.html)                                                     | Wav2Vec2ForCTC  |
+| hi       | [hi.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_hindi_gpu_hi.html)                                           | [asr_wav2vec2_large_xlsr_hindi_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_hindi_gpu_hi.html)                                                   | Wav2Vec2ForCTC  |
+| hu       | [hu.speech2text.wav2vec2.voxpopuli.v2_base_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_gpu_hu.html)                                    | [asr_wav2vec2_base_10k_voxpopuli_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_10k_voxpopuli_gpu_hu.html)                                               | Wav2Vec2ForCTC  |
+| hu       | [hu.speech2text.wav2vec_xlsr.v2_large_gpu.by_gchhablani](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_gpu_hu.html)                                   | [asr_wav2vec2_large_xlsr_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_gpu_hu.html)                                                               | Wav2Vec2ForCTC  |
+| id       | [id.speech2text.wav2vec_xlsr.v2_s449_exp](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s449_id.html)                                                   | [asr_exp_w2v2t_xlsr_53_s449](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s449_id.html)                                                                 | Wav2Vec2ForCTC  |
+| it       | [it.speech2text.wav2vec2.v2_gpu_s149_vp_exp](https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_vp_100k_s149_gpu_it.html)                                            | [asr_exp_w2v2t_vp_100k_s149_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_exp_w2v2t_vp_100k_s149_gpu_it.html)                                                         | Wav2Vec2ForCTC  |
+| it       | [it.speech2text.wav2vec_xlsr.v2_s417_exp](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xls_r_s417_it.html)                                                     | [asr_exp_w2v2t_xls_r_s417](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xls_r_s417_it.html)                                                                     | Wav2Vec2ForCTC  |
+| ja       | [ja.speech2text.wav2vec_xlsr.v2_large](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_japanese_hiragana_ja.html)                                       | [asr_wav2vec2_large_xlsr_japanese_hiragana](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_japanese_hiragana_ja.html)                                   | Wav2Vec2ForCTC  |
+| ko       | [ko.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_korean_gpu_ko.html)                                          | [asr_wav2vec2_large_xlsr_korean_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_korean_gpu_ko.html)                                                 | Wav2Vec2ForCTC  |
+| kr       | [kr.speech2text.wav2vec_xlsr.v2](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_xlsr_korean_senior_kr.html)                                                       | [asr_wav2vec2_xlsr_korean_senior](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_xlsr_korean_senior_kr.html)                                                       | Wav2Vec2ForCTC  |
+| kr       | [kr.speech2text.wav2vec_xlsr.v2_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_korean_senior_gpu_kr.html)                                               | [asr_wav2vec2_xlsr_korean_senior_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_korean_senior_gpu_kr.html)                                               | Wav2Vec2ForCTC  |
+| ku       | [ku.speech2text.wav2vec_xlsr.gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_xlsr_kurmanji_kurdish_gpu_ku.html)                                                        | [asr_xlsr_kurmanji_kurdish_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_xlsr_kurmanji_kurdish_gpu_ku.html)                                                           | Wav2Vec2ForCTC  |
+| ky       | [ky.speech2text.wav2vec_xlsr.v2_large](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_kyrgyz_ky.html)                                               | [asr_wav2vec2_large_xlsr_53_kyrgyz](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_kyrgyz_ky.html)                                                   | Wav2Vec2ForCTC  |
+| ky       | [ky.speech2text.wav2vec_xlsr.v2_large_gpu.by_iarfmoose](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_kyrgyz_by_iarfmoose_gpu_ky.html)                | [asr_wav2vec2_large_xlsr_kyrgyz_by_iarfmoose_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_kyrgyz_by_iarfmoose_gpu_ky.html)                       | Wav2Vec2ForCTC  |
+| la       | [la.speech2text.wav2vec2.v2_base](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_base_latin_la.html)                                                              | [asr_wav2vec2_base_latin](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_base_latin_la.html)                                                                       | Wav2Vec2ForCTC  |
+| la       | [la.speech2text.wav2vec2.v2_base_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_latin_gpu_la.html)                                                      | [asr_wav2vec2_base_latin_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_base_latin_gpu_la.html)                                                               | Wav2Vec2ForCTC  |
+| lg       | [lg.speech2text.wav2vec_xlsr.v2_multilingual_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_multilingual_56_gpu_lg.html)                                | [asr_wav2vec2_xlsr_multilingual_56_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_xlsr_multilingual_56_gpu_lg.html)                                           | Wav2Vec2ForCTC  |
+| lt       | [lt.speech2text.wav2vec_xlsr.v2_large_gpu.by_dundar](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_53_lithuanian_by_dundar_gpu_lt.html)               | [asr_wav2vec2_large_xlsr_53_lithuanian_by_dundar_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_53_lithuanian_by_dundar_gpu_lt.html)               | Wav2Vec2ForCTC  |
+| lv       | [lv.speech2text.wav2vec_xlsr.v2_large](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_latvian_lv.html)                                              | [asr_wav2vec2_large_xlsr_53_latvian](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_latvian_lv.html)                                                 | Wav2Vec2ForCTC  |
+| lv       | [lv.speech2text.wav2vec_xlsr.v2_large_gpu.by_jimregan](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_latvian_gpu_lv.html)                             | [asr_wav2vec2_large_xlsr_latvian_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_latvian_gpu_lv.html)                                               | Wav2Vec2ForCTC  |
+| mn       | [mn.speech2text.wav2vec_xlsr.v2_large_gpu.by_manandey](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_mongolian_by_manandey_gpu_mn.html)               | [asr_wav2vec2_large_xlsr_mongolian_by_manandey_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2_large_xlsr_mongolian_by_manandey_gpu_mn.html)                   | Wav2Vec2ForCTC  |
+| nl       | [nl.speech2text.wav2vec_xlsr.v2_s972_exp](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s972_nl.html)                                                   | [asr_exp_w2v2t_xlsr_53_s972](https://nlp.johnsnowlabs.com/2022/09/26/asr_exp_w2v2t_xlsr_53_s972_nl.html)                                                                 | Wav2Vec2ForCTC  |
+| pt       | [pt.speech2text.wav2vec_xlsr.voxforge1.gpu.by_lgris](https://nlp.johnsnowlabs.com/2022/09/24/asr_bp_voxforge1_xlsr_gpu_pt.html)                                         | [asr_bp_voxforge1_xlsr_gpu](https://nlp.johnsnowlabs.com/2022/09/24/asr_bp_voxforge1_xlsr_gpu_pt.html)                                                                   | Wav2Vec2ForCTC  |
+| ro       | [ro.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_romanian_by_gmihaila_gpu_ro.html)                         | [asr_wav2vec2_large_xlsr_53_romanian_by_gmihaila_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_romanian_by_gmihaila_gpu_ro.html)               | Wav2Vec2ForCTC  |
+| sg       | [sg.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_swiss_german_gpu_sg.html)                                 | [asr_wav2vec2_large_xlsr_53_swiss_german_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_swiss_german_gpu_sg.html)                               | Wav2Vec2ForCTC  |
+| su       | [su.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_sundanese_gpu_su.html)                                       | [asr_wav2vec2_large_xlsr_sundanese_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_sundanese_gpu_su.html)                                           | Wav2Vec2ForCTC  |
+| sv       | [sv.speech2text.wav2vec_xlsr.v2_large_gpu.by_marma](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_swedish_gpu_sv.html)                                | [asr_wav2vec2_large_xlsr_swedish_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_swedish_gpu_sv.html)                                               | Wav2Vec2ForCTC  |
+| tt       | [tt.speech2text.wav2vec_xlsr.v2_large_small](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_W2V2_TATAR_SMALL_tt.html)                               | [asr_wav2vec2_large_xlsr_53_W2V2_TATAR_SMALL](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_53_W2V2_TATAR_SMALL_tt.html)                               | Wav2Vec2ForCTC  |
+| tw       | [tw.speech2text.wav2vec_xlsr.v2](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2large_xlsr_akan_tw.html)                                                           | [asr_wav2vec2large_xlsr_akan](https://nlp.johnsnowlabs.com/2022/09/24/asr_wav2vec2large_xlsr_akan_tw.html)                                                               | Wav2Vec2ForCTC  |
+| uz       | [uz.speech2text.wav2vec2](https://nlp.johnsnowlabs.com/2022/09/26/asr_uzbek_stt_uz.html)                                                                                | [asr_uzbek_stt](https://nlp.johnsnowlabs.com/2022/09/26/asr_uzbek_stt_uz.html)                                                                                           | Wav2Vec2ForCTC  |
+| vi       | [vi.speech2text.wav2vec_xlsr.v2_large_gpu.by_not_tanh](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_53_vietnamese_by_not_tanh_gpu_vi.html)           | [asr_wav2vec2_large_xlsr_53_vietnamese_by_not_tanh_gpu](https://nlp.johnsnowlabs.com/2022/09/25/asr_wav2vec2_large_xlsr_53_vietnamese_by_not_tanh_gpu_vi.html)           | Wav2Vec2ForCTC  |
+| wo       | [wo.speech2text.wav2vec_xlsr.v2_300m_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_av2vec2_xls_r_300m_wolof_lm_gpu_wo.html)                                          | [asr_av2vec2_xls_r_300m_wolof_lm_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_av2vec2_xls_r_300m_wolof_lm_gpu_wo.html)                                               | Wav2Vec2ForCTC  |
+| yue      | [yue.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_cantonese_by_ctl_gpu_yue.html)                              | [asr_wav2vec2_large_xlsr_cantonese_by_ctl_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_cantonese_by_ctl_gpu_yue.html)                            | Wav2Vec2ForCTC  |
+
+
+
+# Image Classification Models Overview
+
+
+| Language | NLU Reference                                                                                                                                                                                                                                             | Spark NLP  Reference                                                                                                                                                                                                                                         | Annotator Class           |
+|:---------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------|
+| en       | [en.classify_image.Check_GoodBad_Teeth](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_GoodBad_Teeth_en_3_0.html)                                                                                                                     | [image_classifier_vit_Check_GoodBad_Teeth](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_GoodBad_Teeth_en_3_0.html)                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.Check_Gum_Teeth](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_Gum_Teeth_en_3_0.html)                                                                                                                             | [image_classifier_vit_Check_Gum_Teeth](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_Gum_Teeth_en_3_0.html)                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.Check_Missing_Teeth](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_Missing_Teeth_en_3_0.html)                                                                                                                     | [image_classifier_vit_Check_Missing_Teeth](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Check_Missing_Teeth_en_3_0.html)                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.Infrastructures](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Infrastructures_en_3_0.html)                                                                                                                             | [image_classifier_vit_Infrastructures](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Infrastructures_en_3_0.html)                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.Insectodoptera](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Insectodoptera_en_3_0.html)                                                                                                                               | [image_classifier_vit_Insectodoptera](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Insectodoptera_en_3_0.html)                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.Tomato_Leaf_Classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Tomato_Leaf_Classifier_en_3_0.html)                                                                                                               | [image_classifier_vit_Tomato_Leaf_Classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Tomato_Leaf_Classifier_en_3_0.html)                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.Visual_transformer_chihuahua_cookies](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Visual_transformer_chihuahua_cookies_en_3_0.html)                                                                                   | [image_classifier_vit_Visual_transformer_chihuahua_cookies](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_Visual_transformer_chihuahua_cookies_en_3_0.html)                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image._spectrogram](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit__spectrogram_en_3_0.html)                                                                                                                                   | [image_classifier_vit__spectrogram](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit__spectrogram_en_3_0.html)                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.age_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_age_classifier_en_3_0.html)                                                                                                                               | [image_classifier_vit_age_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_age_classifier_en_3_0.html)                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.airplanes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_airplanes_en_3_0.html)                                                                                                                                         | [image_classifier_vit_airplanes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_airplanes_en_3_0.html)                                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.animal_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_animal_classifier_en_3_0.html)                                                                                                                         | [image_classifier_vit_animal_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_animal_classifier_en_3_0.html)                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.anomaly](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_anomaly_en_3_0.html)                                                                                                                                             | [image_classifier_vit_anomaly](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_anomaly_en_3_0.html)                                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.apes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_apes_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_apes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_apes_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.autotrain_cifar10__base](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_autotrain_cifar10__base_en_3_0.html)                                                                                                             | [image_classifier_vit_autotrain_cifar10__base](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_autotrain_cifar10__base_en_3_0.html)                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.autotrain_dog_vs_food](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_autotrain_dog_vs_food_en_3_0.html)                                                                                                                 | [image_classifier_vit_autotrain_dog_vs_food](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_autotrain_dog_vs_food_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.baked_goods](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_baked_goods_en_3_0.html)                                                                                                                                     | [image_classifier_vit_baked_goods](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_baked_goods_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.base_beans](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_beans_en_3_0.html)                                                                                                                                       | [image_classifier_vit_base_beans](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_beans_en_3_0.html)                                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.base_cats_vs_dogs](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_cats_vs_dogs_en_3_0.html)                                                                                                                         | [image_classifier_vit_base_cats_vs_dogs](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_cats_vs_dogs_en_3_0.html)                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.base_cifar10](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_cifar10_en_3_0.html)                                                                                                                                   | [image_classifier_vit_base_cifar10](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_cifar10_en_3_0.html)                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.base_food101](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_food101_en_3_0.html)                                                                                                                                   | [image_classifier_vit_base_food101](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_food101_en_3_0.html)                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.base_movie_scenes_v1](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_movie_scenes_v1_en_3_0.html)                                                                                                                   | [image_classifier_vit_base_movie_scenes_v1](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_movie_scenes_v1_en_3_0.html)                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.base_mri](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_mri_en_3_0.html)                                                                                                                                           | [image_classifier_vit_base_mri](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_mri_en_3_0.html)                                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_en_3_0.html)                                                                                                                           | [image_classifier_vit_base_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224.by_google](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_en_3_0.html)                                                                                                                 | [image_classifier_vit_base_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224_cifar10](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_cifar10_en_3_0.html)                                                                                                           | [image_classifier_vit_base_patch16_224_cifar10](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_cifar10_en_3_0.html)                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224_finetuned_eurosat](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_finetuned_eurosat_en_3_0.html)                                                                                       | [image_classifier_vit_base_patch16_224_finetuned_eurosat](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_finetuned_eurosat_en_3_0.html)                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224_finetuned_kvasirv2_colonoscopy](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_finetuned_kvasirv2_colonoscopy_en_3_0.html)                                                             | [image_classifier_vit_base_patch16_224_finetuned_kvasirv2_colonoscopy](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_finetuned_kvasirv2_colonoscopy_en_3_0.html)                                                             | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224_in21k_snacks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_in21k_snacks_en_3_0.html)                                                                                                 | [image_classifier_vit_base_patch16_224_in21k_snacks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_in21k_snacks_en_3_0.html)                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224_in21k_ucSat](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_in21k_ucSat_en_3_0.html)                                                                                                   | [image_classifier_vit_base_patch16_224_in21k_ucSat](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_in21k_ucSat_en_3_0.html)                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_224_recylce_ft](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_recylce_ft_en_3_0.html)                                                                                                     | [image_classifier_vit_base_patch16_224_recylce_ft](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_224_recylce_ft_en_3_0.html)                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_384](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_384_en_3_0.html)                                                                                                                           | [image_classifier_vit_base_patch16_384](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_384_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_patch16_384.by_google](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_384_en_3_0.html)                                                                                                                 | [image_classifier_vit_base_patch16_384](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch16_384_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_patch32_384.by_google](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch32_384_en_3_0.html)                                                                                                                 | [image_classifier_vit_base_patch32_384](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_patch32_384_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.base_xray_pneumonia](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_xray_pneumonia_en_3_0.html)                                                                                                                     | [image_classifier_vit_base_xray_pneumonia](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_base_xray_pneumonia_en_3_0.html)                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.baseball_stadium_foods](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_baseball_stadium_foods_en_3_0.html)                                                                                                               | [image_classifier_vit_baseball_stadium_foods](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_baseball_stadium_foods_en_3_0.html)                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.beer_vs_wine](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_beer_vs_wine_en_3_0.html)                                                                                                                                   | [image_classifier_vit_beer_vs_wine](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_beer_vs_wine_en_3_0.html)                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.beer_whisky_wine_detection](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_beer_whisky_wine_detection_en_3_0.html)                                                                                                       | [image_classifier_vit_beer_whisky_wine_detection](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_beer_whisky_wine_detection_en_3_0.html)                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.blocks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_blocks_en_3_0.html)                                                                                                                                               | [image_classifier_vit_blocks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_blocks_en_3_0.html)                                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.cifar10](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_cifar10_en_3_0.html)                                                                                                                                             | [image_classifier_vit_cifar10](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_cifar10_en_3_0.html)                                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.cifar_10_2](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_cifar_10_2_en_3_0.html)                                                                                                                                       | [image_classifier_vit_cifar_10_2](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_cifar_10_2_en_3_0.html)                                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.computer_stuff](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_computer_stuff_en_3_0.html)                                                                                                                               | [image_classifier_vit_computer_stuff](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_computer_stuff_en_3_0.html)                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.croupier_creature_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_croupier_creature_classifier_en_3_0.html)                                                                                                   | [image_classifier_vit_croupier_creature_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_croupier_creature_classifier_en_3_0.html)                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.deit_base_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_base_patch16_224_en_3_0.html)                                                                                                                 | [image_classifier_vit_deit_base_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_base_patch16_224_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.deit_base_patch16_224.by_facebook](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_base_patch16_224_en_3_0.html)                                                                                                     | [image_classifier_vit_deit_base_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_base_patch16_224_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.deit_flyswot](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_flyswot_en_3_0.html)                                                                                                                                   | [image_classifier_vit_deit_flyswot](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_flyswot_en_3_0.html)                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.deit_small_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_small_patch16_224_en_3_0.html)                                                                                                               | [image_classifier_vit_deit_small_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_small_patch16_224_en_3_0.html)                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.deit_small_patch16_224.by_facebook](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_small_patch16_224_en_3_0.html)                                                                                                   | [image_classifier_vit_deit_small_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_small_patch16_224_en_3_0.html)                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.deit_tiny_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_tiny_patch16_224_en_3_0.html)                                                                                                                 | [image_classifier_vit_deit_tiny_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_tiny_patch16_224_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.deit_tiny_patch16_224.by_facebook](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_tiny_patch16_224_en_3_0.html)                                                                                                     | [image_classifier_vit_deit_tiny_patch16_224](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_deit_tiny_patch16_224_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.demo](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_demo_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_demo](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_demo_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.denver_nyc_paris](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_denver_nyc_paris_en_3_0.html)                                                                                                                           | [image_classifier_vit_denver_nyc_paris](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_denver_nyc_paris_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.diam](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_diam_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_diam](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_diam_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.digital](https://sparknlp.org/2022/08/10/image_classifier_vit_digital_en_3_0.html)                                                                                                                                             | [image_classifier_vit_digital](https://sparknlp.org/2022/08/10/image_classifier_vit_digital_en_3_0.html)                                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.dog](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_en_3_0.html)                                                                                                                                                     | [image_classifier_vit_dog](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_en_3_0.html)                                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.dog_breed_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_breed_classifier_en_3_0.html)                                                                                                                   | [image_classifier_vit_dog_breed_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_breed_classifier_en_3_0.html)                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.dog_food__base_patch16_224_in21k](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_food__base_patch16_224_in21k_en_3_0.html)                                                                                           | [image_classifier_vit_dog_food__base_patch16_224_in21k](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_food__base_patch16_224_in21k_en_3_0.html)                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.dog_races](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_races_en_3_0.html)                                                                                                                                         | [image_classifier_vit_dog_races](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_races_en_3_0.html)                                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.dog_vs_chicken](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_vs_chicken_en_3_0.html)                                                                                                                               | [image_classifier_vit_dog_vs_chicken](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_vs_chicken_en_3_0.html)                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.doggos_lol](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_doggos_lol_en_3_0.html)                                                                                                                                       | [image_classifier_vit_doggos_lol](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_doggos_lol_en_3_0.html)                                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.dogs](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dogs_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_dogs](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dogs_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.dwarf_goats](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dwarf_goats_en_3_0.html)                                                                                                                                     | [image_classifier_vit_dwarf_goats](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dwarf_goats_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.electric_2](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_electric_2_en_3_0.html)                                                                                                                                       | [image_classifier_vit_electric_2](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_electric_2_en_3_0.html)                                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.electric_pole_type_classification](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_electric_pole_type_classification_en_3_0.html)                                                                                         | [image_classifier_vit_electric_pole_type_classification](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_electric_pole_type_classification_en_3_0.html)                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.ex_for_evan](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_ex_for_evan_en_3_0.html)                                                                                                                                     | [image_classifier_vit_ex_for_evan](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_ex_for_evan_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.finetuned_eurosat_kornia](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_finetuned_eurosat_kornia_en_3_0.html)                                                                                                           | [image_classifier_vit_finetuned_eurosat_kornia](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_finetuned_eurosat_kornia_en_3_0.html)                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.flowers](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_flowers_en_3_0.html)                                                                                                                                             | [image_classifier_vit_flowers](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_flowers_en_3_0.html)                                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.food](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_food_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_food](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_food_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.fruits](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_fruits_en_3_0.html)                                                                                                                                               | [image_classifier_vit_fruits](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_fruits_en_3_0.html)                                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.garbage_classification](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_garbage_classification_en_3_0.html)                                                                                                               | [image_classifier_vit_garbage_classification](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_garbage_classification_en_3_0.html)                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.grain](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_grain_en_3_0.html)                                                                                                                                                 | [image_classifier_vit_grain](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_grain_en_3_0.html)                                                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.greens](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_greens_en_3_0.html)                                                                                                                                               | [image_classifier_vit_greens](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_greens_en_3_0.html)                                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.hot_dog_or_sandwich](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hot_dog_or_sandwich_en_3_0.html)                                                                                                                     | [image_classifier_vit_hot_dog_or_sandwich](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hot_dog_or_sandwich_en_3_0.html)                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.hotdog_not_hotdog](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hotdog_not_hotdog_en_3_0.html)                                                                                                                         | [image_classifier_vit_hotdog_not_hotdog](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hotdog_not_hotdog_en_3_0.html)                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.housing_categories](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_housing_categories_en_3_0.html)                                                                                                                       | [image_classifier_vit_housing_categories](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_housing_categories_en_3_0.html)                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.hugging_geese](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hugging_geese_en_3_0.html)                                                                                                                                 | [image_classifier_vit_hugging_geese](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_hugging_geese_en_3_0.html)                                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.ice_cream](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_ice_cream_en_3_0.html)                                                                                                                                         | [image_classifier_vit_ice_cream](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_ice_cream_en_3_0.html)                                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.iiif_manuscript_](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_iiif_manuscript__en_3_0.html)                                                                                                                           | [image_classifier_vit_iiif_manuscript_](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_iiif_manuscript__en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.indian_snacks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_indian_snacks_en_3_0.html)                                                                                                                                 | [image_classifier_vit_indian_snacks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_indian_snacks_en_3_0.html)                                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.koala_panda_wombat](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_koala_panda_wombat_en_3_0.html)                                                                                                                       | [image_classifier_vit_koala_panda_wombat](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_koala_panda_wombat_en_3_0.html)                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.lawn_weeds](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lawn_weeds_en_3_0.html)                                                                                                                                       | [image_classifier_vit_lawn_weeds](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lawn_weeds_en_3_0.html)                                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.llama_alpaca_guanaco_vicuna](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_alpaca_guanaco_vicuna_en_3_0.html)                                                                                                     | [image_classifier_vit_llama_alpaca_guanaco_vicuna](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_alpaca_guanaco_vicuna_en_3_0.html)                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.llama_alpaca_snake](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_alpaca_snake_en_3_0.html)                                                                                                                       | [image_classifier_vit_llama_alpaca_snake](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_alpaca_snake_en_3_0.html)                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.llama_or_potato](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_or_potato_en_3_0.html)                                                                                                                             | [image_classifier_vit_llama_or_potato](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_or_potato_en_3_0.html)                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.llama_or_what](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_or_what_en_3_0.html)                                                                                                                                 | [image_classifier_vit_llama_or_what](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_llama_or_what_en_3_0.html)                                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.lotr](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lotr_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_lotr](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lotr_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.lucky_model](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lucky_model_en_3_0.html)                                                                                                                                     | [image_classifier_vit_lucky_model](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lucky_model_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.lung_cancer](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lung_cancer_en_3_0.html)                                                                                                                                     | [image_classifier_vit_lung_cancer](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_lung_cancer_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.mit_indoor_scenes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_mit_indoor_scenes_en_3_0.html)                                                                                                                         | [image_classifier_vit_mit_indoor_scenes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_mit_indoor_scenes_en_3_0.html)                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.modelversion01](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_modelversion01_en_3_0.html)                                                                                                                               | [image_classifier_vit_modelversion01](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_modelversion01_en_3_0.html)                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.my_bean_VIT](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_my_bean_VIT_en_3_0.html)                                                                                                                                     | [image_classifier_vit_my_bean_VIT](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_my_bean_VIT_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.new_york_tokyo_london](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_new_york_tokyo_london_en_3_0.html)                                                                                                                 | [image_classifier_vit_new_york_tokyo_london](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_new_york_tokyo_london_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.occupation_prediction](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_occupation_prediction_en_3_0.html)                                                                                                                 | [image_classifier_vit_occupation_prediction](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_occupation_prediction_en_3_0.html)                                                                                                                 | ViTForImageClassification |
+| en       | [en.classify_image.opencampus_age_detection](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_opencampus_age_detection_en_3_0.html)                                                                                                           | [image_classifier_vit_opencampus_age_detection](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_opencampus_age_detection_en_3_0.html)                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.orcs_and_friends](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_orcs_and_friends_en_3_0.html)                                                                                                                           | [image_classifier_vit_orcs_and_friends](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_orcs_and_friends_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.oz_fauna](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_oz_fauna_en_3_0.html)                                                                                                                                           | [image_classifier_vit_oz_fauna](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_oz_fauna_en_3_0.html)                                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.pasta_pizza_ravioli](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_pasta_pizza_ravioli_en_3_0.html)                                                                                                                     | [image_classifier_vit_pasta_pizza_ravioli](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_pasta_pizza_ravioli_en_3_0.html)                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.pasta_shapes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_pasta_shapes_en_3_0.html)                                                                                                                                   | [image_classifier_vit_pasta_shapes](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_pasta_shapes_en_3_0.html)                                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.places](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_places_en_3_0.html)                                                                                                                                               | [image_classifier_vit_places](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_places_en_3_0.html)                                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.planes_airlines](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_planes_airlines_en_3_0.html)                                                                                                                             | [image_classifier_vit_planes_airlines](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_planes_airlines_en_3_0.html)                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.planes_trains_automobiles](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_planes_trains_automobiles_en_3_0.html)                                                                                                         | [image_classifier_vit_planes_trains_automobiles](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_planes_trains_automobiles_en_3_0.html)                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.puppies_classify](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_puppies_classify_en_3_0.html)                                                                                                                           | [image_classifier_vit_puppies_classify](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_puppies_classify_en_3_0.html)                                                                                                                           | ViTForImageClassification |
+| en       | [en.classify_image.rare_bottle](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_rare_bottle_en_3_0.html)                                                                                                                                     | [image_classifier_vit_rare_bottle](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_rare_bottle_en_3_0.html)                                                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.roomclassifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_roomclassifier_en_3_0.html)                                                                                                                               | [image_classifier_vit_roomclassifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_roomclassifier_en_3_0.html)                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.rust_image_classification_1](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_rust_image_classification_1_en_3_0.html)                                                                                                     | [image_classifier_vit_rust_image_classification_1](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_rust_image_classification_1_en_3_0.html)                                                                                                     | ViTForImageClassification |
+| en       | [en.classify_image.skin_type](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_skin_type_en_3_0.html)                                                                                                                                         | [image_classifier_vit_skin_type](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_skin_type_en_3_0.html)                                                                                                                                         | ViTForImageClassification |
+| en       | [en.classify_image.snacks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_snacks_en_3_0.html)                                                                                                                                               | [image_classifier_vit_snacks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_snacks_en_3_0.html)                                                                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.south_indian_foods](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_south_indian_foods_en_3_0.html)                                                                                                                       | [image_classifier_vit_south_indian_foods](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_south_indian_foods_en_3_0.html)                                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.string_instrument_detector](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_string_instrument_detector_en_3_0.html)                                                                                                       | [image_classifier_vit_string_instrument_detector](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_string_instrument_detector_en_3_0.html)                                                                                                       | ViTForImageClassification |
+| en       | [en.classify_image.vc_bantai__withoutAMBI_adunest](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_vc_bantai__withoutAMBI_adunest_en_3_0.html)                                                                                               | [image_classifier_vit_vc_bantai__withoutAMBI_adunest](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_vc_bantai__withoutAMBI_adunest_en_3_0.html)                                                                                               | ViTForImageClassification |
+| en       | [en.classify_image.trainer_rare_puppers](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_trainer_rare_puppers_en_3_0.html)                                                                                                                   | [image_classifier_vit_trainer_rare_puppers](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_trainer_rare_puppers_en_3_0.html)                                                                                                                   | ViTForImageClassification |
+| en       | [en.classify_image.world_landmarks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_world_landmarks_en_3_0.html)                                                                                                                             | [image_classifier_vit_world_landmarks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_world_landmarks_en_3_0.html)                                                                                                                             | ViTForImageClassification |
+
+
+
+
+---------------------------------------- 
+---------------------------------------- 
+
+
+
+
+## NLU Version 4.1.0
+Approximately 1000 new state-of-the-art transformer models for Question Answering (QA)  for over 10 languages, up to 700% speedup on GPU, 100+ Embeddings such as Bert, Bert Sentence, CamemBert, DistilBert, Roberta, Roberta Sentence, Universal Sentence Encoder, Word, XLM Roberta, XLM Roberta Sentence, 40 sequence classification models, +400 token classification  odels for over 10 languages various Spark NLP helper methods and much more in 1 line of code with John Snow Labs NLU 4.1.0
+
+---------------------------------------- 
+#### NLU 4.1.0 Core Overview
+
+- On the NLU core side we have over 1000 new state-of-the-art models in over 10 languages.
+
+- Additionally up to 700% speedup **transformer-based Word Embeddings** on **GPU** and up to **97% speedup on CPU** for **tensorflow operations**, support for Apple M1 chips, Pyspark 3.2 and 3.3 support.
+  Ontop of this, we are now supporting Apple M1 based architectures and every Pyspark 3.X version, while deprecating support for Pyspark 2.X.
+
+- Finally, NLU-Core features various new helper methods for working with Spark NLP and embellishes now the entire universe of Annotators defined by Spark NLP.
+
+
+-----------------------------
+
+#### NLU captures every Annotator of Spark NLP
+
+The entire universe of Annotators in Spark NLP  is now embellished by NLU Components by using generalizable annotation extractors methods and configs internally to support enable the new NLU util methods.
+The following annotator classes are newly captured:
+
+- BertEmbeddings[release_notes.md](release_notes.md)
+- BertForQuestionAnswering
+- BertForSequenceClassification
+- BertForTokenClassification
+- BertSentenceEmbeddings
+- CamemBertEmbeddings
+- ClassifierDLModel
+- ContextSpellCheckerModel
+- DistilBertEmbeddings
+- DistilBertForSequenceClassification
+- DistilBertForTokenClassification
+- LemmatizerModel
+- LongformerForTokenClassification
+- NerCrfModel
+- NerDLModel
+- PerceptronModel
+- RoBertaEmbeddings
+- RoBertaForQuestionAnswering
+- RoBertaForSequenceClassification
+- RoBertaForTokenClassification
+- RoBertaSentenceEmbeddings
+- SentenceDetectorDLModel
+- StopWordsCleaner
+- T5Transformer
+- UniversalSentenceEncoder
+- WordEmbeddingsModel
+- XlmRoBertaEmbeddings
+- XlmRoBertaForTokenClassification
+- XlmRoBertaSentenceEmbeddings
+
+-------------------- 
+
+#### Embeddings
+
+Embeddings provides dense vector representations for natural language by using a deep, pre-trained neural network with the Transformer architecture. On the NLU core side we have over 150 new embeddings models. We have new BertEmbeddings, BertSentenceEmbeddings, CamemBertEmbeddings, DistilBertEmbeddings, RoBertaEmbeddings, UniversalSentenceEncoder, XlmRoBertaEmbeddings, XlmRoBertaSentenceEmbeddings for in different languages.
+
+- German BertEmbeddings
+
+```python
+
+nlu.load("de.embed.electra.base").predict("""Ich liebe Spark NLP""")
+
+```
+
+
+|   token  | word_embedding_electra   |
+|-----------------------------------------:|:--------------------------|
+|      Ich | -0.09518987685441971, -0.016133345663547516                 |
+|   liebe | -0.07025116682052612, -0.35387516021728516                  |
+| Spark   | -0.33390265703201294, 0.08874476701021194 |
+| NLP     | -0.2969835698604584, 0.1980721354484558 |
+
+
+- English BertEmbeddings
+
+```python
+
+text = ["I love NLP"]
+df = nlu.load('en.embed_sentence.bert.pubmed').predict(text, output_level='token')
+df
+
+```
+
+
+|   token  | sentence_embedding_bert   |
+|-----------------------------------------:|:--------------------------|
+|      I | -0.06332794576883316, -0.5097940564155579                 |
+|   love | -0.06332794576883316, -0.5097940564155579                  |
+| NLP  | -0.06332794576883316, -0.5097940564155579 |
+
+
+- Japan BertEmbeddings
+
+```python
+
+nlu.load("ja.embed.bert.base").predict("""私はSpark NLPを愛しています""")
+
+```
+
+
+|   token  | word_embedding_bert   |
+|-----------------------------------------:|:--------------------------|
+|      私はSpark | 0.3989057242870331, -0.20664098858833313                 |
+|   NLPを愛しています | 0.05264343321323395, -0.19963961839675903                  |
+
+
+- XLM RoBerta Embeddings MultiLanguage
+
+```python
+
+text = ["I love NLP", "Me encanta usar SparkNLP"]
+embeddings_df = nlu.load('xx.embed.xlmr_roberta.base_v2').predict(text, output_level='sentence')
+embeddings_df
+
+```
+
+
+|   sentence  | word_embedding_xlmr_roberta  |
+|-----------------------------------------:|:--------------------------|
+|      I love NLP | -0.07450243085622787, 0.022609828040003777                 |
+|  Me encanta usar SparkNLP | 0.0961054190993309, 0.03734250366687775                  |
+
+
+- RoBerta Embeddings English
+
+```python
+
+text = ["""I love Spark NLP"""]
+embeddings_df = nlu.load('en.embed.roberta').predict(text, output_level='token')
+embeddings_df
+
+```
+
+|   token  | word_embedding_roberta   |
+|-----------------------------------------:|:--------------------------|
+|      I | -0.06406927853822708, 0.16723069548606873                 |
+|   love | -0.06369957327842712, 0.21014901995658875                  |
+| Spark   | -0.1004200279712677, 0.03312099352478981 |
+| NLP     | -0.09467814117670059, -0.02236207202076912 |
+
+
+#### Question Answering
+
+Question Answering models can retrieve the answer to a question from a given text, which is useful for searching for an answer in a document. On the NLU core side we have over 200+ new question answering models.
+
+
+- Bert For Question Answering
+
+```python
+
+nlu.load("answer_question.bert.base_uncased.by_ksabeh").predict("""What is my name?|||"My name is Clara and I live in Berkeley.""")
+
+```
+
+|   answer_confidence  | context   | question |
+|-----------------------------------------:|:--------------------------:|:---------------------- |
+|      0.3143375 | "My name is Clara and I live in Berkeley.  |    What is my name?       |
+
+
+#### Sequence Classification
+
+Sequence classification is the task of predicting a class label given a sequence of observations. On the NLU core side we have over 40 new sequence classification models.
+
+
+- Bert For Sequence Classification
+
+```python
+
+nlu.load("classify.bert.by_mrm8488").predict("""Camera - You are awarded a SiPix Digital Camera! call 09061221066 from landline. Delivery within 28 days.""")
+
+```
+
+|   classified_sequence  | classified_sequence_confidence   | sentence |
+|-----------------------------------------:|:--------------------------:|:---------------------- |
+|      1 | 0.89954  |    Camera - You are awarded a SiPix Digital Camera! call 09061221066 from landline.       |
+|     0   |     0.93745     |                        Delivery within 28 days.         |
+
+
+- DistilBert For Sequence Classification
+
+```python
+
+nlu.load("de.classify.distil_bert.base").predict("Natürlich kann ich von zuwanderern mehr erwarten. muss ich sogar. sie müssen die sprache lernen, sie müssen die gepflogenheiten lernen und sich in die gesellschaft einfügen. dass muss ich nicht weil ich mich schon in die gesellschaft eingefügt habe. egal wo du hin ziehst, nirgendwo wird dir soviel zucker in den arsch geblasen wie in deutschland.")
+
+```
+
+|   classified_sequence  | classified_sequence_confidence   | sentence |
+|-----------------------------------------:|:--------------------------:|:---------------------- |
+|   non_toxic | 0.955292  |    Natürlich kann ich von zuwanderern mehr erwarten.       |
+|    non_toxic  |     0.968591     |   muss ich sogar.         |
+|    non_toxic  |     0.841958     |   sie müssen die sprache lernen, sie müssen die gepflogenheiten lernen und sich in die gesellschaft einfügen.         |
+|    non_toxic  |     0.934119     |   dass muss ich nicht weil ich mich schon in die gesellschaft eingefügt habe.         |
+|    non_toxic  |     0.771795	     |   egal wo du hin ziehst, nirgendwo wird dir soviel zucker in den arsch geblasen wie in deutschland.         |
+
+
+
+- RoBerta For Sequence Classification
+
+```python
+
+nlu.load("en.classify.roberta.finetuned").predict("I love you very much!")
+
+```
+
+|   classified_sequence  | classified_sequence_confidence   | sentence |
+|-----------------------------------------:|:--------------------------:|:---------------------- |
+|   LABEL_0 | 0.597792  |    I love you very much!       |
+
+
+
+#### Lemmatizer
+
+Lemmatization in linguistics is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form. On the NLU core side we have over 30 new lemmatizer models.
+
+
+#### ClassifierDLModel
+
+ClassifierDL for generic Multi-class Text Classification. ClassifierDL uses the state-of-the-art Universal Sentence Encoder as an input for text classifications. The ClassifierDL annotator uses a deep learning model (DNNs) we have built inside TensorFlow and supports up to 100 classes. On the NLU core side we have over 5 new ClassifierDLModel models.
+
+
+#### ContextSpellCheckerModel
+
+Spell Checking is a sequence to sequence mapping problem. Given an input sequence, potentially containing a certain number of errors, ContextSpellChecker will rank correction sequences according to three things:
+
+1. Different correction candidates for each word — word level.
+2. The surrounding text of each word, i.e. it’s context — sentence level.
+3. The relative cost of different correction candidates according to the edit operations at the character level it requires — subword level.
+
+On the NLU core side we have over 5 new ClassifierDLModel models.
+
+
+
+#### Token Classification
+
+Token classification is a natural language understanding task in which a label is assigned to some tokens in a text. Some popular token classification subtasks are Named Entity Recognition (NER) and Part-of-Speech (PoS) tagging. NER models could be trained to identify specific entities in a text, such as dates, individuals and places; and PoS tagging would identify, for example, which words in a text are verbs, nouns, and punctuation marks. We have new 463 models XlmRoBertaForTokenClassification, BertForTokenClassification, DistilBertForTokenClassification, DistilBertEmbeddings, LongformerForTokenClassification, RoBertaForTokenClassification for in different languages.
+
+
+- BertForTokenClassification English
+
+```python
+
+nlu.load("en.ner.bc5cdr.biobert.disease").predict("I love you very much!")
+
+```
+
+|index|document|entities\_wikiner\_glove\_840B\_300|entities\_wikiner\_glove\_840B\_300\_class|entities\_wikiner\_glove\_840B\_300\_confidence|entities\_wikiner\_glove\_840B\_300\_origin\_chunk|entities\_wikiner\_glove\_840B\_300\_origin\_sentence|word\_embedding\_glove|
+|---|---|---|---|---|---|---|---|
+|0|I love you very much\!|I love you very much\!|MISC|0\.66433334|0|0|\[ 0\.19410001  0\.22603001 -0\.43764001 \]|
+
+
+- BertForTokenClassification German
+
+```python
+
+nlu.load("de.ner.distil_bert.base_cased").predict("Ich liebe Spark NLP")
+
+```
+
+|index|classified\_token|document|entities\_distil\_bert|entities\_distil\_bert\_class|entities\_distil\_bert\_origin\_chunk|entities\_distil\_bert\_origin\_sentence|
+|---|---|---|---|---|---|---|
+|0|O,O,B-OTHderiv,O|Ich liebe Spark NLP|Spark|OTHderiv|0|0|
+
+
+
+- XlmRoBertaForTokenClassification Igbo
+
+```python
+
+nlu.load("ig.ner.xlmr_roberta.base").predict("Ahụrụ m n'anya na-atọ m ụtọ")
+
+```
+
+|index|classified\_token|document|entities\_xlmr\_roberta|entities\_xlmr\_roberta\_class|entities\_xlmr\_roberta\_origin\_chunk|entities\_xlmr\_roberta\_origin\_sentence|
+|---|---|---|---|---|---|---|
+|0|B-ORG,I-ORG,I-ORG,I-ORG,I-ORG,I-ORG|Ahụrụ m n'anya na-atọ m ụtọ|Ahụrụ m n'anya na-atọ m ụtọ|ORG|0|0|
+
+
+#### NerCrfModel
+
+This Named Entity Recognizer is based on a CRF Algorithm. Conditional random fields (CRFs) are a class of statistical modeling methods often applied in pattern recognition and machine learning and used for structured prediction. Whereas a classifier predicts a label for a single sample without considering "neighbouring" samples, a CRF can take context into account. To do so, the predictions are modelled as a graphical model, which represents the presence of dependencies between the predictions. What kind of graph is used depends on the application. For example, in natural language processing, "linear chain" CRFs are popular, for which each prediction is dependent only on its immediate neighbours. In image processing, the graph typically connects locations to nearby and/or similar locations to enforce that they receive similar predictions.
+
+
+- NerCrfModel
+
+```python
+
+nlu.load('en.ner.ner.crf').predict("Donald Trump and Angela Merkel dont share many oppinions")
+
+```
+
+|index|document|entities\_wikiner\_glove\_840B\_300|entities\_wikiner\_glove\_840B\_300\_class|entities\_wikiner\_glove\_840B\_300\_confidence|entities\_wikiner\_glove\_840B\_300\_origin\_chunk|entities\_wikiner\_glove\_840B\_300\_origin\_sentence|word\_embedding\_glove|
+|---|---|---|---|---|---|---|---|
+|0|Donald Trump and Angela Merkel dont share many oppinions|Donald Trump|PER|0\.78524995|0|0|\[\-0\.074014   -0\.23684999  0\.17772 \]|
+|0|Donald Trump and Angela Merkel dont share many oppinions|Angela Merkel|PER|0\.7701|1|0|\[\-0\.074014   -0\.23684999  0\.17772  \]|
+
+#### NerDLModel
+
+This Named Entity recognition annotator is a generic NER model based on Neural Networks.
+Neural Network architecture is Char CNNs - BiLSTM - CRF that achieves state-of-the-art in most datasets.
+This is the instantiated model of the NerDLApproach. For training your own model, please see the documentation of that class.
+We have new 6 models.
+
+
+- NerDLModel Japanese
+
+```python
+
+nlu.load('ja.ner.ner.base').predict("宮本茂氏は、日本の任天堂のゲームプロデューサーです。")
+
+```
+
+|index|document|entities\_xtreme\_glove\_840B\_300|word\_embedding\_glove|
+|---|---|---|---|
+|0|宮本茂氏は、日本の任天堂のゲームプロデューサーです。|NaN|\[0\. 0\. \]|
+
+
+- NerDLModel English
+
+```python
+
+text = ["My name is John!"]
+
+nlu.load('en.ner.conll.ner.large').predict(text, output_level='token')
+
+```
+
+|index|entities\_wikiner\_glove\_840B\_300|entities\_wikiner\_glove\_840B\_300\_class|entities\_wikiner\_glove\_840B\_300\_confidence|entities\_wikiner\_glove\_840B\_300\_origin\_chunk|entities\_wikiner\_glove\_840B\_300\_origin\_sentence|token|word\_embedding\_glove|
+|---|---|---|---|---|---|---|---|
+|0|My name is John\!|MISC|0\.63266003|0|0|My|\[-2\.19990000e-01  2\.57800013e-01 -4\.25859988e-01 ]|
+|0|My name is John\!|MISC|0\.63266003|0|0|name|\[ 2\.32309997e-01 -2\.41020005e-02]|
+|0|My name is John\!|MISC|0\.63266003|0|0|is|\[-8\.49609971e-02  5\.01999974e-01  2\.38230010e-03]|
+|0|My name is John\!|MISC|0\.63266003|0|0|John|\[-2\.96090007e-01 -8\.18260014e-02  9\.67490021e-03 ]|
+|0|My name is John\!|MISC|0\.63266003|0|0|\!|\[-2\.65540004e-01  3\.35310012e-01  2\.18600005e-01 ]|
+
+
+
+#### PerceptronModel
+
+We have new 26 models.
+
+#### StopWordsCleaner
+This model removes ‘stop words’ from text. Stop words are words so common that they can be removed without significantly altering the meaning of a text. Removing stop words is useful when one wants to deal with only the most semantically important words in a text, and ignore words that are rarely semantically relevant, such as articles and prepositions. We have new 33 models.
+
+______________________
+______________________
+
+
 ## NLU Version 4.0.0
 OCR Visual Tables into Pandas DataFrames from PDF/DOC(X)/PPT files, 1000+ new state-of-the-art transformer models for Question Answering (QA)  for over 30 languages, up to 700% speedup on GPU, 20 Biomedical models for over 8 languages, 50+ Terminology Code Mappers between RXNORM, NDC, UMLS,ICD10, ICDO, UMLS, SNOMED and MESH, Deidentification in Romanian, various Spark NLP helper methods and much more in 1 line of code with John Snow Labs NLU 4.0.0
 
@@ -180,7 +994,7 @@ If multiple datasets or tune parameters are defined , they are connected with  a
 
 These substrings define up the `<domain>` part of the NLU reference
 - Legal [cuad](https://arxiv.org/abs/2103.06268)
-- COVID 19 Biomedical [biosaq](http://bioasq.org/)
+- COVID 19 Biomedical [biosaq](https://bioasq.org/)
 - Biomedical Literature [pubmed](https://pubmed.ncbi.nlm.nih.gov/)
 - Twitter [tweet](https://aclanthology.org/P19-1496.pdf)
 - Wikipedia [wiki](https://www.wikipedia.org/)
@@ -646,7 +1460,7 @@ All healthcare models added in NLU 4.0 :
 | en         | [en.map_entity.icd10cm_to_umls](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_umls_mapper_en_3_0.html)                                        | [icd10cm_umls_mapper](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_umls_mapper_en_3_0.html)                                                                 | Chunk Mapping            | ChunkMapperModel                     | Chunk Mapping[en.map_entity.icd10cm_to_umls](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_umls_mapper_en_3_0.html)                                                   |
 | en         | [en.map_entity.mesh_to_umls](https://nlp.johnsnowlabs.com/2022/06/26/mesh_umls_mapper_en_3_0.html)                                              | [mesh_umls_mapper](https://nlp.johnsnowlabs.com/2022/06/26/mesh_umls_mapper_en_3_0.html)                                                                       | Chunk Mapping            | ChunkMapperModel                     | Chunk Mapping[en.map_entity.mesh_to_umls](https://nlp.johnsnowlabs.com/2022/06/26/mesh_umls_mapper_en_3_0.html)                                                         |
 | en         | [en.map_entity.snomed_to_umls](https://nlp.johnsnowlabs.com/2022/06/27/snomed_umls_mapper_en_3_0.html)                                          | [snomed_umls_mapper](https://nlp.johnsnowlabs.com/2022/06/27/snomed_umls_mapper_en_3_0.html)                                                                   | Chunk Mapping            | ChunkMapperModel                     | Chunk Mapping[en.map_entity.snomed_to_umls](https://nlp.johnsnowlabs.com/2022/06/27/snomed_umls_mapper_en_3_0.html)                                                     |
-| en         | [en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2022/04/01/normalized_section_header_mapper_en_3_0.html)                | [normalized_section_header_mapper](https://nlp.johnsnowlabs.com/2022/04/01/normalized_section_header_mapper_en_3_0.html)                                       | Chunk Mapping            | PretrainedPipeline                   | Chunk Mapping[en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2022/04/01/normalized_section_header_mapper_en_3_0.html)                           |
+| en         | [en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2021/07/01/icd10cm_umls_mapping_en.html)                | [normalized_section_header_mapper](https://nlp.johnsnowlabs.com/2021/07/01/icd10cm_umls_mapping_en.html)                                       | Chunk Mapping            | PretrainedPipeline                   | Chunk Mapping[en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2021/07/01/icd10cm_umls_mapping_en.html)                           |
 | en         | [en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2022/04/04/normalized_section_header_mapper_en_3_0.html)                | [normalized_section_header_mapper](https://nlp.johnsnowlabs.com/2022/04/04/normalized_section_header_mapper_en_3_0.html)                                       | Chunk Mapping            | PretrainedPipeline                   | Chunk Mapping[en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2022/04/04/normalized_section_header_mapper_en_3_0.html)                           |
 | en         | [en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2022/06/26/normalized_section_header_mapper_en_3_0.html)                | [normalized_section_header_mapper](https://nlp.johnsnowlabs.com/2022/06/26/normalized_section_header_mapper_en_3_0.html)                                       | Chunk Mapping            | PretrainedPipeline                   | Chunk Mapping[en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2022/06/26/normalized_section_header_mapper_en_3_0.html)                           |
 | en         | [en.icd10cm_to_snomed](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_snomed_mapper_en_3_0.html)                                               | [icd10cm_snomed_mapper](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_snomed_mapper_en_3_0.html)                                                             | Chunk Mapping            | ChunkMapperModel                     | Chunk Mapping[en.icd10cm_to_snomed](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_snomed_mapper_en_3_0.html)                                                          |
@@ -1229,7 +2043,7 @@ Can be found on the [NLU website](https://nlp.johnsnowlabs.com/docs/en/jsl/relea
 | [en.answer_question.roberta.by_AmazonScience](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_qanlu_en_3_0.html)                                                                                                                                | [roberta_qa_qanlu](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_qanlu_en_3_0.html)                                                                                                                                                                               | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
 | [en.answer_question.roberta.by_Andranik](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_TestQaV1_en_3_0.html)                                                                                                                                  | [roberta_qa_TestQaV1](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_TestQaV1_en_3_0.html)                                                                                                                                                                         | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
 | [en.answer_question.roberta.by_AyushPJ](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_ai_club_inductions_21_nlp_roBERTa_en_3_0.html)                                                                                                          | [roberta_qa_ai_club_inductions_21_nlp_roBERTa](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_ai_club_inductions_21_nlp_roBERTa_en_3_0.html)                                                                                                                       | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
-| [en.answer_question.roberta.by_Beri](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_legal_qa_en_3_0.html)                                                                                                                                      | [roberta_qa_legal_qa](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_legal_qa_en_3_0.html)                                                                                                                                                                         | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
+| [en.answer_question.roberta.by_Beri](#)                                                                                                                                      | [roberta_qa_legal_qa](#)                                                                                                                                                                         | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
 | [en.answer_question.roberta.by_CNT-UPenn](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_RoBERTa_for_seizureFrequency_QA_en_3_0.html)                                                                                                          | [roberta_qa_RoBERTa_for_seizureFrequency_QA](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_RoBERTa_for_seizureFrequency_QA_en_3_0.html)                                                                                                                           | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
 | [en.answer_question.news.roberta.qa_fpdm_triplet_roberta_ft_newsqa.by_AnonymousSub](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_fpdm_triplet_roberta_FT_newsqa_en_3_0.html)                                                                 | [roberta_qa_fpdm_triplet_roberta_FT_newsqa](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_fpdm_triplet_roberta_FT_newsqa_en_3_0.html)                                                                                                                             | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
 | [en.answer_question.news.roberta.qa_fpdm_triplet_roberta_ft_new_newsqa.by_AnonymousSub](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_fpdm_triplet_roberta_FT_new_newsqa_en_3_0.html)                                                         | [roberta_qa_fpdm_triplet_roberta_FT_new_newsqa](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_fpdm_triplet_roberta_FT_new_newsqa_en_3_0.html)                                                                                                                     | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
@@ -1280,7 +2094,7 @@ Can be found on the [NLU website](https://nlp.johnsnowlabs.com/docs/en/jsl/relea
 | [en.answer_question.bert.docvqa.base_uncased.by_tiennvcs](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_base_uncased_finetuned_docvqa_en_3_0.html)                                                                                          | [bert_qa_bert_base_uncased_finetuned_docvqa](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_base_uncased_finetuned_docvqa_en_3_0.html)                                                                                                                           | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | BertForQuestionAnswering       |
 | [en.answer_question.bert.infovqa.base_uncased.by_tiennvcs](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_base_uncased_finetuned_infovqa_en_3_0.html)                                                                                        | [bert_qa_bert_base_uncased_finetuned_infovqa](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_base_uncased_finetuned_infovqa_en_3_0.html)                                                                                                                         | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | BertForQuestionAnswering       |
 | [en.answer_question.bert.large.by_Sounak](https://nlp.johnsnowlabs.com/2022/06/06/bert_qa_bert_large_finetuned_en_3_0.html)                                                                                                                        | [bert_qa_bert_large_finetuned](https://nlp.johnsnowlabs.com/2022/06/06/bert_qa_bert_large_finetuned_en_3_0.html)                                                                                                                                                       | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | BertForQuestionAnswering       |
-| [en.answer_question.bert.large.by_atharvamundada99](https://nlp.johnsnowlabs.com/2022/06/06/bert_qa_bert_large_question_answering_finetuned_legal_en_3_0.html)                                                                                     | [bert_qa_bert_large_question_answering_finetuned_legal](https://nlp.johnsnowlabs.com/2022/06/06/bert_qa_bert_large_question_answering_finetuned_legal_en_3_0.html)                                                                                                     | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | BertForQuestionAnswering       |
+| [en.answer_question.bert.large.by_atharvamundada99](#)                                                                                     | [bert_qa_bert_large_question_answering_finetuned_legal](#)                                                                                                     | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | BertForQuestionAnswering       |
 | [en.answer_question.bert.large.by_ricardo-filho](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_large_faquad_en_3_0.html)                                                                                                                    | [bert_qa_bert_large_faquad](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_large_faquad_en_3_0.html)                                                                                                                                                             | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | BertForQuestionAnswering       |
 | [en.answer_question.bert.by_Rocketknight1](https://nlp.johnsnowlabs.com/2022/06/06/bert_qa_bert_finetuned_qa_en_3_0.html)                                                                                                                          | [bert_qa_bert_finetuned_qa](https://nlp.johnsnowlabs.com/2022/06/06/bert_qa_bert_finetuned_qa_en_3_0.html)                                                                                                                                                             | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | BertForQuestionAnswering       |
 | [en.answer_question.bert.by_LenaSchmidt](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_no_need_to_name_this_en_3_0.html)                                                                                                                         | [bert_qa_no_need_to_name_this](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_no_need_to_name_this_en_3_0.html)                                                                                                                                                       | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | BertForQuestionAnswering       |
@@ -1329,7 +2143,7 @@ Can be found on the [NLU website](https://nlp.johnsnowlabs.com/docs/en/jsl/relea
 | [en.answer_question.covid_bert.b.by_rahulkuruvilla](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_COVID_BERTb_en_3_0.html)                                                                                                                       | [bert_qa_COVID_BERTb](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_COVID_BERTb_en_3_0.html)                                                                                                                                                                         | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | BertForQuestionAnswering       |
 | [en.answer_question.covid_bert.c.by_rahulkuruvilla](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_COVID_BERTc_en_3_0.html)                                                                                                                       | [bert_qa_COVID_BERTc](https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_COVID_BERTc_en_3_0.html)                                                                                                                                                                         | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | BertForQuestionAnswering       |
 | [en.answer_question.cuad.roberta.base.by_Gam](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_roberta_base_finetuned_cuad_en_3_0.html)                                                                                                          | [roberta_qa_roberta_base_finetuned_cuad](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_roberta_base_finetuned_cuad_en_3_0.html)                                                                                                                                   | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
-| [en.answer_question.cuad.roberta.base.by_Rakib](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_roberta_base_on_cuad_en_3_0.html)                                                                                                               | [roberta_qa_roberta_base_on_cuad](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_roberta_base_on_cuad_en_3_0.html)                                                                                                                                                 | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
+| [en.answer_question.cuad.roberta.base.by_Rakib](#)                                                                                                               | [roberta_qa_roberta_base_on_cuad](#)                                                                                                                                                 | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
 | [en.answer_question.cuad.roberta.base.by_akdeniz27](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_akdeniz27_roberta_base_cuad_en_3_0.html)                                                                                                    | [roberta_qa_akdeniz27_roberta_base_cuad](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_akdeniz27_roberta_base_cuad_en_3_0.html)                                                                                                                                   | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
 | [en.answer_question.cuad.roberta.base.by_marshmellow77](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_akdeniz27_roberta_base_cuad_en_3_0.html)                                                                                            | [roberta_qa_marshmellow77_roberta_base_cuad](https://sparknlp.org/2022/06/20/roberta_qa_akdeniz27_roberta_base_cuad_en_3_0.html)                                                                                                                           | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
 | [en.answer_question.cuad.roberta.large](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_roberta_large_cuad_en_3_0.html)                                                                                                                         | [roberta_qa_roberta_large_cuad](https://nlp.johnsnowlabs.com/2022/06/20/roberta_qa_roberta_large_cuad_en_3_0.html)                                                                                                                                                     | Question Answering | [English](https://iso639-3.sil.org/code/eng)                 | RoBertaForQuestionAnswering    |
@@ -1905,9 +2719,9 @@ Powered by the incredible [Spark NLP 3.4.4](https://github.com/JohnSnowLabs/spar
 |       71 | [es.ner.roberta_base_bne_capitel_ner](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_roberta_base_bne_capitel_ner_es_3_0.html)                                                                          | [roberta_ner_roberta_base_bne_capitel_ner](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_roberta_base_bne_capitel_ner_es_3_0.html)                                                                               | Named Entity Recognition | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaForTokenClassification | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
 |       72 | [es.ner.RuPERTa_base_finetuned_ner](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_RuPERTa_base_finetuned_ner_es_3_0.html)                                                                              | [roberta_ner_RuPERTa_base_finetuned_ner](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_RuPERTa_base_finetuned_ner_es_3_0.html)                                                                                   | Named Entity Recognition | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaForTokenClassification | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
 |       73 | [es.pos.roberta_base_bne_capitel_pos](https://nlp.johnsnowlabs.com/2022/05/03/roberta_pos_roberta_base_bne_capitel_pos_es_3_0.html)                                                                          | [roberta_pos_roberta_base_bne_capitel_pos](https://nlp.johnsnowlabs.com/2022/05/03/roberta_pos_roberta_base_bne_capitel_pos_es_3_0.html)                                                                               | Part of Speech Tagging   | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaForTokenClassification | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
-|       74 | [es.ner.NER_LAW_MONEY4](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_NER_LAW_MONEY4_es_3_0.html)                                                                                                      | [roberta_ner_NER_LAW_MONEY4](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_NER_LAW_MONEY4_es_3_0.html)                                                                                                           | Named Entity Recognition | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaForTokenClassification | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
+|       74 | [es.ner.NER_LAW_MONEY4](#)                                                                                                      | [roberta_ner_NER_LAW_MONEY4](#)                                                                                                           | Named Entity Recognition | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaForTokenClassification | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
 |       75 | [es.pos.roberta_large_bne_capitel_pos](https://nlp.johnsnowlabs.com/2022/05/03/roberta_pos_roberta_large_bne_capitel_pos_es_3_0.html)                                                                        | [roberta_pos_roberta_large_bne_capitel_pos](https://nlp.johnsnowlabs.com/2022/05/03/roberta_pos_roberta_large_bne_capitel_pos_es_3_0.html)                                                                             | Part of Speech Tagging   | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaForTokenClassification | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
-|       76 | [es.ner.bsc_bio_ehr_es_pharmaconer](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_bsc_bio_ehr_es_pharmaconer_es_3_0.html)                                                                              | [roberta_ner_bsc_bio_ehr_es_pharmaconer](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_bsc_bio_ehr_es_pharmaconer_es_3_0.html)                                                                                   | Named Entity Recognition | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaForTokenClassification | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
+|       76 | [es.ner.bsc_bio_ehr_es_pharmaconer](#)                                                                              | [roberta_ner_bsc_bio_ehr_es_pharmaconer](#)                                                                                   | Named Entity Recognition | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaForTokenClassification | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
 |       77 | [es.embed.RoBERTalex](https://nlp.johnsnowlabs.com/2022/04/14/roberta_embeddings_RoBERTalex_es_3_0.html)                                                                                                     | [roberta_embeddings_RoBERTalex](https://nlp.johnsnowlabs.com/2022/04/14/roberta_embeddings_RoBERTalex_es_3_0.html)                                                                                                     | Embeddings               | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaEmbeddings             | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
 |       78 | [es.ner.roberta_large_bne_capitel_ner](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_roberta_large_bne_capitel_ner_es_3_0.html)                                                                        | [roberta_ner_roberta_large_bne_capitel_ner](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_roberta_large_bne_capitel_ner_es_3_0.html)                                                                             | Named Entity Recognition | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaForTokenClassification | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
 |       79 | [es.embed.RuPERTa_base](https://nlp.johnsnowlabs.com/2022/04/14/roberta_embeddings_RuPERTa_base_es_3_0.html)                                                                                                 | [roberta_embeddings_RuPERTa_base](https://nlp.johnsnowlabs.com/2022/04/14/roberta_embeddings_RuPERTa_base_es_3_0.html)                                                                                                 | Embeddings               | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaEmbeddings             | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
@@ -1916,7 +2730,7 @@ Powered by the incredible [Spark NLP 3.4.4](https://github.com/JohnSnowLabs/spar
 |       82 | [es.stopwords](https://nlp.johnsnowlabs.com/2022/03/07/stopwords_iso_es_3_0.html)                                                                                                                            | [stopwords_iso](https://nlp.johnsnowlabs.com/2022/03/07/stopwords_iso_es_3_0.html)                                                                                                                                     | Stop Words Removal       | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | StopWordsCleaner              | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
 |       83 | [es.pos.RuPERTa_base_finetuned_pos](https://nlp.johnsnowlabs.com/2022/05/03/roberta_pos_RuPERTa_base_finetuned_pos_es_3_0.html)                                                                              | [roberta_pos_RuPERTa_base_finetuned_pos](https://nlp.johnsnowlabs.com/2022/05/03/roberta_pos_RuPERTa_base_finetuned_pos_es_3_0.html)                                                                                   | Part of Speech Tagging   | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaForTokenClassification | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
 |       84 | [es.embed.bertin_base_stepwise_exp_512seqlen](https://nlp.johnsnowlabs.com/2022/04/14/roberta_embeddings_bertin_base_stepwise_exp_512seqlen_es_3_0.html)                                                     | [roberta_embeddings_bertin_base_stepwise_exp_512seqlen](https://nlp.johnsnowlabs.com/2022/04/14/roberta_embeddings_bertin_base_stepwise_exp_512seqlen_es_3_0.html)                                                     | Embeddings               | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaEmbeddings             | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
-|       85 | [es.ner.bsc_bio_ehr_es_cantemist](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_bsc_bio_ehr_es_cantemist_es_3_0.html)                                                                                  | [roberta_ner_bsc_bio_ehr_es_cantemist](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_bsc_bio_ehr_es_cantemist_es_3_0.html)                                                                                       | Named Entity Recognition | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaForTokenClassification | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
+|       85 | [es.ner.bsc_bio_ehr_es_cantemist](#)                                                                                  | [roberta_ner_bsc_bio_ehr_es_cantemist](#)                                                                                       | Named Entity Recognition | [Castilian, Spanish](https://iso639-3.sil.org/code/spa)                                                               | RoBertaForTokenClassification | [es](https://iso639-3.sil.org/code/spa)  | [spa](https://iso639-3.sil.org/code/spa)                      | [spa](https://iso639-3.sil.org/code/spa) | Living          | Individual    |
 |       86 | [ca.lemma](https://nlp.johnsnowlabs.com/2022/03/03/lemma_spacylookup_ca_3_0.html)                                                                                                                            | [lemma_spacylookup](https://nlp.johnsnowlabs.com/2022/03/03/lemma_spacylookup_ca_3_0.html)                                                                                                                             | Lemmatization            | [Catalan, Valencian](https://iso639-3.sil.org/code/cat)                                                               | LemmatizerModel               | [ca](https://iso639-3.sil.org/code/cat)  | [cat](https://iso639-3.sil.org/code/cat)                      | [cat](https://iso639-3.sil.org/code/cat) | Living          | Individual    |
 |       87 | [ca.embed.w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/14/w2v_cc_300d_ca_3_0.html)                                                                                                                      | [w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/14/w2v_cc_300d_ca_3_0.html)                                                                                                                                         | Embeddings               | [Catalan, Valencian](https://iso639-3.sil.org/code/cat)                                                               | WordEmbeddingsModel           | [ca](https://iso639-3.sil.org/code/cat)  | [cat](https://iso639-3.sil.org/code/cat)                      | [cat](https://iso639-3.sil.org/code/cat) | Living          | Individual    |
 |       88 | [ca.stopwords](https://nlp.johnsnowlabs.com/2022/03/07/stopwords_iso_ca_3_0.html)                                                                                                                            | [stopwords_iso](https://nlp.johnsnowlabs.com/2022/03/07/stopwords_iso_ca_3_0.html)                                                                                                                                     | Stop Words Removal       | [Catalan, Valencian](https://iso639-3.sil.org/code/cat)                                                               | StopWordsCleaner              | [ca](https://iso639-3.sil.org/code/cat)  | [cat](https://iso639-3.sil.org/code/cat)                      | [cat](https://iso639-3.sil.org/code/cat) | Living          | Individual    |
@@ -1992,9 +2806,9 @@ Powered by the incredible [Spark NLP 3.4.4](https://github.com/JohnSnowLabs/spar
 |      158 | [en.embed.Bible_roberta_base](https://nlp.johnsnowlabs.com/2022/04/14/roberta_embeddings_Bible_roberta_base_en_3_0.html)                                                                                     | [roberta_embeddings_Bible_roberta_base](https://nlp.johnsnowlabs.com/2022/04/14/roberta_embeddings_Bible_roberta_base_en_3_0.html)                                                                                     | Embeddings               | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaEmbeddings             | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
 |      159 | [en.embed.w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/15/w2v_cc_300d_en_3_0.html)                                                                                                                      | [w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/15/w2v_cc_300d_en_3_0.html)                                                                                                                                         | Embeddings               | [English](https://iso639-3.sil.org/code/eng)                                                                          | WordEmbeddingsModel           | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
 |      160 | [en.pos](https://nlp.johnsnowlabs.com/2022/05/01/pos_atis_en_3_0.html)                                                                                                                                       | [pos_atis](https://nlp.johnsnowlabs.com/2022/05/01/pos_atis_en_3_0.html)                                                                                                                                               | Part of Speech Tagging   | [English](https://iso639-3.sil.org/code/eng)                                                                          | PerceptronModel               | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
-|      161 | [en.ner.ner_chemical_bionlp_bc5cdr_pubmed](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_ner_chemical_bionlp_bc5cdr_pubmed_en_3_0.html)                                                                | [roberta_ner_ner_chemical_bionlp_bc5cdr_pubmed](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_ner_chemical_bionlp_bc5cdr_pubmed_en_3_0.html)                                                                     | Named Entity Recognition | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaForTokenClassification | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
+|      161 | [en.ner.ner_chemical_bionlp_bc5cdr_pubmed](#)                                                                | [roberta_ner_ner_chemical_bionlp_bc5cdr_pubmed](#)                                                                     | Named Entity Recognition | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaForTokenClassification | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
 |      162 | [en.pos.roberta_large_english_upos](https://nlp.johnsnowlabs.com/2022/05/03/roberta_pos_roberta_large_english_upos_en_3_0.html)                                                                              | [roberta_pos_roberta_large_english_upos](https://nlp.johnsnowlabs.com/2022/05/03/roberta_pos_roberta_large_english_upos_en_3_0.html)                                                                                   | Part of Speech Tagging   | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaForTokenClassification | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
-|      163 | [en.ner.roberta_ticker](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_roberta_ticker_en_3_0.html)                                                                                                      | [roberta_ner_roberta_ticker](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_roberta_ticker_en_3_0.html)                                                                                                           | Named Entity Recognition | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaForTokenClassification | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
+|      163 | [en.ner.roberta_ticker](#)                                                                                                      | [roberta_ner_roberta_ticker](#)                                                                                                           | Named Entity Recognition | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaForTokenClassification | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
 |      164 | [en.embed.bert_political_election2020_twitter_mlm](https://nlp.johnsnowlabs.com/2022/04/11/bert_embeddings_bert_political_election2020_twitter_mlm_en_3_0.html)                                              | [bert_embeddings_bert_political_election2020_twitter_mlm](https://nlp.johnsnowlabs.com/2022/04/11/bert_embeddings_bert_political_election2020_twitter_mlm_en_3_0.html)                                                 | Embeddings               | [English](https://iso639-3.sil.org/code/eng)                                                                          | BertEmbeddings                | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
 |      165 | [en.embed.bert_base_uncased_mnli_sparse_70_unstructured_no_classifier](https://nlp.johnsnowlabs.com/2022/04/11/bert_embeddings_bert_base_uncased_mnli_sparse_70_unstructured_no_classifier_en_3_0.html)      | [bert_embeddings_bert_base_uncased_mnli_sparse_70_unstructured_no_classifier](https://nlp.johnsnowlabs.com/2022/04/11/bert_embeddings_bert_base_uncased_mnli_sparse_70_unstructured_no_classifier_en_3_0.html)         | Embeddings               | [English](https://iso639-3.sil.org/code/eng)                                                                          | BertEmbeddings                | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
 |      166 | [en.embed.crosloengual_bert](https://nlp.johnsnowlabs.com/2022/04/11/bert_embeddings_crosloengual_bert_en_3_0.html)                                                                                          | [bert_embeddings_crosloengual_bert](https://nlp.johnsnowlabs.com/2022/04/11/bert_embeddings_crosloengual_bert_en_3_0.html)                                                                                             | Embeddings               | [English](https://iso639-3.sil.org/code/eng)                                                                          | BertEmbeddings                | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
@@ -2036,8 +2850,8 @@ Powered by the incredible [Spark NLP 3.4.4](https://github.com/JohnSnowLabs/spar
 |      202 | [en.ner.roberta_classics_ner](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_roberta_classics_ner_en_3_0.html)                                                                                          | [roberta_ner_roberta_classics_ner](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_roberta_classics_ner_en_3_0.html)                                                                                               | Named Entity Recognition | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaForTokenClassification | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
 |      203 | [en.pos.roberta_base_english_upos](https://nlp.johnsnowlabs.com/2022/05/03/roberta_pos_roberta_base_english_upos_en_3_0.html)                                                                                | [roberta_pos_roberta_base_english_upos](https://nlp.johnsnowlabs.com/2022/05/03/roberta_pos_roberta_base_english_upos_en_3_0.html)                                                                                     | Part of Speech Tagging   | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaForTokenClassification | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
 |      204 | [en.ner.roberta_large_ner_english](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_roberta_large_ner_english_en_3_0.html)                                                                                | [roberta_ner_roberta_large_ner_english](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_roberta_large_ner_english_en_3_0.html)                                                                                     | Named Entity Recognition | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaForTokenClassification | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
-|      205 | [en.ner.ner_gene_dna_rna_jnlpba_pubmed](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_ner_gene_dna_rna_jnlpba_pubmed_en_3_0.html)                                                                      | [roberta_ner_ner_gene_dna_rna_jnlpba_pubmed](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_ner_gene_dna_rna_jnlpba_pubmed_en_3_0.html)                                                                           | Named Entity Recognition | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaForTokenClassification | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
-|      206 | [en.ner.ner_disease_ncbi_bionlp_bc5cdr_pubmed](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_ner_disease_ncbi_bionlp_bc5cdr_pubmed_en_3_0.html)                                                        | [roberta_ner_ner_disease_ncbi_bionlp_bc5cdr_pubmed](https://nlp.johnsnowlabs.com/2022/05/03/roberta_ner_ner_disease_ncbi_bionlp_bc5cdr_pubmed_en_3_0.html)                                                             | Named Entity Recognition | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaForTokenClassification | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
+|      205 | [en.ner.ner_gene_dna_rna_jnlpba_pubmed](#)                                                                      | [roberta_ner_ner_gene_dna_rna_jnlpba_pubmed](#)                                                                           | Named Entity Recognition | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaForTokenClassification | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
+|      206 | [en.ner.ner_disease_ncbi_bionlp_bc5cdr_pubmed](#)                                                        | [roberta_ner_ner_disease_ncbi_bionlp_bc5cdr_pubmed](#)                                                             | Named Entity Recognition | [English](https://iso639-3.sil.org/code/eng)                                                                          | RoBertaForTokenClassification | [en](https://iso639-3.sil.org/code/eng)  | [eng](https://iso639-3.sil.org/code/eng)                      | [eng](https://iso639-3.sil.org/code/eng) | Living          | Individual    |
 |      207 | [myv.embed.w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/15/w2v_cc_300d_myv_3_0.html)                                                                                                                    | [w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/15/w2v_cc_300d_myv_3_0.html)                                                                                                                                        | Embeddings               | [Erzya](https://iso639-3.sil.org/code/myv)                                                                            | WordEmbeddingsModel           | [nan](https://iso639-3.sil.org/code/myv) | [myv](https://iso639-3.sil.org/code/myv)                      | [myv](https://iso639-3.sil.org/code/myv) | Living          | Individual    |
 |      208 | [fo.pos](https://nlp.johnsnowlabs.com/2022/05/01/pos_farpahc_fo_3_0.html)                                                                                                                                    | [pos_farpahc](https://nlp.johnsnowlabs.com/2022/05/01/pos_farpahc_fo_3_0.html)                                                                                                                                         | Part of Speech Tagging   | [Faroese](https://iso639-3.sil.org/code/fao)                                                                          | PerceptronModel               | [fo](https://iso639-3.sil.org/code/fao)  | [fao](https://iso639-3.sil.org/code/fao)                      | [fao](https://iso639-3.sil.org/code/fao) | Living          | Individual    |
 |      209 | [fi.embed.w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/15/w2v_cc_300d_fi_3_0.html)                                                                                                                      | [w2v_cc_300d](https://nlp.johnsnowlabs.com/2022/03/15/w2v_cc_300d_fi_3_0.html)                                                                                                                                         | Embeddings               | [Finnish](https://iso639-3.sil.org/code/fin)                                                                          | WordEmbeddingsModel           | [fi](https://iso639-3.sil.org/code/fin)  | [fin](https://iso639-3.sil.org/code/fin)                      | [fin](https://iso639-3.sil.org/code/fin) | Living          | Individual    |
@@ -2477,8 +3291,8 @@ Powered by the incredible [Spark NLP 3.4.4](https://github.com/JohnSnowLabs/spar
 
 #### All Healthcare
 Powered by the amazing
-[Spark NLP for Healthcare 3.5.2](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_release_notes#352) and
-[Spark NLP for Healthcare 3.5.1](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_release_notes#351) releases.
+[Spark NLP for Healthcare 3.5.2](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#352) and
+[Spark NLP for Healthcare 3.5.1](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#351) releases.
 
 
 |   Number | NLU Reference                                                                                                                     | Spark NLP  Reference                                                                                                                   | Task                     | Language Name(s)                                | Annotator Class               | ISO-639-1                               | ISO-639-2/639-5                          | ISO-639-3                                | Language Type   | Scope      |
@@ -2514,7 +3328,7 @@ for the first time by NLU, including ancient and exotic languages like `Ancient 
 On the healthcare NLP side, a new `ZeroShotRelationExtractionModel` is available, which can extract relations between
 clinical entities in an unsupervised fashion, no training required!
 Additionally, New French and Italian Deidentification models are available for clinical and healthcare domains.
-Powerd by the fantastic [ Spark NLP for helathcare 3.5.0 release](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_release_notes)
+Powerd by the fantastic [ Spark NLP for helathcare 3.5.0 release](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes)
 
 </div><div class="h3-box" markdown="1">
 
@@ -2774,7 +3588,7 @@ and their respective ISO-639-3 and ISO 630-2 codes are :
 
 #### Additional NLU resources
 * [140+ NLU Tutorials](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
@@ -2823,7 +3637,7 @@ Integrates models from [Spark NLP 3.4.2](https://github.com/JohnSnowLabs/spark-n
 
 #### New Healthcare Models
 
-Integrates models from [Spark NLP For Healthcare 3.4.2](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_release_notes#342) release
+Integrates models from [Spark NLP For Healthcare 3.4.2](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#342) release
 
 | Language   | NLU Reference                                                                                                             | Spark NLP  Reference                                                                                                             | Task                                              | Annotator Class                      |
 |:-----------|:--------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------|:-------------------------------------|
@@ -2837,7 +3651,7 @@ Integrates models from [Spark NLP For Healthcare 3.4.2](https://nlp.johnsnowlabs
 
 #### Additional NLU resources
 * [140+ NLU Tutorials](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
@@ -2916,7 +3730,7 @@ Additionally new Multilingual NER model for 9 African languages, English 6 Class
 </div><div class="h3-box" markdown="1">
 
 #### New Healthcare Models
-Integrated from the amazing [3.4.1 Spark NLP For Healthcare Release](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_release_notes#341).
+Integrated from the amazing [3.4.1 Spark NLP For Healthcare Release](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#341).
 which makes 2 new Annotator Classes available,  `MedicalBertForSequenceClassification` and `MedicalDistilBertForSequenceClassification`,
 various medical Spanish models, RxNorm Resolvers,
 Transformer based sequence classifiers for Drugs, Gender and the PICO framework,
@@ -2966,7 +3780,7 @@ and Relation extractors for Temporality and Causality of Drugs and Adverse Event
 
 #### Additional NLU resources
 * [140+ NLU Tutorials](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
@@ -3104,7 +3918,6 @@ Integration for the 49 new models from the colossal [Spark NLP  3.4.0 release](h
 | is         | [is.ner](https://nlp.johnsnowlabs.com/2021/12/06/roberta_token_classifier_icelandic_ner_is.html)                                  | [roberta_token_classifier_icelandic_ner](https://nlp.johnsnowlabs.com/2021/12/06/roberta_token_classifier_icelandic_ner_is.html)               | Named Entity Recognition | RoBertaForTokenClassification       |
 | id         | [id.pos](https://nlp.johnsnowlabs.com/2021/12/27/roberta_token_classifier_pos_tagger_id.html)                                     | [roberta_token_classifier_pos_tagger](https://nlp.johnsnowlabs.com/2021/12/27/roberta_token_classifier_pos_tagger_id.html)                     | Part of Speech Tagging   | RoBertaForTokenClassification       |
 | tr         | [tr.ner](https://nlp.johnsnowlabs.com/2020/11/10/turkish_ner_840B_300_tr.html)                                                    | [turkish_ner_840B_300](https://nlp.johnsnowlabs.com/2020/11/10/turkish_ner_840B_300_tr.html)                                                   | Named Entity Recognition | NerDLModel                          |
-| id         | [id.ner](https://nlp.johnsnowlabs.com/2021/12/03/xlm_roberta_large_token_classification_ner_id.html)                              | [xlm_roberta_large_token_classification_ner](https://nlp.johnsnowlabs.com/2021/12/03/xlm_roberta_large_token_classification_ner_id.html)       | Named Entity Recognition | XlmRoBertaForTokenClassification    |
 | de         | [de.ner](https://nlp.johnsnowlabs.com/2021/12/25/xlm_roberta_large_token_classifier_conll03_de.html)                              | [xlm_roberta_large_token_classifier_conll03](https://nlp.johnsnowlabs.com/2021/12/25/xlm_roberta_large_token_classifier_conll03_de.html)       | Named Entity Recognition | XlmRoBertaForTokenClassification    |
 | hi         | [hi.ner](https://nlp.johnsnowlabs.com/2021/12/27/bert_token_classifier_hi_en_ner_hi.html)                                         | [bert_token_classifier_hi_en_ner](https://nlp.johnsnowlabs.com/2021/12/27/bert_token_classifier_hi_en_ner_hi.html)                             | Named Entity Recognition | BertForTokenClassification          |
 | nl         | [nl.ner](https://nlp.johnsnowlabs.com/2020/05/10/wikiner_6B_100_nl.html)                                                          | [wikiner_6B_100](https://nlp.johnsnowlabs.com/2020/05/10/wikiner_6B_100_nl.html)                                                               | Named Entity Recognition | NerDLModel                          |
@@ -3123,7 +3936,7 @@ Integration for the 49 new models from the colossal [Spark NLP  3.4.0 release](h
 
 
 #### New Healthcare Models
-Integration for the 28 new models from the amazing [Spark NLP for healthcare 3.4.0 release](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_release_notes#340)
+Integration for the 28 new models from the amazing [Spark NLP for healthcare 3.4.0 release](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#340)
 
 
 | Language   | NLU Reference                                                                                                                             | Spark NLP  Reference                                                                                                                           | Task                     | Annotator Class             |
@@ -3180,7 +3993,7 @@ Integration for the 28 new models from the amazing [Spark NLP for healthcare 3.4
 
 * [NLU OCR tutorial notebook](https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/colab/ocr/ocr_for_img_pdf_docx_files.ipynb)
 * [140+ NLU Tutorials](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
@@ -3263,7 +4076,7 @@ Integrates the amazing [Spark NLP](https://nlp.johnsnowlabs.com/docs/en/quicksta
 
 
 #### New Healthcare models and Features
-Integrates the incredible [Spark NLP for Healthcare](https://nlp.johnsnowlabs.com/docs/en/licensed_install) releases [3.3.4](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_release_notes#334), [3.3.2](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_release_notes#332) and [3.3.1](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_release_notes#331), featuring:
+Integrates the incredible [Spark NLP for Healthcare](https://nlp.johnsnowlabs.com/docs/en/licensed_install) releases [3.3.4](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#334), [3.3.2](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#332) and [3.3.1](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#331), featuring:
 - New Clinical NER Models for protected health information(PHI),
     - `ner_biomarker` for extracting extract biomarkers, therapies, oncological, and other general concepts
         - Oncogenes, Tumor_Finding, UnspecificTherapy, Ethnicity, Age, ResponseToTreatment, Biomarker, HormonalTherapy, Staging, Drug, CancerDx, Radiotherapy, CancerSurgery, TargetedTherapy, PerformanceStatus, CancerModifier, Radiological_Test_Result, Biomarker_Measurement, Metastasis, Radiological_Test, Chemotherapy, Test, Dosage, Test_Result, Immunotherapy, Date, Gender, Prognostic_Biomarkers, Duration, Predictive_Biomarkers
@@ -3481,7 +4294,7 @@ Added documentation section regarding compatibility of NLU, Spark NLP and Spark 
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
@@ -3538,7 +4351,7 @@ Models in Japanese, German, Dutch, Swedish, Spanish, French and English from the
 
 
 #### New Healthcare Transformer Models
-Models for Snomed Conditions, Cpt Measurements, Icd0, Rxnorm Dispositions, Posology and Deidentification from the amazing [Spark NLP 3.2.2  for Healthcare Release](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_release_notes)
+Models for Snomed Conditions, Cpt Measurements, Icd0, Rxnorm Dispositions, Posology and Deidentification from the amazing [Spark NLP 3.2.2  for Healthcare Release](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes)
 
 | nlu.load() Refrences                                         | Spark NLP Refrence                                           |Annotater class|Language|
 | ------------------------------------------------------------ | ------------------------------------------------------------ |------ |------|
@@ -3755,7 +4568,7 @@ The supported languages with their ISO 639-1 code are : `af`, `ar`, `bg`, `bn`, 
 
 
 #### New Healthcare Transformer Models
-12 new models from the amazing  [Spark NLP for Healthcare  3.2.0+](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_release_notes) releases, including models for `genetic variants`, `radiology`, `assertion`,
+12 new models from the amazing  [Spark NLP for Healthcare  3.2.0+](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes) releases, including models for `genetic variants`, `radiology`, `assertion`,
 `rxnorm`, `adverse drugs` and new `clinical tokenbert` models that improves accuracy by 4% compared to the previous models.
 
 | nlu.load() Refrence                                          | Spark NLP Refrence                                           |Annotator Class  |
@@ -3794,7 +4607,7 @@ you have a Pyarrow version installed that works with your Pyspark version.
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
@@ -4050,7 +4863,7 @@ These new magical 1-liners which get new the folowing models
 |[nlu.load('en.resolve.snomed_body_structure')](https://nlp.johnsnowlabs.com/2021/06/15/sbiobertresolve_snomed_bodyStructure_en.html)        | [sbiobertresolve_snomed_bodyStructure](https://nlp.johnsnowlabs.com/2021/06/15/sbiobertresolve_snomed_bodyStructure_en.html)
 |[nlu.load('en.resolve.icdo_augmented')](https://nlp.johnsnowlabs.com/2021/06/22/sbiobertresolve_icdo_augmented_en.html)        | [sbiobertresolve_icdo_augmented](https://nlp.johnsnowlabs.com/2021/06/22/sbiobertresolve_icdo_augmented_en.html)
 |[nlu.load('en.embed_sentence.biobert.jsl_cased')](https://nlp.johnsnowlabs.com/2021/05/14/sbiobert_jsl_cased_en.html)        | [sbiobert_jsl_cased](https://nlp.johnsnowlabs.com/2021/05/14/sbiobert_jsl_cased_en.html)
-|[nlu.load('en.embed_sentence.biobert.jsl_umls_cased')](https://nlp.johnsnowlabs.com/2021/05/14/sbiobert_jsl_umls_cased_en.html)        | [sbiobert_jsl_umls_cased](https://nlp.johnsnowlabs.com/2021/05/14/sbiobert_jsl_umls_cased_en.html)
+|[nlu.load('en.embed_sentence.biobert.jsl_umls_cased')](https://nlp.johnsnowlabs.com/2021/06/30/sbiobert_jsl_umls_cased_en.html)        | [sbiobert_jsl_umls_cased](https://nlp.johnsnowlabs.com/2021/06/30/sbiobert_jsl_umls_cased_en.html)
 |[nlu.load('en.embed_sentence.bert.jsl_medium_uncased')](https://nlp.johnsnowlabs.com/2021/05/14/sbert_jsl_medium_uncased_en.html)        | [sbert_jsl_medium_uncased](https://nlp.johnsnowlabs.com/2021/05/14/sbert_jsl_medium_uncased_en.html)
 |[nlu.load('en.embed_sentence.bert.jsl_medium_umls_uncased')](https://nlp.johnsnowlabs.com/2021/05/14/sbert_jsl_medium_umls_uncased_en.html)        | [sbert_jsl_medium_umls_uncased](https://nlp.johnsnowlabs.com/2021/05/14/sbert_jsl_medium_umls_uncased_en.html)
 |[nlu.load('en.embed_sentence.bert.jsl_mini_uncased')](https://nlp.johnsnowlabs.com/2021/05/14/sbert_jsl_mini_uncased_en.html)        | [sbert_jsl_mini_uncased](https://nlp.johnsnowlabs.com/2021/05/14/sbert_jsl_mini_uncased_en.html)
@@ -4066,12 +4879,12 @@ These new magical 1-liners which get new the folowing models
 |[nlu.load('en.med_ner.admission_events')](https://nlp.johnsnowlabs.com/2021/03/01/ner_events_admission_clinical_en.html)        | [ner_events_admission_clinical](https://nlp.johnsnowlabs.com/2021/03/01/ner_events_admission_clinical_en.html)
 |[nlu.load('en.classify.ade.clinicalbert')](https://nlp.johnsnowlabs.com/2021/01/21/classifierdl_ade_clinicalbert_en.html)        | [classifierdl_ade_clinicalbert](https://nlp.johnsnowlabs.com/2021/01/21/classifierdl_ade_clinicalbert_en.html)
 |[nlu.load('en.recognize_entities.posology')](https://nlp.johnsnowlabs.com/2021/03/29/recognize_entities_posology_en.html)        | [recognize_entities_posology](https://nlp.johnsnowlabs.com/2021/03/29/recognize_entities_posology_en.html)
-|[nlu.load('en.embed_sentence.bluebert_cased_mli')](TODO.com)        | [spark_name](todo.com)
+|[nlu.load('en.embed_sentence.bluebert_cased_mli')](https://todo.com/)        | [spark_name](https://todo.com/)
 
 #### Improved NER  defaults
 When loading licensed models that require a NER features like  `Assertion`, `Relation`, `Resolution`,
 nlu will now use the `en.med_ner` model which maps to the Spark NLP model `jsl_ner_wip_clinical` as default.
-See https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html for more infos on this model.
+See [https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html](https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html) for more infos on this model.
 
 
 
@@ -4093,7 +4906,7 @@ See https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html for mor
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 4000+ models & pipelines in 200+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
@@ -4217,9 +5030,9 @@ In the following table the NLU and Spark-NLP references are listed:
 |---------------|---------------------|
 |[en.resolve.icd10cm.umls](https://nlp.johnsnowlabs.com/2021/05/04/icd10cm_umls_mapping_en.html) | [icd10cm_umls_mapping](https://nlp.johnsnowlabs.com/2021/05/04/icd10cm_umls_mapping_en.html)  |
 |[en.resolve.mesh.umls   ](https://nlp.johnsnowlabs.com/2021/05/04/mesh_umls_mapping_en.html) | [mesh_umls_mapping](https://nlp.johnsnowlabs.com/2021/05/04/mesh_umls_mapping_en.html)  |
-|[en.resolve.rxnorm.umls ](https://nlp.johnsnowlabs.com/2021/05/04/rxnorm_umls_mapping_en.html) | [rxnorm_umls_mapping](https://nlp.johnsnowlabs.com/2021/05/04/rxnorm_umls_mapping_en.html)  |
+|[en.resolve.rxnorm.umls ](https://nlp.johnsnowlabs.com/2021/07/01/rxnorm_umls_mapping_en.html) | [rxnorm_umls_mapping](https://nlp.johnsnowlabs.com/2021/09/24/ner_profiling_clinical_en.html)  |
 |[en.resolve.rxnorm.mesh ](https://nlp.johnsnowlabs.com/2021/05/04/rxnorm_mesh_mapping_en.html) | [rxnorm_mesh_mapping](https://nlp.johnsnowlabs.com/2021/05/04/rxnorm_mesh_mapping_en.html)  |
-|[en.resolve.snomed.umls ](https://nlp.johnsnowlabs.com/2021/05/04/snomed_umls_mapping_en.html) | [snomed_umls_mapping](https://nlp.johnsnowlabs.com/2021/05/04/snomed_umls_mapping_en.html)  |
+|[en.resolve.snomed.umls ](https://nlp.johnsnowlabs.com/2021/07/01/snomed_umls_mapping_en.html) | [snomed_umls_mapping](https://nlp.johnsnowlabs.com/2021/07/01/snomed_umls_mapping_en.html)  |
 |[en.explain_doc.carp    ](https://nlp.johnsnowlabs.com/2021/04/01/explain_clinical_doc_carp_en.html) | [explain_clinical_doc_carp](https://nlp.johnsnowlabs.com/2021/04/01/explain_clinical_doc_carp_en.html)  |
 |[en.explain_doc.era     ](https://nlp.johnsnowlabs.com/2021/04/01/explain_clinical_doc_era_en.html) | [explain_clinical_doc_era](https://nlp.johnsnowlabs.com/2021/04/01/explain_clinical_doc_era_en.html)  |
 
@@ -6244,7 +7057,7 @@ In the following table the NLU and Spark-NLP references are listed:
 * [Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 1100+ models & pipelines in 192+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
@@ -6282,7 +7095,7 @@ streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples
 ```
 
 #### Quick Starter cheat sheet - All you need to know in 1 picture for NLU + Streamlit
-For NLU models to load, see [the NLU Namespace](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace) or the [John Snow Labs Modelshub](https://modelshub.johnsnowlabs.com/models)  or go [straight to the source](https://github.com/JohnSnowLabs/nlu/blob/master/nlu/namespace.py).
+For NLU models to load, see [the NLU Namespace](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace) or the [John Snow Labs Modelshub](https://modelshub.johnsnowlabs.com/)  or go [straight to the source](https://github.com/JohnSnowLabs/nlu/blob/master/nlu/namespace.py).
 ![NLU Streamlit Cheatsheet](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/img/NLU_Streamlit_Cheetsheet.png)
 
 
@@ -6332,14 +7145,14 @@ Ontop of that, there are various visualization methods a NLUPipeline provides ea
 
 |Method                                                         |               Description                 |
 |---------------------------------------------------------------|-------------------------------------------|
-| [`nlu.load('<Model>').predict(data)`](TODO.com)                                     | Load any of the [1000+ models](https://nlp.johnsnowlabs.com/models) by providing the model name any predict on most Pythontic [data strucutres like Pandas, strings, arrays of strings and more](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#supported-data-types) |
-| [`nlu.load('<Model>').viz_streamlit(data)`](TODO.com)                               | Display full NLU exploration dashboard, that showcases every feature avaiable with dropdown selectors for 1000+ models|
-| [`nlu.load('<Model>').viz_streamlit_similarity([string1, string2])`](TODO.com)      | Display similarity matrix and scalar similarity for every word embedding loaded and 2 strings. |
-| [`nlu.load('<Model>').viz_streamlit_ner(data)`](TODO.com)                           | Visualize predicted NER tags from Named Entity Recognizer model|
-| [`nlu.load('<Model>').viz_streamlit_dep_tree(data)`](TODO.com)                      | Visualize Dependency Tree together with Part of Speech labels|
-| [`nlu.load('<Model>').viz_streamlit_classes(data)`](TODO.com)                       | Display all extracted class features and confidences for every classifier loaded in pipeline|
-| [`nlu.load('<Model>').viz_streamlit_token(data)`](TODO.com)                         | Display all detected token features and informations in Streamlit |
-| [`nlu.load('<Model>').viz(data, write_to_streamlit=True)`](TODO.com)                | Display the raw visualization without any UI elements. See [viz docs for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples). By default all aplicable nlu model references will be shown. |
+| [`nlu.load('<Model>').predict(data)`](https://todo.com/)                                     | Load any of the [1000+ models](https://nlp.johnsnowlabs.com/models) by providing the model name any predict on most Pythontic [data strucutres like Pandas, strings, arrays of strings and more](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#supported-data-types) |
+| [`nlu.load('<Model>').viz_streamlit(data)`](https://todo.com/)                               | Display full NLU exploration dashboard, that showcases every feature avaiable with dropdown selectors for 1000+ models|
+| [`nlu.load('<Model>').viz_streamlit_similarity([string1, string2])`](https://todo.com/)      | Display similarity matrix and scalar similarity for every word embedding loaded and 2 strings. |
+| [`nlu.load('<Model>').viz_streamlit_ner(data)`](https://todo.com/)                           | Visualize predicted NER tags from Named Entity Recognizer model|
+| [`nlu.load('<Model>').viz_streamlit_dep_tree(data)`](https://todo.com/)                      | Visualize Dependency Tree together with Part of Speech labels|
+| [`nlu.load('<Model>').viz_streamlit_classes(data)`](https://todo.com/)                       | Display all extracted class features and confidences for every classifier loaded in pipeline|
+| [`nlu.load('<Model>').viz_streamlit_token(data)`](https://todo.com/)                         | Display all detected token features and informations in Streamlit |
+| [`nlu.load('<Model>').viz(data, write_to_streamlit=True)`](https://todo.com/)                | Display the raw visualization without any UI elements. See [viz docs for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples). By default all aplicable nlu model references will be shown. |
 | [`nlu.enable_streamlit_caching()`](#test)  | Enable caching the `nlu.load()` call. Once enabled, the `nlu.load()` method will automatically cached. **This is recommended** to run first and for large peformance gans |
 
 
@@ -6375,7 +7188,7 @@ nlu.load('ner').viz_streamlit(['I love NLU and Streamlit!','I hate buggy softwar
 |-----------------------|--------------------------------------------------|----------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
 | `text`                  |  `Union [str, List[str], pd.DataFrame, pd.Series]` | `'NLU and Streamlit go together like peanutbutter and jelly'`                            | Default text for the `Classification`, `Named Entitiy Recognizer`, `Token Information` and `Dependency Tree` visualizations
 | `similarity_texts`      |  `Union[List[str],Tuple[str,str]]`                 | `('Donald Trump Likes to part', 'Angela Merkel likes to party')`                         | Default texts for the `Text similarity` visualization. Should contain `exactly 2 strings` which will be compared `token embedding wise`. For each embedding active, a `token wise similarity matrix` and a `similarity scalar`
-| `model_selection`       |  `List[str]`                                       | `[]`                                                                                         | List of nlu references to display in the model selector, see [the NLU Namespace](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace) or the [John Snow Labs Modelshub](https://modelshub.johnsnowlabs.com/models)  or go [straight to the source](https://github.com/JohnSnowLabs/nlu/blob/master/nlu/namespace.py) for more info
+| `model_selection`       |  `List[str]`                                       | `[]`                                                                                         | List of nlu references to display in the model selector, see [the NLU Namespace](https://nlp.johnsnowlabs.com/docs/en/jsl/namespace) or the [John Snow Labs Modelshub](https://modelshub.johnsnowlabs.com/)  or go [straight to the source](https://github.com/JohnSnowLabs/nlu/blob/master/nlu/namespace.py) for more info
 | `title`                 |  `str`                                             | `'NLU ❤️ Streamlit - Prototype your NLP startup in 0 lines of code🚀'`                      | Title of the Streamlit app
 | `sub_title`             |  `str`                                             | `'Play with over 1000+ scalable enterprise NLP models'`                                  | Sub title of the Streamlit app
 | `visualizers`           |  `List[str]`                                       | `( "dependency_tree", "ner",  "similarity", "token_information", 'classification')`      | Define which visualizations should be displayed. By default all visualizations are displayed.
@@ -6696,7 +7509,7 @@ hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented wit
 * [New Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 1100+ models & pipelines in 192+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
@@ -6893,7 +7706,7 @@ All of the [140+ NLU tutorial Notebooks](https://github.com/JohnSnowLabs/nlu/tre
 * [Updated visualization docs](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples)
 * [Models Hub](https://nlp.johnsnowlabs.com/models) with new models
 * [Spark NLP publications](https://medium.com/spark-nlp)
-* [NLU in Action](https://nlp.johnsnowlabs.com/demo)
+* [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
@@ -6913,7 +7726,7 @@ We are incredible excited to announce the release of `NLU 3.0.0` which makes mos
 These models are the most accurate in their domains and highly scalable in Spark clusters.  
 In addition, `Spark 3.0.X`  and `Spark 3.1.X ` is now supported, together with Python3.8
 
-This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com/docs/en/jsl/release_notes#300) and [Spark NLP for Healthcare 3.0.1](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_release_notes#301) releases.
+This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com/docs/en/jsl/release_notes#300) and [Spark NLP for Healthcare 3.0.1](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#301) releases.
 
 #### New Features
 - Over 200 new models for the `healthcare` domain
@@ -8722,7 +9535,7 @@ pyspark_pipe.transform(spark_df)
 
 
 #### NLU 1.0.4 New Features
-- Trainable  [Named Entity Recognizer](https://nlp.johnsnowlabs.com/docs/en/jsl/annotators#ner-dl-named-entity-recognition-deep-learning-annotator)
+- Trainable  [Named Entity Recognizer](https://nlp.johnsnowlabs.com/docs/en/annotators#ner-dl-named-entity-recognition-deep-learning-annotator)
 - NLU pipeline loadable as Spark pipelines
 
 #### NLU 1.0.4 New Notebooks,Tutorials and Docs
@@ -8742,7 +9555,7 @@ pyspark_pipe.transform(spark_df)
 We are happy to announce NLU 1.0.3 comes with a lot new features, training classifiers, saving them and loading them offline, enabling running NLU with no internet connection, new notebooks and articles!
 
 #### NLU 1.0.3 New Features
-- Train a Deep Learning classifier in 1 line! The popular [ClassifierDL](https://nlp.johnsnowlabs.com/docs/en/jsl/annotators#classifierdl-multi-class-text-classification)
+- Train a Deep Learning classifier in 1 line! The popular [ClassifierDL](https://nlp.johnsnowlabs.com/docs/en/annotators#classifierdl-multi-class-text-classification)
   which can achieve state of the art results on any multi class text classification problem is now trainable!
   All it takes is just nlu.load('train.classifier).fit(dataset) . Your dataset can be a Pandas/Spark/Modin/Ray/Dask dataframe and needs to have a column named x for text data and a column named y for labels
 - Saving pipelines to HDD is now possible with nlu.save(path)
@@ -8785,7 +9598,7 @@ We are glad to announce nlu 1.0.2 is released!
 - Integration of CI pipeline with Github Actions
 
 #### New Documentation is out!
-Check it out here :  http://nlp.johnsnowlabs.com/
+Check it out here :  https://nlp.johnsnowlabs.com/
 
 
 ## NLU Version 1.0.1
@@ -8821,7 +9634,7 @@ A picture says more than a 1000 words, so here is a demo clip of the 12 coolest 
 </div><div class="h3-box" markdown="1">
 
 #### NLU in action
-<img src="http://ckl-it.de/wp-content/uploads/2020/08/My-Video6.gif" width="1800" height="500"/>
+<img src="https://ckl-it.de/wp-content/uploads/2020/08/My-Video6.gif" width="1800" height="500"/>
 
 </div><div class="h3-box" markdown="1">
 

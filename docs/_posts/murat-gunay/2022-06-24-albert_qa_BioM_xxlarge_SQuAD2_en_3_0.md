@@ -93,6 +93,6 @@ nlu.load("en.answer_question.squadv2.albert.xxl.by_sultan").predict("""What is m
 
 ## References
 
-- https://huggingface.co/sultan/BioM-ALBERT-xxlarge-SQuAD2
-- http://participants-area.bioasq.org/results/9b/phaseB/
-- https://github.com/salrowili/BioM-Transformers
+- [https://huggingface.co/sultan/BioM-ALBERT-xxlarge-SQuAD2](https://huggingface.co/sultan/BioM-ALBERT-xxlarge-SQuAD2)
+- [https://participants-area.bioasq.org/results/9b/phaseB/](https://participants-area.bioasq.org/results/9b/phaseB/)
+- [https://github.com/salrowili/BioM-Transformers](https://github.com/salrowili/BioM-Transformers)

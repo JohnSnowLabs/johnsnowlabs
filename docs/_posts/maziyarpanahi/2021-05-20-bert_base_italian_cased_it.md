@@ -17,7 +17,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-The source data for the Italian BERT model consists of a recent Wikipedia dump and various texts from the [OPUS corpora](http://opus.nlpl.eu/) collection. The final training corpus has a size of 13GB and 2,050,057,573 tokens.
+The source data for the Italian BERT model consists of a recent Wikipedia dump and various texts from the [OPUS corpora](https://opus.nlpl.eu/) collection. The final training corpus has a size of 13GB and 2,050,057,573 tokens.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>

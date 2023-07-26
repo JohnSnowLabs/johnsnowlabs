@@ -29,7 +29,7 @@ It has faster load time, with a speedup of about 6X when compared to previous ve
 Predicts Snomed Codes and their normalized definition for each chunk.
 
 {:.btn-box}
-[Live Demo](https://nlp.johnsnowlabs.com/demo){:.button.button-orange}
+[Live Demo](https://nlp.johnsnowlabs.com/demos){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_snomed_auxConcepts_en_3.0.4_3.0_1621189567327.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_snomed_auxConcepts_en_3.0.4_3.0_1621189567327.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
@@ -177,4 +177,4 @@ nlu.load("en.resolve.snomed").predict("""This is an 82 - year-old male with a hi
 ## Data Source
 
 Trained on SNOMED (INT version) Findings with ``sbiobert_base_cased_mli`` sentence embeddings.
-http://www.snomed.org/
+[https://www.snomed.org/](https://www.snomed.org/)

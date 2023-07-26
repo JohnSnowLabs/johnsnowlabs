@@ -102,10 +102,10 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/severinsimmler/literary-german-bert
-- https://figshare.com/articles/Corpus_of_German-Language_Fiction_txt_/4524680/1
-- https://gitlab2.informatik.uni-wuerzburg.de/kallimachos/DROC-Release
-- https://figshare.com/articles/Corpus_of_German-Language_Fiction_txt_/4524680/1
-- https://opus.bibliothek.uni-wuerzburg.de/opus4-wuerzburg/frontdoor/deliver/index/docId/14333/file/Jannidis_Figurenerkennung_Roman.pdf
-- http://webdoc.sub.gwdg.de/pub/mon/dariah-de/dwp-2018-27.pdf
-- https://opus.bibliothek.uni-wuerzburg.de/opus4-wuerzburg/frontdoor/deliver/index/docId/14333/file/Jannidis_Figurenerkennung_Roman.pdf
+- [https://huggingface.co/severinsimmler/literary-german-bert](https://huggingface.co/severinsimmler/literary-german-bert)
+- [https://figshare.com/articles/Corpus_of_German-Language_Fiction_txt_/4524680/1](https://figshare.com/articles/Corpus_of_German-Language_Fiction_txt_/4524680/1)
+- [https://gitlab2.informatik.uni-wuerzburg.de/kallimachos/DROC-Release](https://gitlab2.informatik.uni-wuerzburg.de/kallimachos/DROC-Release)
+- [https://figshare.com/articles/Corpus_of_German-Language_Fiction_txt_/4524680/1](https://figshare.com/articles/Corpus_of_German-Language_Fiction_txt_/4524680/1)
+- [https://opus.bibliothek.uni-wuerzburg.de/opus4-wuerzburg/frontdoor/deliver/index/docId/14333/file/Jannidis_Figurenerkennung_Roman.pdf](https://opus.bibliothek.uni-wuerzburg.de/opus4-wuerzburg/frontdoor/deliver/index/docId/14333/file/Jannidis_Figurenerkennung_Roman.pdf)
+- [https://webdoc.sub.gwdg.de/pub/mon/dariah-de/dwp-2018-27.pdf](https://webdoc.sub.gwdg.de/pub/mon/dariah-de/dwp-2018-27.pdf)
+- [https://opus.bibliothek.uni-wuerzburg.de/opus4-wuerzburg/frontdoor/deliver/index/docId/14333/file/Jannidis_Figurenerkennung_Roman.pdf](https://opus.bibliothek.uni-wuerzburg.de/opus4-wuerzburg/frontdoor/deliver/index/docId/14333/file/Jannidis_Figurenerkennung_Roman.pdf)

@@ -44,7 +44,7 @@ document_assembler = nlp.DocumentAssembler()\
 
 flant5 = finance.TextGenerator.pretrained('fingen_flant5_base','en','finance/models')\
     .setInputCols(["question"])\
-    .setOutputCol("summary")
+    .setOutputCol("generated_text")
     .setMaxNewTokens(150)\
     .setStopAtEos(True)
   
@@ -57,7 +57,7 @@ data = spark.createDataFrame([
 
 results = pipeline.fit(data).transform(data)
 
-results.select("summary.result").show(truncate=False)
+results.select("generated_text.result").show(truncate=False)
 ```
 
 </div>

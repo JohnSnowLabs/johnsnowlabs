@@ -97,7 +97,7 @@ nlu.load("ar.embed.bert_base_qarib60_1790k").predict("""أنا أحب شرارة
 
 ## References
 
-- https://huggingface.co/qarib/bert-base-qarib60_1790k
-- http://opus.nlpl.eu/
-- https://github.com/qcri/QARIB/Training_QARiB.md
-- https://github.com/qcri/QARIB/Using_QARiB.md
+- [https://huggingface.co/qarib/bert-base-qarib60_1790k](https://huggingface.co/qarib/bert-base-qarib60_1790k)
+- [https://opus.nlpl.eu/](https://opus.nlpl.eu/)
+- [https://github.com/qcri/QARIB/Training_QARiB.md](https://github.com/qcri/QARIB/Training_QARiB.md)
+- [https://github.com/qcri/QARIB/Using_QARiB.md](https://github.com/qcri/QARIB/Using_QARiB.md)

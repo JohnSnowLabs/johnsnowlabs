@@ -117,4 +117,16 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_NER_DISEASE_ES.ipynb
+        - title: Clinical Text Summarization (Spanish)
+          id: clinical_text_summarization_spanish
+          image: 
+              src: /assets/images/Clinical_Summarization_ES.svg
+          excerpt: This demo showcases the capabilities of a special summary model for Spanish medical texts. 
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLINICAL_TEXT_SUMMARIZATION_ES/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/CLINICAL_TEXT_SUMMARIZATION_ES.ipynb
 ---

@@ -32,5 +32,6 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_LLM/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/32.Medical_Text_Summarization.ipynb#scrollTo=NgJI3GVFReK_      
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MEDICAL_LLM.ipynb     
 ---
+

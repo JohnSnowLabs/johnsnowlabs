@@ -25,7 +25,8 @@ CRAFT: Character-Region Awareness For Text detection, is designed with a convolu
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/TEXT_DETECTION/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageTextDetection.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/image_text_detector_v2_en_3.3.0_2.4_1643618928538.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/image_text_detector_v2_en_3.3.0_2.4_1643618928538.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/image_text_detector_v2_en_3.3.0_2.4_1643618928538.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 

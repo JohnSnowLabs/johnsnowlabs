@@ -72,7 +72,7 @@ nlu.load("nl.embed.bert").predict("""Put your text here.""")
 
 ## Data Source
 
-https://huggingface.co/dbmdz/bert-base-german-cased
+[https://huggingface.co/dbmdz/bert-base-german-cased](https://huggingface.co/dbmdz/bert-base-german-cased)
 
 ## Benchmarking
 
@@ -86,14 +86,14 @@ Headers in the tables below link to original data sources. Scores link to the mo
 | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | **BERTje**                                                                   | [**90.24**](https://huggingface.co/wietsedv/bert-base-dutch-cased-finetuned-conll2002-ner)    | [**84.93**](https://huggingface.co/wietsedv/bert-base-dutch-cased-finetuned-sonar-ner)    | [86.10](https://huggingface.co/wietsedv/bert-base-dutch-cased-finetuned-udlassy-ner)            |
 | [mBERT](https://github.com/google-research/bert/blob/master/multilingual.md) | [88.61](https://huggingface.co/wietsedv/bert-base-multilingual-cased-finetuned-conll2002-ner) | [84.19](https://huggingface.co/wietsedv/bert-base-multilingual-cased-finetuned-sonar-ner) | [**86.77**](https://huggingface.co/wietsedv/bert-base-multilingual-cased-finetuned-udlassy-ner) |
-| [BERT-NL](http://textdata.nl)                                                | 85.05                                                                                         | 80.45                                                                                     | 81.62                                                                                           |
+| [BERT-NL](https://textdata.nl)                                                | 85.05                                                                                         | 80.45                                                                                     | 81.62                                                                                           |
 | [RobBERT](https://github.com/iPieter/RobBERT)                                | 84.72                                                                                         | 81.98                                                                                     | 79.84                                                                                           |
 ### Part-of-speech tagging
 | Model                                                                        | [UDv2.5 LassySmall](https://universaldependencies.org/treebanks/nl_lassysmall/index.html) |
 | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | **BERTje**                                                                   | **96.48**                                                                                 |
 | [mBERT](https://github.com/google-research/bert/blob/master/multilingual.md) | 96.20                                                                                     |
-| [BERT-NL](http://textdata.nl)                                                | 96.10                                                                                     |
+| [BERT-NL](https://textdata.nl)                                                | 96.10                                                                                     |
 | [RobBERT](https://github.com/iPieter/RobBERT)                                | 95.91                                                                                     |
 
 ```

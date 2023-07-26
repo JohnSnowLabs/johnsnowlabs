@@ -98,6 +98,6 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/gilf/french-postag-model
-- http://alpage.inria.fr/statgram/frdep/Publications/crabbecandi-taln2008-final.pdf
-- https://github.com/nicolashernandez/free-french-treebank
+- [https://huggingface.co/gilf/french-postag-model](https://huggingface.co/gilf/french-postag-model)
+- [https://alpage.inria.fr/statgram/frdep/Publications/crabbecandi-taln2008-final.pdf](https://alpage.inria.fr/statgram/frdep/Publications/crabbecandi-taln2008-final.pdf)
+- [https://github.com/nicolashernandez/free-french-treebank](https://github.com/nicolashernandez/free-french-treebank)

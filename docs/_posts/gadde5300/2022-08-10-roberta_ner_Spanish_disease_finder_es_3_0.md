@@ -102,7 +102,7 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/chizhikchi/Spanish_disease_finder
-- https://temu.bsc.es/distemist/
-- http://participants-area.bioasq.org/results/DisTEMIST/
-- http://www.dei.unipd.it/~ferro/CLEF-WN-Drafts/CLEF2022/paper-17.pdf
+- [https://huggingface.co/chizhikchi/Spanish_disease_finder](https://huggingface.co/chizhikchi/Spanish_disease_finder)
+- [https://temu.bsc.es/distemist/](https://temu.bsc.es/distemist/)
+- [https://participants-area.bioasq.org/results/DisTEMIST/](https://participants-area.bioasq.org/results/DisTEMIST/)
+- [https://www.dei.unipd.it/~ferro/CLEF-WN-Drafts/CLEF2022/paper-17.pdf](https://www.dei.unipd.it/~ferro/CLEF-WN-Drafts/CLEF2022/paper-17.pdf)

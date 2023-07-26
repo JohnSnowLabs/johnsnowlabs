@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Annotation Lab | John Snow Labs
-title: Annotation Lab Release Notes 2.8.0
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 2.8.0
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_2_8_0
 key: docs-licensed-release-notes
 modify_date: 2021-07-14
@@ -32,7 +32,7 @@ New features offered by Annotation Lab:
 - [Download model dependencies](/docs/en/alab/models_hub#download-of-model-dependencies) is now automatic. 
 - The project configuration box can now be edited in full screen mode. 
 - [Trim leading and ending spaces in annotated chunks](/docs/en/alab/annotation#trim-leading-and-ending-spaces-in-annotated-chunks).
-- [Reserved words](/docs/en/alab/project_setup#reserved-words-cannot-be-used-in-project-names) cannot be used in project names.
+- [Reserved words](/docs/en/alab/project_creation#reserved-words-cannot-be-used-in-project-names) cannot be used in project names.
 - Task numbering now start from 1.
 - 'a' was removed as hotkey for VisualNER multi-chunk selection. Going forward only use 'shift' key for chunk selection. 
 - Only alphanumeric characters can be used as the Task Tag Names.

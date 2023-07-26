@@ -94,6 +94,6 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/rohanrajpal/bert-base-en-hi-codemix-cased
-- https://github.com/lingualytics/py-lingualytics
-- http://www.dasdipankar.com/SAILCodeMixed.html
+- [https://huggingface.co/rohanrajpal/bert-base-en-hi-codemix-cased](https://huggingface.co/rohanrajpal/bert-base-en-hi-codemix-cased)
+- [https://github.com/lingualytics/py-lingualytics](https://github.com/lingualytics/py-lingualytics)
+- [https://www.dasdipankar.com/SAILCodeMixed.html](https://www.dasdipankar.com/SAILCodeMixed.html)

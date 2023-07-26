@@ -1,8 +1,10 @@
 import traceback
+
 from johnsnowlabs.abstract_base.lib_resolver import try_import_lib
 from johnsnowlabs.auto_install.softwares import Software
 from johnsnowlabs.utils.env_utils import reverse_compatibility_import
 from johnsnowlabs.utils.print_messages import log_outdated_lib, log_broken_lib
+
 
 warning_logged = False
 
@@ -72,6 +74,14 @@ try:
             DocumentMLClassifierModel,
             Resolution2Chunk,
             MedicalQuestionAnswering,
+            NerTemplateRenderModel,
+            AverageEmbeddings,
+            Doc2ChunkInternal,
+            Chunk2Token,
+            ExtractiveSummarization,
+            ChunkFiltererApproach,
+            FewShotClassifierModel,
+            FewShotClassifierApproach,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer

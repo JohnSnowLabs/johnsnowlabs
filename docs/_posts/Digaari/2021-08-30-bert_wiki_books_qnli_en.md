@@ -78,8 +78,8 @@ embeddings_df
 
 [1]: [Wikipedia dataset](https://dumps.wikimedia.org/)
 
-[2]: [BooksCorpus dataset](http://yknzhu.wixsite.com/mbweb)
+[2]: [BooksCorpus dataset](https://yknzhu.wixsite.com/mbweb)
 
 [3]: [QNLI dataset](https://gluebenchmark.com/)
 
-This Model has been imported from: https://tfhub.dev/google/experts/bert/wiki_books/qnli/2
+This Model has been imported from: [https://tfhub.dev/google/experts/bert/wiki_books/qnli/2](https://tfhub.dev/google/experts/bert/wiki_books/qnli/2)

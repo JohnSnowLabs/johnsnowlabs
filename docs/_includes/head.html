@@ -9,29 +9,14 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager -->
-<!-- Google tag (gtag.js) Additional adding by Andrew -->
-
-<!-- <script async src=https://www.googletagmanager.com/gtag/js?id=UA-70312582-1></script>
-
-<script>
-
-  window.dataLayer = window.dataLayer || [];
-
-  function gtag(){dataLayer.push(arguments);}
-
-  gtag('js', new Date());
-
- 
-
-  gtag('config', 'UA-70312582-1');
-
-</script> -->
 
 {%- include snippets/get-article-pagetitle.html article=page -%}
 {%- assign _article_pagetitle = __return -%}
 
 {%- if page.layout == "landing" -%}
 <title>John Snow Labs - State of the Art NLP in Python</title>
+{%- elsif page.layout == "model" -%}
+<title>{%- include snippets/get-article-modeltitle.html article=page -%}</title>
 {%- elsif _pagetitle -%}
 <title>{%- if __return -%}{{ __return }}{%- endif -%}</title>
 {%- else -%}
@@ -43,7 +28,8 @@
 <meta property="og:title" content="{%- if __return -%}{{ __return }}{%- endif -%}"/>
 
 <meta name="description" content="{%- if page.excerpt -%}{{ page.excerpt | strip_html | strip_newlines | strip | truncate: 320 }}{%- else -%}{{ site.description }}{%- endif -%}">
-<link rel="canonical" href="{%- include snippets/page-url.html -%}">
+<!-- <link rel="canonical" href="{%- include snippets/page-url.html -%}"> -->
+<link rel="canonical" href="{{ site.url }}{{ page.url | replace:'index.html',''}}">
 
 {%- assign _paths_rss = site.paths.rss | default: site.data.variables.default.paths.rss -%}
 {%- include snippets/get-nav-url.html path=_paths_rss -%}

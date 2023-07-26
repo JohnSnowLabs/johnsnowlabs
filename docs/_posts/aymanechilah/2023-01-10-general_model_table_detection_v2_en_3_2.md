@@ -27,7 +27,8 @@ Here it is used the CascadeTabNet general model for table detection inspired by 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/IMAGE_TABLE_DETECTION_ONLY/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageTableDetection.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/general_model_table_detection_v2_en_3.3.0_3.0_1623301511401.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/general_model_table_detection_v2_en_3.3.0_3.0_1623301511401.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/general_model_table_detection_v2_en_3.3.0_3.0_1623301511401.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 

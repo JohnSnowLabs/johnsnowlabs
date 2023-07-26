@@ -301,7 +301,7 @@ val pipeline = new Pipeline().setStages(Array(
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[ChunkKeyPhraseExtraction](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/chunker/ChunkKeyPhraseExtraction)
+[ChunkKeyPhraseExtraction](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/chunker/ChunkKeyPhraseExtraction.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}

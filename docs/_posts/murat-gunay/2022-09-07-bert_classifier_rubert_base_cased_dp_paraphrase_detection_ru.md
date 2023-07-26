@@ -94,6 +94,6 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/cointegrated/rubert-base-cased-dp-paraphrase-detection
-- http://docs.deeppavlov.ai/en/master/features/overview.html#ranking-model-docs
-- http://paraphraser.ru/
+- [https://huggingface.co/cointegrated/rubert-base-cased-dp-paraphrase-detection](https://huggingface.co/cointegrated/rubert-base-cased-dp-paraphrase-detection)
+- [https://docs.deeppavlov.ai/en/master/features/overview.html#ranking-model-docs](https://docs.deeppavlov.ai/en/master/features/overview.html#ranking-model-docs)
+- [https://paraphraser.ru/](https://paraphraser.ru/)

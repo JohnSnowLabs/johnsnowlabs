@@ -97,9 +97,9 @@ nlu.load("nl.embed.robbertje_1_gb_non_shuffled").predict("""Ik hou van vonk nlp"
 
 ## References
 
-- https://huggingface.co/DTAI-KULeuven/robbertje-1-gb-non-shuffled
-- http://github.com/iPieter/robbert
-- http://github.com/iPieter/robbertje
-- https://www.clinjournal.org/clinj/article/view/131
-- https://www.clin31.ugent.be
-- https://arxiv.org/abs/2101.05716
+- [https://huggingface.co/DTAI-KULeuven/robbertje-1-gb-non-shuffled](https://huggingface.co/DTAI-KULeuven/robbertje-1-gb-non-shuffled)
+- [https://github.com/iPieter/robbert](https://github.com/iPieter/robbert)
+- [https://github.com/iPieter/robbertje](https://github.com/iPieter/robbertje)
+- [https://www.clinjournal.org/clinj/article/view/131](https://www.clinjournal.org/clinj/article/view/131)
+- [https://www.clin31.ugent.be](https://www.clin31.ugent.be)
+- [https://arxiv.org/abs/2101.05716](https://arxiv.org/abs/2101.05716)

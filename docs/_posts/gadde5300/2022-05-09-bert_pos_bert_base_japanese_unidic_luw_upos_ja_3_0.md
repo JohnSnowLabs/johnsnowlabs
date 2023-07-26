@@ -98,10 +98,10 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/KoichiYasuoka/bert-base-japanese-unidic-luw-upos
-- https://universaldependencies.org/u/pos/
-- https://pypi.org/project/fugashi
-- https://pypi.org/project/unidic-lite
-- https://pypi.org/project/pytokenizations
-- http://id.nii.ac.jp/1001/00216223/
-- https://github.com/KoichiYasuoka/esupar
+- [https://huggingface.co/KoichiYasuoka/bert-base-japanese-unidic-luw-upos](https://huggingface.co/KoichiYasuoka/bert-base-japanese-unidic-luw-upos)
+- [https://universaldependencies.org/u/pos/](https://universaldependencies.org/u/pos/)
+- [https://pypi.org/project/fugashi](https://pypi.org/project/fugashi)
+- [https://pypi.org/project/unidic-lite](https://pypi.org/project/unidic-lite)
+- [https://pypi.org/project/pytokenizations](https://pypi.org/project/pytokenizations)
+- [https://id.nii.ac.jp/1001/00216223/](https://id.nii.ac.jp/1001/00216223/)
+- [https://github.com/KoichiYasuoka/esupar](https://github.com/KoichiYasuoka/esupar)

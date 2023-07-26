@@ -97,10 +97,10 @@ nlu.load("ar.embed.albert_large_arabic").predict("""أنا أحب شرارة NLP
 
 ## References
 
-- https://huggingface.co/asafaya/albert-large-arabic
-- https://oscar-corpus.com/
-- http://commoncrawl.org/
-- https://dumps.wikimedia.org/backup-index.html
-- https://github.com/google-research/albert
-- https://www.tensorflow.org/tfrc
-- https://github.com/KUIS-AI-Lab/Arabic-ALBERT/
+- [https://huggingface.co/asafaya/albert-base-arabic](https://huggingface.co/asafaya/albert-base-arabic)
+- [https://oscar-corpus.com/](https://oscar-corpus.com/)
+- [https://commoncrawl.org/](https://commoncrawl.org/)
+- [https://dumps.wikimedia.org/backup-index.html](https://dumps.wikimedia.org/backup-index.html)
+- [https://github.com/google-research/albert](https://github.com/google-research/albert)
+- [https://www.tensorflow.org/tfrc](https://www.tensorflow.org/tfrc)
+- [https://github.com/KUIS-AI-Lab/Arabic-ALBERT/](https://github.com/KUIS-AI-Lab/Arabic-ALBERT/)

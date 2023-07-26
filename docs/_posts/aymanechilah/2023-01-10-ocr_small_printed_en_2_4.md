@@ -25,7 +25,8 @@ Ocr small model for recognise printed text based on TrOcr architecture. The TrOC
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/RECOGNIZE_PRINTED/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/tutorials/Certification_Trainings/1.3.Trasformer_based_Text_Recognition.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/ocr_small_printed_en_3.3.3_2.4_1645007455031.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/ocr_small_printed_en_3.3.3_2.4_1645007455031.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/ocr_small_printed_en_3.3.3_2.4_1645007455031.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 
 ## How to use

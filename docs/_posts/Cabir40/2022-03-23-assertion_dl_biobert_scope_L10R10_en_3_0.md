@@ -197,7 +197,8 @@ nlu.load("en.assert.biobert_l10210").predict("""Patient with severe fever and so
 ## References
 
 
-Trained on 2010 i2b2/VA challenge on concepts, assertions, and relations in clinical text with `biobert_pubmed_base_cased`. https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
+Trained on augmented version of 2010 i2b2/VA dataset on concepts, assertions, and relations in clinical text with `biobert_pubmed_base_cased`. 
+https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
 
 
 ## Benchmarking

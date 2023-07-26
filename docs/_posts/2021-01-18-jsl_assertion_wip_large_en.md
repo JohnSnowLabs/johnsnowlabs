@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 
-The deep neural network architecture for assertion status detection in Spark NLP is based on a BiLSTM framework, and is a modified version of the architecture proposed by Fancellu et.al. (Fancellu, Lopez, and Webber 2016). Its goal is to classify the assertions made on given medical concepts as being present, absent, or possible in the patient, conditionally present in the patient under certain circumstances, hypothetically present in the patient at some future point, and mentioned in the patient report but associated with someone- else (Uzuner et al. 2011). Apart from what we released in other assertion models, an in-house annotations on a curated dataset (6K clinical notes) is used to augment the base assertion dataset (2010 i2b2/VA).
+The deep neural network architecture for assertion status detection in Spark NLP is based on a BiLSTM framework, and is a modified version of the architecture proposed by Fancellu et.al. (Fancellu, Lopez, and Webber 2016). Its goal is to classify the assertions made on given medical concepts as being present, absent, or possible in the patient, conditionally present in the patient under certain circumstances, hypothetically present in the patient at some future point, and mentioned in the patient report but associated with someone- else (Uzuner et al. 2011). Apart from what we released in other assertion models, an in-house annotations on a curated dataset (6K clinical notes) is used to augment the base assertion dataset (augmented version of 2010 i2b2/VA).
 
 
 {:.h2_title}
@@ -175,7 +175,7 @@ The output is a dataframe with a sentence per row and an ``"assertion"`` column 
 
 {:.h2_title}
 ## Data Source
-Trained on 2010 i2b2/VA challenge on concepts, assertions, and relations in clinical text with 'embeddings_clinical'.
+Trained with augmented version of 2010 i2b2/VA dataset on concepts, assertions, and relations in clinical text with ``embeddings_clinical``.
 https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
 
 

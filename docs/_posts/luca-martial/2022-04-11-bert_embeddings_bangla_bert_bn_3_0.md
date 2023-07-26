@@ -97,10 +97,10 @@ nlu.load("bn.embed.bangla_bert").predict("""আমি স্পার্ক এ�
 
 ## References
 
-- https://huggingface.co/Kowsher/bangla-bert
-- https://github.com/Kowsher/bert-base-bangla
-- https://arxiv.org/abs/1810.04805
-- https://github.com/google-research/bert
-- https://www.kaggle.com/gakowsher/bangla-language-model-dataset
-- https://ssrn.com/abstract=
-- http://kowsher.org/
+- [https://huggingface.co/Kowsher/bangla-bert](https://huggingface.co/Kowsher/bangla-bert)
+- [https://github.com/Kowsher/bert-base-bangla](https://github.com/Kowsher/bert-base-bangla)
+- [https://arxiv.org/abs/1810.04805](https://arxiv.org/abs/1810.04805)
+- [https://github.com/google-research/bert](https://github.com/google-research/bert)
+- [https://www.kaggle.com/gakowsher/bangla-language-model-dataset](https://www.kaggle.com/gakowsher/bangla-language-model-dataset)
+- [https://ssrn.com/abstract=](https://ssrn.com/abstract=)
+- [https://kowsher.org/](https://kowsher.org/)

@@ -478,12 +478,12 @@ document.write(`
                          <span class="n">TypeConverters</span><span class="o">.</span><span class="n">identity</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RelationExtractionDLModel.setPredictionThreshold"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction_dl/index.html#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setPredictionThreshold">[docs]</a>    <span class="k">def</span> <span class="nf">setPredictionThreshold</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">threshold</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets maximum syntactic distance between a pair of named entities to consider them as a relation</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets minimal activation of the target unit to encode a new relation instance. Default is 0.5.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        threshold : float</span>
-<span class="sd">           maximum syntactic distance between a pair of named entities to consider them as a relation</span>
+<span class="sd">           Minimal activation of the target unit to encode a new relation instance. Default is 0.5.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">predictionThreshold</span><span class="o">=</span><span class="n">threshold</span><span class="p">)</span></div>
 
@@ -549,12 +549,12 @@ document.write(`
         <span class="k">return</span> <span class="n">RelationExtractionDLModel</span><span class="p">(</span><span class="n">java_model</span><span class="o">=</span><span class="n">jModel</span><span class="p">)</span></div>
 
     <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="RelationExtractionDLModel.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction_dl/index.html#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="RelationExtractionDLModel.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction_dl/index.html#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;redl_ade_biobert&quot;</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;clinical/models&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Download a pre-trained RelationExtractionDLModel.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            name (str): Name of the pre-trained model.</span>
-<span class="sd">            lang (str): Language of the pre-trained model.</span>
+<span class="sd">            name (str): Name of the pre-trained model, by default &quot;redl_ade_biobert&quot;</span>
+<span class="sd">            lang (str): Language of the pre-trained model, by default &quot;en&quot;</span>
 <span class="sd">            remote_loc (str): Remote location of the pre-trained model. If None, use the</span>
 <span class="sd">            open-source location. Other values are &quot;clinical/models&quot;,</span>
 <span class="sd">            &quot;finance/models&quot;, or &quot;legal/models&quot;.</span>

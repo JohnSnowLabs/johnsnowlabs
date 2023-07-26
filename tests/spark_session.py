@@ -1,6 +1,15 @@
+import sys
+
 from johnsnowlabs import *
 import unittest
 import pkg_resources
+
+
+import os
+
+os.environ["PYSPARK_PYTHON"] = sys.executable
+os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
+
 
 # finance.ClassifierDLApproach()
 class ImportTestCase(unittest.TestCase):
@@ -13,7 +22,7 @@ class ImportTestCase(unittest.TestCase):
             .setInputCols(["tok", "doc"])
             .setOutputCol("class")
         )
-        p = nlp.nlp.Pipeline(stages=[d, t])
+        p = nlp.Pipeline(stages=[d, t])
         p = nlp.to_nlu_pipe(p)
         print(p.predict("Hello World"))
 
@@ -52,7 +61,7 @@ class ImportTestCase(unittest.TestCase):
         d = nlp.DocumentAssembler().setInputCol("text").setOutputCol("doc")
         t = nlp.Tokenizer().setInputCols("doc").setOutputCol("tok")
         c = (
-            medical.BertForTokenClassifier()
+            medical.BertForTokenClassification()
             .pretrained()
             .setInputCols(["tok", "doc"])
             .setOutputCol("class")
@@ -64,10 +73,10 @@ class ImportTestCase(unittest.TestCase):
     def test_ocr_session(self):
         # Convert pdf to image
         p = "/home/ckl/old_home/ckl/Documents/freelance/johnsnowlabs_lib/tmp/licenses/4_1_LATEST_OCR_HC_BCK.json"
-        spark = nlp.start(json_license_path=p)
+        spark = nlp.start(visual=True)
 
         pdf_to_image = visual.PdfToImage()
-        pdf_to_image.setImageType(nlp.visual.ImageType.TYPE_3BYTE_BGR)
+        pdf_to_image.setImageType(visual.ImageType.TYPE_3BYTE_BGR)
 
         # Detect tables on the page using pretrained model
         # It can be finetuned for have more accurate results for more specific documents
@@ -82,7 +91,7 @@ class ImportTestCase(unittest.TestCase):
         draw_regions.setInputCol("image")
         draw_regions.setInputRegionsCol("region")
         draw_regions.setOutputCol("image_with_regions")
-        draw_regions.setRectColor(nlp.visual.Color.red)
+        draw_regions.setRectColor(visual.Color.red)
 
         # Extract table regions to separate images
         splitter = visual.ImageSplitRegions()
