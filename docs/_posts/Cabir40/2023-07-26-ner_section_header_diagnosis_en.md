@@ -78,6 +78,7 @@ Definitions of Predicted Entities
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 # Annotator that transforms a text column from dataframe into an Annotation ready for NLP
 documentAssembler = DocumentAssembler()\
