@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This project uses NER to analyze clinical documents, focusing on diverse medical conditions and key sections of patient records. Defined labels representing diseases like heart disease, diabetes, and Alzheimer's help provide deeper insights into the diagnosis and treatment patterns
+This NER model analyzes clinical documents, focusing on diverse medical conditions and key sections of patient records. Defined labels representing diseases like heart disease, diabetes, and Alzheimer's help provide deeper insights into the diagnosis and treatment patterns
 
 Definitions of Predicted Entities
 
