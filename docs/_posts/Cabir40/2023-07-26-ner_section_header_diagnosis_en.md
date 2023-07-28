@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This NER model analyzes clinical documents, focusing on diverse medical conditions and key sections of patient records. Defined labels representing diseases like heart disease, diabetes, and Alzheimer's help provide deeper insights into the diagnosis and treatment patterns
+This NER model extracts valuable information from clinical documents, concentrating on various medical conditions and crucial sections of patient records. With defined labels encompassing diseases such as heart disease, diabetes, and Alzheimer's, it offers deeper insights into diagnosis and treatment patterns.
 
 Definitions of Predicted Entities
 
@@ -80,7 +80,6 @@ Definitions of Predicted Entities
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
-# Annotator that transforms a text column from dataframe into an Annotation ready for NLP
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -89,12 +88,10 @@ sentenceDetector = SentenceDetector()\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
  
-# Tokenizer splits words in a relevant format for NLP
 tokenizer = Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-# Clinical word embeddings trained on PubMED dataset
 word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")\
     .setInputCols(["sentence","token"])\
     .setOutputCol("embeddings")
@@ -165,12 +162,10 @@ val sentenceDetector = new SentenceDetector()
   .setInputCols(Array("document"))
   .setOutputCol("sentence")
 
-// Tokenizer splits words in a relevant format for NLP
 val tokenizer = new Tokenizer()
   .setInputCols(Array("sentence"))
   .setOutputCol("token")
 
-// Clinical word embeddings trained on PubMED dataset
 val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
