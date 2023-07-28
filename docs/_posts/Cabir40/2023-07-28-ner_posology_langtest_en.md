@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained named entity recognition deep learning model for posology, this NER is trained with the embeddings_clinical word embeddings model, so be sure to use the same embeddings in the pipeline. This model is augmented of  [`ner_posology`](https://nlp.johnsnowlabs.com/2021/03/31/ner_posology_en.html).
+Pretrained named entity recognition deep learning model for posology, this NER is trained with the embeddings_clinical word embeddings model, so be sure to use the same embeddings in the pipeline. This model is augmented by  [`ner_posology`](https://nlp.johnsnowlabs.com/2021/03/31/ner_posology_en.html).
 
 ## Predicted Entities
 
@@ -36,6 +36,7 @@ Pretrained named entity recognition deep learning model for posology, this NER i
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
