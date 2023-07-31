@@ -36,6 +36,7 @@ SDOH NER model is designed to detect and label social determinants of health (SD
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -189,9 +190,7 @@ val result = pipeline.fit(data).transform(data)
 ## Benchmarking
 
 ```bash
-
                  label       tp     fp     fn    total  precision  recall      f1  
-
    Other_SDoH_Keywords    359.0  123.0   99.0    458.0     0.7448  0.7838  0.7638  
              Education     96.0   24.0   19.0    115.0        0.8  0.8348   0.817  
       Population_Group     14.0    1.0   14.0     28.0     0.9333     0.5  0.6512  
