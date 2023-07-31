@@ -76,7 +76,7 @@ text = """The patient is a 30-year-old female with a long history of insulin dep
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
-result = nlp_pipeline.nlp_pipeline.fit(data).transform(data)
+result = nlp_pipeline.fit(data).transform(data)
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
@@ -95,7 +95,7 @@ val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_large"
     .setInputCols(Array("sentence", "token"))\
     .setOutputCol("embeddings")
 
-val posology_ner_model = MedicalNerModel.pretrained('ner_posology_langtest' "en", "clinical/models")
+val posology_ner_model = MedicalNerModel.pretrained("ner_posology_langtest", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("posology_ner")
 
@@ -114,7 +114,7 @@ text = """The patient is a 30-year-old female with a long history of insulin dep
 
 val data = Seq(text).toDS.toDF("text")
 
-val result = model.fit(data).transform(data)
+val result = posology_pipeline.fit(data).transform(data)
 ```
 </div>
 
