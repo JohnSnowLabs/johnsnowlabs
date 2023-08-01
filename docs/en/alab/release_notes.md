@@ -6,7 +6,7 @@ seotitle: Release Notes | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2023-07-10"
+modify_date: "2023-08-01"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -16,19 +16,10 @@ sidebar:
 <div class="h3-box" markdown="1">
 
 
-## 5.1.1
+## 5.2.0
 
-Release date: **10-07-2023**
+Release date: **01-08-2023**
 
-We are pleased to announce the release of v5.1.1 which includes the following Section Based Annotation bug fixes:
-
-- Relevant sections are now listed in the "export JSON" task for Section Based Annotation enabled projects.
-- Section based annotation enabled visual NER projects now support import of annotated tasks. The imported tasks are split on the basis of the rules and relevant sections are captured.
-- The side menu options will now show a hover state only when they are clickable.
-- Error messages will now be shown when invalid section rules for "Section Index" are entered.
-- Section Index now supports Index with single value (1, 2, 3, ...) and series index (1-5) in the same rule.
-- Manually created relevant sections of a deleted completion were still visible for section based tasks. This issue has been fixed.
-- In the previous version, when a model was trained in a Visual NER project, the trained model did not have any prediction labels. This issue has been fixed.
 
 </div><div class="prev_ver h3-box" markdown="1">
 
@@ -37,7 +28,8 @@ We are pleased to announce the release of v5.1.1 which includes the following Se
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_5_1_1">5.1.1</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_5_2_0">5.2.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_1_1">5.1.1</a></li> 
     <li><a href="annotation_labs_releases/release_notes_5_1_0">5.1.0</a></li> 
     <li><a href="annotation_labs_releases/release_notes_4_10_1">4.10.1</a></li> 
     <li><a href="annotation_labs_releases/release_notes_4_10_0">4.10.0</a></li> 
