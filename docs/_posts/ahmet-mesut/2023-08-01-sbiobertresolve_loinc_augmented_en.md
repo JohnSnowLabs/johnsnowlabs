@@ -47,7 +47,7 @@ sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_heal
     .setOutputCol("sentence")
 
 tokenizer = Tokenizer() \
-    .setInputCols(["document"]) \
+    .setInputCols(["sentence"]) \
     .setOutputCol("token")
 
 word_embeddings = WordEmbeddingsModel.pretrained('embeddings_clinical','en', 'clinical/models')\
