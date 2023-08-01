@@ -22,7 +22,7 @@ This model maps extracted clinical NER entities to Logical Observation Identifie
 
 ## Predicted Entities
 
-
+`loinc_code`
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/ER_LOINC/){:.button.button-orange}
