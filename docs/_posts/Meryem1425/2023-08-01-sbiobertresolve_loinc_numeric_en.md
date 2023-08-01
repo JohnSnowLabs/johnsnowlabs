@@ -28,36 +28,54 @@ This model maps extracted clinical NER entities to Logical Observation Identifie
 
 ## How to use
 
-
+`sbiobertresolve_loinc_numeric` resolver model must be used with `sbiobert_base_cased_mli` as embeddings.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 
-documentAssembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
+documentAssembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")    .setInputCols("document")    .setOutputCol("sentence")
+sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+    .setInputCols("document")\
+    .setOutputCol("sentence")
 
-tokenizer = Tokenizer()     .setInputCols(["document"])     .setOutputCol("token")
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel.pretrained('embeddings_clinical','en', 'clinical/models')    .setInputCols(["sentence", "token"])    .setOutputCol("embeddings")
+word_embeddings = WordEmbeddingsModel.pretrained('embeddings_clinical','en', 'clinical/models')\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("embeddings")
 
-ner = MedicalNerModel.pretrained("ner_radiology", "en", "clinical/models")     .setInputCols(["sentence", "token", "embeddings"])     .setOutputCol("ner")
+ner = MedicalNerModel.pretrained("ner_radiology", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner")
 
-ner_converter = NerConverter()     .setInputCols(["sentence", "token", "ner"])     .setOutputCol("ner_chunk")    .setWhiteList(['Test'])
+ner_converter = NerConverter()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(['Test'])
 
 chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
 
-sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("sbert_embeddings")    .setCaseSensitive(False)
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("sbert_embeddings")\
+    .setCaseSensitive(False)
 
-resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_loinc_numeric","en", "clinical/models")     .setInputCols(["sbert_embeddings"])     .setOutputCol("loinc_code")    .setDistanceFunction("EUCLIDEAN")
+resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_loinc_numeric","en", "clinical/models")\
+    .setInputCols(["sbert_embeddings"])\
+    .setOutputCol("loinc_code")\
+    .setDistanceFunction("EUCLIDEAN")
 
 pipeline_loinc = Pipeline(stages = [documentAssembler, sentenceDetector, tokenizer, word_embeddings, ner, ner_converter, chunk2doc, sbert_embedder, resolver])
 
 data = spark.createDataFrame([["""The patient is a 22-year-old female with a history of obesity. She has a Body mass index (BMI) of 33.5 kg/m2, aspartate aminotransferase 64, and alanine aminotransferase 126."""]]).toDF("text")
 
 results = pipeline_loinc.fit(data).transform(data)
-
 ```
 ```scala
 
