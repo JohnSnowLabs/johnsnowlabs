@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps extracted clinical NER entities to Logical Observation Identifiers Names and Codes(LOINC) codes using sbiobert_base_cased_mli Sentence Bert Embeddings. It trained on the augmented version of the dataset which is used in previous LOINC resolver models.
+This model maps extracted clinical NER entities to Logical Observation Identifiers Names and Codes(LOINC) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It trained on the augmented version of the dataset which is used in previous LOINC resolver models. It also provides the official resolution of the codes within the brackets.
 
 ## Predicted Entities
 
@@ -32,48 +32,49 @@ This model maps extracted clinical NER entities to Logical Observation Identifie
 
 ## How to use
 
+`sbiobertresolve_loinc_augmented` resolver model must be used with `sbiobert_base_cased_mli` as embeddings.
 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 documentAssembler = DocumentAssembler()\
-.setInputCol("text")\
-.setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
 
 sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
-.setInputCols("document")\
-.setOutputCol("sentence")
+    .setInputCols("document")\
+    .setOutputCol("sentence")
 
 tokenizer = Tokenizer() \
-.setInputCols(["document"]) \
-.setOutputCol("token")
+    .setInputCols(["document"]) \
+    .setOutputCol("token")
 
 word_embeddings = WordEmbeddingsModel.pretrained('embeddings_clinical','en', 'clinical/models')\
-.setInputCols(["sentence", "token"])\
-.setOutputCol("embeddings")
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("embeddings")
 
 ner = MedicalNerModel.pretrained("ner_radiology", "en", "clinical/models") \
-.setInputCols(["sentence", "token", "embeddings"]) \
-.setOutputCol("ner")
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner")
 
 ner_converter = NerConverter() \
-.setInputCols(["sentence", "token", "ner"]) \
-.setOutputCol("ner_chunk")\
-.setWhiteList(['Test'])
+    .setInputCols(["sentence", "token", "ner"]) \
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(['Test'])
 
 chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
 
-sbert_embedder = BertSentenceEmbeddings\
-.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-.setInputCols(["ner_chunk_doc"])\
-.setOutputCol("sbert_embeddings")
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("sbert_embeddings")\
+    .setCaseSensitive(False)
 
 
 resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_loinc_augmented","en", "clinical/models") \
-.setInputCols(["sbert_embeddings"]) \
-.setOutputCol("loinc_code")\
-.setDistanceFunction("EUCLIDEAN")
+    .setInputCols(["sbert_embeddings"]) \
+    .setOutputCol("loinc_code")\
+    .setDistanceFunction("EUCLIDEAN")
 
 pipeline_loinc = Pipeline(stages = [documentAssembler, sentenceDetector, tokenizer, word_embeddings, ner, ner_converter, chunk2doc, sbert_embedder, resolver])
 
@@ -83,44 +84,43 @@ results = pipeline_loinc.fit(data).transform(data)
 ```
 ```scala
 val documentAssembler = DocumentAssembler()
-.setInputCol("text")
-.setOutputCol("document")
+    .setInputCol("text")
+    .setOutputCol("document")
 
 val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
-.setInputCols("document")
-.setOutputCol("sentence")
+    .setInputCols("document")
+    .setOutputCol("sentence")
 
 val tokenizer = Tokenizer() 
-.setInputCols(Array("document"))
-.setOutputCol("token")
+    .setInputCols(Array("document"))
+    .setOutputCol("token")
 
 val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en", "clinical/models")
-.setInputCols(Array("sentence", "token"))
-.setOutputCol("embeddings")
+    .setInputCols(Array("sentence", "token"))
+    .setOutputCol("embeddings")
 
 val ner = MedicalNerModel.pretrained("ner_radiology", "en", "clinical/models") 
-.setInputCols(Array("sentence", "token", "embeddings")) 
-.setOutputCol("ner")
+    .setInputCols(Array("sentence", "token", "embeddings")) 
+    .setOutputCol("ner")
 
 val ner_converter = NerConverter() 
-.setInputCols(Array("sentence", "token", "ner")) 
-.setOutputCol("ner_chunk")
-.setWhiteList(Array("Test"))
+    .setInputCols(Array("sentence", "token", "ner")) 
+    .setOutputCol("ner_chunk")
+    .setWhiteList(Array("Test"))
 
 val chunk2doc = Chunk2Doc() 
-.setInputCols("ner_chunk") 
-.setOutputCol("ner_chunk_doc")
+    .setInputCols("ner_chunk") 
+    .setOutputCol("ner_chunk_doc")
 
-val sbert_embedder = BertSentenceEmbeddings
-.pretrained("sbiobert_base_cased_mli", "en","clinical/models")
-.setInputCols(Array("ner_chunk_doc"))
-.setOutputCol("sbert_embeddings")
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en","clinical/models")
+    .setInputCols(Array("ner_chunk_doc"))
+    .setOutputCol("sbert_embeddings")\
+    .setCaseSensitive(False)
 
-val resolver = SentenceEntityResolverModel
-.pretrained("sbiobertresolve_loinc_augmented", "en", "clinical/models") 
-.setInputCols(Array("ner_chunk", "sbert_embeddings")) 
-.setOutputCol("loinc_code")
-.setDistanceFunction("EUCLIDEAN")
+val resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_loinc_augmented", "en", "clinical/models") 
+    .setInputCols(Array("ner_chunk", "sbert_embeddings")) 
+    .setOutputCol("loinc_code")
+    .setDistanceFunction("EUCLIDEAN")
 
 val pipeline_loinc = new Pipeline().setStages(Array(documentAssembler, sentenceDetector, tokenizer, word_embeddings, ner, ner_converter, chunk2doc, sbert_embedder, resolver))
 
@@ -139,14 +139,13 @@ nlu.load("en.resolve.loinc.augmented").predict("""The patient is a 22-year-old f
 ## Results
 
 ```bash
-+--------------------------+-----+---+------+----------+----------+--------------------------------------------------+--------------------------------------------------+
-|                     chunk|begin|end|entity|confidence|Loinc_Code|                                         all_codes|                                       resolutions|
-+--------------------------+-----+---+------+----------+----------+--------------------------------------------------+--------------------------------------------------+
-|           Body mass index|   74| 88|  Test|0.39306664| LP35925-4|LP35925-4:::BDYCRC:::LP172732-2:::39156-5:::LP7...|body mass index:::body circumference:::body mus...|
-|aspartate aminotransferase|  111|136|  Test|   0.74925| LP15426-7|LP15426-7:::14409-7:::LP307348-5:::LP15333-5:::...|aspartate aminotransferase::: aspartate transam...|
-|  alanine aminotransferase|  146|169|  Test|    0.9579| LP15333-5|LP15333-5:::LP307326-1:::16324-6:::LP307348-5::...|alanine aminotransferase:::alanine aminotransfe...|
-+--------------------------+-----+---+------+----------+----------+--------------------------------------------------+--------------------------------------------------+
-
++-------+--------------------------+------+----------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+
+|sent_id|                 ner_chunk|entity|loinc_code|                                                                                           all_codes|                                                                                         resolutions|
++-------+--------------------------+------+----------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+
+|      1|                       BMI|  Test|   39156-5|39156-5:::LP241982-0:::89270-3:::100847-3:::8277-6:::LP65821-8:::LP65822-6:::LP253556-7:::LA21328...|BMI [Body mass index]:::BFI [BFI]:::BMI Est [Body mass index]:::BldA [Gas & ammonia panel]:::BSA ...|
+|      1|aspartate aminotransferase|  Test|   14409-7|14409-7:::1916-6:::16324-6:::16325-3:::43822-6:::3082-5:::2325-9:::100739-2:::59245-1:::27344-1::...|Aspartate aminotransferase [Aspartate aminotransferase]:::Aspartate aminotransferase/Alanine amin...|
+|      1|  alanine aminotransferase|  Test|   16324-6|16324-6:::16325-3:::1916-6:::14409-7:::59245-1:::100738-4:::25302-1:::1740-0:::43822-6:::76625-3:...|Alanine aminotransferase [Alanine aminotransferase]:::Alanine aminotransferase/Aspartate aminotra...|
++-------+--------------------------+------+----------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+
 ```
 
 {:.model-param}
