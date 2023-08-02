@@ -94,6 +94,7 @@ def start(
 
     # Get all Local Jar Paths, downloads them if missing
     suite = get_install_suite_from_jsl_home(
+        visual=visual,
         create_jsl_home_if_missing=create_jsl_home_if_missing,
         only_jars=True,
         jvm_hardware_target=hardware_target,
