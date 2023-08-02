@@ -348,7 +348,10 @@ document.write(`
 <span class="sd">    obfuscateRefSource</span>
 <span class="sd">        Mode for select obfuscation source [&#39;both&#39;|&#39;faker&#39;| &#39;file&#39;]</span>
 <span class="sd">    language</span>
-<span class="sd">        The language used to select some faker names.&#39;en&#39;(english),&#39;de&#39;(german), &#39;es&#39;(Spanish), &#39;fr&#39;(french) or &#39;ro&#39;(romanian)</span>
+<span class="sd">        The language used to select some faker names.</span>
+<span class="sd">        The values are the following:</span>
+<span class="sd">        &#39;en&#39;(English), &#39;de&#39;(German), &#39;es&#39;(Spanish), &#39;fr&#39;(French), &#39;ar&#39;(Arabic) or &#39;ro&#39;(Romanian).</span>
+<span class="sd">        Default:&#39;en&#39;</span>
 <span class="sd">    sameLength</span>
 <span class="sd">        The sameLength used to select the same length names as original ones during obfuscation. Default: true</span>
 <span class="sd">    nameEntities</span>
@@ -515,7 +518,7 @@ document.write(`
 <div class="viewcode-block" id="NameChunkObfuscatorApproach.setLanguage"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscatorApproach.setLanguage">[docs]</a>    <span class="k">def</span> <span class="nf">setLanguage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The language used to select some faker names.</span>
 <span class="sd">        The values are the following:</span>
-<span class="sd">        &#39;en&#39;(english),&#39;de&#39;(german), &#39;es&#39;(Spanish), &#39;fr&#39;(french) or &#39;ro&#39;(romanian)</span>
+<span class="sd">        &#39;en&#39;(English), &#39;de&#39;(German), &#39;es&#39;(Spanish), &#39;fr&#39;(French), &#39;ar&#39;(Arabic) or &#39;ro&#39;(Romanian).</span>
 <span class="sd">        Default:&#39;en&#39;</span>
 
 <span class="sd">        Parameters</span>
@@ -597,7 +600,10 @@ document.write(`
 <span class="sd">    obfuscateRefSource</span>
 <span class="sd">        Mode for select obfuscation source [&#39;both&#39;|&#39;faker&#39;| &#39;file&#39;]</span>
 <span class="sd">    language</span>
-<span class="sd">        The language used to select some faker names.&#39;en&#39;(english),&#39;de&#39;(german), &#39;es&#39;(Spanish), &#39;fr&#39;(french) or &#39;ro&#39;(romanian)</span>
+<span class="sd">        The language used to select some faker names.</span>
+<span class="sd">        The values are the following:</span>
+<span class="sd">        &#39;en&#39;(English), &#39;de&#39;(German), &#39;es&#39;(Spanish), &#39;fr&#39;(French), &#39;ar&#39;(Arabic) or &#39;ro&#39;(Romanian).</span>
+<span class="sd">        Default:&#39;en&#39;</span>
 <span class="sd">    sameLength</span>
 <span class="sd">        The sameLength used to select the same length names as original ones during obfuscation. Default: true</span>
 <span class="sd">    nameEntities</span>
@@ -652,7 +658,7 @@ document.write(`
 <div class="viewcode-block" id="NameChunkObfuscator.setLanguage"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.setLanguage">[docs]</a>    <span class="k">def</span> <span class="nf">setLanguage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;The language used to select some faker names.</span>
 <span class="sd">        The values are the following:</span>
-<span class="sd">        &#39;en&#39;(english),&#39;de&#39;(german), &#39;es&#39;(Spanish), &#39;fr&#39;(french) or &#39;ro&#39;(romanian)</span>
+<span class="sd">        &#39;en&#39;(English), &#39;de&#39;(German), &#39;es&#39;(Spanish), &#39;fr&#39;(French), &#39;ar&#39;(Arabic) or &#39;ro&#39;(Romanian).</span>
 <span class="sd">        Default:&#39;en&#39;</span>
 
 <span class="sd">        Parameters</span>
@@ -702,31 +708,9 @@ document.write(`
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscator&quot;</span><span class="p">,</span> <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">NameChunkObfuscator</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">classname</span><span class="o">=</span><span class="n">classname</span><span class="p">,</span>
-            <span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span>
+            <span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span></div>
         <span class="p">)</span>
 
-    <span class="nd">@staticmethod</span>
-<div class="viewcode-block" id="NameChunkObfuscator.pretrained"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/deid/name_obfuscator/index.html#sparknlp_jsl.annotator.deid.name_obfuscator.NameChunkObfuscator.pretrained">[docs]</a>    <span class="k">def</span> <span class="nf">pretrained</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="o">=</span><span class="s2">&quot;en&quot;</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Downloads and loads a pretrained model.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        name : str, optional</span>
-<span class="sd">            Name of the pretrained model.</span>
-<span class="sd">        lang : str, optional</span>
-<span class="sd">            Language of the pretrained model, by default &quot;en&quot;</span>
-<span class="sd">        remote_loc : str, optional</span>
-<span class="sd">            Optional remote address of the resource, by default None. Will use</span>
-<span class="sd">            Spark NLPs repositories otherwise.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        NameChunkObfuscator</span>
-<span class="sd">            The restored model</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">ResourceDownloader</span>
-        <span class="k">return</span> <span class="n">ResourceDownloader</span><span class="o">.</span><span class="n">downloadModel</span><span class="p">(</span><span class="n">NameChunkObfuscator</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">lang</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span>
-                                                <span class="n">j_dwn</span><span class="o">=</span><span class="s1">&#39;InternalsPythonResourceDownloader&#39;</span><span class="p">)</span></div></div>
 </pre></div>
 
                 </article>

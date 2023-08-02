@@ -420,6 +420,9 @@ default []</p>
 </dd>
 <dt><strong>randomSeed: int</strong></dt><dd><p>Random seed. Set to positive integer to get reproducible results, by default None.</p>
 </dd>
+<dt><strong>customPrompt</strong></dt><dd><p>Custom prompt template. The only available variable is {DOCUMENT} and it is populated with
+the contents of the input document</p>
+</dd>
 <dt><strong>Examples</strong></dt><dd></dd>
 <dt><strong>——–</strong></dt><dd></dd>
 <dt><strong>&gt;&gt;&gt; data = spark.createDataFrame([[“Covid 18 is “]]).toDF(“prompt”)</strong></dt><dd></dd>

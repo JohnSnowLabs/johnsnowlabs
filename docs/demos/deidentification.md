@@ -21,18 +21,18 @@ data:
           activemenu: deidentification
       source: yes
       source: 
-        - title: Detect PHI Entities from Deidentification
-          id: detect_demographic_information
+        - title: Detect PHI Entities from Deidentification 
+          id: detect_phi_entities_deidentification_2
           image: 
-              src: /assets/images/Detect_demographic_information.svg
-          excerpt: Automatically identify demographic information such as <b>Date, Doctor, Hospital, ID number, Medical record, Patient, Age, Profession, Organization, State, City, Country, Street, Username, Zip code, Phone number</b> in clinical documents using three of our pretrained Spark NLP models.
+              src: /assets/images/FreeText.svg
+          excerpt: This demo shows how to deidentify protected health information.
           actions:
           - text: Live Demo
             type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS/
+            url: https://demo.johnsnowlabs.com/healthcare/DEID_LIVE/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_DEMOGRAPHICS.ipynb        
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/DEID_PHI_TEXT_MULTI.ipynb
         - title: Deidentify Clinical Notes in Different Languages
           id: deidentify_clinical_notes_different_languages
           image: 
@@ -44,19 +44,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/DEID_PHI_TEXT_MULTI/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/DEID_PHI_TEXT_MULTI.ipynb   
-        - title: Detect PHI Entities from Deidentification (Arabic)
-          id: detect_phi_entities_deidentification_arabic
-          image: 
-              src: /assets/images/Detect_PHI_for_Deidentification.svg
-          excerpt: Detect protected health information in Arabic clinical documents using Spark NLP models, identifying up to 17 entities.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS_AR/
-          - text: Colab
-            type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.1.Clinical_Multi_Language_Deidentification.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/DEID_PHI_TEXT_MULTI.ipynb
         - title: Consistency on Deidentification
           id: consistency_deidentification
           image: 
@@ -69,6 +57,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb
+        - title: Detect PHI Entities from Deidentification
+          id: detect_demographic_information
+          image: 
+              src: /assets/images/Detect_demographic_information.svg
+          excerpt: Automatically identify demographic information such as <b>Date, Doctor, Hospital, ID number, Medical record, Patient, Age, Profession, Organization, State, City, Country, Street, Username, Zip code, Phone number</b> in clinical documents using three of our pretrained Spark NLP models.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_DEMOGRAPHICS.ipynb
         - title: Deidentify structured data
           id: deidentify_structured_data
           image: 
@@ -116,7 +116,19 @@ data:
             url: https://demo.johnsnowlabs.com/ocr/DEID_PDF_GDPR
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/ocr/DEID_PDF.ipynb        
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/ocr/DEID_PDF.ipynb  
+        - title: Detect PHI Entities from Deidentification (Arabic)
+          id: detect_phi_entities_deidentification_arabic
+          image: 
+              src: /assets/images/Detect_PHI_for_Deidentification.svg
+          excerpt: Detect protected health information in Arabic clinical documents using Spark NLP models, identifying up to 17 entities.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER_DEMOGRAPHICS_AR/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/04.1.Clinical_Multi_Language_Deidentification.ipynb      
         - title: Deidentify free text documents
           id: deidentify_free_text_documents
           hide: yes

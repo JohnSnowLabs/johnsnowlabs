@@ -21,7 +21,7 @@ data:
           activemenu: public_health
       source: yes
       source:
-        - title: VOP
+        - title: Voice of Patients
           id: vop           
           image: 
               src: /assets/images/Voice_Of_Patient.svg
@@ -32,8 +32,8 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/VOP/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_THE_PATIENTS.ipynb
-        - title: Voice of Patients
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb
+        - title: Voice of Patients NER
           id: voice_patients           
           image: 
               src: /assets/images/Voice_of_the_Patients.svg
