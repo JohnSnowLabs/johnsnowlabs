@@ -7,7 +7,8 @@ from johnsnowlabs.abstract_base.software_product import AbstractSoftwareProduct
 from johnsnowlabs.auto_install.softwares import Software
 from johnsnowlabs.py_models.jsl_secrets import LicenseInfos
 from johnsnowlabs.utils.enums import ProductName
-from johnsnowlabs.utils.my_jsl_api import get_access_key_from_browser, get_user_licenses
+from johnsnowlabs.utils.my_jsl_api import (get_access_key_from_browser,
+                                           get_user_licenses)
 
 
 def check_health(check_install=True):
@@ -49,6 +50,7 @@ def check_health(check_install=True):
         if health_check:
             health_check[product] = product.health_check()
 
+    return install_status
 
 def list_remote_licenses():
     access_token = get_access_key_from_browser()
