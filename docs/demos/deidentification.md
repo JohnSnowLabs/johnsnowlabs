@@ -22,7 +22,7 @@ data:
       source: yes
       source: 
         - title: Detect PHI Entities from Deidentification 
-          id: detect_phi_entities_deidentification
+          id: detect_phi_entities_deidentification_2
           image: 
               src: /assets/images/FreeText.svg
           excerpt: This demo shows how to deidentify protected health information.
