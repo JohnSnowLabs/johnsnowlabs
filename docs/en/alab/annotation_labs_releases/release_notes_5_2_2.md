@@ -122,7 +122,7 @@ The banner can be of the following colors:
 ### Reorder, Resize, and addition of tooltips for Section Based Annotation configurations
 The input fields for the Section-based Configurations have been reorganized and resized to enhance the user experience during the creation of rules. Additionally, tooltips have been implemented for lengthy Section names, allowing users to view them in their entirety without the need to manually scroll through each letter within the input box. These improvements aim to streamline the configuration process.
 
-![Reorder, Resize and add tooltips for SBA configurations](/assets/images/annotation_lab/5.2.2/10.gif)
+![Reorder, Resize and add tooltips for SBA configurations](/assets/images/annotation_lab/5.2.2/10.png)
 
 ### Manual Section Creation
 During the manual section creation process, once the selection has been made, it will persist within the section creation modal until the section is successfully created or if the process is canceled. This ensures that the selected data or preferences are retained throughout the procedure, providing a seamless and uninterrupted user experience.
