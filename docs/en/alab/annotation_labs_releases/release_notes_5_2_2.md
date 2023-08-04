@@ -17,6 +17,8 @@ sidebar:
 
 Release date: **03-08-2023**
 
+## NLP Lab 5.2: Introducing Synthetic Data Generation with ChatGPT, improved HIPPA compliance with s3 integration and disabled local exports, enhanced Section Based Annotation, and much more!
+
 We are thrilled to announce the release of NLP Lab 5.2, packed with exciting new features to elevate your annotation experience and streamline your NLP projects. With synthetic task generation powered by ChatGPT, effortlessly create diverse text documents, enriching your dataset for more robust training. Collaborate and access your annotated data with ease, as we integrate Amazon S3 for tasks and project export, ensuring smooth teamwork and safe data sharing. To ensure data security and privacy, we now offer the option to disable tasks and projects to export to local workstations, guaranteeing that your sensitive information remains protected within the confines of the platform.
 
 Furthermore, our Section-based annotation feature has received significant enhancements, including support for task splitting with external services, targeted pre-annotation for relevant sections, and pre-annotation for all sections defined for a given task. These improvements streamline your annotation workflow, saving you valuable time and effort.
