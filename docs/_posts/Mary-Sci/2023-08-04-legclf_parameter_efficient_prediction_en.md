@@ -13,7 +13,7 @@ supported: true
 engine: tensorflow
 annotator: LegalBertForSequenceClassification
 article_header:
-  type: cover
+type: cover
 use_language_switcher: "Python-Scala-Java"
 ---
 
@@ -38,6 +38,7 @@ This is a multiclass classification model trained to estimate parameter efficien
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
+  
 document_assembler = nlp.DocumentAssembler() \
     .setInputCol('text') \
     .setOutputCol('document')
