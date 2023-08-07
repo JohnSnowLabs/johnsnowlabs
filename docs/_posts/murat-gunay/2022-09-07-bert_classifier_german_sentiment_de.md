@@ -94,12 +94,12 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/oliverguhr/german-sentiment-bert
-- http://www.lrec-conf.org/proceedings/lrec2020/pdf/2020.lrec-1.202.pdf
-- https://pypi.org/project/germansentiment/
-- https://github.com/oliverguhr/german-sentiment
-- http://www.lrec-conf.org/proceedings/lrec2020/pdf/2020.lrec-1.202.pdf
-- https://www.romanklinger.de/scare/
-- https://www.aclweb.org/anthology/L16-1181/
-- https://www.spinningbytes.com/resources/germansentiment/
-- https://wortschatz.uni-leipzig.de/de/download/german
+- [https://huggingface.co/oliverguhr/german-sentiment-bert](https://huggingface.co/oliverguhr/german-sentiment-bert)
+- [https://www.lrec-conf.org/proceedings/lrec2020/pdf/2020.lrec-1.202.pdf](https://www.lrec-conf.org/proceedings/lrec2020/pdf/2020.lrec-1.202.pdf)
+- [https://pypi.org/project/germansentiment/](https://pypi.org/project/germansentiment/)
+- [https://github.com/oliverguhr/german-sentiment](https://github.com/oliverguhr/german-sentiment)
+- [https://www.lrec-conf.org/proceedings/lrec2020/pdf/2020.lrec-1.202.pdf](https://www.lrec-conf.org/proceedings/lrec2020/pdf/2020.lrec-1.202.pdf)
+- [https://www.romanklinger.de/scare/](https://www.romanklinger.de/scare/)
+- [https://www.aclweb.org/anthology/L16-1181/](https://www.aclweb.org/anthology/L16-1181/)
+- [https://www.spinningbytes.com/resources/germansentiment/](https://www.spinningbytes.com/resources/germansentiment/)
+- [https://wortschatz.uni-leipzig.de/de/download/german](https://wortschatz.uni-leipzig.de/de/download/german)

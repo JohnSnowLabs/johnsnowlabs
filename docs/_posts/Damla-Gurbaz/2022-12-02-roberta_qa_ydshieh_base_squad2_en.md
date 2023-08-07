@@ -85,20 +85,20 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/ydshieh/roberta-base-squad2
-- https://github.com/deepset-ai/FARM/issues/552
-- https://github.com/deepset-ai/FARM/blob/master/examples/question_answering.py
-- https://github.com/deepset-ai/FARM/blob/master/examples/question_answering.py
-- https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/
-- https://github.com/deepset-ai/haystack/
-- https://workablehr.s3.amazonaws.com/uploads/account/logo/476306/logo
-- https://deepset.ai/german-bert
-- https://deepset.ai/germanquad
-- https://github.com/deepset-ai/FARM
-- https://github.com/deepset-ai/haystack/
-- https://twitter.com/deepset_ai
-- https://www.linkedin.com/company/deepset-ai/
-- https://haystack.deepset.ai/community/join
-- https://github.com/deepset-ai/haystack/discussions
-- https://deepset.ai
-- http://www.deepset.ai/jobs
+- [https://huggingface.co/ydshieh/roberta-base-squad2](https://huggingface.co/ydshieh/roberta-base-squad2)
+- [https://github.com/deepset-ai/FARM/issues/552](https://github.com/deepset-ai/FARM/issues/552)
+- [https://github.com/deepset-ai/FARM/blob/master/examples/question_answering.py](https://github.com/deepset-ai/FARM/blob/master/examples/question_answering.py)
+- [https://github.com/deepset-ai/FARM/blob/master/examples/question_answering.py](https://github.com/deepset-ai/FARM/blob/master/examples/question_answering.py)
+- [https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/](https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/)
+- [https://github.com/deepset-ai/haystack/](https://github.com/deepset-ai/haystack/)
+- [https://workablehr.s3.amazonaws.com/uploads/account/logo/476306/logo](https://workablehr.s3.amazonaws.com/uploads/account/logo/476306/logo)
+- [https://deepset.ai/german-bert](https://deepset.ai/german-bert)
+- [https://deepset.ai/germanquad](https://deepset.ai/germanquad)
+- [https://github.com/deepset-ai/FARM](https://github.com/deepset-ai/FARM)
+- [https://github.com/deepset-ai/haystack/](https://github.com/deepset-ai/haystack/)
+- [https://twitter.com/deepset_ai](https://twitter.com/deepset_ai)
+- [https://www.linkedin.com/company/deepset-ai/](https://www.linkedin.com/company/deepset-ai/)
+- [https://haystack.deepset.ai/community/join](https://haystack.deepset.ai/community/join)
+- [https://github.com/deepset-ai/haystack/discussions](https://github.com/deepset-ai/haystack/discussions)
+- [https://deepset.ai](https://deepset.ai)
+- [https://www.deepset.ai/jobs](https://www.deepset.ai/jobs)

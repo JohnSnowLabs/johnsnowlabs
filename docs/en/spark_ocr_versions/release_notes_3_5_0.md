@@ -28,7 +28,7 @@ More details please read in [Extract Tabular Data from PDF in Spark OCR](https:/
 
 * Added new method to [ImageTableCellDetector](/docs/en/ocr_table_recognition#imagetablecelldetector) which support 
 borderless tables and combined tables.
-* Added __Wolf__ and __Singh__ adaptive binarization methods to the [ImageAdaptiveThresholding](ocr_pipeline_components#imageadaptivethresholding).
+* Added __Wolf__ and __Singh__ adaptive binarization methods to the [ImageAdaptiveThresholding](../ocr_pipeline_components#imageadaptivethresholding).
 
 
 #### Enhancements

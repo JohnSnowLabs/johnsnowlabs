@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Legal Contract NLI Text Generation
+title: Legal Contract NLI
 author: John Snow Labs
 name: leggen_contract_nli
 date: 2023-07-04
@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This is a text generation model that has undergone fine-tuning on flan-t5 using the Contract-NLI dataset. The ContractNLI dataset is designed for document-level natural language inference (NLI) on contracts, aiming to streamline and expedite the contract review process. The objective of this task is to provide a system with a set of hypotheses, like "Some obligations of Agreement may survive termination," along with a contract, and task it with classifying whether each hypothesis is entailed, contradicted, or not mentioned (neutral) by the contract.
+This is a text-to-text generation model (encode-decoder architecture) that has undergone fine-tuning on flan-t5 using the Contract-NLI dataset. The ContractNLI dataset is designed for document-level natural language inference (NLI) on contracts, aiming to streamline and expedite the contract review process. The objective of this task is to provide a system with a set of hypotheses, like "Some obligations of Agreement may survive termination," along with a contract, and task it with classifying whether each hypothesis is entailed, contradicted, or not mentioned (neutral) by the contract.
 
 ## Predicted Entities
 
@@ -88,4 +88,20 @@ results.select("generated.result").show(truncate=False)
 
 ## References
 
-This model has been fine tuned using: https://stanfordnlp.github.io/contract-nli/
+This model has been fine tuned using [Stanford ContractNLI](https://stanfordnlp.github.io/contract-nli/) dataset.
+
+Reference:
+```bibtex
+@inproceedings{koreeda-manning-2021-contractnli-dataset,
+    title = "{C}ontract{NLI}: A Dataset for Document-level Natural Language Inference for Contracts",
+    author = "Koreeda, Yuta  and Manning, Christopher",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2021",
+    month = nov,
+    year = "2021",
+    address = "Punta Cana, Dominican Republic",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2021.findings-emnlp.164",
+    pages = "1907--1919",
+}
+
+```

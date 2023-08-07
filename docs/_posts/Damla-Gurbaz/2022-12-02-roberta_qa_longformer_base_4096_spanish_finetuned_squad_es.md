@@ -84,12 +84,12 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/mrm8488/longformer-base-4096-spanish-finetuned-squad
-- https://es.wikipedia.org/
-- https://creativecommons.org/licenses/by-sa/3.0/legalcode
-- https://es.wikinews.org/
-- https://creativecommons.org/licenses/by/2.5/
-- http://clic.ub.edu/corpus/en
-- https://creativecommons.org/licenses/by/4.0/legalcode
-- https://twitter.com/mrm8488
-- https://www.narrativa.com/
+- [https://huggingface.co/mrm8488/longformer-base-4096-spanish-finetuned-squad](https://huggingface.co/mrm8488/longformer-base-4096-spanish-finetuned-squad)
+- [https://es.wikipedia.org/](https://es.wikipedia.org/)
+- [https://creativecommons.org/licenses/by-sa/3.0/legalcode](https://creativecommons.org/licenses/by-sa/3.0/legalcode)
+- [https://es.wikinews.org/](https://es.wikinews.org/)
+- [https://creativecommons.org/licenses/by/2.5/](https://creativecommons.org/licenses/by/2.5/)
+- [https://clic.ub.edu/corpus/en](https://clic.ub.edu/corpus/en)
+- [https://creativecommons.org/licenses/by/4.0/legalcode](https://creativecommons.org/licenses/by/4.0/legalcode)
+- [https://twitter.com/mrm8488](https://twitter.com/mrm8488)
+- [https://www.narrativa.com/](https://www.narrativa.com/)

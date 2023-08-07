@@ -3,7 +3,7 @@ PubTator Dataset
 {%- endcapture -%}
 
 {%- capture description -%}
-The PubTator format includes medical papers' titles, abstracts, and tagged chunks (see [PubTator Docs](http://bioportal.bioontology.org/ontologies/EDAM?p=classes&conceptid=format_3783) and [MedMentions Docs](http://github.com/chanzuckerberg/MedMentions) for more information). We can create a Spark DataFrame from a PubTator text file.
+The PubTator format includes medical papers' titles, abstracts, and tagged chunks (see [PubTator Docs](https://bioportal.bioontology.org/ontologies/EDAM?p=classes&conceptid=format_3783) and [MedMentions Docs](https://github.com/chanzuckerberg/MedMentions) for more information). We can create a Spark DataFrame from a PubTator text file.
 {%- endcapture -%}
 
 {%- capture file_format -%}

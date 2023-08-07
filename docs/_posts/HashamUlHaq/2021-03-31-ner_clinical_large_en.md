@@ -144,7 +144,7 @@ val result = pipeline.fit(data).transform(data)
 
 ## Data Source
 
-Trained on augmented 2010 i2b2 challenge data with 'embeddings_clinical'.
+Trained on augmented version of 2010 i2b2 challenge data with 'embeddings_clinical'.
 https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
 
 ## Benchmarking

@@ -101,16 +101,16 @@ nlu.load("en.answer_question.squadv2.bert.mini_lm_base_uncased").predict("""What
 
 ## References
 
-- https://huggingface.co/deepset/minilm-uncased-squad2
-- https://github.com/deepset-ai/haystack/discussions
-- https://deepset.ai
-- https://github.com/deepset-ai/FARM/blob/master/examples/question_answering.py
-- https://twitter.com/deepset_ai
-- http://www.deepset.ai/jobs
-- https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/
-- https://haystack.deepset.ai/community/join
-- https://github.com/deepset-ai/haystack/
-- https://deepset.ai/german-bert
-- https://www.linkedin.com/company/deepset-ai/
-- https://github.com/deepset-ai/FARM
-- https://deepset.ai/germanquad
+- [https://huggingface.co/deepset/minilm-uncased-squad2](https://huggingface.co/deepset/minilm-uncased-squad2)
+- [https://github.com/deepset-ai/haystack/discussions](https://github.com/deepset-ai/haystack/discussions)
+- [https://deepset.ai](https://deepset.ai)
+- [https://github.com/deepset-ai/FARM/blob/master/examples/question_answering.py](https://github.com/deepset-ai/FARM/blob/master/examples/question_answering.py)
+- [https://twitter.com/deepset_ai](https://twitter.com/deepset_ai)
+- [https://www.deepset.ai/jobs](https://www.deepset.ai/jobs)
+- [https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/](https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/)
+- [https://haystack.deepset.ai/community/join](https://haystack.deepset.ai/community/join)
+- [https://github.com/deepset-ai/haystack/](https://github.com/deepset-ai/haystack/)
+- [https://deepset.ai/german-bert](https://deepset.ai/german-bert)
+- [https://www.linkedin.com/company/deepset-ai/](https://www.linkedin.com/company/deepset-ai/)
+- [https://github.com/deepset-ai/FARM](https://github.com/deepset-ai/FARM)
+- [https://deepset.ai/germanquad](https://deepset.ai/germanquad)

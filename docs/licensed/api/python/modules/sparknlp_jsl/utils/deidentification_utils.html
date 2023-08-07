@@ -328,6 +328,7 @@ document.write(`
             <span class="n">columns_seed</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">shift_days</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">date_formats</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">language</span><span class="o">=</span><span class="s2">&quot;en&quot;</span>
         <span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;This method is used to deidentify structured data. It takes the input as a file path and returns a deidentified dataframe and a file in csv/json format.</span>
 
@@ -343,6 +344,7 @@ document.write(`
 <span class="sd">        columns_seed (int): The seed value for the random number generator.</span>
 <span class="sd">        shift_days (int): The number of days to be shifted.</span>
 <span class="sd">        date_formats (list): A list of date formats.</span>
+<span class="sd">        language (str): The language used to select faker entities. Options: &#39;en&#39;(English), &#39;de&#39;(German), &#39;es&#39;(Spanish), &#39;fr&#39;(French), &#39;ar&#39;(Arabic) or &#39;ro&#39;(Romanian). Default:&#39;en&#39;.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">        -------</span>
@@ -364,6 +366,7 @@ document.write(`
             <span class="s2">&quot;obfuscateRefSource&quot;</span><span class="p">:</span> <span class="n">ref_source</span><span class="p">,</span>
             <span class="s2">&quot;columnsSeed&quot;</span><span class="p">:</span> <span class="n">columns_seed</span><span class="p">,</span>
             <span class="s2">&quot;dateFormats&quot;</span><span class="p">:</span> <span class="n">date_formats</span><span class="p">,</span>
+            <span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="n">language</span>
         <span class="p">}</span>
 
         <span class="k">if</span> <span class="n">ref_source</span> <span class="o">==</span> <span class="s2">&quot;file&quot;</span> <span class="ow">or</span> <span class="n">ref_source</span> <span class="o">==</span> <span class="s2">&quot;both&quot;</span><span class="p">:</span>

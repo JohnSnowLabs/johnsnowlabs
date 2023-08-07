@@ -101,15 +101,15 @@ nlu.load("en.answer_question.squadv2.bert.tiny_768d").predict("""What's my name?
 
 ## References
 
-- https://huggingface.co/deepset/tinybert-6l-768d-squad2
-- https://github.com/deepset-ai/haystack/discussions
-- https://deepset.ai
-- https://twitter.com/deepset_ai
-- http://www.deepset.ai/jobs
-- https://haystack.deepset.ai/community/join
-- https://github.com/deepset-ai/haystack/
-- https://deepset.ai/german-bert
-- https://www.linkedin.com/company/deepset-ai/
-- https://arxiv.org/pdf/1909.10351.pdf
-- https://github.com/deepset-ai/FARM
-- https://deepset.ai/germanquad
+- [https://huggingface.co/deepset/tinybert-6l-768d-squad2](https://huggingface.co/deepset/tinybert-6l-768d-squad2)
+- [https://github.com/deepset-ai/haystack/discussions](https://github.com/deepset-ai/haystack/discussions)
+- [https://deepset.ai](https://deepset.ai)
+- [https://twitter.com/deepset_ai](https://twitter.com/deepset_ai)
+- [https://www.deepset.ai/jobs](https://www.deepset.ai/jobs)
+- [https://haystack.deepset.ai/community/join](https://haystack.deepset.ai/community/join)
+- [https://github.com/deepset-ai/haystack/](https://github.com/deepset-ai/haystack/)
+- [https://deepset.ai/german-bert](https://deepset.ai/german-bert)
+- [https://www.linkedin.com/company/deepset-ai/](https://www.linkedin.com/company/deepset-ai/)
+- [https://arxiv.org/pdf/1909.10351.pdf](https://arxiv.org/pdf/1909.10351.pdf)
+- [https://github.com/deepset-ai/FARM](https://github.com/deepset-ai/FARM)
+- [https://deepset.ai/germanquad](https://deepset.ai/germanquad)

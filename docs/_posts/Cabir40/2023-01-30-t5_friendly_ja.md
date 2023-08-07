@@ -81,7 +81,5 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/astremo/friendly_JA
-- http://creativecommons.org/licenses/by/4.0/
-- http://creativecommons.org/licenses/by/4.0/
-- http://creativecommons.org/licenses/by/4.0/
+- [https://huggingface.co/astremo/friendly_JA](https://huggingface.co/astremo/friendly_JA)
+- [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)

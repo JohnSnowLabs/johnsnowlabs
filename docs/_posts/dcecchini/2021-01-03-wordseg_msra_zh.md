@@ -99,7 +99,7 @@ token_df
 
 ## Data Source
 
-We trained this model on the Microsoft Research Asia (MSRA) data set available on the Second International Chinese Word Segmentation Bakeoff [SIGHAN 2005](http://sighan.cs.uchicago.edu/bakeoff2005)
+We trained this model on the Microsoft Research Asia (MSRA) data set available on the Second International Chinese Word Segmentation Bakeoff [SIGHAN 2005](https://sighan.cs.uchicago.edu/bakeoff2005)
 
 ## Benchmarking
 

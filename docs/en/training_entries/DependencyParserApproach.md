@@ -10,7 +10,7 @@ the subjects and objects of a verb are, as well as which words are modifying (de
 you find precise answers to specific questions.
 
 The required training data can be set in two different ways (only one can be chosen for a particular model):
-  - Dependency treebank in the [Penn Treebank format](http://www.nltk.org/nltk_data/) set with `setDependencyTreeBank`. Data Format:
+  - Dependency treebank in the [Penn Treebank format](https://www.nltk.org/nltk_data/) set with `setDependencyTreeBank`. Data Format:
     ```
     (S
     (S-TPC-1

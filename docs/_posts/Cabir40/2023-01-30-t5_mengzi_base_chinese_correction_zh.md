@@ -81,9 +81,9 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/shibing624/mengzi-t5-base-chinese-correction
-- https://github.com/shibing624/pycorrector
-- https://github.com/shibing624/pycorrector/tree/master/pycorrector/t5
-- https://pan.baidu.com/s/1BV5tr9eONZCI0wERFvr0gQ
-- http://nlp.ee.ncu.edu.tw/resource/csc.html
-- https://github.com/wdimmy/Automatic-Corpus-Generation/blob/master/corpus/train.sgml
+- [https://huggingface.co/shibing624/mengzi-t5-base-chinese-correction](https://huggingface.co/shibing624/mengzi-t5-base-chinese-correction)
+- [https://github.com/shibing624/pycorrector](https://github.com/shibing624/pycorrector)
+- [https://github.com/shibing624/pycorrector/tree/master/pycorrector/t5](https://github.com/shibing624/pycorrector/tree/master/pycorrector/t5)
+- [https://pan.baidu.com/s/1BV5tr9eONZCI0wERFvr0gQ](https://pan.baidu.com/s/1BV5tr9eONZCI0wERFvr0gQ)
+- [https://nlp.ee.ncu.edu.tw/resource/csc.html](https://nlp.ee.ncu.edu.tw/resource/csc.html)
+- [https://github.com/wdimmy/Automatic-Corpus-Generation/blob/master/corpus/train.sgml](https://github.com/wdimmy/Automatic-Corpus-Generation/blob/master/corpus/train.sgml)

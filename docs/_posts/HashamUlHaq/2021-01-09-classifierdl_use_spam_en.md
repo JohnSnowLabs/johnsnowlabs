@@ -50,7 +50,7 @@ document_classifier = ClassifierDLModel.pretrained('classifierdl_use_spam', 'en'
 nlpPipeline = Pipeline(stages=[document_assembler, use, document_classifier])
 light_pipeline = LightPipeline(nlp_pipeline.fit(spark.createDataFrame([['']]).toDF("text")))
 
-annotations = light_pipeline.fullAnnotate('Congratulations! You've won a $1,000 Walmart gift card. Go to http://bit.ly/1234 to claim now.')
+annotations = light_pipeline.fullAnnotate('Congratulations! You've won a $1,000 Walmart gift card. Go to https://bit.ly/1234 to claim now.')
 ```
 ```scala
 val documentAssembler = DocumentAssembler()
@@ -64,7 +64,7 @@ val document_classifier = ClassifierDLModel.pretrained('classifierdl_use_spam', 
 .setOutputCol("class")
 val pipeline = new Pipeline().setStages(Array(documentAssembler, use, document_classifier))
 
-val data = Seq("Congratulations! You've won a $1,000 Walmart gift card. Go to http://bit.ly/1234 to claim now.").toDF("text")
+val data = Seq("Congratulations! You've won a $1,000 Walmart gift card. Go to https://bit.ly/1234 to claim now.").toDF("text")
 val result = pipeline.fit(data).transform(data)
 ```
 
@@ -72,7 +72,7 @@ val result = pipeline.fit(data).transform(data)
 ```python
 import nlu
 
-text = ["""Congratulations! You've won a $1,000 Walmart gift card. Go to http://bit.ly/1234 to claim now."""]
+text = ["""Congratulations! You've won a $1,000 Walmart gift card. Go to https://bit.ly/1234 to claim now."""]
 spam_df = nlu.load('classify.spam.use').predict(text, output_level='document')
 spam_df[["document", "spam"]]
 ```
@@ -85,7 +85,7 @@ spam_df[["document", "spam"]]
 +------------------------------------------------------------------------------------------------+------------+
 |document                                                                                        |class       |
 +------------------------------------------------------------------------------------------------+------------+
-|Congratulations! You've won a $1,000 Walmart gift card. Go to http://bit.ly/1234 to claim now.  | spam       |
+|Congratulations! You've won a $1,000 Walmart gift card. Go to https://bit.ly/1234 to claim now.  | spam       |
 +------------------------------------------------------------------------------------------------+------------+
 
 ```
@@ -106,7 +106,7 @@ spam_df[["document", "spam"]]
 
 ## Data Source
 
-This model is trained on UCI spam dataset. https://archive.ics.uci.edu/ml/machine-learning-databases/00228/smsspamcollection.zip
+This model is trained on UCI spam dataset. [https://archive.ics.uci.edu/ml/machine-learning-databases/00228/smsspamcollection.zip](https://archive.ics.uci.edu/ml/machine-learning-databases/00228/smsspamcollection.zip)
 
 ## Benchmarking
 

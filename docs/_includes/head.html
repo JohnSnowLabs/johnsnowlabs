@@ -1,6 +1,6 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
 
 <!-- Google Tag Manager MAIN -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -15,6 +15,8 @@
 
 {%- if page.layout == "landing" -%}
 <title>John Snow Labs - State of the Art NLP in Python</title>
+{%- elsif page.layout == "model" -%}
+<title>{%- include snippets/get-article-modeltitle.html article=page -%}</title>
 {%- elsif _pagetitle -%}
 <title>{%- if __return -%}{{ __return }}{%- endif -%}</title>
 {%- else -%}

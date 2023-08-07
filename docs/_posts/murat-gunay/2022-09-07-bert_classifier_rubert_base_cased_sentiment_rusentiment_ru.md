@@ -94,5 +94,5 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/blanchefort/rubert-base-cased-sentiment-rusentiment
-- http://text-machine.cs.uml.edu/projects/rusentiment/
+- [https://huggingface.co/blanchefort/rubert-base-cased-sentiment-rusentiment](https://huggingface.co/blanchefort/rubert-base-cased-sentiment-rusentiment)
+- [https://text-machine.cs.uml.edu/projects/rusentiment/](https://text-machine.cs.uml.edu/projects/rusentiment/)

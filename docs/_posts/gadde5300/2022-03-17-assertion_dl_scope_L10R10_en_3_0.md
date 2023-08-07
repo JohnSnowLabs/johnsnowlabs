@@ -176,7 +176,8 @@ nlu.load("en.assert.l10r10").predict("""Patient with severe fever and sore throa
 ## References
 
 
-Trained on 2010 i2b2/VA challenge on concepts, assertions, and relations in clinical text with ‘embeddings_clinical’. https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
+Trained on augmented version of 2010 i2b2/VA dataset on concepts, assertions, and relations in clinical text with ``embeddings_clinical``.
+https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
 
 
 ## Benchmarking

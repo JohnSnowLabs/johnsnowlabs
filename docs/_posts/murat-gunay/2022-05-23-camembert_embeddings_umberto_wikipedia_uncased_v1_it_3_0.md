@@ -89,20 +89,20 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/Musixmatch/umberto-wikipedia-uncased-v1
-- https://github.com/musixmatchresearch/umberto
-- https://linguatools.org/tools/corpora/wikipedia-monolingual-corpora/
-- http://bit.ly/35wbSj6
-- https://github.com/google/sentencepiece
-- https://github.com/musixmatchresearch/umberto
-- https://github.com/UniversalDependencies/UD_Italian-ISDT
-- https://github.com/UniversalDependencies/UD_Italian-ParTUT
-- http://www.evalita.it/
-- https://figshare.com/articles/Learning_multilingual_named_entity_recognition_from_Wikipedia/5462500
-- https://www.sciencedirect.com/science/article/pii/S0004370212000276?via%3Dihub
-- https://github.com/loretoparisi
-- https://github.com/simonefrancia
-- https://github.com/paulthemagno
-- https://twitter.com/Musixmatch
-- https://twitter.com/musixmatchai
-- https://github.com/musixmatchresearch
+- [https://huggingface.co/Musixmatch/umberto-wikipedia-uncased-v1](https://huggingface.co/Musixmatch/umberto-wikipedia-uncased-v1)
+- [https://github.com/musixmatchresearch/umberto](https://github.com/musixmatchresearch/umberto)
+- [https://linguatools.org/tools/corpora/wikipedia-monolingual-corpora/](https://linguatools.org/tools/corpora/wikipedia-monolingual-corpora/)
+- [https://bit.ly/35wbSj6](https://bit.ly/35wbSj6)
+- [https://github.com/google/sentencepiece](https://github.com/google/sentencepiece)
+- [https://github.com/musixmatchresearch/umberto](https://github.com/musixmatchresearch/umberto)
+- [https://github.com/UniversalDependencies/UD_Italian-ISDT](https://github.com/UniversalDependencies/UD_Italian-ISDT)
+- [https://github.com/UniversalDependencies/UD_Italian-ParTUT](https://github.com/UniversalDependencies/UD_Italian-ParTUT)
+- [https://www.evalita.it/](https://www.evalita.it/)
+- [https://figshare.com/articles/Learning_multilingual_named_entity_recognition_from_Wikipedia/5462500](https://figshare.com/articles/Learning_multilingual_named_entity_recognition_from_Wikipedia/5462500)
+- [https://www.sciencedirect.com/science/article/pii/S0004370212000276?via%3Dihub](https://www.sciencedirect.com/science/article/pii/S0004370212000276?via%3Dihub)
+- [https://github.com/loretoparisi](https://github.com/loretoparisi)
+- [https://github.com/simonefrancia](https://github.com/simonefrancia)
+- [https://github.com/paulthemagno](https://github.com/paulthemagno)
+- [https://twitter.com/Musixmatch](https://twitter.com/Musixmatch)
+- [https://twitter.com/musixmatchai](https://twitter.com/musixmatchai)
+- [https://github.com/musixmatchresearch](https://github.com/musixmatchresearch)

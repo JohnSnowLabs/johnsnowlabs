@@ -94,6 +94,6 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/neuraly/bert-base-italian-cased-sentiment
-- http://www.di.unito.it/~tutreeb/sentipolc-evalita16/data.html
-- https://neuraly.ai
+- [https://huggingface.co/neuraly/bert-base-italian-cased-sentiment](https://huggingface.co/neuraly/bert-base-italian-cased-sentiment)
+- [https://www.di.unito.it/~tutreeb/sentipolc-evalita16/data.html](https://www.di.unito.it/~tutreeb/sentipolc-evalita16/data.html)
+- [https://neuraly.ai](https://neuraly.ai)

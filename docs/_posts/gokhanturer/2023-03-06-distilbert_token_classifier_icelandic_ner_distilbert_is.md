@@ -95,7 +95,7 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/m3hrdadfi/icelandic-ner-distilbert
-- http://hdl.handle.net/20.500.12537/42
-- https://en.ru.is/
-- https://github.com/m3hrdadfi/icelandic-ner/issues
+- [https://huggingface.co/m3hrdadfi/icelandic-ner-distilbert](https://huggingface.co/m3hrdadfi/icelandic-ner-distilbert)
+- [https://hdl.handle.net/20.500.12537/42](https://hdl.handle.net/20.500.12537/42)
+- [https://en.ru.is/](https://en.ru.is/)
+- [https://github.com/m3hrdadfi/icelandic-ner/issues](https://github.com/m3hrdadfi/icelandic-ner/issues)

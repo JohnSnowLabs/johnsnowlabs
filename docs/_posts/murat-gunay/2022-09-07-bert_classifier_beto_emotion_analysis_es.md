@@ -94,8 +94,8 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/finiteautomata/beto-emotion-analysis
-- https://github.com/finiteautomata/pysentimiento/
-- https://github.com/dccuchile/beto
-- http://tass.sepln.org/tass_data/download.php
-- https://arxiv.org/abs/2106.09462
+- [https://huggingface.co/finiteautomata/beto-emotion-analysis](https://huggingface.co/finiteautomata/beto-emotion-analysis)
+- [https://github.com/finiteautomata/pysentimiento/](https://github.com/finiteautomata/pysentimiento/)
+- [https://github.com/dccuchile/beto](https://github.com/dccuchile/beto)
+- [https://tass.sepln.org/tass_data/download.php](https://tass.sepln.org/tass_data/download.php)
+- [https://arxiv.org/abs/2106.09462](https://arxiv.org/abs/2106.09462)

@@ -100,12 +100,12 @@ nlu.load("es.answer_question.squad.roberta.base_4096.by_mrm8488").predict("""Wha
 
 ## References
 
-- https://huggingface.co/mrm8488/longformer-base-4096-spanish-finetuned-squad
-- https://creativecommons.org/licenses/by/4.0/legalcode
-- https://es.wikinews.org/
-- https://creativecommons.org/licenses/by/2.5/
-- https://es.wikipedia.org/
-- https://creativecommons.org/licenses/by-sa/3.0/legalcode
-- https://twitter.com/mrm8488
-- https://www.narrativa.com/
-- http://clic.ub.edu/corpus/en
+- [https://huggingface.co/mrm8488/longformer-base-4096-spanish-finetuned-squad](https://huggingface.co/mrm8488/longformer-base-4096-spanish-finetuned-squad)
+- [https://creativecommons.org/licenses/by/4.0/legalcode](https://creativecommons.org/licenses/by/4.0/legalcode)
+- [https://es.wikinews.org/](https://es.wikinews.org/)
+- [https://creativecommons.org/licenses/by/2.5/](https://creativecommons.org/licenses/by/2.5/)
+- [https://es.wikipedia.org/](https://es.wikipedia.org/)
+- [https://creativecommons.org/licenses/by-sa/3.0/legalcode](https://creativecommons.org/licenses/by-sa/3.0/legalcode)
+- [https://twitter.com/mrm8488](https://twitter.com/mrm8488)
+- [https://www.narrativa.com/](https://www.narrativa.com/)
+- [https://clic.ub.edu/corpus/en](https://clic.ub.edu/corpus/en)
