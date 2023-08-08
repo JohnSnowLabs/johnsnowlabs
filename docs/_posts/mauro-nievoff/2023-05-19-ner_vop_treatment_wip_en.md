@@ -28,7 +28,7 @@ Note: ‘wip’ suffix indicates that the model development is work-in-progress 
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
-<button class="button button-orange" disabled>Open in Colab</button>
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_treatment_wip_en_4.4.2_3.0_1684513558207.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_treatment_wip_en_4.4.2_3.0_1684513558207.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

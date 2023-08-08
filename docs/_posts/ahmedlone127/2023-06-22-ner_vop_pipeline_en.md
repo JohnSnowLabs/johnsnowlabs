@@ -26,7 +26,7 @@ This pipeline includes the full taxonomy Named-Entity Recognition model to extra
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
-<button class="button button-orange" disabled>Open in Colab</button>
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_pipeline_en_4.4.4_3.0_1687435356556.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_pipeline_en_4.4.4_3.0_1687435356556.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

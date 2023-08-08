@@ -26,7 +26,7 @@ This model extracts terminology related to Social Determinants of Health from va
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
-[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Models.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_emb_clinical_large_wip_en_4.3.2_3.2_1681303888925.zip){:.button.button-orange}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_emb_clinical_large_wip_en_4.3.2_3.2_1681303888925.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

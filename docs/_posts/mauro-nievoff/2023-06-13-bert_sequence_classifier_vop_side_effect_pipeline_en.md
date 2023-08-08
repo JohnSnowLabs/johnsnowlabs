@@ -22,6 +22,7 @@ This pretrained pipeline includes the Medical Bert for Sequence Classification m
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_side_effect_pipeline_en_4.4.3_3.2_1686700519111.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_side_effect_pipeline_en_4.4.3_3.2_1686700519111.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
