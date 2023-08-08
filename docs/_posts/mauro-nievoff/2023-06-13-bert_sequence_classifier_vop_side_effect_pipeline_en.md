@@ -21,8 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 This pretrained pipeline includes the Medical Bert for Sequence Classification model to classify health-related text in colloquial language according to the presence or absence of mentions of side effects. The pipeline is built on the top of [bert_sequence_classifier_vop_side_effect](https://nlp.johnsnowlabs.com/2023/05/24/bert_sequence_classifier_vop_side_effect_en.html) model.
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_side_effect_pipeline_en_4.4.3_3.2_1686700519111.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_side_effect_pipeline_en_4.4.3_3.2_1686700519111.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

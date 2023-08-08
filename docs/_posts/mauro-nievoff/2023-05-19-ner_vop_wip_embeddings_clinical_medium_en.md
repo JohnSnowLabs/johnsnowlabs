@@ -27,7 +27,7 @@ Note: ‘wip’ suffix indicates that the model development is work-in-progress 
 `Allergen`, `RaceEthnicity`, `SubstanceQuantity`, `InjuryOrPoisoning`, `Treatment`, `Modifier`, `HealthStatus`, `MedicalDevice`, `TestResult`, `RelationshipStatus`, `Route`, `Measurements`, `AdmissionDischarge`, `Frequency`, `Procedure`, `Symptom`, `Substance`, `Duration`, `ClinicalDept`, `Dosage`, `Disease`, `Vaccine`, `Laterality`, `DateTime`, `Drug`, `Test`, `PsychologicalCondition`, `VitalTest`, `Form`, `Age`, `BodyPart`, `Employment`, `Gender`
 
 {:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOICE_OF_THE_PATIENTS/){:.button.button-orange}
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_wip_emb_clinical_medium_en_4.4.2_3.0_1684509750529.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_wip_emb_clinical_medium_en_4.4.2_3.0_1684509750529.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

@@ -25,7 +25,7 @@ Assertion status model used to predict if an NER chunk refers to a positive find
 `Present_Or_Past`, `Hypothetical_Or_Absent`, `SomeoneElse`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/assertion_vop_3cl_emb_clinical_large_wip_en_4.4.4_3.0_1687007102742.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/assertion_vop_3cl_emb_clinical_large_wip_en_4.4.4_3.0_1687007102742.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

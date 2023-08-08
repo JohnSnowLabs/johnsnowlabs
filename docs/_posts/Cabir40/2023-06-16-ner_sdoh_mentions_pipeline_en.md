@@ -25,7 +25,7 @@ This pretrained pipeline is built on the top of [ner_sdoh_mentions](https://nlp.
 
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_mentions_pipeline_en_4.4.4_3.2_1686957979462.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_mentions_pipeline_en_4.4.4_3.2_1686957979462.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

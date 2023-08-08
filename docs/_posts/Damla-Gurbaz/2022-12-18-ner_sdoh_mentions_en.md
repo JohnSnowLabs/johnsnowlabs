@@ -37,7 +37,7 @@ This Named Entity Recognition model is intended for detecting Social Determinant
 `sdoh_community`, `sdoh_economics`, `sdoh_education`, `sdoh_environment`, `behavior_tobacco`, `behavior_alcohol`, `behavior_drug`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_mentions_en_4.2.2_3.0_1671369830893.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_mentions_en_4.2.2_3.0_1671369830893.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

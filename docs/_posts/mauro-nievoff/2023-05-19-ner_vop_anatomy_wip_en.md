@@ -27,7 +27,7 @@ Note: ‘wip’ suffix indicates that the model development is work-in-progress 
 `BodyPart`, `Laterality`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_anatomy_wip_en_4.4.2_3.0_1684511968875.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_anatomy_wip_en_4.4.2_3.0_1684511968875.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

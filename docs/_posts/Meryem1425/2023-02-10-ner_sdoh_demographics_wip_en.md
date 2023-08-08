@@ -26,7 +26,7 @@ This model extracts demographic information related to Social Determinants of He
 `Family_Member`, `Age`, `Gender`, `Geographic_Entity`, `Race_Ethnicity`, `Language`, `Spiritual_Beliefs`
 
 {:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_NER/){:.button.button-orange}
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_demographics_wip_en_4.2.8_3.0_1675998706136.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_demographics_wip_en_4.2.8_3.0_1675998706136.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

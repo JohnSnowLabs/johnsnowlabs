@@ -26,7 +26,7 @@ This model is a [BioBERT based](https://github.com/dmis-lab/biobert) classifier 
 `True`, `False`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_sound_medical_en_4.4.3_3.0_1686673701807.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_sound_medical_en_4.4.3_3.0_1686673701807.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

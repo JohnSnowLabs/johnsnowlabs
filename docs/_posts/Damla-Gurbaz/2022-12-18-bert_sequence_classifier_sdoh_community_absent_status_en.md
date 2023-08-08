@@ -27,7 +27,7 @@ This model classifies related to the loss of social support such as a family mem
 `True`, `False`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_sdoh_community_absent_status_en_4.2.2_3.0_1671370818272.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_sdoh_community_absent_status_en_4.2.2_3.0_1671370818272.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

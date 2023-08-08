@@ -32,7 +32,7 @@ The model has been trained using advanced machine-learning techniques on a diver
 `Community_Safety`, `Environmental_Condition`, `Food_Insecurity`, `Housing`, `Transportation`
 
 {:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_NER/){:.button.button-orange}
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_community_condition_en_4.4.4_3.0_1688319669350.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_community_condition_en_4.4.4_3.0_1688319669350.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

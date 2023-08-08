@@ -29,7 +29,7 @@ This Generic Classifier model is intended for detecting whether the patient has 
 `Housing_Insecurity`, `No_Housing_Insecurity`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/genericclassifier_sdoh_housing_insecurity_sbiobert_cased_mli_en_4.3.2_3.2_1681116895742.zip){:.button.button-orange}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/genericclassifier_sdoh_housing_insecurity_sbiobert_cased_mli_en_4.3.2_3.2_1681116895742.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

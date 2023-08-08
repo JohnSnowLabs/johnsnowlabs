@@ -25,7 +25,7 @@ This pipeline extracts mentions of clinical problems from health-related text in
 
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_problem_reduced_pipeline_en_4.4.4_3.4_1687441192248.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_problem_reduced_pipeline_en_4.4.4_3.4_1687441192248.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

@@ -25,7 +25,7 @@ This model extracts healthcare-related terms from the documents transferred from
 `Gender`, `Employment`, `BodyPart`, `Vaccine`, `Age`, `PsychologicalCondition`, `Form`, `Drug`, `Substance`, `ClinicalDept`, `Laterality`, `DateTime`, `Test`, `Route`, `Disease`, `AdmissionDischarge`, `Dosage`, `Duration`, `VitalTest`, `Frequency`, `Symptom`, `Allergen`, `Procedure`, `RelationshipStatus`, `HealthStatus`, `Modifier`, `TestResult`, `InjuryOrPoisoning`, `SubstanceQuantity`, `MedicalDevice`, `Treatment`
 
 {:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOICE_OF_THE_PATIENTS/){:.button.button-orange}
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_emb_clinical_medium_en_4.4.3_3.0_1686073490433.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_emb_clinical_medium_en_4.4.3_3.0_1686073490433.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

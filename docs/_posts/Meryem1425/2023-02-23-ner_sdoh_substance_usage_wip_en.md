@@ -26,7 +26,7 @@ This model extracts substance usage information related to Social Determinants o
 `Smoking`, `Substance_Duration`, `Substance_Use`, `Substance_Quantity`, `Substance_Frequency`, `Alcohol`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_substance_usage_wip_en_4.3.1_3.0_1677186927181.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_substance_usage_wip_en_4.3.1_3.0_1677186927181.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}

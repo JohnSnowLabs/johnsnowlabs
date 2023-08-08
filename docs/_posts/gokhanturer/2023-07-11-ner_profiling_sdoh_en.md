@@ -25,7 +25,7 @@ Here are the NER models that this pretrained pipeline includes:
 `ner_sdoh`, `ner_sdoh_social_environment_wip`, `ner_sdoh_mentions`, `ner_sdoh_demographics_wip`, `ner_sdoh_community_condition_wip`, `ner_sdoh_substance_usage_wip`, `ner_sdoh_access_to_healthcare_wip`, `ner_sdoh_health_behaviours_problems_wip`, `ner_sdoh_income_social_status_wip`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_profiling_sdoh_en_4.4.4_3.4_1689085109838.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_profiling_sdoh_en_4.4.4_3.4_1689085109838.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
