@@ -977,7 +977,7 @@ If you have asked for a trial license, but you cannot access your account on [my
 - Under the "Workspace settings" section, find and select "Workspace Packages".
 - Click "Upload" to upload the necessary JAR and wheel files.
   
-![WorkspacePackages](https://github.com/ArshaanNazir/johnsnowlabs/blob/ArshaanNazir-patch-1/docs/assets/images/Workspace%20Packages.png)
+ ![WorkspacePackages](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images//Workspace%20Packages.png)
 
 - For running licensed models, navigate to the "Apache Spark configurations" under the "Manage" section.
 - Click on "New" to add a new configuration.
@@ -986,7 +986,7 @@ If you have asked for a trial license, but you cannot access your account on [my
   - `spark.hadoop.fs.s3a.secret.key` : <AWS_SECRET_ACCESS_KEY> 
   - `spark.yarn.appMasterEnv.SPARK_NLP_LICENSE` : <SPARK_NLP_LICENSE>
 
-![ApacheSparkConfiguration](https://github.com/ArshaanNazir/johnsnowlabs/blob/ArshaanNazir-patch-1/docs/assets/images/ApacheSparkConfiguration.png)
+![ApacheSparkConfiguration](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/ApacheSparkConfiguration.png)
   
 After adding these properties, the Apache Spark configuration is ready.
 - Navigate to "Apache Spark pools" under the "Analytics pools" section.
