@@ -941,4 +941,59 @@ The license json file contains:
 
 If you have asked for a trial license, but you cannot access your account on [my.JohnSnowLabs.com](https://my.johnsnowlabs.com/) and you did not receive the license information via email, please contact us at <a href="mailto:support@johnsnowlabs.com">support@johnsnowlabs.com</a>.
 
+</div><div class="h3-box" markdown="1">
+
+## Azure Synapse Analytics Support
+
+**Step 1: Sign in to Azure portal**
+- Sign in to the Azure portal at https://portal.azure.com.
+
+**Step 2: Create a new Resource Group**
+- On the left-hand menu, click on "Resource groups".
+- In the new window, click "Create".
+- Provide a unique name for the Resource Group and select the Region where you want to create it.
+- Click "Review + Create" and then "Create".
+
+**Step 3: Create a Storage Account**
+- On the left-hand menu, click on "Create a resource".
+- In the "New" window, search for "Storage Account".
+- In the search results, select "Storage Account" and then click "Create".
+- In the new window, select the Resource Group you just created, provide a unique name for your Storage Account, and select the Region.
+- Select the Performance, Account kind, Replication, and Access tier according to your requirements.
+- Click "Review + Create" and then "Create".
+
+**Step 4: Create a Synapse workspace**
+- On the left-hand menu, click on "Create a resource".
+- In the "New" window, search for "Azure Synapse Analytics".
+- In the search results, select "Azure Synapse Analytics" and then click "Create".
+- In the new window, select the Resource Group you just created, provide a unique name for your Synapse Workspace, select the Region, and provide the Storage Account you created earlier.
+- You also need to create a new file system in your storage account for Synapse workspace, provide a unique name for it.
+- Fill the Security & networking details as per your requirements.
+- Click "Review + Create" and then "Create".
+
+**Step 5: Configuring the Synapse Studio**
+- Once your workspace is created, open the Azure Synapse Studio.
+- Navigate to the "Manage" section within Azure Synapse Studio.
+- Under the "Workspace settings" section, find and select "Workspace Packages".
+- Click "Upload" to upload the necessary JAR and wheel files.
+  
+ ![WorkspacePackages](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images//Workspace%20Packages.png)
+
+- For running licensed models, navigate to the "Apache Spark configurations" under the "Manage" section.
+- Click on "New" to add a new configuration.
+- Add the following properties (at least):
+  - `spark.hadoop.fs.s3a.access.key` : <AWS_ACCESS_KEY_ID> 
+  - `spark.hadoop.fs.s3a.secret.key` : <AWS_SECRET_ACCESS_KEY> 
+  - `spark.yarn.appMasterEnv.SPARK_NLP_LICENSE` : <SPARK_NLP_LICENSE>
+
+![ApacheSparkConfiguration](https://github.com/JohnSnowLabs/johnsnowlabs/docs/assets/images/ApacheSparkConfiguration.png)
+  
+After adding these properties, the Apache Spark configuration is ready.
+- Navigate to "Apache Spark pools" under the "Analytics pools" section.
+- Click on "New" to create a new Spark pool. Configure the pool settings as required, selecting a "Medium" Node size under "Performance Settings". Under "Additional settings", allow "session level packages". Add the Apache Spark configuration created above (this is needed for licensed models only). Review your settings, then click "Create".
+- Navigate to the "Develop" section in Azure Synapse Studio.
+- Create a new notebook or import an existing one. Attach the notebook to the Apache Spark pool created above.
+
+Now, all the necessary licenses and JARs are ready to be used. You can proceed to run your notebook.
+
 </div>
