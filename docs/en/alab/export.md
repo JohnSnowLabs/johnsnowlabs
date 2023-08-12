@@ -1991,11 +1991,12 @@ Below is a sample format:
 
 **Filter Exported Annotations by Task**
 
-This filter allows users to select annotations based on the task (NER, Classification, Assertion, Relation Extraction)
+This filter allows users to select annotations based on the task (NER, Classification, Assertion, Relation Extraction) 
 
 **Select Annotations to Include In the Export**
 
 This filter can be used to select available labels, classes, assertion labels, or relations.
+![add-filter-for-export](/assets/images/annotation_lab/4.10.0/4.gif)
 
 **Tags**
 
@@ -2008,15 +2009,6 @@ If this option is enabled then only the tasks having ground truth in the complet
 **Exclude tasks without Completions**
 
 Previous versions of the Annotation Lab only allowed the export of tasks that contained completions. From version <bl>2.8.0</bl> on, the tasks without any completions can be exported as this can be necessary for cloning projects. In the case where only tasks with completions are required in the export, users can enable the _Exclude tasks without Completions_ option on the Export page.
- 
-**Filter Exported Annotations by Task**
-
-This filter allows users to select annotations based on the task (NER, Classification, Assertion, Relation Extraction) 
-
-**Select Annotations to Include In the Export**
-
-This filter can be used to select available labels, classes, assertion labels, or relations.
-![add-filter-for-export](/assets/images/annotation_lab/4.10.0/4.gif)
 
 
 ## Integration with Amazon S3 for tasks and projects export

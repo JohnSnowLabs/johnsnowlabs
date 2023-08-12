@@ -43,10 +43,13 @@ NLP Lab offers Section-Based Annotation features for the following tasks:
 
 1. **Named Entity Recognition (NER):**
 NER tasks involving text can now be partitioned into sections using bespoke rules, facilitating an efficient examination and annotation of only the pertinent sections. 
+
 2. **Text Classification:**
 With the introduction of Section-Based Annotation, tasks can now be divided into relevant sections, and each section can be independently classified, eliminating the limitations of classifying the entire task as a whole.
+
 3. **Combined NER and Classification:**
 NLP Lab's versatility enables it to support project configurations combining NER and assertion labeling, with classification or relation extraction. Users can now identify relevant sections within the project and carry out classification as well as NER and relation labeling within each section. Specific taxonomies can be defined for each such section that offers more control over the annotation targets.
+
 4. **Visual NER:**
 Section-Based Annotation is now available for Visual NER projects, specifically designed for image-based tasks. This feature is particularly beneficial when dealing with lengthy PDFs that are divided into sections by page. Users have the ability to specify the specific pages that are relevant to their needs.
 With Section-Based Annotation, NLP Lab offers a more granular approach to annotation and analysis, allowing users to focus on specific sections and achieve more accurate and efficient results.
@@ -94,12 +97,10 @@ Regex (regular expressions) can also be used to identify relevant sections. If a
 ### Classifier-Based Rules:
 Identification of relevant sections can also be done using pre-trained classifier models. Users can select one classifier from the available ones (downloaded or trained within NLP Lab) and pick the classes considered relevant for the current project. Those will be associated to a section name. Multiple relevant sections can be created with the same classifier. Please note that only one classifier can be used for section classification as part of one project. Saving this rule will deploy a classifier server, which can be viewed on the Cluster page. Licensed classifiers require a free valid license to run, and the deployment of a classifier is subject to the availability of server capacity.
 
-
 ![Screen Recording 2023-06-29 at 5 02 24 PM](/assets/images/annotation_lab/5.1.0/4.gif)
 
 ### Merge Consecutive Sections for Simplified Workflows:
 Successive sections with the same name can be merged into one section. This feature is available by checking the corresponding option below the section definition widget. This simplifies the annotation process by grouping together neighboring sections with the same name for which the same taxonomy applies. 
-
 
 ![merge-consecutive-sections](/assets/images/annotation_lab/5.1.0/5.gif))
 
@@ -107,15 +108,12 @@ Successive sections with the same name can be merged into one section. This feat
 
 For Visual NER projects, the rules for defining relevant sections are limited to index, keywords, and regex.
 
-
 ![visNER_section_rulse](/assets/images/annotation_lab/5.1.0/6.gif)
 
 ## Section Specific Taxonomies
 The section-based annotation options provide users with the flexibility to customize and configure the labels and choices that are displayed in specific sections. This setup can be conveniently accomplished via the project configuration page, which presents a visual mode for label customization.
 
-
 ![SectionBasedLabelOption](/assets/images/annotation_lab/5.1.0/7.gif)
-
 
 In the case of Named Entity Recognition (NER) labels, users can simply click on individual labels and choose the specific sections where they want the label to be visible. By doing so, users have the ability to define the sections within the task where each NER label should appear, ensuring that the annotation is precise and applicable to the intended sections.
 
@@ -123,9 +121,7 @@ Similarly, for choices, users can navigate to the three-dot menu, typically loca
 
 ![ChoiceSecitonOption](/assets/images/annotation_lab/5.1.0/8.png)
 
-
 By providing the ability to configure labels and choices at the section level, users can ensure that their annotation efforts are focused on the most relevant parts of the text. This ensures that the annotation process is efficient, saving valuable time and resources. Ultimately, this level of customization empowers users to create high-quality annotations tailored to their specific tasks and objectives.
-
 
 ## Pre-annotation Focused on Relevant Sections
 
@@ -203,7 +199,3 @@ Imagine there's a task Task-1, and two annotators, Annotator-1 and Annotator-2, 
 To further optimize the annotation experience, NLP Lab provides a checkbox "Filter pre-annotations according to my latest completion" within the Predictions card on the right-hand side of the labeling screen. Enabling this option ensures that the pre-annotation process only includes sections present in the latest completion of the current user.
 
 ![union-section](/assets/images/annotation_lab/5.2.2/5.gif)
-
-### Re-split tasks on Update of Section Definitions
-Improvements have been made to the splitting operation in Section Based Annotations, where it was previously not possible to re-split an already imported task. Now, users can re-split older tasks with new / updated rules such that any new completions will reflect the new rules (if the user so chooses)
-
