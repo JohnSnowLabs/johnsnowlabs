@@ -118,9 +118,11 @@ annotation-lab:
       - subtitle: Annotation
         children:
           - title: Manual annotation
-            url: /docs/en/alab/annotation
+            url: /docs/en/alab/
           - title: Pre-annotation
             url: /docs/en/alab/preannotation
+          - title: Section Based Annotation
+            url: /docs/en/alab/section_based_annotations 
           - title: Audit Trail
             url: /docs/en/alab/audit_trail
           - title: Productivity
