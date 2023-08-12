@@ -118,7 +118,7 @@ annotation-lab:
       - subtitle: Annotation
         children:
           - title: Manual annotation
-            url: /docs/en/alab/
+            url: /docs/en/alab/annotation
           - title: Pre-annotation
             url: /docs/en/alab/preannotation
           - title: Section Based Annotation
