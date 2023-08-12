@@ -121,6 +121,8 @@ annotation-lab:
             url: /docs/en/alab/annotation
           - title: Pre-annotation
             url: /docs/en/alab/preannotation
+          - title: Section Based Annotation
+            url: /docs/en/alab/section_based_annotations 
           - title: Audit Trail
             url: /docs/en/alab/audit_trail
           - title: Productivity
