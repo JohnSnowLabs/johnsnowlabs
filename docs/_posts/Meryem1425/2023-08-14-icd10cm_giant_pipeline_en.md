@@ -32,6 +32,7 @@ This pretrained pipeline maps ICD-10-CM codes to their corresponding billable ma
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -39,7 +40,6 @@ from sparknlp.pretrained import PretrainedPipeline
 icd10cm_pipeline = PretrainedPipeline("icd10cm_giant_pipeline", "en", "clinical/models")
 
 result = icd10cm_pipeline.fullAnnotate("""Z833 D66 G43.83""")
-
 ```
 ```scala
 
@@ -48,7 +48,6 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 val icd10cm_pipeline = new PretrainedPipeline("icd10cm_giant_pipeline", "en", "clinical/models")
 
 val result = icd10cm_pipeline.fullAnnotate("""Z833 D66 G43.83""")
-
 ```
 </div>
 
@@ -60,8 +59,7 @@ val result = icd10cm_pipeline.fullAnnotate("""Z833 D66 G43.83""")
 |---:|:---------------|:----------------|:---------------|:-------------------------|:-----------------|:------------------|:----------------|:----------------|
 |  0 | D66            | 1               | 46             | Nutritional deficiencies | NONE             | 438599002         | C0019069        | 2860            |
 |  1 | Z833           | NONE            | NONE           | NONE                     | NONE             | 160402005         | C0260526        | V180            |
-|  2 | G43.83         | 0               | 0              | Headache disorders       | G43.83           | NONE              | NONE            | NONE            ||    | icd10cm_code   | bill_mappings   | hcc_mappings   | cause_mappings           | claim_mappings   | snomed_mappings   | umls_mappings   | icd9_mappings   |
-
+|  2 | G43.83         | 0               | 0              | Headache disorders       | G43.83           | NONE              | NONE            | NONE            |
 ```
 
 {:.model-param}
