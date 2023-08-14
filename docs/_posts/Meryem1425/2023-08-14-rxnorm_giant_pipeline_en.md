@@ -32,23 +32,20 @@ This pretrained pipeline maps RxNorm codes to their corresponding drug brand nam
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 rxnorm_pipeline = PretrainedPipeline("rxnorm_giant_pipeline", "en", "clinical/models")
 
 result = rxnorm_pipeline.fullAnnotate("""6809 153010 103971""")
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val rxnorm_pipeline = new PretrainedPipeline("rxnorm_giant_pipeline", "en", "clinical/models")
 
 val result = rxnorm_pipeline.fullAnnotate("""6809 153010 103971""")
-
 ```
 </div>
 
