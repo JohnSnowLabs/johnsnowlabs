@@ -32,6 +32,7 @@ A pretrained pipeline to detect abbreviations and acronyms of medical regulatory
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -42,7 +43,6 @@ result = abbr_pipeline.fullAnnotate("""Gravid with estimated fetal weight of 6-6
            LABORATORY DATA: Laboratory tests include a CBC which is normal. 
            VDRL: Nonreactive
            HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.""")
-
 ```
 ```scala
 
@@ -54,7 +54,6 @@ val result = abbr_pipeline.fullAnnotate("""Gravid with estimated fetal weight of
            LABORATORY DATA: Laboratory tests include a CBC which is normal. 
            VDRL: Nonreactive
            HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.""")
-
 ```
 </div>
 
