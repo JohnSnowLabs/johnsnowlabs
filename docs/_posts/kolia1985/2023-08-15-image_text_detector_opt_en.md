@@ -8,7 +8,7 @@ tags: [en, licensed]
 task: OCR Text Detection & Recognition
 language: en
 edition: Visual NLP 4.4.0
-spark_version: 3.0
+spark_version: 3.2
 supported: true
 annotator: ImageTextDetectorCraft
 article_header:
@@ -27,8 +27,8 @@ CRAFT: Character-Region Awareness For Text detection, is designed with a convolu
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/image_text_detector_opt_en_4.4.0_3.0_1692096077487.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/image_text_detector_opt_en_4.4.0_3.0_1692096077487.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/image_text_detector_opt_en_4.4.0_3.2_1692096858192.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/image_text_detector_opt_en_4.4.0_3.2_1692096858192.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
