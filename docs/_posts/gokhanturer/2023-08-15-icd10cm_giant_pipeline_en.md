@@ -32,23 +32,20 @@ This pretrained pipeline maps ICD-10-CM codes to their corresponding billable ma
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 icd10cm_pipeline = PretrainedPipeline("icd10cm_giant_pipeline", "en", "clinical/models")
 
 result = icd10cm_pipeline.fullAnnotate("""Z833 D66 G43.83""")
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val icd10cm_pipeline = new PretrainedPipeline("icd10cm_giant_pipeline", "en", "clinical/models")
 
 val result = icd10cm_pipeline.fullAnnotate("""Z833 D66 G43.83""")
-
 ```
 </div>
 
