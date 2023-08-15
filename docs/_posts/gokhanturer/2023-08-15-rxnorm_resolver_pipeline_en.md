@@ -32,23 +32,20 @@ This pretrained pipeline maps entities with their corresponding RxNorm codes. Yo
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 resolver_pipeline = PretrainedPipeline("rxnorm_resolver_pipeline", "en", "clinical/models")
 
 result = resolver_pipeline.fullAnnotate("""The patient was given Adapin 10 MG, coumadn 5 mg""")
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val resolver_pipeline = new PretrainedPipeline("rxnorm_resolver_pipeline", "en", "clinical/models")
 
 val result = resolver_pipeline.fullAnnotate("""The patient was given Adapin 10 MG, coumadn 5 mg""")
-
 ```
 </div>
 
