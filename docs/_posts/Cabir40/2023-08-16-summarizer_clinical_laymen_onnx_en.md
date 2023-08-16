@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Summarize Clinical Notes in Layman Terms (onnx)
+title: Summarize Clinical Notes in Layman Terms (ONNX)
 author: John Snow Labs
 name: summarizer_clinical_laymen_onnx
 date: 2023-08-16
@@ -37,6 +37,7 @@ This model is a modified version of Flan-T5 (LLM) based summarization model that
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
