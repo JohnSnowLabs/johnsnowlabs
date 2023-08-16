@@ -1,6 +1,6 @@
 ---
 layout: model
-title: sdsad
+title: sdad
 author: John Snow Labs
 name: ner_testing
 date: 2023-08-16
@@ -19,17 +19,17 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-abcdwefekfjfkdnfjdnfjdnfkd
+dadas
 
 ## Predicted Entities
 
-`PERSON`, `MONEY`, `DATE`
+`TIME`, `MONEY`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/models-hub-auxdata/clinical/models/ner_testing_es_4.3.1_3.2_1692199701661.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://models-hub-auxdata/clinical/models/ner_testing_es_4.3.1_3.2_1692199701661.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/models-hub-auxdata/clinical/models/ner_testing_es_4.3.1_3.2_1692219201599.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://models-hub-auxdata/clinical/models/ner_testing_es_4.3.1_3.2_1692219201599.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -38,7 +38,7 @@ abcdwefekfjfkdnfjdnfjdnfkd
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
-model = Model()
+dadada
 ```
 
 </div>
