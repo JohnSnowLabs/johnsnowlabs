@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Detect Problems, Tests and Treatments ( Portuguese)
+title: Detect Problems, Tests, and Treatments (Portuguese)
 author: John Snow Labs
 name: ner_clinical
 date: 2023-08-16
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained named entity recognition deep learning model for clinical terms in Portuguese. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state of the art model for NER: Chiu & Nicols, Named Entity Recognition with Bidirectional LSTM-CNN.
+Pretrained named entity recognition deep learning model for clinical terms in Portuguese. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state-of-the-art model for NER: Chiu & Nicols, Named Entity Recognition with Bidirectional LSTM-CNN.
 
 ## Predicted Entities
 
@@ -55,7 +55,7 @@ embeddings = WordEmbeddingsModel.pretrained("w2v_cc_300d","pt") \
 .setOutputCol("embeddings")
 
 ner_model = MedicalNerModel.pretrained("ner_clinical", "pt", "clinical/models")\
-    .setInputCols(["sentence", "token","embeddings"])\
+    .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
 
 ner_converter = NerConverterInternal()\
@@ -97,7 +97,7 @@ val embeddings = WordEmbeddingsModel.pretrained("w2v_cc_300d","pt")
     .setOutputCol("embeddings")
 
 val ner_model = MedicalNerModel.pretrained("ner_clinical", "pt", "clinical/models")
-    .setInputCols(Array("sentence", "token","embeddings"))
+    .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
 val ner_converter = new NerConverterInternal()
@@ -156,11 +156,9 @@ val result = pipeline.fit(sample_data).transform(sample_data)
 
 ```bash
        label  precision    recall  f1-score   support
-
    TREATMENT       0.83      0.66      0.73       480
         TEST       0.93      0.79      0.85       500
      PROBLEM       0.83      0.83      0.83      1037
-
    micro-avg       0.85      0.78      0.81      2017
    macro-avg       0.86      0.76      0.81      2017
 weighted-avg       0.85      0.78      0.81      2017
