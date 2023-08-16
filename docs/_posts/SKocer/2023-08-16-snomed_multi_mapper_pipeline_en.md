@@ -32,23 +32,20 @@ This pretrained pipeline maps SNOMED codes to their corresponding ICD-10, ICD-O,
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 snomed_pipeline = PretrainedPipeline("snomed_multi_mapper_pipeline", "en", "clinical/models")
 
 result = snomed_pipeline.fullAnnotate("""10000006 128501000""")
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val snomed_pipeline = new PretrainedPipeline("snomed_multi_mapper_pipeline", "en", "clinical/models")
 
 val result = snomed_pipeline.fullAnnotate("""10000006 128501000""")
-
 ```
 </div>
 
