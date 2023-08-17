@@ -102,7 +102,7 @@ val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
 
-val clinical_assertion =new  AssertionDLModel.pretrained("assertion_vop_3cl_emb_clinical","en","clinical/models")
+val assertion =new  AssertionDLModel.pretrained("assertion_vop_3cl_emb_clinical","en","clinical/models")
     .setInputCols("sentence","ner_chunk","embeddings")
     .setOutputCol("assertion")
         
