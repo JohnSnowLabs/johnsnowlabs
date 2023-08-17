@@ -26,8 +26,8 @@ This model is capable of open-book question answering on Medical Notes.
 
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/MEDICAL_QA_CLINICAL_NOTES/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/31.Medical_Question_Answering.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_notes_qa_base_onnx_en_5.0.1_3.0_1692288906686.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/clinical_notes_qa_base_onnx_en_5.0.1_3.0_1692288906686.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -37,6 +37,7 @@ This model is capable of open-book question answering on Medical Notes.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = MultiDocumentAssembler()\
     .setInputCols("question", "context")\
