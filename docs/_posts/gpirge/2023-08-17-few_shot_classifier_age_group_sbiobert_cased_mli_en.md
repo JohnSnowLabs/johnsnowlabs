@@ -48,12 +48,13 @@ The Text Classifier model has been trained using in-house annotated health-relat
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-bert_sent = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", 'en','clinical/models')\
+bert_sent = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("sentence_embeddings")
 
@@ -78,7 +79,7 @@ val document_assembler =new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val sentence_embeddings = new BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", 'en','clinical/models')
+val sentence_embeddings = new BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")
     .setInputCols("document")
     .setOutputCol("sentence_embeddings")
 
@@ -132,6 +133,6 @@ In-house annotated health-related text.
        Child       0.87      0.91      0.89       194
      Unknown       0.74      0.77      0.76       325
     accuracy       -         -         0.78       848
-   macro avg       0.79      0.80      0.80       848
-weighted avg       0.78      0.78      0.78       848
+   macro-avg       0.79      0.80      0.80       848
+weighted-avg       0.78      0.78      0.78       848
 ```
