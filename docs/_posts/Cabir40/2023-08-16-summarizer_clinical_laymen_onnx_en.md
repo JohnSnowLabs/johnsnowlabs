@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Summarize Clinical Notes in Layman Terms (ONNX)
+title: Summarize Clinical Notes in Laymen Terms (ONNX)
 author: John Snow Labs
 name: summarizer_clinical_laymen_onnx
 date: 2023-08-16
