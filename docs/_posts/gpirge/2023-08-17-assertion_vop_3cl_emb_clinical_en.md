@@ -74,7 +74,7 @@ pipeline = Pipeline(stages=[document_assembler,
                             ner_converter,
                             assertion])
 
-data = spark.createDataFrame([["I was feeling a lot of anxiety honestly. It was right after my mother was diagnosed with diabetes."]]).toDF("text")
+data = spark.createDataFrame([["I was feeling anxiety honestly. Can it bring on tremors? It was right after my friend was diagnosed with diabetes."]]).toDF("text")
 
 result = pipeline.fit(data).transform(data)
 ```
@@ -115,7 +115,7 @@ val pipeline = new Pipeline().setStages(Array(document_assembler,
                                               ner_converter,
                                               assertion))
 
-val data = Seq("I was feeling a lot of anxiety honestly. It was right after my mother was diagnosed with diabetes.").toDS.toDF("text")
+val data = Seq("I was feeling anxiety honestly. Can it bring on tremors? It was right after my friend was diagnosed with diabetes.").toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
@@ -124,14 +124,13 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-+--------+-----+---+----------------------+-------+---------------+----------+
-|chunk   |begin|end|ner_label             |sent_id|assertion      |confidence|
-+--------+-----+---+----------------------+-------+---------------+----------+
-|a lot   |14   |18 |Modifier              |0      |Present_Or_Past|1.0       |
-|anxiety |23   |29 |PsychologicalCondition|0      |Present_Or_Past|0.9999    |
-|mother  |63   |68 |Gender                |1      |SomeoneElse    |0.9999    |
-|diabetes|89   |96 |Disease               |1      |SomeoneElse    |0.9919    |
-+--------+-----+---+----------------------+-------+---------------+----------+
++--------+-----+---+----------------------+-------+----------------------+----------+
+|chunk   |begin|end|ner_label             |sent_id|assertion             |confidence|
++--------+-----+---+----------------------+-------+----------------------+----------+
+|anxiety |14   |20 |PsychologicalCondition|0      |Present_Or_Past       |0.9853    |
+|tremors |48   |54 |Symptom               |1      |Hypothetical_Or_Absent|0.9998    |
+|diabetes|105  |112|Disease               |2      |SomeoneElse           |0.9916    |
++--------+-----+---+----------------------+-------+----------------------+----------+
 ```
 
 {:.model-param}
