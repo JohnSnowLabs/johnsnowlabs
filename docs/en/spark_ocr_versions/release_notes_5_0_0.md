@@ -3,7 +3,7 @@ layout: docs
 header: true
 seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
-permalink: /docs/en/spark_ocr_versions/ocr_release_notes
+permalink: /docs/en/spark_ocr_versions/release_notes_5_0_0
 key: docs-ocr-release-notes
 modify_date: "2023-08-21"
 show_nav: true
@@ -66,7 +66,6 @@ Use [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/mast
 * [VisualDocumentClassifierTraining](https://github.com/JohnSnowLabs/spark-ocr-workshop/tree/master/jupyter/VisualDocumentClassifierTraining), notebooks for Visual Documents Classifier fine tuning have been updated to use the new Lilt based models.
 * [SparkOcrDeidentificationDicomWithEncapsulatedPDF.ipynb](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Dicom/SparkOcrDeidentificationDicomWithEncapsulatedPDF.ipynb), learn how to use the new DicomToPdf and DicomUpdatePdf.
 * [SparkOcrDicomDeIdentificationV2Streaming.ipynb](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Dicom/SparkOcrDicomDeIdentificationV2Streaming.ipynb), learn how to setup a Spark Structured Streaming pipeline for Dicom Deidentification.
-
 
 
 </div><div class="prev_ver h3-box" markdown="1">
