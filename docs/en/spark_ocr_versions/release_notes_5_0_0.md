@@ -46,11 +46,13 @@ Use [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/mast
 + New lilt_rvl_cdip_296K: Lilt based Visual Document Classification model: Language-independent Layout Transformer (LiLT) model for document classification. The model was trained on RVL-CDIP dataset that consists of 400.000 grayscale images in 16 classes.
 
 Setting up the model is done like this,
+
 ```
 doc_class = VisualDocumentClassifierLilt() \
     .pretrained("lilt_rvl_cdip_296K", "en", "clinical/ocr") \
     .setInputCol("hocr") \
     .setOutputCol("label")
+
 ```
 Use [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRVisualDocumentClassifierLiLT.ipynb) as a reference.
 
