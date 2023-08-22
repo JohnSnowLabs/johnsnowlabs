@@ -32,8 +32,11 @@ This pretrained pipeline is built on the top of [ner_sdoh_mentions](https://nlp.
 
 ## How to use
 
+
+
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -43,50 +46,7 @@ text = '''Mr. Known lastname 9880 is a pleasant, cooperative gentleman with a lo
 
 result = pipeline.fullAnnotate(text)
 ```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val pipeline = new PretrainedPipeline("ner_sdoh_mentions_pipeline", "en", "clinical/models")
-
-val text = "Mr. Known lastname 9880 is a pleasant, cooperative gentleman with a long standing history (20 years) diverticulitis. He is married and has 3 children. He works in a bank. He denies any alcohol or intravenous drug use. He has been smoking for many years."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_sdoh_mentions_pipeline", "en", "clinical/models")
-
-text = '''Mr. Known lastname 9880 is a pleasant, cooperative gentleman with a long standing history (20 years) diverticulitis. He is married and has 3 children. He works in a bank. He denies any alcohol or intravenous drug use. He has been smoking for many years.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_sdoh_mentions_pipeline", "en", "clinical/models")
-
-val text = "Mr. Known lastname 9880 is a pleasant, cooperative gentleman with a long standing history (20 years) diverticulitis. He is married and has 3 children. He works in a bank. He denies any alcohol or intravenous drug use. He has been smoking for many years."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_sdoh_mentions_pipeline", "en", "clinical/models")
-
-text = '''Mr. Known lastname 9880 is a pleasant, cooperative gentleman with a long standing history (20 years) diverticulitis. He is married and has 3 children. He works in a bank. He denies any alcohol or intravenous drug use. He has been smoking for many years.'''
-
-result = pipeline.fullAnnotate(text)
-```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -112,11 +72,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
 
 |    | chunks           |   begin |   end | entities         |   confidence |
 |---:|:-----------------|--------:|------:|:-----------------|-------------:|
@@ -127,11 +82,6 @@ Results
 |  4 | intravenous drug |     196 |   211 | behavior_drug    |       0.9803 |
 |  5 | smoking          |     230 |   236 | behavior_tobacco |       0.9997 |
 
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}
