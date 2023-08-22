@@ -1240,16 +1240,17 @@ If you have asked for a trial license, but you cannot access your account on [my
 - Under the "Workspace settings" section, find and select "Workspace Packages".
 - Click "Upload" to upload the necessary JAR and wheel files.
   
- ![WorkspacePackages](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/docs/assets/images/Workspace%20Packages.png)
+![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/c0117820-7e27-4f1b-a8c8-a99ee69c8857)
 
 - For running licensed models, navigate to the "Apache Spark configurations" under the "Manage" section.
 - Click on "New" to add a new configuration.
-- Add the following properties (at least):
+- For licensed Healthcare models, Add the following properties:
   - `spark.hadoop.fs.s3a.access.key` : <AWS_ACCESS_KEY_ID> 
   - `spark.hadoop.fs.s3a.secret.key` : <AWS_SECRET_ACCESS_KEY> 
   - `spark.yarn.appMasterEnv.SPARK_NLP_LICENSE` : <SPARK_NLP_LICENSE>
 
-![ApacheSparkConfiguration](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/docs/assets/images/ApacheSparkConfiguration.png)
+![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/08968952-efd3-43cd-9bca-587532bb519c)
+
   
 After adding these properties, the Apache Spark configuration is ready.
 - Navigate to "Apache Spark pools" under the "Analytics pools" section.
@@ -1258,5 +1259,22 @@ After adding these properties, the Apache Spark configuration is ready.
 - Create a new notebook or import an existing one. Attach the notebook to the Apache Spark pool created above.
 
 Now, all the necessary licenses and JARs are ready to be used. You can proceed to run your notebook.
+
+For running OCR models, upload the following JAR and wheel files to the Workspace packages.
+![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/1c3eadc7-2b12-4624-99b0-64a77966b6e2)
+
+- For licensed OCR models, Add the following properties:
+  - `spark.hadoop.fs.s3a.access.key` : <AWS_ACCESS_KEY_ID> 
+  - `spark.hadoop.fs.s3a.secret.key` : <AWS_SECRET_ACCESS_KEY> 
+  - `spark.yarn.appMasterEnv.SPARK_OCR_LICENSE` : <SPARK_OCR_LICENSE>
+  - `spark.driver.extraJavaOptions` : -Dorg.fluentd.logger.sender.NullSender=org.fluentd.logger.sender.NullSender
+  - `spark.executor.extraJavaOptions` : -Dorg.fluentd.logger.sender.NullSender=org.fluentd.logger.sender.NullSender
+  - `spark.sql.legacy.allowUntypedScalaUDF` : True
+
+ ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/a8caf1fd-5c76-47ed-94fd-bf3237f7417d)
+
+ Now, you can proceed to run your OCR models and notebooks.
+
+
 
 </div>
