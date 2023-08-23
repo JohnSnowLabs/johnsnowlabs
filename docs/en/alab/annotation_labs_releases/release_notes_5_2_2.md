@@ -66,12 +66,12 @@ data that will be stored securely in the cloud.
 By introducing these export enhancements, NLP Lab 5.2.0 empowers organizations to streamline their data management processes while maintaining flexibility and control over export options. Users can continue to export specific projects to their local workstations if required, while others can benefit from the reliability and accessibility of exporting to Amazon S3 buckets.
 
 ## Section-based annotation improvements
-**Support for task splitting with external services**
+###Support for task splitting with external services
 
 We are excited to introduce a new feature in NLP Lab that allows users to import sections created outside of the platform. Users can now import tasks already split into sections using external tools like Open AI’s ChatGPT. 
 For this, we added support for “Additional sections” – sections that do not have a definition to allow their automatic identification by NLP Lab. Those sections can only be manually created by annotators or imported via the JSON import format. On the import screen users must check the “Preserve Imported Sections" options, if the imported JSON file includes a section definition. 
 
-## Targeted pre-annotation for relevant sections
+### Targeted pre-annotation for relevant sections
 While in previous versions the Annotation screen was set to filter out the list of available labels/choices based on their association with the active sections, this version takes things to the next level. It is now possible to also filter out pre-annotations based on section-specific configuration. 
 
 ![preannotationviasections](/assets/images/annotation_lab/5.2.2/4.gif)
@@ -80,7 +80,7 @@ Users can configure labels to be displayed exclusively in specific sections duri
 
 When running pre-annotation, NLP Lab will automatically adhere to these associations. Consequently, during the pre-annotation process, in Section 1, users will only see annotations for Label1, and similarly, in Section 2, only instances of Label2 will be shown.
 
-## Pre-annotations applied to all defined sections tasks
+### Pre-annotations applied to all defined sections tasks
 NLP Lab 5.2, adds a new feature - "Preannotations for Union of Sections". This enhancement ensures that pre-annotations cover all relevant sections – imported from outside sources, manually added by annotators, or automatically detected by the tool.
 
 With this feature, collaboration is enhanced, and all points of view are taken into account during pre-annotation, resulting in a more precise and efficient annotation process.

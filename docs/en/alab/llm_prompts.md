@@ -4,9 +4,9 @@ comment: no
 header: true
 seotitle: NLP Lab | John Snow Labs
 title: Prompts
-permalink: /docs/en/alab/prompts
+permalink: /docs/en/alab/llm_prompts
 key: docs-training
-modify_date: "2023-02-10"
+modify_date: "2023-08-18"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
