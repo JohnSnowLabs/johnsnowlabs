@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Backup and Restore
 permalink: /docs/en/alab/backup_restore
 key: docs-training
-modify_date: "2022-10-13"
+modify_date: "2022-10-14"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

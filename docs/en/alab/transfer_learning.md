@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Training Parameters  
 permalink: /docs/en/alab/transfer_learning
 key: docs-training
-modify_date: "2022-10-24"
+modify_date: "2022-10-25"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
