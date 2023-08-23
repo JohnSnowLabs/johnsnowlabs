@@ -7,7 +7,7 @@ title: NLP Annotation Lab&#58; Free No Code AI Platform
 excerpt: NLP Annotation Lab is the fastest tool for document annotation. Free No Code AI platform to annotate text, images and PDF.
 permalink: /docs/en/alab/quickstart
 key: docs-quickstart
-modify_date: "2022-10-15"
+modify_date: "2022-10-16"
 header: true
 show_nav: true
 sidebar:

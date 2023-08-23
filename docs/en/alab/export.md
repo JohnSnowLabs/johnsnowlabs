@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Annotations Export
 permalink: /docs/en/alab/export
 key: docs-training
-modify_date: "2022-10-31"
+modify_date: "2022-10-30"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

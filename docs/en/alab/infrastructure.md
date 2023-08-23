@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Infrastructure Configuration
 permalink: /docs/en/alab/infrastructure
 key: docs-training
-modify_date: "2022-11-28"
+modify_date: "2022-11-29"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Import Documents
 permalink: /docs/en/alab/synthetic_task
 key: docs-training
-modify_date: "2023-08-18"
+modify_date: "2023-08-19"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
