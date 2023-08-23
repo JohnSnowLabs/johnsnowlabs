@@ -41,6 +41,8 @@ try:
             LegalQuestionAnswering as QuestionAnswering,
             LegalTextGenerator as TextGenerator,
             LegalSummarizer as Summarizer,
+            LegalFewShotClassifierApproach as FewShotClassifierApproach,
+            LegalFewShotClassifierModel as FewShotClassifierModel,
         )
 
         # These are licensed annos shared across all libs

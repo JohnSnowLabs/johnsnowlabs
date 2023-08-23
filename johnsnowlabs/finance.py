@@ -44,6 +44,8 @@ try:
             FinanceQuestionAnswering as QuestionAnswering,
             FinanceTextGenerator as TextGenerator,
             FinanceSummarizer as Summarizer,
+            FinanceFewShotClassifierApproach as FewShotClassifierApproach,
+            FinanceFewShotClassifierModel as FewShotClassifierModel,
         )
 
         # These are licensed annos shared across all libs

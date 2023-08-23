@@ -82,6 +82,7 @@ try:
             ChunkFiltererApproach,
             FewShotClassifierModel,
             FewShotClassifierApproach,
+            Text2SQL,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
