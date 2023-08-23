@@ -1,16 +1,16 @@
 ---
 layout: model
-title: Summarize Clinical Notes in Laymen Terms
+title: Summarize Clinical Notes in Laymen Terms (ONNX)
 author: John Snow Labs
-name: summarizer_clinical_laymen
-date: 2023-05-31
-tags: [licensed, en, clinical, summarization, tensorflow]
+name: summarizer_clinical_laymen_onnx
+date: 2023-08-16
+tags: [licensed, clinical, en, summarization, laymen, onnx]
 task: Summarization
 language: en
-edition: Healthcare NLP 4.4.2
+edition: Healthcare NLP 5.0.1
 spark_version: 3.0
 supported: true
-engine: tensorflow
+engine: onnx
 annotator: MedicalSummarizer
 article_header:
   type: cover
@@ -19,17 +19,17 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is a modified version of Flan-T5 (LLM) based summarization model that is finetuned with custom dataset by John Snow Labs to avoid using clinical jargon on the summaries.  It can generate summaries up to 512 tokens given an input text (max 1024 tokens).
+This model is a modified version of Flan-T5 (LLM) based summarization model that is finetuned with custom dataset by John Snow Labs to avoid using clinical jargon on the summaries. It can generate summaries up to 512 tokens given an input text (max 1024 tokens).
 
 ## Predicted Entities
 
 
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/summarizer_clinical_laymen_en_4.4.2_3.0_1685557633038.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/summarizer_clinical_laymen_en_4.4.2_3.0_1685557633038.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/MEDICAL_LLM/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MEDICAL_LLM.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/summarizer_clinical_laymen_onnx_en_5.0.1_3.0_1692190546251.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/summarizer_clinical_laymen_onnx_en_5.0.1_3.0_1692190546251.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -37,12 +37,13 @@ This model is a modified version of Flan-T5 (LLM) based summarization model that
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-summarizer = MedicalSummarizer.pretrained("summarizer_clinical_laymen", "en", "clinical/models")\
+summarizer = MedicalSummarizer.pretrained("summarizer_clinical_laymen_onnx", "en", "clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("summary")\
     .setMaxNewTokens(512)
@@ -64,7 +65,7 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val summarizer = MedicalSummarizer.pretrained("summarizer_clinical_laymen", "en", "clinical/models")
+val summarizer = MedicalSummarizer.pretrained("summarizer_clinical_laymen_onnx", "en", "clinical/models")
     .setInputCols("document")
     .setOutputCol("summary")
     .setMaxNewTokens(512)
@@ -88,9 +89,9 @@ val result = pipeline.fit(data).transform(data)
 
 {:.table-model}
 |---|---|
-|Model Name:|summarizer_clinical_laymen|
-|Compatibility:|Healthcare NLP 4.4.2+|
+|Model Name:|summarizer_clinical_laymen_onnx|
+|Compatibility:|Healthcare NLP 5.0.1+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
-|Size:|920.5 MB|
+|Size:|1.0 GB|
