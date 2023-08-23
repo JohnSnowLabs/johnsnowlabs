@@ -94,8 +94,8 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/blanchefort/rubert-base-cased-sentiment
-- https://study.mokoron.com/
-- https://github.com/sismetanin/rureviews
-- http://text-machine.cs.uml.edu/projects/rusentiment/
-- https://github.com/blanchefort/datasets/tree/master/medical_comments
+- [https://huggingface.co/blanchefort/rubert-base-cased-sentiment](https://huggingface.co/blanchefort/rubert-base-cased-sentiment)
+- [https://study.mokoron.com/](https://study.mokoron.com/)
+- [https://github.com/sismetanin/rureviews](https://github.com/sismetanin/rureviews)
+- [https://text-machine.cs.uml.edu/projects/rusentiment/](https://text-machine.cs.uml.edu/projects/rusentiment/)
+- [https://github.com/blanchefort/datasets/tree/master/medical_comments](https://github.com/blanchefort/datasets/tree/master/medical_comments)

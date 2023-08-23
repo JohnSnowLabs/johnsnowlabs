@@ -23,7 +23,7 @@ This pretrained pipeline is built on the top of [ner_biomedical_bc2gm](https://n
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_biomedical_bc2gm_pipeline_en_4.3.0_3.2_1678787724252.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_biomedical_bc2gm_pipeline_en_4.3.0_3.2_1678787724252.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_biomedical_bc2gm_pipeline_en_4.3.0_3.2_1678787724252.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
@@ -50,6 +50,14 @@ val text = "Immunohistochemical staining was positive for S-100 in all 9 cases s
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.biomedical_bc2gm.pipeline").predict("""Immunohistochemical staining was positive for S-100 in all 9 cases stained, positive for HMB-45 in 9 (90%) of 10, and negative for cytokeratin in all 9 cases in which myxoid melanoma remained in the block after previous sections.""")
+```
+
 </div>
 
 ## Results

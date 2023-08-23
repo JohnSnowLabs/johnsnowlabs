@@ -26,7 +26,7 @@ To avoid this, it is proposed the use of different image processing algorithms o
 ## Predicted Entities
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/ocr/IMAGE_PROCESSING/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/tutorials/Certification_Trainings/1.2.Image_processing.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 <button class="button button-orange" disabled>Download</button>
 
@@ -243,3 +243,13 @@ val result_multiple = pipeline_multiple.transform(image_example_df).cache()
 input_image=input_image
 output_image=output_image
 %}
+
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|image_processing|
+|Compatibility:|Healthcare NLP 4.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|

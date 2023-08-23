@@ -23,7 +23,7 @@ This pretrained pipeline is built on the top of [ner_human_phenotype_gene_clinic
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_human_phenotype_gene_clinical_pipeline_en_4.3.0_3.2_1678874928254.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_human_phenotype_gene_clinical_pipeline_en_4.3.0_3.2_1678874928254.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_human_phenotype_gene_clinical_pipeline_en_4.3.0_3.2_1678874928254.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
@@ -50,6 +50,14 @@ val text = "Here we presented a case (BS type) of a 17 years old female presente
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.human_phnotype_gene_clinical.pipeline").predict("""Here we presented a case (BS type) of a 17 years old female presented with polyhydramnios, polyuria, nephrocalcinosis and hypokalemia, which was alleviated after treatment with celecoxib and vitamin D(3).""")
+```
+
 </div>
 
 ## Results

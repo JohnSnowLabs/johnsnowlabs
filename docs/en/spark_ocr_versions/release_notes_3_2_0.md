@@ -26,7 +26,7 @@ including form understanding and receipt understanding.
 
 #### New Features
 
-* [VisualDocumentNER](ocr_pipeline_components#visualdocumentner) is a DL model for NER problem using text and layout data.
+* [VisualDocumentNER](/docs/en/ocr_pipeline_components#visualdocumentner) is a DL model for NER problem using text and layout data.
   Currently available pre-trained model on the SROIE dataset.
 
 

@@ -25,7 +25,7 @@ More details please read in [Signature Detection in Spark OCR](https://medium.co
 
 #### New Features
 
-* [ImageSignatureDetector](ocr_object_detection#imagehandwrittendetector) is a DL model for detecting signature on the image.
+* [ImageSignatureDetector](/docs/en/ocr_object_detection#imagehandwrittendetector) is a DL model for detecting signature on the image.
 
 
 #### New notebooks

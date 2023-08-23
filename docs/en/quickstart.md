@@ -3,7 +3,6 @@ layout: docs
 header: true
 title: Quick Start
 seotitle: Spark NLP - Getting Started
-redirect_to: https://sparknlp.org/docs/en/quickstart
 permalink: /docs/en/quickstart
 key: docs-quickstart
 modify_date: "2021-03-20"
@@ -25,7 +24,7 @@ Spark NLP is built on top of **Apache Spark 3.x**. For using Spark NLP you need:
 - Apache Spark 3.3.x, 3.2.x, 3.1.x, 3.0.x
 
 It is recommended to have basic knowledge of the framework and a working environment before using Spark NLP.
-Please refer to Spark [documentation](http://spark.apache.org/docs/latest/index.html) to get started with Spark.
+Please refer to Spark [documentation](https://spark.apache.org/docs/latest/index.html) to get started with Spark.
 
 </div><div class="right-box" markdown="1">
 

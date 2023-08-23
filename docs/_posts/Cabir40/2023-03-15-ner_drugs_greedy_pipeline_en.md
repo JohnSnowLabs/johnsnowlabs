@@ -23,7 +23,7 @@ This pretrained pipeline is built on the top of [ner_drugs_greedy](https://nlp.j
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_drugs_greedy_pipeline_en_4.3.0_3.2_1678877919575.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_drugs_greedy_pipeline_en_4.3.0_3.2_1678877919575.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_drugs_greedy_pipeline_en_4.3.0_3.2_1678877919575.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
@@ -50,6 +50,14 @@ val text = "DOSAGE AND ADMINISTRATION The initial dosage of hydrocortisone table
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.drugs_greedy.pipeline").predict("""DOSAGE AND ADMINISTRATION The initial dosage of hydrocortisone tablets may vary from 20 mg to 240 mg of hydrocortisone per day depending on the specific disease entity being treated.""")
+```
+
 </div>
 
 ## Results

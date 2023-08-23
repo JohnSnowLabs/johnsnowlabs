@@ -89,10 +89,10 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/dbmdz/electra-base-turkish-mc4-cased-generator
-- https://zenodo.org/badge/latestdoi/237817454
-- https://twitter.com/mervenoyann
-- https://github.com/allenai/allennlp/discussions/5265
-- https://github.com/dbmdz
-- http://www.andrew.cmu.edu/user/ko/
-- https://twitter.com/mervenoyann
+- [https://huggingface.co/dbmdz/electra-base-turkish-mc4-cased-generator](https://huggingface.co/dbmdz/electra-base-turkish-mc4-cased-generator)
+- [https://zenodo.org/badge/latestdoi/237817454](https://zenodo.org/badge/latestdoi/237817454)
+- [https://twitter.com/mervenoyann](https://twitter.com/mervenoyann)
+- [https://github.com/allenai/allennlp/discussions/5265](https://github.com/allenai/allennlp/discussions/5265)
+- [https://github.com/dbmdz](https://github.com/dbmdz)
+- [https://www.andrew.cmu.edu/user/ko/](https://www.andrew.cmu.edu/user/ko/)
+- [https://twitter.com/mervenoyann](https://twitter.com/mervenoyann)

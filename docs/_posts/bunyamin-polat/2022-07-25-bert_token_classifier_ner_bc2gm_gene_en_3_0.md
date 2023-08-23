@@ -108,6 +108,14 @@ val data = Seq("""ROCK-I, Kinectin, and mDia2 can bind the wild type forms of bo
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.token_bert.bc2gm_gene").predict("""ROCK-I, Kinectin, and mDia2 can bind the wild type forms of both RhoA and Cdc42 in a GTP-dependent manner in vitro. These results support the hypothesis that in the presence of tryptophan the ribosome translating tnaC blocks Rho ' s access to the boxA and rut sites, thereby preventing transcription termination.""")
+```
+
 </div>
 
 ## Results

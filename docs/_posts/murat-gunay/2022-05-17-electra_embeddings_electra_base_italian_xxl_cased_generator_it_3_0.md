@@ -89,10 +89,10 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/dbmdz/electra-base-italian-xxl-cased-generator
-- http://opus.nlpl.eu/
-- https://traces1.inria.fr/oscar/
-- https://github.com/dbmdz/berts/issues/7
-- https://github.com/stefan-it/turkish-bert/tree/master/electra
-- https://github.com/stefan-it/italian-bertelectra
-- https://github.com/dbmdz/berts/issues/new
+- [https://huggingface.co/dbmdz/electra-base-italian-xxl-cased-generator](https://huggingface.co/dbmdz/electra-base-italian-xxl-cased-generator)
+- [https://opus.nlpl.eu/](https://opus.nlpl.eu/)
+- [https://traces1.inria.fr/oscar/](https://traces1.inria.fr/oscar/)
+- [https://github.com/dbmdz/berts/issues/7](https://github.com/dbmdz/berts/issues/7)
+- [https://github.com/stefan-it/turkish-bert/tree/master/electra](https://github.com/stefan-it/turkish-bert/tree/master/electra)
+- [https://github.com/stefan-it/italian-bertelectra](https://github.com/stefan-it/italian-bertelectra)
+- [https://github.com/dbmdz/berts/issues/new](https://github.com/dbmdz/berts/issues/new)

@@ -116,9 +116,9 @@ class Py4JJslLibDependencyResolverABC(ABC):
                     secret=secret, lib_version=cls.lib_version.as_str()
                 )
             else:
-                # Read Version from secret
+                # Parse Version from secret
                 url = compat_map[matching_jsl_spark_release][install_type].url.format(
-                    secret=secret, lib_version=secret.split("-")[0]
+                    secret=secret, lib_version=secret.split("-")[0].replace(".PR",'')
                 )
 
         else:

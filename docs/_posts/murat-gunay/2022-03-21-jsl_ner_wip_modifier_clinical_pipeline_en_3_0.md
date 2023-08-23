@@ -43,6 +43,14 @@ val pipeline = new PretrainedPipeline("jsl_ner_wip_modifier_clinical_pipeline", 
 
 pipeline.annotate("EXAMPLE MEDICAL TEXT")
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.wip_modifier_clinical.pipeline").predict("""EXAMPLE MEDICAL TEXT""")
+```
+
 </div>
 
 {:.model-param}

@@ -168,7 +168,7 @@ nlu.load("en.classify.token_bert.cellular").predict("""Detection of various othe
 ## Data Source
 
 
-Trained on the JNLPBA corpus containing more than 2.404 publication abstracts. http://www.geniaproject.org/
+Trained on the JNLPBA corpus containing more than 2.404 publication abstracts. [https://www.geniaproject.org/](https://www.geniaproject.org/)
 
 
 ## Benchmarking

@@ -2,8 +2,8 @@
 layout: models
 permalink: /models
 key: models
-title: Available Models and Pipelines
-pagetitle: John Snow Labs NLP - The Models Hub
-excerpt: Share and discover Spark NLP models and pipelines. Get access to 7000+ models and 2000+ pipelines right out of the box.
-seotitle: John Snow Labs NLP - The Models Hub
+title: Spark NLP Models Hub
+pagetitle: Spark NLP Models Hub – John Snow Labs
+excerpt: Share and discover Spark NLP models and pipelines. Get access to 7000+ pre-trained models and 2000+ pipelines right out of the box. John Snow labs.
+seotitle: Spark NLP Models Hub – John Snow Labs
 ---

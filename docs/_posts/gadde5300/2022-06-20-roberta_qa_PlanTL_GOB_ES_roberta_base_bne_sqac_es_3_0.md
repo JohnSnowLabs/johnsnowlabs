@@ -100,8 +100,8 @@ nlu.load("es.answer_question.sqac.roberta.base").predict("""What's my name?|||"M
 
 ## References
 
-- https://huggingface.co/PlanTL-GOB-ES/roberta-base-bne-sqac
-- https://arxiv.org/abs/2107.07253
-- http://www.bne.es/en/Inicio/index.html
-- https://arxiv.org/abs/1907.11692
-- https://github.com/PlanTL-GOB-ES/lm-spanish
+- [https://huggingface.co/PlanTL-GOB-ES/roberta-base-bne-sqac](https://huggingface.co/PlanTL-GOB-ES/roberta-base-bne-sqac)
+- [https://arxiv.org/abs/2107.07253](https://arxiv.org/abs/2107.07253)
+- [https://www.bne.es/en/Inicio/index.html](https://www.bne.es/en/Inicio/index.html)
+- [https://arxiv.org/abs/1907.11692](https://arxiv.org/abs/1907.11692)
+- [https://github.com/PlanTL-GOB-ES/lm-spanish](https://github.com/PlanTL-GOB-ES/lm-spanish)

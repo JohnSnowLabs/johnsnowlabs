@@ -23,7 +23,7 @@ This pretrained pipeline is built on the top of [ner_ade_clinical](https://nlp.j
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_ade_clinical_pipeline_en_4.3.0_3.2_1678808562312.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_ade_clinical_pipeline_en_4.3.0_3.2_1678808562312.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_ade_clinical_pipeline_en_4.3.0_3.2_1678808562312.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
@@ -50,6 +50,14 @@ val text = "Been taking Lipitor for 15 years , have experienced severe fatigue a
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.ade_clinical.pipeline").predict("""Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps.""")
+```
+
 </div>
 
 ## Results

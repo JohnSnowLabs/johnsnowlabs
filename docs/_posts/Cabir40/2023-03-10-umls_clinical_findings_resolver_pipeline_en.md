@@ -23,7 +23,7 @@ This pretrained pipeline maps entities (Clinical Findings) with their correspond
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/umls_clinical_findings_resolver_pipeline_en_4.3.0_3.2_1678436541287.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/umls_clinical_findings_resolver_pipeline_en_4.3.0_3.2_1678436541287.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/umls_clinical_findings_resolver_pipeline_en_4.3.0_3.2_1678436541287.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
@@ -50,6 +50,14 @@ val text = "HTG-induced pancreatitis associated with an acute hepatitis, and obe
 
 val result = pipeline.annotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.map_entity.umls_clinical_findings_resolver").predict("""['HTG-induced pancreatitis associated with an acute hepatitis, and obesity']""")
+```
+
 </div>
 
 ## Results

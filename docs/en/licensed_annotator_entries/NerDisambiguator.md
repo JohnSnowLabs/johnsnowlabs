@@ -29,7 +29,7 @@ DISAMBIGUATION
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[NerDisambiguatorModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/disambiguation/NerDisambiguatorModel)
+[NerDisambiguatorModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/disambiguation/NerDisambiguatorModel.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
@@ -272,8 +272,8 @@ val result = model.transform(data)
 // +------------------+------------------------------------------------------------------------------------------------------------------------+
 // |chunk             |result                                                                                                                  |
 // +------------------+------------------------------------------------------------------------------------------------------------------------+
-// |Donald Trump      |http://en.wikipedia.org/?curid=4848272, http://en.wikipedia.org/?curid=31698421, http://en.wikipedia.org/?curid=55907961|
-// |Christina Aguilera|http://en.wikipedia.org/?curid=144171, http://en.wikipedia.org/?curid=6636454                                           |
+// |Donald Trump      |https://en.wikipedia.org/?curid=4848272, https://en.wikipedia.org/?curid=31698421, https://en.wikipedia.org/?curid=55907961|
+// |Christina Aguilera|https://en.wikipedia.org/?curid=144171, https://en.wikipedia.org/?curid=6636454                                           |
 // +------------------+------------------------------------------------------------------------------------------------------------------------+
 //
 {%- endcapture -%}
@@ -379,7 +379,7 @@ val nlpPipeline = new Pipeline().setStages(Array(
 
 
 {%- capture approach_api_link -%}
-[NerDisambiguator](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/disambiguation/NerDisambiguator)
+[NerDisambiguator](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/disambiguation/NerDisambiguator.html)
 {%- endcapture -%}
 
 {%- capture approach_python_api_link -%}

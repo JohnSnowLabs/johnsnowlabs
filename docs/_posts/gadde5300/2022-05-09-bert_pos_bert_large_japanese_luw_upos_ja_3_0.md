@@ -98,7 +98,7 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/KoichiYasuoka/bert-large-japanese-luw-upos
-- https://universaldependencies.org/u/pos/
-- http://id.nii.ac.jp/1001/00216223/
-- https://github.com/KoichiYasuoka/esupar
+- [https://huggingface.co/KoichiYasuoka/bert-large-japanese-luw-upos](https://huggingface.co/KoichiYasuoka/bert-large-japanese-luw-upos)
+- [https://universaldependencies.org/u/pos/](https://universaldependencies.org/u/pos/)
+- [https://id.nii.ac.jp/1001/00216223/](https://id.nii.ac.jp/1001/00216223/)
+- [https://github.com/KoichiYasuoka/esupar](https://github.com/KoichiYasuoka/esupar)

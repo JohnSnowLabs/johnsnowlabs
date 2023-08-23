@@ -23,18 +23,18 @@ Improve visualization and support Spark NLP.
 
 #### New Features
 
-* Added [HocrTokenizer](ocr_pipeline_components#hocrtokenizer)
-* Added [HocrDocumentAssembler](ocr_pipeline_components#hocrdocumentassembler)
-* Added [ImageDrawAnnotations](ocr_pipeline_components#imagedrawannotations)
+* Added [HocrTokenizer](/docs/en/ocr_pipeline_components#hocrtokenizer)
+* Added [HocrDocumentAssembler](/docs/en/ocr_pipeline_components#hocrdocumentassembler)
+* Added [ImageDrawAnnotations](/docs/en/ocr_pipeline_components#imagedrawannotations)
 * Added support Arabic language in ImageToText and ImageToHocr
 
 #### Enhancements
 
-* Added postprocessing to the [ImageTableDetector](ocr_table_recognition#imagetabledetector)
+* Added postprocessing to the [ImageTableDetector](/docs/en/ocr_table_recognition#imagetabledetector)
 * Added Spark NLP by default to spark session in start function
-* Changed default value for ignoreResolution param in [ImageToText](ocr_pipeline_components#imagetotext)
+* Changed default value for ignoreResolution param in [ImageToText](/docs/en/ocr_pipeline_components#imagetotext)
 * Updated license-validator. Added support floating license and set AWS keys from license.
-* Added 'whiteList' param to the [VisualDocumentNER](ocr_pipeline_components#visualdocumentner)
+* Added 'whiteList' param to the [VisualDocumentNER](/docs/en/ocr_pipeline_components#visualdocumentner)
 
 #### New and updated notebooks
 

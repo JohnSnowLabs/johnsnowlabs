@@ -48,6 +48,14 @@ val pipeline = new PretrainedPipeline("oncology_biomarker_pipeline", "en", "clin
 val result = pipeline.fullAnnotate("""Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.""")(0)
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.oncology_biomarker.pipeline").predict("""Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.""")
+```
+
 </div>
 
 ## Results

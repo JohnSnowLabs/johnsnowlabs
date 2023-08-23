@@ -189,4 +189,28 @@ data:
           - text: Colab
             type: blue_btn
             url:
+        - title: Name Entity Recognition on Broker Reports
+          id: name_entity_recognition_broker_reports   
+          image: 
+              src: /assets/images/Name_Entity_Recognition_on_Broker_Reports.svg
+          excerpt: This demo showcases how you can apply NER models to extract financial entities from broker reports, as Currency, Amount, Revenue, Rating, Target Price or Ticker, etc.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/NER_BROKER_REPORTS/
+          - text: Colab
+            type: blue_btn
+            url:
+        - title: Extract Financial Entities from Suspicious Activity Reports
+          id: extract_financial_entities_suspicious_activity_reports   
+          image: 
+              src: /assets/images/Extract_financial_entities_from.svg
+          excerpt: This demo shows how we can extract entities from suspicious activity reports that are filed by financial institutions, and those associated with their business, with the Financial Crimes Enforcement Network.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/FINNER_SAR/
+          - text: Colab
+            type: blue_btn
+            url:
 ---

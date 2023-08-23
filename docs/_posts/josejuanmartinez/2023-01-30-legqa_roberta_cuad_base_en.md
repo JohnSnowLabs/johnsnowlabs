@@ -33,7 +33,7 @@ Legal RoBerta-based Question Answering model, trained on squad-v2, finetuned on 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legqa_roberta_cuad_base_en_1.0.0_3.0_1675083334950.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legqa_roberta_cuad_base_en_1.0.0_3.0_1675083334950.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legqa_roberta_cuad_base_en_1.0.0_3.0_1675083334950.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use

@@ -90,10 +90,10 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/ltgoslo/norbert2
-- http://vectors.nlpl.eu/repository/20/221.zip
-- http://norlm.nlpl.eu/
-- https://github.com/ltgoslo/NorBERT
-- https://aclanthology.org/2021.nodalida-main.4/
-- https://www.eosc-nordic.eu/
-- https://www.mn.uio.no/ifi/english/research/groups/ltg/
+- [https://huggingface.co/ltgoslo/norbert2](https://huggingface.co/ltgoslo/norbert2)
+- [https://vectors.nlpl.eu/repository/20/221.zip](https://vectors.nlpl.eu/repository/20/221.zip)
+- [https://norlm.nlpl.eu/](https://norlm.nlpl.eu/)
+- [https://github.com/ltgoslo/NorBERT](https://github.com/ltgoslo/NorBERT)
+- [https://aclanthology.org/2021.nodalida-main.4/](https://aclanthology.org/2021.nodalida-main.4/)
+- [https://www.eosc-nordic.eu/](https://www.eosc-nordic.eu/)
+- [https://www.mn.uio.no/ifi/english/research/groups/ltg/](https://www.mn.uio.no/ifi/english/research/groups/ltg/)

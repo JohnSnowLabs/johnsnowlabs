@@ -93,7 +93,7 @@ nlu.load("en.answer_question.squadv2.albert.xxl.by_elgeish").predict("""What is 
 
 ## References
 
-- https://huggingface.co/elgeish/cs224n-squad2.0-albert-xxlarge-v1
-- http://web.stanford.edu/class/cs224n/project/default-final-project-handout.pdf
-- https://rajpurkar.github.io/SQuAD-explorer/
-- https://github.com/elgeish/squad/tree/master/data
+- [https://huggingface.co/elgeish/cs224n-squad2.0-albert-large-v2](https://huggingface.co/elgeish/cs224n-squad2.0-albert-large-v2)
+- [https://web.stanford.edu/class/cs224n/project/default-final-project-handout.pdf](https://web.stanford.edu/class/cs224n/project/default-final-project-handout.pdf)
+- [https://rajpurkar.github.io/SQuAD-explorer/](https://rajpurkar.github.io/SQuAD-explorer/)
+- [https://github.com/elgeish/squad/tree/master/data](https://github.com/elgeish/squad/tree/master/data)

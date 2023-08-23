@@ -85,6 +85,14 @@ val data = Seq("She has two adult sons. She is a widow. She was employed with ho
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.bert_sequence.sdoh_community_absent_status").predict("""She has two adult sons. She is a widow. She was employed with housework. She quit smoking 20 to 30 years ago, but smoked two packs per day for 20 to 30 years. She drinks one glass of wine occasionally. She avoids salt in her diet. """)
+```
+
 </div>
 
 ## Results

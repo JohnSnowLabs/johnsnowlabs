@@ -28,8 +28,8 @@ In addition to these datasets, Tesseract also uses a technique called adaptive t
 ## Predicted Entities
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-[Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/tree/master/jupyter/Cards/SparkOcrImageTableRecognitionWHOCR.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Live Demo](https://demo.johnsnowlabs.com/ocr/IMAGE_TABLE_RECOGNITION_HOCR/){:.button.button-orange.button-orange-trans.co.button-icon}
+[Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/tree/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 <button class="button button-orange" disabled>Download</button>
 
 
@@ -207,6 +207,15 @@ col0	col1	col2	col3
 21	OWNER'S COSTS			218,000
 22	CONTINGENCY			534.0001
 ```
+## Model Information
 
+{:.table-model}
+|---|---|
+|Model Name:|hocr_table_recognition|
+|Type:|ocr|
+|Compatibility:|Visual NLP 4.2.4+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
 
 

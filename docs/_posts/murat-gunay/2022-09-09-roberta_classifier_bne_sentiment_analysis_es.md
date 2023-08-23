@@ -94,8 +94,8 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/edumunozsala/roberta_bne_sentiment_analysis_es
-- http://www.bne.es/en/Inicio/index.html
-- https://arxiv.org/abs/2107.07253
-- https://github.com/edumunozsala
-- https://paperswithcode.com/sota?task=Sentiment+Analysis&dataset=IMDb+Reviews+in+Spanish
+- [https://huggingface.co/edumunozsala/roberta_bne_sentiment_analysis_es](https://huggingface.co/edumunozsala/roberta_bne_sentiment_analysis_es)
+- [https://www.bne.es/en/Inicio/index.html](https://www.bne.es/en/Inicio/index.html)
+- [https://arxiv.org/abs/2107.07253](https://arxiv.org/abs/2107.07253)
+- [https://github.com/edumunozsala](https://github.com/edumunozsala)
+- [https://paperswithcode.com/sota?task=Sentiment+Analysis&dataset=IMDb+Reviews+in+Spanish](https://paperswithcode.com/sota?task=Sentiment+Analysis&dataset=IMDb+Reviews+in+Spanish)

@@ -90,10 +90,10 @@ sent_embeddings_df
 
 [2]: [Wikipedia](https://www.tensorflow.org/datasets/catalog/wikipedia)
 
-[3]: [Common Crawl](http://commoncrawl.org/the-data/)
+[3]: [Common Crawl](https://commoncrawl.org/the-data/)
 
-[4]: [PMINDIA](http://lotus.kuee.kyoto-u.ac.jp/WAT/indic-multilingual/index.html)
+[4]: [PMINDIA](https://lotus.kuee.kyoto-u.ac.jp/WAT/indic-multilingual/index.html)
 
 [5]: [Dakshina](https://github.com/google-research-datasets/dakshina)
 
-The model is imported from: https://tfhub.dev/google/MuRIL/1
+The model is imported from: [https://tfhub.dev/google/MuRIL/1](https://tfhub.dev/google/MuRIL/1)

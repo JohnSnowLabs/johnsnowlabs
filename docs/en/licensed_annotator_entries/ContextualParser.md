@@ -25,7 +25,7 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[ContextualParserModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/context/ContextualParserModel)
+[ContextualParserModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/context/ContextualParserModel.html)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
@@ -333,7 +333,7 @@ val pipeline = new Pipeline().setStages(Array(
 {%- endcapture -%}
 
 {%- capture approach_api_link -%}
-[ContextualParserApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/context/ContextualParserApproach)
+[ContextualParserApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/context/ContextualParserApproach.html)
 {%- endcapture -%}
 
 {%- capture approach_python_api_link -%}

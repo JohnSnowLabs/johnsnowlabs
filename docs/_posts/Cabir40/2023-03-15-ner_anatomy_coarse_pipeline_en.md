@@ -23,7 +23,7 @@ This pretrained pipeline is built on the top of [ner_anatomy_coarse](https://nlp
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_anatomy_coarse_pipeline_en_4.3.0_3.2_1678862662568.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_anatomy_coarse_pipeline_en_4.3.0_3.2_1678862662568.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_anatomy_coarse_pipeline_en_4.3.0_3.2_1678862662568.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
@@ -50,6 +50,14 @@ val text = "content in the lung tissue"
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.anatomy_coarse.pipeline").predict("""content in the lung tissue""")
+```
+
 </div>
 
 ## Results

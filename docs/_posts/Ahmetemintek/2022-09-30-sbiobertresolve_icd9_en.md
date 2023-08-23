@@ -141,6 +141,14 @@ val data = Seq("A 28-year-old female with a history of gestational diabetes mell
 val result = pipeline.fit(data).transform(data)
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.resolve.ic9").predict("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years """)
+```
+
 </div>
 
 ## Results

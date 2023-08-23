@@ -14,6 +14,7 @@ if try_import_lib("sparkocr") and try_import_lib("sparknlp"):
         from sparkocr.utils import *
         from sparkocr.schemas import *
         from sparkocr.metrics import *
+        from sparkocr.pretrained import *
         from sparkocr.databricks import isRunningInDatabricks
 
         if isRunningInDatabricks():

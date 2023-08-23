@@ -24,9 +24,10 @@ Ocr base printed model v2 for recognise printed text based on a TrOCR model pret
 ## Predicted Entities
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/ocr/RECOGNIZE_PRINTED/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageToTextPrinted_V2.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/ocr_base_printed_v2_en_4.2.2_3.0_1670623909000.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/ocr_base_printed_v2_en_4.2.2_3.0_1670623909000.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/ocr_base_printed_v2_en_4.2.2_3.0_1670623909000.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 
 ## How to use
@@ -151,6 +152,15 @@ CHANGE DUE $0.00
 SBUX CARD X3228 NEW BALANCE: 37.45
 CARD IS REGISTERED
 ```
+## Model Information
 
+{:.table-model}
+|---|---|
+|Model Name:|ocr_base_printed_v2|
+|Type:|ocr|
+|Compatibility:|Visual NLP 4.2.4+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|
 
 

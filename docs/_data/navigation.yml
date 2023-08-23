@@ -101,6 +101,20 @@ annotation-lab:
             url: /docs/en/alab/tasks
           - title: Workflows
             url: /docs/en/alab/workflow
+      - subtitle: Project Configuration 
+        children:
+          - title: Overview
+            url: /docs/en/alab/tags_overview
+          - title: Video
+            url: /docs/en/alab/tags_video
+          - title: Audio
+            url: /docs/en/alab/tags_audio
+          - title: Text
+            url: /docs/en/alab/tags_text
+          - title: Image
+            url: /docs/en/alab/tags_image
+          - title: PDF
+            url: /docs/en/alab/tags_pdf
       - subtitle: Annotation
         children:
           - title: Manual annotation
@@ -146,7 +160,7 @@ annotation-lab:
       - title: Security and Privacy
         url: /docs/en/alab/security
       - title: Video Tutorials
-        url: /docs/en/alab/tutorials
+        url: /docs/en/alab/step_by_step_tutorials
       - title: FAQ
         url: /docs/en/alab/troubleshooting
       - title: Release Notes
@@ -234,14 +248,78 @@ spark-ocr:
       - title: Release notes
         url: /docs/en/spark_ocr_versions/ocr_release_notes
 
-nlp-server:
-  - title: NLP Server
+jsl:
+  - title: John Snow Labs NLP
     children:
-      - title: Getting Started
-        url: /docs/en/nlp_server/nlp_server
-      - title: Installation
-        url: /docs/en/nlp_server/installation
-      - title: Video Tutorials
-        url: /docs/en/nlp_server/video_tutorials
+      - title:  Installation
+        url:    /docs/en/jsl/install
+      - title:  Quick Start
+        url:    /docs/en/jsl/concepts
+      - title:  nlp.load()
+        url:    /docs/en/jsl/load_api
+      - title:  predict()
+        url:    /docs/en/jsl/predict_api
+      - title:  fit()
+        url:    /docs/en/jsl/training
+      - title:  viz()
+        url:    /docs/en/jsl/viz_examples
+      - title: dashboard()
+        url: /docs/en/jsl/streamlit_viz_examples
+        key: streamlit_viz
+      - title:  1-liner Tutorial Notebooks
+        url:    /docs/en/jsl/notebooks
+      - title:  1-liners Reference
+        url:    /docs/en/jsl/examples
+      - title: NLP Pipelines
+        url: /docs/en/jsl/nlp_pipes
+        key: nlp_pipes
+      - title: NLP Display
+        url: /docs/en/display
+        key: nlp_display
+      - title: NLP Lab
+        url: /docs/en/utility_helper_modules
+        key: nlp_display
+      - title: NLP Utilities
+        url:    /docs/en/jsl/utils_for_spark_nlp
+      - title:  Models Namespace
+        url:    /docs/en/jsl/namespace
+      - title: NLU Release Notes
+        url: /docs/en/jsl/release_notes
       - title: Release Notes
-        url: /docs/en/nlp_server/nlp_server_versions/release_notes
+        url:    /docs/en/jsl/jsl-release-notes
+  - title: Licensed NLP
+    children:
+      - title:  Installation
+        url:    /docs/en/jsl/install_licensed_quick
+      - title:  Visual NLP
+        url:    /docs/en/jsl/quickstart_visual
+      - title:  Medical NLP
+        url:    /docs/en/jsl/quickstart_medical
+      - title:  Finance NLP
+        url:    /docs/en/jsl/quickstart_finance
+      - title:  Legal NLP
+        url:    /docs/en/jsl/quickstart_legal
+      - title:  Visual NLP 1-Liners
+        url:    /docs/en/jsl/nlu_for_ocr
+      - title:  Medical NLP 1-Liners
+        url:    /docs/en/jsl/examples_hc
+      - title:  Medical NLP 1-Liners Reference
+        url:    /docs/en/jsl/nlu_for_healthcare
+
+  - title: Advanced Topics
+    children:
+      - title:  Custom Installation
+        url:    /docs/en/jsl/install_advanced
+      - title:  License Management
+        url:    /docs/en/jsl/license_management
+      - title:  Configuring Session
+        url:    /docs/en/jsl/start-a-sparksession
+      - title:  Settings & Cache Folder
+        url:    /docs/en/jsl/john-snow-labs-home
+      - title:  Utilities for Databricks
+        url:    /docs/en/jsl/databricks-utils
+      - title:  Release Testing Utilities
+        url:    /docs/en/jsl/testing-utils
+      - title:  Module Structure
+        url:    /docs/en/jsl/import-structure
+

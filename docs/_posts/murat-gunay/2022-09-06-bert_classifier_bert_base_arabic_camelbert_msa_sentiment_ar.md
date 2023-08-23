@@ -94,10 +94,10 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/CAMeL-Lab/bert-base-arabic-camelbert-msa-sentiment
-- https://aclanthology.org/D15-1299.pdf
-- http://lrec-conf.org/workshops/lrec2018/W30/pdf/22_W30.pdf
-- https://aclanthology.org/S17-2088.pdf
-- https://arxiv.org/abs/2103.06678
-- https://github.com/CAMeL-Lab/CAMeLBERT
-- https://github.com/CAMeL-Lab/camel_tools
+- [https://huggingface.co/CAMeL-Lab/bert-base-arabic-camelbert-msa-sentiment](https://huggingface.co/CAMeL-Lab/bert-base-arabic-camelbert-msa-sentiment)
+- [https://aclanthology.org/D15-1299.pdf](https://aclanthology.org/D15-1299.pdf)
+- [https://lrec-conf.org/workshops/lrec2018/W30/pdf/22_W30.pdf](https://lrec-conf.org/workshops/lrec2018/W30/pdf/22_W30.pdf)
+- [https://aclanthology.org/S17-2088.pdf](https://aclanthology.org/S17-2088.pdf)
+- [https://arxiv.org/abs/2103.06678](https://arxiv.org/abs/2103.06678)
+- [https://github.com/CAMeL-Lab/CAMeLBERT](https://github.com/CAMeL-Lab/CAMeLBERT)
+- [https://github.com/CAMeL-Lab/camel_tools](https://github.com/CAMeL-Lab/camel_tools)

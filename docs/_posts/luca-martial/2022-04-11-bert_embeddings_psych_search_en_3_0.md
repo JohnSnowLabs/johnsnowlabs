@@ -98,9 +98,9 @@ nlu.load("en.embed.psych_search").predict("""I love Spark NLP""")
 
 ## References
 
-- https://huggingface.co/nlp4good/psych-search
-- https://meshb.nlm.nih.gov/treeView
-- https://meshb.nlm.nih.gov/record/ui?ui=D000072339
-- https://meshb.nlm.nih.gov/record/ui?ui=D005006
-- https://meshb.nlm.nih.gov/treeView
-- http://bioasq.org/
+- [https://huggingface.co/nlp4good/psych-search](https://huggingface.co/nlp4good/psych-search)
+- [https://meshb.nlm.nih.gov/treeView](https://meshb.nlm.nih.gov/treeView)
+- [https://meshb.nlm.nih.gov/record/ui?ui=D000072339](https://meshb.nlm.nih.gov/record/ui?ui=D000072339)
+- [https://meshb.nlm.nih.gov/record/ui?ui=D005006](https://meshb.nlm.nih.gov/record/ui?ui=D005006)
+- [https://meshb.nlm.nih.gov/treeView](https://meshb.nlm.nih.gov/treeView)
+- [https://bioasq.org/](https://bioasq.org/)

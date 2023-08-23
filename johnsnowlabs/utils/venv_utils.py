@@ -19,7 +19,7 @@ def log_process(result: subprocess.CompletedProcess):
 #
 # @dataclass
 # class VenvState:
-#     installed_libs: list[str]
+#     installed_libs: List[str]
 #     py_version: str
 
 

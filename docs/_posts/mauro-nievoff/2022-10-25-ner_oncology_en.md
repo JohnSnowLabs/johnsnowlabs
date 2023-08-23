@@ -167,6 +167,16 @@ The cancer recurred as a right lung metastasis 13 years later. The patient under
 val result = pipeline.fit(data).transform(data)
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.oncology").predict("""The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago.
+The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to the residual breast.
+The cancer recurred as a right lung metastasis 13 years later. The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy.""")
+```
+
 </div>
 
 ## Results

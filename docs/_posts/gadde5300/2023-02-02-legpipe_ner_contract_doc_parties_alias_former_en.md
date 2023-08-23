@@ -21,7 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 IMPORTANT: Don't run this pretrained pipeline on the whole legal agreement. Instead:
-- Split by paragraphs. You can use [notebook 1](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings_JSL) in Finance or Legal as inspiration;
+- Split by paragraphs. You can use [notebook 1](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings) in Finance or Legal as inspiration;
 - Use the `legclf_introduction_clause` Text Classifier to select only these paragraphs; 
 
 This is a Legal NER Pipeline, aimed to process the first page of the agreements when information can be found about:
@@ -37,7 +37,7 @@ Other models can be found to detect other parts of the document, as Headers/Subh
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legpipe_ner_contract_doc_parties_alias_former_en_1.0.0_3.0_1675360136179.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legpipe_ner_contract_doc_parties_alias_former_en_1.0.0_3.0_1675360136179.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legpipe_ner_contract_doc_parties_alias_former_en_1.0.0_3.0_1675360136179.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use

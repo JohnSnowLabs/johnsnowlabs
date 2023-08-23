@@ -1,7 +1,7 @@
 ---
 layout: demopagenew
 title: Financial Document Understanding - Finance NLP Demos & Notebooks
-seotitle: 'Visual NLP: Financial Document Understanding - John Snow Labs'
+seotitle: 'Financial NLP: Financial Document Understanding - John Snow Labs'
 subtitle: Run 300+ live demos and notebooks
 full_width: true
 permalink: /financial_document_understanding
@@ -56,5 +56,65 @@ data:
             url: https://demo.johnsnowlabs.com/ocr/FORM_RECOGNITION/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/FormRecognition/SparkOcrFormRecognition.ipynb                
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/FormRecognition/SparkOcrFormRecognition.ipynb
+        - title: Financial Visual Question Answering
+          id: financial_visual_question_answering 
+          image: 
+              src: /assets/images/Financial_Visual_Question_Answering.svg
+          excerpt: Ask questions to financial documents in image format and get answers without any OCR involved.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/FIN_VISUAL_QUESTION_ANSWERING/
+          - text: Colab
+            type: blue_btn
+            url: 
+        - title: Extract tables and ask questions in Natural Language about Financial Reports
+          id: extract_tables_questions_natural_language_financial_reports 
+          image: 
+              src: /assets/images/Extract_tables_and_ask_questions_in_Natural_Language_about_Financial_Reports.svg
+          excerpt: This demo showcases how to use Visual NLP to extract tables and Finance NLP Table Question Answering to retrieve answers to questions asked in Natural Language.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/FIN_TABLE_QUESTION_ANSWERING_PDF/
+          - text: Colab
+            type: blue_btn
+            url: 
+        - title: Finance Visual QA in IDS
+          id: finance_visual_qa_ids 
+          image: 
+              src: /assets/images/Finance_Visual_QA_in_IDS.svg
+          excerpt: Ask questions about ID documents, including ID Cards, Passports, and Driving Licenses in image format, and get answers without any OCR involved.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/FINLEG_VISUAL_QUESTION_ANSWERING/
+          - text: Colab
+            type: blue_btn
+            url:
+        - title: Financial Visual NER on Receipts
+          id: financial_visual_ner_receipts 
+          image: 
+              src: /assets/images/Financial_Visual_NER_on_Receipts.svg
+          excerpt: This demo shows how to carry out Visual NLP for NER purposes on Receipts.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/FINANCIAL_VISUAL_NER/
+          - text: Colab
+            type: blue_btn
+            url:
+        - title: Analyze 10K Filings with Visual NER
+          id: analyze_10_filings_visual_ner 
+          image: 
+              src: /assets/images/Analyze_10K_Filings_with_Visual_NER.svg
+          excerpt: This demo showcases the power of Visual NER in analyzing financial documents, specifically 10K filings.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/VISUALNER_10KFILINGS/
+          - text: Colab
+            type: blue_btn
+            url:
 ---

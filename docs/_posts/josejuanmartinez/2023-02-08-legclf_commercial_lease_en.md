@@ -31,7 +31,7 @@ Unlike the Longformer model, this model is lighter in terms of inference time.
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/finance/CLASSIFY_LEGAL_CLAUSES/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_commercial_lease_en_1.0.0_3.0_1675878333648.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legclf_commercial_lease_en_1.0.0_3.0_1675878333648.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legclf_commercial_lease_en_1.0.0_3.0_1675878333648.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use

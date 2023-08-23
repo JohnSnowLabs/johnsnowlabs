@@ -1,8 +1,9 @@
 ---
 layout: docs
 header: true
-title: Annotators
-redirect_to: https://sparknlp.org/docs/en/annotators
+title: Text Annotators
+pagetitle: Data Annotators - John Snow Labs
+excerpt: Try NLP free annotators to annotate your projects efficiently and accurately. High-Performance NLP with Apache Spark.
 permalink: /docs/en/annotators
 key: docs-annotators
 modify_date: "2021-04-17"

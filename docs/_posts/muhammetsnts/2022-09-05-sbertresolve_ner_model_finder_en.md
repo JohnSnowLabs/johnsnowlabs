@@ -80,6 +80,14 @@ val light_pipeline = LightPipeline(ner_model_finder_pipelineModel)
 val annotations = light_pipeline.fullAnnotate("medication")
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.resolve.ner.model_finder").predict("""Put your text here.""")
+```
+
 </div>
 
 ## Results

@@ -117,6 +117,14 @@ val data = Seq("She completed her first-line therapy, but some months later ther
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.oncology_response_to_treatment").predict("""She completed her first-line therapy, but some months later there was recurrence of the breast cancer. """)
+```
+
 </div>
 
 ## Results

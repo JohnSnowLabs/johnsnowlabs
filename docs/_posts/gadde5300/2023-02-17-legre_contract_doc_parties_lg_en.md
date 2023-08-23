@@ -21,7 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 IMPORTANT: Don't run this model on the whole legal agreement. Instead:
-- Split by paragraphs. You can use [notebook 1](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings_JSL) in Finance or Legal as inspiration;
+- Split by paragraphs. You can use [notebook 1](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/tutorials/Certification_Trainings) in Finance or Legal as inspiration;
 - Use the `legclf_introduction_clause` Text Classifier to select only these paragraphs; 
 - 
 This is a Legal Relation Extraction model, which can be used after the NER Model for extracting Parties, Document Types, Effective Dates and Aliases, called legner_contract_doc_parties.
@@ -42,7 +42,7 @@ This is a `lg` model with Unidirectional Relations, meaning that the model retri
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legre_contract_doc_parties_lg_en_1.0.0_3.0_1676633934665.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legre_contract_doc_parties_lg_en_1.0.0_3.0_1676633934665.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legre_contract_doc_parties_lg_en_1.0.0_3.0_1676633934665.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use

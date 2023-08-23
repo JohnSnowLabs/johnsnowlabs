@@ -2,11 +2,11 @@
 layout: docs
 comment: no
 header: true
-seotitle: Annotation Lab | John Snow Labs
+seotitle: NLP Lab | John Snow Labs
 title: Tasks
 permalink: /docs/en/alab/tasks
 key: docs-training
-modify_date: "2022-12-11"
+modify_date: "2023-06-08"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -100,6 +100,10 @@ There is also a search functionality which will identify the tasks having a give
 The number of tasks visible on the screeen is customizable by selecting the predefined values from the Tasks per page drop-down.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/task_filters.gif" style="width:100%;"/>
+
+From version 4.10 onwards, filtering tasks has been updated to allow users to select multiple tags from the Tags dropdown. This allows users to filter tasks based on multiple tags. Additionally, the same improved filter behaviour can be found in project page too. This provides users with increased flexibility and efficiency in filtering tasks based on multiple tags, thereby improving task and project management and facilitating a more streamlined workflow.
+
+![filter](/assets/images/annotation_lab/4.10.0/7.gif)
 
 ## Task Search by Text, Label and Choice
 

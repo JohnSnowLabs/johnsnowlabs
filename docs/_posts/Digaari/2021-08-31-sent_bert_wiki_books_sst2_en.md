@@ -80,7 +80,7 @@ sent_embeddings_df
 
 [1]: [Wikipedia dataset](https://dumps.wikimedia.org/)
 
-[2]: [BooksCorpus dataset](http://yknzhu.wixsite.com/mbweb)
+[2]: [BooksCorpus dataset](https://yknzhu.wixsite.com/mbweb)
 
 [3]: [Stanford Sentiment Treebank (SST-2) dataset](https://nlp.stanford.edu/sentiment/index.html)
 

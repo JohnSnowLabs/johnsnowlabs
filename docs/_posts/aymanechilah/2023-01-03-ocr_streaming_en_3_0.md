@@ -127,14 +127,48 @@ spark.table("result").select(Array("timestamp","pagenum", "path", "text")).show(
 ```
 </div>
 
-## Results
 
+## Example
+
+### Input:
+
+![Screenshot](/assets/images/examples_ocr/image4.png)
+
+
+### Output
 ```bash
-+--------------------+-------+--------------------+--------------------+
-|           timestamp|pagenum|                path|                text|
-+--------------------+-------+--------------------+--------------------+
-|2022-07-20 21:45:...|      0|file:/content/dat...|FOREWORD\n\nElect...|
-|2022-07-20 21:45:...|      0|file:/content/dat...|C nca Document fo...|
-|2022-07-20 21:56:...|      0|file:/content/dat...|6/13/22, 11:47 AM...|
-+--------------------+-------+--------------------+--------------------+
++--------------------+
+|               value|
++--------------------+
+|                    |
+|                    |
+|                    |
+|                    |
+|                    |
+|                    |
+|ne Pa a Date: 7/1...|
+|er ‘Sample No. _ ...|
+|“ Original reques...|
+|                    |
+|Sample specificat...|
+| , BLEND CASING R...|
+|                    |
+|- OLD GOLD STRAIG...|
+|                    |
+|Control for Sampl...|
+|                    |
+|         Cigarettes:|
+|                    |
+|   OLD GOLD STRAIGHT|
++--------------------+
+only showing top 20 rows
 ```
+## Model Information
+
+{:.table-model}
+|---|---|
+|Model Name:|ocr_streaming|
+|Compatibility:|Healthcare NLP 4.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Language:|en|

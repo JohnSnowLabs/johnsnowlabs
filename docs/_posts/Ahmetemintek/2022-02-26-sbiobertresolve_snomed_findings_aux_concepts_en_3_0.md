@@ -35,8 +35,6 @@ In the metadata, the `all_k_aux_labels` can be divided to get further informatio
 
 ## How to use
 
-
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
@@ -148,6 +146,14 @@ val df = Seq(text).toDF(“text”)
 
 val result= nlpPipeline.fit(df).transform(df)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.resolve.snomed.findings_aux_concepts").predict("""FINDINGS: The patient was found upon excision of the cyst that it contained a large Prolene suture; beneath this was a very small incisional hernia, the hernia cavity, which contained omentum; the hernia was easily repaired""")
+```
+
 </div>
 
 ## Results

@@ -84,8 +84,8 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/BSC-TeMU/roberta-large-bne-sqac
-- https://arxiv.org/abs/1907.11692
-- http://www.bne.es/en/Inicio/index.html
-- https://github.com/PlanTL-SANIDAD/lm-spanish
-- https://arxiv.org/abs/2107.07253
+- [https://huggingface.co/BSC-TeMU/roberta-large-bne-sqac](https://huggingface.co/BSC-TeMU/roberta-large-bne-sqac)
+- [https://arxiv.org/abs/1907.11692](https://arxiv.org/abs/1907.11692)
+- [https://www.bne.es/en/Inicio/index.html](https://www.bne.es/en/Inicio/index.html)
+- [https://github.com/PlanTL-SANIDAD/lm-spanish](https://github.com/PlanTL-SANIDAD/lm-spanish)
+- [https://arxiv.org/abs/2107.07253](https://arxiv.org/abs/2107.07253)

@@ -100,6 +100,14 @@ val data = Seq("Das Kleinzellige Bronchialkarzinom (Kleinzelliger Lungenkrebs, S
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("de.med_ner.healthcare").predict("""Das Kleinzellige Bronchialkarzinom (Kleinzelliger Lungenkrebs, SCLC) ist ein hochmalignes bronchogenes Karzinom""")
+```
+
 </div>
 
 ## Results
@@ -132,7 +140,7 @@ val result = pipeline.fit(data).transform(data)
 
 ## Data Source
 
-Trained on 2010 i2b2/VA challenge on concepts, assertions, and relations in clinical text with *w2v_cc_300d*.
+Trained on augmented version of 2010 i2b2/VA dataset on concepts, assertions, and relations in clinical text with ``w2v_cc_300d``.
 
 ## Benchmarking
 

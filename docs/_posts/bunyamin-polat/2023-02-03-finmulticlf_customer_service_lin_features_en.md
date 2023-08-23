@@ -41,7 +41,7 @@ This is a Multilabel Text Classification model that can help you classify a chat
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finmulticlf_customer_service_lin_features_en_1.0.0_3.0_1675430237309.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finmulticlf_customer_service_lin_features_en_1.0.0_3.0_1675430237309.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finmulticlf_customer_service_lin_features_en_1.0.0_3.0_1675430237309.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use

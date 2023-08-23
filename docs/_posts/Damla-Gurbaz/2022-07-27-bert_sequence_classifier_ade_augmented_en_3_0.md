@@ -84,6 +84,14 @@ val data = Seq(Array("So glad I am off effexor, so sad it ruined my teeth. tip P
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.adverse_drug_events").predict("""So glad I am off effexor, so sad it ruined my teeth. tip Please be carefull taking antideppresiva and read about it 1st""")
+```
+
 </div>
 
 ## Results

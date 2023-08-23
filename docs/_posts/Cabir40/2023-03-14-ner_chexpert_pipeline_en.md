@@ -23,7 +23,7 @@ This pretrained pipeline is built on the top of [ner_chexpert](https://nlp.johns
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_chexpert_pipeline_en_4.3.0_3.2_1678779791404.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_chexpert_pipeline_en_4.3.0_3.2_1678779791404.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_chexpert_pipeline_en_4.3.0_3.2_1678779791404.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
@@ -50,6 +50,14 @@ val text = "FINAL REPORT HISTORY : Chest tube leak , to assess for pneumothorax.
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.chexpert.pipeline").predict("""FINAL REPORT HISTORY : Chest tube leak , to assess for pneumothorax. FINDINGS : In comparison with study of ___ , the endotracheal tube and Swan - Ganz catheter have been removed . The left chest tube remains in place and there is no evidence of pneumothorax. Mild atelectatic changes are seen at the left base.""")
+```
+
 </div>
 
 ## Results

@@ -156,6 +156,14 @@ val data = Seq("Her breast cancer was diagnosed last year.").toDS.toDF("text")
 val result = pipeline.fit(data).transform(data)
 
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.relation.oncology_temporal_biobert_wip").predict("""Her breast cancer was diagnosed last year.""")
+```
+
 </div>
 
 ## Results

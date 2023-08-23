@@ -94,10 +94,10 @@ val result = pipeline.fit(data).transform(data)
 
 ## References
 
-- https://huggingface.co/ml6team/distilbert-base-german-cased-toxic-comments
-- http://ub-web.de/research/
-- https://github.com/uds-lsv/GermEval-2018-Data
-- https://arxiv.org/pdf/1701.08118.pdf
-- https://github.com/UCSM-DUE/IWG_hatespeech_public
-- https://hasocfire.github.io/hasoc/2019/index.html
-- https://github.com/germeval2021toxic/SharedTask/tree/main/Data%20Sets
+- [https://huggingface.co/ml6team/distilbert-base-german-cased-toxic-comments](https://huggingface.co/ml6team/distilbert-base-german-cased-toxic-comments)
+- [https://ub-web.de/research/](https://ub-web.de/research/)
+- [https://github.com/uds-lsv/GermEval-2018-Data](https://github.com/uds-lsv/GermEval-2018-Data)
+- [https://arxiv.org/pdf/1701.08118.pdf](https://arxiv.org/pdf/1701.08118.pdf)
+- [https://github.com/UCSM-DUE/IWG_hatespeech_public](https://github.com/UCSM-DUE/IWG_hatespeech_public)
+- [https://hasocfire.github.io/hasoc/2019/index.html](https://hasocfire.github.io/hasoc/2019/index.html)
+- [https://github.com/germeval2021toxic/SharedTask/tree/main/Data%20Sets](https://github.com/germeval2021toxic/SharedTask/tree/main/Data%20Sets)

@@ -129,4 +129,16 @@ data:
           - text: Colab
             type: blue_btn
             url: 
+        - title: Classify Broker Reports
+          id: classify_broker_reports 
+          image: 
+              src: /assets/images/Classify_Broker_Reports.svg
+          excerpt: This Text Classifier will identify whether a broker’s report suggests to Buy, Sell, Hold, Accumulate, Reduce, Neutral, Other.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/finance/BROKER_REPORTS_CLASSIFICATION/
+          - text: Colab
+            type: blue_btn
+            url:
 ---

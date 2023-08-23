@@ -97,6 +97,14 @@ val data = Seq("Retired schoolteacher, now substitutes. Lives with wife in locat
 
 val result = pipeline.fit(data).transform(data)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.classify.generic.sdoh_ecnomics_sbiobert_cased").predict("""The patient quit smoking approximately two years ago with an approximately a 40 pack year history, mostly cigar use. He also reports 'heavy alcohol use', quit 15 months ago.""")
+```
+
 </div>
 
 ## Results

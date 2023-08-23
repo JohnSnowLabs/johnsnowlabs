@@ -100,8 +100,8 @@ nlu.load("es.answer_question.sqac.roberta.base.by_BSC-TeMU").predict("""What's m
 
 ## References
 
-- https://huggingface.co/BSC-TeMU/roberta-base-bne-sqac
-- https://github.com/PlanTL-SANIDAD/lm-spanish
-- http://www.bne.es/en/Inicio/index.html
-- https://arxiv.org/abs/1907.11692
-- https://arxiv.org/abs/2107.07253
+- [https://huggingface.co/BSC-TeMU/roberta-base-bne-sqac](https://huggingface.co/BSC-TeMU/roberta-base-bne-sqac)
+- [https://github.com/PlanTL-SANIDAD/lm-spanish](https://github.com/PlanTL-SANIDAD/lm-spanish)
+- [https://www.bne.es/en/Inicio/index.html](https://www.bne.es/en/Inicio/index.html)
+- [https://arxiv.org/abs/1907.11692](https://arxiv.org/abs/1907.11692)
+- [https://arxiv.org/abs/2107.07253](https://arxiv.org/abs/2107.07253)

@@ -31,7 +31,7 @@ Use as part of an nlp pipeline with the following stages: DocumentAssembler, Sen
 
 <div class="tabs-box" markdown="1">
 
-{% include programmingLanguageSelectScalaPython.html %}
+{% include programmingLanguageSelectScalaPythonNLU.html %}
 
 
 ```python
@@ -62,6 +62,14 @@ val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detec
 val data = Seq("Das Kleinzellige Bronchialkarzinom (Kleinzelliger Lungenkrebs, SCLC) ist ein hochmalignes bronchogenes Karzinom").toDF("text")
 val result = pipeline.fit(data).transform(data)
 
+```
+
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("de.med_ner.healthcare").predict("""Das Kleinzellige Bronchialkarzinom (Kleinzelliger Lungenkrebs, SCLC) ist ein hochmalignes bronchogenes Karzinom""")
 ```
 
 </div>
@@ -108,7 +116,7 @@ val result = pipeline.fit(data).transform(data)
 
 {:.h2_title}
 ## Data Source
-Trained on 2010 i2b2/VA challenge on concepts, assertions, and relations in clinical text with *w2v_cc_300d*.
+Trained with augmented version of 2010 i2b2/VA dataset on concepts, assertions, and relations in clinical text with ``w2v_cc_300d``.
 
 {:.h2_title}
 ## Benchmarking

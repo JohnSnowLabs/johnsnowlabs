@@ -23,7 +23,7 @@ This pretrained pipeline is built on the top of [ner_posology_experimental](http
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_posology_experimental_pipeline_en_4.3.0_3.2_1678870276632.zip){:.button.button-orange}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_posology_experimental_pipeline_en_4.3.0_3.2_1678870276632.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_posology_experimental_pipeline_en_4.3.0_3.2_1678870276632.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
@@ -54,6 +54,16 @@ Calcium-DTPA: Ca-DTPA will be administered intravenously on Days 1-3 to clear th
 
 val result = pipeline.fullAnnotate(text)
 ```
+
+
+{:.nlu-block}
+```python
+import nlu
+nlu.load("en.med_ner.posology_experimental.pipeline").predict("""Y-90 Humanized Anti-Tac: 10 mCi (if a bone marrow transplant was part of the patient's previous therapy) or 15 mCi of yttrium labeled anti-TAC; followed by calcium trisodium Inj (Ca DTPA)..
+
+Calcium-DTPA: Ca-DTPA will be administered intravenously on Days 1-3 to clear the radioactive agent from the body.""")
+```
+
 </div>
 
 ## Results
