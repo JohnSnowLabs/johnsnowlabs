@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Dashboard
 permalink: /docs/en/alab/project_dashboard
 key: docs-training
-modify_date: "2022-11-07"
+modify_date: "2022-11-08"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

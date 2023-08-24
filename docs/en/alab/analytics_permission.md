@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Analytics Permission
 permalink: /docs/en/alab/analytics_permission
 key: docs-training
-modify_date: "2022-10-14"
+modify_date: "2022-10-15"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

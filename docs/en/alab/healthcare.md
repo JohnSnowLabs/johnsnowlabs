@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: NLP Libraries Integration
 permalink: /docs/en/alab/healthcare
 key: docs-training
-modify_date: "2022-11-23"
+modify_date: "2022-11-24"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

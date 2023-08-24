@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Annotation Settings
 permalink: /docs/en/alab/tips
 key: docs-training
-modify_date: "2021-12-09"
+modify_date: "2021-12-10"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

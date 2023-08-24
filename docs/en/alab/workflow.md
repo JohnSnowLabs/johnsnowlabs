@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Workflows
 permalink: /docs/en/alab/workflow
 key: docs-training
-modify_date: "2022-11-02"
+modify_date: "2022-11-03"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
