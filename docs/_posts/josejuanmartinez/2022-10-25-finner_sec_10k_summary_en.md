@@ -30,7 +30,7 @@ This is another version of `finner_10k_summary` trained with better financial em
 
 ## Predicted Entities
 
-
+`ADDRESS`, `CFN`, `FISCAL_YEAR`, `IRS`, `ORG`, `PHONE`, `STATE`, `STOCK_EXCHANGE`, `TICKER`, `TITLE_CLASS`, `TITLE_CLASS_VALUE`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
