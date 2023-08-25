@@ -73,7 +73,12 @@ def create_cluster(
     default_spark_env_vars = {
         k: v for k, v in default_spark_env_vars.items() if v is not None
     }
-
+    default_spark_env_vars[
+        "spark.sql.optimizer.expression.nestedPruning.enabled"
+    ] = "false"
+    default_spark_env_vars["spark.sql.optimizer.nestedSchemaPruning.enabled"] = "false"
+    default_spark_env_vars["spark.sql.legacy.allowUntypedScalaUDF"] = "true"
+    default_spark_env_vars["spark.sql.repl.eagerEval.enabled"] = "true"
     if not spark_conf:
         spark_conf = default_spark_conf
     else:
