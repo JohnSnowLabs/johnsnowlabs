@@ -1148,6 +1148,361 @@ document.write(`
                                                                  <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
                                                                  <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">medicaid</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="profileRxHCCV05Y20"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileRxHCCV05Y20">[docs]</a><span class="k">def</span> <span class="nf">profileRxHCCV05Y20</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CE_NoLowAged&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">esrd</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CMS-RxHCC risk adjustment module: version 05, year 2020.</span>
+<span class="sd">    Returns the RxHCC risk profile of a given patient information.</span>
+<span class="sd">    It may throw an exception if there is an illegal argument in the input parameters.</span>
+
+<span class="sd">    INPUT PARAMETERS</span>
+<span class="sd">    ----------------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">            A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">            The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">            The sex of the patient.</span>
+<span class="sd">                - &quot;M&quot; : Male</span>
+<span class="sd">                - &quot;F&quot; : Female</span>
+<span class="sd">        elig : str</span>
+<span class="sd">            The eligibility segment of the patient. The risk score can vary when different &quot;elig&quot; are used.</span>
+<span class="sd">            There are five risk adjustable continuing models and three new enrollee models.</span>
+<span class="sd">               - &quot;CE_NoLowAged&quot;: Community, Non-Low Income, Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_NoLowNoAged&quot;: Community, Non-Low Income, Non-Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LowAged&quot;: Community, Low Income, Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LowNoAged&quot;: Community, Low Income, Non-Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LTI&quot;: Institutional Continuing Enrollee</span>
+<span class="sd">               - &quot;NE_NoLo&quot;: Community, Non-Low Income, New Enrollee</span>
+<span class="sd">               - &quot;NE_Lo&quot;: Community, Low Income, New Enrollee</span>
+<span class="sd">               - &quot;NE_LTI&quot;: Institutional New Enrollee</span>
+<span class="sd">            The term &quot;Non-Aged&quot; is used for those younger than 65 because this group includes beneficiaries eligible</span>
+<span class="sd">            for Medicare because of end-stage renal disease(ESRD) as well as those eligible because of disability.</span>
+<span class="sd">        orec: str</span>
+<span class="sd">            Original reason for entitlement code.</span>
+<span class="sd">                - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">                - &quot;1&quot;: Disability insurance benefits (DISABILITY)</span>
+<span class="sd">                - &quot;2&quot;: End-stage renal disease (ESRD)</span>
+<span class="sd">                - &quot;3&quot;: Both DISABILITY and ESRD</span>
+<span class="sd">        esrd: bool</span>
+<span class="sd">            End-stage renal disease indicator with the following values for the payment year:</span>
+<span class="sd">                - False: no ESRD</span>
+<span class="sd">                - True: If the person is in any of the following statuses: ESRD dialysis, transplant, post graft.</span>
+<span class="sd">            The esrd variable is needed for New Enrollee models. If False, the New Enrollee scores for the beneficiary</span>
+<span class="sd">            will be missing. Set to False if not known to get the non—ESRD score, the most common situation.</span>
+
+<span class="sd">    OUTPUT PARAMETERS</span>
+<span class="sd">    -----------------</span>
+<span class="sd">        - &quot;risk_score&quot; : The risk score of the patient according to the given INPUT parameters.</span>
+<span class="sd">        - &quot;risk_score_age&quot; : The risk score related to the patient&#39;s age.</span>
+<span class="sd">        - &quot;risk_score_adj&quot; : The patient&#39;s risk score in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</span>
+<span class="sd">        - &quot;risk_score_age_adj&quot; : The risk score related to the patient&#39;s age in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</span>
+<span class="sd">        - &quot;details&quot;: The dictionary of coefficients and risk scores.</span>
+<span class="sd">        - &quot;rxhcc_lst&quot; : The list of RxHCC&#39;s before interaction.</span>
+<span class="sd">        - &quot;rxhcc_map&quot; : The dictionary of RxHCC mapping before applying hierarchy.</span>
+<span class="sd">        - &quot;model&quot; : The model of the CMS-RxHCC.</span>
+<span class="sd">        - &quot;parameters&quot; : The information of the parameters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
+    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyRxHCCV05Y20</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
+                                                                 <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
+                                                                 <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">esrd</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="profileRxHCCV05Y21"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileRxHCCV05Y21">[docs]</a><span class="k">def</span> <span class="nf">profileRxHCCV05Y21</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CE_NoLowAged&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">esrd</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CMS-RxHCC risk adjustment module: version 05, year 2021.</span>
+<span class="sd">    Returns the RxHCC risk profile of a given patient information.</span>
+<span class="sd">    It may throw an exception if there is an illegal argument in the input parameters.</span>
+
+<span class="sd">    INPUT PARAMETERS</span>
+<span class="sd">    ----------------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">            A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">            The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">            The sex of the patient.</span>
+<span class="sd">                - &quot;M&quot; : Male</span>
+<span class="sd">                - &quot;F&quot; : Female</span>
+<span class="sd">        elig : str</span>
+<span class="sd">            The eligibility segment of the patient. The risk score can vary when different &quot;elig&quot; are used.</span>
+<span class="sd">            There are five risk adjustable continuing models and three new enrollee models.</span>
+<span class="sd">               - &quot;CE_NoLowAged&quot;: Community, Non-Low Income, Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_NoLowNoAged&quot;: Community, Non-Low Income, Non-Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LowAged&quot;: Community, Low Income, Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LowNoAged&quot;: Community, Low Income, Non-Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LTI&quot;: Institutional Continuing Enrollee</span>
+<span class="sd">               - &quot;NE_NoLo&quot;: Community, Non-Low Income, New Enrollee</span>
+<span class="sd">               - &quot;NE_Lo&quot;: Community, Low Income, New Enrollee</span>
+<span class="sd">               - &quot;NE_LTI&quot;: Institutional New Enrollee</span>
+<span class="sd">            The term &quot;Non-Aged&quot; is used for those younger than 65 because this group includes beneficiaries eligible</span>
+<span class="sd">            for Medicare because of end-stage renal disease(ESRD) as well as those eligible because of disability.</span>
+<span class="sd">        orec: str</span>
+<span class="sd">            Original reason for entitlement code.</span>
+<span class="sd">                - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">                - &quot;1&quot;: Disability insurance benefits (DISABILITY)</span>
+<span class="sd">                - &quot;2&quot;: End-stage renal disease (ESRD)</span>
+<span class="sd">                - &quot;3&quot;: Both DISABILITY and ESRD</span>
+<span class="sd">        esrd: bool</span>
+<span class="sd">            End-stage renal disease indicator with the following values for the payment year:</span>
+<span class="sd">                - False: no ESRD</span>
+<span class="sd">                - True: If the person is in any of the following statuses: ESRD dialysis, transplant, post graft.</span>
+<span class="sd">            The esrd variable is needed for New Enrollee models. If False, the New Enrollee scores for the beneficiary</span>
+<span class="sd">            will be missing. Set to False if not known to get the non—ESRD score, the most common situation.</span>
+
+<span class="sd">    OUTPUT PARAMETERS</span>
+<span class="sd">    -----------------</span>
+<span class="sd">        - &quot;risk_score&quot; : The risk score of the patient according to the given INPUT parameters.</span>
+<span class="sd">        - &quot;risk_score_age&quot; : The risk score related to the patient&#39;s age.</span>
+<span class="sd">        - &quot;risk_score_adj&quot; : The patient&#39;s risk score in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</span>
+<span class="sd">        - &quot;risk_score_age_adj&quot; : The risk score related to the patient&#39;s age in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</span>
+<span class="sd">        - &quot;details&quot;: The dictionary of coefficients and risk scores.</span>
+<span class="sd">        - &quot;rxhcc_lst&quot; : The list of RxHCC&#39;s before interaction.</span>
+<span class="sd">        - &quot;rxhcc_map&quot; : The dictionary of RxHCC mapping before applying hierarchy.</span>
+<span class="sd">        - &quot;model&quot; : The model of the CMS-RxHCC.</span>
+<span class="sd">        - &quot;parameters&quot; : The information of the parameters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
+    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyRxHCCV05Y21</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
+                                                                      <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
+                                                                      <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">esrd</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="profileRxHCCV05Y22"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileRxHCCV05Y22">[docs]</a><span class="k">def</span> <span class="nf">profileRxHCCV05Y22</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CE_NoLowAged&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">esrd</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CMS-RxHCC risk adjustment module: version 05, year 2022.</span>
+<span class="sd">    Returns the RxHCC risk profile of a given patient information.</span>
+<span class="sd">    It may throw an exception if there is an illegal argument in the input parameters.</span>
+
+<span class="sd">    INPUT PARAMETERS</span>
+<span class="sd">    ----------------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">            A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">            The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">            The sex of the patient.</span>
+<span class="sd">                - &quot;M&quot; : Male</span>
+<span class="sd">                - &quot;F&quot; : Female</span>
+<span class="sd">        elig : str</span>
+<span class="sd">            The eligibility segment of the patient. The risk score can vary when different &quot;elig&quot; are used.</span>
+<span class="sd">            There are five risk adjustable continuing models and three new enrollee models.</span>
+<span class="sd">               - &quot;CE_NoLowAged&quot;: Community, Non-Low Income, Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_NoLowNoAged&quot;: Community, Non-Low Income, Non-Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LowAged&quot;: Community, Low Income, Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LowNoAged&quot;: Community, Low Income, Non-Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LTI&quot;: Institutional Continuing Enrollee</span>
+<span class="sd">               - &quot;NE_NoLo&quot;: Community, Non-Low Income, New Enrollee</span>
+<span class="sd">               - &quot;NE_Lo&quot;: Community, Low Income, New Enrollee</span>
+<span class="sd">               - &quot;NE_LTI&quot;: Institutional New Enrollee</span>
+<span class="sd">            The term &quot;Non-Aged&quot; is used for those younger than 65 because this group includes beneficiaries eligible</span>
+<span class="sd">            for Medicare because of end-stage renal disease(ESRD) as well as those eligible because of disability.</span>
+<span class="sd">        orec: str</span>
+<span class="sd">            Original reason for entitlement code.</span>
+<span class="sd">                - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">                - &quot;1&quot;: Disability insurance benefits (DISABILITY)</span>
+<span class="sd">                - &quot;2&quot;: End-stage renal disease (ESRD)</span>
+<span class="sd">                - &quot;3&quot;: Both DISABILITY and ESRD</span>
+<span class="sd">        esrd: bool</span>
+<span class="sd">            End-stage renal disease indicator with the following values for the payment year:</span>
+<span class="sd">                - False: no ESRD</span>
+<span class="sd">                - True: If the person is in any of the following statuses: ESRD dialysis, transplant, post graft.</span>
+<span class="sd">            The esrd variable is needed for New Enrollee models. If False, the New Enrollee scores for the beneficiary</span>
+<span class="sd">            will be missing. Set to False if not known to get the non—ESRD score, the most common situation.</span>
+
+<span class="sd">    OUTPUT PARAMETERS</span>
+<span class="sd">    -----------------</span>
+<span class="sd">        - &quot;risk_score&quot; : The risk score of the patient according to the given INPUT parameters.</span>
+<span class="sd">        - &quot;risk_score_age&quot; : The risk score related to the patient&#39;s age.</span>
+<span class="sd">        - &quot;risk_score_adj&quot; : The patient&#39;s risk score in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</span>
+<span class="sd">        - &quot;risk_score_age_adj&quot; : The risk score related to the patient&#39;s age in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</span>
+<span class="sd">        - &quot;details&quot;: The dictionary of coefficients and risk scores.</span>
+<span class="sd">        - &quot;rxhcc_lst&quot; : The list of RxHCC&#39;s before interaction.</span>
+<span class="sd">        - &quot;rxhcc_map&quot; : The dictionary of RxHCC mapping before applying hierarchy.</span>
+<span class="sd">        - &quot;model&quot; : The model of the CMS-RxHCC.</span>
+<span class="sd">        - &quot;parameters&quot; : The information of the parameters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
+    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyRxHCCV05Y22</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
+                                                                      <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
+                                                                      <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">esrd</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="profileRxHCCV05Y23"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileRxHCCV05Y23">[docs]</a><span class="k">def</span> <span class="nf">profileRxHCCV05Y23</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CE_NoLowAged&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">esrd</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CMS-RxHCC risk adjustment module: version 05, year 2023.</span>
+<span class="sd">    Returns the RxHCC risk profile of a given patient information.</span>
+<span class="sd">    It may throw an exception if there is an illegal argument in the input parameters.</span>
+
+<span class="sd">    INPUT PARAMETERS</span>
+<span class="sd">    ----------------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">            A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">            The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">            The sex of the patient.</span>
+<span class="sd">                - &quot;M&quot; : Male</span>
+<span class="sd">                - &quot;F&quot; : Female</span>
+<span class="sd">        elig : str</span>
+<span class="sd">            The eligibility segment of the patient. The risk score can vary when different &quot;elig&quot; are used.</span>
+<span class="sd">            There are five risk adjustable continuing models and three new enrollee models.</span>
+<span class="sd">               - &quot;CE_NoLowAged&quot;: Community, Non-Low Income, Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_NoLowNoAged&quot;: Community, Non-Low Income, Non-Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LowAged&quot;: Community, Low Income, Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LowNoAged&quot;: Community, Low Income, Non-Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LTI&quot;: Institutional Continuing Enrollee</span>
+<span class="sd">               - &quot;NE_NoLo&quot;: Community, Non-Low Income, New Enrollee</span>
+<span class="sd">               - &quot;NE_Lo&quot;: Community, Low Income, New Enrollee</span>
+<span class="sd">               - &quot;NE_LTI&quot;: Institutional New Enrollee</span>
+<span class="sd">            The term &quot;Non-Aged&quot; is used for those younger than 65 because this group includes beneficiaries eligible</span>
+<span class="sd">            for Medicare because of end-stage renal disease(ESRD) as well as those eligible because of disability.</span>
+<span class="sd">        orec: str</span>
+<span class="sd">            Original reason for entitlement code.</span>
+<span class="sd">                - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">                - &quot;1&quot;: Disability insurance benefits (DISABILITY)</span>
+<span class="sd">                - &quot;2&quot;: End-stage renal disease (ESRD)</span>
+<span class="sd">                - &quot;3&quot;: Both DISABILITY and ESRD</span>
+<span class="sd">        esrd: bool</span>
+<span class="sd">            End-stage renal disease indicator with the following values for the payment year:</span>
+<span class="sd">                - False: no ESRD</span>
+<span class="sd">                - True: If the person is in any of the following statuses: ESRD dialysis, transplant, post graft.</span>
+<span class="sd">            The esrd variable is needed for New Enrollee models. If False, the New Enrollee scores for the beneficiary</span>
+<span class="sd">            will be missing. Set to False if not known to get the non—ESRD score, the most common situation.</span>
+
+<span class="sd">    OUTPUT PARAMETERS</span>
+<span class="sd">    -----------------</span>
+<span class="sd">        - &quot;risk_score&quot; : The risk score of the patient according to the given INPUT parameters.</span>
+<span class="sd">        - &quot;risk_score_age&quot; : The risk score related to the patient&#39;s age.</span>
+<span class="sd">        - &quot;risk_score_adj&quot; : The patient&#39;s risk score in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</span>
+<span class="sd">        - &quot;risk_score_age_adj&quot; : The risk score related to the patient&#39;s age in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</span>
+<span class="sd">        - &quot;details&quot;: The dictionary of coefficients and risk scores.</span>
+<span class="sd">        - &quot;rxhcc_lst&quot; : The list of RxHCC&#39;s before interaction.</span>
+<span class="sd">        - &quot;rxhcc_map&quot; : The dictionary of RxHCC mapping before applying hierarchy.</span>
+<span class="sd">        - &quot;model&quot; : The model of the CMS-RxHCC.</span>
+<span class="sd">        - &quot;parameters&quot; : The information of the parameters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
+    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyRxHCCV05Y23</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
+                                                                      <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
+                                                                      <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">esrd</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="profileRxHCCV08Y22"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileRxHCCV08Y22">[docs]</a><span class="k">def</span> <span class="nf">profileRxHCCV08Y22</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CE_NoLowAged&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">esrd</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CMS-RxHCC risk adjustment module: version 08, year 2022.</span>
+<span class="sd">    Returns the RxHCC risk profile of a given patient information.</span>
+<span class="sd">    It may throw an exception if there is an illegal argument in the input parameters.</span>
+
+<span class="sd">    INPUT PARAMETERS</span>
+<span class="sd">    ----------------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">            A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">            The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">            The sex of the patient.</span>
+<span class="sd">                - &quot;M&quot; : Male</span>
+<span class="sd">                - &quot;F&quot; : Female</span>
+<span class="sd">        elig : str</span>
+<span class="sd">            The eligibility segment of the patient. The risk score can vary when different &quot;elig&quot; are used.</span>
+<span class="sd">            There are five risk adjustable continuing models and three new enrollee models.</span>
+<span class="sd">               - &quot;CE_NoLowAged&quot;: Community, Non-Low Income, Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_NoLowNoAged&quot;: Community, Non-Low Income, Non-Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LowAged&quot;: Community, Low Income, Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LowNoAged&quot;: Community, Low Income, Non-Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LTI&quot;: Institutional Continuing Enrollee</span>
+<span class="sd">               - &quot;NE_NoLo&quot;: Community, Non-Low Income, New Enrollee</span>
+<span class="sd">               - &quot;NE_Lo&quot;: Community, Low Income, New Enrollee</span>
+<span class="sd">               - &quot;NE_LTI&quot;: Institutional New Enrollee</span>
+<span class="sd">            The term &quot;Non-Aged&quot; is used for those younger than 65 because this group includes beneficiaries eligible</span>
+<span class="sd">            for Medicare because of end-stage renal disease(ESRD) as well as those eligible because of disability.</span>
+<span class="sd">        orec: str</span>
+<span class="sd">            Original reason for entitlement code.</span>
+<span class="sd">                - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">                - &quot;1&quot;: Disability insurance benefits (DISABILITY)</span>
+<span class="sd">                - &quot;2&quot;: End-stage renal disease (ESRD)</span>
+<span class="sd">                - &quot;3&quot;: Both DISABILITY and ESRD</span>
+<span class="sd">        esrd: bool</span>
+<span class="sd">            End-stage renal disease indicator with the following values for the payment year:</span>
+<span class="sd">                - False: no ESRD</span>
+<span class="sd">                - True: If the person is in any of the following statuses: ESRD dialysis, transplant, post graft.</span>
+<span class="sd">            The esrd variable is needed for New Enrollee models. If False, the New Enrollee scores for the beneficiary</span>
+<span class="sd">            will be missing. Set to False if not known to get the non—ESRD score, the most common situation.</span>
+
+<span class="sd">    OUTPUT PARAMETERS</span>
+<span class="sd">    -----------------</span>
+<span class="sd">        - &quot;risk_score&quot; : The risk score of the patient according to the given INPUT parameters.</span>
+<span class="sd">        - &quot;risk_score_age&quot; : The risk score related to the patient&#39;s age.</span>
+<span class="sd">        - &quot;risk_score_adj&quot; : The patient&#39;s risk score in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</span>
+<span class="sd">        - &quot;risk_score_age_adj&quot; : The risk score related to the patient&#39;s age in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</span>
+<span class="sd">        - &quot;details&quot;: The dictionary of coefficients and risk scores.</span>
+<span class="sd">        - &quot;rxhcc_lst&quot; : The list of RxHCC&#39;s before interaction.</span>
+<span class="sd">        - &quot;rxhcc_map&quot; : The dictionary of RxHCC mapping before applying hierarchy.</span>
+<span class="sd">        - &quot;model&quot; : The model of the CMS-RxHCC.</span>
+<span class="sd">        - &quot;parameters&quot; : The information of the parameters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
+    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyRxHCCV08Y22</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
+                                                                      <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
+                                                                      <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">esrd</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="profileRxHCCV08Y23"><a class="viewcode-back" href="../../reference/autosummary/sparknlp_jsl/functions/index.html#sparknlp_jsl.functions.profileRxHCCV08Y23">[docs]</a><span class="k">def</span> <span class="nf">profileRxHCCV08Y23</span><span class="p">(</span><span class="n">code_array</span><span class="p">,</span> <span class="n">age</span><span class="p">,</span> <span class="n">sex</span><span class="p">,</span> <span class="n">elig</span><span class="o">=</span><span class="s2">&quot;CE_NoLowAged&quot;</span><span class="p">,</span> <span class="n">orec</span><span class="o">=</span><span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="n">esrd</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The CMS-RxHCC risk adjustment module: version 08, year 2023.</span>
+<span class="sd">    Returns the RxHCC risk profile of a given patient information.</span>
+<span class="sd">    It may throw an exception if there is an illegal argument in the input parameters.</span>
+
+<span class="sd">    INPUT PARAMETERS</span>
+<span class="sd">    ----------------</span>
+<span class="sd">        code_array : list of str</span>
+<span class="sd">            A list of ICD10 codes for the measurement year.</span>
+<span class="sd">        age : int</span>
+<span class="sd">            The age of the patient.</span>
+<span class="sd">        sex : str</span>
+<span class="sd">            The sex of the patient.</span>
+<span class="sd">                - &quot;M&quot; : Male</span>
+<span class="sd">                - &quot;F&quot; : Female</span>
+<span class="sd">        elig : str</span>
+<span class="sd">            The eligibility segment of the patient. The risk score can vary when different &quot;elig&quot; are used.</span>
+<span class="sd">            There are five risk adjustable continuing models and three new enrollee models.</span>
+<span class="sd">               - &quot;CE_NoLowAged&quot;: Community, Non-Low Income, Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_NoLowNoAged&quot;: Community, Non-Low Income, Non-Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LowAged&quot;: Community, Low Income, Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LowNoAged&quot;: Community, Low Income, Non-Aged, Continuing Enrollee</span>
+<span class="sd">               - &quot;CE_LTI&quot;: Institutional Continuing Enrollee</span>
+<span class="sd">               - &quot;NE_NoLo&quot;: Community, Non-Low Income, New Enrollee</span>
+<span class="sd">               - &quot;NE_Lo&quot;: Community, Low Income, New Enrollee</span>
+<span class="sd">               - &quot;NE_LTI&quot;: Institutional New Enrollee</span>
+<span class="sd">            The term &quot;Non-Aged&quot; is used for those younger than 65 because this group includes beneficiaries eligible</span>
+<span class="sd">            for Medicare because of end-stage renal disease(ESRD) as well as those eligible because of disability.</span>
+<span class="sd">        orec: str</span>
+<span class="sd">            Original reason for entitlement code.</span>
+<span class="sd">                - &quot;0&quot;: Old age and survivor&#39;s insurance</span>
+<span class="sd">                - &quot;1&quot;: Disability insurance benefits (DISABILITY)</span>
+<span class="sd">                - &quot;2&quot;: End-stage renal disease (ESRD)</span>
+<span class="sd">                - &quot;3&quot;: Both DISABILITY and ESRD</span>
+<span class="sd">        esrd: bool</span>
+<span class="sd">            End-stage renal disease indicator with the following values for the payment year:</span>
+<span class="sd">                - False: no ESRD</span>
+<span class="sd">                - True: If the person is in any of the following statuses: ESRD dialysis, transplant, post graft.</span>
+<span class="sd">            The esrd variable is needed for New Enrollee models. If False, the New Enrollee scores for the beneficiary</span>
+<span class="sd">            will be missing. Set to False if not known to get the non—ESRD score, the most common situation.</span>
+
+<span class="sd">    OUTPUT PARAMETERS</span>
+<span class="sd">    -----------------</span>
+<span class="sd">        - &quot;risk_score&quot; : The risk score of the patient according to the given INPUT parameters.</span>
+<span class="sd">        - &quot;risk_score_age&quot; : The risk score related to the patient&#39;s age.</span>
+<span class="sd">        - &quot;risk_score_adj&quot; : The patient&#39;s risk score in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</span>
+<span class="sd">        - &quot;risk_score_age_adj&quot; : The risk score related to the patient&#39;s age in which the coding pattern(intensity) adjustment and normalization factor was included in the calculation.</span>
+<span class="sd">        - &quot;details&quot;: The dictionary of coefficients and risk scores.</span>
+<span class="sd">        - &quot;rxhcc_lst&quot; : The list of RxHCC&#39;s before interaction.</span>
+<span class="sd">        - &quot;rxhcc_map&quot; : The dictionary of RxHCC mapping before applying hierarchy.</span>
+<span class="sd">        - &quot;model&quot; : The model of the CMS-RxHCC.</span>
+<span class="sd">        - &quot;parameters&quot; : The information of the parameters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">SparkContext</span><span class="o">.</span><span class="n">_active_spark_context</span>
+    <span class="n">jc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">_jvm</span><span class="o">.</span><span class="n">com</span><span class="o">.</span><span class="n">johnsnowlabs</span><span class="o">.</span><span class="n">nlp</span><span class="o">.</span><span class="n">jsl</span><span class="o">.</span><span class="n">HCC</span><span class="o">.</span><span class="n">profileApplyRxHCCV08Y23</span><span class="p">(</span><span class="n">_to_java_column</span><span class="p">(</span><span class="n">code_array</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">age</span><span class="p">),</span>
+                                                                      <span class="n">_to_java_column</span><span class="p">(</span><span class="n">sex</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">elig</span><span class="p">),</span>
+                                                                      <span class="n">_to_java_column</span><span class="p">(</span><span class="n">orec</span><span class="p">),</span> <span class="n">_to_java_column</span><span class="p">(</span><span class="n">esrd</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Column</span><span class="p">(</span><span class="n">jc</span><span class="p">)</span></div>
+
 </pre></div>
 
                 </article>

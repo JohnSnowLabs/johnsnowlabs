@@ -322,6 +322,8 @@ document.write(`
 
 
 <div class="viewcode-block" id="FilteringParams"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/filtering_params/index.html#sparknlp_jsl.annotator.filtering_params.FilteringParams">[docs]</a><span class="k">class</span> <span class="nc">FilteringParams</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; It is a base class that contains filtering functions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="FilteringParams.blackList"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/filtering_params/index.html#sparknlp_jsl.annotator.filtering_params.FilteringParams.blackList">[docs]</a>    <span class="n">blackList</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;blackList&quot;</span><span class="p">,</span> <span class="s2">&quot;If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels&quot;</span><span class="p">,</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
 
@@ -367,15 +369,18 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">whiteList</span> <span class="o">=</span> <span class="n">value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="FilteringParams.criteria"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/filtering_params/index.html#sparknlp_jsl.annotator.filtering_params.FilteringParams.criteria">[docs]</a>    <span class="n">criteria</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;criteria&quot;</span><span class="p">,</span> <span class="s2">&quot;Tag representing dates in the obfuscate reference file (Default: isin)&quot;</span><span class="p">,</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
+<div class="viewcode-block" id="FilteringParams.criteria"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/filtering_params/index.html#sparknlp_jsl.annotator.filtering_params.FilteringParams.criteria">[docs]</a>    <span class="n">criteria</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;criteria&quot;</span><span class="p">,</span> <span class="s2">&quot;It is used to compare black and white listed values with the result of the Annotation.&quot;</span><span class="p">,</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FilteringParams.setCriteria"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/filtering_params/index.html#sparknlp_jsl.annotator.filtering_params.FilteringParams.setCriteria">[docs]</a>    <span class="k">def</span> <span class="nf">setCriteria</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets Tag representing dates in the obfuscate reference file (Default: isin)</span>
-
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;It is used to compare black and white listed values with the result of the Annotation.</span>
+<span class="sd">        Possible values are the following: &#39;isin&#39;, &#39;regex&#39;. Default: &#39;isin&#39;.</span>
+<span class="sd">        isin : Filter by the chunk</span>
+<span class="sd">        regex : Filter by using a regex</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        value : string</span>
-<span class="sd">            Tag representing dates in the obfuscate reference file (Default: isin)</span>
+<span class="sd">            It is used to compare black and white listed values with the result of the Annotation.</span>
+<span class="sd">            Possible values are the following: &#39;isin&#39;, &#39;regex&#39;. Default: &#39;isin&#39;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">criteria</span> <span class="o">=</span> <span class="n">value</span><span class="p">)</span></div>
 
@@ -391,19 +396,38 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">regex</span> <span class="o">=</span> <span class="n">value</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="FilteringParams.entitiesConfidence"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/filtering_params/index.html#sparknlp_jsl.annotator.filtering_params.FilteringParams.entitiesConfidence">[docs]</a>    <span class="n">entitiesConfidence</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;entitiesConfidence&quot;</span><span class="p">,</span> <span class="s2">&quot;null&quot;</span><span class="p">,</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">identity</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="FilteringParams.filterValue"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/filtering_params/index.html#sparknlp_jsl.annotator.filtering_params.FilteringParams.filterValue">[docs]</a>    <span class="n">filterValue</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;filterValue&quot;</span><span class="p">,</span> <span class="s2">&quot;possibles values result|entity&quot;</span><span class="p">,</span> <span class="n">typeConverter</span> <span class="o">=</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="FilteringParams.setFilterValue"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/filtering_params/index.html#sparknlp_jsl.annotator.filtering_params.FilteringParams.setFilterValue">[docs]</a>    <span class="k">def</span> <span class="nf">setFilterValue</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets possibles values result|entity</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets possible values &#39;result&#39; or &#39;entity&#39;.</span>
+<span class="sd">        If the value is &#39;result&#39;, It filters according to the result of the Annotation.</span>
+<span class="sd">        If the value is &#39;entity&#39;, It filters according to the entity field in the metadata of the Annotation.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        value : string</span>
-<span class="sd">            possibles values result|entity</span>
+<span class="sd">            possible values are &#39;result&#39; and &#39;entity&#39;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">filterValue</span> <span class="o">=</span> <span class="n">value</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">filterValue</span> <span class="o">=</span> <span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FilteringParams.caseSensitive"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/filtering_params/index.html#sparknlp_jsl.annotator.filtering_params.FilteringParams.caseSensitive">[docs]</a>    <span class="n">caseSensitive</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
+        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
+        <span class="s2">&quot;caseSensitive&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Determines whether the definitions of the white listed entities are case sensitive or not.&quot;</span><span class="p">,</span>
+        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span></div>
+    <span class="p">)</span>
+
+<div class="viewcode-block" id="FilteringParams.setCaseSensitive"><a class="viewcode-back" href="../../../reference/autosummary/sparknlp_jsl/annotator/filtering_params/index.html#sparknlp_jsl.annotator.filtering_params.FilteringParams.setCaseSensitive">[docs]</a>    <span class="k">def</span> <span class="nf">setCaseSensitive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Determines whether the definitions of the white listed and black listed entities are case sensitive or not.</span>
+<span class="sd">        If the filterValue is &#39;entity&#39;, &#39;caseSensitive&#39; is always False.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : bool</span>
+<span class="sd">           Whether white listed and black listed entities are case sensitive or not. Default: True.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">caseSensitive</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div></div>
+
 
 </pre></div>
 
