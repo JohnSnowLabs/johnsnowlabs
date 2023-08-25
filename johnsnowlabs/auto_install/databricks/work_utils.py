@@ -1,5 +1,6 @@
 import inspect
 import os.path
+import time
 from pathlib import Path
 from types import ModuleType
 from typing import Callable, Optional, List, Any
@@ -7,6 +8,57 @@ from typing import Callable, Optional, List, Any
 from johnsnowlabs.auto_install.databricks.dbfs import *
 from johnsnowlabs.auto_install.databricks.install_utils import create_cluster
 from johnsnowlabs.utils.file_utils import path_tail, str_to_file
+
+
+class LifeCycleState:
+    PENDING = "PENDING"
+    RUNNING = "RUNNING"
+    TERMINATING = "TERMINATING"
+    TERMINATED = "TERMINATED"
+    SKIPPED = "SKIPPED"
+    INTERNAL_ERROR = "INTERNAL_ERROR"
+    BLOCKED = "BLOCKED"
+    WAITING_FOR_RETRY = "WAITING_FOR_RETRY"
+
+    end_states = [
+        TERMINATING,
+        TERMINATED,
+        SKIPPED,
+        INTERNAL_ERROR,
+        BLOCKED,
+    ]
+
+    wait_states = [
+        PENDING,
+        RUNNING,
+    ]
+
+
+class ResultState:
+    SUCCESS = "SUCCESS"
+    FAILED = "FAILED"
+    TIMEDOUT = "TIMEDOUT"
+    CANCELED = "CANCELED"
+    MAXIMUM_CONCURRENT_RUNS_REACHED = "MAXIMUM_CONCURRENT_RUNS_REACHED"
+    EXCLUDED = "EXCLUDED"
+    SUCCESS_WITH_FAILURES = "SUCCESS_WITH_FAILURES"
+    UPSTREAM_FAILED = "UPSTREAM_FAILED"
+    UPSTREAM_CANCELED = "UPSTREAM_CANCELED"
+
+    wait_states = []
+
+    end_states = [
+        SUCCESS,
+        FAILED,
+        FAILED,
+        TIMEDOUT,
+        CANCELED,
+        MAXIMUM_CONCURRENT_RUNS_REACHED,
+        EXCLUDED,
+        SUCCESS_WITH_FAILURES,
+        UPSTREAM_FAILED,
+        UPSTREAM_CANCELED,
+    ]
 
 
 def create_job_in_databricks(
@@ -196,14 +248,32 @@ def run_in_databricks(
     databricks_token: Optional[str] = None,
     databricks_host: Optional[str] = None,
     run_name: str = None,
-    databricks_password: Optional[str] = None,
-    databricks_email: Optional[str] = None,
+    block_till_complete=True,
 ):
     from johnsnowlabs.auto_install.databricks.install_utils import (
         get_db_client_for_token,
     )
 
     db_client = get_db_client_for_token(databricks_host, databricks_token)
-    return run_local_py_script_as_task(
+    job_id = run_local_py_script_as_task(
         db_client, py_script_path, cluster_id=databricks_cluster_id, run_name=run_name
     )
+
+    if not block_till_complete:
+        return job_id
+    job_done = False
+    link_logged = False
+    while not job_done:
+        job_status = checkon_db_task(db_client, job_id)
+        if not link_logged and "run_page_url" in job_status:
+            print(f"You can monitor the job at {job_status['run_page_url']}")
+            link_logged = True
+
+        if "result_state" in job_status["state"]:
+            print(f"Job has a result! its {job_status['state']}")
+            return job_status
+        elif "life_cycle_state" in job_status["state"]:
+            print(
+                f"Waiting 30 seconds, job {job_id}  is still running, its {job_status['state']}"
+            )
+        time.sleep(30)
