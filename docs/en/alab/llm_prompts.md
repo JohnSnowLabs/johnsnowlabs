@@ -3,7 +3,7 @@ layout: docs
 comment: no
 header: true
 seotitle: NLP Lab | John Snow Labs
-title: Prompts
+title: LLM Prompts
 permalink: /docs/en/alab/llm_prompts
 key: docs-training
 modify_date: "2023-08-19"
@@ -20,29 +20,54 @@ es {
 }
 </style>
 
-NLP Lab offers support for prompt engineering. On the `Prompts` page, from the resources `HUB`, users can easily discover and explore the existing prompts or create new prompts for identifying entities or relations. Currently, NLP Lab supports prompts for Healthcare, Finance, and Legal domains applied using pre-trained question-answering language models published on the NLP Models Hub and available to download in one click. The main advantage behind the use of prompts in entity or relation recognition is the ease of definition. Non-technical domain experts can easily create prompts, test and edit them on the `Playground` on custom text snippets and, when ready, deploy them for pre-annotation as part of larger NLP projects. Together with rules, prompts are very handy in situations where no pre-trained models exist, for the target entities and domains. With rules and prompts the annotators never start their projects from scratch but can capitalize on the power of zero-shot models and rules to help them pre-annotate the simple entities and relations and speed up the annotation process. As such, the NLP Lab ensures fewer manual annotations are required from any given task.
+## Entity Extraction and Pre-Annotation via GPT Prompting
 
-## Creating NER Prompts
+The highlight of this release is the integration with an external service provider, Open AI, to expand and deepen the range of prompts available for pre-annotation (in addition to the Zero Shot entity and relation prompts already supported). This feature:.
 
-NER prompts, can be used to identify entities in natural language text documents. Those can be created based on healthcare, finance, and legal zero-shot models selectable from the "Domain" dropdown. For one prompt, the user adds one or more questions for which the answer represents the target entity to annotate.
+- **Broadens Prompt Possibilities**: By integrating with Open AI LLM models, users can tap into a more diverse set of prompts, leveraging external expertise to craft pre-annotations, as an alternative pre-annotation solution or when pre-trained models are not available.
 
-   ![entity_prompt](https://user-images.githubusercontent.com/26042994/211890279-2ea02cd5-36fa-4b56-86fd-38b0c20ba880.gif)
+- **Efficient Entity Extraction**: As current LLMs, GPT family included, are not very good at entity recognition tasks, NLP Lab included a post-processing step on the result provided by LLM. This improves entity identification and helps precisely locate the entities in the given text. These entities, carefully curated and aligned with NLP Lab pre-annotation requirements pave the way for a more efficient and streamlined annotation experience.
 
-## Creating Relation Prompts
+The following sections explain in detail how to define and use GPT prompts. 
 
-Prompts can also be used to identify relations between entities for healthcare, finance, and legal domains. The domain-specific zero-shot model to use for detecting relation can be selected from the "Domain" dropdown. The relation prompts are defined by a pair of entities related by a predicate. The entities can be selected from the available dropdowns listing all entities available in the current NLP Lab (included in available NER models, prompts or rules) for the specified domain. 
-   
-   ![relation_prompt](https://user-images.githubusercontent.com/26042994/211890317-362f193c-b80b-4caa-b242-69df6fa8a257.gif)
+### Setting Up the Integration with Open AI service
+Integrating “ChatGPT” into the NLP Lab has been designed to be a straightforward process, ensuring users can harness the power of external expertise seamlessly. It consists of three easy steps:
 
-## Mix and Match models, rules, and prompts
+**Integrations Page**: Navigate to the Integrations Page located within the System Settings. This is the hub where all external service providers, including Open AI’s GPT Models, can be defined and managed.
 
-The project configuration page was simplified by grouping into one page all available resources that can be reused for pre-annotation: models, rules, and prompts. Users can easily mix and match the relevant resources and add them to their configuration. 
+![Integration](https://github.com/JohnSnowLabs/annotationlab/assets/57619662/7c1fa3b2-c472-488d-b8aa-b0a9be5e05d3)
 
-![updated_configuration_page](https://user-images.githubusercontent.com/26042994/211890361-14c5b17c-762d-4d0a-a6a6-0ac235565aa0.gif)
+**Define the Service Provider**: To initiate the integration, users are required to provide specific details:
+- **Service Provider Name**: This is the identifier for the external service, which in this case would be “ChatGPT” or any other name you prefer to use.
+- **Secret Key**: Every external service comes with a unique Secret Key that ensures secure communication between the platforms. Enter the Secret Key associated with your Open AI subscription here. To ensure the integration process is error-free, users can validate the provided Secret Key directly within the form. This validation step ensures that the connection is secure and that the key is correct.
 
-**Note:** One project configuration can only reuse the prompts defined by one single zero-shot model. Prompts created based on multiple zero-shot models (e.g. finance or legal or healthcare) cannot be mixed into the same project because of high resource consumption. Furthermore, all prompts require a license with a scope that matches the domain of the prompt.
+**Project Association**: Once a successful connection with “ChatGPT” (or any external LLM service provider) is established, it doesn't end there. The integrated service will now be available for association with selected projects. This means users can decide which projects will benefit from the “ChatGPT” integration and enable it accordingly.
+The Open AI integration allows users to tap into a vast reservoir of external expertise, enhancing the depth and breadth of their projects. We've ensured that the integration process is as intuitive as possible, allowing users to focus on what truly matters: crafting refined and effective pre-annotations.
 
-## Zero-Shot Models available in the NLP Models Hub
-NLP Models Hub now lists the newly released zero-shot models that are used to define prompts. These models need to be downloaded to NLP Lab instance before prompts can be created. A valid license must be available for the models to be downloaded to NLP Lab.
 
-![Zero-shot-models](https://user-images.githubusercontent.com/26042994/211890478-3aa90dfc-f474-42c8-a73f-ce6c3efecbbe.png)
+### ChatGPT Prompt Definition and Testing
+Users can generate LLM prompts on the dedicated Prompt page from the Hub of Resources. For ChatGPT Prompts, NLP Lab offers a dedicated definition interface. Here's what to expect when creating a new LLM prompt:
+
+- **Name the Prompt**: Within this new tab, users will first be asked to provide a name for their prompt. This name will be used for pre-annotating identified entities. At this point, we recommend creating one prompt per target entity.
+
+- **Select the Service Provider**: Next, users can choose the specific service provider they've previously set up via the Integrations Page.
+
+- **Test in Real-time**: A standout feature is the ability to test ChatGPT prompts at creation time. As you craft your prompt, you can immediately see how it performs on some test data. This not only allows for immediate feedback but also ensures that the final prompt aligns perfectly with the user's objectives.
+
+This streamlined approach ensures that integrating and testing external prompts is as intuitive and efficient as possible.
+
+
+![TestingPrompt](https://github.com/JohnSnowLabs/annotationlab/assets/57619662/720eb4ac-0d73-4a06-8262-670abf01c94d)
+
+### Consistent Workflow with LLM Prompts
+Even with the introduction of new features in NLP Lab's 5.3.0 release, users can take comfort in the consistent experience offered when working with prompts. The addition of external service provider prompts brings a fresh layer to the annotation process, yet the core workflow you're familiar with stays the same.
+
+- **Familiarity Amidst Innovation**: Despite the new integrations, the process of using available prompts remains as straightforward as ever. Whether you're working with traditional prompts or the newly introduced ones, the experience is smooth and consistent.
+
+- **Seamless Transition**: Our commitment to user-centric design means that even as we innovate, we prioritize the ease of use you've come to expect. Transitioning to or incorporating external prompts is made effortless, with the interface and steps for prompt creation, selection, and integration remaining intuitive and unchanged.
+
+With NLP Lab 5.3.0, you get the best of both worlds: exciting new features and the comfort of a familiar workflow.
+
+![featureDis](https://github.com/JohnSnowLabs/annotationlab/assets/33893292/9cfdded6-abb5-4ef1-adea-7901c76877dc)
+
+> **Note:** Pre-annotation of tasks using LLM Prompts does not require the deployment of the pre-annotation server. The pop-up to deploy the pre-annotation server is only shown if the project configuration consists of both LLM prompts and spark NLP models.

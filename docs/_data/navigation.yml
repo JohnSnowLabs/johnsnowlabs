@@ -85,8 +85,8 @@ annotation-lab:
             url: /docs/en/alab/rules
           - title: Zero-Shot Prompts
             url: /docs/en/alab/zero_prompts
-#          - title: LLM Prompts (ChatGPT)
-#            url: /docs/en/alab/llm_prompts   
+          - title: LLM Prompts (ChatGPT)
+            url: /docs/en/alab/llm_prompts   
           - title: Playground
             url: /docs/en/alab/playground                        
       - subtitle: Project
