@@ -4,7 +4,7 @@ title: Legal Deidentification Pipeline
 author: John Snow Labs
 name: legpipe_deid
 date: 2023-08-30
-tags: [licensed, en, finance, deid, deidentification, anonymization]
+tags: [licensed, en, legal, deid, deidentification, anonymization]
 task: Pipeline Legal
 language: en
 edition: Legal NLP 1.0.0
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee a 100% accuracy.
+This is a Pretrained Pipeline aimed to deidentify legal and financial documents to be compliant with data privacy regulations as GDPR and CCPA. Since the models used in this pipeline are statistical, make sure you use this model in a human-in-the-loop process to guarantee 100 % accuracy.
 
 You can carry out both masking and obfuscation with this pipeline, on the following entities: 
 `ALIAS`, `EMAIL`, `PHONE`, `PROFESSION`, `ORG`, `DATE`, `PERSON`, `ADDRESS`, `STREET`, `CITY`, `STATE`, `ZIP`, `COUNTRY`
