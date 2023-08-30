@@ -35,7 +35,7 @@ Integrating “ChatGPT” into the NLP Lab has been designed to be a straightfor
 
 **Integrations Page**: Navigate to the Integrations Page located within the System Settings. This is the hub where all external service providers, including Open AI’s GPT Models, can be defined and managed.
 
-![Integration](https://github.com/JohnSnowLabs/annotationlab/assets/57619662/7c1fa3b2-c472-488d-b8aa-b0a9be5e05d3)
+![Integration](/assets/images/annotation_lab/5.3.0/1.gif)
 
 **Define the Service Provider**: To initiate the integration, users are required to provide specific details:
 - **Service Provider Name**: This is the identifier for the external service, which in this case would be “ChatGPT” or any other name you prefer to use.
@@ -57,7 +57,7 @@ Users can generate LLM prompts on the dedicated Prompt page from the Hub of Reso
 This streamlined approach ensures that integrating and testing external prompts is as intuitive and efficient as possible.
 
 
-![TestingPrompt](https://github.com/JohnSnowLabs/annotationlab/assets/57619662/720eb4ac-0d73-4a06-8262-670abf01c94d)
+![Integration](/assets/images/annotation_lab/5.3.0/2.gif)
 
 ### Consistent Workflow with LLM Prompts
 Even with the introduction of new features in NLP Lab's 5.3.0 release, users can take comfort in the consistent experience offered when working with prompts. The addition of external service provider prompts brings a fresh layer to the annotation process, yet the core workflow you're familiar with stays the same.
@@ -68,6 +68,6 @@ Even with the introduction of new features in NLP Lab's 5.3.0 release, users can
 
 With NLP Lab 5.3.0, you get the best of both worlds: exciting new features and the comfort of a familiar workflow.
 
-![featureDis](https://github.com/JohnSnowLabs/annotationlab/assets/33893292/9cfdded6-abb5-4ef1-adea-7901c76877dc)
+![Integration](/assets/images/annotation_lab/5.3.0/3.gif)
 
 > **Note:** Pre-annotation of tasks using LLM Prompts does not require the deployment of the pre-annotation server. The pop-up to deploy the pre-annotation server is only shown if the project configuration consists of both LLM prompts and spark NLP models.
