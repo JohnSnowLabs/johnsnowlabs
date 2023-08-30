@@ -8,7 +8,7 @@ tags: [licensed, en, legal, deid, deidentification, anonymization]
 task: Pipeline Legal
 language: en
 edition: Legal NLP 1.0.0
-spark_version: 3.2
+spark_version: 3.4
 supported: true
 annotator: PipelineModel
 article_header:
@@ -26,8 +26,8 @@ You can carry out both masking and obfuscation with this pipeline, on the follow
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.2_1693403885669.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.2_1693403885669.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.4_1693404620643.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legpipe_deid_en_1.0.0_3.4_1693404620643.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -147,7 +147,7 @@ Source: SESA CO.., 11/7/2016
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
-|Size:|502.9 MB|
+|Size:|503.2 MB|
 
 ## Included Models
 
