@@ -8,7 +8,7 @@ tags: [licensed, en, finance, deid, deidentification, anonymization]
 task: Pipeline Finance
 language: en
 edition: Finance NLP 1.0.0
-spark_version: 3.2
+spark_version: 3.4
 supported: true
 annotator: PipelineModel
 article_header:
@@ -26,8 +26,8 @@ You can carry out both masking and obfuscation with this pipeline, on the follow
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finpipe_deid_en_1.0.0_3.2_1693403994104.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finpipe_deid_en_1.0.0_3.2_1693403994104.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/finance/models/finpipe_deid_en_1.0.0_3.4_1693405407355.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/finance/models/finpipe_deid_en_1.0.0_3.4_1693405407355.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -128,7 +128,7 @@ phone : 78 834 854
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
-|Size:|474.8 MB|
+|Size:|475.2 MB|
 
 ## Included Models
 
