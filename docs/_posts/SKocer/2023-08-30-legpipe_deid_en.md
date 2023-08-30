@@ -4,7 +4,7 @@ title: Legal Deidentification Pipeline
 author: John Snow Labs
 name: legpipe_deid
 date: 2023-08-30
-tags: [licensed, en, finance, deid, deidentification, anonymization]
+tags: [licensed, en, legal, deid, deidentification, anonymization]
 task: Pipeline Legal
 language: en
 edition: Legal NLP 1.0.0
