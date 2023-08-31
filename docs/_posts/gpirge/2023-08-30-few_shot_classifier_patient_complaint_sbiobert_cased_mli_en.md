@@ -46,12 +46,13 @@ The Text Classifier model has been trained using in-house annotated health-relat
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-bert_sent = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", 'en','clinical/models')\
+bert_sent = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("sentence_embeddings")
 
@@ -75,7 +76,7 @@ val document_assembler =new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val sentence_embeddings = new BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", 'en','clinical/models')
+val sentence_embeddings = new BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")
     .setInputCols("document")
     .setOutputCol("sentence_embeddings")
 
@@ -85,7 +86,8 @@ val few_shot_classifier = new FewShotClassifierModel.pretrained("few_shot_classi
 
 val clf_Pipeline = new Pipeline().setStages(Array(document_assembler, sentence_embeddings, few_shot_classifier))
 
-val data = Seq(Array("The Medical Center is a large state of the art hospital facility with great doctors, nurses, technicians and receptionists.  Service is top notch, knowledgeable and friendly.  This hospital site has plenty of parking", "My gf dad wasn’t feeling well so we decided to take him to this place cus it’s his insurance and we waited for a while and mind that my girl dad couldn’t breath good while the staff seem not to care and when they got to us they said they we’re gonna a take some blood samples and they made us wait again and to see the staff workers talking to each other and laughing taking there time and not seeming to care about there patience, while we were in the lobby there was another guy who told us they also made him wait while he can hardly breath and they left him there to wait my girl dad is coughing and not doing better and when the lady came in my girl dad didn’t have his shirt because he was hot and the lady came in said put on his shirt on and then left still waiting to get help rn")).toDS().toDF("text")
+val data = Seq(Array("The Medical Center is a large state of the art hospital facility with great doctors, nurses, technicians and receptionists.  Service is top notch, knowledgeable and friendly.  This hospital site has plenty of parking",
+"My gf dad wasn’t feeling well so we decided to take him to this place cus it’s his insurance and we waited for a while and mind that my girl dad couldn’t breath good while the staff seem not to care and when they got to us they said they we’re gonna a take some blood samples and they made us wait again and to see the staff workers talking to each other and laughing taking there time and not seeming to care about there patience, while we were in the lobby there was another guy who told us they also made him wait while he can hardly breath and they left him there to wait my girl dad is coughing and not doing better and when the lady came in my girl dad didn’t have his shirt because he was hot and the lady came in said put on his shirt on and then left still waiting to get help rn")).toDS().toDF("text")
 
 val result = clf_Pipeline.fit(data).transform(data)
 ```
