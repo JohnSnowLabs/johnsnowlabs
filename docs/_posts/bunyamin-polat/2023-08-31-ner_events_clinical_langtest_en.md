@@ -36,6 +36,7 @@ This model can be used to detect clinical events in medical text. It is the vers
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
