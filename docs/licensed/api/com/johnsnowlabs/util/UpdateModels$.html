@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 4.4.4 ScalaDoc  - com.johnsnowlabs.util.UpdateModels</title>
-          <meta name="description" content="Spark NLP 4.4.4 ScalaDoc - com.johnsnowlabs.util.UpdateModels" />
-          <meta name="keywords" content="Spark NLP 4.4.4 ScalaDoc com.johnsnowlabs.util.UpdateModels" />
+          <title>Spark NLP 5.0.2 ScalaDoc  - com.johnsnowlabs.util.UpdateModels</title>
+          <meta name="description" content="Spark NLP 5.0.2 ScalaDoc - com.johnsnowlabs.util.UpdateModels" />
+          <meta name="keywords" content="Spark NLP 5.0.2 ScalaDoc com.johnsnowlabs.util.UpdateModels" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 4.4.4 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.0.2 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -177,6 +177,10 @@
                         <span class="separator"></span>
                         <a class="object" href="ModelTracer$.html" title=""></a>
                         <a href="ModelTracer$.html" title="">ModelTracer</a>
+                      </li><li class="current-entities indented3">
+                        <span class="separator"></span>
+                        <a class="object" href="PythonUpdateModels$.html" title="convenience accessor for Py4J calls Scala Helper Class for python access"></a>
+                        <a href="PythonUpdateModels$.html" title="convenience accessor for Py4J calls Scala Helper Class for python access">PythonUpdateModels</a>
                       </li><li class="current-entities indented3">
                         <span class="separator"></span>
                         <a class="class" href="ResourceMetadataFolder.html" title=""></a>
@@ -739,10 +743,10 @@
       </span>
       
       
-    </li><li name="com.johnsnowlabs.util.UpdateModels#updateModels" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="updateModels(date_cutoff:String,cache_folder:String):Unit"></a><a id="updateModels(String,String):Unit"></a>
+    </li><li name="com.johnsnowlabs.util.UpdateModels#updateModels" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="updateModels(modelNames:List[String],language:String,remoteLoc:String,startDate:String,endDate:String,cacheFolder:String):Unit"></a><a id="updateModels(List[String],String,String,String,String,String):Unit"></a>
       <span class="permalink">
-      <a href="../../../com/johnsnowlabs/util/UpdateModels$.html#updateModels(date_cutoff:String,cache_folder:String):Unit" title="Permalink">
+      <a href="../../../com/johnsnowlabs/util/UpdateModels$.html#updateModels(modelNames:List[String],language:String,remoteLoc:String,startDate:String,endDate:String,cacheFolder:String):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -751,10 +755,14 @@
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">updateModels</span><span class="params">(<span name="date_cutoff">date_cutoff: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="cache_folder">cache_folder: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">updateModels</span><span class="params">(<span name="modelNames">modelNames: <span class="extype" name="scala.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="language">language: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;en&quot;</span></span>, <span name="remoteLoc">remoteLoc: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;clinical/models&quot;</span></span>, <span name="startDate">startDate: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>, <span name="endDate">endDate: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>, <span name="cacheFolder">cacheFolder: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;&quot;</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Downloads all given models by filtering parameters.</p><div class="fullcomment"><div class="comment cmt"><p>Downloads all given models by filtering parameters.
+If no cache_folder is specified, it will download the models in the default folder.
+Parameters
+----------</p></div><dl class="paramcmts block"><dt class="param">cacheFolder</dt><dd class="cmt"><p>: The path where the models will be downloaded. i.e (&quot;hdfs:..&quot;,&quot;file:...&quot;). Default: &quot;&quot;
+If no cacheFolder is specified, it will download the models in the default folder.</p></dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="wait():Unit"></a>
       <span class="permalink">

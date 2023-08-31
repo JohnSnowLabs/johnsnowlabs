@@ -402,6 +402,10 @@ document.write(`
                          <span class="s2">&quot;Model type&quot;</span><span class="p">,</span>
                          <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="MedicalTextGenerator.mlFrameworkType"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_text_generator/index.html#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.mlFrameworkType">[docs]</a>    <span class="n">mlFrameworkType</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;mlFrameworkType&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;ML framework type&quot;</span><span class="p">,</span>
+                      <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="MedicalTextGenerator.customPrompt"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_text_generator/index.html#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.customPrompt">[docs]</a>    <span class="n">customPrompt</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;customPrompt&quot;</span><span class="p">,</span>
                          <span class="s2">&quot;Custom prompt template&quot;</span><span class="p">,</span>
                          <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
@@ -470,7 +474,9 @@ document.write(`
             <span class="n">stopAtEos</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">useCache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">maxTextLength</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
-            <span class="n">customPrompt</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+            <span class="n">customPrompt</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">modelType</span><span class="o">=</span><span class="s2">&quot;Unknown&quot;</span><span class="p">,</span>
+            <span class="n">mlFrameworkType</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span>
         <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
