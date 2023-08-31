@@ -42,6 +42,7 @@ The Text Classifier model has been trained using in-house annotated health-relat
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -59,7 +60,7 @@ generic_classifier = GenericClassifierModel.pretrained("genericclassifier_patien
     .setInputCols(["features"])\
     .setOutputCol("prediction")
 
-pipeline = Pipeline(stages=[
+clf_Pipeline = Pipeline(stages=[
     document_assembler,
     sentence_embeddings,
     features_asm,
