@@ -43,6 +43,7 @@ The Text Classifier model has been trained using in-house annotated health-relat
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
