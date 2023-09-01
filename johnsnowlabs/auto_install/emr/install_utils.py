@@ -114,6 +114,7 @@ def create_emr_cluster(
                         "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
                         "spark.yarn.preserve.staging.files": "true",
                         "spark.yarn.stagingDir": "hdfs:///tmp",
+                        "spark.jsl.settings.aws.region": region,
                     },
                 },
             ],
@@ -225,6 +226,7 @@ sudo usermod -a -G hdfsadmingroup livy
 # Issue with EMR. See https://stackoverflow.com/questions/68406738/aws-emr-pandas-conflict-with-numpy-in-pyspark-after-bootstrapping
 sudo python3 -m pip uninstall -y numpy
 sudo python3 -m pip install "numpy>1.17.3"
+sudo python3 -m pip install scipy scikit-learn "tensorflow==2.11.0" tensorflow-addons
 exit 0
 """
     return upload_script_to_bucket(
