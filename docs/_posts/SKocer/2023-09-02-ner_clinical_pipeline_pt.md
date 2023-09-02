@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline to Detect Problem, Test and Treatment (Turkish)
+title: Pipeline to Detect Problem, Test and Treatment (Portuguese)
 author: John Snow Labs
 name: ner_clinical_pipeline
 date: 2023-09-02
