@@ -87,6 +87,8 @@ def install(
     cluster_source=None,
     instance_pool_id=None,
     headers=None,
+    clean_cluster=False,
+    write_db_credentials=True,
 ):
     if refresh_install and os.path.exists(settings.root_dir):
         shutil.rmtree(settings.root_dir)
@@ -156,7 +158,11 @@ def install(
 
         else:
             return create_cluster(
-                db=get_db_client_for_token(databricks_host, databricks_token),
+                medical_nlp=nlp,
+                spark_nlp=spark_nlp,
+                visual=visual,
+                databricks_host=databricks_host,
+                databricks_token=databricks_token,
                 install_suite=suite,
                 block_till_cluster_ready=block_till_cluster_ready,
                 num_workers=num_workers,
@@ -176,6 +182,8 @@ def install(
                 cluster_source=cluster_source,
                 instance_pool_id=instance_pool_id,
                 headers=headers,
+                clean_cluster=clean_cluster,
+                write_db_credentials=write_db_credentials,
             )
 
     # Local Py-Install
