@@ -7,7 +7,9 @@ from .utils.sparksession_utils import start
 from .auto_install.install_flow import install
 from johnsnowlabs.auto_install.databricks.work_utils import run_in_databricks
 from johnsnowlabs import settings, viz, lab
-
+from johnsnowlabs.auto_install.databricks.endpoints import (
+    query_and_deploy_if_missing,
+)
 from johnsnowlabs.abstract_base.lib_resolver import try_import_lib
 
 
