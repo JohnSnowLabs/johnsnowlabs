@@ -326,8 +326,8 @@ document.write(`
 
 <div class="viewcode-block" id="AssertionFilterer"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer">[docs]</a><span class="k">class</span> <span class="nc">AssertionFilterer</span><span class="p">(</span><span class="n">AnnotatorModelInternal</span><span class="p">,</span> <span class="n">FilteringParams</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Filters entities coming from ASSERTION type annotations and returns the CHUNKS.</span>
-<span class="sd">    Filters can be set via a white list on the extracted chunk, the assertion or a regular expression.</span>
-<span class="sd">    White list for assertion is enabled by default. To use chunk white list, ``criteria`` has to be set to ``isin``.</span>
+<span class="sd">    Filters can be set via white and black lists on the extracted chunk, the assertion or a regular expression.</span>
+<span class="sd">    White and black lists for assertion are enabled by default. To use chunk white list, ``criteria`` has to be set to ``isin``.</span>
 <span class="sd">    For regex, ``criteria`` has to be set to ``regex``.</span>
 
 <span class="sd">    ==============================  ======================</span>
@@ -338,17 +338,22 @@ document.write(`
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    whiteList</span>
-<span class="sd">        If defined, list of entities to process. The rest will be ignored</span>
-<span class="sd">    regex</span>
+
+<span class="sd">    whiteList: List[str]</span>
 <span class="sd">        If defined, list of entities to process. The rest will be ignored.</span>
-<span class="sd">    criteria</span>
-<span class="sd">           Tag representing what is the criteria to filter the chunks. possibles values (assertion|isIn|regex)</span>
+<span class="sd">    blackList: List[str]</span>
+<span class="sd">        If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels.</span>
+<span class="sd">    caseSensitive: bool</span>
+<span class="sd">        Determines whether the definitions of the white listed and black listed entities are case sensitive. Default: False.</span>
+<span class="sd">    regex: List[str]</span>
+<span class="sd">        If defined, list of regex to process the chunks.</span>
+<span class="sd">    criteria: str</span>
+<span class="sd">        It is used to compare black and white listed values with the result of the Annotation.</span>
+<span class="sd">        Possible values are the following: &#39;isin&#39;, &#39;regex&#39; and &#39;assertion&#39;.</span>
 <span class="sd">                assertion: Filter by the assertion</span>
-<span class="sd">                isIn : Filter by the chunk</span>
-<span class="sd">                regex : Filter using a regex</span>
-<span class="sd">    entitiesConfidence</span>
-<span class="sd">        Entity pairs to remove based on the confidence level</span>
+<span class="sd">                isin : Filter by the chunk</span>
+<span class="sd">                regex : Filter by using a regex</span>
+<span class="sd">            Default: assertion</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -407,55 +412,28 @@ document.write(`
 <div class="viewcode-block" id="AssertionFilterer.inputAnnotatorTypes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.inputAnnotatorTypes">[docs]</a>    <span class="n">inputAnnotatorTypes</span> <span class="o">=</span> <span class="p">[</span><span class="n">AnnotatorType</span><span class="o">.</span><span class="n">DOCUMENT</span><span class="p">,</span> <span class="n">AnnotatorType</span><span class="o">.</span><span class="n">CHUNK</span><span class="p">,</span> <span class="n">InternalAnnotatorType</span><span class="o">.</span><span class="n">ASSERTION</span><span class="p">]</span></div>
 <div class="viewcode-block" id="AssertionFilterer.outputAnnotatorType"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.outputAnnotatorType">[docs]</a>    <span class="n">outputAnnotatorType</span> <span class="o">=</span> <span class="n">AnnotatorType</span><span class="o">.</span><span class="n">CHUNK</span></div>
 
-<div class="viewcode-block" id="AssertionFilterer.name"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ChunksFilter&quot;</span></div>
-
-<div class="viewcode-block" id="AssertionFilterer.whiteList"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.whiteList">[docs]</a>    <span class="n">whiteList</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
-        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-        <span class="s2">&quot;whiteList&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;If defined, list of entities to process. The rest will be ignored.&quot;</span><span class="p">,</span>
-        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span></div>
-    <span class="p">)</span>
-
-<div class="viewcode-block" id="AssertionFilterer.caseSensitive"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.caseSensitive">[docs]</a>    <span class="n">caseSensitive</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
-        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-        <span class="s2">&quot;caseSensitive&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;Determines whether the definitions of the white listed entities are case sensitive.&quot;</span><span class="p">,</span>
-        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span></div>
-    <span class="p">)</span>
-
-<div class="viewcode-block" id="AssertionFilterer.regex"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.regex">[docs]</a>    <span class="n">regex</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span>
-        <span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-        <span class="s2">&quot;regex&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;If defined, list of regex to process. The rest will be ignored.&quot;</span><span class="p">,</span>
-        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span></div>
-    <span class="p">)</span>
-
-<div class="viewcode-block" id="AssertionFilterer.criteria"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.criteria">[docs]</a>    <span class="n">criteria</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;criteria&quot;</span><span class="p">,</span>
-                     <span class="s2">&quot;Assertion find by assertion&quot;</span><span class="p">,</span>
-                     <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="AssertionFilterer.entitiesConfidence"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.entitiesConfidence">[docs]</a>    <span class="n">entitiesConfidence</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
-                               <span class="s2">&quot;entitiesConfidence&quot;</span><span class="p">,</span>
-                               <span class="s2">&quot;Entity pairs to remove based on the confidence level&quot;</span><span class="p">,</span>
-                               <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">identity</span><span class="p">)</span></div>
-
-<div class="viewcode-block" id="AssertionFilterer.setCaseSensitive"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setCaseSensitive">[docs]</a>    <span class="k">def</span> <span class="nf">setCaseSensitive</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Determines whether the definitions of the white listed entities are case sensitive.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        value : bool</span>
-<span class="sd">           Whether white listed entities are case sensitive or not.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">caseSensitive</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
-
-    <span class="c1"># TODO set confidence</span>
+<div class="viewcode-block" id="AssertionFilterer.name"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;AssertionFilterer&quot;</span></div>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.annotators.chunker.AssertionFilterer&quot;</span><span class="p">,</span> <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">AssertionFilterer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="n">classname</span><span class="o">=</span><span class="n">classname</span><span class="p">,</span>
-            <span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span></div>
+            <span class="n">java_model</span><span class="o">=</span><span class="n">java_model</span>
         <span class="p">)</span>
+
+    <span class="c1"># it overrides because of different documentation.</span>
+<div class="viewcode-block" id="AssertionFilterer.setCriteria"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer.setCriteria">[docs]</a>    <span class="k">def</span> <span class="nf">setCriteria</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;It is used to compare black and white listed values with the result of the Annotation.</span>
+<span class="sd">        Possible values are the following: &#39;isin&#39;, &#39;regex&#39; and &#39;assertion&#39;. Default: &#39;assertion&#39;.</span>
+<span class="sd">        assertion: Filter by the assertion</span>
+<span class="sd">        isin : Filter by the chunk</span>
+<span class="sd">        regex : Filter by using a regex</span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : string</span>
+<span class="sd">            It is used to compare black and white listed values with the result of the Annotation.</span>
+<span class="sd">            Possible values are the following: &#39;isin&#39;, &#39;regex&#39; and &#39;assertion&#39;. Default: &#39;assertion&#39;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">criteria</span> <span class="o">=</span> <span class="n">value</span><span class="p">)</span></div></div>
 </pre></div>
 
                 </article>

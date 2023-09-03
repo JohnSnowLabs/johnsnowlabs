@@ -3,7 +3,7 @@ layout: docs
 comment: no
 header: true
 seotitle: NLP Lab | John Snow Labs
-title: Prompts
+title: Zero-shot Prompts
 permalink: /docs/en/alab/zero_prompts
 key: docs-training
 modify_date: "2023-02-10"

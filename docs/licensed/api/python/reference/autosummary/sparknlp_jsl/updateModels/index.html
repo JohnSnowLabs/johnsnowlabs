@@ -348,19 +348,30 @@ overwrite the existing one.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.updateModels.UpdateModels.updateModels">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">updateModels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">date_cutoff</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/updateModels.html#UpdateModels.updateModels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.updateModels.UpdateModels.updateModels" title="Permalink to this definition">#</a></dt>
-<dd><p>Downloads all new pretrained models since the date_cutoff.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>date_cutoff:str</strong></dt><dd><dl class="simple">
-<dt>Date since</dt><dd><p>It is the date from which the new models will be downloaded.</p>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">updateModels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/updateModels.html#UpdateModels.updateModels"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.updateModels.UpdateModels.updateModels" title="Permalink to this definition">#</a></dt>
+<dd><p>Downloads all given models by filtering parameters.
+If no cache_folder is specified, it will download the models in the default folder.
+Parameters
+———-
+model_names: List[str]</p>
+<blockquote>
+<div><p>names of the models to download</p>
+</div></blockquote>
+<dl class="simple">
+<dt>remote_loc: str</dt><dd><p>The remote location of the models in the s3, by default “clinical/models”.</p>
 </dd>
-</dl>
+<dt>language: str</dt><dd><p>the language of the models, by default “en”</p>
 </dd>
-<dt><strong>cache_folder</strong><span class="classifier">str</span></dt><dd><p>Path where the models will be downloaded. i.e (“hdfs:..”,”file:…”)</p>
+<dt>start_date: str</dt><dd><p>The start date to filter the models.
+The start date should be in a string format that can be parsed into a valid date. Format: yyyy-MM-dd
+Default: None. if the value is None, it does not filter.</p>
 </dd>
-</dl>
+<dt>end_date: str</dt><dd><p>The end date to filter the models.
+The end date should be in a string format that can be parsed into a valid date. Format: yyyy-MM-dd
+Default: None. if the value is None, it does not filter.</p>
+</dd>
+<dt>cache_folder<span class="classifier">str</span></dt><dd><p>Path where the models will be downloaded. i.e (“hdfs:..”,”file:…”). Default: None
+If no cache_folder is specified, it will download the models in the default folder.</p>
 </dd>
 </dl>
 </dd></dl>

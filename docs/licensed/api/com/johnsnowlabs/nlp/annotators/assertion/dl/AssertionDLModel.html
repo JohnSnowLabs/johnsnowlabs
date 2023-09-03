@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 4.4.4 ScalaDoc  - com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel</title>
-          <meta name="description" content="Spark NLP 4.4.4 ScalaDoc - com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel" />
-          <meta name="keywords" content="Spark NLP 4.4.4 ScalaDoc com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel" />
+          <title>Spark NLP 5.0.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel</title>
+          <meta name="description" content="Spark NLP 5.0.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel" />
+          <meta name="keywords" content="Spark NLP 5.0.2 ScalaDoc com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 4.4.4 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.0.2 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -613,6 +613,22 @@ This method utilises chunk groups, word piece embeddings and conversion to chunk
       <p class="shortcomment cmt">This method validates the dataset before annotation
 </p><div class="fullcomment"><div class="comment cmt"><p>This method validates the dataset before annotation
 </p></div><dl class="paramcmts block"><dt class="param">dataset</dt><dd class="cmt"><p>a collection of inputs to validate</p></dd><dt>returns</dt><dd class="cmt"><p>a Dataset after validation</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel">AssertionDLModel</a> → AnnotatorModel</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel#checkEntityAssertion" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="checkEntityAssertion(entity:String,assertion:String):Boolean"></a><a id="checkEntityAssertion(String,String):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLModel.html#checkEntityAssertion(entity:String,assertion:String):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">checkEntityAssertion</span><span class="params">(<span name="entity">entity: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="assertion">assertion: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#checkSchema" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="checkSchema(schema:org.apache.spark.sql.types.StructType,inputAnnotatorType:String):Boolean"></a><a id="checkSchema(StructType,String):Boolean"></a>
       <span class="permalink">
@@ -878,6 +894,22 @@ In [2]: config = tf.compat.v1.ConfigProto(allow_soft_placement=True, log_device_
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasSimpleAnnotate</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel#entityAssertionCaseSensitive" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+      <a id="entityAssertionCaseSensitive:org.apache.spark.ml.param.BooleanParam"></a><a id="entityAssertionCaseSensitive:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLModel.html#entityAssertionCaseSensitive:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">entityAssertionCaseSensitive</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Determines whether entity labels and assertion labels are case sensitive</p>
     </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
       <span class="permalink">
@@ -1225,6 +1257,54 @@ In [2]: config = tf.compat.v1.ConfigProto(allow_soft_placement=True, log_device_
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel#getEntityAssertion" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+      <a id="getEntityAssertion:scala.collection.immutable.Map[String,Array[String]]"></a><a id="getEntityAssertion:Map[String,Array[String]]"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLModel.html#getEntityAssertion:scala.collection.immutable.Map[String,Array[String]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getEntityAssertion</span><span class="result">: <span class="extype" name="scala.collection.immutable.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Get the lists of assertion labels allowed for a given entity</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel#getEntityAssertionCaseSensitive" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+      <a id="getEntityAssertionCaseSensitive:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLModel.html#getEntityAssertionCaseSensitive:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getEntityAssertionCaseSensitive</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets the case sensitivity of entities and assertion labels</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel#getEntityAssertionStr" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+      <a id="getEntityAssertionStr:String"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLModel.html#getEntityAssertionStr:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getEntityAssertionStr</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Get the string representation of the lists of assertion labels allowed for a given entity</p>
     </li><li name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel#getIncludeConfidence" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
       <a id="getIncludeConfidence:Boolean"></a>
       <span class="permalink">
@@ -2281,6 +2361,54 @@ In [2]: config = tf.compat.v1.ConfigProto(allow_soft_placement=True, log_device_
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel#setEntityAssertion" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
+      <a id="setEntityAssertion(assertionEntities:java.util.HashMap[String,java.util.List[String]]):AssertionDLModel.this.type"></a><a id="setEntityAssertion(HashMap[String,List[String]]):AssertionDLModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLModel.html#setEntityAssertion(assertionEntities:java.util.HashMap[String,java.util.List[String]]):AssertionDLModel.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setEntityAssertion</span><span class="params">(<span name="assertionEntities">assertionEntities: <span class="extype" name="java.util.HashMap">HashMap</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="java.util.List">List</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel">AssertionDLModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Set the lists of assertion labels allowed for a given entity</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel#setEntityAssertion" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
+      <a id="setEntityAssertion(assertionEntities:scala.collection.immutable.Map[String,Array[String]]):AssertionDLModel.this.type"></a><a id="setEntityAssertion(Map[String,Array[String]]):AssertionDLModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLModel.html#setEntityAssertion(assertionEntities:scala.collection.immutable.Map[String,Array[String]]):AssertionDLModel.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setEntityAssertion</span><span class="params">(<span name="assertionEntities">assertionEntities: <span class="extype" name="scala.collection.immutable.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel">AssertionDLModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Set the lists of assertion labels allowed for a given entity</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel#setEntityAssertionCaseSensitive" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
+      <a id="setEntityAssertionCaseSensitive(value:Boolean):com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel"></a><a id="setEntityAssertionCaseSensitive(Boolean):AssertionDLModel"></a>
+      <span class="permalink">
+      <a href="../../../../../../com/johnsnowlabs/nlp/annotators/assertion/dl/AssertionDLModel.html#setEntityAssertionCaseSensitive(value:Boolean):com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setEntityAssertionCaseSensitive</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel">AssertionDLModel</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets the case sensitivity of entities and assertion labels</p>
     </li><li name="com.johnsnowlabs.nlp.annotators.assertion.dl.AssertionDLModel#setIncludeConfidence" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
       <a id="setIncludeConfidence(value:Boolean):AssertionDLModel.this.type"></a><a id="setIncludeConfidence(Boolean):AssertionDLModel.this.type"></a>
       <span class="permalink">

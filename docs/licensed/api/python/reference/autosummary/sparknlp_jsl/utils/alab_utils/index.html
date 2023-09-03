@@ -361,7 +361,7 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_nlp_token_pipeline" title="sparknlp_jsl.utils.alab_utils.get_nlp_token_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_nlp_token_pipeline</span></code></a>(spark, regex_pattern)</p></td>
 <td><p>Generates a LightPipeline with a document assembler, sentence detector and regular tokenizer</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_sentence_pipeline" title="sparknlp_jsl.utils.alab_utils.get_sentence_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sentence_pipeline</span></code></a>(spark)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_sentence_pipeline" title="sparknlp_jsl.utils.alab_utils.get_sentence_pipeline"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_sentence_pipeline</span></code></a>(spark[, doc_wise_annot])</p></td>
 <td><p>Generates a LightPipeline with a document assembler and sentence detector</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.get_rel_df" title="sparknlp_jsl.utils.alab_utils.get_rel_df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_rel_df</span></code></a>(input_json_path[, ground_truth])</p></td>
@@ -476,7 +476,7 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_doc_assembler">
-<span class="sig-name descname"><span class="pre">get_doc_assembler</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sparknlp.base.DocumentAssembler</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_doc_assembler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_doc_assembler" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_doc_assembler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">doc_wise_annot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">sparknlp.base.DocumentAssembler</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_doc_assembler"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_doc_assembler" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -518,10 +518,12 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_sentence_pipeline">
-<span class="sig-name descname"><span class="pre">get_sentence_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_sentence_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_sentence_pipeline" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_sentence_pipeline</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_wise_annot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_sentence_pipeline"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_sentence_pipeline" title="Permalink to this definition">#</a></dt>
 <dd><p>Generates a LightPipeline with a document assembler and sentence detector
 :param spark: Spark session with spark-nlp-jsl jar
 :type spark: SparkSession
+:param doc_wise_annot: drops sentence detector if True
+:type doc_wise_annot: bool
 :return: LightPipeline with a document assembler and sentence detector
 :rtype: LightPipeline</p>
 </dd></dl>
@@ -556,12 +558,14 @@ defaults to False
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders">
-<span class="sig-name descname"><span class="pre">get_ner_sentence_borders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assertion_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_ner_sentence_borders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_ner_sentence_borders</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_json_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">doc_wise_annot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ground_truth</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assertion_labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/alab_utils.html#get_ner_sentence_borders"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.get_ner_sentence_borders" title="Permalink to this definition">#</a></dt>
 <dd><p>Get sentence borders for each task
 :param spark: Spark session with spark-nlp-jsl jar
 :type spark: SparkSession
 :param input_json_path: path to Annotation Lab JSON export
 :type input_json_path: str
+:param doc_wise_annot: returns the dataframe with document wise annotations
+:type doc_wise_annot: bool
 :param ground_truth: set to True to select ground truth completions, False to select latest completions,
 defaults to False
 :type ground_truth: bool
