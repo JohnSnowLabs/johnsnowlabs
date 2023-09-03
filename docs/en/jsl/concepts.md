@@ -34,7 +34,7 @@ nlp.load('sentiment').predict('How does this witchcraft work?')
 
 </div><div class="h3-box" markdown="1">
 
-`jsl.load()` defines **18 components types** usable in 1-liners, some can be prefixed with `.train` for [training models](/docs/en/jsl/training)
+`nlp.load()` defines **18 components types** usable in 1-liners, some can be prefixed with `.train` for [training models](/docs/en/jsl/training)
 
 
 Any of the actions for the component types can be passed as a string to nlp.load() and will return you the default model

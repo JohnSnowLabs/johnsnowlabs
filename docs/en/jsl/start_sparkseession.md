@@ -13,32 +13,32 @@ sidebar:
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
-To use most features you must start a Spark Session with `jsl.start()`first.        
+To use most features you must start a Spark Session with `nlp.start()`first.        
 This will launch a [Java Virtual Machine(JVM)](https://en.wikipedia.org/wiki/Java_virtual_machine) process on your machine
 which has all of John Snow Labs and Sparks [Scala/Java Libraries(JARs)](https://de.wikipedia.org/wiki/Java_Archive) you have access to loaded into memory. 
 
-The `jsl.start()` method downloads loads  and caches all jars for which credentials are provided if they are missing into `~/.jsl_home/java_installs`.       
-If you have installed via `jsl.install()` you can most likely **skip the rest of this page**, since your secrets have been cached in `~/.jsl_home` and will be re-used.        
+The `nlp.start()` method downloads loads  and caches all jars for which credentials are provided if they are missing into `~/.jsl_home/java_installs`.       
+If you have installed via `nlp.install()` you can most likely **skip the rest of this page**, since your secrets have been cached in `~/.jsl_home` and will be re-used.        
 If you **disabled license caching** while installing or if you want to **tweak settings about your spark session** continue reading this section further.        
 
-Outputs of running `jsl.start()` tell you which jars are loaded and versions of all relevant libraries.  
+Outputs of running `nlp.start()` tell you which jars are loaded and versions of all relevant libraries.  
 ![access_token1.png](/assets/images/jsl_lib/start/start.png)
 
 </div><div class="h3-box" markdown="1">
 
 ## Authorization Flow Parameters 
-Most of the authorization Flows and Parameters of `jsl.install()` are supported.                 
+Most of the authorization Flows and Parameters of `nlp.install()` are supported.                 
 Review detailed [docs here](https://nlp.johnsnowlabs.com/docs/en/jsl/install#authorization-flows-overview)  
 
 | Parameter               | Description                                                                                                                                                                                                          | Example                                          | Default |
 |-------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------|---------|
-| `None`                  | Load license automatically via one of the **Auto-Detection Mechanisms**                                                                                                                                              | `jsl.start()`                                    | `False` |
-| `browser_login`         | Browser based authorization, Button to click on Notebooks and Browser Pop-Up otherwise.                                                                                                                              | `jsl.start(browser_login=True)`                  | `False` |
-| `access_token`          | Vist [my.johnsnowlabs.com](https://my.johnsnowlabs.com/) to extract a token which you can provide to enable license access. See [Access Token Example](https://nlp.johnsnowlabs.com/docs/en/jsl/install#via-access-token) | `jsl.start(access_token='myToken')`              | `None`  |
-| `secrets_file`          | Define JSON license file with keys  defined by [License Variable Overview](https://nlp.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables) and provide file path                     | `jsl.start(secrets_file='path/to/license.json')` | `None`  |
-| `store_in_jsl_home`     | Disable caching of new licenses to `~./jsl_home`                                                                                                                                                                     | `jsl.start(store_in_jsl_home=False)`             | `True`  |
-| `local_license_number`  | Specify which license to use, if you have access to multiple locally cached                                                                                                                                          | `jsl.start(license_number=5)`                    | `0`     |
-| `remote_license_number` | Specify which license to use, if you have access to multiple via OAUTH on [my.jsl.com](https://my.johnsnowlabs.com/)                                                                                                 | `jsl.start(license_number=5)`                    | `0`     |
+| `None`                  | Load license automatically via one of the **Auto-Detection Mechanisms**                                                                                                                                              | `nlp.start()`                                    | `False` |
+| `browser_login`         | Browser based authorization, Button to click on Notebooks and Browser Pop-Up otherwise.                                                                                                                              | `nlp.start(browser_login=True)`                  | `False` |
+| `access_token`          | Vist [my.johnsnowlabs.com](https://my.johnsnowlabs.com/) to extract a token which you can provide to enable license access. See [Access Token Example](https://nlp.johnsnowlabs.com/docs/en/jsl/install#via-access-token) | `nlp.start(access_token='myToken')`              | `None`  |
+| `secrets_file`          | Define JSON license file with keys  defined by [License Variable Overview](https://nlp.johnsnowlabs.com/docs/en/jsl/install#license-variables-names-for-json-and-os-variables) and provide file path                     | `nlp.start(secrets_file='path/to/license.json')` | `None`  |
+| `store_in_jsl_home`     | Disable caching of new licenses to `~./jsl_home`                                                                                                                                                                     | `nlp.start(store_in_jsl_home=False)`             | `True`  |
+| `local_license_number`  | Specify which license to use, if you have access to multiple locally cached                                                                                                                                          | `nlp.start(license_number=5)`                    | `0`     |
+| `remote_license_number` | Specify which license to use, if you have access to multiple via OAUTH on [my.jsl.com](https://my.johnsnowlabs.com/)                                                                                                 | `nlp.start(license_number=5)`                    | `0`     |
 
 </div><div class="h3-box" markdown="1">
 
@@ -64,13 +64,13 @@ See [Spark Configuration](https://spark.apache.org/docs/latest/configuration.htm
 
 | Parameter            | Default    | Description                                                                                                                                                        | Example                                                                     |
 |----------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------|
-| `spark_conf`         | `None`     | Dictionary Key/Value pairs of [Spark Configurations](https://spark.apache.org/docs/latest/configuration.html) for the Spark Session                                | `jsl.start(spark_conf={'spark.executor.memory':'6g'})`                      |
-| `master_url`         | `local[*]` | URL to Spark Cluster master                                                                                                                                        | `jsl.start(master_url='spark://my.master')`                                 |
-| `jar_paths`          | `None`     | List of paths to jars which should be loaded into the Spark Session                                                                                                | `jsl.start(jar_paths=['my/jar_folder/jar1.zip','my/jar_folder/jar2.zip'] )` |
-| `exclude_nlp`        | `False`    | Whether to include Spark NLP jar in Session or not. This will always load the jar if available, unless set to `True`.                                              | `jsl.start(exclude_nlp=True)`                                               |
-| `exclude_healthcare` | `False`    | Whether to include licensed NLP Jar for Legal,Finance or Healthcare. This will always load the jar if available using your provided license, unless set to `True`. | `jsl.start(exclude_healthcare=True)`                                        |
-| `exclude_ocr`        | `False`    | Whether to include licensed OCR Jar for Legal,Finance or Healthcare. This will always load the jar if available using your provided license, unless set to `True`. | `jsl.start(exclude_ocr=True)`                                               |
-| `hardware_target`    | `cpu`      | Specify for which hardware Jar should be optimized. Valid values are `gpu`,`cpu`,`m1`,`aarch`                                                                      | `jsl.start(hardware_target='m1')`                                           |
-| `model_cache_folder` | `None`     | Specify where models should be downloaded to when using `model.pretrained()`                                                                                       | `jsl.start(model_cache_folder=True)`                                        |
+| `spark_conf`         | `None`     | Dictionary Key/Value pairs of [Spark Configurations](https://spark.apache.org/docs/latest/configuration.html) for the Spark Session                                | `nlp.start(spark_conf={'spark.executor.memory':'6g'})`                      |
+| `master_url`         | `local[*]` | URL to Spark Cluster master                                                                                                                                        | `nlp.start(master_url='spark://my.master')`                                 |
+| `jar_paths`          | `None`     | List of paths to jars which should be loaded into the Spark Session                                                                                                | `nlp.start(jar_paths=['my/jar_folder/jar1.zip','my/jar_folder/jar2.zip'] )` |
+| `exclude_nlp`        | `False`    | Whether to include Spark NLP jar in Session or not. This will always load the jar if available, unless set to `True`.                                              | `nlp.start(exclude_nlp=True)`                                               |
+| `exclude_healthcare` | `False`    | Whether to include licensed NLP Jar for Legal,Finance or Healthcare. This will always load the jar if available using your provided license, unless set to `True`. | `nlp.start(exclude_healthcare=True)`                                        |
+| `exclude_ocr`        | `False`    | Whether to include licensed OCR Jar for Legal,Finance or Healthcare. This will always load the jar if available using your provided license, unless set to `True`. | `nlp.start(exclude_ocr=True)`                                               |
+| `hardware_target`    | `cpu`      | Specify for which hardware Jar should be optimized. Valid values are `gpu`,`cpu`,`m1`,`aarch`                                                                      | `nlp.start(hardware_target='m1')`                                           |
+| `model_cache_folder` | `None`     | Specify where models should be downloaded to when using `model.pretrained()`                                                                                       | `nlp.start(model_cache_folder=True)`                                        |
 
 </div></div>
