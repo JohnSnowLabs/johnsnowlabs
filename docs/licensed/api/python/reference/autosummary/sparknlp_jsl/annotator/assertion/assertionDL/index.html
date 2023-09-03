@@ -287,6 +287,7 @@ document.write(`
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../classification/document_log_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.document_log_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../classification/document_ml_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.document_ml_classifier</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../classification/few_shot_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.few_shot_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../classification/generic_log_reg_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.generic_log_reg_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../classification/generic_svm_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.generic_svm_classifier</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../classification/medical_bert_for_sequence_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.medical_bert_for_sequence_classification</span></code></a></li>
@@ -361,6 +362,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_encoder_decoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_encoder_decoder</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_summarizer/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_summarizer</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/medical_text_generator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.medical_text_generator</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../seq2seq/text2sql/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.text2sql</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -1003,6 +1005,11 @@ annotator inputs. To train a custom model, use AssertionDLApproach.</p>
 <span class="sig-name descname"><span class="pre">includeConfidence</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/assertion/assertionDL.html#AssertionDLModel.includeConfidence"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.includeConfidence" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.entityAssertionCaseSensitive">
+<span class="sig-name descname"><span class="pre">entityAssertionCaseSensitive</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/assertion/assertionDL.html#AssertionDLModel.entityAssertionCaseSensitive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.entityAssertionCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setConfigProtoBytes">
 <span class="sig-name descname"><span class="pre">setConfigProtoBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/assertion/assertionDL.html#AssertionDLModel.setConfigProtoBytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setConfigProtoBytes" title="Permalink to this definition">#</a></dt>
@@ -1044,6 +1051,37 @@ Get with config_proto.SerializeToString().</p>
 </dl>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setEntityAssertionCaseSensitive">
+<span class="sig-name descname"><span class="pre">setEntityAssertionCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/assertion/assertionDL.html#AssertionDLModel.setEntityAssertionCaseSensitive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setEntityAssertionCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the case sensitivity of entities and assertion labels
+Parameters
+———-
+value : bool</p>
+<blockquote>
+<div><p>whether entities and assertion labels are case sensitive</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setEntityAssertion">
+<span class="sig-name descname"><span class="pre">setEntityAssertion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assertionEntities</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/assertion/assertionDL.html#AssertionDLModel.setEntityAssertion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setEntityAssertion" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the lists of assertion labels allowed for a given entity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>assertionEntities</strong><span class="classifier">dict[str, list[str]]</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.getEntityAssertion">
+<span class="sig-name descname"><span class="pre">getEntityAssertion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/assertion/assertionDL.html#AssertionDLModel.getEntityAssertion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.getEntityAssertion" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the lists of assertion labels allowed for a given entity</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1159,9 +1197,13 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.classes"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.classes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.scopeWindow"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.scopeWindow</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.includeConfidence"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.includeConfidence</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.entityAssertionCaseSensitive"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.entityAssertionCaseSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.setConfigProtoBytes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setIncludeConfidence"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.setIncludeConfidence()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setScopeWindow"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.setScopeWindow()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setEntityAssertionCaseSensitive"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.setEntityAssertionCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setEntityAssertion"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.setEntityAssertion()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.getEntityAssertion"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.getEntityAssertion()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.pretrained"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.pretrained()</span></code></a></li>
 </ul>
 </li>

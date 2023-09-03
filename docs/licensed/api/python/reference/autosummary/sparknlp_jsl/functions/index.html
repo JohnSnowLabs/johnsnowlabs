@@ -382,6 +382,24 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileV22" title="sparknlp_jsl.functions.profileV22"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileV22</span></code></a>(code_array, age, sex[, elig, orec, medicaid])</p></td>
 <td><p>CMS-HCC model version 22, combined.</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileRxHCCV05Y20" title="sparknlp_jsl.functions.profileRxHCCV05Y20"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRxHCCV05Y20</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>The CMS-RxHCC risk adjustment module: version 05, year 2020.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileRxHCCV05Y21" title="sparknlp_jsl.functions.profileRxHCCV05Y21"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRxHCCV05Y21</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>The CMS-RxHCC risk adjustment module: version 05, year 2021.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileRxHCCV05Y22" title="sparknlp_jsl.functions.profileRxHCCV05Y22"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRxHCCV05Y22</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>The CMS-RxHCC risk adjustment module: version 05, year 2022.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileRxHCCV05Y23" title="sparknlp_jsl.functions.profileRxHCCV05Y23"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRxHCCV05Y23</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>The CMS-RxHCC risk adjustment module: version 05, year 2023.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileRxHCCV08Y22" title="sparknlp_jsl.functions.profileRxHCCV08Y22"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRxHCCV08Y22</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>The CMS-RxHCC risk adjustment module: version 08, year 2022.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.functions.profileRxHCCV08Y23" title="sparknlp_jsl.functions.profileRxHCCV08Y23"><code class="xref py py-obj docutils literal notranslate"><span class="pre">profileRxHCCV08Y23</span></code></a>(code_array, age, sex[, elig, orec, ...])</p></td>
+<td><p>The CMS-RxHCC risk adjustment module: version 08, year 2023.</p></td>
+</tr>
 </tbody>
 </table>
 <dl class="py function">
@@ -1220,6 +1238,54 @@ Allowed values are as follows:
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileRxHCCV05Y20">
+<span class="sig-name descname"><span class="pre">profileRxHCCV05Y20</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CE_NoLowAged'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esrd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileRxHCCV05Y20"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileRxHCCV05Y20" title="Permalink to this definition">#</a></dt>
+<dd><p>The CMS-RxHCC risk adjustment module: version 05, year 2020.
+Returns the RxHCC risk profile of a given patient information.
+It may throw an exception if there is an illegal argument in the input parameters.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileRxHCCV05Y21">
+<span class="sig-name descname"><span class="pre">profileRxHCCV05Y21</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CE_NoLowAged'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esrd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileRxHCCV05Y21"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileRxHCCV05Y21" title="Permalink to this definition">#</a></dt>
+<dd><p>The CMS-RxHCC risk adjustment module: version 05, year 2021.
+Returns the RxHCC risk profile of a given patient information.
+It may throw an exception if there is an illegal argument in the input parameters.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileRxHCCV05Y22">
+<span class="sig-name descname"><span class="pre">profileRxHCCV05Y22</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CE_NoLowAged'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esrd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileRxHCCV05Y22"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileRxHCCV05Y22" title="Permalink to this definition">#</a></dt>
+<dd><p>The CMS-RxHCC risk adjustment module: version 05, year 2022.
+Returns the RxHCC risk profile of a given patient information.
+It may throw an exception if there is an illegal argument in the input parameters.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileRxHCCV05Y23">
+<span class="sig-name descname"><span class="pre">profileRxHCCV05Y23</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CE_NoLowAged'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esrd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileRxHCCV05Y23"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileRxHCCV05Y23" title="Permalink to this definition">#</a></dt>
+<dd><p>The CMS-RxHCC risk adjustment module: version 05, year 2023.
+Returns the RxHCC risk profile of a given patient information.
+It may throw an exception if there is an illegal argument in the input parameters.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileRxHCCV08Y22">
+<span class="sig-name descname"><span class="pre">profileRxHCCV08Y22</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CE_NoLowAged'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esrd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileRxHCCV08Y22"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileRxHCCV08Y22" title="Permalink to this definition">#</a></dt>
+<dd><p>The CMS-RxHCC risk adjustment module: version 08, year 2022.
+Returns the RxHCC risk profile of a given patient information.
+It may throw an exception if there is an illegal argument in the input parameters.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.functions.profileRxHCCV08Y23">
+<span class="sig-name descname"><span class="pre">profileRxHCCV08Y23</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">code_array</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sex</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CE_NoLowAged'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">orec</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'0'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">esrd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/functions.html#profileRxHCCV08Y23"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.functions.profileRxHCCV08Y23" title="Permalink to this definition">#</a></dt>
+<dd><p>The CMS-RxHCC risk adjustment module: version 08, year 2023.
+Returns the RxHCC risk profile of a given patient information.
+It may throw an exception if there is an illegal argument in the input parameters.</p>
+</dd></dl>
+
 </section>
 </section>
 </section>
@@ -1276,6 +1342,12 @@ Allowed values are as follows:
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV22Y21"><code class="docutils literal notranslate"><span class="pre">profileV22Y21()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV22Y22"><code class="docutils literal notranslate"><span class="pre">profileV22Y22()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileV22"><code class="docutils literal notranslate"><span class="pre">profileV22()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileRxHCCV05Y20"><code class="docutils literal notranslate"><span class="pre">profileRxHCCV05Y20()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileRxHCCV05Y21"><code class="docutils literal notranslate"><span class="pre">profileRxHCCV05Y21()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileRxHCCV05Y22"><code class="docutils literal notranslate"><span class="pre">profileRxHCCV05Y22()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileRxHCCV05Y23"><code class="docutils literal notranslate"><span class="pre">profileRxHCCV05Y23()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileRxHCCV08Y22"><code class="docutils literal notranslate"><span class="pre">profileRxHCCV08Y22()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.functions.profileRxHCCV08Y23"><code class="docutils literal notranslate"><span class="pre">profileRxHCCV08Y23()</span></code></a></li>
 </ul>
 </li>
 </ul>

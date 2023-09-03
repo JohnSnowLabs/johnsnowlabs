@@ -63,35 +63,35 @@ data:
   sections:  
     - source: yes
       source: 
-        - title: Detect PHI Entities from Deidentification 
-          id: detect_phi_entities_deidentification_2
+        - title: Medical Large Language Models
+          id: explore_medical_large_language_models
           image: 
-              src: /assets/images/FreeText.svg
-          excerpt: This demo shows how to deidentify protected health information.
+              src: /assets/images/Explore_Medical_Large_Language_Models.svg
+          excerpt: Explore the use of Medical Large Language Models for tasks like Text Summarization, Generation, and Question Answering.
           actions:
           - text: Live Demo
             type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/DEID_LIVE/
+            url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_LLM/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/DEID_PHI_TEXT_MULTI.ipynb
-        - title: Explore Adverse Drug Events with Spark NLP Models
-          id: explore_adverse_drug_events_spark_nlp_models   
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MEDICAL_LLM.ipynb  
+        - title: Detect Entities in Clinical Text
+          id: detect_clinical_entities_in_text
           image: 
-              src: /assets/images/Explore_Adverse_Drug.svg
-          excerpt: This demo shows how detect adverse reactions of drugs in reviews, tweets, and medical text using Spark NLP Healthcare NER, Sequence Classification, Assertion Status, and Relation Extraction models.
+              src: /assets/images/Detect_risk_factors.svg
+          excerpt: Identify 77 entity types including Symptom, Treatments, Test, Oncological, Procedure, Diabetes, Drug, Dosage, Date, Imaging Finding, and more.
           actions:
           - text: Live Demo
             type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/ADE/
+            url: https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/16.Adverse_Drug_Event_ADE_NER_and_Classifier.ipynb
-        - title: Explore Oncology Notes with Spark NLP Models
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb
+        - title: Information Extraction in Oncology
           id: explore_oncology_notes_spark_models
           image: 
               src: /assets/images/Detect_Oncological_Concepts.svg
-          excerpt: This demo shows how oncological terms can be detected using Spark NLP Healthcare NER, Assertion Status, and Relation Extraction models.
+          excerpt: Detect clinical entities and relationships related to cancer staging, grading, histology, tumor characteristics, biomarkers, treatments, and outcome measures.
           actions:
           - text: Live Demo
             type: normal
@@ -99,35 +99,11 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb
-        - title: Voice of Patients
-          id: vop           
-          image: 
-              src: /assets/images/Voice_Of_Patient.svg
-          excerpt: This demo extracts and classifies healthcare-related terms from the documents transferred from the patient’s own sentences.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/VOP/
-          - text: Colab
-            type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb
-        - title: Explore Social Determinants of Health with Spark NLP Models 
-          id: explore_social_determinants_health_spark_nlp_models         
-          image: 
-              src: /assets/images/Social_Determinants_of_Health.svg
-          excerpt: This demo shows how social determinant terms can be detected using Spark NLP Healthcare NER and Text Classification.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/SDOH/
-          - text: Colab
-            type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Models.ipynb
-        - title: Deidentify Clinical Notes in Different Languages
+        - title: De-identify Clinical Notes in Different Languages
           id: deidentify_clinical_notes_different_languages
           image: 
               src: /assets/images/Deidentify_free_text_documents.svg
-          excerpt: This demo shows how to deidentify protected health information in English, Spanish, French, Italian, Portuguese, Romanian, and German texts.
+          excerpt: De-identify and obfuscate protected health information (PHI) in English, Spanish, French, Italian, Portuguese, Romanian, and German texts.
           actions:
           - text: Live Demo
             type: normal
@@ -135,11 +111,47 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/DEID_PHI_TEXT_MULTI.ipynb
+        - title: Adverse Drug Event Detection
+          id: explore_adverse_drug_events_spark_nlp_models   
+          image: 
+              src: /assets/images/Explore_Adverse_Drug.svg
+          excerpt: Detect adverse reactions from drugs described in the clinical text, online reviews, and social media posts.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/ADE/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/16.Adverse_Drug_Event_ADE_NER_and_Classifier.ipynb
+        - title: Voice of the Patients
+          id: vop           
+          image: 
+              src: /assets/images/Voice_Of_Patient.svg
+          excerpt: Extract and classify healthcare-related terms from documents written by patients such as questions, reviews, messages, and social media posts.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/VOP/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb
+        - title: Social Determinants of Health
+          id: explore_social_determinants_health_spark_nlp_models         
+          image: 
+              src: /assets/images/Social_Determinants_of_Health.svg
+          excerpt: Extract Social Determinants of Healthcare such as employment, education, social support, housing, financial hardship, substance abuse, demographics, and more.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/SDOH/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Models.ipynb
         - title: Calculate Medicare HCC Risk Score
           id: calculate_medicare_risk_score 
           image: 
               src: /assets/images/Calculate_Medicare_Risk_Score.svg
-          excerpt: This demo shows how to calculate medical risk adjustment scores automatically using ICD codes of diseases.
+          excerpt: Automatically calculate patient risk adjustment scores, using ICD codes of diseases that are extracted from clinical notes about a patient.
           actions:
           - text: Live Demo
             type: normal
@@ -147,18 +159,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb
-        - title: Detect Available Pretrained NER Models    
+        - title: Recommend Available Models for Your Text    
           id: detect_available_pretrained_ner_models         
           image: 
               src: /assets/images/Detect_Available_Pretrained_NER_Models.svg
-          excerpt: This pipeline can be used to explore all the available pretrained NER models at once. When you run this pipeline over your text, you will end up with the predictions coming out of each pretrained clinical NER model.
+          excerpt: This pipeline is used to explore all the available pretrained entity recognition models at once. It recommends which models will provide results on a given document.
           actions:
           - text: Live Demo
             type: normal
             url: https://demo.johnsnowlabs.com/healthcare/NER_PROFILING/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb                
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb
 ---
 
 
