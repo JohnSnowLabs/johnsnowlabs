@@ -1,10 +1,10 @@
 ---
 layout: model
-title: Extract Demographic Entities from Oncology Texts(langtest)
+title: Extract Demographic Entities from Oncology Texts (langtest)
 author: John Snow Labs
 name: ner_oncology_demographics_langtest
 date: 2023-09-03
-tags: [en, ner, licensed, clinical, oncology, demographics]
+tags: [en, ner, licensed, clinical, oncology, demographics, langtest]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 5.0.2
