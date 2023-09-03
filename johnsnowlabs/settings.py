@@ -1,6 +1,5 @@
 import os
 from os.path import expanduser
-
 from johnsnowlabs.utils.env_utils import (
     is_running_in_databricks,
     set_py4j_logger_to_error_on_databricks,
@@ -8,9 +7,7 @@ from johnsnowlabs.utils.env_utils import (
 )
 
 # These versions are used for auto-installs and version  checks
-
-
-raw_version_jsl_lib = "5.0.5"
+raw_version_jsl_lib = "5.0.6"
 raw_version_nlp = "5.0.2"
 
 raw_version_nlu = "5.0.0"
@@ -71,7 +68,6 @@ db_cluster_name = "John-Snow-Labs-Databricks-Auto-Cluster🚀"
 db_driver_node_type = "i3.xlarge"
 db_node_type_id = "i3.xlarge"
 db_spark_version = "10.5.x-scala2.12"
-
 
 # db_spark_version = "13.2.x-scala2.12"
 

@@ -1,26 +1,22 @@
-# from johnsnowlabs import *
-# spark = jsl.start()
-from pyspark.ml import Pipeline
-from sparknlp import DocumentAssembler
-from sparknlp.annotator import ContextSpellCheckerModel, Tokenizer
+from johnsnowlabs import *
 
 
-# from johnsnowlabs import *
 def run_test():
-    # spark = jsl.start()
-    documentAssembler = DocumentAssembler().setInputCol("text").setOutputCol("document")
+    documentAssembler = (
+        nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
+    )
 
-    tokenizer = Tokenizer().setInputCols(["document"]).setOutputCol("token")
+    tokenizer = nlp.Tokenizer().setInputCols(["document"]).setOutputCol("token")
 
     spellModel = (
-        ContextSpellCheckerModel.pretrained(
+        nlp.ContextSpellCheckerModel.pretrained(
             "spellcheck_clinical", "en", "clinical/models"
         )
         .setInputCols("token")
         .setOutputCol("checked")
     )
 
-    pipeline = Pipeline(stages=[documentAssembler, tokenizer, spellModel])
+    pipeline = nlp.Pipeline(stages=[documentAssembler, tokenizer, spellModel])
 
     empty = spark.createDataFrame([[""]]).toDF("text")
     example = spark.createDataFrame(
@@ -31,3 +27,7 @@ def run_test():
         ]
     ).toDF("text")
     pipeline.fit(empty).transform(example).show()
+
+
+if __name__ == "__main__":
+    run_test()
