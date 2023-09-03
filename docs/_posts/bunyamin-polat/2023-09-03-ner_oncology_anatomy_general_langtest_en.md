@@ -1,10 +1,10 @@
 ---
 layout: model
-title: Extract Anatomical Entities from Oncology Texts(langtest)
+title: Extract Anatomical Entities from Oncology Texts (langtest)
 author: John Snow Labs
 name: ner_oncology_anatomy_general_langtest
 date: 2023-09-03
-tags: [ner, clinical, oncology, licensed, langtest, en]
+tags: [ner, clinical, oncology, licensed, en, langtest, anatomy]
 task: Named Entity Recognition
 language: en
 edition: Healthcare NLP 5.0.2
