@@ -464,9 +464,8 @@ def query_and_deploy_if_missing(
             workload_size=workload_size,
             block_until_deployed=block_until_deployed,
         )
-    if block_until_deployed:
+    if not block_until_deployed:
         return
-
     return query_endpoint(
         query if is_json_query else query_to_json(query),
         model,
