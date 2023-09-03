@@ -4,12 +4,6 @@ import tests.utilsz.secrets as sct
 from johnsnowlabs import *
 from johnsnowlabs.auto_install.databricks.install_utils import *
 
-"""
-
-DBR 9.1. 
-
-"""
-
 
 def assert_job_suc(state):
     assert state["state"]["result_state"] == "SUCCESS"
