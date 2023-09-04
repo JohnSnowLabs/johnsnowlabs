@@ -9,7 +9,7 @@ from .auto_install.health_checks.report import (
     list_local_licenses,
     list_remote_licenses,
 )
-from .auto_install.install_flow import install, install_to_emr
+from .auto_install.install_flow import install, install_to_emr, install_to_glue
 from .utils.sparksession_utils import start
 
 if try_import_lib("sparknlp"):

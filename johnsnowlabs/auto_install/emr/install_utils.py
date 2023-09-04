@@ -6,13 +6,13 @@ import boto3
 import botocore
 
 from johnsnowlabs import settings
-from johnsnowlabs.auto_install.emr.boto_utils import get_boto_client
 from johnsnowlabs.auto_install.emr.enums import EMRClusterStates
-from johnsnowlabs.auto_install.emr.errors import BotoException
-from johnsnowlabs.auto_install.emr.s3_utils import create_emr_bucket, upload_content
+from johnsnowlabs.auto_install.emr.work_utils import create_emr_bucket
 from johnsnowlabs.auto_install.softwares import Software
 from johnsnowlabs.py_models.jsl_secrets import JslSecrets
+from johnsnowlabs.utils.boto_utils import BotoException
 from johnsnowlabs.utils.enums import JvmHardwareTarget
+from johnsnowlabs.utils.s3_utils import upload_content
 
 here = path.abspath(path.dirname(__file__))
 
@@ -56,12 +56,9 @@ def create_emr_cluster(
     """
 
     try:
-        s3_client = get_boto_client("s3")
-        sts_client = get_boto_client("sts")
+        s3_client = boto3.client("s3")
         region = s3_client.meta.region_name
         bootstrap_script_path = create_bootstrap_script(
-            s3_client=s3_client,
-            sts_client=sts_client,
             bootstrap_bucket=bootstrap_bucket,
             secrets=secrets,
             spark_nlp=spark_nlp,
@@ -71,8 +68,6 @@ def create_emr_cluster(
         )
 
         step_script = create_initialization_step_script(
-            sts_client=sts_client,
-            s3_client=s3_client,
             bootstrap_bucket=bootstrap_bucket,
         )
 
@@ -186,8 +181,6 @@ def block_till_emr_cluster_ready(emr_client, cluster_id: str):
 
 
 def upload_script_to_bucket(
-    s3_client: boto3.client,
-    sts_client: boto3.client,
     bucket: str,
     content: str,
     script_name: str,
@@ -200,20 +193,15 @@ def upload_script_to_bucket(
     :param script_name: Name of the script
     """
 
-    bucket = create_emr_bucket(
-        sts_client=sts_client, s3_client=s3_client, bucket_name=bucket
-    )
+    bucket = create_emr_bucket(bucket_name=bucket)
     return upload_content(
-        s3_client=s3_client,
         content=content,
         bucket=bucket,
         file_name=script_name,
     )
 
 
-def create_initialization_step_script(
-    s3_client: boto3.client, sts_client: boto3.client, bootstrap_bucket: str
-) -> str:
+def create_initialization_step_script(bootstrap_bucket: str) -> str:
     """Creates a EMR initialization step script and uploads it to s3 bucket. Returns the s3 path of the script
     :param s3_client: S3 boto3 client
     :param sts_client: STS boto3 client
@@ -230,8 +218,6 @@ sudo python3 -m pip install scipy scikit-learn "tensorflow==2.11.0" tensorflow-a
 exit 0
 """
     return upload_script_to_bucket(
-        s3_client=s3_client,
-        sts_client=sts_client,
         bucket=bootstrap_bucket,
         content=script,
         script_name=script_name,
@@ -239,8 +225,6 @@ exit 0
 
 
 def create_bootstrap_script(
-    s3_client: boto3.client,
-    sts_client: boto3.client,
     bootstrap_bucket: str,
     secrets: JslSecrets,
     spark_nlp: bool = True,
@@ -291,8 +275,6 @@ exit 0
     )
 
     return upload_script_to_bucket(
-        s3_client=s3_client,
-        sts_client=sts_client,
         bucket=bootstrap_bucket,
         content=full_installation_script,
         script_name=script_name,

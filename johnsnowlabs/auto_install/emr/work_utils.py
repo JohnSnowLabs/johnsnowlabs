@@ -5,15 +5,35 @@ from typing import Optional
 import boto3
 import botocore
 
-from johnsnowlabs.auto_install.emr.boto_utils import get_boto_client
-from johnsnowlabs.auto_install.emr.errors import BotoException
-from johnsnowlabs.auto_install.emr.s3_utils import (
+from johnsnowlabs.utils.boto_utils import BotoException
+from johnsnowlabs.utils.file_utils import path_tail
+from johnsnowlabs.utils.s3_utils import (
     check_if_file_exists_in_s3,
-    create_emr_bucket,
+    create_bucket,
     upload_content,
     upload_file_to_s3,
 )
-from johnsnowlabs.utils.file_utils import path_tail
+
+
+def create_emr_bucket(bucket_name=None):
+    """Create a bucket for EMR cluster logs
+    :param bucket_name: Bucket name
+    """
+    try:
+        sts_client = boto3.client("sts")
+        account_id = sts_client.get_caller_identity()["Account"]
+        region = sts_client.meta.region_name
+        if not bucket_name:
+            bucket_name = f"johnsnowlabs-emr-{account_id}-{region}"
+
+        return create_bucket(region=region, bucket_name=bucket_name)
+
+    except botocore.exceptions.ClientError as e:
+        if e.response["Error"]["Code"] == "BucketAlreadyOwnedByYou":
+            return bucket_name
+        raise BotoException(
+            code=e.response["Error"]["Code"], message=e.response["Error"]["Message"]
+        )
 
 
 def run_in_emr(
@@ -33,14 +53,12 @@ def run_in_emr(
     :param execution_role_arn: IAM role to use for the step
     :return: Step id
     """
-    s3_client = get_boto_client("s3")
-    if check_if_file_exists_in_s3(s3_client, py_script_path):
+    if check_if_file_exists_in_s3(py_script_path):
         s3_path = py_script_path
     else:
-        sts_client = get_boto_client("sts")
         # Making sure bucket exists
 
-        script_bucket = create_emr_bucket(sts_client, s3_client, script_bucket)
+        script_bucket = create_emr_bucket(script_bucket)
 
         script_s3_path = temporary_script_name = f"{randrange(1333777)}tmp.py"
         if bucket_folder_path is not None:
@@ -48,14 +66,12 @@ def run_in_emr(
         local_script = os.path.expanduser(py_script_path)
         if os.path.exists(local_script):
             s3_path = upload_file_to_s3(
-                s3_client=s3_client,
                 file_path=local_script,
                 bucket=script_bucket,
                 file_name=script_s3_path,
             )
         else:
             s3_path = upload_content(
-                s3_client=s3_client,
                 content=py_script_path,
                 bucket=script_bucket,
                 file_name=script_s3_path,
@@ -84,7 +100,7 @@ def run_in_emr(
 
     try:
         try:
-            emr_client = get_boto_client("emr")
+            emr_client = boto3.client("emr")
             response = emr_client.add_job_flow_steps(**payload)
             return response["StepIds"][0]
         except botocore.exceptions.ClientError as e:
