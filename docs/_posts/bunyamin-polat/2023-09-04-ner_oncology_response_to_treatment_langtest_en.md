@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model extracts entities related to the patient's response to the oncology treatment, including clinical response and changes in tumor size. It is the version of [ner_oncology_response_to_treatment](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_response_to_treatment_en.html) model augmented with `langtest` library
+This model extracts entities related to the patient's response to the oncology treatment, including clinical response and changes in tumor size. It is the version of [ner_oncology_response_to_treatment](https://nlp.johnsnowlabs.com/2022/11/24/ner_oncology_response_to_treatment_en.html) model augmented with `langtest` library.
 
 Definitions of Predicted Entities:
 
@@ -42,6 +42,7 @@ Definitions of Predicted Entities:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
