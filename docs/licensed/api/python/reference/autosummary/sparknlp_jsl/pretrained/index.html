@@ -426,6 +426,27 @@ version (str, optional): The version to filter by. Defaults to None.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.pretrained.InternalResourceDownloader.downloadModelDirectly">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">downloadModelDirectly</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unzip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_folder_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../modules/sparknlp_jsl/pretrained.html#InternalResourceDownloader.downloadModelDirectly"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.pretrained.InternalResourceDownloader.downloadModelDirectly" title="Permalink to this definition">#</a></dt>
+<dd><p>Downloads a model directly to the cache folder.
+You can use to copy-paste the s3 URI from the model hub  and download the model.
+For available s3 URI and models, please see the <a class="reference external" href="https://sparknlp.org/models">Models Hub</a>.
+Parameters
+———-
+name : str</p>
+<blockquote>
+<div><p>Name of the model or s3 URI</p>
+</div></blockquote>
+<dl class="simple">
+<dt>remote_loc<span class="classifier">str, optional</span></dt><dd><p>Directory of the remote Spark NLP Folder, by default “public/models”</p>
+</dd>
+<dt>unzip<span class="classifier">Bool, optional</span></dt><dd><p>Used to unzip model, by default ‘True’</p>
+</dd>
+</dl>
+<p>cache_folder_path : str</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -473,6 +494,7 @@ version (str, optional): The version to filter by. Defaults to None.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pretrained.InternalResourceDownloader.showAvailableAnnotators"><code class="docutils literal notranslate"><span class="pre">InternalResourceDownloader.showAvailableAnnotators()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pretrained.InternalResourceDownloader.returnPrivateModels"><code class="docutils literal notranslate"><span class="pre">InternalResourceDownloader.returnPrivateModels()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pretrained.InternalResourceDownloader.returnPrivatePipelines"><code class="docutils literal notranslate"><span class="pre">InternalResourceDownloader.returnPrivatePipelines()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pretrained.InternalResourceDownloader.downloadModelDirectly"><code class="docutils literal notranslate"><span class="pre">InternalResourceDownloader.downloadModelDirectly()</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -83,8 +83,10 @@ annotation-lab:
             url: /docs/en/alab/embeddings
           - title: Rules
             url: /docs/en/alab/rules
-          - title: Prompts
-            url: /docs/en/alab/prompts   
+          - title: Zero-Shot Prompts
+            url: /docs/en/alab/zero_prompts
+          - title: LLM Prompts (ChatGPT)
+            url: /docs/en/alab/llm_prompts   
           - title: Playground
             url: /docs/en/alab/playground                        
       - subtitle: Project
@@ -97,6 +99,8 @@ annotation-lab:
             url: /docs/en/alab/project_configuration
           - title: Import Tasks
             url: /docs/en/alab/import
+          - title: Generate Synthetic Data
+            url: /docs/en/alab/synthetic_task
           - title: Tasks
             url: /docs/en/alab/tasks
           - title: Workflows
@@ -117,10 +121,12 @@ annotation-lab:
             url: /docs/en/alab/tags_pdf
       - subtitle: Annotation
         children:
-          - title: Manual annotation
+          - title: Manual Annotation
             url: /docs/en/alab/annotation
           - title: Pre-annotation
             url: /docs/en/alab/preannotation
+          - title: Section Based Annotation
+            url: /docs/en/alab/section_based_annotations 
           - title: Audit Trail
             url: /docs/en/alab/audit_trail
           - title: Productivity

@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Project Creation
 permalink: /docs/en/alab/project_creation
 key: docs-training
-modify_date: "2022-11-01"
+modify_date: "2022-11-03"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

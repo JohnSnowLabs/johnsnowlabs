@@ -444,10 +444,22 @@ document.write(`
 
 <div class="viewcode-block" id="MergeResourceParams.entitiesConfidenceResource"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.MergeResourceParams.entitiesConfidenceResource">[docs]</a>    <span class="n">entitiesConfidenceResource</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span>
                                        <span class="s2">&quot;entitiesConfidenceResource&quot;</span><span class="p">,</span>
-                                       <span class="s2">&quot;Path to csv with  entity pairs to remove based on the confidance level&quot;</span><span class="p">,</span>
+                                       <span class="s2">&quot;Path to csv with  entity pairs to remove based on the confidence level&quot;</span><span class="p">,</span>
                                        <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">identity</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="MergeResourceParams.setEntitiesConfidenceResource"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.MergeResourceParams.setEntitiesConfidenceResource">[docs]</a>    <span class="k">def</span> <span class="nf">setEntitiesConfidenceResource</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">read_as</span><span class="o">=</span><span class="n">ReadAs</span><span class="o">.</span><span class="n">TEXT</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the entitiesConfidenceResource parameter.</span>
+<span class="sd">        </span>
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        path : str</span>
+<span class="sd">              Path to csv with  entity pairs to remove based on the confidence level</span>
+<span class="sd">        read_as : str</span>
+<span class="sd">                Read file as &#39;TEXT&#39;, &#39;SPARK&#39;, or &#39;BINARY&#39;.</span>
+<span class="sd">        options : dict</span>
+<span class="sd">                Options for reading the file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
         <span class="k">if</span> <span class="n">options</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">}</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">entitiesConfidenceResource</span><span class="o">=</span><span class="n">ExternalResource</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">read_as</span><span class="p">,</span> <span class="n">options</span><span class="p">))</span></div></div>
@@ -482,7 +494,27 @@ document.write(`
 <span class="sd">        Select what is the precedence when two chunks have the same start and end indices. Possible values are [entity|identifier|field]</span>
 <span class="sd">    blackList</span>
 <span class="sd">        If defined, list of entities to ignore. The rest will be proccessed.</span>
-
+<span class="sd">    whiteList</span>
+<span class="sd">        If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels.</span>
+<span class="sd">    caseSensitive: bool</span>
+<span class="sd">        Determines whether the definitions of the white listed and black listed entities are case sensitive. Default: True.</span>
+<span class="sd">        If the filterValue is &#39;entity&#39;, &#39;caseSensitive&#39; is always False.</span>
+<span class="sd">    regex: str</span>
+<span class="sd">       If defined, list of regex to process the chunks (Default: []).</span>
+<span class="sd">    criteria: str</span>
+<span class="sd">           Tag representing what is the criteria to filter the chunks. Possibles values are:</span>
+<span class="sd">           - isIn: Filter by the chunk</span>
+<span class="sd">           - regex: Filter using a regex</span>
+<span class="sd">    filterValue: str</span>
+<span class="sd">        If equal to &quot;entity&quot;, use the ner label to filter. If set to &quot;result&quot;,</span>
+<span class="sd">        use the `result` attribute of the annotation to filter.</span>
+<span class="sd">    entitiesConfidenceResource: str</span>
+<span class="sd">        Path to a CSV file containing the entity pairs to remove chunks based on</span>
+<span class="sd">        the confidance level. The CSV file should have two columns: entity and</span>
+<span class="sd">        confidenceThreshold. The entity column should contain the entity name</span>
+<span class="sd">        and the confidenceThreshold column should contain the confidence</span>
+<span class="sd">        threshold to filter the chunks.    </span>
+<span class="sd">    </span>
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 
@@ -562,7 +594,7 @@ document.write(`
 
 <div class="viewcode-block" id="ChunkMergeModel"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.ChunkMergeModel">[docs]</a><span class="k">class</span> <span class="nc">ChunkMergeModel</span><span class="p">(</span><span class="n">AnnotatorModelInternal</span><span class="p">,</span> <span class="n">MergeCommonParams</span><span class="p">,</span> <span class="n">MergePrioritizationParams</span><span class="p">,</span> <span class="n">FilteringParams</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    The model produced by ChunkMergerAproach.</span>
+<span class="sd">    The model produced by ChunkMergeApproach.</span>
 
 <span class="sd">    =========================== ======================</span>
 <span class="sd">    Input Annotation types      Output Annotation type</span>
@@ -579,6 +611,20 @@ document.write(`
 <span class="sd">        Select what is the precedence when two chunks have the same start and end indices. Possible values are [entity|identifier|field]</span>
 <span class="sd">    blackList</span>
 <span class="sd">        If defined, list of entities to ignore. The rest will be proccessed.</span>
+<span class="sd">    whiteList</span>
+<span class="sd">        If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels.</span>
+<span class="sd">    caseSensitive: bool</span>
+<span class="sd">        Determines whether the definitions of the white listed and black listed entities are case sensitive. Default: True.</span>
+<span class="sd">        If the filterValue is &#39;entity&#39;, &#39;caseSensitive&#39; is always False.</span>
+<span class="sd">    regex: str</span>
+<span class="sd">       If defined, list of regex to process the chunks (Default: []).</span>
+<span class="sd">    criteria: str</span>
+<span class="sd">           Tag representing what is the criteria to filter the chunks. Possibles values are:</span>
+<span class="sd">           - isIn: Filter by the chunk</span>
+<span class="sd">           - regex: Filter using a regex</span>
+<span class="sd">    filterValue: str</span>
+<span class="sd">        If equal to &quot;entity&quot;, use the ner label to filter. If set to &quot;result&quot;,</span>
+<span class="sd">        use the `result` attribute of the annotation to filter.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 <div class="viewcode-block" id="ChunkMergeModel.name"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/merge/chunk_merge/index.html#sparknlp_jsl.annotator.merge.chunk_merge.ChunkMergeModel.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;ChunkMergeModel&quot;</span></div>
 

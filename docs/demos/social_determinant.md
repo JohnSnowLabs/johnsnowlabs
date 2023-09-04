@@ -32,7 +32,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/SDOH/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Model.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Models.ipynb
         - title: Detect Social Determinants of Health Entities 
           id: detect_social_determinants_health_entities         
           image: 

@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Installation
 permalink: /docs/en/alab/install
 key: docs-training
-modify_date: "2022-11-06"
+modify_date: "2022-11-07"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -154,7 +154,7 @@ Outputs:
    ```
    
 
- Click Create a stack, “Upload a template file”. Give the Stack a name and enter the NLP Lab instance ID (from the EC2 console) as a parameter.
+ Click Create a stack, “Upload a template file”. Give the Stack a name and enter the NLP Lab instance Hostname(from the EC2 console) as a parameter.
 
 ![createStack](/assets/images/annotation_lab/aws/createStack.png)
 

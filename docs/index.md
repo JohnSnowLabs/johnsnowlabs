@@ -66,7 +66,7 @@ data:
       tab-body:
         - text: Spark NLP
           description: Open-Source text processing library for Python, Java, and Scala. It provides production-grade, scalable, and trainable versions of the latest research in natural language processing.
-          img: /assets/images/home/spark_ecosys.png
+          img: /assets/images/home/23_05_2023.jpg
 
         - text: NLP Display
           description: Open-Source Python library for visualizing the annotations generated with Spark NLP. 

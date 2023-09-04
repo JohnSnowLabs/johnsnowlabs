@@ -6,7 +6,7 @@ seotitle: Visual NER | John Snow Labs
 title: Visual NER
 # permalink: /docs/en/alab/visual_ner
 key: docs-training
-modify_date: "2022-04-05"
+modify_date: "2022-04-06"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

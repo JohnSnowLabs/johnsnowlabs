@@ -21,13 +21,13 @@ It will not accept **library secrets** which correspond to **versions do not mat
 This essentially prevents you from installing **outdated** or **new but not deeply tested** libraries, or from shooting yourself in the foot you might say.
 
 
-You can work around this protection mechanism, by configuring `jsl.settings.enforce_versions=False`.
+You can work around this protection mechanism, by configuring `nlp.settings.enforce_versions=False`.
 This will ignore bad secret versions.
 
 ```python
 from johnsnowlabs import *
-jsl.settings.enforce_versions=False
-jsl.install(secret='1.2.3-My.Custom.or.Outdated.Secret')
+nlp.settings.enforce_versions=False
+nlp.install(secret='1.2.3-My.Custom.or.Outdated.Secret')
 ```
 
 </div><div class="h3-box" markdown="1">

@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Train New Model
 permalink: /docs/en/alab/training_configurations
 key: docs-training
-modify_date: "2022-12-01"
+modify_date: "2022-12-02"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

@@ -4,7 +4,7 @@ title: Text-to-SQL Generation (MIMICSQL)
 author: John Snow Labs
 name: text2sql_mimicsql
 date: 2023-08-14
-tags: [licensed, text2sql, medicaltextgeneration, medicalquestionanswering, flant5_large, clinical, en, tensorflow]
+tags: [licensed, text2sql, medicaltextgeneration, medicalquestionanswering, clinical, en, tensorflow]
 task: Table Question Answering
 language: en
 edition: Healthcare NLP 5.0.1
@@ -19,7 +19,8 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is based on the LLM FlanT5-Large, which is finetuned with a biomedical dataset (MIMICSQL) by John Snow Labs.  It can generate SQL queries from natural questions.
+This model can generate SQL queries from natural questions. It is based on a small-size LLM, which is finetuned by John Snow Labs on a dataset having a schema with the same schema that MIMIC-III has.
+
 
 ## Predicted Entities
 
@@ -37,6 +38,7 @@ This model is based on the LLM FlanT5-Large, which is finetuned with a biomedica
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -57,9 +59,6 @@ data = spark.createDataFrame([[text]]).toDF("text")
 pipeline = Pipeline(stages=[document_assembler, text2sql])
 result= pipeline.fit(data).transform(data)
 
-
-
-
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
@@ -79,16 +78,18 @@ val data = Seq(Array(text)).toDS.toDF("text")
 val result = pipeline.fit(data).transform(data)
 
 
-
-
 ```
 </div>
 
 ## Results
 
 ```bash
-[SELECT COUNT ( DISTINCT DEMOGRAPHIC."SUBJECT_ID" ) FROM DEMOGRAPHIC INNER JOIN PROCEDURES on DEMOGRAPHIC.HADM_ID = PROCEDURES.HADM_ID WHERE PROCEDURES."ICD9_CODE" = "5771"]|
-
+[
+SELECT COUNT ( DISTINCT DEMOGRAPHIC."SUBJECT_ID" )
+FROM DEMOGRAPHIC
+INNER JOIN PROCEDURES on DEMOGRAPHIC.HADM_ID = PROCEDURES.HADM_ID
+WHERE PROCEDURES."ICD9_CODE" = "5771"
+]
 ```
 
 {:.model-param}
