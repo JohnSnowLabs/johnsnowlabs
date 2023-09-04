@@ -778,6 +778,11 @@ Pipeline could then be defined like this</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">ContextualParserModel</span></em><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/context/contextual_parser.html#ContextualParserModel.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.caseSensitive">
 <span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/context/contextual_parser.html#ContextualParserModel.caseSensitive"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.caseSensitive" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -853,6 +858,22 @@ Pipeline could then be defined like this</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.pretrained">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'date_of_birth_parser'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/context/contextual_parser.html#ContextualParserModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.pretrained" title="Permalink to this definition">#</a></dt>
+<dd><p>Download a pre-trained ContextualParserModel.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model, by default “date_of_birth_parser”
+lang (str): Language of the pre-trained model, by default “en”
+remote_loc (str): Remote location of the pre-trained model. If None, use the
+open-source location. Other values are “clinical/models”,
+“finance/models”, or “legal/models”.</p>
+</dd>
+<dt>Returns:</dt><dd><p>ContextualParserModel: A pre-trained ContextualParserModel.</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -912,6 +933,7 @@ Pipeline could then be defined like this</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel"><code class="docutils literal notranslate"><span class="pre">ContextualParserModel</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">ContextualParserModel.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">ContextualParserModel.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.name"><code class="docutils literal notranslate"><span class="pre">ContextualParserModel.name</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.caseSensitive"><code class="docutils literal notranslate"><span class="pre">ContextualParserModel.caseSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.prefixAndSuffixMatch"><code class="docutils literal notranslate"><span class="pre">ContextualParserModel.prefixAndSuffixMatch</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.optionalContextRules"><code class="docutils literal notranslate"><span class="pre">ContextualParserModel.optionalContextRules</span></code></a></li>
@@ -920,6 +942,7 @@ Pipeline could then be defined like this</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.setPrefixAndSuffixMatch"><code class="docutils literal notranslate"><span class="pre">ContextualParserModel.setPrefixAndSuffixMatch()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.setOptionalContextRules"><code class="docutils literal notranslate"><span class="pre">ContextualParserModel.setOptionalContextRules()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.setShortestContextMatch"><code class="docutils literal notranslate"><span class="pre">ContextualParserModel.setShortestContextMatch()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel.pretrained"><code class="docutils literal notranslate"><span class="pre">ContextualParserModel.pretrained()</span></code></a></li>
 </ul>
 </li>
 </ul>

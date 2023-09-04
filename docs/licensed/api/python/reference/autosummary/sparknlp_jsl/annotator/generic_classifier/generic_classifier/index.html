@@ -772,6 +772,8 @@ FeaturesAssembler` as input, classifies them and outputs CATEGORY annotations.</
 <dd class="field-odd"><dl class="simple">
 <dt><strong>multiClass</strong></dt><dd><p>Return only the label with the highest confidence score or all labels</p>
 </dd>
+<dt><strong>featureScaling</strong></dt><dd><p>Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling)</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -826,6 +828,11 @@ FeaturesAssembler` as input, classifies them and outputs CATEGORY annotations.</
 <span class="sig-name descname"><span class="pre">multiClass</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/generic_classifier/generic_classifier.html#GenericClassifierModel.multiClass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.multiClass" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.featureScaling">
+<span class="sig-name descname"><span class="pre">featureScaling</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/generic_classifier/generic_classifier.html#GenericClassifierModel.featureScaling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.featureScaling" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setMultiClass">
 <span class="sig-name descname"><span class="pre">setMultiClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/generic_classifier/generic_classifier.html#GenericClassifierModel.setMultiClass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setMultiClass" title="Permalink to this definition">#</a></dt>
@@ -834,6 +841,20 @@ FeaturesAssembler` as input, classifies them and outputs CATEGORY annotations.</
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>value</strong><span class="classifier">bool</span></dt><dd><p>Whether to return only the label with the highest confidence score or all labels</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setFeatureScaling">
+<span class="sig-name descname"><span class="pre">setFeatureScaling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_scaling</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/generic_classifier/generic_classifier.html#GenericClassifierModel.setFeatureScaling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setFeatureScaling" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>feature_scaling</strong><span class="classifier">str</span></dt><dd><p>Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling)</p>
 </dd>
 </dl>
 </dd>
@@ -935,7 +956,9 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.name"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.name</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.classes"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.classes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.multiClass"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.multiClass</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.featureScaling"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.featureScaling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setMultiClass"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.setMultiClass()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setFeatureScaling"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.setFeatureScaling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.pretrained"><code class="docutils literal notranslate"><span class="pre">GenericClassifierModel.pretrained()</span></code></a></li>
 </ul>
 </li>
