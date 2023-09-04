@@ -24,11 +24,15 @@ def get_printable_glue_notebook_commands(
     """
     region = boto_session.region_name
     register_listener = (
-        secrets.HC_LICENSE
-        and "spark._jvm.com.johnsnowlabs.util.start.registerListenerAndStartRefresh()"
-    ) or (
-        secrets.OCR_LICENSE
-        and "spark._jvm.com.johnsnowlabs.util.OcrStart.registerListenerAndStartRefresh()"
+        (
+            secrets.HC_LICENSE
+            and "spark._jvm.com.johnsnowlabs.util.start.registerListenerAndStartRefresh()"
+        )
+        or (
+            secrets.OCR_LICENSE
+            and "spark._jvm.com.johnsnowlabs.util.OcrStart.registerListenerAndStartRefresh()"
+        )
+        or ""
     )
 
     aws_creds = get_aws_used_creds(boto_session)
@@ -52,25 +56,25 @@ def get_printable_glue_notebook_commands(
 
 Add the following lines in the beginning of your Glue notebook job:
 
-1. %additional_python_modules {Software.jsl_lib.pypi_name}=={settings.raw_version_jsl_lib},{
+1.
+%additional_python_modules {Software.jsl_lib.pypi_name}=={settings.raw_version_jsl_lib},{
    ",".join([path for path in packages_s3_location])
 }
+%extra_jars {",".join([path for path in jars_s3_location])}
 
-2. %extra_jars {",".join([path for path in jars_s3_location])}
-
-3. %%configure 
+%%configure 
 {{
     "--conf": \"\"\"spark.jsl.settings.pretrained.cache_folder=s3://{glue_assets_bucket}/cache_pretrained/  
 --conf spark.jars.packages=org.apache.hadoop:hadoop-aws:3.2.1,com.amazonaws:aws-java-sdk:1.11.828 
 {s3a_creds_conf} 
+--conf spark.hadoop.fs.s3a.aws.credentials.provider=org.apache.hadoop.fs.s3a.TemporaryAWSCredentialsProvider 
 --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem 
 --conf spark.hadoop.fs.s3a.path.style.access=true 
 --conf spark.jsl.settings.aws.region={region}\"\"\"
 }}
 
-4. 
+2. 
 %glue_version 4.0
-%number_of_workers 2 
 
 import sys
 from awsglue.transforms import *
