@@ -18,7 +18,7 @@ here = path.abspath(path.dirname(__file__))
 
 
 def create_emr_cluster(
-    emr_client: boto3.client,
+    boto_session: boto3.Session,
     secrets: JslSecrets,
     bootstrap_bucket: Optional[str] = None,
     s3_logs_path: Optional[str] = None,
@@ -35,7 +35,7 @@ def create_emr_cluster(
 ) -> str:
     """
     Creates an EMR cluster with the given settings.
-    :param emr_client: EMR boto3 client
+    :param boto_session: Boto3 session
     :param secrets: JSL secrets
 
     :param bootstrap_bucket: S3 bucket where the bootstrap script will be uploaded
@@ -56,10 +56,18 @@ def create_emr_cluster(
     """
 
     try:
-        s3_client = boto3.client("s3")
-        region = s3_client.meta.region_name
+        if not boto_session:
+            raise Exception("Boto session is required")
+
+        region = boto_session.region_name
+        emr_client = boto_session.client("emr")
+
+        # Make sure EMR bucket exists
+        bucket = create_emr_bucket(boto_session=boto_session, bucket=bootstrap_bucket)
+
         bootstrap_script_path = create_bootstrap_script(
-            bootstrap_bucket=bootstrap_bucket,
+            boto_session=boto_session,
+            bucket=bucket,
             secrets=secrets,
             spark_nlp=spark_nlp,
             nlp=nlp,
@@ -68,7 +76,8 @@ def create_emr_cluster(
         )
 
         step_script = create_initialization_step_script(
-            bootstrap_bucket=bootstrap_bucket,
+            boto_session=boto_session,
+            bucket=bucket,
         )
 
         payload = {
@@ -180,32 +189,12 @@ def block_till_emr_cluster_ready(emr_client, cluster_id: str):
     print(f"👌 Cluster-Id {cluster_id} is ready!")
 
 
-def upload_script_to_bucket(
-    bucket: str,
-    content: str,
-    script_name: str,
-) -> str:
-    """Creates a script and uploads it to s3 bucket. Returns the s3 path of the script
+def create_initialization_step_script(boto_session: boto3.Session, bucket: str) -> str:
+    """Creates a EMR initialization step script and uploads it to s3 bucket. Returns the s3 path of the script
+    :param boto_session: Boto3 session
     :param s3_client: S3 boto3 client
     :param sts_client: STS boto3 client
     :param bucket: S3 bucket to upload the script
-    :param content: Content of the script
-    :param script_name: Name of the script
-    """
-
-    bucket = create_emr_bucket(bucket_name=bucket)
-    return upload_content(
-        content=content,
-        bucket=bucket,
-        file_name=script_name,
-    )
-
-
-def create_initialization_step_script(bootstrap_bucket: str) -> str:
-    """Creates a EMR initialization step script and uploads it to s3 bucket. Returns the s3 path of the script
-    :param s3_client: S3 boto3 client
-    :param sts_client: STS boto3 client
-    :param bootstrap_bucket: S3 bucket to upload the script
     :return s3_path: S3 path of the script
     """
     script_name = "initialization_script.sh"
@@ -217,15 +206,17 @@ sudo python3 -m pip install "numpy>1.17.3"
 sudo python3 -m pip install scipy scikit-learn "tensorflow==2.11.0" tensorflow-addons
 exit 0
 """
-    return upload_script_to_bucket(
-        bucket=bootstrap_bucket,
+    return upload_content(
+        boto_session=boto_session,
+        bucket=bucket,
         content=script,
-        script_name=script_name,
+        file_name=script_name,
     )
 
 
 def create_bootstrap_script(
-    bootstrap_bucket: str,
+    boto_session: boto3.Session,
+    bucket: str,
     secrets: JslSecrets,
     spark_nlp: bool = True,
     nlp: bool = True,
@@ -233,8 +224,8 @@ def create_bootstrap_script(
     hardware_platform: str = JvmHardwareTarget.cpu.value,
 ) -> str:
     """Creates a EMR bootstrap script and uploads it to s3 bucket. Returns the s3 path of the script
-
-    :param bootstrap_bucket: S3 bucket to upload the script
+    :param boto_session: Boto3 session
+    :param bucket: S3 bucket to upload the script
     :param secrets: JSL secrets
     :param spark_nlp: Whether to install spark-nlp
     :param nlp: Whether to install nlp
@@ -274,8 +265,9 @@ exit 0
         "__installation_script__", installation_script
     )
 
-    return upload_script_to_bucket(
-        bucket=bootstrap_bucket,
+    return upload_content(
+        boto_session=boto_session,
+        bucket=bucket,
         content=full_installation_script,
-        script_name=script_name,
+        file_name=script_name,
     )

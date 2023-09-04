@@ -9,12 +9,20 @@ from johnsnowlabs.utils.boto_utils import get_aws_used_creds
 
 
 def get_printable_glue_notebook_commands(
+    boto_session: boto3.Session,
     glue_assets_bucket: str,
-    sts_client: boto3.client,
     packages_s3_location: List[str],
     jars_s3_location: List[str],
     secrets: Optional[JslSecrets] = None,
 ):
+    """Returns a printable string with the commands to be run in a Glue notebook
+    :param boto_session: Boto3 session
+    :param glue_assets_bucket: Glue assets bucket
+    :param packages_s3_location: List of packages s3 locations
+    :param jars_s3_location: List of jars s3 locations
+    :param secrets: JSL secrets
+    """
+    region = boto_session.region_name
     register_listener = (
         secrets.HC_LICENSE
         and "spark._jvm.com.johnsnowlabs.util.start.registerListenerAndStartRefresh()"
@@ -23,7 +31,7 @@ def get_printable_glue_notebook_commands(
         and "spark._jvm.com.johnsnowlabs.util.OcrStart.registerListenerAndStartRefresh()"
     )
 
-    aws_creds = get_aws_used_creds()
+    aws_creds = get_aws_used_creds(boto_session)
     # Keys to be used for S3 access
     s3a_creds_conf = f"""--conf spark.hadoop.fs.s3a.access.key={aws_creds.access_key} 
 --conf spark.hadoop.fs.s3a.secret.key={aws_creds.secret_key}"""
@@ -57,7 +65,7 @@ Add the following lines in the beginning of your Glue notebook job:
 {s3a_creds_conf} 
 --conf spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem 
 --conf spark.hadoop.fs.s3a.path.style.access=true 
---conf spark.jsl.settings.aws.region={sts_client.meta.region_name}\"\"\"
+--conf spark.jsl.settings.aws.region={region}\"\"\"
 }}
 
 4. 

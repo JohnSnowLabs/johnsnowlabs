@@ -12,8 +12,7 @@ class BotoException(Exception):
         return f"{self.code}: {self.message}"
 
 
-def get_aws_used_creds():
-    session = boto3.DEFAULT_SESSION
+def get_aws_used_creds(session):
     return session.get_credentials().get_frozen_credentials()
 
 

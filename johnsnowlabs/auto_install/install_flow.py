@@ -220,6 +220,7 @@ def install(
 
 
 def install_to_emr(
+    boto_session: Optional[boto3.Session] = None,
     # EMR specific configs
     bootstrap_bucket: Optional[str] = None,
     s3_logs_path: Optional[str] = None,
@@ -247,6 +248,7 @@ def install_to_emr(
     auto_terminate_hours: Optional[int] = 1,
 ) -> str:
     """Install John Snow Labs NLP and selected products on an EMR cluster
+    :param boto_session: Boto3 session. Refer to https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html
     :param bootstrap_bucket: S3 bucket to store bootstrap scripts
     :param s3_logs_path: S3 path to store logs
     :param service_role: EMR service role
@@ -282,10 +284,11 @@ def install_to_emr(
         aws_key_id=aws_key_id,
         only_return_secrets=True,
     )
-    emr_client = boto3.client("emr")
+    if not boto_session:
+        boto_session = boto3.Session()
 
     cluster_id = create_emr_cluster(
-        emr_client=emr_client,
+        boto_session=boto_session,
         secrets=secrets,
         s3_logs_path=s3_logs_path,
         bootstrap_bucket=bootstrap_bucket,
@@ -303,6 +306,7 @@ def install_to_emr(
 
 
 def install_to_glue(
+    boto_session: Optional[boto3.Session] = None,
     glue_assets_bucket: Optional[str] = None,
     # Browser Auth
     browser_login: bool = True,
@@ -323,12 +327,24 @@ def install_to_glue(
     hardware_platform: str = JvmHardwareTarget.cpu.value,
 ):
     """Install John Snow Labs NLP and selected products on a Glue job
+    :param boto_session: Boto3 session. Refer to https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html
     :param glue_assets_bucket: S3 bucket to store glue assets
-    :param job_name: Glue job name
-    :param job_role: Glue job role
+    :param browser_login: Use browser login
+    :param force_browser: Force browser login
+    :param access_token: JWT access token
+    :param json_license_path: Path to JSON license file
+    :param license: License string
+    :param local_license_number: Local license number
+    :param remote_license_number: Remote license number
+    :param nlp: Install NLP
+    :param spark_nlp: Install Spark NLP
+    :param visual: Install Visual
+    :param hardware_platform: Hardware platform
     """
-    # Download jars and wheels so that we can upload them
+    if not boto_session:
+        boto_session = boto3.Session()
 
+    # Download jars and wheels so that we can upload them
     install_suite = get_install_suite_from_jsl_home(
         jvm_hardware_target=hardware_platform,
         visual=visual,
@@ -347,20 +363,19 @@ def install_to_glue(
         aws_key_id=aws_key_id,
     )
     # Make sure bucket exists
-    sts_client = boto3.client("sts")
-    # Make sure bucket exists
     bucket = create_glue_bucket(
+        boto_session=boto_session,
         bucket=glue_assets_bucket,
     )
     # Upload jars and wheels to s3 bucket for glue
     jars_s3_location, packages_s3_location = upload_pylibs_jars_to_glue_bucket(
-        install_suite=install_suite, bucket=bucket
+        boto_session=boto_session, install_suite=install_suite, bucket=bucket
     )
 
     # Show instructions on how to run a glue notebook
     print(
         get_printable_glue_notebook_commands(
-            sts_client=sts_client,
+            boto_session=boto_session,
             glue_assets_bucket=bucket,
             packages_s3_location=packages_s3_location,
             jars_s3_location=jars_s3_location,
