@@ -500,7 +500,7 @@ Approximately 1000 new state-of-the-art transformer models for Question Answerin
 The entire universe of Annotators in Spark NLP  is now embellished by NLU Components by using generalizable annotation extractors methods and configs internally to support enable the new NLU util methods.
 The following annotator classes are newly captured:
 
-- BertEmbeddings[release_notes.md](release_notes.md)
+- BertEmbeddings
 - BertForQuestionAnswering
 - BertForSequenceClassification
 - BertForTokenClassification
@@ -5028,7 +5028,7 @@ In the following table the NLU and Spark-NLP references are listed:
 
 |NLU Reference| Spark NLP Reference  | 
 |---------------|---------------------|
-|[en.resolve.icd10cm.umls](https://nlp.johnsnowlabs.com/2021/05/04/icd10cm_umls_mapping_en.html) | [icd10cm_umls_mapping](https://nlp.johnsnowlabs.com/2021/05/04/icd10cm_umls_mapping_en.html)  |
+|[en.resolve.icd10cm.umls](https://nlp.johnsnowlabs.com/2021/07/01/icd10cm_umls_mapping_en.html) | [icd10cm_umls_mapping](https://nlp.johnsnowlabs.com/2021/07/01/icd10cm_umls_mapping_en.html)  |
 |[en.resolve.mesh.umls   ](https://nlp.johnsnowlabs.com/2021/05/04/mesh_umls_mapping_en.html) | [mesh_umls_mapping](https://nlp.johnsnowlabs.com/2021/05/04/mesh_umls_mapping_en.html)  |
 |[en.resolve.rxnorm.umls ](https://nlp.johnsnowlabs.com/2021/07/01/rxnorm_umls_mapping_en.html) | [rxnorm_umls_mapping](https://nlp.johnsnowlabs.com/2021/09/24/ner_profiling_clinical_en.html)  |
 |[en.resolve.rxnorm.mesh ](https://nlp.johnsnowlabs.com/2021/05/04/rxnorm_mesh_mapping_en.html) | [rxnorm_mesh_mapping](https://nlp.johnsnowlabs.com/2021/05/04/rxnorm_mesh_mapping_en.html)  |
@@ -7807,7 +7807,7 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 | English  | [relation.bodypart.procedure](https://nlp.johnsnowlabs.com/2021/02/04/redl_bodypart_procedure_test_biobert_en.html) | [redl_bodypart_procedure_test_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_bodypart_procedure_test_biobert_en.html)                   |
 | English  | [relation.chemprot](https://nlp.johnsnowlabs.com/2021/02/04/redl_chemprot_biobert_en.html) | [redl_chemprot_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_chemprot_biobert_en.html)                   |
 | English  | [relation.clinical](https://nlp.johnsnowlabs.com/2021/02/04/redl_clinical_biobert_en.html) | [redl_clinical_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_clinical_biobert_en.html)                   |
-| English  | [relation.date](https://nlp.johnsnowlabs.com/2021/02/04/redl_date_clinical_biobert_en.htmls) | [redl_date_clinical_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_date_clinical_biobert_en.htmls)                   |
+| English  | [relation.date](https://nlp.johnsnowlabs.com/2021/06/01/redl_date_clinical_biobert_en.html) | [redl_date_clinical_biobert](https://nlp.johnsnowlabs.com/2021/06/01/redl_date_clinical_biobert_en.html)                   |
 | English  | [relation.drug_drug_interaction](https://nlp.johnsnowlabs.com/2021/02/04/redl_drug_drug_interaction_biobert_en.html) | [redl_drug_drug_interaction_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_drug_drug_interaction_biobert_en.html)                   |
 | English  | [relation.humen_phenotype_gene](https://nlp.johnsnowlabs.com/2021/02/04/redl_human_phenotype_gene_biobert_en.html) | [redl_human_phenotype_gene_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_human_phenotype_gene_biobert_en.html)                   |
 | English  | [relation.temporal_events](https://nlp.johnsnowlabs.com/2021/02/04/redl_temporal_events_biobert_en.html) | [redl_temporal_events_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_temporal_events_biobert_en.html)                   |
