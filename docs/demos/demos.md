@@ -127,7 +127,7 @@ data:
           id: vop           
           image: 
               src: /assets/images/Voice_Of_Patient.svg
-          excerpt: Extract and classify healthcare-related terms from documents written by patients such as questions, reviews, messages, and social media posts.
+          excerpt: Extract and classify healthcare-related terms from documents written by patient such as questions, reviews, messages, and social media posts.
           actions:
           - text: Live Demo
             type: normal
