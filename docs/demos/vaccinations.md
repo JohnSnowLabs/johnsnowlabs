@@ -21,6 +21,18 @@ data:
           activemenu: vaccinations
       source: yes
       source:
+        - title: Multilabel Classification For LitCovid 
+          id: multilabel_classification_litcovid     
+          image: 
+              src: /assets/images/Multilabel_Classification_For_LitCovid.svg
+          excerpt: This demo determines the relevant COVID-19 topics of an article based on its abstract.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_LITCOVID/
+          - text: Colab
+            type: blue_btn
+            url: 
         - title: Classify Self-Reported Covid-19 Symptoms from Posts 
           id: classify_self_reported_covid_symptoms_tweet     
           image: 
