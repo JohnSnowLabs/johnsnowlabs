@@ -23,6 +23,18 @@ data:
           activemenu: diagnoses_procedures
       source: yes
       source:    
+        - title: Detect Clinical Entities in Text (Multilingual)
+          id: detect_clinical_entities_text_multilingual
+          image: 
+              src: /assets/images/Detect_Clinical_Entities_in_Text_Multilingual.svg
+          excerpt: This demo automatically identify the entities of Problem, Test, and Treatment Entities in medical texts.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_CLINICAL_MULTI.ipynb
         - title: Detect clinical entities in text
           id: detect_clinical_entities_in_text
           image: 

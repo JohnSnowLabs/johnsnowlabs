@@ -20,6 +20,18 @@ data:
           activemenu: oncology
       source: yes
       source: 
+        - title: Multilabel Classification For Hallmarks of Cancer
+          id: multilabel_classification_hallmarks_cancer
+          image: 
+              src: /assets/images/Multilabel_Classification_For_Hallmarks_of_Cancer.svg
+          excerpt: This demo semantically classifies an article based on its abstract, specifically related to the hallmarks of cancer.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HALLMARKS_CANCER/
+          - text: Colab
+            type: blue_btn
+            url: 
         - title: Explore Oncology Notes with Spark NLP Models
           id: explore_oncology_notes_spark_models
           image: 
