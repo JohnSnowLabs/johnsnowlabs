@@ -172,6 +172,16 @@ sample_text = [
 
 Newly introduced augmented NER models namely [ner_events_clinical_langtest](https://nlp.johnsnowlabs.com/2023/08/31/ner_events_clinical_langtest_en.html), [ner_oncology_anatomy_general_langtest](https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_anatomy_general_langtest_en.html), [ner_oncology_anatomy_granular_langtest](https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_anatomy_granular_langtest_en.html),  [ner_oncology_demographics_langtest](https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_demographics_langtest_en.html), [ner_oncology_posology_langtest](https://nlp.johnsnowlabs.com/2023/09/04/ner_oncology_posology_langtest_en.html), and [ner_oncology_response_to_treatment_langtest](https://nlp.johnsnowlabs.com/2023/09/04/ner_oncology_response_to_treatment_langtest_en.html) are powered by the innovative LangTest library. This cutting-edge NLP toolkit is at the forefront of language processing advancements, incorporating state-of-the-art techniques and algorithms to enhance the capabilities of our models significantly.
 
+- These models are strengthened against various perturbations (lowercase, uppercase, titlecase, punctuation removal, etc.), and the previous and new robustness scores are presented below
+  
+| model names          | original robustness  | new robustness |
+|---------------------------------------------|--------|-------|
+| ner_oncology_anatomy_granular_langtest      | 0.79   | 0.89  |
+| ner_oncology_response_to_treatment_langtest | 0.76   | 0.90  |
+| ner_oncology_demographics_langtest          | 0.81   | 0.95  |
+| ner_oncology_anatomy_general_langtest       | 0.79   | 0.81  |
+| ner_oncology_posology_langtest              | 0.74   | 0.85  |
+| ner_events_clinical_langtest                | 0.71   | 0.80  |
 
 *Example*:
 
@@ -217,14 +227,14 @@ text = "I experienced fatigue, aggression, and sadness after taking Lipitor but 
 
 *Result*:
 
-| index | chunk1     | entity1 | chunk2  | entity2 | relation | zscore | minmax |
-|-------|------------|---------|---------|---------|----------|--------|--------|
-| 0     | fatigue    | ADE     | Lipitor | DRUG    | 0        | 0.9964 | 0.9983 |
-| 1     | fatigue    | ADE     | Zocor   | DRUG    | 0        | 0.9884 | 0.9341 |
-| 2     | aggression | ADE     | Lipitor | DRUG    | 1        | 0.6123 | 0.9999 |
-| 3     | aggression | ADE     | Zocor   | DRUG    | 0        | 0.9972 | 0.9833 |
-| 4     | sadness    | ADE     | Lipitor | DRUG    | 1        | 0.9999 | 0.9644 |
-| 5     | sadness    | ADE     | Zocor   | DRUG    | 1        | 0.9080 | 0.9644 |
+| index | chunk1     | entity1 | chunk2   | entity2 | relation | zscore | minmax |
+|-------|------------|---------|----------|---------|----------|--------|--------|
+| 0     | fatigue    | ADE     | Lipitor  | DRUG    | 0        | 0.9964 | 0.9983 |
+| 1     | Zocor      | DRUG    | fatigue  | ADE     | 0        | 0.9884 | 0.9341 |
+| 2     | aggression | ADE     | Lipitor  | DRUG    | 1        | 0.6123 | 0.9999 |
+| 3     | Zocor      | DRUG    | aggression | ADE   | 0        | 0.9972 | 0.9833 |
+| 4     | sadness    | ADE     | Lipitor  | DRUG    | 1        | 0.9999 | 0.9644 |
+| 5     | Zocor      | DRUG    | sadness  | ADE     | 1        | 0.9080 | 0.9644 |
 
 
 *setFeatureScaling Example*:
