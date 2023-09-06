@@ -224,8 +224,8 @@ def install_to_emr(
     # EMR specific configs
     bootstrap_bucket: Optional[str] = None,
     s3_logs_path: Optional[str] = None,
-    service_role: Optional[str] = None,
-    job_flow_role: Optional[str] = None,
+    service_role: Optional[str] = settings.emr_default_service_role,
+    job_flow_role: Optional[str] = settings.emr_default_instance_profile,
     subnet_id: Optional[str] = None,
     ec2_key_name: Optional[str] = None,
     # Browser Auth

@@ -60,6 +60,7 @@ Add the following lines in the beginning of your Glue notebook job:
 %additional_python_modules {Software.jsl_lib.pypi_name}=={settings.raw_version_jsl_lib},{
    ",".join([path for path in packages_s3_location])
 }
+
 %extra_jars {",".join([path for path in jars_s3_location])}
 
 %%configure 

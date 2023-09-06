@@ -22,8 +22,8 @@ def create_emr_cluster(
     secrets: JslSecrets,
     bootstrap_bucket: Optional[str] = None,
     s3_logs_path: Optional[str] = None,
-    service_role: Optional[str] = None,
-    job_flow_role: Optional[str] = None,
+    service_role: Optional[str] = settings.emr_default_service_role,
+    job_flow_role: Optional[str] = settings.emr_default_instance_profile,
     subnet_id: Optional[str] = None,
     ec2_key_name: Optional[str] = None,
     spark_nlp: bool = True,
@@ -257,7 +257,7 @@ exit 0
 """
     installation_script = ""
     if secrets.HC_LICENSE:
-        installation_script += f"sudo -E python3 -c \"from johnsnowlabs import nlp;nlp.install(med_license='{secrets.HC_LICENSE or ''}',aws_access_key='{secrets.AWS_ACCESS_KEY_ID or ''}',aws_key_id='{secrets.AWS_SECRET_ACCESS_KEY or ''}', spark_nlp={spark_nlp}, nlp={nlp}, visual={visual}, hardware_platform='{hardware_platform}')\""
+        installation_script += f"sudo -E python3 -c \"from johnsnowlabs import nlp;nlp.install(med_license='{secrets.HC_LICENSE or ''}',aws_key_id='{secrets.AWS_ACCESS_KEY_ID or ''}',aws_access_key='{secrets.AWS_SECRET_ACCESS_KEY or ''}', spark_nlp={spark_nlp}, nlp={nlp}, visual={visual}, hardware_platform='{hardware_platform}')\""
     else:
         installation_script += f"sudo -E python3 -c \"from johnsnowlabs import nlp;nlp.install(browser_login=False, nlp=False, hardware_platform='{hardware_platform}')\""
 
