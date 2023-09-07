@@ -28,7 +28,7 @@ data:
           actions:
           - text: Live Demo
             type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HALLMARKS_CANCER/
+            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HOC/
           - text: Colab
             type: blue_btn
             url: 
