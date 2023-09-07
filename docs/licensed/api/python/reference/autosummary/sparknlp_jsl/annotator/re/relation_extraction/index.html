@@ -949,6 +949,16 @@ between a problem (“PROBLEM) and a symptom (“SYMTOM”).</p>
 <span class="sig-name descname"><span class="pre">classes</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/re/relation_extraction.html#RelationExtractionModel.classes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.classes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.multiClass">
+<span class="sig-name descname"><span class="pre">multiClass</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/re/relation_extraction.html#RelationExtractionModel.multiClass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.multiClass" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.featureScaling">
+<span class="sig-name descname"><span class="pre">featureScaling</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/re/relation_extraction.html#RelationExtractionModel.featureScaling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.featureScaling" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setMaxSyntacticDistance">
 <span class="sig-name descname"><span class="pre">setMaxSyntacticDistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/re/relation_extraction.html#RelationExtractionModel.setMaxSyntacticDistance"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setMaxSyntacticDistance" title="Permalink to this definition">#</a></dt>
@@ -1023,6 +1033,34 @@ value : bool</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.getClasses">
 <span class="sig-name descname"><span class="pre">getClasses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/re/relation_extraction.html#RelationExtractionModel.getClasses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.getClasses" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns labels used to train this model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setMultiClass">
+<span class="sig-name descname"><span class="pre">setMultiClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/re/relation_extraction.html#RelationExtractionModel.setMultiClass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setMultiClass" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the model in multi class prediction mode (Default: false)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>value</strong><span class="classifier">bool</span></dt><dd><p>Whether to return only the label with the highest confidence score or all labels</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setFeatureScaling">
+<span class="sig-name descname"><span class="pre">setFeatureScaling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">feature_scaling</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/re/relation_extraction.html#RelationExtractionModel.setFeatureScaling"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setFeatureScaling" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>feature_scaling</strong><span class="classifier">str</span></dt><dd><p>Feature scaling method. Possible values are ‘zscore’, ‘minmax’ or empty (no scaling</p>
+</dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -1143,12 +1181,16 @@ open-source location. Other values are “clinical/models”,
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.maxSyntacticDistance"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.maxSyntacticDistance</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.customLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.customLabels</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.classes"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.classes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.multiClass"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.multiClass</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.featureScaling"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.featureScaling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setMaxSyntacticDistance"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setMaxSyntacticDistance()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setPredictionThreshold"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setPredictionThreshold()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationPairs"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setRelationPairs()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationPairsCaseSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setRelationPairsCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setCustomLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setCustomLabels()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.getClasses"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.getClasses()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setMultiClass"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setMultiClass()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setFeatureScaling"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setFeatureScaling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationTypePerPair"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.setRelationTypePerPair()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.getRelationTypePerPair"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.getRelationTypePerPair()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.pretrained"><code class="docutils literal notranslate"><span class="pre">RelationExtractionModel.pretrained()</span></code></a></li>

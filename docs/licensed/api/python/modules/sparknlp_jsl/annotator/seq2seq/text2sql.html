@@ -325,19 +325,36 @@ document.write(`
 <div class="viewcode-block" id="Text2SQL"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/text2sql/index.html#sparknlp_jsl.annotator.seq2seq.text2sql.Text2SQL">[docs]</a><span class="k">class</span> <span class="nc">Text2SQL</span><span class="p">(</span><span class="n">MedicalTextGenerator</span><span class="p">):</span>
 <div class="viewcode-block" id="Text2SQL.name"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/text2sql/index.html#sparknlp_jsl.annotator.seq2seq.text2sql.Text2SQL.name">[docs]</a>    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Text2SQL&quot;</span></div>
 
+<div class="viewcode-block" id="Text2SQL.tableLimit"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/text2sql/index.html#sparknlp_jsl.annotator.seq2seq.text2sql.Text2SQL.tableLimit">[docs]</a>    <span class="n">tableLimit</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;tableLimit&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;Maximum number of tables allowed&quot;</span><span class="p">,</span>
+                      <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toInt</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Text2SQL.setTableLimit"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/text2sql/index.html#sparknlp_jsl.annotator.seq2seq.text2sql.Text2SQL.setTableLimit">[docs]</a>    <span class="k">def</span> <span class="nf">setTableLimit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the maximum number of tables allowed for this model</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : int</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">tableLimit</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
+
 <div class="viewcode-block" id="Text2SQL.setSchema"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/text2sql/index.html#sparknlp_jsl.annotator.seq2seq.text2sql.Text2SQL.setSchema">[docs]</a>    <span class="k">def</span> <span class="nf">setSchema</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">schema</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set SQL schema</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
-<span class="sd">        value : str</span>
-<span class="sd">            SQL schema</span>
+<span class="sd">        schema : dict[str, list[str]]</span>
+<span class="sd">            SQL schema, a dictionary mapping table names to list of columns, e.g {&quot;users&quot;: [&quot;id&quot;, &quot;name&quot;, &quot;age&quot;]}</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">table_limit</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getTableLimit</span><span class="p">()</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">table_limit</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">table_limit</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">schema</span><span class="p">)):</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The maximum number of tables that can be used by this model is </span><span class="si">{</span><span class="n">table_limit</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;setSchema&quot;</span><span class="p">,</span> <span class="n">schema</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span></div>
 
 <div class="viewcode-block" id="Text2SQL.getSchema"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/text2sql/index.html#sparknlp_jsl.annotator.seq2seq.text2sql.Text2SQL.getSchema">[docs]</a>    <span class="k">def</span> <span class="nf">getSchema</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns SQL schema</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get SQL schema</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">schema_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;getSQLSchemaStr&quot;</span><span class="p">)</span>
         <span class="n">schema</span> <span class="o">=</span> <span class="p">{}</span>
@@ -350,6 +367,28 @@ document.write(`
 
         <span class="k">return</span> <span class="n">schema</span></div>
 
+<div class="viewcode-block" id="Text2SQL.setPostProcessingSubstitutions"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/text2sql/index.html#sparknlp_jsl.annotator.seq2seq.text2sql.Text2SQL.setPostProcessingSubstitutions">[docs]</a>    <span class="k">def</span> <span class="nf">setPostProcessingSubstitutions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set post processing substitution strings</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        substitutions : dict[str, str]</span>
+<span class="sd">            substitution strings</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;setPostProcessingSubstitutions&quot;</span><span class="p">,</span> <span class="n">substitutions</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="Text2SQL.getPostProcessingSubstitutions"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/text2sql/index.html#sparknlp_jsl.annotator.seq2seq.text2sql.Text2SQL.getPostProcessingSubstitutions">[docs]</a>    <span class="k">def</span> <span class="nf">getPostProcessingSubstitutions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get post processing substitution strings</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">substitution_string</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;getPostProcessingSubstitutionsStr&quot;</span><span class="p">)</span>
+        <span class="n">substitutions</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">substitution_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">substitutions</span><span class="p">[</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">substitutions</span></div>
 
     <span class="nd">@keyword_only</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.annotators.seq2seq.Text2SQL&quot;</span><span class="p">,</span> <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -359,7 +398,8 @@ document.write(`
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_setDefault</span><span class="p">(</span>
             <span class="n">maxNewTokens</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span>
-            <span class="n">stopAtEos</span><span class="o">=</span><span class="kc">True</span>
+            <span class="n">stopAtEos</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">tableLimit</span><span class="o">=-</span><span class="mi">1</span>
         <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
