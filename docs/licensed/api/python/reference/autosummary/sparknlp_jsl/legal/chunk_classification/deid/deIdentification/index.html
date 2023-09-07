@@ -389,7 +389,7 @@ document.write(`
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DeIdentification</span></span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/chunk_classification/deid/deIdentification.html#DeIdentification"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DeIdentification</span></span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification" title="Permalink to this definition">#</a></dt>
 <dd><p>Contains all the methods for training a DeIdentificationModel model.
 This module can obfuscate or mask the entities that contains personal information. These can be set with a file of
 regex patterns with setRegexPatternsDictionary, where each line is a mapping of entity to regex</p>
@@ -566,14 +566,14 @@ If value is true, it might decrease performance. Default: False</p>
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">DeIdentification</span></em><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/chunk_classification/deid/deIdentification.html#DeIdentification.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">DeIdentification</span></em><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentification.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DeIdentificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.legal.chunk_classification.deid.DeIdentificationModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/chunk_classification/deid/deIdentification.html#DeIdentificationModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DeIdentificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.legal.chunk_classification.deid.DeIdentificationModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel" title="Permalink to this definition">#</a></dt>
 <dd><p>The DeIdentificationModel model can obfuscate or mask the entities that contains personal information. These can be set with a file of
 regex patterns with setRegexPatternsDictionary, where each line is a mapping of entity to regex</p>
 <table class="table">
@@ -725,12 +725,12 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">DeIdentificationModel</span></em><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/chunk_classification/deid/deIdentification.html#DeIdentificationModel.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">DeIdentificationModel</span></em><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legner_deid'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legal/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/chunk_classification/deid/deIdentification.html#DeIdentificationModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.pretrained" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legner_deid'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legal/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.chunk_classification.deid.deIdentification.DeIdentificationModel.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Download a pre-trained DeIdentificationModel.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>name (str): Name of the pre-trained model, by default “legner_deid”
@@ -796,14 +796,6 @@ open-source location. Other values are “clinical/models”,
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../../../_sources/reference/autosummary/sparknlp_jsl/legal/chunk_classification/deid/deIdentification/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               
