@@ -389,7 +389,7 @@ document.write(`
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LegalNerApproach</span></span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/token_classification/ner/legal_ner.html#LegalNerApproach"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LegalNerApproach</span></span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerApproach" title="Permalink to this definition">#</a></dt>
 <dd><p>Trains generic NER model based on Neural Networks.</p>
 <p>The architecture of the neural network is a Char CNNs - BiLSTM - CRF that
 achieves state-of-the-art in most datasets.</p>
@@ -615,7 +615,7 @@ can be used as the first annotators in a pipeline.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LegalNerModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.legal.token_classification.ner.LegalNerModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/token_classification/ner/legal_ner.html#LegalNerModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerModel" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LegalNerModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.legal.token_classification.ner.LegalNerModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerModel" title="Permalink to this definition">#</a></dt>
 <dd><p>This Named Entity recognition annotator is a generic NER model based on
 Neural Networks.</p>
 <p>Neural Network architecture is Char CNNs - BiLSTM - CRF that achieves
@@ -709,12 +709,12 @@ the score of the predicted tag, by default False</p>
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerModel.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">LegalNerModel</span></em><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/token_classification/ner/legal_ner.html#LegalNerModel.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerModel.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">LegalNerModel</span></em><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerModel.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerModel.loadSavedModel">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ner_model_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/token_classification/ner/legal_ner.html#LegalNerModel.loadSavedModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerModel.loadSavedModel" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ner_model_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerModel.loadSavedModel" title="Permalink to this definition">#</a></dt>
 <dd><p>Load a pre-trained MedicalNerModel.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>ner_model_path (str): Path to the pre-trained model.
@@ -728,7 +728,7 @@ spark_session (SparkSession): SparkSession.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerModel.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legner_contract_doc_parties_lg'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legal/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../../modules/sparknlp_jsl/legal/token_classification/ner/legal_ner.html#LegalNerModel.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerModel.pretrained" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legner_contract_doc_parties_lg'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'legal/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.token_classification.ner.legal_ner.LegalNerModel.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Downloads and loads a pretrained model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -801,14 +801,6 @@ Spark NLPs repositories otherwise.</p>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../../../_sources/reference/autosummary/sparknlp_jsl/legal/token_classification/ner/legal_ner/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

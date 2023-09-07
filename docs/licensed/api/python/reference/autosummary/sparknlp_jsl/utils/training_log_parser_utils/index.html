@@ -364,12 +364,12 @@ document.write(`
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.training_log_parser_utils.aggregate_entities">
-<span class="sig-name descname"><span class="pre">aggregate_entities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/training_log_parser_utils.html#aggregate_entities"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.aggregate_entities" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">aggregate_entities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">metrics</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.aggregate_entities" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.training_log_parser_utils.split_tag">
-<span class="sig-name descname"><span class="pre">split_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunk_tag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/training_log_parser_utils.html#split_tag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.split_tag" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">split_tag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">chunk_tag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.split_tag" title="Permalink to this definition">#</a></dt>
 <dd><p>split chunk tag into IOBES prefix and chunk_type
 e.g.
 B-PER -&gt; (B, PER)
@@ -378,7 +378,7 @@ O -&gt; (O, None)</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.training_log_parser_utils.is_chunk_end">
-<span class="sig-name descname"><span class="pre">is_chunk_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prev_tag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/training_log_parser_utils.html#is_chunk_end"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.is_chunk_end" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">is_chunk_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prev_tag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.is_chunk_end" title="Permalink to this definition">#</a></dt>
 <dd><p>check if the previous chunk ended between the previous and current word
 e.g.
 (B-PER, I-PER) -&gt; False
@@ -389,20 +389,20 @@ this is considered as (B-PER, B-LOC)</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.training_log_parser_utils.is_chunk_start">
-<span class="sig-name descname"><span class="pre">is_chunk_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prev_tag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/training_log_parser_utils.html#is_chunk_start"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.is_chunk_start" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">is_chunk_start</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prev_tag</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.is_chunk_start" title="Permalink to this definition">#</a></dt>
 <dd><p>check if a new chunk started between the previous and current word</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.training_log_parser_utils.calc_metrics">
-<span class="sig-name descname"><span class="pre">calc_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/training_log_parser_utils.html#calc_metrics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.calc_metrics" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">calc_metrics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">percent</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.calc_metrics" title="Permalink to this definition">#</a></dt>
 <dd><p>compute overall precision, recall and FB1 (default values are 0.0)
 if percent is True, return 100 * original decimal value</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.training_log_parser_utils.count_chunks">
-<span class="sig-name descname"><span class="pre">count_chunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_seqs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_seqs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/training_log_parser_utils.html#count_chunks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.count_chunks" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">count_chunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_seqs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_seqs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.count_chunks" title="Permalink to this definition">#</a></dt>
 <dd><p>true_seqs: a list of true tags
 pred_seqs: a list of predicted tags
 return:
@@ -418,7 +418,7 @@ correct_counts, true_counts, pred_counts: similar to above, but for tags</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.training_log_parser_utils.get_result">
-<span class="sig-name descname"><span class="pre">get_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correct_chunks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_chunks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_chunks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/training_log_parser_utils.html#get_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.get_result" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_result</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">correct_chunks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_chunks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_chunks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">correct_counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">true_counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_counts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.training_log_parser_utils.get_result" title="Permalink to this definition">#</a></dt>
 <dd><p>if verbose, print overall performance, as well as performance per chunk type;
 otherwise, simply return overall prec, rec, f1 scores</p>
 </dd></dl>
@@ -471,14 +471,6 @@ otherwise, simply return overall prec, rec, f1 scores</p>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../_sources/reference/autosummary/sparknlp_jsl/utils/training_log_parser_utils/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

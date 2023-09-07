@@ -355,7 +355,7 @@ document.write(`
 </table>
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.ner_utils.get_charts">
-<span class="sig-name descname"><span class="pre">get_charts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/ner_utils.html#get_charts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.get_charts" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_charts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.get_charts" title="Permalink to this definition">#</a></dt>
 <dd><blockquote>
 <div><p>Plots the figures of metrics ( precision, recall, f1) vs epochs</p>
 </div></blockquote>
@@ -368,7 +368,7 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.ner_utils.loss_plot">
-<span class="sig-name descname"><span class="pre">loss_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/ner_utils.html#loss_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.loss_plot" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">loss_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.loss_plot" title="Permalink to this definition">#</a></dt>
 <dd><blockquote>
 <div><p>Plots the figure of loss vs epochs</p>
 </div></blockquote>
@@ -381,7 +381,7 @@ document.write(`
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.ner_utils.evaluate">
-<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_seqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_seqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/ner_utils.html#evaluate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.evaluate" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_seqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_seqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.evaluate" title="Permalink to this definition">#</a></dt>
 <dd><p>if verbose, returns overall performance, as well as performance per chunk type;
 otherwise, simply returns overall precision, recall, f1 scores</p>
 <dl class="field-list simple">
@@ -397,7 +397,7 @@ otherwise, simply returns overall precision, recall, f1 scores</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.ner_utils.evaluate_conll_file">
-<span class="sig-name descname"><span class="pre">evaluate_conll_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileIterator</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/utils/ner_utils.html#evaluate_conll_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.evaluate_conll_file" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">evaluate_conll_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileIterator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.ner_utils.evaluate_conll_file" title="Permalink to this definition">#</a></dt>
 <dd><p>prints overall performance, as well as performance per chunk type</p>
 </dd></dl>
 
@@ -446,14 +446,6 @@ otherwise, simply returns overall precision, recall, f1 scores</p>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../_sources/reference/autosummary/sparknlp_jsl/utils/ner_utils/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               
