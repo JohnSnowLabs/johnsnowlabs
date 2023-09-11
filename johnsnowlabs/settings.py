@@ -7,10 +7,10 @@ from johnsnowlabs.utils.env_utils import (
 )
 
 # These versions are used for auto-installs and version  checks
-raw_version_jsl_lib = "5.0.7"
+raw_version_jsl_lib = "5.0.8"
 raw_version_nlp = "5.0.2"
 
-raw_version_nlu = "5.0.0"
+raw_version_nlu = "5.0.1"
 
 raw_version_pyspark = "3.1.2"
 raw_version_nlp_display = "4.1"
@@ -78,3 +78,14 @@ db_run_name = "John-Snow-Labs-Run 🚀"
 
 
 spark_session_name = "John-Snow-Labs-Spark-Session 🚀"
+
+
+"""
+Haha no worries we all need todo some venting sometimes, I can relate ;) 
+
+Today a uni friend is coming over, we are doing some planning for next semester and he also will check out the get and maybe be my cat-sitte while I am in Dubai.
+
+
+Usually 
+
+"""

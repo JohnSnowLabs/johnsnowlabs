@@ -4,6 +4,7 @@ import sys
 from typing import Optional
 
 from johnsnowlabs import settings
+from johnsnowlabs.auto_install.databricks.dbfs import dbfs_rm
 from johnsnowlabs.auto_install.databricks.install_utils import (
     create_cluster,
     get_db_client_for_token,
@@ -87,11 +88,19 @@ def install(
     cluster_source=None,
     instance_pool_id=None,
     headers=None,
-    clean_cluster=False,
+    clean_cluster=True,
     write_db_credentials=True,
 ):
     if refresh_install and os.path.exists(settings.root_dir):
+        print("🧹 Cleaning up old JSL Home in ", settings.root_dir)
         shutil.rmtree(settings.root_dir)
+    if clean_cluster and databricks_host:
+        dbfs_rm(
+            get_db_client_for_token(databricks_host, databricks_token),
+            settings.dbfs_home_dir,
+            recursive=True,
+        )
+
     # Input Validation
     py_install_type = PyInstallTypes.from_str(py_install_type)
     hardware_platform = JvmHardwareTarget.from_str(hardware_platform)
@@ -182,7 +191,6 @@ def install(
                 cluster_source=cluster_source,
                 instance_pool_id=instance_pool_id,
                 headers=headers,
-                clean_cluster=clean_cluster,
                 write_db_credentials=write_db_credentials,
             )
 

@@ -24,6 +24,17 @@ def get_db_client_for_password(host, email, password) -> DatabricksAPI:
     return DatabricksAPI(host=host, user=email, password=password)
 
 
+def clean_cluster(
+    databricks_host: str,
+    databricks_token: str,
+):
+    dbfs_rm(
+        get_db_client_for_token(databricks_host, databricks_token),
+        settings.dbfs_home_dir,
+        recursive=True,
+    )
+
+
 def create_cluster(
     databricks_host: str,
     databricks_token: str,
@@ -49,12 +60,9 @@ def create_cluster(
     instance_pool_id=None,
     headers=None,
     block_till_cluster_ready: bool = True,
-    clean_cluster: bool = True,
     write_db_credentials: bool = True,
 ) -> str:
     db = get_db_client_for_token(databricks_host, databricks_token)
-    if clean_cluster:
-        dbfs_rm(db, settings.dbfs_home_dir, recursive=True)
 
     if not install_suite:
         install_suite = jsl_home.get_install_suite_from_jsl_home()
@@ -84,9 +92,9 @@ def create_cluster(
         AWS_SECRET_ACCESS_KEY=install_suite.secrets.AWS_SECRET_ACCESS_KEY,
     )
 
-    if "SPARK_OCR_SECRET" in lic:
-        default_spark_env_vars["SPARK_OCR_SECRET"] = lic["SPARK_OCR_SECRET"]
-    if "SECRET" in lic:
+    if "SPARK_OCR_SECRET" in lic and visual:
+        default_spark_env_vars["VISUAL_SECRET"] = lic["SPARK_OCR_SECRET"]
+    if "SECRET" in lic and medical_nlp:
         default_spark_env_vars["HEALTHCARE_SECRET"] = lic["SECRET"]
 
     if write_db_credentials:
@@ -188,6 +196,21 @@ def install_jsl_suite_to_cluster(
     spark_nlp: bool,
     visual: bool,
 ):
+    print("DEBUG: INSTALL TO CLUSTER", medical_nlp, spark_nlp, visual)
+    print(
+        "DEBUG: INSTALL TO CLUSTER",
+        install_suite.hc.get_py_path(),
+        install_suite.hc.get_java_path(),
+        medical_nlp,
+    )
+
+    print(
+        "DEBUG: INSTALL TO CLUSTER",
+        install_suite.nlp.get_py_path(),
+        install_suite.nlp.get_java_path(),
+        spark_nlp,
+    )
+
     py_deps = [
         {"package": Software.nlu.pypi_name, "version": settings.raw_version_nlu},
         {
@@ -285,6 +308,7 @@ def uninstall_old_libraries(
                         if fil in path.replace("-", "_"):
                             uninstalls.append({typ: path})
     if uninstalls:
+        print("UNINSTALL ULD STUFF?", uninstalls)
         db.managed_library.uninstall_libraries(
             cluster_id=cluster_id, libraries=uninstalls
         )
