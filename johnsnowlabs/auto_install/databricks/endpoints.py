@@ -5,7 +5,7 @@ import json
 import os
 import time
 from pprint import pprint
-from typing import Union, List
+from typing import Union, List, Optional
 
 import requests
 
@@ -168,6 +168,11 @@ def create_endpoint(
                     "secret_scope": secret_scope_name,
                     "secret_key": "DB_API_URL",
                 },
+                {
+                    "env_var_name": "DB_ENDPOINT_ENV",
+                    "secret_scope": secret_scope_name,
+                    "secret_key": "DB_ENDPOINT_ENV",
+                },
             ],
         }
     ]
@@ -275,6 +280,15 @@ def setup_secrets(scope_name, secret_name, secret_value, host, db_token):
         db_token=os.environ["DATABRICKS_TOKEN"],
     )
 
+    # 4) NLU hack
+    create_secret_in_scope(
+        key="DB_ENDPOINT_ENV",
+        value="DB_ENDPOINT_ENV",
+        scope_name="JSL_SCOPE",
+        host=os.environ["DATABRICKS_HOST"],
+        db_token=os.environ["DATABRICKS_TOKEN"],
+    )
+
 
 ####### Mlfow Client Utils
 
@@ -333,20 +347,64 @@ def query_endpoint(data, nlu_model_name, db_host, db_token, base_name=None):
     return pd.DataFrame(json.loads(response.json()["predictions"]))
 
 
-def query_to_json(in_data: Union[str, List[str]]):
+def query_to_json(
+    in_data: Union[str, List[str]],
+    output_level: Optional[str] = None,
+    positions: Optional[bool] = None,
+    metadata: Optional[bool] = None,
+    drop_irrelevant_cols: Optional[bool] = None,
+    get_embeddings: Optional[bool] = None,
+    keep_stranger_features: Optional[bool] = None,
+    multithread: Optional[bool] = None,
+):
     data = {}
     data["dataframe_split"] = {}
     data["dataframe_split"]["columns"] = ["text"]
+    if output_level:
+        data["dataframe_split"]["columns"].append("output_level")
+    if positions:
+        data["dataframe_split"]["columns"].append("positions")
+    if metadata:
+        data["dataframe_split"]["columns"].append("metadata")
+    if drop_irrelevant_cols:
+        data["dataframe_split"]["columns"].append("drop_irrelevant_cols")
+    if get_embeddings:
+        data["dataframe_split"]["columns"].append("get_embeddings")
+    if keep_stranger_features:
+        data["dataframe_split"]["columns"].append("keep_stranger_features")
+    if multithread:
+        data["dataframe_split"]["columns"].append("multithread")
+
+    def expand_data(in_data):
+        datas = [in_data]
+        if output_level:
+            datas.append(output_level)
+        if positions:
+            datas.append(str(positions))
+        if metadata:
+            datas.append(str(metadata))
+        if drop_irrelevant_cols:
+            datas.append(str(drop_irrelevant_cols))
+        if get_embeddings:
+            datas.append(str(get_embeddings))
+        if keep_stranger_features:
+            datas.append(str(keep_stranger_features))
+        if multithread:
+            datas.append(str(multithread))
+        return datas
+
     if isinstance(in_data, str):
-        data["dataframe_split"]["data"] = [in_data]
+        data["dataframe_split"]["data"] = [expand_data(in_data)]
     elif isinstance(in_data, list):
-        data["dataframe_split"]["data"] = in_data
+        # data["dataframe_split"]["data"] = [[s,'document'] for s in in_data]
+        data["dataframe_split"]["data"] = [expand_data(s) for s in in_data]
+
     else:
         raise Exception("Input must be str or list of str ")
     return json.dumps(data)
 
 
-def log_nlu_model(nlu_model_name, registerd_model_name):
+def log_nlu_model(nlu_model_name, registerd_model_name, gpu):
     import mlflow
 
     # 1. Load the model
@@ -358,7 +416,7 @@ def log_nlu_model(nlu_model_name, registerd_model_name):
 
     # 2. Log the model
     mlflow.johnsnowlabs.log_model(
-        nlu_model, "model", registered_model_name=registerd_model_name
+        nlu_model, "model", registered_model_name=registerd_model_name, gpu=gpu
     )
 
     # # 3. Download wheels to the model (current version +1)
@@ -394,8 +452,22 @@ def query_and_deploy_if_missing(
     workload_size="Small",
     new_run=True,
     block_until_deployed=True,
+    gpu=False,
+    # NLU Predict params
+    output_level: Optional[str] = None,
+    positions: Optional[bool] = None,
+    metadata: Optional[bool] = None,
+    drop_irrelevant_cols: Optional[bool] = None,
+    get_embeddings: Optional[bool] = None,
+    keep_stranger_features: Optional[bool] = None,
+    multithread: Optional[bool] = None,
 ):
     """
+
+    Using the NLU predict() https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api
+    and to_nlu_pipeline()  https://nlp.johnsnowlabs.com/docs/en/jsl/utils_for_spark_nlp#nlptonlupipepipe
+
+
     nlu_model: reference to nlu_model you want to query or  NLU convertable pipe
     Supported types are
     - List[Annotator]
@@ -417,6 +489,15 @@ def query_and_deploy_if_missing(
     db_host: the databricks host URL. If not specified, the DATABRICKS_HOST environment variable is used
     db_token: the databricks Access Token. If not specified, the DATABRICKS_TOKEN environment variable is used
     block_until_deployed: if True, this function will block until the endpoint is deployed. If False, it will return immediately after the endpoint is created
+    gpu: Use GPU for inference
+
+    output_level : token, chunk, sentence, relation, document
+    positions: include or exclude character index position of predictions
+    metadata: include additional metadata
+    drop_irrelevant_cols: drop irrelevant columns
+    get_embeddings: Include embedding or not
+    keep_stranger_features: Return columns not named "text", 'image" or "file_type"
+    multithread:  Use multi-Threading for inference
     """
 
     if not db_host:
@@ -427,8 +508,21 @@ def query_and_deploy_if_missing(
         raise Exception(
             "You must specify DATABRICKS_HOST and DATABRICKS_TOKEN en variables"
         )
+
+    if output_level and output_level not in [
+        "token",
+        "chunk",
+        "sentence",
+        "relation",
+        "document",
+    ]:
+        raise Exception(
+            "output_level must be one of token, chunk, sentence, relation, document"
+        )
     if workload_size not in ["Small", "Medium", "Large"]:
-        raise Exception("workload_size must be one of Small, Medium, Large")
+        print(
+            "WARNING! workload_size should be one of Small, Medium, Large for most users."
+        )
     if new_run:
         import mlflow
 
@@ -444,6 +538,7 @@ def query_and_deploy_if_missing(
             db_token=db_token,
             workload_size=workload_size,
             block_until_deployed=block_until_deployed,
+            gpu=gpu,
         )
     else:
         if not base_name:
@@ -451,7 +546,10 @@ def query_and_deploy_if_missing(
                 "If you want to deploy custom pipes, you need to specify base_name"
             )
         try:
-            model = nlp.to_nlu_pipe(model)
+            import nlu
+
+            if not isinstance(model, nlu.NLUPipeline):
+                model = nlp.to_nlu_pipe(model)
         except:
             raise Exception("Failure converting your model to NLU pipe")
         deploy_nlu_model_as_endpoint(
@@ -463,11 +561,23 @@ def query_and_deploy_if_missing(
             db_token=db_token,
             workload_size=workload_size,
             block_until_deployed=block_until_deployed,
+            gpu=gpu,
         )
     if not block_until_deployed:
         return
     return query_endpoint(
-        query if is_json_query else query_to_json(query),
+        query
+        if is_json_query
+        else query_to_json(
+            in_data=query,
+            output_level=output_level,
+            positions=positions,
+            metadata=metadata,
+            drop_irrelevant_cols=drop_irrelevant_cols,
+            get_embeddings=get_embeddings,
+            keep_stranger_features=keep_stranger_features,
+            multithread=multithread,
+        ),
         model,
         db_host,
         db_token,
@@ -484,6 +594,7 @@ def deploy_nlu_model_as_endpoint(
     db_token=None,
     workload_size="Small",
     block_until_deployed=True,
+    gpu=False,
 ):
     os.environ["MLFLOW_WHEELED_MODEL_PIP_DOWNLOAD_OPTIONS"] = "--prefer-binary"
     SCOPE_NAME = "JSL_SCOPE"
@@ -498,7 +609,7 @@ def deploy_nlu_model_as_endpoint(
         # 1. Log the model
         if model_exists(REGISTERD_MODEL_NAME):
             delete_registerd_model(REGISTERD_MODEL_NAME)
-        log_nlu_model(model_name, REGISTERD_MODEL_NAME)
+        log_nlu_model(model_name, REGISTERD_MODEL_NAME, gpu=gpu)
     else:
         print(
             "Model already has been logged, skipping logging and using latest. Set re_create_model=True if you want to cre-create it"
