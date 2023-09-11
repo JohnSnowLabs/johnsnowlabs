@@ -926,7 +926,7 @@ ol.list1 {
 				font-family: 'Montserrat', sans-serif;
 				font-weight: 800;
 				font-size: 16px;
-				line-height: 50px;
+				line-height: 26px;
 				height: 75px;
 				padding: 10px;
 				text-align: left;
@@ -2608,6 +2608,7 @@ code {
 			tbody {
 				width: 100%;
 				display: table;
+				margin-top: 0;
 			}
 			tr {
 				width: 100%;

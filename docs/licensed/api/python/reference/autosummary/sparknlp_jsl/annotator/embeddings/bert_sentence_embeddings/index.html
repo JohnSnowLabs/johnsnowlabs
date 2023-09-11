@@ -449,7 +449,7 @@ document.write(`
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BertSentenceChunkEmbeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.embeddings.BertSentenceChunkEmbeddings'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/embeddings/bert_sentence_embeddings.html#BertSentenceChunkEmbeddings"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BertSentenceChunkEmbeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.embeddings.BertSentenceChunkEmbeddings'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings" title="Permalink to this definition">#</a></dt>
 <dd><p>BERT Sentence embeddings for chunk annotations which take into account the context of the sentence the chunk appeared in.
 This is an extension of BertSentenceEmbeddings which combines the embedding of a chunk with the embedding of the
 surrounding sentence. For each input chunk annotation, it finds the corresponding sentence, computes
@@ -538,27 +538,27 @@ The default is 0.5, which means the chunk and sentence embeddings are given equa
 </div>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.inputAnnotatorTypes">
-<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/embeddings/bert_sentence_embeddings.html#BertSentenceChunkEmbeddings.inputAnnotatorTypes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.outputAnnotatorType">
-<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/embeddings/bert_sentence_embeddings.html#BertSentenceChunkEmbeddings.outputAnnotatorType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">BertSentenceChunkEmbeddings</span></em><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/embeddings/bert_sentence_embeddings.html#BertSentenceChunkEmbeddings.name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">BertSentenceChunkEmbeddings</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.chunkWeight">
-<span class="sig-name descname"><span class="pre">chunkWeight</span></span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/embeddings/bert_sentence_embeddings.html#BertSentenceChunkEmbeddings.chunkWeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.chunkWeight" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">chunkWeight</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.chunkWeight" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setChunkWeight">
-<span class="sig-name descname"><span class="pre">setChunkWeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/embeddings/bert_sentence_embeddings.html#BertSentenceChunkEmbeddings.setChunkWeight"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setChunkWeight" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">setChunkWeight</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.setChunkWeight" title="Permalink to this definition">#</a></dt>
 <dd><dl class="simple">
 <dt>Sets  the relative weight of chunk embeddings in comparison to sentence embeddings. The value should between 0 and 1.</dt><dd><p>The default is 0.5, which means the chunk and sentence embeddings are given equal weight.</p>
 </dd>
@@ -576,7 +576,7 @@ The default is 0.5, which means the chunk and sentence embeddings are given equa
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sbiobert_base_cased_mli'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/embeddings/bert_sentence_embeddings.html#BertSentenceChunkEmbeddings.pretrained"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.pretrained" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sbiobert_base_cased_mli'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Downloads and loads a pretrained model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -601,7 +601,7 @@ Spark NLPs repositories otherwise.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.load">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../../modules/sparknlp_jsl/annotator/embeddings/bert_sentence_embeddings.html#BertSentenceChunkEmbeddings.load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.load" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings.load" title="Permalink to this definition">#</a></dt>
 <dd><p>Load a pre-trained BertSentenceChunkEmbeddings from a local path.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>path (str): Path to the pre-trained model.</p>
@@ -664,14 +664,6 @@ Spark NLPs repositories otherwise.</p>
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../../_sources/reference/autosummary/sparknlp_jsl/annotator/embeddings/bert_sentence_embeddings/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

@@ -5,7 +5,7 @@ seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Spark NLP for Healthcare Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
 key: docs-licensed-release-notes
-modify_date: 2023-08-18
+modify_date: 2023-09-04
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,334 +13,406 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-
-## 5.0.2
+## 5.1.0
 
 #### Highlights
 
-We are delighted to announce a suite of remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with the first Text2SQL module and ONNX-optimized medical text summarization models as well as 20 new clinical pretrained models and pipelines**. It is a testament to our commitment to continuously innovate and improve, furnishing you with a more sophisticated and powerful toolkit for healthcare natural language processing.
+We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with the first clinical NER models in 5 new languages as well as 22 new clinical pretrained models and pipelines**. 
 
-+ `Text2SQL` module to translate text prompts into accurate SQL queries
-+ Support for ONNX integration of Seq2Seq models such as `MedicalTextGenerator`, `MedicalSummarizer`, and `MedicalQuestionAnswering`
-+ 2 new medical QA models and 1 new summarization model optimized with ONNX.
-+ Brand new clinical NER model for extracting clinical entities in the **Portuguese** language
-+ 3 novel assertion status (negativity scope) detection models tailored for entities extracted from Voice of Patient (VoP) notes
-+ Detecting assertion statuses of entities related to Social Determinants of Health (SDOH) identified within clinical notes
-+ Classifying **transportation insecurity** within the context of Social Determinants of Health (SDOH)
-+ Text Classifier models to infer **Age Groups** from health records, even in the absence of explicit age indications or mentions.
-+ Mapping **ICD-10-CM codes to Medicare Severity-Diagnosis Related Group (MS-DRG)**
-+ Five new sentence entity resolver (terminology mapping) pretrained pipelines, designed to streamline solutions with a single line of code
++ 5 new clinical NER models for extracting clinical entities in the French, Italian, Polish, Spanish, and Turkish languages
++ Introducing the pretrained `ContextualParserModel` to allow saving & loading rule based NER models and releasing the first date-of-birth NER model
++ 3 new text classification models for classifying complaints and positive emotions in clinical texts
++ 6 new augmented NER models by leveraging the capabilities of the **LangTest** library to significantly boost their robustness
++ Improved the `RelationExtractionModel` annotator by enabling the selection of single or multiple labels in outputs and providing customizable feature scaling techniques
++ Improved consistency of names during the deidentification process, regardless of variations in casing or altered token sequences
++ Enhancing `Text2SQL` with custom schemas and releasing the first pretrained zero-shot Text2SQL Model for single tables.
++ Enhancements in Text2SQL: `tableLimit` and `postProcessingSubstitutions` parameters, and expanded variable support
++ Revamped the method names within the `ocr_nlp_processor` module and incorporated functionality to create colorful overlay bands using RGB codes over identified entities
 + Various core improvements; bug fixes, enhanced overall robustness and reliability of Spark NLP for Healthcare
-  - Improvement of the deidentification faker list (city, street, hospital, profession) for various language
-+ Updated notebooks and demonstrations for making Spark NLP for Healthcare easier to navigate and understand
+  - The option to remove scope window constraints in the `AssertionDLModel` is now accessible by setting it to `[-1, -1]`, default is `[9, 15]`
++ Updated notebooks
+  - Updated [Contextual Parser Rule Based NER Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.2.Contextual_Parser_Rule_Based_NER.ipynb) with new CP model example
+  - Updated [Spark OCR Utility Module Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/5.3.Spark_OCR_Utility_Module.ipynb) with the new updates in `ocr_nlp_processor` module
+  - Updated [Text To SQL Generation Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb) with new single tables model
++ New demos
+  - New [Multi-Language Clinical NER Demo](https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/)
+  - New [ASSERTION_SDOH Demo](https://demo.johnsnowlabs.com/healthcare/ASSERTION_SDOH/)
+  - New [ASSERTION_VOP Demo](https://demo.johnsnowlabs.com/healthcare/ASSERTION_VOP/)
+  - New [TEXT2SQL Demo](https://demo.johnsnowlabs.com/healthcare/TEXT2SQL/)
+  - New [CLASSIFICATION LITCOVID Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_LITCOVID/)
+  - New [PATIENT COMPLAINT CLASSIFICATION Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_PATIENT_COMPLAINT/)
+  - Updated [Age Group Classification Demo](https://demo.johnsnowlabs.com/healthcare/PUBLIC_HEALTH_AGE/) 
 + The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain
 
-We believe that these enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
-
+These enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
 
 </div><div class="h3-box" markdown="1">
 
-#### `Text2SQL` module to translate text prompts into accurate SQL queries
+#### 5 New Clinical NER Models for Extracting Clinical Entities in the French, Italian, Polish, Spanish, and Turkish languages
 
-We are excited to introduce our latest innovation, the `Text2SQL` annotator. This powerful tool revolutionizes the way you interact with databases by effortlessly translating natural language text prompts into accurate and effective SQL queries. With the integration of a state-of-the-art LLM, this annotator opens new possibilities for enhanced data retrieval and manipulation, streamlining your workflow and boosting efficiency. 
+5 new Clinical NER models provide valuable tools for processing and analyzing multi-language clinical texts. They assist in automating the extraction of important clinical information, facilitating research, medical documentation, and other applications within the multi-language healthcare domain.
 
-Also we have a new `text2sql_mimicsql` model that is specifically finetuned on MIMIC-III dataset schema for enhancing the precision of SQL queries derived from medical natural language queries on MIMIC dataset. Please check the [model card](https://nlp.johnsnowlabs.com/2023/08/14/text2sql_mimicsql_en.html) for more details.
+| Model Name   Lang | Predicted Entities     | Language |
+|--------------------|------------------------|---|
+| [ner_clinical](https://nlp.johnsnowlabs.com/2023/08/30/ner_clinical_es.html)   | `PROBLEM` `TEST` `TREATMENT` | es |
+| [ner_clinical](https://nlp.johnsnowlabs.com/2023/08/30/ner_clinical_fr.html)   | `PROBLEM` `TEST` `TREATMENT` | fr |
+| [ner_clinical](https://nlp.johnsnowlabs.com/2023/08/30/ner_clinical_it.html)   | `PROBLEM` `TEST` `TREATMENT` | it |
+| [ner_clinical](https://nlp.johnsnowlabs.com/2023/08/29/ner_clinical_pl.html)   | `PROBLEM` `TEST` `TREATMENT` | pl |
+| [ner_clinical](https://nlp.johnsnowlabs.com/2023/08/29/ner_clinical_tr.html)   | `PROBLEM` `TEST` `TREATMENT` | tr |
 
 
 *Example*:
 
 ```python
-text2sql = Text2SQL.pretrained("text2sql_mimicsql", "en", "clinical/models")\
-    .setInputCols(["document"])\
-    .setOutputCol("sql")
 
-sample_text = "Calulate the total number of patients who had icd9 code 5771"
-```
-
-*Results:*
-
-|SQL Query|
-|-|
-|SELECT COUNT ( DISTINCT DEMOGRAPHIC."SUBJECT_ID" ) FROM DEMOGRAPHIC INNER JOIN PROCEDURES on DEMOGRAPHIC.HADM_ID = PROCEDURES.HADM_ID WHERE PROCEDURES."ICD9_CODE" = "5771"|
-
-Please check: [Text to SQL Generation Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb) for more information
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Support for ONNX integration of Medical Seq2Seq models
-
-ONNX integration empowers our Seq2Seq models to perform their tasks more efficiently and effectively. By leveraging the optimized capabilities of these LLMs through ONNX, the processing speed and overall performance of these models are substantially improved.
-
-</div><div class="h3-box" markdown="1">
-
-#### 2 New Medical QA Models and 1 New Summarization Model Optimized with ONNX.
-
-We're excited to introduce the ONNX-powered versions of `summarizer_clinical_laymen`, `clinical_notes_qa_base` and `clinical_notes_qa_large` models, representing a significant advancement in efficiency and versatility.
-
-|Model|Description|
-|-|-|
-|[`summarizer_clinical_laymen_onnx`](https://nlp.johnsnowlabs.com/2023/08/16/summarizer_clinical_laymen_onnx_en.html)|The ONNX version of `summarizer_clinical_laymen` model that is finetuned with custom dataset by John Snow Labs to avoid using clinical jargon on the summaries.|
-|[`clinical_notes_qa_base_onnx`](https://nlp.johnsnowlabs.com/2023/08/17/clinical_notes_qa_base_onnx_en.html)|The ONNX version of `clinical_notes_qa_base` model that is capable of open-book question answering on Medical Notes.|
-|[`clinical_notes_qa_large_onnx`](https://nlp.johnsnowlabs.com/2023/08/17/clinical_notes_qa_large_onnx_en.html)|The ONNX version of `clinical_notes_qa_large` model that is capable of open-book question answering on Medical Notes.|
-
-*Example*:
-
-```python
-med_qa = MedicalQuestionAnswering()\
-    .pretrained("clinical_notes_qa_base_onnx", "en", "clinical/models")\
-    .setInputCols(["document_question", "document_context"])\
-    .setCustomPrompt("Context: {context} \n Question: {question} \n Answer: ")\
-    .setOutputCol("answer")\
-
-note_text = "Patient with a past medical history of hypertension for 15 years.\n(Medical Transcription Sample Report)\nHISTORY OF PRESENT ILLNESS:\nThe patient is a 74-year-old white woman who has a past medical history of hypertension for 15 years, history of CVA with no residual hemiparesis and uterine cancer with pulmonary metastases, who presented for evaluation of recent worsening of the hypertension. According to the patient, she had stable blood pressure for the past 12-15 years on 10 mg of lisinopril."
-
-question = "What is the primary issue reported by patient?"
-```
-
-*Results*:
-
-|answer|
-|-|
-|The primary issue reported by the patient is hypertension.|
-
-</div><div class="h3-box" markdown="1">
-
-
-#### Brand New Clinical NER Model For Extracting Clinical Entities In The Portuguese Language
-
-Portuguese clinical NER models provide valuable tools for processing and analyzing Portuguese clinical texts. They assist in automating the extraction of important clinical information, facilitating research, medical documentation, and other applications within the Portuguese healthcare domain.
-
-For more details, please check the [model card](https://nlp.johnsnowlabs.com/2023/08/16/ner_clinical_pt.html).
-
-*Example*:
-
-```python
-ner_model = MedicalNerModel.pretrained("ner_clinical", "pt", "clinical/models")\
+ner_model = MedicalNerModel.pretrained("ner_clinical", "tr", "clinical/models")\
     .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
 
-sample_text = """A paciente apresenta sensibilidade dentária ao consumir alimentos quentes e frios.
-Realizou-se um exame clínico e radiográfico para avaliar possíveis cáries ou problemas na raiz do dente."""
+sample_text = """Hasta sıcak ve soğuk yiyecekler yerken diş hassasiyetinden şikayetçiydi. Olası çürük veya diş kökü problemlerini değerlendirmek için klinik ve radyografik muayene yapıldı ve diş köküne yakın bir boşluk tespit edildi. Sorunu gidermek için restoratif tedavi uygulandı."""
 ```
 
-*Results*:
+*Result*:
 
-|chunk                     |begin|end|ner_label|
-|--------------------------|-----|---|---------|
-|sensibilidade dentária    |21   |42 |PROBLEM  |
-|alimentos                 |56   |64 |TREATMENT|
-|exame clínico             |98   |110|TEST     |
-|cáries                    |150  |155|PROBLEM  |
-|problemas na raiz do dente|160  |185|PROBLEM  |
+|chunk                                  |begin|end|ner_label|
+|---------------------------------------|-----|---|---------|
+|soğuk yiyecekler yerken diş hassasiyeti|18   |56 |PROBLEM  |
+|radyografik muayene                    |144  |162|TEST     |
+|restoratif tedavi                      |234  |250|TREATMENT|
+
+
+Please check: [Multi-Language Clinical NER Demo](https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/)
+
+</div><div class="h3-box" markdown="1">
+
+#### Introducing the Pretrained `ContextualParserModel` to Allow Saving & Loading Rule Based NER Models and Releasing the First Date-of-Birth NER Model 
+
+Now you can save your  `ContextualParserModel` models without exposing & sharing the rule sets and load back later on. We also release the first pretrained `ContextualParserModel` that can extract date-of-birth (DOB) entities in clinical texts.
+
+*Example*:
+
+```python
+dob_contextual_parser = ContextualParserModel.pretrained("date_of_birth_parser", "en", "clinical/models") \
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("chunk_dob") 
+
+text = """
+Record date : 2081-01-04 
+DB : 11.04.1962
+DT : 12-03-1978 
+DOD : 10.25.23 
+
+SOCIAL HISTORY:
+She was born on Nov 04, 1962 in London and got married on 04/05/1979. When she got pregnant on 15 May 1079, the doctor wanted to verify her DOB was November 4, 1962. Her date of birth was confirmed to be 11-04-1962, the patient is 45 years old on 25 Sep 2007.
+
+PROCEDURES:
+Patient was evaluated on 1988-03-15 for allergies. She was seen by the endocrinology service and she was discharged on 9/23/1988. 
+
+MEDICATIONS
+1. Coumadin 1 mg daily. Last INR was on August 14, 2007, and her INR was 2.3."""
+```
+
+*Result*:
+
+|sentence_id|chunk           |begin|end|ner_label|
+|-----------|----------------|-----|---|---------|
+|1          |11.04.1962      |32   |41 |DOB      |
+|3          |Nov 04, 1962    |109  |120|DOB      |
+|4          |November 4, 1962|241  |256|DOB      |
+|5          |11-04-1962      |297  |306|DOB      |
+
+
+please check: [Model Card](https://nlp.johnsnowlabs.com/2023/08/22/date_of_birth_parser_en.html) and [Contextual Parser Rule Based NER Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.2.Contextual_Parser_Rule_Based_NER.ipynb) for more information
+
 
 
 
 </div><div class="h3-box" markdown="1">
 
-#### 3 Novel Assertion Status (Negativity Scope) Detection Models Tailored for Entities Extracted from Voice of Patient (VoP) Notes
+#### 3 New Text Classification Models for Classifying Complaints and Positive Emotions in Clinical Texts
 
-We are excited to announce 3 new assertion status detection models that can classify assertions for the detected entities in VoP notes with the `Hypothetical_Or_Absent`, `Present_Or_Past`, and `SomeoneElse` labels. 
+Introducing three novel text classification models tailored for healthcare contexts, specifically designed to differentiate between expressions of `Complaint` – characterized by negative or critical language reflecting dissatisfaction with healthcare experiences – and `No_Complaint` – denoting positive or neutral sentiments without any critical elements. These models offer enhanced insights into patient feedback and emotions within the healthcare domain.
 
-|Model|Description|
-|-|-|
-|[`assertion_vop_clinical`](https://nlp.johnsnowlabs.com/2023/08/17/assertion_vop_clinical_en.html)|This model is trained with `embeddings_clinical` embeddings and predicts the assertion status of the detected chunks.|
-|[`assertion_vop_clinical_medium`](https://nlp.johnsnowlabs.com/2023/08/17/assertion_vop_clinical_medium_en.html)|This model is trained with `embeddings_clinical_medium` embeddings and predicts the assertion status of the detected chunks.|
-|[`assertion_vop_clinical_large`](https://nlp.johnsnowlabs.com/2023/08/17/assertion_vop_clinical_large_en.html)|This model is trained with `embeddings_clinical_large` embeddings and predicts the assertion status of the detected chunks.|
+| Model Name  | Predicted Entities     | Annotator
+|--------------------|------------------------|---|
+| [few_shot_classifier_patient_complaint_sbiobert_cased_mli](https://nlp.johnsnowlabs.com/2023/08/30/few_shot_classifier_patient_complaint_sbiobert_cased_mli_en.html)   | `Complaint` `No_Complaint` | FewShotClassifierModel |
+| [bert_sequence_classifier_patient_complaint](https://nlp.johnsnowlabs.com/2023/08/31/bert_sequence_classifier_patient_complaint_en.html)   | `Complaint`, `No_Complaint` | MedicalBertForSequenceClassification |
+| [genericclassifier_patient_complaint_sbiobert_cased_mli](https://nlp.johnsnowlabs.com/2023/08/31/patient_complaint_classifier_generic_bert_M1_en.html)   | `Complaint` `No_Complaint` | GenericClassifierModel |
 
 
 *Example*:
 
 ```python
-assertion = AssertionDLModel.pretrained("assertion_vop_clinical", "en", "clinical/models")\
-    .setInputCols(["sentence", "ner_chunk", "embeddings"])\
-    .setOutputCol("assertion")
 
-sample_text = "I was feeling anxiety honestly. Can it bring on tremors? It was right after my friend was diagnosed with diabetes."
-```
-
-*Results*:
-
-|chunk   |begin|end|ner_label             |sent_id|assertion             |confidence|
-|--------|-----|---|----------------------|-------|----------------------|----------|
-|anxiety |14   |20 |PsychologicalCondition|0      |Present_Or_Past       |0.98    |
-|tremors |48   |54 |Symptom               |1      |Hypothetical_Or_Absent|0.99    |
-|diabetes|105  |112|Disease               |2      |SomeoneElse           |0.99    |
-
-
-</div><div class="h3-box" markdown="1">
-
-
-#### Detecting Assertion Statuses (Negativity Scope) of Entities Related to Social Determinants of Health (SDOH) Identified within Clinical Notes
-
-We are introducing a new `assertion_sdoh_wip` assertion status detection model that can classify assertions for the detected SDOH entities in text into six distinct labels: `Absent`, `Present`, `Someone_Else`, `Past`, `Hypothetical`, and `Possible`. 
-
-For more details, please check the [model card](https://nlp.johnsnowlabs.com/2023/08/13/assertion_sdoh_wip_en.html).
-
-*Example*:
-
-```python
-assertion = AssertionDLModel.pretrained("assertion_sdoh_wip", "en", "clinical/models") \
-    .setInputCols(["sentence", "ner_chunk", "embeddings"]) \
-    .setOutputCol("assertion")
-
-sample_text = "Smith works as a cleaning assistant and does not have access to health insurance or paid sick leave. But she has generally housing problems. She lives in a apartment now.  She has long history of EtOH abuse, beginning in her teens. She is aware she needs to attend Rehab Programs."
-```
-
-*Results*:
-
-|chunk             |begin|end|ner_label         |assertion   |
-|------------------|-----|---|------------------|------------|
-|cleaning assistant|17   |34 |Employment        |Present     |
-|health insurance  |64   |79 |Insurance_Status  |Absent      |
-|apartment         |156  |164|Housing           |Present     |
-|EtOH abuse        |196  |205|Alcohol           |Past        |
-|Rehab Programs    |265  |278|Access_To_Care    |Hypothetical|
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Classifying `Transportation Insecurity` within the Context of Social Determinants of Health (SDOH)
-
-Introducing two new **transportation insecurity classifier models for SDOH** that offer precise label assignments and confidence scores. With a strong ability to thoroughly analyze text, these models categorize content into `No_Transportation_Insecurity_Or_Unknown` and `Transportation_Insecurity`, providing valuable insights into transportation-related insecurity.
-
-|Model|Description|
-|-|-|
-|[`genericclassifier_sdoh_transportation_insecurity_e5_large`](https://nlp.johnsnowlabs.com/2023/08/13/genericclassifier_sdoh_transportation_insecurity_e5_large_en.html)|This model is trained with E5 large embeddings within a generic classifier framework.|
-|[`genericclassifier_sdoh_transportation_insecurity_sbiobert_cased_mli`](https://nlp.johnsnowlabs.com/2023/08/13/genericclassifier_sdoh_transportation_insecurity_sbiobert_cased_mli_en.html)|This model is trained with BioBERT embeddings within a generic classifier framework|
-
-*Example*:
-
-```python
-generic_classifier = GenericClassifierModel.pretrained("genericclassifier_sdoh_transportation_insecurity_sbiobert_cased_mli", 'en', 'clinical/models')\
-    .setInputCols(["features"])\
+sequenceClassifier = MedicalBertForSequenceClassification\
+    .pretrained("bert_sequence_classifier_patient_complaint", "en", "clinical/models")\
+    .setInputCols(["document",'token'])\
     .setOutputCol("prediction")
 
-sample_text_list = ["Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatment plan that includes surgery, chemotherapy, and radiation therapy. She is alone and can not drive a car or can not use public bus. ", "Lisa, a 28-year-old woman, was diagnosed with generalized anxiety disorder (GAD), a mental disorder characterized by excessive worry and persistent anxiety."]
+sample_text = [
+    ["""The Medical Center is a large state of the art hospital facility with great doctors, nurses, technicians and receptionists.  Service is top notch, knowledgeable and friendly.  This hospital site has plenty of parking"""],
+    ["""My gf dad wasn’t feeling well so we decided to take him to this place cus it’s his insurance and we waited for a while and mind that my girl dad couldn’t breath good while the staff seem not to care and when they got to us they said they we’re gonna a take some blood samples and they made us wait again and to see the staff workers talking to each other and laughing taking there time and not seeming to care about there patience, while we were in the lobby there was another guy who told us they also made him wait while he can hardly breath and they left him there to wait my girl dad is coughing and not doing better and when the lady came in my girl dad didn’t have his shirt because he was hot and the lady came in said put on his shirt on and then left still waiting to get help rn"""]
+    ]
 ```
 
-*Results*:
+*Result*:
 
-|Text|Transportation Insecurity Class|
-|-|-|
-|Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatm...|              Transportation_Insecurity|
-|Lisa, a 28-year-old woman, was diagnosed with generalized anxiety disorder (GAD), a mental disord...|No_Transportation_Insecurity_Or_Unknown|
+|                text|        result|
+|--------------------|--------------|
+|The Medical Center is a large state of the art hospital facility with great doctors, nurses, technicians and receptionists.  Service is top notch, ...| No_Complaint |
+|My gf dad wasn’t feeling well so we decided to take him to this place cus it’s his insurance and we waited for a while and mind that my girl dad co...|    Complaint |
+
+
 
 </div><div class="h3-box" markdown="1">
 
 
-#### Text Classifier Models to Infer `Age Groups` from Health Records, Even in the Absence of Explicit Age Indications or Mentions.
 
-Now we have three new Age Group Text Classifier models that are designed to analyze the age group of individuals mentioned in health documents, whether or not the age is explicitly mentioned in the training data. These models are trained using in-house annotated health-related text, and categorized into three classes:
+#### 6 New Augmented NER Models by Leveraging the Capabilities of the LangTest Library to Significantly Boost Their Robustness
 
-- **Adult**: Refers to individuals who are fully grown or developed, usually 18 years or older.
-- **Child**: A young human who is not yet an adult. Typically refers to someone below the legal age of adulthood, which is often below 18 years old.
-- **Unknown**: Represents situations where determining the age group from the given text is not possible.
+Newly introduced augmented NER models namely [ner_events_clinical_langtest](https://nlp.johnsnowlabs.com/2023/08/31/ner_events_clinical_langtest_en.html), [ner_oncology_anatomy_general_langtest](https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_anatomy_general_langtest_en.html), [ner_oncology_anatomy_granular_langtest](https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_anatomy_granular_langtest_en.html),  [ner_oncology_demographics_langtest](https://nlp.johnsnowlabs.com/2023/09/03/ner_oncology_demographics_langtest_en.html), [ner_oncology_posology_langtest](https://nlp.johnsnowlabs.com/2023/09/04/ner_oncology_posology_langtest_en.html), and [ner_oncology_response_to_treatment_langtest](https://nlp.johnsnowlabs.com/2023/09/04/ner_oncology_response_to_treatment_langtest_en.html) are powered by the innovative LangTest library. This cutting-edge NLP toolkit is at the forefront of language processing advancements, incorporating state-of-the-art techniques and algorithms to enhance the capabilities of our models significantly.
 
-|Model|Description|
-|-|-|
-|[`bert_sequence_classifier_age_group`](https://nlp.johnsnowlabs.com/2023/08/16/bert_sequence_classifier_age_group_en.html)|This model is a BioBERT-based Age Group Text Classifier and it is trained for analyzing the age group of a person mentioned in health documents.|
-|[`genericclassifier_age_group_sbiobert_cased_mli`](https://nlp.johnsnowlabs.com/2023/08/16/genericclassifier_age_group_sbiobert_cased_mli_en.html)|This Generic Classifier model is trained for analyzing the age group of a person mentioned in health documents.|
-|[`few_shot_classifier_age_group_sbiobert_cased_mli`](https://nlp.johnsnowlabs.com/2023/08/17/few_shot_classifier_age_group_sbiobert_cased_mli_en.html)|This Few Shot Classifier model is trained for analyzing the age group of a person mentioned in health documents.|
+- These models are strengthened against various perturbations (lowercase, uppercase, titlecase, punctuation removal, etc.), and the previous and new robustness scores are presented below
+  
+| model names          | original robustness  | new robustness |
+|---------------------------------------------|--------|-------|
+| ner_oncology_anatomy_granular_langtest      | 0.79   | 0.89  |
+| ner_oncology_response_to_treatment_langtest | 0.76   | 0.90  |
+| ner_oncology_demographics_langtest          | 0.81   | 0.95  |
+| ner_oncology_anatomy_general_langtest       | 0.79   | 0.81  |
+| ner_oncology_posology_langtest              | 0.74   | 0.85  |
+| ner_events_clinical_langtest                | 0.71   | 0.80  |
 
 *Example*:
 
 ```python
-few_shot_classifier = FewShotClassifierModel.pretrained("few_shot_classifier_age_group_sbiobert_cased_mli", "en", "clinical/models")\
-    .setInputCols(["sentence_embeddings"])\
-    .setOutputCol("prediction")
+clinical_ner = MedicalNerModel.pretrained("ner_events_clinical_langtest", "en", "clinical/models") \
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner")
 
-sample_text_list = [["A patient presented with complaints of chest pain and shortness of breath. The medical history revealed the patient had a smoking habit for over 30 years, and was diagnosed with hypertension two years ago. After a detailed physical examination, the doctor found a noticeable wheeze on lung auscultation and prescribed a spirometry test, which showed irreversible airway obstruction. The patient was diagnosed with Chronic obstructive pulmonary disease (COPD) caused by smoking."],
- ["Hi, wondering if anyone has had a similar situation. My 1 year old daughter has the following; loose stools/ pale stools, elevated liver enzymes, low iron.  5 months and still no answers from drs. "],
- ["Hi have chronic gastritis from 4 month(confirmed by endoscopy).I do not have acid reflux.Only dull ache above abdomen and left side of chest.I am on reberprozole and librax.My question is whether chronic gastritis is curable or is it a lifetime condition?I am loosing hope because this dull ache is not going away.Please please reply"]]
+text = "The patient presented to the emergency room last evening"
 ```
 
-*Results*:
 
-|Text|Age Group|
-|-|-|
-|A patient presented with complaints of chest pain and shortness of breath. The medical history revealed the patient had a smoking habit for over 30...|  Adult|
-|Hi, wondering if anyone has had a similar situation. My 1 year old daughter has the following; loose stools/ pale stools, elevated liver enzymes, l...|  Child|
-|Hi have chronic gastritis from 4 month(confirmed by endoscopy).I do not have acid reflux. Only dull ache above abdomen and left side of chest.I am o...|Unknown|
+*Result*:
+
+|chunk             |ner_label    |
+|------------------|-------------|
+|presented         |EVIDENTIAL   |
+|the emergency room|CLINICAL_DEPT|
+|last evening      |DATE         |
+
 
 
 </div><div class="h3-box" markdown="1">
 
-#### Mapping ICD-10-CM Codes to `Medicare Severity-Diagnosis Related Group (MS-DRG)`
 
-We have a new `icd10cm_ms_drg_mapper` chunk mapper model that maps the ICD-10-CM codes with their corresponding Medicare Severity-Diagnosis Related Group (MS-DRG). 
+#### Improved the `RelationExtractionModel` Annotator by Enabling the Selection of Single or Multiple Labels in Outputs and Providing Customizable Feature Scaling Techniques
+
+The `RelationExtractionModel` annotator is now equipped with the `setMultiClass()` method, which provides the option to specify whether the model should return only the label with the highest confidence score or include all labels in its output. Furthermore, the model offers the `setFeatureScaling()` method, granting the ability to apply different feature scaling techniques such as `zscore`, `minmax` or `empty` (no scaling).
+
+*setFeatureScaling Example*:
+
+```python
+reModel = RelationExtractionModel.pretrained("re_ade_clinical", "en", 'clinical/models')\
+    .setInputCols(["embeddings", "pos_tags", "ner_chunks", "dependencies"])\
+    .setOutputCol("relations")\
+    .setMaxSyntacticDistance(10)\
+    .setRelationPairs(["drug-ade, ade-drug"])\
+    .setFeatureScaling("zscore") # or minmax
+
+text = "I experienced fatigue, aggression, and sadness after taking Lipitor but no more adverse after passing Zocor."
+```
+
+
+*Result*:
+
+| index | chunk1     | entity1 | chunk2   | entity2 | relation | zscore | minmax |
+|-------|------------|---------|----------|---------|----------|--------|--------|
+| 0     | fatigue    | ADE     | Lipitor  | DRUG    | 0        | 0.9964 | 0.9983 |
+| 1     | Zocor      | DRUG    | fatigue  | ADE     | 0        | 0.9884 | 0.9341 |
+| 2     | aggression | ADE     | Lipitor  | DRUG    | 1        | 0.6123 | 0.9999 |
+| 3     | Zocor      | DRUG    | aggression | ADE   | 0        | 0.9972 | 0.9833 |
+| 4     | sadness    | ADE     | Lipitor  | DRUG    | 1        | 0.9999 | 0.9644 |
+| 5     | Zocor      | DRUG    | sadness  | ADE     | 1        | 0.9080 | 0.9644 |
+
+
+*setFeatureScaling Example*:
+
+```python
+reModel = RelationExtractionModel.pretrained("re_clinical", "en", "clinical/models")\
+    .setInputCols(["embeddings", "pos_tags", "ner_chunks", "dependencies"])\
+    .setOutputCol("relations")\
+    .setMaxSyntacticDistance(10)\
+    .setRelationPairs(["problem-test", "problem-treatment"])\
+    .setMultiClass(True) # or Default value is False
+
+text = """
+A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation, associated with obesity with a body mass index ( BMI ) of 33.5 kg/m2 .
+"""
+```
+
+
+*setMultiClass(False) Result*:
+
+| chunk1                        | entity1 | chunk2 | entity2 | relation | confidence |
+|-------------------------------|---------|--------|---------|----------|------------|
+| gestational diabetes mellitus | PROBLEM | BMI    | TEST    | TeRP     | 1.0        |
+
+
+*setMultiClass(True) Result*:
+| chunk1                        | entity1 | chunk2 | entity2 | relation | confidence |
+|-------------------------------|---------|--------|---------|----------|------------|
+| gestational diabetes mellitus | PROBLEM | BMI    | TEST    | TeRP     | TeRP_confidence: 1.0 <br> TrCP_confidence: 0.0, <br>   TeCP_confidence: 2.36E-35 <br> TrAP_confidence: 8.85E-32 <br> TrWP_confidence: 1.16E-34 <br> TrNAP_confidence: 0.0 <br>   TrIP_confidence: 0.0 <br> PIP_confidence: 1.87E-28 <br> O_confidence: 9.56E-13 <br>      |
+
+
+</div><div class="h3-box" markdown="1">
+
+####  Improved Consistency of Names During the Deidentification Process, Regardless of Variations in Casing or Altered Token Sequences
+
+The `Deidentification` annotator maintains consistent name handling in its `obfuscation` mode, even when the same name appears in different formats, such as varying casing or altered token orders. This ensures that names remain consistently protected regardless of their presentation within the text.
 
 *Example*:
 
 ```python
-chunkMapper = DocMapperModel.pretrained("icd10cm_ms_drg_mapper", "en", "clinical/models")\
-      .setInputCols(["icd_chunk"])\
-      .setOutputCol("mappings")\
-      .setRels(["ms-drg"])
+deidentification = DeIdentification() \
+      .setInputCols(["sentence", "token", "ner_chunk"]) \
+      .setOutputCol("deidentified") \
+      .setMode("obfuscate")
 
-sample_codes = ["L08.1", "U07.1", "C10.0", "J351"]
+sample_text = """Patient Name: SULLAVAN, John K, MRN: 123456
+SULLAVAN, JOHN K, Male, 05/09/1985
+John K Sullavan is 25 years old patient has heavy back pain started from last week.
+"""
 ```
 
 *Results*:
 
-|ICD10CM Code|MS-DRG                         |
-|------------|-------------------------------|
-|L08.1       |Erythrasma                     |
-|U07.1       |COVID-19                       |
-|C10.0       |Malignant neoplasm of vallecula|
-|J351        |Hypertrophy of tonsils         |
-
-For more details, please check the [model card](https://nlp.johnsnowlabs.com/2023/08/08/icd10cm_ms_drg_mapper_en.html).
-
+|sentence|masked|deidentified|
+|--------|------|------------|
+|Patient Name: SULLAVAN, John K, MRN: 123456|Patient Name: \<PATIENT\> MRN: \<MEDICALRECORD\>|Patient Name: Viviann Spare MRN: 376947|
+|SULLAVAN, JOHN K, Male, 05/09/1985|\<PATIENT\>, Male, \<DATE\>|Viviann Spare, Male, \<DATE\>|
+|John K Sullavan is 25 years old patient has heavy back pain started from last week\.|\<PATIENT\> is \<AGE\> years old patient has heavy back pain started from last week\.|Viviann Spare is 20 years old patient has heavy back pain started from last week\.|
 
 </div><div class="h3-box" markdown="1">
 
-#### Five New Sentence Entity Resolver (Terminology Mapping) Pretrained Pipelines, Designed to Streamline Solutions with a Single Line of Code
 
-We have five new sentence entity resolver pipelines that are meticulously designed to enhance your solutions by efficiently identifying entities and their resolutions within the clinical note. You can easily integrate this advanced capability using just a single line of code.
+####  Enhancing `Text2SQL` with Custom Schemas and Releasing the First Pretrained Zero-Shot Text2SQL Model for Single Tables.
 
-|Pipeline|Description|
-|-|-|
-|[`abbreviation_pipeline`](https://nlp.johnsnowlabs.com/2023/08/16/abbreviation_pipeline_en.html)|Detects abbreviations and acronyms of medical regulatory activities as well as map them with their definitions and categories.|
-|[`icd10cm_multi_mapper_pipeline`](https://nlp.johnsnowlabs.com/2023/08/16/icd10cm_multi_mapper_pipeline_en.html)|Maps ICD-10-CM codes to their corresponding billable mappings, hcc codes, cause mappings, claim mappings, SNOMED codes, UMLS codes and ICD-9 codes without using any text data. You’ll just feed white space-delimited ICD-10-CM codes and get the result.| 
-|[`rxnorm_multi_mapper_pipeline`](https://nlp.johnsnowlabs.com/2023/08/16/rxnorm_multi_mapper_pipeline_en.html)|Maps RxNorm codes to their corresponding drug brand names, rxnorm extension brand names, action mappings, treatment mappings, UMLS codes, NDC product codes and NDC package codes. You’ll just feed white space-delimited RxNorm codes and get the result.|
-|[`rxnorm_resolver_pipeline`](https://nlp.johnsnowlabs.com/2023/08/16/rxnorm_resolver_pipeline_en.html)|Maps medication entities with their corresponding RxNorm codes. You’ll just feed your text and it will return the corresponding RxNorm codes.|
-|[`snomed_multi_mapper_pipeline`](https://nlp.johnsnowlabs.com/2023/08/16/snomed_multi_mapper_pipeline_en.html)|Maps SNOMED codes to their corresponding ICD-10, ICD-O, and UMLS codes. You’ll just feed white space-delimited SNOMED codes and get the result.|
+Utilizing [text2sql_with_schema_single_table](https://nlp.johnsnowlabs.com/2023/09/02/text2sql_with_schema_single_table_en.html) to generate SQL queries from natural language queries and custom database schemas featuring single tables. Powered by a large-scale finetuned language model developed by John Snow Labs on single-table schema data
+
+*Example*:
 
 ```python
-from sparknlp.pretrained import PretrainedPipeline
 
-abbr_pipeline = PretrainedPipeline("abbreviation_pipeline", "en", "clinical/models")
+query_schema = {"patient": ["ID","Name","Age","Gender","BloodType","Weight","Height","Address","Email","Phone"] }
 
-result = abbr_pipeline.fullAnnotate("""Gravid with estimated fetal weight of 6-6/12 pounds.
-LABORATORY DATA: Laboratory tests include a CBC which is normal. 
-VDRL: Nonreactive""")
+text2sql_with_schema_single_table = Text2SQL.pretrained("text2sql_with_schema_single_table", "en", "clinical/models")\
+    .setMaxNewTokens(200)\
+    .setSchema(query_schema)\
+    .setInputCols(["document"])\
+    .setOutputCol("sql_query")
+
+sample_text = """ Calculate the average age of patients with blood type 'A-' """
 ```
-     
+
 *Results*:
+```bash
+SELECT AVG(Age)
+FROM patient
+WHERE BloodType = "A-"
+```
 
-|chunk|entity|category_mappings|                     definition_mappings|
-|-|-|-|-|
-|  CBC|  ABBR|          general|complete blood count|
-| VDRL|  ABBR|    clinical_dept|  Venereal Disease Research Laboratories|
-|  HIV|  ABBR|medical_condition|            Human immunodeficiency virus|
-
-</div><div class="h3-box" markdown="1">
-
-#### Various Core Improvements: Bug Fixes, Enhanced Overall Robustness, And Reliability Of Spark NLP For Healthcare
-
-- Improvement of the deidentification faker list (city, street, hospital, profession) for various language
+please check: [Model Card](https://nlp.johnsnowlabs.com/2023/09/02/text2sql_with_schema_single_table_en.html) and [Text To SQL Generation Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb) for more information
 
 
 </div><div class="h3-box" markdown="1">
+
+
+#### Enhancements in Text2SQL: `tableLimit` and `postProcessingSubstitutions` Parameters, and Expanded Variable Support
+
+You can use the following code to replace particular strings with other strings in the generated sequence:
+
+```python
+text2sql_with_schema_single_table.setPostProcessingSubstitutions({
+    'greater than': '>', 
+    'not equal to': '<>', 
+    'less than or equal to': '<=', 
+    'superior': '>', 
+    'inferior': '<', 
+    'greater than or equal to': '>=', 
+    'inferior or equal': '<=', 
+    'superior or equal': '>=', 
+    'equal to': '=', 
+    'less than': '<'
+})
+```
+
+Variables which can be used in the prompt template:
+ 
+```bash
+  "{tables_list}": comma separated list of tables
+
+  "{tables}": comma separated list of tables with column names
+
+  "{table1_name}", "{table2_name}", ... names of particular tables.
+
+  "{table1_columns}", "{table2_columns}", ... comma separated lists of columns in particular tables.
+```
+
+see [Text To SQL Generation Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb) for more information        
+
+
+</div><div class="h3-box" markdown="1">
+
+#### Revamped the Method Names Within the `ocr_nlp_processor` Module and Incorporated Functionality to Create Colorful Overlay Bands Using RGB Codes Over Identified Entities
+
+We've modified the method names in the `ocr_nlp_processor` module and introduced the capability to specify RGB codes for overlaying colorful bands on entities. This allows improved readability for color-blind individuals when viewing deidentified PDF files if you set it `box_color = (115, 203, 235)` (“115” Red, “203” Green, “235” Blue). 
+
+`ocr_nlp_processor` Methods:
+
+|Previous|Now|
+|-|-|
+|black_band|colored_box|
+|colored_box|bounding_box|
+|highlight|highlight|
+
+*Example*:
+
+```python
+from sparknlp_jsl.utils.ocr_nlp_processor import ocr_entity_processor
+
+ocr_entity_processor(spark=spark,
+                    file_path = path,
+                    ner_pipeline = nlp_model,
+                    chunk_col = "merged_chunk",
+                    style = box,
+                    save_dir = "deidentified_pdfs",
+                    box_color= (115, 235, 255),
+                    label= True,
+                    label_color = "red",
+                    resolution=100,
+                    display_result = True)
+```
+
+#### Various Core Improvements; Bug Fixes, Enhanced Overall Robustness and Reliability of Spark NLP for Healthcare
+
+- The option to remove scope window constraints in the `AssertionDLModel` is now accessible by setting it to `[-1, -1]`, default is `[9, 15]`
+
+
 
 #### Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand
 
-- New [Extracting Public Health Related_Insights From Social Media Texts Using Healthcare NLP](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/medical_use_cases/Public_Health_Risk_Factors_Analysis/Extracting_Public_Health_related_Insights_from_Social_Media_Texts_Using_Healthcare_NLP.ipynb) Notebook for automated health information extraction and co-occurrence analysis with JohnSnowLabs models
-- [Text to SQL Generation](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb) Notebook for automatically converting natural language questions into corresponding SQL queries
-- Updated [NORMALIZED SECTION HEADER MAPPER](https://demo.johnsnowlabs.com/healthcare/NORMALIZED_SECTION_HEADER_MAPPER/) Demo with `ner_section_header_diagnosis` model
-- Updated [ENTITY RESOLVER LOINC](https://demo.johnsnowlabs.com/healthcare/ER_LOINC/) Demo with `sbiobertresolve_loinc_numeric` and `sbiobertresolve_loinc_augmented` models
-
+- Updated [Contextual Parser Rule Based NER Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.2.Contextual_Parser_Rule_Based_NER.ipynb) with new CP model example
+- Updated [Spark OCR Utility Module Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/5.3.Spark_OCR_Utility_Module.ipynb) with the new updates in `ocr_nlp_processor` module
+- Updated [Text To SQL Generation Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb) with new single tables model
+- New [Multi-Language Clinical NER Demo](https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/)
+- New [Social Determinants of Health Assertion  Demo](https://demo.johnsnowlabs.com/healthcare/ASSERTION_SDOH/)
+- New [Voice of Patients Assertion Demo](https://demo.johnsnowlabs.com/healthcare/ASSERTION_VOP/)
+- New [TEXT2SQL Demo](https://demo.johnsnowlabs.com/healthcare/TEXT2SQL/)
+- New [CLASSIFICATION LITCOVID Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_LITCOVID/)
+- New [PATIENT COMPLAINT CLASSIFICATION Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_PATIENT_COMPLAINT/)
+- Updated [Age Group Classification Demo](https://demo.johnsnowlabs.com/healthcare/PUBLIC_HEALTH_AGE/) 
 
 
 
@@ -348,26 +420,29 @@ VDRL: Nonreactive""")
 
 #### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
 
-+ `summarizer_clinical_laymen_onnx`
-+ `clinical_notes_qa_large_onnx` 
-+ `clinical_notes_qa_base_onnx` 
-+ `ner_clinical` -> `pt`
-+ `text2sql_mimicsql`
-+ `assertion_sdoh_wip`
-+ `genericclassifier_sdoh_transportation_insecurity_e5_large`
-+ `genericclassifier_sdoh_transportation_insecurity_sbiobert_cased_mli`
-+ `bert_sequence_classifier_age_group`
-+ `genericclassifier_age_group_sbiobert_cased_mli`
-+ `icd10cm_ms_drg_mapper`
-+ `abbreviation_pipeline`
-+ `rxnorm_resolver_pipeline`
-+ `icd10cm_multi_mapper_pipeline`
-+ `rxnorm_multi_mapper_pipeline`
-+ `snomed_multi_mapper_pipeline`
-+ `assertion_vop_clinical`
-+ `assertion_vop_clinical_medium`
-+ `assertion_vop_clinical_large`
-+ `few_shot_classifier_age_group_sbiobert_cased_mli`
++ `date_of_birth_parser`
++ `ner_clinical` -> `es`
++ `ner_clinical` -> `fr`
++ `ner_clinical` -> `it`
++ `ner_clinical` -> `pl`
++ `ner_clinical` -> `tr`
++ `bert_sequence_classifier_patient_complaint`
++ `genericclassifier_patient_complaint_sbiobert_cased_mli`
++ `few_shot_classifier_patient_complaint_sbiobert_cased_mli`
++ `ner_events_clinical_langtest`
++ `ner_oncology_anatomy_general_langtest`
++ `ner_oncology_anatomy_granular_langtest`
++ `ner_oncology_demographics_langtest`
++ `ner_oncology_posology_langtest`
++ `ner_oncology_response_to_treatment_langtest`
++ `ner_clinical_pipeline` -> `es`
++ `ner_clinical_pipeline` -> `fr`
++ `ner_clinical_pipeline` -> `it`
++ `ner_clinical_pipeline` -> `nl`
++ `ner_clinical_pipeline` -> `pl`
++ `ner_clinical_pipeline` -> `pt`
++ `ner_clinical_pipeline` -> `tr`
+    
 
 
 

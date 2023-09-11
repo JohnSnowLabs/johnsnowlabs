@@ -21,6 +21,18 @@ data:
           activemenu: legal_text_classification
       source: yes
       source: 
+        - title: Classify Law Stack Exchange Questions
+          id: classify_law_stack_exchange_questions    
+          image: 
+              src: /assets/images/Classify_Law_Stack_Exchange_Questions.svg
+          excerpt: This demo classifies a wide variety of legal issues. The model demonstrates remarkable proficiency in predicting `business`, `constitutional-law`, `contract-law`, `copyright`, `criminal-law`, `employment`, `liability`, `privacy`, `tax-law`, and `trademark`.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/legal/CLASSIFICATION_LAW_EXCHANGE/
+          - text: Colab
+            type: blue_btn
+            url: 
         - title: Classify hundreds types of clauses (Binary - clause detected or not)
           id: legal_clauses_classification    
           image: 
