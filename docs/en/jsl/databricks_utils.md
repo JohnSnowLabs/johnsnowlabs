@@ -1,5 +1,5 @@
 ---
-layout: docs
+layout: docs 
 seotitle: NLP | John Snow Labs
 title: Utilities for Databricks
 permalink: /docs/en/jsl/databricks-utils
@@ -32,7 +32,7 @@ from johnsnowlabs import nlp
 nlp.query_and_deploy_if_missing('bert','My String to embed')
 ```
 
-`nlp.query_and_deploy_if_missing` has the following parameters:
+`nlp.query_and_deploy_if_missing` has the following parameters related to **deploying your model**:
 
 | Parameter              | Description                                                                                                                                                                                                                                                                                                                               |
 |------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
@@ -43,11 +43,33 @@ nlp.query_and_deploy_if_missing('bert','My String to embed')
 | `re_create_endpoint`   | if False, endpoint creation is skipped if one already exists. If True, it will delete existing endpoint if it exists                                                                                                                                                                                                                      |
 | `re_create_model`      | if False, model creation is skipped if one already exists. If True, model will be re-logged again, bumping the current version by 2                                                                                                                                                                                                       |
 | `workload_size`        | one of Small, Medium, Large.                                                                                                                                                                                                                                                                                                              |
+| `gpu`                  | `True`/`False` to load  GPU-optimized jars or CPU-optimized jars in the container                                                                                                                                                                                                                                                         |
 | `new_run`              | if True, mlflow will start a new run before logging the model                                                                                                                                                                                                                                                                             |
 | `db_host`              | the databricks host URL. If not specified, the DATABRICKS_HOST environment variable is used                                                                                                                                                                                                                                               |
 | `db_token`             | the databricks Access Token. If not specified, the DATABRICKS_TOKEN environment variable is used                                                                                                                                                                                                                                          |
 | `block_until_deployed` | if True, this function will block until the endpoint is created                                                                                                                                                                                                                                                                           |
 
+`nlp.query_and_deploy_if_missing` has the following parameters related to **querying your model**,     
+which are forwarded to the [model.predict()](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api) call:
+
+| Parameter                   | Description                                                                                        |
+|-----------------------------|----------------------------------------------------------------------------------------------------| 
+| `output_level`              | One of `token`, `chunk`, `sentence`, `relation`, `document` to shape outputs                       | 
+| `positions`                 | Set `True`/`False` to include or exclude character index position of predictions                   | 
+| `metadata`                  | Set `True`/`False` to include additional metadata                                                  | 
+| `drop_irrelevant_cols`      | Set `True`/`False` to drop irrelevant columns                                                      | 
+| `get_embeddings`            | Set `True`/`False` to include embedding or not                                                     | 
+| `keep_stranger_features`    | Set `True`/`False` to return columns not named "text", 'image" or "file_type" from your input data | 
+| `multithread`               | Set `True`/`False` to use multi-Threading for inference. Auto-inferred if not set                  | 
+
+
+`nlp.query_and_deploy_if_missing` checks the following Env vars 
+
+| Env Var Name                | Description                                                                                                                                                 | 
+|-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `HEALTHCARE_SECRET`         | Automatically set on your cluster if you run nlp.install()                                                                                                  |
+| `VISUAL_SECRET`             | Automatically set if you run. `nlp.install(..., visual=True)`. You can only spawn visual endpoint from a cluster created by `nlp.install(..., visual=True)` |
+| `JOHNSNOWLABS_LICENSE_JSON` | JSON content of your john snow labs licensed to use for endpoints. Should be **airgap license**                                                             |
 
 
 ## Submit a Task with nlp.run_in_databricks
