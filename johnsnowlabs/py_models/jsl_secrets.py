@@ -12,11 +12,14 @@ from johnsnowlabs.py_models.lib_version import LibVersion
 from johnsnowlabs.py_models.primitive import LibVersionIdentifier, Secret
 from johnsnowlabs.utils.enums import ProductName
 from johnsnowlabs.utils.file_utils import json_path_as_dict
-from johnsnowlabs.utils.my_jsl_api import (download_license,
-                                           get_access_key_from_browser,
-                                           get_access_token, get_secrets,
-                                           get_user_lib_secrets,
-                                           get_user_licenses)
+from johnsnowlabs.utils.my_jsl_api import (
+    download_license,
+    get_access_key_from_browser,
+    get_access_token,
+    get_secrets,
+    get_user_lib_secrets,
+    get_user_licenses,
+)
 
 secret_json_keys = [
     "JSL_SECRET",
@@ -206,6 +209,7 @@ class JslSecrets(WritableBaseModel):
         fin_license: Optional[str] = None,
         leg_license: Optional[str] = None,
         return_empty_secrets_if_none_found=False,
+        only_return_secrets: bool = False,
         store_in_jsl_home=True,
     ) -> Union["JslSecrets", bool]:
         """
@@ -220,15 +224,19 @@ class JslSecrets(WritableBaseModel):
         try:
             # we wrap this flow with try/except, so that incase we get invalid license data
             # we can still try loading from JSL-Home afterwards
-
-            if any(
+            if all(
                 [
-                    hc_license,
-                    hc_secret,
-                    ocr_secret,
-                    ocr_license,
-                    aws_access_key,
-                    aws_key_id,
+                    any(
+                        [
+                            hc_license,
+                            hc_secret,
+                            ocr_secret,
+                            ocr_license,
+                            fin_license,
+                            leg_license,
+                        ]
+                    ),
+                    all([aws_access_key, aws_key_id]),
                 ]
             ):
                 # Some found_secrets are supplied
@@ -264,10 +272,17 @@ class JslSecrets(WritableBaseModel):
             if not secrets and not force_browser:
                 # Search Env Vars
                 secrets = JslSecrets.search_env_vars()
-            
-            if secrets and settings.enforce_versions and not JslSecrets.is_hc_secret_correct_version(secrets.HC_SECRET) and not JslSecrets.is_ocr_secret_correct_version(secrets.OCR_SECRET):
+
+            if (
+                secrets
+                and settings.enforce_versions
+                and not JslSecrets.is_hc_secret_correct_version(secrets.HC_SECRET)
+                and not JslSecrets.is_ocr_secret_correct_version(secrets.OCR_SECRET)
+            ):
                 # Make sure secrets and versions re enforced
-                print("👷 Trying to install compatible secrets. Use nlp.settings.enforce_versions=False if you want to install outdated secrets.")
+                print(
+                    "👷 Trying to install compatible secrets. Use nlp.settings.enforce_versions=False if you want to install outdated secrets."
+                )
                 secrets = JslSecrets.enforce_versions(secrets)
 
         except Exception as err:
@@ -288,6 +303,9 @@ class JslSecrets(WritableBaseModel):
         if not secrets and return_empty_secrets_if_none_found:
             # Return empty found_secrets object
             return JslSecrets()
+        if secrets and only_return_secrets:
+            # Return found_secrets object
+            return secrets
         if secrets and store_in_jsl_home:
             # We found some found_secrets
             # Store them if this is the first time JSL-Creds are loaded on this machine
@@ -382,18 +400,28 @@ class JslSecrets(WritableBaseModel):
             else None
         )
 
-        if any(
+        if all(
             [
-                hc_secret,
-                hc_license,
-                hc_license,
-                hc_version,
-                nlp_version,
-                aws_access_key_id,
-                aws_access_key,
-                ocr_license,
-                ocr_secret,
-                ocr_version,
+                any(
+                    [
+                        hc_secret,
+                        hc_license,
+                        hc_license,
+                        hc_version,
+                        nlp_version,
+                        fin_license,
+                        leg_license,
+                        ocr_license,
+                        ocr_secret,
+                        ocr_version,
+                    ]
+                ),
+                all(
+                    [
+                        aws_access_key_id,
+                        aws_access_key,
+                    ]
+                ),
             ]
         ):
             print("👌 License detected in Environment Variables")
@@ -476,7 +504,12 @@ class JslSecrets(WritableBaseModel):
 
     @staticmethod
     def enforce_versions(data: "JslSecrets") -> "JslSecrets":
-        secrets  = get_secrets(data.HC_LICENSE or data.OCR_LICENSE or data.JSL_FINANCE_LICENSE or data.JSL_LEGAL_LICENSE)
+        secrets = get_secrets(
+            data.HC_LICENSE
+            or data.OCR_LICENSE
+            or data.JSL_FINANCE_LICENSE
+            or data.JSL_LEGAL_LICENSE
+        )
         # Fix lib secrets in license data to correct version
         ocr_candidates = list(
             filter(
