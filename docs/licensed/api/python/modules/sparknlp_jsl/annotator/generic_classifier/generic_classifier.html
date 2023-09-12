@@ -589,6 +589,8 @@ document.write(`
 
 <span class="sd">    multiClass</span>
 <span class="sd">        Return only the label with the highest confidence score or all labels</span>
+<span class="sd">    featureScaling</span>
+<span class="sd">        Feature scaling method. Possible values are &#39;zscore&#39;, &#39;minmax&#39; or empty (no scaling)</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -637,6 +639,21 @@ document.write(`
 <span class="sd">           Whether to return only the label with the highest confidence score or all labels</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">multiClass</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GenericClassifierModel.featureScaling"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/generic_classifier/generic_classifier/index.html#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.featureScaling">[docs]</a>    <span class="n">featureScaling</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;featureScaling&quot;</span><span class="p">,</span>
+                           <span class="s2">&quot;Feature scaling method. Possible values are &#39;zscore&#39;, &#39;minmax&#39; or empty (no scaling)&quot;</span><span class="p">,</span>
+                           <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="GenericClassifierModel.setFeatureScaling"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/generic_classifier/generic_classifier/index.html#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel.setFeatureScaling">[docs]</a>    <span class="k">def</span> <span class="nf">setFeatureScaling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature_scaling</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets Feature scaling method. Possible values are &#39;zscore&#39;, &#39;minmax&#39; or empty (no scaling)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature_scaling : str</span>
+<span class="sd">            Feature scaling method. Possible values are &#39;zscore&#39;, &#39;minmax&#39; or empty (no scaling)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">featureScaling</span><span class="o">=</span><span class="n">feature_scaling</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel&quot;</span><span class="p">,</span>
                  <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>

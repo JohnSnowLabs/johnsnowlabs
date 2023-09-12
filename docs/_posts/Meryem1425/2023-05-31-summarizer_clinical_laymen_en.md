@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Summarize Clinical Notes in Layman Terms
+title: Summarize Clinical Notes in Laymen Terms
 author: John Snow Labs
 name: summarizer_clinical_laymen
 date: 2023-05-31

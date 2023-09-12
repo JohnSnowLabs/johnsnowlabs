@@ -22,7 +22,7 @@ pip install johnsnowlabs
 2. run in a `Python Shell`
 ```python
 from johnsnowlabs import *
-jsl.install()
+nlp.install()
 ```
 This will display a **Browser Window Pop Up**  or show a **Clickable Button with Pop Up**.        
 Click on the **Authorize** button to allow the library to connect to your account on my.JohnSnowLabs.com and access you licenses.          

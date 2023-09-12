@@ -8,10 +8,10 @@ from johnsnowlabs.auto_install.softwares import Software
 from johnsnowlabs.py_models.install_info import InstallSuite, LocalPy4JLib, LocalPyLib
 from johnsnowlabs.py_models.lib_version import LibVersion
 from johnsnowlabs.utils.env_utils import is_running_in_databricks
+from .dbfs import *
 
 # https://pypi.org/project/databricks-api/
 from ...utils.enums import DatabricksClusterStates
-from .dbfs import *
 
 
 def get_db_client_for_token(host, token) -> DatabricksAPI:
@@ -24,8 +24,23 @@ def get_db_client_for_password(host, email, password) -> DatabricksAPI:
     return DatabricksAPI(host=host, user=email, password=password)
 
 
+def clean_cluster(
+    databricks_host: str,
+    databricks_token: str,
+):
+    dbfs_rm(
+        get_db_client_for_token(databricks_host, databricks_token),
+        settings.dbfs_home_dir,
+        recursive=True,
+    )
+
+
 def create_cluster(
-    db: DatabricksAPI,
+    databricks_host: str,
+    databricks_token: str,
+    medical_nlp,
+    spark_nlp,
+    visual,
     install_suite: InstallSuite = None,
     num_workers=1,
     cluster_name=settings.db_cluster_name,
@@ -45,13 +60,20 @@ def create_cluster(
     instance_pool_id=None,
     headers=None,
     block_till_cluster_ready: bool = True,
+    write_db_credentials: bool = True,
 ) -> str:
+    db = get_db_client_for_token(databricks_host, databricks_token)
+
     if not install_suite:
         install_suite = jsl_home.get_install_suite_from_jsl_home()
 
     default_spark_conf = {
         "spark.kryoserializer.buffer.max": "2000M",
         "spark.serializer": "org.apache.spark.serializer.KryoSerializer",
+        "spark.sql.optimizer.expression.nestedPruning.enabled": "false",
+        "spark.sql.optimizer.nestedSchemaPruning.enabled": "false",
+        "spark.sql.legacy.allowUntypedScalaUDF": "true",
+        "spark.sql.repl.eagerEval.enabled": "true",
     }
     lic = {
         "SECRET": install_suite.secrets.HC_SECRET,
@@ -69,6 +91,15 @@ def create_cluster(
         AWS_ACCESS_KEY_ID=install_suite.secrets.AWS_ACCESS_KEY_ID,
         AWS_SECRET_ACCESS_KEY=install_suite.secrets.AWS_SECRET_ACCESS_KEY,
     )
+
+    if "SPARK_OCR_SECRET" in lic and visual:
+        default_spark_env_vars["VISUAL_SECRET"] = lic["SPARK_OCR_SECRET"]
+    if "SECRET" in lic and medical_nlp:
+        default_spark_env_vars["HEALTHCARE_SECRET"] = lic["SECRET"]
+
+    if write_db_credentials:
+        default_spark_env_vars["DATABRICKS_HOST"] = databricks_host
+        default_spark_env_vars["DATABRICKS_TOKEN"] = databricks_token
     # Env vars may not be None, so we drop any that are None
     default_spark_env_vars = {
         k: v for k, v in default_spark_env_vars.items() if v is not None
@@ -105,7 +136,12 @@ def create_cluster(
     )["cluster_id"]
     print(f"👌 Created cluster with id={cluster_id} on host={db.client.url}")
     install_jsl_suite_to_cluster(
-        db=db, cluster_id=cluster_id, install_suite=install_suite
+        db=db,
+        cluster_id=cluster_id,
+        install_suite=install_suite,
+        medical_nlp=medical_nlp,
+        spark_nlp=spark_nlp,
+        visual=visual,
     )
     if block_till_cluster_ready:
         block_till_cluster_ready_state(db, cluster_id)
@@ -121,14 +157,15 @@ def list_db_runtime_versions(db: DatabricksAPI):
         print(version["name"])
         # version_regex = r'[0-9].[0-9].[0-9]'
 
-        spark_version = re.findall(r"Apache Spark [0-9].[0-9]", version["name"])[
-            0
-        ].lstrip("Apache Spark ")
+        spark_version = re.findall(r"Apache Spark [0-9].[0-9]", version["name"])
+        if spark_version:
+            spark_version = spark_version[0].lstrip("Apache Spark ")
         scala_version = re.findall(r"Scala [0-9].[0-9][0-9]", version["name"])[
             0
         ].lstrip("Scala ")
         has_gpu = len(re.findall("GPU", version["name"])) > 0
-        spark_version = spark_version + ".x"
+        if spark_version:
+            spark_version = spark_version + ".x"
         print(LibVersion(spark_version).as_str(), has_gpu, scala_version)
 
 
@@ -155,7 +192,25 @@ def install_jsl_suite_to_cluster(
     db: DatabricksAPI,
     cluster_id: str,
     install_suite: InstallSuite,
+    medical_nlp: bool,
+    spark_nlp: bool,
+    visual: bool,
 ):
+    print("DEBUG: INSTALL TO CLUSTER", medical_nlp, spark_nlp, visual)
+    print(
+        "DEBUG: INSTALL TO CLUSTER",
+        install_suite.hc.get_py_path(),
+        install_suite.hc.get_java_path(),
+        medical_nlp,
+    )
+
+    print(
+        "DEBUG: INSTALL TO CLUSTER",
+        install_suite.nlp.get_py_path(),
+        install_suite.nlp.get_java_path(),
+        spark_nlp,
+    )
+
     py_deps = [
         {"package": Software.nlu.pypi_name, "version": settings.raw_version_nlu},
         {
@@ -168,12 +223,16 @@ def install_jsl_suite_to_cluster(
         },
     ]
     uninstall_old_libraries(db, cluster_id, py_deps)
-    if install_suite.hc.get_py_path() and install_suite.hc.get_java_path():
+    if (
+        install_suite.hc.get_py_path()
+        and install_suite.hc.get_java_path()
+        and medical_nlp
+    ):
         install_py4j_lib_via_hdfs(db, cluster_id, install_suite.hc)
         print(
             f"Installed {Software.spark_hc.logo + Software.spark_hc.name} Spark NLP for Healthcare ✅"
         )
-    if install_suite.ocr.get_py_path() and install_suite.ocr.get_java_path():
+    if install_suite.ocr.get_py_path() and install_suite.ocr.get_java_path() and visual:
         install_py4j_lib_via_hdfs(db, cluster_id, install_suite.ocr)
         print(
             f"Installed {Software.spark_ocr.logo + Software.spark_ocr.name} Spark OCR ✅"
@@ -183,7 +242,11 @@ def install_jsl_suite_to_cluster(
         install_py_lib_via_pip(db, cluster_id, dep["package"], dep["version"])
 
     # Install Sparkr-NLP as last library, so we have the correct version
-    if install_suite.nlp.get_py_path() and install_suite.nlp.get_java_path():
+    if (
+        install_suite.nlp.get_py_path()
+        and install_suite.nlp.get_java_path()
+        and spark_nlp
+    ):
         install_py4j_lib_via_hdfs(db, cluster_id, install_suite.nlp)
         print(
             f"{Software.spark_nlp.logo + Software.spark_nlp.name} Installed Spark NLP! ✅"
@@ -245,6 +308,7 @@ def uninstall_old_libraries(
                         if fil in path.replace("-", "_"):
                             uninstalls.append({typ: path})
     if uninstalls:
+        print("UNINSTALL ULD STUFF?", uninstalls)
         db.managed_library.uninstall_libraries(
             cluster_id=cluster_id, libraries=uninstalls
         )

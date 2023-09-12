@@ -1,0 +1,65 @@
+---
+layout: base
+---
+
+{%- assign _article_header_type = page.article_header.type | default: layout.article_header.type -%}
+
+{%- include snippets/assign.html
+  target=layout.header source0=page.header -%}
+{%- assign _header = __return -%}
+
+<div class="layout--page js-page-root">
+    <div class="page__main js-page-main page__main--immersive_bg page__viewport full-width cell cell--auto">
+      <div class="page__main-inner">
+  
+        <!--Header-->
+        {%- if _header != false -%}
+          <div class="page__header d-print-none">
+            {%- include header.html -%}
+          </div>
+        {%- endif -%}
+        <!--END Header-->
+        <div class="page__content demopage_content">
+
+        <!--SubHeader-->
+          <div class="grid grid--reverse">
+            <div class="col-main cell cell--auto">
+              {%- include article-header.html article=page -%}
+            </div>
+          </div>
+        <!--END SubHeader-->
+
+        <!--Top Demos-->
+          <div class="js-article-content top_demos">
+            <div class="demomenu">
+              {%- include demos/demomenu.html -%}
+            </div>
+            <div class="layout--landing">
+              {%- include demos/demoitem.html -%}
+            </div>
+          </div>
+        <!--END Top Demos-->
+        {%- include categorymenu.html -%}
+        {%- include notebooks.html -%}
+        </div>
+
+      {%- if _footer != false -%}
+        <div class="page__footer d-print-none">{%- include footer.html -%}</div>
+      {%- endif -%}  
+      </div>
+    </div>
+</div>
+
+<script>
+  {%- include scripts/lib/scroll-to.js -%}
+  {%- include scripts/lib/affix.js -%}
+  {%- include scripts/lib/toc.js -%}
+  {%- if _lightbox == true -%}
+    {%- include scripts/lib/gallery.js -%}
+    {%- include scripts/components/lightbox.js -%}
+  {%- endif -%}
+  {%- include scripts/page.js -%}
+</script>
+
+{%- include markdown-enhancements.html -%}
+{%- include pageview.html -%}

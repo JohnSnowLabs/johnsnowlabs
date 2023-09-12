@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: API Integration
 permalink: /docs/en/alab/api
 key: docs-training
-modify_date: "2022-10-13"
+modify_date: "2022-10-14"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

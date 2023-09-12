@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Productivity
 permalink: /docs/en/alab/productivity
 key: docs-training
-modify_date: "2022-12-11"
+modify_date: "2022-12-13"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

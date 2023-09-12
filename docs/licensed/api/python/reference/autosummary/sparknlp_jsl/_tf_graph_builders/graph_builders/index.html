@@ -331,36 +331,39 @@ document.write(`
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder" title="sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SVMClassifierTFGraphBuilder</span></code></a></p></td>
 <td><p>Class to create the the TF graphs for GenericClassifierApproach.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder" title="sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AssertionTFGraphBuilder</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl._tf_graph_builders.graph_builders.FewShotClassifierTFGraphBuilder" title="sparknlp_jsl._tf_graph_builders.graph_builders.FewShotClassifierTFGraphBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FewShotClassifierTFGraphBuilder</span></code></a></p></td>
+<td><p>Class to create the the TF graphs for GenericClassifierApproach.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder" title="sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AssertionTFGraphBuilder</span></code></a></p></td>
 <td><p>Class to build the the TF graphs for AssertionDLApproach.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder" title="sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NerTFGraphBuilder</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder" title="sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NerTFGraphBuilder</span></code></a></p></td>
 <td><p>Class to build the the TF graphs for MedicalNerApproach.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl._tf_graph_builders.graph_builders.RelationExtractionTFGraphBuilder" title="sparknlp_jsl._tf_graph_builders.graph_builders.RelationExtractionTFGraphBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RelationExtractionTFGraphBuilder</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl._tf_graph_builders.graph_builders.RelationExtractionTFGraphBuilder" title="sparknlp_jsl._tf_graph_builders.graph_builders.RelationExtractionTFGraphBuilder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RelationExtractionTFGraphBuilder</span></code></a></p></td>
 <td><p>Class to build the the TF graphs for RelationExtractionApproach</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory" title="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TFGraphBuilderFactory</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory" title="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TFGraphBuilderFactory</span></code></a></p></td>
 <td><p>Factory class to create the the different tensorflow graphs for ner_dl,</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py exception">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.WrongTFVersion">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WrongTFVersion</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#WrongTFVersion"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.WrongTFVersion" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">WrongTFVersion</span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.WrongTFVersion" title="Permalink to this definition">#</a></dt>
 <dd><p>Exception raised for not-supported Tensorflow versions.</p>
 <p>Currently supported versions are 1.15 and 2.xx.</p>
 </dd></dl>
 
 <dl class="py exception">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TensorflowAddonsNeeded">
-<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorflowAddonsNeeded</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TensorflowAddonsNeeded"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TensorflowAddonsNeeded" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TensorflowAddonsNeeded</span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TensorflowAddonsNeeded" title="Permalink to this definition">#</a></dt>
 <dd><p>Exception raised when Tensorflow Addons are needed but not installed.</p>
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder" title="Permalink to this definition">#</a></dt>
 <dd><p>Generic class to create the tensorflow graphs for ‘ner_dl’, ‘generic_classifier’,
 ‘assertion_dl’, ‘relation_extraction’ annotators in Healthcare NLP.</p>
 <dl class="field-list simple">
@@ -378,14 +381,14 @@ document.write(`
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.supports_auto_file_name">
-<span class="sig-name descname"><span class="pre">supports_auto_file_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilder.supports_auto_file_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.supports_auto_file_name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">supports_auto_file_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.supports_auto_file_name" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns True if the model supports automatic file name generation.</p>
 <p>This class method needs to be overridden in the child classes.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_model_filename">
-<span class="sig-name descname"><span class="pre">get_model_filename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilder.get_model_filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_model_filename" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_filename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_model_filename" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the model file name.</p>
 <p>This class method needs to be overridden in the child classes.</p>
 <dl class="field-list simple">
@@ -400,7 +403,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.check_build_params">
-<span class="sig-name descname"><span class="pre">check_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilder.check_build_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.check_build_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">check_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.check_build_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Checks if the build parameters are valid.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Raises<span class="colon">:</span></dt>
@@ -414,7 +417,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_build_params">
-<span class="sig-name descname"><span class="pre">get_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilder.get_build_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_build_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_build_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the build parameters.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -428,7 +431,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_build_params_with_defaults">
-<span class="sig-name descname"><span class="pre">get_build_params_with_defaults</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilder.get_build_params_with_defaults"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_build_params_with_defaults" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_build_params_with_defaults</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_build_params_with_defaults" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the build parameters with the default values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -442,7 +445,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_build_param">
-<span class="sig-name descname"><span class="pre">get_build_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilder.get_build_param"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_build_param" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_build_param</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_param</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Any</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_build_param" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the value of the given build parameter.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -468,7 +471,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_model_build_params">
-<span class="sig-name descname"><span class="pre">get_model_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilder.get_model_build_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_model_build_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_model_build_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the build parameters for the model.</p>
 <p>This class method needs to be overridden in the child classes.</p>
 <dl class="field-list simple">
@@ -483,7 +486,7 @@ document.write(`
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_model_build_param_explanations">
-<span class="sig-name descname"><span class="pre">get_model_build_param_explanations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilder.get_model_build_param_explanations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_model_build_param_explanations" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_build_param_explanations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilder.get_model_build_param_explanations" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the explanations for the build parameters for the model.</p>
 <p>This class method needs to be overridden in the child classes.</p>
 <dl class="field-list simple">
@@ -500,7 +503,7 @@ document.write(`
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GenericClassifierTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#GenericClassifierTFGraphBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GenericClassifierTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder" title="Permalink to this definition">#</a></dt>
 <dd><p>Class to create the the TF graphs for GenericClassifierApproach.
 Extends the TFGraphBuilder base class.</p>
 <p class="rubric">Examples</p>
@@ -543,7 +546,7 @@ Extends the TFGraphBuilder base class.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.supports_auto_file_name">
-<span class="sig-name descname"><span class="pre">supports_auto_file_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#GenericClassifierTFGraphBuilder.supports_auto_file_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.supports_auto_file_name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">supports_auto_file_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.supports_auto_file_name" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns if the model can be saved with an auto-generated file name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -557,7 +560,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.get_model_filename">
-<span class="sig-name descname"><span class="pre">get_model_filename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#GenericClassifierTFGraphBuilder.get_model_filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.get_model_filename" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_filename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.get_model_filename" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the model file name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -571,7 +574,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.get_model_build_params">
-<span class="sig-name descname"><span class="pre">get_model_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#GenericClassifierTFGraphBuilder.get_model_build_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.get_model_build_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.get_model_build_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the build parameters for the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -585,7 +588,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.get_model_build_param_explanations">
-<span class="sig-name descname"><span class="pre">get_model_build_param_explanations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#GenericClassifierTFGraphBuilder.get_model_build_param_explanations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.get_model_build_param_explanations" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_build_param_explanations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.get_model_build_param_explanations" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the explanations for the build parameters for the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -599,7 +602,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_filename</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#GenericClassifierTFGraphBuilder.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.build" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_filename</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.GenericClassifierTFGraphBuilder.build" title="Permalink to this definition">#</a></dt>
 <dd><p>Builds the model’s graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -617,7 +620,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.LogRegClassifierTFGraphBuilder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LogRegClassifierTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#LogRegClassifierTFGraphBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.LogRegClassifierTFGraphBuilder" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LogRegClassifierTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.LogRegClassifierTFGraphBuilder" title="Permalink to this definition">#</a></dt>
 <dd><p>Class to create the the TF graphs for GenericClassifierApproach.
 Extends the TFGraphBuilder base class.</p>
 <p class="rubric">Examples</p>
@@ -660,7 +663,7 @@ Extends the TFGraphBuilder base class.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.LogRegClassifierTFGraphBuilder.get_model_build_params">
-<span class="sig-name descname"><span class="pre">get_model_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#LogRegClassifierTFGraphBuilder.get_model_build_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.LogRegClassifierTFGraphBuilder.get_model_build_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.LogRegClassifierTFGraphBuilder.get_model_build_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the build parameters for the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -674,7 +677,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.LogRegClassifierTFGraphBuilder.get_model_build_param_explanations">
-<span class="sig-name descname"><span class="pre">get_model_build_param_explanations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#LogRegClassifierTFGraphBuilder.get_model_build_param_explanations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.LogRegClassifierTFGraphBuilder.get_model_build_param_explanations" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_build_param_explanations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.LogRegClassifierTFGraphBuilder.get_model_build_param_explanations" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the explanations for the build parameters for the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -690,7 +693,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SVMClassifierTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#SVMClassifierTFGraphBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SVMClassifierTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder" title="Permalink to this definition">#</a></dt>
 <dd><p>Class to create the the TF graphs for GenericClassifierApproach.
 Extends the TFGraphBuilder base class.</p>
 <p class="rubric">Examples</p>
@@ -733,7 +736,7 @@ Extends the TFGraphBuilder base class.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder.get_model_build_params">
-<span class="sig-name descname"><span class="pre">get_model_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#SVMClassifierTFGraphBuilder.get_model_build_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder.get_model_build_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder.get_model_build_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the build parameters for the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -747,7 +750,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder.get_model_build_param_explanations">
-<span class="sig-name descname"><span class="pre">get_model_build_param_explanations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#SVMClassifierTFGraphBuilder.get_model_build_param_explanations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder.get_model_build_param_explanations" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_build_param_explanations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder.get_model_build_param_explanations" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the explanations for the build parameters for the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -762,8 +765,53 @@ Extends the TFGraphBuilder base class.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.FewShotClassifierTFGraphBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FewShotClassifierTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.FewShotClassifierTFGraphBuilder" title="Permalink to this definition">#</a></dt>
+<dd><p>Class to create the the TF graphs for GenericClassifierApproach.
+Extends the TFGraphBuilder base class.</p>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">tf_graph</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;petfinder-mini.csv&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">DL_params</span> <span class="o">=</span> <span class="p">{</span>
+<span class="gp">... </span>    <span class="s2">&quot;input_dim&quot;</span><span class="p">:</span> <span class="mi">302</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;output_dim&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;hidden_layers&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">300</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>
+<span class="gp">... </span>    <span class="s2">&quot;hidden_act&quot;</span><span class="p">:</span> <span class="s2">&quot;tanh&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;hidden_act_l2&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;batch_norm&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;output_act&quot;</span><span class="p">:</span> <span class="s2">&quot;softmax&quot;</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="s2">&quot;loss_func&quot;</span><span class="p">:</span> <span class="s2">&quot;cross_entropy&quot;</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">}</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">tf_graph</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="s2">&quot;generic_classifier&quot;</span><span class="p">,</span> <span class="n">build_params</span><span class="o">=</span><span class="n">DL_params</span><span class="p">,</span> <span class="n">model_location</span><span class="o">=</span><span class="s2">&quot;/content/gc_graph&quot;</span><span class="p">,</span> <span class="n">model_filename</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span>
+<span class="go">This created the graph and saved it to /content/gc_graph/gcl.302.2.pb</span>
+<span class="go">We can use it in the GenericClassifierApproach annotator by setting the modelFile parameter</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gen_clf</span> <span class="o">=</span> <span class="n">GenericClassifierApproach</span><span class="p">()</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setLabelColumn</span><span class="p">(</span><span class="s2">&quot;target&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s2">&quot;features&quot;</span><span class="p">])</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;prediction&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setModelFile</span><span class="p">(</span><span class="s1">&#39;/content/gc_graph/gcl.302.2.pb&#39;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setEpochsNumber</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setBatchSize</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setFeatureScaling</span><span class="p">(</span><span class="s2">&quot;zscore&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setFixImbalance</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setLearningRate</span><span class="p">(</span><span class="mf">0.001</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputLogsPath</span><span class="p">(</span><span class="s2">&quot;logs&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setValidationSplit</span><span class="p">(</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">clf_Pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span><span class="n">features_asm</span><span class="p">,</span><span class="n">gen_clf</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AssertionTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#AssertionTFGraphBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AssertionTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder" title="Permalink to this definition">#</a></dt>
 <dd><p>Class to build the the TF graphs for AssertionDLApproach.
 Extends the TFGraphBuilder base class.</p>
 <p class="rubric">Examples</p>
@@ -794,7 +842,7 @@ Extends the TFGraphBuilder base class.</p>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.supports_auto_file_name">
-<span class="sig-name descname"><span class="pre">supports_auto_file_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#AssertionTFGraphBuilder.supports_auto_file_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.supports_auto_file_name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">supports_auto_file_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.supports_auto_file_name" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns if the model can be saved with an auto-generated file name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -808,7 +856,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.get_model_filename">
-<span class="sig-name descname"><span class="pre">get_model_filename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#AssertionTFGraphBuilder.get_model_filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.get_model_filename" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_filename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.get_model_filename" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the model file name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -822,7 +870,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.get_model_build_params">
-<span class="sig-name descname"><span class="pre">get_model_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#AssertionTFGraphBuilder.get_model_build_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.get_model_build_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.get_model_build_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the build parameters for the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -836,7 +884,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.get_model_build_param_explanations">
-<span class="sig-name descname"><span class="pre">get_model_build_param_explanations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#AssertionTFGraphBuilder.get_model_build_param_explanations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.get_model_build_param_explanations" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_build_param_explanations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.get_model_build_param_explanations" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the explanations for the build parameters for the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -850,7 +898,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_filename</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#AssertionTFGraphBuilder.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.build" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_filename</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.build" title="Permalink to this definition">#</a></dt>
 <dd><p>Builds the model’s graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -868,7 +916,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NerTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#NerTFGraphBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">NerTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder" title="Permalink to this definition">#</a></dt>
 <dd><p>Class to build the the TF graphs for MedicalNerApproach.</p>
 <p class="rubric">Examples</p>
 <p>Builds a graph with embeddings_dim=200, nchars=83, ntags=12 for medical NER.
@@ -886,7 +934,7 @@ Extends the TFGraphBuilder base class.</p>
 &gt;&gt;&gt; nerTagger = MedicalNerApproach()    &gt;&gt;&gt;                     .setInputCols([“sentence”, “token”, “embeddings”])    &gt;&gt;&gt;                     .setLabelColumn(“label”)    &gt;&gt;&gt;                     .setOutputCol(“ner”)    &gt;&gt;&gt;                     .setMaxEpochs(2)    &gt;&gt;&gt;                     .setBatchSize(64)    &gt;&gt;&gt;                     .setRandomSeed(0)    &gt;&gt;&gt;                     .setVerbose(1)    &gt;&gt;&gt;                     .setValidationSplit(0.2)    &gt;&gt;&gt;                     .setEvaluationLogExtended(True)     &gt;&gt;&gt;                     .setEnableOutputLogs(True)    &gt;&gt;&gt;                     .setIncludeConfidence(True)    &gt;&gt;&gt;                     .setOutputLogsPath(‘ner_logs’)    &gt;&gt;&gt;                     .setGraphFolder(‘medical_ner_graphs’)    &gt;&gt;&gt;                     .setEnableMemoryOptimizer(True)</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.supports_auto_file_name">
-<span class="sig-name descname"><span class="pre">supports_auto_file_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#NerTFGraphBuilder.supports_auto_file_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.supports_auto_file_name" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">supports_auto_file_name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.supports_auto_file_name" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns if the model can be saved with an auto-generated file name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -900,7 +948,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.get_model_filename">
-<span class="sig-name descname"><span class="pre">get_model_filename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#NerTFGraphBuilder.get_model_filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.get_model_filename" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_filename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.get_model_filename" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the model file name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -914,7 +962,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.get_model_build_params">
-<span class="sig-name descname"><span class="pre">get_model_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#NerTFGraphBuilder.get_model_build_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.get_model_build_params" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_build_params</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.get_model_build_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the build parameters for the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -928,7 +976,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.get_model_build_param_explanations">
-<span class="sig-name descname"><span class="pre">get_model_build_param_explanations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#NerTFGraphBuilder.get_model_build_param_explanations"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.get_model_build_param_explanations" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_build_param_explanations</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.get_model_build_param_explanations" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the explanations for the build parameters for the model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -942,7 +990,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.build">
-<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_filename</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#NerTFGraphBuilder.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.build" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_filename</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.NerTFGraphBuilder.build" title="Permalink to this definition">#</a></dt>
 <dd><p>Builds the model’s graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -960,7 +1008,7 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.RelationExtractionTFGraphBuilder">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RelationExtractionTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#RelationExtractionTFGraphBuilder"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.RelationExtractionTFGraphBuilder" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RelationExtractionTFGraphBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.RelationExtractionTFGraphBuilder" title="Permalink to this definition">#</a></dt>
 <dd><p>Class to build the the TF graphs for RelationExtractionApproach</p>
 <p class="rubric">Examples</p>
 <p>Creates the graph for RelationExtractionApproach
@@ -981,7 +1029,7 @@ Extends the TFGraphBuilder base class.</p>
 &gt;&gt;&gt; re_approach = RelationExtractionApproach() …    .setLabelColumn(“rel”) …    .setInputCols([“embeddings”, “pos_tags”, “train_ner_chunks”, “dependencies”]) …    .setOutputCol(“relations”) …    .setModelFile(‘./re_with_BN’) …    .setEpochsNumber(70) …    .setBatchSize(200) …    .setFixImbalance(True) …    .setLearningRate(0.001) …    .setFromEntity(“begin1i”, “end1i”, “label1”) …    .setToEntity(“begin2i”, “end2i”, “label2”) …    .setValidationSplit(0.2)</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.RelationExtractionTFGraphBuilder.get_model_filename">
-<span class="sig-name descname"><span class="pre">get_model_filename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#RelationExtractionTFGraphBuilder.get_model_filename"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.RelationExtractionTFGraphBuilder.get_model_filename" title="Permalink to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">get_model_filename</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.RelationExtractionTFGraphBuilder.get_model_filename" title="Permalink to this definition">#</a></dt>
 <dd><p>Returns the model file name.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -997,12 +1045,12 @@ Extends the TFGraphBuilder base class.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TFGraphBuilderFactory</span></span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilderFactory"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TFGraphBuilderFactory</span></span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory" title="Permalink to this definition">#</a></dt>
 <dd><p>Factory class to create the the different tensorflow graphs for ner_dl,
 generic_classifier, assertion_dl, relation_extraction annotators in Healthcare NLP.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory.get_models">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_models</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilderFactory.get_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory.get_models" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_models</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory.get_models" title="Permalink to this definition">#</a></dt>
 <dd><p>Method that return the available tf models in  spark-nlp healthcare
 Examples
 ——–
@@ -1012,7 +1060,7 @@ Examples
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory.build">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilderFactory.build"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory.build" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">build</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">build_params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_location</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'auto'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory.build" title="Permalink to this definition">#</a></dt>
 <dd><p>Method that create the tf graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1051,7 +1099,7 @@ If <cite>model_filename</cite> is “auto” but <cite>model_name</cite> doesn�
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory.print_model_params">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_model_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../../modules/sparknlp_jsl/_tf_graph_builders/graph_builders.html#TFGraphBuilderFactory.print_model_params"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory.print_model_params" title="Permalink to this definition">#</a></dt>
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">print_model_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl._tf_graph_builders.graph_builders.TFGraphBuilderFactory.print_model_params" title="Permalink to this definition">#</a></dt>
 <dd><p>Method that return the params allowed for the tf model.
 This method return the params with the description for every param.</p>
 <dl class="field-list simple">
@@ -1144,6 +1192,7 @@ Available models are: ner_dl, generic_classifier, assertion_dl and relation_extr
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl._tf_graph_builders.graph_builders.SVMClassifierTFGraphBuilder.get_model_build_param_explanations"><code class="docutils literal notranslate"><span class="pre">SVMClassifierTFGraphBuilder.get_model_build_param_explanations()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl._tf_graph_builders.graph_builders.FewShotClassifierTFGraphBuilder"><code class="docutils literal notranslate"><span class="pre">FewShotClassifierTFGraphBuilder</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder"><code class="docutils literal notranslate"><span class="pre">AssertionTFGraphBuilder</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.supports_auto_file_name"><code class="docutils literal notranslate"><span class="pre">AssertionTFGraphBuilder.supports_auto_file_name()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl._tf_graph_builders.graph_builders.AssertionTFGraphBuilder.get_model_filename"><code class="docutils literal notranslate"><span class="pre">AssertionTFGraphBuilder.get_model_filename()</span></code></a></li>
@@ -1176,14 +1225,6 @@ Available models are: ner_dl, generic_classifier, assertion_dl and relation_extr
 </li>
 </ul>
   </nav></div>
-
-  <div class="sidebar-secondary-item">
-  <div class="tocsection sourcelink">
-    <a href="../../../../../_sources/reference/autosummary/sparknlp_jsl/_tf_graph_builders/graph_builders/index.rst.txt">
-      <i class="fa-solid fa-file-lines"></i> Show Source
-    </a>
-  </div>
-</div>
 
 </div></div>
               

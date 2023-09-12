@@ -15,6 +15,102 @@ sidebar:
 See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for detailed information on Release History and Features.
 
 
+## 5.0.8
+Release date: 11-09-2023
+
+The John Snow Labs 5.0.5 Library released with the following pre-installed and recommended dependencies
+
+
+| Library                                                                         | Version |
+|---------------------------------------------------------------------------------|---------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_release_notes)        | `5.0.0` |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)  | `5.0.2` |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/financial_release_notes) | `1.X.X` |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/legal_release_notes)       | `1.X.X` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                             | `5.0.1` |
+| [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)           | `4.4`   |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                | `5.0.2` |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                     | `3.1.2` |
+
+
+
+
+
+## 5.0.7
+Release date: 3-09-2023
+
+The John Snow Labs 5.0.5 Library released with the following pre-installed and recommended dependencies
+
+
+| Library                                                                         | Version |
+|---------------------------------------------------------------------------------|---------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_release_notes)        | `5.0.0` |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)  | `5.0.2` |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/financial_release_notes) | `1.X.X` |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/legal_release_notes)       | `1.X.X` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                             | `5.0.0` |
+| [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)           | `4.4`   |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                | `5.0.2` |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                     | `3.1.2` |
+
+
+
+
+## 5.0.6
+Release date: 3-09-2023
+
+The John Snow Labs 5.0.5 Library released with the following pre-installed and recommended dependencies
+
+
+| Library                                                                         | Version |
+|---------------------------------------------------------------------------------|---------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_release_notes)        | `5.0.0` |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)  | `5.0.2` |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/financial_release_notes) | `1.X.X` |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/legal_release_notes)       | `1.X.X` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                             | `5.0.0` |
+| [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)           | `4.4`   |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                | `5.0.2` |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                     | `3.1.2` |
+
+
+
+
+## 5.0.4
+Release date: 25-08-2023
+
+The John Snow Labs 5.0.5 Library released with the following pre-installed and recommended dependencies
+
+
+| Library                                                                         | Version |
+|---------------------------------------------------------------------------------|---------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_release_notes)        | `5.0.0` |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)  | `5.0.2` |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/financial_release_notes) | `1.X.X` |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/legal_release_notes)       | `1.X.X` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                             | `5.0.0` |
+| [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)           | `4.4`   |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                | `5.0.2` |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                     | `3.1.2` |
+
+
+
+## 5.0.4
+Release date: 24-08-2023
+
+The John Snow Labs 5.0.4 Library released with the following pre-installed and recommended dependencies
+
+
+| Library                                                                         | Version |
+|---------------------------------------------------------------------------------|---------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/ocr_release_notes)        | `5.0.0` |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/licensed_annotators)  | `5.0.2` |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/financial_release_notes) | `1.X.X` |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/jsl/legal_release_notes)       | `1.X.X` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                             | `5.0.0` |
+| [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/jsl/display)           | `4.4`   |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                | `5.0.2` |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                     | `3.1.2` |
 
 ## 5.0.1
 Release date: 02-08-2023
