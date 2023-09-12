@@ -78,14 +78,3 @@ db_run_name = "John-Snow-Labs-Run 🚀"
 
 
 spark_session_name = "John-Snow-Labs-Spark-Session 🚀"
-
-
-"""
-Haha no worries we all need todo some venting sometimes, I can relate ;) 
-
-Today a uni friend is coming over, we are doing some planning for next semester and he also will check out the get and maybe be my cat-sitte while I am in Dubai.
-
-
-Usually 
-
-"""
