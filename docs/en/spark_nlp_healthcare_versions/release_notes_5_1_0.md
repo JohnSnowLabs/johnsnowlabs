@@ -261,6 +261,7 @@ A 28-year-old female with a history of gestational diabetes mellitus diagnosed e
 
 
 *setMultiClass(True) Result*:
+
 | chunk1                        | entity1 | chunk2 | entity2 | relation | confidence |
 |-------------------------------|---------|--------|---------|----------|------------|
 | gestational diabetes mellitus | PROBLEM | BMI    | TEST    | TeRP     | TeRP_confidence: 1.0 <br> TrCP_confidence: 0.0, <br>   TeCP_confidence: 2.36E-35 <br> TrAP_confidence: 8.85E-32 <br> TrWP_confidence: 1.16E-34 <br> TrNAP_confidence: 0.0 <br>   TrIP_confidence: 0.0 <br> PIP_confidence: 1.87E-28 <br> O_confidence: 9.56E-13 <br>      |
