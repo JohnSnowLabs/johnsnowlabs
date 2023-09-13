@@ -154,7 +154,7 @@ def list_db_runtime_versions(db: DatabricksAPI):
     # pprint(versions)
     for version in versions["versions"]:
         print(version["key"])
-        print(version["name"])
+        name = version["name"]
         # version_regex = r'[0-9].[0-9].[0-9]'
 
         spark_version = re.findall(r"Apache Spark [0-9].[0-9]", version["name"])
@@ -166,7 +166,15 @@ def list_db_runtime_versions(db: DatabricksAPI):
         has_gpu = len(re.findall("GPU", version["name"])) > 0
         if spark_version:
             spark_version = spark_version + ".x"
-        print(LibVersion(spark_version).as_str(), has_gpu, scala_version)
+        version = LibVersion(spark_version).as_str()
+        print(
+            f"name={name}\n"
+            f"version={version}\n"
+            f"has_gpu={has_gpu}\n"
+            f"scala_version={scala_version}\n"
+            f"spark_version={spark_version}\n"
+            f"{'=' * 25}"
+        )
 
 
 def list_clusters(db: DatabricksAPI):
@@ -196,21 +204,6 @@ def install_jsl_suite_to_cluster(
     spark_nlp: bool,
     visual: bool,
 ):
-    print("DEBUG: INSTALL TO CLUSTER", medical_nlp, spark_nlp, visual)
-    print(
-        "DEBUG: INSTALL TO CLUSTER",
-        install_suite.hc.get_py_path(),
-        install_suite.hc.get_java_path(),
-        medical_nlp,
-    )
-
-    print(
-        "DEBUG: INSTALL TO CLUSTER",
-        install_suite.nlp.get_py_path(),
-        install_suite.nlp.get_java_path(),
-        spark_nlp,
-    )
-
     py_deps = [
         {"package": Software.nlu.pypi_name, "version": settings.raw_version_nlu},
         {
