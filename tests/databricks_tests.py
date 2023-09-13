@@ -1,68 +1,21 @@
+from multiprocessing import Queue
+from threading import Thread
+
 import pytest
 
 import tests.utilsz.secrets as sct
 from johnsnowlabs import *
 from johnsnowlabs.auto_install.databricks.install_utils import *
+from tests.db_testing_utils import (
+    assert_job_suc,
+    run_endpoint_tests,
+    run_cluster_test_suite,
+    get_one_model_per_class,
+    get_test_cluster,
+    tester_thread,
+)
 
 
-def assert_job_suc(state):
-    assert state["state"]["result_state"] == "SUCCESS"
-
-
-def run_endpoint_tests(test_cluster_id, host, token):
-    import johnsnowlabs.auto_install.health_checks.endpoint_test as endp_test
-
-    assert_job_suc(
-        nlp.run_in_databricks(
-            endp_test,
-            databricks_cluster_id=test_cluster_id,
-            databricks_host=host,
-            databricks_token=token,
-            run_name="endpoint_creation_test_run",
-        )
-    )
-
-
-def run_cluster_test_suite(test_cluster_id, host, token):
-    # run test suite again a existing cluster
-
-    # Test modules
-    import johnsnowlabs.auto_install.health_checks.hc_test as hc_test
-    import johnsnowlabs.auto_install.health_checks.ocr_test as ocr_test
-    import johnsnowlabs.auto_install.health_checks.nlp_test as nlp_test
-
-    assert_job_suc(
-        nlp.run_in_databricks(
-            nlp_test,
-            databricks_cluster_id=test_cluster_id,
-            databricks_host=host,
-            databricks_token=token,
-            run_name="nlp_test",
-        )
-    )
-
-    assert_job_suc(
-        nlp.run_in_databricks(
-            hc_test,
-            databricks_cluster_id=test_cluster_id,
-            databricks_host=host,
-            databricks_token=token,
-            run_name="hc_test",
-        )
-    )
-
-    assert_job_suc(
-        nlp.run_in_databricks(
-            ocr_test,
-            databricks_cluster_id=test_cluster_id,
-            databricks_host=host,
-            databricks_token=token,
-            run_name="ocr_test",
-        )
-    )
-
-
-@pytest.fixture()
 def host_creds(host):
     if host == "aws":
         return aws_creds()
@@ -80,6 +33,11 @@ def azure_gpu_node_type():
 @pytest.fixture()
 def azure_cpu_node():
     return "Standard_DS3_v2"
+
+
+@pytest.fixture()
+def aws_cpu_node():
+    return "i3.xlarge"
 
 
 @pytest.fixture()
@@ -121,46 +79,12 @@ def test_list_db_infos(creds):
     list_clusters(db_client)
 
 
-def test_endpoint(azure_trial_creds, azure_cpu_node):
-    cluster_id = "0831-180255-dki33myd"
-    lic, host, token = azure_trial_creds
-    run_endpoint_tests(cluster_id, host, token)
-
-
 def test_get_db_cluster_infos(aws_creds):
     # list infos specific to a cluster
     lic, host, token = aws_creds
     db_client = get_db_client_for_token(host, token)
     list_cluster_lib_status(db_client, cluster_id)
     pprint(db_client.cluster.get_cluster(cluster_id))
-
-
-def test_create_fresh_cluster(azure_trial_creds, azure_cpu_node):
-    # Create a fresh cluster
-    lic, host, token = azure_trial_creds
-    #
-    # nlp.install(
-    #     json_license_path=lic,
-    #     databricks_host=host,
-    #     databricks_token=token,
-    #     hardware_platform="gpu",
-    #     node_type_id="Standard_NC12s_v3",
-    #     driver_node_type_id="Standard_NC6s_v3",
-    #     spark_version="13.1.x-gpu-ml-scala2.12",
-    #     visual=True,
-    #     clean_cluster=False,
-    # )
-    #
-    instance_type = azure_cpu_node
-    # lic, host, token = aws_creds
-
-    nlp.install(
-        json_license_path=lic,
-        databricks_host=host,
-        databricks_token=token,
-        driver_node_type_id=instance_type,
-        node_type_id=instance_type,
-    )
 
 
 def test_create_fresh_cluster_and_run_checks(azure_trial_creds, azure_cpu_node):
@@ -180,33 +104,6 @@ def test_create_fresh_cluster_and_run_checks(azure_trial_creds, azure_cpu_node):
     # test_cluster_id = "0829-125925-deug1ja1"
     run_cluster_test_suite(test_cluster_id, host, token)
     # TODO delete cluster
-
-
-def test_create_fresh_cluster2(azure_creds, azure_cpu_node):
-    instance_type = azure_cpu_node
-
-    parameters = [{}, {}]
-
-    for param in parameters:
-        lic, host, token = azure_creds
-        test_cluster_id = nlp.install(
-            json_license_path=lic,
-            databricks_host=host,
-            databricks_token=token,
-            visual=True,
-            driver_node_type_id=instance_type,
-            node_type_id=instance_type,
-            spark_conf=param,
-            # hardware_platform="gpu",
-        )
-        # test_cluster_id = "0829-125925-deug1ja1"
-        start_time = time.time()
-
-        run_cluster_test_suite(test_cluster_id, host, token)
-        # TODO delete cluster
-
-        end_time = time.time()
-        print("Time taken: ", end_time - start_time)
 
 
 def test_install_to_databricks():
@@ -324,5 +221,53 @@ def test_hdfs_basic_methods():
     pprint(dbfs_ls(db_client, "/johnsnowlabs"))
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_endpoints_multi_cluster(aws_creds, aws_cpu_node):
+    n_clusters = 1
+    n_parallel_jobs_per_cluster = 4  # todo add
+    # 1) Create clusters
+    # TODO try db_spark_version = "9.1.x-scala2.12" and otyhers!?
+    # TODO there is some bug with cluster created from localhost! Gives errors... but db originated cluster not!
+    # cluster_ids = [
+    #     get_test_cluster(aws_creds, aws_cpu_node, n) for n in range(n_clusters)
+    # ]
+    cluster_ids = ["0913-161805-nlmmtquc"]
+
+    # 2) Define job-queue
+    job_que = Queue()
+    one_model_per_class = get_one_model_per_class()
+    for model in one_model_per_class:
+        job_que.put(model)
+
+    # Create a semaphore to limit parallelism per cluster
+
+    # 3) For each cluster, start a tester-thread.
+    # Threads take jobs from the queue and run them on the cluster till completion.
+    lic, host, token = aws_creds
+    threads = []
+    results = {}
+    for cluster_id in cluster_ids:
+        t = Thread(
+            target=tester_thread, args=(cluster_id, job_que, host, token, results)
+        )
+        threads.append(t)
+        t.start()
+
+    # Wait for all threads to finish
+    for t in threads:
+        t.join()
+
+    # 4) Print results
+    for model, result in results.items():
+        print(f"Model {model}: {result}")
+
+    # 5) Delete all clusters
+    # for cluster_id in cluster_ids:
+    #     delete_cluster(cluster_id)
+
+
+def test_endpoint(aws_creds, aws_cpu_node):
+    cluster_id = "0913-161805-nlmmtquc"
+    cluster_id = get_test_cluster(aws_creds, aws_cpu_node, 0)
+
+    lic, host, token = aws_creds
+    run_endpoint_tests(cluster_id, host, token, "tokenize")
