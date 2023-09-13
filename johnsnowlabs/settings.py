@@ -93,6 +93,3 @@ emr_volume_size = 100
 
 # Local Spark mode
 spark_session_name = "John-Snow-Labs-Spark-Session 🚀"
-
-
-
