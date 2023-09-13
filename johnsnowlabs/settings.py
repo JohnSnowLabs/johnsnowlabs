@@ -1,5 +1,6 @@
 import os
 from os.path import expanduser
+
 from johnsnowlabs.utils.env_utils import (
     env_required_license,
     is_running_in_databricks,

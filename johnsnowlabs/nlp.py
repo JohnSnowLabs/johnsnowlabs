@@ -1,5 +1,6 @@
 from johnsnowlabs import lab, settings, viz
 from johnsnowlabs.abstract_base.lib_resolver import try_import_lib
+from johnsnowlabs.auto_install.databricks.endpoints import query_and_deploy_if_missing
 from johnsnowlabs.auto_install.databricks.work_utils import run_in_databricks
 from johnsnowlabs.auto_install.emr.work_utils import run_in_emr
 
@@ -8,17 +9,8 @@ from .auto_install.health_checks.report import (
     list_local_licenses,
     list_remote_licenses,
 )
-from .auto_install.install_flow import install, install_to_emr
+from .auto_install.install_flow import install, install_to_emr, install_to_glue
 from .utils.sparksession_utils import start
-from .auto_install.install_flow import install
-from johnsnowlabs.auto_install.databricks.work_utils import run_in_databricks
-from johnsnowlabs import settings, viz, lab
-from johnsnowlabs.auto_install.databricks.endpoints import (
-    query_and_deploy_if_missing,
-)
-from johnsnowlabs.abstract_base.lib_resolver import try_import_lib
-
-
 
 if try_import_lib("sparknlp"):
     import sparknlp

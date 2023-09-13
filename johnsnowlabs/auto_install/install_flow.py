@@ -12,8 +12,12 @@ from johnsnowlabs.auto_install.databricks.install_utils import (
     get_db_client_for_token,
     install_jsl_suite_to_cluster,
 )
-from johnsnowlabs.auto_install.emr.boto_utils import get_boto_client
 from johnsnowlabs.auto_install.emr.install_utils import create_emr_cluster
+from johnsnowlabs.auto_install.glue.install_utils import (
+    create_glue_bucket,
+    upload_pylibs_jars_to_glue_bucket,
+)
+from johnsnowlabs.auto_install.glue.utils import get_printable_glue_notebook_commands
 from johnsnowlabs.auto_install.install_software import check_and_install_dependencies
 from johnsnowlabs.auto_install.jsl_home import (
     get_install_suite_from_jsl_home,
@@ -216,11 +220,12 @@ def install(
 
 
 def install_to_emr(
+    boto_session: Optional[boto3.Session] = None,
     # EMR specific configs
     bootstrap_bucket: Optional[str] = None,
     s3_logs_path: Optional[str] = None,
-    service_role: Optional[str] = None,
-    job_flow_role: Optional[str] = None,
+    service_role: Optional[str] = settings.emr_default_service_role,
+    job_flow_role: Optional[str] = settings.emr_default_instance_profile,
     subnet_id: Optional[str] = None,
     ec2_key_name: Optional[str] = None,
     # Browser Auth
@@ -243,6 +248,7 @@ def install_to_emr(
     auto_terminate_hours: Optional[int] = 1,
 ) -> str:
     """Install John Snow Labs NLP and selected products on an EMR cluster
+    :param boto_session: Boto3 session. Refer to https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html
     :param bootstrap_bucket: S3 bucket to store bootstrap scripts
     :param s3_logs_path: S3 path to store logs
     :param service_role: EMR service role
@@ -278,10 +284,11 @@ def install_to_emr(
         aws_key_id=aws_key_id,
         only_return_secrets=True,
     )
-    emr_client = get_boto_client("emr")
+    if not boto_session:
+        boto_session = boto3.Session()
 
     cluster_id = create_emr_cluster(
-        emr_client=emr_client,
+        boto_session=boto_session,
         secrets=secrets,
         s3_logs_path=s3_logs_path,
         bootstrap_bucket=bootstrap_bucket,
@@ -296,3 +303,82 @@ def install_to_emr(
         auto_terminate_hours=auto_terminate_hours,
     )
     return cluster_id
+
+
+def install_to_glue(
+    boto_session: Optional[boto3.Session] = None,
+    glue_assets_bucket: Optional[str] = None,
+    # Browser Auth
+    browser_login: bool = True,
+    force_browser: bool = False,
+    # JWT Token Auth
+    access_token: Optional[str] = None,
+    # JSON file Auth
+    json_license_path: Optional[str] = None,
+    # Manual License specification Auth
+    license: Optional[str] = None,
+    aws_access_key: Optional[str] = None,
+    aws_key_id: Optional[str] = None,
+    local_license_number: int = 0,
+    remote_license_number: int = 0,
+    nlp: bool = True,
+    spark_nlp: bool = True,
+    visual: bool = False,
+    hardware_platform: str = JvmHardwareTarget.cpu.value,
+):
+    """Install John Snow Labs NLP and selected products on a Glue job
+    :param boto_session: Boto3 session. Refer to https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html
+    :param glue_assets_bucket: S3 bucket to store glue assets
+    :param browser_login: Use browser login
+    :param force_browser: Force browser login
+    :param access_token: JWT access token
+    :param json_license_path: Path to JSON license file
+    :param license: License string
+    :param local_license_number: Local license number
+    :param remote_license_number: Remote license number
+    :param nlp: Install NLP
+    :param spark_nlp: Install Spark NLP
+    :param visual: Install Visual
+    :param hardware_platform: Hardware platform
+    """
+    if not boto_session:
+        boto_session = boto3.Session()
+
+    # Download jars and wheels so that we can upload them
+    install_suite = get_install_suite_from_jsl_home(
+        jvm_hardware_target=hardware_platform,
+        visual=visual,
+        nlp=nlp,
+        spark_nlp=spark_nlp,
+        browser_login=browser_login,
+        force_browser=force_browser,
+        access_token=access_token,
+        local_license_number=local_license_number,
+        remote_license_number=remote_license_number,
+        secrets_file=json_license_path,
+        hc_license=license,
+        fin_license=license,
+        leg_license=license,
+        aws_access_key=aws_access_key,
+        aws_key_id=aws_key_id,
+    )
+    # Make sure bucket exists
+    bucket = create_glue_bucket(
+        boto_session=boto_session,
+        bucket=glue_assets_bucket,
+    )
+    # Upload jars and wheels to s3 bucket for glue
+    jars_s3_location, packages_s3_location = upload_pylibs_jars_to_glue_bucket(
+        boto_session=boto_session, install_suite=install_suite, bucket=bucket
+    )
+
+    # Show instructions on how to run a glue notebook
+    print(
+        get_printable_glue_notebook_commands(
+            boto_session=boto_session,
+            glue_assets_bucket=bucket,
+            packages_s3_location=packages_s3_location,
+            jars_s3_location=jars_s3_location,
+            secrets=install_suite.secrets,
+        )
+    )
