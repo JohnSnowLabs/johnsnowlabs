@@ -41,36 +41,38 @@ Deidentification NER (Arabic) is a Named Entity Recognition model that annotates
 
 ```python
 documentAssembler = DocumentAssembler()\
-        .setInputCol("text")\
-        .setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
 
 sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "xx")\
-        .setInputCols(["document"])\
-        .setOutputCol("sentence")
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
 tokenizer = Tokenizer()\
-        .setInputCols(["sentence"])\
-        .setOutputCol("token")
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-embeddings = BertEmbeddings.pretrained("bert_embeddings_bert_base_arabert","ar") \
-.setInputCols(["document", "token"]) \
-.setOutputCol("embeddings")
+embeddings = BertEmbeddings.pretrained("bert_embeddings_bert_base_arabert", "ar") \
+    .setInputCols(["document", "token"]) \
+    .setOutputCol("embeddings")
 
 clinical_ner = MedicalNerModel.pretrained("ner_deid_arabert_generic", "ar", "clinical/models")\
-        .setInputCols(["sentence","token","embeddings"])\
-        .setOutputCol("ner")
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner")
 
-ner_converter = NerConverter()\
-        .setInputCols(["sentence","token","ner"])\
-        .setOutputCol("ner_chunk")
+ner_converter = NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")
 
-nlpPipeline = Pipeline(stages=[
+nlpPipeline = Pipeline(
+    stages=[
         documentAssembler,
         sentenceDetector,
         tokenizer,
         embeddings,
         clinical_ner,
-        ner_converter])
+        ner_converter
+    ])
 
 text = '''
 عالج الدكتور محمد المريض أحمد البالغ من العمر 55 سنة  في 15/05/2000  في مستشفى مدينة الرباط. رقم هاتفه هو  0610948234 وبريده الإلكتروني
@@ -79,7 +81,7 @@ abcd@gmail.com.
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
-results = nlpPipeline .fit(data).transform(data)
+results = nlpPipeline.fit(data).transform(data)
 
 ```
 ```scala
@@ -87,8 +89,7 @@ val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentenceDetector = SentenceDetector
-  .pretrained("sentence_detector_dl", "xx")
+val sentenceDetector = SentenceDetector.pretrained("sentence_detector_dl", "xx")
   .setInputCols(Array("document"))
   .setOutputCol("sentence")
 
@@ -96,18 +97,16 @@ val tokenizer = new Tokenizer()
   .setInputCols(Array("sentence"))
   .setOutputCol("token")
 
-val embeddings = BertEmbeddings
-  .pretrained("bert_embeddings_bert_base_arabert", "ar")
+val embeddings = BertEmbeddings.pretrained("bert_embeddings_bert_base_arabert", "ar")
   .setInputCols(Array("document", "token"))
   .setOutputCol("embeddings")
   .setCaseSensitive(true)  
 
-val clinicalNer = MedicalNerModel
-  .pretrained("ner_deid_arabert_generic", "ar", "clinical/models")
+val clinicalNer = MedicalNerModel.pretrained("ner_deid_arabert_generic", "ar", "clinical/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
 
-val nerConverter = new NerConverter()
+val nerConverter = new NerConverterInternal()
   .setInputCols(Array("sentence", "token", "ner"))
   .setOutputCol("ner_chunk")
 
@@ -162,16 +161,15 @@ val results = nlpPipeline.fit(data).transform(data)
 ## Benchmarking
 
 ```bash
-
-  Label         Precision         Recall            F1
-  AGE           95.89905362776025 98.7012987012987  97.27999999999999
-  CONTACT       99.3103448275862  94.73684210526315 96.96969696969695
-  DATE          97.62443438914026 97.07536557930258 97.3491257755217
-  ID            73.17073170731707 100.0             84.50704225352112
-  LOCATION      89.93464052287582 83.80024360535931 86.75914249684743
-  NAME          86.44536652835409 89.28571428571429 87.84258608573437
-  PROFESSION    88.29787234042553 74.32835820895522 80.71312803889789
-  SEX           97.14285714285714 81.6              88.69565217391305
-  Macro         -                 -                 0.9372647
-  Micro         -                 -                 0.9505749
+label         precision recall   f1
+AGE           95.90     98.70    97.28
+CONTACT       99.31     94.74    96.97
+DATE          97.62     97.08    97.35
+ID            73.17     100.0    84.51
+LOCATION      89.93     83.80    86.76
+NAME          86.45     89.29    87.84
+PROFESSION    88.30     74.33    80.71
+SEX           97.14     81.60    88.70
+Macro         -          -       94.73
+Micro         -          -       95.06
 ```
