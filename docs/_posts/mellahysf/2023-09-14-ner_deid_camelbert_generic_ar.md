@@ -168,7 +168,7 @@ val results = pipeline.fit(data).transform(data)
   NAME          94.62       87.86       91.11
   PROFESSION    91.97       82.09       86.75
   SEX           98.45       84.53       90.96
-  Macro         -           -           0.96
-  Micro         -           -           0.97
+  Macro         -           -           96.00
+  Micro         -           -           97.00
 
 ```
