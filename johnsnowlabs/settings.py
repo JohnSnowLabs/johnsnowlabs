@@ -88,7 +88,7 @@ emr_instance_type = "m4.4xlarge"
 emr_instance_count = 3
 emr_applications = ["Hadoop", "Spark", "Livy", "JupyterEnterpriseGateway"]
 emr_default_instance_profile = "EMR_EC2_DefaultRole"
-emr_default_service_role = "EMR_DefaultRole_V2"
+emr_default_service_role = "EMR_DefaultRole"
 emr_volume_size = 100
 
 # Local Spark mode
