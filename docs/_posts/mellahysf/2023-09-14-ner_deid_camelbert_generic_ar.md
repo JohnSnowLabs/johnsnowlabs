@@ -38,6 +38,7 @@ Deidentification NER (Arabic) is a Named Entity Recognition model that annotates
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -83,16 +84,16 @@ results = nlpPipeline.fit(data).transform(data)
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
-     .setInputCol("text")
-     .setOutputCol("document")
+    .setInputCol("text")
+    .setOutputCol("document")
 
 val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "xx")
-     .setInputCols(Array("document"))
-     .setOutputCol("sentence")
+    .setInputCols(Array("document"))
+    .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
-     .setInputCols(Array("sentence"))
-     .setOutputCol("token")
+    .setInputCols(Array("sentence"))
+    .setOutputCol("token")
 
 val embeddings = BertEmbeddings.pretrained("bert_embeddings_base_arabic_camel_msa", "ar")
     .setInputCols(Array("document", "token"))
@@ -100,12 +101,12 @@ val embeddings = BertEmbeddings.pretrained("bert_embeddings_base_arabic_camel_ms
     .setCaseSensitive(true) 
 
 val clinical_ner = MedicalNerModel.pretrained("ner_deid_camelbert_generic", "ar", "clinical/models")
-     .setInputCols(Array("sentence","token","word_embeddings"))
-     .setOutputCol("ner")
+    .setInputCols(Array("sentence","token","word_embeddings"))
+    .setOutputCol("ner")
 
 val ner_converter = new NerConverterInternal()
-     .setInputCols(Array("sentence", "token", "ner"))
-     .setOutputCol("ner_chunk")
+    .setInputCols(Array("sentence", "token", "ner"))
+    .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline().setStages(Array(
     documentAssembler, 
