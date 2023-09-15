@@ -2,7 +2,7 @@
 layout: model
 title: Detect Subentity PHI for Deidentification (CamelBERT, Arabic)
 author: John Snow Labs
-name: ner_deid_camelbert_subentity
+name: ner_deid_subentity_camelbert
 date: 2023-09-14
 tags: [licensed, ner, clinical, deidentification, subentity, arabic, ar, camelbert, bert]
 task: Named Entity Recognition
@@ -29,8 +29,8 @@ Deidentification NER (Arabic) is a Named Entity Recognition model that annotates
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_camelbert_subentity_ar_5.1.0_3.0_1694712542093.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_camelbert_subentity_ar_5.1.0_3.0_1694712542093.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_subentity_camelbert_ar_5.1.0_3.0_1694712542093.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_subentity_camelbert_ar_5.1.0_3.0_1694712542093.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -40,7 +40,6 @@ Deidentification NER (Arabic) is a Named Entity Recognition model that annotates
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 
 ```python
-
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -57,7 +56,7 @@ embeddings = BertEmbeddings.pretrained("bert_embeddings_base_arabic_camel_msa","
     .setInputCols(["document", "token"]) \
     .setOutputCol("embeddings")
 
-clinical_ner = MedicalNerModel.pretrained("ner_deid_camelbert_subentity", "ar", "clinical/models")\
+clinical_ner = MedicalNerModel.pretrained("ner_deid_subentity_camelbert", "ar", "clinical/models")\
     .setInputCols(["sentence","token","embeddings"])\
     .setOutputCol("ner")
 
@@ -100,7 +99,7 @@ val embeddings = BertEmbeddings.pretrained("bert_embeddings_base_arabic_camel_ms
     .setOutputCol("embeddings")
     .setCaseSensitive(true)  
 
-val clinical_ner = MedicalNerModel.pretrained("ner_deid_camelbert_subentity", "ar", "clinical/models")
+val clinical_ner = MedicalNerModel.pretrained("ner_deid_subentity_camelbert", "ar", "clinical/models")
     .setInputCols(Array("sentence","token","word_embeddings"))
     .setOutputCol("ner")
 
@@ -147,7 +146,7 @@ val results = pipeline.fit(data).transform(data)
 
 {:.table-model}
 |---|---|
-|Model Name:|ner_deid_camelbert_subentity|
+|Model Name:|ner_deid_subentity_camelbert|
 |Compatibility:|Healthcare NLP 5.1.0+|
 |License:|Licensed|
 |Edition:|Official|
@@ -159,25 +158,24 @@ val results = pipeline.fit(data).transform(data)
 ## Benchmarking
 
 ```bash
-  Label         Precision   Recall      F1
-  AGE           98.08       99.51       98.79
-  CITY          87.17       92.03       89.53
-  COUNTRY       90.32       84.85       87.50
-  DATE          98.07       97.30       97.68
-  DOCTOR        92.09       91.90       91.99
-  EMAIL         100.00      100.00      100.00
-  HOSPITAL      84.32       91.28       87.67
-  IDNUM         92.86       100.00      96.30
-  MEDICALRECORD 61.54       94.12       74.42
-  ORGANIZATION  81.58       68.89       74.70
-  PATIENT       75.00       83.41       78.98
-  PHONE         97.06       82.50       89.19
-  PROFESSION    89.72       85.97       87.80
-  SEX           98.71       81.33       89.18
-  STREET        100.00      96.77       98.36
-  USERNAME      100.00      100.00      100.00
-  ZIP           95.24       100.00      97.56
-  Macro         -           -           94.00
-  Micro         -           -           95.00
-
+label         Precision   Recall      F1
+AGE           98.08       99.51       98.79
+CITY          87.17       92.03       89.53
+COUNTRY       90.32       84.85       87.50
+DATE          98.07       97.30       97.68
+DOCTOR        92.09       91.90       91.99
+EMAIL         100.00      100.00      100.00
+HOSPITAL      84.32       91.28       87.67
+IDNUM         92.86       100.00      96.30
+MEDICALRECORD 61.54       94.12       74.42
+ORGANIZATION  81.58       68.89       74.70
+PATIENT       75.00       83.41       78.98
+PHONE         97.06       82.50       89.19
+PROFESSION    89.72       85.97       87.80
+SEX           98.71       81.33       89.18
+STREET        100.00      96.77       98.36
+USERNAME      100.00      100.00      100.00
+ZIP           95.24       100.00      97.56
+Macro         -           -           94.00
+Micro         -           -           95.00
 ```
