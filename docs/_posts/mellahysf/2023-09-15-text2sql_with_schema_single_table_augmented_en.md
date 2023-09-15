@@ -26,8 +26,8 @@ This model can generate SQL queries from natural questions and custom database s
 
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/TEXT2SQL/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/text2sql_with_schema_single_table_augmented_en_5.1.0_3.0_1694798119772.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/text2sql_with_schema_single_table_augmented_en_5.1.0_3.0_1694798119772.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -54,7 +54,6 @@ text2sql_with_schema_single_table_augmented = Text2SQL.pretrained("text2sql_with
     .setSchema(query_schema)\
     .setInputCols(["document"])\
     .setOutputCol("sql")
-
 
 pipeline = Pipeline(stages=[document_assembler, text2sql_with_schema_single_table_augmented ])
 
