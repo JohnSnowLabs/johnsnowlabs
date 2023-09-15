@@ -37,6 +37,7 @@ This model can generate SQL queries from natural questions and custom database s
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 question = "What is the average age of male patients with 'Diabetes'?"
 query_schema = {
