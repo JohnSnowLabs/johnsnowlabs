@@ -27,8 +27,8 @@ Deidentification NER (Arabic) is a Named Entity Recognition model that annotates
 `CONTACT`, `NAME`, `DATE`, `ID`, `SEX`, `LOCATION`, `PROFESSION`, `AGE`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/DEID_PHI_TEXT_MULTI/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/DEID_PHI_TEXT_MULTI.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_camelbert_ar_5.1.0_3.0_1694879591458.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_generic_camelbert_ar_5.1.0_3.0_1694879591458.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -52,7 +52,7 @@ tokenizer = Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-embeddings = BertEmbeddings.pretrained("bert_embeddings_base_arabic_camel_msa","ar") \
+embeddings = BertEmbeddings.pretrained("bert_embeddings_base_arabic_camel_msa", "ar") \
     .setInputCols(["document", "token"]) \
     .setOutputCol("embeddings")
 
@@ -60,7 +60,7 @@ clinical_ner = MedicalNerModel.pretrained("ner_deid_generic_camelbert", "ar", "c
     .setInputCols(["sentence","token","embeddings"])\
     .setOutputCol("ner")
 
-ner_converter = NerConverter()\
+ner_converter = NerConverterInternal()\
     .setInputCols(["sentence","token","ner"])\
     .setOutputCol("ner_chunk")
 
@@ -159,15 +159,15 @@ val results = pipeline.fit(data).transform(data)
 ## Benchmarking
 
 ```bash
- Label         Precision   Recall      F1
-  AGE           99.18       98.54       98.86
-  CONTACT       97.97       95.39       96.67
-  DATE          97.96       97.19       97.57
-  ID            78.38       96.67       86.57
-  LOCATION      88.80       90.74       89.76
-  NAME          94.62       87.86       91.11
-  PROFESSION    91.97       82.09       86.75
-  SEX           98.45       84.53       90.96
-  Macro         -           -           0.96
-  Micro         -           -           0.97
+label         precision   recall      f1
+AGE           99.18       98.54       98.86
+CONTACT       97.97       95.39       96.67
+DATE          97.96       97.19       97.57
+ID            78.38       96.67       86.57
+LOCATION      88.80       90.74       89.76
+NAME          94.62       87.86       91.11
+PROFESSION    91.97       82.09       86.75
+SEX           98.45       84.53       90.96
+Macro         -           -           0.96
+Micro         -           -           0.97
 ```
