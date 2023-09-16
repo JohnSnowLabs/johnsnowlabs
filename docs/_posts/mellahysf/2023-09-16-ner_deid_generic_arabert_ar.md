@@ -78,7 +78,7 @@ abcd@gmail.com.
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
-results = nlpPipeline .fit(data).transform(data)
+results = nlpPipeline.fit(data).transform(data)
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
