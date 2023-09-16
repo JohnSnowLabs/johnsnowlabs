@@ -27,8 +27,8 @@ Deidentification NER (Arabic) is a Named Entity Recognition model that annotates
 `PATIENT`, `HOSPITAL`, `DATE`, `ORGANIZATION`, `CITY`, `STREET`, `USERNAME`, `SEX`, `IDNUM`, `EMAIL`, `ZIP`, `MEDICALRECORD`, `PROFESSION`, `PHONE`, `COUNTRY`, `DOCTOR`, `AGE`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/DEID_PHI_TEXT_MULTI/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/DEID_PHI_TEXT_MULTI.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_subentity_arabert_ar_5.1.0_3.0_1694877264289.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_subentity_arabert_ar_5.1.0_3.0_1694877264289.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -41,36 +41,38 @@ Deidentification NER (Arabic) is a Named Entity Recognition model that annotates
 
 ```python
 documentAssembler = DocumentAssembler()\
-        .setInputCol("text")\
-        .setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
 
 sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "xx")\
-        .setInputCols(["document"])\
-        .setOutputCol("sentence")
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
 tokenizer = Tokenizer()\
-        .setInputCols(["sentence"])\
-        .setOutputCol("token")
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
 embeddings = BertEmbeddings.pretrained("bert_embeddings_bert_base_arabert","ar") \
-.setInputCols(["document", "token"]) \
-.setOutputCol("embeddings")
+    .setInputCols(["document", "token"]) \
+    .setOutputCol("embeddings")
 
 clinical_ner = MedicalNerModel.pretrained("ner_deid_subentity_arabert", "ar", "clinical/models")\
-        .setInputCols(["sentence","token","embeddings"])\
-        .setOutputCol("ner")
+    .setInputCols(["sentence","token","embeddings"])\
+    .setOutputCol("ner")
 
-ner_converter = NerConverter()\
-        .setInputCols(["sentence","token","ner"])\
-        .setOutputCol("ner_chunk")
+ner_converter = NerConverterInternal()\
+    .setInputCols(["sentence","token","ner"])\
+    .setOutputCol("ner_chunk")
 
-nlpPipeline = Pipeline(stages=[
+nlpPipeline = Pipeline(
+    stages=[
         documentAssembler,
         sentenceDetector,
         tokenizer,
         embeddings,
         clinical_ner,
-        ner_converter])
+        ner_converter
+    ])
 
 text = '''
 عالج الدكتور محمد المريض أحمد البالغ من العمر 55 سنة  في 15/05/2000  في مستشفى مدينة الرباط. رقم هاتفه هو  0610948234 وبريده الإلكتروني
@@ -79,7 +81,7 @@ abcd@gmail.com.
 
 data = spark.createDataFrame([[text]]).toDF("text")
 
-results = nlpPipeline .fit(data).transform(data)
+results = nlpPipeline.fit(data).transform(data)
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
