@@ -38,6 +38,7 @@ Deidentification NER (Arabic) is a Named Entity Recognition model that annotates
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
