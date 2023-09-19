@@ -1,6 +1,8 @@
-from setuptools import setup, find_packages
 from codecs import open
 from os import path
+
+from setuptools import find_packages, setup
+
 import johnsnowlabs.settings
 
 here = path.abspath(path.dirname(__file__))
@@ -19,6 +21,7 @@ REQUIRED_PKGS = [
     "databricks-api",
     f"pydantic=={johnsnowlabs.settings.raw_version_pydantic}",
     "colorama",
+    "boto3"
 ]
 
 setup(

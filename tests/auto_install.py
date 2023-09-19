@@ -154,6 +154,15 @@ class AutoInstallTestCase(unittest.TestCase):
         # os.system(old_lic'{sys.py_executable} -py_executable pip uninstall jsl_tmp -y')
         os.system(f"{sys.executable} -m pip uninstall spark-nlp-internal -y")
 
+    def test_install_to_emr(self):
+        # Make sure correct aws credentials are configured
+        nlp.install_to_emr(
+            "us-east-1",
+            bootstrap_bucket="ksh-emr-bucket",
+            subnet_id="subnet-28754965",
+            s3_logs_path="s3://ksh-emr-bucket/logs",
+        )
+
     @classmethod
     def tearDownClass(cls):
         1
