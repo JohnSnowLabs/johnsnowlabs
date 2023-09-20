@@ -4,7 +4,7 @@ title: Adverse Event Classifier (BioBERT)
 author: John Snow Labs
 name: bert_sequence_classifier_vop_adverse_event
 date: 2023-09-20
-tags: [clinical, licensed, en, text_classification, adverse_event, ade, tensorflow]
+tags: [clinical, licensed, en, text_classification, adverse_event, ade, vop, biobert, tensorflow]
 task: Text Classification
 language: en
 edition: Healthcare NLP 5.1.1
@@ -43,7 +43,7 @@ The Text Classifier model has been trained using in-house annotated health-relat
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -54,7 +54,7 @@ tokenizer = Tokenizer() \
     .setOutputCol("token")
 
 sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_vop_adverse_event", "en", "clinical/models")\
-    .setInputCols(["document",'token'])\
+    .setInputCols(["document", "token"])\
     .setOutputCol("prediction")
 
 clf_Pipeline = Pipeline(stages=[
@@ -62,7 +62,10 @@ clf_Pipeline = Pipeline(stages=[
     tokenizer,
     sequenceClassifier])
 
-data = spark.createDataFrame([["I am taking this medication once a day for the last 3 days. I am feeling very bad, pressure on my head, some chest pain, cramps on my neck and feel very weird. I want to reduce my blood pressure naturally. Can I stop this medication? I only took it for 5 days. I was reading here, that a lot of people has been losing weight and exercise and now they have a normal blood pressure. Please let me know, what I can do. The sides effects are horrible"], ["I go the pub about 3-4 times a week and drink quite a bit. I like socialising, been doing so for years now.Recently been getting this occasional pain from the liver area (under right ribs).It comes and goes. Could this be a sign of liver damage?When i get this pain i am usually in the pub drinking.If i press the area under my right rib cage about half way across i can feel pain. Is that pain in the Liver?"]]).toDF("text")
+data = spark.createDataFrame([
+["I am taking this medication once a day for the last 3 days. I am feeling very bad, pressure on my head, some chest pain, cramps on my neck and feel very weird. I want to reduce my blood pressure naturally. Can I stop this medication? I only took it for 5 days. I was reading here, that a lot of people has been losing weight and exercise and now they have a normal blood pressure. Please let me know, what I can do. The sides effects are horrible"],
+["I go the pub about 3-4 times a week and drink quite a bit. I like socialising, been doing so for years now.Recently been getting this occasional pain from the liver area (under right ribs).It comes and goes. Could this be a sign of liver damage?When i get this pain i am usually in the pub drinking.If i press the area under my right rib cage about half way across i can feel pain. Is that pain in the Liver?"]
+]).toDF("text")
 
 result = clf_Pipeline.fit(data).transform(data)
 ```
@@ -75,13 +78,16 @@ val tokenizer = new Tokenizer()
     .setInputCols("document")
     .setOutputCol("token")
 
-val sequenceClassifier = new MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_vop_adverse_event", "en", "clinical/models")
+val sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_vop_adverse_event", "en", "clinical/models")
     .setInputCols("token")
     .setOutputCol("prediction")
 
 val clf_Pipeline = new Pipeline().setStages(Array(document_assembler, tokenizer, sequenceClassifier))
 
-val data = Seq(Array("I am taking this medication once a day for the last 3 days. I am feeling very bad, pressure on my head, some chest pain, cramps on my neck and feel very weird. I want to reduce my blood pressure naturally. Can I stop this medication? I only took it for 5 days. I was reading here, that a lot of people has been losing weight and exercise and now they have a normal blood pressure. Please let me know, what I can do. The sides effects are horrible", "I go the pub about 3-4 times a week and drink quite a bit. I like socialising, been doing so for years now.Recently been getting this occasional pain from the liver area (under right ribs).It comes and goes. Could this be a sign of liver damage? When i get this pain i am usually in the pub drinking.If i press the area under my right rib cage about half way across i can feel pain. Is that pain in the Liver?")).toDS().toDF("text")
+val data = Seq(Array(
+"I am taking this medication once a day for the last 3 days. I am feeling very bad, pressure on my head, some chest pain, cramps on my neck and feel very weird. I want to reduce my blood pressure naturally. Can I stop this medication? I only took it for 5 days. I was reading here, that a lot of people has been losing weight and exercise and now they have a normal blood pressure. Please let me know, what I can do. The sides effects are horrible",
+"I go the pub about 3-4 times a week and drink quite a bit. I like socialising, been doing so for years now.Recently been getting this occasional pain from the liver area (under right ribs).It comes and goes. Could this be a sign of liver damage? When i get this pain i am usually in the pub drinking.If i press the area under my right rib cage about half way across i can feel pain. Is that pain in the Liver?"
+)).toDS().toDF("text")
 
 val result = clf_Pipeline.fit(data).transform(data)
 ```
@@ -90,12 +96,12 @@ val result = clf_Pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-+-------+------------------------------------------------------------------------------------------------------------------------------------------------------+
-| result|                                                                                                                                                  text|
-+-------+------------------------------------------------------------------------------------------------------------------------------------------------------+
-| [True]|I am taking this medication once a day for the last 3 days. I am feeling very bad, pressure on my head, some chest pain, cramps on my neck and feel...|
-|[False]|I go the pub about 3-4 times a week and drink quite a bit. I like socialising, been doing so for years now.Recently been getting this occasional pa...|
-+-------+------------------------------------------------------------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+|                                                                                                                                                  text| result|
++------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
+|I am taking this medication once a day for the last 3 days. I am feeling very bad, pressure on my head, some chest pain, cramps on my neck and feel...|  True |
+|I go the pub about 3-4 times a week and drink quite a bit. I like socialising, been doing so for years now.Recently been getting this occasional pa...| False |
++------------------------------------------------------------------------------------------------------------------------------------------------------+-------+
 ```
 
 {:.model-param}
