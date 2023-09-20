@@ -57,16 +57,10 @@ I broke my arm playing football last month and had to get surgery in the orthope
 ## Results
 
 ```bash
-Results
-
-
 | chunk      | ner_label   |
 |:-----------|:------------|
 | last month | DateTime    |
 | yesterday  | DateTime    |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
