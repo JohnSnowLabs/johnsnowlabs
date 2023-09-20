@@ -57,16 +57,6 @@ val text = "Mr. Known lastname 9880 is a pleasant, cooperative gentleman with a 
 val result = pipeline.fullAnnotate(text)
 ```
 
-{:.nlu-block}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_sdoh_mentions_pipeline", "en", "clinical/models")
-
-text = '''Mr. Known lastname 9880 is a pleasant, cooperative gentleman with a long standing history (20 years) diverticulitis. He is married and has 3 children. He works in a bank. He denies any alcohol or intravenous drug use. He has been smoking for many years.'''
-
-result = pipeline.fullAnnotate(text)
-```
 </div>
 
 ## Results
