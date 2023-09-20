@@ -34,24 +34,7 @@ This pretrained pipeline includes the Medical Bert for Sequence Classification m
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_sequence_classifier_vop_sound_medical_pipeline", "en", "clinical/models")
-
-pipeline.annotate("I had a lung surgery for emphyema and after surgery my xray showing some recovery.")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_sequence_classifier_vop_sound_medical_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate(I had a lung surgery for emphyema and after surgery my xray showing some recovery.)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -71,15 +54,11 @@ val result = pipeline.annotate(I had a lung surgery for emphyema and after surge
 ## Results
 
 ```bash
-Results
-
 
 | text                                                                               | prediction   |
 |:-----------------------------------------------------------------------------------|:-------------|
 | I had a lung surgery for emphyema and after surgery my xray showing some recovery. | True         |
 
-
-{:.model-param}
 ```
 
 {:.model-param}
