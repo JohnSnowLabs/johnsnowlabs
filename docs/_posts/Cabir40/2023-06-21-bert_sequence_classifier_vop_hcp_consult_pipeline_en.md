@@ -34,6 +34,7 @@ This pretrained pipeline includes the Medical Bert for Sequence Classification m
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -50,37 +51,15 @@ val result = pipeline.annotate(My son has been to two doctors who gave him antib
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_sequence_classifier_vop_hcp_consult_pipeline", "en", "clinical/models")
-
-pipeline.annotate("My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies.")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_sequence_classifier_vop_hcp_consult_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate(My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies.)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
 
 | text                                                                                                                   | prediction       |
 |:-----------------------------------------------------------------------------------------------------------------------|:-----------------|
 | My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies. | Consulted_By_HCP |
 
-
-
-{:.model-param}
 ```
 
 {:.model-param}
