@@ -71,7 +71,7 @@ pipeline = Pipeline(stages=[
     ner_converter   
     ])
 
-sample_text = """I Deanna, Tmax 102.8, BP 100-140/60s, HR 80s, RR 20s, Sat 75% på RA i triage, op til 100% på NRB. """
+sample_text = """Deanna, Tmax 102.8, BP fluktuerende 100-140/60s, HR i 80'erne, RR i 20'erne, Sat 75% på RA i triage, op til 100% på NRB. behov for smerte."""
 
 data = spark.createDataFrame([[sample_text]]).toDF("text")
 
@@ -111,7 +111,7 @@ val pipeline = new Pipeline().setStages(Array(
     ner_converter   
 ))
 
-sample_data = Seq("""I Deanna, Tmax 102.8, BP 100-140/60s, HR 80s, RR 20s, Sat 75% på RA i triage, op til 100% på NRB. """).toDS.toDF("text")
+sample_data = Seq("""Deanna, Tmax 102.8, BP fluktuerende 100-140/60s, HR i 80'erne, RR i 20'erne, Sat 75% på RA i triage, op til 100% på NRB. behov for smerte.""").toDS.toDF("text")
 
 
 val result = pipeline.fit(sample_data).transform(sample_data)
@@ -121,17 +121,18 @@ val result = pipeline.fit(sample_data).transform(sample_data)
 ## Results
 
 ```bash
-+-----+-----+---+---------+
-|chunk|begin|end|ner_label|
-+-----+-----+---+---------+
-|Tmax |10   |13 |TEST     |
-|BP   |22   |23 |TEST     |
-|HR   |38   |39 |TEST     |
-|RR   |46   |47 |TEST     |
-|Sat  |54   |56 |TEST     |
-|RA   |65   |66 |TREATMENT|
-|NRB  |93   |95 |TREATMENT|
-+-----+-----+---+---------+
++------+-----+---+---------+
+|chunk |begin|end|ner_label|
++------+-----+---+---------+
+|Tmax  |8    |11 |TEST     |
+|BP    |20   |21 |TEST     |
+|HR    |49   |50 |TEST     |
+|RR    |63   |64 |TEST     |
+|Sat   |77   |79 |TEST     |
+|RA    |88   |89 |TREATMENT|
+|NRB   |116  |118|TREATMENT|
+|smerte|131  |136|PROBLEM  |
++------+-----+---+---------+
 ```
 
 {:.model-param}
