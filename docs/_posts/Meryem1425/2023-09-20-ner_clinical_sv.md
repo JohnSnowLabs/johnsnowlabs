@@ -71,7 +71,7 @@ pipeline = Pipeline(stages=[
     ner_converter   
     ])
 
-sample_text = """Patienten hade inga ytterligare klagomål och den 10 mars 2012 var hans vita blodkroppar 2,3, neutrofiler 50%, band 2%, lymfocyter 5% , monocyter 40% och blaster 1%."""
+sample_text = """Patienten hade inga ytterligare klagomål och den 10 mars 2012 var hans vita blodkroppar 2,3, neutrofiler 50%, band 2%, lymfocyter 5% , monocyter 40% och blaster 1%. instruktioner i 250 ml långsam IV-infusion över en timme."""
 
 data = spark.createDataFrame([[sample_text]]).toDF("text")
 
@@ -111,7 +111,7 @@ val pipeline = new Pipeline().setStages(Array(
     ner_converter   
 ))
 
-sample_data = Seq("""Patienten hade inga ytterligare klagomål och den 10 mars 2012 var hans vita blodkroppar 2,3, neutrofiler 50%, band 2%, lymfocyter 5% , monocyter 40% och blaster 1%.""").toDS.toDF("text")
+sample_data = Seq("""Patienten hade inga ytterligare klagomål och den 10 mars 2012 var hans vita blodkroppar 2,3, neutrofiler 50%, band 2%, lymfocyter 5% , monocyter 40% och blaster 1%. instruktioner i 250 ml långsam IV-infusion över en timme.""").toDS.toDF("text")
 
 
 val result = pipeline.fit(sample_data).transform(sample_data)
@@ -131,6 +131,7 @@ val result = pipeline.fit(sample_data).transform(sample_data)
 |lymfocyter           |119  |128|TEST     |
 |monocyter            |135  |143|TEST     |
 |blaster              |153  |159|TEST     |
+|långsam IV-infusion  |188  |206|TREATMENT|
 +---------------------+-----+---+---------+
 ```
 
