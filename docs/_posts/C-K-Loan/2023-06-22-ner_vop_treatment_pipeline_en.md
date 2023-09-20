@@ -59,16 +59,10 @@ My grandpa was diagnosed with type 2 diabetes and had to make some changes to hi
 ## Results
 
 ```bash
-Results
-
-
 | chunk     | ner_label   |
 |:----------|:------------|
 | metformin | Drug        |
 | glipizide | Drug        |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
