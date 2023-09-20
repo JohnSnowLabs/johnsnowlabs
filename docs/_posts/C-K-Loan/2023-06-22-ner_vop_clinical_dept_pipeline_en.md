@@ -58,16 +58,10 @@ My little brother is having surgery tomorrow in the orthopedic department. He is
 ## Results
 
 ```bash
-Results
-
-
 | chunk                 | ner_label     |
 |:----------------------|:--------------|
 | orthopedic department | ClinicalDept  |
 | titanium plate        | MedicalDevice |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
