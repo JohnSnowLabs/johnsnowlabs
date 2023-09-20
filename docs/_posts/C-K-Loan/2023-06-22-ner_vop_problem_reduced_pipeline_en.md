@@ -59,17 +59,11 @@ I've been experiencing joint pain and fatigue lately, so I went to the rheumatol
 ## Results
 
 ```bash
-Results
-
-
 | chunk                | ner_label   |
 |:---------------------|:------------|
 | pain                 | Problem     |
 | fatigue              | Problem     |
 | rheumatoid arthritis | Problem     |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
