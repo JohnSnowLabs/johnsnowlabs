@@ -34,6 +34,7 @@ This pipeline extracts mentions of temporal entities from health-related text in
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -52,25 +53,6 @@ I broke my arm playing football last month and had to get surgery in the orthope
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_vop_temporal_pipeline", "en", "clinical/models")
-
-pipeline.annotate("
-I broke my arm playing football last month and had to get surgery in the orthopedic department. The cast just came off yesterday and I'm excited to start physical therapy and get back to the game.")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_vop_temporal_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate("
-I broke my arm playing football last month and had to get surgery in the orthopedic department. The cast just came off yesterday and I'm excited to start physical therapy and get back to the game.")
-```
-</div>
 
 ## Results
 
