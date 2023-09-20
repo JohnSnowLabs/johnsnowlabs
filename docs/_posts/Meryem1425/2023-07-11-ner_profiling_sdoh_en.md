@@ -36,6 +36,7 @@ Here are the NER models that this pretrained pipeline includes:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
