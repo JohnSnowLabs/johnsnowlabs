@@ -34,6 +34,7 @@ This pretrained pipeline includes the Medical Bert for Sequence Classification m
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -50,37 +51,16 @@ val result = pipeline.annotate(My friend was treated for her skin cancer two yea
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_sequence_classifier_vop_self_report_pipeline", "en", "clinical/models")
-
-pipeline.annotate("My friend was treated for her skin cancer two years ago.")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_sequence_classifier_vop_self_report_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate(My friend was treated for her skin cancer two years ago.)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
 
 | text                                                     | prediction   |
 |:---------------------------------------------------------|:-------------|
 | My friend was treated for her skin cancer two years ago. | 3rd_Person   |
 
 
-
-{:.model-param}
 ```
 
 {:.model-param}
