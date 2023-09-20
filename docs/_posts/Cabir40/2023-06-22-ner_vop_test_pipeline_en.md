@@ -34,6 +34,7 @@ This pipeline extracts mentions of tests and their results from health-related t
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -54,41 +55,14 @@ I went to the endocrinology department to get my thyroid levels checked. They or
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_vop_test_pipeline", "en", "clinical/models")
-
-pipeline.annotate("
-I went to the endocrinology department to get my thyroid levels checked. They ordered a blood test and found out that I have hypothyroidism, so now I'm on medication to manage it.
-")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_vop_test_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate("
-I went to the endocrinology department to get my thyroid levels checked. They ordered a blood test and found out that I have hypothyroidism, so now I'm on medication to manage it.
-")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 | chunk          | ner_label   |
 |:---------------|:------------|
 | thyroid levels | Test        |
 | blood test     | Test        |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
