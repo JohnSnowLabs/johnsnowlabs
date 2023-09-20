@@ -55,16 +55,9 @@ val result = pipeline.annotate(My friend was treated for her skin cancer two yea
 ## Results
 
 ```bash
-Results
-
-
 | text                                                     | prediction   |
 |:---------------------------------------------------------|:-------------|
 | My friend was treated for her skin cancer two years ago. | 3rd_Person   |
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}
