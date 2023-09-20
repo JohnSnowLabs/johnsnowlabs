@@ -34,6 +34,7 @@ This pipeline extracts mentions of demographic information from health-related t
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -55,27 +56,6 @@ My grandma, who's 85 and Black, just had a pacemaker implanted in the cardiology
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_vop_demographic_pipeline", "en", "clinical/models")
-
-pipeline.annotate("
-My grandma, who's 85 and Black, just had a pacemaker implanted in the cardiology department. The doctors say it'll help regulate her heartbeat and prevent future complications.
-")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_vop_demographic_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate("
-My grandma, who's 85 and Black, just had a pacemaker implanted in the cardiology department. The doctors say it'll help regulate her heartbeat and prevent future complications.
-")
-```
-</div>
 
 ## Results
 
