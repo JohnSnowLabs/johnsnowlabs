@@ -34,6 +34,7 @@ This pretrained pipeline includes the Medical Bert for Sequence Classification m
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -50,23 +51,6 @@ val result = pipeline.annotate(I felt kind of dizzy after taking that medication
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_sequence_classifier_vop_drug_side_effect_pipeline", "en", "clinical/models")
-
-pipeline.annotate("I felt kind of dizzy after taking that medication for a month.")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_sequence_classifier_vop_drug_side_effect_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate(I felt kind of dizzy after taking that medication for a month.)
-```
-</div>
 
 ## Results
 
