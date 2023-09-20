@@ -59,9 +59,6 @@ Hello,I'm 20 year old girl. I'm diagnosed with hyperthyroid 1 month ago. I was f
 ## Results
 
 ```bash
-Results
-
-
 | chunk                | ner_label              |
 |:---------------------|:-----------------------|
 | 20 year old          | Age                    |
@@ -119,9 +116,6 @@ Results
 | homeopathy           | Treatment              |
 | thyroid              | BodyPart               |
 | allopathy            | Drug                   |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
