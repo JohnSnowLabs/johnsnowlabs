@@ -60,9 +60,6 @@ My grandma, who's 85 and Black, just had a pacemaker implanted in the cardiology
 ## Results
 
 ```bash
-Results
-
-
 | chunk   | ner_label     |
 |:--------|:--------------|
 | grandma | Gender        |
@@ -70,9 +67,6 @@ Results
 | Black   | RaceEthnicity |
 | doctors | Employment    |
 | her     | Gender        |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
