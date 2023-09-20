@@ -58,16 +58,10 @@ I went to the endocrinology department to get my thyroid levels checked. They or
 ## Results
 
 ```bash
-Results
-
-
 | chunk          | ner_label   |
 |:---------------|:------------|
 | thyroid levels | Test        |
 | blood test     | Test        |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
