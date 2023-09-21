@@ -47,6 +47,7 @@ This model extracts clinical problems from the documents transferred from the pa
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
