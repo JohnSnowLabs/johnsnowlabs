@@ -34,6 +34,7 @@ This pipeline extracts mentions of anatomical sites from health-related text in 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -54,43 +55,16 @@ Ugh, I pulled a muscle in my neck from sleeping weird last night. It's like a kn
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_vop_anatomy_pipeline", "en", "clinical/models")
-
-pipeline.annotate("
-Ugh, I pulled a muscle in my neck from sleeping weird last night. It's like a knot in my trapezius and it hurts to turn my head.
-")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_vop_anatomy_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate("
-Ugh, I pulled a muscle in my neck from sleeping weird last night. It's like a knot in my trapezius and it hurts to turn my head.
-")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 | chunk     | ner_label   |
 |:----------|:------------|
 | muscle    | BodyPart    |
 | neck      | BodyPart    |
 | trapezius | BodyPart    |
 | head      | BodyPart    |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
