@@ -20,20 +20,17 @@ use_language_switcher: "Python-Scala-Java"
 
 This model extracts demographic terms from the documents transferred from the patient’s own sentences. It is the version of [ner_vop_demographic](https://nlp.johnsnowlabs.com/2023/06/06/ner_vop_demographic_en.html) model augmented with `langtest` library.
 
-| **test_type**             | **before fail_count** | **after fail_count** | **before pass_count** | **after pass_count** | **minimum pass_rate** | **before pass_rate** | **after pass_rate** |
-|---------------------------|-----------------------|----------------------|-----------------------|----------------------|-----------------------|----------------------|---------------------|
-| **add_abbreviation**      | 415                   | 71                   | 1389                  | 431                  | 60%                   | 77%                  | 86%                 |
-| **add_ocr_typo**          | 802                   | 4                    | 1157                  | 1966                 | 60%                   | 59%                  | 100%                |
-| **add_punctuation**       | 0                     | 51                   | 23                    | 1932                 | 70%                   | 100%                 | 97%                 |
-| **add_typo**              | 110                   | 26                   | 1806                  | 1843                 | 70%                   | 94%                  | 99%                 |
-| **lowercase**             | 41                    | 395                  | 1828                  | 1409                 | 70%                   | 98%                  | 78%                 |
-| **number_to_word**        | 94                    | 127                  | 408                   | 1784                 | 70%                   | 81%                  | 93%                 |
-| **strip_all_punctuation** | 64                    | 204                  | 1919                  | 1623                 | 70%                   | 97%                  | 89%                 |
-| **strip_punctuation**     | 11                    | 162                  | 1959                  | 1831                 | 70%                   | 99%                  | 92%                 |
-| **swap_entities**         | 200                   | 105                  | 1612                  | 1886                 | 70%                   | 89%                  | 95%                 |
-| **titlecase**             | 294                   | 0                    | 1699                  | 23                   | 70%                   | 85%                  | 100%                |
-| **uppercase**             | 1099                  | 552                  | 892                   | 1407                 | 70%                   | 45%                  | 72%                 |
-| **weighted average**      | **3130**              | **1697**             | **14692**             | **16135**            | **68%**               | **82.44%**           | **90.48%**          |
+| **test_type**        | **before fail_count** | **after fail_count** | **before pass_count** | **after pass_count** | **minimum pass_rate** | **before pass_rate** | **after pass_rate** |
+|----------------------|-----------------------|----------------------|-----------------------|----------------------|-----------------------|----------------------|---------------------|
+| **add_abbreviation** | 415                   | 71                   | 1389                  | 431                  | 60%                   | 77%                  | 86%                 |
+| **add_ocr_typo**     | 802                   | 4                    | 1157                  | 1966                 | 60%                   | 59%                  | 100%                |
+| **add_punctuation**  | 0                     | 51                   | 23                    | 1932                 | 70%                   | 100%                 | 97%                 |
+| **add_typo**         | 110                   | 26                   | 1806                  | 1843                 | 70%                   | 94%                  | 99%                 |
+| **number_to_word**   | 94                    | 127                  | 408                   | 1784                 | 70%                   | 81%                  | 93%                 |
+| **swap_entities**    | 200                   | 105                  | 1612                  | 1886                 | 70%                   | 89%                  | 95%                 |
+| **titlecase**        | 294                   | 0                    | 1699                  | 23                   | 70%                   | 85%                  | 100%                |
+| **uppercase**        | 1099                  | 552                  | 892                   | 1407                 | 70%                   | 45%                  | 72%                 |
+| **weighted average** | **3014**              | **936**              | **8986**              | **11272**            | **68%**               | **74.88%**           | **92.33%**          |
 
 ## Predicted Entities
 
