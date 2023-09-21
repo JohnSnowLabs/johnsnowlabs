@@ -52,6 +52,7 @@ val result = pipeline.annotate(I had a lung surgery for emphyema and after surge
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -71,15 +72,9 @@ val result = pipeline.annotate(I had a lung surgery for emphyema and after surge
 ## Results
 
 ```bash
-Results
-
-
 | text                                                                               | prediction   |
 |:-----------------------------------------------------------------------------------|:-------------|
 | I had a lung surgery for emphyema and after surgery my xray showing some recovery. | True         |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
