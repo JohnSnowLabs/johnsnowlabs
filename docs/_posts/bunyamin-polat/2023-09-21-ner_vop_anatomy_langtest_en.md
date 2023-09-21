@@ -22,16 +22,16 @@ This model extracts anatomical terms from the documents transferred from the pat
 
 | test_type             | before fail_count | after fail_count | before pass_count | after pass_count | minimum pass_rate | before pass_rate | after pass_rate |
 |-----------------------|-------------------|------------------|-------------------|------------------|-------------------|------------------|-----------------|
-| add_abbreviation      | 295               | 288              | 1272              | 1279             | 70%               | 81%              | 82%             |
-| add_ocr_typo          | 832               | 438              | 937               | 1331             | 70%               | 53%              | 75%             |
-| add_punctuation       | 0                 | 0                | 22                | 22               | 70%               | 100%             | 100%            |
-| add_typo              | 134               | 123              | 1559              | 1589             | 70%               | 92%              | 93%             |
-| lowercase             | 19                | 15               | 1649              | 1653             | 70%               | 99%              | 99%             |
-| strip_all_punctuation | 64                | 74               | 1717              | 1707             | 70%               | 96%              | 96%             |
-| strip_punctuation     | 17                | 30               | 1745              | 1732             | 70%               | 99%              | 98%             |
-| swap_entities         | 183               | 153              | 1542              | 1567             | 70%               | 89%              | 91%             |
-| titlecase             | 301               | 291              | 1483              | 1493             | 70%               | 83%              | 84%             |
-| uppercase             | 1286              | 191              | 497               | 1592             | 70%               | 28%              | 89%             |
+| **add_abbreviation**      | 295               | 288              | 1272              | 1279             | 70%               | 81%              | 82%             |
+| **add_ocr_typo**          | 832               | 438              | 937               | 1331             | 70%               | 53%              | 75%             |
+| **add_punctuation**       | 0                 | 0                | 22                | 22               | 70%               | 100%             | 100%            |
+| **add_typo**              | 134               | 123              | 1559              | 1589             | 70%               | 92%              | 93%             |
+| **lowercase**             | 19                | 15               | 1649              | 1653             | 70%               | 99%              | 99%             |
+| **strip_all_punctuation** | 64                | 74               | 1717              | 1707             | 70%               | 96%              | 96%             |
+| **strip_punctuation**     | 17                | 30               | 1745              | 1732             | 70%               | 99%              | 98%             |
+| **swap_entities**         | 183               | 153              | 1542              | 1567             | 70%               | 89%              | 91%             |
+| **titlecase**             | 301               | 291              | 1483              | 1493             | 70%               | 83%              | 84%             |
+| **uppercase**             | 1286              | 191              | 497               | 1592             | 70%               | 28%              | 89%             |
 | **weighted average**      | **3131**              | **1603**             | **12423**             | **13965**            | **70%**               | **79.87%**           | **89.70%**          |
 
 ## Predicted Entities
