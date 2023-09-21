@@ -32,7 +32,7 @@ This model extracts anatomical terms from the documents transferred from the pat
 | swap_entities         | 183               | 153              | 1542              | 1567             | 70%               | 89%              | 91%             |
 | titlecase             | 301               | 291              | 1483              | 1493             | 70%               | 83%              | 84%             |
 | uppercase             | 1286              | 191              | 497               | 1592             | 70%               | 28%              | 89%             |
-| weighted average      | 3132              | 1607             | 12737             | 14276            | 70%               | 80.26%           | 89.88%          |
+| **weighted average**      | **3131**              | **1603**             | **12423**             | **13965**            | **70%**               | **79.87%**           | **89.70%**          |
 
 ## Predicted Entities
 
