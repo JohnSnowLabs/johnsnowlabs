@@ -50,6 +50,7 @@ The model has been trained using advanced machine-learning techniques on a diver
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from pyspark.sql.types import StringType
 
