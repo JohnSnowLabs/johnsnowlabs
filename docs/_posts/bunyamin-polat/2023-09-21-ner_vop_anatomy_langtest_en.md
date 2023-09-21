@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Extract Anatomical Entities from Voice of the Patient Documents ( LangTest )
+title: Extract Anatomical Entities from Voice of the Patient Documents (LangTest)
 author: John Snow Labs
 name: ner_vop_anatomy_langtest
 date: 2023-09-21
