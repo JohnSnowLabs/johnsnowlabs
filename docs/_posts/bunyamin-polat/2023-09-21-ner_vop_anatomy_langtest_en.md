@@ -27,7 +27,6 @@ This model extracts anatomical terms from the documents transferred from the pat
 | add_punctuation       | 0                 | 0                | 22                | 22               | 70%               | 100%             | 100%            |
 | add_typo              | 134               | 123              | 1559              | 1589             | 70%               | 92%              | 93%             |
 | lowercase             | 19                | 15               | 1649              | 1653             | 70%               | 99%              | 99%             |
-| number_to_word        | 1                 | 4                | 314               | 311              | 70%               | 100%             | 99%             |
 | strip_all_punctuation | 64                | 74               | 1717              | 1707             | 70%               | 96%              | 96%             |
 | strip_punctuation     | 17                | 30               | 1745              | 1732             | 70%               | 99%              | 98%             |
 | swap_entities         | 183               | 153              | 1542              | 1567             | 70%               | 89%              | 91%             |
