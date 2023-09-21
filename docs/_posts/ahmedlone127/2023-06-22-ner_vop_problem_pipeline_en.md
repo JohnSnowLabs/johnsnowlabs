@@ -34,6 +34,7 @@ This pipeline extracts mentions of clinical problems from health-related text in
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -55,42 +56,15 @@ I've been experiencing joint pain and fatigue lately, so I went to the rheumatol
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_vop_problem_pipeline", "en", "clinical/models")
-
-pipeline.annotate("
-I've been experiencing joint pain and fatigue lately, so I went to the rheumatology department. After some tests, they diagnosed me with rheumatoid arthritis and started me on a treatment plan to manage the symptoms.
-")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_vop_problem_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate("
-I've been experiencing joint pain and fatigue lately, so I went to the rheumatology department. After some tests, they diagnosed me with rheumatoid arthritis and started me on a treatment plan to manage the symptoms.
-")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 | chunk                | ner_label   |
 |:---------------------|:------------|
 | pain                 | Symptom     |
 | fatigue              | Symptom     |
 | rheumatoid arthritis | Disease     |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
