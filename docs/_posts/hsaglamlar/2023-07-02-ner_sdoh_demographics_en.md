@@ -44,6 +44,7 @@ This SDOH NER model is designed to detect and label social determinants of healt
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from pyspark.sql.types import StringType
 
