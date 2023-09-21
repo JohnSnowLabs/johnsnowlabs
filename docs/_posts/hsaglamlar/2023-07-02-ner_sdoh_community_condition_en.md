@@ -43,6 +43,7 @@ The model has been trained using advanced machine-learning techniques on a diver
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
