@@ -34,6 +34,7 @@ This pipeline extracts mentions of clinical departments and medical devices from
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -54,41 +55,14 @@ My little brother is having surgery tomorrow in the orthopedic department. He is
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_vop_clinical_dept_pipeline", "en", "clinical/models")
-
-pipeline.annotate("
-My little brother is having surgery tomorrow in the orthopedic department. He is getting a titanium plate put in his leg to help it heal faster. Wishing him a speedy recovery!
-")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_vop_clinical_dept_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate("
-My little brother is having surgery tomorrow in the orthopedic department. He is getting a titanium plate put in his leg to help it heal faster. Wishing him a speedy recovery!
-")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 | chunk                 | ner_label     |
 |:----------------------|:--------------|
 | orthopedic department | ClinicalDept  |
 | titanium plate        | MedicalDevice |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
