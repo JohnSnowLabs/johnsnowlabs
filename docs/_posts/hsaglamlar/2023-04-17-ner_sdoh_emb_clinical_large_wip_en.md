@@ -36,6 +36,7 @@ This model extracts terminology related to Social Determinants of Health from va
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -93,7 +94,7 @@ val clinical_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_la
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
-val ner_model = MedicalNerModel.pretrained("ner_sdoh_emb_clinical_large_wip", "en", "clinical/models")
+val ner_model = MedicalNerModel.pretrained("c", "en", "clinical/models")
     .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
@@ -119,44 +120,54 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-document_assembler = DocumentAssembler()\
-    .setInputCol("text")\
-    .setOutputCol("document")
-
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "en")\
-    .setInputCols(["document"])\
-    .setOutputCol("sentence")
-
-tokenizer = Tokenizer()\
-    .setInputCols(["sentence"])\
-    .setOutputCol("token")
-
-clinical_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical_large", "en", "clinical/models")\
-    .setInputCols(["sentence", "token"])\
-    .setOutputCol("embeddings")
-
-ner_model = MedicalNerModel.pretrained("ner_sdoh_emb_clinical_large_wip", "en", "clinical/models")\
-    .setInputCols(["sentence", "token", "embeddings"])\
-    .setOutputCol("ner")
-
-ner_converter = NerConverterInternal()\
-    .setInputCols(["sentence", "token", "ner"])\
-    .setOutputCol("ner_chunk")
-
-pipeline = Pipeline(stages=[
-    document_assembler, 
-    sentence_detector,
-    tokenizer,
-    clinical_embeddings,
-    ner_model,
-    ner_converter   
-    ])
-
-sample_texts = [["Smith is a 55 years old, divorced Mexcian American woman with financial problems. She speaks spanish. She lives in an apartment. She has been struggling with diabetes for the past 10 years and has recently been experiencing frequent hospitalizations due to uncontrolled blood sugar levels. Smith works as a cleaning assistant and does not have access to health insurance or paid sick leave. She has a son student at college. Pt with likely long-standing depression. She is aware she needs rehab. Pt reprots having her catholic faith as a means of support as well.  She has long history of etoh abuse, beginning in her teens. She reports she has been a daily drinker for 30 years, most recently drinking beer daily. She smokes a pack of cigarettes a day. She had DUI back in April and was due to be in court this week."]]
-             
-data = spark.createDataFrame(sample_texts).toDF("text")
-
-result = pipeline.fit(data).transform(data)
++------------------+-----+---+-------------------+
+|chunk             |begin|end|ner_label          |
++------------------+-----+---+-------------------+
+|55 years old      |11   |22 |Age                |
+|divorced          |25   |32 |Marital_Status     |
+|Mexcian           |34   |40 |Race_Ethnicity     |
+|American          |42   |49 |Race_Ethnicity     |
+|woman             |51   |55 |Gender             |
+|financial problems|62   |79 |Financial_Status   |
+|She               |82   |84 |Gender             |
+|spanish           |93   |99 |Language           |
+|She               |102  |104|Gender             |
+|apartment         |118  |126|Housing            |
+|She               |129  |131|Gender             |
+|diabetes          |158  |165|Other_Disease      |
+|hospitalizations  |233  |248|Other_SDoH_Keywords|
+|cleaning assistant|307  |324|Employment         |
+|health insurance  |354  |369|Insurance_Status   |
+|She               |391  |393|Gender             |
+|son               |401  |403|Family_Member      |
+|student           |405  |411|Education          |
+|college           |416  |422|Education          |
+|depression        |454  |463|Mental_Health      |
+|She               |466  |468|Gender             |
+|she               |479  |481|Gender             |
+|rehab             |489  |493|Access_To_Care     |
+|her               |514  |516|Gender             |
+|catholic faith    |518  |531|Spiritual_Beliefs  |
+|support           |547  |553|Social_Support     |
+|She               |565  |567|Gender             |
+|etoh abuse        |589  |598|Alcohol            |
+|her               |614  |616|Gender             |
+|teens             |618  |622|Age                |
+|She               |625  |627|Gender             |
+|she               |637  |639|Gender             |
+|daily             |652  |656|Substance_Quantity |
+|drinker           |658  |664|Alcohol            |
+|30 years          |670  |677|Substance_Duration |
+|drinking beer     |694  |706|Alcohol            |
+|daily             |708  |712|Substance_Frequency|
+|She               |715  |717|Gender             |
+|smokes            |719  |724|Smoking            |
+|a pack            |726  |731|Substance_Quantity |
+|cigarettes        |736  |745|Smoking            |
+|a day             |747  |751|Substance_Frequency|
+|She               |754  |756|Gender             |
+|DUI               |762  |764|Legal_Issues       |
++------------------+-----+---+-------------------+
 ```
 
 {:.model-param}
