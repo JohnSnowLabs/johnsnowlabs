@@ -71,7 +71,7 @@ pipeline = Pipeline(stages=[
     ner_converter   
     ])
 
-sample_text = """Natrium var 140, kalium 3,7 ,klorid 96, bikarbonat 30, BUN og kreatinin 14/0,9 , glukose105, hematokrit42, hvittblodtall 8,6 , blodplater 644, protrombintid 10,4 , delvis tromboplastintid 28,7 , urinanalyse spor av hvite blodceller, svake skjulte røde blodceller."""
+sample_text = """Natrium var 140, kalium 3,7 ,klorid 96, bikarbonat 30, BUN og kreatinin 14/0,9 , glukose105, hematokrit42, hvittblodtall 8,6 , blodplater 644, protrombintid 10,4 , delvis tromboplastintid 28,7 , urinanalyse spor av hvite blodceller, svake skjulte røde blodceller. Natrium 148, kalium 3.4, glukose 174, P02 102, PC02 115, PH 7.11 på 40% 02."""
 
 
 data = spark.createDataFrame([[sample_text]]).toDF("text")
@@ -112,7 +112,7 @@ val pipeline = new Pipeline().setStages(Array(
     ner_converter   
 ))
 
-sample_data = Seq("""Natrium var 140, kalium 3,7 ,klorid 96, bikarbonat 30, BUN og kreatinin 14/0,9 , glukose105, hematokrit42, hvittblodtall 8,6 , blodplater 644, protrombintid 10,4 , delvis tromboplastintid 28,7 , urinanalyse spor av hvite blodceller, svake skjulte røde blodceller.""").toDS.toDF("text")
+sample_data = Seq("""Natrium var 140, kalium 3,7 ,klorid 96, bikarbonat 30, BUN og kreatinin 14/0,9 , glukose105, hematokrit42, hvittblodtall 8,6 , blodplater 644, protrombintid 10,4 , delvis tromboplastintid 28,7 , urinanalyse spor av hvite blodceller, svake skjulte røde blodceller. Natrium 148, kalium 3.4, glukose 174, P02 102, PC02 115, PH 7.11 på 40% 02.""").toDS.toDF("text")
 
 
 val result = pipeline.fit(sample_data).transform(sample_data)
@@ -140,6 +140,13 @@ val result = pipeline.fit(sample_data).transform(sample_data)
 |urinanalyse                  |195  |205|TEST     |
 |spor av hvite blodceller     |207  |230|PROBLEM  |
 |svake skjulte røde blodceller|233  |261|PROBLEM  |
+|Natrium                      |264  |270|TEST     |
+|kalium                       |277  |282|TEST     |
+|glukose                      |289  |295|TEST     |
+|P02                          |302  |304|TEST     |
+|PC02                         |311  |314|TEST     |
+|PH                           |321  |322|TEST     |
+|40% 02                       |332  |337|TREATMENT|
 +-----------------------------+-----+---+---------+
 
 ```
