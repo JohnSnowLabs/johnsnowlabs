@@ -47,6 +47,7 @@ This model extracts treatments mentioned in documents transferred from the patie
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
