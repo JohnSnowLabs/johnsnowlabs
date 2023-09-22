@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_subentity
 date: 2022-06-27
 tags: [ner, deidentification, word2vec, ro, licensed]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: ro
 edition: Healthcare NLP 4.0.0
 spark_version: 3.0

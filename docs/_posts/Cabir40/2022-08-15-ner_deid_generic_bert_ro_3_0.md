@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_generic_bert
 date: 2022-08-15
 tags: [licensed, clinical, ro, deidentification, phi, generic, bert]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: ro
 edition: Healthcare NLP 4.0.2
 spark_version: 3.0

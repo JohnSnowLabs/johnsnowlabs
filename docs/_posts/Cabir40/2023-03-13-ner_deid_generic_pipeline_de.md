@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_generic_pipeline
 date: 2023-03-13
 tags: [deid, ner, de, licensed]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: de
 edition: Healthcare NLP 4.3.0
 spark_version: 3.2

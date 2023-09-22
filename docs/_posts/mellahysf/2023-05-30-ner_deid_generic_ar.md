@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_generic
 date: 2023-05-30
 tags: [licensed, ner, clinical, deidentifiction, generic, arabic, ar]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: ar
 edition: Healthcare NLP 4.4.2
 spark_version: 3.0
