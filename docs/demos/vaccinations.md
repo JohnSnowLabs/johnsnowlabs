@@ -32,7 +32,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_LITCOVID/
           - text: Colab
             type: blue_btn
-            url: 
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MULTICLF_LITCOVID.ipynb
         - title: Classify Self-Reported Covid-19 Symptoms from Posts 
           id: classify_self_reported_covid_symptoms_tweet     
           image: 

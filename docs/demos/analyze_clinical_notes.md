@@ -20,31 +20,7 @@ data:
         - subtitle: Analyze Clinical Notes - Live Demos & Notebooks
           activemenu: analyze_clinical_notes
       source: yes
-      source:  
-        - title: SQL Query generation 
-          id: sql_query_generation_1 
-          image: 
-              src: /assets/images/SQL_Query_generation_1.svg
-          excerpt: This demo can generate SQL queries from natural questions. It is based on a small-size LLM.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/TEXT2SQL/
-          - text: Colab
-            type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb
-        - title: Classify Complaints about Healthcare Facilities 
-          id: classify_complaints_healthcare_facilities 
-          image: 
-              src: /assets/images/Classify_Complaints_about_Healthcare_Facilities.svg
-          excerpt: This demo classifies google reviews of various healthcare facilities.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_PATIENT_COMPLAINT/
-          - text: Colab
-            type: blue_btn
-            url: 
+      source: 
         - title: Normalize Section Headers of the Visit Summary 
           id: normalize_section_headers_visit_summary 
           image: 
@@ -177,5 +153,17 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/MEDICAL_TEXT_SUMMARIZATION/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MEDICAL_TEXT_SUMMARIZATION.ipynb       
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MEDICAL_TEXT_SUMMARIZATION.ipynb 
+        - title: SQL Query generation
+          id: sql_query_generation_1 
+          image: 
+              src: /assets/images/SQL_Query_generation_1.svg
+          excerpt: This demo can generate SQL queries from natural questions. It is based on a small-size LLM.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/TEXT2SQL/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/37.Text2SQL_Generation.ipynb      
 ---
