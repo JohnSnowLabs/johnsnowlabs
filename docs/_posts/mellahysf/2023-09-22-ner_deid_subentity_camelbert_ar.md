@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_subentity_camelbert
 date: 2023-09-22
 tags: [licensed, ner, clinical, deidentification, subentity, arabic, ar, camelbert, bert]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: ar
 edition: Healthcare NLP 5.1.0
 spark_version: 3.0
