@@ -36,6 +36,7 @@ This model extracts test mentions from the documents transferred from the patien
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
