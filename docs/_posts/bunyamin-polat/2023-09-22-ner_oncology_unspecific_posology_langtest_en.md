@@ -51,6 +51,7 @@ Definitions of Predicted Entities:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -92,7 +93,7 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
     
-val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
+val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")
     .setInputCols("document")
     .setOutputCol("sentence")
     
