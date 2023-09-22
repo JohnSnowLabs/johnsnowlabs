@@ -32,6 +32,7 @@ This pipeline includes the full taxonomy Named-Entity Recognition model to extra
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
