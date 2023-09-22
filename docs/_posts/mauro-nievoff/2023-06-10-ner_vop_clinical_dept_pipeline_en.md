@@ -32,6 +32,7 @@ This pipeline extracts mentions of clinical departments and medical devices from
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
