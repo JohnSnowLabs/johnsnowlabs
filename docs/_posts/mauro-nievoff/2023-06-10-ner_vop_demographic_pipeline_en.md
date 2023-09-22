@@ -32,6 +32,7 @@ This pipeline extracts mentions of demographic information from health-related t
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
