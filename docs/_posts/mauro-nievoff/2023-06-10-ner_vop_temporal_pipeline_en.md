@@ -32,6 +32,7 @@ This pipeline extracts mentions of temporal entities from health-related text in
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
