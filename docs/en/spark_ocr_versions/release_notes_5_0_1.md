@@ -3,7 +3,7 @@ layout: docs
 header: true
 seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
-permalink: /docs/en/spark_ocr_versions/ocr_release_notes
+permalink: /docs/en/spark_ocr_versions/release_notes_5_0_1
 key: docs-ocr-release-notes
 modify_date: "2023-09-21"
 show_nav: true
@@ -48,6 +48,7 @@ It is currently the best performing model at the FUNSD dataset, achieving an acc
 + Serialization issues preventing ImageTableDetector and HocrToTextTable from working properly in a pipeline were fixed.
 + PositionFinder has improved error reporting logic.
 + ImageToText MacOS errors were solved.
+
 
 
 
