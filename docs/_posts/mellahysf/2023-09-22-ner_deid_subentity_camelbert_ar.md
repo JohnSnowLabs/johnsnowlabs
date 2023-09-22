@@ -61,7 +61,7 @@ clinical_ner = MedicalNerModel.pretrained("ner_deid_subentity_camelbert", "ar", 
     .setInputCols(["sentence","token","embeddings"])\
     .setOutputCol("ner")
 
-ner_converter = NerConverter()\
+ner_converter = NerConverterInternal()\
     .setInputCols(["sentence","token","ner"])\
     .setOutputCol("ner_chunk")
 
