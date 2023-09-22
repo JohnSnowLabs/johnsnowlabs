@@ -32,6 +32,7 @@ This pipeline includes the Medical Bert for Sequence Classification model to cla
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
