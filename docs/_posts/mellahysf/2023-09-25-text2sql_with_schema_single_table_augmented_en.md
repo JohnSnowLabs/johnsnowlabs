@@ -37,6 +37,7 @@ This model is the State-of-the-Art (SOTA) for generating SQL queries from natura
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 question = "What is the average age of male patients with 'Diabetes'?"
 query_schema = {
