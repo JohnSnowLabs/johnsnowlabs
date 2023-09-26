@@ -20,6 +20,15 @@ use_language_switcher: "Python-Scala-Java"
 
 Named Entity recognition annotator allows for a generic model to be trained by utilizing a deep learning algorithm (Char CNNs - BiLSTM - CRF - word embeddings) inspired by a former state-of-the-art model for NER: Chiu & Nicols, Named Entity Recognition with Bidirectional LSTM, CNN. Deidentification NER (Generic-Augmented) is a Named Entity Recognition model that annotates text to find protected health information that may need to be de-identified. It detects 7 entities. This ner model is trained with a combination of the i2b2 train set and an augmented version of the i2b2 train set.  It is the version of [ner_deid_generic_augmented](https://nlp.johnsnowlabs.com/2021/06/01/ner_deid_generic_augmented_en.html) model augmented with `langtest` library.
 
+| **test_type**        | **before fail_count** | **after fail_count** | **before pass_count** | **after pass_count** | **minimum pass_rate** | **before pass_rate** | **after pass_rate** |
+|----------------------|-----------------------|----------------------|-----------------------|----------------------|-----------------------|----------------------|---------------------|
+| **add_ocr_typo**     | 376                   | 369                  | 11927                 | 11934                | 95%                   | 97%                  | 97%                 |
+| **lowercase**        | 1008                  | 350                  | 15138                 | 15796                | 95%                   | 94%                  | 98%                 |
+| **swap_entities**    | 394                   | 350                  | 3687                  | 3733                 | 95%                   | 90%                  | 91%                 |
+| **titlecase**        | 437                   | 352                  | 16970                 | 17055                | 95%                   | 97%                  | 98%                 |
+| **uppercase**        | 1085                  | 506                  | 16198                 | 16777                | 95%                   | 94%                  | 97%                 |
+| **weighted average** | **3300**              | **1927**             | **63920**             | **65295**            | **95%**               | **95.09%**           | 97.13%              |
+
 We stuck to the official annotation guideline (AG) for the 2014 i2b2 Deid challenge while annotating new datasets for this model. All the details regarding the nuances and explanations for AG can be found here [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4978170/](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4978170/)
 
 ## Predicted Entities
@@ -38,6 +47,7 @@ We stuck to the official annotation guideline (AG) for the 2014 i2b2 Deid challe
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
