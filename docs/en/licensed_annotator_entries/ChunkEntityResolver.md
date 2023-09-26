@@ -185,7 +185,7 @@ val result = pipelineModelFull.transform(data).cache()
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[ChunkEntityResolverModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/ChunkEntityResolverModel.html)
+[ChunkEntityResolverModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
@@ -315,7 +315,7 @@ val model = snomedExtractor.fit(snomedData)
 {%- endcapture -%}
 
 {%- capture approach_api_link -%}
-[ChunkEntityResolverApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/ChunkEntityResolverApproach.html)
+[ChunkEntityResolverApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/resolution/)
 {%- endcapture -%}
 
 
