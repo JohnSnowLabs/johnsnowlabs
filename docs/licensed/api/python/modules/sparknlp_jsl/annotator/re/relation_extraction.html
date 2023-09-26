@@ -320,6 +320,7 @@ document.write(`
   <h1>Source code for sparknlp_jsl.annotator.re.relation_extraction</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator.generic_classifier.generic_classifier</span> <span class="kn">import</span> <span class="n">GenericClassifierApproach</span>
+<span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator.generic_classifier.generic_classifier</span> <span class="kn">import</span> <span class="n">GenericClassifierModel</span>
 
 
 <div class="viewcode-block" id="RelationExtractionApproach"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach">[docs]</a><span class="k">class</span> <span class="nc">RelationExtractionApproach</span><span class="p">(</span><span class="n">GenericClassifierApproach</span><span class="p">):</span>
@@ -572,7 +573,7 @@ document.write(`
         <span class="p">)</span>
 
 
-<div class="viewcode-block" id="RelationExtractionModel"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel">[docs]</a><span class="k">class</span> <span class="nc">RelationExtractionModel</span><span class="p">(</span><span class="n">AnnotatorModel</span><span class="p">):</span>
+<div class="viewcode-block" id="RelationExtractionModel"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel">[docs]</a><span class="k">class</span> <span class="nc">RelationExtractionModel</span><span class="p">(</span><span class="n">GenericClassifierModel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Extracts and classifies instances of relations between named entities.</span>
 
 <span class="sd">    This is the AnnotatorModel version, if you want to train a model,</span>
@@ -733,6 +734,12 @@ document.write(`
 
 <div class="viewcode-block" id="RelationExtractionModel.classes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.classes">[docs]</a>    <span class="n">classes</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;classes&quot;</span><span class="p">,</span> <span class="s2">&quot;Categorization classes&quot;</span><span class="p">,</span> <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toListString</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="RelationExtractionModel.multiClass"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.multiClass">[docs]</a>    <span class="n">multiClass</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;multiClass&quot;</span><span class="p">,</span> <span class="s2">&quot;Add the confidence scores or all labels to the metadata&quot;</span><span class="p">,</span>
+                       <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RelationExtractionModel.featureScaling"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.featureScaling">[docs]</a>    <span class="n">featureScaling</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;featureScaling&quot;</span><span class="p">,</span>
+                           <span class="s2">&quot;Feature scaling method. Possible values are &#39;zscore&#39;, &#39;minmax&#39; or empty (no scaling)&quot;</span><span class="p">,</span>
+                           <span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="RelationExtractionModel.setMaxSyntacticDistance"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setMaxSyntacticDistance">[docs]</a>    <span class="k">def</span> <span class="nf">setMaxSyntacticDistance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">distance</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets maximal syntactic distance, as threshold (Default: 0).</span>
@@ -799,6 +806,27 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;getClasses&quot;</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="RelationExtractionModel.setMultiClass"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setMultiClass">[docs]</a>    <span class="k">def</span> <span class="nf">setMultiClass</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span><span class="nb">bool</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets the model in multi class prediction mode (Default: false)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : bool</span>
+<span class="sd">           Whether to return only the label with the highest confidence score or all labels</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">multiClass</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="RelationExtractionModel.setFeatureScaling"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setFeatureScaling">[docs]</a>    <span class="k">def</span> <span class="nf">setFeatureScaling</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature_scaling</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets Feature scaling method. Possible values are &#39;zscore&#39;, &#39;minmax&#39; or empty (no scaling</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        feature_scaling : str</span>
+<span class="sd">            Feature scaling method. Possible values are &#39;zscore&#39;, &#39;minmax&#39; or empty (no scaling</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">featureScaling</span><span class="o">=</span><span class="n">feature_scaling</span><span class="p">)</span></div>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">classname</span><span class="o">=</span><span class="s2">&quot;com.johnsnowlabs.nlp.annotators.re.RelationExtractionModel&quot;</span><span class="p">,</span>
                  <span class="n">java_model</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">RelationExtractionModel</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
@@ -809,7 +837,9 @@ document.write(`
             <span class="n">relationPairsCaseSensitive</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">maxSyntacticDistance</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="n">predictionThreshold</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
-            <span class="n">relationPairs</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+            <span class="n">relationPairs</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">multiClass</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">featureScaling</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
         <span class="p">)</span>
 
 <div class="viewcode-block" id="RelationExtractionModel.setRelationTypePerPair"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel.setRelationTypePerPair">[docs]</a>    <span class="k">def</span> <span class="nf">setRelationTypePerPair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">relationTypePairs</span><span class="p">):</span>

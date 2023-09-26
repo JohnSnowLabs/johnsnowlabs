@@ -451,6 +451,34 @@ document.write(`
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set</span><span class="p">(</span><span class="n">customPrompt</span><span class="o">=</span><span class="n">value</span><span class="p">)</span></div>
 
+
+<div class="viewcode-block" id="MedicalTextGenerator.setAdditionalTokens"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_text_generator/index.html#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setAdditionalTokens">[docs]</a>    <span class="k">def</span> <span class="nf">setAdditionalTokens</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">additionalTokens</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set additional tokens</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        value : dict[int, str]</span>
+<span class="sd">            additional tokens</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;setAdditionalTokens&quot;</span><span class="p">,</span> <span class="n">additionalTokens</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="MedicalTextGenerator.getAdditionalTokens"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_text_generator/index.html#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.getAdditionalTokens">[docs]</a>    <span class="k">def</span> <span class="nf">getAdditionalTokens</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get additional tokens</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            dict[int, str]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">additional_tokens_str</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_java</span><span class="p">(</span><span class="s2">&quot;getAdditionalTokensStr&quot;</span><span class="p">)</span>
+        <span class="n">additional_tokens</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">additional_tokens_str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t\t</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">additional_tokens</span><span class="p">[</span><span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">additional_tokens</span></div>
+
 <div class="viewcode-block" id="MedicalTextGenerator.setConfigProtoBytes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_text_generator/index.html#sparknlp_jsl.annotator.seq2seq.medical_text_generator.MedicalTextGenerator.setConfigProtoBytes">[docs]</a>    <span class="k">def</span> <span class="nf">setConfigProtoBytes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets configProto from tensorflow, serialized into byte array.</span>
 

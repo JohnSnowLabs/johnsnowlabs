@@ -25,8 +25,8 @@ This pipeline extracts mentions of clinical problems from health-related text in
 
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_problem_pipeline_en_4.4.4_3.0_1687440638925.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_problem_pipeline_en_4.4.4_3.0_1687440638925.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -34,6 +34,7 @@ This pipeline extracts mentions of clinical problems from health-related text in
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -55,42 +56,15 @@ I've been experiencing joint pain and fatigue lately, so I went to the rheumatol
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_vop_problem_pipeline", "en", "clinical/models")
-
-pipeline.annotate("
-I've been experiencing joint pain and fatigue lately, so I went to the rheumatology department. After some tests, they diagnosed me with rheumatoid arthritis and started me on a treatment plan to manage the symptoms.
-")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_vop_problem_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate("
-I've been experiencing joint pain and fatigue lately, so I went to the rheumatology department. After some tests, they diagnosed me with rheumatoid arthritis and started me on a treatment plan to manage the symptoms.
-")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 | chunk                | ner_label   |
 |:---------------------|:------------|
 | pain                 | Symptom     |
 | fatigue              | Symptom     |
 | rheumatoid arthritis | Disease     |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

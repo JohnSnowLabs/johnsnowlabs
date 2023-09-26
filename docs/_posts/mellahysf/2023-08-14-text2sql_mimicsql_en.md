@@ -21,6 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 
 This model can generate SQL queries from natural questions. It is based on a small-size LLM, which is finetuned by John Snow Labs on a dataset having a schema with the same schema that MIMIC-III has.
 
+
 ## Predicted Entities
 
 
@@ -37,7 +38,7 @@ This model can generate SQL queries from natural questions. It is based on a sma
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-  
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -75,8 +76,6 @@ val text = """Calulate the total number of patients who had icd9 code 5771"""
 val data = Seq(Array(text)).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
-
-
 
 
 ```

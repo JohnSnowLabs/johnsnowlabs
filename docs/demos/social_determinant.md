@@ -20,7 +20,7 @@ data:
         - subtitle: Social Determinant - Live Demos & Notebooks
           activemenu: social_determinant
       source: yes
-      source:
+      source:        
         - title: Explore Social Determinants of Health with Spark NLP Models 
           id: explore_social_determinants_health_spark_nlp_models         
           image: 
@@ -45,6 +45,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb
+        - title: Detect Assertion Status from Social Determinants of Health (SDOH) Entities 
+          id: detect_assertion_status_social_determinants_health_entities         
+          image: 
+              src: /assets/images/Detect_Assertion_Status_from_Social_Determinants_of_Health_(SDOH)_Entities.svg
+          excerpt: 'This demo specializes in classifying assertions in text into six distinct entities: ‘Absent’, ‘Present’, ‘Someone_Else’, ‘Past’, ‘Hypothetical’, and ‘Possible’. Each entity represents a unique type of assertion, such as denoting absence, indicating presence, referring to someone else, discussing past events, speculating hypothetically, or suggesting potential conditions.' 
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/ASSERTION_SDOH/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/36.Social_Determinant_of_Health_Models.ipynb
         - title: Classify Social Support 
           id: classify_social_support         
           image: 

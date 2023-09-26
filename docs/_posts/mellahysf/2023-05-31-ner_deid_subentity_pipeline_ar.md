@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_subentity_pipeline
 date: 2023-05-31
 tags: [licensed, clinical, deidentification, ar, pipeline]
-task: Pipeline Healthcare
+task: [De-identification, Pipeline Healthcare]
 language: ar
 edition: Healthcare NLP 4.4.1
 spark_version: 3.0

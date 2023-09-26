@@ -25,8 +25,8 @@ This model extracts medical devices and clinical department mentions terms from 
 `AdmissionDischarge`, `ClinicalDept`, `MedicalDevice`
 
 {:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOICE_OF_THE_PATIENTS/){:.button.button-orange}
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_clinical_dept_en_4.4.3_3.0_1686074506621.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_clinical_dept_en_4.4.3_3.0_1686074506621.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 

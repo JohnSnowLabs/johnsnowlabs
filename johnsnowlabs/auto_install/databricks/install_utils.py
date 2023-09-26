@@ -204,6 +204,21 @@ def install_jsl_suite_to_cluster(
     spark_nlp: bool,
     visual: bool,
 ):
+    print("DEBUG: INSTALL TO CLUSTER", medical_nlp, spark_nlp, visual)
+    print(
+        "DEBUG: INSTALL TO CLUSTER",
+        install_suite.hc.get_py_path(),
+        install_suite.hc.get_java_path(),
+        medical_nlp,
+    )
+
+    print(
+        "DEBUG: INSTALL TO CLUSTER",
+        install_suite.nlp.get_py_path(),
+        install_suite.nlp.get_java_path(),
+        spark_nlp,
+    )
+
     py_deps = [
         {"package": Software.nlu.pypi_name, "version": settings.raw_version_nlu},
         {

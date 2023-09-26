@@ -1,8 +1,8 @@
 ---
 layout: topdemos
 title: Spark NLP in Action
-pagetitle: John Snow Labs NLP - The Demos and Notebooks Hub
-excerpt: Run 300+ live demos and notebooks. Try out demo examples to learn and practice various NLP features offered by Spark NLP.
+pagetitle: Live NLP & LLM Demos and Notebooks - John Snow Labs
+excerpt: Run 300+ NLP & LLM live demos and notebooks. Try out demo examples to understand the AI capabilities offered by John Snow Labs.
 seotitle: John Snow Labs NLP - Demos and Notebooks
 subtitle: Run 300+ live demos and notebooks
 full_width: true
@@ -127,7 +127,7 @@ data:
           id: vop           
           image: 
               src: /assets/images/Voice_Of_Patient.svg
-          excerpt: Extract and classify healthcare-related terms from documents written by patients such as questions, reviews, messages, and social media posts.
+          excerpt: Extract and classify healthcare-related terms from documents written by patient such as questions, reviews, messages, and social media posts.
           actions:
           - text: Live Demo
             type: normal

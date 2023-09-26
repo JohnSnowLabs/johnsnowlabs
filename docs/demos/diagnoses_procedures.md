@@ -23,6 +23,18 @@ data:
           activemenu: diagnoses_procedures
       source: yes
       source:    
+        - title: Detect clinical entities in text with different ner models
+          id: detect_clinical_entities_text_different_ner_models
+          image: 
+              src: /assets/images/Detect_clinical_entities_in_text_with_different_ner_models.svg
+          excerpt: Automatically detect clinical entities using our different NER deep learning models.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb        
         - title: Detect clinical entities in text
           id: detect_clinical_entities_in_text
           image: 
@@ -34,7 +46,19 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL/
           - text: Colab
             type: blue_btn
-            url: https://githubtocolab.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb       
+            url: https://githubtocolab.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb  
+        - title: Detect Clinical Entities in Text (Multilingual)
+          id: detect_clinical_entities_text_multilingual
+          image: 
+              src: /assets/images/Detect_Clinical_Entities_in_Text_Multilingual.svg
+          excerpt: This demo automatically identify the entities of Problem, Test, and Treatment Entities in medical texts.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_CLINICAL_MULTI.ipynb     
         - title: Identify diagnosis and symptoms assertion status
           id: identify_diagnosis_and_symptoms_assertion_status
           image: 
