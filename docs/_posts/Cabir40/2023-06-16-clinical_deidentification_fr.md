@@ -5,7 +5,7 @@ author: John Snow Labs
 name: clinical_deidentification
 date: 2023-06-16
 tags: [deid, fr, licensed]
-task: De-identification
+task: [De-identification, Pipeline Healthcare]
 language: fr
 edition: Healthcare NLP 4.4.4
 spark_version: 3.2

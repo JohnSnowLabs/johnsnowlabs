@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_subentity_augmented_i2b2
 date: 2021-11-29
 tags: [deid, ner, phi, deidentification, licensed, i2b2, en]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: en
 nav_key: models
 edition: Healthcare NLP 3.3.2
