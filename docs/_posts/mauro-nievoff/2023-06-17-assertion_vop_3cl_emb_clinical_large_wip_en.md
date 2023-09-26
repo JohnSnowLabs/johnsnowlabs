@@ -25,7 +25,7 @@ Assertion status model used to predict if an NER chunk refers to a positive find
 `Present_Or_Past`, `Hypothetical_Or_Absent`, `SomeoneElse`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
 <button class="button button-orange" disabled>Open in Colab</button>
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/assertion_vop_3cl_emb_clinical_large_wip_en_4.4.4_3.0_1687007102742.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/assertion_vop_3cl_emb_clinical_large_wip_en_4.4.4_3.0_1687007102742.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
@@ -36,28 +36,36 @@ Assertion status model used to predict if an NER chunk refers to a positive find
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
+
 sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
+
 tokenizer = Tokenizer() \
     .setInputCols(["sentence"]) \
     .setOutputCol("token")
+
 word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical_large", "en", "clinical/models")\
     .setInputCols(["sentence", "token"]) \
-    .setOutputCol("embeddings")                
+    .setOutputCol("embeddings")
+              
 ner = MedicalNerModel.pretrained("ner_vop_emb_clinical_large", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("ner")
+
 ner_converter = NerConverterInternal() \
     .setInputCols(["sentence", "token", "ner"]) \
     .setOutputCol("ner_chunk")
+
 assertion = AssertionDLModel.pretrained("assertion_vop_3cl_emb_clinical_large_wip", "en", "clinical/models") \
     .setInputCols(["sentence", "ner_chunk", "embeddings"]) \
     .setOutputCol("assertion")
+
 pipeline = Pipeline(stages=[document_assembler,
                             sentence_detector,
                             tokenizer,
@@ -65,6 +73,7 @@ pipeline = Pipeline(stages=[document_assembler,
                             ner,
                             ner_converter,
                             assertion])
+
 data = spark.createDataFrame([["I was feeling a lot of anxiety honestly. It was right after my mother was diagnosed with diabetes."]]).toDF("text")
 result = pipeline.fit(data).transform(data)
 ```
@@ -92,6 +101,7 @@ val ner = MedicalNerModel.pretrained("ner_vop_emb_clinical_large", "en", "clinic
 val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
+
 val clinical_assertion = AssertionDLModel.pretrained("assertion_vop_3cl_emb_clinical_large_wip","en","clinical/models")
     .setInputCols("sentence","ner_chunk","embeddings")
     .setOutputCol("assertion")
@@ -103,6 +113,7 @@ val pipeline = new Pipeline().setStages(Array(document_assembler,
                                               ner,
                                               ner_converter,
                                               assertion))
+
 val data = Seq("I was feeling a lot of anxiety honestly. It was right after my mother was diagnosed with diabetes.").toDF("text")
 val result = pipeline.fit(data).transform(data)
 ```

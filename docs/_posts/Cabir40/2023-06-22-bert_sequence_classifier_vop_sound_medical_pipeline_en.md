@@ -25,8 +25,8 @@ This pretrained pipeline includes the Medical Bert for Sequence Classification m
 
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_sound_medical_pipeline_en_4.4.4_3.2_1687411311351.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_sound_medical_pipeline_en_4.4.4_3.2_1687411311351.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -34,24 +34,7 @@ This pretrained pipeline includes the Medical Bert for Sequence Classification m
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_sequence_classifier_vop_sound_medical_pipeline", "en", "clinical/models")
-
-pipeline.annotate("I had a lung surgery for emphyema and after surgery my xray showing some recovery.")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_sequence_classifier_vop_sound_medical_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate(I had a lung surgery for emphyema and after surgery my xray showing some recovery.)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -71,15 +54,11 @@ val result = pipeline.annotate(I had a lung surgery for emphyema and after surge
 ## Results
 
 ```bash
-Results
-
 
 | text                                                                               | prediction   |
 |:-----------------------------------------------------------------------------------|:-------------|
 | I had a lung surgery for emphyema and after surgery my xray showing some recovery. | True         |
 
-
-{:.model-param}
 ```
 
 {:.model-param}
