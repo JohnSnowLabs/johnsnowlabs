@@ -48,7 +48,7 @@ re_graph_builder = medical.TFGraphBuilder()\
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
-[AssertionChunkConverter](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/TFGraphBuilder.html)
+[AssertionChunkConverter](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
