@@ -45,6 +45,7 @@ Pretrained named entity recognition deep learning model for clinical terms. The 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -63,8 +64,8 @@ word_embeddings = WordEmbeddingsModel().pretrained("embeddings_clinical", "en", 
     .setOutputCol("embeddings")
 
 ner = MedicalNerModel.pretrained("ner_clinical_langtest", "en", "clinical/models") \
-        .setInputCols(["sentence", "token", "embeddings"]) \
-        .setOutputCol("ner")
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner")
 
 ner_converter = NerConverter() \
     .setInputCols(["sentence", "token", "ner"]) \
@@ -103,8 +104,8 @@ val ner = MedicalNerModel.pretrained("ner_clinical_langtest", "en", "clinical/mo
         .setOutputCol("ner")
 
 val ner_converter = new NerConverter()
- 	    .setInputCols(Array("sentence", "token", "ner"))
- 	    .setOutputCol("ner_chunk")
+   	    .setInputCols(Array("sentence", "token", "ner"))
+   	    .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter))
 
