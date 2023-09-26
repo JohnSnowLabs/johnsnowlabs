@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_subentity_glove_pipeline
 date: 2023-03-13
 tags: [ner, deid, licensed, en, glove, clinical]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: en
 edition: Healthcare NLP 4.3.0
 spark_version: 3.2
