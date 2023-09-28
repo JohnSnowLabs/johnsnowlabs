@@ -2,13 +2,13 @@
 layout: docs
 header: true
 title: Spark NLP vs Spacy Pandas UDF with Arrow Benchmark
-permalink: /docs/en/sparknlp_spacy_pandas_udf_arrow_benchmark
+permalink: /docs/en/Spark_Spacy_Pandas_UDF_with_Arrow_Enabled_Benchmark_web
 key: docs-concepts
-modify_date: "2023-09-15"
+modify_date: "2023-09-28"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
-    nav: sparknlp-healthcare
+    nav: sparknlp
 ---
 
 <div class="h3-box" markdown="1">
