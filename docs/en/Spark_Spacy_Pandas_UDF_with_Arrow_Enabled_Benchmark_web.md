@@ -2,7 +2,7 @@
 layout: docs
 header: true
 title: Spark NLP vs Spacy Pandas UDF with Arrow Benchmark
-permalink: /docs/en/Spark_Spacy_Pandas_UDF_with_Arrow_Enabled_Benchmark_web
+permalink: /docs/en/spark_spacy_pandas_udf_with_arrow_enabled_benchmark_web
 key: docs-concepts
 modify_date: "2023-09-28"
 use_language_switcher: "Python-Scala"
@@ -22,16 +22,14 @@ In this benchmark, we evaluate the performance of both frameworks using Pandas U
 The benchmark covers a range of common NLP tasks, including Named Entity Recognition (NER) and getting embeddings.
 
 We calculated the time for both arrow enabled and disabled pandas udf for each task. We reset the notebook before each task to ensure that the results are not affected by the previous task.
-</div>
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Machine specs
 
 Azure Databricks `Standard_DS3_v2` machine (6 workers + 1 driver) was used for the CPU benchmarking. This machine consists of `4 CPUs` and `14 GB of RAM`.
-</div>
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Versions
 
@@ -44,16 +42,14 @@ SparkNLP version: `5.1.0`
 spaCy version: `3.6.1`
 
 Spark nodes: 7 (1 driver, 6 workers)
-</div>
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Dataset
 
 The size of the dataset is (120K), consisting of news articles that can be found [here](https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/open-source-nlp/data/news_category_train.csv).
-</div>
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Benchmark on Named Entity Recognition (NER)
 
@@ -93,9 +89,7 @@ def ner_with_spacy(text_series):
     return pd.Series(entities_list)
 ```
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Benchmark on Getting Roberta Sentence Embeddings
 
@@ -129,9 +123,7 @@ def embeddings_with_spacy(text_series):
     return pd.Series(embeddings_list)
 ```
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Results
 
@@ -145,9 +137,7 @@ Both frameworks were tested on a dataset of 120K rows. SpaCy was tested with and
 | **NER extract**        | 3min 35sec    | 4min 49sec           | 5min 4sec              |
 | **Roberta Embeddings** | 22min 16sec   | 29min 27sec          | 29min 30sec            |
 
-</div>
-
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Comments
 
