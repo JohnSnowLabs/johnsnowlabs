@@ -8,7 +8,7 @@ modify_date: "2023-09-28"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
-    nav: sparknlp
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
