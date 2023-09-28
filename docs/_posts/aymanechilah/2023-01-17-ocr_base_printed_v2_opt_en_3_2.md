@@ -49,7 +49,7 @@ text_detector = ImageTextDetectorV2 \
     .setLinkThreshold(0.3) \
     .setWidth(500)
 
-ocr = ImageToTextV2Opt.pretrained("ocr_base_printed_v2_opt", "en", "clinical/ocr") \
+ocr = ImageToTextV2.pretrained("ocr_base_printed_v2_opt", "en", "clinical/ocr") \
     .setInputCols(["image", "text_regions"]) \
     .setGroupImages(True) \
     .setOutputCol("text") \
@@ -89,7 +89,7 @@ val text_detector = ImageTextDetectorV2
     .setLinkThreshold(0.3) 
     .setWidth(500)
 
-val ocr = ImageToTextV2Opt
+val ocr = ImageToTextV2
     .pretrained("ocr_base_printed_v2_opt", "en", "clinical/ocr") 
     .setInputCols(Array("image", "text_regions")) 
     .setGroupImages(True) 
