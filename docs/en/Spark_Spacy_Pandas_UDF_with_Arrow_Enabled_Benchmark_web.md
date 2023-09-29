@@ -139,31 +139,46 @@ Both frameworks were tested on a dataset of 120K rows. SpaCy was tested with and
 
 </div><div class="h3-box" markdown="1">
 
-### Comments
+### Conclusions
 
-1. Scalability:
+In our comprehensive comparative analysis, we delved into the performance of two leading Natural Language Processing (NLP) libraries: Spark NLP and SpaCy. While Spark NLP, seamlessly integrated with Apache Spark, excels in managing extensive NLP tasks on distributed systems and large datasets, SpaCy stands out for its impressive speed and precision, particularly in single-machine environments.
 
-- Spark NLP: Built on top of Apache Spark, Spark NLP is inherently scalable and distributed. It is designed to handle large-scale data processing with distributed computing resources. It is well-suited for processing vast amounts of data across multiple nodes.
-- SpaCy with pandas UDFs: Using SpaCy within a pandas UDF (User-Defined Function) and Arrow for efficient data transfer can bring SpaCy's power into the Spark ecosystem. However, while Arrow optimizes the serialization and deserialization between JVM and Python processes, the scalability of this approach is still limited by the fact that the actual NLP processing is single-node (by SpaCy) for each partition of your Spark DataFrame.
+The results of our evaluation highlight clear disparities in processing times across the assessed tasks. In NER extraction, Spark NLP demonstrated exceptional efficiency, completing the task in a mere 3 minutes and 35 seconds. In contrast, Spacy UDF with Arrow and Spacy UDF without Arrow took 4 minutes and 49 seconds, and 5 minutes and 4 seconds, respectively. Moving on to the generation of Roberta embeddings, Spark NLP once again proved its prowess, completing the task in 22 minutes and 16 seconds. Meanwhile, Spacy UDF with Arrow and Spacy UDF without Arrow required 29 minutes and 27 seconds, and 29 minutes and 30 seconds, respectively.
 
-2. Performance:
+These findings unequivocally affirm Spark NLP's superiority for NER extraction tasks, and its significant time advantage for tasks involving Roberta embeddings.
 
-- Spark NLP: Since it's natively built on top of Spark, it is optimized for distributed processing. The performance is competitive, especially when you are dealing with vast amounts of data that need distributed processing.
-- SpaCy with pandas UDFs: SpaCy is incredibly fast and efficient for single-node processing. The combination of SpaCy with Arrow-optimized UDFs can be performant for moderate datasets or tasks. However, you might run into bottlenecks when scaling to very large datasets unless you have a massive Spark cluster.
+</div><div class="h3-box" markdown="1">
 
-3. Ecosystem Integration:
+### Additional Comments
 
-- Spark NLP: Being a Spark-native library, Spark NLP integrates seamlessly with other Spark components, making it easier to build end-to-end data processing pipelines.
-- SpaCy with pandas UDFs: While the integration with Spark is possible, it's a bit more "forced." It requires careful handling, especially if you're trying to ensure optimal performance.
+- **Scalability:**
 
-4. Features & Capabilities:
+*Spark NLP*: Built on top of Apache Spark, Spark NLP is inherently scalable and distributed. It is designed to handle large-scale data processing with distributed computing resources. It is well-suited for processing vast amounts of data across multiple nodes.
 
-- Spark NLP: Offers a wide array of NLP functionalities, including some that are tailored for the healthcare domain. It's continuously evolving and has a growing ecosystem.
-- SpaCy: A leading library for NLP with extensive features, optimizations, and pre-trained models. However, certain domain-specific features in Spark NLP might not have direct counterparts in SpaCy.
+*SpaCy with pandas UDFs*: Using SpaCy within a pandas UDF (User-Defined Function) and Arrow for efficient data transfer can bring SpaCy's power into the Spark ecosystem. However, while Arrow optimizes the serialization and deserialization between JVM and Python processes, the scalability of this approach is still limited by the fact that the actual NLP processing is single-node (by SpaCy) for each partition of your Spark DataFrame.
 
-5. Development & Maintenance:
+- **Performance:**
 
-- Spark NLP: As with any distributed system, development and debugging might be more complex. You have to consider factors inherent to distributed systems.
-- SpaCy with pandas UDFs: Development might be more straightforward since you're essentially working with Python functions. However, maintaining optimal performance with larger datasets and ensuring scalability can be tricky.
+*Spark NLP*: Since it's natively built on top of Spark, it is optimized for distributed processing. The performance is competitive, especially when you are dealing with vast amounts of data that need distributed processing.
+
+*SpaCy with pandas UDFs*: SpaCy is incredibly fast and efficient for single-node processing. The combination of SpaCy with Arrow-optimized UDFs can be performant for moderate datasets or tasks. However, you might run into bottlenecks when scaling to very large datasets unless you have a massive Spark cluster.
+
+- **Ecosystem Integration:**
+
+*Spark NLP*: Being a Spark-native library, Spark NLP integrates seamlessly with other Spark components, making it easier to build end-to-end data processing pipelines.
+
+*SpaCy with pandas UDFs*: While the integration with Spark is possible, it's a bit more 'forced.' It requires careful handling, especially if you're trying to ensure optimal performance.
+
+- **Features & Capabilities:**
+
+*Spark NLP*: Offers a wide array of NLP functionalities, including some that are tailored for the healthcare domain. It's continuously evolving and has a growing ecosystem.
+
+*SpaCy*: A leading library for NLP with extensive features, optimizations, and pre-trained models. However, certain domain-specific features in Spark NLP might not have direct counterparts in SpaCy.
+
+- **Development & Maintenance:**
+
+*Spark NLP*: As with any distributed system, development and debugging might be more complex. You have to consider factors inherent to distributed systems.
+
+*SpaCy with pandas UDFs*: Development might be more straightforward since you're essentially working with Python functions. However, maintaining optimal performance with larger datasets and ensuring scalability can be tricky.
 
 </div>
