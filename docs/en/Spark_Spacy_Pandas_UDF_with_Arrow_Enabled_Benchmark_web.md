@@ -15,11 +15,11 @@ sidebar:
 
 This benchmarking report aims to provide a comprehensive comparison between two NLP frameworks on Spark clusters: Spark NLP and SpaCy, specifically in the context of Pandas UDF with Arrow optimization.
 
-Spark NLP is a distributed NLP library built on top of Apache Spark, designed to handle large-scale NLP tasks efficiently. On the other hand, SpaCy is a popular NLP library known for its speed and accuracy in single-machine environments.
+Spark NLP is a distributed NLP library built on top of Apache Spark, designed to handle large-scale NLP tasks efficiently. On the other hand, SpaCy is a popular NLP library in single-machine environments.
 
 In this benchmark, we evaluate the performance of both frameworks using Pandas UDF with Arrow, a feature that enhances data transfer between Apache Arrow and Pandas DataFrames, potentially leading to significant performance gains. We will use Spacy as a UDF in Spark to compare the performance of both frameworks.
 
-The benchmark covers a range of common NLP tasks, including Named Entity Recognition (NER) and getting embeddings.
+The benchmark covers a range of common NLP tasks, including Named Entity Recognition (NER) and getting Roberta sentence embeddings.
 
 We calculated the time for both arrow enabled and disabled pandas udf for each task. We reset the notebook before each task to ensure that the results are not affected by the previous task.
 
@@ -141,7 +141,7 @@ Both frameworks were tested on a dataset of 120K rows. SpaCy was tested with and
 
 ### Conclusions
 
-In our comprehensive comparative analysis, we delved into the performance of two leading Natural Language Processing (NLP) libraries: Spark NLP and SpaCy. While Spark NLP, seamlessly integrated with Apache Spark, excels in managing extensive NLP tasks on distributed systems and large datasets, SpaCy stands out for its impressive speed and precision, particularly in single-machine environments.
+In our analysis, we delved into the performance of two Natural Language Processing (NLP) libraries: Spark NLP and SpaCy. While Spark NLP, seamlessly integrated with Apache Spark, excels in managing extensive NLP tasks on distributed systems and large datasets, SpaCy is used particularly in single-machine environments.
 
 The results of our evaluation highlight clear disparities in processing times across the assessed tasks. In NER extraction, Spark NLP demonstrated exceptional efficiency, completing the task in a mere 3 minutes and 35 seconds. In contrast, Spacy UDF with Arrow and Spacy UDF without Arrow took 4 minutes and 49 seconds, and 5 minutes and 4 seconds, respectively. Moving on to the generation of Roberta embeddings, Spark NLP once again proved its prowess, completing the task in 22 minutes and 16 seconds. Meanwhile, Spacy UDF with Arrow and Spacy UDF without Arrow required 29 minutes and 27 seconds, and 29 minutes and 30 seconds, respectively.
 
@@ -155,13 +155,13 @@ These findings unequivocally affirm Spark NLP's superiority for NER extraction t
 
 *Spark NLP*: Built on top of Apache Spark, Spark NLP is inherently scalable and distributed. It is designed to handle large-scale data processing with distributed computing resources. It is well-suited for processing vast amounts of data across multiple nodes.
 
-*SpaCy with pandas UDFs*: Using SpaCy within a pandas UDF (User-Defined Function) and Arrow for efficient data transfer can bring SpaCy's power into the Spark ecosystem. However, while Arrow optimizes the serialization and deserialization between JVM and Python processes, the scalability of this approach is still limited by the fact that the actual NLP processing is single-node (by SpaCy) for each partition of your Spark DataFrame.
+*SpaCy with pandas UDFs*: Using SpaCy within a pandas UDF (User-Defined Function) and Arrow for efficient data transfer can bring SpaCy's abilities into the Spark ecosystem. However, while Arrow optimizes the serialization and deserialization between JVM and Python processes, the scalability of this approach is still limited by the fact that the actual NLP processing is single-node (by SpaCy) for each partition of your Spark DataFrame.
 
 - **Performance:**
 
 *Spark NLP*: Since it's natively built on top of Spark, it is optimized for distributed processing. The performance is competitive, especially when you are dealing with vast amounts of data that need distributed processing.
 
-*SpaCy with pandas UDFs*: SpaCy is incredibly fast and efficient for single-node processing. The combination of SpaCy with Arrow-optimized UDFs can be performant for moderate datasets or tasks. However, you might run into bottlenecks when scaling to very large datasets unless you have a massive Spark cluster.
+*SpaCy with pandas UDFs*: SpaCy is fast for single-node processing. The combination of SpaCy with Arrow-optimized UDFs can be performant for moderate datasets or tasks. However, you might run into bottlenecks when scaling to very large datasets unless you have a massive Spark cluster.
 
 - **Ecosystem Integration:**
 
@@ -173,7 +173,7 @@ These findings unequivocally affirm Spark NLP's superiority for NER extraction t
 
 *Spark NLP*: Offers a wide array of NLP functionalities, including some that are tailored for the healthcare domain. It's continuously evolving and has a growing ecosystem.
 
-*SpaCy*: A leading library for NLP with extensive features, optimizations, and pre-trained models. However, certain domain-specific features in Spark NLP might not have direct counterparts in SpaCy.
+*SpaCy*: A popular library for NLP with extensive features, optimizations, and pre-trained models. However, certain domain-specific features in Spark NLP might not have direct counterparts in SpaCy.
 
 - **Development & Maintenance:**
 
