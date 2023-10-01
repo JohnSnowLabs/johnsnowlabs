@@ -100,6 +100,38 @@ And after a while you can see the results
 ![databricks_cluster_submit_raw.png](/assets/images/jsl_lib/databricks_utils/submit_raw_str_result.png)
 
 
+### Run a local Python Notebook in Databricks
+
+Provide the path to a notebook on your localhost, it will be copied to HDFS and executed by the Databricks cluster.
+You need to provide a destination path to your Workspace, where the notebook will be copied to and you have write access to.
+A common pattern that should work is`/Users/<your_databricks_email@somewhere.com>/test.ipynb`
+
+```python
+local_nb_path = "path/to/my/notebook.ipynb"
+remote_dst_path = "/Users/christian@johnsnowlabs.com/test.ipynb"
+
+# notebook.ipynb will run on databricks, url will be printed
+nlp.run_in_databricks(
+  local_nb_path,
+  databricks_host=host,
+  databricks_token=token,
+  run_name="Notebook Test",
+  dst_path=remote_dst_path,
+)
+```
+
+This could be your input notebook
+
+![databricks_cluster_submit_notebook.png](/assets/images/jsl_lib/databricks_utils/submit_notebook.png)
+
+A URL where you can monitor the run will be printed, which will look like this
+
+![databricks_cluster_submit_notebook_result.png](/assets/images/jsl_lib/databricks_utils/submit_notebook_result.png)
+
+
+
+
+
 ### Run a Python Function in Databricks
 
 Define a function, which will be written to a local file, copied to HDFS and executed by the Databricks cluster.
