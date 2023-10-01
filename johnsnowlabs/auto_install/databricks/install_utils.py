@@ -177,13 +177,6 @@ def list_db_runtime_versions(db: DatabricksAPI):
         )
 
 
-def list_clusters(db: DatabricksAPI):
-    clusters = db.cluster.list_clusters(headers=None)
-    pprint(clusters)
-    print(clusters)
-    return clusters
-
-
 def list_cluster_lib_status(db: DatabricksAPI, cluster_id: str):
     lib_statuses = db.managed_library.cluster_status(cluster_id=cluster_id)
     # lib_statuses = db.managed_library.all_cluster_statuses()
@@ -396,13 +389,23 @@ def copy_lib_to_dbfs_cluster(
     return copy_from_local_to_hdfs(db, local_path=local_path, dbfs_path=dbfs_path)
 
 
-def wait_till_cluster_running(db: DatabricksAPI, cluster_id: str):
+def wait_till_cluster_running(db: DatabricksAPI, cluster_id: str, timeout=900):
     # https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterstate
     import time
 
-    while 1:
+    start_time = time.time()
+
+    while True:
+        elapsed_time = time.time() - start_time
+        if elapsed_time > timeout:
+            print(
+                "Timeout reached while waiting for the cluster to be running. Check cluster UI."
+            )
+            return False
+
         time.sleep(5)
         status = DatabricksClusterStates(db.cluster.get_cluster(cluster_id)["state"])
+
         if status == DatabricksClusterStates.RUNNING:
             return True
         elif status in [
@@ -422,3 +425,89 @@ def wait_till_cluster_running(db: DatabricksAPI, cluster_id: str):
 
 def restart_cluster(db: DatabricksAPI, cluster_id: str):
     db.cluster.restart_cluster(cluster_id=cluster_id)
+
+
+####
+def list_clusters(db: DatabricksAPI):
+    """Lists all clusters."""
+    clusters = db.cluster.list_clusters()
+    return clusters
+
+
+def cluster_exist_with_name_and_runtime(
+    db: DatabricksAPI, name: str, runtime: str
+) -> bool:
+    """Checks if a cluster with a specific name and runtime exists."""
+    clusters = list_clusters(db)
+    for cluster in clusters.get("clusters", []):
+        if cluster["cluster_name"] == name and runtime in cluster["spark_version"]:
+            return True
+    return False
+
+
+def does_cluster_exist_with_id(db: DatabricksAPI, cluster_id: str) -> bool:
+    """Checks if a cluster with a specific ID exists."""
+    try:
+        cluster_info = db.cluster.get_cluster(cluster_id=cluster_id)
+        if cluster_info and "cluster_id" in cluster_info:
+            return True
+    except Exception as e:
+        # Handle specific exceptions based on the Databricks API error responses
+        pass
+    return False
+
+
+def get_cluster_id(db: DatabricksAPI, cluster_name: str, runtime: str) -> str:
+    """
+    Retrieves the cluster ID based on the cluster name and runtime.
+
+    If there are multiple candidates:
+    - Returns any that's in the 'RUNNING' state if there is one.
+    - If none are in the 'RUNNING' state, returns any.
+    """
+    clusters = list_clusters(db)
+    running_clusters = []
+    other_clusters = []
+
+    for cluster in clusters.get("clusters", []):
+        if (
+            cluster["cluster_name"] == cluster_name
+            and runtime in cluster["spark_version"]
+        ):
+            if cluster["state"] == "RUNNING":
+                running_clusters.append(cluster["cluster_id"])
+            else:
+                other_clusters.append(cluster["cluster_id"])
+
+    if running_clusters:
+        return running_clusters[0]
+    elif other_clusters:
+        return other_clusters[0]
+    else:
+        raise Exception(
+            f"No cluster found with name {cluster_name} and runtime {runtime}"
+        )
+
+
+def _get_cluster_id(db: DatabricksAPI, cluster_name: str) -> str:
+    """
+    Retrieves the cluster ID based on the cluster name.
+    """
+    clusters = list_clusters(db)
+    running_clusters = []
+    other_clusters = []
+
+    for cluster in clusters.get("clusters", []):
+        if cluster["cluster_name"] == cluster_name:
+            # if cluster["state"] != "TERMINATED":
+            other_clusters.append(cluster["cluster_id"])
+
+    if running_clusters:
+        return running_clusters[0]
+    elif other_clusters:
+        return other_clusters[0]
+    else:
+        return None  # Return None if no cluster found with the given name
+
+
+#############
