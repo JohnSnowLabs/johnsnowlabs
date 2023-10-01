@@ -2,9 +2,6 @@ import os
 from random import randrange
 from typing import Optional
 
-import boto3
-import botocore
-
 from johnsnowlabs.utils.boto_utils import BotoException
 from johnsnowlabs.utils.file_utils import path_tail
 from johnsnowlabs.utils.s3_utils import (
@@ -15,11 +12,13 @@ from johnsnowlabs.utils.s3_utils import (
 )
 
 
-def create_emr_bucket(boto_session: boto3.Session, bucket=None):
+def create_emr_bucket(boto_session: "boto3.Session", bucket=None):
     """Create a bucket for EMR cluster logs
     :param boto_session: Boto3 session
     :param bucket: Bucket name
     """
+    import botocore
+
     try:
         sts_client = boto_session.client("sts")
         account_id = sts_client.get_caller_identity()["Account"]
@@ -40,7 +39,7 @@ def create_emr_bucket(boto_session: boto3.Session, bucket=None):
 def run_in_emr(
     py_script_path: str,
     cluster_id: str,
-    boto_session: Optional[boto3.Session] = None,
+    boto_session: Optional["boto3.Session"] = None,
     script_bucket: Optional[str] = None,
     bucket_folder_path: Optional[str] = None,
     run_name: Optional[str] = None,
@@ -56,6 +55,9 @@ def run_in_emr(
     :param execution_role_arn: IAM role to use for the step
     :return: Step id
     """
+    import boto3
+    import botocore
+
     if not boto_session:
         boto_session = boto3.Session()
     if check_if_file_exists_in_s3(py_script_path):
