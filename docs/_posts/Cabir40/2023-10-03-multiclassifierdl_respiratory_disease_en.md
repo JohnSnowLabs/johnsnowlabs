@@ -31,7 +31,7 @@ The PHS-BERT Respiratory Disease Classifier Model is a specialized text classifi
 
 ## Predicted Entities
 
-`Astham`, `Chronic bronchitis`, `Other/Unknown`, `No`, `COPD`, `Emphysema`
+`Astham`,`COPD`, `Emphysema`, `Chronic bronchitis`, `Other/Unknown`, `No` 
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -45,6 +45,7 @@ The PHS-BERT Respiratory Disease Classifier Model is a specialized text classifi
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -203,6 +204,4 @@ Chronic bronchitis   241   27	   25	   0.8992537	 0.90601504	 0.9026217
 Asthma               104   15	   25	   0.8739496	 0.8062016	 0.83870965
 Macro-average        823   110   193   0.83017427  0.7265169   0.7748944
 Micro-average        823   110   193   0.88210076  0.8100393   0.84453565
-
-
 ```
