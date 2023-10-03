@@ -40,7 +40,7 @@ This process is adapted for more complex workflows and large tasks. For simple p
 
 The Project Owner/Manager can activate this option from the <es>Settings</es> dialog (Customize Labels) in the <es>Configuration</es> step of the <es>Setup</es> page. Once enabled, annotators can see the submit button on the labeling page. A second option is available on the same dialog for Project Owner/Manager: _Serve next task after completion submission_. Once enabled, annotators can see the next task on the labeling page after submitting the completion for the current task.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/direct_submit.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/direct_submit-min.gif" style="width:100%;"/>
 
 > **Note:**
 >
@@ -53,7 +53,7 @@ The Project Owner/Manager can activate this option from the <es>Settings</es> di
 
 When predictions are available for a task, Annotator can accept the predictions with just one click and navigate automatically to the next task. When users click on Accept Prediction, a new completion is created based on the prediction, then submitted as ground truth, and the next task in line (assigned to the current annotator/reviewer and with <es>Incomplete</es> or <es>In Progress</es> status) is automatically served.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/accept_prediction.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/accept_prediction-min.gif" style="width:100%;"/>
 
 > **NOTE:** Press backspace key (on windows) or delete key (on mac) to delete the selected relation from the labeling editor or use the delete action icon on the Relations widget.
 
@@ -91,11 +91,11 @@ This option helps users quickly annotate sequences of the same label by keeping 
 
 With the option unchecked:
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/keep_label_selected_off.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/keep_label_selected_off-min.gif" style="width:100%;"/>
 
 With the option checked:
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/keep_label_selected_on.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/keep_label_selected_on-min.gif" style="width:100%;"/>
 
 <br />
 
@@ -103,7 +103,7 @@ With the option checked:
 
 This option keeps the annotated region selected after annotation. In this way, it will be easier for users to quickly change the assigned label for the last selected region if necessary.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/select_region_after_creating.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/select_region_after_creating-min.gif" style="width:100%;"/>
 
 <br />
 
@@ -119,7 +119,7 @@ This option adds line numbers to the text content to annotate in the labeling ed
 
 When checked, this option allow users to annotate all occurences of a text in the current task in one step.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/label_all_occurence.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/label_all_occurence-min.gif" style="width:100%;"/>
 
 ## Labeling editor Customizations
 
@@ -181,7 +181,7 @@ For obtaining the above display on a NER project, the config should look as foll
 
 Notice how users can search for the desired label using the filter bar:
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ner_label_search.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ner_label_search-min.gif" style="width:100%;"/>
 
 <br />
 
@@ -229,19 +229,19 @@ Using the following Project Configuration
 
 we'll obtain the output illustrated below:
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/labeling_scroll_bar.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/labeling_scroll_bar-min.gif" style="width:100%;"/>
 
 ## Comments on the Labeling Page
 
 Since version 4.10.0, NLP Lab offers enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature enhances the communication between the annotators, improves work efficiency and enhances productivity. In order to use this feature, there is a New Burger menu at the top right corner of the labeling page. The dropdown through this menu allows users to add, update, and delete comments.
 
-![Comments](/assets/images/annotation_lab/4.10.0/2.gif)
+![Comments](/assets/images/annotation_lab/4.10.0/2-min.gif)
 
 ## Tags from the Labeling Screen
 
 From version 4.10 onwards, NLP Lab introduces an enhanced tags feature for labeling pages. This addition offers users a convenient method to create, attach, and delete tags directly on the labeling page. It greatly enhances organization and boosts productivity by streamlining task management, granting users greater flexibility in classifying and monitoring their labeled data. Similar to the aforementioned comment feature, this can also be accessed from the burger menu at the top right corner of the labeling page. From the dropdown, select "Assign Tags".
 
-![tags](/assets/images/annotation_lab/4.10.0/3.gif)
+![tags](/assets/images/annotation_lab/4.10.0/3-min.gif)
 
 Once the users select the tag/tags, they will be displayed against the tasks on the tasks page.
 
@@ -249,7 +249,7 @@ Once the users select the tag/tags, they will be displayed against the tasks on 
 
 Label configuration editor and <es>Preview Window</es> covers 50/50 part of the screen. It can make editing larger XML configurations difficult. For a better editing experience, we can use the Toggle Preview Window button to have the editor use full screen width.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/toggle_preview_window.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/toggle_preview_window-min.gif" style="width:100%;"/>
 
 ## Switch Role
 
