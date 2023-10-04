@@ -57,4 +57,16 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/ocr/PPTX_TABLE.ipynb
+        - title: Table and Form detection in Document Images
+          id: table_form_detection_document_images  
+          image: 
+              src: /assets/images/Table_and_Form_detection_in_Document_Images.svg
+          excerpt: This demo detects tables and forms in documents using our pre-trained Spark OCR model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/IMAGE_TABLE_FORM_DETECTION/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageTableAndFormDetection.ipynb
 ---

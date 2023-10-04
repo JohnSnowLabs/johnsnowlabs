@@ -58,7 +58,19 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_CLINICAL_MULTI.ipynb     
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_CLINICAL_MULTI.ipynb
+        - title: Model Augmentation with LangTest
+          id: model_augmentation_langtest
+          image: 
+              src: /assets/images/Model_Augmentation_with_LangTest.svg
+          excerpt: In this demo, We are showing the results of the Original Model on the original text and on the corruped text. In addition, We are showing the result of the Langtest model which is augmented with langtest library for corrupted text cases.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/LANGTEST_NER/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/LANGTEST_NER.ipynb
         - title: Identify diagnosis and symptoms assertion status
           id: identify_diagnosis_and_symptoms_assertion_status
           image: 

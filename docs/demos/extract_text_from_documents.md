@@ -81,5 +81,16 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/ocr/PPTX_TABLE.ipynb
-        
+        - title: Detect Text in Document Images
+          id: detect_text_document_images 
+          image: 
+              src: /assets/images/Detect_Text_in_Document_Images.svg
+          excerpt: This demo detects text in documents using our pre-trained Spark OCR model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/TEXT_DETECTION_DIT/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageTextDetection.ipynb        
 ---
