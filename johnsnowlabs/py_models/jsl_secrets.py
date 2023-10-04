@@ -224,19 +224,14 @@ class JslSecrets(WritableBaseModel):
         try:
             # we wrap this flow with try/except, so that incase we get invalid license data
             # we can still try loading from JSL-Home afterwards
-            if all(
+            if any(
                 [
-                    any(
-                        [
-                            hc_license,
-                            hc_secret,
-                            ocr_secret,
-                            ocr_license,
-                            fin_license,
-                            leg_license,
-                        ]
-                    ),
-                    all([aws_access_key, aws_key_id]),
+                    hc_license,
+                    hc_secret,
+                    ocr_secret,
+                    ocr_license,
+                    fin_license,
+                    leg_license,
                 ]
             ):
                 # Some found_secrets are supplied

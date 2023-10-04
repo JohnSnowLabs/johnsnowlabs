@@ -171,6 +171,9 @@ def install(
                 db=get_db_client_for_token(databricks_host, databricks_token),
                 install_suite=suite,
                 cluster_id=databricks_cluster_id,
+                medical_nlp=nlp,
+                spark_nlp=spark_nlp,
+                visual=visual,
             )
 
         else:
