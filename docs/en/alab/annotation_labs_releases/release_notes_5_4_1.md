@@ -43,8 +43,8 @@ If you are an admin user with access to the "Hub" menu, you will find all downlo
 - **Initiate Publishing:** Locate the model you wish to publish and click the three-dot menu next to it. Choose the "Publish" option, which will direct you to a pre-filled form.
 - **Review and Confirm:** Complete any remaining fields and review the model information. Click "Submit" to finalize. 
 - **GitHub Pull-Request:** A Pull-Request containing your model details will be generated on your behalf.
-    - For Open-Source Models, the Pull Request will be sent to the Repository: "JohnSnowLabs/spark-nlp".
-    - For Licensed Models, the Pull Request will be sent to the Repository: "JohnSnowLabs/johnsnowlabs".
+    - For Open-Source Models, the Pull Request will be sent to the Repository: "[JohnSnowLabs/spark-nlp](https://github.com/JohnSnowLabs/spark-nlp)".
+    - For Licensed Models, the Pull Request will be sent to the Repository: "[JohnSnowLabs/johnsnowlabs](https://github.com/JohnSnowLabs/johnsnowlabs)".
 - **Final Steps:** Your Pull Request will be reviewed by the NLP Models HUB team and, upon approval, will be published to NLP Models HUB.
 
 This new feature eliminates the need to manually download the model from NLP Lab and upload it to the NLP Models HUB form. It also pre-fills in as much as possible the model form with model metadata, usage code, and example results. This way, the model publication becomes accessible and convenient for non-technical users who want to share their models with the community. 
@@ -52,7 +52,7 @@ This new feature eliminates the need to manually download the model from NLP Lab
 ![Integration](/assets/images/annotation_lab/5.3.0/2.gif)
 
 ## Zero-Shot NER Prompts are now available for FREE
-Prompt engineering gains traction as a fast-evolving discipline that aims to guide advanced language models like GPT-3 to generate precise and intended results, such as answering queries or constructing meaningful narratives. While NLP Lab has previously provided support for prompt engineering, the feature was restricted to users with license keys.  We are now taking this a step further by offering this entity extraction feature for free to a broader user base.
+Prompt engineering is gaining traction as a fast-evolving discipline that aims to guide advanced language models like GPT-3 to generate precise and intended results, such as answering queries or constructing meaningful narratives. While NLP Lab has previously provided support for prompt engineering, the feature was restricted to users with license keys.  We are now taking this a step further by offering this entity extraction feature for free to a broader user base.
 
 With the 5.4 release, NLP Lab enables the unrestricted design and application of Zero-Shot Prompts for entity identification in text. To create NER prompts, users should first download the Roberta zero-shot NER model from the Models HUB. Afterward, they can select the Open-source Domain while setting up an NER prompt. As part of prompt definition, users can specify one or more questions, the answers to which will serve as the target entities for annotation.
 
@@ -152,7 +152,7 @@ Bug Fixes
     
     The latest version, has significantly reduced the file size of exported projects by adopting a streamlined approach. This enhancement is achieved by selectively including only the OCR images of the filtered files, thereby optimizing both storage efficiency and overall project performance.
 
-- **Tagging issues while importing synthetic tasks**
+- **Tagging issues while importing synthetic tasks:**
     
     Previously, users were able to assign both “task” and “train” tags to the synthetically generated tasks, due to which when multiple tags were selected then some tasks were hidden. The issue has been fixed and users can no longer assign the "test” and “train” tags to the tasks in this version.
 
@@ -208,7 +208,6 @@ Bug Fixes
 	In the previous version, model evaluations would commence even if the necessary resources were unavailable or if the maximum server count had been reached. To address this, a new approach has been implemented. When a model evaluation is in progress, a dedicated server is generated on the cluster page. This server is designed to be automatically removed once the evaluation concludes. Furthermore, should the maximum server count be reached and a user initiates an evaluation, an error message indicating "Maximum Model Server Limit Reached" will be displayed.
 
 	Additionally, users have the option to delete an evaluation server from the cluster page. This action results in the evaluation being aborted on the Train page, accompanied by a notification banner indicating the aborted evaluation.
-
 
 	![Screenshot 2023-08-17 at 9 28 03 AM](/assets/images/annotation_lab/5.3.0/10.png)
 	
