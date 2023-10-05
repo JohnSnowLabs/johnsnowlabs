@@ -2,10 +2,10 @@
 layout: docs
 header: true
 seotitle: NLP Lab | John Snow Labs
-title: NLP Lab Release Notes 5.3.2
-permalink: /docs/en/alab/annotation_labs_releases/release_notes_5_3_2
+title: NLP Lab Release Notes 5.4.1
+permalink: /docs/en/alab/annotation_labs_releases/release_notes_5_4_1
 key: docs-licensed-release-notes
-modify_date: 2023-08-30
+modify_date: 2023-09-04
 show_nav: true
 sidebar:
   nav: annotation-lab
@@ -17,7 +17,7 @@ sidebar:
 
 Release date: **04-09-2023**
 
-# NLP Lab 5.4 – Empowering Model Sharing, Enhanced Annotation, and Azure Blob Backups
+## NLP Lab 5.4 – Empowering Model Sharing, Enhanced Annotation, and Azure Blob Backups
 We are thrilled to release NLP Lab 5.4 which brings a host of exciting enhancements to further empower your NLP journey. In this release, we’ve focused on simplifying model sharing, making advanced features more accessible with FREE access to Zero-shot NER prompting, streamlining the annotation process with completions and predictions merging, and introducing Azure Blob backup integration.
 
 ## Publish Models Directly into Models HUB
@@ -34,7 +34,7 @@ To use this feature, you’ll need to link your GitHub account with NLP Lab. Her
 
 Now, you are all set to publish your models to the NLP Models HUB!
 
-![Integration](/assets/images/annotation_lab/5.3.0/1.gif)
+![Integration](/assets/images/annotation_lab/5.4.1/1.gif)
 
 ### Steps to publish your NLP Lab trained model to NLP Models HUB
 
@@ -49,7 +49,7 @@ If you are an admin user with access to the "Hub" menu, you will find all downlo
 
 This new feature eliminates the need to manually download the model from NLP Lab and upload it to the NLP Models HUB form. It also pre-fills in as much as possible the model form with model metadata, usage code, and example results. This way, the model publication becomes accessible and convenient for non-technical users who want to share their models with the community. 
 
-![Integration](/assets/images/annotation_lab/5.3.0/2.gif)
+![Integration](/assets/images/annotation_lab/5.4.1/2.gif)
 
 ## Zero-Shot NER Prompts are now available for FREE
 Prompt engineering is gaining traction as a fast-evolving discipline that aims to guide advanced language models like GPT-3 to generate precise and intended results, such as answering queries or constructing meaningful narratives. While NLP Lab has previously provided support for prompt engineering, the feature was restricted to users with license keys.  We are now taking this a step further by offering this entity extraction feature for free to a broader user base.
@@ -58,16 +58,16 @@ With the 5.4 release, NLP Lab enables the unrestricted design and application of
 
 Additionally, for enhanced performance, zero-shot prompts can be seamlessly integrated with GPT prompts, programmatic labeling, and other pre-trained DL models to achieve even more accurate and effective outcomes.
 
-![Integration](/assets/images/annotation_lab/5.3.0/3.gif)
+![Integration](/assets/images/annotation_lab/5.4.1/3.gif)
 
 ## Merge Completions and Predictions for enhanced annotation
 Responding to customer feedback, version 5.4 brings a substantial upgrade to our annotation capabilities. Users can now consolidate individual completions and predictions into one unified completion. This merging can occur between predictions and completions and can involve single or multiple annotators.
 
-![Integration](/assets/images/annotation_lab/5.3.0/4.png)
+![Integration](/assets/images/annotation_lab/5.4.1/4.png)
 
 To access this feature, users must first activate the 'Merge Prediction' option within the project configuration settings.
 
-![Integration](/assets/images/annotation_lab/5.3.0/5.gif)
+![Integration](/assets/images/annotation_lab/5.4.1/5.gif)
 
 After enabling this setting, users will have the ability to combine multiple completions into a single, unified completion for more streamlined annotation. For this, you simply select the versions you want to merge from the Versions panel and click the Merge button. NLP Lab makes sure to clean up the resulting completion by only retaining one version of identical chunk annotations. 
 
@@ -78,17 +78,17 @@ Additionally, this new feature streamlines the review process, as reviewers can 
 ## Backup Integration with Azure Blob in NLP Lab 
 In this new version, NLP Lab introduces a feature that allows users to easily configure backups for databases and files directly to Azure Blob, all through a user-friendly interface. Administrators can manage these backup settings by navigating to the System Settings tab, where they can enter the necessary Azure Blob credentials. Users have the flexibility to choose from multiple backup frequencies and specify a particular Blob container for storing the backup files. Once configured, new backups will be auto-generated and stored in the designated Azure Blob container according to the chosen schedule.
 
-![Integration](/assets/images/annotation_lab/5.3.0/6.png)
+![Integration](/assets/images/annotation_lab/5.4.1/6.png)
 
 This feature plays a crucial role in disaster recovery planning. For comprehensive guidance, refer to the "instruction.md" file included with the installation artifacts of this release. Below is an example of backup files in Azure Blob configured as per the settings in the NLP Lab.
 
-![Integration](/assets/images/annotation_lab/5.3.0/7.png)
+![Integration](/assets/images/annotation_lab/5.4.1/7.png)
 
 ### Improvements
 #### Improved User Experience for Synthetic Text Generation
 In version 5.4, we have overhauled the Synthetic Text Generation page to provide a more user-friendly and efficient experience, while preserving all the familiar features and capabilities. The parameter settings, which were previously visible on the main page by default, have been moved to a convenient pop-up window, resulting in a cleaner layout. To access these settings, simply click on the settings icon located on the right-hand side of the page. It's important to note that all settings, parameters, and functionalities remain unchanged from previous versions. 
 
-![Integration](/assets/images/annotation_lab/5.3.0/8.gif)
+![Integration](/assets/images/annotation_lab/5.4.1/8.gif)
 
 #### Switching between Section-Based Annotation (SBA) and Non-SBA Configurations
 
@@ -100,7 +100,7 @@ NLP Lab 5.4 includes several subtle yet significant improvements to the Section 
 - **Sticky "Section Title" Column and "Label Name" Row:** To facilitate error-free association assignments, both the Section Title Row and Labels Row are now sticky, ensuring they remain visible during scrolling.
 - **Adaptive Title Cell Width:** The Title Cells have been dynamically calibrated to adjust their width based on the content they contain, enhancing the readability and usability of the interface.
   
-![Integration](/assets/images/annotation_lab/5.3.0/9.gif)
+![Integration](/assets/images/annotation_lab/5.4.1/9.gif)
 
 #### Validation for Assertion Labels in Project Configuration
 
@@ -134,7 +134,7 @@ Bug Fixes
     
     In earlier versions, editing tasks generated by ChatGPT when multiple tasks were being generated caused auto-refresh issues. The latest version reinstates auto-refresh after task editing is complete.
     
- ![Integration](/assets/images/annotation_lab/5.3.0/10.gif)
+ ![Integration](/assets/images/annotation_lab/5.4.1/10.gif)
 
 - **Confidence Scores for Pre-annotations generated by OpenAI Prompts:**
     
@@ -192,81 +192,81 @@ Bug Fixes
     
     In the earlier version, the benchmarking for the 'Inside' tag was not consistently displayed when viewing the benchmarking results in the UI for certain labels. This information was accessible during model training but was not visible in the UI. We have now resolved this issue.
 
-    ![Integration](/assets/images/annotation_lab/5.3.0/11.png)
+    ![Integration](/assets/images/annotation_lab/5.4.1/11.png)
 
 ## Bug Fixes
 - **For HTML sources projects replace the dialogue in PREVIEWS with the JSL link**
    
-	The preview format for HTML Dialogues & Conversations projects has been enhanced to feature a JSL link in place of the traditional 'Dialogues'.
-	
+    The preview format for HTML Dialogues & Conversations projects has been enhanced to feature a JSL link in place of the traditional 'Dialogues'.
+    
 - **Tags are not consistently assigned to Tasks**
 
-	Previously, tasks generated from external providers lacked assigned tags, posing challenges for users in distinguishing imported tasks' sources. To address this, tags are now consistently assigned when clicking on the edges of tag options or the color indicators instead of only being assigned when clicking directly on the tag name.
-	
+    Previously, tasks generated from external providers lacked assigned tags, posing challenges for users in distinguishing imported tasks' sources. To address this, tags are now consistently assigned when clicking on the edges of tag options or the color indicators instead of only being assigned when clicking directly on the tag name.
+    
 - **Model evaluation starts before the required resources are available when the maximum server count is reached**
 
-	In the previous version, model evaluations would commence even if the necessary resources were unavailable or if the maximum server count had been reached. To address this, a new approach has been implemented. When a model evaluation is in progress, a dedicated server is generated on the cluster page. This server is designed to be automatically removed once the evaluation concludes. Furthermore, should the maximum server count be reached and a user initiates an evaluation, an error message indicating "Maximum Model Server Limit Reached" will be displayed.
+    In the previous version, model evaluations would commence even if the necessary resources were unavailable or if the maximum server count had been reached. To address this, a new approach has been implemented. When a model evaluation is in progress, a dedicated server is generated on the cluster page. This server is designed to be automatically removed once the evaluation concludes. Furthermore, should the maximum server count be reached and a user initiates an evaluation, an error message indicating "Maximum Model Server Limit Reached" will be displayed.
 
-	Additionally, users have the option to delete an evaluation server from the cluster page. This action results in the evaluation being aborted on the Train page, accompanied by a notification banner indicating the aborted evaluation.
+    Additionally, users have the option to delete an evaluation server from the cluster page. This action results in the evaluation being aborted on the Train page, accompanied by a notification banner indicating the aborted evaluation.
 
-	![Screenshot 2023-08-17 at 9 28 03 AM](/assets/images/annotation_lab/5.3.0/10.png)
-	
+    ![Screenshot 2023-08-17 at 9 28 03 AM](/assets/images/annotation_lab/5.4.1/10.png)
+    
 - **For all Search Fields, White Space before/after the "search keyword" causes the search action to return no results**
 
-	Previously, in all Search Fields, having white space before or after the "search keyword" resulted in the search action yielding no results. Consequently, a change has been implemented to ensure that search results are displayed accurately regardless of any leading/trailing whitespace around the search keyword. This enhancement is universally applicable to all search fields within the application.
-	
+    Previously, in all Search Fields, having white space before or after the "search keyword" resulted in the search action yielding no results. Consequently, a change has been implemented to ensure that search results are displayed accurately regardless of any leading/trailing whitespace around the search keyword. This enhancement is universally applicable to all search fields within the application.
+    
 - **The duplication error for Section Field does not resolve if the user changes/deletes the value of the other duplicate field**
 
-  	Previously, if a Section-based Rule with a duplicate name was added, the error would still show as if the first originally named rule was edited to a different name. With Version 5.3.0, the duplication error will now be resolved if any of the rules that fall under the duplication case are edited to be unique.
-	
+    Previously, if a Section-based Rule with a duplicate name was added, the error would still show as if the first originally named rule was edited to a different name. With Version 5.3.0, the duplication error will now be resolved if any of the rules that fall under the duplication case are edited to be unique.
+    
 - **Incorrect active section name is shown in the top bar for pages without relevant section**
 
-	In the case of a multi-page task that does not have relevant sections, the previously active section will no longer appear at the page's top. Additionally, if a page contains no pertinent sections, the Active tab on the task's upper part will be displayed in a subdued manner.
-	
+    In the case of a multi-page task that does not have relevant sections, the previously active section will no longer appear at the page's top. Additionally, if a page contains no pertinent sections, the Active tab on the task's upper part will be displayed in a subdued manner.
+    
 - **Tasks imported in Visual NER Project are not visible until the tasks page is refreshed**
 
-	The issue of the OCR task imported in Visual NER projects not appearing on the Tasks page and the Import button staying disabled until manually refreshed has been resolved in this version.
-	
+    The issue of the OCR task imported in Visual NER projects not appearing on the Tasks page and the Import button staying disabled until manually refreshed has been resolved in this version.
+    
 - **Clicking on undo button in the playground resets every detail of the rule deployed**
 
-	Previously, using the Undo button in the playground didn't restore rules to their original state after modifications. The Undo action cleared all aspects (suffix, rule type, content length) from deployed playground rules. This problem has now been addressed.
-	
+    Previously, using the Undo button in the playground didn't restore rules to their original state after modifications. The Undo action cleared all aspects (suffix, rule type, content length) from deployed playground rules. This problem has now been addressed.
+    
 - **Section Based Annotation: Merger of consecutive sections of the same name**
 
-	Previously, when the option "Merge Consecutive sections of the same type" was chosen, any two sections created by the rule that appeared consecutively were combined into a single section. This approach posed a challenge as it could result in an elongated chain of sections if all sections were consecutive.
+    Previously, when the option "Merge Consecutive sections of the same type" was chosen, any two sections created by the rule that appeared consecutively were combined into a single section. This approach posed a challenge as it could result in an elongated chain of sections if all sections were consecutive.
 
-	With the recent improvement, only the relevant sections with matching section names are merged. For instance, if there are sections named S1, S1, S3, S1, S2, S2 created consecutively, only the first occurrence of S1 and the final instance of S2 will be merged into a single section, while S3 will remain unaffected.
+    With the recent improvement, only the relevant sections with matching section names are merged. For instance, if there are sections named S1, S1, S3, S1, S2, S2 created consecutively, only the first occurrence of S1 and the final instance of S2 will be merged into a single section, while S3 will remain unaffected.
 
- 	![sbamerge](/assets/images/annotation_lab/5.3.0/11.gif)
+    ![sbamerge](/assets/images/annotation_lab/5.4.1/11.gif)
 
 - **Section Based Annotation: Model is redeployed if the same classifier is modified for the same project**
 
-	The sections classifier no longer undergoes redeployment each time classifier options are modified for the same model. Additionally, the section classifier remains unaffected when an additional classifier rule using the same classifier is introduced. Consequently, in scenarios involving task importation, newly added classifier rules are integrated into the new tasks.
+    The sections classifier no longer undergoes redeployment each time classifier options are modified for the same model. Additionally, the section classifier remains unaffected when an additional classifier rule using the same classifier is introduced. Consequently, in scenarios involving task importation, newly added classifier rules are integrated into the new tasks.
 
-	However, the section classifier is automatically deployed in situations where a new classifier server is added and the previous one is subsequently removed.
-	
+    However, the section classifier is automatically deployed in situations where a new classifier server is added and the previous one is subsequently removed.
+    
 - **"Filter pre-annotations according to my latest completion" shows predictions for deleted sections in SBA-enabled project**
 
-	There was an inconsistency when applying "Filter pre-annotations according to my latest completion" for SBA enabled task. The problem of the filter not functioning correctly, resulting in predictions for deleted sections, has been resolved in version 5.3.0.
-	
+    There was an inconsistency when applying "Filter pre-annotations according to my latest completion" for SBA enabled task. The problem of the filter not functioning correctly, resulting in predictions for deleted sections, has been resolved in version 5.3.0.
+    
 - **RE prompts using NER Prompts cannot be deployed in the playground**
-	
-	Previously, errors were encountered in the playground when deploying the Relation prompt using the NER prompt in the playground. With this update, these issues have been resolved.
-	
+    
+    Previously, errors were encountered in the playground when deploying the Relation prompt using the NER prompt in the playground. With this update, these issues have been resolved.
+    
 - **Generate Synthetic Text: Unable to import generated text if the SBA project has Classification Rules**
 
-	There was a singular case for Section-based Projects, where adding classification section-based rules to create sections prevented the import of the generated synthetic text. In version 5.3.0, this has been fixed and now users can import the synthetic tasks after or even while the classification model for the section rules is being deployed. 
-	
+    There was a singular case for Section-based Projects, where adding classification section-based rules to create sections prevented the import of the generated synthetic text. In version 5.3.0, this has been fixed and now users can import the synthetic tasks after or even while the classification model for the section rules is being deployed. 
+    
 - **Validation missing when deleting section rule which is already associated with label/choice in the Configuration > Customize Labels page** 
-	Previously, when a user tried to delete the section rule that was associated with label/choice, there was no warning suggesting user that the section is linked to labels/choices in the configuration. The issue has now been resolved and users are given a warning dialog box about the link between the section and the labels/choices and he/she can either proceed and delete the section or cancel it and make necessary changes in configuration.
-	
+    Previously, when a user tried to delete the section rule that was associated with label/choice, there was no warning suggesting user that the section is linked to labels/choices in the configuration. The issue has now been resolved and users are given a warning dialog box about the link between the section and the labels/choices and he/she can either proceed and delete the section or cancel it and make necessary changes in configuration.
+    
 - **Filter XML code does not filter labels for the NER project**
 
-	Before, the Filter XML function failed to filter the label/assertion list effectively. This issue has now been resolved. When a project's taxonomy contains a substantial number of NER/Assertion labels, the display of the taxonomy consumes significant screen space, impeding annotators' navigation through the labels. To address this, Annotation Lab has introduced a search feature for labels within NER projects, offering an autocomplete search option.
+    Before, the Filter XML function failed to filter the label/assertion list effectively. This issue has now been resolved. When a project's taxonomy contains a substantial number of NER/Assertion labels, the display of the taxonomy consumes significant screen space, impeding annotators' navigation through the labels. To address this, Annotation Lab has introduced a search feature for labels within NER projects, offering an autocomplete search option.
 
-	For incorporating the search bar targeting NER Labels or Choices, utilize the Filter tag as exemplified in the subsequent XML configuration. This filtering mechanism is also applicable to Visual NER filters.
+    For incorporating the search bar targeting NER Labels or Choices, utilize the Filter tag as exemplified in the subsequent XML configuration. This filtering mechanism is also applicable to Visual NER filters.
 
-![ner_label_search](/assets/images/annotation_lab/5.3.0/12.gif)
+![ner_label_search](/assets/images/annotation_lab/5.4.1/12.gif)
 
 
 </div><div class="prev_ver h3-box" markdown="1">
