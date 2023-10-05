@@ -5,8 +5,8 @@ RUN apt install ffmpeg libsm6 libxext6 vim -y
 
 # LABEL about the custom image
 LABEL maintainer="support@johnsnowlabs.com"
-LABEL version="4.2.0"
-LABEL description="This is custom Docker Image for the johnsnowlabs 4.2.0 library."
+LABEL version="5.1.1"
+LABEL description="This is custom Docker Image for the johnsnowlabs 5.1.1 library."
 
 # Installing Python 3.7
 RUN apt install -y python3 python3-pip python3-venv
@@ -25,7 +25,7 @@ RUN cd /home/jsl && \
     pip install fastapi==0.85.1 uvicorn==0.18.3 wget==3.2
 
 # Install Licensed Python Libs and Pre-Download Jars
-RUN /home/jsl/jslenv/bin/python -c "from johnsnowlabs import *;jsl.install(json_license_path='/home/jsl/license.json')"
+RUN /home/jsl/jslenv/bin/python -c "from johnsnowlabs import *;nlp.install(json_license_path='/home/jsl/license.json')"
 
 # Setting workdir
 WORKDIR /home/jsl
