@@ -21,7 +21,7 @@ RUN cd /home/jsl && \
     . /home/jsl/jslenv/bin/activate && \
     pip install --upgrade pip && \
     pip install cmake==3.24.1.1 && \
-    pip install johnsnowlabs==4.2.3rc1 && \
+    pip install johnsnowlabs==5.1.1 && \
     pip install fastapi==0.85.1 uvicorn==0.18.3 wget==3.2
 
 # Install Licensed Python Libs and Pre-Download Jars
