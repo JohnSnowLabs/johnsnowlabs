@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Detect Problems, Tests and Treatments (ner_clinical) in Arabic
+title: Detect Problems, Tests and Treatments (Arabic)
 author: John Snow Labs
 name: ner_clinical
 date: 2023-10-06
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Pretrained named entity recognition deep learning model for clinical terms in Arabic. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state of the art model for NER: Chiu & Nicols, Named Entity Recognition with Bidirectional LSTM-CNN.
+Pretrained named entity recognition deep learning model for clinical terms in Arabic. The SparkNLP deep learning model (MedicalNerModel) is inspired by a former state-of-the-art model for NER: Chiu & Nicols, Named Entity Recognition with Bidirectional LSTM-CNN.
 
 ## Predicted Entities
 
@@ -55,8 +55,8 @@ embeddings = WordEmbeddingsModel.pretrained("arabic_w2v_cc_300d", "ar")\
     .setOutputCol("embeddings")
 
 ner_model = MedicalNerModel.pretrained("ner_clinical", "ar", "clinical/models")\
-        .setInputCols(["sentence","token","embeddings"])\
-        .setOutputCol("ner")
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner")
 
 ner_converter = NerConverterInternal()\
     .setInputCols(['sentence', 'token', 'ner'])\
@@ -99,8 +99,8 @@ val ner_model = MedicalNerModel.pretrained("ner_clinical", "ar", "clinical/model
     .setOutputCol("ner")
 
 val ner_converter = new NerConverterInternal()
-    .setInputCols(Array('sentence', 'token', 'ner'))
-    .setOutputCol('ner_chunk')
+    .setInputCols(Array("sentence", "token", "ner"))
+    .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline().setStages(Array(
     document_assembler, 
@@ -153,13 +153,11 @@ val result = pipeline.fit(sample_data).transform(sample_data)
 ## Benchmarking
 
 ```bash
-               precision    recall  f1-score   support
-
+       label  precision    recall  f1-score   support
         TEST       0.98      1.00      0.99       450
    TREATMENT       0.96      0.96      0.96       321
      PROBLEM       0.96      0.98      0.97       733
-
-   micro avg       0.96      0.98      0.97      1504
-   macro avg       0.96      0.98      0.97      1504
-weighted avg       0.96      0.98      0.97      1504
+   micro_avg       0.96      0.98      0.97      1504
+   macro_avg       0.96      0.98      0.97      1504
+weighted_avg       0.96      0.98      0.97      1504
 ```
