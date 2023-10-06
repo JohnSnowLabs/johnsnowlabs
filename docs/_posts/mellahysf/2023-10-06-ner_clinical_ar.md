@@ -51,7 +51,7 @@ tokenizer = Tokenizer()\
     .setOutputCol("token")
 
 embeddings = WordEmbeddingsModel.pretrained("arabic_w2v_cc_300d", "ar")\
-    .setInputCols(["document", "token"])\
+    .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
 ner_model = MedicalNerModel.pretrained("ner_clinical", "ar", "clinical/models")\
@@ -59,17 +59,18 @@ ner_model = MedicalNerModel.pretrained("ner_clinical", "ar", "clinical/models")\
     .setOutputCol("ner")
 
 ner_converter = NerConverterInternal()\
-    .setInputCols(['sentence', 'token', 'ner'])\
-    .setOutputCol('ner_chunk')
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")
 
-pipeline = Pipeline(stages=[
-    document_assembler, 
-    sentence_detector,
-    tokenizer,
-    embeddings,
-    ner_model,
-    ner_converter   
-    ])
+pipeline = Pipeline(
+    stages=[
+        document_assembler, 
+        sentence_detector,
+        tokenizer,
+        embeddings,
+        ner_model,
+        ner_converter
+])
 
 sample_text =  """تاريخ الزيارة: 25 سبتمبر 2023 - المريضة: فاطمة علي - العمر: 48 سنة - الجنس: أنثى - المشاكل: 1.  مشكل ارتفاع في مستويات في الدم 2. ارتفاع مستوى الكوليستيرول في الدم 3. اضطراب في وظائف الغدة الدرقية - الفحوصات: 1. قياس مستوى السكر في الدم 2. تحليل مستوى الكوليستيرول في الدم 3. اختبار وظائف الغدة الدرقية - العلاجات: 1. وصف دواء لمراقبة وتنظيم مستوى السكر في الدم (ميتفورمين 500 ملغ يوميا) 2. وصف دواء لتخفيض مستوى الكوليستيرول (ستاتين 20 ملغ يوميا) 3. وصف العلاج اللازم لتحسين وظائف الغدة الدرقية (ليفوتيروكسين 50 ميكروغرام يوميا)، بالإضافة إلى توجيهات بشأن نمط حياة صحي تتضمن اتباع نظام غذائي مناسب وممارسة الرياضة بانتظام."""
 
