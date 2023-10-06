@@ -36,6 +36,7 @@ Pretrained named entity recognition deep learning model for clinical terms in Ar
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -152,7 +153,7 @@ val result = pipeline.fit(sample_data).transform(sample_data)
 ## Benchmarking
 
 ```bash
-             precision    recall  f1-score   support
+               precision    recall  f1-score   support
 
         TEST       0.98      1.00      0.99       450
    TREATMENT       0.96      0.96      0.96       321
