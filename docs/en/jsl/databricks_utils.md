@@ -224,7 +224,7 @@ nlp.run_in_databricks(
     databricks_cluster_id=cluster_id,
     databricks_host=host,
     databricks_token=token,
-    run_name="Notebook Test",
+    run_name="Parameterized Notebook",
     dst_path=dst_path,
     parameters={"input_text": "I love peanut butter", "model_name": "sentiment"},
 )
@@ -251,7 +251,7 @@ nlp.run_in_databricks(
     databricks_cluster_id=cluster_id,
     databricks_host=host,
     databricks_token=token,
-    run_name="Notebook Test",
+    run_name="Parameterized Script",
     parameters=[arg1, arg2],
 )
 
