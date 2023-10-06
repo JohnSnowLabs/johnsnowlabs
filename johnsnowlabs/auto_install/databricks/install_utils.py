@@ -61,6 +61,7 @@ def create_cluster(
     headers=None,
     block_till_cluster_ready: bool = True,
     write_db_credentials: bool = True,
+    extra_pip_installs: Optional[List[str]] = None,
 ) -> str:
     db = get_db_client_for_token(databricks_host, databricks_token)
 
@@ -143,6 +144,10 @@ def create_cluster(
         spark_nlp=spark_nlp,
         visual=visual,
     )
+
+    if extra_pip_installs:
+        install_list_of_pypi_ref_to_cluster(db, cluster_id, extra_pip_installs)
+
     if block_till_cluster_ready:
         block_till_cluster_ready_state(db, cluster_id)
 
@@ -189,6 +194,16 @@ def list_node_types(db: DatabricksAPI):
     pprint(node_types)
 
 
+def install_list_of_pypi_ref_to_cluster(db: DatabricksAPI, cluster_id, pip_installs):
+    # expects list of pypy references, either 'numpy' or 'numpy==1.2.3'
+    for p in pip_installs:
+        if "==" in p:
+            package, version = p.split("==")
+        else:
+            package, version = p, None
+        install_py_lib_via_pip(db, cluster_id, package, version)
+
+
 def install_jsl_suite_to_cluster(
     db: DatabricksAPI,
     cluster_id: str,
@@ -197,21 +212,6 @@ def install_jsl_suite_to_cluster(
     spark_nlp: bool,
     visual: bool,
 ):
-    print("DEBUG: INSTALL TO CLUSTER", medical_nlp, spark_nlp, visual)
-    print(
-        "DEBUG: INSTALL TO CLUSTER",
-        install_suite.hc.get_py_path(),
-        install_suite.hc.get_java_path(),
-        medical_nlp,
-    )
-
-    print(
-        "DEBUG: INSTALL TO CLUSTER",
-        install_suite.nlp.get_py_path(),
-        install_suite.nlp.get_java_path(),
-        spark_nlp,
-    )
-
     py_deps = [
         {"package": Software.nlu.pypi_name, "version": settings.raw_version_nlu},
         {
@@ -241,6 +241,8 @@ def install_jsl_suite_to_cluster(
 
     for dep in py_deps:
         install_py_lib_via_pip(db, cluster_id, dep["package"], dep["version"])
+    # TODO remove when NLU is compatible with pandas >=2
+    install_py_lib_via_pip(db, cluster_id, "pandas", "1.5.3")
 
     # Install Sparkr-NLP as last library, so we have the correct version
     if (
@@ -334,7 +336,10 @@ def install_py_lib_via_pip(
         pypi["version"] = version
     payload = [dict(pypi=pypi)]
     db.managed_library.install_libraries(cluster_id=cluster_id, libraries=payload)
-    print(f"Installed {pypi_lib} ✅")
+    if version:
+        print(f"Installed {pypi_lib}=={version} ✅")
+    else:
+        print(f"Installed {pypi_lib} ✅")
 
 
 def install_py4j_lib_via_hdfs(db: DatabricksAPI, cluster_id: str, lib: LocalPy4JLib):
