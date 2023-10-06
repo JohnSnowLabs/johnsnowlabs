@@ -1,4 +1,3 @@
-import base64
 import inspect
 import os.path
 import time
@@ -154,7 +153,7 @@ def run_local_py_script_as_task(
             raise Exception("dst_path must be provided for notebook tasks")
         file_name = os.path.split(task_definition)[-1]
         run_id = submit_notebook_to_databricks(
-            db, task_definition, cluster_id, dst_path
+            db, task_definition, cluster_id, dst_path, parameters
         )
 
     else:
@@ -295,6 +294,7 @@ def run_in_databricks(
     run_name: str = None,
     block_till_complete=True,
     dst_path: str = None,
+    parameters: Any = None,
 ):
     """
 
@@ -312,6 +312,7 @@ def run_in_databricks(
     :param block_till_complete: if True, this function will block until the task is complete
     :param dst_path: path to store the python script/notebook. in databricks, mandatory for notebooks.
         I.e. /Users/<your@databricks.email.com>/test.ipynb
+    :param parameters: parameters to pass to the python script/notebook formatted accordingly to https://docs.databricks.com/en/workflows/jobs/create-run-jobs.html#pass-parameters-to-a-databricks-job-task
     :return: job_id
     """
     from johnsnowlabs.auto_install.databricks.install_utils import (
@@ -325,6 +326,7 @@ def run_in_databricks(
         cluster_id=databricks_cluster_id,
         run_name=run_name,
         dst_path=dst_path,
+        parameters=parameters,
     )
 
     if not block_till_complete:
@@ -349,7 +351,9 @@ def run_in_databricks(
     return job_id
 
 
-def submit_notebook_to_databricks(db, local_nb_path, cluster_id, remote_path):
+def submit_notebook_to_databricks(
+    db: DatabricksAPI, local_nb_path, cluster_id, remote_path, parameters=None
+):
     # Instantiate the DatabricksAPI client
     # Read the local notebook content
     with open(local_nb_path, "rb") as file:
@@ -371,6 +375,9 @@ def submit_notebook_to_databricks(db, local_nb_path, cluster_id, remote_path):
 
     # Define the notebook task
     notebook_task = {"notebook_path": remote_path}
+
+    if parameters:
+        notebook_task["base_parameters"] = parameters
 
     # Submit the job to run the notebook
     response = db.jobs.submit_run(

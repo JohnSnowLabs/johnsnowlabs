@@ -75,6 +75,7 @@ which are forwarded to the [model.predict()](https://nlp.johnsnowlabs.com/docs/e
 ## Submit a Task with nlp.run_in_databricks
 Easily run Python code in a Databricks cluster, using the John Snow Labs library. 
 The fastest way to test this out, is to create a cluster with `nlp.install()` and then use `nlp.run_in_databricks` to start a task.
+You can parameterize your jobs, according to the [Databricks docs](https://docs.databricks.com/en/workflows/jobs/create-run-jobs.html#pass-parameters-to-a-databricks-job-task) via the  
 ```python
 
 # Execute a Raw Python string as script on Databricks
@@ -153,7 +154,7 @@ nlp.run_in_databricks(my_function,
                       run_name='Function test')
 
 ```
-This example will print all columns of the resulting dataframe which contains emdical NER predictions.
+This example will print all columns of the resulting dataframe which contains medical NER predictions.
 
 ![databricks_cluster_submit_raw.png](/assets/images/jsl_lib/databricks_utils/submit_func.png)
 
@@ -199,6 +200,64 @@ nlp.run_in_databricks(nlp_test,
                       databricks_token=my_token,
                       run_name='nlp_test')
 ```
+
+
+
+
+## Parameterizing your Databricks Jobs
+
+You can parameterize `run_in_databricks` with parameters formatted according to the [job task API](https://docs.databricks.com/en/workflows/jobs/create-run-jobs.html#pass-parameters-to-a-databricks-job-task)
+
+
+
+
+### Parameterizing a Notebook run in Databricks
+In your notebook you can use `dbutils.widgets.text("my_parameter", "my_default_value")` and other [ipywidets](https://ipywidgets.readthedocs.io/en/7.7.0/examples/Widget%20List.html) to parameterize your notebook.
+You just pass a dictionary to `run_in_databricks` where `key=parameter_name` and `value=parameter_value`. 
+See this [example parameterized DB-Notebook](https://github.com/JohnSnowLabs/johnsnowlabs/tree/main/notebooks/parameterized_nb_example.ipynb) for a full example which you can use as `nb_path` parameter.
+
+```python
+nb_path = "parameterized_nb_example.ipynb"
+dst_path = "/Users/christian@johnsnowlabs.com/test.ipynb"
+nlp.run_in_databricks(
+    nb_path,
+    databricks_cluster_id=cluster_id,
+    databricks_host=host,
+    databricks_token=token,
+    run_name="Notebook Test",
+    dst_path=dst_path,
+    parameters={"input_text": "I love peanut butter", "model_name": "sentiment"},
+)
+
+
+
+```
+
+
+
+### Parameterizing a Python Script run in Databricks
+Simply pass a list of parameters to the `run_in_databricks` function. They will be passed to the script as `sys.argv` arguments.
+```python
+
+
+script = """
+import sys
+print(f"First argument: {sys.argv[1]}, Second argument: {sys.argv[2]}")
+"""
+arg1 = "My first arg"
+arg2 = "My second arg"
+nlp.run_in_databricks(
+    script,
+    databricks_cluster_id=cluster_id,
+    databricks_host=host,
+    databricks_token=token,
+    run_name="Notebook Test",
+    parameters=[arg1, arg2],
+)
+
+
+```
+
 
 
 </div>
