@@ -61,7 +61,7 @@ def test_submit_local_py_file_task_to_databricks(creds, node_type):
             databricks_cluster_id=cluster_id,
             databricks_host=host,
             databricks_token=token,
-           run_name="Script test",
+            run_name="Script test",
         )
     )
 
