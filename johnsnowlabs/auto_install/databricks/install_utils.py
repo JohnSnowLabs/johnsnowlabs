@@ -241,8 +241,6 @@ def install_jsl_suite_to_cluster(
 
     for dep in py_deps:
         install_py_lib_via_pip(db, cluster_id, dep["package"], dep["version"])
-    # TODO remove when NLU is compatible with pandas >=2
-    install_py_lib_via_pip(db, cluster_id, "pandas", "1.5.3")
 
     # Install Sparkr-NLP as last library, so we have the correct version
     if (
