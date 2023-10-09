@@ -15,6 +15,23 @@ sidebar:
 
 See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for detailed information on Release History and Featuresasdas
 
+## 5.1.5
+Release date: 9-10-2023
+
+The John Snow Labs 5.1.5 Library released with the following pre-installed and recommended dependencies
+
+
+| Library                                                                         | Version |
+|---------------------------------------------------------------------------------|---------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes)        | `5.0.1` |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)  | `5.1.1` |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/financial_release_notes) | `1.X.X` |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/legal_release_notes)       | `1.X.X` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                             | `5.0.3` |
+| [Spark-NLP-Display](https://sparknlp.org/docs/en/display)           | `4.4`   |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                | `5.1.1` |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                     | `3.1.2` |
+
 
 
 
