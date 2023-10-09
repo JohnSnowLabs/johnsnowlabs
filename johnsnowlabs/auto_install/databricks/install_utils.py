@@ -309,7 +309,6 @@ def uninstall_old_libraries(
                         if fil in path.replace("-", "_"):
                             uninstalls.append({typ: path})
     if uninstalls:
-        print("UNINSTALL ULD STUFF?", uninstalls)
         db.managed_library.uninstall_libraries(
             cluster_id=cluster_id, libraries=uninstalls
         )
