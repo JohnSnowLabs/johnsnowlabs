@@ -46,6 +46,7 @@ This model extracts healthcare-related terms from the documents transferred from
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
