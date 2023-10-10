@@ -45,6 +45,7 @@ Pretrained named entity recognition deep learning model for biology and genetics
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
