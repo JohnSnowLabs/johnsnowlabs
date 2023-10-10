@@ -43,6 +43,7 @@ Pretrained named entity recognition deep learning model for clinical terms. The 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -65,15 +66,15 @@ clinical_ner = MedicalNerModel.pretrained("ner_clinical_large_langtest", "en", "
     .setOutputCol("ner")
 
 ner_converter = NerConverter()\
- 	  .setInputCols(["sentence", "token", "ner"])\
- 	  .setOutputCol("ner_chunk")
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")
     
 nlpPipeline = Pipeline(stages=[document_assembler, 
-                                                      sentence_detector, 
-                                                      tokenizer, 
-                                                      word_embeddings, 
-                                                      clinical_ner, 
-                                                      ner_converter])
+                               sentence_detector, 
+                               tokenizer, 
+                               word_embeddings, 
+                               clinical_ner, 
+                               ner_converter])
 
 model = nlpPipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
 
@@ -87,8 +88,8 @@ val document_assembler = new DocumentAssembler()
     .setOutputCol("document")
          
 val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")
-        .setInputCols("document") 
-        .setOutputCol("sentence")
+    .setInputCols("document") 
+    .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
     .setInputCols("sentence")
@@ -103,12 +104,12 @@ val ner = MedicalNerModel.pretrained("ner_clinical_large_langtest", "en", "clini
     .setOutputCol("ner")
 
 val ner_converter = new NerConverter()
- 	  .setInputCols(Array("sentence", "token", "ner"))
- 	  .setOutputCol("ner_chunk")
+    .setInputCols(Array("sentence", "token", "ner"))
+    .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter))
 
-val data = Seq("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting. She was on metformin, glipizide, and dapagliflozin for T2DM and atorvastatin and gemfibrozil for HTG. She had been on dapagliflozin for six months at the time of presentation. Physical examination on presentation was significant for dry oral mucosa ; significantly , her abdominal examination was benign with no tenderness, guarding, or rigidity. Pertinent laboratory findings on admission were: serum glucose 111 mg/dl,  creatinine 0.4 mg/dL, triglycerides 508 mg/dL, total cholesterol 122 mg/dL, and venous pH 7.27.""").toDS().toDF("text")
+val data = Seq("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, and associated with an acute hepatitis, presented with a one-week history of polyuria, poor appetite, and vomiting. She was on metformin, glipizide, and dapagliflozin for T2DM and atorvastatin and gemfibrozil for HTG. She had been on dapagliflozin for six months at the time of presentation. Physical examination on presentation was significant for dry oral mucosa; significantly, her abdominal examination was benign with no tenderness, guarding, or rigidity. Pertinent laboratory findings on admission were: serum glucose 111 mg/dl,  creatinine 0.4 mg/dL, triglycerides 508 mg/dL, total cholesterol 122 mg/dL, and venous pH 7.27.""").toDS().toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
