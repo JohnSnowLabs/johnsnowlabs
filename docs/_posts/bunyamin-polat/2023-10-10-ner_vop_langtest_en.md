@@ -25,10 +25,9 @@ This model extracts healthcare-related terms from the documents transferred from
 | **add_ocr_typo**     | 3230                  | 1015                 | 1520                  | 3735                 | 70%                   | 32%                  | 79%                 |
 | **add_typo**         | 1088                  | 942                  | 3472                  | 3645                 | 70%                   | 76%                  | 79%                 |
 | **lowercase**        | 413                   | 346                  | 4043                  | 4110                 | 70%                   | 91%                  | 92%                 |
-| **swap_entities**    | 986                   | 1018                 | 3541                  | 3497                 | 70%                   | 78%                  | 77%                 |
 | **titlecase**        | 2424                  | 1364                 | 2382                  | 3442                 | 70%                   | 50%                  | 72%                 |
 | **uppercase**        | 4361                  | 1433                 | 445                   | 3373                 | 70%                   | 9%                   | 70%                 |
-| **weighted average** | **12502**             | **6118**             | **15403**             | **21802**            | **70%**               | **55.20%**           | **78.09%**          |
+| **weighted average** | **11516**             | **5100**             | **11862**             | **18305**            | **70%**               | **50.74%**           | **78.21%**          |
 
 ## Predicted Entities
 
