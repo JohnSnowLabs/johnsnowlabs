@@ -25,8 +25,8 @@ raw_version_nlp_display = "4.1"
 raw_version_medical = "5.1.1"
 raw_version_secret_medical = "5.1.1"
 
-raw_version_secret_ocr = "5.0.1"
-raw_version_ocr = "5.0.1"
+raw_version_secret_ocr = "5.0.2"
+raw_version_ocr = "5.0.2"
 
 raw_version_pydantic = "1.10.11"
 
