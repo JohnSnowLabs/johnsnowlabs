@@ -11,7 +11,7 @@ logging.getLogger("py4j.java_gateway").setLevel(logging.ERROR)
 app = FastAPI()
 
 # Start a Spark NLP Session
-jsl.start(exclude_ocr=True)
+nlp.start()
 
 # Always preload your objects to reduce latency
 preloaded = dict()
