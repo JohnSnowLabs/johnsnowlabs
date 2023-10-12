@@ -44,6 +44,7 @@ This is a pre-trained model that can be used to automatically detect all chemica
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
