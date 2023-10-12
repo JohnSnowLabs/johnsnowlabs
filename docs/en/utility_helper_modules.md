@@ -602,7 +602,8 @@ To tabulate and visualize all retrieved models, you can:
 ```python
 import pandas as pd
 
-models_df = pd.
+models_df = pd..DataFrame(found_models)
+models_df
 
 ```
 
