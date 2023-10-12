@@ -591,7 +591,7 @@ To use it, simply run the following:
 from johnsnowlabs import medical
 # Or: from sparknlp_jsl.compatibility import Compatibility
 
-compatibility = medical.Compatibility()
+compatibility = medical.Compatibility(spark)
 
 # Returns a list of dict objects
 found_models = compatibility.findVersion('ner_clinical')
