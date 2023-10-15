@@ -92,15 +92,6 @@ The output is a dataframe with a sentence per row and a ``"ner_label"`` column c
 |0  |5          |fat andskeletal muscle|749  |770|Tissue              |
 |0  |6          |KCNJ9                 |801  |805|Gene_or_gene_product|
 |0  |6          |Type II               |940  |946|Gene_or_gene_product|
-|1  |0          |breast cancer         |84   |96 |Cancer              |
-|1  |0          |patients              |134  |141|Organism            |
-|1  |0          |anthracyclines        |167  |180|Simple_chemical     |
-|1  |0          |taxanes               |186  |192|Simple_chemical     |
-|1  |1          |vinorelbine           |246  |256|Simple_chemical     |
-|1  |1          |patients              |273  |280|Organism            |
-|1  |1          |breast                |309  |314|Cancer              |
-|1  |1          |vinorelbine inpatients|386  |407|Simple_chemical     |
-|1  |1          |anthracyclines        |433  |446|Simple_chemical     |
 ```
 
 {:.model-param}
