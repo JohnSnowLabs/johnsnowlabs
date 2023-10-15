@@ -44,6 +44,7 @@ This model detects different types of species of bacteria in clinical texts. It 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -66,8 +67,8 @@ clinical_ner = MedicalNerModel.pretrained("ner_bacterial_species_langtest", "en"
     .setOutputCol("ner")
 
 ner_converter = NerConverter()\
- 	.setInputCols(["sentence", "token", "ner"])\
- 	.setOutputCol("ner_chunk")
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")
 
 nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, embeddings_clinical, clinical_ner, ner_converter])
 
@@ -97,8 +98,8 @@ val ner = MedicalNerModel.pretrained("ner_bacterial_species_langtest", "en", "cl
     .setOutputCol("ner")
 
 val ner_converter = new NerConverter()
- 	.setInputCols(Array("sentence", "token", "ner"))
- 	.setOutputCol("ner_chunk")
+    .setInputCols(Array("sentence", "token", "ner"))
+    .setOutputCol("ner_chunk")
     
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, embeddings_clinical, ner, ner_converter))
 
