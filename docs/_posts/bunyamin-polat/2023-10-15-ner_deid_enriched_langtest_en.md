@@ -46,6 +46,7 @@ We stuck to the official annotation guideline (AG) for the 2014 i2b2 Deid challe
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -85,16 +86,16 @@ results = model.transform(spark.createDataFrame([['HISTORY OF PRESENT ILLNESS: M
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
-    .setInputCol("text")
-    .setOutputCol("document")
+	.setInputCol("text")
+	.setOutputCol("document")
          
 val sentence_detector = new SentenceDetector()
-    .setInputCols("document")
-    .setOutputCol("sentence")
+	.setInputCols("document")
+	.setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
-    .setInputCols("sentence")
-    .setOutputCol("token")
+	.setInputCols("sentence")
+	.setOutputCol("token")
 
 val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
 	.setInputCols(Array("sentence", "token"))
