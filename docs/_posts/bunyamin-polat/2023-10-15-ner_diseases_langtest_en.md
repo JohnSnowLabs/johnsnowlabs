@@ -45,6 +45,7 @@ This model extracts mentions of different types of disease in medical text. It i
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -74,10 +75,10 @@ nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer,
 
 model = nlpPipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
 
-results = model.transform(spark.createDataFrame([['POSTOPERATIVE DIAGNOSES:
+result = model.transform(spark.createDataFrame([["""POSTOPERATIVE DIAGNOSES:
 1. Epidural fibrosis with nerve root entrapment.
 OPERATION PERFORMED:
-Left L4-L5 transforaminal neuroplasty with nerve root decompression and lysis of adherence followed by epidural steroid injection.']], ["text"]))
+Left L4-L5 transforaminal neuroplasty with nerve root decompression and lysis of adherence followed by epidural steroid injection."""]], ["text"]))
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
@@ -101,8 +102,8 @@ val ner = MedicalNerModel.pretrained("ner_diseases_langtest", "en", "clinical/mo
     .setOutputCol("ner")
 
 val ner_converter = new NerConverter()
- 	.setInputCols(Array("sentence", "token", "ner"))
- 	.setOutputCol("ner_chunk")
+    .setInputCols(Array("sentence", "token", "ner"))
+    .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, embeddings_clinical, ner, ner_converter))
 
