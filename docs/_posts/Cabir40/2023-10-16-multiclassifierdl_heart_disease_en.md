@@ -43,6 +43,7 @@ The PHS-BERT Heart Disease Classifier Model is a specialized text classification
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
