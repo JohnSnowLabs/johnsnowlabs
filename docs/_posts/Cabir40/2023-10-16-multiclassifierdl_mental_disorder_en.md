@@ -47,6 +47,7 @@ The Mental Disorder Classifier Model is a specialized text classification system
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 # 1. Document assembler
 document_assembler = DocumentAssembler() \
