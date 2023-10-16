@@ -36,8 +36,8 @@ The Mental Disorder Classifier Model is a specialized text classification system
 `Anxiety Disorder`, `No`, `Schizophrenia`, `Depression`, `Other/Unknown`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MENTAL_HEALTH.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_mental_disorder_en_5.1.1_3.0_1697441541490.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_mental_disorder_en_5.1.1_3.0_1697441541490.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -109,7 +109,7 @@ val wordEmbeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en",
     .setOutputCol("embeddings")
 
 val sentence_embeddings = new SentenceEmbeddings()\
-    .setInputCols(Array()"document", "embeddings")) \
+    .setInputCols(Array("document", "embeddings")) \
     .setOutputCol("sentence_embeddings") \
     .setPoolingStrategy("AVERAGE")
 
