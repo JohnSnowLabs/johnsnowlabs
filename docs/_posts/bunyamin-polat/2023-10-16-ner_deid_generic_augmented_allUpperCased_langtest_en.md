@@ -45,6 +45,7 @@ The `ner_deid_generic_augmented_allUpperCased_langtest` model is a Named Entity 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
