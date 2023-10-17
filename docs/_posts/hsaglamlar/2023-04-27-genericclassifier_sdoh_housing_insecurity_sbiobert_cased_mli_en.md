@@ -29,8 +29,8 @@ This Generic Classifier model is intended for detecting whether the patient has 
 `Housing_Insecurity`, `No_Housing_Insecurity`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Models.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/genericclassifier_sdoh_housing_insecurity_sbiobert_cased_mli_en_4.3.2_3.0_1682607884617.zip){:.button.button-orange}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/genericclassifier_sdoh_housing_insecurity_sbiobert_cased_mli_en_4.3.2_3.0_1682607884617.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -40,6 +40,7 @@ This Generic Classifier model is intended for detecting whether the patient has 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\

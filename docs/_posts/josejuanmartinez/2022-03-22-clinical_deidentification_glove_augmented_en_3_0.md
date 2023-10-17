@@ -5,7 +5,7 @@ author: John Snow Labs
 name: clinical_deidentification_glove_augmented
 date: 2022-03-22
 tags: [deid, deidentification, en, licensed]
-task: De-identification
+task: [De-identification, Pipeline Healthcare]
 language: en
 nav_key: models
 edition: Healthcare NLP 3.4.1

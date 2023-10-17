@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_enriched_pipeline
 date: 2023-06-16
 tags: [ner, clinical, licensed, en]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: en
 edition: Healthcare NLP 4.4.4
 spark_version: 3.4

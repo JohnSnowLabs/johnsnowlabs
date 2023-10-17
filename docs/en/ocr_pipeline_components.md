@@ -1356,6 +1356,89 @@ data.select("dicom").show()
 
 </div></div><div class="h3-box" markdown="1">
 
+### DicomDrawRegions
+
+`DicomDrawRegions` draw regions to Dicom Image.
+
+</div><div class="h3-box" markdown="1">
+
+##### Input Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| inputCol | string | content | Binary dicom object |
+| inputRegionsCol | string | regions | Detected Array[Coordinates] from PositionFinder |
+
+</div><div class="h3-box" markdown="1">
+
+#### Parameters
+
+{:.table-model-big}
+| Param name | Type | Default | Description |
+| --- | --- | --- | --- |
+| scaleFactor | float | 1.0 | Scaling factor for regions. |
+| rotated | boolean | False | Enable/Disable support for rotated rectangles |
+| keepInput | boolean | False | Keep the original input column |
+| compression | string | RLELossless | Compression type |
+| forceCompress | boolean | False | True - Force compress image. False - compress only if original image was compressed | 
+| aggCols | Array[string] | ['path'] | Sets the columns to be included in aggregation. These columns are preserved in the output DataFrame after transformations |
+
+</div><div class="h3-box" markdown="1">
+
+##### Output Columns
+
+{:.table-model-big}
+| Param name | Type | Default | Column Data Description |
+| --- | --- | --- | --- |
+| outputCol | string | image | Modified Dicom file data |
+
+**Example:**
+
+<div class="tabs-box tabs-new pt0" markdown="1">
+
+{% include programmingLanguageSelectScalaPython.html %}
+
+```python
+from sparkocr.transformers import *
+
+dicomPath = "path to dicom files"
+
+# Read dicom file as binary file
+df = spark.read.format("binaryFile").load(dicomPath)
+
+dicomToImage = DicomToImage() \
+  .setInputCol("content") \
+  .setOutputCol("image") \
+  .setMetadataCol("meta")
+
+position_finder = PositionFinder() \
+  # Usually chunks are created using the deidentification_nlp_pipeline
+  .setInputCols("ner_chunk") \
+  .setOutputCol("coordinates") \
+  .setPageMatrixCol("positions") \
+  .setPadding(0)
+
+draw_regions = DicomDrawRegions() \
+  .setInputCol("content") \
+  .setInputRegionsCol("coordinates") \
+  .setOutputCol("dicom") \
+  .setKeepInput(True) \
+  .setScaleFactor(1/3.0) \
+  .setAggCols(["path", "content"])
+
+data = dicomToImage.transform(df)
+
+data.select("content", "dicom").show()
+```
+
+```scala
+// Note: DicomDrawRegions class is not available in the Scala API
+// This class is used in the Python API for DICOM image manipulation and transformation.
+```
+
+</div></div><div class="h3-box" markdown="1">
+
 ## Image pre-processing
 
 Next section describes the transformers for image pre-processing: scaling, binarization, skew correction, etc.
@@ -2896,6 +2979,11 @@ val result =  modelPipeline.transform(df)
 | lineWidth | Int | 4 | Line width for draw rectangles |
 | fontSize | Int | 12 | Font size for render labels and score |
 | rotated | boolean | False | Support rotated regions |
+| rectColor | Color | Color.black | Color outline for bounding box |
+| filledRect | boolean | False | Enable/Disable filling rectangle |
+| sourceImageHeightCol | Int | height_dimension | Original annotation reference height |
+| sourceImageWidthCol | Int | width_dimension | Original annotation reference width | 
+| scaleBoundingBoxes | Boolean | True | sourceImage height & width are required for scaling. Necessary to ensure accurate regions despite image transformations.|
 
 </div><div class="h3-box" markdown="1">
 
@@ -2915,13 +3003,12 @@ val result =  modelPipeline.transform(df)
 ```python
 from pyspark.ml import PipelineModel
 from sparkocr.transformers import *
+from sparkocr.enums import *
 
 imagePath = "path to image"
 
 # Read image file as binary file
-df = spark.read 
-    .format("binaryFile")
-    .load(imagePath)
+df = spark.read.format("binaryFile").load(imagePath)
 
 binary_to_image = BinaryToImage() \
     .setInputCol("content") \
@@ -2935,6 +3022,7 @@ layout_analyzer = ImageLayoutAnalyzer() \
 draw = ImageDrawRegions() \
   .setInputCol("image") \
   .setRegionCol("regions") \
+  .setRectColor(Color.red) \
   .setOutputCol("image_with_regions")
 
 # Define pipeline
@@ -2950,17 +3038,16 @@ data.show()
 
 ```scala
 import org.apache.spark.ml.Pipeline
+import java.awt.Color
 
 import com.johnsnowlabs.ocr.transformers.{ImageSplitRegions, ImageLayoutAnalyzer}
 import com.johnsnowlabs.ocr.OcrContext.implicits._
 
+
 val imagePath = "path to image"
 
 // Read image file as binary file
-val df = spark.read
-  .format("binaryFile")
-  .load(imagePath)
-  .asImage("image")
+val df = spark.read.format("binaryFile").load(imagePath).asImage("image")
 
 // Define transformer for detect regions
 val layoutAnalyzer = new ImageLayoutAnalyzer()
@@ -2970,6 +3057,7 @@ val layoutAnalyzer = new ImageLayoutAnalyzer()
 val draw = new ImageDrawRegions()
   .setInputCol("image")
   .setRegionCol("regions")
+  .setRectColor(Color.RED)
   .setOutputCol("image_with_regions")
 
 // Define pipeline

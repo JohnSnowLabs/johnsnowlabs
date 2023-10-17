@@ -24,6 +24,17 @@ def get_db_client_for_password(host, email, password) -> DatabricksAPI:
     return DatabricksAPI(host=host, user=email, password=password)
 
 
+def clean_cluster(
+    databricks_host: str,
+    databricks_token: str,
+):
+    dbfs_rm(
+        get_db_client_for_token(databricks_host, databricks_token),
+        settings.dbfs_home_dir,
+        recursive=True,
+    )
+
+
 def create_cluster(
     databricks_host: str,
     databricks_token: str,
@@ -49,12 +60,10 @@ def create_cluster(
     instance_pool_id=None,
     headers=None,
     block_till_cluster_ready: bool = True,
-    clean_cluster: bool = True,
     write_db_credentials: bool = True,
+    extra_pip_installs: Optional[List[str]] = None,
 ) -> str:
     db = get_db_client_for_token(databricks_host, databricks_token)
-    if clean_cluster:
-        dbfs_rm(db, settings.dbfs_home_dir, recursive=True)
 
     if not install_suite:
         install_suite = jsl_home.get_install_suite_from_jsl_home()
@@ -84,9 +93,9 @@ def create_cluster(
         AWS_SECRET_ACCESS_KEY=install_suite.secrets.AWS_SECRET_ACCESS_KEY,
     )
 
-    if "SPARK_OCR_SECRET" in lic:
-        default_spark_env_vars["SPARK_OCR_SECRET"] = lic["SPARK_OCR_SECRET"]
-    if "SECRET" in lic:
+    if "SPARK_OCR_SECRET" in lic and visual:
+        default_spark_env_vars["VISUAL_SECRET"] = lic["SPARK_OCR_SECRET"]
+    if "SECRET" in lic and medical_nlp:
         default_spark_env_vars["HEALTHCARE_SECRET"] = lic["SECRET"]
 
     if write_db_credentials:
@@ -135,6 +144,10 @@ def create_cluster(
         spark_nlp=spark_nlp,
         visual=visual,
     )
+
+    if extra_pip_installs:
+        install_list_of_pypi_ref_to_cluster(db, cluster_id, extra_pip_installs)
+
     if block_till_cluster_ready:
         block_till_cluster_ready_state(db, cluster_id)
 
@@ -146,7 +159,7 @@ def list_db_runtime_versions(db: DatabricksAPI):
     # pprint(versions)
     for version in versions["versions"]:
         print(version["key"])
-        print(version["name"])
+        name = version["name"]
         # version_regex = r'[0-9].[0-9].[0-9]'
 
         spark_version = re.findall(r"Apache Spark [0-9].[0-9]", version["name"])
@@ -158,14 +171,15 @@ def list_db_runtime_versions(db: DatabricksAPI):
         has_gpu = len(re.findall("GPU", version["name"])) > 0
         if spark_version:
             spark_version = spark_version + ".x"
-        print(LibVersion(spark_version).as_str(), has_gpu, scala_version)
-
-
-def list_clusters(db: DatabricksAPI):
-    clusters = db.cluster.list_clusters(headers=None)
-    pprint(clusters)
-    print(clusters)
-    return clusters
+        version = LibVersion(spark_version).as_str()
+        print(
+            f"name={name}\n"
+            f"version={version}\n"
+            f"has_gpu={has_gpu}\n"
+            f"scala_version={scala_version}\n"
+            f"spark_version={spark_version}\n"
+            f"{'=' * 25}"
+        )
 
 
 def list_cluster_lib_status(db: DatabricksAPI, cluster_id: str):
@@ -178,6 +192,16 @@ def list_cluster_lib_status(db: DatabricksAPI, cluster_id: str):
 def list_node_types(db: DatabricksAPI):
     node_types = db.cluster.list_node_types(headers=None)
     pprint(node_types)
+
+
+def install_list_of_pypi_ref_to_cluster(db: DatabricksAPI, cluster_id, pip_installs):
+    # expects list of pypy references, either 'numpy' or 'numpy==1.2.3'
+    for p in pip_installs:
+        if "==" in p:
+            package, version = p.split("==")
+        else:
+            package, version = p, None
+        install_py_lib_via_pip(db, cluster_id, package, version)
 
 
 def install_jsl_suite_to_cluster(
@@ -217,6 +241,8 @@ def install_jsl_suite_to_cluster(
 
     for dep in py_deps:
         install_py_lib_via_pip(db, cluster_id, dep["package"], dep["version"])
+    # TODO remove when NLU is compatible with pandas >=2
+    install_py_lib_via_pip(db, cluster_id, "pandas", "1.5.3")
 
     # Install Sparkr-NLP as last library, so we have the correct version
     if (
@@ -309,7 +335,10 @@ def install_py_lib_via_pip(
         pypi["version"] = version
     payload = [dict(pypi=pypi)]
     db.managed_library.install_libraries(cluster_id=cluster_id, libraries=payload)
-    print(f"Installed {pypi_lib} ✅")
+    if version:
+        print(f"Installed {pypi_lib}=={version} ✅")
+    else:
+        print(f"Installed {pypi_lib} ✅")
 
 
 def install_py4j_lib_via_hdfs(db: DatabricksAPI, cluster_id: str, lib: LocalPy4JLib):
@@ -364,13 +393,23 @@ def copy_lib_to_dbfs_cluster(
     return copy_from_local_to_hdfs(db, local_path=local_path, dbfs_path=dbfs_path)
 
 
-def wait_till_cluster_running(db: DatabricksAPI, cluster_id: str):
+def wait_till_cluster_running(db: DatabricksAPI, cluster_id: str, timeout=900):
     # https://docs.databricks.com/dev-tools/api/latest/clusters.html#clusterclusterstate
     import time
 
-    while 1:
+    start_time = time.time()
+
+    while True:
+        elapsed_time = time.time() - start_time
+        if elapsed_time > timeout:
+            print(
+                "Timeout reached while waiting for the cluster to be running. Check cluster UI."
+            )
+            return False
+
         time.sleep(5)
         status = DatabricksClusterStates(db.cluster.get_cluster(cluster_id)["state"])
+
         if status == DatabricksClusterStates.RUNNING:
             return True
         elif status in [
@@ -390,3 +429,89 @@ def wait_till_cluster_running(db: DatabricksAPI, cluster_id: str):
 
 def restart_cluster(db: DatabricksAPI, cluster_id: str):
     db.cluster.restart_cluster(cluster_id=cluster_id)
+
+
+####
+def list_clusters(db: DatabricksAPI):
+    """Lists all clusters."""
+    clusters = db.cluster.list_clusters()
+    return clusters
+
+
+def cluster_exist_with_name_and_runtime(
+    db: DatabricksAPI, name: str, runtime: str
+) -> bool:
+    """Checks if a cluster with a specific name and runtime exists."""
+    clusters = list_clusters(db)
+    for cluster in clusters.get("clusters", []):
+        if cluster["cluster_name"] == name and runtime in cluster["spark_version"]:
+            return True
+    return False
+
+
+def does_cluster_exist_with_id(db: DatabricksAPI, cluster_id: str) -> bool:
+    """Checks if a cluster with a specific ID exists."""
+    try:
+        cluster_info = db.cluster.get_cluster(cluster_id=cluster_id)
+        if cluster_info and "cluster_id" in cluster_info:
+            return True
+    except Exception as e:
+        # Handle specific exceptions based on the Databricks API error responses
+        pass
+    return False
+
+
+def get_cluster_id(db: DatabricksAPI, cluster_name: str, runtime: str) -> str:
+    """
+    Retrieves the cluster ID based on the cluster name and runtime.
+
+    If there are multiple candidates:
+    - Returns any that's in the 'RUNNING' state if there is one.
+    - If none are in the 'RUNNING' state, returns any.
+    """
+    clusters = list_clusters(db)
+    running_clusters = []
+    other_clusters = []
+
+    for cluster in clusters.get("clusters", []):
+        if (
+            cluster["cluster_name"] == cluster_name
+            and runtime in cluster["spark_version"]
+        ):
+            if cluster["state"] == "RUNNING":
+                running_clusters.append(cluster["cluster_id"])
+            else:
+                other_clusters.append(cluster["cluster_id"])
+
+    if running_clusters:
+        return running_clusters[0]
+    elif other_clusters:
+        return other_clusters[0]
+    else:
+        raise Exception(
+            f"No cluster found with name {cluster_name} and runtime {runtime}"
+        )
+
+
+def _get_cluster_id(db: DatabricksAPI, cluster_name: str) -> str:
+    """
+    Retrieves the cluster ID based on the cluster name.
+    """
+    clusters = list_clusters(db)
+    running_clusters = []
+    other_clusters = []
+
+    for cluster in clusters.get("clusters", []):
+        if cluster["cluster_name"] == cluster_name:
+            # if cluster["state"] != "TERMINATED":
+            other_clusters.append(cluster["cluster_id"])
+
+    if running_clusters:
+        return running_clusters[0]
+    elif other_clusters:
+        return other_clusters[0]
+    else:
+        return None  # Return None if no cluster found with the given name
+
+
+#############

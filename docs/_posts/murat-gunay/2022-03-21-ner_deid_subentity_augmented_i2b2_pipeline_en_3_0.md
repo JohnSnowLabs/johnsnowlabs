@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_subentity_augmented_i2b2_pipeline
 date: 2022-03-21
 tags: [licensed, ner, clinical, phideidentification, i2b2, en]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification, Pipeline Healthcare]
 language: en
 nav_key: models
 edition: Healthcare NLP 3.4.1

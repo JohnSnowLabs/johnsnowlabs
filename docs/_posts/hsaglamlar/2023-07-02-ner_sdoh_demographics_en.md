@@ -33,8 +33,8 @@ This SDOH NER model is designed to detect and label social determinants of healt
 `Age`, `Family_Member`, `Gender`, `Geographic_Entity`, `Language`, `Race_Ethnicity`, `Spiritual_Beliefs`
 
 {:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_NER/){:.button.button-orange}
-[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Models.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_demographics_en_4.4.4_3.0_1688323815011.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_demographics_en_4.4.4_3.0_1688323815011.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -44,6 +44,7 @@ This SDOH NER model is designed to detect and label social determinants of healt
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from pyspark.sql.types import StringType
 

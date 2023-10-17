@@ -125,6 +125,7 @@ def run_local_py_script_as_task(
     cluster_id: str = None,
     run_name: str = None,
     parameters: List[Any] = None,
+    dst_path=None,
 ):
     """
     # https://docs.databricks.com/dev-tools/api/latest/examples.html#jobs-api-examples
@@ -135,47 +136,68 @@ def run_local_py_script_as_task(
     :param run_name:
     :return:
     """
-
-    task_definition = executable_as_script(task_definition)
     if not run_name:
         run_name = settings.db_run_name
+
     if not cluster_id:
         cluster_id = create_cluster(db)
-    copy_from_local_to_hdfs(
-        db=db,
-        local_path=task_definition,
-        dbfs_path=get_db_path(task_definition),
-    )
-    py_task = dict(
-        python_file=get_db_path(task_definition),
-    )
-    if parameters:
-        py_task["parameters"] = parameters
 
-    run_id = db.jobs.submit_run(
-        existing_cluster_id=cluster_id,
-        spark_python_task=py_task,
-        run_name=run_name,
-        # new_cluster=None,
-        # libraries=None,
-        # notebook_task=None,
-        # spark_jar_task=None,
-        # spark_submit_task=None,
-        # timeout_seconds=None,
-        # tasks=None,
-        # headers=None,
-        # version=None,
-    )["run_id"]
+    if (
+        isinstance(task_definition, str)
+        and os.path.exists(task_definition)
+        and task_definition.endswith(".ipynb")
+    ):
+        # Notebook task, WIP
+        # raise Exception("Notebook task not supported yet")
+        if not dst_path:
+            raise Exception("dst_path must be provided for notebook tasks")
+        file_name = os.path.split(task_definition)[-1]
+        run_id = submit_notebook_to_databricks(
+            db, task_definition, cluster_id, dst_path, parameters
+        )
+
+    else:
+        task_definition = executable_as_script(task_definition)
+
+        copy_from_local_to_hdfs(
+            db=db,
+            local_path=task_definition,
+            dbfs_path=get_db_path(task_definition) if not dst_path else dst_path,
+        )
+        py_task = dict(
+            python_file=get_db_path(task_definition),
+        )
+        if parameters:
+            py_task["parameters"] = parameters
+
+        run_id = db.jobs.submit_run(
+            existing_cluster_id=cluster_id,
+            spark_python_task=py_task,
+            run_name=run_name,
+        )["run_id"]
     print(f"Stated task with run_id={run_id}")
     return run_id
 
 
 def executable_as_script(py_executable: Union[str, ModuleType, Callable]):
-    if isinstance(py_executable, str) and os.path.exists(py_executable):
+    if (
+        isinstance(py_executable, str)
+        and os.path.exists(py_executable)
+        and py_executable.endswith(".py")
+    ):
         print(f"Detected Python Script for Databricks Submission")
         # Py file, we can just run this
         return py_executable
+    if (
+        isinstance(py_executable, str)
+        and os.path.exists(py_executable)
+        and py_executable.endswith(".ipynb")
+    ):
+        print(f"Detected Python Notebook for Databricks Submission")
+        # Py file, we can just run this
+        return py_executable
     if isinstance(py_executable, (str, ModuleType, Callable)):
+        print(f"Module/Callable for Databricks Submission")
         # Convert Module/Callable into a script
         return executable_to_str(py_executable)
     raise TypeError(f"Invalid Executable Python  Task {py_executable}")
@@ -225,6 +247,28 @@ def executable_to_str(executable_to_convert: Union[str, ModuleType, Callable]):
         return str_to_file(inspect.getsource(executable_to_convert), out_path)
 
 
+def encode_nb(nb_path):
+    import base64
+
+    with open(nb_path, "rb") as f:
+        encoded_nb = base64.b64encode(f.read()).decode("utf-8")
+    return encoded_nb
+
+
+def import_notebook_to_workspace(
+    db: DatabricksAPI,
+    dst_path: str,
+    local_nb_path: str,
+):
+    db.workspace.import_workspace(
+        path=dst_path,
+        language="PYTHON",
+        format="JUPYTER",
+        content=encode_nb(local_nb_path),
+        overwrite=True,
+    )
+
+
 def checkon_db_task(
     db: DatabricksAPI,
     run_id: str = None,
@@ -249,14 +293,40 @@ def run_in_databricks(
     databricks_host: Optional[str] = None,
     run_name: str = None,
     block_till_complete=True,
+    dst_path: str = None,
+    parameters: Any = None,
 ):
+    """
+
+    :param py_script_path: Either
+        - Path to local python script i.e "path/to/my_script.py"
+        - Path to local python notebook i.e "path/to/my_notebook.ipynb"
+        - string with python code i.e. "1+1"
+        - python module i.e. import my_module
+        - python function, i.e. def my_func(): return 1+1
+
+    :param databricks_cluster_id: cluster ID to run your task on. If none provided, a cluster will be created first.
+    :param databricks_token: databricks access token
+    :param databricks_host: databricks host
+    :param run_name: name of the run to generate, if None, a random name will be generated
+    :param block_till_complete: if True, this function will block until the task is complete
+    :param dst_path: path to store the python script/notebook. in databricks, mandatory for notebooks.
+        I.e. /Users/<your@databricks.email.com>/test.ipynb
+    :param parameters: parameters to pass to the python script/notebook formatted accordingly to https://docs.databricks.com/en/workflows/jobs/create-run-jobs.html#pass-parameters-to-a-databricks-job-task
+    :return: job_id
+    """
     from johnsnowlabs.auto_install.databricks.install_utils import (
         get_db_client_for_token,
     )
 
     db_client = get_db_client_for_token(databricks_host, databricks_token)
     job_id = run_local_py_script_as_task(
-        db_client, py_script_path, cluster_id=databricks_cluster_id, run_name=run_name
+        db_client,
+        py_script_path,
+        cluster_id=databricks_cluster_id,
+        run_name=run_name,
+        dst_path=dst_path,
+        parameters=parameters,
     )
 
     if not block_till_complete:
@@ -277,3 +347,43 @@ def run_in_databricks(
                 f"Waiting 30 seconds, job {job_id}  is still running, its {job_status['state']}"
             )
         time.sleep(30)
+
+    return job_id
+
+
+def submit_notebook_to_databricks(
+    db: DatabricksAPI, local_nb_path, cluster_id, remote_path, parameters=None
+):
+    # Instantiate the DatabricksAPI client
+    # Read the local notebook content
+    with open(local_nb_path, "rb") as file:
+        content = file.read()
+
+    # Base64 encode the content
+    encoded_content = base64.b64encode(content).decode("utf-8")
+
+    # Define the path on Databricks workspace where the notebook will be uploaded
+
+    # Import the notebook to Databricks workspace
+    db.workspace.import_workspace(
+        path=remote_path,
+        format="JUPYTER",
+        language="PYTHON",
+        content=encoded_content,
+        overwrite=True,
+    )
+
+    # Define the notebook task
+    notebook_task = {"notebook_path": remote_path}
+
+    if parameters:
+        notebook_task["base_parameters"] = parameters
+
+    # Submit the job to run the notebook
+    response = db.jobs.submit_run(
+        run_name="Notebook_Run",
+        existing_cluster_id=cluster_id,
+        notebook_task=notebook_task,
+    )
+
+    return response["run_id"]

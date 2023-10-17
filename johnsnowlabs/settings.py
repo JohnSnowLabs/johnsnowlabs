@@ -1,25 +1,34 @@
 import os
 from os.path import expanduser
+
 from johnsnowlabs.utils.env_utils import (
-    is_running_in_databricks,
-    set_py4j_logger_to_error_on_databricks,
     env_required_license,
+    is_running_in_databricks,
+    is_running_in_emr,
+    set_py4j_logger_to_error_on_databricks,
 )
 
 # These versions are used for auto-installs and version  checks
-raw_version_jsl_lib = "5.0.7"
-raw_version_nlp = "5.0.2"
 
-raw_version_nlu = "5.0.0"
+
+raw_version_jsl_lib = "5.1.6"
+
+
+
+raw_version_nlp = "5.1.1"
+
+raw_version_nlu = "5.0.3"
+
+
 
 raw_version_pyspark = "3.1.2"
 raw_version_nlp_display = "4.1"
 
-raw_version_medical = "5.0.2"
-raw_version_secret_medical = "5.0.2"
+raw_version_medical = "5.1.1"
+raw_version_secret_medical = "5.1.1"
 
-raw_version_secret_ocr = "5.0.0"
-raw_version_ocr = "5.0.0"
+raw_version_secret_ocr = "5.0.2"
+raw_version_ocr = "5.0.2"
 
 raw_version_pydantic = "1.10.11"
 
@@ -30,6 +39,7 @@ enforce_versions = True
 
 # Environment
 on_databricks = is_running_in_databricks()
+on_emr = is_running_in_emr()
 license_required = env_required_license()
 
 # Set root path, from which all other paths will be relative
@@ -37,6 +47,8 @@ license_required = env_required_license()
 if on_databricks:
     root_dir = f"/dbfs/johnsnowlabs"
     set_py4j_logger_to_error_on_databricks()
+elif on_emr:
+    root_dir = f"/lib/.johnsnowlabs/johnsnowlabs"
 else:
     home = expanduser("~")
     if home[-1] == "/":
@@ -73,8 +85,17 @@ db_spark_version = "10.5.x-scala2.12"
 
 db_job_name = "John-Snow-Labs-Job {job} 🚀"
 db_run_name = "John-Snow-Labs-Run 🚀"
+db_driver_node_type = "i3.xlarge"
+
+# emr settings
+emr_cluster_name = "John-Snow-Labs-EMR-Auto-Cluster🚀"
+emr_release_label = "emr-6.5.0"
+emr_instance_type = "m4.4xlarge"
+emr_instance_count = 3
+emr_applications = ["Hadoop", "Spark", "Livy", "JupyterEnterpriseGateway"]
+emr_default_instance_profile = "EMR_EC2_DefaultRole"
+emr_default_service_role = "EMR_DefaultRole"
+emr_volume_size = 100
 
 # Local Spark mode
-
-
 spark_session_name = "John-Snow-Labs-Spark-Session 🚀"

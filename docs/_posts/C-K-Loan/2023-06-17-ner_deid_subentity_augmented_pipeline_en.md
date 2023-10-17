@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_subentity_augmented_pipeline
 date: 2023-06-17
 tags: [deid, ner, en, i2b2, licensed]
-task: Named Entity Recognition
+task: [Named Entity Recognition, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 4.4.4
 spark_version: 3.0

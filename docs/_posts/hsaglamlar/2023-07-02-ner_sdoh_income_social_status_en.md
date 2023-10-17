@@ -32,8 +32,8 @@ SDOH NER model is designed to detect and label social determinants of health (SD
 `Education`, `Employment`, `Financial_Status`, `Income`, `Marital_Status`, `Population_Group`
 
 {:.btn-box}
-[Live Demo](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_NER/){:.button.button-orange}
-[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Models.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_income_social_status_en_4.4.4_3.0_1688318884654.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_income_social_status_en_4.4.4_3.0_1688318884654.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -43,6 +43,7 @@ SDOH NER model is designed to detect and label social determinants of health (SD
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from pyspark.sql.types import StringType
 

@@ -21,8 +21,8 @@ use_language_switcher: "Python-Scala-Java"
 This pretrained pipeline includes the Medical Bert for Sequence Classification model to identify whether the suggestion that is mentioned in the text is medically sound. The pipeline is built on the top of  [bert_sequence_classifier_vop_sound_medical](https://nlp.johnsnowlabs.com/2023/06/13/bert_sequence_classifier_vop_sound_medical_en.html) model.
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_sound_medical_pipeline_en_4.4.3_3.2_1686710496292.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/bert_sequence_classifier_vop_sound_medical_pipeline_en_4.4.3_3.2_1686710496292.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -32,6 +32,7 @@ This pretrained pipeline includes the Medical Bert for Sequence Classification m
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

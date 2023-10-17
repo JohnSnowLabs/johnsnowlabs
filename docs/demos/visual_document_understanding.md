@@ -68,5 +68,17 @@ data:
             url: https://demo.johnsnowlabs.com/ocr/BRAND_EXTRACTION/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/ocr/BRAND_EXTRACTION.ipynb                
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/ocr/BRAND_EXTRACTION.ipynb    
+        - title: Visual NER Key-Values v2
+          id: visual_ner_key_values_v2 
+          image: 
+              src: /assets/images/Visual_NER_Key-Values_v2.svg
+          excerpt: This demo extract the main document key points using our pre-trained Spark OCR model. 
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/VISUAL_DOCUMENT_KEYVALUES_NER_LILT/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRVisualDocumentNer-FormParsing.ipynb            
 ---

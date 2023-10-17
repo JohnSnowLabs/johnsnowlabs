@@ -27,8 +27,8 @@ Note: ‘wip’ suffix indicates that the model development is work-in-progress 
 `InjuryOrPoisoning`, `Modifier`, `HealthStatus`, `Symptom`, `Disease`, `PsychologicalCondition`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_problem_wip_en_4.4.0_3.0_1682012767167.zip){:.button.button-orange}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_problem_wip_en_4.4.0_3.0_1682012767167.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -38,6 +38,7 @@ Note: ‘wip’ suffix indicates that the model development is work-in-progress 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\

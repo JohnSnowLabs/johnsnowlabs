@@ -205,6 +205,8 @@ sparknlp-healthcare:
         url: /docs/en/cpu-ner-benchmark
       - title: GPU vs CPU benchmarks
         url: /docs/en/CPUvsGPUbenchmark_healthcare
+      - title: Spark NLP vs Spacy Pandas UDF with Arrow Benchmark
+        url: /docs/en/spark_spacy_pandas_udf_with_arrow_enabled_benchmark_web
       - title: Best Practices Using Pretrained Models Together
         url: /docs/en/best_practices_pretrained_models
   - title: Healthcare NLP
@@ -324,6 +326,10 @@ jsl:
         url:    /docs/en/jsl/john-snow-labs-home
       - title:  Utilities for Databricks
         url:    /docs/en/jsl/databricks-utils
+      - title:  Utilities for AWS EMR
+        url:    /docs/en/jsl/aws-emr-utils
+      - title:  Utilities for AWS Glue
+        url:    /docs/en/jsl/aws-glue-utils
       - title:  Release Testing Utilities
         url:    /docs/en/jsl/testing-utils
       - title:  Module Structure

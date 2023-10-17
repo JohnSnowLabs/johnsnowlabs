@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_sd
 date: 2021-04-01
 tags: [ner, clinical, licensed, en]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: en
 nav_key: models
 edition: Healthcare NLP 3.0.0

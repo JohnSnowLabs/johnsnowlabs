@@ -178,4 +178,16 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_CPT.ipynb
+        - title: Mapping ICD-10-CM Codes with Corresponding Medicare Severity-Diagnosis Related Group
+          id: mapping_codes_medicare_severity_diagnosis_related_group       
+          image: 
+              src: /assets/images/ICD-10-CMMS-DRG.svg
+          excerpt: This pretrained model maps ICD-10-CM codes with their corresponding Medicare Severity-Diagnosis Related Group (MS-DRG).
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/ICD10CM_MS_DRG_MAPPER/
+          - text: Colab
+            type: blue_btn
+            url: 
 ---
