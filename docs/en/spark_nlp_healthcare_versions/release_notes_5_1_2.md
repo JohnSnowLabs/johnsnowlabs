@@ -2,8 +2,8 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes
-permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
+title: Spark NLP for Healthcare Release Notes 5.1.2
+permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_5_1_2
 key: docs-licensed-release-notes
 modify_date: 2023-10-17
 show_nav: true
@@ -468,6 +468,8 @@ Please see [Spark OCR Utility Module Notebook](https://github.com/JohnSnowLabs/s
 
 #### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
 
+
+
 + `ner_clinical` -> `ar`
 + `ner_clinical` -> `bg`
 + `ner_clinical` -> `fi`
@@ -502,7 +504,7 @@ For all Spark NLP for Healthcare models, please check: [Models Hub Page](https:/
 
 
 
-## Previous versions
+## Versions
 
 </div>
 {%- include docs-healthcare-pagination.html -%}
