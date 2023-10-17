@@ -3,7 +3,7 @@ layout: docs
 header: true
 seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
-permalink: /docs/en/spark_ocr_versions/ocr_release_notes
+permalink: /docs/en/spark_ocr_versions/release_notes_5_0_2
 key: docs-ocr-release-notes
 modify_date: "2023-10-16"
 show_nav: true
@@ -36,6 +36,7 @@ This is a small compatibility release to ensure the product runs smoothly on Goo
 +  ```  New ImageToTextV3 annotator ```  : this is a new version of the original LSTM based ImageToText annotator, with the difference that it accepts input regions in a similar fashion to ImageToTextV2. In the original ImageToText implementation all layout analysis happens implicitly within the annotator itself, without external help.
 
 This release is compatible with ```Spark NLP 5.1.1``` and Spark NLP for``` Healthcare 5.1.1```
+
 
 
 
