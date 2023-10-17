@@ -69,7 +69,7 @@ val pipeline = new Pipeline(stages = Array(
         chunkerMapper
 ))
 
-val data = Seq([['C0000098'], ['C0000152']]).toDS.toDF("text")
+val data = Seq([["C0000098"], ["C0000152"]]).toDS.toDF("text")
 
 val result= pipeline.fit(data).transform(data)
 ```
