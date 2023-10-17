@@ -33,7 +33,7 @@ The Mental Disorder Classifier Model is a specialized text classification system
 
 ## Predicted Entities
 
-`Anxiety Disorder`, `No`, `Schizophrenia`, `Depression`, `Other/Unknown`
+`Anxiety Disorder`, `Bipolar disorder`, `No`, `Schizophrenia`, `Depression`, `Other/Unknown`
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/){:.button.button-orange}
@@ -70,7 +70,8 @@ sentence_embeddings = SentenceEmbeddings()\
 # 3. Mental Disorder MultiClassifier (Using the provided model name)
 multilabel_classifier = MultiClassifierDLModel.pretrained("multiclassifierdl_mental_disorder", "en", "clinical/models") \
     .setInputCols(["sentence_embeddings"]) \
-    .setOutputCol("prediction")
+    .setOutputCol("prediction")\
+    .setThreshold(0.999)
 
 # Creating the pipeline
 clf_pipeline = Pipeline(stages=[
