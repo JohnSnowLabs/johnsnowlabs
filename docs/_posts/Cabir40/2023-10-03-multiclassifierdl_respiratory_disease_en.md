@@ -34,8 +34,8 @@ The PHS-BERT Respiratory Disease Classifier Model is a specialized text classifi
 `Astham`,`COPD`, `Emphysema`, `Chronic bronchitis`, `Other/Unknown`, `No` 
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPIRATORY/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_CLASSIFIER_DL.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_respiratory_disease_en_5.1.1_3.0_1696348950217.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_respiratory_disease_en_5.1.1_3.0_1696348950217.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -80,14 +80,10 @@ clf_pipeline = Pipeline(
 
 
 data = spark.createDataFrame([
-    ["""The patient, experiencing recurrent episodes of wheezing and shortness of breath, has been diagnosed with Asthma and is advised to use a daily controller inhaler to manage the symptoms."""],
-    ["""Due to the patient's long history of tobacco use and persistent cough producing large amounts of sputum, a diagnosis of Chronic Obstructive Pulmonary Disease (COPD) has been established, necessitating bronchodilators for management."""],
-    ["""The presence of dyspnea, chronic cough, and a history of smoking have led to the diagnosis of Emphysema for the patient, warranting the initiation of long-term oxygen therapy."""],
-    ["""The patient has been diagnosed with Chronic Bronchitis following the prolonged occurrence of cough and mucus production, and is recommended to undergo pulmonary rehabilitation and pharmacotherapy."""],
-    ["""With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications."""],
-    ["""Manifesting prolonged symptoms of breathlessness and a productive cough, the patient has received a diagnosis of Chronic Obstructive Pulmonary Disease (COPD), and a comprehensive treatment involving bronchodilators and lifestyle modifications has been recommended."""],
-    ["""The patient, exhibiting extensive lung damage and significant shortness of breath, has been diagnosed with Emphysema, requiring meticulous management with bronchodilators and pulmonary rehabilitation to improve lung function."""],
-    ["""Chronic Bronchitis has been diagnosed in the patient presenting with a chronic cough and frequent respiratory infections, necessitating a treatment plan inclusive of antibiotics and chest physiotherapy."""],
+        ["""The patient takes inhalers for COPD management, weight loss medications, and disease-modifying antirheumatic drugs (DMARDs) for rheumatoid arthritis."""],
+        ["""The patient was on Metformin for DM2, mood stabilizers for Bipolar II Disorder, and inhaled corticosteroids for Asthma."""],
+        ["""The patient was diagnosed with Chronic Bronchitis after a series of pulmonary function tests."""],
+        ["""Chest CT imaging revealed significant bullae and airspace enlargement, consistent with a diagnosis of emphysema."""],
 
     ]).toDF("text")
 
@@ -126,14 +122,10 @@ val clf_pipeline = new Pipeline().setStages(Array(
 ))
 
 val data = Seq(Array(
-    """The patient, experiencing recurrent episodes of wheezing and shortness of breath, has been diagnosed with Asthma and is advised to use a daily controller inhaler to manage the symptoms.""",
-    """Due to the patient's long history of tobacco use and persistent cough producing large amounts of sputum, a diagnosis of Chronic Obstructive Pulmonary Disease (COPD) has been established, necessitating bronchodilators for management.""",
-    """The presence of dyspnea, chronic cough, and a history of smoking have led to the diagnosis of Emphysema for the patient, warranting the initiation of long-term oxygen therapy.""",
-    """The patient has been diagnosed with Chronic Bronchitis following the prolonged occurrence of cough and mucus production, and is recommended to undergo pulmonary rehabilitation and pharmacotherapy.""",
-    """With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications.""",
-    """Manifesting prolonged symptoms of breathlessness and a productive cough, the patient has received a diagnosis of Chronic Obstructive Pulmonary Disease (COPD), and a comprehensive treatment involving bronchodilators and lifestyle modifications has been recommended.""",
-    """The patient, exhibiting extensive lung damage and significant shortness of breath, has been diagnosed with Emphysema, requiring meticulous management with bronchodilators and pulmonary rehabilitation to improve lung function.""",
-    """Chronic Bronchitis has been diagnosed in the patient presenting with a chronic cough and frequent respiratory infections, necessitating a treatment plan inclusive of antibiotics and chest physiotherapy,""",
+    """The patient takes inhalers for COPD management, weight loss medications, and disease-modifying antirheumatic drugs (DMARDs) for rheumatoid arthritis.""",
+    """The patient was on Metformin for DM2, mood stabilizers for Bipolar II Disorder, and inhaled corticosteroids for Asthma.""",
+    """The patient was diagnosed with Chronic Bronchitis after a series of pulmonary function tests.""",
+    """Chest CT imaging revealed significant bullae and airspace enlargement, consistent with a diagnosis of emphysema.""",
     )).toDS.toDF("text")
 
 val result = clf_pipeline.fit(data).transform(data)
@@ -143,22 +135,14 @@ val result = clf_pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-+----------------------------------------------------------------------------------------------------+-------------------------------------+
-|                                                                                              result|                               result|
-+----------------------------------------------------------------------------------------------------+-------------------------------------+
-|[The patient, experiencing recurrent episodes of wheezing and shortness of breath, has been diagn...|         [Asthma, Chronic bronchitis]|
-|[Due to the patient's long history of tobacco use and persistent cough producing large amounts of...|           [COPD, Chronic bronchitis]|
-|[The presence of dyspnea, chronic cough, and a history of smoking have led to the diagnosis of Em...|[Emphysema, COPD, Chronic bronchitis]|
-|[The patient has been diagnosed with Chronic Bronchitis following the prolonged occurrence of cou...|                 [Chronic bronchitis]|
-|[With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has ...|              [Asthma, Other/Unknown]|
-|[Manifesting prolonged symptoms of breathlessness and a productive cough, the patient has receive...|           [COPD, Chronic bronchitis]|
-|[The patient, exhibiting extensive lung damage and significant shortness of breath, has been diag...|     [Emphysema, COPD, Other/Unknown]|
-|[Chronic Bronchitis has been diagnosed in the patient presenting with a chronic cough and frequen...|                 [Chronic bronchitis]|
-|[To manage the symptoms of Asthma, the patient has been advised to use inhaled corticosteroids re...|   [COPD, Asthma, Chronic bronchitis]|
-|[In light of the COPD diagnosis, a comprehensive pulmonary rehabilitation program, coupled with l...|                               [COPD]|
-|[The patient with Emphysema has been recommended to undergo oxygen therapy and regular use of bro...|                    [Emphysema, COPD]|
-|[For the effective management of Chronic Bronchitis, a course of appropriate antibiotics, coupled...|                 [Chronic bronchitis]|
-+----------------------------------------------------------------------------------------------------+-------------------------------------+
++----------------------------------------------------------------------------------------------------+--------------------+
+|                                                                                                text|              result|
++----------------------------------------------------------------------------------------------------+--------------------+
+|The patient takes inhalers for COPD management, weight loss medications, and disease-modifying an...|              [COPD]|
+|The patient was on Metformin for DM2, mood stabilizers for Bipolar II Disorder, and inhaled corti...|            [Asthma]|
+|       The patient was diagnosed with Chronic Bronchitis after a series of pulmonary function tests.|[Chronic bronchitis]|
+|Chest CT imaging revealed significant bullae and airspace enlargement, consistent with a diagnosi...|         [Emphysema]|
++----------------------------------------------------------------------------------------------------+--------------------+
 ```
 
 {:.model-param}

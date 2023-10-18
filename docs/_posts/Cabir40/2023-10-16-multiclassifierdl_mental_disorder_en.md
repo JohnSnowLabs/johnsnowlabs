@@ -84,10 +84,11 @@ clf_pipeline = Pipeline(stages=[
 
 # Sample text list
 text_list = [
-    "My brother’s hallucinations, a symptom of his schizophrenia, make daily tasks challenging for him.",
-    "The heavy weight of depression often leaves me struggling to find joy in activities I once loved.",
-    "Bipolar disorder has my mood swinging from exhilarating happiness to debilitating lows without warning.",
-    "My anxiety disorder frequently sets my heart racing and mind spiralling over mere hypothetical scenarios."
+    """The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.""",
+    """Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.""",
+    """Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.""",
+    """Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.""",
+    """With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications."""
 ]
 
 # Creating a DataFrame
@@ -127,10 +128,11 @@ val clf_pipeline = new Pipeline().setStages(Array(
 ))
 
 val data = Seq(Array(
-    """My brother’s hallucinations, a symptom of his schizophrenia, make daily tasks challenging for him.""",
-    """The heavy weight of depression often leaves me struggling to find joy in activities I once loved.""",
-    """Bipolar disorder has my mood swinging from exhilarating happiness to debilitating lows without warning.""",
-    """My anxiety disorder frequently sets my heart racing and mind spiralling over mere hypothetical scenarios.""",
+    """The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.""",
+    """Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.""",
+    """Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.""",
+    """Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.""",
+    """With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications.""",
     )).toDS.toDF("text")
 
 val result = clf_pipeline.fit(data).transform(data)
@@ -141,14 +143,15 @@ val result = clf_pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-+----------------------------------------------------------------------------------------------------+---------------------------------------------------+
-|                                                                                                text|                                             result|
-+----------------------------------------------------------------------------------------------------+---------------------------------------------------+
-|  My brother’s hallucinations, a symptom of his schizophrenia, make daily tasks challenging for him.|      [Anxiety disorder, Depression, Schizophrenia]|
-|   The heavy weight of depression often leaves me struggling to find joy in activities I once loved.|                     [Anxiety disorder, Depression]|
-|Bipolar disorder has my mood swinging from exhilarating happiness to debilitating lows without wa...|               [Anxiety disorder, Bipolar disorder]|
-|My anxiety disorder frequently sets my heart racing and mind spiralling over mere hypothetical sc...|[Anxiety disorder, Schizophrenia, Bipolar disorder]|
-+----------------------------------------------------------------------------------------------------+---------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
+|                                                                                                                                                  text|            result|
++------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
+|         The patient verbalizes feelings of worthlessness and recurrent thoughts of death, necessitating immediate intervention for severe depression.|      [Depression]|
+|                  Monitoring the patient for potential side effects of lithium therapy, initiated to manage the mood fluctuations of bipolar disorder.|[Bipolar disorder]|
+|       Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.|[Anxiety disorder]|
+|                                                    Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.|   [Schizophrenia]|
+|With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitat...|              [No]|
++------------------------------------------------------------------------------------------------------------------------------------------------------+------------------+
 ```
 
 {:.model-param}

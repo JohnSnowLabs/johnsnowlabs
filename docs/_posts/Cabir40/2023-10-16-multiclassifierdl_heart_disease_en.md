@@ -32,8 +32,8 @@ The PHS-BERT Heart Disease Classifier Model is a specialized text classification
 `Hypertension`, `MI`, `CAD`, `Other/Unknown`, `No`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HEART_DISEASE/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_CLASSIFIER_DL.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_heart_disease_en_5.1.1_3.0_1697443096682.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_heart_disease_en_5.1.1_3.0_1697443096682.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
