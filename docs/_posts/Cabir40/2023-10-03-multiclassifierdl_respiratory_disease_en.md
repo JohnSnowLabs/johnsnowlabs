@@ -4,7 +4,7 @@ title: Multilabel Text Classification For Respiratory Disease
 author: John Snow Labs
 name: multiclassifierdl_respiratory_disease
 date: 2023-10-03
-tags: [en, licensed, text_classification, multiclassifier, respiratory_disease, asthma, emphysema, chronic_bronchitis, tensorflow]
+tags: [en, licensed, text_classification, multiclassifier, respiratory_disease, asthma, emphysema, chronic_bronchitis, COPD, tensorflow]
 task: Text Classification
 language: en
 edition: Healthcare NLP 5.1.1
@@ -66,7 +66,8 @@ sentence_embeddings = SentenceEmbeddings()\
 
 multiclassifierdl = MultiClassifierDLModel.pretrained("multiclassifierdl_respiratory_disease", "en", "clinical/models")\
     .setInputCols(["sentence_embeddings"])\
-    .setOutputCol("predicted_class")
+    .setOutputCol("predicted_class")\
+    .setThreshold(0.999)
 
 clf_pipeline = Pipeline(
     stages=[
@@ -113,7 +114,8 @@ val sentence_embeddings = new SentenceEmbeddings()\
 
 val multiclassifierdl = MultiClassifierDLModel.pretrained("multiclassifierdl_respiratory_disease", "en", "clinical/models")\
     .setInputCols("sentence_embeddings")\
-    .setOutputCol("predicted_class")
+    .setOutputCol("predicted_class")\
+    .setThreshold(0.999)
 
 val clf_pipeline = new Pipeline().setStages(Array(
     documentAssembler,
