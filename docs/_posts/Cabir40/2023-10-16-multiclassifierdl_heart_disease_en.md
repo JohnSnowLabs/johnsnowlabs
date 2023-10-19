@@ -32,8 +32,8 @@ The PHS-BERT Heart Disease Classifier Model is a specialized text classification
 `Hypertension`, `MI`, `CAD`, `Other/Unknown`, `No`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HEART_DISEASE/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_CLASSIFIER_DL.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_heart_disease_en_5.1.1_3.0_1697443096682.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/multiclassifierdl_heart_disease_en_5.1.1_3.0_1697443096682.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -64,7 +64,8 @@ sentence_embeddings = SentenceEmbeddings()\
 
 multiclassifierdl = MultiClassifierDLModel.pretrained("multiclassifierdl_heart_disease", "en", "clinical/models")\
     .setInputCols(["sentence_embeddings"])\
-    .setOutputCol("predicted_class")
+    .setOutputCol("predicted_class")\
+    .setThreshold(0.999)
 
 clf_pipeline = Pipeline(
     stages=[
@@ -77,9 +78,9 @@ clf_pipeline = Pipeline(
 
 
 data = spark.createDataFrame([
-    ["""Mr. Daniels was diagnosed with hypertension during a routine check-up at the age of 45. He had consistently high blood pressure readings over several visits, indicative of hypertension. Often experiencing headaches and occasional bouts of dizziness, these could be linked to his elevated blood pressure. He has been prescribed antihypertensive medications and advised to adopt lifestyle modifications, such as reducing salt intake and engaging in regular exercise, to manage his hypertension effectively."""],
-    ["""Mrs. Martinez, a 58-year-old, began experiencing chest discomfort and shortness of breath during physical exertion. After undergoing an angiogram, she was diagnosed with coronary artery disease due to significant blockage in her coronary arteries. Her family history reveals her father had a similar condition, making her predisposed to CAD. Along with prescribed medications to reduce her risk of a heart attack, Mrs. Martinez will undergo a cardiac rehabilitation program and make dietary changes to manage her coronary artery disease."""],
-    ["""Mr. Jackson, at the age of 52, suddenly experienced severe chest pain while at work and was immediately rushed to the emergency department. The ECG and elevated cardiac enzymes confirmed a diagnosis of myocardial infarction. Recounting the event, Mr. Jackson mentioned that he felt a crushing pain in his chest, radiating to his left arm, typical symptoms of a heart attack. Post-treatment, he was advised to engage in cardiac rehabilitation, maintain a heart-healthy diet, and take prescribed medications diligently to prevent another myocardial infarction in the future."""],
+     ["""Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings above 140/90 mmHg."""],
+     ["""Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Disease)."""],
+     ["""After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (Myocardial Infarction)."""]
 ]).toDF("text")
 
 
@@ -105,7 +106,8 @@ val sentence_embeddings = new SentenceEmbeddings()\
 
 val multiclassifierdl = MultiClassifierDLModel.pretrained("multiclassifierdl_heart_disease", "en", "clinical/models")\
     .setInputCols("sentence_embeddings")\
-    .setOutputCol("predicted_class")
+    .setOutputCol("predicted_class")\
+    .setThreshold(0.999)
 
 val clf_pipeline = new Pipeline().setStages(Array(
     documentAssembler,
@@ -116,9 +118,9 @@ val clf_pipeline = new Pipeline().setStages(Array(
 ))
 
 val data = Seq(Array(
-    """Mr. Daniels was diagnosed with hypertension during a routine check-up at the age of 45. He had consistently high blood pressure readings over several visits, indicative of hypertension. Often experiencing headaches and occasional bouts of dizziness, these could be linked to his elevated blood pressure. He has been prescribed antihypertensive medications and advised to adopt lifestyle modifications, such as reducing salt intake and engaging in regular exercise, to manage his hypertension effectively.""",
-    """Mrs. Martinez, a 58-year-old, began experiencing chest discomfort and shortness of breath during physical exertion. After undergoing an angiogram, she was diagnosed with coronary artery disease due to significant blockage in her coronary arteries. Her family history reveals her father had a similar condition, making her predisposed to CAD. Along with prescribed medications to reduce her risk of a heart attack, Mrs. Martinez will undergo a cardiac rehabilitation program and make dietary changes to manage her coronary artery disease.""",
-    """Mr. Jackson, at the age of 52, suddenly experienced severe chest pain while at work and was immediately rushed to the emergency department. The ECG and elevated cardiac enzymes confirmed a diagnosis of myocardial infarction. Recounting the event, Mr. Jackson mentioned that he felt a crushing pain in his chest, radiating to his left arm, typical symptoms of a heart attack. Post-treatment, he was advised to engage in cardiac rehabilitation, maintain a heart-healthy diet, and take prescribed medications diligently to prevent another myocardial infarction in the future.""",
+      """Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings above 140/90 mmHg.""",
+      """Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Disease).""",
+      """After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (Myocardial Infarction)."""
  )).toDS.toDF("text")
 
 val result = clf_pipeline.fit(data).transform(data)
@@ -128,13 +130,13 @@ val result = clf_pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-+----------------------------------------------------------------------------------------------------+------------------+
-|                                                                                              result|            result|
-+----------------------------------------------------------------------------------------------------+------------------+
-|[Mr. Daniels was diagnosed with hypertension during a routine check-up at the age of 45. He had c...|    [Hypertension]|
-|[Mrs. Martinez, a 58-year-old, began experiencing chest discomfort and shortness of breath during...|         [MI, CAD]|
-|[Mr. Jackson, at the age of 52, suddenly experienced severe chest pain while at work and was imme...|[MI, Hypertension]|
-+----------------------------------------------------------------------------------------------------+------------------+
++----------------------------------------------------------------------------------------------------+--------------+
+|                                                                                                text|        result|
++----------------------------------------------------------------------------------------------------+--------------+
+|Mrs. Allen was diagnosed with hypertension after consistently recording blood pressure readings a...|[Hypertension]|
+|Following a series of diagnostic tests, Mr. Harris was confirmed to have CAD (Coronary Artery Dis...|         [CAD]|
+|After presenting with crushing chest pain and diaphoresis, Mr. Stevens was diagnosed with an MI (...|          [MI]|
++----------------------------------------------------------------------------------------------------+--------------+
 ```
 
 {:.model-param}

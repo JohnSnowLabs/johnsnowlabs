@@ -41,6 +41,7 @@ Release date: 11-10-2023
 The John Snow Labs 5.1.6 Library released with the following pre-installed and recommended dependencies
 
 
+
 | Library                                                                                 | Version |
 |-----------------------------------------------------------------------------------------|---------|
 | [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.0.2` |
@@ -51,6 +52,7 @@ The John Snow Labs 5.1.6 Library released with the following pre-installed and r
 | [Spark-NLP-Display](https://sparknlp.org/docs/en/display)                               | `4.4`   |
 | [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                        | `5.1.1` |
 | [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.1.2` |
+
 
 
 
