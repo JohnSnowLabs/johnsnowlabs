@@ -144,6 +144,7 @@ def create_endpoint(
     token,
     workload_size="Small",
     block_until_deployed=True,
+    workload_type="CPU",
 ):
     """Create serving endpoint and wait for it to be ready
     maps name of your secret to an env variable with the same name in the container
@@ -156,7 +157,10 @@ def create_endpoint(
             "model_name": model_name,
             "model_version": model_version,
             "workload_size": workload_size,
-            "scale_to_zero_enabled": "true",
+            "workload_type": workload_type,
+            "scale_to_zero_enabled": "false"
+            if "gpu" in workload_type.lower()
+            else "true",
             "env_vars": [
                 {
                     "env_var_name": "JOHNSNOWLABS_LICENSE_JSON",
@@ -183,6 +187,7 @@ def create_endpoint(
     response.raise_for_status()
     if block_until_deployed:
         wait_for_endpoint(endpoint_name, db_host, token)
+
     try:
         displayHTML(
             f"""Created the <a href="/#mlflow/endpoints/{endpoint_name}" target="_blank">{endpoint_name}</a> serving endpoint"""
@@ -311,8 +316,15 @@ def delete_all_registerd_model(name):
 def get_latest_registerd_model_version(name):
     from mlflow import MlflowClient
 
-    model = MlflowClient().get_registered_model(name)
-    return model.latest_versions[-1].version
+    try:
+        model = MlflowClient().get_registered_model(name)
+        return model.latest_versions[-1].version
+    except Exception as e:
+        print(
+            f"Failure getting latest model version! This is expected  on UC environments \n",
+            e,
+        )
+        return "1"
 
 
 def model_exists(name):
@@ -331,7 +343,7 @@ def model_exists(name):
 def query_endpoint(data, nlu_model_name, db_host, db_token, base_name=None):
     # 5. Query the Endpoint
     # endpoint_name = f"{nlu_model_name.replace('.','_')}_ENDPOINT"
-    endpoint_name = nlu_name_to_endpoint(base_name if base_name else nlu_model_name)
+    endpoint_name = base_name if base_name else nlu_name_to_endpoint(nlu_model_name)
     url = f"{db_host}/serving-endpoints/{endpoint_name}/invocations"
     headers = {
         "Authorization": f"Bearer {db_token}",
@@ -420,10 +432,17 @@ def log_nlu_model(nlu_model_name, registerd_model_name, gpu):
     )
 
     # # 3. Download wheels to the model (current version +1)
-    mlflow.models.utils.add_libraries_to_model(
-        f"models:/{registerd_model_name}/latest",
-        registered_model_name=registerd_model_name,
-    )
+    try:
+        mlflow.models.utils.add_libraries_to_model(
+            f"models:/{registerd_model_name}/latest",
+            registered_model_name=registerd_model_name,
+        )
+    except Exception as e:
+        # /latest is not supported on UC environments
+        mlflow.models.utils.add_libraries_to_model(
+            f"models:/{registerd_model_name}/1",
+            registered_model_name=registerd_model_name,
+        )
 
 
 def nlu_name_to_endpoint(nlu_model_name):
@@ -453,6 +472,7 @@ def query_and_deploy_if_missing(
     new_run=True,
     block_until_deployed=True,
     gpu=False,
+    workload_type="CPU",
     # NLU Predict params
     output_level: Optional[str] = None,
     positions: Optional[bool] = None,
@@ -490,7 +510,7 @@ def query_and_deploy_if_missing(
     db_token: the databricks Access Token. If not specified, the DATABRICKS_TOKEN environment variable is used
     block_until_deployed: if True, this function will block until the endpoint is deployed. If False, it will return immediately after the endpoint is created
     gpu: Use GPU for inference
-
+    workload_type: 'CPU' or  'GPU_SMALL' or see official docs
     output_level : token, chunk, sentence, relation, document
     positions: include or exclude character index position of predictions
     metadata: include additional metadata
@@ -507,6 +527,12 @@ def query_and_deploy_if_missing(
     if not db_host:
         raise Exception(
             "You must specify DATABRICKS_HOST and DATABRICKS_TOKEN en variables"
+        )
+
+    if gpu and workload_type == "CPU":
+        raise ValueError(
+            f'When setting gpu=True you must specify a GPU workload_type. I.e. nlp.query_and_deploy(...,workload_type="GPU_SMALL")'
+            f"Check official databricks docs for alternative values "
         )
 
     if output_level and output_level not in [
@@ -539,6 +565,8 @@ def query_and_deploy_if_missing(
             workload_size=workload_size,
             block_until_deployed=block_until_deployed,
             gpu=gpu,
+            workload_type=workload_type,
+            base_name=base_name,
         )
     else:
         if not base_name:
@@ -562,6 +590,7 @@ def query_and_deploy_if_missing(
             workload_size=workload_size,
             block_until_deployed=block_until_deployed,
             gpu=gpu,
+            workload_type=workload_type,
         )
     if not block_until_deployed:
         return
@@ -595,15 +624,16 @@ def deploy_nlu_model_as_endpoint(
     workload_size="Small",
     block_until_deployed=True,
     gpu=False,
+    workload_type="CPU",
 ):
     os.environ["MLFLOW_WHEELED_MODEL_PIP_DOWNLOAD_OPTIONS"] = "--prefer-binary"
     SCOPE_NAME = "JSL_SCOPE"
     SECRET_NAME = "JSL_SECRET_NAME"
     SECRET_VALUE = os.environ["JOHNSNOWLABS_LICENSE_JSON_FOR_CONTAINER"]
-    REGISTERD_MODEL_NAME = nlu_name_to_registerd_model(
-        base_name if base_name else model_name
+    REGISTERD_MODEL_NAME = (
+        base_name if base_name else nlu_name_to_registerd_model(model_name)
     )
-    ENDPOINT_NAME = nlu_name_to_endpoint(base_name if base_name else model_name)
+    ENDPOINT_NAME = base_name if base_name else nlu_name_to_endpoint(model_name)
 
     if not model_exists(REGISTERD_MODEL_NAME) or re_create_model:
         # 1. Log the model
@@ -642,6 +672,7 @@ def deploy_nlu_model_as_endpoint(
             token=db_token,
             workload_size=workload_size,
             block_until_deployed=block_until_deployed,
+            workload_type=workload_type,
         )
     else:
         print(
