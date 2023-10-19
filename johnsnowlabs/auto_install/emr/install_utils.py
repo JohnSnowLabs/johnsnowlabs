@@ -110,6 +110,19 @@ def create_emr_cluster(
                     "Properties": {},
                 },
                 {
+                    "Classification": "yarn-env",
+                    "Configurations": [
+                        {
+                            "Classification": "export",
+                            "Properties": {
+                                "SPARK_NLP_LICENSE": secrets.HC_LICENSE or "",
+                                "JSL_EMR": "1",
+                            },
+                        }
+                    ],
+                    "Properties": {},
+                },
+                {
                     "Classification": "spark-defaults",
                     "Properties": {
                         "spark.driver.maxResultSize": "0",
@@ -119,6 +132,9 @@ def create_emr_cluster(
                         "spark.yarn.preserve.staging.files": "true",
                         "spark.yarn.stagingDir": "hdfs:///tmp",
                         "spark.jsl.settings.aws.region": region,
+                        "spark.yarn.appMasterEnv.SPARK_NLP_LICENSE": secrets.HC_LICENSE
+                        or "",
+                        "spark.executorEnv.SPARK_NLP_LICENSE": secrets.HC_LICENSE or "",
                     },
                 },
             ],
