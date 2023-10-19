@@ -38,6 +38,7 @@ This pipeline can be used as Lightpipeline (with `annotate/fullAnnotate`). You c
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -64,47 +65,16 @@ nlu.load("en.resolve.medication").predict("""The patient was prescribed Amlodopi
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-med_resolver_pipeline = PretrainedPipeline("medication_resolver_pipeline", "en", "clinical/models")
-
-text = """The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet."""
-
-result = med_resolver_pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val med_resolver_pipeline = new PretrainedPipeline("medication_resolver_pipeline", "en", "clinical/models")
-
-val result = med_resolver_pipeline.fullAnnotate("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.""")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.resolve.medication").predict("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera. The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | chunks                       | entities   | ADE                         |   RxNorm | Action                     | Treatment                                  | UMLS     | SNOMED_CT   | NDC_Product   | NDC_Package   |
 |---:|:-----------------------------|:-----------|:----------------------------|---------:|:---------------------------|:-------------------------------------------|:---------|:------------|:--------------|:--------------|
 |  0 | Amlodopine Vallarta 10-320mg | DRUG       | Gynaecomastia               |   722131 | NONE                       | NONE                                       | C1949334 | 425838008   | 00093-7693    | 00093-7693-56 |
 |  1 | Eviplera                     | DRUG       | Anxiety                     |   217010 | Inhibitory Bone Resorption | Osteoporosis                               | C0720318 | NONE        | NONE          | NONE          |
 |  2 | Lescol 40 MG                 | DRUG       | NONE                        |   103919 | Hypocholesterolemic        | Heterozygous Familial Hypercholesterolemia | C0353573 | NONE        | 00078-0234    | 00078-0234-05 |
 |  3 | Everolimus 1.5 mg tablet     | DRUG       | Acute myocardial infarction |  2056895 | NONE                       | NONE                                       | C4723581 | NONE        | 00054-0604    | 00054-0604-21 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

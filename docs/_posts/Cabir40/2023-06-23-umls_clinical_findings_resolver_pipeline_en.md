@@ -34,6 +34,7 @@ This pretrained pipeline maps entities (Clinical Findings) with their correspond
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,11 @@ nlu.load("en.map_entity.umls_clinical_findings_resolver").predict("""HTG-induced
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("umls_clinical_findings_resolver_pipeline", "en", "clinical/models")
-
-text = 'HTG-induced pancreatitis associated with an acute hepatitis, and obesity'
-
-result = pipeline.annotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("umls_clinical_findings_resolver_pipeline", "en", "clinical/models")
-
-val text = "HTG-induced pancreatitis associated with an acute hepatitis, and obesity"
-
-val result = pipeline.annotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.map_entity.umls_clinical_findings_resolver").predict("""HTG-induced pancreatitis associated with an acute hepatitis, and obesity""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 +------------------------+---------+---------+
 |chunk                   |ner_label|umls_code|
 +------------------------+---------+---------+
@@ -103,9 +75,6 @@ Results
 |an acute hepatitis      |PROBLEM  |C4750596 |
 |obesity                 |PROBLEM  |C1963185 |
 +------------------------+---------+---------+
-
-
-{:.model-param}
 ```
 
 {:.model-param}
