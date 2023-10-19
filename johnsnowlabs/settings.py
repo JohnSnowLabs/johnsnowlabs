@@ -16,6 +16,7 @@ raw_version_jsl_lib = "5.1.7"
 
 raw_version_nlp = "5.1.2"
 
+
 raw_version_nlu = "5.0.4rc2"
 
 
