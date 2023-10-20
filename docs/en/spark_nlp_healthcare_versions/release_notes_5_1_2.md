@@ -38,7 +38,6 @@ We are delighted to announce remarkable enhancements and updates in our latest r
   - New [Respiratory Disease Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPIRATORY/) with new `multiclassifierdl_respiratory_disease` model
   - New [Mental Disorder demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/) with new `multiclassifierdl_mental_disorder` model
   - New [Heart Disease demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HEART_DISEASE/) with new `multiclassifierdl_heart_disease` model
-  - New [Abbreviation Mapper demo](https://demo.johnsnowlabs.com/healthcare/ABBREVIATION_MAPPER/) for the most popular MAPPER models
 + The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain
 
 These enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined healthcare-related natural language data analysis.
@@ -181,25 +180,24 @@ multiclassifierdl = MultiClassifierDLModel.pretrained("multiclassifierdl_respira
     .setOutputCol("predicted_class")
 
 text = [
- ["""The patient, experiencing recurrent episodes of wheezing and shortness of breath, has been diagnosed with Asthma and is advised to use a daily controller inhaler to manage the symptoms."""],
-    ["""Due to the patient's long history of tobacco use and persistent cough producing large amounts of sputum, a diagnosis of Chronic Obstructive Pulmonary Disease (COPD) has been established, necessitating bronchodilators for management."""],
-    ["""The presence of dyspnea, chronic cough, and a history of smoking have led to the diagnosis of Emphysema for the patient, warranting the initiation of long-term oxygen therapy."""],
-    ["""The patient has been diagnosed with Chronic Bronchitis following the prolonged occurrence of cough and mucus production, and is recommended to undergo pulmonary rehabilitation and pharmacotherapy."""],
-    ["""With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications."""],
-    ["""Manifesting prolonged symptoms of breathlessness and a productive cough, the patient has received a diagnosis of Chronic Obstructive Pulmonary Disease (COPD), and a comprehensive treatment involving bronchodilators and lifestyle modifications has been recommended."""],
+ ["""The patient takes inhalers for COPD management, weight loss medications, and disease-modifying antirheumatic drugs (DMARDs) for rheumatoid arthritis."""],
+        ["""The patient was on Metformin for DM2, mood stabilizers for Bipolar II Disorder, and inhaled corticosteroids for Asthma."""],
+        ["""The patient was diagnosed with Chronic Bronchitis after a series of pulmonary function tests."""],
+        ["""Chest CT imaging revealed significant bullae and airspace enlargement, consistent with a diagnosis of emphysema."""],
     ]
 ```
 
 *Result*:
-
-|                   text  |                               result|
-|-------------------------|-------------------------------------|
-|The patient, experiencing recurrent episodes of wheezing and shortness of breath, has been diagn...|         Asthma, Chronic bronchitis|
-|Due to the patient s long history of tobacco use and persistent cough producing large amounts of...|           COPD, Chronic bronchitis|
-|The presence of dyspnea, chronic cough, and a history of smoking have led to the diagnosis of Em...|Emphysema, COPD, Chronic bronchitis|
-|The patient has been diagnosed with Chronic Bronchitis following the prolonged occurrence of cou...|                 Chronic bronchitis|
-|With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has ...|              Asthma, Other/Unknown|
-|Manifesting prolonged symptoms of breathlessness and a productive cough, the patient has receive...|           COPD, Chronic bronchitis|
+```bash
++----------------------------------------------------------------------------------------------------+--------------------+
+|                                                                                                text|              result|
++----------------------------------------------------------------------------------------------------+--------------------+
+|The patient takes inhalers for COPD management, weight loss medications, and disease-modifying an...|              [COPD]|
+|The patient was on Metformin for DM2, mood stabilizers for Bipolar II Disorder, and inhaled corti...|            [Asthma]|
+|       The patient was diagnosed with Chronic Bronchitis after a series of pulmonary function tests.|[Chronic bronchitis]|
+|Chest CT imaging revealed significant bullae and airspace enlargement, consistent with a diagnosi...|         [Emphysema]|
++----------------------------------------------------------------------------------------------------+--------------------+
+```
 
 Please see the  [Respiratory Disease](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPIRATORY/), [Heart Disease](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HEART_DISEASE/), and 
 [Mental Disorder](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/) demos
@@ -456,7 +454,6 @@ Please see [Spark OCR Utility Module Notebook](https://github.com/JohnSnowLabs/s
 - New [Respiratory Disease Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPIRATORY/) with new `multiclassifierdl_respiratory_disease` model
 - New [Mental Disorder demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/) with new `multiclassifierdl_mental_disorder` model
 - New [Heart Disease demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HEART_DISEASE/) with new `multiclassifierdl_heart_disease` model
-- New [Abbreviation Mapper demo](https://demo.johnsnowlabs.com/healthcare/ABBREVIATION_MAPPER/) for the most popular MAPPER models
 - Updated [Spark OCR Utility Module Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/5.3.Spark_OCR_Utility_Module.ipynb) with latest improvements
 - [Clinical DeIdentification Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb) with new `setAgeRangesByHipaa` examples
 - [Calculate Medicare Risk Adjustment Score Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb) with new Risk-Adjustment feature examples
