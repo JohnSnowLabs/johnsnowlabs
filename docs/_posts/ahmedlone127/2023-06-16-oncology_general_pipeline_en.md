@@ -34,6 +34,7 @@ This pipeline includes Named-Entity Recognition, Assertion Status and Relation E
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -65,78 +66,11 @@ The tumor is positive for ER and PR.""")
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("oncology_general_pipeline", "en", "clinical/models")
-
-text = '''The patient underwent a left mastectomy for a left breast cancer two months ago.
-The tumor is positive for ER and PR.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("oncology_general_pipeline", "en", "clinical/models")
-
-val text = "The patient underwent a left mastectomy for a left breast cancer two months ago.
-The tumor is positive for ER and PR."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.oncology_general.pipeline").predict("""The patient underwent a left mastectomy for a left breast cancer two months ago.
-The tumor is positive for ER and PR.""")
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("oncology_general_pipeline", "en", "clinical/models")
-
-text = '''The patient underwent a left mastectomy for a left breast cancer two months ago.
-The tumor is positive for ER and PR.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("oncology_general_pipeline", "en", "clinical/models")
-
-val text = "The patient underwent a left mastectomy for a left breast cancer two months ago.
-The tumor is positive for ER and PR."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.oncology_general.pipeline").predict("""The patient underwent a left mastectomy for a left breast cancer two months ago.
-The tumor is positive for ER and PR.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
-"
 ******************** ner_oncology_wip results ********************
 
 | chunk          | ner_label        |
@@ -217,14 +151,6 @@ Results
 | tumor         | Tumor_Finding    | PR             | Biomarker     | O             |
 | positive      | Biomarker_Result | ER             | Biomarker     | is_finding_of |
 | positive      | Biomarker_Result | PR             | Biomarker     | is_finding_of |
-
-
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}
