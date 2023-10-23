@@ -84,39 +84,6 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 | ner_deid_generic_augmented_allUpperCased_langtest  | 94.73%  | 97.60% |
 
 
-*Example*:
-
-```python
-clinical_ner = MedicalNerModel.pretrained("ner_clinical_large_langtest", "en", "clinical/models") \
-     .setInputCols(["sentence", "token", "embeddings"]) \
-     .setOutputCol("ner")
-
-text= """She was on metformin, glipizide, and dapagliflozin for T2DM and atorvastatin and gemfibrozil for HTG. She had been on dapagliflozin for six months at the time of presentation. Physical examination on presentation was significant for dry oral mucosa; significantly, her abdominal examination was benign with no tenderness, guarding, or rigidity. """
-```
-
-*Result*:
-
-```bash
-+-------------------------------------+---------+
-|chunk                                |ner_label|
-+-------------------------------------+---------+
-|metformin                            |TREATMENT|
-|glipizide                            |TREATMENT|
-|dapagliflozin                        |TREATMENT|
-|T2DM                                 |PROBLEM  |
-|atorvastatin                         |TREATMENT|
-|gemfibrozil                          |TREATMENT|
-|HTG                                  |PROBLEM  |
-|dapagliflozin                        |TREATMENT|
-|Physical examination                 |TEST     |
-|dry oral mucosa                      |PROBLEM  |
-|her abdominal examination            |TEST     |
-|tenderness                           |PROBLEM  |
-|guarding                             |PROBLEM  |
-|rigidity                             |PROBLEM  |
-+-------------------------------------+---------+
-```
-
 
 </div><div class="h3-box" markdown="1">
 
@@ -146,6 +113,7 @@ sample_text = """تاريخ الزيارة: 25 سبتمبر 2023 - المريض�
 ```
 
 *Result*:
+
 |chunk                                               |ner_label|
 |----------------------------------------------------|-------------------|
 |مشكل ارتفاع في مستويات في الدم                 |PROBLEM  |
@@ -188,6 +156,7 @@ text = [
 ```
 
 *Result*:
+
 ```bash
 +----------------------------------------------------------------------------------------------------+--------------------+
 |                                                                                                text|              result|
