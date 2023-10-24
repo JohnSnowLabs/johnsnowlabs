@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of `icdo_snomed_mapper` model.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -58,74 +59,14 @@ nlu.load("en.map_entity.icdo_to_snomed.pipe").predict("""Put your text here.""")
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("icdo_snomed_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(8120/1 8170/3 8380/3)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("icdo_snomed_mapping", "en", "clinical/models")
-
-val result = pipeline.fullAnnotate(8120/1 8170/3 8380/3)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.map_entity.icdo_to_snomed.pipe").predict("""Put your text here.""")
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("icdo_snomed_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(8120/1 8170/3 8380/3)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("icdo_snomed_mapping", "en", "clinical/models")
-
-val result = pipeline.fullAnnotate(8120/1 8170/3 8380/3)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.map_entity.icdo_to_snomed.pipe").predict("""Put your text here.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 
 |    | icdo_code                | snomed_code                    |
 |---:|:-------------------------|:-------------------------------|
 |  0 | 8120/1 | 8170/3 | 8380/3 | 45083001 | 25370001 | 30289006 |
-
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

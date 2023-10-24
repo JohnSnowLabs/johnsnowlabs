@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_negation_
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -54,34 +55,11 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("bert_token_classifier_negation_uncertainty_pipeline", "es", "clinical/models")
-
-text = '''Con diagnóstico probable de cirrosis hepática (no conocida previamente) y peritonitis espontanea primaria con tratamiento durante 8 dias con ceftriaxona en el primer ingreso (no se realizó paracentesis control por escasez de liquido). Lesión tumoral en hélix izquierdo de 0,5 cms. de diámetro susceptible de ca basocelular perlado.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_negation_uncertainty_pipeline", "es", "clinical/models")
-
-val text = "Con diagnóstico probable de cirrosis hepática (no conocida previamente) y peritonitis espontanea primaria con tratamiento durante 8 dias con ceftriaxona en el primer ingreso (no se realizó paracentesis control por escasez de liquido). Lesión tumoral en hélix izquierdo de 0,5 cms. de diámetro susceptible de ca basocelular perlado."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk                                              |   begin |   end | ner_label   |   confidence |
 |---:|:-------------------------------------------------------|--------:|------:|:------------|-------------:|
 |  0 | probable                                               |      16 |    23 | UNC         |     0.999994 |
@@ -92,9 +70,6 @@ Results
 |  5 | se realizó paracentesis control por escasez de liquido |     178 |   231 | NSCO        |     0.999995 |
 |  6 | susceptible de                                         |     293 |   306 | UNC         |     0.999986 |
 |  7 | ca basocelular perlado                                 |     308 |   329 | USCO        |     0.99999  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

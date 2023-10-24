@@ -36,6 +36,7 @@ It's different to `clinical_deidentification_glove` in the way it manages PHONE 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -60,36 +61,11 @@ nlu.load("en.deid.glove_augmented.pipeline").predict("""Record date : 2093-01-13
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-deid_pipeline = PretrainedPipeline("clinical_deidentification_glove_augmented", "en", "clinical/models")
-
-deid_pipeline.annotate("""Record date : 2093-01-13, David Hale, M.D. IP: 203.120.223.13. The driver's license no:A334455B. the SSN: 324598674 and e-mail: hale@gmail.com. Name : Hendrickson, Ora MR. # 719435 Date : 01/13/93. PCP : Oliveira, 25 years old. Record date : 2079-11-09, Patient's VIN : 1HGBH41JXMN109286.""")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val deid_pipeline = PretrainedPipeline("clinical_deidentification_glove_augmented", "en", "clinical/models")
-
-val result = pipeline.annotate("""Record date : 2093-01-13, David Hale, M.D. IP: 203.120.223.13. The driver's license no:A334455B. the SSN: 324598674 and e-mail: hale@gmail.com. Name : Hendrickson, Ora MR. # 719435 Date : 01/13/93. PCP : Oliveira, 25 years old. Record date : 2079-11-09, Patient's VIN : 1HGBH41JXMN109286.""")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.deid.glove_augmented.pipeline").predict("""Record date : 2093-01-13, David Hale, M.D. IP: 203.120.223.13. The driver's license no:A334455B. the SSN: 324598674 and e-mail: hale@gmail.com. Name : Hendrickson, Ora MR. # 719435 Date : 01/13/93. PCP : Oliveira, 25 years old. Record date : 2079-11-09, Patient's VIN : 1HGBH41JXMN109286.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 {'masked': ['Record date : <DATE>, <DOCTOR>, M.D.',
     'IP: <IPADDR>.',
     "The driver's license no: <LICENSE>.",
@@ -138,9 +114,6 @@ Results
     'Name : Hendrickson, Ora MR. # 719435 Date : 01/13/93.',
     'PCP : Oliveira, 25 years old.',
     "Record date : 2079-11-09, Patient's VIN : 1HGBH41JXMN109286."]}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

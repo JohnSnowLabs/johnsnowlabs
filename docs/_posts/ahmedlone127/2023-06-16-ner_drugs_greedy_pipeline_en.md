@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_drugs_greedy](https://nlp.j
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,47 +63,15 @@ nlu.load("en.med_ner.drugs_greedy.pipeline").predict("""DOSAGE AND ADMINISTRATIO
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_drugs_greedy_pipeline", "en", "clinical/models")
-
-text = '''DOSAGE AND ADMINISTRATION The initial dosage of hydrocortisone tablets may vary from 20 mg to 240 mg of hydrocortisone per day depending on the specific disease entity being treated.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_drugs_greedy_pipeline", "en", "clinical/models")
-
-val text = "DOSAGE AND ADMINISTRATION The initial dosage of hydrocortisone tablets may vary from 20 mg to 240 mg of hydrocortisone per day depending on the specific disease entity being treated."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.drugs_greedy.pipeline").predict("""DOSAGE AND ADMINISTRATION The initial dosage of hydrocortisone tablets may vary from 20 mg to 240 mg of hydrocortisone per day depending on the specific disease entity being treated.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk                         |   begin |   end | ner_label   |   confidence |
 |---:|:----------------------------------|--------:|------:|:------------|-------------:|
 |  0 | hydrocortisone tablets            |      48 |    69 | DRUG        |       0.9923 |
 |  1 | 20 mg to 240 mg of hydrocortisone |      85 |   117 | DRUG        |       0.7361 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

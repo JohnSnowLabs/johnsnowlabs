@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_jsl_s
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,11 @@ nlu.load("en.classify.token_bert.jsl_slim.pipeline").predict("""HISTORY: 30-year
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("bert_token_classifier_ner_jsl_slim_pipeline", "en", "clinical/models")
-
-text = '''HISTORY: 30-year-old female presents for digital bilateral mammography secondary to a soft tissue lump palpated by the patient in the upper right shoulder. The patient has a family history of breast cancer within her mother at age 58. Patient denies personal history of breast cancer.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_jsl_slim_pipeline", "en", "clinical/models")
-
-val text = "HISTORY: 30-year-old female presents for digital bilateral mammography secondary to a soft tissue lump palpated by the patient in the upper right shoulder. The patient has a family history of breast cancer within her mother at age 58. Patient denies personal history of breast cancer."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.classify.token_bert.jsl_slim.pipeline").predict("""HISTORY: 30-year-old female presents for digital bilateral mammography secondary to a soft tissue lump palpated by the patient in the upper right shoulder. The patient has a family history of breast cancer within her mother at age 58. Patient denies personal history of breast cancer.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk        |   begin |   end | ner_label    |   confidence |
 |---:|:-----------------|--------:|------:|:-------------|-------------:|
 |  0 | HISTORY:         |       0 |     7 | Header       |     0.994786 |
@@ -108,9 +80,6 @@ Results
 |  7 | her mother       |     213 |   222 | Demographics |     0.997765 |
 |  8 | age 58           |     227 |   232 | Age          |     0.997636 |
 |  9 | breast cancer    |     270 |   282 | Oncological  |     0.999452 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

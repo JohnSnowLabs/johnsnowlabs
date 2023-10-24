@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of `icd10_icd9_mapper` model.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -58,74 +59,13 @@ nlu.load("en.icd10_icd9.mapping").predict("""Put your text here.""")
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("icd10_icd9_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(Z833 A0100 A000)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("icd10_icd9_mapping", "en", "clinical/models")
-
-val result = pipeline.fullAnnotate(Z833 A0100 A000)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.icd10_icd9.mapping").predict("""Put your text here.""")
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("icd10_icd9_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(Z833 A0100 A000)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("icd10_icd9_mapping", "en", "clinical/models")
-
-val result = pipeline.fullAnnotate(Z833 A0100 A000)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.icd10_icd9.mapping").predict("""Put your text here.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
-
 |    | icd10_code          | icd9_code          |
 |---:|:--------------------|:-------------------|
 |  0 | Z833 | A0100 | A000 | V180 | 0020 | 0010 |
-
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

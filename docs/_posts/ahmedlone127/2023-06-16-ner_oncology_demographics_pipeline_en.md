@@ -34,50 +34,7 @@ This pretrained pipeline is built on the top of [ner_oncology_demographics](http
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_oncology_demographics_pipeline", "en", "clinical/models")
-
-text = '''The patient is a 40-year-old man with history of heavy smoking.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_demographics_pipeline", "en", "clinical/models")
-
-val text = "The patient is a 40-year-old man with history of heavy smoking."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_oncology_demographics_pipeline", "en", "clinical/models")
-
-text = '''The patient is a 40-year-old man with history of heavy smoking.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_demographics_pipeline", "en", "clinical/models")
-
-val text = "The patient is a 40-year-old man with history of heavy smoking."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -112,23 +69,11 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunks    |   begin |   end | ner_label      |   confidence |
 |---:|:--------------|--------:|------:|:---------------|-------------:|
 |  0 | 40-year-old   |      17 |    27 | Age            |       0.6743 |
 |  1 | man           |      29 |    31 | Gender         |       0.9365 |
 |  2 | heavy smoking |      49 |    61 | Smoking_Status |       0.7294 |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}
