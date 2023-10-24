@@ -266,10 +266,13 @@ Output:
 +-------------------------------------------------------------------------+
 ```
 
-## VisualDocumentNERv2
+## VisualDocumentNER
 
-`VisualDocumentNERv2` is a DL model for NER documents which is an improved version of `VisualDocumentNER`. There is available pretrained model trained on FUNSD dataset.
-The dataset comprises 199 real, fully annotated, scanned forms.
+`VisualDocumentNER` is the main entry point to transformer-based models for document NER. An example of a VisualDocumentNER task is the detection of keys and values like in the FUNSD dataset.
+These keys and values represent the structure of a form, and are typically "connected" to each other by using a FormRelationExtractor model.
+Some other VisualDocumentNER models are trained without this post-processing stage in mind, and consider entities in isolation. Some sample entities would be names, places, or medications, where the goal is not to connect the entities to other entities, but to use those entities individually.
+VisualDocumentNER follows the same architecture as VisualDocumentClassifier receiving 'visual tokens', this is, tokens with coordinates in HOCR format, along with images to inform the model.
+Check the Models Hub for available models.
 
 #### Input Columns
 
@@ -323,8 +326,8 @@ val tokenizer = new HocrTokenizer()
   .setInputCol("hocr")
   .setOutputCol("token")
 
-val visualDocumentNER = VisualDocumentNERv2
-  .pretrained("layoutlmv2_funsd", "en", "clinical/ocr")
+val visualDocumentNER = VisualDocumentNER
+  .pretrained("lilt_roberta_funsd_v1", "en", "clinical/ocr")
   .setInputCols(Array("token", "image"))
 
 val pipeline = new Pipeline()
@@ -369,8 +372,8 @@ tokenizer = HocrTokenizer()\
     .setInputCol("hocr")\
     .setOutputCol("token")
 
-ner = VisualDocumentNerV2()\
-    .pretrained("layoutlmv2_funsd", "en", "clinical/ocr")\
+ner = VisualDocumentNer()\
+    .pretrained("lilt_roberta_funsd_v1", "en", "clinical/ocr")\
     .setInputCols(["token", "image"])\
     .setOutputCol("entities")
 
@@ -406,7 +409,7 @@ Output sample:
 
 ## FormRelationExtractor
 
-`FormRelationExtractor` detect relation between keys and values detected by `VisualDocumentNERv2`.
+`FormRelationExtractor` detect relation between keys and values detected by `VisualDocumentNER`.
 
 It can detect relations only for key/value in same line.
 
@@ -463,8 +466,8 @@ val tokenizer = new HocrTokenizer()
   .setInputCol("hocr")
   .setOutputCol("token")
 
-val visualDocumentNER = VisualDocumentNERv2
-  .pretrained("layoutlmv2_funsd", "en", "clinical/ocr")
+val visualDocumentNER = VisualDocumentNER
+  .pretrained("lilt_roberta_funsd_v1", "en", "clinical/ocr")
   .setInputCols(Array("token", "image"))
 
 val relExtractor = new FormRelationExtractor()
@@ -514,8 +517,8 @@ tokenizer = HocrTokenizer()\
     .setInputCol("hocr")\
     .setOutputCol("token")
 
-ner = VisualDocumentNerV2()\
-    .pretrained("layoutlmv2_funsd", "en", "clinical/ocr")\
+ner = VisualDocumentNer()\
+    .pretrained("lilt_roberta_funsd_v1", "en", "clinical/ocr")\
     .setInputCols(["token", "image"])\
     .setOutputCol("entities")
 
