@@ -1289,6 +1289,7 @@ model_input_anno=model_input_anno
 model_output_anno=model_output_anno
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_python_medical=model_python_medical
 model_python_finance=model_python_finance
 model_python_legal=model_python_legal
 model_scala_finance=model_scala_finance
