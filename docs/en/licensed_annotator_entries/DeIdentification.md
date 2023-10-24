@@ -465,29 +465,29 @@ val documentAssembler = new DocumentAssembler()
 .setOutputCol("document")
 
 val sentenceDetector = new SentenceDetector()
-.setInputCols(["document"])
+.setInputCols(Array("document"))
 .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
-.setInputCols(["sentence"])
+.setInputCols(Array("sentence"))
 .setOutputCol("token")
 
 val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-.setInputCols(["sentence", "token"])
+.setInputCols(Array("sentence", "token"))
 .setOutputCol("embeddings")
 
 val clinical_ner = MedicalNerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models")
-.setInputCols(["sentence", "token", "embeddings"])
+.setInputCols(Array("sentence", "token", "embeddings"))
 .setOutputCol("ner")
 
 val ner_converter = new NerConverterInternal()
-.setInputCols(["sentence", "token", "ner"])
+.setInputCols(Array("sentence", "token", "ner"))
 .setOutputCol("ner_chunk")
 
 deid model with "entity_labels"
 
 val deid_entity_labels= DeIdentification()
-.setInputCols(["sentence", "token", "ner_chunk"])
+.setInputCols(Array("sentence", "token", "ner_chunk"))
 .setOutputCol("deid_entity_label")
 .setMode("mask")
 .setReturnEntityMappings(True)
@@ -496,7 +496,7 @@ val deid_entity_labels= DeIdentification()
 #deid model with "same_length_chars"
 
 val deid_same_length= DeIdentification()
-.setInputCols(["sentence", "token", "ner_chunk"])
+.setInputCols(Array("sentence", "token", "ner_chunk"))
 .setOutputCol("deid_same_length")
 .setMode("mask")
 .setReturnEntityMappings(True)
@@ -505,7 +505,7 @@ val deid_same_length= DeIdentification()
 #deid model with "fixed_length_chars"
 
 val deid_fixed_length= DeIdentification()
-.setInputCols(["sentence", "token", "ner_chunk"])
+.setInputCols(Array("sentence", "token", "ner_chunk"))
 .setOutputCol("deid_fixed_length")
 .setMode("mask")
 .setReturnEntityMappings(True)
@@ -523,7 +523,7 @@ writer.close()
 } }
 
 val obfuscation = new DeIdentification()
-.setInputCols(["sentence", "token", "ner_chunk"])
+.setInputCols(Array("sentence", "token", "ner_chunk"))
 .setOutputCol("deidentified")
 .setMode("obfuscate")
 .setObfuscateDate(True)
@@ -531,13 +531,13 @@ val obfuscation = new DeIdentification()
 .setObfuscateRefSource("file")
 
 fval aker = new DeIdentification()
-.setInputCols(["sentence", "token", "ner_chunk"])
+.setInputCols(Array("sentence", "token", "ner_chunk"))
 .setOutputCol("deidentified_by_faker")
 .setMode("obfuscate")
 .setObfuscateDate(True)
 .setObfuscateRefSource("faker")
 
-val deidPipeline = new Pipeline(stages=[ documentAssembler, sentenceDetector, tokenizer, word_embeddings, clinical_ner, ner_converter, deid_entity_labels, deid_same_length, deid_fixed_length, obfuscation, faker])
+val deidPipeline = new Pipeline(stages=Array(documentAssembler, sentenceDetector, tokenizer, word_embeddings, clinical_ner, ner_converter, deid_entity_labels, deid_same_length, deid_fixed_length, obfuscation, faker))
 
 empty_data = spark.createDataFrame([[""]]).toDF("text")
 
