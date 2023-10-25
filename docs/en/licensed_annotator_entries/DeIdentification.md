@@ -152,64 +152,53 @@ DOCUMENT
 
 {%- capture model_python_medical -%}
 from johnsnowlabs import nlp, medical
-import pandas as pd
-from pyspark.sql import SparkSession
-from sparknlp.annotator import *
-from sparknlp_jsl.annotator import *
-from sparknlp.base import *
-import sparknlp_jsl
-import sparknlp
-import pandas as pd
-from array import array
-spark = nlp.start()
-
-# ==============pipeline ==============
-
-documentAssembler = DocumentAssembler()\
+ 
+documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-sentenceDetector = SentenceDetector()\
+# Sentence Detector annotator, processes various sentences per line
+sentenceDetector = nlp.SentenceDetector()\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
 
-tokenizer = Tokenizer()\
+# Tokenizer splits words in a relevant format for NLP
+tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+# Clinical word embeddings trained on PubMED dataset
+word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-clinical_ner = MedicalNerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models") \
+# NER model trained on n2c2 (de-identification and Heart Disease Risk Factors Challenge) datasets)
+clinical_ner = medical.NerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("ner")
 
-ner_converter = NerConverterInternal()\
+ner_converter = medical.NerConverterInternal()\
     .setInputCols(["sentence", "token", "ner"])\
     .setOutputCol("ner_chunk")
 
-***deid model with "entity_labels"***
-
-deid_entity_labels= DeIdentification()\
+#deid model with "entity_labels"
+deid_entity_labels= medical.DeIdentification()\
     .setInputCols(["sentence", "token", "ner_chunk"])\
     .setOutputCol("deid_entity_label")\
     .setMode("mask")\
     .setReturnEntityMappings(True)\
     .setMaskingPolicy("entity_labels")
 
-***#deid model with "same_length_chars"***
-
-deid_same_length= DeIdentification()\
+#deid model with "same_length_chars"
+deid_same_length= medical.DeIdentification()\
     .setInputCols(["sentence", "token", "ner_chunk"])\
     .setOutputCol("deid_same_length")\
     .setMode("mask")\
     .setReturnEntityMappings(True)\
     .setMaskingPolicy("same_length_chars")
 
-***#deid model with "fixed_length_chars"***
-
-deid_fixed_length= DeIdentification()\
+#deid model with "fixed_length_chars"
+deid_fixed_length= medical.DeIdentification()\
     .setInputCols(["sentence", "token", "ner_chunk"])\
     .setOutputCol("deid_fixed_length")\
     .setMode("mask")\
@@ -231,7 +220,7 @@ Mufi HIGGS#NAME"""
 with open ('obfuscation.txt', 'w') as f:
   f.write(obs_lines)
 
-obfuscation = DeIdentification()\
+obfuscation = medical.DeIdentification()\
     .setInputCols(["sentence", "token", "ner_chunk"]) \
     .setOutputCol("deidentified") \
     .setMode("obfuscate")\
@@ -241,7 +230,7 @@ obfuscation = DeIdentification()\
 
 
 
-faker = DeIdentification()\
+faker = medical.DeIdentification()\
     .setInputCols(["sentence", "token", "ner_chunk"]) \
     .setOutputCol("deidentified_by_faker") \
     .setMode("obfuscate")\
@@ -249,7 +238,7 @@ faker = DeIdentification()\
     .setObfuscateRefSource("faker")
 
 
-deidPipeline = Pipeline(stages=[
+deidPipeline = nlp.Pipeline(stages=[
       documentAssembler,
       sentenceDetector,
       tokenizer,
@@ -261,7 +250,6 @@ deidPipeline = Pipeline(stages=[
       deid_fixed_length,
       obfuscation,
       faker])
-
 
 empty_data = spark.createDataFrame([[""]]).toDF("text")
 
@@ -276,7 +264,7 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 71
 result = model.transform(spark.createDataFrame([[text]]).toDF("text"))
 
 result.select(F.explode(F.arrays_zip(result.sentence.result,
-                                a     result.deid_entity_label.result,
+                                  a   result.deid_entity_label.result,
                                      result.deid_same_length.result,
                                      result.deid_fixed_length.result,
                                      result.deidentified.result,
@@ -457,7 +445,7 @@ result = nlpPipeline.fit(data).transform(data)
 
 {%- capture model_scala_medical -%}
 
-from johnsnowlabs import * spark = nlp.start()
+from johnsnowlabs import *  
 
 ==============pipeline ==============
 val documentAssembler = new DocumentAssembler()
@@ -530,7 +518,7 @@ val obfuscation = new DeIdentification()
 .setObfuscateRefFile('obfuscation.txt')
 .setObfuscateRefSource("file")
 
-fval aker = new DeIdentification()
+val faker = new DeIdentification()
 .setInputCols(Array("sentence", "token", "ner_chunk"))
 .setOutputCol("deidentified_by_faker")
 .setMode("obfuscate")
@@ -736,64 +724,53 @@ DOCUMENT
 
 {%- capture approach_python_medical -%}
 from johnsnowlabs import nlp, medical
-import pandas as pd
-from pyspark.sql import SparkSession
-from sparknlp.annotator import *
-from sparknlp_jsl.annotator import *
-from sparknlp.base import *
-import sparknlp_jsl
-import sparknlp
-import pandas as pd
-from array import array
-spark = nlp.start()
 
-# ==============pipeline ==============
-
-documentAssembler = DocumentAssembler()\
+documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-sentenceDetector = SentenceDetector()\
+# Sentence Detector annotator, processes various sentences per line
+sentenceDetector = nlp.SentenceDetector()\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
 
-tokenizer = Tokenizer()\
+# Tokenizer splits words in a relevant format for NLP
+tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+# Clinical word embeddings trained on PubMED dataset
+word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-clinical_ner = MedicalNerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models") \
+# NER model trained on n2c2 (de-identification and Heart Disease Risk Factors Challenge) datasets)
+clinical_ner = medical.NerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("ner")
 
-ner_converter = NerConverterInternal()\
+ner_converter = medical.NerConverterInternal()\
     .setInputCols(["sentence", "token", "ner"])\
     .setOutputCol("ner_chunk")
 
-***deid model with "entity_labels"***
-
-deid_entity_labels= DeIdentification()\
+#deid model with "entity_labels"
+deid_entity_labels= medical.DeIdentification()\
     .setInputCols(["sentence", "token", "ner_chunk"])\
     .setOutputCol("deid_entity_label")\
     .setMode("mask")\
     .setReturnEntityMappings(True)\
     .setMaskingPolicy("entity_labels")
 
-***#deid model with "same_length_chars"***
-
-deid_same_length= DeIdentification()\
+#deid model with "same_length_chars"
+deid_same_length= medical.DeIdentification()\
     .setInputCols(["sentence", "token", "ner_chunk"])\
     .setOutputCol("deid_same_length")\
     .setMode("mask")\
     .setReturnEntityMappings(True)\
     .setMaskingPolicy("same_length_chars")
 
-***#deid model with "fixed_length_chars"***
-
-deid_fixed_length= DeIdentification()\
+#deid model with "fixed_length_chars"
+deid_fixed_length= medical.DeIdentification()\
     .setInputCols(["sentence", "token", "ner_chunk"])\
     .setOutputCol("deid_fixed_length")\
     .setMode("mask")\
@@ -815,7 +792,7 @@ Mufi HIGGS#NAME"""
 with open ('obfuscation.txt', 'w') as f:
   f.write(obs_lines)
 
-obfuscation = DeIdentification()\
+obfuscation = medical.DeIdentification()\
     .setInputCols(["sentence", "token", "ner_chunk"]) \
     .setOutputCol("deidentified") \
     .setMode("obfuscate")\
@@ -825,7 +802,7 @@ obfuscation = DeIdentification()\
 
 
 
-faker = DeIdentification()\
+faker = medical.DeIdentification()\
     .setInputCols(["sentence", "token", "ner_chunk"]) \
     .setOutputCol("deidentified_by_faker") \
     .setMode("obfuscate")\
@@ -833,7 +810,7 @@ faker = DeIdentification()\
     .setObfuscateRefSource("faker")
 
 
-deidPipeline = Pipeline(stages=[
+deidPipeline = nlp.Pipeline(stages=[
       documentAssembler,
       sentenceDetector,
       tokenizer,
@@ -845,7 +822,6 @@ deidPipeline = Pipeline(stages=[
       deid_fixed_length,
       obfuscation,
       faker])
-
 
 empty_data = spark.createDataFrame([[""]]).toDF("text")
 
