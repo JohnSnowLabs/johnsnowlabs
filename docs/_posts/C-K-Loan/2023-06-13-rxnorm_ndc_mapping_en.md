@@ -34,6 +34,7 @@ This pretrained pipeline maps RXNORM codes to NDC codes without using any text d
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -58,45 +59,15 @@ nlu.load("en.map_entity.rxnorm_to_ndc.pipe").predict("""Put your text here.""")
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("rxnorm_ndc_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(1652674 259934)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("rxnorm_ndc_mapping", "en", "clinical/models")
-
-val result = pipeline.fullAnnotate(1652674 259934)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.map_entity.rxnorm_to_ndc.pipe").predict("""Put your text here.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-
 {'document': ['1652674 259934'],
 'package_ndc': ['62135-0625-60', '13349-0010-39'],
 'product_ndc': ['46708-0499', '13349-0010'],
 'rxnorm_code': ['1652674', '259934']}
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}

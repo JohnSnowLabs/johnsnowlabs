@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_condition](http
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -60,40 +61,10 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_eu_clinical_condition_pipeline", "it", "clinical/models")
-
-text = "
-Donna, 64 anni, ricovero per dolore epigastrico persistente, irradiato a barra e posteriormente, associato a dispesia e anoressia. Poche settimane dopo compaiono, però, iperemia, intenso edema vulvare ed una esione ulcerativa sul lato sinistro della parete rettale che la RM mostra essere una fistola transfinterica. Questi trattamenti determinano un miglioramento dell’ infiammazione ed una riduzione dell’ ulcera, ma i condilomi permangono inalterati.
-
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_condition_pipeline", "it", "clinical/models")
-
-val text = "
-Donna, 64 anni, ricovero per dolore epigastrico persistente, irradiato a barra e posteriormente, associato a dispesia e anoressia. Poche settimane dopo compaiono, però, iperemia, intenso edema vulvare ed una esione ulcerativa sul lato sinistro della parete rettale che la RM mostra essere una fistola transfinterica. Questi trattamenti determinano un miglioramento dell’ infiammazione ed una riduzione dell’ ulcera, ma i condilomi permangono inalterati.
-
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | chunks                 |   begin |   end | entities           |   confidence |
 |---:|:-----------------------|--------:|------:|:-------------------|-------------:|
 |  0 | dolore epigastrico     |      30 |    47 | clinical_condition |      0.90845 |
@@ -102,9 +73,6 @@ Results
 |  3 | edema                  |     188 |   192 | clinical_condition |      1       |
 |  4 | fistola transfinterica |     294 |   315 | clinical_condition |      0.97785 |
 |  5 | infiammazione          |     372 |   384 | clinical_condition |      0.9996  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

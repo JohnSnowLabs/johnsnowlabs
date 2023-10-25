@@ -34,6 +34,7 @@ This pipeline includes Named-Entity Recognition, Assertion Status, Relation Extr
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -65,44 +66,11 @@ According to her last CT, she has no lung metastases.""")
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("oncology_diagnosis_pipeline", "en", "clinical/models")
-
-text = '''Two years ago, the patient presented with a 4-cm tumor in her left breast. She was diagnosed with ductal carcinoma.
-According to her last CT, she has no lung metastases.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("oncology_diagnosis_pipeline", "en", "clinical/models")
-
-val text = "Two years ago, the patient presented with a 4-cm tumor in her left breast. She was diagnosed with ductal carcinoma.
-According to her last CT, she has no lung metastases."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.oncology_diagnosis.pipeline").predict("""Two years ago, the patient presented with a 4-cm tumor in her left breast. She was diagnosed with ductal carcinoma.
-According to her last CT, she has no lung metastases.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-"
 ******************** ner_oncology_wip results ********************
 
 | chunk      | ner_label         |
@@ -199,10 +167,6 @@ Results
 | carcinoma  | Cancer_Dx         | 8010/3 | carcinoma         |
 | lung       | Site_Lung         | C34.9  | lung              |
 | metastases | Metastasis        | 8000/6 | tumor, metastatic |
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}

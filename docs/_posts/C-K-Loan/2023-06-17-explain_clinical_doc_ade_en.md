@@ -34,6 +34,7 @@ A pipeline for Adverse Drug Events (ADE) with `ner_ade_biobert`, `assertion_dl_b
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,43 +63,10 @@ nlu.load("en.explain_doc.clinical_ade").predict("""Been taking Lipitor for 15 ye
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("explain_clinical_doc_ade", "en", "clinical/models")
-
-text = """Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps"""
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("explain_clinical_doc_ade", "en", "clinical/models")
-
-val text = """Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps"""
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.explain_doc.clinical_ade").predict("""Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-
-Class: True
-
 NER_Assertion:
 |    | chunk                   | entitiy    | assertion   |
 |----|-------------------------|------------|-------------|
@@ -114,10 +82,6 @@ Relations:
 | 1  | cramps                        | ADE        | Lipitor     | DRUG    |        0 |
 | 2  | severe fatigue                | ADE        | voltaren    | DRUG    |        0 |
 | 3  | cramps                        | ADE        | voltaren    | DRUG    |        1 |
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}

@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_pharmacology](https://nlp.j
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -54,34 +55,10 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_pharmacology_pipeline", "es", "clinical/models")
-
-text = '''e realiza analítica destacando creatinkinasa 736 UI, LDH 545 UI, urea 63 mg/dl, CA 19.9 64,1 U/ml. Inmunofenotípicamente el tumor expresó vimentina, S-100, HMB-45 y actina. Se instauró el tratamiento con quimioterapia (Cisplatino, Interleukina II, Dacarbacina e Interferon alfa).'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_pharmacology_pipeline", "es", "clinical/models")
-
-val text = "e realiza analítica destacando creatinkinasa 736 UI, LDH 545 UI, urea 63 mg/dl, CA 19.9 64,1 U/ml. Inmunofenotípicamente el tumor expresó vimentina, S-100, HMB-45 y actina. Se instauró el tratamiento con quimioterapia (Cisplatino, Interleukina II, Dacarbacina e Interferon alfa)."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks      |   begin |   end | ner_label     |   confidence |
 |---:|:----------------|--------:|------:|:--------------|-------------:|
 |  0 | creatinkinasa   |      31 |    43 | PROTEINAS     |      0.9994  |
@@ -96,9 +73,6 @@ Results
 |  9 | Interleukina II |     231 |   245 | PROTEINAS     |      0.99955 |
 | 10 | Dacarbacina     |     248 |   258 | NORMALIZABLES |      0.9996  |
 | 11 | Interferon alfa |     262 |   276 | PROTEINAS     |      0.99935 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

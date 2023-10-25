@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_supplement_clinical](https:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -54,43 +55,16 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_supplement_clinical_pipeline", "en", "clinical/models")
-
-text = '''Excellent!. The state of health improves, nervousness disappears, and night sleep improves. It also promotes hair and nail growth. I recommend :'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_supplement_clinical_pipeline", "en", "clinical/models")
-
-val text = "Excellent!. The state of health improves, nervousness disappears, and night sleep improves. It also promotes hair and nail growth. I recommend :"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks   |   begin |   end | ner_label   |   confidence |
 |---:|:-------------|--------:|------:|:------------|-------------:|
 |  0 | nervousness  |      42 |    52 | CONDITION   |      0.9999  |
 |  1 | night sleep  |      70 |    80 | BENEFIT     |      0.80775 |
 |  2 | hair         |     109 |   112 | BENEFIT     |      0.9997  |
 |  3 | nail growth  |     118 |   128 | BENEFIT     |      0.9997  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

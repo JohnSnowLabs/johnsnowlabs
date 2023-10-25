@@ -32,52 +32,10 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_linna
 
 ## How to use
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_token_classifier_ner_linnaeus_species_pipeline", "en", "clinical/models")
-
-text = '''First identified in chicken, vigilin homologues have now been found in human (6), Xenopus laevis (7), Drosophila melanogaster (8) and Schizosaccharomyces pombe.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_linnaeus_species_pipeline", "en", "clinical/models")
-
-val text = "First identified in chicken, vigilin homologues have now been found in human (6), Xenopus laevis (7), Drosophila melanogaster (8) and Schizosaccharomyces pombe."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("bert_token_classifier_ner_linnaeus_species_pipeline", "en", "clinical/models")
-
-text = '''First identified in chicken, vigilin homologues have now been found in human (6), Xenopus laevis (7), Drosophila melanogaster (8) and Schizosaccharomyces pombe.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_linnaeus_species_pipeline", "en", "clinical/models")
-
-val text = "First identified in chicken, vigilin homologues have now been found in human (6), Xenopus laevis (7), Drosophila melanogaster (8) and Schizosaccharomyces pombe."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -112,12 +70,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunk                 |   begin |   end | ner_label   |   confidence |
 |---:|:--------------------------|--------:|------:|:------------|-------------:|
 |  0 | chicken                   |      20 |    26 | SPECIES     |     0.998697 |
@@ -125,12 +77,6 @@ Results
 |  2 | Xenopus laevis            |      82 |    95 | SPECIES     |     0.999918 |
 |  3 | Drosophila melanogaster   |     102 |   124 | SPECIES     |     0.999925 |
 |  4 | Schizosaccharomyces pombe |     134 |   158 | SPECIES     |     0.999881 |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

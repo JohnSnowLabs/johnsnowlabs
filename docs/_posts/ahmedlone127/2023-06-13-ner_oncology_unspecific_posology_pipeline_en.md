@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_oncology_unspecific_posolog
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -54,34 +55,10 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_oncology_unspecific_posology_pipeline", "en", "clinical/models")
-
-text = '''The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_unspecific_posology_pipeline", "en", "clinical/models")
-
-val text = "The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses. She is currently receiving his second cycle of chemotherapy and is in good overall condition."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks       |   begin |   end | ner_label            |   confidence |
 |---:|:-----------------|--------:|------:|:---------------------|-------------:|
 |  0 | adriamycin       |      46 |    55 | Cancer_Therapy       |      1       |
@@ -91,9 +68,6 @@ Results
 |  4 | over six courses |     101 |   116 | Posology_Information |      0.9078  |
 |  5 | second cycle     |     150 |   161 | Posology_Information |      0.9853  |
 |  6 | chemotherapy     |     166 |   177 | Cancer_Therapy       |      0.9998  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
