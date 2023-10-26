@@ -564,6 +564,12 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 <dt><strong>genderAwareness</strong></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names.
 If the value is true, it might decrease performance. Default: False</p>
 </dd>
+<dt><strong>ageRangesByHipaa</strong></dt><dd><p>Whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.
+The HIPAA Privacy Rule mandates that ages from patients older than 90 years must be obfuscated,
+while age for patients 90 years or younger can remain unchanged.
+If True, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.
+If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -824,6 +830,11 @@ If the value is true, it might decrease performance. Default: False</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.genderAwareness">
 <span class="sig-name descname"><span class="pre">genderAwareness</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.genderAwareness" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.ageRangesByHipaa">
+<span class="sig-name descname"><span class="pre">ageRangesByHipaa</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.ageRangesByHipaa" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1361,6 +1372,22 @@ If value is true, it might decrease performance. Default: False</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setAgeRangesByHipaa">
+<span class="sig-name descname"><span class="pre">setAgeRangesByHipaa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setAgeRangesByHipaa" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.</p>
+<p>The HIPAA Privacy Rule mandates that ages from patients older than 90 years must be obfuscated,
+while age for patients 90 years or younger can remain unchanged.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>value (bool): If True, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.</dt><dd><p>If False, <cite>ageRanges</cite> parameter is valid.
+Default: False.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -1454,6 +1481,12 @@ The supported and default formatted entities are: PHONE, FAX, ID, IDNUM, BIOID, 
 </dd>
 <dt><strong>genderAwareness</strong></dt><dd><p>Whether to use gender-aware names or not during obfuscation. This param effects only names.
 If value is true, it might decrease performance. Default: False</p>
+</dd>
+<dt><strong>ageRangesByHipaa</strong></dt><dd><p>Whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.
+The HIPAA Privacy Rule mandates that agse from patients older than 90 years must be obfuscated,
+while age for patients 90 years or younger can remain unchanged.
+If True, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.
+If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
 </dd>
 </dl>
 </dd>
@@ -1684,6 +1717,11 @@ If value is true, it might decrease performance. Default: False</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.genderAwareness">
 <span class="sig-name descname"><span class="pre">genderAwareness</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.genderAwareness" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.ageRangesByHipaa">
+<span class="sig-name descname"><span class="pre">ageRangesByHipaa</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.ageRangesByHipaa" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -2133,6 +2171,22 @@ Default: False</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setAgeRangesByHipaa">
+<span class="sig-name descname"><span class="pre">setAgeRangesByHipaa</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setAgeRangesByHipaa" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to obfuscate agea based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.</p>
+<p>The HIPAA Privacy Rule mandates that ages from patients older than 90 years must be obfuscated,
+while age for patients 90 years or younger can remain unchanged.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>value (bool): If True, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.</dt><dd><p>If False, <cite>ageRanges</cite> parameter is valid.
+Default: False.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.pretrained">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'deidentify_enriched_clinical'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Downloads and loads a pretrained model.</p>
@@ -2232,6 +2286,7 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.selectiveObfuscationModesPath"><code class="docutils literal notranslate"><span class="pre">DeIdentification.selectiveObfuscationModesPath</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.entityCasingModesPath"><code class="docutils literal notranslate"><span class="pre">DeIdentification.entityCasingModesPath</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentification.genderAwareness</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentification.ageRangesByHipaa</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.getBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentification.getBlackList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setLanguage"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setRegexPatternsDictionary"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setRegexPatternsDictionary()</span></code></a></li>
@@ -2268,6 +2323,7 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setSelectiveObfuscationModes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setSelectiveObfuscationModes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setEntityCasingModes"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setEntityCasingModes()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setGenderAwareness()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentification.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentification.setAgeRangesByHipaa()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel</span></code></a><ul class="nav section-nav flex-column">
@@ -2303,6 +2359,7 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.outputAsDocument"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.outputAsDocument</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.sameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.sameLengthFormattedEntities</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.genderAwareness</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.ageRangesByHipaa</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getBlackList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setLanguage"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setMode"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setMode()</span></code></a></li>
@@ -2334,6 +2391,7 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setSameLengthFormattedEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.getSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.getSameLengthFormattedEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setGenderAwareness()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.setAgeRangesByHipaa()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel.pretrained"><code class="docutils literal notranslate"><span class="pre">DeIdentificationModel.pretrained()</span></code></a></li>
 </ul>
 </li>

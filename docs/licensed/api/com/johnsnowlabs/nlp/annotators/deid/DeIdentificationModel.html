@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.1.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel</title>
-          <meta name="description" content="Spark NLP 5.1.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
-          <meta name="keywords" content="Spark NLP 5.1.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
+          <title>Spark NLP 5.1.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel</title>
+          <meta name="description" content="Spark NLP 5.1.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
+          <meta name="keywords" content="Spark NLP 5.1.2 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.1.1 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.1.2 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -619,6 +619,25 @@ masking or obfuscating the given CHUNKS.</p><p>To create an configured DeIdentif
       <p class="shortcomment cmt">List of integers specifying limits of the age groups to preserve during obfuscation
 </p><div class="fullcomment"><div class="comment cmt"><p>List of integers specifying limits of the age groups to preserve during obfuscation
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#ageRangesByHipaa" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="ageRangesByHipaa:org.apache.spark.ml.param.BooleanParam"></a><a id="ageRangesByHipaa:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#ageRangesByHipaa:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ageRangesByHipaa</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">A Boolean variable indicating whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.</p><div class="fullcomment"><div class="comment cmt"><p>A Boolean variable indicating whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.</p><p>The HIPAA Privacy Rule mandates that ages from patients older than 90 years must be obfuscated,
+while age for patients 90 years or younger can remain unchanged.</p><p>When <code>true</code>, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.
+When <code>false</code>, <a href="DeIdentificationParams.html#ageRanges:org.apache.spark.ml.param.IntArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#ageRanges">ageRanges</a> parameter is valid.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#allTerms" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
       <a id="allTerms:com.johnsnowlabs.nlp.serialization.MapFeature[String,List[String]]"></a><a id="allTerms:MapFeature[String,List[String]]"></a>
       <span class="permalink">
@@ -2047,6 +2066,22 @@ This method is called for each sentence in the input collection of Annotations
       <p class="shortcomment cmt">Returns the tokens for each Annotation instance in the input Sequence
 </p><div class="fullcomment"><div class="comment cmt"><p>Returns the tokens for each Annotation instance in the input Sequence
 </p></div><dl class="paramcmts block"><dt class="param">annotations</dt><dd class="cmt"><p>a Sequence of Annotation instances</p></dd><dt>returns</dt><dd class="cmt"><p>a Sequence of Sequence[IndexedToken], each Sequence represents tokens from each input Annotation</p></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#getValidAgeRanges" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getValidAgeRanges:Array[Int]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#getValidAgeRanges:Array[Int]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getValidAgeRanges</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets valid ageRanges whether <a href="#ageRangesByHipaa:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#ageRangesByHipaa">ageRangesByHipaa</a> is true or not.</p><div class="fullcomment"><div class="comment cmt"><p>Gets valid ageRanges whether <a href="#ageRangesByHipaa:org.apache.spark.ml.param.BooleanParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#ageRangesByHipaa">ageRangesByHipaa</a> is true or not.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a> → <a href="DeidModelParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#getZipCodeTag" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getZipCodeTag:String"></a>
       <span class="permalink">
@@ -3260,6 +3295,26 @@ The entities which have not been given in dictionary will deidentify according t
       <p class="shortcomment cmt">List of integers specifying limits of the age groups to preserve during obfuscation
 </p><div class="fullcomment"><div class="comment cmt"><p>List of integers specifying limits of the age groups to preserve during obfuscation
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setAgeRangesByHipaa" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setAgeRangesByHipaa(value:Boolean):DeIdentificationParams.this.type"></a><a id="setAgeRangesByHipaa(Boolean):DeIdentificationModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentificationModel.html#setAgeRangesByHipaa(value:Boolean):DeIdentificationParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setAgeRangesByHipaa</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Sets whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.</p><div class="fullcomment"><div class="comment cmt"><p>Sets whether to obfuscate ages based on HIPAA (Health Insurance Portability and Accountability Act) Privacy Rule.</p><p>The HIPAA Privacy Rule mandates that ages from patients older than 90 years must be obfuscated,
+while age for patients 90 years or younger can remain unchanged.
+</p></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>If true, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.
+             If false, <a href="DeIdentificationParams.html#ageRanges:org.apache.spark.ml.param.IntArrayParam" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#ageRanges">ageRanges</a> parameter is valid.
+             Default: false.</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel#setAllTerms" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="setAllTerms(value:Map[String,List[String]]):DeIdentificationModel.this.type"></a><a id="setAllTerms(Map[String,List[String]]):DeIdentificationModel.this.type"></a>
       <span class="permalink">
