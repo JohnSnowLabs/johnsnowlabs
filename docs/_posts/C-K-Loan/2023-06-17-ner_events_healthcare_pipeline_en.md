@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_events_healthcare](https://
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,48 +63,16 @@ nlu.load("en.med_ner.healthcare_events.pipeline").predict("""The patient present
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_events_healthcare_pipeline", "en", "clinical/models")
-
-text = '''The patient presented to the emergency room last evening.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_events_healthcare_pipeline", "en", "clinical/models")
-
-val text = "The patient presented to the emergency room last evening."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.healthcare_events.pipeline").predict("""The patient presented to the emergency room last evening.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks         |   begin |   end | ner_label     |   confidence |
 |---:|:-------------------|--------:|------:|:--------------|-------------:|
 |  0 | presented          |      12 |    20 | EVIDENTIAL    |     0.6769   |
 |  1 | the emergency room |      25 |    42 | CLINICAL_DEPT |     0.835967 |
 |  2 | last evening       |      44 |    55 | DATE          |     0.59135  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

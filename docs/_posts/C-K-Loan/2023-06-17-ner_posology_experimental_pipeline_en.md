@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_posology_experimental](http
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -66,48 +67,11 @@ nlu.load("en.med_ner.posology_experimental.pipeline").predict("""Y-90 Humanized 
 Calcium-DTPA: Ca-DTPA will be administered intravenously on Days 1-3 to clear the radioactive agent from the body.""")
 ```
 
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_posology_experimental_pipeline", "en", "clinical/models")
-
-text = '''Y-90 Humanized Anti-Tac: 10 mCi (if a bone marrow transplant was part of the patient's previous therapy) or 15 mCi of yttrium labeled anti-TAC; followed by calcium trisodium Inj (Ca DTPA)..
-
-Calcium-DTPA: Ca-DTPA will be administered intravenously on Days 1-3 to clear the radioactive agent from the body.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_posology_experimental_pipeline", "en", "clinical/models")
-
-val text = "Y-90 Humanized Anti-Tac: 10 mCi (if a bone marrow transplant was part of the patient's previous therapy) or 15 mCi of yttrium labeled anti-TAC; followed by calcium trisodium Inj (Ca DTPA)..
-
-Calcium-DTPA: Ca-DTPA will be administered intravenously on Days 1-3 to clear the radioactive agent from the body."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.posology_experimental.pipeline").predict("""Y-90 Humanized Anti-Tac: 10 mCi (if a bone marrow transplant was part of the patient's previous therapy) or 15 mCi of yttrium labeled anti-TAC; followed by calcium trisodium Inj (Ca DTPA)..
-
-Calcium-DTPA: Ca-DTPA will be administered intravenously on Days 1-3 to clear the radioactive agent from the body.""")
-```
 </div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk                |   begin |   end | ner_label   |   confidence |
 |---:|:-------------------------|--------:|------:|:------------|-------------:|
 |  0 | Anti-Tac                 |      15 |    22 | Drug        |     0.8797   |
@@ -119,9 +83,6 @@ Results
 |  6 | Ca-DTPA                  |     205 |   211 | Drug        |     0.9544   |
 |  7 | intravenously            |     234 |   246 | Route       |     0.9518   |
 |  8 | Days 1-3                 |     251 |   258 | Cycleday    |     0.83325  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

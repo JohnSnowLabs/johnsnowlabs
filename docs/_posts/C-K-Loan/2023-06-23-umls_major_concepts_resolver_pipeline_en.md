@@ -34,6 +34,7 @@ This pretrained pipeline maps entities (Clinical Major Concepts) with their corr
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -56,34 +57,10 @@ nlu.load("en.map_entity.umls_major_concepts_resolver").predict("""The patient co
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline= PretrainedPipeline("umls_major_concepts_resolver_pipeline", "en", "clinical/models")
-pipeline.annotate("The patient complains of pustules after falling from stairs. She has been advised Arthroscopy by her primary care pyhsician")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline= PretrainedPipeline("umls_major_concepts_resolver_pipeline", "en", "clinical/models")
-val pipeline.annotate("The patient complains of pustules after falling from stairs. She has been advised Arthroscopy by her primary care pyhsician")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.map_entity.umls_major_concepts_resolver").predict("""The patient complains of pustules after falling from stairs. She has been advised Arthroscopy by her primary care pyhsician""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 +-----------+-----------------------------------+---------+
 |chunk      |ner_label                          |umls_code|
 +-----------+-----------------------------------+---------+
@@ -91,9 +68,6 @@ Results
 |stairs     |Daily_or_Recreational_Activity     |C4300351 |
 |Arthroscopy|Therapeutic_or_Preventive_Procedure|C0179144 |
 +-----------+-----------------------------------+---------+
-
-
-{:.model-param}
 ```
 
 {:.model-param}

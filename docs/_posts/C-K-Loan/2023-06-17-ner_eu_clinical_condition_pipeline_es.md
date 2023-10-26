@@ -34,58 +34,7 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_condition](http
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_eu_clinical_condition_pipeline", "es", "clinical/models")
-
-text = "
-La exploración abdominal revela una cicatriz de laparotomía media infraumbilical, la presencia de ruidos disminuidos, y dolor a la palpación de manera difusa sin claros signos de irritación peritoneal. No existen hernias inguinales o crurales.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_condition_pipeline", "es", "clinical/models")
-
-val text = "
-La exploración abdominal revela una cicatriz de laparotomía media infraumbilical, la presencia de ruidos disminuidos, y dolor a la palpación de manera difusa sin claros signos de irritación peritoneal. No existen hernias inguinales o crurales.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_eu_clinical_condition_pipeline", "es", "clinical/models")
-
-text = "
-La exploración abdominal revela una cicatriz de laparotomía media infraumbilical, la presencia de ruidos disminuidos, y dolor a la palpación de manera difusa sin claros signos de irritación peritoneal. No existen hernias inguinales o crurales.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_condition_pipeline", "es", "clinical/models")
-
-val text = "
-La exploración abdominal revela una cicatriz de laparotomía media infraumbilical, la presencia de ruidos disminuidos, y dolor a la palpación de manera difusa sin claros signos de irritación peritoneal. No existen hernias inguinales o crurales.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -126,12 +75,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | chunks               |   begin |   end | entities           |   confidence |
 |---:|:---------------------|--------:|------:|:-------------------|-------------:|
 |  0 | cicatriz             |      37 |    44 | clinical_condition |      0.9883  |
@@ -139,12 +82,6 @@ Results
 |  2 | signos               |     170 |   175 | clinical_condition |      0.9862  |
 |  3 | irritación           |     180 |   189 | clinical_condition |      0.9975  |
 |  4 | hernias inguinales   |     214 |   231 | clinical_condition |      0.7543  |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

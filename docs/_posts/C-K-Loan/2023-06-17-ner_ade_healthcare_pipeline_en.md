@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_ade_healthcare](https://nlp
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,49 +63,17 @@ nlu.load("en.med_ner.healthcare_ade.pipeline").predict("""Been taking Lipitor fo
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_ade_healthcare_pipeline", "en", "clinical/models")
-
-text = '''Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_ade_healthcare_pipeline", "en", "clinical/models")
-
-val text = "Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.healthcare_ade.pipeline").predict("""Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks     |   begin |   end | ner_label   |   confidence |
 |---:|:---------------|--------:|------:|:------------|-------------:|
 |  0 | Lipitor        |      12 |    18 | DRUG        |      0.998   |
 |  1 | severe fatigue |      52 |    65 | ADE         |      0.67055 |
 |  2 | voltaren       |      97 |   104 | DRUG        |      0.9255  |
 |  3 | cramps         |     152 |   157 | ADE         |      0.9392  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

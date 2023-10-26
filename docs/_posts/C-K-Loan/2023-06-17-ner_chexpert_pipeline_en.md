@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_chexpert](https://nlp.johns
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,10 @@ nlu.load("en.med_ner.chexpert.pipeline").predict("""FINAL REPORT HISTORY : Chest
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_chexpert_pipeline", "en", "clinical/models")
-
-text = '''FINAL REPORT HISTORY : Chest tube leak , to assess for pneumothorax. FINDINGS : In comparison with study of ___ , the endotracheal tube and Swan - Ganz catheter have been removed . The left chest tube remains in place and there is no evidence of pneumothorax. Mild atelectatic changes are seen at the left base.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_chexpert_pipeline", "en", "clinical/models")
-
-val text = "FINAL REPORT HISTORY : Chest tube leak , to assess for pneumothorax. FINDINGS : In comparison with study of ___ , the endotracheal tube and Swan - Ganz catheter have been removed . The left chest tube remains in place and there is no evidence of pneumothorax. Mild atelectatic changes are seen at the left base."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.chexpert.pipeline").predict("""FINAL REPORT HISTORY : Chest tube leak , to assess for pneumothorax. FINDINGS : In comparison with study of ___ , the endotracheal tube and Swan - Ganz catheter have been removed . The left chest tube remains in place and there is no evidence of pneumothorax. Mild atelectatic changes are seen at the left base.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks   |   begin |   end | ner_label   |   confidence |
 |---:|:-------------|--------:|------:|:------------|-------------:|
 |  0 | endotracheal |     118 |   129 | OBS         |       0.9881 |
@@ -112,9 +83,6 @@ Results
 | 11 | changes      |     277 |   283 | OBS         |       0.9984 |
 | 12 | left         |     301 |   304 | ANAT        |       0.9999 |
 | 13 | base         |     306 |   309 | ANAT        |       0.9999 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

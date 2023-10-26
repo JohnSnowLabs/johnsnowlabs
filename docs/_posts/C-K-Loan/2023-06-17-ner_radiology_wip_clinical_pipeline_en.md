@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_radiology_wip_clinical](htt
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,10 @@ nlu.load("en.med_ner.radiology.clinical_wip.pipeline").predict("""Bilateral brea
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_radiology_wip_clinical_pipeline", "en", "clinical/models")
-
-text = '''Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_radiology_wip_clinical_pipeline", "en", "clinical/models")
-
-val text = "Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.radiology.clinical_wip.pipeline").predict("""Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks            |   begin |   end | ner_label                 |   confidence |
 |---:|:----------------------|--------:|------:|:--------------------------|-------------:|
 |  0 | Bilateral             |       0 |     8 | Direction                 |     0.9828   |
@@ -113,9 +84,6 @@ Results
 | 12 | internal color flow   |     294 |   312 | ImagingFindings           |     0.5153   |
 | 13 | benign fibrous tissue |     334 |   354 | ImagingFindings           |     0.394867 |
 | 14 | lipoma                |     361 |   366 | Disease_Syndrome_Disorder |     0.9142   |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_chemicals](https://nlp.john
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,11 @@ nlu.load("en.med_ner.chemicals.pipeline").predict("""The results have shown that
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_chemicals_pipeline", "en", "clinical/models")
-
-text = '''The results have shown that the product p - choloroaniline is not a significant factor in chlorhexidine - digluconate associated erosive cystitis. A high percentage of kanamycin - colistin and povidone - iodine irrigations were associated with erosive cystitis.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_chemicals_pipeline", "en", "clinical/models")
-
-val text = "The results have shown that the product p - choloroaniline is not a significant factor in chlorhexidine - digluconate associated erosive cystitis. A high percentage of kanamycin - colistin and povidone - iodine irrigations were associated with erosive cystitis."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.chemicals.pipeline").predict("""The results have shown that the product p - choloroaniline is not a significant factor in chlorhexidine - digluconate associated erosive cystitis. A high percentage of kanamycin - colistin and povidone - iodine irrigations were associated with erosive cystitis.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks                  |   begin |   end | ner_label   |   confidence |
 |---:|:----------------------------|--------:|------:|:------------|-------------:|
 |  0 | p - choloroaniline          |      40 |    57 | CHEM        |     0.935767 |
@@ -103,9 +75,6 @@ Results
 |  2 | kanamycin                   |     168 |   176 | CHEM        |     0.9824   |
 |  3 | colistin                    |     180 |   187 | CHEM        |     0.9911   |
 |  4 | povidone - iodine           |     193 |   209 | CHEM        |     0.8111   |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
