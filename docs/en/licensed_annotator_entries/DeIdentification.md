@@ -153,217 +153,61 @@ DOCUMENT
 {%- capture model_python_medical -%}
 from johnsnowlabs import nlp, medical
  
-documentAssembler = nlp.DocumentAssembler()\
-    .setInputCol("text")\
+documentAssembler = nlp.DocumentAssembler() \
+    .setInputCol("text") \
     .setOutputCol("document")
 
-# Sentence Detector annotator, processes various sentences per line
-sentenceDetector = nlp.SentenceDetector()\
-    .setInputCols(["document"])\
-    .setOutputCol("sentence")
+sentenceDetector = nlp.SentenceDetector() \
+    .setInputCols(["document"]) \
+    .setOutputCol("sentence") \
+    .setUseAbbreviations(True)
 
-# Tokenizer splits words in a relevant format for NLP
-tokenizer = nlp.Tokenizer()\
-    .setInputCols(["sentence"])\
-    .setOutputCol("token")
+tokenizer = nlp.Tokenizer() \
+    .setInputCols(["sentence"]) \
+    .setOutputCol("token")\
 
-# Clinical word embeddings trained on PubMED dataset
-word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-# NER model trained on n2c2 (de-identification and Heart Disease Risk Factors Challenge) datasets)
-clinical_ner = medical.NerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models") \
-    .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("ner")
 
-ner_converter = medical.NerConverterInternal()\
-    .setInputCols(["sentence", "token", "ner"])\
+clinical_sensitive_entities = medical.NerModel \
+    .pretrained("ner_deid_enriched", "en", "clinical/models") \
+    .setInputCols(["sentence", "token", "embeddings"]).setOutputCol("ner")
+
+nerConverter = medical.NerConverterInternal() \
+    .setInputCols(["sentence", "token", "ner"]) \
     .setOutputCol("ner_chunk")
 
-#deid model with "entity_labels"
-deid_entity_labels= medical.DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"])\
-    .setOutputCol("deid_entity_label")\
-    .setMode("mask")\
-    .setReturnEntityMappings(True)\
-    .setMaskingPolicy("entity_labels")
 
-#deid model with "same_length_chars"
-deid_same_length= medical.DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"])\
-    .setOutputCol("deid_same_length")\
-    .setMode("mask")\
-    .setReturnEntityMappings(True)\
-    .setMaskingPolicy("same_length_chars")
+deIdentification = medical.DeIdentificationModel.pretrained("deidentify_large", "en", "clinical/models") \
+    .setInputCols(["ner_chunk", "token", "sentence"]) \
+    .setOutputCol("dei") \
+    .setMode("obfuscate") \
+    .setDateFormats(["MM/dd/yy","yyyy-MM-dd"]) \
+    .setObfuscateDate(True) \
+    .setDateTag("DATE") \
+    .setDays(5) \
+    .setObfuscateRefSource("both")
 
-#deid model with "fixed_length_chars"
-deid_fixed_length= medical.DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"])\
-    .setOutputCol("deid_fixed_length")\
-    .setMode("mask")\
-    .setReturnEntityMappings(True)\
-    .setMaskingPolicy("fixed_length_chars")\
-    .setFixedMaskLength(4)
-
-
-obs_lines = """Marvin MARSHALL#PATIENT
-Hubert GROGAN#PATIENT
-ALTHEA COLBURN#PATIENT
-Kalil AMIN#PATIENT
-Inci FOUNTAIN#PATIENT
-Ekaterina Rosa#DOCTOR
-Rudiger Chao#DOCTOR
-COLLETTE KOHLER#NAME
-Mufi HIGGS#NAME"""
-
-with open ('obfuscation.txt', 'w') as f:
-  f.write(obs_lines)
-
-obfuscation = medical.DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"]) \
-    .setOutputCol("deidentified") \
-    .setMode("obfuscate")\
-    .setObfuscateDate(True)\
-    .setObfuscateRefFile('obfuscation.txt')\
-    .setObfuscateRefSource("file")
-
-
-
-faker = medical.DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"]) \
-    .setOutputCol("deidentified_by_faker") \
-    .setMode("obfuscate")\
-    .setObfuscateDate(True)\
-    .setObfuscateRefSource("faker")
-
-
-deidPipeline = nlp.Pipeline(stages=[
-      documentAssembler,
-      sentenceDetector,
-      tokenizer,
-      word_embeddings,
-      clinical_ner,
-      ner_converter,
-      deid_entity_labels,
-      deid_same_length,
-      deid_fixed_length,
-      obfuscation,
-      faker])
-
-empty_data = spark.createDataFrame([[""]]).toDF("text")
-
-
-model = deidPipeline.fit(empty_data)
-
-#sample data
-text ='''
-Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 .
-'''
-
-result = model.transform(spark.createDataFrame([[text]]).toDF("text"))
-
-result.select(F.explode(F.arrays_zip(result.sentence.result,
-                                  a   result.deid_entity_label.result,
-                                     result.deid_same_length.result,
-                                     result.deid_fixed_length.result,
-                                     result.deidentified.result,
-                                     result.deidentified_by_faker.result,
-                                     )).alias("cols")) \
-      .select(F.expr("cols['0']").alias("sentence"), 
-              F.expr("cols['1']").alias("deid_entity_label"),
-              F.expr("cols['2']").alias("deid_same_length"),
-              F.expr("cols['3']").alias("deid_fixed_length"),
-              F.expr("cols['4']").alias("deidentified"),
-              F.expr("cols['5']").alias("deidentified_by_faker"),
-              ).toPandas()
-
-
-|index|sentence|deid\_entity\_label|deid\_same\_length|deid\_fixed\_length|deidentified|deidentified\_by\_faker|
-|---|---|---|---|---|---|---|
-|0|Record date : 2093-01-13 , David Hale , M\.D \.|Record date : \<DATE\> , \<NAME\> , M\.D \.|Record date : \[\*\*\*\*\*\*\*\*\] , \[\*\*\*\*\*\*\*\*\] , M\.D \.|Record date : \*\*\*\* , \*\*\*\* , M\.D \.|Record date : 2093-01-21 , COLLETTE KOHLER , M\.D \.|Record date : 2093-01-18 , Jacelyn Grip , M\.D \.|
-|1|, Name : Hendrickson Ora , MR \# 7194334 Date : 01/13/93 \.|, Name : \<NAME\> , MR \# \<ID\> Date : \<DATE\> \.|, Name : \[\*\*\*\*\*\*\*\*\*\*\*\*\*\] , MR \# \[\*\*\*\*\*\] Date : \[\*\*\*\*\*\*\] \.|, Name : \*\*\*\* , MR \# \*\*\*\* Date : \*\*\*\* \.|, Name : Mufi HIGGS , MR \# 8296535 Date : 01/21/93 \.|, Name : Gillian Shields , MR \# 0327020 Date : 01/18/93 \.|
-|2|PCP : Oliveira , 25 years-old , Record date : 2079-11-09 \.|PCP : \<NAME\> , \<AGE\> years-old , Record date : \<DATE\> \.|PCP : \[\*\*\*\*\*\*\] , \*\* years-old , Record date : \[\*\*\*\*\*\*\*\*\] \.|PCP : \*\*\*\* , \*\*\*\* years-old , Record date : \*\*\*\* \.|PCP : COLLETTE KOHLER , \<AGE\> years-old , Record date : 2079-11-17 \.|PCP : Wynona Neat , 23 years-old , Record date : 2079-11-14 \.|
-|3|Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 \.|\<LOCATION\> , \<LOCATION\> , Phone \<CONTACT\> \.|\[\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\] , \[\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\] , Phone \[\*\*\*\*\*\*\*\*\*\] \.|\*\*\*\* , \*\*\*\* , Phone \*\*\*\* \.|\<LOCATION\> , \<LOCATION\> , Phone \<CONTACT\> \.|1065 East Broad Street , 410 West 16Th Avenue , Phone 564 472 379 \.|
-
-{%- endcapture -%}
-
-
-{%- capture model_python_finance -%}
-from johnsnowlabs import * 
-documentAssembler = nlp.DocumentAssembler()\
-    .setInputCol("text")\
-    .setOutputCol("document")
-
-sentenceDetector = nlp.SentenceDetector()\
-    .setInputCols(["document"])\
-    .setOutputCol("sentence")
-
-tokenizer = nlp.Tokenizer()\
-    .setInputCols(["sentence"])\
-    .setOutputCol("token")
-
-embeddings = nlp.RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_base","en") \
-    .setInputCols(["sentence", "token"]) \
-    .setOutputCol("embeddings")
-
-bert_embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-    .setInputCols(["sentence", "token"]) \
-    .setOutputCol("bert_embeddings")
-
-fin_ner = finance.NerModel.pretrained('finner_deid', "en", "finance/models")\
-    .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("ner") 
-    #.setLabelCasing("upper")
-
-ner_converter =  finance.NerConverterInternal() \
-    .setInputCols(["sentence", "token", "ner"])\
-    .setOutputCol("ner_chunk")\
-    .setReplaceLabels({"ORG": "PARTY"}) # Replace "ORG" entity as "PARTY"
-
-ner_finner = finance.NerModel.pretrained("finner_org_per_role_date", "en", "finance/models")\
-    .setInputCols(["sentence", "token", "bert_embeddings"]) \
-    .setOutputCol("ner_finner") 
-    #.setLabelCasing("upper")
-
-ner_converter_finner = nlp.NerConverter() \
-    .setInputCols(["sentence", "token", "ner_finner"]) \
-    .setOutputCol("ner_finner_chunk") \
-    .setWhiteList(['ROLE']) # Just use "ROLE" entity from this NER
-
-chunk_merge =  finance.ChunkMergeApproach()\
-    .setInputCols("ner_finner_chunk", "ner_chunk")\
-    .setOutputCol("deid_merged_chunk")
-
-deidentification =  finance.DeIdentification() \
-    .setInputCols(["sentence", "token", "deid_merged_chunk"]) \
-    .setOutputCol("deidentified") \
-    .setMode("mask")\
-    .setIgnoreRegex(True)
-
-# Pipeline
 data = spark.createDataFrame([
-    ["Jeffrey Preston Bezos is an American entrepreneur, founder and CEO of Amazon"]
-]).toDF("text")
+    ["# 7194334 Date : 01/13/93 PCP : Oliveira , 25 years-old , Record date : 2079-11-09."]
+    ]).toDF("text")
 
-nlpPipeline = Pipeline(stages=[
-      documentAssembler, 
-      sentenceDetector,
-      tokenizer,
-      embeddings,
-      bert_embeddings,
-      fin_ner,
-      ner_converter,
-      ner_finner,
-      ner_converter_finner,
-      chunk_merge,
-      deidentification])
-
-result = nlpPipeline.fit(data).transform(data)
+pipeline = nlp.Pipeline(stages=[
+    documentAssembler,
+    sentenceDetector,
+    tokenizer,
+    embeddings,
+    clinical_sensitive_entities,
+    nerConverter,
+    deIdentification
+])
+result = pipeline.fit(data).transform(data)
 
 |index|result|result|
 |---|---|---|
-|0|Jeffrey Preston Bezos is an American entrepreneur, founder and CEO of Amazon|\<PERSON\> is an \<COUNTRY\> entrepreneur, \<ROLE\> and \<ROLE\> of \<PARTY\>|
+|0|\# 7194334 Date : 01/13/93 PCP : Oliveira , 25 years-old , Record date : 2079-11-09\.|\# 0537076 Date : 01/18/93 PCP : Rita Ohara , 34 years-old , Record date : 2079-11-14\.|
 
 {%- endcapture -%}
 
@@ -445,8 +289,6 @@ result = nlpPipeline.fit(data).transform(data)
 
 {%- capture model_scala_medical -%}
 
-from johnsnowlabs import *  
-
 ==============pipeline ==============
 val documentAssembler = new DocumentAssembler()
 .setInputCol("text")
@@ -472,9 +314,9 @@ val ner_converter = new NerConverterInternal()
 .setInputCols(Array("sentence", "token", "ner"))
 .setOutputCol("ner_chunk")
 
-deid model with "entity_labels"
+#deid model with "entity_labels"
 
-val deid_entity_labels= DeIdentification()
+val deid_entity_labels= new DeIdentification()
 .setInputCols(Array("sentence", "token", "ner_chunk"))
 .setOutputCol("deid_entity_label")
 .setMode("mask")
@@ -483,7 +325,7 @@ val deid_entity_labels= DeIdentification()
 
 #deid model with "same_length_chars"
 
-val deid_same_length= DeIdentification()
+val deid_same_length= new DeIdentification()
 .setInputCols(Array("sentence", "token", "ner_chunk"))
 .setOutputCol("deid_same_length")
 .setMode("mask")
@@ -492,7 +334,7 @@ val deid_same_length= DeIdentification()
 
 #deid model with "fixed_length_chars"
 
-val deid_fixed_length= DeIdentification()
+val deid_fixed_length= new DeIdentification()
 .setInputCols(Array("sentence", "token", "ner_chunk"))
 .setOutputCol("deid_fixed_length")
 .setMode("mask")
@@ -527,8 +369,6 @@ val faker = new DeIdentification()
 
 val deidPipeline = new Pipeline(stages=Array(documentAssembler, sentenceDetector, tokenizer, word_embeddings, clinical_ner, ner_converter, deid_entity_labels, deid_same_length, deid_fixed_length, obfuscation, faker))
 
-empty_data = spark.createDataFrame([[""]]).toDF("text")
-
 #sample data
 
 val data = Seq( "Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 ." ).toDF("text")
@@ -548,122 +388,120 @@ index	sentence	deid_entity_label	deid_same_length	deid_fixed_length	deidentified
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
-from johnsnowlabs import * 
-val documentAssembler = new nlp.DocumentAssembler()
-    .setInputCol("text")
-    .setOutputCol("document")
-
-val sentenceDetector = new nlp.SentenceDetector()
-    .setInputCols(["document"])
-    .setOutputCol("sentence")
-
-val tokenizer = new nlp.Tokenizer()
-    .setInputCols(["sentence"])
-    .setOutputCol("token")
-
-val embeddings = nlp.RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_base","en")
-    .setInputCols(Array("sentence", "token"))
-    .setOutputCol("embeddings")
-
-val bert_embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
-    .setInputCols(Array("sentence", "token"))
-    .setOutputCol("bert_embeddings")
-
-val fin_ner = finance.NerModel.pretrained('finner_deid', "en", "finance/models")
-    .setInputCols(Array("sentence", "token", "embeddings"))
-    .setOutputCol("ner") 
-    #.setLabelCasing("upper")
-
-val ner_converter =  finance.NerConverterInternal()
-    .setInputCols(Array("sentence", "token", "ner"))
-    .setOutputCol("ner_chunk")
-    .setReplaceLabels({"ORG": "PARTY"}) # Replace "ORG" entity as "PARTY"
-
-val ner_finner = finance.NerModel.pretrained("finner_org_per_role_date", "en", "finance/models")
-    .setInputCols(Array("sentence", "token", "bert_embeddings"))
-    .setOutputCol("ner_finner") 
-    #.setLabelCasing("upper")
-
-val ner_converter_finner = new nlp.NerConverter()
-    .setInputCols(Array("sentence", "token", "ner_finner"))
-    .setOutputCol("ner_finner_chunk")
-    .setWhiteList(['ROLE']) # Just use "ROLE" entity from this NER
-
-val chunk_merge =  new finance.ChunkMergeApproach()
-    .setInputCols(Array("ner_finner_chunk", "ner_chunk"))
-    .setOutputCol("deid_merged_chunk")
-
-val deidentification =  new finance.DeIdentification()
-    .setInputCols(Array("sentence", "token", "deid_merged_chunk"))
-    .setOutputCol("deidentified")
-    .setMode("mask")
-    .setIgnoreRegex(True)
-
-# Pipeline
+ 
+[12:40 PM] Mehmet Butgul
+val documentAssembler = new DocumentAssembler()
+  .setInputCol("text")
+  .setOutputCol("document")
+val sentenceDetector = new SentenceDetector()
+  .setInputCols(Array("document"))
+  .setOutputCol("sentence")
+val tokenizer = new Tokenizer()
+  .setInputCols("sentence")
+.setOutputCol("token")
+val embeddings = RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_base","en")
+  .setInputCols(Array("sentence", "token"))
+  .setOutputCol("embeddings")
+val bert_embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
+  .setInputCols(Array("sentence", "token"))
+  .setOutputCol("bert_embeddings")
+val fin_ner = FinanceNerModel.pretrained("finner_deid", "en", "finance/models")
+  .setInputCols(Array("sentence", "token", "embeddings"))
+  .setOutputCol("ner")
+  .setLabelCasing("upper")
+val ner_converter =  new NerConverterInternal()
+  .setInputCols(Array("sentence", "token", "ner"))
+  .setOutputCol("ner_chunk")
+  .setReplaceLabels(Map("ORG" -> "PARTY")) 
+// Replace "ORG" entity as "PARTY"
+val ner_finner = FinanceNerModel.pretrained("finner_org_per_role_date", "en", "finance/models")
+  .setInputCols(Array("sentence", "token", "bert_embeddings"))
+  .setOutputCol("ner_finner")
+  .setLabelCasing("upper")
+val ner_converter_finner = new NerConverterInternal()
+  .setInputCols(Array("sentence", "token", "ner_finner"))
+  .setOutputCol("ner_finner_chunk")
+  .setWhiteList(Array("ROLE")) 
+// Just use "ROLE" entity from this NER
+val chunk_merge =  new ChunkMergeApproach()
+  .setInputCols(Array("ner_finner_chunk", "ner_chunk"))
+  .setOutputCol("deid_merged_chunk")
+val deidentification =  new DeIdentification()
+  .setInputCols(Array("sentence", "token", "deid_merged_chunk"))
+  .setOutputCol("deidentified")
+  .setMode("mask")
+  .setIgnoreRegex(true)
+// Pipeline
 val data = Seq("Jeffrey Preston Bezos is an American entrepreneur, founder and CEO of Amazon").toDF("text")
-
 val nlpPipeline = new Pipeline().setStages(Array(
-      documentAssembler, 
-      sentenceDetector,
-      tokenizer,
-      embeddings,
-      bert_embeddings,
-      fin_ner,
-      ner_converter,
-      ner_finner,
-      ner_converter_finner,
-      chunk_merge,
-      deidentification))
-
+  documentAssembler,
+  sentenceDetector,
+  tokenizer,
+  embeddings,
+  bert_embeddings,
+  fin_ner,
+  ner_converter,
+  ner_finner,
+  ner_converter_finner,
+  chunk_merge,
+  deidentification))
 val result = nlpPipeline.fit(data).transform(data)
+
+result.select("sentence.result", "deidentified.result").show()
+
+|index|result|result|
+|---|---|---|
+|0|Jeffrey Preston Bezos is an American entrepreneur, founder and CEO of Amazon|\<PERSON\> is an \<COUNTRY\> entrepreneur, \<ROLE\> and \<ROLE\> of \<PARTY\>|
+
+
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
-from johnsnowlabs import * 
-val documentAssembler = new nlp.DocumentAssembler()
+ 
+val documentAssembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val sentenceDetector = new nlp.SentenceDetector()
-    .setInputCols(["document"])
+val sentenceDetector = new SentenceDetector()
+    .setInputCols(Array("document"))
     .setOutputCol("sentence")
 
-val tokenizer = new nlp.Tokenizer()
-    .setInputCols(["sentence"])
+val tokenizer = new Tokenizer()
+    .setInputCols(Array("sentence"))
     .setOutputCol("token")
 
-val embeddings = nlp.RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_base","en")
+val embeddings = RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_base","en")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
-val legal_ner = legal.NerModel.pretrained("legner_contract_doc_parties", "en", "legal/models")
+val legal_ner = LegalNerModel.pretrained("legner_contract_doc_parties", "en", "legal/models")
     .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner") 
-    #.setLabelCasing("upper")
+    //.setLabelCasing("upper")
 
-val ner_converter = new legal.NerConverterInternal()
+val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")\
-    .setReplaceLabels({"ALIAS": "PARTY"})
+    .setReplaceLabels(Map("ALIAS" -> "PARTY")) 
 
-val ner_signers = legal.NerModel.pretrained("legner_signers", "en", "legal/models")
+val ner_signers = LegalNerModel.pretrained("legner_signers", "en", "legal/models")
     .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner_signers") 
-    #.setLabelCasing("upper")
+    //.setLabelCasing("upper")
 
-val ner_converter_signers = new nlp.NerConverter()
+val ner_converter_signers = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner_signers"))
     .setOutputCol("ner_signer_chunk")
 
-val chunk_merge = new legal.ChunkMergeApproach()
+val chunk_merge = new ChunkMergeApproach()
     .setInputCols(Array("ner_signer_chunk", "ner_chunk"))
     .setOutputCol("deid_merged_chunk")
 
-val deidentification = new legal.DeIdentification()
+val deidentification = new DeIdentification()
     .setInputCols(Array("sentence", "token", "deid_merged_chunk"))
     .setOutputCol("deidentified") \
     .setMode("mask")\
-    .setIgnoreRegex(True)
+    .setIgnoreRegex(true)
 
 # Pipeline
 val data = Seq("ENTIRE AGREEMENT.  This Agreement contains the entire understanding of the parties hereto with respect to the transactions and matters contemplated hereby, supersedes all previous Agreements between i-Escrow and 2TheMart concerning the subject matter.
@@ -722,8 +560,10 @@ DOCUMENT, TOKEN, CHUNK
 DOCUMENT
 {%- endcapture -%}
 
+
 {%- capture approach_python_medical -%}
-from johnsnowlabs import nlp, medical
+
+from johnsnowlabs import nlp,medical
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -761,24 +601,6 @@ deid_entity_labels= medical.DeIdentification()\
     .setReturnEntityMappings(True)\
     .setMaskingPolicy("entity_labels")
 
-#deid model with "same_length_chars"
-deid_same_length= medical.DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"])\
-    .setOutputCol("deid_same_length")\
-    .setMode("mask")\
-    .setReturnEntityMappings(True)\
-    .setMaskingPolicy("same_length_chars")
-
-#deid model with "fixed_length_chars"
-deid_fixed_length= medical.DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"])\
-    .setOutputCol("deid_fixed_length")\
-    .setMode("mask")\
-    .setReturnEntityMappings(True)\
-    .setMaskingPolicy("fixed_length_chars")\
-    .setFixedMaskLength(4)
-
-
 obs_lines = """Marvin MARSHALL#PATIENT
 Hubert GROGAN#PATIENT
 ALTHEA COLBURN#PATIENT
@@ -798,17 +620,10 @@ obfuscation = medical.DeIdentification()\
     .setMode("obfuscate")\
     .setObfuscateDate(True)\
     .setObfuscateRefFile('obfuscation.txt')\
-    .setObfuscateRefSource("file")
-
-
-
-faker = medical.DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"]) \
-    .setOutputCol("deidentified_by_faker") \
-    .setMode("obfuscate")\
-    .setObfuscateDate(True)\
-    .setObfuscateRefSource("faker")
-
+    .setObfuscateRefSource("both")\  #file or faker
+    .setGenderAwareness(True)\
+    .setLanguage("en")\
+    .setUnnormalizedDateMode("obfuscate")  #mask or skip
 
 deidPipeline = nlp.Pipeline(stages=[
       documentAssembler,
@@ -818,10 +633,9 @@ deidPipeline = nlp.Pipeline(stages=[
       clinical_ner,
       ner_converter,
       deid_entity_labels,
-      deid_same_length,
-      deid_fixed_length,
-      obfuscation,
-      faker])
+      obfuscation
+      ])
+
 
 empty_data = spark.createDataFrame([[""]]).toDF("text")
 
@@ -836,27 +650,24 @@ Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 71
 result = model.transform(spark.createDataFrame([[text]]).toDF("text"))
 
 result.select(F.explode(F.arrays_zip(result.sentence.result,
-                                a     result.deid_entity_label.result,
-                                     result.deid_same_length.result,
-                                     result.deid_fixed_length.result,
+                                     result.deid_entity_label.result,
                                      result.deidentified.result,
-                                     result.deidentified_by_faker.result,
                                      )).alias("cols")) \
       .select(F.expr("cols['0']").alias("sentence"), 
               F.expr("cols['1']").alias("deid_entity_label"),
-              F.expr("cols['2']").alias("deid_same_length"),
-              F.expr("cols['3']").alias("deid_fixed_length"),
-              F.expr("cols['4']").alias("deidentified"),
-              F.expr("cols['5']").alias("deidentified_by_faker"),
+              F.expr("cols['2']").alias("deidentified"),
               ).toPandas()
 
+#result
 
-|index|sentence|deid\_entity\_label|deid\_same\_length|deid\_fixed\_length|deidentified|deidentified\_by\_faker|
-|---|---|---|---|---|---|---|
-|0|Record date : 2093-01-13 , David Hale , M\.D \.|Record date : \<DATE\> , \<NAME\> , M\.D \.|Record date : \[\*\*\*\*\*\*\*\*\] , \[\*\*\*\*\*\*\*\*\] , M\.D \.|Record date : \*\*\*\* , \*\*\*\* , M\.D \.|Record date : 2093-01-21 , COLLETTE KOHLER , M\.D \.|Record date : 2093-01-18 , Jacelyn Grip , M\.D \.|
-|1|, Name : Hendrickson Ora , MR \# 7194334 Date : 01/13/93 \.|, Name : \<NAME\> , MR \# \<ID\> Date : \<DATE\> \.|, Name : \[\*\*\*\*\*\*\*\*\*\*\*\*\*\] , MR \# \[\*\*\*\*\*\] Date : \[\*\*\*\*\*\*\] \.|, Name : \*\*\*\* , MR \# \*\*\*\* Date : \*\*\*\* \.|, Name : Mufi HIGGS , MR \# 8296535 Date : 01/21/93 \.|, Name : Gillian Shields , MR \# 0327020 Date : 01/18/93 \.|
-|2|PCP : Oliveira , 25 years-old , Record date : 2079-11-09 \.|PCP : \<NAME\> , \<AGE\> years-old , Record date : \<DATE\> \.|PCP : \[\*\*\*\*\*\*\] , \*\* years-old , Record date : \[\*\*\*\*\*\*\*\*\] \.|PCP : \*\*\*\* , \*\*\*\* years-old , Record date : \*\*\*\* \.|PCP : COLLETTE KOHLER , \<AGE\> years-old , Record date : 2079-11-17 \.|PCP : Wynona Neat , 23 years-old , Record date : 2079-11-14 \.|
-|3|Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 \.|\<LOCATION\> , \<LOCATION\> , Phone \<CONTACT\> \.|\[\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\] , \[\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\] , Phone \[\*\*\*\*\*\*\*\*\*\] \.|\*\*\*\* , \*\*\*\* , Phone \*\*\*\* \.|\<LOCATION\> , \<LOCATION\> , Phone \<CONTACT\> \.|1065 East Broad Street , 410 West 16Th Avenue , Phone 564 472 379 \.|
+|index|sentence|deid\_entity\_label|deidentified|
+|---|---|---|---|
+|0|Record date : 2093-01-13 , David Hale , M\.D \.|Record date : \<DATE\> , \<NAME\> , M\.D \.|Record date : 2093-02-18 , Jules Six , M\.D \.|
+|1|, Name : Hendrickson Ora , MR \# 7194334 Date : 01/13/93 \.|, Name : \<NAME\> , MR \# \<ID\> Date : \<DATE\> \.|, Name : Lemmie Bloomer , MR \# 1775431 Date : 02/18/93 \.|
+|2|PCP : Oliveira , 25 years-old , Record date : 2079-11-09 \.|PCP : \<NAME\> , \<AGE\> years-old , Record date : \<DATE\> \.|PCP : Xanthus Ramus , 31 years-old , Record date : 2079-12-15 \.|
+|3|Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 \.|\<LOCATION\> , \<LOCATION\> , Phone \<CONTACT\> \.|1105 Earl Frye Boulevard , 185 Grafton Rd , Phone \(020\) 8145-509 \.|
+
+
 {%- endcapture -%}
 
 {%- capture approach_python_legal -%}
@@ -1091,10 +902,6 @@ val deidPipeline = new Pipeline(stages=[
       faker])
 
 
-empty_data = spark.createDataFrame([[""]]).toDF("text")
-
-
-
 #sample data
 
 val data = Seq(
@@ -1106,7 +913,7 @@ val model = new deidPipeline.fit(data)
 val result = new model.transform(data).toDF("text"))
 
 result.select(F.explode(F.arrays_zip(result.sentence.result,
-                                a     result.deid_entity_label.result,
+                                     result.deid_entity_label.result,
                                      result.deid_same_length.result,
                                      result.deid_fixed_length.result,
                                      result.deidentified.result,
@@ -1131,7 +938,7 @@ result.select(F.explode(F.arrays_zip(result.sentence.result,
 {%- endcapture -%}
 
 {%- capture approach_scala_legal -%}
-from johnsnowlabs import * 
+  
 val documentAssembler = new nlp.DocumentAssembler()
      .setInputCol("text")
      .setOutputCol("document")
@@ -1187,6 +994,8 @@ val pipeline = new Pipeline().setStages(Array(
   nerConverter,
   deIdentification
 ))
+
+
 {%- endcapture -%}
 
 {%- capture approach_scala_finance -%}
@@ -1268,6 +1077,7 @@ model_python_api_link=model_python_api_link
 model_python_medical=model_python_medical
 model_python_finance=model_python_finance
 model_python_legal=model_python_legal
+model_scala_medical=model_scala_medical
 model_scala_finance=model_scala_finance
 model_scala_legal=model_scala_legal
 approach_description=approach_description
