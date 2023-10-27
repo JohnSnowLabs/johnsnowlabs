@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [ner_posology_healthcare](https:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

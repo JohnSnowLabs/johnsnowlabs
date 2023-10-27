@@ -36,6 +36,7 @@ This model identifies healthcare mentions that refers to a situation where a pat
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\

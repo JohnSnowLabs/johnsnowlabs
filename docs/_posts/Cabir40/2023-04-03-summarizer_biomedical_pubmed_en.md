@@ -84,7 +84,6 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-
 ['The results of this review suggest that aggressive ovarian cancer surgery is associated with a significant reduction in the risk of recurrence and a reduction in the number of radical versus conservative surgical resections. However, the results of this review are based on only one small trial. Further research is needed to determine the role of aggressive ovarian cancer surgery in women with stage IIIC ovarian cancer.']
 ```
 

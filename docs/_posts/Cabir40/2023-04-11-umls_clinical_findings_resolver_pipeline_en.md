@@ -32,6 +32,7 @@ This pretrained pipeline maps entities (Clinical Findings) with their correspond
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

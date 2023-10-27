@@ -87,9 +87,7 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-
 ['What are the treatments for hyperthyroidism?']
-
 ```
 
 {:.model-param}

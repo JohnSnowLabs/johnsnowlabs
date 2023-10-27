@@ -46,6 +46,7 @@ This model is trained using `biobert_pubmed_base_cased` BERT token embeddings. I
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document = DocumentAssembler()\
     .setInputCol("text")\
@@ -210,7 +211,3 @@ possible                      126  36   75   0.7777778  0.6268657  0.6942149
 Macro-average                 3633 328  328  0.7967971  0.8105832  0.8036310
 Micro-average                 3633 328  328  0.9171926  0.9171926  0.9171926
 ```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMjgwMTU0NTg3LC02MTkwOTA1MDcsLTE4Nj
-YzNjg0NTBdfQ==
--->
