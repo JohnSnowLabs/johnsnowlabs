@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_posology_healthcare](https:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -60,42 +61,11 @@ import nlu
 nlu.load("en.med_ner.posology.healthcare_pipeline").predict("""The patient is a 40-year-old white male who presents with a chief complaint of 'chest pain'. The patient is diabetic and has a prior history of coronary artery disease. The patient presents today stating that chest pain started yesterday evening. He has been advised Aspirin 81 milligrams QDay. insulin 50 units in a.m. HCTZ 50 mg QDay. Nitroglycerin 1/150 sublingually.""")
 ```
 
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_posology_healthcare_pipeline", "en", "clinical/models")
-
-text = '''The patient is a 40-year-old white male who presents with a chief complaint of 'chest pain'. The patient is diabetic and has a prior history of coronary artery disease. The patient presents today stating that chest pain started yesterday evening. He has been advised Aspirin 81 milligrams QDay. insulin 50 units in a.m. HCTZ 50 mg QDay. Nitroglycerin 1/150 sublingually.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_posology_healthcare_pipeline", "en", "clinical/models")
-
-val text = "The patient is a 40-year-old white male who presents with a chief complaint of 'chest pain'. The patient is diabetic and has a prior history of coronary artery disease. The patient presents today stating that chest pain started yesterday evening. He has been advised Aspirin 81 milligrams QDay. insulin 50 units in a.m. HCTZ 50 mg QDay. Nitroglycerin 1/150 sublingually."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.posology.healthcare_pipeline").predict("""The patient is a 40-year-old white male who presents with a chief complaint of 'chest pain'. The patient is diabetic and has a prior history of coronary artery disease. The patient presents today stating that chest pain started yesterday evening. He has been advised Aspirin 81 milligrams QDay. insulin 50 units in a.m. HCTZ 50 mg QDay. Nitroglycerin 1/150 sublingually.""")
-```
 </div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk     |   begin |   end | ner_label   |   confidence |
 |---:|:--------------|--------:|------:|:------------|-------------:|
 |  0 | Aspirin       |     267 |   273 | Drug        |      0.9983  |
@@ -110,9 +80,6 @@ Results
 |  9 | Nitroglycerin |     337 |   349 | Drug        |      0.9927  |
 | 10 | 1/150         |     351 |   355 | Strength    |      0.9565  |
 | 11 | sublingually. |     357 |   369 | Route       |      0.72065 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

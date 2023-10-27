@@ -32,52 +32,11 @@ This pretrained pipeline is built on the top of [nerdl_tumour_demo](https://nlp.
 
 ## How to use
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("nerdl_tumour_demo_pipeline", "en", "clinical/models")
-
-text = '''The final diagnosis was metastatic breast carcinoma, and it was classified as T2N1M1 stage IV. The histological grade of this 4 cm tumor was grade 2.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("nerdl_tumour_demo_pipeline", "en", "clinical/models")
-
-val text = "The final diagnosis was metastatic breast carcinoma, and it was classified as T2N1M1 stage IV. The histological grade of this 4 cm tumor was grade 2."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("nerdl_tumour_demo_pipeline", "en", "clinical/models")
-
-text = '''The final diagnosis was metastatic breast carcinoma, and it was classified as T2N1M1 stage IV. The histological grade of this 4 cm tumor was grade 2.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("nerdl_tumour_demo_pipeline", "en", "clinical/models")
-
-val text = "The final diagnosis was metastatic breast carcinoma, and it was classified as T2N1M1 stage IV. The histological grade of this 4 cm tumor was grade 2."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -112,21 +71,9 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunks       |   begin |   end | ner_label    | confidence   |
 |---:|:-----------------|--------:|------:|:-------------|:-------------|
 |  0 | breast carcinoma |      35 |    50 | Localization |              |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

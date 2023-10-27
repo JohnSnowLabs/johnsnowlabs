@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_deid_generic_augmented](htt
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -56,59 +57,11 @@ nlu.load("en.med_ner.deid_generic_augmented.pipeline").predict("""A. Record date
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_deid_generic_augmented_pipeline", "en", "clinical/models")
-
-pipeline.annotate("A. Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 -year-old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227.")
-```
-```scala
-val pipeline = new PretrainedPipeline("ner_deid_generic_augmented_pipeline", "en", "clinical/models")
-
-pipeline.annotate("A. Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 -year-old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227.")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.deid_generic_augmented.pipeline").predict("""A. Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 -year-old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227.""")
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_deid_generic_augmented_pipeline", "en", "clinical/models")
-
-pipeline.annotate("A. Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 -year-old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227.")
-```
-```scala
-val pipeline = new PretrainedPipeline("ner_deid_generic_augmented_pipeline", "en", "clinical/models")
-
-pipeline.annotate("A. Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 -year-old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227.")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.deid_generic_augmented.pipeline").predict("""A. Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 PCP : Oliveira, 25 -year-old, Record date : 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 +-------------------------------------------------+---------+
 |chunk                                            |ner_label|
 +-------------------------------------------------+---------+
@@ -124,12 +77,6 @@ Results
 |Cocke County Baptist Hospital. 0295 Keats Street.|LOCATION |
 |(302) 786-5227                                   |CONTACT  |
 +-------------------------------------------------+---------+
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

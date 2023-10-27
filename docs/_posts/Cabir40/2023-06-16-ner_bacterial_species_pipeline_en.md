@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_bacterial_species](https://
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -60,50 +61,16 @@ import nlu
 nlu.load("en.med_ner.bacterial_species.pipeline").predict("""Based on these genetic and phenotypic properties, we propose that strain SMSP (T) represents a novel species of the genus Methanoregula, for which we propose the name Methanoregula formicica sp. nov., with the type strain SMSP (T) (= NBRC 105244 (T) = DSM 22288 (T)).""")
 ```
 
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_bacterial_species_pipeline", "en", "clinical/models")
-
-text = '''Based on these genetic and phenotypic properties, we propose that strain SMSP (T) represents a novel species of the genus Methanoregula, for which we propose the name Methanoregula formicica sp. nov., with the type strain SMSP (T) (= NBRC 105244 (T) = DSM 22288 (T)).'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_bacterial_species_pipeline", "en", "clinical/models")
-
-val text = "Based on these genetic and phenotypic properties, we propose that strain SMSP (T) represents a novel species of the genus Methanoregula, for which we propose the name Methanoregula formicica sp. nov., with the type strain SMSP (T) (= NBRC 105244 (T) = DSM 22288 (T))."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.bacterial_species.pipeline").predict("""Based on these genetic and phenotypic properties, we propose that strain SMSP (T) represents a novel species of the genus Methanoregula, for which we propose the name Methanoregula formicica sp. nov., with the type strain SMSP (T) (= NBRC 105244 (T) = DSM 22288 (T)).""")
-```
 </div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks              |   begin |   end | ner_label   |   confidence |
 |---:|:------------------------|--------:|------:|:------------|-------------:|
 |  0 | SMSP (T)                |      73 |    80 | SPECIES     |     0.9725   |
 |  1 | Methanoregula formicica |     167 |   189 | SPECIES     |     0.97935  |
 |  2 | SMSP (T)                |     222 |   229 | SPECIES     |     0.991975 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

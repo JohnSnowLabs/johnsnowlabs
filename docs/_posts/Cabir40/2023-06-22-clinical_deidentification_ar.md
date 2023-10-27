@@ -34,6 +34,7 @@ This pipeline can be used to deidentify Arabic PHI information from medical text
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -118,99 +119,11 @@ val result = deid_pipeline.annotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-deid_pipeline = PretrainedPipeline("clinical_deidentification", "ar", "clinical/models")
-
-text = '''
-
-ملاحظات سريرية - مريض الربو:
-
-التاريخ: 30 مايو 2023
-اسم المريضة: ليلى حسن
-
-تم تسجيل المريض في النظام باستخدام رقم الضمان الاجتماعي 123456789012.
-
-العنوان: شارع المعرفة، مبنى رقم 789، حي الأمانة، جدة
-الرمز البريدي: 54321
-البلد: المملكة العربية السعودية
-اسم المستشفى: مستشفى النور
-اسم الطبيب: د. أميرة أحمد
-
-تفاصيل الحالة:
-المريضة ليلى حسن، البالغة من العمر 35 عامًا، تعاني من مرض الربو المزمن. تشكو من ضيق التنفس والسعال المتكرر والشهيق الشديد. تم تشخيصها بمرض الربو بناءً على تاريخها الطبي واختبارات وظائف الرئة.
-
-الخطة:
-
-تم وصف مضادات الالتهاب غير الستيرويدية والموسعات القصبية لتحسين التنفس وتقليل التهيج.
-يجب على المريضة حمل معها جهاز الاستنشاق في حالة حدوث نوبة ربو حادة.
-يتعين على المريضة تجنب التحسس من العوامل المسببة للربو، مثل الدخان والغبار والحيوانات الأليفة.
-يجب مراقبة وظائف الرئة بانتظام ومتابعة التعليمات الطبية المتعلقة بمرض الربو.
-تعليم المريضة بشأن كيفية استخدام جهاز الاستنشاق بشكل صحيح وتقنيات التنفس الصحيح
-
-'''
-result = deid_pipeline.annotate(text)
-
-print("\nMasked with entity labels")
-print("-"*30)
-print("\n".join(result['masked_with_entity']))
-print("\nMasked with chars")
-print("-"*30)
-print("\n".join(result['masked_with_chars']))
-print("\nMasked with fixed length chars")
-print("-"*30)
-print("\n".join(result['masked_fixed_length_chars']))
-print("\nObfuscated")
-print("-"*30)
-print("\n".join(result['obfuscated']))
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val deid_pipeline = new PretrainedPipeline("clinical_deidentification","ar","clinical/models")
-
-val text = '''
-
-ملاحظات سريرية - مريض الربو:
-
-التاريخ: 30 مايو 2023
-اسم المريضة: ليلى حسن
-
-تم تسجيل المريض في النظام باستخدام رقم الضمان الاجتماعي 123456789012.
-
-العنوان: شارع المعرفة، مبنى رقم 789، حي الأمانة، جدة
-الرمز البريدي: 54321
-البلد: المملكة العربية السعودية
-اسم المستشفى: مستشفى النور
-اسم الطبيب: د. أميرة أحمد
-
-تفاصيل الحالة:
-المريضة ليلى حسن، البالغة من العمر 35 عامًا، تعاني من مرض الربو المزمن. تشكو من ضيق التنفس والسعال المتكرر والشهيق الشديد. تم تشخيصها بمرض الربو بناءً على تاريخها الطبي واختبارات وظائف الرئة.
-
-الخطة:
-
-تم وصف مضادات الالتهاب غير الستيرويدية والموسعات القصبية لتحسين التنفس وتقليل التهيج.
-يجب على المريضة حمل معها جهاز الاستنشاق في حالة حدوث نوبة ربو حادة.
-يتعين على المريضة تجنب التحسس من العوامل المسببة للربو، مثل الدخان والغبار والحيوانات الأليفة.
-يجب مراقبة وظائف الرئة بانتظام ومتابعة التعليمات الطبية المتعلقة بمرض الربو.
-تعليم المريضة بشأن كيفية استخدام جهاز الاستنشاق بشكل صحيح وتقنيات التنفس الصحيح
-
-'''
-
-val result = deid_pipeline.annotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-
 Masked with entity labels
 ------------------------------
 ملاحظات سريرية - مريض الربو:
@@ -306,9 +219,6 @@ Obfuscated
 يتعين على المريضة تجنب التحسس من العوامل المسببة للربو، مثل الدخان والغبار والحيوانات الأليفة.
 يجب مراقبة وظائف الرئة بانتظام ومتابعة التعليمات الطبية المتعلقة بمرض الربو.
 تعليم المريضة بشأن كيفية استخدام جهاز الاستنشاق بشكل صحيح وتقنيات التنفس الصحيح
-
-
-{:.model-param}
 ```
 
 {:.model-param}

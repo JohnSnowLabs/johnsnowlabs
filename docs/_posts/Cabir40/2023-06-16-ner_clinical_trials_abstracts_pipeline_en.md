@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_clinical_trials_abstracts](
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -60,42 +61,11 @@ import nlu
 nlu.load("en.med_ner.clinical_trials_abstracts.pipe").predict("""A one-year, randomised, multicentre trial comparing insulin glargine with NPH insulin in combination with oral agents in patients with type 2 diabetes. In a multicentre, open, randomised study, 570 patients with Type 2 diabetes, aged 34 - 80 years, were treated for 52 weeks with insulin glargine or NPH insulin given once daily at bedtime.""")
 ```
 
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_clinical_trials_abstracts_pipeline", "en", "clinical/models")
-
-text = '''A one-year, randomised, multicentre trial comparing insulin glargine with NPH insulin in combination with oral agents in patients with type 2 diabetes. In a multicentre, open, randomised study, 570 patients with Type 2 diabetes, aged 34 - 80 years, were treated for 52 weeks with insulin glargine or NPH insulin given once daily at bedtime.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_clinical_trials_abstracts_pipeline", "en", "clinical/models")
-
-val text = "A one-year, randomised, multicentre trial comparing insulin glargine with NPH insulin in combination with oral agents in patients with type 2 diabetes. In a multicentre, open, randomised study, 570 patients with Type 2 diabetes, aged 34 - 80 years, were treated for 52 weeks with insulin glargine or NPH insulin given once daily at bedtime."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.clinical_trials_abstracts.pipe").predict("""A one-year, randomised, multicentre trial comparing insulin glargine with NPH insulin in combination with oral agents in patients with type 2 diabetes. In a multicentre, open, randomised study, 570 patients with Type 2 diabetes, aged 34 - 80 years, were treated for 52 weeks with insulin glargine or NPH insulin given once daily at bedtime.""")
-```
 </div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks       |   begin |   end | ner_label          |   confidence |
 |---:|:-----------------|--------:|------:|:-------------------|-------------:|
 |  0 | randomised       |      12 |    21 | CTDesign           |     0.9996   |
@@ -115,9 +85,6 @@ Results
 | 14 | NPH insulin      |     300 |   310 | Drug               |     0.97955  |
 | 15 | once daily       |     318 |   327 | DrugTime           |     0.999    |
 | 16 | bedtime          |     332 |   338 | DrugTime           |     0.9937   |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

@@ -58,15 +58,12 @@ Ugh, I pulled a muscle in my neck from sleeping weird last night. It's like a kn
 ## Results
 
 ```bash
-
 | chunk     | ner_label   |
 |:----------|:------------|
 | muscle    | BodyPart    |
 | neck      | BodyPart    |
 | trapezius | BodyPart    |
 | head      | BodyPart    |
-
-
 ```
 
 {:.model-param}

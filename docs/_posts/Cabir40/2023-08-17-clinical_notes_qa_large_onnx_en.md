@@ -37,6 +37,7 @@ This model is capable of open-book question answering on Medical Notes.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = MultiDocumentAssembler()\
     .setInputCols("question", "context")\

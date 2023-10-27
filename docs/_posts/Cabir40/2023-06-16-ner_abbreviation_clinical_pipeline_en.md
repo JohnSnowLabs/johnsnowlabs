@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_abbreviation_clinical](http
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -60,51 +61,17 @@ import nlu
 nlu.load("en.med_ner.clinical-abbreviation.pipeline").predict("""Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.""")
 ```
 
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_abbreviation_clinical_pipeline", "en", "clinical/models")
-
-text = '''Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_abbreviation_clinical_pipeline", "en", "clinical/models")
-
-val text = "Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.clinical-abbreviation.pipeline").predict("""Gravid with estimated fetal weight of 6-6/12 pounds. LOWER EXTREMITIES: No edema. LABORATORY DATA: Laboratory tests include a CBC which is normal. Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface antigen: Negative. HIV: Negative. One-Hour Glucose: 117. Group B strep has not been done as yet.""")
-```
 </div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks   |   begin |   end | ner_label   |   confidence |
 |---:|:-------------|--------:|------:|:------------|-------------:|
 |  0 | CBC          |     126 |   128 | ABBR        |            1 |
 |  1 | AB           |     159 |   160 | ABBR        |            1 |
 |  2 | VDRL         |     189 |   192 | ABBR        |            1 |
 |  3 | HIV          |     247 |   249 | ABBR        |            1 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
