@@ -1,1 +1,11 @@
-<-- PUT YOUR JSON LICENSE HERE -->
+{
+"SPARK_NLP_LICENSE": " ",
+ "SECRET": " ",
+ "JSL_VERSION": " ",
+ "SPARK_OCR_LICENSE": " ",
+ "SPARK_OCR_SECRET": " ",
+ "OCR_VERSION": " ",
+ "PUBLIC_VERSION": " ", 
+"AWS_ACCESS_KEY_ID": " ", 
+"AWS_SECRET_ACCESS_KEY": " "
+}
