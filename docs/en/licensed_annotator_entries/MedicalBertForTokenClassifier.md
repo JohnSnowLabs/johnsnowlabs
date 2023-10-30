@@ -126,7 +126,7 @@ val documentAssembler = new DocumentAssembler()\
     .setOutputCol("document")
 
 val sentenceDetector = new SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
-    .setInputCols(["document"])\
+    .setInputCols(Array("document"))\
     .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()\
@@ -302,7 +302,7 @@ val documentAssembler = new DocumentAssembler()\
     .setOutputCol("document")
 
 val sentenceDetector = new SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
-    .setInputCols(["document"])\
+    .setInputCols("document")\
     .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()\
@@ -315,7 +315,7 @@ val tokenClassifier = MedicalBertForTokenClassification.pretrained("bert_token_c
     .setCaseSensitive(True)
 
 val ner_converter = new NerConverterInternal()\
-    .setInputCols(["sentence","token","ner"])\
+    .setInputCols(Array("sentence","token","ner"))\
     .setOutputCol("ner_chunk")
 
 val pipeline =  new Pipeline(stages=Array(documentAssembler,sentenceDetector, tokenizer, tokenClassifier, ner_converter))

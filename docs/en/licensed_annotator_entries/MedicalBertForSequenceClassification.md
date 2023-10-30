@@ -17,7 +17,7 @@ For available pretrained models please see the [`Models Hub`](https://nlp.johnsn
 
 To see which models are compatible and how to import them see [`Import Transformers into Spark NLP` 🚀](https://github.com/JohnSnowLabs/spark-nlp/discussions/5669)
 Parameters:
-- '`batchSize`', 'Size of every batch'): 8,
+- '`batchSize`', 'Size of every batch',`default`: 8,
 - '`coalesceSentences`', "Instead of 1 class per sentence (if inputCols is '''sentence''') output 1 class per document by averaging probabilities in all sentences.",`default`: False,
 - '`engine`', 'Deep Learning engine used for this model',`default`: 'tensorflow',
 - '`lazyAnnotator`', 'Whether this AnnotatorModel acts as lazy in RecursivePipelines',`default`: False,
@@ -102,25 +102,22 @@ val tokenizer = new Tokenizer() \
     .setInputCols(Array("document")) \
     .setOutputCol("token")
 
-val sequenceClassifier = new MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_ade", "en", "clinical/models")\
+val sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_ade", "en", "clinical/models")\
     .setInputCols(Array("document","token"))\
     .setOutputCol("classes")
 
 val pipeline =  new Pipeline(stages=Array(document_assembler, tokenizer, sequenceClassifier))
 
-var data_list =[["Right inguinal hernia repair in childhood Cervical discectomy 3 years ago Umbilical hernia repair 2137. Retired schoolteacher, now substitutes. Lives with wife in location 1439. Has a 27 yo son and a 25 yo daughter. Name (NI) past or present smoking hx, no EtOH."],
-     ["Atrial Septal Defect with Right Atrial Thrombus Pulmonary Hypertension Obesity, Obstructive Sleep Apnea. Denies tobacco and ETOH. Works as cafeteria worker."]]
+val data_list = List(
+  List("Right inguinal hernia repair in childhood Cervical discectomy 3 years ago Umbilical hernia repair 2137. Retired schoolteacher, now substitutes. Lives with wife in location 1439. Has a 27 yo son and a 25 yo daughter. Name (NI) past or present smoking hx, no EtOH."),
+  List("Atrial Septal Defect with Right Atrial Thrombus Pulmonary Hypertension Obesity, Obstructive Sleep Apnea. Denies tobacco and ETOH. Works as cafeteria worker.")
+)
+
 
 val data = Seq(text).toDF("text")
-val model = pipeline.fit(data).toDF("text")
-val model = pipeline.fit(data)
-val result = model.transform(data).toDF("text")
-result.select("text", "classes.result").show(2,truncate=100)
+val result = pipeline.fit(data).transform(data)
 
-| text                                                                                           | result |
-|------------------------------------------------------------------------------------------------|-------|
-| Right inguinal hernia repair in childhood Cervical discectomy 3 years ago Umbilical hernia repair... | [False] |
-| Atrial Septal Defect with Right Atrial Thrombus Pulmonary Hypertension Obesity, Obstructive Sleep... | [False] |
+
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
@@ -131,7 +128,7 @@ result.select("text", "classes.result").show(2,truncate=100)
 
 
 {%- capture approach_description -%}
-MedicalBertForSequenceClassification can load Bert Models with a token classification head on top (a linear layer on top of the hidden-states output) e.g. for Named-Entity-Recognition (NER) tasks.
+`MedicalBertForSequenceClassification` can load Bert Models with a token classification head on top (a linear layer on top of the hidden-states output) e.g. for Named-Entity-Recognition (NER) tasks.
 Pretrained models can be loaded with pretrained() of the companion object.
 The default model is "bert_token_classifier_ner_bionlp", if no name is provided.
 For available pretrained models please see the [Models Hub](https://nlp.johnsnowlabs.com/models).
@@ -198,7 +195,6 @@ result.select("text", "classes.result").show(2,truncate=100)
 
 {%- capture approach_scala_medical -%}
 
- 
 val documentAssembler = new DocumentAssembler() \
     .setInputCol("text") \
     .setOutputCol("document")
@@ -212,13 +208,13 @@ val tokenClassifier = MedicalBertForSequenceClassification.pretrained() \
     .setOutputCol("label") \
     .setCaseSensitive(true)
 
-new pipeline = val Pipeline().setStages(Array(documentAssembler, tokenizer,tokenClassifier))
+val pipeline = new Pipeline().setStages(Array(documentAssembler, tokenizer,tokenClassifier))
 
 val text = "Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures."
 
 val data = Seq(text).toDF("text")
-result = pipeline.fit(data).transform(data)
-result.select(F.explode("label.result")).filter("col!='O'").show(truncate=False)
+val result = pipeline.fit(data).transform(data)
+
 
 
 {%- endcapture -%}

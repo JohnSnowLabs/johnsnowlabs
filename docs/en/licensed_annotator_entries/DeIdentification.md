@@ -152,239 +152,210 @@ DOCUMENT
 
 {%- capture model_python_medical -%}
 from johnsnowlabs import nlp, medical
- 
-documentAssembler = nlp.DocumentAssembler() \
-    .setInputCol("text") \
-    .setOutputCol("document")
 
-sentenceDetector = nlp.SentenceDetector() \
-    .setInputCols(["document"]) \
-    .setOutputCol("sentence") \
-    .setUseAbbreviations(True)
-
-tokenizer = nlp.Tokenizer() \
-    .setInputCols(["sentence"]) \
-    .setOutputCol("token")\
-
-embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-    .setInputCols(["sentence", "token"])\
-    .setOutputCol("embeddings")
-
-
-clinical_sensitive_entities = medical.NerModel \
-    .pretrained("ner_deid_enriched", "en", "clinical/models") \
-    .setInputCols(["sentence", "token", "embeddings"]).setOutputCol("ner")
-
-nerConverter = medical.NerConverterInternal() \
-    .setInputCols(["sentence", "token", "ner"]) \
-    .setOutputCol("ner_chunk")
-
-
-deIdentification = medical.DeIdentificationModel.pretrained("deidentify_large", "en", "clinical/models") \
-    .setInputCols(["ner_chunk", "token", "sentence"]) \
-    .setOutputCol("dei") \
-    .setMode("obfuscate") \
-    .setDateFormats(["MM/dd/yy","yyyy-MM-dd"]) \
-    .setObfuscateDate(True) \
-    .setDateTag("DATE") \
-    .setDays(5) \
-    .setObfuscateRefSource("both")
-
-data = spark.createDataFrame([
-    ["# 7194334 Date : 01/13/93 PCP : Oliveira , 25 years-old , Record date : 2079-11-09."]
-    ]).toDF("text")
-
-pipeline = nlp.Pipeline(stages=[
-    documentAssembler,
-    sentenceDetector,
-    tokenizer,
-    embeddings,
-    clinical_sensitive_entities,
-    nerConverter,
-    deIdentification
-])
-result = pipeline.fit(data).transform(data)
-
-|index|result|result|
-|---|---|---|
-|0|\# 7194334 Date : 01/13/93 PCP : Oliveira , 25 years-old , Record date : 2079-11-09\.|\# 0537076 Date : 01/18/93 PCP : Rita Ohara , 34 years-old , Record date : 2079-11-14\.|
-
-{%- endcapture -%}
-
-{%- capture model_python_legal -%}
-from johnsnowlabs import * 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
+# Sentence Detector annotator, processes various sentences per line
 sentenceDetector = nlp.SentenceDetector()\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
 
+# Tokenizer splits words in a relevant format for NLP
 tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-embeddings = nlp.RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_base","en") \
-    .setInputCols(["sentence", "token"]) \
+# Clinical word embeddings trained on PubMED dataset
+word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-legal_ner = legal.NerModel.pretrained("legner_contract_doc_parties", "en", "legal/models")\
+# NER model trained on n2c2 (de-identification and Heart Disease Risk Factors Challenge) datasets)
+clinical_ner = medical.NerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("ner") 
-    #.setLabelCasing("upper")
+    .setOutputCol("ner")
 
-ner_converter = legal.NerConverterInternal() \
+ner_converter = medical.NerConverterInternal()\
     .setInputCols(["sentence", "token", "ner"])\
-    .setOutputCol("ner_chunk")\
-    .setReplaceLabels({"ALIAS": "PARTY"})
+    .setOutputCol("ner_chunk")
 
-ner_signers = legal.NerModel.pretrained("legner_signers", "en", "legal/models")\
-    .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("ner_signers") 
-    #.setLabelCasing("upper")
-
-ner_converter_signers = nlp.NerConverter() \
-    .setInputCols(["sentence", "token", "ner_signers"]) \
-    .setOutputCol("ner_signer_chunk")
-
-chunk_merge = legal.ChunkMergeApproach()\
-    .setInputCols("ner_signer_chunk", "ner_chunk")\
-    .setOutputCol("deid_merged_chunk")
-
-deidentification = legal.DeIdentification() \
-    .setInputCols(["sentence", "token", "deid_merged_chunk"]) \
-    .setOutputCol("deidentified") \
+#deid model with "entity_labels"
+deid_entity_labels= medical.DeIdentification()\
+    .setInputCols(["sentence", "token", "ner_chunk"])\
+    .setOutputCol("deid_entity_label")\
     .setMode("mask")\
-    .setIgnoreRegex(True)
+    .setReturnEntityMappings(True)\
+    .setMaskingPolicy("entity_labels")
 
-# Pipeline
-data = spark.createDataFrame([
-    ["ENTIRE AGREEMENT.  This Agreement contains the entire understanding of the parties hereto with respect to the transactions and matters contemplated hereby, supersedes all previous Agreements between i-Escrow and 2TheMart concerning the subject matter.
+obs_lines = """Marvin MARSHALL#PATIENT
+Hubert GROGAN#PATIENT
+ALTHEA COLBURN#PATIENT
+Kalil AMIN#PATIENT
+Inci FOUNTAIN#PATIENT
+Ekaterina Rosa#DOCTOR
+Rudiger Chao#DOCTOR
+COLLETTE KOHLER#NAME
+Mufi HIGGS#NAME"""
 
-2THEMART.COM, INC.:                         I-ESCROW, INC.:
+with open ('obfuscation.txt', 'w') as f:
+  f.write(obs_lines)
 
-By:Dominic J. Magliarditi                By:Sanjay Bajaj Name: Dominic J. Magliarditi                Name: Sanjay Bajaj Title: President                            Title: VP Business Development Date: 6/21/99                               Date: 6/11/99 "]
-]).toDF("text")
+obfuscation = medical.DeIdentification()\
+    .setInputCols(["sentence", "token", "ner_chunk"]) \
+    .setOutputCol("deidentified") \
+    .setMode("obfuscate")\
+    .setObfuscateDate(True)\
+    .setObfuscateRefFile('obfuscation.txt')\
+    .setObfuscateRefSource("both")\  #file or faker
+    .setGenderAwareness(True)\
+    .setLanguage("en")\
+    .setUnnormalizedDateMode("obfuscate")  #mask or skip
 
-nlpPipeline = Pipeline(stages=[
-      documentAssembler, 
+deidPipeline = nlp.Pipeline(stages=[
+      documentAssembler,
       sentenceDetector,
       tokenizer,
-      embeddings,
-      legal_ner,
+      word_embeddings,
+      clinical_ner,
       ner_converter,
-      ner_signers,
-      ner_converter_signers,
-      chunk_merge,
-      deidentification])
+      deid_entity_labels,
+      obfuscation
+      ])
 
-result = nlpPipeline.fit(data).transform(data)
 
-|index|result|result|
-|---|---|---|
-|0|ENTIRE AGREEMENT\.,This Agreement contains the entire understanding of the parties hereto with respect to the transactions and matters contemplated hereby, supersedes all previous Agreements between i-Escrow and 2TheMart concerning the subject matter\.,THE MART\.COM, INC\.:                         I-ESCROW, INC\.: By:Dominic J\. Magliarditi                 By:Sanjay Bajaj Name: Dominic J\. Magliarditi                Name: Sanjay Bajaj Title: President                            Title: VP Business Development Date: 6/21/99                                 Date: 6/11/99|\<DOC\>\.,This Agreement contains the entire understanding of the parties hereto with respect to the transactions and matters contemplated hereby, supersedes all previous Agreements between i-Escrow and 2TheMart concerning the subject matter\.,\<PARTY\>\.:                         \<PARTY\>\.: By:Dominic \<SIGNING\_PERSON\>                 By:Sanjay \<SIGNING\_PERSON\> Name: \<SIGNING\_PERSON\>                Name: \<SIGNING\_PERSON\> Title: \<SIGNING\_TITLE\>                            Title: \<SIGNING\_TITLE\> Date: 6/21/99                                 Date: 6/11/99|
+empty_data = spark.createDataFrame([[""]]).toDF("text")
+
+
+model = deidPipeline.fit(empty_data)
+
+#sample data
+text ='''
+Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 .
+'''
+
+result = model.transform(spark.createDataFrame([[text]]).toDF("text"))
+
+result.select(F.explode(F.arrays_zip(result.sentence.result,
+                                     result.deid_entity_label.result,
+                                     result.deidentified.result,
+                                     )).alias("cols")) \
+      .select(F.expr("cols['0']").alias("sentence"),
+              F.expr("cols['1']").alias("deid_entity_label"),
+              F.expr("cols['2']").alias("deidentified"),
+              ).toPandas()
+
+|index|sentence|deid\_entity\_label|deidentified|
+|---|---|---|---|
+|0|Record date : 2093-01-13 , David Hale , M\.D \.|Record date : \<DATE\> , \<NAME\> , M\.D \.|Record date : 2093-02-13 , Wolf Hermes , M\.D \.|
+|1|, Name : Hendrickson Ora , MR \# 7194334 Date : 01/13/93 \.|, Name : \<NAME\> , MR \# \<ID\> Date : \<DATE\> \.|, Name : Engel Rainier , MR \# 5822805 Date : 02/13/93 \.|
+|2|PCP : Oliveira , 25 years-old , Record date : 2079-11-09 \.|PCP : \<NAME\> , \<AGE\> years-old , Record date : \<DATE\> \.|PCP : Damián Lango , 21 years-old , Record date : 2079-12-10 \.|
+|3|Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 \.|\<LOCATION\> , \<LOCATION\> , Phone \<CONTACT\> \.|103 North Street , 2500 Bellevue Medical Center Dr , Phone 051-096-883 \.|
+
 
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
 
-==============pipeline ==============
-val documentAssembler = new DocumentAssembler()
-.setInputCol("text")
-.setOutputCol("document")
+val documentAssembler = new DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-val sentenceDetector = new SentenceDetector()
-.setInputCols(Array("document"))
-.setOutputCol("sentence")
+// Sentence Detector annotator, processes various sentences per line
+val sentenceDetector = new SentenceDetector()\
+    .setInputCols(Array("document"))\
+    .setOutputCol("sentence")
 
-val tokenizer = new Tokenizer()
-.setInputCols(Array("sentence"))
-.setOutputCol("token")
+// Tokenizer splits words in a relevant format for NLP
+val tokenizer = new Tokenizer()\
+    .setInputCols(Array("sentence"))\
+    .setOutputCol("token")
 
-val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-.setInputCols(Array("sentence", "token"))
-.setOutputCol("embeddings")
+// Clinical word embeddings trained on PubMED dataset
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(Array("sentence", "token")) \
+    .setOutputCol("embeddings")
 
-val clinical_ner = MedicalNerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models")
-.setInputCols(Array("sentence", "token", "embeddings"))
-.setOutputCol("ner")
+// NER model trained on n2c2 (de-identification and Heart Disease Risk Factors Challenge) datasets)
+val clinical_ner = NerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models") \
+    .setInputCols(Array("sentence", "token", "embeddings")) \
+    .setOutputCol("ner")
 
-val ner_converter = new NerConverterInternal()
-.setInputCols(Array("sentence", "token", "ner"))
-.setOutputCol("ner_chunk")
+val ner_converter = new NerConverterInternal()\
+    .setInputCols(Array("sentence", "token", "ner"))\
+    .setOutputCol("ner_chunk")
 
-#deid model with "entity_labels"
-
+//deid model with "entity_labels"
 val deid_entity_labels= new DeIdentification()
-.setInputCols(Array("sentence", "token", "ner_chunk"))
-.setOutputCol("deid_entity_label")
-.setMode("mask")
-.setReturnEntityMappings(True)
-.setMaskingPolicy("entity_labels")
-
-#deid model with "same_length_chars"
-
-val deid_same_length= new DeIdentification()
-.setInputCols(Array("sentence", "token", "ner_chunk"))
-.setOutputCol("deid_same_length")
-.setMode("mask")
-.setReturnEntityMappings(True)
-.setMaskingPolicy("same_length_chars")
-
-#deid model with "fixed_length_chars"
-
-val deid_fixed_length= new DeIdentification()
-.setInputCols(Array("sentence", "token", "ner_chunk"))
-.setOutputCol("deid_fixed_length")
-.setMode("mask")
-.setReturnEntityMappings(True)
-.setMaskingPolicy("fixed_length_chars")
-.setFixedMaskLength(4)
+    .setInputCols(Array("ner_chunk", "token", "sentence")) \
+    .setOutputCol("deid_entity_label")\
+    .setMode("mask")\
+    .setReturnEntityMappings(true)\
+    .setMaskingPolicy("entity_labels")
 
 import java.io.PrintWriter
 
-object Main { def main(args: Array[String]): Unit = { val obsLines = """Marvin MARSHALL#PATIENT Hubert GROGAN#PATIENT ALTHEA COLBURN#PATIENT Kalil AMIN#PATIENT Inci FOUNTAIN#PATIENT Ekaterina Rosa#DOCTOR Rudiger Chao#DOCTOR COLLETTE KOHLER#NAME Mufi HIGGS#NAME"""
+val obs_lines = """Marvin MARSHALL#PATIENT
+Hubert GROGAN#PATIENT
+ALTHEA COLBURN#PATIENT
+Kalil AMIN#PATIENT
+Inci FOUNTAIN#PATIENT
+Ekaterina Rosa#DOCTOR
+Rudiger Chao#DOCTOR
+COLLETTE KOHLER#NAME
+Mufi HIGGS#NAME"""
 
 val filename = "obfuscation.txt"
 val writer = new PrintWriter(filename)
-writer.write(obsLines)
+writer.write(obs_lines)
 writer.close()
-} }
 
-val obfuscation = new DeIdentification()
-.setInputCols(Array("sentence", "token", "ner_chunk"))
-.setOutputCol("deidentified")
-.setMode("obfuscate")
-.setObfuscateDate(True)
-.setObfuscateRefFile('obfuscation.txt')
-.setObfuscateRefSource("file")
+val obfuscation =  new DeIdentification()
+    .setInputCols(Array("ner_chunk", "token", "sentence")) \
+    .setOutputCol("deidentified") \
+    .setMode("obfuscate")\
+    .setObfuscateDate(true)\
+    .setObfuscateRefFile('obfuscation.txt')\
+    .setObfuscateRefSource("both")\        //file or faker  
+    .setGenderAwareness(true)\
+    .setLanguage("en")\
+    .setUnnormalizedDateMode("obfuscate") //mask or skip
 
-val faker = new DeIdentification()
-.setInputCols(Array("sentence", "token", "ner_chunk"))
-.setOutputCol("deidentified_by_faker")
-.setMode("obfuscate")
-.setObfuscateDate(True)
-.setObfuscateRefSource("faker")
 
-val deidPipeline = new Pipeline(stages=Array(documentAssembler, sentenceDetector, tokenizer, word_embeddings, clinical_ner, ner_converter, deid_entity_labels, deid_same_length, deid_fixed_length, obfuscation, faker))
 
-#sample data
+val deidPipeline = new Pipeline().setStages(Array(
+                                                  documentAssembler,
+                                                  sentenceDetector,
+                                                  tokenizer,
+                                                  word_embeddings,
+                                                  clinical_ner,
+                                                  ner_converter,
+                                                  deid_entity_labels,
+                                                  obfuscation
+                                                ))
 
-val data = Seq( "Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 ." ).toDF("text")
 
-val model = new deidPipeline.fit(data)
 
-val result = new model.transform(data).toDF("text"))
 
-result.select(F.explode(F.arrays_zip(result.sentence.result, a result.deid_entity_label.result, result.deid_same_length.result, result.deid_fixed_length.result, result.deidentified.result, result.deidentified_by_faker.result, )).alias("cols"))
-.select(F.expr("cols['0']").alias("sentence"), F.expr("cols['1']").alias("deid_entity_label"), F.expr("cols['2']").alias("deid_same_length"), F.expr("cols['3']").alias("deid_fixed_length"), F.expr("cols['4']").alias("deidentified"), F.expr("cols['5']").alias("deidentified_by_faker"), ).toPandas()
+//sample data
 
-index	sentence	deid_entity_label	deid_same_length	deid_fixed_length	deidentified	deidentified_by_faker
-0	Record date : 2093-01-13 , David Hale , M.D .	Record date : <DATE> , <NAME> , M.D .	Record date : [********] , [********] , M.D .	Record date : **** , **** , M.D .	Record date : 2093-01-21 , COLLETTE KOHLER , M.D .	Record date : 2093-01-18 , Jacelyn Grip , M.D .
-1	, Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 .	, Name : <NAME> , MR # <ID> Date : <DATE> .	, Name : [*************] , MR # [*****] Date : [******] .	, Name : **** , MR # **** Date : **** .	, Name : Mufi HIGGS , MR # 8296535 Date : 01/21/93 .	, Name : Gillian Shields , MR # 0327020 Date : 01/18/93 .
-2	PCP : Oliveira , 25 years-old , Record date : 2079-11-09 .	PCP : <NAME> , <AGE> years-old , Record date : <DATE> .	PCP : [******] , ** years-old , Record date : [********] .	PCP : **** , **** years-old , Record date : **** .	PCP : COLLETTE KOHLER , <AGE> years-old , Record date : 2079-11-17 .	PCP : Wynona Neat , 23 years-old , Record date : 2079-11-14 .
-3	Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 .	<LOCATION> , <LOCATION> , Phone <CONTACT> .	[***************************] , [***************] , Phone [*********] .	**** , **** , Phone **** .	<LOCATION> , <LOCATION> , Phone <CONTACT> .	1065 East Broad Street , 410 West 16Th Avenue , Phone 564 472 379 .
+val text =
+          '''
+          Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 .
+          '''
+
+val data = Seq(text).toDF("text")
+
+val result = new deidPipeline.fit(data).transform(data)
+
+|index|sentence|deid\_entity\_label|deidentified|
+|---|---|---|---|
+|0|Record date : 2093-01-13 , David Hale , M\.D \.|Record date : \<DATE\> , \<NAME\> , M\.D \.|Record date : 2093-02-13 , Wolf Hermes , M\.D \.|
+|1|, Name : Hendrickson Ora , MR \# 7194334 Date : 01/13/93 \.|, Name : \<NAME\> , MR \# \<ID\> Date : \<DATE\> \.|, Name : Engel Rainier , MR \# 5822805 Date : 02/13/93 \.|
+|2|PCP : Oliveira , 25 years-old , Record date : 2079-11-09 \.|PCP : \<NAME\> , \<AGE\> years-old , Record date : \<DATE\> \.|PCP : Damián Lango , 21 years-old , Record date : 2079-12-10 \.|
+|3|Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 \.|\<LOCATION\> , \<LOCATION\> , Phone \<CONTACT\> \.|103 North Street , 2500 Bellevue Medical Center Dr , Phone 051-096-883 \.|
+
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
@@ -562,7 +533,7 @@ DOCUMENT
 
 {%- capture approach_python_medical -%}
 
-from johnsnowlabs import nlp,medical
+from johnsnowlabs import nlp, medical
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -652,19 +623,18 @@ result.select(F.explode(F.arrays_zip(result.sentence.result,
                                      result.deid_entity_label.result,
                                      result.deidentified.result,
                                      )).alias("cols")) \
-      .select(F.expr("cols['0']").alias("sentence"), 
+      .select(F.expr("cols['0']").alias("sentence"),
               F.expr("cols['1']").alias("deid_entity_label"),
               F.expr("cols['2']").alias("deidentified"),
               ).toPandas()
 
-#result
-
 |index|sentence|deid\_entity\_label|deidentified|
 |---|---|---|---|
-|0|Record date : 2093-01-13 , David Hale , M\.D \.|Record date : \<DATE\> , \<NAME\> , M\.D \.|Record date : 2093-02-18 , Jules Six , M\.D \.|
-|1|, Name : Hendrickson Ora , MR \# 7194334 Date : 01/13/93 \.|, Name : \<NAME\> , MR \# \<ID\> Date : \<DATE\> \.|, Name : Lemmie Bloomer , MR \# 1775431 Date : 02/18/93 \.|
-|2|PCP : Oliveira , 25 years-old , Record date : 2079-11-09 \.|PCP : \<NAME\> , \<AGE\> years-old , Record date : \<DATE\> \.|PCP : Xanthus Ramus , 31 years-old , Record date : 2079-12-15 \.|
-|3|Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 \.|\<LOCATION\> , \<LOCATION\> , Phone \<CONTACT\> \.|1105 Earl Frye Boulevard , 185 Grafton Rd , Phone \(020\) 8145-509 \.|
+|0|Record date : 2093-01-13 , David Hale , M\.D \.|Record date : \<DATE\> , \<NAME\> , M\.D \.|Record date : 2093-02-13 , Wolf Hermes , M\.D \.|
+|1|, Name : Hendrickson Ora , MR \# 7194334 Date : 01/13/93 \.|, Name : \<NAME\> , MR \# \<ID\> Date : \<DATE\> \.|, Name : Engel Rainier , MR \# 5822805 Date : 02/13/93 \.|
+|2|PCP : Oliveira , 25 years-old , Record date : 2079-11-09 \.|PCP : \<NAME\> , \<AGE\> years-old , Record date : \<DATE\> \.|PCP : Damián Lango , 21 years-old , Record date : 2079-12-10 \.|
+|3|Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 \.|\<LOCATION\> , \<LOCATION\> , Phone \<CONTACT\> \.|103 North Street , 2500 Bellevue Medical Center Dr , Phone 051-096-883 \.|
+
 
 
 {%- endcapture -%}
@@ -789,69 +759,45 @@ pipeline = Pipeline(stages=[
 
 
 {%- capture approach_scala_medical -%}
-from johnsnowlabs import *
-spark = nlp.start()
-
-# ==============pipeline ==============
-
 val documentAssembler = new DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
+// Sentence Detector annotator, processes various sentences per line
 val sentenceDetector = new SentenceDetector()\
-    .setInputCols(["document"])\
+    .setInputCols(Array("document"))\
     .setOutputCol("sentence")
 
+// Tokenizer splits words in a relevant format for NLP
 val tokenizer = new Tokenizer()\
-    .setInputCols(["sentence"])\
+    .setInputCols(Array("sentence"))\
     .setOutputCol("token")
 
+// Clinical word embeddings trained on PubMED dataset
 val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-    .setInputCols(["sentence", "token"])\
+    .setInputCols(Array("sentence", "token")) \
     .setOutputCol("embeddings")
 
-val clinical_ner = MedicalNerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models") \
-    .setInputCols(["sentence", "token", "embeddings"]) \
+// NER model trained on n2c2 (de-identification and Heart Disease Risk Factors Challenge) datasets)
+val clinical_ner = NerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models") \
+    .setInputCols(Array("sentence", "token", "embeddings")) \
     .setOutputCol("ner")
 
 val ner_converter = new NerConverterInternal()\
-    .setInputCols(["sentence", "token", "ner"])\
+    .setInputCols(Array("sentence", "token", "ner"))\
     .setOutputCol("ner_chunk")
 
-***deid model with "entity_labels"***
-
-val deid_entity_labels= DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"])\
+//deid model with "entity_labels"
+val deid_entity_labels= new DeIdentification()
+    .setInputCols(Array("ner_chunk", "token", "sentence")) \
     .setOutputCol("deid_entity_label")\
     .setMode("mask")\
-    .setReturnEntityMappings(True)\
+    .setReturnEntityMappings(true)\
     .setMaskingPolicy("entity_labels")
-
-***#deid model with "same_length_chars"***
-
-val deid_same_length= DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"])\
-    .setOutputCol("deid_same_length")\
-    .setMode("mask")\
-    .setReturnEntityMappings(True)\
-    .setMaskingPolicy("same_length_chars")
-
-***#deid model with "fixed_length_chars"***
-
-val deid_fixed_length= DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"])\
-    .setOutputCol("deid_fixed_length")\
-    .setMode("mask")\
-    .setReturnEntityMappings(True)\
-    .setMaskingPolicy("fixed_length_chars")\
-    .setFixedMaskLength(4)
-
 
 import java.io.PrintWriter
 
-object Main {
-  def main(args: Array[String]): Unit = {
-    val obsLines = """Marvin MARSHALL#PATIENT
+val obs_lines = """Marvin MARSHALL#PATIENT
 Hubert GROGAN#PATIENT
 ALTHEA COLBURN#PATIENT
 Kalil AMIN#PATIENT
@@ -861,78 +807,55 @@ Rudiger Chao#DOCTOR
 COLLETTE KOHLER#NAME
 Mufi HIGGS#NAME"""
 
-    val filename = "obfuscation.txt"
-    val writer = new PrintWriter(filename)
-    writer.write(obsLines)
-    writer.close()
-  }
-}
+val filename = "obfuscation.txt"
+val writer = new PrintWriter(filename)
+writer.write(obs_lines)
+writer.close()
 
-
-val obfuscation = new DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"]) \
+val obfuscation =  new DeIdentification()
+    .setInputCols(Array("ner_chunk", "token", "sentence")) \
     .setOutputCol("deidentified") \
     .setMode("obfuscate")\
-    .setObfuscateDate(True)\
+    .setObfuscateDate(true)\
     .setObfuscateRefFile('obfuscation.txt')\
-    .setObfuscateRefSource("file")
+    .setObfuscateRefSource("both")\        //file or faker  
+    .setGenderAwareness(true)\
+    .setLanguage("en")\
+    .setUnnormalizedDateMode("obfuscate") //mask or skip
 
 
 
-fval aker = new DeIdentification()\
-    .setInputCols(["sentence", "token", "ner_chunk"]) \
-    .setOutputCol("deidentified_by_faker") \
-    .setMode("obfuscate")\
-    .setObfuscateDate(True)\
-    .setObfuscateRefSource("faker")
+val deidPipeline = new Pipeline().setStages(Array(
+                                                  documentAssembler,
+                                                  sentenceDetector,
+                                                  tokenizer,
+                                                  word_embeddings,
+                                                  clinical_ner,
+                                                  ner_converter,
+                                                  deid_entity_labels,
+                                                  obfuscation
+                                                ))
 
 
-val deidPipeline = new Pipeline(stages=[
-      documentAssembler,
-      sentenceDetector,
-      tokenizer,
-      word_embeddings,
-      clinical_ner,
-      ner_converter,
-      deid_entity_labels,
-      deid_same_length,
-      deid_fixed_length,
-      obfuscation,
-      faker])
 
 
-#sample data
+//sample data
 
-val data = Seq(
-  "Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 ."
-).toDF("text")
+val text =
+          '''
+          Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 .
+          '''
 
-val model = new deidPipeline.fit(data)
+val data = Seq(text).toDF("text")
 
-val result = new model.transform(data).toDF("text"))
+val result = new deidPipeline.fit(data).transform(data)
 
-result.select(F.explode(F.arrays_zip(result.sentence.result,
-                                     result.deid_entity_label.result,
-                                     result.deid_same_length.result,
-                                     result.deid_fixed_length.result,
-                                     result.deidentified.result,
-                                     result.deidentified_by_faker.result,
-                                     )).alias("cols")) \
-      .select(F.expr("cols['0']").alias("sentence"), 
-              F.expr("cols['1']").alias("deid_entity_label"),
-              F.expr("cols['2']").alias("deid_same_length"),
-              F.expr("cols['3']").alias("deid_fixed_length"),
-              F.expr("cols['4']").alias("deidentified"),
-              F.expr("cols['5']").alias("deidentified_by_faker"),
-              ).toPandas()
-
-
-|index|sentence|deid\_entity\_label|deid\_same\_length|deid\_fixed\_length|deidentified|deidentified\_by\_faker|
-|---|---|---|---|---|---|---|
-|0|Record date : 2093-01-13 , David Hale , M\.D \.|Record date : \<DATE\> , \<NAME\> , M\.D \.|Record date : \[\*\*\*\*\*\*\*\*\] , \[\*\*\*\*\*\*\*\*\] , M\.D \.|Record date : \*\*\*\* , \*\*\*\* , M\.D \.|Record date : 2093-01-21 , COLLETTE KOHLER , M\.D \.|Record date : 2093-01-18 , Jacelyn Grip , M\.D \.|
-|1|, Name : Hendrickson Ora , MR \# 7194334 Date : 01/13/93 \.|, Name : \<NAME\> , MR \# \<ID\> Date : \<DATE\> \.|, Name : \[\*\*\*\*\*\*\*\*\*\*\*\*\*\] , MR \# \[\*\*\*\*\*\] Date : \[\*\*\*\*\*\*\] \.|, Name : \*\*\*\* , MR \# \*\*\*\* Date : \*\*\*\* \.|, Name : Mufi HIGGS , MR \# 8296535 Date : 01/21/93 \.|, Name : Gillian Shields , MR \# 0327020 Date : 01/18/93 \.|
-|2|PCP : Oliveira , 25 years-old , Record date : 2079-11-09 \.|PCP : \<NAME\> , \<AGE\> years-old , Record date : \<DATE\> \.|PCP : \[\*\*\*\*\*\*\] , \*\* years-old , Record date : \[\*\*\*\*\*\*\*\*\] \.|PCP : \*\*\*\* , \*\*\*\* years-old , Record date : \*\*\*\* \.|PCP : COLLETTE KOHLER , \<AGE\> years-old , Record date : 2079-11-17 \.|PCP : Wynona Neat , 23 years-old , Record date : 2079-11-14 \.|
-|3|Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 \.|\<LOCATION\> , \<LOCATION\> , Phone \<CONTACT\> \.|\[\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\] , \[\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\] , Phone \[\*\*\*\*\*\*\*\*\*\] \.|\*\*\*\* , \*\*\*\* , Phone \*\*\*\* \.|\<LOCATION\> , \<LOCATION\> , Phone \<CONTACT\> \.|1065 East Broad Street , 410 West 16Th Avenue , Phone 564 472 379 \.|
+|index|sentence|deid\_entity\_label|deidentified|
+|---|---|---|---|
+|0|Record date : 2093-01-13 , David Hale , M\.D \.|Record date : \<DATE\> , \<NAME\> , M\.D \.|Record date : 2093-02-13 , Wolf Hermes , M\.D \.|
+|1|, Name : Hendrickson Ora , MR \# 7194334 Date : 01/13/93 \.|, Name : \<NAME\> , MR \# \<ID\> Date : \<DATE\> \.|, Name : Engel Rainier , MR \# 5822805 Date : 02/13/93 \.|
+|2|PCP : Oliveira , 25 years-old , Record date : 2079-11-09 \.|PCP : \<NAME\> , \<AGE\> years-old , Record date : \<DATE\> \.|PCP : Damián Lango , 21 years-old , Record date : 2079-12-10 \.|
+|3|Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 \.|\<LOCATION\> , \<LOCATION\> , Phone \<CONTACT\> \.|103 North Street , 2500 Bellevue Medical Center Dr , Phone 051-096-883 \.|
 
 {%- endcapture -%}
 

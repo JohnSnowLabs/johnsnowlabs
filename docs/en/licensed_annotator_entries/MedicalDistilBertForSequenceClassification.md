@@ -108,19 +108,14 @@ val sequenceClassifier = MedicalDistilBertForSequenceClassification.pretrained("
 
 val pipeline =  new Pipeline(stages=Array(document_assembler, tokenizer, sequenceClassifier))
 
-var data_list =[["I have an allergic reaction to vancomycin so I have itchy skin, sore throat/burning/itching, numbness of tongue and gums.I would not recommend this drug to anyone, especially since I have never had such an adverse reaction to any other medication."],
-                              ["Religare Capital Ranbaxy has been accepting approval for Diovan since 2012"]]
+var data_list =List(
+    List("I have an allergic reaction to vancomycin so I have itchy skin, sore throat/burning/itching, numbness of tongue and gums.I would not recommend this drug to anyone, especially since I have never had such an adverse reaction to any other medication."),
+    List("Religare Capital Ranbaxy has been accepting approval for Diovan since 2012")
+)
 
 val data = Seq(data_list).toDF("text")
-val model = pipeline.fit(data).toDF("text")
-val model = pipeline.fit(data)
-val result = model.transform(data).toDF("text")
-result.select("text", "classes.result").show(2,truncate=100)
+val result = pipeline.fit(data).transform(data)
 
-| text                                                                                           | result |
-|------------------------------------------------------------------------------------------------|-------|
-| I have an allergic reaction to vancomycin so I have itchy skin, sore throat/burning/itching, numb... | [True] |
-| Religare Capital Ranbaxy has been accepting approval for Diovan since 2012 | [False] |
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
@@ -137,7 +132,7 @@ For available pretrained models please see the [`Models Hub`](https://nlp.johnsn
 
 To see which models are compatible and how to import them see [`Import Transformers into Spark NLP` 🚀](https://github.com/JohnSnowLabs/spark-nlp/discussions/5669)
 Parameters:
-- '`batchSize`', 'Size of every batch'): 8,
+- '`batchSize`', 'Size of every batch', `default`: 8,
 - '`coalesceSentences`', "Instead of 1 class per sentence (if inputCols is '''sentence''') output 1 class per document by averaging probabilities in all sentences.",`default`: False,
 - '`engine`', 'Deep Learning engine used for this model',`default`: 'tensorflow',
 - '`lazyAnnotator`', 'Whether this AnnotatorModel acts as lazy in RecursivePipelines',`default`: False,
@@ -218,8 +213,10 @@ val sequenceClassifier = MedicalDistilBertForSequenceClassification.pretrained("
 
 val pipeline = new Pipeline().setStages(Array(documentAssembler, tokenizer, sequenceClassifier))
 
-var data_list =[["I have an allergic reaction to vancomycin so I have itchy skin, sore throat/burning/itching, numbness of tongue and gums.I would not recommend this drug to anyone, especially since I have never had such an adverse reaction to any other medication."],
-                              ["Religare Capital Ranbaxy has been accepting approval for Diovan since 2012"]]
+var data_list =List(
+    List("I have an allergic reaction to vancomycin so I have itchy skin, sore throat/burning/itching, numbness of tongue and gums.I would not recommend this drug to anyone, especially since I have never had such an adverse reaction to any other medication."),
+    List("Religare Capital Ranbaxy has been accepting approval for Diovan since 2012")
+)
 
 val data = Seq(data_list).toDF("text")
 result = pipeline.fit(data).transform(data)
