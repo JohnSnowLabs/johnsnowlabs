@@ -34,44 +34,7 @@ This pretrained pipeline is built on the top of [summarizer_clinical_jsl_augment
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("summarizer_clinical_jsl_augmented_pipeline", "en", "clinical/models")
-
-text = """Patient with hypertension, syncope, and spinal stenosis - for recheck.
-(Medical Transcription Sample Report)
-SUBJECTIVE:
-The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
-PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
-Reviewed and unchanged from the dictation on 12/03/2003.
-MEDICATIONS:
-Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.
-"""
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("summarizer_clinical_jsl_augmented_pipeline", "en", "clinical/models")
-
-val text = """Patient with hypertension, syncope, and spinal stenosis - for recheck.
-(Medical Transcription Sample Report)
-SUBJECTIVE:
-The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
-PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
-Reviewed and unchanged from the dictation on 12/03/2003.
-MEDICATIONS:
-Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.
-"""
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -111,15 +74,7 @@ val result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-
 A 78-year-old female with hypertension, syncope, and spinal stenosis returns for a recheck. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema. Her medications include Atenolol, Premarin, calcium with vitamin D, multivitamin, aspirin, and TriViFlor. She also has Elocon cream and Synalar cream for rash.
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}

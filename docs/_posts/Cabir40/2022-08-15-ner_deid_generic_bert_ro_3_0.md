@@ -41,6 +41,7 @@ This NER model is trained with a combination of custom datasets with several dat
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
         .setInputCol("text")\

@@ -34,6 +34,7 @@ This pretrained pipeline maps entities with their corresponding ICD-10-CM codes.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -60,48 +61,16 @@ nlu.load("en.icd10cm_resolver.pipeline").predict("""A 28-year-old female with a 
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-resolver_pipeline = PretrainedPipeline("icd10cm_resolver_pipeline", "en", "clinical/models")
-
-text = """A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years and anisakiasis. Also, it was reported that fetal and neonatal hemorrhage"""
-
-result = resolver_pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val resolver_pipeline = new PretrainedPipeline("icd10cm_resolver_pipeline", "en", "clinical/models")
-
-val result = resolver_pipeline.fullAnnotate("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years and anisakiasis. Also, it was reported that fetal and neonatal hemorrhage""")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.icd10cm_resolver.pipeline").predict("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years and anisakiasis. Also, it was reported that fetal and neonatal hemorrhage""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-+-----------------------------+---------+------------+
 |chunk                        |ner_chunk|icd10cm_code|
 +-----------------------------+---------+------------+
 |gestational diabetes mellitus|PROBLEM  |O24.919     |
 |anisakiasis                  |PROBLEM  |B81.0       |
 |fetal and neonatal hemorrhage|PROBLEM  |P545        |
-+-----------------------------+---------+------------+
-
-
-{:.model-param}
 ```
 
 {:.model-param}

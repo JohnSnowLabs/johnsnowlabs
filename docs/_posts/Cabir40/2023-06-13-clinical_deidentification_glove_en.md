@@ -34,6 +34,7 @@ This pipeline is trained with lightweight `glove_100d` embeddings and can be use
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -117,9 +118,6 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
 ## Results
 
 ```bash
-Results
-
-
 Masked with entity labels
 ------------------------------
 Name : <PATIENT>, Record date: <DATE>, # <MEDICALRECORD>.
@@ -151,9 +149,6 @@ Dr. Dr Worley Colonel, ID: ZJ:9570208, IP 005.005.005.005.
 He is a 67 male was admitted to the ST. LUKE'S HOSPITAL AT THE VINTAGE for cystectomy on 06-02-1981.
 Patient's VIN : 3CCCC22DDDD333888, SSN SSN-618-77-1042, Driver's license W693817528998.
 Phone 0496 46 46 70, 3100 weston rd, Shattuck, E-MAIL: Freddi@hotmail.com.
-
-
-{:.model-param}
 ```
 
 {:.model-param}

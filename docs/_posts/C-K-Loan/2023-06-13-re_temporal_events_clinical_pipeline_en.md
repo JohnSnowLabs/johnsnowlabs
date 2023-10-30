@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [re_temporal_events_clinical](ht
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 pipeline = PretrainedPipeline("re_temporal_events_clinical_pipeline", "en", "clinical/models")
 
@@ -56,34 +57,11 @@ nlu.load("en.relation.temporal_event_clinical.pipeline").predict("""The patient 
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-pipeline = PretrainedPipeline("re_temporal_events_clinical_pipeline", "en", "clinical/models")
 
-
-pipeline.annotate("The patient is a 56-year-old right-handed female with longstanding intermittent right low back pain, who was involved in a motor vehicle accident in September of 2005. At that time, she did not notice any specific injury, but five days later, she started getting abnormal right low back pain.")
-```
-```scala
-val pipeline = new PretrainedPipeline("re_temporal_events_clinical_pipeline", "en", "clinical/models")
-
-
-pipeline.annotate("The patient is a 56-year-old right-handed female with longstanding intermittent right low back pain, who was involved in a motor vehicle accident in September of 2005. At that time, she did not notice any specific injury, but five days later, she started getting abnormal right low back pain.")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.relation.temporal_event_clinical.pipeline").predict("""The patient is a 56-year-old right-handed female with longstanding intermittent right low back pain, who was involved in a motor vehicle accident in September of 2005. At that time, she did not notice any specific injury, but five days later, she started getting abnormal right low back pain.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 +----+------------+------------+-----------------+---------------+--------------------------+-----------+-----------------+---------------+---------------------+--------------+
 |    | relation   | entity1    |   entity1_begin |   entity1_end | chunk1                   | entity2   |   entity2_begin |   entity2_end | chunk2              |   confidence |
 +====+============+============+=================+===============+==========================+===========+=================+===============+=====================+==============+
@@ -91,9 +69,6 @@ Results
 +----+------------+------------+-----------------+---------------+--------------------------+-----------+-----------------+---------------+---------------------+--------------+
 |  1 | OVERLAP    | DATE       |             171 |           179 | that time                | PROBLEM   |             201 |           219 | any specific injury |     0.956654 |
 +----+------------+------------+-----------------+---------------+--------------------------+-----------+-----------------+---------------+---------------------+--------------+
-
-
-{:.model-param}
 ```
 
 {:.model-param}

@@ -34,6 +34,7 @@ This pretrained pipeline maps RxNorm codes to MeSH codes without using any text 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline 
 pipeline = PretrainedPipeline("rxnorm_mesh_mapping","en","clinical/models")
@@ -54,32 +55,10 @@ nlu.load("en.resolve.rxnorm.mesh").predict("""1191 6809 47613""")
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline 
-pipeline = PretrainedPipeline("rxnorm_mesh_mapping","en","clinical/models")
-pipeline.annotate("1191 6809 47613")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-val pipeline = new PretrainedPipeline("rxnorm_mesh_mapping","en","clinical/models")
-val result = pipeline.annotate("1191 6809 47613")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.resolve.rxnorm.mesh").predict("""1191 6809 47613""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 {'rxnorm': ['1191', '6809', '47613'],
 'mesh': ['D001241', 'D008687', 'D019355']}
 
@@ -97,9 +76,6 @@ Note:
 | D001241    | Aspirin             |
 | D008687    | Metformin           |
 | D019355    | Calcium Citrate     |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

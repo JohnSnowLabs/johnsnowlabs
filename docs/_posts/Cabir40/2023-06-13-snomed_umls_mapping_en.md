@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of `snomed_umls_mapper` model.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -58,44 +59,13 @@ nlu.load("en.snomed.umls.mapping").predict("""Put your text here.""")
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("snomed_umls_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(733187009 449433008 51264003)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("snomed_umls_mapping", "en", "clinical/models")
-
-val result = pipeline.fullAnnotate(733187009 449433008 51264003)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.snomed.umls.mapping").predict("""Put your text here.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-
 |    | snomed_code                      | umls_code                      |
 |---:|:---------------------------------|:-------------------------------|
 |  0 | 733187009 | 449433008 | 51264003 | C4546029 | C3164619 | C0271267 |
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}

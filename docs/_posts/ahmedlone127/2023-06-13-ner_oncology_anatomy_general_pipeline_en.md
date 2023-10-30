@@ -34,28 +34,7 @@ This pretrained pipeline is built on the top of [ner_oncology_anatomy_general](h
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_oncology_anatomy_general_pipeline", "en", "clinical/models")
-
-text = '''The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_anatomy_general_pipeline", "en", "clinical/models")
-
-val text = "The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -79,18 +58,12 @@ val result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks   |   begin |   end | ner_label       |   confidence |
 |---:|:-------------|--------:|------:|:----------------|-------------:|
 |  0 | left         |      36 |    39 | Direction       |       0.9825 |
 |  1 | breast       |      41 |    46 | Anatomical_Site |       0.9005 |
 |  2 | lungs        |      82 |    86 | Anatomical_Site |       0.9735 |
 |  3 | liver        |      99 |   103 | Anatomical_Site |       0.9817 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

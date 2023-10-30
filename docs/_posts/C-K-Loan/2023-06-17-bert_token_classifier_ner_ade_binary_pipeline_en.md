@@ -34,50 +34,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_ade_b
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("bert_token_classifier_ner_ade_binary_pipeline", "en", "clinical/models")
-
-text = '''I used to be on paxil but that made me more depressed and prozac made me angry, Maybe cos of the insulin blocking effect of seroquel but i do feel sugar crashes when eat fast carbs.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_ade_binary_pipeline", "en", "clinical/models")
-
-val text = "I used to be on paxil but that made me more depressed and prozac made me angry, Maybe cos of the insulin blocking effect of seroquel but i do feel sugar crashes when eat fast carbs."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_token_classifier_ner_ade_binary_pipeline", "en", "clinical/models")
-
-text = '''I used to be on paxil but that made me more depressed and prozac made me angry, Maybe cos of the insulin blocking effect of seroquel but i do feel sugar crashes when eat fast carbs.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_ade_binary_pipeline", "en", "clinical/models")
-
-val text = "I used to be on paxil but that made me more depressed and prozac made me angry, Maybe cos of the insulin blocking effect of seroquel but i do feel sugar crashes when eat fast carbs."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -112,23 +69,11 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunk     |   begin |   end | ner_label   |   confidence |
 |---:|:--------------|--------:|------:|:------------|-------------:|
 |  0 | depressed     |      44 |    52 | ADE         |     0.990846 |
 |  1 | angry         |      73 |    77 | ADE         |     0.972025 |
 |  2 | sugar crashes |     147 |   159 | ADE         |     0.933623 |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

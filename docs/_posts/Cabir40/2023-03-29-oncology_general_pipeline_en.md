@@ -32,6 +32,7 @@ This pipeline includes Named-Entity Recognition, Assertion Status and Relation E
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -66,7 +67,6 @@ The tumor is positive for ER and PR.""")
 ## Results
 
 ```bash
-"
 ******************** ner_oncology_wip results ********************
 
 | chunk          | ner_label        |
@@ -147,8 +147,6 @@ The tumor is positive for ER and PR.""")
 | tumor         | Tumor_Finding    | PR             | Biomarker     | O             |
 | positive      | Biomarker_Result | ER             | Biomarker     | is_finding_of |
 | positive      | Biomarker_Result | PR             | Biomarker     | is_finding_of |
-
-
 ```
 
 {:.model-param}

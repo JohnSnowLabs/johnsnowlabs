@@ -32,6 +32,7 @@ A pipeline with `ner_clinical_events`, `assertion_dl` and `re_temporal_events_cl
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

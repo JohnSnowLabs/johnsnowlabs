@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_biomedical_bc2gm](https://n
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,48 +63,15 @@ nlu.load("en.med_ner.biomedical_bc2gm.pipeline").predict("""Immunohistochemical 
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_biomedical_bc2gm_pipeline", "en", "clinical/models")
-
-text = '''Immunohistochemical staining was positive for S-100 in all 9 cases stained, positive for HMB-45 in 9 (90%) of 10, and negative for cytokeratin in all 9 cases in which myxoid melanoma remained in the block after previous sections.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_biomedical_bc2gm_pipeline", "en", "clinical/models")
-
-val text = "Immunohistochemical staining was positive for S-100 in all 9 cases stained, positive for HMB-45 in 9 (90%) of 10, and negative for cytokeratin in all 9 cases in which myxoid melanoma remained in the block after previous sections."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.biomedical_bc2gm.pipeline").predict("""Immunohistochemical staining was positive for S-100 in all 9 cases stained, positive for HMB-45 in 9 (90%) of 10, and negative for cytokeratin in all 9 cases in which myxoid melanoma remained in the block after previous sections.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks   |   begin |   end | ner_label    |   confidence |
 |---:|:-------------|--------:|------:|:-------------|-------------:|
 |  0 | S-100        |      46 |    50 | GENE_PROTEIN |       0.9911 |
 |  1 | HMB-45       |      89 |    94 | GENE_PROTEIN |       0.9944 |
 |  2 | cytokeratin  |     131 |   141 | GENE_PROTEIN |       0.9951 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

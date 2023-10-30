@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of `mesh_umls_mapper` model.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -58,74 +59,13 @@ nlu.load("en.mesh.umls.mapping").predict("""Put your text here.""")
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("mesh_umls_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(C028491 D019326 C579867)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("mesh_umls_mapping", "en", "clinical/models")
-
-val result = pipeline.fullAnnotate(C028491 D019326 C579867)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.mesh.umls.mapping").predict("""Put your text here.""")
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("mesh_umls_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(C028491 D019326 C579867)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("mesh_umls_mapping", "en", "clinical/models")
-
-val result = pipeline.fullAnnotate(C028491 D019326 C579867)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.mesh.umls.mapping").predict("""Put your text here.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
-
 |    | mesh_code                   | umls_code                      |
 |---:|:----------------------------|:-------------------------------|
 |  0 | C028491 | D019326 | C579867 | C0043904 | C0045010 | C3696376 |
-
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

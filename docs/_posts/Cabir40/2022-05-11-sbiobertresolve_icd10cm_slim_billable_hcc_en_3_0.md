@@ -202,8 +202,6 @@ nlu.load("en.resolve.icd10cm.slim_billable_hcc").predict("""A 28-year-old female
 |                             vomiting|PROBLEM|   R11.1|vomiting [Vomiting]:::vomiting [Vomiting, unspecified]:::intermi...|R11.1:::R11.10:::R11:::G43.A0:::G43.A:::R11.0::...| 0||0||0:::1||0||0:::0||0||0:::1||0||0:::0||0||0:::1...|
 |        a respiratory tract infection|PROBLEM|   J06.9|upper respiratory tract infection [Acute upper respiratory infec...|J06.9:::T17.9:::T17:::J04.10:::J22:::J98.8:::J9...| 1||0||0:::0||0||0:::0||0||0:::1||0||0:::1||0||0:::1...|
 +-------------------------------------+-------+--------+----------------------------------------------------------------------------------------------------+--------------------------------------------------+-------------------------------------------------------+
-
-
 ```
 
 
@@ -222,7 +220,3 @@ nlu.load("en.resolve.icd10cm.slim_billable_hcc").predict("""A 28-year-old female
 |Language:|en|
 |Size:|846.6 MB|
 |Case sensitive:|false|
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1Nzk5NzQxNTcsLTE0MjY2MTg4OTNdfQ
-==
--->

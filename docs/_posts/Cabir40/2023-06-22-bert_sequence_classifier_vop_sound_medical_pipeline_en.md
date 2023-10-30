@@ -54,11 +54,9 @@ val result = pipeline.annotate(I had a lung surgery for emphyema and after surge
 ## Results
 
 ```bash
-
 | text                                                                               | prediction   |
 |:-----------------------------------------------------------------------------------|:-------------|
 | I had a lung surgery for emphyema and after surgery my xray showing some recovery. | True         |
-
 ```
 
 {:.model-param}

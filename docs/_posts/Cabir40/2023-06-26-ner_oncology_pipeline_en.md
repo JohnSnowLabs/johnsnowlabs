@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_oncology](https://nlp.johns
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -58,38 +59,10 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_oncology_pipeline", "en", "clinical/models")
-
-text = '''The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago.
-The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to the residual breast.
-The cancer recurred as a right lung metastasis 13 years later. The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_pipeline", "en", "clinical/models")
-
-val text = "The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago.
-The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to the residual breast.
-The cancer recurred as a right lung metastasis 13 years later. The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks                     |   begin |   end | ner_label             |   confidence |
 |---:|:-------------------------------|--------:|------:|:----------------------|-------------:|
 |  0 | left                           |      31 |    34 | Direction             |     0.9913   |
@@ -116,9 +89,6 @@ Results
 | 21 | 600 mg/m2                      |     390 |   398 | Dosage                |     0.9647   |
 | 22 | six courses                    |     406 |   416 | Cycle_Count           |     0.6798   |
 | 23 | first line                     |     422 |   431 | Line_Of_Therapy       |     0.9792   |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

@@ -34,50 +34,7 @@ This pretrained pipeline is built on the top of [ner_healthcare_slim](https://nl
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_healthcare_slim_pipeline", "de", "clinical/models")
-
-text = '''Das Kleinzellige Bronchialkarzinom (Kleinzelliger Lungenkrebs, SCLC) ist Hernia femoralis, Akne, einseitig, ein hochmalignes bronchogenes Karzinom, das überwiegend im Zentrum der Lunge, in einem Hauptbronchus entsteht. Die mittlere Prävalenz wird auf 1/20.000 geschätzt.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_healthcare_slim_pipeline", "de", "clinical/models")
-
-val text = "Das Kleinzellige Bronchialkarzinom (Kleinzelliger Lungenkrebs, SCLC) ist Hernia femoralis, Akne, einseitig, ein hochmalignes bronchogenes Karzinom, das überwiegend im Zentrum der Lunge, in einem Hauptbronchus entsteht. Die mittlere Prävalenz wird auf 1/20.000 geschätzt."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_healthcare_slim_pipeline", "de", "clinical/models")
-
-text = '''Das Kleinzellige Bronchialkarzinom (Kleinzelliger Lungenkrebs, SCLC) ist Hernia femoralis, Akne, einseitig, ein hochmalignes bronchogenes Karzinom, das überwiegend im Zentrum der Lunge, in einem Hauptbronchus entsteht. Die mittlere Prävalenz wird auf 1/20.000 geschätzt.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_healthcare_slim_pipeline", "de", "clinical/models")
-
-val text = "Das Kleinzellige Bronchialkarzinom (Kleinzelliger Lungenkrebs, SCLC) ist Hernia femoralis, Akne, einseitig, ein hochmalignes bronchogenes Karzinom, das überwiegend im Zentrum der Lunge, in einem Hauptbronchus entsteht. Die mittlere Prävalenz wird auf 1/20.000 geschätzt."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -112,12 +69,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunk                          |   begin |   end | ner_label         |   confidence |
 |---:|:-----------------------------------|--------:|------:|:------------------|-------------:|
 |  0 | Bronchialkarzinom                  |      17 |    33 | MEDICAL_CONDITION |       0.9988 |
@@ -130,12 +81,6 @@ Results
 |  7 | Lunge                              |     179 |   183 | BODY_PART         |       0.9729 |
 |  8 | Hauptbronchus                      |     195 |   207 | BODY_PART         |       0.9987 |
 |  9 | Prävalenz                          |     232 |   240 | MEDICAL_CONDITION |       0.9986 |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

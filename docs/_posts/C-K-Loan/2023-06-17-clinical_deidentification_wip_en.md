@@ -34,6 +34,7 @@ This pipeline can be used to deidentify PHI information from medical texts. The 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -78,56 +79,10 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-deid_pipeline = PretrainedPipeline("clinical_deidentification_wip", "en", "clinical/models")
-
-sample = """Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
-
-result = deid_pipeline.annotate(sample)
-print("\n".join(result['masked']))
-print("\n".join(result['masked_with_chars']))
-print("\n".join(result['masked_fixed_length_chars']))
-print("\n".join(result['obfuscated']))
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val deid_pipeline = new PretrainedPipeline("clinical_deidentification_wip","en","clinical/models")
-
-val sample = """Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
-
-val result = deid_pipeline.annotate(sample)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.deid.clinical_wip").predict("""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 Masked with entity labels
 ------------------------------
 Name : <PATIENT>, Record date: <DATE>, # <MEDICALRECORD>.
@@ -159,9 +114,6 @@ Dr. Dr Felice Lacer, IDXO:4884578, IP 444.444.444.444.
 He is a 75 male was admitted to the MADISON VALLEY MEDICAL CENTER for cystectomy on 07-01-1972.
 Patient's VIN : 2BBBB11BBBB222999, SSN SSN-814-86-1962, Driver's license P055567317431.
 Phone 0381-6762484, Budaörsi út 14., New brunswick, E-MAIL: Reba@google.com.
-
-
-{:.model-param}
 ```
 
 {:.model-param}

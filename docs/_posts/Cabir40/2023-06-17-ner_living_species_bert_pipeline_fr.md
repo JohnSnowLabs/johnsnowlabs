@@ -32,52 +32,10 @@ This pretrained pipeline is built on the top of [ner_living_species_bert](https:
 
 ## How to use
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_living_species_bert_pipeline", "fr", "clinical/models")
-
-text = '''Femme de 47 ans allergique à l'iode, fumeuse sociale, opérée pour des varices, deux césariennes et un abcès fessier. Vit avec son mari et ses trois enfants, travaille comme enseignante. Initialement, le patient a eu une bonne évolution, mais au 2ème jour postopératoire, il a commencé à montrer une instabilité hémodynamique. Les sérologies pour Coxiella burnetii, Bartonella henselae, Borrelia burgdorferi, Entamoeba histolytica, Toxoplasma gondii, herpès simplex virus 1 et 2, cytomégalovirus, virus d'Epstein Barr, virus de la varicelle et du zona et parvovirus B19 étaient négatives. Cependant, un test au rose Bengale positif pour Brucella, le test de Coombs et les agglutinations étaient également positifs avec un titre de 1/40.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_living_species_bert_pipeline", "fr", "clinical/models")
-
-val text = "Femme de 47 ans allergique à l'iode, fumeuse sociale, opérée pour des varices, deux césariennes et un abcès fessier. Vit avec son mari et ses trois enfants, travaille comme enseignante. Initialement, le patient a eu une bonne évolution, mais au 2ème jour postopératoire, il a commencé à montrer une instabilité hémodynamique. Les sérologies pour Coxiella burnetii, Bartonella henselae, Borrelia burgdorferi, Entamoeba histolytica, Toxoplasma gondii, herpès simplex virus 1 et 2, cytomégalovirus, virus d'Epstein Barr, virus de la varicelle et du zona et parvovirus B19 étaient négatives. Cependant, un test au rose Bengale positif pour Brucella, le test de Coombs et les agglutinations étaient également positifs avec un titre de 1/40."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_living_species_bert_pipeline", "fr", "clinical/models")
-
-text = '''Femme de 47 ans allergique à l'iode, fumeuse sociale, opérée pour des varices, deux césariennes et un abcès fessier. Vit avec son mari et ses trois enfants, travaille comme enseignante. Initialement, le patient a eu une bonne évolution, mais au 2ème jour postopératoire, il a commencé à montrer une instabilité hémodynamique. Les sérologies pour Coxiella burnetii, Bartonella henselae, Borrelia burgdorferi, Entamoeba histolytica, Toxoplasma gondii, herpès simplex virus 1 et 2, cytomégalovirus, virus d'Epstein Barr, virus de la varicelle et du zona et parvovirus B19 étaient négatives. Cependant, un test au rose Bengale positif pour Brucella, le test de Coombs et les agglutinations étaient également positifs avec un titre de 1/40.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_living_species_bert_pipeline", "fr", "clinical/models")
-
-val text = "Femme de 47 ans allergique à l'iode, fumeuse sociale, opérée pour des varices, deux césariennes et un abcès fessier. Vit avec son mari et ses trois enfants, travaille comme enseignante. Initialement, le patient a eu une bonne évolution, mais au 2ème jour postopératoire, il a commencé à montrer une instabilité hémodynamique. Les sérologies pour Coxiella burnetii, Bartonella henselae, Borrelia burgdorferi, Entamoeba histolytica, Toxoplasma gondii, herpès simplex virus 1 et 2, cytomégalovirus, virus d'Epstein Barr, virus de la varicelle et du zona et parvovirus B19 étaient négatives. Cependant, un test au rose Bengale positif pour Brucella, le test de Coombs et les agglutinations étaient également positifs avec un titre de 1/40."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -112,12 +70,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunks                       |   begin |   end | ner_label   |   confidence |
 |---:|:---------------------------------|--------:|------:|:------------|-------------:|
 |  0 | Femme                            |       0 |     4 | HUMAN       |     1        |
@@ -134,12 +86,6 @@ Results
 | 11 | virus de la varicelle et du zona |     518 |   549 | SPECIES     |     0.985429 |
 | 12 | parvovirus B19                   |     554 |   567 | SPECIES     |     0.98595  |
 | 13 | Brucella                         |     636 |   643 | SPECIES     |     0.9995   |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

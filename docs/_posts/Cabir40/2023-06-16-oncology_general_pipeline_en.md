@@ -67,9 +67,6 @@ The tumor is positive for ER and PR.""")
 </div>
 
 
-
-
-
 ## Results
 
 ```bash

@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_jsl_slim](https://nlp.johns
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -65,40 +66,11 @@ nlu.load("en.med_ner.jsl_slim.pipeline").predict("""Hyperparathyroidism was cons
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_jsl_slim_pipeline", "en", "clinical/models")
-
-text = "Hyperparathyroidism was considered upon the fourth occasion. The history of weakness and generalized joint pains were present. He also had history of epigastric pain diagnosed informally as gastritis. He had previously had open reduction and internal fixation for the initial two fractures under general anesthesia. He sustained mandibular fracture."
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_jsl_slim_pipeline", "en", "clinical/models")
-
-val text = "Hyperparathyroidism was considered upon the fourth occasion. The history of weakness and generalized joint pains were present. He also had history of epigastric pain diagnosed informally as gastritis. He had previously had open reduction and internal fixation for the initial two fractures under general anesthesia. He sustained mandibular fracture."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.jsl_slim.pipeline").predict("""Hyperparathyroidism was considered upon the fourth occasion. The history of weakness and generalized joint pains were present. He also had history of epigastric pain diagnosed informally as gastritis. He had previously had open reduction and internal fixation for the initial two fractures under general anesthesia. He sustained mandibular fracture.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | chunks                               |   begin |   end | entities                  |   confidence |
 |---:|:-------------------------------------|--------:|------:|:--------------------------|-------------:|
 |  0 | Hyperparathyroidism                  |       0 |    18 | Disease_Syndrome_Disorder |     0.9977   |
@@ -112,9 +84,6 @@ Results
 |  8 | fractures under general anesthesia   |     280 |   313 | Drug                      |     0.79585  |
 |  9 | He                                   |     316 |   317 | Demographics              |     0.9992   |
 | 10 | sustained mandibular fracture        |     319 |   347 | Disease_Syndrome_Disorder |     0.662467 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_oncology_diagnosis](https:/
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -54,34 +55,10 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_oncology_diagnosis_pipeline", "en", "clinical/models")
-
-text = '''Two years ago, the patient presented with a tumor in her left breast and adenopathies. She was diagnosed with invasive ductal carcinoma. Last week she was also found to have a lung metastasis.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_diagnosis_pipeline", "en", "clinical/models")
-
-val text = "Two years ago, the patient presented with a tumor in her left breast and adenopathies. She was diagnosed with invasive ductal carcinoma. Last week she was also found to have a lung metastasis."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks   |   begin |   end | ner_label         |   confidence |
 |---:|:-------------|--------:|------:|:------------------|-------------:|
 |  0 | tumor        |      44 |    48 | Tumor_Finding     |       0.9958 |
@@ -90,9 +67,6 @@ Results
 |  3 | ductal       |     119 |   124 | Histological_Type |       0.9996 |
 |  4 | carcinoma    |     126 |   134 | Cancer_Dx         |       0.9988 |
 |  5 | metastasis   |     181 |   190 | Metastasis        |       0.9996 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

@@ -59,76 +59,16 @@ nlu.load("en.relation.date_test_result.pipeline").predict("""He was advised ches
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("re_test_result_date_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("He was advised chest X-ray or CT scan after checking his SpO2 which was <= 93%")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("re_test_result_date_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("He was advised chest X-ray or CT scan after checking his SpO2 which was <= 93%")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.relation.date_test_result.pipeline").predict("""He was advised chest X-ray or CT scan after checking his SpO2 which was <= 93%""")
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("re_test_result_date_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("He was advised chest X-ray or CT scan after checking his SpO2 which was <= 93%")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("re_test_result_date_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("He was advised chest X-ray or CT scan after checking his SpO2 which was <= 93%")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.relation.date_test_result.pipeline").predict("""He was advised chest X-ray or CT scan after checking his SpO2 which was <= 93%""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
-
 | index | relations    | entity1      | chunk1              | entity2      |  chunk2 |
 |-------|--------------|--------------|---------------------|--------------|---------|
 | 0     | O            | TEST         | chest X-ray         | MEASUREMENTS |  93%    | 
 | 1     | O            | TEST         | CT scan             | MEASUREMENTS |  93%    |
 | 2     | is_result_of | TEST         | SpO2                | MEASUREMENTS |  93%    |
-
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

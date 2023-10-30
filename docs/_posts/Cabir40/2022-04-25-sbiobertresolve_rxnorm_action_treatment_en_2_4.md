@@ -37,6 +37,7 @@ This model maps clinical entities and concepts (like drugs/ingredients) to RxNor
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
 .setInputCol("text")\

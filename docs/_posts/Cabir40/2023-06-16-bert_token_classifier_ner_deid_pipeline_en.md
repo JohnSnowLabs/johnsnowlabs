@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_deid]
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,10 @@ nlu.load("en.classify.token_bert.ner_deid.pipeline").predict("""A. Record date :
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_token_classifier_ner_deid_pipeline", "en", "clinical/models")
-
-text = '''A. Record date : 2093-01-13, David Hale, M.D. Name : Hendrickson, Ora MR. # 7194334. PCP : Oliveira, non-smoking. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_deid_pipeline", "en", "clinical/models")
-
-val text = "A. Record date : 2093-01-13, David Hale, M.D. Name : Hendrickson, Ora MR. # 7194334. PCP : Oliveira, non-smoking. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.classify.token_bert.ner_deid.pipeline").predict("""A. Record date : 2093-01-13, David Hale, M.D. Name : Hendrickson, Ora MR. # 7194334. PCP : Oliveira, non-smoking. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk                     |   begin |   end | ner_label     |   confidence |
 |---:|:------------------------------|--------:|------:|:--------------|-------------:|
 |  0 | 2093-01-13                    |      17 |    26 | DATE          |     0.957256 |
@@ -107,9 +78,6 @@ Results
 |  6 | 0295 Keats Street             |     145 |   161 | STREET        |     0.997889 |
 |  7 | 302) 786-5227                 |     174 |   186 | PHONE         |     0.970114 |
 |  8 | Brothers Coal-Mine            |     253 |   270 | ORGANIZATION  |     0.998911 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

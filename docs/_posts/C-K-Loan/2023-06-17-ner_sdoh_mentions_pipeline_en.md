@@ -62,7 +62,6 @@ val result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-
 |    | chunks           |   begin |   end | entities         |   confidence |
 |---:|:-----------------|--------:|------:|:-----------------|-------------:|
 |  0 | married          |     123 |   129 | sdoh_community   |       0.9972 |
@@ -71,7 +70,6 @@ val result = pipeline.fullAnnotate(text)
 |  3 | alcohol          |     185 |   191 | behavior_alcohol |       0.9925 |
 |  4 | intravenous drug |     196 |   211 | behavior_drug    |       0.9803 |
 |  5 | smoking          |     230 |   236 | behavior_tobacco |       0.9997 |
-
 ```
 
 {:.model-param}

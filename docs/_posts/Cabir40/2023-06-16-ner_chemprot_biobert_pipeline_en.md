@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_chemprot_biobert](https://n
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,10 @@ nlu.load("en.med_ner.chemprot_biobert.pipeline").predict("""Keratinocyte growth 
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_chemprot_biobert_pipeline", "en", "clinical/models")
-
-text = '''Keratinocyte growth factor and acidic fibroblast growth factor are mitogens for primary cultures of mammary epithelium.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_chemprot_biobert_pipeline", "en", "clinical/models")
-
-val text = "Keratinocyte growth factor and acidic fibroblast growth factor are mitogens for primary cultures of mammary epithelium."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.chemprot_biobert.pipeline").predict("""Keratinocyte growth factor and acidic fibroblast growth factor are mitogens for primary cultures of mammary epithelium.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk    |   begin |   end | ner_label   |   confidence |
 |---:|:-------------|--------:|------:|:------------|-------------:|
 |  0 | Keratinocyte |       0 |    11 | GENE-Y      |       0.894  |
@@ -105,9 +76,6 @@ Results
 |  4 | fibroblast   |      38 |    47 | GENE-Y      |       0.3905 |
 |  5 | growth       |      49 |    54 | GENE-Y      |       0.7109 |
 |  6 | factor       |      56 |    61 | GENE-Y      |       0.8693 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

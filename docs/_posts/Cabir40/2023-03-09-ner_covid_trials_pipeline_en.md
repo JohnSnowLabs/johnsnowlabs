@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [ner_covid_trials](https://nlp.j
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 

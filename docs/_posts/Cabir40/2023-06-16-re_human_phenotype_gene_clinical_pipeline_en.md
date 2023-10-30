@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [re_human_phenotype_gene_clinica
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 pipeline = PretrainedPipeline("re_human_phenotype_gene_clinical_pipeline", "en", "clinical/models")
 
@@ -54,61 +55,11 @@ import nlu
 nlu.load("en.relation.human_gene_clinical.pipeline").predict("""Bilateral colobomatous microphthalmia and developmental delay in whom genetic studies identified a homozygous TENM3""")
 ```
 
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-pipeline = PretrainedPipeline("re_human_phenotype_gene_clinical_pipeline", "en", "clinical/models")
-
-
-pipeline.annotate("Bilateral colobomatous microphthalmia and developmental delay in whom genetic studies identified a homozygous TENM3")
-```
-```scala
-val pipeline = new PretrainedPipeline("re_human_phenotype_gene_clinical_pipeline", "en", "clinical/models")
-
-
-pipeline.annotate("Bilateral colobomatous microphthalmia and developmental delay in whom genetic studies identified a homozygous TENM3")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.relation.human_gene_clinical.pipeline").predict("""Bilateral colobomatous microphthalmia and developmental delay in whom genetic studies identified a homozygous TENM3""")
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-pipeline = PretrainedPipeline("re_human_phenotype_gene_clinical_pipeline", "en", "clinical/models")
-
-
-pipeline.annotate("Bilateral colobomatous microphthalmia and developmental delay in whom genetic studies identified a homozygous TENM3")
-```
-```scala
-val pipeline = new PretrainedPipeline("re_human_phenotype_gene_clinical_pipeline", "en", "clinical/models")
-
-
-pipeline.annotate("Bilateral colobomatous microphthalmia and developmental delay in whom genetic studies identified a homozygous TENM3")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.relation.human_gene_clinical.pipeline").predict("""Bilateral colobomatous microphthalmia and developmental delay in whom genetic studies identified a homozygous TENM3""")
-```
 </div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 +----+------------+-----------+-----------------+---------------+---------------------+-----------+-----------------+---------------+---------------------+--------------+
 |    |   relation | entity1   |   entity1_begin |   entity1_end | chunk1              | entity2   |   entity2_begin |   entity2_end | chunk2              |   confidence |
 +====+============+===========+=================+===============+=====================+===========+=================+===============+=====================+==============+
@@ -116,12 +67,6 @@ Results
 +----+------------+-----------+-----------------+---------------+---------------------+-----------+-----------------+---------------+---------------------+--------------+
 |  1 |          1 | HP        |              23 |            36 | microphthalmia      | GENE      |             110 |           114 | TENM3               |     0.999999 |
 +----+------------+-----------+-----------------+---------------+---------------------+-----------+-----------------+---------------+---------------------+--------------+
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

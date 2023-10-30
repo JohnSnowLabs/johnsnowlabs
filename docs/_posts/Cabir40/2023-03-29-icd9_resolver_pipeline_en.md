@@ -32,6 +32,7 @@ This pretrained pipeline maps entities with their corresponding ICD-9-CM codes. 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -61,7 +62,6 @@ nlu.load("en.resolve.icd9.pipeline").predict("""Put your text here.""")
 ## Results
 
 ```bash
-
 +-----------------------------+---------+---------+
 |chunk                        |ner_chunk|icd9_code|
 +-----------------------------+---------+---------+
@@ -69,7 +69,6 @@ nlu.load("en.resolve.icd9.pipeline").predict("""Put your text here.""")
 |anisakiasis                  |PROBLEM  |127.1    |
 |fetal and neonatal hemorrhage|PROBLEM  |772      |
 +-----------------------------+---------+---------+
-
 ```
 
 {:.model-param}

@@ -50,32 +50,6 @@ val pipeline = new PretrainedPipeline("re_test_problem_finding_pipeline", "en", 
 pipeline.fullAnnotate("Targeted biopsy of this lesion for histological correlation should be considered.")
 ```
 
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.relation.test_problem_finding.pipeline").predict("""Targeted biopsy of this lesion for histological correlation should be considered.""")
-```
-
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("re_test_problem_finding_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("Targeted biopsy of this lesion for histological correlation should be considered.")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("re_test_problem_finding_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("Targeted biopsy of this lesion for histological correlation should be considered.")
-```
-
 {:.nlu-block}
 ```python
 import nlu
@@ -86,17 +60,9 @@ nlu.load("en.relation.test_problem_finding.pipeline").predict("""Targeted biopsy
 ## Results
 
 ```bash
-Results
-
-
-
 | index | relations    | entity1      | chunk1              | entity2      |  chunk2 |
 |-------|--------------|--------------|---------------------|--------------|---------|
 | 0     | 1            | PROCEDURE    | biopsy              | SYMPTOM      |  lesion | 
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}

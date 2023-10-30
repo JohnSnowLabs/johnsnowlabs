@@ -34,58 +34,7 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_case](https://n
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_eu_clinical_case_pipeline", "es", "clinical/models")
-
-text = "
-Un niño de 3 años con trastorno autista en el hospital de la sala pediátrica A del hospital universitario. No tiene antecedentes familiares de enfermedad o trastorno del espectro autista. El niño fue diagnosticado con un trastorno de comunicación severo, con dificultades de interacción social y retraso en el procesamiento sensorial. Los análisis de sangre fueron normales (hormona estimulante de la tiroides (TSH), hemoglobina, volumen corpuscular medio (MCV) y ferritina). La endoscopia alta también mostró un tumor submucoso que causaba una obstrucción subtotal de la salida gástrica. Ante la sospecha de tumor del estroma gastrointestinal, se realizó gastrectomía distal. El examen histopatológico reveló proliferación de células fusiformes en la capa submucosa.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_case_pipeline", "es", "clinical/models")
-
-val text = "
-Un niño de 3 años con trastorno autista en el hospital de la sala pediátrica A del hospital universitario. No tiene antecedentes familiares de enfermedad o trastorno del espectro autista. El niño fue diagnosticado con un trastorno de comunicación severo, con dificultades de interacción social y retraso en el procesamiento sensorial. Los análisis de sangre fueron normales (hormona estimulante de la tiroides (TSH), hemoglobina, volumen corpuscular medio (MCV) y ferritina). La endoscopia alta también mostró un tumor submucoso que causaba una obstrucción subtotal de la salida gástrica. Ante la sospecha de tumor del estroma gastrointestinal, se realizó gastrectomía distal. El examen histopatológico reveló proliferación de células fusiformes en la capa submucosa.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_eu_clinical_case_pipeline", "es", "clinical/models")
-
-text = "
-Un niño de 3 años con trastorno autista en el hospital de la sala pediátrica A del hospital universitario. No tiene antecedentes familiares de enfermedad o trastorno del espectro autista. El niño fue diagnosticado con un trastorno de comunicación severo, con dificultades de interacción social y retraso en el procesamiento sensorial. Los análisis de sangre fueron normales (hormona estimulante de la tiroides (TSH), hemoglobina, volumen corpuscular medio (MCV) y ferritina). La endoscopia alta también mostró un tumor submucoso que causaba una obstrucción subtotal de la salida gástrica. Ante la sospecha de tumor del estroma gastrointestinal, se realizó gastrectomía distal. El examen histopatológico reveló proliferación de células fusiformes en la capa submucosa.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_case_pipeline", "es", "clinical/models")
-
-val text = "
-Un niño de 3 años con trastorno autista en el hospital de la sala pediátrica A del hospital universitario. No tiene antecedentes familiares de enfermedad o trastorno del espectro autista. El niño fue diagnosticado con un trastorno de comunicación severo, con dificultades de interacción social y retraso en el procesamiento sensorial. Los análisis de sangre fueron normales (hormona estimulante de la tiroides (TSH), hemoglobina, volumen corpuscular medio (MCV) y ferritina). La endoscopia alta también mostró un tumor submucoso que causaba una obstrucción subtotal de la salida gástrica. Ante la sospecha de tumor del estroma gastrointestinal, se realizó gastrectomía distal. El examen histopatológico reveló proliferación de células fusiformes en la capa submucosa.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -126,12 +75,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | chunks                       |   begin |   end | entities           |   confidence |
 |---:|:-----------------------------|--------:|------:|:-------------------|-------------:|
 |  0 | Un niño de 3 años            |       1 |    17 | patient            |     0.68856  |
@@ -170,12 +113,6 @@ Results
 | 33 | proliferación                |     711 |   723 | clinical_event     |     0.9996   |
 | 34 | células fusiformes           |     728 |   745 | bodypart           |     0.7001   |
 | 35 | la capa submucosa            |     750 |   766 | bodypart           |     0.641267 |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

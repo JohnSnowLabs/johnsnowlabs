@@ -32,6 +32,7 @@ This pipeline includes Named-Entity Recognition, Assertion Status and Relation E
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -63,7 +64,6 @@ nlu.load("en.oncology_biomarker.pipeline").predict("""Immunohistochemistry was n
 ## Results
 
 ```bash
-"
 ******************** ner_oncology_wip results ********************
 
 | chunk                          | ner_label        |
@@ -189,7 +189,6 @@ nlu.load("en.oncology_biomarker.pipeline").predict("""Immunohistochemistry was n
 | ER                   | Biomarker        | negative                       | Biomarker_Result | O             |
 | PR                   | Biomarker        | negative                       | Biomarker_Result | O             |
 | negative             | Biomarker_Result | HER2                           | Oncogene         | is_finding_of |
-
 ```
 
 {:.model-param}

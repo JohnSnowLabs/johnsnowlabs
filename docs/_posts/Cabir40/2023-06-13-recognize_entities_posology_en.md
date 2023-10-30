@@ -34,6 +34,7 @@ A pipeline with `ner_posology`. It will only extract medication entities.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 pipeline = PretrainedPipeline('recognize_entities_posology', 'en', 'clinical/models')
 
@@ -59,40 +60,11 @@ She was seen by the endocrinology service and discharged on 40 units of insulin 
 """)
 ```
 
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-pipeline = PretrainedPipeline('recognize_entities_posology', 'en', 'clinical/models')
-
-res = pipeline.fullAnnotate("""A 28-year-old female with a history of gestational diabetes mellitus, used to take metformin 1000 mg two times a day, presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting .
-She was seen by the endocrinology service and discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals.
-""")
-```
-```scala
-val era_pipeline = new PretrainedPipeline("recognize_entities_posology", "en", "clinical/models")
-
-val result = era_pipeline.fullAnnotate("""A 28-year-old female with a history of gestational diabetes mellitus, used to take metformin 1000 mg two times a day, presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting .
-She was seen by the endocrinology service and discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals.
-""")(0)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.recognize_entities.posology").predict("""A 28-year-old female with a history of gestational diabetes mellitus, used to take metformin 1000 mg two times a day, presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting .
-She was seen by the endocrinology service and discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals.
-""")
-```
 </div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | chunk            |   begin |   end | entity    |
 |---:|:-----------------|--------:|------:|:----------|
 |  0 | metformin        |      83 |    91 | DRUG      |
@@ -104,10 +76,6 @@ Results
 |  6 | 12 units         |     309 |   316 | DOSAGE    |
 |  7 | insulin lispro   |     321 |   334 | DRUG      |
 |  8 | with meals       |     336 |   345 | FREQUENCY |
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}

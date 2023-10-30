@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_bc4ch
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -54,34 +55,10 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_token_classifier_ner_bc4chemd_chemicals_pipeline", "en", "clinical/models")
-
-text = '''The main isolated compounds were triterpenes (alpha - amyrin, beta - amyrin, lupeol, betulin, betulinic acid, uvaol, erythrodiol and oleanolic acid) and phenolic acid derivatives from 4 - hydroxybenzoic acid (gallic and protocatechuic acids and isocorilagin).'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_bc4chemd_chemicals_pipeline", "en", "clinical/models")
-
-val text = "The main isolated compounds were triterpenes (alpha - amyrin, beta - amyrin, lupeol, betulin, betulinic acid, uvaol, erythrodiol and oleanolic acid) and phenolic acid derivatives from 4 - hydroxybenzoic acid (gallic and protocatechuic acids and isocorilagin)."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk                       |   begin |   end | ner_label   |   confidence |
 |---:|:--------------------------------|--------:|------:|:------------|-------------:|
 |  0 | triterpenes                     |      33 |    43 | CHEM        |     0.99999  |
@@ -97,9 +74,6 @@ Results
 | 10 | 4 - hydroxybenzoic acid         |     184 |   206 | CHEM        |     0.999973 |
 | 11 | gallic and protocatechuic acids |     209 |   239 | CHEM        |     0.999984 |
 | 12 | isocorilagin                    |     245 |   256 | CHEM        |     0.999985 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

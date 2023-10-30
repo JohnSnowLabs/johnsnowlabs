@@ -34,50 +34,7 @@ This pretrained pipeline is built on the top of [ner_deid_subentity](https://nlp
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "it", "clinical/models")
-
-text = '''Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_deid_subentity_pipeline", "it", "clinical/models")
-
-val text = "Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "it", "clinical/models")
-
-text = '''Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_deid_subentity_pipeline", "it", "clinical/models")
-
-val text = "Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -112,24 +69,12 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunks            |   begin |   end | ner_label   | confidence   |
 |---:|:----------------------|--------:|------:|:------------|:-------------|
 |  0 | Gastone Montanariello |       9 |    29 | PATIENT     |              |
 |  1 | 49                    |      32 |    33 | AGE         |              |
 |  2 | Ospedale San Camillo  |      55 |    74 | HOSPITAL    |              |
 |  3 | marzo 2015            |     128 |   137 | DATE        |              |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

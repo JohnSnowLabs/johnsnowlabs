@@ -34,50 +34,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_bc2gm
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("bert_token_classifier_ner_bc2gm_gene_pipeline", "en", "clinical/models")
-
-text = '''ROCK-I, Kinectin, and mDia2 can bind the wild type forms of both RhoA and Cdc42 in a GTP-dependent manner in vitro. These results support the hypothesis that in the presence of tryptophan the ribosome translating tnaC blocks Rho ' s access to the boxA and rut sites, thereby preventing transcription termination.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_bc2gm_gene_pipeline", "en", "clinical/models")
-
-val text = "ROCK-I, Kinectin, and mDia2 can bind the wild type forms of both RhoA and Cdc42 in a GTP-dependent manner in vitro. These results support the hypothesis that in the presence of tryptophan the ribosome translating tnaC blocks Rho ' s access to the boxA and rut sites, thereby preventing transcription termination."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_token_classifier_ner_bc2gm_gene_pipeline", "en", "clinical/models")
-
-text = '''ROCK-I, Kinectin, and mDia2 can bind the wild type forms of both RhoA and Cdc42 in a GTP-dependent manner in vitro. These results support the hypothesis that in the presence of tryptophan the ribosome translating tnaC blocks Rho ' s access to the boxA and rut sites, thereby preventing transcription termination.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_bc2gm_gene_pipeline", "en", "clinical/models")
-
-val text = "ROCK-I, Kinectin, and mDia2 can bind the wild type forms of both RhoA and Cdc42 in a GTP-dependent manner in vitro. These results support the hypothesis that in the presence of tryptophan the ribosome translating tnaC blocks Rho ' s access to the boxA and rut sites, thereby preventing transcription termination."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -112,12 +69,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunk   |   begin |   end | ner_label    |   confidence |
 |---:|:------------|--------:|------:|:-------------|-------------:|
 |  0 | ROCK-I      |       0 |     5 | GENE/PROTEIN |     0.999978 |
@@ -129,12 +80,6 @@ Results
 |  6 | Rho         |     225 |   227 | GENE/PROTEIN |     0.999976 |
 |  7 | boxA        |     247 |   250 | GENE/PROTEIN |     0.999837 |
 |  8 | rut sites   |     256 |   264 | GENE/PROTEIN |     0.99115  |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

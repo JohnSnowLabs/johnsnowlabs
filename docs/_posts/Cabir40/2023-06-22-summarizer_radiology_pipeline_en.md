@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [summarizer_radiology](https://n
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -86,72 +87,12 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("summarizer_radiology_pipeline", "en", "clinical/models")
-
-text = """INDICATIONS: Peripheral vascular disease with claudication.
-
-RIGHT:
-1. Normal arterial imaging of right lower extremity.
-2. Peak systolic velocity is normal.
-3. Arterial waveform is triphasic.
-4. Ankle brachial index is 0.96.
-
-LEFT:
-1. Normal arterial imaging of left lower extremity.
-2. Peak systolic velocity is normal.
-3. Arterial waveform is triphasic throughout except in posterior tibial artery where it is biphasic.
-4. Ankle brachial index is 1.06.
-
-IMPRESSION: 
-Normal arterial imaging of both lower lobes.
-"""
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("summarizer_radiology_pipeline", "en", "clinical/models")
-
-val text = """INDICATIONS: Peripheral vascular disease with claudication.
-
-RIGHT:
-1. Normal arterial imaging of right lower extremity.
-2. Peak systolic velocity is normal.
-3. Arterial waveform is triphasic.
-4. Ankle brachial index is 0.96.
-
-LEFT:
-1. Normal arterial imaging of left lower extremity.
-2. Peak systolic velocity is normal.
-3. Arterial waveform is triphasic throughout except in posterior tibial artery where it is biphasic.
-4. Ankle brachial index is 1.06.
-
-IMPRESSION: 
-Normal arterial imaging of both lower lobes.
-"""
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-
 The patient has peripheral vascular disease with claudication. The right lower extremity shows normal arterial imaging, but the peak systolic velocity is normal. The arterial waveform is triphasic throughout, except for the posterior tibial artery, which is biphasic. The ankle brachial index is 0.96. The impression is normal arterial imaging of both lower lobes.
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}

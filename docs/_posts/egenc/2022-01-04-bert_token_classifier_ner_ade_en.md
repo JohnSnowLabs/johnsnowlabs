@@ -68,7 +68,7 @@ ner_converter = NerConverter() \
 
 pipeline = Pipeline(stages=[documentAssembler, tokenizer, tokenClassifier, ner_converter])
 
-data = spark.createDataFrame([["""Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay."""
+data = spark.createDataFrame([["""I have an allergic reaction to vancomycin so I have itchy skin, sore throat/burning/itching, numbness of tongue and gums. I would not recommend this drug to anyone, especially since I have never had such an adverse reaction to any other medication."""
 ]]).toDF("text")
 
 result = pipeline.fit(data).transform(data)
@@ -94,7 +94,7 @@ val ner_converter = new NerConverter()
 
 val pipeline =  new Pipeline().setStages(Array(document_assembler, tokenizer, tokenClassifier, ner_converter))
 
-val data = Seq("""Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay.""").toDS.toDF("text")
+val data = Seq("""I have an allergic reaction to vancomycin so I have itchy skin, sore throat/burning/itching, numbness of tongue and gums. I would not recommend this drug to anyone, especially since I have never had such an adverse reaction to any other medication.""").toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
@@ -103,7 +103,7 @@ val result = pipeline.fit(data).transform(data)
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.classify.token_bert.ner_ade").predict("""Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay.""")
+nlu.load("en.classify.token_bert.ner_ade").predict("""I have an allergic reaction to vancomycin so I have itchy skin, sore throat/burning/itching, numbness of tongue and gums. I would not recommend this drug to anyone, especially since I have never had such an adverse reaction to any other medication.""")
 ```
 
 </div>
@@ -113,14 +113,15 @@ nlu.load("en.classify.token_bert.ner_ade").predict("""Both the erbA IRES and the
 
 
 ```bash
-+--------------+---------+
-|chunk         |ner_label|
-+--------------+---------+
-|Lipitor       |DRUG     |
-|severe fatigue|ADE      |
-|voltaren      |DRUG     |
-|cramps        |ADE      |
-+--------------+---------+
++-----------+---------------------------+-----+---+---------+
+|sentence_id|chunk                      |begin|end|ner_label|
++-----------+---------------------------+-----+---+---------+
+|0          |allergic reaction          |10   |26 |ADE      |
+|0          |vancomycin                 |31   |40 |DRUG     |
+|0          |itchy skin                 |52   |61 |ADE      |
+|0          |sore throat/burning/itching|64   |90 |ADE      |
+|0          |numbness of tongue and gums|93   |119|ADE      |
++-----------+---------------------------+-----+---+---------+
 ```
 
 
@@ -152,12 +153,12 @@ This model is trained on a custom dataset by John Snow Labs.
 
 
 ```bash
-label  precision    recall  f1-score   support
-B-ADE       0.93      0.79      0.85      2694
-B-DRUG       0.97      0.87      0.92      9539
-I-ADE       0.93      0.73      0.82      3236
-I-DRUG       0.95      0.82      0.88      6115
-accuracy        -         -        0.83     21584
-macro-avg       0.84      0.84      0.84     21584
-weighted-avg       0.95      0.83      0.89     21584
+label    precision    recall  f1-score   support
+B-ADE         0.93      0.79      0.85      2694
+B-DRUG        0.97      0.87      0.92      9539
+I-ADE         0.93      0.73      0.82      3236
+I-DRUG        0.95      0.82      0.88      6115
+accuracy       -         -        0.83     21584
+macro-avg     0.84      0.84      0.84     21584
+weighted-avg  0.95      0.83      0.89     21584
 ```
