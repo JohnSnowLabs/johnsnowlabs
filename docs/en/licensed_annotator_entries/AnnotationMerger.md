@@ -23,6 +23,18 @@ Merge annotations from different pipeline steps that have the same annotation ty
 - language (e.g., output of `LanguageDetectorDL` annotator)
 - keyword (e.g., output of `YakeModel` annotator)
 
+{%- capture model_api_link -%}
+[AnnotationMerger](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/annotator/AnnotationMerger.html)
+{%- endcapture -%}
+
+{%- capture model_python_api_link -%}
+[AnnotationMerger](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/annotation_merger/index.html#sparknlp_jsl.annotator.annotation_merger.AnnotationMerger)
+{%- endcapture -%}
+
+{%- capture model_notebook_link -%}
+[AnnotationMerger](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/03.0.Clinical_Relation_Extraction.ipynb)
+{%- endcapture -%}
+
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -212,10 +224,6 @@ val merger_pipeline = new Pipeline().setStages(Array(
 ))
 
 
-import spark.implicits._
-val empty_df = Seq("Text HERE").toDF("text")
-val merger_model = merger_pipeline.fit(empty_df)
-
 # Show example result
 
 import spark.implicits._
@@ -225,8 +233,7 @@ The patient was prescribed 1 unit of naproxen for 5 days after meals for chronic
 """
 
 val data = Seq(text).toDF("text")
-val merger_model = merger_pipeline.fit(data)
-val result = merger_model.transform(data)
+val result = merger_pipeline.fit(data).transform(data)
 
 val filteredResult = result.selectExpr("pos_relations.result as PosologyRelation", "ade_relations.result as AdeRelation", "all_relations.result as MergedRelation")
 filteredResult.show(truncate = false)
@@ -385,7 +392,6 @@ Cadence completed its annual goodwill impairment test during the third quarter o
 65"""
 
 data = spark.createDataFrame([[text]]).toDF("text")
-
 result = model.transform(data)
 
 
@@ -491,10 +497,6 @@ val nlpPipeline = new nlp.Pipeline().setStages(Array(
   annotation_merger
 ))
 
-import spark.implicits._
-val empty_df = Seq("Text HERE").toDF("text")
-val merger_model = nlpPipeline.fit(empty_df)
-
 # Show example result
 import spark.implicits._
 val text =
@@ -557,8 +559,7 @@ Cadence completed its annual goodwill impairment test during the third quarter o
 """
 
 val data = Seq(text).toDF("text")
-val merger_model = nlpPipeline.fit(data)
-val result = merger_model.transform(data)
+val result = nlpPipeline.fit(data).transform(data)
 
 val filteredResult = result.selectExpr("pos_relarelations_acqtions.result as AcqRelation", "relations_alias.result as AliasRelation", "relations.result as MergedRelation")
 filteredResult.show(truncate = false)
@@ -662,9 +663,7 @@ text ="""
 WHEREAS, the Company Entities own certain Copyrights and Know-How which may be used in the Arizona Field, and in connection with the transactions contemplated by the Stock Purchase Agreement, Arizona desires to obtain a license from the Company Entities to use such Intellectual Property on the terms and subject to the conditions set forth herein.
 """
 data = spark.createDataFrame([[text]]).toDF("text")
-
 result = model.transform(data)
-
 
 # Show the results 
 result.selectExpr("relations_parties.result as PartiesRelation", 
@@ -767,10 +766,6 @@ val nlpPipeline = new nlp.Pipeline().setStages(Array(
   annotation_merger
 ))
 
-import spark.implicits._
-val empty_df = Seq("Text HERE").toDF("text")
-val merger_model = nlpPipeline.fit(empty_df)
-
 # Show example result
 import spark.implicits._
 val text =
@@ -778,8 +773,7 @@ val text =
 """
 
 val data = Seq(text).toDF("text")
-val merger_model = nlpPipeline.fit(data)
-val result = merger_model.transform(data)
+val result = nlpPipeline.fit(data).transform(data)
 
 val filteredResult = result.selectExpr("relations_parties.result as PartiesRelation", "relations_whereas.result as WhereasRelation", "relations.result as MergedRelation")
 filteredResult.show(truncate = false)
@@ -792,19 +786,16 @@ filteredResult.show(truncate = false)
 
 {%- endcapture -%}
 
-{%- capture model_api_link -%}
-[AnnotationMerger](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/annotator/AnnotationMerger.html)
-{%- endcapture -%}
 
-{%- capture model_python_api_link -%}
-[AnnotationMerger](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/annotation_merger/index.html#sparknlp_jsl.annotator.annotation_merger.AnnotationMerger)
-{%- endcapture -%}
 
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
 model_description=model_description
+model_api_link=model_api_link
+model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 model_input_anno=model_input_anno
 model_output_anno=model_output_anno
 model_python_medical=model_python_medical
@@ -813,6 +804,4 @@ model_python_medical=model_python_finance
 model_scala_medical=model_scala_finance
 model_python_medical=model_python_legal
 model_scala_medical=model_scala_legal
-model_api_link=model_api_link
-model_python_api_link=model_python_api_link
 %}
