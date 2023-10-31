@@ -66,7 +66,7 @@ pipeline =  nlp.Pipeline(stages=[
     ner_converter
     ])
 
-model = pipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
+
 
 text = """A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM ), one prior episode of HTG-induced pancreatitis three years prior to presentation , associated with an acute hepatitis , and obesity with a body mass index ( BMI ) of 33.5 kg/m2 , presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting .
 Two weeks prior to presentation , she was treated with a five-day course of amoxicillin for a respiratory tract infection .
@@ -82,7 +82,8 @@ Her euDKA was thought to be precipitated by her respiratory tract infection in t
 The patient was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night , 12 units of insulin lispro with meals , and metformin 1000 mg two times a day .
 It was determined that all SGLT2 inhibitors should be discontinued indefinitely . She had close follow-up with endocrinology post discharge ."""
 
-res = model.transform(spark.createDataFrame([[text]]).toDF("text"))
+data = spark.createDataFrame([[text]]).toDF("text")
+res = pipeline.fit(data).transform(data)
 
 res.select(F.explode(F.arrays_zip(res.ner_chunk.result, res.ner_chunk.begin, res.ner_chunk.end, res.ner_chunk.metadata)).alias("cols")) \
    .select(F.expr("cols['3']['sentence']").alias("sentence_id"),
@@ -144,7 +145,7 @@ val ner_converter = new NerConverterInternal()\
 
 val pipeline =  new Pipeline(stages=Array(documentAssembler,sentenceDetector, tokenizer, tokenClassifier, ner_converter))
 
-val model = pipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
+
 
 val text = """A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM ), one prior episode of HTG-induced pancreatitis three years prior to presentation , associated with an acute hepatitis , and obesity with a body mass index ( BMI ) of 33.5 kg/m2 , presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting .
 Two weeks prior to presentation , she was treated with a five-day course of amoxicillin for a respiratory tract infection .
@@ -162,18 +163,7 @@ It was determined that all SGLT2 inhibitors should be discontinued indefinitely 
 
 val data = Seq(text).toDF("text")
 
-val model = pipeline.fit(data)
-
-val res = model.transform(data).toDF("text")
-
-res.select(F.explode(F.arrays_zip(res.ner_chunk.result, res.ner_chunk.begin, res.ner_chunk.end, res.ner_chunk.metadata)).alias("cols")) \
-   .select(F.expr("cols['3']['sentence']").alias("sentence_id"),
-           F.expr("cols['0']").alias("chunk"),
-           F.expr("cols['2']").alias("end"),
-           F.expr("cols['3']['entity']").alias("ner_label"))\
-   .filter("ner_label!='O'")\
-   .show(truncate=False)
-
+val result = pipeline.fit(data).transform(data)
 
 # ------------- result / first 10 lines -----------------
 
@@ -249,7 +239,7 @@ pipeline =  nlp.Pipeline(stages=[
     ner_converter
     ])
 
-model = pipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
+
 
 text = """A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM ), one prior episode of HTG-induced pancreatitis three years prior to presentation , associated with an acute hepatitis , and obesity with a body mass index ( BMI ) of 33.5 kg/m2 , presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting .
 Two weeks prior to presentation , she was treated with a five-day course of amoxicillin for a respiratory tract infection .
@@ -265,7 +255,9 @@ Her euDKA was thought to be precipitated by her respiratory tract infection in t
 The patient was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night , 12 units of insulin lispro with meals , and metformin 1000 mg two times a day .
 It was determined that all SGLT2 inhibitors should be discontinued indefinitely . She had close follow-up with endocrinology post discharge ."""
 
-res = model.transform(spark.createDataFrame([[text]]).toDF("text"))
+data = spark.createDataFrame([[text]]).toDF("text")
+res = pipeline.fit(data).transform(data)
+
 res.select(F.explode(F.arrays_zip(res.ner_chunk.result, res.ner_chunk.begin, res.ner_chunk.end, res.ner_chunk.metadata)).alias("cols")) \
    .select(F.expr("cols['3']['sentence']").alias("sentence_id"),
            F.expr("cols['0']").alias("chunk"),
@@ -320,7 +312,7 @@ val ner_converter = new NerConverterInternal()\
 
 val pipeline =  new Pipeline(stages=Array(documentAssembler,sentenceDetector, tokenizer, tokenClassifier, ner_converter))
 
-val model = pipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
+
 
 val text = """A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus ( T2DM ), one prior episode of HTG-induced pancreatitis three years prior to presentation , associated with an acute hepatitis , and obesity with a body mass index ( BMI ) of 33.5 kg/m2 , presented with a one-week history of polyuria , polydipsia , poor appetite , and vomiting .
 Two weeks prior to presentation , she was treated with a five-day course of amoxicillin for a respiratory tract infection .
@@ -338,18 +330,7 @@ It was determined that all SGLT2 inhibitors should be discontinued indefinitely 
 
 val data = Seq(text).toDF("text")
 
-val model = pipeline.fit(data)
-
-val res = model.transform(data).toDF("text")
-
-res.select(F.explode(F.arrays_zip(res.ner_chunk.result, res.ner_chunk.begin, res.ner_chunk.end, res.ner_chunk.metadata)).alias("cols")) \
-   .select(F.expr("cols['3']['sentence']").alias("sentence_id"),
-           F.expr("cols['0']").alias("chunk"),
-           F.expr("cols['2']").alias("end"),
-           F.expr("cols['3']['entity']").alias("ner_label"))\
-   .filter("ner_label!='O'")\
-   .show(truncate=False)
-
+val result = pipeline.fit(data).transform(data)
 
 # ------------- result / first 10 lines -----------------
 
