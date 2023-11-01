@@ -235,9 +235,6 @@ The patient was prescribed 1 unit of naproxen for 5 days after meals for chronic
 val data = Seq(text).toDF("text")
 val result = merger_pipeline.fit(data).transform(data)
 
-val filteredResult = result.selectExpr("pos_relations.result as PosologyRelation", "ade_relations.result as AdeRelation", "all_relations.result as MergedRelation")
-filteredResult.show(truncate = false)
-
 +---------------------------------------------------------+-----------+---------------------------------------------------------------+
 |PosologyRelation                                         |AdeRelation|MergedRelation                                                 |
 +---------------------------------------------------------+-----------+---------------------------------------------------------------+
@@ -561,9 +558,6 @@ Cadence completed its annual goodwill impairment test during the third quarter o
 val data = Seq(text).toDF("text")
 val result = nlpPipeline.fit(data).transform(data)
 
-val filteredResult = result.selectExpr("pos_relarelations_acqtions.result as AcqRelation", "relations_alias.result as AliasRelation", "relations.result as MergedRelation")
-filteredResult.show(truncate = false)
-
 +------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |AcqRelation                                                                                     |AliasRelation                                                                           |MergedRelation                                                                                                                                                                          |
 +------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -774,9 +768,6 @@ val text =
 
 val data = Seq(text).toDF("text")
 val result = nlpPipeline.fit(data).transform(data)
-
-val filteredResult = result.selectExpr("relations_parties.result as PartiesRelation", "relations_whereas.result as WhereasRelation", "relations.result as MergedRelation")
-filteredResult.show(truncate = false)
 
 +-----------------------------+--------------------------------------+-------------------------------------------------------------------+
 |PartiesRelation              |WhereasRelation                       |MergedRelation                                                     |
