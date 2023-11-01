@@ -348,14 +348,11 @@ val result = pipeline.fit(data).transform(data)
 |9|0|polydipsia|400|PROBLEM|
 
 {%- endcapture -%}
-{%- endcapture -%}
 
 {%- capture approach_scala_legal -%}
-  
 {%- endcapture -%}
 
 {%- capture approach_scala_finance -%}
-
 {%- endcapture -%}
 
 {%- capture approach_api_link -%}
