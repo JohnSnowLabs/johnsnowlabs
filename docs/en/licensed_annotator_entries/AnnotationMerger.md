@@ -244,8 +244,8 @@ val result = merger_pipeline.fit(data).transform(data)
 {%- capture model_python_finance -%}
 # Create the pipeline with two RE models
 document_assembler = nlp.DocumentAssembler()\
-      .setInputCol("text")\
-      .setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
 
 text_splitter = finance.TextSplitter()\
     .setInputCols(["document"])\
@@ -564,8 +564,8 @@ val result = nlpPipeline.fit(data).transform(data)
 {%- capture model_python_legal -%}
 # Create the pipeline with two RE models
 document_assembler = nlp.DocumentAssembler()\
-      .setInputCol("text")\
-      .setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
 
 text_splitter = legal.TextSplitter()\
     .setInputCols(["document"])\

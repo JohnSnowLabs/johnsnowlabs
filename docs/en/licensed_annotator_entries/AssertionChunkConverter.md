@@ -14,6 +14,18 @@ In some cases, there may be issues while creating the chunk column when using to
 
 The `AssertionChunkConverter` annotator uses both begin and end indices of the tokens as input to add a more robust metadata to the chunk column in a way that improves the reliability of the indices and avoid loss of data.
 
+AssertionChunkConverter Parameters:
+
+- `chunkBeginCol`: (Str) The column containing the start index of the chunk.
+
+- `chunkEndCol`: (Str) The column containing the end index of the chunk.
+
+- `chunkTextCol`: (Str) The column containing the text chunk.
+
+- `outputTokenBeginCol`: (Str)  The column containing selected token start.
+
+- `outputTokenEndCol`: (Str) The column containing selected token end index.
+
 > *NOTE*: Chunk begin and end indices in the assertion status model training dataframe can be populated using the new version of ALAB module.
 
 {%- endcapture -%}
