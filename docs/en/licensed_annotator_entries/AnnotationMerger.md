@@ -125,16 +125,13 @@ merger_pipeline = nlp.Pipeline(stages=[
     annotation_merger
 ])
 
-empty_df= spark.createDataFrame([[""]]).toDF("text")
-merger_model= merger_pipeline.fit(empty_df)
-
 # Show example result
 text = """
 The patient was prescribed 1 unit of naproxen for 5 days after meals for chronic low back pain. The patient was also given 1 unit of oxaprozin daily for rheumatoid arthritis presented with tense bullae and cutaneous fragility on the face and the back of the hands.. 
 """
 data = spark.createDataFrame([[text]]).toDF("text")
 
-result = merger_model.transform(data)
+result = merger_pipeline.fit(data).transform(data)
 result.selectExpr("pos_relations.result as PosologyRelation", 
                   "ade_relations.result as AdeRelation", 
                   "all_relations.result as MergedRelation").show(truncate=False)
@@ -328,8 +325,6 @@ nlpPipeline = nlp.Pipeline(stages=[
         reDL_alias,
         annotation_merger])
 
-empty_data = spark.createDataFrame([[""]]).toDF("text")
-model = nlpPipeline.fit(empty_data)
 
 # Show example result
 text ="""Definite-lived intangible assets acquired with Cadence’s fiscal 2021 acquisitions were as follows:
@@ -389,7 +384,7 @@ Cadence completed its annual goodwill impairment test during the third quarter o
 65"""
 
 data = spark.createDataFrame([[text]]).toDF("text")
-result = model.transform(data)
+result = nlpPipeline.fit(data).transform(data)
 
 
 # Show the results 
@@ -649,15 +644,13 @@ nlpPipeline = nlp.Pipeline(stages=[
         reDL_alias,
         annotation_merger])
 
-empty_data = spark.createDataFrame([[""]]).toDF("text")
-model = nlpPipeline.fit(empty_data)
 
 # Show example result
 text ="""
 WHEREAS, the Company Entities own certain Copyrights and Know-How which may be used in the Arizona Field, and in connection with the transactions contemplated by the Stock Purchase Agreement, Arizona desires to obtain a license from the Company Entities to use such Intellectual Property on the terms and subject to the conditions set forth herein.
 """
 data = spark.createDataFrame([[text]]).toDF("text")
-result = model.transform(data)
+result = nlpPipeline.fit(data).transform(data)
 
 # Show the results 
 result.selectExpr("relations_parties.result as PartiesRelation", 
