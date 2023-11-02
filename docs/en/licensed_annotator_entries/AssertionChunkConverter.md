@@ -40,23 +40,6 @@ CHUNK
 
 {%- capture model_python_medical -%}
 
-data = spark.createDataFrame(
-    [
-        [
-            "An angiography showed bleeding in two vessels off of the Minnie supplying the sigmoid that were succesfully embolized.",
-            "Minnie",
-            57,
-            64,
-        ],
-        [
-            "After discussing this with his PCP, Leon was clear that the patient had had recurrent DVTs and ultimately a PE and his PCP felt strongly that he required long-term anticoagulation ",
-            "PCP",
-            31,
-            34,
-        ],
-    ]
-).toDF("text", "target", "char_begin", "char_end")
-
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol("text")\
   .setOutputCol("document")
@@ -85,6 +68,23 @@ pipeline = nlp.Pipeline().setStages([document_assembler,
                                      converter]
 )
 
+data = spark.createDataFrame(
+    [
+        [
+            "An angiography showed bleeding in two vessels off of the Minnie supplying the sigmoid that were succesfully embolized.",
+            "Minnie",
+            57,
+            64,
+        ],
+        [
+            "After discussing this with his PCP, Leon was clear that the patient had had recurrent DVTs and ultimately a PE and his PCP felt strongly that he required long-term anticoagulation ",
+            "PCP",
+            31,
+            34,
+        ],
+    ]
+).toDF("text", "target", "char_begin", "char_end")
+
 results = pipeline.fit(data).transform(data)
 
 results.selectExpr(
@@ -109,17 +109,6 @@ results.selectExpr(
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
-
-val data = Seq(
-    ("An angiography showed bleeding in two vessels off of the Minnie supplying the sigmoid that were succesfully embolized.",
-            "Minnie",
-            57,
-            64,),
-    ("After discussing this with his PCP, Leon was clear that the patient had had recurrent DVTs and ultimately a PE and his PCP felt strongly that he required long-term anticoagulation ",
-            "PCP",
-            31,
-            34,)
-  ).toDF("text", "target", "char_begin", "char_end")
  
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
@@ -143,6 +132,18 @@ val converter = new AssertionChunkConverter()
   .setOutputTokenEndCol("token_end")
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentenceDetector, tokenizer, converter))
+
+val data = Seq(
+    ("An angiography showed bleeding in two vessels off of the Minnie supplying the sigmoid that were succesfully embolized.",
+            "Minnie",
+            57,
+            64,),
+    ("After discussing this with his PCP, Leon was clear that the patient had had recurrent DVTs and ultimately a PE and his PCP felt strongly that he required long-term anticoagulation ",
+            "PCP",
+            31,
+            34,)
+  ).toDF("text", "target", "char_begin", "char_end")
+
 val results = pipeline.fit(data).transform(data)
 
 results.selectExpr(
@@ -168,23 +169,6 @@ results.selectExpr(
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
-
-data = spark.createDataFrame(
-    [
-        [
-            "Tom Martin worked as Cadence's CTO until 2010",
-            "Cadence's CTO",
-            21,
-            33,
-        ],
-        [
-            "Mrs. Charles was before Managing Director at a big consultancy company",
-            "Managing Director",
-            24,
-            40,
-        ],
-    ]
-).toDF("text", "target", "char_begin", "char_end")
 
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol("text")\
@@ -214,6 +198,23 @@ pipeline = nlp.Pipeline().setStages([document_assembler,
                                      converter]
 )
 
+data = spark.createDataFrame(
+    [
+        [
+            "Tom Martin worked as Cadence's CTO until 2010",
+            "Cadence's CTO",
+            21,
+            33,
+        ],
+        [
+            "Mrs. Charles was before Managing Director at a big consultancy company",
+            "Managing Director",
+            24,
+            40,
+        ],
+    ]
+).toDF("text", "target", "char_begin", "char_end")
+
 results = pipeline.fit(data).transform(data)
 
 results.selectExpr(
@@ -238,17 +239,6 @@ results.selectExpr(
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
-
-val data = Seq(
-    ("Tom Martin worked as Cadence's CTO until 2010",
-            "Cadence's CTO",
-            21,
-            33,),
-    ("Mrs. Charles was before Managing Director at a big consultancy company",
-            "Managing Director",
-            24,
-            40,)
-  ).toDF("text", "target", "char_begin", "char_end")
  
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
@@ -272,6 +262,18 @@ val converter = new AssertionChunkConverter()
   .setOutputTokenEndCol("token_end")
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentenceDetector, tokenizer, converter))
+
+val data = Seq(
+    ("Tom Martin worked as Cadence's CTO until 2010",
+            "Cadence's CTO",
+            21,
+            33,),
+    ("Mrs. Charles was before Managing Director at a big consultancy company",
+            "Managing Director",
+            24,
+            40,)
+  ).toDF("text", "target", "char_begin", "char_end")
+
 val results = pipeline.fit(data).transform(data)
 
 results.selectExpr(
@@ -297,23 +299,6 @@ results.selectExpr(
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
-
-data = spark.createDataFrame(
-    [
-        [
-            "This Agreement may be executed by different parties hereto",
-            "parties",
-            44,
-            50,
-        ],
-        [
-            "The Administrative Agent will determine the Dollar Equivalent amount",
-            "Agent",
-            19,
-            23,
-        ],
-    ]
-).toDF("text", "target", "char_begin", "char_end")
 
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol("text")\
@@ -343,6 +328,23 @@ pipeline = nlp.Pipeline().setStages([document_assembler,
                                      converter]
 )
 
+data = spark.createDataFrame(
+    [
+        [
+            "This Agreement may be executed by different parties hereto",
+            "parties",
+            44,
+            50,
+        ],
+        [
+            "The Administrative Agent will determine the Dollar Equivalent amount",
+            "Agent",
+            19,
+            23,
+        ],
+    ]
+).toDF("text", "target", "char_begin", "char_end")
+
 results = pipeline.fit(data).transform(data)
 
 results.selectExpr(
@@ -368,17 +370,6 @@ results.selectExpr(
 
 {%- capture model_scala_legal -%}
 
-val data = Seq(
-    ("Tom Martin worked as Cadence's CTO until 2010",
-            "Cadence's CTO",
-            21,
-            33,),
-    ("Mrs. Charles was before Managing Director at a big consultancy company",
-            "Managing Director",
-            24,
-            40,)
-  ).toDF("text", "target", "char_begin", "char_end")
- 
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -401,6 +392,18 @@ val converter = new AssertionChunkConverter()
   .setOutputTokenEndCol("token_end")
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentenceDetector, tokenizer, converter))
+
+val data = Seq(
+    ("Tom Martin worked as Cadence's CTO until 2010",
+            "Cadence's CTO",
+            21,
+            33,),
+    ("Mrs. Charles was before Managing Director at a big consultancy company",
+            "Managing Director",
+            24,
+            40,)
+  ).toDF("text", "target", "char_begin", "char_end")
+ 
 val results = pipeline.fit(data).transform(data)
 
 results.selectExpr(
