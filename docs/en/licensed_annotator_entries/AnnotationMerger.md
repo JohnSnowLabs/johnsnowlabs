@@ -491,8 +491,7 @@ val nlpPipeline = new nlp.Pipeline().setStages(Array(
 
 # Show example result
 import spark.implicits._
-val text =
-  """
+val text = """
 Definite-lived intangible assets acquired with Cadence’s fiscal 2021 acquisitions were as follows:
  
 Acquisition Date Fair Value
@@ -612,12 +611,12 @@ re_filter = legal.RENerChunksFilter()\
     .setOutputCol("re_ner_chunk")\
     .setMaxSyntacticDistance(10)
 
-reDL = legal.RelationExtractionDLModel().pretrained('legre_contract_doc_parties_md', 'en', 'legal/models')\
+reDL = legal.RelationExtractionDLModel().pretrained("legre_contract_doc_parties_md", "en", "legal/models")\
     .setInputCols(["re_ner_chunk", "sentence"])\
     .setOutputCol("relations_parties")\
     .setPredictionThreshold(0.1)
 
-reDL_alias = legal.RelationExtractionDLModel().pretrained('legre_whereas', 'en', 'legal/models')\
+reDL_alias = legal.RelationExtractionDLModel().pretrained("legre_whereas", "en", "legal/models")\
     .setInputCols(["re_ner_chunk", "sentence"])\
     .setOutputCol("relations_whereas")\
     .setPredictionThreshold(0.1)
@@ -646,7 +645,7 @@ nlpPipeline = nlp.Pipeline(stages=[
 
 
 # Show example result
-text ="""
+text = """
 WHEREAS, the Company Entities own certain Copyrights and Know-How which may be used in the Arizona Field, and in connection with the transactions contemplated by the Stock Purchase Agreement, Arizona desires to obtain a license from the Company Entities to use such Intellectual Property on the terms and subject to the conditions set forth herein.
 """
 data = spark.createDataFrame([[text]]).toDF("text")
@@ -755,8 +754,7 @@ val nlpPipeline = new nlp.Pipeline().setStages(Array(
 
 # Show example result
 import spark.implicits._
-val text =
-  """WHEREAS, the Company Entities own certain Copyrights and Know-How which may be used in the Arizona Field, and in connection with the transactions contemplated by the Stock Purchase Agreement, Arizona desires to obtain a license from the Company Entities to use such Intellectual Property on the terms and subject to the conditions set forth herein.
+val text = """WHEREAS, the Company Entities own certain Copyrights and Know-How which may be used in the Arizona Field, and in connection with the transactions contemplated by the Stock Purchase Agreement, Arizona desires to obtain a license from the Company Entities to use such Intellectual Property on the terms and subject to the conditions set forth herein.
 """
 
 val data = Seq(text).toDF("text")
