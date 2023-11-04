@@ -56,7 +56,7 @@ class AbstractSoftwareProduct(ABC):
     @classmethod
     def check_installed(
         cls,
-        python_exec_path: Optional[str] = sys.executable,
+        python_exec_path: Optional[str],
         download_folder: str = None,
     ) -> bool:
         if cls.pypi_name and download_folder:
@@ -77,7 +77,7 @@ class AbstractSoftwareProduct(ABC):
 
     @classmethod
     def check_installed_correct_version(
-        cls, python_exec_path: str = sys.executable, download_folder: str = None
+        cls, python_exec_path: str, download_folder: str = None
     ) -> bool:
         # Only supported for current Py Exec Path, return True otherwise
         if python_exec_path != sys.executable:
@@ -169,7 +169,6 @@ class AbstractSoftwareProduct(ABC):
                 # Unless we toggle enforce_versions=False
                 suite = get_install_suite_from_jsl_home()
                 if cls.name == ProductName.hc.value and suite.hc and suite.hc.py_lib:
-
                     return install_standard_pypi_lib(
                         os.path.join(settings.py_dir, suite.hc.py_lib.file_name),
                         cls.py_module_name,
