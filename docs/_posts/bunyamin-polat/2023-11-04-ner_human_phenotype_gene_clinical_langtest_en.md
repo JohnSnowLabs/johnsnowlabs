@@ -45,11 +45,12 @@ This model detects mentions of genes and human phenotypes (hp) in medical text. 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
-         
+     
 sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
@@ -67,8 +68,8 @@ clinical_ner = MedicalNerModel.pretrained("ner_human_phenotype_gene_clinical_lan
     .setOutputCol("ner")
 
 ner_converter = NerConverter()\
- 	.setInputCols(["sentence", "token", "ner"])\
- 	.setOutputCol("ner_chunk")
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")
     
 nlp_pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter])
 
@@ -80,10 +81,10 @@ result = model.transform(spark.createDataFrame([["Here we presented a case (BS t
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
-         
+
 val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")
-        .setInputCols("document") 
-        .setOutputCol("sentence")
+    .setInputCols("document") 
+    .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
     .setInputCols("sentence")
@@ -98,8 +99,8 @@ val ner = MedicalNerModel.pretrained("ner_human_phenotype_gene_clinical_langtest
     .setOutputCol("ner")
 
 val ner_converter = new NerConverter()
- 	.setInputCols(Array("sentence", "token", "ner"))
- 	.setOutputCol("ner_chunk")
+    .setInputCols(Array("sentence", "token", "ner"))
+    .setOutputCol("ner_chunk")
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter))
 
