@@ -46,6 +46,7 @@ This model can be used to detect normalized mentions of genes (go) and human phe
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 document_assembler = DocumentAssembler()\
 	.setInputCol("text")\
@@ -58,18 +59,18 @@ sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_hea
 tokenizer = Tokenizer()\
 	.setInputCols(["sentence"])\
 	.setOutputCol("token")
-  
+
 word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-    .setInputCols(["sentence", "token"])\
-    .setOutputCol("embeddings")
+	.setInputCols(["sentence", "token"])\
+	.setOutputCol("embeddings")
 
 clinical_ner = MedicalNerModel.pretrained("ner_human_phenotype_go_clinical_langtest", "en", "clinical/models") \
-    .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("ner")
+	.setInputCols(["sentence", "token", "embeddings"]) \
+	.setOutputCol("ner")
 
 ner_converter = NerConverter() \
-    .setInputCols(["sentence", "token", "ner"]) \
-    .setOutputCol("ner_chunk")
+	.setInputCols(["sentence", "token", "ner"]) \
+	.setOutputCol("ner_chunk")
 
 pipeline = Pipeline(stages=[document_assembler,
                             sentence_detector,
@@ -96,16 +97,16 @@ val tokenizer = new Tokenizer()
 	.setOutputCol("token")
 
 val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-    .setInputCols(Array("sentence", "token"))
-    .setOutputCol("embeddings")
+	.setInputCols(Array("sentence", "token"))
+	.setOutputCol("embeddings")
 
 val ner = MedicalNerModel.pretrained("ner_human_phenotype_go_clinical_langtest", "en", "clinical/models")
-    .setInputCols(Array("sentence", "token", "embeddings"))
-    .setOutputCol("ner")
+	.setInputCols(Array("sentence", "token", "embeddings"))
+	.setOutputCol("ner")
 
 val ner_converter = new NerConverter()
-    .setInputCols(Array("sentence", "token", "ner"))
-    .setOutputCol("entities")
+	.setInputCols(Array("sentence", "token", "ner"))
+	.setOutputCol("entities")
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter))
 
