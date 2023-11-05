@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Date of Brith Contexrual Parser Model
+title: Date of Brith Contextual Parser Model
 author: John Snow Labs
 name: date_of_birth_parser
 date: 2023-11-05
