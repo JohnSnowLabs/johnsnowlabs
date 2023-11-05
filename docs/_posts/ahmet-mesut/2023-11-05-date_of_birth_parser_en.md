@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is a ContextualParserModel that can extract date-of-birth (DOB) entities in clinical texts
+This model is a `ContextualParserModel` that can extract date-of-birth (DOB) entities in clinical texts
 
 ## Predicted Entities
 
@@ -36,6 +36,7 @@ This model is a ContextualParserModel that can extract date-of-birth (DOB) entit
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler() \
     .setInputCol("text") \
