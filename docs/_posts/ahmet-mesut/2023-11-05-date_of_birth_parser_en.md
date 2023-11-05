@@ -22,7 +22,7 @@ This model is a ContextualParserModel that can extract date-of-birth (DOB) entit
 
 ## Predicted Entities
 
-
+`DOB`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -102,8 +102,8 @@ val dob_contextual_parser = ContextualParserModel.pretrained("date_of_birth_pars
     .setInputCols(Array("sentence", "token")) 
     .setOutputCol("chunk_dob") 
 
-val chunk_converter = new ChunkConverter() \
-    .setInputCols(["chunk_dob"]) \
+val chunk_converter = new ChunkConverter() 
+    .setInputCols(Array("chunk_dob")) 
     .setOutputCol("ner_chunk")
 
 val parserPipeline = new Pipeline().setStages(Array(
@@ -114,9 +114,7 @@ val parserPipeline = new Pipeline().setStages(Array(
         chunk_converter
         ))
 
-model = parserPipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
-
-val result = model.transform(spark.createDataFrame([["""
+val data = Seq(Array("""
 Record date : 2081-01-04 
 DB : 11.04.1962
 DT : 12-03-1978 
@@ -129,7 +127,10 @@ PROCEDURES:
 Patient was evaluated on 1988-03-15 for allergies. She was seen by the endocrinology service and she was discharged on 9/23/1988. 
 
 MEDICATIONS
-1. Coumadin 1 mg daily. Last INR was on August 14, 2007, and her INR was 2.3."""]]).toDF("text"))
+1. Coumadin 1 mg daily. Last INR was on August 14, 2007, and her INR was 2.3."""
+)).toDS.toDF("text")
+
+val result = parserPipeline.fit(data).transform(data)
 ```
 </div>
 
