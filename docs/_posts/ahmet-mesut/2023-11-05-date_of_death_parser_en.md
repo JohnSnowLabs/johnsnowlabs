@@ -101,19 +101,19 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence") 
     .setOutputCol("token")
 
-val dob_contextual_parser = ContextualParserModel.pretrained("date_of_birth_parser", "en", "clinical/models") 
+val dod_contextual_parser = ContextualParserModel.pretrained("date_of_death_parser", "en", "clinical/models") 
     .setInputCols(Array("sentence", "token")) 
-    .setOutputCol("chunk_dob") 
+    .setOutputCol("chunk_dod") 
 
 val chunk_converter = new ChunkConverter() 
-    .setInputCols(Array("chunk_dob")) 
+    .setInputCols(Array("chunk_dod")) 
     .setOutputCol("ner_chunk")
 
 val parserPipeline = new Pipeline().setStages(Array(
         document_assembler,
         sentence_detector,
         tokenizer,
-        dob_contextual_parser,
+        dod_contextual_parser,
         chunk_converter
         ))
 
