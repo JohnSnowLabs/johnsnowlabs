@@ -36,6 +36,7 @@ This model is a ContextualParserModel that can extract date-of-death (DOD) entit
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler() \
     .setInputCol("text") \
