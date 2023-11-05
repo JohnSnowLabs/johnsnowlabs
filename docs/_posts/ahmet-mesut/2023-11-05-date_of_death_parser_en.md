@@ -118,19 +118,21 @@ val parserPipeline = new Pipeline().setStages(Array(
         ))
 
 val data = Seq(Array("""
-Record date : 2081-01-04 
+Record date : 2081-01-04
 DB : 11.04.1962
-DT : 12-03-1978 
-DOD : 10.25.23 
+DT : 12-03-1978
+DOD : 10.25.23
 
 SOCIAL HISTORY:
-She was born on Nov 04, 1962 in London and got married on 04/05/1979. When she got pregnant on 15 May 1079, the doctor wanted to verify her DOB was November 4, 1962. Her date of birth was confirmed to be 11-04-1962, the patient is 45 years old on 25 Sep 2007.
+Jane Doe was born on November 4, 1962, in London, and she got married on April 5, 1979.
+When she got pregnant on May 15, 1979, the doctor wanted to verify her date of birth, which was confirmed to be November 4, 1962.
+Jane was 45 years old when she sadly passed away on September 25, 2007.
 
 PROCEDURES:
-Patient was evaluated on 1988-03-15 for allergies. She was seen by the endocrinology service and she was discharged on 9/23/1988. 
+Patient Jane Doe was evaluated on March 15, 1988, for allergies. She was seen by the endocrinology service and was discharged on September 23, 1988.
 
-MEDICATIONS
-1. Coumadin 1 mg daily. Last INR was on August 14, 2007, and her INR was 2.3."""
+MEDICATIONS:
+1. Coumadin 1 mg daily. Jane's last INR was measured on August 14, 2007, and it was 2.3."""
 )).toDS.toDF("text")
 
 val result = parserPipeline.fit(data).transform(data)
