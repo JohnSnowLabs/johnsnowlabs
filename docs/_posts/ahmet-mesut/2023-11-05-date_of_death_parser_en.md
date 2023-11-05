@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is a ContextualParserModel that can extract date-of-death (DOD) entities in clinical texts.
+This model is a `ContextualParserModel` that can extract date-of-death (DOD) entities in clinical texts.
 
 ## Predicted Entities
 
