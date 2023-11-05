@@ -100,13 +100,18 @@ val tokenizer = new Tokenizer()
 
 val dob_contextual_parser = ContextualParserModel.pretrained("date_of_birth_parser", "en", "clinical/models") 
     .setInputCols(Array("sentence", "token")) 
-    .setOutputCol("chunk_dob") 
+    .setOutputCol("chunk_dob")
+
+val chunk_converter = new ChunkConverter() \
+    .setInputCols(["chunk_dob"]) \
+    .setOutputCol("ner_chunk")
 
 val parserPipeline = new Pipeline().setStages(Array(
         document_assembler,
         sentence_detector,
         tokenizer,
-        dob_contextual_parser
+        dob_contextual_parser,
+        chunk_converter
         ))
 
 model = parserPipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
