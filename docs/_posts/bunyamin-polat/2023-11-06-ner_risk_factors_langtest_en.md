@@ -20,6 +20,14 @@ use_language_switcher: "Python-Scala-Java"
 
 Pretrained named entity recognition deep learning model for Heart Disease Risk Factors and Personal Health Information. It is the version of [ner_risk_factors](https://nlp.johnsnowlabs.com/2021/03/31/ner_risk_factors_en.html) model augmented with `langtest` library.
 
+| **test_type**        | **before fail_count** | **after fail_count** | **before pass_count** | **after pass_count** | **minimum pass_rate** | **before pass_rate** | **after pass_rate** |
+|----------------------|-----------------------|----------------------|-----------------------|----------------------|-----------------------|----------------------|---------------------|
+| **add_ocr_typo**     | 376                   | 255                  | 5287                  | 5408                 | 95%                   | 93%                  | 95%                 |
+| **lowercase**        | 616                   | 403                  | 5957                  | 6170                 | 92%                   | 91%                  | 94%                 |
+| **titlecase**        | 603                   | 360                  | 6083                  | 6326                 | 94%                   | 91%                  | 95%                 |
+| **uppercase**        | 1054                  | 587                  | 5715                  | 6182                 | 90%                   | 84%                  | 91%                 |
+| **weighted average** | **2649**              | **1605**             | **23042**             | **24086**            | **93%**               | **89.69%**           | **93.75%**          |
+
 ## Predicted Entities
 
 `CAD`, `DIABETES`, `FAMILY_HIST`, `HYPERLIPIDEMIA`, `HYPERTENSION`, `MEDICATION`, `OBESE`, `PHI`, `SMOKER`
@@ -36,6 +44,7 @@ Pretrained named entity recognition deep learning model for Heart Disease Risk F
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
