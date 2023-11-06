@@ -75,7 +75,7 @@ nlp_pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer
 
 model = nlp_pipeline.fit(spark.createDataFrame([['']]).toDF("text"))
 
-result = model.transform(spark.createDataFrame([["Here we presented a case (BS type) of a 17 years old female presented with polyhydramnios, polyuria, nephrocalcinosis, and hypokalemia, which was alleviated after treatment with celecoxib and vitamin D(3)."]]).toDF("text"))
+result = model.transform(spark.createDataFrame([["We will systematically examine seven genes (CHN1, MDH1, PCP4, RTN1, SLC14A1, SNAP25 and VSNL1) that are altered in the three neurodegenerative diseases."]]).toDF("text"))
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
@@ -104,7 +104,7 @@ val ner_converter = new NerConverter()
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner, ner_converter))
 
-val data = Seq("""Here we presented a case (BS type) of a 17 years old female presented with polyhydramnios, polyuria, nephrocalcinosis, and hypokalemia, which was alleviated after treatment with celecoxib and vitamin D(3).""").toDS().toDF("text")
+val data = Seq("""We will systematically examine seven genes (CHN1, MDH1, PCP4, RTN1, SLC14A1, SNAP25 and VSNL1) that are altered in the three neurodegenerative diseases.""").toDS().toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
