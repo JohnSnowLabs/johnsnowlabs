@@ -344,7 +344,7 @@ result.select(F.explode(F.arrays_zip(result.ner_chunk.result, result.ner_chunk.m
       .select(F.expr("cols['1']['sentence']").alias("sent_id"),
               F.expr("cols['0']").alias("chunk"),
               F.expr("cols['1']['entity']").alias("ner_label"),
-              F.expr("cols['2']").alias("assertion")).show(truncate=False)
+              F.expr("cols['2']").alias("assertion")).show(truncate=false)
 
 +-------+------------+---------+----------+
 |sent_id|chunk       |ner_label|assertion |
@@ -417,7 +417,7 @@ result.select(F.explode(F.arrays_zip(result.ner_chunk.result,
               F.expr("cols['1']").alias("begin"),
               F.expr("cols['2']").alias("end"),
               F.expr("cols['3']['entity']").alias("ner_label"),
-              F.expr("cols['4']").alias("assertion")).show(truncate=False)
+              F.expr("cols['4']").alias("assertion")).show(truncate=false)
 
 +-------------------------------+-----+---+---------+---------+
 |chunk                          |begin|end|ner_label|assertion|
@@ -626,8 +626,8 @@ val assertionStatus = new AssertionDLApproach()
   .setInputCols(Array("document", "chunk", "embeddings"))
   .setOutputCol("assertion")
   .setBatchSize(128)
-  .setDropout(0.012f)
-  .setLearningRate(0.015f)
+  .setDropout(0.012)
+  .setLearningRate(0.015)
   .setEpochs(1)
   .setStartCol("start")
   .setEndCol("end")
@@ -656,9 +656,9 @@ val chunk = new Doc2Chunk()
     .setOutputCol("doc_chunk")
     .setChunkCol("chunk")
     .setStartCol("tkn_start")
-    .setStartColByTokenIndex(True)
-    .setFailOnMissing(False)
-    .setLowerCase(False)
+    .setStartColByTokenIndex(true)
+    .setFailOnMissing(false)
+    .setLowerCase(false)
 
 val token = new Tokenizer()
     .setInputCols(Array('document'))
@@ -680,7 +680,7 @@ val assertionStatus = new AssertionDLApproach()
     .setStartCol("tkn_start")
     .setEndCol("tkn_end")
     .setMaxSentLen(1200)
-    .setEnableOutputLogs(True)
+    .setEnableOutputLogs(true)
     .setOutputLogsPath('training_logs/')
     .setGraphFolder(graph_folder)
     .setGraphFile(f"{graph_folder}/assertion_graph.pb")
@@ -727,8 +727,8 @@ val assertionStatus = new AssertionDLApproach()
   .setInputCols(Array("document", "chunk", "embeddings"))
   .setOutputCol("assertion")
   .setBatchSize(128)
-  .setDropout(0.012f)
-  .setLearningRate(0.015f)
+  .setDropout(0.012)
+  .setLearningRate(0.015)
   .setEpochs(1)
   .setStartCol("start")
   .setEndCol("end")
