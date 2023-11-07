@@ -342,7 +342,7 @@ conda --version
 java -version
 conda create -n sparknlp python=3.8 -y
 conda activate sparknlp
-pip install spark-nlp==4.4.1 pyspark==3.1.2
+pip install spark-nlp==5.1.2 pyspark==3.2.1
 pip install jupyter
 conda env config vars set PYSPARK_PYTHON=python
 conda activate sparknlp
@@ -397,26 +397,53 @@ The install script downloads a couple of example notebooks that you can use to s
 
 A docker image that contains all the required libraries for installing and running Enterprise Spark NLP libraries is also available. However, it does not contain the library itself, as it is licensed, and requires installation credentials.
 
-Make sure you have a valid license for Enterprise Spark NLP libraries (in case you do not have one, you can ask for a trial [here](https://www.johnsnowlabs.com/install/) ), and follow the instructions below:
+Make sure you have a valid license for Enterprise Spark NLP libraries (in case you do not have one, you can ask for a trial [here](https://www.johnsnowlabs.com/install/)), and follow the instructions below:
 
 </div><div class="h3-box" markdown="1">
 
-#### Instructions
+#### Docker Image for running Spark NLP for Healthcare inside Jupyter Notebook
+
+The Image contains all the required libraries for installing and running Spark NLP for Healthcare. However, it does not contain the library itself, as it is licensed, and requires installation credentials. 
+
+- Please download the necessary files from the [here](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_jupyter) or just get them with commandline as the following:
+
+```bash
+curl -o Dockerfile https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_jupyter/Dockerfile
+curl -o entrypoint.sh https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_jupyter/entrypoint.sh
+curl -o requirements.txt https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_jupyter/requirements.txt
+```
+
+- Download your license key in json format from [my.JohnSnowLabs.com](https://my.johnsnowlabs.com/) and put the same folder
+- Make sure you have valid license for Spark NLP for Healthcare,  and run the following command:
+
+```bash 
+docker run -v /home/jsl_keys.json:/notebooks/sparknlp_keys.json -p 8888:8888 -d johnsnowlabs/sparknlp:sparknlp_for_healthcare_jupyter
+```
+- Please replace values inside `tags`. For instance, replace `/home/jsl_keys.json` with the correct license json absolute path.
+- Make sure docker is installed on your system.
+- Run `docker ps` to validate the container is running.
+- If your container is not running, look at docker logs to identify issue.
+- If the default port `8888` is already occupied by another process, please change the mapping. Only change values inside the `tags`.
+
+</div><div class="h3-box" markdown="1">
+
+#### Alternative Docker Image Instractions
 
 - Run the following commands to download the `docker-compose.yml` and the `sparknlp_keys.txt` files on your local machine:
 ```bash
-curl -o docker-compose.yaml https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/blob/513a4d682f11abc33b2e26ef8a9d72ad52a7b4f0/jupyter/docker_image_nlp_hc/docker-compose.yaml
+curl -o docker-compose.yaml https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_image/docker-compose.yaml
 curl -o sparknlp_keys.txt https://raw.githubusercontent.com/JohnSnowLabs/spark-nlp-workshop/master/jupyter/docker_image_nlp_hc/sparknlp_keys.txt
 ```
 
 - Download your license key in json format from [my.JohnSnowLabs.com](https://my.johnsnowlabs.com/) 
-- Populate License keys in `sparknlp_keys.txt` file.
+- Update License keys in `sparknlp_keys.txt` file.
 - Run the following command to run the container in detached mode:
 
 ```bash
  docker-compose up -d
  ``` 
-- By default, the jupyter notebook runs on port `8888` - you can access it by typing `localhost:8888` in your browser.
+- By default, the jupyter notebook runs on port `8888` - you can access it by typing `localhost:8888` in your browser
+- Create a new jupyter [notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/jupyter/docker_enterprise/docker_image_nlp_hc/sparknlp_for_healthcare_image/example_notebook.ipynb) and start coding
 
 </div><div class="h3-box" markdown="1">
 
@@ -425,7 +452,7 @@ curl -o sparknlp_keys.txt https://raw.githubusercontent.com/JohnSnowLabs/spark-n
 - Make sure docker is installed on your system.
 - If you face any error while importing the lib inside jupyter, make sure all the credentials are correct in the key files and restart the service again.
 - If the default port `8888` is already occupied by another process, please change the mapping.
-- You can change/adjust volume and port mapping in the `docker-compose.yml` file.
+- You can change/adjust volume and port mapping in the `docker-compose.yaml` file.
 - You don't have a license key? Ask for a trial license [here](https://www.johnsnowlabs.com/install/).
 
 </div><div class="h3-box" markdown="1">
@@ -510,20 +537,20 @@ If you want to download the source files (jar and whl files) locally, you can fo
 
 ```bash
 # Install Spark NLP from PyPI
-pip install spark-nlp==3.2.3
+pip install spark-nlp==${public_version}
 
 #install Spark NLP helathcare
 
 pip install spark-nlp-jsl==${version} --extra-index-url https://pypi.johnsnowlabs.com/${secret.code} --upgrade
 
 # Load Spark NLP with Spark Shell
-spark-shell --packages com.johnsnowlabs.nlp:spark-nlp_2.12:3.2.3 --jars spark-nlp-jsl-${version}.jar
+spark-shell --packages com.johnsnowlabs.nlp:spark-nlp_2.12:${public_version} --jars spark-nlp-jsl-${version}.jar
 
 # Load Spark NLP with PySpark
-pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:3.2.3  --jars spark-nlp-jsl-${version}.jar
+pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:${public_version} --jars spark-nlp-jsl-${version}.jar
 
 # Load Spark NLP with Spark Submit
-spark-submit --packages com.johnsnowlabs.nlp:spark-nlp_2.12:3.2.3 --jars spark-nlp-jsl-${version}.jar
+spark-submit --packages com.johnsnowlabs.nlp:spark-nlp_2.12:${public_version} --jars spark-nlp-jsl-${version}.jar
 ```
 
 </div><div class="h3-box" markdown="1">
@@ -597,7 +624,7 @@ The first thing that you need is to create the json file with the credentials an
 
 ```json
 {
-  "PUBLIC_VERSION": "3.2.3",
+  "PUBLIC_VERSION": "{public-version}",
   "JSL_VERSION": "{version}",
   "SECRET": "{version}-{secret.code}",
   "SPARK_NLP_LICENSE": "xxxxx",
@@ -798,7 +825,7 @@ authors = ["person <person@gmail.com>"]
 python = "^3.7"
 
 [tool.poetry.dev-dependencies]
-spark-nlp = "3.4.4"
+spark-nlp = "5.1.2"
 spark-nlp-jsl = { url = "https://pypi.johnsnowlabs.com/SECRET/spark-nlp-jsl/spark_nlp_jsl-tar.gz_OR_.whl" }
 
 [build-system]
