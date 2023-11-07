@@ -80,10 +80,9 @@ data = spark.createDataFrame([
   ["Patient shows no stomach pain"],
   ["She was maintained on an epidural and PCA for pain control."]]).toDF("text")
 
-assertionModel = assertionPipeline.fit(data)
 
 # Show results
-result = assertionModel.transform(data)
+result = assertionPipeline.fit(data).transform(data)
 result.selectExpr("ner_chunk.result as chunk_result", "assertion.result as assertion_result").show(3, truncate=False)
 
 +--------------------------------+--------------------------------+
@@ -139,10 +138,9 @@ pipeline = nlp.Pipeline(stages=[
 
 data = spark.createDataFrame([["Our competitors include the following by general category: legacy antivirus product providers, such as McAfee LLC and Broadcom Inc."]]).toDF("text")
 
-assertionModel = pipeline.fit(data)
 
 # Show results
-result = assertionModel.transform(data)
+result = pipeline.fit(data).transform(data)
 result.select(F.explode(F.arrays_zip(result.ner_chunk.result, result.ner_chunk.metadata, result.assertion.result)).alias("cols"))\
       .select(F.expr("cols['1']['sentence']").alias("sent_id"),
               F.expr("cols['0']").alias("chunk"),
@@ -205,10 +203,9 @@ nlpPipeline = nlp.Pipeline(stages=[
 
 data = spark.createDataFrame([["This is an Intellectual Property Agreement between Amazon Inc. and Atlantic Inc."]]).toDF("text")
 
-assertionModel = nlpPipeline.fit(data)
 
 # Show results
-result = assertionModel.transform(data)
+result = nlpPipeline.fit(data).transform(data)
 result.select(F.explode(F.arrays_zip(result.ner_chunk.result,  
                                      result.ner_chunk.begin, 
                                      result.ner_chunk.end, 
@@ -278,11 +275,10 @@ val data = Seq(
   "Patient shows no stomach pain",
   "She was maintained on an epidural and PCA for pain control.").toDF("text")
   
-val assertionModel = assertionPipeline.fit(data)
 
 // Show results
-val result = assertionModel.transform(data)
-result.selectExpr("ner_chunk.result as chunk_result", "assertion.result as assertion_result").show(3, truncate=False)
+val result = assertionPipeline.fit(data).transform(data)
+result.selectExpr("ner_chunk.result as chunk_result", "assertion.result as assertion_result").show(3, truncate=false)
 
 +--------------------------------+--------------------------------+
 |chunk_result                    |assertion_result                |
@@ -336,15 +332,9 @@ val pipeline = new Pipeline().setStages(Array(
 
 val data = Seq("Our competitors include the following by general category: legacy antivirus product providers, such as McAfee LLC and Broadcom Inc.").toDF("text")
 
-val assertionModel = pipeline.fit(data)
 
 // Show results
-val result = assertionModel.transform(data)
-result.select(F.explode(F.arrays_zip(result.ner_chunk.result, result.ner_chunk.metadata, result.assertion.result)).alias("cols"))\
-      .select(F.expr("cols['1']['sentence']").alias("sent_id"),
-              F.expr("cols['0']").alias("chunk"),
-              F.expr("cols['1']['entity']").alias("ner_label"),
-              F.expr("cols['2']").alias("assertion")).show(truncate=false)
+val result = pipeline.fit(data).transform(data)
 
 +-------+------------+---------+----------+
 |sent_id|chunk       |ner_label|assertion |
@@ -404,20 +394,9 @@ val pipeline = new Pipeline().setStages(Array(
 
 val data = Seq("This is an Intellectual Property Agreement between Amazon Inc. and Atlantic Inc.").toDF("text")
 
-val assertionModel = pipeline.fit(data)
 
 // Show results
-val result = assertionModel.transform(data)
-result.select(F.explode(F.arrays_zip(result.ner_chunk.result,  
-                                     result.ner_chunk.begin, 
-                                     result.ner_chunk.end, 
-                                     result.ner_chunk.metadata, 
-                                     result.assertion.result)).alias("cols"))\
-      .select(F.expr("cols['0']").alias("chunk"),
-              F.expr("cols['1']").alias("begin"),
-              F.expr("cols['2']").alias("end"),
-              F.expr("cols['3']['entity']").alias("ner_label"),
-              F.expr("cols['4']").alias("assertion")).show(truncate=false)
+val result = pipeline.fit(data).transform(data)
 
 +-------------------------------+-----+---+---------+---------+
 |chunk                          |begin|end|ner_label|assertion|
@@ -501,8 +480,7 @@ trainingPipeline = nlp.Pipeline().setStages([
     assertionStatus
 ])
 
-assertionModel = trainingPipeline.fit(data)
-assertionResults = assertionModel.transform(data).cache()
+assertionResults = trainingPipeline.fit(data).transform(data).cache()
 {%- endcapture -%}
 
 {%- capture approach_python_legal -%}
@@ -553,8 +531,7 @@ trainingPipeline = nlp.Pipeline().setStages([
     assertionStatus
 ])
 
-assertionModel = trainingPipeline.fit(data)
-assertionResults = assertionModel.transform(data).cache()
+assertionResults = trainingPipeline.fit(data).transform(data).cache()
 {%- endcapture -%}
 
 {%- capture approach_python_finance -%}
@@ -597,8 +574,7 @@ trainingPipeline = nlp.Pipeline().setStages([
     assertionStatus
 ])
 
-assertionModel = trainingPipeline.fit(data)
-assertionResults = assertionModel.transform(data).cache()
+assertionResults = trainingPipeline.fit(data).transform(data).cache()
 {%- endcapture -%}
 
 {%- capture approach_scala_medical -%}
@@ -641,8 +617,7 @@ val trainingPipeline = new Pipeline().setStages(Array(
   assertionStatus
 ))
 
-val assertionModel = trainingPipeline.fit(data)
-val assertionResults = assertionModel.transform(data).cache()
+val assertionResults = trainingPipeline.fit(data).transform(data).cache()
 {%- endcapture -%}
 
 {%- capture approach_scala_legal -%}
@@ -697,8 +672,7 @@ val trainingPipeline = new Pipeline().setStages(Array(
   assertionStatus
 ))
 
-val assertionModel = trainingPipeline.fit(data)
-val assertionResults = assertionModel.transform(data).cache()
+val assertionResults = trainingPipeline.fit(data).transform(data).cache()
 {%- endcapture -%}
 
 {%- capture approach_scala_finance -%}
@@ -742,8 +716,7 @@ val trainingPipeline = new Pipeline().setStages(Array(
   assertionStatus
 ))
 
-val assertionModel = trainingPipeline.fit(data)
-val assertionResults = assertionModel.transform(data).cache()
+val assertionResults = trainingPipeline.fit(data).transform(data).cache()
 {%- endcapture -%}
 
 
