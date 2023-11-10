@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is a legal version of the BGE base model fine-tuned on Edgar and legal question-answering datasets. Reference: Wang, Liang, et al. “Text embeddings by weakly-supervised contrastive pre-training.” arXiv preprint arXiv:2212.03533 (2022).
+This model is a legal version of the BGE base model fine-tuned on in-house curated datasets. Reference: Xiao, S., Liu, Z., Zhang, P., & Muennighof, N. (2023). C-pack: Packaged resources to advance general chinese embedding. arXiv preprint arXiv:2309.07597.
 
 ## Predicted Entities
 
@@ -111,7 +111,4 @@ result.show(truncate=150)
 
 ## References
 
-For our Legal models, we will use publicly available datasets to fine-tune the model:
-
-- [EDGAR](https://huggingface.co/datasets/pile-of-law/pile-of-law)
-- In-house annotated Earning Calls Transcripts
+In-house curated legal datasets.
