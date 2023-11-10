@@ -24,6 +24,8 @@ DocVQA seeks to inspire a “purpose-driven” point of view in Document Analysi
 
 ## Predicted Entities
 
+
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/VISUAL_QUESTION_ANSWERING/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrVisualQuestionAnswering_opt.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
@@ -31,6 +33,8 @@ DocVQA seeks to inspire a “purpose-driven” point of view in Document Analysi
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/docvqa_donut_base_opt_en_5.1.0_3.2_1699633028953.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
+
+
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
