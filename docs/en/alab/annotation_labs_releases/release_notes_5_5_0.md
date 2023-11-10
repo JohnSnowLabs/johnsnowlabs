@@ -1,13 +1,11 @@
 ---
 layout: docs
-comment: no
 header: true
-seotitle: Release Notes | John Snow Labs
-title: Release Notes
-permalink: /docs/en/alab/release_notes
-key: docs-training
-modify_date: "2023-09-05"
-use_language_switcher: "Python-Scala"
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 5.5.0
+permalink: /docs/en/alab/annotation_labs_releases/release_notes_5_5_0
+key: docs-licensed-release-notes
+modify_date: 2023-11-
 show_nav: true
 sidebar:
   nav: annotation-lab
@@ -268,59 +266,10 @@ By tailoring label visibility at the section level, annotation efforts are more 
 
   We addressed an issue where the pre-annotation statuses displayed did not align accurately with the actual results. Now, whether you're working with Model-based Pre-annotations or external Prompts, the pre-annotations in the task list page are represented precisely in line with the actual results. This update ensures that users can rely on the status information provided, regardless of the type of pre-annotation used. Moreover, the system is now capable of handling both Model-based and external Prompts pre-annotations simultaneously, presenting users with precise and reliable status indicators for a more streamlined workflow.
 
-
 </div><div class="prev_ver h3-box" markdown="1">
 
 ## Versions
 
 </div>
 
-<ul class="pagination owl-carousel pagination_big">
-    <li class="active"><a href="annotation_labs_releases/release_notes_5_5_0">5.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_4_1">5.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_3_2">5.3.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_2_3">5.2.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_2_2">5.2.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_5_1_1">5.1.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_5_1_0">5.1.0</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_10_1">4.10.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_10_0">4.10.0</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_9_2">4.9.2</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_4">4.8.4</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_3">4.8.3</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_2">4.8.2</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_8_1">4.8.1</a></li> 
-    <li><a href="annotation_labs_releases/release_notes_4_7_4">4.7.4</a></li>   
-    <li><a href="annotation_labs_releases/release_notes_4_7_1">4.7.1</a></li>        
-    <li><a href="annotation_labs_releases/release_notes_4_6_5">4.6.5</a></li>    
-    <li><a href="annotation_labs_releases/release_notes_4_6_3">4.6.3</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_6_2">4.6.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_5_1">4.5.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_5_0">4.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_4_1">4.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_4_0">4.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_3_0">4.3.0</a></li>
-	<li><a href="annotation_labs_releases/release_notes_4_2_0">4.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_4_1_0">4.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_5_0">3.5.0</a></li>
-	<li><a href="annotation_labs_releases/release_notes_3_4_1">3.4.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_4_0">3.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_3_1">3.3.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_3_0">3.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_2_0">3.2.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_1_1">3.1.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_1_0">3.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_0_1">3.0.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_3_0_0">3.0.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_8_0">2.8.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_2">2.7.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_1">2.7.1</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_7_0">2.7.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_6_0">2.6.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_5_0">2.5.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_4_0">2.4.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_3_0">2.3.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_2_2">2.2.2</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_1_0">2.1.0</a></li>
-    <li><a href="annotation_labs_releases/release_notes_2_0_1">2.0.1</a></li>
-</ul>
+{%- include docs-annotation-pagination.html -%}
