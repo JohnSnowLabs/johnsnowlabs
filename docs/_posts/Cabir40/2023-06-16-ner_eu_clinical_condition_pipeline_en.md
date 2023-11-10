@@ -34,32 +34,7 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_condition](http
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_eu_clinical_condition_pipeline", "en", "clinical/models")
-
-text = "
-Hyperparathyroidism was considered upon the fourth occasion. The history of weakness and generalized joint pains were present. He also had history of epigastric pain diagnosed informally as gastritis. He had previously had open reduction and internal fixation for the initial two fractures under general anesthesia. He sustained mandibular fracture.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_condition_pipeline", "en", "clinical/models")
-
-val text = "
-Hyperparathyroidism was considered upon the fourth occasion. The history of weakness and generalized joint pains were present. He also had history of epigastric pain diagnosed informally as gastritis. He had previously had open reduction and internal fixation for the initial two fractures under general anesthesia. He sustained mandibular fracture.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -87,9 +62,6 @@ val result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
 |    | chunks                  |   begin |   end | entities           |   confidence |
 |---:|:------------------------|--------:|------:|:-------------------|-------------:|
 |  0 | Hyperparathyroidism     |       1 |    19 | clinical_condition |     0.9375   |
@@ -100,9 +72,6 @@ Results
 |  5 | fractures               |     281 |   289 | clinical_condition |     0.9726   |
 |  6 | anesthesia              |     305 |   314 | clinical_condition |     0.991    |
 |  7 | mandibular fracture     |     330 |   348 | clinical_condition |     0.54925  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

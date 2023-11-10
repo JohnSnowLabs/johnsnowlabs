@@ -34,28 +34,7 @@ This pretrained pipeline is built on the top of [ner_oncology_tnm](https://nlp.j
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_oncology_tnm_pipeline", "en", "clinical/models")
-
-text = '''The final diagnosis was metastatic breast carcinoma, and it was classified as T2N1M1 stage IV. The histological grade of this 4 cm tumor was grade 2.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_tnm_pipeline", "en", "clinical/models")
-
-val text = "The final diagnosis was metastatic breast carcinoma, and it was classified as T2N1M1 stage IV. The histological grade of this 4 cm tumor was grade 2."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -79,9 +58,6 @@ val result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks       |   begin |   end | ner_label         |   confidence |
 |---:|:-----------------|--------:|------:|:------------------|-------------:|
 |  0 | metastatic       |      24 |    33 | Metastasis        |     0.9999   |
@@ -90,9 +66,6 @@ Results
 |  3 | 4 cm             |     126 |   129 | Tumor_Description |     0.85105  |
 |  4 | tumor            |     131 |   135 | Tumor             |     0.9926   |
 |  5 | grade 2          |     141 |   147 | Tumor_Description |     0.89705  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

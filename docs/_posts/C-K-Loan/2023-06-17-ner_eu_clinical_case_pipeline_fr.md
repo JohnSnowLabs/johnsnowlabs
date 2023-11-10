@@ -34,58 +34,7 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_case](https://n
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_eu_clinical_case_pipeline", "fr", "clinical/models")
-
-text = "
-Un garçon de 3 ans atteint d'un trouble autistique à l'hôpital du service pédiatrique A de l'hôpital universitaire. Il n'a pas d'antécédents familiaux de troubles ou de maladies du spectre autistique. Le garçon a été diagnostiqué avec un trouble de communication sévère, avec des difficultés d'interaction sociale et un traitement sensoriel retardé. Les tests sanguins étaient normaux (thyréostimuline (TSH), hémoglobine, volume globulaire moyen (MCV) et ferritine). L'endoscopie haute a également montré une tumeur sous-muqueuse provoquant une obstruction subtotale de la sortie gastrique. Devant la suspicion d'une tumeur stromale gastro-intestinale, une gastrectomie distale a été réalisée. L'examen histopathologique a révélé une prolifération de cellules fusiformes dans la couche sous-muqueuse.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_case_pipeline", "fr", "clinical/models")
-
-val text = "
-Un garçon de 3 ans atteint d'un trouble autistique à l'hôpital du service pédiatrique A de l'hôpital universitaire. Il n'a pas d'antécédents familiaux de troubles ou de maladies du spectre autistique. Le garçon a été diagnostiqué avec un trouble de communication sévère, avec des difficultés d'interaction sociale et un traitement sensoriel retardé. Les tests sanguins étaient normaux (thyréostimuline (TSH), hémoglobine, volume globulaire moyen (MCV) et ferritine). L'endoscopie haute a également montré une tumeur sous-muqueuse provoquant une obstruction subtotale de la sortie gastrique. Devant la suspicion d'une tumeur stromale gastro-intestinale, une gastrectomie distale a été réalisée. L'examen histopathologique a révélé une prolifération de cellules fusiformes dans la couche sous-muqueuse.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_eu_clinical_case_pipeline", "fr", "clinical/models")
-
-text = "
-Un garçon de 3 ans atteint d'un trouble autistique à l'hôpital du service pédiatrique A de l'hôpital universitaire. Il n'a pas d'antécédents familiaux de troubles ou de maladies du spectre autistique. Le garçon a été diagnostiqué avec un trouble de communication sévère, avec des difficultés d'interaction sociale et un traitement sensoriel retardé. Les tests sanguins étaient normaux (thyréostimuline (TSH), hémoglobine, volume globulaire moyen (MCV) et ferritine). L'endoscopie haute a également montré une tumeur sous-muqueuse provoquant une obstruction subtotale de la sortie gastrique. Devant la suspicion d'une tumeur stromale gastro-intestinale, une gastrectomie distale a été réalisée. L'examen histopathologique a révélé une prolifération de cellules fusiformes dans la couche sous-muqueuse.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_case_pipeline", "fr", "clinical/models")
-
-val text = "
-Un garçon de 3 ans atteint d'un trouble autistique à l'hôpital du service pédiatrique A de l'hôpital universitaire. Il n'a pas d'antécédents familiaux de troubles ou de maladies du spectre autistique. Le garçon a été diagnostiqué avec un trouble de communication sévère, avec des difficultés d'interaction sociale et un traitement sensoriel retardé. Les tests sanguins étaient normaux (thyréostimuline (TSH), hémoglobine, volume globulaire moyen (MCV) et ferritine). L'endoscopie haute a également montré une tumeur sous-muqueuse provoquant une obstruction subtotale de la sortie gastrique. Devant la suspicion d'une tumeur stromale gastro-intestinale, une gastrectomie distale a été réalisée. L'examen histopathologique a révélé une prolifération de cellules fusiformes dans la couche sous-muqueuse.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -126,12 +75,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | chunks                                                |   begin |   end | entities           |   confidence |
 |---:|:------------------------------------------------------|--------:|------:|:-------------------|-------------:|
 |  0 | Un garçon de 3 ans                                    |       1 |    18 | patient            |     0.58786  |
@@ -166,12 +109,6 @@ Results
 | 29 | prolifération                                         |     735 |   747 | clinical_event     |     0.6767   |
 | 30 | cellules fusiformes                                   |     752 |   770 | bodypart           |     0.5233   |
 | 31 | la couche sous-muqueuse                               |     777 |   799 | bodypart           |     0.6755   |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

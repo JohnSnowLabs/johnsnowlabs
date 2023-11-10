@@ -34,58 +34,7 @@ This pretrained pipeline is built on the top of [ner_oncology_anatomy_general_he
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_oncology_anatomy_general_healthcare_pipeline", "en", "clinical/models")
-
-text = "
-The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_anatomy_general_healthcare_pipeline", "en", "clinical/models")
-
-val text = "
-The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_oncology_anatomy_general_healthcare_pipeline", "en", "clinical/models")
-
-text = "
-The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_anatomy_general_healthcare_pipeline", "en", "clinical/models")
-
-val text = "
-The patient presented a mass in her left breast, and a possible metastasis in her lungs and in her liver.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -126,24 +75,12 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | chunks   |   begin |   end | entities        |   confidence |
 |---:|:---------|--------:|------:|:----------------|-------------:|
 |  0 | left     |      37 |    40 | Direction       |       0.9948 |
 |  1 | breast   |      42 |    47 | Anatomical_Site |       0.5814 |
 |  2 | lungs    |      83 |    87 | Anatomical_Site |       0.9486 |
 |  3 | liver    |     100 |   104 | Anatomical_Site |       0.9646 |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

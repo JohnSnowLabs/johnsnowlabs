@@ -93,7 +93,6 @@ val result = pipeline.fit(data).transform(data)
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |[The effect of directing attention on memory is that it can help to improve memory retention and recall. It can help to reduce the amount of time spent on tasks, such as focusing on one task at a time, or focusing on ]|
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 ```
 
 {:.model-param}

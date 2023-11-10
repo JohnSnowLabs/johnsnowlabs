@@ -52,50 +52,6 @@ val text = "Malignant cells often display defects in autophagy, an evolutionaril
 
 val result = pipeline.fullAnnotate(text)
 ```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_token_classifier_ner_anatem_pipeline", "en", "clinical/models")
-
-text = '''Malignant cells often display defects in autophagy, an evolutionarily conserved pathway for degrading long-lived proteins and cytoplasmic organelles. However, as yet, there is no genetic evidence for a role of autophagy genes in tumor suppression. The beclin 1 autophagy gene is monoallelically deleted in 40 - 75 % of cases of human sporadic breast, ovarian, and prostate cancer.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_anatem_pipeline", "en", "clinical/models")
-
-val text = "Malignant cells often display defects in autophagy, an evolutionarily conserved pathway for degrading long-lived proteins and cytoplasmic organelles. However, as yet, there is no genetic evidence for a role of autophagy genes in tumor suppression. The beclin 1 autophagy gene is monoallelically deleted in 40 - 75 % of cases of human sporadic breast, ovarian, and prostate cancer."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_token_classifier_ner_anatem_pipeline", "en", "clinical/models")
-
-text = '''Malignant cells often display defects in autophagy, an evolutionarily conserved pathway for degrading long-lived proteins and cytoplasmic organelles. However, as yet, there is no genetic evidence for a role of autophagy genes in tumor suppression. The beclin 1 autophagy gene is monoallelically deleted in 40 - 75 % of cases of human sporadic breast, ovarian, and prostate cancer.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_anatem_pipeline", "en", "clinical/models")
-
-val text = "Malignant cells often display defects in autophagy, an evolutionarily conserved pathway for degrading long-lived proteins and cytoplasmic organelles. However, as yet, there is no genetic evidence for a role of autophagy genes in tumor suppression. The beclin 1 autophagy gene is monoallelically deleted in 40 - 75 % of cases of human sporadic breast, ovarian, and prostate cancer."
-
-val result = pipeline.fullAnnotate(text)
-```
 
 {:.nlu-block}
 ```python
@@ -112,12 +68,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunk              |   begin |   end | ner_label   |   confidence |
 |---:|:-----------------------|--------:|------:|:------------|-------------:|
 |  0 | Malignant cells        |       0 |    14 | Anatomy     |     0.999951 |
@@ -126,12 +76,6 @@ Results
 |  3 | breast                 |     343 |   348 | Anatomy     |     0.999842 |
 |  4 | ovarian                |     351 |   357 | Anatomy     |     0.99998  |
 |  5 | prostate cancer        |     364 |   378 | Anatomy     |     0.999968 |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

@@ -32,38 +32,10 @@ This pretrained pipeline is built on the top of [ner_posology_greedy](https://nl
 
 ## How to use
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_posology_greedy_pipeline", "en", "clinical/models")
-
-text = '''The patient was prescribed 1 capsule of Advil 10 mg for 5 days and magnesium hydroxide 100mg/1ml suspension PO. He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals, and metformin 1000 mg two times a day.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_posology_greedy_pipeline", "en", "clinical/models")
-
-val text = "The patient was prescribed 1 capsule of Advil 10 mg for 5 days and magnesium hydroxide 100mg/1ml suspension PO. He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals, and metformin 1000 mg two times a day."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.posology_greedy.pipeline").predict("""The patient was prescribed 1 capsule of Advil 10 mg for 5 days and magnesium hydroxide 100mg/1ml suspension PO. He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals, and metformin 1000 mg two times a day.""")
-```
-
-</div>
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -93,9 +65,6 @@ nlu.load("en.med_ner.posology_greedy.pipeline").predict("""The patient was presc
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk                                   |   begin |   end | ner_label   |   confidence |
 |---:|:--------------------------------------------|--------:|------:|:------------|-------------:|
 |  0 | 1 capsule of Advil 10 mg                    |      27 |    50 | DRUG        |     0.638183 |
@@ -107,9 +76,6 @@ Results
 |  6 | with meals                                  |     245 |   254 | FREQUENCY   |     0.79235  |
 |  7 | metformin 1000 mg                           |     261 |   277 | DRUG        |     0.707133 |
 |  8 | two times a day                             |     279 |   293 | FREQUENCY   |     0.700825 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

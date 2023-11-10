@@ -1068,7 +1068,11 @@ value : bool</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setEntityAssertion">
 <span class="sig-name descname"><span class="pre">setEntityAssertion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">assertionEntities</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setEntityAssertion" title="Permalink to this definition">#</a></dt>
-<dd><p>Set the lists of assertion labels allowed for a given entity</p>
+<dd><p>Set the lists of assertion labels allowed for a given entity.
+note:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>``entityAssertion`` functionality is processed earlier than ``replaceLabels``.
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
@@ -1082,6 +1086,29 @@ value : bool</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.getEntityAssertion">
 <span class="sig-name descname"><span class="pre">getEntityAssertion</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.getEntityAssertion" title="Permalink to this definition">#</a></dt>
 <dd><p>Return the lists of assertion labels allowed for a given entity</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setReplaceLabels">
+<span class="sig-name descname"><span class="pre">setReplaceLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">replaceLabels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setReplaceLabels" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the assertion labels to be replaced for the specified new labels.
+note:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>``replaceLabels`` functionality is processed later than ``entityAssertion``.
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>replaceLabels</strong><span class="classifier">dict[str, str]</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.getReplaceLabels">
+<span class="sig-name descname"><span class="pre">getReplaceLabels</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.getReplaceLabels" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the assertion labels to be replaced for the specified new labels.</p>
 </dd></dl>
 
 <dl class="py method">
@@ -1204,6 +1231,8 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setEntityAssertionCaseSensitive"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.setEntityAssertionCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setEntityAssertion"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.setEntityAssertion()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.getEntityAssertion"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.getEntityAssertion()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.setReplaceLabels"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.setReplaceLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.getReplaceLabels"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.getReplaceLabels()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel.pretrained"><code class="docutils literal notranslate"><span class="pre">AssertionDLModel.pretrained()</span></code></a></li>
 </ul>
 </li>

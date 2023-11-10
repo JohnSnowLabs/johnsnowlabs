@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_biomarker](https://nlp.john
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,11 @@ nlu.load("en.med_ner.biomarker.pipeline").predict("""Here , we report the first 
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_biomarker_pipeline", "en", "clinical/models")
-
-text = '''Here , we report the first case of an intraductal tubulopapillary neoplasm of the pancreas with clear cell morphology . Immunohistochemistry revealed positivity for Pan-CK , CK7 , CK8/18 , MUC1 , MUC6 , carbonic anhydrase IX , CD10 , EMA , β-catenin and e-cadherin '''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_biomarker_pipeline", "en", "clinical/models")
-
-val text = "Here , we report the first case of an intraductal tubulopapillary neoplasm of the pancreas with clear cell morphology . Immunohistochemistry revealed positivity for Pan-CK , CK7 , CK8/18 , MUC1 , MUC6 , carbonic anhydrase IX , CD10 , EMA , β-catenin and e-cadherin "
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.biomarker.pipeline").predict("""Here , we report the first case of an intraductal tubulopapillary neoplasm of the pancreas with clear cell morphology . Immunohistochemistry revealed positivity for Pan-CK , CK7 , CK8/18 , MUC1 , MUC6 , carbonic anhydrase IX , CD10 , EMA , β-catenin and e-cadherin """)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks               |   begin |   end | ner_label             |   confidence |
 |---:|:-------------------------|--------:|------:|:----------------------|-------------:|
 |  0 | intraductal              |      38 |    48 | CancerModifier        |     0.9998   |
@@ -114,9 +86,6 @@ Results
 | 13 | EMA                      |     234 |   236 | Biomarker             |     0.9985   |
 | 14 | β-catenin                |     240 |   248 | Biomarker             |     0.9948   |
 | 15 | e-cadherin               |     254 |   263 | Biomarker             |     0.9952   |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

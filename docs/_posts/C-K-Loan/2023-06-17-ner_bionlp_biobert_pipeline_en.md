@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_bionlp_biobert](https://nlp
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,11 @@ nlu.load("en.med_ner.bionlp_biobert.pipeline").predict("""Both the erbA IRES and
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_bionlp_biobert_pipeline", "en", "clinical/models")
-
-text = '''Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_bionlp_biobert_pipeline", "en", "clinical/models")
-
-val text = "Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay"
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.bionlp_biobert.pipeline").predict("""Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk           |   begin |   end | ner_label              |   confidence |
 |---:|:--------------------|--------:|------:|:-----------------------|-------------:|
 |  0 | erbA                |       9 |    12 | Gene_or_gene_product   |      1       |
@@ -109,9 +81,6 @@ Results
 |  8 | erbA                |     236 |   239 | Gene_or_gene_product   |      0.9977  |
 |  9 | IRES virus          |     241 |   250 | Organism               |      0.9911  |
 | 10 | blastoderm          |     259 |   268 | Cell                   |      0.9941  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

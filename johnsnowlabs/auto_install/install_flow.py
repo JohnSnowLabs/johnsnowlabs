@@ -294,8 +294,6 @@ def install_to_databricks(
     write_db_credentials=True,
     extra_pip_installs: Optional[List[str]] = None,
 ):
-    #     :param extra_pip_installs: any extra libraries to install,
-    #         e.g. ["pandas==1.2.3", "numpy", 'https://my.website.com/wheel.whl', '/path/to/my/local/wheel.whl']
     if refresh_install and os.path.exists(settings.root_dir):
         print("🧹 Cleaning up old JSL Home in ", settings.root_dir)
         shutil.rmtree(settings.root_dir)
@@ -346,9 +344,6 @@ def install_to_databricks(
     # Databricks Install
     if not databricks_host and databricks_token:
         raise Exception()
-    print(
-        "nlp.install() for databricks will be deprecated next release, instead use nlp.install_to_databricks()"
-    )
     suite = get_install_suite_from_jsl_home(
         jvm_hardware_target=hardware_platform,
         visual=visual,

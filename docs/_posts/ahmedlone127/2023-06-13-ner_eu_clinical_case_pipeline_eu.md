@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_case](https://n
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -58,38 +59,11 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_eu_clinical_case_pipeline", "eu", "clinical/models")
-
-text = "
-3 urteko mutiko bat nahasmendu autistarekin unibertsitateko ospitaleko A pediatriako ospitalean. Ez du autismoaren espektroaren nahaste edo gaixotasun familiaren aurrekaririk. Mutilari komunikazio-nahaste larria diagnostikatu zioten, elkarrekintza sozialeko zailtasunak eta prozesamendu sentsorial atzeratua. Odol-analisiak normalak izan ziren (tiroidearen hormona estimulatzailea (TSH), hemoglobina, batez besteko bolumen corpuskularra (MCV) eta ferritina). Goiko endoskopiak mukosaren azpiko tumore bat ere erakutsi zuen, urdail-irteeren guztizko oztopoa eragiten zuena. Estroma gastrointestinalaren tumore baten susmoa ikusita, distaleko gastrektomia egin zen. Azterketa histopatologikoak agerian utzi zuen mukosaren azpiko zelulen ugaltzea.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_case_pipeline", "eu", "clinical/models")
-
-val text = "
-3 urteko mutiko bat nahasmendu autistarekin unibertsitateko ospitaleko A pediatriako ospitalean. Ez du autismoaren espektroaren nahaste edo gaixotasun familiaren aurrekaririk. Mutilari komunikazio-nahaste larria diagnostikatu zioten, elkarrekintza sozialeko zailtasunak eta prozesamendu sentsorial atzeratua. Odol-analisiak normalak izan ziren (tiroidearen hormona estimulatzailea (TSH), hemoglobina, batez besteko bolumen corpuskularra (MCV) eta ferritina). Goiko endoskopiak mukosaren azpiko tumore bat ere erakutsi zuen, urdail-irteeren guztizko oztopoa eragiten zuena. Estroma gastrointestinalaren tumore baten susmoa ikusita, distaleko gastrektomia egin zen. Azterketa histopatologikoak agerian utzi zuen mukosaren azpiko zelulen ugaltzea.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | chunks                   |   begin |   end | entities           |   confidence |
 |---:|:-------------------------|--------:|------:|:-------------------|-------------:|
 |  0 | 3 urteko mutiko bat      |       1 |    19 | patient            |     0.813975 |
@@ -133,9 +107,6 @@ Results
 | 38 | utzi                     |     701 |   704 | clinical_event     |     0.925    |
 | 39 | mukosaren azpiko zelulen |     711 |   734 | bodypart           |     0.754933 |
 | 40 | ugaltzea                 |     736 |   743 | clinical_event     |     0.9989   |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

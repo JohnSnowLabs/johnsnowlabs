@@ -59,64 +59,11 @@ nlu.load("en.relation.bodypart_directions.pipeline").predict("""MRI demonstrated
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("re_bodypart_directions_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("MRI demonstrated infarction in the upper brain stem , left cerebellum and  right basil ganglia")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("re_bodypart_directions_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("MRI demonstrated infarction in the upper brain stem , left cerebellum and  right basil ganglia")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.relation.bodypart_directions.pipeline").predict("""MRI demonstrated infarction in the upper brain stem , left cerebellum and  right basil ganglia""")
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("re_bodypart_directions_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("MRI demonstrated infarction in the upper brain stem , left cerebellum and  right basil ganglia")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("re_bodypart_directions_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("MRI demonstrated infarction in the upper brain stem , left cerebellum and  right basil ganglia")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.relation.bodypart_directions.pipeline").predict("""MRI demonstrated infarction in the upper brain stem , left cerebellum and  right basil ganglia""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
-
 | index | relations | entity1                     | entity1_begin | entity1_end | chunk1     | entity2                     | entity2_end | entity2_end | chunk2        | confidence |
 |-------|-----------|-----------------------------|---------------|-------------|------------|-----------------------------|-------------|-------------|---------------|------------|
 | 0     | 1         | Direction                   | 35            | 39          | upper      | Internal_organ_or_component | 41          | 50          | brain stem    | 0.9999989  |
@@ -128,13 +75,6 @@ Results
 | 6     | 0         | Direction                   | 54            | 57          | left       | Internal_organ_or_component | 81          | 93          | basil ganglia | 0.97616416 |
 | 7     | 0         | Internal_organ_or_component | 59            | 68          | cerebellum | Direction                   | 75          | 79          | right         | 0.953046   |
 | 8     | 1         | Direction                   | 75            | 79          | right      | Internal_organ_or_component | 81          | 93          | basil ganglia | 1.0        |
-
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

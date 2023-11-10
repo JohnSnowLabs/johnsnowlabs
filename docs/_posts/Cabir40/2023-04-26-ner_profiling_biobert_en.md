@@ -66,7 +66,6 @@ nlu.load("en.med_ner.profiling_biobert").predict("""A 28-year-old female with a 
 ## Results
 
 ```bash
-
 ******************** ner_diseases_biobert Model Results ******************** 
 
 [('gestational diabetes mellitus', 'Disease'), ('type two diabetes mellitus', 'Disease'), ('T2DM', 'Disease'), ('HTG-induced pancreatitis', 'Disease'), ('hepatitis', 'Disease'), ('obesity', 'Disease'), ('polyuria', 'Disease'), ('polydipsia', 'Disease'), ('poor appetite', 'Disease'), ('vomiting', 'Disease')]
@@ -90,7 +89,6 @@ nlu.load("en.med_ner.profiling_biobert").predict("""A 28-year-old female with a 
 ******************** ner_risk_factors_biobert Model Results ******************** 
 
 [('diabetes mellitus', 'DIABETES'), ('subsequent type two diabetes mellitus', 'DIABETES'), ('obesity', 'OBESE')]
-
 ```
 
 {:.model-param}

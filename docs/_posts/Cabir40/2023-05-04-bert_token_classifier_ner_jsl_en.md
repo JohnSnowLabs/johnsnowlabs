@@ -192,7 +192,6 @@ val result = pipeline.fit(sample_text).transform(sample_text)
 ## Results
 
 ```bash
-
 +-----------------------------------------+----------------------------+
 |chunk                                    |ner_label                   |
 +-----------------------------------------+----------------------------+
@@ -217,7 +216,6 @@ val result = pipeline.fit(sample_text).transform(sample_text)
 |Baby-girl                                |Age                         |
 |decreased                                |Symptom                     |
 +-----------------------------------------+----------------------------+
-
 ```
 
 {:.model-param}

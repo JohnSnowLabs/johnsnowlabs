@@ -34,6 +34,7 @@ A pretrained pipeline to detect medication entities. It was built on the top of 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -50,9 +51,11 @@ val ner_medication_pipeline = new PretrainedPipeline("ner_medication_pipeline", 
 
 val result = ner_medication_pipeline.fullAnnotate("The patient was prescribed metformin 1000 MG, and glipizide 2.5 MG. The other patient was given Fragmin 5000 units, Xenaderm to wounds topically b.i.d. and OxyContin 30 mg."")
 ```
+</div>
 
-{:.nlu-block}
-```python
+## Results
+
+```bash
 | ner_chunk          | entity   |
 |:-------------------|:---------|
 | metformin 1000 MG  | DRUG     |
@@ -61,40 +64,6 @@ val result = ner_medication_pipeline.fullAnnotate("The patient was prescribed me
 | Xenaderm           | DRUG     |
 | OxyContin 30 mg    | DRUG     |
 ```
-</div>
-
-{:.model-param}
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-ner_medication_pipeline = PretrainedPipeline("ner_medication_pipeline", "en", "clinical/models")
-
-text = """The patient was prescribed metformin 1000 MG, and glipizide 2.5 MG. The other patient was given Fragmin 5000 units, Xenaderm to wounds topically b.i.d. and OxyContin 30 mg."""
-
-result = ner_medication_pipeline.fullAnnotate([text])
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val ner_medication_pipeline = new PretrainedPipeline("ner_medication_pipeline", "en", "clinical/models")
-
-val result = ner_medication_pipeline.fullAnnotate("The patient was prescribed metformin 1000 MG, and glipizide 2.5 MG. The other patient was given Fragmin 5000 units, Xenaderm to wounds topically b.i.d. and OxyContin 30 mg."")
-```
-
-{:.nlu-block}
-```python
-| ner_chunk          | entity   |
-|:-------------------|:---------|
-| metformin 1000 MG  | DRUG     |
-| glipizide 2.5 MG   | DRUG     |
-| Fragmin 5000 units | DRUG     |
-| Xenaderm           | DRUG     |
-| OxyContin 30 mg    | DRUG     |
-```
-</div>
 
 {:.model-param}
 ## Model Information

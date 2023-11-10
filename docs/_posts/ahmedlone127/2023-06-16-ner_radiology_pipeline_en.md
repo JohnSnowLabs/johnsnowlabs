@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_radiology](https://nlp.john
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,11 @@ nlu.load("en.med_ner.radiology.pipeline").predict("""Bilateral breast ultrasound
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_radiology_pipeline", "en", "clinical/models")
-
-text = '''Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_radiology_pipeline", "en", "clinical/models")
-
-val text = "Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.radiology.pipeline").predict("""Bilateral breast ultrasound was subsequently performed, which demonstrated an ovoid mass measuring approximately 0.5 x 0.5 x 0.4 cm in diameter located within the anteromedial aspect of the left shoulder. This mass demonstrates isoechoic echotexture to the adjacent muscle, with no evidence of internal color flow. This may represent benign fibrous tissue or a lipoma.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk                                |   begin |   end | ner_label                 |   confidence |
 |---:|:-----------------------------------------|--------:|------:|:--------------------------|-------------:|
 |  0 | Bilateral breast                         |       0 |    15 | BodyPart                  |     0.945    |
@@ -110,9 +82,6 @@ Results
 |  9 | internal color flow                      |     294 |   312 | ImagingFindings           |     0.477233 |
 | 10 | benign fibrous tissue                    |     334 |   354 | ImagingFindings           |     0.524067 |
 | 11 | lipoma                                   |     361 |   366 | Disease_Syndrome_Disorder |     0.6081   |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

@@ -75,95 +75,11 @@ Spitalul Pentru Ochi de Deal Drumul Oprea Nr. 972 Vaslui, 737405 """)
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-deid_pipeline = PretrainedPipeline("clinical_deidentification", "ro", "clinical/models")
-
-sample = """Medic : Dr. Agota EVELYN, C.N.P : 2450502264401, Data setului de analize: 25 May 2022 
-Varsta : 77, Nume si Prenume : BUREAN MARIA 
-Tel: +40(235)413773, E-mail : hale@gmail.com,
-Licență : B004256985M, Înmatriculare : CD205113, Cont : FXHZ7170951927104999, 
-Spitalul Pentru Ochi de Deal Drumul Oprea Nr. 972 Vaslui, 737405 """
-
-result = deid_pipeline.annotate(sample)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val deid_pipeline = new PretrainedPipeline("clinical_deidentification", "ro", "clinical/models")
-
-val sample = """Medic : Dr. Agota EVELYN, C.N.P : 2450502264401, Data setului de analize: 25 May 2022 
-Varsta : 77, Nume si Prenume : BUREAN MARIA 
-Tel: +40(235)413773, E-mail : hale@gmail.com,
-Licență : B004256985M, Înmatriculare : CD205113, Cont : FXHZ7170951927104999, 
-Spitalul Pentru Ochi de Deal Drumul Oprea Nr. 972 Vaslui, 737405 """
-
-val result = deid_pipeline.annotate(sample)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("ro.deid.clinical").predict("""Medic : Dr. Agota EVELYN, C.N.P : 2450502264401, Data setului de analize: 25 May 2022 
-Varsta : 77, Nume si Prenume : BUREAN MARIA 
-Tel: +40(235)413773, E-mail : hale@gmail.com,
-Licență : B004256985M, Înmatriculare : CD205113, Cont : FXHZ7170951927104999, 
-Spitalul Pentru Ochi de Deal Drumul Oprea Nr. 972 Vaslui, 737405 """)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-deid_pipeline = PretrainedPipeline("clinical_deidentification", "ro", "clinical/models")
-
-sample = """Medic : Dr. Agota EVELYN, C.N.P : 2450502264401, Data setului de analize: 25 May 2022 
-Varsta : 77, Nume si Prenume : BUREAN MARIA 
-Tel: +40(235)413773, E-mail : hale@gmail.com,
-Licență : B004256985M, Înmatriculare : CD205113, Cont : FXHZ7170951927104999, 
-Spitalul Pentru Ochi de Deal Drumul Oprea Nr. 972 Vaslui, 737405 """
-
-result = deid_pipeline.annotate(sample)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val deid_pipeline = new PretrainedPipeline("clinical_deidentification", "ro", "clinical/models")
-
-val sample = """Medic : Dr. Agota EVELYN, C.N.P : 2450502264401, Data setului de analize: 25 May 2022 
-Varsta : 77, Nume si Prenume : BUREAN MARIA 
-Tel: +40(235)413773, E-mail : hale@gmail.com,
-Licență : B004256985M, Înmatriculare : CD205113, Cont : FXHZ7170951927104999, 
-Spitalul Pentru Ochi de Deal Drumul Oprea Nr. 972 Vaslui, 737405 """
-
-val result = deid_pipeline.annotate(sample)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("ro.deid.clinical").predict("""Medic : Dr. Agota EVELYN, C.N.P : 2450502264401, Data setului de analize: 25 May 2022 
-Varsta : 77, Nume si Prenume : BUREAN MARIA 
-Tel: +40(235)413773, E-mail : hale@gmail.com,
-Licență : B004256985M, Înmatriculare : CD205113, Cont : FXHZ7170951927104999, 
-Spitalul Pentru Ochi de Deal Drumul Oprea Nr. 972 Vaslui, 737405 """)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 Masked with entity labels
 ------------------------------
 Medic : Dr. <DOCTOR>, C.N.P : <IDNUM>, Data setului de analize: <DATE>
@@ -195,12 +111,6 @@ Varsta : 91, Nume si Prenume : Dragomir Emilia
 Tel: 0248 551 376, E-mail : tudorsmaranda@kappa.ro,
 Licență : T003485962M, Înmatriculare : AR-65-UPQ, Cont : KHHO5029180812813651, 
 Centrul Medical de Evaluare si Recuperare pentru Copii si Tineri Cristian Serban Buzias Aleea Voinea Curcani, 328479
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

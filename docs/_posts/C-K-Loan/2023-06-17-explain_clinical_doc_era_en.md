@@ -34,6 +34,7 @@ A pipeline with `ner_clinical_events`, `assertion_dl` and `re_temporal_events_cl
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,71 +63,11 @@ nlu.load("en.explain_doc.era").predict("""She is admitted to The John Hopkins Ho
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("explain_clinical_doc_era", "en", "clinical/models")
-
-text = """She is admitted to The John Hopkins Hospital 2 days ago with a history of gestational diabetes mellitus diagnosed. She denied pain and any headache. She was seen by the endocrinology service and she was discharged on 03/02/2018 on 40 units of insulin glargine, 12 units of insulin lispro, and metformin 1000 mg two times a day. She had close follow-up with endocrinology post discharge. """
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("explain_clinical_doc_era", "en", "clinical/models")
-
-val text = """She is admitted to The John Hopkins Hospital 2 days ago with a history of gestational diabetes mellitus diagnosed. She denied pain and any headache. She was seen by the endocrinology service and she was discharged on 03/02/2018 on 40 units of insulin glargine, 12 units of insulin lispro, and metformin 1000 mg two times a day. She had close follow-up with endocrinology post discharge. """
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.explain_doc.era").predict("""She is admitted to The John Hopkins Hospital 2 days ago with a history of gestational diabetes mellitus diagnosed. She denied pain and any headache. She was seen by the endocrinology service and she was discharged on 03/02/2018 on 40 units of insulin glargine, 12 units of insulin lispro, and metformin 1000 mg two times a day. She had close follow-up with endocrinology post discharge. """)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("explain_clinical_doc_era", "en", "clinical/models")
-
-text = """She is admitted to The John Hopkins Hospital 2 days ago with a history of gestational diabetes mellitus diagnosed. She denied pain and any headache. She was seen by the endocrinology service and she was discharged on 03/02/2018 on 40 units of insulin glargine, 12 units of insulin lispro, and metformin 1000 mg two times a day. She had close follow-up with endocrinology post discharge. """
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("explain_clinical_doc_era", "en", "clinical/models")
-
-val text = """She is admitted to The John Hopkins Hospital 2 days ago with a history of gestational diabetes mellitus diagnosed. She denied pain and any headache. She was seen by the endocrinology service and she was discharged on 03/02/2018 on 40 units of insulin glargine, 12 units of insulin lispro, and metformin 1000 mg two times a day. She had close follow-up with endocrinology post discharge. """
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.explain_doc.era").predict("""She is admitted to The John Hopkins Hospital 2 days ago with a history of gestational diabetes mellitus diagnosed. She denied pain and any headache. She was seen by the endocrinology service and she was discharged on 03/02/2018 on 40 units of insulin glargine, 12 units of insulin lispro, and metformin 1000 mg two times a day. She had close follow-up with endocrinology post discharge. """)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 
 |    | relation   | entity1       |   entity1_begin |   entity1_end | chunk1                    | entity2       |   entity2_begin |   entity2_end | chunk2                        |   confidence |
 |---:|:-----------|:--------------|----------------:|--------------:|:--------------------------|:--------------|----------------:|--------------:|:------------------------------|-------------:|
@@ -138,13 +79,6 @@ Results
 |  5 | OVERLAP    | DATE          |              45 |            54 | 2 days ago                | PROBLEM       |              74 |           102 | gestational diabetes mellitus |     0.996954 |
 |  6 | BEFORE     | EVIDENTIAL    |             119 |           124 | denied                    | PROBLEM       |             126 |           129 | pain                          |     1        |
 |  7 | BEFORE     | EVIDENTIAL    |             119 |           124 | denied                    | PROBLEM       |             135 |           146 | any headache                  |     1        |
-
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

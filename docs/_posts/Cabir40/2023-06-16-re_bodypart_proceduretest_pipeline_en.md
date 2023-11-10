@@ -59,74 +59,12 @@ nlu.load("en.relation.bodypart_proceduretest.pipeline").predict("""TECHNIQUE IN 
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("re_bodypart_proceduretest_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("TECHNIQUE IN DETAIL: After informed consent was obtained from the patient and his mother, the chest was scanned with portable ultrasound.")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("re_bodypart_proceduretest_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("TECHNIQUE IN DETAIL: After informed consent was obtained from the patient and his mother, the chest was scanned with portable ultrasound.")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.relation.bodypart_proceduretest.pipeline").predict("""TECHNIQUE IN DETAIL: After informed consent was obtained from the patient and his mother, the chest was scanned with portable ultrasound.""")
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("re_bodypart_proceduretest_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("TECHNIQUE IN DETAIL: After informed consent was obtained from the patient and his mother, the chest was scanned with portable ultrasound.")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("re_bodypart_proceduretest_pipeline", "en", "clinical/models")
-
-pipeline.fullAnnotate("TECHNIQUE IN DETAIL: After informed consent was obtained from the patient and his mother, the chest was scanned with portable ultrasound.")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.relation.bodypart_proceduretest.pipeline").predict("""TECHNIQUE IN DETAIL: After informed consent was obtained from the patient and his mother, the chest was scanned with portable ultrasound.""")
-```
-</div>
-
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
-
 | index | relations | entity1                      | entity1_begin | entity1_end | chunk1 | entity2 | entity2_end | entity2_end | chunk2              | confidence |
 |-------|-----------|------------------------------|---------------|-------------|--------|---------|-------------|-------------|---------------------|------------|
 | 0     | 1         | External_body_part_or_region | 94            | 98          | chest  | Test    | 117         | 135         | portable ultrasound | 1.0        |
-
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

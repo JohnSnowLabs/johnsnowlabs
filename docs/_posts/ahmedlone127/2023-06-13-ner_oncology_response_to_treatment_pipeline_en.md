@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_oncology_response_to_treatm
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -54,40 +55,15 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_oncology_response_to_treatment_pipeline", "en", "clinical/models")
 
-text = '''She completed her first-line therapy, but some months later there was recurrence of the breast cancer.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_response_to_treatment_pipeline", "en", "clinical/models")
-
-val text = "She completed her first-line therapy, but some months later there was recurrence of the breast cancer."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks   |   begin |   end | ner_label             |   confidence |
 |---:|:-------------|--------:|------:|:----------------------|-------------:|
 |  0 | recurrence   |      70 |    79 | Response_To_Treatment |       0.9767 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

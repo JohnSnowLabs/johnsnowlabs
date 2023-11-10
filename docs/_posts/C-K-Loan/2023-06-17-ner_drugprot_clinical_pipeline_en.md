@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_drugprot_clinical](https://
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,47 +63,15 @@ nlu.load("en.med_ner.clinical_drugprot.pipeline").predict("""Anabolic effects of
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_drugprot_clinical_pipeline", "en", "clinical/models")
-
-text = '''Anabolic effects of clenbuterol on skeletal muscle are mediated by beta 2-adrenoceptor activation.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_drugprot_clinical_pipeline", "en", "clinical/models")
-
-val text = "Anabolic effects of clenbuterol on skeletal muscle are mediated by beta 2-adrenoceptor activation."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.clinical_drugprot.pipeline").predict("""Anabolic effects of clenbuterol on skeletal muscle are mediated by beta 2-adrenoceptor activation.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks          |   begin |   end | ner_label   |   confidence |
 |---:|:--------------------|--------:|------:|:------------|-------------:|
 |  0 | clenbuterol         |      20 |    30 | CHEMICAL    |      0.9691  |
 |  1 | beta 2-adrenoceptor |      67 |    85 | GENE        |      0.89855 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

@@ -55,11 +55,9 @@ val result = pipeline.annotate(My son has been to two doctors who gave him antib
 ## Results
 
 ```bash
-
 | text                                                                                                                   | prediction       |
 |:-----------------------------------------------------------------------------------------------------------------------|:-----------------|
 | My son has been to two doctors who gave him antibiotic drops but they also say the problem might related to allergies. | Consulted_By_HCP |
-
 ```
 
 {:.model-param}

@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of `icd10cm_snomed_mapper` model.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -59,11 +60,9 @@ nlu.load("en.map_entity.icd10cm_to_snomed.pipe").predict("""Put your text here."
 ## Results
 
 ```bash
-
 |    | icd10cm_code          | snomed_code                              |
 |---:|:----------------------|:-----------------------------------------|
 |  0 | R079 | N4289 | M62830 | 161972006 | 22035000 | 16410651000119105 |
-
 ```
 
 {:.model-param}

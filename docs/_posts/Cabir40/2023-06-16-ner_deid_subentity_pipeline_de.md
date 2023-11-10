@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_deid_subentity](https://nlp
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,10 @@ nlu.load("de.deid.ner_subentity.pipeline").predict("""Michael Berger wird am Mor
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "de", "clinical/models")
-
-text = '''Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_deid_subentity_pipeline", "de", "clinical/models")
-
-val text = "Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("de.deid.ner_subentity.pipeline").predict("""Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks            |   begin |   end | ner_label   |   confidence |
 |---:|:----------------------|--------:|------:|:------------|-------------:|
 |  0 | Michael Berger        |       0 |    13 | PATIENT     |      0.99685 |
@@ -104,9 +75,6 @@ Results
 |  3 | Bad Kissingen         |      84 |    96 | CITY        |      0.69685 |
 |  4 | Berger                |     117 |   122 | PATIENT     |      0.5764  |
 |  5 | 76                    |     128 |   129 | AGE         |      1       |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

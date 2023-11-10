@@ -34,58 +34,7 @@ This pretrained pipeline is built on the top of [ner_oncology_therapy](https://n
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_oncology_therapy_pipeline", "en", "clinical/models")
-
-text = '''The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago.
-The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to her breast.
-The cancer recurred as a right lung metastasis 13 years later. The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_therapy_pipeline", "en", "clinical/models")
-
-val text = "The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago.
-The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to her breast.
-The cancer recurred as a right lung metastasis 13 years later. The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_oncology_therapy_pipeline", "en", "clinical/models")
-
-text = '''The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago.
-The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to her breast.
-The cancer recurred as a right lung metastasis 13 years later. The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_therapy_pipeline", "en", "clinical/models")
-
-val text = "The had previously undergone a left mastectomy and an axillary lymph node dissection for a left breast cancer twenty years ago.
-The tumor was positive for ER and PR. Postoperatively, radiotherapy was administered to her breast.
-The cancer recurred as a right lung metastasis 13 years later. The patient underwent a regimen consisting of adriamycin (60 mg/m2) and cyclophosphamide (600 mg/m2) over six courses, as first line therapy."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -126,12 +75,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunks                     |   begin |   end | ner_label             |   confidence |
 |---:|:-------------------------------|--------:|------:|:----------------------|-------------:|
 |  0 | mastectomy                     |      36 |    45 | Cancer_Surgery        |     0.9817   |
@@ -144,12 +87,6 @@ Results
 |  7 | 600 mg/m2                      |     381 |   389 | Dosage                |     0.64205  |
 |  8 | six courses                    |     397 |   407 | Cycle_Count           |     0.46815  |
 |  9 | first line                     |     413 |   422 | Line_Of_Therapy       |     0.95015  |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

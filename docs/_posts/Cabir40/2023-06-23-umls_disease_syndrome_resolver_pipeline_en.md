@@ -34,6 +34,7 @@ This pretrained pipeline maps entities (Diseases and Syndromes) with their corre
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -56,36 +57,11 @@ import nlu
 nlu.load("en.map_entity.umls_disease_syndrome_resolver").predict("""A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria""")
 ```
 
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline= PretrainedPipeline("umls_disease_syndrome_resolver_pipeline", "en", "clinical/models")
-pipeline.annotate("A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline= PretrainedPipeline("umls_disease_syndrome_resolver_pipeline", "en", "clinical/models")
-val pipeline.annotate("A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.map_entity.umls_disease_syndrome_resolver").predict("""A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria""")
-```
 </div>
 
 ## Results
 
 ```bash
-Results
-
-
 +-----------------------------+---------+---------+
 |chunk                        |ner_label|umls_code|
 +-----------------------------+---------+---------+
@@ -94,10 +70,6 @@ Results
 |acyclovir allergy            |PROBLEM  |C0571297 |
 |polyuria                     |PROBLEM  |C0018965 |
 +-----------------------------+---------+---------+
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}

@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_diseases_biobert](https://n
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,49 +63,17 @@ nlu.load("en.med_ner.diseases_biobert.pipeline").predict("""Indomethacin resulte
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_diseases_biobert_pipeline", "en", "clinical/models")
-
-text = '''Indomethacin resulted in histopathologic findings typical of interstitial cystitis, such as leaky bladder epithelium and mucosal mastocytosis. The true incidence of nonsteroidal anti-inflammatory drug-induced cystitis in humans must be clarified by prospective clinical trials. An open-label phase II study of low-dose thalidomide in androgen-independent prostate cancer.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_diseases_biobert_pipeline", "en", "clinical/models")
-
-val text = "Indomethacin resulted in histopathologic findings typical of interstitial cystitis, such as leaky bladder epithelium and mucosal mastocytosis. The true incidence of nonsteroidal anti-inflammatory drug-induced cystitis in humans must be clarified by prospective clinical trials. An open-label phase II study of low-dose thalidomide in androgen-independent prostate cancer."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.diseases_biobert.pipeline").predict("""Indomethacin resulted in histopathologic findings typical of interstitial cystitis, such as leaky bladder epithelium and mucosal mastocytosis. The true incidence of nonsteroidal anti-inflammatory drug-induced cystitis in humans must be clarified by prospective clinical trials. An open-label phase II study of low-dose thalidomide in androgen-independent prostate cancer.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk             |   begin |   end | ner_label   |   confidence |
 |---:|:----------------------|--------:|------:|:------------|-------------:|
 |  0 | interstitial cystitis |      61 |    81 | Disease     |      0.99655 |
 |  1 | mastocytosis          |     129 |   140 | Disease     |      0.8569  |
 |  2 | cystitis              |     209 |   216 | Disease     |      0.9717  |
 |  3 | prostate cancer       |     355 |   369 | Disease     |      0.85965 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

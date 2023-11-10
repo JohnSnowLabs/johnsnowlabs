@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_deid_biobert](https://nlp.j
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,11 @@ nlu.load("en.deid.ner_biobert.pipeline").predict("""A. Record date : 2093-01-13,
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_deid_biobert_pipeline", "en", "clinical/models")
-
-text = '''A. Record date : 2093-01-13, David Hale, M.D. Name : Hendrickson, Ora MR. # 7194334. PCP : Oliveira, non-smoking. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_deid_biobert_pipeline", "en", "clinical/models")
-
-val text = "A. Record date : 2093-01-13, David Hale, M.D. Name : Hendrickson, Ora MR. # 7194334. PCP : Oliveira, non-smoking. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.deid.ner_biobert.pipeline").predict("""A. Record date : 2093-01-13, David Hale, M.D. Name : Hendrickson, Ora MR. # 7194334. PCP : Oliveira, non-smoking. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. Patient's complaints first surfaced when he started working for Brothers Coal-Mine.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk                     |   begin |   end | ner_label   |   confidence |
 |---:|:------------------------------|--------:|------:|:------------|-------------:|
 |  0 | 2093-01-13                    |      17 |    26 | DATE        |      0.981   |
@@ -107,9 +79,6 @@ Results
 |  6 | Keats Street                  |     150 |   161 | LOCATION    |      0.77305 |
 |  7 | Phone                         |     164 |   168 | LOCATION    |      0.7083  |
 |  8 | Brothers                      |     253 |   260 | LOCATION    |      0.9447  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

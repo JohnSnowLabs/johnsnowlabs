@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_anato
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -80,58 +81,11 @@ Dermatologic: She has got redness along her right great toe, but no bleeding or 
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("bert_token_classifier_ner_anatomy_pipeline", "en", "clinical/models")
-
-text = '''This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.
-General: Well-developed female, in no acute distress, afebrile.
-HEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.
-Neck: No lymphadenopathy.
-Chest: Clear.
-Abdomen: Positive bowel sounds and soft.
-Dermatologic: She has got redness along her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_anatomy_pipeline", "en", "clinical/models")
-
-val text = "This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.
-General: Well-developed female, in no acute distress, afebrile.
-HEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.
-Neck: No lymphadenopathy.
-Chest: Clear.
-Abdomen: Positive bowel sounds and soft.
-Dermatologic: She has got redness along her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.classify.token_bert.anatomy_pipeline").predict("""This is an 11-year-old female who comes in for two different things. 1. She was seen by the allergist. No allergies present, so she stopped her Allegra, but she is still real congested and does a lot of snorting. They do not notice a lot of snoring at night though, but she seems to be always like that. 2. On her right great toe, she has got some redness and erythema. Her skin is kind of peeling a little bit, but it has been like that for about a week and a half now.
-General: Well-developed female, in no acute distress, afebrile.
-HEENT: Sclerae and conjunctivae clear. Extraocular muscles intact. TMs clear. Nares patent. A little bit of swelling of the turbinates on the left. Oropharynx is essentially clear. Mucous membranes are moist.
-Neck: No lymphadenopathy.
-Chest: Clear.
-Abdomen: Positive bowel sounds and soft.
-Dermatologic: She has got redness along her right great toe, but no bleeding or oozing. Some dryness of her skin. Her toenails themselves are very short and even on her left foot and her left great toe the toenails are very short.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk        |   begin |   end | ner_label              |   confidence |
 |---:|:-----------------|--------:|------:|:-----------------------|-------------:|
 |  0 | great            |     320 |   324 | Multi-tissue_structure |     0.693343 |
@@ -154,9 +108,6 @@ Results
 | 17 | great            |    1017 |  1021 | Multi-tissue_structure |     0.818323 |
 | 18 | toe              |    1023 |  1025 | Organism_subdivision   |     0.341098 |
 | 19 | toenails         |    1031 |  1038 | Organism_subdivision   |     0.75016  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

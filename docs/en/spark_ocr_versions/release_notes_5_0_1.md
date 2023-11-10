@@ -23,12 +23,16 @@ Release date: 21-09-2023
 🚨 **New Features**
 
 + New Dit based Text Detection Model: Continuing with our commitment to empower Text Extraction and De-identification pipelines we are delivering a new model for text detection, it was trained on the FUNSD dataset, and its utilization is similar to other related models,
-
+```
+   python
 ImageTextDetector \
 .pretrained("image_text_detector_dit", "en", "clinical/ocr") \
 .setInputCol("image")
 .setOutputCol("region")
 .setScoreThreshold(0.5)
+```
+
+![image](/assets/images/ocr/image_text_detector_dit.png)
 
 It is currently the best performing model at the FUNSD dataset, achieving an accuracy of 94% vs Craft detector which achieved 78.7%, and is recommended for De-identification and Text Extraction pipelines.
 
@@ -48,8 +52,6 @@ It is currently the best performing model at the FUNSD dataset, achieving an acc
 + Serialization issues preventing ImageTableDetector and HocrToTextTable from working properly in a pipeline were fixed.
 + PositionFinder has improved error reporting logic.
 + ImageToText MacOS errors were solved.
-
-
 
 
 

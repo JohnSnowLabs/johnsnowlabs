@@ -57,11 +57,9 @@ val result = pipeline.annotate(I felt kind of dizzy after taking that medication
 ## Results
 
 ```bash
-
 | text                                                           | prediction   |
 |:---------------------------------------------------------------|:-------------|
 | I felt kind of dizzy after taking that medication for a month. | True         |
-
 ```
 
 {:.model-param}

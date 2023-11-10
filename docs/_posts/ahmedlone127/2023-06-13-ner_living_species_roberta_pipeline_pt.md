@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_living_species_roberta](htt
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -54,34 +55,10 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_living_species_roberta_pipeline", "pt", "clinical/models")
-
-text = '''Mulher de 23 anos, de Capinota, Cochabamba, Bolívia. Ela está no nosso país há quatro anos. Frequentou o departamento de emergência obstétrica onde foi encontrada grávida de 37 semanas, com um colo dilatado de 5 cm e membranas rompidas. O obstetra de emergência realizou um teste de estreptococos negativo e solicitou um hemograma, glucose, bioquímica básica, HBV, HCV e serologia da sífilis.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_living_species_roberta_pipeline", "pt", "clinical/models")
-
-val text = "Mulher de 23 anos, de Capinota, Cochabamba, Bolívia. Ela está no nosso país há quatro anos. Frequentou o departamento de emergência obstétrica onde foi encontrada grávida de 37 semanas, com um colo dilatado de 5 cm e membranas rompidas. O obstetra de emergência realizou um teste de estreptococos negativo e solicitou um hemograma, glucose, bioquímica básica, HBV, HCV e serologia da sífilis."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks    |   begin |   end | ner_label   |   confidence |
 |---:|:--------------|--------:|------:|:------------|-------------:|
 |  0 | Mulher        |       0 |     5 | HUMAN       |       0.9975 |
@@ -91,9 +68,6 @@ Results
 |  4 | HBV           |     360 |   362 | SPECIES     |       0.9911 |
 |  5 | HCV           |     365 |   367 | SPECIES     |       0.9858 |
 |  6 | sífilis       |     384 |   390 | SPECIES     |       0.8898 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

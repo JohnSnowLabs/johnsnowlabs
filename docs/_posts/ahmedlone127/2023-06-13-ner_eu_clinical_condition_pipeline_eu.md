@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_condition](http
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -58,38 +59,11 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_eu_clinical_condition_pipeline", "eu", "clinical/models")
-
-text = "
-Gertaera honetatik bi hilabetetara, umea Larrialdietako Zerbitzura dator 4 egunetan zehar buruko mina eta bekokiko hantura azaltzeagatik, sukarrik izan gabe. Miaketan, haztapen mingarria duen bekokiko  hantura bigunaz gain, ez da beste zeinurik azaltzen. Polakiuria eta tenesmo arina ere izan zuen egun horretan hematuriarekin batera. Geroztik sintomarik gabe dago.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_condition_pipeline", "eu", "clinical/models")
-
-val text = "
-Gertaera honetatik bi hilabetetara, umea Larrialdietako Zerbitzura dator 4 egunetan zehar buruko mina eta bekokiko hantura azaltzeagatik, sukarrik izan gabe. Miaketan, haztapen mingarria duen bekokiko  hantura bigunaz gain, ez da beste zeinurik azaltzen. Polakiuria eta tenesmo arina ere izan zuen egun horretan hematuriarekin batera. Geroztik sintomarik gabe dago.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | chunks     |   begin |   end | entities           |   confidence |
 |---:|:-----------|--------:|------:|:-------------------|-------------:|
 |  0 | mina       |      98 |   101 | clinical_condition |       0.8754 |
@@ -99,9 +73,6 @@ Results
 |  4 | hantura    |     203 |   209 | clinical_condition |       0.8805 |
 |  5 | Polakiuria |     256 |   265 | clinical_condition |       0.6683 |
 |  6 | sintomarik |     345 |   354 | clinical_condition |       0.9632 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

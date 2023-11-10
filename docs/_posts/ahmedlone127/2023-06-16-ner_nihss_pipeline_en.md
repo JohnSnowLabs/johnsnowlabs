@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_nihss](https://nlp.johnsnow
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,10 @@ nlu.load("en.med_ner.nihss_pipeline").predict("""Abdomen , soft , nontender . NI
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_nihss_pipeline", "en", "clinical/models")
-
-text = '''Abdomen , soft , nontender . NIH stroke scale on presentation was 23 to 24 for , one for consciousness , two for month and year and two for eye / grip , one to two for gaze , two for face , eight for motor , one for limited ataxia , one to two for sensory , three for best language and two for attention . On the neurologic examination the patient was intermittently'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_nihss_pipeline", "en", "clinical/models")
-
-val text = "Abdomen , soft , nontender . NIH stroke scale on presentation was 23 to 24 for , one for consciousness , two for month and year and two for eye / grip , one to two for gaze , two for face , eight for motor , one for limited ataxia , one to two for sensory , three for best language and two for attention . On the neurologic examination the patient was intermittently"
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.nihss_pipeline").predict("""Abdomen , soft , nontender . NIH stroke scale on presentation was 23 to 24 for , one for consciousness , two for month and year and two for eye / grip , one to two for gaze , two for face , eight for motor , one for limited ataxia , one to two for sensory , three for best language and two for attention . On the neurologic examination the patient was intermittently""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks       |   begin |   end | ner_label       |   confidence |
 |---:|:-----------------|--------:|------:|:----------------|-------------:|
 |  0 | NIH stroke scale |      29 |    44 | NIHSS           |     0.973533 |
@@ -120,9 +91,6 @@ Results
 | 19 | three            |     258 |   262 | Measurement     |     0.8896   |
 | 20 | best language    |     268 |   280 | 9_BestLanguage  |     0.89415  |
 | 21 | two              |     286 |   288 | Measurement     |     0.949    |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

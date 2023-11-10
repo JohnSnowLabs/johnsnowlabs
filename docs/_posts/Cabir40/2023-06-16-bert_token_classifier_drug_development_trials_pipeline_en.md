@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [bert_token_classifier_drug_deve
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -60,42 +61,11 @@ import nlu
 nlu.load("en.classify.token_bert.druge_developement.pipeline").predict("""In June 2003, the median overall survival  with and without topotecan were 4.0 and 3.6 months, respectively. The best complete response  ( CR ) , partial response  ( PR ) , stable disease and progressive disease were observed in 23, 63, 55 and 33 patients, respectively, with  topotecan,  and 11, 61, 66 and 32 patients, respectively, without topotecan.""")
 ```
 
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_token_classifier_drug_development_trials_pipeline", "en", "clinical/models")
-
-text = '''In June 2003, the median overall survival  with and without topotecan were 4.0 and 3.6 months, respectively. The best complete response  ( CR ) , partial response  ( PR ) , stable disease and progressive disease were observed in 23, 63, 55 and 33 patients, respectively, with  topotecan,  and 11, 61, 66 and 32 patients, respectively, without topotecan.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_drug_development_trials_pipeline", "en", "clinical/models")
-
-val text = "In June 2003, the median overall survival  with and without topotecan were 4.0 and 3.6 months, respectively. The best complete response  ( CR ) , partial response  ( PR ) , stable disease and progressive disease were observed in 23, 63, 55 and 33 patients, respectively, with  topotecan,  and 11, 61, 66 and 32 patients, respectively, without topotecan."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.classify.token_bert.druge_developement.pipeline").predict("""In June 2003, the median overall survival  with and without topotecan were 4.0 and 3.6 months, respectively. The best complete response  ( CR ) , partial response  ( PR ) , stable disease and progressive disease were observed in 23, 63, 55 and 33 patients, respectively, with  topotecan,  and 11, 61, 66 and 32 patients, respectively, without topotecan.""")
-```
 </div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk               |   begin |   end | ner_label     |   confidence |
 |---:|:------------------------|--------:|------:|:--------------|-------------:|
 |  0 | June 2003               |       3 |    11 | DATE          |     0.996034 |
@@ -118,9 +88,6 @@ Results
 | 17 | 66                      |     301 |   302 | Patient_Count |     0.998066 |
 | 18 | 32 patients             |     308 |   318 | Patient_Count |     0.996285 |
 | 19 | without topotecan       |     335 |   351 | Trial_Group   |     0.971218 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}
