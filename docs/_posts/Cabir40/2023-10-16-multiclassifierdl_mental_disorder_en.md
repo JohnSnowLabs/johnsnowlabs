@@ -35,6 +35,7 @@ The Mental Disorder Classifier Model is a specialized text classification system
 
 `Anxiety Disorder`, `Bipolar disorder`, `No`, `Schizophrenia`, `Depression`, `Other/Unknown`
 
+
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MENTAL_HEALTH.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
@@ -133,7 +134,7 @@ val data = Seq(Array(
     """Commenced CBT to equip the patient with coping strategies for persistent irrational fears and nervousness stemming from their anxiety disorder.""",
     """Michael Anderson takes medications for schizophrenia, hypertension, hyperlipidemia, and migraines.""",
     """With a clinical presentation of persistent wheezing and respiratory discomfort, the patient has been conclusively diagnosed with Asthma, necessitating immediate commencement of anti-inflammatory medications.""",
-    )).toDS.toDF("text")
+)).toDS.toDF("text")
 
 val result = clf_pipeline.fit(data).transform(data)
 
