@@ -38,6 +38,7 @@ DocVQA seeks to inspire a “purpose-driven” point of view in Document Analysi
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 binary_to_image = BinaryToImage()\
     .setInputCol("content") \
