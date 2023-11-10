@@ -5,7 +5,7 @@ author: John Snow Labs
 name: docvqa_donut_base_opt
 date: 2023-11-10
 tags: [en, licensed]
-task: Question Answering
+task: Document Visual Question Answering
 language: en
 edition: Visual NLP 5.1.0
 spark_version: 3.2
