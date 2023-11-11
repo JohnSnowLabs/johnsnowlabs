@@ -8,7 +8,7 @@ tags: [en, licensed]
 task: Document Visual Question Answering
 language: en
 edition: Visual NLP 5.1.0
-spark_version: 3.2
+spark_version: 3.0
 supported: true
 annotator: VisualQuestionAnsweringDonut
 article_header:
