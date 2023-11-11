@@ -12,7 +12,7 @@ spark_version: 3.0
 supported: true
 annotator: AssertionDLModel
 article_header:
-  type: cover
+type: cover
 use_language_switcher: "Python-Scala-Java"
 ---
 
@@ -52,7 +52,7 @@ tokenizer = nlp.Tokenizer()\
     .setOutputCol("token")
 
 bert_embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base", "en")\
-    .setInputCols("document", "token")\
+    .setInputCols("sentence", "token")\
     .setOutputCol("embeddings")\
     .setMaxSentenceLength(512)
 
