@@ -12,13 +12,13 @@ spark_version: 3.0
 supported: true
 annotator: FinanceNerModel
 article_header:
-  type: cover
+type: cover
 use_language_switcher: "Python-Scala-Java"
 ---
 
 ## Description
 
-This Financial NER model can extract fine-grained information with respect to entities mentioned in user comments.
+This NER model identifies entities that can be associated with a financial sentiment. The model is designed to be used with the associated Assertion Status model that classifies the entities into a sentiment category.
 
 ## Predicted Entities
 
@@ -52,13 +52,13 @@ tokenizer = nlp.Tokenizer()\
     .setOutputCol("token")
 
 bert_embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base", "en")\
-    .setInputCols("document", "token")\
+    .setInputCols("sentence", "token")\
     .setOutputCol("embeddings")\
     .setMaxSentenceLength(512)
 
 
 ner_model = finance.NerModel().pretrained("finner_aspect_based_sentiment_md", "en", "finance/models")\
-    .setInputCols(["document", "token", "embeddings"])\
+    .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
 
 ner_converter = nlp.NerConverter()\
