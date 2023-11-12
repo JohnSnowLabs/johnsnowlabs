@@ -82,37 +82,37 @@ We have a new clinical NER model specifically designed for the Hebrew language. 
 
 ####  New Social Determinants of Healthcare (SDoH) Model for Frailty Classification
 
-Introducing a new frailty classification model trained on a diverse dataset and it provides accurate label assignments and confidence scores for its predictions. The primary goal of this model is to categorize text into two key labels: `High_or_Low_Frailty` and `No_Frailty_or_Unknown`.
+Introducing a new frailty classification model trained on a diverse dataset and it provides accurate label assignments and confidence scores for its predictions. The primary goal of this model is to categorize text into two key labels: `Frail` and `Non_Frail`.
 
 
 *Example*:
 
 ```python
 sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_sdoh_frailty", "en", "clinical/models")\
-    .setInputCols(["document","token"])\
+    .setInputCols(["document", "token"])\
     .setOutputCol("prediction")
 
 sample_texts=[  
-  "Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatment plan that includes surgery, chemotherapy, and radiation therapy.",
-  "Post-chemotherapy, the patient was under regular surveillance for osteosarcoma. Recent imaging showed no signs of local recurrence or distant metastasis. Whereas the recovery was challenging, current evaluation confirms patient is in remission.",
-  "The patient was diagnosed with stage II colon cancer and will be undergoing a treatment regimen that includes both chemotherapy and radiation therapy.",
-  "Thyroid nodules detected during routine examination; fine-needle aspiration was conducted. Cytology results indicated no malignancy, consistent with a benign thyroid adenoma. However, patient is advised for a follow-up ultrasound in 12 months to monitor nodule size.",
-  "The patient's persistent lymphadenopathy led to further tests, which confirmed a diagnosis of AIDS.",
-  "Female patient presented with pelvic discomfort. Ovarian cysts were found during ultrasound; however, CA-125 levels are within normal range, and repeat imaging has shown consistent cyst size. No features of ovarian cancer were present, and a follow-up is scheduled in six months."
+  "Patient demonstrates a marked decrease in muscle strength and endurance, requiring assistance for basic activities.",
+  "Clinical evaluation indicates robust health with no signs of physical debilitation.",
+  "Noted significant weight loss and diminished muscle mass over the past several months.",
+  "Follow-up examinations show complete remission of previous oncological concerns.",
+  "The patient exhibits increased susceptibility to skin tears and bruising with minimal contact.",
+  "Laboratory results reveal the patient's complete recovery from hepatitis, with normal liver function tests."
 ]
 
 ```
 
 *Result*:
 
-|                                                                                          text      |      result           |
-|----------------------------------------------------------------------------------------------------|-----------------------|
-|Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatm...|   High_or_Low_Frailty |
-|Post-chemotherapy, the patient was under regular surveillance for osteosarcoma. Recent imaging sh...| No_Frailty_or_Unknown |
-|The patient was diagnosed with stage II colon cancer and will be undergoing a treatment regimen t...|   High_or_Low_Frailty |
-|Thyroid nodules detected during routine examination; fine-needle aspiration was conducted. Cytolo...| No_Frailty_or_Unknown |
-| The patient's persistent lymphadenopathy led to further tests, which confirmed a diagnosis of AIDS.|   High_or_Low_Frailty |
-|Female patient presented with pelvic discomfort. Ovarian cysts were found during ultrasound; howe...| No_Frailty_or_Unknown |
+|                                                                                          text      | result    |
+|----------------------------------------------------------------------------------------------------|-----------|
+|Patient demonstrates a marked decrease in muscle strength and endurance, requiring assistance for...| Frail     |
+|Clinical evaluation indicates robust health with no signs of physical debilitation.                 | Non_Frail |
+|Noted significant weight loss and diminished muscle mass over the past several months.              | Frail     |
+|Follow-up examinations show complete remission of previous oncological concerns.                    | Non_Frail |
+|The patient exhibits increased susceptibility to skin tears and bruising with minimal contact.      | Frail     |
+|Laboratory results reveal the patient's complete recovery from hepatitis, with normal liver funct...| Non_Frail |
 
 
 Please check [Social Determinant Sequence Classification Demo](https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_SEQUENCE_CLASSIFICATION/)
@@ -221,7 +221,7 @@ The alternative Number Generation Algorithms are `NativePRNG`, `NativePRNGBlocki
 ```python
 import sparknlp_jsl
 
-params = {"spark.jsl.settings.seed.numberGenerationAlgorithm": "SHA1PRNG",}
+params = {"spark.jsl.settings.seed.numberGenerationAlgorithm": "SHA1PRNG"}
 
 spark = sparknlp_jsl.start(license_keys['SECRET'], params=params)
 ```
