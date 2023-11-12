@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is a financial version of the E5 base model fine-tuned on earning call transcripts and finance question-answering datasets. Reference: Wang, Liang, et al. "Text embeddings by weakly-supervised contrastive pre-training." arXiv preprint arXiv:2212.03533 (2022).
+This model is a financial version of the E5 base model fine-tuned on in-house curated financial datasets. Reference: Wang, Liang, et al. "Text embeddings by weakly-supervised contrastive pre-training." arXiv preprint arXiv:2212.03533 (2022).
 
 ## Predicted Entities
 
@@ -87,7 +87,5 @@ result. Select("E5.result").show()
 
 ## References
 
-For our Finance models, we will use publicly available datasets to fine-tune the model:
 
-- [FiQA](https://public.ukp.informatik.tu-darmstadt.de/thakur/BEIR/datasets/)
-- In-house annotated Earning Calls Transcripts
+In-house curated financial datasets.

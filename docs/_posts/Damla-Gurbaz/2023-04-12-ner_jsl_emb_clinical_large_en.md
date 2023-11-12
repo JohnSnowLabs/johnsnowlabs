@@ -58,7 +58,7 @@ Definitions of Predicted Entities:
 - `Symptom`: All the symptoms mentioned in the document, of a patient or someone else. 
 - `Treatment`: Includes therapeutic and minimally invasive treatment and procedures (invasive treatments or procedures are extracted as "Procedure"). 
 - `Substance`: All mentions of substance use related to the patient or someone else (recreational drugs, illicit drugs). 
-- `Route`: Drug and medication administration routes available described by [FDA](http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
+- `Route`: Drug and medication administration routes available described by [FDA](https://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
 - `Drug_Ingredient`: Active ingredient/s found in drug products. 
 - `Blood_Pressure`: Systemic blood pressure, mean arterial pressure, systolic and/or diastolic are extracted. 
 - `Diet`: All mentions and information regarding patients dietary habits. 
@@ -78,9 +78,9 @@ Definitions of Predicted Entities:
 - `Modifier`: Terms that modify the symptoms, diseases or risk factors. If a modifier is included in ICD-10 name of a specific disease, the respective modifier is not extracted separately. 
 - `Internal_organ_or_component`: All mentions related to internal body parts or organs that can not be examined by naked eye. 
 - `Clinical_Dept`: Terms that indicate the medical and/or surgical departments. 
-- `Form`: Drug and medication forms available described by [FDA](http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
+- `Form`: Drug and medication forms available described by [FDA](https://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
 - `Drug_BrandName`: Commercial labeling name chosen by the labeler or the drug manufacturer for a drug containing a single or multiple drug active ingredients. 
-- `Strength`: Potency of one unit of drug (or a combination of drugs) the measurement units available are described by [FDA](http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
+- `Strength`: Potency of one unit of drug (or a combination of drugs) the measurement units available are described by [FDA](https://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
 - `Fetus_NewBorn`: All terms related to fetus, infant, new born (excluding terms that are extracted with their specific labels, such as "Labour_Delivery", "Pregnancy" etc.). 
 - `RelativeDate`: Temporal references that are relative to the date of the text or to any other specific date (e.g. "approximately two years ago", "about two days ago"). 
 - `Height`: All mentions related to a patients height. 
@@ -92,7 +92,7 @@ Definitions of Predicted Entities:
 - `Vaccine`: Generic and brand name of vaccines or vaccination procedure. 
 - `Vital_Signs_Header`: Identifies section headers that correspond to Vital Signs of a patient. 
 - `Communicable_Disease`: Includes all mentions of communicable diseases. 
-- `Dosage`: Quantity prescribed by the physician for an active ingredient; measurement units are available described by [FDA](http://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
+- `Dosage`: Quantity prescribed by the physician for an active ingredient; measurement units are available described by [FDA](https://wayback.archive-it.org/7993/20171115111313/https:/www.fda.gov/Drugs/DevelopmentApprovalProcess/FormsSubmissionRequirements/ElectronicSubmissions/DataStandardsManualmonographs/ucm071667.htm). 
 - `Overweight`: Terms related to the patient being overweight (BMI and Obesity is extracted separately). 
 - `Hypertension`: All terms related to Hypertension (quantitative data such as 150/100 is extracted as Blood_Pressure). 
 - `HDL`: Terms related to the lab test for HDL (High Density Lipoprotein). 

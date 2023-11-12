@@ -19,7 +19,7 @@ data:
         - subtitle: Oncology - Live Demos & Notebooks
           activemenu: oncology
       source: yes
-      source: 
+      source:        
         - title: Explore Oncology Notes with Spark NLP Models
           id: explore_oncology_notes_spark_models
           image: 
@@ -31,7 +31,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ONCOLOGY/
           - text: Colab
             type: blue_btn
-            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/27.Oncology_Model.ipynb
         - title: Identify Anatomical and Oncology entities related to different Treatments and Diagnosis from Clinical Texts
           id: identify_anatomical_entities_oncology_entities_related_treatments_different
           image: 
@@ -91,7 +91,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/RE_ONCOLOGY/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/27.Oncology_Model.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings_JSL/Healthcare/27.Oncology_Model.ipynb        
         - title: Resolve Oncology terminology using the ICD-O taxonomy
           id: resolve_oncology_terminology_using_icdo_taxonomy
           image: 
@@ -103,5 +103,29 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ER_ICDO/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_ICDO.ipynb         
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_ICDO.ipynb
+        - title: Classify Complaints about Healthcare Facilities 
+          id: classify_complaints_healthcare_facilities 
+          image: 
+              src: /assets/images/Classify_Complaints_about_Healthcare_Facilities.svg
+          excerpt: This demo classifies google reviews of various healthcare facilities.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_PATIENT_COMPLAINT_AND_URGENCY/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/CLASSIFICATION_PATIENT_COMPLAINT_AND_URGENCY.ipynb
+        - title: Multilabel Classification For Hallmarks of Cancer
+          id: multilabel_classification_hallmarks_cancer
+          image: 
+              src: /assets/images/Multilabel_Classification_For_Hallmarks_of_Cancer.svg
+          excerpt: This demo semantically classifies an article based on its abstract, specifically related to the hallmarks of cancer.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HOC/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MULTICLF_HOC.ipynb
 ---

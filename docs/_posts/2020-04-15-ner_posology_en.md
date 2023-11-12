@@ -121,7 +121,7 @@ The output is a dataframe with a sentence per row and a ``"ner"`` column contain
 
 {:.h2_title}
 ## Data Source
-Trained on the 2018 i2b2 dataset and FDA Drug datasets with ``embeddings_clinical``.
+Trained with augmented version of 2018 i2b2 dataset and FDA Drug datasets with ``embeddings_clinical``.
 https://open.fda.gov/
 
 

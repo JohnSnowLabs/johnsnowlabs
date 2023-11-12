@@ -4,9 +4,9 @@ comment: no
 header: true
 seotitle: NLP Lab | John Snow Labs
 title: Video Tutorials
-permalink: /docs/en/alab/tutorials
+permalink: /docs/en/alab/step_by_step_tutorials
 key: docs-training
-modify_date: "2021-01-26"
+modify_date: "2021-01-27"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

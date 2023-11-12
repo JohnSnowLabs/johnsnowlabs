@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Active Learning  
 permalink: /docs/en/alab/active_learning
 key: docs-training
-modify_date: "2022-10-21"
+modify_date: "2022-10-22"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

@@ -26,8 +26,8 @@ This model extracts substance usage information related to Social Determinants o
 `Smoking`, `Substance_Duration`, `Substance_Use`, `Substance_Quantity`, `Substance_Frequency`, `Alcohol`
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Models.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_substance_usage_wip_en_4.3.1_3.0_1677186927181.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_substance_usage_wip_en_4.3.1_3.0_1677186927181.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -37,6 +37,7 @@ This model extracts substance usage information related to Social Determinants o
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\

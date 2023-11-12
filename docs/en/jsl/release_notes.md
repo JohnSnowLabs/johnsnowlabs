@@ -13,6 +13,24 @@ sidebar:
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
+
+## NLU Version 4.2.2
+
+
+- support for Medical Summarizers
+
+
+New Medical Summarizers:
+- 'en.summarize.clinical_jsl'
+- 'en.summarize.clinical_jsl_augmented'
+- 'en.summarize.biomedical_pubmed'
+- 'en.summarize.generic_jsl'
+- 'en.summarize.clinical_questions'
+- 'en.summarize.radiology'
+- 'en.summarize.clinical_guidelines_large'
+- 'en.summarize.clinical_laymen'
+
+
 ## NLU Version 4.2.1
 
 Bugfixes for saving and reloading pipelines on databricks 
@@ -392,7 +410,7 @@ Supported Languages are:
 | en       | [en.classify_image.demo](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_demo_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_demo](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_demo_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
 | en       | [en.classify_image.denver_nyc_paris](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_denver_nyc_paris_en_3_0.html)                                                                                                                           | [image_classifier_vit_denver_nyc_paris](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_denver_nyc_paris_en_3_0.html)                                                                                                                           | ViTForImageClassification |
 | en       | [en.classify_image.diam](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_diam_en_3_0.html)                                                                                                                                                   | [image_classifier_vit_diam](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_diam_en_3_0.html)                                                                                                                                                   | ViTForImageClassification |
-| en       | [en.classify_image.digital](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_digital_en_3_0.html)                                                                                                                                             | [image_classifier_vit_digital](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_digital_en_3_0.html)                                                                                                                                             | ViTForImageClassification |
+| en       | [en.classify_image.digital](https://sparknlp.org/2022/08/10/image_classifier_vit_digital_en_3_0.html)                                                                                                                                             | [image_classifier_vit_digital](https://sparknlp.org/2022/08/10/image_classifier_vit_digital_en_3_0.html)                                                                                                                                             | ViTForImageClassification |
 | en       | [en.classify_image.dog](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_en_3_0.html)                                                                                                                                                     | [image_classifier_vit_dog](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_en_3_0.html)                                                                                                                                                     | ViTForImageClassification |
 | en       | [en.classify_image.dog_breed_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_breed_classifier_en_3_0.html)                                                                                                                   | [image_classifier_vit_dog_breed_classifier](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_breed_classifier_en_3_0.html)                                                                                                                   | ViTForImageClassification |
 | en       | [en.classify_image.dog_food__base_patch16_224_in21k](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_food__base_patch16_224_in21k_en_3_0.html)                                                                                           | [image_classifier_vit_dog_food__base_patch16_224_in21k](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_dog_food__base_patch16_224_in21k_en_3_0.html)                                                                                           | ViTForImageClassification |
@@ -482,7 +500,7 @@ Approximately 1000 new state-of-the-art transformer models for Question Answerin
 The entire universe of Annotators in Spark NLP  is now embellished by NLU Components by using generalizable annotation extractors methods and configs internally to support enable the new NLU util methods.
 The following annotator classes are newly captured:
 
-- BertEmbeddings[release_notes.md](release_notes.md)
+- BertEmbeddings
 - BertForQuestionAnswering
 - BertForSequenceClassification
 - BertForTokenClassification
@@ -976,7 +994,7 @@ If multiple datasets or tune parameters are defined , they are connected with  a
 
 These substrings define up the `<domain>` part of the NLU reference
 - Legal [cuad](https://arxiv.org/abs/2103.06268)
-- COVID 19 Biomedical [biosaq](http://bioasq.org/)
+- COVID 19 Biomedical [biosaq](https://bioasq.org/)
 - Biomedical Literature [pubmed](https://pubmed.ncbi.nlm.nih.gov/)
 - Twitter [tweet](https://aclanthology.org/P19-1496.pdf)
 - Wikipedia [wiki](https://www.wikipedia.org/)
@@ -1442,7 +1460,7 @@ All healthcare models added in NLU 4.0 :
 | en         | [en.map_entity.icd10cm_to_umls](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_umls_mapper_en_3_0.html)                                        | [icd10cm_umls_mapper](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_umls_mapper_en_3_0.html)                                                                 | Chunk Mapping            | ChunkMapperModel                     | Chunk Mapping[en.map_entity.icd10cm_to_umls](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_umls_mapper_en_3_0.html)                                                   |
 | en         | [en.map_entity.mesh_to_umls](https://nlp.johnsnowlabs.com/2022/06/26/mesh_umls_mapper_en_3_0.html)                                              | [mesh_umls_mapper](https://nlp.johnsnowlabs.com/2022/06/26/mesh_umls_mapper_en_3_0.html)                                                                       | Chunk Mapping            | ChunkMapperModel                     | Chunk Mapping[en.map_entity.mesh_to_umls](https://nlp.johnsnowlabs.com/2022/06/26/mesh_umls_mapper_en_3_0.html)                                                         |
 | en         | [en.map_entity.snomed_to_umls](https://nlp.johnsnowlabs.com/2022/06/27/snomed_umls_mapper_en_3_0.html)                                          | [snomed_umls_mapper](https://nlp.johnsnowlabs.com/2022/06/27/snomed_umls_mapper_en_3_0.html)                                                                   | Chunk Mapping            | ChunkMapperModel                     | Chunk Mapping[en.map_entity.snomed_to_umls](https://nlp.johnsnowlabs.com/2022/06/27/snomed_umls_mapper_en_3_0.html)                                                     |
-| en         | [en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2022/04/01/normalized_section_header_mapper_en_3_0.html)                | [normalized_section_header_mapper](https://nlp.johnsnowlabs.com/2022/04/01/normalized_section_header_mapper_en_3_0.html)                                       | Chunk Mapping            | PretrainedPipeline                   | Chunk Mapping[en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2022/04/01/normalized_section_header_mapper_en_3_0.html)                           |
+| en         | [en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2021/07/01/icd10cm_umls_mapping_en.html)                | [normalized_section_header_mapper](https://nlp.johnsnowlabs.com/2021/07/01/icd10cm_umls_mapping_en.html)                                       | Chunk Mapping            | PretrainedPipeline                   | Chunk Mapping[en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2021/07/01/icd10cm_umls_mapping_en.html)                           |
 | en         | [en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2022/04/04/normalized_section_header_mapper_en_3_0.html)                | [normalized_section_header_mapper](https://nlp.johnsnowlabs.com/2022/04/04/normalized_section_header_mapper_en_3_0.html)                                       | Chunk Mapping            | PretrainedPipeline                   | Chunk Mapping[en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2022/04/04/normalized_section_header_mapper_en_3_0.html)                           |
 | en         | [en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2022/06/26/normalized_section_header_mapper_en_3_0.html)                | [normalized_section_header_mapper](https://nlp.johnsnowlabs.com/2022/06/26/normalized_section_header_mapper_en_3_0.html)                                       | Chunk Mapping            | PretrainedPipeline                   | Chunk Mapping[en.map_entity.section_headers_normalized](https://nlp.johnsnowlabs.com/2022/06/26/normalized_section_header_mapper_en_3_0.html)                           |
 | en         | [en.icd10cm_to_snomed](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_snomed_mapper_en_3_0.html)                                               | [icd10cm_snomed_mapper](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_snomed_mapper_en_3_0.html)                                                             | Chunk Mapping            | ChunkMapperModel                     | Chunk Mapping[en.icd10cm_to_snomed](https://nlp.johnsnowlabs.com/2022/06/26/icd10cm_snomed_mapper_en_3_0.html)                                                          |
@@ -4845,7 +4863,7 @@ These new magical 1-liners which get new the folowing models
 |[nlu.load('en.resolve.snomed_body_structure')](https://nlp.johnsnowlabs.com/2021/06/15/sbiobertresolve_snomed_bodyStructure_en.html)        | [sbiobertresolve_snomed_bodyStructure](https://nlp.johnsnowlabs.com/2021/06/15/sbiobertresolve_snomed_bodyStructure_en.html)
 |[nlu.load('en.resolve.icdo_augmented')](https://nlp.johnsnowlabs.com/2021/06/22/sbiobertresolve_icdo_augmented_en.html)        | [sbiobertresolve_icdo_augmented](https://nlp.johnsnowlabs.com/2021/06/22/sbiobertresolve_icdo_augmented_en.html)
 |[nlu.load('en.embed_sentence.biobert.jsl_cased')](https://nlp.johnsnowlabs.com/2021/05/14/sbiobert_jsl_cased_en.html)        | [sbiobert_jsl_cased](https://nlp.johnsnowlabs.com/2021/05/14/sbiobert_jsl_cased_en.html)
-|[nlu.load('en.embed_sentence.biobert.jsl_umls_cased')](https://nlp.johnsnowlabs.com/2021/05/14/sbiobert_jsl_umls_cased_en.html)        | [sbiobert_jsl_umls_cased](https://nlp.johnsnowlabs.com/2021/05/14/sbiobert_jsl_umls_cased_en.html)
+|[nlu.load('en.embed_sentence.biobert.jsl_umls_cased')](https://nlp.johnsnowlabs.com/2021/06/30/sbiobert_jsl_umls_cased_en.html)        | [sbiobert_jsl_umls_cased](https://nlp.johnsnowlabs.com/2021/06/30/sbiobert_jsl_umls_cased_en.html)
 |[nlu.load('en.embed_sentence.bert.jsl_medium_uncased')](https://nlp.johnsnowlabs.com/2021/05/14/sbert_jsl_medium_uncased_en.html)        | [sbert_jsl_medium_uncased](https://nlp.johnsnowlabs.com/2021/05/14/sbert_jsl_medium_uncased_en.html)
 |[nlu.load('en.embed_sentence.bert.jsl_medium_umls_uncased')](https://nlp.johnsnowlabs.com/2021/05/14/sbert_jsl_medium_umls_uncased_en.html)        | [sbert_jsl_medium_umls_uncased](https://nlp.johnsnowlabs.com/2021/05/14/sbert_jsl_medium_umls_uncased_en.html)
 |[nlu.load('en.embed_sentence.bert.jsl_mini_uncased')](https://nlp.johnsnowlabs.com/2021/05/14/sbert_jsl_mini_uncased_en.html)        | [sbert_jsl_mini_uncased](https://nlp.johnsnowlabs.com/2021/05/14/sbert_jsl_mini_uncased_en.html)
@@ -5010,11 +5028,11 @@ In the following table the NLU and Spark-NLP references are listed:
 
 |NLU Reference| Spark NLP Reference  | 
 |---------------|---------------------|
-|[en.resolve.icd10cm.umls](https://nlp.johnsnowlabs.com/2021/05/04/icd10cm_umls_mapping_en.html) | [icd10cm_umls_mapping](https://nlp.johnsnowlabs.com/2021/05/04/icd10cm_umls_mapping_en.html)  |
+|[en.resolve.icd10cm.umls](https://nlp.johnsnowlabs.com/2021/07/01/icd10cm_umls_mapping_en.html) | [icd10cm_umls_mapping](https://nlp.johnsnowlabs.com/2021/07/01/icd10cm_umls_mapping_en.html)  |
 |[en.resolve.mesh.umls   ](https://nlp.johnsnowlabs.com/2021/05/04/mesh_umls_mapping_en.html) | [mesh_umls_mapping](https://nlp.johnsnowlabs.com/2021/05/04/mesh_umls_mapping_en.html)  |
-|[en.resolve.rxnorm.umls ](https://nlp.johnsnowlabs.com/2021/05/04/rxnorm_umls_mapping_en.html) | [rxnorm_umls_mapping](https://nlp.johnsnowlabs.com/2021/05/04/rxnorm_umls_mapping_en.html)  |
+|[en.resolve.rxnorm.umls ](https://nlp.johnsnowlabs.com/2021/07/01/rxnorm_umls_mapping_en.html) | [rxnorm_umls_mapping](https://nlp.johnsnowlabs.com/2021/09/24/ner_profiling_clinical_en.html)  |
 |[en.resolve.rxnorm.mesh ](https://nlp.johnsnowlabs.com/2021/05/04/rxnorm_mesh_mapping_en.html) | [rxnorm_mesh_mapping](https://nlp.johnsnowlabs.com/2021/05/04/rxnorm_mesh_mapping_en.html)  |
-|[en.resolve.snomed.umls ](https://nlp.johnsnowlabs.com/2021/05/04/snomed_umls_mapping_en.html) | [snomed_umls_mapping](https://nlp.johnsnowlabs.com/2021/05/04/snomed_umls_mapping_en.html)  |
+|[en.resolve.snomed.umls ](https://nlp.johnsnowlabs.com/2021/07/01/snomed_umls_mapping_en.html) | [snomed_umls_mapping](https://nlp.johnsnowlabs.com/2021/07/01/snomed_umls_mapping_en.html)  |
 |[en.explain_doc.carp    ](https://nlp.johnsnowlabs.com/2021/04/01/explain_clinical_doc_carp_en.html) | [explain_clinical_doc_carp](https://nlp.johnsnowlabs.com/2021/04/01/explain_clinical_doc_carp_en.html)  |
 |[en.explain_doc.era     ](https://nlp.johnsnowlabs.com/2021/04/01/explain_clinical_doc_era_en.html) | [explain_clinical_doc_era](https://nlp.johnsnowlabs.com/2021/04/01/explain_clinical_doc_era_en.html)  |
 
@@ -7789,7 +7807,7 @@ This is enabled by the the amazing [Spark NLP3.0.1](https://nlp.johnsnowlabs.com
 | English  | [relation.bodypart.procedure](https://nlp.johnsnowlabs.com/2021/02/04/redl_bodypart_procedure_test_biobert_en.html) | [redl_bodypart_procedure_test_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_bodypart_procedure_test_biobert_en.html)                   |
 | English  | [relation.chemprot](https://nlp.johnsnowlabs.com/2021/02/04/redl_chemprot_biobert_en.html) | [redl_chemprot_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_chemprot_biobert_en.html)                   |
 | English  | [relation.clinical](https://nlp.johnsnowlabs.com/2021/02/04/redl_clinical_biobert_en.html) | [redl_clinical_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_clinical_biobert_en.html)                   |
-| English  | [relation.date](https://nlp.johnsnowlabs.com/2021/02/04/redl_date_clinical_biobert_en.htmls) | [redl_date_clinical_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_date_clinical_biobert_en.htmls)                   |
+| English  | [relation.date](https://nlp.johnsnowlabs.com/2021/06/01/redl_date_clinical_biobert_en.html) | [redl_date_clinical_biobert](https://nlp.johnsnowlabs.com/2021/06/01/redl_date_clinical_biobert_en.html)                   |
 | English  | [relation.drug_drug_interaction](https://nlp.johnsnowlabs.com/2021/02/04/redl_drug_drug_interaction_biobert_en.html) | [redl_drug_drug_interaction_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_drug_drug_interaction_biobert_en.html)                   |
 | English  | [relation.humen_phenotype_gene](https://nlp.johnsnowlabs.com/2021/02/04/redl_human_phenotype_gene_biobert_en.html) | [redl_human_phenotype_gene_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_human_phenotype_gene_biobert_en.html)                   |
 | English  | [relation.temporal_events](https://nlp.johnsnowlabs.com/2021/02/04/redl_temporal_events_biobert_en.html) | [redl_temporal_events_biobert](https://nlp.johnsnowlabs.com/2021/02/04/redl_temporal_events_biobert_en.html)                   |

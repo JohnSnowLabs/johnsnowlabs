@@ -14,8 +14,8 @@ sidebar:
 
 This is a ready to use NLP Server for analyzing text documents using NLU library. Over 4500+ industry grade NLP Models in 300+ Languages  are available to use via a simple and intuitive UI, without writing a line of code. For more expert users and more complex tasks, NLP Server also provides a REST API that can be used to process high amounts of data.
 
-The models, refered to as `spells`, are provided by the [NLU library](https://nlp.johnsnowlabs.com/) and 
-powered by the most widely used NLP library in the industry, [Spark NLP](http://nlp.johnsnowlabs.com/). 
+The models, refered to as `spells`, are provided by the [NLU library](https://sparknlp.org/) and 
+powered by the most widely used NLP library in the industry, [Spark NLP](https://sparknlp.org/). 
 
 NLP Server is `free` for everyone to download and use. There is no limitation in the amount of text to analyze. 
 

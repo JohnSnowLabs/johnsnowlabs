@@ -2,8 +2,7 @@
 layout: landing
 comment: no
 title: 'John Snow Labs <span>State of the Art Natural Language Processing in Python</span>'
-excerpt: Spark NLP is Unified access to 15,000+ free models with one line of code, open-source Responsible & Explainable NLP, and enterprise libraries for Healthcare, Legal, Finance, and Visual NLP.
-seotitle: Spark NLP – State of the Art NLP in Python, Java, and Scala – John Snow Labs.
+excerpt: John Snow Labs' NLP & LLM ecosystem include software libraries for state-of-the-art AI at scale, Responsible AI, No-Code AI, and access to over 20,000 models for Healthcare, Legal, Finance, and Visual  NLP.
 seotitle: Spark NLP – State of the Art NLP in Python, Java, and Scala – John Snow Labs.
 permalink: /
 header: true
@@ -66,7 +65,7 @@ data:
       tab-body:
         - text: Spark NLP
           description: Open-Source text processing library for Python, Java, and Scala. It provides production-grade, scalable, and trainable versions of the latest research in natural language processing.
-          img: /assets/images/home/spark_ecosys.png
+          img: /assets/images/home/23_05_2023.jpg
 
         - text: NLP Display
           description: Open-Source Python library for visualizing the annotations generated with Spark NLP. 
@@ -190,7 +189,7 @@ data:
         - title:
           image:
             src: https://cdn-static.findly.com/wp-content/uploads/sites/803/2019/03/Highmarkhealth.jpg
-            url: http://www.highmarkhealth.org/
+            url: https://www.highmarkhealth.org/
         - title:
           image:
             src: https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/1280px-Oracle_logo.svg.png

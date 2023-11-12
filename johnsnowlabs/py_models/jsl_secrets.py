@@ -2,7 +2,7 @@ import glob
 import json
 import os
 from pathlib import Path
-from typing import Optional, Union, Dict, List
+from typing import Dict, List, Optional, Union
 
 from pydantic import validator
 
@@ -13,11 +13,12 @@ from johnsnowlabs.py_models.primitive import LibVersionIdentifier, Secret
 from johnsnowlabs.utils.enums import ProductName
 from johnsnowlabs.utils.file_utils import json_path_as_dict
 from johnsnowlabs.utils.my_jsl_api import (
-    get_user_licenses,
     download_license,
-    get_access_token,
     get_access_key_from_browser,
+    get_access_token,
+    get_secrets,
     get_user_lib_secrets,
+    get_user_licenses,
 )
 
 secret_json_keys = [
@@ -91,7 +92,7 @@ class JslSecrets(WritableBaseModel):
             ):
                 hc_validation_logged = True
                 print(
-                    f"🚨 Outdated Medical Secrets in license file. Version={HC_SECRET.split('-')[0]} but should be Version={settings.raw_version_medical}"
+                    f"🚨 Outdated Medical Secrets in license file. Version={(HC_SECRET.split('-')[0] if HC_SECRET else None)} but should be Version={settings.raw_version_medical}"
                 )
                 if settings.enforce_secret_on_version:
                     raise ValueError("Invalid HC Secret")
@@ -123,7 +124,7 @@ class JslSecrets(WritableBaseModel):
             ):
                 ocr_validation_logged = True
                 print(
-                    f"🚨 Outdated OCR Secrets in license file. Version={OCR_SECRET.split('-')[0]} but should be Version={settings.raw_version_ocr}"
+                    f"🚨 Outdated OCR Secrets in license file. Version={(OCR_SECRET.split('-')[0] if OCR_SECRET else None)} but should be Version={settings.raw_version_ocr}"
                 )
                 if settings.enforce_secret_on_version:
                     raise ValueError("Invalid OCR Secret")
@@ -208,6 +209,7 @@ class JslSecrets(WritableBaseModel):
         fin_license: Optional[str] = None,
         leg_license: Optional[str] = None,
         return_empty_secrets_if_none_found=False,
+        only_return_secrets: bool = False,
         store_in_jsl_home=True,
     ) -> Union["JslSecrets", bool]:
         """
@@ -222,15 +224,14 @@ class JslSecrets(WritableBaseModel):
         try:
             # we wrap this flow with try/except, so that incase we get invalid license data
             # we can still try loading from JSL-Home afterwards
-
             if any(
                 [
                     hc_license,
                     hc_secret,
                     ocr_secret,
                     ocr_license,
-                    aws_access_key,
-                    aws_key_id,
+                    fin_license,
+                    leg_license,
                 ]
             ):
                 # Some found_secrets are supplied
@@ -266,6 +267,19 @@ class JslSecrets(WritableBaseModel):
             if not secrets and not force_browser:
                 # Search Env Vars
                 secrets = JslSecrets.search_env_vars()
+
+            if (
+                secrets
+                and settings.enforce_versions
+                and not JslSecrets.is_hc_secret_correct_version(secrets.HC_SECRET)
+                and not JslSecrets.is_ocr_secret_correct_version(secrets.OCR_SECRET)
+            ):
+                # Make sure secrets and versions re enforced
+                print(
+                    "👷 Trying to install compatible secrets. Use nlp.settings.enforce_versions=False if you want to install outdated secrets."
+                )
+                secrets = JslSecrets.enforce_versions(secrets)
+
         except Exception as err:
             print(
                 f"🚨 Failure Trying to read license {err}\n",
@@ -284,6 +298,9 @@ class JslSecrets(WritableBaseModel):
         if not secrets and return_empty_secrets_if_none_found:
             # Return empty found_secrets object
             return JslSecrets()
+        if secrets and only_return_secrets:
+            # Return found_secrets object
+            return secrets
         if secrets and store_in_jsl_home:
             # We found some found_secrets
             # Store them if this is the first time JSL-Creds are loaded on this machine
@@ -294,7 +311,6 @@ class JslSecrets(WritableBaseModel):
 
     @staticmethod
     def dict_has_jsl_secrets(secret_dict: Dict[str, str]) -> bool:
-
         for key in secret_json_keys:
             if key in secret_dict:
                 return True
@@ -379,18 +395,28 @@ class JslSecrets(WritableBaseModel):
             else None
         )
 
-        if any(
+        if all(
             [
-                hc_secret,
-                hc_license,
-                hc_license,
-                hc_version,
-                nlp_version,
-                aws_access_key_id,
-                aws_access_key,
-                ocr_license,
-                ocr_secret,
-                ocr_version,
+                any(
+                    [
+                        hc_secret,
+                        hc_license,
+                        hc_license,
+                        hc_version,
+                        nlp_version,
+                        fin_license,
+                        leg_license,
+                        ocr_license,
+                        ocr_secret,
+                        ocr_version,
+                    ]
+                ),
+                all(
+                    [
+                        aws_access_key_id,
+                        aws_access_key,
+                    ]
+                ),
             ]
         ):
             print("👌 License detected in Environment Variables")
@@ -407,6 +433,14 @@ class JslSecrets(WritableBaseModel):
                 JSL_LEGAL_LICENSE=leg_license,
                 JSL_FINANCE_LICENSE=fin_license,
             )
+        else:
+            # Check for License json
+            if "JOHNSNOWLABS_LICENSE_JSON" in os.environ:
+                json_dict = json.loads(os.environ["JOHNSNOWLABS_LICENSE_JSON"])
+                if JslSecrets.dict_has_jsl_secrets(json_dict):
+                    print("👌 License detected in Environment Variables")
+                    return JslSecrets.from_json_dict(json_dict)
+
         return False
 
     @staticmethod
@@ -462,6 +496,39 @@ class JslSecrets(WritableBaseModel):
         creds = JslSecrets.from_json_dict(json.load(f))
         f.close()
         return creds
+
+    @staticmethod
+    def enforce_versions(data: "JslSecrets") -> "JslSecrets":
+        secrets = get_secrets(
+            data.HC_LICENSE
+            or data.OCR_LICENSE
+            or data.JSL_FINANCE_LICENSE
+            or data.JSL_LEGAL_LICENSE
+        )
+        # Fix lib secrets in license data to correct version
+        ocr_candidates = list(
+            filter(
+                lambda x: x.version_secret == settings.raw_version_secret_ocr
+                and x.product == ProductName.ocr,
+                secrets,
+            )
+        )
+        hc_handidates = list(
+            filter(
+                lambda x: x.version_secret == settings.raw_version_secret_medical
+                and x.product == ProductName.hc,
+                secrets,
+            )
+        )
+        data.NLP_VERSION = settings.raw_version_nlp
+        if hc_handidates:
+            data.HC_SECRET = hc_handidates[0].secret
+            data.HC_VERSION = hc_handidates[0].version
+        if ocr_candidates:
+            data.OCR_SECRET = ocr_candidates[0].secret
+            data.OCR_VERSION = ocr_candidates[0].version
+
+        return data
 
     @staticmethod
     def from_access_token(access_token, license_number=0):

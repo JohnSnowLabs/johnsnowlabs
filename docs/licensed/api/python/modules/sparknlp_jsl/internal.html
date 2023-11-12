@@ -329,9 +329,9 @@ document.write(`
 <span class="k">class</span> <span class="nc">_UpdateModels</span><span class="p">(</span><span class="n">ExtendedJavaWrapper</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Updates the models given the cutoff date.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">date_cutoff</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_names</span><span class="p">,</span> <span class="n">language</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">cache_folder</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">_UpdateModels</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
-            <span class="s2">&quot;com.johnsnowlabs.util.UpdateModels.updateModels&quot;</span><span class="p">,</span> <span class="n">date_cutoff</span><span class="p">)</span>
+            <span class="s2">&quot;com.johnsnowlabs.util.PythonUpdateModels.updateModels&quot;</span><span class="p">,</span> <span class="n">model_names</span><span class="p">,</span> <span class="n">language</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span> <span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">cache_folder</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">_HadoopOperations</span><span class="p">(</span><span class="n">ExtendedJavaWrapper</span><span class="p">):</span>
@@ -618,6 +618,15 @@ document.write(`
             <span class="s2">&quot;com.johnsnowlabs.nlp.pretrained.InternalsPythonResourceDownloader.showAvailableAnnotators&quot;</span><span class="p">)</span>
 
 
+<span class="k">class</span> <span class="nc">_DownloadModelDirectly</span><span class="p">(</span><span class="n">ExtendedJavaWrapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Downloads a model directly to the cache folder.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s3_file_path</span><span class="p">,</span> <span class="n">remote_loc</span><span class="o">=</span><span class="s2">&quot;public/models&quot;</span><span class="p">,</span> <span class="n">unzip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cache_folder_path</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_DownloadModelDirectly</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="s2">&quot;com.johnsnowlabs.nlp.pretrained.InternalsPythonResourceDownloader.downloadModelDirectly&quot;</span><span class="p">,</span> <span class="n">s3_file_path</span><span class="p">,</span> <span class="n">remote_loc</span><span class="p">,</span> <span class="n">unzip</span><span class="p">,</span> <span class="n">cache_folder_path</span><span class="p">)</span>
+
+
 <span class="k">class</span> <span class="nc">_MedicalNerGraphBuilder</span><span class="p">(</span><span class="n">ExtendedJavaWrapper</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets the parameters needed for building Tensorflow graphs for NER.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -791,6 +800,17 @@ document.write(`
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">jspark</span><span class="p">,</span> <span class="n">model_type</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">_LegalTextGeneratorLoader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
             <span class="s2">&quot;com.johnsnowlabs.legal.sequence_generation.LegalTextGenerator.loadSavedModel&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">jspark</span><span class="p">,</span> <span class="n">model_type</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">_Text2SQLLoader</span><span class="p">(</span><span class="n">ExtendedJavaWrapper</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Loader class for the Text2SQL annotator.</span>
+
+<span class="sd">    This class is used to load the Text2SQL annotator</span>
+<span class="sd">    from pretrained models.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">jspark</span><span class="p">,</span> <span class="n">model_type</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_Text2SQLLoader</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="s2">&quot;com.johnsnowlabs.nlp.annotators.seq2seq.Text2SQL.loadSavedModel&quot;</span><span class="p">,</span> <span class="n">path</span><span class="p">,</span> <span class="n">jspark</span><span class="p">,</span> <span class="n">model_type</span><span class="p">)</span>
+
 </pre></div>
 
                 </article>

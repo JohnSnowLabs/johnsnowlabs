@@ -14,7 +14,6 @@ try:
         from sparknlp_jsl.training_log_parser import ner_log_parser
 
         from sparknlp_jsl.base import FeaturesAssembler
-
         from sparknlp_jsl.legal import (
             LegalDocumentHashCoder as DocumentHashCoder,
             LegalNerQuestionGenerator as NerQuestionGenerator,
@@ -41,6 +40,8 @@ try:
             LegalQuestionAnswering as QuestionAnswering,
             LegalTextGenerator as TextGenerator,
             LegalSummarizer as Summarizer,
+            LegalFewShotClassifierModel as FewShotClassifierModel,
+            LegalFewShotClassifierApproach as FewShotClassifierApproach,
         )
 
         # These are licensed annos shared across all libs
@@ -94,6 +95,10 @@ try:
             NerTemplateRenderModel,
             AverageEmbeddings,
             Doc2ChunkInternal,
+            Chunk2Token,
+            ExtractiveSummarization,
+            ChunkFiltererApproach,
+            Text2SQL,
         )
         from sparknlp_jsl.modelTracer import ModelTracer
 

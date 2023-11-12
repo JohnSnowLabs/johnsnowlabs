@@ -83,8 +83,10 @@ annotation-lab:
             url: /docs/en/alab/embeddings
           - title: Rules
             url: /docs/en/alab/rules
-          - title: Prompts
-            url: /docs/en/alab/prompts   
+          - title: Zero-Shot Prompts
+            url: /docs/en/alab/zero_prompts
+          - title: LLM Prompts (ChatGPT)
+            url: /docs/en/alab/llm_prompts   
           - title: Playground
             url: /docs/en/alab/playground                        
       - subtitle: Project
@@ -97,16 +99,34 @@ annotation-lab:
             url: /docs/en/alab/project_configuration
           - title: Import Tasks
             url: /docs/en/alab/import
+          - title: Generate Synthetic Data
+            url: /docs/en/alab/synthetic_task
           - title: Tasks
             url: /docs/en/alab/tasks
           - title: Workflows
             url: /docs/en/alab/workflow
+      - subtitle: Project Configuration 
+        children:
+          - title: Overview
+            url: /docs/en/alab/tags_overview
+          - title: Video
+            url: /docs/en/alab/tags_video
+          - title: Audio
+            url: /docs/en/alab/tags_audio
+          - title: Text
+            url: /docs/en/alab/tags_text
+          - title: Image
+            url: /docs/en/alab/tags_image
+          - title: PDF
+            url: /docs/en/alab/tags_pdf
       - subtitle: Annotation
         children:
-          - title: Manual annotation
+          - title: Manual Annotation
             url: /docs/en/alab/annotation
           - title: Pre-annotation
             url: /docs/en/alab/preannotation
+          - title: Section Based Annotation
+            url: /docs/en/alab/section_based_annotations 
           - title: Audit Trail
             url: /docs/en/alab/audit_trail
           - title: Productivity
@@ -185,6 +205,8 @@ sparknlp-healthcare:
         url: /docs/en/cpu-ner-benchmark
       - title: GPU vs CPU benchmarks
         url: /docs/en/CPUvsGPUbenchmark_healthcare
+      - title: Spark NLP vs Spacy Pandas UDF with Arrow Benchmark
+        url: /docs/en/spark_spacy_pandas_udf_with_arrow_enabled_benchmark_web
       - title: Best Practices Using Pretrained Models Together
         url: /docs/en/best_practices_pretrained_models
   - title: Healthcare NLP
@@ -304,6 +326,10 @@ jsl:
         url:    /docs/en/jsl/john-snow-labs-home
       - title:  Utilities for Databricks
         url:    /docs/en/jsl/databricks-utils
+      - title:  Utilities for AWS EMR
+        url:    /docs/en/jsl/aws-emr-utils
+      - title:  Utilities for AWS Glue
+        url:    /docs/en/jsl/aws-glue-utils
       - title:  Release Testing Utilities
         url:    /docs/en/jsl/testing-utils
       - title:  Module Structure

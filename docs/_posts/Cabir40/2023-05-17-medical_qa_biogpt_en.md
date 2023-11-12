@@ -38,6 +38,7 @@ It can generate two types of answers, short and long. Types of questions are sup
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = MultiDocumentAssembler()\
     .setInputCols("question", "context")\
@@ -118,7 +119,6 @@ val result = pipeline.fit(data).transform(data)
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |[The effect of directing attention on memory is that it can help to improve the accuracy and recall of a document. It can help to improve the accuracy of a document by allowing the user to quickly and easily access the information they need. It can also help to improve the overall efficiency of a document by allowing the user to quickly]|
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
 ```
 
 {:.model-param}

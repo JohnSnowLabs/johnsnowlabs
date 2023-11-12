@@ -55,7 +55,7 @@ word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "c
         .setInputCols(["sentence", "token"])\
         .setOutputCol("embeddings")
 
-clinical_ner = MedicalNerModel.pretrained("ner_clinical_large", "en", "clinical/models") \
+clinical_ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models") \
         .setInputCols(["sentence", "token", "embeddings"]) \
         .setOutputCol("ner")
 
@@ -86,7 +86,7 @@ val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en"
         .setInputCols(Array("sentence", "token"))
         .setOutputCol("embeddings")
 
-val ner = MedicalNerModel.pretrained("ner_clinical_large", "en", "clinical/models")
+val ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")
         .setInputCols(Array("sentence", "token", "embeddings"))
         .setOutputCol("ner")
 
@@ -154,7 +154,7 @@ nlu.load("en.med_ner.clinical").predict("""The human KCNJ9 (Kir 3.3, GIRK3) is a
 
 ## Data Source
 
-Trained on augmented 2010 i2b2 challenge data with 'embeddings_clinical'.
+Trained on augmented version of 2010 i2b2 challenge data with 'embeddings_clinical'.
 https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
 
 ## Benchmarking

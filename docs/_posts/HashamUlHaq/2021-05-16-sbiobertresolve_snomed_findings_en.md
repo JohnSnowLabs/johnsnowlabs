@@ -126,4 +126,4 @@ nlu.load("en.resolve.snomed.findings").predict("""This is an 82 - year-old male 
 ## Data Source
 
 Trained on SNOMED (CT version) Findings with ``sbiobert_base_cased_mli`` sentence embeddings.
-http://www.snomed.org/
+[https://www.snomed.org/](https://www.snomed.org/)

@@ -1,12 +1,14 @@
-import unittest
 import os
+import sys
+import unittest
+
+import tests.utils.secrets as sct
+from johnsnowlabs import *
+from johnsnowlabs.auto_install.databricks.install_utils import *
 from johnsnowlabs.auto_install.jsl_home import get_install_suite_from_jsl_home
 from johnsnowlabs.utils.print_messages import log_outdated_lib
-from johnsnowlabs import *
-import sys
-import tests.utils.secrets as sct
-from johnsnowlabs.auto_install.databricks.install_utils import *
 from johnsnowlabs.utils.venv_utils import VenvWrapper
+from tests.utils import secrets
 
 
 class AutoInstallTestCase(unittest.TestCase):
@@ -36,21 +38,19 @@ class AutoInstallTestCase(unittest.TestCase):
         # install_py_lib_via_pip(db, cluster_id, 'nlu')
 
     def test_install_to_current_env_browser_pop_up(self):
-        nlp.install(force_browser=True, remote_license_number=2, 0)
-        import sparknlp
-        import sparknlp_jsl
-        import sparkocr
-        import nlu
-        import sparknlp_display
+        nlp.install(force_browser=False, visual=True, remote_license_number=2)
+
+    def test_quick(self):
+        nlp.install(force_browser=False, visual=True, remote_license_number=2)
+
+    def test_install_pr_secret(self):
+        settings.enforce_versions = False
+        nlp.install(enterprise_nlp_secret=secrets.pr_secret)
 
     def test_install_to_current_env(self):
         settings.enforce_versions = False
         nlp.install(json_license_path=sct.old_lic, refresh_install=True)
         # import sparknlp
-        import sparknlp_jsl
-        import sparkocr
-        import nlu
-        import sparknlp_display
 
     def test_install_to_different_python_env(self):
         # Install to env which is not the one we are currently running
@@ -115,37 +115,28 @@ class AutoInstallTestCase(unittest.TestCase):
         )
 
     def test_browser_install(self):
-        nlp.install(force_browser=True, local_license_number=2)
+        nlp.install(force_browser=True, visual=True, local_license_number=2)
         # nlp.install(local_license_number=2, force_browser=True)
 
     def test_upgrade_licensed_lib_via_secret_only(self):
-        new_secret = ""
-        nlp.install(ocr_secret=new_secret)
+        new_secret = secrets.random_secret
+        from johnsnowlabs import settings
+
+        settings.enforce_versions = False
+        nlp.install(enterprise_nlp_secret=new_secret)
 
     def test_json_license_install(self):
         nlp.install(json_license_path=sct.latest_lic)
-        import sparknlp
-        import sparknlp_jsl
-        import sparknlp
-        import sparknlp_jsl
 
         # import sparkocr
-        import nlu
-        import sparknlp_display
 
         # nlp.install(json_license_path=old_lic)
 
     def test_json_license_install_outdated(self):
         nlp.settings.enforce_versions = False
         nlp.install(json_license_path=sct.old_lic)
-        import sparknlp
-        import sparknlp_jsl
-        import sparknlp
-        import sparknlp_jsl
 
         # import sparkocr
-        import nlu
-        import sparknlp_display
 
         # nlp.install(json_license_path=old_lic)
 
@@ -158,11 +149,19 @@ class AutoInstallTestCase(unittest.TestCase):
         # os.system(old_lic'{sys.py_executable} -py_executable pip uninstall spark-nlp-display -y')
         # os.system(old_lic'{sys.py_executable} -py_executable pip uninstall nlu -y')
 
-        os.system(f"{sys.executable} -m pip uninstall spark-nlp-jsl -y")
-        os.system(f"{sys.executable} -m pip uninstall spark-nlp-jsl -y")
-        os.system(f"{sys.executable} -m pip uninstall spark-ocr -y")
+        # os.system(f"{sys.executable} -m pip uninstall spark-nlp-jsl -y")
+        # os.system(f"{sys.executable} -m pip uninstall spark-ocr -y")
         # os.system(old_lic'{sys.py_executable} -py_executable pip uninstall jsl_tmp -y')
         os.system(f"{sys.executable} -m pip uninstall spark-nlp-internal -y")
+
+    def test_install_to_emr(self):
+        # Make sure correct aws credentials are configured
+        nlp.install_to_emr(
+            "us-east-1",
+            bootstrap_bucket="ksh-emr-bucket",
+            subnet_id="subnet-28754965",
+            s3_logs_path="s3://ksh-emr-bucket/logs",
+        )
 
     @classmethod
     def tearDownClass(cls):

@@ -153,7 +153,7 @@ nlu.load("en.med_ner.posology").predict("""The patient is a 30-year-old female w
 
 ## Data Source
 
-Trained on the 2018 i2b2 dataset (no FDA) with ``embeddings_clinical``.
+Trained on augmented version of 2018 i2b2 dataset (no FDA) with ``embeddings_clinical``.
 https://www.i2b2.org/NLP/Medication
 
 ## Benchmarking

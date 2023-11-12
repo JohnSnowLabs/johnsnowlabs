@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [ner_jsl_slim](https://nlp.johns
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -50,8 +51,6 @@ val pipeline = new PretrainedPipeline("ner_jsl_slim_pipeline", "en", "clinical/m
 val text = "Hyperparathyroidism was considered upon the fourth occasion. The history of weakness and generalized joint pains were present. He also had history of epigastric pain diagnosed informally as gastritis. He had previously had open reduction and internal fixation for the initial two fractures under general anesthesia. He sustained mandibular fracture."
 
 val result = pipeline.fullAnnotate(text)
-
-
 ```
 
 

@@ -46,6 +46,7 @@ This model is trained using `biobert_pubmed_base_cased` BERT token embeddings. I
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document = DocumentAssembler()\
     .setInputCol("text")\
@@ -193,7 +194,7 @@ nlu.load("en.assert.biobert_l10210").predict("""Patient with severe fever and so
 ## References
 
 
-Trained on 2010 i2b2/VA challenge on concepts, assertions, and relations in clinical text with `biobert_pubmed_base_cased`. https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
+Trained on augmented version of 2010 i2b2/VA dataset on concepts, assertions, and relations in clinical text with `biobert_pubmed_base_cased`. https://portal.dbmi.hms.harvard.edu/projects/n2c2-nlp/
 
 
 ## Benchmarking
@@ -210,7 +211,3 @@ possible                      126  36   75   0.7777778  0.6268657  0.6942149
 Macro-average                 3633 328  328  0.7967971  0.8105832  0.8036310
 Micro-average                 3633 328  328  0.9171926  0.9171926  0.9171926
 ```
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMjgwMTU0NTg3LC02MTkwOTA1MDcsLTE4Nj
-YzNjg0NTBdfQ==
--->

@@ -5,7 +5,7 @@ author: John Snow Labs
 name: clinical_deidentification
 date: 2022-03-03
 tags: [deidentification, en, licensed, pipeline, clinical]
-task: Pipeline Healthcare
+task: [De-identification, Pipeline Healthcare]
 language: en
 nav_key: models
 edition: Healthcare NLP 3.4.1
@@ -41,6 +41,7 @@ This pipeline can be used to deidentify PHI information from medical texts. The 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -169,6 +170,3 @@ Phone 74 617 042, 1407 west stassney lane, Edmonton, E-MAIL: Carliss@hotmail.com
 - DeIdentificationModel
 - DeIdentificationModel
 - Finisher
-<!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyNzczMjk3NV19
--->

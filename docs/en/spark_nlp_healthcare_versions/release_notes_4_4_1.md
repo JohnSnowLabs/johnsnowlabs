@@ -266,7 +266,7 @@ We are proud to announce the latest updates to our `ner_profiling_clinical` and 
 
 These enhancements to our pre-trained pipelines showcase our commitment to providing healthcare professionals and researchers with state-of-the-art tools, enabling more efficient and accurate analysis of clinical text to support data-driven decision-making and improved patient care outcomes.
 
-You can check [ner_profiling_clinical](https://nlp.johnsnowlabs.com/2023/04/26/ner_profiling_clinical_en.html) and [ner_profiling_biobert](https://nlp.johnsnowlabs.com/2023/04/26/ner_profiling_biobert_en.html) Models Hub pages for more details and the NER model lists that these pipelines include.
+You can check [ner_profiling_clinical](https://nlp.johnsnowlabs.com/2023/04/28/ner_profiling_clinical_en.html) and [ner_profiling_biobert](https://nlp.johnsnowlabs.com/2023/04/26/ner_profiling_biobert_en.html) Models Hub pages for more details and the NER model lists that these pipelines include.
 
 
 </div><div class="h3-box" markdown="1">

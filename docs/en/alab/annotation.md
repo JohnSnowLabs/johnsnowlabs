@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Manual Annotation
 permalink: /docs/en/alab/annotation
 key: docs-training
-modify_date: "2022-12-11"
+modify_date: "2022-12-13"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -112,7 +112,7 @@ To delete the label from the text, we first click on the text on the labeling ed
 
 When annotating text, it is possible and probable that the annotation is not very precise and the chunks contain leading/trailing spaces and punctuation marks. By default all the leading/trailing spaces and punctuation marks are excluded from the annotated chunk. The labeling editor settings has a new configuration option that can be used to enable/disable this feature if necessary.
 
-![trim_spaces_punctuations](/assets/images/annotation_lab/4.1.0/trimming_characters.gif)
+![trim_spaces_punctuations](/assets/images/annotation_lab/4.1.0/trimming_characters-min.gif)
 
 <br />
 
@@ -128,7 +128,7 @@ To add an assertion label to an extracted entity, select the assertion label and
 
 Creating relations with the Annotation Lab is very simple. First, click on any one labeled entity, then press the <es>r</es> key and click on the second labeled entity.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.2.0/rel_ann.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.2.0/rel_ann-min.gif" style="width:100%;"/>
 
 You can add a label to the relation, change its direction or delete it using the contextual menu displayed next to the relation arrow or from the relation box.
 
@@ -140,7 +140,7 @@ You can add a label to the relation, change its direction or delete it using the
 
 From version <bl>2.8.0</bl>, Annotation Lab supports cross-page NER annotation for <es>Text</es> projects. It means that Annotators can annotate a chunk starting at the bottom of one page and finishing on the next page. This feature is also available for <es>Relations</es>. Previously, relations were created between chunks located on the same page. But now, relations can be created among tokens located on different pages. The way to do this is to first [change the pagination settings](/docs/en/alab/import#dynamic-task-pagination) to include the tokens to be linked on the same page, then create the relation annotation between the tokens and finally go back to the original pagination settings. The annotation is presented through connectors after updating the pagination.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/crosspage_annotation.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/crosspage_annotation-min.gif" style="width:100%;"/>
 
 <br />
 
@@ -161,7 +161,7 @@ Here is how we can use it:
 
 The entire process is illustrated below:
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/visual_ner.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/visual_ner-min.gif" style="width:100%;"/>
 
 ### Support for multi-page PDF documents
 
@@ -188,4 +188,4 @@ Just like for [Preannotation](/docs/en/alab/preannotation) servers, Annotation L
 
 To work on a Visual NER project, users have to deploy at least one OCR server. Any OCR server can perform preannotation. To select the OCR server, users need to go to the <es>Import</es> page, click on the OCR Server button on the top-right corner and from the popup, choose one of the available OCR servers. If no suitable OCR server is present, you can create a new server by selecting the `Create Server` option and then clicking on the `Deploy` button.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ocr_server.gif" style="width:100%;"/>
+<img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/ocr_server-min.gif" style="width:100%;"/>

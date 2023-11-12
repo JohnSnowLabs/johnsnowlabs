@@ -37,6 +37,7 @@ This pretrained model maps RxNorm and RxNorm Extension codes with their correspo
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
       .setInputCol("text")\
@@ -49,7 +50,7 @@ sbert_embedder = BertSentenceEmbeddings\
     
 rxnorm_resolver = SentenceEntityResolverModel\
       .pretrained("sbiobertresolve_rxnorm_augmented", "en", "clinical/models")\
-      .setInputCols(["chunk", "sbert_embeddings"])\
+      .setInputCols(["sbert_embeddings"])\
       .setOutputCol("rxnorm_code")\
       .setDistanceFunction("EUCLIDEAN")
 
