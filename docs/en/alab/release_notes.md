@@ -276,6 +276,9 @@ By tailoring label visibility at the section level, annotation efforts are more 
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_5_5_3">5.5.3</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_5_2">5.5.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_5_1">5.5.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_5_5_0">5.5.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_4_1">5.4.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_3_2">5.3.2</a></li>
