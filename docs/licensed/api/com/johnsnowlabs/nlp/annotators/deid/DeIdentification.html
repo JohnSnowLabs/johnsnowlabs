@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.1.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentification</title>
-          <meta name="description" content="Spark NLP 5.1.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentification" />
-          <meta name="keywords" content="Spark NLP 5.1.2 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentification" />
+          <title>Spark NLP 5.1.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentification</title>
+          <meta name="description" content="Spark NLP 5.1.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentification" />
+          <meta name="keywords" content="Spark NLP 5.1.3 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentification" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.1.2 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.1.3 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -299,11 +299,16 @@
 This module can obfuscate or mask the entities that contains personal information. These can be set with a file of
 regex patterns with <a href="#setRegexPatternsDictionary(path:String,readAs:com.johnsnowlabs.nlp.util.io.ReadAs.Format,options:Map[String,String]):DeIdentification.this.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#setRegexPatternsDictionary">setRegexPatternsDictionary</a>, where each line is a mapping of
 entity to regex.</p><pre>DATE \d{<span class="num">4</span>}
-AID \d{<span class="num">6</span>,<span class="num">7</span>}</pre><p>Additionally, obfuscation strings can be defined with <a href="#setObfuscateRefFile(f:String):DeidApproachParams.this.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#setObfuscateRefFile">setObfuscateRefFile</a>, where each line
+AID \d{<span class="num">6</span>,<span class="num">7</span>}</pre><p>Additionally, obfuscation strings can be defined with <a href="DeidApproachParams.html#setObfuscateRefFile(f:String):DeidApproachParams.this.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams#setObfuscateRefFile">DeidApproachParams.setObfuscateRefFile</a>, where each line
 is a mapping of string to entity. The format and seperator can be speficied with
-<a href="#setRefFileFormat(f:String):DeidApproachParams.this.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#setRefFileFormat">setRefFileFormat</a> and <a href="#setRefSep(f:String):DeidApproachParams.this.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#setRefSep">setRefSep</a>.</p><pre>Dr. Gregory House#DOCTOR
-<span class="num">01010101</span>#MEDICALRECORD</pre><p>The configuration params for that module are in trait DeIdentificationParams.
-</p></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="DeIdentificationModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a></p></span><span class="cmt"><p><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></p></span><span class="cmt"><p><a href="DeidApproachParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams">DeidApproachParams</a></p></span><span class="cmt"><p><a href="#train(dataset:org.apache.spark.sql.Dataset[_],recursivePipeline:Option[org.apache.spark.ml.PipelineModel]):com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#train">train</a>
+<a href="DeidApproachParams.html#setRefFileFormat(f:String):DeidApproachParams.this.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams#setRefFileFormat">DeidApproachParams.setRefFileFormat</a> and <a href="DeidApproachParams.html#setRefSep(f:String):DeidApproachParams.this.type" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams#setRefSep">DeidApproachParams.setRefSep</a>.</p><pre>Dr. Gregory House#DOCTOR
+<span class="num">01010101</span>#MEDICALRECORD</pre><p>The configuration params for that module are in trait <a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a>.
+</p></div><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="java.security.NoSuchAlgorithmException"><code>java.security.NoSuchAlgorithmException</code></span> If no Provider supports a SecureRandom implementation for specified algorithm name.</p></span></dd><dt>Note</dt><dd><span class="cmt"><p>If the mode is set to obfuscate, the <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a> uses <span class="extype" name="java.security.SecureRandom">java.security.SecureRandom</span> for generating fake data.
+      You can select a generation algorithm by configuring <b>spark.jsl.settings.seed.numberGenerationAlgorithm</b>.
+      The chosen algorithm may impact the generation of fake data, performance, and potential blocking issues.
+      For information about standard RNG algorithm names, refer to the SecureRandom section in the
+      <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#SecureRandom" target="_blank">Number Generation Algorithm</a>.
+      The default algorithm is 'SHA1PRNG'.</p></span></dd><dt>See also</dt><dd><span class="cmt"><p><a href="DeIdentificationModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a></p></span><span class="cmt"><p><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></p></span><span class="cmt"><p><a href="DeidApproachParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams">DeidApproachParams</a></p></span><span class="cmt"><p><a href="#train(dataset:org.apache.spark.sql.Dataset[_],recursivePipeline:Option[org.apache.spark.ml.PipelineModel]):com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel" class="extmbr" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#train">train</a>
      Ideally this annotator works in conjunction with Demographic Named EntityRecognizers that can be trained either using
      <a href="https://nlp.johnsnowlabs.com/api/#com.johnsnowlabs.nlp.annotator.package$$TextMatcher$" target="_blank">TextMatchers</a>,
      <a href="https://nlp.johnsnowlabs.com/api/#com.johnsnowlabs.nlp.annotator.package$$RegexMatcher$" target="_blank">RegexMatchers</a>,
@@ -447,7 +452,7 @@ result.select(<span class="lit">"dei.result"</span>).show(truncate = <span class
         <span class="name">DeIdentification</span><span class="params">(<span name="uid">uid: <span class="extype" name="scala.Predef.String">String</span></span>)</span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">uid</dt><dd class="cmt"><p>a unique identifier for the instanced Annotator</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">uid</dt><dd class="cmt"><p>a unique identifier for the instanced Annotator</p></dd></dl><dl class="attributes block"> <dt>Exceptions thrown</dt><dd><span class="cmt"><p><span class="extype" name="java.security.NoSuchAlgorithmException"><code>java.security.NoSuchAlgorithmException</code></span> If no Provider supports a SecureRandom implementation for specified algorithm name.</p></span></dd></dl></div>
     </li></ol>
             </div>
 
@@ -1599,6 +1604,22 @@ Default: False
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#getUseShiftDays" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getUseShiftDays:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#getUseShiftDays:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getUseShiftDays</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Getter method of useShiftDays</p><div class="fullcomment"><div class="comment cmt"><p>Getter method of useShiftDays</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#getZipCodeTag" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="getZipCodeTag:String"></a>
       <span class="permalink">
@@ -2132,12 +2153,10 @@ Default:'en'
         <span class="name">mode</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Mode for Anonymizer ['mask'|'obfuscate']
-Given the following text</p><div class="fullcomment"><div class="comment cmt"><p>Mode for Anonymizer ['mask'|'obfuscate']
-Given the following text</p><p>&quot;David Hale visited EEUU  a couple of years ago&quot;</p><p>Mask mode:
-The entities will be replaced by their entity types. Example
-&quot;&lt;PERSON&gt; visited &lt;COUNTRY&gt; a couple of years ago&quot;</p><p>Obfuscate mode:</p><p>The entity is replaced by a obfuscator term:</p><p>&quot;Bryan Johnson visited Japon a couple of years ago&quot;
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
+      <p class="shortcomment cmt">Mode for Anonymizer ['mask'|'obfuscate'].</p><div class="fullcomment"><div class="comment cmt"><p>Mode for Anonymizer ['mask'|'obfuscate']. Default: 'mask'</p><ul><li>Mask mode: The entities will be replaced by their entity types.</li><li>Obfuscate mode: The entity is replaced by an obfuscator's term.
+</li></ul></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p>Given the following text: &quot;David Hale visited EEUU a couple of years ago&quot;</p><ul><li>Mask mode: &quot;<code>&lt;</code>PERSON<code>&gt;</code> visited <code>&lt;</code>COUNTRY<code>&gt;</code> a couple of years ago&quot;</li><li>Obfuscate mode: &quot;Bryan Johnson visited Japan a couple of years ago&quot;</li></ul></li></ol>
+            </div></dl></div>
     </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#msgHelper" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="msgHelper(schema:org.apache.spark.sql.types.StructType):String"></a><a id="msgHelper(StructType):String"></a>
       <span class="permalink">
@@ -3039,12 +3058,10 @@ Default:'en'
         <span class="name">setMode</span><span class="params">(<span name="m">m: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
       </span>
       
-      <p class="shortcomment cmt">Mode for Anonymizer ['mask'|'obfuscate']
-Given the following text</p><div class="fullcomment"><div class="comment cmt"><p>Mode for Anonymizer ['mask'|'obfuscate']
-Given the following text</p><p>&quot;David Hale visited EEUU  a couple of years ago&quot;</p><p>Mask mode:
-The entities will be replaced by their entity types. Example
-&quot;&lt;PERSON&gt; visited &lt;COUNTRY&gt; a couple of years ago&quot;</p><p>Obfuscate mode:</p><p>The entity is replaced by an obfuscator's term:</p><p>&quot;Bryan Johnson visited Japon a couple of years ago&quot;
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
+      <p class="shortcomment cmt">Mode for Anonymizer ['mask'|'obfuscate'].</p><div class="fullcomment"><div class="comment cmt"><p>Mode for Anonymizer ['mask'|'obfuscate']. Default: 'mask'</p><ul><li> Mask mode: The entities will be replaced by their entity types.</li><li> Obfuscate mode: The entity is replaced by an obfuscator's term.
+</li></ul></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd><div class="block">Example:
+               <ol><li class="cmt"><p>Given the following text: &quot;David Hale visited EEUU a couple of years ago&quot;</p><ul><li> Mask mode: &quot;<code>&lt;</code>PERSON<code>&gt;</code> visited <code>&lt;</code>COUNTRY<code>&gt;</code> a couple of years ago&quot;</li><li> Obfuscate mode: &quot;Bryan Johnson visited Japan a couple of years ago&quot;</li></ul></li></ol>
+            </div></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setObfuscateDate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setObfuscateDate(s:Boolean):DeIdentificationParams.this.type"></a><a id="setObfuscateDate(Boolean):DeIdentification.this.type"></a>
       <span class="permalink">
@@ -3361,10 +3378,10 @@ with the same output.
 [mask, obfuscate, skip]
 Default: obfuscate
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setUseShiftDayse" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="setUseShiftDayse(s:Boolean):DeIdentificationParams.this.type"></a><a id="setUseShiftDayse(Boolean):DeIdentification.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setUseShiftDays" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setUseShiftDays(s:Boolean):DeIdentificationParams.this.type"></a><a id="setUseShiftDays(Boolean):DeIdentification.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#setUseShiftDayse(s:Boolean):DeIdentificationParams.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#setUseShiftDays(s:Boolean):DeIdentificationParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -3373,7 +3390,7 @@ Default: obfuscate
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">setUseShiftDayse</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
+        <span class="name">setUseShiftDays</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
@@ -3560,7 +3577,8 @@ Default: obfuscate
         <span class="name">useShifDays</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
+      <p class="shortcomment cmt"> Use shift days : Whether to use the random shift day when the document has this in its metadata.</p><div class="fullcomment"><div class="comment cmt"><p> Use shift days : Whether to use the random shift day when the document has this in its metadata. Default: False
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.AnnotatorApproach#validate" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="validate(schema:org.apache.spark.sql.types.StructType):Boolean"></a><a id="validate(StructType):Boolean"></a>
       <span class="permalink">
@@ -3683,7 +3701,29 @@ Default: obfuscate
 
         
 
-        
+        <div class="values members">
+              <h3>Deprecated Value Members</h3>
+              <ol><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams#setUseShiftDayse" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setUseShiftDayse(s:Boolean):DeIdentificationParams.this.type"></a><a id="setUseShiftDayse(Boolean):DeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#setUseShiftDayse(s:Boolean):DeIdentificationParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name deprecated" title="Deprecated: deprecated because of typo">setUseShiftDayse</span><span class="params">(<span name="s">s: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a></dd><dt>Annotations</dt><dd>
+                <span class="name">@deprecated</span>
+              
+        </dd><dt>Deprecated</dt><dd class="cmt"><p>deprecated because of typo</p></dd></dl></div>
+    </li></ol>
+            </div>
         </div>
 
         <div id="inheritedMembers">
@@ -3743,6 +3783,9 @@ Default: obfuscate
               
             </div><div class="group" name="setParam">
               <h3>Parameter setters</h3>
+              
+            </div><div class="group" name="getParam">
+              <h3>Parameter getters</h3>
               
             </div>
         </div>
