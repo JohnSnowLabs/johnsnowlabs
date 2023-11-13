@@ -124,4 +124,4 @@ val result = pipeline.fit(data).transform(data)
 {:.h2_title}
 ## Data Source
 Trained on ICD10CM Dataset Range: O0000-O9989
-https://www.icd10data.com/ICD10CM/Codes/O00-O9A
+[https://www.icd10data.com/ICD10CM/Codes/O00-O9A](https://www.icd10data.com/ICD10CM/Codes/O00-O9A)
