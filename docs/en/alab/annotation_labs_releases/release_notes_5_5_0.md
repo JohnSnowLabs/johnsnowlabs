@@ -52,7 +52,7 @@ After integrating the external service provider, you can create and test the NER
 7. Experiment with different temperature values during testing to ensure the desired results.
 8. After testing and confirming that the prompt is working as expected, click on the "Save" button to save the prompt.
 
-![CreatingPrompt]](/assets/images/annotation_lab/5.5.0/2.gif)
+ ![OpenAIIntegration](/assets/images/annotation_lab/5.5.0/2.gif)
 
 **Using GPT Prompts in a Project**
 
@@ -111,8 +111,7 @@ We are excited to announce the introduction of a new feature in version 5.5 of N
 
 Two types of rules are supported:
 
-
-**Regex-Based:** Users can define a regex that will be used to identify all possible hit chunks and label them as being the target entity. For example, for labeling height entities the following regex can be used "[0-7]'((0?[0-9])|(1(0|1)))". All hits found in the task text that match the regex, are pre-annotated as heights.
+**Regex-Based:** Users can define a regex that will be used to identify all possible hit chunks and label them as being the target entity. For example, for labeling height entities the following regex can be used `[0-7]'((0?[0-9])|(1(0|1)))`. All hits found in the task text that match the regex, are pre-annotated as heights.
 
 **Dictionary-Based:** Users can define and upload a CSV dictionary of keywords that cover the list of tokens that should be annotated as a target entity. For example, for the label female: woman, lady, girl, all occurrences of strings woman, lady, and girl within the text of a given task will be pre-annotated as female. Make sure to include in the dictionary all possible forms of the target entity as only values in list will be pre-annotated.
 
