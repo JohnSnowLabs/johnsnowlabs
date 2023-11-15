@@ -24,7 +24,7 @@ Pretrained pipeline designed to correct skew in input printed documents, enhanci
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/PP_MIXED_SCANNED_DIGITAL_PDF_SKEW_CORRECTION/){:.button.button-orange.button-orange-trans.co.button-icon}
-[Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/tutorials/SparkOcrPretrainedPipelinesMixedScannedDigitalPdfSkewCorrection.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
+[Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesMixedScannedDigitalPdfSkewCorrection.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/mixed_scanned_digital_pdf_skew_correction_en_4.3.4_3.0_1679597686000.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
 
 ## How to use
