@@ -60,10 +60,7 @@ ASSERTION
 {%- capture approach_python_medical -%}
 from johnsnowlabs import *
 
-# Training with Glove Embeddings
-
 # First define pipeline stages to extract embeddings and text chunks
-
 documentAssembler = nlp.DocumentAssembler() \
     .setInputCol("text") \
     .setOutputCol("document")
@@ -83,7 +80,6 @@ chunkAssembler = nlp.Doc2Chunk() \
     .setOutputCol("chunk")
 
 # Then the AssertionLogRegApproach model is defined. Label column is needed in the dataset for training.
-
 assertion = medical.AssertionLogRegApproach() \
     .setLabelCol("label") \
     .setInputCols(["document", "chunk", "word_embeddings"]) \
@@ -94,7 +90,7 @@ assertion = medical.AssertionLogRegApproach() \
     .setStartCol("start") \
     .setEndCol("end")
 
-assertionPipeline = Pipeline(stages=[
+assertionPipeline = nlp.Pipeline(stages=[
     documentAssembler,
     sentenceDetector,
     tokenizer,
@@ -110,10 +106,7 @@ assertionModel = assertionPipeline.fit(dataset)
 {%- capture approach_python_legal -%}
 from johnsnowlabs import *
 
-# Training with Glove Embeddings
-
 # First define pipeline stages to extract embeddings and text chunks
-
 documentAssembler = nlp.DocumentAssembler() \
     .setInputCol("text") \
     .setOutputCol("document")
@@ -133,7 +126,6 @@ chunkAssembler = nlp.Doc2Chunk() \
     .setOutputCol("chunk")
 
 # Then the AssertionLogRegApproach model is defined. Label column is needed in the dataset for training.
-
 assertion = legal.AssertionLogRegApproach() \
     .setLabelCol("label") \
     .setInputCols(["document", "chunk", "word_embeddings"]) \
@@ -144,7 +136,7 @@ assertion = legal.AssertionLogRegApproach() \
     .setStartCol("start") \
     .setEndCol("end")
 
-assertionPipeline = Pipeline(stages=[
+assertionPipeline = nlp.Pipeline(stages=[
     documentAssembler,
     sentenceDetector,
     tokenizer,
@@ -160,10 +152,7 @@ assertionModel = assertionPipeline.fit(dataset)
 {%- capture approach_python_finance -%}
 from johnsnowlabs import *
 
-# Training with Glove Embeddings
-
 # First define pipeline stages to extract embeddings and text chunks
-
 documentAssembler = nlp.DocumentAssembler() \
     .setInputCol("text") \
     .setOutputCol("document")
@@ -183,7 +172,6 @@ chunkAssembler = nlp.Doc2Chunk() \
     .setOutputCol("chunk")
 
 # Then the AssertionLogRegApproach model is defined. Label column is needed in the dataset for training.
-
 assertion = finance.AssertionLogRegApproach() \
     .setLabelCol("label") \
     .setInputCols(["document", "chunk", "word_embeddings"]) \
@@ -194,7 +182,7 @@ assertion = finance.AssertionLogRegApproach() \
     .setStartCol("start") \
     .setEndCol("end")
 
-assertionPipeline = Pipeline(stages=[
+assertionPipeline = nlp.Pipeline(stages=[
     documentAssembler,
     sentenceDetector,
     tokenizer,
@@ -209,29 +197,29 @@ assertionModel = assertionPipeline.fit(dataset)
 
 {%- capture approach_scala_medical -%}
 from johnsnowlabs import * 
+import spark.implicits._
 
-// Training with Glove Embeddings
 // First define pipeline stages to extract embeddings and text chunks
-val documentAssembler = new nlp.DocumentAssembler()
+val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("document")
   .setOutputCol("token")
 
-val glove = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
+val glove = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
   .setInputCols(Array("document", "token"))
   .setOutputCol("word_embeddings")
   .setCaseSensitive(false)
 
-val chunkAssembler = new nlp.Doc2Chunk()
+val chunkAssembler = new Doc2Chunk()
   .setInputCols("document")
   .setChunkCol("target")
   .setOutputCol("chunk")
 
 // Then the AssertionLogRegApproach model is defined. Label column is needed in the dataset for training.
-val assertion = new medical.AssertionLogRegApproach()
+val assertion = new AssertionLogRegApproach()
   .setLabelCol("label")
   .setInputCols(Array("document", "chunk", "word_embeddings"))
   .setOutputCol("assertion")
@@ -256,29 +244,29 @@ val assertionModel = assertionPipeline.fit(dataset)
 
 {%- capture approach_scala_legal -%}
 from johnsnowlabs import * 
+import spark.implicits._
 
-// Training with Glove Embeddings
 // First define pipeline stages to extract embeddings and text chunks
-val documentAssembler = new nlp.DocumentAssembler()
+val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("document")
   .setOutputCol("token")
 
-val glove = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
+val glove = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
   .setInputCols(Array("document", "token"))
   .setOutputCol("word_embeddings")
   .setCaseSensitive(false)
 
-val chunkAssembler = new nlp.Doc2Chunk()
+val chunkAssembler = new Doc2Chunk()
   .setInputCols("document")
   .setChunkCol("target")
   .setOutputCol("chunk")
 
 // Then the AssertionLogRegApproach model is defined. Label column is needed in the dataset for training.
-val assertion = new legal.AssertionLogRegApproach()
+val assertion = new AssertionLogRegApproach()
   .setLabelCol("label")
   .setInputCols(Array("document", "chunk", "word_embeddings"))
   .setOutputCol("assertion")
@@ -303,29 +291,29 @@ val assertionModel = assertionPipeline.fit(dataset)
 
 {%- capture approach_scala_finance -%}
 from johnsnowlabs import * 
+import spark.implicits._
 
-// Training with Glove Embeddings
 // First define pipeline stages to extract embeddings and text chunks
-val documentAssembler = new nlp.DocumentAssembler()
+val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("document")
   .setOutputCol("token")
 
-val glove = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
+val glove = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
   .setInputCols(Array("document", "token"))
   .setOutputCol("word_embeddings")
   .setCaseSensitive(false)
 
-val chunkAssembler = new nlp.Doc2Chunk()
+val chunkAssembler = new Doc2Chunk()
   .setInputCols("document")
   .setChunkCol("target")
   .setOutputCol("chunk")
 
 // Then the AssertionLogRegApproach model is defined. Label column is needed in the dataset for training.
-val assertion = new finance.AssertionLogRegApproach()
+val assertion = new AssertionLogRegApproach()
   .setLabelCol("label")
   .setInputCols(Array("document", "chunk", "word_embeddings"))
   .setOutputCol("assertion")
