@@ -361,7 +361,7 @@ val embeddings_ner = RoBertaEmbeddings.pretrained("roberta_embeddings_legal_robe
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings_ner")
 
-val ner_model = LegalNerModel.pretrained('legner_contract_doc_parties', 'en', 'legal/models') 
+val ner_model = LegalNerModel.pretrained("legner_contract_doc_parties", "en", "legal/models") 
     .setInputCols(Array("sentence", "token", "embeddings_ner")) 
     .setOutputCol("ner")
     //.setIncludeAllConfidenceScores(false)
