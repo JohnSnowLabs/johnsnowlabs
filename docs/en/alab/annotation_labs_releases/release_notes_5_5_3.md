@@ -23,7 +23,7 @@ We are delighted to announce release of NLP Lab 5.5.3
 ### Improvement:
 - Enhanced UI to allow users to increase the model server count.
 
-###Bug Fixes:
+### Bug Fixes:
 - Resolved intermittent issue with the Cluster Page where deployed servers were not loading.
 - Fixed the display of "Change Confirmation" Message, which was appearing even when no changes were made to the Project Config.
 - Addressed the issue where users could change the free rule setting in the playground page.
