@@ -1,4 +1,4 @@
----Printed
+---
 layout: model
 title: Pretrained Pipeline for Reading Printed Text with Image Documents
 author: John Snow Labs
