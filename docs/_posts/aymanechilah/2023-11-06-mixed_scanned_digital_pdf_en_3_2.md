@@ -4,13 +4,15 @@ title: Pretrained Pipeline for Reading in Mixed Scanned and Digital PDF Document
 author: John Snow Labs
 name: mixed_scanned_digital_pdf
 date: 2023-11-06
-tags: [en, licensed]
+tags: [en, licensed, ocr]
 task: OCR Text Detection
 language: en
 nav_key: models
 edition: Visual NLP 5.0.2
 spark_version: 3.2.1
 supported: true
+recommended: true
+annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
@@ -66,7 +68,7 @@ val result = pdf_pipeline.transform(pdf_example_df)
 {:.table-model}
 |---|---|
 |Model Name:|mixed_scanned_digital_pdf|
-|Type:|ocr|
+|Type:|pipeline|
 |Compatibility:|Visual NLP 5.0.2+|
 |License:|Licensed|
 |Edition:|Official|

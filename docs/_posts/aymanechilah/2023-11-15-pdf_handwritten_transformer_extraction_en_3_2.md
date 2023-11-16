@@ -4,13 +4,15 @@ title: Pretrained Pipeline for Reading Handwritten Text with PDF Documents
 author: John Snow Labs
 name: pdf_handwritten_transformer_extraction
 date: 2023-11-15
-tags: [en, licensed]
+tags: [en, licensed, handwritten, pdf, ocr]
 task: OCR Text Detection
 language: en
 nav_key: models
 edition: Visual NLP 5.0.2
 spark_version: 3.2.1
 supported: true
+recommended: true
+annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
@@ -70,7 +72,7 @@ I hope it will be awesome ."
 {:.table-model}
 |---|---|
 |Model Name:|pdf_handwritten_transformer_extraction|
-|Type:|ocr|
+|Type:|pipeline|
 |Compatibility:|Visual NLP 5.0.2+|
 |License:|Licensed|
 |Edition:|Official|

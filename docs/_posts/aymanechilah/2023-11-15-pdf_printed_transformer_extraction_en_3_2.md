@@ -4,13 +4,15 @@ title: Pretrained Pipeline for Reading Printed Text with PDF Documents
 author: John Snow Labs
 name: pdf_printed_transformer_extraction
 date: 2023-11-15
-tags: [en, licensed]
+tags: [en, licensed, printed, pdf, ocr]
 task: OCR Text Detection
 language: en
 nav_key: models
 edition: Visual NLP 5.0.2
 spark_version: 3.2.1
 supported: true
+recommended: true
+annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
@@ -86,7 +88,7 @@ Card is registertd
 {:.table-model}
 |---|---|
 |Model Name:|pdf_printed_transformer_extraction|
-|Type:|ocr|
+|Type:|pipeline|
 |Compatibility:|Visual NLP 5.0.2+|
 |License:|Licensed|
 |Edition:|Official|
