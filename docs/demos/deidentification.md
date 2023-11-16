@@ -57,6 +57,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb
+        - title: How to Perform Day Shifting and Normalization for Testing Data
+          id: how_perform_day_shifting_normalization_testing_data
+          image: 
+              src: /assets/images/How_to_Perform_Day_Shifting_and_Normalization_for_Testing_Data.svg
+          excerpt: This demo demonstrates to you through the straightforward process of normalizing and shifting dates with ease.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/DATE_SHIFTING_AND_NORMALIZATION/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb
         - title: Detect PHI Entities from Deidentification
           id: detect_demographic_information
           image: 

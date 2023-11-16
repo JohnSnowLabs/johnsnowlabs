@@ -93,4 +93,16 @@ data:
           - text: Colab
             type: blue_btn
             url: 
+        - title: Determine the category of a section within a subpoena
+          id: determine_category_section_within_subpoena       
+          image: 
+              src: /assets/images/Determine_the_category_of_a_section_within_a_subpoena.svg
+          excerpt: This is a multiclass classification model designed to determine the category of a section within a subpoena. A subpoena is a formal document issued by a court, grand jury, legislative body or committee, or authorized administrative agency. It commands an individual to appear at a specific time and provide testimony, either orally or in writing, regarding the matter specified in the document.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/legal/CLASSIFICATION_SUBPOENA/
+          - text: Colab
+            type: blue_btn
+            url: 
 ---

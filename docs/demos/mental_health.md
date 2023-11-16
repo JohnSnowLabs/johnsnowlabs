@@ -32,6 +32,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MENTAL_HEALTH.ipynb
+        - title: Text Classification For Mental Disorder
+          id: text_classification_mental_disorder          
+          image: 
+              src: /assets/images/Text_Classification_For_Mental_Disorder.svg
+          excerpt: The PHS-BERT Mental Disorder Classifier Model classifies text based on the following mental disorders. (Schizophrenia, Depression, Bipolar disorder, Anxiety disorder).
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_MENTAL_DISORDER/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/MENTAL_HEALTH.ipynb
         - title: Identify Intimate Partner Violence from Patient Posts
           id: classify_intimate_partner_violence_tweet          
           image: 

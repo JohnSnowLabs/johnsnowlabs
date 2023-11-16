@@ -128,5 +128,29 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/PUBLIC_HEALTH_MENTIONS/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_MENTION.ipynb        
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_MENTION.ipynb     
+        - title: Multilabel Text Classification For Respiratory Disease
+          id: multilabel_text_classification_respiratory_disease           
+          image: 
+              src: /assets/images/Multilabel_Text_Classification_For_Respiratory_Disease.svg
+          excerpt: 'The PHS-BERT Respiratory Disease Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual mentions of four prominent respiratory diseases: Asthma, Chronic Obstructive Pulmonary Disease (COPD), Emphysema, and Chronic bronchitis.'
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPIRATORY/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_CLASSIFIER_DL.ipynb
+        - title: Multilabel Text Classification for Heart Disease
+          id: multilabel_text_classification_heart_disease           
+          image: 
+              src: /assets/images/Multilabel_Text_Classification_for_Heart_Disease.svg
+          excerpt: 'The PHS-BERT Heart Disease Classifier Model is a specialized text classification system, engineered to accurately identify and categorize textual mentions of three prominent cardiovascular diseases: Hypertension, Coronary Artery Disease, and Myocardial Infarction.'
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_HEART_DISEASE/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/PUBLIC_HEALTH_CLASSIFIER_DL.ipynb
 ---
