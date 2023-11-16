@@ -4,13 +4,15 @@ title: Pretrained Pipeline for Reading and Skewing Correction in Mixed Scanned a
 author: John Snow Labs
 name: mixed_scanned_digital_pdf_skew_correction
 date: 2023-11-06
-tags: [en, licensed]
+tags: [en, licensed, skew, ocr]
 task: OCR Text Detection
 language: en
 nav_key: models
 edition: Visual NLP 5.0.2
 spark_version: 3.2.1
 supported: true
+recommended: true
+annotator: PipelineModel
 article_header:
   type: cover
 use_language_switcher: "Python-Scala-Java"
