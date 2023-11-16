@@ -68,7 +68,7 @@ val result = pdf_pipeline.transform(pdf_example_df)
 {:.table-model}
 |---|---|
 |Model Name:|mixed_scanned_digital_pdf|
-|Type:|ocr|
+|Type:|pipeline|
 |Compatibility:|Visual NLP 5.0.2+|
 |License:|Licensed|
 |Edition:|Official|

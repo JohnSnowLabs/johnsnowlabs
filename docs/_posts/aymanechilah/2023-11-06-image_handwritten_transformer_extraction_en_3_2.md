@@ -72,7 +72,7 @@ I hope it will be awesome ."
 {:.table-model}
 |---|---|
 |Model Name:|image_handwritten_transformer_extraction|
-|Type:|ocr|
+|Type:|pipeline|
 |Compatibility:|Visual NLP 5.0.2+|
 |License:|Licensed|
 |Edition:|Official|

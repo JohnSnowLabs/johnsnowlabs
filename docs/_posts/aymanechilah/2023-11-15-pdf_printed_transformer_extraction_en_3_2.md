@@ -88,7 +88,7 @@ Card is registertd
 {:.table-model}
 |---|---|
 |Model Name:|pdf_printed_transformer_extraction|
-|Type:|ocr|
+|Type:|pipeline|
 |Compatibility:|Visual NLP 5.0.2+|
 |License:|Licensed|
 |Edition:|Official|

@@ -96,7 +96,7 @@ C
 {:.table-model}
 |---|---|
 |Model Name:|mixed_scanned_digital_pdf_image_cleaner|
-|Type:|ocr|
+|Type:|pipeline|
 |Compatibility:|Visual NLP 5.0.2+|
 |License:|Licensed|
 |Edition:|Official|
