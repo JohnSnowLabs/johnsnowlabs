@@ -110,31 +110,51 @@ from johnsnowlabs import *
 // First the prior steps of the pipeline are defined.
 // Output of types TOKEN and WORD_EMBEDDINGS are needed.
 val data = Seq(("A 63-year-old man presents to the hospital ...")).toDF("text")
-val docAssembler = new nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-val sentenceDetector = new nlp.SentenceDetector().setInputCols("document").setOutputCol("sentence")
-val tokenizer = new nlp.Tokenizer().setInputCols("sentence").setOutputCol("token")
-val word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
+
+val docAssembler = new DocumentAssembler()
+    .setInputCol("text")
+    .setOutputCol("document")
+
+val sentenceDetector = new SentenceDetector()
+    .setInputCols("document")
+    .setOutputCol("sentence")
+
+val tokenizer = new Tokenizer()
+    .setInputCols("sentence")
+    .setOutputCol("token")
+
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("word_embeddings")
-val icdo_ner = medical.NerModel.pretrained("ner_bionlp", "en", "clinical/models")
+
+val icdo_ner = MedicalNerModel.pretrained("ner_bionlp", "en", "clinical/models")
   .setInputCols(Array("sentence", "token", "word_embeddings"))
   .setOutputCol("icdo_ner")
-val icdo_chunk = new nlp.NerConverter().setInputCols(Array("sentence","token","icdo_ner")).setOutputCol("icdo_chunk").setWhiteList("Cancer")
+
+val icdo_chunk = new nlp.NerConverter()
+  .setInputCols(Array("sentence","token","icdo_ner"))
+  .setOutputCol("icdo_chunk").setWhiteList("Cancer")
+
 val icdo_chunk_embeddings = new nlp.ChunkEmbeddings()
   .setInputCols(Array("icdo_chunk", "word_embeddings"))
   .setOutputCol("icdo_chunk_embeddings")
+
 val icdo_chunk_resolver = medical.ChunkEntityResolverModel.pretrained("chunkresolve_icdo_clinical", "en", "clinical/models")
   .setInputCols(Array("token","icdo_chunk_embeddings"))
   .setOutputCol("tm_icdo_code")
+
 val clinical_ner = medical.NerModel.pretrained("ner_clinical", "en", "clinical/models")
 .setInputCols(Array("sentence", "token", "word_embeddings"))
 .setOutputCol("ner")
+
 val ner_converter = new nlp.NerConverter()
 .setInputCols(Array("sentence", "token", "ner"))
 .setOutputCol("ner_chunk")
+
 val ner_chunk_tokenizer = new nlp.ChunkTokenizer()
   .setInputCols("ner_chunk")
   .setOutputCol("ner_token")
+  
 val ner_chunk_embeddings = new nlp.ChunkEmbeddings()
   .setInputCols(Array("ner_chunk", "word_embeddings"))
   .setOutputCol("ner_chunk_embeddings")

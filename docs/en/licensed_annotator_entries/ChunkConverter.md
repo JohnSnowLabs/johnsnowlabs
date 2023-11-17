@@ -220,7 +220,6 @@ rules = '''
 '''
 
 with open('regex_rules.txt', 'w') as f:
-
     f.write(rules)
 
 sample_text="""AWA Group LP intends to pay dividends on the Common Units on a quarterly basis at an annual rate of 8.00% of the Offering Price. """
@@ -297,7 +296,10 @@ result.select(F.explode(F.arrays_zip(result.merged_chunks.result,
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
-val rules = """Array(A-Z)+(\s+Array(A-Z)+) *,SECTION_HEADER """ with open("regex_rules.txt","w") as f: f.write(rules) 
+val rules = """\b[A-Z]+(\s+[A-Z]+)*:\b, SECTION_HEADER""" 
+
+with open("regex_rules.txt","w") as f: 
+    f.write(rules) 
 
 import spark.implicits._
 val documentAssembler = new DocumentAssembler()
@@ -377,7 +379,6 @@ rules = '''
 '''
 
 with open('regex_rules.txt', 'w') as f:
-
     f.write(rules)
 
 sample_text="""AWA Group LP intends to pay dividends on the Common Units on a quarterly basis at an annual rate of 8.00% of the Offering Price. """
@@ -454,7 +455,10 @@ result.select(F.explode(F.arrays_zip(result.merged_chunks.result,
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
-val rules = """Array(A-Z)+(\s+Array(A-Z)+) *,SECTION_HEADER """ with open("regex_rules.txt","w") as f: f.write(rules) 
+val rules = """[A-Z]+[\s+[A-Z]+]*,SECTION_HEADER """ 
+
+with open("regex_rules.txt","w") as f: 
+    f.write(rules) 
 
 import spark.implicits._
 val documentAssembler = new DocumentAssembler()
