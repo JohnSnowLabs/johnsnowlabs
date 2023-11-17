@@ -116,6 +116,7 @@ def start(
     )
 
     # Collect all local Jar Paths we have access to for the SparkSession
+    Software.spark_nlp.check_installed(None)  # TODO REMOVE THIS LINE
     jars = []
     if (
         spark_nlp

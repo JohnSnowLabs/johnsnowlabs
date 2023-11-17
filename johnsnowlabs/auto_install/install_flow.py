@@ -3,7 +3,6 @@ import shutil
 import sys
 from typing import Optional, List
 
-import boto3
 
 from johnsnowlabs import settings
 from johnsnowlabs.auto_install.databricks.dbfs import dbfs_rm
@@ -400,7 +399,7 @@ def install_to_databricks(
 
 
 def install_to_emr(
-    boto_session: Optional[boto3.Session] = None,
+    boto_session: Optional["boto3.Session"] = None,
     # EMR specific configs
     bootstrap_bucket: Optional[str] = None,
     s3_logs_path: Optional[str] = None,
@@ -449,6 +448,8 @@ def install_to_emr(
     :param auto_terminate_hours : Idle hour to wait before terminating the cluster
     :return: EMR cluster id
     """
+    import boto3
+
     secrets: JslSecrets = JslSecrets.build_or_try_find_secrets(
         browser_login=browser_login,
         force_browser=force_browser,
@@ -486,7 +487,7 @@ def install_to_emr(
 
 
 def install_to_glue(
-    boto_session: Optional[boto3.Session] = None,
+    boto_session: Optional["boto3.Session"] = None,
     glue_assets_bucket: Optional[str] = None,
     # Browser Auth
     browser_login: bool = True,
@@ -522,6 +523,8 @@ def install_to_glue(
     :param hardware_platform: Hardware platform
 
     """
+    import boto3
+
     if not boto_session:
         boto_session = boto3.Session()
 

@@ -1,6 +1,5 @@
 from typing import List, Optional, Tuple
 
-import boto3
 import botocore
 
 from johnsnowlabs.py_models.install_info import InstallSuite, LocalPy4JLib
@@ -8,11 +7,13 @@ from johnsnowlabs.utils.boto_utils import BotoException
 from johnsnowlabs.utils.s3_utils import create_bucket, upload_file_to_s3
 
 
-def create_glue_bucket(boto_session: boto3.Session, bucket=None):
+def create_glue_bucket(boto_session: "boto3.Session", bucket=None):
     """Create a bucket for EMR cluster logs
     :param boto_session: Boto3 session
     :param bucket: Bucket name
     """
+    import boto3
+
     try:
         sts_client = boto_session.client("sts")
         account_id = sts_client.get_caller_identity()["Account"]
@@ -31,7 +32,7 @@ def create_glue_bucket(boto_session: boto3.Session, bucket=None):
 
 
 def upload_pylibs_jars_to_glue_bucket(
-    boto_session: boto3.Session, install_suite: InstallSuite, bucket: Optional[str]
+    boto_session: "boto3.Session", install_suite: InstallSuite, bucket: Optional[str]
 ) -> Tuple[List[str], List[str]]:
     """Uploads jars and python packages to glue bucket
     :param boto_session: Boto3 session
@@ -39,6 +40,8 @@ def upload_pylibs_jars_to_glue_bucket(
     :param bucket: Bucket name
     :return: List of uploaded jars and python packages
     """
+    import boto3
+
     if not boto_session:
         raise ValueError("Boto3 session is required")
 
