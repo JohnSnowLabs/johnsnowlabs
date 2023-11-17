@@ -16,7 +16,7 @@ sidebar:
 
 Johnsnowlabs provides the following nodes which can be used inside the [Haystack Framework](https://haystack.deepset.ai/) for scalable pre-processing&embedding on 
 [spark clusters](https://spark.apache.org/). With this you can create Easy-Scalable&Production-Grade LLM&RAG applications.
-See the [Haystack with Johnsnowlabs Tutorial Notebook](todo)
+See the [Haystack with Johnsnowlabs Tutorial Notebook](https://github.com/JohnSnowLabs/johnsnowlabs/blob/release/master/notebooks/haystack_with_johnsnowlabs.ipynb)
 
 ## JohnSnowLabsHaystackProcessor
 Pre-Process you documents in a scalable fashion in Haystack
