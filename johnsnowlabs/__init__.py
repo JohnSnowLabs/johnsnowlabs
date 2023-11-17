@@ -13,6 +13,8 @@ if try_import_lib("sparknlp_jsl") and try_import_lib("sparknlp"):
 if try_import_lib("sparkocr") and try_import_lib("sparknlp"):
     from johnsnowlabs import visual
 
+from johnsnowlabs import llm
+
 
 def new_version_online():
     from .utils.pip_utils import get_latest_lib_version_on_pypi
