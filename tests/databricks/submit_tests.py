@@ -105,8 +105,9 @@ def test_submit_notebook_task_to_databricks(creds, node_type):
 
 @db_cloud_node_params
 def test_submit_notebook_parameterized_task_to_databricks(creds, node_type):
-    cluster_id = get_or_create_test_cluster(creds, node_type, 0)
+    # cluster_id = get_or_create_test_cluster(creds, node_type, 0)
     lic, host, token = creds
+    cluster_id = "1005-134624-a6p9ji9u"
 
     nb_path = "parameterized_nb_example.ipynb"
     dst_path = "/Users/christian@johnsnowlabs.com/test.ipynb"
@@ -125,7 +126,7 @@ def test_submit_notebook_parameterized_task_to_databricks(creds, node_type):
 
 @db_cloud_node_params
 def test_submit_script_parameterized_task_to_databricks(creds, node_type):
-    cluster_id = get_or_create_test_cluster(creds, node_type, 0)
+    #    cluster_id = get_or_create_test_cluster(creds, node_type, 0)
 
     script = """
 import sys
@@ -133,6 +134,7 @@ print(f"First argument: {sys.argv[1]}, Second argument: {sys.argv[2]}")
     """
 
     lic, host, token = creds
+    cluster_id = "1005-134624-a6p9ji9u"
 
     arg1 = "My first arg"
     arg2 = "My second arg"
