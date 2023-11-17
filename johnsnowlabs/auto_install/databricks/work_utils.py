@@ -295,6 +295,7 @@ def run_in_databricks(
     block_till_complete=True,
     dst_path: str = None,
     parameters: Any = None,
+    return_job_url: bool = False,
 ):
     """
 
@@ -313,7 +314,8 @@ def run_in_databricks(
     :param dst_path: path to store the python script/notebook. in databricks, mandatory for notebooks.
         I.e. /Users/<your@databricks.email.com>/test.ipynb
     :param parameters: parameters to pass to the python script/notebook formatted accordingly to https://docs.databricks.com/en/workflows/jobs/create-run-jobs.html#pass-parameters-to-a-databricks-job-task
-    :return: job_id
+    :param return_job_url: returns job_url instead of job_id
+    :return: job_id if return_job_url=False else job_url
     """
     from johnsnowlabs.auto_install.databricks.install_utils import (
         get_db_client_for_token,
@@ -341,14 +343,20 @@ def run_in_databricks(
 
         if "result_state" in job_status["state"]:
             print(f"Job has a result! its {job_status['state']}")
-            return job_status
+            if return_job_url:
+                return job_status, job_status["run_page_url"]
+            else:
+                return job_status
         elif "life_cycle_state" in job_status["state"]:
             print(
                 f"Waiting 30 seconds, job {job_id}  is still running, its {job_status['state']}"
             )
         time.sleep(30)
 
-    return job_id
+    if return_job_url:
+        return job_id, job_status["run_page_url"]
+    else:
+        return job_id
 
 
 def submit_notebook_to_databricks(

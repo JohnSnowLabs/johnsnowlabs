@@ -177,8 +177,12 @@ Where to find your Databricks Access Token:
 You can set the following parameters on the `nlp.install()` function to define properties of the cluster which will be created.  
 See [Databricks Cluster Creation](https://docs.databricks.com/dev-tools/api/latest/clusters.html#create) for a detailed description of all parameters.
 
+You can use the `extra_pip_installs` parameter to installl a list of additional pypi libraries to the cluster. 
+Just set `nlp.install_to_databricks(extra_pip_installs=['langchain','farm-haystack==1.2.3'])` to install the libraries.
+
 | Cluster creation Parameter | Default Value                              | 
 |----------------------------|--------------------------------------------|
+| extra_pip_installs         | `None`                                     | 
 | block_till_cluster_ready   | `True`                                     | 
 | num_workers                | `1`                                        | 
 | cluster_name               | `John-Snow-Labs-Databricks-Auto-Cluster🚀` | 
@@ -390,7 +394,7 @@ Your can get it from:
 
 ``` python
 # Create a new Cluster with Spark NLP and all licensed libraries ready to go:
-nlp.install(databricks_host='https://your_host.cloud.databricks.com', databricks_token = 'dbapi_token123',)
+nlp.install_to_databricks(databricks_host='https://your_host.cloud.databricks.com', databricks_token = 'dbapi_token123',)
 ```
 </div><div class="h3-box" markdown="1">
 

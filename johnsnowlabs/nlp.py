@@ -1,6 +1,10 @@
 from johnsnowlabs import lab, settings, viz
 from johnsnowlabs.abstract_base.lib_resolver import try_import_lib
-from johnsnowlabs.auto_install.databricks.endpoints import query_and_deploy_if_missing
+from johnsnowlabs.auto_install.databricks.endpoints import (
+    query_and_deploy_if_missing,
+    query_endpoint,
+    deploy_endpoint,
+)
 from johnsnowlabs.auto_install.databricks.work_utils import run_in_databricks
 from johnsnowlabs.auto_install.emr.work_utils import run_in_emr
 

@@ -24,47 +24,53 @@ You must create endpoints from a Databricks cluster created by [nlp.install](htt
 See [Cluster Creation Notebook](https://github.com/JohnSnowLabs/johnsnowlabs/tree/main/notebooks/create_databricks_cluster.ipynb) 
 and [Databricks Endpoint Tutorial Notebook](https://github.com/JohnSnowLabs/johnsnowlabs/tree/main/notebooks/databricks_endpoints_tutorial.ipynb)      
 
+
 ```python
 # You need `mlflow_by_johnsnowlabs` installed until next mlflow is released
 ! pip install mlflow_by_johnsnowlabs
-
 from johnsnowlabs import nlp
-nlp.query_and_deploy_if_missing('bert','My String to embed')
+nlp.deploy_endpoint('bert')
+nlp.query_endpoint('bert_ENDPOINT','My String to embed')
 ```
 
-`nlp.query_and_deploy_if_missing` has the following parameters related to **deploying your model**:
+`nlp.deploy_endpoint` will register a ML-FLow model into your registry and deploy an Endpoint with a JSL license. 
+It has the following parameters:
 
-| Parameter              | Description                                                                                                                                                                                                                                                                                                                               |
-|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
-| `model`                | Model to be deployed as endpoint which is [converted into NluPipelines](https://nlp.johnsnowlabs.com/docs/en/jsl/utils_for_spark_nlp#nlptonlupipepipe), supported classes are: `String` Reference to NLU Pipeline name like 'bert', `NLUPipeline`, `List[Annotator]`, `Pipeline`, `LightPipeline`, `PretrainedPipeline`, `PipelineModel`, |
-| `query`                | str or list of strings or raw json string. If raw json, is_json_query must be True                                                                                                                                                                                                                                                        |
-| `is_json_query`        | if True, query is treated as raw json string                                                                                                                                                                                                                                                                                              |
-| `base_name`            | Name-Prefix for all resources created (Endpoints, Models, etc). If using non nlu referenced based models, you must specify this.                                                                                                                                                                                                          |
-| `re_create_endpoint`   | if False, endpoint creation is skipped if one already exists. If True, it will delete existing endpoint if it exists                                                                                                                                                                                                                      |
-| `re_create_model`      | if False, model creation is skipped if one already exists. If True, model will be re-logged again, bumping the current version by 2                                                                                                                                                                                                       |
-| `workload_size`        | one of Small, Medium, Large.                                                                                                                                                                                                                                                                                                              |
-| `gpu`                  | `True`/`False` to load  GPU-optimized jars or CPU-optimized jars in the container. Must use a gpu based `workload_type` if `gpu=true`                                                                                                                                                                                                     |
-| `new_run`              | if True, mlflow will start a new run before logging the model                                                                                                                                                                                                                                                                             |
-| `db_host`              | the databricks host URL. If not specified, the DATABRICKS_HOST environment variable is used                                                                                                                                                                                                                                               |
-| `db_token`             | the databricks Access Token. If not specified, the DATABRICKS_TOKEN environment variable is used                                                                                                                                                                                                                                          |
-| `block_until_deployed` | if True, this function will block until the endpoint is created                                                                                                                                                                                                                                                                           |
-| `workload_type`        | `CPU` by default, use `GPU_SMALL` to spawn a GPU based endpoint instead. Check Databricks docs for alternative values                                                                                                                                                                                                                     |
+| Parameter              | Description                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| `model`                | Model to be deployed as endpoint which is [converted into NluPipelines](https://nlp.johnsnowlabs.com/docs/en/jsl/utils_for_spark_nlp#nlptonlupipepipe), supported classes are: `String` Reference to NLU Pipeline name like 'bert', `NLUPipeline`, `List[Annotator]`, `Pipeline`, `LightPipeline`, `PretrainedPipeline`, `PipelineModel`. In case of a NLU reference, the endpoint name is auto-generated aus `<nlu_ref>_ENDPOINT` i.e. `bert_ENDPOINT`. '.' is replaced with '_' in the nlu reference for the endpoint name |
+| `endpoint_name`        | Name for the deployed endpoint. Optional if using NLU model reference but mandatory for custom pipelines.                                                                                                                                                                                                                                                                                                                                                 |
+| `re_create_endpoint`   | if False, endpoint creation is skipped if one already exists. If True, it will delete existing endpoint if it exists                                                                                                                                                                                                                                                                                                                                      |
+| `re_create_model`      | if False, model creation is skipped if one already exists. If True, model will be re-logged again, bumping the current version by 2                                                                                                                                                                                                                                                                                                                       |
+| `workload_size`        | one of Small, Medium, Large.                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| `gpu`                  | `True`/`False` to load  GPU-optimized jars or CPU-optimized jars in the container. Must use a gpu based `workload_type` if `gpu=true`                                                                                                                                                                                                                                                                                                                     |
+| `new_run`              | if True, mlflow will start a new run before logging the model                                                                                                                                                                                                                                                                                                                                                                                             |
+| `block_until_deployed` | if True, this function will block until the endpoint is created                                                                                                                                                                                                                                                                                                                                                                                           |
+| `workload_type`        | `CPU` by default, use `GPU_SMALL` to spawn a GPU based endpoint instead. Check Databricks docs for alternative values                                                                                                                                                                                                                                                                                                                                     |
+| `db_host`              | the databricks host URL. If not specified, the DATABRICKS_HOST environment variable is used                                                                                                                                                                                                                                                                                                                                                               |
+| `db_token`             | the databricks Access Token. If not specified, the DATABRICKS_TOKEN environment variable is used                                                                                                                                                                                                                                                                                                                                                          |
 
-`nlp.query_and_deploy_if_missing` has the following parameters related to **querying your model**,     
-which are forwarded to the [model.predict()](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api) call:
+`nlp.query_endpoint` translates your query to JSON, sends it to the endpoint and returns the result as pandas DataFrame.
+It has the following parameters which are forwarded to the [model.predict()](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api) call inside of the endpoint:
 
-| Parameter                   | Description                                                                                        |
-|-----------------------------|----------------------------------------------------------------------------------------------------| 
-| `output_level`              | One of `token`, `chunk`, `sentence`, `relation`, `document` to shape outputs                       | 
-| `positions`                 | Set `True`/`False` to include or exclude character index position of predictions                   | 
-| `metadata`                  | Set `True`/`False` to include additional metadata                                                  | 
-| `drop_irrelevant_cols`      | Set `True`/`False` to drop irrelevant columns                                                      | 
-| `get_embeddings`            | Set `True`/`False` to include embedding or not                                                     | 
+| Parameter                   | Description                                                                                       |
+|-----------------------------|---------------------------------------------------------------------------------------------------| 
+| `endpoint_name`        | Name of the endpoint to query           |
+| `query`                | str or list of strings or raw json string. If raw json, is_json_query must be True                |
+| `is_json_query`        | if True, query is treated as raw json string                                                      |
+| `output_level`              | One of `token`, `chunk`, `sentence`, `relation`, `document` to shape outputs                      | 
+| `positions`                 | Set `True`/`False` to include or exclude character index position of predictions                  | 
+| `metadata`                  | Set `True`/`False` to include additional metadata                                                 | 
+| `drop_irrelevant_cols`      | Set `True`/`False` to drop irrelevant columns                                                     | 
+| `get_embeddings`            | Set `True`/`False` to include embedding or not                                                    | 
 | `keep_stranger_features`    | Set `True`/`False` to return columns not named "text", 'image" or "file_type" from your input data | 
-| `multithread`               | Set `True`/`False` to use multi-Threading for inference. Auto-inferred if not set                  | 
+| `multithread`               | Set `True`/`False` to use multi-Threading for inference. Auto-inferred if not set                 | 
+| `db_host`              | the databricks host URL. If not specified, the DATABRICKS_HOST environment variable is used       |
+| `db_token`             | the databricks Access Token. If not specified, the DATABRICKS_TOKEN environment variable is used  |
 
 
-`nlp.query_and_deploy_if_missing` checks the following Env vars 
+
+`nlp.query_endpoint` and `nlp.deploy_endpoint` check the following **mandatory** env vars to resolve wheels for endpoints
 
 | Env Var Name                | Description                                                                                                                                                 | 
 |-----------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|

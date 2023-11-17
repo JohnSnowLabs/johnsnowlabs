@@ -5,7 +5,12 @@ from typing import List, Optional
 
 from johnsnowlabs.auto_install import jsl_home
 from johnsnowlabs.auto_install.softwares import Software
-from johnsnowlabs.py_models.install_info import InstallSuite, LocalPy4JLib, LocalPyLib
+from johnsnowlabs.py_models.install_info import (
+    InstallSuite,
+    LocalPy4JLib,
+    LocalPyLib,
+    RootInfo,
+)
 from johnsnowlabs.py_models.lib_version import LibVersion
 from johnsnowlabs.utils.env_utils import is_running_in_databricks
 from .dbfs import *
@@ -86,6 +91,15 @@ def create_cluster(
 
     license_path = "/johnsnowlabs/license.json"
     put_file_on_dbfs(db, license_path, lic, overwrite=True)
+
+    info = RootInfo.get_from_jsl_home().dict()
+    info["version"] = info["version"].as_str()
+    put_file_on_dbfs(
+        db,
+        "/johnsnowlabs/info.json",
+        info,
+        overwrite=True,
+    )
 
     default_spark_env_vars = dict(
         SPARK_NLP_LICENSE_FILE=f"/dbfs{license_path}",
