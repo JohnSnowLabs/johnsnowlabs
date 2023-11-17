@@ -387,6 +387,9 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.read_conll" title="sparknlp_jsl.utils.alab_utils.read_conll"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_conll</span></code></a>(spark, filepath)</p></td>
 <td><p>Args:</p></td>
 </tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.alab_utils.strip_json_entities" title="sparknlp_jsl.utils.alab_utils.strip_json_entities"><code class="xref py py-obj docutils literal notranslate"><span class="pre">strip_json_entities</span></code></a>(exported_json)</p></td>
+<td><p>iterate through entities and strip out the text</p></td>
+</tr>
 </tbody>
 </table>
 </section>
@@ -636,6 +639,19 @@ filepath: path to the conll file</p>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.alab_utils.strip_json_entities">
+<span class="sig-name descname"><span class="pre">strip_json_entities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exported_json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.alab_utils.strip_json_entities" title="Permalink to this definition">#</a></dt>
+<dd><p>iterate through entities and strip out the text
+and update start and end positions in the json file from annotation lab</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>exported_json (dict): exported json from annotation lab</p>
+</dd>
+<dt>Returns:</dt><dd><p>exported_json (dict): updated json</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 </section>
@@ -697,6 +713,7 @@ filepath: path to the conll file</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_single_task_conll"><code class="docutils literal notranslate"><span class="pre">get_single_task_conll()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.get_token_df"><code class="docutils literal notranslate"><span class="pre">get_token_df()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.read_conll"><code class="docutils literal notranslate"><span class="pre">read_conll()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.alab_utils.strip_json_entities"><code class="docutils literal notranslate"><span class="pre">strip_json_entities()</span></code></a></li>
 </ul>
 </li>
 </ul>
