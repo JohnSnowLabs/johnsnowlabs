@@ -340,10 +340,10 @@ def model_exists(name):
 ############### High level Deployment & Query
 
 
-def query_endpoint(data, nlu_model_name, db_host, db_token, base_name=None):
+def _query_endpoint(data, endpoint_name, db_host, db_token):
     # 5. Query the Endpoint
     # endpoint_name = f"{nlu_model_name.replace('.','_')}_ENDPOINT"
-    endpoint_name = base_name if base_name else nlu_name_to_endpoint(nlu_model_name)
+
     url = f"{db_host}/serving-endpoints/{endpoint_name}/invocations"
     headers = {
         "Authorization": f"Bearer {db_token}",
@@ -459,12 +459,76 @@ def is_nlu_pipe(pipe):
     return isinstance(pipe, NLUPipeline)
 
 
+def validate_db_creds(db_host, db_token):
+    if not db_host:
+        db_host = os.environ.get("DATABRICKS_HOST")
+    if not db_token:
+        db_token = os.environ.get("DATABRICKS_TOKEN")
+    if not db_host:
+        raise Exception(
+            "You must specify DATABRICKS_HOST and DATABRICKS_TOKEN en variables"
+        )
+    return db_host, db_token
+
+
+def deploy_model(
+    model,
+    re_create_endpoint,
+    re_create_model,
+    db_host,
+    db_token,
+    workload_size,
+    block_until_deployed,
+    gpu,
+    workload_type,
+    endpoint_name,
+):
+    # convert to nlu pipe if needed
+    if isinstance(model, str):
+        return deploy_nlu_model_as_endpoint(
+            model,
+            re_create_endpoint=re_create_endpoint,
+            re_create_model=re_create_model,
+            db_host=db_host,
+            db_token=db_token,
+            workload_size=workload_size,
+            block_until_deployed=block_until_deployed,
+            gpu=gpu,
+            workload_type=workload_type,
+            endpoint_name=endpoint_name,
+        )
+    else:
+        if not endpoint_name:
+            raise Exception(
+                "If you want to deploy custom pipes, you need to specify a endpoint_name"
+            )
+        try:
+            import nlu
+
+            if not isinstance(model, nlu.NLUPipeline):
+                model = nlp.to_nlu_pipe(model)
+        except:
+            raise Exception("Failure converting your model to NLU pipe")
+        return deploy_nlu_model_as_endpoint(
+            model,
+            re_create_endpoint=re_create_endpoint,
+            re_create_model=re_create_model,
+            endpoint_name=endpoint_name,
+            db_host=db_host,
+            db_token=db_token,
+            workload_size=workload_size,
+            block_until_deployed=block_until_deployed,
+            gpu=gpu,
+            workload_type=workload_type,
+        )
+
+
 def query_and_deploy_if_missing(
     model,
     query,
     re_create_endpoint=False,
     re_create_model=False,
-    base_name=None,
+    endpoint_name=None,
     is_json_query=False,
     db_host=None,
     db_token=None,
@@ -501,7 +565,7 @@ def query_and_deploy_if_missing(
 
     query: str or list of strings or raw json string. If raw json, is_json_query must be True
     is_json_query: if True, query is treated as raw json string
-    base_name: Name-Prefix for all resources created (Endpoints, Models, etc). If using non nlu referenced based models, you must specify this.
+    endpoint_name: Name-Prefix for all resources created (Endpoints, Models, etc). If using non nlu referenced based models, you must specify this.
     re_create_endpoint: if False, endpoint creation is skipped if one already exists. If True, it will delete existing endpoint if it exists
     re_create_model: if False, model creation is skipped if one already exists. If True, model will be re-logged again, bumping the current version by 2
     workload_size: one of Small, Medium, Large.
@@ -519,15 +583,10 @@ def query_and_deploy_if_missing(
     keep_stranger_features: Return columns not named "text", 'image" or "file_type"
     multithread:  Use multi-Threading for inference
     """
-
-    if not db_host:
-        db_host = os.environ.get("DATABRICKS_HOST")
-    if not db_token:
-        db_token = os.environ.get("DATABRICKS_TOKEN")
-    if not db_host:
-        raise Exception(
-            "You must specify DATABRICKS_HOST and DATABRICKS_TOKEN en variables"
-        )
+    print(
+        "query_and_deploy_if_missing is deprecated. It will be dropped in johnsnowlabs==5.2.0 Please use nlp.deploy_endpoint() and nlp.query_endpoint() instead."
+    )
+    db_host, db_token = validate_db_creds(db_host, db_token)
 
     if gpu and workload_type == "CPU":
         raise ValueError(
@@ -555,46 +614,23 @@ def query_and_deploy_if_missing(
         mlflow.end_run()
         mlflow.start_run()
 
-    if isinstance(model, str):
-        deploy_nlu_model_as_endpoint(
-            model,
-            re_create_endpoint=re_create_endpoint,
-            re_create_model=re_create_model,
-            db_host=db_host,
-            db_token=db_token,
-            workload_size=workload_size,
-            block_until_deployed=block_until_deployed,
-            gpu=gpu,
-            workload_type=workload_type,
-            base_name=base_name,
-        )
-    else:
-        if not base_name:
-            raise Exception(
-                "If you want to deploy custom pipes, you need to specify base_name"
-            )
-        try:
-            import nlu
+    endpoint_name = deploy_model(
+        model,
+        re_create_endpoint=re_create_endpoint,
+        re_create_model=re_create_model,
+        db_host=db_host,
+        db_token=db_token,
+        workload_size=workload_size,
+        block_until_deployed=block_until_deployed,
+        gpu=gpu,
+        workload_type=workload_type,
+        endpoint_name=endpoint_name,
+    )
 
-            if not isinstance(model, nlu.NLUPipeline):
-                model = nlp.to_nlu_pipe(model)
-        except:
-            raise Exception("Failure converting your model to NLU pipe")
-        deploy_nlu_model_as_endpoint(
-            model,
-            re_create_endpoint=re_create_endpoint,
-            re_create_model=re_create_model,
-            base_name=base_name,
-            db_host=db_host,
-            db_token=db_token,
-            workload_size=workload_size,
-            block_until_deployed=block_until_deployed,
-            gpu=gpu,
-            workload_type=workload_type,
-        )
     if not block_until_deployed:
         return
-    return query_endpoint(
+
+    query = (
         query
         if is_json_query
         else query_to_json(
@@ -606,11 +642,21 @@ def query_and_deploy_if_missing(
             get_embeddings=get_embeddings,
             keep_stranger_features=keep_stranger_features,
             multithread=multithread,
-        ),
-        model,
-        db_host,
-        db_token,
-        base_name,
+        )
+    )
+    return query_endpoint(
+        endpoint_name=endpoint_name,
+        query=query,
+        is_json_query=is_json_query,
+        output_level=output_level,
+        positions=positions,
+        metadata=metadata,
+        drop_irrelevant_cols=drop_irrelevant_cols,
+        get_embeddings=get_embeddings,
+        keep_stranger_features=keep_stranger_features,
+        multithread=multithread,
+        db_host=db_host,
+        db_token=db_token,
     )
 
 
@@ -618,7 +664,7 @@ def deploy_nlu_model_as_endpoint(
     model_name,
     re_create_endpoint=False,
     re_create_model=False,
-    base_name=None,
+    endpoint_name=None,
     db_host=None,
     db_token=None,
     workload_size="Small",
@@ -631,9 +677,9 @@ def deploy_nlu_model_as_endpoint(
     SECRET_NAME = "JSL_SECRET_NAME"
     SECRET_VALUE = os.environ["JOHNSNOWLABS_LICENSE_JSON_FOR_CONTAINER"]
     REGISTERD_MODEL_NAME = (
-        base_name if base_name else nlu_name_to_registerd_model(model_name)
+        endpoint_name if endpoint_name else nlu_name_to_registerd_model(model_name)
     )
-    ENDPOINT_NAME = base_name if base_name else nlu_name_to_endpoint(model_name)
+    ENDPOINT_NAME = endpoint_name if endpoint_name else nlu_name_to_endpoint(model_name)
 
     if not model_exists(REGISTERD_MODEL_NAME) or re_create_model:
         # 1. Log the model
@@ -678,3 +724,133 @@ def deploy_nlu_model_as_endpoint(
         print(
             f"Endpoint {ENDPOINT_NAME} already exists!  Set re_create_endpoint=True if you want to re-create it "
         )
+    return ENDPOINT_NAME
+
+
+def deploy_endpoint(
+    model,
+    re_create_endpoint=False,
+    re_create_model=False,
+    endpoint_name=None,
+    db_host=None,
+    db_token=None,
+    workload_size="Small",
+    new_run=True,
+    block_until_deployed=True,
+    gpu=False,
+    workload_type="CPU",
+):
+    """
+    Using to_nlu_pipeline()  https://nlp.johnsnowlabs.com/docs/en/jsl/utils_for_spark_nlp#nlptonlupipepipe
+
+    nlu_model: reference to nlu_model you want to query or  NLU convertable pipe
+    Supported types are
+    - List[Annotator]
+    - Pipeline
+    - LightPipeline
+    - PretrainedPipeline
+    - PipelineModel
+    - NLUPipeline
+    - String Reference to NLU Pipeline name
+        See https://nlp.johnsnowlabs.com/docs/en/jsl/utils_for_spark_nlp#nlptonlupipepipe for more details
+
+    endpoint_name: Name-Prefix for all resources created (Endpoints, Models, etc). If using non nlu referenced based models, you must specify this.
+    re_create_endpoint: if False, endpoint creation is skipped if one already exists. If True, it will delete existing endpoint if it exists
+    re_create_model: if False, model creation is skipped if one already exists. If True, model will be re-logged again, bumping the current version by 2
+    workload_size: one of Small, Medium, Large.
+    new_run: if True, mlflow will start a new run before logging the model
+    db_host: the databricks host URL. If not specified, the DATABRICKS_HOST environment variable is used
+    db_token: the databricks Access Token. If not specified, the DATABRICKS_TOKEN environment variable is used
+    block_until_deployed: if True, this function will block until the endpoint is deployed. If False, it will return immediately after the endpoint is created
+    gpu: Use GPU for inference
+    workload_type: 'CPU' or  'GPU_SMALL' or see official docs
+    """
+
+    db_host, db_token = validate_db_creds(db_host, db_token)
+    if workload_size not in ["Small", "Medium", "Large"]:
+        print(
+            "WARNING! workload_size should be one of Small, Medium, Large for most users."
+        )
+
+    if new_run:
+        import mlflow
+
+        mlflow.end_run()
+        mlflow.start_run()
+
+    return deploy_model(
+        model,
+        re_create_endpoint=re_create_endpoint,
+        re_create_model=re_create_model,
+        db_host=db_host,
+        db_token=db_token,
+        workload_size=workload_size,
+        block_until_deployed=block_until_deployed,
+        gpu=gpu,
+        workload_type=workload_type,
+        endpoint_name=endpoint_name,
+    )
+
+
+def query_endpoint(
+    endpoint_name,
+    query,
+    is_json_query=False,
+    output_level: Optional[str] = None,
+    positions: Optional[bool] = None,
+    metadata: Optional[bool] = None,
+    drop_irrelevant_cols: Optional[bool] = None,
+    get_embeddings: Optional[bool] = None,
+    keep_stranger_features: Optional[bool] = None,
+    multithread: Optional[bool] = None,
+    db_host=None,
+    db_token=None,
+):
+    """
+    Using the NLU predict() https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api inside a Databricks Endpoint
+
+    nlu_model: reference to nlu_model you want to query or  NLU convertable pipe
+    Supported types are
+    - List[Annotator]
+    - Pipeline
+    - LightPipeline
+    - PretrainedPipeline
+    - PipelineModel
+    - NLUPipeline
+    - String Reference to NLU Pipeline name
+        See https://nlp.johnsnowlabs.com/docs/en/jsl/utils_for_spark_nlp#nlptonlupipepipe for more details
+
+    query: str or list of strings or raw json string. If raw json, is_json_query must be True
+    is_json_query: if True, query is treated as raw json string
+    endpoint_name: Name-Prefix for all resources created (Endpoints, Models, etc). If using non nlu referenced based models, you must specify this.
+    db_host: the databricks host URL. If not specified, the DATABRICKS_HOST environment variable is used
+    db_token: the databricks Access Token. If not specified, the DATABRICKS_TOKEN environment variable is used
+    output_level : token, chunk, sentence, relation, document
+    positions: include or exclude character index position of predictions
+    metadata: include additional metadata
+    drop_irrelevant_cols: drop irrelevant columns
+    get_embeddings: Include embedding or not
+    keep_stranger_features: Return columns not named "text", 'image" or "file_type"
+    multithread:  Use multi-Threading for inference"""
+
+    db_host, db_token = validate_db_creds(db_host, db_token)
+    query = (
+        query
+        if is_json_query
+        else query_to_json(
+            in_data=query,
+            output_level=output_level,
+            positions=positions,
+            metadata=metadata,
+            drop_irrelevant_cols=drop_irrelevant_cols,
+            get_embeddings=get_embeddings,
+            keep_stranger_features=keep_stranger_features,
+            multithread=multithread,
+        )
+    )
+    return _query_endpoint(
+        data=query,
+        endpoint_name=endpoint_name,
+        db_host=db_host,
+        db_token=db_token,
+    )
