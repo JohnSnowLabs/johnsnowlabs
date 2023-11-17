@@ -115,8 +115,15 @@ def start(
         store_in_jsl_home=store_in_jsl_home,
     )
 
+    try:
+        # We use this to resolve some obscure import bugs during .check_installed for some envs
+        Software.spark_nlp.check_installed(None) if spark_nlp else None
+        Software.spark_ocr.check_installed(None) if suite.hc else None
+        Software.spark_hc.check_installed(None) if suite.ocr else None
+    except:
+        pass
+
     # Collect all local Jar Paths we have access to for the SparkSession
-    Software.spark_nlp.check_installed(None)  # TODO REMOVE THIS LINE
     jars = []
     if (
         spark_nlp
