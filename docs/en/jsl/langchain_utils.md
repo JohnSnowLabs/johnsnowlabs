@@ -19,7 +19,7 @@ sidebar:
 
 Johnsnowlabs provides the following components which can be used inside the [Langchain Framework](https://www.langchain.com/) for scalable pre-processing&embedding on
 [spark clusters](https://spark.apache.org/) as Agent Tools and Pipeline components. With this you can create Easy-Scalable&Production-Grade LLM&RAG applications.
-See the [Langchain with Johnsnowlabs Tutorial Notebook](https://github.com/JohnSnowLabs/johnsnowlabs/blob/release/master/notebooks/langchain_with_johnsnowlabs.ipynb)
+See the [Langchain with Johnsnowlabs Tutorial Notebook](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/notebooks/langchain_with_johnsnowlabs.ipynb)
 
 ## JohnSnowLabsHaystackProcessor
 Pre-Process you documents in a scalable fashion in Langchain
