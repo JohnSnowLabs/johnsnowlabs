@@ -13,7 +13,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 5.0.2
+## 5.1.0
 
 Release date: 17-11-2023
 
