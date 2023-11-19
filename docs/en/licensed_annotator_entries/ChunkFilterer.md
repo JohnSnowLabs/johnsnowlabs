@@ -9,6 +9,23 @@ model
 {%- capture model_description -%}
 Filters entities coming from CHUNK annotations. Filters can be set via a white list of terms or a regular expression.
 White list criteria is enabled by default. To use regex, `criteria` has to be set to `regex`.
+
+Parametres:
+
+- `setBlackList(list: Array[String])`: ChunkFilterer.this.type
+If defined, list of entities to ignore.
+- `setCaseSensitive(value: Boolean)`: ChunkFilterer.this.type
+Determines whether the definitions of the white listed and black listed entities are case sensitive or not.
+- `setCriteria(s: String)`: ChunkFilterer.this.type
+Sets criteria for how to compare black and white listed values with the result of the Annotation.
+- `setEntitiesConfidence(value: HashMap[String, Double])`: ChunkFilterer.this.type
+Sets Pairs (entity,confidenceThreshold) to filter the chunks with entities which have confidence lower than the confidence threshold.
+- `setFilterEntity(v: String)`: ChunkFilterer.this.type
+Possible values are 'result' and 'entity'.
+- `setRegex(list: String*)`: ChunkFilterer.this.type
+Sets the list of regexes to process the chunks.
+- `setWhiteList(list: Array[String])`: ChunkFilterer.this.type
+Sets the list of entities to process.
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -23,13 +40,19 @@ CHUNK
 from johnsnowlabs import *
 
 # Filtering POS tags
-
 # First pipeline stages to extract the POS tags are defined
 
-data = spark.createDataFrame([["Has a past history of gastroenteritis and stomach pain, however patient ..."]]).toDF("text")
-docAssembler = nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-sentenceDetector = nlp.SentenceDetector().setInputCols(["document"]).setOutputCol("sentence")
-tokenizer = nlp.Tokenizer().setInputCols(["sentence"]).setOutputCol("token")
+docAssembler = nlp.DocumentAssembler()\
+  .setInputCol("text")\
+  .setOutputCol("document")
+
+sentenceDetector = nlp.SentenceDetector()\
+  .setInputCols(["document"])\
+  .setOutputCol("sentence")
+
+tokenizer = nlp.Tokenizer()\
+  .setInputCols(["sentence"])\
+  .setOutputCol("token")
 
 posTagger = nlp.PerceptronModel.pretrained() \
   .setInputCols(["sentence", "token"]) \
@@ -54,6 +77,8 @@ pipeline = Pipeline(stages=[
   posTagger,
   chunker,
   chunkerFilter])
+
+data = spark.createDataFrame([["Has a past history of gastroenteritis and stomach pain, however patient ..."]]).toDF("text")
 
 result = pipeline.fit(data).transform(data)
 result.selectExpr("explode(chunk)").show(truncate=False)
@@ -81,12 +106,19 @@ result.selectExpr("explode(filtered)").show(truncate=False)
 from johnsnowlabs import *
 
 # Filtering POS tags
-
 # First pipeline stages to extract the POS tags are defined
 
-docAssembler = nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-sentenceDetector = nlp.SentenceDetector().setInputCols(["document"]).setOutputCol("sentence")
-tokenizer = nlp.Tokenizer().setInputCols(["sentence"]).setOutputCol("token")
+docAssembler = nlp.DocumentAssembler()\
+  .setInputCol("text")\
+  .setOutputCol("document")
+
+sentenceDetector = nlp.SentenceDetector()\
+  .setInputCols(["document"])\
+  .setOutputCol("sentence")
+
+tokenizer = nlp.Tokenizer()\
+  .setInputCols(["sentence"])\
+  .setOutputCol("token")
 
 posTagger = nlp.PerceptronModel.pretrained() \
   .setInputCols(["sentence", "token"]) \
@@ -102,9 +134,9 @@ chunkerFilter = legal.ChunkFilterer() \
   .setInputCols(["sentence","chunk"]) \
   .setOutputCol("filtered") \
   .setCriteria("isin") \
-  .setWhiteList(["gastroenteritis"])
+  .setWhiteList(["rate"])
 
-pipeline = Pipeline(stages=[
+pipeline = nlp.Pipeline(stages=[
   docAssembler,
   sentenceDetector,
   tokenizer,
@@ -112,18 +144,43 @@ pipeline = Pipeline(stages=[
   chunker,
   chunkerFilter])
 
-result = pipeline.fit(data).transform(data)
-{%- endcapture -%}
+data = spark.createDataFrame([["AWA Group LP intends to pay dividends on the Common Units on a quarterly basis at an annual rate of 8.00% of the Offering Price."]]).toDF("text")
 
+result = pipeline.fit(data).transform(data)
+result.selectExpr("explode(chunk)").show(truncate=False)
++-------------------------------------------------------+
+|col                                                    |
++-------------------------------------------------------+
+|{chunk, 73, 77, basis, {sentence -> 0, chunk -> 0}, []}|
+|{chunk, 92, 95, rate, {sentence -> 0, chunk -> 1}, []} |
++-------------------------------------------------------+
+
+result.selectExpr("explode(filtered)").show(truncate=False)
++-------------------------------------------------------+
+|col                                                    |
++-------------------------------------------------------+
+|{chunk, 92, 95, rate, {sentence -> 0, chunk -> 1}, []} |
++-------------------------------------------------------+
+
+{%- endcapture -%}
 
 {%- capture model_python_finance -%}
 from johnsnowlabs import *
+
 # Filtering POS tags
 # First pipeline stages to extract the POS tags are defined
 
-docAssembler = nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-sentenceDetector = nlp.SentenceDetector().setInputCols(["document"]).setOutputCol("sentence")
-tokenizer = nlp.Tokenizer().setInputCols(["sentence"]).setOutputCol("token")
+docAssembler = nlp.DocumentAssembler()\
+  .setInputCol("text")\
+  .setOutputCol("document")
+
+sentenceDetector = nlp.SentenceDetector()\
+  .setInputCols(["document"])\
+  .setOutputCol("sentence")
+
+tokenizer = nlp.Tokenizer()\
+  .setInputCols(["sentence"])\
+  .setOutputCol("token")
 
 posTagger = nlp.PerceptronModel.pretrained() \
   .setInputCols(["sentence", "token"]) \
@@ -139,9 +196,9 @@ chunkerFilter = finance.ChunkFilterer() \
   .setInputCols(["sentence","chunk"]) \
   .setOutputCol("filtered") \
   .setCriteria("isin") \
-  .setWhiteList(["gastroenteritis"])
+  .setWhiteList(["rate"])
 
-pipeline = Pipeline(stages=[
+pipeline = nlp.Pipeline(stages=[
   docAssembler,
   sentenceDetector,
   tokenizer,
@@ -149,42 +206,71 @@ pipeline = Pipeline(stages=[
   chunker,
   chunkerFilter])
 
+data = spark.createDataFrame([["AWA Group LP intends to pay dividends on the Common Units on a quarterly basis at an annual rate of 8.00% of the Offering Price."]]).toDF("text")
+
 result = pipeline.fit(data).transform(data)
+result.selectExpr("explode(chunk)").show(truncate=False)
++-------------------------------------------------------+
+|col                                                    |
++-------------------------------------------------------+
+|{chunk, 73, 77, basis, {sentence -> 0, chunk -> 0}, []}|
+|{chunk, 92, 95, rate, {sentence -> 0, chunk -> 1}, []} |
++-------------------------------------------------------+
+
+result.selectExpr("explode(filtered)").show(truncate=False)
++-------------------------------------------------------+
+|col                                                    |
++-------------------------------------------------------+
+|{chunk, 92, 95, rate, {sentence -> 0, chunk -> 1}, []} |
++-------------------------------------------------------+
 {%- endcapture -%}
 
 
 {%- capture model_scala_medical -%}
-from johnsnowlabs import * 
 // Filtering POS tags
 // First pipeline stages to extract the POS tags are defined
-val data = Seq("Has a past history of gastroenteritis and stomach pain, however patient ...").toDF("text")
-val docAssembler = new nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-val sentenceDetector = new nlp.SentenceDetector().setInputCols("document").setOutputCol("sentence")
-val tokenizer = new nlp.Tokenizer().setInputCols("sentence").setOutputCol("token")
 
-val posTagger = nlp.PerceptronModel.pretrained()
-  .setInputCols(Array("sentence", "token"))
-  .setOutputCol("pos")
+import spark.implicits._
 
-val chunker = new nlp.Chunker()
-  .setInputCols(Array("pos", "sentence"))
-  .setOutputCol("chunk")
-  .setRegexParsers(Array("(<NN>)+"))
+val docAssembler = new DocumentAssembler()
+ .setInputCol("text") 
+ .setOutputCol("document") 
 
-// Then the chunks can be filtered via a white list. Here only terms with "gastroenteritis" remain.
-val chunkerFilter = new medical.ChunkFilterer()
-  .setInputCols(Array("sentence","chunk"))
-  .setOutputCol("filtered")
-  .setCriteria("isin")
-  .setWhiteList("gastroenteritis")
+val sentenceDetector = new SentenceDetector()
+ .setInputCols(Array("document")) 
+ .setOutputCol("sentence") 
+
+val tokenizer = new Tokenizer()
+ .setInputCols(Array("sentence")) 
+ .setOutputCol("token") 
+
+val posTagger = PerceptronModel.pretrained()
+ .setInputCols(Array("sentence","token")) 
+ .setOutputCol("pos") 
+
+val chunker = new Chunker()
+ .setInputCols(Array("pos","sentence")) 
+ .setOutputCol("chunk") 
+ .setRegexParsers(Array("(<NN>) +")) 
+
+val chunkerFilter = new ChunkFilterer()
+ .setInputCols(Array("sentence","chunk")) 
+ .setOutputCol("filtered") 
+ .setCriteria("isin") 
+ .setWhiteList(Array("gastroenteritis"))
 
 val pipeline = new Pipeline().setStages(Array(
-  docAssembler,
-  sentenceDetector,
-  tokenizer,
-  posTagger,
-  chunker,
-  chunkerFilter))
+  docAssembler, 
+  sentenceDetector, 
+  tokenizer, 
+  posTagger, 
+  chunker, 
+  chunkerFilter)) 
+
+val text ="""Has a past history of gastroenteritis and stomach pain, however patient ..."""
+
+val data = Seq(text).toDF("text")
+val result = pipeline.fit(data).transform(data)
 
 result.selectExpr("explode(chunk)").show(truncate=false)
 +---------------------------------------------------------------------------------+
@@ -209,67 +295,119 @@ result.selectExpr("explode(filtered)").show(truncate=false)
 
 
 {%- capture model_scala_legal -%}
-from johnsnowlabs import * 
+import spark.implicits._
 
-val docAssembler = new nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-val sentenceDetector = new nlp.SentenceDetector().setInputCols("document").setOutputCol("sentence")
-val tokenizer = new nlp.Tokenizer().setInputCols("sentence").setOutputCol("token")
+val docAssembler = new DocumentAssembler()
+ .setInputCol("text") 
+ .setOutputCol("document") 
 
-val posTagger = nlp.PerceptronModel.pretrained()
-  .setInputCols(Array("sentence", "token"))
-  .setOutputCol("pos")
+val sentenceDetector = new SentenceDetector()
+ .setInputCols(Array("document")) 
+ .setOutputCol("sentence") 
 
-val chunker = new nlp.Chunker()
-  .setInputCols(Array("pos", "sentence"))
-  .setOutputCol("chunk")
-  .setRegexParsers(Array("(<NN>)+"))
+val tokenizer = new Tokenizer()
+ .setInputCols(Array("sentence")) 
+ .setOutputCol("token") 
 
-// Then the chunks can be filtered via a white list. Here only terms with "gastroenteritis" remain.
-val chunkerFilter = new legal.ChunkFilterer()
-  .setInputCols(Array("sentence","chunk"))
-  .setOutputCol("filtered")
-  .setCriteria("isin")
-  .setWhiteList("gastroenteritis")
+val posTagger = PerceptronModel.pretrained()
+ .setInputCols(Array("sentence","token")) 
+ .setOutputCol("pos") 
+
+val chunker = new Chunker()
+ .setInputCols(Array("pos","sentence")) 
+ .setOutputCol("chunk") 
+ .setRegexParsers(Array("(<NN>) +")) 
+
+val chunkerFilter = new ChunkFilterer()
+ .setInputCols(Array("sentence","chunk")) 
+ .setOutputCol("filtered") 
+ .setCriteria("isin") 
 
 val pipeline = new Pipeline().setStages(Array(
-  docAssembler,
-  sentenceDetector,
-  tokenizer,
-  posTagger,
-  chunker,
-  chunkerFilter))
+  docAssembler, 
+  sentenceDetector, 
+  tokenizer, 
+  posTagger, 
+  chunker, 
+  chunkerFilter)) 
+
+val text ="""AWA Group LP intends to pay dividends on the Common Units on a quarterly basis at an annual rate of 8.00% of the Offering Price."""
+
+val data = Seq(text).toDF("text")
+val result = pipeline.fit(data).transform(data)
+
+result.selectExpr("explode(chunk)").show(truncate=false)
++-------------------------------------------------------+
+|col                                                    |
++-------------------------------------------------------+
+|{chunk, 73, 77, basis, {sentence -> 0, chunk -> 0}, []}|
+|{chunk, 92, 95, rate, {sentence -> 0, chunk -> 1}, []} |
++-------------------------------------------------------+
+
+result.selectExpr("explode(filtered)").show(truncate=False)
++-------------------------------------------------------+
+|col                                                    |
++-------------------------------------------------------+
+|{chunk, 92, 95, rate, {sentence -> 0, chunk -> 1}, []} |
++-------------------------------------------------------+
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
-from johnsnowlabs import * 
+import spark.implicits._
 
-val docAssembler = new nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-val sentenceDetector = new nlp.SentenceDetector().setInputCols("document").setOutputCol("sentence")
-val tokenizer = new nlp.Tokenizer().setInputCols("sentence").setOutputCol("token")
+val docAssembler = new DocumentAssembler()
+ .setInputCol("text") 
+ .setOutputCol("document") 
 
-val posTagger = nlp.PerceptronModel.pretrained()
-  .setInputCols(Array("sentence", "token"))
-  .setOutputCol("pos")
+val sentenceDetector = new SentenceDetector()
+ .setInputCols(Array("document")) 
+ .setOutputCol("sentence") 
 
-val chunker = new nlp.Chunker()
-  .setInputCols(Array("pos", "sentence"))
-  .setOutputCol("chunk")
-  .setRegexParsers(Array("(<NN>)+"))
+val tokenizer = new Tokenizer()
+ .setInputCols(Array("sentence")) 
+ .setOutputCol("token") 
 
-// Then the chunks can be filtered via a white list. Here only terms with "gastroenteritis" remain.
-val chunkerFilter = new finance.ChunkFilterer()
-  .setInputCols(Array("sentence","chunk"))
-  .setOutputCol("filtered")
-  .setCriteria("isin")
-  .setWhiteList("gastroenteritis")
+val posTagger = PerceptronModel.pretrained()
+ .setInputCols(Array("sentence","token")) 
+ .setOutputCol("pos") 
+
+val chunker = new Chunker()
+ .setInputCols(Array("pos","sentence")) 
+ .setOutputCol("chunk") 
+ .setRegexParsers(Array("(<NN>) +")) 
+
+val chunkerFilter = new ChunkFilterer()
+ .setInputCols(Array("sentence","chunk")) 
+ .setOutputCol("filtered") 
+ .setCriteria("isin") 
 
 val pipeline = new Pipeline().setStages(Array(
-  docAssembler,
-  sentenceDetector,
-  tokenizer,
-  posTagger,
-  chunker,
-  chunkerFilter))
+  docAssembler, 
+  sentenceDetector, 
+  tokenizer, 
+  posTagger, 
+  chunker, 
+  chunkerFilter)) 
+
+val text ="""AWA Group LP intends to pay dividends on the Common Units on a quarterly basis at an annual rate of 8.00% of the Offering Price."""
+
+val data = Seq(text).toDF("text")
+val result = pipeline.fit(data).transform(data)
+
+result.selectExpr("explode(chunk)").show(truncate=false)
++-------------------------------------------------------+
+|col                                                    |
++-------------------------------------------------------+
+|{chunk, 73, 77, basis, {sentence -> 0, chunk -> 0}, []}|
+|{chunk, 92, 95, rate, {sentence -> 0, chunk -> 1}, []} |
++-------------------------------------------------------+
+
+result.selectExpr("explode(filtered)").show(truncate=False)
++-------------------------------------------------------+
+|col                                                    |
++-------------------------------------------------------+
+|{chunk, 92, 95, rate, {sentence -> 0, chunk -> 1}, []} |
++-------------------------------------------------------+
 {%- endcapture -%}
 
 {%- capture model_api_link -%}

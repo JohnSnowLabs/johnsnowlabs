@@ -25,6 +25,16 @@ Instead it extends the RawAnnotator, that's why the main point of interest is me
 
 At the moment there are no pretrained models available for this class. Please refer to AssertionLogRegApproach to
 train your own model.
+
+AssertionLogReg Parametres:
+- `setAfter(after: Int)`: AssertionLogRegModel.this.type
+Length of the context after the target (Default: 13)
+- `setBefore(before: Int)`: AssertionLogRegModel.this.type
+Length of the context before the target (Default: 11)
+- `setEndCol(end: String)`: AssertionLogRegModel.this.type
+Column that contains the token number for the end of the target
+- `setStartCol(start: String)`: AssertionLogRegModel.this.type
+Column that contains the token number for the start of the target
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}

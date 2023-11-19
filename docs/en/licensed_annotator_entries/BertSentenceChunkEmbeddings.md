@@ -9,7 +9,10 @@ model
 {%- capture model_description -%}
 This annotator allows aggregating sentence embeddings with ner chunk embeddings to get specific and more accurate resolution codes. It works by averaging sentence and chunk embeddings add contextual information in the embedding value. Input to this annotator is the context (sentence) and ner chunks, while the output is embedding for each chunk that can be fed to the resolver model. 
 
-The `setChunkWeight` parameter can be used to control the influence of surrounding context.
+BertSentenceChunkEmbeddings Parametres:
+
+- `setChunkWeight(value: Float)`: BertSentenceChunkEmbeddings.this.type
+Sets the wieght of the chunk embeddings relative to the sentence embeddings.The `setChunkWeight` parameter can be used to control the influence of surrounding context.
 
 > For more information and examples of `BertSentenceChunkEmbeddings` annotator, you can check the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop), and in special, the notebook [24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb).
 
