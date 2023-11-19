@@ -11,11 +11,11 @@ model
 {%- endcapture -%}
 
 {%- capture model_description -%}
-Returns a normalized entity for a particular trained ontology / curated dataset
-(e.g. ICD-10, RxNorm, SNOMED etc).
+Returns a normalized entity for a particular trained ontology / curated dataset (e.g. ICD-10, RxNorm, SNOMED etc).
 
-For available pretrained models please see the
-[Models Hub](https://nlp.johnsnowlabs.com/models?task=Entity+Resolution).
+For available pretrained models please see the [Models Hub](https://nlp.johnsnowlabs.com/models?task=Entity+Resolution).
+
+Importand Note: This annotator has been deprecated
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -32,38 +32,63 @@ from johnsnowlabs import *
 # First the prior steps of the pipeline are defined.
 # Output of types TOKEN and WORD_EMBEDDINGS are needed.
 data = spark.createDataFrame([["A 63-year-old man presents to the hospital ..."]]).toDF("text")
-docAssembler = nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-sentenceDetector = nlp.SentenceDetector().setInputCols(["document"]).setOutputCol("sentence")
-tokenizer = nlp.Tokenizer().setInputCols(["sentence"]).setOutputCol("token")
+
+docAssembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+sentenceDetector = nlp.SentenceDetector()\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
+
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
+
 word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models") \
     .setInputCols(["sentence", "token"]) \
     .setOutputCol("word_embeddings")
+
 icdo_ner = medical.NerModel.pretrained("ner_bionlp", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "word_embeddings"]) \
     .setOutputCol("icdo_ner")
-icdo_chunk = nlp.NerConverter().setInputCols(["sentence","token","icdo_ner"]).setOutputCol("icdo_chunk").setWhiteList(["Cancer"])
+
+icdo_chunk = nlp.NerConverter()\
+    .setInputCols(["sentence","token","icdo_ner"])\
+    .setOutputCol("icdo_chunk")\
+    .setWhiteList(["Cancer"])
+
 icdo_chunk_embeddings = nlp.ChunkEmbeddings() \
     .setInputCols(["icdo_chunk", "word_embeddings"]) \
     .setOutputCol("icdo_chunk_embeddings")
-icdo_chunk_resolver = medical.ChunkEntityResolverModel.pretrained("chunkresolve_icdo_clinical", "en", "clinical/models") \
+
+icdo_chunk_resolver = medical.ChunkEntityResolverModel\
+    .pretrained("chunkresolve_icdo_clinical", "en", "clinical/models") \
     .setInputCols(["token","icdo_chunk_embeddings"]) \
     .setOutputCol("tm_icdo_code")
+
 clinical_ner = medical.NerModel.pretrained("ner_clinical", "en", "clinical/models") \
-  .setInputCols(["sentence", "token", "word_embeddings"]) \
-  .setOutputCol("ner")
+    .setInputCols(["sentence", "token", "word_embeddings"]) \
+    .setOutputCol("ner")
+
 ner_converter = nlp.NerConverter() \
-  .setInputCols(["sentence", "token", "ner"]) \
-  .setOutputCol("ner_chunk")
+    .setInputCols(["sentence", "token", "ner"]) \
+    .setOutputCol("ner_chunk")
+
 ner_chunk_tokenizer = nlp.ChunkTokenizer() \
     .setInputCols(["ner_chunk"]) \
     .setOutputCol("ner_token")
+    
 ner_chunk_embeddings = nlp.ChunkEmbeddings() \
     .setInputCols(["ner_chunk", "word_embeddings"]) \
     .setOutputCol("ner_chunk_embeddings")
 
 # Definition of the SNOMED Resolution
-ner_snomed_resolver = medical.ChunkEntityResolverModel.pretrained("chunkresolve_snomed_findings_clinical","en","clinical/models") \
-      .setInputCols(["ner_token","ner_chunk_embeddings"]).setOutputCol("snomed_result")
+ner_snomed_resolver = medical.ChunkEntityResolverModel\
+    .pretrained("chunkresolve_snomed_findings_clinical","en","clinical/models") \
+    .setInputCols(["ner_token","ner_chunk_embeddings"])\
+    .setOutputCol("snomed_result")
+
 pipelineFull = Pipeline().setStages([
       docAssembler,
       sentenceDetector,
@@ -110,38 +135,62 @@ from johnsnowlabs import *
 // First the prior steps of the pipeline are defined.
 // Output of types TOKEN and WORD_EMBEDDINGS are needed.
 val data = Seq(("A 63-year-old man presents to the hospital ...")).toDF("text")
-val docAssembler = new nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-val sentenceDetector = new nlp.SentenceDetector().setInputCols("document").setOutputCol("sentence")
-val tokenizer = new nlp.Tokenizer().setInputCols("sentence").setOutputCol("token")
-val word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-  .setInputCols(Array("sentence", "token"))
-  .setOutputCol("word_embeddings")
-val icdo_ner = medical.NerModel.pretrained("ner_bionlp", "en", "clinical/models")
-  .setInputCols(Array("sentence", "token", "word_embeddings"))
-  .setOutputCol("icdo_ner")
-val icdo_chunk = new nlp.NerConverter().setInputCols(Array("sentence","token","icdo_ner")).setOutputCol("icdo_chunk").setWhiteList("Cancer")
+
+val docAssembler = new DocumentAssembler()
+    .setInputCol("text")
+    .setOutputCol("document")
+
+val sentenceDetector = new SentenceDetector()
+    .setInputCols("document")
+    .setOutputCol("sentence")
+
+val tokenizer = new Tokenizer()
+    .setInputCols("sentence")
+    .setOutputCol("token")
+
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token"))
+    .setOutputCol("word_embeddings")
+
+val icdo_ner = MedicalNerModel.pretrained("ner_bionlp", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token", "word_embeddings"))
+    .setOutputCol("icdo_ner")
+
+val icdo_chunk = new nlp.NerConverter()
+    .setInputCols(Array("sentence","token","icdo_ner"))
+    .setOutputCol("icdo_chunk")
+    .setWhiteList("Cancer")
+
 val icdo_chunk_embeddings = new nlp.ChunkEmbeddings()
-  .setInputCols(Array("icdo_chunk", "word_embeddings"))
-  .setOutputCol("icdo_chunk_embeddings")
+    .setInputCols(Array("icdo_chunk", "word_embeddings"))
+    .setOutputCol("icdo_chunk_embeddings")
+
 val icdo_chunk_resolver = medical.ChunkEntityResolverModel.pretrained("chunkresolve_icdo_clinical", "en", "clinical/models")
-  .setInputCols(Array("token","icdo_chunk_embeddings"))
-  .setOutputCol("tm_icdo_code")
+    .setInputCols(Array("token","icdo_chunk_embeddings"))
+    .setOutputCol("tm_icdo_code")
+
 val clinical_ner = medical.NerModel.pretrained("ner_clinical", "en", "clinical/models")
-.setInputCols(Array("sentence", "token", "word_embeddings"))
-.setOutputCol("ner")
+  .setInputCols(Array("sentence", "token", "word_embeddings"))
+  .setOutputCol("ner")
+
 val ner_converter = new nlp.NerConverter()
-.setInputCols(Array("sentence", "token", "ner"))
-.setOutputCol("ner_chunk")
+  .setInputCols(Array("sentence", "token", "ner"))
+  .setOutputCol("ner_chunk")
+
 val ner_chunk_tokenizer = new nlp.ChunkTokenizer()
-  .setInputCols("ner_chunk")
-  .setOutputCol("ner_token")
+    .setInputCols("ner_chunk")
+    .setOutputCol("ner_token")
+  
 val ner_chunk_embeddings = new nlp.ChunkEmbeddings()
-  .setInputCols(Array("ner_chunk", "word_embeddings"))
-  .setOutputCol("ner_chunk_embeddings")
+    .setInputCols(Array("ner_chunk", "word_embeddings"))
+    .setOutputCol("ner_chunk_embeddings")
 
 // Definition of the SNOMED Resolution
-val ner_snomed_resolver = medical.ChunkEntityResolverModel.pretrained("chunkresolve_snomed_findings_clinical","en","clinical/models")
-    .setInputCols(Array("ner_token","ner_chunk_embeddings")).setOutputCol("snomed_result")
+val ner_snomed_resolver = medical.ChunkEntityResolverModel\
+    .pretrained("chunkresolve_snomed_findings_clinical","en","clinical/models")
+    .setInputCols(Array("ner_token","ner_chunk_embeddings"))\
+    .setOutputCol("snomed_result")
+
 val pipelineFull = new Pipeline().setStages(Array(
     docAssembler,
     sentenceDetector,
@@ -209,8 +258,7 @@ ENTITY
 {%- capture approach_python_medical -%}
 from johnsnowlabs import *
 # Training a SNOMED model
-# Define pre-processing pipeline for training data. It needs consists of columns for the normalized training data
-# and their labels.
+# Define pre-processing pipeline for training data. It needs consists of columns for the normalized training data and their labels.
 document = nlp.DocumentAssembler() \
     .setInputCol("normalized_text") \
     .setOutputCol("document")
@@ -223,7 +271,8 @@ token = nlp.Tokenizer() \
     .setInputCols(["document"]) \
     .setOutputCol("token")
 
-embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_healthcare_100d", "en", "clinical/models") \
+embeddings = nlp.WordEmbeddingsModel\
+    .pretrained("embeddings_healthcare_100d", "en", "clinical/models") \
     .setInputCols(["document", "token"]) \
     .setOutputCol("embeddings")
 
@@ -263,34 +312,34 @@ model = snomedExtractor.fit(snomedData)
 {%- capture approach_scala_medical -%}
 from johnsnowlabs import * 
 // Training a SNOMED model
-// Define pre-processing pipeline for training data. It needs consists of columns for the normalized training data
-// and their labels.
+// Define pre-processing pipeline for training data. It needs consists of columns for the normalized training data and their labels.
 val document = new nlp.DocumentAssembler()
-  .setInputCol("normalized_text")
-  .setOutputCol("document")
+    .setInputCol("normalized_text")
+    .setOutputCol("document")
 
 val chunk = new nlp.Doc2Chunk()
-  .setInputCols("document")
-  .setOutputCol("chunk")
+    .setInputCols("document")
+    .setOutputCol("chunk")
 
 val token = new nlp.Tokenizer()
-  .setInputCols("document")
-  .setOutputCol("token")
+    .setInputCols("document")
+    .setOutputCol("token")
 
-val embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_healthcare_100d", "en", "clinical/models")
-  .setInputCols(Array("document", "token"))
-  .setOutputCol("embeddings")
+val embeddings = nlp.WordEmbeddingsModel\
+    .pretrained("embeddings_healthcare_100d", "en", "clinical/models")
+    .setInputCols(Array("document", "token"))
+    .setOutputCol("embeddings")
 
 val chunkEmb = new nlp.ChunkEmbeddings()
-      .setInputCols(Array("chunk", "embeddings"))
-      .setOutputCol("chunk_embeddings")
+    .setInputCols(Array("chunk", "embeddings"))
+    .setOutputCol("chunk_embeddings")
 
 val snomedTrainingPipeline = new Pipeline().setStages(Array(
-  document,
-  chunk,
-  token,
-  embeddings,
-  chunkEmb
+    document,
+    chunk,
+    token,
+    embeddings,
+    chunkEmb
 ))
 
 val snomedTrainingModel = snomedTrainingPipeline.fit(data)
@@ -299,18 +348,18 @@ val snomedData = snomedTrainingModel.transform(data).cache()
 
 // Then the Resolver can be trained with
 val snomedExtractor = new medical.ChunkEntityResolverApproach()
-  .setInputCols(Array("token", "chunk_embeddings"))
-  .setOutputCol("recognized")
-  .setNeighbours(1000)
-  .setAlternatives(25)
-  .setNormalizedCol("normalized_text")
-  .setLabelCol("label")
-  .setEnableWmd(true).setEnableTfidf(true).setEnableJaccard(true)
-  .setEnableSorensenDice(true).setEnableJaroWinkler(true).setEnableLevenshtein(true)
-  .setDistanceWeights(Array(1, 2, 2, 1, 1, 1))
-  .setAllDistancesMetadata(true)
-  .setPoolingStrategy("MAX")
-  .setThreshold(1e32)
+    .setInputCols(Array("token", "chunk_embeddings"))
+    .setOutputCol("recognized")
+    .setNeighbours(1000)
+    .setAlternatives(25)
+    .setNormalizedCol("normalized_text")
+    .setLabelCol("label")
+    .setEnableWmd(true).setEnableTfidf(true).setEnableJaccard(true)
+    .setEnableSorensenDice(true).setEnableJaroWinkler(true).setEnableLevenshtein(true)
+    .setDistanceWeights(Array(1, 2, 2, 1, 1, 1))
+    .setAllDistancesMetadata(true)
+    .setPoolingStrategy("MAX")
+    .setThreshold(1e32)
 val model = snomedExtractor.fit(snomedData)
 {%- endcapture -%}
 
