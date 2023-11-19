@@ -11,20 +11,12 @@ model
 {%- endcapture -%}
 
 {%- capture model_description -%}
-This is a main class in AssertionLogReg family. Logarithmic Regression is used to extract Assertion Status
-from extracted entities and text. AssertionLogRegModel requires DOCUMENT, CHUNK and WORD_EMBEDDINGS type
-annotator inputs, which can be obtained by e.g a
-[DocumentAssembler](/docs/en/annotators#documentassembler),
-[NerConverter](/docs/en/annotators#nerconverter)
-and [WordEmbeddingsModel](/docs/en/annotators#wordembeddings).
-The result is an assertion status annotation for each recognized entity.
+This is a main class in AssertionLogReg family. Logarithmic Regression is used to extract Assertion Status from extracted entities and text. AssertionLogRegModel requires DOCUMENT, CHUNK and WORD_EMBEDDINGS type annotator inputs, which can be obtained by e.g a [DocumentAssembler](/docs/en/annotators#documentassembler), [NerConverter](/docs/en/annotators#nerconverter) and [WordEmbeddingsModel](/docs/en/annotators#wordembeddings). The result is an assertion status annotation for each recognized entity.
 Possible values are `"Negated", "Affirmed" and "Historical"`.
 
-Unlike the DL Model, this class does not extend AnnotatorModel.
-Instead it extends the RawAnnotator, that's why the main point of interest is method transform().
+Unlike the DL Model, this class does not extend AnnotatorModel. Instead it extends the RawAnnotator, that's why the main point of interest is method transform().
 
-At the moment there are no pretrained models available for this class. Please refer to AssertionLogRegApproach to
-train your own model.
+At the moment there are no pretrained models available for this class. Please refer to AssertionLogRegApproach to train your own model.
 
 AssertionLogReg Parametres:
 - `setAfter(after: Int)`: AssertionLogRegModel.this.type

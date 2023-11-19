@@ -8,12 +8,7 @@ model
 
 {%- capture model_description -%}
 Chunk KeyPhrase Extraction uses Bert Sentence Embeddings to determine the most relevant key phrases describing a text. 
-The input to the model consists of chunk annotations and sentence or document annotation. The model compares the chunks 
-against the corresponding sentences/documents and selects the chunks which are most representative of the broader text 
-context (i.e. the document or the sentence they belong to). The key phrases candidates (i.e. the input chunks) can be 
-generated in various ways, e.g. by NGramGenerator, TextMatcher or NerConverter. The model operates either at sentence 
-(selecting the most descriptive chunks from the sentence they belong to) or at document level. In the latter case, the 
-key phrases are selected to represent all the input document annotations.
+The input to the model consists of chunk annotations and sentence or document annotation. The model compares the chunks  against the corresponding sentences/documents and selects the chunks which are most representative of the broader text context (i.e. the document or the sentence they belong to). The key phrases candidates (i.e. the input chunks) can be  generated in various ways, e.g. by NGramGenerator, TextMatcher or NerConverter. The model operates either at sentence (selecting the most descriptive chunks from the sentence they belong to) or at document level. In the latter case, the key phrases are selected to represent all the input document annotations.
 
 Parametres:
 
@@ -30,8 +25,7 @@ Let the model return the top N key phrases which are the most different from eac
 - `setTopN(value: Int)`: ChunkKeyPhraseExtraction.this.type
 Set the number of key phrases to extract
 
-This model is a subclass of [[BertSentenceEmbeddings]] and shares all parameters with it. It can load any pretrained
-BertSentenceEmbeddings model. Available models can be found at the [Models Hub](https://nlp.johnsnowlabs.com/models?task=Sentence+Embeddings).
+This model is a subclass of [[BertSentenceEmbeddings]] and shares all parameters with it. It can load any pretrained BertSentenceEmbeddings model. Available models can be found at the [Models Hub](https://nlp.johnsnowlabs.com/models?task=Sentence+Embeddings).
 
 {%- endcapture -%}
 
@@ -106,45 +100,45 @@ results.selectExpr("explode(ner_chunk_key_phrases) AS key_phrase")\
 from johnsnowlabs import *
 
 documentAssembler = nlp.DocumentAssembler()\
-  .setInputCol("text")\
-  .setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
         
 sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
-  .setInputCols(["document"])\
-  .setOutputCol("sentence")
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
 tokenizer = nlp.Tokenizer()\
-  .setInputCols(["sentence"])\
-  .setOutputCol("token")
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
 embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-  .setInputCols(["sentence", "token"]) \
-  .setOutputCol("embeddings")
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")
 
 ner_model = legal.NerModel.pretrained("legner_orgs_prods_alias","en","legal/models")\
-  .setInputCols(["sentence", "token", "embeddings"])\
-  .setOutputCol("ner")
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner")
 
 ner_converter = nlp.NerConverter()\
-  .setInputCols(["sentence","token","ner"])\
-  .setOutputCol("ner_chunk")
+    .setInputCols(["sentence","token","ner"])\
+    .setOutputCol("ner_chunk")
 
 key_phrase_extractor = legal.ChunkKeyPhraseExtraction\
-  .pretrained()\
-  .setTopN(1)\
-  .setDocumentLevelProcessing(False)\
-  .setDivergence(0.4)\
-  .setInputCols(["sentence", "ner_chunk"])\
-  .setOutputCol("ner_chunk_key_phrases")
+    .pretrained()\
+    .setTopN(1)\
+    .setDocumentLevelProcessing(False)\
+    .setDivergence(0.4)\
+    .setInputCols(["sentence", "ner_chunk"])\
+    .setOutputCol("ner_chunk_key_phrases")
 
 nlpPipeline = nlp.Pipeline(stages=[
-  documentAssembler,
-  sentenceDetector,
-  tokenizer,
-  embeddings,
-  ner_model,
-  ner_converter,
-  key_phrase_extractor])
+    documentAssembler,
+    sentenceDetector,
+    tokenizer,
+    embeddings,
+    ner_model,
+    ner_converter,
+    key_phrase_extractor])
 
 text = ["""This INTELLECTUAL PROPERTY AGREEMENT (this "Agreement"), dated as of December 31, 2018 (the "Effective Date") is entered into by and between Armstrong Flooring, Inc., a Delaware corporation ("Seller") and AFI Licensing LLC, a Delaware limited liability company ("Licensing" and together with Seller, "Arizona") and AHF Holding, Inc. (formerly known as Tarzan HoldCo, Inc.), a Delaware corporation ("Buyer") and Armstrong Hardwood Flooring Company, a Tennessee corporation (the "Company" and together with Buyer the "Buyer Entities") (each of Arizona on the one hand and the Buyer Entities on the other hand, a "Party" and collectively, the "Parties").
 """]
@@ -169,45 +163,45 @@ result.selectExpr("explode(ner_chunk_key_phrases) AS key_phrase")\
 from johnsnowlabs import *
 
 documentAssembler = nlp.DocumentAssembler()\
-  .setInputCol("text")\
-  .setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
         
 sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
-  .setInputCols(["document"])\
-  .setOutputCol("sentence")
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
 tokenizer = nlp.Tokenizer()\
-  .setInputCols(["sentence"])\
-  .setOutputCol("token")
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
 embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-  .setInputCols(["sentence", "token"]) \
-  .setOutputCol("embeddings")
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")
 
 ner_model = finance.NerModel.pretrained("finner_orgs_prods_alias","en","finance/models")\
-  .setInputCols(["sentence", "token", "embeddings"])\
-  .setOutputCol("ner")
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner")
 
 ner_converter = nlp.NerConverter()\
-  .setInputCols(["sentence","token","ner"])\
-  .setOutputCol("ner_chunk")
+    .setInputCols(["sentence","token","ner"])\
+    .setOutputCol("ner_chunk")
 
 key_phrase_extractor = finance.ChunkKeyPhraseExtraction\
-  .pretrained()\
-  .setTopN(1)\
-  .setDocumentLevelProcessing(False)\
-  .setDivergence(0.4)\
-  .setInputCols(["sentence", "ner_chunk"])\
-  .setOutputCol("ner_chunk_key_phrases")
+    .pretrained()\
+    .setTopN(1)\
+    .setDocumentLevelProcessing(False)\
+    .setDivergence(0.4)\
+    .setInputCols(["sentence", "ner_chunk"])\
+    .setOutputCol("ner_chunk_key_phrases")
 
 nlpPipeline = nlp.Pipeline(stages=[
-  documentAssembler,
-  sentenceDetector,
-  tokenizer,
-  embeddings,
-  ner_model,
-  ner_converter,
-  key_phrase_extractor])
+    documentAssembler,
+    sentenceDetector,
+    tokenizer,
+    embeddings,
+    ner_model,
+    ner_converter,
+    key_phrase_extractor])
 
 text = ["""In 2020, we acquired certain assets of Spell Security Private Limited (also known as "Spell Security"). More specifically, their Compliance product - Policy Compliance (PC)")."""]
 
@@ -232,45 +226,45 @@ result.selectExpr("explode(ner_chunk_key_phrases) AS key_phrase")\
 import spark.implicits._
 
 val documenter = new DocumentAssembler()
- .setInputCol("text") 
- .setOutputCol("document") 
+  .setInputCol("text") 
+  .setOutputCol("document") 
 
 val sentencer = new SentenceDetector()
- .setInputCols(Array("document")) 
- .setOutputCol("sentences") 
+  .setInputCols(Array("document")) 
+  .setOutputCol("sentences") 
 
 val tokenizer = new Tokenizer()
- .setInputCols(Array("document")) 
- .setOutputCol("tokens") 
+  .setInputCols(Array("document")) 
+  .setOutputCol("tokens") 
 
 val embeddings = WordEmbeddingsModel
- .pretrained("embeddings_clinical","en","clinical/models") 
- .setInputCols(Array("document","tokens")) 
- .setOutputCol("embeddings") 
+  .pretrained("embeddings_clinical","en","clinical/models") 
+  .setInputCols(Array("document","tokens")) 
+  .setOutputCol("embeddings") 
 
 val ner_tagger = MedicalNerModel.pretrained("ner_jsl_slim","en","clinical/models") 
- .setInputCols(Array("sentences","tokens","embeddings")) 
- .setOutputCol("ner_tags") 
+  .setInputCols(Array("sentences","tokens","embeddings")) 
+  .setOutputCol("ner_tags") 
  
 val ner_converter = new NerConverter()
- .setInputCols("sentences","tokens","ner_tags") 
- .setOutputCol("ner_chunks") 
+  .setInputCols("sentences","tokens","ner_tags") 
+  .setOutputCol("ner_chunks") 
 
 val key_phrase_extractor = ChunkKeyPhraseExtraction.pretrained()
- .setTopN(1) 
- .setDocumentLevelProcessing(false) 
- .setDivergence(0.4) 
- .setInputCols(Array("sentences","ner_chunks")) 
- .setOutputCol("ner_chunk_key_phrases") 
+  .setTopN(1) 
+  .setDocumentLevelProcessing(false) 
+  .setDivergence(0.4) 
+  .setInputCols(Array("sentences","ner_chunks")) 
+  .setOutputCol("ner_chunk_key_phrases") 
 
 val pipeline = new Pipeline().setStages(Array( 
-    documenter, 
-    sentencer, 
-    tokenizer, 
-    embeddings, 
-    ner_tagger, 
-    ner_converter, 
-    key_phrase_extractor)) 
+  documenter, 
+  sentencer, 
+  tokenizer, 
+  embeddings, 
+  ner_tagger, 
+  ner_converter, 
+  key_phrase_extractor)) 
 
 val text ="""Her Diabetes has become type 2 in the last year with her Diabetes.He complains of swelling in his right forearm."""
 val data = Seq(text).toDF("text")
@@ -290,44 +284,44 @@ results.selectExpr("explode(ner_chunk_key_phrases) AS key_phrase") .selectExpr("
 import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
- .setInputCol("text") 
- .setOutputCol("document") 
+  .setInputCol("text") 
+  .setOutputCol("document") 
 
 val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
- .setInputCols(Array("document") ) 
- .setOutputCol("sentence") 
+  .setInputCols(Array("document") ) 
+  .setOutputCol("sentence") 
 
 val tokenizer = new Tokenizer()
- .setInputCols(Array("sentence")) 
- .setOutputCol("token") 
+  .setInputCols(Array("sentence")) 
+  .setOutputCol("token") 
 
 val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
- .setInputCols(Array("sentence","token")) 
- .setOutputCol("embeddings") 
+  .setInputCols(Array("sentence","token")) 
+  .setOutputCol("embeddings") 
 
 val ner_model = LegalNerModel.pretrained("legner_orgs_prods_alias","en","legal/models")
- .setInputCols(Array("sentence","token","embeddings")) 
- .setOutputCol("ner") 
+  .setInputCols(Array("sentence","token","embeddings")) 
+  .setOutputCol("ner") 
 
 val ner_converter = new NerConverter()
- .setInputCols(Array("sentence","token","ner")) 
- .setOutputCol("ner_chunk") 
+  .setInputCols(Array("sentence","token","ner")) 
+  .setOutputCol("ner_chunk") 
 
 val key_phrase_extractor = ChunkKeyPhraseExtraction.pretrained() 
-.setTopN(1) 
-.setDocumentLevelProcessing(false) 
-.setDivergence(0.4) 
-.setInputCols(Array("sentence","ner_chunk")) 
-.setOutputCol("ner_chunk_key_phrases")
+  .setTopN(1) 
+  .setDocumentLevelProcessing(false) 
+  .setDivergence(0.4) 
+  .setInputCols(Array("sentence","ner_chunk")) 
+  .setOutputCol("ner_chunk_key_phrases")
 
 val nlpPipeline = new Pipeline().setStages(Array( 
-    documentAssembler, 
-    sentenceDetector, 
-    tokenizer, 
-    embeddings, 
-    ner_model, n
-    er_converter, 
-    key_phrase_extractor) ) 
+  documentAssembler, 
+  sentenceDetector, 
+  tokenizer, 
+  embeddings, 
+  ner_model, n
+  er_converter, 
+  key_phrase_extractor) ) 
 
 val text ="""This INTELLECTUAL PROPERTY AGREEMENT (this "Agreement"), dated as of December 31, 2018 (the "Effective Date") is entered into by and between Armstrong Flooring, Inc., a Delaware corporation ("Seller") and AFI Licensing LLC, a Delaware limited liability company ("Licensing" and together with Seller, "Arizona") and AHF Holding, Inc. (formerly known as Tarzan HoldCo, Inc.), a Delaware corporation ("Buyer") and Armstrong Hardwood Flooring Company, a Tennessee corporation (the "Company" and together with Buyer the "Buyer Entities") (each of Arizona on the one hand and the Buyer Entities on the other hand, a "Party" and collectively, the "Parties")."""
 val data = Seq(text).toDF("text")
@@ -335,7 +329,10 @@ val data = Seq(text).toDF("text")
 val result = nlpPipeline.fit(data).transform(data) 
 
 result.selectExpr("explode(ner_chunk_key_phrases) AS key_phrase") 
-.selectExpr("key_phrase.result", "key_phrase.metadata.entity", "key_phrase.metadata.DocumentSimilarity", "key_phrase.metadata.MMRScore") .show(truncate=false)
+      .selectExpr("key_phrase.result", 
+                  "key_phrase.metadata.entity", 
+                  "key_phrase.metadata.DocumentSimilarity", 
+                  "key_phrase.metadata.MMRScore") .show(truncate=false)
 
 +--------------+------+------------------+-------------------+
 |result        |entity|DocumentSimilarity|MMRScore           |
@@ -348,44 +345,44 @@ result.selectExpr("explode(ner_chunk_key_phrases) AS key_phrase")
 import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
- .setInputCol("text") 
- .setOutputCol("document") 
+  .setInputCol("text") 
+  .setOutputCol("document") 
 
 val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
- .setInputCols(Array("document") ) 
- .setOutputCol("sentence") 
+  .setInputCols(Array("document") ) 
+  .setOutputCol("sentence") 
 
 val tokenizer = new Tokenizer()
- .setInputCols(Array("sentence")) 
- .setOutputCol("token") 
+  .setInputCols(Array("sentence")) 
+  .setOutputCol("token") 
 
 val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
- .setInputCols(Array("sentence","token")) 
- .setOutputCol("embeddings") 
+  .setInputCols(Array("sentence","token")) 
+  .setOutputCol("embeddings") 
 
 val ner_model = FinanceNerModel.pretrained("finner_orgs_prods_alias","en","finance/models")
- .setInputCols(Array("sentence","token","embeddings")) 
- .setOutputCol("ner") 
+  .setInputCols(Array("sentence","token","embeddings")) 
+  .setOutputCol("ner") 
 
 val ner_converter = new NerConverter()
- .setInputCols(Array("sentence","token","ner")) 
- .setOutputCol("ner_chunk") 
+  .setInputCols(Array("sentence","token","ner")) 
+  .setOutputCol("ner_chunk") 
 
 val key_phrase_extractor = ChunkKeyPhraseExtraction.pretrained() 
-.setTopN(1) 
-.setDocumentLevelProcessing(false) 
-.setDivergence(0.4) 
-.setInputCols(Array("sentence","ner_chunk")) 
-.setOutputCol("ner_chunk_key_phrases")
+  .setTopN(1) 
+  .setDocumentLevelProcessing(false) 
+  .setDivergence(0.4) 
+  .setInputCols(Array("sentence","ner_chunk")) 
+  .setOutputCol("ner_chunk_key_phrases")
 
 val nlpPipeline = new Pipeline().setStages(Array( 
-    documentAssembler, 
-    sentenceDetector, 
-    tokenizer, 
-    embeddings, 
-    ner_model, n
-    er_converter, 
-    key_phrase_extractor) ) 
+  documentAssembler, 
+  sentenceDetector, 
+  tokenizer, 
+  embeddings, 
+  ner_model, n
+  er_converter, 
+  key_phrase_extractor) ) 
 
 val text ="""In 2020, we acquired certain assets of Spell Security Private Limited (also known as "Spell Security"). More specifically, their Compliance product - Policy Compliance (PC)."""
 val data = Seq(text).toDF("text")

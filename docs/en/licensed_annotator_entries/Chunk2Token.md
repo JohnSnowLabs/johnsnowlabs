@@ -157,7 +157,8 @@ trainingPipeline = nlp.Pipeline(stages=[
     chunk2Token])
 
 data = spark.createDataFrame([["Our competitors include the following by general category: legacy antivirus product providers, such as McAfee LLC and Broadcom Inc."]]).toDF("text")
-result = trainingPipeline.fit(data).transform(data).cache()
+
+result = trainingPipeline.fit(data).transform(data)
 result.selectExpr("explode(ngram_tokens)").show(5, False)
 
 +--------------------------------------------------------------------+

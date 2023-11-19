@@ -28,7 +28,6 @@ rules = '''
 '''
 
 with open('regex_rules.txt', 'w') as f:
-
     f.write(rules)
 
 sample_text = """
@@ -129,7 +128,9 @@ result.select(F.explode(F.arrays_zip(result.merged_chunks.result,
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
-val rules = """Array(A-Z)+(\s+Array(A-Z)+) *,SECTION_HEADER """ with open("regex_rules.txt","w") as f: f.write(rules) 
+val rules = """\b[A-Z]+(\s+[A-Z]+)*:\b, SECTION_HEADER""" 
+with open("regex_rules.txt","w") as f: 
+    f.write(rules) 
 
 import spark.implicits._
 val documentAssembler = new DocumentAssembler()

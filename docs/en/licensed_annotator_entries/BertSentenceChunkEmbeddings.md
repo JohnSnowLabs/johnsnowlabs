@@ -11,8 +11,7 @@ This annotator allows aggregating sentence embeddings with ner chunk embeddings 
 
 BertSentenceChunkEmbeddings Parametres:
 
-- `setChunkWeight(value: Float)`: BertSentenceChunkEmbeddings.this.type
-Sets the wieght of the chunk embeddings relative to the sentence embeddings.The `setChunkWeight` parameter can be used to control the influence of surrounding context.
+- `setChunkWeight(value: Float)`: BertSentenceChunkEmbeddings.this.type Sets the wieght of the chunk embeddings relative to the sentence embeddings.The `setChunkWeight` parameter can be used to control the influence of surrounding context.
 
 > For more information and examples of `BertSentenceChunkEmbeddings` annotator, you can check the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop), and in special, the notebook [24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb).
 
@@ -67,8 +66,6 @@ resolver_pipeline = nlp.Pipeline(
       sentence_chunk_embeddings
 ])
 
-
-# Example results
 
 sample_text = [
 """The patient admitted from the IR for aggressive irrigation of the Miami pouch. DISCHARGE DIAGNOSES: 1. A 58-year-old female with a history of stage 2 squamous cell carcinoma of the cervix status post total pelvic exenteration in 1991.""",
