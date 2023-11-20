@@ -57,3 +57,8 @@ modify_date: "2019-05-16"
         </div>
     </div>
 </div>
+<div class="dn">
+  <!-- HTML elements for search -->
+  <input type="text" id="search-input" placeholder="Search...">
+  <ul id="results-container" class="shadow results-container"></ul>
+</div> 

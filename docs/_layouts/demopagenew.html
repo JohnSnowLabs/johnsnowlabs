@@ -16,8 +16,8 @@ full_width: true
     {%- for _section in page.data.sections -%}
       {%- if _section.secheader -%}
         {%- for child in _section.secheader -%}
-        <h1 class="subtitle">{{ child.subtitle }}</h1>           
-        {%- endfor-%}        
+        <h2 class="subtitle">{{ child.subtitle }}</h2>           
+        {%- endfor-%}               
       {%- endif -%}
     {%- endfor -%}        
 
@@ -26,5 +26,3 @@ full_width: true
       </section>
   </div>
 </div>
-
-
