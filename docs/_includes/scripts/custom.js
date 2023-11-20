@@ -204,3 +204,14 @@ const demomenu = document.querySelector('.demomenu'),
 if(demomenu === null) {
   asideButton.classList.add('hide_aside');
 }
+
+
+var sjs = SimpleJekyllSearch({
+  searchInput: document.getElementById('search-input'),
+  resultsContainer: document.getElementById('results-container'),
+  noResultsText: "<em>No results found.</em>",
+  json: '/search.json',
+  limit: 100,
+  searchResultTemplate: '<li><a href="{{ site.url }}{url}">{demopage}{title}<span>{seotitle}</span></a></li>'
+})
+

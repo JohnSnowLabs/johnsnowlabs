@@ -30,16 +30,17 @@ New Medical Summarizers:
 - 'en.summarize.clinical_guidelines_large'
 - 'en.summarize.clinical_laymen'
 
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 4.2.1
 
 Bugfixes for saving and reloading pipelines on databricks 
 
+</div><div class="h3-box" markdown="1">
+
 ## NLU Version 4.2.0
 
-
 ## Support for Speech2Text, Images-Classification, Tabular Data, Zero-Shot-NER,  via Wav2Vec2, Tapas, VIT , 4000+ New Models, 90+ Languages,   in John Snow Labs  NLU 4.2.0
-
 
 We are incredibly excited to announce NLU 4.2.0 has been released with new 4000+ models in 90+ languages and support for new 8 Deep Learning Architectures.
 4 new tasks are included for the very first time,
@@ -49,7 +50,9 @@ by [Wav2Vec 2.0](https://arxiv.org/pdf/2006.11477.pdf), [HuBERT](https://arxiv.o
 Additionally, [CamemBERT](https://arxiv.org/abs/1911.03894) based architectures are available for Sequence and Token Classification powered by Spark-NLPs
 [CamemBertForSequenceClassification](https://nlp.johnsnowlabs.com/docs/en/transformers#camembertforsequenceclassification) and [CamemBertForTokenClassification](https://nlp.johnsnowlabs.com/docs/en/transformers#camembertfortokenclassification)
 
-# Automatic Speech Recognition  (ASR)
+</div><div class="h3-box" markdown="1">
+
+## Automatic Speech Recognition  (ASR)
 [Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/automatic_speech_recognition/automatic_speech_recognition_overview_ASR.ipynb)
 [Wav2Vec 2.0](https://arxiv.org/pdf/2006.11477.pdf) and [HuBERT](https://arxiv.org/abs/2106.07447)  enable ASR for the very first time in NLU.
 **Wav2Vec2** is a transformer model for speech recognition that uses unsupervised pre-training on large amounts of unlabeled speech data to improve the accuracy of automatic speech recognition (ASR) systems. It is based on a self-supervised learning approach that learns to predict masked portions of speech signal, and has shown promising results in reducing the amount of labeled training data required for ASR tasks.
@@ -90,8 +93,9 @@ asr_df = nlu.load('en.speech2text.hubert').predict('ngm_12484_01067234848.wav')
 asr_df
 ```
 
+</div><div class="h3-box" markdown="1">
 
-# Image Classification
+## Image Classification
 [Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb)
 
 For the first time ever NLU introduces state-of-the-art image classifiers based on   
@@ -146,8 +150,9 @@ load('en.classify_image.swin.tiny').predict('/content/images/images')
 
 -----------
 
+</div><div class="h3-box" markdown="1">
 
-# Visual Table Question Answering
+## Visual Table Question Answering
 TapasForQuestionAnswering can load TAPAS Models with a cell selection head and optional aggregation head on top for question-answering tasks on tables (linear layers on top of the hidden-states output to compute logits and optional logits_aggregation), e.g. for SQA, WTQ or WikiSQL-supervised tasks. TAPAS is a BERT-based model specifically designed (and pre-trained) for answering questions about tabular data.
 
 [Demo Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb)
@@ -204,6 +209,8 @@ answers
 
 
 -----
+
+</div><div class="h3-box" markdown="1">
 
 ## Zero-Shot NER
 
@@ -279,23 +286,24 @@ df
 
 ------ 
 
-# New Notebooks
+</div><div class="h3-box" markdown="1">
+
+## New Notebooks
 - [Image Classification with VIT and Swin](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/image_classification/image_classification_overview.ipynb)
 - [Zero-Shot-NER](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/medical_named_entity_recognition/zero_shot_ner.ipynb)
 - [Table Question Answering with TAPAS](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/table_question_answering/table_question_answering_with_tapas.ipynb)
 - [Automatic Speech Recognition with Wav2Vec2 and HuBERT ](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/automatic_speech_recognition/automatic_speech_recognition_overview_ASR.ipynb)
 
+</div><div class="h3-box" markdown="1">
 
-
-
-# New Models Overview
+## New Models Overview
 
 Supported Languages are:
 `ab`, `am`, `ar`, `ba`, `bem`, `bg`, `bn`, `ca`, `co`, `cs`, `da`, `de`, `dv`, `el`, `en`, `es`, `et`, `eu`, `fa`, `fi`, `fon`, `fr`, `fy`, `ga`, `gam`, `gl`, `gu`, `ha`, `he`, `hi`, `hr`, `hu`, `id`, `ig`, `is`, `it`, `ja`, `jv`, `kin`, `kn`, `ko`, `kr`, `ku`, `ky`, `la`, `lg`, `lo`, `lt`, `lu`, `luo`, `lv`, `lwt`, `ml`, `mn`, `mr`, `ms`, `mt`, `nb`, `nl`, `no`, `pcm`, `pl`, `pt`, `ro`, `ru`, `rw`, `sg`, `si`, `sk`, `sl`, `sq`, `st`, `su`, `sv`, `sw`, `swa`, `ta`, `te`, `th`, `ti`, `tl`, `tn`, `tr`, `tt`, `tw`, `uk`, `unk`, `ur`, `uz`, `vi`, `wo`, `xx`, `yo`, `yue`, `zh`, `zu`
 
+</div><div class="h3-box" markdown="1">
 
-
-# Automatic Speech Recognition Models Overview
+## Automatic Speech Recognition Models Overview
 
 
 | Language | NLU Reference                                                                                                                                                           | Spark NLP  Reference                                                                                                                                                     | Annotator Class |
@@ -351,9 +359,9 @@ Supported Languages are:
 | wo       | [wo.speech2text.wav2vec_xlsr.v2_300m_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_av2vec2_xls_r_300m_wolof_lm_gpu_wo.html)                                          | [asr_av2vec2_xls_r_300m_wolof_lm_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_av2vec2_xls_r_300m_wolof_lm_gpu_wo.html)                                               | Wav2Vec2ForCTC  |
 | yue      | [yue.speech2text.wav2vec_xlsr.v2_large_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_cantonese_by_ctl_gpu_yue.html)                              | [asr_wav2vec2_large_xlsr_cantonese_by_ctl_gpu](https://nlp.johnsnowlabs.com/2022/09/26/asr_wav2vec2_large_xlsr_cantonese_by_ctl_gpu_yue.html)                            | Wav2Vec2ForCTC  |
 
+</div><div class="h3-box" markdown="1">
 
-
-# Image Classification Models Overview
+## Image Classification Models Overview
 
 
 | Language | NLU Reference                                                                                                                                                                                                                                             | Spark NLP  Reference                                                                                                                                                                                                                                         | Annotator Class           |
@@ -470,19 +478,18 @@ Supported Languages are:
 | en       | [en.classify_image.trainer_rare_puppers](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_trainer_rare_puppers_en_3_0.html)                                                                                                                   | [image_classifier_vit_trainer_rare_puppers](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_trainer_rare_puppers_en_3_0.html)                                                                                                                   | ViTForImageClassification |
 | en       | [en.classify_image.world_landmarks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_world_landmarks_en_3_0.html)                                                                                                                             | [image_classifier_vit_world_landmarks](https://nlp.johnsnowlabs.com/2022/08/10/image_classifier_vit_world_landmarks_en_3_0.html)                                                                                                                             | ViTForImageClassification |
 
-
-
-
 ---------------------------------------- 
 ---------------------------------------- 
 
-
-
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 4.1.0
 Approximately 1000 new state-of-the-art transformer models for Question Answering (QA)  for over 10 languages, up to 700% speedup on GPU, 100+ Embeddings such as Bert, Bert Sentence, CamemBert, DistilBert, Roberta, Roberta Sentence, Universal Sentence Encoder, Word, XLM Roberta, XLM Roberta Sentence, 40 sequence classification models, +400 token classification  odels for over 10 languages various Spark NLP helper methods and much more in 1 line of code with John Snow Labs NLU 4.1.0
 
 ---------------------------------------- 
+
+</div><div class="h3-box" markdown="1">
+
 #### NLU 4.1.0 Core Overview
 
 - On the NLU core side we have over 1000 new state-of-the-art models in over 10 languages.
@@ -492,8 +499,9 @@ Approximately 1000 new state-of-the-art transformer models for Question Answerin
 
 - Finally, NLU-Core features various new helper methods for working with Spark NLP and embellishes now the entire universe of Annotators defined by Spark NLP.
 
-
 -----------------------------
+
+</div><div class="h3-box" markdown="1">
 
 #### NLU captures every Annotator of Spark NLP
 
@@ -531,6 +539,8 @@ The following annotator classes are newly captured:
 - XlmRoBertaSentenceEmbeddings
 
 -------------------- 
+
+</div><div class="h3-box" markdown="1">
 
 #### Embeddings
 
@@ -620,6 +630,7 @@ embeddings_df
 | Spark   | -0.1004200279712677, 0.03312099352478981 |
 | NLP     | -0.09467814117670059, -0.02236207202076912 |
 
+</div><div class="h3-box" markdown="1">
 
 #### Question Answering
 
@@ -638,6 +649,7 @@ nlu.load("answer_question.bert.base_uncased.by_ksabeh").predict("""What is my na
 |-----------------------------------------:|:--------------------------:|:---------------------- |
 |      0.3143375 | "My name is Clara and I live in Berkeley.  |    What is my name?       |
 
+</div><div class="h3-box" markdown="1">
 
 #### Sequence Classification
 
@@ -688,17 +700,19 @@ nlu.load("en.classify.roberta.finetuned").predict("I love you very much!")
 |-----------------------------------------:|:--------------------------:|:---------------------- |
 |   LABEL_0 | 0.597792  |    I love you very much!       |
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Lemmatizer
 
 Lemmatization in linguistics is the process of grouping together the inflected forms of a word so they can be analysed as a single item, identified by the word's lemma, or dictionary form. On the NLU core side we have over 30 new lemmatizer models.
 
+</div><div class="h3-box" markdown="1">
 
 #### ClassifierDLModel
 
 ClassifierDL for generic Multi-class Text Classification. ClassifierDL uses the state-of-the-art Universal Sentence Encoder as an input for text classifications. The ClassifierDL annotator uses a deep learning model (DNNs) we have built inside TensorFlow and supports up to 100 classes. On the NLU core side we have over 5 new ClassifierDLModel models.
 
+</div><div class="h3-box" markdown="1">
 
 #### ContextSpellCheckerModel
 
@@ -710,7 +724,7 @@ Spell Checking is a sequence to sequence mapping problem. Given an input sequenc
 
 On the NLU core side we have over 5 new ClassifierDLModel models.
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Token Classification
 
@@ -756,6 +770,7 @@ nlu.load("ig.ner.xlmr_roberta.base").predict("Ahụrụ m n'anya na-atọ m ụt
 |---|---|---|---|---|---|---|
 |0|B-ORG,I-ORG,I-ORG,I-ORG,I-ORG,I-ORG|Ahụrụ m n'anya na-atọ m ụtọ|Ahụrụ m n'anya na-atọ m ụtọ|ORG|0|0|
 
+</div><div class="h3-box" markdown="1">
 
 #### NerCrfModel
 
@@ -774,6 +789,8 @@ nlu.load('en.ner.ner.crf').predict("Donald Trump and Angela Merkel dont share ma
 |---|---|---|---|---|---|---|---|
 |0|Donald Trump and Angela Merkel dont share many oppinions|Donald Trump|PER|0\.78524995|0|0|\[\-0\.074014   -0\.23684999  0\.17772 \]|
 |0|Donald Trump and Angela Merkel dont share many oppinions|Angela Merkel|PER|0\.7701|1|0|\[\-0\.074014   -0\.23684999  0\.17772  \]|
+
+</div><div class="h3-box" markdown="1">
 
 #### NerDLModel
 
@@ -814,7 +831,7 @@ nlu.load('en.ner.conll.ner.large').predict(text, output_level='token')
 |0|My name is John\!|MISC|0\.63266003|0|0|John|\[-2\.96090007e-01 -8\.18260014e-02  9\.67490021e-03 ]|
 |0|My name is John\!|MISC|0\.63266003|0|0|\!|\[-2\.65540004e-01  3\.35310012e-01  2\.18600005e-01 ]|
 
-
+</div><div class="h3-box" markdown="1">
 
 #### PerceptronModel
 
@@ -1096,8 +1113,6 @@ nlu.viz(ade_pipeline, text)
 returns:
 <img src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/4_0_0/nlu_utils_viz_example.png"  />
 
-
-
 If a pipeline has multiple models candidates that can be used for a viz,  
 the first Annotator that is vizzable will be used to create viz.  
 You can specify which type of viz to create with the viz_type parameter
@@ -1214,7 +1229,6 @@ nlu_pipe.viz(text)
 # Acces auto-completed Spark NLP big data pipeline,
 nlu_pipe.vanilla_transformer_pipe.transform(spark_df)
 ```
-
 
 returns :
 
@@ -3796,15 +3810,7 @@ and Relation extractors for Temporality and Causality of Drugs and Adverse Event
 * Install NLU on Kaggle       : !wget https://setup.johnsnowlabs.com/nlu/kaggle.sh  -O - | bash
 * Install NLU via Pip         : ! pip install nlu pyspark streamlit==0.80.0`
 ```
-</div></div>
-
-
-
-
-
-
-
-
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 3.4.0
 
@@ -3817,6 +3823,7 @@ for **Token and Sequence Classification**.
 This includes `8 new Sequence classifier models` which can be pretrained in Huggingface and imported into Spark NLP and NLU.
 Finally, the NLU tutorial page of the [140+ notebooks has been updated](https://nlp.johnsnowlabs.com/docs/en/jsl/notebooks)
 
+</div><div class="h3-box" markdown="1">
 
 #### **New** NLU OCR Features
 3 new OCR based spells are supported, which enable extracting `text` from files of type
@@ -3826,6 +3833,7 @@ You need a Spark OCR license for using these, which is available for [free here]
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/colab/ocr/ocr_for_img_pdf_docx_files.ipynb)
 Find more details on the [NLU OCR documentation page](https://nlp.johnsnowlabs.com/docs/en/jsl/nlu_for_ocr)
 
+</div><div class="h3-box" markdown="1">
 
 #### **New** NLU Healthcare Features
 The healthcare side features a new `MedicalBertForTokenClassifier` annotator which is a Bert based model for token classification problems like `Named Entity Recognition`,           
@@ -3836,7 +3844,7 @@ For  **Entity Relation Extraction** between entity pairs new models for interact
 For **Entity Resolution** new models for resolving `Clinical Abbreviations and Acronyms` to their full length names and also a model for resolving `Drug Substance Entities` to the categories           
 `Clinical Drug`, `Pharmacologic Substance`, `Antibiotic`, `Hazardous` or `Poisonous Substance` and new resolvers for `LOINC` and `SNOMED` terminologies.
 
-
+</div><div class="h3-box" markdown="1">
 
 #### **New** NLU Open source Features
 On the open source side we have new support for [Open Ai's `GPT2`](https://openai.com/blog/tags/gpt-2/) for various text sequence to sequence problems and
@@ -3858,7 +3866,7 @@ and finally English NER models for extracting entities related to `Stocks Ticker
 For `Sequence Classification` new models for classifying `Toxicity in Russian text` and English models for
 `Movie Reviews`, `News Categorization`, `Sentimental Tone` and `General Sentiment`
 
-
+</div><div class="h3-box" markdown="1">
 
 #### New NLU OCR Models
 The following Transformers have been integrated from [Spark OCR](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components)
@@ -3869,14 +3877,11 @@ The following Transformers have been integrated from [Spark OCR](https://nlp.joh
 | nlu.load(`pdf2text`) | [PdfToText](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#pdftotext)     |
 | nlu.load(`doc2text`) | [DocToText](https://nlp.johnsnowlabs.com/docs/en/ocr_pipeline_components#doctotext)     |              
 
-
-
-
+</div><div class="h3-box" markdown="1">
 
 #### New Open Source Models
 
 Integration for the 49 new models from the colossal [Spark NLP  3.4.0 release](https://nlp.johnsnowlabs.com/docs/en/jsl/release_notes#340)
-
 
 
 
@@ -3931,9 +3936,7 @@ Integration for the 49 new models from the colossal [Spark NLP  3.4.0 release](h
 | te         | [te.embed.distilbert](https://nlp.johnsnowlabs.com/2021/12/14/distilbert_uncased_te.html)                                         | [distilbert_uncased](https://nlp.johnsnowlabs.com/2021/12/14/distilbert_uncased_te.html)                                                       | Embeddings               | DistilBertEmbeddings                |
 | sw         | [sw.embed.xlm_roberta](https://nlp.johnsnowlabs.com/2021/10/16/xlm_roberta_base_finetuned_swahili_sw.html)                        | [xlm_roberta_base_finetuned_swahili](https://nlp.johnsnowlabs.com/2021/10/16/xlm_roberta_base_finetuned_swahili_sw.html)                       | Embeddings               | XlmRoBertaEmbeddings                |
 
-
-
-
+</div><div class="h3-box" markdown="1">
 
 #### New Healthcare Models
 Integration for the 28 new models from the amazing [Spark NLP for healthcare 3.4.0 release](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#340)
@@ -3985,9 +3988,7 @@ Integration for the 28 new models from the amazing [Spark NLP for healthcare 3.4
 | de         | [de.med_ner.deid_generic](https://nlp.johnsnowlabs.com/2022/01/06/ner_deid_generic_de.html)                                               | [ner_deid_generic](https://nlp.johnsnowlabs.com/2022/01/06/ner_deid_generic_de.html)                                                           | Named Entity Recognition | MedicalNerModel             |
 | de         | [de.embed.w2v](https://nlp.johnsnowlabs.com/2020/09/06/w2v_cc_300d_de.html)                                                               | [w2v_cc_300d](https://nlp.johnsnowlabs.com/2020/09/06/w2v_cc_300d_de.html)                                                                     | Embeddings               | WordEmbeddingsModel         |
 
-
-
-
+</div><div class="h3-box" markdown="1">
 
 #### Additional NLU resources
 
@@ -4000,7 +4001,7 @@ Integration for the 28 new models from the amazing [Spark NLP for healthcare 3.4
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Install NLU in 1 line!
 
@@ -4010,7 +4011,7 @@ Integration for the 28 new models from the amazing [Spark NLP for healthcare 3.4
 * Install NLU via Pip         : ! pip install nlu pyspark streamlit==0.80.0`
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 3.3.1
 
@@ -4031,6 +4032,8 @@ and finally `Spanish Clinical NER ` and `Resolver Models`
 
 Once again, we would like to thank our community for making another amazing release possible!
 
+</div><div class="h3-box" markdown="1">
+
 #### New Open Source Models and Features
 Integrates the amazing [Spark NLP](https://nlp.johnsnowlabs.com/docs/en/quickstart) [3.3.3](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/3.3.3) and [3.3.2](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/3.3.2) releases, featuring:
 
@@ -4042,6 +4045,8 @@ Integrates the amazing [Spark NLP](https://nlp.johnsnowlabs.com/docs/en/quicksta
 - `xx.classify.bert_sequence.sentiment` : `Multi-Lingual Sentiment Classifier` This a bert-base-multilingual-uncased model finetuned for sentiment analysis on product reviews in six languages: English, Dutch, German, French, Spanish and Italian. It predicts the sentiment of the review as a number of stars (between 1 and 5). This model is intended for direct use as a sentiment analysis model for product reviews in any of the six languages above, or for further finetuning on related sentiment analysis tasks.
 - `distilbert_sequence.policy` : `Policy Classifier` This model was trained on 129.669 manually annotated sentences to classify text into one of seven political categories: ‘Economy’, ‘External Relations’, ‘Fabric of Society’, ‘Freedom and Democracy’, ‘Political System’, ‘Welfare and Quality of Life’ or ‘Social Groups’.
 - `classify.bert_sequence.dehatebert_mono` : `Hate Speech Classifier` This model was trained on 129.669 manually annotated sentences to classify text into one of seven political categories: ‘Economy’, ‘External Relations’, ‘Fabric of Society’, ‘Freedom and Democracy’, ‘Political System’, ‘Welfare and Quality of Life’ or ‘Social Groups’.
+
+</div><div class="h3-box" markdown="1">
 
 #### Complete List of Open Source Models :
 | Language   | NLU Reference                                                                                                                                          | Spark NLP  Reference                                                                                                                                         | Task                |
@@ -4073,7 +4078,7 @@ Integrates the amazing [Spark NLP](https://nlp.johnsnowlabs.com/docs/en/quicksta
 | en         | [en.embed_sentence.doc2vec.gigaword_300](https://nlp.johnsnowlabs.com/2021/11/21/doc2vec_gigaword_300_en.html)                                         | [doc2vec_gigaword_300](https://nlp.johnsnowlabs.com/2021/11/21/doc2vec_gigaword_300_en.html)                                                                 | Embeddings          |
 | en         | [en.embed_sentence.doc2vec.gigaword_wiki_300](https://nlp.johnsnowlabs.com/2021/11/21/doc2vec_gigaword_wiki_300_en.html)                               | [doc2vec_gigaword_wiki_300](https://nlp.johnsnowlabs.com/2021/11/21/doc2vec_gigaword_wiki_300_en.html)                                                       | Embeddings          |
 
-
+</div><div class="h3-box" markdown="1">
 
 #### New Healthcare models and Features
 Integrates the incredible [Spark NLP for Healthcare](https://nlp.johnsnowlabs.com/docs/en/licensed_install) releases [3.3.4](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#334), [3.3.2](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#332) and [3.3.1](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes#331), featuring:
@@ -4094,6 +4099,8 @@ Integrates the incredible [Spark NLP for Healthcare](https://nlp.johnsnowlabs.co
 - `classify.bert_sequence.question_statement_clinical` : This model classifies sentences into one of these two classes: question (interrogative sentence) or statement (declarative sentence) and trained with BertForSequenceClassification. This model is at first trained on SQuAD and SPAADIA dataset and then fine tuned on the clinical visit documents and MIMIC-III dataset annotated in-house. Using this model, you can find the question statements and exclude & utilize in the downstream tasks such as NER and relation extraction models.
 - `classify.token_bert.ner_chemical` : This model is BERT-based version of ner_chemicals model and can detect chemical compounds (CHEM) in the medical texts.
 - `resolve.umls_disease_syndrome` : This model is trained on the Disease or Syndrome category using sbiobert_base_cased_mli embeddings.
+
+</div><div class="h3-box" markdown="1">
 
 #### Complete List of Healthcare Models :
 
@@ -4122,10 +4129,7 @@ Integrates the incredible [Spark NLP for Healthcare](https://nlp.johnsnowlabs.co
 | en         | [en.resolve.umls_clinical_drugs](https://nlp.johnsnowlabs.com/2021/10/11/sbiobertresolve_umls_clinical_drugs_en.html)                                         | [sbiobertresolve_umls_clinical_drugs](https://nlp.johnsnowlabs.com/2021/10/11/sbiobertresolve_umls_clinical_drugs_en.html)                                         | Entity Resolution        |
 | en         | [en.classify.bert_sequence.question_statement_clinical](https://nlp.johnsnowlabs.com/2021/11/05/bert_sequence_classifier_question_statement_clinical_en.html) | [bert_sequence_classifier_question_statement_clinical](https://nlp.johnsnowlabs.com/2021/11/05/bert_sequence_classifier_question_statement_clinical_en.html)       | Text Classification      |
 
-
-
-
-
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 3.3.0
 
@@ -4146,6 +4150,8 @@ New `Spell Checker` Model For Drugs , 3 New Sentence Entity Resolver Models (3-c
 
 Additionally 2 new tutorials are avaiable, [NLU & Streamlit Crashcourse](https://www.youtube.com/watch?v=2xjA4Gre1sg) and [NLU for Healthcare Crashcourse of every of the 50 + healthcare Domains and 200+ healthcare models](https://www.youtube.com/watch?v=gGDsZXt1SF8)
 
+</div><div class="h3-box" markdown="1">
+
 #### New Features and Improvements
 
 #### 2000%+ Speedup prediction for small datasets
@@ -4153,8 +4159,12 @@ NLU pipelines now predict up to 2000% faster by optimizing integration with Spar
 NLU  will configure usage of this automatically, but it can be turned off as well via `multithread=False`  
 ![NLU 3.3.0 Benchmark](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_3_0/nlu3.3.0_Benchmark.png)
 
+</div><div class="h3-box" markdown="1">
+
 #### 50x faster saving of NLU Pipelines
 Up to 50x faster saving Spark NLP/ NLU models and pipelines! We have improved the way we package TensorFlow SavedModel while saving Spark NLP models & pipelines. For instance, it used to take up to 10 minutes to save the xlm_roberta_base model before Spark NLP 3.3.0, and now it only takes up to 15 seconds!
+
+</div><div class="h3-box" markdown="1">
 
 #### New Annotator Classes Integrated
 The following new transformer classes are available with various pretrained weights in 1 line of code :
@@ -4165,6 +4175,7 @@ The following new transformer classes are available with various pretrained weig
 - [XlnetForTokenClassification](https://sparknlp.org/docs/en/transformers#xlnetfortokenclassification)
 - [XlmRoBertaSentenceEmbeddings](https://sparknlp.org/docs/en/transformers#xlmrobertasentenceembeddings)
 
+</div><div class="h3-box" markdown="1">
 
 #### New Transformer Models
 The following models are available from the amazing Spark NLP
@@ -4221,6 +4232,7 @@ Yiddish, Ukrainian, Telugu, Tamil, Somali, Sindhi, Russian, Punjabi, Nepali, Mar
 | xx         | [xx.classify.token_xlm_roberta.token_classifier_ner_40_lang](https://nlp.johnsnowlabs.com/2021/09/28/xlm_roberta_token_classifier_ner_40_lang_xx.html)           | [xlm_roberta_token_classifier_ner_40_lang](https://nlp.johnsnowlabs.com/2021/09/28/xlm_roberta_token_classifier_ner_40_lang_xx.html)           | Named Entity Recognition |
 | xx         | [xx.embed.xlm_roberta_large](https://nlp.johnsnowlabs.com/2021/09/29/xlm_roberta_large_xx.html)                                                                  | [xlm_roberta_large](https://nlp.johnsnowlabs.com/2021/09/29/xlm_roberta_large_xx.html)                                                         | Embeddings               |
 
+</div><div class="h3-box" markdown="1">
 
 #### New Healthcare models
 The following models are available from the amazing Spark NLP for Healthcare releases
@@ -4252,6 +4264,8 @@ which includes 48 Multi-NER tuning pipelines, BERT-based DEidentification, Germa
 | en         | [en.resolve.umls_disease_syndrome](https://nlp.johnsnowlabs.com/2021/10/11/sbiobertresolve_umls_disease_syndrome_en.html)  | [sbiobertresolve_umls_disease_syndrome](https://nlp.johnsnowlabs.com/2021/10/11/sbiobertresolve_umls_disease_syndrome_en.html) | Entity Resolution        |
 | en         | [en.resolve.umls_clinical_drugs](https://nlp.johnsnowlabs.com/2021/10/11/sbiobertresolve_umls_clinical_drugs_en.html)      | [sbiobertresolve_umls_clinical_drugs](https://nlp.johnsnowlabs.com/2021/10/11/sbiobertresolve_umls_clinical_drugs_en.html)     | Entity Resolution        |
 
+</div><div class="h3-box" markdown="1">
+
 #### Updated Model Names
 The nlu model references have been updated to better reflect their use-cases.
 - en.classify.token_bert.conll03
@@ -4270,8 +4284,7 @@ The nlu model references have been updated to better reflect their use-cases.
 - en.classify.token_bert.ner_clinical
 - en.classify.token_bert.ner_jsl
 
-
-
+</div><div class="h3-box" markdown="1">
 
 #### New Tutorial Videos
 - [NLU & Streamlit Crashcourse](https://www.youtube.com/watch?v=2xjA4Gre1sg)
@@ -4287,7 +4300,7 @@ Added documentation section regarding compatibility of NLU, Spark NLP and Spark 
 - Fixed a bug with Pyspark versions 3.0 and below that caused failure of predicting with pipeline
 - Fixed a bug that caused the results  of TokenClassifier Models to not be properly extracted
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Additional NLU ressources
 * [140+ NLU Tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
@@ -4298,6 +4311,7 @@ Added documentation section regarding compatibility of NLU, Spark NLP and Spark 
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
+</div><div class="h3-box" markdown="1">
 
 #### Install NLU in 1 line!
 
@@ -4307,7 +4321,7 @@ Added documentation section regarding compatibility of NLU, Spark NLP and Spark 
 * Install NLU via Pip         : ! pip install nlu pyspark streamlit==0.80.0`
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 3.2.1
 
@@ -4322,6 +4336,7 @@ for `Snomed Conditions`, `Cpt Measurements`, `Icd0`, `Rxnorm Dispositions`, `Pos
 Finally, a new tutorial notebook and a webinar are available, which showcase almost every feature of NLU
 for [the over 50 Domains in Healthcare/Clinical/Biomedical/etc..](https://github.com/JohnSnowLabs/nlu/tree/master/examples/webinars_conferences_etc/healthcare_webinar)
 
+</div><div class="h3-box" markdown="1">
 
 #### New Transformer Models
 Models in Japanese, German, Dutch, Swedish, Spanish, French and English from the great [Spark NLP 3.2.3 release](https://github.com/JohnSnowLabs/spark-nlp/releases/tag/3.2.3)
@@ -4349,6 +4364,7 @@ Models in Japanese, German, Dutch, Swedish, Spanish, French and English from the
 | [de.embed_sentence.bert.base_cased](https://nlp.johnsnowlabs.com/2021/09/15/sent_bert_base_cased_de.html) | [sent_bert_base_cased](https://nlp.johnsnowlabs.com/2021/09/15/sent_bert_base_cased_de.html) |BertSentenceEmbeddings|de|
 | [de.classify.sentiment.bert](https://nlp.johnsnowlabs.com/2021/09/09/classifierdl_bert_sentiment_de.html) | [classifierdl_bert_sentiment](https://nlp.johnsnowlabs.com/2021/09/09/classifierdl_bert_sentiment_de.html) |ClassifierDLModel|de|
 
+</div><div class="h3-box" markdown="1">
 
 #### New Healthcare Transformer Models
 Models for Snomed Conditions, Cpt Measurements, Icd0, Rxnorm Dispositions, Posology and Deidentification from the amazing [Spark NLP 3.2.2  for Healthcare Release](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes)
@@ -4363,6 +4379,8 @@ Models for Snomed Conditions, Cpt Measurements, Icd0, Rxnorm Dispositions, Posol
 | [en.med_ner.posology.experimental](https://nlp.johnsnowlabs.com/2021/09/01/ner_posology_experimental_en.html) | [ner_posology_experimental](https://nlp.johnsnowlabs.com/2021/09/01/ner_posology_experimental_en.html) |MedicalNerModel|en|
 | [en.med_ner.deid.subentity_augmented](https://nlp.johnsnowlabs.com/2021/09/03/ner_deid_subentity_augmented_en.html) | [ner_deid_subentity_augmented](https://nlp.johnsnowlabs.com/2021/09/03/ner_deid_subentity_augmented_en.html) |MedicalNerModel|en|
 
+</div><div class="h3-box" markdown="1">
+
 #### New Notebooks
 - [NLU Healthcare Overview and Crashcourse](https://github.com/JohnSnowLabs/nlu/tree/master/examples/webinars_conferences_etc/healthcare_webinar)
 
@@ -4374,7 +4392,7 @@ Models for Snomed Conditions, Cpt Measurements, Icd0, Rxnorm Dispositions, Posol
 - Fixed a bug that caused output levels no beeing inferred properly
 - Fixed a bug that caused SentenceResolver visualizations not to appear.
 
-
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 3.2.0
 
@@ -4389,6 +4407,7 @@ New Streamlit visualizations enable you to see `Entities` in 3-D, 2-D, and 1-D M
 Finally, a  ~7% decrease in Memory consumption in NLU's core which benefits every computation, achieved by leveraging Pyarrow.
 We are incredibly thankful to our community, which helped us come this far, and are looking forward to another magical year of NLU!
 
+</div><div class="h3-box" markdown="1">
 
 #### Streamlit Entity Manifold visualization
 #### <kbd>function</kbd> `pipe.viz_streamlit_entity_embed_manifold`
@@ -4428,7 +4447,7 @@ streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples
 | `display_infos`                                |  `bool`                                            | `False`                                                                                  | Display additonal information about ISO codes and the NLU namespace structure.|  
 | `n_jobs`                                       |          `Optional[int]` | `3`|   `False` | How many cores to use for paralellzing when using Sklearn Dimension Reduction algorithms.  |
 
-
+</div><div class="h3-box" markdown="1">
 
 #### Sentence Entity Resolver Training
 [Sentence Entity Resolver Training Tutorial Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/sentence_entity_resolution/sentence_entity_resolution_training.ipynb)
@@ -4466,6 +4485,7 @@ trainable_pipe = nlu.load('en.embed.glove.biovec train.resolve_sentence')
 
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### Transformer Models
 New models from the spectacular  [Spark NLP  3.2.0 +](https://nlp.johnsnowlabs.com/docs/en/jsl/release_notes) releases are integrated.
@@ -4566,6 +4586,7 @@ The supported languages with their ISO 639-1 code are : `af`, `ar`, `bg`, `bn`, 
 | [id.detect_sentence](https://nlp.johnsnowlabs.com/2021/08/30/sentence_detector_dl_id.html) | [sentence_detector_dl](https://nlp.johnsnowlabs.com/2021/08/30/sentence_detector_dl_id.html) |SentenceDetectorDLModel|id|
 | [gu.detect_sentence](https://nlp.johnsnowlabs.com/2021/08/30/sentence_detector_dl_gu.html) | [sentence_detector_dl](https://nlp.johnsnowlabs.com/2021/08/30/sentence_detector_dl_gu.html) |SentenceDetectorDLModel|gu|
 
+</div><div class="h3-box" markdown="1">
 
 #### New Healthcare Transformer Models
 12 new models from the amazing  [Spark NLP for Healthcare  3.2.0+](https://nlp.johnsnowlabs.com/docs/en/spark_nlp_healthcare_versions/licensed_release_notes) releases, including models for `genetic variants`, `radiology`, `assertion`,
@@ -4586,6 +4607,8 @@ The supported languages with their ISO 639-1 code are : `af`, `ar`, `bg`, `bn`, 
 | [en.assert.jsl](https://nlp.johnsnowlabs.com/2021/07/24/assertion_jsl_en.html) | [assertion_jsl](https://nlp.johnsnowlabs.com/2021/07/24/assertion_jsl_en.html) |AssertionDLModel|
 | [en.assert.jsl_large](https://nlp.johnsnowlabs.com/2021/07/24/assertion_jsl_large_en.html) | [assertion_jsl_large](https://nlp.johnsnowlabs.com/2021/07/24/assertion_jsl_large_en.html) |AssertionDLModel|
 
+</div><div class="h3-box" markdown="1">
+
 #### PyArrow Memory Optimizations
 Optimized integration with Pyarrow to share memory between the Python Virtual Machine and Java Virtual Machine which yields around
 7% less memory consumption on average in all computations. This improvement will take effect for everyone using the default pyspark installation, which comes with a compatible Pyarrow Version.    
@@ -4593,14 +4616,18 @@ If you manually install or upgrade Pyarrow, please refer to the official [Spark 
 you have a Pyarrow version installed that works with your Pyspark version.
 ![Memory Benchmark](https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/images/releases/3_2_0/mem_benchmark.png)
 
+</div><div class="h3-box" markdown="1">
+
 #### New Notebooks
 - [Sentence Resolution Training Notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/sentence_entity_resolution/sentence_entity_resolution_training.ipynb)
 - [Benchmark Notebook](https://colab.research.google.com/drive/1Ja9_QF9Sm1zhr-tyhFv6z2a3qnNjOaR6?usp=sharing)
 
+</div><div class="h3-box" markdown="1">
 
 #### Bugfixes
 - Fixed a bug that caused the similarity matrix calculations to generate NaNs and crash
 
+</div><div class="h3-box" markdown="1">
 
 #### Additional NLU ressources
 * [140+ NLU Tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
@@ -4611,6 +4638,7 @@ you have a Pyarrow version installed that works with your Pyspark version.
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
 
+</div><div class="h3-box" markdown="1">
 
 #### Install NLU in 1 line!
 
@@ -4620,6 +4648,7 @@ you have a Pyarrow version installed that works with your Pyspark version.
 * Install NLU via Pip         : ! pip install nlu pyspark streamlit==0.80.0`
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 3.1.1
 
@@ -4680,8 +4709,6 @@ nlu.load('embed_sentence.bert').viz_streamlit_sentence_embed_manifold(text)
 | `n_jobs`                                       |          `Optional[int]` | `3`|   `False` | How many cores to use for paralellzing when using Sklearn Dimension Reduction algorithms.  |  
 
 
-
-
 #### General Streamlit enhancements
 
 #### Support for  [Latent Dirichlet Allocation](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html)
@@ -4694,9 +4721,6 @@ WordEmbedding vectors will now be normalized before calculating similarity score
 You can now control the order in Which visualizations appear in the main GUI
 
 #### Sentence Embedding Visualization
-
-
-
 
 #### Chunk Entity Resolver Training
 [Chunk Entity Resolver Training Tutorial Notebook]()
@@ -4742,8 +4766,6 @@ untrained_chunk_resolver = nlu.load('en.embed.glove.biovec train.resolve_chunks'
 trained_chunk_resolver  =  untrained_chunk_resolver.fit(df)
 trained_chunk_resolver.predict(df)
  ```
-
-
 
 #### Rule based NER with Context Matcher
 [Rule based NER with context matching tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/rule_based_named_entity_recognition_and_resolution/rule_based_NER_and_resolution_with_context_matching.ipynb)    
@@ -4841,9 +4863,6 @@ nlu.load('norm_drugs').predict(data)
 | interferon alfa - 2b 10000000 unt ( 1 ml ) injection | interferon alfa-2b 10 million unit ( 1 ml ) injec |
 | Sodium Chloride / Potassium Chloride 13 bag          | Sodium Chloride/Potassium Chloride 13bag          |
 
-
-
-
 #### New NLU Spells
 These new magical 1-liners which get new the folowing models
 
@@ -4886,19 +4905,10 @@ When loading licensed models that require a NER features like  `Assertion`, `Rel
 nlu will now use the `en.med_ner` model which maps to the Spark NLP model `jsl_ner_wip_clinical` as default.
 See [https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html](https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html) for more infos on this model.
 
-
-
-
 #### New Notebooks
 - [Rule based NER with context matching tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/rule_based_named_entity_recognition_and_resolution/rule_based_NER_and_resolution_with_context_matching.ipynb)
 - [Drug Normalizer tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/drug_normalization/drug_norm.ipynb)
 - [Generic Deep Learning Tensorflow Classifier](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/generic_TF_classifier/generic_classifier.ipynb)
-
-
-
-
-
-
 
 
 #### Additional NLU ressources
@@ -4919,6 +4929,8 @@ See [https://nlp.johnsnowlabs.com/2021/03/31/jsl_ner_wip_clinical_en.html](https
 * Install NLU via Pip         : ! pip install nlu pyspark==3.0.3
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ## NLU Version 3.1.0
 
 #### 2600+ New Models for 200+ Languages and 10+ Dimension Reduction Algorithms for Streamlit Word-Embedding visualizations in 3-D
@@ -4929,7 +4941,6 @@ new `Streamlit Visualizations` for visualizing Word Embeddings in `3-D`, `2-D`, 
 New Healthcare pipelines for `healthcare code mappings`
 and finally `confidence extraction` for open source NER models.
 Additionally, the NLU Namespace has been renamed to the NLU Spellbook, to reflect the magicalness of each 1-liners represented by them!
-
 
 #### Streamlit Word Embedding visualization via Manifold and Matrix Decomposition algorithms
 
@@ -4951,9 +4962,6 @@ nlu.load('bert',verbose=True).viz_streamlit_word_embed_manifold(default_texts=TH
 ```
 
 <img  src="https://github.com/JohnSnowLabs/nlu/blob/master/docs/assets/streamlit_docs_assets/gif/word_embed_dimension_reduction/manifold_intro.gif?raw=true">
-
-
-
 
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit_word_embed_manifold`
 
@@ -4999,9 +5007,6 @@ nlu.load('bert',verbose=True).viz_streamlit_word_embed_manifold(default_texts=TH
 - [FactorAnalysis](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.FactorAnalysis.html#sklearn.decomposition.FactorAnalysis)
 - [FastICA](https://scikit-learn.org/stable/modules/generated/fastica-function.html#sklearn.decomposition.fastica)
 - [KernelPCA](https://scikit-learn.org/stable/modules/generated/sklearn.decomposition.KernelPCA.html#sklearn.decomposition.KernelPCA)
-
-
-
 
 #### New Healthcare Pipelines
 Five new healthcare code mapping pipelines:
@@ -7069,6 +7074,8 @@ In the following table the NLU and Spark-NLP references are listed:
 * Install NLU via Pip         : ! pip install nlu pyspark==3.0.3
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ## NLU Version 3.0.2
 <img width="65%" align="right" src="https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/start.gif">
 
@@ -7116,7 +7123,6 @@ streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/03_text_similarity_matrix.py
 ```
 
-
 #### Example:  [`04_dependency_tree`](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/04_dependency_tree.py)
 ```shell
 streamlit run https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/examples/streamlit/04_dependency_tree.py
@@ -7137,10 +7143,6 @@ All you need to know about NLU is that there is the [`nlu.load()`](https://nlp.j
 which has a [`.predict()`](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api) that works on most [common data types in the pydata stack like Pandas dataframes](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#supported-data-types) .     
 Ontop of that, there are various visualization methods a NLUPipeline provides easily integrate in Streamlit as re-usable components. [`viz() method`](https://nlp.johnsnowlabs.com/docs/en/jsl/viz_examples)
 
-
-
-
-
 #### Overview of NLU + Streamlit buildingblocks
 
 |Method                                                         |               Description                 |
@@ -7160,7 +7162,6 @@ Ontop of that, there are various visualization methods a NLUPipeline provides ea
 
 #### <kbd>function</kbd> `pipe.viz_streamlit`
 
-
 Display a highly configurable UI that showcases almost every feature available for Streamlit visualization with model selection dropdowns in your applications.   
 Ths includes :
 - `Similarity Matrix` & `Scalars` & `Embedding Information` for any of the [100+ Word Embedding Models]()
@@ -7177,8 +7178,6 @@ Ths includes :
 ```python
 nlu.load('ner').viz_streamlit(['I love NLU and Streamlit!','I hate buggy software'])
 ```
-
-
 
 ![NLU Streamlit UI Overview](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/ui.gif)
 
@@ -7203,8 +7202,6 @@ nlu.load('ner').viz_streamlit(['I love NLU and Streamlit!','I hate buggy softwar
 | `show_code_snippets`      |  `bool`                                                             |  `False`                                                                                 | Display Python code snippets above visualizations that can be used to re-create the visualization
 |`num_similarity_cols`                               | `int`               |  `2`                            |  How many columns should for the layout in Streamlit when rendering the similarity matrixes.
 
-
-
 #### <kbd>function</kbd> `pipe.viz_streamlit_classes`
 
 Visualize the predicted classes and their confidences and additional metadata to streamlit.
@@ -7214,7 +7211,6 @@ Aplicable with [any of the 100+ classifiers](https://nlp.johnsnowlabs.com/models
 nlu.load('sentiment').viz_streamlit_classes(['I love NLU and Streamlit!','I love buggy software', 'Sign up now get a chance to win 1000$ !', 'I am afraid of Snakes','Unicorns have been sighted on Mars!','Where is the next bus stop?'])
 ```
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/streamlit_docs_assets/gif/class.gif)
-
 
 #### <kbd>function parameters</kbd> `pipe.viz_streamlit_classes`
 
@@ -7233,8 +7229,6 @@ nlu.load('sentiment').viz_streamlit_classes(['I love NLU and Streamlit!','I love
 | `show_model_select`   |  `bool`                                          | `True`                                                                                 | Show a model selection dropdowns that makes any of the 1000+ models avaiable in 1 click
 | `show_logo`             |  `bool`                                            | `True`                                                                                   | Show logo
 | `display_infos`         |  `bool`                                            | `False`                                                                                  | Display additonal information about ISO codes and the NLU namespace structure.
-
-
 
 #### <kbd>function</kbd> `pipe.viz_streamlit_ner`
 Visualize the predicted classes and their confidences and additional metadata to Streamlit.
@@ -7275,9 +7269,6 @@ nlu.load('ner').viz_streamlit_ner('Donald Trump from America and Angela Merkel f
 | `show_logo`             |  `bool`                                            | `True`                                                                                   | Show logo
 | `display_infos`         |  `bool`                                            | `False`                                                                                  | Display additonal information about ISO codes and the NLU namespace structure.
 
-
-
-
 #### <kbd>function</kbd> `pipe.viz_streamlit_dep_tree`
 Visualize a typed dependency tree, the relations between tokens and part of speech tags predicted.
 Aplicable with [any of the 100+ Part of Speech(POS) models and dep tree model](https://nlp.johnsnowlabs.com/models?task=Part+of+Speech+Tagging)
@@ -7303,10 +7294,6 @@ nlu.load('dep.typed').viz_streamlit_dep_tree('POS tags define a grammatical labe
 | `model_select_position`    |  `str`                                                             |   `'side'`            | [Whether to output the positions of predictions or not, see `pipe.predict(positions=true`) for more info](https://nlp.johnsnowlabs.com/docs/en/jsl/predict_api#output-positions-parameter)  |
 | `show_logo`             |  `bool`                                            | `True`                                                                                   | Show logo
 | `display_infos`         |  `bool`                                            | `False`                                                                                  | Display additonal information about ISO codes and the NLU namespace structure.
-
-
-
-
 
 #### <kbd>function</kbd> `pipe.viz_streamlit_token`
 Visualize predicted token and text features for every model loaded.
@@ -7337,9 +7324,6 @@ nlu.load('stemm pos spell').viz_streamlit_token('I liek pentut buttr and jelly !
 | `show_logo`             |  `bool`                                            | `True`                                                                                   | Show logo
 | `display_infos`         |  `bool`                                            | `False`                                                                                  | Display additonal information about ISO codes and the NLU namespace structure.
 
-
-
-
 #### <kbd>function</kbd> `pipe.viz_streamlit_similarity`
 
 - Displays a `similarity matrix`, where `x-axis` is every token in the first text and `y-axis` is every token in the second text.
@@ -7348,7 +7332,6 @@ nlu.load('stemm pos spell').viz_streamlit_token('I liek pentut buttr and jelly !
   -There will be one similarity matrix per `metric` and `embedding` pair selected. `num_plots = num_metric*num_embeddings`
   Also displays embedding vector information.
   Applicable with [any of the 100+ Word Embedding models](https://nlp.johnsnowlabs.com/models?task=Embeddings)
-
 
 
 ```python
@@ -7380,15 +7363,7 @@ nlu.load('bert').viz_streamlit_word_similarity(['I love love loooove NLU! <3','I
 | `show_logo`             |  `bool`                             | `True`                                                                                   | Show logo
 | `display_infos`         |  `bool`                             | `False`                                                                                  | Display additonal information about ISO codes and the NLU namespace structure.
 
-
-
-
-
-
-
-
-
-
+</div><div class="h3-box" markdown="1">
 
 ## 
 In addition have added some new features to our T5 Transformer annotator to help with longer and more accurate text generation, trained some new multi-lingual models and pipelines in `Farsi`, `Hebrew`, `Korean`, and `Turkish`.
@@ -7419,7 +7394,6 @@ New multilingual models and pipelines for `Farsi`, `Hebrew`, `Korean`, and `Turk
 | PretrainedPipeline | [`fa.ner.dl`](https://nlp.johnsnowlabs.com/2021/04/26/recognize_entities_dl_fa.html) | [recognize_entities_dl](https://nlp.johnsnowlabs.com/2021/04/26/recognize_entities_dl_fa.html) |`fa`
 | PretrainedPipeline | [`he.explain_document`](https://nlp.johnsnowlabs.com/2021/04/30/explain_document_lg_he.html) | [explain_document_lg](https://nlp.johnsnowlabs.com/2021/04/30/explain_document_lg_he.html) |`he`
 | PretrainedPipeline | [`ko.explain_document`](https://nlp.johnsnowlabs.com/2021/04/30/explain_document_lg_ko.html) | [explain_document_lg](https://nlp.johnsnowlabs.com/2021/04/30/explain_document_lg_ko.html) |`ko`
-
 
 
 #### New Healthcare Models in NLU 3.0.2
@@ -7503,8 +7477,6 @@ hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented wit
 ![text_class1](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/releases/3_0_2/LIONC_BIOBERT.png)
 
 
-
-
 * [140+ tutorials](https://github.com/JohnSnowLabs/nlu/tree/master/examples)
 * [New Streamlit visualizations docs](https://nlp.johnsnowlabs.com/docs/en/jsl/streamlit_viz_examples)
 * The complete list of all 1100+ models & pipelines in 192+ languages is available on [Models Hub](https://nlp.johnsnowlabs.com/models).
@@ -7512,8 +7484,6 @@ hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented wit
 * [NLU in Action](https://nlp.johnsnowlabs.com/demos)
 * [NLU documentation](https://nlp.johnsnowlabs.com/docs/en/jsl/install)
 * [Discussions](https://github.com/JohnSnowLabs/spark-nlp/discussions) Engage with other community members, share ideas, and show off how you use Spark NLP and NLU!
-
-
 
 #### Install NLU in 1 line!
 
@@ -7523,14 +7493,13 @@ hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented wit
 * Install NLU via Pip         : ! pip install nlu pyspark==3.0.1
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ## NLU Version 3.0.1
 We are very excited to announce NLU 3.0.1 has been released!
 This is one of the most visually appealing releases, with the integration of the [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/display) library and visualizations for `dependency trees`, `entity resolution`, `entity assertion`, `relationship between entities` and `named
 entity recognition`. In addition to this, the schema of how columns are named by NLU has been reworked and all 140+ tutorial notebooks have been updated to reflect the latest changes in NLU 3.0.0+
 Finally, new multilingual models for `Afrikaans`, `Welsh`, `Maltese`, `Tamil`, and`Vietnamese` are now available.
-
-
-
 
 #### New Features and Enhancements
 - 1 line to visualization for `NER`, `Dependency`, `Resolution`, `Assertion` and `Relation` via [Spark-NLP-Display](https://nlp.johnsnowlabs.com/docs/en/display) integration
@@ -7587,7 +7556,6 @@ Applicable to any of the [10 + Assertion models! See here for an overview](https
 ```python
 nlu.load('med_ner.clinical assert').viz("The MRI scan showed no signs of cancer in the left lung")
 ```
-
 
 ![Assert visualization](https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/docs/assets/images/nlu/VizExamples/viz_module/assertion.png)
 
@@ -7691,8 +7659,6 @@ New multilingual models for `Afrikaans`, `Welsh`, `Maltese`, `Tamil`, and`Vietna
 
 All of the [140+ NLU tutorial Notebooks](https://github.com/JohnSnowLabs/nlu/tree/master/examples) have been updated and reworked to reflect the latest changes in NLU 3.0.0+
 
-
-
 #### Bugfixes
 - Fixed a bug that caused  resolution algorithms output level to be inferred incorrectly
 - Fixed a bug that caused stranger cols got dropped
@@ -7719,7 +7685,7 @@ All of the [140+ NLU tutorial Notebooks](https://github.com/JohnSnowLabs/nlu/tre
 ```
 
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 #### 200+ State of the Art Medical Models for NER, Entity Resolution, Relation Extraction, Assertion, Spark 3 and Python 3.8 support in  NLU 3.0 Release and much more
 We are incredible excited to announce the release of `NLU 3.0.0` which makes most of John Snow Labs medical healthcare model available in just 1 line of code in NLU.
@@ -8004,15 +7970,7 @@ This new output level is used for relation extractors and will give you 1 row pe
 - [Suggestions or Questions? Contact us in Slack!](https://join.slack.com/t/spark-nlp/shared_invite/zt-lutct9gm-kuUazcyFKhuGY3_0AMkxqA)
 
 
-
-
-
-
-
-
-<div class="h3-box" markdown="1">
-
-
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 1.1.3
 
@@ -8050,19 +8008,12 @@ Finally, there is a new NLU Webinar with 9 accompanying tutorial notebooks which
 | Bengali  | [bn.embed.cc_300d](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html) | [bengali_cc_300d](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html) | Word Embeddings Model (Alias)    |
 | Bengali  | [bn.embed.glove](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html) | [bengali_cc_300d](https://nlp.johnsnowlabs.com/2021/02/10/bengaliner_cc_300d_bn.html) |  Word Embeddings Model (Alias)|
 
-
-
-
-
 #### NLU 1.1.3 New English Models
 
 |Language | nlu.load() reference | Spark NLP Model reference | Type |
 |---------|---------------------|----------------------------|------|
 | English | [en.classify.snips](https://nlp.johnsnowlabs.com/2021/02/15/nerdl_snips_100d_en.html) |[nerdl_snips_100d](https://nlp.johnsnowlabs.com/2021/02/15/nerdl_snips_100d_en.html)     | NerDLModel |
 | English | [en.ner.snips](https://nlp.johnsnowlabs.com/2021/02/15/classifierdl_use_snips_en.html) |[classifierdl_use_snips](https://nlp.johnsnowlabs.com/2021/02/15/classifierdl_use_snips_en.html)|ClassifierDLModel|
-
-
-
 
 #### New NLU Webinar
 #### [State-of-the-art Natural Language Processing for 200+ Languages with 1 Line of code](https://events.johnsnowlabs.com/state-of-the-art-natural-language-processing-for-200-languages-with-1-line-of-code)
@@ -8091,9 +8042,6 @@ You can watch the [video here,](https://events.johnsnowlabs.com/state-of-the-art
 7. [Summarize text and Answer Questions with T5](https://github.com/JohnSnowLabs/nlu/blob/master/examples/webinars_conferences_etc/multi_lingual_webinar/6_T5_question_answering_and_Text_summarization.ipynb)
 8. [Solve any task in 1 line from SQUAD, GLUE and SUPER GLUE with T5](https://github.com/JohnSnowLabs/nlu/blob/master/examples/webinars_conferences_etc/multi_lingual_webinar/7_T5_SQUAD_GLUE_SUPER_GLUE_TASKS.ipynb)
 9. [Overview of models for various languages](https://github.com/JohnSnowLabs/nlu/blob/master/examples/webinars_conferences_etc/multi_lingual_webinar/8_Multi_lingual_ner_pos_stop_words_sentiment_pretrained.ipynb)
-
-
-
 
 
 #### New easy NLU 1-liners in NLU 1.1.3
@@ -8142,9 +8090,6 @@ outputs :
 
 #### [Word Embeddings for Bengali (bengali_cc_300d)](https://nlp.johnsnowlabs.com/2021/02/10/bengali_cc_300d_bn.html)
 
-
-
-
 ```python
 # Bengali for : 'Iajuddin Ahmed passed Matriculation from Munshiganj High School in 1947 and Intermediate from Munshiganj Horganga College in 1950.'
 nlu.load("bn.embed").predict("১৯৪৮ সালে ইয়াজউদ্দিন আহম্মেদ মুন্সিগঞ্জ উচ্চ বিদ্যালয় থেকে মেট্রিক পাশ করেন এবং ১৯৫০ সালে মুন্সিগঞ্জ হরগঙ্গা কলেজ থেকে ইন্টারমেডিয়েট পাশ করেন",output_level = "document")
@@ -8155,8 +8100,6 @@ outputs :
 |                                                     document | bn_embed_embeddings                                          |
 | -----------------------------------------------------------: | :----------------------------------------------------------- |
 | ১৯৪৮ সালে ইয়াজউদ্দিন আহম্মেদ মুন্সিগঞ্জ উচ্চ বিদ্যালয় থেকে মেট্রিক পাশ করেন এবং ১৯৫০ সালে মুন্সিগঞ্জ হরগঙ্গা কলেজ থেকে ইন্টারমেডিয়েট পাশ করেন | [-0.0828      0.0683      0.0215     ...  0.0679     -0.0484...] |
-
-
 
 #### NLU 1.1.3 Enhancements
 - Added automatic conversion  to Sentence Embeddings of Word Embeddings when there is no Sentence Embedding Avaiable and a model needs the converted version to run.
@@ -8186,8 +8129,7 @@ conda install -os_components johnsnowlabs nlu
 - [NLU on Github](https://github.com/JohnSnowLabs/nlu)
 - [Suggestions or Questions? Contact us in Slack!](https://join.slack.com/t/spark-nlp/shared_invite/zt-lutct9gm-kuUazcyFKhuGY3_0AMkxqA)
 
-
-
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 1.1.2
 #### Hindi  WordEmbeddings , Bengali Named Entity Recognition (NER), 30+ new models, analyze Crypto news with John Snow Labs NLU 1.1.2
@@ -8211,7 +8153,7 @@ This includes 20 languages families; non-Latin alphabets; languages that do not 
 Chinese, Japanese, and Korean; and languages written from right to left like Arabic, Farsi, Urdu, and Hebrew.
 We'll also cover some of the algorithms and models that are included. The code notebooks will be freely available online.
 
-
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.2 New Non-English Models
 
@@ -8258,6 +8200,7 @@ We'll also cover some of the algorithms and models that are included. The code n
 - [Translate between more than 300 Languages in 1 line of code with the Marian Models](https://github.com/JohnSnowLabs/nlu/blob/master/examples/webinars_conferences_etc/NYC_DC_NLP_MEETUP/2_multilingual_translation_with_marian.ipynb)
 - [New NLU 1.1.2 Models Showcase Notebooks, Bengali NER, Hindi Embeddings, 30 new_models](https://colab.research.google.com/github/JohnSnowLabs/nlu/blob/master/examples/release_notebooks/NLU1.1.2_Bengali_ner_Hindi_Embeddings_30_new_models.ipynb)
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.1.2 Bug Fixes
 
@@ -8672,6 +8615,7 @@ conda install -os_components johnsnowlabs nlu
 - [NLU Videos and Blogposts on NLU](https://nlp.johnsnowlabs.com/learn#pythons-nlu-library)
 - [NLU on Github](https://github.com/JohnSnowLabs/nlu)
 
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 1.1.1
 
@@ -8986,7 +8930,7 @@ conda install -os_components johnsnowlabs nlu
 - [NLU on Github](https://github.com/JohnSnowLabs/nlu)
 
 
-
+</div><div class="h3-box" markdown="1">
 
 ##  NLU Version 1.1.0
 We are incredibly excited to release NLU 1.1.0!
@@ -9221,8 +9165,6 @@ sentence1: We acted because we saw the existing evidence in a new light , throug
 sentence2: Rather , the US acted because the administration saw " existing evidence in a new light , through the prism of our experience on September 11",
 ```
 
-
-
 #### Regressive Sentence similarity/ Paraphrasing
 
 Measures how similar two sentences are on a scale from 0 to 5 with 21 classes representing a regressive label.     
@@ -9268,9 +9210,6 @@ t5.predict(data)
 #### How to configure T5 task for stsb and pre-process text
 `.setTask('stsb sentence1:)` and prefix second sentence with `sentence2:`
 
-
-
-
 #### Example pre-processed input for T5 STSB - Regressive semantic sentence similarity
 
 ```
@@ -9278,10 +9217,6 @@ stsb
 sentence1: What attributes would have made you highly desirable in ancient Rome?        
 sentence2: How I GET OPPERTINUTY TO JOIN IT COMPANY AS A FRESHER?',
 ```
-
-
-
-
 
 #### Grammar Checking
 [Grammar checking with T5 example](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/component_examples/sequence2sequence/T5_tasks_summarize_question_answering_and_more.ipynb)
@@ -9368,6 +9303,7 @@ conda install -os_components johnsnowlabs nlu
 - [NLU Videos and Blogposts on NLU](https://nlp.johnsnowlabs.com/learn#pythons-nlu-library)
 - [NLU on Github](https://github.com/JohnSnowLabs/nlu)
 
+</div><div class="h3-box" markdown="1">
 
 ##  NLU Version 1.0.6
 
@@ -9429,6 +9365,7 @@ preds = fitted_pipe.predict(train_df)
 - Fixed a bug that caused ```pt.ner.large``` to be inaccessible
 - Fixed a bug that caused USE embeddings not properly beeing configured to document level output when using multiple embeddings at the same time
 
+</div><div class="h3-box" markdown="1">
 
 ##  NLU Version 1.0.5
 
@@ -9481,8 +9418,6 @@ fitted_pipe = nlu.load('train.pos').fit(train_df)
 preds = fitted_pipe.predict(train_df)
 ```
 
-
-
 #### NLU 1.0.5 Installation changes
 Starting from version 1.0.5 NLU will not automatically install pyspark for users anymore.      
 This enables easier customizing the Pyspark version which makes it easier to use in various cluster enviroments.
@@ -9496,8 +9431,7 @@ or install any pyspark>=2.4.0 with pyspark<3
 #### NLU 1.0.5 Improvements
 - Improved Databricks path handling for loading and storing models.
 
-
-
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 1.0.4
 
@@ -9523,7 +9457,6 @@ nlu.load('elmo train.ner').fit(dataset).predict(dataset)
 ```
 
 
-
 Any NLU pipeline stored can now be loaded as pyspark ML pipeline
 ```python
 # Ready for big Data with Spark distributed computing
@@ -9533,6 +9466,7 @@ pyspark_pipe = pyspark.ml.PipelineModel.load(stored_model_path)
 pyspark_pipe.transform(spark_df)
 ```
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.0.4 New Features
 - Trainable  [Named Entity Recognizer](https://nlp.johnsnowlabs.com/docs/en/annotators#ner-dl-named-entity-recognition-deep-learning-annotator)
@@ -9544,15 +9478,16 @@ pyspark_pipe.transform(spark_df)
 - [New Documentation Page on how to train Models with NLU](https://nlp.johnsnowlabs.com/docs/en/jsl/training)
 - Databricks Notebook showcasing Scaling with NLU
 
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.0.4 Bug Fixes
 - Fixed a bug that NER token confidences do not appear. They now appear when nlu.load('ner').predict(df, meta=True) is called.
 - Fixed a bug that caused some Spark NLP models to not be loaded properly in offline mode
 
-
-
 ## NLU Version 1.0.3
 We are happy to announce NLU 1.0.3 comes with a lot new features, training classifiers, saving them and loading them offline, enabling running NLU with no internet connection, new notebooks and articles!
+
+</div><div class="h3-box" markdown="1">
 
 #### NLU 1.0.3 New Features
 - Train a Deep Learning classifier in 1 line! The popular [ClassifierDL](https://nlp.johnsnowlabs.com/docs/en/annotators#classifierdl-multi-class-text-classification)
@@ -9574,8 +9509,7 @@ We are happy to announce NLU 1.0.3 comes with a lot new features, training class
 #### NLU 1.0.3 Bug fixes
 - Sentence Detector bugfix
 
-
-
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 1.0.2
 
@@ -9598,8 +9532,9 @@ We are glad to announce nlu 1.0.2 is released!
 - Integration of CI pipeline with Github Actions
 
 #### New Documentation is out!
-Check it out here :  https://nlp.johnsnowlabs.com/
+Check it out here :  [https://nlp.johnsnowlabs.com/](https://nlp.johnsnowlabs.com/)
 
+</div><div class="h3-box" markdown="1">
 
 ## NLU Version 1.0.1
 
@@ -9615,9 +9550,6 @@ Check it out here :  https://nlp.johnsnowlabs.com/
 - Updated old T-SNE notebooks with more elegant and simpler generation of t-SNE embeddings
 
 </div><div class="h3-box" markdown="1">
-
-
-
 
 ## NLU Version 0.2.1
 - Various bugfixes
@@ -9722,3 +9654,5 @@ A picture says more than a 1000 words, so here is a demo clip of the 12 coolest 
 
 - Matchers
     - [Date Matcher](https://colab.research.google.com/drive/1JrlfuV2jNGTdOXvaWIoHTSf6BscDMkN7?usp=sharing)
+
+</div></div>

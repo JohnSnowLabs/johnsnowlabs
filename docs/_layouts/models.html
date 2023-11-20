@@ -1,7 +1,9 @@
 ---
 layout: base
 ---
-
+<script>
+  {% include scripts/search/simple-jekyll-search.min.js %}
+</script>
 <div class="layout--page js-page-root">
   <div class="page__main js-page-main page__viewport full-width cell cell--auto">
     <div class="page__main-inner">
@@ -54,6 +56,11 @@ layout: base
             </div>
           </div>
         </div>
+        <div class="dn">
+          <!-- HTML elements for search -->
+          <input type="text" id="search-input" placeholder="Search...">
+          <ul id="results-container" class="shadow results-container"></ul>
+        </div> 
         <div class="grid grid--reverse">
           <div class="col-aside d-print-none js-col-aside"></div>
           <div class="col-main cell cell--auto">
