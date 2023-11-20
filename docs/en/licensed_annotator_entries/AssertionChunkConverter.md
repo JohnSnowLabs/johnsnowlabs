@@ -53,13 +53,13 @@ tokenizer = nlp.Tokenizer()\
   .setOutputCol("tokens")
 
 converter = medical.AssertionChunkConverter()\
-    .setInputCols("tokens")\
-    .setChunkTextCol("target")\
-    .setChunkBeginCol("char_begin")\
-    .setChunkEndCol("char_end")\
-    .setOutputTokenBeginCol("token_begin")\
-    .setOutputTokenEndCol("token_end")\
-    .setOutputCol("chunk")
+  .setInputCols("tokens")\
+  .setChunkTextCol("target")\
+  .setChunkBeginCol("char_begin")\
+  .setChunkEndCol("char_end")\
+  .setOutputTokenBeginCol("token_begin")\
+  .setOutputTokenEndCol("token_end")\
+  .setOutputCol("chunk")
 
 
 pipeline = nlp.Pipeline().setStages(
@@ -166,13 +166,13 @@ tokenizer = nlp.Tokenizer()\
   .setOutputCol("tokens")
 
 converter = finance.AssertionChunkConverter()\
-    .setInputCols("tokens")\
-    .setChunkTextCol("target")\
-    .setChunkBeginCol("char_begin")\
-    .setChunkEndCol("char_end")\
-    .setOutputTokenBeginCol("token_begin")\
-    .setOutputTokenEndCol("token_end")\
-    .setOutputCol("chunk")
+  .setInputCols("tokens")\
+  .setChunkTextCol("target")\
+  .setChunkBeginCol("char_begin")\
+  .setChunkEndCol("char_end")\
+  .setOutputTokenBeginCol("token_begin")\
+  .setOutputTokenEndCol("token_end")\
+  .setOutputCol("chunk")
 
 
 pipeline = nlp.Pipeline().setStages(
@@ -279,13 +279,13 @@ tokenizer = nlp.Tokenizer()\
   .setOutputCol("tokens")
 
 converter = legal.AssertionChunkConverter()\
-    .setInputCols("tokens")\
-    .setChunkTextCol("target")\
-    .setChunkBeginCol("char_begin")\
-    .setChunkEndCol("char_end")\
-    .setOutputTokenBeginCol("token_begin")\
-    .setOutputTokenEndCol("token_end")\
-    .setOutputCol("chunk")
+  .setInputCols("tokens")\
+  .setChunkTextCol("target")\
+  .setChunkBeginCol("char_begin")\
+  .setChunkEndCol("char_end")\
+  .setOutputTokenBeginCol("token_begin")\
+  .setOutputTokenEndCol("token_end")\
+  .setOutputCol("chunk")
 
 
 pipeline = nlp.Pipeline().setStages(

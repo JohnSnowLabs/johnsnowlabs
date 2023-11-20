@@ -38,6 +38,7 @@ Check [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/ma
 * ImageLayoutAnalyzerDit: document layout analysis is a fundamental task in Visual NLP, it is the task of detecting sections in a document. Typical examples for these sections are: text, title, list, table, or figure.
 ![image](/assets/images/ocr/dit-layout-sample.png)
 
+
  
    Identifying these sections is the first step that enables other downstream processing tasks like OCR or Table Extraction.
 Check [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRDitLayoutAnalyze.ipynb) for an example on how to apply this new model to sample documents.
