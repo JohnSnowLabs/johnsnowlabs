@@ -28,8 +28,7 @@ In this context, the Pix2Struct model, originally conceived as an image-to-text 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/VISUAL_QUESTION_ANSWERING/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrVisualQuestionAnsweringPix2Struct.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-<!-- [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/dit_base_finetuned_rvlcdip_en_3.3.0_3.0_1654798502586.zip){:.button.button-orange.button-orange-trans.arr.button-icon} -->
-
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/docvqa_pix2struct_en_5.1.0_3.0_1699645004215.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
 ## How to use
 
 <div class="tabs-box" markdown="1">
