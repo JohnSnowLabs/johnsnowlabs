@@ -40,8 +40,6 @@ LABEL_DEPENDENCY
 
 {%- capture model_python_medical -%}
 
-# Use `rxnorm_mapper` pretrained model to map entities with their corresponding RxNorm codes.
-
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol('text')\
   .setOutputCol('document')
@@ -66,6 +64,7 @@ posology_ner_converter = medical.NerConverterInternal()\
   .setInputCols("sentence", "token", "posology_ner")\
   .setOutputCol("ner_chunk")
 
+# Use `rxnorm_mapper` pretrained model to map entities with their corresponding RxNorm codes.
 chunkerMapper = medical.ChunkMapperModel.pretrained("rxnorm_mapper", "en", "clinical/models")\
   .setInputCols(["ner_chunk"])\
   .setOutputCol("mappings")\
@@ -101,7 +100,6 @@ result.select(F.explode(F.arrays_zip(result.ner_chunk.result,
 
 {%- capture model_python_finance -%}
 
-# Use `rxnorm_mapper` pretrained model to map entities with their corresponding RxNorm codes.
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol('text')\
   .setOutputCol('document')
@@ -151,7 +149,6 @@ result.select('ner_chunk.result', 'mappings.result').show(truncate=False)
 
 {%- capture model_python_legal -%}
 
-# Use `rxnorm_mapper` pretrained model to map entities with their corresponding RxNorm codes.
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol('text')\
   .setOutputCol('document')
