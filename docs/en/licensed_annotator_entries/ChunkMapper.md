@@ -40,62 +40,91 @@ LABEL_DEPENDENCY
 
 {%- capture model_python_medical -%}
 
-document_assembler = nlp.DocumentAssembler()\
-  .setInputCol('text')\
-  .setOutputCol('document')
+documenter = nlp.DocumentAssembler()\
+  .setInputCol("text")\
+  .setOutputCol("document")
 
-sentence_detector = nlp.SentenceDetector()\
+sentencer = nlp.SentenceDetector()\
   .setInputCols(["document"])\
-  .setOutputCol("sentence")
+  .setOutputCol("sentences")
 
 tokenizer = nlp.Tokenizer()\
-  .setInputCols("sentence")\
-  .setOutputCol("token")
+  .setInputCols(["sentences"])\
+  .setOutputCol("tokens")
 
-word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-  .setInputCols(["sentence", "token"])\
+words_embedder = nlp.WordEmbeddingsModel()\
+  .pretrained("embeddings_clinical", "en", "clinical/models")\
+  .setInputCols(["sentences", "tokens"])\
   .setOutputCol("embeddings")
 
-posology_ner_model = medical.NerModel.pretrained("ner_posology_greedy", "en", "clinical/models")\
-  .setInputCols(["sentence", "token", "embeddings"])\
-  .setOutputCol("posology_ner")
+ner_tagger = medical.NerModel()\
+  .pretrained("ner_posology", "en", "clinical/models")\
+  .setInputCols("sentences", "tokens", "embeddings")\
+  .setOutputCol("ner_tags")
 
-posology_ner_converter = medical.NerConverterInternal()\
-  .setInputCols("sentence", "token", "posology_ner")\
-  .setOutputCol("ner_chunk")
+ner_converter = medical.NerConverterInternal()\
+  .setInputCols(["sentences", "tokens", "ner_tags"])\
+  .setOutputCol("ner_chunks")\
+  .setWhiteList(["DRUG"])
 
-# Use `rxnorm_mapper` pretrained model to map entities with their corresponding RxNorm codes.
-chunkerMapper = medical.ChunkMapperModel.pretrained("rxnorm_mapper", "en", "clinical/models")\
-  .setInputCols(["ner_chunk"])\
-  .setOutputCol("mappings")\
-  .setRels(["rxnorm_code"])
+chunkToDoc = nlp.Chunk2Doc()\
+  .setInputCols("ner_chunks")\
+  .setOutputCol("ner_chunks_doc")
 
-mapper_pipeline = nlp.Pipeline().setStages([
-  document_assembler,
-  sentence_detector,
-  tokenizer, 
-  word_embeddings,
-  posology_ner_model, 
-  posology_ner_converter, 
-  chunkerMapper])
+sbert_embedder = nlp.BertSentenceEmbeddings\
+  .pretrained("sbiobert_base_cased_mli", "en","clinical/models")\
+  .setInputCols(["ner_chunks_doc"])\
+  .setOutputCol("sbert_embeddings")\
+  .setCaseSensitive(False)
+
+rxnorm_resolver = medical.SentenceEntityResolverModel\
+  .pretrained("sbiobertresolve_rxnorm_augmented", "en", "clinical/models")\
+  .setInputCols(["sbert_embeddings"])\
+  .setOutputCol("rxnorm_code")\
+  .setDistanceFunction("EUCLIDEAN")\
 
 
-data = spark.createDataFrame([["The patient was given Zyrtec 10 MG, Adapin 10 MG Oral Capsule, Septi-Soothe 0.5 Topical Spray"]]).toDF("text")
+resolver2chunk = medical.Resolution2Chunk()\
+  .setInputCols(["rxnorm_code"]) \
+  .setOutputCol("rxnorm_chunk")\
 
-result= mapper_pipeline.fit(data).transform(data)
+chunkerMapper = medical.ChunkMapperModel.pretrained("rxnorm_drug_brandname_mapper", "en", "clinical/models")\
+  .setInputCols(["rxnorm_chunk"])\
+  .setOutputCol("rxnorm_drug_brandname_mapper")\
+  .setRels(["rxnorm_brandname", "rxnorm_extension_brandname"])
 
-result.select(F.explode(F.arrays_zip(result.ner_chunk.result,
-                                     result.mappings.result)).alias("cols"))\
-                  .select(F.expr("cols['0']").alias("ner_chunk"),
+
+pipeline = nlp.Pipeline(
+    stages = [
+        documenter,
+        sentencer,
+        tokenizer,
+        words_embedder,
+        ner_tagger,
+        ner_converter,
+        chunkToDoc,
+        sbert_embedder,
+        rxnorm_resolver,
+        resolver2chunk,
+        chunkerMapper
+        ])
+
+
+data = spark.createDataFrame([["The doctor prescribed Sinequan 150 MG for depression and Zonalon 50 mg for managing skin itching"]]).toDF("text")
+
+result= pipeline.fit(data).transform(data)
+
+result.select(F.explode(F.arrays_zip(result.ner_chunks.result,
+                                     result.rxnorm_code.result)).alias("cols"))\
+                  .select(F.expr("cols['0']").alias("ner_chunks"),
                           F.expr("cols['1']").alias("rxnorm_code")).show(15, truncate=100)
 
-+------------------------------+-----------+
-|                     ner_chunk|rxnorm_code|
-+------------------------------+-----------+
-|                  Zyrtec 10 MG|    1011483|
-|     Adapin 10 MG Oral Capsule|    1000050|
-|Septi-Soothe 0.5 Topical Spray|    1000046|
-+------------------------------+-----------+
++----------+-----------+
+|ner_chunks|rxnorm_code|
++----------+-----------+
+|  Sinequan|     224915|
+|   Zonalon|       9801|
++----------+-----------+
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
@@ -200,61 +229,87 @@ result.select('ner_chunk.result', 'mappings.result').show(truncate=False)
 
 import spark.implicits._
   
-val document_assembler = new DocumentAssembler()
+val documenter = new DocumentAssembler()
  .setInputCol("text") 
  .setOutputCol("document") 
 
-val sentence_detector = new SentenceDetector()
+val sentencer = new SentenceDetector()
  .setInputCols(Array("document")) 
- .setOutputCol("sentence") 
+ .setOutputCol("sentences") 
 
 val tokenizer = new Tokenizer()
- .setInputCols("sentence") 
- .setOutputCol("token") 
+ .setInputCols(Array("sentences")) 
+ .setOutputCol("tokens") 
 
-val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")
- .setInputCols(Array("sentence","token")) 
+val words_embedder = WordEmbeddingsModel
+ .pretrained("embeddings_clinical","en","clinical/models") 
+ .setInputCols(Array("sentences","tokens")) 
  .setOutputCol("embeddings") 
 
-val posology_ner_model = MedicalNerModel.pretrained("ner_posology_greedy","en","clinical/models")
- .setInputCols(Array("sentence","token","embeddings")) 
- .setOutputCol("posology_ner") 
+val ner_tagger = MedicalNerModel
+ .pretrained("ner_posology","en","clinical/models") 
+ .setInputCols("sentences","tokens","embeddings") 
+ .setOutputCol("ner_tags") 
 
-val posology_ner_converter = new NerConverterInternal()
- .setInputCols("sentence","token","posology_ner") 
- .setOutputCol("ner_chunk") 
+val ner_converter = new NerConverterInternal()
+ .setInputCols(Array("sentences","tokens","ner_tags")) 
+ .setOutputCol("ner_chunks") 
+ .setWhiteList(Array("DRUG")) 
 
-val chunkerMapper = ChunkMapperModel.pretrained("rxnorm_mapper","en","clinical/models")
- .setInputCols(Array("ner_chunk")) 
- .setOutputCol("mappings") 
- .setRels(Array("rxnorm_code")) 
+val chunkToDoc = new Chunk2Doc()
+ .setInputCols("ner_chunks") 
+ .setOutputCol("ner_chunks_doc") 
 
-val mapper_pipeline = new Pipeline().setStages(Array( 
-  document_assembler, 
-  sentence_detector, 
-  tokenizer, 
-  word_embeddings, 
-  posology_ner_model, 
-  posology_ner_converter, 
-  chunkerMapper)) 
+val sbert_embedder = BertSentenceEmbeddings
+ .pretrained("sbiobert_base_cased_mli","en","clinical/models") 
+ .setInputCols(Array("ner_chunks_doc")) 
+ .setOutputCol("sbert_embeddings") 
+ .setCaseSensitive(false) 
 
-val text ="""The patient was given Zyrtec 10 MG,Adapin 10 MG Oral Capsule,Septi-Soothe 0.5 Topical Spray"""
+val rxnorm_resolver = SentenceEntityResolverModel
+ .pretrained("sbiobertresolve_rxnorm_augmented","en","clinical/models") 
+ .setInputCols(Array("sbert_embeddings")) 
+ .setOutputCol("rxnorm_code") 
+ .setDistanceFunction("EUCLIDEAN") 
+
+val resolver2chunk = new Resolution2Chunk()
+ .setInputCols(Array("rxnorm_code")) 
+ .setOutputCol("rxnorm_chunk") 
+
+val chunkerMapper = ChunkMapperModel.pretrained("rxnorm_drug_brandname_mapper","en","clinical/models")
+ .setInputCols(Array("rxnorm_chunk")) 
+ .setOutputCol("rxnorm_drug_brandname_mapper") 
+ .setRels(Array("rxnorm_brandname","rxnorm_extension_brandname")) 
+
+val pipeline = new Pipeline().setStages(Array(
+ documenter, 
+ sentencer, 
+ tokenizer, 
+ words_embedder, 
+ ner_tagger, 
+ ner_converter, 
+ chunkToDoc, 
+ sbert_embedder, 
+ rxnorm_resolver,
+  resolver2chunk, 
+  chunkerMapper ))  
+
+val text ="""The doctor prescribed Sinequan 150 MG for depression and Zonalon 50 mg for managing skin itching"""
 val data = Seq(text).toDF("text")
 
 val result= mapper_pipeline.fit(data) .transform(data) 
 
-result.select(F.explode(F.arrays_zip(result.ner_chunk.result,
-                                     result.mappings.result)).alias("cols"))\
-      .select(F.expr("cols['0']").alias("ner_chunk"),
-              F.expr("cols['1']").alias("rxnorm_code")).show(15, truncate=100)
+result.select(F.explode(F.arrays_zip(result.ner_chunks.result,
+                                     result.rxnorm_code.result)).alias("cols"))\
+                  .select(F.expr("cols['0']").alias("ner_chunks"),
+                          F.expr("cols['1']").alias("rxnorm_code")).show(15, truncate=100)
 
-+------------------------------+-----------+
-|                     ner_chunk|rxnorm_code|
-+------------------------------+-----------+
-|                  Zyrtec 10 MG|    1011483|
-|     Adapin 10 MG Oral Capsule|    1000050|
-|Septi-Soothe 0.5 Topical Spray|    1000046|
-+------------------------------+-----------+
++----------+-----------+
+|ner_chunks|rxnorm_code|
++----------+-----------+
+|  Sinequan|     224915|
+|   Zonalon|       9801|
++----------+-----------+
 
 {%- endcapture -%}
 
