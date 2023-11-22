@@ -91,7 +91,7 @@ resolver2chunk = medical.Resolution2Chunk()\
 chunkerMapper = medical.ChunkMapperModel.pretrained("rxnorm_drug_brandname_mapper", "en", "clinical/models")\
   .setInputCols(["rxnorm_chunk"])\
   .setOutputCol("rxnorm_drug_brandname_mapper")\
-  .setRels(["rxnorm_brandname", "rxnorm_extension_brandname"])
+  .setRels(["rxnorm_brandname"])
 
 
 pipeline = nlp.Pipeline(
@@ -119,12 +119,12 @@ result.select(F.explode(F.arrays_zip(result.ner_chunks.result,
                   .select(F.expr("cols['0']").alias("ner_chunks"),
                           F.expr("cols['1']").alias("rxnorm_code")).show(15, truncate=100)
 
-+----------+-----------+
-|ner_chunks|rxnorm_code|
-+----------+-----------+
-|  Sinequan|     224915|
-|   Zonalon|       9801|
-+----------+-----------+
++----------+-----------+----------------------------+
+|ner_chunks|rxnorm_code|rxnorm_drug_brandname_mapper|
++----------+-----------+----------------------------+
+|  Sinequan|     224915|         Sinequan (Sinequan)|
+|   Zonalon|       9801|           Zonalon (Zonalon)|
++----------+-----------+----------------------------+
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
@@ -228,7 +228,7 @@ result.select('ner_chunk.result', 'mappings.result').show(truncate=False)
 {%- capture model_scala_medical -%}
 
 import spark.implicits._
-  
+
 val documenter = new DocumentAssembler()
  .setInputCol("text") 
  .setOutputCol("document") 
@@ -279,7 +279,7 @@ val resolver2chunk = new Resolution2Chunk()
 val chunkerMapper = ChunkMapperModel.pretrained("rxnorm_drug_brandname_mapper","en","clinical/models")
  .setInputCols(Array("rxnorm_chunk")) 
  .setOutputCol("rxnorm_drug_brandname_mapper") 
- .setRels(Array("rxnorm_brandname","rxnorm_extension_brandname")) 
+ .setRels(Array("rxnorm_brandname")) 
 
 val pipeline = new Pipeline().setStages(Array(
  documenter, 
@@ -290,26 +290,28 @@ val pipeline = new Pipeline().setStages(Array(
  ner_converter, 
  chunkToDoc, 
  sbert_embedder, 
- rxnorm_resolver,
-  resolver2chunk, 
-  chunkerMapper ))  
+ rxnorm_resolver, 
+ resolver2chunk,
+  chunkerMapper )) 
 
 val text ="""The doctor prescribed Sinequan 150 MG for depression and Zonalon 50 mg for managing skin itching"""
 val data = Seq(text).toDF("text")
 
-val result= mapper_pipeline.fit(data) .transform(data) 
+val result= mapper_pipeline.fit(data).transform(data) 
 
 result.select(F.explode(F.arrays_zip(result.ner_chunks.result,
-                                     result.rxnorm_code.result)).alias("cols"))\
+                                     result.rxnorm_code.result,
+                                     result.rxnorm_drug_brandname_mapper.result)).alias("cols"))\
                   .select(F.expr("cols['0']").alias("ner_chunks"),
-                          F.expr("cols['1']").alias("rxnorm_code")).show(15, truncate=100)
+                          F.expr("cols['1']").alias("rxnorm_code"),
+                          F.expr("cols['2']").alias("rxnorm_drug_brandname_mapper")).show(15, truncate=100)
 
-+----------+-----------+
-|ner_chunks|rxnorm_code|
-+----------+-----------+
-|  Sinequan|     224915|
-|   Zonalon|       9801|
-+----------+-----------+
++----------+-----------+----------------------------+
+|ner_chunks|rxnorm_code|rxnorm_drug_brandname_mapper|
++----------+-----------+----------------------------+
+|  Sinequan|     224915|         Sinequan (Sinequan)|
+|   Zonalon|       9801|           Zonalon (Zonalon)|
++----------+-----------+----------------------------+
 
 {%- endcapture -%}
 
