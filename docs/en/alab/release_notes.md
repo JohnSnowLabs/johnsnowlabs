@@ -302,10 +302,10 @@ By tailoring label visibility at the section level, annotation efforts are more 
     <li><a href="annotation_labs_releases/release_notes_4_4_1">4.4.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_4_4_0">4.4.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_4_3_0">4.3.0</a></li>
-	<li><a href="annotation_labs_releases/release_notes_4_2_0">4.2.0</a></li>
+	  <li><a href="annotation_labs_releases/release_notes_4_2_0">4.2.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_4_1_0">4.1.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_3_5_0">3.5.0</a></li>
-	<li><a href="annotation_labs_releases/release_notes_3_4_1">3.4.1</a></li>
+	  <li><a href="annotation_labs_releases/release_notes_3_4_1">3.4.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_3_4_0">3.4.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_3_3_1">3.3.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_3_3_0">3.3.0</a></li>
