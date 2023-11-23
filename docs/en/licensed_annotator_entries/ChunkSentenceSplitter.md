@@ -95,16 +95,13 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 +--------------------------------------------------------------------------------+------------+------------------------+
 |                                                                          result|      entity|          splitter_chunk|
 +--------------------------------------------------------------------------------+------------+------------------------+
-|                                     Sample Name: Mesothelioma - Pleural Biopsy
-|introduction|                     UNK|
+|                                     Sample Name: Mesothelioma - Pleural Biopsy |introduction|                     UNK|
 |Description: Right pleural effusion and suspected malignant mesothelioma. (Me...|      Header|            Description:|
 |PREOPERATIVE DIAGNOSIS:  Right pleural effusion and suspected malignant mesot...|      Header| PREOPERATIVE DIAGNOSIS:|
 |POSTOPERATIVE DIAGNOSIS: Right pleural effusion, suspected malignant mesothel...|      Header|POSTOPERATIVE DIAGNOSIS:|
-|                                 ANESTHESIA: General double-lumen endotracheal.
-|      Header|             ANESTHESIA:|
+|                                 ANESTHESIA: General double-lumen endotracheal. |      Header|             ANESTHESIA:|
 |DESCRIPTION OF FINDINGS:  Right pleural effusion, firm nodules, diffuse scatt...|      Header|DESCRIPTION OF FINDINGS:|
-|                    SPECIMEN:  Pleural biopsies for pathology and microbiology.
-|      Header|               SPECIMEN:|
+|                    SPECIMEN:  Pleural biopsies for pathology and microbiology. |      Header|               SPECIMEN:|
 |INDICATIONS:  Briefly, this is a 66-year-old gentleman who has been transferr...|      Header|            INDICATIONS:|
 +--------------------------------------------------------------------------------+------------+------------------------+
 
@@ -112,35 +109,35 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 
 {%- capture model_scala_medical -%}
 
-val documentAssembler = new .DocumentAssembler()\
-    .setInputCol("text")\
+val documentAssembler = new DocumentAssembler()
+    .setInputCol("text")
     .setOutputCol("document")
 
-val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
-    .setInputCols(Array("document"))\
+val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
+    .setInputCols(Array("document"))
     .setOutputCol("sentence")
 
-val tokenizer = new Tokenizer()\
-    .setInputCols(Array("sentence"))\
-    .setOutputCol("token")\
+val tokenizer = new Tokenizer()
+    .setInputCols(Array("sentence"))
+    .setOutputCol("token")
 
-val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-    .setInputCols(Array("sentence", "token"))\
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
 val clinical_ner = MedicalNerModel.pretrained("ner_jsl_slim", "en", "clinical/models") \
-    .setInputCols(Array("sentence", "token", "embeddings")) \
+    .setInputCols(Array("sentence", "token", "embeddings")) 
     .setOutputCol("ner")
 
-val ner_converter = new NerConverterInternal() \
-    .setInputCols(Array("sentence", "token", "ner")) \
-    .setOutputCol("ner_chunk")\
+val ner_converter = new NerConverterInternal() 
+    .setInputCols(Array("sentence", "token", "ner")) 
+    .setOutputCol("ner_chunk")
     .setWhiteList(Array("Header"))
 
-#applying ChunkSentenceSplitter
-val chunkSentenceSplitter = new ChunkSentenceSplitter()\
-    .setInputCols("document","ner_chunk")\
-    .setOutputCol("paragraphs")\
+//applying ChunkSentenceSplitter
+val chunkSentenceSplitter = new ChunkSentenceSplitter()
+    .setInputCols("document","ner_chunk")
+    .setOutputCol("paragraphs")
     .setGroupBySentences(false)
 
 val pipeline_model = new Pipeline().setStages(Array(
@@ -173,16 +170,13 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 +--------------------------------------------------------------------------------+------------+------------------------+
 |                                                                          result|      entity|          splitter_chunk|
 +--------------------------------------------------------------------------------+------------+------------------------+
-|                                     Sample Name: Mesothelioma - Pleural Biopsy
-|introduction|                     UNK|
+|                                     Sample Name: Mesothelioma - Pleural Biopsy |introduction|                     UNK|
 |Description: Right pleural effusion and suspected malignant mesothelioma. (Me...|      Header|            Description:|
 |PREOPERATIVE DIAGNOSIS:  Right pleural effusion and suspected malignant mesot...|      Header| PREOPERATIVE DIAGNOSIS:|
 |POSTOPERATIVE DIAGNOSIS: Right pleural effusion, suspected malignant mesothel...|      Header|POSTOPERATIVE DIAGNOSIS:|
-|                                 ANESTHESIA: General double-lumen endotracheal.
-|      Header|             ANESTHESIA:|
+|                                 ANESTHESIA: General double-lumen endotracheal. |      Header|             ANESTHESIA:|
 |DESCRIPTION OF FINDINGS:  Right pleural effusion, firm nodules, diffuse scatt...|      Header|DESCRIPTION OF FINDINGS:|
-|                    SPECIMEN:  Pleural biopsies for pathology and microbiology.
-|      Header|               SPECIMEN:|
+|                    SPECIMEN:  Pleural biopsies for pathology and microbiology. |      Header|               SPECIMEN:|
 |INDICATIONS:  Briefly, this is a 66-year-old gentleman who has been transferr...|      Header|            INDICATIONS:|
 +--------------------------------------------------------------------------------+------------+------------------------+
 
@@ -213,7 +207,6 @@ ner_model = legal.NerModel.pretrained("legner_headers", "en", "legal/models")\
 ner_converter = nlp.NerConverter()\
     .setInputCols(["sentence","token","ner"])\
     .setOutputCol("ner_chunk")
-
 
 chunkSentenceSplitter = legal.ChunkSentenceSplitter()\
     .setInputCols("document","ner_chunk")\
@@ -252,19 +245,11 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 +----------------------------------------------------------------------------------------------------+---------+
 |                                                                                              result|   entity|
 +----------------------------------------------------------------------------------------------------+---------+
-|AGREEMENT
-
-NOW, THEREFORE, for good and valuable consideration, and in consideration of the mutua...|SUBHEADER|
-|                                                                          Appointment as Reseller.
-
-|SUBHEADER|
+|AGREEMENT  NOW, THEREFORE, for good and valuable consideration, and in consideration of the mutua...|SUBHEADER|
+|                                                                          Appointment as Reseller.  |SUBHEADER|
 |                                                                                   2.1 Appointment. |SUBHEADER|
 |The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to ...|SUBHEADER|
-|                                                                       6
-
-2.2 Customer Agreements.
-
-|   HEADER|
+|                                                                       6 2.2 Customer Agreements.   |   HEADER|
 |a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms no less than one...|SUBHEADER|
 +----------------------------------------------------------------------------------------------------+---------+
 
@@ -272,36 +257,34 @@ NOW, THEREFORE, for good and valuable consideration, and in consideration of the
 
 {%- capture model_scala_legal -%}
 
-val documentAssembler = new DocumentAssembler()\
-    .setInputCol("text")\
+val documentAssembler = new DocumentAssembler()
+    .setInputCol("text")
     .setOutputCol("document")
         
-val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
-    .setInputCols(Array("document"))\
+val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
+    .setInputCols(Array("document"))
     .setOutputCol("sentence")
 
-val tokenizer = new Tokenizer()\
-    .setInputCols(Array("sentence"))\
+val tokenizer = new Tokenizer()
+    .setInputCols(Array("sentence"))
     .setOutputCol("token")
 
-val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-        .setInputCols(Array("sentence", "token")) \
-        .setOutputCol("embeddings")
+val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") 
+    .setInputCols(Array("sentence", "token")) 
+    .setOutputCol("embeddings")
 
-val ner_model = LegalNerModel.pretrained("legner_headers", "en", "legal/models")\
-    .setInputCols(Array("sentence", "token", "embeddings"))\
+val ner_model = LegalNerModel.pretrained("legner_headers", "en", "legal/models")
+    .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
-val ner_converter = new NerConverterInternal()\
-    .setInputCols(Array("sentence","token","ner"))\
+val ner_converter = new NerConverterInternal()
+    .setInputCols(Array("sentence","token","ner"))
     .setOutputCol("ner_chunk")
 
-
-val chunkSentenceSplitter = new ChunkSentenceSplitter()\
-    .setInputCols("document","ner_chunk")\
-    .setOutputCol("paragraphs")\
+val chunkSentenceSplitter = new ChunkSentenceSplitter()
+    .setInputCols("document","ner_chunk")
+    .setOutputCol("paragraphs")
     .setGroupBySentences(false)
-
     
 val nlp_pipeline = new Pipeline().setStages(Array(
     documentAssembler,
@@ -334,25 +317,16 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 +----------------------------------------------------------------------------------------------------+---------+
 |                                                                                              result|   entity|
 +----------------------------------------------------------------------------------------------------+---------+
-|AGREEMENT
-
-NOW, THEREFORE, for good and valuable consideration, and in consideration of the mutua...|SUBHEADER|
-|                                                                          Appointment as Reseller.
-
-|SUBHEADER|
+|AGREEMENT  NOW, THEREFORE, for good and valuable consideration, and in consideration of the mutua...|SUBHEADER|
+|                                                                          Appointment as Reseller.  |SUBHEADER|
 |                                                                                   2.1 Appointment. |SUBHEADER|
 |The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to ...|SUBHEADER|
-|                                                                       6
-
-2.2 Customer Agreements.
-
-|   HEADER|
+|                                                                       6 2.2 Customer Agreements.   |   HEADER|
 |a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms no less than one...|SUBHEADER|
 +----------------------------------------------------------------------------------------------------+---------+
 
 {%- endcapture -%}
 
-{%- endcapture -%}
 
 {%- capture model_python_finance -%}
 
@@ -385,7 +359,6 @@ chunkSentenceSplitter = legal.ChunkSentenceSplitter()\
     .setOutputCol("paragraphs")\
     .setGroupBySentences(False)
 
-    
 nlp_pipeline = nlp.Pipeline(stages=[
     documentAssembler,
     sentenceDetector,
@@ -394,8 +367,6 @@ nlp_pipeline = nlp.Pipeline(stages=[
     ner_model,
     ner_converter,
     chunkSentenceSplitter])
-
-
 
 
 text = """2. DEFINITION. 
@@ -418,53 +389,45 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 |                                                                                              result|   entity|
 +----------------------------------------------------------------------------------------------------+---------+
 |                                                                                                 2. |   HEADER|
-|DEFINITION. 
-
-For purposes of this Agreement, the following terms have the meanings ascribed ther...|SUBHEADER|
-|                                                                                 2.1 Appointment. 
-
-|SUBHEADER|
+|DEFINITION.   For purposes of this Agreement, the following terms have the meanings ascribed ther...|SUBHEADER|
+|                                                                                 2.1 Appointment.   |SUBHEADER|
 |The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to ...|SUBHEADER|
-|                                                                          6
-
-2.2 Customer Agreements|   HEADER|
+|                                                                          6  2.2 Customer Agreements|   HEADER|
 +----------------------------------------------------------------------------------------------------+---------+
 
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
 
-val documentAssembler = new DocumentAssembler()\
-    .setInputCol("text")\
+val documentAssembler = new DocumentAssembler()
+    .setInputCol("text")
     .setOutputCol("document")
         
-val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
-    .setInputCols(Array("document"))\
+val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
+    .setInputCols(Array("document"))
     .setOutputCol("sentence")
 
-val tokenizer = new Tokenizer()\
-    .setInputCols(Array("sentence"))\
+val tokenizer = new Tokenizer()
+    .setInputCols(Array("sentence"))
     .setOutputCol("token")
 
-val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-    .setInputCols(Array("sentence", "token")) \
+val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") 
+    .setInputCols(Array("sentence", "token")) 
     .setOutputCol("embeddings")
 
-val ner_model = FinanceNerModel.pretrained("finner_headers", "en", "finance/models")\
-    .setInputCols(Array("sentence", "token", "embeddings"))\
+val ner_model = FinanceNerModel.pretrained("finner_headers", "en", "finance/models")
+    .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
-val ner_converter = new NerConverterInternal()\
-    .setInputCols(Array("sentence","token","ner"))\
+val ner_converter = new NerConverterInternal()
+    .setInputCols(Array("sentence","token","ner"))
     .setOutputCol("ner_chunk")
 
-
-val chunkSentenceSplitter = new ChunkSentenceSplitter()\
-    .setInputCols("document","ner_chunk")\
-    .setOutputCol("paragraphs")\
+val chunkSentenceSplitter = new ChunkSentenceSplitter()
+    .setInputCols("document","ner_chunk")
+    .setOutputCol("paragraphs")
     .setGroupBySentences(false)
 
-    
 val nlp_pipeline = new Pipeline().setStages(Array(
     documentAssembler,
     sentenceDetector,
@@ -495,16 +458,10 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 |                                                                                              result|   entity|
 +----------------------------------------------------------------------------------------------------+---------+
 |                                                                                                 2. |   HEADER|
-|DEFINITION. 
-
-For purposes of this Agreement, the following terms have the meanings ascribed ther...|SUBHEADER|
-|                                                                                 2.1 Appointment. 
-
-|SUBHEADER|
+|DEFINITION.   For purposes of this Agreement, the following terms have the meanings ascribed ther...|SUBHEADER|
+|                                                                                 2.1 Appointment.   |SUBHEADER|
 |The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to ...|SUBHEADER|
-|                                                                          6
-
-2.2 Customer Agreements|   HEADER|
+|                                                                          6  2.2 Customer Agreements|   HEADER|
 +----------------------------------------------------------------------------------------------------+---------+
 
 {%- endcapture -%}

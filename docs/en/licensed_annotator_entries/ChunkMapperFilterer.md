@@ -56,7 +56,7 @@ chunkerMapper = medical.ChunkMapperModel.pretrained("rxnorm_mapper", "en", "clin
       .setOutputCol("RxNorm_Mapper")\
       .setRels(["rxnorm_code"])
 
-cfModel = medical.ChunkMapperFilterer() \
+chunk_mapper_filterer = medical.ChunkMapperFilterer() \
       .setInputCols(["chunk", "RxNorm_Mapper"]) \
       .setOutputCol("chunks_fail") \
       .setReturnCriteria("fail")
@@ -71,7 +71,7 @@ mapper_pipeline = nlp.Pipeline(
           ner_converter,
           chunkerMapper,
           chunkerMapper,
-          cfModel
+          chunk_mapper_filterer
       ])
 
 samples = [['The patient was given Adapin 10 MG, coumadn 5 mg'],
@@ -124,7 +124,7 @@ val chunkerMapper = ChunkMapperModel.pretrained("rxnorm_mapper", "en", "clinical
     .setOutputCol("RxNorm_Mapper")
     .setRels(Array("rxnorm_code"))
 
-val cfModel = new ChunkMapperFilterer()
+val chunk_mapper_filterer = new ChunkMapperFilterer()
     .setInputCols("chunk", "RxNorm_Mapper")
     .setOutputCol("chunks_fail")
     .setReturnCriteria("fail")
@@ -137,15 +137,13 @@ val mapper_pipeline = new Pipeline().setStages(Array(
     ner_model,
     ner_converter,
     chunkerMapper,
-    cfModel
+    chunk_mapper_filterer
     ))
 
 import spark.implicits._
 
-val samples = Seq("The patient was given Adapin 10 MG, coumadn 5 mg",
-"The patient was given Avandia 4 mg, Tegretol, zitiga")
-
-val data = samples.toDF("text")
+val data = Seq("The patient was given Adapin 10 MG, coumadn 5 mg",
+"The patient was given Avandia 4 mg, Tegretol, zitiga").toDF("text")
 
 val result = mapper_pipeline.fit(data).transform(data)
 
