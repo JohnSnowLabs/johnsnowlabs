@@ -357,28 +357,28 @@ NOW, THEREFORE, for good and valuable consideration, and in consideration of the
 {%- capture model_python_finance -%}
 
 documentAssembler = nlp.DocumentAssembler()\
-        .setInputCol("text")\
-        .setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
 
 sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
-        .setInputCols(["document"])\
-        .setOutputCol("sentence")
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
 tokenizer = nlp.Tokenizer()\
-        .setInputCols(["sentence"])\
-        .setOutputCol("token")
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
 embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-        .setInputCols(["sentence", "token"]) \
-        .setOutputCol("embeddings")
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")
 
 ner_model = finance.NerModel.pretrained("finner_headers", "en", "finance/models")\
-        .setInputCols(["sentence", "token", "embeddings"])\
-        .setOutputCol("ner")
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner")
 
 ner_converter = finance.NerConverterInternal()\
-        .setInputCols(["sentence","token","ner"])\
-        .setOutputCol("ner_chunk")
+    .setInputCols(["sentence","token","ner"])\
+    .setOutputCol("ner_chunk")
 
 chunkSentenceSplitter = legal.ChunkSentenceSplitter()\
     .setInputCols("document","ner_chunk")\
@@ -447,8 +447,8 @@ val tokenizer = new Tokenizer()\
     .setOutputCol("token")
 
 val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-        .setInputCols(Array("sentence", "token")) \
-        .setOutputCol("embeddings")
+    .setInputCols(Array("sentence", "token")) \
+    .setOutputCol("embeddings")
 
 val ner_model = FinanceNerModel.pretrained("finner_headers", "en", "finance/models")\
     .setInputCols(Array("sentence", "token", "embeddings"))\
@@ -518,6 +518,9 @@ For purposes of this Agreement, the following terms have the meanings ascribed t
 [ChunkSentenceSplitter](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/chunk_sentence_splitter/index.html#sparknlp_jsl.annotator.chunker.chunk_sentence_splitter.ChunkSentenceSplitter)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[ChunkSentenceSplitter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkSentenceSplitter.ipynb)
+{%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
@@ -533,4 +536,5 @@ model_python_finance=model_python_finance
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}
