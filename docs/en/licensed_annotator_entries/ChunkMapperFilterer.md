@@ -28,8 +28,8 @@ CHUNK
 
 {%- capture model_python_medical -%}
 document_assembler = nlp.DocumentAssembler()\
-      .setInputCol('text')\
-      .setOutputCol('document')
+      .setInputCol("text")\
+      .setOutputCol("document")
 
 sentence_detector = nlp.SentenceDetector()\
       .setInputCols(["document"])\
@@ -74,16 +74,16 @@ mapper_pipeline = nlp.Pipeline(
           chunk_mapper_filterer
       ])
 
-samples = [['The patient was given Adapin 10 MG, coumadn 5 mg'],
-           ['The patient was given Avandia 4 mg, Tegretol, zitiga'] ]
+samples = [["The patient was given Adapin 10 MG, coumadn 5 mg"],
+           ["The patient was given Avandia 4 mg, Tegretol, zitiga"] ]
            
 data = spark.createDataFrame(samples).toDF("text")
 
 result = mapper_pipeline.fit(data).transform(data)
 
-result.selectExpr('chunk.result as chunk', 
-                  'RxNorm_Mapper.result as RxNorm_Mapper', 
-                  'chunks_fail.result as chunks_fail').show(truncate = False)
+result.selectExpr("chunk.result as chunk", 
+                  "RxNorm_Mapper.result as RxNorm_Mapper", 
+                  "chunks_fail.result as chunks_fail").show(truncate = False)
 
 +--------------------------------+----------------------+--------------+
 |chunk                           |RxNorm_Mapper         |chunks_fail   |
@@ -147,9 +147,9 @@ val data = Seq("The patient was given Adapin 10 MG, coumadn 5 mg",
 
 val result = mapper_pipeline.fit(data).transform(data)
 
-result.selectExpr('chunk.result as chunk', 
-                  'RxNorm_Mapper.result as RxNorm_Mapper', 
-                  'chunks_fail.result as chunks_fail').show(truncate = False)
+result.selectExpr("chunk.result as chunk", 
+                  "RxNorm_Mapper.result as RxNorm_Mapper", 
+                  "chunks_fail.result as chunks_fail").show(truncate = False)
 
 +--------------------------------+----------------------+--------------+
 |chunk                           |RxNorm_Mapper         |chunks_fail   |

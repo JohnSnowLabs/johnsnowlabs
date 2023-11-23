@@ -16,7 +16,7 @@ Parametres;
 
 - `InsertChunk`: (boolean) Whether to insert the chunk in the paragraph or not.
 
-- `DefaultEntity`: (str) Sets the key in the metadata dictionary that you want to filter (by default 'entity')
+- `DefaultEntity`: (str) Sets the key in the metadata dictionary that you want to filter (by default "entity")
 
 For detailed usage of this annotator, visit [this notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/18.Chunk_Sentence_Splitter.ipynb) from our `Spark NLP Workshop`.
 
@@ -164,7 +164,7 @@ Dr. X was present for the entire procedure which was right VATS pleurodesis and 
 val data = Seq(sentences).toDF("text")
 val paragraphs = pipeline_model.fit(df).transform(df)
 
-paragraphs.selectExpr("explode(paragraphs) as result")\
+paragraphs.selectExpr("explode(paragraphs) as result")
           .selectExpr("result.result","result.metadata.entity", "result.metadata.splitter_chunk").show(truncate=80)
 
 +--------------------------------------------------------------------------------+------------+------------------------+
@@ -230,7 +230,7 @@ NOW, THEREFORE, for good and valuable consideration, and in consideration of the
 
 2. Definitions. For purposes of this Agreement, the following terms have the meanings ascribed thereto in this Section 1. 2. Appointment as Reseller.
 
-2.1 Appointment. The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+2.1 Appointment. The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
 
 2.2 Customer Agreements.
 
@@ -248,7 +248,7 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 |AGREEMENT  NOW, THEREFORE, for good and valuable consideration, and in consideration of the mutua...|SUBHEADER|
 |                                                                          Appointment as Reseller.  |SUBHEADER|
 |                                                                                   2.1 Appointment. |SUBHEADER|
-|The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to ...|SUBHEADER|
+|The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to ...|SUBHEADER|
 |                                                                       6 2.2 Customer Agreements.   |   HEADER|
 |a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms no less than one...|SUBHEADER|
 +----------------------------------------------------------------------------------------------------+---------+
@@ -302,7 +302,7 @@ NOW, THEREFORE, for good and valuable consideration, and in consideration of the
 
 2. Definitions. For purposes of this Agreement, the following terms have the meanings ascribed thereto in this Section 1. 2. Appointment as Reseller.
 
-2.1 Appointment. The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+2.1 Appointment. The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
 
 2.2 Customer Agreements.
 
@@ -311,7 +311,7 @@ a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms
 val data = Seq(text).toDF("text")
 val paragraphs = nlp_pipeline.fit(data).transform(data)
 
-paragraphs.selectExpr("explode(paragraphs) as result")\
+paragraphs.selectExpr("explode(paragraphs) as result")
           .selectExpr("result.result","result.metadata.entity").show(truncate=50)
 
 +----------------------------------------------------------------------------------------------------+---------+
@@ -320,7 +320,7 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 |AGREEMENT  NOW, THEREFORE, for good and valuable consideration, and in consideration of the mutua...|SUBHEADER|
 |                                                                          Appointment as Reseller.  |SUBHEADER|
 |                                                                                   2.1 Appointment. |SUBHEADER|
-|The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to ...|SUBHEADER|
+|The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to ...|SUBHEADER|
 |                                                                       6 2.2 Customer Agreements.   |   HEADER|
 |a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms no less than one...|SUBHEADER|
 +----------------------------------------------------------------------------------------------------+---------+
@@ -375,7 +375,7 @@ For purposes of this Agreement, the following terms have the meanings ascribed t
 
 2.1 Appointment. 
 
-The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
 
 2.2 Customer Agreements."""
 
@@ -391,7 +391,7 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 |                                                                                                 2. |   HEADER|
 |DEFINITION.   For purposes of this Agreement, the following terms have the meanings ascribed ther...|SUBHEADER|
 |                                                                                 2.1 Appointment.   |SUBHEADER|
-|The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to ...|SUBHEADER|
+|The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to ...|SUBHEADER|
 |                                                                          6  2.2 Customer Agreements|   HEADER|
 +----------------------------------------------------------------------------------------------------+---------+
 
@@ -444,14 +444,14 @@ For purposes of this Agreement, the following terms have the meanings ascribed t
 
 2.1 Appointment. 
 
-The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
 
 2.2 Customer Agreements."""
 
 val data = Seq(text).toDF("text")
 val paragraphs = nlp_pipeline.fit(data).transform(data)
 
-paragraphs.selectExpr("explode(paragraphs) as result")\
+paragraphs.selectExpr("explode(paragraphs) as result")
           .selectExpr("result.result","result.metadata.entity").show(truncate=50)
 
 +----------------------------------------------------------------------------------------------------+---------+
@@ -460,7 +460,7 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 |                                                                                                 2. |   HEADER|
 |DEFINITION.   For purposes of this Agreement, the following terms have the meanings ascribed ther...|SUBHEADER|
 |                                                                                 2.1 Appointment.   |SUBHEADER|
-|The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to ...|SUBHEADER|
+|The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to ...|SUBHEADER|
 |                                                                          6  2.2 Customer Agreements|   HEADER|
 +----------------------------------------------------------------------------------------------------+---------+
 
