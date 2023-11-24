@@ -99,6 +99,8 @@ try:
             ExtractiveSummarization,
             ChunkFiltererApproach,
             Text2SQL,
+            IOBTagger,
+        
         )
         from sparknlp_jsl.modelTracer import ModelTracer
 

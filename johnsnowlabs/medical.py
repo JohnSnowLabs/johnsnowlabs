@@ -83,6 +83,7 @@ try:
             FewShotClassifierModel,
             FewShotClassifierApproach,
             Text2SQL,
+            IOBTagger,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
