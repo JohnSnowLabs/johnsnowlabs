@@ -33,7 +33,7 @@ We started our journey with Donut-like models, which were great in many differen
 ```
 
 Now, we're taking one step further and integrating Pix2Struct which, when compared to Donut, scores 5 points higher in the 'base' version, and 9 points higher in the 'large' version, on DocVQA dataset. This is an optimized and in house fine tuned checkpoint.
-Check [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrVisualPix2Struct.ipynb) with examples on how to use it.
+Check [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrVisualQuestionAnsweringJsl.ipynb) with examples on how to use it.
 
 * DocumentLayoutAnalyzer: document layout analysis is a fundamental task in Visual NLP, it is the task of detecting sections in a document. Typical examples for these sections are: text, title, list, table, or figure.
 ![image](/assets/images/ocr/dit-layout-sample.png)
