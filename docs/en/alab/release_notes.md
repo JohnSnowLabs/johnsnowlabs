@@ -110,7 +110,7 @@ Another enhancement is the introduction of **sticky buttons** at the bottom of t
 
   ![Publish Model Embeddings](/assets/images/annotation_lab/5.6.0/11.gif)
 
-- **External Classification Prompt added to Project Config, a <label> Tag is added which creates issue while saving the project**
+- **External Classification Prompt added to Project Config, a "<label>" Tag is added which creates issue while saving the project**
 	
 	In the previous version, a label tag was automatically generated and added to the project configuration when a classification prompt was added to the project configuration, requiring users to manually remove the tag. In this release, this issue has been successfully addressed. Users can now enjoy a smoother experience, as no extra tags are added to the project configuration when utilizing classification prompts. This improvement ensures a more streamlined workflow and reduces the need for manual intervention.
 
