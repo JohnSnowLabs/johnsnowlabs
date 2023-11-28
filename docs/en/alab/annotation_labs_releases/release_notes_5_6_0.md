@@ -33,13 +33,13 @@ Within the Project Configuration screen, under the “Customize Labels” Tab a 
 
 Once this option is activated by a project owner or manager, annotators can configure and manage the Compact View settings directly on the Task List page.
 
-### Compact View:
+### Compact View
 
 A convenient “Show Compact View” checkbox is available on the pop-up activated by the "3-dot Menu". Once the option is activated, a compact view of each task is displayed on the tasks page, allowing annotators to quickly go over the short texts and classify them in place. Despite its compact nature, this view retains all the functionalities of the standard Task List view, offering annotators the flexibility to switch back to the normal view at any time.
 
 ![Enable the compact View](/assets/images/annotation_lab/5.6.0/2.gif)
 
-### Classify in Place:
+### Classify in Place
 
 Further enhancing the utility of the Compact View is the “Classify in Place” feature. With this option enabled, annotators can classify tasks without leaving the Task List page. The UI allows annotators to focus on each one of the choices presented in the project configuration for each task, thus enabling efficient and rapid task classification. When a user chooses one classification option for a given task, a completion is automatically generated, submitted as Ground Truth (Starred Completion), and the task is marked as "Submitted". This entire process streamlines task handling, eliminating the need to open individual tasks. 
 
