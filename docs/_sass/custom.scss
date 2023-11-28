@@ -106,6 +106,9 @@ header.header {
 					font-family: 'Montserrat', sans-serif;
 					&:hover {
 						color: $color-blue !important;
+						i:before {
+							color: $color-blue !important;
+						}
 					}
 				}
 				&:after {
@@ -115,6 +118,9 @@ header.header {
 					a {
 						color: $color-blue;
 						font-weight: bold;
+						i:before {
+							color: $color-blue !important;
+						}
 					}
 				}
 				.search-button {
@@ -1602,10 +1608,12 @@ code.language-plaintext {
 }
 
 .search-wrapper {
-	position: relative;
-	width: 415px;
-	margin: 0 auto 50px;
+	position: relative;	
 	z-index: 8;
+	.search-input-wrapper {
+		width: 415px;
+		margin: 0 auto 50px;
+	}
 	button {
 		position: absolute;
 		right: 0;
@@ -1633,58 +1641,60 @@ code.language-plaintext {
 
 .results-container {
 	list-style-type: none;
-	max-height: 500px;
 	overflow: hidden;
 	overflow-y: auto;
-	position: absolute;
-	left: 0;
-	top: 51px;
+	display: none;
+	border-bottom: 1px solid #f4f5f6;
 	width: 100%;
 	em {
 		display: block;
 		font-style: normal;
-		border: 1px solid #1E77B7;
-		font-weight: bold;
-		padding: 10px;
+		font-weight: 400;
+		padding-top: 10px;
+		font-size: 14px;
+		line-height: 18px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
 	}
 	li {
 		list-style-type: none;
-		padding: 5px 10px;
+		padding: 25px 10px;
 		border-top: 1px solid #f4f5f6;
-		&:first-child {
-			padding-top: 15px;
-		}
 		&:last-child {
 			padding-bottom: 15px;
 		}
-		span {
+		.sr_seotitle {
 			display: block;
-			font-size: 12px;
+			font-size: 14px;
 			color: #536B76 !important;
-			font-weight: 200;
-			line-height: 18px;
+			font-weight: 500;
+			line-height: 24px;
 		}
 		i {
 			font-style: normal;
-			text-align: right;
 			font-size: 12px;
 			line-height: 12px;
 			color: #ff882f;
 			display: block;
+			font-weight: 400;
 			margin-bottom: 4px;
+		}
+		.hightitle {
+			color: #ff882f !important;
 		}
 		a {
 			color: #1E77B7 !important;
-			display: block;
-			padding: 10px;
-			position: relative;
+			font-size: 18px;
+  			line-height: 28px;
 			text-align: left;
 			transition: all 300ms ease;
 			border-radius: 3px;
 			&:hover {
 				text-decoration: none !important;
-				color: #1E77B7 !important;
-				background: #ecf9ff;
+				color: #ff882f !important;
 			}
 		}
 	}
@@ -1963,7 +1973,7 @@ h2.h2_title.cat_h2 {
 			content: '';
 			background: #c5c5c5;
 			position: absolute;
-			bottom: 0;
+			bottom: -1px;
 			left: -29px;
 			width: calc(100% + 30px);
 			height: 1px;
@@ -3139,6 +3149,21 @@ code {
 	}
 }
 
+.search-wrapper h2,
+.docs-wrapper h2 {
+	text-align: center;
+	font-weight: 800;
+	font-size: 30px;
+	line-height: 36px;
+	margin: 60px 0 35px;
+	color: #1E77B7;
+	border: none;
+}
+
+.search-wrapper h2 {
+	margin: 0 0 35px;
+}
+
 .docs-wrapper {
 	margin: 0 auto;
 	width: 910px;
@@ -3238,8 +3263,7 @@ code {
 	}
 	h4,
 	h3,
-	h5,
-	h2 {
+	h5 {
 		text-align: center;
 		font-weight: 800;
 		font-size: 30px;
@@ -4219,8 +4243,11 @@ code {
 }
 
 @media (max-width: 767px) {
-	.search-wrapper {
+	.search-wrapper .search-input-wrapper {
 		width: 100%;
+	}
+	.search-results-wrapper {
+		padding: 0;
 	}
 	.header__title {
 		width: 100%;

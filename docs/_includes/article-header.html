@@ -1,6 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-  {% include scripts/search/simple-jekyll-search.min.js %}
+  {% include scripts/search/search.js %}
 </script>
 {%- include snippets/get-article-title.html article=include.article-%}
 {%- assign _article_title = __return -%}
@@ -45,33 +45,14 @@
       {%- endif -%}
       {%- if _show_nav -%}
         <div class="header-nav">{%- include article-nav.html article=page -%}</div>
-      {%- endif -%}
-      
-      {%- if page.layout == "docs" -%}
-        <div class="main-docs">
-          <div class="search-wrapper">
-            <!-- HTML elements for search -->
-            <input type="text" id="search-input" placeholder="Search...">
-            <ul id="results-container" class="shadow results-container"></ul>
-          </div>
-        </div> 
-      {%- endif -%}     
+      {%- endif -%}  
 
       {%- if _show_title -%}
         <header class="main-docs {{ _subtitle_class }}">
           <h1>{{ _article_title }}</h1>
           {%- if _show_subtitle -%}
           <div class="top-subtitle mont">{{ _article_subtitle }}</div>
-          {%- endif -%}
-          {%- if page.layout == "topdemos" or page.layout == "demopagenew" -%}
-            <div class="main-docs">
-              <div class="search-wrapper">
-                <!-- HTML elements for search -->
-                <input type="text" id="search-input" placeholder="Search...">
-                <ul id="results-container" class="shadow results-container"></ul>
-              </div>
-            </div> 
-          {%- endif -%}  
+          {%- endif -%} 
         </header>
       {%- endif -%}
       {%- if _show_edit_on_github -%}
