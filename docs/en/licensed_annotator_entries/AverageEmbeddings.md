@@ -19,7 +19,7 @@ EMBEDDINGS
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, medical
 
 document_assembler =  nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -34,8 +34,7 @@ doc2Chunk = nlp.Doc2Chunk() \
     .setOutputCol("chunk") \
     .setIsArray(True)
 
-sbiobert_base_cased_mli = nlp.BertSentenceEmbeddings\
-    .pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
+sbiobert_base_cased_mli = nlp.BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
     .setInputCols("sentence")\
     .setOutputCol("sbiobert_base_cased_mli")
 
@@ -137,13 +136,12 @@ val data = Seq(" The patient was prescribed 1 capsule of Advil for 5 days").toDF
 val result = pipeline.fit(data).transform(data)
 
 // Show results
-val result_df = result.select(F.explode(F.arrays_zip(result.chunk.result, result.chunk.metadata, result.sentence.result, result.embeddings.embeddings, result.sent_biobert_clinical_base_cased.embeddings, result.sbiobert_base_cased_mli.embeddings)).alias("cols"))
-.select(F.expr("colsArray("0")").alias("sentence"), 
-        F.expr("colsArray("1")") .alias("sentence_metadata"), 
-        F.expr("colsArray("2")") .alias("chunk"), 
-        F.expr("colsArray("3")") .alias("embeddings"), 
-        F.expr("colsArray("4")") .alias("sent_biobert_clinical_base_cased"), 
-        F.expr("colsArray("5")") .alias("sbiobert_base_cased_mli"))
++--------------------------------------------------+---------------------------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
+|                                          sentence|          sentence_metadata|                                             chunk|                                        embeddings|                  sent_biobert_clinical_base_cased|                           sbiobert_base_cased_mli|
++--------------------------------------------------+---------------------------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
+|The patient was prescribed 1 capsule of Advil f...|{sentence -> 0, chunk -> 0}|The patient was prescribed 1 capsule of Advil f...|[0.32466835, 0.12497781, -0.20237188, 0.3716198...|[-0.07857181, -0.061015874, -0.020198729, 0.177...|[0.7279085, 0.3109715, -0.38454503, 0.5657965, ...|
++--------------------------------------------------+---------------------------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
+
 
 {%- endcapture -%}
 

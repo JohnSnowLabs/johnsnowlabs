@@ -34,7 +34,7 @@ LABEL_DEPENDENCY
 
 {%- capture model_python_medical -%}
 
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, medical
 
 #ChunkMapper Pipeline
 document_assembler = nlp.DocumentAssembler()\
@@ -46,7 +46,6 @@ docMapper= medical.DocMapperModel().pretrained("drug_action_treatment_mapper", "
     .setInputCols(["document"])\
     .setOutputCol("mappings")\
     .setRels(["action", "treatment"])
-
 
 mapperPipeline = nlp.Pipeline().setStages([
     document_assembler,
@@ -86,8 +85,8 @@ import spark.implicits._
 
 #ChunkMapper Pipeline
 val document_assembler = new DocumentAssembler()
-      .setInputCol("text")
-      .setOutputCol("document")
+    .setInputCol("text")
+    .setOutputCol("document")
 
 #drug_action_treatment_mapper 
 val docMapper= DocMapperModel().pretrained("drug_action_treatment_mapper", "en", "clinical/models")
@@ -101,16 +100,11 @@ val mapperPipeline = new Pipeline().setStages(Array(
     docMapper))
 
 
-val test_data = Seq((("Dermovate"), ("Aspagin"))).toDF("text")
+val test_data = Seq(("Dermovate", "Aspagin")).toDF("text")
 
 val res = mapperPipeline.fit(test_data).transform(test_data)
 
 // Show results
-res.selectExpr(F.explode(F.arrays_zip(res.mappings.result, res.mappings.metadata)).alias("col"))
-.select(F.expr("colArray("1")Array("entity")").alias("ner_chunk"), 
-        F.expr("colArray("0")").alias("mapping_result"), 
-        F.expr("colArray("1")Array("relation")").alias("relation"), 
-        F.expr("colArray("1")Array("all_relations")").alias("all_mappings"))
 
 +---------+----------------------+---------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |ner_chunk|mapping_result        |relation |all_mappings                                                                                                                                                                                                           |
@@ -157,7 +151,10 @@ LABEL_DEPENDENCY
 {%- endcapture -%}
 
 {%- capture approach_python_medical -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp,  medical
+
+
+
 
 document_assembler = nlp.DocumentAssembler()\
       .setInputCol('text')\
@@ -166,7 +163,7 @@ document_assembler = nlp.DocumentAssembler()\
 chunkerMapper = medical.DocMapperApproach()\
       .setInputCols(["document"])\
       .setOutputCol("mappings")\
-      .setDictionary("/content/sample_drug.json")\
+      .setDictionary("./sample_drug.json")\
       .setRels(["action"])
 
 pipeline = nlp.Pipeline().setStages([document_assembler,
@@ -200,6 +197,8 @@ import org.apache.spark.ml.Pipeline
 import spark.implicits._
 
 
+
+
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document") 
@@ -207,7 +206,7 @@ val document_assembler = new DocumentAssembler()
 val chunkerMapper = new DocMapperApproach()
   .setInputCols("document")
   .setOutputCol("mappings")
-  .setDictionary("/content/sample_drug.json")
+  .setDictionary("./sample_drug.json")
   .setRels("action")
 
 val pipeline = new Pipeline().setStages(Array(document_assembler, chunkerMapper))
@@ -217,11 +216,7 @@ val test_data = Seq("metformin").toDF("text")
 val res = pipeline.fit(test_data).transform(test_data)
 
 
-//// Results 
-res.select(F.explode(F.arrays_zip(res.mappings.result, res.mappings.metadata)).alias("col"))
-.select(F.expr("colArray("1")Array("entity")").alias("document"), 
-        F.expr("colArray("0")").alias("mapping_result"), F.expr("colArray("1")Array("relation")")
-        .alias("relation"), F.expr("colArray("1")Array("all_relations")") .alias("all_mappings"))
+// Results 
 
 +---------+--------------+--------+----------------------+
 |document |mapping_result|relation|all_mappings          |
