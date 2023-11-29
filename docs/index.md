@@ -295,7 +295,7 @@ data:
             url: https://www.iisc.ac.in/
         - title:
           image:
-            src: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Columbia_University_shield.svg/1184px-Columbia_University_shield.svg.png
+            src: https://www.wikicu.com/images/thumb/b/ba/BastardShield.png/300px-BastardShield.png
             url: https://www.columbia.edu/
             style: "padding: 25px;"
         - title:
