@@ -8,11 +8,11 @@ model
 
 {%- capture model_description -%}
 
-This annotator creates Tensorflow graphs.
+`TFGraphBuilder` annotator can be used to create graphs in the model training pipeline. `TFGraphBuilder` inspects the data and creates the proper graph if a suitable version of TensorFlow (>= 2.7 ) is available. The graph is stored in the defined folder and loaded by the approach.
 
-This class is used to build a TensorFlow graph from a given model name and a set of input columns. 
+You can use this builder with `MedicalNerApproach`, `FinanceNerApproach`, `LegalNerApproach`, `RelationExtractionApproach`, `AssertionDLApproach`, and `GenericClassifierApproach`.
 
-> For more information and examples of `TFGraphBuilder` annotator, you can check the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop), and in special, the notebook [17.0.Graph_builder_for_DL_models.ipynb](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/17.0.Graph_builder_for_DL_models.ipynb).
+**ATTENTION:** Playing with the parameters of `TFGraphBuilder` may affect the model performance that you want to train.
 
 {%- endcapture -%}
 
@@ -30,41 +30,62 @@ There is no output file. The setGraphFile function creates a file with a .pb ext
 
 {%- capture model_python_medical -%}
 
-graph_folder = "graph/graphs_100d"
-graph_name = "re_graph"
-
-re_graph_builder = medical.TFGraphBuilder()\
-    .setModelName("relation_extraction")\
-    .setInputCols(["embeddings", "pos_tags", "train_ner_chunks", "dependencies"]) \
-    .setLabelColumn("rel")\
+graph_folder = "./medical_graphs"
+ner_graph_builder = medical.TFGraphBuilder()\
+    .setModelName("ner_dl")\
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setLabelColumn("label")\
+    .setGraphFile("auto")\
+    .setHiddenUnitsNumber(20)\
     .setGraphFolder(graph_folder)\
-    .setGraphFile(f"{graph_name}.pb")\
-    .setHiddenLayers([300, 200])\
-    .setHiddenAct("relu")\
-    .setHiddenActL2(True)\
-    .setHiddenWeightsL2(False)\
-    .setBatchNorm(False)
+    .setIsLicensed(True)  # False -> for NerDLApproach
 
 {%- endcapture -%}
 
-{%- capture model_api_link -%}
-[AssertionChunkConverter](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/assertion/)
+{%- capture model_python_finance -%}
+
+graph_folder = "./finance_graphs"
+ner_graph_builder = finance.TFGraphBuilder()\
+    .setModelName("ner_dl")\
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setLabelColumn("label")\
+    .setGraphFile("auto")\
+    .setHiddenUnitsNumber(20)\
+    .setGraphFolder(graph_folder)\
+    .setIsLicensed(True)  # False -> for NerDLApproach
+
+{%- endcapture -%}
+
+{%- capture model_python_legal -%}
+
+graph_folder = "./legal_graphs"
+ner_graph_builder = legal.TFGraphBuilder()\
+    .setModelName("ner_dl")\
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setLabelColumn("label")\
+    .setGraphFile("auto")\
+    .setHiddenUnitsNumber(20)\
+    .setGraphFolder(graph_folder)\
+    .setIsLicensed(True)  # False -> for NerDLApproach
+
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
-[AssertionChunkConverter](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder)
+[TFGraphBuilder](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/tf_graph_builder/index.html#sparknlp_jsl.annotator.tf_graph_builder.TFGraphBuilder)
 {%- endcapture -%}
 
-
+{%- capture model_notebook_link -%}
+[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/17.0.Graph_builder_for_DL_models.ipynb)
+{%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
-approach=approach
 model_description=model_description
 model_input_anno=model_input_anno
 model_output_anno=model_output_anno
 model_python_medical=model_python_medical
-model_api_link=model_api_link
+model_python_finance=model_python_finance
+model_python_legal=model_python_legal
 model_python_api_link=model_python_api_link
-%}
+model_notebook_link=model_notebook_link%}
