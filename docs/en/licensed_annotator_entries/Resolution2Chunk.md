@@ -110,9 +110,9 @@ val pipeline = new Pipeline().setStages(Array(
     resolver2chunk, 
     chunkerMapper_action )) 
 
-val data= Seq("Zonalon 50 mg").toDF("text") 
+val data = Seq("Zonalon 50 mg").toDF("text") 
 
-val res= pipeline.fit(data).transform(data)
+val res = pipeline.fit(data).transform(data)
 
 // Example results
 

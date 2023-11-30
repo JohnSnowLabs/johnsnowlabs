@@ -87,7 +87,6 @@ replacer_name = medical.Replacer()\
   .setOutputCol("obfuscated_sentence_name")\
   .setUseReplacement(True)
 
-
 nlpPipeline = nlp.Pipeline(stages=[
       documentAssembler,
       sentenceDetector,
@@ -111,7 +110,8 @@ result = model.transform(spark.createDataFrame([[text]]).toDF("text"))
 
 result.select(F.explode(F.arrays_zip(result.sentence.result,
                                      result.obfuscated_sentence_name.result)).alias("cols")) \
-      .select(F.expr("cols['0']").alias("sentence"), F.expr("cols['1']").alias("obfuscated_sentence_name"))
+      .select(F.expr("cols['0']").alias("sentence"), 
+              F.expr("cols['1']").alias("obfuscated_sentence_name"))
 
 
 | sentence                                          | obfuscated_sentence_name                                  |
@@ -126,18 +126,6 @@ result.select(F.explode(F.arrays_zip(result.sentence.result,
 
 
 {%- capture model_scala_medical -%}
-import com.johnsnowlabs.nlp.annotators.ner.MedicalNerModel
-import com.johnsnowlabs.nlp.annotators.ner.NerConverterInternal
-import com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscator
-import com.johnsnowlabs.nlp.annotators.deid.Replacer
-import com.johnsnowlabs.nlp.embeddings.WordEmbeddings
-import com.johnsnowlabs.nlp.embeddings.WordEmbeddingsModel
-import com.johnsnowlabs.nlp.DocumentAssembler
-import com.johnsnowlabs.nlp.annotators.sbd.pragmatic.SentenceDetector
-import com.johnsnowlabs.nlp.annotators.ner.NerConverter
-import com.johnsnowlabs.nlp.annotators.Tokenizer
-import com.johnsnowlabs.nlp.annotators.keyword.yake.util.Token
-import org.apache.spark.ml.Pipeline
 import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
@@ -169,13 +157,12 @@ val nameChunkObfuscator = new NameChunkObfuscator()
     .setOutputCol("replacement")
     .setObfuscateRefSource("faker")
     .setNameEntities(Array("DOCTOR", "PATIENT"))
-    .setGenderAwareness(True)
+    .setGenderAwareness(true)
 
 val replacer_name = new Replacer()
     .setInputCols(Array("replacement","sentence"))
     .setOutputCol("obfuscated_sentence_name")
-    .setUseReplacement(True)
-
+    .setUseReplacement(true)
 
 val nlpPipeline = new Pipeline().setStages(Array(
       documentAssembler,
@@ -326,20 +313,6 @@ result.select(F.explode(F.arrays_zip(result.sentence.result,
 
 
 {%- capture approach_scala_medical -%}
-import com.johnsnowlabs.nlp.annotators.ner.MedicalNerModel
-import com.johnsnowlabs.nlp.annotators.ner.NerConverterInternal
-import com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscator
-import com.johnsnowlabs.nlp.annotators.deid.Replacer
-import com.johnsnowlabs.nlp.annotators.deid.NameChunkObfuscatorApproach
-import com.johnsnowlabs.nlp.embeddings.WordEmbeddings
-import com.johnsnowlabs.nlp.embeddings.WordEmbeddingsModel
-import com.johnsnowlabs.nlp.DocumentAssembler
-import com.johnsnowlabs.nlp.annotators.sbd.pragmatic.SentenceDetector
-import com.johnsnowlabs.nlp.annotators.ner.NerConverter
-import com.johnsnowlabs.nlp.annotators.Tokenizer
-import com.johnsnowlabs.nlp.annotators.keyword.yake.util.Token
-import org.apache.spark.ml.Pipeline
-import spark.implicits._
 
 val names = """Mitchell-NAME
 Clifford-NAME
@@ -357,10 +330,10 @@ Mueller-NAME
 Bowman-NAME
 Hansen-NAME
 """
-
-with open('names_test2.txt', 'w') as file:
+/*
+with open("names_test2.txt", 'w') as file:
     file.write(names)
-
+*/
 
 val documentAssembler = new DocumentAssembler()
     .setInputCol("text")
@@ -397,7 +370,7 @@ val nameChunkObfuscator = new NameChunkObfuscatorApproach()
 val replacer_name = new Replacer()
     .setInputCols(Array("replacement","sentence"))
     .setOutputCol("obfuscated_sentence_name")
-    .setUseReplacement(True)
+    .setUseReplacement(true)
 
 val nlpPipeline = new Pipeline().setStages((
       documentAssembler, 
@@ -412,7 +385,6 @@ val nlpPipeline = new Pipeline().setStages((
 val data = Seq("M.D . , Patient name : Michael  , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555. Analyzed by Dr. Jennifer  .").toDF("text")
 
 val res = nlpPipeline.fit(data).transform(data)
-
 
 | sentence                                          | obfuscated_sentence_name                          | 
 | ------------------------------------------------- | ------------------------------------------------- |

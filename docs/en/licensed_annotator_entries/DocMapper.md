@@ -17,8 +17,11 @@ model
 Parametres:
 
 - `setRels` *(List[str])*: Relations that we are going to use to map the document
+
 - `setLowerCase` *(Boolean)*: Set if we want to map the documents in lower case or not (Default: True)
+
 - `setAllowMultiTokenChunk` *(Boolean)*: Whether to skip relations with multitokens (Default: True)
+
 - `setMultivaluesRelations` *(Boolean)*:  Whether to decide to return all values in a relation together or separately (Default: False)
 
 
@@ -51,7 +54,6 @@ mapperPipeline = nlp.Pipeline().setStages([
     document_assembler,
     docMapper])
 
-
 test_data = spark.createDataFrame([["Dermovate"], ["Aspagin"]]).toDF("text")
 
 res = mapperPipeline.fit(test_data).transform(test_data)
@@ -78,9 +80,7 @@ res.select(F.explode(F.arrays_zip(res.mappings.result,
 
 
 {%- capture model_scala_medical -%}
-import com.johnsnowlabs.legal.chunk_classification.resolution.DocMapperModel
-import com.johnsnowlabs.nlp.DocumentAssembler
-import org.apache.spark.ml.Pipeline
+
 import spark.implicits._
 
 #ChunkMapper Pipeline
@@ -93,7 +93,6 @@ val docMapper= DocMapperModel().pretrained("drug_action_treatment_mapper", "en",
     .setInputCols("document")
     .setOutputCol("mappings")
     .setRels(Array("action", "treatment"))
-
 
 val mapperPipeline = new Pipeline().setStages(Array(
     document_assembler,
@@ -136,9 +135,13 @@ val res = mapperPipeline.fit(test_data).transform(test_data)
 Parameters:
 
 - `setDictionary` *(Str)*: Dictionary path where is the JsonDictionary that contains the mappings columns
+
 - `setRels` *(Boolean)*: Relations that we are going to use to map the document
+
 - `setLowerCase` *(Boolean)*: Set if we want to map the documents in lower case or not (Default: True)
+
 - `setAllowMultiTokenChunk` *(Boolean)*: Whether to skip relations with multitokens (Default: True)
+
 - `setMultivaluesRelations` *(Boolean)*:  Whether to decide to return all values in a relation together or separately (Default: False)
 {%- endcapture -%}
 
@@ -176,8 +179,6 @@ import json
 with open('sample_drug.json', 'w', encoding='utf-8') as f:
     json.dump(data_set, f, ensure_ascii=False, indent=4)
 
-
-
 document_assembler = nlp.DocumentAssembler()\
       .setInputCol('text')\
       .setOutputCol('document')
@@ -214,13 +215,9 @@ res.select(F.explode(F.arrays_zip(res.mappings.result,
 
 {%- capture approach_scala_medical -%}
 
-import com.johnsnowlabs.legal.chunk_classification.resolution.DocMapperApproach
-import com.johnsnowlabs.nlp.DocumentAssembler
-import org.apache.spark.ml.Pipeline
 import spark.implicits._
 
-
-/* example .json file
+/* sample_drug.json file
 {
   "mappings": [
     {
@@ -238,9 +235,7 @@ import spark.implicits._
     }
   ]
 }
- 
 */
-
 
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")

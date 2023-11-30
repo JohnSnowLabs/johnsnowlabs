@@ -88,16 +88,9 @@ result_df.show(50, truncate=1000)
 
 
 {%- capture model_scala_medical -%}
-import com.johnsnowlabs.nlp.annotators.embeddings.AverageEmbeddings
-import com.johnsnowlabs.nlp.embeddings.BertSentenceEmbeddings
-import com.johnsnowlabs.nlp.embeddings.SentenceEmbeddings
-import com.johnsnowlabs.nlp.DocumentAssembler
-import com.johnsnowlabs.nlp.annotators.sbd.pragmatic.SentenceDetector
-import com.johnsnowlabs.nlp.Doc2Chunk
-import org.apache.spark.ml.Pipeline
+
 import spark.implicits._
 
-  
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document") 
