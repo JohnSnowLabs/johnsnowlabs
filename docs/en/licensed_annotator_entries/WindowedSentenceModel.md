@@ -99,10 +99,6 @@ result.select(F.explode('window_2')).select('col.result').show(truncate=False)
 
 {%- capture model_scala_medical -%}
 
-import com.johnsnowlabs.nlp.annotators.windowed.WindowedSentenceModel
-import com.johnsnowlabs.nlp.DocumentAssembler
-import com.johnsnowlabs.nlp.annotators.sbd.pragmatic.SentenceDetector
-import org.apache.spark.ml.Pipeline
 import spark.implicits._
 
 val documentAssembler =  new DocumentAssembler()
