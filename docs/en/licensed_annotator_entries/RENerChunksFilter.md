@@ -7,11 +7,15 @@ model
 {%- endcapture -%}
 
 {%- capture model_description -%}
-Filters entities' dependency relations.
+The `RENerChunksFilter` annotator filters desired relation pairs (defined by the parameter realtionPairs), and store those on the output column. Filtering the possible relations can be useful to perform additional analysis for a specific use case (e.g., checking adverse drug reactions and drug realations), which can be the input for further analysis using a pretrained `RelationExtractionDLModel`.
 
-The annotator filters desired relation pairs (defined by the parameter realtionPairs), and store those on the output column.
+Parameters:
 
-Filtering the possible relations can be useful to perform additional analysis for a specific use case (e.g., checking adverse drug reactions and drug realations), which can be the input for further analysis using a pretrained `RelationExtractionDLModel`.
+- `maxSyntacticDistance` *(Int)*: Maximum syntactic distance between a pair of named entities to consider them as a relation. Increasing this value will increase recall, but also increase the number of false positives.
+
+- `relationPairs` *(List[Str])*: List of dash-separated pairs of named entities. For example, [“Biomarker-RelativeDay”] will process all relations between entities of type “Biomarker” and “RelativeDay”.
+
+- `relationPairsCaseSensitive` *(Boolean)*: Determines whether relation pairs are case sensitive.
 
 For example, the [ner_clinical](https://nlp.johnsnowlabs.com/2021/03/31/ner_clinical_en.html) NER model can identify `PROBLEM`, `TEST`, and `TREATMENT` entities. By using the `RENerChunksFilter`, one can filter only the relations between `PROBLEM` and `TREATMENT`  entities only, removing any relation between the other entities, to further analyze the  associations between clinical problems and treatments.
 
@@ -26,416 +30,581 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import * 
-# Define pipeline stages to extract entities
-documenter = nlp.DocumentAssembler() \
-  .setInputCol("text") \
-  .setOutputCol("document")
+from johnsnowlabs import nlp, medical
 
-sentencer = nlp.SentenceDetector() \
-  .setInputCols(["document"]) \
-  .setOutputCol("sentences")
+documenter = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-tokenizer = nlp.Tokenizer() \
-  .setInputCols(["sentences"]) \
-  .setOutputCol("tokens")
+sentencer = nlp.SentenceDetector()\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-words_embedder = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models") \
-  .setInputCols(["sentences", "tokens"]) \
-  .setOutputCol("embeddings")
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-pos_tagger = nlp.PerceptronModel.pretrained("pos_clinical", "en", "clinical/models") \
-  .setInputCols(["sentences", "tokens"]) \
-  .setOutputCol("pos_tags")
+words_embedder = nlp.WordEmbeddingsModel()\
+    .pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("embeddings")
 
-dependency_parser = nlp.DependencyParserModel.pretrained("dependency_conllu", "en") \
-  .setInputCols(["sentences", "pos_tags", "tokens"]) \
-  .setOutputCol("dependencies")
+pos_tagger = nlp.PerceptronModel()\
+    .pretrained("pos_clinical", "en", "clinical/models") \
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("pos_tags")
 
-clinical_ner_tagger = medical.NerModel.pretrained("jsl_ner_wip_greedy_clinical","en","clinical/models") \
-  .setInputCols(["sentences", "tokens", "embeddings"]) \
-  .setOutputCol("ner_tags")
+ner_tagger = medical.NerModel.pretrained("ner_ade_clinical", "en", "clinical/models")\
+    .setInputCols("sentence", "token", "embeddings")\
+    .setOutputCol("ner_tags")
 
-ner_chunker = nlp.NerConverter() \
-  .setInputCols(["sentences", "tokens", "ner_tags"]) \
-  .setOutputCol("ner_chunks")
+ner_chunker = medical.NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner_tags"])\
+    .setOutputCol("ner_chunks")
 
-# Define the relation pairs and the filter
-relationPairs = [
-  "direction-external_body_part_or_region",
-  "external_body_part_or_region-direction",
-  "direction-internal_organ_or_component",
-  "internal_organ_or_component-direction"
-]
+dependency_parser = nlp.DependencyParserModel()\
+    .pretrained("dependency_conllu", "en")\
+    .setInputCols(["sentence", "pos_tags", "token"])\
+    .setOutputCol("dependencies")
 
-re_ner_chunk_filter = medical.RENerChunksFilter() \
-  .setInputCols(["ner_chunks", "dependencies"]) \
-  .setOutputCol("re_ner_chunks") \
-  .setMaxSyntacticDistance(4) \
-  .setRelationPairs(["internal_organ_or_component-direction"])
+ade_re_ner_chunk_filter = medical.RENerChunksFilter() \
+    .setInputCols(["ner_chunks", "dependencies"])\
+    .setOutputCol("re_ner_chunks")\
+    .setMaxSyntacticDistance(10)\
+    .setRelationPairs(["drug-ade, ade-drug"])
 
-trained_pipeline = Pipeline(stages=[
-  documenter,
-  sentencer,
-  tokenizer,
-  words_embedder,
-  pos_tagger,
-  clinical_ner_tagger,
-  ner_chunker,
-  dependency_parser,
-  re_ner_chunk_filter
+ade_re_model = medical.RelationExtractionDLModel()\
+    .pretrained('redl_ade_biobert', 'en', "clinical/models") \
+    .setInputCols(["re_ner_chunks", "sentences"]) \
+    .setPredictionThreshold(0.5)\
+    .setOutputCol("relations")
+
+pipeline = nlp.Pipeline(stages=[
+    documenter,
+    sentencer,
+    tokenizer,
+    words_embedder,
+    pos_tagger,
+    ner_tagger,
+    ner_chunker,
+    dependency_parser,
+    ade_re_ner_chunk_filter,
+    ade_re_model
 ])
 
-data = spark.createDataFrame([["MRI demonstrated infarction in the upper brain stem , left cerebellum and  right basil ganglia"]]).toDF("text")
-result = trained_pipeline.fit(data).transform(data)
+text = """A 44-year-old man taking naproxen for chronic low back pain and a 20-year-old woman on oxaprozin for rheumatoid arthritis presented with tense bullae and cutaneous fragility on the face and the back of the hands."""
 
-# Show results
-result.selectExpr("explode(re_ner_chunks) as re_chunks") \
-  .selectExpr("re_chunks.begin", "re_chunks.result", "re_chunks.metadata.entity", "re_chunks.metadata.paired_to") \
-  .show(6, truncate=False)
-+-----+-------------+---------------------------+---------+
-|begin|result       |entity                     |paired_to|
-+-----+-------------+---------------------------+---------+
-|35   |upper        |Direction                  |41       |
-|41   |brain stem   |Internal_organ_or_component|35       |
-|35   |upper        |Direction                  |59       |
-|59   |cerebellum   |Internal_organ_or_component|35       |
-|35   |upper        |Direction                  |81       |
-|81   |basil ganglia|Internal_organ_or_component|35       |
-+-----+-------------+---------------------------+---------+
+data = spark.createDataFrame([[text]]).toDF("text")
+
+result = pipeline.fit(data).transform(data)
+
+from pyspark.sql import functions as F
+
+results.select(
+    F.explode(F.arrays_zip(results.relations.metadata, results.relations.result)).alias("cols")).select(
+    F.expr("cols['0']['sentence']").alias("sentence"),
+    F.expr("cols['0']['entity1_begin']").alias("entity1_begin"),
+    F.expr("cols['0']['entity1_end']").alias("entity1_end"),
+    F.expr("cols['0']['chunk1']").alias("chunk1"),
+    F.expr("cols['0']['entity1']").alias("entity1"),
+    F.expr("cols['0']['entity2_begin']").alias("entity2_begin"),
+    F.expr("cols['0']['entity2_end']").alias("entity2_end"),
+    F.expr("cols['0']['chunk2']").alias("chunk2"),
+    F.expr("cols['0']['entity2']").alias("entity2"),
+    F.expr("cols['1']").alias("relation"),
+    F.expr("cols['0']['confidence']").alias("confidence"),
+).show(truncate=70)
+
++--------+-------------+-----------+---------+-------+-------------+-----------+---------------------------------------------------------+-------+--------+----------+
+|sentence|entity1_begin|entity1_end|   chunk1|entity1|entity2_begin|entity2_end|                                                   chunk2|entity2|relation|confidence|
++--------+-------------+-----------+---------+-------+-------------+-----------+---------------------------------------------------------+-------+--------+----------+
+|       0|           25|         32| naproxen|   DRUG|          137|        148|                                             tense bullae|    ADE|       1| 0.9989047|
+|       0|           25|         32| naproxen|   DRUG|          154|        210|cutaneous fragility on the face and the back of the hands|    ADE|       1| 0.9989704|
+|       0|           87|         95|oxaprozin|   DRUG|          137|        148|                                             tense bullae|    ADE|       1|0.99895453|
+|       0|           87|         95|oxaprozin|   DRUG|          154|        210|cutaneous fragility on the face and the back of the hands|    ADE|       1|0.99900633|
++--------+-------------+-----------+---------+-------+-------------+-----------+---------------------------------------------------------+-------+--------+----------+
 {%- endcapture -%}
 
-
 {%- capture model_python_legal -%}
-from johnsnowlabs import * 
-# Define pipeline stages to extract entities
-documenter = nlp.DocumentAssembler() \
-  .setInputCol("text") \
+from johnsnowlabs import nlp, legal
+
+document_assembler = nlp.DocumentAssembler()\
+  .setInputCol("text")\
   .setOutputCol("document")
 
-sentencer = nlp.SentenceDetector() \
-  .setInputCols(["document"]) \
-  .setOutputCol("sentences")
+text_splitter = legal.TextSplitter()\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-tokenizer = nlp.Tokenizer() \
-  .setInputCols(["sentences"]) \
-  .setOutputCol("tokens")
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-words_embedder = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models") \
-  .setInputCols(["sentences", "tokens"]) \
-  .setOutputCol("embeddings")
+embeddings = nlp.RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_base", "en") \
+    .setInputCols("sentence", "token") \
+    .setOutputCol("embeddings")\
+    .setMaxSentenceLength(512)
 
-pos_tagger = nlp.PerceptronModel.pretrained("pos_clinical", "en", "clinical/models") \
-  .setInputCols(["sentences", "tokens"]) \
-  .setOutputCol("pos_tags")
+ner_model = legal.NerModel.pretrained(ner_model, "en", "legal/models")\
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner")
 
-dependency_parser = nlp.DependencyParserModel.pretrained("dependency_conllu", "en") \
-  .setInputCols(["sentences", "pos_tags", "tokens"]) \
-  .setOutputCol("dependencies")
+ner_converter = nlp.NerConverter()\
+    .setInputCols(["sentence","token","ner"])\
+    .setOutputCol("ner_chunk")
 
-ner_model = legal.NerModel.pretrained("legner_orgs_prods_alias", "en", "legal/models")\
-  .setInputCols(["sentence", "token", "embedding"])\
-  .setOutputCol("ner")
+pos_tagger = nlp.PerceptronModel().pretrained() \
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("pos_tags")
 
-ner_chunker = nlp.NerConverter() \
-  .setInputCols(["sentences", "tokens", "ner"]) \
-  .setOutputCol("ner_chunks")
+dependency_parser = nlp.DependencyParserModel() \
+    .pretrained("dependency_conllu", "en") \
+    .setInputCols(["sentence", "pos_tags", "token"]) \
+    .setOutputCol("dependencies")
 
-# Define the relation pairs and the filter
-relationPairs = [
-  "direction-external_body_part_or_region",
-  "external_body_part_or_region-direction",
-  "direction-internal_organ_or_component",
-  "internal_organ_or_component-direction"
-]
+re_filter = legal.RENerChunksFilter()\
+    .setInputCols(["ner_chunk", "dependencies"])\
+    .setOutputCol("re_ner_chunks")\
+    .setMaxSyntacticDistance(10)\
+    .setRelationPairs(['PARTY-ALIAS', 'DOC-PARTY', 'DOC-EFFDATE'])
 
-re_ner_chunk_filter = legal.RENerChunksFilter() \
-  .setInputCols(["ner_chunks", "dependencies"]) \
-  .setOutputCol("re_ner_chunks") \
-  .setMaxSyntacticDistance(4) \
-  .setRelationPairs(["internal_organ_or_component-direction"])
+re_model = legal.RelationExtractionDLModel.pretrained(re_model, "en", "legal/models")\
+    .setPredictionThreshold(0.1)\
+    .setInputCols(["re_ner_chunks", "sentence"])\
+    .setOutputCol("relations")
 
-trained_pipeline = Pipeline(stages=[
-  documenter,
-  sentencer,
-  tokenizer,
-  words_embedder,
-  pos_tagger,
-  dependency_parser,
-  ner_model,
-  ner_chunker,
-  re_ner_chunk_filter
-])
+pipeline = nlp.Pipeline(stages=[
+        document_assembler,
+        text_splitter,
+        tokenizer,
+        embeddings,
+        ner_model,
+        ner_converter,
+        pos_tagger,
+        dependency_parser,
+        re_filter,
+        re_model
+        ])
+
+text = """This INTELLECTUAL PROPERTY AGREEMENT (this "Agreement"), dated as of December 31, 2018 (the "Effective Date") is entered into by and between Armstrong Flooring, Inc., a Delaware corporation ("Seller") and AFI Licensing LLC, a Delaware limited liability company ("Licensing" and together with Seller, "Arizona") and AHF Holding, Inc. (formerly known as Tarzan HoldCo, Inc.), a Delaware corporation ("Buyer") and Armstrong Hardwood Flooring Company, a Tennessee corporation (the "Company" and together with Buyer the "Buyer Entities") (each of Arizona on the one hand and the Buyer Entities on the other hand, a "Party" and collectively, the "Parties")."""
+
+data = spark.createDataFrame([[text]]).toDF("text")
+
+result = pipeline.fit(data).transform(data)
+
+from pyspark.sql import functions as F
+
+result.select(
+    F.explode(F.arrays_zip(result.relations.metadata, result.relations.result)).alias("cols")).select(
+    F.expr("cols['0']['sentence']").alias("sentence"),
+    F.expr("cols['0']['entity1_begin']").alias("entity1_begin"),
+    F.expr("cols['0']['entity1_end']").alias("entity1_end"),
+    F.expr("cols['0']['chunk1']").alias("chunk1"),
+    F.expr("cols['0']['entity1']").alias("entity1"),
+    F.expr("cols['0']['entity2_begin']").alias("entity2_begin"),
+    F.expr("cols['0']['entity2_end']").alias("entity2_end"),
+    F.expr("cols['0']['chunk2']").alias("chunk2"),
+    F.expr("cols['0']['entity2']").alias("entity2"),
+    F.expr("cols['1']").alias("relation"),
+    F.expr("cols['0']['confidence']").alias("confidence"),
+).filter("relation != 'no_rel'").show(truncate=70)
+
++--------+-------------+-----------+-------------------------------+-------+-------------+-----------+-----------------+-------+---------+----------+
+|sentence|entity1_begin|entity1_end|                         chunk1|entity1|entity2_begin|entity2_end|           chunk2|entity2| relation|confidence|
++--------+-------------+-----------+-------------------------------+-------+-------------+-----------+-----------------+-------+---------+----------+
+|       0|            5|         35|INTELLECTUAL PROPERTY AGREEMENT|    DOC|           69|         85|December 31, 2018|EFFDATE| dated_as| 0.9856822|
+|       0|          141|        163|        Armstrong Flooring, Inc|  PARTY|          192|        197|           Seller|  ALIAS|has_alias|0.89620054|
++--------+-------------+-----------+-------------------------------+-------+-------------+-----------+-----------------+-------+---------+----------+
 {%- endcapture -%}
 
 
 {%- capture model_python_finance -%}
-from johnsnowlabs import * 
-# Define pipeline stages to extract entities
-documenter = nlp.DocumentAssembler() \
-  .setInputCol("text") \
-  .setOutputCol("document")
+from johnsnowlabs import nlp, finance
 
-sentencer = nlp.SentenceDetector() \
-  .setInputCols(["document"]) \
-  .setOutputCol("sentences")
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-tokenizer = nlp.Tokenizer() \
-  .setInputCols(["sentences"]) \
-  .setOutputCol("tokens")
+text_splitter = finance.TextSplitter()\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-words_embedder = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models") \
-  .setInputCols(["sentences", "tokens"]) \
-  .setOutputCol("embeddings")
+tokenizer = nlp.Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-pos_tagger = nlp.PerceptronModel.pretrained("pos_clinical", "en", "clinical/models") \
-  .setInputCols(["sentences", "tokens"]) \
-  .setOutputCol("pos_tags")
+embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("embeddings")
 
-dependency_parser = nlp.DependencyParserModel.pretrained("dependency_conllu", "en") \
-  .setInputCols(["sentences", "pos_tags", "tokens"]) \
-  .setOutputCol("dependencies")
+ner_model_date = finance.NerModel.pretrained("finner_sec_dates", "en", "finance/models")\
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner_dates")
 
-ner_model = finance.NerModel.pretrained("finner_orgs_prods_alias","en","finance/models")\
-  .setInputCols(["sentence", "token", "embeddings"])\
-  .setOutputCol("ner")
+ner_converter_date = finance.NerConverterInternal()\
+    .setInputCols(["sentence","token","ner_dates"])\
+    .setOutputCol("ner_chunk_date")
 
-ner_chunker = nlp.NerConverter() \
-  .setInputCols(["sentences", "tokens", "ner"]) \
-  .setOutputCol("ner_chunks")
+ner_model_org= finance.NerModel.pretrained("finner_orgs_prods_alias", "en", "finance/models")\
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner_orgs")
 
-# Define the relation pairs and the filter
-relationPairs = [
-  "direction-external_body_part_or_region",
-  "external_body_part_or_region-direction",
-  "direction-internal_organ_or_component",
-  "internal_organ_or_component-direction"
-]
+ner_converter_org = finance.NerConverterInternal()\
+    .setInputCols(["sentence","token","ner_orgs"])\
+    .setOutputCol("ner_chunk_org")\
 
-re_ner_chunk_filter = finance.RENerChunksFilter() \
-  .setInputCols(["ner_chunks", "dependencies"]) \
-  .setOutputCol("re_ner_chunks") \
-  .setMaxSyntacticDistance(4) \
-  .setRelationPairs(["internal_organ_or_component-direction"])
+chunk_merger = finance.ChunkMergeApproach()\
+    .setInputCols('ner_chunk_org', "ner_chunk_date")\
+    .setOutputCol('ner_chunk')
 
-trained_pipeline = Pipeline(stages=[
-  documenter,
-  sentencer,
-  tokenizer,
-  words_embedder,
-  pos_tagger,
-  dependency_parser,
-  ner_model,
-  ner_chunker,
-  re_ner_chunk_filter
-])
+pos = nlp.PerceptronModel.pretrained()\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("pos")
+
+dependency_parser = nlp.DependencyParserModel().pretrained("dependency_conllu", "en")\
+    .setInputCols(["sentence", "pos", "token"])\
+    .setOutputCol("dependencies")
+
+re_filter = finance.RENerChunksFilter()\
+    .setInputCols(["ner_chunk", "dependencies"])\
+    .setOutputCol("re_ner_chunk")\
+    .setRelationPairs(["ORG-ORG", "ORG-DATE"])\
+    .setMaxSyntacticDistance(10)
+
+reDL = finance.RelationExtractionDLModel().pretrained('finre_acquisitions_subsidiaries_md', 'en', 'finance/models')\
+    .setInputCols(["re_ner_chunk", "sentence"])\
+    .setOutputCol("relation")\
+    .setPredictionThreshold(0.1)
+
+pipeline = nlp.Pipeline(stages=[
+        document_assembler,
+        text_splitter,
+        tokenizer,
+        embeddings,
+        ner_model_date,
+        ner_converter_date,
+        ner_model_org,
+        ner_converter_org,
+        chunk_merger,
+        pos,
+        dependency_parser,
+        re_filter,
+        reDL])
+
+text = """In fiscal 2020, Cadence acquired all of the outstanding equity of AWR Corporation (“AWR”) and Integrand Software, Inc. (“Integrand”)."""
+
+data = spark.createDataFrame([[text]]).toDF("text")
+
+result = pipeline.fit(data).transform(data)
+
+from pyspark.sql import functions as F
+
+result.select(
+    F.explode(F.arrays_zip(result.relation.metadata, result.relation.result)).alias("cols")).select(
+    F.expr("cols['0']['sentence']").alias("sentence"),
+    F.expr("cols['0']['entity1_begin']").alias("entity1_begin"),
+    F.expr("cols['0']['entity1_end']").alias("entity1_end"),
+    F.expr("cols['0']['chunk1']").alias("chunk1"),
+    F.expr("cols['0']['entity1']").alias("entity1"),
+    F.expr("cols['0']['entity2_begin']").alias("entity2_begin"),
+    F.expr("cols['0']['entity2_end']").alias("entity2_end"),
+    F.expr("cols['0']['chunk2']").alias("chunk2"),
+    F.expr("cols['0']['entity2']").alias("entity2"),
+    F.expr("cols['1']").alias("relation"),
+    F.expr("cols['0']['confidence']").alias("confidence"),
+).filter("relation != 'no_rel'").show(truncate=70)
+
++--------+-------------+-----------+-----------------------+-------+-------------+-----------+---------------+-------+--------------------+----------+
+|sentence|entity1_begin|entity1_end|                 chunk1|entity1|entity2_begin|entity2_end|         chunk2|entity2|            relation|confidence|
++--------+-------------+-----------+-----------------------+-------+-------------+-----------+---------------+-------+--------------------+----------+
+|       0|           16|         22|                Cadence|    ORG|            3|         13|    fiscal 2020|   DATE|has_acquisition_date|0.99687237|
+|       0|           66|         80|        AWR Corporation|    ORG|            3|         13|    fiscal 2020|   DATE|has_acquisition_date|  0.993112|
+|       0|           94|        116|Integrand Software, Inc|    ORG|            3|         13|    fiscal 2020|   DATE|has_acquisition_date| 0.9741451|
+|       0|           66|         80|        AWR Corporation|    ORG|           16|         22|        Cadence|    ORG|     was_acquired_by|  0.997124|
+|       0|           94|        116|Integrand Software, Inc|    ORG|           16|         22|        Cadence|    ORG|     was_acquired_by|0.99910504|
+|       0|           94|        116|Integrand Software, Inc|    ORG|           66|         80|AWR Corporation|    ORG|     was_acquired_by|0.93245244|
++--------+-------------+-----------+-----------------------+-------+-------------+-----------+---------------+-------+--------------------+----------+
 {%- endcapture -%}
-
 
 {%- capture model_scala_medical -%}
-from johnsnowlabs import * 
-// Define pipeline stages to extract entities
-val documenter = new nlp.DocumentAssembler()
+val documenter = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentencer = new nlp.SentenceDetector()
-  .setInputCols("document")
-  .setOutputCol("sentences")
+val sentencer = new SentenceDetector()
+  .setInputCols(Array("document"))
+  .setOutputCol("sentence")
 
-val tokenizer = new nlp.Tokenizer()
-  .setInputCols("sentences")
-  .setOutputCol("tokens")
+val tokenizer = new Tokenizer()
+  .setInputCols(Array("sentence"))
+  .setOutputCol("token")
 
-val words_embedder = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-  .setInputCols(Array("sentences", "tokens"))
+val wordsEmbedder = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
+  .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
 
-val pos_tagger = nlp.PerceptronModel.pretrained("pos_clinical", "en", "clinical/models")
-  .setInputCols(Array("sentences", "tokens"))
+val posTagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/models")
+  .setInputCols(Array("sentence", "token"))
   .setOutputCol("pos_tags")
 
-val dependency_parser = nlp.DependencyParserModel.pretrained("dependency_conllu", "en")
-  .setInputCols(Array("sentences", "pos_tags", "tokens"))
-  .setOutputCol("dependencies")
-
-val clinical_ner_tagger = medical.NerModel.pretrained("jsl_ner_wip_greedy_clinical","en","clinical/models")
-  .setInputCols(Array("sentences", "tokens", "embeddings"))
+val nerTagger = NerModel.pretrained("ner_ade_clinical", "en", "clinical/models")
+  .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner_tags")
 
-val ner_chunker = new nlp.NerConverter()
-  .setInputCols(Array("sentences", "tokens", "ner_tags"))
+val nerChunker = new NerConverterInternal()
+  .setInputCols(Array("sentence", "token", "ner_tags"))
   .setOutputCol("ner_chunks")
 
-// Define the relation pairs and the filter
-val relationPairs = Array("direction-external_body_part_or_region",
-                      "external_body_part_or_region-direction",
-                      "direction-internal_organ_or_component",
-                      "internal_organ_or_component-direction")
+val dependencyParser = DependencyParserModel.pretrained("dependency_conllu", "en")
+  .setInputCols(Array("sentence", "pos_tags", "token"))
+  .setOutputCol("dependencies")
 
-val re_ner_chunk_filter = new medical.RENerChunksFilter()
-    .setInputCols(Array("ner_chunks", "dependencies"))
-    .setOutputCol("re_ner_chunks")
-    .setMaxSyntacticDistance(4)
-    .setRelationPairs(Array("internal_organ_or_component-direction"))
+val adeReNerChunkFilter = new RENerChunksFilter()
+  .setInputCols(Array("ner_chunks", "dependencies"))
+  .setOutputCol("re_ner_chunks")
+  .setMaxSyntacticDistance(10)
+  .setRelationPairs(Array("drug-ade", "ade-drug"))
 
-val trained_pipeline = new Pipeline().setStages(Array(
-  documenter,
-  sentencer,
-  tokenizer,
-  words_embedder,
-  pos_tagger,
-  clinical_ner_tagger,
-  ner_chunker,
-  dependency_parser,
-  re_ner_chunk_filter
-))
+val adeReModel = RelationExtractionDLModel.pretrained("redl_ade_biobert", "en", "clinical/models")
+  .setInputCols(Array("re_ner_chunks", "sentences"))
+  .setPredictionThreshold(0.5)
+  .setOutputCol("relations")
 
-val data = Seq("MRI demonstrated infarction in the upper brain stem , left cerebellum and  right basil ganglia").toDF("text")
-val result = trained_pipeline.fit(data).transform(data)
+val pipeline = new Pipeline()
+  .setStages(Array(
+    documenter,
+    sentencer,
+    tokenizer,
+    wordsEmbedder,
+    posTagger,
+    nerTagger,
+    nerChunker,
+    dependencyParser,
+    adeReNerChunkFilter,
+    adeReModel
+  ))
 
-// Show results
-//
-// result.selectExpr("explode(re_ner_chunks) as re_chunks")
-//   .selectExpr("re_chunks.begin", "re_chunks.result", "re_chunks.metadata.entity", "re_chunks.metadata.paired_to")
-//   .show(6, truncate=false)
-// +-----+-------------+---------------------------+---------+
-// |begin|result       |entity                     |paired_to|
-// +-----+-------------+---------------------------+---------+
-// |35   |upper        |Direction                  |41       |
-// |41   |brain stem   |Internal_organ_or_component|35       |
-// |35   |upper        |Direction                  |59       |
-// |59   |cerebellum   |Internal_organ_or_component|35       |
-// |35   |upper        |Direction                  |81       |
-// |81   |basil ganglia|Internal_organ_or_component|35       |
-// +-----+-------------+---------------------------+---------+
-//
+val text = """A 44-year-old man taking naproxen for chronic low back pain and a 20-year-old woman on oxaprozin for rheumatoid arthritis presented with tense bullae and cutaneous fragility on the face and the back of the hands."""
+
+val data = Seq(text).toDF("text")
+
+val result = pipeline.fit(data).transform(data)
+
+result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as cols")
+.selectExpr(
+    "cols['0']['sentence'] as sentence",
+    "cols['0']['entity1_begin'] as entity1_begin",
+    "cols['0']['entity1_end'] as entity1_end",
+    "cols['0']['chunk1'] as chunk1",
+    "cols['0']['entity1'] as entity1",
+    "cols['0']['entity2_begin'] as entity2_begin",
+    "cols['0']['entity2_end'] as entity2_end",
+    "cols['0']['chunk2'] as chunk2",
+    "cols['0']['entity2'] as entity2",
+    "cols['1'] as relation",
+    "cols['0']['confidence'] as confidence").show(false)
+
++--------+-------------+-----------+---------+-------+-------------+-----------+---------------------------------------------------------+-------+--------+----------+
+|sentence|entity1_begin|entity1_end|   chunk1|entity1|entity2_begin|entity2_end|                                                   chunk2|entity2|relation|confidence|
++--------+-------------+-----------+---------+-------+-------------+-----------+---------------------------------------------------------+-------+--------+----------+
+|       0|           25|         32| naproxen|   DRUG|          137|        148|                                             tense bullae|    ADE|       1| 0.9989047|
+|       0|           25|         32| naproxen|   DRUG|          154|        210|cutaneous fragility on the face and the back of the hands|    ADE|       1| 0.9989704|
+|       0|           87|         95|oxaprozin|   DRUG|          137|        148|                                             tense bullae|    ADE|       1|0.99895453|
+|       0|           87|         95|oxaprozin|   DRUG|          154|        210|cutaneous fragility on the face and the back of the hands|    ADE|       1|0.99900633|
++--------+-------------+-----------+---------+-------+-------------+-----------+---------------------------------------------------------+-------+--------+----------+
 {%- endcapture -%}
-
 
 {%- capture model_scala_legal -%}
-from johnsnowlabs import * 
-// Define pipeline stages to extract entities
-val documenter = new nlp.DocumentAssembler()
+val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentencer = new nlp.SentenceDetector()
-  .setInputCols("document")
-  .setOutputCol("sentences")
+val text_splitter = new TextSplitter()
+  .setInputCols(Array("document"))
+  .setOutputCol("sentence")
 
-val tokenizer = new nlp.Tokenizer()
-  .setInputCols("sentences")
-  .setOutputCol("tokens")
+val tokenizer = new Tokenizer()
+  .setInputCols(Array("sentence"))
+  .setOutputCol("token")
 
-val words_embedder = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-  .setInputCols(Array("sentences", "tokens"))
+val embeddings = RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_base", "en", "clinical/models")
+  .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
+  .setMaxSentenceLength(512)
 
-val pos_tagger = nlp.PerceptronModel.pretrained("pos_clinical", "en", "clinical/models")
-  .setInputCols(Array("sentences", "tokens"))
-  .setOutputCol("pos_tags")
-
-val dependency_parser = nlp.DependencyParserModel.pretrained("dependency_conllu", "en")
-  .setInputCols(Array("sentences", "pos_tags", "tokens"))
-  .setOutputCol("dependencies")
-
-val ner_model = legal.NerModel.pretrained("legner_orgs_prods_alias", "en", "legal/models")
-  .setInputCols(Array("sentence", "token", "embedding"))
-  .setOutputCol("ner")
-
-val ner_chunker = new nlp.NerConverter()
-  .setInputCols(Array("sentences", "tokens", "ner"))
-  .setOutputCol("ner_chunks")
-
-// Define the relation pairs and the filter
-val relationPairs = Array("direction-external_body_part_or_region",
-                      "external_body_part_or_region-direction",
-                      "direction-internal_organ_or_component",
-                      "internal_organ_or_component-direction")
-
-val re_ner_chunk_filter = new legal.RENerChunksFilter()
-    .setInputCols(Array("ner_chunks", "dependencies"))
-    .setOutputCol("re_ner_chunks")
-    .setMaxSyntacticDistance(4)
-    .setRelationPairs(Array("internal_organ_or_component-direction"))
-
-val trained_pipeline = new Pipeline().setStages(Array(
-  documenter,
-  sentencer,
-  tokenizer,
-  words_embedder,
-  pos_tagger,
-  dependency_parser,
-  ner_model,
-  ner_chunker,
-  re_ner_chunk_filter
-))
-{%- endcapture -%}
-
-
-{%- capture model_scala_finance -%}
-from johnsnowlabs import * 
-// Define pipeline stages to extract entities
-val documenter = new nlp.DocumentAssembler()
-  .setInputCol("text")
-  .setOutputCol("document")
-
-val sentencer = new nlp.SentenceDetector()
-  .setInputCols("document")
-  .setOutputCol("sentences")
-
-val tokenizer = new nlp.Tokenizer()
-  .setInputCols("sentences")
-  .setOutputCol("tokens")
-
-val words_embedder = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-  .setInputCols(Array("sentences", "tokens"))
-  .setOutputCol("embeddings")
-
-val pos_tagger = nlp.PerceptronModel.pretrained("pos_clinical", "en", "clinical/models")
-  .setInputCols(Array("sentences", "tokens"))
-  .setOutputCol("pos_tags")
-
-val dependency_parser = nlp.DependencyParserModel.pretrained("dependency_conllu", "en")
-  .setInputCols(Array("sentences", "pos_tags", "tokens"))
-  .setOutputCol("dependencies")
-
-val ner_model = finance.NerModel.pretrained("finner_orgs_prods_alias","en","finance/models")
+val ner_model = NerModel.pretrained("legner_contract_doc_parties", "en", "legal/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
 
-val ner_chunker = new nlp.NerConverter()
-  .setInputCols(Array("sentences", "tokens", "ner"))
-  .setOutputCol("ner_chunks")
+val ner_converter = new NerConverter()
+  .setInputCols(Array("sentence", "token", "ner"))
+  .setOutputCol("ner_chunk")
 
-// Define the relation pairs and the filter
-val relationPairs = Array("direction-external_body_part_or_region",
-                      "external_body_part_or_region-direction",
-                      "direction-internal_organ_or_component",
-                      "internal_organ_or_component-direction")
+val pos_tagger = PerceptronModel().pretrained() \
+  .setInputCols(["sentence", "token"])\
+  .setOutputCol("pos_tags")
 
-val re_ner_chunk_filter = new finance.RENerChunksFilter()
-    .setInputCols(Array("ner_chunks", "dependencies"))
-    .setOutputCol("re_ner_chunks")
-    .setMaxSyntacticDistance(4)
-    .setRelationPairs(Array("internal_organ_or_component-direction"))
+val dependency_parser = DependencyParserModel() \
+  .pretrained("dependency_conllu", "en") \
+  .setInputCols(["sentence", "pos_tags", "token"]) \
+  .setOutputCol("dependencies")
 
-val trained_pipeline = new Pipeline().setStages(Array(
-  documenter,
-  sentencer,
-  tokenizer,
-  words_embedder,
-  pos_tagger,
-  dependency_parser,
-  ner_model,
-  ner_chunker,
-  re_ner_chunk_filter
-))
+val re_filter = new RENerChunksFilter()\
+  .setInputCols(["ner_chunk", "dependencies"])\
+  .setOutputCol("re_ner_chunks")\
+  .setMaxSyntacticDistance(10)\
+  .setRelationPairs(['PARTY-ALIAS', 'DOC-PARTY', 'DOC-EFFDATE'])
+
+val re_model = RelationExtractionDLModel.pretrained("legre_contract_doc_parties", "en", "legal/models")
+  .setPredictionThreshold(0.1)
+  .setInputCols(Array("re_ner_chunks", "sentence"))
+  .setOutputCol("relations")
+
+val pipeline = new Pipeline()
+  .setStages(Array(
+    document_assembler,
+    text_splitter,
+    tokenizer,
+    embeddings,
+    ner_model,
+    ner_converter,
+    pos_tagger,
+    dependency_parser,
+    re_filter,
+    re_model
+  ))
+
+text = """This INTELLECTUAL PROPERTY AGREEMENT (this "Agreement"), dated as of December 31, 2018 (the "Effective Date") is entered into by and between Armstrong Flooring, Inc., a Delaware corporation ("Seller") and AFI Licensing LLC, a Delaware limited liability company ("Licensing" and together with Seller, "Arizona") and AHF Holding, Inc. (formerly known as Tarzan HoldCo, Inc.), a Delaware corporation ("Buyer") and Armstrong Hardwood Flooring Company, a Tennessee corporation (the "Company" and together with Buyer the "Buyer Entities") (each of Arizona on the one hand and the Buyer Entities on the other hand, a "Party" and collectively, the "Parties")."""
+
+val data = Seq(text).toDF("text")
+
+val result = pipeline.fit(data).transform(data)
+
+result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as cols")
+.selectExpr(
+    "cols['0']['sentence'] as sentence",
+    "cols['0']['entity1_begin'] as entity1_begin",
+    "cols['0']['entity1_end'] as entity1_end",
+    "cols['0']['chunk1'] as chunk1",
+    "cols['0']['entity1'] as entity1",
+    "cols['0']['entity2_begin'] as entity2_begin",
+    "cols['0']['entity2_end'] as entity2_end",
+    "cols['0']['chunk2'] as chunk2",
+    "cols['0']['entity2'] as entity2",
+    "cols['1'] as relation",
+    "cols['0']['confidence'] as confidence").show(false)
+
++--------+-------------+-----------+-------------------------------+-------+-------------+-----------+-----------------+-------+---------+----------+
+|sentence|entity1_begin|entity1_end|                         chunk1|entity1|entity2_begin|entity2_end|           chunk2|entity2| relation|confidence|
++--------+-------------+-----------+-------------------------------+-------+-------------+-----------+-----------------+-------+---------+----------+
+|       0|            5|         35|INTELLECTUAL PROPERTY AGREEMENT|    DOC|           69|         85|December 31, 2018|EFFDATE| dated_as| 0.9856822|
+|       0|          141|        163|        Armstrong Flooring, Inc|  PARTY|          192|        197|           Seller|  ALIAS|has_alias|0.89620054|
++--------+-------------+-----------+-------------------------------+-------+-------------+-----------+-----------------+-------+---------+----------+
 {%- endcapture -%}
 
+{%- capture model_scala_finance -%}
+val document_assembler = new DocumentAssembler()
+  .setInputCol("text")
+  .setOutputCol("document")
 
+val text_splitter = new TextSplitter() 
+  .setInputCols(Array("document"))
+  .setOutputCol("sentence")
 
+val tokenizer = new Tokenizer()
+  .setInputCols(Array("sentence"))
+  .setOutputCol("token")
+
+val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base", "en", "finance/models")
+  .setInputCols(Array("sentence", "token"))
+  .setOutputCol("embeddings")
+
+val ner_model_date = NerModel.pretrained("finner_sec_dates", "en", "finance/models")
+  .setInputCols(Array("sentence", "token", "embeddings"))
+  .setOutputCol("ner_dates")
+
+val ner_converter_date = new NerConverterInternal()
+  .setInputCols(Array("sentence", "token", "ner_dates"))
+  .setOutputCol("ner_chunk_date")
+
+val ner_model_org = NerModel.pretrained("finner_orgs_prods_alias", "en", "finance/models")
+  .setInputCols(Array("sentence", "token", "embeddings"))
+  .setOutputCol("ner_orgs")
+
+val ner_converter_org = new NerConverterInternal()
+  .setInputCols(Array("sentence", "token", "ner_orgs"))
+  .setOutputCol("ner_chunk_org")
+
+val chunk_merger = new ChunkMergeApproach()
+  .setInputCols(Array("ner_chunk_org", "ner_chunk_date"))
+  .setOutputCol("ner_chunk")
+
+val pos = PerceptronModel.pretrained()
+  .setInputCols(Array("sentence", "token"))
+  .setOutputCol("pos")
+
+val dependency_parser = DependencyParserModel.pretrained("dependency_conllu", "en")
+  .setInputCols(Array("sentence", "pos", "token"))
+  .setOutputCol("dependencies")
+
+val re_filter = new RENerChunksFilter()
+  .setInputCols(Array("ner_chunk", "dependencies"))
+  .setOutputCol("re_ner_chunk")
+  .setRelationPairs(Array("ORG-ORG", "ORG-DATE"))
+  .setMaxSyntacticDistance(10)
+
+val reDL = RelationExtractionDLModel.pretrained("finre_acquisitions_subsidiaries_md", "en", "finance/models")
+  .setInputCols(Array("re_ner_chunk", "sentence"))
+  .setOutputCol("relation")
+  .setPredictionThreshold(0.1)
+
+val pipeline = new Pipeline().setStages(Array(
+    document_assembler,
+    text_splitter,
+    tokenizer,
+    embeddings,
+    ner_model_date,
+    ner_converter_date,
+    ner_model_org,
+    ner_converter_org,
+    chunk_merger,
+    pos,
+    dependency_parser,
+    re_filter,
+    reDL
+  ))
+
+text = """In fiscal 2020, Cadence acquired all of the outstanding equity of AWR Corporation (“AWR”) and Integrand Software, Inc. (“Integrand”)."""
+
+val data = Seq(text).toDS.toDF("text")
+
+val result = pipeline.fit(data).transform(data)
+
+result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as cols")
+.selectExpr(
+    "cols['0']['sentence'] as sentence",
+    "cols['0']['entity1_begin'] as entity1_begin",
+    "cols['0']['entity1_end'] as entity1_end",
+    "cols['0']['chunk1'] as chunk1",
+    "cols['0']['entity1'] as entity1",
+    "cols['0']['entity2_begin'] as entity2_begin",
+    "cols['0']['entity2_end'] as entity2_end",
+    "cols['0']['chunk2'] as chunk2",
+    "cols['0']['entity2'] as entity2",
+    "cols['1'] as relation",
+    "cols['0']['confidence'] as confidence").show(false)
+
++--------+-------------+-----------+-----------------------+-------+-------------+-----------+---------------+-------+--------------------+----------+
+|sentence|entity1_begin|entity1_end|                 chunk1|entity1|entity2_begin|entity2_end|         chunk2|entity2|            relation|confidence|
++--------+-------------+-----------+-----------------------+-------+-------------+-----------+---------------+-------+--------------------+----------+
+|       0|           16|         22|                Cadence|    ORG|            3|         13|    fiscal 2020|   DATE|has_acquisition_date|0.99687237|
+|       0|           66|         80|        AWR Corporation|    ORG|            3|         13|    fiscal 2020|   DATE|has_acquisition_date|  0.993112|
+|       0|           94|        116|Integrand Software, Inc|    ORG|            3|         13|    fiscal 2020|   DATE|has_acquisition_date| 0.9741451|
+|       0|           66|         80|        AWR Corporation|    ORG|           16|         22|        Cadence|    ORG|     was_acquired_by|  0.997124|
+|       0|           94|        116|Integrand Software, Inc|    ORG|           16|         22|        Cadence|    ORG|     was_acquired_by|0.99910504|
+|       0|           94|        116|Integrand Software, Inc|    ORG|           66|         80|AWR Corporation|    ORG|     was_acquired_by|0.93245244|
++--------+-------------+-----------+-----------------------+-------+-------------+-----------+---------------+-------+--------------------+----------+
+{%- endcapture -%}
 
 {%- capture model_api_link -%}
 [RENerChunksFilter](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/re/RENerChunksFilter.html)
@@ -443,6 +612,10 @@ val trained_pipeline = new Pipeline().setStages(Array(
 
 {%- capture model_python_api_link -%}
 [RENerChunksFilter](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/re/relation_ner_chunk_filter/index.html#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter)
+{%- endcapture -%}
+
+{%- capture model_notebook_link -%}
+[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/RENerChunksFilter.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
@@ -459,4 +632,5 @@ model_scala_legal=model_scala_legal
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}

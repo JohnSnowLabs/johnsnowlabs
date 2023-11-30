@@ -27,7 +27,7 @@ CATEGORY
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, medical
 # Relation Extraction between body parts
 # Define pipeline stages to extract entities
 documenter = nlp.DocumentAssembler() \
@@ -311,7 +311,6 @@ model = pipeline.fit(trainData)
 {%- endcapture -%}
 
 {%- capture approach_scala_medical -%}
-from johnsnowlabs import * 
 // Defining pipeline stages to extract entities first
 val documentAssembler = new nlp.DocumentAssembler()
   .setInputCol("text")
