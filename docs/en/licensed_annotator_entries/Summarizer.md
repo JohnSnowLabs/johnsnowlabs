@@ -10,6 +10,7 @@ model
 Summarizer annotator that uses a generative deep learning model to create summaries of medical, finance, and legal texts. This annotator helps to quickly summarize complex medical, finance, and legal information from related documents.
 
 Parameters:
+
 - `doSample`: Whether or not to use sampling, use greedy decoding otherwise (Default: false)
 
 - `ignoreTokenIds`: A list of token ids which are ignored in the decoder's output (Default: Array())

@@ -19,7 +19,7 @@ DOCUMENT
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, medical
 
 # Define the reidentification stage and transform the deidentified documents
 reIdentification = medical.ReIdentification()\
@@ -28,7 +28,7 @@ reIdentification = medical.ReIdentification()\
 
 reid_result = reIdentification.transform(result) # deidentified result
 
-reid_result.select('original.result').show(truncate=False)
+reid_result.select("original.result").show(truncate=False)
 
 # Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora ,
 # MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 .
@@ -43,7 +43,6 @@ MR # 7194334 Date : 01/13/93 ., PCP : Oliveira , 25 years-old , Record date : 20
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
-from johnsnowlabs import * 
 
 val reIdentification = new ReIdentification()
   .setInputCols(Array("aux", "deidentified"))
@@ -109,7 +108,7 @@ reidResult.selectExpr("original.result").show(false)
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, finance
 
 # Define the reidentification stage and transform the deidentified documents
 reIdentification = finance.ReIdentification()\
@@ -190,7 +189,6 @@ Securities registered pursuant to Section 12, (g) of the Act:]|
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
-from johnsnowlabs import * 
 // Define the reidentification stage and transform the deidentified documents
 val reideintification = new ReIdentification()
   .setInputCols(Array("aux", "deidentified"))

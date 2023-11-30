@@ -12,6 +12,7 @@ The Medical, Financial, and Legal Text Generators are specialized tools designed
 Similarly, the Financial and Legal Text Generators utilize the Flan-T5 model, an advanced version of the T5 model, for tasks in financial and legal text abstraction. Users can input prompts and contexts to receive high-quality summaries, document abstractions, and other text-based outputs. The Flan-T5 model's training on a diverse range of texts ensures the generation of coherent and accurate content in these domains.
 
 Parameters:
+
 - `maxNewTokens`: Maximum number of of new tokens to generate, by default 30
 
 - `maxContextLength`: Maximum length of context text
@@ -45,7 +46,7 @@ CHUNK
 
 {%- capture model_python_medical -%}
 
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, medical
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("prompt")\
@@ -108,7 +109,7 @@ result.selectExpr("answer.result").show(false)
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, legal
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -176,7 +177,7 @@ result.selectExpr("answer.result").show(false)
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, finance 
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\

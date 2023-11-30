@@ -12,8 +12,12 @@ This is a zero shot named entity recognition based on `RoBertaForQuestionAnsweri
 
 Even though a model trained to solve a specific problem can achieve better accuracy than a zero-shot model in this specific task, it probably won't be be useful in a different task. That is where zero-shot models shows its usefulness by being able to achieve good results in many different scenarions.
 
+Parametres:
+
 - `entityDefinitions`: A dictionary with definitions of the named entities. The keys of dictionary are the entity types and the values are lists of hypothesis templates.
+
 - `predictionThreshold`: Minimal confidence score to consider the entity(Default: `0.01`)
+
 - `ignoreEntitites`: A list of entities to be discarted from the output..
 
 All the parameters can be set using the corresponding set method in camel case. For example, `.setMultiLabel()`.
@@ -29,6 +33,7 @@ NAMED_ENTITY
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
 
 documentAssembler = nlp.DocumentAssembler() \
     .setInputCol("text") \
@@ -94,6 +99,7 @@ result.select(F.explode(F.arrays_zip(result.ner_chunk.result, result.ner_chunk.m
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
+from johnsnowlabs import nlp, finance
 
 documentAssembler = nlp.DocumentAssembler()\
   .setInputCol("text")\
@@ -167,6 +173,7 @@ result.select(F.explode(F.arrays_zip(result.ner_chunk.result, result.ner_chunk.m
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
+from johnsnowlabs import nlp, legal
 
 documentAssembler = nlp.DocumentAssembler()\
   .setInputCol("text")\

@@ -10,6 +10,7 @@ model
 The `RENerChunksFilter` annotator filters desired relation pairs (defined by the parameter realtionPairs), and store those on the output column. Filtering the possible relations can be useful to perform additional analysis for a specific use case (e.g., checking adverse drug reactions and drug realations), which can be the input for further analysis using a pretrained `RelationExtractionDLModel`.
 
 Parameters:
+
 - `maxSyntacticDistance` *(Int)*: Maximum syntactic distance between a pair of named entities to consider them as a relation. Increasing this value will increase recall, but also increase the number of false positives.
 
 - `relationPairs` *(List[Str])*: List of dash-separated pairs of named entities. For example, [“Biomarker-RelativeDay”] will process all relations between entities of type “Biomarker” and “RelativeDay”.
@@ -29,6 +30,8 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
+
 documenter = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -123,6 +126,8 @@ results.select(
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
+from johnsnowlabs import nlp, legal
+
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol("text")\
   .setOutputCol("document")
@@ -214,7 +219,8 @@ result.select(
 
 
 {%- capture model_python_finance -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, finance
+
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -321,7 +327,6 @@ result.select(
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
-from johnsnowlabs import * 
 val documenter = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -381,7 +386,7 @@ val pipeline = new Pipeline()
 
 val text = """A 44-year-old man taking naproxen for chronic low back pain and a 20-year-old woman on oxaprozin for rheumatoid arthritis presented with tense bullae and cutaneous fragility on the face and the back of the hands."""
 
-val data = Seq(text).toDS.toDF("text")
+val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
@@ -471,7 +476,7 @@ val pipeline = new Pipeline()
 
 text = """This INTELLECTUAL PROPERTY AGREEMENT (this "Agreement"), dated as of December 31, 2018 (the "Effective Date") is entered into by and between Armstrong Flooring, Inc., a Delaware corporation ("Seller") and AFI Licensing LLC, a Delaware limited liability company ("Licensing" and together with Seller, "Arizona") and AHF Holding, Inc. (formerly known as Tarzan HoldCo, Inc.), a Delaware corporation ("Buyer") and Armstrong Hardwood Flooring Company, a Tennessee corporation (the "Company" and together with Buyer the "Buyer Entities") (each of Arizona on the one hand and the Buyer Entities on the other hand, a "Party" and collectively, the "Parties")."""
 
-val data = Seq(text).toDS.toDF("text")
+val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
@@ -553,8 +558,7 @@ val reDL = RelationExtractionDLModel.pretrained("finre_acquisitions_subsidiaries
   .setOutputCol("relation")
   .setPredictionThreshold(0.1)
 
-val pipeline = new Pipeline()
-  .setStages(Array(
+val pipeline = new Pipeline().setStages(Array(
     document_assembler,
     text_splitter,
     tokenizer,

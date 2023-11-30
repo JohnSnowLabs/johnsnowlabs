@@ -8,7 +8,9 @@ model
 
 {%- capture model_description -%}
 This Relation Extraction annotator extracts and classifies instances of relations between named entities. In contrast with `RelationExtractionModel`, `RelationExtractionDLModel` is based on BERT. 
+
 Parametres:
+
 - `predictionThreshold` *(Float)*: Sets minimal activation of the target unit to encode a new relation instance.
 
 - `customLabels` *(dict[str, str])*: Custom relation labels.
@@ -27,6 +29,8 @@ CATEGORY
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
+
 documenter = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -121,7 +125,7 @@ results.select(
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
-from johnsnowlabs import * 
+
 val documenter = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -181,7 +185,7 @@ val pipeline = new Pipeline()
 
 val text = """A 44-year-old man taking naproxen for chronic low back pain and a 20-year-old woman on oxaprozin for rheumatoid arthritis presented with tense bullae and cutaneous fragility on the face and the back of the hands."""
 
-val data = Seq(text).toDS.toDF("text")
+val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
@@ -210,6 +214,8 @@ result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as 
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
+from johnsnowlabs import nlp, legal
+
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol("text")\
   .setOutputCol("document")
@@ -366,6 +372,7 @@ result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as 
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
+from johnsnowlabs import nlp, finance
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -422,19 +429,19 @@ reDL = finance.RelationExtractionDLModel().pretrained('finre_acquisitions_subsid
     .setPredictionThreshold(0.1)
 
 pipeline = nlp.Pipeline(stages=[
-        document_assembler,
-        text_splitter,
-        tokenizer,
-        embeddings,
-        ner_model_date,
-        ner_converter_date,
-        ner_model_org,
-        ner_converter_org,
-        chunk_merger,
-        pos,
-        dependency_parser,
-        re_filter,
-        reDL])
+    document_assembler,
+    text_splitter,
+    tokenizer,
+    embeddings,
+    ner_model_date,
+    ner_converter_date,
+    ner_model_org,
+    ner_converter_org,
+    chunk_merger,
+    pos,
+    dependency_parser,
+    re_filter,
+    reDL])
 
 text = """In fiscal 2020, Cadence acquired all of the outstanding equity of AWR Corporation (“AWR”) and Integrand Software, Inc. (“Integrand”)."""
 
@@ -527,8 +534,7 @@ val reDL = RelationExtractionDLModel.pretrained("finre_acquisitions_subsidiaries
   .setOutputCol("relation")
   .setPredictionThreshold(0.1)
 
-val pipeline = new Pipeline()
-  .setStages(Array(
+val pipeline = new Pipeline().setStages(Array(
     document_assembler,
     text_splitter,
     tokenizer,
@@ -546,7 +552,7 @@ val pipeline = new Pipeline()
 
 text = """In fiscal 2020, Cadence acquired all of the outstanding equity of AWR Corporation (“AWR”) and Integrand Software, Inc. (“Integrand”)."""
 
-val data = Seq(text).toDS.toDF("text")
+val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 

@@ -15,8 +15,11 @@ The model inputs consists of documents/sentences and paired NER chunks, usually 
 These statements are automatically appended to each document in the dataset and the NLI model is used to determine whether a particular relationship between entities.
 
 Parametres:
+
 - `relationalCategories`: A dictionary with definitions of relational categories. The keys of dictionary are the relation labels and the values are lists of hypothesis templates.
+
 - `predictionThreshold`: Minimal confidence score to encode a relation (Default: `0.5`)
+
 - `multiLabel`: Whether or not a pair of entities can be categorized by multiple relations (Default: `False`).
 
 All the parameters can be set using the corresponding set method in camel case. For example, `.setMultiLabel()`.
@@ -34,6 +37,7 @@ CATEGORY
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
 
 documenter = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -154,6 +158,7 @@ sentence|entity1_begin|entity1_end|     chunk1|entity1|entity2_begin|entity2_end
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
+from johnsnowlabs import nlp, finance
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -283,6 +288,8 @@ only showing top 20 rows
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
+from johnsnowlabs import nlp, legal
+
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
