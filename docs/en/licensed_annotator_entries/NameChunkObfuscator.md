@@ -48,7 +48,8 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import * 
+
+from johnsnowlabs import medical, nlp
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -228,7 +229,8 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture approach_python_medical -%}
-from johnsnowlabs import * 
+
+from johnsnowlabs import medical, nlp
 
 names = """Mitchell-NAME
 Clifford-NAME
@@ -411,10 +413,6 @@ val data = Seq("M.D . , Patient name : Michael  , MR # 7194334 Date : 01/13/93 .
 
 val res = nlpPipeline.fit(data).transform(data)
 
-
-result.select(F.explode(F.arrays_zip(result.sentence.result, result.obfuscated_sentence_name.result)).alias("cols"))
-.select(F.expr("colsArray("0")").alias("sentence"),
-        F.expr("colsArray("1")").alias("obfuscated_sentence_name"))
 
 | sentence                                          | obfuscated_sentence_name                          | 
 | ------------------------------------------------- | ------------------------------------------------- |

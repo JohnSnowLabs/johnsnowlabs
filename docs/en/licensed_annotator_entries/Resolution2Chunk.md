@@ -20,13 +20,14 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import * 
+
+from johnsnowlabs import medical, nlp
 
 document_assembler = nlp.DocumentAssembler()\
-      .setInputCol('text')\
-      .setOutputCol('ner_chunk')
+      .setInputCol("text")\
+      .setOutputCol("ner_chunk")
 
-sbert_embedder = nlp.BertSentenceEmbeddings.pretrained('sbiobert_base_cased_mli', 'en','clinical/models')\
+sbert_embedder = nlp.BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en","clinical/models")\
       .setInputCols(["ner_chunk"])\
       .setOutputCol("sentence_embeddings")\
       .setCaseSensitive(False)
@@ -38,7 +39,7 @@ rxnorm_resolver = medical.SentenceEntityResolverModel.pretrained("sbiobertresolv
 
 resolver2chunk = medical.Resolution2Chunk()\
       .setInputCols(["rxnorm_code"]) \
-      .setOutputCol("resolver2chunk")\
+      .setOutputCol("resolver2chunk")
 
 chunkerMapper_action = medical.ChunkMapperModel.pretrained("rxnorm_action_treatment_mapper", "en", "clinical/models")\
       .setInputCols(["resolver2chunk"])\
@@ -76,6 +77,7 @@ res.select(F.explode(F.arrays_zip(res.ner_chunk.result,
 
 
 {%- capture model_scala_medical -%}
+
 import com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk
 import com.johnsnowlabs.legal.chunk_classification.resolution.SentenceEntityResolverModel
 import com.johnsnowlabs.legal.chunk_classification.resolution.ChunkMapperModel
@@ -105,9 +107,9 @@ val resolver2chunk = new Resolution2Chunk()
   .setOutputCol("resolver2chunk")
 
 val chunkerMapper_action = ChunkMapperModel.pretrained("rxnorm_action_treatment_mapper","en","clinical/models")
-  .setInputCols(Array("resolver2chunk"))
+  .setInputCols("resolver2chunk")
   .setOutputCol("action_mapping")
-  .setRels(Array("action"))
+  .setRels("action")
 
 val pipeline = new Pipeline().setStages(Array(
     document_assembler, 
@@ -121,11 +123,6 @@ val data= Seq("Zonalon 50 mg").toDF("text")
 val res= pipeline.fit(data).transform(data)
 
 // Example results
-
-res.select(F.explode(F.arrays_zip(res.ner_chunk.result, res.rxnorm_code.result, res.action_mapping.result)).alias("col"))
-.select(F.expr("colArray("0")").alias("document"), 
-        F.expr("colArray("1")").alias("rxnorm_code"), 
-        F.expr("colArray("2")").alias("Action Mapping")) 
 
 +-------------+-----------+--------------+
 |document     |rxnorm_code|Action Mapping|

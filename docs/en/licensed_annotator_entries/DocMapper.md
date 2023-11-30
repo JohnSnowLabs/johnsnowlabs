@@ -151,8 +151,30 @@ LABEL_DEPENDENCY
 {%- endcapture -%}
 
 {%- capture approach_python_medical -%}
+
 from johnsnowlabs import nlp,  medical
 
+data_set= {
+  "mappings": [
+    {
+      "key": "metformin",
+      "relations": [
+        {
+          "key": "action",
+          "values" : ["hypoglycemic", "Drugs Used In Diabetes"]
+        },
+        {
+          "key": "treatment",
+          "values" : ["diabetes", "t2dm"]
+        }
+      ]
+    }
+  ]
+}
+
+import json
+with open('sample_drug.json', 'w', encoding='utf-8') as f:
+    json.dump(data_set, f, ensure_ascii=False, indent=4)
 
 
 
@@ -191,12 +213,33 @@ res.select(F.explode(F.arrays_zip(res.mappings.result,
 
 
 {%- capture approach_scala_medical -%}
+
 import com.johnsnowlabs.legal.chunk_classification.resolution.DocMapperApproach
 import com.johnsnowlabs.nlp.DocumentAssembler
 import org.apache.spark.ml.Pipeline
 import spark.implicits._
 
 
+/* example .json file
+{
+  "mappings": [
+    {
+      "key": "metformin",
+      "relations": [
+        {
+          "key": "action",
+          "values" : ["hypoglycemic", "Drugs Used In Diabetes"]
+        },
+        {
+          "key": "treatment",
+          "values" : ["diabetes", "t2dm"]
+        }
+      ]
+    }
+  ]
+}
+ 
+*/
 
 
 val document_assembler = new DocumentAssembler()

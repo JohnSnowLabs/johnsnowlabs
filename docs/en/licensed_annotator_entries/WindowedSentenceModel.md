@@ -22,7 +22,8 @@ DOCUMENT
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import *
+
+from johnsnowlabs import medical, nlp
 
 documentAssembler =  nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -97,6 +98,13 @@ result.select(F.explode('window_2')).select('col.result').show(truncate=False)
 
 
 {%- capture model_scala_medical -%}
+
+import com.johnsnowlabs.nlp.annotators.windowed.WindowedSentenceModel
+import com.johnsnowlabs.nlp.DocumentAssembler
+import com.johnsnowlabs.nlp.annotators.sbd.pragmatic.SentenceDetector
+import org.apache.spark.ml.Pipeline
+import spark.implicits._
+
 val documentAssembler =  new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
@@ -135,7 +143,7 @@ val result = pipeline.fit(testDataset).transform(testDataset)
 
 // Result
 
-result.select(F.explode('window_1')).select('col.result').show(truncate=False)
+// window 1
 
 +---------------------------------------------------------------------------------------------------------------------------------------------+
 |result                                                                                                                                       |
@@ -149,7 +157,7 @@ result.select(F.explode('window_1')).select('col.result').show(truncate=False)
 |Her CT scan from March 2006 prior to her pericardectomy. It already shows bilateral plural effusions.                                        |
 +---------------------------------------------------------------------------------------------------------------------------------------------+
 
-result.select(F.explode('window_2')).select('col.result').show(truncate=False)
+// window 2
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |result                                                                                                                                                                                                                          |
@@ -167,6 +175,7 @@ result.select(F.explode('window_2')).select('col.result').show(truncate=False)
 
 
 {%- capture model_python_legal -%}
+
 from johnsnowlabs import nlp, legal
 from pyspark.sql import functions as F
 
