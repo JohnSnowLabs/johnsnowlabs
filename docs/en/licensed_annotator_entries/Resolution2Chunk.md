@@ -78,16 +78,8 @@ res.select(F.explode(F.arrays_zip(res.ner_chunk.result,
 
 {%- capture model_scala_medical -%}
 
-import com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk
-import com.johnsnowlabs.legal.chunk_classification.resolution.SentenceEntityResolverModel
-import com.johnsnowlabs.legal.chunk_classification.resolution.ChunkMapperModel
-import com.johnsnowlabs.nlp.embeddings.BertSentenceEmbeddings
-import com.johnsnowlabs.nlp.embeddings.SentenceEmbeddings
-import com.johnsnowlabs.nlp.DocumentAssembler
-import org.apache.spark.ml.Pipeline
 import spark.implicits._
 
-  
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("ner_chunk")
