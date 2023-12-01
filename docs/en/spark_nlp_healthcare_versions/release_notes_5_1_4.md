@@ -2,10 +2,10 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes
-permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
+title: Spark NLP for Healthcare Release Notes 5.1.4
+permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_5_1_4
 key: docs-licensed-release-notes
-modify_date: 2023-11-10
+modify_date: 2023-12-01
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -240,7 +240,6 @@ Please check: [Clinical Named Entity Recognition Notebook](https://colab.researc
 - Updated [Calculate Medicare Risk Adjustment Score Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb) with the latest improvement
 
 
-
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
@@ -250,7 +249,7 @@ For all Spark NLP for Healthcare models, please check: [Models Hub Page](https:/
 
 
 
-## Previous versions
+## Versions
 
 </div>
 {%- include docs-healthcare-pagination.html -%}
