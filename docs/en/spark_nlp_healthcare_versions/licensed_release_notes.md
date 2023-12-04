@@ -31,7 +31,7 @@ We are delighted to announce a suite of remarkable enhancements and updates in o
 + New and updated demos
   - New [Drug Resolver Demo](https://demo.johnsnowlabs.com/healthcare/ER_DRUG/)
   - Updated [Multi Language Clinical NER Demo](https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/) 
-  - New [Medical Document Splitter Notebook]()
+  - New [Medical Document Splitter Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/38.InternalDocumentSplitter.ipynb)
   - Updated [Clinical Named Entity Recognition Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb) with `setDoExceptionHandling` information
   - Updated [Clinical DeIdentification Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb) with `setRegexPatternsDictionaryAsJsonString` and `setCombineRegexPatterns` examples
   - Updated [Calculate Medicare Risk Adjustment Score Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb) with the latest improvement
@@ -92,7 +92,7 @@ text = [(
 |He denies any prior similar or lesser symptoms. His last normal bowel movement was yesterday. He   |5     |
 |He denies any outright chills or blood per rectum.                                                 |6     |
 
-Please check [InternalDocumentSplitter Notebook]() for more information
+Please check [Medical Document Splitter Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/38.InternalDocumentSplitter.ipynb#scrollTo=RXIkmcBVbAZQ) for more information
 
 
 
@@ -234,7 +234,7 @@ Please check: [Clinical Named Entity Recognition Notebook](https://colab.researc
 
 - New [Drug Resolver Demo](https://demo.johnsnowlabs.com/healthcare/ER_DRUG/)
 - Updated [Multi Language Clinical NER Demo](https://demo.johnsnowlabs.com/healthcare/NER_CLINICAL_MULTI/) 
-- New [InternalDocumentSplitter Notebook]()
+- New [Medical Document Splitter Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/38.InternalDocumentSplitter.ipynb)
 - Updated [Clinical Named Entity Recognition Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/1.Clinical_Named_Entity_Recognition_Model.ipynb) with `setDoExceptionHandling` information
 - Updated [Clinical DeIdentification Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb) with `setRegexPatternsDictionaryAsJsonString` and `setCombineRegexPatterns` examples
 - Updated [Calculate Medicare Risk Adjustment Score Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.1.Calculate_Medicare_Risk_Adjustment_Score.ipynb) with the latest improvement
