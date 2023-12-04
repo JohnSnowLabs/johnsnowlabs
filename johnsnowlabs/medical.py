@@ -82,6 +82,7 @@ try:
             ChunkFiltererApproach,
             FewShotClassifierModel,
             FewShotClassifierApproach,
+            InternalDocumentSplitter,
             Text2SQL,
             IOBTagger,
         )
@@ -103,6 +104,7 @@ try:
             MedicalQuestionAnswering as QuestionAnswering,
             MedicalTextGenerator as TextGenerator,
             MedicalSummarizer as Summarizer,
+            InternalDocumentSplitter as DocumentSplitter,
         )
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader
