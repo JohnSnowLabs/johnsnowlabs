@@ -301,6 +301,7 @@ document.write(`
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../deid/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deIdentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../deid/deidentication_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deidentication_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/doccument_hashcoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.doccument_hashcoder</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/name_obfuscator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.name_obfuscator</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/reIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.reIdentification</span></code></a></li>
@@ -365,7 +366,11 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/text2sql/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.text2sql</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../splitter/internal_document_splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter.internal_document_splitter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../windowed/windowed_sentence/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed.windowed_sentence</span></code></a></li>
 </ul>
 </li>
@@ -958,6 +963,22 @@ just the score of the predicted tag</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setDoExceptionHandling">
+<span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
+<dd><p>If true, tries to compute batch-wise as usual.
+If within a batch an exception occurs, the batch will be processed row-wise and for any exception occurring during row-processing a Error Annotation is emitted.
+This means only the bad rows are lost instead of entire batch.
+This comes with a performance penalty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>value</strong><span class="classifier">bool</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setEnableMemoryOptimizer">
 <span class="sig-name descname"><span class="pre">setEnableMemoryOptimizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setEnableMemoryOptimizer" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets Whether to optimize for large datasets or not, by default False.
@@ -1238,6 +1259,11 @@ If the value is True, the process might be slowed down.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.doExceptionHandling">
+<span class="sig-name descname"><span class="pre">doExceptionHandling</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.doExceptionHandling" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.inferenceBatchSize">
 <span class="sig-name descname"><span class="pre">inferenceBatchSize</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.inferenceBatchSize" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -1447,6 +1473,7 @@ open-source location. Other values are “clinical/models”,
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setValidationSplit"><code class="docutils literal notranslate"><span class="pre">MedicalNerApproach.setValidationSplit()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setIncludeConfidence"><code class="docutils literal notranslate"><span class="pre">MedicalNerApproach.setIncludeConfidence()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setIncludeAllConfidenceScores"><code class="docutils literal notranslate"><span class="pre">MedicalNerApproach.setIncludeAllConfidenceScores()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">MedicalNerApproach.setDoExceptionHandling()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setEnableMemoryOptimizer"><code class="docutils literal notranslate"><span class="pre">MedicalNerApproach.setEnableMemoryOptimizer()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setUseBestModel"><code class="docutils literal notranslate"><span class="pre">MedicalNerApproach.setUseBestModel()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach.setLogPrefix"><code class="docutils literal notranslate"><span class="pre">MedicalNerApproach.setLogPrefix()</span></code></a></li>
@@ -1466,6 +1493,7 @@ open-source location. Other values are “clinical/models”,
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.configProtoBytes"><code class="docutils literal notranslate"><span class="pre">MedicalNerModel.configProtoBytes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.includeConfidence"><code class="docutils literal notranslate"><span class="pre">MedicalNerModel.includeConfidence</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.includeAllConfidenceScores"><code class="docutils literal notranslate"><span class="pre">MedicalNerModel.includeAllConfidenceScores</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">MedicalNerModel.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.inferenceBatchSize"><code class="docutils literal notranslate"><span class="pre">MedicalNerModel.inferenceBatchSize</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.classes"><code class="docutils literal notranslate"><span class="pre">MedicalNerModel.classes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel.trainingClassDistribution"><code class="docutils literal notranslate"><span class="pre">MedicalNerModel.trainingClassDistribution</span></code></a></li>

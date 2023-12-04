@@ -301,6 +301,7 @@ document.write(`
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../deid/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/deIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deIdentification</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../deid/deidentication_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.deidentication_params</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/doccument_hashcoder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.doccument_hashcoder</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/name_obfuscator/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.name_obfuscator</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../deid/reIdentification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.deid.reIdentification</span></code></a></li>
@@ -365,7 +366,11 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../seq2seq/text2sql/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.seq2seq.text2sql</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-16"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../splitter/internal_document_splitter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.splitter.internal_document_splitter</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../windowed/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-17" name="toctree-checkbox-17" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-17"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../windowed/windowed_sentence/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.windowed.windowed_sentence</span></code></a></li>
 </ul>
 </li>
@@ -557,6 +562,11 @@ threshold to filter the chunks.</p>
 <span class="sig-name descname"><span class="pre">entitiesConfidenceResource</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidenceResource" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidenceResourceAsJsonString">
+<span class="sig-name descname"><span class="pre">entitiesConfidenceResourceAsJsonString</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidenceResourceAsJsonString" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setFilterEntity">
 <span class="sig-name descname"><span class="pre">setFilterEntity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter_by</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setFilterEntity" title="Permalink to this definition">#</a></dt>
@@ -585,6 +595,20 @@ use the <cite>result</cite> attribute of the annotation to filter.</p>
 <dt><strong>read_as</strong><span class="classifier">str</span></dt><dd><p>Read file as ‘TEXT’, ‘SPARK’, or ‘BINARY’.</p>
 </dd>
 <dt><strong>options</strong><span class="classifier">dict</span></dt><dd><p>Options for reading the file.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setEntitiesConfidenceResourceAsJsonString">
+<span class="sig-name descname"><span class="pre">setEntitiesConfidenceResourceAsJsonString</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">json</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setEntitiesConfidenceResourceAsJsonString" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the entitiesConfidenceResource parameter as JSON String.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>json</strong><span class="classifier">str</span></dt><dd><p>string given as JSON with entity pairs to remove chunks based on the confidence level</p>
 </dd>
 </dl>
 </dd>
@@ -793,8 +817,10 @@ which have confidence lower than the confidence threshold.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.outputAnnotatorType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.name"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.name</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidenceResource"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.entitiesConfidenceResource</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.entitiesConfidenceResourceAsJsonString"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.entitiesConfidenceResourceAsJsonString</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setFilterEntity"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.setFilterEntity()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setEntitiesConfidenceResource"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.setEntitiesConfidenceResource()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFiltererApproach.setEntitiesConfidenceResourceAsJsonString"><code class="docutils literal notranslate"><span class="pre">ChunkFiltererApproach.setEntitiesConfidenceResourceAsJsonString()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer"><code class="docutils literal notranslate"><span class="pre">ChunkFilterer</span></code></a><ul class="nav section-nav flex-column">
