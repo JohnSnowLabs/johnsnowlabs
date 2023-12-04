@@ -6,31 +6,7 @@ ContextualParser
 approach
 {%- endcapture -%}
 
-{%- capture model -%}
-model
-{%- endcapture -%}
 
-{%- capture model_description -%}
-Extracts entity from a document based on user defined rules. Rule matching is based on a RegexMatcher defined in a
-JSON file. In this file, regex is defined that you want to match along with the information that will output on
-metadata field. To instantiate a model, see ContextualParserApproach and its accompanied example.
-{%- endcapture -%}
-
-{%- capture model_input_anno -%}
-DOCUMENT, TOKEN
-{%- endcapture -%}
-
-{%- capture model_output_anno -%}
-CHUNK
-{%- endcapture -%}
-
-{%- capture model_api_link -%}
-[ContextualParserModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/context/ContextualParserModel.html)
-{%- endcapture -%}
-
-{%- capture model_python_api_link -%}
-[ContextualParserModel](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/context/contextual_parser/index.html#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserModel)
-{%- endcapture -%}
 
 {%- capture approach_description -%}
 Creates a model, that extracts entity from a document based on user defined rules.
@@ -39,6 +15,20 @@ In this JSON file, regex is defined that you want to match along with the inform
 field. Additionally, a dictionary can be provided with `setDictionary` to map extracted entities
 to a unified representation. The first column of the dictionary file should be the representation with following
 columns the possible matches.
+
+Parametres;
+
+- `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
+- `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
+- `jsonPath`: Path to json file containing regex patterns and rules to match the entities.
+- `dictionary`: Path to dictionary file in tsv or csv format.
+- `caseSensitive`: Whether to use case sensitive when matching values.
+- `prefixAndSuffixMatch`: Whether to match both prefix and suffix to annotate the match.
+- `optionalContextRules`: When set to true, it will output regex match regardless of context matches.
+- `shortestContextMatch`: When set to true, it will stop finding for matches when prefix/suffix data is found in the text.
+- `completeContextMatch`: Whether to do an exact match of prefix and suffix.
+
+All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}
@@ -63,6 +53,7 @@ from johnsnowlabs import *
 # Which means to extract the stage code on a sentence level.
 # An example pipeline could then be defined like this
 # Pipeline could then be defined like this
+
 documentAssembler = nlp.DocumentAssembler() \
   .setInputCol("text") \
   .setOutputCol("document")
@@ -75,9 +66,6 @@ tokenizer = nlp.Tokenizer() \
   .setInputCols(["sentence"]) \
   .setOutputCol("token")
 
-# Define the parser (json file needs to be provided)
-data = spark.createDataFrame([["A patient has liver metastases pT1bN0M0 and the T5 primary site may be colon or... "]]).toDF("text")
-
 contextualParser = medical.ContextualParserApproach() \
   .setInputCols(["sentence", "token"]) \
   .setOutputCol("entity") \
@@ -85,12 +73,15 @@ contextualParser = medical.ContextualParserApproach() \
   .setCaseSensitive(True) \
   .setContextMatch(False)
 
-pipeline = Pipeline(stages=[
+pipeline = nlp.Pipeline(stages=[
     documentAssembler,
     sentenceDetector,
     tokenizer,
     contextualParser
   ])
+
+# Define the parser (json file needs to be provided)
+data = spark.createDataFrame([["A patient has liver metastases pT1bN0M0 and the T5 primary site may be colon or... "]]).toDF("text")
 
 result = pipeline.fit(data).transform(data)
 
@@ -121,6 +112,7 @@ from johnsnowlabs import *
 # Which means to extract the stage code on a sentence level.
 # An example pipeline could then be defined like this
 # Pipeline could then be defined like this
+
 documentAssembler = nlp.DocumentAssembler() \
   .setInputCol("text") \
   .setOutputCol("document")
@@ -133,8 +125,6 @@ tokenizer = nlp.Tokenizer() \
   .setInputCols(["sentence"]) \
   .setOutputCol("token")
 
-# Define the parser (json file needs to be provided)
-
 contextualParser = legal.ContextualParserApproach() \
   .setInputCols(["sentence", "token"]) \
   .setOutputCol("entity") \
@@ -142,12 +132,26 @@ contextualParser = legal.ContextualParserApproach() \
   .setCaseSensitive(True) \
   .setContextMatch(False)
 
-pipeline = Pipeline(stages=[
+pipeline = nlp.Pipeline(stages=[
     documentAssembler,
     sentenceDetector,
     tokenizer,
     contextualParser
   ])
+
+# Define the parser (json file needs to be provided)
+data = spark.createDataFrame([["Peter Parker is a nice guy and lives in New York . Bruce Wayne is also a nice guy and lives in San Antonio and Gotham City ."]]).toDF("text")
+
+result = pipeline.fit(data).transform(data)
+
+# Show Results
+result.selectExpr("explode(entity)").show(5, truncate=False)
+
++---------------------------------------------------------------+
+|result                                                         |
++---------------------------------------------------------------+
+|[Peter Parker, New York, Bruce Wayne, San Antonio, Gotham City]|
++---------------------------------------------------------------+
 {%- endcapture -%}
 
 {%- capture approach_python_finance -%}
@@ -164,6 +168,7 @@ from johnsnowlabs import *
 # Which means to extract the stage code on a sentence level.
 # An example pipeline could then be defined like this
 # Pipeline could then be defined like this
+
 documentAssembler = nlp.DocumentAssembler() \
   .setInputCol("text") \
   .setOutputCol("document")
@@ -185,12 +190,26 @@ contextualParser = finance.ContextualParserApproach() \
   .setCaseSensitive(True) \
   .setContextMatch(False)
 
-pipeline = Pipeline(stages=[
+pipeline = nlp.Pipeline(stages=[
     documentAssembler,
     sentenceDetector,
     tokenizer,
     contextualParser
   ])
+
+# Define the parser (json file needs to be provided)
+data = spark.createDataFrame([["Peter Parker is a nice guy and lives in New York . Bruce Wayne is also a nice guy and lives in San Antonio and Gotham City ."]]).toDF("text")
+
+result = pipeline.fit(data).transform(data)
+
+# Show Results
+result.selectExpr("explode(entity)").show(5, truncate=False)
+
++---------------------------------------------------------------+
+|result                                                         |
++---------------------------------------------------------------+
+|[Peter Parker, New York, Bruce Wayne, San Antonio, Gotham City]|
++---------------------------------------------------------------+
 {%- endcapture -%}
 
 {%- capture approach_scala_medical -%}
@@ -206,32 +225,35 @@ from johnsnowlabs import *
 //
 // Which means to extract the stage code on a sentence level.
 // An example pipeline could then be defined like this
-val documentAssembler = new nlp.DocumentAssembler()
+
+val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentenceDetector = new nlp.SentenceDetector()
+val sentenceDetector = new SentenceDetector()
   .setInputCols("document")
   .setOutputCol("sentence")
 
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("sentence")
   .setOutputCol("token")
 
-// Define the parser (json file needs to be provided)
-val data = Seq("A patient has liver metastases pT1bN0M0 and the T5 primary site may be colon or... ").toDF("text")
-val contextualParser = new medical.ContextualParserApproach()
+val contextualParser = new ContextualParserApproach()
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("entity")
   .setJsonPath("/path/to/regex_token.json")
   .setCaseSensitive(true)
   .setContextMatch(false)
+
 val pipeline = new Pipeline().setStages(Array(
     documentAssembler,
     sentenceDetector,
     tokenizer,
     contextualParser
   ))
+
+// Define the parser (json file needs to be provided)
+val data = Seq("A patient has liver metastases pT1bN0M0 and the T5 primary site may be colon or... ").toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
@@ -263,32 +285,46 @@ from johnsnowlabs import *
 //
 // Which means to extract the stage code on a sentence level.
 // An example pipeline could then be defined like this
-val documentAssembler = new nlp.DocumentAssembler()
+
+val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentenceDetector = new nlp.SentenceDetector()
+val sentenceDetector = new SentenceDetector()
   .setInputCols("document")
   .setOutputCol("sentence")
 
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("sentence")
   .setOutputCol("token")
 
-// Define the parser (json file needs to be provided)
-val data = Seq("A patient has liver metastases pT1bN0M0 and the T5 primary site may be colon or... ").toDF("text")
-val contextualParser = new legal.ContextualParserApproach()
+val contextualParser = new ContextualParserApproach()
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("entity")
   .setJsonPath("/path/to/regex_token.json")
   .setCaseSensitive(true)
   .setContextMatch(false)
+
 val pipeline = new Pipeline().setStages(Array(
     documentAssembler,
     sentenceDetector,
     tokenizer,
     contextualParser
   ))
+
+// Define the parser (json file needs to be provided)
+val data = Seq("Peter Parker is a nice guy and lives in New York . Bruce Wayne is also a nice guy and lives in San Antonio and Gotham City .").toDF("text")
+
+val result = pipeline.fit(data).transform(data)
+
+// Show Results
+result.selectExpr("explode(entity)").show(5, truncate=False)
+
++---------------------------------------------------------------+
+|result                                                         |
++---------------------------------------------------------------+
+|[Peter Parker, New York, Bruce Wayne, San Antonio, Gotham City]|
++---------------------------------------------------------------+
 {%- endcapture -%}
 
 {%- capture approach_scala_finance -%}
@@ -304,6 +340,7 @@ from johnsnowlabs import *
 //
 // Which means to extract the stage code on a sentence level.
 // An example pipeline could then be defined like this
+
 val documentAssembler = new nlp.DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -316,20 +353,33 @@ val tokenizer = new nlp.Tokenizer()
   .setInputCols("sentence")
   .setOutputCol("token")
 
-// Define the parser (json file needs to be provided)
-val data = Seq("A patient has liver metastases pT1bN0M0 and the T5 primary site may be colon or... ").toDF("text")
-val contextualParser = new finance.ContextualParserApproach()
+val contextualParser = new ContextualParserApproach()
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("entity")
   .setJsonPath("/path/to/regex_token.json")
   .setCaseSensitive(true)
   .setContextMatch(false)
+
 val pipeline = new Pipeline().setStages(Array(
     documentAssembler,
     sentenceDetector,
     tokenizer,
     contextualParser
   ))
+
+// Define the parser (json file needs to be provided)
+val data = Seq("Peter Parker is a nice guy and lives in New York . Bruce Wayne is also a nice guy and lives in San Antonio and Gotham City .").toDF("text")
+
+val result = pipeline.fit(data).transform(data)
+
+// Show Results
+result.selectExpr("explode(entity)").show(5, truncate=False)
+
++---------------------------------------------------------------+
+|result                                                         |
++---------------------------------------------------------------+
+|[Peter Parker, New York, Bruce Wayne, San Antonio, Gotham City]|
++---------------------------------------------------------------+
 {%- endcapture -%}
 
 {%- capture approach_api_link -%}
@@ -340,15 +390,14 @@ val pipeline = new Pipeline().setStages(Array(
 [ContextualParserApproach](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/context/contextual_parser/index.html#sparknlp_jsl.annotator.context.contextual_parser.ContextualParserApproach)
 {%- endcapture -%}
 
+{%- capture approach_notebook_link -%}
+[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualParserApproach.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
 approach=approach
-model_description=model_description
-model_input_anno=model_input_anno
-model_output_anno=model_output_anno
-model_api_link=model_api_link
-model_python_api_link=model_python_api_link
 approach_description=approach_description
 approach_input_anno=approach_input_anno
 approach_output_anno=approach_output_anno
@@ -360,4 +409,5 @@ approach_scala_legal=approach_scala_legal
 approach_scala_finance=approach_scala_finance
 approach_api_link=approach_api_link
 approach_python_api_link=approach_python_api_link
+approach_notebook_link=approach_notebook_link
 %}
