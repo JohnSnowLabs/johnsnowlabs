@@ -6,6 +6,7 @@ from typing import List, Optional, Union, Dict, Any, Tuple
 
 import numpy as np
 from haystack import BaseComponent
+from haystack.document_stores import BaseDocumentStore
 from haystack.nodes.retriever import EmbeddingRetriever
 from haystack.nodes.retriever._base_embedding_encoder import _BaseEmbeddingEncoder
 from haystack.schema import Document, MultiLabel
@@ -61,10 +62,21 @@ class _JohnsnowlabsEmbeddingEncoder(_BaseEmbeddingEncoder):
 
 
 class JohnSnowLabsHaystackEmbedder(EmbeddingRetriever):
-    def __init__(self, **kwargs):
+    def __init__(
+        self,
+        embedding_model: str,
+        use_gpu: bool = False,
+        document_store: Optional[BaseDocumentStore] = None,
+        **kwargs,
+    ):
         inject()
         kwargs["model_format"] = "johnsnowlabs"
-        super().__init__(**kwargs)
+        super().__init__(
+            embedding_model=embedding_model,
+            document_store=document_store,
+            use_gpu=use_gpu,
+            **kwargs,
+        )
 
 
 class JohnSnowLabsHaystackProcessor(BaseComponent):  # BasePreProcessor
@@ -193,7 +205,10 @@ class JohnSnowLabsHaystackProcessor(BaseComponent):  # BasePreProcessor
         # Todo pass params dynamically?
         text = document.content
         texts = [split for split in self.pipe.annotate(text)["splits"]]
-        return [Document(id=str(i), content=text) for i, text in enumerate(texts)]
+        return [
+            Document(id_hash_keys=["content", "meta"], content=text, meta=document.meta)
+            for i, text in enumerate(texts)
+        ]
 
     def run(
         self,

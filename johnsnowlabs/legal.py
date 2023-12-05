@@ -98,7 +98,10 @@ try:
             Chunk2Token,
             ExtractiveSummarization,
             ChunkFiltererApproach,
+            InternalDocumentSplitter as DocumentSplitter,
             Text2SQL,
+            IOBTagger,
+        
         )
         from sparknlp_jsl.modelTracer import ModelTracer
 
