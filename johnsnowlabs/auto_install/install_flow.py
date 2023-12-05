@@ -27,6 +27,7 @@ from johnsnowlabs.auto_install.offline_install import get_printable_dependency_u
 from johnsnowlabs.auto_install.softwares import Software
 from johnsnowlabs.py_models.jsl_secrets import JslSecrets
 from johnsnowlabs.utils.enums import JvmHardwareTarget, ProductName, PyInstallTypes
+from johnsnowlabs.utils.pip_utils import uninstall_all_jsl_wheels
 
 
 def install(
@@ -101,8 +102,9 @@ def install(
     extra_pip_installs: Optional[List[str]] = None,
 ):
     if refresh_install and os.path.exists(settings.root_dir):
-        print("🧹 Cleaning up old JSL Home in ", settings.root_dir)
+        print("🧹 Uninstalling all Johnsnowlabs wheels and deleting ", settings.root_dir)
         shutil.rmtree(settings.root_dir)
+        uninstall_all_jsl_wheels()
     if clean_cluster and databricks_host:
         dbfs_rm(
             get_db_client_for_token(databricks_host, databricks_token),
