@@ -40,9 +40,18 @@ def get_pip_lib_version(lib: str, py_exec: str = sys.executable):
         return LibVersion(matches[0].split(" ")[-1])
 
 
-def uninstall_lib(pip_package_name, py_path=sys.executable):
-    cmd = f"{py_path} -m pip uninstall {pip_package_name} -y "
-    os.system(cmd)
+def uninstall_all_jsl_wheels():
+    uninstall("spark-nlp")
+    uninstall("spark-nlp-jsl")
+    uninstall("spark-nlp-ocr")
+    uninstall("spark-nlp-display")
+    uninstall("nlu")
+
+
+def uninstall(pip_package_name):
+    import pip._internal as pip_internal
+
+    pip_internal.main(["uninstall", pip_package_name, "-y"])
     reload(site)
 
 
