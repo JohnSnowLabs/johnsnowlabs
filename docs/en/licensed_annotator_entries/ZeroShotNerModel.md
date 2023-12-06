@@ -472,7 +472,7 @@ result.selectExpr("explode(arrays_zip(ner_chunk.result, ner_chunk.metadata)) as 
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ZeroShotNerModel.ipynb)
+[ZeroShotNerModel](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ZeroShotNerModel.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
@@ -483,6 +483,7 @@ model_input_anno=model_input_anno
 model_output_anno=model_output_anno
 model_python_medical=model_python_medical
 model_python_finance=model_python_finance
+model_scala_medical=model_scala_medical
 model_python_legal=model_python_legal
 model_scala_legal=model_scala_legal
 model_scala_finance=model_scala_finance

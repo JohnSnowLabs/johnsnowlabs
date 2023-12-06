@@ -676,7 +676,7 @@ result.select(explode(arrays_zip(result("relations")("metadata"), result("relati
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ZeroShotRelationExtractionModel.ipynb)
+[ZeroShotRelationExtractionModel](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ZeroShotRelationExtractionModel.ipynb)
 {%- endcapture -%}
 
 
