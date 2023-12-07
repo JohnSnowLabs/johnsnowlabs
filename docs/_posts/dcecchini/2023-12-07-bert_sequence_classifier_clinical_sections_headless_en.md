@@ -70,7 +70,7 @@ ___ in liver clinic and from there have your colonoscopy
 and EGD scheduled. """]]).toDF("text")
 
 
-result = spark_model.transform(example_df)
+result = pipeline.fit(example_df).transform(example_df)
 result.select("prediction.result").show(truncate=False)
 ```
 ```scala
@@ -109,7 +109,7 @@ fluid off and eat a low salt diet. You will follow up with Dr.
 ___ in liver clinic and from there have your colonoscopy 
 and EGD scheduled. """"
 
-val example = Seq(test_sentences).toDS.toDF("text")
+val example = Seq(test_sentences).toDF("text")
 
 val result = pipeline.fit(example).transform(example)
 
@@ -179,13 +179,14 @@ and EGD scheduled.
 ## Benchmarking
 
 ```bash
-Complications and Risk Factors     0.9965    0.9870    0.9917      2000
-     Consultation and Referral     0.8546    0.9235    0.8877      1216
-Diagnostic and Laboratory Data     0.8587    0.9085    0.8829      2000
-         Discharge Information     0.8177    0.6930    0.7502      2000
+                         label  precision    recall  f1-score   support
+Complications_and_Risk_Factors     0.9965    0.9870    0.9917      2000
+     Consultation_and_Referral     0.8546    0.9235    0.8877      1216
+Diagnostic_and_Laboratory_Data     0.8587    0.9085    0.8829      2000
+         Discharge_Information     0.8177    0.6930    0.7502      2000
                         Habits     0.9431    0.9216    0.9322       306
                        History     0.9316    0.9405    0.9361      2000
                          Other     0.5750    0.9471    0.7156       170
-           Patient Information     0.7817    0.7735    0.7776      2000
+           Patient_Information     0.7817    0.7735    0.7776      2000
                     Procedures     0.9333    0.9375    0.9354      2000
 ```
