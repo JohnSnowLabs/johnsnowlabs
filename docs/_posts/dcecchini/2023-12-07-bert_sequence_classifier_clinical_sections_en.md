@@ -113,7 +113,7 @@ fluid off and eat a low salt diet. You will follow up with Dr.
 ___ in liver clinic and from there have your colonoscopy 
 and EGD scheduled. """"
 
-val example = Seq(test_sentences).toDS.toDF("text")
+val example = Seq(test_sentences).toDF("text")
 
 val result = pipeline.fit(example).transform(example)
 
@@ -186,15 +186,14 @@ and EGD scheduled.
 ## Benchmarking
 
 ```bash
-                                precision    recall  f1-score   support
-
-Complications and Risk Factors     0.9965    0.9845    0.9904      2000
-     Consultation and Referral     0.5187    0.9342    0.6671      1216
-Diagnostic and Laboratory Data     0.4736    0.8420    0.6062      2000
-         Discharge Information     0.7500    0.5355    0.6249      2000
+                         label  precision    recall  f1-score   support
+Complications_and_Risk_Factors     0.9965    0.9845    0.9904      2000
+     Consultation_and_Referral     0.5187    0.9342    0.6671      1216
+Diagnostic_and_Laboratory_Data     0.4736    0.8420    0.6062      2000
+         Discharge_Information     0.7500    0.5355    0.6249      2000
                         Habits     0.9701    0.8497    0.9059       306
                        History     0.7528    0.9730    0.8489      2000
                          Other     0.9314    0.9588    0.9449       170
-           Patient Information     0.2921    0.0390    0.0688      2000
+           Patient_Information     0.2921    0.0390    0.0688      2000
                     Procedures     0.9230    0.5755    0.7090      2000
 ```
