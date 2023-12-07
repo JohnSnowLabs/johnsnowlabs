@@ -38,23 +38,22 @@ from johnsnowlabs import nlp, medical
 import json
 
 entities = [
-          {
-            "label": "Person",
-            "patterns": ["Jon", "John", "John's"]
-          },
-          {
-            "label": "Organization",
-            "patterns": ["St. Mary's Hospital", "St. Mary's"]
-          },
-          {
-              "label": "Condition",
-              "patterns": ["vital signs", "heartbeat", "oxygen saturation levels"]
-          }
-         ]
+    {
+    "label": "Person",
+    "patterns": ["Jon", "John", "John's"]
+    },
+    {
+    "label": "Organization",
+    "patterns": ["St. Mary's Hospital", "St. Mary's"]
+    },
+    {
+        "label": "Condition",
+        "patterns": ["vital signs", "heartbeat", "oxygen saturation levels"]
+    }
+]
 
 with open('./entities.json', 'w') as jsonfile:
     json.dump(entities, jsonfile)
-
 
 
 document_assembler = nlp.DocumentAssembler()\
@@ -76,18 +75,15 @@ qagenerator = medical.NerQuestionGenerator()\
     .setStrategyType("Paired")\
     .setQuestionMark(True)
 
-
 prep_pipeline = nlp.Pipeline(stages=[
     document_assembler,
     entity_ruler,
     qagenerator
 ])
 
+example_text = """At St. Mary's Hospital, the healthcare team closely monitored John's vital signs with unwavering attention. They recorded his heartbeat and oxygen saturation levels, promptly addressing any deviations from normal. Their dedication and expertise at St. Mary's played a vital role in ensuring John's stability and fostering a swift recovery."""
 
-
-example = """At St. Mary's Hospital, the healthcare team closely monitored John's vital signs with unwavering attention. They recorded his heartbeat and oxygen saturation levels, promptly addressing any deviations from normal. Their dedication and expertise at St. Mary's played a vital role in ensuring John's stability and fostering a swift recovery."""
-
-df = spark.createDataFrame([[example]]).toDF("text")
+df = spark.createDataFrame([[example_text]]).toDF("text")
 
 result = prep_pipeline.fit(df).transform(df)
 
@@ -110,21 +106,20 @@ import spark.implicits._
 
 /* entities.json file
 entities = [
-          {
-            "label": "Person",
-            "patterns": ["Jon", "John", "John's"]
-          },
-          {
-            "label": "Organization",
-            "patterns": ["St. Mary's Hospital", "St. Mary's"]
-          },
-          {
-              "label": "Condition",
-              "patterns": ["vital signs", "heartbeat", "oxygen saturation levels"]
-          }
-         ]
+    {
+    "label": "Person",
+    "patterns": ["Jon", "John", "John's"]
+    },
+    {
+    "label": "Organization",
+    "patterns": ["St. Mary's Hospital", "St. Mary's"]
+    },
+    {
+        "label": "Condition",
+        "patterns": ["vital signs", "heartbeat", "oxygen saturation levels"]
+    }
+]
 */
-
 
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
@@ -149,7 +144,6 @@ val prep_pipeline = new Pipeline().setStages(Array(
     document_assembler, 
     entity_ruler, 
     qagenerator )) 
-
 
 val test_data = Seq("""At St. Mary's Hospital, the healthcare team closely monitored John's vital signs with unwavering attention. They recorded his heartbeat and oxygen saturation levels, promptly addressing any deviations from normal. Their dedication and expertise at St. Mary's played a vital role in ensuring John's stability and fostering a swift recovery.""").toDF("text")
 

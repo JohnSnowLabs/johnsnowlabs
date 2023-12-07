@@ -128,22 +128,12 @@ nlpPipeline = nlp.Pipeline(stages=[
     replacer_name
     ])
 
-empty_data = spark.createDataFrame([[""]]).toDF("text")
-
-model = nlpPipeline.fit(empty_data)
-result = model.transform(empty_data)
-
 sample_text = "John Davies is a 62 y.o. patient admitted. Mr. Davies was seen by attending physician Dr. Lorand and was scheduled for emergency assessment."
 
-lmodel = nlp.LightPipeline(model)
-
-res = lmodel.fullAnnotate(sample_text)
+data = spark.createDataFrame([[sample_text]]).toDF("text")
+result = nlpPipeline.fit(data).transform(data)
 
 ## Result
-
-print("Original text.  : ", res[0]['sentence'][0].result)
-
-print("Obfuscated text : ", res[0]['obfuscated_document_name'][0].result)
 
 Original text.  :  John Davies is a 62 y.o. patient admitted. Mr. Davies was seen by attending physician Dr. Lorand and was scheduled for emergency assessment.
 
@@ -198,9 +188,7 @@ Mclaughlin#NAME
 Blankenship#NAME
 Fitzpatrick#NAME
 """
-
 */
-
 
 val documentAssembler = new DocumentAssembler()
     .setInputCol("text")

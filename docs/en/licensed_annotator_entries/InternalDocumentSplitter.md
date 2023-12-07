@@ -126,7 +126,7 @@ val document_splitter = new InternalDocumentSplitter()
     .setChunkOverlap(3)
     .setExplodeSplits(true)
     .setPatternsAreRegex(false)
-    .setSplitPatterns(Array(" "," "," "))
+    .setSplitPatterns(Array("\n\n", "\n", " "))
     .setKeepSeparators(false)
     .setTrimWhitespace(true)
 

@@ -132,9 +132,6 @@ pipeline = nlp.Pipeline(stages=[
     rxnorm_resolver
 ])
 
-empty_data = spark.createDataFrame([['']]).toDF("text")
-model = pipeline.fit(empty_data)
-
 clinical_note = """The patient is a 41-year-old Vietnamese female with a cough that started last week.
 She has had right-sided chest pain radiating to her back with fever starting yesterday.
 She has a history of pericarditis in May 2006 and developed cough with right-sided chest pain.
@@ -143,9 +140,9 @@ MEDICATIONS
 2. Amiodarone 100 mg p.o. daily.
 """
 
-df = spark.createDataFrame([[clinical_note]]).toDF("text")
+data = spark.createDataFrame([[clinical_note]]).toDF("text")
 
-result = model.transform(df)
+result = pipeline.fit(data).transform(data)
 
 ## Result
 
@@ -265,14 +262,14 @@ val pipeline = new Pipeline().setStages(Array(
     rxnorm_resolver))
 
 
-val test_data = Seq("""The patient is a 41-year-old Vietnamese female with a cough that started last week.
+val data = Seq("""The patient is a 41-year-old Vietnamese female with a cough that started last week.
 She has had right-sided chest pain radiating to her back with fever starting yesterday.
 She has a history of pericarditis in May 2006 and developed cough with right-sided chest pain.
 MEDICATIONS
 1. Coumadin 1 mg daily. Last INR was on Tuesday, August 14, 2007, and her INR was 2.3.
 2. Amiodarone 100 mg p.o. daily.""").toDF("text")
 
-val res = mapperPipeline.fit(test_data).transform(test_data)
+val res = mapperPipeline.fit(data).transform(data)
 
 // Show results
 

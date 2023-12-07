@@ -105,16 +105,14 @@ mapper_pipeline = nlp.Pipeline(
         resolverMerger
     ])
 
-empty_data = spark.createDataFrame([[""]]).toDF("text")
-
-model = mapper_pipeline.fit(empty_data)
-
-samples = [
+sample_text = [
     ["The patient was given Adapin 10 MG, coumadn 5 mg"],
     ["The patient was given Avandia 4 mg, Tegretol, zitiga"],
 ]
 
-result = model.transform(spark.createDataFrame(samples).toDF("text"))
+data = spark.createDataFrame(sample_text).toDF("text")
+
+result = mapper_pipeline.fit(data).transform(data)
 
 result.selectExpr(
     "chunk.result as chunk",
@@ -209,9 +207,9 @@ val mapper_pipeline = new Pipeline().setStages(Array(
     resolverMerger))
 
 
-val test_data = Seq(("""The patient was given Adapin 10 MG, coumadn 5 mg"""),("""The patient was given Avandia 4 mg, Tegretol, zitiga""")).toDF("text")
+val data = Seq(("""The patient was given Adapin 10 MG, coumadn 5 mg"""),("""The patient was given Avandia 4 mg, Tegretol, zitiga""")).toDF("text")
 
-val res = mapperPipeline.fit(test_data).transform(test_data)
+val res = mapperPipeline.fit(data).transform(data)
 
 // Show results
 
