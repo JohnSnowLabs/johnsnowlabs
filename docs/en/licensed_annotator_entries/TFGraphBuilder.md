@@ -75,7 +75,6 @@ ner_graph_builder = legal.TFGraphBuilder()\
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/17.0.Graph_builder_for_DL_models.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

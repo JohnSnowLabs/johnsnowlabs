@@ -245,7 +245,7 @@ result.selectExpr("answer.result").show(false)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/25.1.Medical_Text_Generation.ipynb)
+
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
@@ -261,4 +261,5 @@ model_scala_legal=model_scala_legal
 model_python_finance=model_python_finance
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
-model_python_api_link=model_python_api_link%}
+model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link%}
