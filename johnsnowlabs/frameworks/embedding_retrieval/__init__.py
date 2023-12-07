@@ -4,10 +4,12 @@ if try_import_lib("haystack"):
     from johnsnowlabs.frameworks.embedding_retrieval.haystack_node import (
         JohnSnowLabsHaystackEmbedder,
         JohnSnowLabsHaystackProcessor,
+        LicensedJohnSnowLabsHaystackProcessor,
     )
 
 if try_import_lib("langchain"):
     from johnsnowlabs.frameworks.embedding_retrieval.langchain_node import (
         JohnSnowLabsLangChainEmbedder,
         JohnSnowLabsLangChainCharSplitter,
+        LicensedJohnSnowLabsLangChainCharSplitter,
     )

@@ -7,7 +7,10 @@ from langchain.embeddings.base import Embeddings
 # from langchain.pydantic_v1 import BaseModel, Extra
 from pydantic import BaseModel, Extra
 
-from johnsnowlabs.frameworks.embedding_retrieval.utils import get_docsplitter_pipe
+from johnsnowlabs.frameworks.embedding_retrieval.utils import (
+    get_docsplitter_pipe,
+    get_doc_splitter_internal_pipe,
+)
 
 
 class JohnSnowLabsLangChainEmbedder(BaseModel, Embeddings):
@@ -105,6 +108,83 @@ class JohnSnowLabsLangChainCharSplitter:
 
     def split_documents(self, docs):
         return split_lang_docs(self.pipe, docs)
+
+
+class LicensedJohnSnowLabsLangChainCharSplitter(JohnSnowLabsLangChainCharSplitter):
+    def __init__(
+        self,
+        # Splitter params
+        doc_splitter_chunk_overlap=2,
+        doc_splitter_chunk_size=20,
+        doc_splitter_explode_splits=True,
+        doc_splitter_keep_separators=True,
+        doc_splitter_patterns_are_regex=False,
+        doc_splitter_split_patterns=["\n\n", "\n", " ", ""],
+        doc_splitter_trim_whitespace=True,
+        doc_splitter_split_mode="sentence",
+        doc_splitter_sentence_awareness=False,
+        doc_splitter_max_length=512,
+        doc_splitter_custom_bounds_strategy=None,
+        doc_splitter_case_sensitive=None,
+        doc_splitter_meta_data_fields=None,
+        # Tokenizer Params
+        tokenizer_target_pattern=None,
+        tokenizer_prefix_pattern=None,
+        tokenizer_suffix_pattern=None,
+        tokenizer_infix_patterns=None,
+        tokenizer_exceptions=None,
+        tokenizer_exceptions_path=None,
+        tokenizer_case_sensitive_exceptions=None,
+        tokenizer_context_chars=None,
+        tokenizer_split_pattern=None,
+        tokenizer_split_chars=None,
+        tokenizer_min_length=None,
+        tokenizer_max_length=None,
+        # Sentence Detector Params
+        sentence_detector_model_architecture=None,
+        sentence_detector_explode_sentences=None,
+        sentence_detector_custom_bounds=None,
+        sentence_detector_use_custom_bounds_only=None,
+        sentence_detector_split_length=None,
+        sentence_detector_min_length=None,
+        sentence_detector_max_length=None,
+        sentence_detector_impossible_penultimates=None,
+    ):
+        self.pipe = get_doc_splitter_internal_pipe(
+            doc_splitter_chunk_overlap=doc_splitter_chunk_overlap,
+            doc_splitter_chunk_size=doc_splitter_chunk_size,
+            doc_splitter_explode_splits=doc_splitter_explode_splits,
+            doc_splitter_keep_separators=doc_splitter_keep_separators,
+            doc_splitter_patterns_are_regex=doc_splitter_patterns_are_regex,
+            doc_splitter_split_patterns=doc_splitter_split_patterns,
+            doc_splitter_trim_whitespace=doc_splitter_trim_whitespace,
+            doc_splitter_split_mode=doc_splitter_split_mode,
+            doc_splitter_sentence_awareness=doc_splitter_sentence_awareness,
+            doc_splitter_max_length=doc_splitter_max_length,
+            doc_splitter_custom_bounds_strategy=doc_splitter_custom_bounds_strategy,
+            doc_splitter_case_sensitive=doc_splitter_case_sensitive,
+            doc_splitter_meta_data_fields=doc_splitter_meta_data_fields,
+            tokenizer_target_pattern=tokenizer_target_pattern,
+            tokenizer_prefix_pattern=tokenizer_prefix_pattern,
+            tokenizer_suffix_pattern=tokenizer_suffix_pattern,
+            tokenizer_infix_patterns=tokenizer_infix_patterns,
+            tokenizer_exceptions=tokenizer_exceptions,
+            tokenizer_exceptions_path=tokenizer_exceptions_path,
+            tokenizer_case_sensitive_exceptions=tokenizer_case_sensitive_exceptions,
+            tokenizer_context_chars=tokenizer_context_chars,
+            tokenizer_split_pattern=tokenizer_split_pattern,
+            tokenizer_split_chars=tokenizer_split_chars,
+            tokenizer_min_length=tokenizer_min_length,
+            tokenizer_max_length=tokenizer_max_length,
+            sentence_detector_model_architecture=sentence_detector_model_architecture,
+            sentence_detector_explode_sentences=sentence_detector_explode_sentences,
+            sentence_detector_custom_bounds=sentence_detector_custom_bounds,
+            sentence_detector_use_custom_bounds_only=sentence_detector_use_custom_bounds_only,
+            sentence_detector_split_length=sentence_detector_split_length,
+            sentence_detector_min_length=sentence_detector_min_length,
+            sentence_detector_max_length=sentence_detector_max_length,
+            sentence_detector_impossible_penultimates=sentence_detector_impossible_penultimates,
+        )
 
 
 def split_lang_doc(pipe, doc):
