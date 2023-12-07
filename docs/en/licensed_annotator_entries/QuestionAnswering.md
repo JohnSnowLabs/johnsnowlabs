@@ -63,16 +63,9 @@ paper_abstract = [
     "In patients with Los Angeles (LA) grade C or D oesophagitis, a positive relationship has been established between the duration of intragastric acid suppression and healing.AIM: To determine whether there is an apparent optimal time of intragastric acid suppression for maximal healing of reflux oesophagitis. Post hoc analysis of data from a proof-of-concept, double-blind, randomized study of 134 adult patients treated with esomeprazole (10 or 40 mg od for 4 weeks) for LA grade C or D oesophagitis. A curve was fitted to pooled 24-h intragastric pH (day 5) and endoscopically assessed healing (4 weeks) data using piecewise quadratic logistic regression. Maximal reflux oesophagitis healing rates were achieved when intragastric pH>4 was achieved for approximately 50-70% (12-17 h) of the 24-h period. Acid suppression above this threshold did not yield further increases in healing rates."
 ]
 
-question = [
-    "Is there an optimal time of acid suppression for maximal healing?"
-]
+question = ["Is there an optimal time of acid suppression for maximal healing?"]
 
-data = spark.createDataFrame(
-    [
-
-        [paper_abstract[0],  question[0]],
-    ]
-).toDF("context","question")
+data = spark.createDataFrame([ [paper_abstract[0],  question[0]] ]).toDF("context","question")
 
 data.show(truncate = 60)
 
@@ -107,15 +100,11 @@ val medQA = MedicalQuestionAnswering.pretrained("medical_qa_biogpt", "en", "clin
 
 val pipeline = new Pipeline().setStages(Array(documentAssembler, medQA))
 
-val paperAbstract = Seq(
-  "In patients with Los Angeles (LA) grade C or D oesophagitis, a positive relationship has been established between the duration of intragastric acid suppression and healing.AIM: To determine whether there is an apparent optimal time of intragastric acid suppression for maximal healing of reflux oesophagitis. Post hoc analysis of data from a proof-of-concept, double-blind, randomized study of 134 adult patients treated with esomeprazole (10 or 40 mg od for 4 weeks) for LA grade C or D oesophagitis. A curve was fitted to pooled 24-h intragastric pH (day 5) and endoscopically assessed healing (4 weeks) data using piecewise quadratic logistic regression. Maximal reflux oesophagitis healing rates were achieved when intragastric pH>4 was achieved for approximately 50-70% (12-17 h) of the 24-h period. Acid suppression above this threshold did not yield further increases in healing rates."
-)
+val paperAbstract = "In patients with Los Angeles (LA) grade C or D oesophagitis, a positive relationship has been established between the duration of intragastric acid suppression and healing.AIM: To determine whether there is an apparent optimal time of intragastric acid suppression for maximal healing of reflux oesophagitis. Post hoc analysis of data from a proof-of-concept, double-blind, randomized study of 134 adult patients treated with esomeprazole (10 or 40 mg od for 4 weeks) for LA grade C or D oesophagitis. A curve was fitted to pooled 24-h intragastric pH (day 5) and endoscopically assessed healing (4 weeks) data using piecewise quadratic logistic regression. Maximal reflux oesophagitis healing rates were achieved when intragastric pH>4 was achieved for approximately 50-70% (12-17 h) of the 24-h period. Acid suppression above this threshold did not yield further increases in healing rates."
 
-val question = Seq(
-  "Is there an optimal time of acid suppression for maximal healing?"
-)
+val question = "Is there an optimal time of acid suppression for maximal healing?"
 
-val data = (paperAbstract zip question).toDF("context", "question")
+val data = Seq(paperAbstract, question).toDF("context", "question")
 
 data.show()
 
@@ -190,8 +179,7 @@ result.selectExpr("document_question.result as Question", "answer.result as Answ
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
-val context = Seq(
-  """EXHIBIT 99.2 Page 1 of 3 DISTRIBUTOR AGREEMENT Agreement made this 19th day of March, 2020 Between: Co-Diagnostics, Inc. (herein referred to as "Principal") And PreCheck Health Services, Inc. (herein referred to as "Distributor"). In consideration of the mutual terms, conditions and covenants hereinafter set forth, Principal and Distributor acknowledge and agree to the following descriptions and conditions: DESCRIPTION OF PRINCIPAL The Principal is a company located in Utah, United States and is in the business of research and development of reagents. The Principal markets and sells it products globally through direct sales and distributors. DESCRIPTION OF DISTRIBUTOR The Distributor is a company operating or planning to operate in the United States of America, Latin America, Europe and Russia. The Distributor represents that the Distributor or a subsidiary of the Distributor is or will be fully licensed and registered in the Territory and will provide professional distribution services for the products of the Principal. CONDITIONS: 1. The Principal appoints the Distributor as a non-exclusive distributor, to sell Principal's qPCR infectious disease kits, Logix Smart COVID-19 PCR diagnostic test and Co-Dx Box™ instrument (the "Products"). The Products are described on Exhibit A to this Agreement. 2. The Principal grants Distributor non- exclusive rights to sell these products within the countries of Romania (the "Territory"), which may be amended by mutual written agreement."""
+val context = Seq("""EXHIBIT 99.2 Page 1 of 3 DISTRIBUTOR AGREEMENT Agreement made this 19th day of March, 2020 Between: Co-Diagnostics, Inc. (herein referred to as "Principal") And PreCheck Health Services, Inc. (herein referred to as "Distributor"). In consideration of the mutual terms, conditions and covenants hereinafter set forth, Principal and Distributor acknowledge and agree to the following descriptions and conditions: DESCRIPTION OF PRINCIPAL The Principal is a company located in Utah, United States and is in the business of research and development of reagents. The Principal markets and sells it products globally through direct sales and distributors. DESCRIPTION OF DISTRIBUTOR The Distributor is a company operating or planning to operate in the United States of America, Latin America, Europe and Russia. The Distributor represents that the Distributor or a subsidiary of the Distributor is or will be fully licensed and registered in the Territory and will provide professional distribution services for the products of the Principal. CONDITIONS: 1. The Principal appoints the Distributor as a non-exclusive distributor, to sell Principal's qPCR infectious disease kits, Logix Smart COVID-19 PCR diagnostic test and Co-Dx Box™ instrument (the "Products"). The Products are described on Exhibit A to this Agreement. 2. The Principal grants Distributor non- exclusive rights to sell these products within the countries of Romania (the "Territory"), which may be amended by mutual written agreement."""
 )
 
 val questions = Seq(
@@ -222,7 +210,6 @@ val legQA = LegalQuestionAnswering.pretrained("legqa_flant5_finetuned", "en", "c
   .setMaxNewTokens(40)
   .setTopK(3)
   .setOutputCol("answer")
-
 
 val pipeline = new Pipeline().setStages(Array(documentAssembler, legQA))
 

@@ -70,7 +70,8 @@ data = spark.createDataFrame([[text]]).toDF("text")
 
 result = pipeline.fit(data).transform(data)
 
-result.select(F.explode(F.arrays_zip(result.sentence.result, result.deidentified.result)).alias("cols"))\
+result.select(F.explode(F.arrays_zip(result.sentence.result, 
+                                     result.deidentified.result)).alias("cols"))\
       .select(F.expr("cols['0']").alias("sentence"), 
               F.expr("cols['1']").alias("deidentified")).show(truncate = False)
 
@@ -115,7 +116,7 @@ val wordEmbeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en",
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
 
-val clinicalNer = NerDLModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models")
+val clinicalNer = MedicalNerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
 
@@ -267,7 +268,7 @@ val embeddings = RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
 
-val legalNer = NerDLModel.pretrained("legner_contract_doc_parties_lg", "en", "legal/models")
+val legalNer = LegalNerModel.pretrained("legner_contract_doc_parties_lg", "en", "legal/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
 
@@ -295,7 +296,7 @@ val pipeline = new Pipeline()
 
 val text = "THIS STRATEGIC ALLIANCE AGREEMENT (\"Agreement\") is made and entered into as of December 14, 2016, by and between Hyatt Franchising Latin America, L.L.C. a limited liability company organized and existing under the laws of the State of Delaware"
 
-val data = Seq((text)).toDF("text")
+val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
@@ -497,7 +498,7 @@ val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base", "en"
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
 
-val nerModel = NerDLModel.pretrained("finner_sec_10k_summary", "en", "finance/models")
+val nerModel = FinanceNerModel.pretrained("finner_sec_10k_summary", "en", "finance/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
 
@@ -554,7 +555,7 @@ CDNS
 Nasdaq Global Select Market
 Securities registered pursuant to Section 12(g) of the Act:"
 
-val data = Seq((text)).toDF("text")
+val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
