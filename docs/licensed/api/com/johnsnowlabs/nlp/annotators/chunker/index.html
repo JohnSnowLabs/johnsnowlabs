@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.1.3 ScalaDoc  - com.johnsnowlabs.nlp.annotators.chunker</title>
-          <meta name="description" content="Spark NLP 5.1.3 ScalaDoc - com.johnsnowlabs.nlp.annotators.chunker" />
-          <meta name="keywords" content="Spark NLP 5.1.3 ScalaDoc com.johnsnowlabs.nlp.annotators.chunker" />
+          <title>Spark NLP 5.1.4 ScalaDoc  - com.johnsnowlabs.nlp.annotators.chunker</title>
+          <meta name="description" content="Spark NLP 5.1.4 ScalaDoc - com.johnsnowlabs.nlp.annotators.chunker" />
+          <meta name="keywords" content="Spark NLP 5.1.4 ScalaDoc com.johnsnowlabs.nlp.annotators.chunker" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.1.3 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.1.4 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -231,8 +231,8 @@
                         <a href="ChunkMapperModel.html" title="">ChunkMapperModel</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="ChunkSentenceSplitter$.html" title=""></a>
-                        <a class="class" href="ChunkSentenceSplitter.html" title="Split the document using the chunks that you provided,and put in the metadata the chunk entity."></a>
-                        <a href="ChunkSentenceSplitter.html" title="Split the document using the chunks that you provided,and put in the metadata the chunk entity.">ChunkSentenceSplitter</a>
+                        <a class="class" href="ChunkSentenceSplitter.html" title="An annotator that splits a document into sentences based on provided chunks."></a>
+                        <a href="ChunkSentenceSplitter.html" title="An annotator that splits a document into sentences based on provided chunks.">ChunkSentenceSplitter</a>
                       </li><li class="current-entities indented5">
                         <span class="separator"></span>
                         <a class="class" href="DocMapperApproach.html" title=""></a>
@@ -494,6 +494,22 @@
       </span>
       <span class="symbol">
         <a title="" href="../seq2seq/index.html"><span class="name">seq2seq</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.johnsnowlabs.nlp.annotators">annotators</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.splitter" visbl="pub" class="indented5 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="splitter"></a><a id="splitter:splitter"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/splitter/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../splitter/index.html"><span class="name">splitter</span></a>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.johnsnowlabs.nlp.annotators">annotators</a></dd></dl></div>
@@ -973,15 +989,22 @@ producing summaries</a></p><p><a href="https://arxiv.org/abs/1810.04805" target=
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="Split the document using the chunks that you provided,and put in the metadata the chunk entity." href="ChunkSentenceSplitter.html"><span class="name">ChunkSentenceSplitter</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="ChunkSentenceSplitter.html" class="extype" name="com.johnsnowlabs.nlp.annotators.chunker.ChunkSentenceSplitter">ChunkSentenceSplitter</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="ChunkSentenceSplitter.html" class="extype" name="com.johnsnowlabs.nlp.annotators.chunker.ChunkSentenceSplitter">ChunkSentenceSplitter</a>] with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
+        <a title="An annotator that splits a document into sentences based on provided chunks." href="ChunkSentenceSplitter.html"><span class="name">ChunkSentenceSplitter</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="ChunkSentenceSplitter.html" class="extype" name="com.johnsnowlabs.nlp.annotators.chunker.ChunkSentenceSplitter">ChunkSentenceSplitter</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="ChunkSentenceSplitter.html" class="extype" name="com.johnsnowlabs.nlp.annotators.chunker.ChunkSentenceSplitter">ChunkSentenceSplitter</a>] with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
       </span>
       
-      <p class="shortcomment cmt">Split the document using the chunks that you provided,and put in the metadata the chunk entity.</p><div class="fullcomment"><div class="comment cmt"><p>Split the document using the chunks that you provided,and put in the metadata the chunk entity.
-The first piece of document to the first chunk will have the entity as header.</p><p>Is useful if you identify the titles and subtitles using some ner and after that you can split by paragraph</p><h4>Example</h4><pre> <span class="kw">val</span> data = <span class="std">Seq</span>(text,text).toDS.toDF(<span class="lit">"text"</span>)
+      <p class="shortcomment cmt">An annotator that splits a document into sentences based on provided chunks.</p><div class="fullcomment"><div class="comment cmt"><p>An annotator that splits a document into sentences based on provided chunks.
+The first piece of the document is treated as a header, and subsequent chunks are labeled with their associated entities.</p><p>This annotator is particularly useful when identifying titles and subtitles using Named Entity Recognition (NER),
+followed by a paragraph-level split.</p><h4>Example</h4><pre><span class="cmt">// Create a DataFrame with a "text" column</span>
+<span class="kw">val</span> data = <span class="std">Seq</span>(text, text).toDS.toDF(<span class="lit">"text"</span>)
+
+<span class="cmt">// Set up the NLP pipeline with DocumentAssembler, RegexMatcher, and ChunkSentenceSplitter</span>
 <span class="kw">val</span> documentAssembler = <span class="kw">new</span> DocumentAssembler().setInputCol(<span class="lit">"text"</span>).setOutputCol(<span class="lit">"doc"</span>)
-<span class="kw">val</span> regexMatcher = <span class="kw">new</span> RegexMatcher().setInputCols(<span class="lit">"doc"</span>).setOutputCol(<span class="lit">"chunks"</span>).setExternalRules(<span class="lit">"src/test/resources/chunker/title_regex.txt"</span>,<span class="lit">","</span>)
-<span class="kw">val</span> chunkSentenceSplitter = <span class="kw">new</span> ChunkSentenceSplitter().setInputCols(<span class="lit">"chunks"</span>,<span class="lit">"doc"</span>).setOutputCol(<span class="lit">"paragraphs"</span>)
-<span class="kw">val</span> pipeline =  <span class="kw">new</span> Pipeline().setStages(<span class="std">Array</span>(documentAssembler,regexMatcher,chunkSentenceSplitter))
+<span class="kw">val</span> regexMatcher = <span class="kw">new</span> RegexMatcher().setInputCols(<span class="lit">"doc"</span>).setOutputCol(<span class="lit">"chunks"</span>)
+                  .setExternalRules(<span class="lit">"src/test/resources/chunker/title_regex.txt"</span>, <span class="lit">","</span>)
+<span class="kw">val</span> chunkSentenceSplitter = <span class="kw">new</span> ChunkSentenceSplitter().setInputCols(<span class="lit">"chunks"</span>, <span class="lit">"doc"</span>).setOutputCol(<span class="lit">"paragraphs"</span>)
+<span class="kw">val</span> pipeline = <span class="kw">new</span> Pipeline().setStages(<span class="std">Array</span>(documentAssembler, regexMatcher, chunkSentenceSplitter))
+
+<span class="cmt">// Fit the pipeline to the data and transform it</span>
 <span class="kw">val</span> result = pipeline.fit(data).transform(data).select(<span class="lit">"paragraphs"</span>)
 result.show(truncate = <span class="kw">false</span>)</pre></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.chunker.DocMapperApproach" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
