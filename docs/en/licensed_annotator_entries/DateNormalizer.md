@@ -43,8 +43,7 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-
-from pyspark.sql.types import StringType
+from johnsnowlabs import nlp, medical
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("original_date")\
@@ -101,6 +100,7 @@ result.selectExpr(
 
 
 {%- capture model_scala_medical -%}
+import spark.implicits._
 
 val document_assembler = new DocumentAssembler()
     .setInputCol("original_date")
@@ -127,13 +127,6 @@ val df = Seq(("08/02/2018"),("11/2018"),("11/01/2018"),("next monday"),("today")
 
 val result = pipeline.fit(df).transform(df)
 
-result.selectExpr(
-    "date.result as normalized_date",
-    "original_date",
-    "date.metadata[0].normalized as metadata",
-).show()
-
-
 +---------------+-------------+--------+
 |normalized_date|original_date|metadata|
 +---------------+-------------+--------+
@@ -152,8 +145,7 @@ result.selectExpr(
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
-
-from pyspark.sql.types import StringType
+from johnsnowlabs import nlp, legal
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("original_date")\
@@ -236,12 +228,6 @@ val df = Seq(("08/02/2018"),("11/2018"),("11/01/2018"),("next monday"),("today")
 
 val result = pipeline.fit(df).transform(df)
 
-result.selectExpr(
-    "date.result as normalized_date",
-    "original_date",
-    "date.metadata[0].normalized as metadata",
-).show()
-
 
 +---------------+-------------+--------+
 |normalized_date|original_date|metadata|
@@ -262,7 +248,7 @@ result.selectExpr(
 
 {%- capture model_python_finance -%}
 
-from pyspark.sql.types import StringType
+from johnsnowlabs import nlp, finance
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("original_date")\
@@ -319,6 +305,7 @@ result.selectExpr(
 
 
 {%- capture model_scala_medical -%}
+import spark.implicits._
 
 val document_assembler = new DocumentAssembler()
     .setInputCol("original_date")
@@ -344,12 +331,6 @@ import spark.implicits._
 val df = Seq(("08/02/2018"),("11/2018"),("11/01/2018"),("next monday"),("today"),("next week")).toDF("original_date")
 
 val result = pipeline.fit(df).transform(df)
-
-result.selectExpr(
-    "date.result as normalized_date",
-    "original_date",
-    "date.metadata[0].normalized as metadata",
-).show()
 
 
 +---------------+-------------+--------+
