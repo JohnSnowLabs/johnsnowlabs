@@ -14,6 +14,24 @@ For the relative dates (next year, past month, etc.), you can define an achor da
 
 The resultant chunk date will contain a metada indicating whether the normalization was successful or not (True / False). 
 
+Parametres;
+
+- `anchorDateYear`: (Int) Sets an anchor year for the relative dates such as a day after tomorrow. If not set it will use the current year.
+
+- `anchorDateMonth`: (Int) Sets an anchor month for the relative dates such as a day after tomorrow. If not set it will use the current month.
+
+- `anchorDateDay`: (Int) Sets an anchor day of the day for the relative dates such as a day after tomorrow. If not set it will use the current day.
+
+- `outputDateformat`: (string) Select what output format to use. If not set, the dates will be formatted as  `YYYY/MM/DD`. Options are:
+  - `eu`: Format the dates as `DD/MM/YYYY`
+  - `us`: Format the dates as `MM/DD/YYYY`
+
+- `defaultReplacementDay`: (Int) Defines which value to use for creating the Day Value when original Date-Entity has no Day Information. Defaults to 15.
+
+- `defaultReplacementMonth`: (Int) Defines which value to use for creating the Month Value when original Date-Entity has no Month Information. Defaults to 06.
+
+- `defaultReplacementYear`: (Int) Defines which value to use for creating the Year Value when original Date-Entity has no Year Information. Defaults to 2020.
+
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -25,8 +43,22 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
 
-from pyspark.sql.types import StringType
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("original_date")\
+    .setOutputCol("document")
+
+doc2chunk = nlp.Doc2Chunk()\
+    .setInputCols("document")\
+    .setOutputCol("date_chunk")
+
+date_normalizer = medical.DateNormalizer()\
+    .setInputCols("date_chunk")\
+    .setOutputCol("date")\
+    .setAnchorDateYear(2000)
+
+pipeline = nlp.Pipeline(stages=[document_assembler, doc2chunk, date_normalizer])
 
 dates = [
     "08/02/2018",
@@ -42,22 +74,107 @@ dates = [
 ]
 df = spark.createDataFrame(dates, StringType()).toDF("original_date")
 
-document_assembler = (
-    DocumentAssembler().setInputCol("original_date").setOutputCol("document")
-)
+result = pipeline.fit(df).transform(df)
+result.selectExpr(
+    "date.result as normalized_date",
+    "original_date",
+    "date.metadata[0].normalized as metadata",
+).show()
 
-doc2chunk = Doc2Chunk().setInputCols("document").setOutputCol("date_chunk")
++---------------+-------------+--------+
+|normalized_date|original_date|metadata|
++---------------+-------------+--------+
+|   [2018/08/02]|   08/02/2018|    true|
+|   [2018/11/15]|      11/2018|    true|
+|   [2018/11/01]|   11/01/2018|    true|
+|   [2021/03/12]|    12Mar2021|    true|
+|   [2018/01/30]| Jan 30, 2018|    true|
+|   [1999/04/13]|   13.04.1999|    true|
+|   [2020/04/03]|  3April 2020|    true|
+|   [2000/12/11]|  next monday|    true|
+|   [2000/12/06]|        today|    true|
+|   [2000/12/13]|    next week|    true|
++---------------+-------------+--------+
 
-date_normalizer = (
-    DateNormalizer()
+{%- endcapture -%}
+
+
+{%- capture model_scala_medical -%}
+import spark.implicits._
+
+val document_assembler = new DocumentAssembler()
+    .setInputCol("original_date")
+    .setOutputCol("document")
+
+val doc2chunk = new Doc2Chunk()
+    .setInputCols("document")
+    .setOutputCol("date_chunk")
+
+val date_normalizer = new DateNormalizer()
     .setInputCols("date_chunk")
     .setOutputCol("date")
     .setAnchorDateYear(2000)
-    .setAnchorDateMonth(3)
-    .setAnchorDateDay(15)
-)
 
-pipeline = Pipeline(stages=[document_assembler, doc2chunk, date_normalizer])
+val pipeline = new Pipeline().setStages(Array(
+    document_assembler, 
+    doc2chunk, 
+    date_normalizer
+))
+
+import spark.implicits._
+ 
+val df = Seq(("08/02/2018"),("11/2018"),("11/01/2018"),("next monday"),("today"),("next week")).toDF("original_date")
+
+val result = pipeline.fit(df).transform(df)
+
++---------------+-------------+--------+
+|normalized_date|original_date|metadata|
++---------------+-------------+--------+
+|   [2018/08/02]|   08/02/2018|    true|
+|   [2018/11/15]|      11/2018|    true|
+|   [2018/11/01]|   11/01/2018|    true|
+|   [2021/03/12]|    12Mar2021|    true|
+|   [2018/01/30]| Jan 30, 2018|    true|
+|   [1999/04/13]|   13.04.1999|    true|
+|   [2020/04/03]|  3April 2020|    true|
+|   [2000/12/11]|  next monday|    true|
+|   [2000/12/06]|        today|    true|
+|   [2000/12/13]|    next week|    true|
++---------------+-------------+--------+
+
+{%- endcapture -%}
+
+{%- capture model_python_legal -%}
+from johnsnowlabs import nlp, legal
+
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("original_date")\
+    .setOutputCol("document")
+
+doc2chunk = nlp.Doc2Chunk()\
+    .setInputCols("document")\
+    .setOutputCol("date_chunk")
+
+date_normalizer = legal.DateNormalizer()\
+    .setInputCols("date_chunk")\
+    .setOutputCol("date")\
+    .setAnchorDateYear(2000)
+
+pipeline = nlp.Pipeline(stages=[document_assembler, doc2chunk, date_normalizer])
+
+dates = [
+    "08/02/2018",
+    "11/2018",
+    "11/01/2018",
+    "12Mar2021",
+    "Jan 30, 2018",
+    "13.04.1999",
+    "3April 2020",
+    "next monday",
+    "today",
+    "next week",
+]
+df = spark.createDataFrame(dates, StringType()).toDF("original_date")
 
 result = pipeline.fit(df).transform(df)
 result.selectExpr(
@@ -70,52 +187,167 @@ result.selectExpr(
 |normalized_date|original_date|metadata|
 +---------------+-------------+--------+
 |   [2018/08/02]|   08/02/2018|    true|
-|   [2018/11/DD]|      11/2018|    true|
+|   [2018/11/15]|      11/2018|    true|
 |   [2018/11/01]|   11/01/2018|    true|
 |   [2021/03/12]|    12Mar2021|    true|
 |   [2018/01/30]| Jan 30, 2018|    true|
 |   [1999/04/13]|   13.04.1999|    true|
 |   [2020/04/03]|  3April 2020|    true|
-|   [2000/03/20]|  next monday|    true|
-|   [2000/03/15]|        today|    true|
-|   [2000/03/22]|    next week|    true|
+|   [2000/12/11]|  next monday|    true|
+|   [2000/12/06]|        today|    true|
+|   [2000/12/13]|    next week|    true|
++---------------+-------------+--------+
+
+{%- endcapture -%}
+
+
+{%- capture model_scala_legal -%}
+
+val document_assembler = new DocumentAssembler()
+    .setInputCol("original_date")
+    .setOutputCol("document")
+
+val doc2chunk = new Doc2Chunk()
+    .setInputCols("document")
+    .setOutputCol("date_chunk")
+
+val date_normalizer = new DateNormalizer()
+    .setInputCols("date_chunk")
+    .setOutputCol("date")
+    .setAnchorDateYear(2000)
+
+val pipeline = new Pipeline().setStages(Array(
+    document_assembler, 
+    doc2chunk, 
+    date_normalizer
+))
+
+import spark.implicits._
+ 
+val df = Seq(("08/02/2018"),("11/2018"),("11/01/2018"),("next monday"),("today"),("next week")).toDF("original_date")
+
+val result = pipeline.fit(df).transform(df)
+
+
++---------------+-------------+--------+
+|normalized_date|original_date|metadata|
++---------------+-------------+--------+
+|   [2018/08/02]|   08/02/2018|    true|
+|   [2018/11/15]|      11/2018|    true|
+|   [2018/11/01]|   11/01/2018|    true|
+|   [2021/03/12]|    12Mar2021|    true|
+|   [2018/01/30]| Jan 30, 2018|    true|
+|   [1999/04/13]|   13.04.1999|    true|
+|   [2020/04/03]|  3April 2020|    true|
+|   [2000/12/11]|  next monday|    true|
+|   [2000/12/06]|        today|    true|
+|   [2000/12/13]|    next week|    true|
++---------------+-------------+--------+
+
+{%- endcapture -%}
+
+{%- capture model_python_finance -%}
+
+from johnsnowlabs import nlp, finance
+
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("original_date")\
+    .setOutputCol("document")
+
+doc2chunk = nlp.Doc2Chunk()\
+    .setInputCols("document")\
+    .setOutputCol("date_chunk")
+
+date_normalizer = finance.DateNormalizer()\
+    .setInputCols("date_chunk")\
+    .setOutputCol("date")\
+    .setAnchorDateYear(2000)
+
+pipeline = nlp.Pipeline(stages=[document_assembler, doc2chunk, date_normalizer])
+
+dates = [
+    "08/02/2018",
+    "11/2018",
+    "11/01/2018",
+    "12Mar2021",
+    "Jan 30, 2018",
+    "13.04.1999",
+    "3April 2020",
+    "next monday",
+    "today",
+    "next week",
+]
+df = spark.createDataFrame(dates, StringType()).toDF("original_date")
+
+result = pipeline.fit(df).transform(df)
+result.selectExpr(
+    "date.result as normalized_date",
+    "original_date",
+    "date.metadata[0].normalized as metadata",
+).show()
+
++---------------+-------------+--------+
+|normalized_date|original_date|metadata|
++---------------+-------------+--------+
+|   [2018/08/02]|   08/02/2018|    true|
+|   [2018/11/15]|      11/2018|    true|
+|   [2018/11/01]|   11/01/2018|    true|
+|   [2021/03/12]|    12Mar2021|    true|
+|   [2018/01/30]| Jan 30, 2018|    true|
+|   [1999/04/13]|   13.04.1999|    true|
+|   [2020/04/03]|  3April 2020|    true|
+|   [2000/12/11]|  next monday|    true|
+|   [2000/12/06]|        today|    true|
+|   [2000/12/13]|    next week|    true|
 +---------------+-------------+--------+
 
 {%- endcapture -%}
 
 
 {%- capture model_scala_medical -%}
+import spark.implicits._
 
+val document_assembler = new DocumentAssembler()
+    .setInputCol("original_date")
+    .setOutputCol("document")
+
+val doc2chunk = new Doc2Chunk()
+    .setInputCols("document")
+    .setOutputCol("date_chunk")
+
+val date_normalizer = new DateNormalizer()
+    .setInputCols("date_chunk")
+    .setOutputCol("date")
+    .setAnchorDateYear(2000)
+
+val pipeline = new Pipeline().setStages(Array(
+    document_assembler, 
+    doc2chunk, 
+    date_normalizer
+))
+
+import spark.implicits._
+ 
 val df = Seq(("08/02/2018"),("11/2018"),("11/01/2018"),("next monday"),("today"),("next week")).toDF("original_date")
 
-val documentAssembler = new DocumentAssembler().setInputCol("original_date").setOutputCol("document")
+val result = pipeline.fit(df).transform(df)
 
-val chunksDF = documentAssembler
-				  .transform(df)
-				  .mapAnnotationsCol[Seq[Annotation]]("document",
-													  "chunk_date",
-													   CHUNK,
-												  (aa:Seq[Annotation]) =>
-													aa.map( ann => ann.copy(annotatorType = CHUNK)))
-val dateNormalizerModel = new DateNormalizer()
-        .setInputCols("chunk_date")
-        .setOutputCol("date")
-        .setAnchorDateDay(15)
-        .setAnchorDateMonth(3)
-        .setAnchorDateYear(2000)
-val dateDf = dateNormalizerModel.transform(chunksDF)
 
-dateDf.select("chunk_date.result","text").show()
-+-------------+-------------+
-|       result|original_date|
-+-------------+-------------+
-| [08/02/2018]|   08/02/2018|
-|    [11/2018]|      11/2018|
-| [11/01/2018]|   11/01/2018|
-|[next monday]|  next monday|
-|      [today]|        today|
-|  [next week]|    next week|
-+-------------+-------------+
++---------------+-------------+--------+
+|normalized_date|original_date|metadata|
++---------------+-------------+--------+
+|   [2018/08/02]|   08/02/2018|    true|
+|   [2018/11/15]|      11/2018|    true|
+|   [2018/11/01]|   11/01/2018|    true|
+|   [2021/03/12]|    12Mar2021|    true|
+|   [2018/01/30]| Jan 30, 2018|    true|
+|   [1999/04/13]|   13.04.1999|    true|
+|   [2020/04/03]|  3April 2020|    true|
+|   [2000/12/11]|  next monday|    true|
+|   [2000/12/06]|        today|    true|
+|   [2000/12/13]|    next week|    true|
++---------------+-------------+--------+
+
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
@@ -126,6 +358,9 @@ dateDf.select("chunk_date.result","text").show()
 [DateNormalizer](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/normalizer/date_normalizer/index.html#sparknlp_jsl.annotator.normalizer.date_normalizer.DateNormalizer)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DateNormalizer.ipynb)
+{%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
@@ -135,6 +370,11 @@ model_input_anno=model_input_anno
 model_output_anno=model_output_anno
 model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
+model_python_legal=model_python_legal
+model_scala_legal=model_scala_legal
+model_python_finance=model_python_finance
+model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}

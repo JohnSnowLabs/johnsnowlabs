@@ -16,7 +16,7 @@ Parametres;
 
 - `InsertChunk`: (boolean) Whether to insert the chunk in the paragraph or not.
 
-- `DefaultEntity`: (str) Sets the key in the metadata dictionary that you want to filter (by default "entity")
+- `DefaultEntity`: (str) Sets the key in the metadata dictionary that you want to filter (by default 'entity')
 
 For detailed usage of this annotator, visit [this notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/18.Chunk_Sentence_Splitter.ipynb) from our `Spark NLP Workshop`.
 
@@ -31,32 +31,33 @@ DOCUMENT
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
 
 # Defining the pipeline
 documentAssembler = nlp.DocumentAssembler()\
-      .setInputCol("text")\
-      .setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
 
 sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
-        .setInputCols(["document"])\
-        .setOutputCol("sentence")
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
 tokenizer = nlp.Tokenizer()\
-      .setInputCols(["sentence"])\
-      .setOutputCol("token")\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")\
 
 word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-      .setInputCols(["sentence", "token"])\
-      .setOutputCol("embeddings")
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("embeddings")
 
 clinical_ner = medical.NerModel.pretrained("ner_jsl_slim", "en", "clinical/models") \
-      .setInputCols(["sentence", "token", "embeddings"]) \
-      .setOutputCol("ner")
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner")
 
 ner_converter = medical.NerConverterInternal() \
-      .setInputCols(["sentence", "token", "ner"]) \
-      .setOutputCol("ner_chunk")\
-      .setWhiteList(["Header"])
+    .setInputCols(["sentence", "token", "ner"]) \
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(["Header"])
 
 #applying ChunkSentenceSplitter
 chunkSentenceSplitter = medical.ChunkSentenceSplitter()\
@@ -65,15 +66,15 @@ chunkSentenceSplitter = medical.ChunkSentenceSplitter()\
     .setGroupBySentences(False)
 
 pipeline_model = nlp.Pipeline(
-    stages = [
-        documentAssembler,
-        sentenceDetector,
-        tokenizer,
-        word_embeddings,
-        clinical_ner,
-        ner_converter,
-        chunkSentenceSplitter
-    ])
+  stages = [
+    documentAssembler,
+    sentenceDetector,
+    tokenizer,
+    word_embeddings,
+    clinical_ner,
+    ner_converter,
+    chunkSentenceSplitter
+  ])
 
 
 sentences = [["""Sample Name: Mesothelioma - Pleural Biopsy
@@ -108,35 +109,36 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
+import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
 val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
-    .setInputCols(Array("document"))
+    .setInputCols("document")
     .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
-    .setInputCols(Array("sentence"))
+    .setInputCols("sentence")
     .setOutputCol("token")
 
 val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
     .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
-val clinical_ner = MedicalNerModel.pretrained("ner_jsl_slim", "en", "clinical/models") \
-    .setInputCols(Array("sentence", "token", "embeddings")) 
+val clinical_ner = MedicalNerModel.pretrained("ner_jsl_slim", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
-val ner_converter = new NerConverterInternal() 
-    .setInputCols(Array("sentence", "token", "ner")) 
+val ner_converter = new NerConverterInternal()
+    .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
-    .setWhiteList(Array("Header"))
+    .setWhiteList("Header")
 
-//applying ChunkSentenceSplitter
+#applying ChunkSentenceSplitter
 val chunkSentenceSplitter = new ChunkSentenceSplitter()
-    .setInputCols("document","ner_chunk")
+    .setInputCols(Array("document","ner_chunk"))
     .setOutputCol("paragraphs")
     .setGroupBySentences(false)
 
@@ -164,8 +166,6 @@ Dr. X was present for the entire procedure which was right VATS pleurodesis and 
 val data = Seq(sentences).toDF("text")
 val paragraphs = pipeline_model.fit(df).transform(df)
 
-paragraphs.selectExpr("explode(paragraphs) as result")
-          .selectExpr("result.result","result.metadata.entity", "result.metadata.splitter_chunk").show(truncate=80)
 
 +--------------------------------------------------------------------------------+------------+------------------------+
 |                                                                          result|      entity|          splitter_chunk|
@@ -183,6 +183,7 @@ paragraphs.selectExpr("explode(paragraphs) as result")
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
+from johnsnowlabs import nlp, medical, legal
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -197,8 +198,8 @@ tokenizer = nlp.Tokenizer()\
     .setOutputCol("token")
 
 embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-        .setInputCols(["sentence", "token"]) \
-        .setOutputCol("embeddings")
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")
 
 ner_model = legal.NerModel.pretrained("legner_headers", "en", "legal/models")\
     .setInputCols(["sentence", "token", "embeddings"])\
@@ -212,7 +213,6 @@ chunkSentenceSplitter = legal.ChunkSentenceSplitter()\
     .setInputCols("document","ner_chunk")\
     .setOutputCol("paragraphs")\
     .setGroupBySentences(False)
-
     
 nlp_pipeline = nlp.Pipeline(stages=[
     documentAssembler,
@@ -230,7 +230,7 @@ NOW, THEREFORE, for good and valuable consideration, and in consideration of the
 
 2. Definitions. For purposes of this Agreement, the following terms have the meanings ascribed thereto in this Section 1. 2. Appointment as Reseller.
 
-2.1 Appointment. The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+2.1 Appointment. The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
 
 2.2 Customer Agreements.
 
@@ -242,35 +242,36 @@ paragraphs = nlp_pipeline.fit(sdf).transform(sdf)
 paragraphs.selectExpr("explode(paragraphs) as result")\
           .selectExpr("result.result","result.metadata.entity").show(truncate=50)
 
-+----------------------------------------------------------------------------------------------------+---------+
-|                                                                                              result|   entity|
-+----------------------------------------------------------------------------------------------------+---------+
-|AGREEMENT  NOW, THEREFORE, for good and valuable consideration, and in consideration of the mutua...|SUBHEADER|
-|                                                                          Appointment as Reseller.  |SUBHEADER|
-|                                                                                   2.1 Appointment. |SUBHEADER|
-|The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to ...|SUBHEADER|
-|                                                                       6 2.2 Customer Agreements.   |   HEADER|
-|a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms no less than one...|SUBHEADER|
-+----------------------------------------------------------------------------------------------------+---------+
++--------------------------------------------------+---------+
+|                                            result|   entity|
++--------------------------------------------------+---------+
+|AGREEMENT NOW, THEREFORE, for good and valuabl... |SUBHEADER|
+|                        Appointment as Reseller.  |SUBHEADER|
+|                                 2.1 Appointment. |SUBHEADER|
+|The Company hereby [***]. Allscripts may also d...|SUBHEADER|
+|                     6 2.2 Customer Agreements.   |   HEADER|
+|a) Subscriptions. Allscripts and its Affiliates...|SUBHEADER|
++--------------------------------------------------+---------+
 
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
+import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
         
 val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
-    .setInputCols(Array("document"))
+    .setInputCols("document")
     .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
-    .setInputCols(Array("sentence"))
+    .setInputCols("sentence")
     .setOutputCol("token")
 
-val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") 
-    .setInputCols(Array("sentence", "token")) 
+val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
+    .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
 val ner_model = LegalNerModel.pretrained("legner_headers", "en", "legal/models")
@@ -282,7 +283,7 @@ val ner_converter = new NerConverterInternal()
     .setOutputCol("ner_chunk")
 
 val chunkSentenceSplitter = new ChunkSentenceSplitter()
-    .setInputCols("document","ner_chunk")
+    .setInputCols(Array("document","ner_chunk"))
     .setOutputCol("paragraphs")
     .setGroupBySentences(false)
     
@@ -302,7 +303,7 @@ NOW, THEREFORE, for good and valuable consideration, and in consideration of the
 
 2. Definitions. For purposes of this Agreement, the following terms have the meanings ascribed thereto in this Section 1. 2. Appointment as Reseller.
 
-2.1 Appointment. The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+2.1 Appointment. The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
 
 2.2 Customer Agreements.
 
@@ -311,24 +312,22 @@ a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms
 val data = Seq(text).toDF("text")
 val paragraphs = nlp_pipeline.fit(data).transform(data)
 
-paragraphs.selectExpr("explode(paragraphs) as result")
-          .selectExpr("result.result","result.metadata.entity").show(truncate=50)
-
-+----------------------------------------------------------------------------------------------------+---------+
-|                                                                                              result|   entity|
-+----------------------------------------------------------------------------------------------------+---------+
-|AGREEMENT  NOW, THEREFORE, for good and valuable consideration, and in consideration of the mutua...|SUBHEADER|
-|                                                                          Appointment as Reseller.  |SUBHEADER|
-|                                                                                   2.1 Appointment. |SUBHEADER|
-|The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to ...|SUBHEADER|
-|                                                                       6 2.2 Customer Agreements.   |   HEADER|
-|a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms no less than one...|SUBHEADER|
-+----------------------------------------------------------------------------------------------------+---------+
++--------------------------------------------------+---------+
+|                                            result|   entity|
++--------------------------------------------------+---------+
+|AGREEMENT NOW, THEREFORE, for good and valuabl... |SUBHEADER|
+|                        Appointment as Reseller.  |SUBHEADER|
+|                                 2.1 Appointment. |SUBHEADER|
+|The Company hereby [***]. Allscripts may also d...|SUBHEADER|
+|                     6 2.2 Customer Agreements.   |   HEADER|
+|a) Subscriptions. Allscripts and its Affiliates...|SUBHEADER|
++--------------------------------------------------+---------+
 
 {%- endcapture -%}
 
 
 {%- capture model_python_finance -%}
+from johnsnowlabs import nlp, medical, finance
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -358,7 +357,7 @@ chunkSentenceSplitter = legal.ChunkSentenceSplitter()\
     .setInputCols("document","ner_chunk")\
     .setOutputCol("paragraphs")\
     .setGroupBySentences(False)
-
+    
 nlp_pipeline = nlp.Pipeline(stages=[
     documentAssembler,
     sentenceDetector,
@@ -375,7 +374,7 @@ For purposes of this Agreement, the following terms have the meanings ascribed t
 
 2.1 Appointment. 
 
-The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
 
 2.2 Customer Agreements."""
 
@@ -385,34 +384,35 @@ paragraphs = nlp_pipeline.fit(sdf).transform(sdf)
 paragraphs.selectExpr("explode(paragraphs) as result")\
           .selectExpr("result.result","result.metadata.entity").show(truncate=50)
 
-+----------------------------------------------------------------------------------------------------+---------+
-|                                                                                              result|   entity|
-+----------------------------------------------------------------------------------------------------+---------+
-|                                                                                                 2. |   HEADER|
-|DEFINITION.   For purposes of this Agreement, the following terms have the meanings ascribed ther...|SUBHEADER|
-|                                                                                 2.1 Appointment.   |SUBHEADER|
-|The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to ...|SUBHEADER|
-|                                                                          6  2.2 Customer Agreements|   HEADER|
-+----------------------------------------------------------------------------------------------------+---------+
++--------------------------------------------------+---------+
+|                                            result|   entity|
++--------------------------------------------------+---------+
+|                                               2. |   HEADER|
+|DEFINITION.   For purposes of this Agreement, t...|SUBHEADER|
+|                               2.1 Appointment.   |SUBHEADER|
+|The Company hereby [***]. Allscripts may also d...|SUBHEADER|
+|                        6  2.2 Customer Agreements|   HEADER|
++--------------------------------------------------+---------+
 
 {%- endcapture -%}
 
-{%- capture model_scala_legal -%}
+{%- capture model_scala_finance -%}
+import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
         
 val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
-    .setInputCols(Array("document"))
+    .setInputCols("document")
     .setOutputCol("sentence")
 
-val tokenizer = new Tokenizer()
-    .setInputCols(Array("sentence"))
+val tokenizer = new Tokenizer
+    .setInputCols("sentence")
     .setOutputCol("token")
 
-val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") 
-    .setInputCols(Array("sentence", "token")) 
+val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
+    .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
 val ner_model = FinanceNerModel.pretrained("finner_headers", "en", "finance/models")
@@ -424,7 +424,7 @@ val ner_converter = new NerConverterInternal()
     .setOutputCol("ner_chunk")
 
 val chunkSentenceSplitter = new ChunkSentenceSplitter()
-    .setInputCols("document","ner_chunk")
+    .setInputCols(Array("document","ner_chunk"))
     .setOutputCol("paragraphs")
     .setGroupBySentences(false)
 
@@ -444,25 +444,23 @@ For purposes of this Agreement, the following terms have the meanings ascribed t
 
 2.1 Appointment. 
 
-The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
+The Company hereby [***]. Allscripts may also disclose Company's pricing information relating to its Merchant Processing Services and facilitate procurement of Merchant Processing Services on behalf of Sublicensed Customers, including, without limitation by references to such pricing information and Merchant Processing Services in Customer Agreements. 6
 
 2.2 Customer Agreements."""
 
 val data = Seq(text).toDF("text")
 val paragraphs = nlp_pipeline.fit(data).transform(data)
 
-paragraphs.selectExpr("explode(paragraphs) as result")
-          .selectExpr("result.result","result.metadata.entity").show(truncate=50)
 
-+----------------------------------------------------------------------------------------------------+---------+
-|                                                                                              result|   entity|
-+----------------------------------------------------------------------------------------------------+---------+
-|                                                                                                 2. |   HEADER|
-|DEFINITION.   For purposes of this Agreement, the following terms have the meanings ascribed ther...|SUBHEADER|
-|                                                                                 2.1 Appointment.   |SUBHEADER|
-|The Company hereby [***]. Allscripts may also disclose Company"s pricing information relating to ...|SUBHEADER|
-|                                                                          6  2.2 Customer Agreements|   HEADER|
-+----------------------------------------------------------------------------------------------------+---------+
++--------------------------------------------------+---------+
+|                                            result|   entity|
++--------------------------------------------------+---------+
+|                                               2. |   HEADER|
+|DEFINITION.   For purposes of this Agreement, t...|SUBHEADER|
+|                               2.1 Appointment.   |SUBHEADER|
+|The Company hereby [***]. Allscripts may also d...|SUBHEADER|
+|                        6  2.2 Customer Agreements|   HEADER|
++--------------------------------------------------+---------+
 
 {%- endcapture -%}
 
@@ -476,7 +474,7 @@ paragraphs.selectExpr("explode(paragraphs) as result")
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[ChunkSentenceSplitter](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkSentenceSplitter.ipynb)
+[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkSentenceSplitter.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
