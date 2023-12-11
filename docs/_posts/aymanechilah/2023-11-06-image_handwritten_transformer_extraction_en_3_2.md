@@ -28,7 +28,7 @@ Pretrained pipeline designed to extract handwritten text from document images. I
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/ocr/PP_IMAGE_HANDWRITTEN_TRANSFORMER_EXTRACTION/){:.button.button-orange.button-orange-trans.co.button-icon}
 [Open in Colab](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrPretrainedPipelinesImageHandwrittenTransformerExtraction.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/image_handwritten_transformer_extraction_en_5.0.2_3.0_1680289435000.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/image_handwritten_transformer_extraction_en_5.0.2_3.0_1699469925000.zip){:.button.button-orange.button-orange-trans.arr.button-icon}
 
 ## How to use
 
