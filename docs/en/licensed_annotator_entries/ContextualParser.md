@@ -6,8 +6,6 @@ ContextualParser
 approach
 {%- endcapture -%}
 
-
-
 {%- capture approach_description -%}
 Creates a model, that extracts entity from a document based on user defined rules.
 Rule matching is based on a RegexMatcher defined in a JSON file. It is set through the parameter setJsonPath()
@@ -29,6 +27,7 @@ Parametres;
 - `completeContextMatch`: Whether to do an exact match of prefix and suffix.
 
 All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
+
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}
