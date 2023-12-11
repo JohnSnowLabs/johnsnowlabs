@@ -39,7 +39,8 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture approach_python_medical -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, medical
+
 # An example JSON file `regex_token.json` can look like this:
 #
 # {
@@ -54,23 +55,23 @@ from johnsnowlabs import *
 # Pipeline could then be defined like this
 
 documentAssembler = nlp.DocumentAssembler() \
-  .setInputCol("text") \
-  .setOutputCol("document")
+    .setInputCol("text") \
+    .setOutputCol("document")
 
 sentenceDetector = nlp.SentenceDetector() \
-  .setInputCols(["document"]) \
-  .setOutputCol("sentence")
+    .setInputCols(["document"]) \
+    .setOutputCol("sentence")
 
 tokenizer = nlp.Tokenizer() \
-  .setInputCols(["sentence"]) \
-  .setOutputCol("token")
+    .setInputCols(["sentence"]) \
+    .setOutputCol("token")
 
 contextualParser = medical.ContextualParserApproach() \
-  .setInputCols(["sentence", "token"]) \
-  .setOutputCol("entity") \
-  .setJsonPath("/path/to/regex_token.json") \
-  .setCaseSensitive(True) \
-  .setContextMatch(False)
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("entity") \
+    .setJsonPath("/path/to/regex_token.json") \
+    .setCaseSensitive(True) \
+    .setContextMatch(False)
 
 pipeline = nlp.Pipeline(stages=[
     documentAssembler,
@@ -98,7 +99,8 @@ result.selectExpr("explode(entity)").show(5, truncate=False)
 {%- endcapture -%}
 
 {%- capture approach_python_legal -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, legal
+
 # An example JSON file `regex_token.json` can look like this:
 #
 # {
@@ -113,23 +115,23 @@ from johnsnowlabs import *
 # Pipeline could then be defined like this
 
 documentAssembler = nlp.DocumentAssembler() \
-  .setInputCol("text") \
-  .setOutputCol("document")
+    .setInputCol("text") \
+    .setOutputCol("document")
 
 sentenceDetector = nlp.SentenceDetector() \
-  .setInputCols(["document"]) \
-  .setOutputCol("sentence")
+    .setInputCols(["document"]) \
+    .setOutputCol("sentence")
 
 tokenizer = nlp.Tokenizer() \
-  .setInputCols(["sentence"]) \
-  .setOutputCol("token")
+    .setInputCols(["sentence"]) \
+    .setOutputCol("token")
 
 contextualParser = legal.ContextualParserApproach() \
-  .setInputCols(["sentence", "token"]) \
-  .setOutputCol("entity") \
-  .setJsonPath("/path/to/regex_token.json") \
-  .setCaseSensitive(True) \
-  .setContextMatch(False)
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("entity") \
+    .setJsonPath("/path/to/regex_token.json") \
+    .setCaseSensitive(True) \
+    .setContextMatch(False)
 
 pipeline = nlp.Pipeline(stages=[
     documentAssembler,
@@ -154,7 +156,8 @@ result.selectExpr("explode(entity)").show(5, truncate=False)
 {%- endcapture -%}
 
 {%- capture approach_python_finance -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, finance
+
 # An example JSON file `regex_token.json` can look like this:
 #
 # {
@@ -169,25 +172,25 @@ from johnsnowlabs import *
 # Pipeline could then be defined like this
 
 documentAssembler = nlp.DocumentAssembler() \
-  .setInputCol("text") \
-  .setOutputCol("document")
+    .setInputCol("text") \
+    .setOutputCol("document")
 
 sentenceDetector = nlp.SentenceDetector() \
-  .setInputCols(["document"]) \
-  .setOutputCol("sentence")
+    .setInputCols(["document"]) \
+    .setOutputCol("sentence")
 
 tokenizer = nlp.Tokenizer() \
-  .setInputCols(["sentence"]) \
-  .setOutputCol("token")
+    .setInputCols(["sentence"]) \
+    .setOutputCol("token")
 
 # Define the parser (json file needs to be provided)
 
 contextualParser = finance.ContextualParserApproach() \
-  .setInputCols(["sentence", "token"]) \
-  .setOutputCol("entity") \
-  .setJsonPath("/path/to/regex_token.json") \
-  .setCaseSensitive(True) \
-  .setContextMatch(False)
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("entity") \
+    .setJsonPath("/path/to/regex_token.json") \
+    .setCaseSensitive(True) \
+    .setContextMatch(False)
 
 pipeline = nlp.Pipeline(stages=[
     documentAssembler,
@@ -212,7 +215,8 @@ result.selectExpr("explode(entity)").show(5, truncate=False)
 {%- endcapture -%}
 
 {%- capture approach_scala_medical -%}
-from johnsnowlabs import * 
+import spark.implicits._
+
 // An example JSON file `regex_token.json` can look like this:
 //
 // {
@@ -226,23 +230,23 @@ from johnsnowlabs import *
 // An example pipeline could then be defined like this
 
 val documentAssembler = new DocumentAssembler()
-  .setInputCol("text")
-  .setOutputCol("document")
+    .setInputCol("text")
+    .setOutputCol("document")
 
 val sentenceDetector = new SentenceDetector()
-  .setInputCols("document")
-  .setOutputCol("sentence")
+    .setInputCols("document")
+    .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
-  .setInputCols("sentence")
-  .setOutputCol("token")
+    .setInputCols("sentence")
+    .setOutputCol("token")
 
 val contextualParser = new ContextualParserApproach()
-  .setInputCols(Array("sentence", "token"))
-  .setOutputCol("entity")
-  .setJsonPath("/path/to/regex_token.json")
-  .setCaseSensitive(true)
-  .setContextMatch(false)
+    .setInputCols(Array("sentence", "token"))
+    .setOutputCol("entity")
+    .setJsonPath("/path/to/regex_token.json")
+    .setCaseSensitive(true)
+    .setContextMatch(false)
 
 val pipeline = new Pipeline().setStages(Array(
     documentAssembler,
@@ -272,7 +276,8 @@ val result = pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture approach_scala_legal -%}
-from johnsnowlabs import * 
+import spark.implicits._
+
 // An example JSON file `regex_token.json` can look like this:
 //
 // {
@@ -286,23 +291,23 @@ from johnsnowlabs import *
 // An example pipeline could then be defined like this
 
 val documentAssembler = new DocumentAssembler()
-  .setInputCol("text")
-  .setOutputCol("document")
+    .setInputCol("text")
+    .setOutputCol("document")
 
 val sentenceDetector = new SentenceDetector()
-  .setInputCols("document")
-  .setOutputCol("sentence")
+    .setInputCols("document")
+    .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
-  .setInputCols("sentence")
-  .setOutputCol("token")
+    .setInputCols("sentence")
+    .setOutputCol("token")
 
 val contextualParser = new ContextualParserApproach()
-  .setInputCols(Array("sentence", "token"))
-  .setOutputCol("entity")
-  .setJsonPath("/path/to/regex_token.json")
-  .setCaseSensitive(true)
-  .setContextMatch(false)
+    .setInputCols(Array("sentence", "token"))
+    .setOutputCol("entity")
+    .setJsonPath("/path/to/regex_token.json")
+    .setCaseSensitive(true)
+    .setContextMatch(false)
 
 val pipeline = new Pipeline().setStages(Array(
     documentAssembler,
@@ -327,7 +332,8 @@ result.selectExpr("explode(entity)").show(5, truncate=False)
 {%- endcapture -%}
 
 {%- capture approach_scala_finance -%}
-from johnsnowlabs import * 
+import spark.implicits._
+
 // An example JSON file `regex_token.json` can look like this:
 //
 // {
@@ -340,24 +346,24 @@ from johnsnowlabs import *
 // Which means to extract the stage code on a sentence level.
 // An example pipeline could then be defined like this
 
-val documentAssembler = new nlp.DocumentAssembler()
-  .setInputCol("text")
-  .setOutputCol("document")
+val documentAssembler = new DocumentAssembler()
+    .setInputCol("text")
+    .setOutputCol("document")
 
-val sentenceDetector = new nlp.SentenceDetector()
-  .setInputCols("document")
-  .setOutputCol("sentence")
+val sentenceDetector = new SentenceDetector()
+    .setInputCols("document")
+    .setOutputCol("sentence")
 
-val tokenizer = new nlp.Tokenizer()
-  .setInputCols("sentence")
-  .setOutputCol("token")
+val tokenizer = new Tokenizer()
+    .setInputCols("sentence")
+    .setOutputCol("token")
 
 val contextualParser = new ContextualParserApproach()
-  .setInputCols(Array("sentence", "token"))
-  .setOutputCol("entity")
-  .setJsonPath("/path/to/regex_token.json")
-  .setCaseSensitive(true)
-  .setContextMatch(false)
+    .setInputCols(Array("sentence", "token"))
+    .setOutputCol("entity")
+    .setJsonPath("/path/to/regex_token.json")
+    .setCaseSensitive(true)
+    .setContextMatch(false)
 
 val pipeline = new Pipeline().setStages(Array(
     documentAssembler,
@@ -372,7 +378,6 @@ val data = Seq("Peter Parker is a nice guy and lives in New York . Bruce Wayne i
 val result = pipeline.fit(data).transform(data)
 
 // Show Results
-result.selectExpr("explode(entity)").show(5, truncate=False)
 
 +---------------------------------------------------------------+
 |result                                                         |
