@@ -31,48 +31,49 @@ DOCUMENT
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
 
 # Defining the pipeline
 documentAssembler = nlp.DocumentAssembler()\
-  .setInputCol("text")\
-  .setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
 
 sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
-  .setInputCols(["document"])\
-  .setOutputCol("sentence")
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
 tokenizer = nlp.Tokenizer()\
-  .setInputCols(["sentence"])\
-  .setOutputCol("token")\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")\
 
 word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-  .setInputCols(["sentence", "token"])\
-  .setOutputCol("embeddings")
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("embeddings")
 
 clinical_ner = medical.NerModel.pretrained("ner_jsl_slim", "en", "clinical/models") \
-  .setInputCols(["sentence", "token", "embeddings"]) \
-  .setOutputCol("ner")
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner")
 
 ner_converter = medical.NerConverterInternal() \
-  .setInputCols(["sentence", "token", "ner"]) \
-  .setOutputCol("ner_chunk")\
-  .setWhiteList(["Header"])
+    .setInputCols(["sentence", "token", "ner"]) \
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(["Header"])
 
 #applying ChunkSentenceSplitter
 chunkSentenceSplitter = medical.ChunkSentenceSplitter()\
-  .setInputCols("document","ner_chunk")\
-  .setOutputCol("paragraphs")\
-  .setGroupBySentences(False)
+    .setInputCols("document","ner_chunk")\
+    .setOutputCol("paragraphs")\
+    .setGroupBySentences(False)
 
 pipeline_model = nlp.Pipeline(
   stages = [
-      documentAssembler,
-      sentenceDetector,
-      tokenizer,
-      word_embeddings,
-      clinical_ner,
-      ner_converter,
-      chunkSentenceSplitter
+    documentAssembler,
+    sentenceDetector,
+    tokenizer,
+    word_embeddings,
+    clinical_ner,
+    ner_converter,
+    chunkSentenceSplitter
   ])
 
 
@@ -108,35 +109,37 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
-val documentAssembler = new DocumentAssembler()\
-    .setInputCol("text")\
+import spark.implicits._
+
+val documentAssembler = new DocumentAssembler()
+    .setInputCol("text")
     .setOutputCol("document")
 
-val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
-    .setInputCols(Array("document"))\
+val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
+    .setInputCols("document")
     .setOutputCol("sentence")
 
-val tokenizer = new Tokenizer()\
-    .setInputCols(Array("sentence"))\
-    .setOutputCol("token")\
+val tokenizer = new Tokenizer()
+    .setInputCols("sentence")
+    .setOutputCol("token")
 
-val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-    .setInputCols(Array("sentence", "token"))\
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
-val clinical_ner = MedicalNerModel.pretrained("ner_jsl_slim", "en", "clinical/models") \
-    .setInputCols(Array("sentence", "token", "embeddings")) \
+val clinical_ner = MedicalNerModel.pretrained("ner_jsl_slim", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
-val ner_converter = new NerConverterInternal() \
-    .setInputCols(Array("sentence", "token", "ner")) \
-    .setOutputCol("ner_chunk")\
-    .setWhiteList(Array("Header"))
+val ner_converter = new NerConverterInternal()
+    .setInputCols(Array("sentence", "token", "ner"))
+    .setOutputCol("ner_chunk")
+    .setWhiteList("Header")
 
 #applying ChunkSentenceSplitter
-val chunkSentenceSplitter = new ChunkSentenceSplitter()\
-    .setInputCols("document","ner_chunk")\
-    .setOutputCol("paragraphs")\
+val chunkSentenceSplitter = new ChunkSentenceSplitter()
+    .setInputCols(Array("document","ner_chunk"))
+    .setOutputCol("paragraphs")
     .setGroupBySentences(false)
 
 val pipeline_model = new Pipeline().setStages(Array(
@@ -163,8 +166,6 @@ Dr. X was present for the entire procedure which was right VATS pleurodesis and 
 val data = Seq(sentences).toDF("text")
 val paragraphs = pipeline_model.fit(df).transform(df)
 
-paragraphs.selectExpr("explode(paragraphs) as result")\
-          .selectExpr("result.result","result.metadata.entity", "result.metadata.splitter_chunk").show(truncate=80)
 
 +--------------------------------------------------------------------------------+------------+------------------------+
 |                                                                          result|      entity|          splitter_chunk|
@@ -182,34 +183,36 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
+from johnsnowlabs import nlp, medical, legal
+
 documentAssembler = nlp.DocumentAssembler()\
-  .setInputCol("text")\
-  .setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
         
 sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
-  .setInputCols(["document"])\
-  .setOutputCol("sentence")
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
 tokenizer = nlp.Tokenizer()\
-  .setInputCols(["sentence"])\
-  .setOutputCol("token")
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
 embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-  .setInputCols(["sentence", "token"]) \
-  .setOutputCol("embeddings")
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")
 
 ner_model = legal.NerModel.pretrained("legner_headers", "en", "legal/models")\
-  .setInputCols(["sentence", "token", "embeddings"])\
-  .setOutputCol("ner")
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner")
 
 ner_converter = nlp.NerConverter()\
-  .setInputCols(["sentence","token","ner"])\
-  .setOutputCol("ner_chunk")
+    .setInputCols(["sentence","token","ner"])\
+    .setOutputCol("ner_chunk")
 
 chunkSentenceSplitter = legal.ChunkSentenceSplitter()\
-  .setInputCols("document","ner_chunk")\
-  .setOutputCol("paragraphs")\
-  .setGroupBySentences(False)
+    .setInputCols("document","ner_chunk")\
+    .setOutputCol("paragraphs")\
+    .setGroupBySentences(False)
     
 nlp_pipeline = nlp.Pipeline(stages=[
     documentAssembler,
@@ -253,34 +256,35 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
+import spark.implicits._
 
-val documentAssembler = new DocumentAssembler()\
-    .setInputCol("text")\
+val documentAssembler = new DocumentAssembler()
+    .setInputCol("text")
     .setOutputCol("document")
         
-val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
-    .setInputCols(Array("document"))\
+val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
+    .setInputCols("document")
     .setOutputCol("sentence")
 
-val tokenizer = new Tokenizer()\
-    .setInputCols(Array("sentence"))\
+val tokenizer = new Tokenizer()
+    .setInputCols("sentence")
     .setOutputCol("token")
 
-val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-    .setInputCols(Array("sentence", "token")) \
+val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
+    .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
-val ner_model = LegalNerModel.pretrained("legner_headers", "en", "legal/models")\
-    .setInputCols(Array("sentence", "token", "embeddings"))\
+val ner_model = LegalNerModel.pretrained("legner_headers", "en", "legal/models")
+    .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
-val ner_converter = new NerConverterInternal()\
-    .setInputCols(Array("sentence","token","ner"))\
+val ner_converter = new NerConverterInternal()
+    .setInputCols(Array("sentence","token","ner"))
     .setOutputCol("ner_chunk")
 
-val chunkSentenceSplitter = new ChunkSentenceSplitter()\
-    .setInputCols("document","ner_chunk")\
-    .setOutputCol("paragraphs")\
+val chunkSentenceSplitter = new ChunkSentenceSplitter()
+    .setInputCols(Array("document","ner_chunk"))
+    .setOutputCol("paragraphs")
     .setGroupBySentences(false)
     
 val nlp_pipeline = new Pipeline().setStages(Array(
@@ -308,9 +312,6 @@ a) Subscriptions. Allscripts and its Affiliates may sell Subscriptions for terms
 val data = Seq(text).toDF("text")
 val paragraphs = nlp_pipeline.fit(data).transform(data)
 
-paragraphs.selectExpr("explode(paragraphs) as result")\
-          .selectExpr("result.result","result.metadata.entity").show(truncate=50)
-
 +--------------------------------------------------+---------+
 |                                            result|   entity|
 +--------------------------------------------------+---------+
@@ -326,34 +327,36 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 
 
 {%- capture model_python_finance -%}
+from johnsnowlabs import nlp, medical, finance
+
 documentAssembler = nlp.DocumentAssembler()\
-  .setInputCol("text")\
-  .setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
 
 sentenceDetector = nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
-  .setInputCols(["document"])\
-  .setOutputCol("sentence")
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
 tokenizer = nlp.Tokenizer()\
-  .setInputCols(["sentence"])\
-  .setOutputCol("token")
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
 embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-  .setInputCols(["sentence", "token"]) \
-  .setOutputCol("embeddings")
+    .setInputCols(["sentence", "token"]) \
+    .setOutputCol("embeddings")
 
 ner_model = finance.NerModel.pretrained("finner_headers", "en", "finance/models")\
-  .setInputCols(["sentence", "token", "embeddings"])\
-  .setOutputCol("ner")
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner")
 
 ner_converter = finance.NerConverterInternal()\
-  .setInputCols(["sentence","token","ner"])\
-  .setOutputCol("ner_chunk")
+    .setInputCols(["sentence","token","ner"])\
+    .setOutputCol("ner_chunk")
 
 chunkSentenceSplitter = legal.ChunkSentenceSplitter()\
-  .setInputCols("document","ner_chunk")\
-  .setOutputCol("paragraphs")\
-  .setGroupBySentences(False)
+    .setInputCols("document","ner_chunk")\
+    .setOutputCol("paragraphs")\
+    .setGroupBySentences(False)
     
 nlp_pipeline = nlp.Pipeline(stages=[
     documentAssembler,
@@ -394,38 +397,37 @@ paragraphs.selectExpr("explode(paragraphs) as result")\
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
+import spark.implicits._
 
-val documentAssembler = new DocumentAssembler()\
-    .setInputCol("text")\
+val documentAssembler = new DocumentAssembler()
+    .setInputCol("text")
     .setOutputCol("document")
         
-val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
-    .setInputCols(Array("document"))\
+val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
+    .setInputCols("document")
     .setOutputCol("sentence")
 
-val tokenizer = new Tokenizer()\
-    .setInputCols(Array("sentence"))\
+val tokenizer = new Tokenizer
+    .setInputCols("sentence")
     .setOutputCol("token")
 
-val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-        .setInputCols(Array("sentence", "token")) \
-        .setOutputCol("embeddings")
+val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en")
+    .setInputCols(Array("sentence", "token"))
+    .setOutputCol("embeddings")
 
-val ner_model = FinanceNerModel.pretrained("finner_headers", "en", "finance/models")\
-    .setInputCols(Array("sentence", "token", "embeddings"))\
+val ner_model = FinanceNerModel.pretrained("finner_headers", "en", "finance/models")
+    .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
-val ner_converter = new NerConverterInternal()\
-    .setInputCols(Array("sentence","token","ner"))\
+val ner_converter = new NerConverterInternal()
+    .setInputCols(Array("sentence","token","ner"))
     .setOutputCol("ner_chunk")
 
-
-val chunkSentenceSplitter = new ChunkSentenceSplitter()\
-    .setInputCols("document","ner_chunk")\
-    .setOutputCol("paragraphs")\
+val chunkSentenceSplitter = new ChunkSentenceSplitter()
+    .setInputCols(Array("document","ner_chunk"))
+    .setOutputCol("paragraphs")
     .setGroupBySentences(false)
 
-    
 val nlp_pipeline = new Pipeline().setStages(Array(
     documentAssembler,
     sentenceDetector,
@@ -449,8 +451,6 @@ The Company hereby [***]. Allscripts may also disclose Company's pricing informa
 val data = Seq(text).toDF("text")
 val paragraphs = nlp_pipeline.fit(data).transform(data)
 
-paragraphs.selectExpr("explode(paragraphs) as result")\
-          .selectExpr("result.result","result.metadata.entity").show(truncate=50)
 
 +--------------------------------------------------+---------+
 |                                            result|   entity|
