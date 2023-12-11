@@ -33,12 +33,7 @@ CHUNK
 
 {%- capture model_python_medical -%}
 
-import sparknlp
-from sparknlp.base import *
-from sparknlp.common import *
-from sparknlp.annotator import *
-from sparknlp.training import *
-from pyspark.ml import Pipeline
+from johnsnowlabs import nlp, medical
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -89,10 +84,10 @@ val tokenizer = new Tokenizer()
     .setOutputCol("token")
 
 val chunkAssembler = new Doc2ChunkInternal()
-    .setInputCols("document", "token")
+    .setInputCols(Array("document", "token"))
     .setChunkCol("target")
     .setOutputCol("chunk")
-    .setIsArray(True)
+    .setIsArray(true)
 
 val pipeline = new Pipeline().setStages(Array(
     documentAssembler, 
@@ -103,9 +98,7 @@ val pipeline = new Pipeline().setStages(Array(
 val data = Seq(("Spark NLP is an open-source text processing library for advanced natural language processing.",
                "Spark NLP", "text processing library", "natural language processing")).toDF("text", "target")
 
-
 val result = pipeline.fit(data).transform(data)
-result.selectExpr("chunk.result", "chunk.annotatorType").show(truncate=False)
 
 +-----------------------------------------------------------------+---------------------+
 |result                                                           |annotatorType        |
@@ -117,12 +110,7 @@ result.selectExpr("chunk.result", "chunk.annotatorType").show(truncate=False)
 
 {%- capture model_python_legal -%}
 
-import sparknlp
-from sparknlp.base import *
-from sparknlp.common import *
-from sparknlp.annotator import *
-from sparknlp.training import *
-from pyspark.ml import Pipeline
+from johnsnowlabs import nlp, legal
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -173,10 +161,10 @@ val tokenizer = new Tokenizer()
     .setOutputCol("token")
 
 val chunkAssembler = new Doc2ChunkInternal()
-    .setInputCols("document", "token")
+    .setInputCols(Array("document", "token"))
     .setChunkCol("target")
     .setOutputCol("chunk")
-    .setIsArray(True)
+    .setIsArray(true)
 
 val pipeline = new Pipeline().setStages(Array(
     documentAssembler, 
@@ -187,9 +175,7 @@ val pipeline = new Pipeline().setStages(Array(
 val data = Seq(("Spark NLP is an open-source text processing library for advanced natural language processing.",
                "Spark NLP", "text processing library", "natural language processing")).toDF("text", "target")
 
-
 val result = pipeline.fit(data).transform(data)
-result.selectExpr("chunk.result", "chunk.annotatorType").show(truncate=False)
 
 +-----------------------------------------------------------------+---------------------+
 |result                                                           |annotatorType        |
@@ -200,13 +186,7 @@ result.selectExpr("chunk.result", "chunk.annotatorType").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
-
-import sparknlp
-from sparknlp.base import *
-from sparknlp.common import *
-from sparknlp.annotator import *
-from sparknlp.training import *
-from pyspark.ml import Pipeline
+from johnsnowlabs import nlp, finance
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -257,10 +237,10 @@ val tokenizer = new Tokenizer()
     .setOutputCol("token")
 
 val chunkAssembler = new Doc2ChunkInternal()
-    .setInputCols("document", "token")
+    .setInputCols(Array("document", "token"))
     .setChunkCol("target")
     .setOutputCol("chunk")
-    .setIsArray(True)
+    .setIsArray(true)
 
 val pipeline = new Pipeline().setStages(Array(
     documentAssembler, 
@@ -271,9 +251,7 @@ val pipeline = new Pipeline().setStages(Array(
 val data = Seq(("Spark NLP is an open-source text processing library for advanced natural language processing.",
                "Spark NLP", "text processing library", "natural language processing")).toDF("text", "target")
 
-
 val result = pipeline.fit(data).transform(data)
-result.selectExpr("chunk.result", "chunk.annotatorType").show(truncate=False)
 
 +-----------------------------------------------------------------+---------------------+
 |result                                                           |annotatorType        |
