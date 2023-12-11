@@ -35,9 +35,8 @@ DOCUMENT
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-
+from johnsnowlabs import nlp, medical
 import pandas as pd
-
 
 data = pd.DataFrame(
     {'patientID' : ['A001', 'A001', 
@@ -121,7 +120,7 @@ output.select('patientID','text', 'deid_text.result').show(truncate = False)
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
-
+from johnsnowlabs import nlp, finance
 import pandas as pd
 
 data = pd.DataFrame(
@@ -206,7 +205,7 @@ output.select('patientID','text', 'deid_text.result').show(truncate = False)
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
-
+from johnsnowlabs import nlp, legal
 import pandas as pd
 
 data = pd.DataFrame(
@@ -318,7 +317,7 @@ val documentHasher = new DocumentHashCoder()
     .setNewDateShift("shift_days") 
 
 val tokenizer = new Tokenizer()
-    .setInputCols(Array("document2")) 
+    .setInputCols("document2") 
     .setOutputCol("token") 
 
 val embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")
@@ -345,21 +344,19 @@ val de_identification = new DeIdentification()
     .setRegion("us") 
 
 val pipeline = new Pipeline().setStages(Array(
-  documentAssembler,
-  documentHasher,
-  tokenizer,
-  embeddings,
-  clinicalNer,
-  nerConverter,
-  deIdentification
+      documentAssembler,
+      documentHasher,
+      tokenizer,
+      embeddings,
+      clinicalNer,
+      nerConverter,
+      deIdentification
 ))
 
 val emptyData = Seq(("", "")).toDF("text", "patientID")
 
 val pipelineModel = pipeline.fit(emptyData)
-
 val result = pipelineModel.transform(myInputDF)
-output.select("patientID", "text", "deid_text.result").show(false)
 
 +---------+----------------------------------------+----------------------------------------------+
 |patientID|text                                    |result                                        |
@@ -399,7 +396,7 @@ val documentHasher = new DocumentHashCoder()
     .setNewDateShift("shift_days") 
 
 val tokenizer = new Tokenizer()
-    .setInputCols(Array("document2")) 
+    .setInputCols("document2")
     .setOutputCol("token") 
 
 val embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")
@@ -426,20 +423,18 @@ val de_identification = new DeIdentification()
     .setRegion("us") 
 
 val pipeline = new Pipeline().setStages(Array(
-  documentAssembler,
-  documentHasher,
-  tokenizer,
-  embeddings,
-  clinicalNer,
-  nerConverter,
-  deIdentification
+      documentAssembler,
+      documentHasher,
+      tokenizer,
+      embeddings,
+      clinicalNer,
+      nerConverter,
+      deIdentification
 ))
 
 val emptyData = Seq(("", "")).toDF("text", "patientID")
 val pipelineModel = pipeline.fit(emptyData)
-
 val result = pipelineModel.transform(myInputDF)
-output.select("patientID", "text", "deid_text.result").show(false)
 
 +---------+----------------------------------------+----------------------------------------------+
 |patientID|text                                    |result                                        |
@@ -480,7 +475,7 @@ val documentHasher = new DocumentHashCoder()
     .setNewDateShift("shift_days") 
 
 val tokenizer = new Tokenizer()
-    .setInputCols(Array("document2")) 
+    .setInputCols("document2")
     .setOutputCol("token") 
 
 val embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")
@@ -507,21 +502,19 @@ val de_identification = new DeIdentification()
     .setRegion("us") 
 
 val pipeline = new Pipeline().setStages(Array(
-  documentAssembler,
-  documentHasher,
-  tokenizer,
-  embeddings,
-  clinicalNer,
-  nerConverter,
-  deIdentification
+      documentAssembler,
+      documentHasher,
+      tokenizer,
+      embeddings,
+      clinicalNer,
+      nerConverter,
+      deIdentification
 ))
 
 val emptyData = Seq(("", "")).toDF("text", "patientID")
 
 val pipelineModel = pipeline.fit(emptyData)
-
 val result = pipelineModel.transform(myInputDF)
-output.select("patientID", "text", "deid_text.result").show(false)
 
 +---------+----------------------------------------+----------------------------------------------+
 |patientID|text                                    |result                                        |
