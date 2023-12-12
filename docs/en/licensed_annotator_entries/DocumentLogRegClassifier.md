@@ -178,29 +178,29 @@ model = pipeline.fit(trainingData)
 {%- capture approach_scala_medical -%}
 from johnsnowlabs import * 
 // Define pipeline stages to prepare the data
-val document_assembler = new nlp.DocumentAssembler()
+val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("document")
   .setOutputCol("token")
 
-val normalizer = new nlp.Normalizer()
+val normalizer = new Normalizer()
   .setInputCols("token")
   .setOutputCol("normalized")
 
-val stopwords_cleaner = new nlp.StopWordsCleaner()
+val stopwords_cleaner = new StopWordsCleaner()
   .setInputCols("normalized")
   .setOutputCol("cleanTokens")
   .setCaseSensitive(false)
 
-val stemmer = new nlp.Stemmer()
+val stemmer = new Stemmer()
   .setInputCols("cleanTokens")
   .setOutputCol("stem")
 
 // Define the document classifier and fit training data to it
-val logreg = new medical.DocumentLogRegClassifierApproach()
+val logreg = new DocumentLogRegClassifierApproach()
   .setInputCols("stem")
   .setLabelCol("category")
   .setOutputCol("prediction")
@@ -220,29 +220,29 @@ val model = pipeline.fit(trainingData)
 {%- capture approach_scala_legal -%}
 from johnsnowlabs import * 
 // Define pipeline stages to prepare the data
-val document_assembler = new nlp.DocumentAssembler()
+val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("document")
   .setOutputCol("token")
 
-val normalizer = new nlp.Normalizer()
+val normalizer = new Normalizer()
   .setInputCols("token")
   .setOutputCol("normalized")
 
-val stopwords_cleaner = new nlp.StopWordsCleaner()
+val stopwords_cleaner = new StopWordsCleaner()
   .setInputCols("normalized")
   .setOutputCol("cleanTokens")
   .setCaseSensitive(false)
 
-val stemmer = new nlp.Stemmer()
+val stemmer = new Stemmer()
   .setInputCols("cleanTokens")
   .setOutputCol("stem")
 
 // Define the document classifier and fit training data to it
-val logreg = new legal.DocumentLogRegClassifierApproach()
+val logreg = new DocumentLogRegClassifierApproach()
   .setInputCols("stem")
   .setLabelCol("category")
   .setOutputCol("prediction")
@@ -262,29 +262,29 @@ val model = pipeline.fit(trainingData)
 {%- capture approach_scala_finance -%}
 from johnsnowlabs import * 
 // Define pipeline stages to prepare the data
-val document_assembler = new nlp.DocumentAssembler()
+val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("document")
   .setOutputCol("token")
 
-val normalizer = new nlp.Normalizer()
+val normalizer = new Normalizer()
   .setInputCols("token")
   .setOutputCol("normalized")
 
-val stopwords_cleaner = new nlp.StopWordsCleaner()
+val stopwords_cleaner = new StopWordsCleaner()
   .setInputCols("normalized")
   .setOutputCol("cleanTokens")
   .setCaseSensitive(false)
 
-val stemmer = new nlp.Stemmer()
+val stemmer = new Stemmer()
   .setInputCols("cleanTokens")
   .setOutputCol("stem")
 
 // Define the document classifier and fit training data to it
-val logreg = new finance.DocumentLogRegClassifierApproach()
+val logreg = new DocumentLogRegClassifierApproach()
   .setInputCols("stem")
   .setLabelCol("category")
   .setOutputCol("prediction")
