@@ -155,6 +155,8 @@ Another enhancement is the introduction of **sticky buttons** at the bottom of t
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_5_6_2">5.6.2</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_6_1">5.6.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_5_6_0">5.6.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_5_3">5.5.3</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_5_2">5.5.2</a></li>
