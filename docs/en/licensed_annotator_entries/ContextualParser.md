@@ -400,7 +400,6 @@ val result = pipeline.fit(data).transform(data)
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
-model=model
 approach=approach
 approach_description=approach_description
 approach_input_anno=approach_input_anno
