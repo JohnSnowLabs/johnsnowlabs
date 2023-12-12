@@ -409,13 +409,7 @@ val text = "The patient was prescribed 1 capsule of Advil 10 mg for 5 days and m
 val df = Seq(text) .toDF("text") 
 val result = pipeline.fit(df) .transform(df) 
 
-# chunk level result
-result.selectExpr("explode(ner_chunk) as a") \
-  .selectExpr("a.begin",
-              "a.end",
-              "a.result as ner_chunk",
-              "a.metadata.entity as ner_label").show(50, False)
-
+// chunk level result
 +-----+---+-------------------------------------------+---------+
 |begin|end|ner_chunk                                  |ner_label|
 +-----+---+-------------------------------------------+---------+
@@ -424,13 +418,7 @@ result.selectExpr("explode(ner_chunk) as a") \
 |67   |109|magnesium hydroxide 100mg/1ml suspension PO|DRUG     |
 +-----+---+-------------------------------------------+---------+
 
-# token level result
-result.selectExpr("explode(ner_label) as a") \
-  .selectExpr("a.begin",
-              "a.end",
-              "a.metadata.word as word",
-              "a.result as chunk").show(50, False)
-
+// token level result
 +-----+---+----------+----------+
 |begin|end|word      |chunk     |
 +-----+---+----------+----------+
@@ -506,13 +494,7 @@ val text = """This
 val df = Seq(text) .toDF("text") 
 val result = pipeline.fit(df) .transform(df)
 
-# chunk level result
-result.selectExpr("explode(ner_chunk) as a") \
-  .selectExpr("a.begin",
-              "a.end",
-              "a.result as ner_chunk",
-              "a.metadata.entity as ner_label").show(50, False)
-
+// chunk level result
 +-----+---+-----------------------------------+---------+
 |begin|end|ner_chunk                          |ner_label|
 +-----+---+-----------------------------------+---------+
@@ -534,13 +516,7 @@ result.selectExpr("explode(ner_chunk) as a") \
 |641  |647|Parties                            |ALIAS    |
 +-----+---+-----------------------------------+---------+
 
-# token level result
-result.selectExpr("explode(ner_label) as a") \
-  .selectExpr("a.begin",
-              "a.end",
-              "a.metadata.word as word",
-              "a.result as chunk").show(50, False)
-
+// token level result
 +-----+---+------------+-------+
 |begin|end|word        |chunk  |
 +-----+---+------------+-------+
@@ -645,13 +621,7 @@ val text = """In 2020, we acquired certain assets of Spell Security Private Limi
 val df = Seq(text) .toDF("text") 
 val result = pipeline.fit(df) .transform(df) 
 
-# chunk level result
-result.selectExpr("explode(ner_chunk) as a") \
-  .selectExpr("a.begin",
-              "a.end",
-              "a.result as ner_chunk",
-              "a.metadata.entity as ner_label").show(50, False)
-
+// chunk level result
 +-----+---+------------------------------+---------+
 |begin|end|ner_chunk                     |ner_label|
 +-----+---+------------------------------+---------+
@@ -662,13 +632,7 @@ result.selectExpr("explode(ner_chunk) as a") \
 |169  |170|PC                            |ALIAS    |
 +-----+---+------------------------------+---------+
 
-# token level result
-result.selectExpr("explode(ner_label) as a") \
-  .selectExpr("a.begin",
-              "a.end",
-              "a.metadata.word as word",
-              "a.result as chunk").show(50, False)
-
+// token level result
 +-----+---+------------+---------+
 |begin|end|word        |chunk    |
 +-----+---+------------+---------+
