@@ -4,6 +4,8 @@ import sys
 from pathlib import Path
 from typing import Dict, Set
 
+from johnsnowlabs.py_models.lib_version import LibVersion
+
 from johnsnowlabs import settings
 from johnsnowlabs.abstract_base.software_product import AbstractSoftwareProduct
 from johnsnowlabs.auto_install.softwares import Software
@@ -26,6 +28,7 @@ def check_and_install_dependencies(
     visual: bool = False,
     spark_nlp: bool = True,
     enterpise_nlp: bool = True,
+    spark_version: str = None,
 ):
     """
     Iterates the dependency DAG in DFS order for input product and downloads installs all dependencies
@@ -68,6 +71,12 @@ def check_and_install_dependencies(
     :param install_licensed: install licensed products if license permits it if True, otherwise not
     sparknlp_to_latest: for some releases we might not want to go to the latest spark release
     """
+    if spark_version is not None:
+        # Ignore reccomended settings
+        spark_version = LibVersion(spark_version)
+        LatestCompatibleProductVersion.pyspark.value.minor = spark_version.minor
+        LatestCompatibleProductVersion.pyspark.value.major = spark_version.major
+        LatestCompatibleProductVersion.pyspark.value.patch = spark_version.patch
     import site
     from importlib import reload
 
@@ -180,10 +189,11 @@ def check_and_install_dependencies(
                 download_folder=offline_py_dir,
                 include_dependencies=include_dependencies,
             )
+
         if not get_pip_lib_version("pyspark", py_exec=python_exec_path).equals(
             LatestCompatibleProductVersion.pyspark.value
         ):
-            # Re-install NLP incase some other library up/downgraded it while we installed it
+            # Re-install Pyspark incase some other library up/downgraded it while we installed it
             install_results[Software.spark_nlp] = Software.pyspark.install(
                 re_install=True,
                 version=LatestCompatibleProductVersion.pyspark.value,
@@ -222,7 +232,6 @@ def check_and_install_dependencies(
             to_reload.append(PIL)
         for mod in to_reload:
             reload(mod)
-
     else:
         print(f"👌 Everything is already installed, no changes made")
 
