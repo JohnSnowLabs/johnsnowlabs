@@ -212,7 +212,7 @@ result.select(F.expr("sentence.result as Input") ,F.expr("dei.result as deidenti
 
 {%- endcapture -%}
 
-{%- model_python_finance -%}
+{%- capture model_python_finance -%}
 from johnsnowlabs import nlp, medical, finance, legal
 
 documentAssembler = nlp.DocumentAssembler()\
@@ -295,7 +295,7 @@ result.select("sentence.result", "deidentified.result").show(truncate = False)
 
 {%- endcapture -%}
 
-{%- model_python_legal -%}
+{%- capture model_python_legal -%}
 from johnsnowlabs import nlp, legal, medical
 
 documentAssembler = nlp.DocumentAssembler()\
