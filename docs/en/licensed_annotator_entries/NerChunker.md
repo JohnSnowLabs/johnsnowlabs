@@ -25,7 +25,7 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, medical
 # Defining pipeline stages for NER
 
 documentAssembler= nlp.DocumentAssembler() \
@@ -95,7 +95,7 @@ result.select("ner_chunk.result").show(truncate=False)
 
 
 {%- capture model_python_legal -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, legal 
 # Defining pipeline stages for NER
 
 documentAssembler= nlp.DocumentAssembler() \
@@ -103,16 +103,16 @@ documentAssembler= nlp.DocumentAssembler() \
   .setOutputCol("document")
 
 sentenceDetector= nlp.SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")\
-        .setInputCols(["document"])\
-        .setOutputCol("sentence")
+  .setInputCols(["document"])\
+  .setOutputCol("sentence")
 
 tokenizer= nlp.Tokenizer() \
   .setInputCols(["sentence"]) \
   .setOutputCol("token")
 
 embeddings = nlp.BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") \
-        .setInputCols(["sentence", "token"]) \
-        .setOutputCol("embeddings")
+  .setInputCols(["sentence", "token"]) \
+  .setOutputCol("embeddings")
 
 ner_model = legal.NerModel.pretrained("legner_org_per_role_date", "en", "legal/models")\
   .setInputCols(["sentence", "token", "embeddings"])\
@@ -169,7 +169,7 @@ result.select("ner_chunk.result").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, finance 
 # Defining pipeline stages for NER
 
 documentAssembler= nlp.DocumentAssembler() \
@@ -255,20 +255,20 @@ result.select("ner_chunk.result").show(truncate=False)
 
 
 {%- capture model_scala_medical -%}
-from johnsnowlabs import * 
+import spark.implicits._
 // Defining pipeline stages for NER
 val data= Seq("She has cystic cyst on her kidney.").toDF("text")
 
-val documentAssembler=new DocumentAssembler()
+val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentenceDetector=new SentenceDetector()
+val sentenceDetector = new SentenceDetector()
   .setInputCols("document")
   .setOutputCol("sentence")
-  .setUseAbbreviations(False)
+  .setUseAbbreviations(false)
 
-val tokenizer=new Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("sentence")
   .setOutputCol("token")
 
@@ -302,9 +302,8 @@ val data = Seq(
 ).toDF("text")
 val result = pipeline.fit(data).transform(data)
 
-Show results:
-result.selectExpr("explode(arrays_zip(ner.metadata , ner.result))")
-      .selectExpr("col['0'].word as word" , "col['1'] as ner").show(truncate=false)
+// Show results:
+
 +------+-----------------+
 |word  |ner              |
 +------+-----------------+
@@ -317,7 +316,7 @@ result.selectExpr("explode(arrays_zip(ner.metadata , ner.result))")
 |kidney|B-BodyPart       |
 |.     |O                |
 +------+-----------------+
-result.select("ner_chunk.result").show(truncate=false)
+
 +---------------------------+
 |result                     |
 +---------------------------+
@@ -335,15 +334,15 @@ val documentAssembler= new DocumentAssembler()
   .setOutputCol("document")
 
 val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
-  .setInputCols(Array("document"))
+  .setInputCols("document")
   .setOutputCol("sentence")
 
 val tokenizer= new Tokenizer() 
-  .setInputCols(Array("sentence")) 
+  .setInputCols("sentence") 
   .setOutputCol("token")
 
 val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") 
-  .setInputCols(("sentence", "token")) 
+  .setInputCols(Array("sentence", "token")) 
   .setOutputCol("embeddings")
 
 val ner_model = LegalNerModel.pretrained("legner_org_per_role_date", "en", "legal/models")
@@ -371,8 +370,6 @@ val data = Seq(
 val result = pipeline.fit(data).transform(data)
 
 // Show results:
-result.selectExpr("explode(arrays_zip(ner.metadata , ner.result))")\
-      .selectExpr("col['0'].word as word" , "col['1'] as ner").show(truncate=False)
 
 +------------+--------+
 |word        |ner     |
@@ -392,7 +389,6 @@ result.selectExpr("explode(arrays_zip(ner.metadata , ner.result))")\
 |Amazon      |B-ORG   |
 +------------+--------+
 
-result.select("ner_chunk.result").show(truncate=False)
 
 +--------------------------------------------------------------------+
 |result                                                              |
@@ -412,15 +408,15 @@ val documentAssembler= new DocumentAssembler()
   .setOutputCol("document")
 
 val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
-  .setInputCols(Array("document"))
+  .setInputCols("document")
   .setOutputCol("sentence")
 
 val tokenizer= new Tokenizer() 
-  .setInputCols(Array("sentence")) 
+  .setInputCols("sentence")
   .setOutputCol("token")
 
 val embeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base","en") 
-  .setInputCols(("sentence", "token")) 
+  .setInputCols(Array("sentence", "token")) 
   .setOutputCol("embeddings")
 
 val ner_model = FinanceNerModel.pretrained("finner_responsibility_reports_md", "en", "finance/models")
@@ -448,8 +444,6 @@ val data = Seq(
 val result = pipeline.fit(data).transform(data)
 
 // Show results:
-result.selectExpr("explode(arrays_zip(ner.metadata , ner.result))")\
-      .selectExpr("col['0'].word as word" , "col['1'] as ner").show(truncate=False)
 
 +---------+--------------------+
 |word     |ner                 |
@@ -476,7 +470,6 @@ result.selectExpr("explode(arrays_zip(ner.metadata , ner.result))")\
 |tonnes   |B-ENVIRONMENTAL_UNIT|
 +---------+--------------------+
 
-result.select("ner_chunk.result").show(truncate=False)
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |result                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
@@ -514,4 +507,5 @@ model_scala_legal=model_scala_legal
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}
