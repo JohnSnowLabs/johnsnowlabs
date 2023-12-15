@@ -44,15 +44,7 @@ SENTENCE_EMBEDDINGS
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-import sparknlp
-from sparknlp.base import *
-from sparknlp_jsl.common import *
-from sparknlp.annotator import *
-from sparknlp.training import *
-import sparknlp_jsl
-from sparknlp_jsl.base import *
-from sparknlp_jsl.annotator import *
-from pyspark.ml import Pipeline
+from johnsnowlabs import nlp, medical
 
 documenter = nlp.DocumentAssembler()\
   .setInputCol("text")\
@@ -161,11 +153,11 @@ val posology_ner_model = MedicalNerModel.pretrained("ner_posology_large","en","c
     .setOutputCol("ner") 
 
 val ner_converter = new NerConverterInternal()
-    .setInputCols("sentence","token","ner") 
+    .setInputCols(Array("sentence","token","ner")) 
     .setOutputCol("ner_chunk") 
 
 val pos_tager = PerceptronModel.pretrained("pos_clinical","en","clinical/models") 
-    .setInputCols("sentence","token") 
+    .setInputCols(Array("sentence","token")) 
     .setOutputCol("pos_tag") 
 
 val dependency_parser = DependencyParserModel.pretrained("dependency_conllu","en") 
@@ -179,11 +171,11 @@ val entity_chunk_embeddings = EntityChunkEmbeddings.pretrained("sbiobert_base_ca
 val entity_chunk_embeddings.setTargetEntities(Map("DRUG" -> "Array("STRENGTH","ROUTE","FORM")")) 
 
 val rxnorm_re = SentenceEntityResolverModel.pretrained("sbiobertresolve_rxnorm_augmented_re","en","clinical/models")
-    .setInputCols(Array("drug_chunk_embeddings")) 
+    .setInputCols("drug_chunk_embeddings")
     .setOutputCol("rxnorm_code") 
     .setDistanceFunction("EUCLIDEAN") 
 
-val rxnorm_pipeline_re = new Pipeline(stages=Array( 
+val rxnorm_pipeline_re = new Pipeline().setStages(Array( 
     documenter, 
     sentence_detector, 
     tokenizer, 
@@ -193,15 +185,12 @@ val rxnorm_pipeline_re = new Pipeline(stages=Array(
     pos_tager, 
     dependency_parser, 
     entity_chunk_embeddings,
-     rxnorm_re, ) ) 
+    rxnorm_re)) 
 
-val rxnorm_model = Seq("").toDF("text")
+val rxnorm_model = Seq(( "The patient was given metformin 500 mg tablet,2.5 mg of coumadin and then ibuprofen." ), ( "The patient was given metformin 400 mg,coumadin 5 mg,coumadin,amlodipine 10 MG tablet" )).toDF("text")
 
-val data_df = spark.createDataFrame( Array( Array( "The patient was given metformin 500 mg tablet,2.5 mg of coumadin and then ibuprofen." ), Array( "The patient was given metformin 400 mg,coumadin 5 mg,coumadin,amlodipine 10 MG tablet" ), ) ) .toDF("text") 
+val results = rxnorm_model.transform(rxnorm_model) 
 
-val results = rxnorm_model.transform(data_df) 
-
-results.select("drug_chunk_embeddings.result","drug_chunk_embeddings.embeddings").show(truncate=200) 
 
 +--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |                                                              result|                                                                                                                                                                                              embeddings|
