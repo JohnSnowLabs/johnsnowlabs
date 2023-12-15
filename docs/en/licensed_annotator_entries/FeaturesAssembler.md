@@ -333,7 +333,7 @@ val result = nlpPipeline.fit(data_df).transform(data_df)
 [Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/FeaturesAssembler.ipynb)
 {%- endcapture -%}
 
-{% include templates/licensed_model_model_medical_fin_leg_template.md
+{% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
 model_description=model_description
