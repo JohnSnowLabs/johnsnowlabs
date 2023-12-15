@@ -34,7 +34,7 @@ DOCUMENT
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, medical
 
 # Sample data
 data_to_normalize = spark.createDataFrame([
@@ -82,6 +82,7 @@ import spark.implicits._
 val data_to_normalize = Seq(Array( ("A","Sodium Chloride/Potassium Chloride 13bag","Sodium Chloride / Potassium Chloride 13 bag") , ("B","interferon alfa-2b 10 million unit ( 1 ml ) injec","interferon alfa - 2b 10000000 unt ( 1 ml ) injection") , ("C","aspirin 10 meq/ 5 ml oral sol","aspirin 2 meq/ml oral solution") )) .toDF("cuid","text","target_normalized_text") 
 
 // Annotator that transforms a text column from dataframe into normalized text (with all policy) 
+
 val document_assembler = new DocumentAssembler()
  .setInputCol("text") 
  .setOutputCol("document") 
@@ -91,11 +92,11 @@ val drug_normalizer = new DrugNormalizer()
  .setOutputCol("document_normalized") 
  .setPolicy("all") 
 
-val drug_normalizer_pipeline = new Pipeline().setStages(Array( document_assembler, drug_normalizer )) 
+val drug_normalizer_pipeline = new Pipeline().setStages(Array(
+  document_assembler, 
+  drug_normalizer)) 
 
 val ds = drug_normalizer_pipeline.fit(data_to_normalize).transform(data_to_normalize) 
-
-ds.selectExpr("document","target_normalized_text","explode(document_normalized.result) as all_normalized_text") 
 
 +-------------------------------------------------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
 |document                                                                                   |target_normalized_text                              |all_normalized_text                                 |
