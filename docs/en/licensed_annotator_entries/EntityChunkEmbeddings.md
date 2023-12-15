@@ -22,6 +22,14 @@ An entity can be defined both as target a entity and as a related entity for som
 This model is a subclass of `BertSentenceEmbeddings` and shares all parameters
 with it. It can load any pretrained `BertSentenceEmbeddings` model.
 
+Parametres;
+- `targetEntities`: (dict) The target entities mapped to lists of their related entities. A target entity with an empty list of related entities means all other entities are assumed to be related to it. Entity names are case insensitive. *Mandatory to set at least one entity*
+
+- `entityWeights`: (dict) The relative weights of drug related entities. If not set, all entities have equal weights. If the list is non-empty and some entity is not in it, then its weight is set to 0. The notation TARGET_ENTITY:RELATED_ENTITY can be used to specify the weight of a entity which is related to specific target entity (e.g. "DRUG:SYMPTOM" -> 0.3f). Entity names are case insensitive.
+
+- `maxSyntacticDistance`: (Int) Maximal syntactic distance between the drug entity and the other drug related entities. Default value is 2.
+
+
 The default model is `"sbiobert_base_cased_mli"` from `clinical/models`.
 Other available models can be found at [Models Hub](https://nlp.johnsnowlabs.com/models?task=Embeddings).
 
@@ -36,161 +44,160 @@ SENTENCE_EMBEDDINGS
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-import sparknlp
-from sparknlp.base import *
-from sparknlp_jsl.common import *
-from sparknlp.annotator import *
-from sparknlp.training import *
-import sparknlp_jsl
-from sparknlp_jsl.base import *
-from sparknlp_jsl.annotator import *
-from pyspark.ml import Pipeline
+from johnsnowlabs import nlp, medical
 
-documenter = DocumentAssembler()\
-    .setInputCol("text")\
-    .setOutputCol("documents")
-sentence_detector = SentenceDetector() \
-    .setInputCols("documents") \
-    .setOutputCol("sentences")
-tokenizer = Tokenizer() \
-    .setInputCols("sentences") \
-    .setOutputCol("tokens")
-embeddings = WordEmbeddingsModel() \
-    .pretrained("embeddings_clinical", "en", "clinical/models")\
-    .setInputCols(["sentences", "tokens"])\
+documenter = nlp.DocumentAssembler()\
+  .setInputCol("text")\
+  .setOutputCol("document")
+
+sentence_detector =  nlp.SentenceDetector()\
+    .setInputCols("document")\
+    .setOutputCol("sentence")\
+
+tokenizer = nlp.Tokenizer()\
+    .setInputCols("sentence")\
+    .setOutputCol("token")
+
+embeddings = nlp.WordEmbeddingsModel().pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
-ner_model = MedicalNerModel()\
-    .pretrained("ner_posology_large", "en", "clinical/models")\
-    .setInputCols(["sentences", "tokens", "embeddings"])\
+
+posology_ner_model = medical.NerModel().pretrained("ner_posology_large", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
-ner_converter = NerConverterInternal()\
-    .setInputCols("sentences", "tokens", "ner")\
-    .setOutputCol("ner_chunks")
-pos_tager = PerceptronModel()\
-    .pretrained("pos_clinical", "en", "clinical/models")\
-    .setInputCols("sentences", "tokens")\
-    .setOutputCol("pos_tags")
-dependency_parser = DependencyParserModel()\
-    .pretrained("dependency_conllu", "en")\
-    .setInputCols(["sentences", "pos_tags", "tokens"])\
+
+ner_converter = medical.NerConverterInternal()\
+    .setInputCols("sentence", "token", "ner")\
+    .setOutputCol("ner_chunk")
+
+pos_tager = nlp.PerceptronModel().pretrained("pos_clinical", "en", "clinical/models")\
+    .setInputCols("sentence", "token")\
+    .setOutputCol("pos_tag")
+
+dependency_parser = nlp.DependencyParserModel().pretrained("dependency_conllu", "en")\
+    .setInputCols(["sentence", "pos_tag", "token"])\
     .setOutputCol("dependencies")
-drug_chunk_embeddings = EntityChunkEmbeddings()\
-    .pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-    .setInputCols(["ner_chunks", "dependencies"])\
-    .setOutputCol("drug_chunk_embeddings")\
-    .setMaxSyntacticDistance(3)\
-    .setTargetEntities({"DRUG": []})
-    .setEntityWeights({"DRUG": 0.8, "STRENGTH": 0.2, "DOSAGE": 0.2, "FORM": 0.5})
-sampleData = "The parient was given metformin 125 mg, 250 mg of coumadin and then one pill paracetamol"
-data = SparkContextForTest.spark.createDataFrame([[sampleData]]).toDF("text")
-pipeline = Pipeline().setStages([
-    documenter,
-    sentence_detector,
-    tokenizer,
-    embeddings,
-    ner_model,
-    ner_converter,
-    pos_tager,
-    dependency_parser,
-    drug_chunk_embeddings])
-results = pipeline.fit(data).transform(data)
-results = results \
-    .selectExpr("explode(drug_chunk_embeddings) AS drug_chunk") \
-    .selectExpr("drug_chunk.result", "slice(drug_chunk.embeddings, 1, 5) AS drug_embedding") \
-    .cache()
-results.show(truncate=False)
-+-----------------------------+-----------------------------------------------------------------+
-|                       result|                                                  drug_embedding"|
-+-----------------------------+-----------------------------------------------------------------+
-|metformin 125 mg             |[-0.267413, 0.07614058, -0.5620966, 0.83838946, 0.8911504]       |
-|250 mg coumadin              |[0.22319649, -0.07094894, -0.6885556, 0.79176235, 0.82672405]    |
-|one pill paracetamol         |[-0.10939768, -0.29242, -0.3574444, 0.3981813, 0.79609615]       |
-+-----------------------------+-----------------------------------------------------------------+
+
+entity_chunk_embeddings = medical.EntityChunkEmbeddings().pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
+    .setInputCols(["ner_chunk", "dependencies"])\
+    .setOutputCol("drug_chunk_embeddings")
+
+entity_chunk_embeddings.setTargetEntities({"DRUG": ["STRENGTH", "ROUTE", "FORM"]})
+
+rxnorm_re = medical.SentenceEntityResolverModel.pretrained("sbiobertresolve_rxnorm_augmented_re", "en", "clinical/models")\
+    .setInputCols(["drug_chunk_embeddings"])\
+    .setOutputCol("rxnorm_code")\
+    .setDistanceFunction("EUCLIDEAN")
+
+rxnorm_pipeline_re = nlp.Pipeline(
+    stages=[
+        documenter,
+        sentence_detector,
+        tokenizer,
+        embeddings,
+        posology_ner_model,
+        ner_converter,
+        pos_tager,
+        dependency_parser,
+        entity_chunk_embeddings,
+        rxnorm_re,
+    ]
+)
+
+rxnorm_model = rxnorm_pipeline_re.fit(spark.createDataFrame([[""]]).toDF("text"))
+
+data_df = spark.createDataFrame(
+    [
+        [
+            "The patient was given metformin 500 mg tablet, 2.5 mg of coumadin and then ibuprofen."
+        ],
+        [
+            "The patient was given metformin 400 mg, coumadin 5 mg, coumadin, amlodipine 10 MG tablet"
+        ],
+    ]
+).toDF("text")
+
+results = rxnorm_model.transform(data_df)
+results.select("drug_chunk_embeddings.result", "drug_chunk_embeddings.embeddings").show(truncate=200)
+
++--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                              result|                                                                                                                                                                                              embeddings|
++--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|               [metformin 500 mg tablet, 2.5 mg coumadin, ibuprofen]|[[0.13060866, 0.26946265, -0.50702775, 0.7724293, 0.7356907, 0.0962475, -0.5546377, 0.0534295, -0.55345106, 0.48484787, -0.35735086, 0.49109104, 0.84404886, 0.30384326, -0.9923568, -0.24454081, 0.3...|
+|[metformin 400 mg, coumadin 5 mg, coumadin, amlodipine 10 MG tablet]|[[-0.177948, 0.25489503, -0.5724586, 0.8031439, 0.9211674, 0.3558219, -0.37258363, -0.194855, -0.7407244, 0.48175216, 0.040639203, 0.6822441, 0.5768623, -0.19830275, -1.1513872, -0.32279214, 0.6181...|
++--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
 import spark.implicits._
-import com.johnsnowlabs.nlp.base.DocumentAssembler
-import com.johnsnowlabs.nlp.annotator.SentenceDetector
-import com.johnsnowlabs.nlp.annotators.parser.dep.DependencyParserModel
-import com.johnsnowlabs.nlp.annotators.pos.perceptron.PerceptronModel
-import com.johnsnowlabs.nlp.annotators.ner.{MedicalNerModel, NerConverterInternal}
-import com.johnsnowlabs.nlp.annotators.embeddings.EntityChunkEmbeddings
-import org.apache.spark.ml.Pipeline
 
-val documentAssembler = new DocumentAssembler()
-   .setInputCol("text")
-   .setOutputCol("document")
+val documenter = new DocumentAssembler()
+    .setInputCol("text") 
+    .setOutputCol("document") 
 
-val sentenceDetector = new SentenceDetector()
-   .setInputCols("document")
-   .setOutputCol("sentence")
+val sentence_detector = new SentenceDetector()
+    .setInputCols("document") 
+    .setOutputCol("sentence") 
 
 val tokenizer = new Tokenizer()
-   .setInputCols("sentence")
-   .setOutputCol("tokens")
+    .setInputCols("sentence") 
+    .setOutputCol("token") 
 
-val wordEmbeddings = WordEmbeddingsModel
-   .pretrained("embeddings_clinical", "en", "clinical/models")
-   .setInputCols(Array("sentences", "tokens"))
-   .setOutputCol("word_embeddings")
+val embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models") 
+    .setInputCols(Array("sentence","token")) 
+    .setOutputCol("embeddings") 
 
-val nerModel = MedicalNerModel
-   .pretrained("ner_posology_large", "en", "clinical/models")
-   .setInputCols(Array("sentence", "tokens", "word_embeddings"))
-   .setOutputCol("ner")
+val posology_ner_model = MedicalNerModel.pretrained("ner_posology_large","en","clinical/models") 
+    .setInputCols(Array("sentence","token","embeddings")) 
+    .setOutputCol("ner") 
 
-val nerConverter = new NerConverterInternal()
-   .setInputCols("sentence", "tokens", "ner")
-   .setOutputCol("ner_chunk")
+val ner_converter = new NerConverterInternal()
+    .setInputCols(Array("sentence","token","ner")) 
+    .setOutputCol("ner_chunk") 
 
-val posTager = PerceptronModel
-   .pretrained("pos_clinical", "en", "clinical/models")
-   .setInputCols("sentences", "tokens")
-   .setOutputCol("pos_tags")
+val pos_tager = PerceptronModel.pretrained("pos_clinical","en","clinical/models") 
+    .setInputCols(Array("sentence","token")) 
+    .setOutputCol("pos_tag") 
 
-val dependencyParser = DependencyParserModel
-   .pretrained("dependency_conllu", "en")
-   .setInputCols(Array("sentences", "pos_tags", "tokens"))
-   .setOutputCol("dependencies")
+val dependency_parser = DependencyParserModel.pretrained("dependency_conllu","en") 
+    .setInputCols(Array("sentence","pos_tag","token")) 
+    .setOutputCol("dependencies") 
 
-val drugChunkEmbeddings = EntityChunkEmbeddings
-   .pretrained("sbiobert_base_cased_mli","en","clinical/models")
-   .setInputCols(Array("ner_chunks", "dependencies"))
-   .setOutputCol("drug_chunk_embeddings")
-   .setMaxSyntacticDistance(3)
-   .setTargetEntities(Map("DRUG" -> List()))
-   .setEntityWeights(Map[String, Float]("DRUG" -> 0.8f, "STRENGTH" -> 0.2f, "DOSAGE" -> 0.2f, "FORM" -> 0.5f))
+val entity_chunk_embeddings = EntityChunkEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models") 
+    .setInputCols(Array("ner_chunk","dependencies")) 
+    .setOutputCol("drug_chunk_embeddings") 
 
-val pipeline = new Pipeline()
-     .setStages(Array(
-         documentAssembler,
-         sentenceDetector,
-         tokenizer,
-         wordEmbeddings,
-         nerModel,
-         nerConverter,
-         posTager,
-         dependencyParser,
-         drugChunkEmbeddings))
+val entity_chunk_embeddings.setTargetEntities(Map("DRUG" -> "Array("STRENGTH","ROUTE","FORM")")) 
 
-val sampleText = "The patient was given metformin 125 mg, 250 mg of coumadin and then one pill paracetamol."
+val rxnorm_re = SentenceEntityResolverModel.pretrained("sbiobertresolve_rxnorm_augmented_re","en","clinical/models")
+    .setInputCols("drug_chunk_embeddings")
+    .setOutputCol("rxnorm_code") 
+    .setDistanceFunction("EUCLIDEAN") 
 
-val testDataset = Seq("").toDS.toDF("text")
-val result = pipeline.fit(emptyDataset).transform(testDataset)
+val rxnorm_pipeline_re = new Pipeline().setStages(Array( 
+    documenter, 
+    sentence_detector, 
+    tokenizer, 
+    embeddings, 
+    posology_ner_model, 
+    ner_converter, 
+    pos_tager, 
+    dependency_parser, 
+    entity_chunk_embeddings,
+    rxnorm_re)) 
 
-result
-   .selectExpr("explode(drug_chunk_embeddings) AS drug_chunk")
-   .selectExpr("drug_chunk.result", "slice(drug_chunk.embeddings, 1, 5) AS drugEmbedding")
-   .show(truncate=false)
+val rxnorm_model = Seq(( "The patient was given metformin 500 mg tablet,2.5 mg of coumadin and then ibuprofen." ), ( "The patient was given metformin 400 mg,coumadin 5 mg,coumadin,amlodipine 10 MG tablet" )).toDF("text")
 
-+-----------------------------+-----------------------------------------------------------------+
-|                       result|                                                    drugEmbedding|
-+-----------------------------+-----------------------------------------------------------------+
-|metformin 125 mg             |[-0.267413, 0.07614058, -0.5620966, 0.83838946, 0.8911504]       |
-|250 mg coumadin              |[0.22319649, -0.07094894, -0.6885556, 0.79176235, 0.82672405]    |
-|one pill paracetamol          |[-0.10939768, -0.29242, -0.3574444, 0.3981813, 0.79609615]      |
-+-----------------------------+----------------------------------------------------------------+
+val results = rxnorm_model.transform(rxnorm_model) 
+
+
++--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                              result|                                                                                                                                                                                              embeddings|
++--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|               [metformin 500 mg tablet, 2.5 mg coumadin, ibuprofen]|[[0.13060866, 0.26946265, -0.50702775, 0.7724293, 0.7356907, 0.0962475, -0.5546377, 0.0534295, -0.55345106, 0.48484787, -0.35735086, 0.49109104, 0.84404886, 0.30384326, -0.9923568, -0.24454081, 0.3...|
+|[metformin 400 mg, coumadin 5 mg, coumadin, amlodipine 10 MG tablet]|[[-0.177948, 0.25489503, -0.5724586, 0.8031439, 0.9211674, 0.3558219, -0.37258363, -0.194855, -0.7407244, 0.48175216, 0.040639203, 0.6822441, 0.5768623, -0.19830275, -1.1513872, -0.32279214, 0.6181...|
++--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 {%- endcapture -%}
 
@@ -203,6 +210,9 @@ result
 [EntityChunkEmbeddingsModel](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/embeddings/entity_chunk_embeddings/index.html#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/EntityChunkEmbeddings.ipynb)
+{%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
@@ -214,4 +224,5 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}

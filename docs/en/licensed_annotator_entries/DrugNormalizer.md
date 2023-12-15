@@ -12,6 +12,16 @@ Removes all dirty characters from text following one or more input regex pattern
 Can apply non wanted character removal which a specific policy.
 Can apply lower case normalization.
 
+Parametres;
+
+- `lowercase`: (boolean) whether to convert strings to lowercase. Default is False.
+
+- `policy`: (str) rule to remove patterns from text.  Valid policy values are:
+  + **"all"**,
+  + **"abbreviations"**,
+  + **"dosages"**
+
+
 See [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/23.Drug_Normalizer.ipynb) for more examples of usage.
 {%- endcapture -%}
 
@@ -24,92 +34,82 @@ DOCUMENT
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import *
-data = spark.createDataFrame([
-  ["Sodium Chloride/Potassium Chloride 13bag"],
-  ["interferon alfa-2b 10 million unit ( 1 ml ) injec"],
-  ["aspirin 10 meq/ 5 ml oral sol"]
-]).toDF("text")
-document = nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-drugNormalizer = medical.DrugNormalizer().setInputCols(["document"]).setOutputCol("document_normalized")
+from johnsnowlabs import nlp, medical
 
-trainingPipeline = Pipeline(stages=[document, drugNormalizer])
-result = trainingPipeline.fit(data).transform(data)
+# Sample data
+data_to_normalize = spark.createDataFrame([
+            ("A", "Sodium Chloride/Potassium Chloride 13bag", "Sodium Chloride / Potassium Chloride 13 bag"),
+            ("B", "interferon alfa-2b 10 million unit ( 1 ml ) injec", "interferon alfa - 2b 10000000 unt ( 1 ml ) injection"),
+            ("C", "aspirin 10 meq/ 5 ml oral sol", "aspirin 2 meq/ml oral solution")
+        ]).toDF("cuid", "text", "target_normalized_text")
 
-result.selectExpr("explode(document_normalized.result) as normalized_text").show(truncate=False)
-+----------------------------------------------------+
-|normalized_text                                     |
-+----------------------------------------------------+
-|Sodium Chloride / Potassium Chloride 13 bag         |
-|interferon alfa - 2b 10000000 unt ( 1 ml ) injection|
-|aspirin 2 meq/ml oral solution                      |
-+----------------------------------------------------+
+# Annotator that transforms a text column from dataframe into normalized text (with all policy)
 
+document_assembler = nlp.DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
+
+drug_normalizer = medical.DrugNormalizer() \
+    .setInputCols("document") \
+    .setOutputCol("document_normalized") \
+    .setPolicy("all")
+
+drug_normalizer_pipeline = nlp.Pipeline(stages=[
+    document_assembler,
+    drug_normalizer
+    ])
+
+ds = drug_normalizer_pipeline.fit(data_to_normalize).transform(data_to_normalize)
+
+ds = ds.selectExpr("document", "target_normalized_text", "explode(document_normalized.result) as all_normalized_text")
+ds.show(truncate = False)
+
++-------------------------------------------------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
+|document                                                                                   |target_normalized_text                              |all_normalized_text                                 |
++-------------------------------------------------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
+|[{document, 0, 39, Sodium Chloride/Potassium Chloride 13bag, {sentence -> 0}, []}]         |Sodium Chloride / Potassium Chloride 13 bag         |Sodium Chloride / Potassium Chloride 13 bag         |
+|[{document, 0, 48, interferon alfa-2b 10 million unit ( 1 ml ) injec, {sentence -> 0}, []}]|interferon alfa - 2b 10000000 unt ( 1 ml ) injection|interferon alfa - 2b 10000000 unt ( 1 ml ) injection|
+|[{document, 0, 28, aspirin 10 meq/ 5 ml oral sol, {sentence -> 0}, []}]                    |aspirin 2 meq/ml oral solution                      |aspirin 2 meq/ml oral solution                      |
++-------------------------------------------------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
 {%- endcapture -%}
-
-{%- capture model_python_legal -%}
-from johnsnowlabs import *
-
-document = nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-drugNormalizer = legal.DrugNormalizer().setInputCols(["document"]).setOutputCol("document_normalized")
-
-trainingPipeline = Pipeline(stages=[document, drugNormalizer])
-{%- endcapture -%}
-
-{%- capture model_python_finance -%}
-from johnsnowlabs import *
-
-document = nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-drugNormalizer = finance.DrugNormalizer().setInputCols(["document"]).setOutputCol("document_normalized")
-
-trainingPipeline = Pipeline(stages=[document, drugNormalizer])
-{%- endcapture -%}
-
 
 
 {%- capture model_scala_medical -%}
-from johnsnowlabs import * 
-val data = Seq(
-  ("Sodium Chloride/Potassium Chloride 13bag"),
-  ("interferon alfa-2b 10 million unit ( 1 ml ) injec"),
-  ("aspirin 10 meq/ 5 ml oral sol")
-).toDF("text")
-val document = new nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-val drugNormalizer = new medical.DrugNormalizer().setInputCols("document").setOutputCol("document_normalized")
 
-val trainingPipeline = new Pipeline().setStages(Array(document, drugNormalizer))
-val result = trainingPipeline.fit(data).transform(data)
+import spark.implicits._
 
-result.selectExpr("explode(document_normalized.result) as normalized_text").show(false)
-+----------------------------------------------------+
-|normalized_text                                     |
-+----------------------------------------------------+
-|Sodium Chloride / Potassium Chloride 13 bag         |
-|interferon alfa - 2b 10000000 unt ( 1 ml ) injection|
-|aspirin 2 meq/ml oral solution                      |
-+----------------------------------------------------+
+// Sample data 
+val data_to_normalize = Seq(Array( ("A","Sodium Chloride/Potassium Chloride 13bag","Sodium Chloride / Potassium Chloride 13 bag") , ("B","interferon alfa-2b 10 million unit ( 1 ml ) injec","interferon alfa - 2b 10000000 unt ( 1 ml ) injection") , ("C","aspirin 10 meq/ 5 ml oral sol","aspirin 2 meq/ml oral solution") )) .toDF("cuid","text","target_normalized_text") 
 
-{%- endcapture -%}
+// Annotator that transforms a text column from dataframe into normalized text (with all policy) 
 
-{%- capture model_scala_legal -%}
-from johnsnowlabs import * 
+val document_assembler = new DocumentAssembler()
+ .setInputCol("text") 
+ .setOutputCol("document") 
 
-val document = new nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-val drugNormalizer = new legal.DrugNormalizer().setInputCols("document").setOutputCol("document_normalized")
+val drug_normalizer = new DrugNormalizer()
+ .setInputCols("document") 
+ .setOutputCol("document_normalized") 
+ .setPolicy("all") 
 
-val trainingPipeline = new Pipeline().setStages(Array(document, drugNormalizer))
+val drug_normalizer_pipeline = new Pipeline().setStages(Array(
+  document_assembler, 
+  drug_normalizer)) 
 
-{%- endcapture -%}
+val ds = drug_normalizer_pipeline.fit(data_to_normalize).transform(data_to_normalize) 
 
-{%- capture model_scala_finance -%}
-from johnsnowlabs import * 
++-------------------------------------------------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
+|document                                                                                   |target_normalized_text                              |all_normalized_text                                 |
++-------------------------------------------------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
+|[{document, 0, 39, Sodium Chloride/Potassium Chloride 13bag, {sentence -> 0}, []}]         |Sodium Chloride / Potassium Chloride 13 bag         |Sodium Chloride / Potassium Chloride 13 bag         |
+|[{document, 0, 48, interferon alfa-2b 10 million unit ( 1 ml ) injec, {sentence -> 0}, []}]|interferon alfa - 2b 10000000 unt ( 1 ml ) injection|interferon alfa - 2b 10000000 unt ( 1 ml ) injection|
+|[{document, 0, 28, aspirin 10 meq/ 5 ml oral sol, {sentence -> 0}, []}]                    |aspirin 2 meq/ml oral solution                      |aspirin 2 meq/ml oral solution                      |
++-------------------------------------------------------------------------------------------+----------------------------------------------------+----------------------------------------------------+
 
-val document = new nlp.DocumentAssembler().setInputCol("text").setOutputCol("document")
-val drugNormalizer = new finance.DrugNormalizer().setInputCols("document").setOutputCol("document_normalized")
-
-val trainingPipeline = new Pipeline().setStages(Array(document, drugNormalizer))
 
 {%- endcapture -%}
+
+
 
 {%- capture model_api_link -%}
 [DrugNormalizer](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/DrugNormalizer.html)
@@ -119,6 +119,10 @@ val trainingPipeline = new Pipeline().setStages(Array(document, drugNormalizer))
 [DrugNormalizer](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/normalizer/drug_normalizer/index.html#sparknlp_jsl.annotator.normalizer.drug_normalizer.DrugNormalizer)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DrugNormalizer.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -126,10 +130,7 @@ model_description=model_description
 model_input_anno=model_input_anno
 model_output_anno=model_output_anno
 model_python_medical=model_python_medical
-model_python_legal=model_python_legal
-model_python_finance=model_python_finance
 model_scala_medical=model_scala_medical
-model_scala_legal=model_scala_legal
-model_scala_finance=model_scala_finance
 model_api_link=model_api_link
-model_python_api_link=model_python_api_link%}
+model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link%}
