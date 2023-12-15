@@ -49,7 +49,7 @@ CATEGORY
 {%- endcapture -%}
 
 {%- capture approach_python_medical -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, medical
 # Define pipeline stages to prepare the data
 document_assembler = nlp.DocumentAssembler() \
   .setInputCol("text") \
@@ -78,7 +78,7 @@ logreg = medical.DocumentLogRegClassifierApproach() \
   .setLabelCol("category") \
   .setOutputCol("prediction")
 
-pipeline = Pipeline(stages=[
+pipeline = nlp.Pipeline(stages=[
   document_assembler,
   tokenizer,
   normalizer,
@@ -91,7 +91,7 @@ model = pipeline.fit(trainingData)
 {%- endcapture -%}
 
 {%- capture approach_python_legal -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, legal
 # Define pipeline stages to prepare the data
 document_assembler = nlp.DocumentAssembler() \
   .setInputCol("text") \
@@ -120,7 +120,7 @@ logreg = legal.DocumentLogRegClassifierApproach() \
   .setLabelCol("category") \
   .setOutputCol("prediction")
 
-pipeline = Pipeline(stages=[
+pipeline = nlp.Pipeline(stages=[
   document_assembler,
   tokenizer,
   normalizer,
@@ -134,7 +134,7 @@ model = pipeline.fit(trainingData)
 
 
 {%- capture approach_python_finance -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, finance
 # Define pipeline stages to prepare the data
 document_assembler = nlp.DocumentAssembler() \
   .setInputCol("text") \
@@ -163,7 +163,7 @@ logreg = finance.DocumentLogRegClassifierApproach() \
   .setLabelCol("category") \
   .setOutputCol("prediction")
 
-pipeline = Pipeline(stages=[
+pipeline = nlp.Pipeline(stages=[
   document_assembler,
   tokenizer,
   normalizer,
