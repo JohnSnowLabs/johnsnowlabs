@@ -176,7 +176,7 @@ model = pipeline.fit(trainingData)
 {%- endcapture -%}
 
 {%- capture approach_scala_medical -%}
-from johnsnowlabs import * 
+import spark.implicits._ 
 // Define pipeline stages to prepare the data
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
@@ -218,7 +218,7 @@ val model = pipeline.fit(trainingData)
 {%- endcapture -%}
 
 {%- capture approach_scala_legal -%}
-from johnsnowlabs import * 
+import spark.implicits._
 // Define pipeline stages to prepare the data
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
@@ -260,7 +260,7 @@ val model = pipeline.fit(trainingData)
 {%- endcapture -%}
 
 {%- capture approach_scala_finance -%}
-from johnsnowlabs import * 
+import spark.implicits._ 
 // Define pipeline stages to prepare the data
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
