@@ -27,7 +27,7 @@ NONE
 {%- endcapture -%}
 
 {%- capture model_output_anno -%}
-"feature_vector"
+FEATURE_VECTOR
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
@@ -35,11 +35,12 @@ NONE
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
-[FeaturesAssembler](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/base/index.html#sparknlp_jsl.base.FeaturesAssembler)
+[FeaturesAssembler](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/feature_assembler/index.html#sparknlp_jsl.annotator.feature_assembler.FeaturesAssembler.name)
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import * 
+from johnsnowlabs import medical, nlp 
+
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -57,7 +58,7 @@ sentence_embeddings = nlp.SentenceEmbeddings() \
     .setOutputCol("sentence_embeddings") \
     .setPoolingStrategy("AVERAGE")
 
-features_asm =medical.FeaturesAssembler()\
+features_asm = medical.FeaturesAssembler()\
     .setInputCols(["sentence_embeddings"])\
     .setOutputCol("features")
 
@@ -90,7 +91,8 @@ result.select("features").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, legal 
+
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -141,7 +143,8 @@ result.select("features").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, finance 
+
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -191,12 +194,14 @@ result.select("features").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
+import spark.implicits._
+
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
 val tokenizer = new Tokenizer() 
-    .setInputCols(Array("document")) 
+    .setInputCols("document")
     .setOutputCol("token")
 
 val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_healthcare_100d","en","clinical/models")
@@ -209,7 +214,7 @@ val sentence_embeddings = new SentenceEmbeddings()
     .setPoolingStrategy("AVERAGE")
 
 val features_asm = new FeaturesAssembler()
-    .setInputCols(Array("sentence_embeddings"))
+    .setInputCols("sentence_embeddings")
     .setOutputCol("features")
 
 val nlpPipeline = new Pipeline().setStages(Array(
@@ -225,7 +230,6 @@ val data = Seq(
 ).toDF("text")
 
 val result = nlpPipeline.fit(data_df).transform(data_df)
-result.select("features").show(truncate=false)
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |features                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -236,12 +240,14 @@ result.select("features").show(truncate=false)
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
+import spark.implicits._
+
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
 val tokenizer = new Tokenizer() 
-    .setInputCols(Array("document")) 
+    .setInputCols("document")
     .setOutputCol("token")
 
 val word_embeddings = WordEmbeddingsModel.pretrained()
@@ -254,7 +260,7 @@ val sentence_embeddings = new SentenceEmbeddings()
     .setPoolingStrategy("AVERAGE")
 
 val features_asm = new FeaturesAssembler()
-    .setInputCols(Array("sentence_embeddings"))
+    .setInputCols("sentence_embeddings")
     .setOutputCol("features")
 
 val nlpPipeline = new Pipeline().setStages(Array(
@@ -270,7 +276,6 @@ val data = Seq(
 ).toDF("text")
 
 val result = nlpPipeline.fit(data_df).transform(data_df)
-result.select("features").show(truncate=false)
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |features                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -280,12 +285,14 @@ result.select("features").show(truncate=false)
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
+import spark.implicits._
+
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
 val tokenizer = new Tokenizer() 
-    .setInputCols(Array("document")) 
+    .setInputCols("document")
     .setOutputCol("token")
 
 val word_embeddings = WordEmbeddingsModel.pretrained()
@@ -298,7 +305,7 @@ val sentence_embeddings = new SentenceEmbeddings()
     .setPoolingStrategy("AVERAGE")
 
 val features_asm = new FeaturesAssembler()
-    .setInputCols(Array("sentence_embeddings"))
+    .setInputCols("sentence_embeddings")
     .setOutputCol("features")
 
 val nlpPipeline = new Pipeline().setStages(Array(
@@ -314,7 +321,6 @@ val data = Seq(
 ).toDF("text")
 
 val result = nlpPipeline.fit(data_df).transform(data_df)
-result.select("features").show(truncate=false)
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |features                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
