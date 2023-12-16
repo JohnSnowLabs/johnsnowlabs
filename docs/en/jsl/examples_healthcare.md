@@ -260,6 +260,25 @@ nlp.load('norm_drugs').predict(data)
 
 </div><div class="h3-box" markdown="1">
 
+## Text Generator
+[Text Generation tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/healthcare/sequence2sequence/NLU_Medical_TextGenerators.ipynb)
+
+Given a few tokens as an intro, it can generate human-like, conceptually meaningful texts  up to 512 tokens given an input text (max 1024 tokens).
+
+``` python
+data - ['Covid 19 is']
+df = nlu.load('en.text_generator.biomedical_biogpt_base').predict(data)
+```
+
+
+| text        | generated                                                                                                                                                  |
+|:------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Covid 19 is | Covid 19 is a pandemic that has affected the world economy and health. The World Health Organization ( WHO ) has declared the pandemic a global emergency. |
+
+See the [Models Hub for all available Text Generation Models](https://nlp.johnsnowlabs.com/models?task=Text+Generation&edition=Healthcare+NLP)
+
+</div><div class="h3-box" markdown="1">
+    
 ## Rule based NER with Context Matcher
 [Rule based NER with context matching tutorial notebook](https://github.com/JohnSnowLabs/nlu/blob/master/examples/colab/Training/rule_based_named_entity_recognition_and_resolution/rule_based_NER_and_resolution_with_context_matching.ipynb)
 Define a rule based NER algorithm by providing Regex Patterns and resolution mappings.

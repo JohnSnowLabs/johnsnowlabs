@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_oncology_test](https://nlp.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -54,43 +55,16 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_oncology_test_pipeline", "en", "clinical/models")
-
-text = ''' biopsy was conducted using an ultrasound guided thick-needle. His chest computed tomography (CT) scan was negative.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_oncology_test_pipeline", "en", "clinical/models")
-
-val text = " biopsy was conducted using an ultrasound guided thick-needle. His chest computed tomography (CT) scan was negative."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks                |   begin |   end | ner_label      |   confidence |
 |---:|:--------------------------|--------:|------:|:---------------|-------------:|
 |  0 | biopsy                    |       1 |     6 | Pathology_Test |      0.9987  |
 |  1 | ultrasound guided         |      31 |    47 | Imaging_Test   |      0.87635 |
 |  2 | chest computed tomography |      67 |    91 | Imaging_Test   |      0.9176  |
 |  3 | CT                        |      94 |    95 | Imaging_Test   |      0.8294  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

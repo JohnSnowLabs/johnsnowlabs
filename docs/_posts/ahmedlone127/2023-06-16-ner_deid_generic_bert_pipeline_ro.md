@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_generic_bert_pipeline
 date: 2023-06-16
 tags: [licensed, clinical, ro, deidentification, phi, generic, bert]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: ro
 edition: Healthcare NLP 4.4.4
 spark_version: 3.4
@@ -62,70 +62,6 @@ C.N.P : 2450502264401"
 
 val result = pipeline.fullAnnotate(text)
 ```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_deid_generic_bert_pipeline", "ro", "clinical/models")
-
-text = '''Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România
-Tel: +40(235)413773
-Data setului de analize: 25 May 2022 15:36:00
-Nume si Prenume : BUREAN MARIA, Varsta: 77
-Medic : Agota Evelyn Tımar
-C.N.P : 2450502264401'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_deid_generic_bert_pipeline", "ro", "clinical/models")
-
-val text = "Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România
-Tel: +40(235)413773
-Data setului de analize: 25 May 2022 15:36:00
-Nume si Prenume : BUREAN MARIA, Varsta: 77
-Medic : Agota Evelyn Tımar
-C.N.P : 2450502264401"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_deid_generic_bert_pipeline", "ro", "clinical/models")
-
-text = '''Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România
-Tel: +40(235)413773
-Data setului de analize: 25 May 2022 15:36:00
-Nume si Prenume : BUREAN MARIA, Varsta: 77
-Medic : Agota Evelyn Tımar
-C.N.P : 2450502264401'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_deid_generic_bert_pipeline", "ro", "clinical/models")
-
-val text = "Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România
-Tel: +40(235)413773
-Data setului de analize: 25 May 2022 15:36:00
-Nume si Prenume : BUREAN MARIA, Varsta: 77
-Medic : Agota Evelyn Tımar
-C.N.P : 2450502264401"
-
-val result = pipeline.fullAnnotate(text)
-```
 
 {:.nlu-block}
 ```python
@@ -147,12 +83,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunks                   |   begin |   end | ner_label   |   confidence |
 |---:|:-----------------------------|--------:|------:|:------------|-------------:|
 |  0 | Spitalul Pentru Ochi de Deal |       0 |    27 | LOCATION    |     0.99352  |
@@ -167,12 +97,6 @@ Results
 |  9 | Agota Evelyn Tımar           |     191 |   210 | NAME        |     0.859975 |
 |    | C                            |         |       |             |              |
 | 10 | 2450502264401                |     218 |   230 | ID          |     1        |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

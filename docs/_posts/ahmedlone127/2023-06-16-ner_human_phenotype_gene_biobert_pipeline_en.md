@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_human_phenotype_gene_biober
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,10 @@ nlu.load("en.med_ner.human_phenotype_gene_biobert.pipeline").predict("""Here we 
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_human_phenotype_gene_biobert_pipeline", "en", "clinical/models")
-
-text = '''Here we presented a case (BS type) of a 17 years old female presented with polyhydramnios, polyuria, nephrocalcinosis and hypokalemia, which was alleviated after treatment with celecoxib and vitamin D(3).'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_human_phenotype_gene_biobert_pipeline", "en", "clinical/models")
-
-val text = "Here we presented a case (BS type) of a 17 years old female presented with polyhydramnios, polyuria, nephrocalcinosis and hypokalemia, which was alleviated after treatment with celecoxib and vitamin D(3)."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.human_phenotype_gene_biobert.pipeline").predict("""Here we presented a case (BS type) of a 17 years old female presented with polyhydramnios, polyuria, nephrocalcinosis and hypokalemia, which was alleviated after treatment with celecoxib and vitamin D(3).""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk        |   begin |   end | ner_label   |   confidence |
 |---:|:-----------------|--------:|------:|:------------|-------------:|
 |  0 | type             |      29 |    32 | GENE        |       0.9977 |
@@ -103,9 +74,6 @@ Results
 |  2 | polyuria         |      91 |    98 | HP          |       0.9955 |
 |  3 | nephrocalcinosis |     101 |   116 | HP          |       0.995  |
 |  4 | hypokalemia      |     122 |   132 | HP          |       0.9986 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

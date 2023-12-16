@@ -32,60 +32,10 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_case](https://n
 
 ## How to use
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_eu_clinical_case_pipeline", "en", "clinical/models")
-
-text = "
-A 3-year-old boy with autistic disorder on hospital of pediatric ward A at university hospital. He has no family history of illness or autistic spectrum disorder. The child was diagnosed with a severe communication disorder, with social interaction difficulties and sensory processing delay. Blood work was normal (thyroid-stimulating hormone (TSH), hemoglobin, mean corpuscular volume (MCV), and ferritin). Upper endoscopy also showed a submucosal tumor causing subtotal obstruction of the gastric outlet. Because a gastrointestinal stromal tumor was suspected, distal gastrectomy was performed. Histopathological examination revealed spindle cell proliferation in the submucosal layer.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_case_pipeline", "en", "clinical/models")
-
-val text = "
-A 3-year-old boy with autistic disorder on hospital of pediatric ward A at university hospital. He has no family history of illness or autistic spectrum disorder. The child was diagnosed with a severe communication disorder, with social interaction difficulties and sensory processing delay. Blood work was normal (thyroid-stimulating hormone (TSH), hemoglobin, mean corpuscular volume (MCV), and ferritin). Upper endoscopy also showed a submucosal tumor causing subtotal obstruction of the gastric outlet. Because a gastrointestinal stromal tumor was suspected, distal gastrectomy was performed. Histopathological examination revealed spindle cell proliferation in the submucosal layer.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_eu_clinical_case_pipeline", "en", "clinical/models")
-
-text = "
-A 3-year-old boy with autistic disorder on hospital of pediatric ward A at university hospital. He has no family history of illness or autistic spectrum disorder. The child was diagnosed with a severe communication disorder, with social interaction difficulties and sensory processing delay. Blood work was normal (thyroid-stimulating hormone (TSH), hemoglobin, mean corpuscular volume (MCV), and ferritin). Upper endoscopy also showed a submucosal tumor causing subtotal obstruction of the gastric outlet. Because a gastrointestinal stromal tumor was suspected, distal gastrectomy was performed. Histopathological examination revealed spindle cell proliferation in the submucosal layer.
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_case_pipeline", "en", "clinical/models")
-
-val text = "
-A 3-year-old boy with autistic disorder on hospital of pediatric ward A at university hospital. He has no family history of illness or autistic spectrum disorder. The child was diagnosed with a severe communication disorder, with social interaction difficulties and sensory processing delay. Blood work was normal (thyroid-stimulating hormone (TSH), hemoglobin, mean corpuscular volume (MCV), and ferritin). Upper endoscopy also showed a submucosal tumor causing subtotal obstruction of the gastric outlet. Because a gastrointestinal stromal tumor was suspected, distal gastrectomy was performed. Histopathological examination revealed spindle cell proliferation in the submucosal layer.
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -126,12 +76,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | chunks                         |   begin |   end | entities           |   confidence |
 |---:|:-------------------------------|--------:|------:|:-------------------|-------------:|
 |  0 | A 3-year-old boy               |       1 |    16 | patient            |     0.733133 |
@@ -162,12 +106,6 @@ Results
 | 25 | revealed                       |     628 |   635 | clinical_event     |     0.9989   |
 | 26 | spindle cell proliferation     |     637 |   662 | clinical_condition |     0.4487   |
 | 27 | the submucosal layer           |     667 |   686 | bodypart           |     0.523    |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

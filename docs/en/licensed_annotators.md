@@ -35,6 +35,8 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {:.table-model-big}
 |Annotators|Description|
 |---|---|
+{% include templates/licensed_table_entry.md  name="AnnotationMerger" summary="Merge annotations from different pipeline steps that have the same annotation type into a unified annotation."%}
+{% include templates/licensed_table_entry.md  name="AssertionChunkConverter" summary="AssertionChunkConverter annotator uses both begin and end indices of the tokens as input to add a more robust metadata to the chunk column in a way that improves the reliability of the indices and avoid loss of data."%}
 {% include templates/licensed_table_entry.md  name="AssertionDL" summary="AssertionDL is a deep Learning based approach used to extract Assertion Status from extracted entities and text."%}
 {% include templates/licensed_table_entry.md  name="AssertionFilterer" summary="Filters entities coming from ASSERTION type annotations and returns the CHUNKS."%}
 {% include templates/licensed_table_entry.md  name="AssertionLogReg" summary="Logistic Regression is used to extract Assertion Status from extracted entities and text."%}

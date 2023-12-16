@@ -34,6 +34,7 @@ This pretrained pipeline maps entities with their corresponding CVX codes. Youâ€
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -60,48 +61,16 @@ nlu.load("en.resolve.cvx_pipeline").predict("""The patient has a history of infl
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-resolver_pipeline = PretrainedPipeline("cvx_resolver_pipeline", "en", "clinical/models")
-
-text= "The patient has a history of influenza vaccine, tetanus and DTaP"
-
-result = resolver_pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val resolver_pipeline = new PretrainedPipeline("cvx_resolver_pipeline", "en", "clinical/models")
-
-val result = resolver_pipeline.fullAnnotate("The patient has a history of influenza vaccine, tetanus and DTaP")
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.resolve.cvx_pipeline").predict("""The patient has a history of influenza vaccine, tetanus and DTaP""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-+-----------------+---------+--------+
 |chunk            |ner_chunk|cvx_code|
 +-----------------+---------+--------+
 |influenza vaccine|Vaccine  |160     |
 |tetanus          |Vaccine  |35      |
 |DTaP             |Vaccine  |20      |
-+-----------------+---------+--------+
-
-
-{:.model-param}
 ```
 
 {:.model-param}

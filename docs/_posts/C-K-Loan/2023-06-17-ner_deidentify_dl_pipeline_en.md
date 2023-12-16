@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deidentify_dl_pipeline
 date: 2023-06-17
 tags: [ner, clinical, licensed, en]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: en
 edition: Healthcare NLP 4.4.4
 spark_version: 3.0
@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_deidentify_dl](https://nlp.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,10 @@ nlu.load("en.med_ner.deidentify.pipeline").predict("""Record date : 2093-01-13 ,
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_deidentify_dl_pipeline", "en", "clinical/models")
-
-text = '''Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 302-786-5227.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_deidentify_dl_pipeline", "en", "clinical/models")
-
-val text = "Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 302-786-5227."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.deidentify.pipeline").predict("""Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 302-786-5227.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunks                    |   begin |   end | ner_label     |   confidence |
 |---:|:------------------------------|--------:|------:|:--------------|-------------:|
 |  0 | 2093-01-13                    |      14 |    23 | DATE          |      0.9999  |
@@ -109,9 +80,6 @@ Results
 |  8 | Cocke County Baptist Hospital |     163 |   191 | HOSPITAL      |      0.9466  |
 |  9 | Keats Street                  |     200 |   211 | STREET        |      0.91485 |
 | 10 | 302-786-5227                  |     221 |   232 | PHONE         |      0.7415  |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

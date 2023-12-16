@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_anatomy_coarse_biobert](htt
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,46 +63,13 @@ nlu.load("en.med_ner.anatomy_coarse_biobert.pipeline").predict("""content in the
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_anatomy_coarse_biobert_pipeline", "en", "clinical/models")
-
-text = '''content in the lung tissue'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_anatomy_coarse_biobert_pipeline", "en", "clinical/models")
-
-val text = "content in the lung tissue"
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.anatomy_coarse_biobert.pipeline").predict("""content in the lung tissue""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk   |   begin |   end | ner_label   |   confidence |
 |---:|:------------|--------:|------:|:------------|-------------:|
 |  0 | lung tissue |      15 |    25 | Anatomy     |      0.99155 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

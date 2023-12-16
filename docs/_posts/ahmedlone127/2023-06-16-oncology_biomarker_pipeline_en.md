@@ -34,6 +34,7 @@ This pipeline includes Named-Entity Recognition, Assertion Status and Relation E
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,72 +63,11 @@ nlu.load("en.oncology_biomarker.pipeline").predict("""Immunohistochemistry was n
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("oncology_biomarker_pipeline", "en", "clinical/models")
-
-text = '''Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("oncology_biomarker_pipeline", "en", "clinical/models")
-
-val text = "Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.oncology_biomarker.pipeline").predict("""Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.""")
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("oncology_biomarker_pipeline", "en", "clinical/models")
-
-text = '''Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("oncology_biomarker_pipeline", "en", "clinical/models")
-
-val text = "Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.oncology_biomarker.pipeline").predict("""Immunohistochemistry was negative for thyroid transcription factor-1 and napsin A. The test was positive for ER and PR, and negative for HER2.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
-"
 ******************** ner_oncology_wip results ********************
 
 | chunk                          | ner_label        |
@@ -253,13 +193,6 @@ Results
 | ER                   | Biomarker        | negative                       | Biomarker_Result | O             |
 | PR                   | Biomarker        | negative                       | Biomarker_Result | O             |
 | negative             | Biomarker_Result | HER2                           | Oncogene         | is_finding_of |
-
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

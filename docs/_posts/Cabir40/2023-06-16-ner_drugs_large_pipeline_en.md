@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [ner_drugs_large](https://nlp.jo
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,40 +63,10 @@ nlu.load("en.med_ner.drugs_large.pipeline").predict("""The patient is a 40-year-
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_drugs_large_pipeline", "en", "clinical/models")
-
-text = '''The patient is a 40-year-old white male who presents with a chief complaint of 'chest pain'. The patient is diabetic and has a prior history of coronary artery disease. The patient presents today stating that his chest pain started yesterday evening and has been somewhat intermittent. He has been advised Aspirin 81 milligrams QDay. Humulin N. insulin 50 units in a.m. HCTZ 50 mg QDay. Nitroglycerin 1/150 sublingually PRN chest pain..'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_drugs_large_pipeline", "en", "clinical/models")
-
-val text = "The patient is a 40-year-old white male who presents with a chief complaint of 'chest pain'. The patient is diabetic and has a prior history of coronary artery disease. The patient presents today stating that his chest pain started yesterday evening and has been somewhat intermittent. He has been advised Aspirin 81 milligrams QDay. Humulin N. insulin 50 units in a.m. HCTZ 50 mg QDay. Nitroglycerin 1/150 sublingually PRN chest pain.."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.drugs_large.pipeline").predict("""The patient is a 40-year-old white male who presents with a chief complaint of 'chest pain'. The patient is diabetic and has a prior history of coronary artery disease. The patient presents today stating that his chest pain started yesterday evening and has been somewhat intermittent. He has been advised Aspirin 81 milligrams QDay. Humulin N. insulin 50 units in a.m. HCTZ 50 mg QDay. Nitroglycerin 1/150 sublingually PRN chest pain..""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk                        |   begin |   end | ner_label   |   confidence |
 |---:|:---------------------------------|--------:|------:|:------------|-------------:|
 |  0 | Aspirin 81 milligrams            |     306 |   326 | DRUG        |     0.8401   |
@@ -103,9 +74,6 @@ Results
 |  2 | insulin 50 units                 |     345 |   360 | DRUG        |     0.847067 |
 |  3 | HCTZ 50 mg                       |     370 |   379 | DRUG        |     0.875567 |
 |  4 | Nitroglycerin 1/150 sublingually |     387 |   418 | DRUG        |     0.845967 |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

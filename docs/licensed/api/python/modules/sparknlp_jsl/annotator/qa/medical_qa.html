@@ -409,6 +409,13 @@ document.write(`
 <div class="viewcode-block" id="MedicalQuestionAnswering.useCache"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/qa/medical_qa/index.html#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.useCache">[docs]</a>    <span class="n">useCache</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;useCache&quot;</span><span class="p">,</span> <span class="s2">&quot;Cache internal state of the model to improve performance&quot;</span><span class="p">,</span>
                   <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toBoolean</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="MedicalQuestionAnswering.modelType"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/qa/medical_qa/index.html#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.modelType">[docs]</a>    <span class="n">modelType</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;modelType&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;Model type&quot;</span><span class="p">,</span>
+                      <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="MedicalQuestionAnswering.mlFrameworkType"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/qa/medical_qa/index.html#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.mlFrameworkType">[docs]</a>    <span class="n">mlFrameworkType</span> <span class="o">=</span> <span class="n">Param</span><span class="p">(</span><span class="n">Params</span><span class="o">.</span><span class="n">_dummy</span><span class="p">(),</span> <span class="s2">&quot;mlFrameworkType&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;ML framework type&quot;</span><span class="p">,</span>
+                            <span class="n">typeConverter</span><span class="o">=</span><span class="n">TypeConverters</span><span class="o">.</span><span class="n">toString</span><span class="p">)</span></div>
 <div class="viewcode-block" id="MedicalQuestionAnswering.setConfigProtoBytes"><a class="viewcode-back" href="../../../../reference/autosummary/sparknlp_jsl/annotator/qa/medical_qa/index.html#sparknlp_jsl.annotator.qa.medical_qa.MedicalQuestionAnswering.setConfigProtoBytes">[docs]</a>    <span class="k">def</span> <span class="nf">setConfigProtoBytes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets configProto from tensorflow, serialized into byte array.</span>
 
@@ -503,7 +510,9 @@ document.write(`
             <span class="n">caseSensitive</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">questionType</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
             <span class="n">useCache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-            <span class="n">customPrompt</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+            <span class="n">customPrompt</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+            <span class="n">modelType</span><span class="o">=</span><span class="s2">&quot;biogpt&quot;</span><span class="p">,</span>
+            <span class="n">mlFrameworkType</span><span class="o">=</span><span class="s2">&quot;tensorflow&quot;</span>
         <span class="p">)</span>
 
     <span class="nd">@staticmethod</span>

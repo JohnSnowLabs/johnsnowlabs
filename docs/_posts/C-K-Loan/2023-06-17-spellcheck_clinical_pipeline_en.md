@@ -34,6 +34,7 @@ This pretrained medical spellchecker pipeline is built on the top of `spellcheck
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -66,44 +67,11 @@ nlu.load("en.spell.clinical.pipeline").predict("""Witth the hell of phisical ter
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("spellcheck_clinical_pipeline", "en", "clinical/models")
-example = ["Witth the hell of phisical terapy the patient was imbulated and on postoperative, the impatient tolerating a post curgical soft diet.",
-           "With paint wel controlled on orall pain medications, she was discharged too reihabilitation facilitay.",
-           "Abdomen is sort, nontender, and nonintended.",
-           "Patient not showing pain or any wealth problems.",
-           "No cute distress"]
-pipeline.fullAnnotate(example)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("spellcheck_clinical_pipeline", "en", "clinical/models")
-val example = Array("Witth the hell of phisical terapy the patient was imbulated and on postoperative, the impatient tolerating a post curgical soft diet.",
-           "With paint wel controlled on orall pain medications, she was discharged too reihabilitation facilitay.",
-           "Abdomen is sort, nontender, and nonintended.",
-           "Patient not showing pain or any wealth problems.",
-           "No cute distress")
-pipeline.fullAnnotate(example)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.spell.clinical.pipeline").predict("""Witth the hell of phisical terapy the patient was imbulated and on postoperative, the impatient tolerating a post curgical soft diet.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 [{'checked': ['With','the','cell','of','physical','therapy','the','patient','was','ambulated','and','on','postoperative',',','the','patient','tolerating','a','post','surgical','soft','diet','.'],
   'document': ['Witth the hell of phisical terapy the patient was imbulated and on postoperative, the impatient tolerating a post curgical soft diet.'],
   'token': ['Witth','the','hell','of','phisical','terapy','the','patient','was','imbulated','and','on','postoperative',',','the','impatient','tolerating','a','post','curgical','soft','diet','.']},
@@ -123,9 +91,6 @@ Results
  {'checked': ['No', 'acute', 'distress'],
   'document': ['No cute distress'],
   'token': ['No', 'cute', 'distress']}]
-
-
-{:.model-param}
 ```
 
 {:.model-param}

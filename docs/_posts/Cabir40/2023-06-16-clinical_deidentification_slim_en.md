@@ -5,7 +5,7 @@ author: John Snow Labs
 name: clinical_deidentification_slim
 date: 2023-06-16
 tags: [deidentification, deid, glove, slim, pipeline, clinical, en, licensed]
-task: Pipeline Healthcare
+task: [De-identification, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 4.4.4
 spark_version: 3.2
@@ -34,6 +34,7 @@ This pipeline is trained with lightweight `glove_100d` embeddings and can be use
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -78,102 +79,11 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-deid_pipeline = PretrainedPipeline("clinical_deidentification_slim", "en", "clinical/models")
-
-sample = """Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
-
-result = deid_pipeline.annotate(sample)
-print("\n".join(result['masked']))
-print("\n".join(result['masked_with_chars']))
-print("\n".join(result['masked_fixed_length_chars']))
-print("\n".join(result['obfuscated']))
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val deid_pipeline = new PretrainedPipeline("clinical_deidentification_slim","en","clinical/models")
-
-val sample = """Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
-
-val result = deid_pipeline.annotate(sample)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.de_identify.clinical_slim").predict("""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-deid_pipeline = PretrainedPipeline("clinical_deidentification_slim", "en", "clinical/models")
-
-sample = """Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
-
-result = deid_pipeline.annotate(sample)
-print("\n".join(result['masked']))
-print("\n".join(result['masked_with_chars']))
-print("\n".join(result['masked_fixed_length_chars']))
-print("\n".join(result['obfuscated']))
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val deid_pipeline = new PretrainedPipeline("clinical_deidentification_slim","en","clinical/models")
-
-val sample = """Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
-
-val result = deid_pipeline.annotate(sample)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.de_identify.clinical_slim").predict("""Name : Hendrickson, Ora, Record date: 2093-01-13, # 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no:A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
 
 Masked with entity labels
 ------------------------------
@@ -206,12 +116,6 @@ Dr. Dr Rosalba Hill, ID: JY:3489547, IP 005.005.005.005.
 He is a 79 male was admitted to the JOHN MUIR MEDICAL CENTER-CONCORD CAMPUS for cystectomy on 01-25-1997.
 Patient's VIN : 3CCCC22DDDD333888, SSN SSN-289-37-4495, Driver's license S99983662.
 Phone 04.32.52.27.90, North Adrienne, Colorado Springs, E-MAIL: Rawland@google.com.
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

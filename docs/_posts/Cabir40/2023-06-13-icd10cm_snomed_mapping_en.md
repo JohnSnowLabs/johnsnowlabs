@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of `icd10cm_snomed_mapper` model.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -58,44 +59,13 @@ nlu.load("en.map_entity.icd10cm_to_snomed.pipe").predict("""Put your text here."
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("icd10cm_snomed_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(R079 N4289 M62830)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("icd10cm_snomed_mapping", "en", "clinical/models")
-
-val result = pipeline.fullAnnotate(R079 N4289 M62830)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.map_entity.icd10cm_to_snomed.pipe").predict("""Put your text here.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-
 |    | icd10cm_code          | snomed_code                              |
 |---:|:----------------------|:-----------------------------------------|
 |  0 | R079 | N4289 | M62830 | 161972006 | 22035000 | 16410651000119105 |
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}

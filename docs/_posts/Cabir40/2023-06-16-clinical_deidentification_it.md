@@ -5,7 +5,7 @@ author: John Snow Labs
 name: clinical_deidentification
 date: 2023-06-16
 tags: [deidentification, pipeline, it, licensed]
-task: De-identification
+task: [De-identification, Pipeline Healthcare]
 language: it
 edition: Healthcare NLP 4.4.4
 spark_version: 3.2
@@ -34,6 +34,7 @@ This pipeline can be used to deidentify PHI information from medical texts in It
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -117,181 +118,10 @@ EMAIL: bferrabosco@poste.it""")
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-deid_pipeline = PretrainedPipeline("clinical_deidentification", "it", "clinical/models")
-
-sample = """RAPPORTO DI RICOVERO
-NOME: Lodovico Fibonacci
-CODICE FISCALE: MVANSK92F09W408A
-INDIRIZZO: Viale Burcardo 7
-CITTÀ : Napoli
-CODICE POSTALE: 80139
-DATA DI NASCITA: 03/03/1946
-ETÀ: 70 anni 
-SESSO: M
-EMAIL: lpizzo@tim.it
-DATA DI AMMISSIONE: 12/12/2016
-DOTTORE: Eva Viviani
-RAPPORTO CLINICO: 70 anni, pensionato, senza allergie farmacologiche note, che presenta la seguente storia: ex incidente sul lavoro con fratture vertebrali e costali; operato per la malattia di Dupuytren alla mano destra e un bypass ileo-femorale sinistro; diabete di tipo II, ipercolesterolemia e iperuricemia; alcolismo attivo, fuma 20 sigarette/giorno.
-È stato indirizzato a noi perché ha presentato un'ematuria macroscopica post-evacuazione in un'occasione e una microematuria persistente in seguito, con un'evacuazione normale.
-L'esame fisico ha mostrato buone condizioni generali, con addome e genitali normali; l'esame digitale rettale era coerente con un adenoma prostatico di grado I/IV.
-L'analisi delle urine ha mostrato 4 globuli rossi/campo e 0-5 leucociti/campo; il resto del sedimento era normale.
-L'emocromo è normale; la biochimica ha mostrato una glicemia di 169 mg/dl e trigliceridi 456 mg/dl; la funzione epatica e renale sono normali. PSA di 1,16 ng/ml.
-
-INDIRIZZATO A: Dott. Bruno Ferrabosco - ASL Napoli 1 Centro, Dipartimento di Endocrinologia e Nutrizione - Stretto Scamarcio 320, 80138 Napoli
-EMAIL: bferrabosco@poste.it"""
-
-result = deid_pipeline.annotate(sample)
-```
-```scala
-val deid_pipeline = new PretrainedPipeline("clinical_deidentification", "it", "clinical/models")
-
-sample = "RAPPORTO DI RICOVERO
-NOME: Lodovico Fibonacci
-CODICE FISCALE: MVANSK92F09W408A
-INDIRIZZO: Viale Burcardo 7
-CITTÀ : Napoli
-CODICE POSTALE: 80139
-DATA DI NASCITA: 03/03/1946
-ETÀ: 70 anni 
-SESSO: M
-EMAIL: lpizzo@tim.it
-DATA DI AMMISSIONE: 12/12/2016
-DOTTORE: Eva Viviani
-RAPPORTO CLINICO: 70 anni, pensionato, senza allergie farmacologiche note, che presenta la seguente storia: ex incidente sul lavoro con fratture vertebrali e costali; operato per la malattia di Dupuytren alla mano destra e un bypass ileo-femorale sinistro; diabete di tipo II, ipercolesterolemia e iperuricemia; alcolismo attivo, fuma 20 sigarette/giorno.
-È stato indirizzato a noi perché ha presentato un'ematuria macroscopica post-evacuazione in un'occasione e una microematuria persistente in seguito, con un'evacuazione normale.
-L'esame fisico ha mostrato buone condizioni generali, con addome e genitali normali; l'esame digitale rettale era coerente con un adenoma prostatico di grado I/IV.
-L'analisi delle urine ha mostrato 4 globuli rossi/campo e 0-5 leucociti/campo; il resto del sedimento era normale.
-L'emocromo è normale; la biochimica ha mostrato una glicemia di 169 mg/dl e trigliceridi 456 mg/dl; la funzione epatica e renale sono normali. PSA di 1,16 ng/ml.
-
-INDIRIZZATO A: Dott. Bruno Ferrabosco - ASL Napoli 1 Centro, Dipartimento di Endocrinologia e Nutrizione - Stretto Scamarcio 320, 80138 Napoli
-EMAIL: bferrabosco@poste.it"
-
-val result = deid_pipeline.annotate(sample)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("it.deid.clinical").predict("""RAPPORTO DI RICOVERO
-NOME: Lodovico Fibonacci
-CODICE FISCALE: MVANSK92F09W408A
-INDIRIZZO: Viale Burcardo 7
-CITTÀ : Napoli
-CODICE POSTALE: 80139
-DATA DI NASCITA: 03/03/1946
-ETÀ: 70 anni 
-SESSO: M
-EMAIL: lpizzo@tim.it
-DATA DI AMMISSIONE: 12/12/2016
-DOTTORE: Eva Viviani
-RAPPORTO CLINICO: 70 anni, pensionato, senza allergie farmacologiche note, che presenta la seguente storia: ex incidente sul lavoro con fratture vertebrali e costali; operato per la malattia di Dupuytren alla mano destra e un bypass ileo-femorale sinistro; diabete di tipo II, ipercolesterolemia e iperuricemia; alcolismo attivo, fuma 20 sigarette/giorno.
-È stato indirizzato a noi perché ha presentato un'ematuria macroscopica post-evacuazione in un'occasione e una microematuria persistente in seguito, con un'evacuazione normale.
-L'esame fisico ha mostrato buone condizioni generali, con addome e genitali normali; l'esame digitale rettale era coerente con un adenoma prostatico di grado I/IV.
-L'analisi delle urine ha mostrato 4 globuli rossi/campo e 0-5 leucociti/campo; il resto del sedimento era normale.
-L'emocromo è normale; la biochimica ha mostrato una glicemia di 169 mg/dl e trigliceridi 456 mg/dl; la funzione epatica e renale sono normali. PSA di 1,16 ng/ml.
-
-INDIRIZZATO A: Dott. Bruno Ferrabosco - ASL Napoli 1 Centro, Dipartimento di Endocrinologia e Nutrizione - Stretto Scamarcio 320, 80138 Napoli
-EMAIL: bferrabosco@poste.it""")
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-deid_pipeline = PretrainedPipeline("clinical_deidentification", "it", "clinical/models")
-
-sample = """RAPPORTO DI RICOVERO
-NOME: Lodovico Fibonacci
-CODICE FISCALE: MVANSK92F09W408A
-INDIRIZZO: Viale Burcardo 7
-CITTÀ : Napoli
-CODICE POSTALE: 80139
-DATA DI NASCITA: 03/03/1946
-ETÀ: 70 anni 
-SESSO: M
-EMAIL: lpizzo@tim.it
-DATA DI AMMISSIONE: 12/12/2016
-DOTTORE: Eva Viviani
-RAPPORTO CLINICO: 70 anni, pensionato, senza allergie farmacologiche note, che presenta la seguente storia: ex incidente sul lavoro con fratture vertebrali e costali; operato per la malattia di Dupuytren alla mano destra e un bypass ileo-femorale sinistro; diabete di tipo II, ipercolesterolemia e iperuricemia; alcolismo attivo, fuma 20 sigarette/giorno.
-È stato indirizzato a noi perché ha presentato un'ematuria macroscopica post-evacuazione in un'occasione e una microematuria persistente in seguito, con un'evacuazione normale.
-L'esame fisico ha mostrato buone condizioni generali, con addome e genitali normali; l'esame digitale rettale era coerente con un adenoma prostatico di grado I/IV.
-L'analisi delle urine ha mostrato 4 globuli rossi/campo e 0-5 leucociti/campo; il resto del sedimento era normale.
-L'emocromo è normale; la biochimica ha mostrato una glicemia di 169 mg/dl e trigliceridi 456 mg/dl; la funzione epatica e renale sono normali. PSA di 1,16 ng/ml.
-
-INDIRIZZATO A: Dott. Bruno Ferrabosco - ASL Napoli 1 Centro, Dipartimento di Endocrinologia e Nutrizione - Stretto Scamarcio 320, 80138 Napoli
-EMAIL: bferrabosco@poste.it"""
-
-result = deid_pipeline.annotate(sample)
-```
-```scala
-val deid_pipeline = new PretrainedPipeline("clinical_deidentification", "it", "clinical/models")
-
-sample = "RAPPORTO DI RICOVERO
-NOME: Lodovico Fibonacci
-CODICE FISCALE: MVANSK92F09W408A
-INDIRIZZO: Viale Burcardo 7
-CITTÀ : Napoli
-CODICE POSTALE: 80139
-DATA DI NASCITA: 03/03/1946
-ETÀ: 70 anni 
-SESSO: M
-EMAIL: lpizzo@tim.it
-DATA DI AMMISSIONE: 12/12/2016
-DOTTORE: Eva Viviani
-RAPPORTO CLINICO: 70 anni, pensionato, senza allergie farmacologiche note, che presenta la seguente storia: ex incidente sul lavoro con fratture vertebrali e costali; operato per la malattia di Dupuytren alla mano destra e un bypass ileo-femorale sinistro; diabete di tipo II, ipercolesterolemia e iperuricemia; alcolismo attivo, fuma 20 sigarette/giorno.
-È stato indirizzato a noi perché ha presentato un'ematuria macroscopica post-evacuazione in un'occasione e una microematuria persistente in seguito, con un'evacuazione normale.
-L'esame fisico ha mostrato buone condizioni generali, con addome e genitali normali; l'esame digitale rettale era coerente con un adenoma prostatico di grado I/IV.
-L'analisi delle urine ha mostrato 4 globuli rossi/campo e 0-5 leucociti/campo; il resto del sedimento era normale.
-L'emocromo è normale; la biochimica ha mostrato una glicemia di 169 mg/dl e trigliceridi 456 mg/dl; la funzione epatica e renale sono normali. PSA di 1,16 ng/ml.
-
-INDIRIZZATO A: Dott. Bruno Ferrabosco - ASL Napoli 1 Centro, Dipartimento di Endocrinologia e Nutrizione - Stretto Scamarcio 320, 80138 Napoli
-EMAIL: bferrabosco@poste.it"
-
-val result = deid_pipeline.annotate(sample)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("it.deid.clinical").predict("""RAPPORTO DI RICOVERO
-NOME: Lodovico Fibonacci
-CODICE FISCALE: MVANSK92F09W408A
-INDIRIZZO: Viale Burcardo 7
-CITTÀ : Napoli
-CODICE POSTALE: 80139
-DATA DI NASCITA: 03/03/1946
-ETÀ: 70 anni 
-SESSO: M
-EMAIL: lpizzo@tim.it
-DATA DI AMMISSIONE: 12/12/2016
-DOTTORE: Eva Viviani
-RAPPORTO CLINICO: 70 anni, pensionato, senza allergie farmacologiche note, che presenta la seguente storia: ex incidente sul lavoro con fratture vertebrali e costali; operato per la malattia di Dupuytren alla mano destra e un bypass ileo-femorale sinistro; diabete di tipo II, ipercolesterolemia e iperuricemia; alcolismo attivo, fuma 20 sigarette/giorno.
-È stato indirizzato a noi perché ha presentato un'ematuria macroscopica post-evacuazione in un'occasione e una microematuria persistente in seguito, con un'evacuazione normale.
-L'esame fisico ha mostrato buone condizioni generali, con addome e genitali normali; l'esame digitale rettale era coerente con un adenoma prostatico di grado I/IV.
-L'analisi delle urine ha mostrato 4 globuli rossi/campo e 0-5 leucociti/campo; il resto del sedimento era normale.
-L'emocromo è normale; la biochimica ha mostrato una glicemia di 169 mg/dl e trigliceridi 456 mg/dl; la funzione epatica e renale sono normali. PSA di 1,16 ng/ml.
-
-INDIRIZZATO A: Dott. Bruno Ferrabosco - ASL Napoli 1 Centro, Dipartimento di Endocrinologia e Nutrizione - Stretto Scamarcio 320, 80138 Napoli
-EMAIL: bferrabosco@poste.it""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 Masked with entity labels
 ------------------------------
 RAPPORTO DI RICOVERO
@@ -387,12 +217,6 @@ PSA di 1,16 ng/ml.
 INDIRIZZATO A: Dott.
 Antonio Rusticucci - ASL 7 DI CARBONIA AZIENDA U.S.L. N. 7, Dipartimento di Endocrinologia e Nutrizione - Via Giorgio 0 Appartamento 26, 03461 Sesto Raimondo
 EMAIL: murat.g@jsl.com
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

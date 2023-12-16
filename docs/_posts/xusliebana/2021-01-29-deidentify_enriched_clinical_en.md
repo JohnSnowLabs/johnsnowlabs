@@ -4,7 +4,7 @@ title: Deidentify  (Enriched)
 author: John Snow Labs
 name: deidentify_enriched_clinical
 date: 2021-01-29
-task: De-identification
+task: [Named Entity Recognition, De-identification]
 language: en
 nav_key: models
 edition: Spark NLP for Healthcare 2.7.2

@@ -34,50 +34,7 @@ This pretrained pipeline is built on the top of [ner_living_species_bert](https:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_living_species_bert_pipeline", "ro", "clinical/models")
-
-text = '''O femeie în vârstă de 26 de ani, însărcinată în 11 săptămâni, a consultat serviciul de urgențe dermatologice pentru că prezenta, de 4 zile, leziuni punctiforme dureroase de debut brusc pe vârful degetelor. Pacientul raportează că leziunile au început pe degete și ulterior s-au extins la degetele de la picioare. Markerii de imunitate, ANA și crioagglutininele, au fost negativi, iar serologia VHB a indicat doar vaccinarea. Pe baza acestor rezultate, diagnosticul de vasculită a fost exclus și, având în vedere diagnosticul suspectat de erupție cutanată cu mănuși și șosete, s-a efectuat serologia pentru virusul Ebstein Barr. Exantemă la mănuși și șosete datorat parvovirozei B19. Având în vedere suspiciunea unei afecțiuni infecțioase cu aceste caracteristici, a fost solicitată serologia pentru EBV, enterovirus și parvovirus B19, cu IgM pozitiv pentru acesta din urmă în două ocazii. De asemenea, nu au existat semne de anemie fetală sau complicații ale acesteia.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_living_species_bert_pipeline", "ro", "clinical/models")
-
-val text = "O femeie în vârstă de 26 de ani, însărcinată în 11 săptămâni, a consultat serviciul de urgențe dermatologice pentru că prezenta, de 4 zile, leziuni punctiforme dureroase de debut brusc pe vârful degetelor. Pacientul raportează că leziunile au început pe degete și ulterior s-au extins la degetele de la picioare. Markerii de imunitate, ANA și crioagglutininele, au fost negativi, iar serologia VHB a indicat doar vaccinarea. Pe baza acestor rezultate, diagnosticul de vasculită a fost exclus și, având în vedere diagnosticul suspectat de erupție cutanată cu mănuși și șosete, s-a efectuat serologia pentru virusul Ebstein Barr. Exantemă la mănuși și șosete datorat parvovirozei B19. Având în vedere suspiciunea unei afecțiuni infecțioase cu aceste caracteristici, a fost solicitată serologia pentru EBV, enterovirus și parvovirus B19, cu IgM pozitiv pentru acesta din urmă în două ocazii. De asemenea, nu au existat semne de anemie fetală sau complicații ale acesteia."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_living_species_bert_pipeline", "ro", "clinical/models")
-
-text = '''O femeie în vârstă de 26 de ani, însărcinată în 11 săptămâni, a consultat serviciul de urgențe dermatologice pentru că prezenta, de 4 zile, leziuni punctiforme dureroase de debut brusc pe vârful degetelor. Pacientul raportează că leziunile au început pe degete și ulterior s-au extins la degetele de la picioare. Markerii de imunitate, ANA și crioagglutininele, au fost negativi, iar serologia VHB a indicat doar vaccinarea. Pe baza acestor rezultate, diagnosticul de vasculită a fost exclus și, având în vedere diagnosticul suspectat de erupție cutanată cu mănuși și șosete, s-a efectuat serologia pentru virusul Ebstein Barr. Exantemă la mănuși și șosete datorat parvovirozei B19. Având în vedere suspiciunea unei afecțiuni infecțioase cu aceste caracteristici, a fost solicitată serologia pentru EBV, enterovirus și parvovirus B19, cu IgM pozitiv pentru acesta din urmă în două ocazii. De asemenea, nu au existat semne de anemie fetală sau complicații ale acesteia.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_living_species_bert_pipeline", "ro", "clinical/models")
-
-val text = "O femeie în vârstă de 26 de ani, însărcinată în 11 săptămâni, a consultat serviciul de urgențe dermatologice pentru că prezenta, de 4 zile, leziuni punctiforme dureroase de debut brusc pe vârful degetelor. Pacientul raportează că leziunile au început pe degete și ulterior s-au extins la degetele de la picioare. Markerii de imunitate, ANA și crioagglutininele, au fost negativi, iar serologia VHB a indicat doar vaccinarea. Pe baza acestor rezultate, diagnosticul de vasculită a fost exclus și, având în vedere diagnosticul suspectat de erupție cutanată cu mănuși și șosete, s-a efectuat serologia pentru virusul Ebstein Barr. Exantemă la mănuși și șosete datorat parvovirozei B19. Având în vedere suspiciunea unei afecțiuni infecțioase cu aceste caracteristici, a fost solicitată serologia pentru EBV, enterovirus și parvovirus B19, cu IgM pozitiv pentru acesta din urmă în două ocazii. De asemenea, nu au existat semne de anemie fetală sau complicații ale acesteia."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -112,12 +69,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunks           |   begin |   end | ner_label   |   confidence |
 |---:|:---------------------|--------:|------:|:------------|-------------:|
 |  0 | femeie               |       2 |     7 | HUMAN       |     0.9998   |
@@ -129,12 +80,6 @@ Results
 |  6 | enterovirus          |     804 |   814 | SPECIES     |     0.9984   |
 |  7 | parvovirus B19       |     819 |   832 | SPECIES     |     0.99255  |
 |  8 | fetală               |     932 |   937 | HUMAN       |     0.9994   |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

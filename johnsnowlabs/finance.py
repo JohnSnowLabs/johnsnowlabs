@@ -44,6 +44,8 @@ try:
             FinanceQuestionAnswering as QuestionAnswering,
             FinanceTextGenerator as TextGenerator,
             FinanceSummarizer as Summarizer,
+            FinanceFewShotClassifierModel as FewShotClassifierModel,
+            FinanceFewShotClassifierApproach as FewShotClassifierApproach,
         )
 
         # These are licensed annos shared across all libs
@@ -98,7 +100,9 @@ try:
             Chunk2Token,
             ExtractiveSummarization,
             ChunkFiltererApproach,
-
+            InternalDocumentSplitter as DocumentSplitter,
+            Text2SQL,
+            IOBTagger,
         )
 
         from sparknlp_jsl.modelTracer import ModelTracer

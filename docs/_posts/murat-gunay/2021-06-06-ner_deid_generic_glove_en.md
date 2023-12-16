@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_generic_glove
 date: 2021-06-06
 tags: [deid, clinical, glove, licensed, ner, en]
-task: Named Entity Recognition
+task: [Named Entity Recognition, De-identification]
 language: en
 nav_key: models
 edition: Healthcare NLP 3.0.4

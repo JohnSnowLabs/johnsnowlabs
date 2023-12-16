@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Tasks
 permalink: /docs/en/alab/tasks
 key: docs-training
-modify_date: "2023-06-08"
+modify_date: "2023-06-09"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

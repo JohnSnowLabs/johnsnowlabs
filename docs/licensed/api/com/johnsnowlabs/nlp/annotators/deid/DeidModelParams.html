@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 4.4.4 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeidModelParams</title>
-          <meta name="description" content="Spark NLP 4.4.4 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeidModelParams" />
-          <meta name="keywords" content="Spark NLP 4.4.4 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeidModelParams" />
+          <title>Spark NLP 5.1.4 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeidModelParams</title>
+          <meta name="description" content="Spark NLP 5.1.4 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeidModelParams" />
+          <meta name="keywords" content="Spark NLP 5.1.4 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeidModelParams" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 4.4.4 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.1.4 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -370,6 +370,22 @@ in DeIdentificationModel and ObfuscatorAnnotatorModel.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getValidAgeRanges" visbl="prt" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="getValidAgeRanges:Array[Int]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeidModelParams.html#getValidAgeRanges:Array[Int]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">abstract </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getValidAgeRanges</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Int">Int</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Gets valid ageRanges whether <span class="extype" name="ageRangesByHipaa">ageRangesByHipaa</span> is true or not.</p><div class="fullcomment"><div class="comment cmt"><p>Gets valid ageRanges whether <span class="extype" name="ageRangesByHipaa">ageRangesByHipaa</span> is true or not.</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="org.apache.spark.ml.util.Identifiable#uid" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
       <a id="uid:String"></a>
       <span class="permalink">
@@ -834,6 +850,22 @@ Default: False
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getFakeByHashcode" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getFakeByHashcode(fakes:Seq[String],wordToReplace:String,entity:String,seed:Int):String"></a><a id="getFakeByHashcode(Seq[String],String,String,Int):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeidModelParams.html#getFakeByHashcode(fakes:Seq[String],wordToReplace:String,entity:String,seed:Int):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getFakeByHashcode</span><span class="params">(<span name="fakes">fakes: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="wordToReplace">wordToReplace: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="entity">entity: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="seed">seed: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#getFakersEntity" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="getFakersEntity(entity:String,result:String):Seq[String]"></a><a id="getFakersEntity(String,String):Seq[String]"></a>
       <span class="permalink">
@@ -1420,10 +1452,10 @@ The values are the following:
 The supported and default formatted entities are:
 PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE, IRS, CFN.
 </p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
-    </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#setSeed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
-      <a id="setSeed(s:Int):BaseDeidParams.this.type"></a><a id="setSeed(Int):DeidModelParams.this.type"></a>
+    </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams#setSeed" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setSeed(s:Int):DeidModelParams.this.type"></a><a id="setSeed(Int):DeidModelParams.this.type"></a>
       <span class="permalink">
-      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeidModelParams.html#setSeed(s:Int):BaseDeidParams.this.type" title="Permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeidModelParams.html#setSeed(s:Int):DeidModelParams.this.type" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -1437,7 +1469,7 @@ PHONE, FAX, ID, IDNUM, BIOID, MEDICALRECORD, ZIP, VIN, SSN, DLN, LICENSE, PLATE,
       
       <p class="shortcomment cmt">It is the seed to select the entities on obfuscate mode.</p><div class="fullcomment"><div class="comment cmt"><p>It is the seed to select the entities on obfuscate mode. With the seed, you can reply to an execution several times
 with the same output.
-</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidModelParams">DeidModelParams</a> → <a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams#supportedFormattedEntities" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="supportedFormattedEntities:Array[String]"></a>
       <span class="permalink">

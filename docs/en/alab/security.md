@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Security and Privacy
 permalink: /docs/en/alab/security
 key: docs-training
-modify_date: "2021-09-29"
+modify_date: "2021-09-30"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Embeddings
 permalink: /docs/en/alab/embeddings
 key: docs-training
-modify_date: "2022-10-18"
+modify_date: "2022-10-19"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:

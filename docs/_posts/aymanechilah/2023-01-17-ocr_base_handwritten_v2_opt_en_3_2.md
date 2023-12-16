@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Ocr base handwritten model v2 optimized with ONNX for recognise handwritten text based on a TrOCR model pretrained with handwritten datasets. It is an Ocr base model for recognise handwritten text based on TrOcr architecture.  The TrOCR model was proposed in TrOCR: Transformer-based Optical Character Recognition with Pre-trained Models by Minghao Li, Tengchao Lv, Lei Cui, Yijuan Lu, Dinei Florencio, Cha Zhang, Zhoujun Li, Furu Wei. TrOCR consists of an image Transformer encoder and an autoregressive text Transformer decoder to perform optical character recognition (OCR).  The abstract from the paper is the following:  Text recognition is a long-standing research problem for document digitalization. Existing approaches for text recognition are usually built based on CNN for image understanding and RNN for char-level text generation. In addition, another language model is usually needed to improve the overall accuracy as a post-processing step. In this paper, we propose an end-to-end text recognition approach with pre-trained image Transformer and text Transformer models, namely TrOCR, which leverages the Transformer architecture for both image understanding and wordpiece-level text generation. The TrOCR model is simple but effective, and can be pre-trained with large-scale synthetic data and fine-tuned with human-labeled datasets. Experiments show that the TrOCR model outperforms the current state-of-the-art models on both printed and handwritten text recognition tasks.
+Ocr base handwritten model v2 optimized for recognise handwritten text based on a TrOCR model pretrained with handwritten datasets. It is an Ocr base model for recognise handwritten text based on TrOcr architecture.  The TrOCR model was proposed in TrOCR: Transformer-based Optical Character Recognition with Pre-trained Models by Minghao Li, Tengchao Lv, Lei Cui, Yijuan Lu, Dinei Florencio, Cha Zhang, Zhoujun Li, Furu Wei. TrOCR consists of an image Transformer encoder and an autoregressive text Transformer decoder to perform optical character recognition (OCR).  The abstract from the paper is the following:  Text recognition is a long-standing research problem for document digitalization. Existing approaches for text recognition are usually built based on CNN for image understanding and RNN for char-level text generation. In addition, another language model is usually needed to improve the overall accuracy as a post-processing step. In this paper, we propose an end-to-end text recognition approach with pre-trained image Transformer and text Transformer models, namely TrOCR, which leverages the Transformer architecture for both image understanding and wordpiece-level text generation. The TrOCR model is simple but effective, and can be pre-trained with large-scale synthetic data and fine-tuned with human-labeled datasets. Experiments show that the TrOCR model outperforms the current state-of-the-art models on both printed and handwritten text recognition tasks.
 
 
 ## Predicted Entities
@@ -50,7 +50,7 @@ text_detector = ImageTextDetectorV2 \
     .setLinkThreshold(0.3) \
     .setWidth(500)
 
-ocr = ImageToTextV2Opt.pretrained("ocr_base_handwritten_v2_opt", "en", "clinical/ocr") \
+ocr = ImageToTextV2.pretrained("ocr_base_handwritten_v2_opt", "en", "clinical/ocr") \
     .setInputCols(["image", "text_regions"]) \
     .setGroupImages(True) \
     .setOutputCol("text") \
@@ -92,7 +92,7 @@ val text_detector = ImageTextDetectorV2
     .setLinkThreshold(0.3) 
     .setWidth(500)
 
-val ocr = ImageToTextV2Opt
+val ocr = ImageToTextV2
     .pretrained("ocr_base_handwritten_v2_opt", "en", "clinical/ocr") 
     .setInputCols(Array("image", "text_regions")) 
     .setGroupImages(True) 

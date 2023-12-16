@@ -25,8 +25,8 @@ This pipeline extracts mentions of demographic information from health-related t
 
 
 {:.btn-box}
-<button class="button button-orange" disabled>Live Demo</button>
-<button class="button button-orange" disabled>Open in Colab</button>
+[Live Demo](https://demo.johnsnowlabs.com/healthcare/VOP/){:.button.button-orange}
+[Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/VOICE_OF_PATIENT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_vop_demographic_pipeline_en_4.4.4_3.2_1687434586225.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_vop_demographic_pipeline_en_4.4.4_3.2_1687434586225.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
@@ -34,6 +34,7 @@ This pipeline extracts mentions of demographic information from health-related t
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -55,34 +56,10 @@ My grandma, who's 85 and Black, just had a pacemaker implanted in the cardiology
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_vop_demographic_pipeline", "en", "clinical/models")
-
-pipeline.annotate("
-My grandma, who's 85 and Black, just had a pacemaker implanted in the cardiology department. The doctors say it'll help regulate her heartbeat and prevent future complications.
-")
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_vop_demographic_pipeline", "en", "clinical/models")
-
-val result = pipeline.annotate("
-My grandma, who's 85 and Black, just had a pacemaker implanted in the cardiology department. The doctors say it'll help regulate her heartbeat and prevent future complications.
-")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
 | chunk   | ner_label     |
 |:--------|:--------------|
 | grandma | Gender        |
@@ -90,9 +67,6 @@ Results
 | Black   | RaceEthnicity |
 | doctors | Employment    |
 | her     | Gender        |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

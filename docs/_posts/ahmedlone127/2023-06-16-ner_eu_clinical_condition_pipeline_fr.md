@@ -34,62 +34,7 @@ This pretrained pipeline is built on the top of [ner_eu_clinical_condition](http
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_eu_clinical_condition_pipeline", "fr", "clinical/models")
-
-text = "
-Il aurait présenté il y’ a environ 30 ans des ulcérations génitales non traitées spontanément guéries. L’interrogatoire retrouvait une toux sèche depuis trois mois, des douleurs rétro-sternales constrictives, une dyspnée stade III de la NYHA et un contexte d’ apyrexie. Sur ce tableau s’ est greffé des œdèmes des membres inférieurs puis un tableau d’ anasarque d’ où son hospitalisation en cardiologie pour décompensation cardiaque globale.
-
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_condition_pipeline", "fr", "clinical/models")
-
-val text = "
-Il aurait présenté il y’ a environ 30 ans des ulcérations génitales non traitées spontanément guéries. L’interrogatoire retrouvait une toux sèche depuis trois mois, des douleurs rétro-sternales constrictives, une dyspnée stade III de la NYHA et un contexte d’ apyrexie. Sur ce tableau s’ est greffé des œdèmes des membres inférieurs puis un tableau d’ anasarque d’ où son hospitalisation en cardiologie pour décompensation cardiaque globale.
-
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_eu_clinical_condition_pipeline", "fr", "clinical/models")
-
-text = "
-Il aurait présenté il y’ a environ 30 ans des ulcérations génitales non traitées spontanément guéries. L’interrogatoire retrouvait une toux sèche depuis trois mois, des douleurs rétro-sternales constrictives, une dyspnée stade III de la NYHA et un contexte d’ apyrexie. Sur ce tableau s’ est greffé des œdèmes des membres inférieurs puis un tableau d’ anasarque d’ où son hospitalisation en cardiologie pour décompensation cardiaque globale.
-
-"
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_eu_clinical_condition_pipeline", "fr", "clinical/models")
-
-val text = "
-Il aurait présenté il y’ a environ 30 ans des ulcérations génitales non traitées spontanément guéries. L’interrogatoire retrouvait une toux sèche depuis trois mois, des douleurs rétro-sternales constrictives, une dyspnée stade III de la NYHA et un contexte d’ apyrexie. Sur ce tableau s’ est greffé des œdèmes des membres inférieurs puis un tableau d’ anasarque d’ où son hospitalisation en cardiologie pour décompensation cardiaque globale.
-
-"
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -133,12 +78,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | chunks                   |   begin |   end | entities           |   confidence |
 |---:|:-------------------------|--------:|------:|:-------------------|-------------:|
 |  0 | ulcérations              |      47 |    57 | clinical_condition |       0.9995 |
@@ -148,12 +87,6 @@ Results
 |  4 | apyrexie                 |     261 |   268 | clinical_condition |       0.9963 |
 |  5 | anasarque                |     353 |   361 | clinical_condition |       0.9973 |
 |  6 | décompensation cardiaque |     409 |   432 | clinical_condition |       0.8948 |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

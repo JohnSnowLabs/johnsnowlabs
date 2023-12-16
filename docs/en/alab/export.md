@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Annotations Export
 permalink: /docs/en/alab/export
 key: docs-training
-modify_date: "2022-10-31"
+modify_date: "2022-10-30"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -1991,11 +1991,12 @@ Below is a sample format:
 
 **Filter Exported Annotations by Task**
 
-This filter allows users to select annotations based on the task (NER, Classification, Assertion, Relation Extraction)
+This filter allows users to select annotations based on the task (NER, Classification, Assertion, Relation Extraction) 
 
 **Select Annotations to Include In the Export**
 
 This filter can be used to select available labels, classes, assertion labels, or relations.
+![add-filter-for-export](/assets/images/annotation_lab/4.10.0/4.gif)
 
 **Tags**
 
@@ -2008,4 +2009,34 @@ If this option is enabled then only the tasks having ground truth in the complet
 **Exclude tasks without Completions**
 
 Previous versions of the Annotation Lab only allowed the export of tasks that contained completions. From version <bl>2.8.0</bl> on, the tasks without any completions can be exported as this can be necessary for cloning projects. In the case where only tasks with completions are required in the export, users can enable the _Exclude tasks without Completions_ option on the Export page.
+
+
+## Integration with Amazon S3 for tasks and projects export
+NLP Lab 5.2 offers seamless integration with Amazon Simple Storage Service. Users can now effortlessly export annotated tasks and projects directly to a given S3 bucket. This enhancement simplifies data management and ensures a smooth transition from annotation to model training and deployment.
+
+In previous versions, exported tasks were sent to the local workstation, but now it is possible to store annotated tasks and project backups securely in an S3 bucket. When triggering export, a new popup window will prompt the user to choose the target destination.
+By default, the "Local Export" tab is selected. This means that when the user clicks on the export button, target files will be downloaded to the local workstation. For those who prefer the convenience and reliability of cloud storage, it is now possible to select the "S3 Export" tab - enter Amazon S3 credentials, and export tasks and projects directly to the specified S3 bucket path. S3 credentials can be stored by the NLP Lab for future use.
+
+![exports3](/assets/images/annotation_lab/5.2.2/2.gif)
+
+## Improved HIPAA compliance with disabled exports to local storage
+
+Another new feature NLP Lab 5.2 offers is the option to restrict the export for more control over tasks and projects. Exporting tasks and projects to the local workstation can be disabled by admin users when dealing with sensitive data. This encourages users to adopt the more versatile and secure option of exporting data to Amazon S3.
+
+**Disable Local Export:**
+
+System administrators can now manage export settings from the system settings page. By enabling the "Disable Local Export" option, the export to a local workstation for all projects is turned off.
+
+**Selective Export Exceptions:**
+
+Administrators have the flexibility to specify projects that can still use local export if needed. To do this, click on the "Add Project" button from the Exceptions widget and search for the projects to add to the exceptions list.
+
+**S3 Bucket Export:**
+
+With the "Disable Local Export" option activated, users can only export tasks and projects to Amazon S3 bucket paths. This ensures the protection of sensitive
+data that will be stored securely in the cloud.
+
+![disableExport2](/assets/images/annotation_lab/5.2.2/3.gif)
+
+By introducing these export enhancements, NLP Lab 5.2.0 empowers organizations to streamline their data management processes while maintaining flexibility and control over export options. Users can continue to export specific projects to their local workstations if required, while others can benefit from the reliability and accessibility of exporting to Amazon S3 buckets.
 

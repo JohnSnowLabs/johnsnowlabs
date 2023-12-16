@@ -44,5 +44,17 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-ocr-workshop/blob/3.6.0/jupyter/SparkOcrImageHandwrittenDetection.ipynb
+        - title: Recognize Handwritten information in Document Images
+          id: recognize_handwritten_information_document_images 
+          image: 
+              src: /assets/images/Recognize_Handwritten_information_in_Document_Images.svg
+          excerpt: This demo recognizes handwritten information in documents using our pre-trained Spark OCR model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/RECOGNIZE_HANDWRITTEN/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageToTextHandwritten_V2_opt.ipynb
         
 ---

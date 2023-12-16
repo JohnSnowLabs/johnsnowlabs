@@ -17,7 +17,7 @@ sidebar:
 
 Release date: **03-08-2023**
 
-## NLP Lab 5.2: Introducing Synthetic Data Generation with ChatGPT, improved HIPPA compliance with s3 integration and disabled local exports, enhanced Section Based Annotation, and much more!
+## NLP Lab 5.2: Introducing Synthetic Data Generation with ChatGPT, improved HIPAA compliance with s3 integration and disabled local exports, enhanced Section Based Annotation, and much more!
 
 We are thrilled to announce the release of NLP Lab 5.2, packed with exciting new features to elevate your annotation experience and streamline your NLP projects. With synthetic task generation powered by ChatGPT, effortlessly create diverse text documents, enriching your dataset for more robust training. Collaborate and access your annotated data with ease, as we integrate Amazon S3 for tasks and project export, ensuring smooth teamwork and safe data sharing. To ensure data security and privacy, we now offer the option to disable tasks and projects to export to local workstations, guaranteeing that your sensitive information remains protected within the confines of the platform.
 
@@ -48,7 +48,7 @@ By default, the "Local Export" tab is selected. This means that when the user cl
 
 ![exports3](/assets/images/annotation_lab/5.2.2/2.gif)
 
-## Improved HIPPA compliance with disabled exports to local storage
+## Improved HIPAA compliance with disabled exports to local storage
 Another new feature NLP Lab 5.2 offers is the option to restrict the export for more control over tasks and projects. Exporting tasks and projects to the local workstation can be disabled by admin users when dealing with sensitive data. This encourages users to adopt the more versatile and secure option of exporting data to Amazon S3.
 
 **Disable Local Export:**
@@ -66,12 +66,12 @@ data that will be stored securely in the cloud.
 By introducing these export enhancements, NLP Lab 5.2.0 empowers organizations to streamline their data management processes while maintaining flexibility and control over export options. Users can continue to export specific projects to their local workstations if required, while others can benefit from the reliability and accessibility of exporting to Amazon S3 buckets.
 
 ## Section-based annotation improvements
-**Support for task splitting with external services**
+###Support for task splitting with external services
 
 We are excited to introduce a new feature in NLP Lab that allows users to import sections created outside of the platform. Users can now import tasks already split into sections using external tools like Open AI’s ChatGPT. 
 For this, we added support for “Additional sections” – sections that do not have a definition to allow their automatic identification by NLP Lab. Those sections can only be manually created by annotators or imported via the JSON import format. On the import screen users must check the “Preserve Imported Sections" options, if the imported JSON file includes a section definition. 
 
-## Targeted pre-annotation for relevant sections
+### Targeted pre-annotation for relevant sections
 While in previous versions the Annotation screen was set to filter out the list of available labels/choices based on their association with the active sections, this version takes things to the next level. It is now possible to also filter out pre-annotations based on section-specific configuration. 
 
 ![preannotationviasections](/assets/images/annotation_lab/5.2.2/4.gif)
@@ -80,7 +80,7 @@ Users can configure labels to be displayed exclusively in specific sections duri
 
 When running pre-annotation, NLP Lab will automatically adhere to these associations. Consequently, during the pre-annotation process, in Section 1, users will only see annotations for Label1, and similarly, in Section 2, only instances of Label2 will be shown.
 
-## Pre-annotations applied to all defined sections tasks
+### Pre-annotations applied to all defined sections tasks
 NLP Lab 5.2, adds a new feature - "Preannotations for Union of Sections". This enhancement ensures that pre-annotations cover all relevant sections – imported from outside sources, manually added by annotators, or automatically detected by the tool.
 
 With this feature, collaboration is enhanced, and all points of view are taken into account during pre-annotation, resulting in a more precise and efficient annotation process.

@@ -34,6 +34,7 @@ This pretrained pipeline is built on the top of [summarizer_generic_jsl](https:/
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -70,56 +71,11 @@ val result = pipeline.fullAnnotate(text)
 ```
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("summarizer_generic_jsl_pipeline", "en", "clinical/models")
-
-text = """Patient with hypertension, syncope, and spinal stenosis - for recheck.
-(Medical Transcription Sample Report)
-SUBJECTIVE:
-The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
-PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
-Reviewed and unchanged from the dictation on 12/03/2003.
-MEDICATIONS:
-Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.
-"""
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("summarizer_generic_jsl_pipeline", "en", "clinical/models")
-
-val text = """Patient with hypertension, syncope, and spinal stenosis - for recheck.
-(Medical Transcription Sample Report)
-SUBJECTIVE:
-The patient is a 78-year-old female who returns for recheck. She has hypertension. She denies difficulty with chest pain, palpations, orthopnea, nocturnal dyspnea, or edema.
-PAST MEDICAL HISTORY / SURGERY / HOSPITALIZATIONS:
-Reviewed and unchanged from the dictation on 12/03/2003.
-MEDICATIONS:
-Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin as needed, and TriViFlor 25 mg two pills daily. She also has Elocon cream 0.1% and Synalar cream 0.01% that she uses as needed for rash.
-"""
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-
 The patient is 78 years old and has hypertension. She has a history of chest pain, palpations, orthopedics, and spinal stenosis. She has a prescription of Atenolol 50 mg daily, Premarin 0.625 mg daily, calcium with vitamin D two to three pills daily, multivitamin daily, aspirin, and TriViFlor 25 mg two pills daily.
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}

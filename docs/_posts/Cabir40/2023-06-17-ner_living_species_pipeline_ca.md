@@ -32,52 +32,10 @@ This pretrained pipeline is built on the top of [ner_living_species](https://nlp
 
 ## How to use
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("ner_living_species_pipeline", "ca", "clinical/models")
-
-text = '''Dona de 47 anys al·lèrgica al iode, fumadora social, intervinguda de varices, dues cesàries i un abscés gluti. Sense altres antecedents mèdics d'interès ni tractament habitual. Viu amb el seu marit i tres fills, treballa com a professora. En el moment de la nostra valoració en la planta de Cirurgia General, la pacient presenta TA 69/40 mm Hg, freqüència cardíaca 120 lpm, taquipnea en repòs, pal·lidesa mucocutánea, mala perfusió distal i afligeix nàusees. L'abdomen és tou, no presenta peritonismo i el dèbit del drenatge abdominal roman sense canvis. Les serologies de Coxiella burnetii, Bartonella henselae, Borrelia burgdorferi, Entamoeba histolytica, Toxoplasma gondii, citomegalovirus, virus de Epstein Barr, virus varicel·la zoster i parvovirus B19 van ser negatives. No obstant això, es va detectar test de rosa de Bengala positiu per a Brucella, el test de Coombs i les aglutinacions també van ser positives amb un títol 1/40.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_living_species_pipeline", "ca", "clinical/models")
-
-val text = "Dona de 47 anys al·lèrgica al iode, fumadora social, intervinguda de varices, dues cesàries i un abscés gluti. Sense altres antecedents mèdics d'interès ni tractament habitual. Viu amb el seu marit i tres fills, treballa com a professora. En el moment de la nostra valoració en la planta de Cirurgia General, la pacient presenta TA 69/40 mm Hg, freqüència cardíaca 120 lpm, taquipnea en repòs, pal·lidesa mucocutánea, mala perfusió distal i afligeix nàusees. L'abdomen és tou, no presenta peritonismo i el dèbit del drenatge abdominal roman sense canvis. Les serologies de Coxiella burnetii, Bartonella henselae, Borrelia burgdorferi, Entamoeba histolytica, Toxoplasma gondii, citomegalovirus, virus de Epstein Barr, virus varicel·la zoster i parvovirus B19 van ser negatives. No obstant això, es va detectar test de rosa de Bengala positiu per a Brucella, el test de Coombs i les aglutinacions també van ser positives amb un títol 1/40."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_living_species_pipeline", "ca", "clinical/models")
-
-text = '''Dona de 47 anys al·lèrgica al iode, fumadora social, intervinguda de varices, dues cesàries i un abscés gluti. Sense altres antecedents mèdics d'interès ni tractament habitual. Viu amb el seu marit i tres fills, treballa com a professora. En el moment de la nostra valoració en la planta de Cirurgia General, la pacient presenta TA 69/40 mm Hg, freqüència cardíaca 120 lpm, taquipnea en repòs, pal·lidesa mucocutánea, mala perfusió distal i afligeix nàusees. L'abdomen és tou, no presenta peritonismo i el dèbit del drenatge abdominal roman sense canvis. Les serologies de Coxiella burnetii, Bartonella henselae, Borrelia burgdorferi, Entamoeba histolytica, Toxoplasma gondii, citomegalovirus, virus de Epstein Barr, virus varicel·la zoster i parvovirus B19 van ser negatives. No obstant això, es va detectar test de rosa de Bengala positiu per a Brucella, el test de Coombs i les aglutinacions també van ser positives amb un títol 1/40.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_living_species_pipeline", "ca", "clinical/models")
-
-val text = "Dona de 47 anys al·lèrgica al iode, fumadora social, intervinguda de varices, dues cesàries i un abscés gluti. Sense altres antecedents mèdics d'interès ni tractament habitual. Viu amb el seu marit i tres fills, treballa com a professora. En el moment de la nostra valoració en la planta de Cirurgia General, la pacient presenta TA 69/40 mm Hg, freqüència cardíaca 120 lpm, taquipnea en repòs, pal·lidesa mucocutánea, mala perfusió distal i afligeix nàusees. L'abdomen és tou, no presenta peritonismo i el dèbit del drenatge abdominal roman sense canvis. Les serologies de Coxiella burnetii, Bartonella henselae, Borrelia burgdorferi, Entamoeba histolytica, Toxoplasma gondii, citomegalovirus, virus de Epstein Barr, virus varicel·la zoster i parvovirus B19 van ser negatives. No obstant això, es va detectar test de rosa de Bengala positiu per a Brucella, el test de Coombs i les aglutinacions també van ser positives amb un títol 1/40."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -112,12 +70,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunks              |   begin |   end | ner_label   |   confidence |
 |---:|:------------------------|--------:|------:|:------------|-------------:|
 |  0 | Dona                    |       0 |     3 | HUMAN       |     1        |
@@ -135,12 +87,6 @@ Results
 | 12 | virus varicel·la zoster |     717 |   739 | SPECIES     |     0.778333 |
 | 13 | parvovirus B19          |     743 |   756 | SPECIES     |     0.9138   |
 | 14 | Brucella                |     847 |   854 | SPECIES     |     0.9483   |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

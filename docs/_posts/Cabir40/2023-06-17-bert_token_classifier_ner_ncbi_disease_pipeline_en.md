@@ -32,52 +32,10 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_ncbi_
 
 ## How to use
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_token_classifier_ner_ncbi_disease_pipeline", "en", "clinical/models")
-
-text = '''Kniest dysplasia is a moderately severe type II collagenopathy, characterized by short trunk and limbs, kyphoscoliosis, midface hypoplasia, severe myopia, and hearing loss.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_ncbi_disease_pipeline", "en", "clinical/models")
-
-val text = "Kniest dysplasia is a moderately severe type II collagenopathy, characterized by short trunk and limbs, kyphoscoliosis, midface hypoplasia, severe myopia, and hearing loss."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("bert_token_classifier_ner_ncbi_disease_pipeline", "en", "clinical/models")
-
-text = '''Kniest dysplasia is a moderately severe type II collagenopathy, characterized by short trunk and limbs, kyphoscoliosis, midface hypoplasia, severe myopia, and hearing loss.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_ncbi_disease_pipeline", "en", "clinical/models")
-
-val text = "Kniest dysplasia is a moderately severe type II collagenopathy, characterized by short trunk and limbs, kyphoscoliosis, midface hypoplasia, severe myopia, and hearing loss."
-
-val result = pipeline.fullAnnotate(text)
-```
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -112,12 +70,6 @@ result = pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-Results
-
-
-Results
-
-
 |    | ner_chunk              |   begin |   end | ner_label   |   confidence |
 |---:|:-----------------------|--------:|------:|:------------|-------------:|
 |  0 | Kniest dysplasia       |       0 |    15 | Disease     |     0.999886 |
@@ -126,12 +78,6 @@ Results
 |  3 | midface hypoplasia     |     120 |   137 | Disease     |     0.999911 |
 |  4 | myopia                 |     147 |   152 | Disease     |     0.999894 |
 |  5 | hearing loss           |     159 |   170 | Disease     |     0.999351 |
-
-
-{:.model-param}
-
-
-{:.model-param}
 ```
 
 {:.model-param}

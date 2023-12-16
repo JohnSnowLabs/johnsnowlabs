@@ -46,8 +46,8 @@ tokenizer = nlp.Tokenizer() \
 .setInputCols("document") \
 .setOutputCol("token")
 
-BGE_loaded = nlp.BertEmbeddings.load("legembeddings_bge_base","en", "legal/models")\
-    .setInputCols(["document","token"])\
+BGE_loaded = nlp.BertEmbeddings.pretrained("legembeddings_bge_base", "en", "legal/models")\
+    .setInputCols(["document", "token"])\
     .setOutputCol("BGE")\
 
 pipeline = nlp.Pipeline(

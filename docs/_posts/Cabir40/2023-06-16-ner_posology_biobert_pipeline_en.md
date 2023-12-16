@@ -34,36 +34,7 @@ This pretrained pipeline is built on the top of [ner_posology_biobert](https://n
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("ner_posology_biobert_pipeline", "en", "clinical/models")
-
-text = '''The patient was prescribed 1 capsule of Advil 10 mg for 5 days and magnesium hydroxide 100mg/1ml suspension PO. He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals, and metformin 1000 mg two times a day.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("ner_posology_biobert_pipeline", "en", "clinical/models")
-
-val text = "The patient was prescribed 1 capsule of Advil 10 mg for 5 days and magnesium hydroxide 100mg/1ml suspension PO. He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals, and metformin 1000 mg two times a day."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.med_ner.posology_biobert.pipeline").predict("""The patient was prescribed 1 capsule of Advil 10 mg for 5 days and magnesium hydroxide 100mg/1ml suspension PO. He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals, and metformin 1000 mg two times a day.""")
-```
-
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -93,9 +64,6 @@ nlu.load("en.med_ner.posology_biobert.pipeline").predict("""The patient was pres
 ## Results
 
 ```bash
-Results
-
-
 |    | ner_chunk           |   begin |   end | ner_label   |   confidence |
 |---:|:--------------------|--------:|------:|:------------|-------------:|
 |  0 | 1                   |      27 |    27 | DOSAGE      |     0.9993   |
@@ -115,9 +83,6 @@ Results
 | 14 | metformin           |     261 |   269 | DRUG        |     0.9999   |
 | 15 | 1000 mg             |     271 |   277 | STRENGTH    |     0.91255  |
 | 16 | two times a day     |     279 |   293 | FREQUENCY   |     0.9969   |
-
-
-{:.model-param}
 ```
 
 {:.model-param}

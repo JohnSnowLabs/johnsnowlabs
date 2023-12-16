@@ -32,6 +32,7 @@ This pretrained pipeline maps ICD10CM codes to UMLS codes without using any text
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -59,10 +60,8 @@ nlu.load("en.icd10cm.umls.mapping").predict("""Put your text here.""")
 ## Results
 
 ```bash
-
 {'icd10cm': ['M89.50', 'R82.2', 'R09.01'],
 'umls': ['C4721411', 'C0159076', 'C0004044']}
-
 ```
 
 {:.model-param}

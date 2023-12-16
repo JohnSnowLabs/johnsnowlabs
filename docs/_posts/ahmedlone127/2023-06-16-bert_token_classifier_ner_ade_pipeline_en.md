@@ -34,12 +34,13 @@ This pretrained pipeline is built on the top of [bert_token_classifier_ner_ade](
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("bert_token_classifier_ner_ade_pipeline", "en", "clinical/models")
 
-text = '''Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay.'''
+text = '''I have an allergic reaction to vancomycin so I have itchy skin, sore throat/burning/itching, numbness of tongue and gums. I would not recommend this drug to anyone, especially since I have never had such an adverse reaction to any other medication.'''
 
 result = pipeline.fullAnnotate(text)
 ```
@@ -48,37 +49,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val pipeline = new PretrainedPipeline("bert_token_classifier_ner_ade_pipeline", "en", "clinical/models")
 
-val text = "Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.classify.token_bert.ade_pipeline").predict("""Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay.""")
-```
-
-</div>
-
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
-
-pipeline = PretrainedPipeline("bert_token_classifier_ner_ade_pipeline", "en", "clinical/models")
-
-text = '''Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("bert_token_classifier_ner_ade_pipeline", "en", "clinical/models")
-
-val text = "Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay."
+val text = "I have an allergic reaction to vancomycin so I have itchy skin, sore throat/burning/itching, numbness of tongue and gums. I would not recommend this drug to anyone, especially since I have never had such an adverse reaction to any other medication."
 
 val result = pipeline.fullAnnotate(text)
 ```
@@ -86,21 +57,22 @@ val result = pipeline.fullAnnotate(text)
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.classify.token_bert.ade_pipeline").predict("""Both the erbA IRES and the erbA/myb virus constructs transformed erythroid cells after infection of bone marrow or blastoderm cultures. The erbA/myb IRES virus exhibited a 5-10-fold higher transformed colony forming efficiency than the erbA IRES virus in the blastoderm assay.""")
+nlu.load("en.classify.token_bert.ade_pipeline").predict("""I have an allergic reaction to vancomycin so I have itchy skin, sore throat/burning/itching, numbness of tongue and gums. I would not recommend this drug to anyone, especially since I have never had such an adverse reaction to any other medication.""")
 ```
 </div>
 
 ## Results
 
 ```bash
-Results
-
-
-| ner_chunk   | begin   | end   | ner_label   | confidence   |
-|-------------|---------|-------|-------------|--------------|
-
-
-{:.model-param}
+|sentence_id|chunk                      |begin|end|ner_label|
++-----------+---------------------------+-----+---+---------+
+|0          |allergic reaction          |10   |26 |ADE      |
+|0          |vancomycin                 |31   |40 |DRUG     |
+|0          |itchy skin                 |52   |61 |ADE      |
+|0          |sore throat/burning/itching|64   |90 |ADE      |
+|0          |numbness of tongue and gums|93   |119|ADE      |
+|1          |other                      |231  |235|DRUG     |
+|1          |medication                 |237  |246|DRUG     |
 ```
 
 {:.model-param}

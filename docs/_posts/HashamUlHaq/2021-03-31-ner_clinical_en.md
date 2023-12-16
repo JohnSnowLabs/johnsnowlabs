@@ -55,7 +55,7 @@ word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "c
         .setInputCols(["sentence", "token"])\
         .setOutputCol("embeddings")
 
-clinical_ner = MedicalNerModel.pretrained("ner_clinical_large", "en", "clinical/models") \
+clinical_ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models") \
         .setInputCols(["sentence", "token", "embeddings"]) \
         .setOutputCol("ner")
 
@@ -86,7 +86,7 @@ val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en"
         .setInputCols(Array("sentence", "token"))
         .setOutputCol("embeddings")
 
-val ner = MedicalNerModel.pretrained("ner_clinical_large", "en", "clinical/models")
+val ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")
         .setInputCols(Array("sentence", "token", "embeddings"))
         .setOutputCol("ner")
 

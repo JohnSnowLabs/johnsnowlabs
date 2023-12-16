@@ -34,6 +34,7 @@ This pipeline includes Named-Entity Recognition and Assertion Status models to e
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -62,41 +63,11 @@ nlu.load("en.oncology_therpay.pipeline").predict("""The patient underwent a mast
 
 </div>
 
-<div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
-from sparknlp.pretrained import PretrainedPipeline
 
-pipeline = PretrainedPipeline("oncology_therapy_pipeline", "en", "clinical/models")
-
-text = '''The patient underwent a mastectomy two years ago. She is currently receiving her second cycle of adriamycin and cyclophosphamide, and is in good overall condition.'''
-
-result = pipeline.fullAnnotate(text)
-```
-```scala
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val pipeline = new PretrainedPipeline("oncology_therapy_pipeline", "en", "clinical/models")
-
-val text = "The patient underwent a mastectomy two years ago. She is currently receiving her second cycle of adriamycin and cyclophosphamide, and is in good overall condition."
-
-val result = pipeline.fullAnnotate(text)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.oncology_therpay.pipeline").predict("""The patient underwent a mastectomy two years ago. She is currently receiving her second cycle of adriamycin and cyclophosphamide, and is in good overall condition.""")
-```
-</div>
 
 ## Results
 
 ```bash
-Results
-
-
-"
 ******************** ner_oncology_wip results ********************
 
 | chunk            | ner_label      |
@@ -153,10 +124,6 @@ Results
 | mastectomy       | Cancer_Surgery | Present_Or_Past |
 | adriamycin       | Chemotherapy   | Present_Or_Past |
 | cyclophosphamide | Chemotherapy   | Present_Or_Past |
-
-
-
-{:.model-param}
 ```
 
 {:.model-param}

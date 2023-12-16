@@ -20,7 +20,7 @@ data:
         - subtitle: Classify Legal Texts - Live Demos & Notebooks
           activemenu: legal_text_classification
       source: yes
-      source: 
+      source:         
         - title: Classify hundreds types of clauses (Binary - clause detected or not)
           id: legal_clauses_classification    
           image: 
@@ -45,6 +45,18 @@ data:
           - text: Colab
             type: blue_btn
             url:  
+        - title: Classify Law Stack Exchange Questions
+          id: classify_law_stack_exchange_questions    
+          image: 
+              src: /assets/images/Classify_Law_Stack_Exchange_Questions.svg
+          excerpt: This demo classifies a wide variety of legal issues. The model demonstrates remarkable proficiency in predicting `business`, `constitutional-law`, `contract-law`, `copyright`, `criminal-law`, `employment`, `liability`, `privacy`, `tax-law`, and `trademark`.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/legal/CLASSIFICATION_LAW_EXCHANGE/
+          - text: Colab
+            type: blue_btn
+            url: 
         - title: Classify Judgements Clauses 
           id: classify_judgements_clauses      
           image: 
@@ -78,6 +90,18 @@ data:
           - text: Live Demo
             type: normal
             url: https://demo.johnsnowlabs.com/legal/LEGCLF_SWISS_JUDGEMENTS/
+          - text: Colab
+            type: blue_btn
+            url: 
+        - title: Determine the category of a section within a subpoena
+          id: determine_category_section_within_subpoena       
+          image: 
+              src: /assets/images/Determine_the_category_of_a_section_within_a_subpoena.svg
+          excerpt: This is a multiclass classification model designed to determine the category of a section within a subpoena. A subpoena is a formal document issued by a court, grand jury, legislative body or committee, or authorized administrative agency. It commands an individual to appear at a specific time and provide testimony, either orally or in writing, regarding the matter specified in the document.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/legal/CLASSIFICATION_SUBPOENA/
           - text: Colab
             type: blue_btn
             url: 

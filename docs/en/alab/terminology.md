@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: Terminology
 permalink: /docs/en/alab/terminology
 key: docs-training
-modify_date: "2020-12-08"
+modify_date: "2020-12-09"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
