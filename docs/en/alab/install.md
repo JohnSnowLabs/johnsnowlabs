@@ -651,7 +651,7 @@ commands inside `annotationlab-installer.sh` and `annotationlab-updater.sh` file
     <th>Server requirements</th>
     <td>The minimal required configuration is <bl>32GB RAM, 8 Core CPU, 512 SSD</bl>.<br /><br />
 
-    The ideal configuration in case model training and preannotations are required on a large number of tasks is <bl>64 GiB, 16 Core CPU, 2TB HDD, 512 SSD</bl>.
+    The ideal configuration in case model training and preannotations are required on a large number of tasks is <bl>64 GiB, 16 Core CPU, 512 SSD</bl>.
     </td>
 
   </tr>
