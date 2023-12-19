@@ -66,7 +66,7 @@ NOTE: For setting parameters use `setParamName` method.
 **Example**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -175,7 +175,7 @@ Number of partitions should be equal to number of cores/executors.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -251,7 +251,7 @@ Read images and store them as single page PDF documents.
 
 </div><div class="h3-box" markdown="1">
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -343,7 +343,7 @@ Read PDF document, run OCR and render results to PDF document.
 
 </div><div class="h3-box" markdown="1">
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -472,7 +472,7 @@ muliplepage PDF document.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -600,7 +600,7 @@ println(tmpFile)
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -788,7 +788,7 @@ As output generate column with tables and tables text chunks coordinates (rows/c
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -893,7 +893,7 @@ NOTE: For setting parameters use `setParamName` method.
 **Example**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -959,7 +959,7 @@ NOTE: For setting parameters use `setParamName` method.
 **Example**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1029,7 +1029,7 @@ NOTE: For setting parameters use `setParamName` method.
 **Example**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1099,7 +1099,7 @@ NOTE: For setting parameters use `setParamName` method.
 **Example**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1169,7 +1169,7 @@ NOTE: For setting parameters use `setParamName` method.
 **Example**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1239,7 +1239,7 @@ data.select("pdf").show()
 
 **Scala example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1307,7 +1307,7 @@ data.select("image", "pagenum", "meta").show()
 
 **Scala example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1395,7 +1395,7 @@ data.select("dicom").show()
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1470,7 +1470,7 @@ Next section describes the transformers for image pre-processing: scaling, binar
 
 **Scala example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1563,7 +1563,7 @@ one of the methods with params:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1661,7 +1661,7 @@ data.storeImage("transformed_image")
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1761,7 +1761,7 @@ Supported Methods:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1872,7 +1872,7 @@ Supported methods:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -1965,7 +1965,7 @@ It supports keeping original ratio of image by padding the image in case fixed o
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2045,7 +2045,7 @@ data.storeImage("scaled_image")
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2129,7 +2129,7 @@ data.storeImage("scaled_image")
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2232,7 +2232,7 @@ data.storeImage("corrected_image")
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2379,7 +2379,7 @@ It supports removing:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2461,7 +2461,7 @@ It supports following operation:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2556,7 +2556,7 @@ for r in result.select("image", "corrected_image").collect():
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2655,7 +2655,7 @@ data.storeImage("cropped_image")
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2749,7 +2749,7 @@ data.show()
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2865,7 +2865,7 @@ data.show()
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -2996,7 +2996,7 @@ val result =  modelPipeline.transform(df)
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3129,7 +3129,7 @@ to _outputCol_ and positions with font size to 'positionsCol' column.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3244,7 +3244,7 @@ others. One could almost say they feed on and grow on ideas.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3353,7 +3353,7 @@ the PDF as an invisible text layout with an original image.
 | --- | --- | --- | --- |
 | outputCol | string | pdf | Recognized text rendered to PDF |
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3448,7 +3448,7 @@ to _outputCol_ column in HOCR format.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3625,7 +3625,7 @@ to _outputCol_ and positions with font size to 'positionsCol' column.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3765,7 +3765,7 @@ Next section describes the extra transformers
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -3908,7 +3908,7 @@ results.show()
 **Example:**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -4056,7 +4056,7 @@ Output format is json.
 **Example:**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -4191,7 +4191,7 @@ Output:
 **Example:**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -4305,7 +4305,7 @@ HocrTokenizer puts to metadata coordinates and ocr confidence.
 **Example:**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 

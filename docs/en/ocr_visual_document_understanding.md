@@ -54,7 +54,7 @@ to 10 different classes (Resume, News, Note, Advertisement, Scientific, Report, 
 **Example:**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -179,7 +179,7 @@ scanned receipt images.
 **Example:**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -301,7 +301,7 @@ Check the Models Hub for available models.
 **Example:**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -441,7 +441,7 @@ It can detect relations only for key/value in same line.
 **Example:**
 
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
