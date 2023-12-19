@@ -42,7 +42,7 @@ For more information see the [User Guide](/api/python/third_party/Comet.html) an
 
 <summary class="button"><b>Show Example</b></summary>
 
-<div class="tabs-box tabs-new" markdown="1">
+<div class="tabs-new" markdown="1">
 
 ```python
 # Metrics while training an annotator can be logged with for example:
