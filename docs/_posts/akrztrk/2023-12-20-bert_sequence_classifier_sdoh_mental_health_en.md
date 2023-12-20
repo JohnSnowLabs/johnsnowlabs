@@ -4,7 +4,7 @@ title: Social Determinants of Healthcare for Mental Health Classifier
 author: John Snow Labs
 name: bert_sequence_classifier_sdoh_mental_health
 date: 2023-12-20
-tags: [licenced, sdoh, en, clinical, social_determinants_of_heathcare, public_health, mental_health, licensed, tensorflow]
+tags: [sdoh, en, clinical, social_determinants_of_heathcare, public_health, mental_health, licensed, tensorflow]
 task: Text Classification
 language: en
 edition: Healthcare NLP 5.1.4
@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-The Mental Health classifier employs [MedicalBertForSequenceClassification embeddings](https://sparknlp.org/2022/07/18/biobert_pubmed_base_cased_v1.2_en_3_0.html) within a robust classifier architecture. Trained on a diverse dataset, this model provides accurate label assignments and confidence scores for its predictions. The primary goal of this model is to categorize text into two key labels: 'Mental_Disorder' and 'No_Or_Not_Mentioned'.
+The Mental Health classifier employs [MedicalBertForSequenceClassification embeddings](https://sparknlp.org/2022/07/18/biobert_pubmed_base_cased_v1.2_en_3_0.html) within a robust classifier architecture. Trained on a diverse dataset, this model provides accurate label assignments and confidence scores for its predictions. The primary goal of this model is to categorize text into two key labels: `Mental_Disorder` and `No_Or_Not_Mentioned`.
 
 - `Mental_Disorder`: It encompasses a wide range of mental health conditions that affect a person's mood, thinking, behavior, and overall psychological well-being.
 
@@ -42,6 +42,7 @@ The Mental Health classifier employs [MedicalBertForSequenceClassification embed
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 ```python
+  
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -51,14 +52,15 @@ tokenizer = Tokenizer()\
     .setOutputCol("token")
 
 sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_sdoh_mental_health", "en", "clinical/models")\
-    .setInputCols(["document","token"])\
+    .setInputCols(["document", "token"])\
     .setOutputCol("prediction")
 
-pipeline = Pipeline(stages=[
-                            document_assembler,
-                            tokenizer,
-                            sequenceClassifier
-                            ])
+pipeline = Pipeline(
+    stages=[
+        document_assembler,
+        tokenizer,
+        sequenceClassifier
+        ])
 
 sample_texts= [ "John, a 45-year-old man, was diagnosed with bipolar disorder, a mental disorder characterized by alternating periods of elevated mood (mania) and depression. His treatment plan involved a combination of mood stabilizing medication and regular therapy sessions. With proper management and support, John learned to better understand and cope with his condition, leading to improved stability and overall well-being.",
                 "Lisa, a 28-year-old woman, was diagnosed with generalized anxiety disorder (GAD), a mental disorder characterized by excessive worry and persistent anxiety.",
@@ -66,7 +68,7 @@ sample_texts= [ "John, a 45-year-old man, was diagnosed with bipolar disorder, a
                 "Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatment plan that includes surgery, chemotherapy, and radiation therapy.",
                 "She reported occasional respiratory symptoms, such as wheezing and shortness of breath, but had no signs of a mental disorder. Her healthcare provider assessed her lung function, reviewed her medication regimen, and provided personalized asthma education. ",
                 "During the appointment, her healthcare provider assessed her joint function, reviewed her medication regimen, and discussed the importance of adherence. They also discussed the benefits of regular exercise, maintaining a healthy weight, and using assistive devices when needed to support Anna's joint health. ",       
-            ]
+]
 
 sample_data = spark.createDataFrame(sample_texts, StringType()).toDF("text")
 
@@ -84,7 +86,7 @@ val tokenizer = new Tokenizer()
     .setOutputCol("token")
 
 val sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_sdoh_mental_health", "en", "clinical/models")
-    .setInputCols(Array("document","token"))
+    .setInputCols(Array("document", "token"))
     .setOutputCol("prediction")
 
 val pipeline = new Pipeline().setStages(Array(documenter, tokenizer, sequenceClassifier))
@@ -95,7 +97,7 @@ val data = Seq(Array("John, a 45-year-old man, was diagnosed with bipolar disord
                      "Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatment plan that includes surgery, chemotherapy, and radiation therapy.",
                      "She reported occasional respiratory symptoms, such as wheezing and shortness of breath, but had no signs of a mental disorder. Her healthcare provider assessed her lung function, reviewed her medication regimen, and provided personalized asthma education. ",
                      "During the appointment, her healthcare provider assessed her joint function, reviewed her medication regimen, and discussed the importance of adherence. They also discussed the benefits of regular exercise, maintaining a healthy weight, and using assistive devices when needed to support Anna's joint health. ",
-                    )).toDF("text")
+)).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
