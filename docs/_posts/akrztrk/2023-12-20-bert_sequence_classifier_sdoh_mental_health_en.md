@@ -62,15 +62,16 @@ pipeline = Pipeline(
         sequenceClassifier
         ])
 
-sample_texts= [ "John, a 45-year-old man, was diagnosed with bipolar disorder, a mental disorder characterized by alternating periods of elevated mood (mania) and depression. His treatment plan involved a combination of mood stabilizing medication and regular therapy sessions. With proper management and support, John learned to better understand and cope with his condition, leading to improved stability and overall well-being.",
-                "Lisa, a 28-year-old woman, was diagnosed with generalized anxiety disorder (GAD), a mental disorder characterized by excessive worry and persistent anxiety.",
-                "Mark, a 35-year-old man, sought medical help for symptoms of attention-deficit/hyperactivity disorder (ADHD), a neurodevelopmental disorder characterized by inattention, hyperactivity, and impulsivity. After a comprehensive evaluation, Mark was diagnosed with ADHD, and his healthcare provider recommended a multimodal treatment approach. ",
-                "Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatment plan that includes surgery, chemotherapy, and radiation therapy.",
-                "She reported occasional respiratory symptoms, such as wheezing and shortness of breath, but had no signs of a mental disorder. Her healthcare provider assessed her lung function, reviewed her medication regimen, and provided personalized asthma education. ",
-                "During the appointment, her healthcare provider assessed her joint function, reviewed her medication regimen, and discussed the importance of adherence. They also discussed the benefits of regular exercise, maintaining a healthy weight, and using assistive devices when needed to support Anna's joint health. ",       
+sample_texts= [
+  ["John, a 45-year-old man, was diagnosed with bipolar disorder, a mental disorder characterized by alternating periods of elevated mood (mania) and depression. His treatment plan involved a combination of mood stabilizing medication and regular therapy sessions. With proper management and support, John learned to better understand and cope with his condition, leading to improved stability and overall well-being."],
+  ["Lisa, a 28-year-old woman, was diagnosed with generalized anxiety disorder (GAD), a mental disorder characterized by excessive worry and persistent anxiety."],
+  ["Mark, a 35-year-old man, sought medical help for symptoms of attention-deficit/hyperactivity disorder (ADHD), a neurodevelopmental disorder characterized by inattention, hyperactivity, and impulsivity. After a comprehensive evaluation, Mark was diagnosed with ADHD, and his healthcare provider recommended a multimodal treatment approach. "],
+  ["Patient B is a 40-year-old female who was diagnosed with breast cancer. She has received a treatment plan that includes surgery, chemotherapy, and radiation therapy."],
+  ["She reported occasional respiratory symptoms, such as wheezing and shortness of breath, but had no signs of a mental disorder. Her healthcare provider assessed her lung function, reviewed her medication regimen, and provided personalized asthma education. "],
+  ["During the appointment, her healthcare provider assessed her joint function, reviewed her medication regimen, and discussed the importance of adherence. They also discussed the benefits of regular exercise, maintaining a healthy weight, and using assistive devices when needed to support Anna's joint health. "],       
 ]
 
-sample_data = spark.createDataFrame(sample_texts, StringType()).toDF("text")
+sample_data = spark.createDataFrame(sample_texts).toDF("text")
 
 result = pipeline.fit(sample_data).transform(sample_data)
 
