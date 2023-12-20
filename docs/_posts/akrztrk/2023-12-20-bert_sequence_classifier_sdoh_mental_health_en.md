@@ -41,8 +41,8 @@ The Mental Health classifier employs [MedicalBertForSequenceClassification embed
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
   
+```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
