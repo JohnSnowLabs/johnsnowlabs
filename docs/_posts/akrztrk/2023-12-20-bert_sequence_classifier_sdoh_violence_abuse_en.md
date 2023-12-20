@@ -45,6 +45,7 @@ The Violence and Abuse classifier employs [MedicalBertForSequenceClassification 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
