@@ -40,6 +40,7 @@ The PHS-BERT Disability Classifier Model is an advanced text classification tool
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
