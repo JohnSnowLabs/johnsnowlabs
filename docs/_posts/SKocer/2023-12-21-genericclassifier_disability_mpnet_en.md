@@ -317,7 +317,7 @@ For this disabled individual, a comprehensive care plan including physical thera
      Disabled       0.92      0.91      0.92       164
  Non-disabled       0.98      0.88      0.93       282
 Other/Unknown       0.77      0.94      0.84       129
-     accuracy                           0.90       575
+     accuracy        -         -        0.90       575
     macro-avg       0.89      0.91      0.90       575
  weighted-avg       0.91      0.90      0.90       575
 ```
