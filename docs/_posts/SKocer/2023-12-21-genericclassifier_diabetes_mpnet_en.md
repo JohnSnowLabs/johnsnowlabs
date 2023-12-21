@@ -46,6 +46,7 @@ The PHS-BERT Diabetes Classifier Model is an advanced text classification tool d
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
