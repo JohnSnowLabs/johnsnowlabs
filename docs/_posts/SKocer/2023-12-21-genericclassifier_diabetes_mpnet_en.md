@@ -343,9 +343,9 @@ Patient's thorough medical history and current health parameters strongly indica
   Gestational       0.97      0.98      0.97       450
            No       0.61      0.97      0.75       182
 Other/Unknown       0.78      0.66      0.72        80
-       Type 1       0.97      0.89      0.93       745
-       Type 2       0.91      0.87      0.89       931
-     accuracy                           0.90      2388
+       Type_1       0.97      0.89      0.93       745
+       Type_2       0.91      0.87      0.89       931
+     accuracy        -         -        0.90      2388
     macro-avg       0.85      0.87      0.85      2388
  weighted-avg       0.91      0.90      0.90      2388
 ```
