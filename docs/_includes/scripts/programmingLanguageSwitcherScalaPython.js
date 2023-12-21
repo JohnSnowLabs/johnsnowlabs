@@ -112,24 +112,6 @@ tabs({
     tabsContentSelector: '.tabs-item', 
     activeClass: 'tabheader_active'
 });
-
-
-
-
-/* tabs({
-    tabsWrapperSelector: '.tabs-box', 
-    tabsParentSelector: '.tabs-python-scala-head', 
-    tabsSelector: '.tab-python-scala-li', 
-    tabsContentSelector: '.tabs-box .highlighter-rouge', 
-    activeClass: 'tabheader_active'
-}); */
-/* tabs({
-    tabsWrapperSelector: '.tabs-box', 
-    tabsParentSelector: '.tabs-model-aproach-head', 
-    tabsSelector: '.tab-li-model-aproach', 
-    tabsContentSelector: '.tabs-python-scala-box', 
-    activeClass: 'tabheader_active'
-}); */
 tabs({
     tabsWrapperSelector: '.tabs-box', 
     tabsParentSelector: '.tabs-model-aproach-head', 
@@ -137,7 +119,6 @@ tabs({
     tabsContentSelector: '.tabs-box .highlighter-rouge', 
     activeClass: 'tabheader_active'
 });
-
 tabs({
     tabsWrapperSelector: '.tabs-new', 
     tabsParentSelector: '.tabs-python-scala-head', 
