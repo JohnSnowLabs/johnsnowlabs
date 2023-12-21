@@ -181,14 +181,14 @@ and EGD scheduled.
 
 ```bash
                          label  precision    recall  f1-score   support
-     Consultation and Referral   0.655949  0.890830  0.755556       229
+     Consultation_and_Referral   0.655949  0.890830  0.755556       229
                          Other   0.954545  0.933333  0.943820        45
                         Habits   0.872727  0.800000  0.834783        60
-Complications and Risk Factors   0.997468  0.989950  0.993695       398
-Diagnostic and Laboratory Data   0.887417  0.676768  0.767908       396
-         Discharge Information   0.792000  0.763496  0.777487       389
+Complications_and_Risk_Factors   0.997468  0.989950  0.993695       398
+Diagnostic_and_Laboratory_Data   0.887417  0.676768  0.767908       396
+         Discharge_Information   0.792000  0.763496  0.777487       389
                        History   0.873810  0.910670  0.891859       403
                     Impression   0.843537  0.909535  0.875294       409
-           Patient Information   0.804569  0.786600  0.795483       403
+           Patient_Information   0.804569  0.786600  0.795483       403
                     Procedures   0.875912  0.865385  0.870617       416
 ```
