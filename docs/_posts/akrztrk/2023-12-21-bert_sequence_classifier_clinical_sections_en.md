@@ -37,18 +37,20 @@ This is a BERT-based model for classification of clinical documents sections. Th
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = nlp.DocumentAssembler() \
-    .setInputCol('text') \
-    .setOutputCol('document')
+    .setInputCol("text") \
+    .setOutputCol("document")
 
 tokenizer = nlp.Tokenizer() \
-    .setInputCols(['document']) \
-    .setOutputCol('token')
+    .setInputCols(["document"]) \
+    .setOutputCol("token")
 
-sequenceClassifier = medical.BertForSequenceClassification.load('bert_sequence_classifier_clinical_sections', 'en', 'clinical/models')\
-    .setInputCols(["document", 'token'])\
-    .setOutputCol("prediction").setCaseSensitive(False)
+sequenceClassifier = medical.BertForSequenceClassification.pretrained("bert_sequence_classifier_clinical_sections", "en", "clinical/models")\
+    .setInputCols(["document", "token"])\
+    .setOutputCol("prediction")\
+    .setCaseSensitive(False)
 
 pipeline = nlp.Pipeline(stages=[
     document_assembler, 
@@ -76,18 +78,22 @@ result.select("prediction.result").show(truncate=False)
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
-.setInputCol("text")
-.setOutputCol("document")
+    .setInputCol("text")
+    .setOutputCol("document")
+
 val sentenceDetector = SentenceDetectorDLModel.pretrained()
-.setInputCols("document")
-.setOutputCol("sentence")
+    .setInputCols("document")
+    .setOutputCol("sentence")
+
 val tokenizer = new Tokenizer()
-.setInputCols("sentence")
-.setOutputCol("token")
+    .setInputCols("sentence")
+    .setOutputCol("token")
+
 val seq = BertForSequenceClassification.pretrained("bert_sequence_classifier_clinical_sections", "en", "clinical/models")
-.setInputCols(Array("token", "sentence"))
-.setOutputCol("label")
-.setCaseSensitive(false)
+    .setInputCols(Array("token", "sentence"))
+    .setOutputCol("label")
+    .setCaseSensitive(false)
+
 val pipeline = new Pipeline().setStages(Array(
 documentAssembler,
 sentenceDetector,
@@ -114,7 +120,6 @@ val result = pipeline.fit(example).transform(example)
 {:.nlu-block}
 ```python
 import nlu
-
 
 nlu.load("en.classify.bert_sequence.clinical_sections").predict("""Discharge Instructions:
 It was a pleasure taking care of you! You came to us with 
@@ -179,8 +184,7 @@ and EGD scheduled.
 ## Benchmarking
 
 ```bash
-                               precision    recall  f1-score   support
-
+                         label  precision    recall  f1-score   support
      Consultation and Referral   0.981203  0.996183  0.988636       262
                          Other   1.000000  1.000000  1.000000        29
                         Habits   0.983051  1.000000  0.991453        58
@@ -191,8 +195,7 @@ Diagnostic and Laboratory Data   0.987835  0.983051  0.985437       413
                     Impression   0.997706  0.997706  0.997706       436
            Patient Information   0.994764  0.994764  0.994764       382
                     Procedures   0.984456  0.997375  0.990874       381
-
-                      accuracy                       0.992694      3148
-                     macro avg   0.992140  0.994159  0.993127      3148
-                  weighted avg   0.992730  0.992694  0.992694      3148
+                      accuracy          -         -  0.992694      3148
+                     macro-avg   0.992140  0.994159  0.993127      3148
+                  weighted-avg   0.992730  0.992694  0.992694      3148
 ```
