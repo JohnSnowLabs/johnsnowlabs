@@ -190,4 +190,16 @@ data:
           - text: Colab
             type: blue_btn
             url: 
+        - title: ER_DRUG
+          id: er_drug       
+          image: 
+              src: /assets/images/ER_DRUG.svg
+          excerpt: Mapping RxNorm and RxNorm Extension Codes with Corresponding Drug Brand Names, Actions and Treatments.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/ER_DRUG/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/06.0.Chunk_Mapping.ipynb
 ---
