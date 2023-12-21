@@ -37,6 +37,7 @@ This is a BERT-based model for classification of clinical documents sections. Th
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = nlp.DocumentAssembler() \
     .setInputCol("text") \
@@ -179,8 +180,7 @@ and EGD scheduled.
 ## Benchmarking
 
 ```bash
-                                precision    recall  f1-score   support
-
+                         label  precision    recall  f1-score   support
      Consultation and Referral   0.655949  0.890830  0.755556       229
                          Other   0.954545  0.933333  0.943820        45
                         Habits   0.872727  0.800000  0.834783        60
