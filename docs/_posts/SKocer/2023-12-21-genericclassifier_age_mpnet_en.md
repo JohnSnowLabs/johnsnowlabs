@@ -380,10 +380,10 @@ Pediatric case files emphasizing health issues, developmental milestones, and ed
 ```bash
          label  precision    recall  f1-score   support
          Adult       0.90      0.90      0.90       222
-Child and Teen       1.00      0.98      0.99       111
-     Old Adult       0.93      0.86      0.89       176
+Child_and_Teen       1.00      0.98      0.99       111
+     Old_Adult       0.93      0.86      0.89       176
  Other/Unknown       0.74      0.96      0.84        53
-      accuracy                           0.91       562
+      accuracy         -        -        0.91       562
      macro-avg       0.89      0.93      0.91       562
   weighted-avg       0.91      0.91      0.91       562
 ```
