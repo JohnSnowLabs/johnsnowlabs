@@ -3,7 +3,7 @@ layout: docs
 comment: no
 header: true
 seotitle: NLP Lab | John Snow Labs
-title: Spark Library Version
+title: Bundled Libraries Versions
 permalink: /docs/en/alab/version
 key: docs-training
 modify_date: "2023-12-23"
@@ -13,8 +13,7 @@ sidebar:
   nav: annotation-lab
 ---
 
-## Spark Library Version
-
+The table below displays the bundled version of NLP Libraries associated with various versions of the NLP Lab.
 
 |NLP Lab Version |Spark NLP|Healthcare NLP|Visual NLP |Legal NLP|Finance NLP|
 |-----|------|--------|-----|--------|-------|
