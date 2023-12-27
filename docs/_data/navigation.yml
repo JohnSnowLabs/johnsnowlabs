@@ -165,6 +165,8 @@ annotation-lab:
             url: /docs/en/alab/cluster_management
       - title: NLP Libraries Integration
         url: /docs/en/alab/healthcare
+      - title: Spark Library Version
+        url: /docs/en/alab/version
       - title: Security and Privacy
         url: /docs/en/alab/security
       - title: Video Tutorials
