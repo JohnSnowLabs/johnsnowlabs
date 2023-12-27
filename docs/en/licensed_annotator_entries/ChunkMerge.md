@@ -15,6 +15,8 @@ The decision on which chunk to select is made according to the chunk indices in 
 (chunks with longer lengths and highest information will be kept from each source)
 Labels can be changed by setReplaceDictResource.
 
+Parameters:
+
 - `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
 - `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
 - `mergeOverlapping`: (Boolean) Sets whether to merge overlapping matched chunks. Default `True`.

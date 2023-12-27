@@ -10,6 +10,7 @@ model
 QuestionAnswering is a GPT-based model for answering questions given a context. Unlike span-based models, it generates the answers to the questions, rather than selecting phrases from the given context. The model is capable of answering various types of questions, including yes-no or full-text ones. Types of questions are supported: `"short"` (producing yes/no/maybe) answers and `"long"` (full answers).
 
 Parameters:
+
 - `questionType`: Question type, e.g. “short” or “long”. The question types depend on the model.
 
 - `maxNewTokens`: Maximum number of of new tokens to generate, by default 30

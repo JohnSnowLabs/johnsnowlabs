@@ -20,6 +20,15 @@ and [WordEmbeddingsModel](/docs/en/annotators#wordembeddings).
 The result is an assertion status annotation for each recognized entity.
 Possible values include `“present”, “absent”, “hypothetical”, “conditional”, “associated_with_other_person”` etc.
 
+Parameters:
+- `inputCols`: Gets current column names of input annotations.
+
+- `outputCol`: Gets output column name of annotations.
+
+- `ScopeWindow`: Sets the scope of the window of the assertion expression.
+
+- `EntityAssertionCaseSensitive`: Sets the case sensitivity of entities and assertion labels
+
 For pretrained models please see the
 [Models Hub](https://nlp.johnsnowlabs.com/models?task=Assertion+Status) for available models.
 {%- endcapture -%}
@@ -425,6 +434,17 @@ from extracted entities and text.
 Contains all the methods for training an AssertionDLModel.
 For pretrained models please use AssertionDLModel and see the
 [Models Hub](https://nlp.johnsnowlabs.com/models?task=Assertion+Status) for available models.
+
+Parameters:
+
+- `inputCols`: Gets current column names of input annotations.
+
+- `outputCol`: Gets output column name of annotations.
+
+- `ScopeWindow`: Sets the scope of the window of the assertion expression.
+
+- `StartCol`: Set a column that contains the token number for the start of the target.
+
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}
@@ -437,6 +457,7 @@ ASSERTION
 
 {%- capture approach_python_medical -%}
 from johnsnowlabs import * 
+
 # First, pipeline stages for pre-processing the dataset (containing columns for text and label) are defined.
 document = nlp.DocumentAssembler() \
     .setInputCol("text") \

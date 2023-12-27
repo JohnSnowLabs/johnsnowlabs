@@ -12,7 +12,7 @@ Removes all dirty characters from text following one or more input regex pattern
 Can apply non wanted character removal which a specific policy.
 Can apply lower case normalization.
 
-Parametres;
+Parametres:
 
 - `lowercase`: (boolean) whether to convert strings to lowercase. Default is False.
 

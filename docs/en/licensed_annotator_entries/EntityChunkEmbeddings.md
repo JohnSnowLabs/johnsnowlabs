@@ -22,7 +22,8 @@ An entity can be defined both as target a entity and as a related entity for som
 This model is a subclass of `BertSentenceEmbeddings` and shares all parameters
 with it. It can load any pretrained `BertSentenceEmbeddings` model.
 
-Parametres;
+Parametres:
+
 - `targetEntities`: (dict) The target entities mapped to lists of their related entities. A target entity with an empty list of related entities means all other entities are assumed to be related to it. Entity names are case insensitive. *Mandatory to set at least one entity*
 
 - `entityWeights`: (dict) The relative weights of drug related entities. If not set, all entities have equal weights. If the list is non-empty and some entity is not in it, then its weight is set to 0. The notation TARGET_ENTITY:RELATED_ENTITY can be used to specify the weight of a entity which is related to specific target entity (e.g. "DRUG:SYMPTOM" -> 0.3f). Entity names are case insensitive.

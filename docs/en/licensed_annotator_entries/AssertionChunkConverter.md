@@ -14,7 +14,7 @@ In some cases, there may be issues while creating the chunk column when using to
 
 The `AssertionChunkConverter` annotator uses both the begin and end indices of the tokens as input to add more robust metadata to the chunk column in a way that improves the reliability of the indices and avoids loss of data.
 
-AssertionChunkConverter Parameters:
+Parameters:
 
 - `chunkBeginCol`: (Str) The column containing the start index of the chunk.
 

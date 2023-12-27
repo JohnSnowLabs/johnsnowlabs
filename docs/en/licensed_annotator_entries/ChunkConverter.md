@@ -11,6 +11,15 @@ Convert chunks from [RegexMatcher](https://nlp.johnsnowlabs.com/docs/en/annotato
 
 This annotator is important when the user wants to merge entities identified by NER models together with rules-based matching used by the RegexMathcer annotator. In the following steps of the pipeline, all the identified entities can be treated in a unified field.
 
+Parameters:
+
+- `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
+
+- `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
+
+
+All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
+
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}

@@ -21,8 +21,11 @@ The annotator also allows using fuzzy matching, which can take into consideratio
 Parametres:
 
 - `setRels` *(List[str])*: Relations that we are going to use to map the chunk
+
 - `setLowerCase` *(Boolean)*: Set if we want to map the chunks in lower case or not (Default: True)
+
 - `setAllowMultiTokenChunk` *(Boolean)*: Whether to skip relations with multitokens (Default: True)
+
 - `setMultivaluesRelations` *(Boolean)*:  Whether to decide to return all values in a relation together or separately (Default: False)
 
 

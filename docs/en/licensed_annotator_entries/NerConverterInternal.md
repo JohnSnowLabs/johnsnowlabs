@@ -14,6 +14,25 @@ Chunks with no associated entity (tagged "O") are filtered out.
 This licensed annotator adds extra functionality to the open-source version by adding the following parameters: `blackList`, `greedyMode`,  `threshold`, and `ignoreStopWords` that are not available in the [NerConverter](https://nlp.johnsnowlabs.com/docs/en/annotators#nerconverter) annotator.
 
 See also [Inside–outside–beginning (tagging)](https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)) for more information.
+
+Parameters:
+
+- `setThreshold`: Confidence threshold.
+
+- `setWhiteList`: If defined, list of entities to process.
+
+- `setBlackList`:  If defined, list of entities to ignore.   
+
+- `setReplaceLabels`: If defined, contains a dictionary for entity replacement.
+
+- `setPreservePosition`: Whether to preserve the original position of the tokens in the original document or use the modified tokens.
+
+- `setReplaceDictResource`: If defined, path to the file containing a dictionary for entity replacement.
+
+- `setIgnoreStopWords`: If defined, list of stop words to ignore.
+
+- `setGreedyMode`: (Boolean) Whether to ignore B tags for contiguous tokens of same entity same .
+
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}

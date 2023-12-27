@@ -11,6 +11,11 @@ This annotator that helps you to merge the previous and following sentences of a
 
 Inferring the class from sentence X may be a much harder task sometime, due to the lack of context, than to infer the class of sentence X-1 + sentence X + sentence X+1. In this example, the window is 1, that’s why we augment sentence with 1 neighbour from behind and another from ahead. Window size can be configured so that each piece of text/sentence get a number of previous and posterior sentences as context, equal to the windows size.
 
+Parameters:
+
+- `setWindowSize`: Sets size of the sliding window.
+
+- `setGlueString`: Sets string to use to join the neighboring elements together. 
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}

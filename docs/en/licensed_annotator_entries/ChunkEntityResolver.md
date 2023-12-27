@@ -11,7 +11,7 @@ model
 {%- endcapture -%}
 
 {%- capture model_description -%}
-Returns a normalized entity for a particular trained ontology / curated dataset (e.g. ICD-10, RxNorm, SNOMED etc).
+The ChunkEntityResolverModel encompasses the functionality to produce a normalized entity from a specialized ontology or curated dataset (such as ICD-10, RxNorm, SNOMED, etc.). This model includes comprehensive parameters and methods essential for its training. It operates by transforming a dataset that incorporates two Input Annotations: TOKEN and WORD_EMBEDDINGS, sourced from tools like ChunkTokenizer and ChunkEmbeddings Annotators. Ultimately, it generates the normalized entity relevant to the specified trained ontology or curated dataset, ensuring accurate entity resolution within the given context.
 
 For available pretrained models please see the [Models Hub](https://nlp.johnsnowlabs.com/models?task=Entity+Resolution).
 

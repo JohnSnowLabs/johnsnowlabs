@@ -12,18 +12,17 @@ The input to the model consists of chunk annotations and sentence or document an
 
 Parametres:
 
-- `setConcatenateSentences(value: Boolean)`: ChunkKeyPhraseExtraction.this.type
-Concatenate the input sentence/documentation annotations before computing their embedding Default value is 'true'.
-- `setDivergence(value: Float)`: ChunkKeyPhraseExtraction.this.type
-Set the level of divergence of the extracted key phrases.
-- `setDocumentLevelProcessing(value: Boolean)`: ChunkKeyPhraseExtraction.this.type
-Extract key phrases from the whole document (true) or from particular sentences which the chunks refer to (false) Default value is 'true'.
-- `setDropPunctuation(value: Boolean)`: ChunkKeyPhraseExtraction.this.type
-Remove punctuation marks from input chunks.
-- `setSelectMostDifferent(value: Boolean)`: ChunkKeyPhraseExtraction.this.type
-Let the model return the top N key phrases which are the most different from each other
-- `setTopN(value: Int)`: ChunkKeyPhraseExtraction.this.type
-Set the number of key phrases to extract
+- `setConcatenateSentences(value: Boolean)`: Concatenate the input sentence/documentation annotations before computing their embedding Default value is 'true'.
+
+- `setDivergence(value: Float)`: Set the level of divergence of the extracted key phrases.
+
+- `setDocumentLevelProcessing(value: Boolean)`: Extract key phrases from the whole document (true) or from particular sentences which the chunks refer to (false) Default value is 'true'.
+
+- `setDropPunctuation(value: Boolean)`: Remove punctuation marks from input chunks.
+
+- `setSelectMostDifferent(value: Boolean)`: Let the model return the top N key phrases which are the most different from each other.
+
+- `setTopN(value: Int)`: Set the number of key phrases to extract.
 
 This model is a subclass of [[BertSentenceEmbeddings]] and shares all parameters with it. It can load any pretrained BertSentenceEmbeddings model. Available models can be found at the [Models Hub](https://nlp.johnsnowlabs.com/models?task=Sentence+Embeddings).
 

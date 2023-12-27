@@ -14,7 +14,7 @@ For the relative dates (next year, past month, etc.), you can define an achor da
 
 The resultant chunk date will contain a metada indicating whether the normalization was successful or not (True / False). 
 
-Parametres;
+Parametres:
 
 - `anchorDateYear`: (Int) Sets an anchor year for the relative dates such as a day after tomorrow. If not set it will use the current year.
 

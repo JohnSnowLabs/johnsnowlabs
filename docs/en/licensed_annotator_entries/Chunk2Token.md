@@ -12,7 +12,15 @@ array of chunk-based tokens (annotatorType TOKEN).
 
 When the input is empty, an empty array is returned.
 
-This Annotator is specially convenient when using NGramGenerator annotations as inputs to WordEmbeddingsModels
+This Annotator is specially convenient when using NGramGenerator annotations as inputs to WordEmbeddingsModels.
+
+Parameters:
+
+- `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
+
+- `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
+
+All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -331,6 +339,10 @@ result.selectExpr("explode(ngram_tokens)").show(5, false)
 [Chunk2Token](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/Chunk2Token.html)
 {%- endcapture -%}
 
+{%- capture model_python_api_link -%}
+[ChunkConverter](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunk2_token/index.html)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -343,4 +355,5 @@ model_python_finance=model_python_finance
 model_scala_medical=model_scala_medical
 model_scala_legal=model_scala_legal
 model_scala_finance=model_scala_finance
-model_api_link=model_api_link%}
+model_api_link=model_api_link
+model_python_api_link=model_python_api_link%}

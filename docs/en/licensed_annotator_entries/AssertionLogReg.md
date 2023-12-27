@@ -18,7 +18,7 @@ Unlike the DL Model, this class does not extend AnnotatorModel. Instead it exten
 
 At the moment there are no pretrained models available for this class. Please refer to AssertionLogRegApproach to train your own model.
 
-AssertionLogReg Parametres:
+Parametres:
 - `setAfter(after: Int)`: AssertionLogRegModel.this.type
 Length of the context after the target (Default: 13)
 - `setBefore(before: Int)`: AssertionLogRegModel.this.type
@@ -49,6 +49,24 @@ ASSERTION
 Trains a classification method, which uses the Logarithmic Regression Algorithm. It is used to extract Assertion Status
 from extracted entities and text.
 Contains all the methods for training a AssertionLogRegModel, together with trainWithChunk, trainWithStartEnd.
+
+Parameters:
+
+- `label` : Column with label per each token
+
+- `maxIter`: This specifies the maximum number of iterations to be performed in the model's training, default: 26
+
+- `regParam` : This specifies the regularization parameter. Regularization helps to control the complexity of the model, aiding in preventing the issue of overfitting.
+
+- `eNetParam` : Elastic net parameter
+
+- `beforeParam` : Length of the context before the target
+
+- `afterParam` : Length of the context after the target
+
+- `startCol` : Column that contains the token number for the start of the target
+
+- `endCol` : Column that contains the token number for the end of the target
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}

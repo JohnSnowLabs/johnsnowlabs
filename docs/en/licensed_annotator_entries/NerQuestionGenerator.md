@@ -15,9 +15,13 @@ The question is generated in the form of `[QUESTIONPRONOUN] [ENTITY1] [ENTITY2] 
 Parametres:
 
 - `questionPronoun`: Pronoun to be used in the question. E.g., 'When', 'Where', 'Why', 'How', 'Who', 'What'.
+
 - `strategyType`: Strategy for the proccess, either `Paired` (default) or `Combined`.
+
 - `questionMark`: Whether to add a question mark at the end of the question.
+
 - `entities1`: List with the entity types of entities that appear first in the question. 
+
 - `entities2`: List with the entity types of entities that appear second in the question.
 
 

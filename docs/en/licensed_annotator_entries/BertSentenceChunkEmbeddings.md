@@ -9,9 +9,19 @@ model
 {%- capture model_description -%}
 This annotator allows aggregating sentence embeddings with ner chunk embeddings to get specific and more accurate resolution codes. It works by averaging sentence and chunk embeddings add contextual information in the embedding value. Input to this annotator is the context (sentence) and ner chunks, while the output is embedding for each chunk that can be fed to the resolver model. 
 
-BertSentenceChunkEmbeddings Parametres:
+Parameters:
 
-- `setChunkWeight(value: Float)`: BertSentenceChunkEmbeddings.this.type Sets the wieght of the chunk embeddings relative to the sentence embeddings.The `setChunkWeight` parameter can be used to control the influence of surrounding context.
+- `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
+
+- `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
+
+- `chunkWeight`: Relative weight of chunk embeddings in comparison to sentence embeddings. The value should between 0 and 1. The default is 0.5, which means the chunk and sentence embeddings are given equal weight.
+
+- `setMaxSentenceLength`: Sets max sentence length to process, by default 128.
+
+- `caseSensitive`: Determines whether the definitions of the white listed entities are case sensitive.
+
+All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
 
 > For more information and examples of `BertSentenceChunkEmbeddings` annotator, you can check the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop), and in special, the notebook [24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb).
 

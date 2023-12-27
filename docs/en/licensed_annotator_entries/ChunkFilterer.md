@@ -12,20 +12,23 @@ White list criteria is enabled by default. To use regex, `criteria` has to be se
 
 Parametres:
 
-- `setBlackList(list: Array[String])`: ChunkFilterer.this.type
-If defined, list of entities to ignore.
-- `setCaseSensitive(value: Boolean)`: ChunkFilterer.this.type
-Determines whether the definitions of the white listed and black listed entities are case sensitive or not.
-- `setCriteria(s: String)`: ChunkFilterer.this.type
-Sets criteria for how to compare black and white listed values with the result of the Annotation.
-- `setEntitiesConfidence(value: HashMap[String, Double])`: ChunkFilterer.this.type
-Sets Pairs (entity,confidenceThreshold) to filter the chunks with entities which have confidence lower than the confidence threshold.
-- `setFilterEntity(v: String)`: ChunkFilterer.this.type
-Possible values are 'result' and 'entity'.
-- `setRegex(list: String*)`: ChunkFilterer.this.type
-Sets the list of regexes to process the chunks.
-- `setWhiteList(list: Array[String])`: ChunkFilterer.this.type
-Sets the list of entities to process.
+- `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
+
+- `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
+
+- `criteria`: Tag representing what is the criteria to filter the chunks. Possibles values are: - isIn: Filter by the chunk - regex: Filter using a regex
+
+- `whiteList`: If defined, list of entities to process. The rest will be ignored.
+
+- `blackList`: If defined, list of entities to ignore. The rest will be processed.
+
+- `regex`: If defined, list of regex to process the chunks (Default: []).
+
+- `filterEntity`: If equal to “entity”, use the ner label to filter. If set to “result”, use the result attribute of the annotation to filter.
+
+- `entitiesConfidence`: Path to csv with pairs (entity,confidenceThreshold). Filter the chunks with entities which have confidence lower than the confidence threshold.
+
+All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}

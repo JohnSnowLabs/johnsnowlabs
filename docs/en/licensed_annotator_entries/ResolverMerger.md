@@ -18,6 +18,7 @@ However, for a more straightforward approach, we can use a chunk mapper method t
 Parametres:
 
 - `inputCols`: The name of the columns containing the input annotations. It can read an Array of strings.
+
 - `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
 
 All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.   

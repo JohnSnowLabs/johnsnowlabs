@@ -12,7 +12,7 @@ Filters can be set via a white list on the extracted chunk, the assertion or a r
 White list for assertion is enabled by default. To use chunk white list, `criteria` has to be set to `"isin"`.
 For regex, `criteria` has to be set to `"regex"`.
 
-AssertionFilterer Parameters;
+Parameters:
 
 - `whiteList`: (list) If defined, list of entities to process. The rest will be ignored.
 
@@ -20,7 +20,7 @@ AssertionFilterer Parameters;
 
 - `regex`: (list) List of dash-separated pairs of named entities.
 
-- `criteria`: (list)  Set tag representing what is the criteria to filter the chunks. possibles values (assertion|isIn|regex). *assertion*: Filter by the assertion *isIn* : Filter by the chunk *regex* : Filter using a regex
+- `criteria`: (list)  Set tag representing what is the criteria to filter the chunks. possibles values (assertion,isIn,regex). *assertion*: Filter by the assertion, *isIn* : Filter by the chunk, *regex* : Filter using a regex.
 
 - `entitiesConfidence`: (Str) Entity pairs to remove based on the confidence level.
 {%- endcapture -%}
