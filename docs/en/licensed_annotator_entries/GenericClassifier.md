@@ -30,6 +30,7 @@ CATEGORY
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -114,6 +115,10 @@ val result = pipeline.fit(df) .transform(df) result.select("text","classes.resul
 
 {%- capture model_python_api_link -%}
 [GenericClassifierModel](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/generic_classifier/generic_classifier/index.html#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierModel)
+{%- endcapture -%}
+
+{%- capture model_notebook_link -%}
+[GenericClassifierModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericClassifierModel.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
@@ -246,12 +251,13 @@ clf_model = pipeline.fit(data)
 {%- endcapture -%}
 
 {%- capture approach_scala_medical -%}
+import spark.implicits._
 
-val features_asm = new medical.FeaturesAssembler()
+val features_asm = new FeaturesAssembler()
   .setInputCols(Array("feature_1", "feature_2", "...", "feature_n"))
   .setOutputCol("features")
 
-val gen_clf = new medical.GenericClassifierApproach()
+val gen_clf = new GenericClassifierApproach()
   .setLabelColumn("target")
   .setInputCols("features")
   .setOutputCol("prediction")
@@ -275,12 +281,13 @@ val clf_model = pipeline.fit(data)
 
 
 {%- capture approach_scala_legal -%}
+import spark.implicits._
 
-val features_asm = new legal.FeaturesAssembler()
+val features_asm = new FeaturesAssembler()
   .setInputCols(Array("feature_1", "feature_2", "...", "feature_n"))
   .setOutputCol("features")
 
-val gen_clf = new legal.GenericClassifierApproach()
+val gen_clf = new GenericClassifierApproach()
   .setLabelColumn("target")
   .setInputCols("features")
   .setOutputCol("prediction")
@@ -304,12 +311,13 @@ val clf_model = pipeline.fit(data)
 
 
 {%- capture approach_scala_finance -%}
+import spark.implicits._
 
-val features_asm = new finance.FeaturesAssembler()
+val features_asm = new FeaturesAssembler()
   .setInputCols(Array("feature_1", "feature_2", "...", "feature_n"))
   .setOutputCol("features")
 
-val gen_clf = new finance.GenericClassifierApproach()
+val gen_clf = new GenericClassifierApproach()
   .setLabelColumn("target")
   .setInputCols("features")
   .setOutputCol("prediction")
@@ -339,6 +347,10 @@ val clf_model = pipeline.fit(data)
 [GenericClassifierApproach](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/generic_classifier/generic_classifier/index.html#sparknlp_jsl.annotator.generic_classifier.generic_classifier.GenericClassifierApproach)
 {%- endcapture -%}
 
+{%- capture approach_notebook_link -%}
+[GenericClassifierApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericClassifierApproach.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 approach=approach
@@ -350,6 +362,7 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 approach_description=approach_description
 approach_input_anno=approach_input_anno
 approach_output_anno=approach_output_anno
@@ -361,4 +374,5 @@ approach_scala_legal=approach_scala_legal
 approach_scala_finance=approach_scala_finance
 approach_api_link=approach_api_link
 approach_python_api_link=approach_python_api_link
+approach_notebook_link=approach_notebook_link
 %}
