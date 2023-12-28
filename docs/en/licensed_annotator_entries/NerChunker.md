@@ -11,7 +11,7 @@ Extracts phrases that fits into a known pattern using the NER tags. Useful for e
 when there is no pretrained NER model to address certain issues. A Regex needs to be provided to extract the tokens
 between entities.
 
-Parametres;
+Parametres:
 
 - `setRegexParsers`: Array of grammar based chunk parsers.   
 {%- endcapture -%}

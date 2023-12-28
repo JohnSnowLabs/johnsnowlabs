@@ -10,9 +10,10 @@ model
 
 Converts `DOCUMENT`, `TOKEN` typed annotations into `CHUNK` type with the contents of a `chunkCol`. Chunk text must be contained within input `DOCUMENT`. May be either `StringType` or `ArrayType[StringType]` (using `setIsArray`). Useful for annotators that require a CHUNK type input.
 
-Parameters;
+Parameters:
 
 - `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
+
 - `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
 
 
@@ -270,7 +271,7 @@ val result = pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Doc2ChunkInternal.ipynb)
+[Doc2ChunkInternalNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/Doc2ChunkInternal.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

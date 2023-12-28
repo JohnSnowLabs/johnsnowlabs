@@ -14,7 +14,7 @@ For the relative dates (next year, past month, etc.), you can define an achor da
 
 The resultant chunk date will contain a metada indicating whether the normalization was successful or not (True / False). 
 
-Parametres;
+Parametres:
 
 - `anchorDateYear`: (Int) Sets an anchor year for the relative dates such as a day after tomorrow. If not set it will use the current year.
 
@@ -177,11 +177,7 @@ dates = [
 df = spark.createDataFrame(dates, StringType()).toDF("original_date")
 
 result = pipeline.fit(df).transform(df)
-result.selectExpr(
-    "date.result as normalized_date",
-    "original_date",
-    "date.metadata[0].normalized as metadata",
-).show()
+
 
 +---------------+-------------+--------+
 |normalized_date|original_date|metadata|
@@ -202,6 +198,7 @@ result.selectExpr(
 
 
 {%- capture model_scala_legal -%}
+import spark.implicits._
 
 val document_assembler = new DocumentAssembler()
     .setInputCol("original_date")
@@ -359,7 +356,7 @@ val result = pipeline.fit(df).transform(df)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DateNormalizer.ipynb)
+[DateNormalizerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DateNormalizer.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

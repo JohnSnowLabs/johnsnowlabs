@@ -15,8 +15,17 @@ Classifies documents with a Logarithmic Regression algorithm.
 Currently there are no pretrained models available.
 Please see DocumentLogRegClassifierApproach to train your own model.
 
-Please check out the
-[Models Hub](https://nlp.johnsnowlabs.com/models) for available models in the future.
+Parameters:
+
+- `setMergeChunks(merge)`: Sets whether to merge all chunks in a document or not (Default: false).
+
+- `setLabels(value)`: Sets array to output the label in the original form.
+
+- `setVectorizationModel(model)`: Sets a path to the classification model if it has been already trained.
+
+- `setClassificationModel(model)`: Sets a path to the the classification model if it has been already trained.
+
+Please check out the [Models Hub](https://nlp.johnsnowlabs.com/models) for available models in the future.
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}

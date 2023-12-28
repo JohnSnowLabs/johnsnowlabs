@@ -12,7 +12,7 @@ Filters can be set via a white list on the extracted chunk, the assertion or a r
 White list for assertion is enabled by default. To use chunk white list, `criteria` has to be set to `"isin"`.
 For regex, `criteria` has to be set to `"regex"`.
 
-AssertionFilterer Parameters;
+Parameters:
 
 - `whiteList`: (list) If defined, list of entities to process. The rest will be ignored.
 
@@ -20,7 +20,7 @@ AssertionFilterer Parameters;
 
 - `regex`: (list) List of dash-separated pairs of named entities.
 
-- `criteria`: (list)  Set tag representing what is the criteria to filter the chunks. possibles values (assertion|isIn|regex). *assertion*: Filter by the assertion *isIn* : Filter by the chunk *regex* : Filter using a regex
+- `criteria`: (list)  Set tag representing what is the criteria to filter the chunks. possibles values (assertion,isIn,regex). *assertion*: Filter by the assertion, *isIn* : Filter by the chunk, *regex* : Filter using a regex.
 
 - `entitiesConfidence`: (Str) Entity pairs to remove based on the confidence level.
 {%- endcapture -%}
@@ -35,7 +35,7 @@ CHUNK
 
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, medical 
 
 # Annotator that transforms a text column from dataframe into an Annotation ready for NLP
 documentAssembler = nlp.DocumentAssembler()\
@@ -113,7 +113,7 @@ result.select("filtered.result").show(3, truncate=False)
 
 {%- capture model_python_legal -%}
 
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, legal 
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -190,7 +190,7 @@ result.select("assertion_filtered.result").show(3, truncate=False)
 
 {%- capture model_python_finance -%}
 
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, finance 
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -259,7 +259,7 @@ result.select("assertion_filtered.result").show(3, truncate=False)
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
-from johnsnowlabs import * 
+import spark.implicits._
 
 // Annotator that transforms a text column from dataframe into an Annotation ready for NLP
 val documentAssembler = new DocumentAssembler()
@@ -322,7 +322,6 @@ val result = nlpPipeline.fit(data).transform(data)
 
 // Show results:
 
-result.selectExpr("ner_chunk.result as ner_chunk", "assertion.result as assertion").show(3, truncate=false)
 +------------------------------------------------+--------------------------------------------------+
 |ner_chunk                                       |assertion                                         |
 +------------------------------------------------+--------------------------------------------------+
@@ -339,7 +338,7 @@ result.select("filtered.result").show(3, truncate=false)
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
-from johnsnowlabs import * 
+import spark.implicits._
 
 // Annotator that transforms a text column from dataframe into an Annotation ready for NLP
 val document_assembler = new DocumentAssembler()
@@ -406,8 +405,6 @@ val data = Seq(text).toDF("text")
 val result = nlpPipeline.fit(data).transform(data)
 
 // Show results:
-
-result.selectExpr("ner_chunk.result as ner_chunk", "assertion.result as assertion").show(3, truncate=false)
 +-----------------------------------------------------------+---------------------------+
 |ner_chunk                                                  |assertion                  |
 +-----------------------------------------------------------+---------------------------+
@@ -424,7 +421,7 @@ result.select("filtered.result").show(3, truncate=false)
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
-from johnsnowlabs import * 
+import spark.implicits._
 
 // Annotator that transforms a text column from dataframe into an Annotation ready for NLP
 val document_assembler = new DocumentAssembler()
@@ -484,8 +481,6 @@ val data = Seq(text).toDF("text")
 val result = nlpPipeline.fit(data).transform(data)
 
 // Show results:
-
-result.selectExpr("ner_chunk.result as ner_chunk", "assertion.result as assertion").show(3, truncate=false)
 +--------------------------+------------------------+
 |ner_chunk                 |assertion               |
 +--------------------------+------------------------+
@@ -509,6 +504,10 @@ result.select("filtered.result").show(3, truncate=false)
 [AssertionFilterer](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/assertion_filterer/index.html#sparknlp_jsl.annotator.chunker.assertion_filterer.AssertionFilterer)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[AssertionFiltererNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionFilterer.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -523,4 +522,5 @@ model_scala_legal=model_scala_legal
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}

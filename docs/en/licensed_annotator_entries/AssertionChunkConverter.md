@@ -14,7 +14,7 @@ In some cases, there may be issues while creating the chunk column when using to
 
 The `AssertionChunkConverter` annotator uses both the begin and end indices of the tokens as input to add more robust metadata to the chunk column in a way that improves the reliability of the indices and avoids loss of data.
 
-AssertionChunkConverter Parameters:
+Parameters:
 
 - `chunkBeginCol`: (Str) The column containing the start index of the chunk.
 
@@ -39,6 +39,7 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
 
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol("text")\
@@ -98,7 +99,8 @@ results.selectExpr(
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
- 
+import spark.implicits._
+
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -129,19 +131,6 @@ val data = Seq(Array(
 
 val results = pipeline.fit(data).transform(data)
 
-results.selectExpr(
-  "target",
-  "char_begin",
-  "char_end",
-  "token_begin",
-  "token_end",
-  "chunk.begin",
-  "chunk.end",
-  "tokens[token_begin].result as begin_result",
-  "tokens[token_end].result as end_result",
-  "chunk.result"
-).show(false)
-
 +------+----------+--------+-----------+---------+--------------------------+------------------------+------+----------------------------------------------+
 |target|char_begin|char_end|token_begin|token_end|tokens[token_begin].result|tokens[token_end].result|target|chunk                                         |
 +------+----------+--------+-----------+---------+--------------------------+------------------------+------+----------------------------------------------+
@@ -152,6 +141,7 @@ results.selectExpr(
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
+from johnsnowlabs import nlp, finance
 
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol("text")\
@@ -211,7 +201,8 @@ results.selectExpr(
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
- 
+import spark.implicits._
+
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -242,19 +233,6 @@ val data = Seq(Array(
 
 val results = pipeline.fit(data).transform(data)
 
-results.selectExpr(
-  "target",
-  "char_begin",
-  "char_end",
-  "token_begin",
-  "token_end",
-  "chunk.begin",
-  "chunk.end",
-  "tokens[token_begin].result as begin_result",
-  "tokens[token_end].result as end_result",
-  "chunk.result"
-).show(false)
-
 +-----------------+----------+--------+-----------+---------+-----+----+------------+----------+-------------------+
 |target           |char_begin|char_end|token_begin|token_end|begin|end |begin_result|end_result|result             |
 +-----------------+----------+--------+-----------+---------+-----+----+------------+----------+-------------------+
@@ -265,6 +243,7 @@ results.selectExpr(
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
+from johnsnowlabs import nlp, legal
 
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol("text")\
@@ -324,6 +303,7 @@ results.selectExpr(
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
+import spark.implicits._
 
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
@@ -355,19 +335,6 @@ val data = Seq(Array(
  
 val results = pipeline.fit(data).transform(data)
 
-results.selectExpr(
-  "target",
-  "char_begin",
-  "char_end",
-  "token_begin",
-  "token_end",
-  "chunk.begin",
-  "chunk.end",
-  "tokens[token_begin].result as begin_result",
-  "tokens[token_end].result as end_result",
-  "chunk.result"
-).show(false)
-
 +-------+----------+--------+-----------+---------+--------------------------+------------------------+-------+-----------------------------------------------+
 |target |char_begin|char_end|token_begin|token_end|tokens[token_begin].result|tokens[token_end].result|target |chunk                                          |
 +-------+----------+--------+-----------+---------+--------------------------+------------------------+-------+-----------------------------------------------+
@@ -385,11 +352,13 @@ results.selectExpr(
 [AssertionChunkConverter](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/assertion/assertion_chunk_converter/index.html#sparknlp_jsl.annotator.assertion.assertion_chunk_converter.AssertionChunkConverter)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[AssertionChunkConverterNootebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionChunkConverter.ipynb)
+{%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
-approach=approach
 model_description=model_description
 model_input_anno=model_input_anno
 model_output_anno=model_output_anno
@@ -401,4 +370,5 @@ model_python_legal=model_python_legal
 model_scala_legal=model_scala_legal
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}

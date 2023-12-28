@@ -20,6 +20,15 @@ and [WordEmbeddingsModel](/docs/en/annotators#wordembeddings).
 The result is an assertion status annotation for each recognized entity.
 Possible values include `“present”, “absent”, “hypothetical”, “conditional”, “associated_with_other_person”` etc.
 
+Parameters:
+- `inputCols`: Gets current column names of input annotations.
+
+- `outputCol`: Gets output column name of annotations.
+
+- `ScopeWindow`: Sets the scope of the window of the assertion expression.
+
+- `EntityAssertionCaseSensitive`: Sets the case sensitivity of entities and assertion labels
+
 For pretrained models please see the
 [Models Hub](https://nlp.johnsnowlabs.com/models?task=Assertion+Status) for available models.
 {%- endcapture -%}
@@ -34,7 +43,7 @@ ASSERTION
 
 {%- capture model_python_medical -%}
 
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, medical
 # Define pipeline stages to extract NER chunks first
 documentAssembler = nlp.DocumentAssembler()\
   .setInputCol("text")\
@@ -96,7 +105,7 @@ result.selectExpr("ner_chunk.result as chunk_result", "assertion.result as asser
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, finance
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -156,7 +165,8 @@ result.select(F.explode(F.arrays_zip(result.ner_chunk.result, result.ner_chunk.m
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, legal
+
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
@@ -229,6 +239,7 @@ result.select(F.explode(F.arrays_zip(result.ner_chunk.result,
 
 {%- capture model_scala_medical -%}
 
+import spark.implicits._
 // Define pipeline stages to extract NER chunks first
 
 val documentAssembler = new DocumentAssembler()
@@ -278,7 +289,6 @@ val data = Seq(
 
 // Show results
 val result = assertionPipeline.fit(data).transform(data)
-result.selectExpr("ner_chunk.result as chunk_result", "assertion.result as assertion_result").show(3, truncate=false)
 
 +--------------------------------+--------------------------------+
 |chunk_result                    |assertion_result                |
@@ -291,6 +301,7 @@ result.selectExpr("ner_chunk.result as chunk_result", "assertion.result as asser
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
+import spark.implicits._
 
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
@@ -347,6 +358,7 @@ val result = pipeline.fit(data).transform(data)
 
 
 {%- capture model_scala_legal -%}
+import spark.implicits._
 
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
@@ -419,12 +431,27 @@ val result = pipeline.fit(data).transform(data)
 [AssertionDLModel](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/assertion/assertionDL/index.html#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLModel)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[AssertionDLModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionDLModel.ipynb)
+{%- endcapture -%}
+
 {%- capture approach_description -%}
 Trains AssertionDL, a deep Learning based approach used to extract Assertion Status
 from extracted entities and text.
 Contains all the methods for training an AssertionDLModel.
 For pretrained models please use AssertionDLModel and see the
 [Models Hub](https://nlp.johnsnowlabs.com/models?task=Assertion+Status) for available models.
+
+Parameters:
+
+- `inputCols`: Gets current column names of input annotations.
+
+- `outputCol`: Gets output column name of annotations.
+
+- `ScopeWindow`: Sets the scope of the window of the assertion expression.
+
+- `StartCol`: Set a column that contains the token number for the start of the target.
+
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}
@@ -436,7 +463,8 @@ ASSERTION
 {%- endcapture -%}
 
 {%- capture approach_python_medical -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, medical
+
 # First, pipeline stages for pre-processing the dataset (containing columns for text and label) are defined.
 document = nlp.DocumentAssembler() \
     .setInputCol("text") \
@@ -484,7 +512,8 @@ assertionResults = trainingPipeline.fit(data).transform(data).cache()
 {%- endcapture -%}
 
 {%- capture approach_python_legal -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, legal
+
 # First, pipeline stages for pre-processing the dataset (containing columns for text and label) are defined.
 document = nlp.DocumentAssembler()\
     .setInputCol("sentence")\
@@ -535,7 +564,8 @@ assertionResults = trainingPipeline.fit(data).transform(data).cache()
 {%- endcapture -%}
 
 {%- capture approach_python_finance -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, finance
+
 # First, pipeline stages for pre-processing the dataset (containing columns for text and label) are defined.
 document = nlp.DocumentAssembler() \
     .setInputCol("text") \
@@ -578,6 +608,7 @@ assertionResults = trainingPipeline.fit(data).transform(data).cache()
 {%- endcapture -%}
 
 {%- capture approach_scala_medical -%}
+import spark.implicits._
 
 // First, pipeline stages for pre-processing the dataset (containing columns for text and label) are defined.
 val document = new DocumentAssembler()
@@ -621,6 +652,7 @@ val assertionResults = trainingPipeline.fit(data).transform(data).cache()
 {%- endcapture -%}
 
 {%- capture approach_scala_legal -%}
+import spark.implicits._
 
 val document = new DocumentAssembler()
     .setInputCol("sentence")
@@ -676,9 +708,9 @@ val assertionResults = trainingPipeline.fit(data).transform(data).cache()
 {%- endcapture -%}
 
 {%- capture approach_scala_finance -%}
-from johnsnowlabs import * 
-
+import spark.implicits._
 // First, pipeline stages for pre-processing the dataset (containing columns for text and label) are defined.
+
 val document = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -728,6 +760,10 @@ val assertionResults = trainingPipeline.fit(data).transform(data).cache()
 [AssertionDLApproach](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/assertion/assertionDL/index.html#sparknlp_jsl.annotator.assertion.assertionDL.AssertionDLApproach)
 {%- endcapture -%}
 
+{%- capture approach_notebook_link -%}
+[AssertionDLApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionDLApproach.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -743,6 +779,7 @@ model_scala_finance=model_scala_finance
 model_scala_legal=model_scala_legal
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 approach_description=approach_description
 approach_input_anno=approach_input_anno
 approach_output_anno=approach_output_anno
@@ -754,4 +791,5 @@ approach_scala_legal=approach_scala_legal
 approach_scala_finance=approach_scala_finance
 approach_api_link=approach_api_link
 approach_python_api_link=approach_python_api_link
+approach_notebook_link=approach_notebook_link
 %}

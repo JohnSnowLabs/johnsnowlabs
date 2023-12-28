@@ -18,7 +18,7 @@ Unlike the DL Model, this class does not extend AnnotatorModel. Instead it exten
 
 At the moment there are no pretrained models available for this class. Please refer to AssertionLogRegApproach to train your own model.
 
-AssertionLogReg Parametres:
+Parametres:
 - `setAfter(after: Int)`: AssertionLogRegModel.this.type
 Length of the context after the target (Default: 13)
 - `setBefore(before: Int)`: AssertionLogRegModel.this.type
@@ -45,10 +45,32 @@ ASSERTION
 [AssertionLogRegModel](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/assertion/assertion_dl_reg/index.html#sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegModel)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[AssertionLogRegModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionLogRegModel.ipynb)
+{%- endcapture -%}
+
 {%- capture approach_description -%}
 Trains a classification method, which uses the Logarithmic Regression Algorithm. It is used to extract Assertion Status
 from extracted entities and text.
 Contains all the methods for training a AssertionLogRegModel, together with trainWithChunk, trainWithStartEnd.
+
+Parameters:
+
+- `label` : Column with label per each token
+
+- `maxIter`: This specifies the maximum number of iterations to be performed in the model's training, default: 26
+
+- `regParam` : This specifies the regularization parameter. Regularization helps to control the complexity of the model, aiding in preventing the issue of overfitting.
+
+- `eNetParam` : Elastic net parameter
+
+- `beforeParam` : Length of the context before the target
+
+- `afterParam` : Length of the context after the target
+
+- `startCol` : Column that contains the token number for the start of the target
+
+- `endCol` : Column that contains the token number for the end of the target
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}
@@ -60,7 +82,7 @@ ASSERTION
 {%- endcapture -%}
 
 {%- capture approach_python_medical -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, medical
 
 # First define pipeline stages to extract embeddings and text chunks
 documentAssembler = nlp.DocumentAssembler() \
@@ -106,7 +128,7 @@ assertionModel = assertionPipeline.fit(dataset)
 {%- endcapture -%}
 
 {%- capture approach_python_legal -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, legal
 
 # First define pipeline stages to extract embeddings and text chunks
 documentAssembler = nlp.DocumentAssembler() \
@@ -152,7 +174,7 @@ assertionModel = assertionPipeline.fit(dataset)
 {%- endcapture -%}
 
 {%- capture approach_python_finance -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, finance
 
 # First define pipeline stages to extract embeddings and text chunks
 documentAssembler = nlp.DocumentAssembler() \
@@ -198,7 +220,7 @@ assertionModel = assertionPipeline.fit(dataset)
 {%- endcapture -%}
 
 {%- capture approach_scala_medical -%}
-from johnsnowlabs import * 
+ 
 import spark.implicits._
 
 // First define pipeline stages to extract embeddings and text chunks
@@ -245,7 +267,7 @@ val assertionModel = assertionPipeline.fit(dataset)
 {%- endcapture -%}
 
 {%- capture approach_scala_legal -%}
-from johnsnowlabs import * 
+
 import spark.implicits._
 
 // First define pipeline stages to extract embeddings and text chunks
@@ -292,7 +314,7 @@ val assertionModel = assertionPipeline.fit(dataset)
 {%- endcapture -%}
 
 {%- capture approach_scala_finance -%}
-from johnsnowlabs import * 
+
 import spark.implicits._
 
 // First define pipeline stages to extract embeddings and text chunks
@@ -346,6 +368,10 @@ val assertionModel = assertionPipeline.fit(dataset)
 [AssertionLogRegApproach](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/assertion/assertion_dl_reg/index.html#sparknlp_jsl.annotator.assertion.assertion_dl_reg.AssertionLogRegApproach)
 {%- endcapture -%}
 
+{%- capture approach_notebook_link -%}
+[AssertionLogRegApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AssertionLogRegApproach.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 approach=approach
@@ -355,6 +381,7 @@ model_input_anno=model_input_anno
 model_output_anno=model_output_anno
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 approach_description=approach_description
 approach_input_anno=approach_input_anno
 approach_output_anno=approach_output_anno
@@ -366,4 +393,5 @@ approach_scala_legal=approach_scala_legal
 approach_scala_finance=approach_scala_finance
 approach_api_link=approach_api_link
 approach_python_api_link=approach_python_api_link
+approach_notebook_link=approach_notebook_link
 %}

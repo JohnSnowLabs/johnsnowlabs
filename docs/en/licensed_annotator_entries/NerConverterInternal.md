@@ -14,6 +14,25 @@ Chunks with no associated entity (tagged "O") are filtered out.
 This licensed annotator adds extra functionality to the open-source version by adding the following parameters: `blackList`, `greedyMode`,  `threshold`, and `ignoreStopWords` that are not available in the [NerConverter](https://nlp.johnsnowlabs.com/docs/en/annotators#nerconverter) annotator.
 
 See also [Inside–outside–beginning (tagging)](https://en.wikipedia.org/wiki/Inside%E2%80%93outside%E2%80%93beginning_(tagging)) for more information.
+
+Parameters:
+
+- `setThreshold`: Confidence threshold.
+
+- `setWhiteList`: If defined, list of entities to process.
+
+- `setBlackList`:  If defined, list of entities to ignore.   
+
+- `setReplaceLabels`: If defined, contains a dictionary for entity replacement.
+
+- `setPreservePosition`: Whether to preserve the original position of the tokens in the original document or use the modified tokens.
+
+- `setReplaceDictResource`: If defined, path to the file containing a dictionary for entity replacement.
+
+- `setIgnoreStopWords`: If defined, list of stop words to ignore.
+
+- `setGreedyMode`: (Boolean) Whether to ignore B tags for contiguous tokens of same entity same .
+
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -25,7 +44,7 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, medical 
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -56,7 +75,7 @@ jsl_ner_converter_internal = medical.NerConverterInternal()\
     .setOutputCol("replaced_ner_chunk")\
     .setReplaceDictResource("replace_dict.csv","text", {"delimiter":","})
       
-nlpPipeline = Pipeline(stages=[
+nlpPipeline = nlp.Pipeline(stages=[
     documentAssembler, 
     sentenceDetector,
     tokenizer,
@@ -71,43 +90,39 @@ result = nlpPipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
-from johnsnowlabs import * 
-val documentAssembler = new nlp.DocumentAssembler()
+import spark.implicits._
+
+val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentenceDetector = nlp.SentenceDetectorDLModel
+val sentenceDetector = SentenceDetectorDLModel
     .pretrained("sentence_detector_dl_healthcare","en","clinical/models") 
     .setInputCols("document") 
     .setOutputCol("sentence") 
 
-
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("sentence")
   .setOutputCol("token")
 
- 
-val word_embeddings = nlp.WordEmbeddingsModel
+val word_embeddings = WordEmbeddingsModel
    .pretrained("embeddings_clinical", "en","clinical/models")
    .setInputCols(Array("sentence", "token"))
    .setOutputCol("embeddings")
 
-
-val jsl_ner = medical.NerModel
+val jsl_ner = MedicalNerModel
     .pretrained("ner_jsl", "en", "clinical/models") 
     .setInputCols(Array("sentence", "token","embeddings")) 
     .setOutputCol("jsl_ner")
 
-
-val jsl_ner_converter = new nlp.NerConverter() 
+val jsl_ner_converter = new NerConverter() 
     .setInputCols(Array("sentence", "token", "jsl_ner")) 
     .setOutputCol("jsl_ner_chunk")
 
-val jsl_ner_converter_internal = new medical.NerConverterInternal() 
+val jsl_ner_converter_internal = new NerConverterInternal() 
     .setInputCols(Array("sentence", "token", "jsl_ner")) 
     .setOutputCol("replaced_ner_chunk")
     .setReplaceDictResource("replace_dict.csv","text", {"delimiter":","})
-
 
 val pipeline = new Pipeline().setStages(Array(
   documentAssembler,
@@ -125,7 +140,7 @@ val result = pipeline.fit(data).transform(data)
 
 
 {%- capture model_python_legal -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, legal
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -154,7 +169,7 @@ ner_converter = legal.NerConverterInternal() \
     .setOutputCol("ner_chunk")\
     .setReplaceLabels({"ALIAS": "PARTY"}) # "ALIAS" are secondary names of companies, so let's extract them also as PARTY
 
-nlpPipeline = Pipeline(stages=[
+nlpPipeline = nlp.Pipeline(stages=[
       documentAssembler, 
       sentenceDetector,
       tokenizer,
@@ -168,39 +183,35 @@ result = nlpPipeline.fit(data).transform(data)
 
 
 {%- capture model_scala_legal -%}
-from johnsnowlabs import * 
-val documentAssembler = new nlp.DocumentAssembler()
+import spark.implicits._
+
+val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentenceDetector = nlp.SentenceDetectorDLModel
+val sentenceDetector = SentenceDetectorDLModel
     .pretrained("sentence_detector_dl","xx") 
     .setInputCols("document") 
     .setOutputCol("sentence") 
 
-
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("sentence")
   .setOutputCol("token")
 
- 
-val embeddings = nlp.RoBertaEmbeddings
+val embeddings = RoBertaEmbeddings
    .pretrained("roberta_embeddings_legal_roberta_base", "en")
    .setInputCols(Array("sentence", "token"))
    .setOutputCol("embeddings")
 
-
-val legal_ner = legal.NerModel
+val legal_ner = LegalNerModel
     .pretrained("legner_contract_doc_parties", "en", "legal/models") 
     .setInputCols(Array("sentence", "token","embeddings")) 
     .setOutputCol("ner")
 
-
-val ner_converter = new legal.NerConverterInternal() 
+val ner_converter = new NerConverterInternal() 
     .setInputCols(Array("sentence", "token", "ner")) 
     .setOutputCol("ner_chunk")
     .setReplaceLabels({"ALIAS": "PARTY"})
-
 
 val pipeline = new Pipeline().setStages(Array(
   documentAssembler,
@@ -219,7 +230,7 @@ val result = pipeline.fit(data).transform(data)
 
 
 {%- capture model_python_finance -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, finance
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -248,7 +259,7 @@ ner_converter = finance.NerConverterInternal() \
     .setOutputCol("ner_chunk")\
     .setReplaceLabels({"ORG": "PARTY"}) # Replace "ORG" entity as "PARTY"
 
-nlpPipeline = Pipeline(stages=[
+nlpPipeline = nlp.Pipeline(stages=[
       documentAssembler, 
       sentenceDetector,
       tokenizer,
@@ -257,45 +268,39 @@ nlpPipeline = Pipeline(stages=[
       ner_converter])
 
 result = nlpPipeline.fit(data).transform(data)
-
-
 {%- endcapture -%}
 
 
 {%- capture model_scala_finance -%}
-from johnsnowlabs import * 
-val documentAssembler = new nlp.DocumentAssembler()
-  .setInputCol("text")
-  .setOutputCol("document")
+import spark.implicits._
 
-val sentenceDetector = nlp.SentenceDetectorDLModel
+val documentAssembler = new DocumentAssembler()
+    .setInputCol("text")
+    .setOutputCol("document")
+
+val sentenceDetector = SentenceDetectorDLModel
     .pretrained("sentence_detector_dl","xx") 
     .setInputCols("document")
     .setOutputCol("sentence") 
 
+val tokenizer = new Tokenizer()
+    .setInputCols("sentence")
+    .setOutputCol("token")
 
-val tokenizer = new nlp.Tokenizer()
-  .setInputCols("sentence")
-  .setOutputCol("token")
-
- 
-val embeddings = nlp.RoBertaEmbeddings
+val embeddings = RoBertaEmbeddings
    .pretrained("roberta_embeddings_legal_roberta_base", "en")
    .setInputCols(Array("sentence", "token"))
    .setOutputCol("embeddings")
 
-
-val fin_ner = finance.NerModel
+val fin_ner = FinanceNerModel
     .pretrained("finner_deid", "en", "finance/models") 
     .setInputCols(Array("sentence", "token","embeddings")) 
     .setOutputCol("ner")
 
-
-val ner_converter = new finance.NerConverterInternal() 
+val ner_converter = new NerConverterInternal() 
     .setInputCols(Array("sentence", "token", "ner")) 
     .setOutputCol("ner_chunk")
     .setReplaceLabels({"ORG": "PARTY"}) 
-
 
 val pipeline = new Pipeline().setStages(Array(
   documentAssembler,
@@ -318,6 +323,10 @@ val result = pipeline.fit(data).transform(data)
 [NerConverterInternal](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/ner/ner_converter_internal/index.html#sparknlp_jsl.annotator.ner.ner_converter_internal.NerConverterInternal)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[NerConverterInternalNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NerConverterInternal.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -332,4 +341,5 @@ model_python_finance=model_python_finance
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}

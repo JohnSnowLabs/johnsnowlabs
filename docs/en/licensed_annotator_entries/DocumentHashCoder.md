@@ -12,7 +12,7 @@ This annotator can replace dates in a column of `DOCUMENT` type according with t
 
 If the specified column contains strings that can be parsed to integers, use those numbers to make the shift in the data accordingly.
 
-Parametres;
+Parametres:
 
 - `PatientIdColumn` *(String)*: Name of the column containing patient ID.
 

@@ -18,9 +18,13 @@ This solution eliminates the need to run `BertSentenceEmbeddings` multiple times
 Parametres:
 
 - `inputCols`: The name of the columns containing the input annotations. It can read an Array of strings.
+
 - `outputCol`: The name of the column in the Document type that is generated. We can specify only one column here.
+
 - `inputType`: The type of entity that you want to filter (by default `sentence_embeddings`). Possible values; `document|token|wordpiece|word_embeddings|sentence_embeddings|category|date|sentiment|pos|chunk|named_entity|regex|dependency|labeled_dependency|language|keyword`
+
 - `metadataField`: The key in the metadata dictionary that you want to filter (by default `entity`)
+
 - `filterFieldsElements`: The `filterfieldsElements` are the allowed values for the metadata field that is being used.
 
 All the parameters can be set using the corresponding set method in the camel case. For example, `.setInputcols()`. 

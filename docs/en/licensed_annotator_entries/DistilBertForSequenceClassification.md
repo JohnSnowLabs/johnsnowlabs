@@ -1,5 +1,5 @@
 {%- capture title -%}
-MedicalDistilBertForSequenceClassification
+DistilBertForSequenceClassification
 {%- endcapture -%}
 
 {%- capture model -%}
@@ -8,7 +8,17 @@ model
 
 {%- capture model_description -%}
 
- `MedicalDistilBertForSequenceClassification`  can load DistilBERT Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks.
+ `DistilBertForSequenceClassification`  can load DistilBERT Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks.
+
+Parameters:
+
+- `batchSize`',  'Size of every batch': default: 8,
+
+- `coalesceSentences`': "Instead of 1 class per sentence (if inputCols is '''sentence''' output 1 class per document by averaging probabilities in all sentences." default: False,
+
+- `maxSentenceLength`', 'Max sentence length to process', default: 128
+
+- `caseSensitive`', 'whether to ignore case in tokens for embeddings matching',default: True,
 
 {%- endcapture -%}
 
@@ -93,11 +103,11 @@ val result = pipeline.fit(data).transform(data)
 
 
 {%- capture model_python_api_link -%}
-[MedicalDistilBertForSequenceClassification](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/medical_distilbert_for_sequence_classification/index.html)
+[DistilBertForSequenceClassification](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/medical_distilbert_for_sequence_classification/index.html)
 {%- endcapture -%}
 
 {%- capture model_scala_api_link -%}
-[MedicalDistilBertForSequenceClassification](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/MedicalDistilBertForSequenceClassification.html)
+[DistilBertForSequenceClassification](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/MedicalDistilBertForSequenceClassification.html)
 {%- endcapture -%}
 
 

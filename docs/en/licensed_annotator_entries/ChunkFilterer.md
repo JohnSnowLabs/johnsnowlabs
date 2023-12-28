@@ -12,20 +12,23 @@ White list criteria is enabled by default. To use regex, `criteria` has to be se
 
 Parametres:
 
-- `setBlackList(list: Array[String])`: ChunkFilterer.this.type
-If defined, list of entities to ignore.
-- `setCaseSensitive(value: Boolean)`: ChunkFilterer.this.type
-Determines whether the definitions of the white listed and black listed entities are case sensitive or not.
-- `setCriteria(s: String)`: ChunkFilterer.this.type
-Sets criteria for how to compare black and white listed values with the result of the Annotation.
-- `setEntitiesConfidence(value: HashMap[String, Double])`: ChunkFilterer.this.type
-Sets Pairs (entity,confidenceThreshold) to filter the chunks with entities which have confidence lower than the confidence threshold.
-- `setFilterEntity(v: String)`: ChunkFilterer.this.type
-Possible values are 'result' and 'entity'.
-- `setRegex(list: String*)`: ChunkFilterer.this.type
-Sets the list of regexes to process the chunks.
-- `setWhiteList(list: Array[String])`: ChunkFilterer.this.type
-Sets the list of entities to process.
+- `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
+
+- `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
+
+- `criteria`: Tag representing what is the criteria to filter the chunks. Possibles values are: - isIn: Filter by the chunk - regex: Filter using a regex
+
+- `whiteList`: If defined, list of entities to process. The rest will be ignored.
+
+- `blackList`: If defined, list of entities to ignore. The rest will be processed.
+
+- `regex`: If defined, list of regex to process the chunks (Default: []).
+
+- `filterEntity`: If equal to “entity”, use the ner label to filter. If set to “result”, use the result attribute of the annotation to filter.
+
+- `entitiesConfidence`: Path to csv with pairs (entity,confidenceThreshold). Filter the chunks with entities which have confidence lower than the confidence threshold.
+
+All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -37,7 +40,7 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, medical
 
 # Filtering POS tags
 # First pipeline stages to extract the POS tags are defined
@@ -103,7 +106,7 @@ result.selectExpr("explode(filtered)").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, legal
 
 # Filtering POS tags
 # First pipeline stages to extract the POS tags are defined
@@ -165,7 +168,7 @@ result.selectExpr("explode(filtered)").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, finance
 
 # Filtering POS tags
 # First pipeline stages to extract the POS tags are defined
@@ -272,7 +275,7 @@ val text ="""Has a past history of gastroenteritis and stomach pain, however pat
 val data = Seq(text).toDF("text")
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(chunk)").show(truncate=false)
+// result.selectExpr("explode(chunk)").show(truncate=false)
 +---------------------------------------------------------------------------------+
 |col                                                                              |
 +---------------------------------------------------------------------------------+
@@ -284,7 +287,7 @@ result.selectExpr("explode(chunk)").show(truncate=false)
 |{chunk, 118, 132, gastroenteritis, {sentence -> 0, chunk -> 5}, []}              |
 +---------------------------------------------------------------------------------+
 
-result.selectExpr("explode(filtered)").show(truncate=false)
+// result.selectExpr("explode(filtered)").show(truncate=false)
 +-------------------------------------------------------------------+
 |col                                                                |
 +-------------------------------------------------------------------+
@@ -336,7 +339,7 @@ val text ="""AWA Group LP intends to pay dividends on the Common Units on a quar
 val data = Seq(text).toDF("text")
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(chunk)").show(truncate=false)
+// result.selectExpr("explode(chunk)").show(truncate=false)
 +-------------------------------------------------------+
 |col                                                    |
 +-------------------------------------------------------+
@@ -344,7 +347,7 @@ result.selectExpr("explode(chunk)").show(truncate=false)
 |{chunk, 92, 95, rate, {sentence -> 0, chunk -> 1}, []} |
 +-------------------------------------------------------+
 
-result.selectExpr("explode(filtered)").show(truncate=False)
+// result.selectExpr("explode(filtered)").show(truncate=False)
 +-------------------------------------------------------+
 |col                                                    |
 +-------------------------------------------------------+
@@ -394,7 +397,7 @@ val text ="""AWA Group LP intends to pay dividends on the Common Units on a quar
 val data = Seq(text).toDF("text")
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(chunk)").show(truncate=false)
+// result.selectExpr("explode(chunk)").show(truncate=false)
 +-------------------------------------------------------+
 |col                                                    |
 +-------------------------------------------------------+
@@ -402,7 +405,7 @@ result.selectExpr("explode(chunk)").show(truncate=false)
 |{chunk, 92, 95, rate, {sentence -> 0, chunk -> 1}, []} |
 +-------------------------------------------------------+
 
-result.selectExpr("explode(filtered)").show(truncate=False)
+// result.selectExpr("explode(filtered)").show(truncate=False)
 +-------------------------------------------------------+
 |col                                                    |
 +-------------------------------------------------------+
@@ -416,6 +419,10 @@ result.selectExpr("explode(filtered)").show(truncate=False)
 
 {%- capture model_python_api_link -%}
 [ChunkFilterer](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer)
+{%- endcapture -%}
+
+{%- capture model_notebook_link -%}
+[ChunkFiltererNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkFilterer.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
@@ -432,4 +439,5 @@ model_scala_legal=model_scala_legal
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}

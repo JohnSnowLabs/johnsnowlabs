@@ -21,8 +21,11 @@ The annotator also allows using fuzzy matching, which can take into consideratio
 Parametres:
 
 - `setRels` *(List[str])*: Relations that we are going to use to map the chunk
+
 - `setLowerCase` *(Boolean)*: Set if we want to map the chunks in lower case or not (Default: True)
+
 - `setAllowMultiTokenChunk` *(Boolean)*: Whether to skip relations with multitokens (Default: True)
+
 - `setMultivaluesRelations` *(Boolean)*:  Whether to decide to return all values in a relation together or separately (Default: False)
 
 
@@ -39,6 +42,7 @@ LABEL_DEPENDENCY
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
 
 documenter = nlp.DocumentAssembler()\
   .setInputCol("text")\
@@ -83,7 +87,6 @@ rxnorm_resolver = medical.SentenceEntityResolverModel\
   .setOutputCol("rxnorm_code")\
   .setDistanceFunction("EUCLIDEAN")\
 
-
 resolver2chunk = medical.Resolution2Chunk()\
   .setInputCols(["rxnorm_code"]) \
   .setOutputCol("rxnorm_chunk")\
@@ -92,7 +95,6 @@ chunkerMapper = medical.ChunkMapperModel.pretrained("rxnorm_drug_brandname_mappe
   .setInputCols(["rxnorm_chunk"])\
   .setOutputCol("rxnorm_drug_brandname_mapper")\
   .setRels(["rxnorm_brandname"])
-
 
 pipeline = nlp.Pipeline(
     stages = [
@@ -128,6 +130,7 @@ result.select(F.explode(F.arrays_zip(result.ner_chunks.result,
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
+from johnsnowlabs import nlp, finance
 
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol('text')\
@@ -167,8 +170,6 @@ data = spark.createDataFrame([text]).toDF("text")
 
 result = pipeline.fit(data).transform(data)
 
-result.select('ner_chunk.result', 'mappings.result').show(truncate=False)
-
 +------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |result|result                                                                                                                                                             |
 +------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -177,6 +178,7 @@ result.select('ner_chunk.result', 'mappings.result').show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
+from johnsnowlabs import nlp, legal
 
 document_assembler = nlp.DocumentAssembler()\
   .setInputCol('text')\
@@ -216,7 +218,6 @@ text = ["""873474341 is an American multinational corporation that is engaged in
 data = spark.createDataFrame([text]).toDF("text")
 
 result= pipeline.fit(data).transform(data)
-result.select('ner_chunk.result', 'mappings.result').show(truncate=False)
 
 +-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |result     |result                                                                                                                                                               |
@@ -234,11 +235,11 @@ val documenter = new DocumentAssembler()
  .setOutputCol("document") 
 
 val sentencer = new SentenceDetector()
- .setInputCols(Array("document")) 
+ .setInputCols("document")
  .setOutputCol("sentences") 
 
 val tokenizer = new Tokenizer()
- .setInputCols(Array("sentences")) 
+ .setInputCols("sentences")
  .setOutputCol("tokens") 
 
 val words_embedder = WordEmbeddingsModel
@@ -248,13 +249,13 @@ val words_embedder = WordEmbeddingsModel
 
 val ner_tagger = MedicalNerModel
  .pretrained("ner_posology","en","clinical/models") 
- .setInputCols("sentences","tokens","embeddings") 
+ .setInputCols(Array("sentences","tokens","embeddings"))
  .setOutputCol("ner_tags") 
 
 val ner_converter = new NerConverterInternal()
  .setInputCols(Array("sentences","tokens","ner_tags")) 
  .setOutputCol("ner_chunks") 
- .setWhiteList(Array("DRUG")) 
+ .setWhiteList("DRUG") 
 
 val chunkToDoc = new Chunk2Doc()
  .setInputCols("ner_chunks") 
@@ -262,22 +263,22 @@ val chunkToDoc = new Chunk2Doc()
 
 val sbert_embedder = BertSentenceEmbeddings
  .pretrained("sbiobert_base_cased_mli","en","clinical/models") 
- .setInputCols(Array("ner_chunks_doc")) 
+ .setInputCols("ner_chunks_doc")
  .setOutputCol("sbert_embeddings") 
  .setCaseSensitive(false) 
 
 val rxnorm_resolver = SentenceEntityResolverModel
  .pretrained("sbiobertresolve_rxnorm_augmented","en","clinical/models") 
- .setInputCols(Array("sbert_embeddings")) 
+ .setInputCols("sbert_embeddings")
  .setOutputCol("rxnorm_code") 
  .setDistanceFunction("EUCLIDEAN") 
 
 val resolver2chunk = new Resolution2Chunk()
- .setInputCols(Array("rxnorm_code")) 
+ .setInputCols("rxnorm_code")
  .setOutputCol("rxnorm_chunk") 
 
 val chunkerMapper = ChunkMapperModel.pretrained("rxnorm_drug_brandname_mapper","en","clinical/models")
- .setInputCols(Array("rxnorm_chunk")) 
+ .setInputCols("rxnorm_chunk")
  .setOutputCol("rxnorm_drug_brandname_mapper") 
  .setRels(Array("rxnorm_brandname")) 
 
@@ -297,14 +298,7 @@ val pipeline = new Pipeline().setStages(Array(
 val text ="""The doctor prescribed Sinequan 150 MG for depression and Zonalon 50 mg for managing skin itching"""
 val data = Seq(text).toDF("text")
 
-val result= mapper_pipeline.fit(data).transform(data) 
-
-result.select(F.explode(F.arrays_zip(result.ner_chunks.result,
-                                     result.rxnorm_code.result,
-                                     result.rxnorm_drug_brandname_mapper.result)).alias("cols"))\
-                  .select(F.expr("cols['0']").alias("ner_chunks"),
-                          F.expr("cols['1']").alias("rxnorm_code"),
-                          F.expr("cols['2']").alias("rxnorm_drug_brandname_mapper")).show(15, truncate=100)
+val result= mapper_pipeline.fit(data).transform(data)
 
 +----------+-----------+----------------------------+
 |ner_chunks|rxnorm_code|rxnorm_drug_brandname_mapper|
@@ -339,7 +333,7 @@ val ner_converter = new NerConverter()
  .setOutputCol("ner_chunk") 
 
 val CM = ChunkMapperModel.pretrained("finmapper_nasdaq_ticker_stock_screener","en","finance/models")
- .setInputCols(Array("ner_chunk")) 
+ .setInputCols("ner_chunk")
  .setOutputCol("mappings") 
 
 val pipeline = new Pipeline().setStages(Array( 
@@ -353,9 +347,7 @@ val pipeline = new Pipeline().setStages(Array(
 val text ="""There are some serious purchases and sales of AMZN stock today."""
 val data = Seq(text).toDF("text")
 
-val result = pipeline.fit(data).transform(data) 
-
-result.select("ner_chunk.result","mappings.result") .show(truncate=false) 
+val result = pipeline.fit(data).transform(data)
 
 +------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |result|result                                                                                                                                                             |
@@ -390,7 +382,7 @@ val ner_converter = new NerConverter()
  .setWhiteList(Array("CARDINAL")) 
 
 val CM = ChunkMapperModel.pretrained("legmapper_edgar_irs","en","legal/models") 
-.setInputCols(Array("ner_chunk")) 
+.setInputCols("ner_chunk")
 .setOutputCol("mappings") 
 
 val pipeline = new Pipeline().setStages(Array( 
@@ -404,9 +396,7 @@ val pipeline = new Pipeline().setStages(Array(
 val text ="""873474341 is an American multinational corporation that is engaged in the design,development,manufacturing,and worldwide marketing and sales of footwear,apparel,equipment,accessories,and services"""
 val data = Seq(text).toDF("text")
 
-val result= pipeline.fit(data).transform(data) 
-
-result.select("ner_chunk.result","mappings.result") .show(truncate=false) 
+val result= pipeline.fit(data).transform(data)
 
 +-----------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |result     |result                                                                                                                                                               |
@@ -424,6 +414,9 @@ result.select("ner_chunk.result","mappings.result") .show(truncate=false)
 [ChunkMapperModel](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/chunkmapper/index.html#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperModel)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[ChunkMapperModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkMapperModel.ipynb)
+{%- endcapture -%}
 
 {%- capture approach_description -%}
 
@@ -446,6 +439,7 @@ LABEL_DEPENDENCY
 {%- endcapture -%}
 
 {%- capture approach_python_medical -%}
+from johnsnowlabs import nlp, medical
 
 # First, create a dictionay in JSON format following this schema:
 import json
@@ -505,13 +499,14 @@ chunkerMapper =  medical.ChunkMapperApproach()\
     .setDictionary("/content/sample_drug.json")\
     .setRels(["action"]) #or treatment
 
-pipeline = nlp.Pipeline().setStages([document_assembler,
-                                 sentence_detector,
-                                 tokenizer,
-                                 word_embeddings,
-                                 clinical_ner,
-                                 ner_converter,
-                                 chunkerMapper])
+pipeline = nlp.Pipeline().setStages([
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    clinical_ner,
+    ner_converter,
+    chunkerMapper])
 
 text = ["The patient was given 1 unit of metformin daily."]
 
@@ -525,6 +520,7 @@ model.stages[-1].write().save("models/drug_mapper")
 {%- endcapture -%}
 
 {%- capture approach_python_finance -%}
+from johnsnowlabs import nlp, finance
 
 # First, create a dictionay in JSON format following this schema:
 import json
@@ -601,6 +597,7 @@ model.stages[-1].write().save("models/finance_mapper")
 {%- endcapture -%}
 
 {%- capture approach_python_legal -%}
+from johnsnowlabs import nlp, legal
 
 # First, create a dictionay in JSON format following this schema:
 import json
@@ -680,13 +677,12 @@ model.stages[-1].write().save("models/legal_mapper")
 
 import spark.implicits._
 
-  
 val document_assembler = new DocumentAssembler()
  .setInputCol("text") 
  .setOutputCol("document") 
 
 val sentence_detector = new SentenceDetector()
- .setInputCols(Array("document")) 
+ .setInputCols("document")
  .setOutputCol("sentence") 
 
 val tokenizer = new Tokenizer()
@@ -708,7 +704,7 @@ val ner_converter = new NerConverterInternal()
  .setWhiteList(Array("DRUG")) 
 
 val chunkerMapper = new ChunkMapperApproach()
- .setInputCols(Array("ner_chunk")) 
+ .setInputCols("ner_chunk") 
  .setOutputCol("mappings") 
  .setDictionary("/content/sample_drug.json") 
  .setRels(Array("action") ) //or treatment 
@@ -741,7 +737,7 @@ val document_assembler = new DocumentAssembler()
  .setOutputCol("document") 
 
 val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
- .setInputCols(Array("document")) 
+ .setInputCols("document")
  .setOutputCol("sentence") 
 
 val tokenizer = new Tokenizer()
@@ -762,7 +758,7 @@ val ner_converter = new NerConverter()
  .setWhiteList(Array("ORG") ) // Return only ORG entities 
 
 val chunkerMapper = new ChunkMapperApproach()
- .setInputCols(Array("ner_chunk") ) 
+ .setInputCols("ner_chunk")
  .setOutputCol("mappings") 
  .setDictionary("/content/sample_json") 
  .setRels(all_rels) 
@@ -779,7 +775,7 @@ val pipeline = new Pipeline()
 
 val text = new Array("AWA Group LP intends to pay dividends on the Common Units on a quarterly basis at an annual rate of 8.00% of the Offering Price. ") 
 
-val test_data = seq(Array(text) ).toDF("text") 
+val test_data = seq(Array(text)).toDF("text") 
 
 val model = pipeline.fit(test_data) 
 res= model.transform(test_data) 
@@ -797,7 +793,7 @@ val document_assembler = new DocumentAssembler()
  .setOutputCol("document") 
 
 val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
- .setInputCols(Array("document")) 
+ .setInputCols("document")
  .setOutputCol("sentence") 
 
 val tokenizer = new Tokenizer()
@@ -815,10 +811,10 @@ val legal_ner = LegalNerModel.pretrained("legner_org_per_role_date","en","legal/
 val ner_converter = new NerConverter()
  .setInputCols(Array("sentence","token","ner")) 
  .setOutputCol("ner_chunk") 
- .setWhiteList(Array("ORG") ) // Return only ORG entities 
+ .setWhiteList("ORG") // Return only ORG entities 
 
 val chunkerMapper = new ChunkMapperApproach()
- .setInputCols(Array("ner_chunk")) 
+ .setInputCols("ner_chunk")
  .setOutputCol("mappings") 
  .setDictionary("/content/sample_json") 
  .setRels(all_rels) 
@@ -849,6 +845,10 @@ model.stagesArray(-1) .write() .save("models/legal_mapper")
 [ChunkMapperApproach](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/chunkmapper/index.html#sparknlp_jsl.annotator.chunker.chunkmapper.ChunkMapperApproach)
 {%- endcapture -%}
 
+{%- capture approach_notebook_link -%}
+[ChunkMapperApproachModel](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkMapperApproach.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -864,6 +864,7 @@ model_scala_finance=model_scala_finance
 model_scala_legal=model_scala_legal
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 approach_description=approach_description
 approach_input_anno=approach_input_anno
 approach_output_anno=approach_output_anno
@@ -875,4 +876,5 @@ approach_scala_finance=approach_scala_finance
 approach_scala_legal=approach_scala_legal
 approach_api_link=approach_api_link
 approach_python_api_link=approach_python_api_link
+approach_notebook_link=approach_notebook_link
 %}

@@ -13,9 +13,10 @@ SparkNLP annotations (if the annotation is an embedding, it takes the embedding,
 `result` field). The output of the transformer is a `FEATURE_VECTOR` annotation (the numeric vector is in the
 `embeddings` field).
 
-The parameters below are used for `FeaturesAssembler`.
+Parameters:
 
 - `inputCols`: The name of the columns containing the input annotations. It can read either a String column name or an Array of strings (column names).
+
 - `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
 
 
