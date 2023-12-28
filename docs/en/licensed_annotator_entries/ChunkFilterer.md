@@ -40,7 +40,7 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, medical
 
 # Filtering POS tags
 # First pipeline stages to extract the POS tags are defined
@@ -106,7 +106,7 @@ result.selectExpr("explode(filtered)").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, legal
 
 # Filtering POS tags
 # First pipeline stages to extract the POS tags are defined
@@ -168,7 +168,7 @@ result.selectExpr("explode(filtered)").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, finance
 
 # Filtering POS tags
 # First pipeline stages to extract the POS tags are defined
@@ -275,7 +275,7 @@ val text ="""Has a past history of gastroenteritis and stomach pain, however pat
 val data = Seq(text).toDF("text")
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(chunk)").show(truncate=false)
+// result.selectExpr("explode(chunk)").show(truncate=false)
 +---------------------------------------------------------------------------------+
 |col                                                                              |
 +---------------------------------------------------------------------------------+
@@ -287,7 +287,7 @@ result.selectExpr("explode(chunk)").show(truncate=false)
 |{chunk, 118, 132, gastroenteritis, {sentence -> 0, chunk -> 5}, []}              |
 +---------------------------------------------------------------------------------+
 
-result.selectExpr("explode(filtered)").show(truncate=false)
+// result.selectExpr("explode(filtered)").show(truncate=false)
 +-------------------------------------------------------------------+
 |col                                                                |
 +-------------------------------------------------------------------+
@@ -339,7 +339,7 @@ val text ="""AWA Group LP intends to pay dividends on the Common Units on a quar
 val data = Seq(text).toDF("text")
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(chunk)").show(truncate=false)
+// result.selectExpr("explode(chunk)").show(truncate=false)
 +-------------------------------------------------------+
 |col                                                    |
 +-------------------------------------------------------+
@@ -347,7 +347,7 @@ result.selectExpr("explode(chunk)").show(truncate=false)
 |{chunk, 92, 95, rate, {sentence -> 0, chunk -> 1}, []} |
 +-------------------------------------------------------+
 
-result.selectExpr("explode(filtered)").show(truncate=False)
+// result.selectExpr("explode(filtered)").show(truncate=False)
 +-------------------------------------------------------+
 |col                                                    |
 +-------------------------------------------------------+
@@ -397,7 +397,7 @@ val text ="""AWA Group LP intends to pay dividends on the Common Units on a quar
 val data = Seq(text).toDF("text")
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(chunk)").show(truncate=false)
+// result.selectExpr("explode(chunk)").show(truncate=false)
 +-------------------------------------------------------+
 |col                                                    |
 +-------------------------------------------------------+
@@ -405,7 +405,7 @@ result.selectExpr("explode(chunk)").show(truncate=false)
 |{chunk, 92, 95, rate, {sentence -> 0, chunk -> 1}, []} |
 +-------------------------------------------------------+
 
-result.selectExpr("explode(filtered)").show(truncate=False)
+// result.selectExpr("explode(filtered)").show(truncate=False)
 +-------------------------------------------------------+
 |col                                                    |
 +-------------------------------------------------------+
@@ -419,6 +419,10 @@ result.selectExpr("explode(filtered)").show(truncate=False)
 
 {%- capture model_python_api_link -%}
 [ChunkFilterer](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/chunker_filterer/index.html#sparknlp_jsl.annotator.chunker.chunker_filterer.ChunkFilterer)
+{%- endcapture -%}
+
+{%- capture model_notebook_link -%}
+[ChunkFiltererNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkFilterer.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
@@ -435,4 +439,5 @@ model_scala_legal=model_scala_legal
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}
