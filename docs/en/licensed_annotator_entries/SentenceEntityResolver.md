@@ -82,7 +82,7 @@ cpt_resolver = medical.SentenceEntityResolverModel.pretrained("sbiobertresolve_c
     .setOutputCol("cpt_code")\
     .setDistanceFunction("EUCLIDEAN")
 
-pipeline = Pipeline().setStages([
+pipeline = nlp.Pipeline().setStages([
     documentAssembler,
     sentenceDetector,
     tokenizer,
@@ -312,6 +312,10 @@ val result = pipeline.fit(df) .transform(df)
 [SentenceEntityResolverModel](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/resolution/sentence_entity_resolver/index.html#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[SentenceEntityResolverModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/SentenceEntityResolverApproach_SentenceEntityResolverModel.ipynb)
+{%- endcapture -%}
+
 {%- capture approach_description -%}
 Trains a SentenceEntityResolverModel that maps sentence embeddings to entities in a knowledge base.
 
@@ -475,19 +479,19 @@ model = bertExtractor.fit(processed_data)
 {%- endcapture -%}
 
 {%- capture approach_scala_medical -%}
-from johnsnowlabs import * 
+import spark.implicits._
 
 // Training a SNOMED resolution model using BERT sentence embeddings
 // Define pre-processing pipeline for training data. It needs consists of columns for the normalized training data and their labels.
-val documentAssembler = new nlp.DocumentAssembler()
+val documentAssembler = new DocumentAssembler()
    .setInputCol("normalized_text")
    .setOutputCol("document")
 
-val sentenceDetector = nlp.SentenceDetector()
+val sentenceDetector = SentenceDetector()
   .setInputCols("document")
   .setOutputCol("sentence")
 
- val bertEmbeddings = nlp.BertSentenceEmbeddings.pretrained("sent_biobert_pubmed_base_cased")
+ val bertEmbeddings = BertSentenceEmbeddings.pretrained("sent_biobert_pubmed_base_cased")
    .setInputCols("sentence")
    .setOutputCol("bert_embeddings")
 
@@ -501,7 +505,7 @@ val sentenceDetector = nlp.SentenceDetector()
  val snomedData = snomedTrainingModel.transform(data).cache()
 
 // Then the Resolver can be trained with
-val bertExtractor = new medical.SentenceEntityResolverApproach()
+val bertExtractor = new SentenceEntityResolverApproach()
   .setNeighbours(25)
   .setThreshold(1000)
   .setInputCols("bert_embeddings")
@@ -516,19 +520,19 @@ val snomedModel = bertExtractor.fit(snomedData)
 {%- endcapture -%}
 
 {%- capture approach_scala_legal -%}
-from johnsnowlabs import * 
+import spark.implicits._
 
 // Training a SNOMED resolution model using BERT sentence embeddings
 // Define pre-processing pipeline for training data. It needs consists of columns for the normalized training data and their labels.
-val documentAssembler = new nlp.DocumentAssembler()
+val documentAssembler = new DocumentAssembler()
    .setInputCol("normalized_text")
    .setOutputCol("document")
 
-val sentenceDetector = nlp.SentenceDetector()
+val sentenceDetector = SentenceDetector()
   .setInputCols("document")
   .setOutputCol("sentence")
 
- val bertEmbeddings = nlp.BertSentenceEmbeddings.pretrained("sent_biobert_pubmed_base_cased")
+ val bertEmbeddings = BertSentenceEmbeddings.pretrained("sent_biobert_pubmed_base_cased")
    .setInputCols("sentence")
    .setOutputCol("bert_embeddings")
 
@@ -541,7 +545,7 @@ val sentenceDetector = nlp.SentenceDetector()
  val snomedData = snomedTrainingModel.transform(data).cache()
 
 // Then the Resolver can be trained with
-val bertExtractor = new legal.SentenceEntityResolverApproach()
+val bertExtractor = new SentenceEntityResolverApproach()
   .setNeighbours(25)
   .setThreshold(1000)
   .setInputCols("bert_embeddings")
@@ -556,19 +560,19 @@ val snomedModel = bertExtractor.fit(snomedData)
 {%- endcapture -%}
 
 {%- capture approach_scala_finance -%}
-from johnsnowlabs import * 
+import spark.implicits._
 
 // Training a SNOMED resolution model using BERT sentence embeddings
 // Define pre-processing pipeline for training data. It needs consists of columns for the normalized training data and their labels.
-val documentAssembler = new nlp.DocumentAssembler()
+val documentAssembler = new DocumentAssembler()
    .setInputCol("normalized_text")
    .setOutputCol("document")
 
-val sentenceDetector = nlp.SentenceDetector()
+val sentenceDetector = SentenceDetector()
   .setInputCols("document")
   .setOutputCol("sentence")
 
- val bertEmbeddings = nlp.BertSentenceEmbeddings.pretrained("sent_biobert_pubmed_base_cased")
+ val bertEmbeddings = BertSentenceEmbeddings.pretrained("sent_biobert_pubmed_base_cased")
    .setInputCols("sentence")
    .setOutputCol("bert_embeddings")
    
@@ -581,7 +585,7 @@ val sentenceDetector = nlp.SentenceDetector()
  val snomedData = snomedTrainingModel.transform(data).cache()
 
 // Then the Resolver can be trained with
-val bertExtractor = new finance.SentenceEntityResolverApproach()
+val bertExtractor = new SentenceEntityResolverApproach()
   .setNeighbours(25)
   .setThreshold(1000)
   .setInputCols("bert_embeddings")
@@ -603,6 +607,10 @@ val snomedModel = bertExtractor.fit(snomedData)
 [SentenceEntityResolverApproach](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/resolution/sentence_entity_resolver/index.html#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverApproach)
 {%- endcapture -%}
 
+{%- capture approach_notebook_link -%}
+[SentenceEntityResolverApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/SentenceEntityResolverApproach_SentenceEntityResolverModel.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -618,6 +626,7 @@ model_python_finance=model_python_finance
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 approach_description=approach_description
 approach_input_anno=approach_input_anno
 approach_output_anno=approach_output_anno
@@ -629,4 +638,5 @@ approach_scala_legal=approach_scala_legal
 approach_scala_finance=approach_scala_finance
 approach_api_link=approach_api_link
 approach_python_api_link=approach_python_api_link
+approach_notebook_link=approach_notebook_link
 %}
