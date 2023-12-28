@@ -15,7 +15,7 @@ The ChunkEntityResolverModel encompasses the functionality to produce a normaliz
 
 For available pretrained models please see the [Models Hub](https://nlp.johnsnowlabs.com/models?task=Entity+Resolution).
 
-Importand Note: This annotator has been deprecated
+`Importand Note`: This annotator has been deprecated.
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -89,7 +89,7 @@ ner_snomed_resolver = medical.ChunkEntityResolverModel\
     .setInputCols(["ner_token","ner_chunk_embeddings"])\
     .setOutputCol("snomed_result")
 
-pipelineFull = Pipeline().setStages([
+pipelineFull = nlp.Pipeline().setStages([
       docAssembler,
       sentenceDetector,
       tokenizer,
@@ -280,7 +280,7 @@ chunkEmb = nlp.ChunkEmbeddings() \
     .setInputCols(["chunk", "embeddings"]) \
     .setOutputCol("chunk_embeddings")
 
-snomedTrainingPipeline = Pipeline().setStages([
+snomedTrainingPipeline = nlp.Pipeline().setStages([
     document,
     chunk,
     token,

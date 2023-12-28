@@ -21,6 +21,8 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps RxNorm codes with corresponding UMLS Codes.
 
+`Important Note`: Mappers extract additional information such as extended descriptions and categories related to Concept codes (such as RxNorm, ICD10, CPT, MESH, NDC, UMLS, etc.). They generally take Concept Codes, which are the outputs of EntityResolvers, as input. When creating a pipeline that contains 'Mapper', it is necessary to use the ChunkMapperModel after an EntityResolverModel.
+
 ## Predicted Entities
 
 

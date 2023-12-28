@@ -15,6 +15,8 @@ Parametres:
 
 - `customLabels` *(dict[str, str])*: Custom relation labels.
 
+- `DoExceptionHandling`: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.
+
 Available models can be found at the [Models Hub](https://nlp.johnsnowlabs.com/models?task=Relation+Extraction).
 
 For more extended examples on document pre-processing see the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop)
@@ -125,6 +127,7 @@ results.select(
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
+import spark.implicits._
 
 val documenter = new DocumentAssembler()
   .setInputCol("text")
@@ -146,7 +149,7 @@ val posTagger = PerceptronModel.pretrained("pos_clinical", "en", "clinical/model
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("pos_tags")
 
-val nerTagger = NerModel.pretrained("ner_ade_clinical", "en", "clinical/models")
+val nerTagger = MedicalNerModel.pretrained("ner_ade_clinical", "en", "clinical/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner_tags")
 
@@ -188,20 +191,6 @@ val text = """A 44-year-old man taking naproxen for chronic low back pain and a 
 val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
-
-result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as cols")
-.selectExpr(
-    "cols['0']['sentence'] as sentence",
-    "cols['0']['entity1_begin'] as entity1_begin",
-    "cols['0']['entity1_end'] as entity1_end",
-    "cols['0']['chunk1'] as chunk1",
-    "cols['0']['entity1'] as entity1",
-    "cols['0']['entity2_begin'] as entity2_begin",
-    "cols['0']['entity2_end'] as entity2_end",
-    "cols['0']['chunk2'] as chunk2",
-    "cols['0']['entity2'] as entity2",
-    "cols['1'] as relation",
-    "cols['0']['confidence'] as confidence").show(false)
 
 +--------+-------------+-----------+---------+-------+-------------+-----------+---------------------------------------------------------+-------+--------+----------+
 |sentence|entity1_begin|entity1_end|   chunk1|entity1|entity2_begin|entity2_end|                                                   chunk2|entity2|relation|confidence|
@@ -295,6 +284,8 @@ result.select(
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
+import spark.implicits._
+
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -312,7 +303,7 @@ val embeddings = RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_
   .setOutputCol("embeddings")
   .setMaxSentenceLength(512)
 
-val ner_model = NerModel.pretrained("legner_contract_doc_parties", "en", "legal/models")
+val ner_model = LegalNerModel.pretrained("legner_contract_doc_parties", "en", "legal/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
 
@@ -341,20 +332,6 @@ text = """This INTELLECTUAL PROPERTY AGREEMENT (this "Agreement"), dated as of D
 val data = Seq(text).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
-
-result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as cols")
-.selectExpr(
-    "cols['0']['sentence'] as sentence",
-    "cols['0']['entity1_begin'] as entity1_begin",
-    "cols['0']['entity1_end'] as entity1_end",
-    "cols['0']['chunk1'] as chunk1",
-    "cols['0']['entity1'] as entity1",
-    "cols['0']['entity2_begin'] as entity2_begin",
-    "cols['0']['entity2_end'] as entity2_end",
-    "cols['0']['chunk2'] as chunk2",
-    "cols['0']['entity2'] as entity2",
-    "cols['1'] as relation",
-    "cols['0']['confidence'] as confidence").show(false)
 
 +--------+-------------+-----------+-----------------------------------+-------+-------------+-----------+-----------------------+-------+--------------------+----------+
 |sentence|entity1_begin|entity1_end|                             chunk1|entity1|entity2_begin|entity2_end|                 chunk2|entity2|            relation|confidence|
@@ -479,6 +456,8 @@ result.select(
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
+import spark.implicits._
+
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -503,7 +482,7 @@ val ner_converter_date = new NerConverterInternal()
   .setInputCols(Array("sentence", "token", "ner_dates"))
   .setOutputCol("ner_chunk_date")
 
-val ner_model_org = NerModel.pretrained("finner_orgs_prods_alias", "en", "finance/models")
+val ner_model_org = FinanceNerModel.pretrained("finner_orgs_prods_alias", "en", "finance/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner_orgs")
 
@@ -556,20 +535,6 @@ val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as cols")
-.selectExpr(
-    "cols['0']['sentence'] as sentence",
-    "cols['0']['entity1_begin'] as entity1_begin",
-    "cols['0']['entity1_end'] as entity1_end",
-    "cols['0']['chunk1'] as chunk1",
-    "cols['0']['entity1'] as entity1",
-    "cols['0']['entity2_begin'] as entity2_begin",
-    "cols['0']['entity2_end'] as entity2_end",
-    "cols['0']['chunk2'] as chunk2",
-    "cols['0']['entity2'] as entity2",
-    "cols['1'] as relation",
-    "cols['0']['confidence'] as confidence").show(false)
-
 +--------+-------------+-----------+-----------------------+-------+-------------+-----------+---------------+-------+--------------------+----------+
 |sentence|entity1_begin|entity1_end|                 chunk1|entity1|entity2_begin|entity2_end|         chunk2|entity2|            relation|confidence|
 +--------+-------------+-----------+-----------------------+-------+-------------+-----------+---------------+-------+--------------------+----------+
@@ -591,7 +556,7 @@ result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as 
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[RelationExtractionDLModel](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/RelationExtractionDLModel.ipynb)
+[RelationExtractionDLModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/RelationExtractionDLModel.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

@@ -15,7 +15,7 @@ Creates a generic single-label classifier which uses pre-generated Tensorflow gr
 The model operates on FEATURE_VECTOR annotations which can be produced using FeatureAssembler.
 Requires the FeaturesAssembler to create the input.
 
-Parametres:
+Parameter:
 
 - `multiClass` *(Boolean)*: Whether to return all clases or only the one with highest score (Default: False)
 
@@ -99,7 +99,7 @@ val pipeline = new Pipeline().setStages(Array(
 val text = "Patient works as a building inspector and remodeler. Married with 2 children. He is a current smoker,1PPD for 25years. He drinks to beers/night,but has not had any alcohol in past 4 days. No IVDU." 
 
 val df = Seq(text) .toDF("text") 
-val result = pipeline.fit(df) .transform(df) result.select("text","classes.result") .show(truncate=false)   
+val result = pipeline.fit(df).transform(df)   
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------+
 |text                                                                                                                                                                                                  |result|

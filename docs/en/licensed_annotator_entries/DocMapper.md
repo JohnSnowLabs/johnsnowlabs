@@ -24,6 +24,8 @@ Parametres:
 
 - `setMultivaluesRelations` *(Boolean)*:  Whether to decide to return all values in a relation together or separately (Default: False)
 
+- `setDoExceptionHandling`: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.
+
 
 {%- endcapture -%}
 
@@ -83,12 +85,12 @@ res.select(F.explode(F.arrays_zip(res.mappings.result,
 
 import spark.implicits._
 
-#ChunkMapper Pipeline
+// ChunkMapper Pipeline
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-#drug_action_treatment_mapper 
+// drug_action_treatment_mapper 
 val docMapper= DocMapperModel().pretrained("drug_action_treatment_mapper", "en", "clinical/models")
     .setInputCols("document")
     .setOutputCol("mappings")
@@ -143,6 +145,8 @@ Parameters:
 - `setAllowMultiTokenChunk` *(Boolean)*: Whether to skip relations with multitokens (Default: True)
 
 - `setMultivaluesRelations` *(Boolean)*:  Whether to decide to return all values in a relation together or separately (Default: False)
+
+- `setDoExceptionHandling`: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}

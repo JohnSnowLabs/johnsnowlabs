@@ -11,7 +11,7 @@ Extracts phrases that fits into a known pattern using the NER tags. Useful for e
 when there is no pretrained NER model to address certain issues. A Regex needs to be provided to extract the tokens
 between entities.
 
-Parametres:
+Parameter:
 
 - `setRegexParsers`: Array of grammar based chunk parsers.   
 {%- endcapture -%}
@@ -256,6 +256,7 @@ result.select("ner_chunk.result").show(truncate=False)
 
 {%- capture model_scala_medical -%}
 import spark.implicits._
+
 // Defining pipeline stages for NER
 val data= Seq("She has cystic cyst on her kidney.").toDF("text")
 
@@ -288,7 +289,7 @@ val chunker = new NerChunker()
   .setOutputCol("ner_chunk")
   .setRegexParsers(Array("<ImagingFindings>.<BodyPart>"))
 
-val pipeline=new Pipeline().setStages(Array(
+val pipeline = new Pipeline().setStages(Array(
   documentAssembler,
   sentenceDetector,
   tokenizer,
@@ -327,7 +328,7 @@ val result = pipeline.fit(data).transform(data)
 
 {%- capture model_scala_legal -%}
 import spark.implicits._
-# Defining pipeline stages for NER
+// Defining pipeline stages for NER
 
 val documentAssembler= new DocumentAssembler() 
   .setInputCol("text") 
@@ -349,13 +350,13 @@ val ner_model = LegalNerModel.pretrained("legner_org_per_role_date", "en", "lega
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
 
-# Define the NerChunker to combine to chunks
+// Define the NerChunker to combine to chunks
 val chunker = new NerChunker() 
   .setInputCols(Array("sentence","ner")) 
   .setOutputCol("ner_chunk") 
   .setRegexParsers(Array("<PERSON>.*<ROLE>"))
 
-val pipeline=new Pipeline().setStages(Array(
+val pipeline = new Pipeline().setStages(Array(
   documentAssembler,
   sentenceDetector,
   tokenizer,
@@ -401,8 +402,8 @@ val result = pipeline.fit(data).transform(data)
 
 {%- capture model_scala_finance -%}
 import spark.implicits._
-# Defining pipeline stages for NER
 
+// Defining pipeline stages for NER
 val documentAssembler= new DocumentAssembler() 
   .setInputCol("text") 
   .setOutputCol("document")
@@ -423,13 +424,13 @@ val ner_model = FinanceNerModel.pretrained("finner_responsibility_reports_md", "
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
 
-# Define the NerChunker to combine to chunks
+// Define the NerChunker to combine to chunks
 val chunker = new NerChunker() 
   .setInputCols(Array("sentence","ner")) 
   .setOutputCol("ner_chunk") 
   .setRegexParsers(Array("<ENVIRONMENTAL_KPI>.*<AMOUNT>"))
 
-val pipeline=new Pipeline().setStages(Array(
+val pipeline = new Pipeline().setStages(Array(
   documentAssembler,
   sentenceDetector,
   tokenizer,
@@ -488,7 +489,7 @@ val result = pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NerChunker.ipynb)
+[NerChunkerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NerChunker.ipynb)
 {%- endcapture -%}
 
 

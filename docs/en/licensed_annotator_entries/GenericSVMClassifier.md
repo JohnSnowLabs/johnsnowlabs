@@ -180,8 +180,12 @@ val result = pipeline.fit(df).transform(df)
 [GenericSVMClassifier](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/generic_svm_classifier/index.html#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel)
 {%- endcapture -%}
 
-{%- capture model_scala_api_link -%}
+{%- capture model_api_link -%}
 [GenericSVMClassifier](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/GenericSVMClassifierModel.html)
+{%- endcapture -%}
+
+{%- capture model_notebook_link -%}
+[GenericSVMClassifierNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericSVMClassifierModel.ipynb)
 {%- endcapture -%}
 
 
@@ -341,8 +345,12 @@ val model = pipeline.fit(trainingData)
 [GenericSVMClassifier](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/generic_svm_classifier/index.html#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach)
 {%- endcapture -%}
 
-{%- capture approach_scala_api_link -%}
+{%- capture approach_api_link -%}
 [GenericSVMClassifier](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/GenericSVMClassifierApproach.html)
+{%- endcapture -%}
+
+{%- capture approach_notebook_link -%}
+[GenericSVMClassifierNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericSVMClassifierApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
@@ -356,6 +364,7 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 approach_description=approach_description
 approach_input_anno=approach_input_anno
 approach_output_anno=approach_output_anno
@@ -363,4 +372,5 @@ approach_python_medical=approach_python_medical
 approach_scala_medical=approach_scala_medical
 approach_api_link=approach_api_link
 approach_python_api_link=approach_python_api_link
+approach_notebook_link=approach_notebook_link
 %}

@@ -73,7 +73,7 @@ chunkerFilter = medical.ChunkFilterer() \
   .setCriteria("isin") \
   .setWhiteList(["gastroenteritis"])
 
-pipeline = Pipeline(stages=[
+pipeline = nlp.Pipeline(stages=[
   docAssembler,
   sentenceDetector,
   tokenizer,

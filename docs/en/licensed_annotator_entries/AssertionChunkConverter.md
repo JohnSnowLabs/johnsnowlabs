@@ -122,7 +122,11 @@ val converter = new AssertionChunkConverter()
   .setOutputTokenBeginCol("token_begin")
   .setOutputTokenEndCol("token_end")
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentenceDetector, tokenizer, converter))
+val pipeline = new Pipeline().setStages(Array(
+                                              document_assembler, 
+                                              sentenceDetector, 
+                                              tokenizer, 
+                                              converter))
 
 val data = Seq(Array(
     ("An angiography showed bleeding in two vessels off of the Minnie supplying the sigmoid that were succesfully embolized.", "Minnie",57,64,),
@@ -224,7 +228,11 @@ val converter = new AssertionChunkConverter()
   .setOutputTokenBeginCol("token_begin")
   .setOutputTokenEndCol("token_end")
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentenceDetector, tokenizer, converter))
+val pipeline = new Pipeline().setStages(Array(
+                                              document_assembler, 
+                                              sentenceDetector, 
+                                              tokenizer, 
+                                              converter))
 
 val data = Seq(Array(
     ("Tom Martin worked as Cadence's CTO until 2010","Cadence's CTO",21,33,),
@@ -326,7 +334,11 @@ val converter = new AssertionChunkConverter()
   .setOutputTokenBeginCol("token_begin")
   .setOutputTokenEndCol("token_end")
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentenceDetector, tokenizer, converter))
+val pipeline = new Pipeline().setStages(Array(
+                                              document_assembler, 
+                                              sentenceDetector, 
+                                              tokenizer, 
+                                              converter))
 
 val data = Seq(Array(
     ("Tom Martin worked as Cadence's CTO until 2010","Cadence's CTO", 21,33,),

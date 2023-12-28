@@ -35,99 +35,69 @@ Deidentifies Input Annotations of types DOCUMENT, TOKEN and CHUNK, by either mas
 
 Parameters:
 
-- `ageRanges`: (IntArrayParam)
-List of integers specifying limits of the age groups to preserve during obfuscation
+- `ageRanges`: (IntArrayParam) List of integers specifying limits of the age groups to preserve during obfuscation
 
-- `blackList`: (StringArrayParam)
-List of entities that will be ignored to in the regex file.
+- `blackList`: (StringArrayParam) List of entities that will be ignored to in the regex file.
 
-- `consistentObfuscation`: (BooleanParam)
-Whether to replace very similar entities in a document with the same randomized term (default: true) The similarity is based on the Levenshtein Distance between the words.
+- `consistentObfuscation`: (BooleanParam) Whether to replace very similar entities in a document with the same randomized term (default: true) The similarity is based on the Levenshtein Distance between the words.
 
-- `dateFormats`: (StringArrayParam)
-Format of dates to displace
+- `dateFormats`: (StringArrayParam) Format of dates to displace
 
-- `dateTag`: (Param[String])
-Tag representing what are the NER entity (default: DATE)
+- `dateTag`: (Param[String]) Tag representing what are the NER entity (default: DATE)
 
-- `dateToYear`: (BooleanParam)
-true if dates must be converted to years, false otherwise
+- `dateToYear`: (BooleanParam) true if dates must be converted to years, false otherwise
 
-- `days`: (IntParam)
-Number of days to obfuscate the dates by displacement.
+- `days`: (IntParam) Number of days to obfuscate the dates by displacement.
 
-- `fixedMaskLength`: (IntParam)
-Select the fixed mask length: this is the length of the masking sequence that will be used when the 'fixed_length_chars' masking policy is selected.
+- `fixedMaskLength`: (IntParam) Select the fixed mask length: this is the length of the masking sequence that will be used when the 'fixed_length_chars' masking policy is selected.
 
-- `ignoreRegex`: (BooleanParam)
-Select if you want to use regex file loaded in the model.
+- `ignoreRegex`: (BooleanParam) Select if you want to use regex file loaded in the model.
 
-- `isRandomDateDisplacement`: (BooleanParam)
-Use a random displacement days in dates entities,that random number is based on the DeIdentificationParams.seed If true use random displacement days in dates entities,if false use the DeIdentificationParams.days The default value is false.
+- `isRandomDateDisplacement`: (BooleanParam) Use a random displacement days in dates entities,that random number is based on the DeIdentificationParams.seed If true use random displacement days in dates entities,if false use the DeIdentificationParams.days The default value is false.
 
-- `language`: (Param[String])
-The language used to select the regex file and some faker entities.'en'(english),'de'(German), 'es'(Spanish), 'fr'(French) or 'ro'(Romanian)
+- `language`: (Param[String]) The language used to select the regex file and some faker entities.'en'(english),'de'(German), 'es'(Spanish), 'fr'(French) or 'ro'(Romanian)
 
-- `mappingsColumn`: (Param[String])
-This is the mapping column that will return the Annotations chunks with the fake entities
+- `mappingsColumn`: (Param[String]) This is the mapping column that will return the Annotations chunks with the fake entities
 
 - `maskingPolicy`: (Param[String])
 Select the masking policy:
 same_length_chars: Replace the obfuscated entity with a masking sequence composed of asterisks and surrounding squared brackets, being the total length of the masking sequence of the same length as the original sequence. Example, Smith -> [***]. If the entity is less than 3 chars (like Jo, or 5), asterisks without brackets will be returned. entity_labels: Replace the values with the corresponding entity labels. fixed_length_chars: Replace the obfuscated entity with a masking sequence composed of a fixed number of asterisks.
 
-- `minYear`: (IntParam)
-Minimum year to use when converting date to year
+- `minYear`: (IntParam) Minimum year to use when converting date to year
 
-- `mode`: (Param[String])
-Mode for Anonymizer ['mask'|'obfuscate'] Given the following text
+- `mode`: (Param[String]) Mode for Anonymizer ['mask'|'obfuscate'] Given the following text
 
-- `obfuscateDate`: (BooleanParam)
-When mode=="obfuscate" whether to obfuscate dates or not.
+- `obfuscateDate`: (BooleanParam) When mode=="obfuscate" whether to obfuscate dates or not.
 
-- `obfuscateRefFile`: (Param[String])
-File with the terms to be used for Obfuscation
+- `obfuscateRefFile`: (Param[String]) File with the terms to be used for Obfuscation
 
-- `obfuscateRefSource`: (Param[String])
-The source of obfuscation of to obfuscate the entities.For dates entities doesnt apply tha method.
+- `obfuscateRefSource`: (Param[String]) The source of obfuscation of to obfuscate the entities.For dates entities doesnt apply tha method.
 
-- `outputAsDocument`: (BooleanParam)
-Whether to return all sentences joined into a single document
+- `outputAsDocument`: (BooleanParam) Whether to return all sentences joined into a single document
 
-- `refFileFormat`: (Param[String])
-Format of the reference file for Obfuscation the default value for that is "csv"
+- `refFileFormat`: (Param[String]) Format of the reference file for Obfuscation the default value for that is "csv"
 
-- `refSep`: (Param[String])
-Separator character for the csv reference file for Obfuscation de default value is "#"
+- `refSep`: (Param[String]) Separator character for the csv reference file for Obfuscation de default value is "#"
 
-- `regexOverride`: (BooleanParam)
-If is true prioritize the regex entities, if is false prioritize the ner.
+- `regexOverride`: (BooleanParam) If is true prioritize the regex entities, if is false prioritize the ner.
 
-- `regexPatternsDictionary`: (ExternalResourceParam)
-dictionary with regular expression patterns that match some protected entity if the dictionary in not setting up we will use the default regex file.
+- `regexPatternsDictionary`: (ExternalResourceParam) dictionary with regular expression patterns that match some protected entity if the dictionary in not setting up we will use the default regex file.
 
-- `region`: (Param[String])
-Usa or eu
+- `region`: (Param[String]) Usa or eu
 
-- `returnEntityMappings`: (BooleanParam)
-With this property you select if you want to return mapping column
+- `returnEntityMappings`: (BooleanParam) With this property you select if you want to return mapping column
 
-- `sameEntityThreshold`: (DoubleParam)
-Similarity threshold [0.0-1.0] to consider two appearances of an entity as the same (default: 0.9) For date entities this method doesn't apply.
+- `sameEntityThreshold`: (DoubleParam) Similarity threshold [0.0-1.0] to consider two appearances of an entity as the same (default: 0.9) For date entities this method doesn't apply.
 
-- `sameLengthFormattedEntities`: (StringArrayParam)
-List of formatted entities to generate the same length outputs as original ones during obfuscation.
+- `sameLengthFormattedEntities`: (StringArrayParam) List of formatted entities to generate the same length outputs as original ones during obfuscation.
 
-- `seed`: (IntParam)
-It is the seed to select the entities on obfuscate mode.With the seed you can reply a execution several times with the same ouptut.
+- `seed`: (IntParam) It is the seed to select the entities on obfuscate mode.With the seed you can reply a execution several times with the same ouptut.
 
-- `selectiveObfuscationModesPath`: (Param[String])
-Dictionary path where is the json that contains the selective obfuscation modes
+- `selectiveObfuscationModesPath`: (Param[String]) Dictionary path where is the json that contains the selective obfuscation modes
 
-- `unnormalizedDateMode`: (Param[String])
-The mode to use if the date is not formatted.
+- `unnormalizedDateMode`: (Param[String]) The mode to use if the date is not formatted.
 
-- `zipCodeTag`: (Param[String])
-Tag representing zip codes in the obfuscate reference file (default: ZIP).
+- `zipCodeTag`: (Param[String]) Tag representing zip codes in the obfuscate reference file (default: ZIP).
 
 
 To create a configured DeIdentificationModel, please see the example of DeIdentification.
@@ -147,6 +117,10 @@ DOCUMENT
 
 {%- capture model_python_api_link -%}
 [DeIdentificationModel](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/deid/deIdentification/index.html#sparknlp_jsl.annotator.deid.deIdentification.DeIdentificationModel)
+{%- endcapture -%}
+
+{%- capture model_notebook_link -%}
+[DeIdentificationModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/DeIdentificationModel.ipynb)
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
@@ -459,7 +433,7 @@ val bertEmbeddings = BertEmbeddings.pretrained("bert_embeddings_sec_bert_base", 
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("bert_embeddings")
 
-val finNer = NerModel.pretrained("finner_deid", "en", "finance/models")
+val finNer = FinanceNerModel.pretrained("finner_deid", "en", "finance/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
 
@@ -468,7 +442,7 @@ val nerConverter = new NerConverterInternal()
   .setOutputCol("ner_chunk")
   .setReplaceLabels(Map("ORG" -> "COMPANY"))
 
-val nerFinner = NerModel.pretrained("finner_org_per_role_date", "en", "finance/models")
+val nerFinner = FinanceNerModel.pretrained("finner_org_per_role_date", "en", "finance/models")
   .setInputCols(Array("sentence", "token", "bert_embeddings"))
   .setOutputCol("ner_finner")
 
@@ -533,7 +507,7 @@ val embeddings = RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
 
-val legalNer = NerModel.pretrained("legner_contract_doc_parties", "en", "legal/models")
+val legalNer = LegalNerModel.pretrained("legner_contract_doc_parties", "en", "legal/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
   .setLabelCasing("upper")
@@ -543,7 +517,7 @@ val nerConverter = new NerConverterInternal()
   .setOutputCol("ner_chunk")
   .setReplaceLabels(Map("ALIAS" -> "PARTY"))
 
-val nerSigners = NerModel.pretrained("legner_signers", "en", "legal/models")
+val nerSigners = LegalNerModel.pretrained("legner_signers", "en", "legal/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner_signers")
   .setLabelCasing("upper")
@@ -878,7 +852,7 @@ val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en"
     .setOutputCol("embeddings")
 
 // NER model trained on n2c2 (de-identification and Heart Disease Risk Factors Challenge) datasets)
-val clinical_ner = NerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models")
+val clinical_ner = MedicalNerModel.pretrained("ner_deid_generic_augmented", "en", "clinical/models")
     .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
@@ -974,7 +948,7 @@ val documentAssembler = new DocumentAssembler()
      .setOutputCol("embeddings")
 
 // Ner entities
-val ner_model = NerModel.pretrained("legner_orgs_prods_alias", "en", "legal/models")
+val ner_model = LegalNerModel.pretrained("legner_orgs_prods_alias", "en", "legal/models")
     .setInputCols(Array("sentence", "token", "embeddings"))
     .setOutputCol("ner")
 
@@ -1034,7 +1008,7 @@ val documentAssembler = new DocumentAssembler()
      .setOutputCol("embeddings")
 
 // Ner entities
-val ner_model = NerModel.pretrained("finner_orgs_prods_alias","en","finance/models")
+val ner_model = FinanceNerModel.pretrained("finner_orgs_prods_alias","en","finance/models")
      .setInputCols(Array("sentence", "token", "embeddings"))
      .setOutputCol("ner")
 
@@ -1094,6 +1068,7 @@ model_python_legal=model_python_legal
 model_scala_medical=model_scala_medical
 model_scala_finance=model_scala_finance
 model_scala_legal=model_scala_legal
+model_notebook_link=model_notebook_link
 approach_description=approach_description
 approach_input_anno=approach_input_anno
 approach_output_anno=approach_output_anno

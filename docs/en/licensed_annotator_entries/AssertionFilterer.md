@@ -295,7 +295,7 @@ val clinical_assertion = AssertionDLModel.pretrained("assertion_jsl", "en", "cli
     .setInputCols(Array("sentence", "ner_chunk", "embeddings")) 
     .setOutputCol("assertion")
 
-val assertion_filterer = AssertionFilterer()
+val assertion_filterer = new AssertionFilterer()
     .setInputCols("sentence","ner_chunk","assertion")
     .setOutputCol("assertion_filtered")
     .setCaseSensitive(false)
@@ -313,7 +313,6 @@ val nlpPipeline = new Pipeline().setStages(Array(
       assertion_filterer
 ))
 
-import spark.implicits._
 
 val text ="""Patient has a headache for the last 2 weeks, needs to get a head CT, and appears anxious when she walks fast. Alopecia noted. She denies pain."""
 
@@ -328,7 +327,6 @@ val result = nlpPipeline.fit(data).transform(data)
 |[a headache, a head CT, anxious, Alopecia, pain]|[Present, Hypothetical, Possible, Present, Absent]|
 +------------------------------------------------+--------------------------------------------------+
 
-result.select("filtered.result").show(3, truncate=false)
 +----------------------+
 |result                |
 +----------------------+
@@ -346,7 +344,7 @@ val document_assembler = new DocumentAssembler()
     .setOutputCol("document")
 
 // Sentence Detector annotator, processes various sentences per line
-val sentence_detector = new SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
+val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl","xx")
     .setInputCols(Array("document"))
     .setOutputCol("sentence")
 
@@ -378,7 +376,7 @@ val assertion = AssertionDLModel.pretrained("assertion_jsl", "en", "clinical/mod
     .setInputCols(Array("sentence", "ner_chunk", "embeddings_ass")) 
     .setOutputCol("assertion")
 
-val assertion_filterer = AssertionFilterer()
+val assertion_filterer = new AssertionFilterer()
     .setInputCols("sentence","ner_chunk","assertion")
     .setOutputCol("assertion_filtered")
     .setCaseSensitive(false)
@@ -397,7 +395,6 @@ val nlpPipeline = new Pipeline().setStages(Array(
       assertion_filterer
 ))
 
-import spark.implicits._
 
 val text ="""This is an Intellectual Property Agreement between Amazon Inc. and Atlantic Inc."""
 
@@ -411,7 +408,6 @@ val result = nlpPipeline.fit(data).transform(data)
 |[Intellectual Property Agreement, Amazon Inc, Atlantic Inc]|[PRESENT, PRESENT, PRESENT]|
 +-----------------------------------------------------------+---------------------------+
 
-result.select("filtered.result").show(3, truncate=false)
 +-----------------------------------------------------------+
 |result                                                     |
 +-----------------------------------------------------------+
@@ -455,7 +451,7 @@ val assertion = AssertionDLModel.pretrained("finassertion_competitors", "en", "f
     .setInputCols(Array("sentence", "ner_chunk", "embeddings")) 
     .setOutputCol("assertion")
 
-val assertion_filterer = AssertionFilterer()
+val assertion_filterer = new AssertionFilterer()
     .setInputCols("sentence","ner_chunk","assertion")
     .setOutputCol("assertion_filtered")
     .setCaseSensitive(false)
@@ -473,8 +469,6 @@ val nlpPipeline = new Pipeline().setStages(Array(
         assertion_filterer
 ))
 
-import spark.implicits._
-
 val text ="""Our competitors include the following by general category: legacy antivirus product providers, such as McAfee LLC and Broadcom Inc."""
 
 val data = Seq(text).toDF("text")
@@ -487,7 +481,6 @@ val result = nlpPipeline.fit(data).transform(data)
 |[McAfee LLC, Broadcom Inc]|[COMPETITOR, COMPETITOR]|
 +--------------------------+------------------------+
 
-result.select("filtered.result").show(3, truncate=false)
 +--------------------------+
 |result                    |
 +--------------------------+

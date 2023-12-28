@@ -18,7 +18,7 @@ annotator inputs, which can be obtained by e.g a
 [NerConverter](/docs/en/annotators#nerconverter)
 and [WordEmbeddingsModel](/docs/en/annotators#wordembeddings).
 The result is an assertion status annotation for each recognized entity.
-Possible values include `“present”, “absent”, “hypothetical”, “conditional”, “associated_with_other_person”` etc.
+Possible values include `“present”,“absent”,“hypothetical”,“conditional”,“associated_with_other_person”` etc.
 
 Parameters:
 - `inputCols`: Gets current column names of input annotations.
@@ -27,7 +27,9 @@ Parameters:
 
 - `ScopeWindow`: Sets the scope of the window of the assertion expression.
 
-- `EntityAssertionCaseSensitive`: Sets the case sensitivity of entities and assertion labels
+- `EntityAssertionCaseSensitive`: Sets the case sensitivity of entities and assertion labels.
+
+- `DoExceptionHandling`: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.
 
 For pretrained models please see the
 [Models Hub](https://nlp.johnsnowlabs.com/models?task=Assertion+Status) for available models.

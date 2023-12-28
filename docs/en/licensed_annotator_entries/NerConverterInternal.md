@@ -31,7 +31,10 @@ Parameters:
 
 - `setIgnoreStopWords`: If defined, list of stop words to ignore.
 
-- `setGreedyMode`: (Boolean) Whether to ignore B tags for contiguous tokens of same entity same .
+- `setGreedyMode`: (Boolean) Whether to ignore B tags for contiguous tokens of same entity same.
+
+- `setDoExceptionHandling`: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.
+
 
 {%- endcapture -%}
 

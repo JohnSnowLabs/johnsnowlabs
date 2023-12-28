@@ -139,7 +139,7 @@ val sentence_embeddings = new SentenceEmbeddings()
   .setInputCols(Array("sentence","embeddings")) 
   .setOutputCol("sentence_embeddings") 
 
-val ner_model = NerDLModel.pretrained()
+val ner_model = MedicalNerModel.pretrained()
   .setInputCols(Array("sentence","token","embeddings")) 
   .setOutputCol("ner") 
 

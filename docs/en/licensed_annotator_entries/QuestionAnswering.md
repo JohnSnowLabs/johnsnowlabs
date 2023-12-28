@@ -88,6 +88,8 @@ result.selectExpr("document_question.result as Question", "answer.result as Long
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
+import spark.implicits._
+
 val documentAssembler = new DocumentAssembler()
   .setInputCols(Array("question", "context"))
   .setOutputCols(Array("document_question", "document_context"))
@@ -99,7 +101,9 @@ val medQA = MedicalQuestionAnswering.pretrained("medical_qa_biogpt", "en", "clin
   .setTopK(1)
   .setQuestionType("long") // "short"
 
-val pipeline = new Pipeline().setStages(Array(documentAssembler, medQA))
+val pipeline = new Pipeline().setStages(Array(
+                                              documentAssembler, 
+                                              medQA))
 
 val paperAbstract = "In patients with Los Angeles (LA) grade C or D oesophagitis, a positive relationship has been established between the duration of intragastric acid suppression and healing.AIM: To determine whether there is an apparent optimal time of intragastric acid suppression for maximal healing of reflux oesophagitis. Post hoc analysis of data from a proof-of-concept, double-blind, randomized study of 134 adult patients treated with esomeprazole (10 or 40 mg od for 4 weeks) for LA grade C or D oesophagitis. A curve was fitted to pooled 24-h intragastric pH (day 5) and endoscopically assessed healing (4 weeks) data using piecewise quadratic logistic regression. Maximal reflux oesophagitis healing rates were achieved when intragastric pH>4 was achieved for approximately 50-70% (12-17 h) of the 24-h period. Acid suppression above this threshold did not yield further increases in healing rates."
 
@@ -186,9 +190,8 @@ val questions = Seq(
   """What is the Territory in which the Distributor has non-exclusive rights to sell Principal's products according to the Agreement?"""
 )
 
-val data = context.flatMap(c => questions.map(q => (c, q))).toDF("context", "question")
+// val data = context.flatMap(c => questions.map(q => (c, q))).toDF("context", "question")
 
-data.show()
 
 +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 |                                                                         context|                                                                        question|
@@ -197,6 +200,8 @@ data.show()
 |EXHIBIT 99.2 Page 1 of 3 DISTRIBUTOR AGREEMENT Agreement made this 19th day o...|What is the date of the distributor agreement between Co-Diagnostics, Inc. an...|
 |EXHIBIT 99.2 Page 1 of 3 DISTRIBUTOR AGREEMENT Agreement made this 19th day o...|What is the Territory in which the Distributor has non-exclusive rights to se...|
 +--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+
+import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
   .setInputCols(Array("question", "context"))
@@ -276,11 +281,13 @@ result.select('question', 'answer.result').show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
+import spark.implicits._
+
 val documentAssembler = new DocumentAssembler()
   .setInputCols(Array("question", "context"))
   .setOutputCols(Array("document_question", "document_context"))
 
-val finQa = new QuestionAnswering()
+val finQa = new FinanceQuestionAnswering()
   .pretrained("finqa_flant5_finetuned", "en", "finance/models")
   .setInputCols(Array("document_question", "document_context"))
   .setCustomPrompt("question: {QUESTION} context: {CONTEXT}")

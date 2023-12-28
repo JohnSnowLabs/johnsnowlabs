@@ -50,7 +50,10 @@ chunkAssembler = medical.Doc2ChunkInternal()\
     .setOutputCol("chunk")\
     .setIsArray(True)
 
-pipeline = nlp.Pipeline().setStages([documentAssembler, tokenizer, chunkAssembler])
+pipeline = nlp.Pipeline().setStages([
+                                    documentAssembler,
+                                    tokenizer, 
+                                    chunkAssembler])
 
 data = spark.createDataFrame(
     [
@@ -284,7 +287,7 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_python_legal=model_python_legal
 model_scala_legal=model_scala_legal
-model_python_medical=model_python_finance
+model_python_finance=model_python_finance
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
