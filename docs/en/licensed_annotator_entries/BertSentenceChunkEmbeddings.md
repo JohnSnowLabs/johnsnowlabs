@@ -36,7 +36,7 @@ SENTENCE_EMBEDDINGS
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-
+from johnsnowlabs import nlp, medical
 # Define the pipeline
 
 document_assembler = nlp.DocumentAssembler()\
@@ -150,10 +150,6 @@ Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface
 val data = Seq(sampleText).toDF("sampleText")
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(sentence_embeddings) AS s")
-      .selectExpr("s.result", "slice(s.embeddings, 1, 5) AS averageEmbedding")
-      .show(truncate=false)
-
 +------+--------------------------------------------------------------+
 |result|averageEmbedding                                              |
 +------+--------------------------------------------------------------+
@@ -175,6 +171,9 @@ result.selectExpr("explode(sentence_embeddings) AS s")
 [BertSentenceChunkEmbeddings](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/embeddings/bert_sentence_embeddings/index.html#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[BertSentenceChunkEmbeddingsNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/BertSentenceChunkEmbeddings.ipynb)
+{%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
@@ -186,4 +185,5 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}
