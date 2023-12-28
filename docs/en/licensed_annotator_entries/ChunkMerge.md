@@ -43,7 +43,8 @@ CHUNK
 
 
 {%- capture approach_python_medical -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, medical
+
 # Annotator that transforms a text column from dataframe into an Annotation ready for NLP
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -63,7 +64,6 @@ tokenizer = nlp.Tokenizer()\
 word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
     .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
-
 
 # 1- ner_clinical model
 clinical_ner = medical.NerModel.pretrained("ner_clinical", "en", "clinical/models") \
@@ -142,7 +142,7 @@ model.selectExpr("explode(merged_ner_chunk) as a") \
 {%- endcapture -%}
 
 {%- capture approach_python_finance -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, finance
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -188,7 +188,7 @@ chunk_merge =  finance.ChunkMergeApproach()\
     .setInputCols("ner_finner_chunk", "ner_chunk")\
     .setOutputCol("deid_merged_chunk")
 
-nlpPipeline = Pipeline(stages=[
+nlpPipeline = nlp.Pipeline(stages=[
       documentAssembler, 
       sentenceDetector,
       tokenizer,
@@ -219,7 +219,7 @@ result.select(F.explode(F.arrays_zip(result.deid_merged_chunk.result,
 {%- endcapture -%}
 
 {%- capture approach_python_legal -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, legal
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -260,7 +260,7 @@ chunk_merge = legal.ChunkMergeApproach()\
     .setInputCols("ner_signer_chunk", "ner_chunk")\
     .setOutputCol("deid_merged_chunk")
 
-nlpPipeline = Pipeline(stages=[
+nlpPipeline = nlp.Pipeline(stages=[
       documentAssembler, 
       sentenceDetector,
       tokenizer,
@@ -306,12 +306,12 @@ val documentAssembler = new DocumentAssembler()
  
 // Sentence Detector annotator,processes various sentences per line 
 val sentenceDetector = new SentenceDetector()
- .setInputCols(Array("document")) 
+ .setInputCols("document")
  .setOutputCol("sentence") 
  
 // Tokenizer splits words in a relevant format for NLP 
 val tokenizer = new Tokenizer()
- .setInputCols(Array("sentence")) 
+ .setInputCols("sentence") 
  .setOutputCol("token") 
  
 // Clinical word embeddings trained on PubMED dataset 
@@ -354,7 +354,7 @@ val female_entity_extractor = new TextMatcher()
  
 // Chunk Merge annotator is used to merge columns 
 val chunk_merger = new ChunkMergeApproach()
- .setInputCols("posology_ner_chunk","clinical_ner_chunk","female_entities") 
+ .setInputCols(Array("posology_ner_chunk","clinical_ner_chunk","female_entities"))
  .setOutputCol("merged_ner_chunk") 
 
 val nlpPipeline = new Pipeline().setStages(Array( 
@@ -373,11 +373,7 @@ val text ="""The lady was treated with a five-day course of amoxicillin for a re
 She was on metformin , glipizide , and dapagliflozin for T2DM and atorvastatin and gemfibrozil for HTG ."""
 val data = Seq(text).toDF("text")
 
-val model = nlpPipeline.fit(data).transform(data) 
-
-model.selectExpr("explode(merged_ner_chunk) as a") \
-     .selectExpr("a.begin","a.end","a.result as chunk","a.metadata.entity as entity") \
-     .show(10, False)
+val model = nlpPipeline.fit(data).transform(data)
 
 +-----+---+-----------------------------+-------------+
 |begin|end|chunk                        |entity       |
@@ -425,7 +421,7 @@ val fin_ner = FinanceNerModel.pretrained('finner_deid', "en", "finance/models")
 
 val ner_converter =  new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
-    .setOutputCol("ner_chunk")\
+    .setOutputCol("ner_chunk")
     .setReplaceLabels({"ORG": "PARTY"}) # Replace "ORG" entity as "PARTY"
 
 val ner_finner = FinanceNerModel.pretrained("finner_org_per_role_date", "en", "finance/models")\
@@ -457,11 +453,8 @@ val nlpPipeline = new Pipeline().setStages(Array(
 val data = Seq(("Jeffrey Preston Bezos is an American entrepreneur, founder and CEO of Amazon")).toDF("text")
 
 # Show results
-result = nlpPipeline.fit(data).transform(data).cache()
-result.select(F.explode(F.arrays_zip(result.deid_merged_chunk.result, 
-                                     result.deid_merged_chunk.metadata)).alias("cols")) \
-      .select(F.expr("cols['0']").alias("chunk"),
-              F.expr("cols['1']['entity']").alias("ner_label")).show(truncate=False)
+result = nlpPipeline.fit(data).transform(data)
+
 +---------------------+---------+
 |chunk                |ner_label|
 +---------------------+---------+
@@ -529,11 +522,8 @@ val data = Seq(("ENTIRE AGREEMENT.  This Agreement contains the entire understan
 2THEMART.COM, INC.: I-ESCROW, INC.: By:Dominic J. Magliarditi By:Sanjay Bajaj Name: Dominic J. Magliarditi Name: Sanjay Bajaj Title: President Title: VP Business Development Date: 6/21/99 Date: 6/11/99 ")).toDF("text")
 
 # Show results
-result = nlpPipeline.fit(data).transform(data).cache()
-result.select(F.explode(F.arrays_zip(result.deid_merged_chunk.result, 
-                                     result.deid_merged_chunk.metadata)).alias("cols")) \
-      .select(F.expr("cols['0']").alias("chunk"),
-              F.expr("cols['1']['entity']").alias("ner_label")).show(truncate=False)
+result = nlpPipeline.fit(data).transform(data)
+
 +-----------------------+--------------+
 |chunk                  |ner_label     |
 +-----------------------+--------------+
