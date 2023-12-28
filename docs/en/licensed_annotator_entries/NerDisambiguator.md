@@ -52,36 +52,36 @@ DISAMBIGUATION
 
 from johnsnowlabs import nlp,  medical
 
-documentAssembler = DocumentAssembler() \
+documentAssembler = nlp.DocumentAssembler() \
     .setInputCol("text") \
     .setOutputCol("document")
 
-sentenceDetector = SentenceDetector() \
+sentenceDetector = nlp.SentenceDetector() \
     .setInputCols(["document"]) \
     .setOutputCol("sentence")
 
-tokenizer = Tokenizer() \
+tokenizer = nlp.Tokenizer() \
     .setInputCols(["sentence"]) \
     .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel.pretrained() \
+word_embeddings = nlp.WordEmbeddingsModel.pretrained() \
     .setInputCols(["sentence", "token"]) \
     .setOutputCol("embeddings")
 
-sentence_embeddings = SentenceEmbeddings() \
+sentence_embeddings = nlp.SentenceEmbeddings() \
     .setInputCols(["sentence","embeddings"]) \
     .setOutputCol("sentence_embeddings")
 
-ner_model = NerDLModel.pretrained() \
+ner_model = medical.NerModel.pretrained() \
     .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("ner")
 
-ner_converter = NerConverter() \
+ner_converter = nlp.NerConverter() \
     .setInputCols(["sentence", "token", "ner"]) \
     .setOutputCol("ner_chunk") \
     .setWhiteList(["PER"])
 
-disambiguator = NerDisambiguator() \
+disambiguator = medical.NerDisambiguator() \
     .setS3KnowledgeBaseName("i-per") \
     .setInputCols(["ner_chunk", "sentence_embeddings"]) \
     .setOutputCol("disambiguation") \
@@ -170,8 +170,6 @@ val df = Seq(text) .toDF("text")
 val result = pipeline.fit(df) .transform(df) 
 
 // Result 
-result.selectExpr("explode(disambiguation)") 
-      .selectExpr("col.metadata.chunk as chunk","col.result as result") .show(5,false) 
 
 +------------------+------------------------------------------------------------------------------------------------------------------------+
 |chunk             |result                                                                                                                  |
@@ -187,6 +185,10 @@ result.selectExpr("explode(disambiguation)")
 
 {%- capture model_python_api_link -%}
 [NerDisambiguatorModel](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/disambiguation/ner_disambiguator/index.html#sparknlp_jsl.annotator.disambiguation.ner_disambiguator.NerDisambiguatorModel)
+{%- endcapture -%}
+
+{%- capture model_notebook_link -%}
+[NerDisambiguatorModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/NerDisambiguatorModel.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
@@ -225,6 +227,7 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 approach_description=approach_description
 approach_input_anno=approach_input_anno
 approach_output_anno=approach_output_anno
