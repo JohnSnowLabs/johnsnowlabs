@@ -211,6 +211,10 @@ val result = pipeline.fit(df) .transform(df)
 [RelationExtractionModel](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionModel)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[RelationExtractionModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/RelationExtractionModel.ipynb)
+{%- endcapture -%}
+
 {%- capture approach_description -%}
 Trains a TensorFlow model for relation extraction. 
 
@@ -357,41 +361,43 @@ model = pipeline.fit(trainData)
 {%- endcapture -%}
 
 {%- capture approach_scala_medical -%}
+import spark.implicits._
+
 // Defining pipeline stages to extract entities first
-val documentAssembler = new nlp.DocumentAssembler()
+val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("document")
   .setOutputCol("tokens")
 
-val embedder = nlp.WordEmbeddingsModel
+val embedder = WordEmbeddingsModel
   .pretrained("embeddings_clinical", "en", "clinical/models")
   .setInputCols(Array("document", "tokens"))
   .setOutputCol("embeddings")
 
-val posTagger = nlp.PerceptronModel
+val posTagger = PerceptronModel
   .pretrained("pos_clinical", "en", "clinical/models")
   .setInputCols(Array("document", "tokens"))
   .setOutputCol("posTags")
 
-val nerTagger = medical.NerModel
+val nerTagger = MedicalNerModel
   .pretrained("ner_events_clinical", "en", "clinical/models")
   .setInputCols(Array("document", "tokens", "embeddings"))
   .setOutputCol("ner_tags")
 
-val nerConverter = new nlp.NerConverter()
+val nerConverter = new NerConverter()
   .setInputCols(Array("document", "tokens", "ner_tags"))
   .setOutputCol("nerChunks")
 
-val depencyParser = nlp.DependencyParserModel
+val depencyParser = DependencyParserModel
   .pretrained("dependency_conllu", "en")
   .setInputCols(Array("document", "posTags", "tokens"))
   .setOutputCol("dependencies")
 
 // Then define `RelationExtractionApproach` and training parameters
-val re = new medical.RelationExtractionApproach()
+val re = new RelationExtractionApproach()
   .setInputCols(Array("embeddings", "posTags", "train_ner_chunks", "dependencies"))
   .setOutputCol("relations_t")
   .setLabelColumn("target_rel")
@@ -404,7 +410,7 @@ val re = new medical.RelationExtractionApproach()
   .setFromEntity("from_begin", "from_end", "from_label")
   .setToEntity("to_begin", "to_end", "to_label")
 
-val finisher = new nlp.Finisher()
+val finisher = new Finisher()
   .setInputCols(Array("relations_t"))
   .setOutputCols(Array("relations"))
   .setCleanAnnotations(false)
@@ -438,6 +444,10 @@ val model = pipeline.fit(trainData)
 [RelationExtractionApproach](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/re/relation_extraction/index.html#sparknlp_jsl.annotator.re.relation_extraction.RelationExtractionApproach)
 {%- endcapture -%}
 
+{%- capture approach_notebook_link -%}
+[RelationExtractionApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/RelationExtractionApproach.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -449,6 +459,7 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 approach_description=approach_description
 approach_input_anno=approach_input_anno
 approach_output_anno=approach_output_anno
@@ -456,4 +467,5 @@ approach_python_medical=approach_python_medical
 approach_scala_medical=approach_scala_medical
 approach_api_link=approach_api_link
 approach_python_api_link=approach_python_api_link
+approach_notebook_link=approach_notebook_link
 %}
