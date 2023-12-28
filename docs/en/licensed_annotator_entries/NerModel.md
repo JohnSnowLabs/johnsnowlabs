@@ -178,9 +178,6 @@ val data = Seq(text).toDF("text")
 
 val result = jslNerPipeline.fit(data).transform(data)
 
-result.selectExpr("explode(arrays_zip(ner_chunk.result, ner_chunk.metadata)) as cols")
-      .selectExpr("cols['0'] as chunk", "cols['1']['entity'] as ner_label").show(false)
-
 +-----------------------------+----------------------------+
 |chunk                        |ner_label                   |
 +-----------------------------+----------------------------+
@@ -326,9 +323,6 @@ val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(arrays_zip(ner_chunk.result, ner_chunk.metadata)) as cols")
-      .selectExpr("cols['0'] as chunk", "cols['1']['entity'] as ner_label").show(false)
-
 +-------------------------------+---------+
 |chunk                          |ner_label|
 +-------------------------------+---------+
@@ -447,9 +441,6 @@ val data = Seq((text)).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(arrays_zip(ner_chunk.result, ner_chunk.metadata)) as cols")
-      .selectExpr("cols['0'] as chunk", "cols['1']['entity'] as ner_label").show(false)
-
 +--------------------------+---------+
 |chunk                     |ner_label|
 +--------------------------+---------+
@@ -480,7 +471,7 @@ result.selectExpr("explode(arrays_zip(ner_chunk.result, ner_chunk.metadata)) as 
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[MedicalNerModel](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/MedicalNerModel.ipynb)
+[MedicalNerModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/MedicalNerModel.ipynb)
 {%- endcapture -%}
 
 {%- capture approach_description -%}
@@ -513,7 +504,7 @@ NAMED_ENTITY
 {%- endcapture -%}
 
 {%- capture approach_python_medical -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, medical 
 
 # First extract the prerequisites for the NerDLApproach
 documentAssembler = nlp.DocumentAssembler() \
@@ -566,7 +557,7 @@ pipelineModel = pipeline.fit(trainingData)
 {%- endcapture -%}
 
 {%- capture approach_python_legal -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, legal
 
 # First extract the prerequisites for the NerDLApproach
 documentAssembler = nlp.DocumentAssembler() \
@@ -612,7 +603,7 @@ nerTagger
 {%- endcapture -%}
 
 {%- capture approach_python_finance -%}
-from johnsnowlabs import * 
+from johnsnowlabs import nlp, finance
 
 # First extract the prerequisites for the NerDLApproach
 documentAssembler = nlp.DocumentAssembler() \
@@ -660,28 +651,28 @@ nerTagger
 
 
 {%- capture approach_scala_medical -%}
-from johnsnowlabs import * 
+import spark.implicits._
 
 // First extract the prerequisites for the NerDLApproach
-val documentAssembler = new nlp.DocumentAssembler()
+val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentence = new nlp.SentenceDetector()
+val sentence = new SentenceDetector()
   .setInputCols("document")
   .setOutputCol("sentence")
 
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("sentence")
   .setOutputCol("token")
 
-val embeddings = nlp.WordEmbeddingsModel
+val embeddings = WordEmbeddingsModel
   .pretrained('embeddings_clinical', "en", "clinical/models")
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
 
 // Then the training can start
-val nerTagger =new medical.NerApproach()
+val nerTagger =new MedicalNerApproach()
 .setInputCols(Array("sentence", "token", "embeddings"))
 .setLabelColumn("label")
 .setOutputCol("ner")
@@ -712,28 +703,28 @@ val pipelineModel = pipeline.fit(trainingData)
 
 
 {%- capture approach_scala_legal -%}
-from johnsnowlabs import *
+import spark.implicits._
 
 // First extract the prerequisites for the NerDLApproach
-val documentAssembler = new nlp.DocumentAssembler()
+val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentence = new nlp.SentenceDetector()
+val sentence = new SentenceDetector()
   .setInputCols("document")
   .setOutputCol("sentence")
 
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("sentence")
   .setOutputCol("token")
 
-val embeddings = nlp.WordEmbeddingsModel
+val embeddings = WordEmbeddingsModel
   .pretrained('embeddings_clinical', "en", "clinical/models")
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
 
 // Then the training can start
-val nerTagger =new legal.NerApproach()
+val nerTagger =new LegalNerApproach()
 .setInputCols(Array("sentence", "token", "embeddings"))
 .setLabelColumn("label")
 .setOutputCol("ner")
@@ -756,28 +747,28 @@ val pipeline = new Pipeline().setStages(Array(
 {%- endcapture -%}
 
 {%- capture approach_scala_finance -%}
-from johnsnowlabs import * 
+import spark.implicits._
 
 // First extract the prerequisites for the NerDLApproach
-val documentAssembler = new nlp.DocumentAssembler()
+val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentence = new nlp.SentenceDetector()
+val sentence = new SentenceDetector()
   .setInputCols("document")
   .setOutputCol("sentence")
 
-val tokenizer = new nlp.Tokenizer()
+val tokenizer = new Tokenizer()
   .setInputCols("sentence")
   .setOutputCol("token")
 
-val embeddings = nlp.WordEmbeddingsModel
+val embeddings = WordEmbeddingsModel
   .pretrained('embeddings_clinical', "en", "clinical/models")
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
 
 // Then the training can start
-val nerTagger =new finance.NerApproach()
+val nerTagger =new FinanceNerApproach()
 .setInputCols(Array("sentence", "token", "embeddings"))
 .setLabelColumn("label")
 .setOutputCol("ner")
@@ -808,6 +799,10 @@ val pipeline = new Pipeline().setStages(Array(
 [MedicalNerApproach](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach)
 {%- endcapture -%}
 
+{%- capture approach_notebook_link -%}
+[MedicalNerApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/MedicalNerApproach.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -835,4 +830,5 @@ approach_scala_legal=approach_scala_legal
 approach_scala_finance=approach_scala_finance
 approach_api_link=approach_api_link
 approach_python_api_link=approach_python_api_link
+approach_notebook_link=approach_notebook_link
 %}
