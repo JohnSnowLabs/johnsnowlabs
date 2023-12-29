@@ -28,8 +28,6 @@ Parametres:
 
 - `setMultivaluesRelations` *(Boolean)*:  Whether to decide to return all values in a relation together or separately (Default: False)
 
-- `setDoExceptionHandling`: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.
-
 
 Example usage and more details can be found on Spark NLP Workshop repository accessible in GitHub, for example the notebook [Healthcare Chunk Mapping](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb).
 
@@ -430,18 +428,6 @@ The annotator also allows using fuzzy matching, which can take into consideratio
 
 Example usage and more details can be found on Spark NLP Workshop repository accessible in GitHub, for example the notebook [Healthcare Chunk Mapping](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/26.Chunk_Mapping.ipynb).
 
-Parameters:
-
-- `Dictionary` *(Str)*: Dictionary path where is the JsonDictionary that contains the mappinmgs columns
-
-- `Rels` *(Boolean)*: Relations that we are going to use to map the chunk 
-
-- `LowerCase` *(Boolean)*: Set if we want to map the chunks in lower case or not (Default: True)
-
-- `AllowMultiTokenChunk` *(Boolean)*: Whether to skip relations with multitokens (Default: True)
-
-- `MultivaluesRelations` *(Boolean)*:  Whether to decide to return all values in a relation together or separately (Default: False)
-
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}
@@ -684,6 +670,10 @@ model = pipeline.fit(test_data)
 res= model.transform(test_data)
 
 model.stages[-1].write().save("models/legal_mapper")
+
+{%- endcapture -%}
+
+{%- capture approach_scala_medical -%}
 
 {%- endcapture -%}
 
