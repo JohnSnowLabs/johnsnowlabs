@@ -674,11 +674,6 @@ model.stages[-1].write().save("models/legal_mapper")
 {%- endcapture -%}
 
 {%- capture approach_scala_medical -%}
-
-{%- endcapture -%}
-
-{%- capture approach_scala_finance -%}
-
 import spark.implicits._
 
 val document_assembler = new DocumentAssembler()
@@ -729,11 +724,9 @@ val model = pipeline.fit(test_data)
 
 res= model.transform(test_data) 
 model.stagesArray(-1) .write() .save("models/drug_mapper") 
-
 {%- endcapture -%}
 
-{%- capture approach_python_finance -%}
-
+{%- capture approach_scala_finance -%}
 import spark.implicits._
 
 val document_assembler = new DocumentAssembler()
@@ -785,11 +778,9 @@ val model = pipeline.fit(test_data)
 res= model.transform(test_data) 
 
 model.stagesArray(-1) .write() .save("models/finance_mapper") 
-
 {%- endcapture -%}
 
 {%- capture approach_scala_legal -%}
-
 import spark.implicits._
  
 val document_assembler = new DocumentAssembler()
@@ -839,8 +830,8 @@ val model = pipeline.fit(test_data)
 
 res= model.transform(test_data) 
 model.stagesArray(-1) .write() .save("models/legal_mapper")
-
 {%- endcapture -%}
+
 {%- capture approach_api_link -%}
 [ChunkMapperApproach](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/finance/chunk_classification/resolution/ChunkMapperApproach.html)
 {%- endcapture -%}
@@ -850,7 +841,7 @@ model.stagesArray(-1) .write() .save("models/legal_mapper")
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[ChunkMapperApproachModel](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkMapperApproach.ipynb)
+[ChunkMapperApproachModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkMapperApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

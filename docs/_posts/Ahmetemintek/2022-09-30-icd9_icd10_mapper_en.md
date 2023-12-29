@@ -40,6 +40,7 @@ This pretrained model maps ICD-9-CM codes to corresponding ICD-10-CM codes.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol("text")\

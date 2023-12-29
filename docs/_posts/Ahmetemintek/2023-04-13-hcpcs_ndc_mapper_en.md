@@ -39,6 +39,7 @@ This pretrained model maps HCPCS codes with their corresponding National Drug Co
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol("text")\
