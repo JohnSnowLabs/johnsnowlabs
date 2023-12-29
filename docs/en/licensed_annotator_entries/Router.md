@@ -15,7 +15,7 @@ To address this issue, Spark NLP Healthcare Library has introduced a solution us
 
 This solution eliminates the need to run `BertSentenceEmbeddings` multiple times, reducing the computational overhead and improving the efficiency of the pipeline.
 
-Parametres:
+Parameters:
 
 - `inputCols`: The name of the columns containing the input annotations. It can read an Array of strings.
 
@@ -169,7 +169,6 @@ result.selectExpr(
 
 
 {%- capture model_scala_medical -%}
-
 import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()

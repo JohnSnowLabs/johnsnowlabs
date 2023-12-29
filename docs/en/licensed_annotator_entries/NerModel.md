@@ -154,7 +154,7 @@ val wordEmbeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en",
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
 
-val jslNer = NerModel.pretrained("ner_jsl", "en", "clinical/models")
+val jslNer = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("jsl_ner")
 
@@ -301,7 +301,7 @@ val embeddings = RoBertaEmbeddings.pretrained("roberta_embeddings_legal_roberta_
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
 
-val nerModel = NerModel.pretrained("legner_contract_doc_parties", "en", "legal/models")
+val nerModel = LegalNerModel.pretrained("legner_contract_doc_parties", "en", "legal/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
 
@@ -419,7 +419,7 @@ val embeddings = BertEmbeddings.pretrained("bert_embeddings_legal_bert_base_unca
   .setInputCols(Array("sentence", "token"))
   .setOutputCol("embeddings")
 
-val nerModel = NerModel.pretrained("finner_sec_conll", "en", "finance/models")
+val nerModel = FinanceNerModel.pretrained("finner_sec_conll", "en", "finance/models")
   .setInputCols(Array("sentence", "token", "embeddings"))
   .setOutputCol("ner")
 

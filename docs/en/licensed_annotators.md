@@ -59,14 +59,14 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="DistilBertForSequenceClassification" summary="Can load DistilBERT Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks."%}
 {% include templates/licensed_table_entry.md  name="Doc2ChunkInternal" summary="Converts `DOCUMENT`, `TOKEN` typed annotations into `CHUNK` type with the contents of a `chunkCol`."%}
 {% include templates/licensed_table_entry.md  name="DocMapper" summary="Uses the text representation of document annotations to map clinical codes to other codes or relevant information. "%}
+{% include templates/licensed_table_entry.md  name="DocumentFiltererByClassifier" summary="This annotator sorts documents based on classifier results. It uses white and black lists, allowing or blocking specific outcomes. It can be case-sensitive or case-insensitive for broader matching. This tool efficiently organizes documents based on classifier outcomes."%}
 {% include templates/licensed_table_entry.md  name="DocumentHashCoder" summary="This annotator swaps dates in a document column with hash codes from another column, creating a new column with shifted day information. The subsequent `DeIdentification` annotator anonymizes the document, incorporating the altered dates. "%}
 {% include templates/licensed_table_entry.md  name="DocumentLogRegClassifier" summary="Classifies documents with a Logarithmic Regression algorithm."%}
 {% include templates/licensed_table_entry.md  name="DocumentMLClassifier" summary="classifies documents with a Logarithmic Regression algorithm."%}
 {% include templates/licensed_table_entry.md  name="DrugNormalizer" summary="Annotator which normalizes raw text from documents, e.g. scraped web pages or xml documents."%}
 {% include templates/licensed_table_entry.md  name="EntityChunkEmbeddings" summary="Entity Chunk Embeddings uses BERT Sentence embeddings to compute a weighted average vector represention of related entity chunks."%}
 {% include templates/licensed_table_entry.md  name="FeaturesAssembler" summary="Collects features from different columns."%}
-{% include templates/licensed_table_entry.md  name="FewShotClassifier" summary="This Annotator specifically target few-shot classification tasks, which involve training a model to make accurate predictions with limited labeled data.
-"%}
+{% include templates/licensed_table_entry.md  name="FewShotClassifier" summary="This Annotator specifically target few-shot classification tasks, which involve training a model to make accurate predictions with limited labeled data."%}
 {% include templates/licensed_table_entry.md  name="GenericClassifier" summary="Creates a generic single-label classifier which uses pre-generated Tensorflow graphs."%}
 {% include templates/licensed_table_entry.md  name="GenericLogRegClassifier" summary="Is a derivative of GenericClassifier which implements a multinomial logistic regression."%}
 {% include templates/licensed_table_entry.md  name="GenericSVMClassifier" summary="Creates a generic single-label classifier which uses pre-generated Tensorflow graphs."%}

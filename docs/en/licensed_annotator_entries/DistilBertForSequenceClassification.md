@@ -106,7 +106,7 @@ val result = pipeline.fit(data).transform(data)
 [DistilBertForSequenceClassification](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/medical_distilbert_for_sequence_classification/index.html)
 {%- endcapture -%}
 
-{%- capture model_scala_api_link -%}
+{%- capture model_api_link -%}
 [DistilBertForSequenceClassification](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/MedicalDistilBertForSequenceClassification.html)
 {%- endcapture -%}
 
@@ -120,5 +120,5 @@ model_output_anno=model_output_anno
 model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_python_api_link=model_python_api_link
-model_scala_api_link=model_scala_api_link
+model_api_link=model_api_link
 %}

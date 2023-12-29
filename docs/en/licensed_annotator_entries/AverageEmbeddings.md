@@ -124,7 +124,7 @@ val avg_embeddings = new AverageEmbeddings()
   .setInputCols(Array("sent_biobert_clinical_base_cased","sbiobert_base_cased_mli","chunk"))
   .setOutputCol("embeddings") 
 
-val pipeline = Pipeline().setStages(Array(
+val pipeline = new Pipeline().setStages(Array(
     document_assembler, 
     sentence_detector, 
     doc2Chunk, 

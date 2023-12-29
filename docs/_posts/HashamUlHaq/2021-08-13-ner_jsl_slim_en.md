@@ -27,7 +27,8 @@ Definitions of Predicted Entities:
 
 - `Death_Entity`: Mentions that indicate the death of a patient. 
 - `Medical_Device`: All mentions related to medical devices and supplies. 
-- `Vital_Signs_Header`: Identifies section headers that correspond to Vital Signs of a patient.
+- `Vital_Signs`: Identifies Vital Signs of a patient.
+- `Header`: Identifies section headers that correspond to Vital Signs of a patient.
 - `Allergen`: Allergen related extractions mentioned in the document.  
 - `Drug_BrandName`: Commercial labeling name chosen by the labeler or the drug manufacturer for a drug containing a single or multiple drug active ingredients. 
 - `Clinical_Dept`: Terms that indicate the medical and/or surgical departments. 
@@ -59,11 +60,6 @@ Definitions of Predicted Entities:
 
 
 ## How to use
-
-
-
-
-
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}

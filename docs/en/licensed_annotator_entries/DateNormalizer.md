@@ -121,8 +121,6 @@ val pipeline = new Pipeline().setStages(Array(
     date_normalizer
 ))
 
-import spark.implicits._
- 
 val df = Seq(("08/02/2018"),("11/2018"),("11/01/2018"),("next monday"),("today"),("next week")).toDF("original_date")
 
 val result = pipeline.fit(df).transform(df)
@@ -218,8 +216,6 @@ val pipeline = new Pipeline().setStages(Array(
     doc2chunk, 
     date_normalizer
 ))
-
-import spark.implicits._
  
 val df = Seq(("08/02/2018"),("11/2018"),("11/01/2018"),("next monday"),("today"),("next week")).toDF("original_date")
 
@@ -301,7 +297,7 @@ result.selectExpr(
 {%- endcapture -%}
 
 
-{%- capture model_scala_medical -%}
+{%- capture model_scala_finance -%}
 import spark.implicits._
 
 val document_assembler = new DocumentAssembler()
@@ -322,8 +318,6 @@ val pipeline = new Pipeline().setStages(Array(
     doc2chunk, 
     date_normalizer
 ))
-
-import spark.implicits._
  
 val df = Seq(("08/02/2018"),("11/2018"),("11/01/2018"),("next monday"),("today"),("next week")).toDF("original_date")
 

@@ -110,7 +110,7 @@ pipeline= nlp.Pipeline(stages=[
 data= spark.createDataFrame([[sample_text]]).toDF("text")
 result = pipeline.fit(data).transform(data)
 
-# Displaying the results
+# Results
 result.select(F.explode(F.arrays_zip(result.merged_chunks.result, 
                                      result.merged_chunks.metadata)).alias("cols"))\
                   .select(F.expr("cols['0']").alias("chunk"),
@@ -291,7 +291,7 @@ pipeline= nlp.Pipeline(stages=[
 data= spark.createDataFrame([[sample_text]]).toDF("text")
 result = pipeline.fit(data).transform(data)
 
-# Displaying the results
+# Results
 result.select(F.explode(F.arrays_zip(result.merged_chunks.result, 
                                      result.merged_chunks.metadata)).alias("cols"))\
                   .select(F.expr("cols['0']").alias("chunk"),
@@ -447,7 +447,7 @@ pipeline= nlp.Pipeline(stages=[
 data= spark.createDataFrame([[sample_text]]).toDF("text")
 result = pipeline.fit(data).transform(data)
 
-# Displaying the results
+# Results
 result.select(F.explode(F.arrays_zip(result.merged_chunks.result, 
                                      result.merged_chunks.metadata)).alias("cols"))\
                   .select(F.expr("cols['0']").alias("chunk"),

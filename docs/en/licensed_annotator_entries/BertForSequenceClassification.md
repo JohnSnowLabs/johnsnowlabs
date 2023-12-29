@@ -11,13 +11,13 @@ model
 
 Parameters:
 
-- `batchSize`',  'Size of every batch': default: 8,
+- `batchSize`':  Size of every batch (default: 8).
 
-- `coalesceSentences`': "Instead of 1 class per sentence (if inputCols is '''sentence''' output 1 class per document by averaging probabilities in all sentences." default: False,
+- `coalesceSentences`': Instead of 1 class per sentence (if inputCols is "sentence" output 1 class per document by averaging probabilities in all sentences (default: False).
 
-- `maxSentenceLength`', 'Max sentence length to process', default: 128
+- `maxSentenceLength`': Max sentence length to process (default: 128).
 
-- `caseSensitive`', 'whether to ignore case in tokens for embeddings matching',default: True,
+- `caseSensitive`': Whether to ignore case in tokens for embeddings matching (default: True)
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -108,7 +108,7 @@ val result = pipeline.fit(data).transform(data)
 [BertForSequenceClassification](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/medical_bert_for_sequence_classification/index.html#)
 {%- endcapture -%}
 
-{%- capture model_scala_api_link -%}
+{%- capture model_api_link -%}
 [BertForSequenceClassification](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/MedicalBertForSequenceClassification.html)
 {%- endcapture -%}
 
@@ -122,5 +122,5 @@ model_output_anno=model_output_anno
 model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_python_api_link=model_python_api_link
-model_scala_api_link=model_scala_api_link
+model_api_link=model_api_link
 %}

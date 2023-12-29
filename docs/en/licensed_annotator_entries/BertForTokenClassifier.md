@@ -194,7 +194,7 @@ val result = pipeline.fit(data).transform(data)
 [BertForTokenClassifier](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/medical_bert_for_token_classifier/index.html)
 {%- endcapture -%}
 
-{%- capture model_scala_api_link -%}
+{%- capture model_api_link -%}
 [BertForTokenClassifier](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/MedicalBertForTokenClassifier.html)
 {%- endcapture -%}
 
@@ -207,5 +207,5 @@ model_output_anno=model_output_anno
 model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_python_api_link=model_python_api_link
-model_scala_api_link=model_scala_api_link
+model_api_link=model_api_link
 %}

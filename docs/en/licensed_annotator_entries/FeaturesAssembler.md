@@ -19,7 +19,6 @@ Parameters:
 
 - `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
 
-
 All the parameters can be set using the corresponding set method in the camel case. For example, `.setInputcols()`.
 {%- endcapture -%}
 
@@ -331,7 +330,7 @@ val result = nlpPipeline.fit(data_df).transform(data_df)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/FeaturesAssembler.ipynb)
+[FeatureAssemblerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/FeaturesAssembler.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

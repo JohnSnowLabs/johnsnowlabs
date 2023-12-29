@@ -131,6 +131,7 @@ result.selectExpr("explode(ngram_tokens)").show(5, False)
 
 {%- capture model_python_finance -%}
 from johnsnowlabs import nlp, finance
+
 # Define a pipeline for generating n-grams
 document = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -179,7 +180,6 @@ result.selectExpr("explode(ngram_tokens)").show(5, False)
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
-
 import spark.implicits._
 
 // Define a pipeline for generating n-grams
@@ -231,7 +231,6 @@ val result = trainingPipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
-
 import spark.implicits._
 
 // Define a pipeline for generating n-grams
@@ -281,7 +280,6 @@ val result = trainingPipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
-
 import spark.implicits._
 
 // Define a pipeline for generating n-grams

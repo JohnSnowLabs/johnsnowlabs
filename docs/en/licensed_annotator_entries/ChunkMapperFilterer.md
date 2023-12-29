@@ -10,7 +10,7 @@ model
 
 `ChunkMapperFilterer` is an annotator to be used after `ChunkMapper` that allows to filter chunks based on the results of the mapping, whether it was successful or failed.
 
-Parametres;
+Parametres:
 
 - `ReturnCriteria` *(String)*: Has two possible values: “success” or “fail”. If “fail” (default), returns the chunks that are not in the label dependencies; if “success”, returns the labels that were successfully mapped by the `ChunkMapperModel` annotator.
 
@@ -27,6 +27,8 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
+
 document_assembler = nlp.DocumentAssembler()\
       .setInputCol("text")\
       .setOutputCol("document")
@@ -95,6 +97,8 @@ result.selectExpr("chunk.result as chunk",
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
+import spark.implicits._
+
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
@@ -140,16 +144,11 @@ val mapper_pipeline = new Pipeline().setStages(Array(
     chunk_mapper_filterer
     ))
 
-import spark.implicits._
 
 val data = Seq("The patient was given Adapin 10 MG, coumadn 5 mg",
 "The patient was given Avandia 4 mg, Tegretol, zitiga").toDF("text")
 
 val result = mapper_pipeline.fit(data).transform(data)
-
-result.selectExpr("chunk.result as chunk", 
-                  "RxNorm_Mapper.result as RxNorm_Mapper", 
-                  "chunks_fail.result as chunks_fail").show(truncate = False)
 
 +--------------------------------+----------------------+--------------+
 |chunk                           |RxNorm_Mapper         |chunks_fail   |
@@ -167,6 +166,9 @@ result.selectExpr("chunk.result as chunk",
 [ChunkMapperFilterer](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/chunkmapper_filterer/index.html#sparknlp_jsl.annotator.chunker.chunkmapper_filterer.ChunkMapperFilterer)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[ChunkMapperFiltererNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkMapperFilterer.ipynb)
+{%- endcapture -%}
 
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
@@ -179,4 +181,5 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}

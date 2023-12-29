@@ -27,7 +27,6 @@ DOCUMENT
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-
 from johnsnowlabs import medical, nlp
 
 documentAssembler =  nlp.DocumentAssembler()\
@@ -103,7 +102,6 @@ result.select(F.explode('window_2')).select('col.result').show(truncate=False)
 
 
 {%- capture model_scala_medical -%}
-
 import spark.implicits._
 
 val documentAssembler =  new DocumentAssembler()
@@ -176,7 +174,6 @@ val result = pipeline.fit(testDataset).transform(testDataset)
 
 
 {%- capture model_python_legal -%}
-
 from johnsnowlabs import nlp, legal
 from pyspark.sql import functions as F
 
@@ -207,6 +204,33 @@ window_splitting_lp = nlp.LightPipeline(window_splitting_model)
 
 {%- endcapture -%}
 
+{%- capture model_scala_legal -%}
+import spark.implicits._
+
+val doc_assembler = new DocumentAssembler()
+    .setInputCol("text")
+    .setOutputCol("document")
+
+val sentence_detector = new SentenceDetector()
+    .setInputCols("document")
+    .setOutputCol("isolated_sentence")
+
+val context_window = new WindowedSentenceModel()
+    .setInputCols("isolated_sentence")
+    .setOutputCol("window")
+    .setWindowSize(1)
+
+val pipeline = new Pipeline().setStages(Array(
+    doc_assembler, 
+    sentence_detector, 
+    context_window))
+
+val window_splitting_model = window_splitting_pipeline.fit(df)
+
+val window_splitting_lp = LightPipeline(window_splitting_model)
+
+{%- endcapture -%}
+
 
 {%- capture model_api_link -%}
 [WindowedSentenceModel](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/windowed/WindowedSentenceModel.html)
@@ -226,6 +250,7 @@ model_output_anno=model_output_anno
 model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_python_legal=model_python_legal
+model_scala_legal=model_scala_legal
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
 %}

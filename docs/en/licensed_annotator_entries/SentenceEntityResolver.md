@@ -15,7 +15,7 @@ The model transforms a dataset with Input Annotation type SENTENCE_EMBEDDINGS, c
 [BertSentenceEmbeddings](/docs/en/transformers#bertsentenceembeddings)
 and returns the normalized entity for a particular trained ontology / curated dataset (e.g. ICD-10, RxNorm, SNOMED etc.).
 
-Parametres:
+Parameters:
 
 - `distanceFunction`: Determines how the distance between different entities will be calculated. Either `COSINE` or `EUCLIDEAN`.
 
@@ -24,6 +24,8 @@ Parametres:
 - `caseSensitive`: WWhether to consider text casing or not.
 
 - `threshold`: Threshold of the distance between nodes to consider.
+
+- `DoExceptionHandling`: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.
 
 All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
 
@@ -171,7 +173,18 @@ val pipeline = new Pipeline().setStages(Array(
 val text = "She was admitted to the hospital with chest pain and found to have bilateral pleural effusion,the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node. We reviewed the pathology obtained from the pericardectomy in March 2006,which was diagnostic of mesothelioma. At this time,chest tube placement for drainage of the fluid occurred and thoracoscopy,which were performed,which revealed epithelioid malignant mesothelioma." 
 
 val df = Seq(text) .toDF("text") 
-val result = pipeline.fit(df) .transform(df) 
+val result = pipeline.fit(df).transform(df) 
+
+// Show Results
++--------------------+---------+-----+----------+--------------------+--------------------+
+|               chunk|   entity| code|confidence|       all_k_results|   all_k_resolutions|
++--------------------+---------+-----+----------+--------------------+--------------------+
+|CT scan of the chest|     Test|62284|    0.2028|62284:::76497:::7...|Computed tomograp...|
+|      pericardectomy|Procedure|33031|    0.3329|33031:::33025:::3...|Pericardectomy [P...|
+|chest tube placement|Procedure|39503|    0.9343|39503:::32036:::3...|Insertion of ches...|
+|drainage of the f...|Procedure|49405|    0.2476|49405:::49407:::4...|Drainage procedur...|
+|        thoracoscopy|Procedure|32660|    0.1422|32660:::32667:::1...|Thoracoscopy [Tho...|
++--------------------+---------+-----+----------+--------------------+--------------------+
 {%- endcapture -%}
 
 
@@ -235,7 +248,14 @@ val pipeline = new Pipeline().setStages(Array(
 val text = "CONTACT GOLD" 
 
 val df = Seq(text) .toDF("text") 
-val result = pipeline.fit(df) .transform(df)
+val result = pipeline.fit(df).transform(df)
+
+// Show Results
++------------+------------------+---------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|chunk       |result            |code                                                                                         |all_k_results                                                                                                                                                                                                                                  |all_k_resolutions                                                                                                                                                                                                                              |
++------------+------------------+---------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|CONTACT GOLD|Contact Gold Corp.|981369960:::0:::208273426:::204092640:::0:::0:::270531073:::261918920:::0:::271989147:::0:::0|Contact Gold Corp.:::ISHARES GOLD TRUST:::Minatura Gold:::Mexus Gold US:::BESRA GOLD INC.:::ALAMOS GOLD INC:::JOSHUA GOLD RESOURCES INC:::MIDEX GOLD CORP.:::Gold Mark Stephen:::Guskin Gold Corp.:::CMX GOLD & SILVER CORP.:::Permal Gold Ltd.|Contact Gold Corp.:::ISHARES GOLD TRUST:::Minatura Gold:::Mexus Gold US:::BESRA GOLD INC.:::ALAMOS GOLD INC:::JOSHUA GOLD RESOURCES INC:::MIDEX GOLD CORP.:::Gold Mark Stephen:::Guskin Gold Corp.:::CMX GOLD & SILVER CORP.:::Permal Gold Ltd.|
++------------+------------------+---------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 {%- endcapture -%}
 
@@ -300,7 +320,14 @@ val pipeline = new Pipeline().setStages(Array(
 
 val text = "CONTACT GOLD" 
 val df = Seq(text) .toDF("text") 
-val result = pipeline.fit(df) .transform(df) 
+val result = pipeline.fit(df).transform(df) 
+
+// Show Results
++------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|chunk       |result            |all_k_results                                                                                                                                                                                                                                  |all_k_resolutions                                                                                                                                                                                                                              |
++------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|CONTACT GOLD|Contact Gold Corp.|Contact Gold Corp.:::ISHARES GOLD TRUST:::Minatura Gold:::Mexus Gold US:::BESRA GOLD INC.:::ALAMOS GOLD INC:::JOSHUA GOLD RESOURCES INC:::MIDEX GOLD CORP.:::Gold Mark Stephen:::Guskin Gold Corp.:::CMX GOLD & SILVER CORP.:::Permal Gold Ltd.|Contact Gold Corp.:::ISHARES GOLD TRUST:::Minatura Gold:::Mexus Gold US:::BESRA GOLD INC.:::ALAMOS GOLD INC:::JOSHUA GOLD RESOURCES INC:::MIDEX GOLD CORP.:::Gold Mark Stephen:::Guskin Gold Corp.:::CMX GOLD & SILVER CORP.:::Permal Gold Ltd.|
++------------+------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 {%- endcapture -%}
 
 
@@ -319,7 +346,7 @@ val result = pipeline.fit(df) .transform(df)
 {%- capture approach_description -%}
 Trains a SentenceEntityResolverModel that maps sentence embeddings to entities in a knowledge base.
 
-General parameters:
+Parameters:
 
 - `labelCol` : Column name for the value we are trying to resolve. Usually this contains the entity ID in the knowledge base (e.g., the ICD-10 code).
 
@@ -348,8 +375,7 @@ When finetuning an existing model, there are additional parameters:
 
 - `dropCodesList`: A list of codes in a pretrained model that will be omitted when the training process begins with a pretrained model.
 
-You can find pretrained Sentence Embeddings (using BERT or other architecgture) in the
-`NLP Models Hub <https://nlp.johnsnowlabs.com/models?task=Embeddings>`_.
+You can find pretrained Sentence Embeddings (using BERT or other architecgture) in the `NLP Models Hub <https://nlp.johnsnowlabs.com/models?task=Embeddings>`_.
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}
@@ -487,7 +513,7 @@ val documentAssembler = new DocumentAssembler()
    .setInputCol("normalized_text")
    .setOutputCol("document")
 
-val sentenceDetector = SentenceDetector()
+val sentenceDetector = new SentenceDetector()
   .setInputCols("document")
   .setOutputCol("sentence")
 
@@ -528,7 +554,7 @@ val documentAssembler = new DocumentAssembler()
    .setInputCol("normalized_text")
    .setOutputCol("document")
 
-val sentenceDetector = SentenceDetector()
+val sentenceDetector = new SentenceDetector()
   .setInputCols("document")
   .setOutputCol("sentence")
 
@@ -568,7 +594,7 @@ val documentAssembler = new DocumentAssembler()
    .setInputCol("normalized_text")
    .setOutputCol("document")
 
-val sentenceDetector = SentenceDetector()
+val sentenceDetector = new SentenceDetector()
   .setInputCols("document")
   .setOutputCol("sentence")
 

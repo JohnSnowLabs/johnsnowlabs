@@ -15,7 +15,7 @@ Alternatively, we can use fine-tuned Siamese network variants like SBERT, which 
 
 However, for a more straightforward approach, we can use a chunk mapper method to extract entities from the text. In addition, by combining resolver models and mapper models using the `ResolverMerger` annotator, we can further enhance the performance and accuracy of the resolver system.
 
-Parametres:
+Parameters:
 
 - `inputCols`: The name of the columns containing the input annotations. It can read an Array of strings.
 
@@ -34,7 +34,6 @@ ENTITY
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-
 from johnsnowlabs import nlp, medical
 
 document_assembler = nlp.DocumentAssembler()\
@@ -137,7 +136,6 @@ result.selectExpr(
 
 
 {%- capture model_scala_medical -%}
-
 import spark.implicits._
 
 val document_assembler = new DocumentAssembler()

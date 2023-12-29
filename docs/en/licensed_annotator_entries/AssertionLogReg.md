@@ -19,14 +19,13 @@ Unlike the DL Model, this class does not extend AnnotatorModel. Instead it exten
 At the moment there are no pretrained models available for this class. Please refer to AssertionLogRegApproach to train your own model.
 
 Parametres:
-- `setAfter(after: Int)`: AssertionLogRegModel.this.type
-Length of the context after the target (Default: 13)
-- `setBefore(before: Int)`: AssertionLogRegModel.this.type
-Length of the context before the target (Default: 11)
-- `setEndCol(end: String)`: AssertionLogRegModel.this.type
-Column that contains the token number for the end of the target
-- `setStartCol(start: String)`: AssertionLogRegModel.this.type
-Column that contains the token number for the start of the target
+- `setAfter(Int)`: Length of the context after the target (Default: 13)
+
+- `setBefore(Int)`: Length of the context before the target (Default: 11)
+
+- `setEndCol(String)`: Column that contains the token number for the end of the target
+
+- `setStartCol(String)`: Column that contains the token number for the start of the target
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}

@@ -17,13 +17,13 @@ Please see DocumentLogRegClassifierApproach to train your own model.
 
 Parameters:
 
-- `setMergeChunks(merge)`: Sets whether to merge all chunks in a document or not (Default: false).
+- `setMergeChunks`: Sets whether to merge all chunks in a document or not (Default: false).
 
-- `setLabels(value)`: Sets array to output the label in the original form.
+- `setLabels`: Sets array to output the label in the original form.
 
-- `setVectorizationModel(model)`: Sets a path to the classification model if it has been already trained.
+- `setVectorizationModel`: Sets a path to the classification model if it has been already trained.
 
-- `setClassificationModel(model)`: Sets a path to the the classification model if it has been already trained.
+- `setClassificationModel`: Sets a path to the the classification model if it has been already trained.
 
 Please check out the [Models Hub](https://nlp.johnsnowlabs.com/models) for available models in the future.
 {%- endcapture -%}
@@ -47,6 +47,19 @@ CATEGORY
 {%- capture approach_description -%}
 Trains a model to classify documents with a Logarithmic Regression algorithm. Training data requires columns for
 text and their label. The result is a trained DocumentLogRegClassifierModel.
+
+Parameters:
+
+- `maxIter`: Maximum number of iterations.
+
+- `tol`: Convergence tolerance after each iteration.
+
+- `setLabels`: Sets array to output the label in the original form.
+
+- `setVectorizationModel`: Sets a path to the classification model if it has been already trained.
+
+- `setClassificationModel`: Sets a path to the the classification model if it has been already trained.
+
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}
@@ -228,6 +241,7 @@ val model = pipeline.fit(trainingData)
 
 {%- capture approach_scala_legal -%}
 import spark.implicits._
+
 // Define pipeline stages to prepare the data
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
@@ -270,6 +284,7 @@ val model = pipeline.fit(trainingData)
 
 {%- capture approach_scala_finance -%}
 import spark.implicits._ 
+
 // Define pipeline stages to prepare the data
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")

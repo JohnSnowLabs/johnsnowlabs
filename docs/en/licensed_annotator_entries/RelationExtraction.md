@@ -29,6 +29,8 @@ Parameters:
 
 - `multiClass` *(Bool)*: If multiClass is set, the model will return all the labels with corresponding scores (Default: False)
 
+- `DoExceptionHandling`: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.
+
 For pretrained models please see the
 [Models Hub](https://nlp.johnsnowlabs.com/models?task=Relation+Extraction) for available models.
 
@@ -289,6 +291,7 @@ NONE
 
 {%- capture approach_python_medical -%}
 from johnsnowlabs import nlp, medical
+
 # Defining pipeline stages to extract entities first
 documentAssembler = nlp.DocumentAssembler() \
   .setInputCol("text") \

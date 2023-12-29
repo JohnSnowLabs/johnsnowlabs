@@ -190,7 +190,7 @@ val rxnorm_pipeline_re = new Pipeline().setStages(Array(
 
 val rxnorm_model = Seq(( "The patient was given metformin 500 mg tablet,2.5 mg of coumadin and then ibuprofen." ), ( "The patient was given metformin 400 mg,coumadin 5 mg,coumadin,amlodipine 10 MG tablet" )).toDF("text")
 
-val results = rxnorm_model.transform(rxnorm_model) 
+val results = rxnorm_model.fit(rxnorm_model).transform(rxnorm_model) 
 
 
 +--------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -212,7 +212,7 @@ val results = rxnorm_model.transform(rxnorm_model)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/EntityChunkEmbeddings.ipynb)
+[EntityChunkEmbeddingsModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/EntityChunkEmbeddings.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
