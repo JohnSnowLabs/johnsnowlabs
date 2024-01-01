@@ -43,7 +43,7 @@ CATEGORY
 
 {%- capture approach_python_medical -%}
 
-from johnsnowlabs import nlp,  medical
+from johnsnowlabs import nlp, medical
 
 features_asm = medical.FeaturesAssembler()\
     .setInputCols(["sentence_embeddings"])\
@@ -80,7 +80,6 @@ clf_Pipeline = nlp.Pipeline(stages=[
 
 
 {%- capture approach_scala_medical -%}
-
 import spark.implicits._
   
 val features_asm = new FeaturesAssembler()

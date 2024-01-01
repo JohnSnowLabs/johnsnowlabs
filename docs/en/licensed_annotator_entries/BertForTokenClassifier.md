@@ -1,5 +1,5 @@
 {%- capture title -%}
-MedicalBertForTokenClassifier
+BertForTokenClassifier
 {%- endcapture -%}
 
 {%- capture model -%}
@@ -8,7 +8,7 @@ model
 
 {%- capture model_description -%}
 
-`MedicalBertForTokenClassifier` can load Bert Models with a token classification head on top (a linear layer on top of the hidden-states output) for Named-Entity-Recognition (NER) tasks.\
+`BertForTokenClassifier` can load Bert Models with a token classification head on top (a linear layer on top of the hidden-states output) for Named-Entity-Recognition (NER) tasks.\
 
 Parameters:
 
@@ -191,11 +191,11 @@ val result = pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_python_api_link -%}
-[MedicalBertForTokenClassifier](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/medical_bert_for_token_classifier/index.html)
+[BertForTokenClassifier](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/medical_bert_for_token_classifier/index.html)
 {%- endcapture -%}
 
-{%- capture model_scala_api_link -%}
-[MedicalBertForTokenClassifier](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/MedicalBertForTokenClassifier.html)
+{%- capture model_api_link -%}
+[BertForTokenClassifier](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/MedicalBertForTokenClassifier.html)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
@@ -207,5 +207,5 @@ model_output_anno=model_output_anno
 model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_python_api_link=model_python_api_link
-model_scala_api_link=model_scala_api_link
+model_api_link=model_api_link
 %}

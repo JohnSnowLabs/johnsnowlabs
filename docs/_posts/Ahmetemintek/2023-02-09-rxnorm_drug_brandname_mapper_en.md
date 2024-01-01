@@ -21,6 +21,9 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps RxNorm and RxNorm Extension codes with their corresponding drug brand names. It returns 2 types of brand names for the corresponding RxNorm or RxNorm Extension code.
 
+`Important Note`: Mappers extract additional information such as extended descriptions and categories related to Concept codes (such as RxNorm, ICD10, CPT, MESH, NDC, UMLS, etc.). They generally take Concept Codes, which are the outputs of EntityResolvers, as input. When creating a pipeline that contains 'Mapper', it is necessary to use the ChunkMapperModel after an EntityResolverModel.
+
+
 ## Predicted Entities
 
 `rxnorm_brandname`, `rxnorm_extension_brandname`

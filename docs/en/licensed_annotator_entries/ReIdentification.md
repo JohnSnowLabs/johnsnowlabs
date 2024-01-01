@@ -100,6 +100,8 @@ reid_result.select('original.result').show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
+import spark.implicits._
+
 val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -151,9 +153,6 @@ val data = Seq((text)).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(arrays_zip(sentence.result, deidentified.metadata)) as cols")
-      .selectExpr("cols['0'] as sentence", "cols['1']['entity'] as deidentified").show(false)
-
 +-----------------------------------------------------------------------+-------------------------------------------------------+
 |sentence                                                               |deidentified                                           |
 +-----------------------------------------------------------------------+-------------------------------------------------------+
@@ -168,8 +167,6 @@ val reIdentification = new ReIdentification()
   .setOutputCol("original")
 
 val reidResult = reIdentification.transform(result)
-
-reidResult.selectExpr("original.result").show(false)
 
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |result                                                                                                                                                                                                                                         |
@@ -252,6 +249,8 @@ reid_result.select('original.result').show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
+import spark.implicits._
+
 val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -300,8 +299,6 @@ val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("deidentified.result").show(false)
-
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |result                                                                                                                                                                                  |
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -312,9 +309,7 @@ val reIdentification = new ReIdentification()
   .setInputCols(Array("aux", "deidentified"))
   .setOutputCol("original")
 
-val reidResult = reIdentification.transform(result)
 
-reidResult.selectExpr("original.result").show(false)
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |result                                                                                                                                                                                                                                                |
@@ -482,6 +477,8 @@ Securities registered pursuant to Section 12, (g) of the Act:]|
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
+import spark.implicits._
+
 val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -559,8 +556,6 @@ val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("deidentified.result").show(false)
-
 +-------------------------------------------------------------------------------------------------------------+
 |result                                                                                                       |
 +-------------------------------------------------------------------------------------------------------------+
@@ -598,8 +593,6 @@ val reIdentification = new ReIdentification()
   .setOutputCol("original")
 
 val reidResult = reIdentification.transform(result)
-
-reidResult.selectExpr("original.result").show(false)
 
 +---------------------------------------------------------------------------------------------------+
 |result                                                                                             |
@@ -645,7 +638,7 @@ Securities registered pursuant to Section 12, (g) of the Act:]|
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[ReIdentification](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ReIdentification.ipynb)
+[ReIdentificationNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ReIdentification.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

@@ -8,6 +8,14 @@ model
 
 {%- capture model_description -%}
 `AverageEmbeddings` computes the mean of vector embeddings for two sentences of equal size, producing a unified representation. 
+
+Parameters:
+
+- `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
+
+- `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
+
+All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
@@ -116,7 +124,7 @@ val avg_embeddings = new AverageEmbeddings()
   .setInputCols(Array("sent_biobert_clinical_base_cased","sbiobert_base_cased_mli","chunk"))
   .setOutputCol("embeddings") 
 
-val pipeline = Pipeline().setStages(Array(
+val pipeline = new Pipeline().setStages(Array(
     document_assembler, 
     sentence_detector, 
     doc2Chunk, 

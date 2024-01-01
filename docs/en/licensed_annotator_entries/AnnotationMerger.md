@@ -23,6 +23,10 @@ Merge annotations from different pipeline steps that have the same annotation ty
 - language (e.g., output of `LanguageDetectorDL` annotator)
 - keyword (e.g., output of `YakeModel` annotator)
 
+Parameters:
+
+- `inputType`: The type of the annotations that you want to merge. Possible values.
+
 {%- capture model_api_link -%}
 [AnnotationMerger](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/annotator/AnnotationMerger.html)
 {%- endcapture -%}
@@ -46,6 +50,8 @@ ANY
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
+
 # Create the pipeline with two RE models
 documenter = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -147,7 +153,9 @@ result.selectExpr("pos_relations.result as PosologyRelation",
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
-# Create the pipeline with two RE models
+import spark.implicits._
+
+// Create the pipeline with two RE models
 val documenter = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -221,9 +229,8 @@ val merger_pipeline = new Pipeline().setStages(Array(
 ))
 
 
-# Show example result
+// Show example result
 
-import spark.implicits._
 val text =
   """
 The patient was prescribed 1 unit of naproxen for 5 days after meals for chronic low back pain. The patient was also given 1 unit of oxaprozin daily for rheumatoid arthritis presented with tense bullae and cutaneous fragility on the face and the back of the hands..
@@ -242,6 +249,8 @@ val result = merger_pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
+from johnsnowlabs import nlp, finance
+
 # Create the pipeline with two RE models
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -402,7 +411,9 @@ result.selectExpr("relations_acq.result as AcqRelation",
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
-# Create the pipeline with two RE models
+import spark.implicits._
+
+// Create the pipeline with two RE models
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -471,7 +482,7 @@ val annotation_merger = new AnnotationMerger()
   .setOutputCol("relations")
   .setInputType("category")
 
-val nlpPipeline = new nlp.Pipeline().setStages(Array(
+val nlpPipeline = new Pipeline().setStages(Array(
   document_assembler,
   text_splitter,
   tokenizer,
@@ -489,8 +500,7 @@ val nlpPipeline = new nlp.Pipeline().setStages(Array(
   annotation_merger
 ))
 
-# Show example result
-import spark.implicits._
+// Show example result
 val text = """
 Definite-lived intangible assets acquired with Cadence’s fiscal 2021 acquisitions were as follows:
  
@@ -561,6 +571,8 @@ val result = nlpPipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
+from johnsnowlabs import nlp, legal
+
 # Create the pipeline with two RE models
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -666,7 +678,9 @@ result.selectExpr("relations_parties.result as PartiesRelation",
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
-# Create the pipeline with two RE models
+import spark.implicits._
+
+// Create the pipeline with two RE models
 val document_assembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -734,7 +748,7 @@ val annotation_merger = new AnnotationMerger()
   .setOutputCol("relations")
   .setInputType("category")
 
-val nlpPipeline = new nlp.Pipeline().setStages(Array(
+val nlpPipeline = new Pipeline().setStages(Array(
   document_assembler,
   text_splitter,
   tokenizer,
@@ -752,8 +766,8 @@ val nlpPipeline = new nlp.Pipeline().setStages(Array(
   annotation_merger
 ))
 
-# Show example result
-import spark.implicits._
+// Show example result
+
 val text = """WHEREAS, the Company Entities own certain Copyrights and Know-How which may be used in the Arizona Field, and in connection with the transactions contemplated by the Stock Purchase Agreement, Arizona desires to obtain a license from the Company Entities to use such Intellectual Property on the terms and subject to the conditions set forth herein.
 """
 

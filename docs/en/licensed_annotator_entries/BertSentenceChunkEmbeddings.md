@@ -9,9 +9,19 @@ model
 {%- capture model_description -%}
 This annotator allows aggregating sentence embeddings with ner chunk embeddings to get specific and more accurate resolution codes. It works by averaging sentence and chunk embeddings add contextual information in the embedding value. Input to this annotator is the context (sentence) and ner chunks, while the output is embedding for each chunk that can be fed to the resolver model. 
 
-BertSentenceChunkEmbeddings Parametres:
+Parameters:
 
-- `setChunkWeight(value: Float)`: BertSentenceChunkEmbeddings.this.type Sets the wieght of the chunk embeddings relative to the sentence embeddings.The `setChunkWeight` parameter can be used to control the influence of surrounding context.
+- `inputCols`: The name of the columns containing the input annotations. It can read either a String column or an Array.
+
+- `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
+
+- `chunkWeight`: Relative weight of chunk embeddings in comparison to sentence embeddings. The value should between 0 and 1. The default is 0.5, which means the chunk and sentence embeddings are given equal weight.
+
+- `setMaxSentenceLength`: Sets max sentence length to process, by default 128.
+
+- `caseSensitive`: Determines whether the definitions of the white listed entities are case sensitive.
+
+All the parameters can be set using the corresponding set method in camel case. For example, `.setInputcols()`.
 
 > For more information and examples of `BertSentenceChunkEmbeddings` annotator, you can check the [Spark NLP Workshop](https://github.com/JohnSnowLabs/spark-nlp-workshop), and in special, the notebook [24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.1.Improved_Entity_Resolution_with_SentenceChunkEmbeddings.ipynb).
 
@@ -26,7 +36,7 @@ SENTENCE_EMBEDDINGS
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-
+from johnsnowlabs import nlp, medical
 # Define the pipeline
 
 document_assembler = nlp.DocumentAssembler()\
@@ -140,10 +150,6 @@ Blood Type: AB positive. Rubella: Immune. VDRL: Nonreactive. Hepatitis C surface
 val data = Seq(sampleText).toDF("sampleText")
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("explode(sentence_embeddings) AS s")
-      .selectExpr("s.result", "slice(s.embeddings, 1, 5) AS averageEmbedding")
-      .show(truncate=false)
-
 +------+--------------------------------------------------------------+
 |result|averageEmbedding                                              |
 +------+--------------------------------------------------------------+
@@ -165,6 +171,9 @@ result.selectExpr("explode(sentence_embeddings) AS s")
 [BertSentenceChunkEmbeddings](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/embeddings/bert_sentence_embeddings/index.html#sparknlp_jsl.annotator.embeddings.bert_sentence_embeddings.BertSentenceChunkEmbeddings)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[BertSentenceChunkEmbeddingsNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/BertSentenceChunkEmbeddings.ipynb)
+{%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
@@ -176,4 +185,5 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}

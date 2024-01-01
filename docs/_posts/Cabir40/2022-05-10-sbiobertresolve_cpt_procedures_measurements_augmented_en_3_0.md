@@ -83,15 +83,15 @@ cpt_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_cpt_proce
 	.setDistanceFunction("EUCLIDEAN")
 
 resolver_pipeline = Pipeline(stages = [
-										document_assembler,
-										sentenceDetectorDL,
-										tokenizer,
-										word_embeddings,
-										ner,
-										ner_converter,
-										c2doc,
-										sbert_embedder,
-										cpt_resolver])
+	document_assembler,
+	sentenceDetectorDL,
+	tokenizer,
+	word_embeddings,
+	ner,
+	ner_converter,
+	c2doc,
+	sbert_embedder,
+	cpt_resolver])
 
 model = resolver_pipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
 
@@ -144,15 +144,15 @@ val cpt_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_cpt_p
 	.setDistanceFunction("EUCLIDEAN")
 
 val resolver_pipeline = new PipelineModel().setStages(Array(
-															document_assembler, 
-															sentenceDetectorDL, 
-															tokenizer, 
-															word_embeddings, 
-															ner, 
-															ner_converter,  
-															c2doc, 
-															sbert_embedder, 
-															cpt_resolver))
+	document_assembler, 
+	sentenceDetectorDL, 
+	tokenizer, 
+	word_embeddings, 
+	ner, 
+	ner_converter,  
+	c2doc, 
+	sbert_embedder, 
+	cpt_resolver))
 
 
 val data = Seq("She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement for drainage of the fluid occurred and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma.").toDS.toDF("text")

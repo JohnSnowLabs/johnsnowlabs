@@ -45,7 +45,6 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-
 from johnsnowlabs import nlp, medical
 
 document_assembler = nlp.DocumentAssembler()\
@@ -98,8 +97,6 @@ val pipeline = new Pipeline().setStages(Array(documentAssembler, medTextGenerato
 val data = Seq("Covid 19 is").toDS.toDF("prompt")
 
 val result = pipeline.fit(data).transform(data)
-
-result.selectExpr("answer.result").show(false)
 
 +--------------------------------------------------------------------------+
 |result                                                                    |
@@ -165,7 +162,6 @@ val data = Seq("This exhibit has been redacted and is the subject of a confident
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("answer.result").show(false)
 
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | result                                                                                                                                                                                                                                           |
@@ -226,8 +222,6 @@ val data = Seq("Explain what is Sec 10-k filing").toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("answer.result").show(false)
-
 +--------------------------------------------------------------------------------------------------------------------+
 |result                                                                                                              |
 +--------------------------------------------------------------------------------------------------------------------+
@@ -244,9 +238,6 @@ result.selectExpr("answer.result").show(false)
 [MedicalTextGenerator](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_text_generator/index.html)
 {%- endcapture -%}
 
-{%- capture model_notebook_link -%}
-
-{%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
@@ -262,4 +253,4 @@ model_python_finance=model_python_finance
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
-model_notebook_link=model_notebook_link%}
+%}
