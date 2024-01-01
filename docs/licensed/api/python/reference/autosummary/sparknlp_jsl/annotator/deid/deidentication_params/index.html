@@ -379,12 +379,15 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_classifier</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../handle_exception_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tf_graph_builder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.tf_graph_builder</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../white_black_list_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.white_black_list_params</span></code></a></li>
 </ul>
 </div>
 </nav></div>
@@ -533,6 +536,14 @@ while age for patients 90 years or younger can remain unchanged.
 If True, age entities larger than 90 will be obfuscated as per HIPAA Privacy Rule, the others will remain unchanged.
 If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
 </dd>
+<dt><strong>obfuscationStrategyOnException</strong></dt><dd><p>Sets the obfuscation strategy to be applied when an exception occurs.
+Four possible values are supported:
+- “mask”: The original chunk is replaced with a masking pattern.
+- “default”: The original chunk is replaced with a default faker.
+- “skip”: The original chunk is not replaced with any faker.
+- “exception”: Throws the exception.
+The default obfuscation strategy is “default”.</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -679,6 +690,11 @@ If False, <cite>ageRanges</cite> parameter is valid. Default: False.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.ageRangesByHipaa">
 <span class="sig-name descname"><span class="pre">ageRangesByHipaa</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.ageRangesByHipaa" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscationStrategyOnException">
+<span class="sig-name descname"><span class="pre">obfuscationStrategyOnException</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscationStrategyOnException" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1145,6 +1161,22 @@ Default: False.</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscationStrategyOnException">
+<span class="sig-name descname"><span class="pre">setObfuscationStrategyOnException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscationStrategyOnException" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the obfuscation strategy to be applied when an exception occurs.
+Four possible values are supported:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>“mask”: The original chunk is replaced with a masking pattern.</p></li>
+<li><p>“default”: The original chunk is replaced with a default faker.</p></li>
+<li><p>“skip”: The original chunk is not replaced with any faker.</p></li>
+<li><p>“exception”: Throws the exception.</p></li>
+</ul>
+</div></blockquote>
+<p>The default obfuscation strategy is “default”.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -1212,6 +1244,7 @@ Default: False.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.dateTag"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.dateTag</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.genderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.genderAwareness</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.ageRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.ageRangesByHipaa</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.obfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.obfuscationStrategyOnException</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setLanguage"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setLanguage()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getBlackList"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.getBlackList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setMode"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setMode()</span></code></a></li>
@@ -1245,6 +1278,7 @@ Default: False.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.getSameLengthFormattedEntities"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.getSameLengthFormattedEntities()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setGenderAwareness"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setGenderAwareness()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setAgeRangesByHipaa"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setAgeRangesByHipaa()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.deidentication_params.DeIdentificationParams.setObfuscationStrategyOnException"><code class="docutils literal notranslate"><span class="pre">DeIdentificationParams.setObfuscationStrategyOnException()</span></code></a></li>
 </ul>
 </li>
 </ul>

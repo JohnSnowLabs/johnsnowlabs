@@ -379,12 +379,15 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_classifier</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../handle_exception_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tf_graph_builder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.tf_graph_builder</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../white_black_list_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.white_black_list_params</span></code></a></li>
 </ul>
 </div>
 </nav></div>
@@ -892,8 +895,6 @@ and returns the normalized entity for a particular trained ontology / curated da
 <dd class="field-odd"><dl>
 <dt><strong>returnCosineDistances: bool</strong></dt><dd><p>Whether to extract Cosine Distances. Either True or False.</p>
 </dd>
-<dt><strong>aux_label_col: str</strong></dt><dd><p>Name of the auxiliary column which maps resolved entities to additional labels.</p>
-</dd>
 <dt><strong>useAuxLabel: bool</strong></dt><dd><p>Whether to use the auxiliary column or not. Either True or False</p>
 </dd>
 <dt><strong>searchTree: StructFeature_HadoopFix</strong></dt><dd><p>An encapsulated instance of the SerializableKDTree class.
@@ -966,11 +967,6 @@ and usually the user don’t need to set it.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.aux_label_col">
-<span class="sig-name descname"><span class="pre">aux_label_col</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.aux_label_col" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.useAuxLabel">
 <span class="sig-name descname"><span class="pre">useAuxLabel</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.useAuxLabel" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -988,20 +984,6 @@ and usually the user don’t need to set it.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>name</strong><span class="classifier">bool</span></dt><dd><p>Use AuxLabel Col or not.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.setAuxLabelCol">
-<span class="sig-name descname"><span class="pre">setAuxLabelCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.setAuxLabelCol" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets auxiliary label which maps resolved entities to additional labels</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>Auxiliary label which maps resolved entities to additional labels</p>
 </dd>
 </dl>
 </dd>
@@ -1126,11 +1108,9 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">SentenceEntityResolverModel.outputAnnotatorType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.name"><code class="docutils literal notranslate"><span class="pre">SentenceEntityResolverModel.name</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.returnCosineDistances"><code class="docutils literal notranslate"><span class="pre">SentenceEntityResolverModel.returnCosineDistances</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.aux_label_col"><code class="docutils literal notranslate"><span class="pre">SentenceEntityResolverModel.aux_label_col</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.useAuxLabel"><code class="docutils literal notranslate"><span class="pre">SentenceEntityResolverModel.useAuxLabel</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.searchTree"><code class="docutils literal notranslate"><span class="pre">SentenceEntityResolverModel.searchTree</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.setUseAuxLabel"><code class="docutils literal notranslate"><span class="pre">SentenceEntityResolverModel.setUseAuxLabel()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.setAuxLabelCol"><code class="docutils literal notranslate"><span class="pre">SentenceEntityResolverModel.setAuxLabelCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.setSearchTree"><code class="docutils literal notranslate"><span class="pre">SentenceEntityResolverModel.setSearchTree()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverModel.pretrained"><code class="docutils literal notranslate"><span class="pre">SentenceEntityResolverModel.pretrained()</span></code></a></li>
 </ul>

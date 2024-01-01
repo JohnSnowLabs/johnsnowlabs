@@ -379,12 +379,15 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_classifier</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../handle_exception_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tf_graph_builder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.tf_graph_builder</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../white_black_list_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.white_black_list_params</span></code></a></li>
 </ul>
 </div>
 </nav></div>
@@ -540,9 +543,16 @@ This param is not applicable only for “regex” and “recursive” splitMode.
 </dd>
 </dl>
 </div></blockquote>
-<dl class="simple">
-<dt>metaDataFields</dt><dd><p>Metadata fields to add specified data in columns to the metadata of the split documents.
+<dl>
+<dt>metaDataFields</dt><dd><blockquote>
+<div><p>Metadata fields to add specified data in columns to the metadata of the split documents.
 You should set column names to read columns.</p>
+</div></blockquote>
+<dl class="simple">
+<dt>enableSentenceIncrement</dt><dd><p>Whether the sentence index should be incremented in the metadata of the annotator.
+When set to true, the annotator will increment the sentence index in the metadata for each split documents. Default: False.</p>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd>
@@ -616,6 +626,11 @@ You should set column names to read columns.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.metaDataFields">
 <span class="sig-name descname"><span class="pre">metaDataFields</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.metaDataFields" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.enableSentenceIncrement">
+<span class="sig-name descname"><span class="pre">enableSentenceIncrement</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.enableSentenceIncrement" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -722,6 +737,22 @@ You should set column names to read columns.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setEnableSentenceIncrement">
+<span class="sig-name descname"><span class="pre">setEnableSentenceIncrement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setEnableSentenceIncrement" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether the sentence index should be incremented in the metadata of the annotator.
+When set to true, the annotator will increment the sentence index in the metadata for each split documents.
+Default: False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>value</strong><span class="classifier">bool</span></dt><dd><p>Whether the sentence index should be incremented in the metadata of the annotator. Default: False.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setInputCols">
 <span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setInputCols" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets column names of input annotations.</p>
@@ -783,12 +814,14 @@ You should set column names to read columns.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.customBoundsStrategy"><code class="docutils literal notranslate"><span class="pre">InternalDocumentSplitter.customBoundsStrategy</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.caseSensitive"><code class="docutils literal notranslate"><span class="pre">InternalDocumentSplitter.caseSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.metaDataFields"><code class="docutils literal notranslate"><span class="pre">InternalDocumentSplitter.metaDataFields</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.enableSentenceIncrement"><code class="docutils literal notranslate"><span class="pre">InternalDocumentSplitter.enableSentenceIncrement</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setSplitMode"><code class="docutils literal notranslate"><span class="pre">InternalDocumentSplitter.setSplitMode()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setSentenceAwareness"><code class="docutils literal notranslate"><span class="pre">InternalDocumentSplitter.setSentenceAwareness()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setMaxLength"><code class="docutils literal notranslate"><span class="pre">InternalDocumentSplitter.setMaxLength()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setCustomBoundsStrategy"><code class="docutils literal notranslate"><span class="pre">InternalDocumentSplitter.setCustomBoundsStrategy()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">InternalDocumentSplitter.setCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setMetaDataFields"><code class="docutils literal notranslate"><span class="pre">InternalDocumentSplitter.setMetaDataFields()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setEnableSentenceIncrement"><code class="docutils literal notranslate"><span class="pre">InternalDocumentSplitter.setEnableSentenceIncrement()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter.internal_document_splitter.InternalDocumentSplitter.setInputCols"><code class="docutils literal notranslate"><span class="pre">InternalDocumentSplitter.setInputCols()</span></code></a></li>
 </ul>
 </li>
