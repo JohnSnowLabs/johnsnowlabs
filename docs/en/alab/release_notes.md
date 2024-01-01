@@ -136,7 +136,7 @@ When users navigate to different pages under the Project section, the system dyn
 ### Search Feature
 Clicking the "Help" button triggers a popup view displaying application help and documentation, providing users with a quick and unobtrusive way to access relevant information without disrupting their workflow. Users can utilize the search feature within the popup view to find information on specific topics or functionalities, enhancing navigation and promoting a better understanding of the application's features.
 
-![Compact VIew in Project Configuration](/assets/images/annotation_lab/5.7.0/9.png)
+![Compact VIew in Project Configuration](/assets/images/annotation_lab/5.7.0/9.gif)
 
 ## Improvements
 ### Rejects annotations in CSV/TSV import
@@ -145,7 +145,7 @@ Starting from version 5.7, annotations are exclusively supported in JSON format.
 ### Redesign Team definition UI
 In previous versions, the placement of the "Add Team Members" feature was not optimal and confused some users. To optimize effective team management within the project, the addition of team members was moved to the left, with the definitions of the added team members now presented on the right side. This adjustment allows clear view off added team members without the need to scroll.
 
-![Compact VIew in Project Configuration](/assets/images/annotation_lab/5.7.0/10.gif)
+![Compact VIew in Project Configuration](/assets/images/annotation_lab/5.7.0/10.png)
 
 In addition, search and pagination functionalities are now incorporated into the list of added team members, enhancing the user's ability to quickly locate specific accounts. Moreover, role management does not require searching for accounts. Editing a role for an existing account can simply be done by selecting a new role for the specific account via a pop-up view. These enhancements collectively contribute to a more user-friendly experience and a simplified team management process.
 
@@ -182,7 +182,7 @@ In the past, when the Compact View option was activated, the visual alignment of
 - **Relations constraint is not applied correctly when the labels of the token are changed after creating relations**
 		
 	Previously, changing labels with associated relations could lead to outdated relationships. Now, when labels are updated, associated relations are automatically removed, ensuring accurate and consistent data.
-	![Compact VIew in Project Configuration](/assets/images/annotation_lab/5.7.0/13.png)	
+	![Compact VIew in Project Configuration](/assets/images/annotation_lab/5.7.0/13.gif)	
 
 - **Extra special character added after training Visual NER project with special character.**
 
