@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.1.4 ScalaDoc  - com.johnsnowlabs.nlp.annotators.re</title>
-          <meta name="description" content="Spark NLP 5.1.4 ScalaDoc - com.johnsnowlabs.nlp.annotators.re" />
-          <meta name="keywords" content="Spark NLP 5.1.4 ScalaDoc com.johnsnowlabs.nlp.annotators.re" />
+          <title>Spark NLP 5.2.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.re</title>
+          <meta name="description" content="Spark NLP 5.2.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.re" />
+          <meta name="keywords" content="Spark NLP 5.2.0 ScalaDoc com.johnsnowlabs.nlp.annotators.re" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.1.4 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.2.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -850,7 +850,7 @@ the associations between clinical problems and treatments.</p><h4>Example</h4><p
       
       
     </li><li name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionApproach" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="RelationExtractionApproachextendsGenericClassifierApproach"></a><a id="RelationExtractionApproach:RelationExtractionApproach"></a>
+      <a id="RelationExtractionApproachextendsGenericClassifierApproachwithHandleExceptionParams"></a><a id="RelationExtractionApproach:RelationExtractionApproach"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/re/RelationExtractionApproach.html" title="Permalink">
         <i class="material-icons"></i>
@@ -861,7 +861,7 @@ the associations between clinical problems and treatments.</p><h4>Example</h4><p
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="Trains a TensorFlow model for relation extraction." href="RelationExtractionApproach.html"><span class="name">RelationExtractionApproach</span></a><span class="result"> extends <a href="../generic_classifier/GenericClassifierApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach">GenericClassifierApproach</a></span>
+        <a title="Trains a TensorFlow model for relation extraction." href="RelationExtractionApproach.html"><span class="name">RelationExtractionApproach</span></a><span class="result"> extends <a href="../generic_classifier/GenericClassifierApproach.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierApproach">GenericClassifierApproach</a> with <a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a></span>
       </span>
       
       <p class="shortcomment cmt">Trains a TensorFlow model for relation extraction.</p><div class="fullcomment"><div class="comment cmt"><p>Trains a TensorFlow model for relation extraction.</p><p>For pretrained models, see the documentation of <a href="RelationExtractionModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionModel">RelationExtractionModel</a>.</p><p>To train a custom relation extraction model, you need to first create
@@ -934,7 +934,7 @@ the resulting object is of class <a href="RelationExtractionModel.html" class="e
 
 <span class="kw">val</span> model = pipeline.fit(trainData)</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="RelationExtractionModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionModel">RelationExtractionModel</a> for pretrained models and how to use it</p></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionDLModel" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="RelationExtractionDLModelextendsAnnotatorModel[com.johnsnowlabs.nlp.annotators.re.RelationExtractionDLModel]withWriteTensorflowModelwithHasStorageRefwithHasCaseSensitivePropertieswithHasSimpleAnnotate[com.johnsnowlabs.nlp.annotators.re.RelationExtractionDLModel]withRelationEncodingwithHasEnginewithCheckLicense"></a><a id="RelationExtractionDLModel:RelationExtractionDLModel"></a>
+      <a id="RelationExtractionDLModelextendsAnnotatorModel[com.johnsnowlabs.nlp.annotators.re.RelationExtractionDLModel]withWriteTensorflowModelwithHasStorageRefwithHasCaseSensitivePropertieswithHasSimpleAnnotate[com.johnsnowlabs.nlp.annotators.re.RelationExtractionDLModel]withRelationEncodingwithHasEnginewithHandleExceptionParamswithHasSafeAnnotate[com.johnsnowlabs.nlp.annotators.re.RelationExtractionDLModel]withCheckLicense"></a><a id="RelationExtractionDLModel:RelationExtractionDLModel"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/re/RelationExtractionDLModel.html" title="Permalink">
         <i class="material-icons"></i>
@@ -945,7 +945,7 @@ the resulting object is of class <a href="RelationExtractionModel.html" class="e
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="Extracts and classifies instances of relations between named entities." href="RelationExtractionDLModel.html"><span class="name">RelationExtractionDLModel</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="RelationExtractionDLModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionDLModel">RelationExtractionDLModel</a>] with <span class="extype" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">WriteTensorflowModel</span> with <span class="extype" name="com.johnsnowlabs.storage.HasStorageRef">HasStorageRef</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasCaseSensitiveProperties">HasCaseSensitiveProperties</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="RelationExtractionDLModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionDLModel">RelationExtractionDLModel</a>] with <a href="RelationEncoding.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationEncoding">RelationEncoding</a> with <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
+        <a title="Extracts and classifies instances of relations between named entities." href="RelationExtractionDLModel.html"><span class="name">RelationExtractionDLModel</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="RelationExtractionDLModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionDLModel">RelationExtractionDLModel</a>] with <span class="extype" name="com.johnsnowlabs.ml.tensorflow.WriteTensorflowModel">WriteTensorflowModel</span> with <span class="extype" name="com.johnsnowlabs.storage.HasStorageRef">HasStorageRef</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasCaseSensitiveProperties">HasCaseSensitiveProperties</span> with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="RelationExtractionDLModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionDLModel">RelationExtractionDLModel</a>] with <a href="RelationEncoding.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationEncoding">RelationEncoding</a> with <span class="extype" name="com.johnsnowlabs.nlp.HasEngine">HasEngine</span> with <a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a> with <a href="../../jsl/HasSafeAnnotate.html" class="extype" name="com.johnsnowlabs.nlp.jsl.HasSafeAnnotate">HasSafeAnnotate</a>[<a href="RelationExtractionDLModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionDLModel">RelationExtractionDLModel</a>] with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
       </span>
       
       <p class="shortcomment cmt">Extracts and classifies instances of relations between named entities.</p><div class="fullcomment"><div class="comment cmt"><p>Extracts and classifies instances of relations between named entities.
@@ -995,7 +995,7 @@ Define the extraction model</p><pre><span class="kw">val</span> re_ner_chunk_fil
 |right |Direction|basil ganglia|Internal_organ_or_component|<span class="num">1</span>     |
 +------+---------+-------------+---------------------------+------+</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="RelationExtractionModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionModel">RelationExtractionModel</a> for ML based extraction</p></span><span class="cmt"><p><a href="RENerChunksFilter.html" class="extype" name="com.johnsnowlabs.nlp.annotators.re.RENerChunksFilter">RENerChunksFilter</a> on how to create inputs</p></span></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.re.RelationExtractionModel" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="RelationExtractionModelextendsGenericClassifierModelwithParamsAndFeaturesWritable"></a><a id="RelationExtractionModel:RelationExtractionModel"></a>
+      <a id="RelationExtractionModelextendsGenericClassifierModelwithParamsAndFeaturesWritablewithHandleExceptionParamswithHasSafeAnnotate[com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel]"></a><a id="RelationExtractionModel:RelationExtractionModel"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/re/RelationExtractionModel.html" title="Permalink">
         <i class="material-icons"></i>
@@ -1006,7 +1006,7 @@ Define the extraction model</p><pre><span class="kw">val</span> re_ner_chunk_fil
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <a title="Extracts and classifies instances of relations between named entities." href="RelationExtractionModel.html"><span class="name">RelationExtractionModel</span></a><span class="result"> extends <a href="../generic_classifier/GenericClassifierModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel">GenericClassifierModel</a> with <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span></span>
+        <a title="Extracts and classifies instances of relations between named entities." href="RelationExtractionModel.html"><span class="name">RelationExtractionModel</span></a><span class="result"> extends <a href="../generic_classifier/GenericClassifierModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel">GenericClassifierModel</a> with <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span> with <a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a> with <a href="../../jsl/HasSafeAnnotate.html" class="extype" name="com.johnsnowlabs.nlp.jsl.HasSafeAnnotate">HasSafeAnnotate</a>[<a href="../generic_classifier/GenericClassifierModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.generic_classifier.GenericClassifierModel">GenericClassifierModel</a>]</span>
       </span>
       
       <p class="shortcomment cmt">Extracts and classifies instances of relations between named entities.</p><div class="fullcomment"><div class="comment cmt"><p>Extracts and classifies instances of relations between named entities. For this, relation pairs

@@ -379,12 +379,15 @@ document.write(`
 <li class="toctree-l1"><a class="reference internal" href="../../annotation_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.annotation_merger</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../chunk2_token/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunk2_token</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../doc2_chunk_internal/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.doc2_chunk_internal</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../document_filterer_by_classifier/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.document_filterer_by_classifier</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../feature_assembler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.feature_assembler</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../filtering_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.filtering_params</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../handle_exception_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.handle_exception_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../resolution2_chunk/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.resolution2_chunk</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../router/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.router</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../source_tracking_metadata_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.source_tracking_metadata_params</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../tf_graph_builder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.tf_graph_builder</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../white_black_list_params/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.white_black_list_params</span></code></a></li>
 </ul>
 </div>
 </nav></div>
@@ -504,6 +507,11 @@ type are separated by those words, these entities can be combined to produce a s
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.ignoreStopWords">
 <span class="sig-name descname"><span class="pre">ignoreStopWords</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.ignoreStopWords" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.doExceptionHandling">
+<span class="sig-name descname"><span class="pre">doExceptionHandling</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.doExceptionHandling" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -630,6 +638,23 @@ type are separated by those words, these entities can be combined to produce a s
 <span class="gp">... </span>   <span class="o">.</span><span class="n">setIgnoreStopWords</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;an&quot;</span><span class="p">,</span> <span class="s2">&quot;the&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setDoExceptionHandling">
+<span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
+<dd><ul class="simple">
+<li><p>If true, exceptions are handled.</p></li>
+<li><p>If exception causing data is passed to the model, a error annotation is emitted which has the exception message. Processing continues with the next one.</p></li>
+<li><p>This comes with a performance penalty.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>value</strong><span class="classifier">bool</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -921,12 +946,14 @@ Chunks with no associated entity (tagged “O”) are filtered.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.greedyMode"><code class="docutils literal notranslate"><span class="pre">CommonNerConverterInternalParams.greedyMode</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.threshold"><code class="docutils literal notranslate"><span class="pre">CommonNerConverterInternalParams.threshold</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.ignoreStopWords"><code class="docutils literal notranslate"><span class="pre">CommonNerConverterInternalParams.ignoreStopWords</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">CommonNerConverterInternalParams.doExceptionHandling</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setAllowList"><code class="docutils literal notranslate"><span class="pre">CommonNerConverterInternalParams.setAllowList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setDenyList"><code class="docutils literal notranslate"><span class="pre">CommonNerConverterInternalParams.setDenyList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setPreservePosition"><code class="docutils literal notranslate"><span class="pre">CommonNerConverterInternalParams.setPreservePosition()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setGreedyMode"><code class="docutils literal notranslate"><span class="pre">CommonNerConverterInternalParams.setGreedyMode()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setThreshold"><code class="docutils literal notranslate"><span class="pre">CommonNerConverterInternalParams.setThreshold()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setIgnoreStopWords"><code class="docutils literal notranslate"><span class="pre">CommonNerConverterInternalParams.setIgnoreStopWords()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.CommonNerConverterInternalParams.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">CommonNerConverterInternalParams.setDoExceptionHandling()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner.ner_converter_internal.NerConverterInternal"><code class="docutils literal notranslate"><span class="pre">NerConverterInternal</span></code></a><ul class="nav section-nav flex-column">
