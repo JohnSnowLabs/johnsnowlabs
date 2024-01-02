@@ -341,6 +341,8 @@ Results show that the different versions can have some variance in the execution
 </div>
 <div class="h3-box" markdown="1">
 
+## GPU vs CPU benchmark
+
 This section includes a benchmark for MedicalNerApproach(), comparing its performance when running in `m5.8xlarge` CPU vs a `Tesla V100 SXM2` GPU, as described in the `Machine Specs` section below.
 
 Big improvements have been carried out from version 3.3.4, so please, make sure you use at least that version to fully levearge Spark NLP capabilities on GPU.
@@ -504,6 +506,8 @@ Please, take a look at the [Spark NLP](https://nlp.johnsnowlabs.com/docs/en/trai
 
 </div>
 <div class="h3-box" markdown="1">
+
+## Spark NLP vs Spacy Pandas UDF with Arrow Benchmark
 
 This benchmarking report aims to provide a comprehensive comparison between two NLP frameworks on Spark clusters: Spark NLP and SpaCy, specifically in the context of Pandas UDF with Arrow optimization.
 

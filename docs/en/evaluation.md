@@ -326,7 +326,7 @@ nerCrfEvaluation = NerCrfEvaluation(spark, testFile, tagLevel)
 nerCrfEvaluation.computeAccuracyModel(nerCrf)
 ```
 
-</div></div>
+</div></div><div class="h3-box" markdown="1">
 
 ### Evaluating POS Tagger
 
@@ -361,4 +361,4 @@ val posEvaluation = new POSEvaluation(spark, testFile)
 posEvaluation.computeAccuracyAnnotator(trainFile, posTagger)
 ```
 
-</div>
+</div></div>

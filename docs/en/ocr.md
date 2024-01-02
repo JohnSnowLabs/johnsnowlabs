@@ -11,6 +11,9 @@ show_nav: true
 sidebar:
     nav: spark-ocr
 ---
+
+<div class="h3-box" markdown="1">
+
 Spark OCR is another commercial extension of Spark NLP for optical character recognition from images, scanned PDF documents, Microsoft DOCX and DICOM files. If you want to try it out on your own documents click on the below button:
 
 {:.btn-block}
@@ -43,6 +46,7 @@ Spark OCR is built on top of ```Apache Spark``` and offers the following capabil
 - Scale out: distribute the OCR jobs across multiple nodes in a Spark cluster.
 - Frictionless unification of OCR, NLP, ML & DL pipelines.
 
+</div><div class="h3-box" markdown="1">
 
 ## Spark OCR Workshop
 
@@ -54,7 +58,7 @@ Below, you can follow a more theoretical and thorough quick start guide.
 
 ## Quickstart Examples
 
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### Images
 
@@ -452,10 +456,12 @@ result.select("path", "text", "exception").show(2, False)
 +----------------------+-------------------------------------------+-----------------------------------------------------+
 ```
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 ### Performance
 
 In case of big count of text PDF's in dataset
 need have manual partitioning for avoid skew in partitions and effective utilize resources. 
 For example the randomization could be used.
+
+</div>
