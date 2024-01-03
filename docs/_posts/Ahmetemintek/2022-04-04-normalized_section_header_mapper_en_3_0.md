@@ -46,38 +46,31 @@ document_assembler = DocumentAssembler()\
 .setInputCol('text')\
 .setOutputCol('document')
 
-
 sentence_detector = SentenceDetector()\
 .setInputCols(["document"])\
 .setOutputCol("sentence")
-
 
 tokenizer = Tokenizer()\
 .setInputCols("sentence")\
 .setOutputCol("token")
 
-
 embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en","clinical/models")\
 .setInputCols(["sentence", "token"])\
 .setOutputCol("word_embeddings")
 
-
 clinical_ner = MedicalNerModel.pretrained("ner_jsl_slim", "en", "clinical/models")\
 .setInputCols(["sentence","token", "word_embeddings"])\
 .setOutputCol("ner")
-
 
 ner_converter = NerConverter()\
 .setInputCols(["sentence", "token", "ner"])\
 .setOutputCol("ner_chunk")\
 .setWhiteList(["Header"])
 
-
 chunkerMapper = ChunkMapperModel.pretrained("normalized_section_header_mapper", "en", "clinical/models") \
 .setInputCols("ner_chunk")\
 .setOutputCol("mappings")\
 .setRel("level_1") #or level_2
-
 
 pipeline = Pipeline().setStages([document_assembler,
 sentence_detector,

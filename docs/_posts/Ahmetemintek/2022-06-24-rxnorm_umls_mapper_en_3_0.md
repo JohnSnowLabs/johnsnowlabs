@@ -39,6 +39,7 @@ This pretrained model maps RxNorm codes with corresponding UMLS Codes.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
 .setInputCol("text")\

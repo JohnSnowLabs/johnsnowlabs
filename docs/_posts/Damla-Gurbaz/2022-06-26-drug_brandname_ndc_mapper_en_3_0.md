@@ -21,9 +21,6 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps drug brand names to corresponding National Drug Codes (NDC). Product NDCs for each strength are returned in result and metadata.
 
-`Important Note`: Mappers extract additional information such as extended descriptions and categories related to Concept codes (such as RxNorm, ICD10, CPT, MESH, NDC, UMLS, etc.). They generally take Concept Codes, which are the outputs of EntityResolvers, as input. When creating a pipeline that contains 'Mapper', it is necessary to use the ChunkMapperModel after an EntityResolverModel.
-
-
 ## Predicted Entities
 
 `Strength_NDC`
@@ -35,8 +32,6 @@ This pretrained model maps drug brand names to corresponding National Drug Codes
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/drug_brandname_ndc_mapper_en_3.5.3_3.0_1656260706121.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
-
-
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}

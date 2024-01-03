@@ -39,6 +39,7 @@ This pretrained model maps clinical entities and concepts to 4 major categories 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol('text')\

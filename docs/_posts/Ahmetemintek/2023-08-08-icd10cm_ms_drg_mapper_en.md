@@ -39,6 +39,7 @@ This pretrained model maps ICD-10-CM codes with their corresponding Medicare Sev
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol("text")\

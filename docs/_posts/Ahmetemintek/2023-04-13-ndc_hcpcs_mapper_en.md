@@ -39,6 +39,7 @@ This pretrained model maps National Drug Codes (NDC) with their corresponding HC
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol("text")\
