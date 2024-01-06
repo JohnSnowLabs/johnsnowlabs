@@ -54,12 +54,12 @@ ImageToTextV2 now supports the following configurations:
 We put together this grid reflecting performance and accuracy metrics to help you choose the most appropriate checkpoint for your use case.
 * Accuracy
 
-![image](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/0739e251-515a-4bbe-b436-df2c9e682f66)
+![image](/assets/images/ocr/acc.png)
 
 
 * Performance
 
-![image](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/13bb2eb1-db9b-40cd-bc20-a410424cb5c3)
+![image](/assets/images/ocr/perf.png)
 
 Note:
 * CER: character error rate.
