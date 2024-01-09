@@ -13,11 +13,13 @@ sidebar:
     nav: sparknlp
 ---
 
-There are third party projects that can integrate with Spark NLP. These
-packages need to be installed separately to be used.
+<div class="h3-box" markdown="1">
 
-If you'd like to integrate your application with Spark NLP, please send us a
-message!
+There are third party projects that can integrate with Spark NLP. These packages need to be installed separately to be used.
+
+If you'd like to integrate your application with Spark NLP, please send us a message!
+
+</div><div class="h3-box" markdown="1">
 
 ## Logging
 
@@ -42,7 +44,7 @@ For more information see the [User Guide](/api/python/third_party/Comet.html) an
 
 <summary class="button"><b>Show Example</b></summary>
 
-<div class="tabs-box tabs-new" markdown="1">
+<div class="tabs-new" markdown="1">
 
 ```python
 # Metrics while training an annotator can be logged with for example:
@@ -113,3 +115,5 @@ source platform for the machine learning lifecycle, that includes:
 
 For more information, please see the complete guide at [Experiment
 Tracking](/docs/en/mlflow).
+
+</div>

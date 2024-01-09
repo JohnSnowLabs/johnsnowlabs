@@ -12,11 +12,15 @@ sidebar:
     nav: spark-ocr
 ---
 
+<div class="h3-box" markdown="1">
+
 NLP models are great at processing digital text, but many real-word applications use documents with more complex formats. For example, healthcare systems often include visual lab results, sequencing reports, clinical trial forms, and other scanned documents. When we only use an NLP approach for document understanding, we lose layout and style information - which can be vital for document image understanding. New advances in multi-modal learning allow models to learn from both the text in documents (via NLP) and visual layout (via computer vision).
 
 We provide multi-modal visual document understanding, built on Spark OCR based on the LayoutLM architecture. It achieves new state-of-the-art accuracy in several downstream tasks, including form understanding (from 70.7 to 79.3), receipt understanding (from 94.0 to 95.2) and document image classification (from 93.1 to 94.4).
 
 Please check also webinar: [Visual Document Understanding with Multi-Modal Image & Text Mining in Spark OCR 3](https://events.johnsnowlabs.com/webinars)
+
+</div><div class="h3-box" markdown="1">
 
 ## VisualDocumentClassifier
 
@@ -50,11 +54,9 @@ to 10 different classes (Resume, News, Note, Advertisement, Scientific, Report, 
 | labelCol | string | label | Name of output column with the predicted label. |
 | confidenceCol | string | confidence | Name of output column with confidence. |
 
-
 **Example:**
 
-
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -144,6 +146,7 @@ Output:
 
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ## VisualDocumentNER
 
@@ -178,8 +181,7 @@ scanned receipt images.
 
 **Example:**
 
-
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -266,6 +268,8 @@ Output:
 +-------------------------------------------------------------------------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ## VisualDocumentNER
 
 `VisualDocumentNER` is the main entry point to transformer-based models for document NER. An example of a VisualDocumentNER task is the detection of keys and values like in the FUNSD dataset.
@@ -300,8 +304,7 @@ Check the Models Hub for available models.
 
 **Example:**
 
-
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -407,6 +410,8 @@ Output sample:
 +---------+-------------------------------------------------------------------------------------------------------------------------+
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ## FormRelationExtractor
 
 `FormRelationExtractor` detect relation between keys and values detected by `VisualDocumentNER`.
@@ -437,11 +442,9 @@ It can detect relations only for key/value in same line.
 | --- | --- | --- | --- |
 | outputCol | string | relations | Name of output column with relation Annotations. |
 
-
 **Example:**
 
-
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -551,3 +554,5 @@ Output sample:
 |[relation, 345, 361, BP: 120 80 mmHg, [bbox1 -> 790 478 30 19, ...   |
 +---------------------------------------------------------------------+
 ```
+
+</div>

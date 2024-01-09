@@ -13,15 +13,15 @@ model
 {%- capture model_description -%}
 Creates a generic single-label classifier which uses pre-generated Tensorflow graphs. The model operates on FEATURE_VECTOR annotations which can be produced using FeatureAssembler. Requires the FeaturesAssembler to create the input.
 
-## **🔎 Parameters**
+Parameters:
 
-featureScaling: Feature scaling method. Possible values are 'zscore', 'minmax' or empty (no scaling) (default:'')
+`featureScaling`: Feature scaling method. Possible values are 'zscore', 'minmax' or empty (no scaling) (default:'')
 
-multiClass: Whether to return only the label with the highest confidence score or all labels (default: False)
+`multiClass`: Whether to return only the label with the highest confidence score or all labels (default: False)
 
-inputCols: previous annotations columns, if renamed (default: ['features'])
+`inputCols`: previous annotations columns, if renamed (default: ['features'])
 
-outputCol: output annotation column. can be left default. (default: class)
+`outputCol`: output annotation column. can be left default. (default: class)
 
 {%- endcapture -%}
 
@@ -132,12 +132,12 @@ val genericClassifier = PretrainedPipeline("generic_svm_classifier_ade", lang = 
 
 val pipeline = new Pipeline()
   .setStages(Array(
-    documentAssembler,
-    tokenizer,
-    wordEmbeddings,
-    sentenceEmbeddings,
-    featuresAssembler,
-    genericClassifier))
+  documentAssembler,
+  tokenizer,
+  wordEmbeddings,
+  sentenceEmbeddings,
+  featuresAssembler,
+  genericClassifier))
 
 val data = Seq(
   ("""None of the patients required treatment for the overdose."""),
@@ -180,15 +180,20 @@ val result = pipeline.fit(df).transform(df)
 [GenericSVMClassifier](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/generic_svm_classifier/index.html#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierModel)
 {%- endcapture -%}
 
-{%- capture model_scala_api_link -%}
+{%- capture model_api_link -%}
 [GenericSVMClassifier](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/GenericSVMClassifierModel.html)
+{%- endcapture -%}
+
+{%- capture model_notebook_link -%}
+[GenericSVMClassifierNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericSVMClassifierModel.ipynb)
 {%- endcapture -%}
 
 
 {%- capture approach_description -%}
 `GenericSVMClassifier` is a derivative of GenericClassifier which implements SVM (Support Vector Machine) classification. The input to the model is FeatureVector and the output is category annotations with labels and corresponding confidence scores. The scores are standardized using the logistic function so that they vary between 0 and 1.
 
-## **🔎 Parameters**
+Parameters:
+
 - `batchSize`: (int) Batch size
 
 - `dropout`: (float) Dropout coefficient
@@ -227,30 +232,28 @@ CATEGORY
 from jojnsnowlabs import nlp, medical
 
 document_assembler = nlp.DocumentAssembler()\
-        .setInputCol("text")\
-        .setOutputCol("document")
+    .setInputCol("text")\
+    .setOutputCol("document")
 
 tokenizer = nlp.Tokenizer() \
-            .setInputCols(["document"]) \
-            .setOutputCol("token")
+    .setInputCols(["document"]) \
+    .setOutputCol("token")
 
 word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_healthcare_100d","en","clinical/models")\
-        .setInputCols(["document","token"])\
-        .setOutputCol("word_embeddings")
+    .setInputCols(["document","token"])\
+    .setOutputCol("word_embeddings")
 
 sentence_embeddings = nlp.SentenceEmbeddings() \
-        .setInputCols(["document", "word_embeddings"]) \
-        .setOutputCol("sentence_embeddings") \
-        .setPoolingStrategy("AVERAGE")
+    .setInputCols(["document", "word_embeddings"]) \
+    .setOutputCol("sentence_embeddings") \
+    .setPoolingStrategy("AVERAGE")
 
-embeddings_pipeline = nlp.Pipeline(
-    stages = [
-        document_assembler,
-        tokenizer,
-        word_embeddings,
-        sentence_embeddings,
-
-    ])
+embeddings_pipeline = nlp.Pipeline(stages = [
+    document_assembler,
+    tokenizer,
+    word_embeddings,
+    sentence_embeddings,
+])
 
 trainingData_with_embeddings = embeddings_pipeline.fit(trainingData).transform(trainingData)
 trainingData_with_embeddings = trainingData_with_embeddings.select("text","category","sentence_embeddings")
@@ -342,8 +345,12 @@ val model = pipeline.fit(trainingData)
 [GenericSVMClassifier](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/generic_svm_classifier/index.html#sparknlp_jsl.annotator.classification.generic_svm_classifier.GenericSVMClassifierApproach)
 {%- endcapture -%}
 
-{%- capture approach_scala_api_link -%}
+{%- capture approach_api_link -%}
 [GenericSVMClassifier](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/GenericSVMClassifierApproach.html)
+{%- endcapture -%}
+
+{%- capture approach_notebook_link -%}
+[GenericSVMClassifierNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/GenericSVMClassifierApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
@@ -357,6 +364,7 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 approach_description=approach_description
 approach_input_anno=approach_input_anno
 approach_output_anno=approach_output_anno
@@ -364,4 +372,5 @@ approach_python_medical=approach_python_medical
 approach_scala_medical=approach_scala_medical
 approach_api_link=approach_api_link
 approach_python_api_link=approach_python_api_link
+approach_notebook_link=approach_notebook_link
 %}

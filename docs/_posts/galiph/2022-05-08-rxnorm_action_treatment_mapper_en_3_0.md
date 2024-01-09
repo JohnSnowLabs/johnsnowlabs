@@ -23,7 +23,6 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps RxNorm and RxNorm Extension codes with their corresponding action and treatment. Action refers to the function of the drug in various body systems; treatment refers to which disease the drug is used to treat.
 
-
 ## Predicted Entities
 
 

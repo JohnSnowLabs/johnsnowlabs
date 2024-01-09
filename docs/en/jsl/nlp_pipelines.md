@@ -124,7 +124,7 @@ different components in a spark dataframe.
 Remember than when starting jupyter notebook from pyspark or when running the spark-shell for scala, a Spark Session is started in the background
 by default within the namespace 'scala'.
 
-<div class="tabs-box tabs-new" markdown="1">
+<div class="tabs-new" markdown="1">
 
 
 ```python
@@ -242,7 +242,7 @@ annotated. There is a special **transformer** that does this for us:
 the **DocumentAssembler**, it creates the first annotation of type
 **Document** which may be used by annotators down the road.
 
-<div class="tabs-box tabs-new" markdown="1">
+<div class="tabs-new" markdown="1">
 
 
 ```python

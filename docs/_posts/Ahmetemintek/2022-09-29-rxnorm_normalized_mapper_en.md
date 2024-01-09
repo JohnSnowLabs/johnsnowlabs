@@ -37,6 +37,7 @@ This pretrained pipeline maps entities with their corresponding RxNorm codes and
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
         .setInputCol('text')\

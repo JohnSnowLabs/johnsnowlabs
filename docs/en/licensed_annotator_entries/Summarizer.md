@@ -49,6 +49,8 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
+from johnsnowlabs import nlp, medical
+
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol('text')\
     .setOutputCol('document')
@@ -90,6 +92,8 @@ result.select("summary.result").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
+import spark.implicits._
+
 val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -117,11 +121,10 @@ val data = Seq(text).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.selectExpr("summary.result").show(false)
-
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
+from johnsnowlabs import nlp, legal
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -167,6 +170,8 @@ result.select("summary.result").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
+import spark.implicits._
+
 val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
@@ -202,8 +207,6 @@ val data = Seq(text).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.select("summary.result").show(false)
-
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |result                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 +--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -213,6 +216,7 @@ result.select("summary.result").show(false)
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
+from johnsnowlabs import nlp, finance
 
 document_assembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -236,6 +240,7 @@ result.select("summary.result").show(truncate=False)
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
+import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
@@ -256,7 +261,6 @@ val data = Seq(text).toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.select("summary.result").show(false)
 {%- endcapture -%}
 
 {%- capture model_api_link -%}
@@ -265,9 +269,6 @@ result.select("summary.result").show(false)
 
 {%- capture model_python_api_link -%}
 [MedicalSummarizer](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/seq2seq/medical_summarizer/index.html#sparknlp_jsl.annotator.seq2seq.medical_summarizer.MedicalSummarizer)
-{%- endcapture -%}
-
-{%- capture model_notebook_link -%}
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
@@ -284,4 +285,4 @@ model_python_finance=model_python_finance
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
-model_notebook_link=model_notebook_link%}
+%}

@@ -12,7 +12,7 @@ This is a zero shot named entity recognition based on `RoBertaForQuestionAnsweri
 
 Even though a model trained to solve a specific problem can achieve better accuracy than a zero-shot model in this specific task, it probably won't be be useful in a different task. That is where zero-shot models shows its usefulness by being able to achieve good results in many different scenarions.
 
-Parametres:
+Parameters:
 
 - `entityDefinitions`: A dictionary with definitions of the named entities. The keys of dictionary are the entity types and the values are lists of hypothesis templates.
 
@@ -253,7 +253,6 @@ result.select(F.explode(F.arrays_zip(result.ner_chunk.result, result.ner_chunk.m
 
 
 {%- capture model_scala_medical -%}
-
 import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
@@ -299,11 +298,6 @@ val textList = Seq(
 
 val result = pipeline.fit(textList).transform(textList)
 
-result.selectExpr("explode(arrays_zip(ner_chunk.result, ner_chunk.metadata)) as cols")
-  .selectExpr(
-    "cols['0'] as chunk",
-    "cols['1']['entity'] as ner_label",
-    "cols['1']['confidence'] as confidence").show(70) 
   
 +------------------------------------------------+--------------+----------+
 |                                           chunk|     ner_label|confidence|
@@ -319,7 +313,6 @@ result.selectExpr("explode(arrays_zip(ner_chunk.result, ner_chunk.metadata)) as 
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
-
 import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
@@ -370,10 +363,6 @@ val text_list = Seq(
 
 val result = pipeline.fit(text_list).transform(text_list)
 
-result.selectExpr("explode(arrays_zip(ner_chunk.result, ner_chunk.metadata)) as cols")
-      .selectExpr("cols['0'] as chunk", "cols['1']['entity'] as ner_label").show(false)
-
-
 +------------------+-------------------+
 |chunk             |ner_label          |
 +------------------+-------------------+
@@ -393,6 +382,7 @@ result.selectExpr("explode(arrays_zip(ner_chunk.result, ner_chunk.metadata)) as 
 
 
 {%- capture model_scala_legal -%}
+import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
@@ -440,8 +430,6 @@ val textList = Seq(
 
 val result = pipeline.fit(textList).transform(textList)
 
-result.selectExpr("explode(arrays_zip(ner_chunk.result, ner_chunk.metadata)) as cols")
-      .selectExpr("cols['0'] as chunk", "cols['1']['entity'] as ner_label").show(false)
 +-------------------------------------+-----------------+
 |chunk                                |ner_label        |
 +-------------------------------------+-----------------+
@@ -472,7 +460,7 @@ result.selectExpr("explode(arrays_zip(ner_chunk.result, ner_chunk.metadata)) as 
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[ZeroShotNerModel](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ZeroShotNerModel.ipynb)
+[ZeroShotNerModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ZeroShotNerModel.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

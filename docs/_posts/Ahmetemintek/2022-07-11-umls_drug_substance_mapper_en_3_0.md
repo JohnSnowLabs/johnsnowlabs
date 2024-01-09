@@ -37,6 +37,7 @@ This pretrained model maps entities (Drug Substances) with their corresponding U
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol('text')\

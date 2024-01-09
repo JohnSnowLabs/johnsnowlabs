@@ -105,4 +105,16 @@ data:
           - text: Colab
             type: blue_btn
             url: 
+        - title: Legal Contract NLI
+          id: legal_contract_nli       
+          image: 
+              src: /assets/images/Legal_Contract_NLI.svg
+          excerpt: This is a text-to-text generation model (encode-decoder architecture) that has undergone fine-tuning on contract for Natural Language Inference on in-house curated dataset, aiming to streamline and expedite the contract review process. The objective of this task is to provide a system with a set of hypotheses, like “Some obligations of Agreement may survive termination,” along with a contract, and task it with classifying whether each hypothesis is entailed, contradicted, or not mentioned (neutral) by the contract.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/legal/LEGGEN_CONTRACT_NLI/
+          - text: Colab
+            type: blue_btn
+            url: 
 ---

@@ -165,6 +165,8 @@ annotation-lab:
             url: /docs/en/alab/cluster_management
       - title: NLP Libraries Integration
         url: /docs/en/alab/healthcare
+      - title: Spark Library Version
+        url: /docs/en/alab/version
       - title: Security and Privacy
         url: /docs/en/alab/security
       - title: Video Tutorials
@@ -201,14 +203,8 @@ sparknlp-healthcare:
         url: /licensed/api/python
       - title: Wiki
         url: /docs/en/wiki
-      - title: Cluster Speed Benchmarks
-        url: /docs/en/benchmark
-      - title: CPU NER Benchmarks
-        url: /docs/en/cpu-ner-benchmark
-      - title: GPU vs CPU benchmarks
-        url: /docs/en/CPUvsGPUbenchmark_healthcare
-      - title: Spark NLP vs Spacy Pandas UDF with Arrow Benchmark
-        url: /docs/en/spark_spacy_pandas_udf_with_arrow_enabled_benchmark_web
+      - title: Speed Benchmarks
+        url: /docs/en/benchmark      
       - title: Best Practices Using Pretrained Models Together
         url: /docs/en/best_practices_pretrained_models
   - title: Healthcare NLP

@@ -21,6 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps RxNorm and RxNorm Extension codes with corresponding National Drug Codes (NDC).
 
+
 ## Predicted Entities
 
 `Product NDC`, `Package NDC`
@@ -37,6 +38,7 @@ This pretrained model maps RxNorm and RxNorm Extension codes with corresponding 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
 .setInputCol("text")\

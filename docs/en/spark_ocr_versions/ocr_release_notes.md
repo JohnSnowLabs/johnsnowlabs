@@ -5,7 +5,7 @@ seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
 permalink: /docs/en/spark_ocr_versions/ocr_release_notes
 key: docs-ocr-release-notes
-modify_date: "2023-11-17"
+modify_date: "2024-01-03"
 show_nav: true
 sidebar:
     nav: spark-ocr
@@ -13,69 +13,115 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 5.1.0
+## 5.1.2
 
-Release date: 17-11-2023
+Release date: 03-01-2024
 
 
-**We are glad to announce that Visual NLP 5.1.0 has been released! This release comes with new models, annotators, bug fixes, and more!.📢📢📢**
+ ## Visual NLP 5.1.2 Release Notes 🕶️
 
-**New Models &  Annotators**
-* VisualQuestionAnsweringPix2Struct: we are adding a new Visual Question Answering(VQA) checkpoint for Pix2Struct. Document VQA is the task of answering questions about documents, in which visual clues are important in the answer.
-The practical impact of this type of models is that you can create "data extractors" for your own particular use case without fine-tuning on your data. So you can ask questions about tables, or forms or other structures in which the visual information is relevant, in a zero-shot manner.
 
-We started our journey with Donut-like models, which were great in many different tasks. Check [this code and example](https://nlp.johnsnowlabs.com/2023/01/17/docvqa_donut_base_en_3_2.html), and [this webinar](https://www.johnsnowlabs.com/watch-zero-shot-visual-question-answering/), in case you missed it.
-![image](/assets/images/ocr/pix2struct_sample.png)
 
+**We are glad to announce that Visual NLP 5.1.2 has been released!TThis release comes with faster than ever OCR models, improved Table Extraction pipelines, bug fixes, and more! 📢📢📢**
+
+
+## Highlights 🔴
++ New optimized OCR checkpoints with up to 5x speed ups and GPU support.
++ New improved Table Extraction Pipeline with improved Cell Detection stage.
++ Other Changes.
++ Bug fixes.
+
+## New optimized OCR checkpoints with up to 5x speed ups and GPU support 🚀
+ImageToTextV2, is our Transformer-based OCR model which delivers SOTA accuracy across different pipelines like Text Extraction(OCR), Table Extraction, and Deidentification. </br>
+We've added new checkpoints together with more options to choose which optimizations to apply.
+
+### New checkpoints for ImageToTextV2 📍
+All previous checkpoints have been updated to work with the latest optimizations, and in addition these 4 new checkpoints have been added,
+
+* ocr_large_printed_v2_opt
+* ocr_large_printed_v2
+* ocr_large_handwritten_v2_opt
+* ocr_large_handwritten_v2
+
+These 4 checkpoints are more accurate than their 'base' counterparts. We are releasing metrics for the 'base' checkpoints today, and a full chart including these checkpoints will be presented in a blogpost to be released soon.
+
+### New options for ImageToTextV2 ⚡️
+ImageToTextV2 now supports the following configurations:
+* setUseCaching(Boolean): whether or not to use caching during processing.
+* setBatchSize(Integer): the batch size dictates the size of the groups that are processes internally at a single time by the model, typically used when setUseGPU() is set to true. 
+
+### Choosing the best checkpoint for your problem 💥
+We put together this grid reflecting performance and accuracy metrics to help you choose the most appropriate checkpoint for your use case.
+* Accuracy
+
+![image](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/0739e251-515a-4bbe-b436-df2c9e682f66)
+
+
+* Performance
+
+![image](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/13bb2eb1-db9b-40cd-bc20-a410424cb5c3)
+
+Note:
+* CER: character error rate.
+* These runtime performance metrics were collected in Databricks.
+* The CPU cluster is a 30 node cluster of 64 DBU/h, and the GPU cluster is a 10 node cluster, of 15 DBU/h.
+* Compared to previous releases, the optimizations introduced in this release yield a speed up of almost 5X, and a cost reduction of more than 4 times, if GPU is used.
+
+## New improved Table Extraction Pipeline with improved Cell Detection stage. 🔥
+Starting in this release, our HocrToTextTable annotator can receive information related to cells regions to improve the quality of results in Table Extraction tasks. This is particularly useful for cases in which cells are multi-line, or for borderless tables.  </br>
+This is what a pipeline would look like,
 ```
-|[What's the estimated population in poverty of Lawrence? ->  5,696, What's the population of Stoddard? ->  26,000, What is the page number of the document? ->  6, What is the date in the document? ->  January, 1970]|
+binary_to_image = BinaryToImage()
 
+img_to_hocr = ImageToHocr() \
+    .setInputCol("image") \
+    .setOutputCol("hocr") \
+    .setIgnoreResolution(False) \
+    .setOcrParams(["preserve_interword_spaces=0"])
+
+cell_detector = ImageDocumentRegionDetector() \
+    .pretrained("region_cell_detection", "en", "clinical/ocr") \
+    .setInputCol("image") \
+    .setOutputCol("cells") \
+    .setScoreThreshold(0.8)
+
+hocr_to_table = HocrToTextTable() \
+    .setInputCol("hocr") \
+    .setRegionCol("table_regions") \
+    .setOutputCol("tables") \
+    .setCellsCol("cells")
+
+PipelineModel(stages=[
+    binary_to_image,
+    img_to_hocr,
+    cell_detector
+    hocr_to_table])
 ```
+The following image depicts intermediate cell detection along with the final result,
+![table_cell_sample](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/d001a40b-2106-4932-a148-96b521f0fccd)
 
-Now, we're taking one step further and integrating Pix2Struct which, when compared to Donut, scores 5 points higher in the 'base' version, and 9 points higher in the 'large' version, on DocVQA dataset. This is an optimized and in house fine tuned checkpoint.
-Check [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrVisualPix2Struct.ipynb) with examples on how to use it.
+For a complete, end-to-end example we encourage you to check the sample notebook,
 
-* DocumentLayoutAnalyzer: document layout analysis is a fundamental task in Visual NLP, it is the task of detecting sections in a document. Typical examples for these sections are: text, title, list, table, or figure.
-![image](/assets/images/ocr/dit-layout-sample.png)
+[SparkOcrImageTableRecognitionWHOCR.ipynb](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb)
 
 
- 
-   Identifying these sections is the first step that enables other downstream processing tasks like OCR or Table Extraction.
-Check [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRDocumentLayoutAnalyzer.ipynb) for an example on how to apply this new model to sample documents.
+## Other changes 🎯
+* Dicom private tags in metadata now can be removed in DicomMetadataDeidentifier: calling  setRemovePrivateTags(true) will cause the tags marked as private to be removed in the output Dicom document.
+* Extended Spark support to 3.4.2.
+* Turkish language now supported in ImageToText. To use it, set it by calling ImageToText.setLanguage("tur").
+* start() function now supports the configuration of GPU through the boolean `use_gpu` parameter.
+* Faster(20%), and smaller footprint, `docvqa_pix2struct_jsl_opt` Visual Question Answering checkpoint.
 
-* DicomDeidentifier: new annotator that allows deidentification of Dicom Images using Dicom metadata contained in the same Dicom document. This is a rule-based annotator which leverages PHI collected from the metadata like patient names or test results to deidentify PHI contained on images in the Dicom file. It also supports a black list parameter to remove specific content present in the image text.
-This annotator can work either in isolation or combined with Spark NLP for Healthcare NER models. By using ChunkMergeApproach, NER models can be combined with DicomDeidentifier to deliver an ensemble of ML and Rule Based techniques to cover the most challenging de-identification scenarios.
-We encourage you to check [an example](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Dicom/SparkOcrDicomDeIdentificationV3.ipynb), and other Dicom related notebooks,
-[jupyter/Dicom](https://github.com/JohnSnowLabs/spark-ocr-workshop/tree/master/jupyter/Dicom).
-As well as related blogposts,
+## Bug Fixes 🪲
+* ImageSplitRegions does not work after Table Detector.
+* VisualDocumentNerLilt output has been fixed to include entire tokens instead of pieces.
+* Null Regions in HocrToTextTable are handled properly.
+* display_tables can now handle empty tables better.
+* Vulnerabilities in Python dependencies.
 
-    * [DICOM de-identification at scale in Visual NLP — Part 1.](https://medium.com/john-snow-labs/dicom-de-identification-at-scale-in-visual-nlp-part-1-68784177f5f0)
 
-    * [DICOM de-identification at scale in Visual NLP — Part 2.](https://medium.com/john-snow-labs/dicom-de-identification-at-scale-in-visual-nlp-part-2-361af5e36412)
 
-    * [DICOM de-identification at scale in Visual NLP — Part 3.](https://medium.com/john-snow-labs/dicom-de-identification-at-scale-in-visual-nlp-part-3-ac750be386cb)
-
-**Bug Fixes & Changes**
-
-+ VisualQuestionAnswering is the new single entry point for downloading all Visual Question Answering models. You should use it like this,
-
-```
-VisualQuestionAnswering.pretrained("docvqa_donut_base")
-```
-
-or 
-
-```
-VisualQuestionAnswering.pretrained("docvqa_pix2struct_jsl")	
-```
-* VisualDocumentClassifierV3, fit() method now allows the initial checkpoint to be present in local storage, instead of being downloaded from JSL Models Hub. Simply pass the 'base_model_path' param like this,
-```
-VisualDocumentClassifierV3.fit(base_model_path='path_to_local_chkpt')
-```
-* Some serialization problems affecting ONNX models running in a cluster have been resolved.
-* Transformer OCR pretrained pipelines have been updated to use faster components and to avoid some serialization issues under some Spark versions, check [this query](https://nlp.johnsnowlabs.com/models?edition=Visual+NLP&type=pipeline) on Models Hub.
-
-* This release is compatible with ```Spark NLP 5.1.2``` and Spark NLP for``` Healthcare 5.1.2```
+* This release is compatible with ```Spark NLP 5.2.0``` and Spark NLP for``` Healthcare 5.1.1```
 
 
 </div><div class="prev_ver h3-box" markdown="1">

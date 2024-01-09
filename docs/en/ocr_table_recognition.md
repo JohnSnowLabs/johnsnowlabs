@@ -12,11 +12,15 @@ sidebar:
     nav: spark-ocr
 ---
 
+<div class="h3-box" markdown="1">
+
 ## ImageTableDetector
 
 `ImageTableDetector` is a DL model for detecting tables on the image.
 It's based on CascadeTabNet which used Cascade mask Region-based CNN High-Resolution Network (Cascade mask R-CNN HRNet).
 
+</div>
+<div class="h3-box" markdown="1">
 
 #### Input Columns
 
@@ -24,6 +28,9 @@ It's based on CascadeTabNet which used Cascade mask Region-based CNN High-Resolu
 | Param name | Type | Default | Column Data Description |
 | --- | --- | --- | --- |
 | inputCol | string | image | image struct ([Image schema](ocr_structures#image-schema)) |
+
+</div>
+<div class="h3-box" markdown="1">
 
 #### Parameters
 
@@ -33,6 +40,8 @@ It's based on CascadeTabNet which used Cascade mask Region-based CNN High-Resolu
 | scoreThreshold | float | 0.9 | Score threshold for output regions.|
 | applyCorrection| boolean | false | Enable correction of results. |
 
+</div>
+<div class="h3-box" markdown="1">
 
 #### Output Columns
 
@@ -41,10 +50,9 @@ It's based on CascadeTabNet which used Cascade mask Region-based CNN High-Resolu
 | --- | --- | --- | --- |
 | outputCol | string | table_regions | array of [Coordinaties]ocr_structures#coordinate-schema)|
 
-
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -137,7 +145,8 @@ Current implementation support few algorithm for extract cells:
  - ***CellDetectionAlgos.CONTOURS*** works only for bordered tables.
  - ***CellDetectionAlgos.MORPHOPS*** works for bordered, borderless and combined tables.
 
-
+</div>
+<div class="h3-box" markdown="1">
 
 #### Input Columns
 
@@ -145,7 +154,6 @@ Current implementation support few algorithm for extract cells:
 | Param name | Type | Default | Column Data Description |
 | --- | --- | --- | --- |
 | inputCol | string | image | image struct ([Image schema](ocr_structures#image-schema)) |
-
 
 #### Parameters
 
@@ -167,7 +175,7 @@ Current implementation support few algorithm for extract cells:
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -241,6 +249,9 @@ data.select("cells").show()
 
 ```
 
+</div>
+<div class="h3-box" markdown="1">
+
 ## ImageCellsToTextTable
 
 `ImageCellsToTextTable` runs OCR for cells regions on image, return recognized text
@@ -281,7 +292,7 @@ to _outputCol_ as TableContainer structure.
 
 **Example:**
 
-<div class="tabs-box tabs-new pt0" markdown="1">
+<div class="tabs-new pt0" markdown="1">
 
 {% include programmingLanguageSelectScalaPython.html %}
 
@@ -392,3 +403,5 @@ results.select("table") \
 |5/22/10   |Alberta|Thompson|Pencil|32   |$1.99    |$63.68 |
 +----------+-------+--------+------+-----+---------+-------+
 ```
+
+</div>

@@ -37,6 +37,7 @@ This pretrained model maps drugs with their corresponding `action` and `treatmen
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
 .setInputCol('text')\

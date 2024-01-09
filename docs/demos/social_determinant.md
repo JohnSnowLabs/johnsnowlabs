@@ -128,19 +128,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/NER_SDOH_COMMUNITY_CONDITION/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb
-        - title: Classify Mental Health, Housing Insecurity, and Under Treatment
-          id: classify_mental_health_housing_insecurity_under_treatment         
-          image: 
-              src: /assets/images/Classify_Mental_Health,_Housing_Insecurity,_and_Under_Treatment.svg
-          excerpt: This demo demonstrates the application of Spark NLP Healthcare Generic Classification models for detecting mental health issues, housing insecurity, and treatment status as part of social determinants of health in medical texts.
-          actions:
-          - text: Live Demo
-            type: normal
-            url: https://demo.johnsnowlabs.com/healthcare/SOCIAL_DETERMINANT_CLASSIFICATION_GENERIC/
-          - text: Colab
-            type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_CLASSIFICATION.ipynb
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/SOCIAL_DETERMINANT_NER.ipynb        
         - title: SDOH Frailty For Classification
           id: sdoh_frailty_classification         
           image: 

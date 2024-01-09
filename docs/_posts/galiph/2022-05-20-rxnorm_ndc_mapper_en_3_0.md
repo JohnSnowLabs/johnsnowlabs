@@ -32,10 +32,9 @@ This pretrained model maps RxNorm and RxNorm Extension codes with corresponding 
 
 ## How to use
 
-
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = nlp.DocumentAssembler()\
 .setInputCol('text')\
