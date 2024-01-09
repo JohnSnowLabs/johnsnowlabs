@@ -96,3 +96,9 @@ emr_volume_size = 100
 
 # Local Spark mode
 spark_session_name = "John-Snow-Labs-Spark-Session 🚀"
+
+
+### Docker Settings
+
+docker_image_name = "johnsnowlabs_image"
+docker_container_name = "johnsnowlabs_container"
