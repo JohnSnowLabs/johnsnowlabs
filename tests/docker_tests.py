@@ -23,8 +23,8 @@ def test_docker():
 
 
 def test_build_image():
-    nlp.build_image(destroy_image=True, use_cache=False)
-    build_image(destroy_image=True, use_cache=True)
+    build_image(destroy_image=True, use_cache=False, preloaded_model="tokenize")
+    build_image(destroy_image=True, use_cache=True, preloaded_model="tokenize")
     _destroy_image()
 
 
