@@ -32,6 +32,7 @@ This pipeline includes Named-Entity Recognition, Assertion Status, Relation Extr
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
