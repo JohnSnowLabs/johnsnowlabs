@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [summarizer_clinical_laymen_onnx
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
