@@ -57,16 +57,99 @@ According to her last CT, she has no lung metastases.""")
 ## Results
 
 ```bash
-|    | chunks     |   begin |   end | entities          |
-|---:|:-----------|--------:|------:|:------------------|
-|  0 | 4-cm       |      44 |    47 | Tumor_Size        |
-|  1 | tumor      |      49 |    53 | Tumor_Finding     |
-|  2 | left       |      62 |    65 | Direction         |
-|  3 | breast     |      67 |    72 | Site_Breast       |
-|  4 | ductal     |      98 |   103 | Histological_Type |
-|  5 | carcinoma  |     105 |   113 | Cancer_Dx         |
-|  6 | lung       |     153 |   156 | Site_Lung         |
-|  7 | metastases |     158 |   167 | Metastasis        |
+
+# ner_oncology_chunk
++----------+-----+---+-----------------+
+|chunk     |begin|end|ner_label        |
++----------+-----+---+-----------------+
+|4-cm      |44   |47 |Tumor_Size       |
+|tumor     |49   |53 |Tumor_Finding    |
+|left      |62   |65 |Direction        |
+|breast    |67   |72 |Site_Breast      |
+|ductal    |98   |103|Histological_Type|
+|carcinoma |105  |113|Cancer_Dx        |
+|lung      |153  |156|Site_Lung        |
+|metastases|158  |167|Metastasis       |
++----------+-----+---+-----------------+
+
+# ner_oncology_diagnosis
++----------+-----+---+-----------------+
+|chunk     |begin|end|ner_label        |
++----------+-----+---+-----------------+
+|4-cm      |44   |47 |Tumor_Size       |
+|tumor     |49   |53 |Tumor_Finding    |
+|ductal    |98   |103|Histological_Type|
+|carcinoma |105  |113|Cancer_Dx        |
+|metastases|158  |167|Metastasis       |
++----------+-----+---+-----------------+
+
+# ner_oncology_tnm_chunk
++----------+-----+---+-----------------+
+|chunk     |begin|end|ner_label        |
++----------+-----+---+-----------------+
+|4-cm      |44   |47 |Tumor_Description|
+|tumor     |49   |53 |Tumor            |
+|ductal    |98   |103|Tumor_Description|
+|carcinoma |105  |113|Cancer_Dx        |
+|metastases|158  |167|Metastasis       |
++----------+-----+---+-----------------+
+
+# assertion_oncology_wip
++----------+-----+---+-----------------+---------+
+|chunk     |begin|end|ner_label        |assertion|
++----------+-----+---+-----------------+---------+
+|tumor     |49   |53 |Tumor_Finding    |Present  |
+|ductal    |98   |103|Histological_Type|Present  |
+|carcinoma |105  |113|Cancer_Dx        |Present  |
+|metastases|158  |167|Metastasis       |Absent   |
++----------+-----+---+-----------------+---------+
+
+# assertion_oncology_problem_wip
++----------+-----+---+-----------------+----------------------+
+|chunk     |begin|end|ner_label        |assertion             |
++----------+-----+---+-----------------+----------------------+
+|tumor     |49   |53 |Tumor_Finding    |Medical_History       |
+|ductal    |98   |103|Histological_Type|Medical_History       |
+|carcinoma |105  |113|Cancer_Dx        |Medical_History       |
+|metastases|158  |167|Metastasis       |Hypothetical_Or_Absent|
++----------+-----+---+-----------------+----------------------+
+
+# re_oncology_wip
+| chunk1 | entity1 |        chunk2 |    entity2 |      relation |               |
+|-------:|--------:|--------------:|-----------:|--------------:|---------------|
+|    0   |    4-cm |    Tumor_Size |      tumor | Tumor_Finding | is_related_to |
+|    1   |    4-cm |    Tumor_Size |  carcinoma |     Cancer_Dx |             O |
+|    2   |   tumor | Tumor_Finding |     breast |   Site_Breast | is_related_to |
+|    3   |  breast |   Site_Breast |  carcinoma |     Cancer_Dx |             O |
+|    4   |    lung |     Site_Lung | metastases |    Metastasis | is_related_to |
+
+# re_oncology_granular_wip
+|   | chunk1 |       entity1 |     chunk2 |       entity2 |       relation |
+|--:|-------:|--------------:|-----------:|--------------:|---------------:|
+| 0 |   4-cm |    Tumor_Size |      tumor | Tumor_Finding |     is_size_of |
+| 1 |   4-cm |    Tumor_Size |  carcinoma |     Cancer_Dx |              O |
+| 2 |  tumor | Tumor_Finding |     breast |   Site_Breast | is_location_of |
+| 3 | breast |   Site_Breast |  carcinoma |     Cancer_Dx |              O |
+| 4 |   lung |     Site_Lung | metastases |    Metastasis | is_location_of |
+
+# re_oncology_size_wip
+|   | chunk1 |    entity1 |    chunk2 |       entity2 |   relation |
+|--:|-------:|-----------:|----------:|--------------:|-----------:|
+| 0 |   4-cm | Tumor_Size |     tumor | Tumor_Finding | is_size_of |
+| 1 |   4-cm | Tumor_Size | carcinoma |     Cancer_Dx |          O |
+
+# ICD-O resolver
++----------+-----+---+-----------------+------+-----------------+
+|chunk     |begin|end|ner_label        |code  |normalized_term  |
++----------+-----+---+-----------------+------+-----------------+
+|tumor     |49   |53 |Tumor_Finding    |8000/1|tumor            |
+|breast    |67   |72 |Site_Breast      |C50   |breast           |
+|ductal    |98   |103|Histological_Type|8500/2|dcis             |
+|carcinoma |105  |113|Cancer_Dx        |8010/3|carcinoma        |
+|lung      |153  |156|Site_Lung        |C34.9 |lung             |
+|metastases|158  |167|Metastasis       |8000/6|tumor, metastatic|
++----------+-----+---+-----------------+------+-----------------+
+
 ```
 
 {:.model-param}
