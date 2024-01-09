@@ -51,8 +51,6 @@ def install(
     databricks_cluster_id: Optional[str] = None,
     databricks_token: Optional[str] = None,
     databricks_host: Optional[str] = None,
-    databricks_password: Optional[str] = None,
-    databricks_email: Optional[str] = None,
     # -- Install Params --
     # Install Target
     python_exec_path: str = sys.executable,
