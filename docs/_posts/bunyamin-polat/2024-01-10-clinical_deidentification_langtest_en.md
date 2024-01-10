@@ -35,7 +35,6 @@ This pipeline can be used to deidentify PHI information from medical texts. The 
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification_langtest", "en", "clinical/models")
@@ -44,9 +43,10 @@ text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
+Phone (302) 786-5227, 0295 Keats Street, New York City, E-MAIL: smith@gmail.com."""
 
 result = deid_pipeline.annotate(text)
+
 
 ```
 ```scala
@@ -59,7 +59,7 @@ val text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
+Phone (302) 786-5227, 0295 Keats Street, New York City, E-MAIL: smith@gmail.com."""
 
 val result = deid_pipeline.annotate(text)
 
@@ -89,7 +89,7 @@ Name : <PATIENT>, Record date: <DATE>, MR <MEDICALRECORD>.
 Dr. <DOCTOR>, ID: <IDNUM>, IP <IPADDR>.
 He is a <AGE>-year-old male was admitted to the <HOSPITAL> for cystectomy on <DATE>.
 Patient's VIN : <VIN>, SSN <SSN>, Driver's license no: <DLN>.
-Phone <PHONE>, <STREET>, <ORGANIZATION>, E-MAIL: <EMAIL>.
+Phone <PHONE>, <STREET>, <CITY>, E-MAIL: <EMAIL>.
 
 Masked with chars
 ------------------------------
@@ -109,12 +109,11 @@ Phone ****, ****, ****, E-MAIL: ****.
 
 Obfuscated
 ------------------------------
-Name : Michail Jewels, Record date: 2093-02-17, MR #355732.
-Dr. Omelia Blackwater, ID: 2025427062, IP 004.004.004.004.
-He is a 61-year-old male was admitted to the MINERAL COMMUNITY HOSPITAL for cystectomy on 02/17/93.
-Patient's VIN : 3JSEG31DVVO160737, SSN #106-26-9485, Driver's license no: I627035K.
-Phone (093) 818-2993, 200 Memorial Drive, Avnet, E-MAIL: Dion@google.com.
-
+Name : Paulene Floor, Record date: 2093-03-11, MR #858850.
+Dr. Valorie Roosevelt, ID: 2774128786, IP 444.444.444.444.
+He is a 73-year-old male was admitted to the SUTTER MEMORIAL HOSPITAL for cystectomy on 03/11/93.
+Patient's VIN : 7EHMC94BSJG283662, SSN #947-65-4650, Driver's license no: P546568L.
+Phone (275) 170-0174, 1011 14Th Avenue Nw, Voorhees, E-MAIL: Seamus@hotmail.com.
 
 ```
 
