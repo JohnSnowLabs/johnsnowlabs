@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [clinical_notes_qa_base_onnx](ht
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
