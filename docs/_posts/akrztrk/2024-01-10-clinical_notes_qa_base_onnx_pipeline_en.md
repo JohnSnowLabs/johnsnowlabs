@@ -70,7 +70,7 @@ val result = qa_pipeline.annotate([question], [context])
 ## Results
 
 ```bash
-The primary issue reported by the patient is a heart attack.
+The primary issue reported by the patient is hypertension.
 ```
 
 {:.model-param}
