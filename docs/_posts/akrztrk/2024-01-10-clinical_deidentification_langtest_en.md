@@ -33,6 +33,7 @@ This pipeline can be used to deidentify PHI information from medical texts. The 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -46,7 +47,6 @@ Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A33445
 Phone (302) 786-5227, 0295 Keats Street, New York City, E-MAIL: smith@gmail.com."""
 
 result = deid_pipeline.annotate(text)
-
 
 ```
 ```scala
@@ -70,26 +70,18 @@ val result = deid_pipeline.annotate(text)
 
 ```bash
 
-print("
-Masked with entity labels")
+print("\nMasked with entity labels")
 print("-"*30)
-print("
-".join(result['masked']))
-print("
-Masked with chars")
+print("\n".join(result['masked']))
+print("\nMasked with chars")
 print("-"*30)
-print("
-".join(result['masked_with_chars']))
-print("
-Masked with fixed length chars")
+print("\n".join(result['masked_with_chars']))
+print("\nMasked with fixed length chars")
 print("-"*30)
-print("
-".join(result['masked_fixed_length_chars']))
-print("
-Obfuscated")
+print("\n".join(result['masked_fixed_length_chars']))
+print("\nObfuscated")
 print("-"*30)
-print("
-".join(result['obfuscated']))
+print("\n".join(result['obfuscated']))
 
 Masked with entity labels
 ------------------------------
