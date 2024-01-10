@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [clinical_notes_qa_large_onnx](h
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -51,12 +52,9 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val qa_pipeline = PretrainedPipeline("clinical_notes_qa_large_onnx_pipeline", "en", "clinical/models")
 
-val context = """Patient with a past medical history of hypertension for 15 years.
-(Medical Transcription Sample Report)
-HISTORY OF PRESENT ILLNESS:
-The patient is a 74-year-old white woman who has a past medical history of hypertension for 15 years, history of CVA with no residual hemiparesis and uterine cancer with pulmonary metastases, who presented for evaluation of recent worsening of the hypertension. According to the patient, she had stable blood pressure for the past 12-15 years on 10 mg of lisinopril."""
+val context = """his is a 14-month-old with history of chronic recurrent episodes of otitis media, totalling 6 bouts, requiring antibiotics since birth. There is also associated chronic nasal congestion. There had been no bouts of spontaneous tympanic membrane perforation, but there had been elevations of temperature up to 102 during the acute infection. He is being admitted at this time for myringotomy and tube insertion under general facemask anesthesia."""
 
-val question = """What is the effect of directing attention on memory?"""
+val question = """How many bouts of otitis media has the patient experienced?"""
 
 val result = qa_pipeline.annotate([question], [context])
 
