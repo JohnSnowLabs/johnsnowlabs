@@ -43,7 +43,7 @@ context = """The visual indexing theory proposed by Zenon Pylyshyn (Cognition, 3
 
 question = """What is the effect of directing attention on memory?"""
 
-result = qa_pipeline.annotate([question], [context])
+result = qa_pipeline.fullAnnotate([question], [context])
 
 ```
 ```scala
@@ -56,7 +56,7 @@ val context = """The visual indexing theory proposed by Zenon Pylyshyn (Cognitio
 
 val question = """What is the effect of directing attention on memory?"""
 
-val result = qa_pipeline.annotate([question], [context])
+val result = qa_pipeline.fullAnnotate([question], [context])
 
 ```
 </div>
