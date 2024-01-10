@@ -32,6 +32,7 @@ This pipeline can be used to deidentify PHI information from medical texts. The 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -45,7 +46,7 @@ deid_pipeline.fullAnnotate("""Record date : 2093-01-13, Name : Hendrickson, ORA,
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val ner_profiling_pipeline = PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
+val deid_pipeline = PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
 
 val result = deid_pipeline.annotate("""Record date : 2093-01-13, Name : Hendrickson, ORA, 25 years-old, #719435. IP: 203.120.223.13, the driver's license no:A334455B. The SSN:324598674 and e-mail: hale@gmail.com. Patient's VIN : 1HGBH41JXMN109286. Date : 01/13/93, PCP : David Hale.""")
 
@@ -56,37 +57,51 @@ val result = deid_pipeline.annotate("""Record date : 2093-01-13, Name : Hendrick
 
 ```bash
 
+
+sample = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
+
+result4 = deid_pipeline3.annotate(sample)
+
+print("\nMasked with entity labels")
+print("-"*30)
+
+output
+
 Masked with entity labels
 ------------------------------
-Record date : <DATE>, <DOCTOR>, M.D. <NAME> <IPADDR>, the driver's license no: <DLN>.
-the SSN: <SSN> and e-mail: <EMAIL>.
-Name : <PATIENT> MR. <AGE> years-old # <MEDICALRECORD> Date : <DATE>.
-Signed by <DOCTOR>, .
-Patient's VIN : <VIN>.
+Name : <PATIENT>, Record date: <DATE>, MR <MEDICALRECORD>.
+Dr. <DOCTOR>, ID<IDNUM>, IP <IPADDR>.
+He is a <AGE>-year-old male was admitted to the <LOCATION> for cystectomy on <DATE>.
+Patient's VIN : <VIN>, SSN <SSN>, Driver's license no: <DLN>.
+Phone <PHONE>, <STREET>, <CITY>, E-MAIL: <EMAIL>.
 
 Masked with chars
 ------------------------------
-Record date : [********], [********], M.D. ** [************], the driver's license no: [******].
-the SSN: [*******] and e-mail: [************].
-Name : [**************] MR. ** years-old # [****] Date : [******].
-Signed by [*************], .
-Patient's VIN : [***************].
+Name : [**************], Record date: [********], MR [*****].
+Dr. [********], ID[**********], IP [************].
+He is a **-year-old male was admitted to the [**********] for cystectomy on [******].
+Patient's VIN : [***************], SSN [**********], Driver's license no: [******].
+Phone [************], [***************], [***********], E-MAIL: [*************].
 
 Masked with fixed length chars
 ------------------------------
-Record date : ****, ****, M.D. **** ****, the driver's license no: ****.
-the SSN: **** and e-mail: ****.
-Name : **** MR. **** years-old # **** Date : ****.
-Signed by ****, .
-Patient's VIN : ****.
+Name : ****, Record date: ****, MR ****.
+Dr. ****, ID****, IP ****.
+He is a ****-year-old male was admitted to the **** for cystectomy on ****.
+Patient's VIN : ****, SSN ****, Driver's license no: ****.
+Phone ****, ****, ****, E-MAIL: ****.
 
 Obfuscated
 ------------------------------
-Record date : 2093-01-24, Bethel Born, M.D. Amie Critchley 001.001.001.001, the driver's license no: I347425Z.
-the SSN: 563875643 and e-mail: Damocles@yahoo.com.
-Name : Beatrice Lecher MR. 32 years-old # 329518 Date : 01/24/93.
-Signed by Barbara Cower, .
-Patient's VIN : 8CZYS06TKZS010932.
+Name : Beatrice Lecher, Record date: 2093-01-24, MR #194174.
+Dr. Margarette Canada, ID: 0814481856, IP 001.001.001.001.
+He is a 77-year-old male was admitted to the South Megan for cystectomy on 01/24/93.
+Patient's VIN : 3JSHF02OVZC588502, SSN #774-12-8786, Driver's license no: V672094B.
+Phone (096) 283-6629, Timothyborough, Ocala, E-MAIL: Lemuel@yahoo.com.
 
 ```
 
