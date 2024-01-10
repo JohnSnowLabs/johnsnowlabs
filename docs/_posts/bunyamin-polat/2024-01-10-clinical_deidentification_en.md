@@ -39,7 +39,13 @@ from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
 
-deid_pipeline.fullAnnotate("""Record date : 2093-01-13, Name : Hendrickson, ORA, 25 years-old, #719435. IP: 203.120.223.13, the driver's license no:A334455B. The SSN:324598674 and e-mail: hale@gmail.com. Patient's VIN : 1HGBH41JXMN109286. Date : 01/13/93, PCP : David Hale.""")
+text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
+
+result = deid_pipeline.annotate(text)
 
 ```
 ```scala
@@ -48,7 +54,13 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
 
-val result = deid_pipeline.annotate("""Record date : 2093-01-13, Name : Hendrickson, ORA, 25 years-old, #719435. IP: 203.120.223.13, the driver's license no:A334455B. The SSN:324598674 and e-mail: hale@gmail.com. Patient's VIN : 1HGBH41JXMN109286. Date : 01/13/93, PCP : David Hale.""")
+val text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
+
+val result = deid_pipeline.annotate(text)
 
 ```
 </div>
@@ -57,19 +69,18 @@ val result = deid_pipeline.annotate("""Record date : 2093-01-13, Name : Hendrick
 
 ```bash
 
-
-sample = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
-
-result4 = deid_pipeline3.annotate(sample)
-
 print("\nMasked with entity labels")
 print("-"*30)
-
-output
+print("\n".join(result['masked']))
+print("\nMasked with chars")
+print("-"*30)
+print("\n".join(result['masked_with_chars']))
+print("\nMasked with fixed length chars")
+print("-"*30)
+print("\n".join(result['masked_fixed_length_chars']))
+print("\nObfuscated")
+print("-"*30)
+print("\n".join(result['obfuscated']))
 
 Masked with entity labels
 ------------------------------
