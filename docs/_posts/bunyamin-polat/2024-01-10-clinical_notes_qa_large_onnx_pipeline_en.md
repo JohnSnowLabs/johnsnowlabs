@@ -43,7 +43,7 @@ context = """his is a 14-month-old with history of chronic recurrent episodes of
 
 question = """How many bouts of otitis media has the patient experienced?"""
 
-result = qa_pipeline.annotate([question], [context])
+result = qa_pipeline.fullAnnotate([question], [context])
 
 ```
 ```scala
@@ -56,7 +56,7 @@ val context = """his is a 14-month-old with history of chronic recurrent episode
 
 val question = """How many bouts of otitis media has the patient experienced?"""
 
-val result = qa_pipeline.annotate([question], [context])
+val result = qa_pipeline.fullAnnotate([question], [context])
 
 ```
 </div>
