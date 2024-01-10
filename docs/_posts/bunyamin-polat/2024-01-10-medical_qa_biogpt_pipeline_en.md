@@ -43,7 +43,7 @@ context = """We have previously reported the feasibility of diagnostic and thera
 
 question = """Transgastric endoscopic splenectomy: is it possible?"""
 
-result = qa_pipeline.annotate([question], [context])
+result = qa_pipeline.fullAnnotate([question], [context])
 
 ```
 ```scala
@@ -56,7 +56,7 @@ val context = """We have previously reported the feasibility of diagnostic and t
 
 val question = """Transgastric endoscopic splenectomy: is it possible?"""
 
-val result = qa_pipeline.annotate([question], [context])
+val result = qa_pipeline.fullAnnotate([question], [context])
 
 ```
 </div>
