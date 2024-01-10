@@ -70,26 +70,18 @@ val result = deid_pipeline.annotate(text)
 
 ```bash
 
-print("
-Masked with entity labels")
+print("\nMasked with entity labels")
 print("-"*30)
-print("
-".join(result['masked']))
-print("
-Masked with chars")
+print("\n".join(result['masked']))
+print("\nMasked with chars")
 print("-"*30)
-print("
-".join(result['masked_with_chars']))
-print("
-Masked with fixed length chars")
+print("\n".join(result['masked_with_chars']))
+print("\nMasked with fixed length chars")
 print("-"*30)
-print("
-".join(result['masked_fixed_length_chars']))
-print("
-Obfuscated")
+print("\n".join(result['masked_fixed_length_chars']))
+print("\nObfuscated")
 print("-"*30)
-print("
-".join(result['obfuscated']))
+print("\n".join(result['obfuscated']))
 
 Masked with entity labels
 ------------------------------
