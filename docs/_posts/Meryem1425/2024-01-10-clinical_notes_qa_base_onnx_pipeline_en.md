@@ -46,7 +46,7 @@ The patient is a 74-year-old white woman who has a past medical history of hyper
 
 question = """What is the primary issue reported by patient?"""
 
-result = qa_pipeline.annotate([question], [context])
+result = qa_pipeline.fullAnnotate([question], [context])
 
 ```
 ```scala
@@ -62,7 +62,7 @@ The patient is a 74-year-old white woman who has a past medical history of hyper
 
 val question = ""What is the primary issue reported by patient?"""
 
-val result = qa_pipeline.annotate([question], [context])
+val result = qa_pipeline.fullAnnotate([question], [context])
 
 ```
 </div>
