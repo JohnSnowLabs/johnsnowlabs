@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [flan_t5_base_jsl_qa](https://nl
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
