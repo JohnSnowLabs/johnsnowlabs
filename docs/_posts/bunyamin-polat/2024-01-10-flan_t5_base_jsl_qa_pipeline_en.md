@@ -4,7 +4,7 @@ title: Medical Question Answering Pipeline(flan_t5)
 author: John Snow Labs
 name: flan_t5_base_jsl_qa_pipeline
 date: 2024-01-10
-tags: [licensed, en, flan_tw, pipeline, qa]
+tags: [licensed, en, flan_t5, pipeline, qa]
 task: [Question Answering, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 5.2.0
