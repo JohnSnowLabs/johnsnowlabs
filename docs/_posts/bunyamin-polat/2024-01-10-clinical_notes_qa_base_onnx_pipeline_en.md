@@ -44,7 +44,7 @@ context = """Patient with a past medical history of hypertension for 15 years.
 HISTORY OF PRESENT ILLNESS:
 The patient is a 74-year-old white woman who has a past medical history of hypertension for 15 years, history of CVA with no residual hemiparesis and uterine cancer with pulmonary metastases, who presented for evaluation of recent worsening of the hypertension. According to the patient, she had stable blood pressure for the past 12-15 years on 10 mg of lisinopril."""
 
-question = """What is the effect of directing attention on memory?"""
+question = """What is the primary issue reported by patient?"""
 
 result = qa_pipeline.annotate([question], [context])
 
@@ -60,7 +60,7 @@ val context = """Patient with a past medical history of hypertension for 15 year
 HISTORY OF PRESENT ILLNESS:
 The patient is a 74-year-old white woman who has a past medical history of hypertension for 15 years, history of CVA with no residual hemiparesis and uterine cancer with pulmonary metastases, who presented for evaluation of recent worsening of the hypertension. According to the patient, she had stable blood pressure for the past 12-15 years on 10 mg of lisinopril."""
 
-val question = """What is the effect of directing attention on memory?"""
+val question = """What is the primary issue reported by patient?"""
 
 val result = qa_pipeline.annotate([question], [context])
 
@@ -70,7 +70,7 @@ val result = qa_pipeline.annotate([question], [context])
 ## Results
 
 ```bash
-The primary issue reported by the patient is a heart attack.
+The primary issue reported by the patient is hypertension.
 ```
 
 {:.model-param}
