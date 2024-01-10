@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is a modified version of Flan-T5 (LLM) based summarization model that is finetuned with custom dataset by John Snow Labs to avoid using clinical jargon on the summaries. It can generate summaries up to 512 tokens given an input text (max 1024 tokens).
+This model is a modified version of LLM based summarization model that is finetuned with custom dataset by John Snow Labs to avoid using clinical jargon on the summaries. It can generate summaries up to 512 tokens given an input text (max 1024 tokens).
 
 ## Predicted Entities
 

@@ -75,7 +75,16 @@ reModel = RelationExtractionModel()\
     .setOutputCol("relations")\
     .setMaxSyntacticDistance(4)
 
-pipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, words_embedder, pos_tagger, ner_tagger, ner_chunker, dependency_parser, reModel])
+pipeline = Pipeline(stages=[
+    document_assembler, 
+    sentence_detector, 
+    tokenizer, 
+    words_embedder, 
+    pos_tagger, 
+    ner_tagger, 
+    ner_chunker, 
+    dependency_parser, 
+    reModel])
 
 empty_data = spark.createDataFrame([[""]]).toDF("text")
 
@@ -84,7 +93,6 @@ model = pipeline.fit(empty_data)
 light_pipeline = LightPipeline(model)
 
 result = light_pipeline.fullAnnotate("The patient was prescribed 1 unit of Advil for 5 days after meals. The patient was also given 1 unit of Metformin daily. He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals, and metformin 1000 mg two times a day.")
-
 ```
 
 ```scala
@@ -130,7 +138,16 @@ val re_Model = RelationExtractionModel()
     .setOutputCol("relations")
     .setMaxSyntacticDistance(4)
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, words_embedder, pos_tagger, ner_tagger, ner_chunker, dependecy_parser, re_Model))
+val pipeline = new Pipeline().setStages(Array(
+    document_assembler, 
+    sentence_detector, 
+    tokenizer, 
+    words_embedder, 
+    pos_tagger, 
+    ner_tagger, 
+    ner_chunker, 
+    dependecy_parser, 
+    re_Model))
 
 val data = Seq("The patient was prescribed 1 unit of Advil for 5 days after meals. The patient was also given 1 unit of Metformin daily. He was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night, 12 units of insulin lispro with meals, and metformin 1000 mg two times a day.").toDS.toDF("text")
 
@@ -138,7 +155,6 @@ val result = pipeline.fit(data).transform(data)
 ```
 </div>
 
-{:.h2_title}
 ## Results
 
 ```bash
