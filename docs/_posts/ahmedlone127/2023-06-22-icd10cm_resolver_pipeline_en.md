@@ -66,11 +66,11 @@ nlu.load("en.icd10cm_resolver.pipeline").predict("""A 28-year-old female with a 
 ## Results
 
 ```bash
-|chunk                        |ner_chunk|icd10cm_code|
-+-----------------------------+---------+------------+
-|gestational diabetes mellitus|PROBLEM  |O24.919     |
-|anisakiasis                  |PROBLEM  |B81.0       |
-|fetal and neonatal hemorrhage|PROBLEM  |P545        |
+|   |                        chunks | entities | icd10cm_code |
+|--:|------------------------------:|---------:|-------------:|
+| 0 | gestational diabetes mellitus |  PROBLEM |      O24.919 |
+| 1 |                   anisakiasis |  PROBLEM |        B81.0 |
+| 2 | fetal and neonatal hemorrhage |  PROBLEM |         P549 |
 ```
 
 {:.model-param}
