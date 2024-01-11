@@ -36,7 +36,7 @@ Parameters:
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[AnnotationMerger](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/03.0.Clinical_Relation_Extraction.ipynb)
+[AnnotationMerger](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/AnnotationMerger.ipynb)
 {%- endcapture -%}
 
 {%- endcapture -%}
