@@ -64,7 +64,7 @@ val result = qa_pipeline.fullAnnotate([question], [context])
 ## Results
 
 ```bash
-we have developed a new technique of gastric endoscopic splenectomy ( gasps ) using a flexible endoscope. the aim of this study was to evaluate the feasibility
+per - oral transgastric splenectomy was technically feasible in a porcine model. further studies are necessary to determine the safety and efficacy of this procedure in
 ```
 
 {:.model-param}
