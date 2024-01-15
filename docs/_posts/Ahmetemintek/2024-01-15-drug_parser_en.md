@@ -41,7 +41,7 @@ document_assembler = DocumentAssembler() \
      .setInputCol("text") \
      .setOutputCol("document")
 
- sentence_detector = SentenceDetector() \
+ sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", 'clinical/models') \
      .setInputCols(["document"]) \
      .setOutputCol("sentence")
 
@@ -51,19 +51,13 @@ document_assembler = DocumentAssembler() \
 
  contextual_parser = ContextualParserModel.pretrained("drug_parser", "en", "clinical/models")\
      .setInputCols(["sentence", "token"]) \
-     .setOutputCol("cp_output")\
-     .setCaseSensitive(False)
-
- chunk_converter = ChunkConverter() \
-    .setInputCols(["cp_output"]) \
-    .setOutputCol("ner_chunk")
+     .setOutputCol("cp_output")
 
  parserPipeline = Pipeline(stages=[
      document_assembler,
      sentence_detector,
      tokenizer,
-     contextual_parser,
-     chunk_converter
+     contextual_parser
      ])
 
  sample_text = """ Patient is prescribed Lescol 40 MG, Zydol 1.5 mg tablet and Furtulon. The other patient is given Acetafen and  Citalon"""
@@ -76,7 +70,7 @@ val document_assembler = new DocumentAssembler()
      .setInputCol("text") 
      .setOutputCol("document")
 
- val sentence_detector = new SentenceDetector()
+ val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", 'clinical/models')()
      .setInputCols("document")
      .setOutputCol("sentence")
 
@@ -88,16 +82,11 @@ val document_assembler = new DocumentAssembler()
      .setInputCols(Array("sentence", "token")) 
      .setOutputCol("cp_output") 
 
- val chunk_converter = new ChunkConverter() 
-     .setInputCols(Array("cp_output")) 
-     .setOutputCol("ner_chunk")
-
  val parserPipeline = new Pipeline().setStages(Array(
          document_assembler,
          sentence_detector,
          tokenizer,
-         contextual_parser,
-         chunk_converter
+         contextual_parser
          ))
 
  val data = Seq(Array("""Patient is prescribed Lescol 40 MG, Zydol 1.5 mg tablet and Furtulon. The other patient is given Acetafen and  Citalon""")).toDS.toDF("text")
@@ -109,15 +98,15 @@ val document_assembler = new DocumentAssembler()
 ## Results
 
 ```bash
-+-----------+-----+---+----------+
- |sentence_id|begin|end|drug_chunk|
- +-----------+-----+---+----------+
- |0          |22   |27 |Lescol    |
- |0          |36   |40 |Zydol     |
- |0          |60   |67 |Furtulon  |
- |1          |97   |104|Acetafen  |
- |1          |110  |116|Citalon   |
- +-----------+-----+---+----------+
++-----------+-----+---+------+----------+
+|sentence_id|begin|end|entity|drug_chunk|
++-----------+-----+---+------+----------+
+|0          |22   |27 |Drug  |Lescol    |
+|0          |36   |40 |Drug  |Zydol     |
+|0          |60   |67 |Drug  |Furtulon  |
+|1          |97   |104|Drug  |Acetafen  |
+|1          |110  |116|Drug  |Citalon   |
++-----------+-----+---+------+----------+
 ```
 
 {:.model-param}
