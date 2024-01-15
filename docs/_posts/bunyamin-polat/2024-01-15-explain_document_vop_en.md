@@ -7,7 +7,7 @@ date: 2024-01-15
 tags: [licensed, clinical, en, vop, pipeline, ner, assertion, relation_extraction]
 task: [Named Entity Recognition, Assertion Status, Relation Extraction, Pipeline Healthcare]
 language: en
-edition: Healthcare NLP 5.2.0
+edition: Healthcare NLP 5.2.1
 spark_version: 3.0
 supported: true
 annotator: PipelineModel
@@ -67,32 +67,53 @@ Now, I also have chronic acid reflux disease or GERD. Now I take a daily pill ca
 ## Results
 
 ```bash
-|    | chunks                      |   begin |   end | entities     |
-|---:|:----------------------------|--------:|------:|:-------------|
-|  0 | feeling really tired        |      11 |    30 | Symptom      |
-|  1 | all the time                |      32 |    43 | Duration     |
-|  2 | losing weight               |      53 |    65 | Symptom      |
-|  3 | sugar levels                |     109 |   120 | Test         |
-|  4 | high                        |     146 |   149 | TestResult   |
-|  5 | type 2 diabetes             |     163 |   177 | Disease      |
-|  6 | He                          |     181 |   182 | Gender       |
-|  7 | metformin                   |     219 |   227 | Drug         |
-|  8 | 500 mg                      |     229 |   234 | Strength     |
-|  9 | twice a day                 |     236 |   246 | Frequency    |
-| 10 | glipizide                   |     253 |   261 | Drug         |
-| 11 | 5 mg                        |     263 |   266 | Strength     |
-| 12 | before breakfast and dinner |     268 |   294 | Frequency    |
-| 13 | exercise                    |     340 |   347 | HealthStatus |
-| 14 | Now                         |     355 |   357 | DateTime     |
-| 15 | chronic acid reflux disease |     372 |   398 | Disease      |
-| 16 | GERD                        |     403 |   406 | Disease      |
-| 17 | Now                         |     409 |   411 | DateTime     |
-| 18 | daily                       |     422 |   426 | Frequency    |
-| 19 | pill                        |     428 |   431 | Drug         |
-| 20 | omeprazole                  |     440 |   449 | Drug         |
-| 21 | 20 mg                       |     451 |   455 | Strength     |
-| 22 | stomach acid                |     471 |   482 | Drug         |
-| 23 | heartburn symptoms          |     500 |   517 | Symptom      |
+
+# NER and Assertion Status Results
+|    | chunks                      | entities     | assertion              |
+|---:|-----------------------------|--------------|------------------------|
+|  0 | feeling really tired        | Symptom      | Present_Or_Past        |
+|  1 | all the time                | Duration     | Present_Or_Past        |
+|  2 | losing weight               | Symptom      | Present_Or_Past        |
+|  3 | sugar levels                | Test         | Present_Or_Past        |
+|  4 | high                        | TestResult   | Present_Or_Past        |
+|  5 | type 2 diabetes             | Disease      | Present_Or_Past        |
+|  6 | He                          | Gender       | SomeoneElse            |
+|  7 | metformin                   | Drug         | Present_Or_Past        |
+|  8 | 500 mg                      | Strength     | Present_Or_Past        |
+|  9 | twice a day                 | Frequency    | Present_Or_Past        |
+| 10 | glipizide                   | Drug         | Present_Or_Past        |
+| 11 | 5 mg                        | Strength     | Present_Or_Past        |
+| 12 | before breakfast and dinner | Frequency    | Present_Or_Past        |
+| 13 | exercise                    | HealthStatus | Hypothetical_Or_Absent |
+| 14 | Now                         | DateTime     | Present_Or_Past        |
+| 15 | chronic acid reflux disease | Disease      | Present_Or_Past        |
+| 16 | GERD                        | Disease      | Present_Or_Past        |
+| 17 | Now                         | DateTime     | Present_Or_Past        |
+| 18 | daily                       | Frequency    | Present_Or_Past        |
+| 19 | pill                        | Drug         | Present_Or_Past        |
+| 20 | omeprazole                  | Drug         | Present_Or_Past        |
+| 21 | 20 mg                       | Strength     | Present_Or_Past        |
+| 22 | stomach acid                | Drug         | Present_Or_Past        |
+| 23 | heartburn symptoms          | Symptom      | Present_Or_Past        |
+
+# Relation Extraction Results
+|    | sentence | entity1_begin | entity1_end | chunk1       | entity1   | entity2_begin | entity2_end | chunk2                      | entity2    | relation        | confidence |
+|---:|---------:|--------------:|------------:|--------------|-----------|---------------|-------------|-----------------------------|------------|-----------------|-----------:|
+|  0 | 1        | 109           | 120         | sugar levels | Test      | 146           | 149         | high                        | TestResult | Test-TestResult | 1.0        |
+|  1 | 3        | 219           | 227         | metformin    | Drug      | 229           | 234         | 500 mg                      | Strength   | Drug-Strength   | 1.0        |
+|  2 | 3        | 219           | 227         | metformin    | Drug      | 236           | 246         | twice a day                 | Frequency  | Drug-Frequency  | 1.0        |
+|  3 | 3        | 219           | 227         | metformin    | Drug      | 253           | 261         | glipizide                   | Drug       | Drug-Drug       | 1.0        |
+|  4 | 3        | 219           | 227         | metformin    | Drug      | 263           | 266         | 5 mg                        | Strength   | Drug-Strength   | 1.0        |
+|  5 | 3        | 229           | 234         | 500 mg       | Strength  | 253           | 261         | glipizide                   | Drug       | Strength-Drug   | 1.0        |
+|  6 | 3        | 253           | 261         | glipizide    | Drug      | 263           | 266         | 5 mg                        | Strength   | Drug-Strength   | 1.0        |
+|  7 | 3        | 253           | 261         | glipizide    | Drug      | 268           | 294         | before breakfast and dinner | Frequency  | Drug-Frequency  | 1.0        |
+|  8 | 6        | 422           | 426         | daily        | Frequency | 428           | 431         | pill                        | Drug       | Frequency-Drug  | 1.0        |
+|  9 | 6        | 422           | 426         | daily        | Frequency | 440           | 449         | omeprazole                  | Drug       | Frequency-Drug  | 1.0        |
+| 10 | 6        | 428           | 431         | pill         | Drug      | 440           | 449         | omeprazole                  | Drug       | Drug-Drug       | 1.0        |
+| 11 | 6        | 428           | 431         | pill         | Drug      | 451           | 455         | 20 mg                       | Strength   | Drug-Strength   | 1.0        |
+| 12 | 6        | 440           | 449         | omeprazole   | Drug      | 451           | 455         | 20 mg                       | Strength   | Drug-Strength   | 1.0        |
+| 13 | 6        | 440           | 449         | omeprazole   | Drug      | 471           | 482         | stomach acid                | Drug       | Drug-Drug       | 1.0        |
+| 14 | 6        | 451           | 455         | 20 mg        | Strength  | 471           | 482         | stomach acid                | Drug       | Strength-Drug   | 1.0        |
 ```
 
 {:.model-param}
