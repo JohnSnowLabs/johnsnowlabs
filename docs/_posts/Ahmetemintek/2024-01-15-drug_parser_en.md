@@ -126,4 +126,4 @@ val document_assembler = new DocumentAssembler()
 
 ## References
 
-This model was trained with the data from https://pillintrip.com
+This model was trained with in-house datasets.
