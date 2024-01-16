@@ -7,7 +7,7 @@ date: 2024-01-16
 tags: [licensed, en, oncology, pipeline, ner, assertion, relation_extraction]
 task: [Named Entity Recognition, Assertion Status, Relation Extraction, Pipeline Healthcare]
 language: en
-edition: Healthcare NLP 5.2.0
+edition: Healthcare NLP 5.2.1
 spark_version: 3.0
 supported: true
 annotator: PipelineModel
@@ -31,8 +31,8 @@ This pipeline is designed to
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.2.0_3.0_1705424453286.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.2.0_3.0_1705424453286.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.2.1_3.0_1705424453286.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.2.1_3.0_1705424453286.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -40,6 +40,7 @@ This pipeline is designed to
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -63,7 +64,7 @@ val result = ner_pipeline.annotate("""The Patient underwent a computed tomograph
 ## Results
 
 ```bash
-
+# NER Result
 
 |    | sentence_id | chunks                                  | begin | end | entities             |
 |----|-------------|-----------------------------------------|-------|-----|----------------------|
@@ -91,6 +92,34 @@ val result = ner_pipeline.annotate("""The Patient underwent a computed tomograph
 | 21 | 4           | Two months later                        | 471   | 486 | Relative_Date        |
 | 22 | 4           | lung metastases                         | 520   | 534 | Oncological          |
 
+# Assertion Result
+
+|    | sentence_id | chunks                                  | begin | end | entities            | assertion |
+|----|-------------|-----------------------------------------|-------|-----|---------------------|-----------|
+| 0  | 0           | computed tomography                     | 24    | 42  | Imaging_Test        | Past      |
+| 1  | 0           | CT                                      | 45    | 46  | Imaging_Test        | Past      |
+| 2  | 0           | mass                                    | 112   | 115 | Tumor_Finding       | Present   |
+| 3  | 1           | Pap smear                               | 120   | 128 | Pathology_Test      | Past      |
+| 4  | 1           | atypical glandular cells                | 173   | 196 | Pathology_Result    | Present   |
+| 5  | 1           | adenocarcinoma                          | 213   | 226 | Cancer_Dx           | Possible  |
+| 6  | 2           | pathologic specimen                     | 233   | 251 | Pathology_Test      | Past      |
+| 7  | 2           | extension                               | 260   | 268 | Invasion            | Present   |
+| 8  | 2           | tumor                                   | 277   | 281 | Tumor_Finding       | Present   |
+| 9  | 2           | enlarged                                | 349   | 356 | Lymph_Node_Modifier | Present   |
+| 10 | 3           | tumor                                   | 409   | 413 | Tumor_Finding       | Present   |
+| 11 | 3           | papillary serous ovarian adenocarcinoma | 430   | 468 | Oncological         | Present   |
+| 12 | 4           | lung metastases                         | 520   | 534 | Oncological         | Present   |
+
+
+# Relation Extraction Result
+
+|    | sentence | entity1_begin | entity1_end | chunk1    | entity1              | entity2_begin | entity2_end | chunk2          | entity2              | relation       | confidence |
+|----|----------|---------------|-------------|-----------|----------------------|---------------|-------------|-----------------|----------------------|----------------|------------|
+| 1  | 0        | 104           | 110         | ovarian   | Site_Other_Body_Part | 112           | 115         | mass            | Tumor_Finding        | is_location_of | 0.922661   |
+| 2  | 1        | 120           | 128         | Pap smear | Pathology_Test       | 213           | 226         | adenocarcinoma  | Cancer_Dx            | is_finding_of  | 0.52542114 |
+| 3  | 2        | 277           | 281         | tumor     | Tumor_Finding        | 298           | 312         | fallopian tubes | Site_Other_Body_Part | is_location_of | 0.9026299  |
+| 4  | 2        | 277           | 281         | tumor     | Tumor_Finding        | 315           | 322         | appendix        | Site_Other_Body_Part | is_location_of | 0.6649267  |
+
 
 ```
 
@@ -101,7 +130,7 @@ val result = ner_pipeline.annotate("""The Patient underwent a computed tomograph
 |---|---|
 |Model Name:|explain_clinical_doc_oncology|
 |Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.2.0+|
+|Compatibility:|Healthcare NLP 5.2.1+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
