@@ -1,8 +1,8 @@
 ---
 layout: model
-title: Explain Document Generic
+title: Explain Clinical Document - Generic
 author: John Snow Labs
-name: explain_doc_generic
+name: explain_clinical_doc_generic
 date: 2024-01-16
 tags: [licensed, clinical, en, doc, pipeline, ner, assertion, relation_extraction, generic]
 task: [Named Entity Recognition, Assertion Status, Relation Extraction, Pipeline Healthcare]
@@ -20,19 +20,19 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline is designed to:
 
-    - extract all clinical/medical entities from text,
+    - extract all clinical/medical entities from the text,
 
     - assign assertion status to the extracted entities,
 
     - establish relations between the extracted entities.
 
-4 NER models, one assertion model and one relation extraction model were used in order to achieve those tasks.
+4 NER models, one assertion model, and one relation extraction model were used to achieve those tasks.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_doc_generic_en_5.2.0_3.2_1705387063521.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_doc_generic_en_5.2.0_3.2_1705387063521.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_generic_en_5.2.1_3.2_1705387063521.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_generic_en_5.2.1_3.2_1705387063521.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -45,7 +45,7 @@ This pipeline is designed to:
 
 from sparknlp.pretrained import PretrainedPipeline
 
-ner_pipeline = PretrainedPipeline("explain_doc_generic", "en", "clinical/models")
+ner_pipeline = PretrainedPipeline("explain_clinical_doc_generic", "en", "clinical/models")
 
 result = ner_pipeline.annotate("""
 GENERAL: He is an elderly gentleman in no acute distress. He is sitting up in bed eating his breakfast. He is alert and oriented and answering questions appropriately.
@@ -66,7 +66,7 @@ IMPRESSION: At this time is refractory anemia, which is transfusion dependent. H
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val ner_pipeline = PretrainedPipeline("explain_doc_generic", "en", "clinical/models")
+val ner_pipeline = PretrainedPipeline("explain_clinical_doc_generic", "en", "clinical/models")
 
 val result = ner_pipeline.annotate("""
 GENERAL: He is an elderly gentleman in no acute distress. He is sitting up in bed eating his breakfast. He is alert and oriented and answering questions appropriately.
@@ -145,9 +145,9 @@ IMPRESSION: At this time is refractory anemia, which is transfusion dependent. H
 
 {:.table-model}
 |---|---|
-|Model Name:|explain_doc_generic|
+|Model Name:|explain_clinical_doc_generic|
 |Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.2.0+|
+|Compatibility:|Healthcare NLP 5.2.1+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
