@@ -20,13 +20,13 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline is designed to:
 
-    - extract all clinical/medical entities from text,
+    - extract all clinical/medical entities from the text,
 
     - assign assertion status to the extracted entities,
 
     - establish relations between the extracted entities.
 
-6 NER models, one assertion model and one relation extraction model were used in order to achieve those tasks.
+6 NER models, one assertion model, and one relation extraction model were used to achieve those tasks.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
