@@ -52,7 +52,7 @@ ner_pipeline = PretrainedPipeline("explain_clinical_doc_vop", "en", "clinical/mo
 
 result = ner_pipeline.annotate("""I had been feeling really tired all the time and was losing weight without even trying. My doctor checked my sugar levels and they came out to be high. So, I have type 2 diabetes. 
 He put me on two medications - I take metformin 500 mg twice a day, and glipizide 5 mg before breakfast and dinner. I also have to watch what I eat and try to exercise more.
-Now, I also have chronic acid reflux disease or GERD. Now I take a daily pill called omeprazole 20 mg to reduce the stomach acid and control the heartburn symptoms.""")
+Now, I also have chronic acid reflux disease or GERD. Now I take daily omeprazole 20 mg to control the heartburn symptoms.""")
 
 ```
 ```scala
@@ -63,7 +63,7 @@ val ner_pipeline = PretrainedPipeline("explain_clinical_doc_vop", "en", "clinica
 
 val result = ner_pipeline.annotate("""I had been feeling really tired all the time and was losing weight without even trying. My doctor checked my sugar levels and they came out to be high. So, I have type 2 diabetes. 
 He put me on two medications - I take metformin 500 mg twice a day, and glipizide 5 mg before breakfast and dinner. I also have to watch what I eat and try to exercise more.
-Now, I also have chronic acid reflux disease or GERD. Now I take a daily pill called omeprazole 20 mg to reduce the stomach acid and control the heartburn symptoms.""")
+Now, I also have chronic acid reflux disease or GERD. Now I take daily omeprazole 20 mg to control the heartburn symptoms.""")
 
 ```
 </div>
@@ -74,7 +74,7 @@ Now, I also have chronic acid reflux disease or GERD. Now I take a daily pill ca
 #NER Results
 
 |    | chunks                      | begin | end | entities                  |
-|---:|-----------------------------|-------|-----|---------------------------|
+|---:|-----------------------------|------:|----:|---------------------------|
 |  0 | feeling really tired        |   11  |  30 | Symptom                   |
 |  1 | all the time                |   32  |  43 | Duration                  |
 |  2 | losing weight               |   53  |  65 | Symptom                   |
@@ -94,12 +94,10 @@ Now, I also have chronic acid reflux disease or GERD. Now I take a daily pill ca
 | 16 | chronic acid reflux disease |  372  | 398 | Disease_Syndrome_Disorder |
 | 17 | GERD                        |  403  | 406 | Disease_Syndrome_Disorder |
 | 18 | Now                         |  409  | 411 | DateTime                  |
-| 19 | daily                       |  422  | 426 | Frequency                 |
-| 20 | pill                        |  428  | 431 | Drug                      |
-| 21 | omeprazole                  |  440  | 449 | Drug                      |
-| 22 | 20 mg                       |  451  | 455 | Strength                  |
-| 23 | stomach acid                |  471  | 482 | Drug                      |
-| 24 | heartburn symptoms          |  500  | 517 | Symptom                   |
+| 19 | daily                       |  420  | 424 | Frequency                 |
+| 20 | omeprazole                  |  426  | 435 | Drug                      |
+| 21 | 20 mg                       |  437  | 441 | Strength                  |
+| 22 | heartburn symptoms          |  458  | 475 | Symptom                   |
 
 #Assertion Status Results
 
@@ -115,29 +113,23 @@ Now, I also have chronic acid reflux disease or GERD. Now I take a daily pill ca
 |  7 | exercise                    | HealthStatus              | Hypothetical_Or_Absent |
 |  8 | chronic acid reflux disease | Disease_Syndrome_Disorder | Present_Or_Past        |
 |  9 | GERD                        | Disease_Syndrome_Disorder | Present_Or_Past        |
-| 10 | pill                        | Drug                      | Present_Or_Past        |
-| 11 | omeprazole                  | Drug                      | Present_Or_Past        |
-| 12 | stomach acid                | Drug                      | Present_Or_Past        |
-| 13 | heartburn symptoms          | Symptom                   | Present_Or_Past        |
+| 10 | omeprazole                  | Drug                      | Present_Or_Past        |
+| 11 | heartburn symptoms          | Symptom                   | Present_Or_Past        |
 
 # Relation Extraction Results
-|    | sentence | entity1_begin | entity1_end | chunk1       | entity1   | entity2_begin | entity2_end | chunk2                      | entity2    | relation        | confidence |
-|---:|----------|---------------|-------------|--------------|-----------|---------------|-------------|-----------------------------|------------|-----------------|------------|
-|  0 |     1    |      109      |     120     | sugar levels | Test      |      146      |     149     | high                        | TestResult | Test-TestResult |     1.0    |
-|  1 |     3    |      219      |     227     | metformin    | Drug      |      229      |     234     | 500 mg                      | Strength   | Drug-Strength   |     1.0    |
-|  2 |     3    |      219      |     227     | metformin    | Drug      |      236      |     246     | twice a day                 | Frequency  | Drug-Frequency  |     1.0    |
-|  3 |     3    |      219      |     227     | metformin    | Drug      |      253      |     261     | glipizide                   | Drug       | Drug-Drug       |     1.0    |
-|  4 |     3    |      219      |     227     | metformin    | Drug      |      263      |     266     | 5 mg                        | Strength   | Drug-Strength   |     1.0    |
-|  5 |     3    |      229      |     234     | 500 mg       | Strength  |      253      |     261     | glipizide                   | Drug       | Strength-Drug   |     1.0    |
-|  6 |     3    |      253      |     261     | glipizide    | Drug      |      263      |     266     | 5 mg                        | Strength   | Drug-Strength   |     1.0    |
-|  7 |     3    |      253      |     261     | glipizide    | Drug      |      268      |     294     | before breakfast and dinner | Frequency  | Drug-Frequency  |     1.0    |
-|  8 |     6    |      422      |     426     | daily        | Frequency |      428      |     431     | pill                        | Drug       | Frequency-Drug  |     1.0    |
-|  9 |     6    |      422      |     426     | daily        | Frequency |      440      |     449     | omeprazole                  | Drug       | Frequency-Drug  |     1.0    |
-| 10 |     6    |      428      |     431     | pill         | Drug      |      440      |     449     | omeprazole                  | Drug       | Drug-Drug       |     1.0    |
-| 11 |     6    |      428      |     431     | pill         | Drug      |      451      |     455     | 20 mg                       | Strength   | Drug-Strength   |     1.0    |
-| 12 |     6    |      440      |     449     | omeprazole   | Drug      |      451      |     455     | 20 mg                       | Strength   | Drug-Strength   |     1.0    |
-| 13 |     6    |      440      |     449     | omeprazole   | Drug      |      471      |     482     | stomach acid                | Drug       | Drug-Drug       |     1.0    |
-| 14 |     6    |      451      |     455     | 20 mg        | Strength  |      471      |     482     | stomach acid                | Drug       | Strength-Drug   |     1.0    |
+
+|   | sentence | entity1_begin | entity1_end | chunk1       |  entity1  | entity2_begin | entity2_end | chunk2                      | entity2    | relation        | confidence |
+|--:|:--------:|:-------------:|:-----------:|--------------|:---------:|:-------------:|:-----------:|-----------------------------|------------|-----------------|-----------:|
+| 0 |     1    |      109      |     120     | sugar levels | Test      |      146      |     149     | high                        | TestResult | Test-TestResult |     1.0    |
+| 1 |     3    |      219      |     227     | metformin    | Drug      |      229      |     234     | 500 mg                      | Strength   | Drug-Strength   |     1.0    |
+| 2 |     3    |      219      |     227     | metformin    | Drug      |      236      |     246     | twice a day                 | Frequency  | Drug-Frequency  |     1.0    |
+| 3 |     3    |      219      |     227     | metformin    | Drug      |      253      |     261     | glipizide                   | Drug       | Drug-Drug       |     1.0    |
+| 4 |     3    |      219      |     227     | metformin    | Drug      |      263      |     266     | 5 mg                        | Strength   | Drug-Strength   |     1.0    |
+| 5 |     3    |      229      |     234     | 500 mg       | Strength  |      253      |     261     | glipizide                   | Drug       | Strength-Drug   |     1.0    |
+| 6 |     3    |      253      |     261     | glipizide    | Drug      |      263      |     266     | 5 mg                        | Strength   | Drug-Strength   |     1.0    |
+| 7 |     3    |      253      |     261     | glipizide    | Drug      |      268      |     294     | before breakfast and dinner | Frequency  | Drug-Frequency  |     1.0    |
+| 8 |     6    |      420      |     424     | daily        | Frequency |      426      |     435     | omeprazole                  | Drug       | Frequency-Drug  |     1.0    |
+| 9 |     6    |      426      |     435     | omeprazole   | Drug      |      437      |     441     | 20 mg                       | Strength   | Drug-Strength   |     1.0    |
 ```
 
 {:.model-param}
