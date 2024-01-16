@@ -324,23 +324,23 @@ mapper_resolver_pipeline = Pipeline(
 
 ```
 
-**NOTES :**
+**NOTES:**
 
 + **3 different pipelines:**
-First pipeline with ChunkMapper, second with Sentence Entity Resolver and the third pipeline with ChunkMapper and Sentence Entity Resolver together.
+The first pipeline with ChunkMapper, the second with Sentence Entity Resolver, and the third pipeline with ChunkMapper and Sentence Entity Resolver together.
 
 + **4 different cluster configurations:**
-Driver and worker types were kept as same in all cluster configurations. Number of workers were increased gradually and set as 2, 4, 8, 10.
+Driver and worker types were kept the same in all cluster configurations. The number of workers were increased gradually and set as 2, 4, 8, 10.
 
 + **NER models were kept as same in all pipelines:** Pretrained `ner_posology_greedy` NER model was used in each pipeline.
 
 #### Benchmark Tables
 
 These  figures might differ based on the size of the mapper and resolver models. The larger the models, the higher the inference times.
-Depending the success rate of mappers (any chunk coming in caught by the mapper successfully), the combined mapper and resolver timing would be less than resolver-only timing.
+Depending on the success rate of mappers (any chunk coming in caught by the mapper successfully), the combined mapper and resolver timing would be less than resolver-only timing.
 
-If the resolver-only timing is equal or very close to the combined mapper and resolver timing, it means that mapper is not capable of catching/ mapping any chunk.
-In that case, try playing with various parameters in mapper or retrain/ augment the mapper.
+If the resolver-only timing is equal to or very close to the combined mapper and resolver timing, it means that the mapper is not capable of catching/ mapping any chunk.
+In that case, try playing with various parameters in the mapper or retrain/ augment the mapper.
 
 - Driver Name: Standard_DS3_v2
 - Driver Memory: 14GB
@@ -424,7 +424,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
 ### Deidentification Benchmark Experiment
  
-- **Dataset :** 10000 Clinical Texts from MTSamples, approx. 503 tokens and  6 chunks per text.
+- **Dataset:** 10000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.
  
 - **Versions :**
   - **Databricks Runtime Version :** 12.2 LTS(Scala 2.12, Spark 3.3.2)
@@ -445,13 +445,13 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 - **Spark NLP Pipelines :**
  
 Deidentification Pipeline:
- 
-  ```
+
+```
     deid_pipeline = Pipeline().setStages([
-        document_assembler,
-        sentence_detector,
-        tokenizer,
-        word_embeddings,
+      document_assembler,
+      sentence_detector,
+      tokenizer,
+      word_embeddings,
       deid_ner,
       ner_converter,
       deid_ner_enriched,
@@ -479,36 +479,36 @@ Deidentification Pipeline:
       deid_masked_fixed_char,
       deid_obfuscated,
       finisher])
- 
-  ```
+```
 
-|partition|data write|data read|transform|result timing|
-|---------|----------|---------|---------|------------|
-|     1024|13.98 sec |0.94 sec |1.81 sec |  560.64 sec|
-|      512| 7.94 sec |0.51 sec |1.73 sec |  523.87 sec|
-|      256| 6.76 sec |0.42 sec |1.73 sec |  534.04 sec|
-|      128| 2.27 sec |0.32 sec |1.74 sec |  574.20 sec|
-|       64| 5.85 sec |0.24 sec |2.07 sec |  660.65 sec|
-|       32| 1.50 sec |0.22 sec |1.72 sec |  869.07 sec|
-|       16| 1.44 sec |0.26 sec |1.54 sec |  991.77 sec|
-|        8| 1.57 sec |0.19 sec |1.59 sec | 1663.14 sec|
-|        4| 1.29 sec |0.20 sec |1.57 sec | 3223.13 sec|
+|partition|data write|data read|transform| result timing |
+|--------:|---------:|--------:|--------:|--------------:|
+|   1024  |13.98 sec |0.94 sec |1.81 sec | 9 min  21 sec |
+|    512  | 7.94 sec |0.51 sec |1.73 sec | 8 min  44 sec |
+|    256  | 6.76 sec |0.42 sec |1.73 sec | 8 min  54 sec |
+|    128  | 2.27 sec |0.32 sec |1.74 sec | 9 min  34 sec |
+|     64  | 5.85 sec |0.24 sec |2.07 sec | 11 min  1 sec |
+|     32  | 1.50 sec |0.22 sec |1.72 sec | 14 min 29 sec |
+|     16  | 1.44 sec |0.26 sec |1.54 sec | 16 min 32 sec |
+|      8  | 1.57 sec |0.19 sec |1.59 sec | 27 min 43 sec |
+|      4  | 1.29 sec |0.20 sec |1.57 sec | 53 min 43 sec |
 
 </div>
+
 <div class="h3-box" markdown="1">
 
 ## CPU NER Benchmarks
 
 ### NER (BiLSTM-CNN-Char Architecture) CPU Benchmark Experiment
 
-- **Dataset :** 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.
+- **Dataset:** 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.
 - **Versions :**
   - **spark-nlp Version:** v3.4.4
   - **spark-nlp-jsl Version :** v3.5.2
   - **Spark Version :** v3.1.2
-- **Spark NLP Pipeline :**
+- **Spark NLP Pipeline:**
 
-  ```python
+```python
   nlpPipeline = Pipeline(stages=[
         documentAssembler,
         sentenceDetector,
@@ -517,8 +517,7 @@ Deidentification Pipeline:
         clinical_ner,  
         ner_converter
         ])
-
-  ```
+```
 
 **NOTE:**
 
