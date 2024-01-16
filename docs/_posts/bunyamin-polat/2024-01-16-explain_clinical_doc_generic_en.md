@@ -20,19 +20,19 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline is designed to:
 
-    - extract all clinical/medical entities from text,
+    - extract all clinical/medical entities
 
-    - assign assertion status to the extracted entities,
+    - assign assertion status to the extracted entities
 
-    - establish relations between the extracted entities.
+    - establish relations between the extracted entities
 
-4 NER models, one assertion model and one relation extraction model were used in order to achieve those tasks.
+from clinical texts. In this pipeline, 4 NER models, one assertion model, and one relation extraction model were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract.
 
-Clinical Entity Labels: `PROBLEM`, `TEST`, `TREATMENT` 
+- Clinical Entity Labels: `PROBLEM`, `TEST`, `TREATMENT` 
 
-Assertion Status Labels: `Present`, `Absent`, `Possible`, `Planned`, `Past`, `Family`, `Hypotetical`, `SomeoneElse`
+- Assertion Status Labels: `Present`, `Absent`, `Possible`, `Planned`, `Past`, `Family`, `Hypotetical`, `SomeoneElse`
 
-Relation Extraction Labels: `TrAP`, `TeRP`, `TrIP`, `TrWP`, `TrCP`, `TrAP`, `TrNAP`, `TeCP`, `PIP`
+- Relation Extraction Labels: `TrAP`, `TeRP`, `TrIP`, `TrWP`, `TrCP`, `TrAP`, `TrNAP`, `TeCP`, `PIP`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -79,7 +79,7 @@ GENERAL: He is an elderly gentleman in no acute distress. He is sitting up in be
 HEENT: Sclerae showed mild arcus senilis in the right. Left was clear. Pupils are equally round and reactive to light. Extraocular movements are intact. Oropharynx is clear.
 NECK: Supple. Trachea is midline. No jugular venous pressure distention is noted. No adenopathy in the cervical, supraclavicular, or axillary areas.
 ABDOMEN: Soft and not tender. There may be some fullness in the left upper quadrant, although I do not appreciate a true spleen with inspiration.
-EXTREMITIES: There is some edema, but no cyanosis and clubbing .
+EXTREMITIES: There is some edema, but no clubbing.
 IMPRESSION: At this time is refractory anemia, which is transfusion dependent. He is on B12, iron, folic acid, and Procrit. There are no sign or symptom of blood loss and the previous esophagogastroduodenoscopy was negative. His creatinine was 1.
   My impression at this time is that he probably has an underlying myelodysplastic syndrome or bone marrow failure. His creatinine on this hospitalization was up slightly to 1.6 and this may contribute to his anemia.
   At this time, my recommendation for the patient is that he should undergo a bone marrow aspiration.
@@ -104,34 +104,32 @@ IMPRESSION: At this time is refractory anemia, which is transfusion dependent. H
 |  4 | tender                                   | PROBLEM    | Absent       |
 |  5 | some fullness in the left upper quadrant | PROBLEM    | Possible     |
 |  6 | some edema                               | PROBLEM    | Present      |
-|  7 | cyanosis                                 | TEST       | Absent       |
-|  8 | clubbing                                 | PROBLEM    | Absent       |
-|  9 | refractory anemia                        | PROBLEM    | Present      |
-| 10 | transfusion                              | TREATMENT  | Present      |
-| 11 | B12                                      | TREATMENT  | Planned      |
-| 12 | iron                                     | TREATMENT  | Planned      |
-| 13 | folic acid                               | TREATMENT  | Possible     |
-| 14 | Procrit                                  | TREATMENT  | Planned      |
-| 15 | blood loss                               | PROBLEM    | Absent       |
-| 16 | the previous esophagogastroduodenoscopy  | TEST       | Past         |
-| 17 | His creatinine                           | TEST       | Past         |
-| 18 | an underlying myelodysplastic syndrome   | PROBLEM    | Possible     |
-| 19 | bone marrow failure                      | PROBLEM    | Possible     |
-| 20 | His creatinine                           | TEST       | Absent       |
-| 21 | his anemia                               | PROBLEM    | Present      |
-| 22 | a bone marrow aspiration                 | PROBLEM    | Hypothetical |
-| 23 | the procedure                            | TREATMENT  | Hypothetical |
-| 24 | usefulness of the bone marrow            | TEST       | Hypothetical |
-| 25 | refractory anemia                        | PROBLEM    | Present      |
-| 26 | therapeutic interventions                | TREATMENT  | Hypothetical |
-| 27 | the studies                              | TEST       | Planned      |
-| 28 | an ultrasound of his abdomen             | TEST       | Planned      |
-| 29 | fullness of the spleen                   | PROBLEM    | Possible     |
+|  7 | clubbing                                 | PROBLEM    | Absent       |
+|  8 | refractory anemia                        | PROBLEM    | Present      |
+|  9 | transfusion                              | TREATMENT  | Present      |
+| 10 | B12                                      | TREATMENT  | Planned      |
+| 11 | iron                                     | TREATMENT  | Planned      |
+| 12 | folic acid                               | TREATMENT  | Possible     |
+| 13 | Procrit                                  | TREATMENT  | Planned      |
+| 14 | blood loss                               | PROBLEM    | Absent       |
+| 15 | the previous esophagogastroduodenoscopy  | TEST       | Past         |
+| 16 | His creatinine                           | TEST       | Past         |
+| 17 | an underlying myelodysplastic syndrome   | PROBLEM    | Possible     |
+| 18 | bone marrow failure                      | PROBLEM    | Possible     |
+| 19 | His creatinine                           | TEST       | Absent       |
+| 20 | his anemia                               | PROBLEM    | Present      |
+| 21 | a bone marrow aspiration                 | PROBLEM    | Hypothetical |
+| 22 | the procedure                            | TREATMENT  | Hypothetical |
+| 23 | usefulness of the bone marrow            | TEST       | Hypothetical |
+| 24 | refractory anemia                        | PROBLEM    | Present      |
+| 25 | therapeutic interventions                | TREATMENT  | Hypothetical |
+| 26 | the studies                              | TEST       | Planned      |
+| 27 | an ultrasound of his abdomen             | TEST       | Planned      |
+| 28 | fullness of the spleen                   | PROBLEM    | Possible     |
 
 # Relation Extraction Result
 |    |   sentence |   entity1_begin |   entity1_end | chunk1                        | entity1   |   entity2_begin |   entity2_end | chunk2                                  | entity2   | relation   |   confidence |
 |---:|-----------:|----------------:|--------------:|:------------------------------|:----------|----------------:|--------------:|:----------------------------------------|:----------|:-----------|-------------:|
-|  0 |         13 |             679 |           686 | cyanosis                      | TEST      |             692 |           699 | clubbing                                | PROBLEM   | TeCP       |     0.718904 |
 |  1 |         14 |             731 |           747 | refractory anemia             | PROBLEM   |             759 |           769 | transfusion                             | TREATMENT | O          |     0.999496 |
 |  2 |         15 |             791 |           793 | B12                           | TREATMENT |             802 |           811 | folic acid                              | TREATMENT | O          |     0.961106 |
 |  3 |         15 |             791 |           793 | B12                           | TREATMENT |             818 |           824 | Procrit                                 | TREATMENT | O          |     1        |
