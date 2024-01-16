@@ -71,7 +71,37 @@ Now, I also have chronic acid reflux disease or GERD. Now I take a daily pill ca
 ## Results
 
 ```bash
-#NER and Assertion Status Results
+#NER Results
+
+|    | chunks                      | begin | end | entities                  |
+|---:|-----------------------------|-------|-----|---------------------------|
+|  0 | feeling really tired        |   11  |  30 | Symptom                   |
+|  1 | all the time                |   32  |  43 | Duration                  |
+|  2 | losing weight               |   53  |  65 | Symptom                   |
+|  3 | doctor                      |   91  |  96 | Employment                |
+|  4 | sugar levels                |  109  | 120 | Test                      |
+|  5 | high                        |  146  | 149 | TestResult                |
+|  6 | type 2 diabetes             |  163  | 177 | Disease_Syndrome_Disorder |
+|  7 | He                          |  181  | 182 | Gender                    |
+|  8 | metformin                   |  219  | 227 | Drug                      |
+|  9 | 500 mg                      |  229  | 234 | Strength                  |
+| 10 | twice a day                 |  236  | 246 | Frequency                 |
+| 11 | glipizide                   |  253  | 261 | Drug                      |
+| 12 | 5 mg                        |  263  | 266 | Strength                  |
+| 13 | before breakfast and dinner |  268  | 294 | Frequency                 |
+| 14 | exercise                    |  340  | 347 | HealthStatus              |
+| 15 | Now                         |  355  | 357 | DateTime                  |
+| 16 | chronic acid reflux disease |  372  | 398 | Disease_Syndrome_Disorder |
+| 17 | GERD                        |  403  | 406 | Disease_Syndrome_Disorder |
+| 18 | Now                         |  409  | 411 | DateTime                  |
+| 19 | daily                       |  422  | 426 | Frequency                 |
+| 20 | pill                        |  428  | 431 | Drug                      |
+| 21 | omeprazole                  |  440  | 449 | Drug                      |
+| 22 | 20 mg                       |  451  | 455 | Strength                  |
+| 23 | stomach acid                |  471  | 482 | Drug                      |
+| 24 | heartburn symptoms          |  500  | 517 | Symptom                   |
+
+#Assertion Status Results
 
 |    | chunks                      | entities                  | assertion              |
 |---:|-----------------------------|---------------------------|------------------------|
