@@ -7,7 +7,7 @@ date: 2024-01-16
 tags: [licensed, clinical, en, vop, pipeline, ner, assertion, relation_extraction]
 task: [Named Entity Recognition, Assertion Status, Relation Extraction, Pipeline Healthcare]
 language: en
-edition: Healthcare NLP 5.2.0
+edition: Healthcare NLP 5.2.1
 spark_version: 3.4
 supported: true
 annotator: PipelineModel
@@ -37,8 +37,8 @@ Relation Extraction Labels: `Drug-Dosage`, `Drug-Frequency`, `Drug-Duration`, `D
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_vop_en_5.2.0_3.4_1705437982388.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_vop_en_5.2.0_3.4_1705437982388.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_vop_en_5.2.1_3.4_1705437982388.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_vop_en_5.2.1_3.4_1705437982388.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -73,31 +73,66 @@ Now, I also have chronic acid reflux disease or GERD. Now I take daily omeprazol
 ## Results
 
 ```bash
-|    | chunks                      |   begin |   end | entities                  |
-|---:|:----------------------------|--------:|------:|:--------------------------|
-|  0 | feeling really tired        |      11 |    30 | Symptom                   |
-|  1 | all the time                |      32 |    43 | Duration                  |
-|  2 | losing weight               |      53 |    65 | Symptom                   |
-|  3 | doctor                      |      91 |    96 | Employment                |
-|  4 | sugar levels                |     109 |   120 | Test                      |
-|  5 | high                        |     146 |   149 | TestResult                |
-|  6 | type 2 diabetes             |     163 |   177 | Disease_Syndrome_Disorder |
-|  7 | He                          |     181 |   182 | Gender                    |
-|  8 | metformin                   |     219 |   227 | Drug                      |
-|  9 | 500 mg                      |     229 |   234 | Strength                  |
-| 10 | twice a day                 |     236 |   246 | Frequency                 |
-| 11 | glipizide                   |     253 |   261 | Drug                      |
-| 12 | 5 mg                        |     263 |   266 | Strength                  |
-| 13 | before breakfast and dinner |     268 |   294 | Frequency                 |
-| 14 | exercise                    |     340 |   347 | HealthStatus              |
-| 15 | Now                         |     355 |   357 | DateTime                  |
-| 16 | chronic acid reflux disease |     372 |   398 | Disease_Syndrome_Disorder |
-| 17 | GERD                        |     403 |   406 | Disease_Syndrome_Disorder |
-| 18 | Now                         |     409 |   411 | DateTime                  |
-| 19 | daily                       |     420 |   424 | Frequency                 |
-| 20 | omeprazole                  |     426 |   435 | Drug                      |
-| 21 | 20 mg                       |     437 |   441 | Strength                  |
-| 22 | heartburn symptoms          |     458 |   475 | Symptom                   |
+
+# NER Results
+
+|    | chunks                      | begin | end | entities                  |
+|---:|-----------------------------|------:|----:|---------------------------|
+|  0 | feeling really tired        |   11  |  30 | Symptom                   |
+|  1 | all the time                |   32  |  43 | Duration                  |
+|  2 | losing weight               |   53  |  65 | Symptom                   |
+|  3 | doctor                      |   91  |  96 | Employment                |
+|  4 | sugar levels                |  109  | 120 | Test                      |
+|  5 | high                        |  146  | 149 | TestResult                |
+|  6 | type 2 diabetes             |  163  | 177 | Disease_Syndrome_Disorder |
+|  7 | He                          |  181  | 182 | Gender                    |
+|  8 | metformin                   |  219  | 227 | Drug                      |
+|  9 | 500 mg                      |  229  | 234 | Strength                  |
+| 10 | twice a day                 |  236  | 246 | Frequency                 |
+| 11 | glipizide                   |  253  | 261 | Drug                      |
+| 12 | 5 mg                        |  263  | 266 | Strength                  |
+| 13 | before breakfast and dinner |  268  | 294 | Frequency                 |
+| 14 | exercise                    |  340  | 347 | HealthStatus              |
+| 15 | Now                         |  355  | 357 | DateTime                  |
+| 16 | chronic acid reflux disease |  372  | 398 | Disease_Syndrome_Disorder |
+| 17 | GERD                        |  403  | 406 | Disease_Syndrome_Disorder |
+| 18 | Now                         |  409  | 411 | DateTime                  |
+| 19 | daily                       |  420  | 424 | Frequency                 |
+| 20 | omeprazole                  |  426  | 435 | Drug                      |
+| 21 | 20 mg                       |  437  | 441 | Strength                  |
+| 22 | heartburn symptoms          |  458  | 475 | Symptom                   |
+
+# Assertion Status Results
+
+|    | chunks                      | entities                  | assertion              |
+|---:|-----------------------------|---------------------------|------------------------|
+|  0 | feeling really tired        | Symptom                   | Present_Or_Past        |
+|  1 | losing weight               | Symptom                   | Present_Or_Past        |
+|  2 | sugar levels                | Test                      | Present_Or_Past        |
+|  3 | high                        | TestResult                | Present_Or_Past        |
+|  4 | type 2 diabetes             | Disease_Syndrome_Disorder | Present_Or_Past        |
+|  5 | metformin                   | Drug                      | Present_Or_Past        |
+|  6 | glipizide                   | Drug                      | Present_Or_Past        |
+|  7 | exercise                    | HealthStatus              | Hypothetical_Or_Absent |
+|  8 | chronic acid reflux disease | Disease_Syndrome_Disorder | Present_Or_Past        |
+|  9 | GERD                        | Disease_Syndrome_Disorder | Present_Or_Past        |
+| 10 | omeprazole                  | Drug                      | Present_Or_Past        |
+| 11 | heartburn symptoms          | Symptom                   | Present_Or_Past        |
+
+# Relation Extraction Results
+
+|   | sentence | entity1_begin | entity1_end | chunk1       |  entity1  | entity2_begin | entity2_end | chunk2                      | entity2    | relation        | confidence |
+|--:|:--------:|:-------------:|:-----------:|--------------|:---------:|:-------------:|:-----------:|-----------------------------|------------|-----------------|-----------:|
+| 0 |     1    |      109      |     120     | sugar levels | Test      |      146      |     149     | high                        | TestResult | Test-TestResult |     1.0    |
+| 1 |     3    |      219      |     227     | metformin    | Drug      |      229      |     234     | 500 mg                      | Strength   | Drug-Strength   |     1.0    |
+| 2 |     3    |      219      |     227     | metformin    | Drug      |      236      |     246     | twice a day                 | Frequency  | Drug-Frequency  |     1.0    |
+| 3 |     3    |      219      |     227     | metformin    | Drug      |      253      |     261     | glipizide                   | Drug       | Drug-Drug       |     1.0    |
+| 4 |     3    |      219      |     227     | metformin    | Drug      |      263      |     266     | 5 mg                        | Strength   | Drug-Strength   |     1.0    |
+| 5 |     3    |      229      |     234     | 500 mg       | Strength  |      253      |     261     | glipizide                   | Drug       | Strength-Drug   |     1.0    |
+| 6 |     3    |      253      |     261     | glipizide    | Drug      |      263      |     266     | 5 mg                        | Strength   | Drug-Strength   |     1.0    |
+| 7 |     3    |      253      |     261     | glipizide    | Drug      |      268      |     294     | before breakfast and dinner | Frequency  | Drug-Frequency  |     1.0    |
+| 8 |     6    |      420      |     424     | daily        | Frequency |      426      |     435     | omeprazole                  | Drug       | Frequency-Drug  |     1.0    |
+| 9 |     6    |      426      |     435     | omeprazole   | Drug      |      437      |     441     | 20 mg                       | Strength   | Drug-Strength   |     1.0    |
 ```
 
 {:.model-param}
@@ -107,7 +142,7 @@ Now, I also have chronic acid reflux disease or GERD. Now I take daily omeprazol
 |---|---|
 |Model Name:|explain_clinical_doc_vop|
 |Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.2.0+|
+|Compatibility:|Healthcare NLP 5.2.1+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
