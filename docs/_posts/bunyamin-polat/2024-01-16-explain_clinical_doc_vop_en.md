@@ -20,19 +20,17 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline is designed to:
 
-    - extract all clinical/medical entities from text,
+- extract healthcare-related entities
+- designate assertion status for the identified entities
+- establish connections between the recognized entities
 
-    - assign assertion status to the extracted entities,
+These actions are performed on documents obtained from patient sentences. To accomplish these tasks, a set of six Named Entity Recognition (NER) models, one assertion model, and one relation extraction model are employed.
 
-    - establish relations between the extracted entities.
+- Clinical Entity Labels: `Gender`, `Employment`, `Age`, `BodyPart`, `Substance`, `Form`, `PsychologicalCondition`, `Vaccine`, `Drug`, `DateTime`, `ClinicalDept`, `Laterality`, `Test`, `AdmissionDischarge`, `Disease_Syndrome_Disorder`, `VitalTest`, `Dosage`, `Duration`, `RelationshipStatus`, `Route`, `Allergen`, `Frequency`, `Symptom`, `Procedure`, `HealthStatus`, `InjuryOrPoisoning`, `Modifier`, `Treatment`, `SubstanceQuantity`, `MedicalDevice`, `TestResult`, `Alcohol`, `Smoking`
 
-6 NER models, one assertion model and one relation extraction model were used in order to achieve those tasks.
+- Assertion Status Labels: `Present_Or_Past`, `Hypothetical_Or_Absent`, `SomeoneElse`
 
-Clinical Entity Labels: `Gender`, `Employment`, `Age`, `BodyPart`, `Substance`, `Form`, `PsychologicalCondition`, `Vaccine`, `Drug`, `DateTime`, `ClinicalDept`, `Laterality`, `Test`, `AdmissionDischarge`, `Disease_Syndrome_Disorder`, `VitalTest`, `Dosage`, `Duration`, `RelationshipStatus`, `Route`, `Allergen`, `Frequency`, `Symptom`, `Procedure`, `HealthStatus`, `InjuryOrPoisoning`, `Modifier`, `Treatment`, `SubstanceQuantity`, `MedicalDevice`, `TestResult`, `Alcohol`, `Smoking`
-
-Assertion Status Labels: `Present_Or_Past`, `Hypothetical_Or_Absent`, `SomeoneElse`
-
-Relation Extraction Labels: `Drug-Dosage`, `Drug-Frequency`, `Drug-Duration`, `Drug-Strength`, `Drug-Drug`, `Test-TestResult`, `Disease_Syndrome_Disorder-Treatment`, `Disease_Syndrome_Disorder-Symptom`, `Disease_Syndrome_Disorder-Modifier`, `Symptom-Modifier`, `Disease_Syndrome_Disorder-BodyPart`, `Symptom-BodyPart`,  `Procedure-DateTime`, `Test-DateTime`, `VitalTest-TestResult`,  `Disease_Syndrome_Disorder-Drug`, `Treatment-Drug`, `Disease_Syndrome_Disorder-Procedure`, `Procedure-Drug`, `Procedure-BodyPart`, `Treatment-BodyPart`, `BodyPart-Procedure`, `MedicalDevice-Procedure`
+- Relation Extraction Labels: `Drug-Dosage`, `Drug-Frequency`, `Drug-Duration`, `Drug-Strength`, `Drug-Drug`, `Test-TestResult`, `Disease_Syndrome_Disorder-Treatment`, `Disease_Syndrome_Disorder-Symptom`, `Disease_Syndrome_Disorder-Modifier`, `Symptom-Modifier`, `Disease_Syndrome_Disorder-BodyPart`, `Symptom-BodyPart`,  `Procedure-DateTime`, `Test-DateTime`, `VitalTest-TestResult`,  `Disease_Syndrome_Disorder-Drug`, `Treatment-Drug`, `Disease_Syndrome_Disorder-Procedure`, `Procedure-Drug`, `Procedure-BodyPart`, `Treatment-BodyPart`, `BodyPart-Procedure`, `MedicalDevice-Procedure`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
