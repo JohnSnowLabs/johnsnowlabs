@@ -7,7 +7,7 @@ date: 2024-01-16
 tags: [licensed, en, snomed, pipeline, resolver]
 task: [Entity Resolution, Pipeline Healthcare]
 language: en
-edition: Healthcare NLP 5.2.0
+edition: Healthcare NLP 5.2.1
 spark_version: 3.0
 supported: true
 annotator: PipelineModel
@@ -32,6 +32,7 @@ This pretrained pipeline is built on the top of [sbiobertresolve_snomed_bodyStru
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
