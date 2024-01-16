@@ -7,7 +7,7 @@ date: 2024-01-16
 tags: [licensed, clinical, en, doc, pipeline, ner, assertion, relation_extraction, generic]
 task: [Named Entity Recognition, Assertion Status, Relation Extraction, Pipeline Healthcare]
 language: en
-edition: Healthcare NLP 5.2.0
+edition: Healthcare NLP 5.2.1
 spark_version: 3.0
 supported: true
 annotator: PipelineModel
@@ -40,6 +40,7 @@ This pipeline is designed to:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -87,6 +88,7 @@ IMPRESSION: At this time is refractory anemia, which is transfusion dependent. H
 ## Results
 
 ```bash
+# NER and Assertion Status Results
 |    | chunks                                   | entities   | assertion    |
 |---:|:-----------------------------------------|:-----------|:-------------|
 |  0 | acute distress                           | PROBLEM    | Absent       |
@@ -119,6 +121,21 @@ IMPRESSION: At this time is refractory anemia, which is transfusion dependent. H
 | 27 | the studies                              | TEST       | Planned      |
 | 28 | an ultrasound of his abdomen             | TEST       | Planned      |
 | 29 | fullness of the spleen                   | PROBLEM    | Possible     |
+
+# Relation Extraction Results
+|    |   sentence |   entity1_begin |   entity1_end | chunk1                        | entity1   |   entity2_begin |   entity2_end | chunk2                                  | entity2   | relation   |   confidence |
+|---:|-----------:|----------------:|--------------:|:------------------------------|:----------|----------------:|--------------:|:----------------------------------------|:----------|:-----------|-------------:|
+|  0 |         13 |             679 |           686 | cyanosis                      | TEST      |             692 |           699 | clubbing                                | PROBLEM   | TeCP       |     0.718904 |
+|  1 |         14 |             731 |           747 | refractory anemia             | PROBLEM   |             759 |           769 | transfusion                             | TREATMENT | O          |     0.999496 |
+|  2 |         15 |             791 |           793 | B12                           | TREATMENT |             802 |           811 | folic acid                              | TREATMENT | O          |     0.961106 |
+|  3 |         15 |             791 |           793 | B12                           | TREATMENT |             818 |           824 | Procrit                                 | TREATMENT | O          |     1        |
+|  4 |         15 |             796 |           799 | iron                          | TREATMENT |             802 |           811 | folic acid                              | TREATMENT | O          |     0.999855 |
+|  5 |         15 |             796 |           799 | iron                          | TREATMENT |             818 |           824 | Procrit                                 | TREATMENT | O          |     0.999987 |
+|  6 |         15 |             802 |           811 | folic acid                    | TREATMENT |             818 |           824 | Procrit                                 | TREATMENT | O          |     0.994239 |
+|  7 |         16 |             859 |           868 | blood loss                    | PROBLEM   |             874 |           912 | the previous esophagogastroduodenoscopy | TEST      | TeRP       |     1        |
+|  8 |         19 |            1066 |          1079 | His creatinine                | TEST      |            1155 |          1164 | his anemia                              | PROBLEM   | TeRP       |     1        |
+|  9 |         22 |            1405 |          1433 | usefulness of the bone marrow | TEST      |            1463 |          1479 | refractory anemia                       | PROBLEM   | TeRP       |     1        |
+| 10 |         24 |            1637 |          1664 | an ultrasound of his abdomen  | TEST      |            1690 |          1711 | fullness of the spleen                  | PROBLEM   | TeRP       |     1        |
 ```
 
 {:.model-param}
