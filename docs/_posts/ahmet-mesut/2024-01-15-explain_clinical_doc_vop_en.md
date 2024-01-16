@@ -1,8 +1,8 @@
 ---
 layout: model
-title: Explain Document Voice Of Patient (VOP)
+title: Explain Clinical Document - Voice Of Patient (VOP)
 author: John Snow Labs
-name: explain_document_vop
+name: explain_clinical_doc_vop
 date: 2024-01-15
 tags: [licensed, clinical, en, vop, pipeline, ner, assertion, relation_extraction]
 task: [Named Entity Recognition, Assertion Status, Relation Extraction, Pipeline Healthcare]
@@ -31,8 +31,8 @@ This pipeline is designed to:
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_document_vop_en_5.2.0_3.2_1705353221923.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_document_vop_en_5.2.0_3.2_1705353221923.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_vop_en_5.2.1_3.2_1705353221923.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_vop_en_5.2.1_3.2_1705353221923.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -44,7 +44,7 @@ This pipeline is designed to:
 
 from sparknlp.pretrained import PretrainedPipeline
 
-ner_pipeline = PretrainedPipeline("explain_document_vop", "en", "clinical/models")
+ner_pipeline = PretrainedPipeline("explain_clinical_doc_vop", "en", "clinical/models")
 
 result = ner_pipeline.annotate("""I had been feeling really tired all the time and was losing weight without even trying. My doctor checked my sugar levels and they came out to be high. So, I have type 2 diabetes. 
 He put me on two medications - I take metformin 500 mg twice a day, and glipizide 5 mg before breakfast and dinner. I also have to watch what I eat and try to exercise more.
@@ -55,7 +55,7 @@ Now, I also have chronic acid reflux disease or GERD. Now I take a daily pill ca
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val ner_pipeline = PretrainedPipeline("explain_document_vop", "en", "clinical/models")
+val ner_pipeline = PretrainedPipeline("explain_clinical_doc_vop", "en", "clinical/models")
 
 val result = ner_pipeline.annotate("""I had been feeling really tired all the time and was losing weight without even trying. My doctor checked my sugar levels and they came out to be high. So, I have type 2 diabetes. 
 He put me on two medications - I take metformin 500 mg twice a day, and glipizide 5 mg before breakfast and dinner. I also have to watch what I eat and try to exercise more.
@@ -120,7 +120,7 @@ Now, I also have chronic acid reflux disease or GERD. Now I take a daily pill ca
 
 {:.table-model}
 |---|---|
-|Model Name:|explain_document_vop|
+|Model Name:|explain_clinical_doc_vop|
 |Type:|pipeline|
 |Compatibility:|Healthcare NLP 5.2.0+|
 |License:|Licensed|
