@@ -259,17 +259,17 @@ Results show that the different versions can have some variance in the execution
 
 <div class="h3-box" markdown="1">
 
-### ChunkMapper + Sentence Entity Resolver Benchmark Experiment
+### ChunkMapper and Sentence Entity Resolver Benchmark Experiment
 
-- **Dataset :** 100 Clinical Texts from MTSamples, approx. 705 tokens and 11 chunks per text.
+- **Dataset:** 100 Clinical Texts from MTSamples, approx. 705 tokens and 11 chunks per text.
 
-- **Versions :**
-  - **Databricks Runtime Version :** 12.2 LTS(Scala 2.12, Spark 3.3.2)
+- **Versions:**
+  - **Databricks Runtime Version:** 12.2 LTS(Scala 2.12, Spark 3.3.2)
   - **spark-nlp Version:** v5.2.0
-  - **spark-nlp-jsl Version :** v5.2.0
-  - **Spark Version :** v3.3.2
+  - **spark-nlp-jsl Version:** v5.2.0
+  - **Spark Version:** v3.3.2
 
-- **Spark NLP Pipelines :**
+- **Spark NLP Pipelines:**
 
 ChunkMapper Pipeline:
 
@@ -300,10 +300,9 @@ Sentence Entity Resolver Pipeline:
             sbert_embedder,
             rxnorm_resolver
       ])
-
 ```
 
-ChunkMapper + Sentence Entity Resolver Pipeline:
+ChunkMapper and Sentence Entity Resolver Pipeline:
 
 ```
 mapper_resolver_pipeline = Pipeline(
@@ -351,7 +350,7 @@ In that case, try playing with various parameters in the mapper or retrain/ augm
 - Total Worker Numbers: 2
 - Total Cores: 8
 
-| partition | mapper timing | resolver timing | mapper+resolver timing |
+| partition | mapper timing | resolver timing | mapper and resolver timing |
 | --------- | ------------- | --------------- | ---------------------- |
 | 4         | 23 sec        | 4.36 mins       | 2.40 mins              |
 | 8         | 15 sec        | 3.21 mins       | 1.48 mins              |
@@ -370,7 +369,7 @@ In that case, try playing with various parameters in the mapper or retrain/ augm
 - Total Worker Numbers: 4
 - Total Cores: 16
 
-| partition | mapper timing | resolver timing | mapper+resolver timing |
+| partition | mapper timing | resolver timing | mapper and resolver timing |
 | --------- | ------------- | --------------- | ---------------------- |
 | 4         | 32.5 sec      | 4.19 mins       | 2.58 mins              |
 | 8         | 15.1 sec      | 2.25 mins       | 1.38 mins              |
@@ -389,7 +388,7 @@ In that case, try playing with various parameters in the mapper or retrain/ augm
 - Total Worker Numbers: 8
 - Total Cores: 32
 
-| partition | mapper timing | resolver timing | mapper+resolver timing |
+| partition | mapper timing | resolver timing | mapper and resolver timing |
 | --------- | ------------- | --------------- | ---------------------- |
 | 4         | 37.3 sec      | 4.46 mins       | 2.52 mins              |
 | 8         | 26.7 sec      | 2.46 mins       | 1.37 mins              |
@@ -408,7 +407,7 @@ In that case, try playing with various parameters in the mapper or retrain/ augm
 - Total Worker Numbers: 10
 - Total Cores: 40
 
-| partition | mapper timing | resolver timing | mapper+resolver timing |
+| partition | mapper timing | resolver timing | mapper and resolver timing |
 | --------- | ------------- | --------------- | ---------------------- |
 | 4         | 40.8 sec      | 4.55 mins       | 3.20 mins              |
 | 8         | 30.1 sec      | 3.34 mins       | 1.59 mins              |
@@ -442,12 +441,12 @@ In that case, try playing with various parameters in the mapper or retrain/ augm
 - Total Cores: 40
  
  
-- **Spark NLP Pipelines :**
+- **Spark NLP Pipelines:**
  
 Deidentification Pipeline:
 
 ```
-    deid_pipeline = Pipeline().setStages([
+deid_pipeline = Pipeline().setStages([
       document_assembler,
       sentence_detector,
       tokenizer,
