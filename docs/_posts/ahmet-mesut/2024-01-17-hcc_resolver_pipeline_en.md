@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline for HCC Sentence Entity Resolver
+title: Pipeline for Hierarchical Condition Categories (HCC) Sentence Entity Resolver
 author: John Snow Labs
 name: hcc_resolver_pipeline
 date: 2024-01-17
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline utilizes sbiobert_base_cased_mli Sentence Bert Embeddings to map various medical entities, including diagnoses, treatments, tests, anatomical references, and demographic entities, to their corresponding Hierarchical Condition Categories (HCC) codes.
+This pipeline extracts various medical entities, including diagnoses, treatments, tests, anatomical references, and demographics from clinical texts and utilizes `sbiobert_base_cased_mli` Sentence Bert Embeddings to map to their corresponding Hierarchical Condition Categories (HCC) codes. 
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -38,7 +38,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 ner_pipeline = PretrainedPipeline("hcc_resolver_pipeline", "en", "clinical/models")
 
-result = ner_pipeline.annotate("""The patient's medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease, requiring comprehensive care and management.""")
+result = ner_pipeline.annotate("The patient's medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease, requiring comprehensive care and management.")
 
 ```
 ```scala
@@ -47,7 +47,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_pipeline = PretrainedPipeline("hcc_resolver_pipeline", "en", "clinical/models")
 
-val result = ner_pipeline.annotate("""The patient's medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease, requiring comprehensive care and management.""")
+val result = ner_pipeline.annotate("The patient's medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease, requiring comprehensive care and management.")
 
 ```
 </div>
