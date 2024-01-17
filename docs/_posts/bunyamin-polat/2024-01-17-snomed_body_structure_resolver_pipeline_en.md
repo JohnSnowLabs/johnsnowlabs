@@ -32,6 +32,7 @@ This pipeline maps extracted medical (anatomical structures) entities to Snomed 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
