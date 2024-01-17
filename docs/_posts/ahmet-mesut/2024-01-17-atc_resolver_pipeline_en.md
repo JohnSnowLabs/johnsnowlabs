@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This advanced pipeline utilizes the sbiobert_base_cased_mli Sentence Bert Embeddings to perform accurate mapping of drug entities to their corresponding ATC (Anatomic Therapeutic Chemical) codes.
+This advanced pipeline utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to perform accurate mapping of drug entities to their corresponding ATC (Anatomic Therapeutic Chemical) codes.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -38,7 +38,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 ner_pipeline = PretrainedPipeline("atc_resolver_pipeline", "en", "clinical/models")
 
-result = ner_pipeline.annotate("""She was immediately given hydrogen peroxide 30 mg and amoxicillin twice daily for 10 days to treat the infection on her leg. She has a history of taking magnesium hydroxide.""")
+result = ner_pipeline.annotate("She was immediately given hydrogen peroxide 30 mg and amoxicillin twice daily for 10 days to treat the infection on her leg. She has a history of taking magnesium hydroxide.")
 
 ```
 ```scala
@@ -47,7 +47,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_pipeline = PretrainedPipeline("atc_resolver_pipeline", "en", "clinical/models")
 
-val result = ner_pipeline.annotate("""She was immediately given hydrogen peroxide 30 mg and amoxicillin twice daily for 10 days to treat the infection on her leg. She has a history of taking magnesium hydroxide.""")
+val result = ner_pipeline.annotate("She was immediately given hydrogen peroxide 30 mg and amoxicillin twice daily for 10 days to treat the infection on her leg. She has a history of taking magnesium hydroxide.")
 
 ```
 </div>
