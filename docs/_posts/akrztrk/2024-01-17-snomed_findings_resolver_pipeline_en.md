@@ -32,13 +32,14 @@ This pipeline extracts clinical findings and maps them to their corresponding SN
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
 
 snomed_pipeline = PretrainedPipeline("snomed_findings_resolver_pipeline", "en", "clinical/models")
 
-text = """The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly and swollen joints. Laboratory results confirmed pancytopenia."""
+text = """The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia."""
 
 result = snomed_pipeline.fullAnnotate(text)
 
@@ -49,7 +50,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val snomed_pipeline = PretrainedPipeline("snomed_findings_resolver_pipeline", "en", "clinical/models")
 
-val text = """The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly and swollen joints. Laboratory results confirmed pancytopenia."""
+val text = """The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia."""
 
 val result = snomed_pipeline.fullAnnotate(text)
 
@@ -59,7 +60,6 @@ val result = snomed_pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-
 +--------------------------------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
 |                                      chunks|begin|end|     code|                                         all_codes|                                       resolutions|                                     all_distances|
 +--------------------------------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
@@ -70,10 +70,8 @@ val result = snomed_pipeline.fullAnnotate(text)
 |                                   cachectic|  169|177|238108007|[238108007, 28928000, 74633007, 422003001, 2845...|[cachectic, cachexia, aids with cachexia, cache...|[0.0000, 0.0619, 0.0651, 0.0965, 0.0961, 0.0986...|
 |                                        pale|  183|186|274643008|[274643008, 139121005, 161865009, 398979000, 16...|[pale, pale color, pale color, pale complexion,...|[0.0000, 0.0733, 0.0733, 0.0812, 0.0812, 0.0892...|
 |                  notable hepatosplenomegaly|  194|219| 36760000|[36760000, 19058002, 80378000, 16294009, 469330...|[hepatosplenomegaly, congestive splenomegaly, n...|[0.0225, 0.0835, 0.0857, 0.0875, 0.0928, 0.0959...|
-|                                     swollen|  225|231|300889000|[300889000, 278528006, 30746006, 203134002, 275...|[swollen arm, swollen face, swollen glands, swo...|[0.0600, 0.0701, 0.0805, 0.0814, 0.0814, 0.0847...|
-|                                pancytopenia|  270|281|127034005|[127034005, 736024007, 191249008, 5876000, 1249...|[pancytopenia, drug induced pancytopenia, pancy...|[0.0000, 0.0407, 0.0425, 0.0425, 0.0493, 0.0495...|
+|                                pancytopenia|  251|262|127034005|[127034005, 736024007, 191249008, 5876000, 1249...|[pancytopenia, drug induced pancytopenia, pancy...|[0.0000, 0.0407, 0.0425, 0.0425, 0.0493, 0.0495...|
 +--------------------------------------------+-----+---+---------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
-
 ```
 
 {:.model-param}
