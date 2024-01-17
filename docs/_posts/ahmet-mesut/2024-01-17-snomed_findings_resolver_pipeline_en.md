@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline for Snomed Concept, CT version
+title: Pipeline for Snomed Concept, Findings Version
 author: John Snow Labs
 name: snomed_findings_resolver_pipeline
 date: 2024-01-17
@@ -32,6 +32,7 @@ This pipeline extracts clinical findings and maps them to their corresponding SN
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
