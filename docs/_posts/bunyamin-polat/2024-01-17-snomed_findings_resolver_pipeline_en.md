@@ -32,6 +32,7 @@ This pipeline maps extracted medical entities to Snomed codes (CT version) using
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
