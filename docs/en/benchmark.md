@@ -425,21 +425,13 @@ In that case, try playing with various parameters in the mapper or retrain/ augm
  
 - **Dataset:** 10000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.
  
-- **Versions :**
-  - **Databricks Runtime Version :** 12.2 LTS(Scala 2.12, Spark 3.3.2)
+- **Versions:**
   - **spark-nlp Version:** v5.2.0
   - **spark-nlp-jsl Version :** v5.2.0
-  - **Spark Version :** v3.3.2
- 
-- Driver Name: Standard_DS3_v2
-- Driver Memory: 14GB
-- Worker Name: Standard_DS3_v2
-- Worker Memory: 14GB
-- Worker Cores: 4
-- Action:  write_parquet
-- Total Worker Numbers: 10
-- Total Cores: 40
- 
+  - **Spark Version:** v3.3.2
+  - **DataBricks Config:** 32 CPU Core, 128GiB RAM (8 worker)
+  - **AWS Config:** 32 CPU Cores, 58GiB RAM (c6a.8xlarge)
+  - **Colab Config:** 8 CPU Cores 52GiB RAM (Colab Pro - High RAM) 
  
 - **Spark NLP Pipelines:**
  
@@ -480,17 +472,19 @@ deid_pipeline = Pipeline().setStages([
       finisher])
 ```
 
-|partition|data write|data read|transform| result timing |
-|--------:|---------:|--------:|--------:|--------------:|
-|   1024  |13.98 sec |0.94 sec |1.81 sec | 9 min  21 sec |
-|    512  | 7.94 sec |0.51 sec |1.73 sec | 8 min  44 sec |
-|    256  | 6.76 sec |0.42 sec |1.73 sec | 8 min  54 sec |
-|    128  | 2.27 sec |0.32 sec |1.74 sec | 9 min  34 sec |
-|     64  | 5.85 sec |0.24 sec |2.07 sec | 11 min  1 sec |
-|     32  | 1.50 sec |0.22 sec |1.72 sec | 14 min 29 sec |
-|     16  | 1.44 sec |0.26 sec |1.54 sec | 16 min 32 sec |
-|      8  | 1.57 sec |0.19 sec |1.59 sec | 27 min 43 sec |
-|      4  | 1.29 sec |0.20 sec |1.57 sec | 53 min 43 sec |
+**Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 21 chunks per text.
+
+| partition | AWS <br> result timing | DataBricks <br> result timing | Colab <br> result timing |
+|----------:|-------------:|-------------:|-------------:|
+| 1024      | 1 min 3 sec  | 1 min 55 sec | 5 min 45 sec |
+| 512       |  56 sec      | 1 min 26 sec | 5 min 15 sec |
+| 256       |  50 sec      | 1 min 20 sec | 5 min  4 sec |
+| 128       |  45 sec      | 1 min 21 sec | 5 min 11 sec |
+| 64        |  46 sec      | 1 min 31 sec | 5 min 3 sec  |
+| 32        |  46 sec      | 1 min 26 sec | 5 min 0 sec  |
+| 16        |  56 sec      | 1 min 43 sec | 5 min 3 sec  |
+| 8         | 1 min 21 sec | 2 min 33 sec | 5 min 3 sec  |
+| 4         | 2 min 26 sec | 4 min 53 sec | 6 min 3 sec  |
 
 </div>
 
