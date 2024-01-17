@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline extracts various medical entities, including diagnoses, treatments, tests, anatomical references, and demographics from clinical texts and utilizes `sbiobert_base_cased_mli` Sentence Bert Embeddings to map to their corresponding Hierarchical Condition Categories (HCC) codes. 
+This pipeline extracts clinical conditions from clinical texts and utilizes `sbiobert_base_cased_mli` Sentence Bert Embeddings to map to their corresponding Hierarchical Condition Categories (HCC) codes. 
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
