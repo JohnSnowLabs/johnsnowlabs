@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline for Snomed Codes (Procedure and Measurements)
+title: Pipeline for Snomed Codes - Procedure and Measurements Version
 author: John Snow Labs
 name: snomed_procedures_measurements_resolver_pipeline
 date: 2024-01-17
@@ -32,6 +32,7 @@ This pipeline extracts `Procedure` and `Measurements` entities and maps them to 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
