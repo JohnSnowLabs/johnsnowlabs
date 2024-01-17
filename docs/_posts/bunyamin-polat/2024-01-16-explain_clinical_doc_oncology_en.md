@@ -18,15 +18,15 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This specialized oncology pipeline utilizes seven NER models
+This specialized oncology pipeline can;
 
-- extract healthcare-related terms entities,
+- extract oncological entities,
 
 - assign assertion status to the extracted entities,
 
-- establish relations between the extracted entities.
+- establish relations between the extracted entities from the clinical documents.
 
-Tailored for oncological data, this pipeline enhances information extraction and comprehension in field of cancer.
+In this pipeline, seven NER, one assertion and two relation extraction model were used to achieve those tasks.
 
 - Clinical Entity Labels: `Adenopathy`, `Age`, `Biomarker`,`Biomarker_Result`, `Cancer_Dx`, `Cancer_Score` ,`Cancer_Surgery`, `Chemotherapy`, `Cycle_Count` ,`Cycle_Day`, `Cycle_Number`, `Date` ,`Death_Entity`, `Direction`, `Dosage` ,`Duration`, `Frequency`, `Gender` ,`Grade`, `Histological_Type`, `Hormonal_Therapy` ,`Imaging_Test`, `Immunotherapy`, `Invasion` ,`Line_Of_Therapy`, `Metastasis`, `Oncogene` ,`PROBLEM`, `Pathology_Result`, `Pathology_Test` ,`PROBLEM`, `Performance_Status`, `Race_Ethnicity` ,`Radiotherapy`, `Response_To_Treatment`, `Relative_Date` ,`Route`, `Site_Bone`, `Site_Brain` ,`Site_Breast`, `Site_Liver`, `Site_Lung` ,`Site_Lymph_Node`, `Site_Other_Body_Part`, `Smoking_Status` ,`Staging`, `Targeted_Therapy`, `Tumor_Finding` ,`Tumor_Size`, `Unspecific_Therapy`, `Radiation_Dose` ,`Anatomical_Site`, `Cancer_Therapy`, `Size_Trend` ,`Lymph_Node`, `Tumor_Description`,`Lymph_Node_Modifier`, `Posology_Information`, `Oncological`,`Weight`,`Alcohol`,`Communicable_Disease`,`BMI`,`Obesity`,`Diabetes`
 
