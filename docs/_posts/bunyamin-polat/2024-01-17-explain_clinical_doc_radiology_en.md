@@ -28,6 +28,12 @@ This specialized radiology pipeline can;
 
 In this pipeline, five NER, one assertion and one relation extraction model were used to achive those tasks
 
+- Clinical Entity Labels: `Imaging_Test`, `Imaging_Technique`, `ImagingFindings`, `OtherFindings` ,`BodyPart` ,`Direction` ,`Test` ,`Symptom` ,`Disease_Syndrome_Disorder` ,`Medical_Device` ,`Procedure` ,`Measurements` ,`Units` ,`Gender` ,`Metastasis` ,`Invasion` ,`Route` ,`Treatment` ,`Drug` ,`Form` ,`Frequency` ,`Dosage` ,`Date` ,`Test_Result` ,`Medical_Device`
+
+- Assertion Status Labels: `Confirmed`, `Suspected`, `Negative`
+
+- Relation Extraction Labels: `is_related`
+
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -40,6 +46,7 @@ In this pipeline, five NER, one assertion and one relation extraction model were
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -64,6 +71,7 @@ val result = ner_pipeline.annotate("""Bilateral breast ultrasound was subsequent
 
 ```bash
 
+# NER Result
 
 |    |   sentence_id | chunks                                   |   begin |   end | entities                  |
 |---:|--------------:|:-----------------------------------------|--------:|------:|:--------------------------|
@@ -79,6 +87,27 @@ val result = ner_pipeline.annotate("""Bilateral breast ultrasound was subsequent
 |  9 |             2 | benign fibrous tissue                    |     334 |   354 | ImagingFindings           |
 | 10 |             2 | lipoma                                   |     361 |   366 | Disease_Syndrome_Disorder |
 
+# Assertion Result
+
+|    |   sentence_id | chunks                |   begin |   end | entities                  | assertion   |
+|---:|--------------:|:----------------------|--------:|------:|:--------------------------|:------------|
+|  0 |             0 | ovoid mass            |      78 |    87 | ImagingFindings           | Confirmed   |
+|  1 |             1 | mass                  |     210 |   213 | ImagingFindings           | Confirmed   |
+|  2 |             1 | isoechoic echotexture |     228 |   248 | ImagingFindings           | Confirmed   |
+|  3 |             1 | internal color flow   |     294 |   312 | ImagingFindings           | Negative    |
+|  4 |             2 | benign fibrous tissue |     334 |   354 | ImagingFindings           | Suspected   |
+|  5 |             2 | lipoma                |     361 |   366 | Disease_Syndrome_Disorder | Suspected   |
+
+# Relation Extraction Result
+
+|    |   sentence |   entity1_begin |   entity1_end | chunk1                | entity1         |   entity2_begin |   entity2_end | chunk2             | entity2         | relation   |   confidence |
+|---:|-----------:|----------------:|--------------:|:----------------------|:----------------|----------------:|--------------:|:-------------------|:----------------|:-----------|-------------:|
+|  0 |          0 |               0 |            15 | Bilateral breast      | BodyPart        |              17 |            26 | ultrasound         | Imaging_Test    | is_related |     1        |
+|  1 |          0 |               0 |            15 | Bilateral breast      | BodyPart        |              78 |            87 | ovoid mass         | ImagingFindings | is_related |     0.999997 |
+|  2 |          0 |              17 |            26 | ultrasound            | Imaging_Test    |              78 |            87 | ovoid mass         | ImagingFindings | is_related |     0.999569 |
+|  3 |          0 |              78 |            87 | ovoid mass            | ImagingFindings |             113 |           130 | 0.5 x 0.5 x 0.4 cm | Measurements    | is_related |     1        |
+|  4 |          1 |             210 |           213 | mass                  | ImagingFindings |             257 |           271 | adjacent muscle    | BodyPart        | is_related |     0.997639 |
+|  5 |          1 |             228 |           248 | isoechoic echotexture | ImagingFindings |             257 |           271 | adjacent muscle    | BodyPart        | is_related |     0.999999 |
 
 ```
 
