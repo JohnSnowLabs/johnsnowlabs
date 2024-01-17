@@ -39,7 +39,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 snomed_pipeline = PretrainedPipeline("snomed_body_structure_resolver_pipeline", "en", "clinical/models")
 
-text = """The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly and swollen joints. Laboratory results confirmed pancytopenia."""
+text = """The patient is a 30-year-old female with a long history of insulin-dependent diabetes, type 2; coronary artery disease; chronic renal insufficiency; peripheral vascular disease, also secondary to diabetes; who was originally admitted to an outside hospital for what appeared to be acute paraplegia, lower extremities. She did receive a course of Bactrim for 14 days for UTI."""
 
 result = snomed_pipeline.fullAnnotate(text)
 
@@ -50,7 +50,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val snomed_pipeline = PretrainedPipeline("snomed_body_structure_resolver_pipeline", "en", "clinical/models")
 
-val text = """The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly and swollen joints. Laboratory results confirmed pancytopenia."""
+val text = """The patient is a 30-year-old female with a long history of insulin-dependent diabetes, type 2; coronary artery disease; chronic renal insufficiency; peripheral vascular disease, also secondary to diabetes; who was originally admitted to an outside hospital for what appeared to be acute paraplegia, lower extremities. She did receive a course of Bactrim for 14 days for UTI."""
 
 val result = snomed_pipeline.fullAnnotate(text)
 
