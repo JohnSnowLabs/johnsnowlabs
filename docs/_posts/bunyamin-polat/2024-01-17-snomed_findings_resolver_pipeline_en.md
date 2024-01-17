@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline maps extracted medical entities to Snomed codes (CT version) using bert sentence embeddings.
+This pipeline extracts clinical findings and maps them to their corresponding SNOMED (CT version) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
