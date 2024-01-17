@@ -20,19 +20,17 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline is designed to:
 
-    - extract all clinical/medical entities from text,
+- extract clinical/medical entities
+- assign assertion status to the extracted entities
+- establish relations between the extracted entities
 
-    - assign assertion status to the extracted entities,
+from clinical texts. In this pipeline, 4 NER models, one assertion model, and one relation extraction model were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract.
 
-    - establish relations between the extracted entities.
+- Clinical Entity Labels: `PROBLEM`, `TEST`, `TREATMENT` 
 
-4 NER models, one assertion model and one relation extraction model were used in order to achieve those tasks.
+- Assertion Status Labels: `Present`, `Absent`, `Possible`, `Planned`, `Past`, `Family`, `Hypotetical`, `SomeoneElse`
 
-Clinical Entity Labels: `PROBLEM`, `TEST`, `TREATMENT`
-
-Assertion Status Labels: `Present`, `Absent`, `Possible`, `Planned`, `Past`, `Family`, `Hypotetical`, `SomeoneElse`
-
-Relation Extraction Labels: `TrAP`, `TeRP`, `TrIP`, `TrWP`, `TrCP`, `TrAP`, `TrNAP`, `TeCP`, `PIP`
+- Relation Extraction Labels: `TrAP`, `TeRP`, `TrIP`, `TrWP`, `TrCP`, `TrAP`, `TrNAP`, `TeCP`, `PIP`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -46,6 +44,7 @@ Relation Extraction Labels: `TrAP`, `TeRP`, `TrIP`, `TrWP`, `TrCP`, `TrAP`, `TrN
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
