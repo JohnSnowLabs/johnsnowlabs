@@ -20,13 +20,13 @@ use_language_switcher: "Python-Scala-Java"
 
 This pipeline is designed to:
 
-    - extract all clinical/medical entities from text,
+- extract all healthcare-related entities
 
-    - assign assertion status to the extracted entities,
+- assign assertion status to the extracted entities
 
-    - establish relations between the extracted entities.
+- establish relations between the extracted entities
 
-6 NER models, one assertion model and one relation extraction model were used in order to achieve those tasks.
+from the documents transferred from the patient’s sentences. In this pipeline, six NER models, one assertion model, and one relation extraction model were used to achieve those tasks.
 
 Clinical Entity Labels: `Gender`, `Employment`, `Age`, `BodyPart`, `Substance`, `Form`, `PsychologicalCondition`, `Vaccine`, `Drug`, `DateTime`, `ClinicalDept`, `Laterality`, `Test`, `AdmissionDischarge`, `Disease_Syndrome_Disorder`, `VitalTest`, `Dosage`, `Duration`, `RelationshipStatus`, `Route`, `Allergen`, `Frequency`, `Symptom`, `Procedure`, `HealthStatus`, `InjuryOrPoisoning`, `Modifier`, `Treatment`, `SubstanceQuantity`, `MedicalDevice`, `TestResult`, `Alcohol`, `Smoking`
 
