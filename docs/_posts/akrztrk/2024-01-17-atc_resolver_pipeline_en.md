@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This advanced pipeline utilizes the sbiobert_base_cased_mli Sentence Bert Embeddings to perform accurate mapping of drug entities to their corresponding ATC (Anatomic Therapeutic Chemical) codes.
+This advanced pipeline utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to perform accurate mapping of drug entities to their corresponding ATC (Anatomic Therapeutic Chemical) codes.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
