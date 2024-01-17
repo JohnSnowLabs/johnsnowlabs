@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline for HCC Sentence Entity Resolver
+title: Pipeline for Hierarchical Condition Categories (HCC) Sentence Entity Resolver
 author: John Snow Labs
 name: hcc_resolver_pipeline
 date: 2024-01-17
