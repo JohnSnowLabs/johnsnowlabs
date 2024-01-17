@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline employs Sentence Bert Embeddings to map diverse medical entities, including diagnoses, treatments, tests, anatomical references, and demographic entities, to Current Procedural Terminology (CPT) codes.
+This pipeline employs `sbiobert_base_cased_mli` to map diverse `procedures` and `measurements` entities, to Current Procedural Terminology (CPT) codes.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
