@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This advanced pipeline extracts `DRUG` entities from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding ATC (Anatomic Therapeutic Chemical) codes. 
+This advanced pipeline extracts `DRUG` entities from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding Anatomic Therapeutic Chemical (ATC) codes. 
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
