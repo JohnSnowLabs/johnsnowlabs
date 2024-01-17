@@ -26,7 +26,7 @@ This pipeline is designed to:
 
 - establish relations between the extracted entities
 
-from the documents transferred from the patient’s sentences. In this pipeline, six NER models, one assertion model, and one relation extraction model were used to achieve those tasks.
+from the documents originating from patient sentences. The pipeline employs six NER models, one assertion model, and one relation extraction model to accomplish these objectives.
 
 Clinical Entity Labels: `Gender`, `Employment`, `Age`, `BodyPart`, `Substance`, `Form`, `PsychologicalCondition`, `Vaccine`, `Drug`, `DateTime`, `ClinicalDept`, `Laterality`, `Test`, `AdmissionDischarge`, `Disease_Syndrome_Disorder`, `VitalTest`, `Dosage`, `Duration`, `RelationshipStatus`, `Route`, `Allergen`, `Frequency`, `Symptom`, `Procedure`, `HealthStatus`, `InjuryOrPoisoning`, `Modifier`, `Treatment`, `SubstanceQuantity`, `MedicalDevice`, `TestResult`, `Alcohol`, `Smoking`
 
