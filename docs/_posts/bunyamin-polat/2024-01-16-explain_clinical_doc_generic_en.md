@@ -53,7 +53,7 @@ ner_pipeline = PretrainedPipeline("explain_clinical_doc_generic", "en", "clinica
 
 result = ner_pipeline.annotate("""
 Patient with severe fever and sore throat.
-He shows no stomach pain and he maintained on an epidural and PCA for pain control.
+He shows no stomach pain. He maintained on an epidural and PCA for pain control.
 After CT, lung tumor located at the right lower lobe. Father with Alzheimer.
 """)
 
@@ -66,7 +66,7 @@ val ner_pipeline = PretrainedPipeline("explain_clinical_doc_generic", "en", "cli
 
 val result = ner_pipeline.annotate("""
 Patient with severe fever and sore throat.
-He shows no stomach pain and he maintained on an epidural and PCA for pain control.
+He shows no stomach pain. He maintained on an epidural and PCA for pain control.
 After CT, lung tumor located at the right lower lobe. Father with Alzheimer.
 """)
 
@@ -93,9 +93,8 @@ After CT, lung tumor located at the right lower lobe. Father with Alzheimer.
 |    |   sentence |   entity1_begin |   entity1_end | chunk1       | entity1   |   entity2_begin |   entity2_end | chunk2      | entity2   | relation   |   confidence |
 |---:|-----------:|----------------:|--------------:|:-------------|:----------|----------------:|--------------:|:------------|:----------|:-----------|-------------:|
 |  0 |          0 |              13 |            24 | severe fever | PROBLEM   |              30 |            40 | sore throat | PROBLEM   | PIP        |     0.999998 |
-|  3 |          1 |              55 |            66 | stomach pain | PROBLEM   |             113 |           116 | pain        | PROBLEM   | PIP        |     0.615871 |
-|  5 |          1 |             105 |           107 | PCA          | TREATMENT |             113 |           116 | pain        | PROBLEM   | TrAP       |     0.998973 |
-|  6 |          2 |             133 |           134 | CT           | TEST      |             137 |           146 | lung tumor  | PROBLEM   | TeRP       |     1        |
+|  2 |          2 |             102 |           104 | PCA          | TREATMENT |             110 |           113 | pain        | PROBLEM   | TrAP       |     0.998956 |
+|  3 |          3 |             130 |           131 | CT           | TEST      |             134 |           143 | lung tumor  | PROBLEM   | TeRP       |     1        |
 ```
 
 {:.model-param}
