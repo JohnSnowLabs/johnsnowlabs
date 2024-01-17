@@ -73,6 +73,7 @@ After CT, lung tumor located at the right lower lobe. Father with Alzheimer.""")
 ## Results
 
 ```bash
+# NER and Assertion Result
 |    | chunks       | entities   | assertion    |
 |---:|:-------------|:-----------|:-------------|
 |  0 | severe fever | PROBLEM    | Present      |
@@ -84,6 +85,13 @@ After CT, lung tumor located at the right lower lobe. Father with Alzheimer.""")
 |  6 | CT           | TEST       | Past         |
 |  7 | lung tumor   | PROBLEM    | Present      |
 |  8 | Alzheimer    | PROBLEM    | Family       |
+
+# Relation Extraction Result
+|    |   sentence |   entity1_begin |   entity1_end | chunk1       | entity1   |   entity2_begin |   entity2_end | chunk2      | entity2   | relation   |   confidence |
+|---:|-----------:|----------------:|--------------:|:-------------|:----------|----------------:|--------------:|:------------|:----------|:-----------|-------------:|
+|  0 |          0 |              13 |            24 | severe fever | PROBLEM   |              30 |            40 | sore throat | PROBLEM   | PIP        |     0.999998 |
+|  2 |          2 |             102 |           104 | PCA          | TREATMENT |             110 |           113 | pain        | PROBLEM   | TrAP       |     0.998956 |
+|  3 |          3 |             130 |           131 | CT           | TEST      |             134 |           143 | lung tumor  | PROBLEM   | TeRP       |     1        |
 ```
 
 {:.model-param}
