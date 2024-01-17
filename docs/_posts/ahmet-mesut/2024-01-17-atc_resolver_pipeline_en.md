@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline for ATC (Anatomic Therapeutic Chemical) Sentence Entity Resolver
+title: Pipeline for Anatomic Therapeutic Chemical (ATC) Sentence Entity Resolver
 author: John Snow Labs
 name: atc_resolver_pipeline
 date: 2024-01-17
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This advanced pipeline utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to perform accurate mapping of drug entities to their corresponding ATC (Anatomic Therapeutic Chemical) codes. You’ll just feed your text and it will return the corresponding ATC codes.
+This advanced pipeline extracts `DRUG` entities from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding ATC (Anatomic Therapeutic Chemical) codes. 
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
