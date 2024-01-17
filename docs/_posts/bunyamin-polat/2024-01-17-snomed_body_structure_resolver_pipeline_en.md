@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline maps extracted medical (anatomical structures) entities to Snomed codes (body structure version) using bert sentence embeddings.
+This pipeline extracts anatomical structure entities and maps them to their corresponding SNOMED (body structure version) codes using  `sbiobert_base_cased_mli` Sentence Bert Embeddings.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
