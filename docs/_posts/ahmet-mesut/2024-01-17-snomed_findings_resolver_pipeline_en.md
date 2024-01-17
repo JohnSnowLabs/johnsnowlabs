@@ -39,7 +39,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 snomed_pipeline = PretrainedPipeline("snomed_findings_resolver_pipeline", "en", "clinical/models")
 
-text = """The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly and swollen joints. Laboratory results confirmed pancytopenia."""
+text = """The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia."""
 
 result = snomed_pipeline.fullAnnotate(text)
 
@@ -50,7 +50,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val snomed_pipeline = PretrainedPipeline("snomed_findings_resolver_pipeline", "en", "clinical/models")
 
-val text = """The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly and swollen joints. Laboratory results confirmed pancytopenia."""
+val text = """The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia."""
 
 val result = snomed_pipeline.fullAnnotate(text)
 
