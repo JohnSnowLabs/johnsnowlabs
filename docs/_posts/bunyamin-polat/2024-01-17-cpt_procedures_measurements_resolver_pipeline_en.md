@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline for CPT Sentence Entity Resolver
+title: Pipeline for Current Procedural Terminology (CPT) Sentence Entity Resolver
 author: John Snow Labs
 name: cpt_procedures_measurements_resolver_pipeline
 date: 2024-01-17
