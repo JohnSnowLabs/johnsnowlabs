@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline for ATC Sentence Entity Resolver
+title: Pipeline for Anatomic Therapeutic Chemical (ATC) Sentence Entity Resolver
 author: John Snow Labs
 name: atc_resolver_pipeline
 date: 2024-01-17
