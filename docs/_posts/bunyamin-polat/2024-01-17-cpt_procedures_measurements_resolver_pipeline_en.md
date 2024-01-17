@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline employs `sbiobert_base_cased_mli` to map diverse `procedures` and `measurements` entities, to Current Procedural Terminology (CPT) codes.
+This pipeline employs `sbiobert_base_cased_mli` Sentence Bert Embeddings to map diverse `procedures` and `measurements` entities, to Current Procedural Terminology (CPT) codes.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
