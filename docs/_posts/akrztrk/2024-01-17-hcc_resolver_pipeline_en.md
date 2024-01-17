@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This advanced pipeline extracts `PROBLEM` entities from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding Hierarchical Condition Categories (HCC) codes.
+This advanced pipeline extracts clinical conditions from clinical texts and utilizes the `sbiobert_base_cased_mli` Sentence Bert Embeddings to map these entities to their corresponding Hierarchical Condition Categories (HCC) codes.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
