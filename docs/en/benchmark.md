@@ -256,20 +256,252 @@ nlpPipeline = Pipeline(
 Results show that the different versions can have some variance in the execution time, but the difference is not too relevant. 
 
 </div>
+
+<div class="h3-box" markdown="1">
+
+### ChunkMapper and Sentence Entity Resolver Benchmark Experiment
+
+- **Dataset:** 100 Clinical Texts from MTSamples, approx. 705 tokens and 11 chunks per text.
+
+- **Versions:**
+  - **Databricks Runtime Version:** 12.2 LTS(Scala 2.12, Spark 3.3.2)
+  - **spark-nlp Version:** v5.2.0
+  - **spark-nlp-jsl Version:** v5.2.0
+  - **Spark Version:** v3.3.2
+
+- **Spark NLP Pipelines:**
+
+ChunkMapper Pipeline:
+
+  ```
+    mapper_pipeline = Pipeline().setStages([
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        word_embeddings,
+        ner_model,
+        ner_converter,
+        chunkerMapper])
+
+  ```
+
+Sentence Entity Resolver Pipeline:
+
+```
+    resolver_pipeline = Pipeline(
+        stages = [
+            document_assembler,
+            sentenceDetectorDL,
+            tokenizer,
+            word_embeddings,
+            ner_model,
+            ner_converter,
+            c2doc,
+            sbert_embedder,
+            rxnorm_resolver
+      ])
+```
+
+ChunkMapper and Sentence Entity Resolver Pipeline:
+
+```
+mapper_resolver_pipeline = Pipeline(
+    stages = [
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        word_embeddings,
+        ner_model,
+        ner_converter,
+        chunkerMapper,
+        cfModel,
+        chunk2doc,
+        sbert_embedder,
+        rxnorm_resolver,
+        resolverMerger
+])
+
+```
+
+**NOTES:**
+
++ **3 different pipelines:**
+The first pipeline with ChunkMapper, the second with Sentence Entity Resolver, and the third pipeline with ChunkMapper and Sentence Entity Resolver together.
+
++ **4 different cluster configurations:**
+Driver and worker types were kept the same in all cluster configurations. The number of workers were increased gradually and set as 2, 4, 8, 10.
+
++ **NER models were kept as same in all pipelines:** Pretrained `ner_posology_greedy` NER model was used in each pipeline.
+
+#### Benchmark Tables
+
+These  figures might differ based on the size of the mapper and resolver models. The larger the models, the higher the inference times.
+Depending on the success rate of mappers (any chunk coming in caught by the mapper successfully), the combined mapper and resolver timing would be less than resolver-only timing.
+
+If the resolver-only timing is equal to or very close to the combined mapper and resolver timing, it means that the mapper is not capable of catching/ mapping any chunk.
+In that case, try playing with various parameters in the mapper or retrain/ augment the mapper.
+
+- Driver Name: Standard_DS3_v2
+- Driver Memory: 14GB
+- Worker Name: Standard_DS3_v2
+- Worker Memory: 14GB
+- Worker Cores: 4
+- Action: write_parquet
+- Total Worker Numbers: 2
+- Total Cores: 8
+
+| partition | mapper timing | resolver timing | mapper and resolver timing |
+| --------- | ------------- | --------------- | ---------------------- |
+| 4         | 23 sec        | 4.36 mins       | 2.40 mins              |
+| 8         | 15 sec        | 3.21 mins       | 1.48 mins              |
+| 16        | 18 sec        | 2.52 mins       | 2.04 mins              |
+| 32        | 13 sec        | 2.22 mins       | 1.38 mins              |
+| 64        | 14 sec        | 2.36 sec        | 1.50 mins              |
+| 100       | 14 sec        | 2.21 sec        | 1.36 mins              |
+| 1000      | 21 sec        | 2.23 mins       | 1.43 mins              |
+
+- Driver Name: Standard_DS3_v2
+- Driver Memory: 14GB
+- Worker Name: Standard_DS3_v2
+- Worker Memory: 14GB
+- Worker Cores: 4
+- Action: write_parquet
+- Total Worker Numbers: 4
+- Total Cores: 16
+
+| partition | mapper timing | resolver timing | mapper and resolver timing |
+| --------- | ------------- | --------------- | ---------------------- |
+| 4         | 32.5 sec      | 4.19 mins       | 2.58 mins              |
+| 8         | 15.1 sec      | 2.25 mins       | 1.38 mins              |
+| 16        | 9.52 sec      | 1.50 mins       | 1.15 mins              |
+| 32        | 9.16 sec      | 1.47 mins       | 1.09 mins              |
+| 64        | 9.32 sec      | 1.36 mins       | 1.03 mins              |
+| 100       | 9.97 sec      | 1.48 mins       | 1.11 mins              |
+| 1000      | 12.5 sec      | 1.31 mins       | 1.03 mins              |
+
+- Driver Name: Standard_DS3_v2
+- Driver Memory: 14GB
+- Worker Name: Standard_DS3_v2
+- Worker Memory: 14GB
+- Worker Cores: 4
+- Action: write_parquet
+- Total Worker Numbers: 8
+- Total Cores: 32
+
+| partition | mapper timing | resolver timing | mapper and resolver timing |
+| --------- | ------------- | --------------- | ---------------------- |
+| 4         | 37.3 sec      | 4.46 mins       | 2.52 mins              |
+| 8         | 26.7 sec      | 2.46 mins       | 1.37 mins              |
+| 16        | 8.85 sec      | 1.27 mins       | 1.06 mins              |
+| 32        | 7.74 sec      | 1.38 mins       | 54.5 sec               |
+| 64        | 7.22 sec      | 1.23 mins       | 55.6 sec               |
+| 100       | 6.32 sec      | 1.16 mins       | 50.9 sec               |
+| 1000      | 8.37 sec      | 59.6 sec        | 49.3 sec               |
+
+- Driver Name: Standard_DS3_v2
+- Driver Memory: 14GB
+- Worker Name: Standard_DS3_v2
+- Worker Memory: 14GB
+- Worker Cores: 4
+- Action: write_parquet
+- Total Worker Numbers: 10
+- Total Cores: 40
+
+| partition | mapper timing | resolver timing | mapper and resolver timing |
+| --------- | ------------- | --------------- | ---------------------- |
+| 4         | 40.8 sec      | 4.55 mins       | 3.20 mins              |
+| 8         | 30.1 sec      | 3.34 mins       | 1.59 mins              |
+| 16        | 11.6 sec      | 1.57 mins       | 1.12 mins              |
+| 32        | 7.84 sec      | 1.33 mins       | 55.9 sec               |
+| 64        | 7.25 sec      | 1.18 mins       | 56.1 sec               |
+| 100       | 7.45 sec      | 1.05 mins       | 47.5 sec               |
+| 1000      | 8.87 sec      | 1.14 mins       | 47.9 sec               |
+
+</div>
+
+<div class="h3-box" markdown="1">
+
+### Deidentification Benchmark Experiment
+ 
+- **Dataset:** 10000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.
+ 
+- **Versions:**
+  - **spark-nlp Version:** v5.2.0
+  - **spark-nlp-jsl Version :** v5.2.0
+  - **Spark Version:** v3.3.2
+  - **DataBricks Config:** 32 CPU Core, 128GiB RAM (8 worker)
+  - **AWS Config:** 32 CPU Cores, 58GiB RAM (c6a.8xlarge)
+  - **Colab Config:** 8 CPU Cores 52GiB RAM (Colab Pro - High RAM) 
+ 
+- **Spark NLP Pipelines:**
+ 
+Deidentification Pipeline:
+
+```
+deid_pipeline = Pipeline().setStages([
+      document_assembler,
+      sentence_detector,
+      tokenizer,
+      word_embeddings,
+      deid_ner,
+      ner_converter,
+      deid_ner_enriched,
+      ner_converter_enriched,
+      chunk_merge,
+      ssn_parser,
+      account_parser,
+      dln_parser,
+      plate_parser,
+      vin_parser,
+      license_parser,
+      country_parser,
+      age_parser,
+      date_parser,
+      phone_parser1,
+      phone_parser2,
+      ids_parser,
+      zip_parser,
+      med_parser,
+      email_parser,
+      chunk_merge1,
+      chunk_merge2,
+      deid_masked_rgx,
+      deid_masked_char,
+      deid_masked_fixed_char,
+      deid_obfuscated,
+      finisher])
+```
+
+**Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 21 chunks per text.
+
+| partition | AWS <br> result timing | DataBricks <br> result timing | Colab <br> result timing |
+|----------:|-------------:|-------------:|-------------:|
+| 1024      | 1 min 3 sec  | 1 min 55 sec | 5 min 45 sec |
+| 512       |  56 sec      | 1 min 26 sec | 5 min 15 sec |
+| 256       |  50 sec      | 1 min 20 sec | 5 min  4 sec |
+| 128       |  45 sec      | 1 min 21 sec | 5 min 11 sec |
+| 64        |  46 sec      | 1 min 31 sec | 5 min 3 sec  |
+| 32        |  46 sec      | 1 min 26 sec | 5 min 0 sec  |
+| 16        |  56 sec      | 1 min 43 sec | 5 min 3 sec  |
+| 8         | 1 min 21 sec | 2 min 33 sec | 5 min 3 sec  |
+| 4         | 2 min 26 sec | 4 min 53 sec | 6 min 3 sec  |
+
+</div>
+
 <div class="h3-box" markdown="1">
 
 ## CPU NER Benchmarks
 
 ### NER (BiLSTM-CNN-Char Architecture) CPU Benchmark Experiment
 
-- **Dataset :** 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.
+- **Dataset:** 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.
 - **Versions :**
   - **spark-nlp Version:** v3.4.4
   - **spark-nlp-jsl Version :** v3.5.2
   - **Spark Version :** v3.1.2
-- **Spark NLP Pipeline :**
+- **Spark NLP Pipeline:**
 
-  ```python
+```python
   nlpPipeline = Pipeline(stages=[
         documentAssembler,
         sentenceDetector,
@@ -278,8 +510,7 @@ Results show that the different versions can have some variance in the execution
         clinical_ner,  
         ner_converter
         ])
-
-  ```
+```
 
 **NOTE:**
 
