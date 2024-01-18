@@ -26,13 +26,13 @@ This specialized radiology pipeline can;
 
 - establish relations between the extracted entities from the clinical documents.
 
-In this pipeline, five NER, one assertion and one relation extraction model were used to achive those tasks
+In this pipeline, five NER, one assertion and one relation extraction model were used to achive those tasks.
 
 - Clinical Entity Labels: `Imaging_Test`, `Imaging_Technique`, `ImagingFindings`, `OtherFindings` ,`BodyPart` ,`Direction` ,`Test` ,`Symptom` ,`Disease_Syndrome_Disorder` ,`Medical_Device` ,`Procedure` ,`Measurements` ,`Units` ,`Gender` ,`Metastasis` ,`Invasion` ,`Route` ,`Treatment` ,`Drug` ,`Form` ,`Frequency` ,`Dosage` ,`Date` ,`Test_Result` ,`Medical_Device`
 
 - Assertion Status Labels: `Confirmed`, `Suspected`, `Negative`
 
-- Relation Extraction Labels: `is_related`
+- Relation Extraction Labels: `is_related`,`not_related`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
