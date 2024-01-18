@@ -46,6 +46,7 @@ In this pipeline, five NER, one assertion and one relation extraction model were
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -108,8 +109,6 @@ val result = ner_pipeline.annotate("""Bilateral breast ultrasound was subsequent
 |  3 |          0 |              78 |            87 | ovoid mass            | ImagingFindings |             113 |           130 | 0.5 x 0.5 x 0.4 cm | Measurements    | is_related |     1        |
 |  4 |          1 |             210 |           213 | mass                  | ImagingFindings |             257 |           271 | adjacent muscle    | BodyPart        | is_related |     0.997639 |
 |  5 |          1 |             228 |           248 | isoechoic echotexture | ImagingFindings |             257 |           271 | adjacent muscle    | BodyPart        | is_related |     0.999999 |
-
-
 
 ```
 
