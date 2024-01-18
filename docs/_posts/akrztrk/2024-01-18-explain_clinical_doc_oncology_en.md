@@ -46,6 +46,7 @@ In this pipeline, seven NER, one assertion and two relation extraction model wer
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
