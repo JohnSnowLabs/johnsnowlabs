@@ -46,6 +46,7 @@ In this pipeline, seven NER, one assertion and two relation extraction model wer
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -115,7 +116,6 @@ val result = ner_pipeline.annotate("""The Patient underwent a computed tomograph
 | 10 | 3           | tumor                                   | 409   | 413 | Tumor_Finding       | Present   |
 | 11 | 3           | papillary serous ovarian adenocarcinoma | 430   | 468 | Oncological         | Present   |
 | 12 | 4           | lung metastases                         | 520   | 534 | Oncological         | Present   |
-
 
 # Relation Extraction Result
 
