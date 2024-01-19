@@ -66,21 +66,21 @@ ner = MedicalNerModel.pretrained("ner_human_phenotype_gene_clinical", "en", "cli
 ner_converter = NerConverterInternal()\
 	.setInputCols(["sentence", "token", "ner"])\
 	.setOutputCol("ner_chunk")\
-  .setWhiteList(["HP"])
+  	.setWhiteList(["HP"])
 
 chunk2doc = Chunk2Doc()\
 	.setInputCols("ner_chunk")\
 	.setOutputCol("ner_chunk_doc")
 
 sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli",'en','clinical/models')\
-  .setInputCols(["ner_chunk_doc"])\
-  .setOutputCol("sbert_embeddings")\
-  .setCaseSensitive(False)
+  	.setInputCols(["ner_chunk_doc"])\
+  	.setOutputCol("sbert_embeddings")\
+  	.setCaseSensitive(False)
 
 resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_HPO", "en", "clinical/models") \
-  .setInputCols(["sbert_embeddings"]) \
-  .setOutputCol("resolution")\
-  .setDistanceFunction("EUCLIDEAN")
+  	.setInputCols(["sbert_embeddings"]) \
+  	.setOutputCol("resolution")\
+  	.setDistanceFunction("EUCLIDEAN")
 
 pipeline = Pipeline(stages = [
     document_assembler,
@@ -93,12 +93,12 @@ pipeline = Pipeline(stages = [
     sbert_embedder,
     resolver])
 
-model = pipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
 
 text = """She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy."""
+
 data = spark.createDataFrame([[text]]).toDF("text")
 
-result = model.transform(data)
+result = pipeline.fit(data).transform(data)
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
@@ -140,7 +140,7 @@ val resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_HPO","en"
   .setOutputCol("resolution") 
   .setDistanceFunction("EUCLIDEAN") 
 
-val pipeline = val Pipeline(stages = new Array(
+val pipeline = new Pipeline().setStages(Array(
   document_assembler, 
   sentence_detector, 
   tokenizer, 
@@ -151,10 +151,10 @@ val pipeline = val Pipeline(stages = new Array(
   sbert_embedder, 
   resolver)) 
 
-val model = Seq("").toDF("text")
-val text = "She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08,preserved left and right ventricular systolic function,aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate,but on the most recent echocardiogram on 05/12/08,that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy." 
+val text = "She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08,preserved left and right ventricular systolic function,aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate,but on the most recent echocardiogram on 05/12/08,that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy."
+
 val data = Seq(text).toDF("text") 
-val result = model.transform(data)
+val result = pipeline(fit).transform(data)
 ```
 
 
