@@ -133,7 +133,7 @@ val resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_HPO","en"
   .setOutputCol("resolution") 
   .setDistanceFunction("EUCLIDEAN") 
 
-val pipeline = new Pipeline(stages = new Array(
+val pipeline = new Pipeline().setStages(Array(
   document_assembler, 
   sentence_detector, 
   tokenizer, 
