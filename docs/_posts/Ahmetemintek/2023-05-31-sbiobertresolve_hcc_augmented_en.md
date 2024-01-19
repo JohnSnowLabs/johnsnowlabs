@@ -39,24 +39,24 @@ This model maps extracted medical entities to Hierarchical Condition Categories 
 
 ```python
 document_assembler = DocumentAssembler()\
-		.setInputCol("text")\
-		.setOutputCol("document")
+	.setInputCol("text")\
+	.setOutputCol("document")
 
 sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models") \
-		.setInputCols(["document"]) \
-		.setOutputCol("sentence")\
+	.setInputCols(["document"]) \
+	.setOutputCol("sentence")\
 
 tokenizer = Tokenizer()\
-		.setInputCols(["sentence"])\
-		.setOutputCol("token")
+	.setInputCols(["sentence"])\
+	.setOutputCol("token")
 
 word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-		.setInputCols(["sentence", "token"])\
-		.setOutputCol("embeddings")
+	.setInputCols(["sentence", "token"])\
+	.setOutputCol("embeddings")
 
 ner_model = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models") \
-		.setInputCols(["sentence", "token", "embeddings"]) \
-		.setOutputCol("ner")
+	.setInputCols(["sentence", "token", "embeddings"]) \
+	.setOutputCol("ner")
 
 ner_converter = NerConverterInternal() \
  	  .setInputCols(["sentence", "token", "ner"]) \
@@ -143,7 +143,8 @@ val nlpPipeline = new Pipeline().setStages(Array(
     sbert_embedder, 
     resolver)) 
 
-val data = spark.createDataFrame(Array(Array("""The patient"s medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease,requiring comprehensive care and management."""))).toDF("text") 
+val data = Seq("""The patient"s medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease,requiring comprehensive care and management.""").toDF("text")
+
 val result = nlpPipeline.fit(data).transform(data) 
 ```
 </div>
