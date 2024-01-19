@@ -143,7 +143,7 @@ val nlpPipeline = new Pipeline().setStages(Array(
     sbert_embedder, 
     resolver)) 
 
-val data = spark.createDataFrame(Array(Array("The patient"s medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease,requiring comprehensive care and management."))).toDF("text") 
+val data = spark.createDataFrame(Array(Array("""The patient"s medical record indicates a diagnosis of Diabetes and Chronic Obstructive Pulmonary Disease,requiring comprehensive care and management."""))).toDF("text") 
 val result = nlpPipeline.fit(data).transform(data) 
 ```
 </div>
