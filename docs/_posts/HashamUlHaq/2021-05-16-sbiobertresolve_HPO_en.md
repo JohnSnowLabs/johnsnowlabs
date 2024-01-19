@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps phenotypic abnormalities encountered in human diseases to Human Phenotype Ontology (HPO) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings, and has faster load time, with a speedup of about 6X when compared to previous versions. Also the load process now is more memory friendly meaning that the maximum memory required during load time is smaller, reducing the chances of OOM exceptions, and thus relaxing hardware requirements.
+This model  maps phenotypic abnormalities, medical terms associated with hereditary diseases, encountered in human to Human Phenotype Ontology (HPO) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings, and has faster load time, with a speedup of about 6X when compared to previous versions. Also the load process now is more memory friendly meaning that the maximum memory required during load time is smaller, reducing the chances of OOM exceptions, and thus relaxing hardware requirements.
 
 ## Predicted Entities
 
@@ -33,41 +33,130 @@ This model returns Human Phenotype Ontology (HPO) codes for phenotypic abnormali
 
 ## How to use
 
-```sbiobertresolve_HPO``` resolver model must be used with ```sbiobert_base_cased_mli``` as embeddings ```ner_human_phenotype_gene_clinical``` as NER model. No need to ```.setWhiteList()```.
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 
 ```python
-...
-chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+document_assembler = DocumentAssembler()\
+	.setInputCol("text")\
+	.setOutputCol("document")
 
-sbert_embedder = BertSentenceEmbeddings\
-.pretrained("sbiobert_base_cased_mli",'en','clinical/models')\
-.setInputCols(["ner_chunk_doc"])\
-.setOutputCol("sbert_embeddings")
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models") \
+	.setInputCols(["document"])\
+	.setOutputCol("sentence")
 
-resolver = SentenceEntityResolverModel\
-.pretrained("sbiobertresolve_HPO", "en", "clinical/models") \
-.setInputCols(["ner_chunk", "sbert_embeddings"]) \
-.setOutputCol("resolution")\
-.setDistanceFunction("EUCLIDEAN")
+tokenizer = Tokenizer()\
+	.setInputCols(["sentence"])\
+	.setOutputCol("token")
 
-pipeline = Pipeline(stages = [document_assembler, sentence_detector, tokens, embeddings, ner, ner_converter, chunk2doc, sbert_embedder, resolver])
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+	.setInputCols(["sentence", "token"])\
+	.setOutputCol("word_embeddings")
 
-model = LightPipeline(pipeline.fit(spark.createDataFrame([[""]], ["text"])))
+ner = MedicalNerModel.pretrained("ner_human_phenotype_gene_clinical", "en", "clinical/models") \
+	.setInputCols(["sentence", "token", "word_embeddings"]) \
+	.setOutputCol("ner")\
 
-text="""These disorders include cancer, bipolar disorder, schizophrenia, autism, Cri-du-chat syndrome, myopia, cortical cataract-linked Alzheimer's disease, and infectious diseases"""
+ner_converter = NerConverterInternal()\
+	.setInputCols(["sentence", "token", "ner"])\
+	.setOutputCol("ner_chunk")\
+  .setWhiteList(["HP"])
 
-res = model.fullAnnotate(text)
+chunk2doc = Chunk2Doc()\
+	.setInputCols("ner_chunk")\
+	.setOutputCol("ner_chunk_doc")
+
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli",'en','clinical/models')\
+  .setInputCols(["ner_chunk_doc"])\
+  .setOutputCol("sbert_embeddings")\
+  .setCaseSensitive(False)
+
+resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_HPO", "en", "clinical/models") \
+  .setInputCols(["sbert_embeddings"]) \
+  .setOutputCol("resolution")\
+  .setDistanceFunction("EUCLIDEAN")
+
+pipeline = Pipeline(stages = [
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    ner,
+    ner_converter,
+    chunk2doc,
+    sbert_embedder,
+    resolver])
+
+model = pipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
+
+text = """She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy."""
+data = spark.createDataFrame([[text]]).toDF("text")
+
+result = model.transform(data)
 ```
+```scala
+val document_assembler = new DocumentAssembler()
+  .setInputCol("text") 
+  .setOutputCol("document") 
 
+val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
+  .setInputCols(Array("document")) 
+  .setOutputCol("sentence") 
+
+val tokenizer = new Tokenizer()
+  .setInputCols(Array("sentence")) 
+  .setOutputCol("token") 
+
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")
+  .setInputCols(Array("sentence","token")) 
+  .setOutputCol("word_embeddings") 
+
+val ner = MedicalNerModel.pretrained("ner_human_phenotype_gene_clinical","en","clinical/models")
+  .setInputCols(Array("sentence","token","word_embeddings")) 
+  .setOutputCol("ner") 
+
+val ner_converter = new NerConverterInternal()
+  .setInputCols(Array("sentence","token","ner")) 
+  .setOutputCol("ner_chunk") 
+  .setWhiteList(Array("HP")) 
+
+val chunk2doc = new Chunk2Doc()
+  .setInputCols("ner_chunk") 
+  .setOutputCol("ner_chunk_doc") 
+
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
+  .setInputCols(Array("ner_chunk_doc")) 
+  .setOutputCol("sbert_embeddings") 
+  .setCaseSensitive(false) 
+
+val resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_HPO","en","clinical/models")
+  .setInputCols(Array("sbert_embeddings")) 
+  .setOutputCol("resolution") 
+  .setDistanceFunction("EUCLIDEAN") 
+
+val pipeline = val Pipeline(stages = new Array(
+  document_assembler, 
+  sentence_detector, 
+  tokenizer, 
+  word_embeddings, 
+  ner, 
+  ner_converter, 
+  chunk2doc, 
+  sbert_embedder, 
+  resolver)) 
+
+val model = Seq("").toDF("text")
+val text = "She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08,preserved left and right ventricular systolic function,aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate,but on the most recent echocardiogram on 05/12/08,that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy." 
+val data = Seq(text).toDF("text") 
+val result = model.transform(data)
+```
 
 
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.resolve.HPO").predict("""These disorders include cancer, bipolar disorder, schizophrenia, autism, Cri-du-chat syndrome, myopia, cortical cataract-linked Alzheimer's disease, and infectious diseases""")
+
+nlu.load("en.resolve.HPO").predict("""She is followed by Dr. X in our office and has a history of severe tricuspid regurgitation. On 05/12/08, preserved left and right ventricular systolic function, aortic sclerosis with apparent mild aortic stenosis. She has previously had a Persantine Myoview nuclear rest-stress test scan completed at ABCD Medical Center in 07/06 that was negative. She has had significant mitral valve regurgitation in the past being moderate, but on the most recent echocardiogram on 05/12/08, that was not felt to be significant. She does have a history of significant hypertension in the past. She has had dizzy spells and denies clearly any true syncope. She has had bradycardia in the past from beta-blocker therapy.""")
 ```
 
 </div>
@@ -75,13 +164,15 @@ nlu.load("en.resolve.HPO").predict("""These disorders include cancer, bipolar di
 ## Results
 
 ```bash
-|    | chunk            | entity   | resolution   | aux_codes                                                                    |
-|---:|:-----------------|:---------|:-------------|:-----------------------------------------------------------------------------|
-|  0 | cancer           | HP       | HP:0002664   | MSH:D009369||SNOMED:108369006,363346000||UMLS:C0006826,C0027651||ORPHA:1775  |
-|  1 | bipolar disorder | HP       | HP:0007302   | MSH:D001714||SNOMED:13746004||UMLS:C0005586||ORPHA:370079                    |
-|  2 | schizophrenia    | HP       | HP:0100753   | MSH:D012559||SNOMED:191526005,58214004||UMLS:C0036341||ORPHA:231169          |
-|  3 | autism           | HP       | HP:0000717   | MSH:D001321||SNOMED:408856003,408857007,43614003||UMLS:C0004352||ORPHA:79279 |
-|  4 | myopia           | HP       | HP:0000545   | MSH:D009216||SNOMED:57190000||UMLS:C0027092||ORPHA:370022                    |
++--------------------------+-----+---+---------+----------+--------------------------+------------------------------------------------------------+
+|                     chunk|begin|end|ner_label|resolution|               description|                                                   all_codes|
++--------------------------+-----+---+---------+----------+--------------------------+------------------------------------------------------------+
+|   tricuspid regurgitation|   67| 89|       HP|HP:0005180|   tricuspid regurgitation|MSH:D014262||SNOMED:111287006||UMLS:C0040961||ORPHA:22841...|
+|           aortic stenosis|  197|211|       HP|HP:0001650|           aortic stenosis|MSH:D001024||SNOMED:60573004||UMLS:C0003507||ORPHA:536471...|
+|mitral valve regurgitation|  373|398|       HP|HP:0001653|mitral valve regurgitation|MSH:D008944||SNOMED:48724000||UMLS:C0026266,C3551535||ORP...|
+|              hypertension|  555|566|       HP|HP:0000822|              hypertension|MSH:D006973||SNOMED:24184005,38341003||UMLS:C0020538,C049...|
+|               bradycardia|  655|665|       HP|HP:0001662|               bradycardia|MSH:D001919||SNOMED:48867003||UMLS:C0428977||ORPHA:330001...|
++--------------------------+-----+---+---------+----------+--------------------------+------------------------------------------------------------+
 ```
 
 {:.model-param}

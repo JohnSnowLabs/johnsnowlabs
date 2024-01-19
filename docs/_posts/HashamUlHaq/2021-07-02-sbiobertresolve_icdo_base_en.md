@@ -42,53 +42,121 @@ ICD-O Codes and their normalized definition with `sbiobert_base_cased_mli` embed
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 
 ```python
-...
-chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+document_assembler = DocumentAssembler()\
+  .setInputCol("text")\
+  .setOutputCol("document")
 
-sbert_embedder = BertSentenceEmbeddings\
-.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-.setInputCols(["ner_chunk_doc"])\
-.setOutputCol("sbert_embeddings")
+sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+  .setInputCols(["document"])\
+  .setOutputCol("sentence")
 
-icdo_resolver = SentenceEntityResolverModel\
-.pretrained("sbiobertresolve_icdo_base","en", "clinical/models") \
-.setInputCols(["ner_chunk", "sbert_embeddings"]) \
-.setOutputCol("resolution")\
-.setDistanceFunction("EUCLIDEAN")
+tokenizer = Tokenizer()\
+  .setInputCols(["sentence"])\
+  .setOutputCol("token")
 
-nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, icdo_resolver])
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+  .setInputCols(["sentence", "token"])\
+  .setOutputCol("embeddings")
 
-data = spark.createDataFrame([["The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a brain tumor at the age of 81. Her sister died at the age of 65 breast cancer. She has two maternal aunts with history of lung cancer both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had B-cell lymphoma."]]).toDF("text")
+ner = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")\
+  .setInputCols(["sentence", "token", "embeddings"])\
+  .setOutputCol("ner")\
 
-results = nlpPipeline.fit(data).transform(data)
+ner_converter = NerConverterInternal()\
+  .setInputCols(["sentence", "token", "ner"])\
+  .setOutputCol("ner_chunk")\
+  .setWhiteList(["Oncological"])
+
+c2doc = Chunk2Doc()\
+  .setInputCols("ner_chunk")\
+  .setOutputCol("ner_chunk_doc")
+
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
+  .setInputCols(["ner_chunk_doc"])\
+  .setOutputCol("sbert_embeddings")\
+
+
+resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icdo_base","en", "clinical/models") \
+  .setInputCols(["sbert_embeddings"]) \
+  .setOutputCol("resolution")\
+  .setDistanceFunction("EUCLIDEAN")
+
+
+resolver_pipeline = Pipeline(stages = [
+  document_assembler,
+  sentenceDetectorDL,
+  tokenizer,
+  word_embeddings,
+  ner,
+  ner_converter,
+  c2doc,
+  sbert_embedder,
+  resolver
+  ])
+
+data = spark.createDataFrame([["""The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a brain tumor at the age of 81. Her sister died at the age of 65 acinar cell carcinoma of breast. She has two maternal aunts with history of Non-small cell carcinoma of lower lobe both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had B-cell lymphoma."""]]).toDF("text")
+
+result = resolver_pipeline.fit(data).transform(data)
 ```
 ```scala
-...
-chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+val document_assembler = new DocumentAssembler()
+ .setInputCol("text") 
+ .setOutputCol("document") 
 
-val sbert_embedder = BertSentenceEmbeddings
-.pretrained("sbiobert_base_cased_mli","en","clinical/models")
-.setInputCols(Array("ner_chunk_doc"))
-.setOutputCol("sbert_embeddings")
+val sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
+ .setInputCols(Array("document")) 
+ .setOutputCol("sentence") 
 
-val icdo_resolver = SentenceEntityResolverModel
-.pretrained("sbiobertresolve_icdo_base","en", "clinical/models")
-.setInputCols(Array("ner_chunk", "sbert_embeddings"))
-.setOutputCol("resolution")
-.setDistanceFunction("EUCLIDEAN")
+val tokenizer = new Tokenizer()
+ .setInputCols(Array("sentence")) 
+ .setOutputCol("token") 
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, icdo_resolver))
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")
+ .setInputCols(Array("sentence","token"))
+ .setOutputCol("embeddings") 
 
-val data = Seq("The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a brain tumor at the age of 81. Her sister died at the age of 65 breast cancer. She has two maternal aunts with history of lung cancer both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had B-cell lymphoma.").toDF("text")
+val ner = MedicalNerModel.pretrained("ner_jsl","en","clinical/models")
+ .setInputCols(Array("sentence","token","embeddings")) 
+ .setOutputCol("ner") 
 
-val result = pipeline.fit(data).transform(data)
+val ner_converter = new NerConverterInternal()
+ .setInputCols(Array("sentence","token","ner")) 
+ .setOutputCol("ner_chunk") 
+ .setWhiteList(Array("Oncological")) 
+
+val c2doc = new Chunk2Doc()
+ .setInputCols("ner_chunk") 
+ .setOutputCol("ner_chunk_doc") 
+
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
+ .setInputCols(Array("ner_chunk_doc")) 
+ .setOutputCol("sbert_embeddings") 
+
+val resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icdo_base","en","clinical/models")
+ .setInputCols(Array("sbert_embeddings")) 
+ .setOutputCol("resolution") 
+ .setDistanceFunction("EUCLIDEAN") 
+
+val resolver_pipeline = val Pipeline(stages = new Array(
+ document_assembler, 
+ sentenceDetectorDL, 
+ tokenizer, 
+ word_embeddings, 
+ ner, 
+ ner_converter, 
+ c2doc, 
+ sbert_embedder, 
+ resolver )) 
+
+val data = spark.createDataFrame(Array(Array("The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a brain tumor at the age of 81. Her sister died at the age of 65 acinar cell carcinoma of breast. She has two maternal aunts with history of Non-small cell carcinoma of lower lobe both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had B-cell lymphoma."))).toDF("text") 
+val result = resolver_pipeline.fit(data).transform(data) 
 ```
 
 
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.resolve.icdo.base").predict("""The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a brain tumor at the age of 81. Her sister died at the age of 65 breast cancer. She has two maternal aunts with history of lung cancer both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had B-cell lymphoma.""")
+nlu.load("en.resolve.icdo.base").predict("""The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a brain tumor at the age of 81. Her sister died at the age of 65 acinar cell carcinoma of breast. She has two maternal aunts with history of Non-small cell carcinoma of lower lobe both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had B-cell lymphoma.""")
 ```
 
 </div>
@@ -96,18 +164,17 @@ nlu.load("en.resolve.icdo.base").predict("""The patient is a very pleasant 61-ye
 ## Results
 
 ```bash
-+--------------------+-----+---+-----------+-------------+----------------------------------+
-|               chunk|begin|end|     entity|         code|                 all_k_resolutions| 
-+--------------------+-----+---+-----------+-------------+----------------------------------+
-|        mesothelioma|  255|266|Oncological|9050/3||C38.3|Mesothelioma, malignant        ...|
-|several malignancies|  293|312|Oncological|8001/3||C39.8|Tumor cells, malignant         ...|
-|         brain tumor|  350|360|Oncological|8001/4||C71.7|Tumor cells, malignant of brain...|
-|       breast cancer|  413|425|Oncological|8550/3||C50.9|Acinar cell carcinoma of breast...|
-|         lung cancer|  471|481|Oncological|8046/3||C34.3|Non-small cell carcinoma of low...|
-|            leukemia|  560|567|Oncological|980-994      |Leukemias                      ...|
-|     B-cell lymphoma|  610|624|Oncological|967-969      |Mature B-cell lymphomas        ...|
-+--------------------+-----+---+-----------+-------------+----------------------------------+
-
++--------------------------------------+-----+---+-----------+------------+----------------------------------------+
+|                                 chunk|begin|end|  ner_label|        code|                             resolutions|
++--------------------------------------+-----+---+-----------+------------+----------------------------------------+
+|                          mesothelioma|  255|266|Oncological|      9050/3|Mesothelioma, malignant:::Epithelioid...|
+|                          malignancies|  301|312|Oncological|      8000/3|Neoplasm, malignant:::Tumor cells, ma...|
+|                           brain tumor|  350|360|Oncological|8001/3-C71.7|Tumor cells, malignant of brain stem:...|
+|       acinar cell carcinoma of breast|  413|443|Oncological|8550/3-C50.1|Acinar cell carcinoma of central port...|
+|Non-small cell carcinoma of lower lobe|  489|526|Oncological|8046/3-C34.3|Non-small cell carcinoma of lower lob...|
+|                              leukemia|  605|612|Oncological|     980-994|Leukemias:::Lymphoid leukemias:::Myel...|
+|                       B-cell lymphoma|  655|669|Oncological|     967-969|Mature B-cell lymphomas:::Splenic mar...|
++--------------------------------------+-----+---+-----------+------------+----------------------------------------+
 ```
 
 {:.model-param}

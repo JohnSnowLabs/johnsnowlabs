@@ -39,8 +39,8 @@ ICD-O Codes and their normalized definition with `sbiobert_base_cased_mli ` embe
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
-...
 document_assembler = DocumentAssembler()\
 		.setInputCol("text")\
 		.setOutputCol("document")
@@ -63,78 +63,96 @@ clinical_ner = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models") \
 
 ner_converter = NerConverter() \
 		.setInputCols(["sentence", "token", "jsl_ner"]) \
-		.setOutputCol("ner_chunk")
+		.setOutputCol("ner_chunk")\
+    .setWhiteList(["Oncological"])
 
-chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+chunk2doc = Chunk2Doc()\
+    .setInputCols("ner_chunk")\
+    .setOutputCol("ner_chunk_doc")
 
-sbert_embedder = BertSentenceEmbeddings\
-.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-.setInputCols(["ner_chunk_doc"])\
-.setOutputCol("sbert_embeddings")
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("sbert_embeddings")
 
-icdo_resolver = SentenceEntityResolverModel\
-.pretrained("sbiobertresolve_icdo_augmented","en", "clinical/models") \
-.setInputCols(["ner_chunk", "sbert_embeddings"]) \
-.setOutputCol("resolution")\
-.setDistanceFunction("EUCLIDEAN")
+icdo_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icdo_augmented","en", "clinical/models") \
+    .setInputCols(["sbert_embeddings"]) \
+    .setOutputCol("resolution")\
+    .setDistanceFunction("EUCLIDEAN")
 
-nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, icdo_resolver])
+resolver_pipeline = Pipeline(stages=[
+    document_assembler, 
+    sentence_detector, 
+    tokenizer, 
+    word_embeddings, 
+    clinical_ner, 
+    ner_converter, 
+    chunk2doc, 
+    sbert_embedder, 
+    icdo_resolver])
 
-data = spark.createDataFrame([["The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a brain tumor at the age of 81. Her sister died at the age of 65 breast cancer. She has two maternal aunts with history of lung cancer both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had B-cell lymphoma."]]).toDF("text")
-
-results = nlpPipeline.fit(data).transform(data)
+data = spark.createDataFrame([["""The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a glomus tumor of brain at the age of 81. Her sister died at the age of 65 breast cancer. She has two maternal aunts with history of lung cancer both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had mature b-cell lymphomas."""]]).toDF("text")
+result = resolver_pipeline.fit(data).transform(data)
 ```
 ```scala
 ...
 val document_assembler = new DocumentAssembler()
-		.setInputCol("text")
-		.setOutputCol("document")
+ .setInputCol("text") 
+ .setOutputCol("document") 
 
-val sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
-		.setInputCols("document") 
-		.setOutputCol("sentence")
+val sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
+ .setInputCols(Array("document")) 
+ .setOutputCol("sentence") 
 
 val tokenizer = new Tokenizer()
-		.setInputCols("sentence")
-		.setOutputCol("token")
-	
-val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-		.setInputCols(Array("sentence", "token"))
-	    	.setOutputCol("embeddings")
+ .setInputCols(Array("sentence")) 
+ .setOutputCol("token") 
 
-val clinical_ner = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")
-		.setInputCols(Array("sentence", "token", "embeddings"))
-		.setOutputCol("jsl_ner")
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")
+ .setInputCols(Array("sentence","token"))
+ .setOutputCol("embeddings") 
 
-val ner_converter = new NerConverter()
-		.setInputCols(Array("sentence", "token", "jsl_ner"))
-		.setOutputCol("ner_chunk")
+val ner = MedicalNerModel.pretrained("ner_jsl","en","clinical/models")
+ .setInputCols(Array("sentence","token","embeddings")) 
+ .setOutputCol("ner") 
 
-val chunk2doc = new Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+val ner_converter = new NerConverterInternal()
+ .setInputCols(Array("sentence","token","ner")) 
+ .setOutputCol("ner_chunk") 
+ .setWhiteList(Array("Oncological")) 
 
-val sbert_embedder = BertSentenceEmbeddings
-.pretrained("sbiobert_base_cased_mli","en","clinical/models")
-.setInputCols(Array("ner_chunk_doc"))
-.setOutputCol("sbert_embeddings")
+val c2doc = new Chunk2Doc()
+ .setInputCols("ner_chunk") 
+ .setOutputCol("ner_chunk_doc") 
 
-val icdo_resolver = SentenceEntityResolverModel
-.pretrained("sbiobertresolve_icdo_augmented","en", "clinical/models")
-.setInputCols(Array("ner_chunk", "sbert_embeddings"))
-.setOutputCol("resolution")
-.setDistanceFunction("EUCLIDEAN")
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
+ .setInputCols(Array("ner_chunk_doc")) 
+ .setOutputCol("sbert_embeddings") 
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, icdo_resolver))
+val resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icdo_augmented","en","clinical/models")
+ .setInputCols(Array("sbert_embeddings")) 
+ .setOutputCol("resolution") 
+ .setDistanceFunction("EUCLIDEAN") 
 
-val data = Seq("The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a brain tumor at the age of 81. Her sister died at the age of 65 breast cancer. She has two maternal aunts with history of lung cancer both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had B-cell lymphoma.").toDF("text")
+val resolver_pipeline = val Pipeline(stages = new Array(
+ document_assembler, 
+ sentenceDetectorDL, 
+ tokenizer, 
+ word_embeddings, 
+ ner, 
+ ner_converter, 
+ c2doc, 
+ sbert_embedder, 
+ resolver )) 
 
-val result = pipeline.fit(data).transform(data)
+val data = spark.createDataFrame(Array(Array("The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a glomus tumor of brain at the age of 81. Her sister died at the age of 65 breast cancer. She has two maternal aunts with history of lung cancer both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had mature b-cell lymphomas."))) .toDF("text") 
+val result = resolver_pipeline.fit(data).transform(data) 
 ```
 
 
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.resolve.icdo_augmented").predict("""The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a brain tumor at the age of 81. Her sister died at the age of 65 breast cancer. She has two maternal aunts with history of lung cancer both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had B-cell lymphoma.""")
+nlu.load("en.resolve.icdo_augmented").predict("""The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a glomus tumor of brain at the age of 81. Her sister died at the age of 65 breast cancer. She has two maternal aunts with history of lung cancer both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had mature b-cell lymphomas.""")
 ```
 
 </div>
@@ -142,17 +160,17 @@ nlu.load("en.resolve.icdo_augmented").predict("""The patient is a very pleasant 
 ## Results
 
 ```bash
-+--------------------+-----+---+-----------+-------------+-------------------------+-------------------------+
-|               chunk|begin|end|     entity|         code|        all_k_resolutions|              all_k_codes|
-+--------------------+-----+---+-----------+-------------+-------------------------+-------------------------+
-|        mesothelioma|  255|266|Oncological|9971/3||C38.3|malignant mediastinal ...|9971/3||C38.3:::8854/3...|
-|several malignancies|  293|312|Oncological|8894/3||C39.8|overlapping malignant ...|8894/3||C39.8:::8070/2...|
-|         brain tumor|  350|360|Oncological|9562/0||C71.9|cancer of the brain:::...|9562/0||C71.9:::9070/3...|
-|       breast cancer|  413|425|Oncological|9691/3||C50.9|carcinoma of breast:::...|9691/3||C50.9:::8070/2...|
-|         lung cancer|  471|481|Oncological|8814/3||C34.9|malignant tumour of lu...|8814/3||C34.9:::8550/3...|
-|            leukemia|  560|567|Oncological|9670/3||C80.9|anemia in neoplastic d...|9670/3||C80.9:::9714/3...|
-|     B-cell lymphoma|  610|624|Oncological|9818/3||C77.9|secondary malignant ne...|9818/3||C77.9:::9655/3...|
-+--------------------+-----+---+-----------+-------------+-------------------------+-------------------------+
++--------------------------------------+-----+---+-----------+------------+----------------------------------------+----------------------------------------+
+|                                 chunk|begin|end|  ner_label|        code|                             resolutions|                               all_codes|
++--------------------------------------+-----+---+-----------+------------+----------------------------------------+----------------------------------------+
+|                          mesothelioma|  255|266|Oncological|      9050/3|Mesothelioma, malignant:::Epithelioid...|9050/3:::9052/3:::9051/3:::905:::9050...|
+|                          malignancies|  301|312|Oncological|      8000/3|Neoplasm, malignant:::Tumor cells, ma...|8000/3:::8001/3:::881-883:::889-892::...|
+|                           brain tumor|  350|360|Oncological|8001/3-C71.7|Tumor cells, malignant of brain stem:...|8001/3-C71.7:::9064/3-C71.7:::9442/3-...|
+|       acinar cell carcinoma of breast|  413|443|Oncological|8550/3-C50.1|Acinar cell carcinoma of central port...|8550/3-C50.1:::8550/3-C50.6:::8251/3-...|
+|Non-small cell carcinoma of lower lobe|  489|526|Oncological|8046/3-C34.3|Non-small cell carcinoma of lower lob...|8046/3-C34.3:::8041/3-C34.3:::8550/3-...|
+|                              leukemia|  605|612|Oncological|     980-994|Leukemias:::Lymphoid leukemias:::Myel...|980-994:::981-983:::984-993:::9820/3:...|
+|                       B-cell lymphoma|  655|669|Oncological|     967-969|Mature B-cell lymphomas:::Splenic mar...|967-969:::9689/3:::972:::9819/3:::982...|
++--------------------------------------+-----+---+-----------+------------+----------------------------------------+----------------------------------------+
 ```
 
 {:.model-param}
