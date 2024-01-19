@@ -144,7 +144,7 @@ val resolver_pipeline = val Pipeline(stages = new Array(
  sbert_embedder, 
  resolver )) 
 
-val data = spark.createDataFrame(Array(Array("The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a glomus tumor of brain at the age of 81. Her sister died at the age of 65 breast cancer. She has two maternal aunts with history of lung cancer both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had mature b-cell lymphomas."))) .toDF("text") 
+val data = spark.createDataFrame(Array(Array("""The patient is a very pleasant 61-year-old female with a strong family history of colon polyps. The patient reports her first polyps noted at the age of 50. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. She also has history of several malignancies in the family. Her father died of a glomus tumor of brain at the age of 81. Her sister died at the age of 65 breast cancer. She has two maternal aunts with history of lung cancer both of whom were smoker. Also a paternal grandmother who was diagnosed with leukemia at 86 and a paternal grandfather who had mature b-cell lymphomas."""))) .toDF("text") 
 val result = resolver_pipeline.fit(data).transform(data) 
 ```
 
