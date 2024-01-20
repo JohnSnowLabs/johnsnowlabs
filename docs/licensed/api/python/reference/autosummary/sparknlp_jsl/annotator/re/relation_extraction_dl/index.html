@@ -625,6 +625,11 @@ For pretrained models please see the <a class="reference external" href="https:/
 <span class="sig-name descname"><span class="pre">customLabels</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.customLabels" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.relationPairsCaseSensitive">
+<span class="sig-name descname"><span class="pre">relationPairsCaseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.relationPairsCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setPredictionThreshold">
 <span class="sig-name descname"><span class="pre">setPredictionThreshold</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setPredictionThreshold" title="Permalink to this definition">#</a></dt>
@@ -679,6 +684,37 @@ For pretrained models please see the <a class="reference external" href="https:/
 </dl>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setRelationTypePerPair">
+<span class="sig-name descname"><span class="pre">setRelationTypePerPair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">relationTypePairs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setRelationTypePerPair" title="Permalink to this definition">#</a></dt>
+<dd><p>Set the list of entity pairs allowed for a given relation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>relationTypePairs</strong><span class="classifier">dict[str, list[str]]</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.getRelationTypePerPair">
+<span class="sig-name descname"><span class="pre">getRelationTypePerPair</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.getRelationTypePerPair" title="Permalink to this definition">#</a></dt>
+<dd><p>Return the list of entity pairs allowed for a given relation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setRelationPairsCaseSensitive">
+<span class="sig-name descname"><span class="pre">setRelationPairsCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setRelationPairsCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the case sensitivity of relation pairs
+Parameters
+———-
+value : bool</p>
+<blockquote>
+<div><p>whether relation pairs are case sensitive</p>
+</div></blockquote>
 </dd></dl>
 
 <dl class="py method">
@@ -761,10 +797,14 @@ open-source location. Other values are “clinical/models”,
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.batchSize"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.batchSize</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.classes"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.classes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.customLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.customLabels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.relationPairsCaseSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.relationPairsCaseSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setPredictionThreshold"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setPredictionThreshold()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setBatchSize"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setBatchSize()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setCustomLabels"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setCustomLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setRelationTypePerPair"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setRelationTypePerPair()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.getRelationTypePerPair"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.getRelationTypePerPair()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.setRelationPairsCaseSensitive"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.setRelationPairsCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.getClasses"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.getClasses()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.loadSavedModel"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.loadSavedModel()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_extraction_dl.RelationExtractionDLModel.pretrained"><code class="docutils literal notranslate"><span class="pre">RelationExtractionDLModel.pretrained()</span></code></a></li>
