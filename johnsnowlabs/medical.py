@@ -15,6 +15,7 @@ try:
         from sparknlp_jsl.annotator.windowed.windowed_sentence import (
             WindowedSentenceModel,
         )
+        from sparknlp_jsl.annotator.ner.zero_shot_ner import ZeroShotNerModel
         from sparknlp_jsl.annotator import (
             GenericSVMClassifierApproach,
             GenericSVMClassifierModel,
@@ -48,7 +49,6 @@ try:
             DateNormalizer,
             GenericClassifierModel,
             ReIdentification,
-            ZeroShotNerModel,
             Replacer,
             AssertionChunkConverter,
             AssertionLogRegApproach,
@@ -85,6 +85,7 @@ try:
             InternalDocumentSplitter,
             Text2SQL,
             IOBTagger,
+            DocumentFiltererByClassifier,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
