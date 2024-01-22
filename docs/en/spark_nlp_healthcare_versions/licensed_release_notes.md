@@ -248,11 +248,11 @@ If the resolver-only timing is equal to or very close to the combined mapper and
 
 - Mapper and Resolver Benchmark Experiment
   - DataBricks Config: 32 CPU Core, 128GiB RAM (8 worker, Standard_DS3_v2)
-  - AWS Config: 32 CPU Cores, 58GiB RAM (c6a.8xlarge)
+  - AWS EC2 Config: 32 CPU Cores, 58GiB RAM (c6a.8xlarge)
 
 **Dataset:** 100 Clinical Texts from MTSamples, approx. 705 tokens and 11 chunks per text.
 
-| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+| partition | DataBricks <br> mapper timing | AWS EC2 <br> mapper timing | DataBricks <br> resolver timing | AWS EC2 <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS EC2 <br> mapper and resolver timing |
 | --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
 | 4         | 37.3 sec      | 12 sec        | 4.46 mins       | 2.37 mins       |  2.52 mins                 | 1.47 mins                  |
 | 8         | 26.7 sec      |  7 sec        | 2.46 mins       | 1.39 mins       |  1.37 mins                 | 1.04 mins                  |
