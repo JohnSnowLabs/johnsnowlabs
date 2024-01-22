@@ -33,6 +33,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NORMALIZED_SECTION_HEADER_MAPPER.ipynb
+        - title: Medical Document Section Headers
+          id: medical_document_section_headers    
+          image: 
+              src: /assets/images/Medical_Document_Section_Headers.svg
+          excerpt: Classifies the text assuming that the section header can be part of the text.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/SECTION_HEADER/
+          - text: Colab
+            type: blue_btn
+            url: 
         - title: Resolve Clinical Abbreviations and Acronyms
           id: resolve_clinical_abbreviations_acronyms    
           image: 
