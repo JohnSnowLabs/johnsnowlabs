@@ -11,7 +11,7 @@ from johnsnowlabs.utils.env_utils import (
 # These versions are used for auto-installs and version  checks
 
 
-raw_version_jsl_lib = "5.2.1"
+raw_version_jsl_lib = "5.2.2"
 
 raw_version_nlp = "5.2.2"
 
