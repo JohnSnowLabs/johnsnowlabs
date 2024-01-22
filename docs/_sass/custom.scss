@@ -14,6 +14,10 @@ body {
 	font-family: 'Roboto', sans-serif;
 }
 
+a:visited {
+	color: $color-blue;
+}
+
 .root[data-is-touch="false"] a {
 	color: $color-blue;
 	&:hover {
@@ -2569,20 +2573,46 @@ a.btn1 {
 	width: 950px;
 	margin: 0 auto;
 	display: flex;
+	padding: 0 15px;
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
 
+.nlp_content_col {
+	width: 300px;
+	display: flex;
+	flex: 0 0 auto;
+	flex-wrap: wrap;
+}
+
 .nlp_content_item {
 	display: flex;
-	width: 300px;
+	width: 100%;
 	background: #fff;
 	height: 237px;
+	font-size: 22px;
+	line-height: 26px;
 	align-items: center;
 	flex: 0 0 auto;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	justify-content: center;
 	text-decoration: none !important;
+	color: #1e77b7 !important;
+	&:hover p {
+		color: #ff8a00 !important;
+	}	
+}
+
+.nlp_content_title {
+	background: #69a5d4;
+	font-size: 20px;
+	font-style: normal;
+	color: #fff;
+	font-weight: 600;
+	line-height: 55px;
+	justify-content: center;
+	border-radius: 5px 5px 0 0;
+	width: 100%;
 }
 
 .nlp_c {
@@ -4022,6 +4052,9 @@ code {
 			height: auto;
 		}
 	}
+	.nlp_content_col {
+		width: 32%;
+	}
 	.ecosystem-section .tab-python-scala-li {
 		min-width: 175px;
 		font-size: 20px;
@@ -4124,10 +4157,7 @@ code {
 		line-height: 25px;
 	}
 	.nlp_content_item {
-		flex: 0 0 auto;
-		width: 32%;
 		height: 250px;
-		margin: 0 5px 20px;
 	}
 	.nlp_content_inner {
 		width: 100%;
@@ -4251,6 +4281,18 @@ code {
 	.search-wrapper .search-input-wrapper {
 		width: 100%;
 	}
+	.nlp_content_col {
+		width: 28%;
+		margin: 0 15px;
+	}
+	.nlp_content_item {
+		font-size: 18px;
+		line-height: 24px;
+		height: 200px;
+	}
+	.nlp_content_title {
+		font-size: 17px;
+	}
 	.search-results-wrapper {
 		padding: 0;
 	}
@@ -4336,9 +4378,6 @@ code {
 	}
 	.learn-hub .grid {
 		justify-content: center;
-	}
-	.nlp_content_item {
-		width: 31%;
 	}
 	.nlp_content_inner {
 		justify-content: center;
@@ -4454,6 +4493,9 @@ code {
 		font-size: 20px;
 		line-height: 24px;
 		margin: 0 0 15px;
+	}
+	.nlp_content_col {
+		width: 100%;
 	}
 	.model-wrap .btn-box .button {
 		min-width: 170px;
@@ -4722,15 +4764,11 @@ code {
 
 @media (max-width: 660px) {
 	.nlp_content_item {
-		width: 100%;
 		margin: 0 0 20px;
 	}
 	.nlp_content_inner {
 		padding: 0 15px;
 	}
-	.nlp_content_item {
-		width: 47%;
-	}	
 	.tab-mfl-li {
 		min-width: 130px;
 		font-weight: 500;
