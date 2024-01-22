@@ -8,7 +8,7 @@ key: docs-ocr-install
 modify_date: "2020-04-08"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
