@@ -101,6 +101,7 @@ try:
             InternalDocumentSplitter as DocumentSplitter,
             Text2SQL,
             IOBTagger,
+            DocumentFiltererByClassifier,
         
         )
         from sparknlp_jsl.modelTracer import ModelTracer

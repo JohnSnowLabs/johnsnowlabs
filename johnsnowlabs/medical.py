@@ -85,6 +85,7 @@ try:
             InternalDocumentSplitter,
             Text2SQL,
             IOBTagger,
+            DocumentFiltererByClassifier,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
