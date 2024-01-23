@@ -2,7 +2,7 @@
 layout: model
 title: Sentence Entity Resolver for Snomed Concepts, CT version (sbiobert_base_cased_mli embeddings)
 author: John Snow Labs
-name: snomed_findings_247K_22Jan24
+name: sbiobertresolve_snomed_findings
 date: 2024-01-23
 tags: [en, licensed, entity_resolution, clinical, snomed, findings]
 task: Entity Resolution
