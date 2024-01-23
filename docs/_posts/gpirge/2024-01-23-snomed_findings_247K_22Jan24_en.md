@@ -82,8 +82,6 @@ snomed_pipeline = Pipeline(stages = [
     sentence_detector,
     tokenizer,
     word_embeddings,
-    ner_clinical,
-    ner_clinical_converter,
     ner_jsl,
     ner_jsl_converter,
     chunk2doc,
