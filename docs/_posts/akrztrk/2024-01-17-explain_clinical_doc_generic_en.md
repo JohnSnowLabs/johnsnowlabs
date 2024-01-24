@@ -44,6 +44,7 @@ from clinical texts. In this pipeline, 4 NER models, one assertion model, and on
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -53,7 +54,6 @@ ner_pipeline = PretrainedPipeline("explain_clinical_doc_generic", "en", "clinica
 result = ner_pipeline.annotate("""Patient with severe fever and sore throat.
 He shows no stomach pain. He maintained on an epidural and PCA for pain control.
 After CT, lung tumor located at the right lower lobe. Father with Alzheimer.""")
-
 ```
 ```scala
 
@@ -64,7 +64,6 @@ val ner_pipeline = PretrainedPipeline("explain_clinical_doc_generic", "en", "cli
 val result = ner_pipeline.annotate("""Patient with severe fever and sore throat.
 He shows no stomach pain. He maintained on an epidural and PCA for pain control.
 After CT, lung tumor located at the right lower lobe. Father with Alzheimer.""")
-
 ```
 </div>
 
