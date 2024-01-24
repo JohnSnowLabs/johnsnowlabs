@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Document Visual Question Answering optimized with Pix2Struct v2
+title: Document Visual Question Answering optimized with Pix2Struct V2
 author: John Snow Labs
 name: docvqa_pix2struct_v2
 date: 2024-01-24
@@ -8,7 +8,7 @@ tags: [en, licensed]
 task: Question Answering
 language: en
 edition: Visual NLP 5.0.0
-spark_version: 3.2
+spark_version: 3.0
 supported: true
 annotator: VisualQuestionAnsweringPix2Struct
 article_header:
@@ -29,8 +29,8 @@ In this context, the Pix2Struct model, originally conceived as an image-to-text 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/docvqa_pix2struct_v2_en_5.0.0_3.2_1706072660510.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/docvqa_pix2struct_v2_en_5.0.0_3.2_1706072660510.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/docvqa_pix2struct_v2_en_5.0.0_3.0_1706078243456.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/docvqa_pix2struct_v2_en_5.0.0_3.0_1706078243456.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -74,7 +74,7 @@ val binary_to_image = BinaryToImage()
     .setImageType(ImageType.TYPE_3BYTE_BGR)
 
 val visual_question_answering = VisualQuestionAnswering()
-    .pretrained("docvqa_pix2struct", "en", "clinical/ocr")
+    .pretrained("docvqa_pix2struct_v2", "en", "clinical/ocr")
     .setInputCol(Array("image"))
     .setOutputCol("answers")
     .setQuestionsCol("questions")
