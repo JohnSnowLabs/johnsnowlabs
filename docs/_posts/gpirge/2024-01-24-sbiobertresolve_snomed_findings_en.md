@@ -7,7 +7,7 @@ date: 2024-01-24
 tags: [en, licensed, entity_resolution, clinical, snomed, findings]
 task: Entity Resolution
 language: en
-edition: Healthcare NLP 5.2.2
+edition: Healthcare NLP 5.2.1
 spark_version: 3.2
 supported: true
 annotator: SentenceEntityResolverModel
@@ -27,8 +27,8 @@ The model maps extracted medical entities to their corresponding Snomed codes (C
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_snomed_findings_en_5.2.2_3.2_1706098966876.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_snomed_findings_en_5.2.2_3.2_1706098966876.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_snomed_findings_en_5.2.1_3.2_1706098966876.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_snomed_findings_en_5.2.1_3.2_1706098966876.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -36,6 +36,7 @@ The model maps extracted medical entities to their corresponding Snomed codes (C
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
   .setInputCol("text")\
@@ -129,7 +130,7 @@ val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
       .setInputCols("ner_chunk_doc")
       .setOutputCol("sbert_embeddings")
 
-val snomed_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_snomed_findings_aux_concepts", "en", "clinical/models")
+val snomed_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_snomed_findings", "en", "clinical/models")
      .setInputCols(Array("sbert_embeddings"))
      .setOutputCol("snomed_code")
 
@@ -148,12 +149,6 @@ val text= """The patient exhibited recurrent upper respiratory tract infections,
 val df = Seq(text).toDF(text)
 
 val result= nlpPipeline.fit(df).transform(df)
-```
-
-{:.nlu-block}
-```python
-import nlu
-nlu.load("en.resolve.snomed.findings").predict("""The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia.""")
 ```
 </div>
 
@@ -180,7 +175,7 @@ nlu.load("en.resolve.snomed.findings").predict("""The patient exhibited recurren
 {:.table-model}
 |---|---|
 |Model Name:|sbiobertresolve_snomed_findings|
-|Compatibility:|Healthcare NLP 5.2.2+|
+|Compatibility:|Healthcare NLP 5.2.1+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[sentence_embeddings]|
