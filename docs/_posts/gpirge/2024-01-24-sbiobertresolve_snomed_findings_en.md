@@ -151,15 +151,11 @@ val new nlpPipeine().setStages(Array(documentAssembler,
                                     snomed_resolver))
                                     
 
-val empty_data = Seq("") .toDF("text")
-	
-val model = snomed_pipeline.fit(empty_data)
-	
-val text = """The patient exhibited recurrent upper respiratory tract infections,subjective fevers,unintentional weight loss,and occasional night sweats. Clinically,they appeared cachectic and pale,with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia."""
-	
-val snomed_lp = new LightPipeline(model)
-	
-val light_result = snomed_lp.fullAnnotate(text)
+val text= """The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia."""
+
+val df = Seq(text).toDF(text)
+
+val result= nlpPipeline.fit(df).transform(df)
 ```
 </div>
 
