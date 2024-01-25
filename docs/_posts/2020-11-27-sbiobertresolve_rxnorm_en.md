@@ -18,11 +18,9 @@ type: cover
 use_language_switcher: "Python-Scala-Java"
 ---
 
-{:.h2_title}
 ## Description
 This model maps extracted medical entities to RxNorm codes using chunk embeddings.
 
-{:.h2_title}
 ## Predicted Entities 
 RxNorm Codes and their normalized definition with ``sbiobert_base_cased_mli`` embeddings.
 
@@ -32,73 +30,133 @@ RxNorm Codes and their normalized definition with ``sbiobert_base_cased_mli`` em
 [Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_rxnorm_en_2.6.4_2.4_1606235763316.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
 [Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_rxnorm_en_2.6.4_2.4_1606235763316.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-{:.h2_title}
 ## How to use 
 <div class="tabs-box" markdown="1">
 
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 
 ```python
-...
-chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+document_assembler = DocumentAssembler()\
+  .setInputCol("text")\
+  .setOutputCol("document")
 
-sbert_embedder = BertSentenceEmbeddings\
-.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-.setInputCols(["ner_chunk_doc"])\
-.setOutputCol("sbert_embeddings")
+sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+  .setInputCols(["document"])\
+  .setOutputCol("sentence")
 
-rxnorm_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_rxnorm","en", "clinical/models") \
-.setInputCols(["sbert_embeddings"]) \
-.setOutputCol("resolution")\
-.setDistanceFunction("EUCLIDEAN")
+tokenizer = Tokenizer()\
+  .setInputCols(["sentence"])\
+  .setOutputCol("token")
 
-nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, rxnorm_resolver])
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+  .setInputCols(["sentence", "token"])\
+  .setOutputCol("embeddings")
 
-data = spark.createDataFrame([["This is an 82 - year-old male with a history of prior tobacco use , hypertension , chronic renal insufficiency , COPD , gastritis , and TIA who initially presented to Braintree with a non-ST elevation MI and Guaiac positive stools , transferred to St . Margaret\'s Center for Women & Infants for cardiac catheterization with PTCA to mid LAD lesion complicated by hypotension and bradycardia requiring Atropine , IV fluids and transient dopamine possibly secondary to vagal reaction , subsequently transferred to CCU for close monitoring , hemodynamically stable at the time of admission to the CCU ."]]).toDF("text")
+ner = MedicalNerModel.pretrained("ner_posology_greedy", "en", "clinical/models")\
+  .setInputCols(["sentence", "token", "embeddings"])\
+  .setOutputCol("ner")\
 
-results = nlpPipeline.fit(data).transform(data)
+ner_converter = NerConverterInternal()\
+  .setInputCols(["sentence", "token", "ner"])\
+  .setOutputCol("ner_chunk")\
+  .setWhiteList(["DRUG"])
 
+c2doc = Chunk2Doc()\
+  .setInputCols("ner_chunk")\
+  .setOutputCol("ner_chunk_doc")
+
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
+  .setInputCols(["ner_chunk_doc"])\
+  .setOutputCol("sbert_embeddings")\
+
+
+resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_rxnorm","en", "clinical/models") \
+  .setInputCols(["sbert_embeddings"]) \
+  .setOutputCol("resolution")\
+  .setDistanceFunction("EUCLIDEAN")
+
+
+resolver_pipeline = Pipeline(stages = [
+  document_assembler,
+  sentenceDetectorDL,
+  tokenizer,
+  word_embeddings,
+  ner,
+  ner_converter,
+  c2doc,
+  sbert_embedder,
+  resolver
+  ])
+
+data = spark.createDataFrame([["""This is an 82 - year-old male with a history of prior tobacco use , hypertension , chronic renal insufficiency , COPD , gastritis , and TIA who initially presented to Braintree with a non-ST elevation MI and Guaiac positive stools , transferred to St . Margaret\'s Center for Women & Infants for cardiac catheterization with PTCA to mid LAD lesion complicated by hypotension and bradycardia requiring Atropine , IV fluids and transient dopamine possibly secondary to vagal reaction , subsequently transferred to CCU for close monitoring , hemodynamically stable at the time of admission to the CCU."""]]).toDF("text")
+
+result = resolver_pipeline.fit(data).transform(data)
 ```
 ```scala
-...
-val chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
-
-val sbert_embedder = BertSentenceEmbeddings
-.pretrained("sbiobert_base_cased_mli","en","clinical/models")
-.setInputCols(Array("ner_chunk_doc"))
-.setOutputCol("sbert_embeddings")
-
-val rxnorm_resolver = SentenceEntityResolverModel
-.pretrained("sbiobertresolve_rxnorm","en", "clinical/models")
-.setInputCols(Array("ner_chunk", "sbert_embeddings"))
-.setOutputCol("resolution")
-.setDistanceFunction("EUCLIDEAN")
-
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, rxnorm_resolver))
-
-val data = Seq("This is an 82 - year-old male with a history of prior tobacco use , hypertension , chronic renal insufficiency , COPD , gastritis , and TIA who initially presented to Braintree with a non-ST elevation MI and Guaiac positive stools , transferred to St . Margaret\'s Center for Women & Infants for cardiac catheterization with PTCA to mid LAD lesion complicated by hypotension and bradycardia requiring Atropine , IV fluids and transient dopamine possibly secondary to vagal reaction , subsequently transferred to CCU for close monitoring , hemodynamically stable at the time of admission to the CCU .").toDF("text")
-
-val result = pipeline.fit(data).transform(data)
+val document_assembler = new DocumentAssembler()
+	.setInputCol("text")
+	.setOutputCol("document")
+	
+val sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
+	.setInputCols(Array("document"))
+	.setOutputCol("sentence")
+	
+val tokenizer = new Tokenizer()
+	.setInputCols(Array("sentence"))
+	.setOutputCol("token")
+	
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")
+	.setInputCols(Array("sentence","token"))
+	.setOutputCol("embeddings")
+	
+val ner = MedicalNerModel.pretrained("ner_posology_greedy","en","clinical/models")
+	.setInputCols(Array("sentence","token","embeddings"))
+	.setOutputCol("ner")
+	
+val ner_converter = new NerConverterInternal()
+	.setInputCols(Array("sentence","token","ner"))
+	.setOutputCol("ner_chunk")
+	.setWhiteList(Array("DRUG"))
+	
+val c2doc = new Chunk2Doc()
+	.setInputCols("ner_chunk")
+	.setOutputCol("ner_chunk_doc")
+	
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
+	.setInputCols(Array("ner_chunk_doc"))
+	.setOutputCol("sbert_embeddings")
+	
+val resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_rxnorm","en","clinical/models")
+	.setInputCols(Array("sbert_embeddings"))
+	.setOutputCol("resolution")
+	.setDistanceFunction("EUCLIDEAN")
+	
+val resolver_pipeline = new Pipeline().setStages(Array( 
+    document_assembler, 
+    sentenceDetectorDL, 
+    tokenizer, 
+    word_embeddings, 
+    ner, 
+    ner_converter, 
+    c2doc,
+    sbert_embedder, 
+    resolver ))
+	
+val data = Seq("""This is an 82 - year-old male with a history of prior tobacco use ,hypertension ,chronic renal insufficiency ,COPD ,gastritis ,and TIA who initially presented to Braintree with a non-ST elevation MI and Guaiac positive stools ,transferred to St . Margaret's Center for Women & Infants for cardiac catheterization with PTCA to mid LAD lesion complicated by hypotension and bradycardia requiring Atropine ,IV fluids and transient dopamine possibly secondary to vagal reaction ,subsequently transferred to CCU for close monitoring ,hemodynamically stable at the time of admission to the CCU.""").toDF("text")
+	
+val result = resolver_pipeline.fit(data).transform(data)
 ```
-
-{:.h2_title}
+</div>
 ## Results
 
 ```bash
-+--------------------+-----+---+---------+-------+----------+-----------------------------------------------+--------------------+
-|               chunk|begin|end|   entity|   code|confidence|                                    resolutions|               codes|
-+--------------------+-----+---+---------+-------+----------+-----------------------------------------------+--------------------+
-|        hypertension|   68| 79|  PROBLEM| 386165|    0.1567|hypercal:::hypersed:::hypertears:::hyperstat...|386165:::217667::...|
-|chronic renal ins...|   83|109|  PROBLEM| 218689|    0.1036|nephro calci:::dialysis solutions:::creatini...|218689:::3310:::2...|
-|                COPD|  113|116|  PROBLEM|1539999|    0.1644|broncomar dm:::acne medication:::carbon mono...|1539999:::214981:...|
-|           gastritis|  120|128|  PROBLEM| 225965|    0.1983|gastroflux:::gastroflux oral product:::uceri...|225965:::1176661:...|
-|                 TIA|  136|138|  PROBLEM|1089812|    0.0625|thera tears:::thiotepa injection:::nature's ...|1089812:::1660003...|
-|a non-ST elevatio...|  182|202|  PROBLEM| 218767|    0.1007|non-aspirin pm:::aspirin-free:::non aspirin ...|218767:::215440::...|
-|Guaiac positive s...|  208|229|  PROBLEM|1294361|    0.0820|anusol rectal product:::anusol hc rectal pro...|1294361:::1166715...|
-|cardiac catheteri...|  295|317|     TEST| 385247|    0.1566|cardiacap:::cardiology pack:::cardizem:::car...|385247:::545063::...|
-|                PTCA|  324|327|TREATMENT|   8410|    0.0867|alteplase:::reteplase:::pancuronium:::tripe ...|8410:::76895:::78...|
-|      mid LAD lesion|  332|345|  PROBLEM| 151672|    0.0549|dulcolax:::lazerformalyde:::linaclotide:::du...|151672:::217985::...|
-+--------------------+-----+---+---------+-------+----------+-----------------------------------------------+--------------------+
++---------+-----+---+---------+------+----------------------+--------------------------------------------------------------------------------+
+|    chunk|begin|end|ner_label|  code|           description|                                                                     resolutions|
++---------+-----+---+---------+------+----------------------+--------------------------------------------------------------------------------+
+| Atropine|  400|407|     DRUG|  1223|              atropine|atropine:::isopto atropine:::attane:::atropisol:::atropen:::atridine:::aramin...|
+|IV fluids|  411|419|     DRUG|346168|intravenous suspension|intravenous suspension:::intravenous solution:::wal-four:::injectable suspens...|
+| dopamine|  435|442|     DRUG|  3628|              dopamine|dopamine:::dopamine injection:::dopexamine:::dopa, dl:::dolophine:::distigmin...|
++---------+-----+---+---------+------+----------------------+--------------------------------------------------------------------------------+
 ```
 
 {:.model-param}
