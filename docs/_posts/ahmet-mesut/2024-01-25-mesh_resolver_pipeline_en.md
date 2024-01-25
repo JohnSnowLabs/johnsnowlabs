@@ -32,6 +32,7 @@ This advanced pipeline extracts clinical entities from clinical texts and utiliz
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
