@@ -36,6 +36,7 @@ This model is trained to extract clinical acronyms and acronyms from text. It is
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
