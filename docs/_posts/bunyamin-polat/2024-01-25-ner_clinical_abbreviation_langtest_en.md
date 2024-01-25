@@ -20,6 +20,13 @@ use_language_switcher: "Python-Scala-Java"
 
 This model is trained to extract clinical acronyms and acronyms from text. It is the version of [ner_abbreviation_clinical](https://nlp.johnsnowlabs.com/2021/12/30/ner_abbreviation_clinical_en.html) model augmented with `langtest` library.
 
+| **test_type**        | **before fail_count** | **after fail_count** | **before pass_count** | **after pass_count** | **minimum pass_rate** | **before pass_rate** | **after pass_rate** |
+|----------------------|-----------------------|----------------------|-----------------------|----------------------|-----------------------|----------------------|---------------------|
+| **lowercase**        | 351                   | 78                   | 223                   | 496                  | 90%                   | 39%                  | 86%                 |
+| **titlecase**        | 325                   | 73                   | 248                   | 500                  | 85%                   | 43%                  | 87%                 |
+| **uppercase**        | 117                   | 47                   | 382                   | 452                  | 90%                   | 77%                  | 91%                 |
+| **weighted average** | **793**               | **198**              | **853**               | **1448**             | **88.33%**            | **51.82%**           | **87.97%**          |
+
 ## Predicted Entities
 
 `ABBR`
