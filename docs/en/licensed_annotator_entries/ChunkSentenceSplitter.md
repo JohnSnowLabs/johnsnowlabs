@@ -183,7 +183,7 @@ val paragraphs = pipeline_model.fit(df).transform(df)
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
-from johnsnowlabs import nlp, medical, legal
+from johnsnowlabs import nlp, legal
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -327,7 +327,7 @@ val paragraphs = nlp_pipeline.fit(data).transform(data)
 
 
 {%- capture model_python_finance -%}
-from johnsnowlabs import nlp, medical, finance
+from johnsnowlabs import nlp, finance, legal
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -474,7 +474,7 @@ val paragraphs = nlp_pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkSentenceSplitter.ipynb)
+[ChunkSentenceSplitterNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkSentenceSplitter.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

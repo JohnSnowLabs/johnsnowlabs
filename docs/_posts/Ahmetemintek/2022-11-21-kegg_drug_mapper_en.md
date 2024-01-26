@@ -21,6 +21,7 @@ use_language_switcher: "Python-Scala-Java"
 
 This pretrained model maps drugs with their corresponding `efficacy`, `molecular_weight` as well as `CAS`, `PubChem`, `ChEBI`, `LigandBox`, `NIKKAJI`, `PDB-CCD` codes. This model was trained with the data from the KEGG database.
 
+
 ## Predicted Entities
 
 `efficacy`, `molecular_weight`, `CAS`, `PubChem`, `ChEBI`, `LigandBox`, `NIKKAJI`, `PDB-CCD`
@@ -37,6 +38,7 @@ This pretrained model maps drugs with their corresponding `efficacy`, `molecular
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\

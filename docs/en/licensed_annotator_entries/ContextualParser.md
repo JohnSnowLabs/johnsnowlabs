@@ -322,8 +322,6 @@ val data = Seq("Peter Parker is a nice guy and lives in New York . Bruce Wayne i
 val result = pipeline.fit(data).transform(data)
 
 // Show Results
-result.selectExpr("explode(entity)").show(5, truncate=False)
-
 +---------------------------------------------------------------+
 |result                                                         |
 +---------------------------------------------------------------+
@@ -395,7 +393,7 @@ val result = pipeline.fit(data).transform(data)
 {%- endcapture -%}
 
 {%- capture approach_notebook_link -%}
-[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualParserApproach.ipynb)
+[ContextualParserApproachNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ContextualParserApproach.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

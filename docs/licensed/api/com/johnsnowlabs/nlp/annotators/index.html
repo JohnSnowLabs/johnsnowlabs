@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.1.4 ScalaDoc  - com.johnsnowlabs.nlp.annotators</title>
-          <meta name="description" content="Spark NLP 5.1.4 ScalaDoc - com.johnsnowlabs.nlp.annotators" />
-          <meta name="keywords" content="Spark NLP 5.1.4 ScalaDoc com.johnsnowlabs.nlp.annotators" />
+          <title>Spark NLP 5.2.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators</title>
+          <meta name="description" content="Spark NLP 5.2.0 ScalaDoc - com.johnsnowlabs.nlp.annotators" />
+          <meta name="keywords" content="Spark NLP 5.2.0 ScalaDoc com.johnsnowlabs.nlp.annotators" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.1.4 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.2.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -458,6 +458,10 @@
                         <a class="class" href="Chunk2Token.html" title="A feature transformer that converts the input array of strings (annotatorType CHUNK) into an array of chunk-based tokens (annotatorType TOKEN)."></a>
                         <a href="Chunk2Token.html" title="A feature transformer that converts the input array of strings (annotatorType CHUNK) into an array of chunk-based tokens (annotatorType TOKEN).">Chunk2Token</a>
                       </li><li class="current-entities indented4">
+                        <a class="object" href="DocumentFiltererByClassifier$.html" title="This is the companion object of DocumentFiltererByClassifier."></a>
+                        <a class="class" href="DocumentFiltererByClassifier.html" title="Filters documents by the result of classifier annotators."></a>
+                        <a href="DocumentFiltererByClassifier.html" title="Filters documents by the result of classifier annotators.">DocumentFiltererByClassifier</a>
+                      </li><li class="current-entities indented4">
                         <a class="object" href="DrugNormalizer$.html" title=""></a>
                         <a class="class" href="DrugNormalizer.html" title="Annotator which normalizes raw text from clinical documents, e.g."></a>
                         <a href="DrugNormalizer.html" title="Annotator which normalizes raw text from clinical documents, e.g.">DrugNormalizer</a>
@@ -644,6 +648,57 @@ result.selectExpr(<span class="lit">"explode(ngram_tokens)"</span>).show(<span c
   |{token, <span class="num">21</span>, <span class="num">31</span>, presents_to, {sentence -&gt; <span class="num">0</span>, chunk -&gt; <span class="num">3</span>}, []}   |
   |{token, <span class="num">30</span>, <span class="num">35</span>, to_the, {sentence -&gt; <span class="num">0</span>, chunk -&gt; <span class="num">4</span>}, []}        |
   +----------------------------------------------------------------+</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://nlp.johnsnowlabs.com/api/com/johnsnowlabs/nlp/annotators/NGramGenerator" target="_blank">NGramGenerator</a></p></span></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DocumentFiltererByClassifierextendsAnnotatorModel[com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier]withHasSimpleAnnotate[com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier]withWhiteAndBlackListParams"></a><a id="DocumentFiltererByClassifier:DocumentFiltererByClassifier"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/annotators/DocumentFiltererByClassifier.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <a title="Filters documents by the result of classifier annotators." href="DocumentFiltererByClassifier.html"><span class="name">DocumentFiltererByClassifier</span></a><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="DocumentFiltererByClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier">DocumentFiltererByClassifier</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="DocumentFiltererByClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier">DocumentFiltererByClassifier</a>] with <a href="params/WhiteAndBlackListParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams">WhiteAndBlackListParams</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Filters documents by the result of classifier annotators.</p><div class="fullcomment"><div class="comment cmt"><p>Filters documents by the result of classifier annotators.
+Documents are filtered by the white list and black list.
+The white list is a list of classifier results that are allowed to pass the filter.
+The black list is a list of classifier results that are not allowed to pass the filter.
+The filter is case sensitive. If the caseSensitive is set to false, the filter is case in-sensitive.</p><h4>Example</h4><pre><span class="kw">val</span> text =<span class="lit">""</span><span class="lit">"British Department of Health confirms first two cases of in UK.
+   |So my trip to visit my australian exchange student just got canceled because of Coronavirus.
+   |I wish everyone to be safe at home and stop pandemic."</span><span class="lit">""</span>.stripMargin
+<span class="kw">val</span> documentAssembler = <span class="kw">new</span> DocumentAssembler()
+   .setInputCol(<span class="lit">"text"</span>).setOutputCol(<span class="lit">"document"</span>)
+<span class="kw">val</span> sentenceDetector = <span class="kw">new</span> SentenceDetector()
+   .setInputCols(<span class="lit">"document"</span>).setOutputCol(<span class="lit">"sentence"</span>)
+<span class="kw">val</span> tokenizer = <span class="kw">new</span> Tokenizer()
+   .setInputCols(<span class="lit">"sentence"</span>).setOutputCol(<span class="lit">"token"</span>)
+<span class="kw">val</span> medicalBFSC = MedicalBertForSequenceClassification
+   .pretrained(<span class="lit">"bert_sequence_classifier_covid_sentiment"</span>, <span class="lit">"en"</span>, <span class="lit">"clinical/models"</span>)
+   .setInputCols(<span class="lit">"sentence"</span>, <span class="lit">"token"</span>).setOutputCol(<span class="lit">"classifier"</span>)
+<span class="kw">val</span> documentFilterer = <span class="kw">new</span> DocumentFiltererByClassifier()
+   .setInputCols(<span class="lit">"sentence"</span>, <span class="lit">"classifier"</span>).setOutputCol(<span class="lit">"filteredDocuments"</span>)
+   .setWhiteList(<span class="lit">"positive"</span>)
+   .setCaseSensitive(<span class="kw">false</span>)
+<span class="kw">import</span> spark.implicits._
+<span class="kw">val</span> textDF = <span class="std">Seq</span>(text).toDF(<span class="lit">"text"</span>)
+<span class="kw">val</span> result = <span class="kw">new</span> Pipeline().setStages(<span class="std">Array</span>(
+   documentAssembler,
+   sentenceDetector,
+   tokenizer,
+   medicalBFSC,
+   documentFilterer
+)).fit(textDF).transform(textDF)
+result.selectExpr(<span class="lit">"explode(filteredDocuments)"</span>).show(<span class="kw">false</span>)
+
++------------------------------------------------------------------------------------------------+
+|col                                                                                             |
++------------------------------------------------------------------------------------------------+
+|{document, <span class="num">159</span>, <span class="num">211</span>, I wish everyone to be safe at home and stop pandemic., {sentence -&gt; <span class="num">2</span>}, []}|
++------------------------------------------------------------------------------------------------+</pre></div></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.DrugNormalizer" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="DrugNormalizerextendsAnnotatorModel[com.johnsnowlabs.nlp.annotators.DrugNormalizer]withHasSimpleAnnotate[com.johnsnowlabs.nlp.annotators.DrugNormalizer]withCheckLicense"></a><a id="DrugNormalizer:DrugNormalizer"></a>
       <span class="permalink">
@@ -689,7 +744,25 @@ result.selectExpr(<span class="lit">"explode(document_normalized.result) as norm
         <div class="values members">
               <h3>Value Members</h3>
               <ol>
-                <li name="com.johnsnowlabs.nlp.annotators.DrugNormalizer" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+                <li name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="DocumentFiltererByClassifier"></a><a id="DocumentFiltererByClassifier:DocumentFiltererByClassifier"></a>
+      <span class="permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/annotators/DocumentFiltererByClassifier$.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="This is the companion object of DocumentFiltererByClassifier." href="DocumentFiltererByClassifier$.html"><span class="name">DocumentFiltererByClassifier</span></a><span class="result"> extends <span class="extype" name="org.apache.spark.ml.util.DefaultParamsReadable">DefaultParamsReadable</span>[<a href="DocumentFiltererByClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier">DocumentFiltererByClassifier</a>] with <span class="extype" name="scala.Serializable">Serializable</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">This is the companion object of <a href="DocumentFiltererByClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier">DocumentFiltererByClassifier</a>.</p><div class="fullcomment"><div class="comment cmt"><p>This is the companion object of <a href="DocumentFiltererByClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier">DocumentFiltererByClassifier</a>. Please refer to that class for the
+documentation.
+</p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.DrugNormalizer" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="DrugNormalizer"></a><a id="DrugNormalizer:DrugNormalizer"></a>
       <span class="permalink">
       <a href="../../../../com/johnsnowlabs/nlp/annotators/DrugNormalizer$.html" title="Permalink">

@@ -190,7 +190,7 @@ data:
           - text: Colab
             type: blue_btn
             url: 
-        - title: ER_DRUG
+        - title: Mapping RxNorm Codes with Corresponding Drug Brand Names, Actions and Treatments
           id: er_drug       
           image: 
               src: /assets/images/ER_DRUG.svg

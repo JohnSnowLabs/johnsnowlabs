@@ -9,7 +9,7 @@ modify_date: "2020-04-08"
 use_language_switcher: "Python-Scala-Java"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 ## ImageHandwrittenDetector

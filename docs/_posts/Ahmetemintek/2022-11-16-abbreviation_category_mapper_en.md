@@ -19,7 +19,10 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps abbreviations and acronyms of medical regulatory activities with their definitions and categories. Predicted categories: `general`, `problem`, `test`, `treatment`, `medical_condition`, `clinical_dept`, `drug`, `nursing`, `internal_organ_or_component`, `hospital_unit`, `drug_frequency`, `employment`, `procedure`
+This pretrained model maps abbreviations and acronyms of medical regulatory activities with their definitions and categories. Predicted categories: `general`, `problem`, `test`, `treatment`, `medical_condition`, `clinical_dept`, `drug`, `nursing`, `internal_organ_or_component`, `hospital_unit`, `drug_frequency`, `employment`, `procedure`.
+
+`Important Note`: Mappers extract additional information such as extended descriptions and categories related to Concept codes (such as RxNorm, ICD10, CPT, MESH, NDC, UMLS, etc.). They generally take Concept Codes, which are the outputs of EntityResolvers, as input. When creating a pipeline that contains 'Mapper', it is necessary to use the ChunkMapperModel after an EntityResolverModel.
+
 
 ## Predicted Entities
 
@@ -37,6 +40,7 @@ This pretrained model maps abbreviations and acronyms of medical regulatory acti
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\

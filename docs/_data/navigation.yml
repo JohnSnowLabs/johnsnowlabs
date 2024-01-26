@@ -67,6 +67,12 @@ sparknlp:
         url: /docs/en/third-party-projects
       - title: Release Notes
         url: /docs/en/release_notes
+      
+healthcare-gpt:
+  - title: Healthcare GPT
+    children:
+      - title: Healthcare GPT
+        url: /docs/en/healthcare_gpt
 
 annotation-lab:
   - title: NLP Lab
@@ -165,6 +171,8 @@ annotation-lab:
             url: /docs/en/alab/cluster_management
       - title: NLP Libraries Integration
         url: /docs/en/alab/healthcare
+      - title: Spark Library Version
+        url: /docs/en/alab/version
       - title: Security and Privacy
         url: /docs/en/alab/security
       - title: Video Tutorials
@@ -201,14 +209,8 @@ sparknlp-healthcare:
         url: /licensed/api/python
       - title: Wiki
         url: /docs/en/wiki
-      - title: Cluster Speed Benchmarks
-        url: /docs/en/benchmark
-      - title: CPU NER Benchmarks
-        url: /docs/en/cpu-ner-benchmark
-      - title: GPU vs CPU benchmarks
-        url: /docs/en/CPUvsGPUbenchmark_healthcare
-      - title: Spark NLP vs Spacy Pandas UDF with Arrow Benchmark
-        url: /docs/en/spark_spacy_pandas_udf_with_arrow_enabled_benchmark_web
+      - title: Speed Benchmarks
+        url: /docs/en/benchmark      
       - title: Best Practices Using Pretrained Models Together
         url: /docs/en/best_practices_pretrained_models
   - title: Healthcare NLP
@@ -219,25 +221,7 @@ sparknlp-healthcare:
         url: /models?edition=Spark+NLP+for+Healthcare
       - title: Version Compatibility
         url: /docs/en/licensed_version_compatibility
-  - title: Finance NLP
-    children:
-      - title: Release Notes
-        url: /docs/en/financial_release_notes
-      - title: Financial Models
-        url: /models?edition=Spark+NLP+for+Finance
-      - title: Version Compatibility
-        url: /docs/en/financial_version_compatibility
-  - title: Legal NLP
-    children:
-      - title: Release Notes
-        url: /docs/en/legal_release_notes
-      - title: Legal Models
-        url: /models?edition=Spark+NLP+for+Legal
-      - title: Version Compatibility
-        url: /docs/en/legal_version_compatibility
-
-spark-ocr:
-  - title: Spark OCR
+  - title: Visual NLP
     children:
       - title: Getting Started
         url: /docs/en/ocr
@@ -257,6 +241,23 @@ spark-ocr:
         url: /docs/en/ocr_structures
       - title: Release notes
         url: /docs/en/spark_ocr_versions/ocr_release_notes
+  - title: Finance NLP
+    children:
+      - title: Release Notes
+        url: /docs/en/financial_release_notes
+      - title: Financial Models
+        url: /models?edition=Spark+NLP+for+Finance
+      - title: Version Compatibility
+        url: /docs/en/financial_version_compatibility
+  - title: Legal NLP
+    children:
+      - title: Release Notes
+        url: /docs/en/legal_release_notes
+      - title: Legal Models
+        url: /models?edition=Spark+NLP+for+Legal
+      - title: Version Compatibility
+        url: /docs/en/legal_version_compatibility
+
 
 jsl:
   - title: John Snow Labs NLP

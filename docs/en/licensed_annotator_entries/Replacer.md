@@ -19,7 +19,7 @@ In the **deidentification** process, the `Replacer` annotator is used to replace
 
 The `NameChunkObfuscatorApproach` annotator is used to identify and obfuscate sensitive named entities in the text, such as people's names, addresses, dates of birth, SSNs etc.
 
-Parametres:
+Parameter:
 
 - `setUseReplacement`: (Boolean) Select what output format should be used. By default it will use the current day.   
 
@@ -34,7 +34,6 @@ DOCUMENT
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-
 from johnsnowlabs import nlp, medical
 
 names = """Mitchell#NAME
@@ -143,7 +142,6 @@ Obfuscated text :  Joseeduardo is a 62 y.o. patient admitted. Mr. Teigan was see
 
 
 {%- capture model_scala_medical -%}
-
 import spark.implicits._
 
 /* names.txt file

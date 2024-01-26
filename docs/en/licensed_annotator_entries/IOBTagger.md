@@ -54,7 +54,7 @@ iobTagger = medical.IOBTagger()\
   .setInputCols(["token", "ner_chunk"])\
   .setOutputCol("ner_label")
 
-pipeline = Pipeline(stages=[docAssembler,
+pipeline = nlp.Pipeline(stages=[docAssembler,
                             sentenceDetector,
                             tokenizer,
                             embeddings,
@@ -148,7 +148,7 @@ iobTagger = legal.IOBTagger()\
   .setInputCols(["token", "ner_chunk"])\
   .setOutputCol("ner_label")
 
-pipeline = Pipeline(stages=[docAssembler, 
+pipeline = nlp.Pipeline(stages=[docAssembler, 
                             sentenceDetector, 
                             tokenizer, 
                             embeddings, 
@@ -287,7 +287,7 @@ iobTagger = finance.IOBTagger()\
   .setInputCols(["token", "ner_chunk"])\
   .setOutputCol("ner_label")
 
-pipeline = Pipeline(stages=[docAssembler,
+pipeline = nlp.Pipeline(stages=[docAssembler,
                             sentenceDetector,
                             tokenizer,
                             embeddings,
@@ -681,6 +681,10 @@ val result = pipeline.fit(df) .transform(df)
 [IOBTagger](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/ner/iob_tagger/index.html#sparknlp_jsl.annotator.ner.iob_tagger.IOBTagger)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[IOBTaggerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/IOBTagger.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -695,4 +699,5 @@ model_scala_legal=model_scala_legal
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}

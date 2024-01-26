@@ -86,7 +86,4 @@ result. Select("E5.result").show()
 
 ## References
 
-For our Legal models, we will use publicly available datasets to fine-tune the model:
-
-- [EDGAR](https://huggingface.co/datasets/pile-of-law/pile-of-law)
-- In-house annotated Earning Calls Transcripts
+We used in-house annotated data.

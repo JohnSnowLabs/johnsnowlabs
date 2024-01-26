@@ -159,7 +159,10 @@ classifier_logreg = medical.DocumentMLClassifierApproach() \
     .setClassificationModelClass("logreg")\
     .setFitIntercept(True)
 
-pipeline = nlp.Pipeline(stages=[document, token, classifier_logreg])
+pipeline = nlp.Pipeline(stages=[
+    document, 
+    token, 
+    classifier_logreg])
 
 result_logreg = pipeline.fit(train_data).transform(test_data).cache()
 

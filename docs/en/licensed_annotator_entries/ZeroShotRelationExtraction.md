@@ -14,7 +14,7 @@ The model inputs consists of documents/sentences and paired NER chunks, usually 
 
 These statements are automatically appended to each document in the dataset and the NLI model is used to determine whether a particular relationship between entities.
 
-Parametres:
+Parameters:
 
 - `relationalCategories`: A dictionary with definitions of relational categories. The keys of dictionary are the relation labels and the values are lists of hypothesis templates.
 
@@ -147,6 +147,7 @@ results.select(
     F.expr("cols['1']").alias("relation"),
     F.expr("cols['0']['confidence']").alias("confidence"),
 ).show(truncate=70)
+
 +--------+-------------+-----------+-----------+-------+-------------+-----------+--------+-------+------------------------------+--------------+--------+----------+
 sentence|entity1_begin|entity1_end|     chunk1|entity1|entity2_begin|entity2_end|  chunk2|entity2|                    hypothesis|nli_prediction|relation|confidence|
 +--------+-------------+-----------+-----------+-------+-------------+-----------+--------+-------+------------------------------+--------------+--------+----------+
@@ -360,7 +361,6 @@ result.select(
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
-
 import spark.implicits._
 
 val documenter = new DocumentAssembler()
@@ -444,25 +444,9 @@ val pipeline = new Pipeline().setStages(Array(
 
 val text = "Paracetamol can alleviate headache or sickness. An MRI test can be used to find cancer."
 
-val data = Seq(text).toDS.toDF("text")
+val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
-
-result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as cols")
-.selectExpr(
-    "cols['0']['sentence'] as sentence",
-    "cols['0']['entity1_begin'] as entity1_begin",
-    "cols['0']['entity1_end'] as entity1_end",
-    "cols['0']['chunk1'] as chunk1",
-    "cols['0']['entity1'] as entity1",
-    "cols['0']['entity2_begin'] as entity2_begin",
-    "cols['0']['entity2_end'] as entity2_end",
-    "cols['0']['chunk2'] as chunk2",
-    "cols['0']['entity2'] as entity2",
-    "cols['0']['hypothesis'] as hypothesis",
-    "cols['0']['nli_prediction'] as nli_prediction",
-    "cols['1'] as relation",
-    "cols['0']['confidence'] as confidence").show(70)
  
 +--------+-------------+-----------+-----------+-------+-------------+-----------+--------+-------+--------------------+--------------+--------+----------+
 |sentence|entity1_begin|entity1_end|     chunk1|entity1|entity2_begin|entity2_end|  chunk2|entity2|          hypothesis|nli_prediction|relation|confidence|
@@ -475,7 +459,6 @@ result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as 
 {%- endcapture -%}
 
 {%- capture model_scala_finance -%}
-
 import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
@@ -548,25 +531,9 @@ val pipeline = new Pipeline().setStages(Array(
 
 val text = """License fees revenue decreased 40 %, or $ 0.5 million to $ 0.7 million for the year ended December 31, 2020 compared to $ 1.2 million for the year ended December 31, 2019. Services revenue increased 4 %, or $ 1.1 million, to $ 25.6 million for the year ended December 31, 2020 from $ 24.5 million for the year ended December 31, 2019. Costs of revenue, excluding depreciation and amortization increased by $ 0.1 million, or 2 %, to $ 8.8 million for the year ended December 31, 2020 from $ 8.7 million for the year ended December 31, 2019.  Also, a decrease in travel costs of $ 0.4 million due to travel restrictions caused by the global pandemic. As a percentage of revenue, cost of revenue, excluding depreciation and amortization was 34 % for each of the years ended December 31, 2020 and 2019. Sales and marketing expenses decreased 20 %, or $ 1.5 million, to $ 6.0 million for the year ended December 31, 2020 from $ 7.5 million for the year ended December 31, 2019."""
 
-val data = Seq(text).toDS.toDF("text")
+val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
-
-result.selectExpr("explode(arrays_zip(relations.metadata, relations.result)) as cols")
-    .selectExpr(
-    "cols['0']['sentence'] as sentence",
-    "cols['0']['entity1_begin'] as entity1_begin",
-    "cols['0']['entity1_end'] as entity1_end",
-    "cols['0']['chunk1'] as chunk1",
-    "cols['0']['entity1'] as entity1",
-    "cols['0']['entity2_begin'] as entity2_begin",
-    "cols['0']['entity2_end'] as entity2_end",
-    "cols['0']['chunk2'] as chunk2",
-    "cols['0']['entity2'] as entity2",
-    "cols['0']['hypothesis'] as hypothesis",
-    "cols['0']['nli_prediction'] as nli_prediction",
-    "cols['1'] as relation",
-    "cols['0']['confidence'] as confidence").show(70)
 
 +--------+-------------+-----------+----------------------------+----------------+-------------+-----------+-----------------+-----------+--------------------------------------------------------+--------------+---------------------+----------+
 |sentence|entity1_begin|entity1_end|                      chunk1|         entity1|entity2_begin|entity2_end|           chunk2|    entity2|                                              hypothesis|nli_prediction|             relation|confidence|
@@ -597,7 +564,6 @@ only showing top 20 rows
 {%- endcapture -%}
 
 {%- capture model_scala_legal -%}
-
 import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
@@ -637,26 +603,10 @@ val pipeline = new Pipeline().setStages(Array(
 
 val text = """Arizona Copyright Grant. Subject to the terms and conditions of this Agreement, Arizona hereby grants to the Company a perpetual, non-exclusive, royalty-free license in, to and under the Arizona Licensed Copyrights for use in the Company Field throughout the world."""
 
-val data = Seq(text).toDS.toDF("text")
+val data = Seq(text).toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 
-result.select(explode(arrays_zip(result("relations")("metadata"), result("relations")("result"))).as("cols"))
-.selectExpr(
-    "cols['0']['sentence'] as sentence",
-    "cols['0']['entity1_begin'] as entity1_begin",
-    "cols['0']['entity1_end'] as entity1_end",
-    "cols['0']['chunk1'] as chunk1",
-    "cols['0']['entity1'] as entity1",
-    "cols['0']['entity2_begin'] as entity2_begin",
-    "cols['0']['entity2_end'] as entity2_end",
-    "cols['0']['chunk2'] as chunk2",
-    "cols['0']['entity2'] as entity2",
-    "cols['0']['hypothesis'] as hypothesis",
-    "cols['0']['nli_prediction'] as nli_prediction",
-    "cols['1'] as relation",
-    "cols['0']['confidence'] as confidence"
-).show(70)
 
 +--------+-------------+-----------+-------+------------------+-------------+-----------+-------------+--------------------------+----------------------------+--------------+---------+----------+
 |sentence|entity1_begin|entity1_end| chunk1|           entity1|entity2_begin|entity2_end|       chunk2|                   entity2|                  hypothesis|nli_prediction| relation|confidence|
@@ -676,7 +626,7 @@ result.select(explode(arrays_zip(result("relations")("metadata"), result("relati
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[ZeroShotRelationExtractionModel](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ZeroShotRelationExtractionModel.ipynb)
+[ZeroShotRelationExtractionModelNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ZeroShotRelationExtractionModel.ipynb)
 {%- endcapture -%}
 
 

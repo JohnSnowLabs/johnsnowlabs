@@ -11,6 +11,7 @@ try:
         from sparknlp_jsl.annotator.windowed.windowed_sentence import (
             WindowedSentenceModel,
         )
+        from sparknlp_jsl.legal.token_classification.ner.zero_shot_ner import ZeroShotNerModel
         from sparknlp_jsl.training_log_parser import ner_log_parser
 
         from sparknlp_jsl.base import FeaturesAssembler
@@ -36,7 +37,6 @@ try:
             ChunkMapperApproach,
             SentenceEntityResolverApproach,
             AssertionDLApproach,
-            ZeroShotNerModel,
             LegalQuestionAnswering as QuestionAnswering,
             LegalTextGenerator as TextGenerator,
             LegalSummarizer as Summarizer,
@@ -101,6 +101,7 @@ try:
             InternalDocumentSplitter as DocumentSplitter,
             Text2SQL,
             IOBTagger,
+            DocumentFiltererByClassifier,
         
         )
         from sparknlp_jsl.modelTracer import ModelTracer

@@ -63,11 +63,16 @@ nlu.load("en.relation.date_test_result.pipeline").predict("""He was advised ches
 ## Results
 
 ```bash
-| index | relations    | entity1      | chunk1              | entity2      |  chunk2 |
-|-------|--------------|--------------|---------------------|--------------|---------|
-| 0     | O            | TEST         | chest X-ray         | MEASUREMENTS |  93%    | 
-| 1     | O            | TEST         | CT scan             | MEASUREMENTS |  93%    |
-| 2     | is_result_of | TEST         | SpO2                | MEASUREMENTS |  93%    |
+|   | sentence | entity1_begin | entity1_end |      chunk1 | entity1 | entity2_begin | entity2_end |      chunk2 |     entity2 |      relation | confidence |
+|--:|---------:|--------------:|------------:|------------:|--------:|--------------:|------------:|------------:|------------:|--------------:|-----------:|
+| 0 |        0 |             0 |           1 |          He |  Gender |            15 |          25 | chest X-ray |        Test | is_finding_of |  0.9991597 |
+| 1 |        0 |             0 |           1 |          He |  Gender |            30 |          36 |     CT scan |        Test | is_finding_of |        1.0 |
+| 2 |        0 |            15 |          25 | chest X-ray |    Test |            30 |          36 |     CT scan |        Test | is_finding_of |        1.0 |
+| 3 |        0 |            30 |          36 |     CT scan |    Test |            53 |          55 |         his |      Gender | is_finding_of |        1.0 |
+| 4 |        0 |            30 |          36 |     CT scan |    Test |            57 |          60 |        SpO2 |        Test | is_finding_of |        1.0 |
+| 5 |        0 |            53 |          55 |         his |  Gender |            57 |          60 |        SpO2 |        Test |    is_date_of |    0.98956 |
+| 6 |        0 |            53 |          55 |         his |  Gender |            75 |          77 |         93% | Test_Result |    is_date_of |  0.9999974 |
+| 7 |        0 |            57 |          60 |        SpO2 |    Test |            75 |          77 |         93% | Test_Result |  is_result_of | 0.92868817 |
 ```
 
 {:.model-param}

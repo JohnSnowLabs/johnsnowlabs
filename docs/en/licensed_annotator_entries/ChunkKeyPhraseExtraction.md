@@ -12,18 +12,17 @@ The input to the model consists of chunk annotations and sentence or document an
 
 Parametres:
 
-- `setConcatenateSentences(value: Boolean)`: ChunkKeyPhraseExtraction.this.type
-Concatenate the input sentence/documentation annotations before computing their embedding Default value is 'true'.
-- `setDivergence(value: Float)`: ChunkKeyPhraseExtraction.this.type
-Set the level of divergence of the extracted key phrases.
-- `setDocumentLevelProcessing(value: Boolean)`: ChunkKeyPhraseExtraction.this.type
-Extract key phrases from the whole document (true) or from particular sentences which the chunks refer to (false) Default value is 'true'.
-- `setDropPunctuation(value: Boolean)`: ChunkKeyPhraseExtraction.this.type
-Remove punctuation marks from input chunks.
-- `setSelectMostDifferent(value: Boolean)`: ChunkKeyPhraseExtraction.this.type
-Let the model return the top N key phrases which are the most different from each other
-- `setTopN(value: Int)`: ChunkKeyPhraseExtraction.this.type
-Set the number of key phrases to extract
+- `setConcatenateSentences(value: Boolean)`: Concatenate the input sentence/documentation annotations before computing their embedding Default value is 'true'.
+
+- `setDivergence(value: Float)`: Set the level of divergence of the extracted key phrases.
+
+- `setDocumentLevelProcessing(value: Boolean)`: Extract key phrases from the whole document (true) or from particular sentences which the chunks refer to (false) Default value is 'true'.
+
+- `setDropPunctuation(value: Boolean)`: Remove punctuation marks from input chunks.
+
+- `setSelectMostDifferent(value: Boolean)`: Let the model return the top N key phrases which are the most different from each other.
+
+- `setTopN(value: Int)`: Set the number of key phrases to extract.
 
 This model is a subclass of [[BertSentenceEmbeddings]] and shares all parameters with it. It can load any pretrained BertSentenceEmbeddings model. Available models can be found at the [Models Hub](https://nlp.johnsnowlabs.com/models?task=Sentence+Embeddings).
 
@@ -38,7 +37,7 @@ CHUNK
 {%- endcapture -%}
 
 {%- capture model_python_medical -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, medical
 
 documenter = nlp.DocumentAssembler() \
     .setInputCol("text") \
@@ -97,7 +96,7 @@ results.selectExpr("explode(ner_chunk_key_phrases) AS key_phrase")\
 {%- endcapture -%}
 
 {%- capture model_python_legal -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, legal
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -160,7 +159,7 @@ result.selectExpr("explode(ner_chunk_key_phrases) AS key_phrase")\
 {%- endcapture -%}
 
 {%- capture model_python_finance -%}
-from johnsnowlabs import *
+from johnsnowlabs import nlp, finance
 
 documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
@@ -269,9 +268,7 @@ val pipeline = new Pipeline().setStages(Array(
 val text ="""Her Diabetes has become type 2 in the last year with her Diabetes.He complains of swelling in his right forearm."""
 val data = Seq(text).toDF("text")
 
-val results = pipeline.fit(data).transform(data) 
-
-results.selectExpr("explode(ner_chunk_key_phrases) AS key_phrase") .selectExpr("key_phrase.result", "key_phrase.metadata.entity", "key_phrase.metadata.DocumentSimilarity", "key_phrase.metadata.MMRScore") .show(truncate=false)
+val results = pipeline.fit(data).transform(data)
 
 +--------+-------------------------+------------------+-----------------+
 |result  |entity                   |DocumentSimilarity|MMRScore         |
@@ -326,13 +323,7 @@ val nlpPipeline = new Pipeline().setStages(Array(
 val text ="""This INTELLECTUAL PROPERTY AGREEMENT (this "Agreement"), dated as of December 31, 2018 (the "Effective Date") is entered into by and between Armstrong Flooring, Inc., a Delaware corporation ("Seller") and AFI Licensing LLC, a Delaware limited liability company ("Licensing" and together with Seller, "Arizona") and AHF Holding, Inc. (formerly known as Tarzan HoldCo, Inc.), a Delaware corporation ("Buyer") and Armstrong Hardwood Flooring Company, a Tennessee corporation (the "Company" and together with Buyer the "Buyer Entities") (each of Arizona on the one hand and the Buyer Entities on the other hand, a "Party" and collectively, the "Parties")."""
 val data = Seq(text).toDF("text")
 
-val result = nlpPipeline.fit(data).transform(data) 
-
-result.selectExpr("explode(ner_chunk_key_phrases) AS key_phrase") 
-      .selectExpr("key_phrase.result", 
-                  "key_phrase.metadata.entity", 
-                  "key_phrase.metadata.DocumentSimilarity", 
-                  "key_phrase.metadata.MMRScore") .show(truncate=false)
+val result = nlpPipeline.fit(data).transform(data)
 
 +--------------+------+------------------+-------------------+
 |result        |entity|DocumentSimilarity|MMRScore           |
@@ -387,10 +378,7 @@ val nlpPipeline = new Pipeline().setStages(Array(
 val text ="""In 2020, we acquired certain assets of Spell Security Private Limited (also known as "Spell Security"). More specifically, their Compliance product - Policy Compliance (PC)."""
 val data = Seq(text).toDF("text")
 
-val result = nlpPipeline.fit(data).transform(data) 
-
-result.selectExpr("explode(ner_chunk_key_phrases) AS key_phrase") 
-.selectExpr("key_phrase.result", "key_phrase.metadata.entity", "key_phrase.metadata.DocumentSimilarity", "key_phrase.metadata.MMRScore") .show(truncate=false)
+val result = nlpPipeline.fit(data).transform(data)
 
 +------------------------------+-------+------------------+-------------------+
 |result                        |entity |DocumentSimilarity|MMRScore           |
@@ -408,6 +396,10 @@ result.selectExpr("explode(ner_chunk_key_phrases) AS key_phrase")
 [ChunkKeyPhraseExtraction](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/chunker/chunk_key_phrase_extraction/index.html#sparknlp_jsl.annotator.chunker.chunk_key_phrase_extraction.ChunkKeyPhraseExtraction)
 {%- endcapture -%}
 
+{%- capture model_notebook_link -%}
+[ChunkKeyPhraseExtractionNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/ChunkKeyPhraseExtraction.ipynb)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 model=model
@@ -422,4 +414,5 @@ model_scala_legal=model_scala_legal
 model_scala_finance=model_scala_finance
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}

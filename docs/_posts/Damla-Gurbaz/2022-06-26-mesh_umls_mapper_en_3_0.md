@@ -37,6 +37,7 @@ This pretrained model maps MESH codes to corresponding UMLS codes under the Unif
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 documentAssembler = DocumentAssembler()\
 .setInputCol("text")\

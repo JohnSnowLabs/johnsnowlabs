@@ -13,11 +13,11 @@ SparkNLP annotations (if the annotation is an embedding, it takes the embedding,
 `result` field). The output of the transformer is a `FEATURE_VECTOR` annotation (the numeric vector is in the
 `embeddings` field).
 
-The parameters below are used for `FeaturesAssembler`.
+Parameters:
 
 - `inputCols`: The name of the columns containing the input annotations. It can read either a String column name or an Array of strings (column names).
-- `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
 
+- `outputCol`: The name of the column in Document type that is generated. We can specify only one column here.
 
 All the parameters can be set using the corresponding set method in the camel case. For example, `.setInputcols()`.
 {%- endcapture -%}
@@ -330,7 +330,7 @@ val result = nlpPipeline.fit(data_df).transform(data_df)
 {%- endcapture -%}
 
 {%- capture model_notebook_link -%}
-[Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/FeaturesAssembler.ipynb)
+[FeatureAssemblerNotebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/Healthcare_MOOC/Spark_NLP_Udemy_MOOC/Healthcare_NLP/FeaturesAssembler.ipynb)
 {%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md

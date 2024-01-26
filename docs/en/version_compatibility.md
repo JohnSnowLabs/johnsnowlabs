@@ -8,7 +8,7 @@ key: version_compatibility
 modify_date: "2023-10-16"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">
@@ -55,3 +55,4 @@ sidebar:
 | 5.0.1          | 5.0.0      | 5.0.2      |
 | 5.1.0          | 5.0.1      | 5.1.0      |
 | 5.1.1          | 5.0.2      | 5.1.1      |
+| 5.1.1          | 5.1.2      | 5.2.0      |

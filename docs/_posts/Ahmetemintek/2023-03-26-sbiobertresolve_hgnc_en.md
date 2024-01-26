@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps extracted gene names and their short-form abbreviations to HGNC codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. Also, it returns the locus groups and locus types of the genes as aux labels separated by || under the metadata.
+This model maps extracted gene names and their short-form abbreviations to HGNC codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. Also, it returns the locus groups and locus types of the genes as aux labels separated by under the metadata.
 
 ## Predicted Entities
 
