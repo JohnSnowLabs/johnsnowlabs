@@ -44,13 +44,14 @@ from clinical texts. In this pipeline, [ner_jsl]() NER model, [assertion_jsl]() 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
 
 ner_pipeline = PretrainedPipeline("explain_clinical_doc_granular", "en", "clinical/models")
 
-result = ner_pipeline.annotate("""The patient admitted for gastrointestinal pathology, under working treatment.
+result = ner_pipeline.fullAnnotate("""The patient admitted for gastrointestinal pathology, under working treatment.
 History of prior heart murmur with echocardiogram findings as above on March 1998.
 According to the latest echocardiogram, basically revealed normal left ventricular function with left atrial enlargement .
 Based on the above findings, we will treat her medically with ACE inhibitors and diuretics and see how she fares.""")
@@ -62,7 +63,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_pipeline = PretrainedPipeline("explain_clinical_doc_granular", "en", "clinical/models")
 
-val result = ner_pipeline.annotate("""The patient admitted for gastrointestinal pathology, under working treatment.
+val result = ner_pipeline.fullAnnotate("""The patient admitted for gastrointestinal pathology, under working treatment.
 History of prior heart murmur with echocardiogram findings as above on March 1998.
 According to the latest echocardiogram, basically revealed normal left ventricular function with left atrial enlargement .
 Based on the above findings, we will treat her medically with ACE inhibitors and diuretics and see how she fares.""")
@@ -73,6 +74,8 @@ Based on the above findings, we will treat her medically with ACE inhibitors and
 ## Results
 
 ```bash
+# ner
+
 |    | chunks                     |   begin |   end | entities            |
 |---:|:---------------------------|--------:|------:|:--------------------|
 |  0 | admitted                   |      12 |    19 | Admission_Discharge |
@@ -88,6 +91,31 @@ Based on the above findings, we will treat her medically with ACE inhibitors and
 | 10 | ACE inhibitors             |     346 |   359 | Drug_Ingredient     |
 | 11 | diuretics                  |     365 |   373 | Drug_Ingredient     |
 | 12 | she                        |     387 |   389 | Gender              |
+
+# assertion
+
+|sentence_id|begin|end|entity                   |label          |assertion_status|
++-----------+-----+---+-------------------------+---------------+----------------+
+|1          |96   |107|heart murmur             |Heart_Disease  |Past            |
+|1          |114  |127|echocardiogram           |Test           |Past            |
+|2          |187  |200|echocardiogram           |Test           |Present         |
+|2          |222  |227|normal                   |Test_Result    |Present         |
+|2          |229  |253|left ventricular function|Test           |Present         |
+|2          |260  |282|left atrial enlargement  |Heart_Disease  |Present         |
+|3          |348  |361|ACE inhibitors           |Drug_Ingredient|Planned         |
+|3          |367  |375|diuretics                |Drug_Ingredient|Planned         |
+
+
+#relation
+
+|sentence_id|relations    |relations_entity1|relations_chunk1         |relations_entity2|relations_chunk2         |
++-----------+-------------+-----------------+-------------------------+-----------------+-------------------------+
+|1          |is_finding_of|Heart_Disease    |heart murmur             |Test             |echocardiogram           |
+|1          |is_date_of   |Heart_Disease    |heart murmur             |Date             |March 1998               |
+|1          |is_date_of   |Test             |echocardiogram           |Date             |March 1998               |
+|2          |is_finding_of|Test             |echocardiogram           |Heart_Disease    |left atrial enlargement  |
+|2          |is_result_of |Test_Result      |normal                   |Test             |left ventricular function|
+|2          |is_finding_of|Test             |left ventricular function|Heart_Disease    |left atrial enlargement  |
 ```
 
 {:.model-param}
