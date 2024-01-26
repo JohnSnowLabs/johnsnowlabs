@@ -55,6 +55,7 @@ result = ner_pipeline.annotate("""Patient with severe fever and sore throat.
 He shows no stomach pain. He maintained on an epidural and PCA for pain control.
 After CT, lung tumor located at the right lower lobe. Father with Alzheimer.""")
 ```
+
 ```scala
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
@@ -64,6 +65,7 @@ val ner_pipeline = PretrainedPipeline("explain_clinical_doc_generic", "en", "cli
 val result = ner_pipeline.annotate("""Patient with severe fever and sore throat.
 He shows no stomach pain. He maintained on an epidural and PCA for pain control.
 After CT, lung tumor located at the right lower lobe. Father with Alzheimer.""")
+
 ```
 </div>
 

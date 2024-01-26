@@ -90,6 +90,7 @@ snomed_pipeline = Pipeline(stages = [
     snomed_resolver
 ])
 
+
 empty_data = spark.createDataFrame([['']]).toDF("text")
  
 model = snomed_pipeline.fit(empty_data)
@@ -149,7 +150,6 @@ val new nlpPipeine().setStages(Array(documentAssembler,
                                     chunk2doc,
                                     sbert_embedder,
                                     snomed_resolver))
-                                    
 
 val text= """The patient exhibited recurrent upper respiratory tract infections, subjective fevers, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia."""
 
