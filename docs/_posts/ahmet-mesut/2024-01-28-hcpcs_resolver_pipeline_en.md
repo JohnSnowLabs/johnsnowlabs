@@ -18,8 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline extracts `Procedure` and `TREATMENT` entities and maps them to their corresponding [Healthcare Common Procedure Coding System (HCPCS)](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/HCPCS/index.html)
-codes using 'sbiobert_base_cased_mli' sentence embeddings.
+This pipeline extracts `Procedure` and `TREATMENT` entities and maps them to their corresponding [Healthcare Common Procedure Coding System (HCPCS)](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/HCPCS/index.html) codes using 'sbiobert_base_cased_mli' sentence embeddings.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
