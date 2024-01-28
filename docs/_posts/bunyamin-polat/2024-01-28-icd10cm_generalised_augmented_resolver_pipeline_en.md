@@ -32,6 +32,7 @@ This pipeline maps extracted medical entities to ICD-10-CM codes using `sbiobert
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
