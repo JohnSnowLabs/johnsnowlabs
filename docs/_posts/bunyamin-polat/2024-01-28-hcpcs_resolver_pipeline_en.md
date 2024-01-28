@@ -33,6 +33,7 @@ codes using 'sbiobert_base_cased_mli' sentence embeddings.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
