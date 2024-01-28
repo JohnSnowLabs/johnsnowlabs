@@ -32,6 +32,7 @@ This pipline extracts `GENE` entities and maps them to their corresponding HGNC 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
