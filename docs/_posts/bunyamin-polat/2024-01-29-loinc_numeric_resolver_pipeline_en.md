@@ -32,6 +32,7 @@ This pipeline extracts `TEST` entities and maps them to their correspondings Log
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
