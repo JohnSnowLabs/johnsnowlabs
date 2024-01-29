@@ -32,6 +32,7 @@ This pipeline extracts `PROCEDURE` and `TREATMENT` entities and maps them to the
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
