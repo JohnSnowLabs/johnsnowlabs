@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline for HGNC Codes
+title: Pipeline for HUGO Gene Nomenclature Committee (HGNC) Codes
 author: John Snow Labs
 name: hgnc_resolver_pipeline
 date: 2024-01-28
@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipline extracts `GENE` entities and maps them to their corresponding HGNC codes using `sbiobert_base_cased_mli` sentence embeddings.
+This pipeline extracts `GENE` entities and maps them to their corresponding HUGO Gene Nomenclature Committee (HGNC) codes using `sbiobert_base_cased_mli` sentence embeddings.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
