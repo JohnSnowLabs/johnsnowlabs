@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline for LOINC Codes
+title: Pipeline for  Logical Observation Identifiers Names and Codes (LOINC)
 author: John Snow Labs
 name: loinc_numeric_resolver_pipeline
 date: 2024-01-28
