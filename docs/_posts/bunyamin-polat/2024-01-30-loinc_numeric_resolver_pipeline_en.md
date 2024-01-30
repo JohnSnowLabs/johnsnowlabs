@@ -8,7 +8,7 @@ tags: [licensed, en, clinical, loinc, pipeline, resolver]
 task: [Entity Resolution, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 5.2.1
-spark_version: 3.0
+spark_version: 3.2
 supported: true
 annotator: PipelineModel
 article_header:
@@ -18,13 +18,13 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline extracts `TEST` entities and maps them to their corresponding Logical Observation Identifiers Names and Codes(LOINC) codes using `sbiobert_base_cased_mli` sentence embeddings. It is trained with the numeric LOINC codes, without the inclusion of LOINC “Document Ontology” codes starting with the letter “L”. It also provides the official resolution of the codes within the brackets.
+This pipeline extracts `TEST` entities and maps them to their correspondings Logical Observation Identifiers Names and Codes(LOINC) codes using `sbiobert_base_cased_mli` sentence embeddings. It is trained with the numeric LOINC codes, without the inclusion of LOINC “Document Ontology” codes starting with the letter “L”. It also provides the official resolution of the codes within the brackets.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/loinc_numeric_resolver_pipeline_en_5.2.1_3.0_1706630342083.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/loinc_numeric_resolver_pipeline_en_5.2.1_3.0_1706630342083.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/loinc_numeric_resolver_pipeline_en_5.2.1_3.2_1706633422318.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/loinc_numeric_resolver_pipeline_en_5.2.1_3.2_1706633422318.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -32,7 +32,6 @@ This pipeline extracts `TEST` entities and maps them to their corresponding Logi
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
