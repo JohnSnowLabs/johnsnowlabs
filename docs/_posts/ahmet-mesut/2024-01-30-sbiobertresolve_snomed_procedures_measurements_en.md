@@ -36,6 +36,7 @@ This model maps Procedure and Measurements entities to their corresponding SNOME
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
