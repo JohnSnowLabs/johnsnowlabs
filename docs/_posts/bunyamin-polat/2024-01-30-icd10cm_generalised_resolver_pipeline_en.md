@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline extracts the following entities and maps them to ICD-10-CM codes using `sbiobert_base_cased_mli` sentence embeddings. It predicts ICD-10-CM codes up to 3 characters (according to ICD-10-CM code structure the first three characters represent the general type of injury or disease).
+This pipeline extracts the following entities and maps them to their ICD-10-CM codes using `sbiobert_base_cased_mli` sentence embeddings. It predicts ICD-10-CM codes up to 3 characters (according to ICD-10-CM code structure the first three characters represent the general type of injury or disease).
 Predicted Entities:
 `COMMUNICABLE_DISEASE`,
 `DIABETES`,
