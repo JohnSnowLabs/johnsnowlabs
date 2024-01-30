@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipline extracts `GENE` entities and maps them to their corresponding [HUGO Gene Nomenclature Committee (HGNC)](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/HGNC/index.html) codes using `sbiobert_base_cased_mli` sentence embeddings.
+This pipeline extracts `GENE` entities and maps them to their corresponding [HUGO Gene Nomenclature Committee (HGNC)](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/HGNC/index.html) codes using `sbiobert_base_cased_mli` sentence embeddings.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -32,6 +32,7 @@ This pipline extracts `GENE` entities and maps them to their corresponding [HUGO
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
