@@ -39,7 +39,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 hgnc_pipeline = PretrainedPipeline("hgnc_resolver_pipeline", "en", "clinical/models")
 
-text = """Recent studies have suggested a potential link between the DUX4 like 20 (pseudogene), also known as DUX4L20 and FBXO48."""
+text = """During today's consultation, we reviewed the results of the comprehensive genetic analysis performed on the patient. This analysis uncovered complex interactions between several genes: DUX4, DUX4L20, FBXO48, MYOD1, and PAX7. These findings are significant as they provide new understanding of the molecular pathways that are involved in muscle differentiation and may play a role in the development and progression of muscular dystrophies in this patient."""
 
 result = hgnc_pipeline.fullAnnotate(text)
 
@@ -50,7 +50,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val hgnc_pipeline = PretrainedPipeline("hgnc_resolver_pipeline", "en", "clinical/models")
 
-val text = """Recent studies have suggested a potential link between the DUX4 like 20 (pseudogene), also known as DUX4L20 and FBXO48."""
+val text = """During today's consultation, we reviewed the results of the comprehensive genetic analysis performed on the patient. This analysis uncovered complex interactions between several genes: DUX4, DUX4L20, FBXO48, MYOD1, and PAX7. These findings are significant as they provide new understanding of the molecular pathways that are involved in muscle differentiation and may play a role in the development and progression of muscular dystrophies in this patient."""
 
 val result = hgnc_pipeline.fullAnnotate(text)
 
@@ -64,11 +64,12 @@ val result = hgnc_pipeline.fullAnnotate(text)
 +-------+-----+---+----------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
 | chunks|begin|end|      code|                                         all_codes|                                       resolutions|                                     all_distances|
 +-------+-----+---+----------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
-|   DUX4|   59| 62|HGNC:50800|[HGNC:50800, HGNC:3070, HGNC:32183, HGNC:38686,...|[DUX4 [double homeobox 4], DUSP4 [dual specific...|[0.0000, 0.0210, 0.0221, 0.0239, 0.0276, 0.0302...|
-|DUX4L20|  100|106|HGNC:50801|[HGNC:50801, HGNC:39776, HGNC:31982, HGNC:26230...|[DUX4L20 [double homeobox 4 like 20 (pseudogene...|[0.0000, 0.0696, 0.0698, 0.0744, 0.0756, 0.0767...|
-| FBXO48|  112|117|HGNC:33857|[HGNC:33857, HGNC:4930, HGNC:16653, HGNC:13114,...|[FBXO48 [F-box protein 48], ZBTB48 [zinc finger...|[0.0000, 0.0495, 0.0503, 0.0510, 0.0601, 0.0593...|
+|   DUX4|  185|188|HGNC:50800|[HGNC:50800, HGNC:3070, HGNC:32183, HGNC:38686,...|[DUX4 [double homeobox 4], DUSP4 [dual specific...|[0.0000, 0.0210, 0.0221, 0.0239, 0.0276, 0.0302...|
+|DUX4L20|  191|197|HGNC:50801|[HGNC:50801, HGNC:39776, HGNC:31982, HGNC:26230...|[DUX4L20 [double homeobox 4 like 20 (pseudogene...|[0.0000, 0.0696, 0.0698, 0.0744, 0.0756, 0.0767...|
+| FBXO48|  200|205|HGNC:33857|[HGNC:33857, HGNC:4930, HGNC:16653, HGNC:13114,...|[FBXO48 [F-box protein 48], ZBTB48 [zinc finger...|[0.0000, 0.0495, 0.0503, 0.0510, 0.0601, 0.0593...|
+|  MYOD1|  208|212| HGNC:7611|[HGNC:7611, HGNC:13879, HGNC:7613, HGNC:7582, H...|[MYOD1 [myogenic differentiation 1], MYO1H [myo...|[0.0000, 0.0614, 0.0634, 0.0634, 0.0696, 0.0709...|
+|   PAX7|  219|222| HGNC:8621|[HGNC:8621, HGNC:8748, HGNC:9351, HGNC:8792, HG...|[PAX7 [paired box 7], PCSK7 [proprotein convert...|[0.0000, 0.1042, 0.1036, 0.1046, 0.1056, 0.1053...|
 +-------+-----+---+----------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
-
 
 ```
 
