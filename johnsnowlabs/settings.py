@@ -58,6 +58,7 @@ else:
 license_dir = os.path.join(root_dir, "licenses")
 java_dir = os.path.join(root_dir, "java_installs")
 py_dir = os.path.join(root_dir, "py_installs")
+tmp = os.path.join(root_dir, "tmp")
 
 # Info Files
 root_info_file = os.path.join(root_dir, "info.json")
