@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps Procedure and Measurements entities to their corresponding SNOMED codes using sbiobert_base_cased_mli Sentence Bert Embeddings
+This model maps `Procedure` and measurement (`Test`) entities to their corresponding SNOMED codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
 
 ## Predicted Entities
 
@@ -42,7 +42,7 @@ document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
 
@@ -201,4 +201,4 @@ val result = nlpPipeline.fit(data).transform(data)
 
 ## References
 
-Trained on SNOMED code dataset with sbiobert_base_cased_mli sentence embeddings.
+This model is trained with the augmented version of NIH September 2023 SNOMED CT United States (US) Edition.
