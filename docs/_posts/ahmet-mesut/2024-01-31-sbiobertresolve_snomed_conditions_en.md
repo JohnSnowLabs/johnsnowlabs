@@ -36,6 +36,7 @@ This model maps clinical conditions to their corresponding SNOMED (domain: Condi
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
