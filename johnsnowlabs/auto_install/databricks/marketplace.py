@@ -146,7 +146,7 @@ def render_ui():
     from johnsnowlabs.auto_install.databricks.marketplace_offering import models_df
 
     dbutils.widgets.removeAll()
-    dbutils.widgets.text("JSL-JSON-License", "")
+    dbutils.widgets.text("JSL-License", "")
     dbutils.widgets.text("Databricks access token", "")
     dbutils.widgets.text("Databricks host", "")
     make_model_select_drop_down(models_df)
@@ -166,7 +166,7 @@ def get_hardware_target():
 
 
 def get_jsl_license():
-    return dbutils.widgets.get("JSL-JSON-License")
+    return dbutils.widgets.get("JSL-License")
 
 
 def deploy(deployed_endpoint_name=None, jsl_model_id=None):
@@ -178,6 +178,8 @@ def deploy(deployed_endpoint_name=None, jsl_model_id=None):
     os.environ["DATABRICKS_TOKEN"] = db_token
     hardware_target = get_hardware_target()
     jsl_license = get_jsl_license()
+
+    jsl_license = json.dumps({"SPARK_NLP_LICENSE": jsl_license})
     if not jsl_model_id:
         model_data = get_selected_widget_model_metadata(models_df)
     else:
