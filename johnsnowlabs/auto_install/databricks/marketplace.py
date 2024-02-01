@@ -68,7 +68,6 @@ def create_endpoint(
         headers=get_headers(db_token),
     )
     response_json = response.json()
-    print(response.json())
     if (
         "error_code" in response_json
         and response_json["error_code"] == "RESOURCE_DOES_NOT_EXIST"
@@ -99,20 +98,31 @@ def create_endpoint(
 import os
 
 from johnsnowlabs.auto_install.databricks.endpoints import (
-    create_secret_in_scope,
     setup_secrets,
 )
 
 
 def make_model_select_drop_down(models_df):
-    models = models_df.NluRef.values.tolist()
+    def extract_number(s):
+        import re
+
+        # Use regular expression to extract the numeric part
+        match = re.search(r"\d+", s)
+        return int(match.group()) if match else 0
+
+    models = sorted(models_df.DropDownId.values.tolist(), key=extract_number)
     first_model = models[0]
     dbutils.widgets.dropdown("The model", first_model, models)
 
 
-def get_selected_model_metadata(models_df):
+def get_selected_widget_model_metadata(models_df):
     selected_model = dbutils.widgets.get("The model")
-    model_data = models_df[models_df.NluRef == selected_model]
+    model_data = models_df[models_df.DropDownId == selected_model]
+    return model_data
+
+
+def get_model_metadta(models_df, selected_model):
+    model_data = models_df[models_df.DropDownId == selected_model]
     return model_data
 
 
@@ -132,20 +142,15 @@ def query_endpoint(data, endpoint_name, db_host, db_token, base_name=None):
     return pd.DataFrame(json.loads(response.json()["predictions"]))
 
 
-def render_ui(models_df=None):
-    if models_df is None:
-        from johnsnowlabs.auto_install.databricks.marketplace_offering import models_df
+def render_ui():
+    from johnsnowlabs.auto_install.databricks.marketplace_offering import models_df
+
     dbutils.widgets.removeAll()
-    dbutils.widgets.text("JSL-JSON-License", "")
+    dbutils.widgets.text("JSL-License", "")
     dbutils.widgets.text("Databricks access token", "")
     dbutils.widgets.text("Databricks host", "")
-    # dbutils.widgets.text("Model to deploy", "")
     make_model_select_drop_down(models_df)
     dbutils.widgets.dropdown("hardware_target", "CPU", ["CPU", "GPU"])
-
-    # avaiable_models = get_all_mm_models()
-    # first_model = list(avaiable_models.keys())[0]
-    # dbutils.widgets.dropdown("Model to Deploy", first_model,avaiable_models)
 
 
 def get_db_token():
@@ -156,29 +161,30 @@ def get_db_host():
     return dbutils.widgets.get("Databricks host")
 
 
-# def get_model():return dbutils.widgets.get('Model to deploy')
 def get_hardware_target():
     return dbutils.widgets.get("hardware_target")
 
 
 def get_jsl_license():
-    return dbutils.widgets.get("JSL-JSON-License")
+    return dbutils.widgets.get("JSL-License")
 
 
-def deploy(deployed_endpoint_name=None, models_df=None):
-    if models_df is None:
-        from johnsnowlabs.auto_install.databricks.marketplace_offering import models_df
-    path_prefix = "john_snow_labs.test_models_v3"
+def deploy(deployed_endpoint_name=None, jsl_model_id=None):
+    from johnsnowlabs.auto_install.databricks.marketplace_offering import models_df
 
-    # models = get_all_mm_models()
     db_token = get_db_token()
     db_host = get_db_host()
     os.environ["DATABRICKS_HOST"] = db_host
     os.environ["DATABRICKS_TOKEN"] = db_token
     hardware_target = get_hardware_target()
     jsl_license = get_jsl_license()
-    # model_name = get_model()
-    model_data = get_selected_model_metadata(models_df)
+
+    jsl_license = json.dumps({"SPARK_NLP_LICENSE": jsl_license})
+    if not jsl_model_id:
+        model_data = get_selected_widget_model_metadata(models_df)
+    else:
+        model_data = get_model_metadta(models_df, jsl_model_id)
+
     model_path = (
         model_data.CpuModelPath.values[0]
         if hardware_target == "CPU"
@@ -215,7 +221,7 @@ def deploy(deployed_endpoint_name=None, models_df=None):
     )
 
     if endpoint_success == "RESOURCE_DOES_NOT_EXIST":
-        listing_id = model_data.PrivateListingId.values[0]
+        listing_id = model_data.ListingId.values[0]
         try:
             displayHTML(
                 f"""Could not import the model. <a href="marketplace/consumer/listings/{listing_id}" target="_blank">Please click this link and click on "get instant access" in the top right</a> """
