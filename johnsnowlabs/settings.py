@@ -11,11 +11,11 @@ from johnsnowlabs.utils.env_utils import (
 # These versions are used for auto-installs and version  checks
 
 
-raw_version_jsl_lib = "5.2.2"
+raw_version_jsl_lib = "5.2.3"
 
 raw_version_nlp = "5.2.2"
 
-raw_version_nlu = "5.1.3"
+raw_version_nlu = "5.1.4"
 
 
 raw_version_pyspark = "3.1.2"
@@ -58,6 +58,7 @@ else:
 license_dir = os.path.join(root_dir, "licenses")
 java_dir = os.path.join(root_dir, "java_installs")
 py_dir = os.path.join(root_dir, "py_installs")
+tmp = os.path.join(root_dir, "tmp")
 
 # Info Files
 root_info_file = os.path.join(root_dir, "info.json")
