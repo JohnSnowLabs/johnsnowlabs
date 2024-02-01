@@ -2560,17 +2560,17 @@ a.btn1 {
 /***NLP Products***/
 
 .nlp_content {
-	background: url('../../assets/images/nlp_product_bg.jpg') 0 0 no-repeat;
+	background: url('../../assets/images/nlp_bg.jpg') 0 0 no-repeat;
 	background-size: cover;
 	h1 {
 		color: #fff;
-		margin: 80px 0 61px;
+		margin: 80px 0 46px;
 		padding: 0 15px;
 	}
 }
 
 .nlp_content_inner {
-	width: 950px;
+	width: 980px;
 	margin: 0 auto;
 	display: flex;
 	padding: 0 15px;
@@ -2579,18 +2579,22 @@ a.btn1 {
 }
 
 .nlp_content_col {
-	width: 300px;
+	width: 304px;
 	display: flex;
 	flex: 0 0 auto;
+	background: rgba(255, 255, 255, 0.15);
 	flex-wrap: wrap;
+	border-radius: 10px;
 }
 
 .nlp_content_item {
 	display: flex;
 	width: 100%;
 	background: #fff;
-	height: 237px;
+	height: 225px;
 	font-size: 22px;
+	border-radius: 10px;
+	border: 1px solid #eee;
 	line-height: 26px;
 	align-items: center;
 	flex: 0 0 auto;
@@ -2600,25 +2604,29 @@ a.btn1 {
 	color: #1e77b7 !important;
 	&:hover p {
 		color: #ff8a00 !important;
-	}	
+	}
+	&:last-child {
+		margin: 0;
+	}
 }
 
 .nlp_content_title {
-	background: #69a5d4;
 	font-size: 20px;
-	font-style: normal;
+	font-style: normal;	
 	color: #fff;
 	font-weight: 600;
 	line-height: 55px;
 	justify-content: center;
 	border-radius: 5px 5px 0 0;
 	width: 100%;
+	padding: 5px 0;
 }
 
 .nlp_c {
 	text-align: center;
 	figure {
 		display: inline-block;
+		margin: 0px 0 13px;
 	}
 }
 
@@ -4496,6 +4504,7 @@ code {
 	}
 	.nlp_content_col {
 		width: 100%;
+		margin-bottom: 25px;
 	}
 	.model-wrap .btn-box .button {
 		min-width: 170px;
