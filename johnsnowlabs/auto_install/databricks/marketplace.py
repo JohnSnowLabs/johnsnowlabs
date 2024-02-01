@@ -173,6 +173,8 @@ def deploy(deployed_endpoint_name=None, models_df=None):
     # models = get_all_mm_models()
     db_token = get_db_token()
     db_host = get_db_host()
+    if db_host.endswith("/"):
+        db_host = db_host[:-1]
     os.environ["DATABRICKS_HOST"] = db_host
     os.environ["DATABRICKS_TOKEN"] = db_token
     hardware_target = get_hardware_target()
