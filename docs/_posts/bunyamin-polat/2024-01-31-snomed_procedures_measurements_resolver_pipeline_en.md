@@ -41,10 +41,10 @@ ner_pipeline = PretrainedPipeline("snomed_procedures_measurements_resolver_pipel
 
 result = ner_pipeline.annotate("""Based on the severity of her abdominal examination and the persistence of her symptoms,
             it has been determined that she requires a laparoscopic jejunectomy, possible appendectomy, and
-            cholecystectomy. Laboratory values indicate a white blood cell count of 15.3,
+            cholecystectomy.Laboratory values indicate a white blood cell count of 15.3,
             hemoglobin level of 12.8, and normal platelet count. Alkaline phosphatase is elevated at 184,
             while liver function tests are otherwise normal. Electrolyte levels are within the normal range.
-            Glucose levels are at 134, and creatinine is 0.7.""")
+            Glucose levels are at 134, BUN is 4, and creatinine is 0.7.""")
 
 ```
 ```scala
@@ -55,10 +55,10 @@ val ner_pipeline = PretrainedPipeline("snomed_procedures_measurements_resolver_p
 
 val result = ner_pipeline.annotate("""Based on the severity of her abdominal examination and the persistence of her symptoms,
             it has been determined that she requires a laparoscopic jejunectomy, possible appendectomy, and
-            cholecystectomy. Laboratory values indicate a white blood cell count of 15.3,
+            cholecystectomy.Laboratory values indicate a white blood cell count of 15.3,
             hemoglobin level of 12.8, and normal platelet count. Alkaline phosphatase is elevated at 184,
             while liver function tests are otherwise normal. Electrolyte levels are within the normal range.
-            Glucose levels are at 134, and creatinine is 0.7.""")
+            Glucose levels are at 134, BUN is 4, and creatinine is 0.7.""")
 
 ```
 </div>
