@@ -1,17 +1,13 @@
 import subprocess
 import sys
 from pathlib import Path
-from typing import List, Callable
+from typing import Callable, List
 
 import colorama
 import pandas as pd
 
 import johnsnowlabs.utils.testing.test_settings
 from johnsnowlabs.utils.file_utils import str_to_file
-
-Path(johnsnowlabs.utils.testing.test_settings.tmp_markdown_dir).mkdir(
-    exist_ok=True, parents=True
-)
 
 
 def run_cmd_and_check_succ(

@@ -18,9 +18,6 @@ RUN apt-get update && apt-get install -y \
 
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# Add Tini
-ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini /usr/local/bin/tini
-RUN chmod +x /usr/local/bin/tini
 
 # Setup folders
 RUN mkdir /app
@@ -35,6 +32,7 @@ RUN python3 /app/installer.py
 # Setup Fast-API app
 WORKDIR /app
 COPY app.py /app/app.py
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "80"]
-ENTRYPOINT ["/usr/local/bin/tini", "--"]
+COPY serve /opt/program/serve
+RUN chmod 755 /opt/program/serve
+ENV PATH=/opt/program:${PATH}
 
