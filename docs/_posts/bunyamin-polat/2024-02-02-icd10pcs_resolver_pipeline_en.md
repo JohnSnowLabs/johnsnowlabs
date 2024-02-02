@@ -32,6 +32,7 @@ This pipeline extracts `Procedure` entities from clinical texts and map them to 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
