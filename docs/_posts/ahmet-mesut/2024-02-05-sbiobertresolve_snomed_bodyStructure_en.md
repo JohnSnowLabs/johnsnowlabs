@@ -61,8 +61,7 @@ ner_jsl = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models") \
 ner_jsl_converter = NerConverterInternal() \
     .setInputCols(["sentence", "token", "ner_jsl"]) \
     .setOutputCol("ner_jsl_chunk")\
-    .setWhiteList(["External_body_part_or_region"])\
-    .setReplaceLabels({"External_body_part_or_region": "BodyPart"})
+    .setWhiteList(["External_body_part_or_region","Internal_organ_or_component"])
 
 ner_anatomy = MedicalNerModel.pretrained("ner_anatomy_coarse", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
@@ -71,7 +70,6 @@ ner_anatomy = MedicalNerModel.pretrained("ner_anatomy_coarse", "en", "clinical/m
 ner_anatomy_converter = NerConverterInternal() \
     .setInputCols(["sentence", "token", "ner_anatomy"]) \
     .setOutputCol("ner_anatomy_chunk")\
-    .setReplaceLabels({"Anatomy": "BodyPart"})
 
 ner_oncology_anatomy = MedicalNerModel.pretrained("ner_oncology_anatomy_general", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
@@ -79,8 +77,7 @@ ner_oncology_anatomy = MedicalNerModel.pretrained("ner_oncology_anatomy_general"
 
 ner_oncology_anatomy_converter = NerConverterInternal() \
     .setInputCols(["sentence", "token", "ner_oncology_anatomy"]) \
-    .setOutputCol("ner_oncology_anatomy_chunk")\
-    .setReplaceLabels({"Anatomical_Site": "BodyPart"})
+    .setOutputCol("ner_oncology_anatomy_chunk")
 
 chunk_merger = ChunkMergeApproach() \
     .setInputCols("ner_jsl_chunk", "ner_anatomy_chunk", "ner_oncology_anatomy_chunk") \
@@ -146,8 +143,7 @@ val ner_jsl = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")
 val ner_jsl_converter = new NerConverter()
     .setInputCols(Array("sentence","token","ner"))
     .setOutputCol("ner_jsl_chunk")
-    .setWhiteList(Array("External_body_part_or_region"))
-    .setReplaceLabels({"Anatomical_Site": "BodyPart"})
+    .setWhiteList(Array("External_body_part_or_region","Internal_organ_or_component"))
 
 val ner_anatomy = MedicalNerModel.pretrained("ner_anatomy_coarse", "en", "clinical/models")
     .setInputCols(Array("sentence","token","embeddings"))
@@ -156,7 +152,6 @@ val ner_anatomy = MedicalNerModel.pretrained("ner_anatomy_coarse", "en", "clinic
 val ner_anatomy_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner_anatomy"))
     .setOutputCol("ner_anatomy_chunk")
-    .setReplaceLabels(Map{"Anatomy" -> "BodyPart"})
 
 val ner_oncology_anatomy = MedicalNerModel.pretrained("ner_oncology_anatomy_general", "en", "clinical/models")
     .setInputCols(Array("sentence","token","embeddings"))
@@ -166,7 +161,6 @@ val ner_oncology_anatomy_converter = new NerConverter()
     .setInputCols(Array("sentence","token","ner_oncology_anatomy"))
     .setOutputCol("ner_oncology_anatomy_chunk")
     .setWhiteList(Array("Anatomical_Site"))
-    .setReplaceLabels(Map{"Anatomical_Site" -> "BodyPart"})
 
 val chunk_merger = ChunkMergeApproach() \
     .setInputCols("ner_jsl_chunk", "ner_anatomy_chunk", "ner_oncology_anatomy_chunk")
@@ -216,14 +210,14 @@ val result = model.transform(data)
 ## Results
 
 ```bash
-+-------------------+--------+-----------+--------------------------+--------------------------------------------------+--------------------------------------------------+
-|              chunk|   label|snomed_code|                resolution|                                         all_codes|                                   all_resolutions|
-+-------------------+--------+-----------+--------------------------+--------------------------------------------------+--------------------------------------------------+
-|    coronary artery|BodyPart|   41801008|           coronary artery|41801008:::119204004:::360487004:::55537005:::1...|coronary artery:::coronary artery part:::segmen...|
-|              renal|BodyPart|   64033007|           renal structure|64033007:::84924000:::303402001:::58471003:::28...|renal structure:::renal segment:::renal vessels...|
-|peripheral vascular|BodyPart|   51833009|peripheral vascular system|51833009:::840581000:::3058005:::300054001:::28...|peripheral vascular system:::peripheral artery:...|
-|  lower extremities|BodyPart|   61685007|           lower extremity|61685007:::127951001:::120575009:::119260005:::...|lower extremity:::lower extremity region:::lowe...|
-+-------------------+--------+-----------+--------------------------+--------------------------------------------------+--------------------------------------------------+
++-------------------+----------------------------+-----------+--------------------------+--------------------------------------------------+--------------------------------------------------+
+|              chunk|                       label|snomed_code|                resolution|                                         all_codes|                                   all_resolutions|
++-------------------+----------------------------+-----------+--------------------------+--------------------------------------------------+--------------------------------------------------+
+|    coronary artery|                     Anatomy|   41801008|           coronary artery|41801008:::119204004:::360487004:::55537005:::1...|coronary artery:::coronary artery part:::segmen...|
+|              renal|                     Anatomy|   64033007|           renal structure|64033007:::84924000:::303402001:::58471003:::28...|renal structure:::renal segment:::renal vessels...|
+|peripheral vascular|                     Anatomy|   51833009|peripheral vascular system|51833009:::840581000:::3058005:::300054001:::28...|peripheral vascular system:::peripheral artery:...|
+|  lower extremities|External_body_part_or_region|   61685007|           lower extremity|61685007:::127951001:::120575009:::119260005:::...|lower extremity:::lower extremity region:::lowe...|
++-------------------+----------------------------+-----------+--------------------------+--------------------------------------------------+--------------------------------------------------+
 ```
 
 {:.model-param}
