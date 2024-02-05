@@ -36,6 +36,7 @@ This model maps detected drug entities to SNOMED codes using `sbiobert_base_case
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
   .setInputCol("text")\
@@ -88,7 +89,7 @@ snomed_pipeline = Pipeline(stages = [
 ])
 
 
-data = spark.createDataFrame([["""The patient is a 30-year-old female with a long history of insulin-dependent diabetes, type 2; coronary artery disease; chronic renal insufficiency; peripheral vascular disease, also secondary to diabetes; who was originally admitted to an outside hospital for what appeared to be acute paraplegia, lower extremities. She did receive a course of Bactrim for 14 days for UTI."""]]).toDF("text")
+data = spark.createDataFrame([["""She is given Enoxaparin 4000 units subcutaneously daily, folic acid 1 mg daily, levothyroxine 0.1 mg p.o. daily, aspirin 81 mg daily, Haloperidol 150 mg p.o. t.i.d., magnesium citrate 1 bottle p.o. p.r.n., sliding scale coverage insulin."""]]).toDF("text")
 
 model = snomed_pipeline.fit(data)
 result = model.transform(data)
