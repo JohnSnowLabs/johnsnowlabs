@@ -39,15 +39,14 @@ This pretrained pipeline is built on the top of `mesh_umls_mapper` model.
 from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("mesh_umls_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(C028491 D019326 C579867)
+result = pipeline.fullAnnotate(["C028491", "D019326", "C579867"])
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val pipeline = new PretrainedPipeline("mesh_umls_mapping", "en", "clinical/models")
 
-val result = pipeline.fullAnnotate(C028491 D019326 C579867)
+val result = pipeline.fullAnnotate(["C028491", "D019326", "C579867"])
 ```
 
 
@@ -64,9 +63,11 @@ nlu.load("en.mesh.umls.mapping").predict("""Put your text here.""")
 ## Results
 
 ```bash
-|    | mesh_code                   | umls_code                      |
-|---:|:----------------------------|:-------------------------------|
-|  0 | C028491 | D019326 | C579867 | C0043904 | C0045010 | C3696376 |
+|   | mesh_code | umls_code |
+|--:|----------:|----------:|
+| 0 |   C028491 |  C0043904 |
+| 1 |   D019326 |  C0045010 |
+| 2 |   C579867 |  C3696376 |
 ```
 
 {:.model-param}

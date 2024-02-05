@@ -39,15 +39,14 @@ This pretrained pipeline maps entities (Diseases and Syndromes) with their corre
 from sparknlp.pretrained import PretrainedPipeline
 
 pipeline= PretrainedPipeline("umls_disease_syndrome_resolver_pipeline", "en", "clinical/models")
-pipeline.annotate("A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria")
-
+text = "A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria."
+result = pipeline.annotate(text)
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val pipeline= PretrainedPipeline("umls_disease_syndrome_resolver_pipeline", "en", "clinical/models")
-val pipeline.annotate("A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria")
-
+val pipeline = PretrainedPipeline("umls_disease_syndrome_resolver_pipeline", "en", "clinical/models")
+val result = pipeline.annotate("A 34-year-old female with a history of poor appetite, gestational diabetes mellitus, acyclovir allergy and polyuria")
 ```
 
 
