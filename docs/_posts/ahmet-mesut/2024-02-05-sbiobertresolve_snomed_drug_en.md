@@ -134,15 +134,15 @@ val snomed_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_sn
     .setOutputCol("snomed_code")
     
 val snomed_pipeline = new Pipeline().setStages(Array( 
-         document_assembler, 
-         sentence_detector, 
-         tokenizer, 
-         word_embeddings, 
-         ner_posology, 
-         ner_posology_converter, 
-         chunk2doc, 
-         sbert_embeddings, 
-         snomed_resolver ))
+     document_assembler, 
+     sentence_detector, 
+     tokenizer, 
+     word_embeddings, 
+     ner_posology, 
+     ner_posology_converter, 
+     chunk2doc, 
+     sbert_embeddings, 
+     snomed_resolver ))
     
 val data = Seq("""She is given Enoxaparin 4000 units subcutaneously daily, folic acid 1 mg daily,levothyroxine 0.1 mg p.o. daily,aspirin 81 mg daily, Haloperidol 150 mg p.o. t.i.d.,magnesium citrate 1 bottle p.o. p.r.n.,sliding scale coverage insulin.""").toDF("text")
     
