@@ -153,7 +153,7 @@ def run_local_py_script_as_task(
             raise Exception("dst_path must be provided for notebook tasks")
         file_name = os.path.split(task_definition)[-1]
         run_id = submit_notebook_to_databricks(
-            db, task_definition, cluster_id, dst_path, parameters
+            db, task_definition, cluster_id, dst_path, parameters, run_name=run_name
         )
 
     else:
@@ -354,7 +354,12 @@ def run_in_databricks(
 
 
 def submit_notebook_to_databricks(
-    db: DatabricksAPI, local_nb_path, cluster_id, remote_path, parameters=None
+    db: DatabricksAPI,
+    local_nb_path,
+    cluster_id,
+    remote_path,
+    parameters=None,
+    run_name=None,
 ):
     # Instantiate the DatabricksAPI client
     # Read the local notebook content
@@ -382,8 +387,9 @@ def submit_notebook_to_databricks(
         notebook_task["base_parameters"] = parameters
 
     # Submit the job to run the notebook
+    run_name = run_name or f"Notebook Run"
     response = db.jobs.submit_run(
-        run_name="Notebook_Run",
+        run_name=run_name,
         existing_cluster_id=cluster_id,
         notebook_task=notebook_task,
     )
