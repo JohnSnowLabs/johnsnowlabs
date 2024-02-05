@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Sentence Entity Resolver for SNOMED (sbiobertresolve_snomed_bodyStructure)
+title: Sentence Entity Resolver for SNOMED Concepts, Body Structure version (sbiobert_base_cased_mli embeddings)
 author: John Snow Labs
 name: sbiobertresolve_snomed_bodyStructure
 date: 2024-02-05
