@@ -36,6 +36,7 @@ The model maps extracted medical entities to their corresponding Snomed codes (C
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
   .setInputCol("text")\
