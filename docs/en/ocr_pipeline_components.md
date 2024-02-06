@@ -3235,8 +3235,8 @@ others. One could almost say they feed on and grow on ideas.
 | lineTolerance | integer | 15 | Line tolerance in pixels. It's used for grouping text regions by lines. |
 | borderWidth | integer | 5 | A value of more than 0 enables to border text regions with width equal to the value of the parameter. |
 | spaceWidth | integer | 10 | A value of more than 0 enables to add white spaces between words on the image. |
-| limitMultiplier | float | 1.5 | Used to control the length of the final output text ,a higher value will result in longer text sequence if available. Defaults to 1.5 |
-| maxImageRatio | float | 11.25 | Value for the width/height ratio of images that are fed to the model. Large values reduce inference time, but may cause the model to diverge. Defaults to 11.25. |
+| limitMultiplier | float | 1.5 | Used to control the length of the final output text ,a higher value will result in longer text sequence if available. |
+| maxImageRatio | float | 11.25 | Value for the width/height ratio of images that are fed to the model. Large values reduce inference time, but may cause the model to diverge. |
 | groupImages | boolean | True | Whether to group images to maximize detection quality or not. |
 | batchSize | integer | 3 | Number of text patches to feed the model at the same time. |
 | taskParallelism | integer | 8 | How many threads to use when processing a single region. |
