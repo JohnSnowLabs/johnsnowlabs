@@ -3211,6 +3211,8 @@ others. One could almost say they feed on and grow on ideas.
 
 `ImageToTextV2` can work on CPU, but GPU is preferred in order to achieve acceptable performance.
 
+`ImageToTextV2` can be used with caching enabled.
+
 `ImageToTextV2` can receive regions representing single line texts, or regions coming from a text detection model.
 
 </div><div class="h3-box" markdown="1">
@@ -3221,6 +3223,7 @@ others. One could almost say they feed on and grow on ideas.
 | Param name | Type | Default | Column Data Description |
 | --- | --- | --- | --- |
 | inputCols | Array[string] | [image] | Can use as input image struct ([Image schema](ocr_structures#image-schema))  and regions. |
+| regionsColumn | string | regions | Input column containing regions to be processed. |
 
 </div><div class="h3-box" markdown="1">
 
@@ -3232,6 +3235,14 @@ others. One could almost say they feed on and grow on ideas.
 | lineTolerance | integer | 15 | Line tolerance in pixels. It's used for grouping text regions by lines. |
 | borderWidth | integer | 5 | A value of more than 0 enables to border text regions with width equal to the value of the parameter. |
 | spaceWidth | integer | 10 | A value of more than 0 enables to add white spaces between words on the image. |
+| limitMultiplier | float | 1.5 | Used to control the length of the final output text ,a higher value will result in longer text sequence if available. Defaults to 1.5 |
+| maxImageRatio | float | 11.25 | Value for the width/height ratio of images that are fed to the model. Large values reduce inference time, but may cause the model to diverge. Defaults to 11.25. |
+| groupImages | boolean | True | Whether to group images to maximize detection quality or not. |
+| batchSize | integer | 3 | Number of text patches to feed the model at the same time. |
+| taskParallelism | integer | 8 | How many threads to use when processing a single region. |
+| useGPU | boolean | False | Enable to use GPU. |
+| useCaching | boolean | True | Enable to use caching. |
+| keepInput | boolean | True | Enable to preserve input column. |
 
 </div><div class="h3-box" markdown="1">
 
@@ -3240,7 +3251,9 @@ others. One could almost say they feed on and grow on ideas.
 {:.table-model-big}
 | Param name | Type | Default | Column Data Description |
 | --- | --- | --- | --- |
-| outputCol | string | text | Recognized text |
+| outputCol | string | text | Recognized text. |
+| positionsCol | string | positions | Position Col. |
+| outputFormat | Enum | OcrOutputFormat.TEXT | Return output type. |
 
 **Example:**
 
@@ -3251,6 +3264,7 @@ others. One could almost say they feed on and grow on ideas.
 ```python
 from pyspark.ml import PipelineModel
 from sparkocr.transformers import *
+from sparkocr.enums import *
 
 imagePath = "path to image"
 
@@ -3271,7 +3285,11 @@ text_detector = ImageTextDetectorV2 \
     .setSizeThreshold(20)
 
 ocr = ImageToTextV2.pretrained("ocr_base_printed", "en", "clinical/ocr") \
-    .setInputCols(["image", "text_regions"]) \
+    .setInputCols(["image"]) \
+    .setRegionsColumn("text_regions") \
+    .setUseGPU(True) \
+    .setUseCaching(True) \
+    .setOutputFormat(OcrOutputFormat.TEXT) \
     .setOutputCol("text")
 
 # Define pipeline
