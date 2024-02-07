@@ -20,7 +20,7 @@ use_language_switcher: "Python-Scala-Java"
 This model extracts relations between posology-related terminology.
 
 ## Predicted Entities
-`DRUG-DOSAGE`, `DRUG-FREQUENCY`, `DRUG-ADE`, `DRUG-FORM`, `ENDED_BY`, `DRUG-ROUTE`, `DRUG-DURATION`, `DRUG-REASON`, `DRUG-STRENGTH`
+`DRUG-DOSAGE`, `DRUG-FREQUENCY`, `DRUG-ADE`, `DRUG-FORM`, `DRUG-ROUTE`, `DRUG-DURATION`, `DRUG-STRENGTH`
 
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/RE_POSOLOGY/){:.button.button-orange.button-orange-trans.co.button-icon}
@@ -30,8 +30,8 @@ This model extracts relations between posology-related terminology.
 ## How to use
 
 <div class="tabs-box" markdown="1">
-{% include programmingLanguageSelectScalaPython.html %}
-
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\

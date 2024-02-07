@@ -40,7 +40,7 @@ Detect adverse reactions of drugs in reviews, tweets, and medical text using pre
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
-         
+
 sentence_detector = SentenceDetector()\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
@@ -60,51 +60,76 @@ clinical_ner = MedicalNerModel.pretrained("ner_ade_clinical", "en", "clinical/mo
 ner_converter = NerConverter()\
  	  .setInputCols(["sentence", "token", "ner"])\
  	  .setOutputCol("ner_chunk")
-    
-nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, embeddings_clinical, clinical_ner, ner_converter])
+
+nlpPipeline = Pipeline(stages=[document_assembler,
+                               sentence_detector,
+                               tokenizer,
+                               embeddings_clinical,
+                               clinical_ner,
+                               ner_converter])
 
 model = nlpPipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
 
-results = model.transform(spark.createDataFrame([["EXAMPLE_TEXT"]]).toDF("text"))
+result = model.transform(spark.createDataFrame([["Hypersensitivity to aspirin can be manifested as acute asthma, urticaria and/or angioedema, or a systemic anaphylactoid reaction."]]).toDF("text"))
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
-    .setInputCol("text")
-    .setOutputCol("document")
-         
+	.setInputCol("text")
+	.setOutputCol("document")
+	
 val sentence_detector = new SentenceDetector()
-    .setInputCols("document")
-    .setOutputCol("sentence")
-
+	.setInputCols(Array("document"))
+	.setOutputCol("sentence")
+	
 val tokenizer = new Tokenizer()
-    .setInputCols("sentence")
-    .setOutputCol("token")
-
-val embeddings_clinical = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-    .setInputCols(Array("sentence", "token"))
-    .setOutputCol("embeddings")
-
-val ner = MedicalNerModel.pretrained("ner_ade_clinical", "en", "clinical/models")
-    .setInputCols(Array("sentence", "token", "embeddings"))
-    .setOutputCol("ner")
-
+	.setInputCols(Array("sentence"))
+	.setOutputCol("token")
+	
+val embeddings_clinical = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")
+	.setInputCols(Array("sentence","token"))
+	.setOutputCol("embeddings")
+	
+val clinical_ner = MedicalNerModel.pretrained("ner_ade_clinical","en","clinical/models")
+	.setInputCols(Array("sentence","token","embeddings"))
+	.setOutputCol("ner")
+	
 val ner_converter = new NerConverter()
- 	.setInputCols(Array("sentence", "token", "ner"))
- 	.setOutputCol("ner_chunk")
-
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, embeddings_clinical, ner, ner_converter))
-
-val result = pipeline.fit(data).transform(data)
+	.setInputCols(Array("sentence","token","ner"))
+	.setOutputCol("ner_chunk")
+	
+val nlpPipeline = new Pipeline().setStages(Array(
+		 document_assembler, 
+		 sentence_detector, 
+		 tokenizer, 
+		 embeddings_clinical, 
+		 clinical_ner, 
+		 ner_converter))
+	
+val model = nlpPipeline.fit(Seq("").toDF("text"))
+	
+val result = model.transform(Seq("Hypersensitivity to aspirin can be manifested as acute asthma, urticaria and/or angioedema, or a systemic anaphylactoid reaction.").toDF("text"))
 ```
 
 
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.med_ner.ade.clinical").predict("""Put your text here.""")
+nlu.load("en.med_ner.ade.clinical").predict("""Hypersensitivity to aspirin can be manifested as acute asthma, urticaria and/or angioedema, or a systemic anaphylactoid reaction.""")
 ```
 
-</div>
+## Results
+
+```bash
++-------------------------------+-----+---+---------+
+|                          chunk|begin|end|ner_label|
++-------------------------------+-----+---+---------+
+|                        aspirin|   20| 26|     DRUG|
+|                   acute asthma|   49| 60|      ADE|
+|                      urticaria|   63| 71|      ADE|
+|                     angioedema|   80| 89|      ADE|
+|systemic anaphylactoid reaction|   97|127|      ADE|
++-------------------------------+-----+---+---------+
+```
 
 {:.model-param}
 ## Model Information
