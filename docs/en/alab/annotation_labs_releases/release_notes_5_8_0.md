@@ -86,7 +86,7 @@ This new gesture enables users to annotate a text chunk with a single click, fol
 
 To further enhance user experience, assertion labels in the label selection widget are now decorated with a dotted line, effectively distinguishing them from NER labels and preventing any potential confusion. This visual indication reinforces the distinction between assertion labels and NER labels, allowing users to make informed choices seamlessly.
 
-![1](/assets/images/annotation_lab/5.8.0/6.jpeg)
+![1](/assets/images/annotation_lab/5.8.0/5.gif)
 
 #### Model Evaluation servers are now queued
 A refinement has been implemented in version 5.8, whereby the Test Configuration for Model Evaluation is queued when there are insufficient resources. Users now can abort the test configuration (evaluation) if triggered unintentionally. Furthermore, a pop-up is presented to guide users in deleting an existing server when the maximum server count is reached.
