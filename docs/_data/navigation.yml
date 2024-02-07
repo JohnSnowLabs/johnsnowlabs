@@ -71,8 +71,17 @@ sparknlp:
 healthcare-gpt:
   - title: Healthcare GPT
     children:
-      - title: Healthcare GPT
-        url: /docs/en/healthcare_gpt
+      - title: Home
+        url: /docs/en/chatbot/healthcare_gpt
+      - title: Getting Started
+        url: /docs/en/chatbot/getting_started
+      - title: Features
+        url: /docs/en/chatbot/features
+      - title: Usage Guides
+        url: /docs/en/chatbot/usage_guides
+      - title: Support
+        url: /docs/en/chatbot/support
+      
 
 annotation-lab:
   - title: NLP Lab
