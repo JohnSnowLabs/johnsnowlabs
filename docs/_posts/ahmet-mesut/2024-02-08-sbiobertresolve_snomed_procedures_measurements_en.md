@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps Procedure and Measurements (Tests) to their corresponding SNOMED codes using sbiobert_base_cased_mli Sentence Bert Embeddings
+This model maps Procedure and Measurements (Tests) to their corresponding SNOMED codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
 
 ## Predicted Entities
 
