@@ -32,6 +32,7 @@ This pipeline can be used to detect the PHI information from medical texts and o
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
