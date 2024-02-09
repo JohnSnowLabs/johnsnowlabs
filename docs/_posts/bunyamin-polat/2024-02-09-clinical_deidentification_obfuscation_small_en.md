@@ -67,15 +67,13 @@ Phone 302-786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.""
 ## Results
 
 ```bash
-
-    Obfuscated
-    ------------------------------
-    Name : Maralyn Sago, Record date: 2093-01-31, MR 161096.
-    Dr. Darin Engels, ID: 9811914782, IP 003.003.003.003.
-    He is a 74-year-old male was admitted to the SCOTT COUNTY MEMORIAL HOSPITAL AKA SCOTT MEMORIAL for cystectomy on 01/04/1994.
-    SSN #956-21-3086, Driver's license no: V784696E.
-    Phone 952-841-3244, 11130 Parkview Circle Dr, Chesapeake, E-MAIL: Davie@yahoo.com.
-
+Obfuscated
+------------------------------
+Name : Maralyn Sago, Record date: 2093-01-31, MR 161096.
+Dr. Darin Engels, ID: 9811914782, IP 003.003.003.003.
+He is a 74-year-old male was admitted to the SCOTT COUNTY MEMORIAL HOSPITAL AKA SCOTT MEMORIAL for cystectomy on 01/04/1994.
+SSN #956-21-3086, Driver's license no: V784696E.
+Phone 952-841-3244, 11130 Parkview Circle Dr, Chesapeake, E-MAIL: Davie@yahoo.com.
 ```
 
 {:.model-param}
