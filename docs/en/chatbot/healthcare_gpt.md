@@ -10,9 +10,9 @@ show_nav: true
 sidebar:
     nav: healthcare-gpt
 ---
-<div class="">
-    <figure><img class="image image--xl" src="/assets/images/chatbot/john.gif" alt="annotation lab"/></figure>
-</div>
+
+
+![Healthcare GPT Start](\assets\images\chatbot\john.gif)
 
 <div class="alab-top-wrapper shadow">
 <div class="block-box-inner" markdown="1">
@@ -33,24 +33,31 @@ Chat with John, a Medical Chatbot powered by John Snow Labs Healthcare GPT that 
 
 <div class="block-box" markdown="1">
 <div class="has_i" markdown="1">
+
 ## Healthcare Specific LLM 
+
 <img class="image image--xl" src="/assets/images/annotation_lab/Productivity.svg" alt="john snow labs annotation lab"/>
 </div>
 
 - Never start from scratch
 - Keep Annotators in the Zone
 - Reach agreement quickly
+
 </div>
 
 <div class="block-box" markdown="1">
 <div class="has_i" markdown="1">
+
 ## Up to Date Knowledge 
+
 <img class="image image--xl" src="/assets/images/annotation_lab/AutoNLP.svg" alt="john snow labs annotation lab"/>
+
 </div>
 
 - Active learning
 - Deliver an accurate model, not just labels
 - Built for High Compliance Enterprise Environments
+
 </div>
 
 </div>
@@ -58,8 +65,11 @@ Chat with John, a Medical Chatbot powered by John Snow Labs Healthcare GPT that 
 <div class="block-wrapper block-wrapper-top">
 <div class="block-box" markdown="1">
 <div class="has_i" markdown="1">
+
 ## Scalable & Customizable 
+
 <img class="image image--xl" src="/assets/images/annotation_lab/Teamwork.svg" alt="john snow labs annotation lab"/>
+
 </div>
 
 - Projects & Teams
@@ -70,7 +80,9 @@ Chat with John, a Medical Chatbot powered by John Snow Labs Healthcare GPT that 
 </div>
 <div class="block-box" markdown="1">
 <div class="has_i" markdown="1">
+
 ## Resources
+
 <img class="image image--xl" src="/assets/images/annotation_lab/best_practices.svg" alt="john snow labs annotation lab"/>
 </div>
 

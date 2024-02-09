@@ -29,7 +29,7 @@ With this chatbot, you can expect a seamless conversational experience, where th
 In the field of healthcare, the precision and source of data hold paramount importance. To address this, our medical chatbot has been engineered to offer more than simple information snippets in response to medical inquiries. It serves as a portal to the underlying research from which its answers are derived. This level of transparency is attained through the chatbot's unique citation feature.
 The chatbot leverages a constantly updated knowledge graph for its responses, sourced from an extensive array of medical texts. Primary knowledge bases like Pubmed and Medrxiv are refreshed daily, ensuring the provision of the latest information to our users. The chatbot's replies are grounded in data from this knowledge graph, referencing peer-reviewed articles, clinical databases, or user-specific custom KBs. This approach guarantees traceability of information and significantly reduces the occurrence of false or misleading information. This functionality not only adds depth and context to the responses but also aligns with the standards of academic research and evidence-based practice.
 
-<iframe class="video_in" src="/assets/images/chatbot/Citations.mp4" width="100%" height="auto"  style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+![The Medical Chatbot leverages advanced algorithms](\assets\images\chatbot\Citations.gif)
 
 Users have the flexibility to direct their questions to specific knowledge bases, enabling access to information tailored to their unique medical specializations or areas of interest.
 Our medical chatbot ensures the explainability of its responses, enhancing user comprehension of the logic underlying its conclusions. Each piece of information is substantiated with citations, offering users the opportunity to further investigate the sources.
@@ -39,7 +39,7 @@ Our medical chatbot ensures the explainability of its responses, enhancing user 
 ## Medical Conversations
 Designed to simulate an interaction with a knowledgeable colleague, the Medical Chatbot facilitates nuanced medical conversations. It understands context and can manage follow-up questions, ensuring that healthcare professionals can engage in detailed dialogues to extract specific information necessary for clinical decisions or research inquiries. Whether discussing symptoms, treatments, or the latest medical research, the chatbot's conversational capabilities make it an effective tool for dynamic and informative exchanges.
 
-<iframe class="video_in" src="/assets/images/chatbot/Citations.mp4" width="100%" height="auto"  style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+![The Medical Chatbot leverages advanced algorithms](\assets\images\chatbot\MedicalConversations.gif)
 
 </div><div class="h3-box" markdown="1">
 
@@ -47,7 +47,7 @@ Designed to simulate an interaction with a knowledgeable colleague, the Medical 
 
 In the medical domain, where information is as rich as it is overwhelming, the ability to distill complex content into concise, digestible summaries can prove very convenient. John addresses this challenge head-on, employing advanced language processing to extract key points from lengthy medical texts, research papers, and clinical guidelines, presenting them in a clear and succinct format.
 
-<iframe class="video_in" src="/assets/images/chatbot/Summarize.mp4" width="100%" height="auto" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+![The Medical Chatbot leverages advanced algorithms](\assets\images\chatbot\Summarize.gif)
 
 In the example above you can notice how the chatbot can take a dense, multi-page document and within moments, offer you a 3 sentence summary that captures the essence of the material. It can highlight the most pertinent information, so you can quickly grasp the salient points without wading through the entire text.
 The summary feature is more than a simple truncation of text; it is an intelligent synthesis that understands the context, retains critical details, and omits the less essential ones, ensuring that the heart of the content is preserved and made more accessible.
@@ -59,7 +59,7 @@ Whether for academic purposes, patient care, or personal edification, this summa
 Recognizing the diverse needs of medical practices and research domains, the Medical Chatbot allows users to create custom knowledge bases from their private document collections - be they research papers, clinical trial data, or institutional records. For this, `John` applies state-of-the-art natural language processing techniques to understand your documents and to create intelligent knowledge repositories tailored to your unique informational ecosystem. By building a custom knowledge base, you gain a tool that speaks directly to your needs, understands your specific medical dialect, and provides rapid, pinpoint access to the information you rely on. 
 This video details the steps for creating a custom knowledge base. 
 
-<iframe class="video_in" src="/assets/images/chatbot/CustomKB.mp4" width="100%" height="auto"  style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+![The Medical Chatbot leverages advanced algorithms](\assets\images\chatbot\CustomKB.gif)
 
 First, the user defines a name for the Knowledge Base and provides a link to an s3 bucket where the target documents reside as well as access credentials to the data. A quick preview of the files located in the s3 bucket is shown so the users can check that the provided bucket is the correct one. After this validation, the ingestion process starts. Currently, the chatbot can process TXT and PDF files.
 
@@ -72,14 +72,14 @@ In the practice of medicine, each patient has a unique narrative, a confluence o
 
 Furthermore, you can easily access the paragraphs used to compile the answers to get more details about the patients and even go back to the source document for further investigation.
 
-<iframe class="video_in" src="/assets/images/chatbot/AskAboutPatients.mp4" width="100%" height="auto" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+![The Medical Chatbot leverages advanced algorithms](\assets\images\chatbot\AskAboutPatients.gif)
 
 </div><div class="h3-box" markdown="1">
 
 ## Response Styles and Customization
 To accommodate the varied communication preferences of different organizations, the Medical Chatbot offers customizable response styles. Users can select from predefined styles or define their own, adjusting the tone, complexity, and length of responses to match their organizational culture. This flexibility ensures that the chatbot can communicate effectively with healthcare professionals, patients, and research teams alike, in a manner that resonates with each user's expectations.
 
-<iframe class="video_in" src="/assets/images/chatbot/DefineResponseStyle.mp4" width="100%" height="auto" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write;" allowFullScreen="true"></iframe>
+![The Medical Chatbot leverages advanced algorithms](\assets\images\chatbot\DefineResponseStyle.gif)
 
 </div><div class="h3-box" markdown="1">
 

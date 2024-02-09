@@ -517,11 +517,6 @@ h2.h2_doc {
 	margin-bottom: 50px;
 }
 
-.video_in {
-	height: 450px;
-	margin: 20px 0;
-}
-
 .code_snippet {
 	padding: 38px 30px;
 	background: rgba(244, 247, 252, 0.8);
@@ -4286,10 +4281,6 @@ code {
 	.search-wrapper .search-input-wrapper {
 		width: 100%;
 	}
-	.video_in {
-		height: calc(450px - 100vw/6);
-		margin: 0;
-	}
 	.nlp_content_col {
 		width: 28%;
 		margin: 0 15px;
@@ -4815,9 +4806,6 @@ code {
 		margin-right: 42px;
 		width: 40px;
 		height: 40px;
-	}
-	.video_in {
-		height: calc(450px - 100vw/2);
 	}
 	.jsl-tabs .tabs-python-scala-head .tab-python-scala-li,
 	.tab-python-scala-li {
