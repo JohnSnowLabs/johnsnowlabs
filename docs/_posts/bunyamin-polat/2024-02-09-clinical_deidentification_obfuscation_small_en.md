@@ -41,7 +41,7 @@ deid_pipeline = PretrainedPipeline("clinical_deidentification_obfuscation_small"
 
 result = deid_pipeline.annotate("""Name : Hendrickson, Ora, Record date: 2093-01-13, MR 719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 12/17/1993.
 SSN #333-44-6666, Driver's license no: A334455B.
 Phone 302-786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
 
@@ -56,7 +56,7 @@ val deid_pipeline = PretrainedPipeline("clinical_deidentification_obfuscation_sm
 
 val result = deid_pipeline.annotate("""Name : Hendrickson, Ora, Record date: 2093-01-13, MR 719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 12/17/1993.
 SSN #333-44-6666, Driver's license no: A334455B.
 Phone 302-786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
 
@@ -72,7 +72,7 @@ Phone 302-786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.""
     ------------------------------
     Name : Maralyn Sago, Record date: 2093-01-31, MR 161096.
     Dr. Darin Engels, ID: 9811914782, IP 003.003.003.003.
-    He is a 74-year-old male was admitted to the SCOTT COUNTY MEMORIAL HOSPITAL AKA SCOTT MEMORIAL for cystectomy on 01/31/93.
+    He is a 74-year-old male was admitted to the SCOTT COUNTY MEMORIAL HOSPITAL AKA SCOTT MEMORIAL for cystectomy on 01/04/1994.
     SSN #956-21-3086, Driver's license no: V784696E.
     Phone 952-841-3244, 11130 Parkview Circle Dr, Chesapeake, E-MAIL: Davie@yahoo.com.
 
