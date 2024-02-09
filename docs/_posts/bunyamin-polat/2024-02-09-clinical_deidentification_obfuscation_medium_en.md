@@ -67,15 +67,13 @@ Phone 302-786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.""
 ## Results
 
 ```bash
-
-    Obfuscated
-    ------------------------------
-    Name : Kara Dies, Record date: 2093-03-11, MR #528413.
-    Dr. Leandrew Koyanagi, ID: 0272536644, IP 333.333.333.333.
-    He is a 78-year-old male was admitted to the VA MEDICAL CENTER - JOHN COCHRAN DIVISION for cystectomy on 30/09/1993.
-    SSN #308-23-1994, Driver's license no: I347425Z.
-    Phone 563-875-6433, 230 West Miller Street, Danielskuil, E-MAIL: Harolda@yahoo.com.
-
+Obfuscated
+------------------------------
+Name : Kara Dies, Record date: 2093-03-11, MR #528413.
+Dr. Leandrew Koyanagi, ID: 0272536644, IP 333.333.333.333.
+He is a 78-year-old male was admitted to the VA MEDICAL CENTER - JOHN COCHRAN DIVISION for cystectomy on 30/09/1993.
+SSN #308-23-1994, Driver's license no: I347425Z.
+Phone 563-875-6433, 230 West Miller Street, Danielskuil, E-MAIL: Harolda@yahoo.com.
 ```
 
 {:.model-param}
