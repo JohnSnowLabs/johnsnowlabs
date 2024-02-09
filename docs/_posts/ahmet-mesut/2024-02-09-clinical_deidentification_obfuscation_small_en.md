@@ -68,13 +68,13 @@ Phone 302-786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.""
 
 ```bash
 
-    Obfuscated
-    ------------------------------
-    Name : Renda Rolls, Record date: 2093-02-26, MR 161096.
-    Dr. Josephina Shih, ID: 9811914782, IP 444.444.444.444.
-    He is a 69-year-old male was admitted to the STONE COUNTY HOSPITAL for cystectomy on 01/30/1994.
-    SSN #956-21-3086, Driver's license no: V784696E.
-    Phone 952-841-3244, Lestad, Big bear lake, E-MAIL: November@hotmail.com.
+Obfuscated
+------------------------------
+Name : Renda Rolls, Record date: 2093-02-26, MR 161096.
+Dr. Josephina Shih, ID: 9811914782, IP 444.444.444.444.
+He is a 69-year-old male was admitted to the STONE COUNTY HOSPITAL for cystectomy on 01/30/1994.
+SSN #956-21-3086, Driver's license no: V784696E.
+Phone 952-841-3244, Lestad, Big bear lake, E-MAIL: November@hotmail.com.
 
 ```
 
