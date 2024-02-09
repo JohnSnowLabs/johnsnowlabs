@@ -3,7 +3,6 @@ import subprocess
 from typing import Optional
 
 from johnsnowlabs import settings
-from johnsnowlabs.py_models.jsl_secrets import JslSecrets
 from johnsnowlabs.utils.enums import JvmHardwareTarget
 from johnsnowlabs.utils.env_utils import get_folder_of_func
 from johnsnowlabs.utils.py_process import run_cmd_and_check_succ
@@ -79,8 +78,6 @@ def is_docker_installed():
 def generate_dockerfile(
     # Install parameters
     model: str,  # nlu ref, nlp_ref or lcoally stored model
-    json_license_path: Optional[str] = None,
-    access_token: Optional[str] = None,
     spark_nlp: bool = True,
     visual: bool = False,
     nlp: bool = True,
@@ -103,40 +100,11 @@ def generate_dockerfile(
     build_folder = os.path.join(get_folder_of_func(_destroy_container), "build")
     base_docker_file_path = os.path.join(build_folder, "base_dockerfile")
     generated_docker_file_path = os.path.join(build_folder, "generated_dockerfile")
-    secrets: JslSecrets = JslSecrets.build_or_try_find_secrets(
-        secrets_file=json_license_path,
-        access_token=access_token,
-    )
-
-    provided_license = None
-    if secrets.OCR_LICENSE:
-        provided_license = secrets.OCR_LICENSE
-
-    elif secrets.HC_LICENSE:
-        provided_license = secrets.HC_LICENSE
 
     env_vars = [
         f'ENV HARDWARE_TARGET="{JvmHardwareTarget(hardware_platform).value}"',
         f'ENV MODEL_TO_LOAD="{model}"',
     ]
-
-    if provided_license:
-        env_vars.append(f'ENV JOHNSNOWLABS_LICENSE="{provided_license}"')
-
-    if provided_license:
-        env_vars.append(f'ENV JOHNSNOWLABS_LICENSE="{provided_license}"')
-    if secrets.HC_SECRET and nlp:
-        env_vars.append(f'ENV MEDICAL_SECRET="{secrets.HC_SECRET}"')
-    if secrets.OCR_SECRET and visual:
-        env_vars.append(f'ENV VISUAL_SECRET="{secrets.OCR_SECRET}"')
-    if secrets.AWS_ACCESS_KEY_ID:
-        env_vars.append(
-            f'ENV JOHNSNOWLABS_AWS_ACCESS_KEY_ID="{secrets.AWS_ACCESS_KEY_ID}"'
-        )
-    if secrets.AWS_SECRET_ACCESS_KEY:
-        env_vars.append(
-            f'ENV JOHNSNOWLABS_AWS_SECRET_ACCESS_KEY="{secrets.AWS_SECRET_ACCESS_KEY}"'
-        )
 
     with open(base_docker_file_path, "r", encoding="utf-8") as file:
         docker_code = file.read()
@@ -196,14 +164,12 @@ def build_image(
         _destroy_image(image_name)
 
     build_folder = os.path.join(get_folder_of_func(_destroy_container), "build")
-    cmd = f"cd {build_folder} && docker build -f generated_dockerfile . -t {image_name}"
+    cmd = f"cd {build_folder} && DOCKER_BUILDKIT=1 docker build -f generated_dockerfile --secret id=license,src={json_license_path} . -t {image_name}"
     if not use_cache:
         cmd += " --no-cache"
 
     generate_dockerfile(
         model=preloaded_model,
-        json_license_path=json_license_path,
-        access_token=access_token,
         spark_nlp=spark_nlp,
         visual=visual,
         nlp=nlp,
