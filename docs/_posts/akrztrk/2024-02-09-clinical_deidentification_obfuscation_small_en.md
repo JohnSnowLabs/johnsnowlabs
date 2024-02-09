@@ -49,7 +49,6 @@ Phone 302-786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.""
 ```
 ```scala
 
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification_obfuscation_small", "en", "clinical/models")
@@ -59,7 +58,6 @@ Dr. John Green, ID: 1231511863, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 12/17/1993.
 SSN #333-44-6666, Driver's license no: A334455B.
 Phone 302-786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.""")
-
 
 ```
 </div>
