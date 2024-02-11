@@ -19,6 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 This pipeline can be used to detect the PHI information from medical texts and obfuscate (replace them with fake ones) in the resulting text.
+Obfuscated entities: `AGE`, `CONTACT`, `DATE`, `ID`, `LOCATION`, `NAME`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
