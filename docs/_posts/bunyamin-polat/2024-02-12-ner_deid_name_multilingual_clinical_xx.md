@@ -36,6 +36,7 @@ Deidentification NER is a Named Entity Recognition model that annotates English,
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
