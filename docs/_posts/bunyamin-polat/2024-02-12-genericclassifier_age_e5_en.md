@@ -44,12 +44,13 @@ The GenericClassifierModel is a sophisticated text classification tool tailored 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
         
-embeddings = E5Embeddings.pretrained("e5_large", 'en')\
+embeddings = E5Embeddings.pretrained("e5_large", "en")\
     .setInputCols(["document"])\
     .setOutputCol("embeddings")\
     .setMaxSentenceLength(512)
@@ -87,7 +88,7 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
         
-val embeddings = E5Embeddings.pretrained("e5_large", 'en')\
+val embeddings = E5Embeddings.pretrained("e5_large", "en")\
     .setInputCols(["document"])\
     .setOutputCol("embeddings")\
     .setMaxSentenceLength(512)
