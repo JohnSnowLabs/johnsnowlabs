@@ -71,7 +71,7 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "e
     .setOutputCol("sentence_embeddings")\
     .setCaseSensitive(False)
 
-rxnorm_resolver = SentenceEntityResolverModel..pretrained("sbiobertresolve_rxnorm_augmented", "en", "clinical/models")\ \
+rxnorm_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_rxnorm_augmented", "en", "clinical/models")\ \
     .setInputCols(["sentence_embeddings"]) \
     .setOutputCol("rxnorm_code")\
     .setDistanceFunction("EUCLIDEAN")
@@ -123,7 +123,8 @@ val chunk2doc = new Chunk2Doc()
 
 val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
     .setInputCols("ner_chunk_doc")
-    .setOutputCol("sbert_embeddings")
+    .setOutputCol("sbert_embeddings")\
+    .setCaseSensitive(False)
 
 val rxnorm_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_rxnorm_augmented", "en", "clinical/models")
     .setInputCols("sbert_embeddings")
