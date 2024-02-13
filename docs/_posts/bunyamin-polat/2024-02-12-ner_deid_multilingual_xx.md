@@ -4,8 +4,8 @@ title: Detect PHI for Generic Deidentification(multilingual)
 author: John Snow Labs
 name: ner_deid_multilingual
 date: 2024-02-12
-tags: [ner, licensed, deid, multilingual, xx, roberta]
-task: Named Entity Recognition
+tags: [ner, licensed, deidentification, multilingual, xx, roberta]
+task: [De-identification, Named Entity Recognition]
 language: xx
 edition: Healthcare NLP 5.2.1
 spark_version: 3.0
@@ -36,6 +36,7 @@ Deidentification NER is a Named Entity Recognition model that annotates English,
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
