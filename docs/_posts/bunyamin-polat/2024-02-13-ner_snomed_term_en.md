@@ -73,14 +73,14 @@ empty_data = spark.createDataFrame([[""]]).toDF("text")
 
 model = nlpPipeline.fit(empty_data)
 
-text_list = ["""The patient was diagnosed with acute appendicitis and scheduled for immediate surgery.""",
-"""Due to experiencing chronic pain, the patient was referred to a fibromyalgia specialist for further evaluation.""",
-"""His hypertension is currently managed with a combination of lifestyle modifications and medication.""",
-"""The child was brought in with symptoms of acute otitis, including ear pain and fever.""",
-"""Laboratory tests indicate the individual has hyperthyroidism, requiring further endocrinological assessment.""",
-"""The radiograph showed evidence of a distal radius fracture from a recent fall."""]
+text_list = ["The patient was diagnosed with acute appendicitis and scheduled for immediate surgery.",
+"Due to experiencing chronic pain the patient was referred to a fibromyalgia specialist for further evaluation.",
+"His hypertension is currently managed with a combination of lifestyle modifications and medication.",
+"The child was brought in with symptoms of acute otitis including ear pain and fever.",
+"Laboratory tests indicate the individual has hyperthyroidism requiring further endocrinological assessment.",
+"The radiograph showed evidence of a distal radius fracture from a recent fall."]
 
-data = spark.createDataFrame(pd.DataFrame({"text": text_list}))
+data = spark.createDataFrame(text_list, StringType()).toDF("text")
 
 result = model.transform(data)
 ```
@@ -116,10 +116,10 @@ val pipeline = new Pipeline()
 
 val textList = Seq(
   "The patient was diagnosed with acute appendicitis and scheduled for immediate surgery.",
-  "Due to experiencing chronic pain, the patient was referred to a fibromyalgia specialist for further evaluation.",
+  "Due to experiencing chronic pain the patient was referred to a fibromyalgia specialist for further evaluation.",
   "His hypertension is currently managed with a combination of lifestyle modifications and medication.",
-  "The child was brought in with symptoms of acute otitis, including ear pain and fever.",
-  "Laboratory tests indicate the individual has hyperthyroidism, requiring further endocrinological assessment.",
+  "The child was brought in with symptoms of acute otitis including ear pain and fever.",
+  "Laboratory tests indicate the individual has hyperthyroidism requiring further endocrinological assessment.",
   "The radiograph showed evidence of a distal radius fracture from a recent fall."
 )
 
@@ -136,12 +136,12 @@ val result = pipeline.fit(data).transform(data)
 |chunk             |ner_label  |
 +------------------+-----------+
 |acute appendicitis|snomed_term|
-|chronic pain,     |snomed_term|
+|chronic pain      |snomed_term|
 |fibromyalgia      |snomed_term|
 |hypertension      |snomed_term|
-|otitis,           |snomed_term|
+|otitis            |snomed_term|
 |ear pain          |snomed_term|
-|hyperthyroidism,  |snomed_term|
+|hyperthyroidism   |snomed_term|
 |radiograph        |snomed_term|
 |radius fracture   |snomed_term|
 +------------------+-----------+
