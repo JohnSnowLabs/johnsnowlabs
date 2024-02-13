@@ -36,6 +36,7 @@ This Name Entity Recognition(NER) model extracts SNOMED terms from clinical text
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
