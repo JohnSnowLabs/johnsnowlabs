@@ -19,7 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is a [BioBERT](https://nlp.johnsnowlabs.com/2022/07/18/biobert_pubmed_base_cased_v1.2_en_3_0.html) based sentence classification model that can determine whether the clinical sentences include terms related to biomarkers or not.
+This model is a [BioBERT](https://sparknlp.org/2023/09/13/biobert_base_cased_v1.2_en.html) based sentence classification model that can determine whether the clinical sentences include terms related to biomarkers or not.
 
 ## Predicted Entities
 
@@ -45,9 +45,9 @@ document_assembler = DocumentAssembler() \
     .setInputCol('text') \
     .setOutputCol('document')
 
-sentence_detector = SentenceDetector() \
-    .setInputCols(['document']) \
-    .setOutputCol('sentence')
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models") \
+    .setInputCols(["document"]) \
+    .setOutputCol("sentence")
 
 tokenizer = Tokenizer() \
     .setInputCols(['sentence']) \
@@ -74,7 +74,7 @@ val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentenceDetector = new SentenceDetector()
+val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
   .setInputCols(Array("document"))
   .setOutputCol("sentence")
 
@@ -100,24 +100,24 @@ val data = spark.createDataFrame(Seq(
 val model = pipeline.fit(data)
 val result = model.transform(data)
 
+
 ```
 </div>
 
 ## Results
 
 ```bash
-+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|prediction|sentence                                                                                                                                                    |
-+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-|0         |In the realm of cancer research, several biomarkers have emerged as crucial indicators of disease progression and treatment response.                       |
-|1         |For instance, the expression levels of HER2/neu, a protein receptor, have been linked to aggressive forms of breast cancer.                                 |
-|1         |Additionally, the presence of prostate-specific antigen (PSA) is often monitored to track the progression of prostate cancer.                               |
-|1         |Moreover, in cardiovascular health, high-sensitivity C-reactive protein (hs-CRP) serves as a biomarker for inflammation and potential risk of heart disease.|
-|0         |Meanwhile, elevated levels of troponin T are indicative of myocardial damage, commonly observed in acute coronary syndrome.                                 |
-|0         |In the field of diabetes management, glycated hemoglobin is a widely used to assess long-term blood sugar control.                                          |
-|0         |Its levels reflect the average blood glucose concentration over the past two to three months, offering valuable insights into disease management strategies.|
-+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------+
-
++------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+|sentence                                                                                                                                                    |prediction|
++------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
+|In the realm of cancer research, several biomarkers have emerged as crucial indicators of disease progression and treatment response.                       |0         |
+|For instance, the expression levels of HER2/neu, a protein receptor, have been linked to aggressive forms of breast cancer.                                 |1         |
+|Additionally, the presence of prostate-specific antigen (PSA) is often monitored to track the progression of prostate cancer.                               |1         |
+|Moreover, in cardiovascular health, high-sensitivity C-reactive protein (hs-CRP) serves as a biomarker for inflammation and potential risk of heart disease.|1         |
+|Meanwhile, elevated levels of troponin T are indicative of myocardial damage, commonly observed in acute coronary syndrome.                                 |0         |
+|In the field of diabetes management, glycated hemoglobin is a widely used to assess long-term blood sugar control.                                          |0         |
+|Its levels reflect the average blood glucose concentration over the past two to three months, offering valuable insights into disease management strategies.|0         |
++------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+
 
 ```
 
