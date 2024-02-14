@@ -1,10 +1,10 @@
 ---
 layout: model
-title: Bert For Sequence Classifier for Biomarker
+title: Bert For Sequence Classification (Biomarker)
 author: John Snow Labs
 name: bert_sequence_classifier_biomarker
 date: 2024-02-13
-tags: [en, licensed, bfsc, biomarker, classification, tensorflow]
+tags: [en, licensed, bfsc, biomarker, classification]
 task: Text Classification
 language: en
 edition: Healthcare NLP 5.2.1
