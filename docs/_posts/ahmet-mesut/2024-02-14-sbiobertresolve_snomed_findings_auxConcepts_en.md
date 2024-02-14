@@ -42,7 +42,7 @@ documentAssembler = DocumentAssembler()\
       .setInputCol("text")\
       .setOutputCol("document")
 
-sentenceDetector = SentenceDetectorDLModel.pretrained()\
+sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
       .setInputCols(["document"])\
       .setOutputCol("sentence")
 
@@ -105,7 +105,7 @@ val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
   .setOutputCol("document")
 
-val sentenceDetector = SentenceDetectorDLModel.pretrained()
+val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
   .setInputCols(Array("document"))
   .setOutputCol("sentence")
 
