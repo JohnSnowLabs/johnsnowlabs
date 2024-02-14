@@ -19,11 +19,13 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model is a [BioBERT](https://nlp.johnsnowlabs.com/2022/07/18/biobert_pubmed_base_cased_v1.2_en_3_0.html) based biomarker classification model that can determine whether the clinical sentences include terms related to biomarkers or not.
+This model is a [BioBERT](https://nlp.johnsnowlabs.com/2022/07/18/biobert_pubmed_base_cased_v1.2_en_3_0.html) based sentence classification model that can determine whether the clinical sentences include terms related to biomarkers or not.
 
 ## Predicted Entities
 
-`1: Contains biomarker related terms.`, `0: Doesn't contain biomarker related terms.`
+`1`: Contains biomarker related terms
+
+`0`: Doesn't contain biomarker related terms
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
