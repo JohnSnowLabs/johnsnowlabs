@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps UMLS codes to corresponding LOINC codes
+This pretrained model maps UMLS codes to corresponding LOINC codes.
 
 ## Predicted Entities
 
@@ -70,22 +70,22 @@ light_pipeline= LightPipeline(model)
 result = light_pipeline.fullAnnotate("acebutolol")
 ```
 ```scala
-val documentAssembler = new DocumentAssembler()\
-    .setInputCol("text")\
+val documentAssembler = new DocumentAssembler()
+    .setInputCol("text")
     .setOutputCol("ner_chunk")
 
-val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
-    .setInputCols(["ner_chunk"])\
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")
+    .setInputCols(["ner_chunk"])
     .setOutputCol("sbert_embeddings")
 
-val icd_resolver = SentenceEntityResolverModel.pretrained("UMLS sbiobertresolve_umls_clinical_drugs","en","clinical/models") \ 
-    .setInputCols(Array("ner_chunk", "sbert_embeddings")) \
-    .setOutputCol("umls_code")\
+val icd_resolver = SentenceEntityResolverModel.pretrained("UMLS sbiobertresolve_umls_clinical_drugs","en","clinical/models")
+    .setInputCols(Array("ner_chunk", "sbert_embeddings"))
+    .setOutputCol("umls_code")
     .setDistanceFunction("EUCLIDEAN")
 
-val chunkerMapper = ChunkMapperModel.pretrained("umls_loinc_mapper", "en", "clinical/models")\
-    .setInputCols(["umls_code"])\
-    .setOutputCol("mappings")\
+val chunkerMapper = ChunkMapperModel.pretrained("umls_loinc_mapper", "en", "clinical/models")
+    .setInputCols(["umls_code"])
+    .setOutputCol("mappings")
     .setRels(Array("loinc_code"))
 
 val pipeline = new Pipeline(stages = Array(
