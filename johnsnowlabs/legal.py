@@ -46,6 +46,7 @@ try:
 
         # These are licensed annos shared across all libs
         from sparknlp_jsl.annotator import (
+            NerConverterInternal as NerConverter,
             GenericSVMClassifierApproach,
             GenericSVMClassifierModel,
             GenericLogRegClassifierApproach,
@@ -66,7 +67,6 @@ try:
             TFGraphBuilder,
             ChunkConverter,
             ChunkFilterer,
-            NerConverterInternal,
             NerChunker,
             AssertionFilterer,
             AnnotationMerger,
