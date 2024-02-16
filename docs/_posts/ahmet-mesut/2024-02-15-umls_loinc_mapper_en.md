@@ -78,7 +78,7 @@ val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
     .setInputCols(["ner_chunk"])
     .setOutputCol("sbert_embeddings")
 
-val icd_resolver = SentenceEntityResolverModel.pretrained("UMLS sbiobertresolve_umls_clinical_drugs","en","clinical/models")
+val umls_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_clinical_drugs","en","clinical/models")
     .setInputCols(Array("ner_chunk", "sbert_embeddings"))
     .setOutputCol("umls_code")
     .setDistanceFunction("EUCLIDEAN")
@@ -91,7 +91,7 @@ val chunkerMapper = ChunkMapperModel.pretrained("umls_loinc_mapper", "en", "clin
 val pipeline = new Pipeline(stages = Array(
     documentAssembler,
     sbert_embedder,
-    icd_resolver,
+    umls_resolver,
     chunkerMapper
     ))
 
