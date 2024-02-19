@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps ICD-10-CM codes to their generalised 3-digit ICD-10-CM codes and their main concepts.
+This pretrained model maps ICD-10-CM codes to their generalised 3-digit ICD-10-CM codes and the main concepts.
 
 ## Predicted Entities
 
