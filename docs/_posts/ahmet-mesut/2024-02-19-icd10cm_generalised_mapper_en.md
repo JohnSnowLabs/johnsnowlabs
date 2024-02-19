@@ -36,6 +36,7 @@ This pretrained model maps ICD-10-CM codes to their generalised 3-digit ICD-10-C
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -46,7 +47,7 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "e
     .setOutputCol("sbert_embeddings")\
     .setCaseSensitive(False)
 
-loinc_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented", "en", "clinical/models")\
+icd10_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented", "en", "clinical/models")\
     .setInputCols(["sbert_embeddings"])\
     .setOutputCol("icd10_code")\
     .setDistanceFunction("EUCLIDEAN")
@@ -62,7 +63,7 @@ chunkMapper = ChunkMapperModel.pretrained("icd10cm_generalised_mapper", "en", "c
 pipeline = Pipeline(stages = [
     documentAssembler,
     sbert_embedder,
-    loinc_resolver,
+    icd10_resolver,
     resolver2chunk,
     chunkMapper])
 
@@ -81,7 +82,7 @@ val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
 	.setOutputCol("sbert_embeddings")
 	.setCaseSensitive(false)
 	
-val loinc_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented","en","clinical/models")
+val icd10_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented","en","clinical/models")
 	.setInputCols(Array("sbert_embeddings"))
 	.setOutputCol("icd10_code")
 	.setDistanceFunction("EUCLIDEAN")
@@ -97,7 +98,7 @@ val chunkMapper = ChunkMapperModel.pretrained("icd10cm_generalised_mapper","en",
 val Pipeline(stages = Array(
     documentAssembler,
     sbert_embedder,
-    loinc_resolver,
+    icd10_resolver,
     resolver2chunk,
     chunkMapper))
 	
