@@ -957,7 +957,7 @@ os.environ.update(license_keys)
 
 </div><div class="h3-box" markdown="1">
 
-# Deploying Spark NLP Healthcare on Kubernetes
+## Deploying Spark NLP Healthcare on Kubernetes
 
 This guide will walk you through the deployment of a Spark NLP Healthcare application on a Kubernetes cluster using kind.
 
@@ -1081,7 +1081,8 @@ if __name__ == "__main__":
 ### Step-by-step Guide
 ##### 1. Containerizing the Spark NLP Healthcare Application
 
-##### Dockerfile:
+Dockerfile:
+
 ```
 # Use Ubuntu 20.04 as the base image
 FROM ubuntu:20.04
@@ -1236,7 +1237,7 @@ If you have asked for a trial license, but you cannot access your account on [my
 ## Azure Synapse Analytics Support
 
 **Step 1: Sign in to Azure portal**
-- Sign in to the Azure portal at https://portal.azure.com.
+- Sign in to the Azure portal at [https://portal.azure.com](https://portal.azure.com).
 
 **Step 2: Create a new Resource Group**
 - On the left-hand menu, click on "Resource groups".
@@ -1303,5 +1304,84 @@ For running OCR models, upload the following JAR and wheel files to the Workspac
  Now, you can proceed to run your OCR models and notebooks.
 
 
+</div><div class="h3-box" markdown="1">
+
+## Azure AI Studio instructions
+
+Go to [https://ai.azure.com/](https://ai.azure.com/)
+
+To create a project in Azure AI Studio, adhere to the following structured approach:
+
+1. Navigate to the Build Tab
+- Access the Azure AI Studio webpage and locate the Build tab positioned at the top of the interface.
+
+2. Initiate New Project Creation
+- Click on the **+ New project** button to start the process of creating a new project.
+
+3. Specify Project Name
+- Enter a name for your project that reflects its purpose or content.
+
+4. Select an Azure AI Hub Resource
+- Choose an existing Azure AI hub resource from the dropdown list to associate with your project. If you do not possess an existing resource, select the option to create a new one.
+
+5. Permissions for New Azure AI Hub Resource
+- If opting to create a new Azure AI hub resource, ensure you have either Owner or Contributor permissions on the chosen resource group.
+
+6. Collaboration and Resource Sharing
+- For collaborative projects, it is beneficial to share an Azure AI hub resource with your team. This promotes shared configurations and centralized resource management.
+
+7. Naming the New Azure AI Hub Resource
+- Assign a name to the new Azure AI hub resource if you're creating one.
+
+8. Select Azure Subscription
+- From the dropdown list, pick your Azure subscription to manage billing and access.
+
+9. Resource Group Decision
+- Decide whether to create a new Resource group or use an existing one for your project. Creating a new group can facilitate easier management of the project's resources.
+
+10. Location Selection
+- Choose the Location for your Azure AI hub resource, which inherently decides your project's geographical location. The choice of location is crucial as the availability of Azure AI services may differ across regions.
+
+11. Review AI Services Provider
+- On the Review and finish page, scrutinize the AI Services provider details to ensure access to Azure AI services like Azure OpenAI is correctly configured.
+
+12. Finalize Project Creation
+- After reviewing all the details for accuracy, click on **Create a project** to complete the setup process.
+
+![image](/assets/images/azure/azure_1.png)
+
+13 Then go to All Azure AI dropdown and choose **Azure Machine Learning Studio**.
+
+![image](/assets/images/azure/azure_2.png)
+
+14 Such a window will Appear. Go to Add compute.
+
+![image](/assets/images/azure/azure_3.png)
+
+15 Choose the compute type and enable auto-shutdown as well.
+
+![image](/assets/images/azure/azure_10.png)
+
+![image](/assets/images/azure/azure_8.png)
+
+![image](/assets/images/azure/azure_9.png)
+
+16 Then go to the Notebooks Section.
+
+![image](/assets/images/azure/azure_4.png)
+
+In NB section, you can create your own NB or load existing NBs.
+
+17 Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.
+
+![image](/assets/images/azure/azure_5.png)
+
+18 Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using `nlp.install()` and `nlp.start()` you can install the required jars and wheels and start the spark session.
+
+![image](/assets/images/azure/azure_6.png)
+
+19 Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).
+
+![image](/assets/images/azure/azure_7.png)
 
 </div>
