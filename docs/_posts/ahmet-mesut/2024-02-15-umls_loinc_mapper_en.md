@@ -75,33 +75,33 @@ result= mapper_model.transform(data)
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
-	.setInputCol("text")
-	.setOutputCol("ner_chunk")
+    .setInputCol("text")
+    .setOutputCol("ner_chunk")
 	
 val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
-	.setInputCols(Array("ner_chunk"))
-	.setOutputCol("sbert_embeddings")
-	.setCaseSensitive(false)
+    .setInputCols(Array("ner_chunk"))
+    .setOutputCol("sbert_embeddings")
+    .setCaseSensitive(false)
 	
 val umls_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_clinical_drugs","en","clinical/models")
-	.setInputCols(Array("sbert_embeddings"))
-	.setOutputCol("umls_code")
-	.setDistanceFunction("EUCLIDEAN")
+    .setInputCols(Array("sbert_embeddings"))
+    .setOutputCol("umls_code")
+    .setDistanceFunction("EUCLIDEAN")
 	
 val resolver2chunk = new Resolution2Chunk()
-	.setInputCols(Array("umls_code"))
-	.setOutputCol("umls2chunk")
+    .setInputCols(Array("umls_code"))
+    .setOutputCol("umls2chunk")
 	
 val chunkerMapper = ChunkMapperModel.pretrained("umls_loinc_mapper","en","clinical/models")
-	.setInputCols(Array("umls2chunk"))
-	.setOutputCol("mappings")
+    .setInputCols(Array("umls2chunk"))
+    .setOutputCol("mappings")
 	
 val Pipeline(stages = Array(
-  documentAssembler,
-  sbert_embedder,
-  umls_resolver,
-  resolver2chunk,
-  chunkerMapper))
+    documentAssembler,
+    sbert_embedder,
+    umls_resolver,
+    resolver2chunk,
+    chunkerMapper))
 
 
 val data = Seq("acebutolol").toDF("text")
