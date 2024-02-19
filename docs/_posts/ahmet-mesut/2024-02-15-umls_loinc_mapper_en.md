@@ -47,57 +47,67 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "e
     .setOutputCol("sbert_embeddings")\
     .setCaseSensitive(False)
 
-umls_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_clinical_drugs", "en", "clinical/models") \
+umls_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_clinical_drugs", "en", "clinical/models")\
     .setInputCols(["sbert_embeddings"]) \
     .setOutputCol("umls_code")\
     .setDistanceFunction("EUCLIDEAN")
 
-chunkerMapper = ChunkMapperModel.pretrained("umls_loinc_mapper", "en", "clinical/models")\
+resolver2chunk = Resolution2Chunk()\
     .setInputCols(["umls_code"])\
+    .setOutputCol("umls2chunk")
+
+chunkerMapper = ChunkMapperModel.pretrained("umls_loinc_mapper", "en", "clinical/models")\
+    .setInputCols(["umls2chunk"])\
     .setOutputCol("mappings")\
-    .setRels(["loinc_code"])
 
 pipeline = Pipeline(stages = [
     documentAssembler,
     sbert_embedder,
     umls_resolver,
+    resolver2chunk,
     chunkerMapper])
 
-model = pipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
 
-light_pipeline= LightPipeline(model)
+data = spark.createDataFrame([["acebutolol"]]).toDF("text")
 
-result = light_pipeline.fullAnnotate("acebutolol")
+mapper_model = pipeline.fit(data)
+result= mapper_model.transform(data)  
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
-    .setInputCol("text")
-    .setOutputCol("ner_chunk")
-
-val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")
-    .setInputCols(["ner_chunk"])
-    .setOutputCol("sbert_embeddings")
-
+	.setInputCol("text")
+	.setOutputCol("ner_chunk")
+	
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
+	.setInputCols(Array("ner_chunk"))
+	.setOutputCol("sbert_embeddings")
+	.setCaseSensitive(false)
+	
 val umls_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_clinical_drugs","en","clinical/models")
-    .setInputCols(Array("ner_chunk", "sbert_embeddings"))
-    .setOutputCol("umls_code")
-    .setDistanceFunction("EUCLIDEAN")
+	.setInputCols(Array("sbert_embeddings"))
+	.setOutputCol("umls_code")
+	.setDistanceFunction("EUCLIDEAN")
+	
+val resolver2chunk = new Resolution2Chunk()
+	.setInputCols(Array("umls_code"))
+	.setOutputCol("umls2chunk")
+	
+val chunkerMapper = ChunkMapperModel.pretrained("umls_loinc_mapper","en","clinical/models")
+	.setInputCols(Array("umls2chunk"))
+	.setOutputCol("mappings")
+	
+val Pipeline(stages = Array(
+  documentAssembler,
+  sbert_embedder,
+  umls_resolver,
+  resolver2chunk,
+  chunkerMapper))
 
-val chunkerMapper = ChunkMapperModel.pretrained("umls_loinc_mapper", "en", "clinical/models")
-    .setInputCols(["umls_code"])
-    .setOutputCol("mappings")
-    .setRels(Array("loinc_code"))
-
-val pipeline = new Pipeline(stages = Array(
-    documentAssembler,
-    sbert_embedder,
-    umls_resolver,
-    chunkerMapper
-    ))
 
 val data = Seq("acebutolol").toDF("text")
 
-val result= pipeline.fit(data).transform(data)
+val mapper_model = pipeline.fit(data)
+result= mapper_model.transform(data)
 
 ```
 </div>
@@ -105,9 +115,11 @@ val result= pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-|      chunk |     UMLS |     LOINC |   relation |
-|-----------:|---------:|----------:|-----------:|
-| acebutolol | C0000946 | LP16015-7 | loinc_code |
++----------+---------+----------+
+|chunk     |umls_code|loinc_code|
++----------+---------+----------+
+|acebutolol|C0000946 |LP16015-7 |
++----------+---------+----------+
 ```
 
 {:.model-param}
