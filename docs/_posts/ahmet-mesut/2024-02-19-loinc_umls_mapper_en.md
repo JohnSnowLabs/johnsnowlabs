@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps LOINC codes to corresponding UMLS codes
+This pretrained model maps LOINC codes to corresponding UMLS codes.
 
 ## Predicted Entities
 
@@ -38,54 +38,75 @@ This pretrained model maps LOINC codes to corresponding UMLS codes
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
-document_assembler = DocumentAssembler()\
-    .setInputCol('text')\
-    .setOutputCol('doc')
+documentAssembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("ner_chunk")
 
-chunk_assembler = Doc2Chunk()\
-    .setInputCols(['doc'])\
-    .setOutputCol('ner_chunk')
- 
-mapperModel = ChunkMapperModel..pretrained("loinc_umls_mapper", "en", "clinical/models")\
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
     .setInputCols(["ner_chunk"])\
+    .setOutputCol("sbert_embeddings")\
+    .setCaseSensitive(False)
+
+loinc_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_loinc_augmented", "en", "clinical/models")\
+    .setInputCols(["sbert_embeddings"])\
+    .setOutputCol("loinc_code")\
+    .setDistanceFunction("EUCLIDEAN")
+
+resolver2chunk = Resolution2Chunk()\
+    .setInputCols(["loinc_code"])\
+    .setOutputCol("loinc2chunk")
+
+chunkMapper = ChunkMapperModel.pretrained("loinc_umls_mapper", "en", "clinical/models")\
+    .setInputCols(["loinc2chunk"])\
     .setOutputCol("mappings")\
-    .setRels(["umls_code"])
 
-mapper_pipeline = Pipeline(stages=[
-    document_assembler,
-    chunk_assembler,
-    mapperModel
-])
+pipeline = Pipeline(stages = [
+    documentAssembler,
+    sbert_embedder,
+    loinc_resolver,
+    resolver2chunk,
+    chunkMapper])
 
-data = spark.createDataFrame([["LP199956-6"]]).toDF("text")
+data = spark.createDataFrame([["aspirin"]]).toDF("text")
 
-mapper_model = mapper_pipeline.fit(data)
+mapper_model = pipeline.fit(data)
 result= mapper_model.transform(data)                                 
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
   .setInputCol("text")
-  .setOutputCol("doc")
-
-val chunkAssembler = new ChunkAssembler()
-  .setInputCols(Array("doc"))
   .setOutputCol("ner_chunk")
 
-val mapperModel = PretrainedPipeline("loinc_umls_mapper", "en", "clinical/models")
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")
   .setInputCols(Array("ner_chunk"))
-  .setOutputCol("mappings")
-  .setRels(Array("umls_code"))
+  .setOutputCol("sbert_embeddings")
+  .setCaseSensitive(false)
 
-val mapperPipeline = new Pipeline().setStages(Array(
+val loinc_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_loinc_augmented", "en", "clinical/models")
+  .setInputCols(Array("sbert_embeddings"))
+  .setOutputCol("loinc_code")
+  .setDistanceFunction("EUCLIDEAN")
+
+val resolver2chunk = new Resolution2Chunk()
+  .setInputCols(Array("loinc_code"))
+  .setOutputCol("loinc2chunk")
+
+val chunkMapper = ChunkMapperModel.pretrained("loinc_umls_mapper", "en", "clinical/models")
+  .setInputCols(Array("loinc2chunk"))
+  .setOutputCol("mappings")
+
+val pipeline = new Pipeline().setStages(Array(
   documentAssembler,
-  chunkAssembler,
-  mapperModel
+  sbert_embedder,
+  loinc_resolver,
+  resolver2chunk,
+  chunkMapper
 ))
 
-val data = Seq("LP199956-6").toDF("text")
+val data = spark.createDataFrame(Seq(("aspirin"))).toDF("text")
 
-val mapperModelFit = mapperPipeline.fit(data)
-val result = mapperModelFit.transform(data)
+val mapper_model = pipeline.fit(data)
+val result = mapper_model.transform(data)
 
 ```
 </div>
@@ -93,11 +114,11 @@ val result = mapperModelFit.transform(data)
 ## Results
 
 ```bash
-+----------+---------+-----------------+
-|loinc_code|umls_code|relation         |
-+----------+---------+-----------------+
-|LP199956-6|C0000726 |umls_code        |
-+----------+---------+-----------------+
++-------+----------+---------+
+|chunk  |loinc_code|umls_code|
++-------+----------+---------+
+|aspirin|LA26702-3 |C0004057 |
++-------+----------+---------+
 ```
 
 {:.model-param}
