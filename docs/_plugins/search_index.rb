@@ -320,7 +320,7 @@ Jekyll::Hooks.register :posts, :pre_render do |post|
     predicted_entities: extractor.predicted_entities || [],
     type: doc_type,
     annotator: post.data['annotator'] || "",
-    deprecated = !!post.data['deprecated']
+    deprecated: !!post.data['deprecated']
   }
 
   benchmarking_info = extractor.benchmarking_results(post.url)
