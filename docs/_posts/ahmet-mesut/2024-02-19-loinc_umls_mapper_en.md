@@ -36,14 +36,15 @@ This pretrained model maps LOINC codes to corresponding UMLS codes
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
-      .setInputCol('text')\
-      .setOutputCol('doc')a
+    .setInputCol('text')\
+    .setOutputCol('doc')
 
 chunk_assembler = Doc2Chunk()\
-      .setInputCols(['doc'])\
-      .setOutputCol('ner_chunk')
+    .setInputCols(['doc'])\
+    .setOutputCol('ner_chunk')
  
 mapperModel = ChunkMapperModel..pretrained("loinc_umls_mapper", "en", "clinical/models")\
     .setInputCols(["ner_chunk"])\
