@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to de-identify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate `AGE`, `CONTACT`, `DATE`, `LOCATION`, `COUNTRY`, `NAME`, `PROFESSION`, `ID`, `MEDICALRECORD`, `PHONE`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE` entities. This pipeline is built using the "ner_deid_generic" model as well as ContextualParser, RegexMatcher, and TextMatcher.
+This pipeline can be used to de-identify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. The pipeline can mask and obfuscate `AGE`, `CONTACT`, `DATE`, `LOCATION`, `COUNTRY`, `NAME`, `PROFESSION`, `ID`, `MEDICALRECORD`, `PHONE`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE` entities. This pipeline is built using the `ner_deid_generic` model as well as ContextualParser, RegexMatcher, and TextMatcher.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
