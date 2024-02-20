@@ -77,11 +77,12 @@ healthcare-gpt:
         url: /docs/en/chatbot/getting_started
       - title: Features
         url: /docs/en/chatbot/features
-      - title: Usage Guides
+      - title: User Guide
         url: /docs/en/chatbot/usage_guides
       - title: Support
         url: /docs/en/chatbot/support
-      
+      - title: Release Notes
+        url: /docs/en/chatbot/release_notes_0_0_1      
 
 annotation-lab:
   - title: NLP Lab
