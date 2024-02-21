@@ -36,6 +36,7 @@ Extracts medication entities using rule based `TextMatcherInternal` annotator.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -45,7 +46,7 @@ tokenizer = Tokenizer()\
     .setInputCols(["document"])\
     .setOutputCol("token")
 
-entity_ruler = TextMatcherInternalModel.pretrained("drug_matcher","en","clinical/models") \
+text_matcher = TextMatcherInternalModel.pretrained("drug_matcher","en","clinical/models") \
     .setInputCols(["document", "token"])\
     .setOutputCol("matched_text")\
     .setCaseSensitive(False)\
@@ -54,7 +55,7 @@ entity_ruler = TextMatcherInternalModel.pretrained("drug_matcher","en","clinical
 mathcer_pipeline = Pipeline().setStages([
                   documentAssembler,
                   tokenizer,
-                  entity_ruler])
+                  text_matcher])
 
 data = spark.createDataFrame([["John's doctor prescribed aspirin for his heart condition, along with paracetamol for his fever and headache, ciprofloxacin for his tonsilitis, ibuprofen for his inflammation, and lansoprazole for his GORD on 2023-12-01."]]).toDF("text")
 
@@ -70,14 +71,16 @@ val tokenizer = new Tokenizer()
 	.setInputCols(Array("document"))
 	.setOutputCol("token")
 	
-val entity_ruler = TextMatcherInternalModel.pretrained("drug_matcher","en","clinical/models")
+val text_matcher = TextMatcherInternalModel.pretrained("drug_matcher","en","clinical/models")
 	.setInputCols(Array("document","token"))
 	.setOutputCol("matched_text")
 	.setCaseSensitive(false)
 	.setDelimiter("#")
 	
 val mathcer_pipeline = new Pipeline()
-	.setStages(Array( documentAssembler, tokenizer, entity_ruler))
+	.setStages(Array( documentAssembler,
+			  tokenizer,
+    			  text_matcher))
 	
 val data = Seq("John's doctor prescribed aspirin for his heart condition, along with paracetamol for his fever and headache, ciprofloxacin for his tonsilitis, ibuprofen for his inflammation, and lansoprazole for his GORD on 2023-12-01.") .toDF("text")
 	
