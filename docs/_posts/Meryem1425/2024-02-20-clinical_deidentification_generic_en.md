@@ -41,7 +41,7 @@ deid_pipeline = PretrainedPipeline("clinical_deidentification_generic", "en", "c
 
 text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR 719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+He is a 60-year-old male was admitted to the hospital for cystectomy on 01/13/93.
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
 
@@ -57,7 +57,7 @@ val deid_pipeline = PretrainedPipeline("clinical_deidentification_generic", "en"
 
 val text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR 719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+He is a 60-year-old male was admitted to the hospital for cystectomy on 01/13/93.
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
 
@@ -95,7 +95,7 @@ Masked with entity labels
 ------------------------------
 Name : <NAME>, Record date: <DATE>, MR <MEDICALRECORD>.
 Dr. <NAME>, ID: <ID>, IP <IPADDR>.
-He is a <AGE>-year-old male was admitted to the <LOCATION> for cystectomy on <DATE>.
+He is a <AGE>-year-old male was admitted to the hospital for cystectomy on <DATE>.
 Patient's VIN : <VIN>, SSN <SSN>, Driver's license no: <DLN>.
 Phone <PHONE>, <LOCATION>, <LOCATION>, E-MAIL: <EMAIL>.
 
@@ -103,7 +103,7 @@ Masked with chars
 ------------------------------
 Name : [**************], Record date: [********], MR [****].
 Dr. [********], ID: [********], IP [************].
-He is a **-year-old male was admitted to the [**********] for cystectomy on [******].
+He is a **-year-old male was admitted to the hospital for cystectomy on [******].
 Patient's VIN : [***************], SSN [**********], Driver's license no: [******].
 Phone [************], [***************], [***********], E-MAIL: [*************].
 
@@ -111,7 +111,7 @@ Masked with fixed length chars
 ------------------------------
 Name : ****, Record date: ****, MR ****.
 Dr. ****, ID: ****, IP ****.
-He is a ****-year-old male was admitted to the **** for cystectomy on ****.
+He is a ****-year-old male was admitted to the hospital for cystectomy on ****.
 Patient's VIN : ****, SSN ****, Driver's license no: ****.
 Phone ****, ****, ****, E-MAIL: ****.
 
@@ -119,7 +119,7 @@ Obfuscated
 ------------------------------
 Name : Vonzell Schlatter, Record date: 2093-02-07, MR 182993.
 Dr. Dartha Lodge, ID: 7169678938, IP 444.444.444.444.
-He is a 63-year-old male was admitted to the 2001 South Main Street for cystectomy on 02/07/93.
+He is a 63-year-old male was admitted to the hospital for cystectomy on 02/07/93.
 Patient's VIN : 1OFBP10CHEN277824, SSN #235-36-1443, Driver's license no: X540086P.
 Phone (619) 509-3267, 31700 Temecula Pkwy, 1215 Franciscan Dr, E-MAIL: Savannah@google.com.
 
