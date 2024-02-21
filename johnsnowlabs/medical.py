@@ -38,7 +38,6 @@ try:
             TFGraphBuilder,
             ChunkConverter,
             ChunkFilterer,
-            NerConverterInternal,
             NerChunker,
             AssertionFilterer,
             AnnotationMerger,
@@ -106,6 +105,8 @@ try:
             MedicalTextGenerator as TextGenerator,
             MedicalSummarizer as Summarizer,
             InternalDocumentSplitter as DocumentSplitter,
+            NerConverterInternal as NerConverter,
+
         )
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader
