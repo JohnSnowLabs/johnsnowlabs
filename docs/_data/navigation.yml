@@ -84,7 +84,7 @@ healthcare-gpt:
       - title: Support
         url: /docs/en/chatbot/support
       - title: Release Notes
-        url: /docs/en/chatbot/release_notes
+        url: /docs/en/chatbot/releases/release_notes
 
 annotation-lab:
   - title: NLP Lab
