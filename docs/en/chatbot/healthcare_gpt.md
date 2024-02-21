@@ -1,7 +1,7 @@
 ---
 layout: docs
 header: true
-seotitle: Healthcare GPT | John Snow Labs
+seotitle: Medical Chatbot | John Snow Labs
 title: Medical Chatbot 
 permalink: /docs/en/chatbot/healthcare_gpt
 key: docs-healthcare-gpt
