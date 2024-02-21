@@ -3,9 +3,9 @@ layout: docs
 header: true
 seotitle: Medical Chatbot | John Snow Labs
 title: Usage Guides
-permalink: /docs/en/chatbot/release_notes_0_0_1
+permalink: /docs/en/chatbot/release_notes
 key: docs-healthcare-gpt
-modify_date: "2024-02-09"
+modify_date: "2024-02-21"
 show_nav: true
 sidebar:
     nav: healthcare-gpt

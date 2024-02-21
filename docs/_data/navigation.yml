@@ -69,7 +69,7 @@ sparknlp:
         url: /docs/en/release_notes
       
 healthcare-gpt:
-  - title: Healthcare GPT
+  - title: Medical Chatbot
     children:
       - title: Home
         url: /docs/en/chatbot/healthcare_gpt
@@ -84,7 +84,7 @@ healthcare-gpt:
       - title: Support
         url: /docs/en/chatbot/support
       - title: Release Notes
-        url: /docs/en/chatbot/release_notes_0_0_1      
+        url: /docs/en/chatbot/release_notes
 
 annotation-lab:
   - title: NLP Lab
