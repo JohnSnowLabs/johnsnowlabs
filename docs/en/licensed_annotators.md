@@ -67,6 +67,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="EntityChunkEmbeddings" summary="Entity Chunk Embeddings uses BERT Sentence embeddings to compute a weighted average vector represention of related entity chunks."%}
 {% include templates/licensed_table_entry.md  name="FeaturesAssembler" summary="Collects features from different columns."%}
 {% include templates/licensed_table_entry.md  name="FewShotClassifier" summary="This Annotator specifically target few-shot classification tasks, which involve training a model to make accurate predictions with limited labeled data."%}
+{% include templates/licensed_table_entry.md  name="Flattener" summary="`Flattener` annotator in Spark NLP converts annotation results into a simplified DataFrame format for easier analysis and interpretation."%}
 {% include templates/licensed_table_entry.md  name="GenericClassifier" summary="Creates a generic single-label classifier which uses pre-generated Tensorflow graphs."%}
 {% include templates/licensed_table_entry.md  name="GenericLogRegClassifier" summary="Is a derivative of GenericClassifier which implements a multinomial logistic regression."%}
 {% include templates/licensed_table_entry.md  name="GenericSVMClassifier" summary="Creates a generic single-label classifier which uses pre-generated Tensorflow graphs."%}
@@ -79,6 +80,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="NerModel" summary="This Named Entity recognition annotator is a generic NER model based on Neural Networks."%}
 {% include templates/licensed_table_entry.md  name="NerQuestionGenerator" summary="This annotator takes an NER chunk (obtained by, e.g., `NerConverterInternal`) and generates a questions based on two entity types, a pronoun and a strategy."%}
 {% include templates/licensed_table_entry.md  name="QuestionAnswering" summary="GPT-based model for answering questions given a context."%}
+{% include templates/licensed_table_entry.md  name="RegexMatcherInternal" summary="`RegexMatcherInternal` matches predefined regex patterns with entities in text, allowing for flexible entity recognition based on user-defined rules."%}
 {% include templates/licensed_table_entry.md  name="ReIdentification" summary="Reidentifies obfuscated entities by DeIdentification."%}
 {% include templates/licensed_table_entry.md  name="RelationExtraction" summary="Extracts and classifies instances of relations between named entities."%}
 {% include templates/licensed_table_entry.md  name="RelationExtractionDL" summary="Extracts and classifies instances of relations between named entities."%}
@@ -90,6 +92,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="SentenceEntityResolver" summary="Returns the normalized entity for a particular trained ontology / curated dataset (e.g. clinical ICD-10, RxNorm, SNOMED; financial SEC's EDGAR database,  etc) based on sentence embeddings."%}
 {% include templates/licensed_table_entry.md  name="Summarizer" summary="Helps to quickly summarize complex medical information."%}
 {% include templates/licensed_table_entry.md  name="TextGenerator" summary="Uses the basic BioGPT model to perform various tasks related to medical text abstraction."%}
+{% include templates/licensed_table_entry.md  name="TextMatcherInternal" summary="This annotator match exact phrases provided in a file against a Document."%}
 {% include templates/licensed_table_entry.md  name="TFGraphBuilder" summary="Creates Tensorflow graphs."%}
 {% include templates/licensed_table_entry.md  name="WindowedSentenceModel" summary="This annotator that helps you to merge the previous and following sentences of a given piece of text, so that you add the context surrounding them."%}
 {% include templates/licensed_table_entry.md  name="ZeroShotNerModel" summary="This is a zero-shot named entity recognition using `RoBertaForQuestionAnswering`. It identifies entities across diverse data without domain-specific fine-tuning."%}
