@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-Extracts medication entities using rule based `TextMatcherInternal` annotator.
+This model extracts medication entities using rule-based `TextMatcherInternal` annotator.
 
 ## Predicted Entities
 
