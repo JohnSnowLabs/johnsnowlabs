@@ -48,9 +48,7 @@ tokenizer = Tokenizer()\
 
 text_matcher = TextMatcherInternalModel.pretrained("drug_matcher","en","clinical/models") \
     .setInputCols(["document", "token"])\
-    .setOutputCol("matched_text")\
-    .setCaseSensitive(False)\
-    .setDelimiter("#")
+    .setOutputCol("matched_text")
 
 mathcer_pipeline = Pipeline().setStages([
                   documentAssembler,
@@ -74,8 +72,6 @@ val tokenizer = new Tokenizer()
 val text_matcher = TextMatcherInternalModel.pretrained("drug_matcher","en","clinical/models")
 	.setInputCols(Array("document","token"))
 	.setOutputCol("matched_text")
-	.setCaseSensitive(false)
-	.setDelimiter("#")
 	
 val mathcer_pipeline = new Pipeline()
 	.setStages(Array( documentAssembler,
