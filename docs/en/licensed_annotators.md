@@ -65,6 +65,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="DocumentMLClassifier" summary="classifies documents with a Logarithmic Regression algorithm."%}
 {% include templates/licensed_table_entry.md  name="DrugNormalizer" summary="Annotator which normalizes raw text from documents, e.g. scraped web pages or xml documents."%}
 {% include templates/licensed_table_entry.md  name="EntityChunkEmbeddings" summary="Entity Chunk Embeddings uses BERT Sentence embeddings to compute a weighted average vector represention of related entity chunks."%}
+{% include templates/licensed_table_entry.md  name="EntityRulerInternal" summary="This annotator match exact strings or regex patterns provided in a file against a Document and assigns them an named entity."%}
 {% include templates/licensed_table_entry.md  name="FeaturesAssembler" summary="Collects features from different columns."%}
 {% include templates/licensed_table_entry.md  name="FewShotClassifier" summary="This Annotator specifically target few-shot classification tasks, which involve training a model to make accurate predictions with limited labeled data."%}
 {% include templates/licensed_table_entry.md  name="Flattener" summary="`Flattener` annotator in Spark NLP converts annotation results into a simplified DataFrame format for easier analysis and interpretation."%}
