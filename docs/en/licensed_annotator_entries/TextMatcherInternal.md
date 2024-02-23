@@ -26,7 +26,7 @@ Parametres:
 
 - `setBuildFromTokens` *(Boolean)*:  Sets whether the TextMatcherInternal should take the CHUNK from TOKEN.
 
-- `setDelimiter` *(str)*:  Sets Value for the delimiter between Phrase, Entity.
+- `setDelimiter` *(str)*:  Sets value for the delimiter between Phrase, Entity.
 
 See [Spark NLP Workshop](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/41.Flattener.ipynb) for more examples of usage.
 {%- endcapture -%}
