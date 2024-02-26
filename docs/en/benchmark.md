@@ -909,3 +909,54 @@ These findings unequivocally affirm Spark NLP's superiority for NER extraction t
 *SpaCy with pandas UDFs*: Development might be more straightforward since you're essentially working with Python functions. However, maintaining optimal performance with larger datasets and ensuring scalability can be tricky.
 
 </div>
+
+
+<div class="h3-box" markdown="1">
+
+## AWS EMR Cluster Benchmark
+
+- **Dataset :** 340 Custom Clinical Texts, approx. 235 tokens per text, 8.0K Data
+- **Versions :**
+    - **EMR Version:** ERM.6.15.0
+  - **spark-nlp Version:** v5.2.2
+  - **spark-nlp-jsl Version :** v5.2.1
+  - **Spark Version :** v3.4.1
+- **Instance Type:** 
+    -  **Primary**: m4.4xlarge, 16 vCore, 64 GiB memory
+    - **Worker :**  m4.4xlarge, 16 vCore, 64 GiB memory
+
+
+- **Spark NLP Pipeline :**
+  ``` python
+
+  #pipeline
+  
+  snomed_pipeline = Pipeline(stages = [
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    ner_jsl,
+    ner_jsl_converter,
+    chunk2doc,
+    sbert_embeddings,
+    snomed_resolver])
+
+
+  ```
+  
+**NOTES :**
+
++ `sbiobertresolve_snomed_findings` model is used as resolver model. The inference time calculated. Timer started with `model.transform(df)`  and ended with writing results (snomed_code and snomed_code_definition) as `parquet` format.
+
+
+***Results Table***
+| partition | Resolver Timing | 
+| --------- | ------------- | 
+| 4         | 2.49 minutes        |  
+| 64        | 1.17 minutes       |  
+| 100       | 1.21 minutes        |  
+| 1000      | 1.06 minutes        |  
+
+
+</div>
