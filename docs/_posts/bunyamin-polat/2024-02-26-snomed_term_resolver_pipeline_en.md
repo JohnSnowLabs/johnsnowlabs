@@ -32,6 +32,7 @@ This pretrained resolver pipeline extracts SNOMED terms and map them to their co
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
