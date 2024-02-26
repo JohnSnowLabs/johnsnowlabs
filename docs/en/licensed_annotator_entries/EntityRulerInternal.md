@@ -28,6 +28,8 @@ Parametres:
 
 - `setUseStorage` *(Boolean)*:  Sets whether to use RocksDB storage to serialize patterns.
 
+See [Spark NLP Workshop](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb) for more examples of usage.
+
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}

@@ -24,7 +24,7 @@ Parametres:
 - `externalRules`: external resource to rules, needs `delimiter` in options.
 
 
-See [Spark NLP Workshop](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.1.RegexMatcherInternal.ipynb) for more examples of usage.
+See [Spark NLP Workshop](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb) for more examples of usage.
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}

@@ -28,7 +28,7 @@ Parametres:
 
 - `setDelimiter` *(str)*:  Sets Value for the delimiter between Phrase, Entity.
 
-See [Spark NLP Workshop](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/41.Flattener.ipynb) for more examples of usage.
+See [Spark NLP Workshop](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb) for more examples of usage.
 {%- endcapture -%}
 
 {%- capture model_input_anno -%}
