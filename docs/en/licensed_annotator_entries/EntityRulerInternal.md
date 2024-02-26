@@ -22,11 +22,11 @@ Parametres:
         options : dict, optional
             Options for parsing the resource, by default {"format": "JSON"}
 
-- `setSentenceMatch` *(Boolean)*:Whether to find match at sentence level. True: sentence level. False: token level.
+- `setSentenceMatch` *(Boolean)*: Whether to find match at sentence level. True: sentence level. False: token level.
 
-- `setAlphabetResource` *(str)*:  Alphabet Resource (a simple plain text with all language characters)
+- `setAlphabetResource` *(str)*: Alphabet Resource (a simple plain text with all language characters)
 
-- `setUseStorage` *(Boolean)*:  Sets whether to use RocksDB storage to serialize patterns.
+- `setUseStorage` *(Boolean)*: Sets whether to use RocksDB storage to serialize patterns.
 
 See [Spark NLP Workshop](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb) for more examples of usage.
 
@@ -145,11 +145,11 @@ Parameters:
         options : dict, optional
             Options for parsing the resource, by default {"format": "JSON"}
 
-- `setSentenceMatch` *(Boolean)*:Whether to find match at sentence level. True: sentence level. False: token level.
+- `setSentenceMatch` *(Boolean)*: Whether to find match at sentence level. True: sentence level. False: token level.
 
-- `setAlphabetResource` *(str)*:  Alphabet Resource (a simple plain text with all language characters)
+- `setAlphabetResource` *(str)*: Alphabet Resource (a simple plain text with all language characters)
 
-- `setUseStorage` *(Boolean)*:  Sets whether to use RocksDB storage to serialize patterns.
+- `setUseStorage` *(Boolean)*: Sets whether to use RocksDB storage to serialize patterns.
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}

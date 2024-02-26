@@ -20,13 +20,13 @@ Parametres:
             Options for reading the resource, by default {"format": "text"}
 - `setCaseSensitive` *(Boolean)*: Sets whether to match regardless of case. (Default: True)
 
-- `setMergeOverlapping` *(Boolean)*:Sets whether to merge overlapping matched chunks. (Default: False)
+- `setMergeOverlapping` *(Boolean)*: Sets whether to merge overlapping matched chunks. (Default: False)
 
 - `setEntityValue` *(str)*: Sets the value for the entity metadata field. If any entity value isn't set in the file, we need to set it for the entity value.
 
-- `setBuildFromTokens` *(Boolean)*:  Sets whether the TextMatcherInternal should take the CHUNK from TOKEN.
+- `setBuildFromTokens` *(Boolean)*: Sets whether the TextMatcherInternal should take the CHUNK from TOKEN.
 
-- `setDelimiter` *(str)*:  Sets Value for the delimiter between Phrase, Entity.
+- `setDelimiter` *(str)*: Sets value for the delimiter between Phrase, Entity.
 
 See [Spark NLP Workshop](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb) for more examples of usage.
 {%- endcapture -%}
