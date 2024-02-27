@@ -102,7 +102,7 @@ val Pipeline(stages = Array(
   resolver2chunk,
   chunkerMapper))
 
-val data = Seq("acebutolol"),Array("aspirin") .toDF("text")
+val data = Seq("acebutolol", "aspirin") .toDF("text")
 	
 val mapper_model = pipeline.fit(data)
 
