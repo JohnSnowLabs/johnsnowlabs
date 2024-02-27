@@ -915,7 +915,7 @@ These findings unequivocally affirm Spark NLP's superiority for NER extraction t
 
 ## AWS EMR Cluster Benchmark
 
-- **Dataset :** 340 Custom Clinical Texts, approx. 235 tokens per text, 8.0K Data
+- **Dataset :** 340 Custom Clinical Texts, approx. 235 tokens per text
 - **Versions :**
     - **EMR Version:** ERM.6.15.0
   - **spark-nlp Version:** v5.2.2
@@ -927,36 +927,48 @@ These findings unequivocally affirm Spark NLP's superiority for NER extraction t
 
 
 - **Spark NLP Pipeline :**
-  ``` python
 
-  #pipeline
-  
-  snomed_pipeline = Pipeline(stages = [
-    document_assembler,
-    sentence_detector,
-    tokenizer,
-    word_embeddings,
-    ner_jsl,
-    ner_jsl_converter,
-    chunk2doc,
-    sbert_embeddings,
-    snomed_resolver])
+    ```python
+    ner_pipeline = Pipeline(stages = [
+                                    document_assembler,
+                                    sentence_detector,
+                                    tokenizer,
+                                    word_embeddings,
+                                    ner_jsl,
+                                    ner_jsl_converter])
+
+    
+    resolver_pipeline = Pipeline(stages = [
+                                        document_assembler,
+                                        sentence_detector,
+                                        tokenizer,
+                                        word_embeddings,
+                                        ner_jsl,
+                                        ner_jsl_converter,
+                                        chunk2doc,
+                                        sbert_embeddings,
+                                        snomed_resolver]) 
+                                        ```
 
 
-  ```
-  
-**NOTES :**
-
-+ `sbiobertresolve_snomed_findings` model is used as resolver model. The inference time calculated. Timer started with `model.transform(df)`  and ended with writing results (snomed_code and snomed_code_definition) as `parquet` format.
+- **NOTES:**
+- `ner_jsl` modek=l is used as ner model.The inference time calculated. Timer started with `model.transform(df)`  and ended with writing results as `parquet` format.
+- `sbiobertresolve_snomed_findings` model is used as resolver model. The inference time calculated. Timer started with `model.transform(df)`  and ended with writing results (snomed_code and snomed_code_definition) as `parquet` format. 722 entities saved.
 
 
 ***Results Table***
-| partition | Resolver Timing | 
-| --------- | ------------- | 
-| 4         | 2.49 minutes        |  
-| 64        | 1.17 minutes       |  
-| 100       | 1.21 minutes        |  
-| 1000      | 1.06 minutes        |  
+
+| partition | NER Timing     |NER + Resolver Timing | 
+| --------- | -------------- |----------------------| 
+|4          |  24.7 seconds  |1 minutes 8.5  seconds|
+|8          |  23.6 seconds  |1 minutes 7.4  seconds|
+|16         |  22.6 seconds  |1 minutes 6.9  seconds|
+|32         |  23.2 seconds  |1 minutes 5.7  seconds|
+|64         |  22.8 seconds  |1 minutes 6.7  seconds|
+|128        |  23.7 seconds  |1 minutes 7.4  seconds|
+|256        |  23.9 seconds  |1 minutes 6.1  seconds|
+|512        |  23.8 seconds  |1 minutes 8.4  seconds|
+|1024       |  25.9 seconds  |1 minutes 10.2 seconds|
 
 
 </div>
