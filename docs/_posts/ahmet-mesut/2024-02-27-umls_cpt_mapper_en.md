@@ -36,6 +36,7 @@ This pretrained model maps UMLS codes to corresponding CPT codes
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol('text')\
@@ -62,16 +63,16 @@ result= mapper_model.transform(data)
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
-	.setInputCol("text")
-	.setOutputCol("doc")
+    .setInputCol("text")
+    .setOutputCol("doc")
 	
 val chunkAssembler = new Doc2Chunk()
-	.setInputCols("doc")
-	.setOutputCol("umls_code")
+    .setInputCols("doc")
+    .setOutputCol("umls_code")
 	
 val chunkerMapper = ChunkMapperModel.pretrained("umls_cpt_mapper","en","clinical/models")
-	.setInputCols(Array("umls_code"))
-	.setOutputCol("mappings")
+    .setInputCols(Array("umls_code"))
+    .setOutputCol("mappings")
 	
 val mapper_pipeline = new Pipeline().setStages(Array( 
     document_assembler,
