@@ -454,34 +454,19 @@ resolver_pipeline = PipelineModel(
   ])
 ```
 
-***Base Embeddings Results Table***
+***Results Table***
 
-|partition|nlp_time|embdding_time|resolver_time|
-|--------:|-------:|------------:|------------:|
-| 4       | 25 sec | 25 sec      |7 min 46 sec |
-| 8       | 21 sec | 25 sec      |5 min 12 sec |
-| 16      | 21 sec | 25 sec      |4 min 41 sec |
-| 32      | 20 sec | 24 sec      |5 min 4 sec  |
-| 64      | 21 sec | 24 sec      |4 min 44 sec |
-| 128     | 20 sec | 25 sec      |5 min 4 sec  |
-| 256     | 22 sec | 26 sec      |4 min 34 sec |
-| 512     | 24 sec | 27 sec      |4 min 46 sec |
-| 1024    | 29 sec | 30 sec      |4 min 24 sec |
-
-
-***ONNX Embeddings Results Table***
-
-|partition|nlp_time|embdding_time|resolver_time|
-|--------:|-------:|------------:|------------:|
-| 4       | 25 sec | 9 sec       |8 min 29 sec |
-| 8       | 20 sec | 9 sec       |4 min 53 sec |
-| 16      | 21 sec | 9 sec       |4 min 30 sec |
-| 32      | 20 sec | 9 sec       |4 min 34 sec |
-| 64      | 21 sec | 9 sec       |5 min 2 sec  |
-| 128     | 20 sec | 10 sec      |4 min 51 sec |
-| 256     | 22 sec | 10 sec      |5 min 13 sec |
-| 512     | 24 sec | 12 sec      |4 min 22 sec |
-| 1024    | 28 sec | 14 sec      |4 min 29 sec |
+|partition|preprocessing|embeddings| resolver    |onnx_embeddings|resolver_with_onnx_embeddings|
+|--------:|------------:|---------:|------------:|--------------:|------------:|
+| 4       |      25 sec | 25 sec   |7 min 46 sec |   9 sec       |8 min 29 sec |
+| 8       |      21 sec | 25 sec   |5 min 12 sec |   9 sec       |4 min 53 sec |
+| 16      |      21 sec | 25 sec   |4 min 41 sec |   9 sec       |4 min 30 sec |
+| 32      |      20 sec | 24 sec   |5 min 4 sec  |   9 sec       |4 min 34 sec |
+| 64      |      21 sec | 24 sec   |4 min 44 sec |   9 sec       |5 min 2 sec  |
+| 128     |      20 sec | 25 sec   |5 min 4 sec  |   10 sec      |4 min 51 sec |
+| 256     |      22 sec | 26 sec   |4 min 34 sec |   10 sec      |5 min 13 sec |
+| 512     |      24 sec | 27 sec   |4 min 46 sec |   12 sec      |4 min 22 sec |
+| 1024    |      29 sec | 30 sec   |4 min 24 sec |   14 sec      |4 min 29 sec |
 
 </div>
 
