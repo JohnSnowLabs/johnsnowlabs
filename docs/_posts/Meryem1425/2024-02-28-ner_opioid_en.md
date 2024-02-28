@@ -1,6 +1,6 @@
 ---
 layout: model
-title: OPIOID
+title: Detect Opioid Specific Entities
 author: John Snow Labs
 name: ner_opioid
 date: 2024-02-28
@@ -61,12 +61,13 @@ Here are the labels of the OPIOID model with their descriptions:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "en")\
+sentence_detector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
 
@@ -110,7 +111,7 @@ val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
 
-val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl", "en")
+val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
     .setInputCols("document")
     .setOutputCol("sentence")
 
