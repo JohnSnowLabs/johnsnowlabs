@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps UMLS codes to corresponding CPT codes
+This pretrained model maps UMLS codes to corresponding CPT codes.
 
 ## Predicted Entities
 
