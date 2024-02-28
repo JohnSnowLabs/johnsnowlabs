@@ -36,6 +36,7 @@ This model detects the assertion status of  drug entities related to opioid (inc
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
