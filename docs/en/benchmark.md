@@ -320,7 +320,6 @@ mapper_resolver_pipeline = Pipeline(
         rxnorm_resolver,
         resolverMerger
 ])
-
 ```
 
 **NOTES:**
@@ -419,6 +418,76 @@ In that case, try playing with various parameters in the mapper or retrain/ augm
 
 </div>
 
+
+<div class="h3-box" markdown="1">
+    
+### ONNX and Base Embeddings in Resolver 
+
+- **Dataset:** 100 Custom Clinical Texts, approx. 595 tokens per text
+- **Versions:**
+    - **spark-nlp Version:** v5.2.2
+    - **spark-nlp-jsl Version :** v5.2.1
+    - **Spark Version :** v3.2.1
+- **Instance Type:** 
+    -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
+
+```python
+nlp_pipeline = Pipeline(
+    stages = [
+        document_assembler,
+        sentenceDetectorDL,
+        tokenizer,
+        word_embeddings,
+        clinical_ner,
+        ner_converter,
+  ])
+
+embedding_pipeline = PipelineModel(
+    stages = [
+        c2doc,
+        sbiobert_embeddings # base or onnx version
+  ])
+
+resolver_pipeline = PipelineModel(
+    stages = [
+        rxnorm_resolver
+  ])
+```
+
+***Base Embeddings Results Table***
+
+|partition|nlp_time|embdding_time|resolver_time|
+|--------:|-------:|------------:|------------:|
+| 4       | 25 sec | 25 sec      |7 min 46 sec |
+| 8       | 21 sec | 25 sec      |5 min 12 sec |
+| 16      | 21 sec | 25 sec      |4 min 41 sec |
+| 32      | 20 sec | 24 sec      |5 min 4 sec  |
+| 64      | 21 sec | 24 sec      |4 min 44 sec |
+| 128     | 20 sec | 25 sec      |5 min 4 sec  |
+| 256     | 22 sec | 26 sec      |4 min 34 sec |
+| 512     | 24 sec | 27 sec      |4 min 46 sec |
+| 1024    | 29 sec | 30 sec      |4 min 24 sec |
+
+
+***ONNX Embeddings Results Table***
+
+|partition|nlp_time|embdding_time|resolver_time|
+|--------:|-------:|------------:|------------:|
+| 4       | 25 sec | 9 sec       |8 min 29 sec |
+| 8       | 20 sec | 9 sec       |4 min 53 sec |
+| 16      | 21 sec | 9 sec       |4 min 30 sec |
+| 32      | 20 sec | 9 sec       |4 min 34 sec |
+| 64      | 21 sec | 9 sec       |5 min 2 sec  |
+| 128     | 20 sec | 10 sec      |4 min 51 sec |
+| 256     | 22 sec | 10 sec      |5 min 13 sec |
+| 512     | 24 sec | 12 sec      |4 min 22 sec |
+| 1024    | 28 sec | 14 sec      |4 min 29 sec |
+
+</div>
+
+
+
+
 <div class="h3-box" markdown="1">
 
 ### Deidentification Benchmark Experiment
@@ -492,16 +561,15 @@ deid_pipeline = Pipeline().setStages([
 
 ## AWS EMR Cluster Benchmark
 
-**Dataset:** 340 Custom Clinical Texts, approx. 235 tokens per text
-**Versions :**
+- **Dataset:** 340 Custom Clinical Texts, approx. 235 tokens per text
+- **Versions:**
     - **EMR Version:** ERM.6.15.0
     - **spark-nlp Version:** v5.2.2
     - **spark-nlp-jsl Version :** v5.2.1
     - **Spark Version :** v3.4.1
-**Instance Type:** 
+- **Instance Type:** 
     -  **Primary**: m4.4xlarge, 16 vCore, 64 GiB memory
     - **Worker :**  m4.4xlarge, 16 vCore, 64 GiB memory
-
 
 **Spark NLP Pipeline:**
 
@@ -513,7 +581,6 @@ ner_pipeline = Pipeline(stages = [
         word_embeddings,
         ner_jsl,
         ner_jsl_converter])
-
 
 resolver_pipeline = Pipeline(stages = [
         document_assembler,
@@ -527,12 +594,10 @@ resolver_pipeline = Pipeline(stages = [
         snomed_resolver]) 
 ```
 
-
 **NOTES:**
-`ner_jsl` modek=l is used as ner model.The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results in `parquet` format.
+`ner_jsl` model is used as ner model.The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results in `parquet` format.
 
 The `sbiobertresolve_snomed_findings` model is used as the resolver model. The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results (snomed_code and snomed_code_definition) in `parquet` format and 722 entities saved.
-
 
 ***Results Table***
 
