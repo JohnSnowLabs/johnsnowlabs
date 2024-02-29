@@ -103,7 +103,13 @@ try:
             Text2SQL,
             IOBTagger,
             DocumentFiltererByClassifier,
-        
+            Flattener,
+            EntityRulerInternalApproach as EntityRulerApproach,
+            EntityRulerInternalModel as EntityRulerModel,
+            TextMatcherInternal as TextMatcher,
+            TextMatcherInternalModel as TextMatcherModel,
+            RegexMatcherInternal as RegexMatcher,
+            RegexMatcherInternalModel as RegexMatcherModel,
         )
         from sparknlp_jsl.modelTracer import ModelTracer
 
