@@ -96,10 +96,7 @@ pipeline = Pipeline(stages=[
     ner_converter   
     ])
 
-sample_texts = ["""The patient presented with symptoms consistent with opioid withdrawal, including feelings of anxiety, tremors, and diarrhea. Vital signs were within normal limits, and supportive measures were initiated. The patient was closely monitored for potential complications and provided with appropriate pharmacological interventions to manage their symptoms.""",
-               """The patient presented to the rehabilitation facility with a documented history of opioid abuse, primarily stemming from misuse of prescription percocet pills intended for their partner's use. Initial assessment revealed withdrawal symptoms consistent with opioid dependency, including agitation, diaphoresis, and myalgias.""",
-               """The patient presented to the emergency department following an overdose on cocaine. On examination, the patient displayed signs of sympathetic nervous system stimulation, including tachycardia, hypertension, dilated pupils, and agitation.""",
-               """The patient, known for a history of substance abuse, was brought to the hospital in a highly agitated and aggressive state, consistent with potential cocaine use. Initial assessment revealed signs of sympathetic overstimulation, including tachycardia, hypertension, and profuse sweating."""]
+sample_texts = ["""The patient, unmarried and with a significant history of substance abuse involving the illicit consumption of various opioids such as heroin, fentanyl, and oxycodone, presented with a headache and was diagnosed PTSD. Despite denying the use of alcohol, smoking, or marijuana, the patient, who has been unemployed for several months, required administration of Narcan for suspected opioid overdose. A recent toxicology screen confirmed the presence of opioids, and showed negative results for benzodiazepines, cocaine, amphetamines, barbiturates, and tricyclic substances."""]
 
 
 data = spark.createDataFrame(sample_texts, StringType()).toDF("text")
@@ -152,38 +149,32 @@ val result = pipeline.fit(sample_texts).transform(sample_texts)
 ## Results
 
 ```bash
-+--------------------------------------+-----+---+----------------------+
-|chunk                                 |begin|end|ner_label             |
-+--------------------------------------+-----+---+----------------------+
-|opioid                                |52   |57 |opioid_drug           |
-|withdrawal                            |59   |68 |general_symptoms      |
-|anxiety                               |93   |99 |psychiatric_issue     |
-|tremors                               |102  |108|general_symptoms      |
-|diarrhea                              |115  |122|general_symptoms      |
-|opioid                                |82   |87 |opioid_drug           |
-|percocet                              |143  |150|opioid_drug           |
-|pills                                 |152  |156|drug_form             |
-|withdrawal                            |220  |229|general_symptoms      |
-|opioid                                |256  |261|opioid_drug           |
-|agitation                             |285  |293|general_symptoms      |
-|diaphoresis                           |296  |306|general_symptoms      |
-|myalgias                              |313  |320|general_symptoms      |
-|overdose                              |63   |70 |other_disease         |
-|cocaine                               |75   |81 |other_drug            |
-|sympathetic nervous system stimulation|131  |168|general_symptoms      |
-|tachycardia                           |181  |191|general_symptoms      |
-|hypertension                          |194  |205|other_disease         |
-|dilated pupils                        |208  |221|general_symptoms      |
-|agitation                             |228  |236|general_symptoms      |
-|substance abuse                       |36   |50 |substance_use_disorder|
-|agitated                              |93   |100|general_symptoms      |
-|aggressive state                      |106  |121|general_symptoms      |
-|cocaine                               |150  |156|other_drug            |
-|sympathetic overstimulation           |200  |226|general_symptoms      |
-|tachycardia                           |239  |249|general_symptoms      |
-|hypertension                          |252  |263|other_disease         |
-|profuse sweating                      |270  |285|general_symptoms      |
-+--------------------------------------+-----+---+----------------------+
++--------------------+-----+---+----------------------+
+|chunk               |begin|end|ner_label             |
++--------------------+-----+---+----------------------+
+|unmarried           |13   |21 |marital_status        |
+|substance abuse     |57   |71 |substance_use_disorder|
+|opioids             |118  |124|opioid_drug           |
+|heroin              |134  |139|opioid_drug           |
+|fentanyl            |142  |149|opioid_drug           |
+|oxycodone           |156  |164|opioid_drug           |
+|headache            |184  |191|general_symptoms      |
+|PTSD                |211  |214|psychiatric_issue     |
+|alcohol             |244  |250|alcohol_use           |
+|marijuana           |265  |273|other_drug            |
+|unemployed          |302  |311|employment            |
+|Narcan              |360  |365|antidote              |
+|opioid              |381  |386|opioid_drug           |
+|overdose            |388  |395|other_disease         |
+|toxicology screen   |407  |423|test                  |
+|opioids             |451  |457|test                  |
+|negative            |471  |478|test_result           |
+|benzodiazepines     |492  |506|test                  |
+|cocaine             |509  |515|test                  |
+|amphetamines        |518  |529|test                  |
+|barbiturates        |532  |543|test                  |
+|tricyclic substances|550  |569|test                  |
++--------------------+-----+---+----------------------+
 ```
 
 {:.model-param}
