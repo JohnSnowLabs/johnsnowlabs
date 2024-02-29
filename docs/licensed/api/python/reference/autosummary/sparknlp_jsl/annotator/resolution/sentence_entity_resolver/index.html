@@ -483,6 +483,8 @@ threshold will not be returned.</p>
 </dd>
 <dt><strong>missAsEmpty</strong></dt><dd><p>Whether or not to return an empty annotation on unmatched chunks.</p>
 </dd>
+<dt><strong>returnResolvedTextEmbeddings</strong></dt><dd><p>Whether to include embeddings for resolved text embeddings.(Default : False)</p>
+</dd>
 </dl>
 </dd>
 </dl>
@@ -514,6 +516,11 @@ threshold will not be returned.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.missAsEmpty">
 <span class="sig-name descname"><span class="pre">missAsEmpty</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.missAsEmpty" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.returnResolvedTextEmbeddings">
+<span class="sig-name descname"><span class="pre">returnResolvedTextEmbeddings</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.returnResolvedTextEmbeddings" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -580,6 +587,24 @@ threshold will not be returned.</p>
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><dl class="simple">
 <dt><strong>value</strong><span class="classifier">bool</span></dt><dd><p>whether or not to return an empty annotation on unmatched chunks.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.setReturnResolvedTextEmbeddings">
+<span class="sig-name descname"><span class="pre">setReturnResolvedTextEmbeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.setReturnResolvedTextEmbeddings" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Sets whether to include embeddings for resolved text candidates.</dt><dd><p>If set to true, embeddings will be included; if set to false, embeddings will be excluded.
+(Default : False)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>value</strong><span class="classifier">bool</span></dt><dd><p>Whether to include embeddings for resolved text embeddings.</p>
 </dd>
 </dl>
 </dd>
@@ -1075,11 +1100,13 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.threshold"><code class="docutils literal notranslate"><span class="pre">SentenceResolverParams.threshold</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.confidenceFunction"><code class="docutils literal notranslate"><span class="pre">SentenceResolverParams.confidenceFunction</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.missAsEmpty"><code class="docutils literal notranslate"><span class="pre">SentenceResolverParams.missAsEmpty</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.returnResolvedTextEmbeddings"><code class="docutils literal notranslate"><span class="pre">SentenceResolverParams.returnResolvedTextEmbeddings</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.setDistanceFunction"><code class="docutils literal notranslate"><span class="pre">SentenceResolverParams.setDistanceFunction()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.setNeighbours"><code class="docutils literal notranslate"><span class="pre">SentenceResolverParams.setNeighbours()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.setThreshold"><code class="docutils literal notranslate"><span class="pre">SentenceResolverParams.setThreshold()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.setConfidenceFunction"><code class="docutils literal notranslate"><span class="pre">SentenceResolverParams.setConfidenceFunction()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.setMissAsEmpty"><code class="docutils literal notranslate"><span class="pre">SentenceResolverParams.setMissAsEmpty()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceResolverParams.setReturnResolvedTextEmbeddings"><code class="docutils literal notranslate"><span class="pre">SentenceResolverParams.setReturnResolvedTextEmbeddings()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution.sentence_entity_resolver.SentenceEntityResolverApproach"><code class="docutils literal notranslate"><span class="pre">SentenceEntityResolverApproach</span></code></a><ul class="nav section-nav flex-column">
