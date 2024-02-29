@@ -36,6 +36,7 @@ try:
             EntityChunkEmbeddings,
             ZeroShotRelationExtractionModel,
             TFGraphBuilder,
+            NerConverterInternal,
             ChunkConverter,
             ChunkFilterer,
             NerChunker,

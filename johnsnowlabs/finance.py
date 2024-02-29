@@ -69,6 +69,7 @@ try:
             TFGraphBuilder,
             ChunkConverter,
             ChunkFilterer,
+            NerConverterInternal,
             NerConverterInternal as NerConverter,
             NerChunker,
             AssertionFilterer,

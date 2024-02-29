@@ -46,6 +46,7 @@ try:
 
         # These are licensed annos shared across all libs
         from sparknlp_jsl.annotator import (
+            NerConverterInternal,
             NerConverterInternal as NerConverter,
             GenericSVMClassifierApproach,
             GenericSVMClassifierModel,
