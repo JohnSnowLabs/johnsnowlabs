@@ -7,7 +7,7 @@ from haystack.pipelines import RayPipeline
 from haystack.nodes import EmbeddingRetriever
 
 from johnsnowlabs.frameworks.embedding_retrieval.haystack_node import (
-    JohnSnowLabsHaystackProcessor,
+    JohnSnowLabsHaystackDocumentSplitter,
 )
 
 # os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
@@ -39,7 +39,7 @@ def test_integration():
     #     split_by="word",
     # )
 
-    processor = JohnSnowLabsHaystackProcessor()
+    processor = JohnSnowLabsHaystackDocumentSplitter()
 
     # Write some processed data to Doc store, so we can retrieve it later
     document_store = InMemoryDocumentStore(embedding_dim=512)
