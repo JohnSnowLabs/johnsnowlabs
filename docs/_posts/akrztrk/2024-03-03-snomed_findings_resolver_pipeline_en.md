@@ -32,6 +32,7 @@ This pipeline extracts clinical findings and maps them to their corresponding SN
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
