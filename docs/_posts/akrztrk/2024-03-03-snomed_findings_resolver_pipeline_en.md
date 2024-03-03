@@ -37,18 +37,18 @@ This pipeline extracts clinical findings and maps them to their corresponding SN
 
 from sparknlp.pretrained import PretrainedPipeline
 
-ner_pipeline = PretrainedPipeline("snomed_findings_resolver_pipeline", "en", "clinical/models")
+snomed_pipeline = PretrainedPipeline("snomed_findings_resolver_pipeline", "en", "clinical/models")
 
-result = ner_pipeline.annotate("""The patient exhibited recurrent upper respiratory tract infections, fever, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia.""")
+result = snomed_pipeline.annotate("""The patient exhibited recurrent upper respiratory tract infections, fever, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia.""")
 
 ```
 ```scala
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val ner_pipeline = PretrainedPipeline("snomed_findings_resolver_pipeline", "en", "clinical/models")
+val snomed_pipeline = PretrainedPipeline("snomed_findings_resolver_pipeline", "en", "clinical/models")
 
-val result = ner_pipeline.annotate("""The patient exhibited recurrent upper respiratory tract infections, fever, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia.""")
+val result = snomed_pipeline.annotate("""The patient exhibited recurrent upper respiratory tract infections, fever, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia.""")
 
 ```
 </div>
