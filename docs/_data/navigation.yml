@@ -332,6 +332,8 @@ jsl:
         url:    /docs/en/jsl/haystack-utils
       - title:  Utilities for Langchain
         url:    /docs/en/jsl/langchain-utils
+      - title:  Utilities for Docker
+        url:    /docs/en/jsl/docker-utils
       - title:  Release Testing Utilities
         url:    /docs/en/jsl/testing-utils
       - title:  Module Structure
