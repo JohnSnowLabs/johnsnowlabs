@@ -1,6 +1,6 @@
 ---
 layout: model
-title: PiPipeline for Snomed Concept, Findings Version
+title: Pipeline for Snomed Concept, Findings Version
 author: John Snow Labs
 name: snomed_findings_resolver_pipeline
 date: 2024-03-03
