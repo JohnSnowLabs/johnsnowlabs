@@ -61,8 +61,10 @@ ner_jsl = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models") \
 ner_jsl_converter = NerConverterInternal() \
     .setInputCols(["sentence", "token", "ner_jsl"]) \
     .setOutputCol("ner_jsl_chunk")\
-    .setWhiteList(["External_body_part_or_region"])\
-    .setReplaceLabels({"External_body_part_or_region": "BodyPart"})
+    .setWhiteList(["External_body_part_or_region", 
+                   "Internal_organ_or_component"])\
+    .setReplaceLabels({"External_body_part_or_region": "BodyPart", 
+                       "Internal_organ_or_component": "BodyPart" })
 
 ner_anatomy = MedicalNerModel.pretrained("ner_anatomy_coarse", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
@@ -146,7 +148,7 @@ val ner_jsl = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")
 val ner_jsl_converter = new NerConverter()
     .setInputCols(Array("sentence","token","ner"))
     .setOutputCol("ner_jsl_chunk")
-    .setWhiteList(Array("External_body_part_or_region"))
+    .setWhiteList(Array("External_body_part_or_region", "Internal_organ_or_component"))
     .setReplaceLabels({"Anatomical_Site": "BodyPart"})
 
 val ner_anatomy = MedicalNerModel.pretrained("ner_anatomy_coarse", "en", "clinical/models")
