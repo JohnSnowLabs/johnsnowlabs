@@ -47,7 +47,7 @@ def _destroy_image(image_name: str = None):
         run_cmd_and_check_succ([rm_cmd], shell=True, raise_on_fail=False, use_code=True)
         print(f"Image '{image_name}' destroyed.")
     else:
-        print(f"Image '{image_name}' does not exist.")
+        print(f"Tried to destroy image '{image_name}', but does not exist.")
 
 
 def is_docker_installed():
@@ -77,24 +77,20 @@ def is_docker_installed():
 
 
 def generate_dockerfile(
-    # Install parameters
-    model: str,  # nlu ref, nlp_ref or lcoally stored model
-    json_license_path: Optional[str] = None,
-    access_token: Optional[str] = None,
-    spark_nlp: bool = True,
-    visual: bool = False,
-    nlp: bool = True,
-    hardware_platform: str = JvmHardwareTarget.cpu.value,
+        # Install parameters
+        model: str,
+        secrets: JslSecrets,
+        visual: bool = False,
+        nlp: bool = True,
+        hardware_platform: str = JvmHardwareTarget.cpu.value,
 ):
     """
     Generate a Dockerfile for a specific model and configuration.
 
-    :param model: Reference to the model to be used.
-    :param json_license_path: Path to the JSON license file.
-    :param access_token: Access token for authentication.
-    :param spark_nlp: Flag to include Spark NLP.
+    :param model: NLU Reference to the model to be used.
+    :param secrets: JslSecrets object
     :param visual: Flag to include visual features.
-    :param nlp: Flag to include NLP features.
+    :param nlp: Flag to include medical NLP features.
     :param hardware_platform: Target hardware platform (e.g., 'cpu').
     """
     if not model:
@@ -103,10 +99,6 @@ def generate_dockerfile(
     build_folder = os.path.join(get_folder_of_func(_destroy_container), "build")
     base_docker_file_path = os.path.join(build_folder, "base_dockerfile")
     generated_docker_file_path = os.path.join(build_folder, "generated_dockerfile")
-    secrets: JslSecrets = JslSecrets.build_or_try_find_secrets(
-        secrets_file=json_license_path,
-        access_token=access_token,
-    )
 
     provided_license = None
     if secrets.OCR_LICENSE:
@@ -165,34 +157,52 @@ def insert_strings(index, inserts, start_string):
 
 
 def build_image(
-    preloaded_model: str,  # nlu ref, nlp_ref or lcoally stored model
-    image_name=None,
-    destroy_image=False,
-    use_cache=True,
-    # Install parameters
-    json_license_path: Optional[str] = None,
-    access_token: Optional[str] = None,
-    spark_nlp: bool = True,
-    visual: bool = False,
-    nlp: bool = True,
-    hardware_platform: str = JvmHardwareTarget.cpu.value,
+        preloaded_model: str,  # nlu ref, nlp_ref or lcoally stored model
+        image_name=None,
+        rebuild=False,
+        use_cache=True,
+        # Install parameters
+        # -- JSL-Auth Flows --
+        # Browser Auth
+        browser_login: bool = True,
+        # JWT Token Auth
+        access_token: Optional[str] = None,
+        # JSON file Auth
+        json_license_path: Optional[str] = None,
+        # Manual License specification Auth
+        med_license: Optional[str] = None,
+        enterprise_nlp_secret: Optional[str] = None,
+        ocr_secret: Optional[str] = None,
+        ocr_license: Optional[str] = None,
+        fin_license: Optional[str] = None,
+        leg_license: Optional[str] = None,
+        aws_access_key: Optional[str] = None,
+        aws_key_id: Optional[str] = None,
+        # Download Params
+        nlp: bool = True,
+        visual: bool = False,
+        # License usage & Caching
+        local_license_number: int = 0,
+        remote_license_number: int = 0,
+        store_in_jsl_home: bool = True,
+        # Install File Types
+        hardware_platform: str = JvmHardwareTarget.cpu.value,
 ):
     """
     Build a Docker image with specified parameters.
 
     :param preloaded_model: Reference to the preloaded model.
     :param image_name: Name of the Docker image. If None, uses default from settings.
-    :param destroy_image: Flag to destroy the existing image before building a new one.
+    :param rebuild: Flag to destroy existing image and rebuild
     :param use_cache: Flag to use cache during the build.
     :param json_license_path: Path to the JSON license file.
     :param access_token: Access token for authentication.
-    :param spark_nlp: Flag to include Spark NLP.
     :param visual: Flag to include visual features.
     :param nlp: Flag to include NLP features.
     :param hardware_platform: Target hardware platform (e.g., 'cpu').
     """
     image_name = settings.docker_image_name if image_name is None else image_name
-    if destroy_image:
+    if rebuild:
         _destroy_image(image_name)
 
     build_folder = os.path.join(get_folder_of_func(_destroy_container), "build")
@@ -200,11 +210,26 @@ def build_image(
     if not use_cache:
         cmd += " --no-cache"
 
+    secrets: JslSecrets = JslSecrets.build_or_try_find_secrets(
+        browser_login=browser_login,
+        access_token=access_token,
+        secrets_file=json_license_path,
+        hc_license=med_license,
+        hc_secret=enterprise_nlp_secret,
+        ocr_secret=ocr_secret,
+        ocr_license=ocr_license,
+        fin_license=fin_license,
+        leg_license=leg_license,
+        aws_access_key=aws_access_key,
+        aws_key_id=aws_key_id,
+        local_license_number=local_license_number,
+        remote_license_number=remote_license_number,
+        store_in_jsl_home=store_in_jsl_home,
+    )
+
     generate_dockerfile(
         model=preloaded_model,
-        json_license_path=json_license_path,
-        access_token=access_token,
-        spark_nlp=spark_nlp,
+        secrets=secrets,
         visual=visual,
         nlp=nlp,
         hardware_platform=hardware_platform,
@@ -235,7 +260,7 @@ def run_container_cmd(container_name=None, image_name=None, destroy_container=Fa
 
 
 def serve_container(
-    container_name=None, image_name=None, destroy_container=False, host_port=8000
+        container_name=None, image_name=None, destroy_container=False, host_port=8000
 ):
     """
     Serve a Docker container on a specified host port.
