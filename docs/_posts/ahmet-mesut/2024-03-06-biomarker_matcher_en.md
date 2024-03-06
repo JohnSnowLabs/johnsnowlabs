@@ -36,6 +36,7 @@ Extracts biomarker entities using rule based `TextMatcherInternal` annotator.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -80,7 +81,6 @@ val mathcer_pipeline = new Pipeline()
 val data = Seq("In the bone- marrow (BM) aspiration, blasts accounted for 88.1% of ANCs, which were positive for CD20, CD34, CD38, CD58, CD66c, CD123, HLA-DR, cCD79a, and TdT on flow cytometry. Measurements of serum tumor markers showed elevated level of cytokeratin 19 fragment (Cyfra21-1: 4.77 ng/mL), neuron-specific enolase (NSE: 19.60 ng/mL), and squamous cell carcinoma antigen (SCCA: 2.58 ng/mL).") .toDF("text")
 	
 val matcher_model = mathcer_pipeline.fit(data)
-	
 val result = matcher_model.transform(data)
 ```
 </div>
