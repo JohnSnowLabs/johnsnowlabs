@@ -36,6 +36,7 @@ This model extracts medication entities in clinical notes using rule-based `Text
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
