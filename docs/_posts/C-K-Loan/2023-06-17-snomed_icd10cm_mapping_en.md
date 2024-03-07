@@ -40,14 +40,14 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("snomed_icd10cm_mapping", "en", "clinical/models")
 
-result = pipeline.fullAnnotate(128041000119107 292278006 293072005)
+result = pipeline.fullAnnotate(["128041000119107", "292278006", "293072005"])
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val pipeline = new PretrainedPipeline("snomed_icd10cm_mapping", "en", "clinical/models")
 
-val result = pipeline.fullAnnotate(128041000119107 292278006 293072005)
+val result = pipeline.fullAnnotate(["128041000119107", "292278006", "293072005"])
 ```
 
 
@@ -63,9 +63,11 @@ nlu.load("en.map_entity.snomed_to_icd10cm.pipe").predict("""Put your text here."
 ## Results
 
 ```bash
-|    | snomed_code                             | icd10cm_code               |
-|---:|:----------------------------------------|:---------------------------|
-|  0 | 128041000119107 | 292278006 | 293072005 | K22.70 | T43.595 | T37.1X5 |
+|   | icd10cm_code |     snomed_code |
+|--:|-------------:|----------------:|
+| 0 |       K22.70 | 128041000119107 |
+| 1 |      T43.595 |       292278006 |
+| 2 |      T37.1X5 |       293072005 |
 ```
 
 {:.model-param}

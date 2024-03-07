@@ -113,7 +113,8 @@ val ner_converter = new NerConverterInternal()
     .setOutputCol("ner_chunk")
     .setWhiteList(Array("opioid_drug", "other_drug"))
 
-val assertion = AssertionDLModel.pretrained("assertion_opioid_drug_status_wip" "en", "clinical/models")
+
+val assertion = AssertionDLModel.pretrained("assertion_opioid_drug_status_wip", "en", "clinical/models")
     .setInputCols(Array("sentence", "ner_chunk", "embeddings"))
     .setOutputCol("assertion")
     

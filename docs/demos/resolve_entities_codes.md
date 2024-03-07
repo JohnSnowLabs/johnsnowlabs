@@ -202,4 +202,16 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/06.0.Chunk_Mapping.ipynb
+        - title: Extraction of SNOMED Terms
+          id: extraction_snomed_terms       
+          image: 
+              src: /assets/images/Extraction_of_SNOMED_Terms.svg
+          excerpt: This NER model is designed to identify SNOMED terms within clinical documents, utilizing the embeddings_clinical embeddings model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/NER_SNOMED_TERM/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/NER_SNOMED_TERM.ipynb
 ---

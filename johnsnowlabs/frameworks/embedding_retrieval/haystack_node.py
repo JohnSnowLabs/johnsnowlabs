@@ -12,7 +12,10 @@ from haystack.nodes.retriever._base_embedding_encoder import _BaseEmbeddingEncod
 from haystack.schema import Document, MultiLabel
 from tqdm.auto import tqdm
 
-from johnsnowlabs.frameworks.embedding_retrieval.utils import get_docsplitter_pipe
+from johnsnowlabs.frameworks.embedding_retrieval.utils import (
+    get_docsplitter_pipe,
+    get_doc_splitter_internal_pipe,
+)
 
 
 class _JohnsnowlabsEmbeddingEncoder(_BaseEmbeddingEncoder):
@@ -244,6 +247,125 @@ class JohnSnowLabsHaystackProcessor(BaseComponent):  # BasePreProcessor
     ):
         result = {"documents": d for d in self.process(documents)}
         return result, "output_1"
+
+
+class LicensedJohnSnowLabsHaystackProcessor(
+    JohnSnowLabsHaystackProcessor
+):  # BasePreProcessor
+    outgoing_edges = 1
+
+    def __init__(
+        self,
+        # Splitter params
+        doc_splitter_chunk_overlap=2,
+        doc_splitter_chunk_size=20,
+        doc_splitter_explode_splits=True,
+        doc_splitter_keep_separators=True,
+        doc_splitter_patterns_are_regex=False,
+        doc_splitter_split_patterns=["\n\n", "\n", " ", ""],
+        doc_splitter_trim_whitespace=True,
+        doc_splitter_split_mode="sentence",
+        doc_splitter_sentence_awareness=False,
+        doc_splitter_max_length=512,
+        doc_splitter_custom_bounds_strategy=None,
+        doc_splitter_case_sensitive=None,
+        doc_splitter_meta_data_fields=None,
+        # Tokenizer Params
+        tokenizer_target_pattern=None,
+        tokenizer_prefix_pattern=None,
+        tokenizer_suffix_pattern=None,
+        tokenizer_infix_patterns=None,
+        tokenizer_exceptions=None,
+        tokenizer_exceptions_path=None,
+        tokenizer_case_sensitive_exceptions=None,
+        tokenizer_context_chars=None,
+        tokenizer_split_pattern=None,
+        tokenizer_split_chars=None,
+        tokenizer_min_length=None,
+        tokenizer_max_length=None,
+        # Sentence Detector Params
+        sentence_detector_model_architecture=None,
+        sentence_detector_explode_sentences=None,
+        sentence_detector_custom_bounds=None,
+        sentence_detector_use_custom_bounds_only=None,
+        sentence_detector_split_length=None,
+        sentence_detector_min_length=None,
+        sentence_detector_max_length=None,
+        sentence_detector_impossible_penultimates=None,
+        progress_bar: bool = True,
+    ):
+        """
+        :param clean_header_footer: Use heuristic to remove footers and headers across different pages by searching
+                                     for the longest common string. This heuristic uses exact matches and therefore
+                                     works well for footers like "Copyright 2019 by XXX", but won't detect "Page 3 of 4"
+                                     or similar.
+        :param clean_whitespace: Strip whitespaces before or after each line in the text.
+        :param clean_empty_lines: Remove more than two empty lines in the text.
+        :param remove_substrings: Remove specified substrings from the text. If no value is provided an empty list is created by default.
+        :param split_by: Unit for splitting the document. Can be "word", "sentence", or "passage". Set to None to disable splitting.
+        :param split_length: Max. number of the above split unit (e.g. words) that are allowed in one document. For instance, if n -> 10 & split_by ->
+                           "sentence", then each output document will have 10 sentences.
+        :param split_overlap: Word overlap between two adjacent documents after a split.
+                              Setting this to a positive number essentially enables the sliding window approach.
+                              For example, if split_by -> `word`,
+                              split_length -> 5 & split_overlap -> 2, then the splits would be like:
+                              [w1 w2 w3 w4 w5, w4 w5 w6 w7 w8, w7 w8 w10 w11 w12].
+                              Set the value to 0 to ensure there is no overlap among the documents after splitting.
+        :param split_respect_sentence_boundary: Whether to split in partial sentences if split_by -> `word`. If set
+                                                to True, the individual split will always have complete sentences &
+                                                the number of words will be <= split_length.
+        :param language: The language used by "nltk.tokenize.sent_tokenize" in iso639 format.
+            Available options: "ru","sl","es","sv","tr","cs","da","nl","en","et","fi","fr","de","el","it","no","pl","pt","ml"
+        :param tokenizer_model_folder: Path to the folder containing the NTLK PunktSentenceTokenizer models, if loading a model from a local path. Leave empty otherwise.
+        :param id_hash_keys: Generate the document id from a custom list of strings that refer to the document's
+            attributes. If you want to ensure you don't have duplicate documents in your DocumentStore but texts are
+            not unique, you can modify the metadata and pass e.g. `"meta"` to this field (e.g. [`"content"`, `"meta"`]).
+            In this case the id will be generated by using the content and the defined metadata.
+        :param progress_bar: Whether to show a progress bar.
+        :param add_page_number: Add the number of the page a paragraph occurs in to the Document's meta
+                                field `"page"`. Page boundaries are determined by `"\f"` character which is added
+                                in between pages by `PDFToTextConverter`, `TikaConverter`, `ParsrConverter` and
+                                `AzureConverter`.
+        :param max_chars_check: the maximum length a document is expected to have. Each document that is longer than max_chars_check in characters after pre-processing will raise a warning.
+        """
+        super().__init__()
+        self.progress_bar = progress_bar
+
+        self.pipe = get_doc_splitter_internal_pipe(
+            doc_splitter_chunk_overlap=doc_splitter_chunk_overlap,
+            doc_splitter_chunk_size=doc_splitter_chunk_size,
+            doc_splitter_explode_splits=doc_splitter_explode_splits,
+            doc_splitter_keep_separators=doc_splitter_keep_separators,
+            doc_splitter_patterns_are_regex=doc_splitter_patterns_are_regex,
+            doc_splitter_split_patterns=doc_splitter_split_patterns,
+            doc_splitter_trim_whitespace=doc_splitter_trim_whitespace,
+            doc_splitter_split_mode=doc_splitter_split_mode,
+            doc_splitter_sentence_awareness=doc_splitter_sentence_awareness,
+            doc_splitter_max_length=doc_splitter_max_length,
+            doc_splitter_custom_bounds_strategy=doc_splitter_custom_bounds_strategy,
+            doc_splitter_case_sensitive=doc_splitter_case_sensitive,
+            doc_splitter_meta_data_fields=doc_splitter_meta_data_fields,
+            tokenizer_target_pattern=tokenizer_target_pattern,
+            tokenizer_prefix_pattern=tokenizer_prefix_pattern,
+            tokenizer_suffix_pattern=tokenizer_suffix_pattern,
+            tokenizer_infix_patterns=tokenizer_infix_patterns,
+            tokenizer_exceptions=tokenizer_exceptions,
+            tokenizer_exceptions_path=tokenizer_exceptions_path,
+            tokenizer_case_sensitive_exceptions=tokenizer_case_sensitive_exceptions,
+            tokenizer_context_chars=tokenizer_context_chars,
+            tokenizer_split_pattern=tokenizer_split_pattern,
+            tokenizer_split_chars=tokenizer_split_chars,
+            tokenizer_min_length=tokenizer_min_length,
+            tokenizer_max_length=tokenizer_max_length,
+            sentence_detector_model_architecture=sentence_detector_model_architecture,
+            sentence_detector_explode_sentences=sentence_detector_explode_sentences,
+            sentence_detector_custom_bounds=sentence_detector_custom_bounds,
+            sentence_detector_use_custom_bounds_only=sentence_detector_use_custom_bounds_only,
+            sentence_detector_split_length=sentence_detector_split_length,
+            sentence_detector_min_length=sentence_detector_min_length,
+            sentence_detector_max_length=sentence_detector_max_length,
+            sentence_detector_impossible_penultimates=sentence_detector_impossible_penultimates,
+        )
 
 
 def inject():
