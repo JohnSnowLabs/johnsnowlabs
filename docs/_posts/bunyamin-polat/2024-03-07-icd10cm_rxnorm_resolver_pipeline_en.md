@@ -4,7 +4,7 @@ title: Pipeline for ICD-10CM and RXNORM Sentence Entity Resolver
 author: John Snow Labs
 name: icd10cm_rxnorm_resolver_pipeline
 date: 2024-03-07
-tags: [licensed, en, snomed, pipeline, resolver]
+tags: [licensed, en, icd-10, rxnorm, pipeline, resolver]
 task: [Entity Resolution, Pipeline Healthcare]
 language: en
 edition: Healthcare NLP 5.3.0
@@ -32,6 +32,7 @@ This pipeline extracts clinical entities and concepts to ICD-10-CM codes and RxN
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
