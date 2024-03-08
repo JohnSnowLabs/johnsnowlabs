@@ -18,15 +18,12 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This resolver pipeline enables the mapping of extracted clinical entities to ICD10-CM and RxNorm codes. Leveraging sbiobert_base_cased_mli Sentence Bert Embeddings, the model ensures accurate and context-aware associations between clinical entities and relevant medical codes. Users can refer to the following entity labels for pertinent concepts:
+This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. Users can refer to the following entity labels for pertinent concepts:
 
 
+- **ICD-10-CM entities:** `PROBLEM`, `TEST`, `TREATMENT`, `CEREBROVASCULAR_DISEASE`, `COMMUNICABLE_DISEASE`, `DIABETES`, `DISEASE_SYNDROME_DISORDER`, `EKG_FINDINGS`, `HEART_DISEASE`, `HYPERLIPIDEMIA`, `HYPERTENSION`, `IMAGINGFINDINGS`, `INJURY_OR_POISONING`, `KIDNEY_DISEASE`, `OBESITY`, `ONCOLOGICAL`, `OVERWEIGHT`, `PREGNANCY`, `PSYCHOLOGICAL_CONDITION`, `SYMPTOM`, `VS_FINDING`
 
-**ICD-10-CM entities:** `PROBLEM`, `TEST`, `TREATMENT`, `CEREBROVASCULAR_DISEASE`, `COMMUNICABLE_DISEASE`, `DIABETES`, `DISEASE_SYNDROME_DISORDER`, `EKG_FINDINGS`, `HEART_DISEASE`, `HYPERLIPIDEMIA`, `HYPERTENSION`, `IMAGINGFINDINGS`, `INJURY_OR_POISONING`, `KIDNEY_DISEASE`, `OBESITY`, `ONCOLOGICAL`, `OVERWEIGHT`, `PREGNANCY`, `PSYCHOLOGICAL_CONDITION`, `SYMPTOM`, `VS_FINDING`
-
-
-
-**RxNorm entities:** `DRUG`   
+- **RxNorm entities:** `DRUG`   
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
