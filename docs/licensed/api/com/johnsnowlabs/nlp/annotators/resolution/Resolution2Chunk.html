@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.2.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk</title>
-          <meta name="description" content="Spark NLP 5.2.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk" />
-          <meta name="keywords" content="Spark NLP 5.2.0 ScalaDoc com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk" />
+          <title>Spark NLP 5.3.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk</title>
+          <meta name="description" content="Spark NLP 5.3.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk" />
+          <meta name="keywords" content="Spark NLP 5.3.0 ScalaDoc com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.2.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.3.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -223,8 +223,8 @@
                         <a href="ReadablePretrainedSentenceEntityResolver.html" title="">ReadablePretrainedSentenceEntityResolver</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="Resolution2Chunk$.html" title=""></a>
-                        <a class="class" href="" title="A feature transformer that converts the input array of strings (annotatorType CHUNK) into an array of chunk-based tokens (annotatorType TOKEN)."></a>
-                        <a href="" title="A feature transformer that converts the input array of strings (annotatorType CHUNK) into an array of chunk-based tokens (annotatorType TOKEN).">Resolution2Chunk</a>
+                        <a class="class" href="" title="This annotator converts 'Resolution' type annotations into 'CHUNK' type to  create new chunk-type column, compatible with annotators that use chunk type as input."></a>
+                        <a href="" title="This annotator converts 'Resolution' type annotations into 'CHUNK' type to  create new chunk-type column, compatible with annotators that use chunk type as input.">Resolution2Chunk</a>
                       </li><li class="current-entities indented5">
                         <a class="object" href="ResolverMerger$.html" title=""></a>
                         <a class="class" href="ResolverMerger.html" title=""></a>
@@ -271,34 +271,38 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>A feature transformer that converts the input array of strings (annotatorType CHUNK) into an
-array of chunk-based tokens (annotatorType TOKEN).</p><p>When the input is empty, an empty array is returned.</p><p>This Annotator is specially convenient when using NGramGenerator annotations as inputs to WordEmbeddingsModels</p><h4>Example</h4><p>Define a pipeline for generating n-grams</p><pre><span class="kw">val</span> data = <span class="std">Seq</span>((<span class="lit">"A 63-year-old man presents to the hospital ..."</span>)).toDF(<span class="lit">"text"</span>)
-<span class="kw">val</span> document = <span class="kw">new</span> DocumentAssembler().setInputCol(<span class="lit">"text"</span>).setOutputCol(<span class="lit">"document"</span>)
-<span class="kw">val</span> sentenceDetector = <span class="kw">new</span> SentenceDetector().setInputCols(<span class="lit">"document"</span>).setOutputCol(<span class="lit">"sentence"</span>)
-<span class="kw">val</span> token = <span class="kw">new</span> Tokenizer().setInputCols(<span class="lit">"sentence"</span>).setOutputCol(<span class="lit">"token"</span>)
-<span class="kw">val</span> ngrammer = <span class="kw">new</span> NGramGenerator()
- .setN(<span class="num">2</span>)
- .setEnableCumulative(<span class="kw">false</span>)
- .setInputCols(<span class="lit">"token"</span>)
- .setOutputCol(<span class="lit">"ngrams"</span>)
- .setDelimiter(<span class="lit">"_"</span>)</pre><p>Stage to convert n-gram CHUNKS to TOKEN type</p><pre><span class="kw">val</span> chunk2Token = <span class="kw">new</span> Chunk2Token().setInputCols(<span class="lit">"ngrams"</span>).setOutputCol(<span class="lit">"ngram_tokens"</span>)
-<span class="kw">val</span> trainingPipeline = <span class="kw">new</span> Pipeline().setStages(<span class="std">Array</span>(document, sentenceDetector, token, ngrammer, chunk2Token)).fit(data)
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>This annotator converts 'Resolution' type annotations into 'CHUNK' type to  create new chunk-type column,
+compatible with annotators that use chunk type as input.</p><h4>Example</h4><p>Define dataset</p><pre><span class="kw">val</span> testDS = <span class="std">Seq</span>(
+<span class="lit">"Has a past history of gastroenteritis and stomach pain, however patient shows no stomach pain now. "</span> +
+<span class="lit">"We don't care about gastroenteritis here, but we do care about heart failure. "</span> +
+<span class="lit">"Test for asma, no asma."</span>).toDF(<span class="lit">"text"</span>)</pre><p>Define a pipeline</p><pre><span class="kw">val</span> documentAssembler = <span class="kw">new</span> DocumentAssembler().setInputCol(<span class="lit">"text"</span>).setOutputCol(<span class="lit">"ner_chunk"</span>)
 
-<span class="kw">val</span> result = trainingPipeline.transform(data).cache()
-result.selectExpr(<span class="lit">"explode(ngram_tokens)"</span>).show(<span class="num">5</span>, <span class="kw">false</span>)
-  +----------------------------------------------------------------+
-  |col                                                             |
-  +----------------------------------------------------------------+
-  |{token, <span class="num">3</span>, <span class="num">15</span>, A_63-year-old, {sentence -&gt; <span class="num">0</span>, chunk -&gt; <span class="num">0</span>}, []}  |
-  |{token, <span class="num">5</span>, <span class="num">19</span>, <span class="num">63</span>-year-old_man, {sentence -&gt; <span class="num">0</span>, chunk -&gt; <span class="num">1</span>}, []}|
-  |{token, <span class="num">17</span>, <span class="num">28</span>, man_presents, {sentence -&gt; <span class="num">0</span>, chunk -&gt; <span class="num">2</span>}, []}  |
-  |{token, <span class="num">21</span>, <span class="num">31</span>, presents_to, {sentence -&gt; <span class="num">0</span>, chunk -&gt; <span class="num">3</span>}, []}   |
-  |{token, <span class="num">30</span>, <span class="num">35</span>, to_the, {sentence -&gt; <span class="num">0</span>, chunk -&gt; <span class="num">4</span>}, []}        |
-  +----------------------------------------------------------------+</pre></div><dl class="attributes block"> <dt>See also</dt><dd><span class="cmt"><p><a href="https://nlp.johnsnowlabs.com/api/com/johnsnowlabs/nlp/annotators/NGramGenerator" target="_blank">NGramGenerator</a></p></span></dd></dl><div class="toggleContainer block">
+<span class="kw">val</span> sbert_embedder =  BertSentenceEmbeddings
+ .pretrained(<span class="lit">"sbiobert_base_cased_mli"</span>,<span class="lit">"en"</span>,<span class="lit">"clinical/models"</span> )
+ .setInputCols(<span class="std">Array</span>(<span class="lit">"ner_chunk"</span>))
+ .setOutputCol(<span class="lit">"sentence_embeddings"</span>)
+ .setCaseSensitive(<span class="kw">false</span>)
+
+<span class="kw">val</span> resolver = SentenceEntityResolverModel
+ .pretrained(<span class="lit">"sbiobertresolve_rxnorm_augmented"</span>, <span class="lit">"en"</span>, <span class="lit">"clinical/models"</span>)
+ .setInputCols(<span class="std">Array</span>(<span class="lit">"sentence_embeddings"</span>))
+ .setOutputCol(<span class="lit">"resolve"</span>)
+
+<span class="kw">val</span> resolver2chunk = <span class="kw">new</span> Resolution2Chunk()
+ .setInputCols(<span class="std">Array</span>(<span class="lit">"resolve"</span>))
+ .setOutputCol(<span class="lit">"chunk"</span>)</pre><pre><span class="kw">val</span> pipeline = <span class="kw">new</span> Pipeline().setStages(<span class="std">Array</span>(documentAssembler, sbert_embedder, resolver, resolver2chunk)).fit(testDS)
+
+<span class="kw">val</span> result = pipeline.transform(testDS).selectExpr(<span class="lit">"chunk.result"</span>,<span class="lit">"chunk.annotatorType"</span>).show(<span class="kw">false</span>)
+
+  +---------+-------------+
+  |result   |annotatorType|
+  +---------+-------------+
+  |[<span class="num">2550737</span>]|[chunk]      |
+  +---------+-------------+</pre></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk">Resolution2Chunk</a>], <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk">Resolution2Chunk</a>], <span class="extype" name="com.johnsnowlabs.nlp.CanBeLazy">CanBeLazy</span>, <span class="extype" name="com.johnsnowlabs.nlp.RawAnnotator">RawAnnotator</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk">Resolution2Chunk</a>], <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">HasInputAnnotationCols</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">HasOutputAnnotatorType</span>, <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="org.apache.spark.ml.Model">Model</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk">Resolution2Chunk</a>], <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span>, <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk">Resolution2Chunk</a>], <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk">Resolution2Chunk</a>], <span class="extype" name="com.johnsnowlabs.nlp.CanBeLazy">CanBeLazy</span>, <span class="extype" name="com.johnsnowlabs.nlp.RawAnnotator">RawAnnotator</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk">Resolution2Chunk</a>], <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">HasInputAnnotationCols</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">HasOutputAnnotatorType</span>, <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="org.apache.spark.ml.Model">Model</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk">Resolution2Chunk</a>], <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span>, <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -593,7 +597,7 @@ result.selectExpr(<span class="lit">"explode(ngram_tokens)"</span>).show(<span c
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">annotate</span><span class="params">(<span name="annotations">annotations: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>
+        <span class="name">annotate</span><span class="params">(<span name="annotations">annotations: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.resolution.Resolution2Chunk">Resolution2Chunk</a> → HasSimpleAnnotate</dd></dl></div>
@@ -673,7 +677,7 @@ result.selectExpr(<span class="lit">"explode(ngram_tokens)"</span>).show(<span c
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -761,7 +765,7 @@ result.selectExpr(<span class="lit">"explode(ngram_tokens)"</span>).show(<span c
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -1351,7 +1355,7 @@ result.selectExpr(<span class="lit">"explode(ngram_tokens)"</span>).show(<span c
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logDebug</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">logDebug</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
@@ -1383,7 +1387,7 @@ result.selectExpr(<span class="lit">"explode(ngram_tokens)"</span>).show(<span c
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logError</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">logError</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
@@ -1415,7 +1419,7 @@ result.selectExpr(<span class="lit">"explode(ngram_tokens)"</span>).show(<span c
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logInfo</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">logInfo</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
@@ -1463,7 +1467,7 @@ result.selectExpr(<span class="lit">"explode(ngram_tokens)"</span>).show(<span c
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logTrace</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">logTrace</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
@@ -1495,7 +1499,7 @@ result.selectExpr(<span class="lit">"explode(ngram_tokens)"</span>).show(<span c
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">logWarning</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <span class="extype" name="scala.Throwable">Throwable</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">logWarning</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
@@ -1543,7 +1547,7 @@ result.selectExpr(<span class="lit">"explode(ngram_tokens)"</span>).show(<span c
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -2308,7 +2312,7 @@ result.selectExpr(<span class="lit">"explode(ngram_tokens)"</span>).show(<span c
             </div><div class="parent" name="org.apache.spark.ml.util.Identifiable">
               <h3>Inherited from <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span></h3>
             </div><div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+              <h3>Inherited from <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>
