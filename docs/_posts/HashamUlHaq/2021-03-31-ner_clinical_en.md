@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Detect Problems, Tests and Treatments (ner_clinical_large)
+title: Detect Problems, Tests and Treatments (ner_clinical)
 author: John Snow Labs
 name: ner_clinical
 date: 2021-03-31
@@ -33,8 +33,6 @@ Pretrained named entity recognition deep learning model for clinical terms. The 
 
 ## How to use
 
-
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
 
@@ -63,7 +61,14 @@ ner_converter = NerConverter()\
  	    .setInputCols(["sentence", "token", "ner"])\
  	    .setOutputCol("ner_chunk")
 
-nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter])
+nlpPipeline = Pipeline(
+        stages=[
+                document_assembler, 
+                sentence_detector, 
+                tokenizer, 
+                word_embeddings, 
+                clinical_ner, 
+                ner_converter])
 
 model = nlpPipeline.fit(spark.createDataFrame([[""]]).toDF("text"))
 
