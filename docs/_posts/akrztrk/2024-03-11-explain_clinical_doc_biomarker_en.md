@@ -18,8 +18,22 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline designed for the precise extraction of biomarker entities from clinical documents. At its core, this pipeline integrates a rule-based TextMatcherInternal annotator with advanced MedicalNerModel annotators. This combination enables to capture biomarker-related information with high precision and reliability and then establish relations between the extracted entities from the clinical documents.
+This specialized biomarker pipeline can;
 
+- extract biomarker entities,
+
+- classify sentences,
+
+- establish relations between the extracted entities from the clinical documents.
+
+In this pipeline, two NER, one text matcher, one classifier and one relation extraction model were used to achieve those tasks.
+
+- Clinical Entity Labels:  `Biomarker`, `Biomarker_Result`
+
+- Relation Extraction Labels:  `is_finding_of`
+  
+- Classification Model Labels:  `1`, `0`
+  
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
