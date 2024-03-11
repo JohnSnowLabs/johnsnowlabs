@@ -39,7 +39,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 biomarker_pipeline = PretrainedPipeline("explain_clinical_doc_biomarker", "en", "clinical/models")
 
-result = biomarker_pipeline.annotate("""In the bone- marrow (BM) aspiration, blasts accounted for 88.1% of ANCs, which were positive for CD9 and CD10 on flow cytometry. Measurements of serum tumor markers showed elevated level of Cyfra21-1: 4.77 ng/mL, NSE: 19.60 ng/mL, and SCCA: 2.58 ng/mL. Immunohistochemical staining showed positive staining for CK5/6, P40, and negative staining for TTF-1 and weakly positive staining for ALK.""")
+result = biomarker_pipeline.fullAnnotate("""In the bone- marrow (BM) aspiration, blasts accounted for 88.1% of ANCs, which were positive for CD9 and CD10 on flow cytometry. Measurements of serum tumor markers showed elevated level of Cyfra21-1: 4.77 ng/mL, NSE: 19.60 ng/mL, and SCCA: 2.58 ng/mL. Immunohistochemical staining showed positive staining for CK5/6, P40, and negative staining for TTF-1 and weakly positive staining for ALK.""")
 
 ```
 ```scala
@@ -48,7 +48,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val biomarker_pipeline = PretrainedPipeline("explain_clinical_doc_biomarker", "en", "clinical/models")
 
-val result = biomarker_pipeline.annotate("""In the bone- marrow (BM) aspiration, blasts accounted for 88.1% of ANCs, which were positive for CD9 and CD10 on flow cytometry. Measurements of serum tumor markers showed elevated level of Cyfra21-1: 4.77 ng/mL, NSE: 19.60 ng/mL, and SCCA: 2.58 ng/mL. Immunohistochemical staining showed positive staining for CK5/6, P40, and negative staining for TTF-1 and weakly positive staining for ALK.""")
+val result = biomarker_pipeline.fullAnnotate("""In the bone- marrow (BM) aspiration, blasts accounted for 88.1% of ANCs, which were positive for CD9 and CD10 on flow cytometry. Measurements of serum tumor markers showed elevated level of Cyfra21-1: 4.77 ng/mL, NSE: 19.60 ng/mL, and SCCA: 2.58 ng/mL. Immunohistochemical staining showed positive staining for CK5/6, P40, and negative staining for TTF-1 and weakly positive staining for ALK.""")
 
 ```
 </div>
