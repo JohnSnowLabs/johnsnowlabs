@@ -72,12 +72,12 @@ c2doc = Chunk2Doc()\
 
 sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
     .setInputCols(["ner_chunk_doc"])\
-    .setOutputCol("sentence_embeddings")\
+    .setOutputCol("sbert_embeddings")\
     .setCaseSensitive(False)
 
 resolver = SentenceEntityResolverModel\
     .pretrained("sbiobertresolve_snomed_conditions", "en", "clinical/models")\
-    .setInputCols(["ner_chunk", "sbert_embeddings"]) \
+    .setInputCols(["sbert_embeddings"]) \
     .setOutputCol("resolution")\
     .setDistanceFunction("EUCLIDEAN")
 
@@ -146,7 +146,7 @@ val sbert_embedder = BertSentenceEmbeddings
 
 val resolver = SentenceEntityResolverModel
     .pretrained("sbiobertresolve_snomed_conditions", "en", "clinical/models")
-    .setInputCols(Array("ner_chunk", "sbert_embeddings"))
+    .setInputCols(Array("sbert_embeddings"))
     .setOutputCol("resolution")
     .setDistanceFunction("EUCLIDEAN")
 
