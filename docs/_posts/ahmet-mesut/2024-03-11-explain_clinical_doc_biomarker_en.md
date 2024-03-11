@@ -32,6 +32,7 @@ This pipeline designed for the precise extraction of biomarker entities from cli
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -55,7 +56,6 @@ val result = biomarker_pipeline.annotate("""In the bone- marrow (BM) aspiration,
 ## Results
 
 ```bash
-
 # NER Result
 +------------------------+-----+---+----------------+
 |chunk                   |begin|end|label           |
@@ -104,10 +104,6 @@ val result = biomarker_pipeline.annotate("""In the bone- marrow (BM) aspiration,
 |          1|                Measurements of serum tumor markers showed elevated level of Cyfra21-1: 4.77 ng/mL, NSE: 19.60 ng/mL, and SCCA: 2.58 ng/mL.|    1|
 |          2|Immunohistochemical staining showed positive staining for CK5/6, P40, and negative staining for TTF-1 and weakly positive staining for ALK.|    1|
 +-----------+-------------------------------------------------------------------------------------------------------------------------------------------+-----+
-
-
-
-
 ```
 
 {:.model-param}
