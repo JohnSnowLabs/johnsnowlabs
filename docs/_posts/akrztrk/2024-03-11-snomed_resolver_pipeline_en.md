@@ -39,7 +39,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 resolver_pipeline = PretrainedPipeline("snomed_resolver_pipeline", "en", "clinical/models")
 
-result = resolver_pipeline.fullAnnotate("""This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. He required atropine, IV fluids, and dopamine. He was subsequently transferred to the CCU for close monitoring.""")
+result = resolver_pipeline.fullAnnotate("""This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. He required atropine, IV fluids, and dopamine.""")
 
 ```
 ```scala
@@ -48,7 +48,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val resolver_pipeline = PretrainedPipeline("snomed_resolver_pipeline", "en", "clinical/models")
 
-val result = resolver_pipeline.fullAnnotate("""This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. He required atropine, IV fluids, and dopamine. He was subsequently transferred to the CCU for close monitoring.""")
+val result = resolver_pipeline.fullAnnotate("""This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. He required atropine, IV fluids, and dopamine.""")
 
 ```
 </div>
