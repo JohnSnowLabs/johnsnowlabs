@@ -32,6 +32,7 @@ This pipeline extracts clinical entities and concepts to maps their correspondin
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
