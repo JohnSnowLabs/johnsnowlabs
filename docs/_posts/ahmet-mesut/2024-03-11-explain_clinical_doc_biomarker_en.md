@@ -22,11 +22,11 @@ This specialized biomarker pipeline can;
 
 - extract biomarker entities,
 
-- classify sentences,
+- classify sentences whether they contain biomarker entities or not,
 
-- establish relations between the extracted entities from the clinical documents.
+- establish relations between the extracted biomarker and biomarker results from the clinical documents.
 
-In this pipeline, two NER, one text matcher, one classifier and one relation extraction model were used to achieve those tasks.
+In this pipeline, two NER, one text matcher, one sentence classifier, and one relation extraction model were employed to accomplish the designated tasks.
 
 - Clinical Entity Labels:  `Biomarker`, `Biomarker_Result`
 
