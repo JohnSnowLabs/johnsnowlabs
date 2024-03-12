@@ -7,7 +7,7 @@ date: 2024-03-12
 tags: [licensed, ner, clinical, langtest, multilingual, deid, name, xx]
 task: Named Entity Recognition
 language: xx
-edition: Healthcare NLP 5.2.1
+edition: Healthcare NLP 5.3.0
 spark_version: 3.0
 supported: true
 annotator: MedicalNerModel
@@ -36,8 +36,8 @@ This model detects name entities in clinical documents. It is the version of  [n
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_name_multilingual_clinical_langtest_xx_5.2.1_3.0_1710268198235.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_name_multilingual_clinical_langtest_xx_5.2.1_3.0_1710268198235.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_name_multilingual_clinical_langtest_xx_5.3.0_3.0_1710268198235.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_name_multilingual_clinical_langtest_xx_5.3.0_3.0_1710268198235.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -45,6 +45,7 @@ This model detects name entities in clinical documents. It is the version of  [n
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -58,11 +59,11 @@ tokenizer = Tokenizer() \
     .setInputCols(["sentence"]) \
     .setOutputCol("token")
 
-embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")\
-    .setInputCols("sentence","token")\
+embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols("sentence", "token")\
     .setOutputCol("embeddings")
 
-ner = MedicalNerModel.pretrained(''ner_deid_name_multilingual_clinical_langtest", "xx", "clinical/models") \
+ner = MedicalNerModel.pretrained("ner_deid_name_multilingual_clinical_langtest", "xx", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
     .setOutputCol("ner")
 
@@ -70,37 +71,30 @@ ner_converter = NerConverterInternal() \
     .setInputCols(["sentence", "token", "ner"]) \
     .setOutputCol("ner_chunk")
 
-nlpPipeline = Pipeline(stages=[document_assembler,
-                            sentence_detector,
-                            tokenizer,
-                            embeddings,
-                            ner,
-                            ner_converter])
+nlpPipeline = Pipeline(
+    stages=[
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        embeddings,
+        ner,
+        ner_converter
+])
 
-empty_data = spark.createDataFrame([[""]]).toDF("text")
-
-model = nlpPipeline.fit(empty_data)
-
-text_list = ["""Record date: 2093-01-13, David Hale, M.D., Name: Hendrickson, Ora MR. # 7194334 Date: 01/13/93 PCP: Oliveira, 25 years old, Record date: 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. The patient's complaints first surfaced when he started working for Brothers Coal-Mine.""",
-             
-"""J'ai vu en consultation Michel Martinez (49 ans) adressé au Centre Hospitalier De Plaisir pour un diabète mal contrôlé avec des symptômes datant de Mars 2015.""",
-             
-"""Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.""",
-
-"""Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.""",
-
-"""Antonio Miguel Martínez, un varón de 35 años de edad, de profesión auxiliar de enfermería y nacido en Cadiz, España. Aún no estaba vacunado, se infectó con Covid-19 el dia 14 de Marzo y tuvo que ir al Hospital. Fue tratado con anticuerpos monoclonales en la Clinica San Carlos.""",
-    
-"""
-Detalhes do paciente:
-Nome do paciente: Pedro Gonçalves NHC: 2569870 Endereço: Rua Das Flores 23. Cidade/ Província: Porto Código Postal: 21754-987 Dados de cuidados Data de nascimento: 10/10/1963 Idade: 53 anos Data de admissão: 17/06/2016 Doutora: Maria Santos""",
-
-"""Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România Tel: +40(235)413773 Data setului de analize: 25 May 2022 15:36:00 Nume&Prenume: BUREAN MARIA, Varsta: 77 CNP: 2450502264401"""
+text_list = [
+["""Record date: 2093-01-13, David Hale, M.D., Name: Hendrickson, Ora MR. # 7194334 Date: 01/13/93 PCP: Oliveira, 25 years old, Record date: 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. The patient's complaints first surfaced when he started working for Brothers Coal-Mine."""],     
+["""J'ai vu en consultation Michel Martinez (49 ans) adressé au Centre Hospitalier De Plaisir pour un diabète mal contrôlé avec des symptômes datant de Mars 2015."""],   
+["""Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen."""],
+["""Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015."""],
+["""Antonio Miguel Martínez, un varón de 35 años de edad, de profesión auxiliar de enfermería y nacido en Cadiz, España. Aún no estaba vacunado, se infectó con Covid-19 el dia 14 de Marzo y tuvo que ir al Hospital. Fue tratado con anticuerpos monoclonales en la Clinica San Carlos."""],
+["""Detalhes do paciente:
+Nome do paciente: Pedro Gonçalves NHC: 2569870 Endereço: Rua Das Flores 23. Cidade/ Província: Porto Código Postal: 21754-987 Dados de cuidados Data de nascimento: 10/10/1963 Idade: 53 anos Data de admissão: 17/06/2016 Doutora: Maria Santos"""],
+["""Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România Tel: +40(235)413773 Data setului de analize: 25 May 2022 15:36:00 Nume&Prenume: BUREAN MARIA, Varsta: 77 CNP: 2450502264401"""]
 ]
 
-data = spark.createDataFrame(pd.DataFrame({"text": text_list}))
+data = spark.createDataFrame(text_list).toDF("text")
 
-result = model.transform(data)
+result = nlpPipeline.fit(data).transform(data)
 ```
 ```scala
 val document_assembler = new DocumentAssembler()
@@ -115,8 +109,8 @@ val tokenizer = new Tokenizer()
     .setInputCols("sentence") 
     .setOutputCol("token")
 
-val embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")
-    .setInputCols(Array("sentence","token"))
+val embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token"))
     .setOutputCol("embeddings")
 
 val ner = MedicalNerModel.pretrained("ner_deid_name_multilingual_clinical_langtest", "xx", "clinical/models")
@@ -127,28 +121,22 @@ val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner")) 
     .setOutputCol("ner_chunk")
     
-val pipeline = new Pipeline().setStages(Array(document_assembler,
-                            sentence_detector,
-                            tokenizer,
-                            embeddings,
-                            ner,
-                            ner_converter))
+val pipeline = new Pipeline().setStages(Array(
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    embeddings,
+    ner,
+    ner_converter))
 
 val text_list = Seq(
 """Record date: 2093-01-13, David Hale, M.D., Name: Hendrickson, Ora MR. # 7194334 Date: 01/13/93 PCP: Oliveira, 25 years old, Record date: 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. The patient's complaints first surfaced when he started working for Brothers Coal-Mine.""",
-             
-"""J'ai vu en consultation Michel Martinez (49 ans) adressé au Centre Hospitalier De Plaisir pour un diabète mal contrôlé avec des symptômes datant de Mars 2015.""",
-             
+"""J'ai vu en consultation Michel Martinez (49 ans) adressé au Centre Hospitalier De Plaisir pour un diabète mal contrôlé avec des symptômes datant de Mars 2015.""",       
 """Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.""",
-
 """Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.""",
-
 """Antonio Miguel Martínez, un varón de 35 años de edad, de profesión auxiliar de enfermería y nacido en Cadiz, España. Aún no estaba vacunado, se infectó con Covid-19 el dia 14 de Marzo y tuvo que ir al Hospital. Fue tratado con anticuerpos monoclonales en la Clinica San Carlos.""",
-    
-"""
-Detalhes do paciente:
+"""Detalhes do paciente:
 Nome do paciente: Pedro Gonçalves NHC: 2569870 Endereço: Rua Das Flores 23. Cidade/ Província: Porto Código Postal: 21754-987 Dados de cuidados Data de nascimento: 10/10/1963 Idade: 53 anos Data de admissão: 17/06/2016 Doutora: Maria Santos""",
-
 """Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România Tel: +40(235)413773 Data setului de analize: 25 May 2022 15:36:00 Nume&Prenume: BUREAN MARIA, Varsta: 77 CNP: 2450502264401"""
 )
 
@@ -185,7 +173,7 @@ val result = model.fit(data).transform(data)
 {:.table-model}
 |---|---|
 |Model Name:|ner_deid_name_multilingual_clinical_langtest|
-|Compatibility:|Healthcare NLP 5.2.1+|
+|Compatibility:|Healthcare NLP 5.3.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[sentence, token, embeddings]|
