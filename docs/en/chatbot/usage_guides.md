@@ -11,11 +11,15 @@ sidebar:
     nav: healthcare-gpt
 ---
 
+<div class="h3-box" markdown="1">
+
 ## Ask Specific Questions
 
 To ensure the highest level of accuracy and relevance in the responses provided by our medical chatbot, we encourage users to formulate their queries with specificity and clarity. General or broadly framed questions often carry inherent ambiguities that may lead to misinterpretations by the chatbot's natural language processing algorithms. Such ambiguities can result in responses that may not fully or accurately address the user's intended inquiry. Precise questions allow the chatbot to utilize its tools more effectively, tailoring its analysis and recommendations to the specific context of each query. By focusing on detailed inquiries, users can help minimize misunderstandings and receive the most accurate, relevant, and helpful information tailored to their personal health questions or concerns.
 
 <iframe width="800" height="450" src="https://www.youtube.com/embed/bbZN-kgs-5M?si=AggX9XRAxTmVTKJp&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</div><div class="h3-box" markdown="1">
 
 ## Switch Between Tools 
 
@@ -23,3 +27,5 @@ For enhancing the flexibility and specificity of interactions, users can directl
 
 
 <iframe width="800" height="450" src="https://www.youtube.com/embed/nGbnXWNJeH0?si=5gt95VwLe6ATSCeO&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+</div>
