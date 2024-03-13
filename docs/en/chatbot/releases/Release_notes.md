@@ -5,7 +5,7 @@ seotitle: Medical Chatbot | John Snow Labs
 title: Release Notes
 permalink: /docs/en/chatbot/releases/release_notes
 key: docs-healthcare-gpt
-modify_date: "2024-03-15"
+modify_date: "2024-03-13"
 show_nav: true
 sidebar:
     nav: healthcare-gpt
@@ -13,7 +13,7 @@ sidebar:
 <div class="h3-box" markdown="1">
 
 
-## 03-15-2024
+## 03-13-2024
 
 We are delighted to announce a new update for the Medical Chatbot, bringing significant improvements across the board to enhance user experience and interaction. Here are some highlights:
 - **Enhanced Load Management**: To ensure consistent performance during peak usage, we've implemented a load management feature. This optimizes the handling of concurrent requests, maintaining system efficiency and alerting users during periods of high demand with a clear message to enhance user experience.
