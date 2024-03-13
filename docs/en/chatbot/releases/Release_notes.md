@@ -31,7 +31,7 @@ These updates aim to provide a more personalized, engaging, and reliable chatbot
 In our continuous effort to ensure the reliability and responsiveness of the Medical Chatbot, especially during periods of high user engagement, we have implemented a load management feature that effectively limits the number of concurrent requests to maintain optimal system performance.
 With the introduction of this feature, should the user volume exceed the system's configured threshold, resulting in an inability to process additional requests, the Medical Chatbot's user interface will now display a clear and informative message: “We’re experiencing exceptionally high demand in the Medical Chatbot. Please try again in a few minutes.” This message is designed to inform users of the current high demand and guide them to retry their request after a brief period, ensuring a better user experience during peak times.
 
-![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/664502a1-2808-4229-bcf2-252da5629917)
+![high demand](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/d0e5408c-53f2-4116-9f54-aa286f748e9b)
 
 </div><div class="h3-box" markdown="1">
 
