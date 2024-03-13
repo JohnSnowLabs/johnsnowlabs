@@ -33,7 +33,8 @@ In our continuous effort to ensure the reliability and responsiveness of the Med
 
 With the introduction of this feature, should the user volume exceed the system's configured threshold, resulting in an inability to process additional requests, the Medical Chatbot's user interface will now display a clear and informative message: “We’re experiencing exceptionally high demand in the Medical Chatbot. Please try again in a few minutes.” This message is designed to inform users of the current high demand and guide them to retry their request after a brief period, ensuring a better user experience during peak times.
 
-![high demand](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/d0e5408c-53f2-4116-9f54-aa286f748e9b)
+![high demand final](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/515acf12-6e26-47b2-9e76-a0c73004eded)
+
 
 </div><div class="h3-box" markdown="1">
 
