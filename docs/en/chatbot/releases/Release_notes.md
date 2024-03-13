@@ -31,6 +31,8 @@ These updates aim to provide a more personalized, engaging, and reliable chatbot
 In our continuous effort to ensure the reliability and responsiveness of the Medical Chatbot, especially during periods of high user engagement, we have implemented a load management feature that effectively limits the number of concurrent requests to maintain optimal system performance.
 With the introduction of this feature, should the user volume exceed the system's configured threshold, resulting in an inability to process additional requests, the Medical Chatbot's user interface will now display a clear and informative message: “We’re experiencing exceptionally high demand in the Medical Chatbot. Please try again in a few minutes.” This message is designed to inform users of the current high demand and guide them to retry their request after a brief period, ensuring a better user experience during peak times.
 
+![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/0043c63f-f744-4e6b-b09b-440a8a2c2d1a)
+
 </div><div class="h3-box" markdown="1">
 
 ## Introducing Contextual Follow-up Question Suggestions
@@ -40,14 +42,20 @@ In our latest update, we are excited to introduce a significant enhancement to t
 
 ### Follow-up Question Suggestions
 
-After the Medical Chatbot generates a response to a user's query, the system will now automatically present a set of follow-up questions that are relevant to the current topic. These suggestions are designed to anticipate the user's potential next steps or inquiries, based on the context of the conversation. 
-The suggested questions will be displayed just above the chat box, making it easy for users to view and select from. By simply clicking on one of these suggestions, users can continue their conversation without the need to manually input their next question. This feature not only enhances the user experience by making interactions more fluid and intuitive but also helps in deepening the exploration of topics relevant to the user's needs.
+After the Medical Chatbot generates a response to a user's medical query, the system will now automatically present a set of follow-up questions that are relevant to the current topic. These suggestions are designed to anticipate the user's potential next steps or inquiries, based on the context of the conversation. 
+The suggested questions will be displayed just above the chat box, making it easy for users to view and select. By simply clicking on one of these suggestions, users can continue their conversation without the need to manually input their next question. This feature not only enhances the user experience by making interactions more fluid and intuitive but also helps in deepening the exploration of topics relevant to the user's needs. 
+
+
 
 </div><div class="h3-box" markdown="1">
 
 ### User-Controlled Suggestions
 
 Recognizing the diverse preferences of our users, we have incorporated the flexibility to toggle the follow-up question suggestions feature on or off. This customization option allows users to tailor their interaction with the Medical Chatbot according to their desired level of guidance and exploration within the conversation. Whether users prefer a more self-directed inquiry or guided discovery, this feature enhances the platform's adaptability to individual user needs.
+Furthermore, the generation of follow-up questions has been intelligently engineered to specifically address medical-based queries and responses, ensuring the delivery of high-quality suggestions only whenever pertinent. 
+
+![Suggestions](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/bbc5d19b-0825-4907-8bdc-ce74ba331c41)
+
 
 </div><div class="h3-box" markdown="1">
 
@@ -64,11 +72,18 @@ repositioned the conversation settings. Previously located next to the "New Conv
 1. Contextual Menu Placement: The contextual menu, which includes the conversation settings, has been relocated below the response box. This change ensures visibility immediately after a response is generated, especially important when dealing with longer responses that could previously obscure the menu.
 2. Dedicated Settings Icon: A settings icon has been introduced to the contextual menu for conversation settings, making it easier for users to find and adjust their response style preferences. The response style options have been removed from the Chat settings pop-up and are now accessible via a separate pop-up when the user clicks on the conversation settings icon in the contextual menu. This approach allows for a more streamlined and focused user experience.
 
+![Screenshot 2024-03-12 at 11 39 37 PM 1](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/830d7a80-bdfb-4042-b3a6-6786ca1c22e3)
+
+
+
 </div><div class="h3-box" markdown="1">
 
 ### Dynamic Response Style Selection
 
 Upon initiating a new conversation, the Default response style is applied. However, users now have the flexibility to change the response style after the first response is generated by the chatbot. By clicking on the conversation settings button, users can select a different style, prompting the chatbot to regenerate the response in the new style. This selected style will persist for all subsequent interactions within the current conversation until the conversation concludes or the user opts to change the style again.
+
+![response style gif](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/f1f7db0d-c78f-4005-83da-ee589969c470)
+
 
 </div><div class="h3-box" markdown="1">
 
@@ -80,10 +95,13 @@ We are excited to announce an enhancement in how users interact with and manage 
 ### Streamlined Access to Tools and Knowledge Bases
 
 To improve accessibility and user experience, we have made the following changes:
-1. Enhanced Tools Accessibility: The Chat settings popup, previously located next to the "New Chat" button, has been replaced. We've introduced a "Tools" link situated adjacent to the document upload icon within the chat box. This link provides direct access to the various resources available to the chatbot.
+1. Enhanced Tools Accessibility: The Chat settings popup, previously located next to the "New Chat" button, has been replaced. We've introduced a "Tools" link situated within the chat box. This popup provides direct access to the various resources available to the chatbot.
 2. Dynamic Resource Display and Management: Upon accessing the "Tools" section, users will now be presented with a list of available tools, including but not limited to Wikipedia and MedResearch, with future additions such as NLPTools and Text2SQL anticipated. This feature allows users to easily toggle these resources on or off, directly influencing the tools that the Language Learning Model (LLM) leverages to respond to queries.
 3. Customizable Knowledge Base Interaction: When the MedResearch tool is enabled, users will be shown a list of accessible KBs, similar to the existing functionality. Importantly, users now have the capability to individually activate or deactivate these KBs. This flexibility ensures that the queries are matched against the most relevant and preferred knowledge bases, enhancing the accuracy and relevance of the chatbot's responses. 
-When all tools are turned off, John will respond from its memory. See next section for details. 
+When all tools are turned off, John will respond from its memory. See next section for details.
+
+![Tools_selection](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/c729892a-f493-4c83-b9c7-eb331cbe847a)
+
 
 </div><div class="h3-box" markdown="1">
 
@@ -102,7 +120,10 @@ To address instances where the chatbot generates answers from previously acquire
 ### Updated User Interface Notification
 When John provides a response drawn from memory, the following changes will be evident in the user interface:
 - Notification Replaces References: The usual "References" section will be substituted with a distinct notification to users. This alert aims to inform users that the response has been generated based on information available up to a certain date, highlighting that it may not include the latest findings or updates.
-- Content of the Notification: The notification will convey the following message: “Please note that this response was generated from John’s memory, based on information available up to a specific date and may not reflect the most recent developments. For the most current information, consider verifying details from up-to-date sources.” This message is designed to prompt users to seek out the most current data for their inquiries, ensuring they have access to the most accurate and relevant information.
+- Content of the Notification: The notification will convey the following message: “Please note that this response was generated from John's memory and may not reflect the most recent developments. For the most current information, consider verifying details from up-to-date sources.” This message is designed to prompt users to seek out the most current data for their inquiries, ensuring they have access to the most accurate and relevant information.
+
+  ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/9736c701-2eb4-47c2-9c60-24932226c6c5)
+
 
 </div><div class="h3-box" markdown="1">
 
