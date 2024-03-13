@@ -9,7 +9,7 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Usage Guides</title><meta property="og:title" content="Medical Chatbot | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>Release Notes</title><meta property="og:title" content="Medical Chatbot | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
@@ -610,27 +610,169 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>Usage Guides</li>
+    <li>Release Notes</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>Usage Guides</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>Release Notes</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
             href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/chatbot/releases/Release_notes.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Usage Guides"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="Release Notes"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">02-21-2024</h2>
+  <h2 id="section">03-13-2024</h2>
 
-  <p>Welcome to the Medical Chatbot Documentation and Updates Hub!</p>
+  <p>We are delighted to announce a new update for the Medical Chatbot, bringing significant improvements across the board to enhance user experience and interaction. Here are some highlights:</p>
+  <ul>
+    <li><strong>Enhanced Load Management</strong>: To ensure consistent performance during peak usage, we’ve implemented a load management feature. This optimizes the handling of concurrent requests, maintaining system efficiency and alerting users during periods of high demand with a clear message to enhance user experience.</li>
+    <li><strong>Contextual Follow-up Question Suggestions</strong>: Elevating user engagement, the chatbot now suggests relevant follow-up questions after each response. This feature, which users can toggle on or off, aids in exploring topics in-depth, fostering a more engaging and seamless information exchange.</li>
+    <li><strong>Response Style Customization</strong>: Users can now easily customize their conversation settings, including response styles, through a more accessible and intuitive interface. This update allows for dynamic response style selection, enhancing the personalization of interactions.</li>
+    <li><strong>Advanced Resource Management</strong>: A new system for managing available resources such as tools and knowledge bases (KBs) has been introduced. Users can now directly control these resources, adjusting the chatbot’s capabilities to their preferences and needs, ensuring a more tailored and effective response generation.</li>
+    <li><strong>Enhanced Transparency for Memory-Based Responses</strong>: We’ve introduced notifications to alert users when a response is generated from the chatbot’s memory. This feature encourages users to verify the information, especially considering the fast pace of medical advancements.</li>
+    <li><strong>Ongoing Enhancements and Bug Fixes</strong>: Alongside these new features, we’ve implemented a range of bug fixes and internal improvements. These are designed to enhance the tool’s efficiency and effectiveness, although specific details remain under wraps for now.</li>
+  </ul>
+
+  <p>These updates aim to provide a more personalized, engaging, and reliable chatbot experience. For more detailed information on these enhancements and how they can improve your interaction with the Medical Chatbot, we invite you to read the full release notes.</p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="enhanced-load-management-for-improved-user-experience">Enhanced Load Management for Improved User Experience</h2>
+
+  <p>In our continuous effort to ensure the reliability and responsiveness of the Medical Chatbot, especially during periods of high user engagement, we have implemented a load management feature that effectively limits the number of concurrent requests to maintain optimal system performance.</p>
+
+  <p>With the introduction of this feature, should the user volume exceed the system’s configured threshold, resulting in an inability to process additional requests, the Medical Chatbot’s user interface will now display a clear and informative message: “We’re experiencing exceptionally high demand in the Medical Chatbot. Please try again in a few minutes.” This message is designed to inform users of the current high demand and guide them to retry their request after a brief period, ensuring a better user experience during peak times.</p>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/515acf12-6e26-47b2-9e76-a0c73004eded" alt="high demand final" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="introducing-contextual-follow-up-question-suggestions">Introducing Contextual Follow-up Question Suggestions</h2>
+
+  <p>In our latest update, we are excited to introduce a significant enhancement to the user interaction experience within the Medical Chatbot. This new feature aims to enrich the dialogue between the user and the chatbot, providing a more engaging and seamless information exchange.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="follow-up-question-suggestions">Follow-up Question Suggestions</h3>
+
+  <p>After the Medical Chatbot generates a response to a user’s medical query, the system will now automatically present a set of follow-up questions that are relevant to the current topic. These suggestions are designed to anticipate the user’s potential next steps or inquiries, based on the context of the conversation.</p>
+
+  <p>The suggested questions will be displayed just above the chat box, making it easy for users to view and select. By simply clicking on one of these suggestions, users can continue their conversation without the need to manually input their next question. This feature not only enhances the user experience by making interactions more fluid and intuitive but also helps in deepening the exploration of topics relevant to the user’s needs.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="user-controlled-suggestions">User-Controlled Suggestions</h3>
+
+  <p>Recognizing the diverse preferences of our users, we have incorporated the flexibility to toggle the follow-up question suggestions feature on or off. This customization option allows users to tailor their interaction with the Medical Chatbot according to their desired level of guidance and exploration within the conversation. Whether users prefer a more self-directed inquiry or guided discovery, this feature enhances the platform’s adaptability to individual user needs.
+Furthermore, the generation of follow-up questions has been intelligently engineered to specifically address medical-based queries and responses, ensuring the delivery of high-quality suggestions only whenever pertinent.</p>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/26aaa19f-aa9b-420c-b4df-bcdcd96a237a" alt="Suggestions_1" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="response-style-customization">Response Style Customization</h2>
+
+  <p>In our ongoing efforts to improve the user interface and overall experience of the Medical Chatbot, we are excited to announce an enhancement to how users can customize their conversation settings, specifically regarding response styles.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="enhanced-accessibility-of-conversation-settings">Enhanced Accessibility of Conversation Settings</h3>
+
+  <p>To provide a more intuitive and accessible way for users to customize their interaction with the Medical Chatbot, we have 
+repositioned the conversation settings. Previously located next to the “New Conversation” button within a settings pop-up, these settings could be overlooked by users. We have addressed this by moving the conversation settings to a more prominent position:</p>
+  <ol>
+    <li><strong>Contextual Menu Placement</strong>: The contextual menu, which includes the conversation settings, has been relocated below the response box. This change ensures visibility immediately after a response is generated, especially important when dealing with longer responses that could previously obscure the menu.</li>
+    <li><strong>Dedicated Settings Icon</strong>: A settings icon has been introduced to the contextual menu for conversation settings, making it easier for users to find and adjust their response style preferences. The response style options have been removed from the Chat settings pop-up and are now accessible via a separate pop-up when the user clicks on the conversation settings icon in the contextual menu. This approach allows for a more streamlined and focused user experience.</li>
+  </ol>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/f2e12115-604d-4e17-b51e-68e25c0212d2" alt="Screenshot 2024-03-13 at 2 33 19 PM" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="dynamic-response-style-selection">Dynamic Response Style Selection</h3>
+
+  <p>Upon initiating a new conversation, the Default response style is applied. However, users now have the flexibility to change the response style after the first response is generated by the chatbot. By clicking on the conversation settings button, users can select a different style, prompting the chatbot to regenerate the response in the new style. This selected style will persist for all subsequent interactions within the current conversation until the conversation concludes or the user opts to change the style again.</p>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/26996a41-a9f6-455f-8ea2-b238f850b090" alt="response style_1" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="introducing-advanced-resource-management">Introducing Advanced Resource Management</h2>
+
+  <p>We are excited to announce an enhancement in how users interact with and manage the resources available within the Medical Chatbot. This update introduces a more intuitive way for users to visualize and control the tools and knowledge bases (KBs) that assist in generating responses to their queries.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="streamlined-access-to-tools-and-knowledge-bases">Streamlined Access to Tools and Knowledge Bases</h3>
+
+  <p>To improve accessibility and user experience, we have made the following changes:</p>
+  <ol>
+    <li><strong>Enhanced Tools Accessibility</strong>: The Chat settings popup, previously located next to the “New Chat” button, has been replaced. We’ve introduced a “Tools” link situated within the chat box. This popup provides direct access to the various resources available to the chatbot.</li>
+    <li><strong>Dynamic Resource Display and Management</strong>: Upon accessing the “Tools” section, users will now be presented with a list of available tools, including but not limited to Wikipedia and MedResearch, with future additions such as NLPTools and Text2SQL anticipated. This feature allows users to easily toggle these resources on or off, directly influencing the tools that the Language Learning Model (LLM) leverages to respond to queries.</li>
+    <li><strong>Customizable Knowledge Base Interaction</strong>: When the MedResearch tool is enabled, users will be shown a list of accessible KBs, similar to the existing functionality. Importantly, users now have the capability to individually activate or deactivate these KBs. This flexibility ensures that the queries are matched against the most relevant and preferred knowledge bases, enhancing the accuracy and relevance of the chatbot’s responses. 
+When all tools are turned off, John will respond from its memory. See next section for details.</li>
+  </ol>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/b9b2f9fd-e938-43c6-a050-e2e201f78cb2" alt="Tools_Selection_Gif" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="enhanced-transparency-for-llm-memory-based-responses">Enhanced Transparency for LLM Memory-Based Responses</h2>
+
+  <p>In our ongoing commitment to ensuring the accuracy and reliability of the information provided by John, we are introducing a new feature designed to enhance user awareness and encourage verification of information.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="notification-for-memory-based-responses">Notification for Memory-Based Responses</h3>
+
+  <p>To address instances where the chatbot generates answers from previously acquired knowledge or “memory”, we have implemented a notification system to alert users. This is particularly important as it pertains to the dynamic nature of medical information and developments.</p>
+
+</div>
+<div class="h3-box">
+
+  <h3 id="updated-user-interface-notification">Updated User Interface Notification</h3>
+
+  <p>When John provides a response drawn from memory, the following changes will be evident in the user interface:</p>
+  <ul>
+    <li><strong>Notification Replaces References</strong>: The usual “References” section will be substituted with a distinct notification to users. This alert aims to inform users that the response has been generated based on information available up to a certain date, highlighting that it may not include the latest findings or updates.</li>
+    <li><strong>Content of the Notification</strong>: The notification will convey the following message: “Please note that this response was generated from John’s memory and may not reflect the most recent developments. For the most current information, consider verifying details from up-to-date sources.” This message is designed to prompt users to seek out the most current data for their inquiries, ensuring they have access to the most accurate and relevant information.</li>
+  </ul>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/2ba0c6b5-c7f8-42aa-aa82-1528e9e0fceb" alt="image" /></p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="ongoing-enhancements-and-bug-fixes">Ongoing Enhancements and Bug Fixes</h2>
+
+  <p>In addition to the new UI features, this update includes a series of bug fixes and improvements aimed at optimizing the internal management of knowledge bases (KBs) and tools. These enhancements are designed to improve the efficiency and effectiveness of the tool, ensuring that users receive the most accurate and relevant responses. While the specifics of these updates are not disclosed at this time, we assure our users that these changes significantly contribute to the robustness and reliability of the Medical Chatbot’s operations.</p>
+
+  <p>We believe these updates, both in enhancing transparency and usability and in improving the internal workings of the chatbot, will greatly enrich the user experience. We remain committed to continuous improvement and innovation, always prioritizing the needs and satisfaction of our users.</p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="section-1">02-21-2024</h2>
+
+  <p><strong>Welcome to the Medical Chatbot Documentation and Updates Hub!</strong></p>
 
   <p>We are excited to announce the launch of the Medical Chatbot Releases Page, a centralized repository for all the latest features, enhancements, and resolutions of known issues within the Medical Chatbot platform. This dedicated space is designed to keep users informed of the most recent developments, enabling seamless testing and facilitating the provision of valuable feedback. Our commitment is to ensure that users have immediate access to the latest information, empowering them to leverage the full capabilities of the Medical Chatbot effectively. Stay updated with us as we continue to improve and expand the functionalities of the Medical Chatbot to meet and exceed your expectations.</p>
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2024-02-21T00:00:00+00:00">Feb 21, 2024</time>
+      <time itemprop="dateModified" datetime="2024-03-13T00:00:00+00:00">Mar 13, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
