@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps UMLS codes to corresponding RxNorm codes
+This pretrained model maps UMLS codes to corresponding RxNorm codes.
 
 ## Predicted Entities
 
@@ -102,7 +102,12 @@ val mapper_pipeline = new Pipeline().setStages(Array(
     resolver2chunk,
     chunkerMapper))
 
-val data = Seq(Array('Hydrogen peroxide 30 mg'), Array('magnesium hydroxide 100 MG'), Array('metformin 1000 MG'), Array('dilaudid')).toDF("text")
+val data = Seq(
+  ("amlodipine 5 MG"),
+  ("magnesium hydroxide 100 MG"),
+  ("metformin 1000 MG"),
+  ("dilaudid")
+).toDF("text")
 
 val mapper_model = mapper_pipeline.fit(data)
 result= mapper_model.transform(data)
