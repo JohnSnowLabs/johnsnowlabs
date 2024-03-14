@@ -56,7 +56,7 @@ resolver2chunk = Resolution2Chunk()\
     .setOutputCol("rxnorm2chunk")
 
 chunkerMapper = ChunkMapperModel.pretrained("rxnorm_umls_mapper", "en", "clinical/models")\
-    .setInputCols(["rxnorm_code"])\
+    .setInputCols(["rxnorm2chunk"])\
     .setOutputCol("umls_mappings")\
     .setRels(["umls_code"])
 
@@ -107,8 +107,8 @@ val pipeline = Pipeline().setStages(Array(
 
 val data = Seq(Array('amlodipine 5 MG'), Array('magnesium hydroxide 100 MG'), Array('metformin 1000 MG'), Array('dilaudid')).toDF("text")
 
-model = pipeline.fit(data)
-result = model.transform(data)
+val model = pipeline.fit(data)
+val result = model.transform(data)
 ```
 </div>
 
