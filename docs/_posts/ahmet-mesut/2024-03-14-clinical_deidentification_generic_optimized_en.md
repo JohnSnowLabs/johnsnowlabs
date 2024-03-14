@@ -69,15 +69,13 @@ val result = deid_pipeline.fullAnnotate(text)
 ## Results
 
 ```bash
-
-|index|Sentence|Masked|Obfuscated|
-|---|---|---|---|
-|0|Name : Hendrickson, Ora, Record date: 2093-01-13, MR \#719435\.|Name : \<NAME\>, Record date: \<DATE\>, MR \<ID\>\.|Name : Chesley Noon, Record date: 2093-02-18, MR \#536644\.|
-|1|Dr\. John Green, ID: 1231511863, IP 203\.120\.223\.13\.|Dr\. \<NAME\>, ID: \<ID\>, IP \<IPADDR\>\.|Dr\. Su Grand, ID: 0347425956, IP 333\.333\.333\.333\.|
-|2|He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93\.|He is a \<AGE\>-year-old male was admitted to the \<LOCATION\> for cystectomy on \<DATE\>\.|He is a 79-year-old male was admitted to the 1000 Trancas Street for cystectomy on 02/18/93\.|
-|3|Patient's VIN : 1HGBH41JXMN109286, SSN \#333-44-6666, Driver's license no: A334455B\.|Patient's VIN : \<VIN\>, SSN \<SSN\>, Driver's license no: \<DLN\>\.|Patient's VIN : 3OVFI43PIRJ188416, SSN \#606-30-1601, Driver's license no: U932355D\.|
-|4|Phone \(302\) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail\.com\.|Phone \<PHONE\>, \<LOCATION\>, \<LOCATION\>, E-MAIL: \<EMAIL\>\.|Phone \(322\) 025-4270, 1301 S Main Street, 1514 Vernon Road, E-MAIL: Toto@hotmail\.com\.|
-
+| index |                                        Sentence                                       |                                        Masked                                        |                                          Obfuscated                                          |
+|:-----:|:-------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------------------:|
+| 0     | Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.                         | Name : <NAME>, Record date: <DATE>, MR <ID>.                                         | Name : Chesley Noon, Record date: 2093-02-18, MR #536644.                                    |
+| 1     | Dr. John Green, ID: 1231511863, IP 203.120.223.13.                                    | Dr. <NAME>, ID: <ID>, IP <IPADDR>.                                                   | Dr. Su Grand, ID: 0347425956, IP 333.333.333.333.                                            |
+| 2     | He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93. | He is a <AGE>-year-old male was admitted to the <LOCATION> for cystectomy on <DATE>. | He is a 79-year-old male was admitted to the 1000 Trancas Street for cystectomy on 02/18/93. |
+| 3     | Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.   | Patient's VIN : <VIN>, SSN <SSN>, Driver's license no: <DLN>.                        | Patient's VIN : 3OVFI43PIRJ188416, SSN #606-30-1601, Driver's license no: U932355D.          |
+| 4     | Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.      | Phone <PHONE>, <LOCATION>, <LOCATION>, E-MAIL: <EMAIL>.                              | Phone (322) 025-4270, 1301 S Main Street, 1514 Vernon Road, E-MAIL: Toto@hotmail.com.        |
 ```
 
 {:.model-param}
