@@ -11,6 +11,7 @@ sidebar:
     nav: jsl
 ---
 
+<div class="h3-box" markdown="1">
 
 ## Concepts
 
@@ -19,6 +20,8 @@ The **Transformer** is generally the result of a fitting process and applies cha
 These components have been embedded to be applicable to Spark NLP.
 
 **Pipelines** are a mechanism for combining multiple estimators and transformers in a single workflow. They allow multiple chained transformations along a Machine Learning task. For more information please refer to [Spark ML](https://spark.apache.org/docs/latest/ml-guide.html) library.
+
+</div><div class="h3-box" markdown="1">
 
 ## Annotation
 
@@ -33,9 +36,9 @@ The basic result of a NLP operation is an **annotation**. It's structure include
 
 This object is **automatically generated** by annotators after a transform process. No manual work is required. However, it is important to clearly understand the structure of an annotation to be able too efficiently use it.
 
-## Annotators
+</div><div class="h3-box" markdown="1">
 
-<div class="h3-box" markdown="1">
+## Annotators
 
 Annotators are the spearhead of NLP functions in Spark NLP. There are two forms of annotators:
 
@@ -108,12 +111,10 @@ OUTPUT:
 }
 ```
 
-
-</div>
-
 As you can see the explain_document_ml is able to annotate any "document" providing as output a list of stems, check-spelling, lemmas,
 part of speech tags, tokens and sentence boundary detection and all this "out-of-the-box"!.
 
+</div><div class="h3-box" markdown="1">
 
 ### Using a pretrained pipeline with spark dataframes
 
@@ -123,8 +124,6 @@ different components in a spark dataframe.
 
 Remember than when starting jupyter notebook from pyspark or when running the spark-shell for scala, a Spark Session is started in the background
 by default within the namespace 'scala'.
-
-<div class="tabs-new" markdown="1">
 
 
 ```python
@@ -163,6 +162,7 @@ OUTPUT:
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ### Manipulating pipelines
 
@@ -221,10 +221,10 @@ OUTPUT:
 +-------------------------------------------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ## Setup your own pipeline
 
-<div class="h3-box" markdown="1">
 
 ### Annotator types
 
@@ -242,7 +242,7 @@ annotated. There is a special **transformer** that does this for us:
 the **DocumentAssembler**, it creates the first annotation of type
 **Document** which may be used by annotators down the road.
 
-<div class="tabs-new" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 
 ```python
@@ -251,6 +251,7 @@ documentAssembler = nlp.DocumentAssembler() \
     .setOutputCol("document")
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ### Sentence detection and tokenization
 
@@ -278,6 +279,7 @@ finisher = nlp.Finisher() \
     .setCleanAnnotations(False)
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ### Finisher: Getting data out
 
@@ -296,6 +298,8 @@ If you need to have a flattened DataFrame (each sub-array in a new column) from 
 from johnsnowlabs import nlp
 df.withColumn("tmp", nlp.F.explode("chunk")).select("tmp.*")
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ## Using Spark ML Pipeline
 
@@ -321,8 +325,7 @@ OUTPUT:
 +-------------------------------------------+
 ```
 
-
-</div>
+</div><div class="h3-box" markdown="1">
 
 ## Using Spark NLP's LightPipeline
 
@@ -357,12 +360,9 @@ OUTPUT:
  'sentence': ['Hello world, please annotate my text']}
 ```
 
-
-</div>
+</div><div class="h3-box" markdown="1">
 
 ## Training annotators
-
-<div class="h3-box" markdown="1">
 
 ### Training methodology
 
@@ -393,6 +393,7 @@ models. In Spark NLP, we support three ways of training a custom annotator:
    allow importing your own graphs or even training from Python and
    converting them into an AnnotatorModel.
 
+</div><div class="h3-box" markdown="1">
 
 ### Spark ML Pipelines
 
@@ -409,7 +410,7 @@ pipeline = nlp.Pipeline().setStages([...])
 ```
 
 
-</div></div><div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### LightPipeline
 
@@ -428,14 +429,12 @@ nlp.LightPipeline(someTrainedPipeline).annotate(someStringOrArray)
 
 
 
-</div>
-
-
 **Functions:**
 - annotate(string or string\[\]): returns dictionary list of annotation results
 - fullAnnotate(string or string\[\]): returns dictionary list of entire annotations content
   For more details please refer to <a href="/docs/en/jsl/concepts#using-spark-nlps-lightpipeline">Using Spark NLP's LightPipelines</a>.
 
+</div><div class="h3-box" markdown="1">
 
 ### RecursivePipeline
 
@@ -460,13 +459,12 @@ recursivePipeline = nlp.RecursivePipeline(stages=[
 ])
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Params and Features
 
 #### Annotator parameters
 
-SparkML uses ML Params to store pipeline parameter maps. In SparkNLP,
-we also use Features, which are a way to store parameter maps that are
-larger than just a string or a boolean. These features are serialized
-as either Parquet or RDD objects, allowing much faster and scalable
-annotator information. Features are also broadcasted among executors for
-better performance.
+SparkML uses ML Params to store pipeline parameter maps. In SparkNLP, we also use Features, which are a way to store parameter maps that are larger than just a string or a boolean. These features are serialized as either Parquet or RDD objects, allowing much faster and scalable annotator information. Features are also broadcasted among executors for better performance.
+
+</div>

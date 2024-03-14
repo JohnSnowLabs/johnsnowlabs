@@ -16,7 +16,7 @@ sidebar:
 See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for detailed information on Release History and Features
 
 
-# 5.3.0
+## 5.3.0
 Release date: 3-8-2023
 
 The John Snow Labs 5.3.0 Library released with the following pre-installed and recommended dependencies
@@ -36,7 +36,7 @@ The John Snow Labs 5.3.0 Library released with the following pre-installed and r
 
 
 
-# 5.2.8
+## 5.2.8
 Release date: 2-15-2023
 
 The John Snow Labs 5.2.8 Library released with the following pre-installed and recommended dependencies
@@ -55,7 +55,7 @@ The John Snow Labs 5.2.8 Library released with the following pre-installed and r
 
 
 
-# 5.2.7
+## 5.2.7
 Release date: 2-15-2023
 
 The John Snow Labs 5.2.7 Library released with the following pre-installed and recommended dependencies
@@ -74,7 +74,7 @@ The John Snow Labs 5.2.7 Library released with the following pre-installed and r
 
 
 
-# 5.2.6
+## 5.2.6
 Release date: 2-4-2023
 
 The John Snow Labs 5.2.6 Library released with the following pre-installed and recommended dependencies

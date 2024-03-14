@@ -961,6 +961,8 @@ os.environ.update(license_keys)
 
 This guide will walk you through the deployment of a Spark NLP Healthcare application on a Kubernetes cluster using kind.
 
+</div><div class="h3-box" markdown="1">
+
 ### Prerequisites
 Installing Necessary Tools:
 
@@ -975,6 +977,7 @@ Installing Necessary Tools:
    * If you don't have one, create your account at Docker Hub(https://hub.docker.com/signup).
 5. Install JohnSnow Labs **licence key file** to the project directory(https://my.johnsnowlabs.com/subscriptions).
 
+</div><div class="h3-box" markdown="1">
 
 ### Project Structure:
 ```
@@ -986,6 +989,8 @@ Installing Necessary Tools:
 ├── spark-nlp-healthcare-deployment.yaml
 └── spark_nlp_for_healthcare_spark_ocr_8204.json (licence key filename)
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ### Application Details
 The main application script, `main.py`, is as follows:
@@ -1078,6 +1083,8 @@ if __name__ == "__main__":
 
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Step-by-step Guide
 ##### 1. Containerizing the Spark NLP Healthcare Application
 
@@ -1117,6 +1124,8 @@ This will authenticate you with Docker Hub, allowing you to push and pull privat
 Build the Docker image with the specific tag:
 `docker build -t <your-docker-hub-username>/spark-nlp-healthcare:<JSL_VERSION> .` 
 
+</div><div class="h3-box" markdown="1">
+
 ##### 2. Pushing Docker Image to Docker Hub
 
 Tag the image with your Docker Hub username:
@@ -1126,9 +1135,13 @@ Push the image to Docker Hub:
 
 `docker push <your-docker-hub-username>/spark-nlp-healthcare:<JSL_VERSION>`
 
+</div><div class="h3-box" markdown="1">
+
 ##### 3. Setting Up the Kubernetes Cluster with kind
 Before deploying the application, you'll need to set up a local Kubernetes cluster using kind. Run the following command:
 `kind create cluster`
+
+</div><div class="h3-box" markdown="1">
 
 ##### 4. Setting up Secrets in Kubernetes
 
@@ -1137,6 +1150,8 @@ Make sure your Spark NLP Healthcare license key file (e.g., <licence_filename>) 
 Replace <licence_filename> with your actual license key file name in the below command:
 
 `kubectl create secret generic spark-nlp-healthcare-secret --from-file=license=<licence_filename>`
+
+</div><div class="h3-box" markdown="1">
 
 ##### 5. Deploying the Spark NLP Healthcare Application
 Before proceeding, ensure that you replace the placeholders <your-docker-hub-username> and <JSL_VERSION> in the spark-nlp-healthcare-deployment.yaml with your Docker Hub username and the appropriate Spark NLP version respectively.
@@ -1199,6 +1214,8 @@ NAME                                               READY   STATUS    RESTARTS   
 spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          8m54s
 ```
 Now the pod is ready and running.
+
+</div><div class="h3-box" markdown="1">
 
 ##### 6. Validating the Deployment
 
