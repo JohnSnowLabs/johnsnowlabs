@@ -28,12 +28,10 @@ This pipeline can be used to deidentify PHI information from medical texts. The 
 
 ## How to use
 
-
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification_generic_optimized", "en", "clinical/models")
@@ -50,10 +48,8 @@ print('
 '.join([i.metadata['masked'] for i in deid_result[0]['obfuscated']]))
 print('
 '.join([i.result for i in deid_result[0]['obfuscated']]))
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification_generic_optimized", "en", "clinical/models")
@@ -70,7 +66,6 @@ println(deid_result(0)("obfuscated").map(_("metadata")("masked").toString).mkStr
 "))
 println(deid_result(0)("obfuscated").map(_("result").toString).mkString("
 "))
-
 ```
 </div>
 
@@ -92,7 +87,6 @@ Dr. Otila Kluver, ID: 3762831517, IP 444.444.444.444.
 He is a 78-year-old male was admitted to the NOLAND HOSPITAL ANNISTON for cystectomy on 03/13/93.
 Patient's VIN : 6HYWV37TGGY694854, SSN #627-03-5009, Driver's license no: F818299B.
 Phone (716) 967-8938, 615 Ridge Rd, Edinburg, E-MAIL: Ascanius@yahoo.com.
-
 ```
 
 {:.model-param}
