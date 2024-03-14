@@ -105,7 +105,12 @@ val pipeline = Pipeline().setStages(Array(
     resolver2chunk,
     chunkerMapper)
 
-val data = Seq(Array('amlodipine 5 MG', 'magnesium hydroxide 100 MG', 'metformin 1000 MG', 'dilaudid').toDF("text")
+val data = Seq(
+  ("amlodipine 5 MG"),
+  ("magnesium hydroxide 100 MG"),
+  ("metformin 1000 MG"),
+  ("dilaudid")
+).toDF("text")
 
 val model = pipeline.fit(data)
 val result = model.transform(data)
