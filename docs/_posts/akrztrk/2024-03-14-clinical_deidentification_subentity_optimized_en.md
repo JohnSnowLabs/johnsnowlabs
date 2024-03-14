@@ -34,7 +34,7 @@ This pipeline can be used to deidentify PHI information from medical texts. The 
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
-deid_pipeline = PretrainedPipeline("clinical_deidentification_generic_optimized", "en", "clinical/models")
+deid_pipeline = PretrainedPipeline("clinical_deidentification_subentity_optimized", "en", "clinical/models")
 
 text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
@@ -52,7 +52,7 @@ print('
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val deid_pipeline = PretrainedPipeline("clinical_deidentification_generic_optimized", "en", "clinical/models")
+val deid_pipeline = PretrainedPipeline("clinical_deidentification_subentity_optimized", "en", "clinical/models")
 
 val text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
