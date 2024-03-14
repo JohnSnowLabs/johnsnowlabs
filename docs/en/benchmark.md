@@ -264,10 +264,10 @@ Results show that the different versions can have some variance in the execution
 - **Dataset:** 100 Clinical Texts from MTSamples, approx. 705 tokens and 11 chunks per text.
 
 - **Versions:**
-  - **Databricks Runtime Version:** 12.2 LTS(Scala 2.12, Spark 3.3.2)
+  - **Databricks Runtime Version :** 12.2 LTS(Scala 2.12, Spark 3.3.2)
   - **spark-nlp Version:** v5.2.0
-  - **spark-nlp-jsl Version:** v5.2.0
-  - **Spark Version:** v3.3.2
+  - **spark-nlp-jsl Version :** v5.2.0
+  - **Spark Version :** v3.3.2
 
 - **Spark NLP Pipelines:**
 
@@ -322,99 +322,70 @@ mapper_resolver_pipeline = Pipeline(
 ])
 ```
 
-**NOTES:**
+**NOTES :**
 
 + **3 different pipelines:**
-The first pipeline with ChunkMapper, the second with Sentence Entity Resolver, and the third pipeline with ChunkMapper and Sentence Entity Resolver together.
+First pipeline with ChunkMapper, the second with Sentence Entity Resolver, and the third pipeline with ChunkMapper and Sentence Entity Resolver together.
 
-+ **4 different cluster configurations:**
-Driver and worker types were kept the same in all cluster configurations. The number of workers were increased gradually and set as 2, 4, 8, 10.
++ **3 different configurations:**
+Driver and worker types were kept as same in all cluster configurations. Number of workers were increased gradually and set as 2, 4, 8 for DataBricks.
+We choosed 3 different configurations for AWS EC2 machines that have same core with DataBricks.
 
 + **NER models were kept as same in all pipelines:** Pretrained `ner_posology_greedy` NER model was used in each pipeline.
 
 #### Benchmark Tables
 
 These  figures might differ based on the size of the mapper and resolver models. The larger the models, the higher the inference times.
-Depending on the success rate of mappers (any chunk coming in caught by the mapper successfully), the combined mapper and resolver timing would be less than resolver-only timing.
+Depending the success rate of mappers (any chunk coming in caught by the mapper successfully), the combined mapper and resolver timing would be less than resolver-only timing.
 
-If the resolver-only timing is equal to or very close to the combined mapper and resolver timing, it means that the mapper is not capable of catching/ mapping any chunk.
-In that case, try playing with various parameters in the mapper or retrain/ augment the mapper.
+If the resolver-only timing is equal or very close to the combined mapper and resolver timing, it means that mapper is not capable of catching/ mapping any chunk.
+In that case, try playing with various parameters in mapper or retrain/ augment the mapper.
 
-- Driver Name: Standard_DS3_v2
-- Driver Memory: 14GB
-- Worker Name: Standard_DS3_v2
-- Worker Memory: 14GB
-- Worker Cores: 4
-- Action: write_parquet
-- Total Worker Numbers: 2
-- Total Cores: 8
 
-| partition | mapper timing | resolver timing | mapper and resolver timing |
-| --------- | ------------- | --------------- | ---------------------- |
-| 4         | 23 sec        | 4.36 mins       | 2.40 mins              |
-| 8         | 15 sec        | 3.21 mins       | 1.48 mins              |
-| 16        | 18 sec        | 2.52 mins       | 2.04 mins              |
-| 32        | 13 sec        | 2.22 mins       | 1.38 mins              |
-| 64        | 14 sec        | 2.36 sec        | 1.50 mins              |
-| 100       | 14 sec        | 2.21 sec        | 1.36 mins              |
-| 1000      | 21 sec        | 2.23 mins       | 1.43 mins              |
+- DataBricks Config: 8 CPU Core, 32GiB RAM (2 worker, Standard_DS3_v2)
+- AWS Config: 8 CPU Cores, 14GiB RAM (c6a.2xlarge)
 
-- Driver Name: Standard_DS3_v2
-- Driver Memory: 14GB
-- Worker Name: Standard_DS3_v2
-- Worker Memory: 14GB
-- Worker Cores: 4
-- Action: write_parquet
-- Total Worker Numbers: 4
-- Total Cores: 16
 
-| partition | mapper timing | resolver timing | mapper and resolver timing |
-| --------- | ------------- | --------------- | ---------------------- |
-| 4         | 32.5 sec      | 4.19 mins       | 2.58 mins              |
-| 8         | 15.1 sec      | 2.25 mins       | 1.38 mins              |
-| 16        | 9.52 sec      | 1.50 mins       | 1.15 mins              |
-| 32        | 9.16 sec      | 1.47 mins       | 1.09 mins              |
-| 64        | 9.32 sec      | 1.36 mins       | 1.03 mins              |
-| 100       | 9.97 sec      | 1.48 mins       | 1.11 mins              |
-| 1000      | 12.5 sec      | 1.31 mins       | 1.03 mins              |
+| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+| --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
+| 4         | 23 sec        | 11 sec        | 4.36 mins       | 3.02 mins       |  2.40 mins                 | 1.58 mins                  |
+| 8         | 15 sec        | 9 sec         | 3.21 mins       | 2.27 mins       |  1.48 mins                 | 1.35 mins                  |
+| 16        | 18 sec        | 10 sec        | 2.52 mins       | 2.14 mins       |  2.04 mins                 | 1.25 mins                  |
+| 32        | 13 sec        | 11 sec        | 2.22 mins       | 2.26 mins       |  1.38 mins                 | 1.35 mins                  |
+| 64        | 14 sec        | 12 sec        | 2.36 mins       | 2.11 mins       |  1.50 mins                 | 1.26 mins                  |
+| 100       | 14 sec        | 30 sec        | 2.21 mins       | 2.07 mins       |  1.36 mins                 | 1.34 mins                  |
+| 1000      | 21 sec        | 21 sec        | 2.23 mins       | 2.08 mins       |  1.43 mins                 | 1.40 mins                  |
 
-- Driver Name: Standard_DS3_v2
-- Driver Memory: 14GB
-- Worker Name: Standard_DS3_v2
-- Worker Memory: 14GB
-- Worker Cores: 4
-- Action: write_parquet
-- Total Worker Numbers: 8
-- Total Cores: 32
 
-| partition | mapper timing | resolver timing | mapper and resolver timing |
-| --------- | ------------- | --------------- | ---------------------- |
-| 4         | 37.3 sec      | 4.46 mins       | 2.52 mins              |
-| 8         | 26.7 sec      | 2.46 mins       | 1.37 mins              |
-| 16        | 8.85 sec      | 1.27 mins       | 1.06 mins              |
-| 32        | 7.74 sec      | 1.38 mins       | 54.5 sec               |
-| 64        | 7.22 sec      | 1.23 mins       | 55.6 sec               |
-| 100       | 6.32 sec      | 1.16 mins       | 50.9 sec               |
-| 1000      | 8.37 sec      | 59.6 sec        | 49.3 sec               |
 
-- Driver Name: Standard_DS3_v2
-- Driver Memory: 14GB
-- Worker Name: Standard_DS3_v2
-- Worker Memory: 14GB
-- Worker Cores: 4
-- Action: write_parquet
-- Total Worker Numbers: 10
-- Total Cores: 40
 
-| partition | mapper timing | resolver timing | mapper and resolver timing |
-| --------- | ------------- | --------------- | ---------------------- |
-| 4         | 40.8 sec      | 4.55 mins       | 3.20 mins              |
-| 8         | 30.1 sec      | 3.34 mins       | 1.59 mins              |
-| 16        | 11.6 sec      | 1.57 mins       | 1.12 mins              |
-| 32        | 7.84 sec      | 1.33 mins       | 55.9 sec               |
-| 64        | 7.25 sec      | 1.18 mins       | 56.1 sec               |
-| 100       | 7.45 sec      | 1.05 mins       | 47.5 sec               |
-| 1000      | 8.87 sec      | 1.14 mins       | 47.9 sec               |
+- DataBricks Config: 16 CPU Core,64GiB RAM (4 worker, Standard_DS3_v2)
+- AWS Config: 16 CPU Cores, 27GiB RAM (c6a.4xlarge)
+
+| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+| --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
+| 4         | 32.5 sec      | 11 sec        | 4.19 mins       | 2.53 mins       |  2.58 mins                 | 1.48 mins                  |
+| 8         | 15.1 sec      | 7 sec         | 2.25 mins       | 1.43 mins       |  1.38 mins                 | 1.04 mins                  |
+| 16        | 9.52 sec      | 6 sec         | 1.50 mins       | 1.28 mins       |  1.15 mins                 | 1.00 mins                  |
+| 32        | 9.16 sec      | 6 sec         | 1.47 mins       | 1.24 mins       |  1.09 mins                 | 59 sec                     |
+| 64        | 9.32 sec      | 7 sec         | 1.36 mins       | 1.23 mins       |  1.03 mins                 | 57 sec                     |
+| 100       | 9.97 sec      | 20 sec        | 1.48 mins       | 1.34 mins       |  1.11 mins                 | 1.02 mins                  |
+| 1000      | 12.5 sec      | 13 sec        | 1.31 mins       | 1.26 mins       |  1.03 mins                 | 58 sec                     |
+
+
+- DataBricks Config: 32 CPU Core, 128GiB RAM (8 worker, Standard_DS3_v2)
+- AWS Config: 32 CPU Cores, 58GiB RAM (c6a.8xlarge)
+
+
+| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+| --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
+| 4         | 37.3 sec      | 12 sec        | 4.46 mins       | 2.37 mins       |  2.52 mins                 | 1.47 mins                  |
+| 8         | 26.7 sec      | 7 sec         | 2.46 mins       | 1.39 mins       |  1.37 mins                 | 1.04 mins                  |
+| 16        | 8.85 sec      | 7 sec         | 1.27 mins       | 1.30 mins       |  1.06 mins                 | 1.02 mins                  |
+| 32        | 7.74 sec      | 7 sec         | 1.38 mins       | 1.00 mins       |  54.5 sec                  | 43 sec                     |
+| 64        | 7.22 sec      | 7 sec         | 1.23 mins       | 1.07 mins       |  55.6 sec                  | 48 sec                     |
+| 100       | 6.32 sec      | 10 sec        | 1.16 mins       | 1.08 mins       |  50.9 sec                  | 45 sec                     |
+| 1000      | 8.37 sec      | 10 sec        | 59.6 sec        | 1.02 mins       |  49.3 sec                  | 41 sec                     |
 
 </div>
 
