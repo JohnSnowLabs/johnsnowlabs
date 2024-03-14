@@ -28,13 +28,10 @@ This pipeline can be used to deidentify PHI information from medical texts. The 
 
 ## How to use
 
-
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("clinical_deidentification_generic_optimized", "en", "clinical/models")
@@ -46,11 +43,8 @@ Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A33445
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
 
 result = deid_pipeline.fullAnnotate(text)
-
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("clinical_deidentification_generic_optimized", "en", "clinical/models")
@@ -62,7 +56,6 @@ Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A33445
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
 
 val result = deid_pipeline.fullAnnotate(text)
-
 ```
 </div>
 
