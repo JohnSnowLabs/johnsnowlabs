@@ -11,6 +11,8 @@ sidebar:
     nav: healthcare-gpt
 ---
 
+<div class="h3-box" markdown="1">
+
 The Medical Chatbot is equipped with three dynamic tools, each tailored to meet different information needs and research requirements. These tools are `MedResearch`, `Wikipedia`, and `John's Memory`, collectively providing a comprehensive solution for a wide range of queries.
 
 ## MedResearch: Your Gateway to Academic Medical Research
@@ -33,6 +35,7 @@ For questions targeting a certain KB, you can turn available KBs on and off acco
 
 > **_NOTE:_**  To enforce the use of this tool add the following sentence at the end of your query: **Ask MedResearch.**
 
+</div><div class="h3-box" markdown="1">
 
 ## Wikipedia: Answering Short or Generic Questions
 
@@ -40,7 +43,10 @@ For users seeking quick answers to short or generic questions, the Medical Chatb
 
 > **_NOTE:_**  To enforce the use of this tool add the following sentence at the end of your query: **Ask Wikipedia.**
 
+</div><div class="h3-box" markdown="1">
+
 ## John's Memory: Specialized in Summarization and General Queries
 
 John's Memory is a versatile feature within the Medical Chatbot, dedicated to summarization tasks and answering general questions. This tool is particularly useful when users need a succinct summary of extensive information or when they have broad questions that do not require deep, research-level detail. John's Memory employs advanced NLP (Natural Language Processing) techniques to comprehend, interpret, and condense information, making it an invaluable asset for users who need quick insights or overviews.
 
+</div>

@@ -36,6 +36,7 @@ try:
             EntityChunkEmbeddings,
             ZeroShotRelationExtractionModel,
             TFGraphBuilder,
+            NerConverterInternal,
             ChunkConverter,
             ChunkFilterer,
             NerChunker,
@@ -85,6 +86,7 @@ try:
             Text2SQL,
             IOBTagger,
             DocumentFiltererByClassifier,
+            Flattener,
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
@@ -106,7 +108,12 @@ try:
             MedicalSummarizer as Summarizer,
             InternalDocumentSplitter as DocumentSplitter,
             NerConverterInternal as NerConverter,
-
+            EntityRulerInternalApproach as EntityRulerApproach,
+            EntityRulerInternalModel as EntityRulerModel,
+            TextMatcherInternal as TextMatcher,
+            TextMatcherInternalModel as TextMatcherModel,
+            RegexMatcherInternal as RegexMatcher,
+            RegexMatcherInternalModel as RegexMatcherModel,
         )
         from sparknlp_jsl.compatibility import Compatibility
         from sparknlp_jsl.pretrained import InternalResourceDownloader

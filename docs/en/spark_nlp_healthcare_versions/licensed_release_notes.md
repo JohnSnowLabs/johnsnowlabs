@@ -518,8 +518,8 @@ The `TextMatcherInternal` annotator provides a robust solution for matching exac
 
 |model|entities|
 |:----|-------|
-| [drug_matcher](https://nlp.johnsnowlabs.com/2024/02/21/drug_matcher_en.html)  |`DRUG` |
-| [biomarker_matcher](https://nlp.johnsnowlabs.com/2024/02/28/biomarker_matcher_en.html)  |`Biomarker` |
+| [drug_matcher](https://nlp.johnsnowlabs.com/2024/03/06/drug_matcher_en.html)  |`DRUG` |
+| [biomarker_matcher](https://nlp.johnsnowlabs.com/2024/03/06/biomarker_matcher_en.html)  |`Biomarker` |
 
 *Example*:
 

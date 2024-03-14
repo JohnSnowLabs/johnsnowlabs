@@ -166,8 +166,8 @@ What sets this release apart is the elimination of complexities typically involv
 | [`cpt_procedures_measurements_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/17/cpt_procedures_measurements_resolver_pipeline_en.html) | This pipeline extracts `Procedure` and `Measurement` entities and maps them to corresponding Current Procedural Terminology (CPT) codes. |
 | [`hcc_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/17/hcc_resolver_pipeline_en.html) |This advanced pipeline extracts clinical conditions from clinical texts and maps these entities to their corresponding Hierarchical Condition Categories (HCC) codes. |
 | [`hpo_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/17/hpo_resolver_pipeline_en.html) | This advanced pipeline extracts human phenotype entities from clinical texts and maps these entities to their corresponding HPO codes. |
-| [`snomed_body_structure_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/17/snomed_body_structure_resolver_pipeline_en.html) | This pipeline extracts anatomical structure entities and maps them to their corresponding SNOMED (body structure version) codes. |
-| [`snomed_findings_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/17/snomed_findings_resolver_pipeline_en.html) | This pipeline extracts clinical findings and maps them to their corresponding SNOMED (CT version) codes. |
+| [`snomed_body_structure_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/05/snomed_body_structure_resolver_pipeline_en.html) | This pipeline extracts anatomical structure entities and maps them to their corresponding SNOMED (body structure version) codes. |
+| [`snomed_findings_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/03/snomed_findings_resolver_pipeline_en.html) | This pipeline extracts clinical findings and maps them to their corresponding SNOMED (CT version) codes. |
 
 
 </div><div class="h3-box" markdown="1">
