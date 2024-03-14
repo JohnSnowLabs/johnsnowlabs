@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Pipeline for Snomed Concept, Findings Version | snomed_findings_resolver_pipeline | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Detect Name for Deidentification Multilingual (LangTest) | ner_deid_name_multilingual_clinical_langtest | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline extracts clinical findings and maps them to their corresponding SNOMED (CT version) codes using sbiobert_base_cased_mli Sentence Bert Embeddings.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinesnomed_pipeline = Pretrai...">
-<!-- <link rel="canonical" href="/2024/03/03/snomed_findings_resolver_pipeline_en.html"> -->
-<link rel="canonical" href="/2024/03/03/snomed_findings_resolver_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model detects name entities in clinical documents. It is the version of  ner_deid_name_multilingual_clinical model augmented with langtest library.            test_type      before fail_count      after fail_count      before pass_count      after pass_count      minimum pass_rate      before pass_ra...">
+<!-- <link rel="canonical" href="/2024/03/12/ner_deid_name_multilingual_clinical_langtest_xx.html"> -->
+<link rel="canonical" href="/2024/03/12/ner_deid_name_multilingual_clinical_langtest_xx.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,62 +497,225 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bunyamin-polat/2024-03-03-snomed_findings_resolver_pipeline_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/RakshitKhajuria/2024-03-12-ner_deid_name_multilingual_clinical_langtest_xx.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 03, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-03T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Pipeline for Snomed Concept, Findings Version</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline for Snomed Concept, Findings Version"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>snomed</li><li>pipeline</li><li>resolver</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-03T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,snomed,pipeline,resolver"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 12, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-12T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Detect Name for Deidentification Multilingual (LangTest)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Detect Name for Deidentification Multilingual (LangTest)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>ner</li><li>clinical</li><li>langtest</li><li>multilingual</li><li>deid</li><li>name</li><li>xx</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-12T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,ner,clinical,langtest,multilingual,deid,name,xx"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline extracts clinical findings and maps them to their corresponding SNOMED (CT version) codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings.</p>
+<p>This model detects name entities in clinical documents. It is the version of  <a href="https://nlp.johnsnowlabs.com/2024/02/12/ner_deid_name_multilingual_clinical_xx.html">ner_deid_name_multilingual_clinical</a> model augmented with <code class="language-plaintext highlighter-rouge">langtest</code> library.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>test_type</strong></th>
+      <th><strong>before fail_count</strong></th>
+      <th><strong>after fail_count</strong></th>
+      <th><strong>before pass_count</strong></th>
+      <th><strong>after pass_count</strong></th>
+      <th><strong>minimum pass_rate</strong></th>
+      <th><strong>before pass_rate</strong></th>
+      <th><strong>after pass_rate</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>add_ocr_typo</strong></td>
+      <td>165</td>
+      <td>139</td>
+      <td>2337</td>
+      <td>2363</td>
+      <td>95%</td>
+      <td>93%</td>
+      <td>94%</td>
+    </tr>
+    <tr>
+      <td><strong>lowercase</strong></td>
+      <td>3282</td>
+      <td>1135</td>
+      <td>1762</td>
+      <td>3909</td>
+      <td>95%</td>
+      <td>35%</td>
+      <td>77%</td>
+    </tr>
+    <tr>
+      <td><strong>titlecase</strong></td>
+      <td>1799</td>
+      <td>840</td>
+      <td>3165</td>
+      <td>4124</td>
+      <td>95%</td>
+      <td>64%</td>
+      <td>83%</td>
+    </tr>
+    <tr>
+      <td><strong>add_abbreviation</strong></td>
+      <td>74</td>
+      <td>73</td>
+      <td>1343</td>
+      <td>1344</td>
+      <td>95%</td>
+      <td>95%</td>
+      <td>95%</td>
+    </tr>
+    <tr>
+      <td><strong>strip_all_punctuation</strong></td>
+      <td>654</td>
+      <td>655</td>
+      <td>4320</td>
+      <td>4319</td>
+      <td>95%</td>
+      <td>87%</td>
+      <td>87%</td>
+    </tr>
+    <tr>
+      <td><strong>uppercase</strong></td>
+      <td>2481</td>
+      <td>1252</td>
+      <td>2488</td>
+      <td>3717</td>
+      <td>95%</td>
+      <td>50%</td>
+      <td>75%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="predicted-entities">Predicted Entities</h2>
+
+<p><code class="language-plaintext highlighter-rouge">NAME</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/snomed_findings_resolver_pipeline_en_5.3.0_3.0_1709488228811.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/snomed_findings_resolver_pipeline_en_5.3.0_3.0_1709488228811.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_deid_name_multilingual_clinical_langtest_xx_5.3.0_3.0_1710268198235.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_deid_name_multilingual_clinical_langtest_xx_5.3.0_3.0_1710268198235.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">snomed_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"snomed_findings_resolver_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl"</span><span class="p">,</span><span class="s">"xx"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">snomed_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"""The patient exhibited recurrent upper respiratory tract infections, fever, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia."""</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
+<span class="n">embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">ner</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_deid_name_multilingual_clinical_langtest"</span><span class="p">,</span> <span class="s">"xx"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span>
+    <span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">sentence_detector</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">embeddings</span><span class="p">,</span>
+        <span class="n">ner</span><span class="p">,</span>
+        <span class="n">ner_converter</span>
+<span class="p">])</span>
+
+<span class="n">text_list</span> <span class="o">=</span> <span class="p">[</span>
+<span class="p">[</span><span class="s">"""Record date: 2093-01-13, David Hale, M.D., Name: Hendrickson, Ora MR. # 7194334 Date: 01/13/93 PCP: Oliveira, 25 years old, Record date: 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. The patient's complaints first surfaced when he started working for Brothers Coal-Mine."""</span><span class="p">],</span>     
+<span class="p">[</span><span class="s">"""J'ai vu en consultation Michel Martinez (49 ans) adressé au Centre Hospitalier De Plaisir pour un diabète mal contrôlé avec des symptômes datant de Mars 2015."""</span><span class="p">],</span>   
+<span class="p">[</span><span class="s">"""Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen."""</span><span class="p">],</span>
+<span class="p">[</span><span class="s">"""Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015."""</span><span class="p">],</span>
+<span class="p">[</span><span class="s">"""Antonio Miguel Martínez, un varón de 35 años de edad, de profesión auxiliar de enfermería y nacido en Cadiz, España. Aún no estaba vacunado, se infectó con Covid-19 el dia 14 de Marzo y tuvo que ir al Hospital. Fue tratado con anticuerpos monoclonales en la Clinica San Carlos."""</span><span class="p">],</span>
+<span class="p">[</span><span class="s">"""Detalhes do paciente:
+Nome do paciente: Pedro Gonçalves NHC: 2569870 Endereço: Rua Das Flores 23. Cidade/ Província: Porto Código Postal: 21754-987 Dados de cuidados Data de nascimento: 10/10/1963 Idade: 53 anos Data de admissão: 17/06/2016 Doutora: Maria Santos"""</span><span class="p">],</span>
+<span class="p">[</span><span class="s">"""Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România Tel: +40(235)413773 Data setului de analize: 25 May 2022 15:36:00 Nume&amp;Prenume: BUREAN MARIA, Varsta: 77 CNP: 2450502264401"""</span><span class="p">]</span>
+<span class="p">]</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">text_list</span><span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">snomed_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"snomed_findings_resolver_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">sentence_detector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl"</span><span class="o">,</span><span class="s">"xx"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">snomed_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"""The patient exhibited recurrent upper respiratory tract infections, fever, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia."""</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_deid_name_multilingual_clinical_langtest"</span><span class="o">,</span> <span class="s">"xx"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span> 
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span> 
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+    
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+    <span class="n">document_assembler</span><span class="o">,</span>
+    <span class="n">sentence_detector</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span>
+    <span class="n">embeddings</span><span class="o">,</span>
+    <span class="n">ner</span><span class="o">,</span>
+    <span class="n">ner_converter</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">text_list</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span>
+<span class="s">"""Record date: 2093-01-13, David Hale, M.D., Name: Hendrickson, Ora MR. # 7194334 Date: 01/13/93 PCP: Oliveira, 25 years old, Record date: 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. The patient's complaints first surfaced when he started working for Brothers Coal-Mine."""</span><span class="o">,</span>
+<span class="s">"""J'ai vu en consultation Michel Martinez (49 ans) adressé au Centre Hospitalier De Plaisir pour un diabète mal contrôlé avec des symptômes datant de Mars 2015."""</span><span class="o">,</span>       
+<span class="s">"""Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen."""</span><span class="o">,</span>
+<span class="s">"""Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015."""</span><span class="o">,</span>
+<span class="s">"""Antonio Miguel Martínez, un varón de 35 años de edad, de profesión auxiliar de enfermería y nacido en Cadiz, España. Aún no estaba vacunado, se infectó con Covid-19 el dia 14 de Marzo y tuvo que ir al Hospital. Fue tratado con anticuerpos monoclonales en la Clinica San Carlos."""</span><span class="o">,</span>
+<span class="s">"""Detalhes do paciente:
+Nome do paciente: Pedro Gonçalves NHC: 2569870 Endereço: Rua Das Flores 23. Cidade/ Província: Porto Código Postal: 21754-987 Dados de cuidados Data de nascimento: 10/10/1963 Idade: 53 anos Data de admissão: 17/06/2016 Doutora: Maria Santos"""</span><span class="o">,</span>
+<span class="s">"""Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România Tel: +40(235)413773 Data setului de analize: 25 May 2022 15:36:00 Nume&amp;Prenume: BUREAN MARIA, Varsta: 77 CNP: 2450502264401"""</span>
+<span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text_list</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">model</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+----------------------------------+-----+---+---------+-----------+-------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
-|                             chunk|begin|end|ner_label|snomed_code|                                 resolution|                                           all_k_resolutions|                                                 all_k_codes|
-+----------------------------------+-----+---+---------+-----------+-------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
-|upper respiratory tract infections|   32| 65|  PROBLEM|  195708003|recurrent upper respiratory tract infection|recurrent upper respiratory tract infection:::upper respi...|195708003:::54150009:::312118003:::448739000:::4519910001...|
-|                             fever|   68| 72|  PROBLEM|  386661006|                                      fever|fever:::intermittent fever:::sustained fever:::prolonged ...|386661006:::77957000:::271751000:::248435007:::12579009::...|
-|         unintentional weight loss|   75| 99|  PROBLEM|  448765001|                  unintentional weight loss|unintentional weight loss:::unexplained weight loss:::int...|448765001:::422868009:::416528001:::267024001:::89362005:...|
-|                      night sweats|  117|128|  PROBLEM|   42984000|                               night sweats|night sweats:::frequent night waking:::night waking:::nig...|42984000:::423052008:::67233009:::102549009:::36163009:::...|
-|                         cachectic|  157|165|  PROBLEM|  238108007|                                  cachectic|cachectic:::cachexia associated with aids:::cardiac cache...|238108007:::422003001:::284529003:::788876001:::240128005...|
-|                              pale|  171|174|  PROBLEM|  398979000|                            pale complexion|pale complexion:::pale liver:::pale tongue:::pale lung:::...|398979000:::95199009:::719637000:::95200007:::70396004:::...|
-|                hepatosplenomegaly|  190|207|  PROBLEM|   36760000|                         hepatosplenomegaly|hepatosplenomegaly:::congestive splenomegaly:::neonatal h...|36760000:::19058002:::80378000:::16294009:::191382009:::8...|
-|                      pancytopenia|  239|250|  PROBLEM|  127034005|                               pancytopenia|pancytopenia:::drug induced pancytopenia:::pancytopenia -...|127034005:::736024007:::5876000:::124961001:::417672002::...|
-+----------------------------------+-----+---+---------+-----------+-------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-----------------------+-----+---+---------+
+|              ner_chunk|begin|end|ner_label|
++-----------------------+-----+---+---------+
+|             David Hale|   25| 34|     NAME|
+|       Hendrickson, Ora|   49| 64|     NAME|
+|     Brothers Coal-Mine|  291|308|     NAME|
+|        Michel Martinez|   24| 38|     NAME|
+|         Michael Berger|    0| 13|     NAME|
+|                 Berger|  117|122|     NAME|
+|  Gastone Montanariello|    9| 29|     NAME|
+|Antonio Miguel Martínez|    0| 22|     NAME|
+|        Pedro Gonçalves|   41| 55|     NAME|
+|           Maria Santos|  251|262|     NAME|
+|           BUREAN MARIA|  154|165|     NAME|
++-----------------------+-----+---+---------+
 
 </code></pre></div></div>
 
@@ -562,11 +725,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>snomed_findings_resolver_pipeline</td>
-    </tr>
-    <tr>
-      <td>Type:</td>
-      <td>pipeline</td>
+      <td>ner_deid_name_multilingual_clinical_langtest</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -581,37 +740,34 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>Official</td>
     </tr>
     <tr>
+      <td>Input Labels:</td>
+      <td>[sentence, token, embeddings]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[ner]</td>
+    </tr>
+    <tr>
       <td>Language:</td>
-      <td>en</td>
+      <td>xx</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>2.8 GB</td>
+      <td>14.8 MB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="included-models">Included Models</h2>
+<h2 id="benchmarking">Benchmarking</h2>
 
-<ul>
-  <li>DocumentAssembler</li>
-  <li>SentenceDetectorDLModel</li>
-  <li>TokenizerModel</li>
-  <li>WordEmbeddingsModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>ChunkMergeModel</li>
-  <li>Chunk2Doc</li>
-  <li>BertSentenceEmbeddings</li>
-  <li>SentenceEntityResolverModel</li>
-</ul>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-03T00:00:00+00:00"><!-- start custom article footer snippet -->
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>       label    precision     recall  f1-score   support 
+      B-NAME         0.90       0.90      0.90      4986    
+      I-NAME         0.91       0.93      0.92      4059    
+   micro-avg         0.90       0.92      0.91      9045    
+   macro-avg         0.91       0.92      0.91      9045    
+weighted-avg         0.90       0.92      0.91      9045    
+</code></pre></div></div>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-12T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -796,7 +952,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/03/snomed_findings_resolver_pipeline_en.html">Pipeline for Snomed Concept, Findings Version</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/04/sbiobertresolve_snomed_bodyStructure_en.html">Sentence Entity Resolver for SNOMED (sbiobertresolve_snomed_bodyStructure)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/11/snomed_resolver_pipeline_en.html">Pipeline for SNOMED Concept, All Concepts Version</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/12/snomed_auxConcepts_resolver_pipeline_en.html">Pipeline for Snomed Concept, Aux Concepts Version</a></div></div></div>
 
 </div>
 </div>

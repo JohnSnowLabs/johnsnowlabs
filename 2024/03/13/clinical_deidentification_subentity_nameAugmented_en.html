@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Pipeline for Snomed Concept, Findings Version | snomed_findings_resolver_pipeline | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Clinical Deidentification Pipeline (English - Subentity - Name Augmented) | clinical_deidentification_subentity_nameAugmented | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pipeline extracts clinical findings and maps them to their corresponding SNOMED (CT version) codes using sbiobert_base_cased_mli Sentence Bert Embeddings.Live DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinesnomed_pipeline = Pretrai...">
-<!-- <link rel="canonical" href="/2024/03/03/snomed_findings_resolver_pipeline_en.html"> -->
-<link rel="canonical" href="/2024/03/03/snomed_findings_resolver_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pipeline can be used to deidentify PHI information from medical texts.The PHI information will be masked and obfuscated in the resulting text.The pipeline can mask and obfuscate AGE, DATE, PROFESSION, CITY, COUNTRY, DOCTOR, HOSPITAL, IDNUM, MEDICALRECORD, ORGANIZATION, PATIENT,PHONE, STREET, USERNAME...">
+<!-- <link rel="canonical" href="/2024/03/13/clinical_deidentification_subentity_nameAugmented_en.html"> -->
+<link rel="canonical" href="/2024/03/13/clinical_deidentification_subentity_nameAugmented_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,43 +497,60 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bunyamin-polat/2024-03-03-snomed_findings_resolver_pipeline_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/RakshitKhajuria/2024-03-13-clinical_deidentification_subentity_nameAugmented_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 03, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-03T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Pipeline for Snomed Concept, Findings Version</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline for Snomed Concept, Findings Version"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>snomed</li><li>pipeline</li><li>resolver</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-03T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,snomed,pipeline,resolver"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 13, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-13T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Clinical Deidentification Pipeline (English - Subentity - Name Augmented)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Clinical Deidentification Pipeline (English - Subentity - Name Augmented)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>deidentification</li><li>deid</li><li>en</li><li>licensed</li><li>clinical</li><li>pipeline</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-13T00:00:00+00:00">
+    <meta itemprop="keywords" content="deidentification,deid,en,licensed,clinical,pipeline"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pipeline extracts clinical findings and maps them to their corresponding SNOMED (CT version) codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings.</p>
+<p>This pipeline can be used to deidentify PHI information from medical texts.
+The PHI information will be masked and obfuscated in the resulting text.
+The pipeline can mask and obfuscate <code class="language-plaintext highlighter-rouge">AGE</code>, <code class="language-plaintext highlighter-rouge">DATE</code>, <code class="language-plaintext highlighter-rouge">PROFESSION</code>, <code class="language-plaintext highlighter-rouge">CITY</code>, <code class="language-plaintext highlighter-rouge">COUNTRY</code>, <code class="language-plaintext highlighter-rouge">DOCTOR</code>, <code class="language-plaintext highlighter-rouge">HOSPITAL</code>, <code class="language-plaintext highlighter-rouge">IDNUM</code>, <code class="language-plaintext highlighter-rouge">MEDICALRECORD</code>, <code class="language-plaintext highlighter-rouge">ORGANIZATION</code>, <code class="language-plaintext highlighter-rouge">PATIENT</code>,
+<code class="language-plaintext highlighter-rouge">PHONE</code>, <code class="language-plaintext highlighter-rouge">STREET</code>, <code class="language-plaintext highlighter-rouge">USERNAME</code>, <code class="language-plaintext highlighter-rouge">EMAIL</code>, <code class="language-plaintext highlighter-rouge">ZIP</code>, <code class="language-plaintext highlighter-rouge">ACCOUNT</code>, <code class="language-plaintext highlighter-rouge">LICENSE</code>, <code class="language-plaintext highlighter-rouge">VIN</code>, <code class="language-plaintext highlighter-rouge">SSN</code>, <code class="language-plaintext highlighter-rouge">DLN</code>, <code class="language-plaintext highlighter-rouge">PLATE</code>, <code class="language-plaintext highlighter-rouge">IPADDR</code> entities.
+This pipeline is built using the <code class="language-plaintext highlighter-rouge">ner_deid_subentity_augmented</code> model as well as ContextualParser, RegexMatcher, and TextMatcher.
+It is augmented with <code class="language-plaintext highlighter-rouge">ner_deid_name_multilingual_clinical</code> model.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/snomed_findings_resolver_pipeline_en_5.3.0_3.0_1709488228811.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/snomed_findings_resolver_pipeline_en_5.3.0_3.0_1709488228811.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_subentity_nameAugmented_en_5.3.0_3.0_1710343799268.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/clinical_deidentification_subentity_nameAugmented_en_5.3.0_3.0_1710343799268.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
-
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">snomed_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"snomed_findings_resolver_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+<span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_nameAugmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">snomed_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"""The patient exhibited recurrent upper respiratory tract infections, fever, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia."""</span><span class="p">)</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">deid_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
 
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">snomed_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"snomed_findings_resolver_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">deid_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification_nameAugmented"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">snomed_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"""The patient exhibited recurrent upper respiratory tract infections, fever, unintentional weight loss, and occasional night sweats. Clinically, they appeared cachectic and pale, with notable hepatosplenomegaly. Laboratory results confirmed pancytopenia."""</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
+Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
+Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
+Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""</span>
+
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">deid_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
 
 </code></pre></div>  </div>
 </div>
@@ -541,18 +558,58 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="results">Results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+----------------------------------+-----+---+---------+-----------+-------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
-|                             chunk|begin|end|ner_label|snomed_code|                                 resolution|                                           all_k_resolutions|                                                 all_k_codes|
-+----------------------------------+-----+---+---------+-----------+-------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
-|upper respiratory tract infections|   32| 65|  PROBLEM|  195708003|recurrent upper respiratory tract infection|recurrent upper respiratory tract infection:::upper respi...|195708003:::54150009:::312118003:::448739000:::4519910001...|
-|                             fever|   68| 72|  PROBLEM|  386661006|                                      fever|fever:::intermittent fever:::sustained fever:::prolonged ...|386661006:::77957000:::271751000:::248435007:::12579009::...|
-|         unintentional weight loss|   75| 99|  PROBLEM|  448765001|                  unintentional weight loss|unintentional weight loss:::unexplained weight loss:::int...|448765001:::422868009:::416528001:::267024001:::89362005:...|
-|                      night sweats|  117|128|  PROBLEM|   42984000|                               night sweats|night sweats:::frequent night waking:::night waking:::nig...|42984000:::423052008:::67233009:::102549009:::36163009:::...|
-|                         cachectic|  157|165|  PROBLEM|  238108007|                                  cachectic|cachectic:::cachexia associated with aids:::cardiac cache...|238108007:::422003001:::284529003:::788876001:::240128005...|
-|                              pale|  171|174|  PROBLEM|  398979000|                            pale complexion|pale complexion:::pale liver:::pale tongue:::pale lung:::...|398979000:::95199009:::719637000:::95200007:::70396004:::...|
-|                hepatosplenomegaly|  190|207|  PROBLEM|   36760000|                         hepatosplenomegaly|hepatosplenomegaly:::congestive splenomegaly:::neonatal h...|36760000:::19058002:::80378000:::16294009:::191382009:::8...|
-|                      pancytopenia|  239|250|  PROBLEM|  127034005|                               pancytopenia|pancytopenia:::drug induced pancytopenia:::pancytopenia -...|127034005:::736024007:::5876000:::124961001:::417672002::...|
-+----------------------------------+-----+---+---------+-----------+-------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
+print<span class="o">(</span><span class="s2">"
+Masked with entity labels"</span><span class="o">)</span>
+print<span class="o">(</span><span class="s2">"-"</span><span class="k">*</span>30<span class="o">)</span>
+print<span class="o">(</span><span class="s2">"
+"</span>.join<span class="o">(</span>result[<span class="s1">'masked'</span><span class="o">]))</span>
+print<span class="o">(</span><span class="s2">"
+Masked with chars"</span><span class="o">)</span>
+print<span class="o">(</span><span class="s2">"-"</span><span class="k">*</span>30<span class="o">)</span>
+print<span class="o">(</span><span class="s2">"
+"</span>.join<span class="o">(</span>result[<span class="s1">'masked_with_chars'</span><span class="o">]))</span>
+print<span class="o">(</span><span class="s2">"
+Masked with fixed length chars"</span><span class="o">)</span>
+print<span class="o">(</span><span class="s2">"-"</span><span class="k">*</span>30<span class="o">)</span>
+print<span class="o">(</span><span class="s2">"
+"</span>.join<span class="o">(</span>result[<span class="s1">'masked_fixed_length_chars'</span><span class="o">]))</span>
+print<span class="o">(</span><span class="s2">"
+Obfuscated"</span><span class="o">)</span>
+print<span class="o">(</span><span class="s2">"-"</span><span class="k">*</span>30<span class="o">)</span>
+print<span class="o">(</span><span class="s2">"
+"</span>.join<span class="o">(</span>result[<span class="s1">'obfuscated'</span><span class="o">]))</span>
+
+Masked with entity labels
+<span class="nt">------------------------------</span>
+Name : &lt;PATIENT&gt;, Record <span class="nb">date</span>: &lt;DATE&gt;, MR &lt;MEDICALRECORD&gt;.
+Dr. &lt;DOCTOR&gt;, ID: &lt;DEVICE&gt;, IP &lt;IPADDR&gt;.
+He is a &lt;AGE&gt;-year-old male was admitted to the &lt;HOSPITAL&gt; <span class="k">for </span>cystectomy on &lt;DATE&gt;.
+Patient<span class="s1">'s VIN : &lt;VIN&gt;, SSN &lt;SSN&gt;, Driver'</span>s license no: &lt;DLN&gt;.
+Phone &lt;PHONE&gt;, &lt;STREET&gt;, &lt;CITY&gt;, E-MAIL: &lt;EMAIL&gt;.
+
+Masked with chars
+<span class="nt">------------------------------</span>
+Name : <span class="o">[</span><span class="k">**************</span><span class="o">]</span>, Record <span class="nb">date</span>: <span class="o">[</span><span class="k">********</span><span class="o">]</span>, MR <span class="o">[</span><span class="k">****</span><span class="o">]</span><span class="nb">.</span>
+Dr. <span class="o">[</span><span class="k">********</span><span class="o">]</span>, ID: <span class="o">[</span><span class="k">********</span><span class="o">]</span>, IP <span class="o">[</span><span class="k">************</span><span class="o">]</span><span class="nb">.</span>
+He is a <span class="k">**</span><span class="nt">-year-old</span> male was admitted to the <span class="o">[</span><span class="k">**********</span><span class="o">]</span> <span class="k">for </span>cystectomy on <span class="o">[</span><span class="k">******</span><span class="o">]</span><span class="nb">.</span>
+Patient<span class="s1">'s VIN : [***************], SSN [**********], Driver'</span>s license no: <span class="o">[</span><span class="k">******</span><span class="o">]</span><span class="nb">.</span>
+Phone <span class="o">[</span><span class="k">************</span><span class="o">]</span>, <span class="o">[</span><span class="k">***************</span><span class="o">]</span>, <span class="o">[</span><span class="k">***********</span><span class="o">]</span>, E-MAIL: <span class="o">[</span><span class="k">*************</span><span class="o">]</span><span class="nb">.</span>
+
+Masked with fixed length chars
+<span class="nt">------------------------------</span>
+Name : <span class="k">****</span>, Record <span class="nb">date</span>: <span class="k">****</span>, MR <span class="k">****</span><span class="nb">.</span>
+Dr. <span class="k">****</span>, ID: <span class="k">****</span>, IP <span class="k">****</span><span class="nb">.</span>
+He is a <span class="k">****</span><span class="nt">-year-old</span> male was admitted to the <span class="k">****</span> <span class="k">for </span>cystectomy on <span class="k">****</span><span class="nb">.</span>
+Patient<span class="s1">'s VIN : ****, SSN ****, Driver'</span>s license no: <span class="k">****</span><span class="nb">.</span>
+Phone <span class="k">****</span>, <span class="k">****</span>, <span class="k">****</span>, E-MAIL: <span class="k">****</span><span class="nb">.</span>
+
+Obfuscated
+<span class="nt">------------------------------</span>
+Name : Campbell Lerner, Record <span class="nb">date</span>: 2093-01-22, MR 301601.
+Dr. Ivar Drape, ID: O1478969, IP 004.004.004.004.
+He is a 74-year-old male was admitted to the DELAWARE COUNTY MEMORIAL HOSPITAL <span class="k">for </span>cystectomy on 01/22/93.
+Patient<span class="s1">'s VIN : 0XNAT55DDUK025427, SSN #062-37-6283, Driver'</span>s license no: T517616W.
+Phone <span class="o">(</span>737<span class="o">)</span> 106-2694, 1120 Pine St, Durham, E-MAIL: Joseline@hotmail.com.
 
 </code></pre></div></div>
 
@@ -562,7 +619,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>snomed_findings_resolver_pipeline</td>
+      <td>clinical_deidentification_subentity_nameAugmented</td>
     </tr>
     <tr>
       <td>Type:</td>
@@ -586,7 +643,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
     <tr>
       <td>Size:</td>
-      <td>2.8 GB</td>
+      <td>1.7 GB</td>
     </tr>
   </tbody>
 </table>
@@ -599,19 +656,32 @@ function wrapWordInSpan(data, wordToWrap) {
   <li>TokenizerModel</li>
   <li>WordEmbeddingsModel</li>
   <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
+  <li>NerConverter</li>
   <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
-  <li>MedicalNerModel</li>
-  <li>NerConverterInternalModel</li>
+  <li>NerConverter</li>
   <li>ChunkMergeModel</li>
-  <li>Chunk2Doc</li>
-  <li>BertSentenceEmbeddings</li>
-  <li>SentenceEntityResolverModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>TextMatcherModel</li>
+  <li>ContextualParserModel</li>
+  <li>RegexMatcherModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ContextualParserModel</li>
+  <li>ChunkMergeModel</li>
+  <li>ChunkMergeModel</li>
+  <li>DeIdentificationModel</li>
+  <li>DeIdentificationModel</li>
+  <li>DeIdentificationModel</li>
+  <li>DeIdentificationModel</li>
+  <li>Finisher</li>
 </ul>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-03T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-13T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -796,7 +866,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/03/snomed_findings_resolver_pipeline_en.html">Pipeline for Snomed Concept, Findings Version</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/04/sbiobertresolve_snomed_bodyStructure_en.html">Sentence Entity Resolver for SNOMED (sbiobertresolve_snomed_bodyStructure)</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/12/snomed_auxConcepts_resolver_pipeline_en.html">Pipeline for Snomed Concept, Aux Concepts Version</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/13/rxnorm_umls_mapper_en.html">Mapping RxNorm Codes with Their Corresponding UMLS Codes</a></div></div></div>
 
 </div>
 </div>
