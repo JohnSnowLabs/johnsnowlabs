@@ -275,6 +275,13 @@ Explore the efficiency of our `clinical_deidentification` pipeline through a ded
 |----------:|-------------:|-------------:|-------------:|
 | 1024      |  1 min 3 sec | 1 min 55 sec | 5 min 45 sec |
 | 512       |       56 sec | 1 min 26 sec | 5 min 15 sec |
+| 256       |       50 sec | 1 min 20 sec | 5 min  4 sec |
+| 128       |       45 sec | 1 min 21 sec | 5 min 11 sec |
+| 64        |       46 sec | 1 min 31 sec | 5 min 3 sec  |
+| 32        |       46 sec | 1 min 26 sec | 5 min 0 sec  |
+| 16        |       56 sec | 1 min 43 sec | 5 min 3 sec  |
+| 8         | 1 min 21 sec | 2 min 33 sec | 5 min 3 sec  |
+| 4         | 2 min 26 sec | 4 min 53 sec | 6 min 3 sec  |
 
 
 Please check the [Cluster Speed Benchmarks](https://nlp.johnsnowlabs.com/docs/en/benchmark) page for more information.
