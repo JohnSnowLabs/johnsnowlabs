@@ -13,8 +13,7 @@ sidebar:
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
 
-This page gives you an overview of every OCR model in NLU which are provided by [Spark
-OCR](https://nlp.johnsnowlabs.com/docs/en/ocr).
+This page gives you an overview of every OCR model in NLU which are provided by [Spark OCR](https://nlp.johnsnowlabs.com/docs/en/ocr).
 
 
 

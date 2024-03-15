@@ -466,6 +466,10 @@ h2.h2_doc {
 	}
 }
 
+.table-inner {
+	overflow: auto;
+}
+
 .table_code {
 	font-family: 'Source Code Pro', monospace;
 	line-height: 32px;

@@ -11,7 +11,7 @@ sidebar:
   nav: jsl
 ---
 
-<div class="main-docs" markdown="1">
+<div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
 ## AWS Glue Setup
 
@@ -28,12 +28,16 @@ nlp.install_to_glue()
 
 `nlp.install_to_glue` has the following parameters:
 
+</div><div class="h3-box" markdown="1">
+
 ### AWS specific parameters
 
 | Parameter            | Description                                                                                                                                                                                                                                                     |
 | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `boto_session`       | The Boto Session used to authorize requests to your AWS Account. If not provided, default session with environment variables is created. Refer [this](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html) for more information |
 | `glue_assets_bucket` | S3 bucket to store johnsnowlabs python packages and jars. If not provided, one is created.                                                                                                                                                                      |
+
+</div><div class="h3-box" markdown="1">
 
 ### License Retrieval Parameters
 
@@ -49,4 +53,4 @@ nlp.install_to_glue()
 
 Refer [this](https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced) for more information
 
-</div>
+</div></div>

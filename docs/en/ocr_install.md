@@ -47,7 +47,7 @@ You can start a spark REPL with Scala by running in your terminal a spark-shell 
 spark-shell --jars ####
 ```
 
-The #### is a secret url only available for license users. If you have purchased a license but did not receive it please contact us at info@johnsnowlabs.com.
+The #### is a secret url only available for license users. If you have purchased a license but did not receive it please contact us at [info@johnsnowlabs.com](info@johnsnowlabs.com).
 
 </div>
 
@@ -57,7 +57,7 @@ The following code will initialize the spark session in case you have run the ju
 
 Initializing the spark session takes some seconds (usually less than 1 minute) as the jar from the server needs to be loaded.
 
-The #### in .config("spark.jars", "####") is a secret code, if you have not received it please contact us at info@johnsnowlabs.com.
+The #### in .config("spark.jars", "####") is a secret code, if you have not received it please contact us at [info@johnsnowlabs.com](info@johnsnowlabs.com).
 
 
 ```scala
@@ -85,7 +85,7 @@ Install python package using pip:
 pip install spark-ocr==1.8.0.spark24 --extra-index-url #### --ignore-installed
 ```
 
-The #### is a secret url only available for license users. If you have purchased a license but did not receive it please contact us at info@johnsnowlabs.com.
+The #### is a secret url only available for license users. If you have purchased a license but did not receive it please contact us at [info@johnsnowlabs.com](info@johnsnowlabs.com).
 
 </div><div class="h3-box" markdown="1">
 
@@ -137,7 +137,7 @@ from sparkocr import start
 spark = start(secret=secret, nlp_version="2.4.4")
 ```
 
-</div>
+</div><div class="h3-box" markdown="1">
 
 ## Databricks
 
@@ -155,3 +155,4 @@ Example notebooks:
  - [Spark OCR Databricks python notebooks](https://github.com/JohnSnowLabs/spark-ocr-workshop/tree/master/databricks/python) 
  - [Spark OCR Databricks Scala notebooks](https://github.com/JohnSnowLabs/spark-ocr-workshop/tree/master/databricks/scala)
  
+</div>
