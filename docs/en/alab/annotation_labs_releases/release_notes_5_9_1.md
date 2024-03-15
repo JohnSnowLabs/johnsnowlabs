@@ -2,7 +2,7 @@
 layout: docs
 header: true
 seotitle: NLP Lab | John Snow Labs
-title: NLP Lab Release Notes 5.8.1
+title: NLP Lab Release Notes 5.9.1
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_5_9_1
 key: docs-licensed-release-notes
 modify_date: 2024-03-15
