@@ -175,10 +175,10 @@ In previous versions, the "Sign in with OIDC" button appeared directly below the
 
 ![OIDC_button_flip](/assets/images/annotation_lab/5.9.0/19.gif)
 
-### Next button is enabled after selected users are added to the project in "Team Member" Page
+### The "Next" button is enabled after selected users are added to the project in "Team Member" Page
 On the project team member page, bulk selection and role assignment of accounts is now available. Once user accounts are selected, it is now possible to assign "annotator," "reviewer," and "manager" roles in bulk. However, there's a common issue where users occasionally forget to click the "Add to team" button after assigning roles. Consequently, when users attempt to proceed to the project configuration page by clicking the next button, the selected users and their roles are lost in this case. 
 
-To address this situation, the next button is left disabled until the selected users along with their roles are added to the team, ensuring that changes are saved. Only after this process is complete does the next button become enabled, allowing users to proceed without losing any data.
+To address this situation, the "Next" button is left disabled until the selected users along with their roles are added to the team, ensuring that changes are saved. Only after this process is complete does the "Next" button become enabled, allowing users to proceed without losing any data.
 
 ### Meta in Labels should support HTML tags and escape sequences
 In previous versions of NLP Lab, metadata in labels had limitations regarding support for special characters, HTML tags, and new lines. With version 5.9.0, meta support in labels has been significantly enhanced to include special characters, new lines, and HTML tags (such as \n, \s).
@@ -201,7 +201,7 @@ These keyboard shortcuts provide users with a convenient way to navigate through
 ### Bug Fixes
 - **Labels and Choices in a Vertical Layout fail to occupy the entire vertical space**
 
-	Previously, when the project was set up to display labels or choices in a vertical layout, the options did not optimally use the page space and only occupy a small portion of the vertical space. This resulted in cluttered options, and when annotators scrolled through long tasks, these options would often go unnoticed. This issue has now been resolved, as the entire vertical space is utilized to list the annotation options.
+	Previously, when the project was set up to display labels or choices in a vertical layout, the options did not optimally use the page space and only occupy a small portion of the vertical space. This resulted in cluttered options, and when annotators scrolled through long tasks, these options would often go unnoticed. The fix addresses the issue and the entire vertical space is utilized to list the annotation options.
 	
 - **Model evaluation can be triggered for trained model**
 
@@ -213,11 +213,11 @@ These keyboard shortcuts provide users with a convenient way to navigate through
 	
 - **Team members are not displayed in the project card for imported project**
 
-	Previously, when a user imported a project containing multiple users, the project would be created, but the icons of added users were not displayed on the project card in the home page. This issue has now been resolved.
+	Previously, when a user imported a project containing multiple users, the project would be created, but the icons of added users were not displayed on the project card in the home page.
 	
 - **SBA: "Filter Pre-annotation acc. to latest completion" does not show the predicted labels for newly added sections created after the Pre-annotation**
 
-	Previously, the 'Filter Pre-annotation according to latest completion' feature did not display predicted labels for newly added sections created after pre-annotation. This issue has been resolved, and now labels are correctly displayed and preserved for manually created or deleted sections.
+	Previously, the 'Filter Pre-annotation according to latest completion' feature did not display predicted labels for newly added sections created after pre-annotation. The fix corrects how labels are now displayed and preserved for manually created or deleted sections.
 
 The 'Filter by latest completions' feature now accurately displays predicted labels based on pre-annotation for all sections, including manually created ones. Additionally, pre-annotation predictions are removed from sections not present in the latest draft or completion of the current user.
 	
@@ -237,11 +237,11 @@ Now, after deleting a user, the projects are automatically transferred to anothe
 	
 - **Annotations are not copied when copying completion in a Visual NER Project with SBA**
 
-	Annotations were not previously copied when duplicating completions in a Visual NER Project with SBA. This issue has been rectified.
+	Previously, Annotations were not copied when duplicating completions in a Visual NER Project with SBA.
 	
 - **Search text box in Project page doesn't reset/refresh the page when texts are removed**
 
-	Previously, the search text box on the Project page did not reset or refresh the page when the text was removed. Now, after deleting all the text in the search box, all projects are listed as expected.
+	Previously, the search text box on the Project page did not reset or refresh the page when the text was removed. Now, after clearing the search box, all projects are listed as expected.
 	
 - **While uploading a model, the user need to type every prediction entity**
 
