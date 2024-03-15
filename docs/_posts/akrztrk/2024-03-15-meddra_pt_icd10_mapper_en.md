@@ -63,14 +63,14 @@ result = mapper_model.transform(data)
 ```
 ```scala
 val document_assembler = DocumentAssembler()
-      .setInputCol('text')
-      .setOutputCol('doc')
+      .setInputCol("text")
+      .setOutputCol("doc")
 
 val chunk_assembler = Doc2Chunk()
-      .setInputCols(Array('doc'))
-      .setOutputCol('ner_chunk')
+      .setInputCols(Array("doc"))
+      .setOutputCol("ner_chunk")
  
-val mapperModel = ChunkMapperModel.pretrained('meddra_pt_icd10_mapper', 'en', 'clinical/models')
+val mapperModel = ChunkMapperModel.pretrained("meddra_pt_icd10_mapper", "en", "clinical/models")
     .setInputCols(Array("ner_chunk"))
     .setOutputCol("mappings")
     .setRels(Array("icd10_code"))
