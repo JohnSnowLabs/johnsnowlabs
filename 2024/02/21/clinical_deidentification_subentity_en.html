@@ -526,7 +526,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <span class="n">deid_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_subentity"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
 <span class="n">text</span> <span class="o">=</span> <span class="s">"""Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""</span>
@@ -541,7 +541,7 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
 <span class="k">val</span> <span class="nv">deid_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"clinical_deidentification_subentity"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"""Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""</span>
@@ -578,7 +578,7 @@ print<span class="o">(</span><span class="s2">"
 Masked with entity labels
 <span class="nt">------------------------------</span>
 Name : &lt;PATIENT&gt;, Record <span class="nb">date</span>: &lt;DATE&gt;, MR &lt;MEDICALRECORD&gt;.
-Dr. &lt;DOCTOR&gt;, ID: &lt;DEVICE&gt;, IP &lt;IPADDR&gt;.
+Dr. &lt;DOCTOR&gt;, IP &lt;IPADDR&gt;.
 He is a &lt;AGE&gt;-year-old male was admitted to the &lt;HOSPITAL&gt; <span class="k">for </span>cystectomy on &lt;DATE&gt;.
 Patient<span class="s1">'s VIN : &lt;VIN&gt;, SSN &lt;SSN&gt;, Driver'</span>s license no: &lt;DLN&gt;.
 Phone &lt;PHONE&gt;, &lt;STREET&gt;, &lt;CITY&gt;, E-MAIL: &lt;EMAIL&gt;.
@@ -586,7 +586,7 @@ Phone &lt;PHONE&gt;, &lt;STREET&gt;, &lt;CITY&gt;, E-MAIL: &lt;EMAIL&gt;.
 Masked with chars
 <span class="nt">------------------------------</span>
 Name : <span class="o">[</span><span class="k">**************</span><span class="o">]</span>, Record <span class="nb">date</span>: <span class="o">[</span><span class="k">********</span><span class="o">]</span>, MR <span class="o">[</span><span class="k">****</span><span class="o">]</span><span class="nb">.</span>
-Dr. <span class="o">[</span><span class="k">********</span><span class="o">]</span>, ID: <span class="o">[</span><span class="k">********</span><span class="o">]</span>, IP <span class="o">[</span><span class="k">************</span><span class="o">]</span><span class="nb">.</span>
+Dr. <span class="o">[</span><span class="k">********</span><span class="o">]</span>, IP <span class="o">[</span><span class="k">************</span><span class="o">]</span><span class="nb">.</span>
 He is a <span class="k">**</span><span class="nt">-year-old</span> male was admitted to the <span class="o">[</span><span class="k">**********</span><span class="o">]</span> <span class="k">for </span>cystectomy on <span class="o">[</span><span class="k">******</span><span class="o">]</span><span class="nb">.</span>
 Patient<span class="s1">'s VIN : [***************], SSN [**********], Driver'</span>s license no: <span class="o">[</span><span class="k">******</span><span class="o">]</span><span class="nb">.</span>
 Phone <span class="o">[</span><span class="k">************</span><span class="o">]</span>, <span class="o">[</span><span class="k">***************</span><span class="o">]</span>, <span class="o">[</span><span class="k">***********</span><span class="o">]</span>, E-MAIL: <span class="o">[</span><span class="k">*************</span><span class="o">]</span><span class="nb">.</span>
@@ -594,7 +594,7 @@ Phone <span class="o">[</span><span class="k">************</span><span class="o"
 Masked with fixed length chars
 <span class="nt">------------------------------</span>
 Name : <span class="k">****</span>, Record <span class="nb">date</span>: <span class="k">****</span>, MR <span class="k">****</span><span class="nb">.</span>
-Dr. <span class="k">****</span>, ID: <span class="k">****</span>, IP <span class="k">****</span><span class="nb">.</span>
+Dr. <span class="k">****</span>, IP <span class="k">****</span><span class="nb">.</span>
 He is a <span class="k">****</span><span class="nt">-year-old</span> male was admitted to the <span class="k">****</span> <span class="k">for </span>cystectomy on <span class="k">****</span><span class="nb">.</span>
 Patient<span class="s1">'s VIN : ****, SSN ****, Driver'</span>s license no: <span class="k">****</span><span class="nb">.</span>
 Phone <span class="k">****</span>, <span class="k">****</span>, <span class="k">****</span>, E-MAIL: <span class="k">****</span><span class="nb">.</span>
@@ -602,7 +602,7 @@ Phone <span class="k">****</span>, <span class="k">****</span>, <span class="k">
 Obfuscated
 <span class="nt">------------------------------</span>
 Name : Neta Ehlers, Record <span class="nb">date</span>: 2093-01-18, MR 175102.
-Dr. Tomi Bamberger, ID: T3116939, IP 444.444.444.444.
+Dr. Tomi Bamberger, IP 444.444.444.444.
 He is a 68-year-old male was admitted to the ROYAL OAKS HOSPITAL <span class="k">for </span>cystectomy on 01/18/93.
 Patient<span class="s1">'s VIN : 5ENID78EUMP536144, SSN #315-40-0867, Driver'</span>s license no: Y195093O.
 Phone <span class="o">(</span>671<span class="o">)</span> 245-8099, 401 E Vaughn Ave, Brawley, E-MAIL: Dene@google.com.

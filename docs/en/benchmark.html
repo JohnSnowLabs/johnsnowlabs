@@ -627,7 +627,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <h3 id="ner-bilstm-cnn-char-architecture-benchmark-experiment">NER (BiLSTM-CNN-Char Architecture) Benchmark Experiment</h3>
 
   <ul>
-    <li><strong>Dataset :</strong> 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.</li>
+    <li><strong>Dataset:</strong> 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.</li>
     <li><strong>Driver :</strong> Standard_D4s_v3 - 16 GB Memory - 4 Cores</li>
     <li><strong>Enable Autoscaling :</strong> False</li>
     <li><strong>Cluster Mode :</strong> Standart</li>
@@ -637,7 +637,7 @@ function wrapWordInSpan(data, wordToWrap) {
         <li>Standard_D4s_v2 - 28 GB Memory - 8 Cores</li>
       </ul>
     </li>
-    <li><strong>Versions :</strong>
+    <li><strong>Versions:</strong>
       <ul>
         <li><strong>Databricks Runtime Version :</strong> 8.3(Scala 2.12, Spark 3.1.1)</li>
         <li><strong>spark-nlp Version:</strong> v3.2.3</li>
@@ -646,7 +646,7 @@ function wrapWordInSpan(data, wordToWrap) {
       </ul>
     </li>
     <li>
-      <p><strong>Spark NLP Pipeline :</strong></p>
+      <p><strong>Spark NLP Pipeline:</strong></p>
 
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nlpPipeline = Pipeline(stages=[
       documentAssembler,
@@ -661,7 +661,7 @@ function wrapWordInSpan(data, wordToWrap) {
     </li>
   </ul>
 
-  <p><strong>NOTES :</strong></p>
+  <p><strong>NOTES:</strong></p>
 
   <ul>
     <li>
@@ -1415,10 +1415,10 @@ function wrapWordInSpan(data, wordToWrap) {
         finisher])
 </code></pre></div>  </div>
 
-  <p><strong>NOTES :</strong></p>
+  <p><strong>NOTES:</strong></p>
 
   <ul>
-    <li>In this experiment, the <code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_jsl_slim</code> model was used to measure the inference time of clinical bert for token classification models in the databricks environment.</li>
+    <li>In this experiment, the <code class="language-plaintext highlighter-rouge">bert_token_classifier_ner_jsl_slim</code> model was used to measure the inference time of clinical bert for token classification models in the DataBricks environment.</li>
     <li>
       <p>In the first experiment, the data read from the parquet file is saved as parquet after processing.</p>
     </li>
@@ -1487,8 +1487,8 @@ function wrapWordInSpan(data, wordToWrap) {
 In this experiment, all reports went through the pipeline 10 times and repeated execution 5 times, so we ran each report 50 times and averaged it, <code class="language-plaintext highlighter-rouge">%timeit -r 5 -n 10 run_model(spark, model)</code>.</p>
 
   <ul>
-    <li><strong>Driver :</strong> Standard Google Colab environment</li>
-    <li><strong>Spark NLP Pipeline :</strong>
+    <li><strong>Driver:</strong> Standard Google Colab environment</li>
+    <li><strong>Spark NLP Pipeline:</strong>
       <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nlpPipeline = Pipeline(
     stages=[
         documentAssembler,
@@ -1500,7 +1500,7 @@ In this experiment, all reports went through the pipeline 10 times and repeated 
         ])
 </code></pre></div>      </div>
     </li>
-    <li><strong>Dataset :</strong> File sizes:
+    <li><strong>Dataset:</strong> File sizes:
       <ul>
         <li>report_1: ~5.34kb</li>
         <li>report_2: ~8.51kb</li>
@@ -1657,8 +1657,9 @@ In this experiment, all reports went through the pipeline 10 times and repeated 
 The first pipeline with ChunkMapper, the second with Sentence Entity Resolver, and the third pipeline with ChunkMapper and Sentence Entity Resolver together.</p>
     </li>
     <li>
-      <p><strong>4 different cluster configurations:</strong>
-Driver and worker types were kept the same in all cluster configurations. The number of workers were increased gradually and set as 2, 4, 8, 10.</p>
+      <p><strong>3 different configurations:</strong>
+Driver and worker types were kept as same in all cluster configurations. Number of workers were increased gradually and set as 2, 4, 8 for DataBricks.
+We choosed 3 different configurations for AWS EC2 machines that have same core with DataBricks.</p>
     </li>
     <li>
       <p><strong>NER models were kept as same in all pipelines:</strong> Pretrained <code class="language-plaintext highlighter-rouge">ner_posology_greedy</code> NER model was used in each pipeline.</p>
@@ -1668,271 +1669,259 @@ Driver and worker types were kept the same in all cluster configurations. The nu
   <h4 id="benchmark-tables">Benchmark Tables</h4>
 
   <p>These  figures might differ based on the size of the mapper and resolver models. The larger the models, the higher the inference times.
-Depending on the success rate of mappers (any chunk coming in caught by the mapper successfully), the combined mapper and resolver timing would be less than resolver-only timing.</p>
+Depending the success rate of mappers (any chunk coming in caught by the mapper successfully), the combined mapper and resolver timing would be less than resolver-only timing.</p>
 
-  <p>If the resolver-only timing is equal to or very close to the combined mapper and resolver timing, it means that the mapper is not capable of catching/ mapping any chunk.
-In that case, try playing with various parameters in the mapper or retrain/ augment the mapper.</p>
+  <p>If the resolver-only timing is equal or very close to the combined mapper and resolver timing, it means that mapper is not capable of catching/ mapping any chunk.
+In that case, try playing with various parameters in mapper or retrain/ augment the mapper.</p>
 
   <ul>
-    <li>Driver Name: Standard_DS3_v2</li>
-    <li>Driver Memory: 14GB</li>
-    <li>Worker Name: Standard_DS3_v2</li>
-    <li>Worker Memory: 14GB</li>
-    <li>Worker Cores: 4</li>
-    <li>Action: write_parquet</li>
-    <li>Total Worker Numbers: 2</li>
-    <li>Total Cores: 8</li>
+    <li>DataBricks Config: 8 CPU Core, 32GiB RAM (2 worker, Standard_DS3_v2)</li>
+    <li>AWS Config: 8 CPU Cores, 14GiB RAM (c6a.2xlarge)</li>
   </ul>
 
   <table>
     <thead>
       <tr>
         <th>partition</th>
-        <th>mapper timing</th>
-        <th>resolver timing</th>
-        <th>mapper and resolver timing</th>
+        <th>DataBricks <br /> mapper timing</th>
+        <th>AWS <br /> mapper timing</th>
+        <th>DataBricks <br /> resolver timing</th>
+        <th>AWS <br /> resolver timing</th>
+        <th>DataBricks <br /> mapper and resolver timing</th>
+        <th>AWS <br /> mapper and resolver timing</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>4</td>
         <td>23 sec</td>
+        <td>11 sec</td>
         <td>4.36 mins</td>
+        <td>3.02 mins</td>
         <td>2.40 mins</td>
+        <td>1.58 mins</td>
       </tr>
       <tr>
         <td>8</td>
         <td>15 sec</td>
+        <td>9 sec</td>
         <td>3.21 mins</td>
+        <td>2.27 mins</td>
         <td>1.48 mins</td>
+        <td>1.35 mins</td>
       </tr>
       <tr>
         <td>16</td>
         <td>18 sec</td>
+        <td>10 sec</td>
         <td>2.52 mins</td>
+        <td>2.14 mins</td>
         <td>2.04 mins</td>
+        <td>1.25 mins</td>
       </tr>
       <tr>
         <td>32</td>
         <td>13 sec</td>
+        <td>11 sec</td>
         <td>2.22 mins</td>
+        <td>2.26 mins</td>
         <td>1.38 mins</td>
+        <td>1.35 mins</td>
       </tr>
       <tr>
         <td>64</td>
         <td>14 sec</td>
-        <td>2.36 sec</td>
+        <td>12 sec</td>
+        <td>2.36 mins</td>
+        <td>2.11 mins</td>
         <td>1.50 mins</td>
+        <td>1.26 mins</td>
       </tr>
       <tr>
         <td>100</td>
         <td>14 sec</td>
-        <td>2.21 sec</td>
+        <td>30 sec</td>
+        <td>2.21 mins</td>
+        <td>2.07 mins</td>
         <td>1.36 mins</td>
+        <td>1.34 mins</td>
       </tr>
       <tr>
         <td>1000</td>
         <td>21 sec</td>
+        <td>21 sec</td>
         <td>2.23 mins</td>
+        <td>2.08 mins</td>
         <td>1.43 mins</td>
+        <td>1.40 mins</td>
       </tr>
     </tbody>
   </table>
 
   <ul>
-    <li>Driver Name: Standard_DS3_v2</li>
-    <li>Driver Memory: 14GB</li>
-    <li>Worker Name: Standard_DS3_v2</li>
-    <li>Worker Memory: 14GB</li>
-    <li>Worker Cores: 4</li>
-    <li>Action: write_parquet</li>
-    <li>Total Worker Numbers: 4</li>
-    <li>Total Cores: 16</li>
+    <li>DataBricks Config: 16 CPU Core,64GiB RAM (4 worker, Standard_DS3_v2)</li>
+    <li>AWS Config: 16 CPU Cores, 27GiB RAM (c6a.4xlarge)</li>
   </ul>
 
   <table>
     <thead>
       <tr>
         <th>partition</th>
-        <th>mapper timing</th>
-        <th>resolver timing</th>
-        <th>mapper and resolver timing</th>
+        <th>DataBricks <br /> mapper timing</th>
+        <th>AWS <br /> mapper timing</th>
+        <th>DataBricks <br /> resolver timing</th>
+        <th>AWS <br /> resolver timing</th>
+        <th>DataBricks <br /> mapper and resolver timing</th>
+        <th>AWS <br /> mapper and resolver timing</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>4</td>
         <td>32.5 sec</td>
+        <td>11 sec</td>
         <td>4.19 mins</td>
+        <td>2.53 mins</td>
         <td>2.58 mins</td>
+        <td>1.48 mins</td>
       </tr>
       <tr>
         <td>8</td>
         <td>15.1 sec</td>
+        <td>7 sec</td>
         <td>2.25 mins</td>
+        <td>1.43 mins</td>
         <td>1.38 mins</td>
+        <td>1.04 mins</td>
       </tr>
       <tr>
         <td>16</td>
         <td>9.52 sec</td>
+        <td>6 sec</td>
         <td>1.50 mins</td>
+        <td>1.28 mins</td>
         <td>1.15 mins</td>
+        <td>1.00 mins</td>
       </tr>
       <tr>
         <td>32</td>
         <td>9.16 sec</td>
+        <td>6 sec</td>
         <td>1.47 mins</td>
+        <td>1.24 mins</td>
         <td>1.09 mins</td>
+        <td>59 sec</td>
       </tr>
       <tr>
         <td>64</td>
         <td>9.32 sec</td>
+        <td>7 sec</td>
         <td>1.36 mins</td>
+        <td>1.23 mins</td>
         <td>1.03 mins</td>
+        <td>57 sec</td>
       </tr>
       <tr>
         <td>100</td>
         <td>9.97 sec</td>
+        <td>20 sec</td>
         <td>1.48 mins</td>
+        <td>1.34 mins</td>
         <td>1.11 mins</td>
+        <td>1.02 mins</td>
       </tr>
       <tr>
         <td>1000</td>
         <td>12.5 sec</td>
+        <td>13 sec</td>
         <td>1.31 mins</td>
+        <td>1.26 mins</td>
         <td>1.03 mins</td>
+        <td>58 sec</td>
       </tr>
     </tbody>
   </table>
 
   <ul>
-    <li>Driver Name: Standard_DS3_v2</li>
-    <li>Driver Memory: 14GB</li>
-    <li>Worker Name: Standard_DS3_v2</li>
-    <li>Worker Memory: 14GB</li>
-    <li>Worker Cores: 4</li>
-    <li>Action: write_parquet</li>
-    <li>Total Worker Numbers: 8</li>
-    <li>Total Cores: 32</li>
+    <li>DataBricks Config: 32 CPU Core, 128GiB RAM (8 worker, Standard_DS3_v2)</li>
+    <li>AWS Config: 32 CPU Cores, 58GiB RAM (c6a.8xlarge)</li>
   </ul>
 
   <table>
     <thead>
       <tr>
         <th>partition</th>
-        <th>mapper timing</th>
-        <th>resolver timing</th>
-        <th>mapper and resolver timing</th>
+        <th>DataBricks <br /> mapper timing</th>
+        <th>AWS <br /> mapper timing</th>
+        <th>DataBricks <br /> resolver timing</th>
+        <th>AWS <br /> resolver timing</th>
+        <th>DataBricks <br /> mapper and resolver timing</th>
+        <th>AWS <br /> mapper and resolver timing</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>4</td>
         <td>37.3 sec</td>
+        <td>12 sec</td>
         <td>4.46 mins</td>
+        <td>2.37 mins</td>
         <td>2.52 mins</td>
+        <td>1.47 mins</td>
       </tr>
       <tr>
         <td>8</td>
         <td>26.7 sec</td>
+        <td>7 sec</td>
         <td>2.46 mins</td>
+        <td>1.39 mins</td>
         <td>1.37 mins</td>
+        <td>1.04 mins</td>
       </tr>
       <tr>
         <td>16</td>
         <td>8.85 sec</td>
+        <td>7 sec</td>
         <td>1.27 mins</td>
+        <td>1.30 mins</td>
         <td>1.06 mins</td>
+        <td>1.02 mins</td>
       </tr>
       <tr>
         <td>32</td>
         <td>7.74 sec</td>
+        <td>7 sec</td>
         <td>1.38 mins</td>
+        <td>1.00 mins</td>
         <td>54.5 sec</td>
+        <td>43 sec</td>
       </tr>
       <tr>
         <td>64</td>
         <td>7.22 sec</td>
+        <td>7 sec</td>
         <td>1.23 mins</td>
+        <td>1.07 mins</td>
         <td>55.6 sec</td>
+        <td>48 sec</td>
       </tr>
       <tr>
         <td>100</td>
         <td>6.32 sec</td>
+        <td>10 sec</td>
         <td>1.16 mins</td>
+        <td>1.08 mins</td>
         <td>50.9 sec</td>
+        <td>45 sec</td>
       </tr>
       <tr>
         <td>1000</td>
         <td>8.37 sec</td>
+        <td>10 sec</td>
         <td>59.6 sec</td>
+        <td>1.02 mins</td>
         <td>49.3 sec</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <ul>
-    <li>Driver Name: Standard_DS3_v2</li>
-    <li>Driver Memory: 14GB</li>
-    <li>Worker Name: Standard_DS3_v2</li>
-    <li>Worker Memory: 14GB</li>
-    <li>Worker Cores: 4</li>
-    <li>Action: write_parquet</li>
-    <li>Total Worker Numbers: 10</li>
-    <li>Total Cores: 40</li>
-  </ul>
-
-  <table>
-    <thead>
-      <tr>
-        <th>partition</th>
-        <th>mapper timing</th>
-        <th>resolver timing</th>
-        <th>mapper and resolver timing</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>4</td>
-        <td>40.8 sec</td>
-        <td>4.55 mins</td>
-        <td>3.20 mins</td>
-      </tr>
-      <tr>
-        <td>8</td>
-        <td>30.1 sec</td>
-        <td>3.34 mins</td>
-        <td>1.59 mins</td>
-      </tr>
-      <tr>
-        <td>16</td>
-        <td>11.6 sec</td>
-        <td>1.57 mins</td>
-        <td>1.12 mins</td>
-      </tr>
-      <tr>
-        <td>32</td>
-        <td>7.84 sec</td>
-        <td>1.33 mins</td>
-        <td>55.9 sec</td>
-      </tr>
-      <tr>
-        <td>64</td>
-        <td>7.25 sec</td>
-        <td>1.18 mins</td>
-        <td>56.1 sec</td>
-      </tr>
-      <tr>
-        <td>100</td>
-        <td>7.45 sec</td>
-        <td>1.05 mins</td>
-        <td>47.5 sec</td>
-      </tr>
-      <tr>
-        <td>1000</td>
-        <td>8.87 sec</td>
-        <td>1.14 mins</td>
-        <td>47.9 sec</td>
+        <td>41 sec</td>
       </tr>
     </tbody>
   </table>
@@ -2078,7 +2067,7 @@ In that case, try playing with various parameters in the mapper or retrain/ augm
 
   <ul>
     <li>
-      <p><strong>Dataset:</strong> 10000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.</p>
+      <p><strong>Dataset:</strong> 1000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.</p>
     </li>
     <li><strong>Versions:</strong>
       <ul>
@@ -2318,11 +2307,11 @@ In that case, try playing with various parameters in the mapper or retrain/ augm
 
   <ul>
     <li><strong>Dataset:</strong> 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.</li>
-    <li><strong>Versions :</strong>
+    <li><strong>Versions:</strong>
       <ul>
         <li><strong>spark-nlp Version:</strong> v3.4.4</li>
-        <li><strong>spark-nlp-jsl Version :</strong> v3.5.2</li>
-        <li><strong>Spark Version :</strong> v3.1.2</li>
+        <li><strong>spark-nlp-jsl Version:</strong> v3.5.2</li>
+        <li><strong>Spark Version:</strong> v3.1.2</li>
       </ul>
     </li>
     <li><strong>Spark NLP Pipeline:</strong></li>

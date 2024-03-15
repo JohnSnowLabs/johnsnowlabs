@@ -659,7 +659,7 @@ function wrapWordInSpan(data, wordToWrap) {
 </div>
 <div class="h3-box">
 
-  <h4 id="introducing-a-new-opioid-named-entity-recognition-ner-model-for-extracting-information-regarding-opioid-usage">Introducing A New Opioid Named Entity Recognition (NER) Model For Extracting Information Regarding <code class="language-plaintext highlighter-rouge">Opioid</code> Usage</h4>
+  <h4 id="introducing-a-new-opioid-named-entity-recognition-ner-model-for-extracting-information-regarding-opioid-usage">Introducing a New Opioid Named Entity Recognition (NER) Model for Extracting Information Regarding <code class="language-plaintext highlighter-rouge">Opioid</code> Usage</h4>
   <p>This model is designed to detect and label opioid-related entities within text data. Opioids are a class of drugs that include the illegal drug heroin, synthetic opioids such as fentanyl, and pain relievers available legally by prescription. The model has been trained using advanced deep-learning techniques on a diverse range of text sources and can accurately recognize and classify a wide range of opioid-related entities.
 The model’s accuracy and precision have been carefully validated against expert-labeled data to ensure reliable and consistent results.</p>
 
@@ -819,7 +819,7 @@ Father is HCP, student in [**Name (NI) 108**], Biology major, parents and brothe
 </div>
 <div class="h3-box">
 
-  <h4 id="introducing-a-new-multilingual-ner-model-to-extract-name-entities-for-deidentification-purposes">Introducing A New Multilingual NER Model To Extract <code class="language-plaintext highlighter-rouge">NAME</code> Entities For Deidentification Purposes</h4>
+  <h4 id="introducing-a-new-multilingual-ner-model-to-extract-name-entities-for-deidentification-purposes">Introducing a New Multilingual NER Model To Extract <code class="language-plaintext highlighter-rouge">NAME</code> Entities for Deidentification Purposes</h4>
 
   <p>Introducing our latest invention Multilingual Named Entity Recognition model which annotates English, German, French, Italian, Spanish, Portuguese, and Romanian text to find <code class="language-plaintext highlighter-rouge">NAME</code> entities that may need to be de-identified. It was trained with in-house annotated datasets and detects NAME entities. We plan to expand this multilingual NER model to other PHI entities in the upcoming releases.</p>
 
@@ -912,7 +912,7 @@ Father is HCP, student in [**Name (NI) 108**], Biology major, parents and brothe
 </div>
 <div class="h3-box">
 
-  <h4 id="clinical-document-analysis-with-state-of-the-art-pretrained-pipelines-for-specific-clinical-tasks-and-concepts">Clinical Document Analysis With State-Of-The-Art Pretrained Pipelines For Specific Clinical Tasks And Concepts</h4>
+  <h4 id="clinical-document-analysis-with-state-of-the-art-pretrained-pipelines-for-specific-clinical-tasks-and-concepts">Clinical Document Analysis With State-Of-The-Art Pretrained Pipelines for Specific Clinical Tasks and Concepts</h4>
 
   <p>We introduce a suite of advanced, hybrid pretrained pipelines, specifically designed to streamline the process of analyzing clinical documents. These pipelines are built upon multiple state-of-the-art (SOTA) pretrained models, delivering a comprehensive solution for extracting vital information with unprecedented ease.</p>
 
@@ -1008,7 +1008,7 @@ Father is HCP, student in [**Name (NI) 108**], Biology major, parents and brothe
 </div>
 <div class="h3-box">
 
-  <h4 id="returning-text-embeddings-within-sentence-entity-resolution-models">Returning Text Embeddings Within Sentence Entity Resolution Models</h4>
+  <h4 id="returning-text-embeddings-within-sentence-entity-resolution-models">Returning Text Embeddings within Sentence Entity Resolution Models</h4>
 
   <p>The unique aspect highlighted in this implementation is the use of the <code class="language-plaintext highlighter-rouge">setReturnResolvedTextEmbeddings</code> parameter. By setting it to <code class="language-plaintext highlighter-rouge">True</code>, the code allows for the inclusion of embeddings for resolved text candidates, enabling a more comprehensive analysis and understanding of the resolved entities within the clinical text. This parameter provides flexibility by allowing users to either include or exclude embeddings based on their requirements, with the default setting being <code class="language-plaintext highlighter-rouge">False</code>.</p>
 
@@ -1043,7 +1043,7 @@ Father is HCP, student in [**Name (NI) 108**], Biology major, parents and brothe
 </div>
 <div class="h3-box">
 
-  <h4 id="setting-entity-pairs-for-relation-labels-feature-in-relationextractiondlmodel-to-reduce-false-positives">Setting Entity Pairs For Relation Labels Feature In <code class="language-plaintext highlighter-rouge">RelationExtractionDLModel</code> to Reduce False Positives</h4>
+  <h4 id="setting-entity-pairs-for-relation-labels-feature-in-relationextractiondlmodel-to-reduce-false-positives">Setting Entity Pairs for Relation Labels Feature in <code class="language-plaintext highlighter-rouge">RelationExtractionDLModel</code> to Reduce False Positives</h4>
 
   <p><code class="language-plaintext highlighter-rouge">RelationExtractionDLModel</code> now includes the ability to set entity pairs for each relation label, giving you more control over your results and even greater accuracy.</p>
 
@@ -1051,30 +1051,18 @@ Father is HCP, student in [**Name (NI) 108**], Biology major, parents and brothe
 
   <p><em>Example</em>:</p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">clinical_re_Model</span> <span class="o">=</span> <span class="n">RelationExtractionDLModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'redl_clinical_biobert'</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ade_redl_model</span> <span class="o">=</span> <span class="n">RelationExtractionDLModel</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'redl_ade_biobert'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setPredictionThreshold</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"re_ner_chunks"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"relations"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setRelationPairsCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setRelationTypePerPair</span><span class="p">({</span><span class="s">"TrAP"</span><span class="p">:</span> <span class="p">[</span><span class="s">"PROBLEM-TREATMENT"</span><span class="p">],</span>
-                             <span class="s">"TrIP"</span><span class="p">:</span> <span class="p">[</span><span class="s">"TREATMENT-PROBLEM"</span><span class="p">],</span>
-                             <span class="s">"TrWP"</span><span class="p">:</span> <span class="p">[</span><span class="s">"TREATMENT-PROBLEM"</span><span class="p">],</span>
-                             <span class="s">"TrCP"</span><span class="p">:</span> <span class="p">[</span><span class="s">"TREATMENT-PROBLEM"</span><span class="p">],</span>
-                             <span class="s">"TrAP"</span><span class="p">:</span> <span class="p">[</span><span class="s">"TREATMENT-PROBLEM"</span><span class="p">],</span>
-                             <span class="s">"TrNAP"</span><span class="p">:[</span><span class="s">"TREATMENT-PROBLEM"</span><span class="p">],</span>
-                             <span class="s">"TeCP"</span><span class="p">:</span> <span class="p">[</span><span class="s">"PROBLEM-TEST"</span><span class="p">],</span>
-                             <span class="s">"TeRP"</span><span class="p">:</span> <span class="p">[</span><span class="s">"PROBLEM-TEST"</span><span class="p">],</span>
-                             <span class="s">"PIP"</span><span class="p">:</span>  <span class="p">[</span><span class="s">"PROBLEM-PROBLEM"</span><span class="p">]</span>
-                             <span class="p">})</span>
+    <span class="p">.</span><span class="n">setRelationTypePerPair</span><span class="p">({</span>
+        <span class="s">"1"</span><span class="p">:[</span><span class="s">"drug-ade"</span><span class="p">,</span> <span class="s">"ade-drug"</span><span class="p">]</span>
+    <span class="p">})</span>
 
-<span class="n">text</span> <span class="o">=</span><span class="s">"""She was treated with a five-day course of amoxicillin for a respiratory tract infection . She was on metformin , glipizide , and dapagliflozin for T2DM and atorvastatin and gemfibrozil for HTG .
-She had been on dapagliflozin for six months at the time of presentation. Physical examination on presentation was significant for dry oral mucosa ; significantly , her abdominal examination was benign with no tenderness , guarding , or rigidity .
-Pertinent laboratory findings on admission were : serum glucose 111 mg/dl , bicarbonate 18 mmol/l , anion gap 20 , creatinine 0.4 mg/dL , triglycerides 508 mg/dL , total cholesterol 122 mg/dL , glycated hemoglobin ( HbA1c ) 10% , and venous pH 7.27 . Serum lipase was normal at 43 U/L .
-Serum acetone levels could not be assessed as blood samples kept hemolyzing due to significant lipemia . The patient was initially admitted for starvation ketosis , as she reported poor oral intake for three days prior to admission .
-However , serum chemistry obtained six hours after presentation revealed her glucose was 186 mg/dL , the anion gap was still elevated at 21 , serum bicarbonate was 16 mmol/L , triglyceride level peaked at 2050 mg/dL , and lipase was 52 U/L .
-The β-hydroxybutyrate level was obtained and found to be elevated at 5.29 mmol/L - the original sample was centrifuged and the chylomicron layer removed prior to analysis due to interference from turbidity caused by lipemia again .
-The patient was treated with an insulin drip for euDKA and HTG with a reduction in the anion gap to 13 and triglycerides to 1400 mg/dL , within 24 hours . Her euDKA was thought to be precipitated by her respiratory tract infection in the setting of SGLT2 inhibitor use .
-The patient was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night , 12 units of insulin lispro with meals , and metformin 1000 mg two times a day . It was determined that all SGLT2 inhibitors should be discontinued indefinitely . She had close follow-up with endocrinology post discharge .
-"""</span>
+<span class="n">text</span> <span class="o">=</span><span class="s">"""Hypersensitivity to aspirin can be manifested as acute asthma, urticaria and/or angioedema, or a systemic anaphylactoid reaction."""</span>
+
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
@@ -1082,105 +1070,46 @@ The patient was seen by the endocrinology service and she was discharged on 40 u
   <table>
     <thead>
       <tr>
-        <th style="text-align: right">sentence</th>
         <th style="text-align: left">chunk1</th>
         <th style="text-align: left">entity1</th>
         <th style="text-align: left">chunk2</th>
         <th style="text-align: left">entity2</th>
-        <th style="text-align: left">relation</th>
+        <th style="text-align: right">relation</th>
         <th style="text-align: right">confidence</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style="text-align: right">3</td>
-        <td style="text-align: left">Physical examination</td>
-        <td style="text-align: left">TEST</td>
-        <td style="text-align: left">dry oral mucosa</td>
-        <td style="text-align: left">PROBLEM</td>
-        <td style="text-align: left">TeRP</td>
-        <td style="text-align: right">0.99</td>
+        <td style="text-align: left">aspirin</td>
+        <td style="text-align: left">DRUG</td>
+        <td style="text-align: left">acute asthma</td>
+        <td style="text-align: left">ADE</td>
+        <td style="text-align: right">1</td>
+        <td style="text-align: right">0.99978</td>
       </tr>
       <tr>
-        <td style="text-align: right">4</td>
-        <td style="text-align: left">her abdominal examination</td>
-        <td style="text-align: left">TEST</td>
-        <td style="text-align: left">tenderness</td>
-        <td style="text-align: left">PROBLEM</td>
-        <td style="text-align: left">TeRP</td>
-        <td style="text-align: right">0.99</td>
+        <td style="text-align: left">aspirin</td>
+        <td style="text-align: left">DRUG</td>
+        <td style="text-align: left">urticaria</td>
+        <td style="text-align: left">ADE</td>
+        <td style="text-align: right">1</td>
+        <td style="text-align: right">0.999787</td>
       </tr>
       <tr>
-        <td style="text-align: right">4</td>
-        <td style="text-align: left">her abdominal examination</td>
-        <td style="text-align: left">TEST</td>
-        <td style="text-align: left">guarding</td>
-        <td style="text-align: left">PROBLEM</td>
-        <td style="text-align: left">TeRP</td>
-        <td style="text-align: right">0.99</td>
+        <td style="text-align: left">angioedema</td>
+        <td style="text-align: left">ADE</td>
+        <td style="text-align: left">aspirin</td>
+        <td style="text-align: left">DRUG</td>
+        <td style="text-align: right">1</td>
+        <td style="text-align: right">0.999798</td>
       </tr>
       <tr>
-        <td style="text-align: right">4</td>
-        <td style="text-align: left">her abdominal examination</td>
-        <td style="text-align: left">TEST</td>
-        <td style="text-align: left">rigidity</td>
-        <td style="text-align: left">PROBLEM</td>
-        <td style="text-align: left">TeRP</td>
-        <td style="text-align: right">0.99</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">9</td>
-        <td style="text-align: left">her glucose</td>
-        <td style="text-align: left">TEST</td>
-        <td style="text-align: left">still elevated</td>
-        <td style="text-align: left">PROBLEM</td>
-        <td style="text-align: left">TeRP</td>
-        <td style="text-align: right">0.97</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">9</td>
-        <td style="text-align: left">the anion gap</td>
-        <td style="text-align: left">TEST</td>
-        <td style="text-align: left">still elevated</td>
-        <td style="text-align: left">PROBLEM</td>
-        <td style="text-align: left">TeRP</td>
-        <td style="text-align: right">0.99</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">9</td>
-        <td style="text-align: left">still elevated</td>
-        <td style="text-align: left">PROBLEM</td>
-        <td style="text-align: left">serum bicarbonate</td>
-        <td style="text-align: left">TEST</td>
-        <td style="text-align: left">TeRP</td>
-        <td style="text-align: right">0.97</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">9</td>
-        <td style="text-align: left">still elevated</td>
-        <td style="text-align: left">PROBLEM</td>
-        <td style="text-align: left">lipase</td>
-        <td style="text-align: left">TEST</td>
-        <td style="text-align: left">TeRP</td>
-        <td style="text-align: right">0.93</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">9</td>
-        <td style="text-align: left">still elevated</td>
-        <td style="text-align: left">PROBLEM</td>
-        <td style="text-align: left">U/L</td>
-        <td style="text-align: left">TEST</td>
-        <td style="text-align: left">TeRP</td>
-        <td style="text-align: right">0.94</td>
-      </tr>
-      <tr>
-        <td style="text-align: right">10</td>
-        <td style="text-align: left">The β-hydroxybutyrate level</td>
-        <td style="text-align: left">TEST</td>
-        <td style="text-align: left">elevated</td>
-        <td style="text-align: left">PROBLEM</td>
-        <td style="text-align: left">TeRP</td>
-        <td style="text-align: right">0.99</td>
+        <td style="text-align: left">systemic anaphylactoid reaction</td>
+        <td style="text-align: left">ADE</td>
+        <td style="text-align: left">aspirin</td>
+        <td style="text-align: left">DRUG</td>
+        <td style="text-align: right">1</td>
+        <td style="text-align: right">0.999821</td>
       </tr>
     </tbody>
   </table>
@@ -1190,83 +1119,99 @@ The patient was seen by the endocrinology service and she was discharged on 40 u
 </div>
 <div class="h3-box">
 
-  <h4 id="cluster-and-cpu-speed-benchmark-for-chunk-mapper-entity-resolver-and-deidentification-pipelines">Cluster and CPU Speed Benchmark for Chunk Mapper, Entity Resolver, and Deidentification Pipelines</h4>
+  <h4 id="cluster-and-cpu-speed-benchmark-for-chunk-mapper-entity-resolver-and-deidentification-pipelines">Cluster and CPU speed benchmark for Chunk Mapper, Entity Resolver, and Deidentification pipelines</h4>
 
   <p>Dive into the heart of healthcare data processing with our benchmark experiment meticulously designed for Mapper, Resolver, and Deidentification Pipelines. This benchmark provides crucial insights into the performance of these pipelines under varied configurations and dataset conditions.</p>
-
-  <p>Cluster configuration:</p>
-  <ul>
-    <li>Driver Name: Standard_DS3_v2</li>
-    <li>Driver Memory: 14GB</li>
-    <li>Worker Name: Standard_DS3_v2</li>
-    <li>Worker Memory: 14GB</li>
-    <li>Worker Cores: 4</li>
-    <li>Action: write_parquet</li>
-    <li>Total Worker Numbers: 10</li>
-    <li>Total Cores: 40</li>
-  </ul>
 
   <p>These figures might differ based on the size of the mapper and resolver models. The larger the models, the higher the inference times. Depending on the success rate of mappers (any chunk coming in caught by the mapper successfully), the combined mapper and resolver timing would be less than resolver-only timing.</p>
 
   <p>If the resolver-only timing is equal to or very close to the combined mapper and resolver timing, it means that the mapper is not capable of catching/ mapping any chunk. In that case, try playing with various parameters in the mapper or retrain/ augment the mapper.</p>
 
   <ul>
-    <li>Mapper and Resolver Benchmark Experiment</li>
+    <li>Mapper and Resolver Benchmark Experiment
+      <ul>
+        <li>DataBricks Config: 32 CPU Core, 128GiB RAM (8 worker, Standard_DS3_v2)</li>
+        <li>AWS EC2 Config: 32 CPU Cores, 58GiB RAM (c6a.8xlarge)
+<strong>Dataset:</strong> 100 Clinical Texts from MTSamples, approx. 705 tokens and 11 chunks per text.</li>
+      </ul>
+    </li>
   </ul>
-
-  <p><strong>Dataset:</strong> 100 Clinical Texts from MTSamples, approx. 705 tokens and 11 chunks per text.</p>
 
   <table>
     <thead>
       <tr>
-        <th style="text-align: right">partition</th>
-        <th style="text-align: right">mapper timing</th>
-        <th style="text-align: right">resolver timing</th>
-        <th style="text-align: right">mapper and resolver timing</th>
+        <th>partition</th>
+        <th>DataBricks <br /> mapper timing</th>
+        <th>AWS EC2 <br /> mapper timing</th>
+        <th>DataBricks <br /> resolver timing</th>
+        <th>AWS EC2 <br /> resolver timing</th>
+        <th>DataBricks <br /> mapper and resolver timing</th>
+        <th>AWS EC2 <br /> mapper and resolver timing</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style="text-align: right">4</td>
-        <td style="text-align: right">40.8 sec</td>
-        <td style="text-align: right">4.55 mins</td>
-        <td style="text-align: right">3.20 mins</td>
+        <td>4</td>
+        <td>37.3 sec</td>
+        <td>12 sec</td>
+        <td>4.46 mins</td>
+        <td>2.37 mins</td>
+        <td>2.52 mins</td>
+        <td>1.47 mins</td>
       </tr>
       <tr>
-        <td style="text-align: right">8</td>
-        <td style="text-align: right">30.1 sec</td>
-        <td style="text-align: right">3.34 mins</td>
-        <td style="text-align: right">1.59 mins</td>
+        <td>8</td>
+        <td>26.7 sec</td>
+        <td>7 sec</td>
+        <td>2.46 mins</td>
+        <td>1.39 mins</td>
+        <td>1.37 mins</td>
+        <td>1.04 mins</td>
       </tr>
       <tr>
-        <td style="text-align: right">16</td>
-        <td style="text-align: right">11.6 sec</td>
-        <td style="text-align: right">1.57 mins</td>
-        <td style="text-align: right">1.12 mins</td>
+        <td>16</td>
+        <td>8.85 sec</td>
+        <td>7 sec</td>
+        <td>1.27 mins</td>
+        <td>1.30 mins</td>
+        <td>1.06 mins</td>
+        <td>1.02 mins</td>
       </tr>
       <tr>
-        <td style="text-align: right">32</td>
-        <td style="text-align: right">7.84 sec</td>
-        <td style="text-align: right">1.33 mins</td>
-        <td style="text-align: right">55.9 sec</td>
+        <td>32</td>
+        <td>7.74 sec</td>
+        <td>7 sec</td>
+        <td>1.38 mins</td>
+        <td>1.00 mins</td>
+        <td>54.5 sec</td>
+        <td>43 sec</td>
       </tr>
       <tr>
-        <td style="text-align: right">64</td>
-        <td style="text-align: right">7.25 sec</td>
-        <td style="text-align: right">1.18 mins</td>
-        <td style="text-align: right">56.1 sec</td>
+        <td>64</td>
+        <td>7.22 sec</td>
+        <td>7 sec</td>
+        <td>1.23 mins</td>
+        <td>1.07 mins</td>
+        <td>55.6 sec</td>
+        <td>48 sec</td>
       </tr>
       <tr>
-        <td style="text-align: right">100</td>
-        <td style="text-align: right">7.45 sec</td>
-        <td style="text-align: right">1.05 mins</td>
-        <td style="text-align: right">47.5 sec</td>
+        <td>100</td>
+        <td>6.32 sec</td>
+        <td>10 sec</td>
+        <td>1.16 mins</td>
+        <td>1.08 mins</td>
+        <td>50.9 sec</td>
+        <td>45 sec</td>
       </tr>
       <tr>
-        <td style="text-align: right">1000</td>
-        <td style="text-align: right">8.87 sec</td>
-        <td style="text-align: right">1.14 mins</td>
-        <td style="text-align: right">47.9 sec</td>
+        <td>1000</td>
+        <td>8.37 sec</td>
+        <td>10 sec</td>
+        <td>59.6 sec</td>
+        <td>1.02 mins</td>
+        <td>49.3 sec</td>
+        <td>41 sec</td>
       </tr>
     </tbody>
   </table>
@@ -1289,7 +1234,7 @@ The patient was seen by the endocrinology service and she was discharged on 40 u
     <thead>
       <tr>
         <th style="text-align: right">partition</th>
-        <th style="text-align: right">AWS <br /> result timing</th>
+        <th style="text-align: right">AWS EC2 <br /> result timing</th>
         <th style="text-align: right">DataBricks <br /> result timing</th>
         <th style="text-align: right">Colab <br /> result timing</th>
       </tr>
