@@ -6,7 +6,7 @@ seotitle: Release Notes | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2023-12-21"
+modify_date: "2024-03-15"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,175 +15,249 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## NLP Lab 5.8 – NER Models for Visual NER, Import Export to Azure Blob, and Gesture-based annotations for Assertions.
-We are excited to release NLP Lab 5.8, bringing significant updates designed to enhance and expand the capabilities of your NLP workflows. This release marks a milestone in our commitment to providing comprehensive NLP solutions, introducing a suite of powerful features and improvements. With the integration of the entire NER model library for text data into Visual NER projects, seamless Import and Export functionality for Azure Blob, and innovative gesture-based annotations for assertions, NLP Lab 5.8 is set to change the way you manage and annotate tasks, in particular those focused on PDF and image documents. These advancements, alongside our continuous focus on performance and user experience improvements, demonstrates our dedication to supporting the evolving needs of the NLP community. Explore the boundless possibilities with NLP Lab 5.8 and elevate your NLP projects to new heights.
+## NLP Lab 5.9 
+NLP Lab 5.9 introduces significant updates aimed at enriching and expanding the capabilities of your NLP workflows. This release represents a major step forward, offering support for Entity Resolution for standard taxonomies like ICD-10, RxNorm, SNOMED, LOINC, UMLS, MeSH, CPT for both annotations and pre-annotations activities. Furthermore, the inclusion of Rules and Prompts in Visual NER projects enables improved pre-annotation results without the need for trained models. The introduction of the Supervisor role offers enhanced authority compared to the Annotator role. Additionally, the ability to Import and Export projects in S3/Blob further enhances NLP Lab 5.9 for easier project backup and sharing capabilities. These advancements, coupled with our ongoing commitment to performance enhancements and user experience improvements, underscore our dedication to meeting the evolving needs of the NLP community. Discover the limitless possibilities with NLP Lab 5.9 and elevate your NLP projects to new levels of excellence.
 
-## Features
-## Repurpose text-based NER models for PDF and images 
-NLP Lab 5.8 introduces a groundbreaking enhancement to Visual NER projects by allowing users to leverage the vast library of pre-trained NER models specific for text content [6,600+ models available on the Models Hub](https://nlp.johnsnowlabs.com/models?task=Named+Entity+Recognition), for the pre-annotation of PDF or image tasks. This addition not only expands pre-annotation options but also significantly streamlines the annotation process, saving users precious time and effort. 
-With this game-changing enhancement, users can now:
-- **Effortlessly Jumpstart Data Preparation Projects:** Quickly initiate data preparation projects for training small Visual NER models tailored to specific tasks, reducing the time and resources required for manual labeling.
-- **Utilize Existing Domain-Specific Expertise** Leverage the extensive library of NER models, including domain-specialized models that were previously confined to text-based tasks. This opens up new possibilities for processing image and PDF documents with specialized NER models, enhancing the accuracy and effectiveness of pre-annotation.
-- **Streamline Workflow with Pre-trained Models:** Eliminate the need for training Visual NER models just to predict specific labels when those are already available in existing text processing models. Simply select the relevant pre-trained NER model(s) you need directly from the NLP Lab library and seamlessly integrate them into your projects.
-## Effortlessly Pre-annotate PDF or Image Documents with NER Models
-Configuring your Visual NER project to use text-specific NER models for pre-annotation is a breeze:
-- **Project Configuration:** Begin by creating a new project and selecting the Visual NER Template during configuration. This sets the stage for seamless integration of NER models into your project.
-- **NER Model Selection:** From the Re-use Resource page, navigate through the vast library of NER models and choose the one that best suits your project's requirements. Once selected, save the project configuration to apply the chosen model.
-- **OCR Document Import:** Import the OCR documents containing the data you wish to pre-annotate. These documents can be in PDF or image format, catering to a wide range of document types.
-- **Pre-annotation Automation:** Leverage the selected NER model to automatically pre-annotate the imported OCR documents. This eliminates the need for manual labor and significantly expedites the pre-annotation process.
-- **Accuracy Verification:** After pre-annotation, meticulously review the automatically generated annotations to ensure accuracy and address any discrepancies.
+## Support for Entity Resolution
+### Lookup code/terms in Labeling page
+NLP Lab version 5.9.0 introduces support for Entity Resolution, allowing users to enhance their annotations by adding lookup datasets. By allowing users to enrich labeled text with additional information, NLP Lab provides the way for improving the context and accuracy of annotations. Lookup functionality is currently supported exclusively by text based NER projects.
 
-![1](/assets/images/annotation_lab/5.8.0/1.gif)
+### Configuring Lookup
+Configuring lookup datasets is straightforward: use the well-known Customize Labels page during project configuration and follow the steps below:
+1. Click on the specific label for which you want to add lookup data.
+2. Select the desired lookup dataset from the dropdown list.
+3. Navigate to the task page and add lookup information to labeled texts.
 
-This new feature empowers users to seamlessly integrate NER models into their Visual NER projects, fostering greater flexibility and efficiency in document annotation workflows within NLP Lab. By leveraging the power of NER models, users can streamline pre-annotation processes, reduce training time, and achieve enhanced accuracy, ultimately accelerating their data preparation efforts.
+![LookUpConfiguration](/assets/images/annotation_lab/5.9.0/1.gif)
 
-## Azure Integration for Enhanced Task Management
+### Identifying Entities with Lookup Data:
+Once setup is done, it is easy to identify entities eligible for lookup by a small ⌄ icon displayed next to them. This icon signifies that lookup data can be added to those entities, providing users with clear guidance on annotation possibilities.
 
-NLP Lab 5.8 introduces a pivotal enhancement that expands task management capabilities by seamlessly integrating with Azure Blob storage, complementing the existing support for AWS S3. This integration empowers users to streamline task import and export processes, fostering greater efficiency and flexibility in their data handling workflows within the NLP Lab platform.
+![ViewingIfLookupIsAvailable](/assets/images/annotation_lab/5.9.0/2.png)
 
-### Effortless Task Import from Azure Blob Storage:
+### Adding/Viewing and Updating Lookup Data:
+**Adding Lookup Data in Labeling Page:** Users can select the available lookup data from the list available for a particular label.
 
-Importing tasks from Azure storage containers is now as straightforward and intuitive as importing from AWS S3. Follow these simple steps to effortlessly integrate your Azure data into NLP Lab projects:
-- **Prepare the Azure Source:** Ensure the Azure storage container from which you intend to import tasks is readily accessible and the target files are available. NLP Lab can currently accommodate various document types such as text, PDF, images, videos, and sound files.
-- **In your NLP Lab project:** Navigate to the Task Import page of the project where you wish to import tasks.
-- **Select Azure Blob Storage:** Choose the "Azure BLOB" import option by clicking on the corresponding radio button on the Import page.
-- **Enter Azure Credentials:** Provide the Azure connection details: Azure Container Name, Azure Account Name, and Azure Account Secret Key.
-- **Initiate Import Process:**  Click the "Import" button to seamlessly transfer compatible documents from the specified Azure container into the current NLP Lab project.
+![AddLookup](/assets/images/annotation_lab/5.9.0/3.gif)
 
-![1](/assets/images/annotation_lab/5.8.0/2.gif)
+**Viewing Lookup Dataset:** Users can view the lookup data or metadata by clicking the gear icon in the labeling page and enabling the "Show Meta in Regions" setting.
 
-### Seamless Task Export to Azure Blob Storage:
+![ShowhideMeta](/assets/images/annotation_lab/5.9.0/4.gif)
 
-Exporting projects to Azure Blob storage is now an equally streamlined process:
+**Updating Lookup Dataset:** If users wish to change or edit the lookup data, they can simply right-click on the particular entity and choose the new lookup data.
 
-- **Access Export Page:** Navigate to the "Export Tasks" page within the NLP Lab platform.
-- **Specify the Tasks to Export:** Use the filter on the page to select the tasks you want to export as well as the target format and click the Export button.
-- **Select Cloud Export Option:** Navigate to the "Cloud Export" tab on the pop-up and select "Azure BLOB" from the available cloud storage options.
-- **Enter Azure Credentials:** Provide the Azure connection details: Azure Container Name, Azure Account Name, and Azure Account Secret Key.
-- **Optionally Save Credentials:** Save the credentials for future use to expedite subsequent exports to Azure Blob storage.
-- **Initiate Export Process:** Click the "Export" button to seamlessly transfer the selected project tasks into the specified Azure Blob container, ensuring effortless data backup and management.
+![UpdateLookup](/assets/images/annotation_lab/5.9.0/5.gif)
 
-This integration with Azure Blob storage empowers NLP Lab users to manage tasks with unparalleled efficiency and flexibility. By leveraging the power of Azure, users can seamlessly import and export tasks, streamline data handling processes, and enhance their overall NLP Lab experience.
+This new feature enhances the annotation capabilities of NLP Lab, allowing users to enrich their annotations with relevant contextual information from lookup datasets. We're excited to see how this feature empowers users to create more accurate and comprehensive annotations in their projects.
 
-![1](/assets/images/annotation_lab/5.8.0/11.gif)
+## Pre-annotate metadata using Resolvers 
 
-## Centralized Log Access from Clusters Page
-NLP Lab 5.8 introduces another new feature that simplifies server management by granting users direct access to server logs from the Clusters page. This feature provides critical insights, especially when troubleshooting issues across various server functions. This enhancement eliminates the need for manual command-line access, ensuring easy log retrieval and facilitating efficient troubleshooting. 
+- NLP Lab 5.9 introduces a pivotal enhancement that expands pre-annotation capabilities with the use of Healthcare resolvers. These resolvers are now conveniently accessible and discoverable on the NLP Models Hub page. Simply apply the "Entity Resolution" filter to view the comprehensive list.
+![Resolution_prediction](Resolver_download(/assets/images/annotation_lab/5.9.0/6.png)
 
-### Effortless Log Viewing from the Clusters Page
-Navigating to the Clusters page, users can now easily access logs for all deployed servers, including training, preannotation, OCR, and playground servers. A dedicated button has been added to the cluster page, providing a single point of access for viewing server logs.
+- For any selected resolver to be used in the pre-annotation process it is required to incorporate the named entity recognition (NER) model as part of the configuration project during setup.
 
-![1](/assets/images/annotation_lab/5.8.0/3.png)
+- To seamlessly integrate the resolver with the NER models, navigate to the "Reuse Resources" page within the project configuration. Subsequently, proceed to the "Customize Labels" section. Here, individually select each label and designate the appropriate resolver from the drop-down menu of Entity Resolution Models.
+![Resolver_configuration](/assets/images/annotation_lab/5.9.0/7.gif)
 
-This streamlined approach to viewing server logs enhances the user experience and operational efficiency within NLP Lab, offering a more intuitive and accessible way to manage and diagnose server-related issues.
+- The role of these resolvers is to transform pre-annotated labels into both code and descriptive representations. To access this functionality, ensure that the "Show Meta in Regions" option is enabled within the task settings.
+![Resolution_prediction](/assets/images/annotation_lab/5.9.0/8.gif)
 
-![1](/assets/images/annotation_lab/5.8.0/4.png)
+- Meta-information associated with a label is stored in a key-value pair format, facilitating easy retrieval and interpretation.
+![Resolution_prediction](Resolver_metadata](/assets/images/annotation_lab/5.9.0/9.png)
 
-### Improvements
+- While it's possible to copy and modify completions, it's important to note that the resolved code and descriptions cannot be directly edited. In such cases, deletion of the existing content or addition of new key-value pairs is necessary. In instances where no prediction is available, manual annotation of tasks can be performed using lookup codes/terms, provided that a lookup table has been configured.
+![Resolver_copy_and_renames](/assets/images/annotation_lab/5.9.0/10.gif)
 
-#### New Gesture for Assertion Status Annotation 
-Annotating assertions has historically been a tedious task, requiring users to repeatedly select an already annotated text fragment and assign an assertion label. To address this issue, we introduce a gesture-based annotation mechanism that simplifies the process significantly.
+## Pre-annotation using Prompts in Visual NER project
+NLP Lab 5.9.0 expands pre-annotation capabilities for Visual NER projects with added support for pre-annotation using Prompts. Users can now pre-annotate tasks in Visual NER projects using zero-shot prompts, significantly enhancing the scope for pre-annotation along with efficiency and accuracy.
 
-This new gesture enables users to annotate a text chunk with a single click, followed by the selection of the desired assertion label. This immediate action eliminates the need for repeated selections, significantly reducing annotation time and effort. The new gesture applies specifically to the assertion label on the clicked token or chunk, ensuring precise annotation without ambiguity.
+In previous versions, the use of prompts was limited to only in text-based projects. With this version, the scope has been expanded, allowing users to leverage prompts for pre-annotation in their PDF and image-based projects as well.
 
-To further enhance user experience, assertion labels in the label selection widget are now decorated with a dotted line, effectively distinguishing them from NER labels and preventing any potential confusion. This visual indication reinforces the distinction between assertion labels and NER labels, allowing users to make informed choices seamlessly.
+By incorporating zero-shot prompts, users can achieve efficient and accurate pre-annotation without the need for manual intervention.
 
-![1](/assets/images/annotation_lab/5.8.0/5.gif)
+### Configure and Pre-annotate tasks using Prompts:
+- Create a Visual NER Project
+- Navigate to Reuse-Resource Page and add desired zero shot prompts (relation prompts and external prompts are not supported, currently)
+- Once project configuration is saved, pre-annotate the tasks using the prompt.
 
-#### Model Evaluation servers are now queued
-A refinement has been implemented in version 5.8, whereby the Test Configuration for Model Evaluation is queued when there are insufficient resources. Users now can abort the test configuration (evaluation) if triggered unintentionally. Furthermore, a pop-up is presented to guide users in deleting an existing server when the maximum server count is reached.
+![PromptInVisner](/assets/images/annotation_lab/5.9.0/11.gif)
 
-NLP Lab 5.8 adds another improvement addressing resource constraints during model evaluation. The Test Configuration feature, which evaluates a model for the current project tasks, is now intelligently queued until sufficient resources are available. Additionally, a user-friendly feature allows users to abort the test configuration in case of accidental initiation. Furthermore, a helpful popup appears when the maximum server count is reached, guiding users through the process of deleting an existing server to free up resources for new evaluations.
+This new feature streamlines the pre-annotation process and extends the benefits of prompts to Visual NER projects, empowering users to annotate tasks more effectively across various document types.
 
-![1](/assets/images/annotation_lab/5.8.0/6.jpeg)
 
-#### Task Assignment from the Tasks Page
-Another enhancement introduced by NLP Lab 5.8 refers to the process of assigning annotators and reviewers to specific tasks. Now, directly from the task details page, users can allocate annotators and reviewers to a tasks without the need to navigate to the tasks list, and thus lose the current work context. This improvement not only saves valuable time but also enhances the user experience by simplifying task management within the platform. 
+## Pre-annotation using and Rules Visual NER project
+Version 5.9.0 introduces support for using Rules for pre-annotation capabilities of Visual NER projects. Users can now pre-annotate tasks in Visual NER projects using rules, extending the benefits of automated pre-annotation to a wider range of document types.
 
-By enabling direct assignment of annotators and reviewers from the task details, we ensure a more efficient workflow, allowing users to focus on project execution with fewer interruptions and less navigational overhead.
+Previously, rules were only available for use in text-based projects. However, with this version, the scope has been expanded to include Visual NER projects. Users can now leverage rules for pre-annotation in PDF and image-based projects, providing greater flexibility and efficiency in annotation workflows, allowing users to utilize rules to automatically annotate tasks in Visual NER projects.
 
-![1](/assets/images/annotation_lab/5.8.0/7.gif)
+### Configure and Pre-annotate tasks using Rules:
+- Create a Visual NER Project
+- Navigate to Reuse-Resource Page and add desired rules.
+- Once project configuration is saved, pre-annotate the tasks using the rules.
+  
+[gif]![RulesInVisner](/assets/images/annotation_lab/5.9.0/12.gif)
 
-#### Alphabet Resource Support in Rules for Enhanced Language Processing
-NLP Lab 5.8 offers language support for French, German, Greek, and Spanish characters within free rules. This enhancement empowers users to incorporate special characters such as é, í, α, β, γ, δ, ü, ß, and more into their dictionaries while creating rules and using them for pre-annotation, expanding the application's versatility in handling diverse language requirements.
+## New Supervisor Role for Users
+In this version of NLP Lab, we're excited to introduce a new user role: Supervisor. The Supervisor role offers enhanced authority compared to the Annotator role while maintaining restrictions, similar to the Admin role.
 
-By incorporating special characters into free rules, users can achieve more accurate and reliable pre-annotation results, enhancing their overall workflow efficiency and productivity.
+### Role Authority:
+A user with the Supervisor role has access to almost all functionalities available to the Admin role, with a few exceptions:
+- **Users Page Access:** Supervisors cannot access the Users page, limiting their ability to create and edit users within the system.
+- **External Service Providers:** They do not have access to external service providers and cannot use prompts created by other users via external service providers.
+- **Limited Access to System Settings:** Supervisors have read-only access to Analytics Requests page, License page, Infrastructure Settings, and Export Project Settings in the System Settings page.
+- **No Access to Backup Page:** The Backup page is inaccessible to users with the Supervisor role.
 
-![1](/assets/images/annotation_lab/5.8.0/8.gif)
+![SupervisorAuthority](/assets/images/annotation_lab/5.9.0/13.gif)
 
-#### Disable "Filter Tasks by Tags" when Tasks Splitting with Test/Train Tags is Selected
-When segregating training data based on Test/Train tags, the system now omits the tag-based filter. As a result, tasks marked for testing are exclusively considered for the testing phase, whereas the remaining tasks are automatically designated for training.
+### Creating a user with Supervisor Role
+The process of creating a user with the new role is just like creating any other users. As an admin user, navigate to the “Users” page under “Settings” menu item, then Add a new user, assign Supervisor role and save it.
 
-![1](/assets/images/annotation_lab/5.8.0/9.png)
+![CreatingSupervissor](/assets/images/annotation_lab/5.9.0/14.gif)
 
-#### Updated Filter: "Filter Pre-annotation according to the sections of my latest completion"
+The introduction of the Supervisor role enhances user management capabilities while maintaining necessary restrictions to ensure data security and system integrity. This role provides users with the appropriate level of authority to oversee projects and workflows effectively within NLP Lab.
 
-For Section-Based Projects, where one task can have different section segmentations created by different annotators as part of their work, NLP Lab provides the ability to pre-annotate tasks for all the available sections. To enhance intuitiveness, a filter is provided to selectively display pre-annotation labels only for the sections of the latest completion of each task. The filter description has been updated to better convey its functionality to our users.
+## Import and Export project in S3 and Blob
+Version 5.9 of NLP Lab allows you to effortlessly import and export projects using S3 and Azure Blob.
 
-#### Enhanced Performance in Visual NER Pipeline
-Version 5.8 introduces substantial efficiency improvement of task import within OCR-based projects. These improvements are primarily aimed at reducing memory consumption and enhancing the loading efficiency of pipelines, thereby elevating overall performance during task import.
+**Steps to import a project from S3:**
+- Navigate to "Import Project"
+- Choose "AWS S3"
+- Input the path to the S3 file as s3://bucket/folder/file.zip
+- Provide S3 Access Key, S3 Secret Key, and Session Token (Required for MFA Accounts)
+- Click "Import"
+  ![S3_import](/assets/images/annotation_lab/5.9.0/15.gif)
 
-Key updates include a more memory-efficient OCR pipeline that eliminates the need for multiple loadings throughout the task import process. This refinement leads to a more streamlined and effective use of memory, facilitating a smoother import experience.
 
-Users leveraging OCR pipelines for task imports in NER projects should note:
+**Steps to import a project from Azure Bbob:**
+- Go to "Import Project"
+- Select "Azure Blob"
+- Enter the path to the Azure Blob file as Container/file.zip
+- Input Azure Account Name and Azure Account Secret Key
+- Click "Import"
+  ![Import_azure](/assets/images/annotation_lab/5.9.0/16.gif)
 
-- Server operations may still halt upon reaching memory capacity limits, which is to be anticipated.
-- In scenarios where multiple pipelines are deployed for task imports, performance, and memory usage metrics are consistent with those observed in the previous release.
-- 
-#### Improved Experience on Upgrade
-The upgrade pathway in NLP Lab has been refined in version 5.8, particularly addressing the challenges related to admin password changes through the UI. Previously, such changes led to upgrade failures, necessitating a manual update of the password in the 'annotationlab-updater' configuration. We are pleased to report that this issue has been effectively resolved in the latest release, ensuring a more fluid and user-friendly upgrade process.
 
-![1](/assets/images/annotation_lab/5.8.0/10.png)
+**Steps to export a project to S3:**
+- Navigate to "Projects"
+- Choose the desired project and Click "Export Project"
+- Select "Cloud Export"
+- Click "AWS S3"
+- Input S3 Access Key and S3 Secret Key 
+- Specify the S3 path for export (e.g., s3://bucket/folder/)
+- Optionally, provide Session Token for MFA Account
+- You click on Save Credentils as well for the future use
+- Optionally, save credentials for future use
+- Click "EXPORT"
+![s3_export](/assets/images/annotation_lab/5.9.0/17.gif)
 
-When initiating an upgrade to version 5.8 or beyond, users will be prompted to enter the new admin password, should it have been modified. This step is designed to automate the admin password update, thereby removing the need for manual adjustments to configuration files. Users who have not changed their admin password can simply proceed by pressing "Enter." This enhancement not only streamlines the upgrade process but also minimizes the likelihood of errors and saves valuable time.
+**Steps to export a project to Azure Bbob:**
+- Navigate to "Projects"
+- Select the project and Click "Export Project"
+- Choose "Cloud Export"
+- Select "Azure Blob"
+- Enter Account Name, Account Key, and Container Name
+- Optionally, save credentials for future use
+- Click "EXPORT"
+![azure_export](/assets/images/annotation_lab/5.9.0/18.gif)
+
+## Improvements
+### Delete user from the user edit page
+A delete button has been incorporated into the user edit page, whereas previously, users could only be deleted from the user list page via the three-dot menu. Now, administrators have the option to delete users directly from the user edit page. Additionally, a supplementary delete button has been placed beside the save button at the bottom of the user edit page.
+
+### Configurable button layout for Login page
+In previous versions, the "Sign in with OIDC" button appeared directly below the regular "Sign in" button. With NLP 5.9, administrators have the flexibility to configure the positioning of these buttons. By appending an asterisk (*) to the end of the Display Name of Identity Providers in Keycloak authentication, the "Sign in with OIDC" button can be set as the primary option, eliminating any confusion and reducing room for errors.
+
+![OIDC_button_flip](/assets/images/annotation_lab/5.9.0/19.gif)
+
+### Next button is enabled after selected users are added to the project in "Team Member" Page
+On the project team member page, bulk selection and role assignment of accounts is now available. Once user accounts are selected, it is now possible to assign "annotator," "reviewer," and "manager" roles in bulk. However, there's a common issue where users occasionally forget to click the "Add to team" button after assigning roles. Consequently, when users attempt to proceed to the project configuration page by clicking the next button, the selected users and their roles are lost in this case. 
+
+To address this situation, the next button is left disabled until the selected users along with their roles are added to the team, ensuring that changes are saved. Only after this process is complete does the next button become enabled, allowing users to proceed without losing any data.
+
+### Meta in Labels should support HTML tags and escape sequences
+In previous versions of NLP Lab, metadata in labels had limitations regarding support for special characters, HTML tags, and new lines. With version 5.9.0, meta support in labels has been significantly enhanced to include special characters, new lines, and HTML tags (such as \n, \s).
+
+![MetaSupportSpecialCharacter](/assets/images/annotation_lab/5.9.0/20.gif)
+
+Users can leverage the enhanced meta support to provide additional context and information within labeled entities. Whether including special characters for specific annotations, utilizing HTML tags for formatting, or adding new lines for clarity, users have greater flexibility in annotating text data.
+
+### Add shortcut for pagination in the task labeling page
+In version 5.9.0, we are excited to introduce an improvement to the labeling page that enhances user navigation for large tasks. Users can now utilize keyboard shortcuts to quickly navigate to the next and previous pages within tasks, improving efficiency and workflow.
+
+**Keyboard Shortcuts:**
+- **Navigate to Previous Page:** Users can press “Alt/Option + Left" to navigate to the previous page within a task.
+- **Navigate to Next Page:** Pressing “Alt/Option + Right" allows users to navigate to the next page within a task.
+
+![PaginationTest](/assets/images/annotation_lab/5.9.0/21.gif)
+
+These keyboard shortcuts provide users with a convenient way to navigate through large tasks more efficiently, particularly when annotating large text data tasks. By streamlining navigation, users can stay focused on annotation task itself, maintaining productivity within NLP Lab.
+
 ### Bug Fixes
-- **Filter in Models Hub page incorrectly lists Pipelines when Healthcare is selected in edition filter**
-    
-    In the past, when utilizing filters on the Models Hub page to display healthcare-type models, pipelines were inadvertently included in the list. The filter conditions have now been refined to accurately distinguish between models and pipelines. As a result, the Models Hub page no longer displays OCR pipelines when filtered specifically for healthcare-related content.
+- **Labels and Choices in a Vertical Layout fail to occupy the entire vertical space**
 
-- **Downloaded embedding status not updating without refresh**
+	Previously, when the project was set up to display labels or choices in a vertical layout, the options did not optimally use the page space and only occupy a small portion of the vertical space. This resulted in cluttered options, and when annotators scrolled through long tasks, these options would often go unnoticed. This issue has now been resolved, as the entire vertical space is utilized to list the annotation options.
+	
+- **Model evaluation can be triggered for trained model**
 
-    In the past, after an Embedding was successfully downloaded, it continued to display the status "downloading," leaving the user waiting without notification. This issue has now been resolved.
+	Model evaluation is exclusively supported for pre-trained models. An issue arose where users attempted to evaluate trained models, resulting in an error message: 'Evaluation Failed! NER/Classification pretrained model not found in project configuration.' Thus, if a user adds a trained model and attempts evaluation, this error will be displayed.
+	
+- **For label names with spaces, when trained, the prediction entity name is truncated after spaces**
 
-- **SDOH classification models do not give any pre-annotation results**
+	In new projects, the NLP lab restricts NER label names from including spaces. If a project owner or manager attempts to add a label name with spaces, an error message will appear. However, in existing projects where label names contain spaces, this error will not occur. Nevertheless, during model training in these projects, entity names with spaces will be truncated after the space in prediction outputs.
+	
+- **Team members are not displayed in the project card for imported project**
 
-    Previously, there was an issue where SDOH classification models did not provide results for any task. This issue has been resolved, and the model can now be deployed in the playground and utilized for pre-annotation in projects without encountering any errors.
+	Previously, when a user imported a project containing multiple users, the project would be created, but the icons of added users were not displayed on the project card in the home page. This issue has now been resolved.
+	
+- **SBA: "Filter Pre-annotation acc. to latest completion" does not show the predicted labels for newly added sections created after the Pre-annotation**
 
-- **Error When users without admin privilege import projects**
+	Previously, the 'Filter Pre-annotation according to latest completion' feature did not display predicted labels for newly added sections created after pre-annotation. This issue has been resolved, and now labels are correctly displayed and preserved for manually created or deleted sections.
 
-    Previously, non-admin users attempting to import a project with team members encountered an internal server error. This issue has been addressed, and now, if a non-admin user attempts to import a project with users not yet existing in the application, the import process fails with an appropriate error message.
+The 'Filter by latest completions' feature now accurately displays predicted labels based on pre-annotation for all sections, including manually created ones. Additionally, pre-annotation predictions are removed from sections not present in the latest draft or completion of the current user.
+	
+- **System Settings is hidden by the "Help" Button in the Side Menu**
 
-- **During bulk pre-annotation if it fails for a single task, pre-annotation fails for all the tasks in the Visual NER project**
+	The System Settings, previously hidden under the Help Button in the Side Menu, were inaccessible even with the scroll bar. Now, the System Settings are no longer hidden by the Help button. They are readily accessible and can be scrolled down within the Side Menu to reach the page.
+	
+- **When user Deletes a user and then transfers the project to another user, the project are not transferred**
 
-    Previously, users were unable to pre-annotate multiple tasks simultaneously, and if one pre-annotation failed, the entire batch of selected tasks would also fail. The current implementation has enhanced memory usage, allowing for improved bulk pre-annotation. Now, pre-annotation for all tasks does not fail as it did before. However, tasks are pre-annotated until the pre-annotation server memory limit is reached. Subsequently, pre-annotation fails for the remaining tasks, which need to be selected and pre-annotated again.
+	Previously, when the admin user deleted a user and attempted to transfer the project to another user, the project was not successfully transferred. Additionally, a "bad request" error was encountered in the UI.
 
-- **Clicking on the labels part of edition dropdown in NLP Models Hub Page does not select/unselect the checkbox**
+Now, after deleting a user, the projects are automatically transferred to another user as intended.
+	
+- **Import fails for cloud task import when mixed image type documents are imported**
 
-    Previously, clicking on labels in the edition dropdown on the NLP Models Hub Page did not effectively select/unselect the checkbox. This issue has been resolved, filters are now successfully selected when the corresponding text is clicked.
+	For cases when the user tries to import mixed image type documents from cloud storage, the users will now receive an error message.
+	
+- **Annotations are not copied when copying completion in a Visual NER Project with SBA**
 
-- **Benchmarking details Popup for trained RE Models shows Epoch values**
+	Annotations were not previously copied when duplicating completions in a Visual NER Project with SBA. This issue has been rectified.
+	
+- **Search text box in Project page doesn't reset/refresh the page when texts are removed**
 
-    Initially, the Training Logs for the RE model did not display Benchmarking data. Clicking on the Benchmarking button presented Epoch Values instead of the expected Benchmarking Data in the Benchmarking PopUp. Now, the Benchmarking Data is appropriately shown at the end of the training logs for RE models. Additionally, this Benchmarking Data is also visible on the Benchmarking UI on the Models Page.
+	Previously, the search text box on the Project page did not reset or refresh the page when the text was removed. Now, after deleting all the text in the search box, all projects are listed as expected.
+	
+- **While uploading a model, the user need to type every prediction entity**
 
-- **Reuse Resources: Unable to remove RE models from the models list shown during "Multi-embeddings detected" case**
+	Previously, when uploading a model, users had to manually type each prediction entity. This has now been rectified; users can simply copy and paste a comma-separated list of prediction entities for the models.
+	
+- **Completions are not created when textarea tag is without "toName" attribute**
 
-    Previously, attempting to remove the RE model from the Multi-embeddings detected list displayed a confirmation message, but it was not effectively removed from the configuration. The tick mark associated with the RE model persisted. Now, the RE model is removed from the Multi Embeddings detected list in the same manner as other models, ensuring both the confirmation message and the tick mark are appropriately handled.
+	Previously, there was an issue where completions were not saved when the textarea tag lacked the "toName" attribute. Now, if such a configuration exists, the config validation will throw an error before the user can save the config, specifically when the XML config includes a `<TextArea/>` node without the toName attribute. After adding the toName attribute, completions are successfully created.
+	
+- **Relation lines for two entities are not displayed when they are in different lines**
 
-- **Training Page: Saved Training Settings are reset when the training type changes**
+	The issue has been resolved, and now the relation lines remain visible even when scrolling through the task. This fix will across various scenarios including single-page tasks with short texts, as well as multi-page tasks with large texts for both manual annotation and pre-annotation.
+	
+- **Users are not able to view benchmarking data for pre-trained model**
 
-    On the Training Page, there was a problem where saved training settings would be reset when the training type was changed. Initially, the saved settings, including embeddings, license type, and Transfer Learning, were not persisting. However, this issue has now been resolved, and the saved settings remain unchanged when altering the training type.
+	The issue has been resolved, and now both admin and supervisors can view benchmarking results for pre-trained models, provided they are available.
+	
+- **NER model not added" error is shown even when relation model is not added to the project configuration**
 
-- **Playground: The text field to insert text to test models/prompts/rules in playground is disabled but editable**
+	Now, the error message 'NER model not added' no longer appears when RE configuration is added without an RE model. However, if an RE model is added without the inclusion of the NER model, the error message will be displayed.
 
-    In the Playground, the text field for inserting text to test models/prompts/rules was disabled yet still editable. Although the added text did not affect the results, the disabled text field allowed editing. Now, users cannot edit the text field when it is disabled.
-
-- **Task name not imported while importing tasks for Rate PDF projects**
-
-    Previously, when importing tasks for Rate PDF projects, the task name was not included. This issue has been resolved, the imported tasks can be opened without encountering any errors.
-
-- **Error when importing sample task for SBA project**
-
-    In the previous version, sample tasks were not imported for both text and visual-based SBA projects. Issue is now fixed.
 
 </div><div class="prev_ver h3-box" markdown="1">
 
@@ -192,8 +266,10 @@ When initiating an upgrade to version 5.8 or beyond, users will be prompted to e
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_5_9_1">5.9.1</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_5_9_0">5.9.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_8_1">5.8.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_5_8_0">5.8.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_8_0">5.8.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_7_1">5.7.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_7_0">5.7.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_6_2">5.6.2</a></li>
