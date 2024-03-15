@@ -54,18 +54,22 @@ This new feature enhances the annotation capabilities of NLP Lab, allowing users
 ## Pre-annotate metadata using Resolvers 
 
 - NLP Lab 5.9 introduces a pivotal enhancement that expands pre-annotation capabilities with the use of Healthcare resolvers. These resolvers are now conveniently accessible and discoverable on the NLP Models Hub page. Simply apply the "Entity Resolution" filter to view the comprehensive list.
+
 ![Resolution_prediction](/assets/images/annotation_lab/5.9.0/6.png)
 
 - For any selected resolver to be used in the pre-annotation process it is required to incorporate the named entity recognition (NER) model as part of the configuration project during setup.
 
 - To seamlessly integrate the resolver with the NER models, navigate to the "Reuse Resources" page within the project configuration. Subsequently, proceed to the "Customize Labels" section. Here, individually select each label and designate the appropriate resolver from the drop-down menu of Entity Resolution Models.
+
 ![Resolver_configuration](/assets/images/annotation_lab/5.9.0/7.gif)
 
 - The role of these resolvers is to transform pre-annotated labels into both code and descriptive representations. To access this functionality, ensure that the "Show Meta in Regions" option is enabled within the task settings.
+  
 ![Resolution_prediction](/assets/images/annotation_lab/5.9.0/8.gif)
 
 - Meta-information associated with a label is stored in a key-value pair format, facilitating easy retrieval and interpretation.
-![Resolution_prediction](Resolver_metadata](/assets/images/annotation_lab/5.9.0/9.png)
+
+![Resolution_prediction](/assets/images/annotation_lab/5.9.0/9.png)
 
 - While it's possible to copy and modify completions, it's important to note that the resolved code and descriptions cannot be directly edited. In such cases, deletion of the existing content or addition of new key-value pairs is necessary. In instances where no prediction is available, manual annotation of tasks can be performed using lookup codes/terms, provided that a lookup table has been configured.
 ![Resolver_copy_and_renames](/assets/images/annotation_lab/5.9.0/10.gif)
@@ -96,8 +100,8 @@ Previously, rules were only available for use in text-based projects. However, w
 - Create a Visual NER Project
 - Navigate to Reuse-Resource Page and add desired rules.
 - Once project configuration is saved, pre-annotate the tasks using the rules.
-  
-[gif]![RulesInVisner](/assets/images/annotation_lab/5.9.0/12.gif)
+
+  ![RulesInVisner](/assets/images/annotation_lab/5.9.0/12.gif)
 
 ## New Supervisor Role for Users
 In this version of NLP Lab, we're excited to introduce a new user role: Supervisor. The Supervisor role offers enhanced authority compared to the Annotator role while maintaining restrictions, similar to the Admin role.
