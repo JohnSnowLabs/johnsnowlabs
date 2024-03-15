@@ -54,7 +54,7 @@ This new feature enhances the annotation capabilities of NLP Lab, allowing users
 ## Pre-annotate metadata using Resolvers 
 
 - NLP Lab 5.9 introduces a pivotal enhancement that expands pre-annotation capabilities with the use of Healthcare resolvers. These resolvers are now conveniently accessible and discoverable on the NLP Models Hub page. Simply apply the "Entity Resolution" filter to view the comprehensive list.
-![Resolution_prediction](Resolver_download(/assets/images/annotation_lab/5.9.0/6.png)
+![Resolution_prediction](/assets/images/annotation_lab/5.9.0/6.png)
 
 - For any selected resolver to be used in the pre-annotation process it is required to incorporate the named entity recognition (NER) model as part of the configuration project during setup.
 
