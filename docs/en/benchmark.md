@@ -17,19 +17,19 @@ sidebar:
 
 ### NER (BiLSTM-CNN-Char Architecture) Benchmark Experiment
 
-- **Dataset :** 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.
+- **Dataset:** 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.
 - **Driver :** Standard_D4s_v3 - 16 GB Memory - 4 Cores
 - **Enable Autoscaling :** False
 - **Cluster Mode :** Standart
 - **Worker :**
   - Standard_D4s_v3 - 16 GB Memory - 4 Cores
   - Standard_D4s_v2 - 28 GB Memory - 8 Cores
-- **Versions :**
+- **Versions:**
   - **Databricks Runtime Version :** 8.3(Scala 2.12, Spark 3.1.1)
   - **spark-nlp Version:** v3.2.3
   - **spark-nlp-jsl Version :** v3.2.3
   - **Spark Version :** v3.1.1
-- **Spark NLP Pipeline :**
+- **Spark NLP Pipeline:**
 
   ```
   nlpPipeline = Pipeline(stages=[
@@ -43,7 +43,7 @@ sidebar:
 
   ```
   
-**NOTES :**
+**NOTES:**
 
 + **The first experiment with 5 different cluster configurations :** `ner_chunk`  as a column in Spark NLP Pipeline (`ner_converter`) output data frame, exploded (lazy evaluation) as `ner_chunk` and `ner_label`. Then results were written as **parquet** and **delta** formats.
 
@@ -151,9 +151,9 @@ nlpPipeline = Pipeline(stages=[
         finisher])
 ```
 
-**NOTES :**
+**NOTES:**
 
-+ In this experiment, the `bert_token_classifier_ner_jsl_slim` model was used to measure the inference time of clinical bert for token classification models in the databricks environment.
++ In this experiment, the `bert_token_classifier_ner_jsl_slim` model was used to measure the inference time of clinical bert for token classification models in the DataBricks environment.
 + In the first experiment, the data read from the parquet file is saved as parquet after processing.
 
 + In the second experiment, the data read from the delta table was written to the delta table after it was processed.
@@ -221,8 +221,8 @@ nlpPipeline = Pipeline(stages=[
 This experiment compares the ClinicalNER runtime for different versions of `PySpark` and `Spark NLP`. 
 In this experiment, all reports went through the pipeline 10 times and repeated execution 5 times, so we ran each report 50 times and averaged it, `%timeit -r 5 -n 10 run_model(spark, model)`.
 
-- **Driver :** Standard Google Colab environment
-- **Spark NLP Pipeline :**
+- **Driver:** Standard Google Colab environment
+- **Spark NLP Pipeline:**
 ```
 nlpPipeline = Pipeline(
       stages=[
@@ -235,7 +235,7 @@ nlpPipeline = Pipeline(
           ])
 ```
 
-- **Dataset :** File sizes:
+- **Dataset:** File sizes:
   - report_1: ~5.34kb
   - report_2: ~8.51kb
   - report_3: ~11.05kb
@@ -264,10 +264,10 @@ Results show that the different versions can have some variance in the execution
 - **Dataset:** 100 Clinical Texts from MTSamples, approx. 705 tokens and 11 chunks per text.
 
 - **Versions:**
-  - **Databricks Runtime Version :** 12.2 LTS(Scala 2.12, Spark 3.3.2)
+  - **Databricks Runtime Version:** 12.2 LTS(Scala 2.12, Spark 3.3.2)
   - **spark-nlp Version:** v5.2.0
-  - **spark-nlp-jsl Version :** v5.2.0
-  - **Spark Version :** v3.3.2
+  - **spark-nlp-jsl Version:** v5.2.0
+  - **Spark Version:** v3.3.2
 
 - **Spark NLP Pipelines:**
 
@@ -322,10 +322,10 @@ mapper_resolver_pipeline = Pipeline(
 ])
 ```
 
-**NOTES :**
+**NOTES:**
 
 + **3 different pipelines:**
-First pipeline with ChunkMapper, the second with Sentence Entity Resolver, and the third pipeline with ChunkMapper and Sentence Entity Resolver together.
+The first pipeline with ChunkMapper, the second with Sentence Entity Resolver, and the third pipeline with ChunkMapper and Sentence Entity Resolver together.
 
 + **3 different configurations:**
 Driver and worker types were kept as same in all cluster configurations. Number of workers were increased gradually and set as 2, 4, 8 for DataBricks.
@@ -448,7 +448,7 @@ resolver_pipeline = PipelineModel(
 
 ### Deidentification Benchmark Experiment
  
-- **Dataset:** 10000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.
+- **Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.
  
 - **Versions:**
   - **spark-nlp Version:** v5.2.0
@@ -579,10 +579,10 @@ The `sbiobertresolve_snomed_findings` model is used as the resolver model. The i
 ### NER (BiLSTM-CNN-Char Architecture) CPU Benchmark Experiment
 
 - **Dataset:** 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.
-- **Versions :**
+- **Versions:**
   - **spark-nlp Version:** v3.4.4
-  - **spark-nlp-jsl Version :** v3.5.2
-  - **Spark Version :** v3.1.2
+  - **spark-nlp-jsl Version:** v3.5.2
+  - **Spark Version:** v3.1.2
 - **Spark NLP Pipeline:**
 
 ```python
