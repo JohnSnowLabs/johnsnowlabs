@@ -132,3 +132,7 @@ val result = mapper_model.transform(data)
 |Output Labels:|[mappings]|
 |Language:|en|
 |Size:|231.8 KB|
+
+## References
+
+This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.
