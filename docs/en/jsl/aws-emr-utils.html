@@ -621,109 +621,84 @@ function wrapWordInSpan(data, wordToWrap) {
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="main-docs">
+  <div class="h3-box">
 
-  <h2 id="aws-emr-cluster-creation">AWS EMR Cluster Creation</h2>
+    <h2 id="aws-emr-cluster-creation">AWS EMR Cluster Creation</h2>
 
-  <p>You can create an AWS EMR Cluster with few lines of code. This ensures that John Snow Labs products are properly installed and ready for usage in an AWS EMR environment.</p>
+    <p>You can create an AWS EMR Cluster with few lines of code. This ensures that John Snow Labs products are properly installed and ready for usage in an AWS EMR environment.</p>
 
-  <p>See <a href="https://github.com/JohnSnowLabs/johnsnowlabs/tree/main/notebooks/create_emr_cluster.ipynb">AWS EMR Cluster Creation Notebook</a></p>
+    <p>See <a href="https://github.com/JohnSnowLabs/johnsnowlabs/tree/main/notebooks/create_emr_cluster.ipynb">AWS EMR Cluster Creation Notebook</a></p>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">johnsnowlabs</span>
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">johnsnowlabs</span>
 
 <span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
 <span class="n">nlp</span><span class="p">.</span><span class="n">install_to_emr</span><span class="p">()</span>
-</code></pre></div>  </div>
+</code></pre></div>    </div>
 
-  <p><code class="language-plaintext highlighter-rouge">nlp.install_to_emr</code> has the following parameters:</p>
+    <p><code class="language-plaintext highlighter-rouge">nlp.install_to_emr</code> has the following parameters:</p>
 
-  <h3 id="aws-specific-parameters">AWS specific parameters</h3>
+  </div>
+  <div class="h3-box">
 
-  <table>
-    <thead>
-      <tr>
-        <th>Parameter</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">boto_session</code></td>
-        <td>The Boto Session used to authorize requests to your AWS Account. If not provided, default session with environment variables is created. Refer <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html">this</a> for more information</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">bootstrap_bucket</code></td>
-        <td>S3 bucket to store your EMR bootstrap scripts. If not provided, one is created.</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">s3_logs_path</code></td>
-        <td>S3 path to store logs.</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">service_role</code></td>
-        <td>Service role for your AWS EMR cluster. Default: <code class="language-plaintext highlighter-rouge">EMR_DefaultRole</code>. In order to use the default role, you must have already created it using the AWS CLI or console. <br />To create them, use <code class="language-plaintext highlighter-rouge">aws emr create-default-roles</code>. Refer <a href="https://docs.aws.amazon.com/cli/latest/reference/emr/create-default-roles.html">this</a> for more information</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">job_flow_role</code></td>
-        <td>The EC2 instance profile for each instances in EMR Cluster. Default: <code class="language-plaintext highlighter-rouge">EMR_EC2_DefaultRole</code>. In order to use the default role, you must have already created it using the AWS CLI or console. <br />To create them, use <code class="language-plaintext highlighter-rouge">aws emr create-default-roles</code>. Refer <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-iam-role-for-ec2.html">this</a> for more information</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">subnet_id</code></td>
-        <td>The subnet to launch the EMR cluster in. Refer <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-vpc-subnet.html">this</a> for more information</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">ec2_key_name</code></td>
-        <td>The key pair name to ssh into your EMR cluster</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">auto_terminate_hours</code></td>
-        <td>The idle hours to wait before the cluster teminated. Default: 1 hour</td>
-      </tr>
-    </tbody>
-  </table>
+    <h3 id="aws-specific-parameters">AWS specific parameters</h3>
 
-  <h3 id="license-retrieval-parameters">License Retrieval Parameters</h3>
+    <p>| Parameter              | Description                                                                                                                                                                                                                                                                                                                                                                |
+| ———————- | ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————– |
+| <code class="language-plaintext highlighter-rouge">boto_session</code>         | The Boto Session used to authorize requests to your AWS Account. If not provided, default session with environment variables is created. Refer <a href="https://boto3.amazonaws.com/v1/documentation/api/latest/reference/core/session.html">this</a> for more information                                                                                                            |
+| <code class="language-plaintext highlighter-rouge">bootstrap_bucket</code>     | S3 bucket to store your EMR bootstrap scripts. If not provided, one is created.                                                                                                                                                                                                                                                                                            |
+| <code class="language-plaintext highlighter-rouge">s3_logs_path</code>         | S3 path to store logs.                                                                                                                                                                                                                                                                                                                                                     |
+| <code class="language-plaintext highlighter-rouge">service_role</code>         | Service role for your AWS EMR cluster. Default: <code class="language-plaintext highlighter-rouge">EMR_DefaultRole</code>. In order to use the default role, you must have already created it using the AWS CLI or console. <br />To create them, use <code class="language-plaintext highlighter-rouge">aws emr create-default-roles</code>. Refer <a href="https://docs.aws.amazon.com/cli/latest/reference/emr/create-default-roles.html">this</a> for more information                            |
+| <code class="language-plaintext highlighter-rouge">job_flow_role</code>        | The EC2 instance profile for each instances in EMR Cluster. Default: <code class="language-plaintext highlighter-rouge">EMR_EC2_DefaultRole</code>. In order to use the default role, you must have already created it using the AWS CLI or console. <br />To create them, use <code class="language-plaintext highlighter-rouge">aws emr create-default-roles</code>. Refer <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-iam-role-for-ec2.html">this</a> for more information |
+| <code class="language-plaintext highlighter-rouge">subnet_id</code>            | The subnet to launch the EMR cluster in. Refer <a href="https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-vpc-subnet.html">this</a> for more information                                                                                                                                                                                                                |
+| <code class="language-plaintext highlighter-rouge">ec2_key_name</code>         | The key pair name to ssh into your EMR cluster                                                                                                                                                                                                                                                                                                                             |
+| <code class="language-plaintext highlighter-rouge">auto_terminate_hours</code> | The idle hours to wait before the cluster teminated. Default: 1 hour                                                                                                                                                                                                                                                                                                       |</p>
+  </div>
+  <div class="h3-box">
 
-  <table>
-    <thead>
-      <tr>
-        <th>Parameter</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">browser_login</code></td>
-        <td>Enable or disable browser based login and pop up if no license is provided or automatically detected. Defaults to True.</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">force_browser</code></td>
-        <td>If a cached license if found, no browser pop up occurs. Set True to force the browser pop up, so that you can download different license, if you have several ones.</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">access_token</code></td>
-        <td>Use access token to fetch license from your account in https://my.johnsnowlabs.com account.</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">json_license_path</code></td>
-        <td>Load license from your downloaded json license file</td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">license</code></td>
-        <td>License key as part of <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#via-manually-defining-secrets">Manual license installation</a></td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">aws_access_key</code></td>
-        <td>JSL AWS Secret Key as part of <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#via-manually-defining-secrets">Manual license installation</a></td>
-      </tr>
-      <tr>
-        <td><code class="language-plaintext highlighter-rouge">aws_key_id</code></td>
-        <td>JSL AWS Access Key as part of <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#via-manually-defining-secrets">Manual license installation</a></td>
-      </tr>
-    </tbody>
-  </table>
+    <h3 id="license-retrieval-parameters">License Retrieval Parameters</h3>
 
-  <p>Refer <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced">this</a> for more information</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">browser_login</code></td>
+          <td>Enable or disable browser based login and pop up if no license is provided or automatically detected. Defaults to True.</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">force_browser</code></td>
+          <td>If a cached license if found, no browser pop up occurs. Set True to force the browser pop up, so that you can download different license, if you have several ones.</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">access_token</code></td>
+          <td>Use access token to fetch license from your account in https://my.johnsnowlabs.com account.</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">json_license_path</code></td>
+          <td>Load license from your downloaded json license file</td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">license</code></td>
+          <td>License key as part of <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#via-manually-defining-secrets">Manual license installation</a></td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">aws_access_key</code></td>
+          <td>JSL AWS Secret Key as part of <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#via-manually-defining-secrets">Manual license installation</a></td>
+        </tr>
+        <tr>
+          <td><code class="language-plaintext highlighter-rouge">aws_key_id</code></td>
+          <td>JSL AWS Access Key as part of <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced#via-manually-defining-secrets">Manual license installation</a></td>
+        </tr>
+      </tbody>
+    </table>
 
+    <p>Refer <a href="https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced">this</a> for more information</p>
+
+  </div>
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2020-05-26T00:00:00+00:00">May 26, 2020</time>

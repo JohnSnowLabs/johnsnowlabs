@@ -5530,6 +5530,9 @@ h2.h2_doc {
   .bottom_section .menu li {
     margin: 0 4px; }
 
+.table-inner {
+  overflow: auto; }
+
 .table_code {
   font-family: 'Source Code Pro', monospace;
   line-height: 32px;

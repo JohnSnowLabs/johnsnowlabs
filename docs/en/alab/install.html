@@ -629,9 +629,11 @@ th {
 }
 </style>
 
-<h2 id="type-of-installation">Type of installation</h2>
+<div class="h3-box">
 
-<p class="btn-box-install"><a href="#dedicated-server" class="button button-blue">Dedicated Server</a>
+  <h2 id="type-of-installation">Type of installation</h2>
+
+  <p class="btn-box-install"><a href="#dedicated-server" class="button button-blue">Dedicated Server</a>
 <a href="#aws-marketplace" class="button button-blue">AWS Marketplace</a>
 <a href="#azure-marketplace" class="button button-blue">Azure Marketplace</a>
 <a href="#eks-deployment" class="button button-blue">EKS deployment</a>
@@ -639,70 +641,83 @@ th {
 <a href="#airgap-environment" class="button button-blue">AirGap Environment</a>
 <a href="#openshift" class="button button-blue">OpenShift</a></p>
 
-<h2 id="dedicated-server">Dedicated Server</h2>
+</div>
+<div class="h3-box">
 
-<p>Install NLP Lab (Annotation Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.</p>
+  <h2 id="dedicated-server">Dedicated Server</h2>
 
-<h3 id="fresh-install">Fresh install</h3>
+  <p>Install NLP Lab (Annotation Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.</p>
 
-<p>To install NLP Lab run the following command:</p>
+</div>
+<div class="h3-box">
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/install.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> <span class="nv">$VERSION</span>
-</code></pre></div></div>
+  <h3 id="fresh-install">Fresh install</h3>
 
-<p>Replace <code class="language-plaintext highlighter-rouge">$VERSION</code> in the above one liners with the version you want to install.</p>
+  <p>To install NLP Lab run the following command:</p>
 
-<p>For installing the latest available version of the NLP Lab use:</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/install.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> <span class="nv">$VERSION</span>
+</code></pre></div>  </div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/install.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> <span class="nt">--</span>
-</code></pre></div></div>
+  <p>Replace <code class="language-plaintext highlighter-rouge">$VERSION</code> in the above one liners with the version you want to install.</p>
 
-<p><br /></p>
+  <p>For installing the latest available version of the NLP Lab use:</p>
 
-<h3 id="upgrade">Upgrade</h3>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/install.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> <span class="nt">--</span>
+</code></pre></div>  </div>
 
-<p>To upgrade your NLP Lab installation to a newer version, run the following command on a terminal:</p>
+</div>
+<div class="h3-box">
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/upgrade.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> <span class="nv">$VERSION</span>
-</code></pre></div></div>
+  <h3 id="upgrade">Upgrade</h3>
 
-<p>Replace <code class="language-plaintext highlighter-rouge">$VERSION</code> in the above one liners with the version you want to upgrade to.</p>
+  <p>To upgrade your NLP Lab installation to a newer version, run the following command on a terminal:</p>
 
-<p>For upgrading to the latest version of the NLP Lab, use:</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/upgrade.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> <span class="nv">$VERSION</span>
+</code></pre></div>  </div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/upgrade.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> <span class="nt">--</span>
-</code></pre></div></div>
+  <p>Replace <code class="language-plaintext highlighter-rouge">$VERSION</code> in the above one liners with the version you want to upgrade to.</p>
 
-<blockquote>
-  <p><strong>NOTE:</strong> The install/upgrade script displays the login credentials for the <em>admin</em> user on the terminal.</p>
-</blockquote>
+  <p>For upgrading to the latest version of the NLP Lab, use:</p>
 
-<p>After running the install/upgrade script, the NLP Lab is available at http://INSTANCE_IP or https://INSTANCE_IP</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://setup.johnsnowlabs.com/annotationlab/upgrade.sh <span class="nt">-O</span> - | <span class="nb">sudo </span>bash <span class="nt">-s</span> <span class="nt">--</span>
+</code></pre></div>  </div>
 
-<p><img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.1.0/loginScreenALAB.png" style="width:100%;" /></p>
+  <blockquote>
+    <p><strong>NOTE:</strong> The install/upgrade script displays the login credentials for the <em>admin</em> user on the terminal.</p>
+  </blockquote>
 
-<p>We have an aesthetically pleasing Sign-In Page with a section highlighting the key features of NLP Lab using animated GIFs.</p>
+  <p>After running the install/upgrade script, the NLP Lab is available at http://INSTANCE_IP or https://INSTANCE_IP</p>
 
-<h2 id="aws-marketplace">AWS Marketplace</h2>
+  <p><img src="/assets/images/annotation_lab/4.1.0/loginScreenALAB.png" alt="login Screen ALAB" /></p>
 
-<p>The NLP Lab needs to be installed on a virtual machine. One of the most straight forward method is an installation from AWS Marketplace (also available on Azure). There is no fee for the NLP Lab. However, you still have to pay for the underlying AWS EC2 instance (not Free Tier Eligible).</p>
+  <p>We have an aesthetically pleasing Sign-In Page with a section highlighting the key features of NLP Lab using animated GIFs.</p>
 
-<p>Visit the <a href="https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&amp;ref_=beagle&amp;applicationId=AWSMPContessa">product page on AWS Marketplace</a> and follow the instructions on the video below to subscribe and deploy.</p>
+</div>
+<div class="h3-box">
 
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item"><div class="extensions extensions--video">
+  <h2 id="aws-marketplace">AWS Marketplace</h2>
+
+  <p>The NLP Lab needs to be installed on a virtual machine. One of the most straight forward method is an installation from AWS Marketplace (also available on Azure). There is no fee for the NLP Lab. However, you still have to pay for the underlying AWS EC2 instance (not Free Tier Eligible).</p>
+
+  <p>Visit the <a href="https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&amp;ref_=beagle&amp;applicationId=AWSMPContessa">product page on AWS Marketplace</a> and follow the instructions on the video below to subscribe and deploy.</p>
+
+  <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item"><div class="extensions extensions--video">
   <iframe src="https://www.youtube.com/embed/ebaewU4BcQA?rel=0&amp;showinfo=0" frameborder="0" scrolling="no" allowfullscreen=""></iframe>
 </div><div class="video-descr">Deploy NLP Lab via AWS Marketplace</div></div></div>
 
-<h2 id="secure-access-to-nlp-lab-on-aws">Secure access to NLP Lab on AWS</h2>
+</div>
+<div class="h3-box">
 
-<p>When installed via the AWS Marketplace, NLP Lab has a private IP address and listens on an unsecured HTTP port. You can ask your DevOps department to incorporate the resource to your standard procedures to access from the internet in a secure manner. Alternatively, a Cloud Formation script is available that can be used to create a front end proxy (CloudFront, ELB, and auxiliary Lambda Function). Those resources are Free Tier Eligible.</p>
+  <h2 id="secure-access-to-nlp-lab-on-aws">Secure access to NLP Lab on AWS</h2>
 
-<p>Create the AWS Cloud Formation Script in YAML format:</p>
+  <p>When installed via the AWS Marketplace, NLP Lab has a private IP address and listens on an unsecured HTTP port. You can ask your DevOps department to incorporate the resource to your standard procedures to access from the internet in a secure manner. Alternatively, a Cloud Formation script is available that can be used to create a front end proxy (CloudFront, ELB, and auxiliary Lambda Function). Those resources are Free Tier Eligible.</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">   vi cloudformation_https.yaml
-</span></code></pre></div></div>
+  <p>Create the AWS Cloud Formation Script in YAML format:</p>
 
-<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">AWSTemplateFormatVersion: '2010-09-09'
+  <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">   vi cloudformation_https.yaml
+</span></code></pre></div>  </div>
+
+  <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">AWSTemplateFormatVersion: '2010-09-09'
 Metadata:
   License: Apache-2.0
 Description: 'AWS CloudFormation To access NLP Lab via https:
@@ -755,37 +770,43 @@ Outputs:
     Description: Cloudfront URL to access NLP Lab
     Value: !Join ["", ['https://', !GetAtt [CloudFront, DomainName]]]
 
-</span></code></pre></div></div>
+</span></code></pre></div>  </div>
 
-<p>Click Create a stack, “Upload a template file”. Give the Stack a name and enter the NLP Lab instance Hostname(from the EC2 console) as a parameter.</p>
+  <p>Click Create a stack, “Upload a template file”. Give the Stack a name and enter the NLP Lab instance Hostname(from the EC2 console) as a parameter.</p>
 
-<p><img src="/assets/images/annotation_lab/aws/createStack.png" alt="createStack" /></p>
+  <p><img src="/assets/images/annotation_lab/aws/createStack.png" alt="createStack" /></p>
 
-<p>Next -&gt; Next -&gt; Acknowledge that AWS CloudFormation might create IAM resources. -&gt; Submit. Wait a few minutes until all resources are created.</p>
+  <p>Next -&gt; Next -&gt; Acknowledge that AWS CloudFormation might create IAM resources. -&gt; Submit. Wait a few minutes until all resources are created.</p>
 
-<p><img src="/assets/images/annotation_lab/aws/ack.png" alt="ack" /></p>
+  <p><img src="/assets/images/annotation_lab/aws/ack.png" alt="ack" /></p>
 
-<p>Once created, go do the Outputs tab and click on the NLP Lab URL. You may need to refresh the view.</p>
+  <p>Once created, go do the Outputs tab and click on the NLP Lab URL. You may need to refresh the view.</p>
 
-<p><img src="/assets/images/annotation_lab/aws/output.png" alt="output" /></p>
+  <p><img src="/assets/images/annotation_lab/aws/output.png" alt="output" /></p>
 
-<p>Now, to access the NLP Lab, you go to the CloudFront URL and log in with username “admin” and password equal to the EC2 Instance ID noted earlier.</p>
+  <p>Now, to access the NLP Lab, you go to the CloudFront URL and log in with username “admin” and password equal to the EC2 Instance ID noted earlier.</p>
 
-<h2 id="azure-marketplace">Azure Marketplace</h2>
+</div>
+<div class="h3-box">
 
-<p>Visit the <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.annotation_lab?tab=Overview">product page on Azure Marketplace</a> and follow the instructions on the video below to subscribe and deploy.</p>
+  <h2 id="azure-marketplace">Azure Marketplace</h2>
 
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item"><div class="extensions extensions--video">
+  <p>Visit the <a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.annotation_lab?tab=Overview">product page on Azure Marketplace</a> and follow the instructions on the video below to subscribe and deploy.</p>
+
+  <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item"><div class="extensions extensions--video">
   <iframe src="https://www.youtube.com/embed/e6aB3z5tB0k?rel=0&amp;showinfo=0" frameborder="0" scrolling="no" allowfullscreen=""></iframe>
 </div><div class="video-descr">Deploy NLP Lab via Azure Marketplace</div></div></div>
 
-<h2 id="eks-deployment">EKS deployment</h2>
+</div>
+<div class="h3-box">
 
-<ol>
-  <li>
-    <p>Create NodeGroup for a given cluster</p>
+  <h2 id="eks-deployment">EKS deployment</h2>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">eksctl create nodegroup --config-file eks-nodegroup.yaml
+  <ol>
+    <li>
+      <p>Create NodeGroup for a given cluster</p>
+
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">eksctl create nodegroup --config-file eks-nodegroup.yaml
 
 kind: ClusterConfig
 apiVersion: eksctl.io/v1alpha5
@@ -817,21 +838,21 @@ managedNodeGroups:
     ssh:
 </span><span class="gp">      publicKeyPath: &lt;path/to/id_rsa_pub&gt;</span><span class="w">
 </span><span class="go">
-</span></code></pre></div>    </div>
+</span></code></pre></div>      </div>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster=&lt;cluster-name&gt;</span><span class="w"> </span><span class="nt">--approve</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Create an EFS as shared storage. EFS stands for Elastic File System and is a scalable storage solution that can be used for general purpose workloads.</p>
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">eksctl utils associate-iam-oidc-provider --region=us-east-1 --cluster=&lt;cluster-name&gt;</span><span class="w"> </span><span class="nt">--approve</span>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Create an EFS as shared storage. EFS stands for Elastic File System and is a scalable storage solution that can be used for general purpose workloads.</p>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">curl -S https://raw.githubusercontent.com/kubernetes-sigs/aws-efs-csi-driver/v1.2.0/docs/iam-policy-example.json -o iam-policy.json
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">curl -S https://raw.githubusercontent.com/kubernetes-sigs/aws-efs-csi-driver/v1.2.0/docs/iam-policy-example.json -o iam-policy.json
 aws iam create-policy \
   --policy-name EFSCSIControllerIAMPolicy \
   --policy-document file://iam-policy.json
-</span></code></pre></div>    </div>
+</span></code></pre></div>      </div>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">eksctl create iamserviceaccount \
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">eksctl create iamserviceaccount \
   --cluster=&lt;cluster&gt;</span><span class="w"> </span><span class="se">\</span>
   <span class="nt">--region</span> &lt;AWS Region&gt; <span class="se">\</span>
   <span class="nt">--namespace</span><span class="o">=</span>kube-system <span class="se">\</span>
@@ -839,26 +860,26 @@ aws iam create-policy \
   <span class="nt">--override-existing-serviceaccounts</span> <span class="se">\</span>
   <span class="nt">--attach-policy-arn</span><span class="o">=</span>arn:aws:iam::&lt;AWS account ID&gt;:policy/EFSCSIControllerIAMPolicy <span class="se">\</span>
   <span class="nt">--approve</span>
-</code></pre></div>    </div>
+</code></pre></div>      </div>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">helm repo add aws-efs-csi-driver https://kubernetes-sigs.github.io/aws-efs-csi-driver
-</span></code></pre></div>    </div>
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">helm repo add aws-efs-csi-driver https://kubernetes-sigs.github.io/aws-efs-csi-driver
+</span></code></pre></div>      </div>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">helm repo update
-</span></code></pre></div>    </div>
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">helm repo update
+</span></code></pre></div>      </div>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">helm upgrade -i aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver \
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">helm upgrade -i aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver \
   --namespace kube-system \
   --set image.repository=602401143452.dkr.ecr.us-east-1.amazonaws.com/eks/aws-efs-csi-driver \
   --set controller.serviceAccount.create=false \
   --set controller.serviceAccount.name=efs-csi-controller-sa
 
-</span></code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Create storageClass.yaml</p>
+</span></code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Create storageClass.yaml</p>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">cat &lt;&lt;EOF &gt;</span><span class="w"> </span>storageClass.yaml
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">cat &lt;&lt;EOF &gt;</span><span class="w"> </span>storageClass.yaml
 <span class="go">kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
@@ -869,13 +890,13 @@ parameters:
 </span><span class="gp">  fileSystemId: &lt;EFS file system ID&gt;</span><span class="w">
 </span><span class="go">  directoryPerms: "700"
 EOF
-</span></code></pre></div>    </div>
+</span></code></pre></div>      </div>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">kubectl apply -f storageClass.yaml
-</span></code></pre></div>    </div>
-    <p>Edit annotationlab-installer.sh inside artifact folder as follows:</p>
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">kubectl apply -f storageClass.yaml
+</span></code></pre></div>      </div>
+      <p>Edit annotationlab-installer.sh inside artifact folder as follows:</p>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">helm install annotationlab annotationlab-$</span><span class="o">{</span>ANNOTATIONLAB_VERSION<span class="o">}</span>.tgz                                 <span class="se">\</span>
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">helm install annotationlab annotationlab-$</span><span class="o">{</span>ANNOTATIONLAB_VERSION<span class="o">}</span>.tgz                                 <span class="se">\</span>
     <span class="nt">--set</span> image.tag<span class="o">=</span><span class="k">${</span><span class="nv">ANNOTATIONLAB_VERSION</span><span class="k">}</span>                                                          <span class="se">\</span>
     <span class="nt">--set</span> model_server.count<span class="o">=</span>1                                                                        <span class="se">\</span>
     <span class="nt">--set</span> ingress.enabled<span class="o">=</span><span class="nb">true</span>                                                                        <span class="se">\</span>
@@ -904,26 +925,26 @@ EOF
     <span class="nt">--set</span> keycloak.secrets.admincreds.stringData.user<span class="o">=</span>admin                                           <span class="se">\</span>
     <span class="nt">--set</span> keycloak.secrets.admincreds.stringData.password<span class="o">=</span><span class="si">$(</span>bash <span class="nt">-c</span> <span class="s2">"echo </span><span class="k">${</span><span class="nv">password_gen_string</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span>
 <span class="go">
-</span></code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Run annotationlab-installer.sh script</p>
+</span></code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Run annotationlab-installer.sh script</p>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">     ./artifacts/annotationlab-installer.sh
-</span></code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Install ingress Controller</p>
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">     ./artifacts/annotationlab-installer.sh
+</span></code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Install ingress Controller</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm repo add nginx-stable https://helm.nginx.com/stable
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm repo add nginx-stable https://helm.nginx.com/stable
 helm repo update
 helm install my-release nginx-stable/nginx-ingress
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Apply ingress.yaml</p>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Apply ingress.yaml</p>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">cat &lt;&lt;EOF &gt;</span><span class="w"> </span>ingress.yaml
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">cat &lt;&lt;EOF &gt;</span><span class="w"> </span>ingress.yaml
 <span class="go">apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -957,74 +978,77 @@ spec:
         path: /auth
         pathType: ImplementationSpecific
 EOF
-</span></code></pre></div>    </div>
+</span></code></pre></div>      </div>
 
-    <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">kubectl apply -f ingress.yaml
-</span></code></pre></div>    </div>
-  </li>
-</ol>
+      <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">kubectl apply -f ingress.yaml
+</span></code></pre></div>      </div>
+    </li>
+  </ol>
 
-<h2 id="aks-deployment">AKS deployment</h2>
+</div>
+<div class="h3-box">
 
-<p>To deploy NLP Lab on Azure Kubernetes Service (AKS) a Kubernetes cluster needs to be created in Microsoft Azure.</p>
+  <h2 id="aks-deployment">AKS deployment</h2>
 
-<ol>
-  <li>
-    <p>Login to your <a href="https://portal.azure.com/">Azure Portal</a> and search for Kubernetes services.</p>
-  </li>
-  <li>
-    <p>On the <bl>Kubernetes services</bl> page click on the <code class="language-plaintext highlighter-rouge">Create</code> dropdown and select <code class="language-plaintext highlighter-rouge">Create a Kubernetes cluster</code>.</p>
-  </li>
-  <li>
-    <p>On the <bl>Create Kubernetes cluster</bl> page, select the resource group and provide the name you want to give to the cluster.</p>
+  <p>To deploy NLP Lab on Azure Kubernetes Service (AKS) a Kubernetes cluster needs to be created in Microsoft Azure.</p>
 
-    <p><img class="image image__shadow" src="/assets/images/annotation_lab/AKS-create-k8-cluster.png" style="width:100%;" /></p>
-  </li>
-  <li>
-    <p>You can keep the rest of the fields to default values and click on <code class="language-plaintext highlighter-rouge">Review + create</code>.</p>
+  <ol>
+    <li>
+      <p>Login to your <a href="https://portal.azure.com/">Azure Portal</a> and search for Kubernetes services.</p>
+    </li>
+    <li>
+      <p>On the <bl>Kubernetes services</bl> page click on the <code class="language-plaintext highlighter-rouge">Create</code> dropdown and select <code class="language-plaintext highlighter-rouge">Create a Kubernetes cluster</code>.</p>
+    </li>
+    <li>
+      <p>On the <bl>Create Kubernetes cluster</bl> page, select the resource group and provide the name you want to give to the cluster.</p>
 
-    <p><img class="image image__shadow" src="/assets/images/annotation_lab/AKS-cluster-validation.png" style="width:100%;" /></p>
-  </li>
-  <li>
-    <p>Click on <code class="language-plaintext highlighter-rouge">Create</code> button to start the deployment process.</p>
+      <p><img src="/assets/images/annotation_lab/AKS-create-k8-cluster.png" alt="AKS create k8 cluster" /></p>
+    </li>
+    <li>
+      <p>You can keep the rest of the fields to default values and click on <code class="language-plaintext highlighter-rouge">Review + create</code>.</p>
 
-    <p><img class="image image__shadow" src="/assets/images/annotation_lab/AKS-deployment.png" style="width:100%;" /></p>
-  </li>
-  <li>
-    <p>Once the deployment is completed, click on <code class="language-plaintext highlighter-rouge">Go to resource</code> button.</p>
-  </li>
-  <li>
-    <p>On the newly created resource page, click on <code class="language-plaintext highlighter-rouge">Connect</code> button. You will be shown a list of commands to run on the <code class="language-plaintext highlighter-rouge">Cloud Shell</code> or <code class="language-plaintext highlighter-rouge">Azure CLI</code> to connect to this resource. We will execute them successively in the following steps.</p>
-  </li>
-  <li>
-    <p>Run the following commands to connect to Azure Kubernetes Service.</p>
+      <p><img src="/assets/images/annotation_lab/AKS-cluster-validation.png" alt="AKS cluster validation" /></p>
+    </li>
+    <li>
+      <p>Click on <code class="language-plaintext highlighter-rouge">Create</code> button to start the deployment process.</p>
 
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az account <span class="nb">set</span> <span class="nt">--subscription</span> &lt;subscription-id&gt;
-</code></pre></div>    </div>
+      <p><img src="/assets/images/annotation_lab/AKS-deployment.png" alt="AKS deployment" /></p>
+    </li>
+    <li>
+      <p>Once the deployment is completed, click on <code class="language-plaintext highlighter-rouge">Go to resource</code> button.</p>
+    </li>
+    <li>
+      <p>On the newly created resource page, click on <code class="language-plaintext highlighter-rouge">Connect</code> button. You will be shown a list of commands to run on the <code class="language-plaintext highlighter-rouge">Cloud Shell</code> or <code class="language-plaintext highlighter-rouge">Azure CLI</code> to connect to this resource. We will execute them successively in the following steps.</p>
+    </li>
+    <li>
+      <p>Run the following commands to connect to Azure Kubernetes Service.</p>
 
-    <blockquote>
-      <p><strong>NOTE:</strong> Replace <subscription-id> with your account's subscription id.</subscription-id></p>
-    </blockquote>
+      <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az account <span class="nb">set</span> <span class="nt">--subscription</span> &lt;subscription-id&gt;
+</code></pre></div>      </div>
 
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az aks get-credentials <span class="nt">--resource-group</span> &lt;resource-group-name&gt; <span class="nt">--name</span> &lt;cluster-name&gt;
-</code></pre></div>    </div>
+      <blockquote>
+        <p><strong>NOTE:</strong> Replace <subscription-id> with your account's subscription id.</subscription-id></p>
+      </blockquote>
 
-    <blockquote>
-      <p><strong>NOTE:</strong> Replace <resource-group-name> and <cluster-name> with what you selected in Step 3.</cluster-name></resource-group-name></p>
-    </blockquote>
-  </li>
-  <li>
-    <p>Check to see if <code class="language-plaintext highlighter-rouge">azurefile</code> or <code class="language-plaintext highlighter-rouge">azuredisk</code> storage class is present by running the following command:</p>
+      <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>az aks get-credentials <span class="nt">--resource-group</span> &lt;resource-group-name&gt; <span class="nt">--name</span> &lt;cluster-name&gt;
+</code></pre></div>      </div>
 
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get storageclass
-</code></pre></div>    </div>
+      <blockquote>
+        <p><strong>NOTE:</strong> Replace <resource-group-name> and <cluster-name> with what you selected in Step 3.</cluster-name></resource-group-name></p>
+      </blockquote>
+    </li>
+    <li>
+      <p>Check to see if <code class="language-plaintext highlighter-rouge">azurefile</code> or <code class="language-plaintext highlighter-rouge">azuredisk</code> storage class is present by running the following command:</p>
 
-    <p>Later in the helm script we need to update the value of <code class="language-plaintext highlighter-rouge">sharedData.storageClass</code> with the respective storage class.</p>
-  </li>
-  <li>
-    <p>Go to the <code class="language-plaintext highlighter-rouge">artifact</code> directory and from there edit the <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> script.</p>
+      <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get storageclass
+</code></pre></div>      </div>
 
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm <span class="nb">install </span>annotationlab annotationlab-<span class="k">${</span><span class="nv">ANNOTATIONLAB_VERSION</span><span class="k">}</span>.tgz                                 <span class="se">\</span>
+      <p>Later in the helm script we need to update the value of <code class="language-plaintext highlighter-rouge">sharedData.storageClass</code> with the respective storage class.</p>
+    </li>
+    <li>
+      <p>Go to the <code class="language-plaintext highlighter-rouge">artifact</code> directory and from there edit the <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> script.</p>
+
+      <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm <span class="nb">install </span>annotationlab annotationlab-<span class="k">${</span><span class="nv">ANNOTATIONLAB_VERSION</span><span class="k">}</span>.tgz                                 <span class="se">\</span>
     <span class="nt">--set</span> image.tag<span class="o">=</span><span class="k">${</span><span class="nv">ANNOTATIONLAB_VERSION</span><span class="k">}</span>                                                          <span class="se">\</span>
     <span class="nt">--set</span> model_server.count<span class="o">=</span>1                                                                        <span class="se">\</span>
     <span class="nt">--set</span> ingress.enabled<span class="o">=</span><span class="nb">true</span>                                                                        <span class="se">\</span>
@@ -1052,32 +1076,32 @@ EOF
     <span class="nt">--set</span> keycloak.postgresql.postgresqlPassword<span class="o">=</span><span class="si">$(</span>bash <span class="nt">-c</span> <span class="s2">"echo </span><span class="k">${</span><span class="nv">password_gen_string</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span>             <span class="se">\</span>
     <span class="nt">--set</span> keycloak.secrets.admincreds.stringData.user<span class="o">=</span>admin                                           <span class="se">\</span>
     <span class="nt">--set</span> keycloak.secrets.admincreds.stringData.password<span class="o">=</span><span class="si">$(</span>bash <span class="nt">-c</span> <span class="s2">"echo </span><span class="k">${</span><span class="nv">password_gen_string</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span>
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Execute the <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> script to run the NLP Lab installation.</p>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Execute the <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> script to run the NLP Lab installation.</p>
 
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./annotationlab-installer.sh
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Verify if the installation was successful.</p>
+      <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./annotationlab-installer.sh
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Verify if the installation was successful.</p>
 
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Install ingress controller. This will be required for load-balancing purpose.</p>
+      <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Install ingress controller. This will be required for load-balancing purpose.</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm repo add nginx-stable https://helm.nginx.com/stable
+      <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>helm repo add nginx-stable https://helm.nginx.com/stable
 helm repo update
 helm install my-release nginx-stable/nginx-ingress
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Create a YAML configuration file named <code class="language-plaintext highlighter-rouge">ingress.yaml</code> with the following configuration</p>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Create a YAML configuration file named <code class="language-plaintext highlighter-rouge">ingress.yaml</code> with the following configuration</p>
 
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: networking.k8s.io/v1
+      <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
@@ -1109,144 +1133,161 @@ spec:
                 name: http
         path: /auth
         pathType: ImplementationSpecific
-</code></pre></div>    </div>
-  </li>
-  <li>
-    <p>Apply the <code class="language-plaintext highlighter-rouge">ingress.yaml</code> by running the following command</p>
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Apply the <code class="language-plaintext highlighter-rouge">ingress.yaml</code> by running the following command</p>
 
-    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> ingress.yaml
-</code></pre></div>    </div>
-  </li>
-</ol>
+      <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl apply <span class="nt">-f</span> ingress.yaml
+</code></pre></div>      </div>
+    </li>
+  </ol>
 
-<h2 id="airgap-environment">AirGap Environment</h2>
+</div>
+<div class="h3-box">
 
-<h3 id="get-artifact">Get Artifact</h3>
+  <h2 id="airgap-environment">AirGap Environment</h2>
 
-<p>Run the following command on a terminal to fetch the compressed artifact (<em>tarball</em>) of the NLP Lab.</p>
+  <h3 id="get-artifact">Get Artifact</h3>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://s3.amazonaws.com/auxdata.johnsnowlabs.com/annotationlab/annotationlab-<span class="nv">$VERSION</span>.tar.gz
-</code></pre></div></div>
+  <p>Run the following command on a terminal to fetch the compressed artifact (<em>tarball</em>) of the NLP Lab.</p>
 
-<p>Extract the tarball and the change directory to the extracted folder (<em>artifacts</em>):</p>
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://s3.amazonaws.com/auxdata.johnsnowlabs.com/annotationlab/annotationlab-<span class="nv">$VERSION</span>.tar.gz
+</code></pre></div>  </div>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-xzf</span> annotationlab-<span class="nv">$VERSION</span>.tar.gz
+  <p>Extract the tarball and the change directory to the extracted folder (<em>artifacts</em>):</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-xzf</span> annotationlab-<span class="nv">$VERSION</span>.tar.gz
 <span class="nb">cd </span>artifacts
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p>Replace <code class="language-plaintext highlighter-rouge">$VERSION</code> with the version you want to download and install.</p>
+  <p>Replace <code class="language-plaintext highlighter-rouge">$VERSION</code> with the version you want to download and install.</p>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="fresh-install-1">Fresh Install</h3>
+  <h3 id="fresh-install-1">Fresh Install</h3>
 
-<p>Run the installer script <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> with <code class="language-plaintext highlighter-rouge">sudo</code> privileges.</p>
+  <p>Run the installer script <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> with <code class="language-plaintext highlighter-rouge">sudo</code> privileges.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>su
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>su
 <span class="nv">$ </span>./annotationlab-installer.sh
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="upgrade-1">Upgrade</h3>
+  <h3 id="upgrade-1">Upgrade</h3>
 
-<p>Run the upgrade script <code class="language-plaintext highlighter-rouge">annotationlab-updater.sh</code> with <code class="language-plaintext highlighter-rouge">sudo</code> privileges.</p>
+  <p>Run the upgrade script <code class="language-plaintext highlighter-rouge">annotationlab-updater.sh</code> with <code class="language-plaintext highlighter-rouge">sudo</code> privileges.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>su
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>su
 <span class="nv">$ </span>./annotationlab-updater.sh
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h2 id="openshift">OpenShift</h2>
+  <h2 id="openshift">OpenShift</h2>
 
-<p>Annotation Lab can also be installed using the operator framework on an OpenShift cluster. The Annotation Lab operator can be found under the <bl>OperatorHub</bl>.</p>
+  <p>Annotation Lab can also be installed using the operator framework on an OpenShift cluster. The Annotation Lab operator can be found under the <bl>OperatorHub</bl>.</p>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="find-and-select">Find and select</h3>
+  <h3 id="find-and-select">Find and select</h3>
 
-<p>The <bl>OperatorHub</bl> has a large list of operators that can be installed into your cluster. Search for Annotation Lab operator under AI/Machine Learning category and select it.</p>
+  <p>The <bl>OperatorHub</bl> has a large list of operators that can be installed into your cluster. Search for Annotation Lab operator under AI/Machine Learning category and select it.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/Select-Operator.png" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/Select-Operator.png" alt="Select Operator" /></p>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="install">Install</h3>
+  <h3 id="install">Install</h3>
 
-<p>Some basic information about this operator is provided on the navigation panel that opens after selecting Annotation Lab on the previous step.</p>
+  <p>Some basic information about this operator is provided on the navigation panel that opens after selecting Annotation Lab on the previous step.</p>
 
-<blockquote>
-  <p><strong>NOTE:</strong> Make sure you have defined shared storage such as <code class="language-plaintext highlighter-rouge">efs/nfs/cephfs</code> prior to installing the Annotation Lab Operator.</p>
-</blockquote>
+  <blockquote>
+    <p><strong>NOTE:</strong> Make sure you have defined shared storage such as <code class="language-plaintext highlighter-rouge">efs/nfs/cephfs</code> prior to installing the Annotation Lab Operator.</p>
+  </blockquote>
 
-<p>Click on the <code class="language-plaintext highlighter-rouge">Install</code> button located on the top-left corner of this panel to start the installation process.</p>
+  <p>Click on the <code class="language-plaintext highlighter-rouge">Install</code> button located on the top-left corner of this panel to start the installation process.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/Install-Operator.png" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/Install-Operator.png" alt="Install Operator" /></p>
 
-<p>After successful installation of the Annotation Lab operator, you can access it by navigating to the <bl>Installed Operators</bl> page.</p>
+  <p>After successful installation of the Annotation Lab operator, you can access it by navigating to the <bl>Installed Operators</bl> page.</p>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="create-instance">Create Instance</h3>
+  <h3 id="create-instance">Create Instance</h3>
 
-<p>Next step is to create a cluster instance of the Annotation Lab. For this, select the Annotation Lab operator under the <bl>Installed Operators</bl> page and then switch to <em>Annotationlab</em> tab. On this section, click on <code class="language-plaintext highlighter-rouge">Create Annotationlab</code> button to spawn a new instance of Annotation Lab.</p>
+  <p>Next step is to create a cluster instance of the Annotation Lab. For this, select the Annotation Lab operator under the <bl>Installed Operators</bl> page and then switch to <em>Annotationlab</em> tab. On this section, click on <code class="language-plaintext highlighter-rouge">Create Annotationlab</code> button to spawn a new instance of Annotation Lab.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/Create-Instance.png" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/Create-Instance.png" alt="Create Instance" /></p>
 
-<p><strong>Define shared Storage Class</strong></p>
+  <p><strong>Define shared Storage Class</strong></p>
 
-<p>Update the <code class="language-plaintext highlighter-rouge">storageClass</code> property in the YAML configuration to define the storage class to one of <code class="language-plaintext highlighter-rouge">efs</code>, <code class="language-plaintext highlighter-rouge">nfs</code>, or <code class="language-plaintext highlighter-rouge">cephfs</code> depending upon what storage you set up before Annotation Lab operator installation.</p>
+  <p>Update the <code class="language-plaintext highlighter-rouge">storageClass</code> property in the YAML configuration to define the storage class to one of <code class="language-plaintext highlighter-rouge">efs</code>, <code class="language-plaintext highlighter-rouge">nfs</code>, or <code class="language-plaintext highlighter-rouge">cephfs</code> depending upon what storage you set up before Annotation Lab operator installation.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/Define-StorageClass.png" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/Define-StorageClass.png" alt="Define Storage Class" /></p>
 
-<p><strong>Define domain name</strong></p>
+  <p><strong>Define domain name</strong></p>
 
-<p>Update the <code class="language-plaintext highlighter-rouge">host</code> property in the YAML configuration to define the required domain name to use instead of the default hostname <code class="language-plaintext highlighter-rouge">annotationlab</code> as shown in the image below.</p>
+  <p>Update the <code class="language-plaintext highlighter-rouge">host</code> property in the YAML configuration to define the required domain name to use instead of the default hostname <code class="language-plaintext highlighter-rouge">annotationlab</code> as shown in the image below.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/Define-Hostname.png" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/Define-Hostname.png" alt="Define Hostname" /></p>
 
-<p>Click on <code class="language-plaintext highlighter-rouge">Create</code> button once you have made all the necessary changes. This will also set up all the necessary resources to run the instance in addition to standing up the services themselves.</p>
+  <p>Click on <code class="language-plaintext highlighter-rouge">Create</code> button once you have made all the necessary changes. This will also set up all the necessary resources to run the instance in addition to standing up the services themselves.</p>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<h3 id="view-resources">View Resources</h3>
+  <h3 id="view-resources">View Resources</h3>
 
-<p>After the instance is successfully created we can visit its page to view all the resources as well as supporting resources like the secrets, configuration maps, etc that were created.</p>
+  <p>After the instance is successfully created we can visit its page to view all the resources as well as supporting resources like the secrets, configuration maps, etc that were created.</p>
 
-<p><img class="image image__shadow" src="/assets/images/annotation_lab/View-Resources.png" style="width:100%;" /></p>
+  <p><img src="/assets/images/annotation_lab/View-Resources.png" alt="View Resources" /></p>
 
-<p>Now, we can access the Annotation Lab from the provided domain name or also from the location defined for this service under the <code class="language-plaintext highlighter-rouge">Networking &gt; Routes</code> page</p>
+  <p>Now, we can access the Annotation Lab from the provided domain name or also from the location defined for this service under the <code class="language-plaintext highlighter-rouge">Networking &gt; Routes</code> page</p>
 
-<h2 id="work-over-proxy">Work over proxy</h2>
+</div>
+<div class="h3-box">
 
-<p><strong>Custom CA certificate</strong></p>
+  <h2 id="work-over-proxy">Work over proxy</h2>
 
-<p>You can provide a custom CA certificate chain to be included into the deployment. To do it add <code class="language-plaintext highlighter-rouge">--set-file custom_cacert=./cachain.pem</code> options to <code class="language-plaintext highlighter-rouge">helm install/upgrade</code> command inside <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> and <code class="language-plaintext highlighter-rouge">annotationlab-updater.sh</code> files.</p>
+  <p><strong>Custom CA certificate</strong></p>
 
-<p><em>cachain.pem</em> must include a certificate in the following format:</p>
+  <p>You can provide a custom CA certificate chain to be included into the deployment. To do it add <code class="language-plaintext highlighter-rouge">--set-file custom_cacert=./cachain.pem</code> options to <code class="language-plaintext highlighter-rouge">helm install/upgrade</code> command inside <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> and <code class="language-plaintext highlighter-rouge">annotationlab-updater.sh</code> files.</p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-----BEGIN</span> CERTIFICATE-----
+  <p><em>cachain.pem</em> must include a certificate in the following format:</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">-----BEGIN</span> CERTIFICATE-----
 ....
 <span class="nt">-----END</span> CERTIFICATE-----
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p><br /></p>
+</div>
+<div class="h3-box">
 
-<p><strong>Proxy env variables</strong></p>
+  <p><strong>Proxy env variables</strong></p>
 
-<p>You can provide a proxy to use for external communications. To do that add</p>
+  <p>You can provide a proxy to use for external communications. To do that add</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`--set proxy.http=[protocol://]&lt;host&gt;[:port]`,
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>`--set proxy.http=[protocol://]&lt;host&gt;[:port]`,
 `--set proxy.https=[protocol://]&lt;host&gt;[:port]`,
 `--set proxy.no=&lt;comma-separated list of hosts/domains&gt;`
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<p>commands inside <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> and <code class="language-plaintext highlighter-rouge">annotationlab-updater.sh</code> files.</p>
+  <p>commands inside <code class="language-plaintext highlighter-rouge">annotationlab-installer.sh</code> and <code class="language-plaintext highlighter-rouge">annotationlab-updater.sh</code> files.</p>
 
-<h2 id="recommended-configurations">Recommended Configurations</h2>
+</div>
+<div class="h3-box">
 
-<table>
+  <h2 id="recommended-configurations">Recommended Configurations</h2>
+
+  <table class="table2">
   <tr>
     <th>System requirements</th>
     <td>You can install Annotation Lab on a Ubuntu 20+ machine.</td>
@@ -1274,6 +1315,7 @@ spec:
     </td>
   </tr>
 </table>
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2022-11-07T00:00:00+00:00">Nov 07, 2022</time>
     </span><!-- start custom article footer snippet -->

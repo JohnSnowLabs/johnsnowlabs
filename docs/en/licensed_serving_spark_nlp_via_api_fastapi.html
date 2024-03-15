@@ -836,6 +836,9 @@ python3 /content/main.py
     </li>
   </ol>
 
+</div>
+<div class="h3-box">
+
   <h3 id="contentmainpy-serving-2-pipelines-in-a-fastapi-endpoint"><em>content/main.py</em>: Serving 2 pipelines in a FastAPI endpoint</h3>
 
   <p>To maximize the performance and minimize the latency, we are going to store two Spark NLP pipelines in memory, so that we load only once (at server start) and we just use them everytime we get an API request to infer.</p>
@@ -882,6 +885,9 @@ pipelines['clinical_deidentification'] = PretrainedPipeline("clinical_deidentifi
   <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>if __name__ == "__main__":
     uvicorn.run('main:app', host='0.0.0.0', port=8515)
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h3 id="contentsparknlpkeysjson">content/sparknlp_keys.json</h3>
 

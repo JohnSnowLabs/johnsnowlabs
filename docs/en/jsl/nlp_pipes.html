@@ -620,32 +620,38 @@ function wrapWordInSpan(data, wordToWrap) {
             <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Pipelines"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
-<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="concepts">Concepts</h2>
+<!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-<p>Spark ML provides a set of Machine Learning applications that can be build using two main components: <strong>Estimators</strong> and <strong>Transformers</strong>. The <strong>Estimators</strong> have a method called fit() which secures and trains a piece of data to such application. 
+  <h2 id="concepts">Concepts</h2>
+
+  <p>Spark ML provides a set of Machine Learning applications that can be build using two main components: <strong>Estimators</strong> and <strong>Transformers</strong>. The <strong>Estimators</strong> have a method called fit() which secures and trains a piece of data to such application. 
 The <strong>Transformer</strong> is generally the result of a fitting process and applies changes to the the target dataset. 
 These components have been embedded to be applicable to Spark NLP.</p>
 
-<p><strong>Pipelines</strong> are a mechanism for combining multiple estimators and transformers in a single workflow. They allow multiple chained transformations along a Machine Learning task. For more information please refer to <a href="https://spark.apache.org/docs/latest/ml-guide.html">Spark ML</a> library.</p>
+  <p><strong>Pipelines</strong> are a mechanism for combining multiple estimators and transformers in a single workflow. They allow multiple chained transformations along a Machine Learning task. For more information please refer to <a href="https://spark.apache.org/docs/latest/ml-guide.html">Spark ML</a> library.</p>
 
-<h2 id="annotation">Annotation</h2>
-
-<p>The basic result of a NLP operation is an <strong>annotation</strong>. It’s structure includes:</p>
-
-<ul>
-  <li><strong>annotatorType:</strong> the type of annotator that generated the current annotation</li>
-  <li><strong>begin:</strong> the begin of the matched content relative to raw-text</li>
-  <li><strong>end:</strong> the end of the matched content relative to raw-text</li>
-  <li><strong>result:</strong> the main output of the annotation</li>
-  <li><strong>metadata:</strong> content of matched result and additional information</li>
-  <li><strong>embeddings:</strong> (new in 2.0) contains vector mappings if required</li>
-</ul>
-
-<p>This object is <strong>automatically generated</strong> by annotators after a transform process. No manual work is required. However, it is important to clearly understand the structure of an annotation to be able too efficiently use it.</p>
-
-<h2 id="annotators">Annotators</h2>
-
+</div>
 <div class="h3-box">
+
+  <h2 id="annotation">Annotation</h2>
+
+  <p>The basic result of a NLP operation is an <strong>annotation</strong>. It’s structure includes:</p>
+
+  <ul>
+    <li><strong>annotatorType:</strong> the type of annotator that generated the current annotation</li>
+    <li><strong>begin:</strong> the begin of the matched content relative to raw-text</li>
+    <li><strong>end:</strong> the end of the matched content relative to raw-text</li>
+    <li><strong>result:</strong> the main output of the annotation</li>
+    <li><strong>metadata:</strong> content of matched result and additional information</li>
+    <li><strong>embeddings:</strong> (new in 2.0) contains vector mappings if required</li>
+  </ul>
+
+  <p>This object is <strong>automatically generated</strong> by annotators after a transform process. No manual work is required. However, it is important to clearly understand the structure of an annotation to be able too efficiently use it.</p>
+
+</div>
+<div class="h3-box">
+
+  <h2 id="annotators">Annotators</h2>
 
   <p>Annotators are the spearhead of NLP functions in Spark NLP. There are two forms of annotators:</p>
 
@@ -722,21 +728,20 @@ out in scala. Note that the first time you run the below code it might take long
 <span class="p">}</span>
 </code></pre></div>  </div>
 
-</div>
-
-<p>As you can see the explain_document_ml is able to annotate any “document” providing as output a list of stems, check-spelling, lemmas,
+  <p>As you can see the explain_document_ml is able to annotate any “document” providing as output a list of stems, check-spelling, lemmas,
 part of speech tags, tokens and sentence boundary detection and all this “out-of-the-box”!.</p>
 
-<h3 id="using-a-pretrained-pipeline-with-spark-dataframes">Using a pretrained pipeline with spark dataframes</h3>
+</div>
+<div class="h3-box">
 
-<p>You can also use the pipeline with a spark dataframe. You just need to create first a spark dataframe with a column named “text” that will
+  <h3 id="using-a-pretrained-pipeline-with-spark-dataframes">Using a pretrained pipeline with spark dataframes</h3>
+
+  <p>You can also use the pipeline with a spark dataframe. You just need to create first a spark dataframe with a column named “text” that will
 work as the input for the pipeline and then use the <em>.transform()</em> method to run the pipeline over that dataframe and store the outputs of the
 different components in a spark dataframe.</p>
 
-<p>Remember than when starting jupyter notebook from pyspark or when running the spark-shell for scala, a Spark Session is started in the background
+  <p>Remember than when starting jupyter notebook from pyspark or when running the spark-shell for scala, a Spark Session is started in the background
 by default within the namespace ‘scala’.</p>
-
-<div class="tabs-new">
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
 <span class="n">spark</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
@@ -771,6 +776,9 @@ by default within the namespace ‘scala’.</p>
 <span class="o">|</span><span class="n">And</span> <span class="n">this</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">sec</span><span class="p">...</span><span class="o">|</span><span class="p">[[</span><span class="n">document</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">29.</span><span class="p">..</span><span class="o">|</span><span class="p">[[</span><span class="n">document</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">29.</span><span class="p">..</span><span class="o">|</span><span class="p">[[</span><span class="n">token</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">An</span><span class="p">...</span><span class="o">|</span><span class="p">[[</span><span class="n">token</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">An</span><span class="p">...</span><span class="o">|</span><span class="p">[[</span><span class="n">token</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">An</span><span class="p">...</span><span class="o">|</span><span class="p">[[</span><span class="n">token</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">an</span><span class="p">...</span><span class="o">|</span><span class="p">[[</span><span class="n">pos</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">CC</span><span class="p">,</span> <span class="p">...</span><span class="o">|</span>
 <span class="o">+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+</span>
 </code></pre></div>  </div>
+
+</div>
+<div class="h3-box">
 
   <h3 id="manipulating-pipelines">Manipulating pipelines</h3>
 
@@ -823,76 +831,87 @@ running the code:</p>
 <span class="o">+-------------------------------------------+</span>
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h2 id="setup-your-own-pipeline">Setup your own pipeline</h2>
 
-  <div class="h3-box">
+  <h3 id="annotator-types">Annotator types</h3>
 
-    <h3 id="annotator-types">Annotator types</h3>
+  <p>Every annotator has a type. Those annotators that share a type, can be used interchangeably, meaning you could use any of them when needed.</p>
 
-    <p>Every annotator has a type. Those annotators that share a type, can be used interchangeably, meaning you could use any of them when needed.</p>
-
-    <p>For example, when a token type annotator is required by another annotator, such as a sentiment analysis annotator, you can either provide a normalized
+  <p>For example, when a token type annotator is required by another annotator, such as a sentiment analysis annotator, you can either provide a normalized
 token or a lemma, as both are of type token.</p>
 
-  </div>
-  <div class="h3-box">
+</div>
+<div class="h3-box">
 
-    <h3 id="documentassembler-getting-data-in">DocumentAssembler: Getting data in</h3>
+  <h3 id="documentassembler-getting-data-in">DocumentAssembler: Getting data in</h3>
 
-    <p>In order to get through the NLP process, we need to get raw data
+  <p>In order to get through the NLP process, we need to get raw data
 annotated. There is a special <strong>transformer</strong> that does this for us:
 the <strong>DocumentAssembler</strong>, it creates the first annotation of type
 <strong>Document</strong> which may be used by annotators down the road.</p>
 
-    <div class="tabs-new">
+</div>
+<div class="h3-box">
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-      <h3 id="sentence-detection-and-tokenization">Sentence detection and tokenization</h3>
+</div>
+<div class="h3-box">
 
-      <p>In this quick example, we now proceed to identify the sentences in the input document. SentenceDetector requires a Document annotation,
+  <h3 id="sentence-detection-and-tokenization">Sentence detection and tokenization</h3>
+
+  <p>In this quick example, we now proceed to identify the sentences in the input document. SentenceDetector requires a Document annotation,
 which is provided by the DocumentAssembler output, and it’s itself a Document type token. The Tokenizer requires a Document annotation type. That means it works both with DocumentAssembler or SentenceDetector output. In the following example we use the sentence output.</p>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"Sentence"</span><span class="p">)</span>
 
 <span class="n">regexTokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-      <p>Spark NLP also includes another special transformer, called <strong>Finisher</strong> to show tokens in a human language.</p>
+  <p>Spark NLP also includes another special transformer, called <strong>Finisher</strong> to show tokens in a human language.</p>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">finisher</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Finisher</span><span class="p">()</span> \
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">finisher</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Finisher</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"token"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setCleanAnnotations</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-      <h3 id="finisher-getting-data-out">Finisher: Getting data out</h3>
+</div>
+<div class="h3-box">
 
-      <p>At the end of each pipeline or any stage that was done by Spark NLP, you may want to get results out whether onto another pipeline or simply write them on disk. The <code class="language-plaintext highlighter-rouge">Finisher</code> annotator helps you to clean the metadata (if it’s set to true) and output the results into an array:</p>
+  <h3 id="finisher-getting-data-out">Finisher: Getting data out</h3>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">finisher</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Finisher</span><span class="p">()</span> \
+  <p>At the end of each pipeline or any stage that was done by Spark NLP, you may want to get results out whether onto another pipeline or simply write them on disk. The <code class="language-plaintext highlighter-rouge">Finisher</code> annotator helps you to clean the metadata (if it’s set to true) and output the results into an array:</p>
+
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">finisher</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Finisher</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"token"</span><span class="p">])</span> \
     <span class="p">.</span><span class="n">setIncludeMetadata</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-      <p>If you need to have a flattened DataFrame (each sub-array in a new column) from any annotations other than struct type columns, you can use <code class="language-plaintext highlighter-rouge">explode</code> function from Spark SQL. You can also use Apache Spark functions (SQL) to manipulate the output DataFrame in any way you need. Here we combine the tokens and NER results together:</p>
+  <p>If you need to have a flattened DataFrame (each sub-array in a new column) from any annotations other than struct type columns, you can use <code class="language-plaintext highlighter-rouge">explode</code> function from Spark SQL. You can also use Apache Spark functions (SQL) to manipulate the output DataFrame in any way you need. Here we combine the tokens and NER results together:</p>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
 <span class="n">df</span><span class="p">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s">"tmp"</span><span class="p">,</span> <span class="n">nlp</span><span class="p">.</span><span class="n">F</span><span class="p">.</span><span class="n">explode</span><span class="p">(</span><span class="s">"chunk"</span><span class="p">)).</span><span class="n">select</span><span class="p">(</span><span class="s">"tmp.*"</span><span class="p">)</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-      <h2 id="using-spark-ml-pipeline">Using Spark ML Pipeline</h2>
+</div>
+<div class="h3-box">
 
-      <p>Now we want to put all this together and retrieve the results, we use a Pipeline for this.  We use the same data in fit() that we will use in
+  <h2 id="using-spark-ml-pipeline">Using Spark ML Pipeline</h2>
+
+  <p>Now we want to put all this together and retrieve the results, we use a Pipeline for this.  We use the same data in fit() that we will use in
 transform since none of the pipeline stages have a training stage.</p>
 
-      <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setStages</span><span class="p">([</span>
         <span class="n">documentAssembler</span><span class="p">,</span>
@@ -907,19 +926,20 @@ transform since none of the pipeline stages have a training stage.</p>
 <span class="o">+-------------------------------------------+</span>
 <span class="o">|</span><span class="p">[</span><span class="n">hello</span><span class="p">,</span> <span class="p">,,</span> <span class="n">this</span><span class="p">,</span> <span class="ow">is</span><span class="p">,</span> <span class="n">an</span><span class="p">,</span> <span class="n">example</span><span class="p">,</span> <span class="n">sentence</span><span class="p">]</span><span class="o">|</span>
 <span class="o">+-------------------------------------------+</span>
-</code></pre></div>      </div>
+</code></pre></div>  </div>
 
-    </div>
+</div>
+<div class="h3-box">
 
-    <h2 id="using-spark-nlps-lightpipeline">Using Spark NLP’s LightPipeline</h2>
+  <h2 id="using-spark-nlps-lightpipeline">Using Spark NLP’s LightPipeline</h2>
 
-    <p>LightPipeline is a Spark NLP specific Pipeline class equivalent to Spark ML Pipeline. The difference is that it’s execution does not hold to
+  <p>LightPipeline is a Spark NLP specific Pipeline class equivalent to Spark ML Pipeline. The difference is that it’s execution does not hold to
 Spark principles, instead it computes everything locally (but in parallel) in order to achieve fast results when dealing with small
 amounts of data. This means, we do not input a Spark Dataframe, but a string or an Array of strings instead, to be annotated. To create Light
 Pipelines, you need to input an already trained (fit) Spark ML Pipeline.
 It’s transform() stage is converted into annotate() instead.</p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
 <span class="n">explain_document_pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"explain_document_ml"</span><span class="p">)</span>
 <span class="n">lightPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">LightPipeline</span><span class="p">(</span><span class="n">explain_document_pipeline</span><span class="p">.</span><span class="n">model</span><span class="p">)</span>
 
@@ -927,8 +947,8 @@ It’s transform() stage is converted into annotate() instead.</p>
 <span class="n">explain_document_ml</span> <span class="n">download</span> <span class="n">started</span> <span class="n">this</span> <span class="n">may</span> <span class="n">take</span> <span class="n">some</span> <span class="n">time</span><span class="p">.</span>
 <span class="n">Approx</span> <span class="n">size</span> <span class="n">to</span> <span class="n">download</span> <span class="mf">9.4</span> <span class="n">MB</span>
 <span class="p">[</span><span class="n">OK</span><span class="err">!</span><span class="p">]</span>
-</code></pre></div>    </div>
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+</code></pre></div>  </div>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="n">lightPipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"Hello world, please annotate my text"</span><span class="p">)</span>
 
 <span class="n">OUTPUT</span><span class="p">:</span>
@@ -939,63 +959,64 @@ It’s transform() stage is converted into annotate() instead.</p>
  <span class="s">'pos'</span><span class="p">:</span> <span class="p">[</span><span class="s">'UH'</span><span class="p">,</span> <span class="s">'NN'</span><span class="p">,</span> <span class="s">','</span><span class="p">,</span> <span class="s">'VB'</span><span class="p">,</span> <span class="s">'NN'</span><span class="p">,</span> <span class="s">'PRP$'</span><span class="p">,</span> <span class="s">'NN'</span><span class="p">],</span>
  <span class="s">'token'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Hello'</span><span class="p">,</span> <span class="s">'world'</span><span class="p">,</span> <span class="s">','</span><span class="p">,</span> <span class="s">'please'</span><span class="p">,</span> <span class="s">'annotate'</span><span class="p">,</span> <span class="s">'my'</span><span class="p">,</span> <span class="s">'text'</span><span class="p">],</span>
  <span class="s">'sentence'</span><span class="p">:</span> <span class="p">[</span><span class="s">'Hello world, please annotate my text'</span><span class="p">]}</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-  </div>
+</div>
+<div class="h3-box">
 
   <h2 id="training-annotators">Training annotators</h2>
 
-  <div class="h3-box">
+  <h3 id="training-methodology">Training methodology</h3>
 
-    <h3 id="training-methodology">Training methodology</h3>
-
-    <p>Training your own annotators is a key concept when dealing with
+  <p>Training your own annotators is a key concept when dealing with
 real life scenarios. Any of the annotators provided above, such as
 pretrained pipelines and models, can be applied out-of-the-box to a specific
 use case, but better results are obtained when they are fine-tuned to your specific use-case.
 Dealing with real life problems ofter requires training your own
 models. In Spark NLP, we support three ways of training a custom annotator:</p>
 
-    <ol>
-      <li>
-        <p>Train from <strong>a dataset</strong>. Most annotators are capable of training from a dataset passed to
+  <ol>
+    <li>
+      <p>Train from <strong>a dataset</strong>. Most annotators are capable of training from a dataset passed to
 <strong>fit()</strong> method just as Spark ML does. Annotators that use the suffix
 <strong>Approach</strong> are such trainable annotators. Training from fit() is the
 standard behavior in Spark ML. Annotators have different schema
 requirements for training. Check the reference to see what are the
 requirements of each annotators.</p>
-      </li>
-      <li>
-        <p>Training from an <strong>external source</strong>: Some of our annotators train
+    </li>
+    <li>
+      <p>Training from an <strong>external source</strong>: Some of our annotators train
 from an external file or folder passed to the annotator as a param.
 You will see such ones as <strong>setCorpus()</strong> or <strong>setDictionary()</strong> param
 setter methods, allowing you to configure the input to use. You can set
 Spark NLP to read them as Spark datasets or LINE_BY_LINE which is
 usually faster for small files.</p>
-      </li>
-      <li>
-        <p>Last but not least, some of our annotators are <strong>Deep Learning</strong>
+    </li>
+    <li>
+      <p>Last but not least, some of our annotators are <strong>Deep Learning</strong>
 based. These models may be trained with the standard AnnotatorApproach
 API just like any other annotator. For more advanced users, we also
 allow importing your own graphs or even training from Python and
 converting them into an AnnotatorModel.</p>
-      </li>
-    </ol>
+    </li>
+  </ol>
 
-    <h3 id="spark-ml-pipelines">Spark ML Pipelines</h3>
+</div>
+<div class="h3-box">
 
-    <p>SparkML Pipelines are a uniform structure that helps creating and tuning
+  <h3 id="spark-ml-pipelines">Spark ML Pipelines</h3>
+
+  <p>SparkML Pipelines are a uniform structure that helps creating and tuning
 practical machine learning pipelines. Spark NLP integrates with them
 seamlessly so it is important to have this concept handy. Once a
 <strong>Pipeline</strong> is trained with <strong>fit()</strong>, it becomes a <strong>PipelineModel</strong></p>
 
-    <p><strong>Example:</strong></p>
+  <p><strong>Example:</strong></p>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span>
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([...])</span>
-</code></pre></div>    </div>
+</code></pre></div>  </div>
 
-  </div>
 </div>
 <div class="h3-box">
 
@@ -1012,18 +1033,19 @@ maximum). To use them, simply plug in a trained (fitted) pipeline.</p>
 <span class="n">nlp</span><span class="p">.</span><span class="n">LightPipeline</span><span class="p">(</span><span class="n">someTrainedPipeline</span><span class="p">).</span><span class="n">annotate</span><span class="p">(</span><span class="n">someStringOrArray</span><span class="p">)</span>
 </code></pre></div>  </div>
 
-</div>
-
-<p><strong>Functions:</strong></p>
-<ul>
-  <li>annotate(string or string[]): returns dictionary list of annotation results</li>
-  <li>fullAnnotate(string or string[]): returns dictionary list of entire annotations content
+  <p><strong>Functions:</strong></p>
+  <ul>
+    <li>annotate(string or string[]): returns dictionary list of annotation results</li>
+    <li>fullAnnotate(string or string[]): returns dictionary list of entire annotations content
 For more details please refer to <a href="/docs/en/jsl/concepts#using-spark-nlps-lightpipeline">Using Spark NLP’s LightPipelines</a>.</li>
-</ul>
+  </ul>
 
-<h3 id="recursivepipeline">RecursivePipeline</h3>
+</div>
+<div class="h3-box">
 
-<p>Recursive pipelines are SparkNLP specific pipelines that allow a Spark
+  <h3 id="recursivepipeline">RecursivePipeline</h3>
+
+  <p>Recursive pipelines are SparkNLP specific pipelines that allow a Spark
 ML Pipeline to know about itself on every Pipeline Stage task, allowing
 annotators to utilize this same pipeline against external resources to
 process them in the same way the user decides. Only some of our
@@ -1031,9 +1053,9 @@ annotators take advantage of this. RecursivePipeline behaves exactly
 the same as normal Spark ML pipelines, so they can be used with the
 same intention.</p>
 
-<p><strong>Example:</strong></p>
+  <p><strong>Example:</strong></p>
 
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span> 
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span> 
 <span class="n">recursivePipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">RecursivePipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
     <span class="n">documentAssembler</span><span class="p">,</span>
     <span class="n">sentenceDetector</span><span class="p">,</span>
@@ -1041,18 +1063,18 @@ same intention.</p>
     <span class="n">lemmatizer</span><span class="p">,</span>
     <span class="n">finisher</span>
 <span class="p">])</span>
-</code></pre></div></div>
+</code></pre></div>  </div>
 
-<h3 id="params-and-features">Params and Features</h3>
+</div>
+<div class="h3-box">
 
-<h4 id="annotator-parameters">Annotator parameters</h4>
+  <h3 id="params-and-features">Params and Features</h3>
 
-<p>SparkML uses ML Params to store pipeline parameter maps. In SparkNLP,
-we also use Features, which are a way to store parameter maps that are
-larger than just a string or a boolean. These features are serialized
-as either Parquet or RDD objects, allowing much faster and scalable
-annotator information. Features are also broadcasted among executors for
-better performance.</p>
+  <h4 id="annotator-parameters">Annotator parameters</h4>
+
+  <p>SparkML uses ML Params to store pipeline parameter maps. In SparkNLP, we also use Features, which are a way to store parameter maps that are larger than just a string or a boolean. These features are serialized as either Parquet or RDD objects, allowing much faster and scalable annotator information. Features are also broadcasted among executors for better performance.</p>
+
+</div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2019-05-16T00:00:00+00:00">May 16, 2019</time>
     </span><!-- start custom article footer snippet -->

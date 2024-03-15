@@ -1382,104 +1382,498 @@ wrapped inside a NLP Pipeline.</p>
 
     <div class="table-wrapper"><div class="table-inner">
 
-        <p>| Language Name(s)                                                                                                      | nlp.load() Reference                                                                                                                                                                                                                                      | Spark NLP  Reference                                                                                                                                                                                                                                                   |
-|:———————————————————————————————————————-|:—————————————————————————————————————————————————————————————————————————————————|:———————————————————————————————————————————————————————————————————————————————————————–|
-| <a href="https://iso639-3.sil.org/code/xae">Aequian</a>                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/23/xlm_roberta_qa_xlm_roberta_base_vietnamese_vn_3_0.html">vn.answer_question.xlm_roberta.base</a>                                                                                                              | <a href="https://nlp.johnsnowlabs.com/2022/06/23/xlm_roberta_qa_xlm_roberta_base_vietnamese_vn_3_0.html">xlm_roberta_qa_xlm_roberta_base_vietnamese</a>                                                                                                                           |
-| <a href="https://iso639-3.sil.org/code/xae">Aequian</a>                                                                          | <a href="https://nlp.johnsnowlabs.com">roberta</a>                                                                                                                                                                                                            | <a href="https://nlp.johnsnowlabs.com">distilroberta_base</a>                                                                                                                                                                                                                     |
-| <a href="https://iso639-3.sil.org/code/chu">Church Slavic, Church Slavonic, Old Bulgarian, Old Church Slavonic, Old Slavonic</a> | <a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_proiel_cu_3_0.html">cu.pos</a>                                                                                                                                                                           | <a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_proiel_cu_3_0.html">pos_proiel</a>                                                                                                                                                                                           |
-| <a href="https://iso639-3.sil.org/code/chu">Church Slavic, Church Slavonic, Old Bulgarian, Old Church Slavonic, Old Slavonic</a> | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_cu_3_0.html">cu.lemma</a>                                                                                                                                                                       | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_cu_3_0.html">lemma_proiel</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/chu">Church Slavic, Church Slavonic, Old Bulgarian, Old Church Slavonic, Old Slavonic</a> | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_cu_3_0.html">cu.lemma.proiel</a>                                                                                                                                                                | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_cu_3_0.html">lemma_proiel</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/got">Gothic</a>                                                                           | <a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_proiel_got_3_0.html">got.pos.proiel</a>                                                                                                                                                                  | <a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_proiel_got_3_0.html">pos_proiel</a>                                                                                                                                                                                          |
-| <a href="https://iso639-3.sil.org/code/got">Gothic</a>                                                                           | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_got_3_0.html">got.lemma</a>                                                                                                                                                                     | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_got_3_0.html">lemma_proiel</a>                                                                                                                                                                                      |
-| <a href="https://iso639-3.sil.org/code/got">Gothic</a>                                                                           | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_got_3_0.html">got.lemma.proiel</a>                                                                                                                                                              | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_got_3_0.html">lemma_proiel</a>                                                                                                                                                                                      |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2020/07/14/stopwords_la.html">la.stopwords</a>                                                                                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2020/07/14/stopwords_la.html">stopwords_la</a>                                                                                                                                                                                              |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_perseus_la_3_0.html">la.pos</a>                                                                                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_perseus_la_3_0.html">pos_perseus</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_udante_la_3_0.html">la.pos.udante</a>                                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_udante_la_3_0.html">pos_udante</a>                                                                                                                                                                                           |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_proiel_la_3_0.html">la.pos.proiel</a>                                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_proiel_la_3_0.html">pos_proiel</a>                                                                                                                                                                                           |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_perseus_la_3_0.html">la.pos.perseus</a>                                                                                                                                                                  | <a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_perseus_la_3_0.html">pos_perseus</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_llct_la_3_0.html">la.pos.llct</a>                                                                                                                                                                        | <a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_llct_la_3_0.html">pos_llct</a>                                                                                                                                                                                               |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_ittb_la_3_0.html">la.pos.ittb</a>                                                                                                                                                                        | <a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_ittb_la_3_0.html">pos_ittb</a>                                                                                                                                                                                               |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_proiel_la_3_0.html">la.lemma</a>                                                                                                                                                                       | <a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_proiel_la_3_0.html">lemma_proiel</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_udante_la_3_0.html">la.lemma.udante</a>                                                                                                                                                                | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_udante_la_3_0.html">lemma_udante</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_proiel_la_3_0.html">la.lemma.proiel</a>                                                                                                                                                                | <a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_proiel_la_3_0.html">lemma_proiel</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_perseus_la_3_0.html">la.lemma.perseus</a>                                                                                                                                                              | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_perseus_la_3_0.html">lemma_perseus</a>                                                                                                                                                                                     |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_llct_la_3_0.html">la.lemma.llct</a>                                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_llct_la_3_0.html">lemma_llct</a>                                                                                                                                                                                           |
-| <a href="https://iso639-3.sil.org/code/lat">Latin</a>                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_ittb_la_3_0.html">la.lemma.ittb</a>                                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_ittb_la_3_0.html">lemma_ittb</a>                                                                                                                                                                                           |
-| <a href="https://iso639-3.sil.org/code/san">Sanskrit</a>                                                                         | <a href="https://nlp.johnsnowlabs.com/2022/03/07/stopwords_iso_sa_3_0.html">sa.stopwords</a>                                                                                                                                                                  | <a href="https://nlp.johnsnowlabs.com/2022/03/07/stopwords_iso_sa_3_0.html">stopwords_iso</a>                                                                                                                                                                                     |
-| <a href="https://iso639-3.sil.org/code/san">Sanskrit</a>                                                                         | <a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_vedic_sa_3_0.html">sa.pos</a>                                                                                                                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_vedic_sa_3_0.html">pos_vedic</a>                                                                                                                                                                                             |
-| <a href="https://iso639-3.sil.org/code/san">Sanskrit</a>                                                                         | <a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_vedic_sa_3_0.html">sa.lemma</a>                                                                                                                                                                        | <a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_vedic_sa_3_0.html">lemma_vedic</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/san">Sanskrit</a>                                                                         | <a href="https://nlp.johnsnowlabs.com/2022/03/16/w2v_cc_300d_sa_3_0.html">sa.embed.w2v_cc_300d</a>                                                                                                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/03/16/w2v_cc_300d_sa_3_0.html">w2v_cc_300d</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_vi_eo_xx.html">xx.eo.marian.translate_to.vi</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_vi_eo_xx.html">opus_mt_vi_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_tr_eo_xx.html">xx.eo.marian.translate_to.tr</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_tr_eo_xx.html">opus_mt_tr_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_sv_eo_xx.html">xx.eo.marian.translate_to.sv</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_sv_eo_xx.html">opus_mt_sv_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_sh_eo_xx.html">xx.eo.marian.translate_to.sh</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_sh_eo_xx.html">opus_mt_sh_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ru_eo_xx.html">xx.eo.marian.translate_to.ru</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ru_eo_xx.html">opus_mt_ru_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ro_eo_xx.html">xx.eo.marian.translate_to.ro</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ro_eo_xx.html">opus_mt_ro_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_pt_eo_xx.html">xx.eo.marian.translate_to.pt</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_pt_eo_xx.html">opus_mt_pt_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_pl_eo_xx.html">xx.eo.marian.translate_to.pl</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_pl_eo_xx.html">opus_mt_pl_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_nl_eo_xx.html">xx.eo.marian.translate_to.nl</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_nl_eo_xx.html">opus_mt_nl_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_lt_eo_xx.html">xx.eo.marian.translate_to.lt</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_lt_eo_xx.html">opus_mt_lt_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_it_eo_xx.html">xx.eo.marian.translate_to.it</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_it_eo_xx.html">opus_mt_it_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_is_eo_xx.html">xx.eo.marian.translate_to.is</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_is_eo_xx.html">opus_mt_is_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_hu_eo_xx.html">xx.eo.marian.translate_to.hu</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_hu_eo_xx.html">opus_mt_hu_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_he_eo_xx.html">xx.eo.marian.translate_to.he</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_he_eo_xx.html">opus_mt_he_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/02/opus_mt_fr_eo_xx.html">xx.eo.marian.translate_to.fr</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/02/opus_mt_fr_eo_xx.html">opus_mt_fr_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fi_eo_xx.html">xx.eo.marian.translate_to.fi</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fi_eo_xx.html">opus_mt_fi_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_es_eo_xx.html">xx.eo.marian.translate_to.es</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_es_eo_xx.html">opus_mt_es_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_eo_en_xx.html">xx.eo.marian.translate_to.en</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_eo_en_xx.html">opus_mt_eo_en</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_el_eo_xx.html">xx.eo.marian.translate_to.el</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_el_eo_xx.html">opus_mt_el_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_de_eo_xx.html">xx.eo.marian.translate_to.de</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_de_eo_xx.html">opus_mt_de_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_da_eo_xx.html">xx.eo.marian.translate_to.da</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_da_eo_xx.html">opus_mt_da_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_cs_eo_xx.html">xx.eo.marian.translate_to.cs</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_cs_eo_xx.html">opus_mt_cs_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_bg_eo_xx.html">xx.eo.marian.translate_to.bg</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_bg_eo_xx.html">opus_mt_bg_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ar_eo_xx.html">xx.eo.marian.translate_to.ar</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ar_eo_xx.html">opus_mt_ar_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_af_eo_xx.html">xx.eo.marian.translate_to.af</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_af_eo_xx.html">opus_mt_af_eo</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2020/07/14/stopwords_eo.html">eo.stopwords</a>                                                                                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2020/07/14/stopwords_eo.html">stopwords_eo</a>                                                                                                                                                                                              |
-| <a href="https://iso639-3.sil.org/code/epo">Esperanto</a>                                                                        | <a href="https://nlp.johnsnowlabs.com/2022/03/15/w2v_cc_300d_eo_3_0.html">eo.embed.w2v_cc_300d</a>                                                                                                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/03/15/w2v_cc_300d_eo_3_0.html">w2v_cc_300d</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/vol">Volapük</a>                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/03/16/w2v_cc_300d_vo_3_0.html">vo.embed.w2v_cc_300d</a>                                                                                                                                                            | <a href="https://nlp.johnsnowlabs.com/2022/03/16/w2v_cc_300d_vo_3_0.html">w2v_cc_300d</a>                                                                                                                                                                                         |
-| <a href="https://iso639-3.sil.org/code/cop">Coptic</a>                                                                           | <a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_scriptorium_cop_3_0.html">cop.pos</a>                                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_scriptorium_cop_3_0.html">pos_scriptorium</a>                                                                                                                                                                                |
-| <a href="https://iso639-3.sil.org/code/cop">Coptic</a>                                                                           | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_scriptorium_cop_3_0.html">cop.lemma</a>                                                                                                                                                                | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_scriptorium_cop_3_0.html">lemma_scriptorium</a>                                                                                                                                                                            |
-| <a href="https://iso639-3.sil.org/code/cop">Coptic</a>                                                                           | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_scriptorium_cop_3_0.html">cop.lemma.scriptorium</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_scriptorium_cop_3_0.html">lemma_scriptorium</a>                                                                                                                                                                            |
-| <a href="https://iso639-3.sil.org/code/afa">Afro-Asiatic languages</a>                                                           | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_afa_en_xx.html">xx.afa.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_afa_en_xx.html">opus_mt_afa_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/afa">Afro-Asiatic languages</a>                                                           | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_afa_afa_xx.html">xx.afa.marian.translate_to.afa</a>                                                                                                                                                  | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_afa_afa_xx.html">opus_mt_afa_afa</a>                                                                                                                                                                                     |
-| <a href="https://iso639-3.sil.org/code/alv">Atlantic-Congo languages</a>                                                         | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_alv_en_xx.html">xx.alv.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_alv_en_xx.html">opus_mt_alv_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/aav">Austro-Asiatic languages</a>                                                         | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_aav_en_xx.html">xx.aav.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_aav_en_xx.html">opus_mt_aav_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/bat">Baltic languages</a>                                                                 | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_bat_en_xx.html">xx.bat.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_bat_en_xx.html">opus_mt_bat_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/bnt">Bantu languages</a>                                                                  | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_bnt_en_xx.html">xx.bnt.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_bnt_en_xx.html">opus_mt_bnt_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/euq">Basque (family)</a>                                                                  | <a href="https://nlp.johnsnowlabs.com/2021/06/02/opus_mt_euq_en_xx.html">xx.euq.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/02/opus_mt_euq_en_xx.html">opus_mt_euq_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/ber">Berber languages</a>                                                                 | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fr_ber_xx.html">xx.ber.marian.translate_to.fr</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fr_ber_xx.html">opus_mt_fr_ber</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/ber">Berber languages</a>                                                                 | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_es_ber_xx.html">xx.ber.marian.translate_to.es</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_es_ber_xx.html">opus_mt_es_ber</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/ber">Berber languages</a>                                                                 | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ber_en_xx.html">xx.ber.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ber_en_xx.html">opus_mt_ber_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/cel">Celtic languages</a>                                                                 | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_cel_en_xx.html">xx.cel.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_cel_en_xx.html">opus_mt_cel_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/cus">Cushitic languages</a>                                                               | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_cus_en_xx.html">xx.cus.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_cus_en_xx.html">opus_mt_cus_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/dra">Dravidian languages</a>                                                              | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_dra_en_xx.html">xx.dra.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_dra_en_xx.html">opus_mt_dra_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/zle">East Slavic languages</a>                                                            | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_zle_zle_xx.html">xx.zle.marian.translate_to.zle</a>                                                                                                                                                  | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_zle_zle_xx.html">opus_mt_zle_zle</a>                                                                                                                                                                                     |
-| <a href="https://iso639-3.sil.org/code/zle">East Slavic languages</a>                                                            | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_zle_en_xx.html">xx.zle.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_zle_en_xx.html">opus_mt_zle_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/pqe">Eastern Malayo-Polynesian languages</a>                                              | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_pqe_en_xx.html">xx.pqe.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_pqe_en_xx.html">opus_mt_pqe_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/fiu">Finno-Ugrian languages</a>                                                           | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fiu_fiu_xx.html">xx.fiu.marian.translate_to.fiu</a>                                                                                                                                                  | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fiu_fiu_xx.html">opus_mt_fiu_fiu</a>                                                                                                                                                                                     |
-| <a href="https://iso639-3.sil.org/code/fiu">Finno-Ugrian languages</a>                                                           | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fiu_en_xx.html">xx.fiu.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fiu_en_xx.html">opus_mt_fiu_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/gem">Germanic languages</a>                                                               | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_gem_gem_xx.html">xx.gem.marian.translate_to.gem</a>                                                                                                                                                  | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_gem_gem_xx.html">opus_mt_gem_gem</a>                                                                                                                                                                                     |
-| <a href="https://iso639-3.sil.org/code/gem">Germanic languages</a>                                                               | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_gem_en_xx.html">xx.gem.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_gem_en_xx.html">opus_mt_gem_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/grk">Greek languages</a>                                                                  | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_grk_en_xx.html">xx.grk.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_grk_en_xx.html">opus_mt_grk_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/inc">Indic languages</a>                                                                  | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_inc_inc_xx.html">xx.inc.marian.translate_to.inc</a>                                                                                                                                                  | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_inc_inc_xx.html">opus_mt_inc_inc</a>                                                                                                                                                                                     |
-| <a href="https://iso639-3.sil.org/code/inc">Indic languages</a>                                                                  | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_inc_en_xx.html">xx.inc.marian.translate_to.en</a>                                                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_inc_en_xx.html">opus_mt_inc_en</a>                                                                                                                                                                                       |
-| <a href="https://iso639-3.sil.org/code/ine">Indo-European languages</a>                                                          | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ine_ine_xx.html">xx.ine.marian.translate_to.ine</a>                                                                                                                                                  | <a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ine_ine_xx.html">opus_mt_ine_ine</a>                                                                                                                                                                                     |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2020/12/05/ld_wiki_tatoeba_cnn_21_xx.html">xx.classify.wiki_21</a>                                                                                                                                                      | <a href="https://nlp.johnsnowlabs.com/2020/12/05/ld_wiki_tatoeba_cnn_21_xx.html">ld_wiki_tatoeba_cnn_21</a>                                                                                                                                                                       |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2020/12/05/ld_tatoeba_bigru_21_xx.html">xx.classify.wiki_21.bigru</a>                                                                                                                                                   | <a href="https://nlp.johnsnowlabs.com/2020/12/05/ld_tatoeba_bigru_21_xx.html">ld_tatoeba_bigru_21</a>                                                                                                                                                                             |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2021/09/28/xlm_roberta_token_classifier_ner_40_lang_xx.html">xx.classify.token_xlm_roberta.token_classifier_ner_40_lang</a>                                                                                             | <a href="https://nlp.johnsnowlabs.com/2021/09/28/xlm_roberta_token_classifier_ner_40_lang_xx.html">xlm_roberta_token_classifier_ner_40_lang</a>                                                                                                                                   |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/03/bert_qa_bert_multi_cased_finedtuned_xquad_tydiqa_goldp_xx_3_0.html">xx.answer_question.xquad_tydiqa.bert.cased</a>                                                                                           | <a href="https://nlp.johnsnowlabs.com/2022/06/03/bert_qa_bert_multi_cased_finedtuned_xquad_tydiqa_goldp_xx_3_0.html">bert_qa_bert_multi_cased_finedtuned_xquad_tydiqa_goldp</a>                                                                                                   |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_multi_uncased_finetuned_xquadv1_xx_3_0.html">xx.answer_question.xquad.bert.uncased</a>                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_multi_uncased_finetuned_xquadv1_xx_3_0.html">bert_qa_bert_multi_uncased_finetuned_xquadv1</a>                                                                                                                       |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_multi_cased_finetuned_xquadv1_xx_3_0.html">xx.answer_question.xquad.bert.cased</a>                                                                                                              | <a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_multi_cased_finetuned_xquadv1_xx_3_0.html">bert_qa_bert_multi_cased_finetuned_xquadv1</a>                                                                                                                           |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/23/xlm_roberta_qa_distill_xlm_mrc_xx_3_0.html">xx.answer_question.xlm_roberta.distilled</a>                                                                                                                     | <a href="https://nlp.johnsnowlabs.com/2022/06/23/xlm_roberta_qa_distill_xlm_mrc_xx_3_0.html">xlm_roberta_qa_distill_xlm_mrc</a>                                                                                                                                                   |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_Part_1_mBERT_Model_E1_xx_3_0.html">xx.answer_question.tydiqa.multi_lingual_bert</a>                                                                                                                  | <a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_Part_1_mBERT_Model_E1_xx_3_0.html">bert_qa_Part_1_mBERT_Model_E1</a>                                                                                                                                                     |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_telugu_bertu_tydiqa_xx_3_0.html">xx.answer_question.tydiqa.bert</a>                                                                                                                                  | <a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_telugu_bertu_tydiqa_xx_3_0.html">bert_qa_telugu_bertu_tydiqa</a>                                                                                                                                                         |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_squad_en_de_es_model_xx_3_0.html">xx.answer_question.squad.distil_bert.en_de_es_tuned.by_ZYW</a>                                                                                               | <a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_squad_en_de_es_model_xx_3_0.html">distilbert_qa_squad_en_de_es_model</a>                                                                                                                                           |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_squad_en_de_es_vi_zh_model_xx_3_0.html">xx.answer_question.squad.distil_bert._en_de_es_vi_zh_tuned.by_ZYW</a>                                                                                  | <a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_squad_en_de_es_vi_zh_model_xx_3_0.html">distilbert_qa_squad_en_de_es_vi_zh_model</a>                                                                                                                               |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/21/roberta_qa_ft_lr_cu_leolin12345_xx_3_0.html">xx.answer_question.roberta</a>                                                                                                                                  | <a href="https://nlp.johnsnowlabs.com/2022/06/21/roberta_qa_ft_lr_cu_leolin12345_xx_3_0.html">roberta_qa_ft_lr_cu_leolin12345</a>                                                                                                                                                 |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_en_de_vi_zh_es_model_xx_3_0.html">xx.answer_question.distil_bert.vi_zh_es_tuned.by_ZYW</a>                                                                                                     | <a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_en_de_vi_zh_es_model_xx_3_0.html">distilbert_qa_en_de_vi_zh_es_model</a>                                                                                                                                           |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_en_de_model_xx_3_0.html">xx.answer_question.distil_bert.en_de_tuned.by_ZYW</a>                                                                                                                 | <a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_en_de_model_xx_3_0.html">distilbert_qa_en_de_model</a>                                                                                                                                                             |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_en_de_es_model_xx_3_0.html">xx.answer_question.distil_bert.en_de_es_tuned.by_ZYW</a>                                                                                                           | <a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_en_de_es_model_xx_3_0.html">distilbert_qa_en_de_es_model</a>                                                                                                                                                       |
-| Multilingual                                                                                                          | <a href="https://nlp.johnsnowlabs.com/2022/06/23/xlm_roberta_qa_xlm_roberta_qa_chaii_xx_3_0.html">xx.answer_question.chaii.xlm_roberta</a>                                                                                                                    | <a href="https://nlp.johnsnowlabs.com/2022/06/23/xlm_roberta_qa_xlm_roberta_qa_chaii_xx_3_0.html">xlm_roberta_qa_xlm_roberta_qa_chaii</a>                                                                                                                                        |</p>
+        <table class="table-model-big mb0">
+          <thead>
+            <tr>
+              <th style="text-align: left">Language Name(s)</th>
+              <th style="text-align: left">nlp.load() Reference</th>
+              <th style="text-align: left">Spark NLP Reference</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/xae">Aequian</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/23/xlm_roberta_qa_xlm_roberta_base_vietnamese_vn_3_0.html">vn.answer_question.xlm_roberta.base</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/23/xlm_roberta_qa_xlm_roberta_base_vietnamese_vn_3_0.html">xlm_roberta_qa_xlm_roberta_base_vietnamese</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/xae">Aequian</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com">roberta</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com">distilroberta_base</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/chu">Church Slavic, Church Slavonic, Old Bulgarian, Old Church Slavonic, Old Slavonic</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_proiel_cu_3_0.html">cu.pos</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_proiel_cu_3_0.html">pos_proiel</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/chu">Church Slavic, Church Slavonic, Old Bulgarian, Old Church Slavonic, Old Slavonic</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_cu_3_0.html">cu.lemma</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_cu_3_0.html">lemma_proiel</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/chu">Church Slavic, Church Slavonic, Old Bulgarian, Old Church Slavonic, Old Slavonic</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_cu_3_0.html">cu.lemma.proiel</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_cu_3_0.html">lemma_proiel</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/got">Gothic</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_proiel_got_3_0.html">got.pos.proiel</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_proiel_got_3_0.html">pos_proiel</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/got">Gothic</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_got_3_0.html">got.lemma</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_got_3_0.html">lemma_proiel</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/got">Gothic</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_got_3_0.html">got.lemma.proiel</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_proiel_got_3_0.html">lemma_proiel</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2020/07/14/stopwords_la.html">la.stopwords</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2020/07/14/stopwords_la.html">stopwords_la</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_perseus_la_3_0.html">la.pos</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_perseus_la_3_0.html">pos_perseus</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_udante_la_3_0.html">la.pos.udante</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_udante_la_3_0.html">pos_udante</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_proiel_la_3_0.html">la.pos.proiel</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_proiel_la_3_0.html">pos_proiel</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_perseus_la_3_0.html">la.pos.perseus</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_perseus_la_3_0.html">pos_perseus</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_llct_la_3_0.html">la.pos.llct</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_llct_la_3_0.html">pos_llct</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_ittb_la_3_0.html">la.pos.ittb</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/04/01/pos_ittb_la_3_0.html">pos_ittb</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_proiel_la_3_0.html">la.lemma</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_proiel_la_3_0.html">lemma_proiel</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_udante_la_3_0.html">la.lemma.udante</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_udante_la_3_0.html">lemma_udante</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_proiel_la_3_0.html">la.lemma.proiel</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_proiel_la_3_0.html">lemma_proiel</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_perseus_la_3_0.html">la.lemma.perseus</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_perseus_la_3_0.html">lemma_perseus</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_llct_la_3_0.html">la.lemma.llct</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_llct_la_3_0.html">lemma_llct</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/lat">Latin</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_ittb_la_3_0.html">la.lemma.ittb</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_ittb_la_3_0.html">lemma_ittb</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/san">Sanskrit</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/07/stopwords_iso_sa_3_0.html">sa.stopwords</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/07/stopwords_iso_sa_3_0.html">stopwords_iso</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/san">Sanskrit</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_vedic_sa_3_0.html">sa.pos</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_vedic_sa_3_0.html">pos_vedic</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/san">Sanskrit</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_vedic_sa_3_0.html">sa.lemma</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/lemma_vedic_sa_3_0.html">lemma_vedic</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/san">Sanskrit</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/16/w2v_cc_300d_sa_3_0.html">sa.embed.w2v_cc_300d</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/16/w2v_cc_300d_sa_3_0.html">w2v_cc_300d</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_vi_eo_xx.html">xx.eo.marian.translate_to.vi</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_vi_eo_xx.html">opus_mt_vi_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_tr_eo_xx.html">xx.eo.marian.translate_to.tr</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_tr_eo_xx.html">opus_mt_tr_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_sv_eo_xx.html">xx.eo.marian.translate_to.sv</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_sv_eo_xx.html">opus_mt_sv_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_sh_eo_xx.html">xx.eo.marian.translate_to.sh</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_sh_eo_xx.html">opus_mt_sh_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ru_eo_xx.html">xx.eo.marian.translate_to.ru</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ru_eo_xx.html">opus_mt_ru_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ro_eo_xx.html">xx.eo.marian.translate_to.ro</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ro_eo_xx.html">opus_mt_ro_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_pt_eo_xx.html">xx.eo.marian.translate_to.pt</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_pt_eo_xx.html">opus_mt_pt_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_pl_eo_xx.html">xx.eo.marian.translate_to.pl</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_pl_eo_xx.html">opus_mt_pl_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_nl_eo_xx.html">xx.eo.marian.translate_to.nl</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_nl_eo_xx.html">opus_mt_nl_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_lt_eo_xx.html">xx.eo.marian.translate_to.lt</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_lt_eo_xx.html">opus_mt_lt_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_it_eo_xx.html">xx.eo.marian.translate_to.it</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_it_eo_xx.html">opus_mt_it_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_is_eo_xx.html">xx.eo.marian.translate_to.is</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_is_eo_xx.html">opus_mt_is_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_hu_eo_xx.html">xx.eo.marian.translate_to.hu</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_hu_eo_xx.html">opus_mt_hu_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_he_eo_xx.html">xx.eo.marian.translate_to.he</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_he_eo_xx.html">opus_mt_he_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/02/opus_mt_fr_eo_xx.html">xx.eo.marian.translate_to.fr</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/02/opus_mt_fr_eo_xx.html">opus_mt_fr_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fi_eo_xx.html">xx.eo.marian.translate_to.fi</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fi_eo_xx.html">opus_mt_fi_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_es_eo_xx.html">xx.eo.marian.translate_to.es</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_es_eo_xx.html">opus_mt_es_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_eo_en_xx.html">xx.eo.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_eo_en_xx.html">opus_mt_eo_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_el_eo_xx.html">xx.eo.marian.translate_to.el</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_el_eo_xx.html">opus_mt_el_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_de_eo_xx.html">xx.eo.marian.translate_to.de</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_de_eo_xx.html">opus_mt_de_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_da_eo_xx.html">xx.eo.marian.translate_to.da</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_da_eo_xx.html">opus_mt_da_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_cs_eo_xx.html">xx.eo.marian.translate_to.cs</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_cs_eo_xx.html">opus_mt_cs_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_bg_eo_xx.html">xx.eo.marian.translate_to.bg</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_bg_eo_xx.html">opus_mt_bg_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ar_eo_xx.html">xx.eo.marian.translate_to.ar</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ar_eo_xx.html">opus_mt_ar_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_af_eo_xx.html">xx.eo.marian.translate_to.af</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_af_eo_xx.html">opus_mt_af_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2020/07/14/stopwords_eo.html">eo.stopwords</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2020/07/14/stopwords_eo.html">stopwords_eo</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/epo">Esperanto</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/15/w2v_cc_300d_eo_3_0.html">eo.embed.w2v_cc_300d</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/15/w2v_cc_300d_eo_3_0.html">w2v_cc_300d</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/vol">Volapük</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/16/w2v_cc_300d_vo_3_0.html">vo.embed.w2v_cc_300d</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/16/w2v_cc_300d_vo_3_0.html">w2v_cc_300d</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/cop">Coptic</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_scriptorium_cop_3_0.html">cop.pos</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/05/01/pos_scriptorium_cop_3_0.html">pos_scriptorium</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/cop">Coptic</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_scriptorium_cop_3_0.html">cop.lemma</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_scriptorium_cop_3_0.html">lemma_scriptorium</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/cop">Coptic</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_scriptorium_cop_3_0.html">cop.lemma.scriptorium</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/03/31/lemma_scriptorium_cop_3_0.html">lemma_scriptorium</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/afa">Afro-Asiatic languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_afa_en_xx.html">xx.afa.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_afa_en_xx.html">opus_mt_afa_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/afa">Afro-Asiatic languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_afa_afa_xx.html">xx.afa.marian.translate_to.afa</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_afa_afa_xx.html">opus_mt_afa_afa</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/alv">Atlantic-Congo languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_alv_en_xx.html">xx.alv.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_alv_en_xx.html">opus_mt_alv_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/aav">Austro-Asiatic languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_aav_en_xx.html">xx.aav.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_aav_en_xx.html">opus_mt_aav_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/bat">Baltic languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_bat_en_xx.html">xx.bat.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_bat_en_xx.html">opus_mt_bat_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/bnt">Bantu languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_bnt_en_xx.html">xx.bnt.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_bnt_en_xx.html">opus_mt_bnt_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/euq">Basque (family)</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/02/opus_mt_euq_en_xx.html">xx.euq.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/02/opus_mt_euq_en_xx.html">opus_mt_euq_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/ber">Berber languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fr_ber_xx.html">xx.ber.marian.translate_to.fr</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fr_ber_xx.html">opus_mt_fr_ber</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/ber">Berber languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_es_ber_xx.html">xx.ber.marian.translate_to.es</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_es_ber_xx.html">opus_mt_es_ber</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/ber">Berber languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ber_en_xx.html">xx.ber.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ber_en_xx.html">opus_mt_ber_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/cel">Celtic languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_cel_en_xx.html">xx.cel.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_cel_en_xx.html">opus_mt_cel_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/cus">Cushitic languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_cus_en_xx.html">xx.cus.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_cus_en_xx.html">opus_mt_cus_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/dra">Dravidian languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_dra_en_xx.html">xx.dra.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_dra_en_xx.html">opus_mt_dra_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/zle">East Slavic languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_zle_zle_xx.html">xx.zle.marian.translate_to.zle</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_zle_zle_xx.html">opus_mt_zle_zle</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/zle">East Slavic languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_zle_en_xx.html">xx.zle.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_zle_en_xx.html">opus_mt_zle_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/pqe">Eastern Malayo-Polynesian languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_pqe_en_xx.html">xx.pqe.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_pqe_en_xx.html">opus_mt_pqe_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/fiu">Finno-Ugrian languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fiu_fiu_xx.html">xx.fiu.marian.translate_to.fiu</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fiu_fiu_xx.html">opus_mt_fiu_fiu</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/fiu">Finno-Ugrian languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fiu_en_xx.html">xx.fiu.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_fiu_en_xx.html">opus_mt_fiu_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/gem">Germanic languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_gem_gem_xx.html">xx.gem.marian.translate_to.gem</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_gem_gem_xx.html">opus_mt_gem_gem</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/gem">Germanic languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_gem_en_xx.html">xx.gem.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_gem_en_xx.html">opus_mt_gem_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/grk">Greek languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_grk_en_xx.html">xx.grk.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_grk_en_xx.html">opus_mt_grk_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/inc">Indic languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_inc_inc_xx.html">xx.inc.marian.translate_to.inc</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_inc_inc_xx.html">opus_mt_inc_inc</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/inc">Indic languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_inc_en_xx.html">xx.inc.marian.translate_to.en</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_inc_en_xx.html">opus_mt_inc_en</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left"><a href="https://iso639-3.sil.org/code/ine">Indo-European languages</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ine_ine_xx.html">xx.ine.marian.translate_to.ine</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/06/01/opus_mt_ine_ine_xx.html">opus_mt_ine_ine</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2020/12/05/ld_wiki_tatoeba_cnn_21_xx.html">xx.classify.wiki_21</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2020/12/05/ld_wiki_tatoeba_cnn_21_xx.html">ld_wiki_tatoeba_cnn_21</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2020/12/05/ld_tatoeba_bigru_21_xx.html">xx.classify.wiki_21.bigru</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2020/12/05/ld_tatoeba_bigru_21_xx.html">ld_tatoeba_bigru_21</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/09/28/xlm_roberta_token_classifier_ner_40_lang_xx.html">xx.classify.token_xlm_roberta.token_classifier_ner_40_lang</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2021/09/28/xlm_roberta_token_classifier_ner_40_lang_xx.html">xlm_roberta_token_classifier_ner_40_lang</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/03/bert_qa_bert_multi_cased_finedtuned_xquad_tydiqa_goldp_xx_3_0.html">xx.answer_question.xquad_tydiqa.bert.cased</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/03/bert_qa_bert_multi_cased_finedtuned_xquad_tydiqa_goldp_xx_3_0.html">bert_qa_bert_multi_cased_finedtuned_xquad_tydiqa_goldp</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_multi_uncased_finetuned_xquadv1_xx_3_0.html">xx.answer_question.xquad.bert.uncased</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_multi_uncased_finetuned_xquadv1_xx_3_0.html">bert_qa_bert_multi_uncased_finetuned_xquadv1</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_multi_cased_finetuned_xquadv1_xx_3_0.html">xx.answer_question.xquad.bert.cased</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_bert_multi_cased_finetuned_xquadv1_xx_3_0.html">bert_qa_bert_multi_cased_finetuned_xquadv1</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/23/xlm_roberta_qa_distill_xlm_mrc_xx_3_0.html">xx.answer_question.xlm_roberta.distilled</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/23/xlm_roberta_qa_distill_xlm_mrc_xx_3_0.html">xlm_roberta_qa_distill_xlm_mrc</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_Part_1_mBERT_Model_E1_xx_3_0.html">xx.answer_question.tydiqa.multi_lingual_bert</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_Part_1_mBERT_Model_E1_xx_3_0.html">bert_qa_Part_1_mBERT_Model_E1</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_telugu_bertu_tydiqa_xx_3_0.html">xx.answer_question.tydiqa.bert</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/02/bert_qa_telugu_bertu_tydiqa_xx_3_0.html">bert_qa_telugu_bertu_tydiqa</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_squad_en_de_es_model_xx_3_0.html">xx.answer_question.squad.distil_bert.en_de_es_tuned.by_ZYW</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_squad_en_de_es_model_xx_3_0.html">distilbert_qa_squad_en_de_es_model</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_squad_en_de_es_vi_zh_model_xx_3_0.html">xx.answer_question.squad.distil_bert._en_de_es_vi_zh_tuned.by_ZYW</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_squad_en_de_es_vi_zh_model_xx_3_0.html">distilbert_qa_squad_en_de_es_vi_zh_model</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/21/roberta_qa_ft_lr_cu_leolin12345_xx_3_0.html">xx.answer_question.roberta</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/21/roberta_qa_ft_lr_cu_leolin12345_xx_3_0.html">roberta_qa_ft_lr_cu_leolin12345</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_en_de_vi_zh_es_model_xx_3_0.html">xx.answer_question.distil_bert.vi_zh_es_tuned.by_ZYW</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_en_de_vi_zh_es_model_xx_3_0.html">distilbert_qa_en_de_vi_zh_es_model</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_en_de_model_xx_3_0.html">xx.answer_question.distil_bert.en_de_tuned.by_ZYW</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_en_de_model_xx_3_0.html">distilbert_qa_en_de_model</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_en_de_es_model_xx_3_0.html">xx.answer_question.distil_bert.en_de_es_tuned.by_ZYW</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/08/distilbert_qa_en_de_es_model_xx_3_0.html">distilbert_qa_en_de_es_model</a></td>
+            </tr>
+            <tr>
+              <td style="text-align: left">Multilingual</td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/23/xlm_roberta_qa_xlm_roberta_qa_chaii_xx_3_0.html">xx.answer_question.chaii.xlm_roberta</a></td>
+              <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2022/06/23/xlm_roberta_qa_xlm_roberta_qa_chaii_xx_3_0.html">xlm_roberta_qa_xlm_roberta_qa_chaii</a></td>
+            </tr>
+          </tbody>
+        </table>
+
       </div></div>
   </div>
   <div class="h3-box">
