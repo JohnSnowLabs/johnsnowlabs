@@ -40,12 +40,12 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "ro", "clinical/models")
 
-text = '''Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România
+text = """Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România
 Tel: +40(235)413773
 Data setului de analize: 25 May 2022 15:36:00
 Nume si Prenume : BUREAN MARIA, Varsta: 77
 Medic : Agota Evelyn Tımar
-C.N.P : 2450502264401'''
+C.N.P : 2450502264401"""
 
 result = pipeline.fullAnnotate(text)
 ```
@@ -70,12 +70,12 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "ro", "clinical/models")
 
-text = '''Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România
+text = """Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România
 Tel: +40(235)413773
 Data setului de analize: 25 May 2022 15:36:00
 Nume si Prenume : BUREAN MARIA, Varsta: 77
 Medic : Agota Evelyn Tımar
-C.N.P : 2450502264401'''
+C.N.P : 2450502264401"""
 
 result = pipeline.fullAnnotate(text)
 ```
