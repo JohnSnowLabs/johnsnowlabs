@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Pipeline to Detect PHI for Deidentification purposes (Italian) | ner_deid_subentity_pipeline | Healthcare NLP 4.4.4</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deid_subentity model.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "it", "clinical/models")text = '...">
+<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deid_subentity model.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "it", "clinical/models")text = "...">
 <!-- <link rel="canonical" href="/2023/06/16/ner_deid_subentity_pipeline_it.html"> -->
 <link rel="canonical" href="/2023/06/16/ner_deid_subentity_pipeline_it.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -526,7 +526,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_deid_subentity_pipeline"</span><span class="p">,</span> <span class="s">"it"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">'''Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.'''</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015."""</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>  </div>
@@ -543,7 +543,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_deid_subentity_pipeline"</span><span class="p">,</span> <span class="s">"it"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">'''Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.'''</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015."""</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>  </div>

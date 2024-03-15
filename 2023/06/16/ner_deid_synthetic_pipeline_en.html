@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Pipeline to Detect PHI for Deidentification (Augmented) | ner_deid_synthetic_pipeline | Healthcare NLP 4.4.4</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deid_synthetic model.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deid_synthetic_pipeline", "en", "clinical/models")text = '...">
+<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deid_synthetic model.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deid_synthetic_pipeline", "en", "clinical/models")text = "...">
 <!-- <link rel="canonical" href="/2023/06/16/ner_deid_synthetic_pipeline_en.html"> -->
 <link rel="canonical" href="/2023/06/16/ner_deid_synthetic_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -526,7 +526,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_deid_synthetic_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">'''Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 302-786-5227.'''</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 302-786-5227."""</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>  </div>
@@ -543,7 +543,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_deid_synthetic_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">'''Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 302-786-5227.'''</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"""Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 302-786-5227."""</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>  </div>

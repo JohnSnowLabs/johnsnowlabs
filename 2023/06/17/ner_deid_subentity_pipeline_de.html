@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Pipeline to Detect PHI for Deidentification (Sub Entity) | ner_deid_subentity_pipeline | Healthcare NLP 4.4.4</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deid_subentity model.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "de", "clinical/models")text = '...">
+<meta name="description" content="DescriptionThis pretrained pipeline is built on the top of ner_deid_subentity model.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  from sparknlp.pretrained import PretrainedPipelinepipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "de", "clinical/models")text = "...">
 <!-- <link rel="canonical" href="/2023/06/17/ner_deid_subentity_pipeline_de.html"> -->
 <link rel="canonical" href="/2023/06/17/ner_deid_subentity_pipeline_de.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -526,10 +526,11 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"ner_deid_subentity_pipeline"</span><span class="p">,</span> <span class="s">"de"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">'''Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.'''</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">"Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen."</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>  </div>
+
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"ner_deid_subentity_pipeline"</span><span class="o">,</span> <span class="s">"de"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
@@ -540,7 +541,7 @@ function wrapWordInSpan(data, wordToWrap) {
 </code></pre></div>  </div>
 
   <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
-<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"de.deid.ner_subentity.pipeline"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen."""</span><span class="p">)</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"de.deid.ner_subentity.pipeline"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">'Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.'</span><span class="p">)</span>
 </code></pre></div>  </div>
 
 </div>
