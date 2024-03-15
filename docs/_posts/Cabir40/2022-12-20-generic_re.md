@@ -149,7 +149,7 @@ val result = pipeline.fit(data).transform(data)
 ```
 </div>
 
-{:.h2_title}
+
 ## Results
 
 ```bash
