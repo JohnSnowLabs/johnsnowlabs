@@ -15,7 +15,7 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## NLP Lab 5.9 – Entity Resolution for NER, Pre-annotation using Prompts and Rules for Visual NER, Import and Export projects to S3 and Azure Blob
+## NLP Lab 5.9 – Entity Resolution and Pre-annotation using Resolvers for NER, Pre-annotation using Prompts and Rules for Visual NER, Import and Export projects to S3 and Azure Blob
 
 NLP Lab 5.9 introduces significant updates aimed at enriching and expanding the capabilities of your NLP workflows. This release represents a major step forward, offering support for Entity Resolution for standard taxonomies like ICD-10, RxNorm, SNOMED, LOINC, UMLS, MeSH, CPT for both annotations and pre-annotations activities. Furthermore, the inclusion of Rules and Prompts in Visual NER projects enables improved pre-annotation results without the need for trained models. The introduction of the Supervisor role offers enhanced authority compared to the Annotator role. Additionally, the ability to Import and Export projects in S3/Blob further enhances NLP Lab 5.9 for easier project backup and sharing capabilities. These advancements, coupled with our ongoing commitment to performance enhancements and user experience improvements, underscore our dedication to meeting the evolving needs of the NLP community. Discover the limitless possibilities with NLP Lab 5.9 and elevate your NLP projects to new levels of excellence.
 
