@@ -27,8 +27,6 @@ This pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Leve
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10_meddra_llt_mapper_en_5.3.0_3.0_1710435446667.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/icd10_meddra_llt_mapper_en_5.3.0_3.0_1710435446667.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -54,7 +52,7 @@ resolver2chunk = Resolution2Chunk()\
     .setInputCols(["icd10_code"])\
     .setOutputCol("icd102chunk")
 
-chunkerMapper = ChunkMapperModel.pretrained("icd10_meddra_llt_mapper", "en", "clinical/models")\
+chunkerMapper = ChunkMapperModel.load("icd10_meddra_llt_mapper"")\
     .setInputCols(["icd102chunk"])\
     .setOutputCol("mappings")
 
@@ -89,7 +87,7 @@ val resolver2chunk = Resolution2Chunk()
     .setInputCols(Array("icd10_code"))
     .setOutputCol("icd102chunk")
 
-val chunkerMapper = ChunkMapperModel.pretrained("icd10_meddra_llt_mapper", "en", "clinical/models")\
+val chunkerMapper = ChunkMapperModel.load("icd10_meddra_llt_mapper"")\
     .setInputCols(Array("icd102chunk"))
     .setOutputCol("mappings")
 
@@ -135,4 +133,6 @@ val result = mapper_model.transform(data)
 
 ## References
 
-This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.
+This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset. 
+
+To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.
