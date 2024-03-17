@@ -27,8 +27,7 @@ This pretrained model maps MedDRA-PT (Preferred Term) codes to corresponding ICD
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/meddra_pt_icd10_mapper_en_5.3.0_3.0_1710509108182.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/meddra_pt_icd10_mapper_en_5.3.0_3.0_1710509108182.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 ## How to use
 
@@ -37,14 +36,14 @@ This pretrained model maps MedDRA-PT (Preferred Term) codes to corresponding ICD
   
 ```python
 document_assembler = DocumentAssembler()\
-      .setInputCol('text')\
-      .setOutputCol('doc')
+      .setInputCol("text")\
+      .setOutputCol("doc")
 
 chunk_assembler = Doc2Chunk()\
-      .setInputCols(['doc'])\
-      .setOutputCol('ner_chunk')
+      .setInputCols(["doc"])\
+      .setOutputCol("ner_chunk")
  
-mapperModel = ChunkMapperModel.pretrained('meddra_pt_icd10_mapper', 'en', 'clinical/models')\
+mapperModel = ChunkMapperModel.load("meddra_pt_icd10_mapper")\
     .setInputCols(["ner_chunk"])\
     .setOutputCol("mappings")\
     .setRels(["icd10_code"])
@@ -70,7 +69,7 @@ val chunk_assembler = Doc2Chunk()
       .setInputCols(Array("doc"))
       .setOutputCol("ner_chunk")
  
-val mapperModel = ChunkMapperModel.pretrained("meddra_pt_icd10_mapper", "en", "clinical/models")
+val mapperModel = ChunkMapperModel.load("meddra_pt_icd10_mapper")
     .setInputCols(Array("ner_chunk"))
     .setOutputCol("mappings")
     .setRels(Array("icd10_code"))
@@ -80,7 +79,7 @@ val mapper_pipeline = new Pipeline().setStages(Array(
     document_assembler,
     chunk_assembler,
     mapperModel
-)
+))
 
 val data = Seq("10000153.0", "10000081.0", "10039085.0").toDF("text")
 
@@ -118,3 +117,5 @@ val result = mapper_model.transform(data)
 ## References
 
 This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.
+
+To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.
