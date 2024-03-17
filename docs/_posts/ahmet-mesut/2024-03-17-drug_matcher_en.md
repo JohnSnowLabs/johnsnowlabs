@@ -36,6 +36,7 @@ This model extracts medication entities in clinical notes using rule-based `Text
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -50,9 +51,9 @@ text_matcher = TextMatcherInternalModel.pretrained("drug_matcher","en","clinical
     .setOutputCol("matched_text")\
 
 mathcer_pipeline = Pipeline().setStages([
-                  documentAssembler,
-                  tokenizer,
-                  text_matcher])
+    documentAssembler,
+    tokenizer,
+    text_matcher])
 
 data = spark.createDataFrame([["John's doctor prescribed aspirin for his heart condition, along with paracetamol for his fever and headache, amoxicillin for his tonsilitis and lansoprazole for his GORD on 2023-12-01."]]).toDF("text")
 
@@ -61,21 +62,22 @@ result = matcher_model.transform(data)
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
-	.setInputCol("text")
-	.setOutputCol("document")
+    .setInputCol("text")
+    .setOutputCol("document")
 
 val tokenizer = new Tokenizer()
-	.setInputCols(Array("document"))
-	.setOutputCol("token")
+    .setInputCols(Array("document"))
+    .setOutputCol("token")
 
 val text_matcher = TextMatcherInternalModel.pretrained("drug_matcher","en","clinical/models")
-	.setInputCols(Array("document","token"))
-	.setOutputCol("matched_text")
+    .setInputCols(Array("document","token"))
+    .setOutputCol("matched_text")
 
 val mathcer_pipeline = new Pipeline()
-	.setStages(Array( documentAssembler,
-			              tokenizer,
-    			          text_matcher))
+    .setStages(Array(
+    documentAssembler,
+    tokenizer,
+    text_matcher))
 
 val data = Seq("John's doctor prescribed aspirin for his heart condition, along with paracetamol for his fever and headache, amoxicillin for his tonsilitis and lansoprazole for his GORD on 2023-12-01.") .toDF("text")
 
