@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Mapping MedDRA-LLT (Lowest Level Term) Codes with Their Corresponding ICD-10 Codes | meddra_llt_icd10_mapper | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps MedDRA-LLT (Lowest Level Term) codes to corresponding ICD10 codes. Some of the MedDRA LLT codes map to more than ICD-10 codes. You can find all the mapped ICD-10 codes in the all_k_resolutions column in the metadata.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow ...">
+<meta name="description" content="DescriptionThis pretrained model maps MedDRA-LLT (Lowest Level Term) codes to corresponding ICD10 codes. Some of the MedDRA LLT codes map to more than ICD-10 codes. You can find all the mapped ICD-10 codes in the all_k_resolutions column in the metadata.Predicted EntitiesLive DemoOpen in ColabHow to use  PythonJSLSc...">
 <!-- <link rel="canonical" href="/2024/03/14/meddra_llt_icd10_mapper_en.html"> -->
 <link rel="canonical" href="/2024/03/14/meddra_llt_icd10_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -513,9 +513,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="predicted-entities">Predicted Entities</h2>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/meddra_llt_icd10_mapper_en_5.3.0_3.0_1710435747498.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/meddra_llt_icd10_mapper_en_5.3.0_3.0_1710435747498.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<button class="button button-orange" disabled="">Open in Colab</button></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -530,7 +528,7 @@ function wrapWordInSpan(data, wordToWrap) {
       <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">'doc'</span><span class="p">])</span>\
       <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'ner_chunk'</span><span class="p">)</span>
  
-<span class="n">mapperModel</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">'meddra_llt_icd10_mapper'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span>\
+<span class="n">mapperModel</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'meddra_llt_icd10_mapper'</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"icd10_code"</span><span class="p">])</span>
@@ -555,7 +553,7 @@ function wrapWordInSpan(data, wordToWrap) {
       <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"doc"</span><span class="o">))</span>
       <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
  
-<span class="k">val</span> <span class="nv">mapperModel</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"meddra_llt_icd10_mapper"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">mapperModel</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"meddra_llt_icd10_mapper"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setRels</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd10_code"</span><span class="o">))</span>
@@ -627,6 +625,8 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="references">References</h2>
 
 <p>This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.</p>
+
+<p>To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</p>
 </div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-14T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

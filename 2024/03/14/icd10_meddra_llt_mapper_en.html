@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes | icd10_meddra_llt_mapper | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("ner_chunk")sbert_embedder = BertSenten...">
+<meta name="description" content="DescriptionThis pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.Predicted EntitiesLive DemoOpen in ColabHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("ner_chunk")sbert_embedder = BertSentenceEmbeddings.pretra...">
 <!-- <link rel="canonical" href="/2024/03/14/icd10_meddra_llt_mapper_en.html"> -->
 <link rel="canonical" href="/2024/03/14/icd10_meddra_llt_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -513,9 +513,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="predicted-entities">Predicted Entities</h2>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/icd10_meddra_llt_mapper_en_5.3.0_3.0_1710435446667.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/icd10_meddra_llt_mapper_en_5.3.0_3.0_1710435446667.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<button class="button button-orange" disabled="">Open in Colab</button></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -540,22 +538,22 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd10_code"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd102chunk"</span><span class="p">)</span>
 
-<span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"icd10_meddra_llt_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd102chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
+<span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"icd10_meddra_llt_mapper"")</span><span class="se">\
+</span><span class="s">    .setInputCols(["</span><span class="n">icd102chunk</span><span class="s">"])</span><span class="se">\
+</span><span class="s">    .setOutputCol("</span><span class="n">mappings</span><span class="s">")
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">documentAssembler</span><span class="p">,</span>
-    <span class="n">sbert_embedder</span><span class="p">,</span>
-    <span class="n">icd10_resolver</span><span class="p">,</span>
-    <span class="n">resolver2chunk</span><span class="p">,</span>
-    <span class="n">chunkerMapper</span><span class="p">])</span>
+pipeline = Pipeline(stages = [
+    documentAssembler,
+    sbert_embedder,
+    icd10_resolver,
+    resolver2chunk,
+    chunkerMapper])
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Type 2 diabetes mellitus"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Typhoid fever"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Malignant neoplasm of oesophagus"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+data = spark.createDataFrame([["</span><span class="n">Type</span> <span class="mi">2</span> <span class="n">diabetes</span> <span class="n">mellitus</span><span class="s">"], ["</span><span class="n">Typhoid</span> <span class="n">fever</span><span class="s">"], ["</span><span class="n">Malignant</span> <span class="n">neoplasm</span> <span class="n">of</span> <span class="n">oesophagus</span><span class="s">"]]).toDF("</span><span class="n">text</span><span class="s">")
 
-<span class="n">mapper_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-</code></pre></div>  </div>
+mapper_model = pipeline.fit(data)
+result = mapper_model.transform(data)
+</span></code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
@@ -574,18 +572,18 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd10_code"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"icd102chunk"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">chunkerMapper</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"icd10_meddra_llt_mapper"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd102chunk"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">chunkerMapper</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"icd10_meddra_llt_mapper"")\
+    .setInputCols(Array("</span><span class="n">icd102chunk</span><span class="s">"))
+    .setOutputCol("</span><span class="n">mappings</span><span class="s">")
 
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="n">documentAssembler</span><span class="o">,</span>
-    <span class="n">sbert_embedder</span><span class="o">,</span>
-    <span class="n">icd10_resolver</span><span class="o">,</span>
-    <span class="n">resolver2chunk</span><span class="o">,</span>
-    <span class="n">chunkerMapper</span><span class="o">))</span>
+val pipeline = new Pipeline().setStages(Array(
+    documentAssembler,
+    sbert_embedder,
+    icd10_resolver,
+    resolver2chunk,
+    chunkerMapper))
 
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Type 2 diabetes mellitus"</span><span class="o">),</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Typhoid fever"</span><span class="o">),</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Malignant neoplasm of oesophagus"</span><span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+val data = Seq(Array("</span><span class="nc">Type</span> <span class="mi">2</span> <span class="n">diabetes</span> <span class="n">mellitus</span><span class="s">"), Array("</span><span class="nc">Typhoid</span> <span class="n">fever</span><span class="s">"), Array("</span><span class="nc">Malignant</span> <span class="n">neoplasm</span> <span class="n">of</span> <span class="n">oesophagus</span><span class="s">")).toDF("</span><span class="n">text</span><span class="err">"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">mapper_model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mapper_model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
@@ -645,6 +643,8 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="references">References</h2>
 
 <p>This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.</p>
+
+<p>To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</p>
 </div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-14T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
