@@ -93,9 +93,9 @@ val result = mapper_model.transform(data)
 +-----------+-------------------------------------------------+--------------------------------------------------------+
 |meddra_code|icd10_code                                       |all_k_resolutions                                       |
 +-----------+-------------------------------------------------+--------------------------------------------------------+
-|10045275.0 |A01:Typhoid and paratyphoid fevers               |A01:Typhoid and paratyphoid fevers:::A01.0:Typhoid fever|
-|10067585.0 |E11:Type 2 diabetes mellitus                     |E11:Type 2 diabetes mellitus:::                         |
-|10026182.0 |C15.9:Malignant neoplasm: Oesophagus, unspecified|C15.9:Malignant neoplasm: Oesophagus, unspecified:::    |
+|10045275   |A01:Typhoid and paratyphoid fevers               |A01:Typhoid and paratyphoid fevers:::A01.0:Typhoid fever|
+|10067585   |E11:Type 2 diabetes mellitus                     |E11:Type 2 diabetes mellitus:::                         |
+|10026182   |C15.9:Malignant neoplasm: Oesophagus, unspecified|C15.9:Malignant neoplasm: Oesophagus, unspecified:::    |
 +-----------+-------------------------------------------------+--------------------------------------------------------+
 ```
 
@@ -117,4 +117,4 @@ val result = mapper_model.transform(data)
 
 This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.
 
-To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.
+`To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.`
