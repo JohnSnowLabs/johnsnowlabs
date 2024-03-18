@@ -52,10 +52,10 @@ icd10_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm
 
 resolver2chunk = Resolution2Chunk()\
     .setInputCols(["icd10_code"])\
-    .setOutputCol("icd102chunk")
+    .setOutputCol("icd10chunk")
 
 chunkerMapper = ChunkMapperModel.pretrained("icd10_meddra_llt_mapper", "en", "clinical/models")\
-    .setInputCols(["icd102chunk"])\
+    .setInputCols(["icd10chunk"])\
     .setOutputCol("mappings")
 
 pipeline = Pipeline(stages = [
@@ -87,10 +87,10 @@ val icd10_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd
 
 val resolver2chunk = Resolution2Chunk()
     .setInputCols(Array("icd10_code"))
-    .setOutputCol("icd102chunk")
+    .setOutputCol("icd10chunk")
 
 val chunkerMapper = ChunkMapperModel.pretrained("icd10_meddra_llt_mapper", "en", "clinical/models")\
-    .setInputCols(Array("icd102chunk"))
+    .setInputCols(Array("icd10chunk"))
     .setOutputCol("mappings")
 
 val pipeline = new Pipeline().setStages(Array(
@@ -113,9 +113,9 @@ val result = mapper_model.transform(data)
 +--------------------------------+----------+--------------------------------------------------------+
 |chunk                           |icd10_code|meddra_code                                             |
 +--------------------------------+----------+--------------------------------------------------------+
-|Type 2 diabetes mellitus        |E11       |10067585.0:Type 2 diabetes mellitus                     |
-|Typhoid fever                   |A01.0     |10045275.0:Typhoid fever                                |
-|Malignant neoplasm of oesophagus|C15.9     |10026182.0:Malignant neoplasm of oesophagus, unspecified|
+|Type 2 diabetes mellitus        |E11       |10067585:Type 2 diabetes mellitus                       |
+|Typhoid fever                   |A01.0     |10045275:Typhoid fever                                  |
+|Malignant neoplasm of oesophagus|C15.9     |10026182:Malignant neoplasm of oesophagus, unspecified  |
 +--------------------------------+----------+--------------------------------------------------------+
 ```
 
