@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps MedDRA LLT (Lowest Level Term) to corresponding MedDRA PT (Preferred Term) codes.
+This pretrained model maps MedDRA LLT (Lowest Level Term) codes to their corresponding MedDRA PT (Preferred Term) codes.
 
 ## Predicted Entities
 
@@ -70,7 +70,7 @@ val chunk_assembler = Doc2Chunk()
       .setInputCols(Array("doc"))
       .setOutputCol("chunk")
  
-val mapperModel = ChunkMapperModel.load("models/model_meddra_llt_pt_mapper")
+val mapperModel = ChunkMapperModel.load("meddra_llt_pt_mapper")
     .setInputCols(Array("chunk"))
     .setOutputCol("mappings")
     .setRels(["pt_code"])
@@ -113,3 +113,8 @@ val result = mapper_model.transform(data)
 |Output Labels:|[mappings]|
 |Language:|en|
 |Size:|1.9 MB|
+
+## References
+This model is trained with the v27 MedDRA dataset.
+
+**To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
