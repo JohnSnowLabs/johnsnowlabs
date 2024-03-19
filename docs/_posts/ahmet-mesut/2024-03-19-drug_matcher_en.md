@@ -42,16 +42,21 @@ documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-tokenizer = Tokenizer()\
+sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
     .setInputCols(["document"])\
+    .setOutputCol("sentence")
+
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
     .setOutputCol("token")
 
 text_matcher = TextMatcherInternalModel.pretrained("drug_matcher","en","clinical/models") \
-    .setInputCols(["document", "token"])\
+    .setInputCols(["sentence", "token"])\
     .setOutputCol("matched_text")\
 
 mathcer_pipeline = Pipeline().setStages([
                   documentAssembler,
+                  sentenceDetector,
                   tokenizer,
                   text_matcher])
 
@@ -64,17 +69,22 @@ result = matcher_model.transform(data)
 val documentAssembler = new DocumentAssembler()
 	.setInputCol("text")
 	.setOutputCol("document")
-	
+
+val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+    .setInputCols(Array("document")\
+    .setOutputCol("sentence")
+
 val tokenizer = new Tokenizer()
-	.setInputCols(Array("document"))
+	.setInputCols(Array("sentence"))
 	.setOutputCol("token")
 	
 val text_matcher = TextMatcherInternalModel.pretrained("drug_matcher","en","clinical/models")
-	.setInputCols(Array("document","token"))
+	.setInputCols(Array("sentence","token"))
 	.setOutputCol("matched_text")
 	
 val mathcer_pipeline = new Pipeline()
 	.setStages(Array( documentAssembler,
+			  sentenceDetector,
 			  tokenizer,
     			  text_matcher))
 	
@@ -112,3 +122,7 @@ val result = matcher_model.transform(data)
 |Language:|en|
 |Size:|5.7 MB|
 |Case sensitive:|false|
+
+## Dataset
+
+This model is trained with an in-house dataset.
