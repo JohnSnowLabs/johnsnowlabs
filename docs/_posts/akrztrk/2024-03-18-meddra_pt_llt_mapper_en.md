@@ -27,8 +27,6 @@ This pretrained model maps MedDRA-PT (Preferred Term) codes to their correspondi
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/meddra_pt_llt_mapper_en_5.3.0_3.0_1710776754238.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/meddra_pt_llt_mapper_en_5.3.0_3.0_1710776754238.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
