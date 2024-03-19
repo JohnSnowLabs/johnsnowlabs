@@ -27,8 +27,7 @@ This pretrained model maps UMLS codes to corresponding CPT codes.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/umls_cpt_mapper_en_5.2.1_3.0_1709066255479.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/umls_cpt_mapper_en_5.2.1_3.0_1709066255479.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 ## How to use
 
@@ -46,7 +45,7 @@ chunkAssembler = Doc2Chunk()\
     .setInputCols("doc")\
     .setOutputCol("umls_code")\
 
-chunkerMapper = ChunkMapperModel.pretrained("umls_cpt_mapper","en","clinical/models")\
+chunkerMapper = ChunkMapperModel.load("umls_cpt_mapper")\
     .setInputCols(["umls_code"])\
     .setOutputCol("mappings")\
 
@@ -70,7 +69,7 @@ val chunkAssembler = new Doc2Chunk()
     .setInputCols("doc")
     .setOutputCol("umls_code")
 	
-val chunkerMapper = ChunkMapperModel.pretrained("umls_cpt_mapper","en","clinical/models")
+val chunkerMapper = ChunkMapperModel.load("umls_cpt_mapper")
     .setInputCols(Array("umls_code"))
     .setOutputCol("mappings")
 	
@@ -112,3 +111,8 @@ result= mapper_model.transform(data)
 |Output Labels:|[mappings]|
 |Language:|en|
 |Size:|601.8 KB|
+
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**

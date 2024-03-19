@@ -29,8 +29,7 @@ CPT Codes and their normalized definition with ``sbiobert_base_cased_mli`` sente
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.Improved_Entity_Resolvers_in_SparkNLP_with_sBert.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}{:target="_blank"}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_cpt_en_2.6.4_2.4_1606235767322.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_cpt_en_2.6.4_2.4_1606235767322.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 {:.h2_title}
 ## How to use 
@@ -40,19 +39,30 @@ CPT Codes and their normalized definition with ``sbiobert_base_cased_mli`` sente
 
 ```python
 ...
-chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+chunk2doc = Chunk2Doc()\
+    .setInputCols("ner_chunk")
+    .setOutputCol("ner_chunk_doc")
 
 sbert_embedder = BertSentenceEmbeddings\
-.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-.setInputCols(["ner_chunk_doc"])\
-.setOutputCol("sbert_embeddings")  
+    .pretrained("sbiobert_base_cased_mli","en","clinical/models")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("sbert_embeddings")  
 
-cpt_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_cpt","en", "clinical/models") \
-.setInputCols(["sbert_embeddings"]) \
-.setOutputCol("resolution")\
-.setDistanceFunction("EUCLIDEAN")
+cpt_resolver = SentenceEntityResolverModel.load("sbiobertresolve_cpt") \
+    .setInputCols(["sbert_embeddings"]) \
+    .setOutputCol("resolution")\
+    .setDistanceFunction("EUCLIDEAN")
 
-nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, cpt_resolver])
+nlpPipeline = Pipeline(stages=[
+    document_assembler, 
+    sentence_detector, 
+    tokenizer, 
+    word_embeddings, 
+    clinical_ner, 
+    ner_converter, 
+    chunk2doc, 
+    sbert_embedder, 
+    cpt_resolver])
 
 data = spark.createDataFrame([["This is an 82 - year-old male with a history of prior tobacco use , hypertension , chronic renal insufficiency , COPD , gastritis , and TIA who initially presented to Braintree with a non-ST elevation MI and Guaiac positive stools , transferred to St . Margaret\'s Center for Women & Infants for cardiac catheterization with PTCA to mid LAD lesion complicated by hypotension and bradycardia requiring Atropine , IV fluids and transient dopamine possibly secondary to vagal reaction , subsequently transferred to CCU for close monitoring , hemodynamically stable at the time of admission to the CCU ."]]).toDF("text")
 
@@ -61,20 +71,32 @@ results = nlpPipeline.fit(data).transform(data)
 ```
 ```scala
 ...
-chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+chunk2doc = Chunk2Doc()
+    .setInputCols("ner_chunk")
+    .setOutputCol("ner_chunk_doc")
 
 val sbert_embedder = BertSentenceEmbeddings
-.pretrained("sbiobert_base_cased_mli","en","clinical/models")
-.setInputCols(Array("ner_chunk_doc"))
-.setOutputCol("sbert_embeddings")
+    .pretrained("sbiobert_base_cased_mli","en","clinical/models")
+    .setInputCols(Array("ner_chunk_doc"))
+    .setOutputCol("sbert_embeddings")
 
 val cpt_resolver = SentenceEntityResolverModel
-.pretrained("sbiobertresolve_cpt","en", "clinical/models")
-.setInputCols(Array("ner_chunk", "sbert_embeddings"))
-.setOutputCol("resolution")
-.setDistanceFunction("EUCLIDEAN")
+    .load("sbiobertresolve_cpt")
+    .setInputCols(Array("ner_chunk", "sbert_embeddings"))
+    .setOutputCol("resolution")
+    .setDistanceFunction("EUCLIDEAN")
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, cpt_resolver))
+val pipeline = new Pipeline().setStages(
+    Array(
+        document_assembler, 
+        sentence_detector, 
+        tokenizer, 
+        word_embeddings, 
+        clinical_ner, 
+        ner_converter, 
+        chunk2doc, 
+        sbert_embedder, 
+        cpt_resolver))
 
 val data = Seq("This is an 82 - year-old male with a history of prior tobacco use , hypertension , chronic renal insufficiency , COPD , gastritis , and TIA who initially presented to Braintree with a non-ST elevation MI and Guaiac positive stools , transferred to St . Margaret\'s Center for Women & Infants for cardiac catheterization with PTCA to mid LAD lesion complicated by hypotension and bradycardia requiring Atropine , IV fluids and transient dopamine possibly secondary to vagal reaction , subsequently transferred to CCU for close monitoring , hemodynamically stable at the time of admission to the CCU .").toDF("text")
 val result = pipeline.fit(data).transform(data)
@@ -117,3 +139,7 @@ val result = pipeline.fit(data).transform(data)
 {:.h2_title}
 ## Data Source
 Trained on Current Procedural Terminology dataset with ``sbiobert_base_cased_mli`` sentence embeddings.
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**

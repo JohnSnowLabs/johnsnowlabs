@@ -28,8 +28,7 @@ Predicts CPT codes and their descriptions.
 {:.btn-box}
 [Live Demo](https://nlp.johnsnowlabs.com/demos){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/3.Clinical_Entity_Resolvers.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_cpt_en_3.0.4_3.0_1621189492240.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_cpt_en_3.0.4_3.0_1621189492240.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 ## How to use
 
@@ -71,12 +70,21 @@ sbert_embedder = BertSentenceEmbeddings\
     .setOutputCol("sbert_embeddings")
 
 cpt_resolver = SentenceEntityResolverModel\
-    .pretrained("sbiobertresolve_cpt","en", "clinical/models") \
+    .load("sbiobertresolve_cpt") \
     .setInputCols(["ner_chunk", "sbert_embeddings"]) \
     .setOutputCol("resolution")\
     .setDistanceFunction("EUCLIDEAN")
 
-nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, cpt_resolver])
+nlpPipeline = Pipeline(stages=[
+    document_assembler, 
+    sentence_detector, 
+    tokenizer, 
+    word_embeddings, 
+    clinical_ner, 
+    ner_converter, 
+    chunk2doc, 
+    sbert_embedder, 
+    cpt_resolver])
 
 data = spark.createDataFrame([["This is an 82 - year-old male with a history of prior tobacco use , hypertension , chronic renal insufficiency , COPD , gastritis , and TIA who initially presented to Braintree with a non-ST elevation MI and Guaiac positive stools , transferred to St . Margaret\'s Center for Women & Infants for cardiac catheterization with PTCA to mid LAD lesion complicated by hypotension and bradycardia requiring Atropine , IV fluids and transient dopamine possibly secondary to vagal reaction , subsequently transferred to CCU for close monitoring , hemodynamically stable at the time of admission to the CCU ."]]).toDF("text")
 
@@ -117,12 +125,21 @@ val sbert_embedder = BertSentenceEmbeddings
     .setOutputCol("sbert_embeddings")
 
 val cpt_resolver = SentenceEntityResolverModel
-    .pretrained("sbiobertresolve_cpt","en", "clinical/models")
+    .load("sbiobertresolve_cpt")
     .setInputCols(Array("ner_chunk", "sbert_embeddings"))
     .setOutputCol("resolution")
     .setDistanceFunction("EUCLIDEAN")
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, cpt_resolver))
+val pipeline = new Pipeline().setStages(
+    Array(
+        document_assembler, 
+        sentence_detector, 
+        tokenizer, word_embeddings, 
+        clinical_ner, 
+        ner_converter, 
+        chunk2doc, 
+        sbert_embedder, 
+        cpt_resolver))
 
 val data = Seq("""This is an 82 - year-old male with a history of prior tobacco use , hypertension , chronic renal insufficiency , COPD , gastritis , and TIA who initially presented to Braintree with a non-ST elevation MI and Guaiac positive stools , transferred to St . Margaret\'s Center for Women & Infants for cardiac catheterization with PTCA to mid LAD lesion complicated by hypotension and bradycardia requiring Atropine , IV fluids and transient dopamine possibly secondary to vagal reaction , subsequently transferred to CCU for close monitoring , hemodynamically stable at the time of admission to the CCU .""").toDS().toDF("text")
 
@@ -174,3 +191,7 @@ nlu.load("en.resolve").predict("""This is an 82 - year-old male with a history o
 ## Data Source
 
 Trained on Current Procedural Terminology dataset with ``sbiobert_base_cased_mli`` sentence embeddings.
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
