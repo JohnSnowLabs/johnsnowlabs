@@ -34,13 +34,13 @@ In this pipeline, five NER, one assertion and one relation extraction model were
 
 - **Assertion Status Labels:**  `Hypothetical_Or_Absent`, `Present_Or_Past`, `SomeoneElse`
 
-- **Relation Extraction Labels:** Given Relation Pairs : `Disease_Syndrome_Disorder-Drug`, `Drug-Disease_Syndrome_Disorder`, `Drug-Mental_Healt`,`Mental_Health-Drug`, `Allergen-Drug`, `Drug-Allergen`,  `Psychological_Condition-Drug`, `Drug-Psychological_Condition`, `BMI-Obesity`, `Obesity-BMI` , `Alcohol-Substance_Quantity`, `Substance_Quantity-Alcohol`, `Smoking-Substance_Quantity`, `Substance_Quantity-Smoking`, `Substance-Substance_Quantity`, `Substance_Quantity-Substance`])
+- **Relation Extraction Labels:** Given Relation Pairs : `Disease_Syndrome_Disorder-Drug`, `Drug-Disease_Syndrome_Disorder`, `Drug-Mental_Healt`,`Mental_Health-Drug`, `Allergen-Drug`, `Drug-Allergen`,  `Psychological_Condition-Drug`, `Drug-Psychological_Condition`, `BMI-Obesity`, `Obesity-BMI` , `Alcohol-Substance_Quantity`, `Substance_Quantity-Alcohol`, `Smoking-Substance_Quantity`, `Substance_Quantity-Smoking`, `Substance-Substance_Quantity`, `Substance_Quantity-Substance`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_public_health_en_5.3.0_3.2_1710864403939.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_public_health_en_5.3.0_3.2_1710864403939.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_public_health_en_5.3.0_3.2_1710866529957.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_public_health_en_5.3.0_3.2_1710866529957.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -48,6 +48,7 @@ In this pipeline, five NER, one assertion and one relation extraction model were
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
