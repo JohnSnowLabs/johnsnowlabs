@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Mapping CPT Codes with Their Corresponding UMLS Codes | cpt_umls_mapper | Healthcare NLP 5.2.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps CPT codes to corresponding UMLS codes.Predicted Entitiesumls_codeLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  document_assembler = DocumentAssembler()\    .setInputCol('text')\    .setOutputCol('doc')chunk_assembler = Doc2Chunk()\    .setInputCols(['do...">
+<meta name="description" content="DescriptionThis pretrained model maps CPT codes to corresponding UMLS codes.Predicted Entitiesumls_codeLive DemoOpen in ColabHow to use  PythonJSLScalaNLU  document_assembler = DocumentAssembler()\    .setInputCol('text')\    .setOutputCol('doc')chunk_assembler = Doc2Chunk()\    .setInputCols(['doc'])\    .setOutput...">
 <!-- <link rel="canonical" href="/2024/02/27/cpt_umls_mapper_en.html"> -->
 <link rel="canonical" href="/2024/02/27/cpt_umls_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -515,9 +515,7 @@ function wrapWordInSpan(data, wordToWrap) {
 <p><code class="language-plaintext highlighter-rouge">umls_code</code></p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/cpt_umls_mapper_en_5.2.1_3.0_1709067375032.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/cpt_umls_mapper_en_5.2.1_3.0_1709067375032.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<button class="button button-orange" disabled="">Open in Colab</button></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -532,7 +530,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">'doc'</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'cpt_code'</span><span class="p">)</span>
  
-<span class="n">mapperModel</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"cpt_umls_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+<span class="n">mapperModel</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"cpt_umls_mapper"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"cpt_code"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
 
@@ -555,7 +553,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"doc"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"cpt_code"</span><span class="o">)</span>
 	
-<span class="k">val</span> <span class="nv">mapperModel</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"cpt_umls_mapper"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">mapperModel</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"cpt_umls_mapper"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"cpt_code"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
 	
@@ -621,6 +619,10 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
   </tbody>
 </table>
+
+<h2 id="references">References</h2>
+
+<p><strong>CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</strong></p>
 </div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-02-27T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
