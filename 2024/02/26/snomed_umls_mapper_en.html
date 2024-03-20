@@ -543,8 +543,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"snomed2chunk"</span><span class="p">)</span>
 
 <span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"snomed_umls_mapper"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"umls2chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"snomed2chunk"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"umls_code"</span><span class="p">])</span>
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
     <span class="n">documentAssembler</span><span class="p">,</span>
@@ -578,8 +579,9 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"snomed2chunk"</span><span class="o">)</span>
 	
 <span class="k">val</span> <span class="nv">chunkerMapper</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"snomed_umls_mapper"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"umls2chunk"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"snomed2chunk"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setRels</span><span class="o">([</span><span class="err">"</span><span class="kt">umls_code</span><span class="err">"</span><span class="o">])</span>
 	
 <span class="k">val</span> <span class="nv">Pipeline</span><span class="o">(</span><span class="n">stages</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">(</span>
      <span class="n">documentAssembler</span><span class="o">,</span>
