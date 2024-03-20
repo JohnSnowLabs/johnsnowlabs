@@ -111,9 +111,9 @@ val result = mapper_model.transform(data)
 +--------------------------------+----------+--------------------------------------------------------+
 |chunk                           |icd10_code|meddra_code                                             |
 +--------------------------------+----------+--------------------------------------------------------+
-|Type 2 diabetes mellitus        |E11       |10067585.0:Type 2 diabetes mellitus                     |
-|Typhoid fever                   |A01.0     |10045275.0:Typhoid fever                                |
-|Malignant neoplasm of oesophagus|C15.9     |10026182.0:Malignant neoplasm of oesophagus, unspecified|
+|Type 2 diabetes mellitus        |E11       |10067585:Type 2 diabetes mellitus                       |
+|Typhoid fever                   |A01.0     |10045275:Typhoid fever                                  |
+|Malignant neoplasm of oesophagus|C15.9     |10026182:Malignant neoplasm of oesophagus, unspecified  |
 +--------------------------------+----------+--------------------------------------------------------+
 ```
 
@@ -135,4 +135,4 @@ val result = mapper_model.transform(data)
 
 This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset. 
 
-To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.
+**To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
