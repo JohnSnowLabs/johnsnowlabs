@@ -57,8 +57,9 @@ resolver2chunk = Resolution2Chunk()\
     .setOutputCol("snomed2chunk")
 
 chunkerMapper = ChunkMapperModel.pretrained("snomed_umls_mapper", "en", "clinical/models")\
-    .setInputCols(["umls2chunk"])\
-    .setOutputCol("mappings")
+    .setInputCols(["snomed2chunk"])\
+    .setOutputCol("mappings")\
+    .setRels(["umls_code"])
 
 pipeline = Pipeline(stages = [
     documentAssembler,
@@ -93,8 +94,9 @@ val resolver2chunk = new Resolution2Chunk()
     .setOutputCol("snomed2chunk")
 	
 val chunkerMapper = ChunkMapperModel.pretrained("snomed_umls_mapper","en","clinical/models")
-    .setInputCols(Array("umls2chunk"))
+    .setInputCols(Array("snomed2chunk"))
     .setOutputCol("mappings")
+    .setRels(["umls_code"])
 	
 val Pipeline(stages = Array(
      documentAssembler,
