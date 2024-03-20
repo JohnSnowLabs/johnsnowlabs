@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline to Resolve Medication Codes(Transform)
+title: Pipeline to Resolve Medication Codes
 author: John Snow Labs
 name: medication_resolver_pipeline
 date: 2024-03-20
@@ -22,13 +22,13 @@ A pretrained resolver pipeline to extract medications and resolve their adverse 
 
 Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication.
 
-This pipeline can be used with Spark transform. You can use `medication_resolver_pipeline` as Lightpipeline (with `annotate/fullAnnotate`).
+This pipeline can be used as Lightpipeline (with `annotate/fullAnnotate`). You can use `medication_resolver_transform_pipeline` for Spark transform.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medication_resolver_pipeline_en_5.3.0_3.0_1710947659102.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/medication_resolver_pipeline_en_5.3.0_3.0_1710947659102.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medication_resolver_pipeline_en_5.3.0_3.0_1710949562858.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/medication_resolver_pipeline_en_5.3.0_3.0_1710949562858.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -36,7 +36,6 @@ This pipeline can be used with Spark transform. You can use `medication_resolver
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -44,7 +43,8 @@ from sparknlp.pretrained import PretrainedPipeline
 ner_pipeline = PretrainedPipeline("medication_resolver_pipeline", "en", "clinical/models")
 
 result = ner_pipeline.annotate("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
-The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.""")
+The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.
+""")
 
 ```
 ```scala
@@ -54,7 +54,8 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 val ner_pipeline = PretrainedPipeline("medication_resolver_pipeline", "en", "clinical/models")
 
 val result = ner_pipeline.annotate("""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
-The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.""")
+The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.
+""")
 
 ```
 </div>
@@ -62,16 +63,12 @@ The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.""")
 ## Results
 
 ```bash
-
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-|chunk                       |ner_label|ADE                        |RxNorm |Action                    |Treatment                                 |UMLS    |SNOMED_CT|NDC_Product|NDC_Package  |
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-|Amlodopine Vallarta 10-320mg|DRUG     |Gynaecomastia              |722131 |NONE                      |NONE                                      |C1949334|425838008|00093-7693 |00093-7693-56|
-|Eviplera                    |DRUG     |Anxiety                    |217010 |Inhibitory Bone Resorption|Osteoporosis                              |C0720318|NONE     |NONE       |NONE         |
-|Lescol 40 MG                |DRUG     |NONE                       |103919 |Hypocholesterolemic       |Heterozygous Familial Hypercholesterolemia|C0353573|NONE     |00078-0234 |00078-0234-05|
-|Everolimus 1.5 mg tablet    |DRUG     |Acute myocardial infarction|2056895|NONE                      |NONE                                      |C4723581|NONE     |00054-0604 |00054-0604-21|
-+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
-
+|    | ner_chunk                    | ADE                         |   RxNorm_Chunk | Action                     | Treatment                                  | UMLS     | SNOMED_CT   | NDC_Package   | NDC_Product   | entity   |
+|---:|:-----------------------------|:----------------------------|---------------:|:---------------------------|:-------------------------------------------|:---------|:------------|:--------------|:--------------|:---------|
+|  0 | Amlodopine Vallarta 10-320mg | Gynaecomastia               |         722131 | -                          | -                                          | C1949334 | 425838008   | 00093-7693-56 | 00093-7693    | DRUG     |
+|  1 | Eviplera                     | Anxiety                     |         217010 | Inhibitory Bone Resorption | Osteoporosis                               | C0720318 | -           | -             | -             | DRUG     |
+|  2 | Lescol 40 MG                 | -                           |         103919 | Hypocholesterolemic        | Heterozygous Familial Hypercholesterolemia | C0353573 | -           | 00078-0234-05 | 00078-0234    | DRUG     |
+|  3 | Everolimus 1.5 mg tablet     | Acute myocardial infarction |        2056895 | -                          | -                                          | C4723581 | -           | 00054-0604-21 | 00054-0604    | DRUG     |
 ```
 
 {:.model-param}
@@ -104,12 +101,10 @@ The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.""")
 - BertSentenceEmbeddings
 - SentenceEntityResolverModel
 - ResolverMerger
-- Doc2Chunk
 - ChunkMapperModel
 - ChunkMapperModel
 - ChunkMapperModel
 - ChunkMapperModel
 - ChunkMapperModel
-- Doc2Chunk
 - ChunkMapperModel
 - Finisher
