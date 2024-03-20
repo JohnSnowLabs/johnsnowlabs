@@ -48,6 +48,7 @@ In this pipeline, two NER, one text matcher, one sentence classifier, one assert
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
