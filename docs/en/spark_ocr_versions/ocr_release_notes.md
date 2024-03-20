@@ -3,9 +3,9 @@ layout: docs
 header: true
 seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
-permalink: /docs/en/spark_ocr_versions/ocr_release_notes
+permalink: /docs/en/spark_ocr_versions/release_notes_5_2_0
 key: docs-ocr-release-notes
-modify_date: "2024-01-03"
+modify_date: "2024-02-23"
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,22 +13,34 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 5.1.2
+## 5.2.0
 
-Release date: 03-01-2024
+Release date: 23-02-2024
 
 </div><div class="h3-box" markdown="1">
 
+<<<<<<< Updated upstream
 ## Visual NLP 5.1.2 Release Notes 🕶️
+=======
+ ## Visual NLP 5.2.0 Release Notes 🕶️
 
-**We are glad to announce that Visual NLP 5.1.2 has been released!TThis release comes with faster than ever OCR models, improved Table Extraction pipelines, bug fixes, and more! 📢📢📢**
+
+>>>>>>> Stashed changes
+
+**We are glad to announce that Visual NLP 5.2.0 has been released. This release comes with new models, bug fixes, blog posts, and more!! 📢📢📢**
 
 ## Highlights 🔴
-+ New optimized OCR checkpoints with up to 5x speed ups and GPU support.
-+ New improved Table Extraction Pipeline with improved Cell Detection stage.
-+ Other Changes.
-+ Bug fixes.
++ New Chart-To-Text dePlot based models.
++ Support for Confidence Scores in Visual Question Answering Models.
++ Improved stability and new metrics for ImageToTextV2 models.
++ New Blog Post on ImageToTextV2 models.
++ Docker image for Visual NLP.
++ New Pretrained pipeline basic_table_extractor
++ Spark 3.5 support.
++ Bug Fixes
++ Other Changes
 
+<<<<<<< Updated upstream
 </div><div class="h3-box" markdown="1">
 
 ## New optimized OCR checkpoints with up to 5x speed ups and GPU support 🚀
@@ -39,14 +51,18 @@ We've added new checkpoints together with more options to choose which optimizat
 
 ### New checkpoints for ImageToTextV2 📍
 All previous checkpoints have been updated to work with the latest optimizations, and in addition these 4 new checkpoints have been added,
+=======
+## New Chart-To-Text dePlot based models 📈
+Chart To Text is the task of converting an image chart into a serialized textual version representation of the chart. To understand this, consider the following example,
 
-* ocr_large_printed_v2_opt
-* ocr_large_printed_v2
-* ocr_large_handwritten_v2_opt
-* ocr_large_handwritten_v2
+![image](/assets/images/ocr/chart.png)
+>>>>>>> Stashed changes
 
-These 4 checkpoints are more accurate than their 'base' counterparts. We are releasing metrics for the 'base' checkpoints today, and a full chart including these checkpoints will be presented in a blogpost to be released soon.
+Maps to the following text based representation,
 
+![image](/assets/images/ocr/extracted_graph.png)
+
+<<<<<<< Updated upstream
 </div><div class="h3-box" markdown="1">
 
 ### New options for ImageToTextV2 ⚡️
@@ -59,20 +75,25 @@ ImageToTextV2 now supports the following configurations:
 ### Choosing the best checkpoint for your problem 💥
 We put together this grid reflecting performance and accuracy metrics to help you choose the most appropriate checkpoint for your use case.
 * Accuracy
+=======
+For an end-to-end example, please check [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrChartToTextTable.ipynb).
 
-![image](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/0739e251-515a-4bbe-b436-df2c9e682f66)
+## Support for Confidence Scores in Visual Question Answering Models. 📍
+Now, VisualQuestionAnswering models support confidence scores. The output schema for VisualQuestionAnswering models has been updated to include questions, answers and confidence scores. To enable confidence scores in the output of these models you should call `setConfidenceScore(true)`. For example,
+>>>>>>> Stashed changes
 
 
-* Performance
+![image](/assets/images/ocr/new_schema_vqa.png)
 
-![image](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/13bb2eb1-db9b-40cd-bc20-a410424cb5c3)
+shows the schema and sample output for the case of two questions, with their corresponding answers and confidence scores.
 
-Note:
-* CER: character error rate.
-* These runtime performance metrics were collected in Databricks.
-* The CPU cluster is a 30 node cluster of 64 DBU/h, and the GPU cluster is a 10 node cluster, of 15 DBU/h.
-* Compared to previous releases, the optimizations introduced in this release yield a speed up of almost 5X, and a cost reduction of more than 4 times, if GPU is used.
+## Improved stability and new metrics for ImageToTextV2 models. ⚡️
+ImageToTextV2, our Transformer-based OCR has been improved, and extensively stress tested for stability and reliability.
+These are the latest metrics for accuracy and runtime performance for all checkpoints,
 
+![image](/assets/images/ocr/ocr_table.png)
+
+<<<<<<< Updated upstream
 </div><div class="h3-box" markdown="1">
 
 ## New improved Table Extraction Pipeline with improved Cell Detection stage. 🔥
@@ -80,47 +101,35 @@ Starting in this release, our HocrToTextTable annotator can receive information 
 This is what a pipeline would look like,
 ```
 binary_to_image = BinaryToImage()
+=======
+A key takeaway from this chart is the following: _The [Dbu/h] is four times higher for CPU compared to GPU, with no variance in accuracy. Utilizing GPU can achieve identical outcomes at one-fourth of the cost. GPU is your friend!_
+>>>>>>> Stashed changes
 
-img_to_hocr = ImageToHocr() \
-    .setInputCol("image") \
-    .setOutputCol("hocr") \
-    .setIgnoreResolution(False) \
-    .setOcrParams(["preserve_interword_spaces=0"])
+## New Blog Post in ImageToTextV2 models. 💥
+Want to learn about the best practices to scale out your OCR pipelines?. Read the full article [here](https://medium.com/john-snow-labs/unleashing-the-power-of-high-throughput-inference-with-tr-ocr-1f0fa3bc46c6).
 
-cell_detector = ImageDocumentRegionDetector() \
-    .pretrained("region_cell_detection", "en", "clinical/ocr") \
-    .setInputCol("image") \
-    .setOutputCol("cells") \
-    .setScoreThreshold(0.8)
 
-hocr_to_table = HocrToTextTable() \
-    .setInputCol("hocr") \
-    .setRegionCol("table_regions") \
-    .setOutputCol("tables") \
-    .setCellsCol("cells")
+## Docker image for Visual NLP. 🔥
+For users that require running inside a container we have created the following [instructions](https://github.com/JohnSnowLabs/spark-ocr-workshop/tree/master/docker/visual-ner) and [sample notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/docker/visual-ner/content/VisualNlp.ipynb).
 
-PipelineModel(stages=[
-    binary_to_image,
-    img_to_hocr,
-    cell_detector
-    hocr_to_table])
-```
-The following image depicts intermediate cell detection along with the final result,
-![table_cell_sample](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/d001a40b-2106-4932-a148-96b521f0fccd)
+## New Pretrained pipeline `basic_table_extractor`
 
-For a complete, end-to-end example we encourage you to check the sample notebook,
+This is a complete Table Extraction Pipeline. Following, it's a basic example of how to call this pipeline,
+![image](/assets/images/ocr/basic_table_extractor.png)
 
-[SparkOcrImageTableRecognitionWHOCR.ipynb](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb)
+And you should also check the full example in [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/webinars/zs_table_processing/TableExtractionBasics.ipynb).
 
+<<<<<<< Updated upstream
 </div><div class="h3-box" markdown="1">
+=======
+## Spark 3.5 support 🎯
+We extended support to Apache Spark 3.5. All tests were run using Spark 3.5 and Python 3.10.
+>>>>>>> Stashed changes
 
-## Other changes 🎯
-* Dicom private tags in metadata now can be removed in DicomMetadataDeidentifier: calling  setRemovePrivateTags(true) will cause the tags marked as private to be removed in the output Dicom document.
-* Extended Spark support to 3.4.2.
-* Turkish language now supported in ImageToText. To use it, set it by calling ImageToText.setLanguage("tur").
-* start() function now supports the configuration of GPU through the boolean `use_gpu` parameter.
-* Faster(20%), and smaller footprint, `docvqa_pix2struct_jsl_opt` Visual Question Answering checkpoint.
+## Other Changes
+* Pix2struct models now support caching, both docvqa_pix2struct_jsl and docvqa_pix2struct_jsl_opt pix2struct based checkpoints now support caching, which is enabled by default.
 
+<<<<<<< Updated upstream
 </div><div class="h3-box" markdown="1">
 
 ## Bug Fixes 🪲
@@ -129,11 +138,11 @@ For a complete, end-to-end example we encourage you to check the sample notebook
 * Null Regions in HocrToTextTable are handled properly.
 * display_tables can now handle empty tables better.
 * Vulnerabilities in Python dependencies.
+=======
+>>>>>>> Stashed changes
 
 
-
-* This release is compatible with ```Spark NLP 5.2.0``` and Spark NLP for``` Healthcare 5.1.1```
-
+* This release is compatible with ```Spark NLP 5.2.2``` and Spark NLP for``` Healthcare 5.2.1```
 
 </div><div class="prev_ver h3-box" markdown="1">
 
