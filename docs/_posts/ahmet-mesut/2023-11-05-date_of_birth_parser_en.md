@@ -5,7 +5,7 @@ author: John Snow Labs
 name: date_of_birth_parser
 date: 2023-11-05
 tags: [en, licensed, contextual_parser, date_of_birth, dob, clinical]
-task: Contextual Parser
+task: [Contextual Parser, Named Entity Recognition]
 language: en
 edition: Healthcare NLP 5.0.2
 spark_version: 3.0

@@ -69,6 +69,7 @@ try:
             TFGraphBuilder,
             ChunkConverter,
             ChunkFilterer,
+            NerConverterInternal,
             NerConverterInternal as NerConverter,
             NerChunker,
             AssertionFilterer,
@@ -104,6 +105,13 @@ try:
             Text2SQL,
             IOBTagger,
             DocumentFiltererByClassifier,
+            Flattener,
+            EntityRulerInternalApproach as EntityRulerApproach,
+            EntityRulerInternalModel as EntityRulerModel,
+            TextMatcherInternal as TextMatcher,
+            TextMatcherInternalModel as TextMatcherModel,
+            RegexMatcherInternal as RegexMatcher,
+            RegexMatcherInternalModel as RegexMatcherModel,
         )
 
         from sparknlp_jsl.modelTracer import ModelTracer

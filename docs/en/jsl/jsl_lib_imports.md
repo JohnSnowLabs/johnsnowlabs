@@ -76,7 +76,6 @@ The following Functions, Classes and Modules will available in the global namesp
 
 ## The **medical** Module
 
-
 `medical` module with annotator classes and methods from [Spark NLP for Medicine](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)  like `medical.RelationExtractionDL`  and `medical.profile()`
 - [Medical Annotators](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators) , i.e. `medical.DeIdentification`
 - [Training Methods](https://nlp.johnsnowlabs.com/docs/en/licensed_training)  i.e. `medical.AnnotationToolJsonReader`
@@ -101,7 +100,6 @@ The following Functions, Classes and Modules will available in the global namesp
 
 ## The **finance** Module
 
-
 `finance` module with annotator classes and methods from [Spark NLP for Finance](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)  like `finance.RelationExtractionDL`  and `finance.profile()`
 - [Finance Annotators](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators) , i.e. `finance.DeIdentification`
 - [Training Methods](https://nlp.johnsnowlabs.com/docs/en/licensed_training)  i.e. `finance.AnnotationToolJsonReader`
@@ -109,5 +107,5 @@ The following Functions, Classes and Modules will available in the global namesp
 - **NOTE:** Any class which has `Finance` in its name is available, but the `Finance` prefix has been omitted. I.e. `finance.NerModel` maps to `sparknlp_jsl.annotator.FinanceNerModel`
   - This is achieved via `from sparknlp_jsl.annotator import FinanceNerModel as NerModel` under the hood.
 - To see all the imports see [the source](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/johnsnowlabs/finance.py)
-- 
+
 </div></div>

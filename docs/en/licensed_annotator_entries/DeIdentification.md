@@ -65,7 +65,7 @@ same_length_chars: Replace the obfuscated entity with a masking sequence compose
 
 - `minYear`: (IntParam) Minimum year to use when converting date to year
 
-- `mode`: (Param[String]) Mode for Anonymizer ['mask'|'obfuscate'] Given the following text
+- `mode`: (Param[String]) Mode for Anonymizer ['mask', 'obfuscate'] Given the following text
 
 - `obfuscateDate`: (BooleanParam) When mode=="obfuscate" whether to obfuscate dates or not.
 
@@ -98,6 +98,9 @@ same_length_chars: Replace the obfuscated entity with a masking sequence compose
 - `unnormalizedDateMode`: (Param[String]) The mode to use if the date is not formatted.
 
 - `zipCodeTag`: (Param[String]) Tag representing zip codes in the obfuscate reference file (default: ZIP).
+
+- `MetadataMaskingPolicy(str)`: (Param[String]) Options : 'entity_labels', 'same_length_chars', 'fixed_length_chars' 
+If set, metadata includes the masked form of the document.
 
 
 To create a configured DeIdentificationModel, please see the example of DeIdentification.

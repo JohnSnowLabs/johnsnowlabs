@@ -12,7 +12,8 @@ sidebar:
 ---
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
-Installing 
+
+**Installing** 
 
 ## Annotator & PretrainedPipeline based pipelines
 You can create [Legal Annotator & PretrainedPipeline based pipelines](https://nlp.johnsnowlabs.com/docs/en/jsl/concepts) using all the classes 
@@ -133,7 +134,7 @@ The rights granted to you under this Agreement are not exclusive.sed Business.
 Source: SESA CO.., 11/7/2016
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 ### Custom Pipes
 Alternatively you can compose [Legal Annotators](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators) & [Open Source Annotators](https://nlp.johnsnowlabs.com/docs/en/annotators) into a pipeline which offers the highest degree of customization.

@@ -32,7 +32,19 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ADE/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/16.Adverse_Drug_Event_ADE_NER_and_Classifier.ipynb       
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/16.Adverse_Drug_Event_ADE_NER_and_Classifier.ipynb  
+        - title: OPIOID
+          id: opioid
+          image: 
+              src: /assets/images/OPIOID.svg
+          excerpt: This demo includes details about different kinds of pretrained models to detect and label opioid related entities within text data.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/OPIOID/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/OPIOID.ipynb
         - title: Detect drugs and prescriptions
           id: detect_drugs_and_prescriptions
           image: 

@@ -2,7 +2,7 @@
 layout: model
 title: Pipeline to Detect Social Determinants of Health Mentions
 author: John Snow Labs
-name: ner_sdoh_mentions_pipeline
+name: ner_sdoh_mentions_pipeline`
 date: 2023-03-08
 tags: [en, licensed, ner, sdoh, mentions, clinical]
 task: Named Entity Recognition

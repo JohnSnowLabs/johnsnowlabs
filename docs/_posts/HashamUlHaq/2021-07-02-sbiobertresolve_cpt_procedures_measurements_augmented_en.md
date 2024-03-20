@@ -28,8 +28,7 @@ CPT codes and their descriptions.
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.Improved_Entity_Resolvers_in_SparkNLP_with_sBert.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_cpt_procedures_measurements_augmented_en_3.1.0_3.0_1625257370771.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_cpt_procedures_measurements_augmented_en_3.1.0_3.0_1625257370771.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 ## How to use
 
@@ -43,24 +42,24 @@ Merge ner_jsl and ner_measurements_clinical model chunks.
 
 ```python
 documentAssembler = DocumentAssembler()\
-.setInputCol("text")\
-.setOutputCol("ner_chunk")
+    .setInputCol("text")\
+    .setOutputCol("ner_chunk")
 
 jsl_sbert_embedder = BertSentenceEmbeddings\
-.pretrained('sbiobert_base_cased_mli','en','clinical/models')\
-.setInputCols(["ner_chunk"])\
-.setOutputCol("sbert_embeddings")
+    .pretrained('sbiobert_base_cased_mli','en','clinical/models')\
+    .setInputCols(["ner_chunk"])\
+    .setOutputCol("sbert_embeddings")
 
 cpt_resolver = SentenceEntityResolverModel\
-.pretrained("sbiobertresolve_cpt_procedures_measurements_augmented", "en", "clinical/models") \
-.setInputCols(["ner_chunk", "sbert_embeddings"]) \
-.setOutputCol("cpt_code")
+    .load("sbiobertresolve_cpt_procedures_measurements_augmented") \
+    .setInputCols(["ner_chunk", "sbert_embeddings"]) \
+    .setOutputCol("cpt_code")
 
 cpt_pipelineModel = PipelineModel(
-stages = [
-documentAssembler,
-jsl_sbert_embedder,
-cpt_resolver])
+    stages = [
+        documentAssembler,
+        jsl_sbert_embedder,
+        cpt_resolver])
 
 cpt_lp = LightPipeline(cpt_pipelineModel)
 result = cpt_lp.fullAnnotate(['calcium score', 'heart surgery'])
@@ -76,11 +75,15 @@ val sbert_embedder = BertSentenceEmbeddings
 .setOutputCol("sbert_embeddings")
 
 val cpt_resolver = SentenceEntityResolverModel
-.pretrained("sbiobertresolve_cpt_procedures_measurements_augmented", "en", "clinical/models) 
+.load("sbiobertresolve_cpt_procedures_measurements_augmented") 
 .setInputCols(Array("ner_chunk", "sbert_embeddings")) 
 .setOutputCol("cpt_code")
 
-val cpt_pipelineModel= new PipelineModel().setStages(Array(document_assembler, sbert_embedder, cpt_resolver))
+val cpt_pipelineModel= new PipelineModel().setStages(
+    Array(
+        document_assembler,
+         sbert_embedder, 
+         cpt_resolver))
 
 val cpt_lp = LightPipeline(cpt_pipelineModel)
 val result = cpt_lp.fullAnnotate(['calcium score', 'heart surgery'])
@@ -121,3 +124,7 @@ nlu.load("en.resolve.cpt.procedures_measurements").predict("""calcium score""")
 ## Data Source
 
 Trained on Current Procedural Terminology dataset with `sbiobert_base_cased_mli` sentence embeddings.
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**

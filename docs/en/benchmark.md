@@ -17,19 +17,19 @@ sidebar:
 
 ### NER (BiLSTM-CNN-Char Architecture) Benchmark Experiment
 
-- **Dataset :** 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.
+- **Dataset:** 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.
 - **Driver :** Standard_D4s_v3 - 16 GB Memory - 4 Cores
 - **Enable Autoscaling :** False
 - **Cluster Mode :** Standart
 - **Worker :**
   - Standard_D4s_v3 - 16 GB Memory - 4 Cores
   - Standard_D4s_v2 - 28 GB Memory - 8 Cores
-- **Versions :**
+- **Versions:**
   - **Databricks Runtime Version :** 8.3(Scala 2.12, Spark 3.1.1)
   - **spark-nlp Version:** v3.2.3
   - **spark-nlp-jsl Version :** v3.2.3
   - **Spark Version :** v3.1.1
-- **Spark NLP Pipeline :**
+- **Spark NLP Pipeline:**
 
   ```
   nlpPipeline = Pipeline(stages=[
@@ -43,7 +43,7 @@ sidebar:
 
   ```
   
-**NOTES :**
+**NOTES:**
 
 + **The first experiment with 5 different cluster configurations :** `ner_chunk`  as a column in Spark NLP Pipeline (`ner_converter`) output data frame, exploded (lazy evaluation) as `ner_chunk` and `ner_label`. Then results were written as **parquet** and **delta** formats.
 
@@ -151,9 +151,9 @@ nlpPipeline = Pipeline(stages=[
         finisher])
 ```
 
-**NOTES :**
+**NOTES:**
 
-+ In this experiment, the `bert_token_classifier_ner_jsl_slim` model was used to measure the inference time of clinical bert for token classification models in the databricks environment.
++ In this experiment, the `bert_token_classifier_ner_jsl_slim` model was used to measure the inference time of clinical bert for token classification models in the DataBricks environment.
 + In the first experiment, the data read from the parquet file is saved as parquet after processing.
 
 + In the second experiment, the data read from the delta table was written to the delta table after it was processed.
@@ -221,8 +221,8 @@ nlpPipeline = Pipeline(stages=[
 This experiment compares the ClinicalNER runtime for different versions of `PySpark` and `Spark NLP`. 
 In this experiment, all reports went through the pipeline 10 times and repeated execution 5 times, so we ran each report 50 times and averaged it, `%timeit -r 5 -n 10 run_model(spark, model)`.
 
-- **Driver :** Standard Google Colab environment
-- **Spark NLP Pipeline :**
+- **Driver:** Standard Google Colab environment
+- **Spark NLP Pipeline:**
 ```
 nlpPipeline = Pipeline(
       stages=[
@@ -235,7 +235,7 @@ nlpPipeline = Pipeline(
           ])
 ```
 
-- **Dataset :** File sizes:
+- **Dataset:** File sizes:
   - report_1: ~5.34kb
   - report_2: ~8.51kb
   - report_3: ~11.05kb
@@ -320,7 +320,6 @@ mapper_resolver_pipeline = Pipeline(
         rxnorm_resolver,
         resolverMerger
 ])
-
 ```
 
 **NOTES:**
@@ -328,102 +327,128 @@ mapper_resolver_pipeline = Pipeline(
 + **3 different pipelines:**
 The first pipeline with ChunkMapper, the second with Sentence Entity Resolver, and the third pipeline with ChunkMapper and Sentence Entity Resolver together.
 
-+ **4 different cluster configurations:**
-Driver and worker types were kept the same in all cluster configurations. The number of workers were increased gradually and set as 2, 4, 8, 10.
++ **3 different configurations:**
+Driver and worker types were kept as same in all cluster configurations. Number of workers were increased gradually and set as 2, 4, 8 for DataBricks.
+We choosed 3 different configurations for AWS EC2 machines that have same core with DataBricks.
 
 + **NER models were kept as same in all pipelines:** Pretrained `ner_posology_greedy` NER model was used in each pipeline.
 
 #### Benchmark Tables
 
 These  figures might differ based on the size of the mapper and resolver models. The larger the models, the higher the inference times.
-Depending on the success rate of mappers (any chunk coming in caught by the mapper successfully), the combined mapper and resolver timing would be less than resolver-only timing.
+Depending the success rate of mappers (any chunk coming in caught by the mapper successfully), the combined mapper and resolver timing would be less than resolver-only timing.
 
-If the resolver-only timing is equal to or very close to the combined mapper and resolver timing, it means that the mapper is not capable of catching/ mapping any chunk.
-In that case, try playing with various parameters in the mapper or retrain/ augment the mapper.
+If the resolver-only timing is equal or very close to the combined mapper and resolver timing, it means that mapper is not capable of catching/ mapping any chunk.
+In that case, try playing with various parameters in mapper or retrain/ augment the mapper.
 
-- Driver Name: Standard_DS3_v2
-- Driver Memory: 14GB
-- Worker Name: Standard_DS3_v2
-- Worker Memory: 14GB
-- Worker Cores: 4
-- Action: write_parquet
-- Total Worker Numbers: 2
-- Total Cores: 8
 
-| partition | mapper timing | resolver timing | mapper and resolver timing |
-| --------- | ------------- | --------------- | ---------------------- |
-| 4         | 23 sec        | 4.36 mins       | 2.40 mins              |
-| 8         | 15 sec        | 3.21 mins       | 1.48 mins              |
-| 16        | 18 sec        | 2.52 mins       | 2.04 mins              |
-| 32        | 13 sec        | 2.22 mins       | 1.38 mins              |
-| 64        | 14 sec        | 2.36 sec        | 1.50 mins              |
-| 100       | 14 sec        | 2.21 sec        | 1.36 mins              |
-| 1000      | 21 sec        | 2.23 mins       | 1.43 mins              |
+- DataBricks Config: 8 CPU Core, 32GiB RAM (2 worker, Standard_DS3_v2)
+- AWS Config: 8 CPU Cores, 14GiB RAM (c6a.2xlarge)
 
-- Driver Name: Standard_DS3_v2
-- Driver Memory: 14GB
-- Worker Name: Standard_DS3_v2
-- Worker Memory: 14GB
-- Worker Cores: 4
-- Action: write_parquet
-- Total Worker Numbers: 4
-- Total Cores: 16
 
-| partition | mapper timing | resolver timing | mapper and resolver timing |
-| --------- | ------------- | --------------- | ---------------------- |
-| 4         | 32.5 sec      | 4.19 mins       | 2.58 mins              |
-| 8         | 15.1 sec      | 2.25 mins       | 1.38 mins              |
-| 16        | 9.52 sec      | 1.50 mins       | 1.15 mins              |
-| 32        | 9.16 sec      | 1.47 mins       | 1.09 mins              |
-| 64        | 9.32 sec      | 1.36 mins       | 1.03 mins              |
-| 100       | 9.97 sec      | 1.48 mins       | 1.11 mins              |
-| 1000      | 12.5 sec      | 1.31 mins       | 1.03 mins              |
+| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+| --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
+| 4         | 23 sec        | 11 sec        | 4.36 mins       | 3.02 mins       |  2.40 mins                 | 1.58 mins                  |
+| 8         | 15 sec        | 9 sec         | 3.21 mins       | 2.27 mins       |  1.48 mins                 | 1.35 mins                  |
+| 16        | 18 sec        | 10 sec        | 2.52 mins       | 2.14 mins       |  2.04 mins                 | 1.25 mins                  |
+| 32        | 13 sec        | 11 sec        | 2.22 mins       | 2.26 mins       |  1.38 mins                 | 1.35 mins                  |
+| 64        | 14 sec        | 12 sec        | 2.36 mins       | 2.11 mins       |  1.50 mins                 | 1.26 mins                  |
+| 100       | 14 sec        | 30 sec        | 2.21 mins       | 2.07 mins       |  1.36 mins                 | 1.34 mins                  |
+| 1000      | 21 sec        | 21 sec        | 2.23 mins       | 2.08 mins       |  1.43 mins                 | 1.40 mins                  |
 
-- Driver Name: Standard_DS3_v2
-- Driver Memory: 14GB
-- Worker Name: Standard_DS3_v2
-- Worker Memory: 14GB
-- Worker Cores: 4
-- Action: write_parquet
-- Total Worker Numbers: 8
-- Total Cores: 32
 
-| partition | mapper timing | resolver timing | mapper and resolver timing |
-| --------- | ------------- | --------------- | ---------------------- |
-| 4         | 37.3 sec      | 4.46 mins       | 2.52 mins              |
-| 8         | 26.7 sec      | 2.46 mins       | 1.37 mins              |
-| 16        | 8.85 sec      | 1.27 mins       | 1.06 mins              |
-| 32        | 7.74 sec      | 1.38 mins       | 54.5 sec               |
-| 64        | 7.22 sec      | 1.23 mins       | 55.6 sec               |
-| 100       | 6.32 sec      | 1.16 mins       | 50.9 sec               |
-| 1000      | 8.37 sec      | 59.6 sec        | 49.3 sec               |
 
-- Driver Name: Standard_DS3_v2
-- Driver Memory: 14GB
-- Worker Name: Standard_DS3_v2
-- Worker Memory: 14GB
-- Worker Cores: 4
-- Action: write_parquet
-- Total Worker Numbers: 10
-- Total Cores: 40
 
-| partition | mapper timing | resolver timing | mapper and resolver timing |
-| --------- | ------------- | --------------- | ---------------------- |
-| 4         | 40.8 sec      | 4.55 mins       | 3.20 mins              |
-| 8         | 30.1 sec      | 3.34 mins       | 1.59 mins              |
-| 16        | 11.6 sec      | 1.57 mins       | 1.12 mins              |
-| 32        | 7.84 sec      | 1.33 mins       | 55.9 sec               |
-| 64        | 7.25 sec      | 1.18 mins       | 56.1 sec               |
-| 100       | 7.45 sec      | 1.05 mins       | 47.5 sec               |
-| 1000      | 8.87 sec      | 1.14 mins       | 47.9 sec               |
+- DataBricks Config: 16 CPU Core,64GiB RAM (4 worker, Standard_DS3_v2)
+- AWS Config: 16 CPU Cores, 27GiB RAM (c6a.4xlarge)
+
+| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+| --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
+| 4         | 32.5 sec      | 11 sec        | 4.19 mins       | 2.53 mins       |  2.58 mins                 | 1.48 mins                  |
+| 8         | 15.1 sec      | 7 sec         | 2.25 mins       | 1.43 mins       |  1.38 mins                 | 1.04 mins                  |
+| 16        | 9.52 sec      | 6 sec         | 1.50 mins       | 1.28 mins       |  1.15 mins                 | 1.00 mins                  |
+| 32        | 9.16 sec      | 6 sec         | 1.47 mins       | 1.24 mins       |  1.09 mins                 | 59 sec                     |
+| 64        | 9.32 sec      | 7 sec         | 1.36 mins       | 1.23 mins       |  1.03 mins                 | 57 sec                     |
+| 100       | 9.97 sec      | 20 sec        | 1.48 mins       | 1.34 mins       |  1.11 mins                 | 1.02 mins                  |
+| 1000      | 12.5 sec      | 13 sec        | 1.31 mins       | 1.26 mins       |  1.03 mins                 | 58 sec                     |
+
+
+- DataBricks Config: 32 CPU Core, 128GiB RAM (8 worker, Standard_DS3_v2)
+- AWS Config: 32 CPU Cores, 58GiB RAM (c6a.8xlarge)
+
+
+| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+| --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
+| 4         | 37.3 sec      | 12 sec        | 4.46 mins       | 2.37 mins       |  2.52 mins                 | 1.47 mins                  |
+| 8         | 26.7 sec      | 7 sec         | 2.46 mins       | 1.39 mins       |  1.37 mins                 | 1.04 mins                  |
+| 16        | 8.85 sec      | 7 sec         | 1.27 mins       | 1.30 mins       |  1.06 mins                 | 1.02 mins                  |
+| 32        | 7.74 sec      | 7 sec         | 1.38 mins       | 1.00 mins       |  54.5 sec                  | 43 sec                     |
+| 64        | 7.22 sec      | 7 sec         | 1.23 mins       | 1.07 mins       |  55.6 sec                  | 48 sec                     |
+| 100       | 6.32 sec      | 10 sec        | 1.16 mins       | 1.08 mins       |  50.9 sec                  | 45 sec                     |
+| 1000      | 8.37 sec      | 10 sec        | 59.6 sec        | 1.02 mins       |  49.3 sec                  | 41 sec                     |
 
 </div>
+
+
+<div class="h3-box" markdown="1">
+    
+### ONNX and Base Embeddings in Resolver 
+
+- **Dataset:** 100 Custom Clinical Texts, approx. 595 tokens per text
+- **Versions:**
+    - **spark-nlp Version:** v5.2.2
+    - **spark-nlp-jsl Version :** v5.2.1
+    - **Spark Version :** v3.2.1
+- **Instance Type:** 
+    -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
+
+```python
+nlp_pipeline = Pipeline(
+    stages = [
+        document_assembler,
+        sentenceDetectorDL,
+        tokenizer,
+        word_embeddings,
+        clinical_ner,
+        ner_converter,
+  ])
+
+embedding_pipeline = PipelineModel(
+    stages = [
+        c2doc,
+        sbiobert_embeddings # base or onnx version
+  ])
+
+resolver_pipeline = PipelineModel(
+    stages = [
+        rxnorm_resolver
+  ])
+```
+
+***Results Table***
+
+|partition|preprocessing|embeddings| resolver    |onnx_embeddings|resolver_with_onnx_embeddings|
+|--------:|------------:|---------:|------------:|--------------:|------------:|
+| 4       |      25 sec | 25 sec   |7 min 46 sec |   9 sec       |8 min 29 sec |
+| 8       |      21 sec | 25 sec   |5 min 12 sec |   9 sec       |4 min 53 sec |
+| 16      |      21 sec | 25 sec   |4 min 41 sec |   9 sec       |4 min 30 sec |
+| 32      |      20 sec | 24 sec   |5 min 4 sec  |   9 sec       |4 min 34 sec |
+| 64      |      21 sec | 24 sec   |4 min 44 sec |   9 sec       |5 min 2 sec  |
+| 128     |      20 sec | 25 sec   |5 min 4 sec  |   10 sec      |4 min 51 sec |
+| 256     |      22 sec | 26 sec   |4 min 34 sec |   10 sec      |5 min 13 sec |
+| 512     |      24 sec | 27 sec   |4 min 46 sec |   12 sec      |4 min 22 sec |
+| 1024    |      29 sec | 30 sec   |4 min 24 sec |   14 sec      |4 min 29 sec |
+
+</div>
+
+
+
 
 <div class="h3-box" markdown="1">
 
 ### Deidentification Benchmark Experiment
  
-- **Dataset:** 10000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.
+- **Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.
  
 - **Versions:**
   - **spark-nlp Version:** v5.2.0
@@ -490,15 +515,74 @@ deid_pipeline = Pipeline().setStages([
 
 <div class="h3-box" markdown="1">
 
+## AWS EMR Cluster Benchmark
+
+- **Dataset:** 340 Custom Clinical Texts, approx. 235 tokens per text
+- **Versions:**
+    - **EMR Version:** ERM.6.15.0
+    - **spark-nlp Version:** v5.2.2
+    - **spark-nlp-jsl Version :** v5.2.1
+    - **Spark Version :** v3.4.1
+- **Instance Type:** 
+    -  **Primary**: m4.4xlarge, 16 vCore, 64 GiB memory
+    - **Worker :**  m4.4xlarge, 16 vCore, 64 GiB memory
+
+**Spark NLP Pipeline:**
+
+```python
+ner_pipeline = Pipeline(stages = [
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        word_embeddings,
+        ner_jsl,
+        ner_jsl_converter])
+
+resolver_pipeline = Pipeline(stages = [
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        word_embeddings,
+        ner_jsl,
+        ner_jsl_converter,
+        chunk2doc,
+        sbert_embeddings,
+        snomed_resolver]) 
+```
+
+**NOTES:**
+`ner_jsl` model is used as ner model.The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results in `parquet` format.
+
+The `sbiobertresolve_snomed_findings` model is used as the resolver model. The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results (snomed_code and snomed_code_definition) in `parquet` format and 722 entities saved.
+
+***Results Table***
+
+| partition | NER Timing     |NER and Resolver Timing | 
+| ---------:|:-------------- |:---------------------| 
+|4          |  24.7 seconds  |1 minutes 8.5  seconds|
+|8          |  23.6 seconds  |1 minutes 7.4  seconds|
+|16         |  22.6 seconds  |1 minutes 6.9  seconds|
+|32         |  23.2 seconds  |1 minutes 5.7  seconds|
+|64         |  22.8 seconds  |1 minutes 6.7  seconds|
+|128        |  23.7 seconds  |1 minutes 7.4  seconds|
+|256        |  23.9 seconds  |1 minutes 6.1  seconds|
+|512        |  23.8 seconds  |1 minutes 8.4  seconds|
+|1024       |  25.9 seconds  |1 minutes 10.2 seconds|
+
+</div>
+
+
+<div class="h3-box" markdown="1">
+
 ## CPU NER Benchmarks
 
 ### NER (BiLSTM-CNN-Char Architecture) CPU Benchmark Experiment
 
 - **Dataset:** 1000 Clinical Texts from MTSamples Oncology Dataset, approx. 500 tokens per text.
-- **Versions :**
+- **Versions:**
   - **spark-nlp Version:** v3.4.4
-  - **spark-nlp-jsl Version :** v3.5.2
-  - **Spark Version :** v3.1.2
+  - **spark-nlp-jsl Version:** v3.5.2
+  - **Spark Version:** v3.1.2
 - **Spark NLP Pipeline:**
 
 ```python
@@ -704,8 +788,7 @@ You will experiment big GPU improvements in the following cases:
 2. Bigger batch sizes get the best of GPU, while CPU does not scale with bigger batch sizes;
 3. Bigger dataset sizes get the best of GPU, while may be a bottleneck while running in CPU and lead to performance drops;
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### MultiGPU Inference on Databricks
 In this part, we will give you an idea on how to choose appropriate hardware specifications for Databricks. Here is a few different hardwares, their prices, as well as their performance:
@@ -719,24 +802,26 @@ Figure above clearly shows us that GPU should be the first option of ours.
 
 In conclusion, please find the best specifications for your use case since these benchmarks might depend on dataset size, inference batch size, quickness, pricing and so on.
 
-Please refer to this video for further info: https://events.johnsnowlabs.com/webinar-speed-optimization-benchmarks-in-spark-nlp-3-making-the-most-of-modern-hardware?hsCtaTracking=a9bb6358-92bd-4cf3-b97c-e76cb1dfb6ef%7C4edba435-1adb-49fc-83fd-891a7506a417
+Please refer to this video for further info: [https://events.johnsnowlabs.com/webinar-speed-optimization-benchmarks-in-spark-nlp-3-making-the-most-of-modern-hardware?hsCtaTracking=a9bb6358-92bd-4cf3-b97c-e76cb1dfb6ef%7C4edba435-1adb-49fc-83fd-891a7506a417](https://events.johnsnowlabs.com/webinar-speed-optimization-benchmarks-in-spark-nlp-3-making-the-most-of-modern-hardware?hsCtaTracking=a9bb6358-92bd-4cf3-b97c-e76cb1dfb6ef%7C4edba435-1adb-49fc-83fd-891a7506a417)
+
+</div><div class="h3-box" markdown="1">
 
 ### MultiGPU training
 Currently, we don't support multiGPU training, meaning training 1 model in different GPUs in parallel. However, you can train different models in different GPUs.
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ### MultiGPU inference
 Spark NLP can carry out MultiGPU inference if GPUs are in different cluster nodes. For example, if you have a cluster with different GPUs, you can repartition your data to match the number of GPU nodes and then coalesce to retrieve the results back to the master node. 
 
 Currently, inference on multiple GPUs on the same machine is not supported.
 
+</div><div class="h3-box" markdown="1">
+
 ### Where to look for more information about Training
 Please, take a look at the [Spark NLP](https://nlp.johnsnowlabs.com/docs/en/training) and [Spark NLP for Healthcare](https://nlp.johnsnowlabs.com/docs/en/licensed_training) Training sections, and feel free to reach us out in case you want to maximize the performance on your GPU.
 
-</div>
-<div class="h3-box" markdown="1">
+</div><div class="h3-box" markdown="1">
 
 ## Spark NLP vs Spacy Pandas UDF with Arrow Benchmark
 
