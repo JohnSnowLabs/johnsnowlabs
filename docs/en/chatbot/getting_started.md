@@ -11,6 +11,8 @@ sidebar:
     nav: healthcare-gpt
 ---
 
+<div class="h3-box" markdown="1">
+
 Meet `John`, the Medical Chatbot by John Snow Labs, designed to revolutionize the way healthcare professionals access and interact with medical information. `John` is equipped with cutting-edge natural language processing technology, enabling it to understand and respond to a wide range of medical queries with precision and ease. Whether you're looking for the latest research results, need to summarize complex medical texts, or wish to engage in detailed medical conversations, `John` is here to assist. With its ability to access extensive databases, provide explainable responses with citations, and even delve into your own custom knowledge bases, `John` acts as your personal research assistant, available 24/7. Designed with the needs of the medical community in mind, `John` ensures that the vast world of medical knowledge is just a question away, supporting evidence-based practice and enhancing patient care through instant access to information.
 
 ![Check saved Questions, Responses and Entire Conversations](/assets/images/chatbot/GetStarted.png)
@@ -25,3 +27,5 @@ In enterprise implementations, the chatbot can be customized with a unique Brand
 In addition, the chatbot offers comprehensive logging and reporting capabilities, providing administrators with detailed insights into user interactions, access patterns, and potential security anomalies. This level of transparency and oversight is critical for maintaining high standards of data security and for aiding in forensic investigations in the event of a security incident.
 
 Moreover, the enterprise version of the Medical Chatbot can be tailored to include specific organizational security policies and protocols, ensuring seamless integration into existing security frameworks. This customizability allows organizations to enforce their unique security standards, from password policies to multi-factor authentication, aligning the chatbot's security posture with the organization's overall cybersecurity strategy.
+
+</div>

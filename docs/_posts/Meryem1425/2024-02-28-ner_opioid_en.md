@@ -96,6 +96,7 @@ pipeline = Pipeline(stages=[
     ner_converter   
     ])
 
+
 sample_texts = ["""The patient, unmarried and with a significant history of substance abuse involving the illicit consumption of various opioids such as heroin, fentanyl, and oxycodone, presented with a headache and was diagnosed PTSD. Despite denying the use of alcohol, smoking, or marijuana, the patient, who has been unemployed for several months, required administration of Narcan for suspected opioid overdose. A recent toxicology screen confirmed the presence of opioids, and showed negative results for benzodiazepines, cocaine, amphetamines, barbiturates, and tricyclic substances."""]
 
 

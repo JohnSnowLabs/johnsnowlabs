@@ -563,6 +563,8 @@ nlp.load('ner').viz_streamlit_sentence_embed_manifold(['Hello From John Snow Lab
 | `display_infos`          | `bool`          | `False`                                                                                                                                               | Display additional information about ISO codes and the NLP namespace structure.                                                                                                                                                         |  
 | `n_jobs`                 | `Optional[int]` | `3`                                                                                                                                                   | `False`                                                                                                                                                                                                                                 | How many cores to use for paralellzing when using Sklearn Dimension Reduction algorithms.  |  
 
+</div><div class="h3-box" markdown="1">
+
 ### [Supported Manifold Algorithms for Word, Sentence, and Entity Embeddings](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.manifold)
 
 - [TSNE](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.TSNE.html#sklearn.manifold.TSNE)
@@ -570,6 +572,8 @@ nlp.load('ner').viz_streamlit_sentence_embed_manifold(['Hello From John Snow Lab
 - [LLE](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.LocallyLinearEmbedding.html#sklearn.manifold.LocallyLinearEmbedding)
 - [Spectral Embedding](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.SpectralEmbedding.html#sklearn.manifold.SpectralEmbedding)
 - [MDS](https://scikit-learn.org/stable/modules/generated/sklearn.manifold.MDS.html#sklearn.manifold.MDS)
+
+</div><div class="h3-box" markdown="1">
 
 ### [Supported Matrix Decomposition Algorithms for Word, Sentence and Entity Embeddings](https://scikit-learn.org/stable/modules/classes.html#module-sklearn.decomposition)
 

@@ -40,7 +40,7 @@ from sparknlp.pretrained import PretrainedPipeline
 deid_pipeline = PretrainedPipeline("clinical_deidentification_subentity", "en", "clinical/models")
 
 text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
@@ -56,7 +56,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 val deid_pipeline = PretrainedPipeline("clinical_deidentification_subentity", "en", "clinical/models")
 
 val text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR: 719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13.
+Dr. John Green, IP 203.120.223.13.
 He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93.
 Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
@@ -94,7 +94,7 @@ print("
 Masked with entity labels
 ------------------------------
 Name : <PATIENT>, Record date: <DATE>, MR <MEDICALRECORD>.
-Dr. <DOCTOR>, ID: <DEVICE>, IP <IPADDR>.
+Dr. <DOCTOR>, IP <IPADDR>.
 He is a <AGE>-year-old male was admitted to the <HOSPITAL> for cystectomy on <DATE>.
 Patient's VIN : <VIN>, SSN <SSN>, Driver's license no: <DLN>.
 Phone <PHONE>, <STREET>, <CITY>, E-MAIL: <EMAIL>.
@@ -102,7 +102,7 @@ Phone <PHONE>, <STREET>, <CITY>, E-MAIL: <EMAIL>.
 Masked with chars
 ------------------------------
 Name : [**************], Record date: [********], MR [****].
-Dr. [********], ID: [********], IP [************].
+Dr. [********], IP [************].
 He is a **-year-old male was admitted to the [**********] for cystectomy on [******].
 Patient's VIN : [***************], SSN [**********], Driver's license no: [******].
 Phone [************], [***************], [***********], E-MAIL: [*************].
@@ -110,7 +110,7 @@ Phone [************], [***************], [***********], E-MAIL: [*************].
 Masked with fixed length chars
 ------------------------------
 Name : ****, Record date: ****, MR ****.
-Dr. ****, ID: ****, IP ****.
+Dr. ****, IP ****.
 He is a ****-year-old male was admitted to the **** for cystectomy on ****.
 Patient's VIN : ****, SSN ****, Driver's license no: ****.
 Phone ****, ****, ****, E-MAIL: ****.
@@ -118,7 +118,7 @@ Phone ****, ****, ****, E-MAIL: ****.
 Obfuscated
 ------------------------------
 Name : Neta Ehlers, Record date: 2093-01-18, MR 175102.
-Dr. Tomi Bamberger, ID: T3116939, IP 444.444.444.444.
+Dr. Tomi Bamberger, IP 444.444.444.444.
 He is a 68-year-old male was admitted to the ROYAL OAKS HOSPITAL for cystectomy on 01/18/93.
 Patient's VIN : 5ENID78EUMP536144, SSN #315-40-0867, Driver's license no: Y195093O.
 Phone (671) 245-8099, 401 E Vaughn Ave, Brawley, E-MAIL: Dene@google.com.

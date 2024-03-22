@@ -22,6 +22,8 @@ th {
 }
 </style>
 
+<div class="h3-box" markdown="1">
+
 ## Type of installation
 
 {:.btn-box-install}
@@ -33,9 +35,13 @@ th {
 [AirGap Environment](#airgap-environment){:.button.button-blue}
 [OpenShift](#openshift){:.button.button-blue}
 
+</div><div class="h3-box" markdown="1">
+
 ## Dedicated Server
 
 Install NLP Lab (Annotation Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.
+
+</div><div class="h3-box" markdown="1">
 
 ### Fresh install
 
@@ -53,7 +59,7 @@ For installing the latest available version of the NLP Lab use:
 wget https://setup.johnsnowlabs.com/annotationlab/install.sh -O - | sudo bash -s --
 ```
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Upgrade
 
@@ -75,9 +81,11 @@ wget https://setup.johnsnowlabs.com/annotationlab/upgrade.sh -O - | sudo bash -s
 
 After running the install/upgrade script, the NLP Lab is available at http://INSTANCE_IP or https://INSTANCE_IP
 
-<img class="image image--xl image__shadow" src="/assets/images/annotation_lab/4.1.0/loginScreenALAB.png" style="width:100%;"/>
+![login Screen ALAB](/assets/images/annotation_lab/4.1.0/loginScreenALAB.png)
 
 We have an aesthetically pleasing Sign-In Page with a section highlighting the key features of NLP Lab using animated GIFs.
+
+</div><div class="h3-box" markdown="1">
 
 ## AWS Marketplace
 
@@ -86,6 +94,8 @@ The NLP Lab needs to be installed on a virtual machine. One of the most straight
 Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions on the video below to subscribe and deploy.
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='ebaewU4BcQA' -%}<div class="video-descr">Deploy NLP Lab via AWS Marketplace</div></div></div>
+
+</div><div class="h3-box" markdown="1">
 
 ## Secure access to NLP Lab on AWS
 
@@ -168,11 +178,15 @@ Once created, go do the Outputs tab and click on the NLP Lab URL. You may need t
 
 Now, to access the NLP Lab, you go to the CloudFront URL and log in with username “admin” and password equal to the EC2 Instance ID noted earlier. 
 
+</div><div class="h3-box" markdown="1">
+
 ## Azure Marketplace
 
 Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.annotation_lab?tab=Overview) and follow the instructions on the video below to subscribe and deploy.
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='e6aB3z5tB0k' -%}<div class="video-descr">Deploy NLP Lab via Azure Marketplace</div></div></div>
+
+</div><div class="h3-box" markdown="1">
 
 ## EKS deployment
 
@@ -367,6 +381,8 @@ Edit annotationlab-installer.sh inside artifact folder as follows:
    kubectl apply -f ingress.yaml
    ```
 
+</div><div class="h3-box" markdown="1">
+
 ## AKS deployment
 
 To deploy NLP Lab on Azure Kubernetes Service (AKS) a Kubernetes cluster needs to be created in Microsoft Azure.
@@ -377,15 +393,15 @@ To deploy NLP Lab on Azure Kubernetes Service (AKS) a Kubernetes cluster needs t
 
 3. On the <bl>Create Kubernetes cluster</bl> page, select the resource group and provide the name you want to give to the cluster.
 
-   <img class="image image__shadow" src="/assets/images/annotation_lab/AKS-create-k8-cluster.png" style="width:100%;"/>
+   ![AKS create k8 cluster](/assets/images/annotation_lab/AKS-create-k8-cluster.png)
 
 4. You can keep the rest of the fields to default values and click on `Review + create`.
 
-   <img class="image image__shadow" src="/assets/images/annotation_lab/AKS-cluster-validation.png" style="width:100%;"/>
+   ![AKS cluster validation](/assets/images/annotation_lab/AKS-cluster-validation.png)
 
 5. Click on `Create` button to start the deployment process.
 
-   <img class="image image__shadow" src="/assets/images/annotation_lab/AKS-deployment.png" style="width:100%;"/>
+   ![AKS deployment](/assets/images/annotation_lab/AKS-deployment.png)
 
 6. Once the deployment is completed, click on `Go to resource` button.
 
@@ -509,6 +525,8 @@ To deploy NLP Lab on Azure Kubernetes Service (AKS) a Kubernetes cluster needs t
     kubectl apply -f ingress.yaml
     ```
 
+</div><div class="h3-box" markdown="1">
+
 ## AirGap Environment
 
 ### Get Artifact
@@ -528,7 +546,7 @@ cd artifacts
 
 Replace `$VERSION` with the version you want to download and install.
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Fresh Install
 
@@ -539,7 +557,7 @@ $ sudo su
 $ ./annotationlab-installer.sh
 ```
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Upgrade
 
@@ -550,21 +568,21 @@ $ sudo su
 $ ./annotationlab-updater.sh
 ```
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ## OpenShift
 
 Annotation Lab can also be installed using the operator framework on an OpenShift cluster. The Annotation Lab operator can be found under the <bl>OperatorHub</bl>.
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Find and select
 
 The <bl>OperatorHub</bl> has a large list of operators that can be installed into your cluster. Search for Annotation Lab operator under AI/Machine Learning category and select it.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/Select-Operator.png" style="width:100%;"/>
+![Select Operator](/assets/images/annotation_lab/Select-Operator.png)
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Install
 
@@ -574,41 +592,43 @@ Some basic information about this operator is provided on the navigation panel t
 
 Click on the `Install` button located on the top-left corner of this panel to start the installation process.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/Install-Operator.png" style="width:100%;"/>
+![Install Operator](/assets/images/annotation_lab/Install-Operator.png)
 
 After successful installation of the Annotation Lab operator, you can access it by navigating to the <bl>Installed Operators</bl> page.
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### Create Instance
 
 Next step is to create a cluster instance of the Annotation Lab. For this, select the Annotation Lab operator under the <bl>Installed Operators</bl> page and then switch to _Annotationlab_ tab. On this section, click on `Create Annotationlab` button to spawn a new instance of Annotation Lab.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/Create-Instance.png" style="width:100%;"/>
+![Create Instance](/assets/images/annotation_lab/Create-Instance.png)
 
 **Define shared Storage Class**
 
 Update the `storageClass` property in the YAML configuration to define the storage class to one of `efs`, `nfs`, or `cephfs` depending upon what storage you set up before Annotation Lab operator installation.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/Define-StorageClass.png" style="width:100%;"/>
+![Define Storage Class](/assets/images/annotation_lab/Define-StorageClass.png)
 
 **Define domain name**
 
 Update the `host` property in the YAML configuration to define the required domain name to use instead of the default hostname `annotationlab` as shown in the image below.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/Define-Hostname.png" style="width:100%;"/>
+![Define Hostname](/assets/images/annotation_lab/Define-Hostname.png)
 
 Click on `Create` button once you have made all the necessary changes. This will also set up all the necessary resources to run the instance in addition to standing up the services themselves.
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 ### View Resources
 
 After the instance is successfully created we can visit its page to view all the resources as well as supporting resources like the secrets, configuration maps, etc that were created.
 
-<img class="image image__shadow" src="/assets/images/annotation_lab/View-Resources.png" style="width:100%;"/>
+![View Resources](/assets/images/annotation_lab/View-Resources.png)
 
 Now, we can access the Annotation Lab from the provided domain name or also from the location defined for this service under the `Networking > Routes` page
+
+</div><div class="h3-box" markdown="1">
 
 ## Work over proxy
 
@@ -624,7 +644,7 @@ _cachain.pem_ must include a certificate in the following format:
 -----END CERTIFICATE-----
 ```
 
-<br />
+</div><div class="h3-box" markdown="1">
 
 **Proxy env variables**
 
@@ -636,9 +656,11 @@ You can provide a proxy to use for external communications. To do that add
 
 commands inside `annotationlab-installer.sh` and `annotationlab-updater.sh` files.
 
+</div><div class="h3-box" markdown="1">
+
 ## Recommended Configurations
 
-<table>
+<table class="table2">
   <tr>
     <th>System requirements</th>
     <td>You can install Annotation Lab on a Ubuntu 20+ machine.</td>
@@ -666,3 +688,4 @@ commands inside `annotationlab-installer.sh` and `annotationlab-updater.sh` file
     </td>
   </tr>
 </table>
+</div>

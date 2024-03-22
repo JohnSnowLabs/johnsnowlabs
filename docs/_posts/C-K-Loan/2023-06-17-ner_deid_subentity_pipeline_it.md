@@ -40,7 +40,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "it", "clinical/models")
 
-text = '''Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.'''
+text = """Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015."""
 
 result = pipeline.fullAnnotate(text)
 ```
@@ -60,7 +60,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "it", "clinical/models")
 
-text = '''Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.'''
+text = """Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015."""
 
 result = pipeline.fullAnnotate(text)
 ```

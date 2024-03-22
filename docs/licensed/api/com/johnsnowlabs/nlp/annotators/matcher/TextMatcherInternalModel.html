@@ -1,0 +1,2659 @@
+<!DOCTYPE html >
+<html>
+        <head>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+          <title>Spark NLP 5.3.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel</title>
+          <meta name="description" content="Spark NLP 5.3.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel" />
+          <meta name="keywords" content="Spark NLP 5.3.0 ScalaDoc com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel" />
+          <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+          
+      
+      <link href="../../../../../lib/index.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/template.css" media="screen" type="text/css" rel="stylesheet" />
+      <link href="../../../../../lib/diagrams.css" media="screen" type="text/css" rel="stylesheet" id="diagrams-css" />
+      <script type="text/javascript" src="../../../../../lib/jquery.min.js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery.panzoom.min.js"></script>
+      <script type="text/javascript" src="../../../../../lib/jquery.mousewheel.min.js"></script>
+      <script type="text/javascript" src="../../../../../lib/index.js"></script>
+      <script type="text/javascript" src="../../../../../index.js"></script>
+      <script type="text/javascript" src="../../../../../lib/scheduler.js"></script>
+      <script type="text/javascript" src="../../../../../lib/template.js"></script>
+      
+      <script type="text/javascript">
+        /* this variable can be used by the JS to determine the path to the root document */
+        var toRoot = '../../../../../';
+      </script>
+    
+        </head>
+        <body>
+      <div id="search">
+        <span id="doc-title">Spark NLP 5.3.0 ScalaDoc<span id="doc-version"></span></span>
+        <span class="close-results"><span class="left">&lt;</span> Back</span>
+        <div id="textfilter">
+          <span class="input">
+            <input autocapitalize="none" placeholder="Search" id="index-input" type="text" accesskey="/" />
+            <i class="clear material-icons"></i>
+            <i id="search-icon" class="material-icons"></i>
+          </span>
+        </div>
+    </div>
+      <div id="search-results">
+        <div id="search-progress">
+          <div id="progress-fill"></div>
+        </div>
+        <div id="results-content">
+          <div id="entity-results"></div>
+          <div id="member-results"></div>
+        </div>
+      </div>
+      <div id="content-scroll-container" style="-webkit-overflow-scrolling: touch;">
+        <div id="content-container" style="-webkit-overflow-scrolling: touch;">
+          <div id="subpackage-spacer">
+            <div id="packages">
+              <h1>Packages</h1>
+              <ul>
+                <li name="_root_.root" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="_root_"></a><a id="root:_root_"></a>
+      <span class="permalink">
+      <a href="../../../../../index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../../index.html"><span class="name">root</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="_root_.com" visbl="pub" class="indented1 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="com"></a><a id="com:com"></a>
+      <span class="permalink">
+      <a href="../../../../../com/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../../index.html"><span class="name">com</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../../index.html" class="extype" name="_root_">root</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="johnsnowlabs"></a><a id="johnsnowlabs:johnsnowlabs"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../../index.html"><span class="name">johnsnowlabs</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../../index.html" class="extype" name="com">com</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp" visbl="pub" class="indented3 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="nlp"></a><a id="nlp:nlp"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../../index.html"><span class="name">nlp</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../../index.html" class="extype" name="com.johnsnowlabs">johnsnowlabs</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators" visbl="pub" class="indented4 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="annotators"></a><a id="annotators:annotators"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="../index.html"><span class="name">annotators</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../../index.html" class="extype" name="com.johnsnowlabs.nlp">nlp</a></dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher" visbl="pub" class="indented5 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="matcher"></a><a id="matcher:matcher"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/index.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">package</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="index.html"><span class="name">matcher</span></a>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="com.johnsnowlabs.nlp.annotators">annotators</a></dd></dl></div>
+    </li><li class="current-entities indented5">
+                        <span class="separator"></span>
+                        <a class="trait" href="ReadablePretrainedTextMatcherInternal.html" title=""></a>
+                        <a href="ReadablePretrainedTextMatcherInternal.html" title="">ReadablePretrainedTextMatcherInternal</a>
+                      </li><li class="current-entities indented5">
+                        <a class="object" href="TextMatcherInternal$.html" title="This is the companion object of TextMatcherInternal."></a>
+                        <a class="class" href="TextMatcherInternal.html" title="Annotator to match exact phrases (by token) provided in a file against a Document."></a>
+                        <a href="TextMatcherInternal.html" title="Annotator to match exact phrases (by token) provided in a file against a Document.">TextMatcherInternal</a>
+                      </li><li class="current-entities indented5">
+                        <a class="object" href="TextMatcherInternalModel$.html" title="This is the companion object of TextMatcherInternalModel."></a>
+                        <a class="class" href="" title="Instantiated model of the TextMatcherInternal."></a>
+                        <a href="" title="Instantiated model of the TextMatcherInternal.">TextMatcherInternalModel</a>
+                      </li>
+              </ul>
+            </div>
+          </div>
+          <div id="content">
+            <body class="class type">
+      <div id="definition">
+        <a href="TextMatcherInternalModel$.html" title="See companion object"><div class="big-circle class-companion-object">c</div></a>
+        <p id="owner"><a href="../../../../index.html" class="extype" name="com">com</a>.<a href="../../../index.html" class="extype" name="com.johnsnowlabs">johnsnowlabs</a>.<a href="../../index.html" class="extype" name="com.johnsnowlabs.nlp">nlp</a>.<a href="../index.html" class="extype" name="com.johnsnowlabs.nlp.annotators">annotators</a>.<a href="index.html" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher">matcher</a></p>
+        <h1><a href="TextMatcherInternalModel$.html" title="See companion object">TextMatcherInternalModel</a><span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span></h1>
+        <h3><span class="morelinks"><div>
+            Companion <a href="TextMatcherInternalModel$.html" title="See companion object">object TextMatcherInternalModel</a>
+          </div></span></h3>
+      </div>
+
+      <h4 id="signature" class="signature">
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">class</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TextMatcherInternalModel</span><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>] with <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>] with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
+      </span>
+      </h4>
+
+      
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Instantiated model of the <a href="TextMatcherInternal.html" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternal">TextMatcherInternal</a>. For usage and examples see the documentation of the
+main class.
+</p></div><div class="toggleContainer block">
+          <span class="toggle">
+            Linear Supertypes
+          </span>
+          <div class="superTypes hiddenContent"><span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>], <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>], <span class="extype" name="com.johnsnowlabs.nlp.CanBeLazy">CanBeLazy</span>, <span class="extype" name="com.johnsnowlabs.nlp.RawAnnotator">RawAnnotator</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>], <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">HasInputAnnotationCols</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">HasOutputAnnotatorType</span>, <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="org.apache.spark.ml.Model">Model</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>], <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span>, <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
+        </div></div>
+        
+
+      <div id="mbrsel">
+        <div class="toggle"></div>
+        <div id="memberfilter">
+          <i class="material-icons arrow"></i>
+          <span class="input">
+            <input id="mbrsel-input" placeholder="Filter all members" type="text" accesskey="/" />
+          </span>
+          <i class="clear material-icons"></i>
+        </div>
+        <div id="filterby">
+          <div id="order">
+            <span class="filtertype">Ordering</span>
+            <ol>
+              <li class="group out"><span>Grouped</span></li>
+              <li class="alpha in"><span>Alphabetic</span></li>
+              <li class="inherit out"><span>By Inheritance</span></li>
+            </ol>
+          </div>
+          <div class="ancestors">
+                  <span class="filtertype">Inherited<br />
+                  </span>
+                  <ol id="linearization">
+                    <li class="in" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel"><span>TextMatcherInternalModel</span></li><li class="in" name="com.johnsnowlabs.license.CheckLicense"><span>CheckLicense</span></li><li class="in" name="com.johnsnowlabs.nlp.HasSimpleAnnotate"><span>HasSimpleAnnotate</span></li><li class="in" name="com.johnsnowlabs.nlp.AnnotatorModel"><span>AnnotatorModel</span></li><li class="in" name="com.johnsnowlabs.nlp.CanBeLazy"><span>CanBeLazy</span></li><li class="in" name="com.johnsnowlabs.nlp.RawAnnotator"><span>RawAnnotator</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol"><span>HasOutputAnnotationCol</span></li><li class="in" name="com.johnsnowlabs.nlp.HasInputAnnotationCols"><span>HasInputAnnotationCols</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType"><span>HasOutputAnnotatorType</span></li><li class="in" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable"><span>ParamsAndFeaturesWritable</span></li><li class="in" name="com.johnsnowlabs.nlp.HasFeatures"><span>HasFeatures</span></li><li class="in" name="org.apache.spark.ml.util.DefaultParamsWritable"><span>DefaultParamsWritable</span></li><li class="in" name="org.apache.spark.ml.util.MLWritable"><span>MLWritable</span></li><li class="in" name="org.apache.spark.ml.Model"><span>Model</span></li><li class="in" name="org.apache.spark.ml.Transformer"><span>Transformer</span></li><li class="in" name="org.apache.spark.ml.PipelineStage"><span>PipelineStage</span></li><li class="in" name="org.apache.spark.internal.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.ml.param.Params"><span>Params</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.ml.util.Identifiable"><span>Identifiable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  </ol>
+                </div><div class="ancestors">
+              <span class="filtertype"></span>
+              <ol>
+                <li class="hideall out"><span>Hide All</span></li>
+                <li class="showall in"><span>Show All</span></li>
+              </ol>
+            </div>
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+      </div>
+
+      <div id="template">
+        <div id="allMembers">
+        <div id="constructors" class="members">
+              <h3>Instance Constructors</h3>
+              <ol><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="&lt;init&gt;():com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel"></a><a id="&lt;init&gt;:TextMatcherInternalModel"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#&lt;init&gt;():com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TextMatcherInternalModel</span><span class="params">()</span>
+      </span>
+      
+      <p class="shortcomment cmt">internal constructor for writabale annotator</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="&lt;init&gt;(uid:String):com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel"></a><a id="&lt;init&gt;:TextMatcherInternalModel"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#&lt;init&gt;(uid:String):com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">new</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TextMatcherInternalModel</span><span class="params">(<span name="uid">uid: <span class="extype" name="scala.Predef.String">String</span></span>)</span>
+      </span>
+      
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">uid</dt><dd class="cmt"><p>
+  internally renquired UID to make it writable</p></dd></dl></div>
+    </li></ol>
+            </div>
+
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="com.johnsnowlabs.nlp.AnnotatorModel.AnnotationContent" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="AnnotationContent=Seq[org.apache.spark.sql.Row]"></a><a id="AnnotationContent:AnnotationContent"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#AnnotationContent=Seq[org.apache.spark.sql.Row]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">AnnotationContent</span><span class="result alias"> = <span class="extype" name="scala.collection.Seq">Seq</span>[<span class="extype" name="org.apache.spark.sql.Row">Row</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>AnnotatorModel</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasOutputAnnotatorType.AnnotatorType" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="AnnotatorType=String"></a><a id="AnnotatorType:AnnotatorType"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#AnnotatorType=String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">AnnotatorType</span><span class="result alias"> = <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasOutputAnnotatorType</dd></dl></div>
+    </li></ol>
+            </div>
+
+        
+
+        <div class="values members">
+              <h3>Value Members</h3>
+              <ol>
+                <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#!=(x$1:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="##():Int"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html###():Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#$" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="$[T](param:org.apache.spark.ml.param.Param[T]):T"></a><a id="$[T](Param[T]):T"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#$[T](param:org.apache.spark.ml.param.Param[T]):T" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">$</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="param">param: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="org.apache.spark.ml.param.Params.$.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Params.$.T">T</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#$$" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="$$[T](feature:com.johnsnowlabs.nlp.serialization.StructFeature[T]):T"></a><a id="$$[T](StructFeature[T]):T"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#$$[T](feature:com.johnsnowlabs.nlp.serialization.StructFeature[T]):T" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">$$</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.StructFeature">StructFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.$$.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.$$.T">T</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#$$" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="$$[K,V](feature:com.johnsnowlabs.nlp.serialization.MapFeature[K,V]):Map[K,V]"></a><a id="$$[K,V](MapFeature[K,V]):Map[K,V]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#$$[K,V](feature:com.johnsnowlabs.nlp.serialization.MapFeature[K,V]):Map[K,V]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">$$</span><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.MapFeature">MapFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.$$.K">K</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.$$.V">V</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.$$.K">K</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.$$.V">V</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#$$" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="$$[T](feature:com.johnsnowlabs.nlp.serialization.SetFeature[T]):Set[T]"></a><a id="$$[T](SetFeature[T]):Set[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#$$[T](feature:com.johnsnowlabs.nlp.serialization.SetFeature[T]):Set[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">$$</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.SetFeature">SetFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.$$.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.$$.T">T</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#$$" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="$$[T](feature:com.johnsnowlabs.nlp.serialization.ArrayFeature[T]):Array[T]"></a><a id="$$[T](ArrayFeature[T]):Array[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#$$[T](feature:com.johnsnowlabs.nlp.serialization.ArrayFeature[T]):Array[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">$$</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.ArrayFeature">ArrayFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.$$.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.$$.T">T</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#==(x$1:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.AnnotatorModel#_transform" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="_transform(dataset:org.apache.spark.sql.Dataset[_],recursivePipeline:Option[org.apache.spark.ml.PipelineModel]):org.apache.spark.sql.DataFrame"></a><a id="_transform(Dataset[_],Option[PipelineModel]):DataFrame"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#_transform(dataset:org.apache.spark.sql.Dataset[_],recursivePipeline:Option[org.apache.spark.ml.PipelineModel]):org.apache.spark.sql.DataFrame" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">_transform</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[_]</span>, <span name="recursivePipeline">recursivePipeline: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.ml.PipelineModel">PipelineModel</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>AnnotatorModel</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.AnnotatorModel#afterAnnotate" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="afterAnnotate(dataset:org.apache.spark.sql.DataFrame):org.apache.spark.sql.DataFrame"></a><a id="afterAnnotate(DataFrame):DataFrame"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#afterAnnotate(dataset:org.apache.spark.sql.DataFrame):org.apache.spark.sql.DataFrame" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">afterAnnotate</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>AnnotatorModel</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#annotate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="annotate(annotations:Seq[com.johnsnowlabs.nlp.Annotation]):Seq[com.johnsnowlabs.nlp.Annotation]"></a><a id="annotate(Seq[Annotation]):Seq[Annotation]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#annotate(annotations:Seq[com.johnsnowlabs.nlp.Annotation]):Seq[com.johnsnowlabs.nlp.Annotation]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">annotate</span><span class="params">(<span name="annotations">annotations: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Searches entities and stores them in the annotation.</p><div class="fullcomment"><div class="comment cmt"><p>Searches entities and stores them in the annotation. Defines annotator phrase matching
+depending on whether we are using SBD or not
+</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>
+  Extracted Entities</p></dd></dl><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a> → HasSimpleAnnotate</dd></dl></div>
+    </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="asInstanceOf[T0]:T0"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#asInstanceOf[T0]:T0" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">asInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Any.asInstanceOf.T0">T0</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.AnnotatorModel#beforeAnnotate" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="beforeAnnotate(dataset:org.apache.spark.sql.Dataset[_]):org.apache.spark.sql.Dataset[_]"></a><a id="beforeAnnotate(Dataset[_]):Dataset[_]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#beforeAnnotate(dataset:org.apache.spark.sql.Dataset[_]):org.apache.spark.sql.Dataset[_]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">beforeAnnotate</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[_]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[_]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>AnnotatorModel</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#buildFromTokens" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+      <a id="buildFromTokens:org.apache.spark.ml.param.BooleanParam"></a><a id="buildFromTokens:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#buildFromTokens:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">buildFromTokens</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether the TextMatcherInternal should take the CHUNK from TOKEN or not
+</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#caseSensitive" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+      <a id="caseSensitive:org.apache.spark.ml.param.BooleanParam"></a><a id="caseSensitive:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#caseSensitive:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">caseSensitive</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to match regardless of case (Default: <code>true</code>)
+</p>
+    </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#checkSchema" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="checkSchema(schema:org.apache.spark.sql.types.StructType,inputAnnotatorType:String):Boolean"></a><a id="checkSchema(StructType,String):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#checkSchema(schema:org.apache.spark.sql.types.StructType,inputAnnotatorType:String):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">checkSchema</span><span class="params">(<span name="schema">schema: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>, <span name="inputAnnotatorType">inputAnnotatorType: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
+    </li><li name="com.johnsnowlabs.license.CheckLicense#checkValidEnvironment" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Seq[String]):Unit"></a><a id="checkValidEnvironment(Option[SparkSession],Seq[String]):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Seq[String]):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">checkValidEnvironment</span><span class="params">(<span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="scopes">scopes: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CheckLicense</dd></dl></div>
+    </li><li name="com.johnsnowlabs.license.CheckLicense#checkValidScope" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="checkValidScope(scope:String):Unit"></a><a id="checkValidScope(String):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#checkValidScope(scope:String):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">checkValidScope</span><span class="params">(<span name="scope">scope: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CheckLicense</dd></dl></div>
+    </li><li name="com.johnsnowlabs.license.CheckLicense#checkValidScopeAndEnvironment" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="checkValidScopeAndEnvironment(scope:String,spark:Option[org.apache.spark.sql.SparkSession],checkLp:Boolean):Unit"></a><a id="checkValidScopeAndEnvironment(String,Option[SparkSession],Boolean):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#checkValidScopeAndEnvironment(scope:String,spark:Option[org.apache.spark.sql.SparkSession],checkLp:Boolean):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">checkValidScopeAndEnvironment</span><span class="params">(<span name="scope">scope: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="checkLp">checkLp: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CheckLicense</dd></dl></div>
+    </li><li name="com.johnsnowlabs.license.CheckLicense#checkValidScopesAndEnvironment" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="checkValidScopesAndEnvironment(scopes:Seq[String],spark:Option[org.apache.spark.sql.SparkSession],checkLp:Boolean):Unit"></a><a id="checkValidScopesAndEnvironment(Seq[String],Option[SparkSession],Boolean):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#checkValidScopesAndEnvironment(scopes:Seq[String],spark:Option[org.apache.spark.sql.SparkSession],checkLp:Boolean):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">checkValidScopesAndEnvironment</span><span class="params">(<span name="scopes">scopes: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="checkLp">checkLp: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CheckLicense</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#clear" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clear(param:org.apache.spark.ml.param.Param[_]):Params.this.type"></a><a id="clear(Param[_]):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#clear(param:org.apache.spark.ml.param.Param[_]):Params.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clear</span><span class="params">(<span name="param">param: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[_]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="clone():Object"></a><a id="clone():AnyRef"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#clone():Object" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
+    </span>)</span>
+              
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#collapse" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="collapse(rs:List[(Int,Int)],sep:List[(Int,Int)]):List[(Int,Int)]"></a><a id="collapse(List[(Int,Int)],List[(Int,Int)]):List[(Int,Int)]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#collapse(rs:List[(Int,Int)],sep:List[(Int,Int)]):List[(Int,Int)]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">collapse</span><span class="params">(<span name="rs">rs: <a href="../../../../../scala/index.html#List[+A]=List[A]" class="extmbr" name="scala.List">List</a>[(<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)]</span>, <span name="sep">sep: <a href="../../../../../scala/index.html#List[+A]=List[A]" class="extmbr" name="scala.List">List</a>[(<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)] = <span class="symbol"><span class="name"><a href="../../../../../scala/index.html">Nil</a></span></span></span>)</span><span class="result">: <a href="../../../../../scala/index.html#List[+A]=List[A]" class="extmbr" name="scala.List">List</a>[(<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Annotations</dt><dd>
+                <span class="name">@tailrec</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.RawAnnotator#copy" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="copy(extra:org.apache.spark.ml.param.ParamMap):M"></a><a id="copy(ParamMap):TextMatcherInternalModel"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#copy(extra:org.apache.spark.ml.param.ParamMap):M" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">copy</span><span class="params">(<span name="extra">extra: <span class="extype" name="org.apache.spark.ml.param.ParamMap">ParamMap</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>RawAnnotator → Model → Transformer → PipelineStage → Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#copyValues" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="copyValues[T&lt;:org.apache.spark.ml.param.Params](to:T,extra:org.apache.spark.ml.param.ParamMap):T"></a><a id="copyValues[T&lt;:Params](T,ParamMap):T"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#copyValues[T&lt;:org.apache.spark.ml.param.Params](to:T,extra:org.apache.spark.ml.param.ParamMap):T" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">copyValues</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="org.apache.spark.ml.param.Params">Params</span></span>]</span><span class="params">(<span name="to">to: <span class="extype" name="org.apache.spark.ml.param.Params.copyValues.T">T</span></span>, <span name="extra">extra: <span class="extype" name="org.apache.spark.ml.param.ParamMap">ParamMap</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Params.copyValues.T">T</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#defaultCopy" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="defaultCopy[T&lt;:org.apache.spark.ml.param.Params](extra:org.apache.spark.ml.param.ParamMap):T"></a><a id="defaultCopy[T&lt;:Params](ParamMap):T"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#defaultCopy[T&lt;:org.apache.spark.ml.param.Params](extra:org.apache.spark.ml.param.ParamMap):T" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">defaultCopy</span><span class="tparams">[<span name="T">T &lt;: <span class="extype" name="org.apache.spark.ml.param.Params">Params</span></span>]</span><span class="params">(<span name="extra">extra: <span class="extype" name="org.apache.spark.ml.param.ParamMap">ParamMap</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Params.defaultCopy.T">T</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#delimiter" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+      <a id="delimiter:org.apache.spark.ml.param.Param[String]"></a><a id="delimiter:Param[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#delimiter:org.apache.spark.ml.param.Param[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">delimiter</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Value for the delimiter between Phrase, Entity in the entities file (Default: <code>,</code>)
+</p>
+    </li><li name="com.johnsnowlabs.nlp.HasSimpleAnnotate#dfAnnotate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="dfAnnotate:org.apache.spark.sql.expressions.UserDefinedFunction"></a><a id="dfAnnotate:UserDefinedFunction"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#dfAnnotate:org.apache.spark.sql.expressions.UserDefinedFunction" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">dfAnnotate</span><span class="result">: <span class="extype" name="org.apache.spark.sql.expressions.UserDefinedFunction">UserDefinedFunction</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasSimpleAnnotate</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#entityValue" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+      <a id="entityValue:org.apache.spark.ml.param.Param[String]"></a><a id="entityValue:Param[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#entityValue:org.apache.spark.ml.param.Param[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">entityValue</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Value for the entity metadata field
+</p>
+    </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#eq(x$1:AnyRef):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#equals" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="equals(x$1:Any):Boolean"></a><a id="equals(Any):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#equals(x$1:Any):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">equals</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#explainParam" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="explainParam(param:org.apache.spark.ml.param.Param[_]):String"></a><a id="explainParam(Param[_]):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#explainParam(param:org.apache.spark.ml.param.Param[_]):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">explainParam</span><span class="params">(<span name="param">param: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#explainParams" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="explainParams():String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#explainParams():String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">explainParams</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.RawAnnotator#extraValidate" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="extraValidate(structType:org.apache.spark.sql.types.StructType):Boolean"></a><a id="extraValidate(StructType):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#extraValidate(structType:org.apache.spark.sql.types.StructType):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">extraValidate</span><span class="params">(<span name="structType">structType: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>RawAnnotator</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.RawAnnotator#extraValidateMsg" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="extraValidateMsg:String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#extraValidateMsg:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">extraValidateMsg</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>RawAnnotator</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#extractParamMap" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="extractParamMap():org.apache.spark.ml.param.ParamMap"></a><a id="extractParamMap():ParamMap"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#extractParamMap():org.apache.spark.ml.param.ParamMap" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">extractParamMap</span><span class="params">()</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.ParamMap">ParamMap</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#extractParamMap" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="extractParamMap(extra:org.apache.spark.ml.param.ParamMap):org.apache.spark.ml.param.ParamMap"></a><a id="extractParamMap(ParamMap):ParamMap"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#extractParamMap(extra:org.apache.spark.ml.param.ParamMap):org.apache.spark.ml.param.ParamMap" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">extractParamMap</span><span class="params">(<span name="extra">extra: <span class="extype" name="org.apache.spark.ml.param.ParamMap">ParamMap</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.ParamMap">ParamMap</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#features" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="features:scala.collection.mutable.ArrayBuffer[com.johnsnowlabs.nlp.serialization.Feature[_,_,_]]"></a><a id="features:ArrayBuffer[Feature[_,_,_]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#features:scala.collection.mutable.ArrayBuffer[com.johnsnowlabs.nlp.serialization.Feature[_,_,_]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">features</span><span class="result">: <span class="extype" name="scala.collection.mutable.ArrayBuffer">ArrayBuffer</span>[<span class="extype" name="com.johnsnowlabs.nlp.serialization.Feature">Feature</span>[_, _, _]]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="finalize():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#finalize():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="symbol">classOf[java.lang.Throwable]</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#get" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get[T](feature:com.johnsnowlabs.nlp.serialization.StructFeature[T]):Option[T]"></a><a id="get[T](StructFeature[T]):Option[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#get[T](feature:com.johnsnowlabs.nlp.serialization.StructFeature[T]):Option[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.StructFeature">StructFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.get.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.get.T">T</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#get" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get[K,V](feature:com.johnsnowlabs.nlp.serialization.MapFeature[K,V]):Option[Map[K,V]]"></a><a id="get[K,V](MapFeature[K,V]):Option[Map[K,V]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#get[K,V](feature:com.johnsnowlabs.nlp.serialization.MapFeature[K,V]):Option[Map[K,V]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.MapFeature">MapFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.get.K">K</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.get.V">V</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.get.K">K</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.get.V">V</span>]]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#get" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get[T](feature:com.johnsnowlabs.nlp.serialization.SetFeature[T]):Option[Set[T]]"></a><a id="get[T](SetFeature[T]):Option[Set[T]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#get[T](feature:com.johnsnowlabs.nlp.serialization.SetFeature[T]):Option[Set[T]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.SetFeature">SetFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.get.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.get.T">T</span>]]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#get" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get[T](feature:com.johnsnowlabs.nlp.serialization.ArrayFeature[T]):Option[Array[T]]"></a><a id="get[T](ArrayFeature[T]):Option[Array[T]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#get[T](feature:com.johnsnowlabs.nlp.serialization.ArrayFeature[T]):Option[Array[T]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.ArrayFeature">ArrayFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.get.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.get.T">T</span>]]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#get" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="get[T](param:org.apache.spark.ml.param.Param[T]):Option[T]"></a><a id="get[T](Param[T]):Option[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#get[T](param:org.apache.spark.ml.param.Param[T]):Option[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">get</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="param">param: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="org.apache.spark.ml.param.Params.get.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.ml.param.Params.get.T">T</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#getBuildFromTokens" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+      <a id="getBuildFromTokens:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getBuildFromTokens:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getBuildFromTokens</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Getter for buildFromTokens param
+</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#getCaseSensitive" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+      <a id="getCaseSensitive:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getCaseSensitive:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getCaseSensitive</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Setter for case sensitivity (Default: <code>true</code>)
+</p>
+    </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getClass():Class[_]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#getDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getDefault[T](param:org.apache.spark.ml.param.Param[T]):Option[T]"></a><a id="getDefault[T](Param[T]):Option[T]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getDefault[T](param:org.apache.spark.ml.param.Param[T]):Option[T]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getDefault</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="param">param: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="org.apache.spark.ml.param.Params.getDefault.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.ml.param.Params.getDefault.T">T</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#getDelimiter" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+      <a id="getDelimiter:String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getDelimiter:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getDelimiter</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Get the Phrase, Entity delimiter in the entities file (Default: <code>,</code>)
+</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#getEntityValue" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="getParam">
+      <a id="getEntityValue:String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getEntityValue:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getEntityValue</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Getter for Value for the entity metadata field
+</p>
+    </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#getInputCols" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getInputCols:Array[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getInputCols:Array[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getInputCols</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.CanBeLazy#getLazyAnnotator" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getLazyAnnotator:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getLazyAnnotator:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getLazyAnnotator</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CanBeLazy</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#getLicenseScopes" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getLicenseScopes:Seq[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getLicenseScopes:Seq[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getLicenseScopes</span><span class="result">: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#getMergeOverlapping" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="getParam">
+      <a id="getMergeOverlapping:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getMergeOverlapping:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getMergeOverlapping</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to merge overlapping matched chunks.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to merge overlapping matched chunks. Defaults false
+</p></div></div>
+    </li><li name="org.apache.spark.ml.param.Params#getOrDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getOrDefault[T](param:org.apache.spark.ml.param.Param[T]):T"></a><a id="getOrDefault[T](Param[T]):T"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getOrDefault[T](param:org.apache.spark.ml.param.Param[T]):T" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getOrDefault</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="param">param: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="org.apache.spark.ml.param.Params.getOrDefault.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Params.getOrDefault.T">T</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasOutputAnnotationCol#getOutputCol" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getOutputCol:String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getOutputCol:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getOutputCol</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasOutputAnnotationCol</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#getParam" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getParam(paramName:String):org.apache.spark.ml.param.Param[Any]"></a><a id="getParam(String):Param[Any]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#getParam(paramName:String):org.apache.spark.ml.param.Param[Any]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">getParam</span><span class="params">(<span name="paramName">paramName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="scala.Any">Any</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#hasDefault" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hasDefault[T](param:org.apache.spark.ml.param.Param[T]):Boolean"></a><a id="hasDefault[T](Param[T]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#hasDefault[T](param:org.apache.spark.ml.param.Param[T]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hasDefault</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="param">param: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="org.apache.spark.ml.param.Params.hasDefault.T">T</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#hasParam" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hasParam(paramName:String):Boolean"></a><a id="hasParam(String):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#hasParam(paramName:String):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hasParam</span><span class="params">(<span name="paramName">paramName: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.Model#hasParent" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hasParent:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#hasParent:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hasParent</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Model</dd></dl></div>
+    </li><li name="scala.AnyRef#hashCode" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="hashCode():Int"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#hashCode():Int" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">hashCode</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Int">Int</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#initializeLogIfNecessary" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="initializeLogIfNecessary(isInterpreter:Boolean,silent:Boolean):Boolean"></a><a id="initializeLogIfNecessary(Boolean,Boolean):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#initializeLogIfNecessary(isInterpreter:Boolean,silent:Boolean):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">initializeLogIfNecessary</span><span class="params">(<span name="isInterpreter">isInterpreter: <span class="extype" name="scala.Boolean">Boolean</span></span>, <span name="silent">silent: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#initializeLogIfNecessary" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="initializeLogIfNecessary(isInterpreter:Boolean):Unit"></a><a id="initializeLogIfNecessary(Boolean):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#initializeLogIfNecessary(isInterpreter:Boolean):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">initializeLogIfNecessary</span><span class="params">(<span name="isInterpreter">isInterpreter: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#inputAnnotatorTypes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="anno">
+      <a id="inputAnnotatorTypes:Array[TextMatcherInternalModel.this.AnnotatorType]"></a><a id="inputAnnotatorTypes:Array[AnnotatorType]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#inputAnnotatorTypes:Array[TextMatcherInternalModel.this.AnnotatorType]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">inputAnnotatorTypes</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<a href="#AnnotatorType=String" class="extmbr" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel.AnnotatorType">AnnotatorType</a>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">input annotator type : DOCUMENT, TOKEN
+</p><div class="fullcomment"><div class="comment cmt"><p>input annotator type : DOCUMENT, TOKEN
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a> → HasInputAnnotationCols</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#inputCols" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="inputCols:org.apache.spark.ml.param.StringArrayParam"></a><a id="inputCols:StringArrayParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#inputCols:org.apache.spark.ml.param.StringArrayParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">inputCols</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.StringArrayParam">StringArrayParam</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#isDefined" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isDefined(param:org.apache.spark.ml.param.Param[_]):Boolean"></a><a id="isDefined(Param[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#isDefined(param:org.apache.spark.ml.param.Param[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isDefined</span><span class="params">(<span name="param">param: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isInstanceOf[T0]:Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#isInstanceOf[T0]:Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isInstanceOf</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#isSet" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isSet(param:org.apache.spark.ml.param.Param[_]):Boolean"></a><a id="isSet(Param[_]):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#isSet(param:org.apache.spark.ml.param.Param[_]):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isSet</span><span class="params">(<span name="param">param: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[_]</span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#isTraceEnabled" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="isTraceEnabled():Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#isTraceEnabled():Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">isTraceEnabled</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.CanBeLazy#lazyAnnotator" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="lazyAnnotator:org.apache.spark.ml.param.BooleanParam"></a><a id="lazyAnnotator:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#lazyAnnotator:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">lazyAnnotator</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CanBeLazy</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#log" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="log:org.slf4j.Logger"></a><a id="log:Logger"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#log:org.slf4j.Logger" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">log</span><span class="result">: <span class="extype" name="org.slf4j.Logger">Logger</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#logDebug" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logDebug(msg:=&gt;String,throwable:Throwable):Unit"></a><a id="logDebug(⇒String,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#logDebug(msg:=&gt;String,throwable:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logDebug</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#logDebug" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logDebug(msg:=&gt;String):Unit"></a><a id="logDebug(⇒String):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#logDebug(msg:=&gt;String):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logDebug</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#logError" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logError(msg:=&gt;String,throwable:Throwable):Unit"></a><a id="logError(⇒String,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#logError(msg:=&gt;String,throwable:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logError</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#logError" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logError(msg:=&gt;String):Unit"></a><a id="logError(⇒String):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#logError(msg:=&gt;String):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logError</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#logInfo" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logInfo(msg:=&gt;String,throwable:Throwable):Unit"></a><a id="logInfo(⇒String,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#logInfo(msg:=&gt;String,throwable:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logInfo</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#logInfo" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logInfo(msg:=&gt;String):Unit"></a><a id="logInfo(⇒String):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#logInfo(msg:=&gt;String):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logInfo</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#logName" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logName:String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#logName:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logName</span><span class="result">: <span class="extype" name="java.lang.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#logTrace" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logTrace(msg:=&gt;String,throwable:Throwable):Unit"></a><a id="logTrace(⇒String,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#logTrace(msg:=&gt;String,throwable:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logTrace</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#logTrace" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logTrace(msg:=&gt;String):Unit"></a><a id="logTrace(⇒String):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#logTrace(msg:=&gt;String):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logTrace</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#logWarning" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logWarning(msg:=&gt;String,throwable:Throwable):Unit"></a><a id="logWarning(⇒String,Throwable):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#logWarning(msg:=&gt;String,throwable:Throwable):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logWarning</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>, <span name="throwable">throwable: <a href="../../../../../scala/index.html#Throwable=Throwable" class="extmbr" name="scala.Throwable">Throwable</a></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="org.apache.spark.internal.Logging#logWarning" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="logWarning(msg:=&gt;String):Unit"></a><a id="logWarning(⇒String):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#logWarning(msg:=&gt;String):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">logWarning</span><span class="params">(<span name="msg">msg: ⇒ <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Logging</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#merge" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="merge(rs:List[(Int,Int)]):List[(Int,Int)]"></a><a id="merge(List[(Int,Int)]):List[(Int,Int)]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#merge(rs:List[(Int,Int)]):List[(Int,Int)]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">merge</span><span class="params">(<span name="rs">rs: <a href="../../../../../scala/index.html#List[+A]=List[A]" class="extmbr" name="scala.List">List</a>[(<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)]</span>)</span><span class="result">: <a href="../../../../../scala/index.html#List[+A]=List[A]" class="extmbr" name="scala.List">List</a>[(<span class="extype" name="scala.Int">Int</span>, <span class="extype" name="scala.Int">Int</span>)]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#mergeOverlapping" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="mergeOverlapping:org.apache.spark.ml.param.BooleanParam"></a><a id="mergeOverlapping:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#mergeOverlapping:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">mergeOverlapping</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">whether to merge overlapping matched chunks.</p><div class="fullcomment"><div class="comment cmt"><p>whether to merge overlapping matched chunks. Defaults false
+</p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#msgHelper" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="msgHelper(schema:org.apache.spark.sql.types.StructType):String"></a><a id="msgHelper(StructType):String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#msgHelper(schema:org.apache.spark.sql.types.StructType):String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">msgHelper</span><span class="params">(<span name="schema">schema: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
+    </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#ne(x$1:AnyRef):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notify():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#notify():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="notifyAll():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#notifyAll():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable#onWrite" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="onWrite(path:String,spark:org.apache.spark.sql.SparkSession):Unit"></a><a id="onWrite(String,SparkSession):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#onWrite(path:String,spark:org.apache.spark.sql.SparkSession):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">onWrite</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="spark">spark: <span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>ParamsAndFeaturesWritable</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#optionalInputAnnotatorTypes" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="optionalInputAnnotatorTypes:Array[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#optionalInputAnnotatorTypes:Array[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">optionalInputAnnotatorTypes</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#outputAnnotatorType" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="anno">
+      <a id="outputAnnotatorType:TextMatcherInternalModel.this.AnnotatorType"></a><a id="outputAnnotatorType:AnnotatorType"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#outputAnnotatorType:TextMatcherInternalModel.this.AnnotatorType" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">outputAnnotatorType</span><span class="result">: <a href="#AnnotatorType=String" class="extmbr" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel.AnnotatorType">AnnotatorType</a></span>
+      </span>
+      
+      <p class="shortcomment cmt">Output annotator type : CHUNK
+</p><div class="fullcomment"><div class="comment cmt"><p>Output annotator type : CHUNK
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a> → HasOutputAnnotatorType</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasOutputAnnotationCol#outputCol" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="outputCol:org.apache.spark.ml.param.Param[String]"></a><a id="outputCol:Param[String]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#outputCol:org.apache.spark.ml.param.Param[String]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">outputCol</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasOutputAnnotationCol</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#params" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="params:Array[org.apache.spark.ml.param.Param[_]]"></a><a id="params:Array[Param[_]]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#params:Array[org.apache.spark.ml.param.Param[_]]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">lazy val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">params</span><span class="result">: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[_]]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.Model#parent" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="parent:org.apache.spark.ml.Estimator[M]"></a><a id="parent:Estimator[TextMatcherInternalModel]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#parent:org.apache.spark.ml.Estimator[M]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">var</span>
+      </span>
+      <span class="symbol">
+        <span class="name">parent</span><span class="result">: <span class="extype" name="org.apache.spark.ml.Estimator">Estimator</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>]</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Model</dd></dl></div>
+    </li><li name="org.apache.spark.ml.util.MLWritable#save" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="save(path:String):Unit"></a><a id="save(String):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#save(path:String):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">save</span><span class="params">(<span name="path">path: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>MLWritable</dd><dt>Annotations</dt><dd>
+                <span class="name">@Since</span><span class="args">(<span>
+      
+      <span class="symbol">&quot;1.6.0&quot;</span>
+    </span>)</span>
+              
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="&quot;If the input path already exists but overwrite is not enabled.&quot;">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#searchTries" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+      <a id="searchTries:com.johnsnowlabs.nlp.serialization.MapFeature[String,com.johnsnowlabs.collections.SearchTrie]"></a><a id="searchTries:MapFeature[String,SearchTrie]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#searchTries:com.johnsnowlabs.nlp.serialization.MapFeature[String,com.johnsnowlabs.collections.SearchTrie]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">searchTries</span><span class="result">: <span class="extype" name="com.johnsnowlabs.nlp.serialization.MapFeature">MapFeature</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="com.johnsnowlabs.collections.SearchTrie">SearchTrie</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">searchTries for Searching words
+</p>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#set" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="set[T](feature:com.johnsnowlabs.nlp.serialization.StructFeature[T],value:T):HasFeatures.this.type"></a><a id="set[T](StructFeature[T],T):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#set[T](feature:com.johnsnowlabs.nlp.serialization.StructFeature[T],value:T):HasFeatures.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.StructFeature">StructFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.set.T">T</span>]</span>, <span name="value">value: <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.set.T">T</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#set" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="set[K,V](feature:com.johnsnowlabs.nlp.serialization.MapFeature[K,V],value:Map[K,V]):HasFeatures.this.type"></a><a id="set[K,V](MapFeature[K,V],Map[K,V]):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#set[K,V](feature:com.johnsnowlabs.nlp.serialization.MapFeature[K,V],value:Map[K,V]):HasFeatures.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.MapFeature">MapFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.set.K">K</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.set.V">V</span>]</span>, <span name="value">value: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.set.K">K</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.set.V">V</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#set" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="set[T](feature:com.johnsnowlabs.nlp.serialization.SetFeature[T],value:Set[T]):HasFeatures.this.type"></a><a id="set[T](SetFeature[T],Set[T]):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#set[T](feature:com.johnsnowlabs.nlp.serialization.SetFeature[T],value:Set[T]):HasFeatures.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.SetFeature">SetFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.set.T">T</span>]</span>, <span name="value">value: <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.set.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#set" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="set[T](feature:com.johnsnowlabs.nlp.serialization.ArrayFeature[T],value:Array[T]):HasFeatures.this.type"></a><a id="set[T](ArrayFeature[T],Array[T]):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#set[T](feature:com.johnsnowlabs.nlp.serialization.ArrayFeature[T],value:Array[T]):HasFeatures.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.ArrayFeature">ArrayFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.set.T">T</span>]</span>, <span name="value">value: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.set.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#set" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="set(paramPair:org.apache.spark.ml.param.ParamPair[_]):Params.this.type"></a><a id="set(ParamPair[_]):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#set(paramPair:org.apache.spark.ml.param.ParamPair[_]):Params.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="params">(<span name="paramPair">paramPair: <span class="extype" name="org.apache.spark.ml.param.ParamPair">ParamPair</span>[_]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#set" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="set(param:String,value:Any):Params.this.type"></a><a id="set(String,Any):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#set(param:String,value:Any):Params.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="params">(<span name="param">param: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="value">value: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#set" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="set[T](param:org.apache.spark.ml.param.Param[T],value:T):Params.this.type"></a><a id="set[T](Param[T],T):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#set[T](param:org.apache.spark.ml.param.Param[T],value:T):Params.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">set</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="param">param: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="org.apache.spark.ml.param.Params.set.T">T</span>]</span>, <span name="value">value: <span class="extype" name="org.apache.spark.ml.param.Params.set.T">T</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#setBuildFromTokens" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
+      <a id="setBuildFromTokens(v:Boolean):TextMatcherInternalModel.this.type"></a><a id="setBuildFromTokens(Boolean):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setBuildFromTokens(v:Boolean):TextMatcherInternalModel.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setBuildFromTokens</span><span class="params">(<span name="v">v: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Setter for buildFromTokens param
+</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#setCaseSensitive" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="param">
+      <a id="setCaseSensitive(v:Boolean):TextMatcherInternalModel.this.type"></a><a id="setCaseSensitive(Boolean):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setCaseSensitive(v:Boolean):TextMatcherInternalModel.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setCaseSensitive</span><span class="params">(<span name="v">v: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Setter for case sensitivity (Default: <code>true</code>)
+</p>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#setDefault" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setDefault[T](feature:com.johnsnowlabs.nlp.serialization.StructFeature[T],value:()=&gt;T):HasFeatures.this.type"></a><a id="setDefault[T](StructFeature[T],()⇒T):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setDefault[T](feature:com.johnsnowlabs.nlp.serialization.StructFeature[T],value:()=&gt;T):HasFeatures.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDefault</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.StructFeature">StructFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.setDefault.T">T</span>]</span>, <span name="value">value: () ⇒ <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.setDefault.T">T</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#setDefault" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setDefault[K,V](feature:com.johnsnowlabs.nlp.serialization.MapFeature[K,V],value:()=&gt;Map[K,V]):HasFeatures.this.type"></a><a id="setDefault[K,V](MapFeature[K,V],()⇒Map[K,V]):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setDefault[K,V](feature:com.johnsnowlabs.nlp.serialization.MapFeature[K,V],value:()=&gt;Map[K,V]):HasFeatures.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDefault</span><span class="tparams">[<span name="K">K</span>, <span name="V">V</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.MapFeature">MapFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.setDefault.K">K</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.setDefault.V">V</span>]</span>, <span name="value">value: () ⇒ <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.setDefault.K">K</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.setDefault.V">V</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#setDefault" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setDefault[T](feature:com.johnsnowlabs.nlp.serialization.SetFeature[T],value:()=&gt;Set[T]):HasFeatures.this.type"></a><a id="setDefault[T](SetFeature[T],()⇒Set[T]):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setDefault[T](feature:com.johnsnowlabs.nlp.serialization.SetFeature[T],value:()=&gt;Set[T]):HasFeatures.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDefault</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.SetFeature">SetFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.setDefault.T">T</span>]</span>, <span name="value">value: () ⇒ <span class="extype" name="scala.Predef.Set">Set</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.setDefault.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasFeatures#setDefault" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setDefault[T](feature:com.johnsnowlabs.nlp.serialization.ArrayFeature[T],value:()=&gt;Array[T]):HasFeatures.this.type"></a><a id="setDefault[T](ArrayFeature[T],()⇒Array[T]):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setDefault[T](feature:com.johnsnowlabs.nlp.serialization.ArrayFeature[T],value:()=&gt;Array[T]):HasFeatures.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDefault</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="feature">feature: <span class="extype" name="com.johnsnowlabs.nlp.serialization.ArrayFeature">ArrayFeature</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.setDefault.T">T</span>]</span>, <span name="value">value: () ⇒ <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="com.johnsnowlabs.nlp.HasFeatures.setDefault.T">T</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>HasFeatures</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#setDefault" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setDefault(paramPairs:org.apache.spark.ml.param.ParamPair[_]*):Params.this.type"></a><a id="setDefault(ParamPair[_]*):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setDefault(paramPairs:org.apache.spark.ml.param.ParamPair[_]*):Params.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDefault</span><span class="params">(<span name="paramPairs">paramPairs: <span class="extype" name="org.apache.spark.ml.param.ParamPair">ParamPair</span>[_]*</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="org.apache.spark.ml.param.Params#setDefault" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setDefault[T](param:org.apache.spark.ml.param.Param[T],value:T):Params.this.type"></a><a id="setDefault[T](Param[T],T):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setDefault[T](param:org.apache.spark.ml.param.Param[T],value:T):Params.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDefault</span><span class="tparams">[<span name="T">T</span>]</span><span class="params">(<span name="param">param: <span class="extype" name="org.apache.spark.ml.param.Param">Param</span>[<span class="extype" name="org.apache.spark.ml.param.Params.setDefault.T">T</span>]</span>, <span name="value">value: <span class="extype" name="org.apache.spark.ml.param.Params.setDefault.T">T</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#setDelimiter" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
+      <a id="setDelimiter(v:String):TextMatcherInternalModel.this.type"></a><a id="setDelimiter(String):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setDelimiter(v:String):TextMatcherInternalModel.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDelimiter</span><span class="params">(<span name="v">v: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Set the Phrase, Entity delimiter in the entities file (Default: <code>,</code>)
+</p>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#setEntityValue" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
+      <a id="setEntityValue(v:String):TextMatcherInternalModel.this.type"></a><a id="setEntityValue(String):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setEntityValue(v:String):TextMatcherInternalModel.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setEntityValue</span><span class="params">(<span name="v">v: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Setter for Value for the entity metadata field
+</p>
+    </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#setInputCols" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setInputCols(value:String*):HasInputAnnotationCols.this.type"></a><a id="setInputCols(String*):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setInputCols(value:String*):HasInputAnnotationCols.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setInputCols</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span>*</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.HasInputAnnotationCols#setInputCols" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setInputCols(value:Array[String]):HasInputAnnotationCols.this.type"></a><a id="setInputCols(Array[String]):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setInputCols(value:Array[String]):HasInputAnnotationCols.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setInputCols</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Array">Array</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasInputAnnotationCols</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.CanBeLazy#setLazyAnnotator" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setLazyAnnotator(value:Boolean):com.johnsnowlabs.nlp.CanBeLazy.&lt;refinement&gt;.type"></a><a id="setLazyAnnotator(Boolean):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setLazyAnnotator(value:Boolean):com.johnsnowlabs.nlp.CanBeLazy.&lt;refinement&gt;.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setLazyAnnotator</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CanBeLazy</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#setMergeOverlapping" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setMergeOverlapping(v:Boolean):TextMatcherInternalModel.this.type"></a><a id="setMergeOverlapping(Boolean):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setMergeOverlapping(v:Boolean):TextMatcherInternalModel.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setMergeOverlapping</span><span class="params">(<span name="v">v: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">Whether to merge overlapping matched chunks.</p><div class="fullcomment"><div class="comment cmt"><p>Whether to merge overlapping matched chunks. Defaults false
+</p></div></div>
+    </li><li name="com.johnsnowlabs.nlp.HasOutputAnnotationCol#setOutputCol" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setOutputCol(value:String):HasOutputAnnotationCol.this.type"></a><a id="setOutputCol(String):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setOutputCol(value:String):HasOutputAnnotationCol.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setOutputCol</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>HasOutputAnnotationCol</dd></dl></div>
+    </li><li name="org.apache.spark.ml.Model#setParent" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="setParent(parent:org.apache.spark.ml.Estimator[M]):M"></a><a id="setParent(Estimator[TextMatcherInternalModel]):TextMatcherInternalModel"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setParent(parent:org.apache.spark.ml.Estimator[M]):M" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setParent</span><span class="params">(<span name="parent">parent: <span class="extype" name="org.apache.spark.ml.Estimator">Estimator</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Model</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#setSearchTries" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="setParam">
+      <a id="setSearchTries(value:Map[String,com.johnsnowlabs.collections.SearchTrie]):TextMatcherInternalModel.this.type"></a><a id="setSearchTries(Map[String,SearchTrie]):TextMatcherInternalModel.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#setSearchTries(value:Map[String,com.johnsnowlabs.collections.SearchTrie]):TextMatcherInternalModel.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setSearchTries</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Predef.Map">Map</span>[<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="com.johnsnowlabs.collections.SearchTrie">SearchTrie</span>]</span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">SearchTrie of Tokens
+</p>
+    </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+    </li><li name="org.apache.spark.ml.util.Identifiable#toString" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="toString():String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#toString():String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">toString</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Identifiable → AnyRef → Any</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.AnnotatorModel#transform" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transform(dataset:org.apache.spark.sql.Dataset[_]):org.apache.spark.sql.DataFrame"></a><a id="transform(Dataset[_]):DataFrame"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#transform(dataset:org.apache.spark.sql.Dataset[_]):org.apache.spark.sql.DataFrame" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transform</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[_]</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnnotatorModel → Transformer</dd></dl></div>
+    </li><li name="org.apache.spark.ml.Transformer#transform" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transform(dataset:org.apache.spark.sql.Dataset[_],paramMap:org.apache.spark.ml.param.ParamMap):org.apache.spark.sql.DataFrame"></a><a id="transform(Dataset[_],ParamMap):DataFrame"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#transform(dataset:org.apache.spark.sql.Dataset[_],paramMap:org.apache.spark.ml.param.ParamMap):org.apache.spark.sql.DataFrame" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transform</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[_]</span>, <span name="paramMap">paramMap: <span class="extype" name="org.apache.spark.ml.param.ParamMap">ParamMap</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Transformer</dd><dt>Annotations</dt><dd>
+                <span class="name">@Since</span><span class="args">(<span>
+      
+      <span class="symbol">&quot;2.0.0&quot;</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="org.apache.spark.ml.Transformer#transform" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transform(dataset:org.apache.spark.sql.Dataset[_],firstParamPair:org.apache.spark.ml.param.ParamPair[_],otherParamPairs:org.apache.spark.ml.param.ParamPair[_]*):org.apache.spark.sql.DataFrame"></a><a id="transform(Dataset[_],ParamPair[_],ParamPair[_]*):DataFrame"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#transform(dataset:org.apache.spark.sql.Dataset[_],firstParamPair:org.apache.spark.ml.param.ParamPair[_],otherParamPairs:org.apache.spark.ml.param.ParamPair[_]*):org.apache.spark.sql.DataFrame" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transform</span><span class="params">(<span name="dataset">dataset: <span class="extype" name="org.apache.spark.sql.Dataset">Dataset</span>[_]</span>, <span name="firstParamPair">firstParamPair: <span class="extype" name="org.apache.spark.ml.param.ParamPair">ParamPair</span>[_]</span>, <span name="otherParamPairs">otherParamPairs: <span class="extype" name="org.apache.spark.ml.param.ParamPair">ParamPair</span>[_]*</span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Transformer</dd><dt>Annotations</dt><dd>
+                <span class="name">@Since</span><span class="args">(<span>
+      
+      <span class="symbol">&quot;2.0.0&quot;</span>
+    </span>)</span>
+              
+                <span class="name">@varargs</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.RawAnnotator#transformSchema" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transformSchema(schema:org.apache.spark.sql.types.StructType):org.apache.spark.sql.types.StructType"></a><a id="transformSchema(StructType):StructType"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#transformSchema(schema:org.apache.spark.sql.types.StructType):org.apache.spark.sql.types.StructType" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transformSchema</span><span class="params">(<span name="schema">schema: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>RawAnnotator → PipelineStage</dd></dl></div>
+    </li><li name="org.apache.spark.ml.PipelineStage#transformSchema" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="transformSchema(schema:org.apache.spark.sql.types.StructType,logging:Boolean):org.apache.spark.sql.types.StructType"></a><a id="transformSchema(StructType,Boolean):StructType"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#transformSchema(schema:org.apache.spark.sql.types.StructType,logging:Boolean):org.apache.spark.sql.types.StructType" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">transformSchema</span><span class="params">(<span name="schema">schema: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>, <span name="logging">logging: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>PipelineStage</dd><dt>Annotations</dt><dd>
+                <span class="name">@DeveloperApi</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel#uid" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="uid:String"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#uid:String" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">uid</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a> → Identifiable</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.RawAnnotator#validate" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="validate(schema:org.apache.spark.sql.types.StructType):Boolean"></a><a id="validate(StructType):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#validate(schema:org.apache.spark.sql.types.StructType):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">validate</span><span class="params">(<span name="schema">schema: <span class="extype" name="org.apache.spark.sql.types.StructType">StructType</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>RawAnnotator</dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait():Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#wait():Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>, <span name="arg1">arg1: <span class="extype" name="scala.Int">Int</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+        </dd></dl></div>
+    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#wait(x$1:Long):Unit" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier">final </span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Long">Long</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
+                <span class="name">@throws</span><span class="args">(<span>
+      
+      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
+    </span>)</span>
+              
+                <span class="name">@native</span><span class="args">()</span>
+              
+        </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.RawAnnotator#wrapColumnMetadata" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="wrapColumnMetadata(col:org.apache.spark.sql.Column):org.apache.spark.sql.Column"></a><a id="wrapColumnMetadata(Column):Column"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#wrapColumnMetadata(col:org.apache.spark.sql.Column):org.apache.spark.sql.Column" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">wrapColumnMetadata</span><span class="params">(<span name="col">col: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.Column">Column</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>RawAnnotator</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable#write" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="write:org.apache.spark.ml.util.MLWriter"></a><a id="write:MLWriter"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/matcher/TextMatcherInternalModel.html#write:org.apache.spark.ml.util.MLWriter" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">write</span><span class="result">: <span class="extype" name="org.apache.spark.ml.util.MLWriter">MLWriter</span></span>
+      </span>
+      
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>ParamsAndFeaturesWritable → DefaultParamsWritable → MLWritable</dd></dl></div>
+    </li>
+              </ol>
+            </div>
+
+        
+
+        
+        </div>
+
+        <div id="inheritedMembers">
+        <div class="parent" name="com.johnsnowlabs.license.CheckLicense">
+              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">
+              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.HasSimpleAnnotate">HasSimpleAnnotate</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>]</h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.AnnotatorModel">
+              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorModel">AnnotatorModel</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>]</h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.CanBeLazy">
+              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.CanBeLazy">CanBeLazy</span></h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.RawAnnotator">
+              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.RawAnnotator">RawAnnotator</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>]</h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">
+              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span></h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">
+              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">HasInputAnnotationCols</span></h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">
+              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">HasOutputAnnotatorType</span></h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">
+              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.ParamsAndFeaturesWritable">ParamsAndFeaturesWritable</span></h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.HasFeatures">
+              <h3>Inherited from <span class="extype" name="com.johnsnowlabs.nlp.HasFeatures">HasFeatures</span></h3>
+            </div><div class="parent" name="org.apache.spark.ml.util.DefaultParamsWritable">
+              <h3>Inherited from <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span></h3>
+            </div><div class="parent" name="org.apache.spark.ml.util.MLWritable">
+              <h3>Inherited from <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span></h3>
+            </div><div class="parent" name="org.apache.spark.ml.Model">
+              <h3>Inherited from <span class="extype" name="org.apache.spark.ml.Model">Model</span>[<a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.matcher.TextMatcherInternalModel">TextMatcherInternalModel</a>]</h3>
+            </div><div class="parent" name="org.apache.spark.ml.Transformer">
+              <h3>Inherited from <span class="extype" name="org.apache.spark.ml.Transformer">Transformer</span></h3>
+            </div><div class="parent" name="org.apache.spark.ml.PipelineStage">
+              <h3>Inherited from <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span></h3>
+            </div><div class="parent" name="org.apache.spark.internal.Logging">
+              <h3>Inherited from <span class="extype" name="org.apache.spark.internal.Logging">Logging</span></h3>
+            </div><div class="parent" name="org.apache.spark.ml.param.Params">
+              <h3>Inherited from <span class="extype" name="org.apache.spark.ml.param.Params">Params</span></h3>
+            </div><div class="parent" name="scala.Serializable">
+              <h3>Inherited from <span class="extype" name="scala.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="java.io.Serializable">
+              <h3>Inherited from <span class="extype" name="java.io.Serializable">Serializable</span></h3>
+            </div><div class="parent" name="org.apache.spark.ml.util.Identifiable">
+              <h3>Inherited from <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span></h3>
+            </div><div class="parent" name="scala.AnyRef">
+              <h3>Inherited from <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
+            </div><div class="parent" name="scala.Any">
+              <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
+            </div>
+        
+        </div>
+
+        <div id="groupedMembers">
+        <div class="group" name="param">
+              <h3>Parameters</h3>
+              <div class="comment cmt"><p>
+  A list of (hyper-)parameter keys this annotator can take. Users can set and get the
+  parameter values through setters and getters, respectively.</p></div>
+            </div><div class="group" name="anno">
+              <h3>Annotator types</h3>
+              <div class="comment cmt"><p>
+  Required input and expected output annotator types</p></div>
+            </div><div class="group" name="Ungrouped">
+              <h3>Members</h3>
+              
+            </div><div class="group" name="setParam">
+              <h3>Parameter setters</h3>
+              
+            </div><div class="group" name="getParam">
+              <h3>Parameter getters</h3>
+              
+            </div>
+        </div>
+
+      </div>
+
+      <div id="tooltip"></div>
+
+      <div id="footer">  </div>
+    </body>
+          </div>
+        </div>
+      </div>
+    </body>
+      </html>

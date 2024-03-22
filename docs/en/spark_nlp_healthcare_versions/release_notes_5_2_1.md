@@ -42,7 +42,7 @@ We believe that these enhancements will elevate your experience with Spark NLP f
 
 </div><div class="h3-box" markdown="1">
 
-#### Introducing A New Opioid Named Entity Recognition (NER) Model For Extracting Information Regarding `Opioid` Usage
+#### Introducing a New Opioid Named Entity Recognition (NER) Model for Extracting Information Regarding `Opioid` Usage
 This model is designed to detect and label opioid-related entities within text data. Opioids are a class of drugs that include the illegal drug heroin, synthetic opioids such as fentanyl, and pain relievers available legally by prescription. The model has been trained using advanced deep-learning techniques on a diverse range of text sources and can accurately recognize and classify a wide range of opioid-related entities.
 The model’s accuracy and precision have been carefully validated against expert-labeled data to ensure reliable and consistent results.
 
@@ -98,7 +98,7 @@ Please check the [Opioid Demo](https://demo.johnsnowlabs.com/healthcare/NER_OPIO
 
 </div><div class="h3-box" markdown="1">
 
-#### Introducing A New Multilingual NER Model To Extract `NAME` Entities For Deidentification Purposes
+#### Introducing a New Multilingual NER Model To Extract `NAME` Entities for Deidentification Purposes
 
 Introducing our latest invention Multilingual Named Entity Recognition model which annotates English, German, French, Italian, Spanish, Portuguese, and Romanian text to find `NAME` entities that may need to be de-identified. It was trained with in-house annotated datasets and detects NAME entities. We plan to expand this multilingual NER model to other PHI entities in the upcoming releases.
 
@@ -140,7 +140,7 @@ Please see the model card [ner_deid_name_multilingual](https://nlp.johnsnowlabs.
 
 
 
-#### Clinical Document Analysis With State-Of-The-Art Pretrained Pipelines For Specific Clinical Tasks And Concepts
+#### Clinical Document Analysis With State-Of-The-Art Pretrained Pipelines for Specific Clinical Tasks and Concepts
 
 We introduce a suite of advanced, hybrid pretrained pipelines, specifically designed to streamline the process of analyzing clinical documents. These pipelines are built upon multiple state-of-the-art (SOTA) pretrained models, delivering a comprehensive solution for extracting vital information with unprecedented ease.
 
@@ -166,13 +166,13 @@ What sets this release apart is the elimination of complexities typically involv
 | [`cpt_procedures_measurements_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/17/cpt_procedures_measurements_resolver_pipeline_en.html) | This pipeline extracts `Procedure` and `Measurement` entities and maps them to corresponding Current Procedural Terminology (CPT) codes. |
 | [`hcc_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/17/hcc_resolver_pipeline_en.html) |This advanced pipeline extracts clinical conditions from clinical texts and maps these entities to their corresponding Hierarchical Condition Categories (HCC) codes. |
 | [`hpo_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/17/hpo_resolver_pipeline_en.html) | This advanced pipeline extracts human phenotype entities from clinical texts and maps these entities to their corresponding HPO codes. |
-| [`snomed_body_structure_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/17/snomed_body_structure_resolver_pipeline_en.html) | This pipeline extracts anatomical structure entities and maps them to their corresponding SNOMED (body structure version) codes. |
-| [`snomed_findings_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/17/snomed_findings_resolver_pipeline_en.html) | This pipeline extracts clinical findings and maps them to their corresponding SNOMED (CT version) codes. |
+| [`snomed_body_structure_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/05/snomed_body_structure_resolver_pipeline_en.html) | This pipeline extracts anatomical structure entities and maps them to their corresponding SNOMED (body structure version) codes. |
+| [`snomed_findings_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/03/snomed_findings_resolver_pipeline_en.html) | This pipeline extracts clinical findings and maps them to their corresponding SNOMED (CT version) codes. |
 
 
 </div><div class="h3-box" markdown="1">
 
-####  Returning Text Embeddings Within Sentence Entity Resolution Models
+####  Returning Text Embeddings within Sentence Entity Resolution Models
 
 The unique aspect highlighted in this implementation is the use of the `setReturnResolvedTextEmbeddings` parameter. By setting it to `True`, the code allows for the inclusion of embeddings for resolved text candidates, enabling a more comprehensive analysis and understanding of the resolved entities within the clinical text. This parameter provides flexibility by allowing users to either include or exclude embeddings based on their requirements, with the default setting being `False`.
 
@@ -200,7 +200,7 @@ text = 'metformin 100 mg'
 </div><div class="h3-box" markdown="1">
 
 
-#### Setting Entity Pairs For Relation Labels Feature In `RelationExtractionDLModel` to Reduce False Positives
+#### Setting Entity Pairs for Relation Labels Feature in `RelationExtractionDLModel` to Reduce False Positives
 
 `RelationExtractionDLModel` now includes the ability to set entity pairs for each relation label, giving you more control over your results and even greater accuracy.
 
@@ -209,46 +209,28 @@ In the following example, we utilize entity pair restrictions to limit the resul
 *Example*:
 
 ```python
-clinical_re_Model = RelationExtractionDLModel().pretrained('redl_clinical_biobert', "en", "clinical/models")\
+ade_redl_model = RelationExtractionDLModel()\
+    .pretrained('redl_ade_biobert', 'en', "clinical/models") \
+    .setPredictionThreshold(0.5)\
     .setInputCols(["re_ner_chunks", "sentence"]) \
     .setOutputCol("relations")\
     .setRelationPairsCaseSensitive(False)\
-    .setRelationTypePerPair({"TrAP": ["PROBLEM-TREATMENT"],
-                             "TrIP": ["TREATMENT-PROBLEM"],
-                             "TrWP": ["TREATMENT-PROBLEM"],
-                             "TrCP": ["TREATMENT-PROBLEM"],
-                             "TrAP": ["TREATMENT-PROBLEM"],
-                             "TrNAP":["TREATMENT-PROBLEM"],
-                             "TeCP": ["PROBLEM-TEST"],
-                             "TeRP": ["PROBLEM-TEST"],
-                             "PIP":  ["PROBLEM-PROBLEM"]
-                             })
+    .setRelationTypePerPair({
+        "1":["drug-ade", "ade-drug"]
+    })
 
-text ="""She was treated with a five-day course of amoxicillin for a respiratory tract infection . She was on metformin , glipizide , and dapagliflozin for T2DM and atorvastatin and gemfibrozil for HTG .
-She had been on dapagliflozin for six months at the time of presentation. Physical examination on presentation was significant for dry oral mucosa ; significantly , her abdominal examination was benign with no tenderness , guarding , or rigidity .
-Pertinent laboratory findings on admission were : serum glucose 111 mg/dl , bicarbonate 18 mmol/l , anion gap 20 , creatinine 0.4 mg/dL , triglycerides 508 mg/dL , total cholesterol 122 mg/dL , glycated hemoglobin ( HbA1c ) 10% , and venous pH 7.27 . Serum lipase was normal at 43 U/L .
-Serum acetone levels could not be assessed as blood samples kept hemolyzing due to significant lipemia . The patient was initially admitted for starvation ketosis , as she reported poor oral intake for three days prior to admission .
-However , serum chemistry obtained six hours after presentation revealed her glucose was 186 mg/dL , the anion gap was still elevated at 21 , serum bicarbonate was 16 mmol/L , triglyceride level peaked at 2050 mg/dL , and lipase was 52 U/L .
-The β-hydroxybutyrate level was obtained and found to be elevated at 5.29 mmol/L - the original sample was centrifuged and the chylomicron layer removed prior to analysis due to interference from turbidity caused by lipemia again .
-The patient was treated with an insulin drip for euDKA and HTG with a reduction in the anion gap to 13 and triglycerides to 1400 mg/dL , within 24 hours . Her euDKA was thought to be precipitated by her respiratory tract infection in the setting of SGLT2 inhibitor use .
-The patient was seen by the endocrinology service and she was discharged on 40 units of insulin glargine at night , 12 units of insulin lispro with meals , and metformin 1000 mg two times a day . It was determined that all SGLT2 inhibitors should be discontinued indefinitely . She had close follow-up with endocrinology post discharge .
-"""
+text ="""Hypersensitivity to aspirin can be manifested as acute asthma, urticaria and/or angioedema, or a systemic anaphylactoid reaction."""
+
 ```
 
 *Result*:
 
-|sentence | chunk1                      | entity1 | chunk2            | entity2 | relation |confidence |
-|--------:|:----------------------------|:--------|:------------------|:--------|:---------|----------:|
-|       3 | Physical examination        | TEST    | dry oral mucosa   | PROBLEM | TeRP     |  0.99 |
-|       4 | her abdominal examination   | TEST    | tenderness        | PROBLEM | TeRP     |  0.99 |
-|       4 | her abdominal examination   | TEST    | guarding          | PROBLEM | TeRP     |  0.99 |
-|       4 | her abdominal examination   | TEST    | rigidity          | PROBLEM | TeRP     |  0.99 |
-|       9 | her glucose                 | TEST    | still elevated    | PROBLEM | TeRP     |  0.97 |
-|       9 | the anion gap               | TEST    | still elevated    | PROBLEM | TeRP     |  0.99 |
-|       9 | still elevated              | PROBLEM | serum bicarbonate | TEST    | TeRP     |  0.97 |
-|       9 | still elevated              | PROBLEM | lipase            | TEST    | TeRP     |  0.93 |
-|       9 | still elevated              | PROBLEM | U/L               | TEST    | TeRP     |  0.94 |
-|      10 | The β-hydroxybutyrate level | TEST    | elevated          | PROBLEM | TeRP     |  0.99 |
+| chunk1 | entity1| chunk2                          | entity2|relation |confidence |
+|:-------|:-------|:--------------------------------|:-------|--------:|----------:|
+| aspirin| DRUG   | acute asthma                    | ADE    |       1 |  0.99978  |
+| aspirin| DRUG   | urticaria                       | ADE    |       1 |  0.999787 |
+| angioedema                      | ADE    | aspirin| DRUG   |       1 |  0.999798 |
+| systemic anaphylactoid reaction | ADE    | aspirin| DRUG   |       1 |  0.999821 |
 
 
 Please check the [Clinical Relation Extraction Model Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/10.Clinical_Relation_Extraction.ipynb) for more information.
@@ -256,37 +238,29 @@ Please check the [Clinical Relation Extraction Model Notebook](https://colab.res
 
 </div><div class="h3-box" markdown="1">
 
-#### Cluster and CPU Speed Benchmark for Chunk Mapper, Entity Resolver, and Deidentification Pipelines
+#### Cluster and CPU speed benchmark for Chunk Mapper, Entity Resolver, and Deidentification pipelines
 
 Dive into the heart of healthcare data processing with our benchmark experiment meticulously designed for Mapper, Resolver, and Deidentification Pipelines. This benchmark provides crucial insights into the performance of these pipelines under varied configurations and dataset conditions.
 
-Cluster configuration:
-  - Driver Name: Standard_DS3_v2
-  - Driver Memory: 14GB
-  - Worker Name: Standard_DS3_v2
-  - Worker Memory: 14GB
-  - Worker Cores: 4
-  - Action: write_parquet
-  - Total Worker Numbers: 10
-  - Total Cores: 40
 
 These figures might differ based on the size of the mapper and resolver models. The larger the models, the higher the inference times. Depending on the success rate of mappers (any chunk coming in caught by the mapper successfully), the combined mapper and resolver timing would be less than resolver-only timing.
 
 If the resolver-only timing is equal to or very close to the combined mapper and resolver timing, it means that the mapper is not capable of catching/ mapping any chunk. In that case, try playing with various parameters in the mapper or retrain/ augment the mapper.
 
 - Mapper and Resolver Benchmark Experiment
-
+  - DataBricks Config: 32 CPU Core, 128GiB RAM (8 worker, Standard_DS3_v2)
+  - AWS EC2 Config: 32 CPU Cores, 58GiB RAM (c6a.8xlarge)
 **Dataset:** 100 Clinical Texts from MTSamples, approx. 705 tokens and 11 chunks per text.
 
-| partition | mapper timing | resolver timing | mapper and resolver timing |
-| --------: | -------------:| ---------------:| ----------------------:|
-| 4         | 40.8 sec      | 4.55 mins       | 3.20 mins              |
-| 8         | 30.1 sec      | 3.34 mins       | 1.59 mins              |
-| 16        | 11.6 sec      | 1.57 mins       | 1.12 mins              |
-| 32        | 7.84 sec      | 1.33 mins       | 55.9 sec               |
-| 64        | 7.25 sec      | 1.18 mins       | 56.1 sec               |
-| 100       | 7.45 sec      | 1.05 mins       | 47.5 sec               |
-| 1000      | 8.87 sec      | 1.14 mins       | 47.9 sec               |
+| partition | DataBricks <br> mapper timing | AWS EC2 <br> mapper timing | DataBricks <br> resolver timing | AWS EC2 <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS EC2 <br> mapper and resolver timing |
+| --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
+| 4         | 37.3 sec      | 12 sec        | 4.46 mins       | 2.37 mins       |  2.52 mins                 | 1.47 mins                  |
+| 8         | 26.7 sec      |  7 sec        | 2.46 mins       | 1.39 mins       |  1.37 mins                 | 1.04 mins                  |
+| 16        | 8.85 sec      |  7 sec        | 1.27 mins       | 1.30 mins       |  1.06 mins                 | 1.02 mins                  |
+| 32        | 7.74 sec      |  7 sec        | 1.38 mins       | 1.00 mins       |  54.5 sec                  | 43 sec                     |
+| 64        | 7.22 sec      |  7 sec        | 1.23 mins       | 1.07 mins       |  55.6 sec                  | 48 sec                     |
+| 100       | 6.32 sec      | 10 sec        | 1.16 mins       | 1.08 mins       |  50.9 sec                  | 45 sec                     |
+| 1000      | 8.37 sec      | 10 sec        | 59.6 sec        | 1.02 mins       |  49.3 sec                  | 41 sec                     |
 
 Explore the efficiency of our `clinical_deidentification` pipeline through a dedicated benchmark experiment. Unearth performance metrics and make informed decisions to enhance your healthcare data processing workflows.
 
@@ -297,7 +271,7 @@ Explore the efficiency of our `clinical_deidentification` pipeline through a ded
 
 **Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 21 chunks per text.
 
-| partition | AWS <br> result timing | DataBricks <br> result timing | Colab <br> result timing |
+| partition | AWS EC2 <br> result timing | DataBricks <br> result timing | Colab <br> result timing |
 |----------:|-------------:|-------------:|-------------:|
 | 1024      |  1 min 3 sec | 1 min 55 sec | 5 min 45 sec |
 | 512       |       56 sec | 1 min 26 sec | 5 min 15 sec |

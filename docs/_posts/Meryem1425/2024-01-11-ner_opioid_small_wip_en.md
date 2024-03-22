@@ -1,6 +1,6 @@
 ---
 layout: model
-title: OPIOID
+title: Detect Opioid Specific Entities
 author: John Snow Labs
 name: ner_opioid_small_wip
 date: 2024-01-11
@@ -52,6 +52,7 @@ Here are the labels of the OPIOID model with their descriptions:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
