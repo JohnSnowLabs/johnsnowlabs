@@ -33,6 +33,7 @@ Predicted entities: `DRUG`, `DOSAGE`, `FREQUENCY`, `ROUTE` and `STRENGTH`.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
