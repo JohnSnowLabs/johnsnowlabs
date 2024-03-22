@@ -2852,7 +2852,7 @@ data.show()
 | --- | --- | --- | --- |
 | lineWidth | Int | 4 | Line width for draw rectangles |
 | fontSize | Int | 12 | Font size for render labels and score |
-| rectColor | Color | Color.black | Color of lines |
+| colorMap | Dict | None | ColorMap containing labels as keys and Color Enum as value. Use "*" to force a single color. |
 
 </div><div class="h3-box" markdown="1">
 
@@ -2872,6 +2872,7 @@ data.show()
 ```python
 from pyspark.ml import PipelineModel
 from sparkocr.transformers import *
+from sparkocr.enums import Color
 
 imagePath = "path to image"
 
@@ -2892,21 +2893,29 @@ tokenizer = HocrTokenizer() \
     .setInputCol("hocr") \
     .setOutputCol("token")
 
+forceSingleColor = True 
+
+if forceSingleColor:
+  # Force a single color
+  colorMapInput = {"*": Color.red}
+else:
+  # OR Map labels to Colors
+  colorMapInput = {"b-question":Color.red,"b-answer":Color.blue,"i-question":Color.green,"i-answer":Color.orange}
+
 draw_annotations = ImageDrawAnnotations() \
     .setInputCol("image") \
     .setInputChunksCol("token") \
     .setOutputCol("image_with_annotations") \
     .setFilledRect(False) \
     .setFontSize(40) \
-    .setRectColor(Color.red)
-
+    .setColorMap(colorMapInput)
 
 # Define pipeline
 pipeline = PipelineModel(stages=[
     binary_to_image,
     ocr,
     tokenizer,
-    image_with_annotations
+    draw_annotations
 ])
 
 result = pipeline.transform(df)
@@ -2932,14 +2941,19 @@ val tokenizer = new HocrTokenizer()
   .setInputCol("hocr")
   .setOutputCol("token")
 
+val forceSingleColor = true 
+var colorMapInput = Array("*:[255,0,0]")
+
+if(forceSingleColor):
+  colorMapInput = Array("b-question:[255,0,0]","b-answer:[0,255,0]","i-question:[0,0,255]","i-answer:[100,100,0]")
+
 val draw_annotations = new ImageDrawAnnotations()
   .setInputCol("image")
   .setInputChunksCol("token")
   .setOutputCol("image_with_annotations")
   .setFilledRect(False)
   .setFontSize(40)
-  .setRectColor(Color.red)
-
+  .setColorMap(colorMapInput)
 
 val pipeline = new Pipeline()
 pipeline.setStages(Array(
