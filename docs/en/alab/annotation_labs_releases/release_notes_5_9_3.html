@@ -9,12 +9,12 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>NLP Lab Release Notes 4.5.0</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
+<!-- End Google Tag Manager --><title>NLP Lab Release Notes 5.9.3</title><meta property="og:title" content="NLP Lab | John Snow Labs"/>
 
 <meta name="description" content="High Performance NLP with Apache Spark
 ">
-<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_5_0"> -->
-<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_4_5_0"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<!-- <link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_5_9_3"> -->
+<link rel="canonical" href="/docs/en/alab/annotation_labs_releases/release_notes_5_9_3"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -610,193 +610,27 @@ function wrapWordInSpan(data, wordToWrap) {
 </script><div class="article__header"><div class="header-nav"><div class="main-docs">
   <ul class="breadcrambs">
     <li><a href="/docs">Documentation</a></li>
-    <li>NLP Lab Release Notes 4.5.0</li>
+    <li>NLP Lab Release Notes 5.9.3</li>
   </ul>
 </div></div><header class="main-docs have_subtitle">
-          <h1>NLP Lab Release Notes 4.5.0</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
+          <h1>NLP Lab Release Notes 5.9.3</h1><div class="top-subtitle mont"></div></header><span class="split-space">&nbsp;</span>
           <a class="edit-on-github"
             title="Edit on Github"
-            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_4_5_0.md">
-            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 4.5.0"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
+            href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/en/alab/annotation_labs_releases/release_notes_5_9_3.md">
+            <i class="far fa-edit"></i></a></div><meta itemprop="headline" content="NLP Lab Release Notes 5.9.3"><meta itemprop="author" content=""/><div class="js-article-content"><div class="docs-wrapper">
 <div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
-  <h2 id="section">4.5.0</h2>
+  <h2 id="section">5.9.3</h2>
 
-  <p>Release date: <strong>01-01-2023</strong></p>
+  <p>Release date: <strong>03-22-2024</strong></p>
 
-  <p>Over the last year, Annotation Lab has grown to be much more than a document annotation tool. It became a full-fledged AI system, capable of testing pre-trained models and rules, applying them to new datasets, training, and tuning models, and exporting them to be deployed in production. All those features together with the new Playground concept presented in the current release notes contributed to the transformation of the Annotation Lab into the <strong>NLP Lab</strong>.
-A new Playground feature is released as part of the NLP Lab’s Hub that allows users to quickly test any model and/or rule on a snippet of text without the need to create a project and import tasks. 
-NLP Lab also supports the training of Legal and Finance models and Model evaluation for classification projects. 
-As always the release includes some stabilization and bug fixes for issues reported by our user community. Below are the details of what has been included in this release.</p>
-
-  <h2 id="nlp-labs-playground">NLP Lab’s Playground</h2>
-  <p>NLP Lab introduces the Playground feature where users can directly deploy and test models and/or rules. In previous versions, the pre-annotation servers could only be deployed from within a given project. With the addition of the Playground, models can easily be deployed and tested on a sample text without going through the project setup wizard. Any model or rule can now be selected and deployed for testing by clicking on the “Open in Playground” button.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/33893292/209965776-1c0a6b07-5526-496e-97f8-4b7a2cf2a6d1.gif" alt="Playground deployment" /></p>
-
-  <p>Rules are deployable in the Playground from the rules page. When a particular rule is deployed in the playground, the user can also change the parameters of the rules on the right side of the page. After saving the changes users need to click on the “Deploy” button to refresh the results of the pre-annotation on the provided text.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/33893292/209978724-355fd3a2-aab4-4c38-869d-4f3432c657d3.gif" alt="ruledeploy" /></p>
-
-  <p>Deployment of models and rules is supported by floating and air-gapped licenses. Healthcare, Legal, and Finance models require a license with their respective scopes to be deployed in Playground. Unlike pre-annotation servers, only one playground can be deployed at any given time.</p>
-
-  <h2 id="export-trained-models-to-the-s3-bucket">Export trained models to the S3 bucket</h2>
-
-  <p>With this release, users can easily export trained models to a given s3 bucket. This feature is available on the Available Models page under the Hub tab. Users need to enter the S3 bucket path, S3 access key, and S3 secret key to upload the model to the S3 bucket.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/73094423/210034029-4b1816bd-78dd-4551-ae6e-0303b58be8f0.gif" alt="ezgif com-gif-maker (1)" /></p>
-
-  <h2 id="support-training-of-finance-and-legal-models">Support Training of Finance and Legal Models</h2>
-  <p>With this release, users can perform training of Legal and Finance models depending on the available license(s). When training a new model in the NLP Lab, users have the option to select what library to use. Two options were available up until now: Open source and Healthcare. This release adds two new options: Legal and Finance. This helps differentiate the library used for training the models. The new options are only available when at least one valid license with the corresponding scope is added to the License page.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/33893292/209985787-e03f9125-c716-4897-a1c9-47f91191d9bc.png" alt="Screenshot 2022-12-29 at 10 47 38 PM" /></p>
-
-  <h2 id="improvements">Improvements</h2>
-  <h3 id="keyword-based-search-at-task-level">Keyword-based Search at task level</h3>
-
-  <p>Finding tokens on the Visual NER project was restricted to only one page, and searching for keywords from the labeling page on a text-based project was not available.</p>
-
-  <p>NLP Lab supports task-level keyword-based searches. The keyword-based search feature will work for text and Visual NER projects alike.</p>
-
+  <h3 id="improvement">Improvement</h3>
   <ul>
-    <li>The search will work on all paginated pages.</li>
-    <li>It is also possible to navigate between search results, even if that result is located on another page.</li>
+    <li>Configure the helm chart to allow web origins to bypass CORS check</li>
+    <li>Update the Gunicorn config to allow CORs error</li>
   </ul>
-
-  <p><strong>Important</strong></p>
-
-  <p>Previously this feature was implemented with the help of <search> tag in the Visual NER project configurations. With the implementation of search at task level, the previous search tag should be removed from existing visual NER projects.</search></p>
-
-  <p><em><strong>Config to be removed from all existing Visual NER project:</strong></em></p>
-
-  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;Search name="search" toName="image" placeholder="Search"/&gt;
-</code></pre></div>  </div>
-
-  <p><img src="https://user-images.githubusercontent.com/45035063/209945478-541a9d48-33b4-418c-8ea1-08d87b249e85.gif" alt="text-search" /></p>
-
-  <p><img src="https://user-images.githubusercontent.com/45035063/209945481-b4b3127b-ce2a-49af-a3cd-f35dbe7771a9.gif" alt="vOCR-search" /></p>
-
-  <h3 id="chunk-based-search-in-visual-ner-tasks">Chunk-based Search in Visual NER tasks</h3>
-
-  <p>In previous versions, users could only run token-based searches at page level. The search feature did not support searching a collection of tokens as a single chunk. With this release, users can find a chunk of tokens in the Visual NER task.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/45035063/209945712-c175f74a-b232-47f9-b807-4966ff54d976.gif" alt="chunk-search" /></p>
-
-  <h3 id="model-evaluation-for-classification-projects">Model Evaluation for Classification Projects</h3>
-
-  <p><img src="https://user-images.githubusercontent.com/45035063/210033230-1044c26e-8925-4077-8113-dccca09ed736.png" alt="Screen Shot 2022-12-14 at 6 01 34 PM" /></p>
-
-  <p>Up until now, the Annotation Lab only supported test and model evaluation for the NER-based projects. From this version on, NLP Lab supports test and model evaluation for Classification project as well. Evaluation results can now be downloaded if needed.</p>
-
-  <h3 id="hide-and-unhide-regions-in-ner-project">Hide and Unhide Regions in NER project</h3>
-
-  <p>In this version, we support the hide/show annotated token regions feature in the text-based project in the same way as it was available in the Visual NER project.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/45035063/209945808-f99043cd-a9fc-41a8-a85f-41bebea73512.gif" alt="hide-unhide-region" /></p>
-
-  <h3 id="ground-truth-can-only-be-setunset-by-the-owner-of-the-completion">Ground Truth can only be set/unset by the owner of the completion</h3>
-
-  <p>With this version, we have improved the feature to set/unset ground truth for a completion submitted by an annotator. Now, for the Manager/Project Owner/Reviewer, the button to set/unset ground truth is disabled. The ground truth can only be updated by the annotator who submitted the completion or is unset when a submitted completion is rejected by a reviewer.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/17021686/209933021-33b4c98a-fbbc-46e4-aae1-b858e8c73fe6.gif" alt="Screen Recording 2022-12-29 at 3 23 25 PM" /></p>
-
-  <h3 id="finite-zoom-out-level-in-visual-ner-tasks">Finite Zoom Out Level in Visual NER tasks</h3>
-
-  <p>Previously, users could zoom in and zoom out again on images while working with the Visual NER project, but the user could not get what the last stage of zoom-out was. Now, when the user zooms out of the image if it is the last phase then the zoom-out button will automatically be disabled so the user knows where to stop zooming out next.</p>
-
-  <p><img src="https://user-images.githubusercontent.com/73094423/210032879-36b86d98-5f13-40ea-836b-f2b61d63f4bf.png" alt="image" /></p>
-
-  <h3 id="taxonomy-location-customizable-from-the-project-configuration">Taxonomy Location Customizable from the Project Configuration</h3>
-
-  <p>There are many different views available for each project template. This diversity can be confusing for users. For eliminating this complexity, the View tab was removed from the project configuration page and replaced by an “orientation” option that can be directly applied to the project configuration. Orientation will decide, where the taxonomy (labels, choices, text, images, etc.) will be located on the labeling screen i.e. placed at the top, bottom or next to the annotation screen.</p>
-
-  <p><img width="1140" alt="Screenshot 2022-12-30 at 10 57 13 AM" src="https://user-images.githubusercontent.com/33893292/210036948-70185f91-e0c9-4dbc-af75-622f2185a08f.png" /></p>
-
-  <h3 id="pre-annotation-cpu-requirement-message-in-visual-ner-projects">Pre-annotation CPU requirement message in Visual NER projects</h3>
-
-  <p>By default, the pre-annotation server uses 2 CPUs. For Visual NER pre-annotation, it is likely that 2 CPUs are not enough. Now a friendly message is shown during the deployment of Visual NER pre-annotation if the CPU count is less than or equal to 2.</p>
-
-  <h2 id="bug-fixes">Bug Fixes</h2>
-
-  <ul>
-    <li><strong>Expanding the text on the Labelling page visually does not expand the labeling area</strong></li>
-  </ul>
-
-  <p>Previously, expanding the text area on the labeling page did not make any changes in the text expansion. This issue has been fixed. Now, expanding the text will change the text area to full-screen mode.</p>
-
-  <ul>
-    <li><strong>Revoking granted analytics request do not update the revoked section</strong></li>
-  </ul>
-
-  <p>Earlier, when an analytics request was revoked, the corresponding entry was not shown in the revoked section. We have fixed this issue. With NLP Lab 4.5.0, the revoked entries are available in the revoked section. Also, when an analytics request is revoked, in the revoked section, two new actions, Accept and Delete, are available.</p>
-
-  <ul>
-    <li><strong>Show Confidence score in Regions option is not working properly for non-Visual NER tasks</strong></li>
-  </ul>
-
-  <p>For none Visual NER tasks, enabling/disabling “Show Confidence score in Regions” from Layout did not change the UI. The changes only appear when the page was reloaded or when the Versions tab was clicked. This issue has been fixed in this version.</p>
-
-  <ul>
-    <li><strong>Username validation is missing when creating a new user</strong></li>
-  </ul>
-
-  <p>With this version, the issue related to the missing validation of the username when creating a new user has been fixed.</p>
-
-  <ul>
-    <li><strong>Issues with role selection on Teams page</strong></li>
-  </ul>
-
-  <p>When a user was added to the project team as a new team member, the recently added user name was still visible in the search bar. This issue has been fixed.</p>
-
-  <ul>
-    <li><strong>Clicking on the eye icon to hide a labeled region removes the region from the Annotations widget</strong></li>
-  </ul>
-
-  <p>Previously, when a user clicked on the eye icon to hide a label, the labeled region was removed from the Annotations widget. Furthermore, the color of the label was also changed in the panel. This issue has been fixed.</p>
-
-  <ul>
-    <li><strong>Deployed legal and finance models servers are not associated with their respective licenses</strong></li>
-  </ul>
-
-  <p>In the previous version, when a Legal and Finance model server was deployed, the respective licenses were not associated with their deployed server. The availability of the Legal and Finance license was checked when the models were deployed. Version 4.5.0 fixes this bug.</p>
-
-  <ul>
-    <li><strong>Model Evaluation cannot be triggered using an air-gapped healthcare license with scope training/inference</strong></li>
-  </ul>
-
-  <p>The issue of triggering Model Evaluation using an air-gapped healthcare license with the training/inference scope has been fixed.</p>
-
-  <ul>
-    <li><strong>When user enabled “Allow user for custom selection of regions”, token values are missing in JSON export</strong></li>
-  </ul>
-
-  <p>Earlier, when the user annotates tokens while enabling “Allow user for custom selection of regions” and exports the completion. The token values were missing from the JSON export. In this version, the issue is fixed, and all the token fields and values are available in the JSON</p>
-
-  <ul>
-    <li><strong>Pre-annotation server with pending status is not removed when the user deletes the server from the cluster page</strong></li>
-  </ul>
-
-  <p>Deleting the pre-annotation server with status pending from the cluster page did not delete the pod from Kubernetes and created multiple pre-annotation pods. This issue has been fixed.</p>
-
-  <ul>
-    <li><strong>Project export with space in the name is allowed to be imported</strong></li>
-  </ul>
-
-  <p>In the earlier version, the users could import previously exported projects with space in the project’s name. Though the project was listed on the projects page, the project could not be deleted. Also, the user was unable to perform any operations on the project.</p>
-
-  <ul>
-    <li><strong>The “Only Assigned” checkbox overlaps the review dialog box</strong></li>
-  </ul>
-
-  <p>The overlap between the “Only Assigned” checkbox and the review dialog box was fixed.</p>
-
-  <ul>
-    <li><strong>Open-source Models cannot be downloaded in the NLP Lab without a license</strong></li>
-  </ul>
-
-  <p>Previously open-source models could not be downloaded from the NLP models hub when there was no license uploaded. This issue has been fixed. Now all open-source licenses are downloadable without any issue.</p>
 
 </div>
 <div class="prev_ver h3-box">
@@ -879,7 +713,7 @@ As always the release includes some stabilization and bug fixes for issues repor
   <li><a href="release_notes_2_0_1">2.0.1</a></li>
 </ul>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2023-01-01T00:00:00+00:00">Jan 01, 2023</time>
+      <time itemprop="dateModified" datetime="2024-03-22T00:00:00+00:00">Mar 22, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
