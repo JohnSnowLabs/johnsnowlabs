@@ -36,6 +36,7 @@ This model maps clinical terms to their corresponding MedDRA LLT (Lowest Level T
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
       .setInputCol("text")\
@@ -76,21 +77,21 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en
      .setOutputCol("sbert_embeddings")\
      .setCaseSensitive(False)
 
-snomed_resolver = SentenceEntityResolverModel.load("meddra_llt_79K_model") \
+meddra_resolver = SentenceEntityResolverModel.load("meddra_llt_79K_model") \
      .setInputCols(["sbert_embeddings"]) \
-     .setOutputCol("snomed_code")\
+     .setOutputCol("meddra_code")\
      .setDistanceFunction("EUCLIDEAN")
 
 nlpPipeline= Pipeline(stages=[
-                              documentAssembler,
-                              sentenceDetector,
-                              tokenizer,
-                              word_embeddings,
-                              ner_jsl,
-                              ner_jsl_converter,
-                              chunk2doc,
-                              sbert_embedder,
-                              snomed_resolver
+      documentAssembler,
+      sentenceDetector,
+      tokenizer,
+      word_embeddings,
+      ner_jsl,
+      ner_jsl_converter,
+      chunk2doc,
+      sbert_embedder,
+      meddra_resolver
 ])
 
 text= """This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia."""
@@ -135,20 +136,22 @@ val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
 	.setOutputCol("sbert_embeddings")
 	.setCaseSensitive(false)
 	
-val snomed_resolver = new SentenceEntityResolverModel.load("meddra_llt_79K_model")
+val meddra_resolver = new SentenceEntityResolverModel.load("meddra_llt_79K_model")
 	.setInputCols(Array("sbert_embeddings"))
-	.setOutputCol("snomed_code")
-	.setDistanceFunction("EUCLIDEAN") nlpPipeline= new Pipeline().setStages(Array( 
-     documentAssembler,
-     sentenceDetector, 
-     tokenizer,
-     word_embeddings,
-     ner_jsl,
-     ner_jsl_converter,
-     chunk2doc,
-     sbert_embedder,
-     snomed_resolver ))
- 
+	.setOutputCol("meddra_code")
+	.setDistanceFunction("EUCLIDEAN")
+
+nlpPipeline= new Pipeline().setStages(Array( 
+        documentAssembler,
+        sentenceDetector, 
+        tokenizer,
+        word_embeddings,
+        ner_jsl,
+        ner_jsl_converter,
+        chunk2doc,
+        sbert_embedder,
+        meddra_resolver ))
+
 text= """This is an 82-year-old male with a history of prior tobacco use,hypertension,chronic renal insufficiency,chronic obstructive pulmonary disease,gastritis,and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis,which was complicated by hypotension and bradycardia.""" 
 
 df= Seq(text) .toDF("text") resolver_pipeline= nlpPipeline.fit(df)	
