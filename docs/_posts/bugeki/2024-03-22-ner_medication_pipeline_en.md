@@ -49,7 +49,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val ner_pipeline = PretrainedPipeline("ner_medication_pipeline", "en", "clinical/models")
 
-val result = ner_pipeline.annotate("""John Smith, a 55-year-old male with a medical history of hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia, Gastroesophageal Reflux Disease (GERD), and chronic constipation, presented with persistent epigastric pain, heartburn, and infrequent bowel movements. He described the epigastric pain as burning and worsening after meals, often accompanied by heartburn and regurgitation, particularly when lying down. Additionally, he reported discomfort and bloating associated with infrequent bowel movements. In response, his doctor prescribed a regimen tailored to his conditions: Thiamine 100 mg q.day , Folic acid 1 mg q.day , multivitamins q.day , Calcium carbonate plus Vitamin D 250 mg t.i.d. , Heparin 5000 units subcutaneously b.i.d. , Prilosec 20 mg q.day , Senna two tabs qhs , Atrovent nebs 5 mg q.i.d. , Albuterol 2.5 mg nebs q4h , Erythromycin topical ointment both eyes t.i.d. , Nystatin powder topical b.i.d. ,  Vancomycin one gram intravenously q12h , Flagyl 500 mg t.i.d. . The patient was advised to follow a low-fat diet, avoid spicy and acidic foods, and elevate the head of the bed to alleviate GERD symptoms. Lifestyle modifications including regular exercise, smoking cessation, and moderation in alcohol consumption were recommended to manage his chronic conditions effectively. A follow-up appointment in two weeks was scheduled.""")
+val result = ner_pipeline.annotate("""John Smith, a 55-year-old male with a medical history of hypertension, Type 2 Diabetes Mellitus, Hyperlipidemia, Gastroesophageal Reflux Disease (GERD), and chronic constipation, presented with persistent epigastric pain, heartburn, and infrequent bowel movements. He described the epigastric pain as burning and worsening after meals, often accompanied by heartburn and regurgitation, particularly when lying down. Additionally, he reported discomfort and bloating associated with infrequent bowel movements. In response, his doctor prescribed a regimen tailored to his conditions: Thiamine 100 mg q.day , Folic acid 1 mg q.day , multivitamins q.day , Calcium carbonate plus Vitamin D 250 mg t.i.d. , Heparin 5000 units subcutaneously b.i.d. , Prilosec 20 mg q.day , Senna two tabs qhs . The patient was advised to follow a low-fat diet, avoid spicy and acidic foods, and elevate the head of the bed to alleviate GERD symptoms. Lifestyle modifications including regular exercise, smoking cessation, and moderation in alcohol consumption were recommended to manage his chronic conditions effectively. A follow-up appointment in two weeks was scheduled.""")
 
 ```
 </div>
@@ -59,28 +59,31 @@ val result = ner_pipeline.annotate("""John Smith, a 55-year-old male with a medi
 ```bash
 
 +-----------------+---------+
-|medication_chunk |ner_label|
+| medication_chunk|ner_label|
 +-----------------+---------+
-|Thiamine         |DRUG     |
-|100 mg           |STRENGTH |
-|q.day            |FREQUENCY|
-|Folic acid       |DRUG     |
-|1 mg             |STRENGTH |
-|q.day            |FREQUENCY|
-|multivitamins    |DRUG     |
-|q.day            |FREQUENCY|
-|Calcium carbonate|DRUG     |
-|Vitamin D        |DRUG     |
-|250 mg           |STRENGTH |
-|t.i.d            |FREQUENCY|
-|Heparin          |DRUG     |
-|5000 units       |DOSAGE   |
-|subcutaneously   |ROUTE    |
-|b.i.d            |FREQUENCY|
-|Prilosec         |DRUG     |
-|20 mg            |STRENGTH |
-|q.day            |FREQUENCY|
-|Senna            |DRUG     |
+|         Thiamine|     DRUG|
+|           100 mg| STRENGTH|
+|            q.day|FREQUENCY|
+|       Folic acid|     DRUG|
+|             1 mg| STRENGTH|
+|            q.day|FREQUENCY|
+|    multivitamins|     DRUG|
+|            q.day|FREQUENCY|
+|Calcium carbonate|     DRUG|
+|        Vitamin D|     DRUG|
+|           250 mg| STRENGTH|
+|            t.i.d|FREQUENCY|
+|          Heparin|     DRUG|
+|       5000 units|   DOSAGE|
+|   subcutaneously|    ROUTE|
+|            b.i.d|FREQUENCY|
+|         Prilosec|     DRUG|
+|            20 mg| STRENGTH|
+|            q.day|FREQUENCY|
+|            Senna|     DRUG|
+|              two|   DOSAGE|
+|             tabs|     FORM|
+|              qhs|FREQUENCY|
 +-----------------+---------+
 
 ```
