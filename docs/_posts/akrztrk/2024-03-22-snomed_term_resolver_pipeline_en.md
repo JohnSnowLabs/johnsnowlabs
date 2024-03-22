@@ -47,7 +47,7 @@ text_list = [
 result = resolver_pipeline.annotate(text_list)
 ```
 ```scala
-from sparknlp.pretrained import PretrainedPipeline
+import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val resolver_pipeline = PretrainedPipeline("snomed_term_resolver_pipeline", "en", "clinical/models")
 
