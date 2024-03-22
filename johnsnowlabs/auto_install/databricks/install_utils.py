@@ -45,7 +45,6 @@ def install_license_to_cluster(install_suite: InstallSuite, db: DatabricksAPI, )
         "SECRET": install_suite.secrets.HC_SECRET,
         "SPARK_OCR_SECRET": install_suite.secrets.OCR_SECRET,
         "SPARK_NLP_LICENSE": install_suite.secrets.HC_LICENSE,
-        "SPARK_OCR_LICENSE": install_suite.secrets.OCR_LICENSE,
     }
     lic = {k: v for k, v in lic.items() if v is not None}
 
@@ -90,7 +89,7 @@ def get_spark_env_vars(user_spark_env_vars, install_suite: InstallSuite, databri
                        ):
     # Return merged user and default spark env vars
     default_spark_env_vars = dict(
-        SPARK_NLP_LICENSE_FILE=f"/dbfs/johnsnowlabs/info.json",
+        SPARK_NLP_LICENSE_FILE=f"/dbfs/johnsnowlabs/license.json",
         AWS_ACCESS_KEY_ID=install_suite.secrets.AWS_ACCESS_KEY_ID,
         AWS_SECRET_ACCESS_KEY=install_suite.secrets.AWS_SECRET_ACCESS_KEY,
     )
