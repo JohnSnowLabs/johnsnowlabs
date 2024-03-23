@@ -735,11 +735,11 @@ deid_pipeline2.model.stages
 |EC2 Instance|	1024|	7 min 6  sec|
 |EC2 Instance|	512 |	**6 min 56 sec**|
 |EC2 Instance|	256 |	9 min 10 sec|
-|EC2 Instance|	128 |	9 min 30 sec |
-|EC2 Instance|	64  |	9 min 59 sec |
-|EC2 Instance|	32  |	10 min 47.2 sec |
+|EC2 Instance|	128 |	14 min 30 sec |
+|EC2 Instance|	64  |	18 min 59 sec |
+|EC2 Instance|	32  |	18 min 47.2 sec |
 |EC2 Instance|	16  |	12 min 47.5 sec |
-|EC2 Instance|	8   |	18 min 52 sec |
+|EC2 Instance|	8   |	16 min 52 sec |
 
 - estimated minimum cost for **10K: $0.36**
 - estimated minimum cost for **1M: $35.70**
