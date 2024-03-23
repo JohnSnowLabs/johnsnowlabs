@@ -571,8 +571,196 @@ The `sbiobertresolve_snomed_findings` model is used as the resolver model. The i
 
 </div>
 
+<div class="h3-box" markdown="1">
+
+## Deidentification  Pipelines Cost Benchmarks [March-2024]
+
+- **Versions:**
+    - **spark-nlp Version:** v5.2.2
+    - **spark-nlp-jsl Version :** v5.2.1
+    - **Spark Version :** v3.4.1
+- ***EMR***
+    - **Dataset:** 10K  Custom Clinical Texts, approx. 500 tokens & 15 chunks per text
+    - **EMR Version:** ERM.6.15.0
+    - **Instance Type:** 
+        -  **Primary**: c5.4xlarge, 16 vCore, 32 GiB memory
+        - **Worker :**  m5.16xlarge, 64 vCore, 256 GiB memory , 4 workers
+    - **Price** 12.97 $/hr
+- ***EC2 instance***
+    - **Dataset:** 10K  Custom Clinical Texts, approx. 500 tokens & 15 chunks per text
+    - **Instance Type:** c5.18xlarge, 72 vCore, 144 GiB memory, Single Instance
+    - **Price** 3.06 $/hr
+
+- ***Databricks***
+    - **Dataset:** 1K  Clinical Texts from MT Samples, approx. 503 tokens & 21 chunks per text
+    - **Instance Type:** 32 CPU Core, 128GiB RAM , 8 workers
+    - **Price** 2.7 $/hr
+
+***Utulized pretrained DEID pipelines:***
+
+```python
+from sparknlp.pretrained import PretrainedPipeline
+deid_pipeline = PretrainedPipeline("clinical_deidentification_subentity_optimized", "en", "clinical/models")
+
+deid_pipeline.model.stages
+
+[DocumentAssembler_661d7090300f,
+ SentenceDetectorDLModel_6bafc4746ea5,
+ REGEX_TOKENIZER_5229b672c85b,
+ WORD_EMBEDDINGS_MODEL_9004b1d00302,
+ MedicalNerModel_cb1ebd97c79c,
+ NerConverter_6e08992003b5,
+ CONTEXTUAL-PARSER_0a15ad41d73f,
+ CONTEXTUAL-PARSER_4b1d5aeb266c,
+ CONTEXTUAL-PARSER_924c829b9b75,
+ CONTEXTUAL-PARSER_1ceb226c6569,
+ CONTEXTUAL-PARSER_b30ccff508db,
+ CONTEXTUAL-PARSER_e370db3ca16d,
+ ENTITY_EXTRACTOR_b9b1d957e882,
+ CONTEXTUAL-PARSER_88c5cfbb80e0,
+ REGEX_MATCHER_edbb7dc2428d,
+ CONTEXTUAL-PARSER_293668cdb29c,
+ CONTEXTUAL-PARSER_4da52b2ba19f,
+ CONTEXTUAL-PARSER_e5db85572966,
+ CONTEXTUAL-PARSER_aa3e91943f67,
+ MERGE_9644567534c9,
+ MERGE_ff2084da873c,
+ DE-IDENTIFICATION_33fa7914861c,
+ Finisher_595488746e59]
+
+```
+
+```python
+
+from sparknlp.pretrained import PretrainedPipeline
+
+deid_pipeline2 = PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
+
+deid_pipeline2.model.stages
+
+[DocumentAssembler_655c82bd9790,
+ SentenceDetectorDLModel_6bafc4746ea5,
+ REGEX_TOKENIZER_1f4bab998cf8,
+ WORD_EMBEDDINGS_MODEL_9004b1d00302,
+ MedicalNerModel_e8178a1262cc,
+ NerConverter_f87f5c2537ec,
+ MedicalNerModel_9d4a08b1c03d,
+ NerConverter_ae5e42463367,
+ MERGE_bb5d6698306d,
+ CONTEXTUAL-PARSER_6abb89feb297,
+ CONTEXTUAL-PARSER_78d4bd1d2a84,
+ CONTEXTUAL-PARSER_97cd8d9c7235,
+ CONTEXTUAL-PARSER_6a392989c384,
+ CONTEXTUAL-PARSER_3380891cbdcd,
+ CONTEXTUAL-PARSER_5dfa54322241,
+ ENTITY_EXTRACTOR_47e9599eb636,
+ CONTEXTUAL-PARSER_62284e532e21,
+ REGEX_MATCHER_d179e535d45d,
+ CONTEXTUAL-PARSER_3687ca243ae8,
+ CONTEXTUAL-PARSER_23800a836ddf,
+ CONTEXTUAL-PARSER_5eae8ab9a55d,
+ CONTEXTUAL-PARSER_aa24e0481ece,
+ MERGE_33c51a389813,
+ MERGE_fd79091a0083,
+ DE-IDENTIFICATION_3cf6ba1b09f6,
+ DE-IDENTIFICATION_e953e010139c,
+ DE-IDENTIFICATION_1574f87d5950,
+ DE-IDENTIFICATION_d0fba9eaea06,
+ Finisher_8de346e416aa]
+```
+</div>
 
 <div class="h3-box" markdown="1">
+
+
+|Result For Pretrained "clinical_deidentification_subentity_optimized"|
+|----------------------------------------------------------------------|
+
+| environment | partition | result_write |
+|-------------|-----------|--------------|
+| emr         | 1024      | 2 min 45 sec |
+| emr         | 512       | **2 min 30 sec** |
+| emr         | 256       | **2 min 30 sec** |
+| emr         | 128       | **2 min 30 sec** |
+| emr         | 64        | 3 min 8 sec  |
+| emr         | 32        | 3 min 43 sec |
+| emr         | 16        | 4 min 57 sec |
+| emr         | 8         | 8 min 8 sec  |
+
+- estimated minimum cost for **10K: $0.54**
+- estimated minimum cost for **1M: $54.04**
+
+
+
+
+|Result For Pretrained "clinical_deidentification"|
+|-------------------------------------------------|
+
+| environment | partition | result_write |
+|-------------|-----------|--------------|
+| emr         | 1024      | 5 min 1 sec  |
+| emr         | 512       | 4 min 52 sec |
+| emr         | 256       | **4 min 50 sec**|
+| emr         | 128       | 4 min 55 sec |
+| emr         | 64        | 6 min 24 sec |
+| emr         | 32        | 7 min 15 sec |
+| emr         | 16        | 11 min 6 sec |
+| emr         | 8         | 19 min 13 sec|
+
+- estimated minimum cost for **10K: $1.04**
+- estimated minimum cost for **1M: $104.41**
+
+|Result For Pretrained "clinical_deidentification_subentity_optimized"|
+|----------------------------------------------------------------------|
+
+| environment | partition | result_write |
+|--------------|-----------|--------------|
+|EC2 Instance| 1024         | **3 min 26 sec** |
+|EC2 Instance| 512          | 3 min 41 sec |
+|EC2 Instance| 256          | 5 min 18 sec |
+|EC2 Instance| 128          | 7 min 51 sec |
+|EC2 Instance| 64           | 9 min 9 sec  |
+|EC2 Instance| 32           | 9 min 18 sec |
+|EC2 Instance| 16           | 6 min 14 sec |
+|EC2 Instance| 8            | 8 min 48 sec |
+
+- estimated minimum cost for **10K: $0.18**
+- estimated minimum cost for **1M: $17.85**
+
+|Result For Pretrained "clinical_deidentification"|
+|-------------------------------------------------|
+
+| environment | partition | result_write |
+|--------------|-----------|--------------|
+|EC2 Instance|	1024|	7 min 6  sec|
+|EC2 Instance|	512 |	**6 min 56 sec**|
+|EC2 Instance|	256 |	9 min 10 sec|
+|EC2 Instance|	128 |	9 min 29 sec |
+|EC2 Instance|	64  |	8 min |
+|EC2 Instance|	32  |	8 min 47.2 sec |
+|EC2 Instance|	16  |	8 min 47.5 sec |
+|EC2 Instance|	8   |	8 min 52 sec |
+
+- estimated minimum cost for **10K: $0.36**
+- estimated minimum cost for **1M: $35.70**
+
+
+|Result For Pretrained "clinical_deidentification"|
+|-------------------------------------------------|
+
+| environment | partition | result_write |
+|--------------|-----------|--------------|
+|Databricks|1024    |	1 min 55 sec|
+|Databricks|512     |	1 min 26 sec|
+|Databricks|256     |	**1 min 20 sec**|
+|Databricks|128     |	1 min 21 sec|
+|Databricks|64      |	1 min 31 sec|
+|Databricks|32      |	1 min 26 sec|
+|Databricks|16      |	1 min 43 sec|
+|Databricks|8       |	2 min 33 sec|
+
+- estimated minimum cost for **1K: $0.06**
+- estimated minimum cost for **1M: $59.85**
 
 ## CPU NER Benchmarks
 
