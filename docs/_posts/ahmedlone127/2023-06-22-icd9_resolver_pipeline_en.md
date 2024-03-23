@@ -40,7 +40,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("icd9_resolver_pipeline", "en", "clinical/models")
 
-text= A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years and anisakiasis. Also, it was reported that fetal and neonatal hemorrhage
+text= "A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years and anisakiasis. Also, it was reported that fetal and neonatal hemorrhage."
 
 result = pipeline.fullAnnotate(text)
 ```
@@ -49,14 +49,14 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val pipeline = new PretrainedPipeline("icd9_resolver_pipeline", "en", "clinical/models")
 
-val result = pipeline.fullAnnotate(A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years and anisakiasis. Also, it was reported that fetal and neonatal hemorrhage)
+val result = pipeline.fullAnnotate("A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years and anisakiasis. Also, it was reported that fetal and neonatal hemorrhage.")
 ```
 
 
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.resolve.icd9.pipeline").predict("""Put your text here.""")
+nlu.load("en.resolve.icd9.pipeline").predict("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years and anisakiasis. Also, it was reported that fetal and neonatal hemorrhage.""")
 ```
 
 </div>

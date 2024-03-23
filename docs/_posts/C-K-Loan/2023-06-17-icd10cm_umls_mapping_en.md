@@ -64,8 +64,11 @@ nlu.load("en.icd10cm.umls.mapping").predict("""Put your text here.""")
 ## Results
 
 ```bash
-{'icd10cm': ['M89.50', 'R82.2', 'R09.01'],
-'umls': ['C4721411', 'C0159076', 'C0004044']}
+|   | icd10cm_code | umls_code |
+|--:|-------------:|----------:|
+| 0 |        M8950 |  C4721411 |
+| 1 |         R822 |  C0159076 |
+| 2 |        R0901 |  C0004044 |
 ```
 
 {:.model-param}

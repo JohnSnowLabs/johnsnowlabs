@@ -33,8 +33,6 @@ This model maps medical entities to CPT codes using Sentence Bert Embeddings. Th
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/ER_CPT/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_CPT.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_cpt_procedures_measurements_augmented_en_3.5.1_3.0_1652168576968.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_cpt_procedures_measurements_augmented_en_3.5.1_3.0_1652168576968.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 
 ## How to use
@@ -77,7 +75,7 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "e
 	.setOutputCol("sentence_embeddings")\
 	.setCaseSensitive(False)
 
-cpt_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_cpt_procedures_measurements_augmented", "en", "clinical/models")\
+cpt_resolver = SentenceEntityResolverModel.load("sbiobertresolve_cpt_procedures_measurements_augmented")\
 	.setInputCols(["sentence_embeddings"]) \
 	.setOutputCol("cpt_code")\
 	.setDistanceFunction("EUCLIDEAN")
@@ -138,7 +136,7 @@ val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
 	.setOutputCol("sentence_embeddings")
 	.setCaseSensitive(False)
 
-val cpt_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_cpt_procedures_measurements_augmented", "en", "clinical/models")
+val cpt_resolver = SentenceEntityResolverModel.load("sbiobertresolve_cpt_procedures_measurements_augmented")
 	.setInputCols(Array("sentence_embeddings"))
 	.setOutputCol("cpt_code")
 	.setDistanceFunction("EUCLIDEAN")
@@ -185,8 +183,6 @@ At this time, chest tube placement for drainage of the fluid occurred and thorac
 |drainage of the fluid|Procedure|   10140|Drainage of blood or fluid accumulation [Incision and drainage of hematoma, seroma or fluid colle...|10140:::40800:::61108:::41006:::62180:::83986:::49082:::27030:::21502:::49323:::32554:::51040:::6...|
 |         thoracoscopy|Procedure| 1020900|Thoracoscopy [Thoracoscopy]:::Thoracoscopy, surgical; with control of traumatic hemorrhage | [Hea...|                   1020900:::32654:::32668:::1006014:::35820:::32606:::32555:::31781:::31515:::29200|
 +---------------------+---------+--------+----------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------+
-
-
 ```
 
 
@@ -207,8 +203,13 @@ At this time, chest tube placement for drainage of the fluid occurred and thorac
 |Case sensitive:|false|
 
 
-## References
 
+
+## Data Source
 
 Trained on Current Procedural Terminology dataset with `sbiobert_base_cased_mli` sentence embeddings.
 
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**

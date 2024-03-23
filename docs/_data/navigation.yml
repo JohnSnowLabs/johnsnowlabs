@@ -67,6 +67,24 @@ sparknlp:
         url: /docs/en/third-party-projects
       - title: Release Notes
         url: /docs/en/release_notes
+      
+healthcare-gpt:
+  - title: Medical Chatbot
+    children:
+      - title: Home
+        url: /docs/en/chatbot/healthcare_gpt
+      - title: Getting Started
+        url: /docs/en/chatbot/getting_started
+      - title: Features
+        url: /docs/en/chatbot/features
+      - title: Tools
+        url: /docs/en/chatbot/tools        
+      - title: User Guide
+        url: /docs/en/chatbot/usage_guides
+      - title: Support
+        url: /docs/en/chatbot/support
+      - title: Release Notes
+        url: /docs/en/chatbot/releases/release_notes
 
 annotation-lab:
   - title: NLP Lab
@@ -215,25 +233,7 @@ sparknlp-healthcare:
         url: /models?edition=Spark+NLP+for+Healthcare
       - title: Version Compatibility
         url: /docs/en/licensed_version_compatibility
-  - title: Finance NLP
-    children:
-      - title: Release Notes
-        url: /docs/en/financial_release_notes
-      - title: Financial Models
-        url: /models?edition=Spark+NLP+for+Finance
-      - title: Version Compatibility
-        url: /docs/en/financial_version_compatibility
-  - title: Legal NLP
-    children:
-      - title: Release Notes
-        url: /docs/en/legal_release_notes
-      - title: Legal Models
-        url: /models?edition=Spark+NLP+for+Legal
-      - title: Version Compatibility
-        url: /docs/en/legal_version_compatibility
-
-spark-ocr:
-  - title: Spark OCR
+  - title: Visual NLP
     children:
       - title: Getting Started
         url: /docs/en/ocr
@@ -253,6 +253,23 @@ spark-ocr:
         url: /docs/en/ocr_structures
       - title: Release notes
         url: /docs/en/spark_ocr_versions/ocr_release_notes
+  - title: Finance NLP
+    children:
+      - title: Release Notes
+        url: /docs/en/financial_release_notes
+      - title: Financial Models
+        url: /models?edition=Spark+NLP+for+Finance
+      - title: Version Compatibility
+        url: /docs/en/financial_version_compatibility
+  - title: Legal NLP
+    children:
+      - title: Release Notes
+        url: /docs/en/legal_release_notes
+      - title: Legal Models
+        url: /models?edition=Spark+NLP+for+Legal
+      - title: Version Compatibility
+        url: /docs/en/legal_version_compatibility
+
 
 jsl:
   - title: John Snow Labs NLP

@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.2.0 ScalaDoc  - com.johnsnowlabs.nlp.training.SynonymAugmentationUMLS</title>
-          <meta name="description" content="Spark NLP 5.2.0 ScalaDoc - com.johnsnowlabs.nlp.training.SynonymAugmentationUMLS" />
-          <meta name="keywords" content="Spark NLP 5.2.0 ScalaDoc com.johnsnowlabs.nlp.training.SynonymAugmentationUMLS" />
+          <title>Spark NLP 5.3.0 ScalaDoc  - com.johnsnowlabs.nlp.training.SynonymAugmentationUMLS</title>
+          <meta name="description" content="Spark NLP 5.3.0 ScalaDoc - com.johnsnowlabs.nlp.training.SynonymAugmentationUMLS" />
+          <meta name="keywords" content="Spark NLP 5.3.0 ScalaDoc com.johnsnowlabs.nlp.training.SynonymAugmentationUMLS" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.2.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.3.0 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -262,7 +262,7 @@ print(syns.count()) <span class="cmt">// Will most probably exceed the original 
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="scala.Product">Product</span>, <span class="extype" name="scala.Equals">Equals</span>, <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <a href="../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -394,7 +394,7 @@ print(syns.count()) <span class="cmt">// Will most probably exceed the original 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">applyCasingAugmentation</span><span class="params">(<span name="df">df: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="inputName">inputName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="columnName">columnName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="casingFunctions">casingFunctions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="delimiter">delimiter: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot; &quot;</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+        <span class="name">applyCasingAugmentation</span><span class="params">(<span name="df">df: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="inputName">inputName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="columnName">columnName: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="casingFunctions">casingFunctions: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="delimiter">delimiter: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot; &quot;</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       
       
@@ -458,7 +458,7 @@ print(syns.count()) <span class="cmt">// Will most probably exceed the original 
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">buildCorpus</span><span class="params">(<span name="cDF">cDF: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="nByC">nByC: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="sByN">sByN: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="annotationCol">annotationCol: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="chunkCol">chunkCol: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="doProduct">doProduct: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="augmentationMode">augmentationMode: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="AugmentationModes$.html">AugmentationModes.PLAIN_TEXT</a></span></span></span>, <span name="casingFunctions">casingFunctions: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol">Seq()</span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
+        <span class="name">buildCorpus</span><span class="params">(<span name="cDF">cDF: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="nByC">nByC: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="sByN">sByN: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="annotationCol">annotationCol: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="chunkCol">chunkCol: <span class="extype" name="scala.Predef.String">String</span></span>, <span name="doProduct">doProduct: <span class="extype" name="scala.Boolean">Boolean</span> = <span class="symbol">false</span></span>, <span name="augmentationMode">augmentationMode: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol"><span class="name"><a href="AugmentationModes$.html">AugmentationModes.PLAIN_TEXT</a></span></span></span>, <span name="casingFunctions">casingFunctions: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>] = <span class="symbol"><span class="name"><a href="../../../../scala/index.html">Seq()</a></span></span></span>)</span><span class="result">: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>
       </span>
       
       <p class="shortcomment cmt">Returns the augmented corpus DataFrame, which depending on the AugmentationMode will have two (PLAIN_TEXT) or three (CHUNK)
@@ -489,9 +489,9 @@ annotation: augmented chunk annotations
       
       
     </li><li name="com.johnsnowlabs.license.CheckLicense#checkValidEnvironment" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Option[Seq[String]]):Unit"></a><a id="checkValidEnvironment(Option[SparkSession],Option[Seq[String]]):Unit"></a>
+      <a id="checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Seq[String]):Unit"></a><a id="checkValidEnvironment(Option[SparkSession],Seq[String]):Unit"></a>
       <span class="permalink">
-      <a href="../../../../com/johnsnowlabs/nlp/training/SynonymAugmentationUMLS.html#checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Option[Seq[String]]):Unit" title="Permalink">
+      <a href="../../../../com/johnsnowlabs/nlp/training/SynonymAugmentationUMLS.html#checkValidEnvironment(spark:Option[org.apache.spark.sql.SparkSession],scopes:Seq[String]):Unit" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -500,7 +500,7 @@ annotation: augmented chunk annotations
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkValidEnvironment</span><span class="params">(<span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="scopes">scopes: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">checkValidEnvironment</span><span class="params">(<span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="scopes">scopes: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CheckLicense</dd></dl></div>
@@ -548,7 +548,7 @@ annotation: augmented chunk annotations
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">checkValidScopesAndEnvironment</span><span class="params">(<span name="scopes">scopes: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="checkLp">checkLp: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
+        <span class="name">checkValidScopesAndEnvironment</span><span class="params">(<span name="scopes">scopes: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>, <span name="spark">spark: <span class="extype" name="scala.Option">Option</span>[<span class="extype" name="org.apache.spark.sql.SparkSession">SparkSession</span>]</span>, <span name="checkLp">checkLp: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <span class="extype" name="scala.Unit">Unit</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>CheckLicense</dd></dl></div>
@@ -564,7 +564,7 @@ annotation: augmented chunk annotations
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <span class="name">clone</span><span class="params">()</span><span class="result">: <a href="../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<span class="extype" name="java.lang">lang</span>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -652,7 +652,7 @@ annotation: augmented chunk annotations
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <a href="../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -725,7 +725,7 @@ annotation: augmented chunk annotations
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">mrconsoHeaders</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">mrconsoHeaders</span><span class="result">: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
       
@@ -757,7 +757,7 @@ annotation: augmented chunk annotations
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">mrrelHeaders</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">mrrelHeaders</span><span class="result">: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
       
@@ -789,7 +789,7 @@ annotation: augmented chunk annotations
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">mrstyHeaders</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">mrstyHeaders</span><span class="result">: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
       
@@ -821,7 +821,7 @@ annotation: augmented chunk annotations
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <a href="../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -855,7 +855,7 @@ annotation: augmented chunk annotations
         <span class="kind">val</span>
       </span>
       <span class="symbol">
-        <span class="name">nerCuisCols</span><span class="result">: <span class="extype" name="scala.Seq">Seq</span>[<span class="extype" name="scala.Predef.String">String</span>]</span>
+        <span class="name">nerCuisCols</span><span class="result">: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="scala.Predef.String">String</span>]</span>
       </span>
       
       
@@ -941,7 +941,7 @@ annotation: augmented chunk annotations
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">parseAndMatch</span><span class="params">(<span name="nersMissingCui">nersMissingCui: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="cuis">cuis: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="regexParsersLeft">regexParsersLeft: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)] = <span class="symbol">Seq()</span></span>, <span name="nersCuisCum">nersCuisCum: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span> = <span class="symbol"><span class="name"><a href="#sparkSession:org.apache.spark.sql.SparkSession">sparkSession.emptyDataFrame</a></span></span></span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span>, <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span>)</span>
+        <span class="name">parseAndMatch</span><span class="params">(<span name="nersMissingCui">nersMissingCui: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="cuis">cuis: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="regexParsersLeft">regexParsersLeft: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)] = <span class="symbol"><span class="name"><a href="../../../../scala/index.html">Seq()</a></span></span></span>, <span name="nersCuisCum">nersCuisCum: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span> = <span class="symbol"><span class="name"><a href="#sparkSession:org.apache.spark.sql.SparkSession">sparkSession.emptyDataFrame</a></span></span></span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span>, <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span>)</span>
       </span>
       
       <p class="shortcomment cmt"></p>
@@ -1069,7 +1069,7 @@ annotation: augmented chunk annotations
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">synonymsByNer</span><span class="params">(<span name="ners">ners: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="language">language: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;ENG&quot;</span></span>, <span name="regexParsers">regexParsers: <span class="extype" name="scala.Seq">Seq</span>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)] = <span class="symbol">Seq()</span></span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span>, <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span>)</span>
+        <span class="name">synonymsByNer</span><span class="params">(<span name="ners">ners: <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span></span>, <span name="language">language: <span class="extype" name="scala.Predef.String">String</span> = <span class="symbol">&quot;ENG&quot;</span></span>, <span name="regexParsers">regexParsers: <a href="../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[(<span class="extype" name="scala.Predef.String">String</span>, <span class="extype" name="scala.Predef.String">String</span>)] = <span class="symbol"><span class="name"><a href="../../../../scala/index.html">Seq()</a></span></span></span>)</span><span class="result">: (<span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span>, <span class="extype" name="org.apache.spark.sql.DataFrame">DataFrame</span>)</span>
       </span>
       
       <p class="shortcomment cmt">Returns a tuple of two DataFrames.</p><div class="fullcomment"><div class="comment cmt"><p>Returns a tuple of two DataFrames.
@@ -1186,7 +1186,7 @@ ner_result: Result after enough regex_replace patterns to find a match
             </div><div class="parent" name="com.johnsnowlabs.license.CheckLicense">
               <h3>Inherited from <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></h3>
             </div><div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+              <h3>Inherited from <a href="../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>

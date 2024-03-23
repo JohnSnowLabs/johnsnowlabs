@@ -11,6 +11,7 @@ try:
         from sparknlp_jsl.annotator.windowed.windowed_sentence import (
             WindowedSentenceModel,
         )
+        from sparknlp_jsl.legal.token_classification.ner.zero_shot_ner import ZeroShotNerModel
         from sparknlp_jsl.training_log_parser import ner_log_parser
 
         from sparknlp_jsl.base import FeaturesAssembler
@@ -36,7 +37,6 @@ try:
             ChunkMapperApproach,
             SentenceEntityResolverApproach,
             AssertionDLApproach,
-            ZeroShotNerModel,
             LegalQuestionAnswering as QuestionAnswering,
             LegalTextGenerator as TextGenerator,
             LegalSummarizer as Summarizer,
@@ -46,6 +46,8 @@ try:
 
         # These are licensed annos shared across all libs
         from sparknlp_jsl.annotator import (
+            NerConverterInternal,
+            NerConverterInternal as NerConverter,
             GenericSVMClassifierApproach,
             GenericSVMClassifierModel,
             GenericLogRegClassifierApproach,
@@ -66,7 +68,6 @@ try:
             TFGraphBuilder,
             ChunkConverter,
             ChunkFilterer,
-            NerConverterInternal,
             NerChunker,
             AssertionFilterer,
             AnnotationMerger,
@@ -101,7 +102,14 @@ try:
             InternalDocumentSplitter as DocumentSplitter,
             Text2SQL,
             IOBTagger,
-        
+            DocumentFiltererByClassifier,
+            Flattener,
+            EntityRulerInternalApproach as EntityRulerApproach,
+            EntityRulerInternalModel as EntityRulerModel,
+            TextMatcherInternal as TextMatcher,
+            TextMatcherInternalModel as TextMatcherModel,
+            RegexMatcherInternal as RegexMatcher,
+            RegexMatcherInternalModel as RegexMatcherModel,
         )
         from sparknlp_jsl.modelTracer import ModelTracer
 

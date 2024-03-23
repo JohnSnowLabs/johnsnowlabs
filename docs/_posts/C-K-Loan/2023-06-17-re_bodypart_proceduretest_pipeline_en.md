@@ -64,9 +64,14 @@ nlu.load("en.relation.bodypart_proceduretest.pipeline").predict("""TECHNIQUE IN 
 ## Results
 
 ```bash
-| index | relations | entity1                      | entity1_begin | entity1_end | chunk1 | entity2 | entity2_end | entity2_end | chunk2              | confidence |
-|-------|-----------|------------------------------|---------------|-------------|--------|---------|-------------|-------------|---------------------|------------|
-| 0     | 1         | External_body_part_or_region | 94            | 98          | chest  | Test    | 117         | 135         | portable ultrasound | 1.0        |
+|   | sentence | entity1_begin | entity1_end |               chunk1 |                      entity1 | entity2_begin | entity2_end |              chunk2 |                      entity2 | relation | confidence |
+|--:|---------:|--------------:|------------:|---------------------:|-----------------------------:|--------------:|------------:|--------------------:|-----------------------------:|---------:|-----------:|
+| 0 |        0 |             0 |          19 | TECHNIQUE IN DETAIL: |               Section_Header |            78 |          87 |          his mother |                       Gender |        1 |  0.9999987 |
+| 1 |        0 |             0 |          19 | TECHNIQUE IN DETAIL: |               Section_Header |            94 |          98 |               chest | External_body_part_or_region |        1 |  0.9999529 |
+| 2 |        0 |             0 |          19 | TECHNIQUE IN DETAIL: |               Section_Header |           117 |         135 | portable ultrasound |                         Test |        1 |  0.9999838 |
+| 3 |        0 |            78 |          87 |           his mother |                       Gender |            94 |          98 |               chest | External_body_part_or_region |        1 |        1.0 |
+| 4 |        0 |            78 |          87 |           his mother |                       Gender |           117 |         135 | portable ultrasound |                         Test |        1 |  0.9999982 |
+| 5 |        0 |            94 |          98 |                chest | External_body_part_or_region |           117 |         135 | portable ultrasound |                         Test |        1 |        1.0 |
 ```
 
 {:.model-param}

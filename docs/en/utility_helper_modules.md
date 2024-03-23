@@ -349,6 +349,8 @@ project_name = 'alab_demo',
 preannotations = pre_annotations)
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ## Deidentification Module
 
 Spark NLP for Healthcare provides functionality to apply Deidentification using easy-to-use module named `Deid`. <br/>
@@ -359,6 +361,8 @@ The module also includes functionality for applying Structured Deidentification 
 
 The function, `deidentify()`, can be used with a custom pipeline or without defining any custom pipeline. <br/>
 `structured_deidentifier()` function can be used for the Structured Deidentification task.
+
+</div><div class="h3-box" markdown="1">
 
 ### Apply Deidentification With a Custom Pipeline
 
@@ -464,6 +468,7 @@ res= deid_implementor.deidentify()
 
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ### Apply Deidentification With No Custom Pipeline
 
@@ -527,6 +532,8 @@ res= deid_implementor.deidentify()
 
 ```
 
+</div><div class="h3-box" markdown="1">
+
 ### Apply Structured Deidentification
 
 ```python
@@ -577,7 +584,7 @@ shift_days=5,
 +----------+------------+--------------------+---+----------------+
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 ## Compatibility
 
@@ -682,12 +689,15 @@ compatibility.showVersion('ner_clinical')
 +-----------------------------------------------------+------+---------+
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ## InternalResourceDownloader
 
 This module has extended functinalities to list and download models from John Snow Labs repositories. It is an auxiliary module for finding and downloading different models for studies and analysis.
 
 As with the `Compatibility` module, `InternalResourceDownloader` is also capable of displaying the available models. The difference is that this module can filter the results based on the Python's class name of the annotator, while `Compatibility` searches for models' name.
+
+</div><div class="h3-box" markdown="1">
 
 ### Displaying available models
 
@@ -770,6 +780,8 @@ medical.InternalResourceDownloader.showPrivateModels("MedicalNerModel")
 | ner_oncology_test                      |  en  | 4.2.2   |
 +----------------------------------------+------+---------+
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ## ModelTracer
 

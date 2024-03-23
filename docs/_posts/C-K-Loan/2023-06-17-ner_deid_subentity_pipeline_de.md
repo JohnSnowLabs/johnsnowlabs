@@ -5,7 +5,7 @@ author: John Snow Labs
 name: ner_deid_subentity_pipeline
 date: 2023-06-17
 tags: [de, deid, ner, licensed]
-task: [Named Entity Recognition, De-identification]
+task: Named Entity Recognition, De-identification
 language: de
 edition: Healthcare NLP 4.4.4
 spark_version: 3.0
@@ -40,10 +40,11 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("ner_deid_subentity_pipeline", "de", "clinical/models")
 
-text = '''Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.'''
+text = "Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen."
 
 result = pipeline.fullAnnotate(text)
 ```
+
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
@@ -58,7 +59,7 @@ val result = pipeline.fullAnnotate(text)
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("de.deid.ner_subentity.pipeline").predict("""Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.""")
+nlu.load("de.deid.ner_subentity.pipeline").predict('Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.')
 ```
 
 </div>

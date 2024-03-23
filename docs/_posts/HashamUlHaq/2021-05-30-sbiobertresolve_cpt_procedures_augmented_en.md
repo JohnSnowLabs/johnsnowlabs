@@ -28,30 +28,38 @@ CPT codes and their descriptions.
 {:.btn-box}
 [Live Demo](https://nlp.johnsnowlabs.com/demos){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/24.Improved_Entity_Resolvers_in_SparkNLP_with_sBert.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_cpt_procedures_augmented_en_3.0.4_3.0_1622371775342.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_cpt_procedures_augmented_en_3.0.4_3.0_1622371775342.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 ## How to use
 
 
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
-chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+chunk2doc = Chunk2Doc()\
+    .setInputCols("ner_chunk")
+    .setOutputCol("ner_chunk_doc")
 
-sbert_embedder = BertSentenceEmbeddings\
-.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-.setInputCols(["ner_chunk_doc"])\
-.setOutputCol("sbert_embeddings")
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("sbert_embeddings")
 
-resolver = SentenceEntityResolverModel\
-.pretrained("sbiobertresolve_hcc_augmented","en", "clinical/models") \
-.setInputCols(["ner_chunk", "sbert_embeddings"]) \
-.setOutputCol("resolution")\
-.setDistanceFunction("EUCLIDEAN")
+resolver = SentenceEntityResolverModel.load("sbiobertresolve_cpt_procedures_augmented") \
+    .setInputCols(["ner_chunk", "sbert_embeddings"]) \
+    .setOutputCol("resolution")\
+    .setDistanceFunction("EUCLIDEAN")
 
-nlpPipeline = Pipeline(stages=[document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, resolver])
+nlpPipeline = Pipeline(stages=[
+    document_assembler, 
+    sentence_detector, 
+    tokenizer, 
+    word_embeddings, 
+    clinical_ner, 
+    ner_converter, 
+    chunk2doc, 
+    sbert_embedder, 
+    resolver])
 
 data = spark.createDataFrame([["This is an 82 - year-old male with a history of prior tobacco use , hypertension , chronic renal insufficiency , COPD , gastritis , and TIA who initially presented to Braintree with a non-ST elevation MI and Guaiac positive stools , transferred to St . Margaret\'s Center for Women & Infants for cardiac catheterization with PTCA to mid LAD lesion complicated by hypotension and bradycardia requiring Atropine , IV fluids and transient dopamine possibly secondary to vagal reaction , subsequently transferred to CCU for close monitoring , hemodynamically stable at the time of admission to the CCU ."]]).toDF("text")
 
@@ -65,12 +73,21 @@ val sbert_embedder = BertSentenceEmbeddings
 .setOutputCol("sbert_embeddings")
 
 val resolver = SentenceEntityResolverModel
-.pretrained("sbiobertresolve_hcc_augmented","en", "clinical/models")
+.load("sbiobertresolve_cpt_procedures_augmented")
 .setInputCols(Array("ner_chunk", "sbert_embeddings"))
 .setOutputCol("resolution")
 .setDistanceFunction("EUCLIDEAN")
 
-val pipeline = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, icdo_resolver))
+val pipeline = new Pipeline().setStages(
+    Array(document_assembler,
+     sentence_detector, 
+     tokenizer, 
+     word_embeddings, 
+     clinical_ner, 
+     ner_converter, 
+     chunk2doc, 
+     sbert_embedder, 
+     icdo_resolver))
 
 val data = Seq.empty["This is an 82 - year-old male with a history of prior tobacco use , hypertension , chronic renal insufficiency , COPD , gastritis , and TIA who initially presented to Braintree with a non-ST elevation MI and Guaiac positive stools , transferred to St . Margaret\'s Center for Women & Infants for cardiac catheterization with PTCA to mid LAD lesion complicated by hypotension and bradycardia requiring Atropine , IV fluids and transient dopamine possibly secondary to vagal reaction , subsequently transferred to CCU for close monitoring , hemodynamically stable at the time of admission to the CCU ."].toDS.toDF("text")
 
@@ -120,3 +137,7 @@ nlu.load("en.resolve.cpt.procedures_augmented").predict("""This is an 82 - year-
 |Output Labels:|[cpt_code_aug]|
 |Language:|en|
 |Case sensitive:|false|
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**

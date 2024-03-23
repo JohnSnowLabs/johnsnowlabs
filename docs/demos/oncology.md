@@ -104,6 +104,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_ICDO.ipynb
+        - title: Bert For Sequence Classification (Biomarker) 
+          id: bert_sequence_classification_biomarker 
+          image: 
+              src: /assets/images/Bert_For_Sequence_Classification_Biomarker.svg
+          excerpt: This model is a sentence classification system based on BioBERT that is capable of identifying if clinical sentences contain terms associated with biomarkers.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_BIOMARKER/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/CLASSIFICATION_BIOMARKER.ipynb
         - title: Classify Complaints about Healthcare Facilities 
           id: classify_complaints_healthcare_facilities 
           image: 

@@ -117,7 +117,15 @@ def wait_for_endpoint(endpoint_name, host, token):
         method="GET", headers=get_headers(token), url=endpoint_url
     )
 
-    print("Deployment starting, this may take 10 to 20 minutes...")
+    try:
+        displayHTML(
+            f"""Started deployment for <a href="/#mlflow/endpoints/{endpoint_name}" target="_blank">{endpoint_name}</a> serving endpoint"""
+        )
+    except:
+        print(
+            f"Started deployment for {endpoint_name} at {host}/#mlflow/endpoints/{endpoint_name}"
+        )
+
     while (
         response.json()["state"]["ready"] == "NOT_READY"
         or response.json()["state"]["config_update"] == "IN_PROGRESS"

@@ -245,6 +245,8 @@ class JslSecrets(WritableBaseModel):
                     JSL_LEGAL_LICENSE=leg_license,
                     JSL_FINANCE_LICENSE=fin_license,
                 )
+                print('👌 License info detected in arguments')
+                return secrets
             elif access_token:
                 secrets = JslSecrets.from_access_token(
                     access_token, remote_license_number
@@ -255,8 +257,10 @@ class JslSecrets(WritableBaseModel):
 
             elif secrets_file:
                 # Load from JSON file from provided secret file
+                print(f'👌 License info detected in file {secrets_file}')
                 secrets = JslSecrets.from_json_file_path(secrets_file)
             elif any([key for key in license_file_keys if key in os.environ]):
+                print('👌 License info detected in environment variables')
                 key = next(k for k in license_file_keys if os.environ.get(k))
                 secrets = JslSecrets.from_json_file_path(os.environ[key])
             if not secrets and not force_browser:
@@ -287,7 +291,7 @@ class JslSecrets(WritableBaseModel):
             )
 
         if not secrets and not force_browser:
-            # Search Env Vars
+            # Search JSL-Home
             secrets = JslSecrets.from_jsl_home(license_number=local_license_number)
 
         if browser_login and not secrets or force_browser:

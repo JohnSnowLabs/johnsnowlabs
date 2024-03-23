@@ -59,12 +59,7 @@ summarizer = medical.Summarizer.pretrained("summarizer_clinical_jsl", "en", "cli
     .setInputCols(["document"])\
     .setOutputCol("summary")\
     .setMaxTextLength(512)\
-    .setMaxNewTokens(512)\
-    .setDoSample(True)\
-    .setRefineSummary(True)\
-    .setRefineSummaryTargetLength(100)\
-    .setRefineMaxAttempts(3)\
-    .setRefineChunkSize(512)
+    .setMaxNewTokens(512)
 
 pipeline = nlp.Pipeline(
     stages=[
@@ -84,11 +79,11 @@ result = pipeline.fit(data).transform(data)
 
 result.select("summary.result").show(truncate=False)
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| result                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| An x-ray showed spondylolisis of the ankle in a 17, 17, and 17-months old man who was playing basketball in the gym after slipping. He has no other injury notes, but an x-ray revealed small fracture of the ankle. He requested Motrin for pain and he was discharged with crutches and Motrin. The physician gave his sprates & tuxet for resting. He also gave him Motrin, if pain worsens and advised him on returning for followup. |
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|result                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|[A 17-year-old man fell and twisted his right ankle, causing pain to move or bear weight. An x-ray showed a small ossicle or avulsion fracture of the talonavicular joint on the lateral view, which may be a fracture based upon his exam. He was given Motrin and discharged home with crutches and a prescription for Motrin and Darvocet. He was advised to follow up with his doctor if pain worsens and return if any worsening problems worsen.]|
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 {%- endcapture -%}
 
 {%- capture model_scala_medical -%}
@@ -103,11 +98,7 @@ val summarizer = Summarizer.pretrained("summarizer_clinical_jsl", "en", "clinica
   .setOutputCol("summary")
   .setMaxTextLength(512)
   .setMaxNewTokens(512)
-  .setDoSample(true)
-  .setRefineSummary(true)
-  .setRefineSummaryTargetLength(100)
-  .setRefineMaxAttempts(3)
-  .setRefineChunkSize(512)
+
 
 val pipeline = new Pipeline().setStages(Array(documentAssembler, summarizer))
 

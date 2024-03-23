@@ -39,15 +39,14 @@ This pretrained pipeline is built on the top of `rxnorm_umls_mapper` model.
 from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("rxnorm_umls_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(1161611 315677)
+result = pipeline.fullAnnotate(["1161611", "315677"])
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val pipeline = new PretrainedPipeline("rxnorm_umls_mapping", "en", "clinical/models")
 
-val result = pipeline.fullAnnotate(1161611 315677)
+val result = pipeline.fullAnnotate(["1161611", "315677"])
 ```
 
 
@@ -63,9 +62,10 @@ nlu.load("en.rxnorm.umls.mapping").predict("""Put your text here.""")
 ## Results
 
 ```bash
-|    | rxnorm_code      | umls_code           |
-|---:|:-----------------|:--------------------|
-|  0 | 1161611 | 315677 | C3215948 | C0984912 |
+|   | rxnorm_code | umls_code |
+|--:|------------:|----------:|
+| 0 |     1161611 |  C3215948 |
+| 1 |      315677 |  C0984912 |
 ```
 
 {:.model-param}

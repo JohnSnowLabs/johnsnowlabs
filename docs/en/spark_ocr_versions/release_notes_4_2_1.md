@@ -8,7 +8,7 @@ key: docs-release-notes
 modify_date: "2022-11-28"
 show_nav: true
 sidebar:
-    nav: spark-ocr
+    nav: sparknlp-healthcare
 ---
 
 <div class="h3-box" markdown="1">

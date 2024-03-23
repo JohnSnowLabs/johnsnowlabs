@@ -21,7 +21,7 @@ Parameters:
 
 - `seed`:  The seed to select the names on obfuscation. With the seed, you can reply an execution several times with the same output..
 
-- `obfuscateRefSource`: Sets mode for select obfuscate source [‘both’|’faker’| ‘file’] Default: ‘both’.
+- `obfuscateRefSource`: Sets mode for select obfuscate source [‘both’, ’faker’, ‘file’] Default: ‘both’.
 
 - `language`: The language used to select some faker names. The values are the following: ‘en’(english),’de’(german), ‘es’(Spanish), ‘fr’(french) or ‘ro’(romanian) Default:’en’.
 

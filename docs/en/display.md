@@ -88,8 +88,6 @@ The following image gives an example of html output that is obtained for a coupl
 
 <img class="image image--xl" src="/assets/images/ner viz.png" style="width:80%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
 
-
-
 <br/>
 
 ### Visualize relations

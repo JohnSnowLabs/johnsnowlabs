@@ -38,9 +38,5 @@ After clicking **Authorize**:
 ![install_logs_colab.png](/assets/images/jsl_lib/install/install_logs_colab.png)
 
 To quickly test your installation, run in a `Python shell`
-```python
-
-```
-
 
 for alternative installation options see [Custom Installation](/docs/en/jsl/install_advanced)

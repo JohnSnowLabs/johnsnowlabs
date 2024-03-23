@@ -39,15 +39,14 @@ This pretrained pipeline is built on the top of `icd10_icd9_mapper` model.
 from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("icd10_icd9_mapping", "en", "clinical/models")
-
-result = pipeline.fullAnnotate(Z833 A0100 A000)
+result = pipeline.fullAnnotate(["Z833", "A0100", "A000"])
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val pipeline = new PretrainedPipeline("icd10_icd9_mapping", "en", "clinical/models")
 
-val result = pipeline.fullAnnotate(Z833 A0100 A000)
+val result = pipeline.fullAnnotate(["Z833", "A0100", "A000"])
 ```
 
 
@@ -64,9 +63,11 @@ nlu.load("en.icd10_icd9.mapping").predict("""Put your text here.""")
 ## Results
 
 ```bash
-|    | icd10_code          | icd9_code          |
-|---:|:--------------------|:-------------------|
-|  0 | Z833 | A0100 | A000 | V180 | 0020 | 0010 |
+|   | icd10cm_code | icd9_code |
+|--:|-------------:|----------:|
+| 0 |         Z833 |      V180 |
+| 1 |        A0100 |      0020 |
+| 2 |         A000 |      0010 |
 ```
 
 {:.model-param}

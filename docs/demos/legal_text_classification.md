@@ -32,7 +32,7 @@ data:
             url: https://demo.johnsnowlabs.com/legal/CLASSIFY_LEGAL_CLAUSES/
           - text: Colab
             type: blue_btn
-            url:  
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/legal-nlp/04.0.Clause_Document_Classification.ipynb
         - title: Classify 15 types of clauses (Multilabel)  
           id: classify_texts_15_types_legal_clauses     
           image: 
@@ -44,7 +44,7 @@ data:
             url: https://demo.johnsnowlabs.com/legal/LEGMULTICLF_LEDGAR/
           - text: Colab
             type: blue_btn
-            url:  
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/legal-nlp/04.0.Clause_Document_Classification.ipynb
         - title: Classify Law Stack Exchange Questions
           id: classify_law_stack_exchange_questions    
           image: 
@@ -56,7 +56,7 @@ data:
             url: https://demo.johnsnowlabs.com/legal/CLASSIFICATION_LAW_EXCHANGE/
           - text: Colab
             type: blue_btn
-            url: 
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/legal-nlp/04.0.Clause_Document_Classification.ipynb
         - title: Classify Judgements Clauses 
           id: classify_judgements_clauses      
           image: 
@@ -68,7 +68,7 @@ data:
             url: https://demo.johnsnowlabs.com/legal/LEG_JUDGEMENTS_CLF/
           - text: Colab
             type: blue_btn
-            url: 
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/legal-nlp/04.0.Clause_Document_Classification.ipynb
         - title: Classify Document into their Legal Type  
           id: classify_document_legal_type       
           image: 
@@ -92,7 +92,7 @@ data:
             url: https://demo.johnsnowlabs.com/legal/LEGCLF_SWISS_JUDGEMENTS/
           - text: Colab
             type: blue_btn
-            url: 
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/legal-nlp/04.0.Clause_Document_Classification.ipynb
         - title: Determine the category of a section within a subpoena
           id: determine_category_section_within_subpoena       
           image: 
@@ -104,7 +104,7 @@ data:
             url: https://demo.johnsnowlabs.com/legal/CLASSIFICATION_SUBPOENA/
           - text: Colab
             type: blue_btn
-            url: 
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/legal-nlp/04.0.Clause_Document_Classification.ipynb
         - title: Legal Contract NLI
           id: legal_contract_nli       
           image: 
@@ -116,5 +116,5 @@ data:
             url: https://demo.johnsnowlabs.com/legal/LEGGEN_CONTRACT_NLI/
           - text: Colab
             type: blue_btn
-            url: 
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/legal-nlp/04.0.Clause_Document_Classification.ipynb
 ---

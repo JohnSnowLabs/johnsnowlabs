@@ -68,6 +68,7 @@ nlu.load("en.explain_dco.clinical_medication.pipeline").predict("""The patient i
 ## Results
 
 ```bash
+# ner_chunk
 +----+----------------+------------+
 |    | chunks         | entities   |
 |---:|:---------------|:-----------|
@@ -84,15 +85,17 @@ nlu.load("en.explain_dco.clinical_medication.pipeline").predict("""The patient i
 | 10 | at bedtime     | FREQUENCY  |
 +----+----------------+------------+
 
-+----+----------+------------+-------------+
-|    | chunks   | entities   | assertion   |
-|---:|:---------|:-----------|:------------|
-|  0 | insulin  | DRUG       | Present     |
-|  1 | Bactrim  | DRUG       | Past        |
-|  2 | Fragmin  | DRUG       | Planned     |
-|  3 | Lantus   | DRUG       | Planned     |
-+----+----------+------------+-------------+
+# assertion
++---+---------+----------+-----------+
+|   |  chunks | entities | assertion |
+|--:|--------:|---------:|----------:|
+| 0 | insulin |     DRUG |    Family |
+| 1 | Bactrim |     DRUG |      Past |
+| 2 | Fragmin |     DRUG |   Planned |
+| 3 |  Lantus |     DRUG |      Past |
++---+---------+----------+-----------+
 
+# relation
 +----------------+-----------+------------+-----------+----------------+
 | relation       | entity1   | chunk1     | entity2   | chunk2         |
 |:---------------|:----------|:-----------|:----------|:---------------|
