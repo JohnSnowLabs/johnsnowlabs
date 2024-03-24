@@ -4,7 +4,7 @@ comment: no
 header: true
 seotitle: NLP Lab | John Snow Labs
 title: Entity Resolution 
-permalink: /docs/en/alab/section_based_annotations
+permalink: /docs/en/alab/resolvers
 key: docs-training
 modify_date: "2024-03-24"
 use_language_switcher: "Python-Scala"
