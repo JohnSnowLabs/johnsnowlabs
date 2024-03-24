@@ -134,7 +134,7 @@ Version 5.9 of NLP Lab allows you to effortlessly import and export projects usi
   ![S3_import](/assets/images/annotation_lab/5.9.0/15.gif)
 
 
-**Steps to import a project from Azure Bbob:**
+**Steps to import a project from Azure Blob:**
 - Go to "Import Project"
 - Select "Azure Blob"
 - Enter the path to the Azure Blob file as Container/file.zip
@@ -156,7 +156,7 @@ Version 5.9 of NLP Lab allows you to effortlessly import and export projects usi
 - Click "EXPORT"
 ![s3_export](/assets/images/annotation_lab/5.9.0/17.gif)
 
-**Steps to export a project to Azure Bbob:**
+**Steps to export a project to Azure Blob:**
 - Navigate to "Projects"
 - Select the project and Click "Export Project"
 - Choose "Cloud Export"
@@ -262,7 +262,6 @@ Now, after deleting a user, the projects are automatically transferred to anothe
 - **NER model not added" error is shown even when relation model is not added to the project configuration**
 
 	Now, the error message 'NER model not added' no longer appears when RE configuration is added without an RE model. However, if an RE model is added without the inclusion of the NER model, the error message will be displayed.
-
 
 </div><div class="prev_ver h3-box" markdown="1">
 

@@ -65,3 +65,24 @@ Annotation Lab 2.8.0 introduces a paradigm change for pagination. Going forward,
 A new settings option has been added to prevent splitting a sentence into two different pages.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/2.8.0/158552636-1b9f8814-5e05-4904-8ab4-401ea476d32e.png" style="width:60%;"/>
+
+## Import project in S3 and Blob
+
+Annotation Lab 4.3.0 offers support for importing tasks/documents stored on cloud. In the `Import Page`, a new section was added which allows users to define S3 connection details (credentials, access keys, and S3 bucket path). All documents present in the specified path, are imported as tasks in the current Annotation Lab project. With Version 5.9 of NLP Lab allows you to effortlessly import projects using S3 and Azure Blob.
+
+**Steps to import a project from S3:**
+- Navigate to "Import Project"
+- Choose "AWS S3"
+- Input the path to the S3 file as s3://bucket/folder/file.zip
+- Provide S3 Access Key, S3 Secret Key, and Session Token (Required for MFA Accounts)
+- Click "Import"
+  ![S3_import](/assets/images/annotation_lab/5.9.0/15.gif)
+
+
+**Steps to import a project from Azure Bbob:**
+- Go to "Import Project"
+- Select "Azure Blob"
+- Enter the path to the Azure Blob file as Container/file.zip
+- Input Azure Account Name and Azure Account Secret Key
+- Click "Import"
+  ![Import_azure](/assets/images/annotation_lab/5.9.0/16.gif)
