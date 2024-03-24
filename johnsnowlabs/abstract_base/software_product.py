@@ -167,7 +167,7 @@ class AbstractSoftwareProduct(ABC):
                 #  p4j lib should have jars/wheels for it in ~/.johnsnowlabs
                 # Try using suite whl before attempting to install from remote location
                 # Unless we toggle enforce_versions=False
-                suite = get_install_suite_from_jsl_home()
+                suite = get_install_suite_from_jsl_home(browser_login=False,force_browser=False)
                 if cls.name == ProductName.hc.value and suite.hc and suite.hc.py_lib:
 
                     return install_standard_pypi_lib(

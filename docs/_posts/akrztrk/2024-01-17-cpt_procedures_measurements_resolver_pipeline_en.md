@@ -23,8 +23,7 @@ This pipeline extracts `Procedure` and `Measurement` entities and maps them to c
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/cpt_procedures_measurements_resolver_pipeline_en_5.2.1_3.4_1705496174409.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/cpt_procedures_measurements_resolver_pipeline_en_5.2.1_3.4_1705496174409.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+
 
 ## How to use
 
@@ -32,11 +31,12 @@ This pipeline extracts `Procedure` and `Measurement` entities and maps them to c
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
 
-ner_pipeline = PretrainedPipeline("cpt_procedures_measurements_resolver_pipeline", "en", "clinical/models")
+ner_pipeline = PretrainedPipeline.from_disk("cpt_procedures_measurements_resolver_pipeline")
 
 result = ner_pipeline.annotate("""She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node.
 We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma.
@@ -47,7 +47,7 @@ At this time, chest tube placement for drainage of the fluid occurred and thorac
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val ner_pipeline = PretrainedPipeline("cpt_procedures_measurements_resolver_pipeline", "en", "clinical/models")
+val ner_pipeline = PretrainedPipeline.from_disk("cpt_procedures_measurements_resolver_pipeline")
 
 val result = ner_pipeline.annotate("""She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node.
 We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma.
@@ -95,3 +95,7 @@ At this time, chest tube placement for drainage of the fluid occurred and thorac
 - Chunk2Doc
 - BertSentenceEmbeddings
 - SentenceEntityResolverModel
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with the users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
