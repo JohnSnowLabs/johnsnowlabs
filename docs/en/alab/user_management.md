@@ -35,6 +35,25 @@ Currently, two user groups are available: _Annotators_ and _Admins_. By default,
 
 To add a user to the admin group, a user with admin privilege needs to navigate to the _Users_ page, click on the concerned username or select the _Edit_ option from the _More Actions_ icon, then go to the _Group_ section and check the _Admins_ checkbox.
 
+## New Supervisor Role for Users
+In this version of NLP Lab, we're excited to introduce a new user role: Supervisor. The Supervisor role offers enhanced authority compared to the Annotator role while maintaining restrictions, similar to the Admin role.
+
+### Role Authority:
+A user with the Supervisor role has access to almost all functionalities available to the Admin role, with a few exceptions:
+- **Users Page Access:** Supervisors cannot access the Users page, limiting their ability to create and edit users within the system.
+- **External Service Providers:** They do not have access to external service providers and cannot use prompts created by other users via external service providers.
+- **Limited Access to System Settings:** Supervisors have read-only access to Analytics Requests page, License page, Infrastructure Settings, and Export Project Settings in the System Settings page.
+- **No Access to Backup Page:** The Backup page is inaccessible to users with the Supervisor role.
+
+![SupervisorAuthority](/assets/images/annotation_lab/5.9.0/13.gif)
+
+### Creating a user with Supervisor Role
+The process of creating a user with the new role is just like creating any other users. As an admin user, navigate to the “Users” page under “Settings” menu item, then Add a new user, assign Supervisor role and save it.
+
+![CreatingSupervissor](/assets/images/annotation_lab/5.9.0/14.gif)
+
+The introduction of the Supervisor role enhances user management capabilities while maintaining necessary restrictions to ensure data security and system integrity. This role provides users with the appropriate level of authority to oversee projects and workflows effectively within NLP Lab.
+
 ## Reset User Credentials
 
 A user with the admin privilege can change the login credentials for another user by navigating to the _Credentials_ section of the edit user page and defining a new (temporary) password. For extra protection, the user with the admin privilege can enforce the password change on the next login.

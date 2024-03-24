@@ -2011,13 +2011,51 @@ If this option is enabled then only the tasks having ground truth in the complet
 Previous versions of the Annotation Lab only allowed the export of tasks that contained completions. From version <bl>2.8.0</bl> on, the tasks without any completions can be exported as this can be necessary for cloning projects. In the case where only tasks with completions are required in the export, users can enable the _Exclude tasks without Completions_ option on the Export page.
 
 
-## Integration with Amazon S3 for tasks and projects export
+## Integration with Amazon S3 and Azure Blob for tasks and projects export
 NLP Lab 5.2 offers seamless integration with Amazon Simple Storage Service. Users can now effortlessly export annotated tasks and projects directly to a given S3 bucket. This enhancement simplifies data management and ensures a smooth transition from annotation to model training and deployment.
 
 In previous versions, exported tasks were sent to the local workstation, but now it is possible to store annotated tasks and project backups securely in an S3 bucket. When triggering export, a new popup window will prompt the user to choose the target destination.
 By default, the "Local Export" tab is selected. This means that when the user clicks on the export button, target files will be downloaded to the local workstation. For those who prefer the convenience and reliability of cloud storage, it is now possible to select the "S3 Export" tab - enter Amazon S3 credentials, and export tasks and projects directly to the specified S3 bucket path. S3 credentials can be stored by the NLP Lab for future use.
 
 ![exports3](/assets/images/annotation_lab/5.2.2/2.gif)
+
+### Seamless Task Export to Azure Blob Storage:
+
+Exporting projects to Azure Blob storage is now an equally streamlined process:
+
+- **Access Export Page:** Navigate to the "Export Tasks" page within the NLP Lab platform.
+- **Specify the Tasks to Export:** Use the filter on the page to select the tasks you want to export as well as the target format and click the Export button.
+- **Select Cloud Export Option:** Navigate to the "Cloud Export" tab on the pop-up and select "Azure BLOB" from the available cloud storage options.
+- **Enter Azure Credentials:** Provide the Azure connection details: Azure Container Name, Azure Account Name, and Azure Account Secret Key.
+- **Optionally Save Credentials:** Save the credentials for future use to expedite subsequent exports to Azure Blob storage.
+- **Initiate Export Process:** Click the "Export" button to seamlessly transfer the selected project tasks into the specified Azure Blob container, ensuring effortless data backup and management.
+
+This integration with Azure Blob storage empowers NLP Lab users to manage tasks with unparalleled efficiency and flexibility. By leveraging the power of Azure, users can seamlessly import and export tasks, streamline data handling processes, and enhance their overall NLP Lab experience.
+
+![1](/assets/images/annotation_lab/5.8.0/11.gif)
+
+**Steps to export a project to S3:**
+- Navigate to "Projects"
+- Choose the desired project and Click "Export Project"
+- Select "Cloud Export"
+- Click "AWS S3"
+- Input S3 Access Key and S3 Secret Key 
+- Specify the S3 path for export (e.g., s3://bucket/folder/)
+- Optionally, provide Session Token for MFA Account
+- You click on Save Credentils as well for the future use
+- Optionally, save credentials for future use
+- Click "EXPORT"
+![s3_export](/assets/images/annotation_lab/5.9.0/17.gif)
+
+**Steps to export a project to Azure Blob:**
+- Navigate to "Projects"
+- Select the project and Click "Export Project"
+- Choose "Cloud Export"
+- Select "Azure Blob"
+- Enter Account Name, Account Key, and Container Name
+- Optionally, save credentials for future use
+- Click "EXPORT"
+![azure_export](/assets/images/annotation_lab/5.9.0/18.gif)
 
 ## Improved HIPAA compliance with disabled exports to local storage
 

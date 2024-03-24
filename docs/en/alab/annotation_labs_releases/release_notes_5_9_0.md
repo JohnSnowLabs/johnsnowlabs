@@ -136,7 +136,7 @@ Version 5.9 of NLP Lab allows you to effortlessly import and export projects usi
   ![S3_import](/assets/images/annotation_lab/5.9.0/15.gif)
 
 
-**Steps to import a project from Azure Bbob:**
+**Steps to import a project from Azure Blob:**
 - Go to "Import Project"
 - Select "Azure Blob"
 - Enter the path to the Azure Blob file as Container/file.zip
@@ -158,7 +158,7 @@ Version 5.9 of NLP Lab allows you to effortlessly import and export projects usi
 - Click "EXPORT"
 ![s3_export](/assets/images/annotation_lab/5.9.0/17.gif)
 
-**Steps to export a project to Azure Bbob:**
+**Steps to export a project to Azure Blob:**
 - Navigate to "Projects"
 - Select the project and Click "Export Project"
 - Choose "Cloud Export"

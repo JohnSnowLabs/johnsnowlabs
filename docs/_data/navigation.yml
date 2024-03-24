@@ -117,7 +117,7 @@ annotation-lab:
             url: /docs/en/alab/project_creation
           - title: Configuration
             url: /docs/en/alab/project_configuration
-          - title: Import Tasks
+          - title: Import
             url: /docs/en/alab/import
           - title: Generate Synthetic Data
             url: /docs/en/alab/synthetic_task
@@ -146,7 +146,9 @@ annotation-lab:
           - title: Pre-annotation
             url: /docs/en/alab/preannotation
           - title: Section Based Annotation
-            url: /docs/en/alab/section_based_annotations 
+            url: /docs/en/alab/section_based_annotations
+          - title: Entity Resolution
+            url: /docs/en/alab/resolvers 
           - title: Audit Trail
             url: /docs/en/alab/audit_trail
           - title: Productivity
