@@ -117,7 +117,7 @@ annotation-lab:
             url: /docs/en/alab/project_creation
           - title: Configuration
             url: /docs/en/alab/project_configuration
-          - title: Imports
+          - title: Import
             url: /docs/en/alab/import
           - title: Generate Synthetic Data
             url: /docs/en/alab/synthetic_task
