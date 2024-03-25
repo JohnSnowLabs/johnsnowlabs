@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline is designed to
+This pipeline is designed to:
 
 - extract all clinical/medical entities, which may be considered as risk factors from text,
 
@@ -40,7 +40,8 @@ This pipeline is designed to
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-```python
+
+  ```python
 
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -74,7 +75,7 @@ Following diagnosis and treatment, Barbara will likely need to make significant 
 ```
 </div>
 
-## Results
+## NER Results
 
 ```bash
 |    | chunks                         |   begin |   end | entities                  |
@@ -105,6 +106,46 @@ Following diagnosis and treatment, Barbara will likely need to make significant 
 | 23 | heart-healthy diet             |    1438 |  1455 | Diet                      |
 | 24 | physical activity              |    1473 |  1489 | Exercise                  |
 | 25 | CAD                            |    1569 |  1571 | Heart_Disease             |
+
+# Assertion Status Results
+
+|    | chunks                         | entities                  | assertion    |
+|---:|:-------------------------------|:--------------------------|:-------------|
+|  0 | high blood pressure            | Hypertension              | Present      |
+|  1 | chest pain                     | Symptom                   | Hypothetical |
+|  2 | coronary artery disease        | Heart_Disease             | Possible     |
+|  3 | CAD                            | Heart_Disease             | Possible     |
+|  4 | angina                         | Heart_Disease             | Possible     |
+|  5 | atherosclerotic plaque         | Disease_Syndrome_Disorder | Possible     |
+|  6 | Atherosclerotic plaque         | Disease_Syndrome_Disorder | Hypothetical |
+|  7 | elevated blood pressure        | Hypertension              | Hypothetical |
+|  8 | cholesterol                    | Disease_Syndrome_Disorder | Planned      |
+|  9 | blood clots                    | Disease_Syndrome_Disorder | Planned      |
+| 10 | angina                         | Disease_Syndrome_Disorder | Hypothetical |
+| 11 | Angioplasty                    | Procedure                 | Hypothetical |
+| 12 | blocked artery                 | Disease_Syndrome_Disorder | Past         |
+| 13 | Coronary artery bypass surgery | Procedure                 | Past         |
+| 14 | CABG                           | Procedure                 | Past         |
+| 15 | CABG                           | Procedure                 | Hypothetical |
+| 16 | open-heart surgery             | Procedure                 | Past         |
+| 17 | grafting                       | Procedure                 | Past         |
+| 18 | bypass                         | Procedure                 | Past         |
+| 19 | coronary arteries              | Disease_Syndrome_Disorder | Hypothetical |
+| 20 | smoking                        | Substance_Use_Disorder    | Hypothetical |
+| 21 | CAD                            | Heart_Disease             | Hypothetical |
+
+# Relation Extraction Results
+
+
+
+|    |   sentence |   entity1_begin |   entity1_end | chunk1                  | entity1                   |   entity2_begin |   entity2_end | chunk2            | entity2                   | relation                            |   confidence |
+|---:|-----------:|----------------:|--------------:|:------------------------|:--------------------------|----------------:|--------------:|:------------------|:--------------------------|:------------------------------------|-------------:|
+|  0 |          6 |             734 |           756 | elevated blood pressure | Hypertension              |             800 |           812 | nitroglycerin     | DRUG                      | Hypertension-DRUG                   |            1 |
+|  1 |          6 |             759 |           769 | cholesterol             | Disease_Syndrome_Disorder |             800 |           812 | nitroglycerin     | DRUG                      | Disease_Syndrome_Disorder-DRUG      |            1 |
+|  2 |          6 |             776 |           786 | blood clots             | Disease_Syndrome_Disorder |             800 |           812 | nitroglycerin     | DRUG                      | Disease_Syndrome_Disorder-DRUG      |            1 |
+|  3 |          6 |             800 |           812 | nitroglycerin           | DRUG                      |             825 |           830 | angina            | Disease_Syndrome_Disorder | DRUG-Disease_Syndrome_Disorder      |            1 |
+|  4 |         10 |            1262 |          1267 | bypass                  | Procedure                 |            1281 |          1297 | coronary arteries | Disease_Syndrome_Disorder | Procedure-Disease_Syndrome_Disorder |            1 |
+
 ```
 
 {:.model-param}
