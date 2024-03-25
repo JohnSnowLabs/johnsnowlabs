@@ -188,7 +188,7 @@ val result = resolver_pipeline.transform(df)
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[sentence_embeddings]|
-|Output Labels:|[meddra_code]|
+|Output Labels:|[meddra_llt_code]|
 |Language:|en|
 |Size:|76.2 MB|
 |Case sensitive:|false|
