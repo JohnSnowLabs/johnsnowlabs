@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical terms to their corresponding MedDRA PT (Preferred Term) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
+This model maps clinical terms to their corresponding MedDRA PT (Preferred Term) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.  It also returns the MedDRA System Organ Classes (SOCs) of each MedDRA PT code in the `all_k_aux_labels` in the metadata.
 
 ## Predicted Entities
 
@@ -77,7 +77,7 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en
      .setOutputCol("sbert_embeddings")\
      .setCaseSensitive(False)
 
-meddra_resolver = SentenceEntityResolverModel.load("meddra_pt_model") \
+meddra_resolver = SentenceEntityResolverModel.load("sbiobertresolve_meddra_preferred_term") \
      .setInputCols(["sbert_embeddings"]) \
      .setOutputCol("meddra_resolver")\
      .setDistanceFunction("EUCLIDEAN")
@@ -136,7 +136,7 @@ val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
 	.setOutputCol("sbert_embeddings")
 	.setCaseSensitive(false)
 
-val meddra_resolver = new SentenceEntityResolverModel.load("meddra_pt_model")
+val meddra_resolver = new SentenceEntityResolverModel.load("sbiobertresolve_meddra_preferred_term")
 	.setInputCols(Array("sbert_embeddings"))
 	.setOutputCol("meddra_resolver")
 	.setDistanceFunction("EUCLIDEAN") nlpPipeline= new Pipeline().setStages(Array(
