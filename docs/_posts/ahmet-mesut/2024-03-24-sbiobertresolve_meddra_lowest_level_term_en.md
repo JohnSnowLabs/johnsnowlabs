@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical terms to their corresponding MedDRA LLT (Lowest Level Term) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings.
+This model maps clinical terms to their corresponding MedDRA LLT (Lowest Level Term) codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It also returns the MedDRA Preferred Term codes of each MedDRA LLT code in the `all_k_aux_labels` in the metadata.
 
 ## Predicted Entities
 
