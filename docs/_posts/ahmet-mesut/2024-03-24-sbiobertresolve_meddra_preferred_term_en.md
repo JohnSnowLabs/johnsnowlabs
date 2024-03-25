@@ -192,3 +192,10 @@ val result = resolver_pipeline.transform(df)
 |Language:|en|
 |Size:|76.2 MB|
 |Case sensitive:|false|
+
+
+## References
+
+This model is trained with the January 2024 (v27) release of ICD-10 to MedDRA Map dataset.
+
+**To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
