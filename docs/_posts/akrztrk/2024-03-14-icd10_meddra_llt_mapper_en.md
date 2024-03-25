@@ -52,7 +52,7 @@ resolver2chunk = Resolution2Chunk()\
     .setInputCols(["icd10_code"])\
     .setOutputCol("icd102chunk")
 
-chunkerMapper = ChunkMapperModel.load("icd10_meddra_llt_mapper"")\
+chunkerMapper = ChunkMapperModel.load("icd10_meddra_llt_mapper")\
     .setInputCols(["icd102chunk"])\
     .setOutputCol("mappings")
 
@@ -87,7 +87,7 @@ val resolver2chunk = Resolution2Chunk()
     .setInputCols(Array("icd10_code"))
     .setOutputCol("icd102chunk")
 
-val chunkerMapper = ChunkMapperModel.load("icd10_meddra_llt_mapper"")\
+val chunkerMapper = ChunkMapperModel.load("icd10_meddra_llt_mapper")\
     .setInputCols(Array("icd102chunk"))
     .setOutputCol("mappings")
 
