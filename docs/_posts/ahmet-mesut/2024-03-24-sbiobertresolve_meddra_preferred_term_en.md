@@ -162,7 +162,7 @@ val result = resolver_pipeline.transform(df)
 
 ```bash
 +-------------------------------------+-------------------------+---------------+-------------------------------------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
-|                                chunk|                    label|meddra_resolver|                           resolution|                                         all_codes|                                   all_resolutions|                                    all_aux_labels|
+|                                chunk|                    label| meddra_pt_code|                           resolution|                                         all_codes|                                   all_resolutions|                                    all_aux_labels|
 +-------------------------------------+-------------------------+---------------+-------------------------------------+--------------------------------------------------+--------------------------------------------------+--------------------------------------------------+
 |                              tobacco|                  Smoking|       10067622|                  tobacco interaction|10067622:::10057581:::10082288:::10043903:::100...|tobacco interaction:::tobacco user:::exposure t...|10018065:::10041244:::10022117:::10037175:::100...|
 |                         hypertension|             Hypertension|       10020772|                         hypertension|10020772:::10015488:::10039834:::10012758:::100...|hypertension:::essential hypertension:::seconda...|10047065:::10047065:::10047065:::10047065:::100...|
@@ -188,7 +188,7 @@ val result = resolver_pipeline.transform(df)
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[sentence_embeddings]|
-|Output Labels:|[meddra_llt_code]|
+|Output Labels:|[meddra_pt_code]|
 |Language:|en|
 |Size:|76.2 MB|
 |Case sensitive:|false|
