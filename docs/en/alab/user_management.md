@@ -6,7 +6,7 @@ seotitle: NLP Lab | John Snow Labs
 title: User Management
 permalink: /docs/en/alab/user_management
 key: docs-training
-modify_date: "2021-10-13"
+modify_date: "2024-03-24"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
