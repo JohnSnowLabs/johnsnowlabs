@@ -27,8 +27,6 @@ This model maps clinical terms to their corresponding MedDRA LLT (Lowest Level T
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_meddra_lowest_level_term_en_5.3.0_3.0_1711295979685.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/sbiobertresolve_meddra_lowest_level_term_en_5.3.0_3.0_1711295979685.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
