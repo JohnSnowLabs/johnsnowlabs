@@ -77,7 +77,7 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en
      .setOutputCol("sbert_embeddings")\
      .setCaseSensitive(False)
 
-meddra_resolver = SentenceEntityResolverModel.load("meddra_llt_model") \
+meddra_resolver = SentenceEntityResolverModel.load("sbiobertresolve_meddra_lowest_level_term") \
      .setInputCols(["sbert_embeddings"]) \
      .setOutputCol("meddra_resolver")\
      .setDistanceFunction("EUCLIDEAN")
