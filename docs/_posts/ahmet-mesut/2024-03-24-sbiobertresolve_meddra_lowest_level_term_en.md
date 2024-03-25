@@ -79,7 +79,7 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en
 
 meddra_resolver = SentenceEntityResolverModel.load("sbiobertresolve_meddra_lowest_level_term") \
      .setInputCols(["sbert_embeddings"]) \
-     .setOutputCol("meddra_resolver")\
+     .setOutputCol("meddra_llt_code")\
      .setDistanceFunction("EUCLIDEAN")
 
 nlpPipeline= Pipeline(stages=[
@@ -138,7 +138,7 @@ val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
 
 val meddra_resolver = new SentenceEntityResolverModel.load("sbiobertresolve_meddra_lowest_level_term")
 	.setInputCols(Array("sbert_embeddings"))
-	.setOutputCol("meddra_resolver")
+	.setOutputCol("meddra_llt_code")
 	.setDistanceFunction("EUCLIDEAN")
  
 nlpPipeline= new Pipeline().setStages(Array(
