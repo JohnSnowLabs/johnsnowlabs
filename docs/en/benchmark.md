@@ -596,127 +596,101 @@ The `sbiobertresolve_snomed_findings` model is used as the resolver model. The i
     - **Instance Type:** 32 CPU Core, 128GiB RAM , 8 workers
     - **Price** 2.7 $/hr
 
-***Utulized pretrained DEID pipelines:***
+***Utulized Pretrained DEID Pipelines:***
 
+*Optimized Pipeline*
 ```python
 from sparknlp.pretrained import PretrainedPipeline
-deid_pipeline = PretrainedPipeline("clinical_deidentification_subentity_optimized", "en", "clinical/models")
 
-deid_pipeline.model.stages
+pipeline_optimized = PretrainedPipeline("clinical_deidentification_subentity_optimized", "en", "clinical/models")
 
-deid_pipeline = Pipeline().setStages(
-                                    [document_assembler,
-                                    sentence_detector,
-                                    tokenizer,
-                                    word_embeddings,
-                                    deid_ner,
-                                    ner_converter,
-                                    ssn_parser,
-                                    account_parser
-                                    dln_parser,
-                                    plate_parser,
-                                    vin_parser,
-                                    license_parser,
-                                    country_extracter,
-                                    age_parser,
-                                    date_matcher,
-                                    phone_parser,
-                                    zip_parser,
-                                    med_parser,
-                                    email_parser,
-                                    merger_parser,
-                                    merger_chunks,
-                                    deid_ner_obfus,
-                                    finisher]
-
+pipeline_optimized = Pipeline().setStages(
+    [document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    deid_ner,
+    ner_converter,
+    ssn_parser,
+    account_parser
+    dln_parser,
+    plate_parser,
+    vin_parser,
+    license_parser,
+    country_extracter,
+    age_parser,
+    date_matcher,
+    phone_parser,
+    zip_parser,
+    med_parser,
+    email_parser,
+    merger_parser,
+    merger_chunks,
+    deid_ner_obfus,
+    finisher]
 ```
 
+*Base Pipeline*
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
-deid_pipeline2 = PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
+pipeline_base = PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
 
-deid_pipeline2 = Pipeline().setStages([
-                                    document_assembler,
-                                    sentence_detector,
-                                    tokenizer,
-                                    word_embeddings,
-                                    deid_ner,
-                                    ner_converter,
-                                    deid_ner_enriched,
-                                    ner_converter_enriched,
-                                    chunk_merge,
-                                    ssn_parser,
-                                    account_parser,
-                                    dln_parser,
-                                    plate_parser,
-                                    vin_parser,
-                                    license_parser,
-                                    country_parser,
-                                    age_parser,
-                                    date_parser,
-                                    phone_parser1,
-                                    phone_parser2,
-                                    ids_parser,
-                                    zip_parser,
-                                    med_parser,
-                                    email_parser,
-                                    chunk_merge1,
-                                    chunk_merge2,
-                                    deid_masked_rgx,
-                                    deid_masked_char,
-                                    deid_masked_fixed_char,
-                                    deid_obfuscated,
-                                    finisher])
+pipeline_base = Pipeline().setStages([
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    deid_ner,
+    ner_converter,
+    deid_ner_enriched,
+    ner_converter_enriched,
+    chunk_merge,
+    ssn_parser,
+    account_parser,
+    dln_parser,
+    plate_parser,
+    vin_parser,
+    license_parser,
+    country_parser,
+    age_parser,
+    date_parser,
+    phone_parser1,
+    phone_parser2,
+    ids_parser,
+    zip_parser,
+    med_parser,
+    email_parser,
+    chunk_merge1,
+    chunk_merge2,
+    deid_masked_rgx,
+    deid_masked_char,
+    deid_masked_fixed_char,
+    deid_obfuscated,
+    finisher])
 ```
 </div>
 
 <div class="h3-box" markdown="1">
 
 
-| environment   | pretrained pipeline                           | data| partition | result_write | minimum estimated cost | estimated cost for 1M data       |
-|---------------|-----------------------------------------------|-----|-----------|--------------|------------------------|----------------------------------|
-| emr           | clinical_deidentification                     | 10K | 1024      | 5 min 1 sec  |                        |                                  |
-| emr           | clinical_deidentification                     | 10K | 512       | 4 min 52 sec |                        |                                  |
-| emr           | clinical_deidentification                     | 10K | 256       | **4 min 50 sec** | **$1.04**        | **$104.41**                        |
-| emr           | clinical_deidentification                     | 10K | 128       | 4 min 55 sec |                        |                                  |
-| emr           | clinical_deidentification                     | 10K | 64        | 6 min 24 sec |                        |                                  |
-| emr           | clinical_deidentification                     | 10K | 32        | 7 min 15 sec |                        |                                  |
-| emr           | clinical_deidentification                     | 10K | 16        | 11 min 6 sec |                        |                                  |
-| emr           | clinical_deidentification                     | 10K | 8         | 19 min 13 sec |                        |                                 |
-| emr           | clinical_deidentification_subentity_optimized | 10K | 1024      | 2 min 45 sec |                        |                                  |
-| emr           | clinical_deidentification_subentity_optimized | 10K | 512       | 2 min 30 sec |                        |                                  |
-| emr           | clinical_deidentification_subentity_optimized | 10K | 256       |** 2 min 30 sec** | **$0.54**                  | **$54.04**               |
-| emr           | clinical_deidentification_subentity_optimized | 10K | 128       | 2 min 30 sec |                        |                                  |
-| emr           | clinical_deidentification_subentity_optimized | 10K | 64        | 3 min 8 sec  |                        |                                  |
-| emr           | clinical_deidentification_subentity_optimized | 10K | 32        | 3 min 43 sec |                        |                                  |
-| emr           | clinical_deidentification_subentity_optimized | 10K | 16        | 4 min 57 sec |                        |                                  |
-| emr           | clinical_deidentification_subentity_optimized | 10K | 8         | 8 min 8 sec  |                        |                                  |
-| EC2 Instance  | clinical_deidentification                     | 10K | 1024      | 7 min 6 sec  |                        |                                  |
-| EC2 Instance  | clinical_deidentification                     | 10K | 512       | **6 min 56 sec** |**$0.36**           | **$35.70**                       |
-| EC2 Instance  | clinical_deidentification                     | 10K | 256       | 9 min 10 sec |                        |                                  |
-| EC2 Instance  | clinical_deidentification                     | 10K | 128       | 14 min 30 sec|                        |                                  |
-| EC2 Instance  | clinical_deidentification                     | 10K | 64        | 18 min 59 sec|                        |                                  |
-| EC2 Instance  | clinical_deidentification                     | 10K | 32        | 18 min 47.2 sec |                     |                                  |
-| EC2 Instance  | clinical_deidentification                     | 10K | 32        | 18 min 47.2 sec |                     |                                  |
-| EC2 Instance  | clinical_deidentification_subentity_optimized | 10K | 1024      | **3 min 26 sec **| **$0.18  **                | **$17.85**               |
-| EC2 Instance  | clinical_deidentification_subentity_optimized | 10K | 512       | 3 min 41 sec |                        |                                  |
-| EC2 Instance  | clinical_deidentification_subentity_optimized | 10K | 256       | 5 min 18 sec |                        |                                  |
-| EC2 Instance  | clinical_deidentification_subentity_optimized | 10K | 128       | 7 min 51 sec |                        |                                  |
-| EC2 Instance  | clinical_deidentification_subentity_optimized | 10K | 64        | 9 min 9 sec  |                        |                                  |
-| EC2 Instance  | clinical_deidentification_subentity_optimized | 10K | 32        | 9 min 18 sec |                        |                                  |
-| EC2 Instance  | clinical_deidentification_subentity_optimized | 10K | 16        | 6 min 14 sec |                        |                                  |
-| EC2 Instance  | clinical_deidentification_subentity_optimized | 10K | 8         | 8 min 48 sec |                        |                                  |
-| databricks    | clinical_deidentification                     | 1K  | 1024      |1 min 55 sec    |                   |                                  |
-| databricks    | clinical_deidentification                     | 1K  | 512       |1 min 26 sec    |                   |                                  |
-| databricks    | clinical_deidentification                     | 1K  | 256       |**1 min 20 sec**| **$0.06**         | **$59.85**                       |
-| databricks    | clinical_deidentification                     | 1K  | 128       |1 min 21 sec    |                   |                                  |
-| databricks    | clinical_deidentification                     | 1K  | 64        |1 min 31 sec    |                   |                                  |
-| databricks    | clinical_deidentification                     | 1K  | 32        |1 min 26 sec    |                   |                                  |
-| databricks    | clinical_deidentification                     | 1K  | 16        |1 min 43 sec    |                   |                                  |
-| databricks    | clinical_deidentification                     | 1K  | 8         |2 min 33 sec    |                   |                                  |
+| Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline | DataBricks <br>  Base Pipeline |
+|-----------|--------------------|------------------------|----------------------------|---------------------------------|--------------------------|
+| 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                    | 1 min 55 sec             |
+| 512       | 4 min 52 sec       | 2 min 30 sec           | **6 min 56 sec**               | 3 min 41 sec                    | 1 min 26 sec             |
+| 256       | **4 min 50 sec**       | **2 min 30 sec**           | 9 min 10 sec               | 5 min 18 sec                    | **1 min 20 sec**         |
+| 128       | 4 min 55 sec       | 2 min 30 sec           | 14 min 30 sec              | 7 min 51 sec                    | 1 min 21 sec             |
+| 64        | 6 min 24 sec       | 3 min 8 sec            | 18 min 59 sec              | 9 min 9 sec                     | 1 min 31 sec             |
+| 32        | 7 min 15 sec       | 3 min 43 sec           | 18 min 47.2 sec            | 9 min 18 sec                    | 1 min 26 sec             |
+| 16        | 11 min 6 sec       | 4 min 57 sec           | 12 min 47.5 sec            | 6 min 14 sec                    | 1 min 43 sec             |
+| 8         | 19 min 13 se       | 8 min 8 sec            | 16 min 52 sec              | 8 min 48 sec                    | 2 min 33 sec             |
 
+Estimated Minimum Costs:
+- EMR Base Pipeline : partition number: 256, 10K cost:**$1.04** , 1M cost:**$104.41** 
+- EMR Optimized Pipeline : partition number: 256, 10K cost:**$0.54** , 1M cost:**$54.04** 
+- EC2 Instance  Base Pipeline : partition number: 512, 10K cost:**$0.36** , 1M cost:**$35.70** 
+- EC2 Instance  Optimized Pipeline : partition number: 1024, 10K cost:**$0.18** , 1M cost:**$17.85** 
+- DataBricks  Base Pipeline : partition number: 256, 1K cost:**$0.06** , 1M cost:**$59.85** 
 
 ## CPU NER Benchmarks
 
