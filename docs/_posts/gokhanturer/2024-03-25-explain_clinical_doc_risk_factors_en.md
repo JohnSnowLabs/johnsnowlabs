@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline is designed to
+This pipeline is designed to:
 
 - extract all clinical/medical entities, which may be considered as risk factors from text,
 
@@ -40,6 +40,7 @@ This pipeline is designed to
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
@@ -63,10 +64,10 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 val ner_pipeline = PretrainedPipeline("explain_clinical_doc_risk_factors", "en", "clinical/models")
 
 val result = ner_pipeline.annotate("""
-Barbara, a 62-year-old with a history of high blood pressure and heavy smoking for 40 years, has been experiencing chest pain radiating down her left arm, along with shortness of breath and fatigue for the past week. These symptoms, combined with her risk factors, raise concerns for coronary artery disease (CAD) and potential angina. Her doctor recommends a stress test, where she'll walk on a treadmill while monitored for changes in heart rhythm and blood flow. If the test suggests blockage, a coronary angiogram might be necessary. This minimally invasive procedure uses X-rays and contrast dye to visualize her coronary arteries and pinpoint any blockages.
+Barbara, a 62-year-old with a history of high blood pressure for 40 years, experiencing chest pain radiating down her left arm. These symptoms, combined with her risk factors, raise concerns for coronary artery disease (CAD) and potential angina. Her doctor recommends a Cardiopulmonary exercise test, where she'll walk on a treadmill while monitored for changes in heart rhythm and blood flow. If the test suggests atherosclerotic plaque buildup, a coronary angiogram might be necessary. This minimally invasive procedure uses X-rays and contrast dye to pinpoint any Atherosclerotic plaque buildup.
 Depending on the severity of the blockage, treatment options could include:
 Medication management: This could involve medications for elevated blood pressure, cholesterol, and blood clots, as well as nitroglycerin to relieve angina symptoms.
-Angioplasty: A procedure where a thin catheter is inserted into a blocked artery and a tiny balloon is inflated to open it. A stent, a small wire mesh tube, might be placed to keep the artery open.
+Angioplasty can be considered as a procedure where a thin catheter is inserted into a blocked artery and a tiny balloon is inflated to open it. A stent, a small wire mesh tube, might be placed to keep the artery open.
 Coronary artery bypass surgery (CABG): If the blockages are severe or numerous, CABG might be necessary. This open-heart surgery involves grafting healthy blood vessels from another part of the body to bypass the blocked coronary arteries.
 Following diagnosis and treatment, Barbara will likely need to make significant lifestyle changes, including quitting smoking, adopting a heart-healthy diet, and increasing physical activity. Regular doctor visits and medication adherence will be crucial to manage her CAD and prevent future complications.
 """)
@@ -74,39 +75,82 @@ Following diagnosis and treatment, Barbara will likely need to make significant 
 ```
 </div>
 
-## Results
+# NER Results
 
 ```bash
+
 |    | chunks                         |   begin |   end | entities                  |
 |---:|:-------------------------------|--------:|------:|:--------------------------|
 |  0 | high blood pressure            |      41 |    59 | Hypertension              |
-|  1 | smoking                        |      71 |    77 | Smoking                   |
-|  2 | chest pain                     |     115 |   124 | Symptom                   |
-|  3 | shortness of breath            |     166 |   184 | Symptom                   |
-|  4 | fatigue                        |     190 |   196 | Symptom                   |
-|  5 | coronary artery disease        |     284 |   306 | Heart_Disease             |
-|  6 | CAD                            |     309 |   311 | Heart_Disease             |
-|  7 | angina                         |     328 |   333 | Heart_Disease             |
-|  8 | stress                         |     360 |   365 | Mental_Health             |
-|  9 | coronary arteries              |     618 |   634 | Disease_Syndrome_Disorder |
-| 10 | elevated blood pressure        |     798 |   820 | Hypertension              |
-| 11 | cholesterol                    |     823 |   833 | Disease_Syndrome_Disorder |
-| 12 | blood clots                    |     840 |   850 | Disease_Syndrome_Disorder |
-| 13 | nitroglycerin                  |     864 |   876 | DRUG                      |
-| 14 | angina                         |     889 |   894 | Disease_Syndrome_Disorder |
-| 15 | Angioplasty                    |     906 |   916 | Procedure                 |
-| 16 | blocked artery                 |     972 |   985 | Disease_Syndrome_Disorder |
-| 17 | Coronary artery bypass surgery |    1104 |  1133 | Procedure                 |
-| 18 | CABG                           |    1136 |  1139 | Procedure                 |
-| 19 | CABG                           |    1184 |  1187 | Procedure                 |
-| 20 | open-heart surgery             |    1214 |  1231 | Procedure                 |
-| 21 | grafting                       |    1242 |  1249 | Procedure                 |
-| 22 | bypass                         |    1306 |  1311 | Procedure                 |
-| 23 | coronary arteries              |    1325 |  1341 | Disease_Syndrome_Disorder |
-| 24 | smoking                        |    1462 |  1468 | Smoking                   |
-| 25 | heart-healthy diet             |    1482 |  1499 | Diet                      |
-| 26 | physical activity              |    1517 |  1533 | Exercise                  |
-| 27 | CAD                            |    1613 |  1615 | Heart_Disease             |
+|  1 | chest pain                     |      88 |    97 | Symptom                   |
+|  2 | coronary artery disease        |     195 |   217 | Heart_Disease             |
+|  3 | CAD                            |     220 |   222 | Heart_Disease             |
+|  4 | angina                         |     239 |   244 | Heart_Disease             |
+|  5 | exercise                       |     287 |   294 | Exercise                  |
+|  6 | atherosclerotic plaque         |     416 |   437 | Disease_Syndrome_Disorder |
+|  7 | Atherosclerotic plaque         |     568 |   589 | Disease_Syndrome_Disorder |
+|  8 | elevated blood pressure        |     734 |   756 | Hypertension              |
+|  9 | cholesterol                    |     759 |   769 | Disease_Syndrome_Disorder |
+| 10 | blood clots                    |     776 |   786 | Disease_Syndrome_Disorder |
+| 11 | nitroglycerin                  |     800 |   812 | DRUG                      |
+| 12 | angina                         |     825 |   830 | Disease_Syndrome_Disorder |
+| 13 | Angioplasty                    |     842 |   852 | Procedure                 |
+| 14 | blocked artery                 |     928 |   941 | Disease_Syndrome_Disorder |
+| 15 | Coronary artery bypass surgery |    1060 |  1089 | Procedure                 |
+| 16 | CABG                           |    1092 |  1095 | Procedure                 |
+| 17 | CABG                           |    1140 |  1143 | Procedure                 |
+| 18 | open-heart surgery             |    1170 |  1187 | Procedure                 |
+| 19 | grafting                       |    1198 |  1205 | Procedure                 |
+| 20 | bypass                         |    1262 |  1267 | Procedure                 |
+| 21 | coronary arteries              |    1281 |  1297 | Disease_Syndrome_Disorder |
+| 22 | smoking                        |    1418 |  1424 | Smoking                   |
+| 23 | heart-healthy diet             |    1438 |  1455 | Diet                      |
+| 24 | physical activity              |    1473 |  1489 | Exercise                  |
+| 25 | CAD                            |    1569 |  1571 | Heart_Disease             |
+
+# Assertion Status Results
+
+
+
+|    | chunks                         | entities                  | assertion    |
+|---:|:-------------------------------|:--------------------------|:-------------|
+|  0 | high blood pressure            | Hypertension              | Present      |
+|  1 | chest pain                     | Symptom                   | Hypothetical |
+|  2 | coronary artery disease        | Heart_Disease             | Possible     |
+|  3 | CAD                            | Heart_Disease             | Possible     |
+|  4 | angina                         | Heart_Disease             | Possible     |
+|  5 | atherosclerotic plaque         | Disease_Syndrome_Disorder | Possible     |
+|  6 | Atherosclerotic plaque         | Disease_Syndrome_Disorder | Hypothetical |
+|  7 | elevated blood pressure        | Hypertension              | Hypothetical |
+|  8 | cholesterol                    | Disease_Syndrome_Disorder | Planned      |
+|  9 | blood clots                    | Disease_Syndrome_Disorder | Planned      |
+| 10 | angina                         | Disease_Syndrome_Disorder | Hypothetical |
+| 11 | Angioplasty                    | Procedure                 | Hypothetical |
+| 12 | blocked artery                 | Disease_Syndrome_Disorder | Past         |
+| 13 | Coronary artery bypass surgery | Procedure                 | Past         |
+| 14 | CABG                           | Procedure                 | Past         |
+| 15 | CABG                           | Procedure                 | Hypothetical |
+| 16 | open-heart surgery             | Procedure                 | Past         |
+| 17 | grafting                       | Procedure                 | Past         |
+| 18 | bypass                         | Procedure                 | Past         |
+| 19 | coronary arteries              | Disease_Syndrome_Disorder | Hypothetical |
+| 20 | smoking                        | Substance_Use_Disorder    | Hypothetical |
+| 21 | CAD                            | Heart_Disease             | Hypothetical |
+
+
+# Relation Extraction Results
+
+
+
+|    |   sentence |   entity1_begin |   entity1_end | chunk1                  | entity1                   |   entity2_begin |   entity2_end | chunk2            | entity2                   | relation                            |   confidence |
+|---:|-----------:|----------------:|--------------:|:------------------------|:--------------------------|----------------:|--------------:|:------------------|:--------------------------|:------------------------------------|-------------:|
+|  0 |          6 |             734 |           756 | elevated blood pressure | Hypertension              |             800 |           812 | nitroglycerin     | DRUG                      | Hypertension-DRUG                   |            1 |
+|  1 |          6 |             759 |           769 | cholesterol             | Disease_Syndrome_Disorder |             800 |           812 | nitroglycerin     | DRUG                      | Disease_Syndrome_Disorder-DRUG      |            1 |
+|  2 |          6 |             776 |           786 | blood clots             | Disease_Syndrome_Disorder |             800 |           812 | nitroglycerin     | DRUG                      | Disease_Syndrome_Disorder-DRUG      |            1 |
+|  3 |          6 |             800 |           812 | nitroglycerin           | DRUG                      |             825 |           830 | angina            | Disease_Syndrome_Disorder | DRUG-Disease_Syndrome_Disorder      |            1 |
+|  4 |         10 |            1262 |          1267 | bypass                  | Procedure                 |            1281 |          1297 | coronary arteries | Disease_Syndrome_Disorder | Procedure-Disease_Syndrome_Disorder |            1 |
+
+
 ```
 
 {:.model-param}
