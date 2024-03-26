@@ -34,6 +34,7 @@ This pipeline can extract the following clincial entities: `Procedure`, `Kidney_
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -82,6 +83,11 @@ val result = meddra_llt_pipeline.fullAnnotate("This is an 82-year-old male with 
 |Edition:|Official|
 |Language:|en|
 |Size:|2.4 GB|
+
+## References
+This pipeline is prepared using the models that are trained with the January 2024 release (v27) of MedDRA dataset.
+
+**To utilize this pipeline, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
 
 ## Included Models
 
