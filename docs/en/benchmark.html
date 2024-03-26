@@ -2301,6 +2301,199 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
 <div class="h3-box">
 
+  <h2 id="deidentification--pipelines-cost-benchmarks-march-2024">Deidentification  Pipelines Cost Benchmarks [March-2024]</h2>
+
+  <ul>
+    <li><strong>Versions:</strong>
+      <ul>
+        <li><strong>spark-nlp Version:</strong> v5.2.2</li>
+        <li><strong>spark-nlp-jsl Version :</strong> v5.2.1</li>
+        <li><strong>Spark Version :</strong> v3.4.1</li>
+      </ul>
+    </li>
+    <li><strong><em>EMR</em></strong>
+      <ul>
+        <li><strong>Dataset:</strong> 10K  Custom Clinical Texts, approx. 500 tokens &amp; 15 chunks per text</li>
+        <li><strong>EMR Version:</strong> ERM.6.15.0</li>
+        <li><strong>Instance Type:</strong>
+          <ul>
+            <li><strong>Primary</strong>: c5.4xlarge, 16 vCore, 32 GiB memory</li>
+            <li><strong>Worker:</strong>  m5.16xlarge, 64 vCore, 256 GiB memory, 4 workers</li>
+          </ul>
+        </li>
+        <li><strong>Price</strong> 12.97 $/hr</li>
+      </ul>
+    </li>
+    <li><strong><em>EC2 instance</em></strong>
+      <ul>
+        <li><strong>Dataset:</strong> 10K  Custom Clinical Texts, approx. 500 tokens &amp; 15 chunks per text</li>
+        <li><strong>Instance Type:</strong> c5.18xlarge, 72 vCore, 144 GiB memory, Single Instance</li>
+        <li><strong>Price</strong> 3.06 $/hr</li>
+      </ul>
+    </li>
+    <li><strong><em>Databricks</em></strong>
+      <ul>
+        <li><strong>Dataset:</strong> 1K  Clinical Texts from MT Samples, approx. 503 tokens &amp; 21 chunks per text</li>
+        <li><strong>Instance Type:</strong> 32 CPU Core, 128GiB RAM , 8 workers</li>
+        <li><strong>Price</strong> 2.7 $/hr</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong><em>Utilized Pretrained DEID Pipelines:</em></strong></p>
+
+  <p><em>Optimized Pipeline:</em></p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+
+<span class="n">pipeline_optimized</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification_subentity_optimized"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+
+<span class="n">pipeline_optimized</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">sentence_detector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">word_embeddings</span><span class="p">,</span>
+    <span class="n">deid_ner</span><span class="p">,</span>
+    <span class="n">ner_converter</span><span class="p">,</span>
+    <span class="n">ssn_parser</span><span class="p">,</span>
+    <span class="n">account_parser</span>
+    <span class="n">dln_parser</span><span class="p">,</span>
+    <span class="n">plate_parser</span><span class="p">,</span>
+    <span class="n">vin_parser</span><span class="p">,</span>
+    <span class="n">license_parser</span><span class="p">,</span>
+    <span class="n">country_extracter</span><span class="p">,</span>
+    <span class="n">age_parser</span><span class="p">,</span>
+    <span class="n">date_matcher</span><span class="p">,</span>
+    <span class="n">phone_parser</span><span class="p">,</span>
+    <span class="n">zip_parser</span><span class="p">,</span>
+    <span class="n">med_parser</span><span class="p">,</span>
+    <span class="n">email_parser</span><span class="p">,</span>
+    <span class="n">merger_parser</span><span class="p">,</span>
+    <span class="n">merger_chunks</span><span class="p">,</span>
+    <span class="n">deid_ner_obfus</span><span class="p">,</span>
+    <span class="n">finisher</span><span class="p">]</span>
+</code></pre></div>  </div>
+
+  <p><em>Base Pipeline:</em></p>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
+
+<span class="n">pipeline_base</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"clinical_deidentification"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
+
+<span class="n">pipeline_base</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+    <span class="n">document_assembler</span><span class="p">,</span>
+    <span class="n">sentence_detector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">word_embeddings</span><span class="p">,</span>
+    <span class="n">deid_ner</span><span class="p">,</span>
+    <span class="n">ner_converter</span><span class="p">,</span>
+    <span class="n">deid_ner_enriched</span><span class="p">,</span>
+    <span class="n">ner_converter_enriched</span><span class="p">,</span>
+    <span class="n">chunk_merge</span><span class="p">,</span>
+    <span class="n">ssn_parser</span><span class="p">,</span>
+    <span class="n">account_parser</span><span class="p">,</span>
+    <span class="n">dln_parser</span><span class="p">,</span>
+    <span class="n">plate_parser</span><span class="p">,</span>
+    <span class="n">vin_parser</span><span class="p">,</span>
+    <span class="n">license_parser</span><span class="p">,</span>
+    <span class="n">country_parser</span><span class="p">,</span>
+    <span class="n">age_parser</span><span class="p">,</span>
+    <span class="n">date_parser</span><span class="p">,</span>
+    <span class="n">phone_parser1</span><span class="p">,</span>
+    <span class="n">phone_parser2</span><span class="p">,</span>
+    <span class="n">ids_parser</span><span class="p">,</span>
+    <span class="n">zip_parser</span><span class="p">,</span>
+    <span class="n">med_parser</span><span class="p">,</span>
+    <span class="n">email_parser</span><span class="p">,</span>
+    <span class="n">chunk_merge1</span><span class="p">,</span>
+    <span class="n">chunk_merge2</span><span class="p">,</span>
+    <span class="n">deid_masked_rgx</span><span class="p">,</span>
+    <span class="n">deid_masked_char</span><span class="p">,</span>
+    <span class="n">deid_masked_fixed_char</span><span class="p">,</span>
+    <span class="n">deid_obfuscated</span><span class="p">,</span>
+    <span class="n">finisher</span><span class="p">])</span>
+</code></pre></div>  </div>
+</div>
+
+<div class="h3-box">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Partition</th>
+        <th>EMR <br /> Base Pipeline</th>
+        <th>EMR <br /> Optimized Pipeline</th>
+        <th>EC2 Instance <br /> Base Pipeline</th>
+        <th>EC2 Instance <br /> Optimized Pipeline</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1024</td>
+        <td>5 min 1 sec</td>
+        <td>2 min 45 sec</td>
+        <td>7 min 6 sec</td>
+        <td><strong>3 min 26 sec</strong></td>
+      </tr>
+      <tr>
+        <td>512</td>
+        <td>4 min 52 sec</td>
+        <td>2 min 30 sec</td>
+        <td><strong>6 min 56 sec</strong></td>
+        <td>3 min 41 sec</td>
+      </tr>
+      <tr>
+        <td>256</td>
+        <td><strong>4 min 50 sec</strong></td>
+        <td><strong>2 min 30 sec</strong></td>
+        <td>9 min 10 sec</td>
+        <td>5 min 18 sec</td>
+      </tr>
+      <tr>
+        <td>128</td>
+        <td>4 min 55 sec</td>
+        <td>2 min 30 sec</td>
+        <td>14 min 30 sec</td>
+        <td>7 min 51 sec</td>
+      </tr>
+      <tr>
+        <td>64</td>
+        <td>6 min 24 sec</td>
+        <td>3 min 8 sec</td>
+        <td>18 min 59 sec</td>
+        <td>9 min 9 sec</td>
+      </tr>
+      <tr>
+        <td>32</td>
+        <td>7 min 15 sec</td>
+        <td>3 min 43 sec</td>
+        <td>18 min 47.2 sec</td>
+        <td>9 min 18 sec</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>11 min 6 sec</td>
+        <td>4 min 57 sec</td>
+        <td>12 min 47.5 sec</td>
+        <td>6 min 14 sec</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>19 min 13 se</td>
+        <td>8 min 8 sec</td>
+        <td>16 min 52 sec</td>
+        <td>8 min 48 sec</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Estimated Minimum Costs:</p>
+  <ul>
+    <li>EMR Base Pipeline: partition number: 256, 10K cost:<strong>$1.04</strong>, 1M cost:<strong>$104.41</strong></li>
+    <li>EMR Optimized Pipeline: partition number: 256, 10K cost:<strong>$0.54</strong>, 1M cost:<strong>$54.04</strong></li>
+    <li>EC2 Instance  Base Pipeline: partition number: 512, 10K cost:<strong>$0.36</strong>, 1M cost:<strong>$35.70</strong></li>
+    <li>EC2 Instance  Optimized Pipeline: partition number: 1024, 10K cost:<strong>$0.18</strong>, 1M cost:<strong>$17.85</strong></li>
+    <li>DataBricks results will be published soon.</li>
+  </ul>
+
   <h2 id="cpu-ner-benchmarks">CPU NER Benchmarks</h2>
 
   <h3 id="ner-bilstm-cnn-char-architecture-cpu-benchmark-experiment">NER (BiLSTM-CNN-Char Architecture) CPU Benchmark Experiment</h3>
