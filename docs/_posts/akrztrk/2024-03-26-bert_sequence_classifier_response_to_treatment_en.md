@@ -41,6 +41,7 @@ The Oncological Response to Treatment classifier employs [MedicalBertForSequence
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
