@@ -4,7 +4,7 @@ title: Pipeline for MedDRA - Preferred Term (PT) Sentence Entity Resolver
 author: John Snow Labs
 name: meddra_pt_resolver_pipeline
 date: 2024-03-26
-tags: [licensed, en, meddra, resolver, pt, mapper]
+tags: [licensed, en, meddra, resolver, pt]
 task: Entity Resolution
 language: en
 edition: Healthcare NLP 5.3.1
