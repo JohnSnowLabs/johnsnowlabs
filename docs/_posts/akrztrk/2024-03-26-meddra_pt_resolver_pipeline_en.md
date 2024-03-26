@@ -4,11 +4,11 @@ title: Pipeline for MedDRA - Preferred Term (PT) Sentence Entity Resolver
 author: John Snow Labs
 name: meddra_pt_resolver_pipeline
 date: 2024-03-26
-tags: [licensed, en, meddra, pt, resolver, mapper]
+tags: [licensed, en, meddra, resolver, pt, mapper]
 task: Entity Resolution
 language: en
 edition: Healthcare NLP 5.3.1
-spark_version: 3.2
+spark_version: 3.4
 supported: true
 annotator: PipelineModel
 article_header:
@@ -25,8 +25,8 @@ This pipeline can extract the following clincial entities: `Procedure`, `Kidney_
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/meddra_pt_resolver_pipeline_en_5.3.1_3.2_1711468297071.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/meddra_pt_resolver_pipeline_en_5.3.1_3.2_1711468297071.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/meddra_pt_resolver_pipeline_en_5.3.1_3.4_1711469123712.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/meddra_pt_resolver_pipeline_en_5.3.1_3.4_1711469123712.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -34,7 +34,6 @@ This pipeline can extract the following clincial entities: `Procedure`, `Kidney_
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
-  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -83,11 +82,6 @@ val result = meddra_pt_pipeline.fullAnnotate("This is an 82-year-old male with a
 |Edition:|Official|
 |Language:|en|
 |Size:|2.2 GB|
-
-## References
-This pipeline is prepared using the models that are trained with the January 2024 release (v27) of MedDRA dataset.
-
-**To utilize this pipeline, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
 
 ## Included Models
 
