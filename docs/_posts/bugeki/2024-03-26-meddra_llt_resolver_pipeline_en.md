@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This dedicated pipeline utilizes `sbiobert_base_cased_mli` Sentence Bert Embeddings to extract clinical terms and link them to their corresponding MedDRA LLT (Lowest Level Term) codes. Additionally, it provides the MedDRA Preferred Term codes for each MedDRA LLT code within the `meddra_llt_code` metadata's `all_k_aux_labels`. Furthermore, it conducts mappings of MedDRA LLT codes to MedDRA Preferred Term (PT) codes using the `meddra_llt_pt_mapper` model and to ICD-10 codes using the `meddra_llt_icd10_mapper` model.
+This dedicated pipeline extracts clinical terms and utilizes `sbiobert_base_cased_mli` Sentence Bert Embeddings to link them to their corresponding MedDRA LLT (Lowest Level Term) codes. Additionally, it provides the MedDRA Preferred Term codes for each MedDRA LLT code within the `meddra_llt_code` metadata's `all_k_aux_labels`. Furthermore, it conducts mappings of MedDRA LLT codes to MedDRA Preferred Term (PT) codes using the `meddra_llt_pt_mapper` model and to ICD-10 codes using the `meddra_llt_icd10_mapper` model.
 
 This pipeline can extract the following clincial entities: `Procedure`, `Kidney_Disease`, `Cerebrovascular_Disease`, `Heart_Disease`, `Disease_Syndrome_Disorder`, `ImagingFindings`, `Symptom`, `VS_Finding`, `EKG_Findings`, `Communicable_Disease`, `Substance`, `Internal_organ_or_component`, `External_body_part_or_region`, `Modifier`, `Triglycerides`, `Alcohol`, `Smoking`, `Pregnancy`, `Hypertension`, `Obesity`, `Injury_or_Poisoning`, `Test`, `Hyperlipidemia`, `BMI`, `Oncological`, `Psychological_Condition`, `LDL`, `Diabetes`, `PROBLEM`.
 
