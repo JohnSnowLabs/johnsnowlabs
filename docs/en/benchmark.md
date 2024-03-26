@@ -584,7 +584,7 @@ The `sbiobertresolve_snomed_findings` model is used as the resolver model. The i
     - **EMR Version:** ERM.6.15.0
     - **Instance Type:** 
         -  **Primary**: c5.4xlarge, 16 vCore, 32 GiB memory
-        - **Worker :**  m5.16xlarge, 64 vCore, 256 GiB memory , 4 workers
+        - **Worker:**  m5.16xlarge, 64 vCore, 256 GiB memory, 4 workers
     - **Price** 12.97 $/hr
 - ***EC2 instance***
     - **Dataset:** 10K  Custom Clinical Texts, approx. 500 tokens & 15 chunks per text
@@ -596,9 +596,9 @@ The `sbiobertresolve_snomed_findings` model is used as the resolver model. The i
     - **Instance Type:** 32 CPU Core, 128GiB RAM , 8 workers
     - **Price** 2.7 $/hr
 
-***Utulized Pretrained DEID Pipelines:***
+***Utilized Pretrained DEID Pipelines:***
 
-*Optimized Pipeline*
+*Optimized Pipeline:*
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -630,7 +630,7 @@ pipeline_optimized = Pipeline().setStages(
     finisher]
 ```
 
-*Base Pipeline*
+*Base Pipeline:*
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
@@ -674,23 +674,23 @@ pipeline_base = Pipeline().setStages([
 <div class="h3-box" markdown="1">
 
 
-| Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline | DataBricks <br>  Base Pipeline |
-|-----------|--------------------|------------------------|----------------------------|---------------------------------|--------------------------|
-| 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                    | 1 min 55 sec             |
-| 512       | 4 min 52 sec       | 2 min 30 sec           | **6 min 56 sec**               | 3 min 41 sec                    | 1 min 26 sec             |
-| 256       | **4 min 50 sec**       | **2 min 30 sec**           | 9 min 10 sec               | 5 min 18 sec                    | **1 min 20 sec**         |
-| 128       | 4 min 55 sec       | 2 min 30 sec           | 14 min 30 sec              | 7 min 51 sec                    | 1 min 21 sec             |
-| 64        | 6 min 24 sec       | 3 min 8 sec            | 18 min 59 sec              | 9 min 9 sec                     | 1 min 31 sec             |
-| 32        | 7 min 15 sec       | 3 min 43 sec           | 18 min 47.2 sec            | 9 min 18 sec                    | 1 min 26 sec             |
-| 16        | 11 min 6 sec       | 4 min 57 sec           | 12 min 47.5 sec            | 6 min 14 sec                    | 1 min 43 sec             |
-| 8         | 19 min 13 se       | 8 min 8 sec            | 16 min 52 sec              | 8 min 48 sec                    | 2 min 33 sec             |
+| Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline |
+|-----------|--------------------|------------------------|----------------------------|---------------------------------|
+| 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                |
+| 512       | 4 min 52 sec       | 2 min 30 sec           | **6 min 56 sec**           | 3 min 41 sec                    |
+| 256       | **4 min 50 sec**   | **2 min 30 sec**       | 9 min 10 sec               | 5 min 18 sec                    |
+| 128       | 4 min 55 sec       | 2 min 30 sec           | 14 min 30 sec              | 7 min 51 sec                    |
+| 64        | 6 min 24 sec       | 3 min 8 sec            | 18 min 59 sec              | 9 min 9 sec                     |
+| 32        | 7 min 15 sec       | 3 min 43 sec           | 18 min 47.2 sec            | 9 min 18 sec                    |
+| 16        | 11 min 6 sec       | 4 min 57 sec           | 12 min 47.5 sec            | 6 min 14 sec                    |
+| 8         | 19 min 13 se       | 8 min 8 sec            | 16 min 52 sec              | 8 min 48 sec                    |
 
 Estimated Minimum Costs:
-- EMR Base Pipeline : partition number: 256, 10K cost:**$1.04** , 1M cost:**$104.41** 
-- EMR Optimized Pipeline : partition number: 256, 10K cost:**$0.54** , 1M cost:**$54.04** 
-- EC2 Instance  Base Pipeline : partition number: 512, 10K cost:**$0.36** , 1M cost:**$35.70** 
-- EC2 Instance  Optimized Pipeline : partition number: 1024, 10K cost:**$0.18** , 1M cost:**$17.85** 
-- DataBricks  Base Pipeline : partition number: 256, 1K cost:**$0.06** , 1M cost:**$59.85** 
+- EMR Base Pipeline: partition number: 256, 10K cost:**$1.04**, 1M cost:**$104.41** 
+- EMR Optimized Pipeline: partition number: 256, 10K cost:**$0.54**, 1M cost:**$54.04** 
+- EC2 Instance  Base Pipeline: partition number: 512, 10K cost:**$0.36**, 1M cost:**$35.70** 
+- EC2 Instance  Optimized Pipeline: partition number: 1024, 10K cost:**$0.18**, 1M cost:**$17.85** 
+- DataBricks results will be published soon.
 
 ## CPU NER Benchmarks
 
