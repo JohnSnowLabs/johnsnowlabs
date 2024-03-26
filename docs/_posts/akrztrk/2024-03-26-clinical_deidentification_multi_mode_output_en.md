@@ -36,6 +36,7 @@ masked with entity labels, fixed-length char, same-length char and obfuscated ve
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 from sparknlp.pretrained import PretrainedPipeline
 
