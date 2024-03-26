@@ -571,8 +571,126 @@ The `sbiobertresolve_snomed_findings` model is used as the resolver model. The i
 
 </div>
 
+<div class="h3-box" markdown="1">
+
+## Deidentification  Pipelines Cost Benchmarks [March-2024]
+
+- **Versions:**
+    - **spark-nlp Version:** v5.2.2
+    - **spark-nlp-jsl Version :** v5.2.1
+    - **Spark Version :** v3.4.1
+- ***EMR***
+    - **Dataset:** 10K  Custom Clinical Texts, approx. 500 tokens & 15 chunks per text
+    - **EMR Version:** ERM.6.15.0
+    - **Instance Type:** 
+        -  **Primary**: c5.4xlarge, 16 vCore, 32 GiB memory
+        - **Worker:**  m5.16xlarge, 64 vCore, 256 GiB memory, 4 workers
+    - **Price** 12.97 $/hr
+- ***EC2 instance***
+    - **Dataset:** 10K  Custom Clinical Texts, approx. 500 tokens & 15 chunks per text
+    - **Instance Type:** c5.18xlarge, 72 vCore, 144 GiB memory, Single Instance
+    - **Price** 3.06 $/hr
+
+- ***Databricks***
+    - **Dataset:** 1K  Clinical Texts from MT Samples, approx. 503 tokens & 21 chunks per text
+    - **Instance Type:** 32 CPU Core, 128GiB RAM , 8 workers
+    - **Price** 2.7 $/hr
+
+***Utilized Pretrained DEID Pipelines:***
+
+*Optimized Pipeline:*
+```python
+from sparknlp.pretrained import PretrainedPipeline
+
+pipeline_optimized = PretrainedPipeline("clinical_deidentification_subentity_optimized", "en", "clinical/models")
+
+pipeline_optimized = Pipeline().setStages(
+    [document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    deid_ner,
+    ner_converter,
+    ssn_parser,
+    account_parser
+    dln_parser,
+    plate_parser,
+    vin_parser,
+    license_parser,
+    country_extracter,
+    age_parser,
+    date_matcher,
+    phone_parser,
+    zip_parser,
+    med_parser,
+    email_parser,
+    merger_parser,
+    merger_chunks,
+    deid_ner_obfus,
+    finisher]
+```
+
+*Base Pipeline:*
+```python
+from sparknlp.pretrained import PretrainedPipeline
+
+pipeline_base = PretrainedPipeline("clinical_deidentification", "en", "clinical/models")
+
+pipeline_base = Pipeline().setStages([
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    deid_ner,
+    ner_converter,
+    deid_ner_enriched,
+    ner_converter_enriched,
+    chunk_merge,
+    ssn_parser,
+    account_parser,
+    dln_parser,
+    plate_parser,
+    vin_parser,
+    license_parser,
+    country_parser,
+    age_parser,
+    date_parser,
+    phone_parser1,
+    phone_parser2,
+    ids_parser,
+    zip_parser,
+    med_parser,
+    email_parser,
+    chunk_merge1,
+    chunk_merge2,
+    deid_masked_rgx,
+    deid_masked_char,
+    deid_masked_fixed_char,
+    deid_obfuscated,
+    finisher])
+```
+</div>
 
 <div class="h3-box" markdown="1">
+
+
+| Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline |
+|-----------|--------------------|------------------------|----------------------------|---------------------------------|
+| 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                |
+| 512       | 4 min 52 sec       | 2 min 30 sec           | **6 min 56 sec**           | 3 min 41 sec                    |
+| 256       | **4 min 50 sec**   | **2 min 30 sec**       | 9 min 10 sec               | 5 min 18 sec                    |
+| 128       | 4 min 55 sec       | 2 min 30 sec           | 14 min 30 sec              | 7 min 51 sec                    |
+| 64        | 6 min 24 sec       | 3 min 8 sec            | 18 min 59 sec              | 9 min 9 sec                     |
+| 32        | 7 min 15 sec       | 3 min 43 sec           | 18 min 47.2 sec            | 9 min 18 sec                    |
+| 16        | 11 min 6 sec       | 4 min 57 sec           | 12 min 47.5 sec            | 6 min 14 sec                    |
+| 8         | 19 min 13 se       | 8 min 8 sec            | 16 min 52 sec              | 8 min 48 sec                    |
+
+Estimated Minimum Costs:
+- EMR Base Pipeline: partition number: 256, 10K cost:**$1.04**, 1M cost:**$104.41** 
+- EMR Optimized Pipeline: partition number: 256, 10K cost:**$0.54**, 1M cost:**$54.04** 
+- EC2 Instance  Base Pipeline: partition number: 512, 10K cost:**$0.36**, 1M cost:**$35.70** 
+- EC2 Instance  Optimized Pipeline: partition number: 1024, 10K cost:**$0.18**, 1M cost:**$17.85** 
+- DataBricks results will be published soon.
 
 ## CPU NER Benchmarks
 
