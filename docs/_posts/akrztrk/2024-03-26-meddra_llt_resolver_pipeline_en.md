@@ -4,7 +4,7 @@ title: Pipeline for MedDRA - Lowest Level Term (LLT) Sentence Entity Resolver
 author: John Snow Labs
 name: meddra_llt_resolver_pipeline
 date: 2024-03-26
-tags: [licensed, en, meddra, llt, mapper]
+tags: [licensed, en, meddra, llt, resolver]
 task: Entity Resolution
 language: en
 edition: Healthcare NLP 5.3.1
