@@ -130,7 +130,7 @@ These pipelines are capable of extracting clinical entities and linking them to 
 | Pipeline Name                                                            |      Description            |
 |--------------------------------------------------------------------------|-----------------------------|
 | [`meddra_llt_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/26/meddra_llt_resolver_pipeline_en.html) | This dedicated pipeline extracts clinical terms and links them to their corresponding MedDRA LLT (Lowest Level Term) codes, map those codes to their MedDRA PT (Preferred Term) codes and ICD-10 codes.|
-| [`meddra_pt_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/07/meddra_pt_resolver_pipeline_en.html) | This dedicated pipeline  extracts clinical terms and links them to their corresponding MedDRA PT (Preferred Term) codes, map those codes to their MedDRA LLT (Lowest Level Term) codes and ICD-10 codes. |
+| [`meddra_pt_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/26/meddra_pt_resolver_pipeline_en.html) | This dedicated pipeline  extracts clinical terms and links them to their corresponding MedDRA PT (Preferred Term) codes, map those codes to their MedDRA LLT (Lowest Level Term) codes and ICD-10 codes. |
 
 *Example*:
 
