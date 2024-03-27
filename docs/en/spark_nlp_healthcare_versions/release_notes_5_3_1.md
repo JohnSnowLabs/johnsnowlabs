@@ -2,10 +2,10 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 5.3.0
-permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_5_3_0
+title: Spark NLP for Healthcare Release Notes 5.3.1
+permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_5_3_1
 key: docs-licensed-release-notes
-modify_date: 2024-02-29
+modify_date: 2024-03-27
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -16,6 +16,7 @@ sidebar:
 ## 5.3.1
 
 #### Highlights
+
 
 We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with MedDRA resolver, 2x faster optimized Deidentification pipelines,  Response to Treatment classifier for oncology, and 41 new clinical pretrained models and pipelines. It's as big as a major release!**
 
@@ -55,12 +56,14 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 #### Welcoming MedDRA into the Library. Releasing 10 New Entity Resolver, Mapper Models and Pretrained Pipelines to Associate Clinical Entities With Meddra Llt and Pt Codes
 
+
 Introducing 2 new Sentence Entity Resolver Models  `sbiobertresolve_meddra_lowest_level_term` and `sbiobertresolve_meddra_preferred_term` help to map medical entities to MedDRA codes.
 
 | Model Name                                                            |      Description            |
 |-----------------------------------------------------------------------|-----------------------------|
 | [`sbiobertresolve_meddra_lowest_level_term`](https://nlp.johnsnowlabs.com/2024/03/24/sbiobertresolve_meddra_lowest_level_term_en.html) | This model maps clinical terms to their corresponding MedDRA LLT (Lowest Level Term) codes. |
 | [`sbiobertresolve_meddra_preferred_term`](https://nlp.johnsnowlabs.com/2024/03/04/sbiobertresolve_meddra_preferred_term_en.html) | This model maps clinical terms to their corresponding MedDRA PT (Preferred Term) codes. |
+
 
 *Example*:
 
@@ -666,8 +669,6 @@ For all Spark NLP for Healthcare models, please check: [Models Hub Page](https:/
 
 
 </div><div class="h3-box" markdown="1">
-
-
 
 
 ## Versions
