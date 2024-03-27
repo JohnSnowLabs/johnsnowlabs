@@ -31,22 +31,27 @@ The highlight of this release is the integration with an external service provid
 The following sections explain in detail how to define and use GPT prompts. 
 
 ### Setting Up the Integration with Open AI service
-Integrating “ChatGPT” into the NLP Lab has been designed to be a straightforward process, ensuring users can harness the power of external expertise seamlessly. It consists of three easy steps:
+Integrating ChatGPT and Azure into the NLP Lab has been designed to be a straightforward process, ensuring users can harness the power of external expertise seamlessly. It consists of three easy steps:
 
 **Integrations Page**: Navigate to the Integrations Page located within the System Settings. This is the hub where all external service providers, including Open AI’s GPT Models, can be defined and managed.
 
+ChatGPT:
 ![Integration](/assets/images/annotation_lab/5.3.0/1.gif)
+
+Azure:
+![OpenAIIntegration](/assets/images/annotation_lab/5.5.0/1.gif)
 
 **Define the Service Provider**: To initiate the integration, users are required to provide specific details:
 - **Service Provider Name**: This is the identifier for the external service, which in this case would be “ChatGPT” or any other name you prefer to use.
 - **Secret Key**: Every external service comes with a unique Secret Key that ensures secure communication between the platforms. Enter the Secret Key associated with your Open AI subscription here. To ensure the integration process is error-free, users can validate the provided Secret Key directly within the form. This validation step ensures that the connection is secure and that the key is correct.
 
 **Project Association**: Once a successful connection with “ChatGPT” (or any external LLM service provider) is established, it doesn't end there. The integrated service will now be available for association with selected projects. This means users can decide which projects will benefit from the “ChatGPT” integration and enable it accordingly.
+
 The Open AI integration allows users to tap into a vast reservoir of external expertise, enhancing the depth and breadth of their projects. We've ensured that the integration process is as intuitive as possible, allowing users to focus on what truly matters: crafting refined and effective pre-annotations.
 
 
-### ChatGPT Prompt Definition and Testing
-Users can generate LLM prompts on the dedicated Prompt page from the Hub of Resources. For ChatGPT Prompts, NLP Lab offers a dedicated definition interface. Here's what to expect when creating a new LLM prompt:
+### Prompt Definition and Testing
+Users can generate LLM prompts on the dedicated Prompt page from the Hub of Resources. For ChatGPT and Azure Prompts, NLP Lab offers a dedicated definition interface. Here's what to expect when creating a new LLM prompt:
 
 - **Name the Prompt**: Within this new tab, users will first be asked to provide a name for their prompt. This name will be used for pre-annotating identified entities. At this point, we recommend creating one prompt per target entity.
 
@@ -55,7 +60,6 @@ Users can generate LLM prompts on the dedicated Prompt page from the Hub of Reso
 - **Test in Real-time**: A standout feature is the ability to test ChatGPT prompts at creation time. As you craft your prompt, you can immediately see how it performs on some test data. This not only allows for immediate feedback but also ensures that the final prompt aligns perfectly with the user's objectives.
 
 This streamlined approach ensures that integrating and testing external prompts is as intuitive and efficient as possible.
-
 
 ![Integration](/assets/images/annotation_lab/5.3.0/2.gif)
 

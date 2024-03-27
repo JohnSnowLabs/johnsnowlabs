@@ -11,12 +11,13 @@ sidebar:
   nav: jsl
 ---
 
-<div class="main-docs" markdown="1">
+<div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
 ## John Snow Labs NLP Models on Databricks Marketplace
 
 This section demonstrates the process of obtaining an AI model from John Snow Labs on Databricks Marketplace and deploying it for inference. Let’s assume a data scientist from an healthcare company is interested in building an intelligent application to help detect cancer genetics in patients records and intends to use an NLP model to analyze the available clinical notes at scale by using an API service.
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 1: Navigate to the [Databricks Marketplace](https://marketplace.databricks.com/)
 
@@ -26,6 +27,8 @@ This section demonstrates the process of obtaining an AI model from John Snow La
 
 ![DatabricksMarketplaceCancerSearch.png](/assets/images/jsl_lib/databricks_utils/DatabricksMarketplaceCancerSearch.png)
 
+</div><div class="h3-box" markdown="1">
+
 ### Step 2: Select the AI Model to Deploy
 
 **Identify the Listing**: Locate the “Detect Cancer Genetics” listing on the Marketplace and click on the model card.This opens the model page on the Databricks Marketplace. An extended set of information on a model is provided in this page as well as usage intructions. 
@@ -34,6 +37,7 @@ This section demonstrates the process of obtaining an AI model from John Snow La
 
 **License**: Note that this is a paid model and requires a license from John Snow Labs.
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 3: Obtain Access to the Model
 
@@ -42,6 +46,8 @@ This section demonstrates the process of obtaining an AI model from John Snow La
 **Open the Listing**: Once access is granted, click on 'Open in Listing'.
 
 **Locate in Unity Catalog**: The models should now be available in the Unity Catalog and ready for deployment to a model serving endpoint.
+
+</div><div class="h3-box" markdown="1">
 
 ### Step 4: Obtain PAYG License for John Snow Labs Models
 **Login to your account**: Access [my.JohnSnowLabs.com](https://my.johnsnowlabs.com) and log in to your account. If you don't have an account, create one. 
@@ -58,6 +64,7 @@ Carefully review the End User License Agreement and the Terms and Conditions doc
 
 Go to your Databricks notebook and paste the license key into the JSL-License widget in the top of the notebook (see Step 5).
 
+</div><div class="h3-box" markdown="1">
 
 ### Step 5: Use the Embedded Notebook to Deploy the Model
 
@@ -71,6 +78,8 @@ Go to your Databricks notebook and paste the license key into the JSL-License wi
 
 **Run the Notebook**: Execute the notebook to initiate the process.
 
+</div><div class="h3-box" markdown="1">
+
 ### Step 6: Model Endpoint Creation and Querying
 
 **Endpoint Creation**: The notebook will create a serving endpoint, visible in the Databricks serving UI.
@@ -79,7 +88,7 @@ Go to your Databricks notebook and paste the license key into the JSL-License wi
 
 **Observing Results**: The results will showcase the identified and classified biological entities.
 
-
+</div><div class="h3-box" markdown="1">
 
 ## Manual Endpoint Creation
 
@@ -144,8 +153,10 @@ It has the following parameters which are forwarded to the [model.predict()](htt
 | `VISUAL_SECRET`             | Automatically set if you run. `nlp.install(..., visual=True)`. You can only spawn visual endpoint from a cluster created by `nlp.install(..., visual=True)` |
 | `JOHNSNOWLABS_LICENSE_JSON` | JSON content of your john snow labs licensed to use for endpoints. Should be **airgap license**                                                             |
 
+</div><div class="h3-box" markdown="1">
 
 ## Submit a Task with nlp.run_in_databricks
+
 Easily run Python code in a Databricks cluster, using the John Snow Labs library. 
 The fastest way to test this out, is to create a cluster with `nlp.install()` and then use `nlp.run_in_databricks` to start a task.
 You can parameterize your jobs, according to the [Databricks docs](https://docs.databricks.com/en/workflows/jobs/create-run-jobs.html#pass-parameters-to-a-databricks-job-task) via the  
@@ -173,6 +184,7 @@ And after a while you can see the results
 
 ![databricks_cluster_submit_raw.png](/assets/images/jsl_lib/databricks_utils/submit_raw_str_result.png)
 
+</div><div class="h3-box" markdown="1">
 
 ### Run a local Python Notebook in Databricks
 
@@ -202,9 +214,7 @@ A URL where you can monitor the run will be printed, which will look like this
 
 ![databricks_cluster_submit_notebook_result.png](/assets/images/jsl_lib/databricks_utils/submit_notebook_result.png)
 
-
-
-
+</div><div class="h3-box" markdown="1">
 
 ### Run a Python Function in Databricks
 
@@ -231,8 +241,10 @@ This example will print all columns of the resulting dataframe which contains me
 
 ![databricks_cluster_submit_raw.png](/assets/images/jsl_lib/databricks_utils/submit_func.png)
 
+</div><div class="h3-box" markdown="1">
 
 ### Run a Raw Python Code String in Databricks
+
 Provide a string which must be valid Python Syntax.    
 It will be written to string, copied to HDFS and executed by the Databricks Cluster.
 
@@ -249,8 +261,10 @@ nlp.run_in_databricks(script,
 
 ```
 
+</div><div class="h3-box" markdown="1">
 
 ### Run a Python Script in Databricks
+
 Provide the path to a script on your machine. It will be copied to the Databricks HDFS and executed as task.
 ```python
 nlp.run_in_databricks('path/to/my/script.py',
@@ -259,6 +273,8 @@ nlp.run_in_databricks('path/to/my/script.py',
                       databricks_token=my_token,
                       run_name='Script test ')
 ```
+
+</div><div class="h3-box" markdown="1">
 
 ### Run a Python Module in Databricks
 
@@ -274,17 +290,16 @@ nlp.run_in_databricks(nlp_test,
                       run_name='nlp_test')
 ```
 
-
-
+</div><div class="h3-box" markdown="1">
 
 ## Parameterizing your Databricks Jobs
 
 You can parameterize `run_in_databricks` with parameters formatted according to the [job task API](https://docs.databricks.com/en/workflows/jobs/create-run-jobs.html#pass-parameters-to-a-databricks-job-task)
 
-
-
+</div><div class="h3-box" markdown="1">
 
 ### Parameterizing a Notebook run in Databricks
+
 In your notebook you can use `dbutils.widgets.text("my_parameter", "my_default_value")` and other [ipywidets](https://ipywidgets.readthedocs.io/en/7.7.0/examples/Widget%20List.html) to parameterize your notebook.
 You just pass a dictionary to `run_in_databricks` where `key=parameter_name` and `value=parameter_value`. 
 See this [example parameterized DB-Notebook](https://github.com/JohnSnowLabs/johnsnowlabs/tree/main/notebooks/parameterized_nb_example.ipynb) for a full example which you can use as `nb_path` parameter.
@@ -302,13 +317,12 @@ nlp.run_in_databricks(
     parameters={"input_text": "I love peanut butter", "model_name": "sentiment"},
 )
 
-
-
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 ### Parameterizing a Python Script run in Databricks
+
 Simply pass a list of parameters to the `run_in_databricks` function. They will be passed to the script as `sys.argv` arguments.
 ```python
 
@@ -331,6 +345,4 @@ nlp.run_in_databricks(
 
 ```
 
-
-
-</div>
+</div></div>

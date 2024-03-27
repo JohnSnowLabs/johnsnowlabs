@@ -11,7 +11,7 @@ sidebar:
   nav: jsl
 ---
 
-<div class="main-docs" markdown="1">
+<div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
 
 ## AWS EMR Cluster Creation
 
@@ -28,6 +28,8 @@ nlp.install_to_emr()
 
 `nlp.install_to_emr` has the following parameters:
 
+</div><div class="h3-box" markdown="1">
+
 ### AWS specific parameters
 
 | Parameter              | Description                                                                                                                                                                                                                                                                                                                                                                |
@@ -40,6 +42,7 @@ nlp.install_to_emr()
 | `subnet_id`            | The subnet to launch the EMR cluster in. Refer [this](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-vpc-subnet.html) for more information                                                                                                                                                                                                                |
 | `ec2_key_name`         | The key pair name to ssh into your EMR cluster                                                                                                                                                                                                                                                                                                                             |
 | `auto_terminate_hours` | The idle hours to wait before the cluster teminated. Default: 1 hour                                                                                                                                                                                                                                                                                                       |
+</div><div class="h3-box" markdown="1">
 
 ### License Retrieval Parameters
 
@@ -55,4 +58,4 @@ nlp.install_to_emr()
 
 Refer [this](https://nlp.johnsnowlabs.com/docs/en/jsl/install_advanced) for more information
 
-</div>
+</div></div>

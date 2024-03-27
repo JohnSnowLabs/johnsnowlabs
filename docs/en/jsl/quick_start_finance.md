@@ -12,7 +12,8 @@ sidebar:
 ---
 
 <div class="main-docs" markdown="1"><div class="h3-box" markdown="1">
-Installing 
+
+**Installing** 
 
 ## Annotator & PretrainedPipeline based pipelines
 You can create [Finance Annotator & PretrainedPipeline based pipelines](https://nlp.johnsnowlabs.com/docs/en/jsl/concepts) using all the classes
@@ -115,7 +116,7 @@ email : Tyrus@google.com
 phone : 78 834 854
 ```
 
-
+</div><div class="h3-box" markdown="1">
 
 ### Custom Pipes
 Alternatively you can compose [Legal Annotators](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators) & [Open Source Annotators](https://sparknlp.org/docs/en/annotators) into a pipeline which offers the highest degree of customization.
