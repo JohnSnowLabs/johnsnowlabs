@@ -1,10 +1,10 @@
 ---
 layout: model
-title: Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes
+title: Mapping ICD10 Codes with Their Corresponding MedDRA PT (Preferred Term) Codes
 author: John Snow Labs
-name: icd10_meddra_llt_mapper
-date: 2024-03-14
-tags: [licensed, en, icd_10, meddra, mapping]
+name: icd10_meddra_pt_mapper
+date: 2024-03-15
+tags: [licensed, en, icd_10, meddra, mapping, mapper, clinical]
 task: Chunk Mapping
 language: en
 edition: Healthcare NLP 5.3.0
@@ -18,11 +18,11 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.
+This pretrained model maps ICD-10 codes to corresponding MedDRA PT (Preferred Term) codes.
 
 ## Predicted Entities
 
-
+`icd10 code`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -53,7 +53,7 @@ resolver2chunk = Resolution2Chunk()\
     .setInputCols(["icd10_code"])\
     .setOutputCol("icd102chunk")
 
-chunkerMapper = ChunkMapperModel.load("icd10_meddra_llt_mapper")\
+chunkerMapper = ChunkMapperModel.load("icd10_meddra_pt_mapper")\
     .setInputCols(["icd102chunk"])\
     .setOutputCol("mappings")
 
@@ -79,7 +79,7 @@ val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
     .setOutputCol("sbert_embeddings")
     .setCaseSensitive(False)
 
-val icd10_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented", "en", "clinical/models")\
+val icd10_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_icd10cm_augmented", "en", "clinical/models")
     .setInputCols(Array("sbert_embeddings"))
     .setOutputCol("icd10_code")
     .setDistanceFunction("EUCLIDEAN")
@@ -88,7 +88,7 @@ val resolver2chunk = Resolution2Chunk()
     .setInputCols(Array("icd10_code"))
     .setOutputCol("icd102chunk")
 
-val chunkerMapper = ChunkMapperModel.load("icd10_meddra_llt_mapper")\
+val chunkerMapper = ChunkMapperModel.load("icd10_meddra_pt_mapper")
     .setInputCols(Array("icd102chunk"))
     .setOutputCol("mappings")
 
@@ -109,13 +109,13 @@ val result = mapper_model.transform(data)
 ## Results
 
 ```bash
-+--------------------------------+----------+--------------------------------------------------------+
-|chunk                           |icd10_code|meddra_code                                             |
-+--------------------------------+----------+--------------------------------------------------------+
-|Type 2 diabetes mellitus        |E11       |10067585:Type 2 diabetes mellitus                       |
-|Typhoid fever                   |A01.0     |10045275:Typhoid fever                                  |
-|Malignant neoplasm of oesophagus|C15.9     |10026182:Malignant neoplasm of oesophagus, unspecified  |
-+--------------------------------+----------+--------------------------------------------------------+
++--------------------------------+----------+-----------------------------------+
+|chunk                           |icd10_code|meddra_code                        |
++--------------------------------+----------+-----------------------------------+
+|Type 2 diabetes mellitus        |E11       |10067585.0:Type 2 diabetes mellitus|
+|Typhoid fever                   |A01.0     |10045275.0:Typhoid fever           |
+|Malignant neoplasm of oesophagus|C15.9     |10030155.0:Oesophageal carcinoma   |
++--------------------------------+----------+-----------------------------------+
 ```
 
 {:.model-param}
@@ -123,19 +123,17 @@ val result = mapper_model.transform(data)
 
 {:.table-model}
 |---|---|
-|Model Name:|icd10_meddra_llt_mapper|
+|Model Name:|icd10_meddra_pt_mapper|
 |Compatibility:|Healthcare NLP 5.3.0+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[ner_chunk]|
 |Output Labels:|[mappings]|
 |Language:|en|
-|Size:|231.8 KB|
-
+|Size:|210.0 KB|
 
 ## References
 
-This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset. 
+This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.
 
-**To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
-
+To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.
