@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes | icd10_meddra_llt_mapper | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Pipeline to Resolve Medication Codes | medication_resolver_pipeline | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.Predicted EntitiesLive DemoOpen in ColabHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("ner_chunk")sbert_embedder = BertSentenceEmbeddings.pretra...">
-<!-- <link rel="canonical" href="/2024/03/14/icd10_meddra_llt_mapper_en.html"> -->
-<link rel="canonical" href="/2024/03/14/icd10_meddra_llt_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionA pretrained resolver pipeline to extract medications and resolve their adverse reactions (ADE), RxNorm, UMLS, NDC, SNOMED CT codes, and action/treatments in clinical text.Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication.This pipeline can be...">
+<!-- <link rel="canonical" href="/2024/03/20/medication_resolver_pipeline_en.html"> -->
+<link rel="canonical" href="/2024/03/20/medication_resolver_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,108 +497,65 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-03-14-icd10_meddra_llt_mapper_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gokhanturer/2024-03-20-medication_resolver_pipeline_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 14, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-14T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>icd_10</li><li>meddra</li><li>mapping</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-14T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,icd_10,meddra,mapping"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 20, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-20T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Pipeline to Resolve Medication Codes</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline to Resolve Medication Codes"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>resolver</li><li>rxnorm</li><li>medication</li><li>snomed</li><li>ndc</li><li>ade</li><li>umls</li><li>pipeline</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-20T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,resolver,rxnorm,medication,snomed,ndc,ade,umls,pipeline"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.</p>
+<p>A pretrained resolver pipeline to extract medications and resolve their adverse reactions (ADE), RxNorm, UMLS, NDC, SNOMED CT codes, and action/treatments in clinical text.</p>
 
-<h2 id="predicted-entities">Predicted Entities</h2>
+<p>Action/treatments are available for branded medication, and SNOMED codes are available for non-branded medication.</p>
+
+<p>This pipeline can be used as LightPipeline (with <code class="language-plaintext highlighter-rouge">annotate/fullAnnotate</code>). You can use <code class="language-plaintext highlighter-rouge">medication_resolver_transform_pipeline</code> for Spark transform.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button></p>
+<button class="button button-orange" disabled="">Open in Colab</button>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/medication_resolver_pipeline_en_5.3.0_3.0_1710951173282.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/medication_resolver_pipeline_en_5.3.0_3.0_1710951173282.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"medication_resolver_pipeline"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">icd10_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_icd10cm_augmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd10_code"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ner_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">"""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
+The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.
+"""</span><span class="p">)</span>
 
-<span class="n">resolver2chunk</span> <span class="o">=</span> <span class="n">Resolution2Chunk</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd10_code"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd102chunk"</span><span class="p">)</span>
-
-<span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"icd10_meddra_llt_mapper"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd102chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
-
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">documentAssembler</span><span class="p">,</span>
-    <span class="n">sbert_embedder</span><span class="p">,</span>
-    <span class="n">icd10_resolver</span><span class="p">,</span>
-    <span class="n">resolver2chunk</span><span class="p">,</span>
-    <span class="n">chunkerMapper</span><span class="p">])</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Type 2 diabetes mellitus"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Typhoid fever"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Malignant neoplasm of oesophagus"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
-<span class="n">mapper_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nv">BertSentenceEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">ner_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"medication_resolver_pipeline"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">icd10_resolver</span> <span class="k">=</span> <span class="nv">SentenceEntityResolverModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobertresolve_icd10cm_augmented"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"icd10_code"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">ner_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">"""The patient was prescribed Amlodopine Vallarta 10-320mg, Eviplera.
+The other patient is given Lescol 40 MG and Everolimus 1.5 mg tablet.
+"""</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">resolver2chunk</span> <span class="k">=</span> <span class="nc">Resolution2Chunk</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd10_code"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"icd102chunk"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">chunkerMapper</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"icd10_meddra_llt_mapper"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd102chunk"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="n">documentAssembler</span><span class="o">,</span>
-    <span class="n">sbert_embedder</span><span class="o">,</span>
-    <span class="n">icd10_resolver</span><span class="o">,</span>
-    <span class="n">resolver2chunk</span><span class="o">,</span>
-    <span class="n">chunkerMapper</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Type 2 diabetes mellitus"</span><span class="o">),</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Typhoid fever"</span><span class="o">),</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Malignant neoplasm of oesophagus"</span><span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">mapper_model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mapper_model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------------------+----------+--------------------------------------------------------+
-|chunk                           |icd10_code|meddra_code                                             |
-+--------------------------------+----------+--------------------------------------------------------+
-|Type 2 diabetes mellitus        |E11       |10067585:Type 2 diabetes mellitus                       |
-|Typhoid fever                   |A01.0     |10045275:Typhoid fever                                  |
-|Malignant neoplasm of oesophagus|C15.9     |10026182:Malignant neoplasm of oesophagus, unspecified  |
-+--------------------------------+----------+--------------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
+|chunk                       |ner_label|ADE                        |RxNorm |Action                    |Treatment                                 |UMLS    |SNOMED_CT|NDC_Product|NDC_Package  |
++----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
+|Amlodopine Vallarta 10-320mg|DRUG     |Gynaecomastia              |722131 |NONE                      |NONE                                      |C1949334|425838008|00093-7693 |00093-7693-56|
+|Eviplera                    |DRUG     |Anxiety                    |217010 |Inhibitory Bone Resorption|Osteoporosis                              |C0720318|NONE     |NONE       |NONE         |
+|Lescol 40 MG                |DRUG     |NONE                       |103919 |Hypocholesterolemic       |Heterozygous Familial Hypercholesterolemia|C0353573|NONE     |00078-0234 |00078-0234-05|
+|Everolimus 1.5 mg tablet    |DRUG     |Acute myocardial infarction|2056895|NONE                      |NONE                                      |C4723581|NONE     |00054-0604 |00054-0604-21|
++----------------------------+---------+---------------------------+-------+--------------------------+------------------------------------------+--------+---------+-----------+-------------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -607,7 +564,11 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>icd10_meddra_llt_mapper</td>
+      <td>medication_resolver_pipeline</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>pipeline</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -622,31 +583,43 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>Official</td>
     </tr>
     <tr>
-      <td>Input Labels:</td>
-      <td>[ner_chunk]</td>
-    </tr>
-    <tr>
-      <td>Output Labels:</td>
-      <td>[mappings]</td>
-    </tr>
-    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>231.8 KB</td>
+      <td>3.4 GB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="references">References</h2>
+<h2 id="included-models">Included Models</h2>
 
-<p>This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.</p>
-
-<p><strong>To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</strong></p>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-14T00:00:00+00:00"><!-- start custom article footer snippet -->
+<ul>
+  <li>DocumentAssembler</li>
+  <li>SentenceDetectorDLModel</li>
+  <li>TokenizerModel</li>
+  <li>WordEmbeddingsModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>TextMatcherInternalModel</li>
+  <li>ChunkMergeModel</li>
+  <li>ChunkMapperModel</li>
+  <li>ChunkMapperModel</li>
+  <li>ChunkMapperFilterer</li>
+  <li>Chunk2Doc</li>
+  <li>BertSentenceEmbeddings</li>
+  <li>SentenceEntityResolverModel</li>
+  <li>ResolverMerger</li>
+  <li>ChunkMapperModel</li>
+  <li>ChunkMapperModel</li>
+  <li>ChunkMapperModel</li>
+  <li>ChunkMapperModel</li>
+  <li>ChunkMapperModel</li>
+  <li>ChunkMapperModel</li>
+  <li>Finisher</li>
+</ul>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-20T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -831,7 +804,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/14/clinical_deidentification_subentity_optimized_en.html">Clinical Deidentification Pipeline Optimized Version (English - Subentity)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/14/meddra_llt_icd10_mapper_en.html">Mapping MedDRA-LLT (Lowest Level Term) Codes with Their Corresponding ICD-10 Codes</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/20/explain_clinical_doc_ade_en.html">Explain Clinical Document - ADE (Adverse Drug Event)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/20/medication_resolver_transform_pipeline_en.html">Pipeline to Resolve Medication Codes(Transform)</a></div></div></div>
 
 </div>
 </div>

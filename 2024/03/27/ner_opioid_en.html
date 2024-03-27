@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes | icd10_meddra_llt_mapper | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Detect Opioid Specific Entities | ner_opioid | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.Predicted EntitiesLive DemoOpen in ColabHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("ner_chunk")sbert_embedder = BertSentenceEmbeddings.pretra...">
-<!-- <link rel="canonical" href="/2024/03/14/icd10_meddra_llt_mapper_en.html"> -->
-<link rel="canonical" href="/2024/03/14/icd10_meddra_llt_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model is designed to detect and label opioid related entities within text data. Opioids are a class of drugs that include the illegal drug heroin, synthetic opioids such as fentanyl, and pain relievers available legally by prescription. The model has been trained using advanced deep learning techniqu...">
+<!-- <link rel="canonical" href="/2024/03/27/ner_opioid_en.html"> -->
+<link rel="canonical" href="/2024/03/27/ner_opioid_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,108 +497,192 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-03-14-icd10_meddra_llt_mapper_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/Meryem1425/2024-03-27-ner_opioid_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 14, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-14T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>icd_10</li><li>meddra</li><li>mapping</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-14T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,icd_10,meddra,mapping"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 27, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-27T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Detect Opioid Specific Entities</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Detect Opioid Specific Entities"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>clinical</li><li>ner</li><li>opioid</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-27T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,clinical,ner,opioid"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.</p>
+<p>This model is designed to detect and label opioid related entities within text data. Opioids are a class of drugs that include the illegal drug heroin, synthetic opioids such as fentanyl, and pain relievers available legally by prescription. The model has been trained using advanced deep learning techniques on a diverse range of text sources and can accurately recognize and classify a wide range of opioid-related entities. The model’s accuracy and precision have been carefully validated against expert-labeled data to ensure reliable and consistent results.</p>
+
+<p>Here are the labels of the OPIOID model with their descriptions:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">communicable_disease</code>: Communicable disease is a disease that people spread to one another through contact with contaminated surfaces, bodily fluids, blood products, insect bites, or through the air.</li>
+  <li><code class="language-plaintext highlighter-rouge">general_symptoms</code>: Include all the symptoms,vital findings and signs mentioned in the document, of the patient or someone else.</li>
+  <li><code class="language-plaintext highlighter-rouge">substance_use_disorder</code> : Mentions of substance use that include unspecific illicit drug abuse.</li>
+  <li><code class="language-plaintext highlighter-rouge">drug_duration</code>: The duration for which the drug was taken or prescribed.</li>
+  <li><code class="language-plaintext highlighter-rouge">psychiatric_issue</code>: Psychiatric disorders may also be referred to as mental health conditions is a behavioral or mental pattern that causes significant distress or impairment of personal functioning. A mental disorder is also characterized by a clinically significant disturbance in an individual’s cognition, emotional regulation, or behavior. It is usually associated with distress or impairment in important areas of functioning.</li>
+  <li><code class="language-plaintext highlighter-rouge">drug_strength</code>: The potency of one unit of drug (or a combination of drugs, generally speaking); the measurement units available are described by FDA.</li>
+  <li><code class="language-plaintext highlighter-rouge">drug_quantity</code>: The quantity associated with drug dosage.</li>
+  <li><code class="language-plaintext highlighter-rouge">other_drug</code>: Any generic or trade name of the drugs in the text other than the opioids.</li>
+  <li><code class="language-plaintext highlighter-rouge">drug_form</code>: The dosage forms available are described by FDA.</li>
+  <li><code class="language-plaintext highlighter-rouge">drug_frequency</code>: The frequency at which the drug doses are given or being used.</li>
+  <li><code class="language-plaintext highlighter-rouge">opioid_drug</code>: Any drug mentioned in the text that belongs to the opioid family either legally by prescription as pain relievers like fentanyl, oxycodone, hydrocodone, codeine, morphine, Oxymorphone, Hydromorphone, Methadone, Tramadol, Buprenorphine or illegal street drug like “heroin”.</li>
+  <li><code class="language-plaintext highlighter-rouge">drug_route</code>: The administration routes available are described by FDA.</li>
+  <li><code class="language-plaintext highlighter-rouge">employment</code>: Patient occupational titles. Includes ”unemployed” and “retired”.</li>
+  <li><code class="language-plaintext highlighter-rouge">violence</code>: Refers to any violent behavior towards self or others.</li>
+  <li><code class="language-plaintext highlighter-rouge">legal_issue</code>: Any problem, mention, act, or matter that related to crime and/or requires resolution within the legal framework.</li>
+  <li><code class="language-plaintext highlighter-rouge">other_disease</code>: Include all the diseases mentioned in the document, of the patient or someone else.</li>
+  <li><code class="language-plaintext highlighter-rouge">alcohol_use</code>:  Mentions of alcohol drinking habit.</li>
+  <li><code class="language-plaintext highlighter-rouge">test</code>: This label is assigned to entities representing tests conducted to detect the presence of drugs or substances in urine, blood, or saliva of the patient.</li>
+  <li><code class="language-plaintext highlighter-rouge">marital_status</code>: Marital status examples like: Married, single, widowed, divorced, separated and registered partnership.</li>
+  <li><code class="language-plaintext highlighter-rouge">test_result</code>: This label is assigned to entities representing the outcome of a drug screening test, indicating whether specific drugs or substances were detected (positive) or not detected (negative) in an individual’s system.</li>
+  <li><code class="language-plaintext highlighter-rouge">antidote</code>: Antidote is a medicine that rapidly reverses an opioid overdose like Naloxone, Kloxxado, Narcan, Evzio, Zimhi and it is not a treatment for opioid use disorder.</li>
+  <li><code class="language-plaintext highlighter-rouge">sexual_orientation</code>:  Sexual orientations include gay, lesbian, straight, bisexual, and asexual.</li>
+</ul>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
-<p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button></p>
+<p><code class="language-plaintext highlighter-rouge">communicable_disease</code>, <code class="language-plaintext highlighter-rouge">general_symptoms</code>, <code class="language-plaintext highlighter-rouge">substance_use_disorder</code>, <code class="language-plaintext highlighter-rouge">drug_duration</code>, <code class="language-plaintext highlighter-rouge">psychiatric_issue</code>, <code class="language-plaintext highlighter-rouge">drug_strength</code>, <code class="language-plaintext highlighter-rouge">drug_quantity</code>, <code class="language-plaintext highlighter-rouge">other_drug</code>, <code class="language-plaintext highlighter-rouge">drug_form</code>, <code class="language-plaintext highlighter-rouge">drug_frequency</code>, <code class="language-plaintext highlighter-rouge">opioid_drug</code>, <code class="language-plaintext highlighter-rouge">drug_route</code>, <code class="language-plaintext highlighter-rouge">employment</code>, <code class="language-plaintext highlighter-rouge">violence</code>, <code class="language-plaintext highlighter-rouge">legal_issue</code>, <code class="language-plaintext highlighter-rouge">other_disease</code>, <code class="language-plaintext highlighter-rouge">alcohol_use</code>, <code class="language-plaintext highlighter-rouge">test</code>, <code class="language-plaintext highlighter-rouge">marital_status</code>, <code class="language-plaintext highlighter-rouge">test_result</code>, <code class="language-plaintext highlighter-rouge">antidote</code>, <code class="language-plaintext highlighter-rouge">sexual_orientation</code></p>
+
+<p class="btn-box"><a href="https://demo.johnsnowlabs.com/healthcare/OPIOID/" class="button button-orange">Live Demo</a>
+<a href="https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/OPIOID.ipynb" class="button button-orange button-orange-trans co button-icon">Open in Colab</a>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_opioid_en_5.3.0_3.0_1711516211243.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/ner_opioid_en_5.3.0_3.0_1711516211243.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+<span class="n">clinical_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
+
+<span class="n">ner_model</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_opioid"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span><span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+<span class="n">ner_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
 
-<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+    <span class="n">document_assembler</span><span class="p">,</span> 
+    <span class="n">sentence_detector</span><span class="p">,</span>
+    <span class="n">tokenizer</span><span class="p">,</span>
+    <span class="n">clinical_embeddings</span><span class="p">,</span>
+    <span class="n">ner_model</span><span class="p">,</span>
+    <span class="n">ner_converter</span>   
+    <span class="p">])</span>
 
-<span class="n">icd10_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_icd10cm_augmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd10_code"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
 
-<span class="n">resolver2chunk</span> <span class="o">=</span> <span class="n">Resolution2Chunk</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd10_code"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd102chunk"</span><span class="p">)</span>
+<span class="n">sample_texts</span> <span class="o">=</span> <span class="p">[</span><span class="s">"""History of Present Illness: A 20-year-old male was transferred from an outside hospital for evaluation for liver transplant following a Percocet overdose. On Sunday, March 27th, he experienced a stressful day and consumed approximately 20 Percocet (5/325) tablets throughout the day following a series of family arguments. He denies any intent to harm himself, although his parents confirm past suicidal attempts. On Monday, he felt he was experiencing a Percocet withdrawal "hangover" and took an additional 5 Percocet. He was admitted to the Surgical Intensive Care Unit (SICU) and received care from Liver, Transplant, Toxicology. Treatment included Naloxone every 4 hours, resulting in a gradual improvement in liver function tests (LFTs) and INR. During recovery, he developed hypertension and was initiated on clonidine.
+Past Medical History: The patient has a history of Bipolar Disorder (with previous suicide attempts), ADHD, and a prior head injury resulting from an assault. He also has a history of a motor vehicle accident (MVA) resulting in a large L3 transverse process fracture and a small right frontal epidural hemorrhage.
+Social History: The patient is single with no children, and works at a bar. He spent three years living in a group home during his teenage years. He consumes alcohol once a week but denies any illicit drug use. The patient's HIV and Hepatitis C status is negative. He is currently being evaluated neurologically
+Latest toxicology results: BLOOD ASA - negative, Ethanol - negative,  Acetaminophen - negative, Benzodiazepines - negative, Barbiturates - negative."""</span><span class="p">]</span>
 
-<span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"icd10_meddra_llt_mapper"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd102chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">documentAssembler</span><span class="p">,</span>
-    <span class="n">sbert_embedder</span><span class="p">,</span>
-    <span class="n">icd10_resolver</span><span class="p">,</span>
-    <span class="n">resolver2chunk</span><span class="p">,</span>
-    <span class="n">chunkerMapper</span><span class="p">])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">sample_texts</span><span class="p">,</span> <span class="n">StringType</span><span class="p">()).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Type 2 diabetes mellitus"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Typhoid fever"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Malignant neoplasm of oesophagus"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
-<span class="n">mapper_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">document_assembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
     <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">clinical_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_model</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_opioid"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nv">BertSentenceEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">icd10_resolver</span> <span class="k">=</span> <span class="nv">SentenceEntityResolverModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobertresolve_icd10cm_augmented"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"icd10_code"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">resolver2chunk</span> <span class="k">=</span> <span class="nc">Resolution2Chunk</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd10_code"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"icd102chunk"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">chunkerMapper</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"icd10_meddra_llt_mapper"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd102chunk"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
-
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="n">documentAssembler</span><span class="o">,</span>
-    <span class="n">sbert_embedder</span><span class="o">,</span>
-    <span class="n">icd10_resolver</span><span class="o">,</span>
-    <span class="n">resolver2chunk</span><span class="o">,</span>
-    <span class="n">chunkerMapper</span><span class="o">))</span>
+    <span class="n">document_assembler</span><span class="o">,</span> 
+    <span class="n">sentenceDetector</span><span class="o">,</span>
+    <span class="n">tokenizer</span><span class="o">,</span>
+    <span class="n">clinical_embeddings</span><span class="o">,</span>
+    <span class="n">ner_model</span><span class="o">,</span>
+    <span class="n">ner_converter</span>   
+<span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Type 2 diabetes mellitus"</span><span class="o">),</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Typhoid fever"</span><span class="o">),</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Malignant neoplasm of oesophagus"</span><span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">sample_texts</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"""History of Present Illness: A 20-year-old male was transferred from an outside hospital for evaluation for liver transplant following a Percocet overdose. On Sunday, March 27th, he experienced a stressful day and consumed approximately 20 Percocet (5/325) tablets throughout the day following a series of family arguments. He denies any intent to harm himself, although his parents confirm past suicidal attempts. On Monday, he felt he was experiencing a Percocet withdrawal "hangover" and took an additional 5 Percocet. He was admitted to the Surgical Intensive Care Unit (SICU) and received care from Liver, Transplant, Toxicology. Treatment included Naloxone every 4 hours, resulting in a gradual improvement in liver function tests (LFTs) and INR. During recovery, he developed hypertension and was initiated on clonidine.
+Past Medical History: The patient has a history of Bipolar Disorder (with previous suicide attempts), ADHD, and a prior head injury resulting from an assault. He also has a history of a motor vehicle accident (MVA) resulting in a large L3 transverse process fracture and a small right frontal epidural hemorrhage.
+Social History: The patient is single with no children, and works at a bar. He spent three years living in a group home during his teenage years. He consumes alcohol once a week but denies any illicit drug use. The patient's HIV and Hepatitis C status is negative. He is currently being evaluated neurologically
+Latest toxicology results: BLOOD ASA - negative, Ethanol - negative,  Acetaminophen - negative, Benzodiazepines - negative, Barbiturates - negative."""</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">mapper_model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mapper_model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">sample_texts</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">sample_texts</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------------------+----------+--------------------------------------------------------+
-|chunk                           |icd10_code|meddra_code                                             |
-+--------------------------------+----------+--------------------------------------------------------+
-|Type 2 diabetes mellitus        |E11       |10067585:Type 2 diabetes mellitus                       |
-|Typhoid fever                   |A01.0     |10045275:Typhoid fever                                  |
-|Malignant neoplasm of oesophagus|C15.9     |10026182:Malignant neoplasm of oesophagus, unspecified  |
-+--------------------------------+----------+--------------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+---------------------------+-----+----+----------------------+
+|chunk                      |begin|end |ner_label             |
++---------------------------+-----+----+----------------------+
+|Percocet                   |136  |143 |opioid_drug           |
+|overdose                   |145  |152 |other_disease         |
+|20                         |236  |237 |drug_quantity         |
+|Percocet                   |239  |246 |opioid_drug           |
+|tablets                    |256  |262 |drug_form             |
+|harm himself               |347  |358 |violence              |
+|suicidal attempts          |395  |411 |psychiatric_issue     |
+|Percocet                   |455  |462 |opioid_drug           |
+|withdrawal                 |464  |473 |general_symptoms      |
+|hangover                   |476  |483 |general_symptoms      |
+|5                          |509  |509 |drug_quantity         |
+|Percocet                   |511  |518 |opioid_drug           |
+|Naloxone                   |653  |660 |antidote              |
+|every 4 hours              |662  |674 |drug_frequency        |
+|hypertension               |782  |793 |other_disease         |
+|clonidine                  |816  |824 |other_drug            |
+|Bipolar Disorder           |878  |893 |psychiatric_issue     |
+|suicide attempts           |910  |925 |psychiatric_issue     |
+|ADHD                       |929  |932 |psychiatric_issue     |
+|head injury                |947  |957 |other_disease         |
+|assault                    |977  |983 |violence              |
+|transverse process fracture|1066 |1092|other_disease         |
+|epidural hemorrhage        |1120 |1138|general_symptoms      |
+|single                     |1172 |1177|marital_status        |
+|works at a bar             |1201 |1214|employment            |
+|alcohol                    |1299 |1305|alcohol_use           |
+|illicit drug use           |1334 |1349|substance_use_disorder|
+|HIV                        |1366 |1368|communicable_disease  |
+|Hepatitis C                |1374 |1384|communicable_disease  |
+|toxicology                 |1460 |1469|test                  |
+|BLOOD ASA                  |1480 |1488|test                  |
+|negative                   |1492 |1499|test_result           |
+|Ethanol                    |1502 |1508|test                  |
+|negative                   |1512 |1519|test_result           |
+|Acetaminophen              |1523 |1535|test                  |
+|negative                   |1539 |1546|test_result           |
+|Benzodiazepines            |1549 |1563|test                  |
+|negative                   |1567 |1574|test_result           |
+|Barbiturates               |1577 |1588|test                  |
+|negative                   |1592 |1599|test_result           |
++---------------------------+-----+----+----------------------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -607,7 +691,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>icd10_meddra_llt_mapper</td>
+      <td>ner_opioid</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -623,11 +707,11 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
     <tr>
       <td>Input Labels:</td>
-      <td>[ner_chunk]</td>
+      <td>[sentence, token, embeddings]</td>
     </tr>
     <tr>
       <td>Output Labels:</td>
-      <td>[mappings]</td>
+      <td>[ner]</td>
     </tr>
     <tr>
       <td>Language:</td>
@@ -635,18 +719,41 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
     <tr>
       <td>Size:</td>
-      <td>231.8 KB</td>
+      <td>4.9 MB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="references">References</h2>
+<h2 id="benchmarking">Benchmarking</h2>
 
-<p>This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.</p>
-
-<p><strong>To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</strong></p>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-14T00:00:00+00:00"><!-- start custom article footer snippet -->
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                 label  precision    recall  f1-score   support
+           alcohol_use       0.92      0.95      0.94       353
+              antidote       1.00      0.99      0.99       141
+  communicable_disease       0.76      0.88      0.82       224
+         drug_duration       0.81      0.71      0.75       238
+             drug_form       0.97      0.95      0.96       614
+        drug_frequency       0.94      0.97      0.96      1527
+         drug_quantity       0.96      0.94      0.95      2169
+            drug_route       0.95      0.98      0.97       903
+         drug_strength       0.84      0.95      0.89       388
+            employment       0.79      0.63      0.70       306
+      general_symptoms       0.90      0.84      0.87      4483
+           legal_issue       0.73      0.52      0.61        84
+        marital_status       0.95      0.95      0.95        57
+           opioid_drug       0.98      0.96      0.97       725
+         other_disease       0.91      0.90      0.90      4145
+            other_drug       0.94      0.93      0.94      2617
+     psychiatric_issue       0.88      0.85      0.86      1356
+    sexual_orientation       1.00      0.78      0.88        23
+substance_use_disorder       0.91      0.88      0.90       276
+                  <span class="nb">test       </span>0.97      0.93      0.95       102
+           test_result       1.00      0.93      0.97        30
+              violence       0.81      0.71      0.76       542
+             micro-avg       0.92      0.89      0.90     21303
+             macro-avg       0.91      0.87      0.89     21303
+          weighted-avg       0.91      0.89      0.90     21303
+</code></pre></div></div>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-27T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -831,7 +938,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/14/clinical_deidentification_subentity_optimized_en.html">Clinical Deidentification Pipeline Optimized Version (English - Subentity)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/14/meddra_llt_icd10_mapper_en.html">Mapping MedDRA-LLT (Lowest Level Term) Codes with Their Corresponding ICD-10 Codes</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/26/clinical_deidentification_en.html">Clinical Deidentification Pipeline (English)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/27/clinical_deidentification_en.html">Clinical Deidentification Pipeline (English)</a></div></div></div>
 
 </div>
 </div>

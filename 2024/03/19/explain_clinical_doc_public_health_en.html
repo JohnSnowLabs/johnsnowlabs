@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes | icd10_meddra_llt_mapper | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Explain Clinical Document - Public Health | explain_clinical_doc_public_health | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.Predicted EntitiesLive DemoOpen in ColabHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("ner_chunk")sbert_embedder = BertSentenceEmbeddings.pretra...">
-<!-- <link rel="canonical" href="/2024/03/14/icd10_meddra_llt_mapper_en.html"> -->
-<link rel="canonical" href="/2024/03/14/icd10_meddra_llt_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis specialized public health pipeline can;      extract public health related entities,        assign assertion status to the extracted entities,        establish relations between the extracted entities from the clinical documents.  In this pipeline, five NER, one assertion and one relation extraction ...">
+<!-- <link rel="canonical" href="/2024/03/19/explain_clinical_doc_public_health_en.html"> -->
+<link rel="canonical" href="/2024/03/19/explain_clinical_doc_public_health_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,108 +497,144 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-03-14-icd10_meddra_llt_mapper_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/gokhanturer/2024-03-19-explain_clinical_doc_public_health_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 14, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-14T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>icd_10</li><li>meddra</li><li>mapping</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-14T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,icd_10,meddra,mapping"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 19, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-19T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Explain Clinical Document - Public Health</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Explain Clinical Document - Public Health"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>public_health</li><li>pipeline</li><li>ner</li><li>assertion</li><li>relation_extraction</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-19T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,en,public_health,pipeline,ner,assertion,relation_extraction"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.</p>
+<p>This specialized public health pipeline can;</p>
 
-<h2 id="predicted-entities">Predicted Entities</h2>
+<ul>
+  <li>
+    <p>extract public health related entities,</p>
+  </li>
+  <li>
+    <p>assign assertion status to the extracted entities,</p>
+  </li>
+  <li>
+    <p>establish relations between the extracted entities from the clinical documents.</p>
+  </li>
+</ul>
+
+<p>In this pipeline, five NER, one assertion and one relation extraction model were used to achieve those tasks.</p>
+
+<ul>
+  <li>
+    <p><strong>Entity Labels:</strong> <code class="language-plaintext highlighter-rouge">Access_To_Care</code>, <code class="language-plaintext highlighter-rouge">Community_Safety</code>, <code class="language-plaintext highlighter-rouge">Overweight</code>, <code class="language-plaintext highlighter-rouge">Pregnancy</code>, <code class="language-plaintext highlighter-rouge">Environmental_Condition</code>, <code class="language-plaintext highlighter-rouge">Employment</code>, <code class="language-plaintext highlighter-rouge">Financial_Status</code>, <code class="language-plaintext highlighter-rouge">Food_Insecurity</code>, <code class="language-plaintext highlighter-rouge">Geographic_Entity</code>, <code class="language-plaintext highlighter-rouge">Healthcare_Institution</code>, <code class="language-plaintext highlighter-rouge">Obesity</code> ,<code class="language-plaintext highlighter-rouge">Race_Ethnicity</code>, <code class="language-plaintext highlighter-rouge">Population_Group</code>,  <code class="language-plaintext highlighter-rouge">Insurance_Status</code>, <code class="language-plaintext highlighter-rouge">Legal_Issues</code>, <code class="language-plaintext highlighter-rouge">Mental_Health</code>, <code class="language-plaintext highlighter-rouge">Smoking</code>, <code class="language-plaintext highlighter-rouge">Quality_Of_Life</code>, <code class="language-plaintext highlighter-rouge">Social_Exclusion</code>, <code class="language-plaintext highlighter-rouge">Social_Support</code>, <code class="language-plaintext highlighter-rouge">Spiritual_Beliefs</code>, <code class="language-plaintext highlighter-rouge">Substance</code>, <code class="language-plaintext highlighter-rouge">Violence_Or_Abuse</code>, <code class="language-plaintext highlighter-rouge">Education</code>, <code class="language-plaintext highlighter-rouge">Housing</code>, <code class="language-plaintext highlighter-rouge">Alcohol</code>, <code class="language-plaintext highlighter-rouge">Disease_Syndrome_Disorder</code>, <code class="language-plaintext highlighter-rouge">Diet</code>,<code class="language-plaintext highlighter-rouge">Relationship_Status</code>, <code class="language-plaintext highlighter-rouge">Drug</code>, <code class="language-plaintext highlighter-rouge">Alcohol</code>, <code class="language-plaintext highlighter-rouge">Psychological_Condition</code>, <code class="language-plaintext highlighter-rouge">Employment</code>, <code class="language-plaintext highlighter-rouge">Disease_Syndrome_Disorder</code>, <code class="language-plaintext highlighter-rouge">Substance</code>, <code class="language-plaintext highlighter-rouge">Substance_Quantity</code>, <code class="language-plaintext highlighter-rouge">Sexually_Active_or_Sexual_Orientation</code>, <code class="language-plaintext highlighter-rouge">Injury_or_Poisoning</code>, <code class="language-plaintext highlighter-rouge">Obesity</code>, <code class="language-plaintext highlighter-rouge">BMI</code>, <code class="language-plaintext highlighter-rouge">Blood_pressure</code>, <code class="language-plaintext highlighter-rouge">HDL</code>, <code class="language-plaintext highlighter-rouge">Smoking</code></p>
+  </li>
+  <li>
+    <p><strong>Assertion Status Labels:</strong>  <code class="language-plaintext highlighter-rouge">Hypothetical_Or_Absent</code>, <code class="language-plaintext highlighter-rouge">Present_Or_Past</code>, <code class="language-plaintext highlighter-rouge">SomeoneElse</code></p>
+  </li>
+  <li>
+    <p><strong>Relation Extraction Labels:</strong> Given Relation Pairs : <code class="language-plaintext highlighter-rouge">Disease_Syndrome_Disorder-Drug</code>, <code class="language-plaintext highlighter-rouge">Drug-Disease_Syndrome_Disorder</code>, <code class="language-plaintext highlighter-rouge">Drug-Mental_Healt</code>,<code class="language-plaintext highlighter-rouge">Mental_Health-Drug</code>, <code class="language-plaintext highlighter-rouge">Allergen-Drug</code>, <code class="language-plaintext highlighter-rouge">Drug-Allergen</code>,  <code class="language-plaintext highlighter-rouge">Psychological_Condition-Drug</code>, <code class="language-plaintext highlighter-rouge">Drug-Psychological_Condition</code>, <code class="language-plaintext highlighter-rouge">BMI-Obesity</code>, <code class="language-plaintext highlighter-rouge">Obesity-BMI</code> , <code class="language-plaintext highlighter-rouge">Alcohol-Substance_Quantity</code>, <code class="language-plaintext highlighter-rouge">Substance_Quantity-Alcohol</code>, <code class="language-plaintext highlighter-rouge">Smoking-Substance_Quantity</code>, <code class="language-plaintext highlighter-rouge">Substance_Quantity-Smoking</code>, <code class="language-plaintext highlighter-rouge">Substance-Substance_Quantity</code>, <code class="language-plaintext highlighter-rouge">Substance_Quantity-Substance</code></p>
+  </li>
+</ul>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button></p>
+<button class="button button-orange" disabled="">Open in Colab</button>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_public_health_en_5.3.0_3.0_1710854739556.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_public_health_en_5.3.0_3.0_1710854739556.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">resolver_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"explain_clinical_doc_public_health"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">icd10_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_icd10cm_augmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd10_code"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">resolver_pipeline</span><span class="p">.</span><span class="n">annotate</span><span class="p">(</span><span class="s">""" Social History: Patient is a 38 year old Chinese man, construction worker, often exposed to dust, fumes. He is a former smoker, having quit it 10 years ago after smoking a pack a day for 15 years. He occasionally consumes alcohol on weekends . He reports struggles with maintaining a healthy diet due to time constraints and limited access to fresh foods in his neighborhood. Obesity: BMI 32; struggles with weight management. 
+Public Health Related Factors: John's occupation as a construction worker exposes him to various occupational hazards, including dust, which may contribute to his respiratory symptoms. While John quit smoking a decade ago, his previous smoking habit puts him at an increased risk for respiratory.
+Socioeconomic Factors: John's socioeconomic status, characterized by his occupation as a construction worker and residing in an area with limited access to healthy foods, may impact his ability to maintain a healthy lifestyle and access healthcare services. By addressing John's medical concerns within the context of his occupational and social history, we can provide comprehensive care that not only treats his current symptoms but also promotes his long-term health and well-being. 
+Medications: Lisinopril (ACE inhibitor) for hypertension.
+"""</span><span class="p">)</span>
 
-<span class="n">resolver2chunk</span> <span class="o">=</span> <span class="n">Resolution2Chunk</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd10_code"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd102chunk"</span><span class="p">)</span>
-
-<span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"icd10_meddra_llt_mapper"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd102chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
-
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">documentAssembler</span><span class="p">,</span>
-    <span class="n">sbert_embedder</span><span class="p">,</span>
-    <span class="n">icd10_resolver</span><span class="p">,</span>
-    <span class="n">resolver2chunk</span><span class="p">,</span>
-    <span class="n">chunkerMapper</span><span class="p">])</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Type 2 diabetes mellitus"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Typhoid fever"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Malignant neoplasm of oesophagus"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
-<span class="n">mapper_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nv">BertSentenceEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">resolver_pipeline</span> <span class="k">=</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"explain_clinical_doc_public_health"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">icd10_resolver</span> <span class="k">=</span> <span class="nv">SentenceEntityResolverModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobertresolve_icd10cm_augmented"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"icd10_code"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">resolver_pipeline</span><span class="o">.</span><span class="py">annotate</span><span class="o">(</span><span class="s">""" Social History: Patient is a 38 year old Chinese man, construction worker, often exposed to dust, fumes. He is a former smoker, having quit it 10 years ago after smoking a pack a day for 15 years. He occasionally consumes alcohol on weekends . He reports struggles with maintaining a healthy diet due to time constraints and limited access to fresh foods in his neighborhood. Obesity: BMI 32; struggles with weight management. 
+Public Health Related Factors: John's occupation as a construction worker exposes him to various occupational hazards, including dust, which may contribute to his respiratory symptoms. While John quit smoking a decade ago, his previous smoking habit puts him at an increased risk for respiratory.
+Socioeconomic Factors: John's socioeconomic status, characterized by his occupation as a construction worker and residing in an area with limited access to healthy foods, may impact his ability to maintain a healthy lifestyle and access healthcare services. By addressing John's medical concerns within the context of his occupational and social history, we can provide comprehensive care that not only treats his current symptoms but also promotes his long-term health and well-being. 
+Medications: Lisinopril (ACE inhibitor) for hypertension.
+"""</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">resolver2chunk</span> <span class="k">=</span> <span class="nc">Resolution2Chunk</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd10_code"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"icd102chunk"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">chunkerMapper</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"icd10_meddra_llt_mapper"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd102chunk"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="n">documentAssembler</span><span class="o">,</span>
-    <span class="n">sbert_embedder</span><span class="o">,</span>
-    <span class="n">icd10_resolver</span><span class="o">,</span>
-    <span class="n">resolver2chunk</span><span class="o">,</span>
-    <span class="n">chunkerMapper</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Type 2 diabetes mellitus"</span><span class="o">),</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Typhoid fever"</span><span class="o">),</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Malignant neoplasm of oesophagus"</span><span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">mapper_model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mapper_model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------------------+----------+--------------------------------------------------------+
-|chunk                           |icd10_code|meddra_code                                             |
-+--------------------------------+----------+--------------------------------------------------------+
-|Type 2 diabetes mellitus        |E11       |10067585:Type 2 diabetes mellitus                       |
-|Typhoid fever                   |A01.0     |10045275:Typhoid fever                                  |
-|Malignant neoplasm of oesophagus|C15.9     |10026182:Malignant neoplasm of oesophagus, unspecified  |
-+--------------------------------+----------+--------------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="c"># NER Result</span>
+
+|    |   sentence_id | chunks                     |   begin |   end | entities                  |
+|---:|--------------:|:---------------------------|--------:|------:|:--------------------------|
+|  0 |             0 | Chinese                    |      42 |    48 | Race_Ethnicity            |
+|  1 |             0 | construction worker        |      55 |    73 | Employment                |
+|  2 |             1 | smoker                     |     121 |   126 | Smoking                   |
+|  3 |             1 | smoking                    |     163 |   169 | Smoking                   |
+|  4 |             1 | a pack                     |     171 |   176 | Substance_Quantity        |
+|  5 |             2 | alcohol                    |     223 |   229 | Alcohol                   |
+|  6 |             3 | healthy diet               |     285 |   296 | Diet                      |
+|  7 |             3 | fresh foods                |     344 |   354 | Food_Insecurity           |
+|  8 |             4 | Obesity                    |     377 |   383 | Obesity                   |
+|  9 |             4 | BMI 32                     |     386 |   391 | BMI                       |
+| 10 |             5 | construction worker        |     483 |   501 | Employment                |
+| 11 |             6 | smoking                    |     630 |   636 | Smoking                   |
+| 12 |             6 | smoking                    |     665 |   671 | Smoking                   |
+| 13 |             7 | construction worker        |     815 |   833 | Employment                |
+| 14 |             7 | healthy foods              |     882 |   894 | Food_Insecurity           |
+| 15 |             7 | access healthcare services |     956 |   981 | Access_To_Care            |
+| 16 |             8 | comprehensive care         |    1096 |  1113 | Access_To_Care            |
+| 17 |             8 | well-being                 |    1200 |  1209 | Quality_Of_Life           |
+| 18 |             9 | Lisinopril                 |    1226 |  1235 | Drug                      |
+| 19 |             9 | ACE inhibitor              |    1238 |  1250 | Drug                      |
+| 20 |             9 | hypertension               |    1257 |  1268 | Disease_Syndrome_Disorder |
+
+<span class="c"># Assertion Result</span>
+
+|    |   sentence_id | chunks                     |   begin |   end | entities                  | assertion              |
+|---:|--------------:|:---------------------------|--------:|------:|:--------------------------|:-----------------------|
+|  0 |             0 | construction worker        |      55 |    73 | Employment                | Present_Or_Past        |
+|  1 |             1 | smoker                     |     121 |   126 | Smoking                   | Present_Or_Past        |
+|  2 |             1 | smoking                    |     163 |   169 | Smoking                   | Present_Or_Past        |
+|  3 |             2 | alcohol                    |     223 |   229 | Alcohol                   | Hypothetical_Or_Absent |
+|  4 |             3 | healthy diet               |     285 |   296 | Diet                      | Hypothetical_Or_Absent |
+|  5 |             3 | fresh foods                |     344 |   354 | Food_Insecurity           | Present_Or_Past        |
+|  6 |             4 | Obesity                    |     377 |   383 | Obesity                   | Hypothetical_Or_Absent |
+|  7 |             4 | BMI 32                     |     386 |   391 | Obesity                   | Present_Or_Past        |
+|  8 |             5 | construction worker        |     483 |   501 | Employment                | Present_Or_Past        |
+|  9 |             6 | smoking                    |     630 |   636 | Smoking                   | Present_Or_Past        |
+| 10 |             6 | smoking                    |     665 |   671 | Smoking                   | Present_Or_Past        |
+| 11 |             7 | construction worker        |     815 |   833 | Employment                | Present_Or_Past        |
+| 12 |             7 | healthy foods              |     882 |   894 | Food_Insecurity           | Present_Or_Past        |
+| 13 |             7 | access healthcare services |     956 |   981 | Access_To_Care            | Hypothetical_Or_Absent |
+| 14 |             8 | comprehensive care         |    1096 |  1113 | Access_To_Care            | Present_Or_Past        |
+| 15 |             8 | well-being                 |    1200 |  1209 | Quality_Of_Life           | Present_Or_Past        |
+| 16 |             9 | hypertension               |    1257 |  1268 | Disease_Syndrome_Disorder | Hypothetical_Or_Absent |
+
+<span class="c"># Relation Extraction Result</span>
+
+|    |   sentence |   entity1_begin |   entity1_end | chunk1        | entity1   |   entity2_begin |   entity2_end | chunk2       | entity2                   | relation                       |   confidence |
+|---:|-----------:|----------------:|--------------:|:--------------|:----------|----------------:|--------------:|:-------------|:--------------------------|:-------------------------------|-------------:|
+|  0 |          1 |             121 |           126 | smoker        | Smoking   |             171 |           176 | a pack       | Substance_Quantity        | Smoking-Substance_Quantity     |            1 |
+|  1 |          1 |             163 |           169 | smoking       | Smoking   |             171 |           176 | a pack       | Substance_Quantity        | Smoking-Substance_Quantity     |            1 |
+|  2 |          4 |             377 |           383 | Obesity       | Obesity   |             386 |           391 | BMI 32       | BMI                       | Obesity-BMI                    |            1 |
+|  3 |          9 |            1226 |          1235 | Lisinopril    | Drug      |            1257 |          1268 | hypertension | Disease_Syndrome_Disorder | Drug-Disease_Syndrome_Disorder |            1 |
+|  4 |          9 |            1238 |          1250 | ACE inhibitor | Drug      |            1257 |          1268 | hypertension | Disease_Syndrome_Disorder | Drug-Disease_Syndrome_Disorder |            1 |
+
+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -607,7 +643,11 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>icd10_meddra_llt_mapper</td>
+      <td>explain_clinical_doc_public_health</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>pipeline</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -622,31 +662,41 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>Official</td>
     </tr>
     <tr>
-      <td>Input Labels:</td>
-      <td>[ner_chunk]</td>
-    </tr>
-    <tr>
-      <td>Output Labels:</td>
-      <td>[mappings]</td>
-    </tr>
-    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>231.8 KB</td>
+      <td>1.8 GB</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="references">References</h2>
+<h2 id="included-models">Included Models</h2>
 
-<p>This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.</p>
-
-<p><strong>To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</strong></p>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-14T00:00:00+00:00"><!-- start custom article footer snippet -->
+<ul>
+  <li>DocumentAssembler</li>
+  <li>SentenceDetectorDLModel</li>
+  <li>TokenizerModel</li>
+  <li>WordEmbeddingsModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>ChunkMergeModel</li>
+  <li>ChunkMergeModel</li>
+  <li>AssertionDLModel</li>
+  <li>PerceptronModel</li>
+  <li>DependencyParserModel</li>
+  <li>GenericREModel</li>
+</ul>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-19T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -831,7 +881,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/14/clinical_deidentification_subentity_optimized_en.html">Clinical Deidentification Pipeline Optimized Version (English - Subentity)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/14/meddra_llt_icd10_mapper_en.html">Mapping MedDRA-LLT (Lowest Level Term) Codes with Their Corresponding ICD-10 Codes</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/19/explain_clinical_doc_public_health_en.html">Explain Clinical Document - Public Health</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/20/explain_clinical_doc_ade_en.html">Explain Clinical Document - ADE (Adverse Drug Event)</a></div></div></div>
 
 </div>
 </div>

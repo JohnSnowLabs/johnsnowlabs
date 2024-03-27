@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes | icd10_meddra_llt_mapper | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Drug Text Matcher | drug_matcher | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.Predicted EntitiesLive DemoOpen in ColabHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("ner_chunk")sbert_embedder = BertSentenceEmbeddings.pretra...">
-<!-- <link rel="canonical" href="/2024/03/14/icd10_meddra_llt_mapper_en.html"> -->
-<link rel="canonical" href="/2024/03/14/icd10_meddra_llt_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis model extracts medication entities in clinical notes using rule-based TextMatcherInternal annotator.Predicted EntitiesDRUGLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("document")sentenceDetec...">
+<!-- <link rel="canonical" href="/2024/03/19/drug_matcher_en.html"> -->
+<link rel="canonical" href="/2024/03/19/drug_matcher_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,23 +497,27 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-03-14-icd10_meddra_llt_mapper_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/ahmet-mesut/2024-03-19-drug_matcher_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 14, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-14T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>icd_10</li><li>meddra</li><li>mapping</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-14T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,icd_10,meddra,mapping"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 19, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-19T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Drug Text Matcher</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Drug Text Matcher"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>textmatcher</li><li>drug</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-19T00:00:00+00:00">
+    <meta itemprop="keywords" content="en,licensed,textmatcher,drug"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.</p>
+<p>This model extracts medication entities in clinical notes using rule-based <code class="language-plaintext highlighter-rouge">TextMatcherInternal</code> annotator.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
+<p><code class="language-plaintext highlighter-rouge">DRUG</code></p>
+
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button></p>
+<button class="button button-orange" disabled="">Open in Colab</button>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/drug_matcher_en_5.3.0_3.0_1710863216436.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/drug_matcher_en_5.3.0_3.0_1710863216436.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -522,83 +526,70 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">icd10_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_icd10cm_augmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd10_code"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">resolver2chunk</span> <span class="o">=</span> <span class="n">Resolution2Chunk</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd10_code"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd102chunk"</span><span class="p">)</span>
+<span class="n">text_matcher</span> <span class="o">=</span> <span class="n">TextMatcherInternalModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"drug_matcher"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"matched_text"</span><span class="p">)</span>\
 
-<span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"icd10_meddra_llt_mapper"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd102chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
+<span class="n">mathcer_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">().</span><span class="n">setStages</span><span class="p">([</span>
+                  <span class="n">documentAssembler</span><span class="p">,</span>
+                  <span class="n">sentenceDetector</span><span class="p">,</span>
+                  <span class="n">tokenizer</span><span class="p">,</span>
+                  <span class="n">text_matcher</span><span class="p">])</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">documentAssembler</span><span class="p">,</span>
-    <span class="n">sbert_embedder</span><span class="p">,</span>
-    <span class="n">icd10_resolver</span><span class="p">,</span>
-    <span class="n">resolver2chunk</span><span class="p">,</span>
-    <span class="n">chunkerMapper</span><span class="p">])</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"John's doctor prescribed aspirin for his heart condition, along with paracetamol for his fever and headache, amoxicillin for his tonsilitis and lansoprazole for his GORD on 2023-12-01."</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Type 2 diabetes mellitus"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Typhoid fever"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Malignant neoplasm of oesophagus"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
-<span class="n">mapper_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">matcher_model</span> <span class="o">=</span> <span class="n">mathcer_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">matcher_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+	<span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nv">BertSentenceEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)\</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">)\</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">icd10_resolver</span> <span class="k">=</span> <span class="nv">SentenceEntityResolverModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobertresolve_icd10cm_augmented"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"icd10_code"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">resolver2chunk</span> <span class="k">=</span> <span class="nc">Resolution2Chunk</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd10_code"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"icd102chunk"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">chunkerMapper</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"icd10_meddra_llt_mapper"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd102chunk"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="n">documentAssembler</span><span class="o">,</span>
-    <span class="n">sbert_embedder</span><span class="o">,</span>
-    <span class="n">icd10_resolver</span><span class="o">,</span>
-    <span class="n">resolver2chunk</span><span class="o">,</span>
-    <span class="n">chunkerMapper</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Type 2 diabetes mellitus"</span><span class="o">),</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Typhoid fever"</span><span class="o">),</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Malignant neoplasm of oesophagus"</span><span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">mapper_model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mapper_model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">text_matcher</span> <span class="k">=</span> <span class="nv">TextMatcherInternalModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"drug_matcher"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"matched_text"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">mathcer_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">()</span>
+	<span class="o">.</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span> <span class="n">documentAssembler</span><span class="o">,</span>
+			  <span class="n">sentenceDetector</span><span class="o">,</span>
+			  <span class="n">tokenizer</span><span class="o">,</span>
+    			  <span class="n">text_matcher</span><span class="o">))</span>
+	
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"John's doctor prescribed aspirin for his heart condition, along with paracetamol for his fever and headache, amoxicillin for his tonsilitis and lansoprazole for his GORD on 2023-12-01."</span><span class="o">)</span> <span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">matcher_model</span> <span class="k">=</span> <span class="nv">mathcer_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">matcher_model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------------------+----------+--------------------------------------------------------+
-|chunk                           |icd10_code|meddra_code                                             |
-+--------------------------------+----------+--------------------------------------------------------+
-|Type 2 diabetes mellitus        |E11       |10067585:Type 2 diabetes mellitus                       |
-|Typhoid fever                   |A01.0     |10045275:Typhoid fever                                  |
-|Malignant neoplasm of oesophagus|C15.9     |10026182:Malignant neoplasm of oesophagus, unspecified  |
-+--------------------------------+----------+--------------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------+-----+---+-----+
+|       chunk|begin|end|label|
++------------+-----+---+-----+
+|     aspirin|   25| 31| DRUG|
+| paracetamol|   69| 79| DRUG|
+| amoxicillin|  109|119| DRUG|
+|lansoprazole|  144|155| DRUG|
++------------+-----+---+-----+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -607,7 +598,7 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>icd10_meddra_llt_mapper</td>
+      <td>drug_matcher</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
@@ -623,11 +614,11 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
     <tr>
       <td>Input Labels:</td>
-      <td>[ner_chunk]</td>
+      <td>[document, token]</td>
     </tr>
     <tr>
       <td>Output Labels:</td>
-      <td>[mappings]</td>
+      <td>[matched_text]</td>
     </tr>
     <tr>
       <td>Language:</td>
@@ -635,18 +626,19 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
     <tr>
       <td>Size:</td>
-      <td>231.8 KB</td>
+      <td>5.7 MB</td>
+    </tr>
+    <tr>
+      <td>Case sensitive:</td>
+      <td>false</td>
     </tr>
   </tbody>
 </table>
 
-<h2 id="references">References</h2>
+<h2 id="dataset">Dataset</h2>
 
-<p>This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.</p>
-
-<p><strong>To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</strong></p>
-
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-14T00:00:00+00:00"><!-- start custom article footer snippet -->
+<p>This model is trained with an in-house dataset.</p>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-19T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -831,7 +823,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/14/clinical_deidentification_subentity_optimized_en.html">Clinical Deidentification Pipeline Optimized Version (English - Subentity)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/14/meddra_llt_icd10_mapper_en.html">Mapping MedDRA-LLT (Lowest Level Term) Codes with Their Corresponding ICD-10 Codes</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/18/meddra_pt_llt_mapper_en.html">Mapping MedDRA-PT (Preferred Term) Codes With Their Corresponding MedDRA-LLT (Lowest Level Term) Codes</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/19/explain_clinical_doc_public_health_en.html">Explain Clinical Document - Public Health</a></div></div></div>
 
 </div>
 </div>

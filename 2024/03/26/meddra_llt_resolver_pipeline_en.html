@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes | icd10_meddra_llt_mapper | Healthcare NLP 5.3.0</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Pipeline for MedDRA - Lowest Level Term (LLT) Sentence Entity Resolver | meddra_llt_resolver_pipeline | Healthcare NLP 5.3.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.Predicted EntitiesLive DemoOpen in ColabHow to use  PythonJSLScalaNLU  documentAssembler = DocumentAssembler()\    .setInputCol("text")\    .setOutputCol("ner_chunk")sbert_embedder = BertSentenceEmbeddings.pretra...">
-<!-- <link rel="canonical" href="/2024/03/14/icd10_meddra_llt_mapper_en.html"> -->
-<link rel="canonical" href="/2024/03/14/icd10_meddra_llt_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis dedicated pipeline extracts clinical terms and utilizes sbiobert_base_cased_mli Sentence Bert Embeddings to link them to their corresponding MedDRA LLT (Lowest Level Term) codes. Additionally, it provides the MedDRA Preferred Term codes for each MedDRA LLT code within the meddra_llt_code metadata’s a...">
+<!-- <link rel="canonical" href="/2024/03/26/meddra_llt_resolver_pipeline_en.html"> -->
+<link rel="canonical" href="/2024/03/26/meddra_llt_resolver_pipeline_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,108 +497,62 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-03-14-icd10_meddra_llt_mapper_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/bugeki/2024-03-26-meddra_llt_resolver_pipeline_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 14, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-14T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Mapping ICD10 Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>icd_10</li><li>meddra</li><li>mapping</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-14T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,icd_10,meddra,mapping"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>Mar 26, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-26T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Pipeline for MedDRA - Lowest Level Term (LLT) Sentence Entity Resolver</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Pipeline for MedDRA - Lowest Level Term (LLT) Sentence Entity Resolver"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>meddra</li><li>llt</li><li>resolver</li><li>en</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-03-26T00:00:00+00:00">
+    <meta itemprop="keywords" content="licensed,meddra,llt,resolver,en"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes.</p>
+<p>This dedicated pipeline extracts clinical terms and utilizes <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings to link them to their corresponding MedDRA LLT (Lowest Level Term) codes. Additionally, it provides the MedDRA Preferred Term codes for each MedDRA LLT code within the <code class="language-plaintext highlighter-rouge">meddra_llt_code</code> metadata’s <code class="language-plaintext highlighter-rouge">all_k_aux_labels</code>. Furthermore, it conducts mappings of MedDRA LLT codes to MedDRA Preferred Term (PT) codes using the <code class="language-plaintext highlighter-rouge">meddra_llt_pt_mapper</code> model and to ICD-10 codes using the <code class="language-plaintext highlighter-rouge">meddra_llt_icd10_mapper</code> model.</p>
 
-<h2 id="predicted-entities">Predicted Entities</h2>
+<p>This pipeline can extract the following clincial entities: <code class="language-plaintext highlighter-rouge">Procedure</code>, <code class="language-plaintext highlighter-rouge">Kidney_Disease</code>, <code class="language-plaintext highlighter-rouge">Cerebrovascular_Disease</code>, <code class="language-plaintext highlighter-rouge">Heart_Disease</code>, <code class="language-plaintext highlighter-rouge">Disease_Syndrome_Disorder</code>, <code class="language-plaintext highlighter-rouge">ImagingFindings</code>, <code class="language-plaintext highlighter-rouge">Symptom</code>, <code class="language-plaintext highlighter-rouge">VS_Finding</code>, <code class="language-plaintext highlighter-rouge">EKG_Findings</code>, <code class="language-plaintext highlighter-rouge">Communicable_Disease</code>, <code class="language-plaintext highlighter-rouge">Substance</code>, <code class="language-plaintext highlighter-rouge">Internal_organ_or_component</code>, <code class="language-plaintext highlighter-rouge">External_body_part_or_region</code>, <code class="language-plaintext highlighter-rouge">Modifier</code>, <code class="language-plaintext highlighter-rouge">Triglycerides</code>, <code class="language-plaintext highlighter-rouge">Alcohol</code>, <code class="language-plaintext highlighter-rouge">Smoking</code>, <code class="language-plaintext highlighter-rouge">Pregnancy</code>, <code class="language-plaintext highlighter-rouge">Hypertension</code>, <code class="language-plaintext highlighter-rouge">Obesity</code>, <code class="language-plaintext highlighter-rouge">Injury_or_Poisoning</code>, <code class="language-plaintext highlighter-rouge">Test</code>, <code class="language-plaintext highlighter-rouge">Hyperlipidemia</code>, <code class="language-plaintext highlighter-rouge">BMI</code>, <code class="language-plaintext highlighter-rouge">Oncological</code>, <code class="language-plaintext highlighter-rouge">Psychological_Condition</code>, <code class="language-plaintext highlighter-rouge">LDL</code>, <code class="language-plaintext highlighter-rouge">Diabetes</code>, <code class="language-plaintext highlighter-rouge">PROBLEM</code>.</p>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
-<button class="button button-orange" disabled="">Open in Colab</button></p>
+<button class="button button-orange" disabled="">Open in Colab</button>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/meddra_llt_resolver_pipeline_en_5.3.1_3.0_1711481044636.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/meddra_llt_resolver_pipeline_en_5.3.1_3.0_1711481044636.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sparknlp.pretrained</span> <span class="kn">import</span> <span class="n">PretrainedPipeline</span>
 
-<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">meddra_llt_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">.</span><span class="n">from_disk</span><span class="p">(</span><span class="s">"meddra_llt_resolver_pipeline"</span><span class="p">)</span>
 
-<span class="n">icd10_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_icd10cm_augmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd10_code"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
-
-<span class="n">resolver2chunk</span> <span class="o">=</span> <span class="n">Resolution2Chunk</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd10_code"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"icd102chunk"</span><span class="p">)</span>
-
-<span class="n">chunkerMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"icd10_meddra_llt_mapper"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"icd102chunk"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>
-
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">documentAssembler</span><span class="p">,</span>
-    <span class="n">sbert_embedder</span><span class="p">,</span>
-    <span class="n">icd10_resolver</span><span class="p">,</span>
-    <span class="n">resolver2chunk</span><span class="p">,</span>
-    <span class="n">chunkerMapper</span><span class="p">])</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Type 2 diabetes mellitus"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Typhoid fever"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Malignant neoplasm of oesophagus"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
-<span class="n">mapper_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">mapper_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">meddra_llt_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="s">'This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia.'</span><span class="p">)</span>
 </code></pre></div>  </div>
-  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+  <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">com.johnsnowlabs.nlp.pretrained.PretrainedPipeline</span>
 
-<span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nv">BertSentenceEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">meddra_llt_pipeline</span> <span class="k">=</span> <span class="nv">PretrainedPipeline</span><span class="o">.</span><span class="py">from_disk</span><span class="o">(</span><span class="s">"meddra_llt_resolver_pipeline"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">icd10_resolver</span> <span class="k">=</span> <span class="nv">SentenceEntityResolverModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobertresolve_icd10cm_augmented"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"icd10_code"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">resolver2chunk</span> <span class="k">=</span> <span class="nc">Resolution2Chunk</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd10_code"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"icd102chunk"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">chunkerMapper</span> <span class="k">=</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"icd10_meddra_llt_mapper"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"icd102chunk"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-    <span class="n">documentAssembler</span><span class="o">,</span>
-    <span class="n">sbert_embedder</span><span class="o">,</span>
-    <span class="n">icd10_resolver</span><span class="o">,</span>
-    <span class="n">resolver2chunk</span><span class="o">,</span>
-    <span class="n">chunkerMapper</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Type 2 diabetes mellitus"</span><span class="o">),</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Typhoid fever"</span><span class="o">),</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Malignant neoplasm of oesophagus"</span><span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">mapper_model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mapper_model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">meddra_llt_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="s">"This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia."</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------------------+----------+--------------------------------------------------------+
-|chunk                           |icd10_code|meddra_code                                             |
-+--------------------------------+----------+--------------------------------------------------------+
-|Type 2 diabetes mellitus        |E11       |10067585:Type 2 diabetes mellitus                       |
-|Typhoid fever                   |A01.0     |10045275:Typhoid fever                                  |
-|Malignant neoplasm of oesophagus|C15.9     |10026182:Malignant neoplasm of oesophagus, unspecified  |
-+--------------------------------+----------+--------------------------------------------------------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+--------------------------------------+-------------------------+---------------+-------------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------+
+|chunk                                 |label                    |meddra_llt_code|resolution                           |icd10_mappings                                                                     |meddra_pt_mappings                             |
++--------------------------------------+-------------------------+---------------+-------------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------+
+|tobacco                               |Smoking                  |10067622       |tobacco interaction                  |NONE                                                                               |10067622:Tobacco interaction                   |
+|hypertension                          |Hypertension             |10020772       |hypertension                         |O10:Pre-existing hypertension complicating pregnancy, childbirth and the puerperium|10020772:Hypertension                          |
+|chronic renal insufficiency           |Kidney_Disease           |10050441       |chronic renal insufficiency          |NONE                                                                               |10064848:Chronic kidney disease                |
+|chronic obstructive pulmonary disease |Disease_Syndrome_Disorder|10009033       |chronic obstructive pulmonary disease|J44:Other chronic obstructive pulmonary disease                                    |10009033:Chronic obstructive pulmonary disease |
+|gastritis                             |Disease_Syndrome_Disorder|10017853       |gastritis                            |K29.6:Other gastritis                                                              |10017853:Gastritis                             |
+|transient ischemic attack             |Cerebrovascular_Disease  |10072760       |transient ischemic attack            |NONE                                                                               |10044390:Transient ischaemic attack            |
+|ST elevation                          |PROBLEM                  |10041887       |st elevated                          |NONE                                                                               |10014392:Electrocardiogram ST segment elevation|
+|cardiac catheterization               |Procedure                |10048606       |cardiac catheterization              |Y84.0:Cardiac catheterization                                                      |10007815:Catheterisation cardiac               |
+|the left main coronary artery stenosis|PROBLEM                  |10090240       |left main coronary artery stenosis   |NONE                                                                               |10011089:Coronary artery stenosis              |
+|hypotension                           |VS_Finding               |10021097       |hypotension                          |I95:Hypotension                                                                    |10021097:Hypotension                           |
+|bradycardia                           |VS_Finding               |10006093       |bradycardia                          |R00.1:Bradycardia, unspecified                                                     |10006093:Bradycardia                           |
++--------------------------------------+-------------------------+---------------+-------------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -607,11 +561,15 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>icd10_meddra_llt_mapper</td>
+      <td>meddra_llt_resolver_pipeline</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>pipeline</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.3.0+</td>
+      <td>Healthcare NLP 5.3.1+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -622,31 +580,41 @@ function wrapWordInSpan(data, wordToWrap) {
       <td>Official</td>
     </tr>
     <tr>
-      <td>Input Labels:</td>
-      <td>[ner_chunk]</td>
-    </tr>
-    <tr>
-      <td>Output Labels:</td>
-      <td>[mappings]</td>
-    </tr>
-    <tr>
       <td>Language:</td>
       <td>en</td>
     </tr>
     <tr>
       <td>Size:</td>
-      <td>231.8 KB</td>
+      <td>2.4 GB</td>
     </tr>
   </tbody>
 </table>
 
 <h2 id="references">References</h2>
+<p>This pipeline is prepared using the models that are trained with the January 2024 release (v27) of MedDRA dataset.</p>
 
-<p>This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.</p>
+<p><strong>To utilize this pipeline, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</strong></p>
 
-<p><strong>To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.</strong></p>
+<h2 id="included-models">Included Models</h2>
 
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-14T00:00:00+00:00"><!-- start custom article footer snippet -->
+<ul>
+  <li>DocumentAssembler</li>
+  <li>SentenceDetectorDLModel</li>
+  <li>TokenizerModel</li>
+  <li>WordEmbeddingsModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>MedicalNerModel</li>
+  <li>NerConverterInternalModel</li>
+  <li>ChunkMergeModel</li>
+  <li>Chunk2Doc</li>
+  <li>BertSentenceEmbeddings</li>
+  <li>SentenceEntityResolverModel</li>
+  <li>Resolution2Chunk</li>
+  <li>ChunkMapperModel</li>
+  <li>ChunkMapperModel</li>
+</ul>
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-03-26T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -831,7 +799,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/14/clinical_deidentification_subentity_optimized_en.html">Clinical Deidentification Pipeline Optimized Version (English - Subentity)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/14/meddra_llt_icd10_mapper_en.html">Mapping MedDRA-LLT (Lowest Level Term) Codes with Their Corresponding ICD-10 Codes</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/26/meddra_pt_resolver_pipeline_en.html">Pipeline for MedDRA - Preferred Term (PT) Sentence Entity Resolver</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/26/meddra_pt_resolver_pipeline_en.html">Pipeline for MedDRA - Preferred Term (PT) Sentence Entity Resolver</a></div></div></div>
 
 </div>
 </div>
