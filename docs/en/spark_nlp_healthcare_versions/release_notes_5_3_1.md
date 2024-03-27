@@ -2,10 +2,10 @@
 layout: docs
 header: true
 seotitle: Spark NLP for Healthcare | John Snow Labs
-title: Spark NLP for Healthcare Release Notes 5.3.0
-permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_5_3_0
+title: Spark NLP for Healthcare Release Notes 5.3.1
+permalink: /docs/en/spark_nlp_healthcare_versions/release_notes_5_3_1
 key: docs-licensed-release-notes
-modify_date: 2024-02-29
+modify_date: 2024-03-27
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -17,11 +17,12 @@ sidebar:
 
 #### Highlights
 
-We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with the new AssertionMerger modules as well as `41` new clinical pretrained models and pipelines**. 
+
+We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with MedDRA resolver, 2x faster optimized Deidentification pipelines,  Response to Treatment classifier for oncology, and 41 new clinical pretrained models and pipelines. It's as big as a major release!**
 
 + Welcoming MedDRA into the library. Releasing 8 new Entity Resolver and Mapper models to associate clinical entities with MedDRA LLT and PT codes. 
 + Enhancing assertion annotation workflow with `AssertionMerger` annotator to allow using multiple assertion models within the same pipeline.
-+ Adding new clinical deidentification pipelines for flexible deployments. Now we have 15 pretrained deidentification pipelines at various sizes and capabilities.
++ Adding new clinical deidentification pipelines that are 2x faster. Now we have 15 pretrained deidentification pipelines of various sizes and capabilities.
 + Efficiency analysis and cost evaluation of deidentification pipelines on cloud platforms
 + Updated `Opioid` NER model and `Drug` text matcher model
 + New text classifier for `Response to Treatment` to detect response status/ outcome for the treatment applied for oncology patients.
@@ -53,16 +54,16 @@ These enhancements will elevate your experience with Spark NLP for Healthcare, e
 
 </div><div class="h3-box" markdown="1">
 
-#### Welcoming MedDRA into the Library. Releasing 8 new Entity Resolver and Mapper Models to Associate Clinical Entities with MedDRA LLT and PT Codes. 
+#### Welcoming MedDRA into the Library. Releasing 10 New Entity Resolver, Mapper Models and Pretrained Pipelines to Associate Clinical Entities With Meddra Llt and Pt Codes
+
 
 Introducing 2 new Sentence Entity Resolver Models  `sbiobertresolve_meddra_lowest_level_term` and `sbiobertresolve_meddra_preferred_term` help to map medical entities to MedDRA codes.
 
 | Model Name                                                            |      Description            |
 |-----------------------------------------------------------------------|-----------------------------|
 | [`sbiobertresolve_meddra_lowest_level_term`](https://nlp.johnsnowlabs.com/2024/03/24/sbiobertresolve_meddra_lowest_level_term_en.html) | This model maps clinical terms to their corresponding MedDRA LLT (Lowest Level Term) codes. |
-| [`sbiobertresolve_meddra_preferred_term`](https://nlp.johnsnowlabs.com/2024/03/24/sbiobertresolve_meddra_preferred_term_en.html) | This model maps clinical terms to their corresponding MedDRA PT (Preferred Term) codes. |
-| [`meddra_llt_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/26/meddra_llt_resolver_pipeline_en.html) | This dedicated pipeline extracts clinical terms and links them to their corresponding MedDRA LLT (Lowest Level Term) codes. |
-| [`meddra_pt_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/26/meddra_pt_resolver_pipeline_en.html) | This dedicated pipeline  extracts clinical terms and links them to their corresponding MedDRA PT (Preferred Term) codes. |
+| [`sbiobertresolve_meddra_preferred_term`](https://nlp.johnsnowlabs.com/2024/03/04/sbiobertresolve_meddra_preferred_term_en.html) | This model maps clinical terms to their corresponding MedDRA PT (Preferred Term) codes. |
+
 
 *Example*:
 
@@ -73,7 +74,6 @@ meddra_resolver = SentenceEntityResolverModel.load("sbiobertresolve_meddra_lowes
      .setDistanceFunction("EUCLIDEAN")
 
 text= """This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia."""
-
 ```
 
 *Result*:
@@ -91,7 +91,6 @@ text= """This is an 82-year-old male with a history of prior tobacco use, hypert
 |                          hypotension|               VS_Finding|       10021097|                          hypotension|10021097,10021107...|hypotension,hypotensive,arterial hyp...|
 |                          bradycardia|               VS_Finding|       10006093|                          bradycardia|10006093,10040741...|bradycardia,sinus bradycardia,centra...|
 
-
 - 6 ChunkMapper Models for Medical Code Mapping to Map Various Medical Terminologies Across Each Other
 
 Introducing a suite of new ChunkMapper models designed to streamline medical code mapping tasks. These models include mappings between  RxNorm, ICD-10, MedDRA-LLT, and MedDRA-PT codes, offering a comprehensive solution for interoperability within medical systems.
@@ -105,15 +104,13 @@ Introducing a suite of new ChunkMapper models designed to streamline medical cod
 |[`meddra_llt_pt_mapper`](https://nlp.johnsnowlabs.com/2024/03/18/meddra_llt_pt_mapper_en.html)      | Maps MedDRA-LLT (Lowest Level Term) codes to their corresponding MedDRA-PT (Preferred Term) codes. |
 |[`meddra_pt_llt_mapper`](https://nlp.johnsnowlabs.com/2024/03/18/meddra_pt_llt_mapper_en.html)      | Maps MedDRA-PT (Preferred Term) codes to their corresponding MedDRA-LLT (Lowest Level Term) codes. |
 
-
 *Example*:
 
 ```python
-mapperModel = ChunkMapperModel.pretrained('meddra_llt_pt_mapper', 'en', 'clinical/models')\
+mapperModel = ChunkMapperModel.load('meddra_llt_pt_mapper')\
     .setInputCols(["ner_chunk"])\
     .setOutputCol("mappings")\
     .setRels(["icd10_code"])
-
 
 text = ["10002442", "10000007", "10003696"]
 ```
@@ -126,13 +123,42 @@ text = ["10002442", "10000007", "10003696"]
 |10000007|10000007:17 ketosteroids urine decreased|
 |10003696|10001324:Adrenal atrophy                |
 
+- Introducing 2 New Pretrained Meddra Resolver Pipelines Designed For Effortless Integration With Just A Single Line Of Code
+
+These pipelines are capable of extracting clinical entities and linking them to their respective MedDRA LLT and PT codes, while also facilitating mapping of these codes to LLT/PT or ICD-10 codes.
+
+| Pipeline Name                                                            |      Description            |
+|--------------------------------------------------------------------------|-----------------------------|
+| [`meddra_llt_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/26/meddra_llt_resolver_pipeline_en.html) | This dedicated pipeline extracts clinical terms and links them to their corresponding MedDRA LLT (Lowest Level Term) codes, map those codes to their MedDRA PT (Preferred Term) codes and ICD-10 codes.|
+| [`meddra_pt_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/26/meddra_pt_resolver_pipeline_en.html) | This dedicated pipeline  extracts clinical terms and links them to their corresponding MedDRA PT (Preferred Term) codes, map those codes to their MedDRA LLT (Lowest Level Term) codes and ICD-10 codes. |
+
+*Example*:
+
+```python
+from sparknlp.pretrained import PretrainedPipeline
+
+meddra_llt_pipeline = PretrainedPipeline.from_disk("meddra_llt_resolver_pipeline")
+
+result = meddra_llt_pipeline.fullAnnotate('This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack.')
+```
+
+*Result*:
 
 
-- Important notes: When you want to use this model, you will receive a warning like below
+|chunk                                 |label                    |meddra_llt_code|resolution                           |icd10_mappings                                                                     |meddra_pt_mappings                             |
+|--------------------------------------|-------------------------|---------------|-------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------|
+|tobacco                               |Smoking                  |10067622       |tobacco interaction                  |NONE                                                                               |10067622:Tobacco interaction                   |
+|hypertension                          |Hypertension             |10020772       |hypertension                         |O10:Pre-existing hypertension complicating pregnancy, childbirth and the puerperium|10020772:Hypertension                          |
+|chronic renal insufficiency           |Kidney_Disease           |10050441       |chronic renal insufficiency          |NONE                                                                               |10064848:Chronic kidney disease                |
+|chronic obstructive pulmonary disease |Disease_Syndrome_Disorder|10009033       |chronic obstructive pulmonary disease|J44:Other chronic obstructive pulmonary disease                                    |10009033:Chronic obstructive pulmonary disease |
+|gastritis                             |Disease_Syndrome_Disorder|10017853       |gastritis                            |K29.6:Other gastritis                                                              |10017853:Gastritis                             |
+|transient ischemic attack             |Cerebrovascular_Disease  |10072760       |transient ischemic attack            |NONE                                                                               |10044390:Transient ischaemic attack            |
+
+**Important note**: To utilize these MedDRA models/pipelines, possession of a valid MedDRA license is requisite. When you want to use these models and pipelines, you will receive a warning like below.  If you possess a valid MedDRA license and wish to use this model, kindly contact us at support@johnsnowlabs.com.
 
 ```bash
-IllegalArgumentException: 'sbiobertresolve_cpt_procedures_measurements_augmenteden' model cannot be used as a pretrained model. 
-To load this model locally via .load(), possession of a valid MedDRA / CPT license is required. 
+IllegalArgumentException: 'meddra_llt_pt_mapper' model cannot be used as a pretrained model.
+To load this model locally via .load(), possession of a valid MedDRA / CPT license is required.
 If you possess one thru corresponding agencies and wish to use this model, contact us at support@johnsnowlabs.com.
 ```
 
@@ -643,7 +669,6 @@ For all Spark NLP for Healthcare models, please check: [Models Hub Page](https:/
 
 
 </div><div class="h3-box" markdown="1">
-
 
 
 ## Versions
