@@ -36,6 +36,7 @@ This pretrained model maps MedDRA MedDRA PT (Preferred Term) to corresponding Me
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol('text')\
