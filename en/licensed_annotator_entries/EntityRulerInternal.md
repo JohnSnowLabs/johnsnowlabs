@@ -132,6 +132,14 @@ val model = pipeline.fit(data)
 
 {%- endcapture -%}
 
+{%- capture model_api_link -%}
+[EntityRulerInternal](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/er/EntityRulerInternalModel.html)
+{%- endcapture -%}
+
+{%- capture model_python_api_link -%}
+[EntityRulerInternal](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/er/entity_ruler_internal/index.html#module-sparknlp_jsl.annotator.er.entity_ruler_internal)
+{%- endcapture -%}
+
 {%- capture approach_description -%}
 EntityRulerInternal will handle the chunks output based on the patterns defined, as shown in the example below. We can define an id field to identify entities.
 
@@ -160,6 +168,14 @@ DOCUMENT, TOKEN
 CHUNK
 {%- endcapture -%}
 
+{%- capture approach_api_link -%}
+[EntityRulerInternal](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/er/EntityRulerInternalApproach.html)
+{%- endcapture -%}
+
+{%- capture approach_python_api_link -%}
+[FewShotClassifierApproach](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/er/entity_ruler_internal/index.html#module-sparknlp_jsl.annotator.er.entity_ruler_internal)
+{%- endcapture -%}
+
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
 approach=approach
@@ -169,7 +185,11 @@ model_input_anno=model_input_anno
 model_output_anno=model_output_anno
 model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
+model_api_link=model_api_link
+model_python_api_link=model_python_api_link
 approach_description=approach_description
 approach_input_anno=approach_input_anno
 approach_output_anno=approach_output_anno
+approach_api_link=approach_api_link
+approach_python_api_link=approach_python_api_link
 %}
