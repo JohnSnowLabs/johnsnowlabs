@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/utils/risk_adjustment_utils/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -343,41 +346,38 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.risk_adjustment_utils.RiskAdjustmentUtil" title="sparknlp_jsl.utils.risk_adjustment_utils.RiskAdjustmentUtil"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RiskAdjustmentUtil</span></code></a></p></td>
-<td><p>A class that provides util functions for working with Risk Adjustment Hierarchical Condition Categories (HCCs).</p></td>
+<td><p>Provides util functions for working with Risk Adjustment Hierarchical Condition Categories (HCCs).</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.risk_adjustment_utils.RiskAdjustmentUtil">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">RiskAdjustmentUtil</span></span><a class="headerlink" href="#sparknlp_jsl.utils.risk_adjustment_utils.RiskAdjustmentUtil" title="Permalink to this definition">#</a></dt>
-<dd><p>A class that provides util functions for working with Risk Adjustment Hierarchical Condition Categories (HCCs).
-HCCs are used to assess the health status of patients for various medical applications. This class offers functionality to retrieve HCC information
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Provides util functions for working with Risk Adjustment Hierarchical Condition Categories (HCCs).</p>
+<p>HCCs are used to assess the health status of patients for various medical applications. This class offers functionality to retrieve HCC information
 based on International Classification of Diseases, 10th Revision (ICD-10) codes, obtain medical descriptions for HCCs, and calculate the difference
 between two sets of HCCs for a specific measurement year.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.risk_adjustment_utils.RiskAdjustmentUtil.HCC_from_ICD">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HCC_from_ICD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">icd10_codes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.risk_adjustment_utils.RiskAdjustmentUtil.HCC_from_ICD" title="Permalink to this definition">#</a></dt>
-<dd><p>Retrieves the mapping of Risk Adjustment Hierarchical Condition Categories (RXHCC) or Hierarchical Condition Categories (HCC)
-based on a list of International Classification of Diseases, 10th Revision (ICD-10) codes for a specific measurement year.</p>
+<dd><p>Retrieves the mapping of Risk Adjustment Hierarchical Condition Categories (RXHCC) or Hierarchical Condition Categories (HCC).</p>
+<p>Based on a list of International Classification of Diseases, 10th Revision (ICD-10) codes for a specific measurement year.</p>
 <p>This method allows for the retrieval of RXHCC or HCC associated with the provided ICD-10 codes for a particular year.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>module</strong><span class="classifier">str</span></dt><dd><p>The module identifier or name for the specific risk adjustment module. [HCC, RXHCC]</p>
-</dd>
-<dt><strong>version</strong><span class="classifier">str</span></dt><dd><p>The version identifier for the risk adjustment module.</p>
-</dd>
-<dt><strong>year</strong><span class="classifier">int</span></dt><dd><p>The measurement year for which the risk adjustment is being calculated.</p>
-</dd>
-<dt><strong>icd10_codes</strong><span class="classifier">list</span></dt><dd><p>A list of ICD-10 codes for which RXHCC or HCC information is to be retrieved.</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>module</strong> (<em>str</em>) – The module identifier or name for the specific risk adjustment module. [HCC, RXHCC]</p></li>
+<li><p><strong>version</strong> (<em>str</em>) – The version identifier for the risk adjustment module.</p></li>
+<li><p><strong>year</strong> (<em>int</em>) – The measurement year for which the risk adjustment is being calculated.</p></li>
+<li><p><strong>icd10_codes</strong> (<em>list</em>) – A list of ICD-10 codes for which RXHCC or HCC information is to be retrieved.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>dict</dt><dd><p>A mapping of ICD-10 codes to their corresponding RXHCC or HCC codes.</p>
+<dd class="field-even"><p>A mapping of ICD-10 codes to their corresponding RXHCC or HCC codes.</p>
 </dd>
-</dl>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -385,27 +385,22 @@ based on a list of International Classification of Diseases, 10th Revision (ICD-
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.risk_adjustment_utils.RiskAdjustmentUtil.HCC_labels">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">HCC_labels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hcc_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.risk_adjustment_utils.RiskAdjustmentUtil.HCC_labels" title="Permalink to this definition">#</a></dt>
-<dd><p>Retrieves the medical descriptions associated with a given list of Risk Adjustment Hierarchical Condition Categories (RXHCCs) and Hierarchical Condition Categories (HCCs)
-for a specified measurement year.</p>
+<dd><p>Retrieves the medical descriptions associated with a given list of Risk Adjustment Hierarchical Condition Categories (RXHCCs) and Hierarchical Condition Categories (HCCs) for a specified measurement year.</p>
 <p>This method allows for the retrieval of medical descriptions corresponding to the provided RXHCCs and HCCs for a particular year.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>module</strong><span class="classifier">str</span></dt><dd><p>The module identifier or name for the specific risk adjustment module. [HCC, RXHCC]</p>
-</dd>
-<dt><strong>version</strong><span class="classifier">str</span></dt><dd><p>The version identifier for the risk adjustment module.</p>
-</dd>
-<dt><strong>year</strong><span class="classifier">int</span></dt><dd><p>The measurement year for which the risk adjustment is being calculated.</p>
-</dd>
-<dt><strong>hcc_list</strong><span class="classifier">list</span></dt><dd><p>A list of RXHCCs and HCCs for which medical descriptions are to be retrieved.</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>module</strong> (<em>str</em>) – The module identifier or name for the specific risk adjustment module. [HCC, RXHCC]</p></li>
+<li><p><strong>version</strong> (<em>str</em>) – The version identifier for the risk adjustment module.</p></li>
+<li><p><strong>year</strong> (<em>int</em>) – The measurement year for which the risk adjustment is being calculated.</p></li>
+<li><p><strong>hcc_list</strong> (<em>list</em>) – A list of RXHCCs and HCCs for which medical descriptions are to be retrieved.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>dict</dt><dd><p>A mapping of RXHCCs and HCCs to their respective medical descriptions.</p>
+<dd class="field-even"><p>A mapping of RXHCCs and HCCs to their respective medical descriptions.</p>
 </dd>
-</dl>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>
@@ -413,29 +408,24 @@ for a specified measurement year.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.risk_adjustment_utils.RiskAdjustmentUtil.diff_between_HCCs">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">diff_between_HCCs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">version</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">before_HCC_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">after_HCC_list</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.risk_adjustment_utils.RiskAdjustmentUtil.diff_between_HCCs" title="Permalink to this definition">#</a></dt>
-<dd><p>Calculates the difference between two lists of Hierarchical Condition Categories (HCCs) or Risk Adjustment Hierarchical Condition Categories (RXHCCs) for a specific measurement year.
-This method identifies and categorizes the added, deleted, and upgraded HCCs between the “before_HCC_list” and “after_HCC_list” states.</p>
+<dd><p>Calculates the difference between two lists of Hierarchical Condition Categories (HCCs) or Risk Adjustment Hierarchical Condition Categories (RXHCCs) for a specific measurement year.</p>
+<p>This method identifies and categorizes the added, deleted, and upgraded HCCs between the “before_HCC_list” and “after_HCC_list” states.</p>
 <p>HCCs and RXHCCs evolve over time. New conditions emerge with age, causing additions and removals of CCs. Some CCs might escalate to higher levels of severity, representing an upgrade.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>module</strong><span class="classifier">str</span></dt><dd><p>The module identifier or name for the specific risk adjustment module. [HCC, RXHCC]</p>
-</dd>
-<dt><strong>version</strong><span class="classifier">str</span></dt><dd><p>The version identifier for the risk adjustment module.</p>
-</dd>
-<dt><strong>year</strong><span class="classifier">int</span></dt><dd><p>The measurement year for which the risk adjustment is being calculated.</p>
-</dd>
-<dt><strong>before_HCC_list</strong><span class="classifier">list</span></dt><dd><p>A list of HCCs that were present before the change.</p>
-</dd>
-<dt><strong>after_HCC_list</strong><span class="classifier">list</span></dt><dd><p>A list of HCCs that are present currently, representing the updated state.</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>module</strong> (<em>str</em>) – The module identifier or name for the specific risk adjustment module. [HCC, RXHCC]</p></li>
+<li><p><strong>version</strong> (<em>str</em>) – The version identifier for the risk adjustment module.</p></li>
+<li><p><strong>year</strong> (<em>int</em>) – The measurement year for which the risk adjustment is being calculated.</p></li>
+<li><p><strong>before_HCC_list</strong> (<em>list</em>) – A list of HCCs that were present before the change.</p></li>
+<li><p><strong>after_HCC_list</strong> (<em>list</em>) – A list of HCCs that are present currently, representing the updated state.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>dict</dt><dd><p>A mapping highlighting the added, deleted, and upgraded HCCs between the “before_HCC_list” and “after_HCC_list” lists.</p>
+<dd class="field-even"><p>A mapping highlighting the added, deleted, and upgraded HCCs between the “before_HCC_list” and “after_HCC_list” lists.</p>
 </dd>
-</dl>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
 </dd>
 </dl>
 </dd></dl>

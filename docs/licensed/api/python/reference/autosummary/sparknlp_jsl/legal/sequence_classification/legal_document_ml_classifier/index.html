@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/legal/sequence_classification/legal_document_ml_classifier/index';</script>
     <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
@@ -390,7 +393,8 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LegalDocumentMLClassifierApproach</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach" title="Permalink to this definition">#</a></dt>
-<dd><p>Trains a model to classify documents with a Logarithmic Regression algorithm. Training data requires columns for
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.DocumentMLClassifierApproach</span></code></p>
+<p>Trains a model to classify documents with a Logarithmic Regression algorithm. Training data requires columns for
 text and their label. The result is a trained GenericClassifierModel.</p>
 <table class="table">
 <thead>
@@ -406,78 +410,555 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>labelCol</strong></dt><dd><p>Column with the value result we are trying to predict.</p>
-</dd>
-<dt><strong>maxIter</strong></dt><dd><p>maximum number of iterations.</p>
-</dd>
-<dt><strong>tol</strong></dt><dd><p>convergence tolerance after each iteration.</p>
-</dd>
-<dt><strong>fitIntercept</strong></dt><dd><p>whether to fit an intercept term, default is true.</p>
-</dd>
-<dt><strong>labels</strong></dt><dd><p>array to output the label in the original form.</p>
-</dd>
-<dt><strong>vectorizationModelPath</strong></dt><dd><p>specify the vectorization model if it has been already trained.</p>
-</dd>
-<dt><strong>classificationModelPath</strong></dt><dd><p>specify the classification model if it has been already trained.</p>
-</dd>
-<dt><strong>classificationModelClass</strong></dt><dd><p>specify the SparkML classification class; possible values are: logreg, svm.</p>
-</dd>
-<dt><strong>maxTokenNgram</strong></dt><dd><p>the max number of tokens for Ngrams</p>
-</dd>
-<dt><strong>minTokenNgram</strong></dt><dd><p>the min number of tokens for Ngrams</p>
-</dd>
-<dt><strong>Examples</strong></dt><dd></dd>
-<dt><strong>——–</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; import sparknlp</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp.base import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp_jsl.common import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp.annotator import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp.training import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; import sparknlp_jsl</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp_jsl.base import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from sparknlp_jsl.annotator import *</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; from pyspark.ml import Pipeline</strong></dt><dd></dd>
-<dt><strong>An example pipeline could then be defined like this</strong></dt><dd></dd>
-<dt><a href="#id1"><span class="problematic" id="id2">**</span></a>&gt;&gt;&gt; tokenizer = Tokenizer() **</dt><dd></dd>
-<dt><a href="#id3"><span class="problematic" id="id4">**</span></a>…    .setInputCols(“document”) **</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“token”)</strong></dt><dd></dd>
-<dt><strong>…</strong></dt><dd></dd>
-<dt><a href="#id5"><span class="problematic" id="id6">**</span></a>&gt;&gt;&gt; normalizer = Normalizer() **</dt><dd></dd>
-<dt><a href="#id7"><span class="problematic" id="id8">**</span></a>…    .setInputCols(“token”) **</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“normalized”)</strong></dt><dd></dd>
-<dt><strong>…</strong></dt><dd></dd>
-<dt><a href="#id9"><span class="problematic" id="id10">**</span></a>&gt;&gt;&gt; stopwords_cleaner = StopWordsCleaner()**</dt><dd></dd>
-<dt><a href="#id11"><span class="problematic" id="id12">**</span></a>…    .setInputCols(“normalized”)**</dt><dd></dd>
-<dt><a href="#id13"><span class="problematic" id="id14">**</span></a>…    .setOutputCol(“cleanTokens”)**</dt><dd></dd>
-<dt><strong>…    .setCaseSensitive(False)</strong></dt><dd></dd>
-<dt><strong>…</strong></dt><dd></dd>
-<dt><strong>…stemmer = Stemmer()     …    .setInputCols(“cleanTokens”)     …    .setOutputCol(“stem”)</strong></dt><dd></dd>
-<dt><strong>…</strong></dt><dd></dd>
-<dt><a href="#id15"><span class="problematic" id="id16">**</span></a>&gt;&gt;&gt; gen_clf = DocumentMLClassifierApproach() **</dt><dd></dd>
-<dt><a href="#id17"><span class="problematic" id="id18">**</span></a>…    .setLabelColumn(“category”) **</dt><dd></dd>
-<dt><a href="#id19"><span class="problematic" id="id20">**</span></a>…    .setInputCols(“stem”) **</dt><dd></dd>
-<dt><strong>…    .setOutputCol(“prediction”)</strong></dt><dd></dd>
-<dt><strong>…</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; pipeline = Pipeline().setStages([</strong></dt><dd></dd>
-<dt><strong>…    document_assembler,</strong></dt><dd></dd>
-<dt><strong>…    tokenizer,</strong></dt><dd></dd>
-<dt><strong>…    normalizer,</strong></dt><dd></dd>
-<dt><strong>…    stopwords_cleaner,</strong></dt><dd></dd>
-<dt><strong>…    stemmer,</strong></dt><dd></dd>
-<dt><strong>…    gen_clf</strong></dt><dd></dd>
-<dt><strong>…])</strong></dt><dd></dd>
-<dt><strong>…</strong></dt><dd></dd>
-<dt><strong>&gt;&gt;&gt; clf_model = pipeline.fit(data)</strong></dt><dd></dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labelCol</strong> – Column with the value result we are trying to predict.</p></li>
+<li><p><strong>maxIter</strong> – maximum number of iterations.</p></li>
+<li><p><strong>tol</strong> – convergence tolerance after each iteration.</p></li>
+<li><p><strong>fitIntercept</strong> – whether to fit an intercept term, default is true.</p></li>
+<li><p><strong>labels</strong> – array to output the label in the original form.</p></li>
+<li><p><strong>vectorizationModelPath</strong> – specify the vectorization model if it has been already trained.</p></li>
+<li><p><strong>classificationModelPath</strong> – specify the classification model if it has been already trained.</p></li>
+<li><p><strong>classificationModelClass</strong> – specify the SparkML classification class; possible values are: logreg, svm.</p></li>
+<li><p><strong>maxTokenNgram</strong> – the max number of tokens for Ngrams</p></li>
+<li><p><strong>minTokenNgram</strong> – the min number of tokens for Ngrams</p></li>
+</ul>
 </dd>
 </dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.common</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.training</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp_jsl</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.base</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.annotator</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">pyspark.ml</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+</pre></div>
+</div>
+<p>An example pipeline could then be defined like this</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;document&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">normalizer</span> <span class="o">=</span> <span class="n">Normalizer</span><span class="p">()</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;token&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;normalized&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">stopwords_cleaner</span> <span class="o">=</span> <span class="n">StopWordsCleaner</span><span class="p">()</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;normalized&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;cleanTokens&quot;</span><span class="p">)</span>\
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">...stemmer = Stemmer()     ...    .setInputCols(&quot;cleanTokens&quot;)     ...    .setOutputCol(&quot;stem&quot;)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">gen_clf</span> <span class="o">=</span> <span class="n">DocumentMLClassifierApproach</span><span class="p">()</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setLabelColumn</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s2">&quot;stem&quot;</span><span class="p">)</span> \
+<span class="gp">... </span>   <span class="o">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s2">&quot;prediction&quot;</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">()</span><span class="o">.</span><span class="n">setStages</span><span class="p">([</span>
+<span class="gp">... </span>   <span class="n">document_assembler</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">tokenizer</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">normalizer</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">stopwords_cleaner</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">stemmer</span><span class="p">,</span>
+<span class="gp">... </span>   <span class="n">gen_clf</span>
+<span class="go">...])</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clf_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.classificationModelClass">
+<span class="sig-name descname"><span class="pre">classificationModelClass</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.classificationModelClass" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.classificationModelPath">
+<span class="sig-name descname"><span class="pre">classificationModelPath</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.classificationModelPath" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.fitIntercept">
+<span class="sig-name descname"><span class="pre">fitIntercept</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.fitIntercept" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.labelCol">
+<span class="sig-name descname"><span class="pre">labelCol</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.labelCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.labels">
+<span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.labels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.maxIter">
+<span class="sig-name descname"><span class="pre">maxIter</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.maxIter" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.maxTokenNgram">
+<span class="sig-name descname"><span class="pre">maxTokenNgram</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.maxTokenNgram" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.mergeChunks">
+<span class="sig-name descname"><span class="pre">mergeChunks</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.mergeChunks" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.minTokenNgram">
+<span class="sig-name descname"><span class="pre">minTokenNgram</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.minTokenNgram" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.tol">
+<span class="sig-name descname"><span class="pre">tol</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.tol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.vectorizationModelPath">
+<span class="sig-name descname"><span class="pre">vectorizationModelPath</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.vectorizationModelPath" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a model to the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset.</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em> or </em><em>list</em><em> or </em><em>tuple</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params. If a list/tuple of
+param maps is given, this calls fit on each param map and returns a list of
+models.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>fitted model(s)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code> or a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.fitMultiple">
+<span class="sig-name descname"><span class="pre">fitMultiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paramMaps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.fitMultiple" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a model to the input dataset for each param map in <cite>paramMaps</cite>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset.</p></li>
+<li><p><strong>paramMaps</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Sequence</span></code>) – A Sequence of param maps.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A thread safe iterable which contains one model for each param map. Each
+call to <cite>next(modelIterator)</cite> will return <cite>(index, model)</cite> where model was fit
+using <cite>paramMaps[index]</cite>. <cite>index</cite> values may not be sequential.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_FitMultipleIterator</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setClassificationModelClass">
+<span class="sig-name descname"><span class="pre">setClassificationModelClass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setClassificationModelClass" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a the classification model class from SparkML to use; possible values are: logreg, svm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – specify the SparkML classification class; possible values are: logreg, svm.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setClassificationModelPath">
+<span class="sig-name descname"><span class="pre">setClassificationModelPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setClassificationModelPath" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a path to the classification model if it has been already trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Path to the classification model if it has been already trained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setFitIntercept">
+<span class="sig-name descname"><span class="pre">setFitIntercept</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">merge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setFitIntercept" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to fit an intercept term, default is true.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Whether to fit an intercept term, default is true.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setLabelCol">
+<span class="sig-name descname"><span class="pre">setLabelCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setLabelCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column with the value result we are trying to predict.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Column with the value result we are trying to predict.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setLabels">
+<span class="sig-name descname"><span class="pre">setLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setLabels" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets array to output the label in the original form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>list</em>) – array to output the label in the original form.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setMaxIter">
+<span class="sig-name descname"><span class="pre">setMaxIter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setMaxIter" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets maximum number of iterations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>k</strong> (<em>int</em>) – Maximum number of iterations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setMaxTokenNgram">
+<span class="sig-name descname"><span class="pre">setMaxTokenNgram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setMaxTokenNgram" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets maximum number of tokens for Ngrams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>k</strong> (<em>int</em>) – Maximum number of tokens for Ngrams.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setMergeChunks">
+<span class="sig-name descname"><span class="pre">setMergeChunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">merge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setMergeChunks" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to merge all chunks in a document or not (Default: false)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>merge</strong> (<em>list</em>) – whether to merge all chunks in a document or not (Default: false)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setMinTokenNgram">
+<span class="sig-name descname"><span class="pre">setMinTokenNgram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setMinTokenNgram" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets minimum number of tokens for Ngrams.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>k</strong> (<em>int</em>) – Minimum number of tokens for Ngrams.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setTol">
+<span class="sig-name descname"><span class="pre">setTol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setTol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets  convergence tolerance after each iteration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dist</strong> (<em>float</em>) – Convergence tolerance after each iteration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setVectorizationModelPath">
+<span class="sig-name descname"><span class="pre">setVectorizationModelPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setVectorizationModelPath" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a path to the classification model if it has been already trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Path to the classification model if it has been already trained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LegalDocumentMLClassifierModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.legal.sequence_classification.LegalClassifierDLModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Classifies documents with a Logarithmic Regression algorithm.</p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.DocumentMLClassifierModel</span></code></p>
+<p>Classifies documents with a Logarithmic Regression algorithm.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Input Annotation types</p></th>
@@ -492,37 +973,403 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>mergeChunks</strong></dt><dd><p>Whether to merge all chunks in a document or not (Default: false)</p>
-</dd>
-<dt><strong>labels</strong></dt><dd><p>Array to output the label in the original form.</p>
-</dd>
-<dt><strong>vectorizationModel</strong></dt><dd><p>Vectorization model if it has been already trained.</p>
-</dd>
-<dt><strong>classificationModel</strong></dt><dd><p>Classification model if it has been already trained.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mergeChunks</strong> – Whether to merge all chunks in a document or not (Default: false)</p></li>
+<li><p><strong>labels</strong> – Array to output the label in the original form.</p></li>
+<li><p><strong>vectorizationModel</strong> – Vectorization model if it has been already trained.</p></li>
+<li><p><strong>classificationModel</strong> – Classification model if it has been already trained.</p></li>
+</ul>
 </dd>
 </dl>
-</dd>
-</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.classificationModel">
+<span class="sig-name descname"><span class="pre">classificationModel</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.classificationModel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.labels">
+<span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.labels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.maxTokenNgram">
+<span class="sig-name descname"><span class="pre">maxTokenNgram</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.maxTokenNgram" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.mergeChunks">
+<span class="sig-name descname"><span class="pre">mergeChunks</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.mergeChunks" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.minTokenNgram">
+<span class="sig-name descname"><span class="pre">minTokenNgram</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.minTokenNgram" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">FinanceDocumentMLClassifierModel</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.vectorizationModel">
+<span class="sig-name descname"><span class="pre">vectorizationModel</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.vectorizationModel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.pretrained">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Download a pre-trained LegalDocumentMLClassifierModel.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model.
-lang (str): Language of the pre-trained model.
-remote_loc (str): Remote location of the pre-trained model. If None, use the
-open-source location. Other values are “clinical/models”,
-“finance/models”, or “legal/models”.</p>
-</dd>
-<dt>Returns:</dt><dd><p>LegalDocumentMLClassifierModel: A pre-trained LegalDocumentMLClassifierModel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the pre-trained model.</p></li>
+<li><p><strong>lang</strong> (<em>str</em>) – Language of the pre-trained model.</p></li>
+<li><p><strong>remote_loc</strong> (<em>str</em>) – Remote location of the pre-trained model. If None, use the</p></li>
+<li><p><strong>&quot;clinical/models&quot;</strong> (<em>open-source location. Other values are</em>) – </p></li>
+</ul>
 </dd>
 </dl>
+<p>:param :
+:param “finance/models”:
+:param or “legal/models”.:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A pre-trained LegalDocumentMLClassifierModel.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel" title="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel">LegalDocumentMLClassifierModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setClassificationModel">
+<span class="sig-name descname"><span class="pre">setClassificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setClassificationModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a path to the classification model if it has been already trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.PipelineModel.html#pyspark.ml.PipelineModel" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.PipelineModel</span></code></a>) – Classification model if it has been already trained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setLabels">
+<span class="sig-name descname"><span class="pre">setLabels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setLabels" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets array to output the label in the original form.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>list</em>) – array to output the label in the original form.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setMergeChunks">
+<span class="sig-name descname"><span class="pre">setMergeChunks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">merge</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setMergeChunks" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to merge all chunks in a document or not (Default: false)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>merge</strong> (<em>list</em>) – whether to merge all chunks in a document or not (Default: false)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setVectorizationModel">
+<span class="sig-name descname"><span class="pre">setVectorizationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setVectorizationModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a path to the classification model if it has been already trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.PipelineModel.html#pyspark.ml.PipelineModel" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.PipelineModel</span></code></a>) – Classification model if it has been already trained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -562,10 +1409,116 @@ open-source location. Other values are “clinical/models”,
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.classificationModelClass"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.classificationModelClass</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.classificationModelPath"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.classificationModelPath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.fitIntercept"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.fitIntercept</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getter_attrs"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.inputCols"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.labelCol"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.labelCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.labels"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.labels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.maxIter"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.maxIter</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.maxTokenNgram"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.maxTokenNgram</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.mergeChunks"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.mergeChunks</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.minTokenNgram"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.minTokenNgram</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.outputCol"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.tol"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.tol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.vectorizationModelPath"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.vectorizationModelPath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.clear"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.copy"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.explainParam"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.explainParams"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.extractParamMap"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.fit"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.fit()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.fitMultiple"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.fitMultiple()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getInputCols"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getOrDefault"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getOutputCol"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getParam"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.getParamValue"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.hasDefault"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.hasParam"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.isDefined"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.isSet"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.load"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.read"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.save"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.set"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setClassificationModelClass"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setClassificationModelClass()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setClassificationModelPath"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setClassificationModelPath()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setFitIntercept"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setFitIntercept()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setInputCols"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setLabelCol"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setLabelCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setLabels"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setMaxIter"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setMaxIter()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setMaxTokenNgram"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setMaxTokenNgram()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setMergeChunks"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setMergeChunks()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setMinTokenNgram"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setMinTokenNgram()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setOutputCol"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setParamValue"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setTol"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setTol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.setVectorizationModelPath"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.setVectorizationModelPath()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierApproach.write"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierApproach.write()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.classificationModel"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.classificationModel</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.inputCols"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.labels"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.labels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.maxTokenNgram"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.maxTokenNgram</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.mergeChunks"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.mergeChunks</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.minTokenNgram"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.minTokenNgram</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.name"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.outputCol"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.vectorizationModel"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.vectorizationModel</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.clear"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.copy"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.explainParam"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.explainParams"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.extractParamMap"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getInputCols"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getOrDefault"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getOutputCol"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getParam"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.getParamValue"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.hasDefault"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.hasParam"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.isDefined"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.isSet"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.load"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.load()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.pretrained"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.read"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.save"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.set"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setClassificationModel"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.setClassificationModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setLabels"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.setLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setMergeChunks"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.setMergeChunks()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setOutputCol"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setParamValue"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setParams"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.setVectorizationModel"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.setVectorizationModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.transform"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_classification.legal_document_ml_classifier.LegalDocumentMLClassifierModel.write"><code class="docutils literal notranslate"><span class="pre">LegalDocumentMLClassifierModel.write()</span></code></a></li>
 </ul>
 </li>
 </ul>

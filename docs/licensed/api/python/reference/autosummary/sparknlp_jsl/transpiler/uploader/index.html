@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/transpiler/uploader/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -343,11 +346,11 @@ document.write(`
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.upload_scala_code_in_md_file" title="sparknlp_jsl.transpiler.uploader.upload_scala_code_in_md_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">upload_scala_code_in_md_file</span></code></a>(md_file_path[, spark])</p></td>
-<td><p>Uploads Scala code to md_file, handling the transpilation process and updating Markdown files.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.apply_method_to_all_md_files" title="sparknlp_jsl.transpiler.uploader.apply_method_to_all_md_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_method_to_all_md_files</span></code></a>(directory_path)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.apply_method_to_all_md_files" title="sparknlp_jsl.transpiler.uploader.apply_method_to_all_md_files"><code class="xref py py-obj docutils literal notranslate"><span class="pre">apply_method_to_all_md_files</span></code></a>(directory_path)</p></td>
 <td><p>Applies the upload_scala_code_in_git method to all Markdown files in the specified directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.upload_scala_code_in_md_file" title="sparknlp_jsl.transpiler.uploader.upload_scala_code_in_md_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">upload_scala_code_in_md_file</span></code></a>(md_file_path[, spark])</p></td>
+<td><p>Uploads Scala code to md_file, handling the transpilation process and updating Markdown files.</p></td>
 </tr>
 </tbody>
 </table>
@@ -356,39 +359,57 @@ document.write(`
 <h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.scala_code_works" title="sparknlp_jsl.transpiler.uploader.scala_code_works"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scala_code_works</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.python_code_failed" title="sparknlp_jsl.transpiler.uploader.python_code_failed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">python_code_failed</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.scala_generated" title="sparknlp_jsl.transpiler.uploader.scala_generated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scala_generated</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.generated_code_failed" title="sparknlp_jsl.transpiler.uploader.generated_code_failed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generated_code_failed</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.generated_code_works" title="sparknlp_jsl.transpiler.uploader.generated_code_works"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generated_code_works</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.generated_code_failed" title="sparknlp_jsl.transpiler.uploader.generated_code_failed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generated_code_failed</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.python_code_failed" title="sparknlp_jsl.transpiler.uploader.python_code_failed"><code class="xref py py-obj docutils literal notranslate"><span class="pre">python_code_failed</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.results_list" title="sparknlp_jsl.transpiler.uploader.results_list"><code class="xref py py-obj docutils literal notranslate"><span class="pre">results_list</span></code></a></p></td>
 <td><p></p></td>
 </tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.scala_code_works" title="sparknlp_jsl.transpiler.uploader.scala_code_works"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scala_code_works</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.uploader.scala_generated" title="sparknlp_jsl.transpiler.uploader.scala_generated"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scala_generated</span></code></a></p></td>
+<td><p></p></td>
+</tr>
 </tbody>
 </table>
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.uploader.scala_code_works">
-<span class="sig-name descname"><span class="pre">scala_code_works</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.scala_code_works" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.uploader.apply_method_to_all_md_files">
+<span class="sig-name descname"><span class="pre">apply_method_to_all_md_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.apply_method_to_all_md_files" title="Permalink to this definition">#</a></dt>
+<dd><p>Applies the upload_scala_code_in_git method to all Markdown files in the specified directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>directory_path</strong> (<em>str</em>) – Path to the directory containing Markdown files.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.uploader.upload_scala_code_in_md_file">
+<span class="sig-name descname"><span class="pre">upload_scala_code_in_md_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.upload_scala_code_in_md_file" title="Permalink to this definition">#</a></dt>
+<dd><p>Uploads Scala code to md_file, handling the transpilation process and updating Markdown files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>md_file_path</strong> (<em>str</em>) – Path to the Markdown file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the results for the given Markdown file.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.uploader.python_code_failed">
-<span class="sig-name descname"><span class="pre">python_code_failed</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.python_code_failed" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.uploader.scala_generated">
-<span class="sig-name descname"><span class="pre">scala_generated</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.scala_generated" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.uploader.generated_code_failed">
+<span class="sig-name descname"><span class="pre">generated_code_failed</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.generated_code_failed" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -397,8 +418,8 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.uploader.generated_code_failed">
-<span class="sig-name descname"><span class="pre">generated_code_failed</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.generated_code_failed" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.uploader.python_code_failed">
+<span class="sig-name descname"><span class="pre">python_code_failed</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.python_code_failed" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -406,23 +427,15 @@ document.write(`
 <span class="sig-name descname"><span class="pre">results_list</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.results_list" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.uploader.upload_scala_code_in_md_file">
-<span class="sig-name descname"><span class="pre">upload_scala_code_in_md_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.upload_scala_code_in_md_file" title="Permalink to this definition">#</a></dt>
-<dd><p>Uploads Scala code to md_file, handling the transpilation process and updating Markdown files.</p>
-<p>Parameters:
-- md_file_path (str): Path to the Markdown file.</p>
-<p>Returns:
-- dict: A dictionary containing the results for the given Markdown file.</p>
-</dd></dl>
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.uploader.scala_code_works">
+<span class="sig-name descname"><span class="pre">scala_code_works</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.scala_code_works" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.uploader.apply_method_to_all_md_files">
-<span class="sig-name descname"><span class="pre">apply_method_to_all_md_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.apply_method_to_all_md_files" title="Permalink to this definition">#</a></dt>
-<dd><p>Applies the upload_scala_code_in_git method to all Markdown files in the specified directory.</p>
-<p>Parameters:
-- directory_path (str): Path to the directory containing Markdown files.</p>
-</dd></dl>
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.uploader.scala_generated">
+<span class="sig-name descname"><span class="pre">scala_generated</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">0</span></em><a class="headerlink" href="#sparknlp_jsl.transpiler.uploader.scala_generated" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 </section>
 </section>
@@ -460,14 +473,14 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.scala_code_works"><code class="docutils literal notranslate"><span class="pre">scala_code_works</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.python_code_failed"><code class="docutils literal notranslate"><span class="pre">python_code_failed</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.scala_generated"><code class="docutils literal notranslate"><span class="pre">scala_generated</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.generated_code_works"><code class="docutils literal notranslate"><span class="pre">generated_code_works</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.generated_code_failed"><code class="docutils literal notranslate"><span class="pre">generated_code_failed</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.results_list"><code class="docutils literal notranslate"><span class="pre">results_list</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.upload_scala_code_in_md_file"><code class="docutils literal notranslate"><span class="pre">upload_scala_code_in_md_file()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.apply_method_to_all_md_files"><code class="docutils literal notranslate"><span class="pre">apply_method_to_all_md_files()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.upload_scala_code_in_md_file"><code class="docutils literal notranslate"><span class="pre">upload_scala_code_in_md_file()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.generated_code_failed"><code class="docutils literal notranslate"><span class="pre">generated_code_failed</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.generated_code_works"><code class="docutils literal notranslate"><span class="pre">generated_code_works</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.python_code_failed"><code class="docutils literal notranslate"><span class="pre">python_code_failed</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.results_list"><code class="docutils literal notranslate"><span class="pre">results_list</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.scala_code_works"><code class="docutils literal notranslate"><span class="pre">scala_code_works</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.uploader.scala_generated"><code class="docutils literal notranslate"><span class="pre">scala_generated</span></code></a></li>
 </ul>
 </li>
 </ul>

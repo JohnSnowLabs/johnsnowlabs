@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/utils/licensed_annotator_type/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -350,7 +353,8 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">InternalAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType" title="Permalink to this definition">#</a></dt>
-<dd><dl class="py attribute">
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.ASSERTION">
 <span class="sig-name descname"><span class="pre">ASSERTION</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">assertion</span></em><a class="headerlink" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.ASSERTION" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -361,6 +365,11 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.FEATURE_VECTOR">
+<span class="sig-name descname"><span class="pre">FEATURE_VECTOR</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">feature_vector</span></em><a class="headerlink" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.FEATURE_VECTOR" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.KEYWORD">
 <span class="sig-name descname"><span class="pre">KEYWORD</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">keyword</span></em><a class="headerlink" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.KEYWORD" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -368,11 +377,6 @@ document.write(`
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.SELECTOR">
 <span class="sig-name descname"><span class="pre">SELECTOR</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">selector</span></em><a class="headerlink" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.SELECTOR" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.FEATURE_VECTOR">
-<span class="sig-name descname"><span class="pre">FEATURE_VECTOR</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">feature_vector</span></em><a class="headerlink" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.FEATURE_VECTOR" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -420,9 +424,9 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType"><code class="docutils literal notranslate"><span class="pre">InternalAnnotatorType</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.ASSERTION"><code class="docutils literal notranslate"><span class="pre">InternalAnnotatorType.ASSERTION</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.DISAMBIGUATION"><code class="docutils literal notranslate"><span class="pre">InternalAnnotatorType.DISAMBIGUATION</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.FEATURE_VECTOR"><code class="docutils literal notranslate"><span class="pre">InternalAnnotatorType.FEATURE_VECTOR</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.KEYWORD"><code class="docutils literal notranslate"><span class="pre">InternalAnnotatorType.KEYWORD</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.SELECTOR"><code class="docutils literal notranslate"><span class="pre">InternalAnnotatorType.SELECTOR</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.FEATURE_VECTOR"><code class="docutils literal notranslate"><span class="pre">InternalAnnotatorType.FEATURE_VECTOR</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.licensed_annotator_type.InternalAnnotatorType.SQL"><code class="docutils literal notranslate"><span class="pre">InternalAnnotatorType.SQL</span></code></a></li>
 </ul>
 </li>

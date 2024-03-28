@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/transpiler/nlu_2_python/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -339,40 +342,40 @@ document.write(`
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.bucket" title="sparknlp_jsl.transpiler.nlu_2_python.bucket"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bucket</span></code></a>(c)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.convert_nlu_component_to_python" title="sparknlp_jsl.transpiler.nlu_2_python.convert_nlu_component_to_python"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_nlu_component_to_python</span></code></a>(c, module)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_finance" title="sparknlp_jsl.transpiler.nlu_2_python.is_component_finance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_component_finance</span></code></a>(c)</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_legal" title="sparknlp_jsl.transpiler.nlu_2_python.is_component_legal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_component_legal</span></code></a>(c)</p></td>
+<td><p></p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_medical" title="sparknlp_jsl.transpiler.nlu_2_python.is_component_medical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_component_medical</span></code></a>(c)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_open_source" title="sparknlp_jsl.transpiler.nlu_2_python.is_component_open_source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_component_open_source</span></code></a>(c)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_pretrained" title="sparknlp_jsl.transpiler.nlu_2_python.is_component_pretrained"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_component_pretrained</span></code></a>(c)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_finance" title="sparknlp_jsl.transpiler.nlu_2_python.is_component_finance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_component_finance</span></code></a>(c)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_legal" title="sparknlp_jsl.transpiler.nlu_2_python.is_component_legal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_component_legal</span></code></a>(c)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_ocr" title="sparknlp_jsl.transpiler.nlu_2_python.is_component_ocr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_component_ocr</span></code></a>(c)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.starts_with_finance" title="sparknlp_jsl.transpiler.nlu_2_python.starts_with_finance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">starts_with_finance</span></code></a>(c)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_open_source" title="sparknlp_jsl.transpiler.nlu_2_python.is_component_open_source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_component_open_source</span></code></a>(c)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.starts_with_legal" title="sparknlp_jsl.transpiler.nlu_2_python.starts_with_legal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">starts_with_legal</span></code></a>(c)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_pretrained" title="sparknlp_jsl.transpiler.nlu_2_python.is_component_pretrained"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_component_pretrained</span></code></a>(c)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.starts_with_medical" title="sparknlp_jsl.transpiler.nlu_2_python.starts_with_medical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">starts_with_medical</span></code></a>(c)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.nlu_component_to_spark_nlp_code" title="sparknlp_jsl.transpiler.nlu_2_python.nlu_component_to_spark_nlp_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nlu_component_to_spark_nlp_code</span></code></a>(c)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.bucket" title="sparknlp_jsl.transpiler.nlu_2_python.bucket"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bucket</span></code></a>(c)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.starts_with_finance" title="sparknlp_jsl.transpiler.nlu_2_python.starts_with_finance"><code class="xref py py-obj docutils literal notranslate"><span class="pre">starts_with_finance</span></code></a>(c)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.convert_nlu_component_to_python" title="sparknlp_jsl.transpiler.nlu_2_python.convert_nlu_component_to_python"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_nlu_component_to_python</span></code></a>(c, module)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.starts_with_legal" title="sparknlp_jsl.transpiler.nlu_2_python.starts_with_legal"><code class="xref py py-obj docutils literal notranslate"><span class="pre">starts_with_legal</span></code></a>(c)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.nlu_component_to_spark_nlp_code" title="sparknlp_jsl.transpiler.nlu_2_python.nlu_component_to_spark_nlp_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">nlu_component_to_spark_nlp_code</span></code></a>(c)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.starts_with_medical" title="sparknlp_jsl.transpiler.nlu_2_python.starts_with_medical"><code class="xref py py-obj docutils literal notranslate"><span class="pre">starts_with_medical</span></code></a>(c)</p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.to_python" title="sparknlp_jsl.transpiler.nlu_2_python.to_python"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_python</span></code></a>(pipeline_to_convert)</p></td>
@@ -385,37 +388,22 @@ document.write(`
 <h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.open_source_annotator_set_final" title="sparknlp_jsl.transpiler.nlu_2_python.open_source_annotator_set_final"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_source_annotator_set_final</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.medical_annotators_set" title="sparknlp_jsl.transpiler.nlu_2_python.medical_annotators_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">medical_annotators_set</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.medical_annotators_set" title="sparknlp_jsl.transpiler.nlu_2_python.medical_annotators_set"><code class="xref py py-obj docutils literal notranslate"><span class="pre">medical_annotators_set</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.nlu_2_python.open_source_annotator_set_final" title="sparknlp_jsl.transpiler.nlu_2_python.open_source_annotator_set_final"><code class="xref py py-obj docutils literal notranslate"><span class="pre">open_source_annotator_set_final</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.open_source_annotator_set_final">
-<span class="sig-name descname"><span class="pre">open_source_annotator_set_final</span></span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.open_source_annotator_set_final" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.medical_annotators_set">
-<span class="sig-name descname"><span class="pre">medical_annotators_set</span></span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.medical_annotators_set" title="Permalink to this definition">#</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.bucket">
+<span class="sig-name descname"><span class="pre">bucket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.bucket" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.is_component_medical">
-<span class="sig-name descname"><span class="pre">is_component_medical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_medical" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.is_component_open_source">
-<span class="sig-name descname"><span class="pre">is_component_open_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_open_source" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.is_component_pretrained">
-<span class="sig-name descname"><span class="pre">is_component_pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_pretrained" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.convert_nlu_component_to_python">
+<span class="sig-name descname"><span class="pre">convert_nlu_component_to_python</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.convert_nlu_component_to_python" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -429,8 +417,28 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.is_component_medical">
+<span class="sig-name descname"><span class="pre">is_component_medical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_medical" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.is_component_ocr">
 <span class="sig-name descname"><span class="pre">is_component_ocr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_ocr" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.is_component_open_source">
+<span class="sig-name descname"><span class="pre">is_component_open_source</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_open_source" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.is_component_pretrained">
+<span class="sig-name descname"><span class="pre">is_component_pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_pretrained" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.nlu_component_to_spark_nlp_code">
+<span class="sig-name descname"><span class="pre">nlu_component_to_spark_nlp_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.nlu_component_to_spark_nlp_code" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -449,23 +457,18 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.bucket">
-<span class="sig-name descname"><span class="pre">bucket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.bucket" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.convert_nlu_component_to_python">
-<span class="sig-name descname"><span class="pre">convert_nlu_component_to_python</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.convert_nlu_component_to_python" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.nlu_component_to_spark_nlp_code">
-<span class="sig-name descname"><span class="pre">nlu_component_to_spark_nlp_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.nlu_component_to_spark_nlp_code" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.to_python">
 <span class="sig-name descname"><span class="pre">to_python</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipeline_to_convert</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.to_python" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.medical_annotators_set">
+<span class="sig-name descname"><span class="pre">medical_annotators_set</span></span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.medical_annotators_set" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.nlu_2_python.open_source_annotator_set_final">
+<span class="sig-name descname"><span class="pre">open_source_annotator_set_final</span></span><a class="headerlink" href="#sparknlp_jsl.transpiler.nlu_2_python.open_source_annotator_set_final" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -504,21 +507,21 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.open_source_annotator_set_final"><code class="docutils literal notranslate"><span class="pre">open_source_annotator_set_final</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.medical_annotators_set"><code class="docutils literal notranslate"><span class="pre">medical_annotators_set</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_medical"><code class="docutils literal notranslate"><span class="pre">is_component_medical()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_open_source"><code class="docutils literal notranslate"><span class="pre">is_component_open_source()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_pretrained"><code class="docutils literal notranslate"><span class="pre">is_component_pretrained()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.bucket"><code class="docutils literal notranslate"><span class="pre">bucket()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.convert_nlu_component_to_python"><code class="docutils literal notranslate"><span class="pre">convert_nlu_component_to_python()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_finance"><code class="docutils literal notranslate"><span class="pre">is_component_finance()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_legal"><code class="docutils literal notranslate"><span class="pre">is_component_legal()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_medical"><code class="docutils literal notranslate"><span class="pre">is_component_medical()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_ocr"><code class="docutils literal notranslate"><span class="pre">is_component_ocr()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_open_source"><code class="docutils literal notranslate"><span class="pre">is_component_open_source()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.is_component_pretrained"><code class="docutils literal notranslate"><span class="pre">is_component_pretrained()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.nlu_component_to_spark_nlp_code"><code class="docutils literal notranslate"><span class="pre">nlu_component_to_spark_nlp_code()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.starts_with_finance"><code class="docutils literal notranslate"><span class="pre">starts_with_finance()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.starts_with_legal"><code class="docutils literal notranslate"><span class="pre">starts_with_legal()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.starts_with_medical"><code class="docutils literal notranslate"><span class="pre">starts_with_medical()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.bucket"><code class="docutils literal notranslate"><span class="pre">bucket()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.convert_nlu_component_to_python"><code class="docutils literal notranslate"><span class="pre">convert_nlu_component_to_python()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.nlu_component_to_spark_nlp_code"><code class="docutils literal notranslate"><span class="pre">nlu_component_to_spark_nlp_code()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.to_python"><code class="docutils literal notranslate"><span class="pre">to_python()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.medical_annotators_set"><code class="docutils literal notranslate"><span class="pre">medical_annotators_set</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.nlu_2_python.open_source_annotator_set_final"><code class="docutils literal notranslate"><span class="pre">open_source_annotator_set_final</span></code></a></li>
 </ul>
 </li>
 </ul>

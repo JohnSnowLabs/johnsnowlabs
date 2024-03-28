@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
+    <script src="../../../../static/clipboard.min.js"></script>
+    <script src="../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/updateModels/index';</script>
     <link rel="shortcut icon" href="../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -321,14 +324,15 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.updateModels.UpdateModels" title="sparknlp_jsl.updateModels.UpdateModels"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UpdateModels</span></code></a></p></td>
-<td><p>Helper class that allow us to update pretrained models located in the cache folder</p></td>
+<td><p>Helper class that allow us to update pretrained models located in the cache folder.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.updateModels.UpdateModels">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">UpdateModels</span></span><a class="headerlink" href="#sparknlp_jsl.updateModels.UpdateModels" title="Permalink to this definition">#</a></dt>
-<dd><p>Helper class that allow us to update pretrained models located in the cache folder</p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Helper class that allow us to update pretrained models located in the cache folder.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.updateModels.UpdateModels.updateCacheModels">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">updateCacheModels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cache_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.updateModels.UpdateModels.updateCacheModels" title="Permalink to this definition">#</a></dt>
@@ -338,10 +342,7 @@ version for each model. If there is a new version, it will be downloaded and
 overwrite the existing one.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>cache_folder</strong><span class="classifier">str</span></dt><dd><p>Path where the models will be refreshed. i.e (“hdfs:..”,”file:…”)</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>cache_folder</strong> (<em>str</em>) – Path where the models will be refreshed. i.e (“hdfs:..”,”file:…”)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -349,29 +350,23 @@ overwrite the existing one.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.updateModels.UpdateModels.updateModels">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">updateModels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_names</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_date</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cache_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.updateModels.UpdateModels.updateModels" title="Permalink to this definition">#</a></dt>
-<dd><p>Downloads all given models by filtering parameters.
-If no cache_folder is specified, it will download the models in the default folder.
-Parameters
-———-
-model_names: List[str]</p>
-<blockquote>
-<div><p>names of the models to download</p>
-</div></blockquote>
-<dl class="simple">
-<dt>remote_loc: str</dt><dd><p>The remote location of the models in the s3, by default “clinical/models”.</p>
-</dd>
-<dt>language: str</dt><dd><p>the language of the models, by default “en”</p>
-</dd>
-<dt>start_date: str</dt><dd><p>The start date to filter the models.
+<dd><p>Downloads all given models by filtering parameters.</p>
+<p>If no cache_folder is specified, it will download the models in the default folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model_names</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – names of the models to download</p></li>
+<li><p><strong>remote_loc</strong> (<em>str</em>) – The remote location of the models in the s3, by default “clinical/models”.</p></li>
+<li><p><strong>language</strong> (<em>str</em>) – the language of the models, by default “en”</p></li>
+<li><p><strong>start_date</strong> (<em>str</em>) – The start date to filter the models.
 The start date should be in a string format that can be parsed into a valid date. Format: yyyy-MM-dd
-Default: None. if the value is None, it does not filter.</p>
-</dd>
-<dt>end_date: str</dt><dd><p>The end date to filter the models.
+Default: None. if the value is None, it does not filter.</p></li>
+<li><p><strong>end_date</strong> (<em>str</em>) – The end date to filter the models.
 The end date should be in a string format that can be parsed into a valid date. Format: yyyy-MM-dd
-Default: None. if the value is None, it does not filter.</p>
-</dd>
-<dt>cache_folder<span class="classifier">str</span></dt><dd><p>Path where the models will be downloaded. i.e (“hdfs:..”,”file:…”). Default: None
-If no cache_folder is specified, it will download the models in the default folder.</p>
+Default: None. if the value is None, it does not filter.</p></li>
+<li><p><strong>cache_folder</strong> (<em>str</em>) – Path where the models will be downloaded. i.e (“hdfs:..”,”file:…”). Default: None
+If no cache_folder is specified, it will download the models in the default folder.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
