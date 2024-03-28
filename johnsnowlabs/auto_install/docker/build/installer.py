@@ -23,7 +23,8 @@ nlp.install(
     aws_access_key=aws_secret_access_key,
     hardware_platform=HARDWARE_TARGET,
 )
-nlp.start(model_cache_folder="/app/model_cache",
+nlp.start(model_cache_folder="/app/model_cache", aws_access_key=aws_secret_access_key, aws_key_id=aws_access_key_id,
+          hc_license=nlp_license, enterprise_nlp_secret=nlp_secret, visual_secret=visual_secret,
           visual=True if visual_secret else False, )
 if model_ref:
     # Cache model, if not specified user must
