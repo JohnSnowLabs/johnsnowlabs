@@ -116,3 +116,9 @@ val result = mapper_model.transform(data)
 |Output Labels:|[pt_mappings]|
 |Language:|en|
 |Size:|499.2 KB|
+
+## References
+
+This model is trained with the v27 MedDRA dataset.
+
+**To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
