@@ -7,7 +7,7 @@ date: 2024-03-28
 tags: [licensed, en, clinical, profiling, ner_profiling, ner, deid, de_identification]
 task: [Named Entity Recognition, Pipeline Healthcare]
 language: en
-edition: Healthcare NLP 5.3.0
+edition: Healthcare NLP 5.3.1
 spark_version: 3.0
 supported: true
 annotator: PipelineModel
@@ -29,8 +29,8 @@ Each model addresses a unique aspect of deidentification, making this pipeline a
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_profiling_deidentification_en_5.3.0_3.0_1711629306383.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_profiling_deidentification_en_5.3.0_3.0_1711629306383.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_profiling_deidentification_en_5.3.1_3.0_1711629306383.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_profiling_deidentification_en_5.3.1_3.0_1711629306383.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -144,7 +144,7 @@ val result = ner_profiling_pipeline.annotate("""Record date : 2093-01-13 , David
 |---|---|
 |Model Name:|ner_profiling_deidentification|
 |Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.3.0+|
+|Compatibility:|Healthcare NLP 5.3.1+|
 |License:|Licensed|
 |Edition:|Official|
 |Language:|en|
