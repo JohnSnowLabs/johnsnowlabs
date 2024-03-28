@@ -180,6 +180,13 @@ val result = nlpPipeline.fit(data).transform(data)
 
 {%- endcapture -%}
 
+{%- capture model_api_link -%}
+[Flattener](https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/Flattener.html)
+{%- endcapture -%}
+
+{%- capture model_python_api_link -%}
+[Flattener](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/flattener/index.html)
+{%- endcapture -%}
 
 {% include templates/licensed_approach_model_medical_fin_leg_template.md
 title=title
@@ -188,4 +195,7 @@ model_description=model_description
 model_input_anno=model_input_anno
 model_output_anno=model_output_anno
 model_python_medical=model_python_medical
-model_scala_medical=model_scala_medical%}
+model_scala_medical=model_scala_medical
+model_api_link=model_api_link
+model_python_api_link=model_python_api_link
+%}
