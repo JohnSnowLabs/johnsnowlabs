@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/legal/sequence_generation/legal_encoder_decoder/index';</script>
     <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
@@ -380,20 +383,607 @@ document.write(`
 <table class="autosummary longtable table autosummary">
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder" title="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LegalEncoderDecoder</span></code></a></p></td>
-<td><p>Base class for :py:class:<a href="#id1"><span class="problematic" id="id2">`</span></a>Model`s that wrap Java/Scala</p></td>
+<td><p>Base class for Model classes.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LegalEncoderDecoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.legal.sequence_generation.LegalEncoderDecoder'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder" title="Permalink to this definition">#</a></dt>
-<dd><p>Base class for :py:class:<a href="#id3"><span class="problematic" id="id4">`</span></a>Model`s that wrap Java/Scala
-implementations. Subclasses should inherit this class before
-param mix-ins, because this sets the UID from the Java model.</p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.MedicalEncoderDecoder</span></code></p>
+<p>Base class for Model classes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.batchSize">
+<span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.batchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.caseSensitive">
+<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.caseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.configProtoBytes">
+<span class="sig-name descname"><span class="pre">configProtoBytes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.configProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.doSample">
+<span class="sig-name descname"><span class="pre">doSample</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.doSample" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.engine">
+<span class="sig-name descname"><span class="pre">engine</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.engine" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.ignoreTokenIds">
+<span class="sig-name descname"><span class="pre">ignoreTokenIds</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.ignoreTokenIds" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.maxNewTokens">
+<span class="sig-name descname"><span class="pre">maxNewTokens</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.maxNewTokens" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.maxTextLength">
+<span class="sig-name descname"><span class="pre">maxTextLength</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.maxTextLength" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.mlFrameworkType">
+<span class="sig-name descname"><span class="pre">mlFrameworkType</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.mlFrameworkType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">LegalEncoderDecoder</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.noRepeatNgramSize">
+<span class="sig-name descname"><span class="pre">noRepeatNgramSize</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.noRepeatNgramSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.randomSeed">
+<span class="sig-name descname"><span class="pre">randomSeed</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.randomSeed" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.refineChunkSize">
+<span class="sig-name descname"><span class="pre">refineChunkSize</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.refineChunkSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.refineMaxAttempts">
+<span class="sig-name descname"><span class="pre">refineMaxAttempts</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.refineMaxAttempts" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.refineSummary">
+<span class="sig-name descname"><span class="pre">refineSummary</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.refineSummary" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.refineSummaryTargetLength">
+<span class="sig-name descname"><span class="pre">refineSummaryTargetLength</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.refineSummaryTargetLength" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.stopAtEos">
+<span class="sig-name descname"><span class="pre">stopAtEos</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.stopAtEos" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.task">
+<span class="sig-name descname"><span class="pre">task</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.task" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.topK">
+<span class="sig-name descname"><span class="pre">topK</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.topK" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.useCache">
+<span class="sig-name descname"><span class="pre">useCache</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.useCache" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getBatchSize">
+<span class="sig-name descname"><span class="pre">getBatchSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current batch size</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getCaseSensitive">
+<span class="sig-name descname"><span class="pre">getCaseSensitive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getEngine">
+<span class="sig-name descname"><span class="pre">getEngine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getEngine" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Deep Learning engine used for this model”</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setBatchSize">
+<span class="sig-name descname"><span class="pre">setBatchSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>int</em>) – Batch size</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setCaseSensitive">
+<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setConfigProtoBytes">
+<span class="sig-name descname"><span class="pre">setConfigProtoBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setConfigProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets configProto from tensorflow, serialized into byte array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>b</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – ConfigProto from tensorflow, serialized into byte array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setDoSample">
+<span class="sig-name descname"><span class="pre">setDoSample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setDoSample" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether or not to use sampling, use greedy decoding otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether or not to use sampling; use greedy decoding otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setIgnoreTokenIds">
+<span class="sig-name descname"><span class="pre">setIgnoreTokenIds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setIgnoreTokenIds" title="Permalink to this definition">#</a></dt>
+<dd><p>A list of token ids which are ignored in the decoder’s output.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – The words to be filtered out</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setMaxNewTokens">
+<span class="sig-name descname"><span class="pre">setMaxNewTokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setMaxNewTokens" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the maximum number of new tokens to be generated</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – the maximum number of new tokens to be generated</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setMaxTextLength">
+<span class="sig-name descname"><span class="pre">setMaxTextLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setMaxTextLength" title="Permalink to this definition">#</a></dt>
+<dd><p>Set max text length to process</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – max text length</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setNoRepeatNgramSize">
+<span class="sig-name descname"><span class="pre">setNoRepeatNgramSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setNoRepeatNgramSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets size of n-grams that can only occur once.</p>
+<p>If set to int &gt; 0, all ngrams of that size can only occur once.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – N-gram size can only occur once</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRandomSeed">
+<span class="sig-name descname"><span class="pre">setRandomSeed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRandomSeed" title="Permalink to this definition">#</a></dt>
+<dd><p>Set random seed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – random seed</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRefineChunkSize">
+<span class="sig-name descname"><span class="pre">setRefineChunkSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRefineChunkSize" title="Permalink to this definition">#</a></dt>
+<dd><p>How large should refined chunks Be. Should be equal to LLM context window size in tokens. Takes only effect when refineSummary=True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – How large should refined chunks Be. Should be equal to LLM context window size in tokens. Takes only effect when refineSummary=True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRefineMaxAttempts">
+<span class="sig-name descname"><span class="pre">setRefineMaxAttempts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRefineMaxAttempts" title="Permalink to this definition">#</a></dt>
+<dd><p>How many times should chunks be re-summarized while they are above SummaryTargetLength before stopping. Takes only effect when refineSummary=True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – How many times should chunks be re-summarized while they are above SummaryTargetLength before stopping. Takes only effect when refineSummary=True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRefineSummary">
+<span class="sig-name descname"><span class="pre">setRefineSummary</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRefineSummary" title="Permalink to this definition">#</a></dt>
+<dd><p>Set true to perform refined summarization at increased computation cost.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>b</strong> (<em>bool</em>) – whether to perform refined summaries  or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRefineSummaryTargetLength">
+<span class="sig-name descname"><span class="pre">setRefineSummaryTargetLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRefineSummaryTargetLength" title="Permalink to this definition">#</a></dt>
+<dd><p>Target length of summarizations in Tokens (delimited by whitespace). Takes only effect when refineSummary=True</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>i</strong> (<em>int</em>) – Target length of summarizations in Tokens (delimited by whitespace). Takes only effect when refineSummary=True</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setStopAtEos">
+<span class="sig-name descname"><span class="pre">setStopAtEos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setStopAtEos" title="Permalink to this definition">#</a></dt>
+<dd><p>Stop text generation when the end-of-sentence token is encountered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>b</strong> (<em>bool</em>) – whether to stop at end-of-sentence token or not</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setTopK">
+<span class="sig-name descname"><span class="pre">setTopK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setTopK" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the number of highest probability vocabulary tokens to keep for
+top-k-filtering.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Number of highest probability vocabulary tokens to keep</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -433,7 +1023,80 @@ param mix-ins, because this sets the UID from the Java model.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.batchSize"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.caseSensitive"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.caseSensitive</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.configProtoBytes"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.configProtoBytes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.doSample"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.doSample</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.engine"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.engine</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getter_attrs"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.ignoreTokenIds"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.ignoreTokenIds</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.inputCols"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.maxNewTokens"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.maxNewTokens</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.maxTextLength"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.maxTextLength</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.mlFrameworkType"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.mlFrameworkType</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.name"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.noRepeatNgramSize"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.noRepeatNgramSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.outputCol"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.randomSeed"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.randomSeed</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.refineChunkSize"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.refineChunkSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.refineMaxAttempts"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.refineMaxAttempts</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.refineSummary"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.refineSummary</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.refineSummaryTargetLength"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.refineSummaryTargetLength</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.stopAtEos"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.stopAtEos</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.task"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.task</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.topK"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.topK</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.useCache"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.useCache</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.clear"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.copy"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParam"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.explainParams"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.extractParamMap"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getBatchSize"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getCaseSensitive"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getEngine"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getEngine()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getInputCols"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getOrDefault"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getOutputCol"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getParam"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.getParamValue"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.hasDefault"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.hasParam"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.isDefined"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.isSet"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.load"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.read"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.save"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.set"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setBatchSize"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setConfigProtoBytes()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setDoSample"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setDoSample()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setIgnoreTokenIds"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setIgnoreTokenIds()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setInputCols"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setMaxNewTokens"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setMaxNewTokens()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setMaxTextLength"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setMaxTextLength()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setNoRepeatNgramSize"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setNoRepeatNgramSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setOutputCol"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setParamValue"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setParams"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRandomSeed"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setRandomSeed()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRefineChunkSize"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setRefineChunkSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRefineMaxAttempts"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setRefineMaxAttempts()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRefineSummary"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setRefineSummary()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setRefineSummaryTargetLength"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setRefineSummaryTargetLength()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setStopAtEos"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setStopAtEos()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.setTopK"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.setTopK()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.transform"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.legal_encoder_decoder.LegalEncoderDecoder.write"><code class="docutils literal notranslate"><span class="pre">LegalEncoderDecoder.write()</span></code></a></li>
 </ul>
 </li>
 </ul>

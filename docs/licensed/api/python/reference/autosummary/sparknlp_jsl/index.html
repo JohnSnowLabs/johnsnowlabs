@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../static/doctools.js"></script>
     <script src="../../../static/sphinx_highlight.js"></script>
     <script src="../../../static/toggleprompt.js"></script>
+    <script src="../../../static/clipboard.min.js"></script>
+    <script src="../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/index';</script>
     <link rel="shortcut icon" href="../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -375,12 +378,6 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="legal/token_classification/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.legal.token_classification</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="nlp_test/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.nlp_test</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="nlp_test/bias/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.nlp_test.bias</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="nlp_test/noisy_labels/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.nlp_test.noisy_labels</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="nlp_test/robustness/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.nlp_test.robustness</span></code></a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="transpiler/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.transpiler</span></code></a><ul>
 <li class="toctree-l2"><a class="reference internal" href="transpiler/externalSources/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.transpiler.externalSources</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="transpiler/builder/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.transpiler.builder</span></code></a></li>
@@ -440,20 +437,20 @@ document.write(`
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.start" title="sparknlp_jsl.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a>(secret[, gpu, apple_silicon, aarch64, public, ...])</p></td>
-<td><p>Starts a SparkSession with default parameters for Spark NLP Licensed</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.get_credentials" title="sparknlp_jsl.get_credentials"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_credentials</span></code></a>(spark)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.get_credentials" title="sparknlp_jsl.get_credentials"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_credentials</span></code></a>(spark)</p></td>
 <td><p>Gets John Snow Labs credentials</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.library_settings" title="sparknlp_jsl.library_settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">library_settings</span></code></a>(spark)</p></td>
+<td><p>Gets the library settings</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.pub_version" title="sparknlp_jsl.pub_version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pub_version</span></code></a>()</p></td>
 <td><p>Gets the public version of Spark NLP</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.version" title="sparknlp_jsl.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></a>()</p></td>
-<td><p>Gets the version of Spark NLP</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.start" title="sparknlp_jsl.start"><code class="xref py py-obj docutils literal notranslate"><span class="pre">start</span></code></a>(secret[, gpu, apple_silicon, aarch64, public, ...])</p></td>
+<td><p>Starts a SparkSession with default parameters for Spark NLP Licensed</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.library_settings" title="sparknlp_jsl.library_settings"><code class="xref py py-obj docutils literal notranslate"><span class="pre">library_settings</span></code></a>(spark)</p></td>
-<td><p>Gets the library settings</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.version" title="sparknlp_jsl.version"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version</span></code></a>()</p></td>
+<td><p>Gets the version of Spark NLP</p></td>
 </tr>
 </tbody>
 </table>
@@ -465,36 +462,64 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.annotators" title="sparknlp_jsl.annotators"><code class="xref py py-obj docutils literal notranslate"><span class="pre">annotators</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transformer_seq_classification" title="sparknlp_jsl.transformer_seq_classification"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transformer_seq_classification</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.version_regex" title="sparknlp_jsl.version_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version_regex</span></code></a></p></td>
-<td><p></p></td>
-</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.size_regex" title="sparknlp_jsl.size_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">size_regex</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transformer_seq_classification" title="sparknlp_jsl.transformer_seq_classification"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transformer_seq_classification</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.version_regex" title="sparknlp_jsl.version_regex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">version_regex</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotators">
-<span class="sig-name descname"><span class="pre">annotators</span></span><a class="headerlink" href="#sparknlp_jsl.annotators" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.get_credentials">
+<span class="sig-name descname"><span class="pre">get_credentials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.get_credentials" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets John Snow Labs credentials</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>spark</strong> (<em>SparkSession</em>) – SparkSession</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(secretKey, keyId, token)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.transformer_seq_classification">
-<span class="sig-name descname"><span class="pre">transformer_seq_classification</span></span><a class="headerlink" href="#sparknlp_jsl.transformer_seq_classification" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.library_settings">
+<span class="sig-name descname"><span class="pre">library_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.library_settings" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the library settings</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>spark</strong> (<em>SparkSession</em>) – SparkSession</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Library settings</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.version_regex">
-<span class="sig-name descname"><span class="pre">version_regex</span></span><a class="headerlink" href="#sparknlp_jsl.version_regex" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.size_regex">
-<span class="sig-name descname"><span class="pre">size_regex</span></span><a class="headerlink" href="#sparknlp_jsl.size_regex" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.pub_version">
+<span class="sig-name descname"><span class="pre">pub_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pub_version" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the public version of Spark NLP</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Public version of Spark NLP</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.start">
@@ -513,37 +538,22 @@ document.write(`
     <span class="o">.</span><span class="n">getOrCreate</span><span class="p">()</span>
 </pre></div>
 </div>
-<dl class="simple">
-<dt>Args:</dt><dd><p>secret (str): Your secret key
-gpu (bool): Whether to use GPU or not
-apple_silicon (bool): Whether to use M1 or not
-aarch64 (bool): Whether to use aarch64 or not
-public (str): Spark NLP version
-params (dict): SparkSession params</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>secret</strong> (<em>str</em>) – Your secret key</p></li>
+<li><p><strong>gpu</strong> (<em>bool</em>) – Whether to use GPU or not</p></li>
+<li><p><strong>apple_silicon</strong> (<em>bool</em>) – Whether to use M1 or not</p></li>
+<li><p><strong>aarch64</strong> (<em>bool</em>) – Whether to use aarch64 or not</p></li>
+<li><p><strong>public</strong> (<em>str</em>) – Spark NLP version</p></li>
+<li><p><strong>params</strong> (<em>dict</em>) – SparkSession params</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>SparkSession: SparkSession with Spark NLP Licensed</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>SparkSession with Spark NLP Licensed</p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.get_credentials">
-<span class="sig-name descname"><span class="pre">get_credentials</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.get_credentials" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets John Snow Labs credentials</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>spark (SparkSession): SparkSession</p>
-</dd>
-<dt>Returns:</dt><dd><p>tuple: (secretKey, keyId, token)</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.pub_version">
-<span class="sig-name descname"><span class="pre">pub_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.pub_version" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets the public version of Spark NLP</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>str: Public version of Spark NLP</p>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SparkSession</p>
 </dd>
 </dl>
 </dd></dl>
@@ -552,23 +562,35 @@ params (dict): SparkSession params</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.version">
 <span class="sig-name descname"><span class="pre">version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.version" title="Permalink to this definition">#</a></dt>
 <dd><p>Gets the version of Spark NLP</p>
-<dl class="simple">
-<dt>Returns:</dt><dd><p>str: Version of Spark NLP</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Version of Spark NLP</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
 
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.library_settings">
-<span class="sig-name descname"><span class="pre">library_settings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.library_settings" title="Permalink to this definition">#</a></dt>
-<dd><p>Gets the library settings</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>spark (SparkSession): SparkSession</p>
-</dd>
-<dt>Returns:</dt><dd><p>str: Library settings</p>
-</dd>
-</dl>
-</dd></dl>
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotators">
+<span class="sig-name descname"><span class="pre">annotators</span></span><a class="headerlink" href="#sparknlp_jsl.annotators" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.size_regex">
+<span class="sig-name descname"><span class="pre">size_regex</span></span><a class="headerlink" href="#sparknlp_jsl.size_regex" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.transformer_seq_classification">
+<span class="sig-name descname"><span class="pre">transformer_seq_classification</span></span><a class="headerlink" href="#sparknlp_jsl.transformer_seq_classification" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.version_regex">
+<span class="sig-name descname"><span class="pre">version_regex</span></span><a class="headerlink" href="#sparknlp_jsl.version_regex" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 </section>
 </section>
@@ -608,15 +630,15 @@ params (dict): SparkSession params</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.get_credentials"><code class="docutils literal notranslate"><span class="pre">get_credentials()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.library_settings"><code class="docutils literal notranslate"><span class="pre">library_settings()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pub_version"><code class="docutils literal notranslate"><span class="pre">pub_version()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.version"><code class="docutils literal notranslate"><span class="pre">version()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotators"><code class="docutils literal notranslate"><span class="pre">annotators</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.size_regex"><code class="docutils literal notranslate"><span class="pre">size_regex</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transformer_seq_classification"><code class="docutils literal notranslate"><span class="pre">transformer_seq_classification</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.version_regex"><code class="docutils literal notranslate"><span class="pre">version_regex</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.size_regex"><code class="docutils literal notranslate"><span class="pre">size_regex</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.start"><code class="docutils literal notranslate"><span class="pre">start()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.get_credentials"><code class="docutils literal notranslate"><span class="pre">get_credentials()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.pub_version"><code class="docutils literal notranslate"><span class="pre">pub_version()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.version"><code class="docutils literal notranslate"><span class="pre">version()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.library_settings"><code class="docutils literal notranslate"><span class="pre">library_settings()</span></code></a></li>
 </ul>
 </li>
 </ul>

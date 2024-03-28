@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/transpiler/source_loader/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -344,6 +347,12 @@ or Scala code, updating files with transpiled Scala code, and processing Python 
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.source_loader.get_python_code_from_md" title="sparknlp_jsl.transpiler.source_loader.get_python_code_from_md"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_python_code_from_md</span></code></a>(md_file_path)</p></td>
+<td><p>Extract Python code from a Markdown file.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.source_loader.get_scala_code_from_md" title="sparknlp_jsl.transpiler.source_loader.get_scala_code_from_md"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scala_code_from_md</span></code></a>(md_file_path)</p></td>
+<td><p>Extract Scala code from a Markdown file.</p></td>
+</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.source_loader.load_file_as_dict" title="sparknlp_jsl.transpiler.source_loader.load_file_as_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_file_as_dict</span></code></a>(internal_classes, openSource_classes)</p></td>
 <td><p>Load two files and concatenate their contents into a dictionary.</p></td>
 </tr>
@@ -353,77 +362,117 @@ or Scala code, updating files with transpiled Scala code, and processing Python 
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.source_loader.update_md_file" title="sparknlp_jsl.transpiler.source_loader.update_md_file"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_md_file</span></code></a>(file_path)</p></td>
 <td><p>Update a Markdown file by transpiling Python code to Scala code.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.source_loader.get_scala_code_from_md" title="sparknlp_jsl.transpiler.source_loader.get_scala_code_from_md"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_scala_code_from_md</span></code></a>(md_file_path)</p></td>
-<td><p>Extract Scala code from a Markdown file.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.source_loader.get_python_code_from_md" title="sparknlp_jsl.transpiler.source_loader.get_python_code_from_md"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_python_code_from_md</span></code></a>(md_file_path)</p></td>
-<td><p>Extract Python code from a Markdown file.</p></td>
-</tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.source_loader.update_md_file_for_working_scala_code" title="sparknlp_jsl.transpiler.source_loader.update_md_file_for_working_scala_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">update_md_file_for_working_scala_code</span></code></a>(md_file_path, ...)</p></td>
 <td><p>Update a Markdown file by replacing the Scala code.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.source_loader.load_file_as_dict">
-<span class="sig-name descname"><span class="pre">load_file_as_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">internal_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">openSource_classes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.source_loader.load_file_as_dict" title="Permalink to this definition">#</a></dt>
-<dd><p>Load two files and concatenate their contents into a dictionary.</p>
-<p>Parameters:
-- file_path1 (str): The path to the first file.
-- file_path2 (str): The path to the second file.</p>
-<p>Returns:
-- dict: A dictionary containing the concatenated content of the two files.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.source_loader.process_python_code">
-<span class="sig-name descname"><span class="pre">process_python_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">python_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.source_loader.process_python_code" title="Permalink to this definition">#</a></dt>
-<dd><p>Process Python code using the transpiler.</p>
-<p>Parameters:
-- python_code (str): The Python code to be processed.</p>
-<p>Returns:
-- str: The processed Scala code.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.source_loader.update_md_file">
-<span class="sig-name descname"><span class="pre">update_md_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.source_loader.update_md_file" title="Permalink to this definition">#</a></dt>
-<dd><p>Update a Markdown file by transpiling Python code to Scala code.</p>
-<p>Parameters:
-- file_path (str): The path to the Markdown file.</p>
-<p>Returns:
-- None: [Specify the return type and description]</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.source_loader.get_python_code_from_md">
+<span class="sig-name descname"><span class="pre">get_python_code_from_md</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md_file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.source_loader.get_python_code_from_md" title="Permalink to this definition">#</a></dt>
+<dd><p>Extract Python code from a Markdown file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>md_file_path</strong> (<em>str</em>) – The path to the Markdown file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The extracted Python code or None if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str or None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.transpiler.source_loader.get_scala_code_from_md">
 <span class="sig-name descname"><span class="pre">get_scala_code_from_md</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md_file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.source_loader.get_scala_code_from_md" title="Permalink to this definition">#</a></dt>
 <dd><p>Extract Scala code from a Markdown file.</p>
-<p>Parameters:
-- md_file_path (str): The path to the Markdown file.</p>
-<p>Returns:
-- str: The extracted Scala code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>md_file_path</strong> (<em>str</em>) – The path to the Markdown file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The extracted Scala code.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.source_loader.get_python_code_from_md">
-<span class="sig-name descname"><span class="pre">get_python_code_from_md</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md_file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.source_loader.get_python_code_from_md" title="Permalink to this definition">#</a></dt>
-<dd><p>Extract Python code from a Markdown file.</p>
-<p>Parameters:
-- md_file_path (str): The path to the Markdown file.</p>
-<p>Returns:
-- str or None: The extracted Python code or None if not found.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.source_loader.load_file_as_dict">
+<span class="sig-name descname"><span class="pre">load_file_as_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">internal_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">openSource_classes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.source_loader.load_file_as_dict" title="Permalink to this definition">#</a></dt>
+<dd><p>Load two files and concatenate their contents into a dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_path1</strong> (<em>str</em>) – The path to the first file.</p></li>
+<li><p><strong>file_path2</strong> (<em>str</em>) – The path to the second file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the concatenated content of the two files.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.source_loader.process_python_code">
+<span class="sig-name descname"><span class="pre">process_python_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">python_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.source_loader.process_python_code" title="Permalink to this definition">#</a></dt>
+<dd><p>Process Python code using the transpiler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>python_code</strong> (<em>str</em>) – The Python code to be processed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The processed Scala code.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.source_loader.update_md_file">
+<span class="sig-name descname"><span class="pre">update_md_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.source_loader.update_md_file" title="Permalink to this definition">#</a></dt>
+<dd><p>Update a Markdown file by transpiling Python code to Scala code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – The path to the Markdown file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>[Specify the return type and description]</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.transpiler.source_loader.update_md_file_for_working_scala_code">
 <span class="sig-name descname"><span class="pre">update_md_file_for_working_scala_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">md_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">replacement_string</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.source_loader.update_md_file_for_working_scala_code" title="Permalink to this definition">#</a></dt>
 <dd><p>Update a Markdown file by replacing the Scala code.</p>
-<p>Parameters:
-- md_file_path (str): The path to the Markdown file.
-- replacement_string (str): The new Scala code to replace the existing one.</p>
-<p>Returns:
-- str or None: The old Scala code or None if not found.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>md_file_path</strong> (<em>str</em>) – The path to the Markdown file.</p></li>
+<li><p><strong>replacement_string</strong> (<em>str</em>) – The new Scala code to replace the existing one.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The old Scala code or None if not found.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str or None</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -461,11 +510,11 @@ or Scala code, updating files with transpiled Scala code, and processing Python 
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.source_loader.get_python_code_from_md"><code class="docutils literal notranslate"><span class="pre">get_python_code_from_md()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.source_loader.get_scala_code_from_md"><code class="docutils literal notranslate"><span class="pre">get_scala_code_from_md()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.source_loader.load_file_as_dict"><code class="docutils literal notranslate"><span class="pre">load_file_as_dict()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.source_loader.process_python_code"><code class="docutils literal notranslate"><span class="pre">process_python_code()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.source_loader.update_md_file"><code class="docutils literal notranslate"><span class="pre">update_md_file()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.source_loader.get_scala_code_from_md"><code class="docutils literal notranslate"><span class="pre">get_scala_code_from_md()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.source_loader.get_python_code_from_md"><code class="docutils literal notranslate"><span class="pre">get_python_code_from_md()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.source_loader.update_md_file_for_working_scala_code"><code class="docutils literal notranslate"><span class="pre">update_md_file_for_working_scala_code()</span></code></a></li>
 </ul>
 </li>
