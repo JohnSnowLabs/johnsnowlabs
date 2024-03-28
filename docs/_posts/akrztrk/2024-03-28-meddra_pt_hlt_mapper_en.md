@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pretrained model maps MedDRA MedDRA PT (Preferred Term) to corresponding MedDRA HLT (High Level Term) codes. Some of the MedDRA PT codes map to more than one MedDRA HLT codes. You can find all the mapped MedDRA HLT codes in the `all_k_resolutions` column in the metadata.
+This pretrained model maps MedDRA PT (Preferred Term) to corresponding MedDRA HLT (High Level Term) codes. Some of the MedDRA PT codes map to more than one MedDRA HLT codes. You can find all the mapped MedDRA HLT codes in the `all_k_resolutions` column in the metadata.
 
 ## Predicted Entities
 
