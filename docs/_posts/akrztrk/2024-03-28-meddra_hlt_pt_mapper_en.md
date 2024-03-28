@@ -36,6 +36,7 @@ This pretrained model maps MedDRA-HLT (High Level Term) codes to their correspon
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol('text')\
