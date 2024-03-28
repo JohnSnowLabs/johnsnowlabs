@@ -50,4 +50,7 @@ setup(
     keywords="Spark NLP OCR Finance Legal Medical John Snow Labs  ",
     packages=find_packages(exclude=["test*", "tmp*"]),  # exclude=['test']
     include_package_data=True,
+    data_files=[("/johnsnowlabs/auto_install/docker/build",
+                 ["./johnsnowlabs/auto_install/docker/build/base_dockerfile"])],
+
 )
