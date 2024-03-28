@@ -22,7 +22,7 @@ This pipeline is designed for deidentification in clinical texts, leveraging a r
 
 The pipeline employs `embeddings_clinical` for contextual understanding and includes the following specialized NER models for deidentification:
 
-`ner_deid_augmented`, `ner_deid_enriched`, `ner_deid_generic_augmented`, `ner_deid_name_multilingual_clinical`, `ner_deid_sd`, `ner_deid_subentity_augmented`, `ner_deid_subentity_augmented_i2b2`, `ner_deid_synthetic`, `ner_jsl`, 'ner_jsl_enriched'
+`ner_deid_augmented`, `ner_deid_enriched`, `ner_deid_generic_augmented`, `ner_deid_name_multilingual_clinical`, `ner_deid_sd`, `ner_deid_subentity_augmented`, `ner_deid_subentity_augmented_i2b2`, `ner_deid_synthetic`, `ner_jsl`, `ner_jsl_enriched`
 
 Each model addresses a unique aspect of deidentification, making this pipeline an all-encompassing tool for securing clinical narratives.
 
@@ -150,45 +150,13 @@ val result = ner_profiling_pipeline.annotate("""Record date : 2093-01-13 , David
 |Language:|en|
 |Size:|2.0 GB|
 
+
 ## Included Models
 
 - DocumentAssembler
 - SentenceDetectorDLModel
 - TokenizerModel
 - WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
+- MedicalNerModel x 14
+- NerConverterInternalModel x 14
+
