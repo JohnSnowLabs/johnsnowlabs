@@ -13,7 +13,6 @@ sidebar:
     nav: annotation-lab
 ---
 
-
 <div class="h3-box" markdown="1">
 
 All the models available in the Generative AI Lab are listed in this page. The models are either trained within the Generative AI Lab, uploaded to Generative AI Lab by _admin_ users, or downloaded from [NLP Models Hub](https://nlp.johnsnowlabs.com/models). General information about the models like labels/categories and the source (_downloaded/trained/uploaded_) is viewable. It is possible to delete any model, or redownload failed ones from the options available under the more action menu on each model.
@@ -21,7 +20,6 @@ All the models available in the Generative AI Lab are listed in this page. The m
 ![Model](/assets/images/annotation_lab/4.1.0/models.png)
 
 All available models are listed in the Spark NLP Pipeline Config on the Setup Page of any project and are ready to be included in the Labeling Config for pre-annotation.
-
 
 </div><div class="h3-box" markdown="1">
 

@@ -39,7 +39,7 @@ th {
 
 ## Dedicated Server
 
-Install Generative AI Lab (Generative AI Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.
+Install NLP Lab (Generative AI Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.
 
 </div><div class="h3-box" markdown="1">
 
@@ -162,9 +162,8 @@ Outputs:
     Value: !Join ["", ['https://', !GetAtt [CloudFront, DomainName]]]
 
    ```
-   
 
- Click Create a stack, “Upload a template file”. Give the Stack a name and enter the Generative AI Lab instance Hostname(from the EC2 console) as a parameter.
+Click Create a stack, “Upload a template file”. Give the Stack a name and enter the Generative AI Lab instance Hostname(from the EC2 console) as a parameter.
 
 ![createStack](/assets/images/annotation_lab/aws/createStack.png)
 

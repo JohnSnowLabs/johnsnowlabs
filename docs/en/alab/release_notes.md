@@ -15,13 +15,13 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Generative AI Lab 5.9 – Entity Resolution and Pre-annotation using Resolvers for NER, Pre-annotation using Prompts and Rules for Visual NER, Import and Export projects to S3 and Azure Blob
+## NLP Lab 5.9 – Entity Resolution and Pre-annotation using Resolvers for NER, Pre-annotation using Prompts and Rules for Visual NER, Import and Export projects to S3 and Azure Blob
 
-Generative AI Lab 5.9 introduces significant updates aimed at enriching and expanding the capabilities of your NLP workflows. This release represents a major step forward, offering support for Entity Resolution for standard taxonomies like ICD-10, RxNorm, SNOMED, LOINC, UMLS, MeSH, CPT for both annotations and pre-annotations activities. Furthermore, the inclusion of Rules and Prompts in Visual NER projects enables improved pre-annotation results without the need for trained models. The introduction of the Supervisor role offers enhanced authority compared to the Annotator role. Additionally, the ability to Import and Export projects in S3/Blob further enhances Generative AI Lab 5.9 for easier project backup and sharing capabilities. These advancements, coupled with our ongoing commitment to performance enhancements and user experience improvements, underscore our dedication to meeting the evolving needs of the NLP community. Discover the limitless possibilities with Generative AI Lab 5.9 and elevate your NLP projects to new levels of excellence.
+NLP Lab 5.9 introduces significant updates aimed at enriching and expanding the capabilities of your NLP workflows. This release represents a major step forward, offering support for Entity Resolution for standard taxonomies like ICD-10, RxNorm, SNOMED, LOINC, UMLS, MeSH, CPT for both annotations and pre-annotations activities. Furthermore, the inclusion of Rules and Prompts in Visual NER projects enables improved pre-annotation results without the need for trained models. The introduction of the Supervisor role offers enhanced authority compared to the Annotator role. Additionally, the ability to Import and Export projects in S3/Blob further enhances NLP Lab 5.9 for easier project backup and sharing capabilities. These advancements, coupled with our ongoing commitment to performance enhancements and user experience improvements, underscore our dedication to meeting the evolving needs of the NLP community. Discover the limitless possibilities with NLP Lab 5.9 and elevate your NLP projects to new levels of excellence.
 
 ## Support for Entity Resolution
 ### Lookup code/terms in Labeling page
-Generative AI Lab version 5.9.0 introduces support for Entity Resolution, allowing users to enhance their annotations by adding lookup datasets. By allowing users to enrich labeled text with additional information, Generative AI Lab provides the way for improving the context and accuracy of annotations. Lookup functionality is currently supported exclusively by text based NER projects.
+NLP Lab version 5.9.0 introduces support for Entity Resolution, allowing users to enhance their annotations by adding lookup datasets. By allowing users to enrich labeled text with additional information, NLP Lab provides the way for improving the context and accuracy of annotations. Lookup functionality is currently supported exclusively by text based NER projects.
 
 ### Configuring Lookup
 Configuring lookup datasets is straightforward: use the well-known Customize Labels page during project configuration and follow the steps below:
@@ -49,11 +49,11 @@ Once setup is done, it is easy to identify entities eligible for lookup by a sma
 
 ![UpdateLookup](/assets/images/annotation_lab/5.9.0/5.gif)
 
-This new feature enhances the annotation capabilities of Generative AI Lab, allowing users to enrich their annotations with relevant contextual information from lookup datasets. We're excited to see how this feature empowers users to create more accurate and comprehensive annotations in their projects.
+This new feature enhances the annotation capabilities of NLP Lab, allowing users to enrich their annotations with relevant contextual information from lookup datasets. We're excited to see how this feature empowers users to create more accurate and comprehensive annotations in their projects.
 
 ## Pre-annotate metadata using Resolvers 
 
-- Generative AI Lab 5.9 introduces a pivotal enhancement that expands pre-annotation capabilities with the use of Healthcare resolvers. These resolvers are now conveniently accessible and discoverable on the NLP Models Hub page. Simply apply the "Entity Resolution" filter to view the comprehensive list.
+- NLP Lab 5.9 introduces a pivotal enhancement that expands pre-annotation capabilities with the use of Healthcare resolvers. These resolvers are now conveniently accessible and discoverable on the NLP Models Hub page. Simply apply the "Entity Resolution" filter to view the comprehensive list.
 
 ![Resolution_prediction](/assets/images/annotation_lab/5.9.0/6.png)
 
@@ -75,7 +75,7 @@ This new feature enhances the annotation capabilities of Generative AI Lab, allo
 ![Resolver_copy_and_renames](/assets/images/annotation_lab/5.9.0/10.gif)
 
 ## Pre-annotation using Prompts in Visual NER project
-Generative AI Lab 5.9.0 expands pre-annotation capabilities for Visual NER projects with added support for pre-annotation using Prompts. Users can now pre-annotate tasks in Visual NER projects using zero-shot prompts, significantly enhancing the scope for pre-annotation along with efficiency and accuracy.
+NLP Lab 5.9.0 expands pre-annotation capabilities for Visual NER projects with added support for pre-annotation using Prompts. Users can now pre-annotate tasks in Visual NER projects using zero-shot prompts, significantly enhancing the scope for pre-annotation along with efficiency and accuracy.
 
 In previous versions, the use of prompts was limited to only in text-based projects. With this version, the scope has been expanded, allowing users to leverage prompts for pre-annotation in their PDF and image-based projects as well.
 
@@ -104,7 +104,7 @@ Previously, rules were only available for use in text-based projects. However, w
   ![RulesInVisner](/assets/images/annotation_lab/5.9.0/12.gif)
 
 ## New Supervisor Role for Users
-In this version of Generative AI Lab, we're excited to introduce a new user role: Supervisor. The Supervisor role offers enhanced authority compared to the Annotator role while maintaining restrictions, similar to the Admin role.
+In this version of NLP Lab, we're excited to introduce a new user role: Supervisor. The Supervisor role offers enhanced authority compared to the Annotator role while maintaining restrictions, similar to the Admin role.
 
 ### Role Authority:
 A user with the Supervisor role has access to almost all functionalities available to the Admin role, with a few exceptions:
@@ -120,10 +120,10 @@ The process of creating a user with the new role is just like creating any other
 
 ![CreatingSupervissor](/assets/images/annotation_lab/5.9.0/14.gif)
 
-The introduction of the Supervisor role enhances user management capabilities while maintaining necessary restrictions to ensure data security and system integrity. This role provides users with the appropriate level of authority to oversee projects and workflows effectively within Generative AI Lab.
+The introduction of the Supervisor role enhances user management capabilities while maintaining necessary restrictions to ensure data security and system integrity. This role provides users with the appropriate level of authority to oversee projects and workflows effectively within NLP Lab.
 
 ## Import and Export project in S3 and Blob
-Version 5.9 of Generative AI Lab allows you to effortlessly import and export projects using S3 and Azure Blob.
+Version 5.9 of NLP Lab allows you to effortlessly import and export projects using S3 and Azure Blob.
 
 **Steps to import a project from S3:**
 - Navigate to "Import Project"
@@ -181,7 +181,7 @@ On the project team member page, bulk selection and role assignment of accounts 
 To address this situation, the "Next" button is left disabled until the selected users along with their roles are added to the team, ensuring that changes are saved. Only after this process is complete does the "Next" button become enabled, allowing users to proceed without losing any data.
 
 ### Meta in Labels should support HTML tags and escape sequences
-In previous versions of Generative AI Lab, metadata in labels had limitations regarding support for special characters, HTML tags, and new lines. With version 5.9.0, meta support in labels has been significantly enhanced to include special characters, new lines, and HTML tags (such as \n, \s).
+In previous versions of NLP Lab, metadata in labels had limitations regarding support for special characters, HTML tags, and new lines. With version 5.9.0, meta support in labels has been significantly enhanced to include special characters, new lines, and HTML tags (such as \n, \s).
 
 ![MetaSupportSpecialCharacter](/assets/images/annotation_lab/5.9.0/20.gif)
 
@@ -196,7 +196,7 @@ In version 5.9.0, we are excited to introduce an improvement to the labeling pag
 
 ![PaginationTest](/assets/images/annotation_lab/5.9.0/21.gif)
 
-These keyboard shortcuts provide users with a convenient way to navigate through large tasks more efficiently, particularly when annotating large text data tasks. By streamlining navigation, users can stay focused on annotation task itself, maintaining productivity within Generative AI Lab.
+These keyboard shortcuts provide users with a convenient way to navigate through large tasks more efficiently, particularly when annotating large text data tasks. By streamlining navigation, users can stay focused on annotation task itself, maintaining productivity within NLP Lab.
 
 ### Bug Fixes
 - **Labels and Choices in a Vertical Layout fail to occupy the entire vertical space**
@@ -209,7 +209,7 @@ These keyboard shortcuts provide users with a convenient way to navigate through
 	
 - **For label names with spaces, when trained, the prediction entity name is truncated after spaces**
 
-	In new projects, the Generative AI Lab restricts NER label names from including spaces. If a project owner or manager attempts to add a label name with spaces, an error message will appear. However, in existing projects where label names contain spaces, this error will not occur. Nevertheless, during model training in these projects, entity names with spaces will be truncated after the space in prediction outputs.
+	In new projects, the NLP lab restricts NER label names from including spaces. If a project owner or manager attempts to add a label name with spaces, an error message will appear. However, in existing projects where label names contain spaces, this error will not occur. Nevertheless, during model training in these projects, entity names with spaces will be truncated after the space in prediction outputs.
 	
 - **Team members are not displayed in the project card for imported project**
 
