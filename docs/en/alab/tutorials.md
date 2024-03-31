@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Video Tutorials
 permalink: /docs/en/alab/step_by_step_tutorials
 key: docs-training

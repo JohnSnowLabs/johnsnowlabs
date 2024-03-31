@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Section Based Annotations  
 permalink: /docs/en/alab/section_based_annotations
 key: docs-training

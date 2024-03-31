@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Synthetic task generation
 permalink: /docs/en/alab/synthetic_task
 key: docs-training

@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Zero-shot Prompts
 permalink: /docs/en/alab/zero_prompts
 key: docs-training

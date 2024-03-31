@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: LLM Prompts
 permalink: /docs/en/alab/llm_prompts
 key: docs-training
