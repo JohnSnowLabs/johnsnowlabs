@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab Release Notes 4.7.4
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 4.7.4
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_4_7_4
 key: docs-licensed-release-notes
 modify_date: 2023-02-27
@@ -17,9 +17,9 @@ sidebar:
 
 Release date: **27-02-2023**
 
-Generative AI Lab v4.7.4, which includes significant optimizations and bugfixes. The following are some of the key updates included in this release:
+NLP Lab v4.7.4, which includes significant optimizations and bugfixes. The following are some of the key updates included in this release:
 	
-- Ability to track Generative AI Lab installation and upgrades	
+- Ability to track NLP Lab installation and upgrades	
 - Resolved CVE issues related to Debian packages	
 - Corrected the number of completions needed to trigger Active learning when no test-tagged tasks are present."
 

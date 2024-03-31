@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab Release Notes 5.8.1
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 5.8.1
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_5_8_1
 key: docs-licensed-release-notes
 modify_date: 2023-12-12
@@ -22,7 +22,7 @@ Release date: **02-01-2024**
 
 ### Bug Fixes
 - Connected Words in Visual NER project are not consistent when pre-annotated using NER models
-- Embeddings and models cannot be manually uploaded in Generative AI Lab
+- Embeddings and models cannot be manually uploaded in NLP Lab
 - RE prompt created with rules and entity cannot be tested in Playground
 - Backup to S3 bucket and Azure blob is not working and giving error related to Azure blob
 - Issue on deleting task through Swagger API

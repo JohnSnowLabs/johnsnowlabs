@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab Release Notes 5.1.0
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 5.1.0
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_5_1_0
 key: docs-licensed-release-notes
 modify_date: 2023-06-30
@@ -17,9 +17,9 @@ sidebar:
 
 Release date: **30-06-2023**
 
-## Generative AI Lab 5 - Harness the Power of Section-Based Annotation for Advanced NLP Tasks
+## NLP Lab 5 - Harness the Power of Section-Based Annotation for Advanced NLP Tasks
 
-We're excited to announce that Generative AI Lab 5 is now available! This major update offers out-of-the-box support for section-based annotation, a feature that makes annotating larger documents with deep learning (DL) models or large language models (LLMs) an absolute breeze.
+We're excited to announce that NLP Lab 5 is now available! This major update offers out-of-the-box support for section-based annotation, a feature that makes annotating larger documents with deep learning (DL) models or large language models (LLMs) an absolute breeze.
 
 Section-based annotation is a cornerstone feature, that proposes a new strategy to handle manual and automatic text annotation. First of all, it allows the splitting of tasks into distinct sections, at various granular levels such as sentences, paragraphs, or even pages, depending on the requirement of the use case at hand. This approach gives annotators a clear view and fine-grained control over the document structure. Second, it allows users to specify what are the relevant sections for their project's specific goals. This can be done by a combination of specific keywords that can be found inside the relevant texts, regular expressions (regex) matching particular patterns within the text, or by the use of classifiers specially trained to recognize specific types of sections. 
 
@@ -28,33 +28,33 @@ This two-step process ensures that only relevant sections, those most likely to 
 - context limitation for **text processing via LLMs, and DL models** for **increased performance and speed at lower costs**,
 - **customizable taxonomies** for each section for focused (pre)annotations.
 
-Relevant sections can be automatically identified by the Generative AI Lab during the task import step but they can also be manually adjusted/created/removed when required, by the annotators themselves as part of their completions. 
-Limiting the (pre)annotation context is essential in view of the larger integration with LLM we are preparing (stay tuned for Generative AI Lab 5.2). By focusing on one relevant section at a time, instead of an entire document that can be hundreds of pages long, Generative AI Lab ensures that the LLM ingests only the relevant context, suppressing distraction by eliminating noise or irrelevant data. This will improve the response time and the precision of predictions while being considerate of the processing costs. 
+Relevant sections can be automatically identified by the NLP Lab during the task import step but they can also be manually adjusted/created/removed when required, by the annotators themselves as part of their completions. 
+Limiting the (pre)annotation context is essential in view of the larger integration with LLM we are preparing (stay tuned for NLP Lab 5.2). By focusing on one relevant section at a time, instead of an entire document that can be hundreds of pages long, NLP Lab ensures that the LLM ingests only the relevant context, suppressing distraction by eliminating noise or irrelevant data. This will improve the response time and the precision of predictions while being considerate of the processing costs. 
 
-NER tasks are all about precision! Starting with Generative AI Lab 5 you will be able to associate relevant labels to specific sections of text. This results in more precise entity recognition and reduced chances of false positives. This granularity of annotation is crucial for those working on projects where each detail matters.
+NER tasks are all about precision! Starting with NLP Lab 5 you will be able to associate relevant labels to specific sections of text. This results in more precise entity recognition and reduced chances of false positives. This granularity of annotation is crucial for those working on projects where each detail matters.
 
-For classification tasks, the section-based annotation feature enables classification to be performed at the sentence, paragraph, or page level. This offers unparalleled flexibility to split the task according to the required level of granularity. Whether you are classifying sentences or whole paragraphs, Generative AI Lab now accommodates your needs in a much more tailored way.
+For classification tasks, the section-based annotation feature enables classification to be performed at the sentence, paragraph, or page level. This offers unparalleled flexibility to split the task according to the required level of granularity. Whether you are classifying sentences or whole paragraphs, NLP Lab now accommodates your needs in a much more tailored way.
 
 We understand that annotators want to focus their efforts on the most pertinent areas of the documents they process. With section-based annotation, they can focus solely on the relevant sections, leading to better productivity and less time spent scrolling through irrelevant content.
 
 During model training, only the annotations from the relevant sections will be used. This feature drastically reduces the training time required, saving valuable computational resources and accelerating the project timelines. When it comes to preannotations, the models, prompts, and rules now evaluate solely the relevant sections. This thoughtful approach results in more precise pre-annotations and faster computation of results, thereby boosting your project efficiency.
 
-Overall, section-based annotation in Generative AI Lab streamlines the annotation process, enabling annotators to concentrate on the necessary sections while optimizing training time and enhancing the accuracy of pre-annotations. We're confident that this new release will significantly improve your NLP project execution. We can't wait to see what amazing things you'll do with it!
+Overall, section-based annotation in NLP Lab streamlines the annotation process, enabling annotators to concentrate on the necessary sections while optimizing training time and enhancing the accuracy of pre-annotations. We're confident that this new release will significantly improve your NLP project execution. We can't wait to see what amazing things you'll do with it!
 
 
 ## NLP Tasks compatible with Section-Based Annotation
 
-Generative AI Lab offers Section-Based Annotation features for the following tasks:
+NLP Lab offers Section-Based Annotation features for the following tasks:
 
 1. **Named Entity Recognition (NER):**
 NER tasks involving text can now be partitioned into sections using bespoke rules, facilitating an efficient examination and annotation of only the pertinent sections. 
 2. **Text Classification:**
 With the introduction of Section-Based Annotation, tasks can now be divided into relevant sections, and each section can be independently classified, eliminating the limitations of classifying the entire task as a whole.
 3. **Combined NER and Classification:**
-Generative AI Lab's versatility enables it to support project configurations combining NER and assertion labeling, with classification or relation extraction. Users can now identify relevant sections within the project and carry out classification as well as NER and relation labeling within each section. Specific taxonomies can be defined for each such section that offers more control over the annotation targets.
+NLP Lab's versatility enables it to support project configurations combining NER and assertion labeling, with classification or relation extraction. Users can now identify relevant sections within the project and carry out classification as well as NER and relation labeling within each section. Specific taxonomies can be defined for each such section that offers more control over the annotation targets.
 4. **Visual NER:**
 Section-Based Annotation is now available for Visual NER projects, specifically designed for image-based tasks. This feature is particularly beneficial when dealing with lengthy PDFs that are divided into sections by page. Users have the ability to specify the specific pages that are relevant to their needs.
-With Section-Based Annotation, Generative AI Lab offers a more granular approach to annotation and analysis, allowing users to focus on specific sections and achieve more accurate and efficient results.
+With Section-Based Annotation, NLP Lab offers a more granular approach to annotation and analysis, allowing users to focus on specific sections and achieve more accurate and efficient results.
 
 ![Types of SBA 1](/assets/images/annotation_lab/5.1.0/1.gif)
 
@@ -100,7 +100,7 @@ Keywords can be used to mark a section as relevant. Each keyword can be a single
 Regex (regular expressions) can also be used to identify relevant sections. If a match is found within the document based on the provided regex, the corresponding page, paragraph, or sentence will be considered relevant.
 
 ### Classifier-Based Rules:
-Identification of relevant sections can also be done using pre-trained classifier models. Users can select one classifier from the available ones (downloaded or trained within Generative AI Lab) and pick the classes considered relevant for the current project. Those will be associated to a section name. Multiple relevant sections can be created with the same classifier. Please note that only one classifier can be used for section classification as part of one project. Saving this rule will deploy a classifier server, which can be viewed on the Cluster page. Licensed classifiers require a free valid license to run, and the deployment of a classifier is subject to the availability of server capacity.
+Identification of relevant sections can also be done using pre-trained classifier models. Users can select one classifier from the available ones (downloaded or trained within NLP Lab) and pick the classes considered relevant for the current project. Those will be associated to a section name. Multiple relevant sections can be created with the same classifier. Please note that only one classifier can be used for section classification as part of one project. Saving this rule will deploy a classifier server, which can be viewed on the Cluster page. Licensed classifiers require a free valid license to run, and the deployment of a classifier is subject to the availability of server capacity.
 
 
 ![Screen Recording 2023-06-29 at 5 02 24 PM](/assets/images/annotation_lab/5.1.0/4.gif)

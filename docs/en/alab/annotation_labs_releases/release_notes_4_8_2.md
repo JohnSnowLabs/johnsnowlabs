@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab Release Notes 4.8.2
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 4.8.2
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_4_8_2
 key: docs-licensed-release-notes
 modify_date: 2023-03-23
@@ -17,9 +17,9 @@ sidebar:
 
 Release date: **03-04-2023**
 
-Generative AI Lab v4.8.2 includes bugfixes for AKS setup. This version includes fixes for the following issues:
+NLP Lab v4.8.2 includes bugfixes for AKS setup. This version includes fixes for the following issues:
 
-- PDF is not imported to Generative AI Lab due to delay in file sync between deployed pods in different nodes of AKS system
+- PDF is not imported to NLP Lab due to delay in file sync between deployed pods in different nodes of AKS system
 - Backup cronjob is not created in AKS deployment
 
 </div><div class="prev_ver h3-box" markdown="1">

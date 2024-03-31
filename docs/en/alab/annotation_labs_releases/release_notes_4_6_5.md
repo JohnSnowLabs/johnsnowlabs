@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab Release Notes 4.6.5
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 4.6.5
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_4_6_5
 key: docs-licensed-release-notes
 modify_date: 2023-02-08
@@ -17,7 +17,7 @@ sidebar:
 
 Release date: **08-02-2023**
 
-Generative AI Lab v4.6.5, which includes significant optimizations and bugfixes for Project Analytics and the Prompt Engineering feature. The following are some of the key updates included in this release:
+NLP Lab v4.6.5, which includes significant optimizations and bugfixes for Project Analytics and the Prompt Engineering feature. The following are some of the key updates included in this release:
 	
 * The issue with the all_extracted_chunks chart not updating in the analytics page has now been resolved.	
 * The performance of project analytics operations has been improved, allowing for faster calculation of results.	

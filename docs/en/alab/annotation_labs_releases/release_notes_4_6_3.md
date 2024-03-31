@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab Release Notes 4.6.3
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 4.6.3
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_4_6_3
 key: docs-licensed-release-notes
 modify_date: 2023-02-01
@@ -17,7 +17,7 @@ sidebar:
 
 Release date: **31-01-2023**
 
-Generative AI Lab v4.6.3 is available which includes improvements for Playground and Prompt Engineering features introduced in v4.5 and v4.6. Here are some of them:
+NLP Lab v4.6.3 is available which includes improvements for Playground and Prompt Engineering features introduced in v4.5 and v4.6. Here are some of them:
 
 * Prompt (relation) using 2 different NER models is possible
 * Ability to add long texts with new lines in the playground 

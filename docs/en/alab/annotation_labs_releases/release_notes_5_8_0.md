@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab Release Notes 5.8.0
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 5.8.0
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_5_8_0
 key: docs-licensed-release-notes
 modify_date: 2023-12-12
@@ -13,16 +13,16 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## Generative AI Lab 5.8 – NER Models for Visual NER, Import Export to Azure Blob, and Gesture-based annotations for Assertions.
-We are excited to release Generative AI Lab 5.8, bringing significant updates designed to enhance and expand the capabilities of your NLP workflows. This release marks a milestone in our commitment to providing comprehensive NLP solutions, introducing a suite of powerful features and improvements. With the integration of the entire NER model library for text data into Visual NER projects, seamless Import and Export functionality for Azure Blob, and innovative gesture-based annotations for assertions, Generative AI Lab 5.8 is set to change the way you manage and annotate tasks, in particular those focused on PDF and image documents. These advancements, alongside our continuous focus on performance and user experience improvements, demonstrates our dedication to supporting the evolving needs of the NLP community. Explore the boundless possibilities with Generative AI Lab 5.8 and elevate your NLP projects to new heights.
+## NLP Lab 5.8 – NER Models for Visual NER, Import Export to Azure Blob, and Gesture-based annotations for Assertions.
+We are excited to release NLP Lab 5.8, bringing significant updates designed to enhance and expand the capabilities of your NLP workflows. This release marks a milestone in our commitment to providing comprehensive NLP solutions, introducing a suite of powerful features and improvements. With the integration of the entire NER model library for text data into Visual NER projects, seamless Import and Export functionality for Azure Blob, and innovative gesture-based annotations for assertions, NLP Lab 5.8 is set to change the way you manage and annotate tasks, in particular those focused on PDF and image documents. These advancements, alongside our continuous focus on performance and user experience improvements, demonstrates our dedication to supporting the evolving needs of the NLP community. Explore the boundless possibilities with NLP Lab 5.8 and elevate your NLP projects to new heights.
 
 ## Features
 ## Repurpose text-based NER models for PDF and images 
-Generative AI Lab 5.8 introduces a groundbreaking enhancement to Visual NER projects by allowing users to leverage the vast library of pre-trained NER models specific for text content [6,600+ models available on the Models Hub](https://nlp.johnsnowlabs.com/models?task=Named+Entity+Recognition), for the pre-annotation of PDF or image tasks. This addition not only expands pre-annotation options but also significantly streamlines the annotation process, saving users precious time and effort. 
+NLP Lab 5.8 introduces a groundbreaking enhancement to Visual NER projects by allowing users to leverage the vast library of pre-trained NER models specific for text content [6,600+ models available on the Models Hub](https://nlp.johnsnowlabs.com/models?task=Named+Entity+Recognition), for the pre-annotation of PDF or image tasks. This addition not only expands pre-annotation options but also significantly streamlines the annotation process, saving users precious time and effort. 
 With this game-changing enhancement, users can now:
 - **Effortlessly Jumpstart Data Preparation Projects:** Quickly initiate data preparation projects for training small Visual NER models tailored to specific tasks, reducing the time and resources required for manual labeling.
 - **Utilize Existing Domain-Specific Expertise** Leverage the extensive library of NER models, including domain-specialized models that were previously confined to text-based tasks. This opens up new possibilities for processing image and PDF documents with specialized NER models, enhancing the accuracy and effectiveness of pre-annotation.
-- **Streamline Workflow with Pre-trained Models:** Eliminate the need for training Visual NER models just to predict specific labels when those are already available in existing text processing models. Simply select the relevant pre-trained NER model(s) you need directly from the Generative AI Lab library and seamlessly integrate them into your projects.
+- **Streamline Workflow with Pre-trained Models:** Eliminate the need for training Visual NER models just to predict specific labels when those are already available in existing text processing models. Simply select the relevant pre-trained NER model(s) you need directly from the NLP Lab library and seamlessly integrate them into your projects.
 ## Effortlessly Pre-annotate PDF or Image Documents with NER Models
 Configuring your Visual NER project to use text-specific NER models for pre-annotation is a breeze:
 - **Project Configuration:** Begin by creating a new project and selecting the Visual NER Template during configuration. This sets the stage for seamless integration of NER models into your project.
@@ -33,20 +33,20 @@ Configuring your Visual NER project to use text-specific NER models for pre-anno
 
 ![1](/assets/images/annotation_lab/5.8.0/1.gif)
 
-This new feature empowers users to seamlessly integrate NER models into their Visual NER projects, fostering greater flexibility and efficiency in document annotation workflows within Generative AI Lab. By leveraging the power of NER models, users can streamline pre-annotation processes, reduce training time, and achieve enhanced accuracy, ultimately accelerating their data preparation efforts.
+This new feature empowers users to seamlessly integrate NER models into their Visual NER projects, fostering greater flexibility and efficiency in document annotation workflows within NLP Lab. By leveraging the power of NER models, users can streamline pre-annotation processes, reduce training time, and achieve enhanced accuracy, ultimately accelerating their data preparation efforts.
 
 ## Azure Integration for Enhanced Task Management
 
-Generative AI Lab 5.8 introduces a pivotal enhancement that expands task management capabilities by seamlessly integrating with Azure Blob storage, complementing the existing support for AWS S3. This integration empowers users to streamline task import and export processes, fostering greater efficiency and flexibility in their data handling workflows within the Generative AI Lab platform.
+NLP Lab 5.8 introduces a pivotal enhancement that expands task management capabilities by seamlessly integrating with Azure Blob storage, complementing the existing support for AWS S3. This integration empowers users to streamline task import and export processes, fostering greater efficiency and flexibility in their data handling workflows within the NLP Lab platform.
 
 ### Effortless Task Import from Azure Blob Storage:
 
-Importing tasks from Azure storage containers is now as straightforward and intuitive as importing from AWS S3. Follow these simple steps to effortlessly integrate your Azure data into Generative AI Lab projects:
-- **Prepare the Azure Source:** Ensure the Azure storage container from which you intend to import tasks is readily accessible and the target files are available. Generative AI Lab can currently accommodate various document types such as text, PDF, images, videos, and sound files.
-- **In your Generative AI Lab project:** Navigate to the Task Import page of the project where you wish to import tasks.
+Importing tasks from Azure storage containers is now as straightforward and intuitive as importing from AWS S3. Follow these simple steps to effortlessly integrate your Azure data into NLP Lab projects:
+- **Prepare the Azure Source:** Ensure the Azure storage container from which you intend to import tasks is readily accessible and the target files are available. NLP Lab can currently accommodate various document types such as text, PDF, images, videos, and sound files.
+- **In your NLP Lab project:** Navigate to the Task Import page of the project where you wish to import tasks.
 - **Select Azure Blob Storage:** Choose the "Azure BLOB" import option by clicking on the corresponding radio button on the Import page.
 - **Enter Azure Credentials:** Provide the Azure connection details: Azure Container Name, Azure Account Name, and Azure Account Secret Key.
-- **Initiate Import Process:**  Click the "Import" button to seamlessly transfer compatible documents from the specified Azure container into the current Generative AI Lab project.
+- **Initiate Import Process:**  Click the "Import" button to seamlessly transfer compatible documents from the specified Azure container into the current NLP Lab project.
 
 ![1](/assets/images/annotation_lab/5.8.0/2.gif)
 
@@ -54,26 +54,26 @@ Importing tasks from Azure storage containers is now as straightforward and intu
 
 Exporting projects to Azure Blob storage is now an equally streamlined process:
 
-- **Access Export Page:** Navigate to the "Export Tasks" page within the Generative AI Lab platform.
+- **Access Export Page:** Navigate to the "Export Tasks" page within the NLP Lab platform.
 - **Specify the Tasks to Export:** Use the filter on the page to select the tasks you want to export as well as the target format and click the Export button.
 - **Select Cloud Export Option:** Navigate to the "Cloud Export" tab on the pop-up and select "Azure BLOB" from the available cloud storage options.
 - **Enter Azure Credentials:** Provide the Azure connection details: Azure Container Name, Azure Account Name, and Azure Account Secret Key.
 - **Optionally Save Credentials:** Save the credentials for future use to expedite subsequent exports to Azure Blob storage.
 - **Initiate Export Process:** Click the "Export" button to seamlessly transfer the selected project tasks into the specified Azure Blob container, ensuring effortless data backup and management.
 
-This integration with Azure Blob storage empowers Generative AI Lab users to manage tasks with unparalleled efficiency and flexibility. By leveraging the power of Azure, users can seamlessly import and export tasks, streamline data handling processes, and enhance their overall Generative AI Lab experience.
+This integration with Azure Blob storage empowers NLP Lab users to manage tasks with unparalleled efficiency and flexibility. By leveraging the power of Azure, users can seamlessly import and export tasks, streamline data handling processes, and enhance their overall NLP Lab experience.
 
 ![1](/assets/images/annotation_lab/5.8.0/11.gif)
 
 ## Centralized Log Access from Clusters Page
-Generative AI Lab 5.8 introduces another new feature that simplifies server management by granting users direct access to server logs from the Clusters page. This feature provides critical insights, especially when troubleshooting issues across various server functions. This enhancement eliminates the need for manual command-line access, ensuring easy log retrieval and facilitating efficient troubleshooting. 
+NLP Lab 5.8 introduces another new feature that simplifies server management by granting users direct access to server logs from the Clusters page. This feature provides critical insights, especially when troubleshooting issues across various server functions. This enhancement eliminates the need for manual command-line access, ensuring easy log retrieval and facilitating efficient troubleshooting. 
 
 ### Effortless Log Viewing from the Clusters Page
 Navigating to the Clusters page, users can now easily access logs for all deployed servers, including training, preannotation, OCR, and playground servers. A dedicated button has been added to the cluster page, providing a single point of access for viewing server logs.
 
 ![1](/assets/images/annotation_lab/5.8.0/3.png)
 
-This streamlined approach to viewing server logs enhances the user experience and operational efficiency within Generative AI Lab, offering a more intuitive and accessible way to manage and diagnose server-related issues.
+This streamlined approach to viewing server logs enhances the user experience and operational efficiency within NLP Lab, offering a more intuitive and accessible way to manage and diagnose server-related issues.
 
 ![1](/assets/images/annotation_lab/5.8.0/4.png)
 
@@ -91,19 +91,19 @@ To further enhance user experience, assertion labels in the label selection widg
 #### Model Evaluation servers are now queued
 A refinement has been implemented in version 5.8, whereby the Test Configuration for Model Evaluation is queued when there are insufficient resources. Users now can abort the test configuration (evaluation) if triggered unintentionally. Furthermore, a pop-up is presented to guide users in deleting an existing server when the maximum server count is reached.
 
-Generative AI Lab 5.8 adds another improvement addressing resource constraints during model evaluation. The Test Configuration feature, which evaluates a model for the current project tasks, is now intelligently queued until sufficient resources are available. Additionally, a user-friendly feature allows users to abort the test configuration in case of accidental initiation. Furthermore, a helpful popup appears when the maximum server count is reached, guiding users through the process of deleting an existing server to free up resources for new evaluations.
+NLP Lab 5.8 adds another improvement addressing resource constraints during model evaluation. The Test Configuration feature, which evaluates a model for the current project tasks, is now intelligently queued until sufficient resources are available. Additionally, a user-friendly feature allows users to abort the test configuration in case of accidental initiation. Furthermore, a helpful popup appears when the maximum server count is reached, guiding users through the process of deleting an existing server to free up resources for new evaluations.
 
 ![1](/assets/images/annotation_lab/5.8.0/6.jpeg)
 
 #### Task Assignment from the Tasks Page
-Another enhancement introduced by Generative AI Lab 5.8 refers to the process of assigning annotators and reviewers to specific tasks. Now, directly from the task details page, users can allocate annotators and reviewers to a tasks without the need to navigate to the tasks list, and thus lose the current work context. This improvement not only saves valuable time but also enhances the user experience by simplifying task management within the platform. 
+Another enhancement introduced by NLP Lab 5.8 refers to the process of assigning annotators and reviewers to specific tasks. Now, directly from the task details page, users can allocate annotators and reviewers to a tasks without the need to navigate to the tasks list, and thus lose the current work context. This improvement not only saves valuable time but also enhances the user experience by simplifying task management within the platform. 
 
 By enabling direct assignment of annotators and reviewers from the task details, we ensure a more efficient workflow, allowing users to focus on project execution with fewer interruptions and less navigational overhead.
 
 ![1](/assets/images/annotation_lab/5.8.0/7.gif)
 
 #### Alphabet Resource Support in Rules for Enhanced Language Processing
-Generative AI Lab 5.8 offers language support for French, German, Greek, and Spanish characters within free rules. This enhancement empowers users to incorporate special characters such as é, í, α, β, γ, δ, ü, ß, and more into their dictionaries while creating rules and using them for pre-annotation, expanding the application's versatility in handling diverse language requirements.
+NLP Lab 5.8 offers language support for French, German, Greek, and Spanish characters within free rules. This enhancement empowers users to incorporate special characters such as é, í, α, β, γ, δ, ü, ß, and more into their dictionaries while creating rules and using them for pre-annotation, expanding the application's versatility in handling diverse language requirements.
 
 By incorporating special characters into free rules, users can achieve more accurate and reliable pre-annotation results, enhancing their overall workflow efficiency and productivity.
 
@@ -116,7 +116,7 @@ When segregating training data based on Test/Train tags, the system now omits th
 
 #### Updated Filter: "Filter Pre-annotation according to the sections of my latest completion"
 
-For Section-Based Projects, where one task can have different section segmentations created by different annotators as part of their work, Generative AI Lab provides the ability to pre-annotate tasks for all the available sections. To enhance intuitiveness, a filter is provided to selectively display pre-annotation labels only for the sections of the latest completion of each task. The filter description has been updated to better convey its functionality to our users.
+For Section-Based Projects, where one task can have different section segmentations created by different annotators as part of their work, NLP Lab provides the ability to pre-annotate tasks for all the available sections. To enhance intuitiveness, a filter is provided to selectively display pre-annotation labels only for the sections of the latest completion of each task. The filter description has been updated to better convey its functionality to our users.
 
 #### Enhanced Performance in Visual NER Pipeline
 Version 5.8 introduces substantial efficiency improvement of task import within OCR-based projects. These improvements are primarily aimed at reducing memory consumption and enhancing the loading efficiency of pipelines, thereby elevating overall performance during task import.
@@ -129,7 +129,7 @@ Users leveraging OCR pipelines for task imports in NER projects should note:
 - In scenarios where multiple pipelines are deployed for task imports, performance, and memory usage metrics are consistent with those observed in the previous release.
 - 
 #### Improved Experience on Upgrade
-The upgrade pathway in Generative AI Lab has been refined in version 5.8, particularly addressing the challenges related to admin password changes through the UI. Previously, such changes led to upgrade failures, necessitating a manual update of the password in the 'annotationlab-updater' configuration. We are pleased to report that this issue has been effectively resolved in the latest release, ensuring a more fluid and user-friendly upgrade process.
+The upgrade pathway in NLP Lab has been refined in version 5.8, particularly addressing the challenges related to admin password changes through the UI. Previously, such changes led to upgrade failures, necessitating a manual update of the password in the 'annotationlab-updater' configuration. We are pleased to report that this issue has been effectively resolved in the latest release, ensuring a more fluid and user-friendly upgrade process.
 
 ![1](/assets/images/annotation_lab/5.8.0/10.png)
 
@@ -203,7 +203,7 @@ When initiating an upgrade to version 5.8 or beyond, users will be prompted to e
 - [ALAB-4664] Improvement in Team Member page
 - [ALAB-4679] Performance improvements for Visual NER pipeline feature
 - [ALAB-4687] Filter in Models Hub page incorrectly lists Pipelines when Healthcare is selected in edition filter
-- [ALAB-4741] Display some meaningful message after user presses enter while upgrading Generative AI Lab for the default/custom password case
+- [ALAB-4741] Display some meaningful message after user presses enter while upgrading NLP Lab for the default/custom password case
 - [ALAB-4770] Cluster Page: Fix text color for playground , alignment and icon size in server status column and error log in annotationlab pod 
 
 ### Bug Fixes

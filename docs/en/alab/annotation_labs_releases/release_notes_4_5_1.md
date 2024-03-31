@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab Release Notes 4.5.1
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 4.5.1
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_4_5_1
 key: docs-licensed-release-notes
 modify_date: 2023-01-05
@@ -23,7 +23,7 @@ This release includes some stabilization and bug fixes for issues reported by ou
 - Name of available models should be visible completely in the Predefined Labels tab
 
 ## Bug Fixes
-- Finance models cannot be downloaded to Generative AI Lab with a floating license from Models Hub 
+- Finance models cannot be downloaded to NLP Lab with a floating license from Models Hub 
 - Trained visual NER model is not listed in the predefined labels section on the configuration page
 - Error due to circular dependency of logger
 

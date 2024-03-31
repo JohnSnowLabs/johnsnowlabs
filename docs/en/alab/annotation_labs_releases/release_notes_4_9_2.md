@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab Release Notes 4.9.2
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 4.9.2
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_4_9_2
 key: docs-licensed-release-notes
 modify_date: 2023-05-04
@@ -17,11 +17,11 @@ sidebar:
 
 Release date: **04-05-2023**
 
-## Enhanced Analytics, Improved Labeling Experience, and stabilization in Generative AI Lab 4.9 
+## Enhanced Analytics, Improved Labeling Experience, and stabilization in NLP Lab 4.9 
 
-Generative AI Lab version 4.9 is now available with new features to enhance the analytics capabilities of the platform. The latest release provides managers with more insights into their projects and team productivity, enabling more efficient progress monitoring and better DL model outcomes. The addition of Time Indicators and Edit Counts on each annotation version is a notable feature that allows annotators to track statistics of the edits made in the completions, providing them with valuable insights into their work and the evolution of the Annotation Guidelines.
+NLP Lab version 4.9 is now available with new features to enhance the analytics capabilities of the platform. The latest release provides managers with more insights into their projects and team productivity, enabling more efficient progress monitoring and better DL model outcomes. The addition of Time Indicators and Edit Counts on each annotation version is a notable feature that allows annotators to track statistics of the edits made in the completions, providing them with valuable insights into their work and the evolution of the Annotation Guidelines.
 
-To ensure that labeling page space is used optimally, the layout has been improved to use every corner of the page. This means that the labeling page now provides a more streamlined and efficient experience for users. In addition, the new version includes bug fixes and stabilization, which are customary in every software release. These features are designed to enhance the user experience and improve the accuracy and efficiency of Generative AI Lab.
+To ensure that labeling page space is used optimally, the layout has been improved to use every corner of the page. This means that the labeling page now provides a more streamlined and efficient experience for users. In addition, the new version includes bug fixes and stabilization, which are customary in every software release. These features are designed to enhance the user experience and improve the accuracy and efficiency of NLP Lab.
 Here are the highlights of this release:
 
 
@@ -41,7 +41,7 @@ The latest update includes a new feature aimed at providing users with a more co
 
 ## New Analytics Update: Enhanced Charts Provide Managers with Deeper Insights into Project Performance
 
-Generative AI Lab 4.9.0 includes several improvements aimed at enhancing the user experience and efficacity of analytics charts.
+NLP Lab 4.9.0 includes several improvements aimed at enhancing the user experience and efficacity of analytics charts.
 
 - Improvements have been made to the Inter-annotator Agreement (IAA) charts. In cases where there is an insufficient amount of data to populate the IAA charts due to non-overlapping tasks completed by users, the UI now displays a message that informs the user that there is not enough data available to calculate the IAA chart.  This enhancement aims to improve the transparency of IAA charts by alerting users to any insufficient data, providing guidance on how to resolve the issue, and promoting the assignment of overlapping tasks to ensure the availability of sufficient data. 
 
@@ -55,7 +55,7 @@ Generative AI Lab 4.9.0 includes several improvements aimed at enhancing the use
 
 ![Screen Shot 2023-04-27 at 4 21 55 PM](https://user-images.githubusercontent.com/17021686/234838187-92bc59e9-a05a-4896-9dfb-5f78a5cc375a.png)
 
-- In previous versions, some users reported inconsistencies in the Average Time Annotator Spend on One Task chart. Specifically, some bars in the chart represented the same value for the amount of time annotators spent on a single task but differed in height. This issue has been resolved in version 4.9. The chart now accurately displays the same value for the amount of time annotators spend on a single task with consistent bar height. Overall, this update represents our ongoing commitment to improving the functionality and user experience of the Generative AI Lab platform, ensuring that users can trust the accuracy and consistency of the data they rely on for their projects.
+- In previous versions, some users reported inconsistencies in the Average Time Annotator Spend on One Task chart. Specifically, some bars in the chart represented the same value for the amount of time annotators spent on a single task but differed in height. This issue has been resolved in version 4.9. The chart now accurately displays the same value for the amount of time annotators spend on a single task with consistent bar height. Overall, this update represents our ongoing commitment to improving the functionality and user experience of the NLP Lab platform, ensuring that users can trust the accuracy and consistency of the data they rely on for their projects.
 
 !["Screenshot 2023-04-25 at 2 49 11 PM](https://user-images.githubusercontent.com/17021686/234850188-17910f92-02ff-4034-97d9-e1683c6862b8.png)
 

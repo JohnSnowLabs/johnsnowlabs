@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab Release Notes 5.3.2
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 5.3.2
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_5_3_2
 key: docs-licensed-release-notes
 modify_date: 2023-08-30
@@ -17,9 +17,9 @@ sidebar:
 
 Release date: **30-08-2023**
 
-## Generative AI Lab 5.3 - A Leap Forward in Pre-Annotation through ChatGPT-Powered Entity Recognition
-We're excited to present Generative AI Lab 5.3, an exciting update that marks our foray into integrating Large Language Models (LLMs) into our platform. Leading the charge is the integration with ChatGPT family of models, the first in a series of LLM integrations we have planned for the future. This not only sets the stage for a new era of enhanced pre-annotation capabilities but also underscores our commitment to staying at the forefront of NLP innovation. By weaving ChatGPT's prowess into our ecosystem, we're offering users an expanded range of prompt possibilities and a refined entity extraction process.
-But that's not all! Beyond the ChatGPT integration, we've made a series of enhancements across the board. From a revamped taxonomy customization experience for section-based projects to thoughtful improvements in OCR text formatting, every change in this release is designed to improve your annotation experience. Whether you're a seasoned Generative AI Lab user or just getting started, we believe this update will offer you a blend of familiarity and fresh innovation, ensuring a smoother, more productive annotation journey. Dive into the details below to discover all that Generative AI Lab 5.3 has in store for you.
+## NLP Lab 5.3 - A Leap Forward in Pre-Annotation through ChatGPT-Powered Entity Recognition
+We're excited to present NLP Lab 5.3, an exciting update that marks our foray into integrating Large Language Models (LLMs) into our platform. Leading the charge is the integration with ChatGPT family of models, the first in a series of LLM integrations we have planned for the future. This not only sets the stage for a new era of enhanced pre-annotation capabilities but also underscores our commitment to staying at the forefront of NLP innovation. By weaving ChatGPT's prowess into our ecosystem, we're offering users an expanded range of prompt possibilities and a refined entity extraction process.
+But that's not all! Beyond the ChatGPT integration, we've made a series of enhancements across the board. From a revamped taxonomy customization experience for section-based projects to thoughtful improvements in OCR text formatting, every change in this release is designed to improve your annotation experience. Whether you're a seasoned NLP Lab user or just getting started, we believe this update will offer you a blend of familiarity and fresh innovation, ensuring a smoother, more productive annotation journey. Dive into the details below to discover all that NLP Lab 5.3 has in store for you.
 
 ## Entity Extraction and Pre-Annotation via GPT Prompting
 
@@ -27,12 +27,12 @@ The highlight of this release is the integration with an external service provid
 
 - **Broadens Prompt Possibilities**: By integrating with Open AI LLM models, users can tap into a more diverse set of prompts, leveraging external expertise to craft pre-annotations, as an alternative pre-annotation solution or when pre-trained models are not available.
 
-- **Efficient Entity Extraction**: As current LLMs, GPT family included, are not very good at entity recognition tasks, Generative AI Lab included a post-processing step on the result provided by LLM. This improves entity identification and helps precisely locate the entities in the given text. These entities, carefully curated and aligned with Generative AI Lab pre-annotation requirements pave the way for a more efficient and streamlined annotation experience.
+- **Efficient Entity Extraction**: As current LLMs, GPT family included, are not very good at entity recognition tasks, NLP Lab included a post-processing step on the result provided by LLM. This improves entity identification and helps precisely locate the entities in the given text. These entities, carefully curated and aligned with NLP Lab pre-annotation requirements pave the way for a more efficient and streamlined annotation experience.
 
 The following sections explain in detail how to define and use GPT prompts. 
 
 ### Setting Up the Integration with Open AI service
-Integrating “ChatGPT” into the Generative AI Lab has been designed to be a straightforward process, ensuring users can harness the power of external expertise seamlessly. It consists of three easy steps:
+Integrating “ChatGPT” into the NLP Lab has been designed to be a straightforward process, ensuring users can harness the power of external expertise seamlessly. It consists of three easy steps:
 
 **Integrations Page**: Navigate to the Integrations Page located within the System Settings. This is the hub where all external service providers, including Open AI’s GPT Models, can be defined and managed.
 
@@ -47,7 +47,7 @@ The Open AI integration allows users to tap into a vast reservoir of external ex
 
 
 ### ChatGPT Prompt Definition and Testing
-Users can generate LLM prompts on the dedicated Prompt page from the Hub of Resources. For ChatGPT Prompts, Generative AI Lab offers a dedicated definition interface. Here's what to expect when creating a new LLM prompt:
+Users can generate LLM prompts on the dedicated Prompt page from the Hub of Resources. For ChatGPT Prompts, NLP Lab offers a dedicated definition interface. Here's what to expect when creating a new LLM prompt:
 
 - **Name the Prompt**: Within this new tab, users will first be asked to provide a name for their prompt. This name will be used for pre-annotating identified entities. At this point, we recommend creating one prompt per target entity.
 
@@ -61,13 +61,13 @@ This streamlined approach ensures that integrating and testing external prompts 
 ![TestingPrompt](/assets/images/annotation_lab/5.3.0/2.gif)
 
 ### Consistent Workflow with LLM Prompts
-Even with the introduction of new features in Generative AI Lab's 5.3.0 release, users can take comfort in the consistent experience offered when working with prompts. The addition of external service provider prompts brings a fresh layer to the annotation process, yet the core workflow you're familiar with stays the same.
+Even with the introduction of new features in NLP Lab's 5.3.0 release, users can take comfort in the consistent experience offered when working with prompts. The addition of external service provider prompts brings a fresh layer to the annotation process, yet the core workflow you're familiar with stays the same.
 
 - **Familiarity Amidst Innovation**: Despite the new integrations, the process of using available prompts remains as straightforward as ever. Whether you're working with traditional prompts or the newly introduced ones, the experience is smooth and consistent.
 
 - **Seamless Transition**: Our commitment to user-centric design means that even as we innovate, we prioritize the ease of use you've come to expect. Transitioning to or incorporating external prompts is made effortless, with the interface and steps for prompt creation, selection, and integration remaining intuitive and unchanged.
 
-With Generative AI Lab 5.3.0, you get the best of both worlds: exciting new features and the comfort of a familiar workflow.
+With NLP Lab 5.3.0, you get the best of both worlds: exciting new features and the comfort of a familiar workflow.
 
 ![featureDis](/assets/images/annotation_lab/5.3.0/3.gif)
 
@@ -76,7 +76,7 @@ With Generative AI Lab 5.3.0, you get the best of both worlds: exciting new feat
 ## Improvements ##
 ### Enhanced Taxonomy to Section Mapping
 
-Generative AI Labs 5.3.0 brings significant upgrades to the taxonomy customization experience when dealing with Section-based projects. 
+NLP Labs 5.3.0 brings significant upgrades to the taxonomy customization experience when dealing with Section-based projects. 
 
 **_Revamped Viewing Experience for Taxonomy Elements_**:
 
@@ -88,7 +88,7 @@ We've reimagined the way users view "Labels to Sections" associations:
 
 A standout enhancement is the ability to associate "Labels/Choices" to sections in bulk. Unlike the previous version, where users could only associate one label at a time, this update allows for simultaneous selection and association of multiple labels to various sections. This enhancement not only streamlines the project configuration and annotation process but also offers a more intuitive user experience, saving valuable time and effort.
 
-To facilitate these new features, we have made minor adjustments to the project configuration page in Generative AI Labs. Under the "Customize Labels" tab, you can now find a new button named "Associate Sections". Clicking on this button allows users to quickly access the tabular form of the mapping, making it easier to manage Labels/Choices linkage with specific sections. For both "Labels" and "Choices", we have provided the dedicated "Associate Sections" button on their respective configuration tabs. These new improvements are supported in all section-based annotation-enabled projects, including Visual NER projects.
+To facilitate these new features, we have made minor adjustments to the project configuration page in NLP Labs. Under the "Customize Labels" tab, you can now find a new button named "Associate Sections". Clicking on this button allows users to quickly access the tabular form of the mapping, making it easier to manage Labels/Choices linkage with specific sections. For both "Labels" and "Choices", we have provided the dedicated "Associate Sections" button on their respective configuration tabs. These new improvements are supported in all section-based annotation-enabled projects, including Visual NER projects.
 
 ![GIF Release note Section association](/assets/images/annotation_lab/5.3.0/4.gif)
 

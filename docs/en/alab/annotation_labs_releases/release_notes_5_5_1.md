@@ -1,8 +1,8 @@
 ---
 layout: docs
 header: true
-seotitle: Generative AI Lab | John Snow Labs
-title: Generative AI Lab Release Notes 5.5.1
+seotitle: NLP Lab | John Snow Labs
+title: NLP Lab Release Notes 5.5.1
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_5_5_1
 key: docs-licensed-release-notes
 modify_date: 2023-11-13
@@ -17,7 +17,7 @@ sidebar:
 
 Release date: **10-13-2023**
 
-We are delighted to announce release of Generative AI Lab 5.5.1
+We are delighted to announce release of NLP Lab 5.5.1
  
 ### Additional Meta Data on NER Label
  
