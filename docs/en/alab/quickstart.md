@@ -99,7 +99,7 @@ All that **without writing a line of code**!
 
 ## Quick Intro
 
-Generative AI Lab has progressed into the NLP Lab and has further developed into the Generative AI Lab. Generative AI Lab is a Free End-to-End No-Code platform for document labeling and AI/ML model training. It enables domain experts (e.g. nurses, doctors, lawyers, accountants, investors, etc.) to extract meaningful facts from text documents, images or PDFs and train models that will automatically predict those facts on new documents. This is done by using state-of-the-art Spark NLP pre-trained models or by tuning models to better handle specific use cases.
+Annotation Lab had progressed into the NLP Lab and has further developed into the Generative AI Lab. Generative AI Lab is a Free End-to-End No-Code platform for document labeling and AI/ML model training. It enables domain experts (e.g. nurses, doctors, lawyers, accountants, investors, etc.) to extract meaningful facts from text documents, images or PDFs and train models that will automatically predict those facts on new documents. This is done by using state-of-the-art Spark NLP pre-trained models or by tuning models to better handle specific use cases.
 
 Based on an auto-scaling architecture powered by Kubernetes, it can scale to many teams and projects. Enterprise-grade security is provided for free including support for air-gap environments, zero data sharing, role-based access, full audit trails, MFA, and identity provider integrations. It allows powerful experiments for model training and finetuning, model testing, and model deployment as API endpoints.
 
