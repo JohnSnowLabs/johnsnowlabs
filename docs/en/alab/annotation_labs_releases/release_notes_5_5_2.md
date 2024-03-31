@@ -17,7 +17,7 @@ sidebar:
 
 Release date: **10-13-2023**
 
-We are delighted to announce release of NLP Lab 5.5.2
+We are delighted to announce release of Generative AI Lab 5.5.2
  
 ### Bug Fixes
 - Resolved an Internal Server error that occurred when retrieving Pre-annotation status from the API Integration Page.

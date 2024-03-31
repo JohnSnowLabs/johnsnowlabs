@@ -17,7 +17,7 @@ The audio template is split into three parts: audio classification, emotion segm
 
 ### Audio Classification
 
-Suppose you have a sample JSON which contains some audio that you wish to classify (This input is set as default when you click on the template in NLP Lab):
+Suppose you have a sample JSON which contains some audio that you wish to classify (This input is set as default when you click on the template in Generative AI Lab):
 
 ```bash
 {

@@ -39,13 +39,13 @@ th {
 
 ## Dedicated Server
 
-Install NLP Lab (Annotation Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.
+Install Generative AI Lab (Annotation Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.
 
 </div><div class="h3-box" markdown="1">
 
 ### Fresh install
 
-To install NLP Lab run the following command:
+To install Generative AI Lab run the following command:
 
 ```bash
 wget https://setup.johnsnowlabs.com/annotationlab/install.sh -O - | sudo bash -s $VERSION
@@ -53,7 +53,7 @@ wget https://setup.johnsnowlabs.com/annotationlab/install.sh -O - | sudo bash -s
 
 Replace `$VERSION` in the above one liners with the version you want to install.
 
-For installing the latest available version of the NLP Lab use:
+For installing the latest available version of the Generative AI Lab use:
 
 ```bash
 wget https://setup.johnsnowlabs.com/annotationlab/install.sh -O - | sudo bash -s --
@@ -63,7 +63,7 @@ wget https://setup.johnsnowlabs.com/annotationlab/install.sh -O - | sudo bash -s
 
 ### Upgrade
 
-To upgrade your NLP Lab installation to a newer version, run the following command on a terminal:
+To upgrade your Generative AI Lab installation to a newer version, run the following command on a terminal:
 
 ```bash
 wget https://setup.johnsnowlabs.com/annotationlab/upgrade.sh -O - | sudo bash -s $VERSION
@@ -71,7 +71,7 @@ wget https://setup.johnsnowlabs.com/annotationlab/upgrade.sh -O - | sudo bash -s
 
 Replace `$VERSION` in the above one liners with the version you want to upgrade to.
 
-For upgrading to the latest version of the NLP Lab, use:
+For upgrading to the latest version of the Generative AI Lab, use:
 
 ```bash
 wget https://setup.johnsnowlabs.com/annotationlab/upgrade.sh -O - | sudo bash -s --
@@ -79,27 +79,27 @@ wget https://setup.johnsnowlabs.com/annotationlab/upgrade.sh -O - | sudo bash -s
 
 > **NOTE:** The install/upgrade script displays the login credentials for the _admin_ user on the terminal.
 
-After running the install/upgrade script, the NLP Lab is available at http://INSTANCE_IP or https://INSTANCE_IP
+After running the install/upgrade script, the Generative AI Lab is available at http://INSTANCE_IP or https://INSTANCE_IP
 
 ![login Screen ALAB](/assets/images/annotation_lab/4.1.0/loginScreenALAB.png)
 
-We have an aesthetically pleasing Sign-In Page with a section highlighting the key features of NLP Lab using animated GIFs.
+We have an aesthetically pleasing Sign-In Page with a section highlighting the key features of Generative AI Lab using animated GIFs.
 
 </div><div class="h3-box" markdown="1">
 
 ## AWS Marketplace
 
-The NLP Lab needs to be installed on a virtual machine. One of the most straight forward method is an installation from AWS Marketplace (also available on Azure). There is no fee for the NLP Lab. However, you still have to pay for the underlying AWS EC2 instance (not Free Tier Eligible).
+The Generative AI Lab needs to be installed on a virtual machine. One of the most straight forward method is an installation from AWS Marketplace (also available on Azure). There is no fee for the Generative AI Lab. However, you still have to pay for the underlying AWS EC2 instance (not Free Tier Eligible).
 
 Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions on the video below to subscribe and deploy.
 
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='ebaewU4BcQA' -%}<div class="video-descr">Deploy NLP Lab via AWS Marketplace</div></div></div>
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='ebaewU4BcQA' -%}<div class="video-descr">Deploy Generative AI Lab via AWS Marketplace</div></div></div>
 
 </div><div class="h3-box" markdown="1">
 
-## Secure access to NLP Lab on AWS
+## Secure access to Generative AI Lab on AWS
 
-When installed via the AWS Marketplace, NLP Lab has a private IP address and listens on an unsecured HTTP port. You can ask your DevOps department to incorporate the resource to your standard procedures to access from the internet in a secure manner. Alternatively, a Cloud Formation script is available that can be used to create a front end proxy (CloudFront, ELB, and auxiliary Lambda Function). Those resources are Free Tier Eligible. 
+When installed via the AWS Marketplace, Generative AI Lab has a private IP address and listens on an unsecured HTTP port. You can ask your DevOps department to incorporate the resource to your standard procedures to access from the internet in a secure manner. Alternatively, a Cloud Formation script is available that can be used to create a front end proxy (CloudFront, ELB, and auxiliary Lambda Function). Those resources are Free Tier Eligible. 
 
 Create the AWS Cloud Formation Script in YAML format:
    
@@ -111,17 +111,17 @@ Create the AWS Cloud Formation Script in YAML format:
 AWSTemplateFormatVersion: '2010-09-09'
 Metadata:
   License: Apache-2.0
-Description: 'AWS CloudFormation To access NLP Lab via https:
-  Create an Amazon EC2 instance running the NLP Lab Amazon Linux AMI. Once the
-  NLP Lab instance is created, provide instance hostname as input. This Cloudfromation
-  Creates Cloudfront. You can use Cloudfront Domain URL to access NLP Lab
+Description: 'AWS CloudFormation To access Generative AI Lab via https:
+  Create an Amazon EC2 instance running the Generative AI Lab Amazon Linux AMI. Once the
+  Generative AI Lab instance is created, provide instance hostname as input. This Cloudfromation
+  Creates Cloudfront. You can use Cloudfront Domain URL to access Generative AI Lab
   via https protocol.
   '
 Parameters:
   NLPlabInstanceHostName:
-    Description: HostName of the NLP Lab InstanceID
+    Description: HostName of the Generative AI Lab InstanceID
     Type: String
-    ConstraintDescription: HostName of the NLP Lab InstanceID
+    ConstraintDescription: HostName of the Generative AI Lab InstanceID
 
 Resources:
   CloudFront:
@@ -158,13 +158,13 @@ Resources:
               OriginProtocolPolicy: http-only
 Outputs:
   CloudfrontURL:
-    Description: Cloudfront URL to access NLP Lab
+    Description: Cloudfront URL to access Generative AI Lab
     Value: !Join ["", ['https://', !GetAtt [CloudFront, DomainName]]]
 
    ```
    
 
- Click Create a stack, “Upload a template file”. Give the Stack a name and enter the NLP Lab instance Hostname(from the EC2 console) as a parameter.
+ Click Create a stack, “Upload a template file”. Give the Stack a name and enter the Generative AI Lab instance Hostname(from the EC2 console) as a parameter.
 
 ![createStack](/assets/images/annotation_lab/aws/createStack.png)
 
@@ -172,11 +172,11 @@ Next -> Next -> Acknowledge that AWS CloudFormation might create IAM resources. 
 
 ![ack](/assets/images/annotation_lab/aws/ack.png)
 
-Once created, go do the Outputs tab and click on the NLP Lab URL. You may need to refresh the view. 
+Once created, go do the Outputs tab and click on the Generative AI Lab URL. You may need to refresh the view. 
 
 ![output](/assets/images/annotation_lab/aws/output.png)
 
-Now, to access the NLP Lab, you go to the CloudFront URL and log in with username “admin” and password equal to the EC2 Instance ID noted earlier. 
+Now, to access the Generative AI Lab, you go to the CloudFront URL and log in with username “admin” and password equal to the EC2 Instance ID noted earlier. 
 
 </div><div class="h3-box" markdown="1">
 
@@ -184,7 +184,7 @@ Now, to access the NLP Lab, you go to the CloudFront URL and log in with usernam
 
 Visit the [product page on Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/johnsnowlabsinc1646051154808.annotation_lab?tab=Overview) and follow the instructions on the video below to subscribe and deploy.
 
-<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='e6aB3z5tB0k' -%}<div class="video-descr">Deploy NLP Lab via Azure Marketplace</div></div></div>
+<div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='e6aB3z5tB0k' -%}<div class="video-descr">Deploy Generative AI Lab via Azure Marketplace</div></div></div>
 
 </div><div class="h3-box" markdown="1">
 
@@ -385,7 +385,7 @@ Edit annotationlab-installer.sh inside artifact folder as follows:
 
 ## AKS deployment
 
-To deploy NLP Lab on Azure Kubernetes Service (AKS) a Kubernetes cluster needs to be created in Microsoft Azure.
+To deploy Generative AI Lab on Azure Kubernetes Service (AKS) a Kubernetes cluster needs to be created in Microsoft Azure.
 
 1. Login to your [Azure Portal](https://portal.azure.com/) and search for Kubernetes services.
 
@@ -462,7 +462,7 @@ To deploy NLP Lab on Azure Kubernetes Service (AKS) a Kubernetes cluster needs t
         --set keycloak.secrets.admincreds.stringData.password=$(bash -c "echo ${password_gen_string}")
     ```
 
-11. Execute the `annotationlab-installer.sh` script to run the NLP Lab installation.
+11. Execute the `annotationlab-installer.sh` script to run the Generative AI Lab installation.
 
     ```sh
     ./annotationlab-installer.sh
@@ -531,7 +531,7 @@ To deploy NLP Lab on Azure Kubernetes Service (AKS) a Kubernetes cluster needs t
 
 ### Get Artifact
 
-Run the following command on a terminal to fetch the compressed artifact (_tarball_) of the NLP Lab.
+Run the following command on a terminal to fetch the compressed artifact (_tarball_) of the Generative AI Lab.
 
 ```bash
 wget https://s3.amazonaws.com/auxdata.johnsnowlabs.com/annotationlab/annotationlab-$VERSION.tar.gz

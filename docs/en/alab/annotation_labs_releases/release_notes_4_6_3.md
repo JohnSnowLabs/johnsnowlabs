@@ -17,7 +17,7 @@ sidebar:
 
 Release date: **31-01-2023**
 
-NLP Lab v4.6.3 is available which includes improvements for Playground and Prompt Engineering features introduced in v4.5 and v4.6. Here are some of them:
+Generative AI Lab v4.6.3 is available which includes improvements for Playground and Prompt Engineering features introduced in v4.5 and v4.6. Here are some of them:
 
 * Prompt (relation) using 2 different NER models is possible
 * Ability to add long texts with new lines in the playground 

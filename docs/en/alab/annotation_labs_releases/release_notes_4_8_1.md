@@ -17,13 +17,13 @@ sidebar:
 
 Release date: **22-03-2023**
 
-## More Powerful Prompts, New Annotation Gesture, and Enhanced Support for Floating Licences in NLP Lab 4.8
+## More Powerful Prompts, New Annotation Gesture, and Enhanced Support for Floating Licences in Generative AI Lab 4.8
 
-NLP Lab 4.8 brings more power to the prompts allowing a more efficient text preannotation, it adapts to the user’s preferences in terms of annotation gestures, adds supports for bundles of floating licenses shared across the annotation team for parallel preannotation, training, and experiments in the playground. It also includes a long list of optimizations covering project configuration steps, large projects export, or automatic download of missing resources.  Here are the highlights of this release:
+Generative AI Lab 4.8 brings more power to the prompts allowing a more efficient text preannotation, it adapts to the user’s preferences in terms of annotation gestures, adds supports for bundles of floating licenses shared across the annotation team for parallel preannotation, training, and experiments in the playground. It also includes a long list of optimizations covering project configuration steps, large projects export, or automatic download of missing resources.  Here are the highlights of this release:
 
 ## More Powerful Prompts
 
-NLP Lab 4.8 introduces several new features that enhance prompt-based
+Generative AI Lab 4.8 introduces several new features that enhance prompt-based
 preannotation. One significant improvement is the incorporation of
 negative questions into prompt definitions, which allows users to
 establish characteristics that do not apply to the target entity or
@@ -37,7 +37,7 @@ navigation.
 
 ### Combining Positive and Negative Questions for More Precise Prompts Definition
 
-NLP Lab 4.8 enhances the precision of entity annotation using prompts
+Generative AI Lab 4.8 enhances the precision of entity annotation using prompts
 by incorporating negative questions. On the prompt definition screen,
 users can now specify two categories of questions - *Questions that
 establish the characteristics of* *the target entity* and *Questions
@@ -52,12 +52,12 @@ streamline the process for our users.
 
 ### Relation Prompts Combine Entities from Models Trained with Different Embeddings 
 
-NLP Lab allows the definition of relation prompts by combining entities
+Generative AI Lab allows the definition of relation prompts by combining entities
 defined in pre-trained models, rules, and prompts. However, previous
 versions of the software did not allow users to create relation prompts
 using custom-trained models. In this update, users can implement and use
 relation prompts linking 2 entities defined in custom-trained models
-(e.g. trained via the NLP Lab). Moreover, there is no restriction for
+(e.g. trained via the Generative AI Lab). Moreover, there is no restriction for
 the reference models which can also be trained using different
 embeddings. We are confident that this new feature will enhance the
 power of the prompts and offer more flexibility for prompt-based
@@ -65,17 +65,17 @@ preannotation.
 
 ### Automatically Download Necessary Prompt Dependencies
 
-NLP Lab Prompts are created based on Zero Shot models. The later are
+Generative AI Lab Prompts are created based on Zero Shot models. The later are
 part of the Healthcare, Finance and Legal libraries and are accessible
 only in the presence of a valid license key. The prompt definition
 options are populated according to license availability: e.g. if a
 Healthcare NLP license is available, the Healthcare option will be
 active in the Domain dropdown. As such, when creating a prompt, the user has
-to choose the domain of the prompt, and based on that, NLP Lab will
+to choose the domain of the prompt, and based on that, Generative AI Lab will
 infer the Zero Shot model needed by the prompt.
 
 When users select one of the active domains if the corresponding Zero
-Shot model is not available locally, NLP Lab will automatically download
+Shot model is not available locally, Generative AI Lab will automatically download
 it from the NLP Models Hub.
 
 ![Screen Recording 2023-03-20 at 2 23 41 PM](https://user-images.githubusercontent.com/17021686/226288623-5e1ca39b-b6ce-4fdc-b058-b290e6765ede.gif)
@@ -83,8 +83,8 @@ it from the NLP Models Hub.
 ### Import/Export Prompts
 
 Prompts are preannotation resources that users often want to move from
-one instance of the NLP Lab to another or to archive for future
-reference. NLP Lab now supports prompt import and export from the UI.
+one instance of the Generative AI Lab to another or to archive for future
+reference. Generative AI Lab now supports prompt import and export from the UI.
 The user can import a ZIP/JSON file containing one or several prompt
 definitions. The imported prompts will become available on the Prompts
 page under the Hub menu item.
@@ -98,7 +98,7 @@ available for each prompt.
 
 Each prompt can include a maximum of 30 positive questions and 30 negative
 questions. For facilitating user actions when defining/updating prompts,
-NLP Lab now includes a count of the number of questions added so far.
+Generative AI Lab now includes a count of the number of questions added so far.
 For instance, if two questions have been added while creating a prompt,
 then the UI should show **Questions(2/30)**
 ![Screen Shot 2023-02-22 at 2 02 42 PM](https://user-images.githubusercontent.com/17021686/226298895-bc06c68e-e9d4-40ce-897a-511731be7a42.png)
@@ -115,7 +115,7 @@ filtered based on their Type or Domain.
 
 ## Undo Changes For Prompt and Rules in the playground
 
-We are thrilled to introduce the Undo feature added to the NLP Lab
+We are thrilled to introduce the Undo feature added to the Generative AI Lab
 Playground. This function enables users to quickly undo any changes made
 during their current experimental session. By selecting the \"Undo
 Changes\" button, all modifications made to the prompt/rules will be
@@ -135,7 +135,7 @@ select a text and then have options to format or access contextual menus
 that open next to your selection, have changed the way we all feel about
 text manipulation. We hear you!
 
-To make NLP Lab more intuitive and user-friendly, NLP Lab now supports a
+To make Generative AI Lab more intuitive and user-friendly, Generative AI Lab now supports a
 new way of annotating text. This new feature allows users to select the
 text first and then choose the label to apply. We believe that this will
 make the annotation process more intuitive and efficient for many users.
@@ -153,7 +153,7 @@ works best for their project and their personal preferences.
 
 ### Automatic Model Download During Project Import
 
-When a user imports a project in NLP Lab 4.8, the system automatically
+When a user imports a project in Generative AI Lab 4.8, the system automatically
 downloads any absent models utilized by the imported project. To enable
 users to check whether the models have been downloaded or not, a new
 section named \"Download Models\" has been included in the Import
@@ -192,7 +192,7 @@ the error.
 ### Efficient Export for Large Projects
 
 Visual NER projects, pre-annotations, and training have substantially
-increased NLP Lab project sizes. Unfortunately, this growth has made
+increased Generative AI Lab project sizes. Unfortunately, this growth has made
 importing and exporting tasks or projects time-consuming, especially
 when dealing with large files. The new version of the system has
 addressed this issue by enhancing both project and task exports, making
@@ -215,7 +215,7 @@ steps.
 
 ### Support for Bundles of Licenses 
 
-We are delighted to inform you that NLP Lab now offers support for
+We are delighted to inform you that Generative AI Lab now offers support for
 bundles of floating licenses. Those are licenses that enable multiple
 pre-annotation/training servers to run concurrently based on the values
 of the \"max_parallel_jobs\" parameter. In the previous version, our
@@ -228,7 +228,7 @@ pre-annotation/training servers simultaneously.
 
 ### Display a banner showing the number of days remaining for the available trial license
 
-NLP Lab improves the user experience by providing more accessible
+Generative AI Lab improves the user experience by providing more accessible
 information about license validity. Currently, users can only check
 their license status on the Licenses page, which may not be convenient
 as it requires manual action. To address this issue, we have added a new
@@ -245,7 +245,7 @@ and take the necessary steps before it ends.
 ## Improvements
 
 ### Increased Flexibility in Username Definition 
-With the latest release of NLP Lab, users can create usernames with increased flexibility and ease.
+With the latest release of Generative AI Lab, users can create usernames with increased flexibility and ease.
 Specifically, support has been added for the use of the underscore
 symbol \"\" in usernames. This enhancement will enable users to create
 unique and more expressive usernames that better represent their
@@ -254,7 +254,7 @@ any potential conflicts or duplications with other usernames.
 
 ### Improved User Experience with Clearer Relation Prompts
 
-NLP Lab has recently introduced an improvement to the way relation
+Generative AI Lab has recently introduced an improvement to the way relation
 prompts are displayed in the Pre-annotation pop-up. Previously, the
 relation prompts were shown under the generic \"Pre-annotation prompts\"
 category, which may have caused confusion for users. With this update,
@@ -267,7 +267,7 @@ efficiently.
 ### Enhanced Accessibility and Functionality of Model Hub Page
 
 To improve the accessibility and functionality of the Model Hub page,
-NLP Lab has implemented several changes in its latest version. One such
+Generative AI Lab has implemented several changes in its latest version. One such
 improvement is the ability to distinguish between downloadable models
 and license-restricted models. Models that require a license will now be
 disabled when the appropriate license is not available, making it easier

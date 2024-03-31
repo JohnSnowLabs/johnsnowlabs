@@ -22,7 +22,7 @@ Release date: **02-01-2024**
 
 ### Bug Fixes
 - Connected Words in Visual NER project are not consistent when pre-annotated using NER models
-- Embeddings and models cannot be manually uploaded in NLP Lab
+- Embeddings and models cannot be manually uploaded in Generative AI Lab
 - RE prompt created with rules and entity cannot be tested in Playground
 - Backup to S3 bucket and Azure blob is not working and giving error related to Azure blob
 - Issue on deleting task through Swagger API

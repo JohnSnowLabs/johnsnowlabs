@@ -17,9 +17,9 @@ sidebar:
 
 Release date: **27-02-2023**
 
-NLP Lab v4.7.4, which includes significant optimizations and bugfixes. The following are some of the key updates included in this release:
+Generative AI Lab v4.7.4, which includes significant optimizations and bugfixes. The following are some of the key updates included in this release:
 	
-- Ability to track NLP Lab installation and upgrades	
+- Ability to track Generative AI Lab installation and upgrades	
 - Resolved CVE issues related to Debian packages	
 - Corrected the number of completions needed to trigger Active learning when no test-tagged tasks are present."
 

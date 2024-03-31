@@ -17,7 +17,7 @@ sidebar:
 
 Release date: **13-04-2023**
 
-NLP Lab v4.8.4 release includes stabilization and bugfixes. Here are some of the key updates included in this release:
+Generative AI Lab v4.8.4 release includes stabilization and bugfixes. Here are some of the key updates included in this release:
 
 - Improvements in Keycloak resources API calls with proper error handling
 - Get_server error is seen in annotationlab pod when user navigate to clusters page

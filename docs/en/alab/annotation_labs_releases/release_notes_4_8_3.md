@@ -17,7 +17,7 @@ sidebar:
 
 Release date: **05-04-2023**
 
-NLP Lab v4.8.3 includes a bugfix related to restoration of database backup. 
+Generative AI Lab v4.8.3 includes a bugfix related to restoration of database backup. 
 
 </div><div class="prev_ver h3-box" markdown="1">
 

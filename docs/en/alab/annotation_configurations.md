@@ -233,13 +233,13 @@ we'll obtain the output illustrated below:
 
 ## Comments on the Labeling Page
 
-Since version 4.10.0, NLP Lab offers enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature enhances the communication between the annotators, improves work efficiency and enhances productivity. In order to use this feature, there is a New Burger menu at the top right corner of the labeling page. The dropdown through this menu allows users to add, update, and delete comments.
+Since version 4.10.0, Generative AI Lab offers enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature enhances the communication between the annotators, improves work efficiency and enhances productivity. In order to use this feature, there is a New Burger menu at the top right corner of the labeling page. The dropdown through this menu allows users to add, update, and delete comments.
 
 ![Comments](/assets/images/annotation_lab/4.10.0/2-min.gif)
 
 ## Tags from the Labeling Screen
 
-From version 4.10 onwards, NLP Lab introduces an enhanced tags feature for labeling pages. This addition offers users a convenient method to create, attach, and delete tags directly on the labeling page. It greatly enhances organization and boosts productivity by streamlining task management, granting users greater flexibility in classifying and monitoring their labeled data. Similar to the aforementioned comment feature, this can also be accessed from the burger menu at the top right corner of the labeling page. From the dropdown, select "Assign Tags".
+From version 4.10 onwards, Generative AI Lab introduces an enhanced tags feature for labeling pages. This addition offers users a convenient method to create, attach, and delete tags directly on the labeling page. It greatly enhances organization and boosts productivity by streamlining task management, granting users greater flexibility in classifying and monitoring their labeled data. Similar to the aforementioned comment feature, this can also be accessed from the burger menu at the top right corner of the labeling page. From the dropdown, select "Assign Tags".
 
 ![tags](/assets/images/annotation_lab/4.10.0/3-min.gif)
 

@@ -36,7 +36,7 @@ Currently, two user groups are available: _Annotators_ and _Admins_. By default,
 To add a user to the admin group, a user with admin privilege needs to navigate to the _Users_ page, click on the concerned username or select the _Edit_ option from the _More Actions_ icon, then go to the _Group_ section and check the _Admins_ checkbox.
 
 ## New Supervisor Role for Users
-In this version of NLP Lab, we're excited to introduce a new user role: Supervisor. The Supervisor role offers enhanced authority compared to the Annotator role while maintaining restrictions, similar to the Admin role.
+In this version of Generative AI Lab, we're excited to introduce a new user role: Supervisor. The Supervisor role offers enhanced authority compared to the Annotator role while maintaining restrictions, similar to the Admin role.
 
 ### Role Authority:
 A user with the Supervisor role has access to almost all functionalities available to the Admin role, with a few exceptions:
@@ -52,7 +52,7 @@ The process of creating a user with the new role is just like creating any other
 
 ![CreatingSupervissor](/assets/images/annotation_lab/5.9.0/14.gif)
 
-The introduction of the Supervisor role enhances user management capabilities while maintaining necessary restrictions to ensure data security and system integrity. This role provides users with the appropriate level of authority to oversee projects and workflows effectively within NLP Lab.
+The introduction of the Supervisor role enhances user management capabilities while maintaining necessary restrictions to ensure data security and system integrity. This role provides users with the appropriate level of authority to oversee projects and workflows effectively within Generative AI Lab.
 
 ## Reset User Credentials
 

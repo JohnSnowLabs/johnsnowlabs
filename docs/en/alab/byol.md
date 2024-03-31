@@ -40,7 +40,7 @@ Annotation Lab supports either floating licenses or air-gapped licenses. Mixing 
 
 Version 4.10 offers an updated License page layout that streamlines the process of obtaining a trial license. This updated design enables users to initiate a trial license request directly from the License page, thereby eliminating the need for external page navigation. This enhanced workflow incorporates a new “Get License” tab, while maintaining the status quo of the Import License and Existing Licenses tabs.
 
-To obtain a trial license, users are required to fill out the form on the “Get License” tab, providing their organizational email. Once the form is submitted, a validation link is sent to the provided email address, and the trial license is automatically imported to the NLP Lab when the link is clicked, making it readily available for use.
+To obtain a trial license, users are required to fill out the form on the “Get License” tab, providing their organizational email. Once the form is submitted, a validation link is sent to the provided email address, and the trial license is automatically imported to the Generative AI Lab when the link is clicked, making it readily available for use.
 
 ![trial-license](/assets/images/annotation_lab/4.10.0/1.png)
 

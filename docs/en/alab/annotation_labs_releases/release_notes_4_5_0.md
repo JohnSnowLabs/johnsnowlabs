@@ -17,13 +17,13 @@ sidebar:
 
 Release date: **01-01-2023**
 
-Over the last year, Annotation Lab has grown to be much more than a document annotation tool. It became a full-fledged AI system, capable of testing pre-trained models and rules, applying them to new datasets, training, and tuning models, and exporting them to be deployed in production. All those features together with the new Playground concept presented in the current release notes contributed to the transformation of the Annotation Lab into the **NLP Lab**.
-A new Playground feature is released as part of the NLP Lab’s Hub that allows users to quickly test any model and/or rule on a snippet of text without the need to create a project and import tasks. 
-NLP Lab also supports the training of Legal and Finance models and Model evaluation for classification projects. 
+Over the last year, Annotation Lab has grown to be much more than a document annotation tool. It became a full-fledged AI system, capable of testing pre-trained models and rules, applying them to new datasets, training, and tuning models, and exporting them to be deployed in production. All those features together with the new Playground concept presented in the current release notes contributed to the transformation of the Annotation Lab into the **Generative AI Lab**.
+A new Playground feature is released as part of the Generative AI Lab’s Hub that allows users to quickly test any model and/or rule on a snippet of text without the need to create a project and import tasks. 
+Generative AI Lab also supports the training of Legal and Finance models and Model evaluation for classification projects. 
 As always the release includes some stabilization and bug fixes for issues reported by our user community. Below are the details of what has been included in this release.
 
-## NLP Lab's Playground 
-NLP Lab introduces the Playground feature where users can directly deploy and test models and/or rules. In previous versions, the pre-annotation servers could only be deployed from within a given project. With the addition of the Playground, models can easily be deployed and tested on a sample text without going through the project setup wizard. Any model or rule can now be selected and deployed for testing by clicking on the "Open in Playground" button.
+## Generative AI Lab's Playground 
+Generative AI Lab introduces the Playground feature where users can directly deploy and test models and/or rules. In previous versions, the pre-annotation servers could only be deployed from within a given project. With the addition of the Playground, models can easily be deployed and tested on a sample text without going through the project setup wizard. Any model or rule can now be selected and deployed for testing by clicking on the "Open in Playground" button.
 
 ![Playground deployment](https://user-images.githubusercontent.com/33893292/209965776-1c0a6b07-5526-496e-97f8-4b7a2cf2a6d1.gif)
 
@@ -41,7 +41,7 @@ With this release, users can easily export trained models to a given s3 bucket. 
 
 
 ## Support Training of Finance and Legal Models
-With this release, users can perform training of Legal and Finance models depending on the available license(s). When training a new model in the NLP Lab, users have the option to select what library to use. Two options were available up until now: Open source and Healthcare. This release adds two new options: Legal and Finance. This helps differentiate the library used for training the models. The new options are only available when at least one valid license with the corresponding scope is added to the License page.
+With this release, users can perform training of Legal and Finance models depending on the available license(s). When training a new model in the Generative AI Lab, users have the option to select what library to use. Two options were available up until now: Open source and Healthcare. This release adds two new options: Legal and Finance. This helps differentiate the library used for training the models. The new options are only available when at least one valid license with the corresponding scope is added to the License page.
 
 ![Screenshot 2022-12-29 at 10 47 38 PM](https://user-images.githubusercontent.com/33893292/209985787-e03f9125-c716-4897-a1c9-47f91191d9bc.png)
 
@@ -50,7 +50,7 @@ With this release, users can perform training of Legal and Finance models depend
 
 Finding tokens on the Visual NER project was restricted to only one page, and searching for keywords from the labeling page on a text-based project was not available.
 
-NLP Lab supports task-level keyword-based searches. The keyword-based search feature will work for text and Visual NER projects alike.
+Generative AI Lab supports task-level keyword-based searches. The keyword-based search feature will work for text and Visual NER projects alike.
 
 - The search will work on all paginated pages.
 - It is also possible to navigate between search results, even if that result is located on another page.
@@ -80,7 +80,7 @@ In previous versions, users could only run token-based searches at page level. T
 
 ![Screen Shot 2022-12-14 at 6 01 34 PM](https://user-images.githubusercontent.com/45035063/210033230-1044c26e-8925-4077-8113-dccca09ed736.png)
 
-Up until now, the Annotation Lab only supported test and model evaluation for the NER-based projects. From this version on, NLP Lab supports test and model evaluation for Classification project as well. Evaluation results can now be downloaded if needed. 
+Up until now, the Annotation Lab only supported test and model evaluation for the NER-based projects. From this version on, Generative AI Lab supports test and model evaluation for Classification project as well. Evaluation results can now be downloaded if needed. 
 
 ### Hide and Unhide Regions in NER project 
 
@@ -120,7 +120,7 @@ Previously, expanding the text area on the labeling page did not make any change
 
 - **Revoking granted analytics request do not update the revoked section** 
 
-Earlier, when an analytics request was revoked, the corresponding entry was not shown in the revoked section. We have fixed this issue. With NLP Lab 4.5.0, the revoked entries are available in the revoked section. Also, when an analytics request is revoked, in the revoked section, two new actions, Accept and Delete, are available.
+Earlier, when an analytics request was revoked, the corresponding entry was not shown in the revoked section. We have fixed this issue. With Generative AI Lab 4.5.0, the revoked entries are available in the revoked section. Also, when an analytics request is revoked, in the revoked section, two new actions, Accept and Delete, are available.
 
 - **Show Confidence score in Regions option is not working properly for non-Visual NER tasks**
 
@@ -162,7 +162,7 @@ In the earlier version, the users could import previously exported projects with
 
 The overlap between the “Only Assigned” checkbox and the review dialog box was fixed. 
 
-- **Open-source Models cannot be downloaded in the NLP Lab without a license**
+- **Open-source Models cannot be downloaded in the Generative AI Lab without a license**
 
 Previously open-source models could not be downloaded from the NLP models hub when there was no license uploaded. This issue has been fixed. Now all open-source licenses are downloadable without any issue.
 

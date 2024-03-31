@@ -2012,10 +2012,10 @@ Previous versions of the Annotation Lab only allowed the export of tasks that co
 
 
 ## Integration with Amazon S3 and Azure Blob for tasks and projects export
-NLP Lab 5.2 offers seamless integration with Amazon Simple Storage Service. Users can now effortlessly export annotated tasks and projects directly to a given S3 bucket. This enhancement simplifies data management and ensures a smooth transition from annotation to model training and deployment.
+Generative AI Lab 5.2 offers seamless integration with Amazon Simple Storage Service. Users can now effortlessly export annotated tasks and projects directly to a given S3 bucket. This enhancement simplifies data management and ensures a smooth transition from annotation to model training and deployment.
 
 In previous versions, exported tasks were sent to the local workstation, but now it is possible to store annotated tasks and project backups securely in an S3 bucket. When triggering export, a new popup window will prompt the user to choose the target destination.
-By default, the "Local Export" tab is selected. This means that when the user clicks on the export button, target files will be downloaded to the local workstation. For those who prefer the convenience and reliability of cloud storage, it is now possible to select the "S3 Export" tab - enter Amazon S3 credentials, and export tasks and projects directly to the specified S3 bucket path. S3 credentials can be stored by the NLP Lab for future use.
+By default, the "Local Export" tab is selected. This means that when the user clicks on the export button, target files will be downloaded to the local workstation. For those who prefer the convenience and reliability of cloud storage, it is now possible to select the "S3 Export" tab - enter Amazon S3 credentials, and export tasks and projects directly to the specified S3 bucket path. S3 credentials can be stored by the Generative AI Lab for future use.
 
 ![exports3](/assets/images/annotation_lab/5.2.2/2.gif)
 
@@ -2023,14 +2023,14 @@ By default, the "Local Export" tab is selected. This means that when the user cl
 
 Exporting projects to Azure Blob storage is now an equally streamlined process:
 
-- **Access Export Page:** Navigate to the "Export Tasks" page within the NLP Lab platform.
+- **Access Export Page:** Navigate to the "Export Tasks" page within the Generative AI Lab platform.
 - **Specify the Tasks to Export:** Use the filter on the page to select the tasks you want to export as well as the target format and click the Export button.
 - **Select Cloud Export Option:** Navigate to the "Cloud Export" tab on the pop-up and select "Azure BLOB" from the available cloud storage options.
 - **Enter Azure Credentials:** Provide the Azure connection details: Azure Container Name, Azure Account Name, and Azure Account Secret Key.
 - **Optionally Save Credentials:** Save the credentials for future use to expedite subsequent exports to Azure Blob storage.
 - **Initiate Export Process:** Click the "Export" button to seamlessly transfer the selected project tasks into the specified Azure Blob container, ensuring effortless data backup and management.
 
-This integration with Azure Blob storage empowers NLP Lab users to manage tasks with unparalleled efficiency and flexibility. By leveraging the power of Azure, users can seamlessly import and export tasks, streamline data handling processes, and enhance their overall NLP Lab experience.
+This integration with Azure Blob storage empowers Generative AI Lab users to manage tasks with unparalleled efficiency and flexibility. By leveraging the power of Azure, users can seamlessly import and export tasks, streamline data handling processes, and enhance their overall Generative AI Lab experience.
 
 ![1](/assets/images/annotation_lab/5.8.0/11.gif)
 
@@ -2059,7 +2059,7 @@ This integration with Azure Blob storage empowers NLP Lab users to manage tasks 
 
 ## Improved HIPAA compliance with disabled exports to local storage
 
-Another new feature NLP Lab 5.2 offers is the option to restrict the export for more control over tasks and projects. Exporting tasks and projects to the local workstation can be disabled by admin users when dealing with sensitive data. This encourages users to adopt the more versatile and secure option of exporting data to Amazon S3.
+Another new feature Generative AI Lab 5.2 offers is the option to restrict the export for more control over tasks and projects. Exporting tasks and projects to the local workstation can be disabled by admin users when dealing with sensitive data. This encourages users to adopt the more versatile and secure option of exporting data to Amazon S3.
 
 **Disable Local Export:**
 
@@ -2076,5 +2076,5 @@ data that will be stored securely in the cloud.
 
 ![disableExport2](/assets/images/annotation_lab/5.2.2/3.gif)
 
-By introducing these export enhancements, NLP Lab 5.2.0 empowers organizations to streamline their data management processes while maintaining flexibility and control over export options. Users can continue to export specific projects to their local workstations if required, while others can benefit from the reliability and accessibility of exporting to Amazon S3 buckets.
+By introducing these export enhancements, Generative AI Lab 5.2.0 empowers organizations to streamline their data management processes while maintaining flexibility and control over export options. Users can continue to export specific projects to their local workstations if required, while others can benefit from the reliability and accessibility of exporting to Amazon S3 buckets.
 

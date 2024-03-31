@@ -17,26 +17,26 @@ sidebar:
 
 Release date: **04-09-2023**
 
-## NLP Lab 5.4 – Empowering Model Sharing, Enhanced Annotation, and Azure Blob Backups
-We are thrilled to release NLP Lab 5.4 which brings a host of exciting enhancements to further empower your NLP journey. In this release, we’ve focused on simplifying model sharing, making advanced features more accessible with FREE access to Zero-shot NER prompting, streamlining the annotation process with completions and predictions merging, and introducing Azure Blob backup integration.
+## Generative AI Lab 5.4 – Empowering Model Sharing, Enhanced Annotation, and Azure Blob Backups
+We are thrilled to release Generative AI Lab 5.4 which brings a host of exciting enhancements to further empower your NLP journey. In this release, we’ve focused on simplifying model sharing, making advanced features more accessible with FREE access to Zero-shot NER prompting, streamlining the annotation process with completions and predictions merging, and introducing Azure Blob backup integration.
 
 ## Publish Models Directly into Models HUB
 
-We're excited to introduce a streamlined way to publish NLP models to the NLP Models HUB directly from NLP Lab. Known for its user-friendly interface for annotating, submitting completions, and training Spark NLP Models, NLP Lab now simplifies the model-sharing process even further.
+We're excited to introduce a streamlined way to publish NLP models to the NLP Models HUB directly from Generative AI Lab. Known for its user-friendly interface for annotating, submitting completions, and training Spark NLP Models, Generative AI Lab now simplifies the model-sharing process even further.
 
 ### GitHub Integration for Easy Model Sharing
 
-To use this feature, you’ll need to link your GitHub account with NLP Lab. Here’s a quick guide:
+To use this feature, you’ll need to link your GitHub account with Generative AI Lab. Here’s a quick guide:
 
-- **Access Integrations Settings:** On your NLP Lab instance, navigate to Settings page and then to Integrations Tab.
+- **Access Integrations Settings:** On your Generative AI Lab instance, navigate to Settings page and then to Integrations Tab.
 - **Connect to GitHub:** The GitHub Integration option is readily available. Simply click the “Connect” button to proceed.
-- **Authenticate with GitHub:** You will be directed to the GitHub website for authentication. Once authenticated, a success message in NLP Lab will confirm the linkage.
+- **Authenticate with GitHub:** You will be directed to the GitHub website for authentication. Once authenticated, a success message in Generative AI Lab will confirm the linkage.
 
 Now, you are all set to publish your models to the NLP Models HUB!
 
 ![Integration](/assets/images/annotation_lab/5.4.1/1.gif)
 
-### Steps to publish your NLP Lab trained model to NLP Models HUB
+### Steps to publish your Generative AI Lab trained model to NLP Models HUB
 
 If you are an admin user with access to the "Hub" menu, you will find all downloaded or trained models on your "Models" Page. Here's how to publish them on the NLP Models Hub:
 
@@ -47,14 +47,14 @@ If you are an admin user with access to the "Hub" menu, you will find all downlo
     - For Licensed Models, the Pull Request will be sent to the Repository: "[JohnSnowLabs/johnsnowlabs](https://github.com/JohnSnowLabs/johnsnowlabs)".
 - **Final Steps:** Your Pull Request will be reviewed by the NLP Models HUB team and, upon approval, will be published to NLP Models HUB.
 
-This new feature eliminates the need to manually download the model from NLP Lab and upload it to the NLP Models HUB form. It also pre-fills in as much as possible the model form with model metadata, usage code, and example results. This way, the model publication becomes accessible and convenient for non-technical users who want to share their models with the community. 
+This new feature eliminates the need to manually download the model from Generative AI Lab and upload it to the NLP Models HUB form. It also pre-fills in as much as possible the model form with model metadata, usage code, and example results. This way, the model publication becomes accessible and convenient for non-technical users who want to share their models with the community. 
 
 ![Integration](/assets/images/annotation_lab/5.4.1/2.gif)
 
 ## Zero-Shot NER Prompts are now available for FREE
-Prompt engineering is gaining traction as a fast-evolving discipline that aims to guide advanced language models like GPT-3 to generate precise and intended results, such as answering queries or constructing meaningful narratives. While NLP Lab has previously provided support for prompt engineering, the feature was restricted to users with license keys.  We are now taking this a step further by offering this entity extraction feature for free to a broader user base.
+Prompt engineering is gaining traction as a fast-evolving discipline that aims to guide advanced language models like GPT-3 to generate precise and intended results, such as answering queries or constructing meaningful narratives. While Generative AI Lab has previously provided support for prompt engineering, the feature was restricted to users with license keys.  We are now taking this a step further by offering this entity extraction feature for free to a broader user base.
 
-With the 5.4 release, NLP Lab enables the unrestricted design and application of Zero-Shot Prompts for entity identification in text. To create NER prompts, users should first download the Roberta zero-shot NER model from the Models HUB. Afterward, they can select the Open-source Domain while setting up an NER prompt. As part of prompt definition, users can specify one or more questions, the answers to which will serve as the target entities for annotation.
+With the 5.4 release, Generative AI Lab enables the unrestricted design and application of Zero-Shot Prompts for entity identification in text. To create NER prompts, users should first download the Roberta zero-shot NER model from the Models HUB. Afterward, they can select the Open-source Domain while setting up an NER prompt. As part of prompt definition, users can specify one or more questions, the answers to which will serve as the target entities for annotation.
 
 Additionally, for enhanced performance, zero-shot prompts can be seamlessly integrated with GPT prompts, programmatic labeling, and other pre-trained DL models to achieve even more accurate and effective outcomes.
 
@@ -69,18 +69,18 @@ To access this feature, users must first activate the 'Merge Prediction' option 
 
 ![Integration](/assets/images/annotation_lab/5.4.1/5.gif)
 
-After enabling this setting, users will have the ability to combine multiple completions into a single, unified completion for more streamlined annotation. For this, you simply select the versions you want to merge from the Versions panel and click the Merge button. NLP Lab makes sure to clean up the resulting completion by only retaining one version of identical chunk annotations. 
+After enabling this setting, users will have the ability to combine multiple completions into a single, unified completion for more streamlined annotation. For this, you simply select the versions you want to merge from the Versions panel and click the Merge button. Generative AI Lab makes sure to clean up the resulting completion by only retaining one version of identical chunk annotations. 
 
 This provides a simple way to enrich existing completions with new pre-annotations, particularly when you wish to introduce new entities or choices to your project. To do so, simply add the new entity or choice—linked to a model, rule, or prompt—into your project configuration. Then, pre-annotate your task and combine the existing completion with the new prediction. 
 
 Additionally, this new feature streamlines the review process, as reviewers can now consolidate the contributions of multiple annotators into a single, unified completion.
 
-## Backup Integration with Azure Blob in NLP Lab 
-In this new version, NLP Lab introduces a feature that allows users to easily configure backups for databases and files directly to Azure Blob, all through a user-friendly interface. Administrators can manage these backup settings by navigating to the System Settings tab, where they can enter the necessary Azure Blob credentials. Users have the flexibility to choose from multiple backup frequencies and specify a particular Blob container for storing the backup files. Once configured, new backups will be auto-generated and stored in the designated Azure Blob container according to the chosen schedule.
+## Backup Integration with Azure Blob in Generative AI Lab 
+In this new version, Generative AI Lab introduces a feature that allows users to easily configure backups for databases and files directly to Azure Blob, all through a user-friendly interface. Administrators can manage these backup settings by navigating to the System Settings tab, where they can enter the necessary Azure Blob credentials. Users have the flexibility to choose from multiple backup frequencies and specify a particular Blob container for storing the backup files. Once configured, new backups will be auto-generated and stored in the designated Azure Blob container according to the chosen schedule.
 
 ![Integration](/assets/images/annotation_lab/5.4.1/6.png)
 
-This feature plays a crucial role in disaster recovery planning. For comprehensive guidance, refer to the "instruction.md" file included with the installation artifacts of this release. Below is an example of backup files in Azure Blob configured as per the settings in the NLP Lab.
+This feature plays a crucial role in disaster recovery planning. For comprehensive guidance, refer to the "instruction.md" file included with the installation artifacts of this release. Below is an example of backup files in Azure Blob configured as per the settings in the Generative AI Lab.
 
 ![Integration](/assets/images/annotation_lab/5.4.1/7.png)
 
@@ -92,10 +92,10 @@ In version 5.4, we have overhauled the Synthetic Text Generation page to provide
 
 #### Switching between Section-Based Annotation (SBA) and Non-SBA Configurations
 
-NLP Lab already offers support for "Section-Based Annotation (SBA)" with the ability to customize labels for specific sections, with these configurations located in the XML configuration file under the "Customize Labels" section. As part of our ongoing improvements, the XML configuration will now automatically remove custom labels associated with sections when the "Section-Based Annotation (SBA)" configuration is removed from the project. This enhancement ensures that the labels become available for the entire task, further enhancing the efficiency and flexibility of the annotation process.
+Generative AI Lab already offers support for "Section-Based Annotation (SBA)" with the ability to customize labels for specific sections, with these configurations located in the XML configuration file under the "Customize Labels" section. As part of our ongoing improvements, the XML configuration will now automatically remove custom labels associated with sections when the "Section-Based Annotation (SBA)" configuration is removed from the project. This enhancement ensures that the labels become available for the entire task, further enhancing the efficiency and flexibility of the annotation process.
 
 #### Mapping Labels to Sections in Project Configuration
-NLP Lab 5.4 includes several subtle yet significant improvements to the Section Association settings within Project Configuration:
+Generative AI Lab 5.4 includes several subtle yet significant improvements to the Section Association settings within Project Configuration:
 - **Convenient "Select All" Checkbox:** For enhanced workflows, we've introduced a "Select All" checkbox that simplifies the process of activating all associations between labels and sections.  
 - **Sticky "Section Title" Column and "Label Name" Row:** To facilitate error-free association assignments, both the Section Title Row and Labels Row are now sticky, ensuring they remain visible during scrolling.
 - **Adaptive Title Cell Width:** The Title Cells have been dynamically calibrated to adjust their width based on the content they contain, enhancing the readability and usability of the interface.
@@ -112,7 +112,7 @@ Now, if a user attempts to associate assertion models with a label but forgets t
 
 - **Improved Cluster Page Error Handling:**
     
-    In previous versions, the cluster list page had issues displaying servers for Kubernetes clusters with multiple namespaces. This problem only occurred when NLP Lab was installed using the default namespace. With version 5.4, this bug has been successfully fixed.
+    In previous versions, the cluster list page had issues displaying servers for Kubernetes clusters with multiple namespaces. This problem only occurred when Generative AI Lab was installed using the default namespace. With version 5.4, this bug has been successfully fixed.
 
 - **Precise Pre-annotation Indexing:**
     
@@ -142,7 +142,7 @@ Now, if a user attempts to associate assertion models with a label but forgets t
 
 - **Enhanced Search Functionality:**
     
-    In previous versions, the presence of unintended whitespaces preceding or succeeding the search keyword would result in a failure to yield any search results. This issue has been rectified across all search fields in NLP Lab. Rigorous testing has been conducted to ensure the accuracy and precision of the search functionality.
+    In previous versions, the presence of unintended whitespaces preceding or succeeding the search keyword would result in a failure to yield any search results. This issue has been rectified across all search fields in Generative AI Lab. Rigorous testing has been conducted to ensure the accuracy and precision of the search functionality.
 
 - **Selective Classification Models for SBA configuration:**
     
@@ -162,7 +162,7 @@ Now, if a user attempts to associate assertion models with a label but forgets t
 
 - **Undo action not working for the Section-Based Projects:**
     
-    Previously, when performing an Undo operation for a section containing NER labels that had been deleted, only the labels were restored, leaving the section inactive. Subsequently, clicking 'save' resulted in orphaned labels. With the latest version of NLP Lab, when an Undo operation is performed, both the section and the associated labels are fully restored, ensuring data consistency and accurate user experience.
+    Previously, when performing an Undo operation for a section containing NER labels that had been deleted, only the labels were restored, leaving the section inactive. Subsequently, clicking 'save' resulted in orphaned labels. With the latest version of Generative AI Lab, when an Undo operation is performed, both the section and the associated labels are fully restored, ensuring data consistency and accurate user experience.
 
 - **Preservation of Imported Sections:**
     
@@ -170,11 +170,11 @@ Now, if a user attempts to associate assertion models with a label but forgets t
 
 - **Classification Filter Functionality:**
     
-    The "Filter by Confidence Score" was experiencing issues, particularly within Section-Based Configured Projects. In the latest version of NLP Lab, this has been resolved, and the filter functions as intended, ensuring accurate and effective filtering capabilities.
+    The "Filter by Confidence Score" was experiencing issues, particularly within Section-Based Configured Projects. In the latest version of Generative AI Lab, this has been resolved, and the filter functions as intended, ensuring accurate and effective filtering capabilities.
 
 - **Improved Sample Task Import for Visual NER Projects:**
     
-    In this release, the issue where sample files for Visual NER projects imported from exported files were failing to load in the NLP Lab UI has been addressed. This fix guarantees that all exported files will maintain their integrity and load seamlessly.
+    In this release, the issue where sample files for Visual NER projects imported from exported files were failing to load in the Generative AI Lab UI has been addressed. This fix guarantees that all exported files will maintain their integrity and load seamlessly.
 
 - **Task List Count Consistency:**
     

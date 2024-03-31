@@ -17,7 +17,7 @@ sidebar:
 
 Release date: **10-13-2023**
 
-We are delighted to announce release of NLP Lab 5.5.3
+We are delighted to announce release of Generative AI Lab 5.5.3
  
 
 ### Improvement:

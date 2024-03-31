@@ -67,25 +67,25 @@ A new settings option has been added to prevent splitting a sentence into two di
 <img class="image image__shadow" src="/assets/images/annotation_lab/2.8.0/158552636-1b9f8814-5e05-4904-8ab4-401ea476d32e.png" style="width:60%;"/>
 
 ## Import from Cloud Storage
-Annotation Lab 4.3.0 offers support for importing tasks/documents stored on cloud. In the `Import Page`, a new section was added which allows users to define S3 connection details (credentials, access keys, and S3 bucket path). All documents present in the specified path, are imported as tasks in the current Annotation Lab project. With Version 5.9 of NLP Lab allows you to effortlessly import projects using S3 and Azure Blob.
+Annotation Lab 4.3.0 offers support for importing tasks/documents stored on cloud. In the `Import Page`, a new section was added which allows users to define S3 connection details (credentials, access keys, and S3 bucket path). All documents present in the specified path, are imported as tasks in the current Annotation Lab project. With Version 5.9 of Generative AI Lab allows you to effortlessly import projects using S3 and Azure Blob.
 
 
-NLP Lab 5.8 introduces a pivotal enhancement that expands task management capabilities by seamlessly integrating with Azure Blob storage, complementing the existing support for AWS S3. This integration empowers users to streamline task import and export processes, fostering greater efficiency and flexibility in their data handling workflows within the NLP Lab platform.
+Generative AI Lab 5.8 introduces a pivotal enhancement that expands task management capabilities by seamlessly integrating with Azure Blob storage, complementing the existing support for AWS S3. This integration empowers users to streamline task import and export processes, fostering greater efficiency and flexibility in their data handling workflows within the Generative AI Lab platform.
 
 ### Effortless Task Import from Azure Blob Storage:
 
-Importing tasks from Azure storage containers is now as straightforward and intuitive as importing from AWS S3. Follow these simple steps to effortlessly integrate your Azure data into NLP Lab projects:
-- **Prepare the Azure Source:** Ensure the Azure storage container from which you intend to import tasks is readily accessible and the target files are available. NLP Lab can currently accommodate various document types such as text, PDF, images, videos, and sound files.
-- **In your NLP Lab project:** Navigate to the Task Import page of the project where you wish to import tasks.
+Importing tasks from Azure storage containers is now as straightforward and intuitive as importing from AWS S3. Follow these simple steps to effortlessly integrate your Azure data into Generative AI Lab projects:
+- **Prepare the Azure Source:** Ensure the Azure storage container from which you intend to import tasks is readily accessible and the target files are available. Generative AI Lab can currently accommodate various document types such as text, PDF, images, videos, and sound files.
+- **In your Generative AI Lab project:** Navigate to the Task Import page of the project where you wish to import tasks.
 - **Select Azure Blob Storage:** Choose the "Azure BLOB" import option by clicking on the corresponding radio button on the Import page.
 - **Enter Azure Credentials:** Provide the Azure connection details: Azure Container Name, Azure Account Name, and Azure Account Secret Key.
-- **Initiate Import Process:**  Click the "Import" button to seamlessly transfer compatible documents from the specified Azure container into the current NLP Lab project.
+- **Initiate Import Process:**  Click the "Import" button to seamlessly transfer compatible documents from the specified Azure container into the current Generative AI Lab project.
 
 ![1](/assets/images/annotation_lab/5.8.0/2.gif)
 
 ### Import Project from S3 and Blob
 
-Annotation Lab 4.3.0 offers support for importing tasks/documents stored on cloud. In the `Import Page`, a new section was added which allows users to define S3 connection details (credentials, access keys, and S3 bucket path). All documents present in the specified path, are imported as tasks in the current Annotation Lab project. With Version 5.9 of NLP Lab allows you to effortlessly import projects using S3 and Azure Blob.
+Annotation Lab 4.3.0 offers support for importing tasks/documents stored on cloud. In the `Import Page`, a new section was added which allows users to define S3 connection details (credentials, access keys, and S3 bucket path). All documents present in the specified path, are imported as tasks in the current Annotation Lab project. With Version 5.9 of Generative AI Lab allows you to effortlessly import projects using S3 and Azure Blob.
 
 **Steps to import a project from S3:**
 - Navigate to "Import Project"

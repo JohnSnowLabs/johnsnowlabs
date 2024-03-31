@@ -17,18 +17,18 @@ sidebar:
 
 Release date: **12-21-2023**
 
-## Training Relations Extraction Models and Support for OCR Pipelines in NLP Lab 5.7 
-NLP Lab 5.7 marks a significant milestone in the realm of natural language processing with the introduction of advanced Relation Extraction (RE) model training features and the support for Visual OCR Pipelines. In this release, users will discover a suite of powerful functionalities designed to enhance efficiency, collaboration, and customization. The new RE model training feature focuses on augmenting the capabilities for text analysis, offering an intuitive and flexible approach to building and managing custom RE models. Alongside this, the Visual OCR Pipelines bring a significant enhancement to pdf and image document handling in NLP Lab, ensuring accurate, consistent, and precise text extraction. This improves the OCR results on imported PDF and/or image tasks for NER and text Classification projects. 
+## Training Relations Extraction Models and Support for OCR Pipelines in Generative AI Lab 5.7 
+Generative AI Lab 5.7 marks a significant milestone in the realm of natural language processing with the introduction of advanced Relation Extraction (RE) model training features and the support for Visual OCR Pipelines. In this release, users will discover a suite of powerful functionalities designed to enhance efficiency, collaboration, and customization. The new RE model training feature focuses on augmenting the capabilities for text analysis, offering an intuitive and flexible approach to building and managing custom RE models. Alongside this, the Visual OCR Pipelines bring a significant enhancement to pdf and image document handling in Generative AI Lab, ensuring accurate, consistent, and precise text extraction. This improves the OCR results on imported PDF and/or image tasks for NER and text Classification projects. 
 
-Furthermore, NLP Lab 5.7 introduces an exciting addition known as Interactive Help. This feature enhances the user experience by offering a more intuitive and readily accessible means of seeking help and finding information directly within the application. With Interactive Help, users can effortlessly navigate through the platform while effortlessly locating the support and guidance they require. 
+Furthermore, Generative AI Lab 5.7 introduces an exciting addition known as Interactive Help. This feature enhances the user experience by offering a more intuitive and readily accessible means of seeking help and finding information directly within the application. With Interactive Help, users can effortlessly navigate through the platform while effortlessly locating the support and guidance they require. 
 
 This new release demonstrates our continuous commitment to delivering advanced tools for text analysis and document processing, tailored to address our users' evolving needs. Detailed descriptions of all new features and improvements are provided below. 
 
 ## Training Relations Extraction (RE) Model
 
-We are excited to announce that NLP Lab 5.7 offers training features for Relation Extraction (RE) models. This new feature is augmenting our offerings for text analysis, providing users with a robust set of tools for building and managing custom RE models. Key benefits include:
+We are excited to announce that Generative AI Lab 5.7 offers training features for Relation Extraction (RE) models. This new feature is augmenting our offerings for text analysis, providing users with a robust set of tools for building and managing custom RE models. Key benefits include:
 
-- **Customizable RE Model Development:** Tailor RE models to your specific needs for text analysis, expanding the breadth of Model Training and Active Learning within NLP Lab.
+- **Customizable RE Model Development:** Tailor RE models to your specific needs for text analysis, expanding the breadth of Model Training and Active Learning within Generative AI Lab.
 - **Optimization of Downstream Tasks:** Apply trained RE models in pre-annotation workflows to significantly minimize manual labeling workload, thus expediting project timelines.
 - **Fostering Collaboration and Knowledge Sharing:** Reuse models across projects, facilitating knowledge transfer and enhancing task performance.
 - **Efficient Model Management:** Effortlessly download, upload, and publish trained RE models for collaborative use and wider community access through the Models Hub.
@@ -65,7 +65,7 @@ If you opt for immediate deployment, the trained RE model automatically serves a
 
 
 ### RE Model Management and Sharing:
-The "Models" page under the Hub of resources, serves as a centralized hub where you can conveniently access all pre-trained and trained models, including RE models. You have the option to download the trained RE models for offline use and even upload them back to the NLP Lab using the Upload Model Feature. Furthermore, from the "Models" page, you can directly publish the trained RE models to the Models Hub, enabling broader sharing within the community. This facilitates collaboration and knowledge exchange among a wider audience.
+The "Models" page under the Hub of resources, serves as a centralized hub where you can conveniently access all pre-trained and trained models, including RE models. You have the option to download the trained RE models for offline use and even upload them back to the Generative AI Lab using the Upload Model Feature. Furthermore, from the "Models" page, you can directly publish the trained RE models to the Models Hub, enabling broader sharing within the community. This facilitates collaboration and knowledge exchange among a wider audience.
 
 ![Compact VIew in Project Configuration](/assets/images/annotation_lab/5.7.0/4.gif)
 
@@ -77,7 +77,7 @@ The "Models" page under the Hub of resources, serves as a centralized hub where 
 Note: The above issues will be fixed in the upcoming version.
 
 ## Support For OCR Pipelines
-In NLP Lab 5.7, an exciting addition is the support for Visual OCR Pipelines, bringing notable advancements to OCR documents within the platform. These dedicated pipelines provide enhanced functionality, resulting in improved accuracy, consistency, and precise text extraction specifically tailored for NER projects. This update brings greater reliability and efficiency when working with OCR documents in NLP Lab, further empowering users in their natural language processing endeavors.
+In Generative AI Lab 5.7, an exciting addition is the support for Visual OCR Pipelines, bringing notable advancements to OCR documents within the platform. These dedicated pipelines provide enhanced functionality, resulting in improved accuracy, consistency, and precise text extraction specifically tailored for NER projects. This update brings greater reliability and efficiency when working with OCR documents in Generative AI Lab, further empowering users in their natural language processing endeavors.
 
 ### Centralized Access through Models Hub Page
 All supported pipelines are now discoverable and accessible on the NLP Models Hub page.
@@ -88,12 +88,12 @@ All supported pipelines are now discoverable and accessible on the NLP Models Hu
 ![Compact VIew in Project Configuration](/assets/images/annotation_lab/5.7.0/5.png)
 
 ### Pipeline Page under the Hub Section
-In NLP Lab, downloaded pipelines are conveniently listed on the dedicated Pipeline Page, which can be found under the Hub of Resources menu. This centralized space allows users to effectively manage and view their collection of pipelines. By accessing the Pipeline Page, users gain an organized overview of their downloaded pipelines, enabling them to easily keep track of available models and quickly reference the list of pipelines they have at their disposal. This streamlined approach enhances productivity and facilitates efficient management of pipelines within the NLP Lab environment.
+In Generative AI Lab, downloaded pipelines are conveniently listed on the dedicated Pipeline Page, which can be found under the Hub of Resources menu. This centralized space allows users to effectively manage and view their collection of pipelines. By accessing the Pipeline Page, users gain an organized overview of their downloaded pipelines, enabling them to easily keep track of available models and quickly reference the list of pipelines they have at their disposal. This streamlined approach enhances productivity and facilitates efficient management of pipelines within the Generative AI Lab environment.
 
 ![Compact VIew in Project Configuration](/assets/images/annotation_lab/5.7.0/6.png)
 
 ### Supported Pipelines and Usage Instruction
-NLP Lab version 5.7 introduces a set of seven Visual OCR Pipelines, each tailored for specific purposes, providing users with versatile options to address diverse document processing needs:
+Generative AI Lab version 5.7 introduces a set of seven Visual OCR Pipelines, each tailored for specific purposes, providing users with versatile options to address diverse document processing needs:
 - mixed_scanned_digital_pdf
 - mixed_scanned_digital_pdf_image_cleaner
 - mixed_scanned_digital_pdf_skew_correction
@@ -102,7 +102,7 @@ NLP Lab version 5.7 introduces a set of seven Visual OCR Pipelines, each tailore
 - image_handwritten_transformer_extraction
 - pdf_handwritten_transformer_extraction
 
-These pipelines offer a comprehensive set of tools, each optimized for specific scenarios, providing flexibility and precision in processing various document types in OCR projects within NLP Lab.
+These pipelines offer a comprehensive set of tools, each optimized for specific scenarios, providing flexibility and precision in processing various document types in OCR projects within Generative AI Lab.
 
 ### User Guide
 To enable OCR functionality and perform OCR tasks, follow these steps:
@@ -119,13 +119,13 @@ Note: Pipelines are automatically downloaded when selected from the import page,
 ### Current Limitation and Future Optimizations
 Currently, task importing via dedicated OCR pipelines may take longer than using the default OCR import option. This aspect is earmarked for optimization in the subsequent releases.
 
-The objective of these enhancements is to improve the user experience in NLP Lab by making it more accessible and powerful. While implementing these improvements, the familiar user interface and core functionalities are retained to ensure a seamless transition for users. 
+The objective of these enhancements is to improve the user experience in Generative AI Lab by making it more accessible and powerful. While implementing these improvements, the familiar user interface and core functionalities are retained to ensure a seamless transition for users. 
 
 ## Interactive Help
-In version 5.7, a new feature called Interactive Help has been added to NLP Lab. This feature aims to provide users with an intuitive and accessible way to seek help and find relevant information from within the application.
+In version 5.7, a new feature called Interactive Help has been added to Generative AI Lab. This feature aims to provide users with an intuitive and accessible way to seek help and find relevant information from within the application.
 
 ### Dedicated Help Button
-A dedicated "Help" button has been incorporated into the user interface, located in the bottom left corner of the application.  Help documentation button is not restricted to specific pages and can be accessed from any page within NLP Lab application, allowing instant access to relevant resources and specific topics.
+A dedicated "Help" button has been incorporated into the user interface, located in the bottom left corner of the application.  Help documentation button is not restricted to specific pages and can be accessed from any page within Generative AI Lab application, allowing instant access to relevant resources and specific topics.
 
 When users navigate to different pages under the Project section, the system dynamically maps the context and seamlessly directs users to the relevant help file associated with that specific page, ensuring tailored assistance.
 
@@ -163,15 +163,15 @@ In the past, when the Compact View option was activated, the visual alignment of
 ### Bug Fixes:
 - **Installation fails in Red Hat OpenShift**
 
-	In the earlier installation of the NLP Lab on Red Hat OpenShift, some features did not work as expected. Issues were encountered with the training and deployment of models, and the project import and export functionalities were not operational. With the introduction of version 5.7, all these issues have been successfully resolved. As a result, NLP Lab can now be utilized on Red Hat OpenShift without encountering any issues.
+	In the earlier installation of the Generative AI Lab on Red Hat OpenShift, some features did not work as expected. Issues were encountered with the training and deployment of models, and the project import and export functionalities were not operational. With the introduction of version 5.7, all these issues have been successfully resolved. As a result, Generative AI Lab can now be utilized on Red Hat OpenShift without encountering any issues.
 
 - **External Classification Prompt: Mandatory choices field**
 
 	In previous versions, when creating an external prompt of type Classification, providing choices using the designated field was not mandatory.This allowed the creation and saving of a classification prompt without providing any choices. However, when such a prompt was used in a project, a validation error was raised. With the new version, it is not possible to create a classification prompt without providing choices, thus avoiding validation errors during project configuration step.  
 
-- **For any secret key that is added in UI of NLP lab, after saving there should not be "eye" icon to view the secret**
+- **For any secret key that is added in UI of Generative AI Lab, after saving there should not be "eye" icon to view the secret**
 
-	Previously, any secret key that was saved in NLP Lab could be viewed from the UI. With the current version the secret key is not exposed in the UI anymore; the access keys are masked and only a hint of it is shown in UI.
+	Previously, any secret key that was saved in Generative AI Lab could be viewed from the UI. With the current version the secret key is not exposed in the UI anymore; the access keys are masked and only a hint of it is shown in UI.
 
 - **Text Color for selected classifier classes unreadable (black on grey)**
 

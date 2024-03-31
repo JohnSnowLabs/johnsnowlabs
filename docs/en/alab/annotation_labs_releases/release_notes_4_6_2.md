@@ -17,14 +17,14 @@ sidebar:
 
 Release date: **21-01-2023**
 
-NLP Lab 4.6.2 comes with support for zero-shot learning via prompts. Prompt engineering is a very recent but rapidly growing discipline that aims to guide language models such as GPT-3 to generate specific and desired outputs, such as answering a question or writing a coherent story. This version of the NLP Lab, adds support for the creation and use of prompts for entities and relations identification within text documents. 
+Generative AI Lab 4.6.2 comes with support for zero-shot learning via prompts. Prompt engineering is a very recent but rapidly growing discipline that aims to guide language models such as GPT-3 to generate specific and desired outputs, such as answering a question or writing a coherent story. This version of the Generative AI Lab, adds support for the creation and use of prompts for entities and relations identification within text documents. 
 The goal of prompt engineering in this context is designing and crafting some questions, which are fed into a question-answering model together with some input text. The purpose is to guide the language model to generate specific and desired outputs, such as identifying entities or relations within the input text. 
 This release offers features such as creation and editing of prompts, a dedicated section for prompts management and sharing inside the resources Hub, an optimized configuration page allowing mixing models, prompts, and rules into the same project, and support for quick prompts deployments and testing to the Playground.
 
 
 ## Prompts on the Hub
-The resources Hub has a new page dedicated to prompts. It allows users to easily discover and explore the existing prompts or create new prompts for identifying entities or relations. Currently, NLP Lab supports prompts for Healthcare, Finance, and Legal domains applied using pre-trained question-answering language models published on the NLP Models Hub and available to download in one click. The main advantage behind the use of prompts in entity or relation recognition is the ease of definition. Non-technical domain experts can easily create prompts, test and edit them on the playground on custom text snippets and, when ready, deploy them for pre-annotation as part of larger NLP projects. 
-Together with rules, prompts are very handy in situations where no pre-trained models exist, for the target entities and domains. With rules and prompts the annotators never start their projects from scratch but can capitalize on the power of zero-shot models and rules to help them pre-annotate the simple entities and relations and speed up the annotation process. As such the NLP Lab ensures fewer manual annotations are required from any given task.
+The resources Hub has a new page dedicated to prompts. It allows users to easily discover and explore the existing prompts or create new prompts for identifying entities or relations. Currently, Generative AI Lab supports prompts for Healthcare, Finance, and Legal domains applied using pre-trained question-answering language models published on the NLP Models Hub and available to download in one click. The main advantage behind the use of prompts in entity or relation recognition is the ease of definition. Non-technical domain experts can easily create prompts, test and edit them on the playground on custom text snippets and, when ready, deploy them for pre-annotation as part of larger NLP projects. 
+Together with rules, prompts are very handy in situations where no pre-trained models exist, for the target entities and domains. With rules and prompts the annotators never start their projects from scratch but can capitalize on the power of zero-shot models and rules to help them pre-annotate the simple entities and relations and speed up the annotation process. As such the Generative AI Lab ensures fewer manual annotations are required from any given task.
 
 
   - **Creating NER Prompts**
@@ -35,7 +35,7 @@ NER prompts, can be used to identify entities in natural language text documents
 
   - **Creating Relation Prompts**
 
-Prompts can also be used to identify relations between entities for healthcare, finance, and legal domains. The domain-specific zero-shot model to use for detecting relation can be selected from the "Domain" dropdown. The relation prompts are defined by a pair of entities related by a predicate. The entities can be selected from the available dropdowns listing all entities available in the current NLP Lab (included in available NER models or rules) for the specified domain. 
+Prompts can also be used to identify relations between entities for healthcare, finance, and legal domains. The domain-specific zero-shot model to use for detecting relation can be selected from the "Domain" dropdown. The relation prompts are defined by a pair of entities related by a predicate. The entities can be selected from the available dropdowns listing all entities available in the current Generative AI Lab (included in available NER models or rules) for the specified domain. 
    
    ![relation_prompt](https://user-images.githubusercontent.com/26042994/211890317-362f193c-b80b-4caa-b242-69df6fa8a257.gif)
 
@@ -47,12 +47,12 @@ The project configuration page was simplified by grouping into one page all avai
 **Note:** One project configuration can only reuse the prompts defined by one single zero-shot model. Prompts created based on multiple zero-shot models (e.g. finance or legal or healthcare) cannot be mixed into the same project because of high resource consumption. Furthermore, all prompts require a license with a scope that matches the domain of the prompt.
 
 ## Experiment with prompts in Playground
-NLP Lab's Playground supports the deployment and testing of prompts. Users can quickly test the results of applying a prompt on custom text, can easily edit the prompt, save it, and deploy it right away to see the change in the pre-annotation results.
+Generative AI Lab's Playground supports the deployment and testing of prompts. Users can quickly test the results of applying a prompt on custom text, can easily edit the prompt, save it, and deploy it right away to see the change in the pre-annotation results.
 
 ![demo3](https://user-images.githubusercontent.com/33893292/213699722-543d13f6-c410-4398-83a1-26a832a032ca.gif)
 
 ## Zero-Shot Models available in the NLP Models Hub
-NLP Models Hub now lists the newly released zero-shot models that are used to define prompts. These models need to be downloaded to NLP Lab instance before prompts can be created. A valid license must be available for the models to be downloaded to NLP Lab.
+NLP Models Hub now lists the newly released zero-shot models that are used to define prompts. These models need to be downloaded to Generative AI Lab instance before prompts can be created. A valid license must be available for the models to be downloaded to Generative AI Lab.
 
 ![Zero-shot-models](https://user-images.githubusercontent.com/26042994/211890478-3aa90dfc-f474-42c8-a73f-ce6c3efecbbe.png)
 
@@ -70,9 +70,9 @@ NLP Models Hub now lists the newly released zero-shot models that are used to de
 
   With release 4.6.2, issues regarding undo/redo buttons in the labeling page for annotated tokens have been fixed. Now, the Undo and Redo button works as expected.
 
-- **Finance and Legal models cannot be downloaded to NLP Lab with a floating license from Models Hub**
+- **Finance and Legal models cannot be downloaded to Generative AI Lab with a floating license from Models Hub**
 
-  Earlier, users were not able to download the Finance and Legal model from the NLP Models HUB page using floating licenses. This issue has been fixed. Now, legal and finance models are downloadable in the NLP lab using a floating license.
+  Earlier, users were not able to download the Finance and Legal model from the NLP Models HUB page using floating licenses. This issue has been fixed. Now, legal and finance models are downloadable in the Generative AI Lab using a floating license.
 
 - **Pre-annotation server cannot be deployed for Visual NER**
 

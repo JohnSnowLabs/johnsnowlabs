@@ -17,13 +17,13 @@ sidebar:
 
 Release date: **10-24-2023**
 
-## Streamlined Task Classification and Targeted Exports in NLP Lab 5.6 
-NLP Lab 5.6 introduces features that speed up text classification, simplify data exports, and offer more intuitive management of project resources. The Compact View option allows one to classify short tasks from the Tasks page, bypassing the need to open each task individually. Further enhancing this, the Focus View feature aids in managing multiple classification models by allowing users to focus on one at a time. 
+## Streamlined Task Classification and Targeted Exports in Generative AI Lab 5.6 
+Generative AI Lab 5.6 introduces features that speed up text classification, simplify data exports, and offer more intuitive management of project resources. The Compact View option allows one to classify short tasks from the Tasks page, bypassing the need to open each task individually. Further enhancing this, the Focus View feature aids in managing multiple classification models by allowing users to focus on one at a time. 
 Significant enhancements have also been added to the export process. The new annotator-specific export filters streamline the segregation of annotations by individual annotators, reducing the effort involved in processing exported files. Additionally, a filter for exporting tasks with pre-annotation results has been added for more targeted data export. Improvements extend to user interface enhancements in the "Reuse Resources" settings and the Train page, making project configuration and training more user-friendly and efficient.
 
 ## New: Classify Short Text on the Tasks View 
-In the realm of text classification, particularly for projects involving short content tasks, enhancing productivity becomes crucial. To address this challenge in view of optimizing annotation speed and convenience, NLP Lab 5.6. introduces a new layout of the Tasks screen - the Compact View-  optimizing space and enabling annotators to classify tasks directly from the Task List page. This bypasses the conventional, more time-consuming method of individually opening and submitting completions for each task. 
-First, let us see how one can enable the "Compact View" for NLP Lab Projects.
+In the realm of text classification, particularly for projects involving short content tasks, enhancing productivity becomes crucial. To address this challenge in view of optimizing annotation speed and convenience, Generative AI Lab 5.6. introduces a new layout of the Tasks screen - the Compact View-  optimizing space and enabling annotators to classify tasks directly from the Task List page. This bypasses the conventional, more time-consuming method of individually opening and submitting completions for each task. 
+First, let us see how one can enable the "Compact View" for Generative AI Lab Projects.
 
 ### Activating the Compact View Option 
 
@@ -52,14 +52,14 @@ For projects involving multiple classification options, when showing all choices
 ![Focus View](/assets/images/annotation_lab/5.6.0/4.gif)
 
 ## New: Filter Exported Completions by Annotator
-Previously, the task of segregating data annotations made by specific annotators was a laborious process, involving the examination and processing (either manual or via custom code) of the exported JSON files to identify target completions. This method was not only time-consuming but also prone to errors. Addressing this drawback, NLP Lab 5.6 introduced an enhanced export feature that simplifies the process.
+Previously, the task of segregating data annotations made by specific annotators was a laborious process, involving the examination and processing (either manual or via custom code) of the exported JSON files to identify target completions. This method was not only time-consuming but also prone to errors. Addressing this drawback, Generative AI Lab 5.6 introduced an enhanced export feature that simplifies the process.
 
 ![demoExportByAnnotator](/assets/images/annotation_lab/5.6.0/5.gif)
 
 Users can now easily select the data they want to export by applying annotator-based filters as shown in the video above. This is achieved through new selectors added to the Export page, that ensure a more targeted and efficient export experience. Once the desired annotators are selected, the completions they created can be further filtered based on their status for a refined JSON export. Specifically, users can filter out tasks that either lack completions or are marked with a starred completion, thus enabling a targeted export process. This enhancement combines with the task-based filters already in place and saves time but also increases the accuracy and relevance of the exported data, making it a valuable tool for users engaged in extensive data annotation projects. 
 
 ## New: Filter Export by Predictions
-This feature empowers users to selectively filter out tasks lacking pre-annotation results when exporting tasks and completions. By integrating this option, NLP Lab further improves the export process, allowing users to focus on tasks with pre-annotation outcomes.
+This feature empowers users to selectively filter out tasks lacking pre-annotation results when exporting tasks and completions. By integrating this option, Generative AI Lab further improves the export process, allowing users to focus on tasks with pre-annotation outcomes.
 
 ## Improvements
 ### Keyboard Shortcut for "Accept Prediction"
@@ -68,7 +68,7 @@ A keyboard shortcut was added for the "Accept prediction" button. This feature, 
 ![demoExportByAnnotator](/assets/images/annotation_lab/5.6.0/6.png)
 
 ### Readiness Check for OCR Server on Image and PDF Import
-The process of selecting OCR servers for image and/or PDF-focused projects has been refined for greater efficiency. Previously, when visual documents were imported, the system would automatically select any available OCR server on the import page. This approach, though straightforward, did not consider the specific readiness status of the project's designated OCR server. Recognizing this limitation, NLP Lab 5.6 introduces a more intelligent selection mechanism.
+The process of selecting OCR servers for image and/or PDF-focused projects has been refined for greater efficiency. Previously, when visual documents were imported, the system would automatically select any available OCR server on the import page. This approach, though straightforward, did not consider the specific readiness status of the project's designated OCR server. Recognizing this limitation, Generative AI Lab 5.6 introduces a more intelligent selection mechanism.
 With the recent enhancement, the user interface is designed to temporarily pause when the project's dedicated OCR server is in the process of deployment. This pause ensures that the OCR integration aligns with the project's readiness, avoiding potential mismatches or delays that could affect the project workflow. Once the deployment of the OCR server is complete, the system automatically sets this newly deployed server as the default OCR server for the project. This ensures that the processing of images is timely for each project, enhancing the overall efficiency and effectiveness of document ingestion.
 
 
@@ -87,13 +87,13 @@ One of the improvements is the introduction of tab-based navigation for selectin
 
 Additionally, the process of adding resources to a project has been updated. Users are no longer required to click "Add to Project Configuration" button each time they select a new model, prompt, or rule. Instead, the system automatically incorporates the chosen resource into the project configuration. This refinement eliminates repetitive steps, saving users time and simplifying the process of resource selection.
 
-These UI updates, implemented to enrich the user experience, ensure that users can manage resources more effectively while following the same workflow. The focus remains on user convenience and efficiency, underscoring the NLP Lab's commitment to continuous improvement in response to user needs and feedback.
+These UI updates, implemented to enrich the user experience, ensure that users can manage resources more effectively while following the same workflow. The focus remains on user convenience and efficiency, underscoring the Generative AI Lab's commitment to continuous improvement in response to user needs and feedback.
 
 ![ReuseResourcePageUI](/assets/images/annotation_lab/5.6.0/9.png)
 
 ### Enhanced UI for Model Training
-NLP Lab 5.6. updates to the User Interface of the Traininig & Active Learning page for an improved user experience and streamlined interactions. The buttons located at the top of the page have been redesigned to be more **compact** for optimized screen space, allowing users to focus on the essential elements of the page without distraction.
-Another enhancement is the introduction of **sticky buttons** at the bottom of the Train page. This feature ensures that critical features, such as “Train” and “Save,” remain accessible at all times, regardless of the user’s position on the page. By eliminating the need to scroll, users can enjoy a more convenient and efficient workflow. This thoughtful design change underscores our commitment to continuously improving the user interface to meet the evolving needs of our users in the NLP Lab.
+Generative AI Lab 5.6. updates to the User Interface of the Traininig & Active Learning page for an improved user experience and streamlined interactions. The buttons located at the top of the page have been redesigned to be more **compact** for optimized screen space, allowing users to focus on the essential elements of the page without distraction.
+Another enhancement is the introduction of **sticky buttons** at the bottom of the Train page. This feature ensures that critical features, such as “Train” and “Save,” remain accessible at all times, regardless of the user’s position on the page. By eliminating the need to scroll, users can enjoy a more convenient and efficient workflow. This thoughtful design change underscores our commitment to continuously improving the user interface to meet the evolving needs of our users in the Generative AI Lab.
   
 ![img width="1510" alt="TrainingPageUI](/assets/images/annotation_lab/5.6.0/10.png)
 
@@ -104,7 +104,7 @@ Another enhancement is the introduction of **sticky buttons** at the bottom of t
 
 - **Publish Model: "Python Code" Field to be prefilled with the correct embeddings as per the License type used** 
 	
-	The submission form for publishing Trained Models featured the Python Code Field which is prepopulated with a sample value code. In NLP Lab 5.6.0, the prefilled sample code now accurately reflects the embedding value, aligned with the appropriate license type for the model being published.
+	The submission form for publishing Trained Models featured the Python Code Field which is prepopulated with a sample value code. In Generative AI Lab 5.6.0, the prefilled sample code now accurately reflects the embedding value, aligned with the appropriate license type for the model being published.
 
   ![Publish Model Embeddings](/assets/images/annotation_lab/5.6.0/11.gif)
 

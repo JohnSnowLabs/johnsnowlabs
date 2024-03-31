@@ -17,24 +17,24 @@ sidebar:
 
 Release date: **10-11-2023**
 
-## Pre-annotations with Azure OpenAI Service, GPT Prompt Based Classification and Support for Free NER Rules in NLP Lab 5.5
-We are thrilled to announce the release of NLP Lab version 5.5, marking another significant step forward in its Natural Language Processing capabilities. This update introduces integration with Azure OpenAI Service that provides organizations with access to OpenAI's models with added layers of enterprise-grade capabilities, offering enhanced security, compliance, and governance features that are crucial for large organizations. This integration covers the already available NER pre-annotation and synthetic task generation but also a new feature: Prompt based Text Classification with GPT models.
+## Pre-annotations with Azure OpenAI Service, GPT Prompt Based Classification and Support for Free NER Rules in Generative AI Lab 5.5
+We are thrilled to announce the release of Generative AI Lab version 5.5, marking another significant step forward in its Natural Language Processing capabilities. This update introduces integration with Azure OpenAI Service that provides organizations with access to OpenAI's models with added layers of enterprise-grade capabilities, offering enhanced security, compliance, and governance features that are crucial for large organizations. This integration covers the already available NER pre-annotation and synthetic task generation but also a new feature: Prompt based Text Classification with GPT models.
 
-Furthermore NLP Lab 5.5 adds support for FREE rule-based NER annotation, handy for cases where context can be ignored in pre-annotation scenarios (e.g. identification of email addresses, telephone numbers, list of cities, countries, etc.).
+Furthermore Generative AI Lab 5.5 adds support for FREE rule-based NER annotation, handy for cases where context can be ignored in pre-annotation scenarios (e.g. identification of email addresses, telephone numbers, list of cities, countries, etc.).
 
 Aiming to streamline user experience, this version also brings a rich set of UI and workflow improvements that touch the project definition, annotation process, model publication to NLP Models Hub and many more. 
-Dive into the details below to discover all that NLP Lab 5.5 has in store for you.
+Dive into the details below to discover all that Generative AI Lab 5.5 has in store for you.
 
 ### NEW: Integration with Azure OpenAI Service 
-NLP Lab 5.5 offers integration support for Azure OpenAI Service, expanding its existing pre-annotation and synthetic data generation capabilities. This new feature allows users to connect with a broader array of external service providers, providing an additional pre-annotation method in the absence of specific pre-trained models.
+Generative AI Lab 5.5 offers integration support for Azure OpenAI Service, expanding its existing pre-annotation and synthetic data generation capabilities. This new feature allows users to connect with a broader array of external service providers, providing an additional pre-annotation method in the absence of specific pre-trained models.
 
-Begin by registering the external service provider with NLP Lab. Currently NLP Lab supports **Azure OpenAI** and **OpenAI** as service providers. Here's a quick guide for this:
+Begin by registering the external service provider with Generative AI Lab. Currently Generative AI Lab supports **Azure OpenAI** and **OpenAI** as service providers. Here's a quick guide for this:
 
 **Getting Started**
 
-1.	On your NLP Lab instance, go to the "Settings" page and then click on the "Integrations" tab.
+1.	On your Generative AI Lab instance, go to the "Settings" page and then click on the "Integrations" tab.
 2.	Click the "Add" button, and fill in the required fields: "Service Provider Name" and "Secret Key."
-3.	Click "Validate" to ensure a successful connection between the service provider and NLP Lab.
+3.	Click "Validate" to ensure a successful connection between the service provider and Generative AI Lab.
 4. Click "Integrate."
 
  ![OpenAIIntegration](/assets/images/annotation_lab/5.5.0/1.gif)
@@ -82,7 +82,7 @@ While creating GTP LLM prompts, users can experiment with different temperature 
 ![Temperature 1](/assets/images/annotation_lab/5.5.0/5.gif)
 
 ## NEW: Prompt based Classification available with OpenAI and Azure OpenAI Services
-NLP Lab 5.5 introduces Text Classification with LLM prompts using external services. This new feature empowers users to access a more diverse array of prompts, enabling them to harness external expertise for crafting pre-annotations. This feature becomes particularly valuable when pre-trained models are not readily available, serving as an alternative pre-annotation solution. 
+Generative AI Lab 5.5 introduces Text Classification with LLM prompts using external services. This new feature empowers users to access a more diverse array of prompts, enabling them to harness external expertise for crafting pre-annotations. This feature becomes particularly valuable when pre-trained models are not readily available, serving as an alternative pre-annotation solution. 
 
 Classification prompts are supported by both Azure OpenAI and OpenAI service integrations.
 
@@ -107,7 +107,7 @@ While classification prompts bring a layer of innovation to the annotation proce
 
 
 ## Support for Free NER Rules
-We are excited to announce the introduction of a new feature in version 5.5 of NLP Lab: Support for Free Rules. This feature enhances the capability of our product by allowing users to define and apply custom rules for pre-annotation, which can significantly accelerate the data annotation process.
+We are excited to announce the introduction of a new feature in version 5.5 of Generative AI Lab: Support for Free Rules. This feature enhances the capability of our product by allowing users to define and apply custom rules for pre-annotation, which can significantly accelerate the data annotation process.
 
 Two types of rules are supported:
 
@@ -133,7 +133,7 @@ After creating a rule on the Models Hub page, the Project Owner or Manager can i
 ### Improvements
 
 #### Enhanced Task Page Search: Focus on Ground Truth Completions
-NLP Lab 5.5 enhances the search functionality on the tasks page by. Users now have the ability to narrow their search scope to either all completions or exclusively Ground Truth (GT) completions. This new feature retains all the existing search capabilities, and add a new Ground Truth filter for the results.
+Generative AI Lab 5.5 enhances the search functionality on the tasks page by. Users now have the ability to narrow their search scope to either all completions or exclusively Ground Truth (GT) completions. This new feature retains all the existing search capabilities, and add a new Ground Truth filter for the results.
 
 
 #### Annotation Experience Settings 
@@ -142,13 +142,13 @@ Previously, at the conclusion of the setup process, a settings icon was provided
 ![test](/assets/images/annotation_lab/5.5.0/9.png)
 
 #### Confirmation Alerts for Unsaved Configuration Changes
-A new alert system has been integrated into the configuration pages of NLP Lab 5.5. When users attempt to navigate away from a configuration page without saving their modifications, a pop-up warning will now display. This alert acts as a reminder to save any configuration changes to prevent accidental loss of unsaved work.
+A new alert system has been integrated into the configuration pages of Generative AI Lab 5.5. When users attempt to navigate away from a configuration page without saving their modifications, a pop-up warning will now display. This alert acts as a reminder to save any configuration changes to prevent accidental loss of unsaved work.
 
 ![test](/assets/images/annotation_lab/5.5.0/10.png)
 
 
 #### Redesigned Task Page for a Streamlined Experience
-The task page in the latest NLP Lab version has been redesigned for a cleaner and more minimalist user interface. This design simplifies access to important information and enhances overall task management. The introduction of a dedicated Task Filter Slider Window complements this design update by providing robust filtering capabilities to swiftly locate specific tasks, thus optimizing task organization and management.
+The task page in the latest Generative AI Lab version has been redesigned for a cleaner and more minimalist user interface. This design simplifies access to important information and enhances overall task management. The introduction of a dedicated Task Filter Slider Window complements this design update by providing robust filtering capabilities to swiftly locate specific tasks, thus optimizing task organization and management.
 
 ![test](/assets/images/annotation_lab/5.5.0/11.gif)
 
@@ -166,7 +166,7 @@ Version 5.5 simplifies the procedure for uploading trained models to the NLP Mod
 With the aim of further streamlining the model upload workflow, the Python code required for publishing models to the Models hub will now be auto-generated and inserted into the Publish Model Form. Users have the option to edit this code to suit their unique requirements. 
 
 ### Visual NER Training Parameters Update 
-Version 5.5 of the NLP Lab offers the ability to train Visual NER models faster, apply active learning for automatic model training, and pre-annotate image-based tasks with existing models to accelerate the training process.
+Version 5.5 of the Generative AI Lab offers the ability to train Visual NER models faster, apply active learning for automatic model training, and pre-annotate image-based tasks with existing models to accelerate the training process.
 From the Training Settings sections, users can tune the training parameters "Eval Size", "Eval Steps", "Max Steps" and "Batch"
 - **Eval Size**: Eval Size refers to the size of the dataset that is reserved for evaluating the model's performance during training. This dataset, often referred to as the test split, is essential for assessing how well the model generalizes to new, unseen data.
 - **Eval Steps**: Eval Steps indicate when the model should be evaluated during training. It defines the number of training steps (iterations) that occur before the evaluation process is triggered.
@@ -223,9 +223,9 @@ By tailoring label visibility at the section level, annotation efforts are more 
 
 - **Prompt created with an external service provider, returning Internal Server Error during import**
 
-  Prompts using an external service provider can be imported to NLP Lab with a valid service provider URL.
+  Prompts using an external service provider can be imported to Generative AI Lab with a valid service provider URL.
 
-- **User can add Predicted Entities manually along with the ones automatically populated while uploading the model via NLP lab UI**
+- **User can add Predicted Entities manually along with the ones automatically populated while uploading the model via Generative AI Lab UI**
 
   With this release, the issue where the predicted entities were editable is fixed. The field is read-only and displays only the entities extracted from the model that is being published.
 
@@ -259,7 +259,7 @@ By tailoring label visibility at the section level, annotation efforts are more 
 
 - **UI freezes when attempting to edit a project group**
 
-  In the previous version of NLP Lab, the UI froze and had to be closed or refreshed when trying to edit the project groups. Now the issue is resolved and project groups can be edited and updated.
+  In the previous version of Generative AI Lab, the UI froze and had to be closed or refreshed when trying to edit the project groups. Now the issue is resolved and project groups can be edited and updated.
 
 - **Improvement on different representations of the pre-annotation statuses for both Model-based and External Service pre-annotations**
 

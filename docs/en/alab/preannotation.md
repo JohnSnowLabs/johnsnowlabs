@@ -73,11 +73,11 @@ Pre-annotation is available for projects with text contents as the tasks. When y
 As a result, all predicted labels for a given task will be available in the <es>Prediction</es> widget on the Labeling page. The predictions are not editable. You can only view and navigate those or compare those with older predictions. However, you can create a new completion based on a given prediction. All labels and relations from such a new 
 
 ### Re-purpose text-based NER models for PDF and images 
-NLP Lab 5.8 introduces a groundbreaking enhancement to Visual NER projects by allowing users to leverage the vast library of pre-trained NER models specific for text content [6,600+ models available on the Models Hub](https://nlp.johnsnowlabs.com/models?task=Named+Entity+Recognition), for the pre-annotation of PDF or image tasks. This addition not only expands pre-annotation options but also significantly streamlines the annotation process, saving users precious time and effort. 
+Generative AI Lab 5.8 introduces a groundbreaking enhancement to Visual NER projects by allowing users to leverage the vast library of pre-trained NER models specific for text content [6,600+ models available on the Models Hub](https://nlp.johnsnowlabs.com/models?task=Named+Entity+Recognition), for the pre-annotation of PDF or image tasks. This addition not only expands pre-annotation options but also significantly streamlines the annotation process, saving users precious time and effort. 
 With this game-changing enhancement, users can now:
 - **Effortlessly Jumpstart Data Preparation Projects:** Quickly initiate data preparation projects for training small Visual NER models tailored to specific tasks, reducing the time and resources required for manual labeling.
 - **Utilize Existing Domain-Specific Expertise** Leverage the extensive library of NER models, including domain-specialized models that were previously confined to text-based tasks. This opens up new possibilities for processing image and PDF documents with specialized NER models, enhancing the accuracy and effectiveness of pre-annotation.
-- **Streamline Workflow with Pre-trained Models:** Eliminate the need for training Visual NER models just to predict specific labels when those are already available in existing text processing models. Simply select the relevant pre-trained NER model(s) you need directly from the NLP Lab library and seamlessly integrate them into your projects.
+- **Streamline Workflow with Pre-trained Models:** Eliminate the need for training Visual NER models just to predict specific labels when those are already available in existing text processing models. Simply select the relevant pre-trained NER model(s) you need directly from the Generative AI Lab library and seamlessly integrate them into your projects.
 ## Effortlessly Pre-annotate PDF or Image Documents with NER Models
 Configuring your Visual NER project to use text-specific NER models for pre-annotation is a breeze:
 - **Project Configuration:** Begin by creating a new project and selecting the Visual NER Template during configuration. This sets the stage for seamless integration of NER models into your project.
@@ -88,7 +88,7 @@ Configuring your Visual NER project to use text-specific NER models for pre-anno
 
 ![1](/assets/images/annotation_lab/5.8.0/1.gif)
 
-This new feature empowers users to seamlessly integrate NER models into their Visual NER projects, fostering greater flexibility and efficiency in document annotation workflows within NLP Lab. By leveraging the power of NER models, users can streamline pre-annotation processes, reduce training time, and achieve enhanced accuracy, ultimately accelerating their data preparation efforts.
+This new feature empowers users to seamlessly integrate NER models into their Visual NER projects, fostering greater flexibility and efficiency in document annotation workflows within Generative AI Lab. By leveraging the power of NER models, users can streamline pre-annotation processes, reduce training time, and achieve enhanced accuracy, ultimately accelerating their data preparation efforts.
 
 ### Rules
 
@@ -114,7 +114,7 @@ For running pre-annotation on one or several tasks, the <es>Project Owner</es> o
 2. Pre-annotation currently works at the token level, and does not merge all tokens of a chunk into one entity.
 
 ### Pre-annotation using Prompts in Visual NER project
-NLP Lab 5.9.0 expands pre-annotation capabilities for Visual NER projects with added support for pre-annotation using Prompts. Users can now pre-annotate tasks in Visual NER projects using zero-shot prompts, significantly enhancing the scope for pre-annotation along with efficiency and accuracy.
+Generative AI Lab 5.9.0 expands pre-annotation capabilities for Visual NER projects with added support for pre-annotation using Prompts. Users can now pre-annotate tasks in Visual NER projects using zero-shot prompts, significantly enhancing the scope for pre-annotation along with efficiency and accuracy.
 
 In previous versions, the use of prompts was limited to only in text-based projects. With this version, the scope has been expanded, allowing users to leverage prompts for pre-annotation in their PDF and image-based projects as well.
 

@@ -17,7 +17,7 @@ sidebar:
 
 Release date: **08-02-2023**
 
-NLP Lab v4.6.5, which includes significant optimizations and bugfixes for Project Analytics and the Prompt Engineering feature. The following are some of the key updates included in this release:
+Generative AI Lab v4.6.5, which includes significant optimizations and bugfixes for Project Analytics and the Prompt Engineering feature. The following are some of the key updates included in this release:
 	
 * The issue with the all_extracted_chunks chart not updating in the analytics page has now been resolved.	
 * The performance of project analytics operations has been improved, allowing for faster calculation of results.	
