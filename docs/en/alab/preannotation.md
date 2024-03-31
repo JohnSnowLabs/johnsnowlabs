@@ -24,7 +24,7 @@ es {
 }
 </style>
 
-Annotation Lab offers out-of-the-box support for <es>Named Entity Recognition</es>, <es>Classification</es>, <es>Assertion Status</es>, and <es>Relations</es> preannotations. These are extremely useful for bootstrapping any annotation project as the annotation team does not need to start the labeling from scratch but can leverage the existing knowledge transfer from domain experts to models. This way, the annotation efforts are significantly reduced.
+Generative AI Lab offers out-of-the-box support for <es>Named Entity Recognition</es>, <es>Classification</es>, <es>Assertion Status</es>, and <es>Relations</es> preannotations. These are extremely useful for bootstrapping any annotation project as the annotation team does not need to start the labeling from scratch but can leverage the existing knowledge transfer from domain experts to models. This way, the annotation efforts are significantly reduced.
 
 To run pre-annotation on one or several tasks, the <es>Project Owner</es> or the <es>Manager</es> must select the target tasks and click on the `Pre-Annotate` button from the top right side of the <es>Tasks</es> page. It will display a popup with information regarding the last deployment of the model server with the list of models deployed and the labels they predict.
 
@@ -36,7 +36,7 @@ If needed, users can deploy the models defined in the current project (based on 
 
 <img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/preannotate_dialog.png" style="width:40%;"/>
 
-Since <bl>Annotation Lab 3.0.0</bl>, multiple preannotation servers are available to preannotate the tasks of a project. The dialog box that opens when clicking the _Pre-Annotate_ button on the <es>Tasks</es> page now lists available model servers in the options. <es>Project Owners</es> or <es>Managers</es> can now select the server to use. On selecting a model server, information about the configuration deployed on the server is shown on the popup so users can make an informed decision on which server to use.
+Since <bl>Generative AI Lab 3.0.0</bl>, multiple preannotation servers are available to preannotate the tasks of a project. The dialog box that opens when clicking the _Pre-Annotate_ button on the <es>Tasks</es> page now lists available model servers in the options. <es>Project Owners</es> or <es>Managers</es> can now select the server to use. On selecting a model server, information about the configuration deployed on the server is shown on the popup so users can make an informed decision on which server to use.
 
 In case a pre-annotation server does not exist for the current project, the dialog box also offers the option to deploy a new server with the current project's configuration. If this option is selected and enough resources are available (infrastructure capacity and a license if required) the server is deployed, and pre-annotation can be started. If there are no free resources, users can delete one or several existing servers from <es>Clusters</es> page under the <es>Settings</es> menu.
 
@@ -144,8 +144,8 @@ Previously, rules were only available for use in text-based projects. However, w
 
 ## Pipeline Limitations
 
-Loading too many models in the pre-annotation server is not memory efficient and may not be practically required. Starting from version <bl>1.8.0</bl>, Annotation Lab supports maximum of five different models to be used for the pre-annotation server deployment.
+Loading too many models in the pre-annotation server is not memory efficient and may not be practically required. Starting from version <bl>1.8.0</bl>, Generative AI Lab supports maximum of five different models to be used for the pre-annotation server deployment.
 
-Another restriction for Annotation Lab versions older than 4.2.0 is that two models trained on different embeddings cannot be used together in the same project. The Labeling Config will throw validation errors in any of the cases above, and we cannot save the configuration preventing pre-annotation server deployment.
+Another restriction for Generative AI Lab versions older than 4.2.0 is that two models trained on different embeddings cannot be used together in the same project. The Labeling Config will throw validation errors in any of the cases above, and we cannot save the configuration preventing pre-annotation server deployment.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/5_models.png" style="width:100%;"/>

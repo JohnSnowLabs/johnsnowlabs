@@ -1772,7 +1772,7 @@ Below is a sample format:
   "info": {
     "year": 2022,
     "version": "1.0",
-    "contributor": "Annotation Lab Converter"
+    "contributor": "Generative AI Lab Converter"
   }
 }
 ```
@@ -2008,7 +2008,7 @@ If this option is enabled then only the tasks having ground truth in the complet
 
 **Exclude tasks without Completions**
 
-Previous versions of the Annotation Lab only allowed the export of tasks that contained completions. From version <bl>2.8.0</bl> on, the tasks without any completions can be exported as this can be necessary for cloning projects. In the case where only tasks with completions are required in the export, users can enable the _Exclude tasks without Completions_ option on the Export page.
+Previous versions of the Generative AI Lab only allowed the export of tasks that contained completions. From version <bl>2.8.0</bl> on, the tasks without any completions can be exported as this can be necessary for cloning projects. In the case where only tasks with completions are required in the export, users can enable the _Exclude tasks without Completions_ option on the Export page.
 
 
 ## Integration with Amazon S3 and Azure Blob for tasks and projects export

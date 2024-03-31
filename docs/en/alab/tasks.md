@@ -33,7 +33,7 @@ Project Owners can also be explicitly assigned as annotators and/or reviewers fo
 
 <img class="image image__shadow" src="https://user-images.githubusercontent.com/17021686/204805373-4e5a5a7b-a520-4e9f-ad08-452bec165ef8.gif" style="width:100%;"/>
 
-> **NOTE:** When upgrading from an older version of the Annotation Lab, the annotators will no longer have access to the tasks they worked on unless they are assigned to those explicitely by the admin user who created the project. Once they are assigned, they can resume work and no information is lost.
+> **NOTE:** When upgrading from an older version of the Generative AI Lab, the annotators will no longer have access to the tasks they worked on unless they are assigned to those explicitely by the admin user who created the project. Once they are assigned, they can resume work and no information is lost.
 
 ## Task Status
 
@@ -107,7 +107,7 @@ From version 4.10 onwards, filtering tasks has been updated to allow users to se
 
 ## Task Search by Text, Label and Choice
 
-Annotation Lab offers advanced search features that help users identify the tasks they need based on the text or based on the annotations defined so far. Currently supported search queries are:
+Generative AI Lab offers advanced search features that help users identify the tasks they need based on the text or based on the annotations defined so far. Currently supported search queries are:
 
 - text: patient -> returns all tasks which contain the string "patient";
 - label: ABC -> returns all tasks that have at least one completion containing a chunk with label ABC;

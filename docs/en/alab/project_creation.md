@@ -16,7 +16,7 @@ sidebar:
 
 ## New project 
 
-Every project in Annotation Lab should have the following information:
+Every project in Generative AI Lab should have the following information:
 - a unique name and a short description;
 - a team of annotators, reviewers and a manager who will collaborate on the project;
 - a configuration which specifies the type of annotations that will be created.
@@ -91,13 +91,13 @@ Projects can be exported. The option to export a project is listed in the kebab 
 
 ## Import  
 
-A project can be imported by uploading the project zip archive in the upload dialog box. When the project is imported back to Annotation Lab, all elements of the original project configuration will be included in the new copy. 
+A project can be imported by uploading the project zip archive in the upload dialog box. When the project is imported back to Generative AI Lab, all elements of the original project configuration will be included in the new copy. 
 
 </div><div class="h3-box" markdown="1">
 
 ## Project Grouping
 
-As the number of projects can grow significantly over time, for an easier management and organization of those,  Annotation Lab allows project grouping. As such, a project owner can assign a group to one or several of his/her projects. Each group can be assigned a color which will be used to highlight projects included in that group. Once a project is assigned to a group, the group name will appear as a tag on the project tile. At any time a project can be remove from one group and added to another group.
+As the number of projects can grow significantly over time, for an easier management and organization of those,  Generative AI Lab allows project grouping. As such, a project owner can assign a group to one or several of his/her projects. Each group can be assigned a color which will be used to highlight projects included in that group. Once a project is assigned to a group, the group name will appear as a tag on the project tile. At any time a project can be remove from one group and added to another group.
 
 The list of visible projects can be filtered based on group name, or using the search functionality which applies to both group name and project name. 
 

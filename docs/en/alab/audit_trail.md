@@ -24,6 +24,6 @@ es {
 }
 </style>
 
-Annotation Lab is designed to handle <bl>Personal Identifying Information (PII)</bl> and <bl>Protected Health Information (PHI)</bl>. It keeps a full audit trail for all created completions, where each entry is stored with an authenticated user and a timestamp. It is not possible for <es>Annotators</es> or <es>Reviewers</es> to delete any completions, and only <es>Managers</es> and <es>Project Owners</es> can remove tasks.
+Generative AI Lab is designed to handle <bl>Personal Identifying Information (PII)</bl> and <bl>Protected Health Information (PHI)</bl>. It keeps a full audit trail for all created completions, where each entry is stored with an authenticated user and a timestamp. It is not possible for <es>Annotators</es> or <es>Reviewers</es> to delete any completions, and only <es>Managers</es> and <es>Project Owners</es> can remove tasks.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/audit_trail.png" style="width:100%;" />

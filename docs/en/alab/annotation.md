@@ -24,9 +24,9 @@ es {
 }
 </style>
 
-The Annotation Lab keeps a human expert as productive as possible. It minimizes the number of mouse clicks, keystrokes, and eye movements in the main workflow. The continuous improvement in the UI and the UX is from iterative feedback from the users.
+The Generative AI Lab keeps a human expert as productive as possible. It minimizes the number of mouse clicks, keystrokes, and eye movements in the main workflow. The continuous improvement in the UI and the UX is from iterative feedback from the users.
 
-Annotation Lab supports keyboard shortcuts for all types of annotations. It enables having one hand on the keyboard, one hand on the mouse, and both eyes on the screen at all times. One-click completion and automatic switching to the next task keep experts in the loop.
+Generative AI Lab supports keyboard shortcuts for all types of annotations. It enables having one hand on the keyboard, one hand on the mouse, and both eyes on the screen at all times. One-click completion and automatic switching to the next task keep experts in the loop.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/annotation_main.png" style="width:100%;"/>
 
@@ -50,7 +50,7 @@ Dedicated action icons are available on the completions widgets to allow users t
 
 <img class="image image__shadow" src="https://user-images.githubusercontent.com/45035063/204707502-acaba8b8-43d0-4354-8c14-4f66132131ad.png" style="width:100%;"/>
 
-It is an important to ensure a complete audit trail of all user actions. Annotation Lab tracks the history and details of any deleted completions. It means it is possible to see the name of the completion creator, date of creation, and deletion.
+It is an important to ensure a complete audit trail of all user actions. Generative AI Lab tracks the history and details of any deleted completions. It means it is possible to see the name of the completion creator, date of creation, and deletion.
 
 <img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/completion_history.png" style="width:40%;"/>
 
@@ -126,7 +126,7 @@ To add an assertion label to an extracted entity, select the assertion label and
 
 ### Relation Extraction
 
-Creating relations with the Annotation Lab is very simple. First, click on any one labeled entity, then press the <es>r</es> key and click on the second labeled entity.
+Creating relations with the Generative AI Lab is very simple. First, click on any one labeled entity, then press the <es>r</es> key and click on the second labeled entity.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.2.0/rel_ann-min.gif" style="width:100%;"/>
 
@@ -138,7 +138,7 @@ You can add a label to the relation, change its direction or delete it using the
 
 #### Cross page Annotation
 
-From version <bl>2.8.0</bl>, Annotation Lab supports cross-page NER annotation for <es>Text</es> projects. It means that Annotators can annotate a chunk starting at the bottom of one page and finishing on the next page. This feature is also available for <es>Relations</es>. Previously, relations were created between chunks located on the same page. But now, relations can be created among tokens located on different pages. The way to do this is to first [change the pagination settings](/docs/en/alab/import#dynamic-task-pagination) to include the tokens to be linked on the same page, then create the relation annotation between the tokens and finally go back to the original pagination settings. The annotation is presented through connectors after updating the pagination.
+From version <bl>2.8.0</bl>, Generative AI Lab supports cross-page NER annotation for <es>Text</es> projects. It means that Annotators can annotate a chunk starting at the bottom of one page and finishing on the next page. This feature is also available for <es>Relations</es>. Previously, relations were created between chunks located on the same page. But now, relations can be created among tokens located on different pages. The way to do this is to first [change the pagination settings](/docs/en/alab/import#dynamic-task-pagination) to include the tokens to be linked on the same page, then create the relation annotation between the tokens and finally go back to the original pagination settings. The annotation is presented through connectors after updating the pagination.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/crosspage_annotation-min.gif" style="width:100%;"/>
 
@@ -165,7 +165,7 @@ The entire process is illustrated below:
 
 ### Support for multi-page PDF documents
 
-When a valid Visual NLP license is available, Annotation Lab offers support for multi-page PDF annotation. We can import, annotate, and export multi-page PDF files easily.
+When a valid Visual NLP license is available, Generative AI Lab offers support for multi-page PDF annotation. We can import, annotate, and export multi-page PDF files easily.
 
 Users have two options for importing a new PDF file into the Visual NER project:
 
@@ -184,7 +184,7 @@ Users can also jump to a specific page in multi-page task, instead of passing th
 
 ### Support for multiple OCR servers
 
-Just like for [Preannotation](/docs/en/alab/preannotation) servers, Annotation Lab supports deployment of multiple OCR servers. If a user has uploaded a [Visual NLP](/docs/en/ocr) license, <es>OCR inference</es> is enabled.
+Just like for [Preannotation](/docs/en/alab/preannotation) servers, Generative AI Lab supports deployment of multiple OCR servers. If a user has uploaded a [Visual NLP](/docs/en/ocr) license, <es>OCR inference</es> is enabled.
 
 To work on a Visual NER project, users have to deploy at least one OCR server. Any OCR server can perform preannotation. To select the OCR server, users need to go to the <es>Import</es> page, click on the OCR Server button on the top-right corner and from the popup, choose one of the available OCR servers. If no suitable OCR server is present, you can create a new server by selecting the `Create Server` option and then clicking on the `Deploy` button.
 

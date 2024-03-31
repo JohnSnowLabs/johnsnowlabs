@@ -21,7 +21,7 @@ es {
 </style>
 
 Rule based annotation is supported by Healthcare NLP, Finance NLP, and Legal NLP via the <es>ContextualParser</es> Annotator.
-Annotation Lab supports creating and using rules in a <es>NER</es> project using any one of these libraries with the presence of valid license.
+Generative AI Lab supports creating and using rules in a <es>NER</es> project using any one of these libraries with the presence of valid license.
 
 Users in the <es>Admins</es> group can see and edit the available rules on the Rules page under the Models Hub menu. Users can create new rules using the _+ Add Rules_ button. Users can also import and export the rules.
 
@@ -45,7 +45,7 @@ The user is notified every time a rule in use is edited with the message _"Redep
 
 ### Import and Export Rules
 
-Annotation Lab allows importing and exporting Rules from the Rules page.
+Generative AI Lab allows importing and exporting Rules from the Rules page.
 
 **Import Rules**
 
@@ -58,7 +58,7 @@ Users can import rules from the Rules page. The rules can be both _dictionary_ b
 
 **Export Rules**
 
-To export any rule, the user need to select the available rules and click on _Export Rules_ button. Rules are then downloaded as a zip file. The zip file contains the JSON file for each rule. These exported rules can again be imported to Annotation Lab.
+To export any rule, the user need to select the available rules and click on _Export Rules_ button. Rules are then downloaded as a zip file. The zip file contains the JSON file for each rule. These exported rules can again be imported to Generative AI Lab.
 
 ![RulesExport](/assets/images/annotation_lab/4.1.0/export_rules.gif)
 

@@ -39,7 +39,7 @@ th {
 
 ## Dedicated Server
 
-Install Generative AI Lab (Annotation Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.
+Install Generative AI Lab (Generative AI Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.
 
 </div><div class="h3-box" markdown="1">
 
@@ -572,13 +572,13 @@ $ ./annotationlab-updater.sh
 
 ## OpenShift
 
-Annotation Lab can also be installed using the operator framework on an OpenShift cluster. The Annotation Lab operator can be found under the <bl>OperatorHub</bl>.
+Generative AI Lab can also be installed using the operator framework on an OpenShift cluster. The Generative AI Lab operator can be found under the <bl>OperatorHub</bl>.
 
 </div><div class="h3-box" markdown="1">
 
 ### Find and select
 
-The <bl>OperatorHub</bl> has a large list of operators that can be installed into your cluster. Search for Annotation Lab operator under AI/Machine Learning category and select it.
+The <bl>OperatorHub</bl> has a large list of operators that can be installed into your cluster. Search for Generative AI Lab operator under AI/Machine Learning category and select it.
 
 ![Select Operator](/assets/images/annotation_lab/Select-Operator.png)
 
@@ -586,27 +586,27 @@ The <bl>OperatorHub</bl> has a large list of operators that can be installed int
 
 ### Install
 
-Some basic information about this operator is provided on the navigation panel that opens after selecting Annotation Lab on the previous step.
+Some basic information about this operator is provided on the navigation panel that opens after selecting Generative AI Lab on the previous step.
 
-> **NOTE:** Make sure you have defined shared storage such as `efs/nfs/cephfs` prior to installing the Annotation Lab Operator.
+> **NOTE:** Make sure you have defined shared storage such as `efs/nfs/cephfs` prior to installing the Generative AI Lab Operator.
 
 Click on the `Install` button located on the top-left corner of this panel to start the installation process.
 
 ![Install Operator](/assets/images/annotation_lab/Install-Operator.png)
 
-After successful installation of the Annotation Lab operator, you can access it by navigating to the <bl>Installed Operators</bl> page.
+After successful installation of the Generative AI Lab operator, you can access it by navigating to the <bl>Installed Operators</bl> page.
 
 </div><div class="h3-box" markdown="1">
 
 ### Create Instance
 
-Next step is to create a cluster instance of the Annotation Lab. For this, select the Annotation Lab operator under the <bl>Installed Operators</bl> page and then switch to _Annotationlab_ tab. On this section, click on `Create Annotationlab` button to spawn a new instance of Annotation Lab.
+Next step is to create a cluster instance of the Generative AI Lab. For this, select the Generative AI Lab operator under the <bl>Installed Operators</bl> page and then switch to _Annotationlab_ tab. On this section, click on `Create Annotationlab` button to spawn a new instance of Generative AI Lab.
 
 ![Create Instance](/assets/images/annotation_lab/Create-Instance.png)
 
 **Define shared Storage Class**
 
-Update the `storageClass` property in the YAML configuration to define the storage class to one of `efs`, `nfs`, or `cephfs` depending upon what storage you set up before Annotation Lab operator installation.
+Update the `storageClass` property in the YAML configuration to define the storage class to one of `efs`, `nfs`, or `cephfs` depending upon what storage you set up before Generative AI Lab operator installation.
 
 ![Define Storage Class](/assets/images/annotation_lab/Define-StorageClass.png)
 
@@ -626,7 +626,7 @@ After the instance is successfully created we can visit its page to view all the
 
 ![View Resources](/assets/images/annotation_lab/View-Resources.png)
 
-Now, we can access the Annotation Lab from the provided domain name or also from the location defined for this service under the `Networking > Routes` page
+Now, we can access the Generative AI Lab from the provided domain name or also from the location defined for this service under the `Networking > Routes` page
 
 </div><div class="h3-box" markdown="1">
 
@@ -663,11 +663,11 @@ commands inside `annotationlab-installer.sh` and `annotationlab-updater.sh` file
 <table class="table2">
   <tr>
     <th>System requirements</th>
-    <td>You can install Annotation Lab on a Ubuntu 20+ machine.</td>
+    <td>You can install Generative AI Lab on a Ubuntu 20+ machine.</td>
   </tr>
   <tr>
     <th>Port requirements</th>
-    <td>Annotation Lab expects ports <bl>443</bl> and <bl>80</bl> to be open by default.</td>
+    <td>Generative AI Lab expects ports <bl>443</bl> and <bl>80</bl> to be open by default.</td>
   </tr>
   <tr>
     <th>Server requirements</th>
@@ -679,7 +679,7 @@ commands inside `annotationlab-installer.sh` and `annotationlab-updater.sh` file
   </tr>
   <tr>
     <th>Web browser support</th>
-    <td>Annotation Lab is tested with the latest version of Google Chrome and is expected to work in the latest versions of:
+    <td>Generative AI Lab is tested with the latest version of Google Chrome and is expected to work in the latest versions of:
       <ul>
       <li>Google Chrome</li>
       <li>Apple Safari</li>
