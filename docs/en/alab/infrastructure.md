@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Infrastructure Configuration
 permalink: /docs/en/alab/infrastructure
 key: docs-training
@@ -17,7 +17,7 @@ The _admin_ user can now define the infrastructure configurations for the predic
 
 ### Resource allocation for Training and Preannotation
 
-Annotation Lab gives users the ability to change the configuration for the training and pre-annotation processes. This is done from the `Settings` > `Infrastructure` page. The settings can be edited by _admin_ user and they are read-only for the other users. The Infrastructure page consists of three sections namely `Resource For Training`, `Resource For Preannotation Server`, `Resources for Prenotation Pipeline`.
+Generative AI Lab gives users the ability to change the configuration for the training and pre-annotation processes. This is done from the `Settings` > `Infrastructure` page. The settings can be edited by _admin_ user and they are read-only for the other users. The Infrastructure page consists of three sections namely `Resource For Training`, `Resource For Preannotation Server`, `Resources for Prenotation Pipeline`.
 
 **Resources Inclusion:**
 

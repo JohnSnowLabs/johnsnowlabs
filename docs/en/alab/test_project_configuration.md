@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Test Project Configuration
 permalink: /docs/en/alab/test_project_configuration
 key: docs-training
@@ -13,7 +13,7 @@ sidebar:
   nav: annotation-lab
 ---
 
-Annotation Lab offer testing features for projects that reuse existing models/rules. In other words, if a  project's configuration references one or several (pre)trained models/rules it is possible to check how efficient those are when applied on custom data. 
+Generative AI Lab offer testing features for projects that reuse existing models/rules. In other words, if a  project's configuration references one or several (pre)trained models/rules it is possible to check how efficient those are when applied on custom data. 
 The `Test Configuration` feature is available on the `Train` page, accessible from the Project Menu. During the training, a progress bar is shown on the top of the train page to show the status of the testing.  
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.2.0/test.png" style="width:100%;"/>

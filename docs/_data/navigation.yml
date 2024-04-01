@@ -87,7 +87,7 @@ healthcare-gpt:
         url: /docs/en/chatbot/releases/release_notes
 
 annotation-lab:
-  - title: NLP Lab
+  - title: Generative AI Lab
     children:
       - title: Getting Started
         url: /docs/en/alab/quickstart

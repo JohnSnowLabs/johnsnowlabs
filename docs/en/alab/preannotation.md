@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Pre-Annotation
 permalink: /docs/en/alab/preannotation
 key: docs-training
@@ -24,7 +24,7 @@ es {
 }
 </style>
 
-Annotation Lab offers out-of-the-box support for <es>Named Entity Recognition</es>, <es>Classification</es>, <es>Assertion Status</es>, and <es>Relations</es> preannotations. These are extremely useful for bootstrapping any annotation project as the annotation team does not need to start the labeling from scratch but can leverage the existing knowledge transfer from domain experts to models. This way, the annotation efforts are significantly reduced.
+Generative AI Lab offers out-of-the-box support for <es>Named Entity Recognition</es>, <es>Classification</es>, <es>Assertion Status</es>, and <es>Relations</es> preannotations. These are extremely useful for bootstrapping any annotation project as the annotation team does not need to start the labeling from scratch but can leverage the existing knowledge transfer from domain experts to models. This way, the annotation efforts are significantly reduced.
 
 To run pre-annotation on one or several tasks, the <es>Project Owner</es> or the <es>Manager</es> must select the target tasks and click on the `Pre-Annotate` button from the top right side of the <es>Tasks</es> page. It will display a popup with information regarding the last deployment of the model server with the list of models deployed and the labels they predict.
 
@@ -36,7 +36,7 @@ If needed, users can deploy the models defined in the current project (based on 
 
 <img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/preannotate_dialog.png" style="width:40%;"/>
 
-Since <bl>Annotation Lab 3.0.0</bl>, multiple preannotation servers are available to preannotate the tasks of a project. The dialog box that opens when clicking the _Pre-Annotate_ button on the <es>Tasks</es> page now lists available model servers in the options. <es>Project Owners</es> or <es>Managers</es> can now select the server to use. On selecting a model server, information about the configuration deployed on the server is shown on the popup so users can make an informed decision on which server to use.
+Since <bl>Generative AI Lab 3.0.0</bl>, multiple preannotation servers are available to preannotate the tasks of a project. The dialog box that opens when clicking the _Pre-Annotate_ button on the <es>Tasks</es> page now lists available model servers in the options. <es>Project Owners</es> or <es>Managers</es> can now select the server to use. On selecting a model server, information about the configuration deployed on the server is shown on the popup so users can make an informed decision on which server to use.
 
 In case a pre-annotation server does not exist for the current project, the dialog box also offers the option to deploy a new server with the current project's configuration. If this option is selected and enough resources are available (infrastructure capacity and a license if required) the server is deployed, and pre-annotation can be started. If there are no free resources, users can delete one or several existing servers from <es>Clusters</es> page under the <es>Settings</es> menu.
 
@@ -73,11 +73,11 @@ Pre-annotation is available for projects with text contents as the tasks. When y
 As a result, all predicted labels for a given task will be available in the <es>Prediction</es> widget on the Labeling page. The predictions are not editable. You can only view and navigate those or compare those with older predictions. However, you can create a new completion based on a given prediction. All labels and relations from such a new 
 
 ### Re-purpose text-based NER models for PDF and images 
-NLP Lab 5.8 introduces a groundbreaking enhancement to Visual NER projects by allowing users to leverage the vast library of pre-trained NER models specific for text content [6,600+ models available on the Models Hub](https://nlp.johnsnowlabs.com/models?task=Named+Entity+Recognition), for the pre-annotation of PDF or image tasks. This addition not only expands pre-annotation options but also significantly streamlines the annotation process, saving users precious time and effort. 
+Generative AI Lab 5.8 introduces a groundbreaking enhancement to Visual NER projects by allowing users to leverage the vast library of pre-trained NER models specific for text content [6,600+ models available on the Models Hub](https://nlp.johnsnowlabs.com/models?task=Named+Entity+Recognition), for the pre-annotation of PDF or image tasks. This addition not only expands pre-annotation options but also significantly streamlines the annotation process, saving users precious time and effort. 
 With this game-changing enhancement, users can now:
 - **Effortlessly Jumpstart Data Preparation Projects:** Quickly initiate data preparation projects for training small Visual NER models tailored to specific tasks, reducing the time and resources required for manual labeling.
 - **Utilize Existing Domain-Specific Expertise** Leverage the extensive library of NER models, including domain-specialized models that were previously confined to text-based tasks. This opens up new possibilities for processing image and PDF documents with specialized NER models, enhancing the accuracy and effectiveness of pre-annotation.
-- **Streamline Workflow with Pre-trained Models:** Eliminate the need for training Visual NER models just to predict specific labels when those are already available in existing text processing models. Simply select the relevant pre-trained NER model(s) you need directly from the NLP Lab library and seamlessly integrate them into your projects.
+- **Streamline Workflow with Pre-trained Models:** Eliminate the need for training Visual NER models just to predict specific labels when those are already available in existing text processing models. Simply select the relevant pre-trained NER model(s) you need directly from the Generative AI Lab library and seamlessly integrate them into your projects.
 ## Effortlessly Pre-annotate PDF or Image Documents with NER Models
 Configuring your Visual NER project to use text-specific NER models for pre-annotation is a breeze:
 - **Project Configuration:** Begin by creating a new project and selecting the Visual NER Template during configuration. This sets the stage for seamless integration of NER models into your project.
@@ -88,7 +88,7 @@ Configuring your Visual NER project to use text-specific NER models for pre-anno
 
 ![1](/assets/images/annotation_lab/5.8.0/1.gif)
 
-This new feature empowers users to seamlessly integrate NER models into their Visual NER projects, fostering greater flexibility and efficiency in document annotation workflows within NLP Lab. By leveraging the power of NER models, users can streamline pre-annotation processes, reduce training time, and achieve enhanced accuracy, ultimately accelerating their data preparation efforts.
+This new feature empowers users to seamlessly integrate NER models into their Visual NER projects, fostering greater flexibility and efficiency in document annotation workflows within Generative AI Lab. By leveraging the power of NER models, users can streamline pre-annotation processes, reduce training time, and achieve enhanced accuracy, ultimately accelerating their data preparation efforts.
 
 ### Rules
 
@@ -114,7 +114,7 @@ For running pre-annotation on one or several tasks, the <es>Project Owner</es> o
 2. Pre-annotation currently works at the token level, and does not merge all tokens of a chunk into one entity.
 
 ### Pre-annotation using Prompts in Visual NER project
-NLP Lab 5.9.0 expands pre-annotation capabilities for Visual NER projects with added support for pre-annotation using Prompts. Users can now pre-annotate tasks in Visual NER projects using zero-shot prompts, significantly enhancing the scope for pre-annotation along with efficiency and accuracy.
+Generative AI Lab 5.9.0 expands pre-annotation capabilities for Visual NER projects with added support for pre-annotation using Prompts. Users can now pre-annotate tasks in Visual NER projects using zero-shot prompts, significantly enhancing the scope for pre-annotation along with efficiency and accuracy.
 
 In previous versions, the use of prompts was limited to only in text-based projects. With this version, the scope has been expanded, allowing users to leverage prompts for pre-annotation in their PDF and image-based projects as well.
 
@@ -144,8 +144,8 @@ Previously, rules were only available for use in text-based projects. However, w
 
 ## Pipeline Limitations
 
-Loading too many models in the pre-annotation server is not memory efficient and may not be practically required. Starting from version <bl>1.8.0</bl>, Annotation Lab supports maximum of five different models to be used for the pre-annotation server deployment.
+Loading too many models in the pre-annotation server is not memory efficient and may not be practically required. Starting from version <bl>1.8.0</bl>, Generative AI Lab supports maximum of five different models to be used for the pre-annotation server deployment.
 
-Another restriction for Annotation Lab versions older than 4.2.0 is that two models trained on different embeddings cannot be used together in the same project. The Labeling Config will throw validation errors in any of the cases above, and we cannot save the configuration preventing pre-annotation server deployment.
+Another restriction for Generative AI Lab versions older than 4.2.0 is that two models trained on different embeddings cannot be used together in the same project. The Labeling Config will throw validation errors in any of the cases above, and we cannot save the configuration preventing pre-annotation server deployment.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/5_models.png" style="width:100%;"/>

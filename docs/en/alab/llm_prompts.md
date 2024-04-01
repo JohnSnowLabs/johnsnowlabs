@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: LLM Prompts
 permalink: /docs/en/alab/llm_prompts
 key: docs-training
@@ -26,12 +26,12 @@ The highlight of this release is the integration with an external service provid
 
 - **Broadens Prompt Possibilities**: By integrating with Open AI LLM models, users can tap into a more diverse set of prompts, leveraging external expertise to craft pre-annotations, as an alternative pre-annotation solution or when pre-trained models are not available.
 
-- **Efficient Entity Extraction**: As current LLMs, GPT family included, are not very good at entity recognition tasks, NLP Lab included a post-processing step on the result provided by LLM. This improves entity identification and helps precisely locate the entities in the given text. These entities, carefully curated and aligned with NLP Lab pre-annotation requirements pave the way for a more efficient and streamlined annotation experience.
+- **Efficient Entity Extraction**: As current LLMs, GPT family included, are not very good at entity recognition tasks, Generative AI Lab included a post-processing step on the result provided by LLM. This improves entity identification and helps precisely locate the entities in the given text. These entities, carefully curated and aligned with Generative AI Lab pre-annotation requirements pave the way for a more efficient and streamlined annotation experience.
 
 The following sections explain in detail how to define and use GPT prompts. 
 
 ### Setting Up the Integration with Open AI service
-Integrating ChatGPT and Azure into the NLP Lab has been designed to be a straightforward process, ensuring users can harness the power of external expertise seamlessly. It consists of three easy steps:
+Integrating ChatGPT and Azure into the Generative AI Lab has been designed to be a straightforward process, ensuring users can harness the power of external expertise seamlessly. It consists of three easy steps:
 
 **Integrations Page**: Navigate to the Integrations Page located within the System Settings. This is the hub where all external service providers, including Open AI’s GPT Models, can be defined and managed.
 
@@ -51,7 +51,7 @@ The Open AI integration allows users to tap into a vast reservoir of external ex
 
 
 ### Prompt Definition and Testing
-Users can generate LLM prompts on the dedicated Prompt page from the Hub of Resources. For ChatGPT and Azure Prompts, NLP Lab offers a dedicated definition interface. Here's what to expect when creating a new LLM prompt:
+Users can generate LLM prompts on the dedicated Prompt page from the Hub of Resources. For ChatGPT and Azure Prompts, Generative AI Lab offers a dedicated definition interface. Here's what to expect when creating a new LLM prompt:
 
 - **Name the Prompt**: Within this new tab, users will first be asked to provide a name for their prompt. This name will be used for pre-annotating identified entities. At this point, we recommend creating one prompt per target entity.
 
@@ -64,13 +64,13 @@ This streamlined approach ensures that integrating and testing external prompts 
 ![Integration](/assets/images/annotation_lab/5.3.0/2.gif)
 
 ### Consistent Workflow with LLM Prompts
-Even with the introduction of new features in NLP Lab's 5.3.0 release, users can take comfort in the consistent experience offered when working with prompts. The addition of external service provider prompts brings a fresh layer to the annotation process, yet the core workflow you're familiar with stays the same.
+Even with the introduction of new features in Generative AI Lab's 5.3.0 release, users can take comfort in the consistent experience offered when working with prompts. The addition of external service provider prompts brings a fresh layer to the annotation process, yet the core workflow you're familiar with stays the same.
 
 - **Familiarity Amidst Innovation**: Despite the new integrations, the process of using available prompts remains as straightforward as ever. Whether you're working with traditional prompts or the newly introduced ones, the experience is smooth and consistent.
 
 - **Seamless Transition**: Our commitment to user-centric design means that even as we innovate, we prioritize the ease of use you've come to expect. Transitioning to or incorporating external prompts is made effortless, with the interface and steps for prompt creation, selection, and integration remaining intuitive and unchanged.
 
-With NLP Lab 5.3.0, you get the best of both worlds: exciting new features and the comfort of a familiar workflow.
+With Generative AI Lab 5.3.0, you get the best of both worlds: exciting new features and the comfort of a familiar workflow.
 
 ![Integration](/assets/images/annotation_lab/5.3.0/3.gif)
 
