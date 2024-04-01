@@ -1,6 +1,5 @@
 from typing import List, Optional, Tuple
 
-import botocore
 
 from johnsnowlabs.py_models.install_info import InstallSuite, LocalPy4JLib
 from johnsnowlabs.utils.boto_utils import BotoException
@@ -13,7 +12,7 @@ def create_glue_bucket(boto_session: "boto3.Session", bucket=None):
     :param bucket: Bucket name
     """
     import boto3
-
+    import botocore
     try:
         sts_client = boto_session.client("sts")
         account_id = sts_client.get_caller_identity()["Account"]
