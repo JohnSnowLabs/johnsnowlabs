@@ -39,7 +39,7 @@ th {
 
 ## Dedicated Server
 
-Install NLP Lab (Generative AI Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.
+Install Generative AI Lab (NLP Lab) on a dedicated server to reduce the likelihood of conflicts or unexpected behavior.
 
 </div><div class="h3-box" markdown="1">
 

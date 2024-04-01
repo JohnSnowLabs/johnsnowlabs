@@ -39,7 +39,7 @@ Language of the model/embeddings is also available as well as a direct link to t
 
 Users can use the Edition filter to search models specific to an edition. It includes all supported NLP editions: Healthcare, Opensource, Legal, Finance, and Visual. When selecting one option, e.g. "Legal", users will be presented with all available models for that specific domain. This will ease the exploration of available models, which can then easily be downloaded and used within Generative AI Lab projects.
 
-![Filter](/assets/images/annotation_lab/4.1.0/203566517-59c1b207-961a-40a4-88ac-ae532338be5e.gif)
+![Filter](/assets/images/annotation_lab/4.1.0/filter.png)
 
 To make searching models/embeddings more efficient, Generative AI Lab offers a Language filter. Users can select models/embeddings on the Models Hub page according to their language preference.
 
