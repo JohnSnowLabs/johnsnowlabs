@@ -54,7 +54,7 @@ val result = meddra_pt_pipeline.fullAnnotate("This is an 82-year-old male with a
 
 ```bash
 +--------------------------------------+-------------------------+--------------+-------------------------------------+-----------------------------------------------------------------------------------+-------------------------------------------+
-|chunk                                 |label                    |meddra_pt_code|resolution                           |icd10_code                                                                         |meddra_llt_code                            |
+|chunk                                 |label                    |meddra_pt_code|resolution                           |icd10_mappings                                                                     |meddra_llt_mappings                        |
 +--------------------------------------+-------------------------+--------------+-------------------------------------+-----------------------------------------------------------------------------------+-------------------------------------------+
 |tobacco                               |Smoking                  |10067622      |tobacco interaction                  |NONE                                                                               |10067622:Tobacco interaction               |
 |hypertension                          |Hypertension             |10020772      |hypertension                         |O10:Pre-existing hypertension complicating pregnancy, childbirth and the puerperium|10005747:Blood pressure high               |
