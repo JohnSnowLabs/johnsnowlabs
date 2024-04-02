@@ -39,14 +39,14 @@ from sparknlp.pretrained import PretrainedPipeline
 
 meddra_pt_pipeline = PretrainedPipeline.from_disk("meddra_pt_resolver_pipeline")
 
-result = meddra_pt_pipeline.fullAnnotate('This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia.')
+result = meddra_pt_pipeline.fullAnnotate('This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis.')
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val meddra_pt_pipeline = PretrainedPipeline.from_disk("meddra_pt_resolver_pipeline")
 
-val result = meddra_pt_pipeline.fullAnnotate("This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia.")
+val result = meddra_pt_pipeline.fullAnnotate("This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis.")
 ```
 </div>
 
@@ -54,7 +54,7 @@ val result = meddra_pt_pipeline.fullAnnotate("This is an 82-year-old male with a
 
 ```bash
 +--------------------------------------+-------------------------+--------------+-------------------------------------+-----------------------------------------------------------------------------------+-------------------------------------------+
-|chunk                                 |label                    |meddra_pt_code|resolution                           |icd10_mappings                                                                     |meddra_llt_mappings                        |
+|chunk                                 |label                    |meddra_pt_code|resolution                           |icd10_code                                                                         |meddra_llt_code                            |
 +--------------------------------------+-------------------------+--------------+-------------------------------------+-----------------------------------------------------------------------------------+-------------------------------------------+
 |tobacco                               |Smoking                  |10067622      |tobacco interaction                  |NONE                                                                               |10067622:Tobacco interaction               |
 |hypertension                          |Hypertension             |10020772      |hypertension                         |O10:Pre-existing hypertension complicating pregnancy, childbirth and the puerperium|10005747:Blood pressure high               |
@@ -67,6 +67,10 @@ val result = meddra_pt_pipeline.fullAnnotate("This is an 82-year-old male with a
 |the left main coronary artery stenosis|PROBLEM                  |10011089      |coronary artery stenosis             |NONE                                                                               |10011089:Coronary artery stenosis          |
 |hypotension                           |VS_Finding               |10021097      |hypotension                          |I95:Hypotension                                                                    |10005753:Blood pressure low                |
 |bradycardia                           |VS_Finding               |10006093      |bradycardia                          |R00.1:Bradycardia, unspecified                                                     |10006093:Bradycardia                       |
+|the side effects                      |PROBLEM                  |10054126      |post procedural discomfort           |NONE                                                                               |10054126:Post procedural discomfort        |
+|a colon cancer                        |PROBLEM                  |10009944      |colon cancer                         |C18:Malignant neoplasm of colon                                                    |10006903:Caecal cancer                     |
+|mucositis                             |ADE                      |10028128      |mucositis management                 |NONE                                                                               |10028128:Mucositis management              |
+|dermatitis                            |ADE                      |10012431      |dermatitis                           |L27:Dermatitis due to substances taken internally                                  |10000593:Acrodermatitis                    |
 +--------------------------------------+-------------------------+--------------+-------------------------------------+-----------------------------------------------------------------------------------+-------------------------------------------+
 ```
 
