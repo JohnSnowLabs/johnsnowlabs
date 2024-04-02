@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
+    <script src="../../../../static/clipboard.min.js"></script>
+    <script src="../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/training/index';</script>
     <link rel="shortcut icon" href="../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -322,17 +325,17 @@ document.write(`
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training.AnnotationToolJsonReader" title="sparknlp_jsl.training.AnnotationToolJsonReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AnnotationToolJsonReader</span></code></a></p></td>
 <td><p>Reads and process the exported json file from NLP Lab.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.training.CodiEspReader" title="sparknlp_jsl.training.CodiEspReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodiEspReader</span></code></a></p></td>
-<td><p>Parser for the CodiEsp dataset.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training.CantemistReader" title="sparknlp_jsl.training.CantemistReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CantemistReader</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.training.CantemistReader" title="sparknlp_jsl.training.CantemistReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CantemistReader</span></code></a></p></td>
 <td><p>Parser for the Cantemist dataset.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.training.SynonymAugmentationUMLS" title="sparknlp_jsl.training.SynonymAugmentationUMLS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS</span></code></a></p></td>
-<td><p>Augments datasets with synonyms from UMLS.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training.CodiEspReader" title="sparknlp_jsl.training.CodiEspReader"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CodiEspReader</span></code></a></p></td>
+<td><p>Parser for the CodiEsp dataset.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training.REDatasetHelper" title="sparknlp_jsl.training.REDatasetHelper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">REDatasetHelper</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.training.REDatasetHelper" title="sparknlp_jsl.training.REDatasetHelper"><code class="xref py py-obj docutils literal notranslate"><span class="pre">REDatasetHelper</span></code></a></p></td>
 <td><p>Class to preprocess RE dataset loaded into Spark Dataframe.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training.SynonymAugmentationUMLS" title="sparknlp_jsl.training.SynonymAugmentationUMLS"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS</span></code></a></p></td>
+<td><p>Augments datasets with synonyms from UMLS.</p></td>
 </tr>
 </tbody>
 </table>
@@ -352,7 +355,8 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AnnotationToolJsonReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pipeline_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">assertion_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">excluded_labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cleanup_mode</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'disabled'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split_chars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_chars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scheme</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'IOB'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_chars_tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">align_chars_tol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_overlapping</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">SDDLPath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader" title="Permalink to this definition">#</a></dt>
-<dd><p>Reads and process the exported json file from NLP Lab.</p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.ExtendedJavaWrapper</span></code></p>
+<p>Reads and process the exported json file from NLP Lab.</p>
 <blockquote>
 <div><p>Reader class that parses relevant information exported from NLP Lab into different
 formats. The reader can be used to create a training dataset for training assertion
@@ -368,6 +372,25 @@ instantiating the class:</p>
 </dl>
 </li>
 </ul>
+<dl>
+<dt>Examples:</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp_jsl.training</span> <span class="kn">import</span> <span class="n">AnnotationToolJsonReader</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">assertion_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;AsPresent&quot;</span><span class="p">,</span><span class="s2">&quot;Absent&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">excluded_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Treatment&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rdr</span> <span class="o">=</span> <span class="n">AnnotationToolJsonReader</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">assertion_labels</span><span class="o">=</span><span class="n">assertion_labels</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">excluded_labels</span><span class="o">=</span><span class="n">excluded_labels</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">path</span> <span class="o">=</span> <span class="s2">&quot;annotations.json&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">rdr</span><span class="o">.</span><span class="n">readDataset</span><span class="p">(</span><span class="n">spark</span><span class="p">,</span> <span class="n">path</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">+-----+-------+--------------------+-------------+--------------------+---------------+------------+--------------------+---------------+---------+--------------------+--------------------+--------------------+--------------------+</span>
+<span class="go">|title|task_id|                text|completion_id|     completion_date|completion_user|ground_truth|          tool_chunk|assertion_label|relations|            document|            sentence|               token|           ner_label|</span>
+<span class="go">+-----+-------+--------------------+-------------+--------------------+---------------+------------+--------------------+---------------+---------+--------------------+--------------------+--------------------+--------------------+</span>
+<span class="go">| null|     18|</span>
+</pre></div>
+</div>
+</dd>
+</dl>
 </div></blockquote>
 <p>229937784
 FIH...|        18001|2022-03-04T13:19:…|        aleksei|        true|[{chunk, 136, 142…|             []|       []|[{document, 0, 37…|[{document, 1, 79…|[{token, 1, 9, 22…|[{named_entity, 1…|</p>
@@ -409,17 +432,9 @@ FIH...|        84001|2022-03-02T15:01:…|        aleksei|        true|[{chunk, 
 &gt;&gt;&gt; rdr.generateConll(df, “annotations.conll”)</p>
 </div></blockquote>
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader.readDataset">
-<span class="sig-name descname"><span class="pre">readDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader.readDataset" title="Permalink to this definition">#</a></dt>
-<dd><p>Reads the exported JSON file into a spark data frame.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>spark: Spark session.
-path (str): Path to the exported file.</p>
-</dd>
-<dt>Returns:</dt><dd><p>DataFrame: Spark DataFrame containing the exported data.</p>
-</dd>
-</dl>
-</dd></dl>
+<dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader.apply" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader.generateAssertionTrainSet">
@@ -434,14 +449,41 @@ training data set with the following columns:
 - end: end position of the token</p>
 <p>The tokens are identified internally with the constraints from the
 <cite>min_chars_tol</cite> and <cite>align_chars_tol</cite> parameters.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>df (DataFrame): Data Frame containing the sentences and assertion labels.
-sentenceCol (str, optional): Column name containing the sentence annotation.
-Defaults to “sentence”.
-assertionCol (str, optional): Column name containing the assertion annotation.
-Defaults to “assertion_label”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – Data Frame containing the sentences and assertion labels.</p></li>
+<li><p><strong>sentenceCol</strong> (<em>str</em><em>, </em><em>optional</em>) – Column name containing the sentence annotation.</p></li>
+<li><p><strong>&quot;sentence&quot;.</strong> (<em>Defaults to</em>) – </p></li>
+<li><p><strong>assertionCol</strong> (<em>str</em><em>, </em><em>optional</em>) – Column name containing the assertion annotation.</p></li>
+<li><p><strong>&quot;assertion_label&quot;.</strong> (<em>Defaults to</em>) – </p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>DataFrame: data frame with the training data.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>data frame with the training data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader.generateConll">
+<span class="sig-name descname"><span class="pre">generateConll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taskColumn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'task_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenCol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'token'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nerLabel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ner_label'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader.generateConll" title="Permalink to this definition">#</a></dt>
+<dd><p>Saves a CoNLL file from the exported annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – DataFrame containing the annotations read using <cite>readDataset</cite>.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – Path to where the CoNLL file will be saved.</p></li>
+<li><p><strong>taskColumn</strong> (<em>str</em><em>, </em><em>optional</em>) – Column containing the task id information.</p></li>
+<li><p><strong>&quot;task_id&quot;.</strong> (<em>Defaults to</em>) – </p></li>
+<li><p><strong>tokenCol</strong> (<em>str</em><em>, </em><em>optional</em>) – Column containing the token information.</p></li>
+<li><p><strong>&quot;token&quot;.</strong> (<em>Defaults to</em>) – </p></li>
+<li><p><strong>nerLabel</strong> (<em>str</em><em>, </em><em>optional</em>) – Column containing the NER label.</p></li>
+<li><p><strong>&quot;ner_label&quot;.</strong> (<em>Defaults to</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -459,90 +501,177 @@ following columns:
 - ner: the NER chunk
 - assertion: the assertion label</p>
 <p>Internally uses the <cite>NerConverterInternal</cite> to identify the NER chunks.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>df (DataFrame): Data Frame containing the sentences and assertion labels.
-taskColumn (str, optional): Column name containing the task id annotation.
-Defaults to “task_id”.
-tokenCol (str, optional): Column name containing the token annotation.
-Defaults to “token”.
-nerLabel (str, optional): Column name containing the NER label annotation.
-Defaults to “ner_label”.
-assertion_label (str, optional): Column name containing the assertion label annotation.
-Defaults to “assertion_label”.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>DataFrame</em>) – Data Frame containing the sentences and assertion labels.</p></li>
+<li><p><strong>taskColumn</strong> (<em>str</em><em>, </em><em>optional</em>) – Column name containing the task id annotation.</p></li>
+<li><p><strong>&quot;task_id&quot;.</strong> (<em>Defaults to</em>) – </p></li>
+<li><p><strong>tokenCol</strong> (<em>str</em><em>, </em><em>optional</em>) – Column name containing the token annotation.</p></li>
+<li><p><strong>&quot;token&quot;.</strong> (<em>Defaults to</em>) – </p></li>
+<li><p><strong>nerLabel</strong> (<em>str</em><em>, </em><em>optional</em>) – Column name containing the NER label annotation.</p></li>
+<li><p><strong>&quot;ner_label&quot;.</strong> (<em>Defaults to</em>) – </p></li>
+<li><p><strong>assertion_label</strong> (<em>str</em><em>, </em><em>optional</em>) – Column name containing the assertion label annotation.</p></li>
+<li><p><strong>&quot;assertion_label&quot;.</strong> (<em>Defaults to</em>) – </p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>DataFrame: data frame with the training data.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>data frame with the training data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader.generateConll">
-<span class="sig-name descname"><span class="pre">generateConll</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">taskColumn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'task_id'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tokenCol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'token'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nerLabel</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ner_label'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader.generateConll" title="Permalink to this definition">#</a></dt>
-<dd><p>Saves a CoNLL file from the exported annotations.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>df (DataFrame): DataFrame containing the annotations read using <cite>readDataset</cite>.
-path (str): Path to where the CoNLL file will be saved.
-taskColumn (str, optional): Column containing the task id information.
-Defaults to “task_id”.
-tokenCol (str, optional): Column containing the token information.
-Defaults to “token”.
-nerLabel (str, optional): Column containing the NER label.
-Defaults to “ner_label”.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader.getDataFrame">
+<span class="sig-name descname"><span class="pre">getDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader.getDataFrame" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader.new_java_array">
+<span class="sig-name descname"><span class="pre">new_java_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader.new_java_array" title="Permalink to this definition">#</a></dt>
+<dd><p>ToDo: Inspired from spark 2.0. Review if spark changes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader.new_java_array_integer">
+<span class="sig-name descname"><span class="pre">new_java_array_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader.new_java_array_integer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader.new_java_array_string">
+<span class="sig-name descname"><span class="pre">new_java_array_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader.new_java_array_string" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader.new_java_obj">
+<span class="sig-name descname"><span class="pre">new_java_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader.new_java_obj" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader.readDataset">
+<span class="sig-name descname"><span class="pre">readDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader.readDataset" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads the exported JSON file into a spark data frame.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spark</strong> – Spark session.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – Path to the exported file.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Spark DataFrame containing the exported data.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
 
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="sparknlp_jsl.training.CodiEspReader">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CodiEspReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'IOB'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CodiEspReader" title="Permalink to this definition">#</a></dt>
-<dd><p>Parser for the CodiEsp dataset.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training.CodiEspReader.readDatasetTaskX">
-<span class="sig-name descname"><span class="pre">readDatasetTaskX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textFolder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CodiEspReader.readDatasetTaskX" title="Permalink to this definition">#</a></dt>
-<dd><p>Reads the CodiEsp dataset into a spark data frame.</p>
-</dd></dl>
+<dt class="sig sig-object py" id="sparknlp_jsl.training.AnnotationToolJsonReader.spark_version">
+<span class="sig-name descname"><span class="pre">spark_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.AnnotationToolJsonReader.spark_version" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.training.CantemistReader">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CantemistReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'IOB'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CantemistReader" title="Permalink to this definition">#</a></dt>
-<dd><p>Parser for the Cantemist dataset.</p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.ExtendedJavaWrapper</span></code></p>
+<p>Parser for the Cantemist dataset.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CantemistReader.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CantemistReader.apply" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CantemistReader.getDataFrame">
+<span class="sig-name descname"><span class="pre">getDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CantemistReader.getDataFrame" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CantemistReader.new_java_array">
+<span class="sig-name descname"><span class="pre">new_java_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CantemistReader.new_java_array" title="Permalink to this definition">#</a></dt>
+<dd><p>ToDo: Inspired from spark 2.0. Review if spark changes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CantemistReader.new_java_array_integer">
+<span class="sig-name descname"><span class="pre">new_java_array_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CantemistReader.new_java_array_integer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CantemistReader.new_java_array_string">
+<span class="sig-name descname"><span class="pre">new_java_array_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CantemistReader.new_java_array_string" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CantemistReader.new_java_obj">
+<span class="sig-name descname"><span class="pre">new_java_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CantemistReader.new_java_obj" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.training.CantemistReader.readDatasetTaskNer">
 <span class="sig-name descname"><span class="pre">readDatasetTaskNer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textFolder</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CantemistReader.readDatasetTaskNer" title="Permalink to this definition">#</a></dt>
 <dd><p>Reads the Cantemist dataset into a spark data frame.</p>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CantemistReader.spark_version">
+<span class="sig-name descname"><span class="pre">spark_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CantemistReader.spark_version" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 </dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.training.tf_graph">
-<span class="sig-name descname"><span class="pre">tf_graph</span></span><a class="headerlink" href="#sparknlp_jsl.training.tf_graph" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.training.tf_graph_1x">
-<span class="sig-name descname"><span class="pre">tf_graph_1x</span></span><a class="headerlink" href="#sparknlp_jsl.training.tf_graph_1x" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
 
 <dl class="py class">
-<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SynonymAugmentationUMLS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">umls_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'code'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'description'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">case_sensitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS" title="Permalink to this definition">#</a></dt>
-<dd><p>Augments datasets with synonyms from UMLS.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CodiEspReader">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CodiEspReader</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scheme</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'IOB'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CodiEspReader" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.ExtendedJavaWrapper</span></code></p>
+<p>Parser for the CodiEsp dataset.</p>
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS.augmentCsv">
-<span class="sig-name descname"><span class="pre">augmentCsv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corpus_csv_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_pipeline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ENG'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_product</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">augmentation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plain_text'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'umls'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_parsers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">euclidean_distance_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cosine_distance_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">casing_functions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.augmentCsv" title="Permalink to this definition">#</a></dt>
-<dd><p>Augment based on CSV file.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CodiEspReader.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CodiEspReader.apply" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CodiEspReader.getDataFrame">
+<span class="sig-name descname"><span class="pre">getDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CodiEspReader.getDataFrame" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CodiEspReader.new_java_array">
+<span class="sig-name descname"><span class="pre">new_java_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CodiEspReader.new_java_array" title="Permalink to this definition">#</a></dt>
+<dd><p>ToDo: Inspired from spark 2.0. Review if spark changes</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS.augmentDataFrame">
-<span class="sig-name descname"><span class="pre">augmentDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corpus_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_pipeline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ENG'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_product</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">augmentation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plain_text'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'umls'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_parsers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">euclidean_distance_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cosine_distance_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">casing_functions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.augmentDataFrame" title="Permalink to this definition">#</a></dt>
-<dd><p>Augment based on Spark Dataframe.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CodiEspReader.new_java_array_integer">
+<span class="sig-name descname"><span class="pre">new_java_array_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CodiEspReader.new_java_array_integer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CodiEspReader.new_java_array_string">
+<span class="sig-name descname"><span class="pre">new_java_array_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CodiEspReader.new_java_array_string" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CodiEspReader.new_java_obj">
+<span class="sig-name descname"><span class="pre">new_java_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CodiEspReader.new_java_obj" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CodiEspReader.readDatasetTaskX">
+<span class="sig-name descname"><span class="pre">readDatasetTaskX</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">textFolder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'\t'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CodiEspReader.readDatasetTaskX" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads the CodiEsp dataset into a spark data frame.</p>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.CodiEspReader.spark_version">
+<span class="sig-name descname"><span class="pre">spark_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.CodiEspReader.spark_version" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 </dd></dl>
 
@@ -587,15 +716,20 @@ Defaults to “ner_label”.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.training.REDatasetHelper.create_annotation_column">
 <span class="sig-name descname"><span class="pre">create_annotation_column</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">column_map</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_column_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train_ner_chunks'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.REDatasetHelper.create_annotation_column" title="Permalink to this definition">#</a></dt>
-<dd><p>A method to create label column for RelationExtractionApproach
-:param column_map: Required mapping between entity columns and dataset columns.
-Required columns are: begin1, end1, chunk1, label1, begin2, end2, chunk2, label2</p>
+<dd><p>Creates label column for RelationExtractionApproach.</p>
+<dl>
+<dt>Args</dt><dd><dl class="simple">
+<dt>column_map: Required mapping between entity columns and dataset columns.</dt><dd><p>Required columns are: begin1, end1, chunk1, label1, begin2, end2, chunk2, label2.</p>
+</dd>
+</dl>
+<p>ner_column_name: a label column name for RelationExtractionApproach.</p>
+</dd>
+</dl>
 <p class="rubric">Examples</p>
 <p># for dataset with following schema:
 &gt;&gt;&gt; data.printSchema()
-root</p>
-<blockquote>
-<div><p><a href="#id1"><span class="problematic" id="id2">|</span></a>– sentence: string (nullable = true)
+root
+<a href="#id1"><span class="problematic" id="id2">|</span></a>– sentence: string (nullable = true)
 <a href="#id3"><span class="problematic" id="id4">|</span></a>– chunk1: string (nullable = true)
 <a href="#id5"><span class="problematic" id="id6">|</span></a>– begin1: string (nullable = true)
 <a href="#id7"><span class="problematic" id="id8">|</span></a>– end1: string (nullable = true)
@@ -624,18 +758,82 @@ root</p>
 </div></blockquote>
 <p>}</p>
 </div></blockquote>
-</div></blockquote>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>ner_column_name</strong> – a label column name for RelationExtractionApproach</p>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A new dataframe extended with ner chunk column.</p>
 </dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A new dataframe extended with ner chunk column.</p>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>DataFrame</p>
 </dd>
 </dl>
 </dd></dl>
 
 </dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SynonymAugmentationUMLS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">umls_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'code'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description_col</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'description'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">case_sensitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS" title="Permalink to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.ExtendedJavaWrapper</span></code></p>
+<p>Augments datasets with synonyms from UMLS.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS.apply">
+<span class="sig-name descname"><span class="pre">apply</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.apply" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS.augmentCsv">
+<span class="sig-name descname"><span class="pre">augmentCsv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corpus_csv_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_pipeline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ENG'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_product</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">augmentation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plain_text'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'umls'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_parsers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">euclidean_distance_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cosine_distance_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">casing_functions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.augmentCsv" title="Permalink to this definition">#</a></dt>
+<dd><p>Augment based on CSV file.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS.augmentDataFrame">
+<span class="sig-name descname"><span class="pre">augmentDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">corpus_df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ner_pipeline</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ENG'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">do_product</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">augmentation_mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'plain_text'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'umls'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regex_parsers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">euclidean_distance_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cosine_distance_threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.25</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">synonym_limit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">casing_functions</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.augmentDataFrame" title="Permalink to this definition">#</a></dt>
+<dd><p>Augment based on Spark Dataframe.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS.getDataFrame">
+<span class="sig-name descname"><span class="pre">getDataFrame</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">jdf</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.getDataFrame" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS.new_java_array">
+<span class="sig-name descname"><span class="pre">new_java_array</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.new_java_array" title="Permalink to this definition">#</a></dt>
+<dd><p>ToDo: Inspired from spark 2.0. Review if spark changes</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS.new_java_array_integer">
+<span class="sig-name descname"><span class="pre">new_java_array_integer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.new_java_array_integer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS.new_java_array_string">
+<span class="sig-name descname"><span class="pre">new_java_array_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pylist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.new_java_array_string" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS.new_java_obj">
+<span class="sig-name descname"><span class="pre">new_java_obj</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">java_class</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.new_java_obj" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.SynonymAugmentationUMLS.spark_version">
+<span class="sig-name descname"><span class="pre">spark_version</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.spark_version" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.tf_graph">
+<span class="sig-name descname"><span class="pre">tf_graph</span></span><a class="headerlink" href="#sparknlp_jsl.training.tf_graph" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.training.tf_graph_1x">
+<span class="sig-name descname"><span class="pre">tf_graph_1x</span></span><a class="headerlink" href="#sparknlp_jsl.training.tf_graph_1x" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 </section>
 </section>
@@ -674,31 +872,59 @@ root</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.readDataset"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.readDataset()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.apply"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.apply()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.generateAssertionTrainSet"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.generateAssertionTrainSet()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.generatePlainAssertionTrainSet"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.generatePlainAssertionTrainSet()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.generateConll"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.generateConll()</span></code></a></li>
-</ul>
-</li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CodiEspReader"><code class="docutils literal notranslate"><span class="pre">CodiEspReader</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CodiEspReader.readDatasetTaskX"><code class="docutils literal notranslate"><span class="pre">CodiEspReader.readDatasetTaskX()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.generatePlainAssertionTrainSet"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.generatePlainAssertionTrainSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.getDataFrame"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.getDataFrame()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.new_java_array"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.new_java_array()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.new_java_array_integer"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.new_java_array_integer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.new_java_array_string"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.new_java_array_string()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.new_java_obj"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.new_java_obj()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.readDataset"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.readDataset()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.AnnotationToolJsonReader.spark_version"><code class="docutils literal notranslate"><span class="pre">AnnotationToolJsonReader.spark_version()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CantemistReader"><code class="docutils literal notranslate"><span class="pre">CantemistReader</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CantemistReader.apply"><code class="docutils literal notranslate"><span class="pre">CantemistReader.apply()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CantemistReader.getDataFrame"><code class="docutils literal notranslate"><span class="pre">CantemistReader.getDataFrame()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CantemistReader.new_java_array"><code class="docutils literal notranslate"><span class="pre">CantemistReader.new_java_array()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CantemistReader.new_java_array_integer"><code class="docutils literal notranslate"><span class="pre">CantemistReader.new_java_array_integer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CantemistReader.new_java_array_string"><code class="docutils literal notranslate"><span class="pre">CantemistReader.new_java_array_string()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CantemistReader.new_java_obj"><code class="docutils literal notranslate"><span class="pre">CantemistReader.new_java_obj()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CantemistReader.readDatasetTaskNer"><code class="docutils literal notranslate"><span class="pre">CantemistReader.readDatasetTaskNer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CantemistReader.spark_version"><code class="docutils literal notranslate"><span class="pre">CantemistReader.spark_version()</span></code></a></li>
 </ul>
 </li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.tf_graph"><code class="docutils literal notranslate"><span class="pre">tf_graph</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.tf_graph_1x"><code class="docutils literal notranslate"><span class="pre">tf_graph_1x</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.augmentCsv"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS.augmentCsv()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.augmentDataFrame"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS.augmentDataFrame()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CodiEspReader"><code class="docutils literal notranslate"><span class="pre">CodiEspReader</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CodiEspReader.apply"><code class="docutils literal notranslate"><span class="pre">CodiEspReader.apply()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CodiEspReader.getDataFrame"><code class="docutils literal notranslate"><span class="pre">CodiEspReader.getDataFrame()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CodiEspReader.new_java_array"><code class="docutils literal notranslate"><span class="pre">CodiEspReader.new_java_array()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CodiEspReader.new_java_array_integer"><code class="docutils literal notranslate"><span class="pre">CodiEspReader.new_java_array_integer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CodiEspReader.new_java_array_string"><code class="docutils literal notranslate"><span class="pre">CodiEspReader.new_java_array_string()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CodiEspReader.new_java_obj"><code class="docutils literal notranslate"><span class="pre">CodiEspReader.new_java_obj()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CodiEspReader.readDatasetTaskX"><code class="docutils literal notranslate"><span class="pre">CodiEspReader.readDatasetTaskX()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.CodiEspReader.spark_version"><code class="docutils literal notranslate"><span class="pre">CodiEspReader.spark_version()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.REDatasetHelper"><code class="docutils literal notranslate"><span class="pre">REDatasetHelper</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.REDatasetHelper.create_annotation_column"><code class="docutils literal notranslate"><span class="pre">REDatasetHelper.create_annotation_column()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.apply"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS.apply()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.augmentCsv"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS.augmentCsv()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.augmentDataFrame"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS.augmentDataFrame()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.getDataFrame"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS.getDataFrame()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.new_java_array"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS.new_java_array()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.new_java_array_integer"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS.new_java_array_integer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.new_java_array_string"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS.new_java_array_string()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.new_java_obj"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS.new_java_obj()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.SynonymAugmentationUMLS.spark_version"><code class="docutils literal notranslate"><span class="pre">SynonymAugmentationUMLS.spark_version()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.tf_graph"><code class="docutils literal notranslate"><span class="pre">tf_graph</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training.tf_graph_1x"><code class="docutils literal notranslate"><span class="pre">tf_graph_1x</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/annotator/embeddings/entity_chunk_embeddings/index';</script>
     <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
@@ -271,6 +274,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertionDL/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertionDL</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -471,7 +475,8 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EntityChunkEmbeddings</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.embeddings.EntityChunkEmbeddings'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings" title="Permalink to this definition">#</a></dt>
-<dd><p>Weighted average embeddings of multiple named entities chunk annotations.</p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.annotator.BertSentenceEmbeddings</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.HasEngine</span></code></p>
+<p>Weighted average embeddings of multiple named entities chunk annotations.</p>
 <p>Entity Chunk Embeddings uses BERT Sentence embeddings to compute a weighted average
 vector represention of related entity chunks.  The input the model consists of
 chunks of recognized named entities. One or more entities are selected as target
@@ -517,26 +522,25 @@ Other available models can be found at
 </tr>
 </tbody>
 </table>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
-<dt><strong>targetEntities: dict</strong></dt><dd><p>Target entities and their related entities. A target entity mapped
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>targetEntities</strong> (<em>dict</em>) – <p>Target entities and their related entities. A target entity mapped
 to an empty list of related entities means all other entities are
 assumed to be related to it. The default value is an empty dictionary,
 meaning no target entities are specified.</p>
 <p>Entity names are case insensitive.</p>
-</dd>
-<dt><strong>entityWeights: dict</strong></dt><dd><p>Relative weights of entities. By default the dictionary is empty and all
+</p></li>
+<li><p><strong>entityWeights</strong> (<em>dict</em>) – <p>Relative weights of entities. By default the dictionary is empty and all
 entities have equal weights. If it is non-empty and some entity is not
 in it, then its weight is set to 0.</p>
 <p>The notation TARGET_ENTITY:RELATED_ENTITY can be used to specify
 the weight of a entity which is related to specific target entity (e.g.
 “DRUG:SYMPTOM” -&gt; 0.3f).</p>
 <p>Entity names are case insensitive.</p>
-</dd>
-<dt><strong>maxSyntacticDistance: int</strong></dt><dd><p>Maximal syntactic distance between related entities. Default value is 2.</p>
-</dd>
-</dl>
+</p></li>
+<li><p><strong>maxSyntacticDistance</strong> (<em>int</em>) – Maximal syntactic distance between related entities. Default value is 2.</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -612,18 +616,28 @@ the weight of a entity which is related to specific target entity (e.g.
 </pre></div>
 </div>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.inputAnnotatorTypes">
-<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.batchSize">
+<span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.batchSize" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.outputAnnotatorType">
-<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.caseSensitive">
+<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.caseSensitive" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">EntityChunkEmbeddings</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.name" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.configProtoBytes">
+<span class="sig-name descname"><span class="pre">configProtoBytes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.configProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.dimension">
+<span class="sig-name descname"><span class="pre">dimension</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.dimension" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.engine">
+<span class="sig-name descname"><span class="pre">engine</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.engine" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -632,14 +646,395 @@ the weight of a entity which is related to specific target entity (e.g.
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.targetEntities">
-<span class="sig-name descname"><span class="pre">targetEntities</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.targetEntities" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.isLong">
+<span class="sig-name descname"><span class="pre">isLong</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.isLong" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.maxSentenceLength">
+<span class="sig-name descname"><span class="pre">maxSentenceLength</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.maxSentenceLength" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.maxSyntacticDistance">
 <span class="sig-name descname"><span class="pre">maxSyntacticDistance</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.maxSyntacticDistance" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.max_length_limit">
+<span class="sig-name descname"><span class="pre">max_length_limit</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">512</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.max_length_limit" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">EntityChunkEmbeddings</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.storageRef">
+<span class="sig-name descname"><span class="pre">storageRef</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.storageRef" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.targetEntities">
+<span class="sig-name descname"><span class="pre">targetEntities</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.targetEntities" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getBatchSize">
+<span class="sig-name descname"><span class="pre">getBatchSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current batch size</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getCaseSensitive">
+<span class="sig-name descname"><span class="pre">getCaseSensitive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getDimension">
+<span class="sig-name descname"><span class="pre">getDimension</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getDimension" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets embeddings dimension.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getEngine">
+<span class="sig-name descname"><span class="pre">getEngine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getEngine" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Deep Learning engine used for this model”</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getMaxSentenceLength">
+<span class="sig-name descname"><span class="pre">getMaxSentenceLength</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getMaxSentenceLength" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets max sentence of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Max sentence length to process</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getStorageRef">
+<span class="sig-name descname"><span class="pre">getStorageRef</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getStorageRef" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets unique reference name for identification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unique reference name for identification</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.loadSavedModel">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.loadSavedModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Loads a locally saved model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>folder</strong> (<em>str</em>) – Folder of the saved model</p></li>
+<li><p><strong>spark_session</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><em>pyspark.sql.SparkSession</em></a>) – The current SparkSession</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The restored model</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>BertSentenceEmbeddings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.pretrained">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sbiobert_base_cased_mli'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.pretrained" title="Permalink to this definition">#</a></dt>
+<dd><p>Downloads and loads a pretrained model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the pretrained model, by default “sbiobert_base_cased_mli”</p></li>
+<li><p><strong>lang</strong> (<em>str</em><em>, </em><em>optional</em>) – Language of the pretrained model, by default “en”</p></li>
+<li><p><strong>remote_loc</strong> (<em>str</em><em>, </em><em>optional</em>) – Optional remote address of the resource, by default None. Will use
+Spark NLPs repositories otherwise.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The restored model</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings" title="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings">EntityChunkEmbeddings</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setBatchSize">
+<span class="sig-name descname"><span class="pre">setBatchSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>int</em>) – Batch size</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setCaseSensitive">
+<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setConfigProtoBytes">
+<span class="sig-name descname"><span class="pre">setConfigProtoBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setConfigProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets configProto from tensorflow, serialized into byte array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>b</strong> (<em>List</em><em>[</em><em>int</em><em>]</em>) – ConfigProto from tensorflow, serialized into byte array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setDimension">
+<span class="sig-name descname"><span class="pre">setDimension</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setDimension" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets embeddings dimension.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Embeddings dimension</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setEntityWeights">
@@ -649,12 +1044,107 @@ the weight of a entity which is related to specific target entity (e.g.
 <p>If non-empty and some entity is not in it, then its weight is set to 0.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>weights:</strong><span class="classifier">dict[str, float]</span></dt><dd><p>Dictionary with the relative weighs of entities. The notation TARGET_ENTITY:RELATED_ENTITY can be used to
+<dd class="field-odd"><p><strong>weights</strong> (<em>: dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em>) – Dictionary with the relative weighs of entities. The notation TARGET_ENTITY:RELATED_ENTITY can be used to
 specify the weight of a entity which is related to specific target entity (e.g. “DRUG:SYMPTOM”: 0.3).
 Entity names are case-insensitive.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setIsLong">
+<span class="sig-name descname"><span class="pre">setIsLong</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setIsLong" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to use Long type instead of Int type for inputs buffer.</p>
+<p>Some Bert models require Long instead of Int.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to use Long type instead of Int type for inputs buffer</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setMaxSentenceLength">
+<span class="sig-name descname"><span class="pre">setMaxSentenceLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setMaxSentenceLength" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets max sentence length to process.</p>
+<p>Note that a maximum limit exists depending on the model. If you are working with long single
+sequences, consider splitting up the input first with another annotator e.g. SentenceDetector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Max sentence length to process</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setMaxSyntacticDistance">
+<span class="sig-name descname"><span class="pre">setMaxSyntacticDistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setMaxSyntacticDistance" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the maximal syntactic distance between related entities. Default value is 2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>distance</strong> (<em>int</em>) – Maximal syntactic distance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setStorageRef">
+<span class="sig-name descname"><span class="pre">setStorageRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setStorageRef" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets unique reference name for identification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Unique reference name for identification</p>
 </dd>
 </dl>
 </dd></dl>
@@ -667,54 +1157,41 @@ Entity names are case-insensitive.</p>
 other entities are assumed to be related to it.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>entities: dict[str, list[str]]</strong></dt><dd><p>Dictionary with target and related entities (TARGET: [RELATED1, RELATED2,…]).
+<dd class="field-odd"><p><strong>entities</strong> (<em>dict</em><em>[</em><em>str</em><em>, </em><em>list</em><em>[</em><em>str</em><em>]</em><em>]</em>) – Dictionary with target and related entities (TARGET: [RELATED1, RELATED2,…]).
 If the list of related entities is empty, then all non-target entities are
 considered.
 Entity names are case insensitive.</p>
 </dd>
 </dl>
-</dd>
-</dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setMaxSyntacticDistance">
-<span class="sig-name descname"><span class="pre">setMaxSyntacticDistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setMaxSyntacticDistance" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the maximal syntactic distance between related entities. Default value is 2.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>distance</strong><span class="classifier">int</span></dt><dd><p>Maximal syntactic distance</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'sbiobert_base_cased_mli'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.pretrained" title="Permalink to this definition">#</a></dt>
-<dd><p>Downloads and loads a pretrained model.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the pretrained model, by default “sbiobert_base_cased_mli”</p>
-</dd>
-<dt><strong>lang</strong><span class="classifier">str, optional</span></dt><dd><p>Language of the pretrained model, by default “en”</p>
-</dd>
-<dt><strong>remote_loc</strong><span class="classifier">str, optional</span></dt><dd><p>Optional remote address of the resource, by default None. Will use
-Spark NLPs repositories otherwise.</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>EntityChunkEmbeddings</dt><dd><p>The restored model</p>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
 </dd>
 </dl>
-</dd>
-</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -755,16 +1232,71 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.inputAnnotatorTypes</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.outputAnnotatorType</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.name"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.batchSize"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.caseSensitive"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.caseSensitive</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.configProtoBytes"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.configProtoBytes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.dimension"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.dimension</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.engine"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.engine</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.entityWeights"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.entityWeights</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.targetEntities"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.targetEntities</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getter_attrs"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.inputCols"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.isLong"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.isLong</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.maxSentenceLength"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.maxSentenceLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.maxSyntacticDistance"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.maxSyntacticDistance</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setEntityWeights"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setEntityWeights()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setTargetEntities"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setTargetEntities()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setMaxSyntacticDistance"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setMaxSyntacticDistance()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.max_length_limit"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.max_length_limit</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.name"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.outputCol"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.storageRef"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.storageRef</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.targetEntities"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.targetEntities</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.clear"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.copy"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.explainParam"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.explainParams"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.extractParamMap"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getBatchSize"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getCaseSensitive"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getDimension"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getDimension()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getEngine"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getEngine()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getInputCols"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getMaxSentenceLength"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getMaxSentenceLength()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getOrDefault"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getOutputCol"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getParam"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getParamValue"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.getStorageRef"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.getStorageRef()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.hasDefault"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.hasParam"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.isDefined"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.isSet"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.load"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.loadSavedModel"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.loadSavedModel()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.pretrained"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.read"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.save"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.set"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setBatchSize"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setConfigProtoBytes()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setDimension"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setDimension()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setEntityWeights"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setEntityWeights()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setInputCols"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setIsLong"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setIsLong()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setMaxSentenceLength"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setMaxSentenceLength()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setMaxSyntacticDistance"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setMaxSyntacticDistance()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setOutputCol"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setParamValue"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setParams"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setStorageRef"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setStorageRef()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.setTargetEntities"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.setTargetEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.transform"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings.entity_chunk_embeddings.EntityChunkEmbeddings.write"><code class="docutils literal notranslate"><span class="pre">EntityChunkEmbeddings.write()</span></code></a></li>
 </ul>
 </li>
 </ul>

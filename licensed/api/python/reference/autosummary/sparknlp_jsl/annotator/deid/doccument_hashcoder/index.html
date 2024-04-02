@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/annotator/deid/doccument_hashcoder/index';</script>
     <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
@@ -271,6 +274,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertionDL/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertionDL</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -472,7 +476,8 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DocumentHashCoder</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder" title="Permalink to this definition">#</a></dt>
-<dd><p>Shifts date information for deidentification purposes.</p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp.internal.AnnotatorTransformer</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorProperties</span></code></p>
+<p>Shifts date information for deidentification purposes.</p>
 <p>This annotator can replace dates in a column of <cite>DOCUMENT</cite>
 type according with the hash code of any other column.
 It uses the hash of the specified column and creates a new
@@ -495,18 +500,13 @@ to integers, use those numbers to make the shift in the data accordingly.</p>
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>patientIdColumn: str</strong></dt><dd><p>column that contains string. Must be part of DOCUMENT</p>
-</dd>
-<dt><strong>dateShiftColumn: str</strong></dt><dd><p>column containing the date shift information</p>
-</dd>
-<dt><strong>newDateShift: str</strong></dt><dd><p>column that has a reference of where chunk begins</p>
-</dd>
-<dt><strong>seed: int</strong></dt><dd><p>seed for the random number generator</p>
-</dd>
-<dt><strong>rangeDays: int</strong></dt><dd><p>range of days to be sampled by the random generator</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patientIdColumn</strong> (<em>str</em>) – column that contains string. Must be part of DOCUMENT</p></li>
+<li><p><strong>dateShiftColumn</strong> (<em>str</em>) – column containing the date shift information</p></li>
+<li><p><strong>newDateShift</strong> (<em>str</em>) – column that has a reference of where chunk begins</p></li>
+<li><p><strong>seed</strong> (<em>int</em>) – seed for the random number generator</p></li>
+<li><p><strong>rangeDays</strong> (<em>int</em>) – range of days to be sampled by the random generator</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -608,23 +608,33 @@ to integers, use those numbers to make the shift in the data accordingly.</p>
 </pre></div>
 </div>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.dateShiftColumn">
+<span class="sig-name descname"><span class="pre">dateShiftColumn</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.dateShiftColumn" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.inputAnnotatorTypes">
 <span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.outputAnnotatorType">
-<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.inputCols" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.patientIdColumn">
-<span class="sig-name descname"><span class="pre">patientIdColumn</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.patientIdColumn" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.lazyAnnotator" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.dateShiftColumn">
-<span class="sig-name descname"><span class="pre">dateShiftColumn</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.dateShiftColumn" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">DocumentHashCoder</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -633,8 +643,23 @@ to integers, use those numbers to make the shift in the data accordingly.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.seed">
-<span class="sig-name descname"><span class="pre">seed</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.seed" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.patientIdColumn">
+<span class="sig-name descname"><span class="pre">patientIdColumn</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.patientIdColumn" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -643,9 +668,237 @@ to integers, use those numbers to make the shift in the data accordingly.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">DocumentHashCoder</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.name" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.seed">
+<span class="sig-name descname"><span class="pre">seed</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.seed" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setDateShiftColumn">
+<span class="sig-name descname"><span class="pre">setDateShiftColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setDateShiftColumn" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column to be used for hash or predefined shift.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of the column to be used</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setNewDateShift">
+<span class="sig-name descname"><span class="pre">setNewDateShift</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setNewDateShift" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column that has a reference of where chunk begins.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of the reference column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setParams">
@@ -659,38 +912,7 @@ to integers, use those numbers to make the shift in the data accordingly.</p>
 <dd><p>Sets column that contains the string.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>Name of the column containing patient ID</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setDateShiftColumn">
-<span class="sig-name descname"><span class="pre">setDateShiftColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setDateShiftColumn" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets column to be used for hash or predefined shift.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>Name of the column to be used</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setNewDateShift">
-<span class="sig-name descname"><span class="pre">setNewDateShift</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setNewDateShift" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets column that has a reference of where chunk begins.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">str</span></dt><dd><p>Name of the reference column</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of the column containing patient ID</p>
 </dd>
 </dl>
 </dd></dl>
@@ -701,10 +923,7 @@ to integers, use those numbers to make the shift in the data accordingly.</p>
 <dd><p>Sets the range of dates to be sampled from.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">int</span></dt><dd><p>range of days to be sampled by the random generator</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – range of days to be sampled by the random generator</p>
 </dd>
 </dl>
 </dd></dl>
@@ -715,12 +934,38 @@ to integers, use those numbers to make the shift in the data accordingly.</p>
 <dd><p>Sets the seed for random number generator.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">int</span></dt><dd><p>seed for the random number generator</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – seed for the random number generator</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -761,20 +1006,51 @@ to integers, use those numbers to make the shift in the data accordingly.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.inputAnnotatorTypes</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.outputAnnotatorType</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.patientIdColumn"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.patientIdColumn</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.dateShiftColumn"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.dateShiftColumn</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.newDateShift"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.newDateShift</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.seed"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.seed</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.rangeDays"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.rangeDays</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getter_attrs"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.inputCols"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.lazyAnnotator</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.name"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.newDateShift"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.newDateShift</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.outputCol"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.patientIdColumn"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.patientIdColumn</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.rangeDays"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.rangeDays</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.seed"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.seed</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.clear"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.copy"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.explainParam"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.explainParams"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.extractParamMap"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getInputCols"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getOrDefault"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getOutputCol"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getParam"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.getParamValue"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.hasDefault"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.hasParam"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.isDefined"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.isSet"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.load"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.read"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.save"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.set"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setDateShiftColumn"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.setDateShiftColumn()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setInputCols"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setNewDateShift"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.setNewDateShift()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setOutputCol"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setParamValue"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.setParamValue()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setParams"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.setParams()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setPatientIdColumn"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.setPatientIdColumn()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setDateShiftColumn"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.setDateShiftColumn()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setNewDateShift"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.setNewDateShift()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setRangeDays"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.setRangeDays()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.setSeed"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.setSeed()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.transform"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid.doccument_hashcoder.DocumentHashCoder.write"><code class="docutils literal notranslate"><span class="pre">DocumentHashCoder.write()</span></code></a></li>
 </ul>
 </li>
 </ul>

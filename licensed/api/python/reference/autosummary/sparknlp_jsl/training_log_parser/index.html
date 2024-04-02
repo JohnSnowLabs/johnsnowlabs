@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
+    <script src="../../../../static/clipboard.min.js"></script>
+    <script src="../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/training_log_parser/index';</script>
     <link rel="shortcut icon" href="../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -319,96 +322,25 @@ document.write(`
 <h3>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training_log_parser.ner_log_parser" title="sparknlp_jsl.training_log_parser.ner_log_parser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ner_log_parser</span></code></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.training_log_parser.assertion_log_parser" title="sparknlp_jsl.training_log_parser.assertion_log_parser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertion_log_parser</span></code></a></p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.training_log_parser.assertion_log_parser" title="sparknlp_jsl.training_log_parser.assertion_log_parser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">assertion_log_parser</span></code></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.training_log_parser.ner_log_parser" title="sparknlp_jsl.training_log_parser.ner_log_parser"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ner_log_parser</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="py class">
-<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ner_log_parser</span></span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser" title="Permalink to this definition">#</a></dt>
-<dd><dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser.parse_logfile">
-<span class="sig-name descname"><span class="pre">parse_logfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser.parse_logfile" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns metrics and avg-metrics dataframes, graph name and a boolean for whether test set is provided or not.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>path</strong> – path to the log file</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser.get_charts">
-<span class="sig-name descname"><span class="pre">get_charts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser.get_charts" title="Permalink to this definition">#</a></dt>
-<dd><p>Plots the figures of metrics ( precision, recall, f1) vs epochs</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_file</strong> – path to the log file</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser.loss_plot">
-<span class="sig-name descname"><span class="pre">loss_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser.loss_plot" title="Permalink to this definition">#</a></dt>
-<dd><p>Plots the figure of loss vs epochs</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_path</strong> – path to the log file</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser.get_best_f1_scores">
-<span class="sig-name descname"><span class="pre">get_best_f1_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser.get_best_f1_scores" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns the best Micro and Macro F1 Scores</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>log_path</strong> – path to the log file</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser.evaluate">
-<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_seqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_seqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser.evaluate" title="Permalink to this definition">#</a></dt>
-<dd><p>if verbose, returns overall performance, as well as performance per chunk type;
-otherwise, simply returns overall precision, recall, f1 scores</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>true_seqs</strong> – a list of true tags</p></li>
-<li><p><strong>pred_seqs</strong> – a list of predicted tags</p></li>
-<li><p><strong>verbose</strong> – boolean</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser.evaluate_conll_file">
-<span class="sig-name descname"><span class="pre">evaluate_conll_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileIterator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser.evaluate_conll_file" title="Permalink to this definition">#</a></dt>
-<dd><p>prints overall performance, as well as performance per chunk type</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.assertion_log_parser">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">assertion_log_parser</span></span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.assertion_log_parser" title="Permalink to this definition">#</a></dt>
 <dd><dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.assertion_log_parser.parse_logfile">
-<span class="sig-name descname"><span class="pre">parse_logfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.assertion_log_parser.parse_logfile" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns metrics and avg-metrics dataframes, graph name and a boolean for whether test set is provided or not.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.assertion_log_parser.get_best_f1_scores">
+<span class="sig-name descname"><span class="pre">get_best_f1_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.assertion_log_parser.get_best_f1_scores" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the best Micro and Macro F1 Scores.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>path</strong> – path to the log file</p></li>
+<li><p><strong>log_path</strong> – path to the log file</p></li>
 <li><p><strong>labels</strong> – list of assertion labels</p></li>
 </ul>
 </dd>
@@ -418,7 +350,7 @@ otherwise, simply returns overall precision, recall, f1 scores</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.assertion_log_parser.get_charts">
 <span class="sig-name descname"><span class="pre">get_charts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.assertion_log_parser.get_charts" title="Permalink to this definition">#</a></dt>
-<dd><p>Plots the figures of metrics ( precision, recall, f1) vs epochs</p>
+<dd><p>Plots the figures of metrics ( precision, recall, f1) vs epochs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -432,7 +364,7 @@ otherwise, simply returns overall precision, recall, f1 scores</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.assertion_log_parser.loss_plot">
 <span class="sig-name descname"><span class="pre">loss_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.assertion_log_parser.loss_plot" title="Permalink to this definition">#</a></dt>
-<dd><p>Plots the figure of loss vs epochs</p>
+<dd><p>Plots the figure of loss vs epochs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>log_path</strong> – path to the log file</p>
@@ -441,15 +373,87 @@ otherwise, simply returns overall precision, recall, f1 scores</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.assertion_log_parser.get_best_f1_scores">
-<span class="sig-name descname"><span class="pre">get_best_f1_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.assertion_log_parser.get_best_f1_scores" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns the best Micro and Macro F1 Scores</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.assertion_log_parser.parse_logfile">
+<span class="sig-name descname"><span class="pre">parse_logfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.assertion_log_parser.parse_logfile" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns metrics and avg-metrics dataframes, graph name and a boolean for whether test set is provided or not.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>log_path</strong> – path to the log file</p></li>
-<li><p><strong>labels</strong> – list of assertion labels</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path to the log file</p></li>
+<li><p><strong>labels</strong> (<em>list</em>) – list of assertion labels</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ner_log_parser</span></span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser" title="Permalink to this definition">#</a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">true_seqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pred_seqs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser.evaluate" title="Permalink to this definition">#</a></dt>
+<dd><p>Evaluates the performance of the model.</p>
+<p>if verbose, returns overall performance, as well as performance per chunk type;
+otherwise, simply returns overall precision, recall, f1 scores</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>true_seqs</strong> (<em>list</em>) – a list of true tags</p></li>
+<li><p><strong>pred_seqs</strong> (<em>list</em>) – a list of predicted tags</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – whether to print the results or not</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser.evaluate_conll_file">
+<span class="sig-name descname"><span class="pre">evaluate_conll_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fileIterator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser.evaluate_conll_file" title="Permalink to this definition">#</a></dt>
+<dd><p>prints overall performance, as well as performance per chunk type.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser.get_best_f1_scores">
+<span class="sig-name descname"><span class="pre">get_best_f1_scores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser.get_best_f1_scores" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the best Micro and Macro F1 Scores.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_path</strong> – path to the log file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser.get_charts">
+<span class="sig-name descname"><span class="pre">get_charts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser.get_charts" title="Permalink to this definition">#</a></dt>
+<dd><p>Plots the figures of metrics ( precision, recall, f1) vs epochs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_file</strong> – path to the log file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser.loss_plot">
+<span class="sig-name descname"><span class="pre">loss_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">log_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser.loss_plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Plots the figure of loss vs epochs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>log_path</strong> – path to the log file</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.training_log_parser.ner_log_parser.parse_logfile">
+<span class="sig-name descname"><span class="pre">parse_logfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.training_log_parser.ner_log_parser.parse_logfile" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns metrics and avg-metrics dataframes, graph name and a boolean for whether test set is provided or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> – path to the log file</p>
 </dd>
 </dl>
 </dd></dl>
@@ -491,20 +495,20 @@ otherwise, simply returns overall precision, recall, f1 scores</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser"><code class="docutils literal notranslate"><span class="pre">ner_log_parser</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser.parse_logfile"><code class="docutils literal notranslate"><span class="pre">ner_log_parser.parse_logfile()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser.get_charts"><code class="docutils literal notranslate"><span class="pre">ner_log_parser.get_charts()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser.loss_plot"><code class="docutils literal notranslate"><span class="pre">ner_log_parser.loss_plot()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser.get_best_f1_scores"><code class="docutils literal notranslate"><span class="pre">ner_log_parser.get_best_f1_scores()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser.evaluate"><code class="docutils literal notranslate"><span class="pre">ner_log_parser.evaluate()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser.evaluate_conll_file"><code class="docutils literal notranslate"><span class="pre">ner_log_parser.evaluate_conll_file()</span></code></a></li>
-</ul>
-</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.assertion_log_parser"><code class="docutils literal notranslate"><span class="pre">assertion_log_parser</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.assertion_log_parser.parse_logfile"><code class="docutils literal notranslate"><span class="pre">assertion_log_parser.parse_logfile()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.assertion_log_parser.get_best_f1_scores"><code class="docutils literal notranslate"><span class="pre">assertion_log_parser.get_best_f1_scores()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.assertion_log_parser.get_charts"><code class="docutils literal notranslate"><span class="pre">assertion_log_parser.get_charts()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.assertion_log_parser.loss_plot"><code class="docutils literal notranslate"><span class="pre">assertion_log_parser.loss_plot()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.assertion_log_parser.get_best_f1_scores"><code class="docutils literal notranslate"><span class="pre">assertion_log_parser.get_best_f1_scores()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.assertion_log_parser.parse_logfile"><code class="docutils literal notranslate"><span class="pre">assertion_log_parser.parse_logfile()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser"><code class="docutils literal notranslate"><span class="pre">ner_log_parser</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser.evaluate"><code class="docutils literal notranslate"><span class="pre">ner_log_parser.evaluate()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser.evaluate_conll_file"><code class="docutils literal notranslate"><span class="pre">ner_log_parser.evaluate_conll_file()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser.get_best_f1_scores"><code class="docutils literal notranslate"><span class="pre">ner_log_parser.get_best_f1_scores()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser.get_charts"><code class="docutils literal notranslate"><span class="pre">ner_log_parser.get_charts()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser.loss_plot"><code class="docutils literal notranslate"><span class="pre">ner_log_parser.loss_plot()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.training_log_parser.ner_log_parser.parse_logfile"><code class="docutils literal notranslate"><span class="pre">ner_log_parser.parse_logfile()</span></code></a></li>
 </ul>
 </li>
 </ul>

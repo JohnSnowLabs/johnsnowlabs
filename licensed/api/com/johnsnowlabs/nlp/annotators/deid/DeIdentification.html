@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.3.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentification</title>
-          <meta name="description" content="Spark NLP 5.3.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentification" />
-          <meta name="keywords" content="Spark NLP 5.3.0 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentification" />
+          <title>Spark NLP 5.3.1 ScalaDoc  - com.johnsnowlabs.nlp.annotators.deid.DeIdentification</title>
+          <meta name="description" content="Spark NLP 5.3.1 ScalaDoc - com.johnsnowlabs.nlp.annotators.deid.DeIdentification" />
+          <meta name="keywords" content="Spark NLP 5.3.1 ScalaDoc com.johnsnowlabs.nlp.annotators.deid.DeIdentification" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.3.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.3.1 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -290,7 +290,7 @@
         <span class="kind">class</span>
       </span>
       <span class="symbol">
-        <span class="name">DeIdentification</span><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorApproach">AnnotatorApproach</span>[<a href="DeIdentificationModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a>] with <a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a> with <a href="DeidApproachParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams">DeidApproachParams</a> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
+        <span class="name">DeIdentification</span><span class="result"> extends <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorApproach">AnnotatorApproach</span>[<a href="DeIdentificationModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a>] with <a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a> with <a href="DeidApproachParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams">DeidApproachParams</a> with <a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a> with <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></span>
       </span>
       </h4>
 
@@ -336,7 +336,7 @@ is a mapping of string to entity. The format and seperator can be speficied with
 
  <span class="kw">val</span> nerConverter = <span class="kw">new</span> NerConverter()
      .setInputCols(<span class="std">Array</span>(<span class="lit">"sentence"</span>, <span class="lit">"token"</span>, <span class="lit">"ner"</span>))
-     .setOutputCol(<span class="lit">"ner_con"</span>)</pre><h4>Deidentification</h4><pre><span class="kw">val</span> deIdentification = <span class="kw">new</span> DeIdentification()
+     .setOutputCol(<span class="lit">"ner_chunk"</span>)</pre><h4>Deidentification</h4><pre><span class="kw">val</span> deIdentification = <span class="kw">new</span> DeIdentification()
     .setInputCols(<span class="std">Array</span>(<span class="lit">"ner_chunk"</span>, <span class="lit">"token"</span>, <span class="lit">"sentence"</span>))
     .setOutputCol(<span class="lit">"dei"</span>)
     <span class="cmt">// file with custom regex patterns for custom entities</span>
@@ -375,7 +375,7 @@ result.select(<span class="lit">"dei.result"</span>).show(truncate = <span class
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <a href="DeidApproachParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams">DeidApproachParams</a>, <a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a>, <a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a>, <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorApproach">AnnotatorApproach</span>[<a href="DeIdentificationModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a>], <span class="extype" name="com.johnsnowlabs.nlp.CanBeLazy">CanBeLazy</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">HasOutputAnnotatorType</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">HasInputAnnotationCols</span>, <span class="extype" name="org.apache.spark.ml.Estimator">Estimator</span>[<a href="DeIdentificationModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a>], <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span>, <a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a>, <a href="DeidApproachParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams">DeidApproachParams</a>, <a href="DeIdentificationParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">DeIdentificationParams</a>, <a href="BaseDeidParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams">BaseDeidParams</a>, <span class="extype" name="com.johnsnowlabs.nlp.AnnotatorApproach">AnnotatorApproach</span>[<a href="DeIdentificationModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a>], <span class="extype" name="com.johnsnowlabs.nlp.CanBeLazy">CanBeLazy</span>, <span class="extype" name="org.apache.spark.ml.util.DefaultParamsWritable">DefaultParamsWritable</span>, <span class="extype" name="org.apache.spark.ml.util.MLWritable">MLWritable</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType">HasOutputAnnotatorType</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol">HasOutputAnnotationCol</span>, <span class="extype" name="com.johnsnowlabs.nlp.HasInputAnnotationCols">HasInputAnnotationCols</span>, <span class="extype" name="org.apache.spark.ml.Estimator">Estimator</span>[<a href="DeIdentificationModel.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationModel">DeIdentificationModel</a>], <span class="extype" name="org.apache.spark.ml.PipelineStage">PipelineStage</span>, <span class="extype" name="org.apache.spark.internal.Logging">Logging</span>, <span class="extype" name="org.apache.spark.ml.param.Params">Params</span>, <span class="extype" name="scala.Serializable">Serializable</span>, <span class="extype" name="java.io.Serializable">Serializable</span>, <span class="extype" name="org.apache.spark.ml.util.Identifiable">Identifiable</span>, <a href="../../../../../scala/index.html#AnyRef=Object" class="extmbr" name="scala.AnyRef">AnyRef</a>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -401,7 +401,7 @@ result.select(<span class="lit">"dei.result"</span>).show(truncate = <span class
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification"><span>DeIdentification</span></li><li class="in" name="com.johnsnowlabs.license.CheckLicense"><span>CheckLicense</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams"><span>DeidApproachParams</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams"><span>DeIdentificationParams</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams"><span>BaseDeidParams</span></li><li class="in" name="com.johnsnowlabs.nlp.AnnotatorApproach"><span>AnnotatorApproach</span></li><li class="in" name="com.johnsnowlabs.nlp.CanBeLazy"><span>CanBeLazy</span></li><li class="in" name="org.apache.spark.ml.util.DefaultParamsWritable"><span>DefaultParamsWritable</span></li><li class="in" name="org.apache.spark.ml.util.MLWritable"><span>MLWritable</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType"><span>HasOutputAnnotatorType</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol"><span>HasOutputAnnotationCol</span></li><li class="in" name="com.johnsnowlabs.nlp.HasInputAnnotationCols"><span>HasInputAnnotationCols</span></li><li class="in" name="org.apache.spark.ml.Estimator"><span>Estimator</span></li><li class="in" name="org.apache.spark.ml.PipelineStage"><span>PipelineStage</span></li><li class="in" name="org.apache.spark.internal.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.ml.param.Params"><span>Params</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.ml.util.Identifiable"><span>Identifiable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification"><span>DeIdentification</span></li><li class="in" name="com.johnsnowlabs.license.CheckLicense"><span>CheckLicense</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams"><span>HandleExceptionParams</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams"><span>DeidApproachParams</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams"><span>DeIdentificationParams</span></li><li class="in" name="com.johnsnowlabs.nlp.annotators.deid.BaseDeidParams"><span>BaseDeidParams</span></li><li class="in" name="com.johnsnowlabs.nlp.AnnotatorApproach"><span>AnnotatorApproach</span></li><li class="in" name="com.johnsnowlabs.nlp.CanBeLazy"><span>CanBeLazy</span></li><li class="in" name="org.apache.spark.ml.util.DefaultParamsWritable"><span>DefaultParamsWritable</span></li><li class="in" name="org.apache.spark.ml.util.MLWritable"><span>MLWritable</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotatorType"><span>HasOutputAnnotatorType</span></li><li class="in" name="com.johnsnowlabs.nlp.HasOutputAnnotationCol"><span>HasOutputAnnotationCol</span></li><li class="in" name="com.johnsnowlabs.nlp.HasInputAnnotationCols"><span>HasInputAnnotationCols</span></li><li class="in" name="org.apache.spark.ml.Estimator"><span>Estimator</span></li><li class="in" name="org.apache.spark.ml.PipelineStage"><span>PipelineStage</span></li><li class="in" name="org.apache.spark.internal.Logging"><span>Logging</span></li><li class="in" name="org.apache.spark.ml.param.Params"><span>Params</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="org.apache.spark.ml.util.Identifiable"><span>Identifiable</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -944,6 +944,25 @@ The similarity is based on the Levenshtein Distance between the words.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a> → AnnotatorApproach</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams#doExceptionHandling" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
+      <a id="doExceptionHandling:org.apache.spark.ml.param.BooleanParam"></a><a id="doExceptionHandling:BooleanParam"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#doExceptionHandling:org.apache.spark.ml.param.BooleanParam" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">val</span>
+      </span>
+      <span class="symbol">
+        <span class="name">doExceptionHandling</span><span class="result">: <span class="extype" name="org.apache.spark.ml.param.BooleanParam">BooleanParam</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">If true, exceptions are handled.</p><div class="fullcomment"><div class="comment cmt"><p>If true, exceptions are handled.
+If exception causing data is passed to the model, a error annotation is emitted which has the exception message. Processing continues with the next one.
+This comes with a performance penalty.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#entityCasingModesPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="param">
       <a id="entityCasingModesPath:org.apache.spark.ml.param.Param[String]"></a><a id="entityCasingModesPath:Param[String]"></a>
       <span class="permalink">
@@ -2980,6 +2999,25 @@ The similarity is based on the Levenshtein Distance between the words.
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd><dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams#setDoExceptionHandling" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
+      <a id="setDoExceptionHandling(value:Boolean):HandleExceptionParams.this.type"></a><a id="setDoExceptionHandling(Boolean):DeIdentification.this.type"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/deid/DeIdentification.html#setDoExceptionHandling(value:Boolean):HandleExceptionParams.this.type" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">setDoExceptionHandling</span><span class="params">(<span name="value">value: <span class="extype" name="scala.Boolean">Boolean</span></span>)</span><span class="result">: <a href="" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification">DeIdentification</a>.this.type</span>
+      </span>
+      
+      <p class="shortcomment cmt">If true, exceptions are handled.</p><div class="fullcomment"><div class="comment cmt"><p>If true, exceptions are handled.
+If exception causing data is passed to the model, a error annotation is emitted which has the exception message. Processing continues with the next one.
+This comes with a performance penalty.
+</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a></dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.deid.DeIdentification#setEntityCasingModesPath" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="setParam">
       <a id="setEntityCasingModesPath(path:String):DeIdentification.this.type"></a><a id="setEntityCasingModesPath(String):DeIdentification.this.type"></a>
       <span class="permalink">
@@ -3940,6 +3978,8 @@ Default: obfuscate
         <div id="inheritedMembers">
         <div class="parent" name="com.johnsnowlabs.license.CheckLicense">
               <h3>Inherited from <span class="extype" name="com.johnsnowlabs.license.CheckLicense">CheckLicense</span></h3>
+            </div><div class="parent" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">
+              <h3>Inherited from <a href="../params/HandleExceptionParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.params.HandleExceptionParams">HandleExceptionParams</a></h3>
             </div><div class="parent" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams">
               <h3>Inherited from <a href="DeidApproachParams.html" class="extype" name="com.johnsnowlabs.nlp.annotators.deid.DeidApproachParams">DeidApproachParams</a></h3>
             </div><div class="parent" name="com.johnsnowlabs.nlp.annotators.deid.DeIdentificationParams">

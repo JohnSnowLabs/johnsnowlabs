@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/annotator/er/entity_ruler_internal/index';</script>
     <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
@@ -271,6 +274,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertionDL/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertionDL</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -475,7 +479,8 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EntityRulerInternalApproach</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach" title="Permalink to this definition">#</a></dt>
-<dd><p>Fits an Annotator to match exact strings or regex patterns provided in a
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorApproachInternal</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.HasStorage</span></code></p>
+<p>Fits an Annotator to match exact strings or regex patterns provided in a
 file against a Document and assigns them an named entity. The definitions
 can contain any number of named entities.</p>
 <p>There are multiple ways and formats to set the extraction resource. It is
@@ -528,12 +533,10 @@ set. In this case, the delimiter might be set by using
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>patternsResource</strong></dt><dd><p>Resource in JSON or CSV format to map entities to patterns</p>
-</dd>
-<dt><strong>useStorage</strong></dt><dd><p>Whether to use RocksDB storage to serialize patterns</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>patternsResource</strong> – Resource in JSON or CSV format to map entities to patterns</p></li>
+<li><p><strong>useStorage</strong> – Whether to use RocksDB storage to serialize patterns</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -583,13 +586,48 @@ set. In this case, the delimiter might be set by using
 </pre></div>
 </div>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">EntityRulerInternalApproach</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.name" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.alphabet">
+<span class="sig-name descname"><span class="pre">alphabet</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.alphabet" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.caseSensitive">
+<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.caseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.enableInMemoryStorage">
+<span class="sig-name descname"><span class="pre">enableInMemoryStorage</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.enableInMemoryStorage" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.includeStorage">
+<span class="sig-name descname"><span class="pre">includeStorage</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.includeStorage" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.inputAnnotatorTypes">
 <span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">EntityRulerInternalApproach</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -603,13 +641,13 @@ set. In this case, the delimiter might be set by using
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.patternsResource">
-<span class="sig-name descname"><span class="pre">patternsResource</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.patternsResource" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.outputCol" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.useStorage">
-<span class="sig-name descname"><span class="pre">useStorage</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.useStorage" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.patternsResource">
+<span class="sig-name descname"><span class="pre">patternsResource</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.patternsResource" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -618,9 +656,390 @@ set. In this case, the delimiter might be set by using
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.alphabet">
-<span class="sig-name descname"><span class="pre">alphabet</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.alphabet" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.storagePath">
+<span class="sig-name descname"><span class="pre">storagePath</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.storagePath" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.storageRef">
+<span class="sig-name descname"><span class="pre">storageRef</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.storageRef" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.useStorage">
+<span class="sig-name descname"><span class="pre">useStorage</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.useStorage" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a model to the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset.</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em> or </em><em>list</em><em> or </em><em>tuple</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params. If a list/tuple of
+param maps is given, this calls fit on each param map and returns a list of
+models.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>fitted model(s)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code> or a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.fitMultiple">
+<span class="sig-name descname"><span class="pre">fitMultiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paramMaps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.fitMultiple" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a model to the input dataset for each param map in <cite>paramMaps</cite>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset.</p></li>
+<li><p><strong>paramMaps</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Sequence</span></code>) – A Sequence of param maps.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A thread safe iterable which contains one model for each param map. Each
+call to <cite>next(modelIterator)</cite> will return <cite>(index, model)</cite> where model was fit
+using <cite>paramMaps[index]</cite>. <cite>index</cite> values may not be sequential.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_FitMultipleIterator</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getCaseSensitive">
+<span class="sig-name descname"><span class="pre">getCaseSensitive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getEnableInMemoryStorage">
+<span class="sig-name descname"><span class="pre">getEnableInMemoryStorage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getEnableInMemoryStorage" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getIncludeStorage">
+<span class="sig-name descname"><span class="pre">getIncludeStorage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getIncludeStorage" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether to include indexed storage in trained model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to include indexed storage in trained model</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getStoragePath">
+<span class="sig-name descname"><span class="pre">getStoragePath</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getStoragePath" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets path to file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>path to file</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getStorageRef">
+<span class="sig-name descname"><span class="pre">getStorageRef</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getStorageRef" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets unique reference name for identification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unique reference name for identification</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setAlphabetResource">
+<span class="sig-name descname"><span class="pre">setAlphabetResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setAlphabetResource" title="Permalink to this definition">#</a></dt>
+<dd><p>Alphabet Resource (a simple plain text with all language characters)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path to the resource</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setCaseSensitive">
+<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setEnableInMemoryStorage">
+<span class="sig-name descname"><span class="pre">setEnableInMemoryStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setEnableInMemoryStorage" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to load whole indexed storage in memory (in-memory lookup)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to load whole indexed storage in memory (in-memory lookup)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setIncludeStorage">
+<span class="sig-name descname"><span class="pre">setIncludeStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setIncludeStorage" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to include indexed storage in trained model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to include indexed storage in trained model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setPatternsResource">
@@ -628,28 +1047,11 @@ set. In this case, the delimiter might be set by using
 <dd><p>Sets Resource in JSON or CSV format to map entities to patterns.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Path to the resource</p>
-</dd>
-<dt><strong>read_as</strong><span class="classifier">str, optional</span></dt><dd><p>How to interpret the resource, by default ReadAs.TEXT</p>
-</dd>
-<dt><strong>options</strong><span class="classifier">dict, optional</span></dt><dd><p>Options for parsing the resource, by default {“format”: “JSON”}</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setUseStorage">
-<span class="sig-name descname"><span class="pre">setUseStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setUseStorage" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets whether to use RocksDB storage to serialize patterns.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">bool</span></dt><dd><p>Whether to use RocksDB storage to serialize patterns.</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path to the resource</p></li>
+<li><p><strong>read_as</strong> (<em>str</em><em>, </em><em>optional</em>) – How to interpret the resource, by default ReadAs.TEXT</p></li>
+<li><p><strong>options</strong> (<em>dict</em><em>, </em><em>optional</em>) – Options for parsing the resource, by default {“format”: “JSON”}</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -660,26 +1062,53 @@ set. In this case, the delimiter might be set by using
 <dd><p>Sets whether to find match at sentence level.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">bool</span></dt><dd><p>True: sentence level. False: token level</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – True: sentence level. False: token level</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setAlphabetResource">
-<span class="sig-name descname"><span class="pre">setAlphabetResource</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setAlphabetResource" title="Permalink to this definition">#</a></dt>
-<dd><p>Alphabet Resource (a simple plain text with all language characters)</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setStoragePath">
+<span class="sig-name descname"><span class="pre">setStoragePath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">read_as</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setStoragePath" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets path to file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>path</strong><span class="classifier">str</span></dt><dd><p>Path to the resource</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path to file</p></li>
+<li><p><strong>read_as</strong> (<em>str</em>) – How to interpret the file</p></li>
+</ul>
 </dd>
 </dl>
+<p class="rubric">Notes</p>
+<p>See <code class="xref py py-class docutils literal notranslate"><span class="pre">ReadAs</span></code> for reading options.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setStorageRef">
+<span class="sig-name descname"><span class="pre">setStorageRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setStorageRef" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets unique reference name for identification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Unique reference name for identification</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setUseStorage">
+<span class="sig-name descname"><span class="pre">setUseStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setUseStorage" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to use RocksDB storage to serialize patterns.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to use RocksDB storage to serialize patterns.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -687,7 +1116,8 @@ set. In this case, the delimiter might be set by using
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">EntityRulerInternalModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.er.EntityRulerInternalModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Instantiated model of the EntityRulerInternalApproach.
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.HasStorageModel</span></code></p>
+<p>Instantiated model of the EntityRulerInternalApproach.
 For usage and examples see the documentation of the main class.</p>
 <table class="table">
 <thead>
@@ -702,8 +1132,8 @@ For usage and examples see the documentation of the main class.</p>
 </tbody>
 </table>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">EntityRulerInternalModel</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.name" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.caseSensitive">
+<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.caseSensitive" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -712,8 +1142,38 @@ For usage and examples see the documentation of the main class.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.enableInMemoryStorage">
+<span class="sig-name descname"><span class="pre">enableInMemoryStorage</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.enableInMemoryStorage" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.includeStorage">
+<span class="sig-name descname"><span class="pre">includeStorage</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.includeStorage" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.inputAnnotatorTypes">
 <span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">EntityRulerInternalModel</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -726,15 +1186,385 @@ For usage and examples see the documentation of the main class.</p>
 <span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.storageRef">
+<span class="sig-name descname"><span class="pre">storageRef</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.storageRef" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getCaseSensitive">
+<span class="sig-name descname"><span class="pre">getCaseSensitive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getEnableInMemoryStorage">
+<span class="sig-name descname"><span class="pre">getEnableInMemoryStorage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getEnableInMemoryStorage" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getIncludeStorage">
+<span class="sig-name descname"><span class="pre">getIncludeStorage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getIncludeStorage" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether to include indexed storage in trained model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to include indexed storage in trained model</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getStorageRef">
+<span class="sig-name descname"><span class="pre">getStorageRef</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getStorageRef" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets unique reference name for identification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unique reference name for identification</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.loadStorage">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_ref</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.loadStorage" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.loadStorages">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadStorages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_ref</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">databases</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.loadStorages" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.pretrained">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.pretrained" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.loadStorage">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">storage_ref</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.loadStorage" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.saveStorage">
+<span class="sig-name descname"><span class="pre">saveStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.saveStorage" title="Permalink to this definition">#</a></dt>
+<dd><p>Saves the current model to storage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path for saving the model.</p></li>
+<li><p><strong>spark</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.SparkSession</span></code></a>) – The current SparkSession</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setCaseSensitive">
+<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setEnableInMemoryStorage">
+<span class="sig-name descname"><span class="pre">setEnableInMemoryStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setEnableInMemoryStorage" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to load whole indexed storage in memory (in-memory lookup)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to load whole indexed storage in memory (in-memory lookup)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setIncludeStorage">
+<span class="sig-name descname"><span class="pre">setIncludeStorage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setIncludeStorage" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to include indexed storage in trained model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to include indexed storage in trained model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setStorageRef">
+<span class="sig-name descname"><span class="pre">setStorageRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setStorageRef" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets unique reference name for identification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Unique reference name for identification</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -774,28 +1604,123 @@ For usage and examples see the documentation of the main class.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.name"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.alphabet"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.alphabet</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.caseSensitive"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.caseSensitive</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.enableInMemoryStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.enableInMemoryStorage</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getter_attrs"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.includeStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.includeStorage</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.inputCols"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.name"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.name</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.optionalInputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.outputCol"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.outputCol</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.patternsResource"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.patternsResource</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.useStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.useStorage</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.sentenceMatch"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.sentenceMatch</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.alphabet"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.alphabet</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setPatternsResource"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setPatternsResource()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setUseStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setUseStorage()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setSentenceMatch"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setSentenceMatch()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.storagePath"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.storagePath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.storageRef"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.storageRef</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.useStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.useStorage</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.clear"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.copy"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.explainParam"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.explainParams"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.extractParamMap"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.fit"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.fit()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.fitMultiple"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.fitMultiple()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getCaseSensitive"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.getCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getEnableInMemoryStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.getEnableInMemoryStorage()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getIncludeStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.getIncludeStorage()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getInputCols"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getOrDefault"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getOutputCol"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getParam"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getParamValue"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getStoragePath"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.getStoragePath()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.getStorageRef"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.getStorageRef()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.hasDefault"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.hasParam"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.isDefined"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.isSet"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.load"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.read"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.save"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.set"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setAlphabetResource"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setAlphabetResource()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setEnableInMemoryStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setEnableInMemoryStorage()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setIncludeStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setIncludeStorage()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setInputCols"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setOutputCol"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setParamValue"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setPatternsResource"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setPatternsResource()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setSentenceMatch"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setSentenceMatch()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setStoragePath"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setStoragePath()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setStorageRef"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setStorageRef()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.setUseStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.setUseStorage()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalApproach.write"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalApproach.write()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.name"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.caseSensitive"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.caseSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.database"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.database</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.enableInMemoryStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.enableInMemoryStorage</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.includeStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.includeStorage</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.inputCols"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.name"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.name</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.optionalInputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.outputAnnotatorType</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.pretrained"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.outputCol"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.storageRef"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.storageRef</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.clear"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.copy"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.explainParam"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.explainParams"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.extractParamMap"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getCaseSensitive"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.getCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getEnableInMemoryStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.getEnableInMemoryStorage()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getIncludeStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.getIncludeStorage()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getInputCols"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getOrDefault"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getOutputCol"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getParam"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getParamValue"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.getStorageRef"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.getStorageRef()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.hasDefault"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.hasParam"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.isDefined"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.isSet"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.load"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.load()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.loadStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.loadStorage()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.loadStorages"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.loadStorages()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.pretrained"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.read"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.save"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.saveStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.saveStorage()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.set"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.setCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setEnableInMemoryStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.setEnableInMemoryStorage()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setIncludeStorage"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.setIncludeStorage()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setOutputCol"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setParamValue"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setParams"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.setStorageRef"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.setStorageRef()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.transform"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.er.entity_ruler_internal.EntityRulerInternalModel.write"><code class="docutils literal notranslate"><span class="pre">EntityRulerInternalModel.write()</span></code></a></li>
 </ul>
 </li>
 </ul>

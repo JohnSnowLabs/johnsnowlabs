@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../../static/doctools.js"></script>
     <script src="../../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/finance/token_classification/ner/finance_ner/index';</script>
     <link rel="shortcut icon" href="../../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../../genindex.html" />
@@ -390,7 +393,8 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FinanceNerApproach</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach" title="Permalink to this definition">#</a></dt>
-<dd><p>Trains generic NER model based on Neural Networks.</p>
+<dd><p>Bases: <a class="reference internal" href="../../../../annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach" title="sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.medical_ner.MedicalNerApproach</span></code></a></p>
+<p>Trains generic NER model based on Neural Networks.</p>
 <p>The architecture of the neural network is a Char CNNs - BiLSTM - CRF that
 achieves state-of-the-art in most datasets.</p>
 <p>For instantiated/pretrained models, see <code class="xref py py-class docutils literal notranslate"><span class="pre">NerDLModel</span></code>.</p>
@@ -418,34 +422,29 @@ for BERT based embeddings).</p></li>
 </tr>
 </tbody>
 </table>
-<dl class="field-list">
+<p class="rubric">Notes</p>
+<p>Both DocumentAssembler and SentenceDetector annotators are
+annotators that output the <code class="docutils literal notranslate"><span class="pre">DOCUMENT</span></code> annotation type. Thus, any of them
+can be used as the first annotators in a pipeline.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl>
-<dt><strong>labelColumn</strong></dt><dd><p>Column with label per each token</p>
-</dd>
-<dt><strong>entities</strong></dt><dd><p>Entities to recognize</p>
-</dd>
-<dt><strong>minEpochs</strong></dt><dd><p>Minimum number of epochs to train, by default 0</p>
-</dd>
-<dt><strong>maxEpochs</strong></dt><dd><p>Maximum number of epochs to train, by default 50</p>
-</dd>
-<dt><strong>verbose</strong></dt><dd><p>Level of verbosity during training, by default 2</p>
-</dd>
-<dt><strong>randomSeed</strong></dt><dd><p>Random seed</p>
-</dd>
-<dt><strong>lr</strong></dt><dd><p>Learning Rate, by default 0.001</p>
-</dd>
-<dt><strong>po</strong></dt><dd><p>Learning rate decay coefficient. Real Learning Rage = lr / (1 + po *
-epoch), by default 0.005</p>
-</dd>
-<dt><strong>batchSize</strong></dt><dd><p>Batch size, by default 8</p>
-</dd>
-<dt><strong>dropout</strong></dt><dd><p>Dropout coefficient, by default 0.5.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labelColumn</strong> – Column with label per each token</p></li>
+<li><p><strong>entities</strong> – Entities to recognize</p></li>
+<li><p><strong>minEpochs</strong> – Minimum number of epochs to train, by default 0</p></li>
+<li><p><strong>maxEpochs</strong> – Maximum number of epochs to train, by default 50</p></li>
+<li><p><strong>verbose</strong> – Level of verbosity during training, by default 2</p></li>
+<li><p><strong>randomSeed</strong> – Random seed</p></li>
+<li><p><strong>lr</strong> – Learning Rate, by default 0.001</p></li>
+<li><p><strong>po</strong> – Learning rate decay coefficient. Real Learning Rage = lr / (1 + po *
+epoch), by default 0.005</p></li>
+<li><p><strong>batchSize</strong> – Batch size, by default 8</p></li>
+<li><p><strong>dropout</strong> – <p>Dropout coefficient, by default 0.5.</p>
 <p>The coefficient of the dropout layer. The value should be between 0.0 and 1.0.
 Internally, it is used by Tensorflow as: <cite>rate = 1.0 - dropout</cite> when adding
 a dropout layer on top of the recurrent layers.</p>
-</dd>
-<dt><strong>graphFolder</strong></dt><dd><p>Folder path that contains external graph files. The path can be a local file path,
+</p></li>
+<li><p><strong>graphFolder</strong> – <p>Folder path that contains external graph files. The path can be a local file path,
 a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p>
 <p>When instantiating the Tensorflow model, uses this folder to search for the
 adequate Tensorflow graph. The search is done usaing the name of
@@ -458,52 +457,45 @@ training data.
 the training data.</p>
 <p>The returned file will be the first one that satisfies all the conditions.</p>
 <p>If the name of the file is ill-formed, errors will occur during training.</p>
-</dd>
-<dt><strong>graphFile</strong></dt><dd><p>Path that contains the external graph file.</p>
+</p></li>
+<li><p><strong>graphFile</strong> – <p>Path that contains the external graph file.</p>
 <p>When specified, the provided file will be used, and no graph search will happen.
 The path can be a local file path,
 a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p>
-</dd>
-<dt><strong>pretrainedModelPath</strong></dt><dd><p>Path to an already trained FinanceNerModel, which is used as a starting point
+</p></li>
+<li><p><strong>pretrainedModelPath</strong> – Path to an already trained FinanceNerModel, which is used as a starting point
 for training the new model. The path can be a local file path,
-a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p>
-</dd>
-<dt><strong>configProtoBytes</strong></dt><dd><p>ConfigProto from tensorflow, serialized into byte array.</p>
-</dd>
-<dt><strong>useContrib</strong></dt><dd><p>whether to use contrib LSTM Cells. Not compatible with Windows. Might
-slightly improve accuracy. By default True.</p>
-</dd>
-<dt><strong>validationSplit</strong></dt><dd><p>Choose the proportion of training dataset to be validated against the
+a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
+<li><p><strong>configProtoBytes</strong> – ConfigProto from tensorflow, serialized into byte array.</p></li>
+<li><p><strong>useContrib</strong> – whether to use contrib LSTM Cells. Not compatible with Windows. Might
+slightly improve accuracy. By default True.</p></li>
+<li><p><strong>validationSplit</strong> – <p>Choose the proportion of training dataset to be validated against the
 model on each Epoch. The value should be between 0.0 and 1.0 and by
 default it is 0.0 and off.</p>
 <p>The validation dataset is randomly extracted from the training dataset
 before training starts. If the value is 0.0, then no validation will be
 performed (hold out data).</p>
-</dd>
-<dt><strong>evaluationLogExtended</strong></dt><dd><p>Whether logs for validation to be extended, by default False.</p>
-</dd>
-<dt><strong>testDataset</strong></dt><dd><p>Path to test dataset in parquet format. If set, the dataset will be used
-to calculate statistic on it during training.</p>
-</dd>
-<dt><strong>includeConfidence</strong></dt><dd><p>Whether to include confidence scores in annotation metadata, by default
+</p></li>
+<li><p><strong>evaluationLogExtended</strong> – Whether logs for validation to be extended, by default False.</p></li>
+<li><p><strong>testDataset</strong> – Path to test dataset in parquet format. If set, the dataset will be used
+to calculate statistic on it during training.</p></li>
+<li><p><strong>includeConfidence</strong> – <p>Whether to include confidence scores in annotation metadata, by default
 False.</p>
 <p>Setting this parameter to True will add the confidence score to
 the metadata of the NAMED_ENTITY annotation. In addition, if
 <cite>includeAllConfidenceScores</cite> is set to True, then the confidence scores
 of all the tags will be added to the metadata, otherwise only for the
 predicted tag (the one with maximum score).</p>
-</dd>
-<dt><strong>includeAllConfidenceScores</strong></dt><dd><p>Whether to include confidence scores for all tags in annotation metadata or just
+</p></li>
+<li><p><strong>includeAllConfidenceScores</strong> – <p>Whether to include confidence scores for all tags in annotation metadata or just
 the score of the predicted tag, by default False.</p>
 <p>Needs the <cite>includeConfidence</cite> parameter to be set to True.</p>
-</dd>
-<dt><strong>enableOutputLogs</strong></dt><dd><p>Whether to use stdout in addition to Spark logs, by default False.</p>
-</dd>
-<dt><strong>outputLogsPath</strong></dt><dd><p>Folder path to save training logs. If no path is specified, the logs won’t
+</p></li>
+<li><p><strong>enableOutputLogs</strong> – Whether to use stdout in addition to Spark logs, by default False.</p></li>
+<li><p><strong>outputLogsPath</strong> – Folder path to save training logs. If no path is specified, the logs won’t
 be stored in disk. The path can be a local file path,
-a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p>
-</dd>
-<dt><strong>enableMemoryOptimizer</strong></dt><dd><p>Whether to optimize for large datasets or not. Enabling this option can
+a distributed file path (HDFS, DBFS), or a cloud storage (S3).</p></li>
+<li><p><strong>enableMemoryOptimizer</strong> – <p>Whether to optimize for large datasets or not. Enabling this option can
 slow down training.</p>
 <p>In practice, if set to True the training will iterate over the spark Data Frame
 and retrieve the batches from the Data Frame iterator. This can be slower
@@ -511,21 +503,20 @@ than the default option as it has to collect the batches on evey bach for every
 epoch, but it can be useful if the dataset is too large to fit in memory.</p>
 <p>If the training data can fit to memory, then it is recommended to set this
 option to False (default value).</p>
-</dd>
-<dt><strong>tagsMapping</strong></dt><dd><p>A map specifying how old tags are mapped to new ones as a list of comma-separated
+</p></li>
+<li><p><strong>tagsMapping</strong> – A map specifying how old tags are mapped to new ones as a list of comma-separated
 entities, where the first entity is the old tag and the second entity is
 the new tag. For example, if the map is set to [“OLDTAG,NEWTAG”, “B-PER,B-VIP”,
 “I-PER, I-VIP”], then all occurrences of “OLDTAG” will be mapped to “NEWTAG”,
 all occurrences of “B-PER” will be mapped to “B-VIP”, and all occurrences of
 “I-PER” will be mapped to “I-VIP”. It only works if setOverrideExistingTags
-is set to False.</p>
-</dd>
-<dt><strong>earlyStoppingPatience</strong></dt><dd><p>Number of epochs to wait before early stopping if no improvement, by default 5.</p>
+is set to False.</p></li>
+<li><p><strong>earlyStoppingPatience</strong> – <p>Number of epochs to wait before early stopping if no improvement, by default 5.</p>
 <p>Given the earlyStoppingCriterion, if the performance does not improve for the given
 number of epochs, then the training will stop. If the value is 0, then early stopping
 will occurs as soon as the criterion is met (no patience).</p>
-</dd>
-<dt><strong>earlyStoppingCriterion</strong></dt><dd><p>If set, this param specifies the criterion to stop training if performance is not improving.
+</p></li>
+<li><p><strong>earlyStoppingCriterion</strong> – <p>If set, this param specifies the criterion to stop training if performance is not improving.
 Default value is 0 which is means that early stopping is not used.</p>
 <p>The criterion is set to F1-score if the validationSplit is greater than 0.0
 (F1-socre on validation set) or testDataset is defined (F1-score on test set),
@@ -544,22 +535,17 @@ However, if there is not validation or test set defined, then a criterion of 2.0
 means that if the loss difference between the last epoch and the current one
 is less than 2.0, then training should stop.</p>
 <p>See also <cite>earlyStoppingPatience</cite>.</p>
-</dd>
-<dt><strong>logPrefix</strong></dt><dd><p>A prefix that will be appended to every log, default value is empty.</p>
-</dd>
-<dt><strong>useBestModel</strong></dt><dd><p>Whether to restore and use the model from the epoch that has achieved the
+</p></li>
+<li><p><strong>logPrefix</strong> – A prefix that will be appended to every log, default value is empty.</p></li>
+<li><p><strong>useBestModel</strong> – <p>Whether to restore and use the model from the epoch that has achieved the
 best performance at the end of the training. By default False (keep the
 model from teh last trained epoch).</p>
 <p>The best model depends on the earlyStoppingCriterion, which can be F1-score
 on test/validation dataset or the value of loss.</p>
+</p></li>
+</ul>
 </dd>
 </dl>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>Both DocumentAssembler and SentenceDetector annotators are
-annotators that output the <code class="docutils literal notranslate"><span class="pre">DOCUMENT</span></code> annotation type. Thus, any of them
-can be used as the first annotators in a pipeline.</p>
 <p class="rubric">Examples</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">sparknlp</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sparknlp.base</span> <span class="kn">import</span> <span class="o">*</span>
@@ -607,12 +593,900 @@ can be used as the first annotators in a pipeline.</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pipelineModel</span> <span class="o">=</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainingData</span><span class="p">)</span>
 </pre></div>
 </div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.batchSize">
+<span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.batchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.configProtoBytes">
+<span class="sig-name descname"><span class="pre">configProtoBytes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.configProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.dropout">
+<span class="sig-name descname"><span class="pre">dropout</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.dropout" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.earlyStoppingCriterion">
+<span class="sig-name descname"><span class="pre">earlyStoppingCriterion</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.earlyStoppingCriterion" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.earlyStoppingPatience">
+<span class="sig-name descname"><span class="pre">earlyStoppingPatience</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.earlyStoppingPatience" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.enableMemoryOptimizer">
+<span class="sig-name descname"><span class="pre">enableMemoryOptimizer</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.enableMemoryOptimizer" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.enableOutputLogs">
+<span class="sig-name descname"><span class="pre">enableOutputLogs</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.enableOutputLogs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.engine">
+<span class="sig-name descname"><span class="pre">engine</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.engine" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.entities">
+<span class="sig-name descname"><span class="pre">entities</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.entities" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.evaluationLogExtended">
+<span class="sig-name descname"><span class="pre">evaluationLogExtended</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.evaluationLogExtended" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.graphFile">
+<span class="sig-name descname"><span class="pre">graphFile</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.graphFile" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.graphFolder">
+<span class="sig-name descname"><span class="pre">graphFolder</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.graphFolder" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.includeAllConfidenceScores">
+<span class="sig-name descname"><span class="pre">includeAllConfidenceScores</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.includeAllConfidenceScores" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.includeConfidence">
+<span class="sig-name descname"><span class="pre">includeConfidence</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.includeConfidence" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.labelColumn">
+<span class="sig-name descname"><span class="pre">labelColumn</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.labelColumn" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.logPrefix">
+<span class="sig-name descname"><span class="pre">logPrefix</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.logPrefix" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.lr">
+<span class="sig-name descname"><span class="pre">lr</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.lr" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.maxEpochs">
+<span class="sig-name descname"><span class="pre">maxEpochs</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.maxEpochs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.minEpochs">
+<span class="sig-name descname"><span class="pre">minEpochs</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.minEpochs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.outputLogsPath">
+<span class="sig-name descname"><span class="pre">outputLogsPath</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.outputLogsPath" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.overrideExistingTags">
+<span class="sig-name descname"><span class="pre">overrideExistingTags</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.overrideExistingTags" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.po">
+<span class="sig-name descname"><span class="pre">po</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.po" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.pretrainedModelPath">
+<span class="sig-name descname"><span class="pre">pretrainedModelPath</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.pretrainedModelPath" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.randomSeed">
+<span class="sig-name descname"><span class="pre">randomSeed</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.randomSeed" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.randomValidationSplitPerEpoch">
+<span class="sig-name descname"><span class="pre">randomValidationSplitPerEpoch</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.randomValidationSplitPerEpoch" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.sentenceTokenIndex">
+<span class="sig-name descname"><span class="pre">sentenceTokenIndex</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.sentenceTokenIndex" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.testDataset">
+<span class="sig-name descname"><span class="pre">testDataset</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.testDataset" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.useBestModel">
+<span class="sig-name descname"><span class="pre">useBestModel</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.useBestModel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.useContrib">
+<span class="sig-name descname"><span class="pre">useContrib</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.useContrib" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.validationSplit">
+<span class="sig-name descname"><span class="pre">validationSplit</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.validationSplit" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.verbose" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a model to the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset.</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em> or </em><em>list</em><em> or </em><em>tuple</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params. If a list/tuple of
+param maps is given, this calls fit on each param map and returns a list of
+models.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>fitted model(s)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code> or a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.fitMultiple">
+<span class="sig-name descname"><span class="pre">fitMultiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paramMaps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.fitMultiple" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a model to the input dataset for each param map in <cite>paramMaps</cite>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset.</p></li>
+<li><p><strong>paramMaps</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Sequence</span></code>) – A Sequence of param maps.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A thread safe iterable which contains one model for each param map. Each
+call to <cite>next(modelIterator)</cite> will return <cite>(index, model)</cite> where model was fit
+using <cite>paramMaps[index]</cite>. <cite>index</cite> values may not be sequential.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_FitMultipleIterator</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getEngine">
+<span class="sig-name descname"><span class="pre">getEngine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getEngine" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Deep Learning engine used for this model”</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getLabelColumn">
+<span class="sig-name descname"><span class="pre">getLabelColumn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getLabelColumn" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets column for label per each token.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Column with label per each token</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setBatchSize">
+<span class="sig-name descname"><span class="pre">setBatchSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets batch size, by default 64.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Batch size</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setConfigProtoBytes">
+<span class="sig-name descname"><span class="pre">setConfigProtoBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setConfigProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets configProto from tensorflow, serialized into byte array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – ConfigProto from tensorflow, serialized into byte array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setDoExceptionHandling">
+<span class="sig-name descname"><span class="pre">setDoExceptionHandling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setDoExceptionHandling" title="Permalink to this definition">#</a></dt>
+<dd><p>If true, tries to compute batch-wise as usual.
+If within a batch an exception occurs, the batch will be processed row-wise and for any exception occurring during row-processing a Error Annotation is emitted.
+This means only the bad rows are lost instead of entire batch.
+This comes with a performance penalty.</p>
+<blockquote>
+<div><p>value : bool</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setDropout">
+<span class="sig-name descname"><span class="pre">setDropout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setDropout" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets dropout coefficient, by default 0.5.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – Dropout coefficient</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEarlyStoppingCriterion">
+<span class="sig-name descname"><span class="pre">setEarlyStoppingCriterion</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">criterion</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEarlyStoppingCriterion" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets early stopping criterion. A value 0 means no early stopping.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>criterion</strong> (<em>float</em>) – Early stopping criterion.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEarlyStoppingPatience">
+<span class="sig-name descname"><span class="pre">setEarlyStoppingPatience</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">patience</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEarlyStoppingPatience" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the number of epochs with no performance improvement before training is terminated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>patience</strong> (<em>int</em>) – Early stopping patience.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEnableMemoryOptimizer">
+<span class="sig-name descname"><span class="pre">setEnableMemoryOptimizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEnableMemoryOptimizer" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets Whether to optimize for large datasets or not, by default False.
+Enabling this option can slow down training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to optimize for large datasets</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEnableOutputLogs">
+<span class="sig-name descname"><span class="pre">setEnableOutputLogs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEnableOutputLogs" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to use stdout in addition to Spark logs, by default
+False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to use stdout in addition to Spark logs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEntities">
+<span class="sig-name descname"><span class="pre">setEntities</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tags</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEntities" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets entities to recognize.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>tags</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of entities</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEvaluationLogExtended">
+<span class="sig-name descname"><span class="pre">setEvaluationLogExtended</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEvaluationLogExtended" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether logs for validation to be extended, by default False.
+Displays time and evaluation of each label.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>bool</em>) – Whether logs for validation to be extended</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setGraphFile">
+<span class="sig-name descname"><span class="pre">setGraphFile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setGraphFile" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets path that contains the external graph file. When specified, the provided file will be used, and no graph search will happen.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Path that contains the external graph file. When specified, the provided file will be used, and no graph search will happen.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setGraphFolder">
+<span class="sig-name descname"><span class="pre">setGraphFolder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setGraphFolder" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets folder path that contain external graph files.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Folder path that contain external graph files</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setIncludeAllConfidenceScores">
+<span class="sig-name descname"><span class="pre">setIncludeAllConfidenceScores</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setIncludeAllConfidenceScores" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to include all confidence scores in annotation metadata
+or just the score of the predicted tag, by default False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to include all confidence scores in annotation metadata or
+just the score of the predicted tag</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setIncludeConfidence">
+<span class="sig-name descname"><span class="pre">setIncludeConfidence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setIncludeConfidence" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to include confidence scores in annotation metadata, by
+default False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to include the confidence value in the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLabelColumn">
+<span class="sig-name descname"><span class="pre">setLabelColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLabelColumn" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets name of column for data labels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Column for data labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLogPrefix">
+<span class="sig-name descname"><span class="pre">setLogPrefix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLogPrefix" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the prefix of the training logs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – A prefix that will be appended to every log, default value is empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLr">
+<span class="sig-name descname"><span class="pre">setLr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLr" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets Learning Rate, by default 0.001.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – Learning Rate</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setMaxEpochs">
+<span class="sig-name descname"><span class="pre">setMaxEpochs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setMaxEpochs" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets maximum number of epochs to train.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>epochs</strong> (<em>int</em>) – Maximum number of epochs to train</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setMinEpochs">
+<span class="sig-name descname"><span class="pre">setMinEpochs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epochs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setMinEpochs" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets minimum number of epochs to train.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>epochs</strong> (<em>int</em>) – Minimum number of epochs to train</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOutputLogsPath">
+<span class="sig-name descname"><span class="pre">setOutputLogsPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOutputLogsPath" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets folder path to save training logs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>p</strong> (<em>str</em>) – Folder path to save training logs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOverrideExistingTags">
+<span class="sig-name descname"><span class="pre">setOverrideExistingTags</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOverrideExistingTags" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to override already learned tags when using a pretrained model to initialize the new model. Default is ‘true’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to override already learned tags when using a pretrained model to initialize the new model. Default is ‘true’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setPo">
+<span class="sig-name descname"><span class="pre">setPo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setPo" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets Learning rate decay coefficient, by default 0.005.</p>
+<p>Real Learning Rage is lr / (1 + po * epoch).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – Learning rate decay coefficient</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setPretrainedModelPath">
+<span class="sig-name descname"><span class="pre">setPretrainedModelPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setPretrainedModelPath" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets location of pretrained model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Path to an already trained MedicalNerModel, which is used as a starting point for training the new model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setRandomSeed">
+<span class="sig-name descname"><span class="pre">setRandomSeed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setRandomSeed" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets random seed for shuffling.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seed</strong> (<em>int</em>) – Random seed for shuffling</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setRandomValidationSplitPerEpoch">
+<span class="sig-name descname"><span class="pre">setRandomValidationSplitPerEpoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setRandomValidationSplitPerEpoch" title="Permalink to this definition">#</a></dt>
+<dd><p>Do a random validation split after each epoch rather than at the beginning of training only.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to do a random validation split after each epoch.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setSentenceTokenIndex">
+<span class="sig-name descname"><span class="pre">setSentenceTokenIndex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setSentenceTokenIndex" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Sets whether to include the token index for each sentence in annotation metadata,</dt><dd><p>by default False. If the value is True, the process might be slowed down.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to include the token index for each sentence in annotation metadata, by default False.
+If the value is True, the process might be slowed down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setTagsMapping">
+<span class="sig-name descname"><span class="pre">setTagsMapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setTagsMapping" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a map specifying how old tags are mapped to new ones.</p>
+<p>The format of the map should be a list of comma-separated entities, where the
+first entity is the old tag and the second entity is the new tag. For example,
+if the map is set to [“OLDTAG,NEWTAG”, “B-PER,B-VIP”, “I-PER, I-VIP”], then all
+occurrences of “OLDTAG” will be mapped to “NEWTAG”, all occurrences of “B-PER” will
+be mapped to “B-VIP”, and all occurrences of “I-PER” will be mapped to “I-VIP”.</p>
+<p>It only works if setOverrideExistingTags is set to False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of comma-separated entities.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setTestDataset">
+<span class="sig-name descname"><span class="pre">setTestDataset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">read_as</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">ReadAs.SPARK</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{'format':</span> <span class="pre">'parquet'}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setTestDataset" title="Permalink to this definition">#</a></dt>
+<dd><p>Path to a parquet file of a test dataset. If set, it is used to calculate
+statistics on it during training.</p>
+<p>The parquet file must be a dataframe that has the same columns as the model that
+is being trained. For example, if the model needs as input <cite>DOCUMENT</cite>, <cite>TOKEN</cite>,
+<cite>WORD_EMBEDDINGS</cite> (Features) and <cite>NAMED_ENTITY</cite> (label) then these columns also
+need to be present while saving the dataframe. The pre-processing steps for the
+training dataframe should also be applied to the test dataframe.</p>
+<p>An example on how to create such a parquet file could be:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># assuming preProcessingPipeline</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">)</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">randomSplit</span><span class="p">([</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">preProcessingPipeline</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">write</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">mode</span><span class="p">(</span><span class="s2">&quot;overwrite&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">.</span><span class="n">parquet</span><span class="p">(</span><span class="s2">&quot;test_data&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">annotator</span><span class="o">.</span><span class="n">setTestDataset</span><span class="p">(</span><span class="s2">&quot;test_data&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – Path to test dataset</p></li>
+<li><p><strong>read_as</strong> (<em>str</em><em>, </em><em>optional</em>) – How to read the resource, by default ReadAs.SPARK</p></li>
+<li><p><strong>options</strong> (<em>dict</em><em>, </em><em>optional</em>) – Options for reading the resource, by default {“format”: “csv”}</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setUseBestModel">
+<span class="sig-name descname"><span class="pre">setUseBestModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setUseBestModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to return the model that has achieved the best metrics across epochs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to return the model that has achieved the best metrics across epochs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setUseContrib">
+<span class="sig-name descname"><span class="pre">setUseContrib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setUseContrib" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to use contrib LSTM Cells. Not compatible with Windows.
+Might slightly improve accuracy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to use contrib LSTM Cells</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – Windows not supported to use contrib</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setValidationSplit">
+<span class="sig-name descname"><span class="pre">setValidationSplit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setValidationSplit" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the proportion of training dataset to be validated against the
+model on each Epoch, by default it is 0.0 and off. The value should be
+between 0.0 and 1.0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>float</em>) – Proportion of training dataset to be validated</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setVerbose">
+<span class="sig-name descname"><span class="pre">setVerbose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setVerbose" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets level of verbosity during training</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Level of verbosity</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FinanceNerModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.finance.token_classification.ner.FinanceNerModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel" title="Permalink to this definition">#</a></dt>
-<dd><p>This Named Entity recognition annotator is a generic NER model based on
+<dd><p>Bases: <a class="reference internal" href="../../../../annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel" title="sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel</span></code></a></p>
+<p>This Named Entity recognition annotator is a generic NER model based on
 Neural Networks.</p>
 <p>Neural Network architecture is Char CNNs - BiLSTM - CRF that achieves
 state-of-the-art in most datasets.</p>
@@ -647,24 +1521,17 @@ depending on which they were trained on. For example, the default model
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>batchSize</strong></dt><dd><p>Size of every batch, by default 8</p>
-</dd>
-<dt><strong>configProtoBytes</strong></dt><dd><p>ConfigProto from tensorflow, serialized into byte array.</p>
-</dd>
-<dt><strong>includeConfidence</strong></dt><dd><p>Whether to include confidence scores in annotation metadata, by default
-False</p>
-</dd>
-<dt><strong>includeAllConfidenceScores</strong></dt><dd><p>Whether to include all confidence scores in annotation metadata or just
-the score of the predicted tag, by default False</p>
-</dd>
-<dt><strong>inferenceBatchSize</strong></dt><dd><p>Number of sentences to process in a single batch during inference</p>
-</dd>
-<dt><strong>classes</strong></dt><dd><p>Tags used to trained this NerDLModel</p>
-</dd>
-<dt><strong>labelCasing:</strong></dt><dd><p>Setting all labels of the NER models upper/lower case. values upper|lower</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batchSize</strong> – Size of every batch, by default 8</p></li>
+<li><p><strong>configProtoBytes</strong> – ConfigProto from tensorflow, serialized into byte array.</p></li>
+<li><p><strong>includeConfidence</strong> – Whether to include confidence scores in annotation metadata, by default
+False</p></li>
+<li><p><strong>includeAllConfidenceScores</strong> – Whether to include all confidence scores in annotation metadata or just
+the score of the predicted tag, by default False</p></li>
+<li><p><strong>inferenceBatchSize</strong> – Number of sentences to process in a single batch during inference</p></li>
+<li><p><strong>classes</strong> – Tags used to trained this NerDLModel</p></li>
+<li><p><strong>labelCasing</strong> – Setting all labels of the NER models upper/lower case. values upper|lower</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -704,20 +1571,304 @@ the score of the predicted tag, by default False</p>
 </pre></div>
 </div>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.batchSize">
+<span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.batchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.classes">
+<span class="sig-name descname"><span class="pre">classes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.classes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.configProtoBytes">
+<span class="sig-name descname"><span class="pre">configProtoBytes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.configProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.doExceptionHandling">
+<span class="sig-name descname"><span class="pre">doExceptionHandling</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.doExceptionHandling" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.includeAllConfidenceScores">
+<span class="sig-name descname"><span class="pre">includeAllConfidenceScores</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.includeAllConfidenceScores" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.includeConfidence">
+<span class="sig-name descname"><span class="pre">includeConfidence</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.includeConfidence" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.inferenceBatchSize">
+<span class="sig-name descname"><span class="pre">inferenceBatchSize</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.inferenceBatchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.labelCasing">
+<span class="sig-name descname"><span class="pre">labelCasing</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.labelCasing" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">FinanceNerModel</span></em><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.sentenceTokenIndex">
+<span class="sig-name descname"><span class="pre">sentenceTokenIndex</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.sentenceTokenIndex" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.storageRef">
+<span class="sig-name descname"><span class="pre">storageRef</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.storageRef" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.trainingClassDistribution">
+<span class="sig-name descname"><span class="pre">trainingClassDistribution</span></span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.trainingClassDistribution" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getBatchSize">
+<span class="sig-name descname"><span class="pre">getBatchSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current batch size</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getClasses">
+<span class="sig-name descname"><span class="pre">getClasses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getClasses" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the list of entities which are recognized</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getStorageRef">
+<span class="sig-name descname"><span class="pre">getStorageRef</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getStorageRef" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets unique reference name for identification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Unique reference name for identification</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getTrainingClassDistribution">
+<span class="sig-name descname"><span class="pre">getTrainingClassDistribution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getTrainingClassDistribution" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the class counts for each of the classes during training.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.loadSavedModel">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ner_model_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.loadSavedModel" title="Permalink to this definition">#</a></dt>
 <dd><p>Load a pre-trained MedicalNerModel.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>ner_model_path (str): Path to the pre-trained model.
-folder (str): Folder where the Tensorflow model is located.
-spark_session (SparkSession): SparkSession.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ner_model_path</strong> (<em>str</em>) – Path to the pre-trained model.</p></li>
+<li><p><strong>folder</strong> (<em>str</em>) – Folder where the Tensorflow model is located.</p></li>
+<li><p><strong>spark_session</strong> (<em>SparkSession</em>) – SparkSession.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>MedicalNerModel: A pre-trained MedicalNerModel.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pre-trained MedicalNerModel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../../../annotator/ner/medical_ner/index.html#sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel" title="sparknlp_jsl.annotator.ner.medical_ner.MedicalNerModel">MedicalNerModel</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -726,16 +1877,206 @@ spark_session (SparkSession): SparkSession.</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.pretrained">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finner_sec_10k_summary'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finance/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Download a pre-trained FinanceNerModel.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model, by default “finner_sec_10k_summary”
-lang (str): Language of the pre-trained model, by default “en”
-remote_loc (str): Remote location of the pre-trained model. If None, use the
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the pre-trained model, by default “finner_sec_10k_summary”.</p></li>
+<li><p><strong>lang</strong> (<em>str</em>) – Language of the pre-trained model, by default “en”.</p></li>
+<li><p><strong>remote_loc</strong> (<em>str</em>) – Remote location of the pre-trained model. If None, use the
 open-source location. Other values are “clinical/models”,
-“finance/models”, or “legal/models”.</p>
+“finance/models”, or “legal/models”.</p></li>
+</ul>
 </dd>
-<dt>Returns:</dt><dd><p>FinanceNerModel: A pre-trained FinanceNerModel.</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A pre-trained FinanceNerModel.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel" title="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel">FinanceNerModel</a></p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setBatchSize">
+<span class="sig-name descname"><span class="pre">setBatchSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>int</em>) – Batch size</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setConfigProtoBytes">
+<span class="sig-name descname"><span class="pre">setConfigProtoBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setConfigProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets configProto from tensorflow, serialized into byte array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>conf</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – ConfigProto from tensorflow, serialized into byte array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setIncludeConfidence">
+<span class="sig-name descname"><span class="pre">setIncludeConfidence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setIncludeConfidence" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to include confidence scores in annotation metadata, by
+default False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to include the confidence value in the output.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setInferenceBatchSize">
+<span class="sig-name descname"><span class="pre">setInferenceBatchSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setInferenceBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets number of sentences to process in a single batch during inference</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – number of sentences to process in a single batch during inference</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setLabelCasing">
+<span class="sig-name descname"><span class="pre">setLabelCasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setLabelCasing" title="Permalink to this definition">#</a></dt>
+<dd><p>Setting all labels of the NER models upper/lower case. values upper|lower</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Setting all labels of the NER models upper/lower case. values upper|lower</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setSentenceTokenIndex">
+<span class="sig-name descname"><span class="pre">setSentenceTokenIndex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setSentenceTokenIndex" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to include the token index for each sentence in annotation metadata,
+by default False. If the value is True, the process might be slowed down.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to include the token index for each sentence in annotation metadata, by default False.
+If the value is True, the process might be slowed down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setStorageRef">
+<span class="sig-name descname"><span class="pre">setStorageRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setStorageRef" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets unique reference name for identification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Unique reference name for identification</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -775,11 +2116,172 @@ open-source location. Other values are “clinical/models”,
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.batchSize"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.configProtoBytes"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.configProtoBytes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.dropout"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.dropout</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.earlyStoppingCriterion"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.earlyStoppingCriterion</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.earlyStoppingPatience"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.earlyStoppingPatience</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.enableMemoryOptimizer"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.enableMemoryOptimizer</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.enableOutputLogs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.enableOutputLogs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.engine"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.engine</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.entities"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.entities</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.evaluationLogExtended"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.evaluationLogExtended</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getter_attrs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.graphFile"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.graphFile</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.graphFolder"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.graphFolder</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.includeAllConfidenceScores"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.includeAllConfidenceScores</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.includeConfidence"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.includeConfidence</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.inputCols"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.labelColumn"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.labelColumn</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.logPrefix"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.logPrefix</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.lr"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.lr</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.maxEpochs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.maxEpochs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.minEpochs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.minEpochs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.outputCol"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.outputLogsPath"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.outputLogsPath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.overrideExistingTags"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.overrideExistingTags</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.po"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.po</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.pretrainedModelPath"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.pretrainedModelPath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.randomSeed"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.randomSeed</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.randomValidationSplitPerEpoch"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.randomValidationSplitPerEpoch</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.sentenceTokenIndex"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.sentenceTokenIndex</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.testDataset"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.testDataset</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.useBestModel"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.useBestModel</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.useContrib"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.useContrib</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.validationSplit"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.validationSplit</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.verbose"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.verbose</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.clear"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.copy"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.explainParam"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.explainParams"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.extractParamMap"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.fit"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.fit()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.fitMultiple"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.fitMultiple()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getEngine"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.getEngine()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getLabelColumn"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.getLabelColumn()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getOrDefault"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getParam"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.getParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.hasDefault"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.hasParam"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.isDefined"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.isSet"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.load"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.read"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.save"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.set"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setBatchSize"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setConfigProtoBytes()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setDoExceptionHandling"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setDoExceptionHandling()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setDropout"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setDropout()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEarlyStoppingCriterion"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setEarlyStoppingCriterion()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEarlyStoppingPatience"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setEarlyStoppingPatience()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEnableMemoryOptimizer"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setEnableMemoryOptimizer()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEnableOutputLogs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setEnableOutputLogs()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEntities"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setEntities()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setEvaluationLogExtended"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setEvaluationLogExtended()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setGraphFile"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setGraphFile()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setGraphFolder"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setGraphFolder()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setIncludeAllConfidenceScores"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setIncludeAllConfidenceScores()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setIncludeConfidence"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setIncludeConfidence()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLabelColumn"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setLabelColumn()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLogPrefix"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setLogPrefix()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setLr"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setLr()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setMaxEpochs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setMaxEpochs()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setMinEpochs"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setMinEpochs()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOutputLogsPath"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setOutputLogsPath()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setOverrideExistingTags"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setOverrideExistingTags()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setPo"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setPo()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setPretrainedModelPath"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setPretrainedModelPath()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setRandomSeed"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setRandomSeed()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setRandomValidationSplitPerEpoch"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setRandomValidationSplitPerEpoch()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setSentenceTokenIndex"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setSentenceTokenIndex()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setTagsMapping"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setTagsMapping()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setTestDataset"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setTestDataset()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setUseBestModel"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setUseBestModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setUseContrib"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setUseContrib()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setValidationSplit"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setValidationSplit()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.setVerbose"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.setVerbose()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerApproach.write"><code class="docutils literal notranslate"><span class="pre">FinanceNerApproach.write()</span></code></a></li>
+</ul>
+</li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.batchSize"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.classes"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.classes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.configProtoBytes"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.configProtoBytes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.doExceptionHandling"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.doExceptionHandling</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.includeAllConfidenceScores"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.includeAllConfidenceScores</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.includeConfidence"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.includeConfidence</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.inferenceBatchSize"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.inferenceBatchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.inputCols"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.labelCasing"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.labelCasing</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.lazyAnnotator</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.name"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.outputCol"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.sentenceTokenIndex"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.sentenceTokenIndex</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.storageRef"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.storageRef</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.trainingClassDistribution"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.trainingClassDistribution</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.clear"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.copy"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.explainParam"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.explainParams"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.extractParamMap"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getBatchSize"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.getBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getClasses"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.getClasses()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getOrDefault"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getParam"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getStorageRef"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.getStorageRef()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.getTrainingClassDistribution"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.getTrainingClassDistribution()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.hasDefault"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.hasParam"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.isDefined"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.isSet"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.load"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.load()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.loadSavedModel"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.loadSavedModel()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.pretrained"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.read"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.save"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.set"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setBatchSize"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setConfigProtoBytes()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setIncludeConfidence"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setIncludeConfidence()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setInferenceBatchSize"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setInferenceBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setLabelCasing"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setLabelCasing()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setParams"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setSentenceTokenIndex"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setSentenceTokenIndex()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.setStorageRef"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.setStorageRef()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.transform"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.token_classification.ner.finance_ner.FinanceNerModel.write"><code class="docutils literal notranslate"><span class="pre">FinanceNerModel.write()</span></code></a></li>
 </ul>
 </li>
 </ul>

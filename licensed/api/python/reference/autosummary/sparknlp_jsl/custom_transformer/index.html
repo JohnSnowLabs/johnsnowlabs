@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
+    <script src="../../../../static/clipboard.min.js"></script>
+    <script src="../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/custom_transformer/index';</script>
     <link rel="shortcut icon" href="../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -327,22 +330,200 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">CustomTransformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer" title="Permalink to this definition">#</a></dt>
-<dd><p>Helper class to create custom transformers.</p>
+<dd><p>Bases: <a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.Transformer.html#pyspark.ml.Transformer" title="(in PySpark vmaster)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyspark.ml.Transformer</span></code></a>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pyspark.ml.param.shared.HasInputCol</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">pyspark.ml.param.shared.HasOutputCol</span></code>, <a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.util.DefaultParamsReadable.html#pyspark.ml.util.DefaultParamsReadable" title="(in PySpark vmaster)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyspark.ml.util.DefaultParamsReadable</span></code></a>, <a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.util.DefaultParamsWritable.html#pyspark.ml.util.DefaultParamsWritable" title="(in PySpark vmaster)"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pyspark.ml.util.DefaultParamsWritable</span></code></a></p>
+<p>Helper class to create custom transformers.</p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.f">
 <span class="sig-name descname"><span class="pre">f</span></span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.f" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.inputCol">
+<span class="sig-name descname"><span class="pre">inputCol</span></span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.inputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. The default implementation creates a
+shallow copy using <code class="xref py py-func docutils literal notranslate"><span class="pre">copy.copy()</span></code>, and then copies the
+embedded and extra parameters over and returns the copy.
+Subclasses should override this method if the default approach
+is not sufficient.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Params</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.getInputCol">
+<span class="sig-name descname"><span class="pre">getInputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.getInputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of inputCol or its default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of outputCol or its default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a DefaultParamsReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.setInputCol">
 <span class="sig-name descname"><span class="pre">setInputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.setInputCol" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the value of <code class="xref py py-attr docutils literal notranslate"><span class="pre">inputCol</span></code>.</p>
+<dd><p>Sets the value of <a class="reference internal" href="#sparknlp_jsl.custom_transformer.CustomTransformer.inputCol" title="sparknlp_jsl.custom_transformer.CustomTransformer.inputCol"><code class="xref py py-attr docutils literal notranslate"><span class="pre">inputCol</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.setOutputCol">
 <span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.setOutputCol" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets the value of <code class="xref py py-attr docutils literal notranslate"><span class="pre">outputCol</span></code>.</p>
+<dd><p>Sets the value of <a class="reference internal" href="#sparknlp_jsl.custom_transformer.CustomTransformer.outputCol" title="sparknlp_jsl.custom_transformer.CustomTransformer.outputCol"><code class="xref py py-attr docutils literal notranslate"><span class="pre">outputCol</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.custom_transformer.CustomTransformer.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.custom_transformer.CustomTransformer.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns a DefaultParamsWriter instance for this class.</p>
 </dd></dl>
 
 </dd></dl>
@@ -384,8 +565,29 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer"><code class="docutils literal notranslate"><span class="pre">CustomTransformer</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.f"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.f</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.inputCol"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.inputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.outputCol"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.clear"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.copy"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.explainParam"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.explainParams"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.extractParamMap"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.getInputCol"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.getInputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.getOrDefault"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.getOutputCol"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.getParam"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.hasDefault"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.hasParam"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.isDefined"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.isSet"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.load"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.read"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.save"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.set"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.setInputCol"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.setInputCol()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.setOutputCol"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.transform"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.custom_transformer.CustomTransformer.write"><code class="docutils literal notranslate"><span class="pre">CustomTransformer.write()</span></code></a></li>
 </ul>
 </li>
 </ul>

@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/utils/ocr_utils/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -342,10 +345,10 @@ document.write(`
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ocr_utils.get_handwritten_regions" title="sparknlp_jsl.utils.ocr_utils.get_handwritten_regions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_handwritten_regions</span></code></a>(result)</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ocr_utils.draw_boxes_on_image_handwritten_region" title="sparknlp_jsl.utils.ocr_utils.draw_boxes_on_image_handwritten_region"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_boxes_on_image_handwritten_region</span></code></a>(image_data, ...)</p></td>
 <td><p></p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ocr_utils.draw_boxes_on_image_handwritten_region" title="sparknlp_jsl.utils.ocr_utils.draw_boxes_on_image_handwritten_region"><code class="xref py py-obj docutils literal notranslate"><span class="pre">draw_boxes_on_image_handwritten_region</span></code></a>(image_data, ...)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ocr_utils.get_handwritten_regions" title="sparknlp_jsl.utils.ocr_utils.get_handwritten_regions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_handwritten_regions</span></code></a>(result)</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -355,16 +358,16 @@ document.write(`
 <h3>Attributes<a class="headerlink" href="#attributes" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ocr_utils.label2color" title="sparknlp_jsl.utils.ocr_utils.label2color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label2color</span></code></a></p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ocr_utils.label2rgb" title="sparknlp_jsl.utils.ocr_utils.label2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label2rgb</span></code></a></p></td>
-<td><p></p></td>
-</tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ocr_utils.colors" title="sparknlp_jsl.utils.ocr_utils.colors"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colors</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ocr_utils.colors_rgb" title="sparknlp_jsl.utils.ocr_utils.colors_rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">colors_rgb</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ocr_utils.label2color" title="sparknlp_jsl.utils.ocr_utils.label2color"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label2color</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ocr_utils.label2rgb" title="sparknlp_jsl.utils.ocr_utils.label2rgb"><code class="xref py py-obj docutils literal notranslate"><span class="pre">label2rgb</span></code></a></p></td>
 <td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.utils.ocr_utils.pretrained_model" title="sparknlp_jsl.utils.ocr_utils.pretrained_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pretrained_model</span></code></a></p></td>
@@ -372,14 +375,14 @@ document.write(`
 </tr>
 </tbody>
 </table>
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.ocr_utils.label2color">
-<span class="sig-name descname"><span class="pre">label2color</span></span><a class="headerlink" href="#sparknlp_jsl.utils.ocr_utils.label2color" title="Permalink to this definition">#</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.ocr_utils.draw_boxes_on_image_handwritten_region">
+<span class="sig-name descname"><span class="pre">draw_boxes_on_image_handwritten_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outline_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outline_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_band</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.ocr_utils.draw_boxes_on_image_handwritten_region" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
-<dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.ocr_utils.label2rgb">
-<span class="sig-name descname"><span class="pre">label2rgb</span></span><a class="headerlink" href="#sparknlp_jsl.utils.ocr_utils.label2rgb" title="Permalink to this definition">#</a></dt>
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.ocr_utils.get_handwritten_regions">
+<span class="sig-name descname"><span class="pre">get_handwritten_regions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.ocr_utils.get_handwritten_regions" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -393,18 +396,18 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.ocr_utils.label2color">
+<span class="sig-name descname"><span class="pre">label2color</span></span><a class="headerlink" href="#sparknlp_jsl.utils.ocr_utils.label2color" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.utils.ocr_utils.label2rgb">
+<span class="sig-name descname"><span class="pre">label2rgb</span></span><a class="headerlink" href="#sparknlp_jsl.utils.ocr_utils.label2rgb" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.ocr_utils.pretrained_model">
 <span class="sig-name descname"><span class="pre">pretrained_model</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">('image_handwritten_detector_gsa0803',</span> <span class="pre">'en',</span> <span class="pre">'public/ocr/models')</span></em><a class="headerlink" href="#sparknlp_jsl.utils.ocr_utils.pretrained_model" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.ocr_utils.get_handwritten_regions">
-<span class="sig-name descname"><span class="pre">get_handwritten_regions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">result</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.ocr_utils.get_handwritten_regions" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.utils.ocr_utils.draw_boxes_on_image_handwritten_region">
-<span class="sig-name descname"><span class="pre">draw_boxes_on_image_handwritten_region</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outline_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">outline_color</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">text_band</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.ocr_utils.draw_boxes_on_image_handwritten_region" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -443,13 +446,13 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#attributes">Attributes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ocr_utils.label2color"><code class="docutils literal notranslate"><span class="pre">label2color</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ocr_utils.label2rgb"><code class="docutils literal notranslate"><span class="pre">label2rgb</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ocr_utils.draw_boxes_on_image_handwritten_region"><code class="docutils literal notranslate"><span class="pre">draw_boxes_on_image_handwritten_region()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ocr_utils.get_handwritten_regions"><code class="docutils literal notranslate"><span class="pre">get_handwritten_regions()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ocr_utils.colors"><code class="docutils literal notranslate"><span class="pre">colors</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ocr_utils.colors_rgb"><code class="docutils literal notranslate"><span class="pre">colors_rgb</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ocr_utils.label2color"><code class="docutils literal notranslate"><span class="pre">label2color</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ocr_utils.label2rgb"><code class="docutils literal notranslate"><span class="pre">label2rgb</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ocr_utils.pretrained_model"><code class="docutils literal notranslate"><span class="pre">pretrained_model</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ocr_utils.get_handwritten_regions"><code class="docutils literal notranslate"><span class="pre">get_handwritten_regions()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.utils.ocr_utils.draw_boxes_on_image_handwritten_region"><code class="docutils literal notranslate"><span class="pre">draw_boxes_on_image_handwritten_region()</span></code></a></li>
 </ul>
 </li>
 </ul>

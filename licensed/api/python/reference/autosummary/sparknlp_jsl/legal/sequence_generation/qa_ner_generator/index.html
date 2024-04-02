@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/legal/sequence_generation/qa_ner_generator/index';</script>
     <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
@@ -387,7 +390,8 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LegalNerQuestionGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.legal.sequence_generation.LegalNerQuestionGenerator'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator" title="Permalink to this definition">#</a></dt>
-<dd><p>The chunk mapper Approach load a JsonDictionary that have the relations to be mapped in the ChunkMapperModel</p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.NerQuestionGenerator</span></code></p>
+<p>The chunk mapper Approach load a JsonDictionary that have the relations to be mapped in the ChunkMapperModel</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Input Annotation types</p></th>
@@ -402,14 +406,11 @@ document.write(`
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>dictionary</strong></dt><dd><p>Dictionary path where is the json that contains the mappinmgs columns</p>
-</dd>
-<dt><strong>rel</strong></dt><dd><p>Relation that we going to use to map the chunk</p>
-</dd>
-<dt><strong>lowerCase</strong></dt><dd><p>Parameter to decide if we going to use the chunk mapper or not</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dictionary</strong> – Dictionary path where is the json that contains the mappinmgs columns</p></li>
+<li><p><strong>rel</strong> – Relation that we going to use to map the chunk</p></li>
+<li><p><strong>lowerCase</strong> – Parameter to decide if we going to use the chunk mapper or not</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -445,6 +446,386 @@ document.write(`
 <span class="go">+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
 </pre></div>
 </div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.entities1">
+<span class="sig-name descname"><span class="pre">entities1</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.entities1" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.entities2">
+<span class="sig-name descname"><span class="pre">entities2</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.entities2" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">NerQuestionGenerator</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.questionMark">
+<span class="sig-name descname"><span class="pre">questionMark</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.questionMark" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.questionPronoun">
+<span class="sig-name descname"><span class="pre">questionPronoun</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.questionPronoun" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.strategyType">
+<span class="sig-name descname"><span class="pre">strategyType</span></span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.strategyType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setEntities1">
+<span class="sig-name descname"><span class="pre">setEntities1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setEntities1" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the list of entity types that appear first in the question.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entities</strong> (<em>list</em>) – List of entity types.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setEntities2">
+<span class="sig-name descname"><span class="pre">setEntities2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">entities</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setEntities2" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the list of entity types that appear second in the question.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>entities</strong> (<em>list</em>) – List of entity types.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setQuestionMark">
+<span class="sig-name descname"><span class="pre">setQuestionMark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setQuestionMark" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether we want to add a question mark at the end of the question.</p>
+<p>Defaults to False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – True if we want to add a question mark at the end of the question, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setQuestionPronoun">
+<span class="sig-name descname"><span class="pre">setQuestionPronoun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pronoun</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setQuestionPronoun" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the pronoun to be used in the question.</p>
+<p>E.g., ‘When’, ‘Where’, ‘Why’, ‘How’, ‘Who’, ‘What’.
+Defaults to empty string (“”).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>pronoun</strong> (<em>str</em>) – The pronoun to be used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setStrategyType">
+<span class="sig-name descname"><span class="pre">setStrategyType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setStrategyType" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the strategy to be used in the proccess. Either <cite>Paired</cite> or <cite>Combined</cite>.</p>
+<p>If set to <cite>Paired</cite> (default), applies a one-vs-one strategy. In this case, the number of chunks
+in Entity 1 must be aligned with the number of chunks in Entity 2. E.g., if Entity 1 has
+3 chunks and Entity 2 has 3 chunks, the first chunk of Entity 1 will be grouped with first chunk of Entity 2,
+the second with second, third with third, etc.</p>
+<p>If set to <cite>Combined</cite>, applies a one-vs-all strategy. In this case, the number of chunks
+in Entity 1 don’t need to be the same as the number of chunks in Entity 2, and each chunk
+in Entity 1 will be grouped with all chunks in Entity 2.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – The strategy to be used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>
@@ -482,7 +863,56 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.entities1"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.entities1</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.entities2"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.entities2</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getter_attrs"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.inputCols"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.name"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.outputCol"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.questionMark"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.questionMark</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.questionPronoun"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.questionPronoun</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.strategyType"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.strategyType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.clear"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.copy"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.explainParam"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.explainParams"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.extractParamMap"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getInputCols"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getOrDefault"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getOutputCol"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getParam"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.getParamValue"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.hasDefault"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.hasParam"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.isDefined"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.isSet"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.load"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.read"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.save"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.set"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setEntities1"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.setEntities1()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setEntities2"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.setEntities2()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setInputCols"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setOutputCol"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setParamValue"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setParams"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setQuestionMark"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.setQuestionMark()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setQuestionPronoun"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.setQuestionPronoun()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.setStrategyType"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.setStrategyType()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.transform"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.legal.sequence_generation.qa_ner_generator.LegalNerQuestionGenerator.write"><code class="docutils literal notranslate"><span class="pre">LegalNerQuestionGenerator.write()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
