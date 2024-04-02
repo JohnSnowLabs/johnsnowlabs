@@ -57,7 +57,7 @@ data:
         - text: <span>Free</span>Spark NLP
         - text: <span>Free</span>NLP Display
         - text: <span>Free</span>NLP Test
-        - text: <span>Free</span>NLP Lab
+        - text: Generative AI Lab
         - text: Healthcare NLP
         - text: Finance NLP
         - text: Legal NLP
