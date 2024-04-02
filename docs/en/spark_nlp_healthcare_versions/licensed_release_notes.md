@@ -145,9 +145,9 @@ result = meddra_llt_pipeline.fullAnnotate('This is an 82-year-old male with a hi
 *Result*:
 
 
-+--------------------------------------+-------------------------+---------------+-------------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------+
+
 |chunk                                 |label                    |meddra_llt_code|resolution                           |icd10_mappings                                                                     |meddra_pt_mappings                             |
-+--------------------------------------+-------------------------+---------------+-------------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------+
+|--------------------------------------|-------------------------|---------------|-------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------|
 |tobacco                               |Smoking                  |10067622       |tobacco interaction                  |NONE                                                                               |10067622:Tobacco interaction                   |
 |hypertension                          |Hypertension             |10020772       |hypertension                         |O10:Pre-existing hypertension complicating pregnancy, childbirth and the puerperium|10020772:Hypertension                          |
 |chronic renal insufficiency           |Kidney_Disease           |10050441       |chronic renal insufficiency          |NONE                                                                               |10064848:Chronic kidney disease                |
@@ -163,7 +163,7 @@ result = meddra_llt_pipeline.fullAnnotate('This is an 82-year-old male with a hi
 |a colon cancer                        |PROBLEM                  |10009944       |colon cancer                         |NONE                                                                               |10009944:Colon cancer                          |
 |mucositis                             |ADE                      |10028127       |mucositis                            |NONE                                                                               |10028116:Mucosal inflammation                  |
 |dermatitis                            |ADE                      |10012431       |dermatitis                           |L27:Dermatitis due to substances taken internally                                  |10012431:Dermatitis                            |
-+--------------------------------------+-------------------------+---------------+-------------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------+
+
 
 **Important note**: To utilize these MedDRA models/pipelines, possession of a valid MedDRA license is requisite. When you want to use these models and pipelines, you will receive a warning like below.  If you possess a valid MedDRA license and wish to use this model, kindly contact us at support@johnsnowlabs.com.
 
