@@ -75,9 +75,9 @@ data:
           description: Deliver safe and effective models with an open-source library by generating & running over 50 test types on the most popular NLP libraries & tasks.
           img: /assets/images/home/nlp_test.jpg
 
-        - text: NLP Lab
+        - text: Generative AI Lab
           link: https://www.johnsnowlabs.com/nlp-lab/
-          description: Free End-to-End No Code NLP Platform for teams that want to collaborately annotate documents and train models.
+          description: The Most Widely Used Human-in-the-loop Tool by Enterprise AI Teams
           img: /assets/images/home/nlp_lab.png
 
         - text: Healthcare NLP
