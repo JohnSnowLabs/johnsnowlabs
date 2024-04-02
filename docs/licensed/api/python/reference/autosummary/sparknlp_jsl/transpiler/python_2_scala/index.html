@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/transpiler/python_2_scala/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -343,38 +346,38 @@ Spark-related libraries, and executing various code transformations.</p>
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h3>
 <table class="autosummary longtable table autosummary">
 <tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.convert_python_dict_to_scala_script" title="sparknlp_jsl.transpiler.python_2_scala.convert_python_dict_to_scala_script"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_python_dict_to_scala_script</span></code></a>(py_code)</p></td>
-<td><p>Converts a Python dictionary in the provided code to Scala Map.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.anonymize_script" title="sparknlp_jsl.transpiler.python_2_scala.anonymize_script"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anonymize_script</span></code></a>(script)</p></td>
+<td><p>Anonymize string values in the script.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.convert_class_name" title="sparknlp_jsl.transpiler.python_2_scala.convert_class_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_class_name</span></code></a>(py_code, classes)</p></td>
-<td><p>Converts Python class names to Scala class names based on the provided mapping.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.find_key_values" title="sparknlp_jsl.transpiler.python_2_scala.find_key_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_key_values</span></code></a>(text, dictionary)</p></td>
-<td><p>Finds key-value pairs from the given text that match a provided dictionary.</p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.get_import_section" title="sparknlp_jsl.transpiler.python_2_scala.get_import_section"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_import_section</span></code></a>(py_code, data_dict)</p></td>
-<td><p>Generates the import section for Spark-related libraries based on the provided Python code.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.break_line_after_backslash" title="sparknlp_jsl.transpiler.python_2_scala.break_line_after_backslash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">break_line_after_backslash</span></code></a>(script)</p></td>
+<td><p></p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.convert" title="sparknlp_jsl.transpiler.python_2_scala.convert"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert</span></code></a>(py_code)</p></td>
 <td><p>Convert Python code to Scala code.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.anonymize_script" title="sparknlp_jsl.transpiler.python_2_scala.anonymize_script"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anonymize_script</span></code></a>(script)</p></td>
-<td><p>Anonymize string values in the script.</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.convert_class_name" title="sparknlp_jsl.transpiler.python_2_scala.convert_class_name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_class_name</span></code></a>(py_code, classes)</p></td>
+<td><p>Converts Python class names to Scala class names based on the provided mapping.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.restore_sensitive_values" title="sparknlp_jsl.transpiler.python_2_scala.restore_sensitive_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restore_sensitive_values</span></code></a>(anonymized_script, ...)</p></td>
-<td><p>Restore sensitive values in the anonymized script.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.convert_python_dict_to_scala_script" title="sparknlp_jsl.transpiler.python_2_scala.convert_python_dict_to_scala_script"><code class="xref py py-obj docutils literal notranslate"><span class="pre">convert_python_dict_to_scala_script</span></code></a>(py_code)</p></td>
+<td><p>Converts a Python dictionary in the provided code to Scala Map.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.find_key_values" title="sparknlp_jsl.transpiler.python_2_scala.find_key_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_key_values</span></code></a>(text, dictionary)</p></td>
+<td><p>Finds key-value pairs from the given text that match a provided dictionary.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.get_data_dict" title="sparknlp_jsl.transpiler.python_2_scala.get_data_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_data_dict</span></code></a>()</p></td>
+<td><p>Load data dictionary from external sources.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.get_import_section" title="sparknlp_jsl.transpiler.python_2_scala.get_import_section"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_import_section</span></code></a>(py_code, data_dict)</p></td>
+<td><p>Generates the import section for Spark-related libraries based on the provided Python code.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.prepare_scala_code" title="sparknlp_jsl.transpiler.python_2_scala.prepare_scala_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_scala_code</span></code></a>(is_spark_initialized, ...)</p></td>
+<td><p>Prepare Scala code for build by adding import sections and, if specified, Spark session configuration.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.remove_blank_lines" title="sparknlp_jsl.transpiler.python_2_scala.remove_blank_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">remove_blank_lines</span></code></a>(script)</p></td>
 <td><p>remove blank lines.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.break_line_after_backslash" title="sparknlp_jsl.transpiler.python_2_scala.break_line_after_backslash"><code class="xref py py-obj docutils literal notranslate"><span class="pre">break_line_after_backslash</span></code></a>(script)</p></td>
-<td><p></p></td>
-</tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.prepare_scala_code" title="sparknlp_jsl.transpiler.python_2_scala.prepare_scala_code"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_scala_code</span></code></a>(is_spark_initialized, ...)</p></td>
-<td><p>Prepare Scala code for build by adding import sections and, if specified, Spark session configuration.</p></td>
-</tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.get_data_dict" title="sparknlp_jsl.transpiler.python_2_scala.get_data_dict"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_data_dict</span></code></a>()</p></td>
-<td><p>Load data dictionary from external sources.</p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.restore_sensitive_values" title="sparknlp_jsl.transpiler.python_2_scala.restore_sensitive_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">restore_sensitive_values</span></code></a>(anonymized_script, ...)</p></td>
+<td><p>Restore sensitive values in the anonymized script.</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#sparknlp_jsl.transpiler.python_2_scala.run_transpiler" title="sparknlp_jsl.transpiler.python_2_scala.run_transpiler"><code class="xref py py-obj docutils literal notranslate"><span class="pre">run_transpiler</span></code></a>(py_code)</p></td>
 <td><p>Execute all conversion and processing steps.</p></td>
@@ -382,87 +385,20 @@ Spark-related libraries, and executing various code transformations.</p>
 </tbody>
 </table>
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.convert_python_dict_to_scala_script">
-<span class="sig-name descname"><span class="pre">convert_python_dict_to_scala_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">py_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.convert_python_dict_to_scala_script" title="Permalink to this definition">#</a></dt>
-<dd><p>Converts a Python dictionary in the provided code to Scala Map.</p>
-<p>Parameters:
-- py_code (str): Python code containing a dictionary.</p>
-<p>Returns:
-- str: Scala code with the dictionary converted to a Map.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.convert_class_name">
-<span class="sig-name descname"><span class="pre">convert_class_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">py_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.convert_class_name" title="Permalink to this definition">#</a></dt>
-<dd><p>Converts Python class names to Scala class names based on the provided mapping.</p>
-<p>Parameters:
-- py_code (str): Python code containing class names.
-- classes (dict): Mapping of Python class names to Scala class names.</p>
-<p>Returns:
-- str: Scala code with class names converted.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.find_key_values">
-<span class="sig-name descname"><span class="pre">find_key_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.find_key_values" title="Permalink to this definition">#</a></dt>
-<dd><p>Finds key-value pairs from the given text that match a provided dictionary.</p>
-<p>Parameters:
-- text (str): Text to search for key-value pairs.
-- dictionary (dict): Dictionary to match key-value pairs.</p>
-<p>Returns:
-- dict: Key-value pairs found in the text.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.get_import_section">
-<span class="sig-name descname"><span class="pre">get_import_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">py_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.get_import_section" title="Permalink to this definition">#</a></dt>
-<dd><p>Generates the import section for Spark-related libraries based on the provided Python code.</p>
-<p>Parameters:
-- py_code (str): Python code.
-- data_dict (dict): Dictionary containing data for import sections.</p>
-<p>Returns:
-- str: Import section for Spark-related libraries.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.convert">
-<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">py_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.convert" title="Permalink to this definition">#</a></dt>
-<dd><p>Convert Python code to Scala code.</p>
-<p>Parameters:
-- py_code (str): The input Python code.</p>
-<p>Returns:
-- str: The converted Scala code.</p>
-</dd></dl>
-
-<dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.anonymize_script">
 <span class="sig-name descname"><span class="pre">anonymize_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.anonymize_script" title="Permalink to this definition">#</a></dt>
 <dd><p>Anonymize string values in the script.</p>
-<p>Parameters:
-- script (str): The input script.</p>
-<p>Returns:
-- Tuple[str, List[str]]: Anonymized script and a list of sensitive values.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.restore_sensitive_values">
-<span class="sig-name descname"><span class="pre">restore_sensitive_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">anonymized_script</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitive_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.restore_sensitive_values" title="Permalink to this definition">#</a></dt>
-<dd><p>Restore sensitive values in the anonymized script.</p>
-<p>Parameters:
-- anonymized_script (str): The anonymized script.
-- sensitive_values (List[str]): List of sensitive values.</p>
-<p>Returns:
-- str: The script with restored sensitive values.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.remove_blank_lines">
-<span class="sig-name descname"><span class="pre">remove_blank_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.remove_blank_lines" title="Permalink to this definition">#</a></dt>
-<dd><p>remove blank lines.</p>
-<p>Parameters:
-- script (str): The input script.</p>
-<p>Returns:
-- str: The cleaned script.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – The input script.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Anonymized script and a list of sensitive values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Tuple[str, List[str]]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -471,18 +407,77 @@ Spark-related libraries, and executing various code transformations.</p>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.prepare_scala_code">
-<span class="sig-name descname"><span class="pre">prepare_scala_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_spark_initialized</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">import_section</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scala_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.prepare_scala_code" title="Permalink to this definition">#</a></dt>
-<dd><p>Prepare Scala code for build by adding import sections and, if specified, Spark session configuration.</p>
-<p>Parameters:
-- is_spark_initialized (bool): Flag indicating whether Spark session configuration should be added.
-- import_section (bool): Flag indicating whether import sections should be added.
-- scala_code (str): Scala code to be prepared for build.</p>
-<p>Returns:
-- str: Scala code ready for build.</p>
-<p>Notes:
-- If ‘is_spark_initialized’ is True, the function adds Spark session configuration to the Scala code.
-- If ‘import_section’ is True, the function adds import sections to the Scala code.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.convert">
+<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">py_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.convert" title="Permalink to this definition">#</a></dt>
+<dd><p>Convert Python code to Scala code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>py_code</strong> (<em>str</em>) – The input Python code.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted Scala code.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.convert_class_name">
+<span class="sig-name descname"><span class="pre">convert_class_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">py_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">classes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.convert_class_name" title="Permalink to this definition">#</a></dt>
+<dd><p>Converts Python class names to Scala class names based on the provided mapping.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>py_code</strong> (<em>str</em>) – Python code containing class names.</p></li>
+<li><p><strong>classes</strong> (<em>dict</em>) – Mapping of Python class names to Scala class names.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scala code with class names converted.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.convert_python_dict_to_scala_script">
+<span class="sig-name descname"><span class="pre">convert_python_dict_to_scala_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">py_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.convert_python_dict_to_scala_script" title="Permalink to this definition">#</a></dt>
+<dd><p>Converts a Python dictionary in the provided code to Scala Map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>py_code</strong> (<em>str</em>) – Python code containing a dictionary.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scala code with the dictionary converted to a Map.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.find_key_values">
+<span class="sig-name descname"><span class="pre">find_key_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dictionary</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.find_key_values" title="Permalink to this definition">#</a></dt>
+<dd><p>Finds key-value pairs from the given text that match a provided dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> (<em>str</em>) – Text to search for key-value pairs.</p></li>
+<li><p><strong>dictionary</strong> (<em>dict</em>) – Dictionary to match key-value pairs.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Key-value pairs found in the text.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -494,13 +489,101 @@ Spark-related libraries, and executing various code transformations.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.get_import_section">
+<span class="sig-name descname"><span class="pre">get_import_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">py_code</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.get_import_section" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates the import section for Spark-related libraries based on the provided Python code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>py_code</strong> (<em>str</em>) – Python code.</p></li>
+<li><p><strong>data_dict</strong> (<em>dict</em>) – Dictionary containing data for import sections.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Import section for Spark-related libraries.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.prepare_scala_code">
+<span class="sig-name descname"><span class="pre">prepare_scala_code</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_spark_initialized</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">import_section</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scala_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.prepare_scala_code" title="Permalink to this definition">#</a></dt>
+<dd><p>Prepare Scala code for build by adding import sections and, if specified, Spark session configuration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>is_spark_initialized</strong> (<em>bool</em>) – Flag indicating whether Spark session configuration should be added.</p></li>
+<li><p><strong>import_section</strong> (<em>bool</em>) – Flag indicating whether import sections should be added.</p></li>
+<li><p><strong>scala_code</strong> (<em>str</em>) – Scala code to be prepared for build.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Scala code ready for build.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If ‘is_spark_initialized’ is True, the function adds Spark session configuration to the Scala code.
+If ‘import_section’ is True, the function adds import sections to the Scala code.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.remove_blank_lines">
+<span class="sig-name descname"><span class="pre">remove_blank_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.remove_blank_lines" title="Permalink to this definition">#</a></dt>
+<dd><p>remove blank lines.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>script</strong> (<em>str</em>) – The input script.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The cleaned script.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.restore_sensitive_values">
+<span class="sig-name descname"><span class="pre">restore_sensitive_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">anonymized_script</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sensitive_values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.restore_sensitive_values" title="Permalink to this definition">#</a></dt>
+<dd><p>Restore sensitive values in the anonymized script.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>anonymized_script</strong> (<em>str</em>) – The anonymized script.</p></li>
+<li><p><strong>sensitive_values</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of sensitive values.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The script with restored sensitive values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="sparknlp_jsl.transpiler.python_2_scala.run_transpiler">
 <span class="sig-name descname"><span class="pre">run_transpiler</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">py_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.transpiler.python_2_scala.run_transpiler" title="Permalink to this definition">#</a></dt>
 <dd><p>Execute all conversion and processing steps.</p>
-<p>Parameters:
-- py_code (str): The input Python code.</p>
-<p>Returns:
-- str: The final processed Scala code.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>py_code</strong> (<em>str</em>) – The input Python code.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The final processed Scala code.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
@@ -538,17 +621,17 @@ Spark-related libraries, and executing various code transformations.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.convert_python_dict_to_scala_script"><code class="docutils literal notranslate"><span class="pre">convert_python_dict_to_scala_script()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.convert_class_name"><code class="docutils literal notranslate"><span class="pre">convert_class_name()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.find_key_values"><code class="docutils literal notranslate"><span class="pre">find_key_values()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.get_import_section"><code class="docutils literal notranslate"><span class="pre">get_import_section()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.convert"><code class="docutils literal notranslate"><span class="pre">convert()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.anonymize_script"><code class="docutils literal notranslate"><span class="pre">anonymize_script()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.restore_sensitive_values"><code class="docutils literal notranslate"><span class="pre">restore_sensitive_values()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.remove_blank_lines"><code class="docutils literal notranslate"><span class="pre">remove_blank_lines()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.break_line_after_backslash"><code class="docutils literal notranslate"><span class="pre">break_line_after_backslash()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.prepare_scala_code"><code class="docutils literal notranslate"><span class="pre">prepare_scala_code()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.convert"><code class="docutils literal notranslate"><span class="pre">convert()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.convert_class_name"><code class="docutils literal notranslate"><span class="pre">convert_class_name()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.convert_python_dict_to_scala_script"><code class="docutils literal notranslate"><span class="pre">convert_python_dict_to_scala_script()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.find_key_values"><code class="docutils literal notranslate"><span class="pre">find_key_values()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.get_data_dict"><code class="docutils literal notranslate"><span class="pre">get_data_dict()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.get_import_section"><code class="docutils literal notranslate"><span class="pre">get_import_section()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.prepare_scala_code"><code class="docutils literal notranslate"><span class="pre">prepare_scala_code()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.remove_blank_lines"><code class="docutils literal notranslate"><span class="pre">remove_blank_lines()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.restore_sensitive_values"><code class="docutils literal notranslate"><span class="pre">restore_sensitive_values()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.transpiler.python_2_scala.run_transpiler"><code class="docutils literal notranslate"><span class="pre">run_transpiler()</span></code></a></li>
 </ul>
 </li>
