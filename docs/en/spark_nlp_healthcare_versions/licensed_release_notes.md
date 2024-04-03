@@ -73,23 +73,27 @@ meddra_resolver = SentenceEntityResolverModel.load("sbiobertresolve_meddra_lowes
      .setOutputCol("meddra_llt_code")\
      .setDistanceFunction("EUCLIDEAN")
 
-text= """This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia."""
+text= """This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis."""
 ```
 
 *Result*:
 
-|                     chunk|           label|meddra_llt_code|              resolution|           all_codes|            all_resolutions|
-|--------------------------|----------------|---------------|------------------------|--------------------|---------------------------|
-|                              tobacco|                  Smoking|       10067622|                  tobacco interaction|10067622,10086359...|tobacco interaction,tobaccoism,tobac...|
-|                         hypertension|             Hypertension|       10020772|                         hypertension|10020772,10020790...|hypertension,hypertension secondary,...|
-|          chronic renal insufficiency|           Kidney_Disease|       10050441|          chronic renal insufficiency|10050441,10009122...|chronic renal insufficiency,chronic ...|
-|chronic obstructive pulmonary disease|Disease_Syndrome_Disorder|       10009033|chronic obstructive pulmonary disease|10009033,10009032...|chronic obstructive pulmonary diseas...|
-|                            gastritis|Disease_Syndrome_Disorder|       10017853|                            gastritis|10017853,10060703...|gastritis,verrucous gastritis,antral...|
-|            transient ischemic attack|  Cerebrovascular_Disease|       10072760|            transient ischemic attack|10072760,10044390...|transient ischemic attack,transient ...|
-|              cardiac catheterization|                Procedure|       10048606|              cardiac catheterization|10048606,10007527...|cardiac catheterization,cardiac cath...|
-|   left main coronary artery stenosis|            Heart_Disease|       10090240|   left main coronary artery stenosis|10090240,10072048...|left main coronary artery stenosis,l...|
-|                          hypotension|               VS_Finding|       10021097|                          hypotension|10021097,10021107...|hypotension,hypotensive,arterial hyp...|
-|                          bradycardia|               VS_Finding|       10006093|                          bradycardia|10006093,10040741...|bradycardia,sinus bradycardia,centra...|
+|                         ner_chunk|begin|end|                   entity|meddra_llt_code|                        resolution|                                               all_k_results|                                           all_k_resolutions|
+|----------------------------------|-----|---|-------------------------|---------------|----------------------------------|------------------------------------------------------------|------------------------------------------------------------|
+|                           tobacco|   52| 58|                  Smoking|       10067622|               tobacco interaction|10067622:::10086359:::10057581:::10082288:::10009180:::10...|tobacco interaction:::tobaccoism:::tobacco user:::exposur...|
+|                      hypertension|   72| 83|             Hypertension|       10020772|                      hypertension|10020772:::10020790:::10088636:::10081425:::10015488:::10...|hypertension:::hypertension secondary:::systemic hyperten...|
+|       chronic renal insufficiency|   86|112|           Kidney_Disease|       10050441|       chronic renal insufficiency|10050441:::10009122:::10009119:::10075441:::10038474:::10...|chronic renal insufficiency:::chronic renal impairment:::...|
+|                        bronchitis|  123|132|Disease_Syndrome_Disorder|       10006451|                        bronchitis|10006451:::10006448:::10008841:::10085668:::10061736:::10...|bronchitis:::bronchiolitis:::chronic bronchitis:::capilla...|
+|                         gastritis|  135|143|Disease_Syndrome_Disorder|       10017853|                         gastritis|10017853:::10060703:::10076492:::10070814:::10088553:::10...|gastritis:::verrucous gastritis:::antral gastritis:::corr...|
+|                   ischemic attack|  150|164|  Cerebrovascular_Disease|       10072760|         transient ischemic attack|10072760:::10060848:::10060772:::10061216:::10055221:::10...|transient ischemic attack:::ischemic cerebral infarction:...|
+|           cardiac catheterization|  280|302|                Procedure|       10048606|           cardiac catheterization|10048606:::10007527:::10054343:::10007815:::10053451:::10...|cardiac catheterization:::cardiac catheterisation:::cathe...|
+|left main coronary artery stenosis|  319|352|            Heart_Disease|       10090240|left main coronary artery stenosis|10090240:::10072048:::10084343:::10011089:::10083430:::10...|left main coronary artery stenosis:::left anterior descen...|
+|                       hypotension|  380|390|               VS_Finding|       10021097|                       hypotension|10021097:::10021107:::10066331:::10066077:::10036433:::10...|hypotension:::hypotensive:::arterial hypotension:::diasto...|
+|                       bradycardia|  396|406|               VS_Finding|       10006093|                       bradycardia|10006093:::10040741:::10078310:::10064883:::10065585:::10...|bradycardia:::sinus bradycardia:::central bradycardia:::r...|
+|                      colon cancer|  451|462|              Oncological|       10009944|                      colon cancer|10009944:::10009989:::10009957:::10061451:::10007330:::10...|colon cancer:::colonic cancer:::colon carcinoma:::colorec...|
+|                         mucositis|  485|493|                      ADE|       10028127|                         mucositis|10028127:::10065880:::10065900:::10006525:::10021960:::10...|mucositis:::laryngeal mucositis:::tracheal mucositis:::bu...|
+|                        dermatitis|  499|508|                      ADE|       10012431|                        dermatitis|10012431:::10048768:::10003639:::10012470:::10073737:::10...|dermatitis:::dermatosis:::atopic dermatitis:::dermatitis ...|
+
 
 - 6 ChunkMapper Models for Medical Code Mapping to Map Various Medical Terminologies Across Each Other
 
