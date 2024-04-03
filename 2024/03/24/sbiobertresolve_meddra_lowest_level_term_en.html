@@ -544,14 +544,28 @@ function wrapWordInSpan(data, wordToWrap) {
       <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_jsl"</span><span class="p">])</span>\
       <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_jsl_chunk"</span><span class="p">)</span>\
       <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"Procedure"</span><span class="p">,</span><span class="s">"Kidney_Disease"</span><span class="p">,</span><span class="s">"Cerebrovascular_Disease"</span><span class="p">,</span><span class="s">"Heart_Disease"</span><span class="p">,</span>
-                     <span class="s">"Disease_Syndrome_Disorder"</span><span class="p">,</span> <span class="s">"ImagingFindings"</span><span class="p">,</span> <span class="s">"Symptom"</span><span class="p">,</span> <span class="s">"VS_Finding"</span><span class="p">,</span>
-                     <span class="s">"EKG_Findings"</span><span class="p">,</span> <span class="s">"Communicable_Disease"</span><span class="p">,</span><span class="s">"Substance"</span><span class="p">,</span>
-                     <span class="s">"Internal_organ_or_component"</span><span class="p">,</span><span class="s">"External_body_part_or_region"</span><span class="p">,</span><span class="s">"Modifier"</span><span class="p">,</span>
+                     <span class="s">"Disease_Syndrome_Disorder"</span><span class="p">,</span> <span class="s">"Symptom"</span><span class="p">,</span> <span class="s">"VS_Finding"</span><span class="p">,</span>
+                     <span class="s">"EKG_Findings"</span><span class="p">,</span> <span class="s">"Communicable_Disease"</span><span class="p">,</span>
+                     <span class="s">"Internal_organ_or_component"</span><span class="p">,</span><span class="s">"External_body_part_or_region"</span><span class="p">,</span>
                      <span class="s">"Triglycerides"</span><span class="p">,</span><span class="s">"Alcohol"</span><span class="p">,</span><span class="s">"Smoking"</span><span class="p">,</span><span class="s">"Pregnancy"</span><span class="p">,</span><span class="s">"Hypertension"</span><span class="p">,</span><span class="s">"Obesity"</span><span class="p">,</span>
-                     <span class="s">"Injury_or_Poisoning"</span><span class="p">,</span><span class="s">"Test"</span><span class="p">,</span><span class="s">"Hyperlipidemia"</span><span class="p">,</span><span class="s">"BMI"</span><span class="p">,</span><span class="s">"Oncological"</span><span class="p">,</span><span class="s">"Psychological_Condition"</span><span class="p">,</span><span class="s">"LDL"</span><span class="p">,</span><span class="s">"Diabetes"</span><span class="p">])</span>
+                     <span class="s">"Injury_or_Poisoning"</span><span class="p">,</span><span class="s">"Test"</span><span class="p">,</span><span class="s">"Hyperlipidemia"</span><span class="p">,</span><span class="s">"Oncological"</span><span class="p">,</span>
+                     <span class="s">"Psychological_Condition"</span><span class="p">,</span><span class="s">"LDL"</span><span class="p">,</span><span class="s">"Diabetes"</span><span class="p">])</span>
+
+<span class="n">ner_ade_clinical</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_ade_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ade_clinica_ner"</span><span class="p">)</span>
+
+<span class="n">ner_ade_clinical_converter</span> <span class="o">=</span> <span class="n">NerConverterInternal</span><span class="p">()</span>\
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ade_clinica_ner"</span><span class="p">])</span>\
+      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_ade_clinical_chunk"</span><span class="p">)</span>\
+      <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"ADE"</span><span class="p">])</span>
+
+<span class="n">chunk_merger</span> <span class="o">=</span> <span class="n">ChunkMergeApproach</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">'ner_ade_clinical_chunk'</span><span class="p">,</span><span class="s">"ner_jsl_chunk"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'merged_ner_chunk'</span><span class="p">)</span>
 
 <span class="n">chunk2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">()</span> \
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_jsl_chunk"</span><span class="p">)</span> \
+      <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"merged_ner_chunk"</span><span class="p">)</span> \
       <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
 
 <span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
@@ -571,12 +585,15 @@ function wrapWordInSpan(data, wordToWrap) {
                               <span class="n">word_embeddings</span><span class="p">,</span>
                               <span class="n">ner_jsl</span><span class="p">,</span>
                               <span class="n">ner_jsl_converter</span><span class="p">,</span>
+                              <span class="n">ner_ade_clinical</span><span class="p">,</span>
+                              <span class="n">ner_ade_clinical_converter</span><span class="p">,</span>
+                              <span class="n">chunk_merger</span><span class="p">,</span>
                               <span class="n">chunk2doc</span><span class="p">,</span>
                               <span class="n">sbert_embedder</span><span class="p">,</span>
                               <span class="n">meddra_resolver</span>
 <span class="p">])</span>
 
-<span class="n">text</span><span class="o">=</span> <span class="s">"""This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia."""</span>
+<span class="n">text</span><span class="o">=</span> <span class="s">"""This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis."""</span>
 
 <span class="n">df</span><span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
@@ -586,78 +603,97 @@ function wrapWordInSpan(data, wordToWrap) {
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
 	<span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-
+	
 <span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
 	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
 	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
-
+	
 <span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
 	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
 	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
-
+	
 <span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
 	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">))</span>
 	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
-
+	
 <span class="k">val</span> <span class="nv">ner_jsl</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_jsl"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
 	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span>
 	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_jsl"</span><span class="o">)</span>
-
+	
 <span class="k">val</span> <span class="nv">ner_jsl_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()</span>
 	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ner_jsl"</span><span class="o">))</span>
 	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_jsl_chunk"</span><span class="o">)</span>
-	<span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Procedure"</span><span class="o">,</span><span class="s">"Kidney_Disease"</span><span class="o">,</span><span class="s">"Cerebrovascular_Disease"</span><span class="o">,</span><span class="s">"Heart_Disease"</span><span class="o">,</span> <span class="s">"Disease_Syndrome_Disorder"</span><span class="o">,</span><span class="s">"ImagingFindings"</span><span class="o">,</span><span class="s">"Symptom"</span><span class="o">,</span><span class="s">"VS_Finding"</span><span class="o">,</span> <span class="s">"EKG_Findings"</span><span class="o">,</span><span class="s">"Communicable_Disease"</span><span class="o">,</span><span class="s">"Substance"</span><span class="o">,</span> <span class="s">"Internal_organ_or_component"</span><span class="o">,</span><span class="s">"External_body_part_or_region"</span><span class="o">,</span><span class="s">"Modifier"</span><span class="o">,</span> <span class="s">"Triglycerides"</span><span class="o">,</span><span class="s">"Alcohol"</span><span class="o">,</span><span class="s">"Smoking"</span><span class="o">,</span><span class="s">"Pregnancy"</span><span class="o">,</span><span class="s">"Hypertension"</span><span class="o">,</span><span class="s">"Obesity"</span><span class="o">,</span> <span class="s">"Injury_or_Poisoning"</span><span class="o">,</span><span class="s">"Test"</span><span class="o">,</span><span class="s">"Hyperlipidemia"</span><span class="o">,</span><span class="s">"BMI"</span><span class="o">,</span><span class="s">"Oncological"</span><span class="o">,</span><span class="s">"Psychological_Condition"</span><span class="o">,</span><span class="s">"LDL"</span><span class="o">,</span><span class="s">"Diabetes"</span><span class="o">))</span>
-
+	<span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Procedure"</span><span class="o">,</span><span class="s">"Kidney_Disease"</span><span class="o">,</span><span class="s">"Cerebrovascular_Disease"</span><span class="o">,</span><span class="s">"Heart_Disease"</span><span class="o">,</span> <span class="s">"Disease_Syndrome_Disorder"</span><span class="o">,</span><span class="s">"Symptom"</span><span class="o">,</span><span class="s">"VS_Finding"</span><span class="o">,</span> <span class="s">"EKG_Findings"</span><span class="o">,</span><span class="s">"Communicable_Disease"</span><span class="o">,</span> <span class="s">"Internal_organ_or_component"</span><span class="o">,</span><span class="s">"External_body_part_or_region"</span><span class="o">,</span> <span class="s">"Triglycerides"</span><span class="o">,</span><span class="s">"Alcohol"</span><span class="o">,</span><span class="s">"Smoking"</span><span class="o">,</span><span class="s">"Pregnancy"</span><span class="o">,</span><span class="s">"Hypertension"</span><span class="o">,</span><span class="s">"Obesity"</span><span class="o">,</span> <span class="s">"Injury_or_Poisoning"</span><span class="o">,</span><span class="s">"Test"</span><span class="o">,</span><span class="s">"Hyperlipidemia"</span><span class="o">,</span><span class="s">"Oncological"</span><span class="o">,</span> <span class="s">"Psychological_Condition"</span><span class="o">,</span><span class="s">"LDL"</span><span class="o">,</span><span class="s">"Diabetes"</span><span class="o">))</span>
+	
+<span class="k">val</span> <span class="nv">ner_ade_clinical</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_ade_clinical"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"embeddings"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ade_clinica_ner"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">ner_ade_clinical_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span><span class="s">"token"</span><span class="o">,</span><span class="s">"ade_clinica_ner"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_ade_clinical_chunk"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ADE"</span><span class="o">))</span>
+	
+<span class="k">val</span> <span class="nv">chunk_merger</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">ChunkMergeApproach</span><span class="o">()</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_ade_clinical_chunk"</span><span class="o">,</span><span class="s">"ner_jsl_chunk"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"merged_ner_chunk"</span><span class="o">)</span>
+	
 <span class="k">val</span> <span class="nv">chunk2doc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Chunk2Doc</span><span class="o">()</span>
-	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_jsl_chunk"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"merged_ner_chunk"</span><span class="o">)</span>
 	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">)</span>
-
+	
 <span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nv">BertSentenceEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
 	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">))</span>
 	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
 	<span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
-
+	
 <span class="k">val</span> <span class="nv">meddra_resolver</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">SentenceEntityResolverModel</span><span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"sbiobertresolve_meddra_lowest_level_term"</span><span class="o">)</span>
 	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">))</span>
 	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"meddra_llt_code"</span><span class="o">)</span>
 	<span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
  
-<span class="n">nlpPipeline</span><span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-     <span class="n">documentAssembler</span><span class="o">,</span>
-     <span class="n">sentenceDetector</span><span class="o">,</span>
-     <span class="n">tokenizer</span><span class="o">,</span>
-     <span class="n">word_embeddings</span><span class="o">,</span>
-     <span class="n">ner_jsl</span><span class="o">,</span>
-     <span class="n">ner_jsl_converter</span><span class="o">,</span>
-     <span class="n">chunk2doc</span><span class="o">,</span>
-     <span class="n">sbert_embedder</span><span class="o">,</span>
-     <span class="n">meddra_resolver</span> <span class="o">))</span>
+ <span class="n">nlpPipeline</span><span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span> <span class="n">documentAssembler</span><span class="o">,</span> 
+                                              <span class="n">sentenceDetector</span><span class="o">,</span>
+                                              <span class="n">tokenizer</span><span class="o">,</span>
+                                              <span class="n">word_embeddings</span><span class="o">,</span>
+                                              <span class="n">ner_jsl</span><span class="o">,</span>
+                                              <span class="n">ner_jsl_converter</span><span class="o">,</span>
+                                              <span class="n">ner_ade_clinical</span><span class="o">,</span>
+                                              <span class="n">ner_ade_clinical_converter</span><span class="o">,</span>
+                                              <span class="n">chunk_merger</span><span class="o">,</span>
+                                              <span class="n">chunk2doc</span><span class="o">,</span>
+                                              <span class="n">sbert_embedder</span><span class="o">,</span>
+                                              <span class="n">meddra_resolver</span><span class="o">))</span>
+ 
+ <span class="n">text</span><span class="k">=</span> <span class="s">"""This is an 82-year-old male with a history of prior tobacco use,benign hypertension,chronic renal insufficiency,chronic bronchitis,gastritis,and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis,which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis."""</span>
 
-<span class="n">text</span><span class="k">=</span> <span class="s">"""This is an 82-year-old male with a history of prior tobacco use,hypertension,chronic renal insufficiency,chronic obstructive pulmonary disease,gastritis,and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis,which was complicated by hypotension and bradycardia."""</span>
+<span class="n">df</span><span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
-<span class="n">df</span><span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="n">text</span><span class="o">)</span> <span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span> <span class="n">resolver_pipeline</span><span class="k">=</span> <span class="nv">nlpPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">df</span><span class="o">)</span>
+<span class="n">resolver_pipeline</span><span class="k">=</span> <span class="nv">nlpPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">df</span><span class="o">)</span>
+	
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">resolver_pipeline</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">df</span><span class="o">)</span>
-
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------------------------+-------------------------+---------------+-------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+
-|                                chunk|                    label|meddra_llt_code|                           resolution|                                                             all_codes|                                                       all_resolutions|                                                        all_aux_labels|
-+-------------------------------------+-------------------------+---------------+-------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+
-|                              tobacco|                  Smoking|       10067622|                  tobacco interaction|10067622:::10086359:::10057581:::10082288:::10009180:::10048880:::1...|tobacco interaction:::tobaccoism:::tobacco user:::exposure to tobac...|10067622:::10057852:::10057581:::10082288:::10057581:::10057581:::1...|
-|                         hypertension|             Hypertension|       10020772|                         hypertension|10020772:::10020790:::10088636:::10081425:::10015488:::10020775:::1...|hypertension:::hypertension secondary:::systemic hypertension:::art...|10020772:::10039834:::10020772:::10020772:::10015488:::10020772:::1...|
-|          chronic renal insufficiency|           Kidney_Disease|       10050441|          chronic renal insufficiency|10050441:::10009122:::10009119:::10075441:::10038474:::10038444:::1...|chronic renal insufficiency:::chronic renal impairment:::chronic re...|10064848:::10062237:::10064848:::10072370:::10038435:::10064848:::1...|
-|chronic obstructive pulmonary disease|Disease_Syndrome_Disorder|       10009033|chronic obstructive pulmonary disease|10009033:::10009032:::10009026:::10009025:::10025081:::10083002:::1...|chronic obstructive pulmonary disease:::chronic obstructive lung di...|10009033:::10009033:::10009033:::10009033:::10061877:::10061768:::1...|
-|                            gastritis|Disease_Syndrome_Disorder|       10017853|                            gastritis|10017853:::10060703:::10076492:::10070814:::10088553:::10000769:::1...|gastritis:::verrucous gastritis:::antral gastritis:::corrosive gast...|10017853:::10017865:::10017853:::10070814:::10017853:::10017853:::1...|
-|            transient ischemic attack|  Cerebrovascular_Disease|       10072760|            transient ischemic attack|10072760:::10044390:::10044391:::10072761:::10044375:::10044374:::1...|transient ischemic attack:::transient ischaemic attack:::transient ...|10044390:::10044390:::10044390:::10044390:::10044390:::10044390:::1...|
-|              cardiac catheterization|                Procedure|       10048606|              cardiac catheterization|10048606:::10007527:::10054343:::10007815:::10053451:::10088292:::1...|cardiac catheterization:::cardiac catheterisation:::catheterization...|10007815:::10007815:::10007815:::10007815:::10053451:::10088292:::1...|
-|   left main coronary artery stenosis|            Heart_Disease|       10090240|   left main coronary artery stenosis|10090240:::10072048:::10084343:::10011089:::10083430:::10011105:::1...|left main coronary artery stenosis:::left anterior descending coron...|10011089:::10011089:::10011086:::10011089:::10011089:::10011105:::1...|
-|                          hypotension|               VS_Finding|       10021097|                          hypotension|10021097:::10021107:::10066331:::10066077:::10036433:::10049705:::1...|hypotension:::hypotensive:::arterial hypotension:::diastolic hypote...|10021097:::10021097:::10021097:::10066077:::10031127:::10021097:::1...|
-|                          bradycardia|               VS_Finding|       10006093|                          bradycardia|10006093:::10040741:::10078310:::10064883:::10065585:::10085625:::1...|bradycardia:::sinus bradycardia:::central bradycardia:::reflex brad...|10006093:::10040741:::10078310:::10006093:::10029458:::10006093:::1...|
-+-------------------------------------+-------------------------+---------------+-------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+
-
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+----------------------------------+-----+---+-------------------------+---------------+----------------------------------+------------------------------------------------------------+------------------------------------------------------------+
+|                         ner_chunk|begin|end|                   entity|meddra_llt_code|                        resolution|                                               all_k_results|                                           all_k_resolutions|
++----------------------------------+-----+---+-------------------------+---------------+----------------------------------+------------------------------------------------------------+------------------------------------------------------------+
+|                           tobacco|   52| 58|                  Smoking|       10067622|               tobacco interaction|10067622:::10086359:::10057581:::10082288:::10009180:::10...|tobacco interaction:::tobaccoism:::tobacco user:::exposur...|
+|                      hypertension|   72| 83|             Hypertension|       10020772|                      hypertension|10020772:::10020790:::10088636:::10081425:::10015488:::10...|hypertension:::hypertension secondary:::systemic hyperten...|
+|       chronic renal insufficiency|   86|112|           Kidney_Disease|       10050441|       chronic renal insufficiency|10050441:::10009122:::10009119:::10075441:::10038474:::10...|chronic renal insufficiency:::chronic renal impairment:::...|
+|                        bronchitis|  123|132|Disease_Syndrome_Disorder|       10006451|                        bronchitis|10006451:::10006448:::10008841:::10085668:::10061736:::10...|bronchitis:::bronchiolitis:::chronic bronchitis:::capilla...|
+|                         gastritis|  135|143|Disease_Syndrome_Disorder|       10017853|                         gastritis|10017853:::10060703:::10076492:::10070814:::10088553:::10...|gastritis:::verrucous gastritis:::antral gastritis:::corr...|
+|                   ischemic attack|  150|164|  Cerebrovascular_Disease|       10072760|         transient ischemic attack|10072760:::10060848:::10060772:::10061216:::10055221:::10...|transient ischemic attack:::ischemic cerebral infarction:...|
+|           cardiac catheterization|  280|302|                Procedure|       10048606|           cardiac catheterization|10048606:::10007527:::10054343:::10007815:::10053451:::10...|cardiac catheterization:::cardiac catheterisation:::cathe...|
+|left main coronary artery stenosis|  319|352|            Heart_Disease|       10090240|left main coronary artery stenosis|10090240:::10072048:::10084343:::10011089:::10083430:::10...|left main coronary artery stenosis:::left anterior descen...|
+|                       hypotension|  380|390|               VS_Finding|       10021097|                       hypotension|10021097:::10021107:::10066331:::10066077:::10036433:::10...|hypotension:::hypotensive:::arterial hypotension:::diasto...|
+|                       bradycardia|  396|406|               VS_Finding|       10006093|                       bradycardia|10006093:::10040741:::10078310:::10064883:::10065585:::10...|bradycardia:::sinus bradycardia:::central bradycardia:::r...|
+|                      colon cancer|  451|462|              Oncological|       10009944|                      colon cancer|10009944:::10009989:::10009957:::10061451:::10007330:::10...|colon cancer:::colonic cancer:::colon carcinoma:::colorec...|
+|                         mucositis|  485|493|                      ADE|       10028127|                         mucositis|10028127:::10065880:::10065900:::10006525:::10021960:::10...|mucositis:::laryngeal mucositis:::tracheal mucositis:::bu...|
+|                        dermatitis|  499|508|                      ADE|       10012431|                        dermatitis|10012431:::10048768:::10003639:::10012470:::10073737:::10...|dermatitis:::dermatosis:::atopic dermatitis:::dermatitis ...|
++----------------------------------+-----+---+-------------------------+---------------+----------------------------------+------------------------------------------------------------+------------------------------------------------------------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>

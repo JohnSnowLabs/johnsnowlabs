@@ -700,7 +700,7 @@ function wrapWordInSpan(data, wordToWrap) {
      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"meddra_llt_code"</span><span class="p">)</span>\
      <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
 
-<span class="n">text</span><span class="o">=</span> <span class="s">"""This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia."""</span>
+<span class="n">text</span><span class="o">=</span> <span class="s">"""This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis."""</span>
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
@@ -708,94 +708,146 @@ function wrapWordInSpan(data, wordToWrap) {
   <table>
     <thead>
       <tr>
-        <th>chunk</th>
-        <th>label</th>
+        <th>ner_chunk</th>
+        <th>begin</th>
+        <th>end</th>
+        <th>entity</th>
         <th>meddra_llt_code</th>
         <th>resolution</th>
-        <th>all_codes</th>
-        <th>all_resolutions</th>
+        <th>all_k_results</th>
+        <th>all_k_resolutions</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>tobacco</td>
+        <td>52</td>
+        <td>58</td>
         <td>Smoking</td>
         <td>10067622</td>
         <td>tobacco interaction</td>
-        <td>10067622,10086359…</td>
-        <td>tobacco interaction,tobaccoism,tobac…</td>
+        <td>10067622:::10086359:::10057581:::10082288:::10009180:::10…</td>
+        <td>tobacco interaction:::tobaccoism:::tobacco user:::exposur…</td>
       </tr>
       <tr>
         <td>hypertension</td>
+        <td>72</td>
+        <td>83</td>
         <td>Hypertension</td>
         <td>10020772</td>
         <td>hypertension</td>
-        <td>10020772,10020790…</td>
-        <td>hypertension,hypertension secondary,…</td>
+        <td>10020772:::10020790:::10088636:::10081425:::10015488:::10…</td>
+        <td>hypertension:::hypertension secondary:::systemic hyperten…</td>
       </tr>
       <tr>
         <td>chronic renal insufficiency</td>
+        <td>86</td>
+        <td>112</td>
         <td>Kidney_Disease</td>
         <td>10050441</td>
         <td>chronic renal insufficiency</td>
-        <td>10050441,10009122…</td>
-        <td>chronic renal insufficiency,chronic …</td>
+        <td>10050441:::10009122:::10009119:::10075441:::10038474:::10…</td>
+        <td>chronic renal insufficiency:::chronic renal impairment:::…</td>
       </tr>
       <tr>
-        <td>chronic obstructive pulmonary disease</td>
+        <td>bronchitis</td>
+        <td>123</td>
+        <td>132</td>
         <td>Disease_Syndrome_Disorder</td>
-        <td>10009033</td>
-        <td>chronic obstructive pulmonary disease</td>
-        <td>10009033,10009032…</td>
-        <td>chronic obstructive pulmonary diseas…</td>
+        <td>10006451</td>
+        <td>bronchitis</td>
+        <td>10006451:::10006448:::10008841:::10085668:::10061736:::10…</td>
+        <td>bronchitis:::bronchiolitis:::chronic bronchitis:::capilla…</td>
       </tr>
       <tr>
         <td>gastritis</td>
+        <td>135</td>
+        <td>143</td>
         <td>Disease_Syndrome_Disorder</td>
         <td>10017853</td>
         <td>gastritis</td>
-        <td>10017853,10060703…</td>
-        <td>gastritis,verrucous gastritis,antral…</td>
+        <td>10017853:::10060703:::10076492:::10070814:::10088553:::10…</td>
+        <td>gastritis:::verrucous gastritis:::antral gastritis:::corr…</td>
       </tr>
       <tr>
-        <td>transient ischemic attack</td>
+        <td>ischemic attack</td>
+        <td>150</td>
+        <td>164</td>
         <td>Cerebrovascular_Disease</td>
         <td>10072760</td>
         <td>transient ischemic attack</td>
-        <td>10072760,10044390…</td>
-        <td>transient ischemic attack,transient …</td>
+        <td>10072760:::10060848:::10060772:::10061216:::10055221:::10…</td>
+        <td>transient ischemic attack:::ischemic cerebral infarction:…</td>
       </tr>
       <tr>
         <td>cardiac catheterization</td>
+        <td>280</td>
+        <td>302</td>
         <td>Procedure</td>
         <td>10048606</td>
         <td>cardiac catheterization</td>
-        <td>10048606,10007527…</td>
-        <td>cardiac catheterization,cardiac cath…</td>
+        <td>10048606:::10007527:::10054343:::10007815:::10053451:::10…</td>
+        <td>cardiac catheterization:::cardiac catheterisation:::cathe…</td>
       </tr>
       <tr>
         <td>left main coronary artery stenosis</td>
+        <td>319</td>
+        <td>352</td>
         <td>Heart_Disease</td>
         <td>10090240</td>
         <td>left main coronary artery stenosis</td>
-        <td>10090240,10072048…</td>
-        <td>left main coronary artery stenosis,l…</td>
+        <td>10090240:::10072048:::10084343:::10011089:::10083430:::10…</td>
+        <td>left main coronary artery stenosis:::left anterior descen…</td>
       </tr>
       <tr>
         <td>hypotension</td>
+        <td>380</td>
+        <td>390</td>
         <td>VS_Finding</td>
         <td>10021097</td>
         <td>hypotension</td>
-        <td>10021097,10021107…</td>
-        <td>hypotension,hypotensive,arterial hyp…</td>
+        <td>10021097:::10021107:::10066331:::10066077:::10036433:::10…</td>
+        <td>hypotension:::hypotensive:::arterial hypotension:::diasto…</td>
       </tr>
       <tr>
         <td>bradycardia</td>
+        <td>396</td>
+        <td>406</td>
         <td>VS_Finding</td>
         <td>10006093</td>
         <td>bradycardia</td>
-        <td>10006093,10040741…</td>
-        <td>bradycardia,sinus bradycardia,centra…</td>
+        <td>10006093:::10040741:::10078310:::10064883:::10065585:::10…</td>
+        <td>bradycardia:::sinus bradycardia:::central bradycardia:::r…</td>
+      </tr>
+      <tr>
+        <td>colon cancer</td>
+        <td>451</td>
+        <td>462</td>
+        <td>Oncological</td>
+        <td>10009944</td>
+        <td>colon cancer</td>
+        <td>10009944:::10009989:::10009957:::10061451:::10007330:::10…</td>
+        <td>colon cancer:::colonic cancer:::colon carcinoma:::colorec…</td>
+      </tr>
+      <tr>
+        <td>mucositis</td>
+        <td>485</td>
+        <td>493</td>
+        <td>ADE</td>
+        <td>10028127</td>
+        <td>mucositis</td>
+        <td>10028127:::10065880:::10065900:::10006525:::10021960:::10…</td>
+        <td>mucositis:::laryngeal mucositis:::tracheal mucositis:::bu…</td>
+      </tr>
+      <tr>
+        <td>dermatitis</td>
+        <td>499</td>
+        <td>508</td>
+        <td>ADE</td>
+        <td>10012431</td>
+        <td>dermatitis</td>
+        <td>10012431:::10048768:::10003639:::10012470:::10073737:::10…</td>
+        <td>dermatitis:::dermatosis:::atopic dermatitis:::dermatitis …</td>
       </tr>
     </tbody>
   </table>
