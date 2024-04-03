@@ -687,7 +687,7 @@ function wrapWordInSpan(data, wordToWrap) {
         <td>This model maps clinical terms to their corresponding MedDRA LLT (Lowest Level Term) codes.</td>
       </tr>
       <tr>
-        <td><a href="https://nlp.johnsnowlabs.com/2024/03/04/sbiobertresolve_meddra_preferred_term_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_meddra_preferred_term</code></a></td>
+        <td><a href="https://nlp.johnsnowlabs.com/2024/03/24/sbiobertresolve_meddra_preferred_term_en.html"><code class="language-plaintext highlighter-rouge">sbiobertresolve_meddra_preferred_term</code></a></td>
         <td>This model maps clinical terms to their corresponding MedDRA PT (Preferred Term) codes.</td>
       </tr>
     </tbody>
@@ -907,7 +907,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">meddra_llt_pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">.</span><span class="n">from_disk</span><span class="p">(</span><span class="s">"meddra_llt_resolver_pipeline"</span><span class="p">)</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">meddra_llt_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="s">'This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack.'</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">meddra_llt_pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="s">'This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis.'</span><span class="p">)</span>
 </code></pre></div>  </div>
 
   <p><em>Result</em>:</p>
@@ -933,12 +933,12 @@ function wrapWordInSpan(data, wordToWrap) {
         <td>10067622:Tobacco interaction</td>
       </tr>
       <tr>
-        <td>hypertension</td>
-        <td>Hypertension</td>
-        <td>10020772</td>
-        <td>hypertension</td>
-        <td>O10:Pre-existing hypertension complicating pregnancy, childbirth and the puerperium</td>
-        <td>10020772:Hypertension</td>
+        <td>benign hypertension</td>
+        <td>PROBLEM</td>
+        <td>10004455</td>
+        <td>benign secondary hypertension</td>
+        <td>NONE</td>
+        <td>10039834:Secondary hypertension</td>
       </tr>
       <tr>
         <td>chronic renal insufficiency</td>
@@ -949,12 +949,12 @@ function wrapWordInSpan(data, wordToWrap) {
         <td>10064848:Chronic kidney disease</td>
       </tr>
       <tr>
-        <td>chronic obstructive pulmonary disease</td>
-        <td>Disease_Syndrome_Disorder</td>
-        <td>10009033</td>
-        <td>chronic obstructive pulmonary disease</td>
-        <td>J44:Other chronic obstructive pulmonary disease</td>
-        <td>10009033:Chronic obstructive pulmonary disease</td>
+        <td>chronic bronchitis</td>
+        <td>PROBLEM</td>
+        <td>10008841</td>
+        <td>chronic bronchitis</td>
+        <td>NONE</td>
+        <td>10006458:Bronchitis chronic</td>
       </tr>
       <tr>
         <td>gastritis</td>
@@ -965,12 +965,84 @@ function wrapWordInSpan(data, wordToWrap) {
         <td>10017853:Gastritis</td>
       </tr>
       <tr>
-        <td>transient ischemic attack</td>
+        <td>ischemic attack</td>
         <td>Cerebrovascular_Disease</td>
         <td>10072760</td>
         <td>transient ischemic attack</td>
         <td>NONE</td>
         <td>10044390:Transient ischaemic attack</td>
+      </tr>
+      <tr>
+        <td>ST elevation</td>
+        <td>PROBLEM</td>
+        <td>10041887</td>
+        <td>st elevated</td>
+        <td>NONE</td>
+        <td>10014392:Electrocardiogram ST segment elevation</td>
+      </tr>
+      <tr>
+        <td>cardiac catheterization</td>
+        <td>Procedure</td>
+        <td>10048606</td>
+        <td>cardiac catheterization</td>
+        <td>Y84.0:Cardiac catheterization</td>
+        <td>10007815:Catheterisation cardiac</td>
+      </tr>
+      <tr>
+        <td>the left main coronary artery stenosis</td>
+        <td>PROBLEM</td>
+        <td>10090240</td>
+        <td>left main coronary artery stenosis</td>
+        <td>NONE</td>
+        <td>10011089:Coronary artery stenosis</td>
+      </tr>
+      <tr>
+        <td>hypotension</td>
+        <td>VS_Finding</td>
+        <td>10021097</td>
+        <td>hypotension</td>
+        <td>I95:Hypotension</td>
+        <td>10021097:Hypotension</td>
+      </tr>
+      <tr>
+        <td>bradycardia</td>
+        <td>VS_Finding</td>
+        <td>10006093</td>
+        <td>bradycardia</td>
+        <td>R00.1:Bradycardia, unspecified</td>
+        <td>10006093:Bradycardia</td>
+      </tr>
+      <tr>
+        <td>the side effects</td>
+        <td>PROBLEM</td>
+        <td>10044252</td>
+        <td>toxic symptom</td>
+        <td>NONE</td>
+        <td>10070863:Toxicity to various agents</td>
+      </tr>
+      <tr>
+        <td>a colon cancer</td>
+        <td>PROBLEM</td>
+        <td>10009944</td>
+        <td>colon cancer</td>
+        <td>NONE</td>
+        <td>10009944:Colon cancer</td>
+      </tr>
+      <tr>
+        <td>mucositis</td>
+        <td>ADE</td>
+        <td>10028127</td>
+        <td>mucositis</td>
+        <td>NONE</td>
+        <td>10028116:Mucosal inflammation</td>
+      </tr>
+      <tr>
+        <td>dermatitis</td>
+        <td>ADE</td>
+        <td>10012431</td>
+        <td>dermatitis</td>
+        <td>L27:Dermatitis due to substances taken internally</td>
+        <td>10012431:Dermatitis</td>
       </tr>
     </tbody>
   </table>
