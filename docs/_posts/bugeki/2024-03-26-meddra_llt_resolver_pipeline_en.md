@@ -39,35 +39,39 @@ from sparknlp.pretrained import PretrainedPipeline
 
 meddra_llt_pipeline = PretrainedPipeline.from_disk("meddra_llt_resolver_pipeline")
 
-result = meddra_llt_pipeline.fullAnnotate('This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia.')
+result = meddra_llt_pipeline.fullAnnotate('This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis.')
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val meddra_llt_pipeline = PretrainedPipeline.from_disk("meddra_llt_resolver_pipeline")
 
-val result = meddra_llt_pipeline.fullAnnotate("This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia.")
+val result = meddra_llt_pipeline.fullAnnotate("This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis.")
 ```
 </div>
 
 ## Results
 
 ```bash
-+--------------------------------------+-------------------------+---------------+-------------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------+
-|chunk                                 |label                    |meddra_llt_code|resolution                           |icd10_mappings                                                                     |meddra_pt_mappings                             |
-+--------------------------------------+-------------------------+---------------+-------------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------+
-|tobacco                               |Smoking                  |10067622       |tobacco interaction                  |NONE                                                                               |10067622:Tobacco interaction                   |
-|hypertension                          |Hypertension             |10020772       |hypertension                         |O10:Pre-existing hypertension complicating pregnancy, childbirth and the puerperium|10020772:Hypertension                          |
-|chronic renal insufficiency           |Kidney_Disease           |10050441       |chronic renal insufficiency          |NONE                                                                               |10064848:Chronic kidney disease                |
-|chronic obstructive pulmonary disease |Disease_Syndrome_Disorder|10009033       |chronic obstructive pulmonary disease|J44:Other chronic obstructive pulmonary disease                                    |10009033:Chronic obstructive pulmonary disease |
-|gastritis                             |Disease_Syndrome_Disorder|10017853       |gastritis                            |K29.6:Other gastritis                                                              |10017853:Gastritis                             |
-|transient ischemic attack             |Cerebrovascular_Disease  |10072760       |transient ischemic attack            |NONE                                                                               |10044390:Transient ischaemic attack            |
-|ST elevation                          |PROBLEM                  |10041887       |st elevated                          |NONE                                                                               |10014392:Electrocardiogram ST segment elevation|
-|cardiac catheterization               |Procedure                |10048606       |cardiac catheterization              |Y84.0:Cardiac catheterization                                                      |10007815:Catheterisation cardiac               |
-|the left main coronary artery stenosis|PROBLEM                  |10090240       |left main coronary artery stenosis   |NONE                                                                               |10011089:Coronary artery stenosis              |
-|hypotension                           |VS_Finding               |10021097       |hypotension                          |I95:Hypotension                                                                    |10021097:Hypotension                           |
-|bradycardia                           |VS_Finding               |10006093       |bradycardia                          |R00.1:Bradycardia, unspecified                                                     |10006093:Bradycardia                           |
-+--------------------------------------+-------------------------+---------------+-------------------------------------+-----------------------------------------------------------------------------------+-----------------------------------------------+
++--------------------------------------+-------------------------+---------------+----------------------------------+-------------------------------------------------+-----------------------------------------------+
+|chunk                                 |label                    |meddra_llt_code|resolution                        |icd10_mappings                                   |meddra_pt_mappings                             |
++--------------------------------------+-------------------------+---------------+----------------------------------+-------------------------------------------------+-----------------------------------------------+
+|tobacco                               |Smoking                  |10067622       |tobacco interaction               |NONE                                             |10067622:Tobacco interaction                   |
+|benign hypertension                   |PROBLEM                  |10004455       |benign secondary hypertension     |NONE                                             |10039834:Secondary hypertension                |
+|chronic renal insufficiency           |Kidney_Disease           |10050441       |chronic renal insufficiency       |NONE                                             |10064848:Chronic kidney disease                |
+|chronic bronchitis                    |PROBLEM                  |10008841       |chronic bronchitis                |NONE                                             |10006458:Bronchitis chronic                    |
+|gastritis                             |Disease_Syndrome_Disorder|10017853       |gastritis                         |K29.6:Other gastritis                            |10017853:Gastritis                             |
+|ischemic attack                       |Cerebrovascular_Disease  |10072760       |transient ischemic attack         |NONE                                             |10044390:Transient ischaemic attack            |
+|ST elevation                          |PROBLEM                  |10041887       |st elevated                       |NONE                                             |10014392:Electrocardiogram ST segment elevation|
+|cardiac catheterization               |Procedure                |10048606       |cardiac catheterization           |Y84.0:Cardiac catheterization                    |10007815:Catheterisation cardiac               |
+|the left main coronary artery stenosis|PROBLEM                  |10090240       |left main coronary artery stenosis|NONE                                             |10011089:Coronary artery stenosis              |
+|hypotension                           |VS_Finding               |10021097       |hypotension                       |I95:Hypotension                                  |10021097:Hypotension                           |
+|bradycardia                           |VS_Finding               |10006093       |bradycardia                       |R00.1:Bradycardia, unspecified                   |10006093:Bradycardia                           |
+|the side effects                      |PROBLEM                  |10044252       |toxic symptom                     |NONE                                             |10070863:Toxicity to various agents            |
+|a colon cancer                        |PROBLEM                  |10009944       |colon cancer                      |NONE                                             |10009944:Colon cancer                          |
+|mucositis                             |ADE                      |10028127       |mucositis                         |NONE                                             |10028116:Mucosal inflammation                  |
+|dermatitis                            |ADE                      |10012431       |dermatitis                        |L27:Dermatitis due to substances taken internally|10012431:Dermatitis                            |
++--------------------------------------+-------------------------+---------------+----------------------------------+-------------------------------------------------+-----------------------------------------------+
 ```
 
 {:.model-param}
