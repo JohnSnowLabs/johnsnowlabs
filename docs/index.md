@@ -2,7 +2,7 @@
 layout: landing
 comment: no
 title: 'John Snow Labs <span>State of the Art Natural Language Processing in Python</span>'
-excerpt: John Snow Labs' NLP & LLM ecosystem include software libraries for state-of-the-art AI at scale, Responsible AI, No-Code AI, and access to over 20,000 models for Healthcare, Legal, Finance, and Visual  NLP.
+excerpt: John Snow Labs' NLP & LLM ecosystem include software libraries for state-of-the-art AI at scale, Responsible AI, No-Code AI, and access to over 40,000 models for Healthcare, Legal, Finance, and Visual  NLP.
 seotitle: Spark NLP – State of the Art NLP in Python, Java, and Scala – John Snow Labs.
 permalink: /
 header: true

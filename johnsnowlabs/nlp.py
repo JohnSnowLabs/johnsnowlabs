@@ -7,6 +7,8 @@ from johnsnowlabs.auto_install.databricks.endpoints import (
 )
 from johnsnowlabs.auto_install.databricks.work_utils import run_in_databricks
 from johnsnowlabs.auto_install.emr.work_utils import run_in_emr
+from johnsnowlabs.auto_install.snowflake.work_utils import snowflake_common_setup,\
+    deploy_as_snowflake_udf
 
 from .auto_install.health_checks.report import (
     check_health,
@@ -27,7 +29,6 @@ from johnsnowlabs.auto_install.docker.work_utils import (
     send_file_to_server,
 
 )
-
 
 if try_import_lib("sparknlp"):
     import sparknlp
