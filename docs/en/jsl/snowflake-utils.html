@@ -780,13 +780,13 @@ Copy and paste the following script into your streamlit app and run it
 <span class="kn">from</span> <span class="nn">snowflake.snowpark.context</span> <span class="kn">import</span> <span class="n">get_active_session</span>
 <span class="n">session</span> <span class="o">=</span> <span class="n">get_active_session</span><span class="p">()</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">st</span><span class="p">.</span><span class="n">text_area</span><span class="p">(</span><span class="s">"Type Your Text"</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s">'Sample text'</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
-<span class="n">udf_response</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s">"""SELECT JSL_DEIDENTIFY_CLINICAL('</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s">')"""</span><span class="p">,)</span>
+<span class="n">udf_response</span> <span class="o">=</span> <span class="n">session</span><span class="p">.</span><span class="n">sql</span><span class="p">(</span><span class="sa">f</span><span class="s">"""SELECT en_de_identify_clinical_pipeline_service('</span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s">')"""</span><span class="p">,)</span>
 <span class="n">st</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">udf_response</span><span class="p">.</span><span class="n">collect</span><span class="p">()[</span><span class="mi">0</span><span class="p">].</span><span class="n">as_dict</span><span class="p">())</span>
 </code></pre></div>      </div>
     </li>
   </ol>
 
-  <p>For a more advanced streamlit example, see <a href="todo">here</a></p>
+  <p>For a more advanced streamlit example, see <a href="https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/streamlits/advanced_snowflake.py">here</a></p>
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
