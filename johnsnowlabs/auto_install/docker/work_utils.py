@@ -1,13 +1,17 @@
+import mimetypes
 import os
 import subprocess
+from pathlib import Path
 from typing import Optional
+
+import requests
 
 from johnsnowlabs import settings
 from johnsnowlabs.py_models.jsl_secrets import JslSecrets
 from johnsnowlabs.utils.enums import JvmHardwareTarget
 from johnsnowlabs.utils.env_utils import get_folder_of_func
 from johnsnowlabs.utils.py_process import run_cmd_and_check_succ
-import requests
+
 
 def check_image_exist(image_name: str) -> bool:
     cmd = f"docker image inspect {image_name}"
@@ -286,6 +290,47 @@ def serve_container(
     run_cmd_and_check_succ([cmd], shell=True, raise_on_fail=True, use_code=True)
 
 
+def send_file_to_server(file_path, port):
+    """Send a file to the server using multipart/form-data."""
+    try:
+        # Fallback to binary stream type if MIME type is None
+        mime_type = mimetypes.guess_type(file_path)[0] or 'application/octet-stream'
+        files = {'file': (Path(file_path).name, open(file_path, 'rb'), mime_type)}
+        response = requests.post(f"http://localhost:{port}/predict_file", files=files)
+        return response.json()  # Assuming your server responds with JSON
+    except Exception as e:
+        print(f"Error sending file to server: {e}")
+        return None
+
+
+def download_file(url):
+    """Download a file from a URL to the current working directory if it doesn't already exist."""
+    local_filename = url.split('/')[-1]  # Extract the filename from the URL
+    local_filepath = Path(local_filename)
+    if not local_filepath.is_file():  # Check if the file already exists
+        with requests.get(url, stream=True) as r:
+            r.raise_for_status()
+            with open(local_filename, 'wb') as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    f.write(chunk)
+        print(f"File '{local_filename}' downloaded.")
+    else:
+        print(f"File '{local_filename}' already exists.")
+    return local_filename
+
+
+def health_check_ocr_container(port, file_url):
+    if file_url.startswith('http://') or file_url.startswith('https://'):
+        response = send_file_to_server(download_file(file_url), port)
+    elif os.path.exists(file_url):
+        response = send_file_to_server(file_url, port)
+    else:
+        raise ValueError(f'Invalid path {file_url}')
+    print(response)
+    response.raise_for_status()
+    print('Visual Endpoint OK!')
+    return True
+
 
 def check_local_endpoint_health(port):
     url = f"http://localhost:{port}/predict_batch"
@@ -296,12 +341,13 @@ def check_local_endpoint_health(port):
     response = requests.post(url, params=params, headers={"accept": "application/json"})
     print('BATCH PREDICTION UNPARAMETERIZED:')
     print(response.json())
-
+    response.raise_for_status()
     params = {
         "text": "Your text that you want to predict with the model goes here",
     }
     url = f"http://localhost:{port}/predict"
     response = requests.get(url, params=params, headers={"accept": "application/json"})
+    response.raise_for_status()
     print('STRING PREDICTION UNPARAMETERIZED:')
     print(response.json())
 
@@ -315,5 +361,9 @@ def check_local_endpoint_health(port):
         "keep_stranger_features": "true",
     }
     response = requests.get(url, params=params, headers={"accept": "application/json"})
+    response.raise_for_status()
     print('STRING PREDICTION PARAMETERIZED:')
     print(response.json())
+
+    print('NLP Endpoint ok!')
+    return True
