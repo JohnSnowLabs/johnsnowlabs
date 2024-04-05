@@ -15,6 +15,8 @@ if try_import_lib("sparkocr") and try_import_lib("sparknlp"):
 
 from johnsnowlabs import llm
 
+from johnsnowlabs.serve import serve_container, run_container_cmd, build_image
+
 
 def new_version_online():
     from .utils.pip_utils import get_latest_lib_version_on_pypi

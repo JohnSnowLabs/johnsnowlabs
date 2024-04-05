@@ -21,6 +21,14 @@ from .auto_install.install_flow import (
 )
 from .utils.sparksession_utils import start
 
+from johnsnowlabs.auto_install.docker.work_utils import (
+    build_image,
+    serve_container,
+    send_file_to_server,
+
+)
+
+
 if try_import_lib("sparknlp"):
     import sparknlp
     from sparknlp import annotation
@@ -52,3 +60,7 @@ if try_import_lib("warnings"):
 if try_import_lib("nlu"):
     import nlu as nlu
     from nlu import autocomplete_pipeline, load, to_nlu_pipe, to_pretty_df
+
+
+
+
