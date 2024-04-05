@@ -24,6 +24,8 @@ from .utils.sparksession_utils import start
 from johnsnowlabs.auto_install.docker.work_utils import (
     build_image,
     serve_container,
+    send_file_to_server,
+
 )
 
 
