@@ -9,7 +9,6 @@ from fastapi import UploadFile, File
 from starlette.responses import JSONResponse
 
 from johnsnowlabs import *
-print("HELLO DEBUG!!1111111")
 
 os.environ["PYSPARK_PYTHON"] = sys.executable
 os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
@@ -19,33 +18,21 @@ aws_secret_access_key = os.environ.get("JOHNSNOWLABS_AWS_SECRET_ACCESS_KEY", Non
 hardware_target = os.environ.get("HARDWARE_TARGET", "cpu")
 model_ref = os.environ.get("MODEL_TO_LOAD", None)
 
-print(visual_enabled,aws_access_key_id, aws_secret_access_key,hardware_target,model_ref)
-
 nlp_secret = os.environ.get("MEDICAL_SECRET", None)
 nlp_license = os.environ.get("JOHNSNOWLABS_LICENSE", None)
 visual_secret = os.environ.get("VISUAL_SECRET", None)
 
-
-
-# # jars loaded from jsl-home
+# jars loaded from jsl-home
 nlp.start(model_cache_folder="/app/model_cache", aws_access_key=aws_secret_access_key, aws_key_id=aws_access_key_id,
           hc_license=nlp_license, enterprise_nlp_secret=nlp_secret, visual_secret=visual_secret,
           visual=True if visual_secret else False, )
 
-
-# nlp.start(model_cache_folder="/app/model_cache",
-#           aws_access_key=aws_secret_access_key,
-#           aws_key_id=aws_access_key_id,
-#           visual=visual_enabled,
-#           hardware_target=hardware_target)
-model = nlp.load(path="/app/model/served_model",verbose=True)
+model = nlp.load(path="/app/model/served_model", verbose=True)
 if visual_enabled:
     # TODO this needs to be set by NLU
     model.contains_ocr_components = True
 
 
-# nlp.start()
-# model = nlp.load('tokenize')
 
 
 class OutputLevel(Enum):
@@ -106,11 +93,8 @@ async def predict_batch(
 
 @app.post("/predict_file")
 async def upload_file(file: UploadFile = File(...)):
-    print("HELLO DEBUG!!")
     contents = await file.read()
     file_path = f"/tmp/{file.filename}"
-    print(f'Predicting on:',file_path)
-
     with open(file_path, "wb") as f:
         f.write(contents)
     res = model.predict(file_path)
@@ -123,9 +107,14 @@ async def upload_file(file: UploadFile = File(...)):
 async def invoke(request: Request):
     data = await request.json()
     text = [i[1] for i in data["data"]]
+    if len(data['data']) > 0 and len(data['data']) > 1:
+        output_level = data["data"][0][2]
+    else:
+        output_level = 'document'
+
     prediction = model.predict(
         text,
-        output_level="document",
+        output_level=output_level,
         positions=False,
         metadata=False,
         drop_irrelevant_cols=False,

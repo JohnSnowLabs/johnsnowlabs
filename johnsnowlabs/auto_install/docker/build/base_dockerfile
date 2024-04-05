@@ -27,7 +27,7 @@ RUN mkdir /app
 RUN mkdir /app/model_cache
 
 # Install Johnsnowlabs libraries
-RUN pip install johnsnowlabs fastapi uvicorn python-multipart
+RUN pip install johnsnowlabs==5.3.3 fastapi uvicorn python-multipart nbformat
 COPY installer.py /app/installer.py
 RUN python3 /app/installer.py
 
