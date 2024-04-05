@@ -181,7 +181,7 @@ udf_response = session.sql(f"""SELECT JSL_DEIDENTIFY_CLINICAL('{data}')""",)
 st.write(udf_response.collect()[0].as_dict())
 ```
 
-For a more advanced streamlit example, see [here](todo)
+For a more advanced streamlit example, see [here](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/streamlits/advanced_snowflake.py)
 
 
 
