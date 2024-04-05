@@ -183,8 +183,8 @@ def check_and_install_dependencies(
         if not get_pip_lib_version("pyspark", py_exec=python_exec_path).equals(
             LatestCompatibleProductVersion.pyspark.value
         ):
-            # Re-install NLP incase some other library up/downgraded it while we installed it
-            install_results[Software.spark_nlp] = Software.pyspark.install(
+            # Re-install pyspark incase some other library up/downgraded it while we installed it
+            install_results[Software.pyspark] = Software.pyspark.install(
                 re_install=True,
                 version=LatestCompatibleProductVersion.pyspark.value,
                 py_path=python_exec_path,

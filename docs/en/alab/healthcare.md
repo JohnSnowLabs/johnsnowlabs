@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: NLP Libraries Integration
 permalink: /docs/en/alab/healthcare
 key: docs-training
@@ -46,7 +46,7 @@ pre {
 }
 </style>
 
- <a href="/docs/en/licensed_install">Healthcare NLP</a> provides an easy to use module for interacting with Annotation Lab with minimal code. In this section, you can find the instructions for performing specific operations using the annotation lab module of the <a href="/docs/en/licensed_install">Healthcare NLP</a> library. You can execute these instructions in a python notebook (Jupyter, Colab, Kaggle, etc.).
+ <a href="/docs/en/licensed_install">Healthcare NLP</a> provides an easy to use module for interacting with Generative AI Lab with minimal code. In this section, you can find the instructions for performing specific operations using the annotation lab module of the <a href="/docs/en/licensed_install">Healthcare NLP</a> library. You can execute these instructions in a python notebook (Jupyter, Colab, Kaggle, etc.).
 
 Before running the instructions described in the following sub-sections, some initial environment setup needs to be performed in order to configure the Healthcare NLP library and start a Spark session.
 
@@ -150,7 +150,7 @@ Master local[*]
 AppName Spark NLP Licensed
 ```
 {:.info}
-**Using already exported JSON to generate training data - _No Annotation Lab Credentials Required_**
+**Using already exported JSON to generate training data - _No Generative AI Lab Credentials Required_**
 
 ```py
 # import the module
@@ -180,7 +180,7 @@ alab_demo.json      100%[===================>]  64.98K  --.-KB/s    in 0.01s
 ## Generating training data for different models
 
 {:.info}
-**_No Annotation Lab Credentials Required_. Only the exported JSON is used.**
+**_No Generative AI Lab Credentials Required_. Only the exported JSON is used.**
 
 ### Classification Model
 
@@ -189,7 +189,7 @@ The following snippet shows how to generate data for training a classification m
 ```py
 alab.get_classification_data(
 
-    # required: path to Annotation Lab JSON export
+    # required: path to Generative AI Lab JSON export
     input_json_path='alab_demo.json',
 
     # optional: set to True to select ground truth completions, False to select latest completions,
@@ -225,7 +225,7 @@ alab.get_conll_data(
     # required: Spark session with spark-nlp-jsl jar
     spark=spark,
 
-    # required: path to Annotation Lab JSON export
+    # required: path to Generative AI Lab JSON export
     input_json_path="alab_demo.json",
 
     # required: name of the CoNLL file to save
@@ -245,10 +245,10 @@ alab.get_conll_data(
     # optional: set a pattern to use regex tokenizer, defaults to regular tokenizer if pattern not defined
     regex_pattern="\\s+|(?=[-.:;*+,$&%\\[\\]])|(?<=[-.:;*+,$&%\\[\\]])"
 
-    # optional: list of Annotation Lab task IDs to exclude from CoNLL, defaults to empty list
+    # optional: list of Generative AI Lab task IDs to exclude from CoNLL, defaults to empty list
     # excluded_task_ids = [2, 3]
 
-    # optional: list of Annotation Lab task titles to exclude from CoNLL, defaults to None
+    # optional: list of Generative AI Lab task titles to exclude from CoNLL, defaults to None
     # excluded_task_titles = ['Note 1']
 
 )
@@ -322,7 +322,7 @@ alab.get_assertion_data(
     # required: SparkSession with spark-nlp-jsl jar
     spark=spark,
 
-    # required: path to Annotation Lab JSON export
+    # required: path to Generative AI Lab JSON export
     input_json_path = 'alab_demo.json',
 
     # required: annotated assertion labels to train on
@@ -353,10 +353,10 @@ alab.get_assertion_data(
     # occurrences of that NER label if `unannotated_label_strategy` is 'counts'
     unannotated_label_strategy_dict = {'PROBLEM': 0.5, 'TREATMENT': 0.5},
 
-    # optional: list of Annotation Lab task IDs to exclude from output dataframe, defaults to None
+    # optional: list of Generative AI Lab task IDs to exclude from output dataframe, defaults to None
     # excluded_task_ids = [2, 3]
 
-    # optional: list of Annotation Lab task titles to exclude from output dataframe, defaults to None
+    # optional: list of Generative AI Lab task titles to exclude from output dataframe, defaults to None
     # excluded_task_titles = ['Note 1']
 
 )
@@ -404,7 +404,7 @@ alab.get_relation_extraction_data(
     # required: Spark session with spark-nlp-jsl jar
     spark=spark,
 
-    # required: path to Annotation Lab JSON export
+    # required: path to Generative AI Lab JSON export
     input_json_path='alab_demo.json',
 
     # optional: set to True to select ground truth completions, False to select latest completions,
@@ -415,7 +415,7 @@ alab.get_relation_extraction_data(
     # defaults to False
     negative_relations=True,
 
-    # optional: all assertion labels that were annotated in the Annotation Lab, defaults to None
+    # optional: all assertion labels that were annotated in the Generative AI Lab, defaults to None
     assertion_labels=['ABSENT'],
 
     # optional: plausible pairs of entities for relations, separated by a '-', use the same casing as the
@@ -435,10 +435,10 @@ alab.get_relation_extraction_data(
     # 'counts', defaults to None
     negative_relation_strategy_dict = {'DATE-PROBLEM': 0.1, 'TREATMENT-PROBLEM': 0.5, 'TEST-PROBLEM': 0.2},
 
-    # optional: list of Annotation Lab task IDs to exclude from output dataframe, defaults to None
+    # optional: list of Generative AI Lab task IDs to exclude from output dataframe, defaults to None
     # excluded_task_ids = [2, 3]
 
-    # optional: list of Annotation Lab task titles to exclude from output dataframe, defaults to None
+    # optional: list of Generative AI Lab task titles to exclude from output dataframe, defaults to None
     # excluded_task_titles = ['Note 1']
 
 )
@@ -489,7 +489,7 @@ Total annotated NER labels processed: 28
 ## Generate Pre-annotations using Spark NLP pipelines
 
 {:.info}
-**No Annotation Lab credentials are required.**
+**No Generative AI Lab credentials are required.**
 
 The first step is to define the Healthcare NLP pipeline. The same procedure can be followed for Legal and Finance NLP pipelines. 
 
@@ -643,7 +643,7 @@ pre_annotations, summary = alab.generate_preannotations(
 Processing 2 Annotations.
 ```
 
-The Generated JSON can be uploaded to Annotation Lab to particular project directly via UI or via [API](https://nlp.johnsnowlabs.com/docs/en/alab/healthcare#upload-pre-annotations-to-annotation-lab).
+The Generated JSON can be uploaded to Generative AI Lab to particular project directly via UI or via [API](https://nlp.johnsnowlabs.com/docs/en/alab/healthcare#upload-pre-annotations-to-annotation-lab).
 
 ```sh
 pre_annotations
@@ -1274,7 +1274,7 @@ An annotation summary is also generated that can be used to [setup and configure
 }
 ```
 
-## Interacting with Annotation Lab
+## Interacting with Generative AI Lab
 
 {:.info}
 **Credentials are required for the following actions.**
@@ -1297,7 +1297,7 @@ alab.set_credentials(
     # required: password
     password=password,
 
-    # required: secret for you Annotation Lab instance (every Annotation Lab installation has a different secret)
+    # required: secret for you Generative AI Lab instance (every Generative AI Lab installation has a different secret)
     client_secret=client_secret,
 
     # required: http(s) url for you annotation lab
@@ -1679,7 +1679,7 @@ Operation completed successfully. Response code: 200
 
 <br />
 
-### Upload pre-annotations to Annotation Lab
+### Upload pre-annotations to Generative AI Lab
 
 You can get the data for `pre_annotations` from [this section](https://nlp.johnsnowlabs.com/docs/en/alab/healthcare#generate-json-containing-pre-annotations-using-a-spark-nlp-pipeline).
 

@@ -30,10 +30,6 @@ from johnsnowlabs.auto_install.docker.work_utils import (
 
 )
 
-
-
-
-
 if try_import_lib("sparknlp"):
     import sparknlp
     from sparknlp import annotation

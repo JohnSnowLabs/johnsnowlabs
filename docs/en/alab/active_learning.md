@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Active Learning  
 permalink: /docs/en/alab/active_learning
 key: docs-training

@@ -34,6 +34,7 @@ This pretrained model maps MedDRA-LLT (Lowest Level Term) codes to corresponding
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
+
 document_assembler = DocumentAssembler()\
       .setInputCol('text')\
       .setOutputCol('doc')
@@ -118,3 +119,4 @@ val result = mapper_model.transform(data)
 This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.
 
 **To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
+

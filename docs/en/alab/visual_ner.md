@@ -30,7 +30,7 @@ The entire process is illustrated below:
 
 ## Support for multi-page PDF documents
 
-When a valid Saprk OCR license is available, Annotation Lab offers support for multi-page PDF annotation. The complete flow of import, annotation, and export for multi-page PDF files is currently supported.
+When a valid Saprk OCR license is available, Generative AI Lab offers support for multi-page PDF annotation. The complete flow of import, annotation, and export for multi-page PDF files is currently supported.
 
 Users have two options for importing a new PDF file into the Visual NER project
 - Import PDF file from local storage;
@@ -47,7 +47,7 @@ On the labeling page, the PDF file is displayed with pagination so that annotato
 
 ## OCR and Visual NER servers
 
-Just like (preannotation servers)[], Annotation Lab 3.0.0 also supports the deployment of multiple OCR servers. If a user has uploaded a Spark OCR license, be it airgap or floating, OCR inference is enabled. 
+Just like (preannotation servers)[], Generative AI Lab 3.0.0 also supports the deployment of multiple OCR servers. If a user has uploaded a Spark OCR license, be it airgap or floating, OCR inference is enabled. 
 
 To create a Visual NER project, users have to deploy at least one OCR server. Any OCR server can perform preannotation. To select the OCR server, users have to go to the Import page, toggle the OCR option and from the popup, choose one of the available OCR servers. In no suitable OCR server is available, one can be created by choosing the “Create Server” option.
 
@@ -59,7 +59,7 @@ With release 3.4.0 came support for Visual NER Automated Preannotation and Model
 
 ### Visual NER Training Support
 
-Version 3.4.0 of the Annotation Lab offers the ability to train Visual NER models, apply active learning for automatic model training, and preannotate image-based tasks with existing models in order to accelerate annotation work.
+Version 3.4.0 of the Generative AI Lab offers the ability to train Visual NER models, apply active learning for automatic model training, and preannotate image-based tasks with existing models in order to accelerate annotation work.
 
 #### License Requirements
 

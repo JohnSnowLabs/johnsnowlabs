@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Backup and Restore
 permalink: /docs/en/alab/backup_restore
 key: docs-training
@@ -47,7 +47,7 @@ backup.files=false
 
 #### Configure Backup from the UI
 
-In 2.8.0 release, Annotation Lab added support for defining database and files backups via the UI. An _admin_ user can view and edit the backup settings under the **Settings** menu. Users can select different backup periods and can specify a target S3 bucket for storing the backup files. New backups will be automatically generated and saved to the S3 bucket following the defined schedule.
+In 2.8.0 release, Generative AI Lab added support for defining database and files backups via the UI. An _admin_ user can view and edit the backup settings under the **Settings** menu. Users can select different backup periods and can specify a target S3 bucket for storing the backup files. New backups will be automatically generated and saved to the S3 bucket following the defined schedule.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/backupRestoreUI.png" style="width:100%;"/>
 
@@ -55,7 +55,7 @@ In 2.8.0 release, Annotation Lab added support for defining database and files b
 
 #### Database
 
-To restore Annotation Lab from a backup you need a fresh installation of Annotation Lab. Install it using `annotationlab-install.sh`. Now, download the latest backup from your S3 bucket and move the archive to `restore/database/` directory. Next, go to the `restore/database/` directory and execute script `restore_all_databases.sh` with the name of your backup archive as the argument.
+To restore Generative AI Lab from a backup you need a fresh installation of Generative AI Lab. Install it using `annotationlab-install.sh`. Now, download the latest backup from your S3 bucket and move the archive to `restore/database/` directory. Next, go to the `restore/database/` directory and execute script `restore_all_databases.sh` with the name of your backup archive as the argument.
 
 For example:
 
@@ -67,7 +67,7 @@ sudo ./restore_all_databases.sh 2022-04-14-annotationlab-all-databases.tar.xz
 > **Note:** <br>
 >
 > 1. You need `xz` and `bash` installed to execute this script. <br>
-> 2. This script works only with backups created by Annotation Lab backup system. <br>
+> 2. This script works only with backups created by Generative AI Lab backup system. <br>
 > 3. Run this script with `sudo` command
 
 After database restore complete you can check logs in `restore_log` directory created by restore script.
@@ -86,14 +86,14 @@ sudo ./restore_files.sh 2022-04-14-annotationlab-files.tar
 > **Note:** <br>
 >
 > 1. You need `bash` installed to execute this script. <br>
-> 2. This script works only with backups created by Annotation Lab backup system. <br>
+> 2. This script works only with backups created by Generative AI Lab backup system. <br>
 > 3. Run this script with `sudo` command
 
 <br>
 
 #### Reboot
 
-After restoring database and files, reboot Annotation Lab:
+After restoring database and files, reboot Generative AI Lab:
 
 ```
 sudo reboot

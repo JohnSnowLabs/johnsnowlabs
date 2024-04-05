@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Overview
 permalink: /docs/en/alab/tags_overview
 key: docs-training
@@ -13,10 +13,10 @@ sidebar:
   nav: annotation-lab
 ---
 
-NLP Lab enables the utilization of XML-like tags to configure the labeling interface. NLP Lab contains three distinct tag types for labeling management:
+Generative AI Lab enables the utilization of XML-like tags to configure the labeling interface. Generative AI Lab contains three distinct tag types for labeling management:
 
 - `Object tags` serve for data types, presenting labeled elements within a task, which can be labeled as video, audio, HTML, images, PDF, and text.
-- `Control tags` facilitate the annotation of objects. For instance, labels are employed in semantic and named entity tasks, and choices for classification tasks inside NLP Lab.
+- `Control tags` facilitate the annotation of objects. For instance, labels are employed in semantic and named entity tasks, and choices for classification tasks inside Generative AI Lab.
 - `Visual tags` allow for changes to the visual elements of the labelling interface, giving control over the presentation of particular labeling choices or the presence of a header.
 
 ## Custom Labeling Configuration

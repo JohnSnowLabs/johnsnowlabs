@@ -28,6 +28,7 @@ This pretrained model maps ICD-10 codes to corresponding MedDRA LLT (Lowest Leve
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
 
+
 ## How to use
 
 <div class="tabs-box" markdown="1">
@@ -52,7 +53,7 @@ resolver2chunk = Resolution2Chunk()\
     .setInputCols(["icd10_code"])\
     .setOutputCol("icd102chunk")
 
-chunkerMapper = ChunkMapperModel.load("icd10_meddra_llt_mapper"")\
+chunkerMapper = ChunkMapperModel.load("icd10_meddra_llt_mapper")\
     .setInputCols(["icd102chunk"])\
     .setOutputCol("mappings")
 
@@ -87,7 +88,7 @@ val resolver2chunk = Resolution2Chunk()
     .setInputCols(Array("icd10_code"))
     .setOutputCol("icd102chunk")
 
-val chunkerMapper = ChunkMapperModel.load("icd10_meddra_llt_mapper"")\
+val chunkerMapper = ChunkMapperModel.load("icd10_meddra_llt_mapper")\
     .setInputCols(Array("icd102chunk"))
     .setOutputCol("mappings")
 
@@ -131,8 +132,10 @@ val result = mapper_model.transform(data)
 |Language:|en|
 |Size:|231.8 KB|
 
+
 ## References
 
 This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset. 
 
 **To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
+
