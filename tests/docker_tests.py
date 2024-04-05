@@ -1,7 +1,7 @@
-import base64
 import time
+from typing import List
 
-import requests
+import pytest
 
 from johnsnowlabs import settings, nlp
 from johnsnowlabs.auto_install.docker.work_utils import (
@@ -9,50 +9,27 @@ from johnsnowlabs.auto_install.docker.work_utils import (
     run_container_cmd,
     _destroy_container,
     _destroy_image,
-    check_local_endpoint_health,
+    check_local_endpoint_health, health_check_ocr_container,
 
 )
 from johnsnowlabs.utils.py_process import run_cmd_and_check_succ
 
-def serialize(file_path):
-    try:
-        with open(file_path, 'rb') as file:
-            binary_content = file.read()
-        base64_encoded_content = base64.b64encode(binary_content)
-        return base64_encoded_content.decode()  # Convert bytes to string for easy handling
-    except Exception as e:
-        print(f"Error serializing file: {e}")
-        return None
-
-from pathlib import Path
-
-def send_file_to_server(file_path, url):
-    """Send a file to the server using multipart/form-data."""
-    try:
-        files = {'file': (Path(file_path).name, open(file_path, 'rb'), 'image/png')}
-        response = requests.post(url, files=files)
-        return response.json()  # Assuming your server responds with JSON
-    except Exception as e:
-        print(f"Error sending file to server: {e}")
-        return None
-
-# https://github.com/JohnSnowLabs/nlp-server/blob/main/nlp_server/routers/licenses.py
-
-def test_quick():
-    port = 8548
-    params = {
-        "text": ["Your text that you want to predict with the model goes here",
-                 'It can also be a list of strings'],
-    }
-    url = f"http://localhost:{port}/invoke"
-    response = requests.post(url, params=params, headers={"accept": "application/json"})
-    print('INVOKE:')
-    print(response.json())
 
 
+import requests
+import pandas as pd
 
+visual_model_to_data = {
+    "pdf2text": "https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/pdf/haiku.pdf",
+    "doc2text": "https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/docx/resume_001.docx",
+    "img2text": "https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/images/haiku.png",
+    "en.classify_image.convnext.tiny": "https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/images/teapot.jpg",
+    "pdf2table": "https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/table_pdf_highlightable_text/data.pdf",
+    "doc2table": "https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/docx_with_table/doc2.docx",
+    "ppt2table": "https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/table_PPT/54111.ppt", }
 
-def check_build_serve_query(nlu_ref, port, json_license_path=None, destroy_container=True, destroy_image=True):
+def check_build_serve_query(nlu_ref, port, json_license_path=None, destroy_container=True, destroy_image=True,
+                            visual=False, file_url=None):
     # build if missing
     container_name = f"{nlu_ref}_container"
     image_name = f"{nlu_ref}_img"
@@ -62,7 +39,8 @@ def check_build_serve_query(nlu_ref, port, json_license_path=None, destroy_conta
         f"{nlu_ref}_img",
         rebuild=True,
         use_cache=False,
-        json_license_path=json_license_path
+        visual=visual,
+        json_license_path=json_license_path,
     )
     # Serve container, destroy if already running
     nlp.serve_container(
@@ -75,10 +53,15 @@ def check_build_serve_query(nlu_ref, port, json_license_path=None, destroy_conta
     # Wait for spark session start and model loading
     # Todo need todo exponential backoff because sie models take different time to load
     time.sleep(130)
-    check_local_endpoint_health(port)
+    if visual:
+        if not file_url:
+            raise ValueError('file_url not specified but required for visual model')
+        health_check_ocr_container(port, file_url)
+
+    else:
+        check_local_endpoint_health(port)
 
     # Print container logs
-
     run_cmd_and_check_succ(
         f"docker logs {container_name}",
         shell=True,
@@ -107,6 +90,7 @@ def test_serve_container_open_source():
     port = 8541
     check_build_serve_query(nlu_ref, port, json_license_path=None)
 
+
 def test_serve_container_medical():
     nlu_ref = "en.med_ner.cancer_genetics.pipeline"
     port = 8549
@@ -114,46 +98,51 @@ def test_serve_container_medical():
     check_build_serve_query(nlu_ref, port, json_license_path=p)
 
 
-def test_serve_container_ocr():
-    nlu_ref = "img2text"
+def send_invoke(port, data, output_level='document'):
+    url = f"http://localhost:{port}/invoke"
+    data_to_send = {'data': []}
+    if isinstance(data, List):
+        for i, text in enumerate(data):
+            data_to_send['data'].append([i, text, output_level])
+    elif isinstance(data, str):
+        data_to_send['data'].append([0, data, output_level])
+    else:
+        raise ValueError(f'Invalid data type {type(data)} must be string or list of strings')
+    response = requests.post(url, json=data_to_send)
+    if response.status_code == 200:
+        data_list = [item[1] for item in response.json()["data"]]
+        df = pd.DataFrame(data_list)
+
+        return df
+    else:
+        ValueError(f"Failed to get a successful response, status code: {response.status_code}")
+
+
+def test_invoke():
+    data = ['First piece of text', 'second piece of text. With two sentences']
+    print(send_invoke(8000, data, 'document'))
+    print(send_invoke(8000, data, 'sentence'))
+    print(send_invoke(8000, data, 'token'))
+
+
+@pytest.mark.parametrize("model,url", list(visual_model_to_data.items()))
+def test_serve_and_query_container_ocr(model, url):
+    # pdf2text, iamg2 text ok! doc2text wierd output?
+    #x2table crash. classifyimage crash!
     port = 8541
-    container_name = f"{nlu_ref}_container"
-    image_name = f"{nlu_ref}_img"
-
-    nlp.build_image(
-        nlu_ref,
-        f"{nlu_ref}_img",
-        rebuild=True,
-        use_cache=False,
-        visual=True
-    )
-    # Serve container, destroy if already running
-    nlp.serve_container(
-        destroy_container=True,
-        image_name=image_name,
-        container_name=container_name,
-        host_port=port,
-    )
-
-
-
-def test_ocr_container():
-    nlu_ref = "img2text"
-    port = 8541
-
-    # b = serialize()
-    file = '/media/ckl/dump1/Documents/freelance/MOST_RECENT/jsl/nlu/nlu4realgit3/tests/datasets/ocr/images/haiku.png'
-    container_name = f"{nlu_ref}_container"
-    url = f"http://localhost:{port}/predict_file"
-    response = send_file_to_server(file,url)
-    # response = requests.post(url, params=params, headers={"accept": "application/json"})
-    print(response)
-
+    p = '/home/ckl/Documents/freelance/jsl/endpoints/endpoints/creds/license_airgap.json'
+    print(f'{"#" * 50} Testing Model={model} for data={url} {"#" * 50}')
+    check_build_serve_query(
+        model,
+        port,
+        file_url=url,
+        json_license_path=p,
+        visual=True, )
 
 
 def test_serve_container_open_source():
     nlu_ref = "tokenize"
-    port = 8548
+    port = 8513
     check_build_serve_query(nlu_ref, port, None, False, False)
 
 
