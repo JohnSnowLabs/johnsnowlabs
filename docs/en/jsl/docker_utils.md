@@ -147,13 +147,11 @@ and then sent to server.
 ```python
 from johnsnowlabs import nlp 
 # assuming pdf2text_container is on port 8547
-file_path = 'https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/pdf/haiku.pdf'
+! wget https://raw.githubusercontent.com/JohnSnowLabs/nlu/master/tests/datasets/ocr/pdf/haiku.pdf
 endpoint = 'http://localhost:8547/predict_file'
-response = nlp.send_file_to_server(file_path,endpoint)
+response = nlp.send_file_to_server('haiku.pdf',endpoint)
 print(response.json())
-
 ```
-
 
 
 </div>
