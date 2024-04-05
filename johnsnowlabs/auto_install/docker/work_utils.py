@@ -297,6 +297,7 @@ def send_file_to_server(file_path, port):
         mime_type = mimetypes.guess_type(file_path)[0] or 'application/octet-stream'
         files = {'file': (Path(file_path).name, open(file_path, 'rb'), mime_type)}
         response = requests.post(f"http://localhost:{port}/predict_file", files=files)
+        response.raise_for_status()
         return response.json()  # Assuming your server responds with JSON
     except Exception as e:
         print(f"Error sending file to server: {e}")
@@ -327,8 +328,6 @@ def health_check_ocr_container(port, file_url):
     else:
         raise ValueError(f'Invalid path {file_url}')
     print(response)
-    response.raise_for_status()
-    print('Visual Endpoint OK!')
     return True
 
 
