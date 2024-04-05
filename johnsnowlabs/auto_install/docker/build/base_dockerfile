@@ -1,0 +1,40 @@
+FROM ubuntu:20.04
+ENV PYSPARK_PYTHON=python3
+ENV PYSPARK_DRIVER_PYTHON=python3
+ENV DEBIAN_FRONTEND noninteractive
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+RUN export JAVA_HOME
+RUN echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/" >> ~/.bashrc
+ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
+
+
+RUN apt-get update && apt-get install -y \
+         python3 \
+         python3-dev \
+         python3-pip \
+         wget \
+         openjdk-8-jdk \
+         git-core
+
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# Add Tini
+ADD https://github.com/krallin/tini/releases/download/v0.19.0/tini /usr/local/bin/tini
+RUN chmod +x /usr/local/bin/tini
+
+# Setup folders
+RUN mkdir /app
+RUN mkdir /app/model_cache
+
+# Install Johnsnowlabs libraries
+RUN pip install johnsnowlabs  fastapi uvicorn python-multipart nbformat
+COPY installer.py /app/installer.py
+RUN python3 /app/installer.py
+
+
+# Setup Fast-API app
+WORKDIR /app
+COPY app.py /app/app.py
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "80"]
+ENTRYPOINT ["/usr/local/bin/tini", "--"]
+
