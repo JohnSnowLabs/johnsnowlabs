@@ -177,11 +177,11 @@ import streamlit as st
 from snowflake.snowpark.context import get_active_session
 session = get_active_session()
 data = st.text_area("Type Your Text", value='Sample text', height=200)
-udf_response = session.sql(f"""SELECT JSL_DEIDENTIFY_CLINICAL('{data}')""",)
+udf_response = session.sql(f"""SELECT en_de_identify_clinical_pipeline_service('{data}')""",)
 st.write(udf_response.collect()[0].as_dict())
 ```
 
-For a more advanced streamlit example, see [here](todo)
+For a more advanced streamlit example, see [here](https://github.com/JohnSnowLabs/johnsnowlabs/blob/main/streamlits/advanced_snowflake.py)
 
 
 
