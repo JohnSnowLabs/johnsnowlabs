@@ -7,8 +7,8 @@ date: 2024-04-08
 tags: [licensed, en, clinical, ner, social_determinants, public_health, sdoh, core]
 task: Named Entity Recognition
 language: en
-edition: Healthcare NLP 5.3.0
-spark_version: 3.4
+edition: Healthcare NLP 5.3.1
+spark_version: 3.0
 supported: true
 annotator: MedicalNerModel
 article_header:
@@ -58,8 +58,8 @@ SDOH NER model is designed to detect and label social determinants of health (SD
 {:.btn-box}
 [Live Demo](https://demo.johnsnowlabs.com/healthcare/SDOH/){:.button.button-orange}
 [Open in Colab](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/healthcare-nlp/27.0.Social_Determinant_of_Health_Models.ipynb){:.button.button-orange.button-orange-trans.co.button-icon}
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_core_en_5.3.0_3.4_1712549542813.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_core_en_5.3.0_3.4_1712549542813.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_core_en_5.3.1_3.0_1712549542813.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/ner_sdoh_core_en_5.3.1_3.0_1712549542813.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
@@ -183,7 +183,7 @@ val result = pipeline.fit(data).transform(data)
 {:.table-model}
 |---|---|
 |Model Name:|ner_sdoh_core|
-|Compatibility:|Healthcare NLP 5.3.0+|
+|Compatibility:|Healthcare NLP 5.3.1+|
 |License:|Licensed|
 |Edition:|Official|
 |Input Labels:|[sentence, token, embeddings]|
