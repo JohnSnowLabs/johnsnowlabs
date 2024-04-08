@@ -67,6 +67,7 @@ SDOH NER model is designed to detect and label social determinants of health (SD
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
