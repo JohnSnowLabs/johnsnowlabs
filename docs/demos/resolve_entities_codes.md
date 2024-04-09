@@ -32,7 +32,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ER_SNOMED
           - text: Colab
             type: blue_btn
-            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_SNOMED.ipynb        
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_SNOMED.ipynb
         - title: Map clinical terminology to ICD-10-CM taxonomy
           id: icd10-cm_coding
           image: 
@@ -56,7 +56,19 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ER_RXNORM/
           - text: Colab
             type: blue_btn
-            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_RXNORM.ipynb              
+            url: https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_RXNORM.ipynb    
+        - title: MEDDRA
+          id: meddra
+          image: 
+              src: /assets/images/MEDDRA.svg
+          excerpt: This demo returns MedDRA codes corresponding to clinical terms.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/ER_MEDDRA/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_MEDDRA.ipynb
         - title: Map healthcare codes between taxonomies
           id: logical-observation-identifiers-names-and-codes
           image: 
@@ -80,7 +92,7 @@ data:
             url: https://demo.johnsnowlabs.com/healthcare/ER_LOINC/
           - text: Colab
             type: blue_btn
-            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_LOINC.ipynb        
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/ER_LOINC.ipynb
         - title: Resolve Clinical Health Information using the HPO taxonomy
           id: resolve_clinical_health_information_using_hpo_taxonomy 
           image: 

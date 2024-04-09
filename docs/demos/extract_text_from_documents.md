@@ -92,5 +92,17 @@ data:
             url: https://demo.johnsnowlabs.com/ocr/TEXT_DETECTION_DIT/
           - text: Colab
             type: blue_btn
-            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageTextDetection.ipynb        
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageTextDetection.ipynb
+        - title: Recognize Printed
+          id: recognize_printed 
+          image: 
+              src: /assets/images/Recognize_Printed.svg
+          excerpt: This demo includes details about how to recognize printed information in documents using our pre-trained Spark OCR models.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/RECOGNIZE_PRINTED/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrImageToTextPrinted_V2_opt.ipynb
 ---
