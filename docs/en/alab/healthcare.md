@@ -46,7 +46,7 @@ pre {
 }
 </style>
 
- <a href="/docs/en/licensed_install">Healthcare NLP</a> provides an easy to use module for interacting with Generative AI Lab with minimal code. In this section, you can find the instructions for performing specific operations using the annotation lab module of the <a href="/docs/en/licensed_install">Healthcare NLP</a> library. You can execute these instructions in a python notebook (Jupyter, Colab, Kaggle, etc.).
+ <a href="/docs/en/licensed_install">Healthcare NLP</a> provides an easy to use module for interacting with Generative AI Lab with minimal code. In this section, you can find the instructions for performing specific operations using the Generative AI Lab module of the <a href="/docs/en/licensed_install">Healthcare NLP</a> library. You can execute these instructions in a python notebook (Jupyter, Colab, Kaggle, etc.).
 
 Before running the instructions described in the following sub-sections, some initial environment setup needs to be performed in order to configure the Healthcare NLP library and start a Spark session.
 
@@ -1300,7 +1300,7 @@ alab.set_credentials(
     # required: secret for you Generative AI Lab instance (every Generative AI Lab installation has a different secret)
     client_secret=client_secret,
 
-    # required: http(s) url for you annotation lab
+    # required: http(s) url for you Generative AI Lab
     annotationlab_url=annotationlab_url
 
     )
