@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/utils/deidentification_utils/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -351,25 +354,27 @@ document.write(`
 <dt class="sig sig-object py" id="sparknlp_jsl.utils.deidentification_utils.structured_deidentifier">
 <span class="sig-name descname"><span class="pre">structured_deidentifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spark</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_file_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'deidentified.csv'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">separator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">','</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns_dict</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ref_source</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'faker'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscateRefFile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">columns_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shift_days</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">date_formats</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">language</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id_column</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.utils.deidentification_utils.structured_deidentifier" title="Permalink to this definition">#</a></dt>
 <dd><p>This method is used to deidentify structured data. It takes the input as a file path and returns a deidentified dataframe and a file in csv/json format.</p>
-<section id="parameters">
-<h4>Parameters:<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h4>
-<p>input_file_path (str): The path of the input file.
-output_file_path (str): The path of the output file.
-separator (str): The seperator of the input csv file.
-columns_dict (dict): A dictionary that contains the column names and the tags that should be used for deidentification.
-ref_source (str): The source of the reference file. It can be “faker” or “file”.
-obfuscateRefFile (str): The path of the reference file for obfuscation.
-columns_seed (int): The seed value for the random number generator.
-shift_days (int): The number of days to be shifted.
-date_formats (list): A list of date formats.
-language (str): The language used to select faker entities. Options: ‘en’(English), ‘de’(German), ‘es’(Spanish), ‘fr’(French), ‘ar’(Arabic) or ‘ro’(Romanian). Default:’en’.
-idColumn (str): The column that contains the id of the row. If provided, data will obfuscate consistently by idColumn, especially date entities.</p>
-</section>
-<section id="returns">
-<h4>Returns:<a class="headerlink" href="#returns" title="Permalink to this heading">#</a></h4>
-<p>Spark DataFrame: A deidentified dataframe.
-csv/json file: A deidentified file.</p>
-</section>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> (<em>idColumn</em>) – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>dict</strong><strong>)</strong> (<em>columns_dict</em>) – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>int</strong><strong>)</strong> (<em>shift_days</em>) – </p></li>
+<li><p><strong>(</strong><strong>int</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>list</strong><strong>)</strong> (<em>date_formats</em>) – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>(</strong><strong>str</strong><strong>)</strong> – </p></li>
+<li><p><strong>Returns</strong> – </p></li>
+<li><p><strong>-------</strong> – </p></li>
+<li><p><strong>DataFrame</strong> (<em>Spark</em>) – </p></li>
+<li><p><strong>file</strong> (<em>csv/json</em>) – </p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>

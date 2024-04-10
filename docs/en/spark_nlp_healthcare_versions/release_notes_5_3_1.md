@@ -62,7 +62,7 @@ Introducing 2 new Sentence Entity Resolver Models  `sbiobertresolve_meddra_lowes
 | Model Name                                                            |      Description            |
 |-----------------------------------------------------------------------|-----------------------------|
 | [`sbiobertresolve_meddra_lowest_level_term`](https://nlp.johnsnowlabs.com/2024/03/24/sbiobertresolve_meddra_lowest_level_term_en.html) | This model maps clinical terms to their corresponding MedDRA LLT (Lowest Level Term) codes. |
-| [`sbiobertresolve_meddra_preferred_term`](https://nlp.johnsnowlabs.com/2024/03/04/sbiobertresolve_meddra_preferred_term_en.html) | This model maps clinical terms to their corresponding MedDRA PT (Preferred Term) codes. |
+| [`sbiobertresolve_meddra_preferred_term`](https://nlp.johnsnowlabs.com/2024/03/24/sbiobertresolve_meddra_preferred_term_en.html) | This model maps clinical terms to their corresponding MedDRA PT (Preferred Term) codes. |
 
 
 *Example*:
@@ -73,23 +73,26 @@ meddra_resolver = SentenceEntityResolverModel.load("sbiobertresolve_meddra_lowes
      .setOutputCol("meddra_llt_code")\
      .setDistanceFunction("EUCLIDEAN")
 
-text= """This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia."""
+text= """This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis."""
 ```
 
 *Result*:
 
-|                     chunk|           label|meddra_llt_code|              resolution|           all_codes|            all_resolutions|
-|--------------------------|----------------|---------------|------------------------|--------------------|---------------------------|
-|                              tobacco|                  Smoking|       10067622|                  tobacco interaction|10067622,10086359...|tobacco interaction,tobaccoism,tobac...|
-|                         hypertension|             Hypertension|       10020772|                         hypertension|10020772,10020790...|hypertension,hypertension secondary,...|
-|          chronic renal insufficiency|           Kidney_Disease|       10050441|          chronic renal insufficiency|10050441,10009122...|chronic renal insufficiency,chronic ...|
-|chronic obstructive pulmonary disease|Disease_Syndrome_Disorder|       10009033|chronic obstructive pulmonary disease|10009033,10009032...|chronic obstructive pulmonary diseas...|
-|                            gastritis|Disease_Syndrome_Disorder|       10017853|                            gastritis|10017853,10060703...|gastritis,verrucous gastritis,antral...|
-|            transient ischemic attack|  Cerebrovascular_Disease|       10072760|            transient ischemic attack|10072760,10044390...|transient ischemic attack,transient ...|
-|              cardiac catheterization|                Procedure|       10048606|              cardiac catheterization|10048606,10007527...|cardiac catheterization,cardiac cath...|
-|   left main coronary artery stenosis|            Heart_Disease|       10090240|   left main coronary artery stenosis|10090240,10072048...|left main coronary artery stenosis,l...|
-|                          hypotension|               VS_Finding|       10021097|                          hypotension|10021097,10021107...|hypotension,hypotensive,arterial hyp...|
-|                          bradycardia|               VS_Finding|       10006093|                          bradycardia|10006093,10040741...|bradycardia,sinus bradycardia,centra...|
+|                         ner_chunk|begin|end|                   entity|meddra_llt_code|                        resolution|                                               all_k_results|                                           all_k_resolutions|
+|----------------------------------|-----|---|-------------------------|---------------|----------------------------------|------------------------------------------------------------|------------------------------------------------------------|
+|                           tobacco|   52| 58|                  Smoking|       10067622|               tobacco interaction|10067622:::10086359:::10057581:::10082288:::10009180:::10...|tobacco interaction:::tobaccoism:::tobacco user:::exposur...|
+|                      hypertension|   72| 83|             Hypertension|       10020772|                      hypertension|10020772:::10020790:::10088636:::10081425:::10015488:::10...|hypertension:::hypertension secondary:::systemic hyperten...|
+|       chronic renal insufficiency|   86|112|           Kidney_Disease|       10050441|       chronic renal insufficiency|10050441:::10009122:::10009119:::10075441:::10038474:::10...|chronic renal insufficiency:::chronic renal impairment:::...|
+|                        bronchitis|  123|132|Disease_Syndrome_Disorder|       10006451|                        bronchitis|10006451:::10006448:::10008841:::10085668:::10061736:::10...|bronchitis:::bronchiolitis:::chronic bronchitis:::capilla...|
+|                         gastritis|  135|143|Disease_Syndrome_Disorder|       10017853|                         gastritis|10017853:::10060703:::10076492:::10070814:::10088553:::10...|gastritis:::verrucous gastritis:::antral gastritis:::corr...|
+|                   ischemic attack|  150|164|  Cerebrovascular_Disease|       10072760|         transient ischemic attack|10072760:::10060848:::10060772:::10061216:::10055221:::10...|transient ischemic attack:::ischemic cerebral infarction:...|
+|           cardiac catheterization|  280|302|                Procedure|       10048606|           cardiac catheterization|10048606:::10007527:::10054343:::10007815:::10053451:::10...|cardiac catheterization:::cardiac catheterisation:::cathe...|
+|left main coronary artery stenosis|  319|352|            Heart_Disease|       10090240|left main coronary artery stenosis|10090240:::10072048:::10084343:::10011089:::10083430:::10...|left main coronary artery stenosis:::left anterior descen...|
+|                       hypotension|  380|390|               VS_Finding|       10021097|                       hypotension|10021097:::10021107:::10066331:::10066077:::10036433:::10...|hypotension:::hypotensive:::arterial hypotension:::diasto...|
+|                       bradycardia|  396|406|               VS_Finding|       10006093|                       bradycardia|10006093:::10040741:::10078310:::10064883:::10065585:::10...|bradycardia:::sinus bradycardia:::central bradycardia:::r...|
+|                      colon cancer|  451|462|              Oncological|       10009944|                      colon cancer|10009944:::10009989:::10009957:::10061451:::10007330:::10...|colon cancer:::colonic cancer:::colon carcinoma:::colorec...|
+|                         mucositis|  485|493|                      ADE|       10028127|                         mucositis|10028127:::10065880:::10065900:::10006525:::10021960:::10...|mucositis:::laryngeal mucositis:::tracheal mucositis:::bu...|
+|                        dermatitis|  499|508|                      ADE|       10012431|                        dermatitis|10012431:::10048768:::10003639:::10012470:::10073737:::10...|dermatitis:::dermatosis:::atopic dermatitis:::dermatitis ...|
 
 - 6 ChunkMapper Models for Medical Code Mapping to Map Various Medical Terminologies Across Each Other
 
@@ -139,20 +142,31 @@ from sparknlp.pretrained import PretrainedPipeline
 
 meddra_llt_pipeline = PretrainedPipeline.from_disk("meddra_llt_resolver_pipeline")
 
-result = meddra_llt_pipeline.fullAnnotate('This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack.')
+result = meddra_llt_pipeline.fullAnnotate('This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis.')
 ```
 
 *Result*:
 
 
-|chunk                                 |label                    |meddra_llt_code|resolution                           |icd10_mappings                                                                     |meddra_pt_mappings                             |
-|--------------------------------------|-------------------------|---------------|-------------------------------------|-----------------------------------------------------------------------------------|-----------------------------------------------|
-|tobacco                               |Smoking                  |10067622       |tobacco interaction                  |NONE                                                                               |10067622:Tobacco interaction                   |
-|hypertension                          |Hypertension             |10020772       |hypertension                         |O10:Pre-existing hypertension complicating pregnancy, childbirth and the puerperium|10020772:Hypertension                          |
-|chronic renal insufficiency           |Kidney_Disease           |10050441       |chronic renal insufficiency          |NONE                                                                               |10064848:Chronic kidney disease                |
-|chronic obstructive pulmonary disease |Disease_Syndrome_Disorder|10009033       |chronic obstructive pulmonary disease|J44:Other chronic obstructive pulmonary disease                                    |10009033:Chronic obstructive pulmonary disease |
-|gastritis                             |Disease_Syndrome_Disorder|10017853       |gastritis                            |K29.6:Other gastritis                                                              |10017853:Gastritis                             |
-|transient ischemic attack             |Cerebrovascular_Disease  |10072760       |transient ischemic attack            |NONE                                                                               |10044390:Transient ischaemic attack            |
+
+|chunk                                 |label                    |meddra_llt_code|resolution                        |icd10_mappings                                   |meddra_pt_mappings                             |
+|--------------------------------------|-------------------------|---------------|----------------------------------|-------------------------------------------------|-----------------------------------------------|
+|tobacco                               |Smoking                  |10067622       |tobacco interaction               |NONE                                             |10067622:Tobacco interaction                   |
+|benign hypertension                   |PROBLEM                  |10004455       |benign secondary hypertension     |NONE                                             |10039834:Secondary hypertension                |
+|chronic renal insufficiency           |Kidney_Disease           |10050441       |chronic renal insufficiency       |NONE                                             |10064848:Chronic kidney disease                |
+|chronic bronchitis                    |PROBLEM                  |10008841       |chronic bronchitis                |NONE                                             |10006458:Bronchitis chronic                    |
+|gastritis                             |Disease_Syndrome_Disorder|10017853       |gastritis                         |K29.6:Other gastritis                            |10017853:Gastritis                             |
+|ischemic attack                       |Cerebrovascular_Disease  |10072760       |transient ischemic attack         |NONE                                             |10044390:Transient ischaemic attack            |
+|ST elevation                          |PROBLEM                  |10041887       |st elevated                       |NONE                                             |10014392:Electrocardiogram ST segment elevation|
+|cardiac catheterization               |Procedure                |10048606       |cardiac catheterization           |Y84.0:Cardiac catheterization                    |10007815:Catheterisation cardiac               |
+|the left main coronary artery stenosis|PROBLEM                  |10090240       |left main coronary artery stenosis|NONE                                             |10011089:Coronary artery stenosis              |
+|hypotension                           |VS_Finding               |10021097       |hypotension                       |I95:Hypotension                                  |10021097:Hypotension                           |
+|bradycardia                           |VS_Finding               |10006093       |bradycardia                       |R00.1:Bradycardia, unspecified                   |10006093:Bradycardia                           |
+|the side effects                      |PROBLEM                  |10044252       |toxic symptom                     |NONE                                             |10070863:Toxicity to various agents            |
+|a colon cancer                        |PROBLEM                  |10009944       |colon cancer                      |NONE                                             |10009944:Colon cancer                          |
+|mucositis                             |ADE                      |10028127       |mucositis                         |NONE                                             |10028116:Mucosal inflammation                  |
+|dermatitis                            |ADE                      |10012431       |dermatitis                        |L27:Dermatitis due to substances taken internally|10012431:Dermatitis                            |
+
 
 **Important note**: To utilize these MedDRA models/pipelines, possession of a valid MedDRA license is requisite. When you want to use these models and pipelines, you will receive a warning like below.  If you possess a valid MedDRA license and wish to use this model, kindly contact us at support@johnsnowlabs.com.
 
