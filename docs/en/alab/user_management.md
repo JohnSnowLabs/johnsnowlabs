@@ -62,7 +62,7 @@ A user with the admin privilege can change the login credentials for another use
 
 ## SAML Integration
 
-AnnotationLab supports Security Assertion Markup Language (SAML). To login to AnnotationLab using SAML, follow the steps below.
+ supports Security Assertion Markup Language (SAML). To login to Generative AI Lab using SAML, follow the steps below.
 
 ### SAML Server Setup
 
@@ -78,7 +78,7 @@ docker run --rm --name mysamlserver -p 8081:8080 -p 8443:8443 -e SIMPLESAMLPHP_S
 
 Follow the steps described below to setup a SAML connection.
 
-1. Goto AnnotationLab Keyclock console and navigate to `Identity Providers` under `Configure` on the left-side menu.
+1. Goto Generative AI Lab Keyclock console and navigate to `Identity Providers` under `Configure` on the left-side menu.
 
 2. Choose `SAML v2.0` from Add Provider drop-down menu and a configuration page should appear.
 

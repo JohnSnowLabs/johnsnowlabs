@@ -124,7 +124,7 @@ If you have access to backend CLI then you can follow the steps below to fix fau
    ./k3s-installer.sh
    ```
 
-4. Run the annotation lab installer
+4. Run the Generative AI Lab installer
 
    ```sh
    ./annotationlab-installer.sh
