@@ -2423,6 +2423,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
         <th>EMR <br /> Optimized Pipeline</th>
         <th>EC2 Instance <br /> Base Pipeline</th>
         <th>EC2 Instance <br /> Optimized Pipeline</th>
+        <th>Databricks <br /> Base Pipeline</th>
+        <th>Databricks <br />  Optimized Pipeline</th>
       </tr>
     </thead>
     <tbody>
@@ -2432,6 +2434,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
         <td>2 min 45 sec</td>
         <td>7 min 6 sec</td>
         <td><strong>3 min 26 sec</strong></td>
+        <td><strong>10 min 10 sec</strong></td>
+        <td><strong>6 min 2 sec</strong></td>
       </tr>
       <tr>
         <td>512</td>
@@ -2439,6 +2443,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
         <td>2 min 30 sec</td>
         <td><strong>6 min 56 sec</strong></td>
         <td>3 min 41 sec</td>
+        <td>10 min 16 sec</td>
+        <td>6 min 11 sec</td>
       </tr>
       <tr>
         <td>256</td>
@@ -2446,6 +2452,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
         <td><strong>2 min 30 sec</strong></td>
         <td>9 min 10 sec</td>
         <td>5 min 18 sec</td>
+        <td>10 min 22 sec</td>
+        <td>6 min 14 sec</td>
       </tr>
       <tr>
         <td>128</td>
@@ -2453,6 +2461,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
         <td>2 min 30 sec</td>
         <td>14 min 30 sec</td>
         <td>7 min 51 sec</td>
+        <td>10 min 21 sec</td>
+        <td>5 min 53 sec</td>
       </tr>
       <tr>
         <td>64</td>
@@ -2460,6 +2470,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
         <td>3 min 8 sec</td>
         <td>18 min 59 sec</td>
         <td>9 min 9 sec</td>
+        <td>12 min 42 sec</td>
+        <td>6 min 50 sec</td>
       </tr>
       <tr>
         <td>32</td>
@@ -2467,6 +2479,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
         <td>3 min 43 sec</td>
         <td>18 min 47.2 sec</td>
         <td>9 min 18 sec</td>
+        <td>12 min 55 sec</td>
+        <td>7 min 40 sec</td>
       </tr>
       <tr>
         <td>16</td>
@@ -2474,6 +2488,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
         <td>4 min 57 sec</td>
         <td>12 min 47.5 sec</td>
         <td>6 min 14 sec</td>
+        <td>15 min 59 sec</td>
+        <td>9 min 18 sec</td>
       </tr>
       <tr>
         <td>8</td>
@@ -2481,6 +2497,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
         <td>8 min 8 sec</td>
         <td>16 min 52 sec</td>
         <td>8 min 48 sec</td>
+        <td>22 min 40 sec</td>
+        <td>13 min 26 sec</td>
       </tr>
     </tbody>
   </table>
@@ -2491,7 +2509,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
     <li>EMR Optimized Pipeline: partition number: 256, 10K cost:<strong>$0.54</strong>, 1M cost:<strong>$54.04</strong></li>
     <li>EC2 Instance  Base Pipeline: partition number: 512, 10K cost:<strong>$0.36</strong>, 1M cost:<strong>$35.70</strong></li>
     <li>EC2 Instance  Optimized Pipeline: partition number: 1024, 10K cost:<strong>$0.18</strong>, 1M cost:<strong>$17.85</strong></li>
-    <li>DataBricks results will be published soon.</li>
+    <li>DataBricks Base Pipeline: partition number: 1024, 10K cost:<strong>$0.46</strong>, 1M cost:<strong>$45.76</strong></li>
+    <li>DataBricks  Optimized Pipeline: partition number: 1024, 10K cost:<strong>$0.27</strong>, 1M cost:<strong>$27.13</strong></li>
   </ul>
 
   <h2 id="cpu-ner-benchmarks">CPU NER Benchmarks</h2>
