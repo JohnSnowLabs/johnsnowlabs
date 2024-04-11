@@ -3,9 +3,9 @@ layout: docs
 header: true
 seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
-permalink: /docs/en/spark_ocr_versions/release_notes_5_2_0
+permalink: /docs/en/spark_ocr_versions/release_notes_5_3_1
 key: docs-ocr-release-notes
-modify_date: "2024-02-23"
+modify_date: "2024-04-11"
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -88,7 +88,7 @@ ocr = ImageToTextV2.pretrained("ocr_base_printed_v2_opt", "en", "clinical/ocr") 
     .setIncludeConfidence(True)
 ```
 
-![image](/assets/images/ocr/confidence_score.png)
+![image](/assets/images/ocr/confidence_scores.png)
 
 Check this [updated notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/TextRecognition/SparkOcrImageToTextV2.ipynb) for an end-to-end example.
 
@@ -130,8 +130,6 @@ ImageDrawRegions is the annotator used for rendering regions into images so we c
 
 ### Bug Fixes
 + PdfToImage resetting page information when used in the same pipeline as PdfToText: When the sequence {PdfToText, PdfToImage} was used the original pages computed at PdfToText where resetted to zero by PdfToImage.
-
-
 
 
 </div><div class="prev_ver h3-box" markdown="1">
