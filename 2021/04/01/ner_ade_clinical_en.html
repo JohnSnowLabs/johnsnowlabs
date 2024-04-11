@@ -599,58 +599,59 @@ function wrapWordInSpan(data, wordToWrap) {
   <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
 <span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.med_ner.ade.clinical"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Hypersensitivity to aspirin can be manifested as acute asthma, urticaria and/or angioedema, or a systemic anaphylactoid reaction."""</span><span class="p">)</span>
 </code></pre></div>  </div>
+</div>
 
-  <h2 id="results">Results</h2>
+<h2 id="result">Result</h2>
 
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------------------+-----+---+---------+
-|                          chunk|begin|end|ner_label|
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+-------------------------------+-----+---+---------+
+|chunk                          |begin|end|ner_label|
 +-------------------------------+-----+---+---------+
-|                        aspirin|   20| 26|     DRUG|
-|                   acute asthma|   49| 60|      ADE|
-|                      urticaria|   63| 71|      ADE|
-|                     angioedema|   80| 89|      ADE|
-|systemic anaphylactoid reaction|   97|127|      ADE|
+|aspirin                        |20   |26 |DRUG     |
+|acute asthma                   |49   |60 |ADE      |
+|urticaria                      |63   |71 |ADE      |
+|angioedema                     |80   |89 |ADE      |
+|systemic anaphylactoid reaction|97   |127|ADE      |
 +-------------------------------+-----+---+---------+
-</code></pre></div>  </div>
+</code></pre></div></div>
 
-  <h2 class="model-param" id="model-information">Model Information</h2>
+<h2 class="model-param" id="model-information">Model Information</h2>
 
-  <table class="table-model">
-    <tbody>
-      <tr>
-        <td>Model Name:</td>
-        <td>ner_ade_clinical</td>
-      </tr>
-      <tr>
-        <td>Compatibility:</td>
-        <td>Healthcare NLP 3.0.0+</td>
-      </tr>
-      <tr>
-        <td>License:</td>
-        <td>Licensed</td>
-      </tr>
-      <tr>
-        <td>Edition:</td>
-        <td>Official</td>
-      </tr>
-      <tr>
-        <td>Input Labels:</td>
-        <td>[sentence, token, embeddings]</td>
-      </tr>
-      <tr>
-        <td>Output Labels:</td>
-        <td>[ner]</td>
-      </tr>
-      <tr>
-        <td>Language:</td>
-        <td>en</td>
-      </tr>
-    </tbody>
-  </table>
+<table class="table-model">
+  <tbody>
+    <tr>
+      <td>Model Name:</td>
+      <td>ner_ade_clinical</td>
+    </tr>
+    <tr>
+      <td>Compatibility:</td>
+      <td>Healthcare NLP 3.0.0+</td>
+    </tr>
+    <tr>
+      <td>License:</td>
+      <td>Licensed</td>
+    </tr>
+    <tr>
+      <td>Edition:</td>
+      <td>Official</td>
+    </tr>
+    <tr>
+      <td>Input Labels:</td>
+      <td>[sentence, token, embeddings]</td>
+    </tr>
+    <tr>
+      <td>Output Labels:</td>
+      <td>[ner]</td>
+    </tr>
+    <tr>
+      <td>Language:</td>
+      <td>en</td>
+    </tr>
+  </tbody>
+</table>
 
-  <h2 id="benchmarking">Benchmarking</h2>
+<h2 id="benchmarking">Benchmarking</h2>
 
-  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------+-------+------+------+-------+---------+------+------+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------+-------+------+------+-------+---------+------+------+
 |entity|     tp|    fp|    fn|  total|precision|recall|    f1|
 +------+-------+------+------+-------+---------+------+------+
 |  DRUG|17470.0|1436.0|1951.0|19421.0|    0.924|0.8995|0.9116|
@@ -668,8 +669,7 @@ function wrapWordInSpan(data, wordToWrap) {
 +------------------+
 |0.8774545383517981|
 +------------------+
-</code></pre></div>  </div>
-</div>
+</code></pre></div></div>
 </div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2021-04-01T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

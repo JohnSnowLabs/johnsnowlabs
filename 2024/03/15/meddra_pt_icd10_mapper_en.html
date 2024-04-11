@@ -542,7 +542,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="n">mapperModel</span>
 <span class="p">])</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"10000153.0"</span><span class="p">],</span> <span class="p">[</span><span class="s">"10000081.0"</span><span class="p">],</span> <span class="p">[</span><span class="s">"10039085.0"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"10000153"</span><span class="p">],</span> <span class="p">[</span><span class="s">"10000081"</span><span class="p">],</span> <span class="p">[</span><span class="s">"10039085"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
 <span class="n">mapper_model</span> <span class="o">=</span> <span class="n">mapper_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">mapper_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -567,7 +567,7 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="n">mapperModel</span>
 <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"10000153.0"</span><span class="o">,</span> <span class="s">"10000081.0"</span><span class="o">,</span> <span class="s">"10039085.0"</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"10000153"</span><span class="o">,</span> <span class="s">"10000081"</span><span class="o">,</span> <span class="s">"10039085"</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">mapper_model</span> <span class="k">=</span> <span class="nv">mapper_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">mapper_model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
