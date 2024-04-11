@@ -15,7 +15,7 @@ sidebar:
 
 The _admin_ user can now define the infrastructure configurations for the prediction and training tasks.
 
-### Resource allocation for Training and Preannotation
+## Resource allocation for Training and Pre-annotation
 
 Generative AI Lab gives users the ability to change the configuration for the training and pre-annotation processes. This is done from the `Settings` > `Infrastructure` page. The settings can be edited by _admin_ user and they are read-only for the other users. The Infrastructure page consists of three sections namely `Resource For Training`, `Resource For Preannotation Server`, `Resources for Prenotation Pipeline`.
 
@@ -27,3 +27,9 @@ Generative AI Lab gives users the ability to change the configuration for the tr
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.3.0/infrastructure.png" style="width:100%;"/>
 
 > **Note:** If the specified configurations exceed the available resources, the server will not start.
+
+### GPU Resource Availability
+If the Generative AI Lab is equipped with a GPU, the following message will be displayed on the infrastructure page:  
+
+"**GPU Resource Available**".
+![infra](/assets/images/annotation_lab/6.0.0/1.png)

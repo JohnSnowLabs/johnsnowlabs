@@ -51,6 +51,43 @@ In 2.8.0 release, Generative AI Lab added support for defining database and file
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/backupRestoreUI.png" style="width:100%;"/>
 
+### Migrate your NLP Lab Backup to Generative AI Lab 6
+
+Migrating to the new version is easy! Users who are using an older version of the NLP Lab can migrate their annotated data and configured settings to the new Generative AI Lab 6 through our Backup and Restore feature. This process enables users to back up their data and files from a CPU-based instance to the cloud of their choice (Azure Blob/AWS S3) and then restore the configurations to a GPU-based instance. You must follow the steps outlined below to seamlessly back up and restore all your data from an old instance to the new Generative AI Lab 6.
+
+<iframe src="/assets/images/annotation_lab/6.0.0/BackupAndRestore.mp4" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+**Follow these steps to migrate your data**:
+#### 1. Backup Data:
+- Navigate to the Backup page of your CPU-based instance.
+- Enter backup details.
+- Schedule an immediate backup via backend modification: 
+```bash
+kubectl edit cronjob
+```
+- Monitor the backup pod status: 
+```bash
+kubectl get pods
+```
+#### 2. Verify Backup:
+- Upon completion, your backed-up database and files will be visible in cloud storage.
+
+#### 3. Restore Data:
+- Access the backend of your target GPU-based instance.
+- Transfer backed-up data from cloud storage to artifacts/restore/database.
+- Perform database restoration: 
+```bash
+sudo ./restore_all_databases.sh <backed-up_database_name>
+```
+- Copy backed-up files from cloud storage to artifacts/restore/files.
+- Execute file restoration: 
+```bash
+sudo ./restore_files.sh <backed-up_files_name>
+```
+#### 4. Verify Restoration:
+- Access the UI, all data and files should now be successfully restored.
+
+
 ## Restore
 
 #### Database
