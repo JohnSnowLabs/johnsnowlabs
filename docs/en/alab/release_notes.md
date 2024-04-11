@@ -199,6 +199,7 @@ Previously, within the label metadata, multiple spaces were considered as a sing
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_0_1">6.0.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_6_0_0">6.0.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_9_3">5.9.3</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_9_2">5.9.2</a></li>
