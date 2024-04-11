@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Configurations
 permalink: /docs/en/alab/annotation_configurations
 key: docs-training
@@ -36,7 +36,7 @@ Using the classical annotation workflow, when an annotator works on a task, a se
 4. Confirm submission
 5. Load next task
 
-This process is adapted for more complex workflows and large tasks. For simple projects with smaller tasks, Annotation Lab now offers a simplified workflow. Annotators can submit a completion with just one click.
+This process is adapted for more complex workflows and large tasks. For simple projects with smaller tasks, Generative AI Lab now offers a simplified workflow. Annotators can submit a completion with just one click.
 
 The Project Owner/Manager can activate this option from the <es>Settings</es> dialog (Customize Labels) in the <es>Configuration</es> step of the <es>Setup</es> page. Once enabled, annotators can see the submit button on the labeling page. A second option is available on the same dialog for Project Owner/Manager: _Serve next task after completion submission_. Once enabled, annotators can see the next task on the labeling page after submitting the completion for the current task.
 
@@ -127,7 +127,7 @@ The Labeling editor is highly customizable. Project Owners and Managers can chan
 
 ### Search filter for a large number of labels
 
-When a project has a large number of NER/Assertion labels in the taxonomy, the display of the taxonomy takes a lot of screen space, and it is difficult for annotators to navigate through all labels. To tackle this challenge, Annotation Lab supports search for labels in NER projects (an autocomplete search option).
+When a project has a large number of NER/Assertion labels in the taxonomy, the display of the taxonomy takes a lot of screen space, and it is difficult for annotators to navigate through all labels. To tackle this challenge, Generative AI Lab supports search for labels in NER projects (an autocomplete search option).
 
 To add the search bar for NER Labels or Choices, use the `Filter` tag as shown in the following XML configuration.
 
@@ -233,13 +233,13 @@ we'll obtain the output illustrated below:
 
 ## Comments on the Labeling Page
 
-Since version 4.10.0, NLP Lab offers enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature enhances the communication between the annotators, improves work efficiency and enhances productivity. In order to use this feature, there is a New Burger menu at the top right corner of the labeling page. The dropdown through this menu allows users to add, update, and delete comments.
+Since version 4.10.0, Generative AI Lab offers enhanced comment feature for labeling pages, enabling users to easily add, update, and delete comments within labeling pages. This feature enhances the communication between the annotators, improves work efficiency and enhances productivity. In order to use this feature, there is a New Burger menu at the top right corner of the labeling page. The dropdown through this menu allows users to add, update, and delete comments.
 
 ![Comments](/assets/images/annotation_lab/4.10.0/2-min.gif)
 
 ## Tags from the Labeling Screen
 
-From version 4.10 onwards, NLP Lab introduces an enhanced tags feature for labeling pages. This addition offers users a convenient method to create, attach, and delete tags directly on the labeling page. It greatly enhances organization and boosts productivity by streamlining task management, granting users greater flexibility in classifying and monitoring their labeled data. Similar to the aforementioned comment feature, this can also be accessed from the burger menu at the top right corner of the labeling page. From the dropdown, select "Assign Tags".
+From version 4.10 onwards, Generative AI Lab introduces an enhanced tags feature for labeling pages. This addition offers users a convenient method to create, attach, and delete tags directly on the labeling page. It greatly enhances organization and boosts productivity by streamlining task management, granting users greater flexibility in classifying and monitoring their labeled data. Similar to the aforementioned comment feature, this can also be accessed from the burger menu at the top right corner of the labeling page. From the dropdown, select "Assign Tags".
 
 ![tags](/assets/images/annotation_lab/4.10.0/3-min.gif)
 
@@ -253,6 +253,6 @@ Label configuration editor and <es>Preview Window</es> covers 50/50 part of the 
 
 ## Switch Role
 
-For users having multiple roles (_Annotator/Reviewer/Manager_) the labeling page can get confusing. Switch Role filter present on the top-right corner can help address this problem. This filter was introduced in Annotation Lab from version <bl>2.6.0</bl>, previously refered to as <es>View As</es> filter. When selecting _Annotator_ option, the view changes to facilitate annotating the task. Similar changes to the view applies when switching to _Reviewer_ or _Manager_ option. The selection persists even when the tab is closed or refreshed.
+For users having multiple roles (_Annotator/Reviewer/Manager_) the labeling page can get confusing. Switch Role filter present on the top-right corner can help address this problem. This filter was introduced in Generative AI Lab from version <bl>2.6.0</bl>, previously refered to as <es>View As</es> filter. When selecting _Annotator_ option, the view changes to facilitate annotating the task. Similar changes to the view applies when switching to _Reviewer_ or _Manager_ option. The selection persists even when the tab is closed or refreshed.
 
 <img class="image image__shadow image__align--center" src="/assets/images/annotation_lab/4.1.0/switch_role.png" style="width:40%;"/>

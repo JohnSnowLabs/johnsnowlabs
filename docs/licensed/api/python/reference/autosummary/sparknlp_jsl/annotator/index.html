@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../static/doctools.js"></script>
     <script src="../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../static/toggleprompt.js"></script>
+    <script src="../../../../static/clipboard.min.js"></script>
+    <script src="../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/annotator/index';</script>
     <link rel="shortcut icon" href="../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../genindex.html" />
@@ -271,6 +274,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="assertion/assertionDL/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertionDL</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -465,6 +469,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="assertion/assertionDL/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertionDL</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker</span></code></a><ul>
@@ -611,13 +616,18 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.resolution">
-<span class="sig-name descname"><span class="pre">resolution</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.resolution" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker">
+<span class="sig-name descname"><span class="pre">chunker</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification">
 <span class="sig-name descname"><span class="pre">classification</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.context">
+<span class="sig-name descname"><span class="pre">context</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.context" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -631,13 +641,18 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.keyword">
-<span class="sig-name descname"><span class="pre">keyword</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.keyword" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.embeddings">
+<span class="sig-name descname"><span class="pre">embeddings</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.embeddings" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.context">
-<span class="sig-name descname"><span class="pre">context</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.context" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier">
+<span class="sig-name descname"><span class="pre">generic_classifier</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.keyword">
+<span class="sig-name descname"><span class="pre">keyword</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.keyword" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -651,11 +666,6 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.generic_classifier">
-<span class="sig-name descname"><span class="pre">generic_classifier</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.generic_classifier" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.qa">
 <span class="sig-name descname"><span class="pre">qa</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.qa" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
@@ -666,8 +676,13 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.chunker">
-<span class="sig-name descname"><span class="pre">chunker</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.chunker" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.regex">
+<span class="sig-name descname"><span class="pre">regex</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.regex" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.resolution">
+<span class="sig-name descname"><span class="pre">resolution</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.resolution" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
@@ -676,18 +691,13 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.windowed">
-<span class="sig-name descname"><span class="pre">windowed</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.windowed" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py data">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.splitter">
 <span class="sig-name descname"><span class="pre">splitter</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.splitter" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.regex">
-<span class="sig-name descname"><span class="pre">regex</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.regex" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.windowed">
+<span class="sig-name descname"><span class="pre">windowed</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.windowed" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -726,22 +736,23 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#package-contents">Package Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.assertion"><code class="docutils literal notranslate"><span class="pre">assertion</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution"><code class="docutils literal notranslate"><span class="pre">resolution</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker"><code class="docutils literal notranslate"><span class="pre">chunker</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification"><code class="docutils literal notranslate"><span class="pre">classification</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context"><code class="docutils literal notranslate"><span class="pre">context</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.deid"><code class="docutils literal notranslate"><span class="pre">deid</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.disambiguation"><code class="docutils literal notranslate"><span class="pre">disambiguation</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.embeddings"><code class="docutils literal notranslate"><span class="pre">embeddings</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier"><code class="docutils literal notranslate"><span class="pre">generic_classifier</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.keyword"><code class="docutils literal notranslate"><span class="pre">keyword</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.context"><code class="docutils literal notranslate"><span class="pre">context</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.merge"><code class="docutils literal notranslate"><span class="pre">merge</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.ner"><code class="docutils literal notranslate"><span class="pre">ner</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.generic_classifier"><code class="docutils literal notranslate"><span class="pre">generic_classifier</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.qa"><code class="docutils literal notranslate"><span class="pre">qa</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re"><code class="docutils literal notranslate"><span class="pre">re</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.chunker"><code class="docutils literal notranslate"><span class="pre">chunker</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq"><code class="docutils literal notranslate"><span class="pre">seq2seq</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.windowed"><code class="docutils literal notranslate"><span class="pre">windowed</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter"><code class="docutils literal notranslate"><span class="pre">splitter</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.regex"><code class="docutils literal notranslate"><span class="pre">regex</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.resolution"><code class="docutils literal notranslate"><span class="pre">resolution</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.seq2seq"><code class="docutils literal notranslate"><span class="pre">seq2seq</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.splitter"><code class="docutils literal notranslate"><span class="pre">splitter</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.windowed"><code class="docutils literal notranslate"><span class="pre">windowed</span></code></a></li>
 </ul>
 </li>
 </ul>

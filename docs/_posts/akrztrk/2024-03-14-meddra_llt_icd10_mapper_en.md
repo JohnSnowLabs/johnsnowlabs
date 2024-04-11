@@ -34,6 +34,7 @@ This pretrained model maps MedDRA-LLT (Lowest Level Term) codes to corresponding
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
+
 document_assembler = DocumentAssembler()\
       .setInputCol('text')\
       .setOutputCol('doc')
@@ -54,7 +55,7 @@ mapper_pipeline = Pipeline(stages=[
     mapperModel
 ])
 
-data = spark.createDataFrame([["10045275.0"], ["10067585.0"], ["10026182.0"]]).toDF("text")
+data = spark.createDataFrame([["10045275"], ["10067585"], ["10026182"]]).toDF("text")
 
 mapper_model = mapper_pipeline.fit(data)
 result = mapper_model.transform(data)
@@ -80,7 +81,7 @@ val mapper_pipeline = new Pipeline().setStages(Array(
     mapperModel
 )
 
-val data = Seq("10045275.0", "10067585.0", "10026182.0").toDF("text")
+val data = Seq("10045275", "10067585", "10026182").toDF("text")
 
 val mapper_model = mapper_pipeline.fit(data)
 val result = mapper_model.transform(data)
@@ -118,3 +119,4 @@ val result = mapper_model.transform(data)
 This model is trained with the January 2024 release of ICD-10 to MedDRA Map dataset.
 
 **To utilize this model, possession of a valid MedDRA license is requisite. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
+

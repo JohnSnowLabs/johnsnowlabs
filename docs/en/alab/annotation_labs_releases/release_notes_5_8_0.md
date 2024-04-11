@@ -135,6 +135,7 @@ The upgrade pathway in NLP Lab has been refined in version 5.8, particularly add
 
 When initiating an upgrade to version 5.8 or beyond, users will be prompted to enter the new admin password, should it have been modified. This step is designed to automate the admin password update, thereby removing the need for manual adjustments to configuration files. Users who have not changed their admin password can simply proceed by pressing "Enter." This enhancement not only streamlines the upgrade process but also minimizes the likelihood of errors and saves valuable time.
 ### Bug Fixes
+
 - **Filter in Models Hub page incorrectly lists Pipelines when Healthcare is selected in edition filter**
     
     In the past, when utilizing filters on the Models Hub page to display healthcare-type models, pipelines were inadvertently included in the list. The filter conditions have now been refined to accurately distinguish between models and pipelines. As a result, the Models Hub page no longer displays OCR pipelines when filtered specifically for healthcare-related content.

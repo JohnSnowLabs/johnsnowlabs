@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/annotator/classification/document_log_classifier/index';</script>
     <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
@@ -271,6 +274,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertionDL/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertionDL</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -474,7 +478,8 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DocumentLogRegClassifierApproach</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach" title="Permalink to this definition">#</a></dt>
-<dd><p>Trains a model to classify documents with a Logarithmic Regression algorithm. Training data requires columns for
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorApproachInternal</span></code></p>
+<p>Trains a model to classify documents with a Logarithmic Regression algorithm. Training data requires columns for
 text and their label. The result is a trained GenericClassifierModel.</p>
 <table class="table">
 <thead>
@@ -490,22 +495,15 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>labelCol</strong></dt><dd><p>Column with the value result we are trying to predict.</p>
-</dd>
-<dt><strong>maxIter</strong></dt><dd><p>maximum number of iterations.</p>
-</dd>
-<dt><strong>tol</strong></dt><dd><p>convergence tolerance after each iteration.</p>
-</dd>
-<dt><strong>fitIntercept</strong></dt><dd><p>whether to fit an intercept term, default is true.</p>
-</dd>
-<dt><strong>labels</strong></dt><dd><p>array to output the label in the original form.</p>
-</dd>
-<dt><strong>vectorizationModelPath</strong></dt><dd><p>specify the vectorization model if it has been already trained.</p>
-</dd>
-<dt><strong>classificationModelPath</strong></dt><dd><p>specify the classification model if it has been already trained.</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>labelCol</strong> – Column with the value result we are trying to predict.</p></li>
+<li><p><strong>maxIter</strong> – maximum number of iterations.</p></li>
+<li><p><strong>tol</strong> – convergence tolerance after each iteration.</p></li>
+<li><p><strong>fitIntercept</strong> – whether to fit an intercept term, default is true.</p></li>
+<li><p><strong>labels</strong> – array to output the label in the original form.</p></li>
+<li><p><strong>vectorizationModelPath</strong> – specify the vectorization model if it has been already trained.</p></li>
+<li><p><strong>classificationModelPath</strong> – specify the classification model if it has been already trained.</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -554,28 +552,8 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 </pre></div>
 </div>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.inputAnnotatorTypes">
-<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.outputAnnotatorType">
-<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.labelCol">
-<span class="sig-name descname"><span class="pre">labelCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.labelCol" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.maxIter">
-<span class="sig-name descname"><span class="pre">maxIter</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.maxIter" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.tol">
-<span class="sig-name descname"><span class="pre">tol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.tol" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.classificationModelPath">
+<span class="sig-name descname"><span class="pre">classificationModelPath</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.classificationModelPath" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -584,8 +562,63 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.labelCol">
+<span class="sig-name descname"><span class="pre">labelCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.labelCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.labels">
 <span class="sig-name descname"><span class="pre">labels</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.labels" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.maxIter">
+<span class="sig-name descname"><span class="pre">maxIter</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.maxIter" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.tol">
+<span class="sig-name descname"><span class="pre">tol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.tol" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -593,49 +626,223 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 <span class="sig-name descname"><span class="pre">vectorizationModelPath</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.vectorizationModelPath" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.classificationModelPath">
-<span class="sig-name descname"><span class="pre">classificationModelPath</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.classificationModelPath" title="Permalink to this definition">#</a></dt>
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.fit" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a model to the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset.</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em> or </em><em>list</em><em> or </em><em>tuple</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params. If a list/tuple of
+param maps is given, this calls fit on each param map and returns a list of
+models.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>fitted model(s)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code> or a list of <code class="xref py py-class docutils literal notranslate"><span class="pre">Transformer</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.fitMultiple">
+<span class="sig-name descname"><span class="pre">fitMultiple</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">paramMaps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.fitMultiple" title="Permalink to this definition">#</a></dt>
+<dd><p>Fits a model to the input dataset for each param map in <cite>paramMaps</cite>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 2.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset.</p></li>
+<li><p><strong>paramMaps</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">collections.abc.Sequence</span></code>) – A Sequence of param maps.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A thread safe iterable which contains one model for each param map. Each
+call to <cite>next(modelIterator)</cite> will return <cite>(index, model)</cite> where model was fit
+using <cite>paramMaps[index]</cite>. <cite>index</cite> values may not be sequential.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">_FitMultipleIterator</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.inputColsValidation" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setLabelColumn">
-<span class="sig-name descname"><span class="pre">setLabelColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setLabelColumn" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets column with the value result we are trying to predict.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>label</strong><span class="classifier">str</span></dt><dd><p>Column with the value result we are trying to predict.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setMaxIter">
-<span class="sig-name descname"><span class="pre">setMaxIter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setMaxIter" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets maximum number of iterations.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>k</strong><span class="classifier">int</span></dt><dd><p>Maximum number of iterations.</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setTol">
-<span class="sig-name descname"><span class="pre">setTol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setTol" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets  convergence tolerance after each iteration.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setClassificationModelPath">
+<span class="sig-name descname"><span class="pre">setClassificationModelPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setClassificationModelPath" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a path to the the classification model if it has been already trained.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>dist</strong><span class="classifier">float</span></dt><dd><p>Convergence tolerance after each iteration.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Path to the the classification model if it has been already trained.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -646,38 +853,34 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 <dd><p>Sets whether to fit an intercept term, default is true.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>label</strong><span class="classifier">str</span></dt><dd><p>Whether to fit an intercept term, default is true.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Whether to fit an intercept term, default is true.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setVectorizationModelPath">
-<span class="sig-name descname"><span class="pre">setVectorizationModelPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setVectorizationModelPath" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets a path to the the classification model if it has been already trained.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>label</strong><span class="classifier">str</span></dt><dd><p>Path to the the classification model if it has been already trained.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setClassificationModelPath">
-<span class="sig-name descname"><span class="pre">setClassificationModelPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setClassificationModelPath" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets a path to the the classification model if it has been already trained.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setLabelColumn">
+<span class="sig-name descname"><span class="pre">setLabelColumn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setLabelColumn" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column with the value result we are trying to predict.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>label</strong><span class="classifier">str</span></dt><dd><p>Path to the the classification model if it has been already trained.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Column with the value result we are trying to predict.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -688,12 +891,83 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 <dd><p>Sets array to output the label in the original form.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>label</strong><span class="classifier">list</span></dt><dd><p>array to output the label in the original form.</p>
+<dd class="field-odd"><p><strong>label</strong> (<em>list</em>) – array to output the label in the original form.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setMaxIter">
+<span class="sig-name descname"><span class="pre">setMaxIter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setMaxIter" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets maximum number of iterations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>k</strong> (<em>int</em>) – Maximum number of iterations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setTol">
+<span class="sig-name descname"><span class="pre">setTol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dist</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setTol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets  convergence tolerance after each iteration.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>dist</strong> (<em>float</em>) – Convergence tolerance after each iteration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setVectorizationModelPath">
+<span class="sig-name descname"><span class="pre">setVectorizationModelPath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setVectorizationModelPath" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a path to the the classification model if it has been already trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>label</strong> (<em>str</em>) – Path to the the classification model if it has been already trained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -701,7 +975,8 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DocumentLogRegClassifierModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.nlp.annotators.classification.DocumentLogRegClassifierModel'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Classifies documents with a Logarithmic Regression algorithm.</p>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.common.AnnotatorModelInternal</span></code></p>
+<p>Classifies documents with a Logarithmic Regression algorithm.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Input Annotation types</p></th>
@@ -716,36 +991,32 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>mergeChunks</strong></dt><dd><p>Whether to merge all chunks in a document or not (Default: false)</p>
-</dd>
-<dt><strong>labels</strong></dt><dd><p>Array to output the label in the original form.</p>
-</dd>
-<dt><strong>vectorizationModel</strong></dt><dd><p>Vectorization model if it has been already trained.</p>
-</dd>
-<dt><strong>classificationModel</strong></dt><dd><p>Classification model if it has been already trained.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mergeChunks</strong> – Whether to merge all chunks in a document or not (Default: false)</p></li>
+<li><p><strong>labels</strong> – Array to output the label in the original form.</p></li>
+<li><p><strong>vectorizationModel</strong> – Vectorization model if it has been already trained.</p></li>
+<li><p><strong>classificationModel</strong> – Classification model if it has been already trained.</p></li>
+</ul>
 </dd>
 </dl>
-</dd>
-</dl>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.outputAnnotatorType">
-<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">DocumentLogRegClassifierModel</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.name" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.vectorizationModel">
-<span class="sig-name descname"><span class="pre">vectorizationModel</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.vectorizationModel" title="Permalink to this definition">#</a></dt>
-<dd></dd></dl>
-
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.classificationModel">
 <span class="sig-name descname"><span class="pre">classificationModel</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.classificationModel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[True]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.inputCols" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -754,9 +1025,253 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.mergeChunks">
 <span class="sig-name descname"><span class="pre">mergeChunks</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.mergeChunks" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">DocumentLogRegClassifierModel</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.name" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.vectorizationModel">
+<span class="sig-name descname"><span class="pre">vectorizationModel</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.vectorizationModel" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.pretrained">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'classifier_logreg_ade'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.pretrained" title="Permalink to this definition">#</a></dt>
+<dd><p>Downloads and loads a pretrained model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the pretrained model, by default “classifier_logreg_ade”</p></li>
+<li><p><strong>lang</strong> (<em>str</em><em>, </em><em>optional</em>) – Language of the pretrained model, by default “en”</p></li>
+<li><p><strong>remote_loc</strong> (<em>str</em><em>, </em><em>optional</em>) – Optional remote address of the resource, by default “clinical/models”. Will use
+Spark NLPs repositories otherwise.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The restored model</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel" title="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel">DocumentLogRegClassifierModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setClassificationModel">
+<span class="sig-name descname"><span class="pre">setClassificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setClassificationModel" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a path to the the classification model if it has been already trained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.PipelineModel.html#pyspark.ml.PipelineModel" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.PipelineModel</span></code></a>) – Classification model if it has been already trained.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setLabels">
@@ -764,10 +1279,20 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 <dd><p>Sets array to output the label in the original form.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>label</strong><span class="classifier">list</span></dt><dd><p>array to output the label in the original form.</p>
+<dd class="field-odd"><p><strong>label</strong> (<em>list</em>) – array to output the label in the original form.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
 </dd>
 </dl>
 </dd></dl>
@@ -778,13 +1303,37 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 <dd><p>Sets whether to merge all chunks in a document or not (Default: false)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>merge</strong><span class="classifier">list</span></dt><dd><p>whether to merge all chunks in a document or not (Default: false)</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>merge</strong> (<em>list</em>) – whether to merge all chunks in a document or not (Default: false)</p>
 </dd>
 </dl>
 </dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setVectorizationModel">
@@ -792,51 +1341,38 @@ text and their label. The result is a trained GenericClassifierModel.</p>
 <dd><p>Sets a path to the classification model if it has been already trained.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>model: :class:`pyspark.ml.PipelineModel`</strong></dt><dd><p>Classification model if it has been already trained.</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/api/pyspark.ml.PipelineModel.html#pyspark.ml.PipelineModel" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.ml.PipelineModel</span></code></a>) – Classification model if it has been already trained.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setClassificationModel">
-<span class="sig-name descname"><span class="pre">setClassificationModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setClassificationModel" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets a path to the the classification model if it has been already trained.</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>model: :class:`pyspark.ml.PipelineModel`</strong></dt><dd><p>Classification model if it has been already trained.</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.pretrained">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'classifier_logreg_ade'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clinical/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.pretrained" title="Permalink to this definition">#</a></dt>
-<dd><p>Downloads and loads a pretrained model.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>name</strong><span class="classifier">str, optional</span></dt><dd><p>Name of the pretrained model, by default “classifier_logreg_ade”</p>
-</dd>
-<dt><strong>lang</strong><span class="classifier">str, optional</span></dt><dd><p>Language of the pretrained model, by default “en”</p>
-</dd>
-<dt><strong>remote_loc</strong><span class="classifier">str, optional</span></dt><dd><p>Optional remote address of the resource, by default “clinical/models”. Will use
-Spark NLPs repositories otherwise.</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><dl class="simple">
-<dt>DocumentLogRegClassifierModel</dt><dd><p>The restored model</p>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
 </dd>
 </dl>
-</dd>
-</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -877,36 +1413,105 @@ Spark NLPs repositories otherwise.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.inputAnnotatorTypes</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.outputAnnotatorType</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.labelCol"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.labelCol</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.maxIter"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.maxIter</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.tol"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.tol</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.fitIntercept"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.fitIntercept</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.labels"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.labels</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.vectorizationModelPath"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.vectorizationModelPath</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.classificationModelPath"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.classificationModelPath</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setLabelColumn"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setLabelColumn()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setMaxIter"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setMaxIter()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setTol"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setTol()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setFitIntercept"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setFitIntercept()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setVectorizationModelPath"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setVectorizationModelPath()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.fitIntercept"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.fitIntercept</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getter_attrs"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.inputCols"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.labelCol"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.labelCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.labels"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.labels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.maxIter"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.maxIter</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.outputCol"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.tol"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.tol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.vectorizationModelPath"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.vectorizationModelPath</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.clear"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.copy"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.explainParam"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.explainParams"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.extractParamMap"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.fit"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.fit()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.fitMultiple"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.fitMultiple()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getInputCols"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getOrDefault"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getOutputCol"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getParam"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.getParamValue"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.hasDefault"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.hasParam"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.isDefined"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.isSet"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.load"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.load()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.read"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.save"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.set"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.set()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setClassificationModelPath"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setClassificationModelPath()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setFitIntercept"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setFitIntercept()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setInputCols"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setLabelColumn"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setLabelColumn()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setLabels"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setMaxIter"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setMaxIter()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setOutputCol"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setParamValue"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setTol"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setTol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.setVectorizationModelPath"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.setVectorizationModelPath()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierApproach.write"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierApproach.write()</span></code></a></li>
 </ul>
 </li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel</span></code></a><ul class="nav section-nav flex-column">
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.outputAnnotatorType</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.name"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.name</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.vectorizationModel"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.vectorizationModel</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.classificationModel"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.classificationModel</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getter_attrs"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.inputCols"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.inputCols</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.labels"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.labels</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.lazyAnnotator</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.mergeChunks"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.mergeChunks</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setLabels"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setLabels()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setMergeChunks"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setMergeChunks()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setVectorizationModel"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setVectorizationModel()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setClassificationModel"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setClassificationModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.name"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.outputCol"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.vectorizationModel"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.vectorizationModel</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.clear"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.copy"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.explainParam"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.explainParams"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.extractParamMap"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getInputCols"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getOrDefault"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getOutputCol"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getParam"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.getParamValue"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.hasDefault"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.hasParam"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.isDefined"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.isSet"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.load"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.load()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.pretrained"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.read"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.save"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.set"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setClassificationModel"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setClassificationModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setInputCols"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setLabels"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setLabels()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setMergeChunks"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setMergeChunks()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setOutputCol"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setParamValue"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setParams"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.setVectorizationModel"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.setVectorizationModel()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.transform"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.classification.document_log_classifier.DocumentLogRegClassifierModel.write"><code class="docutils literal notranslate"><span class="pre">DocumentLogRegClassifierModel.write()</span></code></a></li>
 </ul>
 </li>
 </ul>
