@@ -5,7 +5,6 @@ from typing import List, Callable
 
 import colorama
 import pandas as pd
-from sparknlp.pretrained import PretrainedPipeline
 
 import johnsnowlabs.utils.testing.test_settings
 from johnsnowlabs.utils.file_utils import str_to_file
@@ -20,20 +19,36 @@ def run_cmd_and_check_succ(
     log=True,
     suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
     return_pipes=False,
+    shell=False,
+    raise_on_fail=False,
+    use_code=False,
 ) -> bool:
-    print(f"👷 Executing {colorama.Fore.LIGHTGREEN_EX}{args}{colorama.Fore.RESET}")
-    r = subprocess.run(args, capture_output=True)
-    was_suc = process_was_suc(r)
-    if was_suc:
-        print(
-            f"{colorama.Fore.LIGHTGREEN_EX}✅ Success running {args}{colorama.Fore.RESET}"
-        )
-    else:
-        print(
-            f"{colorama.Fore.LIGHTRED_EX}❌ Failure running {args}{colorama.Fore.LIGHTGREEN_EX}"
-        )
+    if log:
+        if len(args) == 1:
+            print(
+                f"👷 Executing {colorama.Fore.LIGHTGREEN_EX}{args[0]}{colorama.Fore.RESET}"
+            )
+        else:
+            print(
+                f"👷 Executing {colorama.Fore.LIGHTGREEN_EX}{args}{colorama.Fore.RESET}"
+            )
+
+    r = subprocess.run(args, capture_output=True, shell=shell)
+    was_suc = process_was_suc(r, suc_print=suc_print, use_code=use_code)
+    if log:
+        if was_suc:
+            print(
+                f"{colorama.Fore.LIGHTGREEN_EX}✅ Success running {args}{colorama.Fore.RESET}"
+            )
+        else:
+            print(
+                f"{colorama.Fore.LIGHTRED_EX}❌ Failure running {args}{colorama.Fore.LIGHTGREEN_EX}"
+            )
+
     if log:
         log_process(r)
+    if raise_on_fail and not was_suc:
+        raise ValueError(f"Failed running {args}")
     if return_pipes:
         return was_suc, r
     return was_suc
@@ -42,8 +57,14 @@ def run_cmd_and_check_succ(
 def process_was_suc(
     result: subprocess.CompletedProcess,
     suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
+    use_code=False,
 ) -> bool:
-    return suc_print in result.stdout.decode()
+    if use_code and result.returncode != 0:
+        return False
+    elif use_code and result.returncode == 0:
+        return True
+    else:
+        return suc_print in result.stdout.decode()
 
 
 def log_process(result: subprocess.CompletedProcess):

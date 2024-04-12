@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../static/doctools.js"></script>
     <script src="../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/annotator/filtering_params/index';</script>
     <link rel="shortcut icon" href="../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
@@ -271,6 +274,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../assertion/assertionDL/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertionDL</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../assertion/assertion_chunk_converter/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_chunk_converter</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../assertion/assertion_dl_reg/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_dl_reg</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../assertion/assertion_merger/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.assertion.assertion_merger</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chunker/index.html"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.chunker</span></code></a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -471,10 +475,26 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FilteringParams</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams" title="Permalink to this definition">#</a></dt>
-<dd><p>It is a base class that contains filtering functions.</p>
+<dd><p>Bases: <a class="reference internal" href="../white_black_list_params/index.html#sparknlp_jsl.annotator.white_black_list_params.WhiteBlackListParams" title="sparknlp_jsl.annotator.white_black_list_params.WhiteBlackListParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.white_black_list_params.WhiteBlackListParams</span></code></a></p>
+<p>It is a base class that contains filtering functions.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.blackList">
+<span class="sig-name descname"><span class="pre">blackList</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.blackList" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.caseSensitive">
+<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.caseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
 <dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.criteria">
 <span class="sig-name descname"><span class="pre">criteria</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.criteria" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.filterValue">
+<span class="sig-name descname"><span class="pre">filterValue</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.filterValue" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -483,36 +503,54 @@ document.write(`
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.filterValue">
-<span class="sig-name descname"><span class="pre">filterValue</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.filterValue" title="Permalink to this definition">#</a></dt>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.whiteList">
+<span class="sig-name descname"><span class="pre">whiteList</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.whiteList" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.setBlackList">
+<span class="sig-name descname"><span class="pre">setBlackList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setBlackList" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.setCaseSensitive">
+<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Determines whether the definitions of the white listed and black listed entities are case sensitive or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether white listed and black listed entities are case sensitive or not. Default: True.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.setCriteria">
 <span class="sig-name descname"><span class="pre">setCriteria</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setCriteria" title="Permalink to this definition">#</a></dt>
-<dd><p>It is used to compare black and white listed values with the result of the Annotation.
-Possible values are the following: ‘isin’, ‘regex’. Default: ‘isin’.
-isin : Filter by the chunk
-regex : Filter by using a regex
-Parameters
-———-
-value : string</p>
-<blockquote>
-<div><p>It is used to compare black and white listed values with the result of the Annotation.
+<dd><p>It is used to compare black and white listed values with the result of the Annotation.</p>
+<p>Possible values are the following: ‘isin’, ‘regex’. Default: ‘isin’.</p>
+<p>isin : Filter by the chunk
+regex : Filter by using a regex</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>string</em>) – It is used to compare black and white listed values with the result of the Annotation.
 Possible values are the following: ‘isin’, ‘regex’. Default: ‘isin’.</p>
-</div></blockquote>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.setRegex">
-<span class="sig-name descname"><span class="pre">setRegex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setRegex" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets If defined, list of regex to process the chunks</p>
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.setDenyList">
+<span class="sig-name descname"><span class="pre">setDenyList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setDenyList" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">List[str]</span></dt><dd><p>If defined, list of regex to process the chunks</p>
-</dd>
-</dl>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to ignore. The rest will be processed. Do not include IOB prefix on labels</p>
 </dd>
 </dl>
 </dd></dl>
@@ -520,15 +558,34 @@ Possible values are the following: ‘isin’, ‘regex’. Default: ‘isin’.
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.setFilterValue">
 <span class="sig-name descname"><span class="pre">setFilterValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setFilterValue" title="Permalink to this definition">#</a></dt>
-<dd><p>Sets possible values ‘result’ or ‘entity’.
-If the value is ‘result’, It filters according to the result of the Annotation.
+<dd><p>Sets possible values ‘result’ or ‘entity’.</p>
+<p>If the value is ‘result’, It filters according to the result of the Annotation.
 If the value is ‘entity’, It filters according to the entity field in the metadata of the Annotation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>value</strong><span class="classifier">string</span></dt><dd><p>possible values are ‘result’ and ‘entity’.</p>
+<dd class="field-odd"><p><strong>value</strong> (<em>string</em>) – possible values are ‘result’ and ‘entity’.</p>
 </dd>
 </dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.setRegex">
+<span class="sig-name descname"><span class="pre">setRegex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setRegex" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of regex to process the chunks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of regex to process the chunks</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.filtering_params.FilteringParams.setWhiteList">
+<span class="sig-name descname"><span class="pre">setWhiteList</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setWhiteList" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – If defined, list of entities to process. The rest will be ignored. Do not include IOB prefix on labels</p>
 </dd>
 </dl>
 </dd></dl>
@@ -571,12 +628,19 @@ If the value is ‘entity’, It filters according to the entity field in the me
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams"><code class="docutils literal notranslate"><span class="pre">FilteringParams</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.blackList"><code class="docutils literal notranslate"><span class="pre">FilteringParams.blackList</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.caseSensitive"><code class="docutils literal notranslate"><span class="pre">FilteringParams.caseSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.criteria"><code class="docutils literal notranslate"><span class="pre">FilteringParams.criteria</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.regex"><code class="docutils literal notranslate"><span class="pre">FilteringParams.regex</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.filterValue"><code class="docutils literal notranslate"><span class="pre">FilteringParams.filterValue</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.regex"><code class="docutils literal notranslate"><span class="pre">FilteringParams.regex</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.whiteList"><code class="docutils literal notranslate"><span class="pre">FilteringParams.whiteList</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setBlackList"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setBlackList()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setCaseSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setCriteria"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setCriteria()</span></code></a></li>
-<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setRegex"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setRegex()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setDenyList"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setDenyList()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setFilterValue"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setFilterValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setRegex"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setRegex()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.filtering_params.FilteringParams.setWhiteList"><code class="docutils literal notranslate"><span class="pre">FilteringParams.setWhiteList()</span></code></a></li>
 </ul>
 </li>
 </ul>

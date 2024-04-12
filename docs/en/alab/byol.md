@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: License Management
 permalink: /docs/en/alab/byol
 key: docs-training
@@ -13,7 +13,7 @@ sidebar:
   nav: annotation-lab
 ---
 
-By default, the Annotation Lab allows access to community pre-trained models and embeddings. Those are available on the **Models Hub** page. To gain access to licensed resources (e.g. pre-trained models and embeddings) _admin_ user can import a license (Healthcare, Finance, Legal, or Visual NLP) which will activate additional features:
+By default, the Generative AI Lab allows access to community pre-trained models and embeddings. Those are available on the **Models Hub** page. To gain access to licensed resources (e.g. pre-trained models and embeddings) _admin_ user can import a license (Healthcare, Finance, Legal, or Visual NLP) which will activate additional features:
 
 - Access to licensed models for pre-annotation
 - Access to healthcare, finance, and legal embeddings
@@ -28,19 +28,19 @@ Once a valid license is uploaded, all the licensed (Healthcare, Finance, Legal, 
 
 ## Support for Floating Licenses
 
-Annotation Lab supports floating licenses with different scopes (_ocr: training_, _ocr: inference_, _healthcare: inference_, _healthcare: training_, _finance: inference_, _finance: training_, _legal: inference_, _legal: training_). Depending on the scope of the available license, users can perform model training and/or deploy pre-annotation servers.
+Generative AI Lab supports floating licenses with different scopes (_ocr: training_, _ocr: inference_, _healthcare: inference_, _healthcare: training_, _finance: inference_, _finance: training_, _legal: inference_, _legal: training_). Depending on the scope of the available license, users can perform model training and/or deploy pre-annotation servers.
 Licenses are a must for training Healthcare, Finance, and Legal models and deploying these models as pre-annotation servers.
 Floating licenses can be acquired on self-service via [my.johnsnowlabs.com](https://my.johnsnowlabs.com/).
 
 One floating license is bound to only one server (pre-annotation server, OCR server, training job) at a time. To run multiple model training jobs and/or pre-annotations servers, users must provide multiple floating licenses.
 
-Annotation Lab supports either floating licenses or air-gapped licenses. Mixing floating and air-gapped licenses on the same Annotation Lab instance is not allowed.
+Generative AI Lab supports either floating licenses or air-gapped licenses. Mixing floating and air-gapped licenses on the same Generative AI Lab instance is not allowed.
 
 ### In-App Trial License Generation
 
 Version 4.10 offers an updated License page layout that streamlines the process of obtaining a trial license. This updated design enables users to initiate a trial license request directly from the License page, thereby eliminating the need for external page navigation. This enhanced workflow incorporates a new “Get License” tab, while maintaining the status quo of the Import License and Existing Licenses tabs.
 
-To obtain a trial license, users are required to fill out the form on the “Get License” tab, providing their organizational email. Once the form is submitted, a validation link is sent to the provided email address, and the trial license is automatically imported to the NLP Lab when the link is clicked, making it readily available for use.
+To obtain a trial license, users are required to fill out the form on the “Get License” tab, providing their organizational email. Once the form is submitted, a validation link is sent to the provided email address, and the trial license is automatically imported to the Generative AI Lab when the link is clicked, making it readily available for use.
 
 ![trial-license](/assets/images/annotation_lab/4.10.0/1.png)
 

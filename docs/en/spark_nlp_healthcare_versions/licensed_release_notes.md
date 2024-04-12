@@ -5,7 +5,7 @@ seotitle: Spark NLP for Healthcare | John Snow Labs
 title: Spark NLP for Healthcare Release Notes
 permalink: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
 key: docs-licensed-release-notes
-modify_date: 2024-02-29
+modify_date: 2024-03-27
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,63 +13,301 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 5.3.0
+## 5.3.1
 
 #### Highlights
 
-We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. This release comes with **the new 3 rule-based entity recognition/matcher modules to extract named entities with rules and a Flattener module to flatten the pipeline outputs effortlessly, as well as `41` new clinical pretrained models and pipelines including new De-Identification pipelines at various sizes**. 
 
-+ 4 new `Opioid` NER models to extract opioid-related entities from 22 classes and 3 assertion models to detect the status of opioid drug usage and underlying symptoms.
-+ `Multi-Lingual` NER model for `Deidentification` to detect sensitive entities (`name`, `date`, `location` etc.) from multiple languages.
-+ New `Age` classification model to detect age groups from clinical texts without any mention of age.
-+ `Biomarker` text classification model to detect sentences/ phrases that may contain biomarker-related terms.
-+ New NER model for `SNOMED` term extraction regardless of its type.
-+ New 6 `ChunkMapper` models for medical code mapping to map various medical terminologies across each other.
-+ Curated pretrained pipelines to analyze clinical documents for specific clinical tasks and concepts at once.
-+ Enhanced data exploration with the new `Flattener` annotator to prettify the pipeline outputs in a tabulated format.
-+ Rule-based entity recognition/matcher modules (`TextMatcher`, `RegexMatcher` and `EntityRuler`)  to extract named entities with rules and dictionaries
-+ Deidentification now supports masking and obfuscation at the same time without an additional stage
-+ `ChunkMerger` now supports dictionary format for the selective merging
-+ `MedicalQuestionAnswering` returns Score in metadata
-+ New speed benchmarks for various pipelines across different platforms under various settings (EMR, Databricks, etc.)
+We are delighted to announce remarkable enhancements and updates in our latest release of Spark NLP for Healthcare. **This release comes with MedDRA resolver, 2x faster optimized Deidentification pipelines,  Response to Treatment classifier for oncology, and 41 new clinical pretrained models and pipelines. It's as big as a major release!**
+
++ Welcoming MedDRA into the library. Releasing 8 new Entity Resolver and Mapper models to associate clinical entities with MedDRA LLT and PT codes. 
++ Enhancing assertion annotation workflow with `AssertionMerger` annotator to allow using multiple assertion models within the same pipeline.
++ Adding new clinical deidentification pipelines that are 2x faster. Now we have 15 pretrained deidentification pipelines of various sizes and capabilities.
++ Efficiency analysis and cost evaluation of deidentification pipelines on cloud platforms
++ Updated `Opioid` NER model and `Drug` text matcher model
++ New text classifier for `Response to Treatment` to detect response status/ outcome for the treatment applied for oncology patients.
++ 2 new Entity Resolver models for associating SNOMED clinical entities.
++ Clinical document analysis with one-liner pretrained pipelines for specific clinical tasks and concepts.
++ A new augmented NER model for multilingual `name` extraction by leveraging the capabilities of the LangTest library to boost its robustness significantly.
++ `DatasetInfo` parameter added to `SentenceEntityResolver` annotator to track the source datasets' versions.
++ Robust exception handling to allow skipping only the corrupted records processed via `GenericClassifier`, `BertSentenceChunkEmbeddings`, `AssertionFilterer`, `ChunkFilterer`, `ContextualParser`, `ChunkMerge` and `Deidentification` annotators.
++ Changed the license of CPT and MedDRA models in the ModelHub, and attempting to use them in Healthcare NLP now throws an error.
 + Various core improvements; bug fixes, enhanced overall robustness and reliability of Spark NLP for Healthcare
-    - Consistent obfuscation is supported in `StructuredDeidentification` too 
-    - Added `deid_source` field to the metadata to infer the source of entity chunks coming from internal or external NER models and stages
-    - Refactoring the Deidentification module for improved functionality 
-    - Flushing the temporary files dumped by the `SentenceEntityResolver` 
-    - Fixed `IOBTagger` was returning zero instead of 'O'
-    - Lighter jars for Spark NLP leading optimized Spark's sessions 
-    - `Resolution2Chunk` documentation updated
-    - Updated the default value of the `customBoundsStrategy` parameter in the `InternalDocumentSplitter`
-    - Enhanced `InternalDocumentSplitter` with UUID Metadata Field
+    - Fixed sentence positions in `MedicalBertForSequenceClassification`
+    - Updated Deidentification Module according to the latest spark versions
+    - Updated ALAB Module for assertion result according to tokenization flexibility
+    - Deprecation of the `setRel` Method in `ChunkMapper`: Transitioning to the `setRels` parameter
+    - Enhancements in SentenceEntityResolver: Bug Fix and Annotator Refactor
+    - Added `assertion_source`, `ner_chunk`, and `ner_label` metadata fields to the `AssertionDL` and `AssertionLogReg` annotators
+    - Implemented fixes and enhancements related to entity handling and resolution in Resolver and ChunkMapper, including incorporating an `entity` field in resolver metadata from embeddings, rectifying the entity field assignment in `ChunkMapper`, and resolving a bug with `all_k_resolutions` when using `setMultivaluesRelations(True)` in `ChunkMapper`
+    - Updated init.py and the path of class for `BertSentenceChunkEmbedding`
 + Updated notebooks and demonstrations for making Spark NLP for Healthcare easier to navigate and understand
-    - New [Flattener Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/41.Flattener.ipynb)
-    - New [Rule Based Entity Matchers Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb)
-    - New [Opioid Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/42.Opioid_Models.ipynb)
-    - Updated [Clinical Deidentification Improvement Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.4.Clinical_Deidentification_Improvement.ipynb)
-    - New [OPIOID Demo](https://demo.johnsnowlabs.com/healthcare/OPIOID/)
-    - New [Biomarker Classification Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_BIOMARKER/)
-    - New [SNOMED Term NER Demo](https://demo.johnsnowlabs.com/healthcare/NER_SNOMED_TERM/)
-    - New [Multi Language NER Demo](https://demo.johnsnowlabs.com/healthcare/NER_DEID_MULTI/)
-    - Updated [Age Classification Demo](https://demo.johnsnowlabs.com/healthcare/PUBLIC_HEALTH_AGE/)
+    - New [Task Based Clinical Pretrained Pipelines Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.3.Task_Based_Clinical_Pretrained_Pipelines.ipynb)
+    - Updated [Clinical Assertion Model Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.Clinical_Assertion_Model.ipynb)
+    - Updated [Snomed Entity Resolver Model Training Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/13.Snomed_Entity_Resolver_Model_Training.ipynb)
+    - New [Response to Treatment Classification Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPONSE_TO_TREATMENT/)
+    - Updated [Opioid Demo](https://demo.johnsnowlabs.com/healthcare/OPIOID/) 
 + The addition and update of numerous new clinical models and pipelines continue to reinforce our offering in the healthcare domain
 
 These enhancements will elevate your experience with Spark NLP for Healthcare, enabling more efficient, accurate, and streamlined analysis of healthcare-related natural language data.
 
 
+</div><div class="h3-box" markdown="1">
+
+#### Welcoming MedDRA into the Library. Releasing 10 New Entity Resolver, Mapper Models and Pretrained Pipelines to Associate Clinical Entities With Meddra Llt and Pt Codes
+
+
+Introducing 2 new Sentence Entity Resolver Models  `sbiobertresolve_meddra_lowest_level_term` and `sbiobertresolve_meddra_preferred_term` help to map medical entities to MedDRA codes.
+
+| Model Name                                                            |      Description            |
+|-----------------------------------------------------------------------|-----------------------------|
+| [`sbiobertresolve_meddra_lowest_level_term`](https://nlp.johnsnowlabs.com/2024/03/24/sbiobertresolve_meddra_lowest_level_term_en.html) | This model maps clinical terms to their corresponding MedDRA LLT (Lowest Level Term) codes. |
+| [`sbiobertresolve_meddra_preferred_term`](https://nlp.johnsnowlabs.com/2024/03/24/sbiobertresolve_meddra_preferred_term_en.html) | This model maps clinical terms to their corresponding MedDRA PT (Preferred Term) codes. |
+
+
+*Example*:
+
+```python
+meddra_resolver = SentenceEntityResolverModel.load("sbiobertresolve_meddra_lowest_level_term") \
+     .setInputCols(["sbert_embeddings"]) \
+     .setOutputCol("meddra_llt_code")\
+     .setDistanceFunction("EUCLIDEAN")
+
+text= """This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis."""
+```
+
+*Result*:
+
+|                         ner_chunk|begin|end|                   entity|meddra_llt_code|                        resolution|                                               all_k_results|                                           all_k_resolutions|
+|----------------------------------|-----|---|-------------------------|---------------|----------------------------------|------------------------------------------------------------|------------------------------------------------------------|
+|                           tobacco|   52| 58|                  Smoking|       10067622|               tobacco interaction|10067622:::10086359:::10057581:::10082288:::10009180:::10...|tobacco interaction:::tobaccoism:::tobacco user:::exposur...|
+|                      hypertension|   72| 83|             Hypertension|       10020772|                      hypertension|10020772:::10020790:::10088636:::10081425:::10015488:::10...|hypertension:::hypertension secondary:::systemic hyperten...|
+|       chronic renal insufficiency|   86|112|           Kidney_Disease|       10050441|       chronic renal insufficiency|10050441:::10009122:::10009119:::10075441:::10038474:::10...|chronic renal insufficiency:::chronic renal impairment:::...|
+|                        bronchitis|  123|132|Disease_Syndrome_Disorder|       10006451|                        bronchitis|10006451:::10006448:::10008841:::10085668:::10061736:::10...|bronchitis:::bronchiolitis:::chronic bronchitis:::capilla...|
+|                         gastritis|  135|143|Disease_Syndrome_Disorder|       10017853|                         gastritis|10017853:::10060703:::10076492:::10070814:::10088553:::10...|gastritis:::verrucous gastritis:::antral gastritis:::corr...|
+|                   ischemic attack|  150|164|  Cerebrovascular_Disease|       10072760|         transient ischemic attack|10072760:::10060848:::10060772:::10061216:::10055221:::10...|transient ischemic attack:::ischemic cerebral infarction:...|
+|           cardiac catheterization|  280|302|                Procedure|       10048606|           cardiac catheterization|10048606:::10007527:::10054343:::10007815:::10053451:::10...|cardiac catheterization:::cardiac catheterisation:::cathe...|
+|left main coronary artery stenosis|  319|352|            Heart_Disease|       10090240|left main coronary artery stenosis|10090240:::10072048:::10084343:::10011089:::10083430:::10...|left main coronary artery stenosis:::left anterior descen...|
+|                       hypotension|  380|390|               VS_Finding|       10021097|                       hypotension|10021097:::10021107:::10066331:::10066077:::10036433:::10...|hypotension:::hypotensive:::arterial hypotension:::diasto...|
+|                       bradycardia|  396|406|               VS_Finding|       10006093|                       bradycardia|10006093:::10040741:::10078310:::10064883:::10065585:::10...|bradycardia:::sinus bradycardia:::central bradycardia:::r...|
+|                      colon cancer|  451|462|              Oncological|       10009944|                      colon cancer|10009944:::10009989:::10009957:::10061451:::10007330:::10...|colon cancer:::colonic cancer:::colon carcinoma:::colorec...|
+|                         mucositis|  485|493|                      ADE|       10028127|                         mucositis|10028127:::10065880:::10065900:::10006525:::10021960:::10...|mucositis:::laryngeal mucositis:::tracheal mucositis:::bu...|
+|                        dermatitis|  499|508|                      ADE|       10012431|                        dermatitis|10012431:::10048768:::10003639:::10012470:::10073737:::10...|dermatitis:::dermatosis:::atopic dermatitis:::dermatitis ...|
+
+
+- 6 ChunkMapper Models for Medical Code Mapping to Map Various Medical Terminologies Across Each Other
+
+Introducing a suite of new ChunkMapper models designed to streamline medical code mapping tasks. These models include mappings between  RxNorm, ICD-10, MedDRA-LLT, and MedDRA-PT codes, offering a comprehensive solution for interoperability within medical systems.
+
+| Model Name                                                            |      Description           |
+|-----------------------------------------------------------------------|----------------------------|
+|[`icd10_meddra_llt_mapper`](https://nlp.johnsnowlabs.com/2024/03/14/icd10_meddra_llt_mapper_en.html)| Maps ICD-10 codes to corresponding MedDRA LLT (Lowest Level Term) codes. |
+|[`meddra_llt_icd10_mapper`](https://nlp.johnsnowlabs.com/2024/03/14/meddra_llt_icd10_mapper_en.html)| Maps MedDRA-LLT (Lowest Level Term) codes to corresponding ICD-10 codes. |
+|[`icd10_meddra_pt_mapper`](https://nlp.johnsnowlabs.com/2024/03/15/icd10_meddra_pt_mapper_en.html)  | Maps ICD-10 codes to corresponding MedDRA-PT (Preferred Term) codes. |
+|[`meddra_pt_icd10_mapper`](https://nlp.johnsnowlabs.com/2024/03/15/meddra_pt_icd10_mapper_en.html)  | Maps MedDRA-PT (Preferred Term) codes to corresponding ICD-10 codes.   |
+|[`meddra_llt_pt_mapper`](https://nlp.johnsnowlabs.com/2024/03/18/meddra_llt_pt_mapper_en.html)      | Maps MedDRA-LLT (Lowest Level Term) codes to their corresponding MedDRA-PT (Preferred Term) codes. |
+|[`meddra_pt_llt_mapper`](https://nlp.johnsnowlabs.com/2024/03/18/meddra_pt_llt_mapper_en.html)      | Maps MedDRA-PT (Preferred Term) codes to their corresponding MedDRA-LLT (Lowest Level Term) codes. |
+
+*Example*:
+
+```python
+mapperModel = ChunkMapperModel.load('meddra_llt_pt_mapper')\
+    .setInputCols(["ner_chunk"])\
+    .setOutputCol("mappings")\
+    .setRels(["icd10_code"])
+
+text = ["10002442", "10000007", "10003696"]
+```
+
+*Result*:
+
+|llt_code|pt_code                                 |
+|--------|----------------------------------------|
+|10002442|10002442:Angiogram pulmonary normal     |
+|10000007|10000007:17 ketosteroids urine decreased|
+|10003696|10001324:Adrenal atrophy                |
+
+- Introducing 2 New Pretrained Meddra Resolver Pipelines Designed For Effortless Integration With Just A Single Line Of Code
+
+These pipelines are capable of extracting clinical entities and linking them to their respective MedDRA LLT and PT codes, while also facilitating mapping of these codes to LLT/PT or ICD-10 codes.
+
+| Pipeline Name                                                            |      Description            |
+|--------------------------------------------------------------------------|-----------------------------|
+| [`meddra_llt_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/26/meddra_llt_resolver_pipeline_en.html) | This dedicated pipeline extracts clinical terms and links them to their corresponding MedDRA LLT (Lowest Level Term) codes, map those codes to their MedDRA PT (Preferred Term) codes and ICD-10 codes.|
+| [`meddra_pt_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/26/meddra_pt_resolver_pipeline_en.html) | This dedicated pipeline  extracts clinical terms and links them to their corresponding MedDRA PT (Preferred Term) codes, map those codes to their MedDRA LLT (Lowest Level Term) codes and ICD-10 codes. |
+
+*Example*:
+
+```python
+from sparknlp.pretrained import PretrainedPipeline
+
+meddra_llt_pipeline = PretrainedPipeline.from_disk("meddra_llt_resolver_pipeline")
+
+result = meddra_llt_pipeline.fullAnnotate('This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis.')
+```
+
+*Result*:
+
+
+
+
+|chunk                                 |label                    |meddra_llt_code|resolution                        |icd10_mappings                                   |meddra_pt_mappings                             |
+|--------------------------------------|-------------------------|---------------|----------------------------------|-------------------------------------------------|-----------------------------------------------|
+|tobacco                               |Smoking                  |10067622       |tobacco interaction               |NONE                                             |10067622:Tobacco interaction                   |
+|benign hypertension                   |PROBLEM                  |10004455       |benign secondary hypertension     |NONE                                             |10039834:Secondary hypertension                |
+|chronic renal insufficiency           |Kidney_Disease           |10050441       |chronic renal insufficiency       |NONE                                             |10064848:Chronic kidney disease                |
+|chronic bronchitis                    |PROBLEM                  |10008841       |chronic bronchitis                |NONE                                             |10006458:Bronchitis chronic                    |
+|gastritis                             |Disease_Syndrome_Disorder|10017853       |gastritis                         |K29.6:Other gastritis                            |10017853:Gastritis                             |
+|ischemic attack                       |Cerebrovascular_Disease  |10072760       |transient ischemic attack         |NONE                                             |10044390:Transient ischaemic attack            |
+|ST elevation                          |PROBLEM                  |10041887       |st elevated                       |NONE                                             |10014392:Electrocardiogram ST segment elevation|
+|cardiac catheterization               |Procedure                |10048606       |cardiac catheterization           |Y84.0:Cardiac catheterization                    |10007815:Catheterisation cardiac               |
+|the left main coronary artery stenosis|PROBLEM                  |10090240       |left main coronary artery stenosis|NONE                                             |10011089:Coronary artery stenosis              |
+|hypotension                           |VS_Finding               |10021097       |hypotension                       |I95:Hypotension                                  |10021097:Hypotension                           |
+|bradycardia                           |VS_Finding               |10006093       |bradycardia                       |R00.1:Bradycardia, unspecified                   |10006093:Bradycardia                           |
+|the side effects                      |PROBLEM                  |10044252       |toxic symptom                     |NONE                                             |10070863:Toxicity to various agents            |
+|a colon cancer                        |PROBLEM                  |10009944       |colon cancer                      |NONE                                             |10009944:Colon cancer                          |
+|mucositis                             |ADE                      |10028127       |mucositis                         |NONE                                             |10028116:Mucosal inflammation                  |
+|dermatitis                            |ADE                      |10012431       |dermatitis                        |L27:Dermatitis due to substances taken internally|10012431:Dermatitis                            |
+
+
+
+**Important note**: To utilize these MedDRA models/pipelines, possession of a valid MedDRA license is requisite. When you want to use these models and pipelines, you will receive a warning like below.  If you possess a valid MedDRA license and wish to use this model, kindly contact us at support@johnsnowlabs.com.
+
+```bash
+IllegalArgumentException: 'meddra_llt_pt_mapper' model cannot be used as a pretrained model.
+To load this model locally via .load(), possession of a valid MedDRA / CPT license is required.
+If you possess one thru corresponding agencies and wish to use this model, contact us at support@johnsnowlabs.com.
+```
 
 </div><div class="h3-box" markdown="1">
 
-#### 4 New `Opioid` NER Model to Extract Opioid-Related Entities from 22 Classes and 3 Assertion Models to Detect the Status of Opioid Drug Usage and Underlying Symptoms.
+#### Enhancing Assertion Annotation Workflow with AssertionMerger Annotator to Allow using Multiple Assertion Models within the Same Pipeline.
+
+Introducing the latest addition to our annotation toolkit, the AssertionMerger Annotator, designed to streamline the merging process of assertion columns from various annotators like AssertionDL and AssertionLogReg. This powerful tool offers customizable parameters for filtering, prioritizing, and seamlessly combining assertion annotations. Learn how to leverage features like merging overlapping annotations, applying filters before or after merging, and prioritizing based on confidence levels and assertion sources. Optimize your annotation workflow with AssertionMerger Annotator, ensuring efficient and accurate consolidation of assertion data.
 
 
-- NER Model
+**Parameters:**
 
-|Model Name         | Predicted Entities | Description      |
-|-------------------|--------------------|------------------|
-| [ner_opioid](https://nlp.johnsnowlabs.com/2024/02/28/ner_opioid_en.html) | `communicable_disease`, `general_symptoms`, `substance_use_disorder`, `drug_duration`, `psychiatric_issue`, `drug_strength`, `drug_quantity`, `other_drug`, `drug_form`, `drug_frequency`, `opioid_drug`, `drug_route`, `employment`, `violence`, `legal_issue`, `other_disease`, `alcohol_use`, `test`, `marital_status`, `test_result`, `antidote`, `sexual_orientation` | Detects opioid-related entities within text data |
+- `mergeOverlapping`: Whether to merge overlapping matched assertion annotations. Default: `True`
+- `applyFilterBeforeMerge`: Whether to apply filtering before the merging process. If `True`, filtering will be applied before merging; if `False`, filtering will be applied after the merging process. Default: `False`.
+- `blackList`: If defined, list of entities to ignore. The rest will be processed.
+- `whiteList`: If defined, list of entities to process. The rest will be ignored. Do not include the IOB prefix on labels.
+- `caseSensitive`: Determines whether the definitions of the white-listed and black-listed entities are case sensitive. Default: `True`.
+- `assertionsConfidence`: Pairs (assertion, confidenceThreshold) to filter assertions that have confidence lower than the confidence threshold.
+- `orderingFeatures`: Specifies the ordering features to use for overlapping entities. Possible values include: 'begin', 'end', 'length', 'source', and 'confidence'. Default: `['begin', 'length', 'source']`
+- `selectionStrategy`: Determines the strategy for selecting annotations. Annotations can be selected either sequentially based on their order (Sequential) or using a more diverse strategy (DiverseLonger). Currently, only Sequential and DiverseLonger options are available. Default: `Sequential`.
+- `defaultConfidence`:  When the confidence value is included in the orderingFeatures and a given annotation does not have any confidence, this parameter determines the value to be used. The default value is `0`.
+- `assertionSourcePrecedence`: Specifies the assertion sources to use for prioritizing overlapping annotations when the 'source' ordering feature is utilized. This parameter contains a comma-separated list of assertion sources that drive the prioritization. Annotations will be prioritized based on the order of the given string.
+- `sortByBegin`: Whether to sort the annotations by begin at the end of the merge and filter process. Default: `False`.
 
-This `ner_opioid` model is designed to detect and label opioid-related entities within text data. Opioids are a class of drugs that include the illegal drug heroin, synthetic opioids such as fentanyl, and pain relievers available legally by prescription. The model has been trained using advanced deep-learning techniques on a diverse range of text sources and can accurately recognize and classify a wide range of opioid-related entities. The model’s accuracy and precision have been carefully validated against expert-labeled data to ensure reliable and consistent results.
+
+*Example*:
+
+```python
+# Assertion model trained on i2b2 (sampled from MIMIC) dataset
+assertion_jsl = AssertionDLModel.pretrained("assertion_jsl_augmented", "en", "clinical/models") \
+    .setInputCols(["sentence", "ner_jsl_chunk", "embeddings"]) \
+    .setOutputCol("assertion_jsl")\
+    .setEntityAssertionCaseSensitive(False)
+
+# Assertion model trained on radiology dataset
+assertion_dl = AssertionDLModel.pretrained("assertion_dl", "en", "clinical/models") \
+    .setInputCols(["sentence", "ner_clinical_chunk", "embeddings"]) \
+    .setOutputCol("assertion_dl")
+
+assertion_merger = AssertionMerger() \
+    .setInputCols("assertion_jsl", "assertion_dl") \
+    .setOutputCol("assertion_merger") \
+    .setMergeOverlapping(True) \
+    .setSelectionStrategy("sequential") \
+    .setAssertionSourcePrecedence("assertion_dl, assertion_jsl") \
+    .setCaseSensitive(False) \
+    .setAssertionsConfidence({"past": 0.70}) \
+    .setOrderingFeatures(["length", "source", "confidence"]) \
+    .setDefaultConfidence(0.50)
+
+
+text = [
+    """Patient had a headache for the last 2 weeks, and appears anxious when she walks fast. No alopecia noted. She denies pain. Her father is paralyzed and it is a stressor for her. She got antidepressant. We prescribed sleeping pills for her current insomnia."""
+]
+```
+
+*Result*:
+
+|idx|ner_chunk     |begin|end|ner_label|assertion|assertion_source|confidence|
+|---|--------------|-----|---|---------|---------|----------------|----------|
+|0  |headache      |14   |21 |Symptom  |Past     |assertion_jsl   |0.9999    |
+|0  |anxious       |57   |63 |PROBLEM  |present  |assertion_dl    |0.9392    |
+|0  |alopecia      |89   |96 |PROBLEM  |absent   |assertion_dl    |0.9992    |
+|0  |pain          |116  |119|PROBLEM  |absent   |assertion_dl    |0.9884    |
+|0  |paralyzed     |136  |144|Symptom  |Family   |assertion_jsl   |0.9995    |
+|0  |stressor      |158  |165|Symptom  |Family   |assertion_jsl   |1.0       |
+|0  |antidepressant|184  |197|TREATMENT|present  |assertion_dl    |0.9628    |
+|0  |sleeping pills|214  |227|TREATMENT|present  |assertion_dl    |0.998     |
+|0  |insomnia      |245  |252|Symptom  |Past     |assertion_jsl   |0.9862    |
+
+
+Please check [Clinical Assertion Model Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.Clinical_Assertion_Model.ipynb) for more information
+
+</div><div class="h3-box" markdown="1">
+
+    
+####  Adding New Clinical Deidentification Pipelines for Flexible Deployments
+
+The Comprehensive Clinical Deidentification Pipeline offers a robust solution for anonymizing sensitive PHI (Protected Health Information) from medical texts. This versatile pipeline is equipped to mask and obfuscate a wide array of PHI entities including A`AGE`, `CONTACT`, `DATE`, `ID`, `LOCATION`, `NAME`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `PROFESSION`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR`, and more. With support for multiple languages including `Arabic`, `German`,  `French`, `English` `Spanish`, `Italian`, `Portuguese`, and `Romanian` this pipeline ensures compliance with privacy regulations across diverse healthcare settings. Choose from various models optimized for different use cases, such as obfuscation levels and subentity recognition, to tailor the deidentification process according to specific requirements.
+
+
+|index|model|lang|
+|-----:|:-----|----|
+| 1| [clinical_deidentification](https://nlp.johnsnowlabs.com/2022/09/14/clinical_deidentification_en.html)  | ar, de, en, es, fr, it, pt, ro|
+| 2| [clinical_deidentification_augmented](https://nlp.johnsnowlabs.com/2022/03/03/clinical_deidentification_augmented_es_2_4.html)  |es|
+| 3| [clinical_deidentification_generic](https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_generic_en.html)  |en|
+| 4| [clinical_deidentification_generic_optimized](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_generic_optimized_en.html)  |en|
+| 5| [clinical_deidentification_glove](https://nlp.johnsnowlabs.com/2022/03/04/clinical_deidentification_glove_en_3_0.html)  |en|
+| 6| [clinical_deidentification_glove_augmented](https://nlp.johnsnowlabs.com/2022/09/16/clinical_deidentification_glove_augmented_en.html)  |en|
+| 7| [clinical_deidentification_langtest](https://nlp.johnsnowlabs.com/2024/01/10/clinical_deidentification_langtest_en.html)  |en|
+| 8| [clinical_deidentification_multi_mode_output](https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_multi_mode_output_en.html)  |en|
+| 9| [clinical_deidentification_obfuscation_medium](https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_medium_en.html)  |en|
+| 10| [clinical_deidentification_obfuscation_small](https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_small_en.html)  |en|
+| 11| [clinical_deidentification_slim](https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_slim_en.html)  |en|
+| 12| [clinical_deidentification_subentity](https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_subentity_en.html)  |en|
+| 13| [clinical_deidentification_subentity_nameAugmented](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html)  |en|
+| 14| [clinical_deidentification_subentity_optimized](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html)  |en|
+| 15| [clinical_deidentification_wip](https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_wip_en.html)  |en|
+
+We will share a detailed table on our [wiki page](https://nlp.johnsnowlabs.com/docs/en/wiki) soon to explain the pros and cons of each model as well as tips and tricks to show how to use them effectively
+
+</div><div class="h3-box" markdown="1">
+
+#### Efficiency Analysis and Cost Evaluation of Deidentification Pipelines on Cloud Platforms
+
+These results show speed benchmarks and cost evaluations for deidentification pipelines deployed across diverse cloud platforms, including AWS EMR and EC2. Additionally, forthcoming results from DataBricks promise to further enrich the analysis, offering deeper insights into de-identification pipeline performance. 
+
+
+| Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline |
+|-----------|--------------------|------------------------|----------------------------|---------------------------------|
+| 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                |
+| 512       | 4 min 52 sec       | 2 min 30 sec           | **6 min 56 sec**           | 3 min 41 sec                    |
+| 256       | **4 min 50 sec**   | **2 min 30 sec**       | 9 min 10 sec               | 5 min 18 sec                    |
+| 128       | 4 min 55 sec       | 2 min 30 sec           | 14 min 30 sec              | 7 min 51 sec                    |
+| 64        | 6 min 24 sec       | 3 min 8 sec            | 18 min 59 sec              | 9 min 9 sec                     |
+| 32        | 7 min 15 sec       | 3 min 43 sec           | 18 min 47.2 sec            | 9 min 18 sec                    |
+| 16        | 11 min 6 sec       | 4 min 57 sec           | 12 min 47.5 sec            | 6 min 14 sec                    |
+| 8         | 19 min 13 se       | 8 min 8 sec            | 16 min 52 sec              | 8 min 48 sec                    |
+
+Estimated Minimum Costs:
+- EMR Base Pipeline: partition number: 256, 10K cost:**$1.04**, 1M cost:**$104.41** 
+- EMR Optimized Pipeline: partition number: 256, 10K cost:**$0.54**, 1M cost:**$54.04** 
+- EC2 Instance Base Pipeline: partition number: 512, 10K cost:**$0.36**, 1M cost:**$35.70** 
+- EC2 Instance Optimized Pipeline: partition number: 1024, 10K cost:**$0.18**, 1M cost:**$17.85** 
+- DataBricks results will be published soon.
+
+
+</div><div class="h3-box" markdown="1">
+
+#### Updated Opioid-related Named Entity Recognition and Drug-related Text Matcher Models
+
+- [ner_opioid](https://nlp.johnsnowlabs.com/2024/03/27/ner_opioid_en.html): This Updated Opioid-related Named Entity Recognition model has been enhanced with new annotated text data. Opioids are a class of drugs that include the illegal drug heroin, synthetic opioids such as fentanyl, and pain relievers available legally by prescription. The model is designed to detect and label opioid-related entities within text data. It has been retrained using advanced deep learning techniques on an expanded and diversified range of text sources, including newly annotated text specifically focused on opioid-related content.
 
 *Example*:
 
@@ -78,310 +316,180 @@ ner_model = MedicalNerModel.pretrained("ner_opioid", "en", "clinical/models")\
     .setInputCols(["sentence", "token", "embeddings"])\
     .setOutputCol("ner")
 
-
-sample_texts = ["""The patient, unmarried and with a significant history of substance abuse involving the illicit consumption of various opioids such as heroin, fentanyl, and oxycodone, presented with a headache and was diagnosed PTSD. Despite denying the use of alcohol, smoking, or marijuana, the patient, who has been unemployed for several months, required administration of Narcan for suspected opioid overdose. A recent toxicology screen confirmed the presence of opioids, and showed negative results for benzodiazepines, cocaine, amphetamines, barbiturates, and tricyclic substances."""]
-
+sample_texts = """History of Present Illness: A 20-year-old male was transferred from an outside hospital for evaluation for liver transplant following a Percocet overdose. On Sunday, March 27th, he experienced a stressful day and consumed approximately 20 Percocet (5/325) tablets throughout the day following a series of family arguments. He denies any intent to harm himself, although his parents confirm past suicidal attempts. On Monday, he felt he was experiencing a Percocet withdrawal "hangover" and took an additional 5 Percocet. He was admitted to the Surgical Intensive Care Unit (SICU) and received care from Liver, Transplant, Toxicology. Treatment included Naloxone every 4 hours, resulting in a gradual improvement in liver function tests (LFTs) and INR. During recovery, he developed hypertension and was initiated on clonidine."""
 ```
+
 
 *Result*:
 
-|chunk               |begin|end|ner_label             |
-|--------------------|-----|---|----------------------|
-|unmarried           |13   |21 |marital_status        |
-|substance abuse     |57   |71 |substance_use_disorder|
-|opioids             |118  |124|opioid_drug           |
-|heroin              |134  |139|opioid_drug           |
-|fentanyl            |142  |149|opioid_drug           |
-|oxycodone           |156  |164|opioid_drug           |
-|headache            |184  |191|general_symptoms      |
-|PTSD                |211  |214|psychiatric_issue     |
-|alcohol             |244  |250|alcohol_use           |
-|marijuana           |265  |273|other_drug            |
-|unemployed          |302  |311|employment            |
-|Narcan              |360  |365|antidote              |
-|opioid              |381  |386|opioid_drug           |
-|overdose            |388  |395|other_disease         |
-|toxicology screen   |407  |423|test                  |
-|opioids             |451  |457|test                  |
-|negative            |471  |478|test_result           |
-|benzodiazepines     |492  |506|test                  |
-|cocaine             |509  |515|test                  |
-|amphetamines        |518  |529|test                  |
-|barbiturates        |532  |543|test                  |
-|tricyclic substances|550  |569|test                  |
+|chunk                      |begin|end |ner_label             |
+|---------------------------|-----|----|----------------------|
+|Percocet                   |136  |143 |opioid_drug           |
+|overdose                   |145  |152 |other_disease         |
+|20                         |236  |237 |drug_quantity         |
+|Percocet                   |239  |246 |opioid_drug           |
+|tablets                    |256  |262 |drug_form             |
+|harm himself               |347  |358 |violence              |
+|suicidal attempts          |395  |411 |psychiatric_issue     |
+|Percocet                   |455  |462 |opioid_drug           |
+|withdrawal                 |464  |473 |general_symptoms      |
+|hangover                   |476  |483 |general_symptoms      |
+|5                          |509  |509 |drug_quantity         |
+|Percocet                   |511  |518 |opioid_drug           |
+|Naloxone                   |653  |660 |antidote              |
+|every 4 hours              |662  |674 |drug_frequency        |
+|hypertension               |782  |793 |other_disease         |
+|clonidine                  |816  |824 |other_drug            |
 
+*Benchmark*:
 
-- Assertion Models
+```bash
+                 label  precision    recall  f1-score   support
+           alcohol_use       0.92      0.95      0.94       353
+              antidote       1.00      0.99      0.99       141
+  communicable_disease       0.76      0.88      0.82       224
+         drug_duration       0.81      0.71      0.75       238
+             drug_form       0.97      0.95      0.96       614
+        drug_frequency       0.94      0.97      0.96      1527
+         drug_quantity       0.96      0.94      0.95      2169
+            drug_route       0.95      0.98      0.97       903
+         drug_strength       0.84      0.95      0.89       388
+            employment       0.79      0.63      0.70       306
+      general_symptoms       0.90      0.84      0.87      4483
+           legal_issue       0.73      0.52      0.61        84
+        marital_status       0.95      0.95      0.95        57
+           opioid_drug       0.98      0.96      0.97       725
+         other_disease       0.91      0.90      0.90      4145
+            other_drug       0.94      0.93      0.94      2617
+     psychiatric_issue       0.88      0.85      0.86      1356
+    sexual_orientation       1.00      0.78      0.88        23
+substance_use_disorder       0.91      0.88      0.90       276
+                  test       0.97      0.93      0.95       102
+           test_result       1.00      0.93      0.97        30
+              violence       0.81      0.71      0.76       542
+             micro-avg       0.92      0.89      0.90     21303
+             macro-avg       0.91      0.87      0.89     21303
+          weighted-avg       0.91      0.89      0.90     21303
+```
 
-|Model Name         | Assertion Status | Description      |
-|-------------------|-------------------|------------------|
-| [assertion_opioid_wip](https://nlp.johnsnowlabs.com/2024/02/28/assertion_opioid_wip_en.html) | `present`, `history`, `absent`, `hypothetical`, `past`, `family_or_someoneelse` | Detects the assertion status of entities related to opioid |
-| [assertion_opioid_drug_status_wip](https://nlp.johnsnowlabs.com/2024/02/28/assertion_opioid_drug_status_wip_en.html) | `opioid_medical_use`, `opioid_abuse`, `opioid_overdose`, `drug_medical_use`, `drug_abuse`, `drug_overdose` | Detects the assertion status of drug entities related to opioid (including opioid_drug and other_drug) |
-| [assertion_opioid_general_symptoms_status_wip](https://nlp.johnsnowlabs.com/2024/02/28/assertion_opioid_general_symptoms_status_wip_en.html) | `underlying_pain`, `withdrawal_symptom`, `overdose_symptom` | Detects the assertion status of general symptoms entity related to opioid. |
-
+- [drug_matcher](https://nlp.johnsnowlabs.com/2024/03/19/drug_matcher_en.html): The latest iteration of the Drug-related Text Matcher Model has been enhanced significantly, boasting an expanded database with the inclusion of an additional 100 thousand drugs. Through meticulous curation, the model has undergone refinement by strategically eliminating words that may have previously led to false positives. 
 
 *Example*:
 
 ```python
-assertion = AssertionDLModel.pretrained("assertion_opioid_wip" "en", "clinical/models") \
-    .setInputCols(["sentence", "ner_chunk", "embeddings"]) \
-    .setOutputCol("assertion")
+text_matcher = TextMatcherInternalModel.pretrained("drug_matcher","en","clinical/models") \
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("matched_text")\
 
-sample_texts = [
-    """The patient with a history of substance abuse presented with clinical signs indicative of opioid overdose, including constricted pupils, cyanotic lips, drowsiness, and confusion. Immediate assessment and intervention were initiated to address the patient's symptoms and stabilize their condition. Close monitoring for potential complications, such as respiratory depression, was maintained throughout the course of treatment.""",
-    """The patient presented to the rehabilitation facility with a documented history of opioid abuse, primarily stemming from misuse of prescription percocet pills intended for their partner's use. Initial assessment revealed withdrawal symptoms consistent with opioid dependency."""]
-
+sample_texts = """John's doctor prescribed aspirin for his heart condition, along with paracetamol for his fever and headache, amoxicillin for his tonsilitis and lansoprazole for his GORD on 2023-12-01."""
 ```
 
 *Result*:
 
-|chunk                 |begin|end|ner_label             |assertion   |confidence|
-|----------------------|-----|---|----------------------|------------|----------|
-|substance abuse       |30   |44 |substance_use_disorder|history     |0.9644    |
-|opioid                |90   |95 |opioid_drug           |hypothetical|0.7974    |
-|overdose              |97   |104|other_disease         |hypothetical|0.9961    |
-|constricted pupils    |117  |134|general_symptoms      |past        |0.732     |
-|cyanotic lips         |137  |149|general_symptoms      |past        |0.8501    |
-|drowsiness            |152  |161|general_symptoms      |past        |0.9469    |
-|confusion             |168  |176|general_symptoms      |past        |0.9686    |
-|respiratory depression|351  |372|other_disease         |hypothetical|0.5921    |
-|opioid                |82   |87 |opioid_drug           |history     |0.735     |
-|percocet              |143  |150|opioid_drug           |present     |0.905     |
-|pills                 |152  |156|drug_form             |present     |0.9363    |
-|withdrawal            |220  |229|general_symptoms      |present     |0.9929    |
-|opioid                |256  |261|opioid_drug           |present     |0.9348    |
+|       chunk|begin|end|label|
+|------------|-----|---|-----|
+|     aspirin|   25| 31| DRUG|
+| paracetamol|   69| 79| DRUG|
+| amoxicillin|  109|119| DRUG|
+|lansoprazole|  144|155| DRUG|
 
-
-Please check [Opioid Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/42.Opioid_Models.ipynb) for more information
-
-
-</div><div class="h3-box" markdown="1">
-
-#### `Multi-Lingual` NER Model for `Deidentification` to Detect Sensitive Entities (`name`, `date`, `location` etc.) from Multiple Languages.
-
-Introducing our latest innovation: a Multilingual Named Entity Recognition (NER) model designed for deidentification purposes. This new model is capable of annotating text in English, German, French, Italian, Spanish, Portuguese, and Romanian. It excels at detecting sensitive entities such as AGE, CONTACT, DATE, ID, LOCATION, NAME, and PROFESSION. Using this model, data protection can be achieved in multiple languages and domains. 
-
-*Example*:
-
-```python
-embeddings = XlmRoBertaEmbeddings.pretrained("xlm_roberta_base", "xx") \
-    .setInputCols("sentence", "token") \
-    .setOutputCol("embeddings")\
-    .setMaxSentenceLength(512)
-
-ner = MedicalNerModel.pretrained("ner_deid_multilingual", "xx", "clinical/models") \
-    .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("ner")
-
-text_list = [
-"""Record date : 2093-01-13, David Hale, M.D., Name : Hendrickson, Ora MR. # 7194334 Date : 01/13/93 .""",
-"""J'ai vu en consultation Michel Martinez (49 ans) adressé au Centre Hospitalier De Plaisir pour un diabète mal contrôlé avec des symptômes datant de Mars 2015.""",
-"""Michael Berger wird ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen.""",
-"""Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.""",
-"""Antonio Miguel Martínez, un varón de 35 años de edad, de profesión auxiliar de enfermería y nacido en Cadiz, España.""",
-"""Detalhes do paciente. Nome do paciente:  Pedro Gonçalves. Endereço: Rua Das Flores 23. Cidade/ Província: Porto.""",
-"""Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România"""
-]
-```
-
-*Result*:
-
-|doc_id|begin|end|chunk                        |ner_label |
-|------|-----|---|-----------------------------|----------|
-|1     |14   |23 |2093-01-13                   |DATE      |
-|1     |26   |35 |David Hale                   |NAME      |
-|1     |51   |61 |Hendrickson                  |NAME      |
-|1     |74   |80 |7194334                      |ID        |
-|1     |89   |96 |01/13/93                     |DATE      |
-|2     |24   |38 |Michel Martinez              |NAME      |
-|2     |41   |46 |49 ans                       |AGE       |
-|2     |60   |88 |Centre Hospitalier De Plaisir|LOCATION  |
-|2     |148  |156|Mars 2015                    |DATE      |
-|3     |0    |13 |Michael Berger               |NAME      |
-|3     |53   |65 |Bad Kissingen                |LOCATION  |
-|3     |86   |91 |Berger                       |NAME      |
-|3     |128  |129|76                           |AGE       |
-|4     |9    |29 |Gastone Montanariello        |NAME      |
-|4     |32   |33 |49                           |AGE       |
-|4     |55   |74 |Ospedale San Camillo         |LOCATION  |
-|4     |128  |137|marzo 2015                   |DATE      |
-|5     |0    |22 |Antonio Miguel Martínez      |NAME      |
-|5     |37   |38 |35                           |AGE       |
-|5     |67   |88 |auxiliar de enfermería       |PROFESSION|
-|5     |102  |106|Cadiz                        |LOCATION  |
-|5     |109  |114|España                       |LOCATION  |
-|6     |41   |55 |Pedro Gonçalves              |NAME      |
-|6     |68   |71 |Rua Das Flores               |NAME      |
-|6     |106  |110|Porto                        |LOCATION  |
-|7     |0    |27 |Spitalul Pentru Ochi de Deal |LOCATION  |
-|7     |30   |44 |Drumul Oprea Nr              |LOCATION  |
-|7     |47   |49 |972                          |LOCATION  |
-|7     |51   |56 |Vaslui                       |LOCATION  |
-|7     |59   |64 |737405                       |LOCATION  |
-|7     |66   |72 |România                      |LOCATION  |
-
-
-Please see the model card [ner_deid_multilingual](https://nlp.johnsnowlabs.com/2024/02/12/ner_deid_multilingual_xx.html) for more information about the model 
 
 
 
 </div><div class="h3-box" markdown="1">
 
-#### New `Age` Classification Model to Detect Age Groups from Clinical Texts without any Mention of Age
+#### New Oncological Response to Treatment Classification Model
 
-Introducing a new age classification model is a sophisticated text classification tool tailored to identify and categorize text according to different age groups. This model distinguishes among `Old Adult`, `Adult`, `Child and Teen`, and `Other/Unknown` contexts, providing valuable insights into textual data that references age-specific scenarios or concerns.
+The Oncological Response to Treatment classifier was trained on a diverse dataset, this model provides accurate label assignments and confidence scores for its predictions. The primary goal of this model is to categorize text into two key labels: `Yes` and `No`.
 
 *Example*:
 
 ```python
-
-generic_classifier = GenericClassifierModel.pretrained("genericclassifier_age_e5", "en", "clinical/models")\
-    .setInputCols(["features"])\
+sequenceClassifier = MedicalBertForSequenceClassification\
+    .pretrained("bert_sequence_classifier_response_to_treatment", "en", "clinical/models")\
+    .setInputCols(["document", "token"])\
     .setOutputCol("prediction")
 
+
 sample_texts = [
-"""The patient presents with conditions often associated with the stresses and lifestyle of early career and possibly higher education stages, including sleep irregularities and repetitive stress injuries. There's a notable emphasis on preventative care, with discussions around lifestyle choices that can impact long-term health, such as smoking cessation, regular exercise, and balanced nutrition. The patient is also counseled on mental health, particularly in managing stress and anxiety that may arise from personal and professional responsibilities and ambitions at this stage of life.""",
-"""The senior patient presents with age-related issues such as reduced hearing and vision, arthritis, and memory lapses. Emphasis is on managing chronic conditions, maintaining social engagement, and adapting lifestyle to changing physical abilities. Discussions include medication management, dietary adjustments to suit older digestion, and the importance of regular, low-impact exercise.""",
-"""The late teenage patient is dealing with final growth spurts, the stress of impending adulthood, and decisions about higher education or career paths. Health discussions include maintaining a balanced diet, the importance of regular sleep patterns, and managing academic and social pressures. Mental health support is considered crucial at this stage, with a focus on building resilience and coping mechanisms.""",
-"""The patient, faces adjustments to a new lifestyle with changes in daily routines and social interactions. Health concerns include managing the transition from an active work life to more leisure time, which may impact physical and mental health. Preventative health measures are emphasized, along with the importance of staying mentally and physically active and engaged in the community."""
+    "The breast ultrasound after neoadjuvant chemotherapy displayed a decrease in the primary lesion size from 3 cm to 1 cm, suggesting a favorable response to treatment. The skin infection is also well controlled with a multi-antibiotic approach. ",
+    "MRI of the pelvis indicated no further progression of endometriosis after laparoscopic excision and six months of hormonal suppression therapy.",
+    "A repeat endoscopy revealed healing gastric ulcers with new signs of malignancy or H. pylori infection. Will discuss the PPI continuum.",
+    "Dynamic contrast-enhanced MRI of the liver revealed no significant reduction in the size and number of hepatic metastases following six months of targeted therapy with sorafenib."
 ]
 ```
 
 *Result*:
 
-|                                                                                                text|         result|
-|----------------------------------------------------------------------------------------------------|---------------|
-|The patient presents with conditions often associated with the stresses and lifestyle of early ca...|          Adult|
-|The senior patient presents with age-related issues such as reduced hearing and vision, arthritis...|      Old Adult|
-|The late teenage patient is dealing with final growth spurts, the stress of impending adulthood, ...| Child and Teen|
-|The patient, faces adjustments to a new lifestyle with changes in daily routines and social inter...|  Other/Unknown|
+|                                                                                               text |result|
+|----------------------------------------------------------------------------------------------------|------|
+|The breast ultrasound after neoadjuvant chemotherapy displayed a decrease in the primary lesion s...| Yes |
+|MRI of the pelvis indicated no further progression of endometriosis after laparoscopic excision a...| Yes |
+|A repeat endoscopy revealed healing gastric ulcers with new signs of malignancy or H. pylori infe...| No  |
+|Dynamic contrast-enhanced MRI of the liver revealed no significant reduction in the size and numb...| No  |
 
+*Benchmark*:
 
-Please check: [genericclassifier_age_e5](https://nlp.johnsnowlabs.com/2024/02/12/genericclassifier_age_e5_en.html)
-
-
-
-</div><div class="h3-box" markdown="1">
-
-#### `Biomarker` Text Classification Model to Detect Sentences/Phrases that may Contain Biomarker-related Terms
-
-We are thrilled to introduce our latest advancement: a cutting-edge text classification model specifically tailored for biomarkers. This state-of-the-art model is designed to analyze clinical sentences and accurately determine whether they contain terms associated with biomarkers. 
-
-- `1`: Contains biomarker related terms.
-- `0`: Doesn't contain biomarker related terms.
-
-*Example*:
-
-```python
-
-sequenceClassifier = MedicalBertForSequenceClassification.pretrained("bert_sequence_classifier_biomarker", "en", "clinical/models")\
-    .setInputCols(["sentence",'token'])\
-    .setOutputCol("prediction")
-
-sample_texts = [
-"""In the realm of cancer research, several biomarkers have emerged as crucial indicators of disease progression and treatment response. For instance, the expression levels of HER2/neu, a protein receptor, have been linked to aggressive forms of breast cancer. Additionally, the presence of prostate-specific antigen (PSA) is often monitored to track the progression of prostate cancer. Moreover, in cardiovascular health, high-sensitivity C-reactive protein (hs-CRP) serves as a biomarker for inflammation and potential risk of heart disease. Meanwhile, elevated levels of troponin T are indicative of myocardial damage, commonly observed in acute coronary syndrome. In the field of diabetes management, glycated hemoglobin is a widely used to assess long-term blood sugar control. Its levels reflect the average blood glucose concentration over the past two to three months, offering valuable insights into disease management strategies."""
-]
+```bash
+       label  precision    recall  f1-score   support
+          No     0.9927    0.9875    0.9901      3031
+         Yes     0.8430    0.9027    0.8718       226
+    accuracy          -         -    0.9816      3257
+   macro-avg     0.9178    0.9451    0.9309      3257
+weighted-avg     0.9823    0.9816    0.9819      3257
 ```
 
-*Result*:
-
-|sentence                                                                                                                                                    |prediction|
-|------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
-|In the realm of cancer research, several biomarkers have emerged as crucial indicators of disease progression and treatment response.                       |0         |
-|For instance, the expression levels of HER2/neu, a protein receptor, have been linked to aggressive forms of breast cancer.                                 |1         |
-|Additionally, the presence of prostate-specific antigen (PSA) is often monitored to track the progression of prostate cancer.                               |1         |
-|Moreover, in cardiovascular health, high-sensitivity C-reactive protein (hs-CRP) serves as a biomarker for inflammation and potential risk of heart disease.|1         |
-|Meanwhile, elevated levels of troponin T are indicative of myocardial damage, commonly observed in acute coronary syndrome.                                 |0         |
-|In the field of diabetes management, glycated hemoglobin is a widely used to assess long-term blood sugar control.                                          |0         |
-|Its levels reflect the average blood glucose concentration over the past two to three months, offering valuable insights into disease management strategies.|0         |
-
-
-Please check: [bert_sequence_classifier_biomarker](https://nlp.johnsnowlabs.com/2024/02/13/bert_sequence_classifier_biomarker_en.html)
-
-
 </div><div class="h3-box" markdown="1">
 
-#### New NER Model for SNOMED Term Extraction Regardless of its Type
 
-We are excited to introduce our latest Name Entity Recognition (NER) model, designed specifically to extract SNOMED terms from clinical text. This cutting-edge model offers enhanced accuracy and efficiency in identifying and categorizing SNOMED concepts within medical documents, aiding in comprehensive data analysis and clinical decision-making processes. With its advanced capabilities, this NER model promises to revolutionize the way healthcare professionals extract valuable insights from clinical narratives.
+#### 2 New Sentence Entity Resolver Models for Associating SNOMED Clinical Entities
 
-*Example*:
+Introducing 2 new Sentence Entity Resolver Models `sbiobertresolve_snomed_no_class` and `sbiobertresolve_snomed_conditions` help to map medical entities to SNOMED codes.
 
-```python
-
-embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-    .setInputCols("sentence", "token")\
-    .setOutputCol("embeddings")
-
-ner = MedicalNerModel.pretrained("ner_snomed_term", "en", "clinical/models") \
-    .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("ner")
-
-text_list = ["""The patient was diagnosed with acute appendicitis and scheduled for immediate surgery.""",
-"""Due to experiencing chronic pain, the patient was referred to a fibromyalgia specialist for further evaluation.""",
-"""His hypertension is currently managed with a combination of lifestyle modifications and medication.""",
-"""The child was brought in with symptoms of acute otitis, including ear pain and fever.""",
-"""Laboratory tests indicate the individual has hyperthyroidism, requiring further endocrinological assessment.""",
-"""The radiograph showed evidence of a distal radius fracture from a recent fall."""]
-
-```
-
-*Result*:
-
-|doc_id|begin|end|chunk             |ner_label  |
-|------|-----|---|------------------|-----------|
-|1     |31   |48 |acute appendicitis|snomed_term|
-|2     |20   |31 |chronic pain      |snomed_term|
-|2     |63   |74 |fibromyalgia      |snomed_term|
-|3     |4    |15 |hypertension      |snomed_term|
-|4     |48   |53 |otitis            |snomed_term|
-|4     |65   |72 |ear pain          |snomed_term|
-|5     |45   |59 |hyperthyroidism   |snomed_term|
-|6     |4    |13 |radiograph        |snomed_term|
-|6     |43   |57 |radius fracture   |snomed_term|
-
-
-Please check: [ner_snomed_term](https://nlp.johnsnowlabs.com/2024/02/13/ner_snomed_term_en.html)
-
-
-</div><div class="h3-box" markdown="1">
-
-#### New 6 ChunkMapper Models for Medical Code Mapping to Map Various Medical Terminologies Across Each Other
-
-Introducing a suite of new ChunkMapper models designed to streamline medical code mapping tasks. These models include mappings between UMLS, LOINC, CPT, and SNOMED codes, offering a comprehensive solution for interoperability within medical systems.
 
 | Model Name                                                            |      Description            |
-|-----------------------------------------------------------------------|-----------------------------|
-|[`umls_loinc_mapper`](https://nlp.johnsnowlabs.com/2024/02/15/umls_loinc_mapper_en.html)  | Maps UMLS codes to corresponding LOINC codes. |
-|[`umls_cpt_mapper`](https://nlp.johnsnowlabs.com/2024/02/27/umls_cpt_mapper_en.html)    | Maps UMLS codes to corresponding CPT codes.   |
-|[`umls_snomed_mapper`](https://nlp.johnsnowlabs.com/2024/02/26/umls_snomed_mapper_en.html) | Maps UMLS codes to corresponding SNOMED codes.|
-|[`snomed_umls_mapper`](https://nlp.johnsnowlabs.com/2024/02/26/snomed_umls_mapper_en.html) | Maps SNOMED codes to corresponding UMLS codes.|
-|[`cpt_umls_mapper`](https://nlp.johnsnowlabs.com/2024/02/27/cpt_umls_mapper_en.html)    | Maps CPT codes to corresponding UMLS codes.   |
-|[`loinc_umls_mapper`](https://nlp.johnsnowlabs.com/2024/02/19/loinc_umls_mapper_en.html)  | Maps LOINC codes to corresponding UMLS codes. |
+|--------------------------------------------------------------------------|-------------------------------------------|
+| [`sbiobertresolve_snomed_no_class`](https://nlp.johnsnowlabs.com/2024/03/05/sbiobertresolve_snomed_no_class_en.html) | This model maps extracted medical entities (no concept class) to SNOMED codes. |
+| [`sbiobertresolve_snomed_conditions`](https://nlp.johnsnowlabs.com/2024/03/04/sbiobertresolve_snomed_conditions_en.html) | This model maps clinical conditions to their corresponding SNOMED (domain: Conditions) codes. |
+
 
 
 *Example*:
 
 ```python
-chunkerMapper = ChunkMapperModel.pretrained("umls_loinc_mapper", "en", "clinical/models")\
-    .setInputCols(["umls_code"])\
-    .setOutputCol("mappings")\
-    .setRels(["loinc_code"])
+resolver = SentenceEntityResolverModel\
+    .pretrained("sbiobertresolve_snomed_conditions", "en", "clinical/models")\
+    .setInputCols(["sbert_embeddings"]) \
+    .setOutputCol("resolution")\
+    .setDistanceFunction("EUCLIDEAN")
 
-text = "acebutolol"
+text = """Medical professionals rushed in the bustling emergency room to attend to the patient with alarming symptoms.
+The attending physician immediately noted signs of respiratory distress, including stridor, a high-pitched sound indicative of upper respiratory tract obstruction.
+The patient, struggling to breathe, exhibited dyspnea. Concern heightened when they began experiencing syncope,
+a sudden loss of consciousness likely stemming from inadequate oxygenation. Further examination revealed a respiratory tract hemorrhage."""
+
 ```
 
 *Result*:
 
-|      chunk |     UMLS |     LOINC |   relation |
-|-----------:|---------:|----------:|-----------:|
-| acebutolol | C0000946 | LP16015-7 | loinc_code |
+|                              chunk|                    label|snomed_code|                         resolution|             all_codes|                               all_resolutions|
+|-----------------------------------|-------------------------|-----------|-----------------------------------|----------------------|----------------------------------------------|
+|               respiratory distress|               VS_Finding|  271825005|               respiratory distress|271825005,418092006...|respiratory distress,respiratory tract cong...|
+|                            stridor|                  Symptom|   70407001|                            stridor|70407001,301826004:...|stridor,intermittent stridor,inhalatory str...|
+|                 high-pitched sound|                  Symptom|   51406002|                 high pitched voice|51406002,271661003:...|high pitched voice,heart sounds exaggerated...|
+|upper respiratory tract obstruction|Disease_Syndrome_Disorder|   68372009|upper respiratory tract obstruction|68372009,79688008::...|upper respiratory tract obstruction,respira...|
+|              struggling to breathe|                  Symptom|  289105003|   difficulty controlling breathing|289105003,230145002...|difficulty controlling breathing,difficulty...|
+|                            dyspnea|                  Symptom|  267036007|                            dyspnea|267036007,60845006:...|dyspnea,exertional dyspnea,inspiratory dysp...|
+|                            syncope|                  Symptom|  271594007|                            syncope|271594007,234167006...|syncope,situational syncope,tussive syncope...|
+|              loss of consciousness|                  Symptom|  419045004|              loss of consciousness|419045004,44077006:...|loss of consciousness,loss of sensation,los...|
+|             inadequate oxygenation|                  Symptom|  238161004|           impaired oxygen delivery|238161004,70944005:...|impaired oxygen delivery,impaired gas excha...|
+|       respiratory tract hemorrhage|Disease_Syndrome_Disorder|   95431003|       respiratory tract hemorrhage|95431003,233783005:...|respiratory tract hemorrhage,tracheal hemor...|
 
 
 
 </div><div class="h3-box" markdown="1">
 
-#### Curated Pretrained Pipelines to Analyse Clinical Documents for Specific Clinical Tasks and Concepts at Once
+#### Clinical Document Analysis with One-Liner Pretrained Pipelines for Specific Clinical Tasks and Concepts
 
 We introduce a suite of advanced, hybrid pretrained pipelines, specifically designed to streamline the process of analyzing clinical documents. These pipelines are built upon multiple state-of-the-art (SOTA) pretrained models, delivering a comprehensive solution for extracting vital information with unprecedented ease.
 
@@ -389,560 +497,191 @@ What sets this release apart is the elimination of complexities typically involv
 
 
 | Pipeline Name                                                            |      Description            |
-|--------------------------------------------------------------------------|-------------------------------------------|
-| [`hcpcs_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/30/hcpcs_resolver_pipeline_en.html) | This pipeline extracts `PROCEDURE` entities and maps them to their corresponding [Healthcare Common Procedure Coding System (HCPCS)](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/HCPCS/index.html) codes. |
-| [`hgnc_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/30/hgnc_resolver_pipeline_en.html) | This pipeline extracts `GENE` entities and maps them to their corresponding [HUGO Gene Nomenclature Committee (HGNC)](https://www.nlm.nih.gov/research/umls/sourcereleasedocs/current/HGNC/index.html) codes. |
-| [`icd10cm_generalised_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/30/icd10cm_generalised_resolver_pipeline_en.html) | This pipeline extracts the following entities and maps them to their ICD-10-CM codes. It predicts ICD-10-CM codes up to 3 characters (according to ICD-10-CM code structure the first three characters represent the general type of injury or disease). |
-| [`loinc_numeric_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/30/loinc_numeric_resolver_pipeline_en.html) | This pipeline extracts `TEST` entities and maps them to their corresponding Logical Observation Identifiers Names and Codes(LOINC) codes. It is trained with the numeric LOINC codes, without the inclusion of LOINC “Document Ontology” codes starting with the letter “L”. It also provides the official resolution of the codes within the brackets.  |
-| [`snomed_procedures_measurements_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/01/31/snomed_procedures_measurements_resolver_pipeline_en.html) | This pipeline extracts `Procedure` and measurement (`Test`) entities and maps them to their corresponding SNOMED codes. |
-| [`ncit_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/02/01/ncit_resolver_pipeline_en.html) | This advanced pipeline extracts oncological entities from clinical texts to map these entities to their corresponding National Cancer Institute Thesaurus (NCIt) codes. |
-| [`rxcui_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/02/01/rxcui_resolver_pipeline_en.html) | This advanced pipeline extracts medication entities from clinical texts to map these entities to their corresponding RxNorm Concept Unique Identifier (RxCUI) codes. |
-| [`icd10pcs_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/02/02/icd10pcs_resolver_pipeline_en.html) | This pipeline extracts `Procedure` entities from clinical texts and map them to their corresponding ICD-10-PCS codes. |
-| [`icdo_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/02/02/icdo_resolver_pipeline_en.html) | This pipeline extracts oncological entities from clinical texts and maps them to their corresponding ICD-O codes. |
-| [`loinc_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/02/02/loinc_resolver_pipeline_en.html) | This pipeline extracts `Test` entities from clinical texts and maps them to their corresponding Logical Observation Identifiers Names and Codes (LOINC) codes. |
-| [`clinical_deidentification_obfuscation_medium`](https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_medium_en.html) | This pipeline can be used to detect the PHI information from medical texts and obfuscate (replace them with fake ones) in the resulting text. |
-| [`clinical_deidentification_obfuscation_small`](https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_small_en.html) |  This pipeline can be used to detect the PHI information from medical texts and obfuscate (replace them with fake ones) in the resulting text. |
-
-
-
-</div><div class="h3-box" markdown="1">
-
-#### Enhanced Data Exploration with the New Flattener Annotator to Prettify the Pipeline Outputs in a Tabulated Format
-
-Introducing the latest addition to our annotation toolkit: the Flattener Annotator. This powerful tool facilitates data exploration by returning exploded columns for each specified field containing annotation data. With customizable settings, users can select fields of interest and effortlessly explode their content for deeper analysis. 
-
-*Example*:
-
-```python
-ner_converter = NerConverterInternal() \
-    .setInputCols(["sentence", "token", "ner"]) \
-    .setOutputCol("ner_chunk") \
-    .setWhiteList(["SYMPTOM","VS_FINDING","DISEASE_SYNDROME_DISORDER","ADMISSION_DISCHARGE","PROCEDURE"])
-    
-clinical_assertion = AssertionDLModel.pretrained("assertion_jsl_augmented", "en", "clinical/models") \
-    .setInputCols(["sentence", "ner_chunk", "embeddings"]) \
-    .setOutputCol("assertion") \
-
-# returns exploded columns for each specified field containing annotation data.
-flattener = Flattener()\
-    .setInputCols("ner_chunk", "assertion") \
-    .setExplodeSelectedFields({"ner_chunk": ["result as ner_chunks",
-                                             "begin as begins",
-                                             "end as ends",
-                                             "metadata.entity as entity"],
-                               "assertion":["result as assertions",
-                                            "metadata.confidence as confidence"]
-                               })
-
-text = """
-GENERAL: He is an elderly gentleman in no acute distress. He is sitting up in bed eating his breakfast. He is alert and oriented and answering questions appropriately.
-HEENT: Sclerae showed mild arcus senilis in the right. Left was clear. Pupils are equally round and reactive to light. Extraocular movements are intact. Oropharynx is clear.
-NECK: Supple. Trachea is midline. No jugular venous pressure distention is noted. No adenopathy in the cervical, supraclavicular, or axillary areas.
-ABDOMEN: Soft and not tender. There may be some fullness in the left upper quadrant, although I do not appreciate a true spleen with inspiration.
-EXTREMITIES: There is some edema, but no cyanosis and clubbing .
-"""
-```
-
-*Result*:
-
-|ner_chunks                        |begins|ends|entity                   |assertions|confidence|
-|----------------------------------|------|----|-------------------------|----------|----------|
-|distress                          |49    |56  |SYMPTOM                  |Absent    |0.9999    |
-|arcus senilis                     |196   |208 |DISEASE_SYNDROME_DISORDER|Past      |1.0       |
-|jugular venous pressure distention|380   |413 |SYMPTOM                  |Absent    |1.0       |
-|adenopathy                        |428   |437 |SYMPTOM                  |Absent    |1.0       |
-|tender                            |514   |519 |SYMPTOM                  |Absent    |1.0       |
-|fullness                          |540   |547 |SYMPTOM                  |Possible  |1.0       |
-|edema                             |665   |669 |SYMPTOM                  |Present   |1.0       |
-|cyanosis                          |679   |686 |VS_FINDING               |Absent    |1.0       |
-|clubbing                          |692   |699 |SYMPTOM                  |Absent    |1.0       |
-
-
-Please check [Flattener Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/41.Flattener.ipynb) for more information.
+|--------------------------------------------------------------------------|-----------------------------|
+| [`icd10cm_rxnorm_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/07/icd10cm_rxnorm_resolver_pipeline_en.html) | This pipeline can extract clinical conditions and medication entities, map the clinical conditions to their respective ICD-10-CM codes, and medication entities to RxNorm codes. |
+| [`snomed_term_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/22/snomed_term_resolver_pipeline_en.html) | This pretrained resolver pipeline extracts SNOMED terms and maps them to their corresponding SNOMED codes. |
+| [`snomed_findings_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/03/snomed_findings_resolver_pipeline_en.html) | This pipeline extracts clinical findings and maps them to their corresponding SNOMED (CT version) codes. |
+| [`snomed_body_structure_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/05/snomed_body_structure_resolver_pipeline_en.html) | This pipeline extracts anatomical structure entities and maps them to their corresponding SNOMED (body structure version) codes. |
+| [`snomed_auxConcepts_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/12/snomed_auxConcepts_resolver_pipeline_en.html) | This pipeline extracts `Morph Abnormality`, `Clinical Drug`, `Clinical Drug Form`, `Procedure`, `Substance`, `Physical Object`, and `Body Structure` concepts from clinical notes, then maps them to their corresponding SNOMED codes. |
+| [`snomed_conditions_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/11/snomed_conditions_resolver_pipeline_en.html) | This advanced pipeline extracts clinical conditions from clinical texts and map these entities to their corresponding SNOMED codes. |
+| [`snomed_drug_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/11/snomed_drug_resolver_pipeline_en.html) | This advanced pipeline extracts drug entities from clinical texts and maps these entities to their corresponding SNOMED codes. |
+| [`snomed_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/11/snomed_resolver_pipeline_en.html) | This pipeline extracts `Clinical Findings `, `Morph Abnormality`, `Clinical Drug`, `Clinical Drug Form`, `Procedure`, `Substance`, `Physical Object`, and `Body Structure` concepts from clinical notes and maps them to their corresponding SNOMED codes. |
+| [`clinical_deidentification_generic_optimized`](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_generic_optimized_en.html) | This pipeline can be used to deidentify PHI information from medical texts. |
+| [`clinical_deidentification_nameAugmented`](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. |
+| [`clinical_deidentification_subentity_optimized`](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be obfuscated in the resulting text and also masked with entity labels in the metadata. |
+| [`explain_clinical_doc_public_health`](https://nlp.johnsnowlabs.com/2024/03/19/explain_clinical_doc_public_health_en.html) | This specialized public health pipeline can extract public health-related entities, assign assertion status to the extracted entities, establish relations between the extracted entities from the clinical documents. In this pipeline, five NER, one assertion, and one relation extraction model were used to achieve those tasks. |
+| [`explain_clinical_doc_biomarker`](https://nlp.johnsnowlabs.com/2024/03/11/explain_clinical_doc_biomarker_en.html) | This specialized biomarker pipeline can extract biomarker entities, classify sentences whether they contain biomarker entities or not, establish relations between the extracted biomarker and biomarker results from the clinical documents. |
+| [`explain_clinical_doc_risk_factors`](https://nlp.johnsnowlabs.com/2024/03/25/explain_clinical_doc_risk_factors_en.html) | This pipeline is designed to extract all clinical/medical entities, which may be considered as risk factors from text, assign assertion status to the extracted entities, establish relations between the extracted entities. |
+| [`clinical_deidentification_multi_mode_output`](https://nlp.johnsnowlabs.com/2024/03/26/clinical_deidentification_multi_mode_output_en.html) | This pipeline simultaneously produces masked with entity labels, fixed-length char, same-length char and obfuscated version of the text. |
 
 
 </div><div class="h3-box" markdown="1">
 
-#### Rule-based Entity Recognition/matcher Modules (`TextMatcher`, `RegexMatcher` and `EntityRuler`)  to Extract Mamed Entities with Rules and Dictionaries
+#### A New Augmented NER Model for Multilingual Name Extraction by Leveraging the Capabilities of the LangTest Library to Boost Their Robustness Significantly
 
-- Efficient Regex Matching with the new `RegexMatcherInternal` annotator
-  
-The **`RegexMatcherInternal`** class implements an internal annotator approach to match a set of regular expressions with a provided entity. This approach is utilized for associating specific patterns within text data with predetermined entities, such as dates, mentioned within the text.
-
-The class allows users to define rules using regular expressions paired with entities, offering flexibility in customization. These rules can either be directly set using the `setRules` method, with a specified delimiter, or loaded from an external file using the `setExternalRules` method. 
-
+The newly introduced augmented NER model namely ner_deid_name_multilingual_clinical_langtest is powered by the innovative LangTest library. This cutting-edge NLP toolkit is at the forefront of language processing advancements, incorporating state-of-the-art techniques and algorithms to enhance the capabilities of our models significantly.
 
 *Example*:
 
 ```python
-rules = '''
-(\d{1,3}\.){3}\d{1,3}~IPADDR
-\d{4}-\d{2}-\d{2}|\d{2}/\d{2}/\d{2}|\d{2}/\d{2}/\d{2}~DATE
-'''
-
-with open('./rules/regex_rules.txt', 'w') as f:
-    f.write(rules)
-
-regex_matcher_internal = RegexMatcherInternal()\
-    .setInputCols('document')\
-    .setStrategy("MATCH_ALL")\
-    .setOutputCol("regex_matches")\
-    .setExternalRules(path='./rules/regex_rules.txt',
-                      delimiter='~')
-
-text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
-Dr. John Green, ID: 1231511863, IP 203.120.223.13
-He is a 60-year-old male was admitted to the Day Hospital for cystectomy on 01/13/93
-Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A334455B.
-Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
-```
-
-*Result*:
-
-|  regex_result|begin|end|ner_label|
-|--------------|-----|---|---------|
-|    2093-01-13|   38| 47|     DATE|
-|203.120.223.13|   97|110|   IPADDR|
-|      01/13/93|  188|195|     DATE|
-
-Please check [Rule Based Entity Matchers Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb) for more information.
+ner = MedicalNerModel.pretrained("ner_deid_name_multilingual_clinical_langtest", "xx", "clinical/models") \
+    .setInputCols(["sentence", "token", "embeddings"]) \
+    .setOutputCol("ner")
 
 
-</div><div class="h3-box" markdown="1">
-  
-- Efficient Text Matching with the new `TextMatcherInternal` annotator
-
-The `TextMatcherInternal` annotator provides a robust solution for matching exact phrases against a given document. Users can specify phrases of interest in a source file, where each phrase is paired with its corresponding label or entity, separated by a `delimiter`. The annotator allows for fine-tuned control over the matching process through various parameters. Users can choose to enable case sensitivity, merge overlapping matched chunks, and customize entity metadata fields. Additionally, options like setting the delimiter and specifying whether the matcher should operate on chunks or tokens offer further flexibility.
-
-*Text Matcher Pretrained Models*:
-
-|model|entities|
-|:----|-------|
-| [drug_matcher](https://nlp.johnsnowlabs.com/2024/03/06/drug_matcher_en.html)  |`DRUG` |
-| [biomarker_matcher](https://nlp.johnsnowlabs.com/2024/03/06/biomarker_matcher_en.html)  |`Biomarker` |
-
-*Example*:
-
-```python
-matcher_drug = """
-Aspirin 100mg#Drug
-aspirin#Drug
-paracetamol#Drug
-amoxicillin#Drug
-ibuprofen#Drug
-lansoprazole#Drug
-"""
-
-with open ('matcher_drug.csv', 'w') as f:
-  f.write(matcher_drug)
-
-entityExtractor = TextMatcherInternal()\
-    .setInputCols(["document", "token"])\
-    .setEntities("matcher_drug.csv")\
-    .setOutputCol("matched_text")\
-    .setCaseSensitive(False)\
-    .setDelimiter("#")\
-    .setMergeOverlapping(False)
-
-text = """John's doctor prescribed aspirin 100mg for his heart condition, along with paracetamol for his fever, amoxicillin for his tonsilitis, ibuprofen for his inflammation, and lansoprazole for his GORD."""
-```
-
-*Result*:
-
-|        chunk|begin|end|label|
-|-------------|-----|---|-----|
-|      aspirin|   25| 31| Drug|
-|aspirin 100mg|   25| 37| Drug|
-|  paracetamol|   75| 85| Drug|
-|  amoxicillin|  102|112| Drug|
-|    ibuprofen|  134|142| Drug|
-| lansoprazole|  170|181| Drug|
-
-
-Please check [Rule Based Entity Matchers Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb) for more information.
-
-
-</div><div class="h3-box" markdown="1">
-  
-- Efficient Text Matching with the new `EntityRulerInternal` annotator
-
-The `EntityRulerInternal` is a versatile annotator designed to match exact strings or regex patterns against a given document, assigning them named entities as specified. This powerful tool allows users to define custom rules in a file, accommodating any number of named entities. By leveraging this annotator, users can efficiently identify and classify specific text patterns within documents, enhancing the accuracy and efficiency of named entity recognition tasks. 
-
-
-*Example*:
-
-```python
-data = [
-    {
-        "id": "drug-words",
-        "label": "Drug",
-        "patterns": ["paracetamol", "aspirin", "ibuprofen", "lansoprazol"]
-    },
-    {
-        "id": "disease-words",
-        "label": "Disease",
-        "patterns": ["heart condition","tonsilitis","GORD"]
-    },
-        {
-        "id": "symptom-words",
-        "label": "Symptom",
-        "patterns": ["fever","headache"]
-    },
+text_list = [
+    """Record date: 2093-01-13, David Hale, M.D., Name: Hendrickson, Ora MR. # 7194334 Date: 01/13/93 PCP: Oliveira, 25 years old, Record date: 1-11-2000. Cocke County Baptist Hospital. 0295 Keats Street. Phone +1 (302) 786-5227. The patient's complaints first surfaced when he started working for Brothers Coal-Mine.""",     
+    """J'ai vu en consultation Michel Martinez (49 ans) adressé au Centre Hospitalier De Plaisir pour un diabète mal contrôlé avec des symptômes datant de Mars 2015.""",   
+    """Michael Berger wird am Morgen des 12 Dezember 2018 ins St. Elisabeth-Krankenhaus in Bad Kissingen eingeliefert. Herr Berger ist 76 Jahre alt und hat zu viel Wasser in den Beinen."""    ,
+    """Ho visto Gastone Montanariello (49 anni) riferito all' Ospedale San Camillo per diabete mal controllato con sintomi risalenti a marzo 2015.""",
+    """Antonio Miguel Martínez, un varón de 35 años de edad, de profesión auxiliar de enfermería y nacido en Cadiz, España. Aún no estaba vacunado, se infectó con Covid-19 el dia 14 de Marzo y tuvo que ir al Hospital. Fue tratado con anticuerpos monoclonales en la Clinica San Carlos.""",
+    """Detalhes do paciente:
+    Nome do paciente: Pedro Gonçalves NHC: 2569870 Endereço: Rua Das Flores 23. Cidade/ Província: Porto Código Postal: 21754-987 Dados de cuidados Data de nascimento: 10/10/1963 Idade: 53 anos Data de admissão: 17/06/2016 Doutora: Maria Santos""",
+    """Spitalul Pentru Ochi de Deal, Drumul Oprea Nr. 972 Vaslui, 737405 România Tel: +40(235)413773 Data setului de analize: 25 May 2022 15:36:00 Nume&Prenume: BUREAN MARIA, Varsta: 77 CNP: 2450502264401"""
 ]
-
-with open("entities.json", "w") as f:
-    json.dump(data, f)
-
-entityRuler = EntityRulerInternalApproach()\
-    .setInputCols(["document", "token"])\
-    .setOutputCol("entities")\
-    .setPatternsResource("entities.json")\
-    .setCaseSensitive(False)\
-
-text = """John's doctor prescribed aspirin for his heart condition, along with paracetamol for his fever and headache, amoxicillin for his tonsilitis, ibuprofen for his inflammation, and lansoprazole for his GORD on 2023-12-01."""
 ```
 
 *Result*:
 
-|          chunk|begin|end|  label|
-|---------------|-----|---|-------|
-|        aspirin|   25| 31|   Drug|
-|heart condition|   41| 55|Disease|
-|    paracetamol|   69| 79|   Drug|
-|          fever|   89| 93|Symptom|
-|       headache|   99|106|Symptom|
-|     tonsilitis|  129|138|Disease|
-|      ibuprofen|  141|149|   Drug|
-|    lansoprazol|  177|187|   Drug|
-|           GORD|  198|201|Disease|
+|              ner_chunk|begin|end|ner_label|
+|-----------------------|-----|---|---------|
+|             David Hale|   25| 34|     NAME|
+|       Hendrickson, Ora|   49| 64|     NAME|
+|     Brothers Coal-Mine|  291|308|     NAME|
+|        Michel Martinez|   24| 38|     NAME|
+|         Michael Berger|    0| 13|     NAME|
+|                 Berger|  117|122|     NAME|
+|  Gastone Montanariello|    9| 29|     NAME|
+|Antonio Miguel Martínez|    0| 22|     NAME|
+|        Pedro Gonçalves|   41| 55|     NAME|
+|           Maria Santos|  251|262|     NAME|
+|           BUREAN MARIA|  154|165|     NAME|
 
+Please check: [ner_deid_name_multilingual_clinical_langtest](https://nlp.johnsnowlabs.com/2024/03/12/ner_deid_name_multilingual_clinical_langtest_xx.html)
 
-Please check [Rule Based Entity Matchers Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb) for more information.
 
 
 </div><div class="h3-box" markdown="1">
 
-#### Deidentification now Supports Masking and Obfuscation at the Same Time without an Additional Stage
+#### `DatasetInfo` Parameter Added to `SentenceEntityResolver` Annotator to Track the Source Datasets' Versions.
 
-Explore how metadata masking is implemented in deidentification processes through the setMetadataMaskingPolicy function. This feature enables users to add a mask option to DEID within the metadata, providing enhanced data privacy measures. Options such as `entity_labels`, `same_length_chars`, and `fixed_length_chars` offer flexibility in choosing the desired masking policy. 
+Introduced a setDatasetInfo param to SentenceEntityResolverApproach annotator to let users add dataset information (version, year, etc.) to the "model metadata" not the output.
+
+*Example:*
+
+```python
+bertExtractor = SentenceEntityResolverApproach()\
+  .setNeighbours(25)\
+  .setThreshold(1000)\
+  .setInputCols("bert_embeddings")\
+  .setNormalizedCol("concept_name")\
+  .setLabelCol("conceptId")\
+  .setOutputCol('snomed_code')\
+  .setDistanceFunction("EUCLIDIAN")\
+  .setCaseSensitive(False)\
+  .setDatasetInfo("the model version:531")
+```
+
+
+
+</div><div class="h3-box" markdown="1">
+
+#### Robust Exception Handling to Allow Skipping only the Corrupted Records Processed via `GenericClassifier`, `BertSentenceChunkEmbeddings`, `AssertionFilterer`, `ChunkFilterer`, `ContextualParser`, `ChunkMerge` and `Deidentification` Annotators
+
+We added the `doExceptionHandling` parameter into `GenericClassifier`, `BertSentenceChunkEmbeddings`, `AssertionFilterer`, `ChunkFilterer`, `ContextualParser`, `ChunkMerge` and `Deidentification` annotators for a robust exception handling if the process is broken down due to corrupted inputs. Suppose it is set as `True`. In that case, the annotator tries to process as usual and if exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message. **Processing continues with the next one** while the rest of the records within the same batch are parsed without interruption. The default behavior is `False` and will throw an exception and break the process to inform users.
 
 *Example*:
 
 ```python
-deidentification = DeIdentification()\
+deidentification = DeIdentification() \
     .setInputCols(["sentence", "token", "ner_chunk"]) \
-    .setOutputCol("deid") \
-    .setMode("obfuscate") \
-    .setObfuscateDate(True) \
-    .setObfuscateRefSource('faker') \
-    .setMetadataMaskingPolicy("entity_labels") # Options : 'entity_labels', 'same_length_chars', 'fixed_length_chars'
-
-text = """Record date : 2093-01-13 , David Hale , M.D . , Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 . PCP : Oliveira , 25 years-old , Record date : 2079-11-09 . Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555 ."""
+    .setOutputCol("deidentified") \
+    .setMode("mask")\
+    .setDoExceptionHandling(True)
 ```
-
-*Result*:
-
-|    | sentence  | deidentified    | masked  |
-|---:|:----------|:----------------|:--------------|
-|  0 | Record date : 2093-01-13 , David Hale , M.D . | Record date : 2093-02-12 , Docia Chuck , M.D . |  Record date : \<DATE> , \<DOCTOR> , M.D .  |
-|  1 | , Name : Hendrickson , Ora MR # 7194334 Date : 01/13/93 . | , Name : Marisue Humble MR # 7185162 Date : 02/12/93 . | , Name : \<PATIENT> MR # \<MEDICALRECORD> Date : \<DATE> . |
-|  2 | Patient : Oliveira, 25 years-old , Record date : 2079-11-09 . | Patient : Consuella Lose, 35 years-old , Record date : 2079-12-09 . | Patient : \<PATIENT>, \<AGE> years-old , Record date : \<DATE> . |
-|  3 | Cocke County Baptist Hospital .                               | SHELBY REGIONAL MEDICAL CENTER .     | \<HOSPITAL> .  |
-|  4 | 0295 Keats Street                                             | 600 North Sioux Point Road           | \<STREET>  |
-
-
-Please check [Clinical DeIdentification Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.Clinical_DeIdentification.ipynb) for more information.
 
 
 </div><div class="h3-box" markdown="1">
 
-#### `ChunkMerger` now Supports Dictionary Format for the Selective Merging
+#### Changed the license of  CPT and MedDRA Models in the ModelHub, and Attempting to Use Them in Healthcare NLP now Throws an Error
 
-ChunkMergeModel and ChunkMergeApproach now offer support for the Dictionary format, enhancing its selectiveness and flexibility in chunk merging operations. 
-The `ChunkMergeModel` includes `setReplaceDict` for replacing entity labels and `setFalsePositives` for enabling precise control over chunk merging outcomes. 
-Additionally, the `ChunkMergeApproach` has `setEntitiesConfidence`, allowing users to adjust entity confidence levels for further customization. 
-These enhancements empower users to optimize their data processing pipelines, improving accuracy and efficiency in chunk merging tasks.
-
-*Example*:
-
-```python
-
-chunk_merge_model = ChunkMergeModel() \
-    .setInputCols("clinical_ner_chunk","deid_ner_chunk") \
-    .setOutputCol("merged_chunk") \
-    .setReplaceDict({"DOCTOR": "NAME",
-                     "PATIENT": "NAME"}) \
-    .setFalsePositives([["metformin", "TREATMENT", "DRUG"],
-                        ["glipizide","TREATMENT",""]])
-
-text ='''
-Jennifer is 58 years old. She was  seen by Dr. John Green and discharged on metformin, glipizide for T2DM and atorvastatin and gemfibrozil for HTG.
-'''
-```
-
-*Result for without rules*:
-
-|       chunk|begin|end|   entity|confidence|
-|------------|-----|---|---------|----------|
-|    Jennifer|    1|  8|  PATIENT|    0.9993|
-|          58|   13| 14|      AGE|       1.0|
-|  John Green|   48| 57|   DOCTOR|    0.7381|
-|   metformin|   77| 85|TREATMENT|    0.9999|
-|   glipizide|   88| 96|TREATMENT|       1.0|
-|        T2DM|  102|105|  PROBLEM|    0.9988|
-|atorvastatin|  111|122|TREATMENT|    0.9999|
-| gemfibrozil|  128|138|TREATMENT|       1.0|
-|         HTG|  144|146|  PROBLEM|    0.9991|
-
-*Result for with rules*:
-
-In the example, "metformin" has been classified as a DRUG entity, while "glipizide" has been removed due to the setFalsePositives rules.
-Additionally, "Jennifer" and "John Green" chunks have been labeled as NAME according to the setReplaceDict rules.
-
-
-|       chunk|begin|end|   entity|confidence|
-|------------|-----|---|---------|----------|
-|    Jennifer|    1|  8|     NAME|    0.9993|
-|          58|   13| 14|      AGE|       1.0|
-|  John Green|   48| 57|     NAME|    0.7381|
-|   metformin|   77| 85|     DRUG|    0.9999|
-|        T2DM|  102|105|  PROBLEM|    0.9988|
-|atorvastatin|  111|122|TREATMENT|    0.9999|
-| gemfibrozil|  128|138|TREATMENT|       1.0|
-|         HTG|  144|146|  PROBLEM|    0.9991|
-
-
-</div><div class="h3-box" markdown="1">
-
-#### `MedicalQuestionAnswering` Returns Score in Metadata
-
-Our Medical Question Answering system now includes a significant enhancement: the ability to return a score in metadata. This update provides users with valuable additional information, allowing them to gauge the relevance of the provided answers. 
-
-*Example*:
-
-```python
-med_qa  = MedicalQuestionAnswering().pretrained("clinical_notes_qa_base_onnx", "en", "clinical/models")\
-              .setInputCols(["document_question", "document_context"])\
-              .setCustomPrompt("Context: {context} \n Question: {question} \n Answer: ")\
-              .setOutputCol("answer")\
-
-context = '''
-Patient with a past medical history of hypertension for 15 years.
-(Medical Transcription Sample Report)\nHISTORY OF PRESENT ILLNESS:
-The patient is a 74-year-old white woman who has a past medical history of hypertension for 15 years, history of CVA with no residual hemiparesis and uterine cancer with pulmonary metastases, who presented for evaluation of recent worsening of the hypertension. According to the patient, she had stable blood pressure for the past 12-15 years on 10 mg of lisinopril.
-'''
-
-question = "What is the primary issue reported by patient?"   
-```
-
-*Result*:
-
-
-|Question           |Answer                         |metadata               |
-|-------------------|-------------------------------|-----------------------|
-|What is the primary issue reported by patient?|The primary issue reported by the patient is hypertension.|{score -> 0.97722054}|
+The CPT and MedDRA models have been removed from the S3 storage. As a result, when attempting to use these models in Spark NLP, a new error message is thrown. The new error message states that the specified model (e.g., 'aaa') cannot be used as a pre-trained model. It further explains that to load the model locally using the .load() method, possession of a valid MedDRA or CPT license is required. If the user has such a license obtained through the corresponding agencies, they are instructed to contact the support team at support@johnsnowlabs.com to inquire about using the model.
 
 
 
 </div><div class="h3-box" markdown="1">
-
-#### New Speed Benchmarks for Various Pipelines Across Different Platforms Under Various Settings (EMR, Databricks etc.)
-
-
-- Performance Evaluation of AWS EMR Cluster for Clinical Text Analysis
-
-This study presents a benchmark assessment of an AWS EMR (Elastic MapReduce) cluster for analyzing clinical texts. 
-The evaluation aims to assess the performance and scalability of the AWS EMR cluster configuration for clinical text analysis tasks.
-
-**Dataset:** 340 Custom Clinical Texts, approx. 235 tokens per text
-**Versions:**
-    - **EMR Version:** ERM.6.15.0
-    - **spark-nlp Version:** v5.2.2
-    - **spark-nlp-jsl Version :** v5.2.1
-    - **Spark Version :** v3.4.1
-**Instance Type:** 
-    -  **Primary**: m4.4xlarge, 16 vCore, 64 GiB memory
-    - **Worker :**  m4.4xlarge, 16 vCore, 64 GiB memory
-
-
-```python
-ner_pipeline = Pipeline(stages = [
-        document_assembler,
-        sentence_detector,
-        tokenizer,
-        word_embeddings,
-        ner_jsl,
-        ner_jsl_converter])
-
-
-resolver_pipeline = Pipeline(stages = [
-        document_assembler,
-        sentence_detector,
-        tokenizer,
-        word_embeddings,
-        ner_jsl,
-        ner_jsl_converter,
-        chunk2doc,
-        sbert_embeddings,
-        snomed_resolver]) 
-```
-
-***Results Table***
-
-| partition | NER Timing     |NER and Resolver Timing| 
-| ---------:|:-------------- |:----------------------| 
-|4          |  24.7 seconds  |1 minutes 8.5  seconds|
-|8          |  23.6 seconds  |1 minutes 7.4  seconds|
-|16         |  22.6 seconds  |1 minutes 6.9  seconds|
-|32         |  23.2 seconds  |1 minutes 5.7  seconds|
-|64         |  22.8 seconds  |1 minutes 6.7  seconds|
-|128        |  23.7 seconds  |1 minutes 7.4  seconds|
-|256        |  23.9 seconds  |1 minutes 6.1  seconds|
-|512        |  23.8 seconds  |1 minutes 8.4  seconds|
-|1024       |  25.9 seconds  |1 minutes 10.2 seconds|
-
-
-
-- Performance Evaluation of ONNX and Base Embeddings in Resolver Benchmark
-
-This study presents a benchmark evaluation of resolver performance using ONNX and base embeddings on clinical text datasets.
-The evaluation aims to assess the performance and efficiency of the resolver component under these different embedding configurations.
-
-**Dataset:** 100 Custom Clinical Texts, approx. 595 tokens per text
-**Versions:**
-    - **spark-nlp Version:** v5.2.2
-    - **spark-nlp-jsl Version :** v5.2.1
-    - **Spark Version :** v3.2.1
-**Instance Type:** 
-    -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
-
-
-```python
-nlp_pipeline = Pipeline(
-    stages = [
-        document_assembler,
-        sentenceDetectorDL,
-        tokenizer,
-        word_embeddings,
-        clinical_ner,
-        ner_converter,
-  ])
-
-embedding_pipeline = PipelineModel(
-    stages = [
-        c2doc,
-        sbiobert_embeddings # base or onnx version
-  ])
-
-resolver_pipeline = PipelineModel(
-    stages = [
-        rxnorm_resolver
-  ])
-```
-
-***Results Table***
-
-|partition|preprocessing|embeddings| resolver    |onnx_embeddings|resolver_with_onnx_embeddings|
-|--------:|------------:|---------:|------------:|--------------:|------------:|
-| 4       |      25 sec | 25 sec   |7 min 46 sec |   9 sec       |8 min 29 sec |
-| 8       |      21 sec | 25 sec   |5 min 12 sec |   9 sec       |4 min 53 sec |
-| 16      |      21 sec | 25 sec   |4 min 41 sec |   9 sec       |4 min 30 sec |
-| 32      |      20 sec | 24 sec   |5 min 4 sec  |   9 sec       |4 min 34 sec |
-| 64      |      21 sec | 24 sec   |4 min 44 sec |   9 sec       |5 min 2 sec  |
-| 128     |      20 sec | 25 sec   |5 min 4 sec  |   10 sec      |4 min 51 sec |
-| 256     |      22 sec | 26 sec   |4 min 34 sec |   10 sec      |5 min 13 sec |
-| 512     |      24 sec | 27 sec   |4 min 46 sec |   12 sec      |4 min 22 sec |
-| 1024    |      29 sec | 30 sec   |4 min 24 sec |   14 sec      |4 min 29 sec |
-
-
-Please check [Speed Benchmarks](https://nlp.johnsnowlabs.com/docs/en/benchmark) for more information.
-
-</div><div class="h3-box" markdown="1">
-
-
-
 
 #### Various Core Improvements: Bug Fixes, Enhanced Overall Robustness, And Reliability Of Spark NLP For Healthcare
 
-- Consistent obfuscation is supported in `StructuredDeidentification` too 
-- Added `deid_source` field to the metadata to infer the source of entity chunks coming from internal or external NER models and stages
-- Refactoring the Deidentification module for improved functionality 
-- Flushing the temporary files dumped by the `SentenceEntityResolver` 
-- Fixed `IOBTagger` was returning zero instead of 'O'
-- Lighter jars for Spark NLP leading optimized Spark's sessions 
-- `Resolution2Chunk` documentation updated
-- Updated the default value of the `customBoundsStrategy` parameter in the `InternalDocumentSplitter`
-- Enhanced `InternalDocumentSplitter` with UUID Metadata Field
+- Fixed sentence positions in `MedicalBertForSequenceClassification`
+- Updated Deidentification Module according to the latest spark versions
+- Updated ALAB Module for assertion result according to tokenization flexibility
+- Deprecation of the `setRel` Method in `ChunkMapper`: Transitioning to the `setRels` parameter
+- Enhancements in SentenceEntityResolver: Bug Fix and Annotator Refactor
+- Added `assertion_source`, `ner_chunk`, and `ner_label` metadata fields to the `AssertionDL` and `AssertionLogReg` annotators
+- Implemented fixes and enhancements related to entity handling and resolution in Resolver and ChunkMapper, including incorporating an `entity` field in resolver metadata from embeddings, rectifying the entity field assignment in `ChunkMapper`, and resolving a bug with `all_k_resolutions` when using `setMultivaluesRelations(True)` in `ChunkMapper`
+- Updated init.py and the path of class for `BertSentenceChunkEmbedding`
+
 
 
 </div><div class="h3-box" markdown="1">
 
 #### Updated Notebooks And Demonstrations For making Spark NLP For Healthcare Easier To Navigate And Understand
 
-- New [Flattener Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/41.Flattener.ipynb)
-- New [Rule Based Entity Matchers Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/40.Rule_Based_Entity_Matchers.ipynb)
-- New [Opioid Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/42.Opioid_Models.ipynb)
-- Updated [Clinical Deidentification Improvement Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.4.Clinical_Deidentification_Improvement.ipynb) for latest models
-- New [Opioid Demo](https://demo.johnsnowlabs.com/healthcare/OPIOID/)
-- New [Biomarker Classification Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_BIOMARKER/)
-- New [SNOMED Term NER Demo](https://demo.johnsnowlabs.com/healthcare/NER_SNOMED_TERM/) 
-- New [Multi Language NER Demo](https://demo.johnsnowlabs.com/healthcare/NER_DEID_MULTI/)
-- Updated [Age Classification Demo](https://demo.johnsnowlabs.com/healthcare/PUBLIC_HEALTH_AGE/) with new `genericclassifier_age_e5` model
-
+- New [Task Based Clinical Pretrained Pipelines Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/11.3.Task_Based_Clinical_Pretrained_Pipelines.ipynb)
+- Updated [Clinical Assertion Model Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/2.Clinical_Assertion_Model.ipynb) with AssertionMerger example
+- Updated [Snomed Entity Resolver Model Training Notebook](https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/13.Snomed_Entity_Resolver_Model_Training.ipynb) with new parameter
+- New [Response to Treatment Classification Demo](https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPONSE_TO_TREATMENT/)
+- Updated [Opioid Demo](https://demo.johnsnowlabs.com/healthcare/OPIOID/) with GPT4 comparison
 
 </div><div class="h3-box" markdown="1">
 
 #### We Have Added And Updated A Substantial Number Of New Clinical Models And Pipelines, Further Solidifying Our Offering In The Healthcare Domain.
-
-+ `drug_matcher`
-+ `biomarker_matcher`
-+ `umls_loinc_mapper`
-+ `umls_cpt_mapper`
-+ `umls_snomed_mapper`
-+ `snomed_umls_mapper`
-+ `cpt_umls_mapper`
-+ `loinc_umls_mapper`
-+ `ner_opioid`
-+ `ner_snomed_term`
-+ `ner_deid_multilingual`
-+ `ner_deid_name_multilingual_clinical`
-+ `assertion_opioid_wip`
-+ `assertion_opioid_drug_status_wip`
-+ `assertion_opioid_general_symptoms_status_wip`
-+ `genericclassifier_age_e5`
-+ `bert_sequence_classifier_biomarker`
-+ `ncit_resolver_pipeline`
-+ `rxcui_resolver_pipeline`
-+ `hgnc_resolver_pipeline`
-+ `hcpcs_resolver_pipeline`
-+ `snomed_procedures_measurements_resolver_pipeline`
-+ `icdo_resolver_pipeline`
-+ `icd10pcs_resolver_pipeline`
-+ `icd10cm_generalised_resolver_pipeline`
-+ `loinc_resolver_pipeline`
-+ `loinc_numeric_resolver_pipeline`
-+ `medication_resolver_pipeline`
-+ `medication_resolver_transform_pipeline`
-+ `clinical_deidentification_obfuscation_medium`
-+ `clinical_deidentification_obfuscation_small`
-+ `clinical_deidentification`
-+ `clinical_deidentification_generic`
-+ `clinical_deidentification_subentity`
++ `sbiobertresolve_snomed_no_class`
++ `sbiobertresolve_snomed_conditions`
++ `sbiobertresolve_meddra_lowest_level_term`
++ `sbiobertresolve_meddra_preferred_term`
 + `sbiobertresolve_snomed_bodyStructure`
 + `sbiobertresolve_snomed_drug`
-+ `sbiobertresolve_snomed_conditions`
-+ `sbiobertresolve_snomed_auxConcepts`
-+ `sbiobertresolve_snomed_findings`
 + `sbiobertresolve_snomed_findings_aux_concepts`
-+ `sbiobertresolve_snomed_procedures_measurements`
-
-
-
++ `ner_deid_name_multilingual_clinical_langtest`
++ `explain_clinical_doc_ade`
++ `explain_clinical_doc_biomarker`
++ `explain_clinical_doc_public_health`
++ `explain_clinical_doc_risk_factors`
++ `meddra_llt_resolver_pipeline`
++ `meddra_pt_resolver_pipeline`
++ `medication_resolver_pipeline`
++ `medication_resolver_transform_pipeline`
++ `ner_medication_pipeline`
++ `icd10cm_rxnorm_resolver_pipeline`
++ `snomed_term_resolver_pipeline`
++ `snomed_findings_resolver_pipeline`
++ `snomed_body_structure_resolver_pipeline`
++ `snomed_auxConcepts_resolver_pipeline`
++ `snomed_conditions_resolver_pipeline`
++ `snomed_drug_resolver_pipeline`
++ `snomed_resolver_pipeline`
++ `clinical_deidentification_generic_optimized`
++ `clinical_deidentification_nameAugmented`
++ `clinical_deidentification_subentity_optimized`
++ `umls_rxnorm_mapper`
++ `icd10_meddra_llt_mapper`
++ `meddra_llt_icd10_mapper`
++ `icd10_meddra_pt_mapper`
++ `meddra_pt_icd10_mapper`
++ `meddra_llt_pt_mapper`
++ `meddra_pt_llt_mapper`
++ `rxnorm_umls_mapper`
++ `drug_matcher`
++ `ner_opioid`
++ `clinical_deidentification`
++ `clinical_deidentification_multi_mode_output`
++ `bert_sequence_classifier_response_to_treatment`
 
 </div><div class="h3-box" markdown="1">
 
 For all Spark NLP for Healthcare models, please check: [Models Hub Page](https://nlp.johnsnowlabs.com/models?edition=Healthcare+NLP)
-
 
 
 </div><div class="h3-box" markdown="1">

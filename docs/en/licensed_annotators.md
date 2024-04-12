@@ -40,6 +40,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="AssertionDL" summary="AssertionDL is a deep Learning based approach used to extract Assertion Status from extracted entities and text."%}
 {% include templates/licensed_table_entry.md  name="AssertionFilterer" summary="Filters entities coming from ASSERTION type annotations and returns the CHUNKS."%}
 {% include templates/licensed_table_entry.md  name="AssertionLogReg" summary="Logistic Regression is used to extract Assertion Status from extracted entities and text."%}
+{% include templates/licensed_table_entry.md  name="AssertionMerger" summary="Merges variety assertion columns coming from Assertion annotators"%}
 {% include templates/licensed_table_entry.md  name="AverageEmbeddings" summary="Computes the mean of vector embeddings for two sentences of equal size, producing a unified representation"%}
 {% include templates/licensed_table_entry.md  name="BertForSequenceClassification" summary="Can load Bert Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks."%}
 {% include templates/licensed_table_entry.md  name="BertForTokenClassifier" summary="Can load Bert Models with a token classification head on top (a linear layer on top of the hidden-states output) for Named-Entity-Recognition (NER) tasks."%}
