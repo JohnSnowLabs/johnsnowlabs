@@ -9,11 +9,6 @@ import pandas as pd
 import johnsnowlabs.utils.testing.test_settings
 from johnsnowlabs.utils.file_utils import str_to_file
 
-Path(johnsnowlabs.utils.testing.test_settings.tmp_markdown_dir).mkdir(
-    exist_ok=True, parents=True
-)
-
-
 def run_cmd_and_check_succ(
     args: List[str],
     log=True,
@@ -102,6 +97,10 @@ def execute_py_script_string_as_new_proc(
     use_i_py=False,
     add_prefix=True,
 ):
+    Path(johnsnowlabs.utils.testing.test_settings.tmp_markdown_dir).mkdir(
+        exist_ok=True, parents=True
+    )
+
     if file_name:
         out_path = f"{johnsnowlabs.utils.testing.test_settings.tmp_markdown_dir}/{file_name}_MD_TEST.py"
     else:
