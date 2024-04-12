@@ -746,6 +746,21 @@ result = lp.fromString(base64_pdf)
   <p>HocrMerger is a new annotator whose purpose is to allow merging two streams of HOCRs texts into a single unified HOCR representation.
 This allows mixing object detection models with text to create a unified document representation that can be fed to other downstream models like Visual NER. The new Checkbox detection pipeline uses this approach.</p>
 
+  <h3 id="checkbox-detection-in-visual-ner">Checkbox detection in Visual NER.</h3>
+  <p>A new Checkbox detection model has been added to Visual NLP 5.3.1!. With this model you can detect checkboxes in documents and obtain an HOCR representation of them. This representation, along with the other elements in page can be fed to other models like Visual NER.</p>
+
+  <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>binary_to_image = BinaryToImage() 
+binary_to_image.setImageType(ImageType.TYPE_3BYTE_BGR)
+
+check_box_detector = ImageCheckBoxDetector \
+    .pretrained("checkbox_detector_v1", "en", "clinical/ocr") \
+    .setInputCol("image") \
+    .setLabels(["No", "Yes"])
+</code></pre></div>  </div>
+
+  <p>In this case we are receiving an image as input, and returning a HOCR representation with labels ‘Yes’, and ‘No’ to represent whether the checkbox is marked or not. You can see this idea directly in the following picture,
+<img src="/assets/images/ocr/checkboxes.png" alt="image" /></p>
+
   <h3 id="new-document-clustering-pipeline-using-vit-embeddings">New Document Clustering Pipeline using Vit Embeddings.</h3>
   <p>Now we can use Vit Embeddings to create document representations for clustering.</p>
 
