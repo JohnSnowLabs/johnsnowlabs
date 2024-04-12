@@ -36,6 +36,7 @@ This model maps extracted medical entities to ICD-9-CM codes using `sbiobert_bas
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
   .setInputCol("text")\
