@@ -12,7 +12,7 @@ from johnsnowlabs.utils.env_utils import (
 
 
 
-raw_version_jsl_lib = "5.3.3"
+raw_version_jsl_lib = "5.3.4"
 
 
 raw_version_nlp = "5.3.1"
@@ -23,11 +23,11 @@ raw_version_nlu = "5.3.0"
 raw_version_pyspark = "3.4.0"
 raw_version_nlp_display = "5.0"
 
-raw_version_medical = "5.3.0"
-raw_version_secret_medical = "5.3.0"
+raw_version_medical = "5.3.1"
+raw_version_secret_medical = "5.3.1"
 
-raw_version_secret_ocr = "5.3.0"
-raw_version_ocr = "5.3.0"
+raw_version_secret_ocr = "5.3.1"
+raw_version_ocr = "5.3.1"
 
 raw_version_pydantic = "1.10.11"
 
