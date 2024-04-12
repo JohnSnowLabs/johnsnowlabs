@@ -98,7 +98,6 @@ Check this [updated notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop
 HocrMerger is a new annotator whose purpose is to allow merging two streams of HOCRs texts into a single unified HOCR representation.
 This allows mixing object detection models with text to create a unified document representation that can be fed to other downstream models like Visual NER. The new Checkbox detection pipeline uses this approach.
 
-
 ###  Checkbox detection in Visual NER.
 A new Checkbox detection model has been added to Visual NLP 5.3.1!. With this model you can detect checkboxes in documents and obtain an HOCR representation of them. This representation, along with the other elements in page can be fed to other models like Visual NER.
 
