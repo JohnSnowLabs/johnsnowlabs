@@ -279,6 +279,10 @@ Parameters:
 - `ModelFile` (Str) Location of file of the model used for classification
 
 - `MaxSyntacticDistance` (Int) Maximal syntactic distance, as threshold (Default: 0)
+
+- `directionSensitive` (Boolean) Specify direction sensitivity in processing relation pairs
+
+- `filterByTokenDistance` (Int) Filtering criterion based on number of token between entities
 {%- endcapture -%}
 
 {%- capture approach_input_anno -%}
