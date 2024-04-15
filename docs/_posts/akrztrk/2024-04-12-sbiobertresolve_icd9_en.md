@@ -90,7 +90,7 @@ nlpPipeline = Pipeline(
       icd9_resolver])
 
 
-clinical_note = ["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with an acute hepatitis and obesity with a body mass index (BMI) of 33.5 kg/m2"""]
+clinical_note = ["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and type two diabetes mellitus, associated with an acute alcoholic hepatitis and obesity."""]
 
 
 data= spark.createDataFrame([clinical_note]).toDF('text')
@@ -148,7 +148,7 @@ val pipeline = new Pipeline().setStages(
         sbert_embedder, 
         icd9_resolver))
 
-val data = Seq("A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus, associated with an acute hepatitis and obesity with a body mass index (BMI) of 33.5 kg/m2").toDS.toDF("text")
+val data = Seq("A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and type two diabetes mellitus, associated with an acute alcoholic hepatitis and obesity.").toDS.toDF("text")
 
 val result = pipeline.fit(data).transform(data)
 ```
@@ -157,15 +157,14 @@ val result = pipeline.fit(data).transform(data)
 ## Results
 
 ```bash
-+-------------------------------------+-------+---------+------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-|                                chunk| entity|ıcd9_code|                                                        resolution|                                                                   all_k_results|                                                               all_k_resolutions|
-+-------------------------------------+-------+---------+------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-|        gestational diabetes mellitus|PROBLEM|   V12.21|hx gestational diabetes [Personal history of gestational diabetes]|V12.21:::775.1:::V18.0:::249:::250:::249.7:::249.71:::249.9:::249.61:::648.0:...|hx gestational diabetes [Personal history of gestational diabetes]:::neonat d...|
-|subsequent type two diabetes mellitus|PROBLEM|      249|         secondary diabetes mellitus [Secondary diabetes mellitus]|249:::250:::775.1:::249.9:::V18.0:::249.7:::249.6:::249.8:::V12.21:::249.71::...|secondary diabetes mellitus [Secondary diabetes mellitus]:::diabetes mellitus...|
-|                   an acute hepatitis|PROBLEM|    571.1|             acute alcoholic hepatitis [Acute alcoholic hepatitis]|571.1:::070:::571.42:::902.22:::570:::279.51:::567.21:::571.4:::091.62:::573....|acute alcoholic hepatitis [Acute alcoholic hepatitis]:::viral hepatitis [Vira...|
-|                              obesity|PROBLEM|    278.0|                   overweight and obesity [Overweight and obesity]|278.0:::278.01:::278.02:::649.11:::V77.8:::278.00:::278:::649.12:::729.31:::2...|overweight and obesity [Overweight and obesity]:::morbid obesity [Morbid obes...|
-|                    a body mass index|PROBLEM|      V85|                     body mass index [bmi] [Body mass index [BMI]]|V85:::E928.3:::E008.4:::278.1:::993:::E903:::680.3:::680.2:::V61.5:::V53.7:::...|body mass index [bmi] [Body mass index [BMI]]:::human bite [Human bite]:::mar...|
-+-------------------------------------+-------+---------+------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
++-----------------------------+-------+---------+------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+|                        chunk| entity|ıcd9_code|                                                        resolution|                                                                   all_k_results|                                                               all_k_resolutions|
++-----------------------------+-------+---------+------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
+|gestational diabetes mellitus|PROBLEM|   V12.21|hx gestational diabetes [Personal history of gestational diabetes]|V12.21:::775.1:::V18.0:::249:::250:::249.7:::249.71:::249.9:::249.61:::648.0:...|hx gestational diabetes [Personal history of gestational diabetes]:::neonat d...|
+|   type two diabetes mellitus|PROBLEM|      249|         secondary diabetes mellitus [Secondary diabetes mellitus]|249:::250:::V18.0:::775.1:::249.7:::249.71:::249.9:::249.6:::V77.1:::249.5:::...|secondary diabetes mellitus [Secondary diabetes mellitus]:::diabetes mellitus...|
+| an acute alcoholic hepatitis|PROBLEM|    571.1|             acute alcoholic hepatitis [Acute alcoholic hepatitis]|571.1:::303.0:::571.2:::303.01:::303.02:::571.0:::902.22:::070.0:::864.19:::0...|acute alcoholic hepatitis [Acute alcoholic hepatitis]:::acute alcoholic intox...|
+|                      obesity|PROBLEM|    278.0|                   overweight and obesity [Overweight and obesity]|278.0:::278.01:::278.02:::649.11:::V77.8:::278.00:::278:::649.12:::729.31:::2...|overweight and obesity [Overweight and obesity]:::morbid obesity [Morbid obes...|
++-----------------------------+-------+---------+------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
 ```
 
 {:.model-param}
