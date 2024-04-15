@@ -39,7 +39,7 @@ Assign assertion status to clinical entities
   
 ```python
 #define pipeline
-document_assembler = DocumentAssembler()\
+ocument_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
@@ -62,7 +62,7 @@ ner = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models") \
 
 ner_converter = NerConverterInternal()\
    .setInputCols(["sentence", "token", "ner"])\
-   .setWhiteList(["Disease_Syndrome_Disorder", "Hypertension"])\
+   .setWhiteList(["Disease_Syndrome_Disorder", "Hypertension", "Symptom", "VS_Finding"])\
    .setOutputCol("ner_chunk")
 
 few_shot_assertion_classifier = FewShotAssertionClassifierModel().pretrained("assertion_fewshotclassifier","en", "clinical/models")\
@@ -119,11 +119,10 @@ val ner = MedicalNerModel
 
 val nerConverter = NerConverterInternal()
    .setInputCols(Array("sentence", "token", "ner"))
-   .setWhiteList("Disease_Syndrome_Disorder", "Hypertension")
+   .setWhiteList("Disease_Syndrome_Disorder", "Hypertension", "Symptom", "VS_Finding")
    .setOutputCol("ner_chunk")
 
-val fewShotAssertionClassifier = LargeFewShotClassifierModel
-  .pretrained("clinical_assertion")
+val fewShotAssertionClassifier = LargeFewShotClassifierModel().pretrained("assertion_fewshotclassifier")
   .setInputCols(Array("sentence"))
   .setBatchSize(1)
   .setOutputCol("label")
