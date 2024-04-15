@@ -521,42 +521,39 @@ function wrapWordInSpan(data, wordToWrap) {
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">'explain_clinical_doc_ade'</span><span class="p">,</span> <span class="s">'en'</span><span class="p">,</span> <span class="s">'clinical/models'</span><span class="p">)</span>
 
-<span class="n">res</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="s">"""Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps"""</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="s">"""Been taking Lipitor for 3 months, have experienced severe fatigue a lot!!!, have only experienced cramps so far, after Doctor moved me to voltaren 2 months ago."""</span><span class="p">)</span>
 
 
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">era_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"explain_clinical_doc_ade"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">era_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="s">"""Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps"""</span><span class="o">)(</span><span class="mi">0</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">era_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="s">"""Been taking Lipitor for 3 months, have experienced severe fatigue a lot!!!, I have only experienced cramps so far, after Doctor moved me to voltaren 2 months ago."""</span><span class="o">)(</span><span class="mi">0</span><span class="o">)</span>
 
 </code></pre></div>  </div>
 
   <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
-<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.explain_doc.clinical_ade"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps"""</span><span class="p">)</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.explain_doc.clinical_ade"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""Been taking Lipitor for 3 months, have experienced severe fatigue a lot!!! , I have only experienced cramps so far, after Doctor moved me to voltaren 2 months ago."""</span><span class="p">)</span>
 </code></pre></div>  </div>
 
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-Class: True
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Assertion:
 
-NER_Assertion:
-|    | chunk                   | entitiy    | assertion   |
-|----|-------------------------|------------|-------------|
-| 0  | Lipitor                 | DRUG       | -           |
-| 1  | severe fatigue          | ADE        | Conditional |
-| 2  | voltaren                | DRUG       | -           |
-| 3  | cramps                  | ADE        | Conditional |
+|   |         chunks | entities | assertion |
+|--:|---------------:|---------:|----------:|
+| 0 |        Lipitor |     DRUG |      Past |
+| 1 | severe fatigue |      ADE |      Past |
+| 2 |         cramps |      ADE |   Present |
+| 3 |       voltaren |     DRUG |      Past |
 
 Relations:
-|    | chunk1                        | entitiy1   | chunk2      | entity2 | relation |
-|----|-------------------------------|------------|-------------|---------|----------|
-| 0  | severe fatigue                | ADE        | Lipitor     | DRUG    |        1 |
-| 1  | cramps                        | ADE        | Lipitor     | DRUG    |        0 |
-| 2  | severe fatigue                | ADE        | voltaren    | DRUG    |        0 |
-| 3  | cramps                        | ADE        | voltaren    | DRUG    |        1 |
+
+|   | relation | entity1 |  chunk1 | entity2 |         chunk2 |
+|--:|---------:|--------:|--------:|--------:|---------------:|
+| 0 |        1 |    DRUG | Lipitor |     ADE | severe fatigue |
+| 1 |        0 |     ADE |  cramps |    DRUG |       voltaren |
 
 </code></pre></div></div>
 

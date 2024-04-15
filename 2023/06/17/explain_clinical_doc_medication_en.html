@@ -526,7 +526,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="n">pipeline</span> <span class="o">=</span> <span class="n">PretrainedPipeline</span><span class="p">(</span><span class="s">"explain_clinical_doc_medication"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>
 
-<span class="n">text</span> <span class="o">=</span> <span class="s">'''The patient is a 30-year-old female with a long history of insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI.  She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime.'''</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s">'''The patient is a 30-year-old female with an insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI. She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime.'''</span>
 
 <span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fullAnnotate</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
 </code></pre></div>  </div>
@@ -534,13 +534,13 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PretrainedPipeline</span><span class="o">(</span><span class="s">"explain_clinical_doc_medication"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"The patient is a 30-year-old female with a long history of insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI.  She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime."</span>
+<span class="k">val</span> <span class="nv">text</span> <span class="k">=</span> <span class="s">"The patient is a 30-year-old female with an insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI. She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime."</span>
 
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="n">text</span><span class="o">)</span>
 </code></pre></div>  </div>
 
   <div class="language-python nlu-block highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">nlu</span>
-<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.explain_dco.clinical_medication.pipeline"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""The patient is a 30-year-old female with a long history of insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI.  She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime."""</span><span class="p">)</span>
+<span class="n">nlu</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">"en.explain_dco.clinical_medication.pipeline"</span><span class="p">).</span><span class="n">predict</span><span class="p">(</span><span class="s">"""The patient is a 30-year-old female with an insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI. She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime."""</span><span class="p">)</span>
 </code></pre></div>  </div>
 
 </div>
@@ -548,44 +548,41 @@ function wrapWordInSpan(data, wordToWrap) {
 <h2 id="results">Results</h2>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ner_chunk</span>
-+----+----------------+------------+
-|    | chunks         | entities   |
-|---:|:---------------|:-----------|
-|  0 | insulin        | DRUG       |
-|  1 | Bactrim        | DRUG       |
-|  2 | <span class="k">for </span>14 days    | DURATION   |
-|  3 | 5000 units     | DOSAGE     |
-|  4 | Fragmin        | DRUG       |
-|  5 | subcutaneously | ROUTE      |
-|  6 | daily          | FREQUENCY  |
-|  7 | Lantus         | DRUG       |
-|  8 | 40 units       | DOSAGE     |
-|  9 | subcutaneously | ROUTE      |
-| 10 | at bedtime     | FREQUENCY  |
-+----+----------------+------------+
+
+|    |      ner_chunk | begin | end | ner_label |
+|---:|---------------:|------:|----:|----------:|
+|  0 |        insulin |    44 |  50 |      DRUG |
+|  1 |        Bactrim |   105 | 111 |      DRUG |
+|  2 |    <span class="k">for </span>14 days |   113 | 123 |  DURATION |
+|  3 |     5000 units |   153 | 162 |    DOSAGE |
+|  4 |        Fragmin |   167 | 173 |      DRUG |
+|  5 | subcutaneously |   176 | 189 |     ROUTE |
+|  6 |          daily |   191 | 195 | FREQUENCY |
+|  7 |         Lantus |   213 | 218 |      DRUG |
+|  8 |       40 units |   220 | 227 |    DOSAGE |
+|  9 | subcutaneously |   229 | 242 |     ROUTE |
+| 10 |     at bedtime |   244 | 253 | FREQUENCY |
 
 <span class="c"># assertion</span>
-+---+---------+----------+-----------+
+
 |   |  chunks | entities | assertion |
 |--:|--------:|---------:|----------:|
-| 0 | insulin |     DRUG |    Family |
+| 0 | insulin |     DRUG |   Present |
 | 1 | Bactrim |     DRUG |      Past |
 | 2 | Fragmin |     DRUG |   Planned |
 | 3 |  Lantus |     DRUG |      Past |
-+---+---------+----------+-----------+
 
 <span class="c"># relation</span>
-+----------------+-----------+------------+-----------+----------------+
-| relation       | entity1   | chunk1     | entity2   | chunk2         |
-|:---------------|:----------|:-----------|:----------|:---------------|
-| DRUG-DURATION  | DRUG      | Bactrim    | DURATION  | <span class="k">for </span>14 days    |
-| DOSAGE-DRUG    | DOSAGE    | 5000 units | DRUG      | Fragmin        |
-| DRUG-ROUTE     | DRUG      | Fragmin    | ROUTE     | subcutaneously |
-| DRUG-FREQUENCY | DRUG      | Fragmin    | FREQUENCY | daily          |
-| DRUG-DOSAGE    | DRUG      | Lantus     | DOSAGE    | 40 units       |
-| DRUG-ROUTE     | DRUG      | Lantus     | ROUTE     | subcutaneously |
-| DRUG-FREQUENCY | DRUG      | Lantus     | FREQUENCY | at bedtime     |
-+----------------+-----------+------------+-----------+----------------+
+
+|   |       relation | entity1 |     chunk1 |   entity2 |         chunk2 |
+|--:|---------------:|--------:|-----------:|----------:|---------------:|
+| 0 |  DRUG-DURATION |    DRUG |    Bactrim |  DURATION |    <span class="k">for </span>14 days |
+| 1 |    DOSAGE-DRUG |  DOSAGE | 5000 units |      DRUG |        Fragmin |
+| 2 |     DRUG-ROUTE |    DRUG |    Fragmin |     ROUTE | subcutaneously |
+| 3 | DRUG-FREQUENCY |    DRUG |    Fragmin | FREQUENCY |          daily |
+| 4 |    DRUG-DOSAGE |    DRUG |     Lantus |    DOSAGE |       40 units |
+| 5 |     DRUG-ROUTE |    DRUG |     Lantus |     ROUTE | subcutaneously |
+| 6 | DRUG-FREQUENCY |    DRUG |     Lantus | FREQUENCY |     at bedtime |
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
