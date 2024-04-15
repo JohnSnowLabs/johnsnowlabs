@@ -38,14 +38,16 @@ A pipeline for Adverse Drug Events (ADE) with `ner_ade_biobert`, `assertion_dl_b
 ```python
 pipeline = PretrainedPipeline('explain_clinical_doc_ade', 'en', 'clinical/models')
 
-res = pipeline.fullAnnotate("""Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps""")
+res = pipeline.fullAnnotate("""Been taking Lipitor for 3 months, have experienced severe fatigue a lot!!! ,   
+I have only experienced cramps so far, after Doctor moved me to voltaren 2 months ago.""")
 
 
 ```
 ```scala
 val era_pipeline = new PretrainedPipeline("explain_clinical_doc_ade", "en", "clinical/models")
 
-val result = era_pipeline.fullAnnotate("""Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps""")(0)
+val result = era_pipeline.fullAnnotate("""Been taking Lipitor for 3 months, have experienced severe fatigue a lot!!! ,   
+I have only experienced cramps so far, after Doctor moved me to voltaren 2 months ago.""")(0)
 
 ```
 
@@ -53,7 +55,7 @@ val result = era_pipeline.fullAnnotate("""Been taking Lipitor for 15 years , hav
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.explain_doc.clinical_ade").predict("""Been taking Lipitor for 15 years , have experienced severe fatigue a lot!!! . Doctor moved me to voltaren 2 months ago , so far , have only experienced cramps""")
+nlu.load("en.explain_doc.clinical_ade").predict("""Been taking Lipitor for 3 months, have experienced severe fatigue a lot!!! , I have only experienced cramps so far, after Doctor moved me to voltaren 2 months ago.""")
 ```
 
 </div>
@@ -61,24 +63,21 @@ nlu.load("en.explain_doc.clinical_ade").predict("""Been taking Lipitor for 15 ye
 ## Results
 
 ```bash
+Assertion:
 
-Class: True
-
-NER_Assertion:
-|    | chunk                   | entitiy    | assertion   |
-|----|-------------------------|------------|-------------|
-| 0  | Lipitor                 | DRUG       | -           |
-| 1  | severe fatigue          | ADE        | Conditional |
-| 2  | voltaren                | DRUG       | -           |
-| 3  | cramps                  | ADE        | Conditional |
+|   |         chunks | entities | assertion |
+|--:|---------------:|---------:|----------:|
+| 0 |        Lipitor |     DRUG |      Past |
+| 1 | severe fatigue |      ADE |      Past |
+| 2 |         cramps |      ADE |   Present |
+| 3 |       voltaren |     DRUG |      Past |
 
 Relations:
-|    | chunk1                        | entitiy1   | chunk2      | entity2 | relation |
-|----|-------------------------------|------------|-------------|---------|----------|
-| 0  | severe fatigue                | ADE        | Lipitor     | DRUG    |        1 |
-| 1  | cramps                        | ADE        | Lipitor     | DRUG    |        0 |
-| 2  | severe fatigue                | ADE        | voltaren    | DRUG    |        0 |
-| 3  | cramps                        | ADE        | voltaren    | DRUG    |        1 |
+
+|   | relation | entity1 |  chunk1 | entity2 |         chunk2 |
+|--:|---------:|--------:|--------:|--------:|---------------:|
+| 0 |        1 |    DRUG | Lipitor |     ADE | severe fatigue |
+| 1 |        0 |     ADE |  cramps |    DRUG |       voltaren |
 
 ```
 
