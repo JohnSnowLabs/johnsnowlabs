@@ -42,60 +42,112 @@ document_assembler = DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-large_few_assertion = FewShotAssertionClassifierModel().pretrained("assertion_fewshotclassifier","en", "clinical/models")\
-    .setInputCols("document")\
+sentence_detector = SentenceDetector()\
+   .setInputCol("document")\
+   .setOutputCol("sentence")
+
+tokenizer = Tokenizer()\
+   .setInputCols(["sentence"])\
+   .setOutputCol("token")
+
+embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+   .setInputCols(["sentence", "token"])\
+   .setOutputCol("embeddings") \
+   .setCaseSensitive(False)
+
+ner = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models") \
+   .setInputCols(["sentence", "token", "embeddings"]) \
+   .setOutputCol("ner")
+
+ner_converter = NerConverterInternal()\
+   .setInputCols(["sentence", "token", "ner"])\
+   .setWhiteList("Disease_Syndrome_Disorder", "Hypertension")\
+   .setOutputCol("ner_chunk")
+
+few_shot_assertion_classifier = FewShotAssertionClassifierModel().pretrained("assertion_fewshotclassifier","en", "clinical/models")\
+    .setInputCols(["sentence", "ner_chunk"])\
     .setOutputCol("assertion_fewshot")
 
 pipeline = sparknlp.base.Pipeline()\
     .setStages([
-        document_assembler, 
-        large_few_assertion
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        embeddings,
+        ner,
+        ner_converter,
+        few_shot_assertion_classifier
 ])
 
-texts = [
-    ["Her former vascular malformation:no arteriovenous malformations are identified ; there is no evidence of recurrence of her former vascular malformation."],   
-    ["Hypertension:includes hypertension and chronic obstructive pulmonary disease."]
-]
+texts = [["Includes hypertension and chronic obstructive pulmonary disease."]]
 
 spark_df = spark.createDataFrame(texts).toDF("text")
 
 results = pipeline.fit(spark_df).transform(spark_df)
 
 #show results
-results.select("assertion_fewshot").show(truncate=False)
+results.selectExpr("assertion.result", "assertion.metadata.chunk", "assertion.metadata.confidence").show()
 ```
 ```scala
-val documentAssembler = new DocumentAssembler() 
-    .setInputCol("text") 
-    .setOutputCol("document")
+val documentAssembler = new DocumentAssembler()
+  .setInputCol("text")
+  .setOutputCol("document")
 
-val large_few_assertion = FewShotAssertionClassifierModel().pretrained("assertion_fewshotclassifier", "en", "clinical/models")
-    .setInputCols("document")
-    .setOutputCol("assertion_fewshot")
+val sentenceDetector = new SentenceDetector()
+   .setInputCols(Array("document"))
+   .setOutputCol("sentences")
+
+val tokenizer = Tokenizer()
+   .setInputCols(Array("sentence"))
+   .setOutputCol("token")
+
+val embeddings = WordEmbeddingsModel
+   .pretrained("embeddings_clinical", "en", "clinical/models")
+   .setInputCols(Array("sentence", "token"))
+   .setOutputCol("embeddings")
+   .setCaseSensitive(False)
+
+val ner = MedicalNerModel
+   .pretrained("ner_jsl", "en", "clinical/models")
+   .setInputCols(["sentence", "token", "embeddings"])
+   .setOutputCol("ner")
+
+val nerConverter = NerConverterInternal()
+   .setInputCols(Array("sentence", "token", "ner"))
+   .setWhiteList("Disease_Syndrome_Disorder", "Hypertension")
+   .setOutputCol("ner_chunk")
+
+val fewShotAssertionClassifier = LargeFewShotClassifierModel
+  .pretrained("clinical_assertion")
+  .setInputCols(Array("sentence"))
+  .setBatchSize(1)
+  .setOutputCol("label")
 
 val pipeline = new Pipeline().setStages(Array(
-    documentAssembler, 
-    large_few_assertion
-))
+ documentAssembler, sentenceDetector, tokenizer, embeddings, ner, nerConverter, fewShotAssertionClassifier))
 
-val texts = Seq(Array(
-    "Her former vascular malformation:no arteriovenous malformations are identified ; there is no evidence of recurrence of her former vascular malformation.",
-    "Hypertension:includes hypertension and chronic obstructive pulmonary disease."
-)).toDF("text")
+val model = pipeline.fit(Seq().toDS.toDF("text"))
+val results = model.transform(
+  Seq("Includes hypertension and chronic obstructive pulmonary disease.").toDS.toDF("text"))
 
-data = spark.createDataFrame(texts).toDF("text")
-
-results = pipeline.fit(data).transform(data)
+results
+  .selectExpr("explode(assertion) as assertion")
+  .selectExpr("assertion.result", "assertion.metadata.chunk", "assertion.metadata.confidence")
+  .show(truncate = false)
 ```
 </div>
 
 ## Results
 
 ```bash
-|result                                                                                                                                                                                                                                                                                                      |
-|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|[{category, 0, 151, absent, {absent_confidence -> 0.55019414, confidence -> 0.55019414, present_confidence -> 0.22024022, hypothetical_confidence -> 0.013334909, associated_with_someone_else_confidence -> 0.052178495, possible_confidence -> 0.1299262, conditional_confidence -> 0.034126014}, []}]    |
-|[{category, 0, 76, conditional, {absent_confidence -> 0.17233582, confidence -> 0.34774542, present_confidence -> 0.113161795, hypothetical_confidence -> 0.17757988, associated_with_someone_else_confidence -> 0.13231324, possible_confidence -> 0.056863878, conditional_confidence -> 0.34774542}, []}]|
++-------+-------------------------------------+----------+
+|result |chunk                                |confidence|
++-------+-------------------------------------+----------+
+|present|hypertension                         |1.0       |
+|present|chronic obstructive pulmonary disease|1.0       |
+|absent |arteriovenous malformations          |1.0       |
+|absent |vascular malformation                |0.9999997 |
++-------+-------------------------------------+----------+
 ```
 
 {:.model-param}
