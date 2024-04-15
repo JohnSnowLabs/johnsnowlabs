@@ -36,6 +36,7 @@ Assign assertion status to clinical entities
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 #define pipeline
 document_assembler = DocumentAssembler()\
@@ -43,7 +44,7 @@ document_assembler = DocumentAssembler()\
     .setOutputCol("document")
 
 sentence_detector = SentenceDetector()\
-   .setInputCol("document")\
+   .setInputCols("document")\
    .setOutputCol("sentence")
 
 tokenizer = Tokenizer()\
@@ -61,14 +62,14 @@ ner = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models") \
 
 ner_converter = NerConverterInternal()\
    .setInputCols(["sentence", "token", "ner"])\
-   .setWhiteList("Disease_Syndrome_Disorder", "Hypertension")\
+   .setWhiteList(["Disease_Syndrome_Disorder", "Hypertension"])\
    .setOutputCol("ner_chunk")
 
 few_shot_assertion_classifier = FewShotAssertionClassifierModel().pretrained("assertion_fewshotclassifier","en", "clinical/models")\
     .setInputCols(["sentence", "ner_chunk"])\
     .setOutputCol("assertion_fewshot")
 
-pipeline = sparknlp.base.Pipeline()\
+pipeline = Pipeline()\
     .setStages([
         document_assembler,
         sentence_detector,
@@ -79,14 +80,18 @@ pipeline = sparknlp.base.Pipeline()\
         few_shot_assertion_classifier
 ])
 
-texts = [["Includes hypertension and chronic obstructive pulmonary disease."]]
+texts = [
+    ["Includes hypertension and chronic obstructive pulmonary disease."],
+    ["Her former vascular no arteriovenous malformations are identified; there is no evidence of recurrence of her former vascular malformation."],
+    ["He is an elderly gentleman in no acute distress. He is sitting up in bed eating his breakfast."],
+    ["Trachea is midline. No jugular venous pressure distention is noted. No adenopathy in the cervical, supraclavicular, or axillary areas."],
+    ["Soft and not tender. There may be some fullness in the left upper quadrant, although I do not appreciate a true spleen with inspiration."]
+]
 
 spark_df = spark.createDataFrame(texts).toDF("text")
 
 results = pipeline.fit(spark_df).transform(spark_df)
 
-#show results
-results.selectExpr("assertion.result", "assertion.metadata.chunk", "assertion.metadata.confidence").show()
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
@@ -128,11 +133,17 @@ val pipeline = new Pipeline().setStages(Array(
 
 val model = pipeline.fit(Seq().toDS.toDF("text"))
 val results = model.transform(
-  Seq("Includes hypertension and chronic obstructive pulmonary disease.").toDS.toDF("text"))
+  Seq(Array(
+    "Includes hypertension and chronic obstructive pulmonary disease.",
+    "Her former vascular no arteriovenous malformations are identified; there is no evidence of recurrence of her former vascular malformation.",
+    "He is an elderly gentleman in no acute distress. He is sitting up in bed eating his breakfast."],
+    "Trachea is midline. No jugular venous pressure distention is noted. No adenopathy in the cervical, supraclavicular, or axillary areas.",
+    "Soft and not tender. There may be some fullness in the left upper quadrant, although I do not appreciate a true spleen with inspiration."
+)).toDS.toDF("text"))
 
 results
   .selectExpr("explode(assertion) as assertion")
-  .selectExpr("assertion.result", "assertion.metadata.chunk", "assertion.metadata.confidence")
+  .selectExpr("assertion_fewshot.result", "assertion_fewshot.metadata.chunk", "assertion_fewshot.metadata.confidence")
   .show(truncate = false)
 ```
 </div>
@@ -140,14 +151,20 @@ results
 ## Results
 
 ```bash
-+-------+-------------------------------------+----------+
-|result |chunk                                |confidence|
-+-------+-------------------------------------+----------+
-|present|hypertension                         |1.0       |
-|present|chronic obstructive pulmonary disease|1.0       |
-|absent |arteriovenous malformations          |1.0       |
-|absent |vascular malformation                |0.9999997 |
-+-------+-------------------------------------+----------+
++-------------------------------------+-----+---+---------+----------+
+|chunk                                |begin|end|assertion|confidence|
++-------------------------------------+-----+---+---------+----------+
+|hypertension                         |0    |63 |present  |1.0       |
+|chronic obstructive pulmonary disease|0    |63 |present  |1.0       |
+|arteriovenous malformations          |0    |65 |absent   |1.0       |
+|vascular malformation                |67   |137|absent   |0.9999956 |
+|distress                             |0    |47 |absent   |1.0       |
+|jugular venous pressure distention   |20   |66 |absent   |1.0       |
+|adenopathy                           |68   |133|absent   |1.0       |
+|tender                               |0    |19 |absent   |0.9999999 |
+|fullness                             |21   |135|present  |0.6837093 |
++-------------------------------------+-----+---+---------+----------+
+
 ```
 
 {:.model-param}
