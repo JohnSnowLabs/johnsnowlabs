@@ -38,16 +38,14 @@ A pipeline for Adverse Drug Events (ADE) with `ner_ade_biobert`, `assertion_dl_b
 ```python
 pipeline = PretrainedPipeline('explain_clinical_doc_ade', 'en', 'clinical/models')
 
-res = pipeline.fullAnnotate("""Been taking Lipitor for 3 months, have experienced severe fatigue a lot!!! ,   
-I have only experienced cramps so far, after Doctor moved me to voltaren 2 months ago.""")
+res = pipeline.fullAnnotate("""Been taking Lipitor for 3 months, have experienced severe fatigue a lot!!!, have only experienced cramps so far, after Doctor moved me to voltaren 2 months ago.""")
 
 
 ```
 ```scala
 val era_pipeline = new PretrainedPipeline("explain_clinical_doc_ade", "en", "clinical/models")
 
-val result = era_pipeline.fullAnnotate("""Been taking Lipitor for 3 months, have experienced severe fatigue a lot!!! ,   
-I have only experienced cramps so far, after Doctor moved me to voltaren 2 months ago.""")(0)
+val result = era_pipeline.fullAnnotate("""Been taking Lipitor for 3 months, have experienced severe fatigue a lot!!!, I have only experienced cramps so far, after Doctor moved me to voltaren 2 months ago.""")(0)
 
 ```
 
