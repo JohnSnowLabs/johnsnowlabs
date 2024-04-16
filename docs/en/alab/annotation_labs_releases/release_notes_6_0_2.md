@@ -2,8 +2,8 @@
 layout: docs
 header: true
 seotitle: NLP Lab | John Snow Labs
-title: NLP Lab Release Notes 6.0.1
-permalink: /docs/en/alab/annotation_labs_releases/release_notes_6_0_1
+title: NLP Lab Release Notes 6.0.2
+permalink: /docs/en/alab/annotation_labs_releases/release_notes_6_0_2
 key: docs-licensed-release-notes
 modify_date: 2024-04-11
 show_nav: true
@@ -13,9 +13,9 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 6.0.1
+## 6.0.2
 
-Release date: **04-11-2024**
+Release date: **04-16-2024**
 
 ### Improvements
 - Fixed inconsistency in the behavior of Next and Previous Button tasks
