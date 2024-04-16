@@ -116,18 +116,19 @@ val result = model.transform(Seq("Hypersensitivity to aspirin can be manifested 
 import nlu
 nlu.load("en.med_ner.ade.clinical").predict("""Hypersensitivity to aspirin can be manifested as acute asthma, urticaria and/or angioedema, or a systemic anaphylactoid reaction.""")
 ```
+</div>
 
-## Results
+## Result
 
 ```bash
 +-------------------------------+-----+---+---------+
-|                          chunk|begin|end|ner_label|
+|chunk                          |begin|end|ner_label|
 +-------------------------------+-----+---+---------+
-|                        aspirin|   20| 26|     DRUG|
-|                   acute asthma|   49| 60|      ADE|
-|                      urticaria|   63| 71|      ADE|
-|                     angioedema|   80| 89|      ADE|
-|systemic anaphylactoid reaction|   97|127|      ADE|
+|aspirin                        |20   |26 |DRUG     |
+|acute asthma                   |49   |60 |ADE      |
+|urticaria                      |63   |71 |ADE      |
+|angioedema                     |80   |89 |ADE      |
+|systemic anaphylactoid reaction|97   |127|ADE      |
 +-------------------------------+-----+---+---------+
 ```
 

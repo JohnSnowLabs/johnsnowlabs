@@ -40,7 +40,7 @@ from sparknlp.pretrained import PretrainedPipeline
 
 pipeline = PretrainedPipeline("explain_clinical_doc_medication", "en", "clinical/models")
 
-text = '''The patient is a 30-year-old female with a long history of insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI.  She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime.'''
+text = '''The patient is a 30-year-old female with an insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI. She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime.'''
 
 result = pipeline.fullAnnotate(text)
 ```
@@ -49,7 +49,7 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val pipeline = new PretrainedPipeline("explain_clinical_doc_medication", "en", "clinical/models")
 
-val text = "The patient is a 30-year-old female with a long history of insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI.  She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime."
+val text = "The patient is a 30-year-old female with an insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI. She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime."
 
 val result = pipeline.fullAnnotate(text)
 ```
@@ -58,7 +58,7 @@ val result = pipeline.fullAnnotate(text)
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.explain_dco.clinical_medication.pipeline").predict("""The patient is a 30-year-old female with a long history of insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI.  She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime.""")
+nlu.load("en.explain_dco.clinical_medication.pipeline").predict("""The patient is a 30-year-old female with an insulin dependent diabetes, type 2. She received a course of Bactrim for 14 days for UTI. She was prescribed 5000 units of Fragmin  subcutaneously daily, and along with Lantus 40 units subcutaneously at bedtime.""")
 ```
 
 </div>
@@ -69,44 +69,41 @@ nlu.load("en.explain_dco.clinical_medication.pipeline").predict("""The patient i
 
 ```bash
 # ner_chunk
-+----+----------------+------------+
-|    | chunks         | entities   |
-|---:|:---------------|:-----------|
-|  0 | insulin        | DRUG       |
-|  1 | Bactrim        | DRUG       |
-|  2 | for 14 days    | DURATION   |
-|  3 | 5000 units     | DOSAGE     |
-|  4 | Fragmin        | DRUG       |
-|  5 | subcutaneously | ROUTE      |
-|  6 | daily          | FREQUENCY  |
-|  7 | Lantus         | DRUG       |
-|  8 | 40 units       | DOSAGE     |
-|  9 | subcutaneously | ROUTE      |
-| 10 | at bedtime     | FREQUENCY  |
-+----+----------------+------------+
+
+|    |      ner_chunk | begin | end | ner_label |
+|---:|---------------:|------:|----:|----------:|
+|  0 |        insulin |    44 |  50 |      DRUG |
+|  1 |        Bactrim |   105 | 111 |      DRUG |
+|  2 |    for 14 days |   113 | 123 |  DURATION |
+|  3 |     5000 units |   153 | 162 |    DOSAGE |
+|  4 |        Fragmin |   167 | 173 |      DRUG |
+|  5 | subcutaneously |   176 | 189 |     ROUTE |
+|  6 |          daily |   191 | 195 | FREQUENCY |
+|  7 |         Lantus |   213 | 218 |      DRUG |
+|  8 |       40 units |   220 | 227 |    DOSAGE |
+|  9 | subcutaneously |   229 | 242 |     ROUTE |
+| 10 |     at bedtime |   244 | 253 | FREQUENCY |
 
 # assertion
-+---+---------+----------+-----------+
+
 |   |  chunks | entities | assertion |
 |--:|--------:|---------:|----------:|
-| 0 | insulin |     DRUG |    Family |
+| 0 | insulin |     DRUG |   Present |
 | 1 | Bactrim |     DRUG |      Past |
 | 2 | Fragmin |     DRUG |   Planned |
 | 3 |  Lantus |     DRUG |      Past |
-+---+---------+----------+-----------+
 
 # relation
-+----------------+-----------+------------+-----------+----------------+
-| relation       | entity1   | chunk1     | entity2   | chunk2         |
-|:---------------|:----------|:-----------|:----------|:---------------|
-| DRUG-DURATION  | DRUG      | Bactrim    | DURATION  | for 14 days    |
-| DOSAGE-DRUG    | DOSAGE    | 5000 units | DRUG      | Fragmin        |
-| DRUG-ROUTE     | DRUG      | Fragmin    | ROUTE     | subcutaneously |
-| DRUG-FREQUENCY | DRUG      | Fragmin    | FREQUENCY | daily          |
-| DRUG-DOSAGE    | DRUG      | Lantus     | DOSAGE    | 40 units       |
-| DRUG-ROUTE     | DRUG      | Lantus     | ROUTE     | subcutaneously |
-| DRUG-FREQUENCY | DRUG      | Lantus     | FREQUENCY | at bedtime     |
-+----------------+-----------+------------+-----------+----------------+
+
+|   |       relation | entity1 |     chunk1 |   entity2 |         chunk2 |
+|--:|---------------:|--------:|-----------:|----------:|---------------:|
+| 0 |  DRUG-DURATION |    DRUG |    Bactrim |  DURATION |    for 14 days |
+| 1 |    DOSAGE-DRUG |  DOSAGE | 5000 units |      DRUG |        Fragmin |
+| 2 |     DRUG-ROUTE |    DRUG |    Fragmin |     ROUTE | subcutaneously |
+| 3 | DRUG-FREQUENCY |    DRUG |    Fragmin | FREQUENCY |          daily |
+| 4 |    DRUG-DOSAGE |    DRUG |     Lantus |    DOSAGE |       40 units |
+| 5 |     DRUG-ROUTE |    DRUG |     Lantus |     ROUTE | subcutaneously |
+| 6 | DRUG-FREQUENCY |    DRUG |     Lantus | FREQUENCY |     at bedtime |
 ```
 
 {:.model-param}

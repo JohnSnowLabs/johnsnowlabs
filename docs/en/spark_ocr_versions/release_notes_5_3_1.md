@@ -3,9 +3,9 @@ layout: docs
 header: true
 seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
-permalink: /docs/en/spark_ocr_versions/ocr_release_notes
+permalink: /docs/en/spark_ocr_versions/release_notes_5_3_1
 key: docs-ocr-release-notes
-modify_date: "2024-02-23"
+modify_date: "2024-04-11"
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -88,7 +88,7 @@ ocr = ImageToTextV2.pretrained("ocr_base_printed_v2_opt", "en", "clinical/ocr") 
     .setIncludeConfidence(True)
 ```
 
-![image](/assets/images/ocr/confidence_score.png)
+![image](/assets/images/ocr/confidence_scores.png)
 
 Check this [updated notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/TextRecognition/SparkOcrImageToTextV2.ipynb) for an end-to-end example.
 
@@ -97,6 +97,22 @@ Check this [updated notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop
 ### New HocrMerger annotator
 HocrMerger is a new annotator whose purpose is to allow merging two streams of HOCRs texts into a single unified HOCR representation.
 This allows mixing object detection models with text to create a unified document representation that can be fed to other downstream models like Visual NER. The new Checkbox detection pipeline uses this approach.
+
+###  Checkbox detection in Visual NER.
+A new Checkbox detection model has been added to Visual NLP 5.3.1!. With this model you can detect checkboxes in documents and obtain an HOCR representation of them. This representation, along with the other elements in page can be fed to other models like Visual NER.
+
+```
+binary_to_image = BinaryToImage() 
+binary_to_image.setImageType(ImageType.TYPE_3BYTE_BGR)
+
+check_box_detector = ImageCheckBoxDetector \
+    .pretrained("checkbox_detector_v1", "en", "clinical/ocr") \
+    .setInputCol("image") \
+    .setLabels(["No", "Yes"])
+```
+
+In this case we are receiving an image as input, and returning a HOCR representation with labels 'Yes', and 'No' to represent whether the checkbox is marked or not. You can see this idea directly in the following picture,
+![image](/assets/images/ocr/checkboxes.png)
 
 
 ### New Document Clustering Pipeline using Vit Embeddings.
@@ -130,8 +146,6 @@ ImageDrawRegions is the annotator used for rendering regions into images so we c
 
 ### Bug Fixes
 + PdfToImage resetting page information when used in the same pipeline as PdfToText: When the sequence {PdfToText, PdfToImage} was used the original pages computed at PdfToText where resetted to zero by PdfToImage.
-
-
 
 
 </div><div class="prev_ver h3-box" markdown="1">
