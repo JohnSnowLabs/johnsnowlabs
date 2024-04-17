@@ -77,7 +77,7 @@ resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_findings
 
 pipeline = Pipeline(stages = [document_assembler, sentence_detector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, sbert_embedder, resolver])
 
-data = spark.createDataFrame([["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting."""]]).toDF("text")
+data = spark.createDataFrame([["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting."""]]).toDF("text")
 
 results = pipeline.fit(data).transform(data)
 ```
@@ -123,7 +123,7 @@ val resolver = SentenceEntityResolverModel
 
 val p_model = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, sbert_embedder, resolver))
     
-val data = Seq("A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.").toDF("text")  
+val data = Seq("A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.").toDF("text")  
 
 val res = p_model.fit(data).transform(data)
 ```
@@ -131,7 +131,7 @@ val res = p_model.fit(data).transform(data)
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.resolve.umls.findings").predict("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a body mass index (BMI) of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.""")
+nlu.load("en.resolve.umls.findings").predict("""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.""")
 
 ```
 </div>
@@ -147,12 +147,11 @@ nlu.load("en.resolve.umls.findings").predict("""A 28-year-old female with a hist
 |  3 | HTG-induced pancreatitis              | PROBLEM  | C3808945    | secondary pancreatitis                     | C3808945:::C1835382:::C1556678:::C1556677:::C1963198...| 7.5300:::7.6941:::8.3460:::8.5169:::8.5591...| 0.0925:::0.0962:::0.1175:::0.1208:::0.1227...| secondary pancreatitis:::pancreatitis, acute in some:::grade 2 pancreatitis,...|
 |  4 | an acute hepatitis                    | PROBLEM  | C4750596    | acute infectious hepatitis suspected       | C4750596:::C5233349:::C0151325:::C1861901:::C5232888...| 5.2956:::7.9441:::8.4300:::8.5172:::9.1431...| 0.0426:::0.0970:::0.1089:::0.1110:::0.1285...| acute infectious hepatitis suspected:::abnormal liver enzymes during acute e...|
 |  5 | obesity                               | PROBLEM  | C4759928    | obesity                                    | C4759928:::C0311277:::C1556381:::C4016383:::C0426650...| 0.0000:::3.8693:::4.8495:::5.1270:::5.1356...| 0.0000:::0.0218:::0.0345:::0.0394:::0.0383...| obesity:::abdominal obesity:::extreme obesity:::obesity, association with:::...|
-|  6 | a body mass index                     | PROBLEM  | C2240399    | body mass index                            | C2240399:::C0578022:::C4718566:::C2724372:::C0518010...| 5.2691:::5.2779:::6.6425:::6.6482:::7.1232...| 0.0407:::0.0409:::0.0654:::0.0647:::0.0746...| body mass index:::finding of body mass index:::monitors body mass index:::bo...|
-|  7 | BMI                                   | TEST     | C2240399    | body mass index [bmi]                      | C2240399:::C2959893:::C0578022:::C0518010:::C4718566...| 7.2832:::7.9722:::8.2007:::8.8003:::9.1121...| 0.0821:::0.0991:::0.1026:::0.1175:::0.1281...| body mass index [bmi]:::bmi (body mass index) centile:::body mass index find...|
-|  8 | polyuria                              | PROBLEM  | C1865279    | foetal polyuria                            | C1865279:::C3670443:::C0042023:::C1735369:::C0232891...| 8.1070:::8.4710:::8.8332:::9.1023:::9.2617...| 0.1030:::0.1110:::0.1237:::0.1292:::0.1337...| foetal polyuria:::polyuria and polydipsia:::pollakiuria:::chronic hematuria:...|
-|  9 | polydipsia                            | PROBLEM  | C3670443    | polyuria and polydipsia                    | C3670443:::C0220854:::C0020505:::C0585348:::C0422980...| 8.3037:::9.5939:::10.0704:::10.1917:::10.2...| 0.1057:::0.1381:::0.1573:::0.1641:::0.1675...| polyuria and polydipsia:::polypnea:::polyphagia:::biphasic stridor:::oscillo...|
-| 10 | poor appetite                         | PROBLEM  | C5543391    | low appetite                               | C5543391:::C1971624:::C0541799:::C0576456:::C2077391...| 5.4947:::5.7668:::6.1978:::6.4132:::6.6587...| 0.0442:::0.0482:::0.0559:::0.0603:::0.0644...| low appetite:::lack of appetite:::bad taste:::poor feeding:::insufficient nu...|
-| 11 | vomiting                              | PROBLEM  | C1287105    | vomit ph                                   | C1287105:::C4015188:::C4324485:::C0439039:::C0577080...| 5.1470:::5.8703:::6.1762:::6.1814:::6.2403...| 0.0398:::0.0514:::0.0579:::0.0571:::0.0589...| vomit ph:::cyclic vomiting:::discolored vomit:::c/o - vomiting:::finding of ...|
+|  6 | BMI                                   | TEST     | C2240399    | body mass index [bmi]                      | C2240399:::C2959893:::C0578022:::C0518010:::C4718566...| 7.2832:::7.9722:::8.2007:::8.8003:::9.1121...| 0.0821:::0.0991:::0.1026:::0.1175:::0.1281...| body mass index [bmi]:::bmi (body mass index) centile:::body mass index find...|
+|  7 | polyuria                              | PROBLEM  | C1865279    | foetal polyuria                            | C1865279:::C3670443:::C0042023:::C1735369:::C0232891...| 8.1070:::8.4710:::8.8332:::9.1023:::9.2617...| 0.1030:::0.1110:::0.1237:::0.1292:::0.1337...| foetal polyuria:::polyuria and polydipsia:::pollakiuria:::chronic hematuria:...|
+|  8 | polydipsia                            | PROBLEM  | C3670443    | polyuria and polydipsia                    | C3670443:::C0220854:::C0020505:::C0585348:::C0422980...| 8.3037:::9.5939:::10.0704:::10.1917:::10.2...| 0.1057:::0.1381:::0.1573:::0.1641:::0.1675...| polyuria and polydipsia:::polypnea:::polyphagia:::biphasic stridor:::oscillo...|
+|  9 | poor appetite                         | PROBLEM  | C5543391    | low appetite                               | C5543391:::C1971624:::C0541799:::C0576456:::C2077391...| 5.4947:::5.7668:::6.1978:::6.4132:::6.6587...| 0.0442:::0.0482:::0.0559:::0.0603:::0.0644...| low appetite:::lack of appetite:::bad taste:::poor feeding:::insufficient nu...|
+| 10 | vomiting                              | PROBLEM  | C1287105    | vomit ph                                   | C1287105:::C4015188:::C4324485:::C0439039:::C0577080...| 5.1470:::5.8703:::6.1762:::6.1814:::6.2403...| 0.0398:::0.0514:::0.0579:::0.0571:::0.0589...| vomit ph:::cyclic vomiting:::discolored vomit:::c/o - vomiting:::finding of ...|
 ```
 
 {:.model-param}
