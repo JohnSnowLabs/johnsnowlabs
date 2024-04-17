@@ -61,6 +61,15 @@ wget https://setup.johnsnowlabs.com/annotationlab/install.sh -O - | sudo bash -s
 
 </div><div class="h3-box" markdown="1">
 
+**Fresh GPU installation**
+
+Use `gpu` (case-insensitive) **optional** parameter with annotationlab-installer.sh script to enable usage of GPU resources. This will only work if your host has GPU resources. This parameter is used as a flag, it will enable GPU resources when used, otherwise, the installer will ignore anything related to GPU.
+
+```bash
+$ ./annotationlab-installer.sh gpu
+```
+**Notice:** GPU usage can be disabled at a later time, by simply editing the annotationlab-updater.sh script and set `useGPU` variable to false. However, this will only prevent the app from using GPU resources, it will not remove the already installed Nvidia drivers and plugins.
+
 ### Upgrade
 
 To upgrade your Generative AI Lab installation to a newer version, run the following command on a terminal:

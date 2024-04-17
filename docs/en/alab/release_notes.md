@@ -6,7 +6,7 @@ seotitle: Release Notes | John Snow Labs
 title: Release Notes
 permalink: /docs/en/alab/release_notes
 key: docs-training
-modify_date: "2024-03-15"
+modify_date: "2024-04-11"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -15,254 +15,160 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## NLP Lab 5.9 – Entity Resolution and Pre-annotation using Resolvers for NER, Pre-annotation using Prompts and Rules for Visual NER, Import and Export projects to S3 and Azure Blob
+## Generative AI Lab – No-Code Environment for Building Task-Specific AI Models with LLMs
+We are happy to announce the release of Generative AI Lab 6, marking the transition from the previous NLP Lab to a state-of-the-art No-Code platform that enables domain experts to train task-specific AI models using large language models (LLMs). This new product introduces a suite of advanced features and functionalities designed to facilitate the creation, management, and deployment of AI-driven solutions efficiently and accurately. With robust integration capabilities, comprehensive model training tools, and enhanced security measures tailored for high-compliance sectors such as healthcare, Generative AI Lab sets a new standard in the generative AI platform landscape. John Snow Labs is committed to democratizing AI tool interaction and making it more accessible, especially within the healthcare sector. We aim to equip healthcare professionals, from clinicians to researchers, with the tools to construct bespoke AI models. These models are pivotal in analyzing extensive datasets, discerning patterns, aiding in diagnosis, and enhancing patient care, all achievable without in-depth coding expertise. This opens new avenues in personalized medicine, accelerates research, and improves patient outcomes, thereby revolutionizing the healthcare landscape.
 
-NLP Lab 5.9 introduces significant updates aimed at enriching and expanding the capabilities of your NLP workflows. This release represents a major step forward, offering support for Entity Resolution for standard taxonomies like ICD-10, RxNorm, SNOMED, LOINC, UMLS, MeSH, CPT for both annotations and pre-annotations activities. Furthermore, the inclusion of Rules and Prompts in Visual NER projects enables improved pre-annotation results without the need for trained models. The introduction of the Supervisor role offers enhanced authority compared to the Annotator role. Additionally, the ability to Import and Export projects in S3/Blob further enhances NLP Lab 5.9 for easier project backup and sharing capabilities. These advancements, coupled with our ongoing commitment to performance enhancements and user experience improvements, underscore our dedication to meeting the evolving needs of the NLP community. Discover the limitless possibilities with NLP Lab 5.9 and elevate your NLP projects to new levels of excellence.
+In this release, Generative AI Lab enhances its capabilities by integrating seamlessly with the OpenAI API, enabling the effortless training, testing, and refinement of task-specific models tailored to the distinct needs of your domain and use case. Whether your focus is on refining document processing, orchestrating AI assets, or fortifying regulatory compliance, Generative AI Lab delivers a comprehensive, secure, and effective framework to transform your AI ambitions into tangible outcomes. 
 
-## Support for Entity Resolution
-### Lookup code/terms in Labeling page
-NLP Lab version 5.9.0 introduces support for Entity Resolution, allowing users to enhance their annotations by adding lookup datasets. By allowing users to enrich labeled text with additional information, NLP Lab provides the way for improving the context and accuracy of annotations. Lookup functionality is currently supported exclusively by text based NER projects.
+Generative AI Lab 6 marks a significant leap forward in hardware architecture and performance optimization for model training and Visual Document understanding. Now available on the AWS marketplace with a GPU-enabled template, this release simplifies license provisioning and unlocks immediate access to all features, including prompts, Rules, pretrained medical models, medical resolvers, medical model training, and visual document understanding. This enhancement not only accelerates performance but also broadens your access to a plethora of AI capabilities, reaffirming our commitment to advancing the NLP community's capabilities. 
 
-### Configuring Lookup
-Configuring lookup datasets is straightforward: use the well-known Customize Labels page during project configuration and follow the steps below:
-1. Click on the specific label for which you want to add lookup data.
-2. Select the desired lookup dataset from the dropdown list.
-3. Navigate to the task page and add lookup information to labeled texts.
 
-![LookUpConfiguration](/assets/images/annotation_lab/5.9.0/1.gif)
+## Use LLMs to bootstrap task-specific models 
+Generative AI Lab facilitates seamless integration with the OpenAI API, empowering domain experts to easily define prompts for classification or entity extraction. This integration allows Generative AI Lab to process the LLM's responses, adjust the indexes of the extracted segments, and overlay pre-annotation results directly onto the original documents. 
 
-### Identifying Entities with Lookup Data:
-Once setup is done, it is easy to identify entities eligible for lookup by a small ⌄ icon displayed next to them. This icon signifies that lookup data can be added to those entities, providing users with clear guidance on annotation possibilities.
+ ![LLMPrompt](/assets/images/annotation_lab/6.0.0/11.png)
 
-![ViewingIfLookupIsAvailable](/assets/images/annotation_lab/5.9.0/2.png)
+Once pre-annotations are generated, domain experts can step in and review these results through a user-friendly interface, offering their expertise in the form of adjustments or corrections. This refined data can then be employed to develop smaller, more specialized models that are optimized for processing the document of interest.
 
-### Adding/Viewing and Updating Lookup Data:
-**Adding Lookup Data in Labeling Page:** Users can select the available lookup data from the list available for a particular label.
+Furthermore, Generative AI Lab supports comprehensive training experiments and provides access to benchmarking data to evaluate the performance during the model training process. For continuous model enhancement, users can augment the training dataset with additional examples and reinitiate the training process, ensuring sustained improvement and adaptation.
 
-![AddLookup](/assets/images/annotation_lab/5.9.0/3.gif)
+The final step is iterative refinement. Here, users can assess the model's performance metrics and introduce more data as needed. This process ensures that the model can be adapted and improved, as a response to new information and evolving requirements in the healthcare domain.
 
-**Viewing Lookup Dataset:** Users can view the lookup data or metadata by clicking the gear icon in the labeling page and enabling the "Show Meta in Regions" setting.
+## Private, on-premise, high-compliance prompt engineering
+In the healthcare sector, protecting Personal Health Information (PHI) is paramount. To this end, Generative AI Lab provides support for Zero-Shot models that can process PHI directly within your infrastructure, thus ensuring privacy and compliance. Mirroring the workflow used for integrating LLMs via external APIs, you can now utilize Zero-Shot Learning for pre-annotation of your documents. This functionality is available directly within Generative AI Lab, eliminating the need for external API calls to LLMs.
 
-![ShowhideMeta](/assets/images/annotation_lab/5.9.0/4.gif)
+By adopting this approach, you can ensure adherence to stringent healthcare regulations, providing reassurance and peace of mind.
 
-**Updating Lookup Dataset:** If users wish to change or edit the lookup data, they can simply right-click on the particular entity and choose the new lookup data.
+![zeroPrompt](/assets/images/annotation_lab/6.0.0/12.png)
 
-![UpdateLookup](/assets/images/annotation_lab/5.9.0/5.gif)
+## Organize and share models, prompts, and rules within one private enterprise hub
+The Models Hub acts as a centralized platform where users from your organization can easily manage their AI development lifecycle. It supports operations like the secure sharing, searching, filtering, testing, publishing, importing, and exporting of AI models, prompts, and rules. This functionality simplifies the management of proprietary AI assets, enabling teams to efficiently collaborate and leverage these assets for their projects.
 
-This new feature enhances the annotation capabilities of NLP Lab, allowing users to enrich their annotations with relevant contextual information from lookup datasets. We're excited to see how this feature empowers users to create more accurate and comprehensive annotations in their projects.
+![ModelsHub](/assets/images/annotation_lab/6.0.0/13.png)
+ 
+The Models Hub implements role-based access control (RBAC), allowing you to define who in your organization has access to your assets, who can experiment with prompts or rules or who can export your models. Versioning and backup features are available to keep a record of changes made to your assets, ensuring that you can always revert to previous versions if needed. 
 
-## Pre-annotate metadata using Resolvers 
+Finally, the playground allows for easy editing and testing of prompts, rules or models without coding.
 
-- NLP Lab 5.9 introduces a pivotal enhancement that expands pre-annotation capabilities with the use of Healthcare resolvers. These resolvers are now conveniently accessible and discoverable on the NLP Models Hub page. Simply apply the "Entity Resolution" filter to view the comprehensive list.
+Generative AI Lab is integrated with the NLP Models Hub, which gives access to an extensive library of over 40,000 models and pipelines, ready to be integrated into your projects. This integration not only enhances your capabilities but also provides easy access to model benchmarking data, to model documentation and one-click downloads.
 
-![Resolution_prediction](/assets/images/annotation_lab/5.9.0/6.png)
+**Models:**
 
-- For any selected resolver to be used in the pre-annotation process it is required to incorporate the named entity recognition (NER) model as part of the configuration project during setup.
+Within the Models page, you'll find a private repository tailored for your organization's needs, including models you've trained, uploaded, or downloaded from the NLP Models Hub. This centralized management system ensures your AI assets are organized and readily available.
 
-- To seamlessly integrate the resolver with the NER models, navigate to the "Reuse Resources" page within the project configuration. Subsequently, proceed to the "Customize Labels" section. Here, individually select each label and designate the appropriate resolver from the drop-down menu of Entity Resolution Models.
+**Rules:** 
 
-![Resolver_configuration](/assets/images/annotation_lab/5.9.0/7.gif)
+The Rules page offers a dedicated space for creating and managing the rules you can define and use in your projects. With an intuitive editing interface and practical examples, crafting custom rules becomes a straightforward process.
 
-- The role of these resolvers is to transform pre-annotated labels into both code and descriptive representations. To access this functionality, ensure that the "Show Meta in Regions" option is enabled within the task settings.
-  
-![Resolution_prediction](/assets/images/annotation_lab/5.9.0/8.gif)
+**Prompts:** 
 
-- Meta-information associated with a label is stored in a key-value pair format, facilitating easy retrieval and interpretation.
+Lastly, the Prompts page allows you to curate a collection of prompts, essential for preannotating your documents and for training your AI models. Through an easy-to-use editing and testing interface, you can ensure your prompts are effective and achieve the intended responses.
 
-![Resolution_prediction](/assets/images/annotation_lab/5.9.0/9.png)
 
-- While it's possible to copy and modify completions, it's important to note that the resolved code and descriptions cannot be directly edited. In such cases, deletion of the existing content or addition of new key-value pairs is necessary. In instances where no prediction is available, manual annotation of tasks can be performed using lookup codes/terms, provided that a lookup table has been configured.
-![Resolver_copy_and_renames](/assets/images/annotation_lab/5.9.0/10.gif)
+## Deployment
 
-## Pre-annotation using Prompts in Visual NER project
-NLP Lab 5.9.0 expands pre-annotation capabilities for Visual NER projects with added support for pre-annotation using Prompts. Users can now pre-annotate tasks in Visual NER projects using zero-shot prompts, significantly enhancing the scope for pre-annotation along with efficiency and accuracy.
+**AWS Marketplace**
 
-In previous versions, the use of prompts was limited to only in text-based projects. With this version, the scope has been expanded, allowing users to leverage prompts for pre-annotation in their PDF and image-based projects as well.
+Generative AI lab is available on AWS Marketplace as a one-click deployment within your security parameter. This subscription offers immediate access to Visual document understanding features including tools for Optical Character Recognition, PDF preannotations, or Visual Model Training. For healthcare professionals, the platform offers specialized resources such as embeddings and models designed and tuned for healthcare data, covering tasks like entity recognition, assertion status detection, relation extraction, or entity resolution. 
 
-By incorporating zero-shot prompts, users can achieve efficient and accurate pre-annotation without the need for manual intervention.
+And, you’re never alone in this process; professional support is always at your fingertips to assist with any questions or integrations.
 
-### Configure and Pre-annotate tasks using Prompts:
-- Create a Visual NER Project
-- Navigate to Reuse-Resource Page and add desired zero shot prompts (relation prompts and external prompts are not supported, currently)
-- Once project configuration is saved, pre-annotate the tasks using the prompt.
+**On-premise:**
 
-![PromptInVisner](/assets/images/annotation_lab/5.9.0/11.gif)
+Generative AI lab is also available for on-premise deployments on both GPU and CPU servers. To utilize GPU resources, add the case-insensitive 'gpu' parameter when running the installation script available here. This parameter acts as a toggle: if specified, the script will activate GPU support, assuming the host server has the necessary GPU resources. If omitted, the script will proceed without configuring GPU-related settings.
 
-This new feature streamlines the pre-annotation process and extends the benefits of prompts to Visual NER projects, empowering users to annotate tasks more effectively across various document types.
+Use `gpu` (case-insensitive) **optional** parameter with annotationlab-installer.sh script to enable usage of GPU resources. This will only work if your host has GPU resources. This parameter is used as a flag, it will enable GPU resources when used, otherwise, the installer will ignore anything related to GPU.
 
+```bash
+$ ./annotationlab-installer.sh gpu
+```
 
-## Pre-annotation using and Rules Visual NER project
-Version 5.9.0 introduces support for using Rules for pre-annotation capabilities of Visual NER projects. Users can now pre-annotate tasks in Visual NER projects using rules, extending the benefits of automated pre-annotation to a wider range of document types.
+Please note, that you can disable GPU usage at any time by modifying the install script and setting the `useGPU` variable to false. This action will stop the application from utilizing GPU resources but will not uninstall any previously installed Nvidia drivers or plugins.
+With this update, a GPU-based AMI is now available, offering users the opportunity to leverage the increased performance and capabilities that come with GPU acceleration.
 
-Previously, rules were only available for use in text-based projects. However, with this version, the scope has been expanded to include Visual NER projects. Users can now leverage rules for pre-annotation in PDF and image-based projects, providing greater flexibility and efficiency in annotation workflows, allowing users to utilize rules to automatically annotate tasks in Visual NER projects.
+### Migrate your NLP Lab Backup to Generative AI Lab 
 
-### Configure and Pre-annotate tasks using Rules:
-- Create a Visual NER Project
-- Navigate to Reuse-Resource Page and add desired rules.
-- Once project configuration is saved, pre-annotate the tasks using the rules.
+Migrating to the new version is easy! Users who are using the NLP Lab can migrate their annotated data and configured settings to Generative AI Lab through our Backup and Restore feature. This process enables users to back up their projects (including data and files) from an NLP Lab server to Azure Blob or AWS S3 and then restore the configurations to a Generative AI server. For this, the following steps need to be taken: 
 
-  ![RulesInVisner](/assets/images/annotation_lab/5.9.0/12.gif)
+<iframe src="/assets/images/annotation_lab/6.0.0/BackupAndRestore.mp4" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
 
-## New Supervisor Role for Users
-In this version of NLP Lab, we're excited to introduce a new user role: Supervisor. The Supervisor role offers enhanced authority compared to the Annotator role while maintaining restrictions, similar to the Admin role.
+**Follow these steps to migrate your data**:
+#### 1. Backup Data:
+- Navigate to the Backup page of your Generative AI Lab instance.
+- Enter backup details.
+- Schedule an immediate backup via backend modification: 
+```bash
+kubectl edit cronjob
+```
+- Monitor the backup pod status: 
+```bash
+kubectl get pods
+```
+#### 2. Verify Backup:
+- Upon completion, your backed-up database and files will be visible in cloud storage.
 
-### Role Authority:
-A user with the Supervisor role has access to almost all functionalities available to the Admin role, with a few exceptions:
-- **Users Page Access:** Supervisors cannot access the Users page, limiting their ability to create and edit users within the system.
-- **External Service Providers:** They do not have access to external service providers and cannot use prompts created by other users via external service providers.
-- **Limited Access to System Settings:** Supervisors have read-only access to Analytics Requests page, License page, Infrastructure Settings, and Export Project Settings in the System Settings page.
-- **No Access to Backup Page:** The Backup page is inaccessible to users with the Supervisor role.
+#### 3. Restore Data:
+- Access the backend of your target Generative AI Lab instance.
+- Transfer backed-up data from cloud storage to artifacts/restore/database.
+- Perform database restoration: 
+```bash
+sudo ./restore_all_databases.sh <backed-up_database_name>
+```
+- Copy backed-up files from cloud storage to artifacts/restore/files.
+- Execute file restoration: 
+```bash
+sudo ./restore_files.sh <backed-up_files_name>
+```
+#### 4. Verify Restoration:
+- Access the UI, all data and files should now be successfully restored.
 
-![SupervisorAuthority](/assets/images/annotation_lab/5.9.0/13.gif)
+## Resource configuration
+### GPU Resource Availability
+If the Generative AI Lab is equipped with a GPU, the following message will be displayed on the infrastructure page:  
 
-### Creating a user with Supervisor Role
-The process of creating a user with the new role is just like creating any other users. As an admin user, navigate to the “Users” page under “Settings” menu item, then Add a new user, assign Supervisor role and save it.
+"**GPU Resource Available**".
+![infra](/assets/images/annotation_lab/6.0.0/1.png)
 
-![CreatingSupervissor](/assets/images/annotation_lab/5.9.0/14.gif)
+### Visual NER Training with GPU
+The Training & Active Learning page now includes a new option "**Use available GPU**" for Visual NER projects. Selecting this option enables Visual NER model training using GPU.
 
-The introduction of the Supervisor role enhances user management capabilities while maintaining necessary restrictions to ensure data security and system integrity. This role provides users with the appropriate level of authority to oversee projects and workflows effectively within NLP Lab.
+![infra](/assets/images/annotation_lab/6.0.0/2.png)
 
-## Import and Export project in S3 and Blob
-Version 5.9 of NLP Lab allows you to effortlessly import and export projects using S3 and Azure Blob.
+**Note**:Find CPU vs GPU Benchmarks for Visual NER model training [here](/docs/en/alab/training_configurations#boost-performance-with-the-use-of-gpu--side-by-side-cpu---gpu-benchmark-for-visual-named-entity-recognition-ner-project).
 
-**Steps to import a project from S3:**
-- Navigate to "Import Project"
-- Choose "AWS S3"
-- Input the path to the S3 file as s3://bucket/folder/file.zip
-- Provide S3 Access Key, S3 Secret Key, and Session Token (Required for MFA Accounts)
-- Click "Import"
-  ![S3_import](/assets/images/annotation_lab/5.9.0/15.gif)
+## Using Healthcare and Visual Document Understanding Features 
 
+The Generative AI Lab brings support for the PAYG (Pay-As-You-Go) license option offered by John Snow Labs for the use of pre-trained medical and visual models. This comes as an additional option on top of the support for floating licenses and airgap licenses and was added for enhanced flexibility, reducing costs, and providing the mechanism for paying only for the utilized resources.
 
-**Steps to import a project from Azure Blob:**
-- Go to "Import Project"
-- Select "Azure Blob"
-- Enter the path to the Azure Blob file as Container/file.zip
-- Input Azure Account Name and Azure Account Secret Key
-- Click "Import"
-  ![Import_azure](/assets/images/annotation_lab/5.9.0/16.gif)
+## PAYG License Features:
+- **PAYG License Included in AMI Installation:** The Generative AI Lab AWS product includes a PAYG license key generated at subscription time and readily available on the License page within the AMI environment. Users do not need to worry about manually adding the license. Therefore, concerns regarding expiration or accidental deletion are eliminated. 
+- **BYOL for on-premise deployments:** For on-premise deployments of the Generative AI Lab, users can buy a PAYG license from my.johnsnowlabs.com, download it, and import it to Generative AI Lab via the License page. Note that the deployment server needs to allow license heartbeat to be sent to johnsnowlabs services to validate license usage.
+- **Flexible Billing:** With the PAYG license, users are billed based on only the resources they use, offering a more tailored and cost-effective pricing model.
+- **Support for Multiple Servers:** PAYG license also comes with support for running multiple training and pre-annotation servers in parallel. PAYG license enables users to deploy and utilize multiple pre-annotation servers and training instances in parallel. This boosts workflow efficiency and productivity, allowing the execution of tasks simultaneously and accelerating project completion.
 
+![MultipleServerDeploymentWithPayG](/assets/images/annotation_lab/6.0.0/3.png)
 
-**Steps to export a project to S3:**
-- Navigate to "Projects"
-- Choose the desired project and Click "Export Project"
-- Select "Cloud Export"
-- Click "AWS S3"
-- Input S3 Access Key and S3 Secret Key 
-- Specify the S3 path for export (e.g., s3://bucket/folder/)
-- Optionally, provide Session Token for MFA Account
-- You click on Save Credentils as well for the future use
-- Optionally, save credentials for future use
-- Click "EXPORT"
-![s3_export](/assets/images/annotation_lab/5.9.0/17.gif)
+### Cost Awareness Banner for PAYG License
+With the introduction of PAYG license support, proactive measures have been taken to inform users about the potential costs associated with the use of licensed features. Users will now be presented with a noticeable message banner at the top of the page, stating: "Continuous Server Usage Incurs Costs! Please check the deployed server." The message is always shown even if no server is deployed on the cluster page. It helps users to be aware of the fact that they are billed based on application and resource usage.
 
-**Steps to export a project to Azure Blob:**
-- Navigate to "Projects"
-- Select the project and Click "Export Project"
-- Choose "Cloud Export"
-- Select "Azure Blob"
-- Enter Account Name, Account Key, and Container Name
-- Optionally, save credentials for future use
-- Click "EXPORT"
-![azure_export](/assets/images/annotation_lab/5.9.0/18.gif)
+![LicensePageInAMI](/assets/images/annotation_lab/6.0.0/5.gif)
 
-## Improvements
-### Delete user from the user edit page
-A delete button has been incorporated into the user edit page, whereas previously, users could only be deleted from the user list page via the three-dot menu. Now, administrators have the option to delete users directly from the user edit page. Additionally, a supplementary delete button has been placed beside the save button at the bottom of the user edit page.
+By presenting this message, users are reminded to monitor their server usage and associated costs, promoting cost-conscious behavior. This feature enhances user awareness and ensures transparency regarding the cost implications of utilizing the PAYG license within Generative AI Lab.
 
-### Configurable button layout for Login page
-In previous versions, the "Sign in with OIDC" button appeared directly below the regular "Sign in" button. With NLP 5.9, administrators have the flexibility to configure the positioning of these buttons. By appending an asterisk (*) to the end of the Display Name of Identity Providers in Keycloak authentication, the "Sign in with OIDC" button can be set as the primary option, eliminating any confusion and reducing room for errors.
+## Bug Fixes and Improvements
 
-![OIDC_button_flip](/assets/images/annotation_lab/5.9.0/19.gif)
+### Support for multiple spaces and tabs in Label Metadata
+Previously, within the label metadata, multiple spaces were considered as a single space, and tabs were not supported. Pressing the tab key would render the text area inactive. Now within label metadata, users can utilize multiple spaces and tabs, both of which are preserved when adding metadata to labeled texts.
 
-### The "Next" button is enabled after selected users are added to the project in "Team Member" Page
-On the project team member page, bulk selection and role assignment of accounts is now available. Once user accounts are selected, it is now possible to assign "annotator," "reviewer," and "manager" roles in bulk. However, there's a common issue where users occasionally forget to click the "Add to team" button after assigning roles. Consequently, when users attempt to proceed to the project configuration page by clicking the next button, the selected users and their roles are lost in this case. 
+### Pre-annotation using Text Classification model with HC license is not working
 
-To address this situation, the "Next" button is left disabled until the selected users along with their roles are added to the team, ensuring that changes are saved. Only after this process is complete does the "Next" button become enabled, allowing users to proceed without losing any data.
+Previously, healthcare classification models such as "classifierml_ade" were not deployed in pre-annotation even with a healthcare license. However, this issue has now been rectified.
+ 
+### Zoom Feature not working in predictions and submitted completions in Visual NER Project
 
-### Meta in Labels should support HTML tags and escape sequences
-In previous versions of NLP Lab, metadata in labels had limitations regarding support for special characters, HTML tags, and new lines. With version 5.9.0, meta support in labels has been significantly enhanced to include special characters, new lines, and HTML tags (such as \n, \s).
-
-![MetaSupportSpecialCharacter](/assets/images/annotation_lab/5.9.0/20.gif)
-
-Users can leverage the enhanced meta support to provide additional context and information within labeled entities. Whether including special characters for specific annotations, utilizing HTML tags for formatting, or adding new lines for clarity, users have greater flexibility in annotating text data.
-
-### Add shortcut for pagination in the task labeling page
-In version 5.9.0, we are excited to introduce an improvement to the labeling page that enhances user navigation for large tasks. Users can now utilize keyboard shortcuts to quickly navigate to the next and previous pages within tasks, improving efficiency and workflow.
-
-**Keyboard Shortcuts:**
-- **Navigate to Previous Page:** Users can press “Alt/Option + Left" to navigate to the previous page within a task.
-- **Navigate to Next Page:** Pressing “Alt/Option + Right" allows users to navigate to the next page within a task.
-
-![PaginationTest](/assets/images/annotation_lab/5.9.0/21.gif)
-
-These keyboard shortcuts provide users with a convenient way to navigate through large tasks more efficiently, particularly when annotating large text data tasks. By streamlining navigation, users can stay focused on annotation task itself, maintaining productivity within NLP Lab.
-
-### Bug Fixes
-- **Labels and Choices in a Vertical Layout fail to occupy the entire vertical space**
-
-	Previously, when the project was set up to display labels or choices in a vertical layout, the options did not optimally use the page space and only occupy a small portion of the vertical space. This resulted in cluttered options, and when annotators scrolled through long tasks, these options would often go unnoticed. The fix addresses the issue and the entire vertical space is utilized to list the annotation options.
-	
-- **Model evaluation can be triggered for trained model**
-
-	Model evaluation is exclusively supported for pre-trained models. An issue arose where users attempted to evaluate trained models, resulting in an error message: 'Evaluation Failed! NER/Classification pretrained model not found in project configuration.' Thus, if a user adds a trained model and attempts evaluation, this error will be displayed.
-	
-- **For label names with spaces, when trained, the prediction entity name is truncated after spaces**
-
-	In new projects, the NLP lab restricts NER label names from including spaces. If a project owner or manager attempts to add a label name with spaces, an error message will appear. However, in existing projects where label names contain spaces, this error will not occur. Nevertheless, during model training in these projects, entity names with spaces will be truncated after the space in prediction outputs.
-	
-- **Team members are not displayed in the project card for imported project**
-
-	Previously, when a user imported a project containing multiple users, the project would be created, but the icons of added users were not displayed on the project card in the home page.
-	
-- **SBA: "Filter Pre-annotation acc. to latest completion" does not show the predicted labels for newly added sections created after the Pre-annotation**
-
-	Previously, the 'Filter Pre-annotation according to latest completion' feature did not display predicted labels for newly added sections created after pre-annotation. The fix corrects how labels are now displayed and preserved for manually created or deleted sections.
-
-The 'Filter by latest completions' feature now accurately displays predicted labels based on pre-annotation for all sections, including manually created ones. Additionally, pre-annotation predictions are removed from sections not present in the latest draft or completion of the current user.
-	
-- **System Settings is hidden by the "Help" Button in the Side Menu**
-
-	The System Settings, previously hidden under the Help Button in the Side Menu, were inaccessible even with the scroll bar. Now, the System Settings are no longer hidden by the Help button. They are readily accessible and can be scrolled down within the Side Menu to reach the page.
-	
-- **When user Deletes a user and then transfers the project to another user, the project are not transferred**
-
-	Previously, when the admin user deleted a user and attempted to transfer the project to another user, the project was not successfully transferred. Additionally, a "bad request" error was encountered in the UI.
-
-Now, after deleting a user, the projects are automatically transferred to another user as intended.
-	
-- **Import fails for cloud task import when mixed image type documents are imported**
-
-	For cases when the user tries to import mixed image type documents from cloud storage, the users will now receive an error message.
-	
-- **Annotations are not copied when copying completion in a Visual NER Project with SBA**
-
-	Previously, Annotations were not copied when duplicating completions in a Visual NER Project with SBA.
-	
-- **Search text box in Project page doesn't reset/refresh the page when texts are removed**
-
-	Previously, the search text box on the Project page did not reset or refresh the page when the text was removed. Now, after clearing the search box, all projects are listed as expected.
-	
-- **While uploading a model, the user need to type every prediction entity**
-
-	Previously, when uploading a model, users had to manually type each prediction entity. This has now been rectified; users can simply copy and paste a comma-separated list of prediction entities for the models.
-	
-- **Completions are not created when textarea tag is without "toName" attribute**
-
-	Previously, there was an issue where completions were not saved when the textarea tag lacked the "toName" attribute. Now, if such a configuration exists, the config validation will throw an error before the user can save the config, specifically when the XML config includes a `<TextArea/>` node without the toName attribute. After adding the toName attribute, completions are successfully created.
-	
-- **Relation lines for two entities are not displayed when they are in different lines**
-
-	The issue has been resolved, and now the relation lines remain visible even when scrolling through the task. This fix will across various scenarios including single-page tasks with short texts, as well as multi-page tasks with large texts for both manual annotation and pre-annotation.
-	
-- **Users are not able to view benchmarking data for pre-trained model**
-
-	The issue has been resolved, and now both admin and supervisors can view benchmarking results for pre-trained models, provided they are available.
-	
-- **NER model not added" error is shown even when relation model is not added to the project configuration**
-
-	Now, the error message 'NER model not added' no longer appears when RE configuration is added without an RE model. However, if an RE model is added without the inclusion of the NER model, the error message will be displayed.
-
+In previous versions, the zoom-in and zoom-out functionalities for submitted completions and predictions in the Visual NER project were not functioning properly. This issue has been resolved.
+ 
+ 
 </div><div class="prev_ver h3-box" markdown="1">
 
 ## Versions
@@ -270,10 +176,12 @@ Now, after deleting a user, the projects are automatically transferred to anothe
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_0_2">6.0.2</a></li>
+    <li class="active"><a href="annotation_labs_releases/release_notes_6_0_0">6.0.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_9_3">5.9.3</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_9_2">5.9.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_9_1">5.9.1</a></li>
-    <li class="active"><a href="annotation_labs_releases/release_notes_5_9_0">5.9.0</a></li>
+    <li><a href="annotation_labs_releases/release_notes_5_9_0">5.9.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_8_1">5.8.1</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_8_0">5.8.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_5_7_1">5.7.1</a></li>

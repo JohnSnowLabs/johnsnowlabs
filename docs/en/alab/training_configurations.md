@@ -209,6 +209,85 @@ Visual NER annotation, training and preannotation features are dependent on the 
 
 The minimal required training configuration is 64 GB RAM, 16 Core CPU for Visual NER Training.
 
+#### Visual NER Training with GPU
+
+**GPU Resource Availability**
+If the Generative AI Lab is equipped with a GPU, the following message will be displayed on the infrastructure page:  
+
+"**GPU Resource Available**".
+![infra](/assets/images/annotation_lab/6.0.0/1.png)
+
+The Training & Active Learning page now includes a new option "**Use available GPU**" for Visual NER projects. Selecting this option enables Visual NER model training using GPU.
+
+![infra](/assets/images/annotation_lab/6.0.0/2.png)
+
+#### Boost performance with the use of GPU- side by side CPU - GPU Benchmark for Visual Named Entity Recognition (NER) Project
+
+In this section we dive into a side-by-side comparison between CPUs and GPUs for a specific task: recognizing names in images (Visual NER). Two powerful machines were used for comparison, one with CPU only (central processing unit), and the second one equipped with GPU (graphics processing unit). The goal of the test was to measure and compare the time required for training an AI model based on the different hardware architectures of the servers.
+
+#### Understanding CPU vs GPU for NLP Tasks:
+
+One of the important differences between CPU and GPU architecture is in how they deliver performance for AI training and inference with GPU delivering leading performance in this context. CPUs, with their adeptness in sequential tasks and single-threaded performance, stand in contrast to GPUs, which thrive in highly parallelized environments, excelling at simultaneous large-scale computations crucial for NLP tasks, especially those entailing intensive matrix operations as encountered in deep learning models.
+
+#### Hardware Configuration:
+
+##### CPU Machine (m4.4xlarge):
+        CPU: Intel Xeon E5-2676 v3 (Haswell) processors (16 cores)
+        Memory: 64 GiB
+        Storage: EBS only
+        Network Performance: Moderate
+##### GPU Machine (g4dn.2xlarge):
+        GPU: NVIDIA T4 Tensor Core GPU
+        vCPUs: 8
+        GPU Memory: 16 GiB
+        Memory: 32 GiB
+        Storage: EBS only
+        Network Performance: High
+
+#### Versions:
+
+The benchmarking was carried out using the following Spark NLP versions:
+
+Spark version: 3.4.0
+
+SparkNLP version: 5.3.0
+
+SparkOCR version: 5.3.0
+
+#### Benchmark Setup:
+
+Our benchmarking focuses on a Visual Named Entity Recognition (NER) project. Visual data (images) was processed to identify named entities like people, locations, and brands within them. Visual NER training employs advanced NLP techniques and deep learning architectures, demanding significant computational resources for efficient execution. To assess the performance training of our Visual NER model GPU-enabled instance, the benchmark experiments were conducted using a batch size of 8, with 1 core CPU allocated for the GPU training. In addition to the GPU's dedicated 16GB memory, 24 GB of system memory was allocated for the training pod.
+
+For Visual NER model training without GPU, we conducted benchmark experiments using a batch size of 8, with 14 cores CPU allocation and 58 GB of memory for training.
+
+The time taken for model training for both cases was measured, and the results were compared. 
+
+#### Dataset:
+
+The benchmark utilizes a dataset containing 714 tasks. Each task is an image with corresponding labels for the named entities present. 
+
+#### Training params:
+
+Eval Size: 0.4 (percentage of data used for evaluation)
+
+Learning rate: 0.001 (controls how quickly the model learns)
+
+Batch size: 8 (number of images processed together during training)
+
+#### Benchmark Results:
+
+The training pod specifications were:
+
+    For instance, without GPU: 14 CPU cores and 58GB RAM
+    For instance, with both GPU and CPU: 1 CPU core, 24GB RAM, and 1 GPU
+
+
+| Batch Size | Only CPU Training Time | With GPU Training Time | Speedup (With GPU vs Only CPU) |
+|------------|-------------------|-------------------|----------------------|
+| 8          | 225 mins          | 26 mins           | 8.6x                 |
+
+The benchmarking experiment was aimed to offer insights into the performance differences between CPU and GPU architectures for Visual NER projects. The results showed 225 minutes of execution time for CPU training alone, whereas GPU training only took 26 minutes, resulting in an 8.6x speedup. Even with just a 1-core CPU and 24GB of RAM, training with a GPU significantly surpasses the performance of a 14-core CPU with 58GB of RAM. Just using 1 GPU, we could decrease the number of CPU cores from 14 cores to 1 core and reduce the memory allocation by 30 percent for the training. The results underscore the superior performance of GPUs in parallel computations, which considerably accelerates training processes for NLP tasks.
+
 ## Mixed Projects
 
 If a project is set up to include Classification, Named Entity Recognition and Assertion Status labels and the three kinds of annotations are present in the training data, it is possible to train three models: one for Named Entity Recognition, one for Assertion Status, and one for Classification at the same time. The training logs from all three trainings can be downloaded at once by clicking the download button present in the Training section of the Setup Page. The newly trained models will be added to the Spark NLP pipeline config.
