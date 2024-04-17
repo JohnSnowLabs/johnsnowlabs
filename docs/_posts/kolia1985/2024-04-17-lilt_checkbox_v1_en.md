@@ -8,7 +8,7 @@ tags: [en, licensed]
 task: Named Entity Recognition
 language: en
 edition: Visual NLP 5.0.0
-spark_version: 3.2
+spark_version: 3.0
 supported: true
 annotator: VisualDocumentNerLilt
 article_header:
@@ -27,8 +27,8 @@ Lilt fine-tuned for checkbox recognition
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/lilt_checkbox_v1_en_5.0.0_3.2_1713328336164.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/lilt_checkbox_v1_en_5.0.0_3.2_1713328336164.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/ocr/lilt_checkbox_v1_en_5.0.0_3.0_1713331389562.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/ocr/lilt_checkbox_v1_en_5.0.0_3.0_1713331389562.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
 ## How to use
 
