@@ -655,6 +655,46 @@ backup.s3_bucket_fullpath<span class="o">=</span><span class="s2">"&lt;FULL_PATH
 
 <p><img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/backupRestoreUI.png" style="width:100%;" /></p>
 
+<h3 id="migrate-your-nlp-lab-backup-to-generative-ai-lab-6">Migrate your NLP Lab Backup to Generative AI Lab 6</h3>
+
+<p>Migrating to the new version is easy! Users who are using an older version of the NLP Lab can migrate their annotated data and configured settings to the new Generative AI Lab 6 through our Backup and Restore feature. This process enables users to back up their data and files from a CPU-based instance to the cloud of their choice (Azure Blob/AWS S3) and then restore the configurations to a GPU-based instance. You must follow the steps outlined below to seamlessly back up and restore all your data from an old instance to the new Generative AI Lab 6.</p>
+
+<iframe src="/assets/images/annotation_lab/6.0.0/BackupAndRestore.mp4" width="480" height="270" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
+
+<p><strong>Follow these steps to migrate your data</strong>:</p>
+<h4 id="1-backup-data">1. Backup Data:</h4>
+<ul>
+  <li>Navigate to the Backup page of your CPU-based instance.</li>
+  <li>Enter backup details.</li>
+  <li>Schedule an immediate backup via backend modification:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl edit cronjob
+</code></pre></div>    </div>
+  </li>
+  <li>Monitor the backup pod status:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>kubectl get pods
+</code></pre></div>    </div>
+    <h4 id="2-verify-backup">2. Verify Backup:</h4>
+  </li>
+  <li>Upon completion, your backed-up database and files will be visible in cloud storage.</li>
+</ul>
+
+<h4 id="3-restore-data">3. Restore Data:</h4>
+<ul>
+  <li>Access the backend of your target GPU-based instance.</li>
+  <li>Transfer backed-up data from cloud storage to artifacts/restore/database.</li>
+  <li>Perform database restoration:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> ./restore_all_databases.sh &lt;backed-up_database_name&gt;
+</code></pre></div>    </div>
+  </li>
+  <li>Copy backed-up files from cloud storage to artifacts/restore/files.</li>
+  <li>Execute file restoration:
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo</span> ./restore_files.sh &lt;backed-up_files_name&gt;
+</code></pre></div>    </div>
+    <h4 id="4-verify-restoration">4. Verify Restoration:</h4>
+  </li>
+  <li>Access the UI, all data and files should now be successfully restored.</li>
+</ul>
+
 <h2 id="restore">Restore</h2>
 
 <h4 id="database">Database</h4>

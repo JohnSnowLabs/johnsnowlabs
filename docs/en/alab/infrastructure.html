@@ -622,7 +622,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><p>The <em>admin</em> user can now define the infrastructure configurations for the prediction and training tasks.</p>
 
-<h3 id="resource-allocation-for-training-and-preannotation">Resource allocation for Training and Preannotation</h3>
+<h2 id="resource-allocation-for-training-and-pre-annotation">Resource allocation for Training and Pre-annotation</h2>
 
 <p>Generative AI Lab gives users the ability to change the configuration for the training and pre-annotation processes. This is done from the <code class="language-plaintext highlighter-rouge">Settings</code> &gt; <code class="language-plaintext highlighter-rouge">Infrastructure</code> page. The settings can be edited by <em>admin</em> user and they are read-only for the other users. The Infrastructure page consists of three sections namely <code class="language-plaintext highlighter-rouge">Resource For Training</code>, <code class="language-plaintext highlighter-rouge">Resource For Preannotation Server</code>, <code class="language-plaintext highlighter-rouge">Resources for Prenotation Pipeline</code>.</p>
 
@@ -638,6 +638,12 @@ function wrapWordInSpan(data, wordToWrap) {
 <blockquote>
   <p><strong>Note:</strong> If the specified configurations exceed the available resources, the server will not start.</p>
 </blockquote>
+
+<h3 id="gpu-resource-availability">GPU Resource Availability</h3>
+<p>If the Generative AI Lab is equipped with a GPU, the following message will be displayed on the infrastructure page:</p>
+
+<p>“<strong>GPU Resource Available</strong>”.
+<img src="/assets/images/annotation_lab/6.0.0/1.png" alt="infra" /></p>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2022-11-29T00:00:00+00:00">Nov 29, 2022</time>
     </span><!-- start custom article footer snippet -->

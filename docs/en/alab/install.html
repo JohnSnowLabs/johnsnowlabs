@@ -668,6 +668,14 @@ th {
 </div>
 <div class="h3-box">
 
+  <p><strong>Fresh GPU installation</strong></p>
+
+  <p>Use <code class="language-plaintext highlighter-rouge">gpu</code> (case-insensitive) <strong>optional</strong> parameter with annotationlab-installer.sh script to enable usage of GPU resources. This will only work if your host has GPU resources. This parameter is used as a flag, it will enable GPU resources when used, otherwise, the installer will ignore anything related to GPU.</p>
+
+  <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./annotationlab-installer.sh gpu
+</code></pre></div>  </div>
+  <p><strong>Notice:</strong> GPU usage can be disabled at a later time, by simply editing the annotationlab-updater.sh script and set <code class="language-plaintext highlighter-rouge">useGPU</code> variable to false. However, this will only prevent the app from using GPU resources, it will not remove the already installed Nvidia drivers and plugins.</p>
+
   <h3 id="upgrade">Upgrade</h3>
 
   <p>To upgrade your Generative AI Lab installation to a newer version, run the following command on a terminal:</p>
