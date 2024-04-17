@@ -1,7 +1,7 @@
 ---
 layout: docs
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: NLP Lab Release Notes 6.0.2
 permalink: /docs/en/alab/annotation_labs_releases/release_notes_6_0_2
 key: docs-licensed-release-notes
