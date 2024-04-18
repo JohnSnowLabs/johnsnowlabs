@@ -8,7 +8,7 @@ tags: [en, licensed]
 task: Checkbox Detection & Recognition
 language: en
 nav_key: models
-edition: Visual NLP 5.1.2
+edition: Visual NLP 5.3.1
 spark_version: 3.2.1
 supported: true
 article_header:
@@ -103,24 +103,13 @@ val result = pipeline.transform(image_df)
 ### Input:
 ![Screenshot](/assets/images/examples_ocr/cboxes.png)
 
-### Output:
-{%- capture checkbox_detection -%}
+### Checkbox Detection:
 ![Screenshot](/assets/images/examples_ocr/cboxes_out.png)
-{%- endcapture -%}
 
-{%- capture checkbox_to_ocr -%}
+### Checkbox to text:
 ![Screenshot](/assets/images/examples_ocr/cboxes_out_process.png)
-{%- endcapture -%}
 
 
-{% include templates/input_output_image.md
-checkbox_detection=checkbox_detection
-checkbox_to_ocr=checkbox_to_ocr
-%}
-
-
-
-{:.model-param}
 ## Model Information
 
 {:.table-model}

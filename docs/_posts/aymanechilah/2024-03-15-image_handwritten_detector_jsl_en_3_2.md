@@ -1,14 +1,14 @@
 ---
 layout: model
-title: Handwritten Text Detection
+title: Handwritten Text and Signature Detection
 author: John Snow Labs
 name: image_handwritten_detector_jsl
 date: 2024-03-15
 tags: [en, licensed]
-task: Handwritten Text Detection
+task: Handwritten Text and Signature Detection
 language: en
 nav_key: models
-edition: Visual NLP 5.2.0
+edition: Visual NLP 5.1.2
 spark_version: 3.2.1
 supported: true
 article_header:
@@ -93,22 +93,22 @@ val result = pipeline.transform(image_df)
 
 ## Example
 
-{%- capture input -%}
+{%- capture input_image -%}
 ![Screenshot](/assets/images/examples_ocr/hw_detection_input.png)
 {%- endcapture -%}
 
-{%- capture output -%}
+{%- capture output_image -%}
 ![Screenshot](/assets/images/examples_ocr/hw_detection_output.png)
 {%- endcapture -%}
 
 
 {% include templates/input_output_image.md
-input=input
-output=output
+input_image=input_image
+output_image=output_image
 %}
 
 
-{:.model-param}
+
 ## Model Information
 
 {:.table-model}

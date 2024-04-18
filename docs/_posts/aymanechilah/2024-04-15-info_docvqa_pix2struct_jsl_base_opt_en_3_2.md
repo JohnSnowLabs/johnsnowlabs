@@ -99,6 +99,7 @@ val results = pipeline.transform(image_and_questions).cache()
 ### Input:
 
 Questions:
+
 ```bash
 - What percentage of Suicides are caused by Motorcycle accidents?
 - What percentage of Suicides are caused by pedestrian accidents?
@@ -106,12 +107,12 @@ Questions:
 ```
 
 Image:
+
+
 ![Screenshot](/assets/images/examples_ocr/infographics_image.png)
 
 ### Output:
 ```bash
-CPU times: user 302 ms, sys: 36.2 ms, total: 338 ms
-Wall time: 1min 9s
 [{'image': ImageOutput(path: 3f878eba5bf5d66635a3f2312ca2819c.jpg, exception: None),
   'answers': AnswersOutput(questions_and_answers: [{'score': 0.9581562, 'question': 'What percentage of Suicides are caused by Motorcycle accidents? ', 'answer': '  4.2%'}, {'score': 0.98590666, 'question': 'What percentage of Suicides are caused by pedestrian accidents? ', 'answer': '  2.9%'}, {'score': 0.89071125, 'question': 'What is fifth warning sign listed here? ', 'answer': '  self-harming'}])}]
 ```
