@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Bundled Libraries Versions
 permalink: /docs/en/alab/version
 key: docs-training
-modify_date: "2024-03-25"
+modify_date: "2024-04-8"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -25,4 +25,5 @@ The table below displays the bundled version of NLP Libraries associated with va
 | 5.6.1 - 5.8.1 | 5.1.2 | 5.1.2 | 5.1.2 | 1.0.0 | 1.0.0 |
 | 5.8.2 | 5.2.0 | 5.1.1 | 5.1.2 | 1.0.0 | 1.0.0 |
 | 5.9.0 - 5.9.1 | 5.2.2 | 5.2.1 | 5.1.2 | 1.0.0 | 1.0.0 |
-| 5.9.2 - latest | 5.3.1 | 5.3.0 | 5.3.0 | 1.0.0 | 1.0.0 |
+| 5.9.2 - 5.9.3 | 5.3.1 | 5.3.0 | 5.3.0 | 1.0.0 | 1.0.0 |
+| 6.0.0 - latest | 5.3.1 | 5.3.1 | 5.3.0 | 1.0.0 | 1.0.0 |
