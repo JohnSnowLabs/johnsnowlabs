@@ -157,7 +157,7 @@ val chunk_merger = new ChunkMergeApproach()
 val chunk2doc = new Chunk2Doc()
 	.setInputCols("merged_ner_chunk")
 	.setOutputCol("ner_chunk_doc")
-	
+
 val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
 	.setInputCols(Array("ner_chunk_doc"))
 	.setOutputCol("sbert_embeddings")

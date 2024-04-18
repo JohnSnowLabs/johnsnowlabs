@@ -26,7 +26,6 @@ This pipeline can extract the following clincial entities: `Procedure`, `Kidney_
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
 
-
 ## How to use
 
 
@@ -45,6 +44,7 @@ result = meddra_llt_pipeline.fullAnnotate('This is an 82-year-old male with a hi
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val meddra_llt_pipeline = PretrainedPipeline.from_disk("meddra_llt_resolver_pipeline")
+
 
 val result = meddra_llt_pipeline.fullAnnotate("This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis.")
 ```
