@@ -9,7 +9,7 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Checkbox Detection | checkbox_detector_v1 | Visual NLP 5.1.2</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Checkbox Detection | checkbox_detector_v1 | Visual NLP 5.3.1</title><meta property="og:title" content=""/>
 
 <meta name="description" content="DescriptionObject detection model trained to detect document checkboxes one of the foremost architectures in the state-of-the-art, meticulously selected through benchmark evaluations and comparative analyses. Trained on an extensive and diverse dataset, this model has been finely tuned for precise document checkbox ...">
 <!-- <link rel="canonical" href="/2024/04/15/checkbox_detector_v1_en_3_2.html"> -->
@@ -589,41 +589,13 @@ function wrapWordInSpan(data, wordToWrap) {
 <h3 id="input">Input:</h3>
 <p><img src="/assets/images/examples_ocr/cboxes.png" alt="Screenshot" /></p>
 
-<h3 id="output">Output:</h3>
+<h3 id="checkbox-detection">Checkbox Detection:</h3>
+<p><img src="/assets/images/examples_ocr/cboxes_out.png" alt="Screenshot" /></p>
 
-<script> 
-try {
-      const imgCont = document.querySelectorAll('.input_output_img img'),
-            modelImg = document.querySelector('#myModal img'),
-            close = document.querySelector('.close-modal'),
-            overview = document.querySelector('#overview'),
-            model = document.querySelector('#myModal');
+<h3 id="checkbox-to-text">Checkbox to text:</h3>
+<p><img src="/assets/images/examples_ocr/cboxes_out_process.png" alt="Screenshot" /></p>
 
-      let currentSrc = '';
-
-      imgCont.forEach(item => {
-            item.addEventListener('click', (e) => {
-                  currentSrc = item.src;
-                  modelImg.src = currentSrc;
-                  model.classList.add('open');
-                  overview.classList.add('open');
-            })
-      })
-
-      close.addEventListener('click', (e) => {
-            e.preventDefault();
-            model.classList.remove('open');
-            overview.classList.remove('open');
-      }) 
-      overview.addEventListener('click', () => {
-            model.classList.remove('open');
-            overview.classList.remove('open');
-      })
-
-} catch(e){}
-</script>
-
-<h2 class="model-param" id="model-information">Model Information</h2>
+<h2 id="model-information">Model Information</h2>
 
 <table class="table-model">
   <tbody>

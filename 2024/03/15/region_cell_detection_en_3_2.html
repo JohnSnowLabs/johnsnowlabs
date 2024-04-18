@@ -607,41 +607,13 @@ function wrapWordInSpan(data, wordToWrap) {
 <h3 id="input">Input:</h3>
 <p><img src="/assets/images/examples_ocr/table_celldetector_input.png" alt="Screenshot" /></p>
 
-<h3 id="output">Output:</h3>
+<h3 id="cell-detection">Cell Detection:</h3>
+<p><img src="/assets/images/examples_ocr/table_celldetector_v1_cells.png" alt="Screenshot" /></p>
 
-<script> 
-try {
-      const imgCont = document.querySelectorAll('.input_output_img img'),
-            modelImg = document.querySelector('#myModal img'),
-            close = document.querySelector('.close-modal'),
-            overview = document.querySelector('#overview'),
-            model = document.querySelector('#myModal');
+<h3 id="table-structure-recognition">Table Structure Recognition:</h3>
+<p><img src="/assets/images/examples_ocr/table_celldetector_v1_tsr.png" alt="Screenshot" /></p>
 
-      let currentSrc = '';
-
-      imgCont.forEach(item => {
-            item.addEventListener('click', (e) => {
-                  currentSrc = item.src;
-                  modelImg.src = currentSrc;
-                  model.classList.add('open');
-                  overview.classList.add('open');
-            })
-      })
-
-      close.addEventListener('click', (e) => {
-            e.preventDefault();
-            model.classList.remove('open');
-            overview.classList.remove('open');
-      }) 
-      overview.addEventListener('click', () => {
-            model.classList.remove('open');
-            overview.classList.remove('open');
-      })
-
-} catch(e){}
-</script>
-
-<h2 class="model-param" id="model-information">Model Information</h2>
+<h2 id="model-information">Model Information</h2>
 
 <table class="table-model">
   <tbody>
@@ -857,7 +829,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/15/ocr_large_printed_v2_opt_en_3_2.html">Оcr large for printed text</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/15/region_cell_detection_v2_en_3_2.html">Table Cell Detection</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/03/15/ocr_large_printed_v2_opt_en_3_2.html">Оcr large for printed text v2 optimized</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/03/15/region_cell_detection_v2_en_3_2.html">Table Cell Detection v2</a></div></div></div>
 
 </div>
 </div>
