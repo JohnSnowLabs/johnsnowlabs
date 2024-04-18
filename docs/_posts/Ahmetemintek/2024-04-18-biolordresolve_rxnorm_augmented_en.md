@@ -36,6 +36,7 @@ This model maps clinical entities and concepts (like drugs/ingredients) to RxNor
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -70,7 +71,7 @@ biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c"
     .setInputCols(["ner_chunk_doc"])\
     .setOutputCol("embeddings")
 
-rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_rxnorm_augmented", "en", "clinical/models")\ \
+rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_rxnorm_augmented", "en", "clinical/models")\
     .setInputCols(["embeddings"]) \
     .setOutputCol("rxnorm_code")\
     .setDistanceFunction("EUCLIDEAN")
