@@ -789,6 +789,10 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
       <td>This Annotator specifically target few-shot classification tasks, which involve training a model to make accurate predictions with limited labeled data.</td>
     </tr>
     <tr>
+      <td><a href="#fewshotassertionclassifiermodel">FewShotAssertionClassifierModel</a></td>
+      <td>assertion classification using large (LLMS based) few shot classifiers based on the SetFit approach.</td>
+    </tr>
+    <tr>
       <td><a href="#flattener">Flattener</a></td>
       <td><code class="language-plaintext highlighter-rouge">Flattener</code> annotator in Spark NLP converts annotation results into a simplified DataFrame format for easier analysis and interpretation.</td>
     </tr>
@@ -811,6 +815,14 @@ At the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/t
     <tr>
       <td><a href="#iobtagger">IOBTagger</a></td>
       <td>Merges token tags and NER labels from chunks in the specified format.</td>
+    </tr>
+    <tr>
+      <td><a href="#lightdeidentification">LightDeIdentification</a></td>
+      <td>Light version of DeIdentification.</td>
+    </tr>
+    <tr>
+      <td><a href="#multichunk2doc">MultiChunk2Doc</a></td>
+      <td>Merges a given chunks to create a document.</td>
     </tr>
     <tr>
       <td><a href="#namechunkobfuscator">NameChunkObfuscator</a></td>
@@ -14992,6 +15004,210 @@ SparkNLP annotations (if the annotation is an embedding, it takes the embedding,
 <span class="o">+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
 <span class="o">|[{</span><span class="kt">feature_vector</span>, <span class="err">0</span>, <span class="err">0</span>, , <span class="o">{</span><span class="kt">sentence</span> <span class="kt">-&gt;</span> <span class="err">0</span><span class="o">}</span>, <span class="o">[</span><span class="err">0</span><span class="kt">.</span><span class="err">02474357</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">08310143</span>, <span class="err">0</span><span class="kt">.</span><span class="err">4801927</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">070223466</span>, <span class="err">0</span><span class="kt">.</span><span class="err">33147717</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">18737249</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">048361354</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">052325998</span>, <span class="err">0</span><span class="kt">.</span><span class="err">053252153</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">0067390013</span>, <span class="err">0</span><span class="kt">.</span><span class="err">2836935</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">25569317</span>, <span class="err">0</span><span class="kt">.</span><span class="err">3415577</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">19251995</span>, <span class="err">0</span><span class="kt">.</span><span class="err">051623292</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">25131556</span>, <span class="err">0</span><span class="kt">.</span><span class="err">3472208</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">036604006</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">35653928</span>, <span class="err">0</span><span class="kt">.</span><span class="err">13225944</span>, <span class="err">0</span><span class="kt">.</span><span class="err">18795085</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">09561886</span>, <span class="err">0</span><span class="kt">.</span><span class="err">4695179</span>, <span class="err">0</span><span class="kt">.</span><span class="err">22093144</span>, <span class="err">0</span><span class="kt">.</span><span class="err">32058474</span>, <span class="err">0</span><span class="kt">.</span><span class="err">057281215</span>, <span class="err">0</span><span class="kt">.</span><span class="err">082858086</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">3714214</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">19219379</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">26751986</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">148075</span>, <span class="err">0</span><span class="kt">.</span><span class="err">6410107</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">07821157</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">06398429</span>, <span class="err">6</span><span class="kt">.</span><span class="err">32831</span><span class="kt">E-</span><span class="err">5</span>, <span class="err">0</span><span class="kt">.</span><span class="err">21222909</span>, <span class="err">0</span><span class="kt">.</span><span class="err">33145514</span>, <span class="err">0</span><span class="kt">.</span><span class="err">2575328</span>, <span class="err">0</span><span class="kt">.</span><span class="err">009346781</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">21482512</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">22197871</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">14005142</span>, <span class="err">0</span><span class="kt">.</span><span class="err">04592571</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">2919176</span>, <span class="err">0</span><span class="kt">.</span><span class="err">011854073</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">14047821</span>, <span class="err">0</span><span class="kt">.</span><span class="err">22201888</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">13500921</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">101019345</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">31175214</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">0031539474</span>, <span class="err">0</span><span class="kt">.</span><span class="err">07841865</span>, <span class="err">0</span><span class="kt">.</span><span class="err">23760447</span>, <span class="err">0</span><span class="kt">.</span><span class="err">8622971</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">21095662</span>, <span class="kt">-</span><span class="err">1</span><span class="kt">.</span><span class="err">9944092</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">090888076</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">45743433</span>, <span class="err">1</span><span class="kt">.</span><span class="err">5815442</span>, <span class="err">0</span><span class="kt">.</span><span class="err">4848822</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">12528154</span>, <span class="err">0</span><span class="kt">.</span><span class="err">33802572</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">16203907</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">09874586</span>, <span class="err">0</span><span class="kt">.</span><span class="err">63106954</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">21860953</span>, <span class="err">0</span><span class="kt">.</span><span class="err">39005432</span>, <span class="err">0</span><span class="kt">.</span><span class="err">25023165</span>, <span class="err">0</span><span class="kt">.</span><span class="err">66769457</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">13867687</span>, <span class="err">0</span><span class="kt">.</span><span class="err">02832079</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">17432508</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">05764636</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">44529453</span>, <span class="err">0</span><span class="kt">.</span><span class="err">032839067</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">2266792</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">002856281</span>, <span class="err">0</span><span class="kt">.</span><span class="err">007823931</span>, <span class="kt">-</span><span class="err">1</span><span class="kt">.</span><span class="err">0165309</span>, <span class="err">0</span><span class="kt">.</span><span class="err">08553613</span>, <span class="err">0</span><span class="kt">.</span><span class="err">38090998</span>, <span class="err">0</span><span class="kt">.</span><span class="err">011592574</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">18031952</span>, <span class="err">0</span><span class="kt">.</span><span class="err">37968582</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">77948713</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">068393</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">029594865</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">2165647</span>, <span class="err">0</span><span class="kt">.</span><span class="err">1665183</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">23963346</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">017649503</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">24768801</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">2725593</span>, <span class="err">0</span><span class="kt">.</span><span class="err">14533372</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">36786577</span>, <span class="err">0</span><span class="kt">.</span><span class="err">23388086</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">20129707</span>, <span class="kt">-</span><span class="err">0</span><span class="kt">.</span><span class="err">33582142</span>, <span class="err">0</span><span class="kt">.</span><span class="err">5970527</span>, <span class="err">0</span><span class="kt">.</span><span class="err">12596472</span><span class="o">]}]|</span>
 <span class="o">+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Scala--> 
+
+</details>
+
+  </div>
+  <!--END Model-->
+
+</div>
+
+<div class="tabs-model-aproach">
+
+  <h2 id="fewshotassertionclassifiermodel">FewShotAssertionClassifierModel</h2>
+
+  <div class="annotator_type tac mont">Model</div>
+
+  <!--Model-->
+  <div class="h3-box tabs-python-scala-box">
+
+    <p>FewShotAssertionClassifierModel does assertion classification using can run large (LLMS based)
+few shot classifiers based on the SetFit approach.</p>
+
+    <p>Parameters:</p>
+
+    <ul>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">batchSize</code> <em>(Int)</em>: Batch size</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">caseSensitive</code> <em>(Bool)</em>: Whether the classifier is sensitive to text casing</p>
+      </li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">maxSentenceLength</code> <em>(Int)</em>: The maximum length of the input text</p>
+      </li>
+    </ul>
+
+    <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, CHUNK</code></p>
+
+    <p><strong>Output Annotator Type:</strong> <code class="language-plaintext highlighter-rouge">ASSERTION</code></p>
+
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/classification/few_shot_assertion_classifier/index.html">FewShotAssertionClassifierModel</a></td>
+          <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/classification/FewShotAssertionClassifierModel.html">FewShotAssertionClassifierModel</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <details>
+
+<summary class="button"><b>Show Example</b></summary>
+
+<div class="tabs-python-scala-head"><button class="tab-python-scala-li tabheader_active">Python</button><button class="tab-python-scala-li">Scala</button></div>
+
+<!--Python-->
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
+
+<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+
+ <span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
+
+ <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
+
+ <span class="n">embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+
+ <span class="n">ner</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+
+ <span class="n">ner_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setWhiteList</span><span class="p">(</span><span class="s">"Disease_Syndrome_Disorder"</span><span class="p">,</span> <span class="s">"Hypertension"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
+
+ <span class="n">few_shot_assertion_classifier</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">FewShotAssertionClassifierModel</span><span class="p">().</span><span class="n">pretrained</span><span class="p">()</span>\
+     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"ner_chunk"</span><span class="p">])</span>\
+     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"assertion"</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span>
+    <span class="p">[[</span><span class="s">"Includes hypertension and chronic obstructive pulmonary disease."</span><span class="p">]]</span>
+     <span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">()</span> \
+    <span class="p">.</span><span class="n">setStages</span><span class="p">([</span>
+                <span class="n">document_assembler</span><span class="p">,</span>
+                <span class="n">sentence_detector</span><span class="p">,</span>
+                <span class="n">tokenizer</span><span class="p">,</span> 
+                <span class="n">embeddings</span><span class="p">,</span>
+                <span class="n">ner</span><span class="p">,</span>
+                <span class="n">ner_converter</span><span class="p">,</span>
+                <span class="n">few_shot_assertion_classifier</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> \
+
+<span class="n">results</span><span class="p">.</span><span class="n">selectExpr</span><span class="p">(</span><span class="s">"assertion.result"</span><span class="p">,</span> <span class="s">"assertion.metadata.chunk"</span><span class="p">,</span> <span class="s">"assertion.metadata.confidence"</span><span class="p">).</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1">## Result
+</span>
+<span class="o">+--------+----------------------------+-----------+</span>
+<span class="o">|</span>  <span class="n">result</span><span class="o">|</span>                       <span class="n">chunk</span><span class="o">|</span> <span class="n">confidence</span><span class="o">|</span>
+<span class="o">+--------+----------------------------+-----------+</span>
+<span class="o">|</span> <span class="n">present</span><span class="o">|</span>                <span class="n">hypertension</span><span class="o">|</span>        <span class="mf">1.0</span><span class="o">|</span>
+<span class="o">|</span>  <span class="n">absent</span><span class="o">|</span> <span class="n">arteriovenous</span> <span class="n">malformations</span><span class="o">|</span>        <span class="mf">1.0</span><span class="o">|</span>
+<span class="o">+--------+----------------------------+-----------+</span>
+</code></pre></div>          </div>
+
+        </div>
+
+      </div>
+<!--END Python-->
+<!--Scala--> 
+<div class="tabs-mfl-box">
+
+        <div class="tabs-mfl-head">
+          <p><button class="tab-mfl-li">Medical</button></p>
+        </div>
+
+        <div class="tab-mfl-content">
+
+          <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
+
+<span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentences"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="nc">Tokenizer</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nc">WordEmbeddingsModel</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">ner</span> <span class="k">=</span> <span class="nc">MedicalNerModel</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_jsl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">sentence</span><span class="err">"</span>, <span class="err">"</span><span class="kt">token</span><span class="err">"</span>, <span class="err">"</span><span class="kt">embeddings</span><span class="err">"</span><span class="o">])</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">nerConverter</span> <span class="k">=</span> <span class="nc">NerConverter</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="s">"Disease_Syndrome_Disorder"</span><span class="o">,</span> <span class="s">"Hypertension"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">fewShotAssertionClassifier</span> <span class="k">=</span> <span class="nc">LargeFewShotClassifierModel</span>
+    <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"clinical_assertion"</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+    <span class="o">.</span><span class="py">setBatchSize</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"label"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">()</span>
+    <span class="o">.</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+        <span class="n">documentAssembler</span><span class="o">,</span>
+        <span class="n">sentenceDetector</span><span class="o">,</span> 
+        <span class="n">tokenizer</span><span class="o">,</span>
+        <span class="n">embeddings</span><span class="o">,</span>
+        <span class="n">ner</span><span class="o">,</span> 
+        <span class="n">nerConverter</span><span class="o">,</span>
+        <span class="n">fewShotAssertionClassifier</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="nc">Seq</span><span class="o">().</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">))</span>
+<span class="k">val</span> <span class="nv">results</span> <span class="k">=</span> <span class="nv">model</span><span class="o">.</span><span class="py">transform</span><span class="o">(</span><span class="nc">Seq</span><span class="o">(</span><span class="s">"Includes hypertension and chronic obstructive pulmonary disease."</span><span class="o">).</span><span class="py">toDS</span><span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">))</span>
+
+<span class="nv">results</span><span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span><span class="s">"explode(assertion) as assertion"</span><span class="o">)</span>
+       <span class="o">.</span><span class="py">selectExpr</span><span class="o">(</span><span class="s">"assertion.result"</span><span class="o">,</span> <span class="s">"assertion.metadata.chunk"</span><span class="o">,</span> <span class="s">"assertion.metadata.confidence"</span><span class="o">)</span>
+       <span class="o">.</span><span class="py">show</span><span class="o">(</span><span class="n">truncate</span> <span class="k">=</span> <span class="kc">false</span><span class="o">)</span>
+
+<span class="c1">// Result       </span>
+
+<span class="o">+-------+-------------------------------------+----------+</span>
+<span class="o">|</span><span class="n">result</span> <span class="o">|</span><span class="n">chunk</span>                                <span class="o">|</span><span class="n">confidence</span><span class="o">|</span>
+<span class="o">+-------+-------------------------------------+----------+</span>
+<span class="o">|</span><span class="n">present</span><span class="o">|</span><span class="n">hypertension</span>                         <span class="o">|</span><span class="mf">1.0</span>       <span class="o">|</span>
+<span class="o">|</span><span class="n">present</span><span class="o">|</span><span class="n">chronic</span> <span class="n">obstructive</span> <span class="n">pulmonary</span> <span class="n">disease</span><span class="o">|</span><span class="mf">1.0</span>       <span class="o">|</span>
+<span class="o">|</span><span class="n">absent</span> <span class="o">|</span><span class="n">arteriovenous</span> <span class="n">malformations</span>          <span class="o">|</span><span class="mf">1.0</span>       <span class="o">|</span>
+<span class="o">|</span><span class="n">absent</span> <span class="o">|</span><span class="n">vascular</span> <span class="n">malformation</span>                <span class="o">|</span><span class="mf">0.9999997</span> <span class="o">|</span>
+<span class="o">+-------+-------------------------------------+----------+</span>
 </code></pre></div>          </div>
 
         </div>
