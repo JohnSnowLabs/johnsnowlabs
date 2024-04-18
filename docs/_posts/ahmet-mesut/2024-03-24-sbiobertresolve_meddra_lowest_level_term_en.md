@@ -101,9 +101,6 @@ nlpPipeline= Pipeline(stages=[
                               word_embeddings,
                               ner_jsl,
                               ner_jsl_converter,
-                              ner_ade_clinical,
-                              ner_ade_clinical_converter,
-                              chunk_merger,
                               chunk2doc,
                               sbert_embedder,
                               meddra_resolver
@@ -163,7 +160,7 @@ val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
 	.setInputCols(Array("ner_chunk_doc"))
 	.setOutputCol("sbert_embeddings")
 	.setCaseSensitive(false)
-	
+  
 val meddra_resolver = new SentenceEntityResolverModel.load("sbiobertresolve_meddra_lowest_level_term")
 	.setInputCols(Array("sbert_embeddings"))
 	.setOutputCol("meddra_llt_code")
