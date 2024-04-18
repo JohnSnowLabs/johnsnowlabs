@@ -100,7 +100,7 @@ We have an aesthetically pleasing Sign-In Page with a section highlighting the k
 
 The Generative AI Lab needs to be installed on a virtual machine. One of the most straight forward method is an installation from AWS Marketplace (also available on Azure). There is no fee for the Generative AI Lab. However, you still have to pay for the underlying AWS EC2 instance (not Free Tier Eligible).
 
-Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions on the video below to subscribe and deploy.
+Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-zrcp6k6nqvxoa) and follow the instructions on the video below to subscribe and deploy.
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='ebaewU4BcQA' -%}<div class="video-descr">Deploy Generative AI Lab via AWS Marketplace</div></div></div>
 
