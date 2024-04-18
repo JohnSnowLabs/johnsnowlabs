@@ -8,7 +8,7 @@ tags: [en, licensed]
 task: Chart to Text
 language: en
 nav_key: models
-edition: Visual NLP 5.2.0
+edition: Visual NLP 5.3.0
 spark_version: 3.2.1
 supported: true
 article_header:
