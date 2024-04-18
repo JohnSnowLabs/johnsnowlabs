@@ -530,6 +530,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <span class="k">val</span> <span class="nv">meddra_llt_pipeline</span> <span class="k">=</span> <span class="nv">PretrainedPipeline</span><span class="o">.</span><span class="py">from_disk</span><span class="o">(</span><span class="s">"meddra_llt_resolver_pipeline"</span><span class="o">)</span>
 
+
 <span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">meddra_llt_pipeline</span><span class="o">.</span><span class="py">fullAnnotate</span><span class="o">(</span><span class="s">"This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis."</span><span class="o">)</span>
 </code></pre></div>  </div>
 </div>
