@@ -1,5 +1,6 @@
 import ast
 import importlib
+import inspect
 import os
 import site
 import subprocess
@@ -139,3 +140,13 @@ def set_py4j_logger_to_error_on_databricks():
         logging.getLogger("py4j.java_gateway").setLevel(logging.ERROR)
     except:
         pass
+
+
+def get_folder_of_func(func):
+    # Get the file path where the function is defined
+    func_file = inspect.getfile(func)
+
+    # Get the directory name from the file path
+    func_dir = os.path.dirname(func_file)
+
+    return func_dir

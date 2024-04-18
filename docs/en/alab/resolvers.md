@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Entity Resolution 
 permalink: /docs/en/alab/resolvers
 key: docs-training
@@ -14,7 +14,7 @@ sidebar:
 ---
 
 ### Lookup code/terms in Labeling page
-NLP Lab version 5.9.0 introduces support for Entity Resolution, allowing users to enhance their annotations by adding lookup datasets. By allowing users to enrich labeled text with additional information, NLP Lab provides the way for improving the context and accuracy of annotations. Lookup functionality is currently supported exclusively by text based NER projects.
+Generative AI Lab version 5.9.0 introduces support for Entity Resolution, allowing users to enhance their annotations by adding lookup datasets. By allowing users to enrich labeled text with additional information, Generative AI Lab provides the way for improving the context and accuracy of annotations. Lookup functionality is currently supported exclusively by text based NER projects.
 
 ### Configuring Lookup
 Configuring lookup datasets is straightforward: use the well-known Customize Labels page during project configuration and follow the steps below:
@@ -42,11 +42,11 @@ Once setup is done, it is easy to identify entities eligible for lookup by a sma
 
 ![UpdateLookup](/assets/images/annotation_lab/5.9.0/5.gif)
 
-This new feature enhances the annotation capabilities of NLP Lab, allowing users to enrich their annotations with relevant contextual information from lookup datasets. We're excited to see how this feature empowers users to create more accurate and comprehensive annotations in their projects.
+This new feature enhances the annotation capabilities of Generative AI Lab, allowing users to enrich their annotations with relevant contextual information from lookup datasets. We're excited to see how this feature empowers users to create more accurate and comprehensive annotations in their projects.
 
 ## Pre-annotate metadata using Resolvers 
 
-- NLP Lab 5.9 introduces a pivotal enhancement that expands pre-annotation capabilities with the use of Healthcare resolvers. These resolvers are now conveniently accessible and discoverable on the NLP Models Hub page. Simply apply the "Entity Resolution" filter to view the comprehensive list.
+- Generative AI Lab 5.9 introduces a pivotal enhancement that expands pre-annotation capabilities with the use of Healthcare resolvers. These resolvers are now conveniently accessible and discoverable on the NLP Models Hub page. Simply apply the "Entity Resolution" filter to view the comprehensive list.
 
 ![Resolution_prediction](/assets/images/annotation_lab/5.9.0/6.png)
 

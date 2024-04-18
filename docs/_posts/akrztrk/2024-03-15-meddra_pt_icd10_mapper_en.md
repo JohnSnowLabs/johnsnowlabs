@@ -55,7 +55,7 @@ mapper_pipeline = Pipeline(stages=[
     mapperModel
 ])
 
-data = spark.createDataFrame([["10000153.0"], ["10000081.0"], ["10039085.0"]]).toDF("text")
+data = spark.createDataFrame([["10000153"], ["10000081"], ["10039085"]]).toDF("text")
 
 mapper_model = mapper_pipeline.fit(data)
 result = mapper_model.transform(data)
@@ -81,7 +81,7 @@ val mapper_pipeline = new Pipeline().setStages(Array(
     mapperModel
 ))
 
-val data = Seq("10000153.0", "10000081.0", "10039085.0").toDF("text")
+val data = Seq("10000153", "10000081", "10039085").toDF("text")
 
 val mapper_model = mapper_pipeline.fit(data)
 val result = mapper_model.transform(data)

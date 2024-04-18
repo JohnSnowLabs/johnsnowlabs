@@ -87,7 +87,7 @@ healthcare-gpt:
         url: /docs/en/chatbot/releases/release_notes
 
 annotation-lab:
-  - title: NLP Lab
+  - title: Generative AI Lab
     children:
       - title: Getting Started
         url: /docs/en/alab/quickstart
@@ -341,6 +341,10 @@ jsl:
         url:    /docs/en/jsl/start-a-sparksession
       - title:  Settings & Cache Folder
         url:    /docs/en/jsl/john-snow-labs-home
+      - title:  Utilities for Docker
+        url:    /docs/en/jsl/docker-utils
+      - title:  Utilities for Snowflake
+        url:    /docs/en/jsl/snowflake-utils
       - title:  Utilities for Databricks
         url:    /docs/en/jsl/databricks-utils
       - title:  Utilities for AWS EMR

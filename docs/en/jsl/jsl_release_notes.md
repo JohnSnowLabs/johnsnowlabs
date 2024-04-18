@@ -15,9 +15,45 @@ sidebar:
 
 See [Github Releases](https://github.com/JohnSnowLabs/johnsnowlabs/releases) for detailed information on Release History and Features
 
+# 5.3.4
+Release date: 4-12-2024
+
+The John Snow Labs 5.3.4 Library released with the following pre-installed and recommended dependencies
+
+
+| Library                                                                                 | Version |
+|-----------------------------------------------------------------------------------------|---------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.3.0` |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)              | `5.3.0` |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/financial_release_notes)             | `1.X.X` |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/legal_release_notes)                   | `1.X.X` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                                     | `5.3.0` |
+| [Spark-NLP-Display](https://sparknlp.org/docs/en/display)                               | `4.4`   |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                        | `5.3.1` |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0` |
+
+
+# 5.3.3
+Release date: 4-5-2024
+
+The John Snow Labs 5.3.3 Library released with the following pre-installed and recommended dependencies
+
+
+| Library                                                                                 | Version |
+|-----------------------------------------------------------------------------------------|---------|
+| [Visual NLP](https://nlp.johnsnowlabs.com/docs/en/spark_ocr_versions/ocr_release_notes) | `5.3.0` |
+| [Enterprise NLP](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators)              | `5.3.0` |
+| [Finance NLP](https://nlp.johnsnowlabs.com/docs/en/financial_release_notes)             | `1.X.X` |
+| [Legal NLP](https://nlp.johnsnowlabs.com/docs/en/legal_release_notes)                   | `1.X.X` |
+| [NLU](https://github.com/JohnSnowLabs/nlu/releases)                                     | `5.3.0` |
+| [Spark-NLP-Display](https://sparknlp.org/docs/en/display)                               | `4.4`   |
+| [Spark-NLP](https://github.com/JohnSnowLabs/spark-nlp/releases/)                        | `5.3.1` |
+| [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.4.0` |
+
+
 
 # 5.3.2
-Release date: 3-13-2023
+Release date: 3-13-2024
 
 The John Snow Labs 5.3.2 Library released with the following pre-installed and recommended dependencies
 
@@ -37,7 +73,7 @@ The John Snow Labs 5.3.2 Library released with the following pre-installed and r
 
 
 # 5.3.1
-Release date: 3-12-2023
+Release date: 3-12-2024
 
 The John Snow Labs 5.3.1 Library released with the following pre-installed and recommended dependencies
 
@@ -56,7 +92,7 @@ The John Snow Labs 5.3.1 Library released with the following pre-installed and r
 
 
 # 5.3.0
-Release date: 3-8-2023
+Release date: 3-8-2024
 
 The John Snow Labs 5.3.0 Library released with the following pre-installed and recommended dependencies
 
@@ -76,7 +112,7 @@ The John Snow Labs 5.3.0 Library released with the following pre-installed and r
 
 
 ## 5.2.8
-Release date: 2-15-2023
+Release date: 2-15-2024
 
 The John Snow Labs 5.2.8 Library released with the following pre-installed and recommended dependencies
 
@@ -95,7 +131,7 @@ The John Snow Labs 5.2.8 Library released with the following pre-installed and r
 
 
 # 5.2.7
-Release date: 2-15-2023
+Release date: 2-15-2024
 
 The John Snow Labs 5.2.7 Library released with the following pre-installed and recommended dependencies
 
@@ -114,7 +150,7 @@ The John Snow Labs 5.2.7 Library released with the following pre-installed and r
 
 
 ## 5.2.6
-Release date: 2-4-2023
+Release date: 2-4-2024
 
 The John Snow Labs 5.2.6 Library released with the following pre-installed and recommended dependencies
 
@@ -133,7 +169,7 @@ The John Snow Labs 5.2.6 Library released with the following pre-installed and r
 
 
 ## 5.2.5
-Release date: 2-3-2023
+Release date: 2-3-2024
 
 The John Snow Labs 5.2.5 Library released with the following pre-installed and recommended dependencies
 
@@ -154,7 +190,7 @@ The John Snow Labs 5.2.5 Library released with the following pre-installed and r
 
 
 ## 5.2.4
-Release date: 2-1-2023
+Release date: 2-1-2024
 
 The John Snow Labs 5.2.4 Library released with the following pre-installed and recommended dependencies
 
@@ -173,7 +209,7 @@ The John Snow Labs 5.2.4 Library released with the following pre-installed and r
 
 
 ## 5.2.3
-Release date: 31-1-2023
+Release date: 31-1-2024
 
 The John Snow Labs 5.2.3 Library released with the following pre-installed and recommended dependencies
 
@@ -192,7 +228,7 @@ The John Snow Labs 5.2.3 Library released with the following pre-installed and r
 
 
 ## 5.2.2
-Release date: 22-1-2023
+Release date: 22-1-2024
 
 The John Snow Labs 5.2.2 Library released with the following pre-installed and recommended dependencies
 
@@ -209,7 +245,7 @@ The John Snow Labs 5.2.2 Library released with the following pre-installed and r
 | [Pyspark](https://spark.apache.org/docs/latest/api/python/)                             | `3.1.2` |
 
 ## 5.2.1
-Release date: 20-1-2023
+Release date: 20-1-2024
 
 The John Snow Labs 5.2.1 Library released with the following pre-installed and recommended dependencies
 
@@ -228,7 +264,7 @@ The John Snow Labs 5.2.1 Library released with the following pre-installed and r
 
 
 ## 5.2.0
-Release date: 4-1-2023
+Release date: 4-1-2024
 
 The John Snow Labs 5.2.0 Library released with the following pre-installed and recommended dependencies
 

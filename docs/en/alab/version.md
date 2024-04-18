@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Bundled Libraries Versions
 permalink: /docs/en/alab/version
 key: docs-training
@@ -13,9 +13,9 @@ sidebar:
   nav: annotation-lab
 ---
 
-The table below displays the bundled version of NLP Libraries associated with various versions of the NLP Lab.
+The table below displays the bundled version of NLP Libraries associated with various versions of the Generative AI Lab.
 
-|NLP Lab Version |Spark NLP|Healthcare NLP|Visual NLP |Legal NLP|Finance NLP|
+|Generative AI Lab Version |Spark NLP|Healthcare NLP|Visual NLP |Legal NLP|Finance NLP|
 |-----|------|--------|-----|--------|-------|
 | 3.5.0 - 4.2.2 | 4.0.2 | 4.0.0 | 3.13.0 |  x |x |
 | 4.3.0 - 4.5.1 | 4.2.1 | 4.2.1 | 4.0.0 | 1.0.0 | 1.0.0 |

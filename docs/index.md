@@ -2,7 +2,7 @@
 layout: landing
 comment: no
 title: 'John Snow Labs <span>State of the Art Natural Language Processing in Python</span>'
-excerpt: John Snow Labs' NLP & LLM ecosystem include software libraries for state-of-the-art AI at scale, Responsible AI, No-Code AI, and access to over 20,000 models for Healthcare, Legal, Finance, and Visual  NLP.
+excerpt: John Snow Labs' NLP & LLM ecosystem include software libraries for state-of-the-art AI at scale, Responsible AI, No-Code AI, and access to over 40,000 models for Healthcare, Legal, Finance, and Visual  NLP.
 seotitle: Spark NLP – State of the Art NLP in Python, Java, and Scala – John Snow Labs.
 permalink: /
 header: true
@@ -57,7 +57,7 @@ data:
         - text: <span>Free</span>Spark NLP
         - text: <span>Free</span>NLP Display
         - text: <span>Free</span>NLP Test
-        - text: <span>Free</span>NLP Lab
+        - text: Generative AI Lab
         - text: Healthcare NLP
         - text: Finance NLP
         - text: Legal NLP
@@ -75,9 +75,9 @@ data:
           description: Deliver safe and effective models with an open-source library by generating & running over 50 test types on the most popular NLP libraries & tasks.
           img: /assets/images/home/nlp_test.jpg
 
-        - text: NLP Lab
+        - text: Generative AI Lab
           link: https://www.johnsnowlabs.com/nlp-lab/
-          description: Free End-to-End No Code NLP Platform for teams that want to collaborately annotate documents and train models.
+          description: The Most Widely Used Human-in-the-loop Tool by Enterprise AI Teams
           img: /assets/images/home/nlp_lab.png
 
         - text: Healthcare NLP

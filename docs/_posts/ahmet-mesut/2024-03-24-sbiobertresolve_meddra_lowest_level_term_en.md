@@ -60,14 +60,28 @@ ner_jsl_converter = NerConverter()\
       .setInputCols(["sentence", "token", "ner_jsl"])\
       .setOutputCol("ner_jsl_chunk")\
       .setWhiteList(["Procedure","Kidney_Disease","Cerebrovascular_Disease","Heart_Disease",
-                     "Disease_Syndrome_Disorder", "ImagingFindings", "Symptom", "VS_Finding",
-                     "EKG_Findings", "Communicable_Disease","Substance",
-                     "Internal_organ_or_component","External_body_part_or_region","Modifier",
+                     "Disease_Syndrome_Disorder", "Symptom", "VS_Finding",
+                     "EKG_Findings", "Communicable_Disease",
+                     "Internal_organ_or_component","External_body_part_or_region",
                      "Triglycerides","Alcohol","Smoking","Pregnancy","Hypertension","Obesity",
-                     "Injury_or_Poisoning","Test","Hyperlipidemia","BMI","Oncological","Psychological_Condition","LDL","Diabetes"])
+                     "Injury_or_Poisoning","Test","Hyperlipidemia","Oncological",
+                     "Psychological_Condition","LDL","Diabetes"])
+
+ner_ade_clinical = MedicalNerModel.pretrained("ner_ade_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ade_clinica_ner")
+
+ner_ade_clinical_converter = NerConverterInternal()\
+      .setInputCols(["sentence", "token", "ade_clinica_ner"])\
+      .setOutputCol("ner_ade_clinical_chunk")\
+      .setWhiteList(["ADE"])
+
+chunk_merger = ChunkMergeApproach()\
+    .setInputCols('ner_ade_clinical_chunk',"ner_jsl_chunk")\
+    .setOutputCol('merged_ner_chunk')
 
 chunk2doc = Chunk2Doc() \
-      .setInputCols("ner_jsl_chunk") \
+      .setInputCols("merged_ner_chunk") \
       .setOutputCol("ner_chunk_doc")
 
 sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
@@ -92,7 +106,7 @@ nlpPipeline= Pipeline(stages=[
                               meddra_resolver
 ])
 
-text= """This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, chronic obstructive pulmonary disease, gastritis, and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia."""
+text= """This is an 82-year-old male with a history of prior tobacco use, benign hypertension, chronic renal insufficiency, chronic bronchitis, gastritis, and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis, which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis."""
 
 df= spark.createDataFrame([[text]]).toDF("text")
 
@@ -103,79 +117,98 @@ result = resolver_pipeline.transform(df)
 val documentAssembler = new DocumentAssembler()
 	.setInputCol("text")
 	.setOutputCol("document")
-
+	
 val sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")
 	.setInputCols(Array("document"))
 	.setOutputCol("sentence")
-
+	
 val tokenizer = new Tokenizer()
 	.setInputCols(Array("sentence"))
 	.setOutputCol("token")
-
+	
 val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")
 	.setInputCols(Array("sentence","token"))
 	.setOutputCol("embeddings")
-
+	
 val ner_jsl = MedicalNerModel.pretrained("ner_jsl","en","clinical/models")
 	.setInputCols(Array("sentence","token","embeddings"))
 	.setOutputCol("ner_jsl")
-
+	
 val ner_jsl_converter = new NerConverter()
 	.setInputCols(Array("sentence","token","ner_jsl"))
 	.setOutputCol("ner_jsl_chunk")
-	.setWhiteList(Array("Procedure","Kidney_Disease","Cerebrovascular_Disease","Heart_Disease", "Disease_Syndrome_Disorder","ImagingFindings","Symptom","VS_Finding", "EKG_Findings","Communicable_Disease","Substance", "Internal_organ_or_component","External_body_part_or_region","Modifier", "Triglycerides","Alcohol","Smoking","Pregnancy","Hypertension","Obesity", "Injury_or_Poisoning","Test","Hyperlipidemia","BMI","Oncological","Psychological_Condition","LDL","Diabetes"))
-
+	.setWhiteList(Array("Procedure","Kidney_Disease","Cerebrovascular_Disease","Heart_Disease", "Disease_Syndrome_Disorder","Symptom","VS_Finding", "EKG_Findings","Communicable_Disease", "Internal_organ_or_component","External_body_part_or_region", "Triglycerides","Alcohol","Smoking","Pregnancy","Hypertension","Obesity", "Injury_or_Poisoning","Test","Hyperlipidemia","Oncological", "Psychological_Condition","LDL","Diabetes"))
+	
+val ner_ade_clinical = MedicalNerModel.pretrained("ner_ade_clinical","en","clinical/models")
+	.setInputCols(Array("sentence","token","embeddings"))
+	.setOutputCol("ade_clinica_ner")
+	
+val ner_ade_clinical_converter = new NerConverterInternal()
+	.setInputCols(Array("sentence","token","ade_clinica_ner"))
+	.setOutputCol("ner_ade_clinical_chunk")
+	.setWhiteList(Array("ADE"))
+	
+val chunk_merger = new ChunkMergeApproach()
+	.setInputCols("ner_ade_clinical_chunk","ner_jsl_chunk")
+	.setOutputCol("merged_ner_chunk")
+	
 val chunk2doc = new Chunk2Doc()
-	.setInputCols("ner_jsl_chunk")
+	.setInputCols("merged_ner_chunk")
 	.setOutputCol("ner_chunk_doc")
-
+	
 val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
 	.setInputCols(Array("ner_chunk_doc"))
 	.setOutputCol("sbert_embeddings")
 	.setCaseSensitive(false)
-
+  
 val meddra_resolver = new SentenceEntityResolverModel.load("sbiobertresolve_meddra_lowest_level_term")
 	.setInputCols(Array("sbert_embeddings"))
 	.setOutputCol("meddra_llt_code")
 	.setDistanceFunction("EUCLIDEAN")
  
-nlpPipeline= new Pipeline().setStages(Array(
-     documentAssembler,
-     sentenceDetector,
-     tokenizer,
-     word_embeddings,
-     ner_jsl,
-     ner_jsl_converter,
-     chunk2doc,
-     sbert_embedder,
-     meddra_resolver ))
+ nlpPipeline= new Pipeline().setStages(Array( documentAssembler, 
+                                              sentenceDetector,
+                                              tokenizer,
+                                              word_embeddings,
+                                              ner_jsl,
+                                              ner_jsl_converter,
+                                              ner_ade_clinical,
+                                              ner_ade_clinical_converter,
+                                              chunk_merger,
+                                              chunk2doc,
+                                              sbert_embedder,
+                                              meddra_resolver))
+ 
+ text= """This is an 82-year-old male with a history of prior tobacco use,benign hypertension,chronic renal insufficiency,chronic bronchitis,gastritis,and ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis,which was complicated by hypotension and bradycardia. We describe the side effects of 5-FU in a colon cancer patient who suffered mucositis and dermatitis."""
 
-text= """This is an 82-year-old male with a history of prior tobacco use,hypertension,chronic renal insufficiency,chronic obstructive pulmonary disease,gastritis,and transient ischemic attack. He initially presented to Braintree with ST elevation and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of the left main coronary artery stenosis,which was complicated by hypotension and bradycardia."""
+df= Seq(text).toDF("text")
 
-df= Seq(text) .toDF("text") resolver_pipeline= nlpPipeline.fit(df)
+resolver_pipeline= nlpPipeline.fit(df)
+	
 val result = resolver_pipeline.transform(df)
-
 ```
 </div>
 
 ## Results
 
 ```bash
-+-------------------------------------+-------------------------+---------------+-------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+
-|                                chunk|                    label|meddra_llt_code|                           resolution|                                                             all_codes|                                                       all_resolutions|                                                        all_aux_labels|
-+-------------------------------------+-------------------------+---------------+-------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+
-|                              tobacco|                  Smoking|       10067622|                  tobacco interaction|10067622:::10086359:::10057581:::10082288:::10009180:::10048880:::1...|tobacco interaction:::tobaccoism:::tobacco user:::exposure to tobac...|10067622:::10057852:::10057581:::10082288:::10057581:::10057581:::1...|
-|                         hypertension|             Hypertension|       10020772|                         hypertension|10020772:::10020790:::10088636:::10081425:::10015488:::10020775:::1...|hypertension:::hypertension secondary:::systemic hypertension:::art...|10020772:::10039834:::10020772:::10020772:::10015488:::10020772:::1...|
-|          chronic renal insufficiency|           Kidney_Disease|       10050441|          chronic renal insufficiency|10050441:::10009122:::10009119:::10075441:::10038474:::10038444:::1...|chronic renal insufficiency:::chronic renal impairment:::chronic re...|10064848:::10062237:::10064848:::10072370:::10038435:::10064848:::1...|
-|chronic obstructive pulmonary disease|Disease_Syndrome_Disorder|       10009033|chronic obstructive pulmonary disease|10009033:::10009032:::10009026:::10009025:::10025081:::10083002:::1...|chronic obstructive pulmonary disease:::chronic obstructive lung di...|10009033:::10009033:::10009033:::10009033:::10061877:::10061768:::1...|
-|                            gastritis|Disease_Syndrome_Disorder|       10017853|                            gastritis|10017853:::10060703:::10076492:::10070814:::10088553:::10000769:::1...|gastritis:::verrucous gastritis:::antral gastritis:::corrosive gast...|10017853:::10017865:::10017853:::10070814:::10017853:::10017853:::1...|
-|            transient ischemic attack|  Cerebrovascular_Disease|       10072760|            transient ischemic attack|10072760:::10044390:::10044391:::10072761:::10044375:::10044374:::1...|transient ischemic attack:::transient ischaemic attack:::transient ...|10044390:::10044390:::10044390:::10044390:::10044390:::10044390:::1...|
-|              cardiac catheterization|                Procedure|       10048606|              cardiac catheterization|10048606:::10007527:::10054343:::10007815:::10053451:::10088292:::1...|cardiac catheterization:::cardiac catheterisation:::catheterization...|10007815:::10007815:::10007815:::10007815:::10053451:::10088292:::1...|
-|   left main coronary artery stenosis|            Heart_Disease|       10090240|   left main coronary artery stenosis|10090240:::10072048:::10084343:::10011089:::10083430:::10011105:::1...|left main coronary artery stenosis:::left anterior descending coron...|10011089:::10011089:::10011086:::10011089:::10011089:::10011105:::1...|
-|                          hypotension|               VS_Finding|       10021097|                          hypotension|10021097:::10021107:::10066331:::10066077:::10036433:::10049705:::1...|hypotension:::hypotensive:::arterial hypotension:::diastolic hypote...|10021097:::10021097:::10021097:::10066077:::10031127:::10021097:::1...|
-|                          bradycardia|               VS_Finding|       10006093|                          bradycardia|10006093:::10040741:::10078310:::10064883:::10065585:::10085625:::1...|bradycardia:::sinus bradycardia:::central bradycardia:::reflex brad...|10006093:::10040741:::10078310:::10006093:::10029458:::10006093:::1...|
-+-------------------------------------+-------------------------+---------------+-------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+----------------------------------------------------------------------+
-
++----------------------------------+-----+---+-------------------------+---------------+----------------------------------+------------------------------------------------------------+------------------------------------------------------------+
+|                         ner_chunk|begin|end|                   entity|meddra_llt_code|                        resolution|                                               all_k_results|                                           all_k_resolutions|
++----------------------------------+-----+---+-------------------------+---------------+----------------------------------+------------------------------------------------------------+------------------------------------------------------------+
+|                           tobacco|   52| 58|                  Smoking|       10067622|               tobacco interaction|10067622:::10086359:::10057581:::10082288:::10009180:::10...|tobacco interaction:::tobaccoism:::tobacco user:::exposur...|
+|                      hypertension|   72| 83|             Hypertension|       10020772|                      hypertension|10020772:::10020790:::10088636:::10081425:::10015488:::10...|hypertension:::hypertension secondary:::systemic hyperten...|
+|       chronic renal insufficiency|   86|112|           Kidney_Disease|       10050441|       chronic renal insufficiency|10050441:::10009122:::10009119:::10075441:::10038474:::10...|chronic renal insufficiency:::chronic renal impairment:::...|
+|                        bronchitis|  123|132|Disease_Syndrome_Disorder|       10006451|                        bronchitis|10006451:::10006448:::10008841:::10085668:::10061736:::10...|bronchitis:::bronchiolitis:::chronic bronchitis:::capilla...|
+|                         gastritis|  135|143|Disease_Syndrome_Disorder|       10017853|                         gastritis|10017853:::10060703:::10076492:::10070814:::10088553:::10...|gastritis:::verrucous gastritis:::antral gastritis:::corr...|
+|                   ischemic attack|  150|164|  Cerebrovascular_Disease|       10072760|         transient ischemic attack|10072760:::10060848:::10060772:::10061216:::10055221:::10...|transient ischemic attack:::ischemic cerebral infarction:...|
+|           cardiac catheterization|  280|302|                Procedure|       10048606|           cardiac catheterization|10048606:::10007527:::10054343:::10007815:::10053451:::10...|cardiac catheterization:::cardiac catheterisation:::cathe...|
+|left main coronary artery stenosis|  319|352|            Heart_Disease|       10090240|left main coronary artery stenosis|10090240:::10072048:::10084343:::10011089:::10083430:::10...|left main coronary artery stenosis:::left anterior descen...|
+|                       hypotension|  380|390|               VS_Finding|       10021097|                       hypotension|10021097:::10021107:::10066331:::10066077:::10036433:::10...|hypotension:::hypotensive:::arterial hypotension:::diasto...|
+|                       bradycardia|  396|406|               VS_Finding|       10006093|                       bradycardia|10006093:::10040741:::10078310:::10064883:::10065585:::10...|bradycardia:::sinus bradycardia:::central bradycardia:::r...|
+|                      colon cancer|  451|462|              Oncological|       10009944|                      colon cancer|10009944:::10009989:::10009957:::10061451:::10007330:::10...|colon cancer:::colonic cancer:::colon carcinoma:::colorec...|
+|                         mucositis|  485|493|                      ADE|       10028127|                         mucositis|10028127:::10065880:::10065900:::10006525:::10021960:::10...|mucositis:::laryngeal mucositis:::tracheal mucositis:::bu...|
+|                        dermatitis|  499|508|                      ADE|       10012431|                        dermatitis|10012431:::10048768:::10003639:::10012470:::10073737:::10...|dermatitis:::dermatosis:::atopic dermatitis:::dermatitis ...|
++----------------------------------+-----+---+-------------------------+---------------+----------------------------------+------------------------------------------------------------+------------------------------------------------------------+
 ```
 
 {:.model-param}

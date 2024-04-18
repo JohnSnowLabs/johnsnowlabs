@@ -30,6 +30,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../../../../static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../../../../static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../../static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/graphviz.css" />
     <link rel="stylesheet" type="text/css" href="../../../../../../static/css/custom.css" />
   
@@ -44,6 +45,8 @@
     <script src="../../../../../../static/doctools.js"></script>
     <script src="../../../../../../static/sphinx_highlight.js"></script>
     <script src="../../../../../../static/toggleprompt.js"></script>
+    <script src="../../../../../../static/clipboard.min.js"></script>
+    <script src="../../../../../../static/copybutton.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'reference/autosummary/sparknlp_jsl/finance/sequence_classification/finance_bert_for_sequence_classification/index';</script>
     <link rel="shortcut icon" href="../../../../../../static/fav.ico"/>
     <link rel="index" title="Index" href="../../../../../../genindex.html" />
@@ -387,7 +390,8 @@ document.write(`
 <dl class="py class">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">FinanceBertForSequenceClassification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">classname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'com.johnsnowlabs.finance.sequence_classification.FinanceBertForSequenceClassification'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">java_model</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification" title="Permalink to this definition">#</a></dt>
-<dd><p>FinanceBertForTokenClassification  can load Bert Models with sequence classification/regression head on top
+<dd><p>Bases: <a class="reference internal" href="../../../annotator/classification/medical_bert_for_sequence_classification/index.html#sparknlp_jsl.annotator.classification.medical_bert_for_sequence_classification.MedicalBertForSequenceClassification" title="sparknlp_jsl.annotator.classification.medical_bert_for_sequence_classification.MedicalBertForSequenceClassification"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sparknlp_jsl.annotator.classification.medical_bert_for_sequence_classification.MedicalBertForSequenceClassification</span></code></a></p>
+<p>FinanceBertForTokenClassification  can load Bert Models with sequence classification/regression head on top
 (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks.</p>
 <p>Pretrained models can be loaded with <a class="reference internal" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.pretrained" title="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.pretrained"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pretrained()</span></code></a> of the companion
 object:</p>
@@ -409,18 +413,14 @@ Spark NLP 🚀. To see which models are compatible and how to import them see
 </table>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>batchSize</strong></dt><dd><p>Batch size. Large values allows faster processing but requires more
-memory, by default 8</p>
-</dd>
-<dt><strong>caseSensitive</strong></dt><dd><p>Whether to ignore case in tokens for embeddings matching, by default
-True</p>
-</dd>
-<dt><strong>configProtoBytes</strong></dt><dd><p>ConfigProto from tensorflow, serialized into byte array.</p>
-</dd>
-<dt><strong>maxSentenceLength</strong></dt><dd><p>Max sentence length to process, by default 128</p>
-</dd>
-</dl>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>batchSize</strong> – Batch size. Large values allows faster processing but requires more
+memory, by default 8</p></li>
+<li><p><strong>caseSensitive</strong> – Whether to ignore case in tokens for embeddings matching, by default
+True</p></li>
+<li><p><strong>configProtoBytes</strong> – ConfigProto from tensorflow, serialized into byte array.</p></li>
+<li><p><strong>maxSentenceLength</strong> – Max sentence length to process, by default 128</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Examples</p>
@@ -449,30 +449,283 @@ True</p>
 </pre></div>
 </div>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.batchSize">
+<span class="sig-name descname"><span class="pre">batchSize</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.batchSize" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.caseSensitive">
+<span class="sig-name descname"><span class="pre">caseSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.caseSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.coalesceSentences">
+<span class="sig-name descname"><span class="pre">coalesceSentences</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.coalesceSentences" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.configProtoBytes">
+<span class="sig-name descname"><span class="pre">configProtoBytes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.configProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.engine">
+<span class="sig-name descname"><span class="pre">engine</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.engine" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getter_attrs">
+<span class="sig-name descname"><span class="pre">getter_attrs</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getter_attrs" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.inputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">inputAnnotatorTypes</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.inputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.inputCols">
+<span class="sig-name descname"><span class="pre">inputCols</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.inputCols" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.lazyAnnotator">
+<span class="sig-name descname"><span class="pre">lazyAnnotator</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.lazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.maxSentenceLength">
+<span class="sig-name descname"><span class="pre">maxSentenceLength</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.maxSentenceLength" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.name">
 <span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">FinanceBertForSequenceClassification</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.name" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.optionalInputAnnotatorTypes">
+<span class="sig-name descname"><span class="pre">optionalInputAnnotatorTypes</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">[]</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.optionalInputAnnotatorTypes" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.outputAnnotatorType">
+<span class="sig-name descname"><span class="pre">outputAnnotatorType</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.outputAnnotatorType" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.outputCol">
+<span class="sig-name descname"><span class="pre">outputCol</span></span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.outputCol" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.skipLPInputColsValidation">
+<span class="sig-name descname"><span class="pre">skipLPInputColsValidation</span></span><em class="property"><span class="w"> </span><span class="pre">=</span> <span class="pre">True</span></em><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.skipLPInputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.clear" title="Permalink to this definition">#</a></dt>
+<dd><p>Clears a param from the param map if it has been explicitly set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.copy" title="Permalink to this definition">#</a></dt>
+<dd><p>Creates a copy of this instance with the same uid and some
+extra params. This implementation first calls Params.copy and
+then make a copy of the companion Java pipeline component with
+extra params. So both the Python wrapper and the Java pipeline
+component get copied.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – Extra parameters to copy to the new instance</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Copy of this instance</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">JavaParams</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.explainParam">
+<span class="sig-name descname"><span class="pre">explainParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.explainParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Explains a single param and returns its name, doc, and optional
+default value and user-supplied value in a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.explainParams">
+<span class="sig-name descname"><span class="pre">explainParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.explainParams" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the documentation of all params with their optionally
+default values and user-supplied values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.extractParamMap">
+<span class="sig-name descname"><span class="pre">extractParamMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.extractParamMap" title="Permalink to this definition">#</a></dt>
+<dd><p>Extracts the embedded default param values and user-supplied
+values, and then merges them with extra values from input into
+a flat param map, where the latter value is used if there exist
+conflicts, i.e., with ordering: default param values &lt;
+user-supplied values &lt; extra.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>extra</strong> (<em>dict</em><em>, </em><em>optional</em>) – extra param values</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged param map</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getBatchSize">
+<span class="sig-name descname"><span class="pre">getBatchSize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Current batch size</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getCaseSensitive">
+<span class="sig-name descname"><span class="pre">getCaseSensitive</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getClasses">
+<span class="sig-name descname"><span class="pre">getClasses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getClasses" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns labels used to train this model</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getEngine">
+<span class="sig-name descname"><span class="pre">getEngine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getEngine" title="Permalink to this definition">#</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Deep Learning engine used for this model”</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getInputCols">
+<span class="sig-name descname"><span class="pre">getInputCols</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets current column names of input annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getLazyAnnotator">
+<span class="sig-name descname"><span class="pre">getLazyAnnotator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getOrDefault">
+<span class="sig-name descname"><span class="pre">getOrDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getOrDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a param in the user-supplied param map or its
+default value. Raises an error if neither is set.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getOutputCol">
+<span class="sig-name descname"><span class="pre">getOutputCol</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets output column name of annotations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getParam">
+<span class="sig-name descname"><span class="pre">getParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets a param by its name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getParamValue">
+<span class="sig-name descname"><span class="pre">getParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Gets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.hasDefault">
+<span class="sig-name descname"><span class="pre">hasDefault</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.hasDefault" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param has a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.hasParam">
+<span class="sig-name descname"><span class="pre">hasParam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.hasParam" title="Permalink to this definition">#</a></dt>
+<dd><p>Tests whether this instance contains a param with a given
+(string) name.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.inputColsValidation">
+<span class="sig-name descname"><span class="pre">inputColsValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.inputColsValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.isDefined">
+<span class="sig-name descname"><span class="pre">isDefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.isDefined" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user or has
+a default value.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.isSet">
+<span class="sig-name descname"><span class="pre">isSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.isSet" title="Permalink to this definition">#</a></dt>
+<dd><p>Checks whether a param is explicitly set by user.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.load">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.load" title="Permalink to this definition">#</a></dt>
+<dd><p>Reads an ML instance from the input path, a shortcut of <cite>read().load(path)</cite>.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.loadSavedModel">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loadSavedModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">folder</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spark_session</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.loadSavedModel" title="Permalink to this definition">#</a></dt>
 <dd><p>Loads a locally saved model
-Parameters
-———-
-folder : str</p>
-<blockquote>
-<div><p>Folder of the saved model</p>
-</div></blockquote>
-<dl class="simple">
-<dt>spark_session<span class="classifier">pyspark.sql.SparkSession</span></dt><dd><p>The current SparkSession</p>
-</dd>
-</dl>
+:param folder: Folder of the saved model
+:type folder: str
+:param spark_session: The current SparkSession
+:type spark_session: pyspark.sql.SparkSession</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt>FinanceBertForSequenceClassification</dt><dd><p>The restored model</p>
+<dd class="field-odd"><p>The restored model</p>
 </dd>
-</dl>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification" title="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification">FinanceBertForSequenceClassification</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -483,18 +736,17 @@ folder : str</p>
 <dd><p>Loads a locally saved model.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><dl class="simple">
-<dt><strong>bertForTokenClassifierPath</strong><span class="classifier">str</span></dt><dd><p>Folder of the bertForTokenClassifier</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bertForTokenClassifierPath</strong> (<em>str</em>) – Folder of the bertForTokenClassifier</p></li>
+<li><p><strong>tfModelPath</strong> (<em>str</em>) – Folder taht contains the tf model</p></li>
+<li><p><strong>spark_session</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.SparkSession.html#pyspark.sql.SparkSession" title="(in PySpark vmaster)"><em>pyspark.sql.SparkSession</em></a>) – The current SparkSession</p></li>
+</ul>
 </dd>
-<dt><strong>tfModelPath</strong><span class="classifier">str</span></dt><dd><p>Folder taht contains the tf model</p>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The restored model</p>
 </dd>
-<dt><strong>spark_session</strong><span class="classifier">pyspark.sql.SparkSession</span></dt><dd><p>The current SparkSession</p>
-</dd>
-<dt><strong>Returns</strong></dt><dd></dd>
-<dt><strong>——-</strong></dt><dd></dd>
-<dt><strong>FinanceBertForSequenceClassification</strong></dt><dd><p>The restored model</p>
-</dd>
-</dl>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification" title="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification">FinanceBertForSequenceClassification</a></p>
 </dd>
 </dl>
 </dd></dl>
@@ -503,16 +755,187 @@ folder : str</p>
 <dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.pretrained">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pretrained</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finclf_bert_banking77'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lang</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'en'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remote_loc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'finance/models'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.pretrained" title="Permalink to this definition">#</a></dt>
 <dd><p>Download a pre-trained FinanceBertForSequenceClassification.</p>
-<dl class="simple">
-<dt>Args:</dt><dd><p>name (str): Name of the pre-trained model, by default “finclf_bert_banking77”
-lang (str): Language of the pre-trained model, by default “en”
-remote_loc (str): Remote location of the pre-trained model. If None, use the
-open-source location. Other values are “clinical/models”,
-“finance/models”, or “legal/models”.</p>
-</dd>
-<dt>Returns:</dt><dd><p>FinanceBertForSequenceClassification: A pre-trained FinanceBertForSequenceClassification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the pre-trained model, by default “finclf_bert_banking77”</p></li>
+<li><p><strong>lang</strong> (<em>str</em>) – Language of the pre-trained model, by default “en”</p></li>
+<li><p><strong>remote_loc</strong> (<em>str</em>) – Remote location of the pre-trained model. If None, use the</p></li>
+<li><p><strong>&quot;clinical/models&quot;</strong> (<em>open-source location. Other values are</em>) – </p></li>
+</ul>
 </dd>
 </dl>
+<p>:param :
+:param “finance/models”:
+:param or “legal/models”.:</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>A pre-trained FinanceBertForSequenceClassification.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification" title="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification">FinanceBertForSequenceClassification</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.read">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.read" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLReader instance for this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.save" title="Permalink to this definition">#</a></dt>
+<dd><p>Save this ML instance to the given path, a shortcut of ‘write().save(path)’.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.set" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets a parameter in the embedded param map.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setBatchSize">
+<span class="sig-name descname"><span class="pre">setBatchSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">v</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setBatchSize" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets batch size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>v</strong> (<em>int</em>) – Batch size</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setCaseSensitive">
+<span class="sig-name descname"><span class="pre">setCaseSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setCaseSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to ignore case in tokens for embeddings matching.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to ignore case in tokens for embeddings matching</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setCoalesceSentences">
+<span class="sig-name descname"><span class="pre">setCoalesceSentences</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setCoalesceSentences" title="Permalink to this definition">#</a></dt>
+<dd><p>Instead of 1 class per sentence (if inputCols is ‘’’sentence’’’) output 1 class per document by averaging probabilities in all sentences.
+Due to max sequence length limit in almost all transformer models such as BERT (512 tokens), this parameter helps feeding all the sentences
+into the model and averaging all the probabilities for the entire document instead of probabilities per sentence. (Default: False)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – If the output of all sentences will be averaged to one output</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setConfigProtoBytes">
+<span class="sig-name descname"><span class="pre">setConfigProtoBytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setConfigProtoBytes" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets configProto from tensorflow, serialized into byte array.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>b</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – ConfigProto from tensorflow, serialized into byte array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setForceInputTypeValidation">
+<span class="sig-name descname"><span class="pre">setForceInputTypeValidation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">etfm</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setForceInputTypeValidation" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setInputCols">
+<span class="sig-name descname"><span class="pre">setInputCols</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setInputCols" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets column names of input annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>*value</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – Input columns for the annotator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setLazyAnnotator">
+<span class="sig-name descname"><span class="pre">setLazyAnnotator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setLazyAnnotator" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether Annotator should be evaluated lazily in a
+RecursivePipeline.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether Annotator should be evaluated lazily in a
+RecursivePipeline</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setMaxSentenceLength">
+<span class="sig-name descname"><span class="pre">setMaxSentenceLength</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setMaxSentenceLength" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets max sentence length to process, by default 128.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>int</em>) – Max sentence length to process</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setOutputCol">
+<span class="sig-name descname"><span class="pre">setOutputCol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setOutputCol" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets output column name of annotations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – Name of output column</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setParamValue">
+<span class="sig-name descname"><span class="pre">setParamValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">paramName</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setParamValue" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets the value of a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>paramName</strong> (<em>str</em>) – Name of the parameter</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setParams">
+<span class="sig-name descname"><span class="pre">setParams</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setParams" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.transform">
+<span class="sig-name descname"><span class="pre">transform</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dataset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.transform" title="Permalink to this definition">#</a></dt>
+<dd><p>Transforms the input dataset with optional parameters.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.3.0.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a>) – input dataset</p></li>
+<li><p><strong>params</strong> (<em>dict</em><em>, </em><em>optional</em>) – an optional param map that overrides embedded params.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>transformed dataset</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://spark.apache.org/docs/latest/api/python/reference/pyspark.sql/api/pyspark.sql.DataFrame.html#pyspark.sql.DataFrame" title="(in PySpark vmaster)"><code class="xref py py-class docutils literal notranslate"><span class="pre">pyspark.sql.DataFrame</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.write" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns an MLWriter instance for this ML instance.</p>
 </dd></dl>
 
 </dd></dl>
@@ -553,10 +976,61 @@ open-source location. Other values are “clinical/models”,
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.batchSize"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.batchSize</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.caseSensitive"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.caseSensitive</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.coalesceSentences"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.coalesceSentences</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.configProtoBytes"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.configProtoBytes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.engine"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.engine</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getter_attrs"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.getter_attrs</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.inputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.inputCols"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.inputCols</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.lazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.lazyAnnotator</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.maxSentenceLength"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.maxSentenceLength</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.name"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.name</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.optionalInputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.optionalInputAnnotatorTypes</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.outputAnnotatorType"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.outputAnnotatorType</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.outputCol"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.outputCol</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.skipLPInputColsValidation"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.skipLPInputColsValidation</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.clear"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.clear()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.copy"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.copy()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.explainParam"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.explainParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.explainParams"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.explainParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.extractParamMap"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.extractParamMap()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getBatchSize"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.getBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getCaseSensitive"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.getCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getClasses"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.getClasses()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getEngine"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.getEngine()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.getInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.getLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getOrDefault"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.getOrDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.getOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getParam"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.getParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.getParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.getParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.hasDefault"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.hasDefault()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.hasParam"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.hasParam()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.inputColsValidation"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.inputColsValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.isDefined"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.isDefined()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.isSet"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.isSet()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.load"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.load()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.loadSavedModel"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.loadSavedModel()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.loadSavedModelOpenSource"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.loadSavedModelOpenSource()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.pretrained"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.pretrained()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.read"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.read()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.save"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.save()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.set"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setBatchSize"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.setBatchSize()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setCaseSensitive"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.setCaseSensitive()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setCoalesceSentences"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.setCoalesceSentences()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setConfigProtoBytes"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.setConfigProtoBytes()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setForceInputTypeValidation"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.setForceInputTypeValidation()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setInputCols"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.setInputCols()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.setLazyAnnotator()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setMaxSentenceLength"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.setMaxSentenceLength()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setOutputCol"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.setOutputCol()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setParamValue"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.setParamValue()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.setParams"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.setParams()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.transform"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.transform()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.finance.sequence_classification.finance_bert_for_sequence_classification.FinanceBertForSequenceClassification.write"><code class="docutils literal notranslate"><span class="pre">FinanceBertForSequenceClassification.write()</span></code></a></li>
 </ul>
 </li>
 </ul>

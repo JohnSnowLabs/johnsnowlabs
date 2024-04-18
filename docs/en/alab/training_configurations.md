@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Train New Model
 permalink: /docs/en/alab/training_configurations
 key: docs-training
@@ -53,7 +53,7 @@ Starting from version 4.3.0, it is possible to keep track of all previous traini
 
 ### Training parameters
 
-In Annotation Lab, for mixed projects containing multiple types of annotations in a single project like classifications, NER, and assertion status, if multiple trainings were triggered at the same time using the same system resources and Spark NLP resources, the training component could fail because of resource limitations.
+In Generative AI Lab, for mixed projects containing multiple types of annotations in a single project like classifications, NER, and assertion status, if multiple trainings were triggered at the same time using the same system resources and Spark NLP resources, the training component could fail because of resource limitations.
 
 In order to improve the usability of the system, dropdown options can be used to choose which type of training to run next. The project Owner or Manager of a project can scroll down to Training Settings and choose the training type. The drop-down gives a list of possible training types for that particular project based on its actual configuration. A second drop-down lists available embeddings which can be used for training the model.
 
@@ -65,11 +65,11 @@ Test/Train data for a model can be randomly selected based on the Validation Spl
 
 It is also possible to train a model by using a sublist of tasks with predefined tags. This is done by specifying the targeted Tags on the Training Parameters (last option).
 
-Annotation Lab also includes additional filtering options for the training dataset based on the status of completions, either all submitted completions can be used for training or only the reviewed ones.
+Generative AI Lab also includes additional filtering options for the training dataset based on the status of completions, either all submitted completions can be used for training or only the reviewed ones.
 
 ### Custom Training Script
 
-If users want to change the default Training script present within the Annotation Lab, they can upload their own training pipeline. In the Train Page, project owners can upload the training scripts. At the moment we are supporting custom training script just for NER projects.
+If users want to change the default Training script present within the Generative AI Lab, they can upload their own training pipeline. In the Train Page, project owners can upload the training scripts. At the moment we are supporting custom training script just for NER projects.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/customScript.png" style="width:80%;"/>
 
@@ -85,7 +85,7 @@ During the annotation project lifetime, normally not all tasks/completions are r
 
 ## Assertion Status
 
-NER configurations for the healthcare domain are often mixed with Assertion Status labels. In this case, Annotation Lab offers support for training both types of models in one go. After the training is complete, the models will be listed in the Pretrained Labels section of the Project Configuration. Information such as the source of the model and time of training will be displayed as well.
+NER configurations for the healthcare domain are often mixed with Assertion Status labels. In this case, Generative AI Lab offers support for training both types of models in one go. After the training is complete, the models will be listed in the Pretrained Labels section of the Project Configuration. Information such as the source of the model and time of training will be displayed as well.
 
 Once the model(s) has been trained, the project configuration will be automatically updated to reference the new model for prediction. Notice below, for the Assertion Status **Label** tag the addition of model attribute to indicate which model will be used for task pre-annotation for this label.
 
@@ -98,13 +98,13 @@ It is not possible to mark a label as an Assertion Status label and use a NER mo
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/1.6.0/as_notification.png" style="width:90%;"/>
 
-The Annotation Lab only allows the use of one single Assertion Status model in the same project.
+The Generative AI Lab only allows the use of one single Assertion Status model in the same project.
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/1.6.0/one_as.png" style="width:90%;"/>
 
 ## Classification
 
-Annotation Lab supports two types of classification training: **Single Choice Classification** and **Multi-Choice Classification**. For doing so, it uses three important attributes of the **Choices** tag to drive the Classification Models training and pre-annotation. Those are **name**, **choice** and **train**.
+Generative AI Lab supports two types of classification training: **Single Choice Classification** and **Multi-Choice Classification**. For doing so, it uses three important attributes of the **Choices** tag to drive the Classification Models training and pre-annotation. Those are **name**, **choice** and **train**.
 
 ### Attribute name
 
@@ -145,7 +145,7 @@ The choice attribute specifies the type of model that will be trained: multiple 
 
 ### Attribute train
 
-Annotation Lab restricts the training of two or more Classification Models at the same time. If there are multiple Classification categories in a project (like the one above), only the category whose name comes first in alphabetical order will be trained by default. In the above example, based on the value of the name attribute, we conclude that the Age classifier model is trained.
+Generative AI Lab restricts the training of two or more Classification Models at the same time. If there are multiple Classification categories in a project (like the one above), only the category whose name comes first in alphabetical order will be trained by default. In the above example, based on the value of the name attribute, we conclude that the Age classifier model is trained.
 The model to be trained can also be specified by setting the train="true" attribute for the targeted **Choices** tag (like the one defined in Gender category below).
 
 ```bash
@@ -172,13 +172,13 @@ The trained classification models are available to reuse in any project and can 
 
 <img class="image image__shadow" src="/assets/images/annotation_lab/4.1.0/classification_pipeline.png" style="width:80%;"/>
 
-The classification models trained using Annotation Lab also have attached benchmarking information. The training logs include the confusion matrix, helpful in understanding the performance of the model and in checking if the model is underfitting or overfitting. The confusion matrix is also available on the models tiles on the Models page, and  is accessible by clicking on the benchmarking icon.
+The classification models trained using Generative AI Lab also have attached benchmarking information. The training logs include the confusion matrix, helpful in understanding the performance of the model and in checking if the model is underfitting or overfitting. The confusion matrix is also available on the models tiles on the Models page, and  is accessible by clicking on the benchmarking icon.
 
 <img class="image image__shadow" src="https://user-images.githubusercontent.com/10126570/204807841-5202b1b8-60c0-4fd7-a504-46638c8e9611.gif" style="width:100%;"/>
 
 ## Visual NER Training
 
-Annotation Lab offers the ability to train Visual NER models, apply active learning for automatic model training, and preannotate image-based tasks with existing models in order to accelerate annotation work.
+Generative AI Lab offers the ability to train Visual NER models, apply active learning for automatic model training, and preannotate image-based tasks with existing models in order to accelerate annotation work.
 
 ### Model Training
 
@@ -209,6 +209,85 @@ Visual NER annotation, training and preannotation features are dependent on the 
 
 The minimal required training configuration is 64 GB RAM, 16 Core CPU for Visual NER Training.
 
+#### Visual NER Training with GPU
+
+**GPU Resource Availability**
+If the Generative AI Lab is equipped with a GPU, the following message will be displayed on the infrastructure page:  
+
+"**GPU Resource Available**".
+![infra](/assets/images/annotation_lab/6.0.0/1.png)
+
+The Training & Active Learning page now includes a new option "**Use available GPU**" for Visual NER projects. Selecting this option enables Visual NER model training using GPU.
+
+![infra](/assets/images/annotation_lab/6.0.0/2.png)
+
+#### Boost performance with the use of GPU- side by side CPU - GPU Benchmark for Visual Named Entity Recognition (NER) Project
+
+In this section we dive into a side-by-side comparison between CPUs and GPUs for a specific task: recognizing names in images (Visual NER). Two powerful machines were used for comparison, one with CPU only (central processing unit), and the second one equipped with GPU (graphics processing unit). The goal of the test was to measure and compare the time required for training an AI model based on the different hardware architectures of the servers.
+
+#### Understanding CPU vs GPU for NLP Tasks:
+
+One of the important differences between CPU and GPU architecture is in how they deliver performance for AI training and inference with GPU delivering leading performance in this context. CPUs, with their adeptness in sequential tasks and single-threaded performance, stand in contrast to GPUs, which thrive in highly parallelized environments, excelling at simultaneous large-scale computations crucial for NLP tasks, especially those entailing intensive matrix operations as encountered in deep learning models.
+
+#### Hardware Configuration:
+
+##### CPU Machine (m4.4xlarge):
+        CPU: Intel Xeon E5-2676 v3 (Haswell) processors (16 cores)
+        Memory: 64 GiB
+        Storage: EBS only
+        Network Performance: Moderate
+##### GPU Machine (g4dn.2xlarge):
+        GPU: NVIDIA T4 Tensor Core GPU
+        vCPUs: 8
+        GPU Memory: 16 GiB
+        Memory: 32 GiB
+        Storage: EBS only
+        Network Performance: High
+
+#### Versions:
+
+The benchmarking was carried out using the following Spark NLP versions:
+
+Spark version: 3.4.0
+
+SparkNLP version: 5.3.0
+
+SparkOCR version: 5.3.0
+
+#### Benchmark Setup:
+
+Our benchmarking focuses on a Visual Named Entity Recognition (NER) project. Visual data (images) was processed to identify named entities like people, locations, and brands within them. Visual NER training employs advanced NLP techniques and deep learning architectures, demanding significant computational resources for efficient execution. To assess the performance training of our Visual NER model GPU-enabled instance, the benchmark experiments were conducted using a batch size of 8, with 1 core CPU allocated for the GPU training. In addition to the GPU's dedicated 16GB memory, 24 GB of system memory was allocated for the training pod.
+
+For Visual NER model training without GPU, we conducted benchmark experiments using a batch size of 8, with 14 cores CPU allocation and 58 GB of memory for training.
+
+The time taken for model training for both cases was measured, and the results were compared. 
+
+#### Dataset:
+
+The benchmark utilizes a dataset containing 714 tasks. Each task is an image with corresponding labels for the named entities present. 
+
+#### Training params:
+
+Eval Size: 0.4 (percentage of data used for evaluation)
+
+Learning rate: 0.001 (controls how quickly the model learns)
+
+Batch size: 8 (number of images processed together during training)
+
+#### Benchmark Results:
+
+The training pod specifications were:
+
+    For instance, without GPU: 14 CPU cores and 58GB RAM
+    For instance, with both GPU and CPU: 1 CPU core, 24GB RAM, and 1 GPU
+
+
+| Batch Size | Only CPU Training Time | With GPU Training Time | Speedup (With GPU vs Only CPU) |
+|------------|-------------------|-------------------|----------------------|
+| 8          | 225 mins          | 26 mins           | 8.6x                 |
+
+The benchmarking experiment was aimed to offer insights into the performance differences between CPU and GPU architectures for Visual NER projects. The results showed 225 minutes of execution time for CPU training alone, whereas GPU training only took 26 minutes, resulting in an 8.6x speedup. Even with just a 1-core CPU and 24GB of RAM, training with a GPU significantly surpasses the performance of a 14-core CPU with 58GB of RAM. Just using 1 GPU, we could decrease the number of CPU cores from 14 cores to 1 core and reduce the memory allocation by 30 percent for the training. The results underscore the superior performance of GPUs in parallel computations, which considerably accelerates training processes for NLP tasks.
+
 ## Mixed Projects
 
 If a project is set up to include Classification, Named Entity Recognition and Assertion Status labels and the three kinds of annotations are present in the training data, it is possible to train three models: one for Named Entity Recognition, one for Assertion Status, and one for Classification at the same time. The training logs from all three trainings can be downloaded at once by clicking the download button present in the Training section of the Setup Page. The newly trained models will be added to the Spark NLP pipeline config.
@@ -216,4 +295,4 @@ If a project is set up to include Classification, Named Entity Recognition and A
 ## Support for European Languagues
 
 Users can download English, German, Spanish, Portuguese, Italian, Danish and Romanian pretrained models from the NLP Models Hub and use them for pre-annotation.
-Annotation Lab also offers support for training/tuning models in the above languages.
+Generative AI Lab also offers support for training/tuning models in the above languages.
