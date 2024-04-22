@@ -102,11 +102,11 @@ The Generative AI Lab needs to be installed on a virtual machine. One of the mos
 
 Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-zrcp6k6nqvxoa) and follow the instructions on the video below to subscribe and deploy.
 
-**Steps to get started**
+**Steps to get started:**
 - Subscribe to the product on the AWS Marketplace.
 - Deploy it on a new machine.
-- Attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both aws-marketplace:MeterUsage and ec2:DescribeInstanceTypes permission)
-- Access the login page for a guided experience on http://INSTANCE_IP. For the first login use the following credentials:
+- Attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both `aws-marketplace:MeterUsage` and `ec2:DescribeInstanceTypes` permission)
+- Access the login page for a guided experience on `http://INSTANCE_IP`. For the first login use the following credentials:
 	Username: admin
 	Password: INSTANCE_ID
 
