@@ -19,6 +19,7 @@ use_language_switcher: "Python-Scala-Java"
 ## Description
 
 A pretrained pipeline to detect drug entities. It was built on the top of `ner_posology_greedy`, `ner_drugs_large` and `drug_matcher` models.
+
 Predicted entities: `DRUG`
 
 {:.btn-box}
@@ -33,6 +34,7 @@ Predicted entities: `DRUG`
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
