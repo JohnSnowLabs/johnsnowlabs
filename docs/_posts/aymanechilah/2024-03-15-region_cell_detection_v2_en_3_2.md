@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Table Cell Detection
+title: Table Cell Detection v2
 author: John Snow Labs
 name: region_cell_detection_v2
 date: 2024-03-15
@@ -122,24 +122,14 @@ val result = pipeline.transform(image_df)
 ### Input:
 ![Screenshot](/assets/images/examples_ocr/table_celldetector_input.png)
 
-### Output:
-{%- capture cell_detection -%}
+### Cell Detection:
 ![Screenshot](/assets/images/examples_ocr/table_celldetector_v2_cells.png)
-{%- endcapture -%}
 
-{%- capture table_structure_recognition -%}
+### Table Structure Recognition:
 ![Screenshot](/assets/images/examples_ocr/table_celldetector_v2_tsr.png)
-{%- endcapture -%}
-
-
-{% include templates/input_output_image.md
-cell_detection=cell_detection
-table_structure_recognition=table_structure_recognition
-%}
 
 
 
-{:.model-param}
 ## Model Information
 
 {:.table-model}

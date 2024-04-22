@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Table Detection
+title: Table Detection v3
 author: John Snow Labs
 name: table_detection_v3
 date: 2024-03-15
@@ -91,23 +91,13 @@ val result = pipeline.transform(image_df)
 
 ## Example
 
-{%- capture input -%}
+### Input:
 ![Screenshot](/assets/images/examples_ocr/image5.png)
-{%- endcapture -%}
 
-{%- capture output -%}
+### Output:
 ![Screenshot](/assets/images/examples_ocr/image5_tdv3.png)
-{%- endcapture -%}
 
 
-{% include templates/input_output_image.md
-input=input
-output=output
-%}
-
-
-
-{:.model-param}
 ## Model Information
 
 {:.table-model}

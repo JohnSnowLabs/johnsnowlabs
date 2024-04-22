@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Оcr large for handwritten text
+title: Оcr large for handwritten text v2 optimized
 author: John Snow Labs
 name: ocr_large_handwritten_v2_opt
 date: 2024-03-15
@@ -8,7 +8,7 @@ tags: [en, licensed]
 task: OCR Text Detection & Recognition
 language: en
 nav_key: models
-edition: Visual NLP 5.2.0
+edition: Visual NLP 5.1.2
 spark_version: 3.2.1
 supported: true
 article_header:

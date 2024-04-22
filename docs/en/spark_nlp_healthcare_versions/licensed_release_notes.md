@@ -56,7 +56,8 @@ This classifier model supports various classifier types, including sklearn's Log
 
 **As you can see from the following chart, the few-shot assertion classifier can reach comparable performance metrics using only 50% of the training dataset.**
 
-![alt text](image.png)
+![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/64752006/e1c2feb1-9b0e-4ab7-bdd1-eeafea298381)
+
 
 *Example*:
 

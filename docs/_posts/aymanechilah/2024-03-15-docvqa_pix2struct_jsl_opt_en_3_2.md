@@ -8,7 +8,7 @@ tags: [en, licensed]
 task: Document Visual Question Answering
 language: en
 nav_key: models
-edition: Visual NLP 5.2.0
+edition: Visual NLP 5.1.0
 spark_version: 3.2.1
 supported: true
 article_header:
@@ -118,8 +118,6 @@ Image:
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |{[What's the estimated population in poverty of Lawrence? , What's the population of Stoddard? , What is the page number of the document? , What is the date number of the document? ], [  55,730,   26,800,   6,   1/28/70], [0.030239912, 0.9217337, 0.9979782, 0.09267823]}|
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-CPU times: user 10.5 ms, sys: 1.85 ms, total: 12.3 ms
-Wall time: 43.6 s
 ```
 
 
