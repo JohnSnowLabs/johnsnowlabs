@@ -5,14 +5,14 @@ seotitle: Medical Chatbot | John Snow Labs
 title: Release Notes
 permalink: /docs/en/chatbot/releases/release_notes
 key: docs-healthcare-gpt
-modify_date: "2024-03-13"
+modify_date: "2024-04-24"
 show_nav: true
 sidebar:
     nav: healthcare-gpt
 ---
 <div class="h3-box" markdown="1">
 
-## 04-26-2024 - Introducing Document Q&A and Advanced NLP Tools
+## 04-26-2024 - Introducing Document Q&A and NLP Tools
 
 We are excited to announce two significant enhancements to our Medical Chatbot: the Document Q&A (DocQA) feature and the NLP Tools feature. These additions are designed to streamline your interactions and deepen your engagement with medical texts. The DocQA feature enables seamless management and querying of up to 10 text or PDF documents, providing a focused, session-based interaction. NLP Tools feature introduces a suite of specialized tools for the extraction and analysis of medical information, tailored to your needs. Whether you are interested in extracting entities from your medical text, to deidentify or summarize them NLP Tools get you covered. These enhancements are part of our continuous effort to provide powerful, user-friendly tools that support and enhance your daily medical information handling and decision-making processes.
 
@@ -22,6 +22,10 @@ We are excited to announce two significant enhancements to our Medical Chatbot: 
 
 ### Overview
 The DocQA feature enhances the Medical Chatbot by allowing users to upload and interact with up to 10 text (.txt) or PDF (.pdf) documents. This feature is designed to provide tailored answers based on the content of the uploaded documents.
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/BJ4cXJl7ZyY?si=P1GBmRtTBTmPeRJ0&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
 ### Key Features
 1. **Document Upload and Session Initiation**
    - Users can upload one or several documents directly into the chat interface.
@@ -62,9 +66,21 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
 ### Key Features
 1. **Tools Overview**
    - **Deidentification/Obfuscation of PHI**: Automatically detects and masks or obfuscates personally identifiable information (PHI) from medical text to ensure privacy and compliance with data protection regulations.
+   
+   <iframe width="800" height="450" src="https://www.youtube.com/embed/odSyX3uKjwg?si=XZZO8aY3t82Iqslu&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
    - **General Medical Entity Extraction**: Identifies and extracts general medical entities from text, facilitating quick access to relevant medical terms and concepts.
+
+   <iframe width="800" height="450" src="https://www.youtube.com/embed/FjAzlImC0zQ?si=N415bCn2AU2h6i6U&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
    - **Oncological Entity Extraction**: Specialized for recognizing and extracting terms related to oncology, aiding in the analysis of cancer-related medical texts.
+
+   <iframe width="800" height="450" src="https://www.youtube.com/embed/qTbH57SI6R0?si=HO8riHFw-cXYeIvK&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
    - **Posology Entity Extraction**: Focuses on extracting dosage and medication instructions from medical documents, crucial for understanding treatment protocols.
+
+   <iframe width="800" height="450" src="https://www.youtube.com/embed/5M5nLUdTb4I?si=7uCei72nxBSpvwMe&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 2. **Customizable Accessibility**
    - Users can enable or disable NLP tools based on their specific needs or preferences, allowing for a personalized experience and control over the processing features used.
 3. **Accessing Tools**

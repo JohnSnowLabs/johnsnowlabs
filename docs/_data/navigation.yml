@@ -78,7 +78,9 @@ healthcare-gpt:
       - title: Features
         url: /docs/en/chatbot/features
       - title: Tools
-        url: /docs/en/chatbot/tools        
+        url: /docs/en/chatbot/tools       
+      - title: DocQA
+        url: /docs/en/chatbot/docqa          
       - title: User Guide
         url: /docs/en/chatbot/usage_guides
       - title: Support
