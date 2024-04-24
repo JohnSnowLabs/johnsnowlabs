@@ -18,11 +18,11 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical entities and concepts to 4 major categories of UMLS CUI codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It has a faster load time, with a speedup of about 6X when compared to previous versions.
+This model maps clinical entities and concepts to 4 major categories of UMLS CUI codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. 
 
 ## Predicted Entities
 
-`This model returns CUI (concept unique identifier) codes for Clinical Findings`, `Medical Devices`, `Anatomical Structures`, `Injuries & Poisoning terms`
+This model returns CUI (concept unique identifier) codes for `Clinical Findings`, `Medical Devices`, `Anatomical Structures`, `Injuries & Poisoning terms`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -32,7 +32,7 @@ This model maps clinical entities and concepts to 4 major categories of UMLS CUI
 
 ## How to use
 
-```sbiobertresolve_umls_major_concepts``` resolver model must be used with ```sbiobert_base_cased_mli``` as embeddings ```ner_jsl``` as NER model. ```Cerebrovascular_Disease, Communicable_Disease, Diabetes, Disease_Syndrome_Disorder, Heart_Disease, Hyperlipidemia, Hypertension, Injury_or_Poisoning, Kidney_Disease, Medical-Device, Obesity, Oncological, Overweight, Psychological_Condition, Symptom, VS_Finding, ImagingFindings, EKG_Findings, Vaccine_Name, RelativeDate``` set in ```.setWhiteList()```.
+`sbiobertresolve_umls_major_concepts` resolver model must be used with `sbiobert_base_cased_mli` as embeddings `ner_jsl` as NER model. `Cerebrovascular_Disease, Communicable_Disease, Diabetes, Disease_Syndrome_Disorder, Heart_Disease, Hyperlipidemia, Hypertension, Injury_or_Poisoning, Kidney_Disease, Medical-Device, Obesity, Oncological, Overweight, Psychological_Condition, Symptom, VS_Finding, ImagingFindings, EKG_Findings, Vaccine_Name, RelativeDate` set in `.setWhiteList()`.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
@@ -41,7 +41,7 @@ document_assembler = DocumentAssembler()\
       .setInputCol('text')\
       .setOutputCol('document')
 
-sentence_detector = SentenceDetector()\
+sentence_detector =SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", 'clinical/models')\
       .setInputCols(["document"])\
       .setOutputCol("sentence")
 
@@ -89,7 +89,7 @@ val document_assembler = new DocumentAssembler()
       .setInputCol("text")
       .setOutputCol("document")
 
-val sentence_detector = new SentenceDetector()
+val sentence_detector = new SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", 'clinical/models')
       .setInputCols(Array("document"))
       .setOutputCol("sentence")
 
