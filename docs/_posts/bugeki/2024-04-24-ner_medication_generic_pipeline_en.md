@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Pipeline to Detect Drug Entities
+title: Pipeline to Detect Drug Entities - Generic
 author: John Snow Labs
 name: ner_medication_generic_pipeline
 date: 2024-04-24
@@ -64,18 +64,18 @@ Thiamine 100 mg , Folic acid 1 mg , multivitamins , Calcium carbonate plus Vitam
 
 ```bash
 
-+-----------------------+---------+
-|medication_greedy_chunk|ner_label|
-+-----------------------+---------+
-|        Thiamine 100 mg|     DRUG|
-|        Folic acid 1 mg|     DRUG|
-|          multivitamins|     DRUG|
-|      Calcium carbonate|     DRUG|
-|       Vitamin D 250 mg|     DRUG|
-|   Heparin 5000 unit...|     DRUG|
-|         Prilosec 20 mg|     DRUG|
-|         Senna two tabs|     DRUG|
-+-----------------------+---------+
++---------------------------------+---------+
+|medication_greedy_chunk          |ner_label|
++---------------------------------+---------+
+|Thiamine 100 mg                  |DRUG     |
+|Folic acid 1 mg                  |DRUG     |
+|multivitamins                    |DRUG     |
+|Calcium carbonate                |DRUG     |
+|Vitamin D 250 mg                 |DRUG     |
+|Heparin 5000 units subcutaneously|DRUG     |
+|Prilosec 20 mg                   |DRUG     |
+|Senna two tabs                   |DRUG     |
++---------------------------------+---------+
 
 ```
 
