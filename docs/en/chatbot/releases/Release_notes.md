@@ -14,9 +14,7 @@ sidebar:
 
 ## 04-26-2024 - Introducing Document Q&A and NLP Tools
 
-We are excited to announce two significant enhancements to our Medical Chatbot: the Document Q&A (DocQA) feature and the NLP Tools feature. These additions are designed to streamline your interactions and deepen your engagement with medical texts. The DocQA feature enables seamless management and querying of up to 10 text or PDF documents, providing a focused, session-based interaction. NLP Tools feature introduces a suite of specialized tools for the extraction and analysis of medical information, tailored to your needs. Whether you are interested in extracting entities from your medical text, to deidentify or summarize them NLP Tools get you covered. These enhancements are part of our continuous effort to provide powerful, user-friendly tools that support and enhance your daily medical information handling and decision-making processes.
-
-We are excited to announce two significant enhancements to our Medical Chatbot: the Document Q&A (DocQA) feature and the addition of 5 NLP Tools. These new additions are crafted to enhance your interaction and engagement with medical texts. DocQA allows an efficient management and querying of up to 10 text or PDF documents, offering a streamlined, session-based user experience. Meanwhile, the NLP Tools feature delivers a collection of specialized tools designed for a detailed extraction and analysis of medical data, customized to meet your specific needs. Whether you need to extract entities, deidentify information, or summarize medical texts, the NLP Tools have you covered. These upgrades reflect our ongoing commitment to providing robust, intuitive tools that support and advance your everyday handling of medical information and decision-making processes.
+We are excited to announce two significant enhancements to our Medical Chatbot: the Document Q&A (DocQA) feature and the NLP Tools feature. These additions are designed to streamline your interactions and deepen your engagement with medical texts. The DocQA feature enables seamless management and querying of up to 10 text or PDF documents, providing a focused, session-based interaction. NLP Tools feature introduces a suite of specialized tools for the extraction and analysis of medical information, tailored to your needs. Whether you are interested in extracting entities from your medical text, to de-identify or summarize them, NLP Tools get you covered. These enhancements are part of our continuous effort to provide powerful, user-friendly tools that support and enhance your daily medical information handling and decision-making processes.
 
 ## Introducing Document Q&A (DocQA) Feature
 
@@ -33,7 +31,7 @@ The DocQA feature enhances the Medical Chatbot by allowing users to upload and i
    - Each user is limited to one active DocQA session at any given time.
 
 2. **Session Management and Visibility**
-   - The active DocQA session appears as DocQA in the Conversation History.
+   - The active DocQA session appears as "Document Q&A" in the Conversation History.
    - This session is pinned to the top of the list and remains there until the session is closed or the conversation is removed.
 
 3. **Document Management within Sessions**
@@ -42,10 +40,13 @@ The DocQA feature enhances the Medical Chatbot by allowing users to upload and i
 
 4. **Session Interaction**
    - Users can start a new chat by clicking the "New Chat" button, which opens an empty chat window.
+   - Users can seamlessly transition to a new chat at any point to address queries beyond the scope of the DocQA Session.
    - Users can easily navigate back to an active DocQA session via the Conversation History.
 
 5. **Session Termination**
    - Removing a DocQA session from the Chat History will end the session and delete the associated files.
+   - Removing all the files from the DocQA Session's Target Documents will also end the session.
+   - Once a DocQA chat session is ended, it transitions into a read-only mode, providing users with a comprehensive overview of the conversation. 
 
 6. **Query Handling and Document Interaction**
    - Questions asked within the DocQA session are answered using information from the target documents.
@@ -55,6 +56,7 @@ The DocQA feature enhances the Medical Chatbot by allowing users to upload and i
 - **Focused Answers:** Provides precise information derived directly from uploaded documents.
 - **Efficient Navigation:** Seamlessly switch between general chat and document-specific queries.
 - **Resource Management:** Control over the documents within the session ensures relevance and efficiency in information retrieval.
+- **Accelerated Learning**: Efficiently reads and analyzes the given documents which helps aid in quick content summarization and analysis for learning.
 
 This feature is part of our ongoing commitment to enhance user interaction and improve the informational value of the Medical Chatbot. We look forward to your feedback and continual engagement with this new functionality.
 
@@ -65,7 +67,7 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
 
 ### Key Features
 1. **Tools Overview**
-   - **Deidentification/Obfuscation of PHI**: Automatically detects and masks or obfuscates personally identifiable information (PHI) from medical text to ensure privacy and compliance with data protection regulations.
+   - **Deidentification/Obfuscation of PHI**: Automatically detects and masks or obfuscates protected health information (PHI) from medical text to ensure privacy and compliance with data protection regulations. Users can specify to de-identify or obfuscate the medical text based on their requirements. 
    
    <iframe width="800" height="450" src="https://www.youtube.com/embed/odSyX3uKjwg?si=XZZO8aY3t82Iqslu&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -85,10 +87,16 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
    - Users can enable or disable NLP tools based on their specific needs or preferences, allowing for a personalized experience and control over the processing features used.
 3. **Accessing Tools**
    - NLP tools can be invoked in two ways: via regular queries in natural language or by using the '@' operator for direct tool activation.
-   - Typing '@' in the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.
-   - The @ operator also allows direct access to `MedResearch` and `Wikipedia` tools for targeted questions. For instance when using `@MedResearch` at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
-4. **Export results in csv format**
-   - All results computed using the NLP tools can be exported in csv format. For each detected entity the export also contains confidence information. 
+   - Typing '@' at the beginning of the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.
+   - The @ operator also allows direct access to `MedResearch` and `Wikipedia` tools for targeted questions. For instance when using `@medical_research` at the beginning of your question, the chatbot will directly engage the `MedResearch` tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
+   - Similarly, for NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
+       - `@deidentification`: Deidentification of medical text
+       - `@obfuscation`: Obfuscation of medical text
+       - `@ner_medical`: General Medical Entity Extraction
+       - `@ner_medical_oncology `: Oncological Entity Extraction
+       - `@ner_medical_posology `: Posology Entity Extraction
+4. **Export results in CSV format**
+   - All the Entity Extraction results computed using the NLP tools can be exported in CSV format. For each detected entity, the export also contains confidence information, ensuring transparency and reliability in data analysis.
 
 ### User Benefits
 - **Enhanced Privacy and Compliance**: Safeguards sensitive information by efficiently deidentifying PHI from medical texts.
