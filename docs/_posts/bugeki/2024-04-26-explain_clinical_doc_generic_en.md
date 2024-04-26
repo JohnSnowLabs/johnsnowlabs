@@ -4,7 +4,7 @@ title: Explain Clinical Document Generic
 author: John Snow Labs
 name: explain_clinical_doc_generic
 date: 2024-04-26
-tags: [licensed, clinical, en, doc, ner, pipelineassertion, relation_extraction, generic]
+tags: [licensed, clinical, en, doc, ner, pipeline, assertion, relation_extraction, generic]
 task: [Pipeline Healthcare, Named Entity Recognition, Assertion Status, Relation Extraction]
 language: en
 edition: Healthcare NLP 5.2.1
@@ -22,7 +22,7 @@ This pipeline is designed to:
                       - extract clinical/medical entities
                       - assign assertion status to the extracted entities
                       - establish relations between the extracted entities
-                 from clinical texts. In this pipeline, 4 NER models, one assertion model, and one relation extraction model were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract.
+from clinical texts. In this pipeline, 4 NER models, one assertion model, and one relation extraction model were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract.
                       - Clinical Entity Labels: `PROBLEM`, `TEST`, `TREATMENT`
                       - Assertion Status Labels: `Present`, `Absent`, `Possible`, `Planned`, `Past`, `Family`, `Hypotetical`, `SomeoneElse`
                       - Relation Extraction Labels: `TrAP`, `TeRP`, `TrIP`, `TrWP`, `TrCP`, `TrAP`, `TrNAP`, `TeCP`, `PIP`
@@ -39,6 +39,7 @@ This pipeline is designed to:
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
