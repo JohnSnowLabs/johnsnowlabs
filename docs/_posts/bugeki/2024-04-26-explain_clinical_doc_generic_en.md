@@ -4,7 +4,7 @@ title: Explain Clinical Document Generic
 author: John Snow Labs
 name: explain_clinical_doc_generic
 date: 2024-04-26
-tags: [licensed, clinical, en, doc, ner, pipelineassertion, relation_extraction, generic]
+tags: [licensed, clinical, en, doc, ner, pipeline, relation_extraction, generic]
 task: [Pipeline Healthcare, Named Entity Recognition, Assertion Status, Relation Extraction]
 language: en
 edition: Healthcare NLP 5.3.1
