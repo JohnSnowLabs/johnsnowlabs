@@ -30,6 +30,8 @@ The DocQA feature enhances the Medical Chatbot by allowing users to upload and i
    - Upon uploading documents, a DocQA session is automatically initiated.
    - Each user is limited to one active DocQA session at any given time.
 
+![Start_DocQA_Session](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/81181354-9c06-4115-bee9-ad35a1a9ac5d)
+
 2. **Session Management and Visibility**
    - The active DocQA session appears as "Document Q&A" in the Conversation History.
    - This session is pinned to the top of the list and remains there until the session is closed or the conversation is removed.
