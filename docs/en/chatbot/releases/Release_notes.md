@@ -36,7 +36,7 @@ The DocQA feature enhances the Medical Chatbot by allowing users to upload and i
    - The active DocQA session appears as "Document Q&A" in the Conversation History.
    - This session is pinned to the top of the list and remains there until the session is closed or the conversation is removed.
 
-![Tool_Selector](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/0d20a844-195f-43d8-9f0a-30ff5f0edca4)
+<img width="2944" alt="Session_Visibility" src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/db5b6fd6-867d-4157-9240-c472e23e5719">
 
 3. **Document Management within Sessions**
    - If a document is uploaded in a regular chat while a DocQA session is active, it will be automatically added to the existing session's Target Documents.
