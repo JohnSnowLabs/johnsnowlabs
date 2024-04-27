@@ -39,6 +39,7 @@ from clinical texts. In this pipeline, 4 NER models, one assertion model, and on
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
