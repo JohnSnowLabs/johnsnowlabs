@@ -934,8 +934,8 @@ Number of partitions should be equal to number of cores/executors.</p>
       <tr>
         <td>splittingStategy</td>
         <td><a href="ocr_structures#splittingstrategy">SplittingStrategy</a></td>
-        <td>SplittingStrategy.FIXED_SIZE_OF_PARTITION</td>
-        <td>Splitting strategy.</td>
+        <td><code class="language-plaintext highlighter-rouge">SplittingStrategy.FIXED_SIZE_OF_PARTITION </code></td>
+        <td>Controls how a single document is split into a number of partitions each containing a number of pages from the original document. This is useful to process documents with high page count. It can be one of {FIXED_SIZE_OF_PARTITION, FIXED_NUMBER_OF_PARTITIONS}, when <code class="language-plaintext highlighter-rouge">FIXED_SIZE_OF_PARTITION</code> is used, <code class="language-plaintext highlighter-rouge">splitNumBatch</code> represents the size of each partition, and when <code class="language-plaintext highlighter-rouge">FIXED_NUMBER_OF_PARTITIONS</code> is used, <code class="language-plaintext highlighter-rouge">splitNumBatch</code> represents the number of partitions.</td>
       </tr>
     </tbody>
   </table>
