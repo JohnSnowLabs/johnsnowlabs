@@ -40,6 +40,7 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="AssertionDL" summary="AssertionDL is a deep Learning based approach used to extract Assertion Status from extracted entities and text."%}
 {% include templates/licensed_table_entry.md  name="AssertionFilterer" summary="Filters entities coming from ASSERTION type annotations and returns the CHUNKS."%}
 {% include templates/licensed_table_entry.md  name="AssertionLogReg" summary="Logistic Regression is used to extract Assertion Status from extracted entities and text."%}
+{% include templates/licensed_table_entry.md  name="AssertionMerger" summary="Merges variety assertion columns coming from Assertion annotators"%}
 {% include templates/licensed_table_entry.md  name="AverageEmbeddings" summary="Computes the mean of vector embeddings for two sentences of equal size, producing a unified representation"%}
 {% include templates/licensed_table_entry.md  name="BertForSequenceClassification" summary="Can load Bert Models with sequence classification/regression head on top (a linear layer on top of the pooled output) e.g. for multi-class document classification tasks."%}
 {% include templates/licensed_table_entry.md  name="BertForTokenClassifier" summary="Can load Bert Models with a token classification head on top (a linear layer on top of the hidden-states output) for Named-Entity-Recognition (NER) tasks."%}
@@ -68,12 +69,15 @@ Check out the [Spark NLP Annotators page](https://nlp.johnsnowlabs.com/docs/en/a
 {% include templates/licensed_table_entry.md  name="EntityRulerInternal" summary="This annotator match exact strings or regex patterns provided in a file against a Document and assigns them an named entity."%}
 {% include templates/licensed_table_entry.md  name="FeaturesAssembler" summary="Collects features from different columns."%}
 {% include templates/licensed_table_entry.md  name="FewShotClassifier" summary="This Annotator specifically target few-shot classification tasks, which involve training a model to make accurate predictions with limited labeled data."%}
+{% include templates/licensed_table_entry.md  name="FewShotAssertionClassifierModel" summary="assertion classification using large (LLMS based) few shot classifiers based on the SetFit approach."%}
 {% include templates/licensed_table_entry.md  name="Flattener" summary="`Flattener` annotator in Spark NLP converts annotation results into a simplified DataFrame format for easier analysis and interpretation."%}
 {% include templates/licensed_table_entry.md  name="GenericClassifier" summary="Creates a generic single-label classifier which uses pre-generated Tensorflow graphs."%}
 {% include templates/licensed_table_entry.md  name="GenericLogRegClassifier" summary="Is a derivative of GenericClassifier which implements a multinomial logistic regression."%}
 {% include templates/licensed_table_entry.md  name="GenericSVMClassifier" summary="Creates a generic single-label classifier which uses pre-generated Tensorflow graphs."%}
 {% include templates/licensed_table_entry.md  name="InternalDocumentSplitter" summary="This annotator splits large documents into small documents."%}
 {% include templates/licensed_table_entry.md  name="IOBTagger" summary="Merges token tags and NER labels from chunks in the specified format."%}
+{% include templates/licensed_table_entry.md  name="LightDeIdentification" summary="Light version of DeIdentification."%}
+{% include templates/licensed_table_entry.md  name="MultiChunk2Doc" summary="Merges a given chunks to create a document."%}
 {% include templates/licensed_table_entry.md  name="NameChunkObfuscator" summary="This annotator allows to transform a dataset with an Input Annotation of type CHUNK, into its obfuscated version of by obfuscating the given CHUNKS."%}
 {% include templates/licensed_table_entry.md  name="NerChunker" summary="Extracts phrases that fits into a known pattern using the NER tags."%}
 {% include templates/licensed_table_entry.md  name="NerConverterInternal" summary="Converts a IOB or IOB2 representation of NER to a user-friendly one, by associating the tokens of recognized entities and their label."%}

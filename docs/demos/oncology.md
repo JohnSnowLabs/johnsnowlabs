@@ -116,6 +116,18 @@ data:
           - text: Colab
             type: blue_btn
             url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/CLASSIFICATION_BIOMARKER.ipynb
+        - title: Oncological Response to Treatment for Classification
+          id: oncological_response_treatment_classification 
+          image: 
+              src: /assets/images/Oncological_Response_to_Treatment_for_Classification.svg
+          excerpt: This model is intended to detect oncological responses to treatments in clinical notes.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/healthcare/CLASSIFICATION_RESPONSE_TO_TREATMENT/
+          - text: Colab
+            type: blue_btn
+            url: https://colab.research.google.com/github/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/streamlit_notebooks/healthcare/CLASSIFICATION_RESPONSE_TO_TREATMENT.ipynb
         - title: Classify Complaints about Healthcare Facilities 
           id: classify_complaints_healthcare_facilities 
           image: 

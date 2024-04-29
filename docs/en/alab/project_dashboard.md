@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Dashboard
 permalink: /docs/en/alab/project_dashboard
 key: docs-training
@@ -13,7 +13,7 @@ sidebar:
   nav: annotation-lab
 ---
 
-When logging in to the Annotation Lab, the user sees the main `Projects Dashboard`. For each project, details like description, task counts, assigned groups, team members, etc. are available on the main dashboard so users can quickly identify the projects they need to work on, without navigating to the `Project Details` page.
+When logging in to the Generative AI Lab, the user sees the main `Projects Dashboard`. For each project, details like description, task counts, assigned groups, team members, etc. are available on the main dashboard so users can quickly identify the projects they need to work on, without navigating to the `Project Details` page.
 
 Projects can be filtered based on the creator: **My Projects**, created by the current user or **Shared With Me**, created by other users and shared with the current one.
 **All Projects** option combines the list of the projects created by the current user and those shared by others.

@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.3.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.windowed.WindowedSentenceModel</title>
-          <meta name="description" content="Spark NLP 5.3.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.windowed.WindowedSentenceModel" />
-          <meta name="keywords" content="Spark NLP 5.3.0 ScalaDoc com.johnsnowlabs.nlp.annotators.windowed.WindowedSentenceModel" />
+          <title>Spark NLP 5.3.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.windowed.WindowedSentenceModel</title>
+          <meta name="description" content="Spark NLP 5.3.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.windowed.WindowedSentenceModel" />
+          <meta name="keywords" content="Spark NLP 5.3.2 ScalaDoc com.johnsnowlabs.nlp.annotators.windowed.WindowedSentenceModel" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.3.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.3.2 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -167,8 +167,8 @@
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="com.johnsnowlabs.nlp.annotators.windowed">windowed</a></dd></dl></div>
     </li><li class="current-entities indented5">
                         <a class="object" href="WindowedSentenceModel$.html" title=""></a>
-                        <a class="class" href="" title="Returns the joined results after windowing its inputs"></a>
-                        <a href="" title="Returns the joined results after windowing its inputs">WindowedSentenceModel</a>
+                        <a class="class" href="" title="The WindowedSentenceModel class is used to combine a series of sentences based on specific window configurations."></a>
+                        <a href="" title="The WindowedSentenceModel class is used to combine a series of sentences based on specific window configurations.">WindowedSentenceModel</a>
                       </li>
               </ul>
             </div>
@@ -199,8 +199,44 @@
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Returns the joined results after windowing its inputs
-</p></div><div class="toggleContainer block">
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>The <code>WindowedSentenceModel</code> class is used to combine a series of sentences based on specific window configurations.
+Returns the joined results after windowing its inputs</p><h4>Example</h4><pre>  <span class="kw">val</span> documentAssembler = <span class="kw">new</span> DocumentAssembler()
+    .setInputCol(<span class="lit">"text"</span>)
+    .setOutputCol(<span class="lit">"document"</span>)
+  <span class="kw">val</span> sentenceDetector = <span class="kw">new</span> SentenceDetector()
+    .setInputCols(<span class="lit">"document"</span>)
+    .setOutputCol(<span class="lit">"sentence"</span>)
+  <span class="kw">val</span> windowedSentence = <span class="kw">new</span> WindowedSentenceModel()
+    .setWindowSize(<span class="num">1</span>)
+    .setInputCols(<span class="lit">"sentence"</span>)
+    .setOutputCol(<span class="lit">"windowed"</span>)
+    .setGlueString(<span class="lit">":::"</span>)
+  <span class="kw">val</span> flattener = <span class="kw">new</span> Flattener()
+    .setInputCols(<span class="lit">"five"</span>)
+
+  <span class="kw">val</span> pipeline = <span class="kw">new</span> Pipeline().setStages(<span class="std">Array</span>(
+      documentAssembler,
+      sentenceDetector,
+      windowedSentence,
+      flattener))
+      <span class="kw">val</span> text = <span class="lit">"A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years. "</span> +
+                <span class="lit">"Two weeks prior to presentation respiratory tract infection . "</span> +
+                 <span class="lit">"She was on for HTG . "</span> +
+                <span class="lit">"She had been of presentation ."</span> +
+                <span class="lit">"examination benign with no  or rigidity . "</span>
+  <span class="kw">val</span> data = spark.createDataFrame(<span class="std">Array</span>(Tuple1(text))).toDF(<span class="lit">"text"</span>)
+
+  <span class="kw">val</span> model = pipeline.fit(data).transform(data)
+  model.show(<span class="kw">false</span>)
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+--------+----------------------+
+ |windowed_result                                                                                                                                                                       |five_begin|five_end|five_metadata_sentence|
+ +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+--------+----------------------+
+ |A <span class="num">28</span>-year-old female <span class="kw">with</span> a history of gestational diabetes mellitus diagnosed eight years.:::Two weeks prior to presentation respiratory tract infection .                       |<span class="num">0</span>         |<span class="num">152</span>     |<span class="num">0</span>                     |
+ |A <span class="num">28</span>-year-old female <span class="kw">with</span> a history of gestational diabetes mellitus diagnosed eight years.:::Two weeks prior to presentation respiratory tract infection .:::She was on <span class="kw">for</span> HTG .|<span class="num">0</span>         |<span class="num">173</span>     |<span class="num">1</span>                     |
+ |Two weeks prior to presentation respiratory tract infection .:::She was on <span class="kw">for</span> HTG .:::She had been of presentation .                                                             |<span class="num">92</span>        |<span class="num">204</span>     |<span class="num">2</span>                     |
+ |She was on <span class="kw">for</span> HTG .:::She had been of presentation .:::examination benign <span class="kw">with</span> no  or rigidity .                                                                                 |<span class="num">154</span>       |<span class="num">245</span>     |<span class="num">3</span>                     |
+ |She had been of presentation .:::examination benign <span class="kw">with</span> no  or rigidity .                                                                                                        |<span class="num">175</span>       |<span class="num">245</span>     |<span class="num">4</span>                     |
+ +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+--------+----------------------+</pre></div><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
@@ -266,7 +302,7 @@
       </span>
       
       
-    </li><li name="com.johnsnowlabs.nlp.annotators.windowed.WindowedSentenceModel#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+    </li><li name="com.johnsnowlabs.nlp.annotators.windowed.WindowedSentenceModel#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="&lt;init&gt;(uid:String):com.johnsnowlabs.nlp.annotators.windowed.WindowedSentenceModel"></a><a id="&lt;init&gt;:WindowedSentenceModel"></a>
       <span class="permalink">
       <a href="../../../../../com/johnsnowlabs/nlp/annotators/windowed/WindowedSentenceModel.html#&lt;init&gt;(uid:String):com.johnsnowlabs.nlp.annotators.windowed.WindowedSentenceModel" title="Permalink">
@@ -281,7 +317,7 @@
         <span class="name">WindowedSentenceModel</span><span class="params">(<span name="uid">uid: <span class="extype" name="scala.Predef.String">String</span></span>)</span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">uid</dt><dd class="cmt"><p>a unique identifier for the instantiated AnnotatorModel</p></dd></dl></div>
+      
     </li></ol>
             </div>
 

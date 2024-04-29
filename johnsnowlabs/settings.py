@@ -12,10 +12,10 @@ from johnsnowlabs.utils.env_utils import (
 
 
 
-raw_version_jsl_lib = "5.3.0"
+raw_version_jsl_lib = "5.3.4"
 
 
-raw_version_nlp = "5.3.0"
+raw_version_nlp = "5.3.1"
 
 raw_version_nlu = "5.3.0"
 
@@ -23,11 +23,11 @@ raw_version_nlu = "5.3.0"
 raw_version_pyspark = "3.4.0"
 raw_version_nlp_display = "5.0"
 
-raw_version_medical = "5.3.0"
-raw_version_secret_medical = "5.3.0"
+raw_version_medical = "5.3.1"
+raw_version_secret_medical = "5.3.1"
 
-raw_version_secret_ocr = "5.3.0"
-raw_version_ocr = "5.3.0"
+raw_version_secret_ocr = "5.3.1"
+raw_version_ocr = "5.3.1"
 
 raw_version_pydantic = "1.10.11"
 
@@ -72,9 +72,6 @@ creds_info_file = os.path.join(license_dir, "info.json")
 dbfs_home_dir = "dbfs:/johnsnowlabs"
 dbfs_java_dir = f"{dbfs_home_dir}/java_installs"
 dbfs_py_dir = f"{dbfs_home_dir}/py_installs"
-# dbfs_license_path = "/johnsnowlabs/license.json"
-dbfs_license_path = f"{dbfs_home_dir}/license.json"
-dbfs_info_path = f"{dbfs_home_dir}/info.json"
 db_py_jobs_dir = f"{dbfs_home_dir}/py_jobs"
 db_py_notebook_dir = f"{dbfs_home_dir}/py_notebook_jobs"
 db_jar_jobs_dir = f"{dbfs_home_dir}/jar_jobs"
@@ -103,3 +100,8 @@ emr_volume_size = 100
 # Local Spark mode
 spark_session_name = "John-Snow-Labs-Spark-Session 🚀"
 
+
+### Docker Settings
+
+docker_image_name = "johnsnowlabs_image"
+docker_container_name = "johnsnowlabs_container"

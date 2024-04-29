@@ -2,7 +2,7 @@
 layout: docs
 comment: no
 header: true
-seotitle: NLP Lab | John Snow Labs
+seotitle: Generative AI Lab | John Snow Labs
 title: Audio
 permalink: /docs/en/alab/tags_audio
 key: docs-training
@@ -17,7 +17,7 @@ The audio template is split into three parts: audio classification, emotion segm
 
 ### Audio Classification
 
-Suppose you have a sample JSON which contains some audio that you wish to classify (This input is set as default when you click on the template in NLP Lab):
+Suppose you have a sample JSON which contains some audio that you wish to classify (This input is set as default when you click on the template in Generative AI Lab):
 
 ```bash
 {

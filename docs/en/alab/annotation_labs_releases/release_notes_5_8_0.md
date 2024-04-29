@@ -135,6 +135,7 @@ The upgrade pathway in NLP Lab has been refined in version 5.8, particularly add
 
 When initiating an upgrade to version 5.8 or beyond, users will be prompted to enter the new admin password, should it have been modified. This step is designed to automate the admin password update, thereby removing the need for manual adjustments to configuration files. Users who have not changed their admin password can simply proceed by pressing "Enter." This enhancement not only streamlines the upgrade process but also minimizes the likelihood of errors and saves valuable time.
 ### Bug Fixes
+
 - **Filter in Models Hub page incorrectly lists Pipelines when Healthcare is selected in edition filter**
     
     In the past, when utilizing filters on the Models Hub page to display healthcare-type models, pipelines were inadvertently included in the list. The filter conditions have now been refined to accurately distinguish between models and pipelines. As a result, the Models Hub page no longer displays OCR pipelines when filtered specifically for healthcare-related content.
@@ -182,94 +183,6 @@ When initiating an upgrade to version 5.8 or beyond, users will be prompted to e
 - **Error when importing sample task for SBA project**
 
     In the previous version, sample tasks were not imported for both text and visual-based SBA projects. Issue is now fixed.
-
-</div><div class="prev_ver h3-box" markdown="1">
-
-### Features
-- [ALAB-3211] Add button to view the pre-annotation server logs from the cluster page
-- [ALAB-4069] Add a feature to Import and Export tasks in Azure platform
-- [ALAB-4639] Preannotate using ner model for pdf files
-
-### Improvements
-- [ALAB-3479] Enhance Test Configuration for Model Evaluation in queue state
-- [ALAB-3951] Allow task import/adding relevant section names for manually annotated section through swagger API
-- [ALAB-4070] User should be able to see logs in pre-annotation server  from the cluster page
-- [ALAB-4148] Assign Annotator or Reviewer from tasks's detail view page
-- [ALAB-4508] Add support setAlphabetResource in Free Rules 
-- [ALAB-4509] Disable Filter Tasks by Tags When Using Test/Train Tags for Dataset Splitting for training model 
-- [ALAB-4538] UI Improvements
-- [ALAB-4616] Change the Text for the filter "Filter Pre-annotation acc. to latest completion" 
-- [ALAB-4664] Improvement in Team Member page
-- [ALAB-4679] Performance improvements for Visual NER pipeline feature
-- [ALAB-4687] Filter in Models Hub page incorrectly lists Pipelines when Healthcare is selected in edition filter
-- [ALAB-4741] Display some meaningful message after user presses enter while upgrading NLP Lab for the default/custom password case
-- [ALAB-4770] Cluster Page: Fix text color for playground , alignment and icon size in server status column and error log in annotationlab pod 
-
-### Bug Fixes
-- [ALAB-3295] Choice name in classification project can contain special character '/' 
-- [ALAB-3665] Embedding that have completed downloading will still be shown as still downloading until refreshed
-- [ALAB-3893] SDOH classification models does not give any result for any task
-- [ALAB-4349] When users without admin privilege try to import project with team members, application gives internal server error
-- [ALAB-4396] Playground for some Legal and some Financial Licensed Models are not working
-- [ALAB-4537] Make assertion annotations easier for NER project
-- [ALAB-4557] When Pre-annotation fails for a single task in a Visual NER project, pre-annotation is failing for all the tasks in the project.
-- [ALAB-4575] "Reviewer Only" Users are provided a blank 3-dot menu in the task list page 
-- [ALAB-4589] When the session timeouts and the page is reloaded the page crashes
-- [ALAB-4606] If the user opens the app after the session is expired, app goes into continous loop to regenerate the new token causing the browser to crash
-- [ALAB-4640] Error logs in annotationlab pod while running owasp zap scan
-- [ALAB-4642] Clicking on labels part of edition dropdown in NLP Models Hub Page does not select/unselect the checkbox
-- [ALAB-4661] Error while getting 'admin' password, when installing version 5.6.2  using one liner
-- [ALAB-4669] Help - Auto sync not working
-- [ALAB-4673] Benchmarking UI for trained RE Models shows Epoch values instead (Benchmarking Data not shown in Training logs as well)
-- [ALAB-4674] After RE Training / Assertion Training, only NER model is only deployed instead of the RE / Assertion Model 
-- [ALAB-4676] A blank pre-annotation server is deployed after certain RE training cases
-- [ALAB-4684] API Test Case: Import Project API is Failing
-- [ALAB-4689] Reuse Resources: Unable to remove RE models from the models list shown during "Multi-embeddings detected" case
-- [ALAB-4693] WebHelp component missing in App.js in develop
-- [ALAB-4695] Training Page: Saved Training Settings are being reset when training type is changed. 
-- [ALAB-4697] Rephrase the text in the section configuration
-- [ALAB-4698] Visual NER annotating issues with rectangle labels
-- [ALAB-4705] Playground: The text field to insert text to test models/prompts/rules in playground is disabled but editable
-- [ALAB-4706] Deploying legmulticlf_law_stack_exchange model in playground is causing the playground server to restart continuously 
-- [ALAB-4708] Upgrade fails when the admin password is changed
-- [ALAB-4715] Transformer critical CVE in active learning image
-- [ALAB-4719] Task name not imported while importing tasks for Rate PDF projects
-- [ALAB-4726] Error when importing sample task for SBA project
-- [ALAB-4730] "available_embeddings" and "available_models" APIs face 500 error when downloading Models/embeddings
-- [ALAB-4731] Task is not imported to Visual NER project
-- [ALAB-4736] License Server CrashLoopBackOff error when downloading models using Floating License
-- [ALAB-4739] Error while deploying OCR and Pre-annotation Server
-- [ALAB-4740] Labeling Page crashes for Visual NER project
-- [ALAB-4742] Labeling Page Preview in Setup page crashes for Visual NER project
-- [ALAB-4743] Internal Server Error while importing generated synthetic tasks
-- [ALAB-4745] Rules cannot be edited right after a new rule is created. 
-- [ALAB-4753] Pre-annotation using Rules and NER Prompts is not giving predictions
-- [ALAB-4754] Azure Blob Task Export: Internal Server Error faced when incorrect details provided for any of the required fields
-- [ALAB-4755] Azure Blob Task Import: Page crashes (500 Error) when incorrect details provided for any of the required fields
-- [ALAB-4763] Unable to import certain supported file types using Azure Container Import
-- [ALAB-4764] Help not opened in the right context when on the labeling task page 
-- [ALAB-4773] Words containing special characters are ignored by NER model with Visual NER prediction
-- [ALAB-4775] Pre-annotation is not working on SBA Projects/Tasks (No predictions generated)
-- [ALAB-4777] Pre-annotation failing for tasks that contain spaces when NER models are used in Visual NER Projects
-- [ALAB-4778] Project export is failing for Visual NER project when NER model is used in that project
-- [ALAB-4783] Create section button is disabled when trying to create section in Visual NER task
-- [ALAB-4785] RE Prompts are not generating RE annotations during pre-annotation
-- [ALAB-4806] Pre-annotation using trained Visual NER model is failing
-- [ALAB-4816] re prediction not working when annotating same task multiple times with same preannotation server
-
-### Tasks
-- [ALAB-2601] Add a back button to the Labeling Screen
-- [ALAB-3577] Revisit the Section toolbar design
-- [ALAB-4395] Issue in pdf import for a particular file
-- [ALAB-4584] Explore if AMI and Azure Images could be created in parallel in Jenkins
-- [ALAB-4596] Use docker agent to create AMI/Azure-VM instead of docker-compose
-- [ALAB-4617] Research reuse of existing code/implementation for VisualNLP project type & pdf files
-- [ALAB-4725] Frontend: Make changes in UI to support ner models in visual ner config
-- [ALAB-4759] Incorporate Latest Help content 
-- [ALAB-4765] Implement sba in ner models based visual ner project
-- [ALAB-4784] Fix Production Build for active learning as per the new changes in Active Learning Build Process
-- [ALAB-4787] Add Assertion template in Setup Page
-
 
 </div><div class="prev_ver h3-box" markdown="1">
 

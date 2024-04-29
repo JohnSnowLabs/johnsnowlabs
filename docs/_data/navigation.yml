@@ -87,7 +87,7 @@ healthcare-gpt:
         url: /docs/en/chatbot/releases/release_notes
 
 annotation-lab:
-  - title: NLP Lab
+  - title: Generative AI Lab
     children:
       - title: Getting Started
         url: /docs/en/alab/quickstart
@@ -117,7 +117,7 @@ annotation-lab:
             url: /docs/en/alab/project_creation
           - title: Configuration
             url: /docs/en/alab/project_configuration
-          - title: Import Tasks
+          - title: Import
             url: /docs/en/alab/import
           - title: Generate Synthetic Data
             url: /docs/en/alab/synthetic_task
@@ -146,7 +146,9 @@ annotation-lab:
           - title: Pre-annotation
             url: /docs/en/alab/preannotation
           - title: Section Based Annotation
-            url: /docs/en/alab/section_based_annotations 
+            url: /docs/en/alab/section_based_annotations
+          - title: Entity Resolution
+            url: /docs/en/alab/resolvers 
           - title: Audit Trail
             url: /docs/en/alab/audit_trail
           - title: Productivity
@@ -339,6 +341,10 @@ jsl:
         url:    /docs/en/jsl/start-a-sparksession
       - title:  Settings & Cache Folder
         url:    /docs/en/jsl/john-snow-labs-home
+      - title:  Utilities for Docker
+        url:    /docs/en/jsl/docker-utils
+      - title:  Utilities for Snowflake
+        url:    /docs/en/jsl/snowflake-utils
       - title:  Utilities for Databricks
         url:    /docs/en/jsl/databricks-utils
       - title:  Utilities for AWS EMR

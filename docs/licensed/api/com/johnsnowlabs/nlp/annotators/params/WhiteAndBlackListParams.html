@@ -3,9 +3,9 @@
         <head>
           <meta http-equiv="X-UA-Compatible" content="IE=edge" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-          <title>Spark NLP 5.3.0 ScalaDoc  - com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams</title>
-          <meta name="description" content="Spark NLP 5.3.0 ScalaDoc - com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams" />
-          <meta name="keywords" content="Spark NLP 5.3.0 ScalaDoc com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams" />
+          <title>Spark NLP 5.3.2 ScalaDoc  - com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams</title>
+          <meta name="description" content="Spark NLP 5.3.2 ScalaDoc - com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams" />
+          <meta name="keywords" content="Spark NLP 5.3.2 ScalaDoc com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams" />
           <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
           
       
@@ -28,7 +28,7 @@
         </head>
         <body>
       <div id="search">
-        <span id="doc-title">Spark NLP 5.3.0 ScalaDoc<span id="doc-version"></span></span>
+        <span id="doc-title">Spark NLP 5.3.2 ScalaDoc<span id="doc-version"></span></span>
         <span class="close-results"><span class="left">&lt;</span> Back</span>
         <div id="textfilter">
           <span class="input">
@@ -202,7 +202,7 @@
             <span class="toggle">
               Known Subclasses
             </span>
-            <div class="subClasses hiddenContent"><a href="../DocumentFiltererByClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier">DocumentFiltererByClassifier</a></div>
+            <div class="subClasses hiddenContent"><a href="../DocumentFiltererByClassifier.html" class="extype" name="com.johnsnowlabs.nlp.annotators.DocumentFiltererByClassifier">DocumentFiltererByClassifier</a>, <a href="../MultiChunk2Doc.html" class="extype" name="com.johnsnowlabs.nlp.annotators.MultiChunk2Doc">MultiChunk2Doc</a>, <a href="../assertion/merger/AssertionMerger.html" class="extype" name="com.johnsnowlabs.nlp.annotators.assertion.merger.AssertionMerger">AssertionMerger</a></div>
           </div></div>
         
 
@@ -510,6 +510,23 @@ Default: true
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams#evaluateFilter" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="evaluateFilter(filter:String):Boolean"></a><a id="evaluateFilter(String):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/params/WhiteAndBlackListParams.html#evaluateFilter(filter:String):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">evaluateFilter</span><span class="params">(<span name="filter">filter: <span class="extype" name="scala.Predef.String">String</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Filter annotations by blackList and whiteList, taking into account the caseSensitive param.</p><div class="fullcomment"><div class="comment cmt"><p>Filter annotations by blackList and whiteList, taking into account the caseSensitive param.
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="org.apache.spark.ml.param.Params#explainParam" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="explainParam(param:org.apache.spark.ml.param.Param[_]):String"></a><a id="explainParam(Param[_]):String"></a>
       <span class="permalink">
@@ -574,6 +591,41 @@ Default: true
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Params</dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams#filterByEntityField" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="filterByEntityField(annotation:com.johnsnowlabs.nlp.Annotation):Boolean"></a><a id="filterByEntityField(Annotation):Boolean"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/params/WhiteAndBlackListParams.html#filterByEntityField(annotation:com.johnsnowlabs.nlp.Annotation):Boolean" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">filterByEntityField</span><span class="params">(<span name="annotation">annotation: <span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span></span>)</span><span class="result">: <span class="extype" name="scala.Boolean">Boolean</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Filter annotation by blackList and whiteList, taking into account the caseSensitive param.</p><div class="fullcomment"><div class="comment cmt"><p>Filter annotation by blackList and whiteList, taking into account the caseSensitive param.
+It filters by annotation.metadata.getOrElse(&quot;entity&quot;, annotation.metadata.getOrElse(&quot;identifier&quot;, &quot;&quot;)).toString</p></div><dl class="paramcmts block"><dt>returns</dt><dd class="cmt"><p>Boolean</p></dd></dl><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
+    </li><li name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams#filterByEntityField" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="filterByEntityField(annotations:Seq[com.johnsnowlabs.nlp.Annotation]):Seq[com.johnsnowlabs.nlp.Annotation]"></a><a id="filterByEntityField(Seq[Annotation]):Seq[Annotation]"></a>
+      <span class="permalink">
+      <a href="../../../../../com/johnsnowlabs/nlp/annotators/params/WhiteAndBlackListParams.html#filterByEntityField(annotations:Seq[com.johnsnowlabs.nlp.Annotation]):Seq[com.johnsnowlabs.nlp.Annotation]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">def</span>
+      </span>
+      <span class="symbol">
+        <span class="name">filterByEntityField</span><span class="params">(<span name="annotations">annotations: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>)</span><span class="result">: <a href="../../../../../scala/index.html#Seq[+A]=Seq[A]" class="extmbr" name="scala.Seq">Seq</a>[<span class="extype" name="com.johnsnowlabs.nlp.Annotation">Annotation</span>]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Filter annotations by blackList and whiteList, taking into account the caseSensitive param.</p><div class="fullcomment"><div class="comment cmt"><p>Filter annotations by blackList and whiteList, taking into account the caseSensitive param.
+It filters by annotation.metadata.getOrElse(&quot;entity&quot;, annotation.metadata.getOrElse(&quot;identifier&quot;, &quot;&quot;)).toString
+</p></div><dl class="attributes block"> <dt>Attributes</dt><dd>protected </dd></dl></div>
     </li><li name="com.johnsnowlabs.nlp.annotators.params.WhiteAndBlackListParams#filterByWhiteAndBlackList" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="filterByWhiteAndBlackList(annotation:com.johnsnowlabs.nlp.Annotation):Boolean"></a><a id="filterByWhiteAndBlackList(Annotation):Boolean"></a>
       <span class="permalink">

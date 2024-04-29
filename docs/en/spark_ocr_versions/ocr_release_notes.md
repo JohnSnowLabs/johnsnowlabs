@@ -5,7 +5,7 @@ seotitle: Spark OCR | John Snow Labs
 title: Spark OCR release notes
 permalink: /docs/en/spark_ocr_versions/ocr_release_notes
 key: docs-ocr-release-notes
-modify_date: "2024-01-03"
+modify_date: "2024-02-23"
 show_nav: true
 sidebar:
     nav: sparknlp-healthcare
@@ -13,126 +13,125 @@ sidebar:
 
 <div class="h3-box" markdown="1">
 
-## 5.1.2
+## 5.3.1
 
-Release date: 03-01-2024
+Release date: 11-04-2024
 
-</div><div class="h3-box" markdown="1">
 
-## Visual NLP 5.1.2 Release Notes 🕶️
+ ## Visual NLP 5.3.1 Release Notes 🕶️
 
-**We are glad to announce that Visual NLP 5.1.2 has been released!TThis release comes with faster than ever OCR models, improved Table Extraction pipelines, bug fixes, and more! 📢📢📢**
+
+**we're glad to announce that Visual NLP 5.3.1 has been released. New models, notebooks, bug fixes and more!!! 📢📢📢**
+
 
 ## Highlights 🔴
-+ New optimized OCR checkpoints with up to 5x speed ups and GPU support.
-+ New improved Table Extraction Pipeline with improved Cell Detection stage.
-+ Other Changes.
-+ Bug fixes.
 
-</div><div class="h3-box" markdown="1">
++ Improved table extraction capabilities in HocrToTextTable.
++ Improvements in LightPipelines.
++ Confidence scores in ImageToTextV2.
++ New HocrMerger annotator.
++ Checkbox detection in Visual NER.
++ New Document Clustering Pipeline using Vit Embeddings.
++ Enhancements to color options in ImageDrawRegions.
++ New notebooks & updates.
++ Bug Fixes.
 
-## New optimized OCR checkpoints with up to 5x speed ups and GPU support 🚀
-ImageToTextV2, is our Transformer-based OCR model which delivers SOTA accuracy across different pipelines like Text Extraction(OCR), Table Extraction, and Deidentification.
-We've added new checkpoints together with more options to choose which optimizations to apply.
+## Improved table extraction capabilities in HocrToTextTable
+Many issues related to column detection in our Table Extraction pipelines are addressed in this release, compared to previous Visual NLP version the metrics have improved. Table below shows F1-score(CAR or Cell Adjacency Relationship) performances on ICDAR 19 Track B dataset for different IoU values of our two versions in comparison with [other results](https://paperswithcode.com/paper/multi-type-td-tsr-extracting-tables-from/review/).
 
-</div><div class="h3-box" markdown="1">
-
-### New checkpoints for ImageToTextV2 📍
-All previous checkpoints have been updated to work with the latest optimizations, and in addition these 4 new checkpoints have been added,
-
-* ocr_large_printed_v2_opt
-* ocr_large_printed_v2
-* ocr_large_handwritten_v2_opt
-* ocr_large_handwritten_v2
-
-These 4 checkpoints are more accurate than their 'base' counterparts. We are releasing metrics for the 'base' checkpoints today, and a full chart including these checkpoints will be presented in a blogpost to be released soon.
-
-</div><div class="h3-box" markdown="1">
-
-### New options for ImageToTextV2 ⚡️
-ImageToTextV2 now supports the following configurations:
-* setUseCaching(Boolean): whether or not to use caching during processing.
-* setBatchSize(Integer): the batch size dictates the size of the groups that are processes internally at a single time by the model, typically used when setUseGPU() is set to true. 
-
-</div><div class="h3-box" markdown="1">
-
-### Choosing the best checkpoint for your problem 💥
-We put together this grid reflecting performance and accuracy metrics to help you choose the most appropriate checkpoint for your use case.
-* Accuracy
-
-![image](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/0739e251-515a-4bbe-b436-df2c9e682f66)
+| Model  | 0.6 | 0.7 | 0.8 | 0.9 |
+| ------------- | ------------- |------------- |------------- |------------- |
+| CascadeTabNet	  | 0.438  | 0.354 | 0.19 | 0.036 |
+| NLPR-PAL  | 0.365  | 0.305 | 0.195 | 0.035 |
+| Multi-Type-TD-TSR  | 0.589  | 0.404 | 0.137 | 0.015 |
+| Visual NLP 5.3.0  | 0.463  | 0.420 | 0.355 | 0.143 |
+| Visual NLP 5.3.1  | 0.509  | **0.477** | **0.403** | **0.162** |
 
 
-* Performance
+### Improvements in LightPipelines
+* ImageSplitRegions, ImageToTextV2, ImageTextDetectorCraft are now supported to be used with LightPipelines.
+* New `Base64ToBinary()` annotator to enable the use of in-memory base64 string buffers as input to LightPipelines.
 
-![image](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/13bb2eb1-db9b-40cd-bc20-a410424cb5c3)
-
-Note:
-* CER: character error rate.
-* These runtime performance metrics were collected in Databricks.
-* The CPU cluster is a 30 node cluster of 64 DBU/h, and the GPU cluster is a 10 node cluster, of 15 DBU/h.
-* Compared to previous releases, the optimizations introduced in this release yield a speed up of almost 5X, and a cost reduction of more than 4 times, if GPU is used.
-
-</div><div class="h3-box" markdown="1">
-
-## New improved Table Extraction Pipeline with improved Cell Detection stage. 🔥
-Starting in this release, our HocrToTextTable annotator can receive information related to cells regions to improve the quality of results in Table Extraction tasks. This is particularly useful for cases in which cells are multi-line, or for borderless tables.  </br>
-This is what a pipeline would look like,
 ```
-binary_to_image = BinaryToImage()
+from sparkocr.enums import ImageType
+# Transform base64 to binary
+base64_to_bin = Base64ToBinary()
+base64_to_bin.setOutputCol("content")
 
-img_to_hocr = ImageToHocr() \
-    .setInputCol("image") \
-    .setOutputCol("hocr") \
-    .setIgnoreResolution(False) \
-    .setOcrParams(["preserve_interword_spaces=0"])
+pdf_to_image = PdfToImage()
+pdf_to_image.setInputCol("content")
+pdf_to_image.setOutputCol("image")
 
-cell_detector = ImageDocumentRegionDetector() \
-    .pretrained("region_cell_detection", "en", "clinical/ocr") \
-    .setInputCol("image") \
-    .setOutputCol("cells") \
-    .setScoreThreshold(0.8)
+# Run OCR for each region
+ocr = ImageToText()
+ocr.setInputCol("image")
+ocr.setOutputCol("text")
 
-hocr_to_table = HocrToTextTable() \
-    .setInputCol("hocr") \
-    .setRegionCol("table_regions") \
-    .setOutputCol("tables") \
-    .setCellsCol("cells")
-
-PipelineModel(stages=[
-    binary_to_image,
-    img_to_hocr,
-    cell_detector
-    hocr_to_table])
+# OCR pipeline
+pipeline = PipelineModel(stages=[
+    base64_to_bin,
+    pdf_to_image,
+    ocr
+])
+lp = LightPipeline(pipeline)
+result = lp.fromString(base64_pdf)
 ```
-The following image depicts intermediate cell detection along with the final result,
-![table_cell_sample](https://github.com/JohnSnowLabs/spark-ocr/assets/4570303/d001a40b-2106-4932-a148-96b521f0fccd)
 
-For a complete, end-to-end example we encourage you to check the sample notebook,
+[Full Example here.](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrLightPipelinesBase64.ipynb)
+* new `LightPipeline.fromBinary()` method that allows the usage of in-memory binary buffers as inputs to Visual NLP pipelines.
 
-[SparkOcrImageTableRecognitionWHOCR.ipynb](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrImageTableRecognitionWHOCR.ipynb)
+### Confidence scores in ImageToTextV2
+You can now enable confidence scores in ImageToTextV2 like this,
 
-</div><div class="h3-box" markdown="1">
+```
+ocr = ImageToTextV2.pretrained("ocr_base_printed_v2_opt", "en", "clinical/ocr") \
+    .setIncludeConfidence(True)
+```
 
-## Other changes 🎯
-* Dicom private tags in metadata now can be removed in DicomMetadataDeidentifier: calling  setRemovePrivateTags(true) will cause the tags marked as private to be removed in the output Dicom document.
-* Extended Spark support to 3.4.2.
-* Turkish language now supported in ImageToText. To use it, set it by calling ImageToText.setLanguage("tur").
-* start() function now supports the configuration of GPU through the boolean `use_gpu` parameter.
-* Faster(20%), and smaller footprint, `docvqa_pix2struct_jsl_opt` Visual Question Answering checkpoint.
+![image](/assets/images/ocr/confidence_score.png)
 
-</div><div class="h3-box" markdown="1">
-
-## Bug Fixes 🪲
-* ImageSplitRegions does not work after Table Detector.
-* VisualDocumentNerLilt output has been fixed to include entire tokens instead of pieces.
-* Null Regions in HocrToTextTable are handled properly.
-* display_tables can now handle empty tables better.
-* Vulnerabilities in Python dependencies.
+Check this [updated notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/TextRecognition/SparkOcrImageToTextV2.ipynb) for an end-to-end example.
 
 
 
-* This release is compatible with ```Spark NLP 5.2.0``` and Spark NLP for``` Healthcare 5.1.1```
+### New HocrMerger annotator
+HocrMerger is a new annotator whose purpose is to allow merging two streams of HOCRs texts into a single unified HOCR representation.
+This allows mixing object detection models with text to create a unified document representation that can be fed to other downstream models like Visual NER. The new Checkbox detection pipeline uses this approach.
+
+
+### New Document Clustering Pipeline using Vit Embeddings.
+Now we can use Vit Embeddings to create document representations for clustering.
+
+```
+binary_to_image = BinaryToImage() \
+    .setInputCol("content") \
+    .setOutputCol("image")
+
+embeddings = VitImageEmbeddings \
+    .pretrained("vit_image_embeddings", "en", "clinical/ocr") \
+    .setInputCol("image") \
+    .setOutputCol("embeddings")
+```
+For an end-to-end example, please check [this notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Clustering/VisualDocumentClustering.ipynb).
+
+### Enhancements to color options in ImageDrawRegions.
+ImageDrawRegions is the annotator used for rendering regions into images so we can visualize results from different models, like, for example, Text Detection. The setColorMap method, is used to set the colors of bounding boxes drawn at top of images, the new behavior is as follows,
+ 
+  * setColorMap: when called with a '*' as argument, it will apply a single color to the bounding boxes of all labels.
+  * setColorMap: when called with a dictionary in the form: {label -> color}, it will apply a different color to each label. If a key is missing, it will pick a random value.
+  * setColorMap is not called: random colors will be picked for each label, each time you call transform() a new set of colors will be selected.
+
+### New notebooks & updates
++ New [notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRInfographicsVisualQuestionAnswering.ipynb) for Visual Question Answering on Infographics!
+
++ New [notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOcrChartToTextLLM.ipynb) for combining Visual NLP Chart Exraction and Open Source LLMs!.
+
++ New [notebook](https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/SparkOCRHandwrittenAndSignatureDetection.ipynb) on Signature and Handwritten text detection.
+
+### Bug Fixes
++ PdfToImage resetting page information when used in the same pipeline as PdfToText: When the sequence {PdfToText, PdfToImage} was used the original pages computed at PdfToText where resetted to zero by PdfToImage.
+
+
 
 
 </div><div class="prev_ver h3-box" markdown="1">
