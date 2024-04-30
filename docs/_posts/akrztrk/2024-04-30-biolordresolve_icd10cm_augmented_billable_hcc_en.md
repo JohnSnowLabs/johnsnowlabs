@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Sentence Entity Resolver for Billable ICD10-CM HCC Codes
+title: Sentence Entity Resolver for Billable ICD10-CM HCC Codes (mpnet_embeddings_biolord_2023_c embeddings)
 author: John Snow Labs
 name: biolordresolve_icd10cm_augmented_billable_hcc
 date: 2024-04-30
