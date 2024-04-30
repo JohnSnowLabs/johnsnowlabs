@@ -60,15 +60,13 @@ from sparknlp.pretrained import PretrainedPipeline
 ner_pipeline = PretrainedPipeline("explain_clinical_doc_sdoh", "en", "clinical/models")
 
 result = ner_pipeline.annotate("""
-The patient reported experiencing symptoms of anxiety and depression, which have been affecting his quality of life. The patient disclosed that he had recently lost his job and was facing financial difficulties.
-The patient reported a history of childhood trauma related to violence and abuse in his household, which has contributed to his current mental health struggles. 
-The patient's family history is significant for a first-degree relative with a history of alcohol abuse. 
-The patient also reported a history of smoking but had recently quit and was interested in receiving resources for smoking cessation. 
-The patient's medical history is notable for hypertension, which is currently well-controlled with medication. 
-The patient denied any recent substance use or sexual activity and reported being monogamous in his relationship with his wife. 
-The patient is an immigrant and speaks English as a second language. He reported difficulty accessing healthcare due to lack of transportation and insurance status. 
-He has had a herniated disc, coronary artery disease (CAD) and diabetes mellitus. The patient has a manic disorder, is presently psychotic and shows impulsive behavior. Bipolar affective disorder, manic state. 
-Mental status changes are either due to the tumor or other problems. He is living with his wife, next door to one of his children. He has been disabled since 2001.
+The patient reported experiencing symptoms of anxiety and depression, which have been affecting his quality of life. 
+He reported a history of childhood trauma related to violence and abuse in his household, which has contributed to his smoking, alcohol use and current mental health struggles. 
+He denied any recent substance use or sexual activity and reported being monogamous in his relationship with his wife. 
+The patient is an immigrant and speaks English as a second language. 
+He reported difficulty accessing healthcare due to lack of medical insurance. 
+He has a herniated disc, hypertension, coronary artery disease (CAD) and diabetes mellitus. 
+The patient has a manic disorder, is presently psychotic and shows impulsive behavior. He has been disabled since 2001.
 """)
 
 ```
@@ -79,15 +77,13 @@ import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 val ner_pipeline = PretrainedPipeline("explain_clinical_doc_sdoh", "en", "clinical/models")
 
 val result = ner_pipeline.annotate("""
-The patient reported experiencing symptoms of anxiety and depression, which have been affecting his quality of life. The patient disclosed that he had recently lost his job and was facing financial difficulties.
-The patient reported a history of childhood trauma related to violence and abuse in his household, which has contributed to his current mental health struggles. 
-The patient's family history is significant for a first-degree relative with a history of alcohol abuse. 
-The patient also reported a history of smoking but had recently quit and was interested in receiving resources for smoking cessation. 
-The patient's medical history is notable for hypertension, which is currently well-controlled with medication. 
-The patient denied any recent substance use or sexual activity and reported being monogamous in his relationship with his wife. 
-The patient is an immigrant and speaks English as a second language. He reported difficulty accessing healthcare due to lack of transportation and insurance status. 
-He has had a herniated disc, coronary artery disease (CAD) and diabetes mellitus. The patient has a manic disorder, is presently psychotic and shows impulsive behavior. Bipolar affective disorder, manic state. 
-Mental status changes are either due to the tumor or other problems. He is living with his wife, next door to one of his children. He has been disabled since 2001.
+The patient reported experiencing symptoms of anxiety and depression, which have been affecting his quality of life. 
+He reported a history of childhood trauma related to violence and abuse in his household, which has contributed to his smoking, alcohol use and current mental health struggles. 
+He denied any recent substance use or sexual activity and reported being monogamous in his relationship with his wife. 
+The patient is an immigrant and speaks English as a second language. 
+He reported difficulty accessing healthcare due to lack of medical insurance. 
+He has a herniated disc, hypertension, coronary artery disease (CAD) and diabetes mellitus. 
+The patient has a manic disorder, is presently psychotic and shows impulsive behavior. He has been disabled since 2001.
 """)
 
 ```
@@ -99,87 +95,70 @@ Mental status changes are either due to the tumor or other problems. He is livin
 
 # NER
 
-|    | chunks                          |   begin |   end | entities                  |
-|---:|:--------------------------------|--------:|------:|:--------------------------|
-|  0 | anxiety                         |      47 |    53 | Mental_Health             |
-|  1 | depression                      |      59 |    68 | Mental_Health             |
-|  2 | quality of life                 |     101 |   115 | Quality_Of_Life           |
-|  3 | financial difficulties          |     189 |   210 | Financial_Status          |
-|  4 | childhood trauma                |     247 |   262 | Childhood_Event           |
-|  5 | violence                        |     275 |   282 | Violence_Or_Abuse         |
-|  6 | abuse                           |     288 |   292 | Violence_Or_Abuse         |
-|  7 | mental health struggles         |     349 |   371 | Mental_Health             |
-|  8 | alcohol                         |     465 |   471 | Alcohol                   |
-|  9 | smoking                         |     520 |   526 | Smoking                   |
-| 10 | smoking                         |     596 |   602 | Smoking                   |
-| 11 | hypertension                    |     661 |   672 | Hypertension              |
-| 12 | substance                       |     758 |   766 | Substance_Use             |
-| 13 | sexual activity                 |     775 |   789 | Sexual_Activity           |
-| 14 | monogamous                      |     810 |   819 | Sexual_Activity           |
-| 15 | wife                            |     850 |   853 | Family_Member             |
-| 16 | immigrant                       |     875 |   883 | Population_Group          |
-| 17 | English                         |     896 |   902 | Language                  |
-| 18 | difficulty accessing healthcare |     938 |   968 | Access_To_Care            |
-| 19 | lack of transportation          |     977 |   998 | Symptom                   |
-| 20 | insurance status                |    1004 |  1019 | Insurance_Status          |
-| 21 | herniated disc                  |    1036 |  1049 | Disease_Syndrome_Disorder |
-| 22 | coronary artery disease         |    1052 |  1074 | Heart_Disease             |
-| 23 | CAD                             |    1077 |  1079 | Heart_Disease             |
-| 24 | diabetes mellitus               |    1086 |  1102 | Diabetes                  |
-| 25 | manic disorder                  |    1123 |  1136 | Mental_Health             |
-| 26 | psychotic                       |    1152 |  1160 | Mental_Health             |
-| 27 | impulsive behavior              |    1172 |  1189 | Mental_Health             |
-| 28 | Bipolar affective disorder      |    1192 |  1217 | Mental_Health             |
-| 29 | manic                           |    1220 |  1224 | Mental_Health             |
-| 30 | Mental status changes           |    1234 |  1254 | Mental_Health             |
-| 31 | tumor                           |    1278 |  1282 | Tumor_Finding             |
-| 32 | wife                            |    1325 |  1328 | Family_Member             |
-| 33 | children                        |    1355 |  1362 | Family_Member             |
-| 34 | disabled                        |    1377 |  1384 | Disability                |
+|    | chunks                          | begin | end |          entities         |
+|---:|---------------------------------|------:|----:|:-------------------------:|
+|  0 | anxiety                         | 47    | 53  |       Mental_Health       |
+|  1 | depression                      | 59    | 68  |       Mental_Health       |
+|  2 | quality of life                 | 101   | 115 |      Quality_Of_Life      |
+|  3 | childhood trauma                | 144   | 159 |      Childhood_Event      |
+|  4 | violence                        | 172   | 179 |     Violence_Or_Abuse     |
+|  5 | abuse                           | 185   | 189 |     Violence_Or_Abuse     |
+|  6 | smoking                         | 238   | 244 |          Smoking          |
+|  7 | alcohol                         | 247   | 253 |          Alcohol          |
+|  8 | substance                       | 318   | 326 |       Substance_Use       |
+|  9 | sexual activity                 | 335   | 349 |      Sexual_Activity      |
+| 10 | monogamous                      | 370   | 379 |      Sexual_Activity      |
+| 11 | wife                            | 410   | 413 |       Family_Member       |
+| 12 | immigrant                       | 435   | 443 |      Population_Group     |
+| 13 | English                         | 456   | 462 |          Language         |
+| 14 | difficulty accessing healthcare | 499   | 529 |       Access_To_Care      |
+| 15 | medical insurance               | 546   | 562 |      Insurance_Status     |
+| 16 | herniated disc                  | 575   | 588 | Disease_Syndrome_Disorder |
+| 17 | hypertension                    | 591   | 602 |        Hypertension       |
+| 18 | coronary artery disease         | 605   | 627 |       Heart_Disease       |
+| 19 | CAD                             | 630   | 632 |       Heart_Disease       |
+| 20 | diabetes mellitus               | 639   | 655 |          Diabetes         |
+| 21 | manic disorder                  | 677   | 690 |       Mental_Health       |
+| 22 | psychotic                       | 706   | 714 |       Mental_Health       |
+| 23 | impulsive behavior              | 726   | 743 |       Mental_Health       |
+| 24 | disabled                        | 758   | 765 |         Disability        |
 
 # Assertion Status
 
-|    | chunks                          | entities                  | assertion    |
-|---:|---------------------------------|---------------------------|--------------|
-|  0 | anxiety                         | Mental_Health             | Present      |
-|  1 | depression                      | Mental_Health             | Present      |
-|  2 | childhood trauma                | Childhood_Event           | Past         |
-|  3 | violence                        | Violence_Or_Abuse         | Past         |
-|  4 | abuse                           | Violence_Or_Abuse         | Past         |
-|  5 | mental health struggles         | Mental_Health             | Present      |
-|  6 | alcohol                         | Alcohol                   | Present      |
-|  7 | smoking                         | Smoking                   | Past         |
-|  8 | smoking                         | Smoking                   | Hypothetical |
-|  9 | hypertension                    | Hypertension              | Present      |
-| 10 | substance                       | Substance_Use             | Absent       |
-| 11 | difficulty accessing healthcare | Access_To_Care            | Absent       |
-| 12 | lack of transportation          | Symptom                   | Absent       |
-| 13 | insurance status                | Insurance_Status          | Present      |
-| 14 | herniated disc                  | Disease_Syndrome_Disorder | Past         |
-| 15 | coronary artery disease         | Heart_Disease             | Past         |
-| 16 | CAD                             | Heart_Disease             | Past         |
-| 17 | diabetes mellitus               | Diabetes                  | Present      |
-| 18 | manic disorder                  | Mental_Health             | Present      |
-| 19 | psychotic                       | Mental_Health             | Present      |
-| 20 | impulsive behavior              | Mental_Health             | Present      |
-| 21 | Bipolar affective disorder      | Mental_Health             | Present      |
-| 22 | manic                           | Mental_Health             | Present      |
-| 23 | Mental status changes           | Mental_Health             | Present      |
-| 24 | tumor                           | Tumor_Finding             | Present      |
-| 25 | disabled                        | Symptom                   | Present      |
+|    | chunks                          |          entities         | assertion |
+|---:|---------------------------------|:-------------------------:|-----------|
+|  0 | anxiety                         |       Mental_Health       |  Present  |
+|  1 | depression                      |       Mental_Health       |  Present  |
+|  2 | childhood trauma                |      Childhood_Event      |    Past   |
+|  3 | violence                        |     Violence_Or_Abuse     |    Past   |
+|  4 | abuse                           |     Violence_Or_Abuse     |    Past   |
+|  5 | smoking                         |          Smoking          |  Present  |
+|  6 | alcohol                         |          Alcohol          |  Present  |
+|  7 | substance                       |       Substance_Use       |   Absent  |
+|  8 | difficulty accessing healthcare |       Access_To_Care      |   Absent  |
+|  9 | medical insurance               |      Insurance_Status     |   Absent  |
+| 10 | herniated disc                  | Disease_Syndrome_Disorder |  Present  |
+| 11 | hypertension                    |        Hypertension       |  Present  |
+| 12 | coronary artery disease         |       Heart_Disease       |  Present  |
+| 13 | CAD                             |       Heart_Disease       |  Present  |
+| 14 | diabetes mellitus               |          Diabetes         |  Present  |
+| 15 | manic disorder                  |       Mental_Health       |  Present  |
+| 16 | psychotic                       |       Mental_Health       |  Present  |
+| 17 | impulsive behavior              |       Mental_Health       |  Present  |
+| 18 | disabled                        |          Symptom          |  Present  |
 
 # Relation Extraction
 
-|   | sentence | entity1_begin | entity1_end | chunk1           | entity1           | entity2_begin | entity2_end | chunk2                  | entity2           | relation                          | confidence |
-|--:|---------:|--------------:|------------:|------------------|-------------------|---------------|-------------|-------------------------|-------------------|-----------------------------------|-----------:|
-| 0 | 0        | 47            | 53          | anxiety          | Mental_Health     | 101           | 115         | quality of life         | Quality_Of_Life   | Mental_Health-Quality_Of_Life     |     1.0    |
-| 1 | 0        | 59            | 68          | depression       | Mental_Health     | 101           | 115         | quality of life         | Quality_Of_Life   | Mental_Health-Quality_Of_Life     |     1.0    |
-| 2 | 2        | 247           | 262         | childhood trauma | Childhood_Event   | 275           | 282         | violence                | Violence_Or_Abuse | Childhood_Event-Violence_Or_Abuse |     1.0    |
-| 3 | 2        | 247           | 262         | childhood trauma | Childhood_Event   | 288           | 292         | abuse                   | Violence_Or_Abuse | Childhood_Event-Violence_Or_Abuse |     1.0    |
-| 4 | 2        | 247           | 262         | childhood trauma | Childhood_Event   | 349           | 371         | mental health struggles | Mental_Health     | Childhood_Event-Mental_Health     |     1.0    |
-| 5 | 2        | 275           | 282         | violence         | Violence_Or_Abuse | 349           | 371         | mental health struggles | Mental_Health     | Violence_Or_Abuse-Mental_Health   |     1.0    |
-| 6 | 2        | 288           | 292         | abuse            | Violence_Or_Abuse | 349           | 371         | mental health struggles | Mental_Health     | Violence_Or_Abuse-Mental_Health   |     1.0    |
-| 7 | 7        | 875           | 883         | immigrant        | Population_Group  | 896           | 902         | English                 | Language          | Population_Group-Language         |     1.0    |
+|   | sentence | entity1_begin | entity1_end |      chunk1      |      entity1      | entity2_begin | entity2_end |      chunk2     |      entity2      |              relation             | confidence |
+|--:|---------:|--------------:|------------:|:----------------:|:-----------------:|:-------------:|:-----------:|:---------------:|:-----------------:|:---------------------------------:|:----------:|
+| 0 |     0    |       46      |      52     |      anxiety     |   Mental_Health   |      100      |     114     | quality of life |  Quality_Of_Life  |   Mental_Health-Quality_Of_Life   |     1.0    |
+| 1 |     0    |       58      |      67     |    depression    |   Mental_Health   |      100      |     114     | quality of life |  Quality_Of_Life  |   Mental_Health-Quality_Of_Life   |     1.0    |
+| 2 |     1    |      143      |     158     | childhood trauma |  Childhood_Event  |      171      |     178     |     violence    | Violence_Or_Abuse | Childhood_Event-Violence_Or_Abuse |     1.0    |
+| 3 |     1    |      143      |     158     | childhood trauma |  Childhood_Event  |      184      |     188     |      abuse      | Violence_Or_Abuse | Childhood_Event-Violence_Or_Abuse |     1.0    |
+| 4 |     1    |      143      |     158     | childhood trauma |  Childhood_Event  |      246      |     252     |     alcohol     |      Alcohol      |      Childhood_Event-Alcohol      |     1.0    |
+| 5 |     1    |      171      |     178     |     violence     | Violence_Or_Abuse |      246      |     252     |     alcohol     |      Alcohol      |     Violence_Or_Abuse-Alcohol     |     1.0    |
+| 6 |     1    |      184      |     188     |       abuse      | Violence_Or_Abuse |      246      |     252     |     alcohol     |      Alcohol      |     Violence_Or_Abuse-Alcohol     |     1.0    |
+| 7 |     3    |      434      |     442     |     immigrant    |  Population_Group |      455      |     461     |     English     |      Language     |     Population_Group-Language     |     1.0    |
 
 ```
 
