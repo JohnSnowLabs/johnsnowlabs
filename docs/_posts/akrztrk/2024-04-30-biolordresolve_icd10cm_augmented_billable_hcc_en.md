@@ -37,24 +37,45 @@ For example if the result is `1||1||8`: `the billable status is 1`, `hcc status 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-document_assembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
+sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")    .setInputCols(["document"])    .setOutputCol("sentence")
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-tokenizer = Tokenizer()    .setInputCols(["sentence"])    .setOutputCol("token")
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("word_embeddings")
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")    .setInputCols(["sentence", "token"])    .setOutputCol("word_embeddings")
+ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "word_embeddings"])\
+    .setOutputCol("ner")
 
-ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")    .setInputCols(["sentence", "token", "word_embeddings"])    .setOutputCol("ner")
-ner_converter = NerConverterInternal()    .setInputCols(["sentence", "token", "ner"])    .setOutputCol("ner_chunk")    .setWhiteList(["PROBLEM"])
+ner_converter = NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(["PROBLEM"])
 
-c2doc = Chunk2Doc()    .setInputCols("ner_chunk")    .setOutputCol("ner_chunk_doc")
+c2doc = Chunk2Doc()\
+    .setInputCols("ner_chunk")\
+    .setOutputCol("ner_chunk_doc")
 
-embeddings =MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("mpnet_embeddings")
+embeddings =MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("mpnet_embeddings")
 
-icd_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_icd10cm_augmented_billable_hcc", "en", "clinical/models")    .setInputCols(["mpnet_embeddings"])    .setOutputCol("resolution")    .setDistanceFunction("EUCLIDEAN")
+icd_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_icd10cm_augmented_billable_hcc", "en", "clinical/models")\
+    .setInputCols(["mpnet_embeddings"])\
+    .setOutputCol("resolution")\
+    .setDistanceFunction("EUCLIDEAN")
 
 resolver_pipeline = Pipeline(stages = [document_assembler,
                                        sentenceDetectorDL,
@@ -69,10 +90,8 @@ resolver_pipeline = Pipeline(stages = [document_assembler,
 data = spark.createDataFrame([["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation, and subsequent type 2 diabetes mellitus associated with obesity (BMI of 33.5 kg/m2), presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection."""]]).toDF("text")
 
 result = resolver_pipeline.fit(data).transform(data)
-
 ```
 ```scala
-
 val document_assembler = new DocumentAssembler()
     .setInputCol("text")
     .setOutputCol("document")
@@ -124,14 +143,12 @@ val pipeline = new Pipeline().setStages(Array(document_assembler,
 val data = Seq([["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation, and subsequent type 2 diabetes mellitus associated with obesity (BMI of 33.5 kg/m2), presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting. Two weeks prior to presentation, she was treated with a five-day course of amoxicillin for a respiratory tract infection."""]]).toDF("text")
 
 val result = resolver_pipeline.fit(data).transform(data)
-
 ```
 </div>
 
 ## Results
 
 ```bash
-
 +-----------------------------------+-----+---+---------+----------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
 |                              chunk|begin|end|ner_label|icd10_code|                                                 description|                                                 resolutions|                                                   all_codes|                                                    hcc_list|
 +-----------------------------------+-----+---+---------+----------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
@@ -144,7 +161,6 @@ val result = resolver_pipeline.fit(data).transform(data)
 |                           vomiting|  277|284|  PROBLEM|     R11.1|                                         vomiting [vomiting]|vomiting [vomiting]:::vomiting symptoms [vomiting, unspec...|R11.1:::R11.10:::R11:::R11.2:::R11.11:::K91.0:::K92.0:::R...|0||0||0:::1||0||0:::0||0||0:::1||0||0:::1||0||0:::1||0||0...|
 |      a respiratory tract infection|  378|406|  PROBLEM|     J98.8|rti - respiratory tract infection [other specified respir...|rti - respiratory tract infection [other specified respir...|J98.8:::B58.3:::B39.4:::J06.9:::Z59.3:::B20:::J22:::J98.5...|1||0||0:::1||1||6:::1||0||0:::1||0||0:::1||0||0:::1||1||1...|
 +-----------------------------------+-----+---+---------+----------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+------------------------------------------------------------+
-
 ```
 
 {:.model-param}
