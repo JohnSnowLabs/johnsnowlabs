@@ -139,13 +139,13 @@ val ner_model = MedicalNerModel
 val ner_model_converter = new NerConverterInternal()
       .setInputCols(Array("sentence", "token", "ner_jsl"))
       .setOutputCol("ner_chunk")
-      .setWhiteList(['Injury_or_Poisoning','Hyperlipidemia','Kidney_Disease','Oncological','Cerebrovascular_Disease'
-                  ,'Oxygen_Therapy','Heart_Disease','Obesity','Disease_Syndrome_Disorder','Symptom','Treatment','Diabetes','Injury_or_Poisoning'
-                  ,'Procedure','Symptom','Treatment','Drug_Ingredient','VS_Finding','Communicable_Disease'
-                  ,'Drug_BrandName','Hypertension','Imaging_Technique' 
+      .setWhiteList(["Injury_or_Poisoning","Hyperlipidemia","Kidney_Disease","Oncological","Cerebrovascular_Disease",
+                    "Oxygen_Therapy", "Heart_Disease","Obesity","Disease_Syndrome_Disorder","Symptom","Treatment","Diabetes","Injury_or_Poisoning",
+                    "Procedure","Symptom","Treatment","Drug_Ingredient","VS_Finding","Communicable_Disease",
+                    "Drug_BrandName","Hypertension","Imaging_Technique" 
                   ])
 
-val chunk2doc = Chunk2Doc()
+val chunk2doc = new Chunk2Doc()
       .setInputCols("ner_chunk")
       .setOutputCol("ner_chunk_doc")
 
@@ -160,7 +160,16 @@ val resolver = SentenceEntityResolverModel
       .setOutputCol("resolution")
       .setDistanceFunction("EUCLIDEAN")
 
-val p_model = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, sbert_embedder, resolver))
+val p_model = new Pipeline().setStages(Array(
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    ner_model,
+    ner_model_converter,
+    chunk2doc,
+    sbert_embedder,
+    resolver))
     
 val data = Seq("A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of pancreatitis three years prior to presentation, using Sulfonylurea for eight years, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of frequent urination and polydipsia. Additionally, tube placement on chest was performed following a pneumothorax that occurred 10 years ago.").toDF("text")  
 
