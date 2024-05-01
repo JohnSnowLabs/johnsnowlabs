@@ -18,9 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical entities and concepts to 4 major categories of UMLS CUI codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. It has a faster load time, with a speedup of about 6X when compared to previous versions. Also, the load process now is more memory friendly meaning that the maximum memory required during load time is smaller, reducing the chances of OOM exceptions, and thus relaxing hardware requirements.
-
-This model returns CUI (concept unique identifier) codes from clinical findings for the 2023AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
+This model maps clinical entities and concepts to 4 major categories of UMLS CUI codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. 
 
 ## Predicted Entities
 
@@ -38,6 +36,7 @@ This model returns CUI (concept unique identifier) codes from clinical findings 
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol('text')\
@@ -75,7 +74,17 @@ resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_findings
      .setOutputCol("resolution")\
      .setDistanceFunction("EUCLIDEAN")
 
-pipeline = Pipeline(stages = [document_assembler, sentence_detector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, sbert_embedder, resolver])
+pipeline = Pipeline(stages = [
+      document_assembler, 
+      sentence_detector, 
+      tokenizer, 
+      word_embeddings, 
+      ner_model, 
+      ner_model_converter, 
+      chunk2doc, 
+      sbert_embedder, 
+      resolver
+])
 
 data = spark.createDataFrame([["""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting."""]]).toDF("text")
 
@@ -108,7 +117,9 @@ val ner_model_converter = new NerConverterInternal()
       .setInputCols(Array("sentence", "token", "clinical_ner"))
       .setOutputCol("ner_chunk")
 
-val chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+val chunk2doc = Chunk2Doc()
+      .setInputCols("ner_chunk")
+      .setOutputCol("ner_chunk_doc")
 
 val sbert_embedder = BertSentenceEmbeddings
       .pretrained("sbiobert_base_cased_mli", "en","clinical/models")
@@ -121,7 +132,17 @@ val resolver = SentenceEntityResolverModel
       .setOutputCol("resolution")
       .setDistanceFunction("EUCLIDEAN")
 
-val p_model = new Pipeline().setStages(Array(document_assembler, sentence_detector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, sbert_embedder, resolver))
+val p_model = new Pipeline().setStages(Array(
+      document_assembler, 
+      sentence_detector, 
+      tokenizer, 
+      word_embeddings, 
+      ner_model, 
+      ner_model_converter, 
+      chunk2doc, 
+      sbert_embedder, 
+      resolver
+))
     
 val data = Seq("A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.").toDF("text")  
 
