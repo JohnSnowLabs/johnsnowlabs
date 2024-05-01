@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical entities and concepts to 4 major categories of UMLS CUI codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. 
+This model maps clinical findings to their corresponding UMLS CUI codes using `sbiobert_base_cased_mli` Sentence Bert Embeddings. 
 
 ## Predicted Entities
 
