@@ -654,7 +654,7 @@ pipeline_base = Pipeline().setStages([
 
 | Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline | Databricks <br> Base Pipeline | Databricks <br>  Optimized Pipeline |
 |-----------|--------------------|------------------------|----------------------------|---------------------------------|---------------|--------------------|
-| 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                | **10 min 10 sec** | **6 min 2 sec**       |
+| 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                | **10 min 10 sec** | **6 min 2 sec** |
 | 512       | 4 min 52 sec       | 2 min 30 sec           | **6 min 56 sec**           | 3 min 41 sec                    | 10 min 16 sec | 6 min 11 sec       |
 | 256       | **4 min 50 sec**   | **2 min 30 sec**       | 9 min 10 sec               | 5 min 18 sec                    | 10 min 22 sec | 6 min 14 sec       |
 | 128       | 4 min 55 sec       | 2 min 30 sec           | 14 min 30 sec              | 7 min 51 sec                    | 10 min 21 sec | 5 min 53 sec       |
@@ -709,14 +709,15 @@ resolver_pipeline = Pipeline(stages = [
 ```
 
 **NOTES:**
+
 `ner_jsl` model is used as ner model.The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results in `parquet` format.
 
 The `sbiobertresolve_snomed_findings` model is used as the resolver model. The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results (snomed_code and snomed_code_definition) in `parquet` format and 722 entities saved.
 
 ***Results Table***
 
-| partition | NER Timing     |NER and Resolver Timing | 
-| ---------:|:-------------- |:---------------------| 
+| partition | NER Timing     |NER and Resolver Timing| 
+|----------:|:---------------|:----------------------| 
 |4          |  24.7 seconds  |1 minutes 8.5  seconds|
 |8          |  23.6 seconds  |1 minutes 7.4  seconds|
 |16         |  22.6 seconds  |1 minutes 6.9  seconds|
