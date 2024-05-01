@@ -2061,9 +2061,11 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
 </div>
 
+<h2 id="deidentification-benchmarks">Deidentification Benchmarks</h2>
+
 <div class="h3-box">
 
-  <h3 id="deidentification-benchmark-experiment">Deidentification Benchmark Experiment</h3>
+  <h3 id="deidentification-comparison-experiment-on-clusters">Deidentification Comparison Experiment on Clusters</h3>
 
   <ul>
     <li>
@@ -2191,120 +2193,101 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
 <div class="h3-box">
 
-  <h2 id="aws-emr-cluster-benchmark">AWS EMR Cluster Benchmark</h2>
+  <h3 id="deidentification-pipelines-speed-comparison">Deidentification Pipelines Speed Comparison</h3>
 
   <ul>
-    <li><strong>Dataset:</strong> 340 Custom Clinical Texts, approx. 235 tokens per text</li>
+    <li><strong>Dataset:</strong> 10K Custom Clinical Texts with 1024 partitions, approx. 500 tokens and 14 chunks per text.</li>
     <li><strong>Versions:</strong>
       <ul>
-        <li><strong>EMR Version:</strong> ERM.6.15.0</li>
-        <li><strong>spark-nlp Version:</strong> v5.2.2</li>
-        <li><strong>spark-nlp-jsl Version :</strong> v5.2.1</li>
-        <li><strong>Spark Version :</strong> v3.4.1</li>
+        <li><strong>spark-nlp Version:</strong> v5.3.1</li>
+        <li><strong>spark-nlp-jsl Version:</strong> v5.3.1</li>
+        <li><strong>Spark Version:</strong> v3.4.0</li>
       </ul>
     </li>
     <li><strong>Instance Type:</strong>
       <ul>
-        <li><strong>Primary</strong>: m4.4xlarge, 16 vCore, 64 GiB memory</li>
-        <li><strong>Worker :</strong>  m4.4xlarge, 16 vCore, 64 GiB memory</li>
+        <li>8 CPU Cores 52GiB RAM (Colab Pro - High RAM)</li>
       </ul>
     </li>
   </ul>
 
-  <p><strong>Spark NLP Pipeline:</strong></p>
-
-  <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">document_assembler</span><span class="p">,</span>
-        <span class="n">sentence_detector</span><span class="p">,</span>
-        <span class="n">tokenizer</span><span class="p">,</span>
-        <span class="n">word_embeddings</span><span class="p">,</span>
-        <span class="n">ner_jsl</span><span class="p">,</span>
-        <span class="n">ner_jsl_converter</span><span class="p">])</span>
-
-<span class="n">resolver_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="n">document_assembler</span><span class="p">,</span>
-        <span class="n">sentence_detector</span><span class="p">,</span>
-        <span class="n">tokenizer</span><span class="p">,</span>
-        <span class="n">word_embeddings</span><span class="p">,</span>
-        <span class="n">ner_jsl</span><span class="p">,</span>
-        <span class="n">ner_jsl_converter</span><span class="p">,</span>
-        <span class="n">chunk2doc</span><span class="p">,</span>
-        <span class="n">sbert_embeddings</span><span class="p">,</span>
-        <span class="n">snomed_resolver</span><span class="p">])</span> 
-</code></pre></div>  </div>
-
-  <p><strong>NOTES:</strong>
-<code class="language-plaintext highlighter-rouge">ner_jsl</code> model is used as ner model.The inference time was calculated. The timer started with <code class="language-plaintext highlighter-rouge">model.transform(df)</code>  and ended with writing results in <code class="language-plaintext highlighter-rouge">parquet</code> format.</p>
-
-  <p>The <code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings</code> model is used as the resolver model. The inference time was calculated. The timer started with <code class="language-plaintext highlighter-rouge">model.transform(df)</code>  and ended with writing results (snomed_code and snomed_code_definition) in <code class="language-plaintext highlighter-rouge">parquet</code> format and 722 entities saved.</p>
-
-  <p><strong><em>Results Table</em></strong></p>
-
   <table>
     <thead>
       <tr>
-        <th style="text-align: right">partition</th>
-        <th style="text-align: left">NER Timing</th>
-        <th style="text-align: left">NER and Resolver Timing</th>
+        <th style="text-align: left">Deidentification Pipeline Name</th>
+        <th style="text-align: right">Elapsed Time</th>
+        <th style="text-align: left">Stages</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td style="text-align: right">4</td>
-        <td style="text-align: left">24.7 seconds</td>
-        <td style="text-align: left">1 minutes 8.5  seconds</td>
+        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html">clinical_deidentification_subentity_optimized</a></td>
+        <td style="text-align: right">67 min 44 seconds</td>
+        <td style="text-align: left">1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: right">8</td>
-        <td style="text-align: left">23.6 seconds</td>
-        <td style="text-align: left">1 minutes 7.4  seconds</td>
+        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_generic_optimized_en.html">clinical_deidentification_generic_optimized</a></td>
+        <td style="text-align: right">68 min 31 seconds</td>
+        <td style="text-align: left">1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: right">16</td>
-        <td style="text-align: left">22.6 seconds</td>
-        <td style="text-align: left">1 minutes 6.9  seconds</td>
+        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_generic_en.html">clinical_deidentification_generic</a></td>
+        <td style="text-align: right">86 min 24 seconds</td>
+        <td style="text-align: left">1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: right">32</td>
-        <td style="text-align: left">23.2 seconds</td>
-        <td style="text-align: left">1 minutes 5.7  seconds</td>
+        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_subentity_en.html">clinical_deidentification_subentity</a></td>
+        <td style="text-align: right">99 min 41 seconds</td>
+        <td style="text-align: left">1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: right">64</td>
-        <td style="text-align: left">22.8 seconds</td>
-        <td style="text-align: left">1 minutes 6.7  seconds</td>
+        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_en.html">clinical_deidentification</a></td>
+        <td style="text-align: right">117 min 44 seconds</td>
+        <td style="text-align: left">2 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: right">128</td>
-        <td style="text-align: left">23.7 seconds</td>
-        <td style="text-align: left">1 minutes 7.4  seconds</td>
+        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html">clinical_deidentification_nameAugmented</a></td>
+        <td style="text-align: right">134 min 27 seconds</td>
+        <td style="text-align: left">2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: right">256</td>
-        <td style="text-align: left">23.9 seconds</td>
-        <td style="text-align: left">1 minutes 6.1  seconds</td>
+        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_glove_en.html">clinical_deidentification_glove</a></td>
+        <td style="text-align: right">146 min 51 seconds</td>
+        <td style="text-align: left">2 NER, 4 Deidentification,  8 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: right">512</td>
-        <td style="text-align: left">23.8 seconds</td>
-        <td style="text-align: left">1 minutes 8.4  seconds</td>
+        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_small_en.html">clinical_deidentification_obfuscation_small</a></td>
+        <td style="text-align: right">147 min 06 seconds</td>
+        <td style="text-align: left">1 NER, 1 Deidentification,  2 Rule-based NER, 1 clinical embedding, 1 chunk merger</td>
       </tr>
       <tr>
-        <td style="text-align: right">1024</td>
-        <td style="text-align: left">25.9 seconds</td>
-        <td style="text-align: left">1 minutes 10.2 seconds</td>
+        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_slim_en.html">clinical_deidentification_slim</a></td>
+        <td style="text-align: right">154 min 37 seconds</td>
+        <td style="text-align: left">2 NER, 4 Deidentification, 15 Rule-based NER, 1 glove embedding,    3 chunk merger</td>
+      </tr>
+      <tr>
+        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_multi_mode_output_en.html">clinical_deidentification_multi_mode_output</a></td>
+        <td style="text-align: right">154 min 50 seconds</td>
+        <td style="text-align: left">2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger</td>
+      </tr>
+      <tr>
+        <td style="text-align: left"><a href="https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_medium_en.html">clinical_deidentification_obfuscation_medium</a></td>
+        <td style="text-align: right">205 min 40 seconds</td>
+        <td style="text-align: left">2 NER, 1 Deidentification,  2 Rule-based NER, 1 clinical embedding, 1 chunk merger</td>
       </tr>
     </tbody>
   </table>
+
+  <p>PS: The reason why pipelines with the same stages have different costs is due to the layers of the NER model and the hardcoded regexes in Deidentification.</p>
 
 </div>
 
 <div class="h3-box">
 
-  <h2 id="deidentification--pipelines-cost-benchmarks-march-2024">Deidentification  Pipelines Cost Benchmarks [March-2024]</h2>
+  <h3 id="deidentification-pipelines-cost-benchmarks">Deidentification Pipelines Cost Benchmarks</h3>
 
   <ul>
-    <li><strong>Versions:</strong>
+    <li><strong>Versions:</strong> [March-2024]
       <ul>
         <li><strong>spark-nlp Version:</strong> v5.2.2</li>
         <li><strong>spark-nlp-jsl Version :</strong> v5.2.1</li>
@@ -2512,6 +2495,117 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
     <li>DataBricks Base Pipeline: partition number: 1024, 10K cost:<strong>$0.46</strong>, 1M cost:<strong>$45.76</strong></li>
     <li>DataBricks  Optimized Pipeline: partition number: 1024, 10K cost:<strong>$0.27</strong>, 1M cost:<strong>$27.13</strong></li>
   </ul>
+
+  <div class="h3-box">
+
+    <h2 id="aws-emr-cluster-benchmark">AWS EMR Cluster Benchmark</h2>
+
+    <ul>
+      <li><strong>Dataset:</strong> 340 Custom Clinical Texts, approx. 235 tokens per text</li>
+      <li><strong>Versions:</strong>
+        <ul>
+          <li><strong>EMR Version:</strong> ERM.6.15.0</li>
+          <li><strong>spark-nlp Version:</strong> v5.2.2</li>
+          <li><strong>spark-nlp-jsl Version :</strong> v5.2.1</li>
+          <li><strong>Spark Version :</strong> v3.4.1</li>
+        </ul>
+      </li>
+      <li><strong>Instance Type:</strong>
+        <ul>
+          <li><strong>Primary</strong>: m4.4xlarge, 16 vCore, 64 GiB memory</li>
+          <li><strong>Worker :</strong>  m4.4xlarge, 16 vCore, 64 GiB memory</li>
+        </ul>
+      </li>
+    </ul>
+
+    <p><strong>Spark NLP Pipeline:</strong></p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ner_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">sentence_detector</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">word_embeddings</span><span class="p">,</span>
+        <span class="n">ner_jsl</span><span class="p">,</span>
+        <span class="n">ner_jsl_converter</span><span class="p">])</span>
+
+<span class="n">resolver_pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">document_assembler</span><span class="p">,</span>
+        <span class="n">sentence_detector</span><span class="p">,</span>
+        <span class="n">tokenizer</span><span class="p">,</span>
+        <span class="n">word_embeddings</span><span class="p">,</span>
+        <span class="n">ner_jsl</span><span class="p">,</span>
+        <span class="n">ner_jsl_converter</span><span class="p">,</span>
+        <span class="n">chunk2doc</span><span class="p">,</span>
+        <span class="n">sbert_embeddings</span><span class="p">,</span>
+        <span class="n">snomed_resolver</span><span class="p">])</span> 
+</code></pre></div>    </div>
+
+    <p><strong>NOTES:</strong></p>
+
+    <p><code class="language-plaintext highlighter-rouge">ner_jsl</code> model is used as ner model.The inference time was calculated. The timer started with <code class="language-plaintext highlighter-rouge">model.transform(df)</code>  and ended with writing results in <code class="language-plaintext highlighter-rouge">parquet</code> format.</p>
+
+    <p>The <code class="language-plaintext highlighter-rouge">sbiobertresolve_snomed_findings</code> model is used as the resolver model. The inference time was calculated. The timer started with <code class="language-plaintext highlighter-rouge">model.transform(df)</code>  and ended with writing results (snomed_code and snomed_code_definition) in <code class="language-plaintext highlighter-rouge">parquet</code> format and 722 entities saved.</p>
+
+    <p><strong><em>Results Table</em></strong></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align: right">partition</th>
+          <th style="text-align: left">NER Timing</th>
+          <th style="text-align: left">NER and Resolver Timing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right">4</td>
+          <td style="text-align: left">24.7 seconds</td>
+          <td style="text-align: left">1 minutes 8.5  seconds</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">8</td>
+          <td style="text-align: left">23.6 seconds</td>
+          <td style="text-align: left">1 minutes 7.4  seconds</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">16</td>
+          <td style="text-align: left">22.6 seconds</td>
+          <td style="text-align: left">1 minutes 6.9  seconds</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">32</td>
+          <td style="text-align: left">23.2 seconds</td>
+          <td style="text-align: left">1 minutes 5.7  seconds</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">64</td>
+          <td style="text-align: left">22.8 seconds</td>
+          <td style="text-align: left">1 minutes 6.7  seconds</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">128</td>
+          <td style="text-align: left">23.7 seconds</td>
+          <td style="text-align: left">1 minutes 7.4  seconds</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">256</td>
+          <td style="text-align: left">23.9 seconds</td>
+          <td style="text-align: left">1 minutes 6.1  seconds</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">512</td>
+          <td style="text-align: left">23.8 seconds</td>
+          <td style="text-align: left">1 minutes 8.4  seconds</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">1024</td>
+          <td style="text-align: left">25.9 seconds</td>
+          <td style="text-align: left">1 minutes 10.2 seconds</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
 
   <h2 id="cpu-ner-benchmarks">CPU NER Benchmarks</h2>
 
