@@ -11,7 +11,7 @@
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
 <!-- End Google Tag Manager --><title>Sentence Entity Resolver for UMLS CUI Codes | sbiobertresolve_umls_findings | Healthcare NLP 5.3.1</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model maps clinical entities and concepts to 4 major categories of UMLS CUI codes using sbiobert_base_cased_mli Sentence Bert Embeddings. It has a faster load time, with a speedup of about 6X when compared to previous versions. Also, the load process now is more memory friendly meaning that the maxim...">
+<meta name="description" content="DescriptionThis model maps clinical findings to their corresponding UMLS CUI codes using sbiobert_base_cased_mli Sentence Bert Embeddings.Predicted Entitiesumls cui codesLive DemoOpen in ColabDownloadCopy S3 URIHow to use  PythonJSLScalaNLU  document_assembler = DocumentAssembler()\      .setInputCol('text')\      ....">
 <!-- <link rel="canonical" href="/2024/04/17/sbiobertresolve_umls_findings_en.html"> -->
 <link rel="canonical" href="/2024/04/17/sbiobertresolve_umls_findings_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
@@ -508,9 +508,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model maps clinical entities and concepts to 4 major categories of UMLS CUI codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings. It has a faster load time, with a speedup of about 6X when compared to previous versions. Also, the load process now is more memory friendly meaning that the maximum memory required during load time is smaller, reducing the chances of OOM exceptions, and thus relaxing hardware requirements.</p>
-
-<p>This model returns CUI (concept unique identifier) codes from clinical findings for the 2023AB release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html</p>
+<p>This model maps clinical findings to their corresponding UMLS CUI codes using <code class="language-plaintext highlighter-rouge">sbiobert_base_cased_mli</code> Sentence Bert Embeddings.</p>
 
 <h2 id="predicted-entities">Predicted Entities</h2>
 
@@ -525,6 +523,7 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <div class="tabs-box">
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
+
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">document_assembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
       <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">'text'</span><span class="p">)</span>\
       <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">'document'</span><span class="p">)</span>
@@ -561,7 +560,17 @@ function wrapWordInSpan(data, wordToWrap) {
      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"resolution"</span><span class="p">)</span>\
      <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">document_assembler</span><span class="p">,</span> <span class="n">sentence_detector</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">word_embeddings</span><span class="p">,</span> <span class="n">ner_model</span><span class="p">,</span> <span class="n">ner_model_converter</span><span class="p">,</span> <span class="n">chunk2doc</span><span class="p">,</span> <span class="n">sbert_embedder</span><span class="p">,</span> <span class="n">resolver</span><span class="p">])</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+      <span class="n">document_assembler</span><span class="p">,</span> 
+      <span class="n">sentence_detector</span><span class="p">,</span> 
+      <span class="n">tokenizer</span><span class="p">,</span> 
+      <span class="n">word_embeddings</span><span class="p">,</span> 
+      <span class="n">ner_model</span><span class="p">,</span> 
+      <span class="n">ner_model_converter</span><span class="p">,</span> 
+      <span class="n">chunk2doc</span><span class="p">,</span> 
+      <span class="n">sbert_embedder</span><span class="p">,</span> 
+      <span class="n">resolver</span>
+<span class="p">])</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
 
@@ -593,7 +602,9 @@ function wrapWordInSpan(data, wordToWrap) {
       <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"clinical_ner"</span><span class="o">))</span>
       <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">chunk2doc</span> <span class="k">=</span> <span class="nc">Chunk2Doc</span><span class="o">().</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">chunk2doc</span> <span class="k">=</span> <span class="nc">Chunk2Doc</span><span class="o">()</span>
+      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nc">BertSentenceEmbeddings</span>
       <span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
@@ -606,7 +617,17 @@ function wrapWordInSpan(data, wordToWrap) {
       <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"resolution"</span><span class="o">)</span>
       <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">p_model</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="n">document_assembler</span><span class="o">,</span> <span class="n">sentence_detector</span><span class="o">,</span> <span class="n">tokenizer</span><span class="o">,</span> <span class="n">word_embeddings</span><span class="o">,</span> <span class="n">ner_model</span><span class="o">,</span> <span class="n">ner_model_converter</span><span class="o">,</span> <span class="n">chunk2doc</span><span class="o">,</span> <span class="n">sbert_embedder</span><span class="o">,</span> <span class="n">resolver</span><span class="o">))</span>
+<span class="k">val</span> <span class="nv">p_model</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+      <span class="n">document_assembler</span><span class="o">,</span> 
+      <span class="n">sentence_detector</span><span class="o">,</span> 
+      <span class="n">tokenizer</span><span class="o">,</span> 
+      <span class="n">word_embeddings</span><span class="o">,</span> 
+      <span class="n">ner_model</span><span class="o">,</span> 
+      <span class="n">ner_model_converter</span><span class="o">,</span> 
+      <span class="n">chunk2doc</span><span class="o">,</span> 
+      <span class="n">sbert_embedder</span><span class="o">,</span> 
+      <span class="n">resolver</span>
+<span class="o">))</span>
     
 <span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of HTG-induced pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting."</span><span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>  
 
