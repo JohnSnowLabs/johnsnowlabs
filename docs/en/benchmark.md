@@ -444,9 +444,12 @@ resolver_pipeline = PipelineModel(
 
 
 
+
+## Deidentification Benchmarks
+
 <div class="h3-box" markdown="1">
 
-### Deidentification Benchmark Experiment
+### Deidentification Comparison Experiment on Clusters
  
 - **Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.
  
@@ -513,69 +516,44 @@ deid_pipeline = Pipeline().setStages([
 
 </div>
 
+
 <div class="h3-box" markdown="1">
 
-## AWS EMR Cluster Benchmark
+### Deidentification Pipelines Speed Comparison
 
-- **Dataset:** 340 Custom Clinical Texts, approx. 235 tokens per text
+- **Dataset:** 10K Custom Clinical Texts with 1024 partitions, approx. 500 tokens and 14 chunks per text. 
 - **Versions:**
-    - **EMR Version:** ERM.6.15.0
-    - **spark-nlp Version:** v5.2.2
-    - **spark-nlp-jsl Version :** v5.2.1
-    - **Spark Version :** v3.4.1
+    - **spark-nlp Version:** v5.3.1
+    - **spark-nlp-jsl Version:** v5.3.1
+    - **Spark Version:** v3.4.0
 - **Instance Type:** 
-    -  **Primary**: m4.4xlarge, 16 vCore, 64 GiB memory
-    - **Worker :**  m4.4xlarge, 16 vCore, 64 GiB memory
+    -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
 
-**Spark NLP Pipeline:**
 
-```python
-ner_pipeline = Pipeline(stages = [
-        document_assembler,
-        sentence_detector,
-        tokenizer,
-        word_embeddings,
-        ner_jsl,
-        ner_jsl_converter])
+|Deidentification Pipeline Name                   | Elapsed Time     | Stages           |
+|:------------------------------------------------|-----------------:|:-----------------| 
+|[clinical_deidentification_subentity_optimized](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html)| 67 min 44 seconds| 1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification_generic_optimized](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_generic_optimized_en.html)    | 68 min 31 seconds| 1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification_generic](https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_generic_en.html)                        | 86 min 24 seconds| 1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification_subentity](https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_subentity_en.html)                    | 99 min 41 seconds| 1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification](https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_en.html)                                        |117 min 44 seconds| 2 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_nameAugmented](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html)  |134 min 27 seconds| 2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_glove](https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_glove_en.html)                            |146 min 51 seconds| 2 NER, 4 Deidentification,  8 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_obfuscation_small](https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_small_en.html)    |147 min 06 seconds| 1 NER, 1 Deidentification,  2 Rule-based NER, 1 clinical embedding, 1 chunk merger  |
+|[clinical_deidentification_slim](https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_slim_en.html)                              |154 min 37 seconds| 2 NER, 4 Deidentification, 15 Rule-based NER, 1 glove embedding,    3 chunk merger  |
+|[clinical_deidentification_multi_mode_output](https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_multi_mode_output_en.html)    |154 min 50 seconds| 2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_obfuscation_medium](https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_medium_en.html)  |205 min 40 seconds| 2 NER, 1 Deidentification,  2 Rule-based NER, 1 clinical embedding, 1 chunk merger  |
 
-resolver_pipeline = Pipeline(stages = [
-        document_assembler,
-        sentence_detector,
-        tokenizer,
-        word_embeddings,
-        ner_jsl,
-        ner_jsl_converter,
-        chunk2doc,
-        sbert_embeddings,
-        snomed_resolver]) 
-```
-
-**NOTES:**
-`ner_jsl` model is used as ner model.The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results in `parquet` format.
-
-The `sbiobertresolve_snomed_findings` model is used as the resolver model. The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results (snomed_code and snomed_code_definition) in `parquet` format and 722 entities saved.
-
-***Results Table***
-
-| partition | NER Timing     |NER and Resolver Timing | 
-| ---------:|:-------------- |:---------------------| 
-|4          |  24.7 seconds  |1 minutes 8.5  seconds|
-|8          |  23.6 seconds  |1 minutes 7.4  seconds|
-|16         |  22.6 seconds  |1 minutes 6.9  seconds|
-|32         |  23.2 seconds  |1 minutes 5.7  seconds|
-|64         |  22.8 seconds  |1 minutes 6.7  seconds|
-|128        |  23.7 seconds  |1 minutes 7.4  seconds|
-|256        |  23.9 seconds  |1 minutes 6.1  seconds|
-|512        |  23.8 seconds  |1 minutes 8.4  seconds|
-|1024       |  25.9 seconds  |1 minutes 10.2 seconds|
+PS: The reason why pipelines with the same stages have different costs is due to the layers of the NER model and the hardcoded regexes in Deidentification.
 
 </div>
 
+
 <div class="h3-box" markdown="1">
 
-## Deidentification  Pipelines Cost Benchmarks [March-2024]
+### Deidentification Pipelines Cost Benchmarks 
 
-- **Versions:**
+- **Versions:** [March-2024]
     - **spark-nlp Version:** v5.2.2
     - **spark-nlp-jsl Version :** v5.2.1
     - **Spark Version :** v3.4.1
@@ -676,7 +654,7 @@ pipeline_base = Pipeline().setStages([
 
 | Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline | Databricks <br> Base Pipeline | Databricks <br>  Optimized Pipeline |
 |-----------|--------------------|------------------------|----------------------------|---------------------------------|---------------|--------------------|
-| 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                | **10 min 10 sec** | **6 min 2 sec**       |
+| 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                | **10 min 10 sec** | **6 min 2 sec** |
 | 512       | 4 min 52 sec       | 2 min 30 sec           | **6 min 56 sec**           | 3 min 41 sec                    | 10 min 16 sec | 6 min 11 sec       |
 | 256       | **4 min 50 sec**   | **2 min 30 sec**       | 9 min 10 sec               | 5 min 18 sec                    | 10 min 22 sec | 6 min 14 sec       |
 | 128       | 4 min 55 sec       | 2 min 30 sec           | 14 min 30 sec              | 7 min 51 sec                    | 10 min 21 sec | 5 min 53 sec       |
@@ -692,6 +670,67 @@ Estimated Minimum Costs:
 - EC2 Instance  Optimized Pipeline: partition number: 1024, 10K cost:**$0.18**, 1M cost:**$17.85** 
 - DataBricks Base Pipeline: partition number: 1024, 10K cost:**$0.46**, 1M cost:**$45.76** 
 - DataBricks  Optimized Pipeline: partition number: 1024, 10K cost:**$0.27**, 1M cost:**$27.13** 
+
+<div class="h3-box" markdown="1">
+
+## AWS EMR Cluster Benchmark
+
+- **Dataset:** 340 Custom Clinical Texts, approx. 235 tokens per text
+- **Versions:**
+    - **EMR Version:** ERM.6.15.0
+    - **spark-nlp Version:** v5.2.2
+    - **spark-nlp-jsl Version :** v5.2.1
+    - **Spark Version :** v3.4.1
+- **Instance Type:** 
+    -  **Primary**: m4.4xlarge, 16 vCore, 64 GiB memory
+    - **Worker :**  m4.4xlarge, 16 vCore, 64 GiB memory
+
+**Spark NLP Pipeline:**
+
+```python
+ner_pipeline = Pipeline(stages = [
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        word_embeddings,
+        ner_jsl,
+        ner_jsl_converter])
+
+resolver_pipeline = Pipeline(stages = [
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        word_embeddings,
+        ner_jsl,
+        ner_jsl_converter,
+        chunk2doc,
+        sbert_embeddings,
+        snomed_resolver]) 
+```
+
+**NOTES:**
+
+`ner_jsl` model is used as ner model.The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results in `parquet` format.
+
+The `sbiobertresolve_snomed_findings` model is used as the resolver model. The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results (snomed_code and snomed_code_definition) in `parquet` format and 722 entities saved.
+
+***Results Table***
+
+| partition | NER Timing     |NER and Resolver Timing| 
+|----------:|:---------------|:----------------------| 
+|4          |  24.7 seconds  |1 minutes 8.5  seconds|
+|8          |  23.6 seconds  |1 minutes 7.4  seconds|
+|16         |  22.6 seconds  |1 minutes 6.9  seconds|
+|32         |  23.2 seconds  |1 minutes 5.7  seconds|
+|64         |  22.8 seconds  |1 minutes 6.7  seconds|
+|128        |  23.7 seconds  |1 minutes 7.4  seconds|
+|256        |  23.9 seconds  |1 minutes 6.1  seconds|
+|512        |  23.8 seconds  |1 minutes 8.4  seconds|
+|1024       |  25.9 seconds  |1 minutes 10.2 seconds|
+
+</div>
+
+
 
 ## CPU NER Benchmarks
 
