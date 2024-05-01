@@ -18,7 +18,23 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical entities and concepts to 4 categories (Medication, Symptom, Disease, Procedure) of UMLS CUI codes using ´sbiobert_base_cased_mli´ Sentence Bert Embeddings.
+This model maps clinical entities and concepts to the following 4 UMLS CUI code categories using ´sbiobert_base_cased_mli´ Sentence Bert Embeddings:
+
+Disease:
+Unique Identifier: T047
+Tree Number: B2.2.1.2.1
+ 
+Symptom:
+Unique Identifier: T184
+Tree Number: A2.2.2
+ 
+Medication:
+Unique Identifier: T074
+Tree Number: A1.3.1
+ 
+Procedure:
+Unique Identifier: T061
+Tree Number: B1.3.1.3
 
 ## Predicted Entities
 
