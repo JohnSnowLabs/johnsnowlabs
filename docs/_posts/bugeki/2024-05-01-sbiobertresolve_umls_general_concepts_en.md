@@ -154,6 +154,7 @@ val sbert_embedder = BertSentenceEmbeddings
       .pretrained("sbiobert_base_cased_mli", "en","clinical/models")
       .setInputCols(Array("ner_chunk_doc"))
       .setOutputCol("sbert_embeddings")
+      .setCaseSensitive(False)
     
 val resolver = SentenceEntityResolverModel
       .pretrained("sbiobertresolve_umls_findings", "en", "clinical/models")
