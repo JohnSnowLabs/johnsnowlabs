@@ -212,3 +212,7 @@ val res = p_model.fit(data).transform(data)
 |Language:|en|
 |Size:|3.8 GB|
 |Case sensitive:|false|
+
+## References
+
+Trained on disease, symptom, medication and procedure concepts of the ´2023AB´ release of the Unified Medical Language System® (UMLS). Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
