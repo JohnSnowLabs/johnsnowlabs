@@ -5,7 +5,7 @@ author: John Snow Labs
 name: sbiobert_jsl_rxnorm_cased
 date: 2021-12-23
 tags: [licensed, embeddings, clinical, en]
-task: Entity Resolution
+task: Embeddings
 language: en
 nav_key: models
 edition: Healthcare NLP 3.3.4
@@ -37,15 +37,16 @@ This model maps sentences & documents to a 768 dimensional dense vector space by
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 sentence_embeddings = BertSentenceEmbeddings.pretrained("sbiobert_jsl_rxnorm_cased", "en", "clinical/models")\
-.setInputCols(["sentence"])\
-.setOutputCol("sbioert_embeddings")
+    .setInputCols(["sentence"])\
+    .setOutputCol("sbioert_embeddings")
 ```
 ```scala
 val sentence_embeddings = BertSentenceEmbeddings.pretrained('sbiobert_jsl_rxnorm_cased', 'en','clinical/models')
-.setInputCols("sentence")
-.setOutputCol("sbioert_embeddings")
+    .setInputCols("sentence")
+    .setOutputCol("sbioert_embeddings")
 ```
 
 
