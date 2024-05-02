@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical entities to UMLS CUI codes. It is trained on 2022AA UMLS dataset. The complete dataset has 127 different categories, and this model is trained on the Clinical Drug category using sbiobert_base_cased_mli embeddings.
+This model maps drug entities to UMLS CUI codes.  It is trained on 2023AB release of the Unified Medical Language System (UMLS) dataset. The complete dataset has 127 different categories, and this model is trained on the `Clinical Drug` category using sbiobert_base_cased_mli embeddings.
 
 ## Predicted Entities
 
@@ -106,20 +106,19 @@ val ner_model = MedicalNerModel
 
 val ner_model_converter = new NerConverterInternal()
       .setInputCols(Array("sentence", "token", "posology_ner"))
-      .setOutputCol("ner_chunk")
+      .setOutputCol("posology_ner_chunk")
       .setWhiteList("DRUG")
 
-val chunk2doc = Chunk2Doc().setInputCols("ner_chunk").setOutputCol("ner_chunk_doc")
+val chunk2doc = Chunk2Doc().setInputCols("posology_ner_chunk").setOutputCol("ner_chunk_doc")
 
-val sbert_embedder = BertSentenceEmbeddings
-      .pretrained("sbiobert_base_cased_mli", "en","clinical/models")
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en","clinical/models")
       .setInputCols(Array("ner_chunk_doc"))
       .setOutputCol("sbert_embeddings")
       .setCaseSensitive(False)
     
 val resolver = SentenceEntityResolverModel
       .pretrained("sbiobertresolve_umls_clinical_drugs", "en", "clinical/models") 
-      .setInputCols(Array("ner_chunk_doc", "sbert_embeddings")) 
+      .setInputCols(Array("sbert_embeddings")) 
       .setOutputCol("resolution")
       .setDistanceFunction("EUCLIDEAN")
 
@@ -161,4 +160,5 @@ val res = pipeline.fit(data).transform(data)
 
 ## References
 
-Trained on 2022AA UMLS dataset’s Clinical Drug category. https://www.nlm.nih.gov/research/umls/index.html
+Trained on the Clinical Drug concepts of the 2023AB release of the Unified Medical Language System® (UMLS) Knowledge Sources:
+https://www.nlm.nih.gov/research/umls/index.html
