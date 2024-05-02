@@ -90,8 +90,7 @@ pipeline = Pipeline(stages=[
 ])
 
 
-data = spark.createDataFrame([["""She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, 
-and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg."""]]).toDF("text")
+data = spark.createDataFrame([["She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg."]]).toDF("text")
 
 result = pipeline.fit(data).transform(data)
 ```
@@ -147,8 +146,7 @@ val p_model = new Pipeline().setStages(Array(
     sbert_embedder,
     resolver))
     
-val data = Seq("She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, 
-and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg.").toDF("text")  
+val data = Seq("She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg.").toDF("text")  
 
 val res = p_model.fit(data).transform(data)
 ```
@@ -185,4 +183,5 @@ val res = p_model.fit(data).transform(data)
 
 ## References
 
-Trained on ´2021AB´ UMLS dataset’s ´Clinical Drug´, ´Pharmacologic Substance´, ´Antibiotic´, ´Hazardous or Poisonous Substance´ categories. Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
+Trained on the ´Clinical Drug´ concept of the 2023AB release of the Unified Medical Language System® (UMLS) Knowledge Sources:
+https://www.nlm.nih.gov/research/umls/index.html
