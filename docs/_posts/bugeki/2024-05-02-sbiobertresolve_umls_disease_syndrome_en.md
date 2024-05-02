@@ -36,6 +36,7 @@ This model maps clinical entities to UMLS CUI codes. It is trained on ´2021AB´
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -118,8 +119,7 @@ val ner_model = MedicalNerModel
 val ner_model_converter = new NerConverterInternal()
       .setInputCols(Array("sentence", "token", "ner_jsl"))
       .setOutputCol("ner_chunk")
-      .setWhiteList(["Disease_Syndrome_Disorder","Symptom"
-                  ])
+      .setWhiteList(["Disease_Syndrome_Disorder","Symptom"])
 
 val chunk2doc = new Chunk2Doc()
       .setInputCols("ner_chunk")
