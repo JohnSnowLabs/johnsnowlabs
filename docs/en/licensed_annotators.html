@@ -17673,14 +17673,7 @@ And it supports multi-mode de-Identification with setSelectiveObfuscationModes f
 
     <ul>
       <li>
-        <table>
-          <tbody>
-            <tr>
-              <td><code class="language-plaintext highlighter-rouge">mode</code> <em>(str)</em>: Mode for Anonimizer [‘mask’</td>
-              <td>‘obfuscate’]</td>
-            </tr>
-          </tbody>
-        </table>
+        <p><code class="language-plaintext highlighter-rouge">mode</code> <em>(str)</em>: Mode for Anonimizer [‘mask’,’obfuscate’]</p>
       </li>
       <li>
         <p><code class="language-plaintext highlighter-rouge">dateEntities</code> <em>(list[str])</em>: List of date entities. Default: [‘DATE’, ‘DOB’, ‘DOD’]</p>
@@ -17756,8 +17749,10 @@ If the value is true, it might decrease performance. Default: False</p>
 ‘skip’: Skip the values (intact)
 The entities which have not been given in dictionary will deidentify according to :param:<code class="language-plaintext highlighter-rouge">mode</code></p>
       </li>
-      <li><code class="language-plaintext highlighter-rouge">customFakers</code> <em>(dict[str, dict[str]])</em>:   The dictionary of custom fakers to specify the obfuscation terms for the entities.
-You can specify the entity and the terms to be used for obfuscation.</li>
+      <li>
+        <p><code class="language-plaintext highlighter-rouge">customFakers</code> <em>(dict[str, dict[str]])</em>:   The dictionary of custom fakers to specify the obfuscation terms for the entities.
+You can specify the entity and the terms to be used for obfuscation.</p>
+      </li>
     </ul>
 
     <p><strong>Input Annotator Types:</strong> <code class="language-plaintext highlighter-rouge">DOCUMENT, CHUNK</code></p>
@@ -17769,6 +17764,7 @@ You can specify the entity and the terms to be used for obfuscation.</li>
         <tr>
           <td><strong>Python API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/deid/LightDeIdentification/index.html">LightDeIdentification</a></td>
           <td><strong>Scala API:</strong> <a href="https://nlp.johnsnowlabs.com/licensed/api/com/johnsnowlabs/nlp/annotators/deid/LightDeIdentification.html">LightDeIdentification</a></td>
+          <td><strong>Notebook:</strong> <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.6.Light_Deidentification.ipynb">LightDeIdentification</a></td>
         </tr>
       </tbody>
     </table>
@@ -17790,83 +17786,92 @@ You can specify the entity and the terms to be used for obfuscation.</li>
 
           <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">johnsnowlabs</span> <span class="kn">import</span> <span class="n">nlp</span><span class="p">,</span> <span class="n">medical</span>
 
-<span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span>
-<span class="p">[</span><span class="s">'Record date: 01/01/1980'</span><span class="p">],</span>
-<span class="p">[</span><span class="s">'Johnson, M.D.'</span><span class="p">],</span>
-<span class="p">[</span><span class="s">'Gastby Hospital.'</span><span class="p">],</span>
-<span class="p">[</span><span class="s">'Camel Street.'</span><span class="p">],</span>
-<span class="p">[</span><span class="s">'My name is George.'</span><span class="p">]</span>
-<span class="p">]</span>
-
-<span class="n">input_df</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">(</span><span class="n">sentences</span><span class="p">).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
-
-<span class="n">document_assembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
+<span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">DocumentAssembler</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
 
-<span class="n">sentence_detector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
+<span class="c1"># Sentence Detector annotator, processes various sentences per line
+</span><span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">SentenceDetector</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
 
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
+<span class="c1"># Tokenizer splits words in a relevant format for NLP
+</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Tokenizer</span><span class="p">()</span>\
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
 
-<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span> \
+<span class="c1"># Clinical word embeddings trained on PubMED dataset
+</span><span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
 
-<span class="n">ner_tagger</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">NerDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"deidentify_dl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
+<span class="c1"># NER model trained on n2c2 (de-identification and Heart Disease Risk Factors Challenge) datasets)
+</span><span class="n">ner_subentity</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_deid_subentity_augmented"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_subentity"</span><span class="p">)</span>
 
 <span class="n">ner_converter</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">NerConverterInternal</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_subentity"</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
 
-<span class="n">light_de_identification</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">LightDeIdentification</span><span class="p">()</span> \
+<span class="n">light_deidentification</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">LightDeIdentification</span><span class="p">()</span> \
     <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">,</span> <span class="s">"sentence"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"dei"</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"obfuscated"</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setMode</span><span class="p">(</span><span class="s">"obfuscate"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setObfuscateDate</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setDateFormats</span><span class="p">([</span><span class="s">"MM/dd/yyyy"</span><span class="p">])</span> \
-    <span class="p">.</span><span class="n">setDays</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setObfuscateDate</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDateFormats</span><span class="p">([</span><span class="s">"MM/dd/yyyy"</span><span class="p">,</span><span class="s">"yyyy-MM-dd"</span><span class="p">,</span> <span class="s">"MM/dd/yy"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setDays</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> \
     <span class="p">.</span><span class="n">setObfuscateRefSource</span><span class="p">(</span><span class="s">'custom'</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setCustomFakers</span><span class="p">({</span><span class="s">"DOCTOR"</span><span class="p">:</span> <span class="p">[</span><span class="s">"John"</span><span class="p">],</span> <span class="s">"HOSPITAL"</span><span class="p">:</span> <span class="p">[</span><span class="s">"MEDICAL"</span><span class="p">],</span> <span class="s">"STREET"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Main Road"</span><span class="p">]})</span> \
+    <span class="p">.</span><span class="n">setCustomFakers</span><span class="p">({</span><span class="s">"Doctor"</span><span class="p">:</span> <span class="p">[</span><span class="s">"John"</span><span class="p">,</span> <span class="s">"Joe"</span><span class="p">],</span>
+                      <span class="s">"Patient"</span><span class="p">:</span> <span class="p">[</span><span class="s">"James"</span><span class="p">,</span> <span class="s">"Michael"</span><span class="p">],</span>
+                      <span class="s">"Hospital"</span><span class="p">:</span> <span class="p">[</span><span class="s">"Medical Center"</span><span class="p">],</span>
+                      <span class="s">"Street"</span> <span class="p">:</span> <span class="p">[</span><span class="s">"Main Street"</span><span class="p">],</span>
+                      <span class="s">"Age"</span><span class="p">:[</span><span class="s">"1"</span><span class="p">,</span><span class="s">"10"</span><span class="p">,</span> <span class="s">"20"</span><span class="p">,</span> <span class="s">"40"</span><span class="p">,</span><span class="s">"80"</span><span class="p">],</span>
+                      <span class="s">"PHONE"</span><span class="p">:[</span><span class="s">"555-555-0000"</span><span class="p">]})</span> \
+    <span class="p">.</span><span class="n">setAgeRanges</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">80</span><span class="p">])</span>\
     <span class="p">.</span><span class="n">setLanguage</span><span class="p">(</span><span class="s">"en"</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> \
-    <span class="p">.</span><span class="n">setDateEntities</span><span class="p">([</span><span class="s">"DATE"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setSeed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span> \
+    <span class="p">.</span><span class="n">setDateEntities</span><span class="p">([</span><span class="s">"DATE"</span><span class="p">,</span> <span class="s">"DOB"</span><span class="p">,</span>  <span class="s">"DOD"</span><span class="p">])</span> \
 
-<span class="n">flattener</span> <span class="o">=</span> <span class="n">Flattener</span><span class="p">()</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"dei"</span><span class="p">)</span>
+<span class="n">flattener</span> <span class="o">=</span> <span class="n">medical</span><span class="p">.</span><span class="n">Flattener</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"obfuscated"</span><span class="p">,</span><span class="s">"sentence"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setExplodeSelectedFields</span><span class="p">({</span><span class="s">"obfuscated"</span><span class="p">:</span> <span class="p">[</span><span class="s">"result"</span><span class="p">],</span>  <span class="s">"sentence"</span><span class="p">:</span> <span class="p">[</span><span class="s">"result"</span><span class="p">]})</span>
 
-<span class="n">pipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">()</span> \
-        <span class="p">.</span><span class="n">setStages</span><span class="p">([</span>
-        <span class="n">document_assembler</span><span class="p">,</span>
-        <span class="n">sentence_detector</span><span class="p">,</span>
-        <span class="n">tokenizer</span><span class="p">,</span>
-        <span class="n">word_embeddings</span><span class="p">,</span>
-        <span class="n">ner_tagger</span><span class="p">,</span>
-        <span class="n">ner_converter</span><span class="p">,</span>
-        <span class="n">light_de_identification</span><span class="p">,</span>
-        <span class="n">flattener</span>
-    <span class="p">])</span>
+<span class="n">nlpPipeline</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
+                <span class="n">documentAssembler</span><span class="p">,</span>
+                <span class="n">sentenceDetector</span><span class="p">,</span>
+                <span class="n">tokenizer</span><span class="p">,</span>
+                <span class="n">word_embeddings</span><span class="p">,</span>
+                <span class="n">ner_subentity</span><span class="p">,</span>
+                <span class="n">ner_converter</span><span class="p">,</span>
+                <span class="n">light_deidentification</span><span class="p">,</span>
+                <span class="n">flattener</span>
+                <span class="p">])</span>
 
-<span class="n">pipeline_model</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">input_df</span><span class="p">)</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">pipeline_model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">input_df</span><span class="p">)</span>
-<span class="n">output</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+<span class="n">empty_data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">nlpPipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">empty_data</span><span class="p">)</span>
+
+<span class="n">text</span> <span class="o">=</span><span class="s">'''
+    Record date : 2093-01-13 , David Hale , M.D . ,
+    Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 .
+    PCP : Oliveira , 95 years-old , Record date : 2079-11-09 .
+    Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555.
+    '''</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">transform</span><span class="p">(</span><span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="n">text</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">))</span>
+<span class="n">result</span><span class="p">.</span><span class="n">show</span><span class="p">(</span><span class="n">truncate</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
 
 <span class="c1">## Result
 </span>
-<span class="o">+-----------------------+---------+-------+---------------------+--------------------------+</span>
-<span class="o">|</span><span class="n">dei_result</span>             <span class="o">|</span><span class="n">dei_begin</span><span class="o">|</span><span class="n">dei_end</span><span class="o">|</span><span class="n">dei_metadata_sentence</span><span class="o">|</span><span class="n">dei_metadata_originalIndex</span><span class="o">|</span>
-<span class="o">+-----------------------+---------+-------+---------------------+--------------------------+</span>
-<span class="o">|</span><span class="n">Record</span> <span class="n">date</span><span class="p">:</span> <span class="mi">01</span><span class="o">/</span><span class="mi">06</span><span class="o">/</span><span class="mi">1980</span><span class="o">|</span><span class="mi">0</span>        <span class="o">|</span><span class="mi">22</span>     <span class="o">|</span><span class="mi">0</span>                    <span class="o">|</span><span class="mi">0</span>                         <span class="o">|</span>
-<span class="o">|</span><span class="n">John</span><span class="p">,</span> <span class="n">M</span><span class="p">.</span><span class="n">D</span><span class="p">.</span>             <span class="o">|</span><span class="mi">0</span>        <span class="o">|</span><span class="mi">9</span>      <span class="o">|</span><span class="mi">0</span>                    <span class="o">|</span><span class="mi">0</span>                         <span class="o">|</span>
-<span class="o">|</span><span class="n">MEDICAL</span><span class="p">.</span>               <span class="o">|</span><span class="mi">0</span>        <span class="o">|</span><span class="mi">7</span>      <span class="o">|</span><span class="mi">0</span>                    <span class="o">|</span><span class="mi">0</span>                         <span class="o">|</span>
-<span class="o">|</span><span class="n">Main</span> <span class="n">Road</span><span class="p">.</span>             <span class="o">|</span><span class="mi">0</span>        <span class="o">|</span><span class="mi">9</span>      <span class="o">|</span><span class="mi">0</span>                    <span class="o">|</span><span class="mi">0</span>                         <span class="o">|</span>
-<span class="o">|</span><span class="n">My</span> <span class="n">name</span> <span class="ow">is</span> <span class="o">&lt;</span><span class="n">PATIENT</span><span class="o">&gt;</span><span class="p">.</span>  <span class="o">|</span><span class="mi">0</span>        <span class="o">|</span><span class="mi">20</span>     <span class="o">|</span><span class="mi">0</span>                    <span class="o">|</span><span class="mi">0</span>                         <span class="o">|</span>
-<span class="o">+-----------------------+---------+-------+---------------------+--------------------------+</span>
+<span class="o">+----------------------------------------------------------------------+-----------------------------------------------------+</span>
+<span class="o">|</span><span class="n">sentence_result</span>                                                       <span class="o">|</span><span class="n">obfuscated_result</span>                                    <span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------+-----------------------------------------------------+</span>
+<span class="o">|</span><span class="n">Record</span> <span class="n">date</span> <span class="p">:</span> <span class="mi">2093</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">13</span> <span class="p">,</span> <span class="n">David</span> <span class="n">Hale</span> <span class="p">,</span> <span class="n">M</span><span class="p">.</span><span class="n">D</span> <span class="p">.</span>                         <span class="o">|</span><span class="n">Record</span> <span class="n">date</span> <span class="p">:</span> <span class="mi">2093</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">20</span> <span class="p">,</span> <span class="n">John</span> <span class="p">,</span> <span class="n">M</span><span class="p">.</span><span class="n">D</span> <span class="p">.</span>              <span class="o">|</span>
+<span class="o">|</span><span class="p">,</span>\<span class="n">nName</span> <span class="p">:</span> <span class="n">Hendrickson</span> <span class="n">Ora</span> <span class="p">,</span> <span class="n">MR</span> <span class="c1"># 7194334 Date : 01/13/93 .            |,\nName : Michael , MR # 1478295 Date : 01/20/93 .   |
+</span><span class="o">|</span><span class="n">PCP</span> <span class="p">:</span> <span class="n">Oliveira</span> <span class="p">,</span> <span class="mi">95</span> <span class="n">years</span><span class="o">-</span><span class="n">old</span> <span class="p">,</span> <span class="n">Record</span> <span class="n">date</span> <span class="p">:</span> <span class="mi">2079</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">09</span> <span class="p">.</span>            <span class="o">|</span><span class="n">PCP</span> <span class="p">:</span> <span class="n">Joe</span> <span class="p">,</span> <span class="mi">95</span> <span class="n">years</span><span class="o">-</span><span class="n">old</span> <span class="p">,</span> <span class="n">Record</span> <span class="n">date</span> <span class="p">:</span> <span class="mi">2079</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">16</span> <span class="p">.</span><span class="o">|</span>
+<span class="o">|</span><span class="n">Cocke</span> <span class="n">County</span> <span class="n">Baptist</span> <span class="n">Hospital</span> <span class="p">,</span> <span class="mi">0295</span> <span class="n">Keats</span> <span class="n">Street</span> <span class="p">,</span> <span class="n">Phone</span> <span class="mi">55</span><span class="o">-</span><span class="mi">555</span><span class="o">-</span><span class="mf">5555.</span><span class="o">|</span><span class="n">Medical</span> <span class="n">Center</span> <span class="p">,</span> <span class="n">Main</span> <span class="n">Street</span> <span class="p">,</span> <span class="n">Phone</span> <span class="mi">62</span><span class="o">-</span><span class="mi">130</span><span class="o">-</span><span class="mf">8657.</span>    <span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------+-----------------------------------------------------+</span>
 </code></pre></div>          </div>
 
         </div>
@@ -17885,77 +17890,77 @@ You can specify the entity and the terms to be used for obfuscation.</li>
           <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spark.implicits._</span>
 
 <span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SentenceDetector</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"document"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">wordEmbeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">clinical_sensitive_entities</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_deid_enriched"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">nerSubEntity</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_deid_subentity_augmented"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_subentity"</span><span class="o">)</span>
 
 <span class="k">val</span> <span class="nv">nerConverter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverterInternal</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner"</span><span class="o">))</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner_subentity"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">deIdentification</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">LightDeIdentification</span><span class="o">()</span>
-  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"chunk"</span><span class="o">,</span> <span class="s">"sentence"</span><span class="o">)).</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"dei"</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">lightDeidentification</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">LightDeIdentification</span><span class="o">()</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">,</span> <span class="s">"sentence"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"obfuscated"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setMode</span><span class="o">(</span><span class="s">"obfuscate"</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setObfuscateDate</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setDays</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setDateFormats</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"MM/dd/yyyy"</span><span class="o">,</span> <span class="s">"yyyy-MM-dd"</span><span class="o">,</span> <span class="s">"MM/dd/yy"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setDays</span><span class="o">(</span><span class="mi">7</span><span class="o">)</span>
   <span class="o">.</span><span class="py">setObfuscateRefSource</span><span class="o">(</span><span class="s">"custom"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setCustomFakers</span><span class="o">(</span><span class="nc">Map</span><span class="o">(</span>
-    <span class="s">"DOCTOR"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"John"</span><span class="o">),</span>
-    <span class="s">"HOSPITAL"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"MEDICAL"</span><span class="o">),</span>
-    <span class="s">"STREET"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Main Road"</span><span class="o">)))</span>
+  <span class="o">.</span><span class="py">setCustomFakers</span><span class="o">(</span><span class="nc">Map</span><span class="o">(</span><span class="s">"Doctor"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"John"</span><span class="o">,</span> <span class="s">"Joe"</span><span class="o">),</span>
+    <span class="s">"Patient"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"James"</span><span class="o">,</span> <span class="s">"Michael"</span><span class="o">),</span>
+    <span class="s">"Hospital"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Medical Center"</span><span class="o">),</span>
+    <span class="s">"Street"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"Main Street"</span><span class="o">),</span>
+    <span class="s">"Age"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"1"</span><span class="o">,</span> <span class="s">"10"</span><span class="o">,</span> <span class="s">"20"</span><span class="o">,</span> <span class="s">"40"</span><span class="o">,</span> <span class="s">"80"</span><span class="o">),</span>
+    <span class="s">"PHONE"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"555-555-0000"</span><span class="o">)))</span>
+  <span class="o">.</span><span class="py">setAgeRanges</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="mi">4</span><span class="o">,</span> <span class="mi">12</span><span class="o">,</span> <span class="mi">20</span><span class="o">,</span> <span class="mi">40</span><span class="o">,</span> <span class="mi">60</span><span class="o">,</span> <span class="mi">80</span><span class="o">))</span>
   <span class="o">.</span><span class="py">setLanguage</span><span class="o">(</span><span class="s">"en"</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setSeed</span><span class="o">(</span><span class="mi">10</span><span class="o">)</span>
-  <span class="o">.</span><span class="py">setDateEntities</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"DATE"</span><span class="o">))</span>
-
+  <span class="o">.</span><span class="py">setSeed</span><span class="o">(</span><span class="mi">42</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setDateEntities</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"DATE"</span><span class="o">,</span> <span class="s">"DOB"</span><span class="o">,</span> <span class="s">"DOD"</span><span class="o">))</span>
 
 <span class="k">val</span> <span class="nv">flattener</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Flattener</span><span class="o">()</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"dei"</span><span class="o">)</span>
+  <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"obfuscated"</span><span class="o">,</span> <span class="s">"sentence"</span><span class="o">))</span>
+  <span class="o">.</span><span class="py">setExplodeSelectedFields</span><span class="o">(</span><span class="nc">Map</span><span class="o">(</span><span class="s">"obfuscated"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"result"</span><span class="o">),</span> <span class="s">"sentence"</span> <span class="o">-&gt;</span> <span class="nc">Array</span><span class="o">(</span><span class="s">"result"</span><span class="o">)))</span>
 
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"""
-  |Record date: 2093-01-13, David Hale, M.D., Name: Hendrickson Ora.
-  | MR # 7194334 Date: 01/13/93. PCP: Oliveira, 25 years-old, Record date: 2079-11-09.
-  |Cocke County Baptist Hospital, 0295 Keats Street, Phone 55-555-5555."""</span><span class="o">.</span><span class="py">stripMargin</span>
-<span class="o">).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-  <span class="n">documentAssembler</span><span class="o">,</span>
-  <span class="n">sentenceDetector</span><span class="o">,</span>
-  <span class="n">tokenizer</span><span class="o">,</span>
-  <span class="n">embeddings</span><span class="o">,</span>
-  <span class="n">clinical_sensitive_entities</span><span class="o">,</span>
-  <span class="n">nerConverter</span><span class="o">,</span>
-  <span class="n">deIdentification</span><span class="o">,</span>
-  <span class="n">flattener</span>
+<span class="k">val</span> <span class="nv">nlpPipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+      <span class="n">documentAssembler</span><span class="o">,</span>
+      <span class="n">sentenceDetector</span><span class="o">,</span>
+      <span class="n">tokenizer</span><span class="o">,</span>
+      <span class="n">wordEmbeddings</span><span class="o">,</span>
+      <span class="n">nerSubEntity</span><span class="o">,</span>
+      <span class="n">nerConverter</span><span class="o">,</span>
+      <span class="n">lightDeidentification</span><span class="o">,</span>
+      <span class="n">flattener</span>
 <span class="o">))</span>
 
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
-<span class="nv">result</span><span class="o">.</span><span class="py">show</span><span class="o">(</span><span class="n">truncate</span> <span class="k">=</span> <span class="kc">false</span><span class="o">)</span>
+<span class="k">val</span> <span class="nv">emptyData</span> <span class="k">=</span><span class="nc">Seq</span><span class="o">((</span><span class="s">""</span><span class="o">)).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+
+<span class="k">val</span> <span class="nv">model</span> <span class="k">=</span> <span class="nv">nlpPipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">emptyData</span><span class="o">)</span>
 
 <span class="c1">// Result</span>
 
-<span class="o">+----------------------------------------------------+---------+-------+---------------------+--------------------------+</span>
-<span class="o">|</span><span class="n">dei_result</span>                                          <span class="o">|</span><span class="n">dei_begin</span><span class="o">|</span><span class="n">dei_end</span><span class="o">|</span><span class="n">dei_metadata_sentence</span><span class="o">|</span><span class="n">dei_metadata_originalIndex</span><span class="o">|</span>
-<span class="o">+----------------------------------------------------+---------+-------+---------------------+--------------------------+</span>
-<span class="o">|</span><span class="nc">Record</span> <span class="n">date</span><span class="k">:</span> <span class="err">2093</span><span class="kt">-</span><span class="err">01</span><span class="kt">-</span><span class="err">18</span><span class="o">,</span> <span class="nc">John</span><span class="o">,</span> <span class="nv">M</span><span class="o">.</span><span class="py">D</span><span class="o">.,</span> <span class="nc">Name</span><span class="k">:</span> <span class="kt">John.</span>    <span class="kt">|</span><span class="err">0</span>        <span class="kt">|</span><span class="err">47</span>     <span class="kt">|</span><span class="err">0</span>                    <span class="kt">|</span><span class="err">1</span>                         <span class="kt">|</span>
-<span class="kt">|MR</span> <span class="k">#</span> <span class="err">4358590</span> <span class="kt">Date:</span> <span class="err">01</span><span class="kt">/</span><span class="err">18</span><span class="kt">/</span><span class="err">93</span><span class="kt">.</span>                        <span class="kt">|</span><span class="err">48</span>       <span class="kt">|</span><span class="err">75</span>     <span class="kt">|</span><span class="err">1</span>                    <span class="kt">|</span><span class="err">68</span>                        <span class="kt">|</span>
-<span class="kt">|PCP:</span> <span class="kt">John</span><span class="o">,</span> <span class="o">&lt;</span><span class="nc">AGE</span><span class="o">&gt;</span> <span class="n">years</span><span class="o">-</span><span class="n">old</span><span class="o">,</span> <span class="nc">Record</span> <span class="n">date</span><span class="k">:</span> <span class="err">2079</span><span class="kt">-</span><span class="err">11</span><span class="kt">-</span><span class="err">14</span><span class="kt">.|</span><span class="err">76</span>       <span class="kt">|</span><span class="err">127</span>    <span class="kt">|</span><span class="err">2</span>                    <span class="kt">|</span><span class="err">97</span>                        <span class="kt">|</span>
-<span class="kt">|MEDICAL</span><span class="o">,</span> <span class="nc">Main</span> <span class="nc">Road</span><span class="o">,</span> <span class="nc">Phone</span> <span class="mi">91</span><span class="o">-</span><span class="mi">483</span><span class="o">-</span><span class="mf">8495.</span>              <span class="o">|</span><span class="mi">128</span>      <span class="o">|</span><span class="mi">165</span>    <span class="o">|</span><span class="mi">3</span>                    <span class="o">|</span><span class="mi">151</span>                       <span class="o">|</span>
-<span class="o">+----------------------------------------------------+---------+-------+---------------------+--------------------------+</span>
+<span class="o">+----------------------------------------------------------------------+-----------------------------------------------------+</span>
+<span class="o">|</span><span class="n">sentence_result</span>                                                       <span class="o">|</span><span class="n">obfuscated_result</span>                                    <span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------+-----------------------------------------------------+</span>
+<span class="o">|</span><span class="nc">Record</span> <span class="n">date</span> <span class="k">:</span> <span class="err">2093</span><span class="kt">-</span><span class="err">01</span><span class="kt">-</span><span class="err">13</span> <span class="o">,</span> <span class="nc">David</span> <span class="nc">Hale</span> <span class="o">,</span> <span class="nv">M</span><span class="o">.</span><span class="py">D</span> <span class="o">.</span>                         <span class="o">|</span><span class="nc">Record</span> <span class="n">date</span> <span class="k">:</span> <span class="err">2093</span><span class="kt">-</span><span class="err">01</span><span class="kt">-</span><span class="err">20</span> <span class="o">,</span> <span class="nc">John</span> <span class="o">,</span> <span class="nv">M</span><span class="o">.</span><span class="py">D</span> <span class="o">.</span>              <span class="o">|</span>
+<span class="o">|,\</span><span class="n">nName</span> <span class="k">:</span> <span class="kt">Hendrickson</span> <span class="kt">Ora</span> <span class="o">,</span> <span class="nc">MR</span> <span class="k">#</span> <span class="mi">7194334</span> <span class="nc">Date</span> <span class="k">:</span> <span class="err">01</span><span class="kt">/</span><span class="err">13</span><span class="kt">/</span><span class="err">93</span> <span class="kt">.</span>            <span class="kt">|</span><span class="o">,\</span><span class="n">nName</span> <span class="k">:</span> <span class="kt">Michael</span> <span class="o">,</span> <span class="nc">MR</span> <span class="k">#</span> <span class="mi">1478295</span> <span class="nc">Date</span> <span class="k">:</span> <span class="err">01</span><span class="kt">/</span><span class="err">20</span><span class="kt">/</span><span class="err">93</span> <span class="kt">.</span>   <span class="kt">|</span>
+<span class="kt">|PCP</span> <span class="kt">:</span> <span class="kt">Oliveira</span> <span class="o">,</span> <span class="mi">95</span> <span class="n">years</span><span class="o">-</span><span class="n">old</span> <span class="o">,</span> <span class="nc">Record</span> <span class="n">date</span> <span class="k">:</span> <span class="err">2079</span><span class="kt">-</span><span class="err">11</span><span class="kt">-</span><span class="err">09</span> <span class="kt">.</span>            <span class="kt">|PCP</span> <span class="kt">:</span> <span class="kt">Joe</span> <span class="o">,</span> <span class="mi">95</span> <span class="n">years</span><span class="o">-</span><span class="n">old</span> <span class="o">,</span> <span class="nc">Record</span> <span class="n">date</span> <span class="k">:</span> <span class="err">2079</span><span class="kt">-</span><span class="err">11</span><span class="kt">-</span><span class="err">16</span> <span class="kt">.|</span>
+<span class="kt">|Cocke</span> <span class="kt">County</span> <span class="kt">Baptist</span> <span class="kt">Hospital</span> <span class="o">,</span> <span class="mi">0295</span> <span class="nc">Keats</span> <span class="nc">Street</span> <span class="o">,</span> <span class="nc">Phone</span> <span class="mi">55</span><span class="o">-</span><span class="mi">555</span><span class="o">-</span><span class="mf">5555.</span><span class="o">|</span><span class="nc">Medical</span> <span class="nc">Center</span> <span class="o">,</span> <span class="nc">Main</span> <span class="nc">Street</span> <span class="o">,</span> <span class="nc">Phone</span> <span class="mi">62</span><span class="o">-</span><span class="mi">130</span><span class="o">-</span><span class="mf">8657.</span>    <span class="o">|</span>
+<span class="o">+----------------------------------------------------------------------+-----------------------------------------------------+</span>
 </code></pre></div>          </div>
 
         </div>
