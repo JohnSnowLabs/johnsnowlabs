@@ -72,7 +72,7 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "e
     .setOutputCol("sentence_embeddings")\
     .setCaseSensitive(False)
 
-snomed_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_snomed_veterinary", "en", "clinical/models") \
+snomed_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_snomed_veterinary_wip", "en", "clinical/models") \
     .setInputCols(["sentence_embeddings"]) \
     .setOutputCol("snomed_code")\
     .setDistanceFunction("EUCLIDEAN")
@@ -127,7 +127,7 @@ val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli"
     .setOutputCol("sentence_embeddings")
     .setCaseSensitive(False)
 
-val snomed_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_snomed_veterinary", "en", "clinical/models")
+val snomed_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_snomed_veterinary_wip", "en", "clinical/models")
     .setInputCols("sentence_embeddings") 
     .setOutputCol("snomed_code")
     .setDistanceFunction("EUCLIDEAN")
