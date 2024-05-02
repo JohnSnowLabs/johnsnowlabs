@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical entities to UMLS CUI codes. It is trained on ´2021AB´ UMLS dataset. The complete dataset has 127 different categories, and this model is trained on the ´Clinical Drug´, ´Pharmacologic Substance´, ´Antibiotic´, ´Hazardous or Poisonous Substance´ categories using ´sbiobert_base_cased_mli´ embeddings.
+This model maps drug and substances to UMLS CUI codes. It is trained on 2023AB release of the Unified Medical Language System (UMLS) dataset. The complete dataset has 127 different categories, and this model is trained on the ´Clinical Drug´, ´Pharmacologic Substance´, ´Antibiotic´, and ´Hazardous or Poisonous Substance´ categories using ´sbiobert_base_cased_mli´ embeddings.
 
 ## Predicted Entities
 
@@ -56,22 +56,20 @@ word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","cli
 
 ner_model = MedicalNerModel.pretrained("ner_posology_greedy","en","clinical/models")\
     .setInputCols(["sentence","token","embeddings"])\
-    .setOutputCol("ner_posology")\
-    .setLabelCasing("upper")
+    .setOutputCol("posology_ner")
 
 ner_model_converter = NerConverterInternal()\
-    .setInputCols(["sentence","token","ner_posology"])\
-    .setOutputCol("ner_chunk")\
-    .setWhiteList(["Drug"])
+    .setInputCols(["sentence","token","posology_ner"])\
+    .setOutputCol("posology_ner_chunk")\
+    .setWhiteList(["DRUG"])
 
 chunk2doc = Chunk2Doc()\
-    .setInputCols("ner_chunk")\
+    .setInputCols("posology_ner_chunk")\
     .setOutputCol("ner_chunk_doc")
 
-sbert_embedder = BertSentenceEmbeddings\
-    .pretrained("sbiobert_base_cased_mli",'en','clinical/models')\
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli",'en','clinical/models')\
     .setInputCols(["ner_chunk_doc"])\
-    .setOutputCol("sbert_embeddings")
+    .setOutputCol("sbert_embeddings")\
     .setCaseSensitive(False)
 
 resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_drug_substance","en", "clinical/models") \
@@ -114,29 +112,26 @@ val word_embeddings = WordEmbeddingsModel
       .setInputCols(Array("sentence", "token"))
       .setOutputCol("embeddings")
 
-val ner_model = MedicalNerModel
-      .pretrained("ner_posology_greedy", "en", "clinical/models")
+val ner_model = MedicalNerModel.pretrained("ner_posology_greedy", "en", "clinical/models")
       .setInputCols(Array("sentence", "token", "embeddings"))
-      .setOutputCol("ner_posology")\
-      .setLabelCasing("upper")
+      .setOutputCol("posology_ner")
 
 val ner_model_converter = new NerConverterInternal()
-      .setInputCols(Array("sentence", "token", "ner_posology"))
-      .setOutputCol("ner_chunk")
-      .setWhiteList(["Drug"])
+      .setInputCols(Array("sentence", "token", "posology_ner"))
+      .setOutputCol("posology_ner_chunk")
+      .setWhiteList(["DRUG"])
 
 val chunk2doc = new Chunk2Doc()
-      .setInputCols("ner_chunk")
+      .setInputCols("posology_ner_chunk")
       .setOutputCol("ner_chunk_doc")
 
-val sbert_embedder = BertSentenceEmbeddings
-      .pretrained("sbiobert_base_cased_mli", "en","clinical/models")
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en","clinical/models")
       .setInputCols(Array("ner_chunk_doc"))
       .setOutputCol("sbert_embeddings")
+      .setCaseSensitive(False)
     
-val resolver = SentenceEntityResolverModel
-      .pretrained("sbiobertresolve_umls_drug_substance", "en", "clinical/models")
-      .setInputCols(Array("ner_chunk_doc", "sbert_embeddings"))
+val resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_drug_substance", "en", "clinical/models")
+      .setInputCols(Array("sbert_embeddings"))
       .setOutputCol("resolution")
       .setDistanceFunction("EUCLIDEAN")
 
