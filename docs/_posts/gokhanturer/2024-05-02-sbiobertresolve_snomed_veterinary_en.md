@@ -155,7 +155,7 @@ val result = resolver_pipeline.fit(data).transform(data)
 |  lymphoblastic lymphoma|PROBLEM|312281000009102|   lymphoblastic lymphoma|312281000009102:::360351000009103:::91857003:::302841002:...|lymphoblastic lymphoma:::cutaneous epitheliotropic lympho...|
 |the  Arthritis condition|PROBLEM|309181000009103|immune-mediated arthritis|309181000009103:::298162008:::35771000009105:::3117810000...|immune-mediated arthritis:::arthritis of shoulder joint::...|
 |          mink distemper|PROBLEM|348361000009108|           mink distemper|348361000009108:::86031000009108:::207191000009103:::1901...|mink distemper:::dendropicos obsoletus:::xenops minutus o...|
-+------------------------+-------+---------------+-------------------------+--------------------------------------------------------
++------------------------+-------+---------------+-------------------------+------------------------------------------------------------+------------------------------------------------------------+
 ```
 
 {:.model-param}
