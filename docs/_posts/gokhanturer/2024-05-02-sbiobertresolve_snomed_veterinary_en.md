@@ -36,69 +36,126 @@ This model maps veterinary-related entities and concepts to SNOMED codes using `
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-documentAssembler = DocumentAssembler()\
+document_assembler = DocumentAssembler()\
     .setInputCol("text")\
-    .setOutputCol("ner_chunk")
+    .setOutputCol("document")
 
-bert_embeddings = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
-    .setInputCols(["ner_chunk"])\
-    .setOutputCol("sbert_embeddings")\
+sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
+
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
+
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("word_embeddings")
+
+ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "word_embeddings"])\
+    .setOutputCol("ner")\
+
+ner_converter = NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")\
+
+c2doc = Chunk2Doc()\
+    .setInputCols("ner_chunk")\
+    .setOutputCol("ner_chunk_doc")
+
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("sentence_embeddings")\
     .setCaseSensitive(False)
 
 snomed_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_snomed_veterinary", "en", "clinical/models") \
-    .setInputCols(["sbert_embeddings"]) \
+    .setInputCols(["sentence_embeddings"]) \
     .setOutputCol("snomed_code")\
     .setDistanceFunction("EUCLIDEAN")
 
+resolver_pipeline = Pipeline(stages = [document_assembler,
+                                       sentenceDetectorDL,
+                                       tokenizer,
+                                       word_embeddings,
+                                       ner,
+                                       ner_converter,
+                                       c2doc,
+                                       sbert_embedder,
+                                       snomed_resolver])
+text = [["The veterinary team is observing the patient for signs of lymphoblastic lymphoma, while also treating the  Arthritis condition, and closely observing for any potential cases of mink distemper in the facility."]]
 
-snomed_pipeline = PipelineModel(stages = [
-    documentAssembler,
-    bert_embeddings,
-    snomed_resolver])
+data = spark.createDataFrame(text, StringType()).toDF("text")
 
-text= ["lymphoblastic lymphoma", "Arthritis", "mink distemper"]
-
-test_df= spark.createDataFrame(pd.DataFrame(text, columns=["text"]))
-
-result= snomed_pipeline.transform(test_df)
+result = resolver_pipeline.fit(spark.createDataFrame([[""]]).toDF("text")).transform(data)
 ```
 ```scala
-val documentAssembler = new DocumentAssembler()
+val document_assembler = new DocumentAssembler()
     .setInputCol("text")
+    .setOutputCol("document")
+
+val sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")
+    .setInputCols("document")
+    .setOutputCol("sentence")
+
+val tokenizer = new Tokenizer()
+    .setInputCols("sentence")
+    .setOutputCol("token")
+
+val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token"))
+    .setOutputCol("word_embeddings")
+
+val ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")
+    .setInputCols(Array("sentence", "token", "word_embeddings"))
+    .setOutputCol("ner")
+
+val ner_converter = new NerConverterInternal()
+    .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
 
-val bert_embeddings = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")
-    .setInputCols(Array("ner_chunk"))
-    .setOutputCol("sbert_embeddings")
-    .setCaseSensitive(false)
+val c2doc = new Chunk2Doc()
+    .setInputCols("ner_chunk")
+    .setOutputCol("ner_chunk_doc")
 
-val snomed_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_snomed_veterinary")
-    .setInputCols(Array("sbert_embeddings"))
+val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en", "clinical/models")
+    .setInputCols("ner_chunk_doc")
+    .setOutputCol("sentence_embeddings")
+    .setCaseSensitive(False)
+
+val snomed_resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_snomed_veterinary", "en", "clinical/models")
+    .setInputCols("sentence_embeddings") 
     .setOutputCol("snomed_code")
     .setDistanceFunction("EUCLIDEAN")
 
-val snomed_pipeline =new PipelineModel().setStages(Array(documentAssembler,
-                                                         bert_embeddings,
-                                                         snomed_resolver))
+val resolver_pipeline = new PipelineModel().setStages(Array(document_assembler,
+                                       sentenceDetectorDL,
+                                       tokenizer,
+                                       word_embeddings,
+                                       ner,
+                                       ner_converter,
+                                       c2doc,
+                                       sbert_embedder,
+                                       snomed_resolver))
 
-val text= Seq("lymphoblastic lymphoma","Arthritis", "mink distemper").toDF("text")
+val data= Seq("The veterinary team is observing the patient for signs of lymphoblastic lymphoma, while also treating the  Arthritis condition, and closely observing for any potential cases of mink distemper in the facility.").toDF("text")
 
-
-val result= snomed_pipeline.transform(test_df)
+val result = resolver_pipeline.fit(data).transform(data)
 ```
 </div>
 
 ## Results
 
 ```bash
-+----------------------+---------------+-------------------------+------------------------------------------------------------+------------------------------------------------------------+
-|             ner_chunk|    snomed_code|              description|                                                   all_codes|                                                 resolutions|
-+----------------------+---------------+-------------------------+------------------------------------------------------------+------------------------------------------------------------+
-|lymphoblastic lymphoma|312281000009102|   lymphoblastic lymphoma|312281000009102:::360351000009103:::91857003:::302841002:...|lymphoblastic lymphoma:::cutaneous epitheliotropic lympho...|
-|             Arthritis|309181000009103|immune-mediated arthritis|309181000009103:::298162008:::35771000009105:::3519007:::...|immune-mediated arthritis:::arthritis of shoulder joint::...|
-|        mink distemper|348361000009108|           mink distemper|348361000009108:::86031000009108:::207191000009103:::1901...|mink distemper:::dendropicos obsoletus:::xenops minutus o...|
-+----------------------+---------------+-------------------------+------------------------------------------------------------+------------------------------------------------------------+
++------------------------+-------+---------------+-------------------------+------------------------------------------------------------+------------------------------------------------------------+
+|               ner_chunk| entity|    snomed_code|              description|                                                   all_codes|                                                 resolutions|
++------------------------+-------+---------------+-------------------------+------------------------------------------------------------+------------------------------------------------------------+
+|  lymphoblastic lymphoma|PROBLEM|312281000009102|   lymphoblastic lymphoma|312281000009102:::360351000009103:::91857003:::302841002:...|lymphoblastic lymphoma:::cutaneous epitheliotropic lympho...|
+|the  Arthritis condition|PROBLEM|309181000009103|immune-mediated arthritis|309181000009103:::298162008:::35771000009105:::3117810000...|immune-mediated arthritis:::arthritis of shoulder joint::...|
+|          mink distemper|PROBLEM|348361000009108|           mink distemper|348361000009108:::86031000009108:::207191000009103:::1901...|mink distemper:::dendropicos obsoletus:::xenops minutus o...|
++------------------------+-------+---------------+-------------------------+--------------------------------------------------------
 ```
 
 {:.model-param}
