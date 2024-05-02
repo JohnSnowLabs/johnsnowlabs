@@ -36,6 +36,7 @@ This model maps clinical entities to UMLS CUI codes. It is trained on ´2021AB´
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
