@@ -20,7 +20,7 @@ And it supports multi-mode de-Identification with setSelectiveObfuscationModes f
 
 Parameters:
 
-- `mode` *(str)*: Mode for Anonimizer ['mask'|'obfuscate']
+- `mode` *(str)*: Mode for Anonimizer ['mask','obfuscate']
 
 - `dateEntities` *(list[str])*: List of date entities. Default: ['DATE', 'DOB', 'DOD']
 
@@ -99,83 +99,92 @@ DOCUMENT
 
 from johnsnowlabs import nlp, medical
 
-sentences = [
-['Record date: 01/01/1980'],
-['Johnson, M.D.'],
-['Gastby Hospital.'],
-['Camel Street.'],
-['My name is George.']
-]
-
-input_df = spark.createDataFrame(sentences).toDF("text")
-
-document_assembler = nlp.DocumentAssembler()\
+documentAssembler = nlp.DocumentAssembler()\
     .setInputCol("text")\
     .setOutputCol("document")
 
-sentence_detector = nlp.SentenceDetector()\
+# Sentence Detector annotator, processes various sentences per line
+sentenceDetector = nlp.SentenceDetector()\
     .setInputCols(["document"])\
     .setOutputCol("sentence")
 
+# Tokenizer splits words in a relevant format for NLP
 tokenizer = nlp.Tokenizer()\
     .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models") \
-    .setInputCols(["sentence", "token"]) \
+# Clinical word embeddings trained on PubMED dataset
+word_embeddings = nlp.WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
     .setOutputCol("embeddings")
 
-ner_tagger = nlp.NerDLModel.pretrained("deidentify_dl", "en", "clinical/models") \
+# NER model trained on n2c2 (de-identification and Heart Disease Risk Factors Challenge) datasets)
+ner_subentity = medical.NerModel.pretrained("ner_deid_subentity_augmented", "en", "clinical/models") \
     .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("ner")
+    .setOutputCol("ner_subentity")
 
 ner_converter = medical.NerConverterInternal()\
-    .setInputCols(["sentence", "token", "ner"])\
+    .setInputCols(["sentence", "token", "ner_subentity"])\
     .setOutputCol("ner_chunk")
 
-light_de_identification = medical.LightDeIdentification() \
+light_deidentification = medical.LightDeIdentification() \
     .setInputCols(["ner_chunk", "sentence"]) \
-    .setOutputCol("dei") \
+    .setOutputCol("obfuscated") \
     .setMode("obfuscate") \
-    .setObfuscateDate(True) \
-    .setDateFormats(["MM/dd/yyyy"]) \
-    .setDays(5) \
+    .setObfuscateDate(True)\
+    .setDateFormats(["MM/dd/yyyy","yyyy-MM-dd", "MM/dd/yy"]) \
+    .setDays(7) \
     .setObfuscateRefSource('custom') \
-    .setCustomFakers({"DOCTOR": ["John"], "HOSPITAL": ["MEDICAL"], "STREET": ["Main Road"]}) \
+    .setCustomFakers({"Doctor": ["John", "Joe"],
+                      "Patient": ["James", "Michael"],
+                      "Hospital": ["Medical Center"],
+                      "Street" : ["Main Street"],
+                      "Age":["1","10", "20", "40","80"],
+                      "PHONE":["555-555-0000"]}) \
+    .setAgeRanges([1, 4, 12, 20, 40, 60, 80])\
     .setLanguage("en") \
-    .setSeed(10) \
-    .setDateEntities(["DATE"]) \
+    .setSeed(42) \
+    .setDateEntities(["DATE", "DOB",  "DOD"]) \
 
-flattener = Flattener()\
-    .setInputCols("dei")
+flattener = medical.Flattener()\
+    .setInputCols("obfuscated","sentence")\
+    .setExplodeSelectedFields({"obfuscated": ["result"],  "sentence": ["result"]})
 
-pipeline = nlp.Pipeline() \
-        .setStages([
-        document_assembler,
-        sentence_detector,
-        tokenizer,
-        word_embeddings,
-        ner_tagger,
-        ner_converter,
-        light_de_identification,
-        flattener
-    ])
+nlpPipeline = nlp.Pipeline(stages=[
+                documentAssembler,
+                sentenceDetector,
+                tokenizer,
+                word_embeddings,
+                ner_subentity,
+                ner_converter,
+                light_deidentification,
+                flattener
+                ])
 
-pipeline_model = pipeline.fit(input_df)
-output = pipeline_model.transform(input_df)
-output.show(truncate=False)
+empty_data = spark.createDataFrame([[""]]).toDF("text")
+
+model = nlpPipeline.fit(empty_data)
+
+text ='''
+    Record date : 2093-01-13 , David Hale , M.D . ,
+    Name : Hendrickson Ora , MR # 7194334 Date : 01/13/93 .
+    PCP : Oliveira , 95 years-old , Record date : 2079-11-09 .
+    Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555.
+    '''
+
+result = model.transform(spark.createDataFrame([[text]]).toDF("text"))
+result.show(truncate=False)
 
 ## Result
 
-+-----------------------+---------+-------+---------------------+--------------------------+
-|dei_result             |dei_begin|dei_end|dei_metadata_sentence|dei_metadata_originalIndex|
-+-----------------------+---------+-------+---------------------+--------------------------+
-|Record date: 01/06/1980|0        |22     |0                    |0                         |
-|John, M.D.             |0        |9      |0                    |0                         |
-|MEDICAL.               |0        |7      |0                    |0                         |
-|Main Road.             |0        |9      |0                    |0                         |
-|My name is <PATIENT>.  |0        |20     |0                    |0                         |
-+-----------------------+---------+-------+---------------------+--------------------------+
++----------------------------------------------------------------------+-----------------------------------------------------+
+|sentence_result                                                       |obfuscated_result                                    |
++----------------------------------------------------------------------+-----------------------------------------------------+
+|Record date : 2093-01-13 , David Hale , M.D .                         |Record date : 2093-01-20 , John , M.D .              |
+|,\nName : Hendrickson Ora , MR # 7194334 Date : 01/13/93 .            |,\nName : Michael , MR # 1478295 Date : 01/20/93 .   |
+|PCP : Oliveira , 95 years-old , Record date : 2079-11-09 .            |PCP : Joe , 95 years-old , Record date : 2079-11-16 .|
+|Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555.|Medical Center , Main Street , Phone 62-130-8657.    |
++----------------------------------------------------------------------+-----------------------------------------------------+
 
 {%- endcapture -%}
 
@@ -183,77 +192,77 @@ output.show(truncate=False)
 import spark.implicits._
 
 val documentAssembler = new DocumentAssembler()
-    .setInputCol("text")
-    .setOutputCol("document")
+  .setInputCol("text")
+  .setOutputCol("document")
 
 val sentenceDetector = new SentenceDetector()
-    .setInputCols(Array("document"))
-    .setOutputCol("sentence")
+  .setInputCols(Array("document"))
+  .setOutputCol("sentence")
 
 val tokenizer = new Tokenizer()
-    .setInputCols(Array("sentence"))
-    .setOutputCol("token")
+  .setInputCols(Array("sentence"))
+  .setOutputCol("token")
 
-val embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-    .setInputCols(Array("sentence", "token"))
-    .setOutputCol("embeddings")
+val wordEmbeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
+  .setInputCols(Array("sentence", "token"))
+  .setOutputCol("embeddings")
 
-val clinical_sensitive_entities = MedicalNerModel.pretrained("ner_deid_enriched", "en", "clinical/models")
-    .setInputCols(Array("sentence", "token", "embeddings"))
-    .setOutputCol("ner")
+val nerSubEntity = MedicalNerModel.pretrained("ner_deid_subentity_augmented", "en", "clinical/models")
+  .setInputCols(Array("sentence", "token", "embeddings"))
+  .setOutputCol("ner_subentity")
 
 val nerConverter = new NerConverterInternal()
-    .setInputCols(Array("sentence", "token", "ner"))
-    .setOutputCol("chunk")
+  .setInputCols(Array("sentence", "token", "ner_subentity"))
+  .setOutputCol("ner_chunk")
 
-val deIdentification = new LightDeIdentification()
-  .setInputCols(Array("chunk", "sentence")).setOutputCol("dei")
+val lightDeidentification = new LightDeIdentification()
+  .setInputCols(Array("ner_chunk", "sentence"))
+  .setOutputCol("obfuscated")
   .setMode("obfuscate")
   .setObfuscateDate(true)
-  .setDays(5)
+  .setDateFormats(Array("MM/dd/yyyy", "yyyy-MM-dd", "MM/dd/yy"))
+  .setDays(7)
   .setObfuscateRefSource("custom")
-  .setCustomFakers(Map(
-    "DOCTOR" -> Array("John"),
-    "HOSPITAL" -> Array("MEDICAL"),
-    "STREET" -> Array("Main Road")))
+  .setCustomFakers(Map("Doctor" -> Array("John", "Joe"),
+    "Patient" -> Array("James", "Michael"),
+    "Hospital" -> Array("Medical Center"),
+    "Street" -> Array("Main Street"),
+    "Age" -> Array("1", "10", "20", "40", "80"),
+    "PHONE" -> Array("555-555-0000")))
+  .setAgeRanges(Array(1, 4, 12, 20, 40, 60, 80))
   .setLanguage("en")
-  .setSeed(10)
-  .setDateEntities(Array("DATE"))
-
+  .setSeed(42)
+  .setDateEntities(Array("DATE", "DOB", "DOD"))
 
 val flattener = new Flattener()
-    .setInputCols("dei")
+  .setInputCols(Array("obfuscated", "sentence"))
+  .setExplodeSelectedFields(Map("obfuscated" -> Array("result"), "sentence" -> Array("result")))
 
-val data = Seq("""
-  |Record date: 2093-01-13, David Hale, M.D., Name: Hendrickson Ora.
-  | MR # 7194334 Date: 01/13/93. PCP: Oliveira, 25 years-old, Record date: 2079-11-09.
-  |Cocke County Baptist Hospital, 0295 Keats Street, Phone 55-555-5555.""".stripMargin
-).toDF("text")
-
-val pipeline = new Pipeline().setStages(Array(
-  documentAssembler,
-  sentenceDetector,
-  tokenizer,
-  embeddings,
-  clinical_sensitive_entities,
-  nerConverter,
-  deIdentification,
-  flattener
+val nlpPipeline = new Pipeline().setStages(Array(
+      documentAssembler,
+      sentenceDetector,
+      tokenizer,
+      wordEmbeddings,
+      nerSubEntity,
+      nerConverter,
+      lightDeidentification,
+      flattener
 ))
 
-val result = pipeline.fit(data).transform(data)
-result.show(truncate = false)
+val emptyData =Seq(("")).toDF("text")
+
+val model = nlpPipeline.fit(emptyData)
 
 // Result
 
-+----------------------------------------------------+---------+-------+---------------------+--------------------------+
-|dei_result                                          |dei_begin|dei_end|dei_metadata_sentence|dei_metadata_originalIndex|
-+----------------------------------------------------+---------+-------+---------------------+--------------------------+
-|Record date: 2093-01-18, John, M.D., Name: John.    |0        |47     |0                    |1                         |
-|MR # 4358590 Date: 01/18/93.                        |48       |75     |1                    |68                        |
-|PCP: John, <AGE> years-old, Record date: 2079-11-14.|76       |127    |2                    |97                        |
-|MEDICAL, Main Road, Phone 91-483-8495.              |128      |165    |3                    |151                       |
-+----------------------------------------------------+---------+-------+---------------------+--------------------------+
++----------------------------------------------------------------------+-----------------------------------------------------+
+|sentence_result                                                       |obfuscated_result                                    |
++----------------------------------------------------------------------+-----------------------------------------------------+
+|Record date : 2093-01-13 , David Hale , M.D .                         |Record date : 2093-01-20 , John , M.D .              |
+|,\nName : Hendrickson Ora , MR # 7194334 Date : 01/13/93 .            |,\nName : Michael , MR # 1478295 Date : 01/20/93 .   |
+|PCP : Oliveira , 95 years-old , Record date : 2079-11-09 .            |PCP : Joe , 95 years-old , Record date : 2079-11-16 .|
+|Cocke County Baptist Hospital , 0295 Keats Street , Phone 55-555-5555.|Medical Center , Main Street , Phone 62-130-8657.    |
++----------------------------------------------------------------------+-----------------------------------------------------+
 
 {%- endcapture -%}
 
@@ -264,6 +273,10 @@ result.show(truncate = false)
 
 {%- capture model_python_api_link -%}
 [LightDeIdentification](https://nlp.johnsnowlabs.com/licensed/api/python/reference/autosummary/sparknlp_jsl/annotator/deid/LightDeIdentification/index.html)
+{%- endcapture -%}
+
+{%- capture model_notebook_link -%}
+[LightDeIdentification](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/tutorials/Certification_Trainings/Healthcare/4.6.Light_Deidentification.ipynb)
 {%- endcapture -%}
 
 
@@ -278,4 +291,5 @@ model_python_medical=model_python_medical
 model_scala_medical=model_scala_medical
 model_api_link=model_api_link
 model_python_api_link=model_python_api_link
+model_notebook_link=model_notebook_link
 %}
