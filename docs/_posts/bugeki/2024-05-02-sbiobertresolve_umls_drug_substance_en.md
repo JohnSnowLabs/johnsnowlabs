@@ -90,7 +90,8 @@ pipeline = Pipeline(stages=[
 ])
 
 
-data = spark.createDataFrame([["""A 35-year-old female with a past medical history significant for rheumatoid arthritis diagnosed 10 years ago, currently managed with methotrexate and prednisone, presented with a three-week history of progressively worsening joint pain and swelling, predominantly involving the wrists, knees, and ankles. She reported morning stiffness lasting over an hour. The patient denied any recent infections to the affected joints."""]]).toDF("text")
+data = spark.createDataFrame([["""She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, 
+and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg."""]]).toDF("text")
 
 result = pipeline.fit(data).transform(data)
 ```
@@ -146,7 +147,8 @@ val p_model = new Pipeline().setStages(Array(
     sbert_embedder,
     resolver))
     
-val data = Seq("A 35-year-old female with a past medical history significant for rheumatoid arthritis diagnosed 10 years ago, currently managed with methotrexate and prednisone, presented with a three-week history of progressively worsening joint pain and swelling, predominantly involving the wrists, knees, and ankles. She reported morning stiffness lasting over an hour. The patient denied any recent infections to the affected joints.").toDF("text")  
+val data = Seq("She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, 
+and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg.").toDF("text")  
 
 val res = p_model.fit(data).transform(data)
 ```
