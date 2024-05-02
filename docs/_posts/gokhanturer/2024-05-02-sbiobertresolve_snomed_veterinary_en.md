@@ -116,7 +116,7 @@ val ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")
 val ner_converter = new NerConverterInternal()
     .setInputCols(Array("sentence", "token", "ner"))
     .setOutputCol("ner_chunk")
-    .setWhiteList('PROBLEM')
+    .setWhiteList("PROBLEM")
 
 val c2doc = new Chunk2Doc()
     .setInputCols("ner_chunk")
