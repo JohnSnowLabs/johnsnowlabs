@@ -36,6 +36,7 @@ This model maps clinical entities to UMLS CUI codes. It is trained on ´2021AB´
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -182,3 +183,7 @@ val res = p_model.fit(data).transform(data)
 |Language:|en|
 |Size:|1.3 GB|
 |Case sensitive:|false|
+
+## References
+
+Trained on ´2023AB´ UMLS dataset’s ´Disease or Syndrome´ category. https://www.nlm.nih.gov/research/umls/index.html
