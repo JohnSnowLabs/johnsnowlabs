@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps clinical entities to UMLS CUI codes. It is trained on ´2021AB´ UMLS dataset. The complete dataset has 127 different categories, and this model is trained on the ´Disease or Syndrome´ category using ´sbiobert_base_cased_mli´ embeddings.
+This model maps clinical entities to UMLS CUI codes. It is trained on ´2023AB´ UMLS dataset. The complete dataset has 127 different categories, and this model is trained on the ´Disease or Syndrome´ category using ´sbiobert_base_cased_mli´ embeddings.
 
 ## Predicted Entities
 
