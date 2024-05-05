@@ -36,6 +36,7 @@ This model maps drug and substances to UMLS CUI codes. It is trained on 2023AB r
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -179,3 +180,6 @@ val res = p_model.fit(data).transform(data)
 |Language:|en|
 |Size:|2.9 GB|
 |Case sensitive:|false|
+
+References
+Trained on the ´Clinical Drug´ concept of the ´2023AB´ release of the Unified Medical Language System® (UMLS) Knowledge Sources: https://www.nlm.nih.gov/research/umls/index.html
