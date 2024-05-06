@@ -79,8 +79,7 @@ ner_model_converter = NerConverterInternal()\
     .setWhiteList(["Injury_or_Poisoning","Hyperlipidemia","Kidney_Disease","Oncological","Cerebrovascular_Disease",
                   "Oxygen_Therapy","Heart_Disease","Obesity","Disease_Syndrome_Disorder","Symptom","Treatment","Diabetes","Injury_or_Poisoning",
                   "Procedure","Symptom","Treatment","Drug_Ingredient","VS_Finding","Communicable_Disease",
-                  "Drug_BrandName","Hypertension"])\
-    .setReplaceLabels("Drug_Ingredient" : "DRUG", "Drug_BrandName" : "DRUG")
+                  "Drug_BrandName","Hypertension"])
 
 chunk2doc = Chunk2Doc()\
     .setInputCols("ner_chunk")\
