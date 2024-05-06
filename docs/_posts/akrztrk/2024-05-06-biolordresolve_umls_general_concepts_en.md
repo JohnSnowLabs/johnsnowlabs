@@ -50,29 +50,52 @@ Tree Number: B1.3.1.3
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
-documentAssembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
+documentAssembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")    .setInputCols(["document"])    .setOutputCol("sentence")
+sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-tokenizer = Tokenizer()    .setInputCols(["sentence"])    .setOutputCol("token")
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")    .setInputCols(["sentence","token"])    .setOutputCol("embeddings")
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")\
+    .setInputCols(["sentence","token"])\
+    .setOutputCol("embeddings")
 
-ner_model = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")    .setInputCols(["sentence", "token", "embeddings"])    .setOutputCol("ner_jsl")
+ner_model = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "embeddings"])\
+    .setOutputCol("ner_jsl")
 
-ner_model_converter = NerConverterInternal()    .setInputCols(["sentence", "token", "ner_jsl"])    .setOutputCol("ner_chunk")    .setWhiteList(["Injury_or_Poisoning","Hyperlipidemia","Kidney_Disease","Oncological","Cerebrovascular_Disease",
+ner_model_converter = NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner_jsl"])\
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(["Injury_or_Poisoning","Hyperlipidemia","Kidney_Disease","Oncological","Cerebrovascular_Disease",
                   "Oxygen_Therapy","Heart_Disease","Obesity","Disease_Syndrome_Disorder","Symptom","Treatment","Diabetes","Injury_or_Poisoning",
                   "Procedure","Symptom","Treatment","Drug_Ingredient","VS_Finding","Communicable_Disease",
-                  "Drug_BrandName","Hypertension"
-                  ])    .setReplaceLabels("Drug_Ingredient" : "DRUG", "Drug_BrandName" : "DRUG")
+                  "Drug_BrandName","Hypertension"])\
+    .setReplaceLabels("Drug_Ingredient" : "DRUG", "Drug_BrandName" : "DRUG")
 
-chunk2doc = Chunk2Doc()    .setInputCols("ner_chunk")    .setOutputCol("ner_chunk_doc")
+chunk2doc = Chunk2Doc()\
+    .setInputCols("ner_chunk")\
+    .setOutputCol("ner_chunk_doc")
 
-embeddings =MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("mpnet_embeddings")    .setCaseSensitive(False)
+embeddings =MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("mpnet_embeddings")\
+    .setCaseSensitive(False)
 
-umls_resolver = SentenceEntityResolverModel.load("biolordresolve_umls_general_concepts", "en", "clinical/models")     .setInputCols(["mpnet_embeddings"])     .setOutputCol("resolution")    .setDistanceFunction("EUCLIDEAN")    .setCaseSensitive(False)
+umls_resolver = SentenceEntityResolverModel.load("biolordresolve_umls_general_concepts", "en", "clinical/models")\
+     .setInputCols(["mpnet_embeddings"])\
+     .setOutputCol("resolution")\
+    .setDistanceFunction("EUCLIDEAN")\
+    .setCaseSensitive(False)
 
 resolver_pipeline = Pipeline(stages=[
     documentAssembler,
