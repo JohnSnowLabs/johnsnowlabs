@@ -123,6 +123,7 @@ from clinical texts. In this pipeline, [ner_jsl](https://nlp.johnsnowlabs.com/20
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
