@@ -24,7 +24,7 @@ This pipeline is designed to:
 - assign assertion status to the extracted entities
 - establish relations between the extracted entities
 
-from clinical texts. In this pipeline, [ner_jsl](https://nlp.johnsnowlabs.com/2022/10/19/ner_jsl_en.html) NER model, [assertion_jsl](https://nlp.johnsnowlabs.com/2021/07/24/assertion_jsl_en.html) assertion model, [re_test_result_date](https://nlp.johnsnowlabs.com/2021/02/24/re_test_result_date_en.html), and [posology_re](https://nlp.johnsnowlabs.com/2020/09/01/posology_re.html) relation extraction model were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract. Here are the NER, assertion, and relation extraction labels this pipeline can extract.
+from clinical texts. In this pipeline, [ner_jsl](https://nlp.johnsnowlabs.com/2022/10/19/ner_jsl_en.html) NER model, [assertion_jsl](https://nlp.johnsnowlabs.com/2021/07/24/assertion_jsl_en.html) assertion model, [re_test_result_date](https://nlp.johnsnowlabs.com/2021/02/24/re_test_result_date_en.html), and [posology_re](https://nlp.johnsnowlabs.com/2020/09/01/posology_re.html) relation extraction models were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract. Here are the NER, assertion, and relation extraction labels this pipeline can extract.
 
 - Clinical Entity Labels:
 `Admission_Discharge`
@@ -123,6 +123,7 @@ from clinical texts. In this pipeline, [ner_jsl](https://nlp.johnsnowlabs.com/20
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
