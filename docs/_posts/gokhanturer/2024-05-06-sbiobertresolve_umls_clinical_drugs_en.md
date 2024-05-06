@@ -36,6 +36,7 @@ This model maps drug entities to UMLS CUI codes. It is trained on 2023AB release
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 document_assembler = DocumentAssembler()\
       .setInputCol('text')\
