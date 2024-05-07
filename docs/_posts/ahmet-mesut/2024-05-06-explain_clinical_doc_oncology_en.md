@@ -32,7 +32,14 @@ In this pipeline, seven NER, one assertion and two relation extraction model wer
 
 - Assertion Status Labels: `Present`, `Absent`, `Possible`, `Past`, `Family`, `Hypotetical`
 
-- Relation Extraction Labels: `is_size_of`, `is_finding_of`, `is_date_of`, `is_location_of`
+- Relation Extraction Labels: `is_size_of`, `is_finding_of`, `is_date_of`, `is_location_of`,
+`Chemotherapy-Dosage`,`Chemotherapy-Cycle_Count`,`Chemotherapy-Cycle_Day`,`Chemotherapy-Cycle_Number`, `Chemotherapy-Route`,
+`Cancer_Therapy-Dosage`, `Cancer_Therapy-Duration`, `Cancer_Therapy-Frequency`,`Cancer_Therapy-Route`,
+`Hormonal_Therapy-Dosage`, `Hormonal_Therapy-Duration`, `Hormonal_Therapy-Frequency`, `Hormonal_Therapy-Route`,
+`Immunotherapy-Dosage`, `Immunotherapy-Duration`, `Immunotherapy-Frequency`, `Immunotherapy-Route`,
+`Radiotherapy-Radiation_Dose`, `Radiotherapy-Duration`, `Radiotherapy-Frequency`,
+`Posology_Information-Dosage`, `Posology_Information-Duration`, `Posology_Information-Frequency`, `Posology_Information-Route`,
+`Unspecific_Therapy-Dosage`, `Unspecific_Therapy-Duration`, `Unspecific_Therapy-Frequency`, `Unspecific_Therapy-Route`
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
