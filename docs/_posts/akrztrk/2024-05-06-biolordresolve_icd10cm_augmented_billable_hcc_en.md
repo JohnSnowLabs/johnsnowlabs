@@ -25,8 +25,6 @@ look for the `all_k_aux_labels` parameter in the metadata to get HCC status. The
 information: `billable status`, `hcc status`, and `hcc score`.
 For example if the result is `1||1||8`: `the billable status is 1`, `hcc status is 1`, and `hcc score is 8`.
 
-**NOTE**: This model can be used with spark v3.4.0 and above versions.
-
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -185,3 +183,6 @@ val result = resolver_pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|1.4 GB|
 |Case sensitive:|false|
+
+## Dependency
+This model can be used with spark v3.4.0 and above versions.
