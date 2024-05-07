@@ -205,4 +205,9 @@ val result = resolver_pipeline.fit(data).transform(data)
 |Case sensitive:|false|
 
 ## Dependency
+
 This model can be used with spark v3.4.0 and above versions.
+
+## References
+
+This model is trained with the augmented version of NIH September 2023 SNOMED CT United States (US) Edition.
