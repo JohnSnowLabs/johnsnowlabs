@@ -90,7 +90,7 @@ embeddings =MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")\
     .setOutputCol("mpnet_embeddings")\
     .setCaseSensitive(False)
 
-umls_resolver = SentenceEntityResolverModel.load("biolordresolve_umls_general_concepts", "en", "clinical/models")\
+umls_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_umls_general_concepts", "en", "clinical/models")\
      .setInputCols(["mpnet_embeddings"])\
      .setOutputCol("resolution")\
     .setDistanceFunction("EUCLIDEAN")\
@@ -167,7 +167,7 @@ val embeddings =MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en
     .setOutputCol("mpnet_embeddings")
     .setCaseSensitive(False)
 
-val umls_resolver = SentenceEntityResolverModel.load("biolordresolve_umls_general_concepts", "en", "clinical/models")
+val umls_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_umls_general_concepts", "en", "clinical/models")
     .setInputCols(["mpnet_embeddings"])
     .setOutputCol("resolution")
     .setDistanceFunction("EUCLIDEAN")
