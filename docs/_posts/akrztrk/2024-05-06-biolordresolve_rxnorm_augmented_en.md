@@ -20,8 +20,6 @@ use_language_switcher: "Python-Scala-Java"
 
 This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `mpnet_embeddings_biolord_2023_c` embeddings. It trained on the augmented version of the dataset used in previous RxNorm resolver models. Additionally, this model returns concept classes of the drugs in the `all_k_aux_labels` column.
 
-**NOTE**: This model can be used with spark v3.4.0 and above versions.
-
 ## Predicted Entities
 
 `RxNorm Codes`, `Concept Classes`
@@ -173,6 +171,9 @@ val result = pipeline.fit(data).transform(data)
 |Input Labels:|[mpnet_embeddings]|
 |Output Labels:|[rxnorm_code]|
 |Language:|en|
+
+## Dependency
+This model can be used with spark v3.4.0 and above versions.
 |Size:|1.3 GB|
 |Case sensitive:|false|
 
