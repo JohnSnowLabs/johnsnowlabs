@@ -72,7 +72,7 @@ ner_model_converter = NerConverterInternal()\
     .setWhiteList(['Injury_or_Poisoning','Hyperlipidemia','Kidney_Disease','Oncological','Cerebrovascular_Disease'
                   ,'Oxygen_Therapy','Heart_Disease','Obesity','Disease_Syndrome_Disorder','Symptom','Treatment','Diabetes','Injury_or_Poisoning'
                   ,'Procedure','Symptom','Treatment','Drug_Ingredient','VS_Finding','Communicable_Disease'
-                  ,'Drug_BrandName','Hypertension'
+                  ,'Drug_BrandName','Hypertension','Imaging_Technique'
                   ])
 
 chunk2doc = Chunk2Doc()\
