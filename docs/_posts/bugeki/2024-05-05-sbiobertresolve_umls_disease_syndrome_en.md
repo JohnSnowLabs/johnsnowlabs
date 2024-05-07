@@ -72,7 +72,7 @@ sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli",'en
     .setOutputCol("sbert_embeddings")\
     .setCaseSensitive(false)
 
-resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_disease_syndrome, en, clinical/models") \
+resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_disease_syndrome", "en", "clinical/models") \
     .setInputCols(["ner_chunk","sbert_embeddings"]) \
     .setOutputCol("resolution")\
     .setDistanceFunction("EUCLIDEAN")
