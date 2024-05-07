@@ -20,7 +20,6 @@ use_language_switcher: "Python-Scala-Java"
 
 This model maps clinical entities and concepts to SNOMED codes using `mpnet_embeddings_biolord_2023_c` Sentence Embeddings. This is also capable of extracting `Clinical Findings `, `Morph Abnormality`, `Clinical Drug`, `Clinical Drug Form`, `Procedure`, `Substance`, `Physical Object`, and `Body Structure` concepts of SNOMED codes.
 
-**NOTE**: This model can be used with spark v3.4.0 and above versions.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
