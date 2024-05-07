@@ -227,4 +227,4 @@ val result = resolver_pipeline.fit(data).transform(data)
 |Case sensitive:|false|
 
 ## Dependency
-**NOTE**: This model can be used with spark v3.4.0 and above versions.
+This model can be used with spark v3.4.0 and above versions.
