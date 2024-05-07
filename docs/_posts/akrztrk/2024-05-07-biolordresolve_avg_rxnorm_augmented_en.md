@@ -20,8 +20,6 @@ use_language_switcher: "Python-Scala-Java"
 
 This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `mpnet_embeddings_biolord_2023` embeddings. It trained on the augmented version of the dataset used in previous RxNorm resolver models. Additionally, this model returns concept classes of the drugs in the `all_k_aux_labels` column.
 
-**NOTE**: This model can be used with spark v3.4.0 and above versions.
-
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
 <button class="button button-orange" disabled>Open in Colab</button>
@@ -30,28 +28,48 @@ This model maps clinical entities and concepts (like drugs/ingredients) to RxNor
 
 ## How to use
 
-
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
-document_assembler = DocumentAssembler()    .setInputCol("text")    .setOutputCol("document")
+document_assembler = DocumentAssembler()\
+    .setInputCol("text")\
+    .setOutputCol("document")
 
-sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")    .setInputCols(["document"])    .setOutputCol("sentence")
+sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+    .setInputCols(["document"])\
+    .setOutputCol("sentence")
 
-tokenizer = Tokenizer()    .setInputCols(["sentence"])    .setOutputCol("token")
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
+    .setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")    .setInputCols(["sentence", "token"])    .setOutputCol("word_embeddings")
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+    .setInputCols(["sentence", "token"])\
+    .setOutputCol("word_embeddings")
 
-ner = MedicalNerModel.pretrained("ner_posology_greedy", "en", "clinical/models")    .setInputCols(["sentence", "token", "word_embeddings"])    .setOutputCol("ner")
-ner_converter = NerConverterInternal()    .setInputCols(["sentence", "token", "ner"])    .setOutputCol("ner_chunk")    .setWhiteList(["DRUG"])
+ner = MedicalNerModel.pretrained("ner_posology_greedy", "en", "clinical/models")\
+    .setInputCols(["sentence", "token", "word_embeddings"])\
+    .setOutputCol("ner")
 
-c2doc = Chunk2Doc()    .setInputCols("ner_chunk")    .setOutputCol("ner_chunk_doc")
+ner_converter = NerConverterInternal()\
+    .setInputCols(["sentence", "token", "ner"])\
+    .setOutputCol("ner_chunk")\
+    .setWhiteList(["DRUG"])
 
-biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023", "en")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("embeddings")
+c2doc = Chunk2Doc()\
+    .setInputCols("ner_chunk")\
+    .setOutputCol("ner_chunk_doc")
 
-rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_avg_rxnorm_augmented", "en", "clinical/models")    .setInputCols(["embeddings"])     .setOutputCol("rxnorm_code")    .setDistanceFunction("EUCLIDEAN")
+biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023", "en")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("embeddings")
+
+rxnorm_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_avg_rxnorm_augmented", "en", "clinical/models")\
+    .setInputCols(["embeddings"])\
+     .setOutputCol("rxnorm_code")\
+    .setDistanceFunction("EUCLIDEAN")
 
 resolver_pipeline = Pipeline(stages = [document_assembler,
                                        sentenceDetectorDL,
@@ -155,3 +173,6 @@ val result = resolver_pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|1.3 GB|
 |Case sensitive:|false|
+
+## Dependency
+This model can be used with spark v3.4.0 and above versions.
