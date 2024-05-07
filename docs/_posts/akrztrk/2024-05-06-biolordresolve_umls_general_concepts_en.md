@@ -36,7 +36,6 @@ Procedure:
 Unique Identifier: T061
 Tree Number: B1.3.1.3
 
-**NOTE**: This model can be used with spark v3.4.0 and above versions.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -226,3 +225,6 @@ val result = resolver_pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|3.9 GB|
 |Case sensitive:|false|
+
+## Dependency
+**NOTE**: This model can be used with spark v3.4.0 and above versions.
