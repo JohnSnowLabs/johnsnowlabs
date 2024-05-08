@@ -6,7 +6,7 @@ seotitle: Generative AI Lab | John Snow Labs
 title: Installation
 permalink: /docs/en/alab/install
 key: docs-training
-modify_date: "2023-11-07"
+modify_date: "2024-04-22"
 use_language_switcher: "Python-Scala"
 show_nav: true
 sidebar:
@@ -98,9 +98,17 @@ We have an aesthetically pleasing Sign-In Page with a section highlighting the k
 
 ## AWS Marketplace
 
-The Generative AI Lab needs to be installed on a virtual machine. One of the most straight forward method is an installation from AWS Marketplace (also available on Azure). There is no fee for the Generative AI Lab. However, you still have to pay for the underlying AWS EC2 instance (not Free Tier Eligible).
+The Generative AI Lab needs to be installed on a virtual machine. One of the most straight forward method is an installation from AWS Marketplace (also available on Azure). The fee for the Generative AI Lab depends on the number of CPU and GPU in the selected instance (Details can be listed in the product page in AWS marketplace). You will also have to pay for the underlying AWS EC2 instance.
 
-Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-nsww5rdpvou4w?sr=0-1&ref_=beagle&applicationId=AWSMPContessa) and follow the instructions on the video below to subscribe and deploy.
+Visit the [product page on AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-zrcp6k6nqvxoa) and follow the instructions on the video below to subscribe and deploy.
+
+**Steps to get started:**
+- Subscribe to the product on the AWS Marketplace.
+- Deploy it on a new machine.
+- Attach IAM role to the AMI (IAM role attached to the AMI machine should have access to both `aws-marketplace:MeterUsage` and `ec2:DescribeInstanceTypes` permission)
+- Access the login page for a guided experience on `http://INSTANCE_IP`. For the first login use the following credentials:
+	Username: admin
+	Password: INSTANCE_ID
 
 <div class="cell cell--12 cell--lg-6 cell--sm-12"><div class="video-item">{%- include extensions/youtube.html id='ebaewU4BcQA' -%}<div class="video-descr">Deploy Generative AI Lab via AWS Marketplace</div></div></div>
 
