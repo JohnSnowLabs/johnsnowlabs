@@ -1018,6 +1018,81 @@ conda activate sparknlp
 jupyter notebook
 </code></pre></div>  </div>
 
+  <h2 id="apple-silicon-support">Apple Silicon Support</h2>
+
+  <p><strong>Installation for Apple Silicon (M1, M2, M3)</strong>: Starting from version 4.0.0, Spark NLP has experimental support for apple silicon.</p>
+
+  <p>Make sure the following prerequisites are set:</p>
+
+  <ol>
+    <li>Installing SDKMAN, you can also follow the official documentation at https://sdkman.io/install
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">$ curl -s "https://get.sdkman.io" | bash</code></li>
+        <li><code class="language-plaintext highlighter-rouge">source "$HOME/.sdkman/bin/sdkman-init.sh"</code></li>
+        <li><code class="language-plaintext highlighter-rouge">sdk list java</code><br />
+ list available java libraries:</li>
+      </ul>
+
+      <p><img src="https://github.com/JohnSnowLabs/spark-nlp-workshop/assets/64752006/9d05bd11-14c5-454e-bbab-fea4e91da905" alt="image" /></p>
+    </li>
+    <li>Installing Java
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">sdk install java 8.0.402-amzn</code></li>
+        <li><code class="language-plaintext highlighter-rouge">whereis java</code></li>
+        <li><code class="language-plaintext highlighter-rouge">java -version</code></li>
+      </ul>
+    </li>
+    <li>Installing MiniConda, you can also follow the official documentation at https://docs.anaconda.com/free/miniconda/#quick-command-line-install
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">mkdir -p ~/miniconda3</code></li>
+        <li><code class="language-plaintext highlighter-rouge">curl https://repo.anaconda.com/miniconda/Miniconda3-py39_23.11.0-2-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh</code> PS: you can change python version to 3.10 or 3.11</li>
+        <li><code class="language-plaintext highlighter-rouge">bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3</code></li>
+        <li><code class="language-plaintext highlighter-rouge">~/miniconda3/bin/conda init bash</code></li>
+        <li><code class="language-plaintext highlighter-rouge">~/miniconda3/bin/conda init zsh</code></li>
+        <li><code class="language-plaintext highlighter-rouge">source miniconda3/bin/activate</code></li>
+      </ul>
+    </li>
+    <li>
+      <p>Installing <code class="language-plaintext highlighter-rouge">jupyter environments</code> or you can install it via <code class="language-plaintext highlighter-rouge">VSCode</code></p>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c"># use base environment</span>
+ conda <span class="nt">--version</span>
+ java <span class="nt">-version</span>
+ conda activate
+ pip <span class="nb">install </span><span class="nv">pyspark</span><span class="o">==</span>3.4.0
+ pip <span class="nb">install </span>jupyter
+ conda <span class="nb">env </span>config vars <span class="nb">set </span><span class="nv">PYSPARK_PYTHON</span><span class="o">=</span>python
+ conda activate 
+ conda <span class="nb">env </span>config vars <span class="nb">set </span><span class="nv">PYSPARK_DRIVER_PYTHON</span><span class="o">=</span>jupyter
+ conda activate 
+ conda <span class="nb">env </span>config vars <span class="nb">set </span><span class="nv">PYSPARK_DRIVER_python_OPTS</span><span class="o">=</span>notebook
+ conda activate 
+ jupyter notebook
+</code></pre></div>      </div>
+
+      <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c"># or create new sparknlp environment</span>
+ conda <span class="nt">--version</span>
+ java <span class="nt">-version</span>
+ conda create <span class="nt">-n</span> sparknlp <span class="nv">python</span><span class="o">=</span>3.9 <span class="nt">-y</span>
+ conda activate sparknlp
+ pip <span class="nb">install </span><span class="nv">pyspark</span><span class="o">==</span>3.4.0
+ pip <span class="nb">install </span>jupyter
+ conda <span class="nb">env </span>config vars <span class="nb">set </span><span class="nv">PYSPARK_PYTHON</span><span class="o">=</span>python
+ conda activate sparknlp
+ conda <span class="nb">env </span>config vars <span class="nb">set </span><span class="nv">PYSPARK_DRIVER_PYTHON</span><span class="o">=</span>jupyter
+ conda activate sparknlp
+ conda <span class="nb">env </span>config vars <span class="nb">set </span><span class="nv">PYSPARK_DRIVER_python_OPTS</span><span class="o">=</span>notebook
+ conda activate sparknlp
+ jupyter notebook
+</code></pre></div>      </div>
+    </li>
+    <li>
+      <p>Installing Spark NLP Healthcare</p>
+
+      <p>please see the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/apple-silicon/installation.ipynb">Spark NLP Healthcare Installation Notebook</a></p>
+    </li>
+  </ol>
+
   <h2 id="non-johnsnowlabs-clinical-nlp-on-ubuntu">Non-johnsnowlabs Clinical NLP on Ubuntu</h2>
   <blockquote>
     <p>These instructions use non-johnsnowlabs installation syntax. For simplified installation with <code class="language-plaintext highlighter-rouge">johnsnowlabs</code> library, check first section.</p>
