@@ -59,20 +59,11 @@ data:
           actions:
           - text: Databricks Notebook
             type: normal
-            url: https://www.databricks.com/solutions/accelerators/medicare-risk-adjustment
-        - title: Knowledge Graph
-          id: knowledge_graph
-          image: 
-              src: /assets/images/Detect_demographics_and_vital_signs_using_rules.svg
-          excerpt: Build patient cohorts by identifying commonalities between entities.
-          actions:
-          - text: Databricks Notebook
-            type: normal
-            url: https://www.databricks.com/solutions/accelerators/cohort-building  
+            url: https://www.databricks.com/solutions/accelerators/medicare-risk-adjustment 
         - title: Building a RAG LLM Clinical Chatbot
           id: building_rag_llm_clinical_chatbot
           image: 
-              src: /assets/images/Deidentify_free_text_documents.svg
+              src: /assets/images/Building_a_RAG_LLM_Clinical_Chatbot.svg
           excerpt: Deploy a healthcare specific, fully managed chat LLM.
           actions:
           - text: Watch Now
@@ -81,7 +72,7 @@ data:
         - title: Clinical Notes Summarization
           id: clinical_notes_summarization
           image: 
-              src: /assets/images/Clinical_Summarization_QA.svg
+              src: /assets/images/Clinical_Notes_Summarization.svg
           excerpt: Summarize different types of clinical documents using Large Language Models.
           actions:
           - text: Databricks Notebook
@@ -90,7 +81,7 @@ data:
         - title: Social Determinants of Health
           id: social_determinants_health
           image: 
-              src: /assets/images/Social_Determinants_of_Health.svg
+              src: /assets/images/Social_Determinants_of_Health_powered_by_LLM.svg
           excerpt: Extract mentions of a patient's social determinants from free-text documents.
           actions:
           - text: Databricks Notebook
@@ -99,7 +90,7 @@ data:
         - title: Medical Knowledge Graph
           id: medical_knowledge_graph
           image: 
-              src: /assets/images/Extract_Graphs_in_a_Text.svg
+              src: /assets/images/Medical_Knowledge_Graph.svg
           excerpt: Build patient cohorts by transforming unstructured documents into graphs.
           actions:
           - text: Databricks Notebook
