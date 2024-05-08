@@ -30,7 +30,7 @@ data:
               src: /assets/images/Name_Entity_Recognition_on_Financial_Texts.svg
           excerpt: Detect and protect sensitive data in tables document, free text documents and images.
           actions:
-          - text: Databricks Notebook
+          - text: Get Started
             type: normal
             url: https://databricks.com/solutions/accelerators/automated-phi-removal
         - title: Oncology Real-World Data Extraction With NLP
@@ -39,7 +39,7 @@ data:
               src: /assets/images/Recognize_ticker_alias_in_financial_texts.svg
           excerpt: Transform unstructured oncology real world data extractions, pathology, and radiology into patient insights.
           actions:
-          - text: Databricks Notebook
+          - text: Get Started
             type: normal
             url: https://databricks.com/solutions/accelerators/nlp-oncology 
         - title: Adverse Drug Event Detection
@@ -48,7 +48,7 @@ data:
               src: /assets/images/Extract_Entities_from_Whereas_clauses.svg
           excerpt: Monitor drug safety by detecting adverse events from real world data and NLP.
           actions:
-          - text: Databricks Notebook
+          - text: Get Started
             type: normal
             url: https://databricks.com/solutions/accelerators/adverse-drug-event-detection
         - title: Medicare Risk Adjustment
@@ -57,7 +57,7 @@ data:
               src: /assets/images/Adverse_drug_events_tagger.svg
           excerpt: Identify undiagnosed conditions for reimbursement.
           actions:
-          - text: Databricks Notebook
+          - text: Get Started
             type: normal
             url: https://www.databricks.com/solutions/accelerators/medicare-risk-adjustment 
         - title: Building a RAG LLM Clinical Chatbot
@@ -75,7 +75,7 @@ data:
               src: /assets/images/Clinical_Notes_Summarization.svg
           excerpt: Summarize different types of clinical documents using Large Language Models.
           actions:
-          - text: Databricks Notebook
+          - text: Get Started
             type: normal
             url: https://www.databricks.com/solutions/accelerators/jsl-clinical-notes-summarization-using-llm 
         - title: Social Determinants of Health
@@ -84,7 +84,7 @@ data:
               src: /assets/images/Social_Determinants_of_Health_powered_by_LLM.svg
           excerpt: Extract mentions of a patient's social determinants from free-text documents.
           actions:
-          - text: Databricks Notebook
+          - text: Get Started
             type: normal
             url: https://www.databricks.com/solutions/accelerators/john-snow-labs-social-determinants-of-health
         - title: Medical Knowledge Graph
@@ -93,7 +93,7 @@ data:
               src: /assets/images/Medical_Knowledge_Graph.svg
           excerpt: Build patient cohorts by transforming unstructured documents into graphs.
           actions:
-          - text: Databricks Notebook
+          - text: Get Started
             type: normal
             url: https://www.databricks.com/solutions/accelerators/cohort-building
 ---
