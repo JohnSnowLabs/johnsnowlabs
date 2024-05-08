@@ -504,7 +504,7 @@ What sets this release apart is the elimination of complexities typically involv
 | [`snomed_drug_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/11/snomed_drug_resolver_pipeline_en.html) | This advanced pipeline extracts drug entities from clinical texts and maps these entities to their corresponding SNOMED codes. |
 | [`snomed_resolver_pipeline`](https://nlp.johnsnowlabs.com/2024/03/11/snomed_resolver_pipeline_en.html) | This pipeline extracts `Clinical Findings `, `Morph Abnormality`, `Clinical Drug`, `Clinical Drug Form`, `Procedure`, `Substance`, `Physical Object`, and `Body Structure` concepts from clinical notes and maps them to their corresponding SNOMED codes. |
 | [`clinical_deidentification_generic_optimized`](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_generic_optimized_en.html) | This pipeline can be used to deidentify PHI information from medical texts. |
-| [`clinical_deidentification_nameAugmented`](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. |
+| [`clinical_deidentification_subentity_nameAugmented`](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be masked and obfuscated in the resulting text. |
 | [`clinical_deidentification_subentity_optimized`](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html) | This pipeline can be used to deidentify PHI information from medical texts. The PHI information will be obfuscated in the resulting text and also masked with entity labels in the metadata. |
 | [`explain_clinical_doc_public_health`](https://nlp.johnsnowlabs.com/2024/03/19/explain_clinical_doc_public_health_en.html) | This specialized public health pipeline can extract public health-related entities, assign assertion status to the extracted entities, establish relations between the extracted entities from the clinical documents. In this pipeline, five NER, one assertion, and one relation extraction model were used to achieve those tasks. |
 | [`explain_clinical_doc_biomarker`](https://nlp.johnsnowlabs.com/2024/03/11/explain_clinical_doc_biomarker_en.html) | This specialized biomarker pipeline can extract biomarker entities, classify sentences whether they contain biomarker entities or not, establish relations between the extracted biomarker and biomarker results from the clinical documents. |
@@ -660,7 +660,7 @@ The CPT and MedDRA models have been removed from the S3 storage. As a result, wh
 + `snomed_drug_resolver_pipeline`
 + `snomed_resolver_pipeline`
 + `clinical_deidentification_generic_optimized`
-+ `clinical_deidentification_nameAugmented`
++ `clinical_deidentification_subentity_nameAugmented`
 + `clinical_deidentification_subentity_optimized`
 + `umls_rxnorm_mapper`
 + `icd10_meddra_llt_mapper`
