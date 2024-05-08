@@ -35,7 +35,6 @@ This model maps clinical entities and concepts to SNOMED codes using `mpnet_embe
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
-
 documentAssembler = DocumentAssembler()\
       .setInputCol("text")\
       .setOutputCol("document")
@@ -70,17 +69,17 @@ chunk2doc = Chunk2Doc()\
       .setInputCols("ner_jsl_chunk")\
       .setOutputCol("ner_chunk_doc")
 
-sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-     .setInputCols(["ner_chunk_doc"])\
-     .setOutputCol("sbert_embeddings")\
-     .setCaseSensitive(False)
+embeddings = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("mpnet_embeddings")\
+    .setCaseSensitive(False)
 
 snomed_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_snomed_findings_aux_concepts", "en", "clinical/models")\
-      .setInputCols(["sbert_embeddings"])\
+      .setInputCols(["mpnet_embeddings"])\
      .setOutputCol("snomed_code")\
      .setDistanceFunction("EUCLIDEAN")
 
-nlpPipeline= Pipeline(stages=[
+resolver_pipeline= Pipeline(stages=[
                               documentAssembler,
                               sentenceDetector,
                               tokenizer,
@@ -88,17 +87,15 @@ nlpPipeline= Pipeline(stages=[
                               ner_jsl,
                               ner_jsl_converter,
                               chunk2doc,
-                              sbert_embedder,
+                              embeddings,
                               snomed_resolver
 ])
 
 data = spark.createDataFrame([["""This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, COPD, gastritis, and TIA. He initially presented to Braintree with a nonspecific ST-T abnormality and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of occlusion of the mid left anterior descending coronary artery lesion, which was complicated by hypotension and bradycardia. He required atropine, IV fluids, and dopamine, possibly secondary to a vagal reaction. He was subsequently transferred to the CCU for close monitoring. He was hemodynamically stable at the time of admission to the CCU."""]]).toDF("text")
 
 result = resolver_pipeline.fit(data).transform(data)
-
 ```
 ```scala
-
 val documentAssembler = new DocumentAssembler()
       .setInputCol("text")
       .setOutputCol("document")
@@ -133,17 +130,17 @@ val chunk2doc = new Chunk2Doc()
       .setInputCols("ner_jsl_chunk")
       .setOutputCol("ner_chunk_doc")
 
-val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
-     .setInputCols(["ner_chunk_doc"])
-     .setOutputCol("sbert_embeddings")
-     .setCaseSensitive(False)
+val embeddings = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("mpnet_embeddings")\
+    .setCaseSensitive(False)
 
-val snomed_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_snomed_findings_aux_concepts", "en", "clinical/models")
-     .setInputCols(["sbert_embeddings"])
-     .setOutputCol("snomed_code")
+val snomed_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_snomed_findings_aux_concepts", "en", "clinical/models")\
+     .setInputCols(["mpnet_embeddings"])\
+     .setOutputCol("snomed_code")\
      .setDistanceFunction("EUCLIDEAN")
 
-val nlpPipeline= new Pipeline(stages=[
+val resolver_pipeline= new PipelineModel().setStages(Array(
                               documentAssembler,
                               sentenceDetector,
                               tokenizer,
@@ -151,14 +148,13 @@ val nlpPipeline= new Pipeline(stages=[
                               ner_jsl,
                               ner_jsl_converter,
                               chunk2doc,
-                              sbert_embedder,
+                              embeddings,
                               snomed_resolver
 ])
 
 val data = Seq([["""This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, COPD, gastritis, and TIA. He initially presented to Braintree with a nonspecific ST-T abnormality and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of occlusion of the mid left anterior descending coronary artery lesion, which was complicated by hypotension and bradycardia. He required atropine, IV fluids, and dopamine, possibly secondary to a vagal reaction. He was subsequently transferred to the CCU for close monitoring. He was hemodynamically stable at the time of admission to the CCU."""]]).toDF("text")
 
 val result = resolver_pipeline.fit(data).transform(data)
-
 ```
 </div>
 
