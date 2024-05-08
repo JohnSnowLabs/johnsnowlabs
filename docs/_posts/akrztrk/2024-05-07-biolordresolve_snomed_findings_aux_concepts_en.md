@@ -143,7 +143,7 @@ val snomed_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_sno
      .setOutputCol("snomed_code")
      .setDistanceFunction("EUCLIDEAN")
 
-val nlpPipeline= new Pipeline(stages=[
+val nlpPipeline= new PipelineModel().setStages(Array(
                               documentAssembler,
                               sentenceDetector,
                               tokenizer,
