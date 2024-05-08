@@ -921,21 +921,21 @@ In this page we explain how to setup Spark-NLP + Spark-NLP Healthcare in AWS EMR
   - select required applications
 
 
-![alt text](image.png)
+![alt text](/assets/images/emr/image.png)
 
  - Specify EC2  instances for the cluster, as primary/master node  and cores/workers
  - Specify the storage/ EBS volume
  
- ![alt text](image-1.png)
+ ![alt text](/assets/images/emr/image-1.png)
 
  - Choose Cluster scaling and provisioning 
  - Choose Networking / VPC
  
- ![alt text](image-2.png)
+ ![alt text](/assets/images/emr/image-2.png)
 
 - Choose Security Groups/Firewall for primary/master node and cores/workers/slaves
 
-![alt text](image-3.png)
+![alt text](/assets/images/emr/image-3.png)
 
 - If you have add steps , that will be executed after cluster is provisioned
 - Specify the S3 location for logs
@@ -949,7 +949,7 @@ In this page we explain how to setup Spark-NLP + Spark-NLP Healthcare in AWS EMR
 Put this sample shell script in a S3 location and specify it in the form:
 You will have spark-nlp and spark-nlp-jsl and spark-ocr installed by bootstrap action, this file is executed during the cluster provisioning. Version of Libraries and other credentials provided by Johnsnowlabs will be in this file.
 
-![add bootstrap action](image-5.png)
+![add bootstrap action](/assets/images/emr/image-5.png)
 
 
 **Important** 
