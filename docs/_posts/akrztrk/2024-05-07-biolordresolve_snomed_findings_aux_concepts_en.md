@@ -70,13 +70,13 @@ chunk2doc = Chunk2Doc()\
       .setInputCols("ner_jsl_chunk")\
       .setOutputCol("ner_chunk_doc")
 
-sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")\
-     .setInputCols(["ner_chunk_doc"])\
-     .setOutputCol("sbert_embeddings")\
-     .setCaseSensitive(False)
+embeddings = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("mpnet_embeddings")\
+    .setCaseSensitive(False)
 
 snomed_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_snomed_findings_aux_concepts", "en", "clinical/models")\
-      .setInputCols(["sbert_embeddings"])\
+      .setInputCols(["mpnet_embeddings"])\
      .setOutputCol("snomed_code")\
      .setDistanceFunction("EUCLIDEAN")
 
@@ -88,7 +88,7 @@ resolver_pipeline= Pipeline(stages=[
                               ner_jsl,
                               ner_jsl_converter,
                               chunk2doc,
-                              sbert_embedder,
+                              embeddings,
                               snomed_resolver
 ])
 
@@ -133,14 +133,14 @@ val chunk2doc = new Chunk2Doc()
       .setInputCols("ner_jsl_chunk")
       .setOutputCol("ner_chunk_doc")
 
-val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
-     .setInputCols(["ner_chunk_doc"])
-     .setOutputCol("sbert_embeddings")
-     .setCaseSensitive(False)
+val embeddings = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c","en")\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("mpnet_embeddings")\
+    .setCaseSensitive(False)
 
-val snomed_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_snomed_findings_aux_concepts", "en", "clinical/models")
-     .setInputCols(["sbert_embeddings"])
-     .setOutputCol("snomed_code")
+val snomed_resolver = SentenceEntityResolverModel.pretrained("biolordresolve_snomed_findings_aux_concepts", "en", "clinical/models")\
+     .setInputCols(["mpnet_embeddings"])\
+     .setOutputCol("snomed_code")\
      .setDistanceFunction("EUCLIDEAN")
 
 val resolver_pipeline= new PipelineModel().setStages(Array(
@@ -151,7 +151,7 @@ val resolver_pipeline= new PipelineModel().setStages(Array(
                               ner_jsl,
                               ner_jsl_converter,
                               chunk2doc,
-                              sbert_embedder,
+                              embeddings,
                               snomed_resolver
 ])
 
