@@ -18,9 +18,12 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This model maps medical entities to CPT codes using `mpnet_embeddings_biolord_2023_c` embeddings. The corpus of this model has been extented to measurements, and this model is capable of mapping both procedures and measurement concepts/entities to CPT codes. Measurement codes are helpful in codifying medical entities related to tests and their results.
+This model maps medical entities to CPT codes using `mpnet_embeddings_biolord_2023_c` embeddings. The corpus of this model has been extended to measurements, and this model is capable of mapping both procedures and measurement concepts/entities to CPT codes. Measurement codes are helpful in codifying medical entities related to tests and their results.
 
-**NOTE**: This model can be used with spark v3.4.0 and above versions.
+## Predicted Entities
+
+`CPT Codes`
+
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -31,43 +34,63 @@ This model maps medical entities to CPT codes using `mpnet_embeddings_biolord_20
 ## How to use
 
 
-
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 
-document_assembler = DocumentAssembler()	  .setInputCol("text")	  .setOutputCol("document")
+document_assembler = DocumentAssembler()\
+	.setInputCol("text")\
+	.setOutputCol("document")
 
-sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models") 	  .setInputCols(["document"])	  .setOutputCol("sentence")
+sentenceDetectorDL = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare", "en", "clinical/models")\
+	.setInputCols(["document"])\
+	.setOutputCol("sentence")
 
-tokenizer = Tokenizer()	  .setInputCols(["sentence"])	  .setOutputCol("token")
+tokenizer = Tokenizer()\
+	.setInputCols(["sentence"])\
+	.setOutputCol("token")
 
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")	  .setInputCols(["sentence", "token"])	  .setOutputCol("word_embeddings")
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
+	.setInputCols(["sentence", "token"])\
+	.setOutputCol("word_embeddings")
 
-ner = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models") 	  .setInputCols(["sentence", "token", "word_embeddings"]) 	  .setOutputCol("ner")
+ner = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")\
+	.setInputCols(["sentence", "token", "word_embeddings"])\
+	.setOutputCol("ner")
 
-ner_converter = NerConverterInternal()	  .setInputCols(["sentence", "token", "ner"])	  .setOutputCol("ner_chunk")	  .setWhiteList(["Procedure", "Test"])
+ner_converter = NerConverterInternal()\
+	.setInputCols(["sentence", "token", "ner"])\
+	.setOutputCol("ner_chunk")\
+	.setWhiteList(["Procedure", "Test"])
 
-c2doc = Chunk2Doc()	  .setInputCols("ner_chunk")	  .setOutputCol("ner_chunk_doc")
+c2doc = Chunk2Doc()\
+	.setInputCols("ner_chunk")\
+	.setOutputCol("ner_chunk_doc")
 
-biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c", "en")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("embeddings")    .setCaseSensitive(False)
+biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c", "en")\
+	.setInputCols(["ner_chunk_doc"])\
+	.setOutputCol("embeddings")\
+	.setCaseSensitive(False)
 
-cpt_resolver = SentenceEntityResolverModel.load("biolordresolve_cpt_procedures_measurements_augmented")	  .setInputCols(["embeddings"]) 	  .setOutputCol("cpt_code")	  .setDistanceFunction("EUCLIDEAN")
+cpt_resolver = SentenceEntityResolverModel.load("biolordresolve_cpt_procedures_measurements_augmented")\
+	.setInputCols(["embeddings"])\
+	.setOutputCol("cpt_code")\
+	.setDistanceFunction("EUCLIDEAN")
 
 resolver_pipeline = Pipeline(
     stages = [
-	              document_assembler,
-	              sentenceDetectorDL,
-	              tokenizer,
-	              word_embeddings,
-	              ner,
-	              ner_converter,
-	              c2doc,
-	              biolord_embedding,
-	              cpt_resolver])
+	document_assembler,
+	sentenceDetectorDL,
+	tokenizer,
+	word_embeddings,
+	ner,
+	ner_converter,
+	c2doc,
+	biolord_embedding,
+	cpt_resolver])
 
-data = spark.createDataFrame([["""She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node.
-We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma."""]]).toDF("text")
+data = spark.createDataFrame([["""She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma."""]]).toDF("text")
 
 result = resolver_pipeline.fit(data).transform(data)
 
@@ -94,29 +117,38 @@ val ner = MedicalNerModel.pretrained("ner_jsl", "en", "clinical/models")
 	  .setInputCols(Array("sentence", "token", "word_embeddings"))
 	  .setOutputCol("ner")
 
-val ner_converter = new NerConverterInternal()	  .setInputCols(Array("sentence", "token", "ner"))	  .setOutputCol("ner_chunk")	  .setWhiteList(["Procedure", "Test"])
+val ner_converter = new NerConverterInternal()
+	  .setInputCols(Array("sentence", "token", "ner"))
+	  .setOutputCol("ner_chunk")
+	  .setWhiteList(["Procedure", "Test"])
 
-val c2doc = new Chunk2Doc()	  .setInputCols("ner_chunk")	  .setOutputCol("ner_chunk_doc")
+val c2doc = new Chunk2Doc()
+	  .setInputCols("ner_chunk")
+	  .setOutputCol("ner_chunk_doc")
 
-val biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c", "en")    .setInputCols(["ner_chunk_doc"])    .setOutputCol("embeddings")    .setCaseSensitive(False)
+val biolord_embedding = MPNetEmbeddings.pretrained("mpnet_embeddings_biolord_2023_c", "en")
+    .setInputCols(["ner_chunk_doc"])
+    .setOutputCol("embeddings")
+    .setCaseSensitive(False)
 
-val cpt_resolver = SentenceEntityResolverModel.load("biolordresolve_cpt_procedures_measurements_augmented")	  .setInputCols(["embeddings"]) 	  .setOutputCol("cpt_code")	  .setDistanceFunction("EUCLIDEAN")
+val cpt_resolver = SentenceEntityResolverModel.load("biolordresolve_cpt_procedures_measurements_augmented")
+	  .setInputCols(["embeddings"])
+ 	  .setOutputCol("cpt_code")
+	  .setDistanceFunction("EUCLIDEAN")
 
-val resolver_pipeline = new Pipeline(
-    stages = [
-	              document_assembler,
-	              sentenceDetectorDL,
-	              tokenizer,
-	              word_embeddings,
-	              ner,
-	              ner_converter,
-	              c2doc,
-	              biolord_embedding,
-	              cpt_resolver])
+val resolver_pipeline = new PipelineModel().setStages(Array(
+	document_assembler,
+	sentenceDetectorDL,
+	tokenizer,
+	word_embeddings,
+	ner,
+	ner_converter,
+	c2doc,
+	biolord_embedding,
+	cpt_resolver])
 
 
-val data = Seq([["""She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node.
-We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma."""]]).toDF("text")
+val data = Seq([["""She was admitted to the hospital with chest pain and found to have bilateral pleural effusion, the right greater than the left. CT scan of the chest also revealed a large mediastinal lymph node. We reviewed the pathology obtained from the pericardectomy in March 2006, which was diagnostic of mesothelioma. At this time, chest tube placement and thoracoscopy, which were performed, which revealed epithelioid malignant mesothelioma."""]]).toDF("text")
 
 val result = resolver_pipeline.fit(data).transform(data)
 
@@ -152,3 +184,16 @@ val result = resolver_pipeline.fit(data).transform(data)
 |Language:|en|
 |Size:|362.6 MB|
 |Case sensitive:|false|
+
+## Dependency
+
+This model can be used with spark v3.4.0 and above versions.
+
+## Data Source
+
+Trained on Current Procedural Terminology dataset with `mpnet_embeddings_biolord_2023_c` sentence embeddings.
+
+
+## References
+
+**CPT resolver models are removed from the Models Hub due to license restrictions and can only be shared with users who already have a valid CPT license. If you possess one and wish to use this model, kindly contact us at support@johnsnowlabs.com.**
