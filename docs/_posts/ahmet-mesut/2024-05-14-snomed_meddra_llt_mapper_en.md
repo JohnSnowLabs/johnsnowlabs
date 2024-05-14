@@ -36,6 +36,7 @@ This pretrained model maps SNOMED codes to corresponding MedDRA LLT (Lowest Leve
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
