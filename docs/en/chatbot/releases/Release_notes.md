@@ -101,7 +101,8 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
    - NLP tools can be invoked in two ways: via regular queries in natural language or by using the '@' operator for direct tool activation.
    - Typing '@' at the beginning of the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.
    - The @ operator also allows direct access to `MedResearch` and `Wikipedia` tools for targeted questions. For instance, when using `@medical_research` at the beginning of your question, the chatbot will directly engage the `MedResearch` tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
-   - Similarly, for NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
+   - Similarly, for Wikipedia and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
+       - `@search_wikipedia`: Query Wikipedia Pages
        - `@deidentification`: De-identification of Medical Text
        - `@obfuscation`: Obfuscation of Medical Text
        - `@ner_medical`: General Medical Entity Extraction
