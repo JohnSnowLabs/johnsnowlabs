@@ -56,7 +56,7 @@ resolver2chunk = Resolution2Chunk()\
     .setInputCols(["snomed_code"])\
     .setOutputCol("snomed2chunk")
 
-chunkMapper = ChunkMapperModel.load('snomed_to_meddra_mapper')\
+chunkMapper = ChunkMapperModel.load('snomed_meddra_llt_mapper')\
     .setInputCols(["snomed2chunk"])\
     .setOutputCol("mappings")\
     .setRels(["meddra_code"])
@@ -92,19 +92,19 @@ val resolver2chunk = new Resolution2Chunk()
 	.setInputCols(Array("snomed_code"))
 	.setOutputCol("snomed2chunk")
 	
-val chunkMapper = new ChunkMapperModel.load("snomed_to_meddra_mapper")
+val chunkMapper = new ChunkMapperModel.load("snomed_meddra_llt_mapper")
 	.setInputCols(Array("snomed2chunk"))
 	.setOutputCol("mappings")
 	.setRels(Array("meddra_code"))
 	
-val Pipeline(stages = Array(
+val newPipeline().setStages(Array(
      documentAssembler,
      sbert_embedder,
      snomed_resolver,
      resolver2chunk,
      chunkMapper))
 	
-val data = Seq("Fungal infection of lung"),Array("Abdominal pain"),Array("wheezing") .toDF("text")
+val data = Seq("Fungal infection of lung", "Abdominal pain", "wheezing") .toDF("text")
 	
 val result = pipeline.fit(data).transform(data)
 
