@@ -22,9 +22,9 @@ We're excited to introduce Generative AI Lab 6.1, featuring several upgrades to 
 Version 6.1 brings a new feature that enables the merging of tasks from two different projects. This functionality allows the consolidation of annotations created as part of different projects into one project, optimizing the processes for training and analysis.
 
 **Key Features:**
-- **Merging Tasks Across Projects:** Users can now combine tasks from two different projects into a single project, provided that the projects share the same configuration and labels. If the tasks and their IDs are identical, their completions will be merged. If not, the imported tasks are added as new, while preserving any existing completions. 
+**Merging Tasks Across Projects:** Users can now combine tasks from two different projects into a single project, provided that the projects share the same configuration and labels. If the tasks and their IDs are identical, their completions will be merged. If not, the imported tasks are added as new, while preserving any existing completions. 
 
-- **Streamlined Workflow:** Merging tasks is a straightforward process:
+**Streamlined Workflow:** Merging tasks is a straightforward process:
   1. Export tasks from one project. 
   2. Go to the import page of the target project. 
   3. Import the tasks.
@@ -56,13 +56,13 @@ Previously, task assignments were restricted to one annotator at a time, requiri
 Version 6.1 introduces the ability for users to initiate ad-hoc backups directly from the backup page on demand. Previously, triggering backups required manual editing of the cronjob from the backend to manage file and database backups outside of the scheduled times. This update simplifies the process, enabling users to easily start backups with just a click. 
 
 **Key Features:**
-- **On-Demand Backup:** Users can now trigger ad-hoc backups at any time from the backup page. The backup process involves:
+**On-Demand Backup:** Users can now trigger ad-hoc backups at any time from the backup page. The backup process involves:
   1. Entering the S3/Azure Blob credentials. 
   2. Clicking the backup button. 
      
  ![zeroPrompt](/assets/images/annotation_lab/6.1.0/5.png)
 
-- **Simplified Interactions:** Prior to this update, initiating backups outside of the scheduled times required manual cronjob modifications. Now, backups can be initiated directly from the UI.
+**Simplified Interactions:** Prior to this update, initiating backups outside of the scheduled times required manual cronjob modifications. Now, backups can be initiated directly from the UI.
 
 This enhancement gives users increased flexibility and control, making it easy and efficient to initiate backups whenever necessary with just a click.
 
