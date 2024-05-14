@@ -102,13 +102,16 @@ The NLP Tools feature is a new addition to the Medical Chatbot, providing specia
    - Typing '@' at the beginning of the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.
    - The @ operator also allows direct access to `MedResearch` and `Wikipedia` tools for targeted questions. For instance when using `@medical_research` at the beginning of your question, the chatbot will directly engage the `MedResearch` tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
    - Similarly, for NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
-       - `@deidentification`: Deidentification of medical text
-       - `@obfuscation`: Obfuscation of medical text
+       - `@deidentification`: De-identification of Medical Text
+       - `@obfuscation`: Obfuscation of Medical Text
        - `@ner_medical`: General Medical Entity Extraction
        - `@ner_medical_oncology `: Oncological Entity Extraction
        - `@ner_medical_posology `: Posology Entity Extraction
-         
-![Tool_Selector](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/efa99614-20a4-4866-95a5-6134f7a9fb41)
+   - When interacting with the chatbot, the generated answer prominently displays the tool used for response generation right above the answer itself. This clarification ensures users know which tool was utilized.
+   - Similarly, when selecting a specific tool using the '@' Selector in your query, the chosen tool is labeled at the top of the query, making it clear which tool was requested for the response generation.
+   - Hence, users can better understand the specialties of these tools and experiment to obtain the best possible responses according to their needs.
+    
+![Risk_Factors](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/e70788ea-77bc-48ca-9583-4e3586605241)
 
 4. **Export results in CSV format**
    - All the Entity Extraction results computed using the NLP tools can be exported in CSV format. For each detected entity, the export also contains confidence information, ensuring transparency and reliability in data analysis.
