@@ -745,7 +745,7 @@ println(tmpFile)
 
 Results:
 
-![Result with regions](/assets/images/ocr/with_regions.png)
+![Result with regions](/assets/images/ocr/with_regions.png "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
