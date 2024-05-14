@@ -1679,10 +1679,10 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
     <li>AWS Config: 8 CPU Cores, 14GiB RAM (c6a.2xlarge)</li>
   </ul>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
-        <th>partition</th>
+        <th>Partition</th>
         <th>DataBricks <br /> mapper timing</th>
         <th>AWS <br /> mapper timing</th>
         <th>DataBricks <br /> resolver timing</th>
@@ -1763,10 +1763,10 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
     <li>AWS Config: 16 CPU Cores, 27GiB RAM (c6a.4xlarge)</li>
   </ul>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
-        <th>partition</th>
+        <th>Partition</th>
         <th>DataBricks <br /> mapper timing</th>
         <th>AWS <br /> mapper timing</th>
         <th>DataBricks <br /> resolver timing</th>
@@ -1847,10 +1847,10 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
     <li>AWS Config: 32 CPU Cores, 58GiB RAM (c6a.8xlarge)</li>
   </ul>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
-        <th>partition</th>
+        <th>Partition</th>
         <th>DataBricks <br /> mapper timing</th>
         <th>AWS <br /> mapper timing</th>
         <th>DataBricks <br /> resolver timing</th>
@@ -1972,10 +1972,10 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
   <p><strong><em>Results Table</em></strong></p>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
-        <th style="text-align: right">partition</th>
+        <th style="text-align: right">Partition</th>
         <th style="text-align: right">preprocessing</th>
         <th style="text-align: right">embeddings</th>
         <th style="text-align: right">resolver</th>
@@ -2060,10 +2060,9 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
   </table>
 
 </div>
-
-<h2 id="deidentification-benchmarks">Deidentification Benchmarks</h2>
-
 <div class="h3-box">
+
+  <h2 id="deidentification-benchmarks">Deidentification Benchmarks</h2>
 
   <h3 id="deidentification-comparison-experiment-on-clusters">Deidentification Comparison Experiment on Clusters</h3>
 
@@ -2122,10 +2121,10 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
   <p><strong>Dataset:</strong> 1000 Clinical Texts from MTSamples, approx. 503 tokens and 21 chunks per text.</p>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
-        <th style="text-align: right">partition</th>
+        <th style="text-align: right">Partition</th>
         <th style="text-align: right">AWS <br /> result timing</th>
         <th style="text-align: right">DataBricks <br /> result timing</th>
         <th style="text-align: right">Colab <br /> result timing</th>
@@ -2211,7 +2210,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
     </li>
   </ul>
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th style="text-align: left">Deidentification Pipeline Name</th>
@@ -2398,7 +2397,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
 <div class="h3-box">
 
-  <table>
+  <table class="table-model-big db">
     <thead>
       <tr>
         <th>Partition</th>
@@ -2548,10 +2547,10 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
     <p><strong><em>Results Table</em></strong></p>
 
-    <table>
+    <table class="table-model-big db">
       <thead>
         <tr>
-          <th style="text-align: right">partition</th>
+          <th style="text-align: right">Partition</th>
           <th style="text-align: left">NER Timing</th>
           <th style="text-align: left">NER and Resolver Timing</th>
         </tr>
@@ -2742,7 +2741,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
   <p>We used the Spark NLP class <code class="language-plaintext highlighter-rouge">MedicalNer</code> and it’s method <code class="language-plaintext highlighter-rouge">Approach()</code> as described in the <a href="https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#medicalner">documentation</a>.</p>
 
   <p>The pipeline looks as follows:
-<img src="/assets/images/CPUvsGPUbenchmarkpic4.png" alt="" /></p>
+<img src="/assets/images/CPUvsGPUbenchmarkpic4.png" alt="Benchmark on MedicalNerDLApproach" /></p>
 
 </div>
 <div class="h3-box">
@@ -2864,7 +2863,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
     </tbody>
   </table>
 
-  <p><img src="/assets/images/CPUvsGPUbenchmarkpic7.png" alt="" /></p>
+  <p><img src="/assets/images/CPUvsGPUbenchmarkpic7.png" alt="Inference times" /></p>
 
 </div>
 <div class="h3-box">
@@ -2872,7 +2871,7 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
   <h4 id="performance-metrics">Performance metrics</h4>
   <p>A macro F1-score of about <code class="language-plaintext highlighter-rouge">0.92</code> (<code class="language-plaintext highlighter-rouge">0.90</code> in micro) was achieved, with the following charts extracted from the <code class="language-plaintext highlighter-rouge">MedicalNerApproach()</code> logs:</p>
 
-  <p><img src="/assets/images/CPUvsGPUbenchmarkpic8.png" alt="" /></p>
+  <p><img src="/assets/images/CPUvsGPUbenchmarkpic8.png" alt="Inference times" /></p>
 
 </div>
 <div class="h3-box">
@@ -2891,11 +2890,11 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 
   <h3 id="multigpu-inference-on-databricks">MultiGPU Inference on Databricks</h3>
   <p>In this part, we will give you an idea on how to choose appropriate hardware specifications for Databricks. Here is a few different hardwares, their prices, as well as their performance:
-<img src="https://user-images.githubusercontent.com/25952802/158796429-78ec52b1-c036-4a9c-89c2-d3d1f395f71d.png" alt="image" /></p>
+<img src="https://user-images.githubusercontent.com/25952802/158796429-78ec52b1-c036-4a9c-89c2-d3d1f395f71d.png" alt="MultiGPU Inference on Databricks" /></p>
 
   <p>Apparently, GPU hardware is the cheapest among them although it performs the best. Let’s see how overall performance looks like:</p>
 
-  <p><img src="https://user-images.githubusercontent.com/25952802/158799106-8ee03a8b-8590-49ae-9657-b9663b915324.png" alt="image" /></p>
+  <p><img src="https://user-images.githubusercontent.com/25952802/158799106-8ee03a8b-8590-49ae-9657-b9663b915324.png" alt="MultiGPU Inference on Databricks" /></p>
 
   <p>Figure above clearly shows us that GPU should be the first option of ours.</p>
 

@@ -921,13 +921,13 @@ running</p>
 
   <p>Either create a conda env for python 3.6, install <em>pyspark==3.1.2 spark-nlp numpy</em> and use Jupyter/python console, or in the same conda env you can go to spark bin for <em>pyspark –packages com.johnsnowlabs.nlp:spark-nlp_2.12:3.4.4</em>.</p>
 
-  <p><img class="image image--xl" src="/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" /></p>
+  <p><img src="/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg" alt="Requisites for PySpark" title="lit_shadow" /></p>
 
-  <p><img class="image image--xl" src="/assets/images/installation/90127225-21662880-dd65-11ea-8b98-3a2c26cfa534.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" /></p>
+  <p><img src="/assets/images/installation/90127225-21662880-dd65-11ea-8b98-3a2c26cfa534.jpg" alt="Requisites for PySpark" title="lit_shadow" /></p>
 
-  <p><img class="image image--xl" src="/assets/images/installation/90127243-2925cd00-dd65-11ea-9b20-ba3353473a98.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" /></p>
+  <p><img src="/assets/images/installation/90127243-2925cd00-dd65-11ea-9b20-ba3353473a98.jpg" alt="Requisites for PySpark" title="lit_shadow" /></p>
 
-  <p><img class="image image--xl" src="/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" /></p>
+  <p><img src="/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg" alt="Requisites for PySpark" title="lit_shadow" /></p>
 
 </div>
 <div class="h3-box">
@@ -1018,6 +1018,9 @@ conda activate sparknlp
 jupyter notebook
 </code></pre></div>  </div>
 
+</div>
+<div class="h3-box">
+
   <h2 id="apple-silicon-support">Apple Silicon Support</h2>
 
   <p><strong>Installation for Apple Silicon (M1, M2, M3)</strong>: Starting from version 4.0.0, Spark NLP has experimental support for apple silicon.</p>
@@ -1025,7 +1028,7 @@ jupyter notebook
   <p>Make sure the following prerequisites are set:</p>
 
   <ol>
-    <li>Installing SDKMAN, you can also follow the official documentation at https://sdkman.io/install
+    <li><strong>Installing SDKMAN</strong>, you can also follow the official documentation at <a href="https://sdkman.io/install">https://sdkman.io/install</a>
       <ul>
         <li><code class="language-plaintext highlighter-rouge">$ curl -s "https://get.sdkman.io" | bash</code></li>
         <li><code class="language-plaintext highlighter-rouge">source "$HOME/.sdkman/bin/sdkman-init.sh"</code></li>
@@ -1035,14 +1038,14 @@ jupyter notebook
 
       <p><img src="https://github.com/JohnSnowLabs/spark-nlp-workshop/assets/64752006/9d05bd11-14c5-454e-bbab-fea4e91da905" alt="image" /></p>
     </li>
-    <li>Installing Java
+    <li><strong>Installing Java</strong>
       <ul>
         <li><code class="language-plaintext highlighter-rouge">sdk install java 8.0.402-amzn</code></li>
         <li><code class="language-plaintext highlighter-rouge">whereis java</code></li>
         <li><code class="language-plaintext highlighter-rouge">java -version</code></li>
       </ul>
     </li>
-    <li>Installing MiniConda, you can also follow the official documentation at https://docs.anaconda.com/free/miniconda/#quick-command-line-install
+    <li><strong>Installing MiniConda</strong>, you can also follow the official documentation at https://docs.anaconda.com/free/miniconda/#quick-command-line-install
       <ul>
         <li><code class="language-plaintext highlighter-rouge">mkdir -p ~/miniconda3</code></li>
         <li><code class="language-plaintext highlighter-rouge">curl https://repo.anaconda.com/miniconda/Miniconda3-py39_23.11.0-2-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh</code> PS: you can change python version to 3.10 or 3.11</li>
@@ -1087,11 +1090,14 @@ jupyter notebook
 </code></pre></div>      </div>
     </li>
     <li>
-      <p>Installing Spark NLP Healthcare</p>
+      <p><strong>Installing Spark NLP Healthcare</strong></p>
 
       <p>please see the <a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/apple-silicon/installation.ipynb">Spark NLP Healthcare Installation Notebook</a></p>
     </li>
   </ol>
+
+</div>
+<div class="h3-box">
 
   <h2 id="non-johnsnowlabs-clinical-nlp-on-ubuntu">Non-johnsnowlabs Clinical NLP on Ubuntu</h2>
   <blockquote>
@@ -1627,27 +1633,27 @@ build-backend <span class="o">=</span> <span class="s2">"poetry.core.masonry.api
     </li>
   </ol>
 
-  <p><img src="/assets/images/emr/image.png" alt="alt text" /></p>
+  <p><img src="/assets/images/emr/image.png" alt="Non-johnsnowlabs Clinical NLP on AWS EMR" title="lit_shadow" /></p>
 
   <ul>
     <li>Specify EC2  instances for the cluster, as primary/master node  and cores/workers</li>
     <li>Specify the storage/ EBS volume</li>
   </ul>
 
-  <p><img src="/assets/images/emr/image-1.png" alt="alt text" /></p>
+  <p><img src="/assets/images/emr/image-1.png" alt="Non-johnsnowlabs Clinical NLP on AWS EMR" title="lit_shadow" /></p>
 
   <ul>
     <li>Choose Cluster scaling and provisioning</li>
     <li>Choose Networking / VPC</li>
   </ul>
 
-  <p><img src="/assets/images/emr/image-2.png" alt="alt text" /></p>
+  <p><img src="/assets/images/emr/image-2.png" alt="Non-johnsnowlabs Clinical NLP on AWS EMR" title="lit_shadow" /></p>
 
   <ul>
     <li>Choose Security Groups/Firewall for primary/master node and cores/workers/slaves</li>
   </ul>
 
-  <p><img src="/assets/images/emr/image-3.png" alt="alt text" /></p>
+  <p><img src="/assets/images/emr/image-3.png" alt="Non-johnsnowlabs Clinical NLP on AWS EMR" title="lit_shadow" /></p>
 
   <ul>
     <li>If you have add steps , that will be executed after cluster is provisioned</li>
@@ -1660,12 +1666,12 @@ build-backend <span class="o">=</span> <span class="s2">"poetry.core.masonry.api
     <li>Specify the Bootstrap Action</li>
   </ul>
 
-  <p><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/emr/jsl_emr_bootstrap.sh">jsl_emr_bootstrap.sh</a></p>
+  <p><a href="https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/emr/jsl_emr_bootstrap.sh" title="lit_shadow">jsl_emr_bootstrap.sh</a></p>
 
   <p>Put this sample shell script in a S3 location and specify it in the form:
 You will have spark-nlp and spark-nlp-jsl and spark-ocr installed by bootstrap action, this file is executed during the cluster provisioning. Version of Libraries and other credentials provided by Johnsnowlabs will be in this file.</p>
 
-  <p><img src="/assets/images/emr/image-5.png" alt="add bootstrap action" /></p>
+  <p><img src="/assets/images/emr/image-5.png" alt="add bootstrap action" title="lit_shadow" /></p>
 
   <p><strong>Important</strong></p>
   <ul>
@@ -1763,7 +1769,7 @@ python3 <span class="nt">-m</span> venv .sparknlp-env
 </div>
 <div class="h3-box">
 
-  <p><img class="image image--xl" src="/assets/images/installation/amazon-linux.png" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" /></p>
+  <p><img src="/assets/images/installation/amazon-linux.png" alt="Non-johnsnowlabs Clinical NLP on Amazon Linux 2" title="lit_shadow" /></p>
 
 </div>
 <div class="h3-box">
@@ -1818,26 +1824,26 @@ os.environ.update(license_keys)
   <ol>
     <li><strong>Docker</strong>:
       <ul>
-        <li>Install from Docker Desktop(https://www.docker.com/products/docker-desktop/).</li>
+        <li>Install from Docker Desktop(<a href="https://www.docker.com/products/docker-desktop/">https://www.docker.com/products/docker-desktop/</a>).</li>
         <li>Ensure Kubernetes is enabled in Docker Desktop settings.</li>
       </ul>
     </li>
     <li><strong>kubectl</strong>:
       <ul>
-        <li>Install using the instructions from Kubernetes official documentation(https://kubernetes.io/docs/tasks/tools/).</li>
+        <li>Install using the instructions from Kubernetes official documentation(<a href="https://kubernetes.io/docs/tasks/tools/">https://kubernetes.io/docs/tasks/tools/</a>).</li>
       </ul>
     </li>
     <li><strong>kind</strong>:
       <ul>
-        <li>Install using the instructions from Kubernetes official documentation(https://kubernetes.io/docs/tasks/tools/).</li>
+        <li>Install using the instructions from Kubernetes official documentation(<a href="https://kubernetes.io/docs/tasks/tools/">https://kubernetes.io/docs/tasks/tools/</a>).</li>
       </ul>
     </li>
     <li><strong>Docker Hub Account</strong>:
       <ul>
-        <li>If you don’t have one, create your account at Docker Hub(https://hub.docker.com/signup).</li>
+        <li>If you don’t have one, create your account at Docker Hub(<a href="https://hub.docker.com/signup">https://hub.docker.com/signup</a>).</li>
       </ul>
     </li>
-    <li>Install JohnSnow Labs <strong>licence key file</strong> to the project directory(https://my.johnsnowlabs.com/subscriptions).</li>
+    <li>Install JohnSnow Labs <strong>licence key file</strong> to the project directory(<a href="https://my.johnsnowlabs.com/subscriptions">https://my.johnsnowlabs.com/subscriptions</a>).</li>
   </ol>
 
 </div>
@@ -2161,7 +2167,7 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
     <li>Click “Upload” to upload the necessary JAR and wheel files.</li>
   </ul>
 
-  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/c0117820-7e27-4f1b-a8c8-a99ee69c8857" alt="image" /></p>
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/c0117820-7e27-4f1b-a8c8-a99ee69c8857" alt="Azure Synapse Analytics Support" title="lit_shadow" /></p>
 
   <ul>
     <li>For running licensed models, navigate to the “Apache Spark configurations” under the “Manage” section.</li>
@@ -2175,7 +2181,7 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
     </li>
   </ul>
 
-  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/08968952-efd3-43cd-9bca-587532bb519c" alt="image" /></p>
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/08968952-efd3-43cd-9bca-587532bb519c" alt="Azure Synapse Analytics Support" title="lit_shadow" /></p>
 
   <p>After adding these properties, the Apache Spark configuration is ready.</p>
   <ul>
@@ -2188,7 +2194,7 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
   <p>Now, all the necessary licenses and JARs are ready to be used. You can proceed to run your notebook.</p>
 
   <p>For running OCR models, upload the following JAR and wheel files to the Workspace packages.
-<img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/1c3eadc7-2b12-4624-99b0-64a77966b6e2" alt="image" /></p>
+<img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/1c3eadc7-2b12-4624-99b0-64a77966b6e2" alt="Azure Synapse Analytics Support" title="lit_shadow" /></p>
 
   <ul>
     <li>For licensed OCR models, Add the following properties:
@@ -2203,7 +2209,7 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
     </li>
   </ul>
 
-  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/a8caf1fd-5c76-47ed-94fd-bf3237f7417d" alt="image" /></p>
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/a8caf1fd-5c76-47ed-94fd-bf3237f7417d" alt="Azure Synapse Analytics Support" title="lit_shadow" /></p>
 
   <p>Now, you can proceed to run your OCR models and notebooks.</p>
 
@@ -2279,41 +2285,41 @@ spark-nlp-healthcare-deployment-7fc4c6b4ff-rdj97   1/1     Running   0          
     </li>
   </ol>
 
-  <p><img src="/assets/images/azure/azure_1.png" alt="image" /></p>
+  <p><img src="/assets/images/azure/azure_1.png" alt="Azure AI Studio instructions" /></p>
 
   <p>13 Then go to All Azure AI dropdown and choose <strong>Azure Machine Learning Studio</strong>.</p>
 
-  <p><img src="/assets/images/azure/azure_2.png" alt="image" /></p>
+  <p><img src="/assets/images/azure/azure_2.png" alt="Azure AI Studio instructions" /></p>
 
   <p>14 Such a window will Appear. Go to Add compute.</p>
 
-  <p><img src="/assets/images/azure/azure_3.png" alt="image" /></p>
+  <p><img src="/assets/images/azure/azure_3.png" alt="Azure AI Studio instructions" /></p>
 
   <p>15 Choose the compute type and enable auto-shutdown as well.</p>
 
-  <p><img src="/assets/images/azure/azure_10.png" alt="image" /></p>
+  <p><img src="/assets/images/azure/azure_10.png" alt="Azure AI Studio instructions" /></p>
 
-  <p><img src="/assets/images/azure/azure_8.png" alt="image" /></p>
+  <p><img src="/assets/images/azure/azure_8.png" alt="Azure AI Studio instructions" /></p>
 
-  <p><img src="/assets/images/azure/azure_9.png" alt="image" /></p>
+  <p><img src="/assets/images/azure/azure_9.png" alt="Azure AI Studio instructions" /></p>
 
   <p>16 Then go to the Notebooks Section.</p>
 
-  <p><img src="/assets/images/azure/azure_4.png" alt="image" /></p>
+  <p><img src="/assets/images/azure/azure_4.png" alt="Azure AI Studio instructions" /></p>
 
   <p>In NB section, you can create your own NB or load existing NBs.</p>
 
   <p>17 Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.</p>
 
-  <p><img src="/assets/images/azure/azure_5.png" alt="image" /></p>
+  <p><img src="/assets/images/azure/azure_5.png" alt="Azure AI Studio instructions" /></p>
 
   <p>18 Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using <code class="language-plaintext highlighter-rouge">nlp.install()</code> and <code class="language-plaintext highlighter-rouge">nlp.start()</code> you can install the required jars and wheels and start the spark session.</p>
 
-  <p><img src="/assets/images/azure/azure_6.png" alt="image" /></p>
+  <p><img src="/assets/images/azure/azure_6.png" alt="Azure AI Studio instructions" /></p>
 
   <p>19 Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).</p>
 
-  <p><img src="/assets/images/azure/azure_7.png" alt="image" /></p>
+  <p><img src="/assets/images/azure/azure_7.png" alt="Azure AI Studio instructions" /></p>
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated

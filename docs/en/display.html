@@ -637,7 +637,8 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>The  visualisation classes work with the outputs returned by both Pipeline.transform() function and LightPipeline.fullAnnotate().</p>
 
-  <p><br /></p>
+</div>
+<div class="h3-box">
 
   <h3 id="install-spark-nlp-display">Install Spark NLP Display</h3>
 
@@ -645,9 +646,11 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip <span class="nb">install </span>spark-nlp-display
 </code></pre></div>  </div>
-  <p><br /></p>
 
   <p>A complete guideline on how to use the Spark NLP Display library is available <a href="https://github.com/JohnSnowLabs/spark-nlp-display/blob/main/tutorials/Spark_NLP_Display.ipynb">here</a>.</p>
+
+</div>
+<div class="h3-box">
 
   <h3 id="visualize-a-dependency-tree">Visualize a dependency tree</h3>
 
@@ -663,13 +666,13 @@ dependency_vis.display<span class="o">(</span>pipeline_result[0], <span class="c
                        dependency_type_col <span class="o">=</span> <span class="s1">'dependency_type'</span> <span class="c">#specify the dependency type column</span>
                        <span class="o">)</span>
 </code></pre></div>  </div>
-  <p><br /></p>
 
   <p>The following image gives an example of html output that is obtained for a test sentence:</p>
 
-  <p><img class="image image--xl" src="/assets/images/dependency tree viz.png" style="width:70%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" /></p>
+  <p><img src="/assets/images/dependency tree viz.png" alt="Visualize a dependency tree" title="lit_shadow" /></p>
 
-  <p><br /></p>
+</div>
+<div class="h3-box">
 
   <h3 id="visualize-extracted-named-entities">Visualize extracted named entities</h3>
 
@@ -690,9 +693,10 @@ ner_vis.set_label_colors<span class="o">({</span><span class="s1">'LOC'</span>:<
 </code></pre></div>  </div>
   <p>The following image gives an example of html output that is obtained for a couple of test sentences:</p>
 
-  <p><img class="image image--xl" src="/assets/images/ner viz.png" style="width:80%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" /></p>
+  <p><img src="/assets/images/ner_viz.png" alt="Visualize a dependency tree" title="lit_shadow" /></p>
 
-  <p><br /></p>
+</div>
+<div class="h3-box">
 
   <h3 id="visualize-relations">Visualize relations</h3>
 
@@ -710,9 +714,10 @@ re_vis.display<span class="o">(</span>pipeline_result[0], <span class="c">#shoul
 </code></pre></div>  </div>
   <p>The following image gives an example of html output that is obtained for a couple of test sentences:</p>
 
-  <p><img class="image image--xl" src="/assets/images/relations viz.png" style="width:100%;align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" /></p>
+  <p><img src="/assets/images/relations_viz.png" alt="Visualize relations" title="lit_shadow" /></p>
 
-  <p><br /></p>
+</div>
+<div class="h3-box">
 
   <h3 id="visualize-assertion-status">Visualize assertion status</h3>
 
@@ -734,9 +739,10 @@ assertion_vis.set_label_colors<span class="o">({</span><span class="s1">'TREATME
 </code></pre></div>  </div>
   <p>The following image gives an example of html output that is obtained for a couple of test sentences:</p>
 
-  <p><img class="image image--xl" src="/assets/images/assertion viz.png" style="width:80%;align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" /></p>
+  <p><img src="/assets/images/assertion_viz.png" alt="Visualize assertion status" title="lit_shadow" /></p>
 
-  <p><br /></p>
+</div>
+<div class="h3-box">
 
   <h3 id="visualize-entity-resolution">Visualize entity resolution</h3>
 
@@ -760,10 +766,9 @@ er_vis.set_label_colors<span class="o">({</span><span class="s1">'TREATMENT'</sp
 
   <p>The following image gives an example of html output that is obtained for a couple of test sentences:</p>
 
-  <p><img class="image image--xl" src="/assets/images/resolution viz.png" style="width:100%;align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);" /></p>
+  <p><img src="/assets/images/resolution_viz.png" alt="Visualize entity resolution" title="lit_shadow" /></p>
 
 </div>
-<div class="h3-box"></div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
       <time itemprop="dateModified" datetime="2020-11-17T00:00:00+00:00">Nov 17, 2020</time>
     </span><!-- start custom article footer snippet -->

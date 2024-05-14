@@ -661,11 +661,11 @@ function wrapWordInSpan(data, wordToWrap) {
 
   <p>In that case, we did it instantiating adding both jars (<code class="language-plaintext highlighter-rouge">"spark.jars.packages":" com.johnsnowlabs.nlp:spark-nlp_2.12:3.3.2,org.mlflow:mlflow-spark:1.21.0"</code>) into the SparkSession. However, in Databricks, you don’t instantiate programatically a session, but you configure it in the Compute screen, selecting your Spark NLP cluster, and then going to <code class="language-plaintext highlighter-rouge">Configuration -&gt; Advanced Options -&gt; Sparl -&gt; Spark Config</code>, as shown in the following image:</p>
 
-  <p><img src="/assets/images/production-readiness/db1.png" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/db1.png" alt="Configuring Databricks for Spark NLP and MLFlow" /></p>
 
   <p>In addition to Spark Config, we need to add the Spark NLP and MLFlow libraries to the Cluster. You can do that by going to <code class="language-plaintext highlighter-rouge">Libraries</code> inside your cluster. Make sure you have <code class="language-plaintext highlighter-rouge">spark-nlp</code> and <code class="language-plaintext highlighter-rouge">mlflow</code>. If not, you can install them either using PyPI or Maven artifacts. In the image below you can see the PyPI alternative:</p>
 
-  <p><img src="/assets/images/production-readiness/db2.png" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/db2.png" alt="Configuring Databricks for Spark NLP and MLFlow" /></p>
 
 </div>
 <div class="h3-box">
@@ -729,7 +729,7 @@ pipeline = Pipeline(stages=[
 
   <p>Finally, let’s log the experiment. In the “Experiment Tracking” section, we used the <code class="language-plaintext highlighter-rouge">pip_requirements</code> parameter in the <code class="language-plaintext highlighter-rouge">log_model()</code> function to set the required libraries:</p>
 
-  <p><img src="/assets/images/production-readiness/db5.png" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/db5.png" alt="Logging the experiment in Databricks using MLFlow" /></p>
 
   <p>But we mentioned using conda is also available. Let’s use conda in this example:</p>
 
@@ -766,21 +766,21 @@ Logged 1 run to an experiment in MLflow. Learn more
   <h2 id="experiment-ui">Experiment UI</h2>
   <p>On the top right corner of your notebook, you will see the Experiment widget, and inside, as shown in the image below.</p>
 
-  <p><img src="/assets/images/production-readiness/db3.png" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/db3.png" alt="Experiment UI" /></p>
 
   <p>You can also access Experiments UI if you switch your environment from “Data Science &amp; Engineering” to “Machine Learning”, on the left panel…</p>
 
-  <p><img src="/assets/images/production-readiness/db4.png" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/db4.png" alt="Experiment UI" /></p>
 
   <p>… or clicking on the “experiment” word in the cell output (it’s a link!)</p>
 
   <p>Once in the experiment UI, you will see the following screen, where your experiments are tracked.</p>
 
-  <p><img src="/assets/images/production-readiness/MicrosoftTeams-image.png" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/MicrosoftTeams-image.png" alt="Experiment UI" /></p>
 
   <p>If you click on the Start Time cell of your experiment, you will reach the registered MLFlow run.</p>
 
-  <p><img src="/assets/images/production-readiness/db7.png" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/db7.png" alt="Experiment UI" /></p>
 
   <p>On the left panel you will see the MLFlow model and some other artifacts, as the <code class="language-plaintext highlighter-rouge">conda.yml</code> and <code class="language-plaintext highlighter-rouge">pip_requirements.txt</code> that manage the dependencies of your models.</p>
 
@@ -836,7 +836,7 @@ annotationType = T.StructType([
   <h3 id="internally-if-the-data-is-in-databricks">1. Internally, if the data is in Databricks</h3>
   <p>If your data lies in Datalake, in Spark Tables, or any other internal storage in Databricks, you just need to use the previous snippets (depending if you want to use Pandas or Spark Dataframes), and you are ready to go. Example for Spark Dataframes:</p>
 
-  <p><img src="/assets/images/production-readiness/db8.png" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/db8.png" alt="Calling the experiment for production purposes" /></p>
 
   <p>Try to use Spark Dataframes by default, since converting from Spark Dataframes into Pandas triggers a <code class="language-plaintext highlighter-rouge">collect()</code> first, removing all the parallelism capabilities of Spark Dataframes.</p>
 
@@ -847,13 +847,13 @@ annotationType = T.StructType([
 
   <p>After clicking the Register Model button, you will see a link instead of the button, that will enabled after some seconds. By clicking that link, you will be redirected to the Model Inference screen.</p>
 
-  <p><img src="/assets/images/production-readiness/db10.png" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/db10.png" alt="Calling the experiment for production purposes" /></p>
 
   <p>This new screen has a button on the top right, that says “Use model for inference”. By clicking on it, you will see two options: Batch Inference or REST API. Batch inference requires a Spark Table for input, and another for output, and after configuring them, what you will see is an auto-generated notebook to be executed on-demand, programatically or with crons, that is prepared to load the environment and do the inference, getting the text fron the input table and storing the results in the output table.</p>
 
   <p>This is an example of how the notebook looks like:</p>
 
-  <p><img src="/assets/images/production-readiness/db9.png" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/db9.png" alt="Calling the experiment for production purposes" /></p>
 
   <h3 id="externally-with-the-mlflow-serve-rest-api">3. Externally, with the MLFlow Serve REST API</h3>
   <p>Instead of chosing a Batch Inference, you can select REST API. This will lead you to another screen, when the model will be loaded for production purposes in an independent cluster. Once deployed, you will be able to:
@@ -864,7 +864,7 @@ annotationType = T.StructType([
   <p>You can see the response in the same screen.
 3) Check what is the Python code or cURL command to do that very same thing programatically.</p>
 
-  <p><img src="/assets/images/production-readiness/db12.gif" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/db12.gif" alt="Calling the experiment for production purposes" /></p>
 
   <p>By just using that Python code, you can already consume it for production purposes from any external web app.</p>
 
@@ -955,7 +955,7 @@ txt_results = [x['result'] for x in l]
 
   <p>On the left panel, go to <code class="language-plaintext highlighter-rouge">Jobs</code> and then <code class="language-plaintext highlighter-rouge">Create Job</code>.</p>
 
-  <p><img src="/assets/images/production-readiness/db11.png" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/db11.png" alt="Configuring the job" /></p>
 
   <p>In the jobs screen, you will see you job created. It’s not running, it’s prepared to be called on demand, programatically or in the interface, with a <code class="language-plaintext highlighter-rouge">text</code> input param. Let’s see how to do that:</p>
 
@@ -963,7 +963,7 @@ txt_results = [x['result'] for x in l]
 
   <p>1) In the jobs screen, if you click on the job, you will enter the Job screen, and be able to set your <code class="language-plaintext highlighter-rouge">text</code> input parameter and run the job manually.</p>
 
-  <p><img src="/assets/images/production-readiness/db13.png" alt="" /></p>
+  <p><img src="/assets/images/production-readiness/db13.png" alt="Configuring the job" /></p>
 
   <p>You can use this for testing purpores, but the interesting part is calling it externally, using the Databricks Jobs API.</p>
 
