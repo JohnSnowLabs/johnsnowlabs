@@ -74,27 +74,27 @@ result = pipeline.fit(data).transform(data)
 ```
 ```scala
 val documentAssembler = new DocumentAssembler()
-	.setInputCol("text")
-	.setOutputCol("ner_chunk")
-	
+    .setInputCol("text")
+    .setOutputCol("ner_chunk")
+
 val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli","en","clinical/models")
-	.setInputCols(Array("ner_chunk"))
-	.setOutputCol("sbert_embeddings")
-	.setCaseSensitive(false)
+    .setInputCols(Array("ner_chunk"))
+    .setOutputCol("sbert_embeddings")
+    .setCaseSensitive(false)
 	
 val snomed_resolver = new SentenceEntityResolverModel.load("sbiobertresolve_meddra_lowest_level_term")
-	.setInputCols(Array("sbert_embeddings"))
-	.setOutputCol("meddra_llt_code")
-	.setDistanceFunction("EUCLIDEAN")
+    .setInputCols(Array("sbert_embeddings"))
+    .setOutputCol("meddra_llt_code")
+    .setDistanceFunction("EUCLIDEAN")
 	
 val resolver2chunk = new Resolution2Chunk()
-	.setInputCols(Array("meddra_llt_code"))
-	.setOutputCol("meddra_llt_code2chunk")
+    .setInputCols(Array("meddra_llt_code"))
+    .setOutputCol("meddra_llt_code2chunk")
 	
 val chunkMapper = new ChunkMapperModel.load("meddra_llt_snomed_mapper")
-	.setInputCols(Array("meddra_llt_code2chunk"))
-	.setOutputCol("mappings")
-	.setRels(Array("snomed_code"))
+    .setInputCols(Array("meddra_llt_code2chunk"))
+    .setOutputCol("mappings")
+    .setRels(Array("snomed_code"))
 	
 val newPipeline().setStages(Array(
      documentAssembler,
