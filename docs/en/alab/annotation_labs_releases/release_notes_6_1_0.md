@@ -17,7 +17,7 @@ sidebar:
 
 Release date: **05-14-2024**
 
-## Project Merging, bulk pre-annotationsand and ad-hoc backups in the Generative AI Lab 6.1
+## Project Merging, Bulk Pre-Annotations and Ad-hoc backups in the Generative AI Lab 6.1
 We're excited to introduce Generative AI Lab 6.1, featuring several upgrades to enhance your NLP experience. A standout feature is the ability to merge tasks across different projects, which improves annotator agreement analytics and enriches the training models with superior data completions. Additionally, the bulk pre-annotation of incomplete tasks simplifies workflows by removing the need for manual sorting and saves valuable time. The new capability to assign multiple annotators to a single task promotes teamwork. Users also have the option to initiate ad-hoc backups from the backup page, reinforcing data security on demand. Furthermore, the import page has been revamped, now offering separate tabs for cloud and local uploads, creating a cleaner and more user-friendly interface. For a detailed overview, please review the release notes below. 
 
 ## Enhanced Project Collaboration with Task Merging Capability 
@@ -25,6 +25,7 @@ Version 6.1 brings a new feature that enables the merging of tasks from two diff
 
 **Key Features:**
 - **Merging Tasks Across Projects:** Users can now combine tasks from two different projects into a single project, provided that the projects share the same configuration and labels. If the tasks and their IDs are identical, their completions will be merged. If not, the imported tasks are added as new, while preserving any existing completions. 
+
 - **Streamlined Workflow:** Merging tasks is a straightforward process:
   1. Export tasks from one project. 
   2. Go to the import page of the target project. 
@@ -183,7 +184,7 @@ This enhancement ensures a smoother and more efficient experience for users when
 		
     Previously, importing Demo Projects led to duplicate rule downloads. Now, upon importing a project, its associated rules will only be downloaded once.
 
-- **Tasks are still classified based on labels that were removed from project config**
+- **Tasks are still classified based on labels that were removed from project configuration**
 		
     In the past, tasks were categorized according to labels that had been removed from the project configuration. Now, tasks are no longer categorized for labels that are not included in the project configuration.
 
