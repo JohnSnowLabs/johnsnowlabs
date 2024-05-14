@@ -36,6 +36,7 @@ This pretrained model maps MedDRA LLT (Lowest Level Term) codes to corresponding
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+	
 ```python
 documentAssembler = DocumentAssembler()\
     .setInputCol("text")\
@@ -59,7 +60,6 @@ chunkMapper = ChunkMapperModel.load('meddra_llt_snomed_mapper')\
     .setInputCols(["meddra_llt_code2chunk"])\
     .setOutputCol("mappings")\
     .setRels(["snomed_code"])
-
 
 pipeline = Pipeline(stages = [
     documentAssembler,
