@@ -1,5 +1,483 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-05-14T13:41:46+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Sentence Entity Resolver for RxNorm (mpnet_embeddings_biolord_2023 embeddings)</title><link href="/2024/05/07/biolordresolve_avg_rxnorm_augmented_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for RxNorm (mpnet_embeddings_biolord_2023 embeddings)" /><published>2024-05-07T00:00:00+00:00</published><updated>2024-05-07T00:00:00+00:00</updated><id>/2024/05/07/biolordresolve_avg_rxnorm_augmented_en</id><content type="html" xml:base="/2024/05/07/biolordresolve_avg_rxnorm_augmented_en.html">## Description
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-05-15T18:44:00+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Brazilian Portuguese NER for Laws (Bert, Base)</title><link href="/2024/05/15/legner_lener_base_pt.html" rel="alternate" type="text/html" title="Brazilian Portuguese NER for Laws (Bert, Base)" /><published>2024-05-15T00:00:00+00:00</published><updated>2024-05-15T00:00:00+00:00</updated><id>/2024/05/15/legner_lener_base_pt</id><content type="html" xml:base="/2024/05/15/legner_lener_base_pt.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This model is a Deep Learning Portuguese Named Entity Recognition model for the legal domain, trained using Base Bert Embeddings, and is able to predict the following entities:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ORGANIZACAO (Organizations)&lt;/li&gt;
+  &lt;li&gt;JURISPRUDENCIA (Jurisprudence)&lt;/li&gt;
+  &lt;li&gt;PESSOA (Person)&lt;/li&gt;
+  &lt;li&gt;TEMPO (Time)&lt;/li&gt;
+  &lt;li&gt;LOCAL (Location)&lt;/li&gt;
+  &lt;li&gt;LEGISLACAO (Laws)&lt;/li&gt;
+  &lt;li&gt;O (Other)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can find different versions of this model in Models Hub:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;With a Deep Learning architecture (non-transformer) and Base Embeddings;&lt;/li&gt;
+  &lt;li&gt;With a Deep Learning architecture (non-transformer) and Large Embeddings;&lt;/li&gt;
+  &lt;li&gt;With a Transformers Architecture and Base Embeddings;&lt;/li&gt;
+  &lt;li&gt;With a Transformers Architecture and Large Embeddings;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PESSOA&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORGANIZACAO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LEGISLACAO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JURISPRUDENCIA&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TEMPO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOCAL&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legner_lener_base_pt_1.0.0_3.0_1715772909273.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legner_lener_base_pt_1.0.0_3.0_1715772909273.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sentenceDetector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SentenceDetectorDLModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;legal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForTokenClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legner_lener_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCaseSensitive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sentenceDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Mediante do exposto , com fundamento nos artigos 32 , i , e 33 , da lei 8.443/1992 , submetem-se os autos à consideração superior , com posterior encaminhamento ao ministério público junto ao tcu e ao gabinete do relator , propondo : a ) conhecer do recurso e , no mérito , negar-lhe provimento ; b ) comunicar ao recorrente , ao superior tribunal militar e ao tribunal regional federal da 2ª região , a fim de fornecer subsídios para os processos judiciais 2001.34.00.024796-9 e 2003.34.00.044227-3 ; e aos demais interessados a deliberação que vier a ser proferida por esta corte ” .&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------------+---------+----------+
+|         token|ner_label|confidence|
++--------------+---------+----------+
+|      Mediante|        O|0.99998605|
+|            &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;|        O| 0.9999868|
+|       exposto|        O|0.99998623|
+|             ,|        O|  0.999987|
+|           com|        O|0.99998677|
+|    fundamento|        O| 0.9999863|
+|           nos|        O|0.99998486|
+|       artigos|  I-TEMPO| 0.9995784|
+|            32|  B-LOCAL| 0.9998317|
+|             ,|  B-LOCAL|0.99983853|
+|             i|  B-LOCAL| 0.9998391|
+|             ,|  B-LOCAL|  0.999842|
+|             e|  B-LOCAL| 0.9998447|
+|            33|  B-LOCAL| 0.9998419|
+|             ,|  B-LOCAL| 0.9998423|
+|            da|  B-LOCAL| 0.9998431|
+|           lei|  B-LOCAL| 0.9998434|
+|    8.443/1992|  B-LOCAL|0.99982893|
+|             ,|        O| 0.9999863|
+|   submetem-se|        O|0.99998677|
+|            os|        O| 0.9999873|
+|         autos|        O|0.99998647|
+|             à|        O|0.99998707|
+|  consideração|        O| 0.9999871|
+|      superior|        O| 0.9999868|
+|             ,|        O|0.99998736|
+|           com|        O| 0.9999876|
+|     posterior|        O|0.99998707|
+|encaminhamento|        O|0.99998724|
+|            ao|        O|0.99998707|
+|    ministério|        O| 0.9999853|
+|       público|        O| 0.9999854|
+|         junto|        O|0.99998665|
+|            ao|        O|0.99998516|
+|           tcu|        O| 0.9993648|
+|             e|        O|0.99998665|
+|            ao|        O|0.99998677|
+|      gabinete|        O| 0.9999856|
+|            &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;|        O| 0.9999865|
+|       relator|        O|0.99998575|
+|             ,|        O| 0.9999872|
+|      propondo|        O|0.99998724|
+|             :|        O|0.99998707|
+|             a|        O| 0.9999873|
+|             &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;|        O| 0.9999873|
+|      conhecer|        O|0.99998724|
+|            &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;|        O| 0.9999872|
+|       recurso|        O| 0.9999867|
+|             e|        O| 0.9999872|
+|             ,|        O| 0.9999869|
+|            no|        O|0.99998695|
+|        mérito|        O| 0.9999872|
+|             ,|        O| 0.9999873|
+|     negar-lhe|        O| 0.9999875|
+|    provimento|        O|0.99998724|
+|             &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;|        O| 0.9999865|
+|             b|        O|0.99998635|
+|             &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;|        O| 0.9999871|
+|     comunicar|        O| 0.9999869|
+|            ao|        O| 0.9999872|
+|    recorrente|        O| 0.9999854|
+|             ,|        O|  0.999987|
+|            ao|        O|  0.999987|
+|      superior|        O| 0.9999805|
+|      tribunal|        O|0.99998057|
+|       militar|        O| 0.9999655|
+|             e|        O|0.99998677|
+|            ao|        O|0.99998665|
+|      tribunal|        O|0.99996954|
+|      regional|        O| 0.9999731|
+|       federal|        O| 0.9999361|
+|            da|        O| 0.9999758|
+|            2ª|        O| 0.9999704|
+|        região|        O|0.99994576|
+|             ,|        O|  0.999987|
+|             a|        O| 0.9999872|
+|           fim|        O|0.99998724|
+|            de|        O|  0.999987|
+|      fornecer|        O|0.99998724|
+|     subsídios|        O| 0.9999871|
+|          para|        O| 0.9999867|
+|            os|        O| 0.9999863|
+|     processos|        O| 0.9999849|
+|     judiciais|        O| 0.9999815|
+|          2001|        O|0.99994475|
+|             .|        O|0.99998444|
+|34.00.024796-9|        O| 0.9999273|
+|             e|        O| 0.9999757|
+|          2003|        O| 0.9908976|
+|             .|        O|0.99998164|
+|34.00.044227-3|        O| 0.9999851|
+|             &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;|        O| 0.9999866|
+|             e|        O|0.99998695|
+|           aos|        O| 0.9999869|
+|        demais|        O|0.99998677|
+|  interessados|        O| 0.9999867|
+|             a|        O|0.99998707|
+|   deliberação|        O|0.99998724|
+|           que|        O| 0.9999871|
+|          vier|        O| 0.9999868|
+|             a|        O| 0.9999867|
+|           ser|        O| 0.9999872|
+|     proferida|        O| 0.9999871|
+|           por|        O|0.99998695|
+|          esta|        O|0.99998677|
+|         corte|        O|0.99998224|
+|             ”|        O| 0.9999714|
+|             .|        O|0.99998647|
++--------------+---------+----------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;legner_lener_base&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[sentence, token]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[ner]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;pt&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;403.3 MB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Case sensitive:&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Max sentence length:&lt;/td&gt;
+      &lt;td&gt;128&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;Original texts available in https://paperswithcode.com/sota?task=Token+Classification&amp;amp;dataset=lener_br and in-house data augmentation with weak labelling&lt;/p&gt;</content><author><name>John Snow Labs</name></author><category term="lener" /><category term="laws" /><category term="legal" /><category term="licensed" /><category term="ner" /><category term="pt" /><category term="tensorflow" /><summary type="html">Description This model is a Deep Learning Portuguese Named Entity Recognition model for the legal domain, trained using Base Bert Embeddings, and is able to predict the following entities: ORGANIZACAO (Organizations) JURISPRUDENCIA (Jurisprudence) PESSOA (Person) TEMPO (Time) LOCAL (Location) LEGISLACAO (Laws) O (Other) You can find different versions of this model in Models Hub: With a Deep Learning architecture (non-transformer) and Base Embeddings; With a Deep Learning architecture (non-transformer) and Large Embeddings; With a Transformers Architecture and Base Embeddings; With a Transformers Architecture and Large Embeddings; Predicted Entities PESSOA, ORGANIZACAO, LEGISLACAO, JURISPRUDENCIA, TEMPO, LOCAL Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU documentAssembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = nlp.SentenceDetectorDLModel.pretrained()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols(&quot;sentence&quot;)\ .setOutputCol(&quot;token&quot;) tokenClassifier = legal.BertForTokenClassification.load(&quot;legner_lener_base&quot;,&quot;pt&quot;, &quot;legal/models&quot;)\ .setInputCols(&quot;token&quot;, &quot;sentence&quot;)\ .setOutputCol(&quot;label&quot;)\ .setCaseSensitive(True) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;label&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline( stages=[ documentAssembler, sentenceDetector, tokenizer, tokenClassifier, ner_converter ] ) example = spark.createDataFrame(pd.DataFrame({'text': [&quot;&quot;&quot;Mediante do exposto , com fundamento nos artigos 32 , i , e 33 , da lei 8.443/1992 , submetem-se os autos à consideração superior , com posterior encaminhamento ao ministério público junto ao tcu e ao gabinete do relator , propondo : a ) conhecer do recurso e , no mérito , negar-lhe provimento ; b ) comunicar ao recorrente , ao superior tribunal militar e ao tribunal regional federal da 2ª região , a fim de fornecer subsídios para os processos judiciais 2001.34.00.024796-9 e 2003.34.00.044227-3 ; e aos demais interessados a deliberação que vier a ser proferida por esta corte ” .&quot;&quot;&quot;]})) result = pipeline.fit(example).transform(example) Results +--------------+---------+----------+ | token|ner_label|confidence| +--------------+---------+----------+ | Mediante| O|0.99998605| | do| O| 0.9999868| | exposto| O|0.99998623| | ,| O| 0.999987| | com| O|0.99998677| | fundamento| O| 0.9999863| | nos| O|0.99998486| | artigos| I-TEMPO| 0.9995784| | 32| B-LOCAL| 0.9998317| | ,| B-LOCAL|0.99983853| | i| B-LOCAL| 0.9998391| | ,| B-LOCAL| 0.999842| | e| B-LOCAL| 0.9998447| | 33| B-LOCAL| 0.9998419| | ,| B-LOCAL| 0.9998423| | da| B-LOCAL| 0.9998431| | lei| B-LOCAL| 0.9998434| | 8.443/1992| B-LOCAL|0.99982893| | ,| O| 0.9999863| | submetem-se| O|0.99998677| | os| O| 0.9999873| | autos| O|0.99998647| | à| O|0.99998707| | consideração| O| 0.9999871| | superior| O| 0.9999868| | ,| O|0.99998736| | com| O| 0.9999876| | posterior| O|0.99998707| |encaminhamento| O|0.99998724| | ao| O|0.99998707| | ministério| O| 0.9999853| | público| O| 0.9999854| | junto| O|0.99998665| | ao| O|0.99998516| | tcu| O| 0.9993648| | e| O|0.99998665| | ao| O|0.99998677| | gabinete| O| 0.9999856| | do| O| 0.9999865| | relator| O|0.99998575| | ,| O| 0.9999872| | propondo| O|0.99998724| | :| O|0.99998707| | a| O| 0.9999873| | )| O| 0.9999873| | conhecer| O|0.99998724| | do| O| 0.9999872| | recurso| O| 0.9999867| | e| O| 0.9999872| | ,| O| 0.9999869| | no| O|0.99998695| | mérito| O| 0.9999872| | ,| O| 0.9999873| | negar-lhe| O| 0.9999875| | provimento| O|0.99998724| | ;| O| 0.9999865| | b| O|0.99998635| | )| O| 0.9999871| | comunicar| O| 0.9999869| | ao| O| 0.9999872| | recorrente| O| 0.9999854| | ,| O| 0.999987| | ao| O| 0.999987| | superior| O| 0.9999805| | tribunal| O|0.99998057| | militar| O| 0.9999655| | e| O|0.99998677| | ao| O|0.99998665| | tribunal| O|0.99996954| | regional| O| 0.9999731| | federal| O| 0.9999361| | da| O| 0.9999758| | 2ª| O| 0.9999704| | região| O|0.99994576| | ,| O| 0.999987| | a| O| 0.9999872| | fim| O|0.99998724| | de| O| 0.999987| | fornecer| O|0.99998724| | subsídios| O| 0.9999871| | para| O| 0.9999867| | os| O| 0.9999863| | processos| O| 0.9999849| | judiciais| O| 0.9999815| | 2001| O|0.99994475| | .| O|0.99998444| |34.00.024796-9| O| 0.9999273| | e| O| 0.9999757| | 2003| O| 0.9908976| | .| O|0.99998164| |34.00.044227-3| O| 0.9999851| | ;| O| 0.9999866| | e| O|0.99998695| | aos| O| 0.9999869| | demais| O|0.99998677| | interessados| O| 0.9999867| | a| O|0.99998707| | deliberação| O|0.99998724| | que| O| 0.9999871| | vier| O| 0.9999868| | a| O| 0.9999867| | ser| O| 0.9999872| | proferida| O| 0.9999871| | por| O|0.99998695| | esta| O|0.99998677| | corte| O|0.99998224| | ”| O| 0.9999714| | .| O|0.99998647| +--------------+---------+----------+ Model Information Model Name: legner_lener_base Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token] Output Labels: [ner] Language: pt Size: 403.3 MB Case sensitive: true Max sentence length: 128 References Original texts available in https://paperswithcode.com/sota?task=Token+Classification&amp;amp;dataset=lener_br and in-house data augmentation with weak labelling</summary></entry><entry><title type="html">Brazilian Portuguese NER for Laws (Bert, Large)</title><link href="/2024/05/15/legner_lener_large_pt.html" rel="alternate" type="text/html" title="Brazilian Portuguese NER for Laws (Bert, Large)" /><published>2024-05-15T00:00:00+00:00</published><updated>2024-05-15T00:00:00+00:00</updated><id>/2024/05/15/legner_lener_large_pt</id><content type="html" xml:base="/2024/05/15/legner_lener_large_pt.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This model is a Deep Learning Portuguese Named Entity Recognition model for the legal domain, trained using Base Bert Embeddings, and is able to predict the following entities:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ORGANIZACAO (Organizations)&lt;/li&gt;
+  &lt;li&gt;JURISPRUDENCIA (Jurisprudence)&lt;/li&gt;
+  &lt;li&gt;PESSOA (Person)&lt;/li&gt;
+  &lt;li&gt;TEMPO (Time)&lt;/li&gt;
+  &lt;li&gt;LOCAL (Location)&lt;/li&gt;
+  &lt;li&gt;LEGISLACAO (Laws)&lt;/li&gt;
+  &lt;li&gt;O (Other)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can find different versions of this model in Models Hub:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;With a Deep Learning architecture (non-transformer) and Base Embeddings;&lt;/li&gt;
+  &lt;li&gt;With a Deep Learning architecture (non-transformer) and Large Embeddings;&lt;/li&gt;
+  &lt;li&gt;With a Transformers Architecture and Base Embeddings;&lt;/li&gt;
+  &lt;li&gt;With a Transformers Architecture and Large Embeddings;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PESSOA&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORGANIZACAO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LEGISLACAO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JURISPRUDENCIA&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TEMPO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOCAL&lt;/code&gt;&lt;/p&gt;
+
+&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
+&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legner_lener_large_pt_1.0.0_3.0_1715772900343.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
+&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legner_lener_large_pt_1.0.0_3.0_1715772900343.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
+
+&lt;div class=&quot;tabs-box&quot;&gt;
+  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
+  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;sentenceDetector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SentenceDetectorDLModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;legal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForTokenClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legner_lener_large&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCaseSensitive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+
+&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;sentenceDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Mediante do exposto , com fundamento nos artigos 32 , i , e 33 , da lei 8.443/1992 , submetem-se os autos à consideração superior , com posterior encaminhamento ao ministério público junto ao tcu e ao gabinete do relator , propondo : a ) conhecer do recurso e , no mérito , negar-lhe provimento ; b ) comunicar ao recorrente , ao superior tribunal militar e ao tribunal regional federal da 2ª região , a fim de fornecer subsídios para os processos judiciais 2001.34.00.024796-9 e 2003.34.00.044227-3 ; e aos demais interessados a deliberação que vier a ser proferida por esta corte ” .&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}))&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------------+-------------+----------+
+|         token|    ner_label|confidence|
++--------------+-------------+----------+
+|      Mediante|            O|0.99998903|
+|            &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;|            O|0.99999386|
+|       exposto|            O|0.99999356|
+|             ,|            O|0.99998516|
+|           com|            O| 0.9999937|
+|    fundamento|            O|0.99998814|
+|           nos|            O|0.99998933|
+|       artigos|      I-TEMPO| 0.9768946|
+|            32|      B-LOCAL| 0.9833129|
+|             ,|      B-LOCAL| 0.9897361|
+|             i|      B-LOCAL| 0.9860687|
+|             ,|      B-LOCAL|0.99019605|
+|             e|      B-LOCAL|  0.988641|
+|            33|      B-LOCAL|0.98958844|
+|             ,|      B-LOCAL|  0.989682|
+|            da|      B-LOCAL|0.97983617|
+|           lei|      B-LOCAL| 0.9777896|
+|    8.443/1992|      B-LOCAL|0.94548935|
+|             ,|            O| 0.9997625|
+|   submetem-se|            O|0.99999225|
+|            os|            O|0.99999356|
+|         autos|            O|0.99999285|
+|             à|            O| 0.9999936|
+|  consideração|            O| 0.9999945|
+|      superior|            O| 0.9999938|
+|             ,|            O|0.99999297|
+|           com|            O| 0.9999949|
+|     posterior|            O|0.99999535|
+|encaminhamento|            O|0.99999404|
+|            ao|            O| 0.9999939|
+|    ministério|            O|0.99998385|
+|       público|            O|0.99997985|
+|         junto|            O| 0.9999902|
+|            ao|            O| 0.9999913|
+|           tcu|            O| 0.9961068|
+|             e|            O| 0.9999804|
+|            ao|            O|0.99999124|
+|      gabinete|            O| 0.9999747|
+|            &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;|            O| 0.9999911|
+|       relator|            O|0.99999297|
+|             ,|            O|0.99998975|
+|      propondo|            O| 0.9999942|
+|             :|            O|0.99999416|
+|             a|            O| 0.9999926|
+|             &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;|            O|  0.999994|
+|      conhecer|            O|0.99999493|
+|            &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;|            O|0.99999475|
+|       recurso|            O|0.99999416|
+|             e|            O|  0.999994|
+|             ,|            O| 0.9999923|
+|            no|            O| 0.9999945|
+|        mérito|            O|0.99999404|
+|             ,|            O| 0.9999926|
+|     negar-lhe|            O|0.99999475|
+|    provimento|            O|0.99999505|
+|             &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;|            O| 0.9999914|
+|             b|            O| 0.9999917|
+|             &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;|            O| 0.9999943|
+|     comunicar|            O|0.99999446|
+|            ao|            O| 0.9999935|
+|    recorrente|            O| 0.9999941|
+|             ,|            O| 0.9999869|
+|            ao|            O|0.99999243|
+|      superior|            O| 0.9933063|
+|      tribunal|            O|0.83631223|
+|       militar|            O|0.76226306|
+|             e|            O| 0.9988131|
+|            ao|            O| 0.9999895|
+|      tribunal|B-ORGANIZACAO|0.94998056|
+|      regional| I-LEGISLACAO|0.91478646|
+|       federal| I-LEGISLACAO| 0.9775761|
+|            da| I-LEGISLACAO| 0.9674108|
+|            2ª| I-LEGISLACAO| 0.9871655|
+|        região| I-LEGISLACAO|0.99471426|
+|             ,|            O| 0.9999918|
+|             a|            O|0.99999434|
+|           fim|            O|0.99999356|
+|            de|            O| 0.9999942|
+|      fornecer|            O| 0.9999948|
+|     subsídios|            O|0.99999213|
+|          para|            O| 0.9999924|
+|            os|            O| 0.9999925|
+|     processos|            O|0.99998784|
+|     judiciais|            O|  0.999987|
+|          2001|            O|0.99967766|
+|             .|            O|  0.998813|
+|34.00.024796-9|            O| 0.9933802|
+|             e|            O|  0.999508|
+|          2003|I-ORGANIZACAO|0.51847184|
+|             .|            O|   0.99998|
+|34.00.044227-3|            O| 0.9999412|
+|             &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;|            O| 0.9999937|
+|             e|            O| 0.9999936|
+|           aos|            O| 0.9999932|
+|        demais|            O| 0.9999952|
+|  interessados|            O|0.99999493|
+|             a|            O|  0.999994|
+|   deliberação|            O| 0.9999939|
+|           que|            O| 0.9999942|
+|          vier|            O| 0.9999944|
+|             a|            O| 0.9999935|
+|           ser|            O| 0.9999951|
+|     proferida|            O| 0.9999954|
+|           por|            O| 0.9999936|
+|          esta|            O|0.99999356|
+|         corte|            O|0.99992704|
+|             ”|            O| 0.9994554|
+|             .|            O| 0.9993955|
++--------------+-------------+----------+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+
+&lt;table class=&quot;table-model&quot;&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Model Name:&lt;/td&gt;
+      &lt;td&gt;legner_lener_large&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Compatibility:&lt;/td&gt;
+      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;License:&lt;/td&gt;
+      &lt;td&gt;Licensed&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Edition:&lt;/td&gt;
+      &lt;td&gt;Official&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Input Labels:&lt;/td&gt;
+      &lt;td&gt;[sentence, token]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Output Labels:&lt;/td&gt;
+      &lt;td&gt;[ner]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Language:&lt;/td&gt;
+      &lt;td&gt;pt&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Size:&lt;/td&gt;
+      &lt;td&gt;1.2 GB&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Case sensitive:&lt;/td&gt;
+      &lt;td&gt;true&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Max sentence length:&lt;/td&gt;
+      &lt;td&gt;128&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;Original texts available in https://paperswithcode.com/sota?task=Token+Classification&amp;amp;dataset=lener_br and in-house data augmentation with weak labelling&lt;/p&gt;</content><author><name>John Snow Labs</name></author><category term="laws" /><category term="ner" /><category term="licensed" /><category term="legal" /><category term="tensorflow" /><category term="lener" /><category term="pt" /><summary type="html">Description This model is a Deep Learning Portuguese Named Entity Recognition model for the legal domain, trained using Base Bert Embeddings, and is able to predict the following entities: ORGANIZACAO (Organizations) JURISPRUDENCIA (Jurisprudence) PESSOA (Person) TEMPO (Time) LOCAL (Location) LEGISLACAO (Laws) O (Other) You can find different versions of this model in Models Hub: With a Deep Learning architecture (non-transformer) and Base Embeddings; With a Deep Learning architecture (non-transformer) and Large Embeddings; With a Transformers Architecture and Base Embeddings; With a Transformers Architecture and Large Embeddings; Predicted Entities PESSOA, ORGANIZACAO, LEGISLACAO, JURISPRUDENCIA, TEMPO, LOCAL Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU documentAssembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = nlp.SentenceDetectorDLModel.pretrained()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols(&quot;sentence&quot;)\ .setOutputCol(&quot;token&quot;) tokenClassifier = legal.BertForTokenClassification.load(&quot;legner_lener_large&quot;,&quot;pt&quot;, &quot;legal/models&quot;)\ .setInputCols(&quot;token&quot;, &quot;sentence&quot;)\ .setOutputCol(&quot;label&quot;)\ .setCaseSensitive(True) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;label&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline( stages=[ documentAssembler, sentenceDetector, tokenizer, tokenClassifier, ner_converter ] ) example = spark.createDataFrame(pd.DataFrame({'text': [&quot;&quot;&quot;Mediante do exposto , com fundamento nos artigos 32 , i , e 33 , da lei 8.443/1992 , submetem-se os autos à consideração superior , com posterior encaminhamento ao ministério público junto ao tcu e ao gabinete do relator , propondo : a ) conhecer do recurso e , no mérito , negar-lhe provimento ; b ) comunicar ao recorrente , ao superior tribunal militar e ao tribunal regional federal da 2ª região , a fim de fornecer subsídios para os processos judiciais 2001.34.00.024796-9 e 2003.34.00.044227-3 ; e aos demais interessados a deliberação que vier a ser proferida por esta corte ” .&quot;&quot;&quot;]})) result = pipeline.fit(example).transform(example) Results +--------------+-------------+----------+ | token| ner_label|confidence| +--------------+-------------+----------+ | Mediante| O|0.99998903| | do| O|0.99999386| | exposto| O|0.99999356| | ,| O|0.99998516| | com| O| 0.9999937| | fundamento| O|0.99998814| | nos| O|0.99998933| | artigos| I-TEMPO| 0.9768946| | 32| B-LOCAL| 0.9833129| | ,| B-LOCAL| 0.9897361| | i| B-LOCAL| 0.9860687| | ,| B-LOCAL|0.99019605| | e| B-LOCAL| 0.988641| | 33| B-LOCAL|0.98958844| | ,| B-LOCAL| 0.989682| | da| B-LOCAL|0.97983617| | lei| B-LOCAL| 0.9777896| | 8.443/1992| B-LOCAL|0.94548935| | ,| O| 0.9997625| | submetem-se| O|0.99999225| | os| O|0.99999356| | autos| O|0.99999285| | à| O| 0.9999936| | consideração| O| 0.9999945| | superior| O| 0.9999938| | ,| O|0.99999297| | com| O| 0.9999949| | posterior| O|0.99999535| |encaminhamento| O|0.99999404| | ao| O| 0.9999939| | ministério| O|0.99998385| | público| O|0.99997985| | junto| O| 0.9999902| | ao| O| 0.9999913| | tcu| O| 0.9961068| | e| O| 0.9999804| | ao| O|0.99999124| | gabinete| O| 0.9999747| | do| O| 0.9999911| | relator| O|0.99999297| | ,| O|0.99998975| | propondo| O| 0.9999942| | :| O|0.99999416| | a| O| 0.9999926| | )| O| 0.999994| | conhecer| O|0.99999493| | do| O|0.99999475| | recurso| O|0.99999416| | e| O| 0.999994| | ,| O| 0.9999923| | no| O| 0.9999945| | mérito| O|0.99999404| | ,| O| 0.9999926| | negar-lhe| O|0.99999475| | provimento| O|0.99999505| | ;| O| 0.9999914| | b| O| 0.9999917| | )| O| 0.9999943| | comunicar| O|0.99999446| | ao| O| 0.9999935| | recorrente| O| 0.9999941| | ,| O| 0.9999869| | ao| O|0.99999243| | superior| O| 0.9933063| | tribunal| O|0.83631223| | militar| O|0.76226306| | e| O| 0.9988131| | ao| O| 0.9999895| | tribunal|B-ORGANIZACAO|0.94998056| | regional| I-LEGISLACAO|0.91478646| | federal| I-LEGISLACAO| 0.9775761| | da| I-LEGISLACAO| 0.9674108| | 2ª| I-LEGISLACAO| 0.9871655| | região| I-LEGISLACAO|0.99471426| | ,| O| 0.9999918| | a| O|0.99999434| | fim| O|0.99999356| | de| O| 0.9999942| | fornecer| O| 0.9999948| | subsídios| O|0.99999213| | para| O| 0.9999924| | os| O| 0.9999925| | processos| O|0.99998784| | judiciais| O| 0.999987| | 2001| O|0.99967766| | .| O| 0.998813| |34.00.024796-9| O| 0.9933802| | e| O| 0.999508| | 2003|I-ORGANIZACAO|0.51847184| | .| O| 0.99998| |34.00.044227-3| O| 0.9999412| | ;| O| 0.9999937| | e| O| 0.9999936| | aos| O| 0.9999932| | demais| O| 0.9999952| | interessados| O|0.99999493| | a| O| 0.999994| | deliberação| O| 0.9999939| | que| O| 0.9999942| | vier| O| 0.9999944| | a| O| 0.9999935| | ser| O| 0.9999951| | proferida| O| 0.9999954| | por| O| 0.9999936| | esta| O|0.99999356| | corte| O|0.99992704| | ”| O| 0.9994554| | .| O| 0.9993955| +--------------+-------------+----------+ Model Information Model Name: legner_lener_large Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token] Output Labels: [ner] Language: pt Size: 1.2 GB Case sensitive: true Max sentence length: 128 References Original texts available in https://paperswithcode.com/sota?task=Token+Classification&amp;amp;dataset=lener_br and in-house data augmentation with weak labelling</summary></entry><entry><title type="html">Sentence Entity Resolver for RxNorm (mpnet_embeddings_biolord_2023 embeddings)</title><link href="/2024/05/07/biolordresolve_avg_rxnorm_augmented_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for RxNorm (mpnet_embeddings_biolord_2023 embeddings)" /><published>2024-05-07T00:00:00+00:00</published><updated>2024-05-07T00:00:00+00:00</updated><id>/2024/05/07/biolordresolve_avg_rxnorm_augmented_en</id><content type="html" xml:base="/2024/05/07/biolordresolve_avg_rxnorm_augmented_en.html">## Description
 
 This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `mpnet_embeddings_biolord_2023` embeddings. It trained on the augmented version of the dataset used in previous RxNorm resolver models. Additionally, this model returns concept classes of the drugs in the `all_k_aux_labels` column.
 
@@ -1479,401 +1957,4 @@ val result = resolver_pipeline.fit(data).transform(data)
 |Case sensitive:|false|
 
 ## Dependency
-This model can be used with spark v3.4.0 and above versions.</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="biolord" /><category term="umls" /><category term="entity_resolution" /><category term="general" /><category term="clinical" /><summary type="html">Description This model maps clinical entities and concepts to the following 4 UMLS CUI code categories using ´mpnet_embeddings_biolord_2023_c´ Sentence Embeddings: Disease: Unique Identifier: T047 Tree Number: B2.2.1.2.1 Symptom: Unique Identifier: T184 Tree Number: A2.2.2 Medication: Unique Identifier: T074 Tree Number: A1.3.1 Procedure: Unique Identifier: T061 Tree Number: B1.3.1.3 Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU documentAssembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) ner_model = MedicalNerModel.pretrained(&quot;ner_jsl&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner_jsl&quot;) ner_model_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner_jsl&quot;])\ .setOutputCol(&quot;ner_chunk&quot;)\ .setWhiteList([&quot;Injury_or_Poisoning&quot;,&quot;Hyperlipidemia&quot;,&quot;Kidney_Disease&quot;,&quot;Oncological&quot;,&quot;Cerebrovascular_Disease&quot;, &quot;Oxygen_Therapy&quot;,&quot;Heart_Disease&quot;,&quot;Obesity&quot;,&quot;Disease_Syndrome_Disorder&quot;,&quot;Symptom&quot;,&quot;Treatment&quot;,&quot;Diabetes&quot;,&quot;Injury_or_Poisoning&quot;, &quot;Procedure&quot;,&quot;Symptom&quot;,&quot;Treatment&quot;,&quot;Drug_Ingredient&quot;,&quot;VS_Finding&quot;,&quot;Communicable_Disease&quot;, &quot;Drug_BrandName&quot;,&quot;Hypertension&quot;]) chunk2doc = Chunk2Doc()\ .setInputCols(&quot;ner_chunk&quot;)\ .setOutputCol(&quot;ner_chunk_doc&quot;) embeddings =MPNetEmbeddings.pretrained(&quot;mpnet_embeddings_biolord_2023_c&quot;,&quot;en&quot;)\ .setInputCols([&quot;ner_chunk_doc&quot;])\ .setOutputCol(&quot;mpnet_embeddings&quot;)\ .setCaseSensitive(False) umls_resolver = SentenceEntityResolverModel.pretrained(&quot;biolordresolve_umls_general_concepts&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;mpnet_embeddings&quot;])\ .setOutputCol(&quot;resolution&quot;)\ .setDistanceFunction(&quot;EUCLIDEAN&quot;)\ .setCaseSensitive(False) resolver_pipeline = Pipeline(stages=[ documentAssembler, sentenceDetector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, embeddings, umls_resolver ]) data = spark.createDataFrame([[&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.&quot;&quot;&quot;]]).toDF(&quot;text&quot;) result = resolver_pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = new SentenceDetector() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner_model = MedicalNerModel .pretrained(&quot;ner_jsl&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner_jsl&quot;) val ner_model_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_jsl&quot;)) .setOutputCol(&quot;ner_chunk&quot;) .setWhiteList([&quot;Injury_or_Poisoning&quot;,&quot;Hyperlipidemia&quot;,&quot;Kidney_Disease&quot;,&quot;Oncological&quot;,&quot;Cerebrovascular_Disease&quot;, &quot;Oxygen_Therapy&quot;, &quot;Heart_Disease&quot;,&quot;Obesity&quot;,&quot;Disease_Syndrome_Disorder&quot;,&quot;Symptom&quot;,&quot;Treatment&quot;,&quot;Diabetes&quot;,&quot;Injury_or_Poisoning&quot;, &quot;Procedure&quot;,&quot;Symptom&quot;,&quot;Treatment&quot;,&quot;Drug_Ingredient&quot;,&quot;VS_Finding&quot;,&quot;Communicable_Disease&quot;, &quot;Drug_BrandName&quot;,&quot;Hypertension&quot;,&quot;Imaging_Technique&quot; ]) val chunk2doc = new Chunk2Doc() .setInputCols(&quot;ner_chunk&quot;) .setOutputCol(&quot;ner_chunk_doc&quot;) val sbert_embedder = BertSentenceEmbeddings .pretrained(&quot;sbiobert_base_cased_mli&quot;, &quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;ner_chunk_doc&quot;)) .setOutputCol(&quot;sbert_embeddings&quot;) .setCaseSensitive(False) val resolver = SentenceEntityResolverModel .pretrained(&quot;sbiobertresolve_umls_findings&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;ner_chunk_doc&quot;, &quot;sbert_embeddings&quot;)) .setOutputCol(&quot;resolution&quot;) .setDistanceFunction(&quot;EUCLIDEAN&quot;) val embeddings =MPNetEmbeddings.pretrained(&quot;mpnet_embeddings_biolord_2023_c&quot;,&quot;en&quot;) .setInputCols(Array(&quot;ner_chunk_doc&quot;)) .setOutputCol(&quot;mpnet_embeddings&quot;) .setCaseSensitive(False) val umls_resolver = SentenceEntityResolverModel.pretrained(&quot;biolordresolve_umls_general_concepts&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols([&quot;mpnet_embeddings&quot;]) .setOutputCol(&quot;resolution&quot;) .setDistanceFunction(&quot;EUCLIDEAN&quot;) .setCaseSensitive(False) val resolver_pipeline = new Pipeline().setStages(Array( document_assembler, sentence_detector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, embeddings, umls_resolver)) val data = Seq([[&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.&quot;&quot;&quot;]]).toDF(&quot;text&quot;) val result = resolver_pipeline.fit(data).transform(data) Results +-----------------------------+-----+---+-------------------------+---------+---------------------------------+------------------------------------------------------------+------------------------------------------------------------+ | ner_chunk|begin|end| entity|umls_code| description| all_k_results| all_k_resolutions| +-----------------------------+-----+---+-------------------------+---------+---------------------------------+------------------------------------------------------------+------------------------------------------------------------+ |gestational diabetes mellitus| 39| 67| Diabetes| C0085207|Gestational diabetes mellitus NOS|C0085207:::C0032969:::C0341893:::C0341898:::C1391475:::C2...|Gestational diabetes mellitus NOS:::Unspecified diabetes ...| | type two diabetes mellitus| 128|153| Diabetes| C0011860| Type 2 Diabetes Mellitus|C0011860:::C1719939:::C0877302:::C1832544:::C0342262:::C1...|Type 2 Diabetes Mellitus:::Disorder associated with type ...| | T2DM| 156|159| Diabetes| C0011860| T2D|C0011860:::C1832387:::C1835887:::C4015183:::C1832544:::C1...|T2D:::T2D2:::TNDM2:::T2D5:::T2D1:::T2D4:::TPMTD:::T2D3:::...| | pancreatitis| 184|195|Disease_Syndrome_Disorder| C0030305| pancreatitis|C0030305:::C0856100:::C0267948:::C0267946:::C0001339:::C1...|pancreatitis:::Pancreatitis aggravated:::Metabolic pancre...| | hepatitis| 257|265|Disease_Syndrome_Disorder| C0019158| Hepatitis|C0019158:::C0019159:::C0040860:::C0744855:::C0854496:::C0...|Hepatitis:::a hepatitis:::Portal hepatitis:::hepatitis im...| | obesity| 272|278| Obesity| C0028754| OBESITY|C0028754:::C0451819:::C1561826:::C0149974:::C0028756:::C2...|OBESITY:::Simple obesity:::Overweight and obesity:::PRIMA...| | polyuria| 343|350| Symptom| C0032617| Polyuria|C0032617:::C2830339:::C3888890:::C0016708:::C0848232:::C3...|Polyuria:::Other polyuria:::Polyuria-polydipsia syndrome:...| | polydipsia| 353|362| Symptom| C0085602| Polydipsia NOS|C0085602:::C3888890:::C1540939:::C0857397:::C0241379:::C1...|Polydipsia NOS:::Polyuria-polydipsia syndrome:::(Excessiv...| | poor appetite| 365|377| Symptom| C0232462| Decreased food appetite| C0232462:::C0003123:::C1971623:::C0426583:::C0426579|Decreased food appetite:::APPETITE IMPAIRED:::Appetite lo...| | vomiting| 384|391| Symptom| C0042963| Vomiting, NOS|C0042963:::C0027498:::C3825500:::C3874311:::C0474496:::C0...|Vomiting, NOS:::nausea with vomiting:::Vomiting in childr...| +-----------------------------+-----+---+-------------------------+---------+---------------------------------+------------------------------------------------------------+------------------------------------------------------------+ Model Information Model Name: biolordresolve_umls_general_concepts Compatibility: Healthcare NLP 5.3.1+ License: Licensed Edition: Official Input Labels: [mpnet_embeddings] Output Labels: [umls_code] Language: en Size: 3.9 GB Case sensitive: false Dependency This model can be used with spark v3.4.0 and above versions.</summary></entry><entry><title type="html">Explain Clinical Document - Granular</title><link href="/2024/05/06/explain_clinical_doc_granular_en.html" rel="alternate" type="text/html" title="Explain Clinical Document - Granular" /><published>2024-05-06T00:00:00+00:00</published><updated>2024-05-06T00:00:00+00:00</updated><id>/2024/05/06/explain_clinical_doc_granular_en</id><content type="html" xml:base="/2024/05/06/explain_clinical_doc_granular_en.html">## Description
-
-This pipeline is designed to:
-
-- extract clinical entities
-- assign assertion status to the extracted entities
-- establish relations between the extracted entities
-
-from clinical texts. In this pipeline, [ner_jsl](https://nlp.johnsnowlabs.com/2022/10/19/ner_jsl_en.html) NER model, [assertion_jsl](https://nlp.johnsnowlabs.com/2021/07/24/assertion_jsl_en.html) assertion model, [re_test_result_date](https://nlp.johnsnowlabs.com/2021/02/24/re_test_result_date_en.html), and [posology_re](https://nlp.johnsnowlabs.com/2020/09/01/posology_re.html) relation extraction models were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract. Here are the NER, assertion, and relation extraction labels this pipeline can extract.
-
-- Clinical Entity Labels:
-`Admission_Discharge`
-`Age`
-`Alcohol`
-`Allergen`
-`BMI`
-`Birth_Entity`
-`Blood_Pressure`
-`Cerebrovascular_Disease`
-`Clinical_Dept`
-`Communicable_Disease`
-`Date`
-`Death_Entity`
-`Diabetes`
-`Diet`
-`Direction`
-`Disease_Syndrome_Disorder`
-`Dosage`
-`Drug_BrandName`
-`Drug_Ingredient`
-`Duration`
-`EKG_Findings`
-`Employment`
-`External_body_part_or_region`
-`Family_History_Header`
-`Fetus_NewBorn`
-`Form`
-`Frequency`
-`Gender`
-`HDL`
-`Heart_Disease`
-`Height`
-`Hyperlipidemia`
-`Hypertension`
-`ImagingFindings`
-`Imaging_Technique`
-`Injury_or_Poisoning`
-`Internal_organ_or_component`
-`Kidney_Disease`
-`LDL`
-`Labour_Delivery`
-`Medical_Device`
-`Medical_History_Header`
-`Modifier`
-`O2_Saturation`
-`Obesity`
-`Oncological`
-`Overweight`
-`Oxygen_Therapy`
-`Pregnancy`
-`Procedure`
-`Psychological_Condition`
-`Pulse`
-`Race_Ethnicity`
-`Relationship_Status`
-`RelativeDate`
-`RelativeTime`
-`Respiration`
-`Route`
-`Section_Header`
-`Sexually_Active_or_Sexual_Orientation`
-`Smoking`
-`Social_History_Header`
-`Strength`
-`Substance`
-`Substance_Quantity`
-`Symptom`
-`Temperature`
-`Test`
-`Test_Result`
-`Time`
-`Total_Cholesterol`
-`Treatment`
-`Triglycerides`
-`VS_Finding`
-`Vaccine`
-`Vaccine_Name`
-`Vital_Signs_Header`
-`Weight`
-
-- Assertion Status Labels: `Hypothetical`, `Someoneelse`, `Past`, `Absent`, `Family`, `Planned`, `Possible`, `Present`
-
-- Relation Extraction Labels: `is_finding_of`, `is_date_of`, `is_result_of`, `Drug_BrandName-Dosage`, `Drug_BrandName-Frequency`, `Drug_BrandName-Route` , `Drug_BrandName-Strength`, `Drug_Ingredient-Dosage`, `Drug_Ingredient-Frequency`, `Drug_Ingredient-Route`, `Drug_Ingredient-Strength`,
-`O`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_granular_en_5.2.1_3.4_1715015225667.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_granular_en_5.2.1_3.4_1715015225667.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-
-from sparknlp.pretrained import PretrainedPipeline
-
-ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_granular&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-result = ner_pipeline.annotate(&quot;&quot;&quot;The patient admitted for gastrointestinal pathology, under working treatment.
-History of prior heart murmur with echocardiogram findings as above on March 1998.
-According to the latest echocardiogram, basically revealed normal left ventricular function with left atrial enlargement .
-Based on the above findings, we will treat her medically with ACE inhibitors 10 mg, p.o, daily. Also we will give Furosemide 40 mg, p.o later and see how she fares.&quot;&quot;&quot;)
-
-```
-```scala
-
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_granular&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient admitted for gastrointestinal pathology, under working treatment.
-History of prior heart murmur with echocardiogram findings as above on March 1998.
-According to the latest echocardiogram, basically revealed normal left ventricular function with left atrial enlargement .
-Based on the above findings, we will treat her medically with ACE inhibitors 10 mg, p.o, daily. Also we will give Furosemide 40 mg, p.o later and see how she fares.&quot;&quot;&quot;)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-# ner
-
-+-----------+-----+---+--------------------------+-------------------+
-|sentence_id|begin|end|entity                    |label              |
-+-----------+-----+---+--------------------------+-------------------+
-|0          |12   |19 |admitted                  |Admission_Discharge|
-|0          |25   |50 |gastrointestinal pathology|Clinical_Dept      |
-|1          |95   |106|heart murmur              |Heart_Disease      |
-|1          |113  |126|echocardiogram            |Test               |
-|1          |149  |158|March 1998                |Date               |
-|2          |185  |198|echocardiogram            |Test               |
-|2          |220  |225|normal                    |Test_Result        |
-|2          |227  |251|left ventricular function |Test               |
-|2          |258  |280|left atrial enlargement   |Heart_Disease      |
-|3          |327  |329|her                       |Gender             |
-|3          |346  |359|ACE inhibitors            |Drug_Ingredient    |
-|3          |361  |365|10 mg                     |Strength           |
-|3          |368  |370|p.o                       |Route              |
-|3          |373  |377|daily                     |Frequency          |
-|4          |398  |407|Furosemide                |Drug_Ingredient    |
-|4          |409  |413|40 mg                     |Strength           |
-|4          |416  |418|p.o                       |Route              |
-|4          |438  |440|she                       |Gender             |
-+-----------+-----+---+--------------------------+-------------------+
-
-# assertion
-
-+-----------+-----+---+-------------------------+---------------+----------------+
-|sentence_id|begin|end|entity                   |label          |assertion_status|
-+-----------+-----+---+-------------------------+---------------+----------------+
-|1          |95   |106|heart murmur             |Heart_Disease  |Past            |
-|1          |113  |126|echocardiogram           |Test           |Past            |
-|2          |185  |198|echocardiogram           |Test           |Present         |
-|2          |220  |225|normal                   |Test_Result    |Present         |
-|2          |227  |251|left ventricular function|Test           |Present         |
-|2          |258  |280|left atrial enlargement  |Heart_Disease  |Present         |
-|3          |346  |359|ACE inhibitors           |Drug_Ingredient|Planned         |
-|4          |398  |407|Furosemide               |Drug_Ingredient|Planned         |
-+-----------+-----+---+-------------------------+---------------+----------------+
-
-# relation
-
-+-----------+-------------------------+---------------------+-------------------------+---------------------+-------------------------+--------------------------+----------------------------------+---------------------------------+----------------------------------+---------------------------------+-------------------------+--------------------------+-------------------------+--------------------------+-------------------------+
-|sentence_id|all_relations            |all_relations_entity1|all_relations_chunk1     |all_relations_entity2|all_relations_chunk2     |test_result_date_relations|test_result_date_relations_entity1|test_result_date_relations_chunk1|test_result_date_relations_entity2|test_result_date_relations_chunk2|posology_relations       |posology_relations_entity1|posology_relations_chunk1|posology_relations_entity2|posology_relations_chunk2|
-+-----------+-------------------------+---------------------+-------------------------+---------------------+-------------------------+--------------------------+----------------------------------+---------------------------------+----------------------------------+---------------------------------+-------------------------+--------------------------+-------------------------+--------------------------+-------------------------+
-|1          |is_finding_of            |Heart_Disease        |heart murmur             |Test                 |echocardiogram           |is_finding_of             |Heart_Disease                     |heart murmur                     |Test                              |echocardiogram                   |Drug_Ingredient-Strength |Drug_Ingredient           |ACE inhibitors           |Strength                  |10 mg                    |
-|1          |is_date_of               |Heart_Disease        |heart murmur             |Date                 |March 1998               |is_date_of                |Heart_Disease                     |heart murmur                     |Date                              |March 1998                       |Drug_Ingredient-Route    |Drug_Ingredient           |ACE inhibitors           |Route                     |p.o                      |
-|1          |is_date_of               |Test                 |echocardiogram           |Date                 |March 1998               |is_date_of                |Test                              |echocardiogram                   |Date                              |March 1998                       |Drug_Ingredient-Frequency|Drug_Ingredient           |ACE inhibitors           |Frequency                 |daily                    |
-|2          |is_finding_of            |Test                 |echocardiogram           |Heart_Disease        |left atrial enlargement  |is_finding_of             |Test                              |echocardiogram                   |Heart_Disease                     |left atrial enlargement          |Drug_Ingredient-Route    |Drug_Ingredient           |Furosemide               |Route                     |p.o                      |
-|2          |is_result_of             |Test_Result          |normal                   |Test                 |left ventricular function|is_result_of              |Test_Result                       |normal                           |Test                              |left ventricular function        |null                     |null                      |null                     |null                      |null                     |
-|2          |is_finding_of            |Test                 |left ventricular function|Heart_Disease        |left atrial enlargement  |is_finding_of             |Test                              |left ventricular function        |Heart_Disease                     |left atrial enlargement          |null                     |null                      |null                     |null                      |null                     |
-|3          |Drug_Ingredient-Strength |Drug_Ingredient      |ACE inhibitors           |Strength             |10 mg                    |null                      |null                              |null                             |null                              |null                             |null                     |null                      |null                     |null                      |null                     |
-|3          |Drug_Ingredient-Route    |Drug_Ingredient      |ACE inhibitors           |Route                |p.o                      |null                      |null                              |null                             |null                              |null                             |null                     |null                      |null                     |null                      |null                     |
-|3          |Drug_Ingredient-Frequency|Drug_Ingredient      |ACE inhibitors           |Frequency            |daily                    |null                      |null                              |null                             |null                              |null                             |null                     |null                      |null                     |null                      |null                     |
-|4          |Drug_Ingredient-Strength |Drug_Ingredient      |Furosemide               |Strength             |40 mg                    |null                      |null                              |null                             |null                              |null                             |null                     |null                      |null                     |null                      |null                     |
-|4          |Drug_Ingredient-Route    |Drug_Ingredient      |Furosemide               |Route                |p.o                      |null                      |null                              |null                             |null                              |null                             |null                     |null                      |null                     |null                      |null                     |
-+-----------+-------------------------+---------------------+-------------------------+---------------------+-------------------------+--------------------------+----------------------------------+---------------------------------+----------------------------------+---------------------------------+-------------------------+--------------------------+-------------------------+--------------------------+-------------------------+
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|explain_clinical_doc_granular|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.2.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|1.7 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- NerConverterInternalModel
-- AssertionDLModel
-- PerceptronModel
-- DependencyParserModel
-- RelationExtractionModel
-- PosologyREModel
-- AnnotationMerger</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="entity_resolution" /><category term="relation_extraction" /><category term="assertion_status" /><category term="clinical" /><category term="pipeline" /><category term="granular" /><summary type="html">Description This pipeline is designed to: extract clinical entities assign assertion status to the extracted entities establish relations between the extracted entities from clinical texts. In this pipeline, ner_jsl NER model, assertion_jsl assertion model, re_test_result_date, and posology_re relation extraction models were used to achieve those tasks. Here are the NER, assertion, and relation extraction labels this pipeline can extract. Here are the NER, assertion, and relation extraction labels this pipeline can extract. Clinical Entity Labels: Admission_Discharge Age Alcohol Allergen BMI Birth_Entity Blood_Pressure Cerebrovascular_Disease Clinical_Dept Communicable_Disease Date Death_Entity Diabetes Diet Direction Disease_Syndrome_Disorder Dosage Drug_BrandName Drug_Ingredient Duration EKG_Findings Employment External_body_part_or_region Family_History_Header Fetus_NewBorn Form Frequency Gender HDL Heart_Disease Height Hyperlipidemia Hypertension ImagingFindings Imaging_Technique Injury_or_Poisoning Internal_organ_or_component Kidney_Disease LDL Labour_Delivery Medical_Device Medical_History_Header Modifier O2_Saturation Obesity Oncological Overweight Oxygen_Therapy Pregnancy Procedure Psychological_Condition Pulse Race_Ethnicity Relationship_Status RelativeDate RelativeTime Respiration Route Section_Header Sexually_Active_or_Sexual_Orientation Smoking Social_History_Header Strength Substance Substance_Quantity Symptom Temperature Test Test_Result Time Total_Cholesterol Treatment Triglycerides VS_Finding Vaccine Vaccine_Name Vital_Signs_Header Weight Assertion Status Labels: Hypothetical, Someoneelse, Past, Absent, Family, Planned, Possible, Present Relation Extraction Labels: is_finding_of, is_date_of, is_result_of, Drug_BrandName-Dosage, Drug_BrandName-Frequency, Drug_BrandName-Route , Drug_BrandName-Strength, Drug_Ingredient-Dosage, Drug_Ingredient-Frequency, Drug_Ingredient-Route, Drug_Ingredient-Strength, O Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_granular&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_pipeline.annotate(&quot;&quot;&quot;The patient admitted for gastrointestinal pathology, under working treatment. History of prior heart murmur with echocardiogram findings as above on March 1998. According to the latest echocardiogram, basically revealed normal left ventricular function with left atrial enlargement . Based on the above findings, we will treat her medically with ACE inhibitors 10 mg, p.o, daily. Also we will give Furosemide 40 mg, p.o later and see how she fares.&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_granular&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_pipeline.annotate(&quot;&quot;&quot;The patient admitted for gastrointestinal pathology, under working treatment. History of prior heart murmur with echocardiogram findings as above on March 1998. According to the latest echocardiogram, basically revealed normal left ventricular function with left atrial enlargement . Based on the above findings, we will treat her medically with ACE inhibitors 10 mg, p.o, daily. Also we will give Furosemide 40 mg, p.o later and see how she fares.&quot;&quot;&quot;) Results # ner +-----------+-----+---+--------------------------+-------------------+ |sentence_id|begin|end|entity |label | +-----------+-----+---+--------------------------+-------------------+ |0 |12 |19 |admitted |Admission_Discharge| |0 |25 |50 |gastrointestinal pathology|Clinical_Dept | |1 |95 |106|heart murmur |Heart_Disease | |1 |113 |126|echocardiogram |Test | |1 |149 |158|March 1998 |Date | |2 |185 |198|echocardiogram |Test | |2 |220 |225|normal |Test_Result | |2 |227 |251|left ventricular function |Test | |2 |258 |280|left atrial enlargement |Heart_Disease | |3 |327 |329|her |Gender | |3 |346 |359|ACE inhibitors |Drug_Ingredient | |3 |361 |365|10 mg |Strength | |3 |368 |370|p.o |Route | |3 |373 |377|daily |Frequency | |4 |398 |407|Furosemide |Drug_Ingredient | |4 |409 |413|40 mg |Strength | |4 |416 |418|p.o |Route | |4 |438 |440|she |Gender | +-----------+-----+---+--------------------------+-------------------+ # assertion +-----------+-----+---+-------------------------+---------------+----------------+ |sentence_id|begin|end|entity |label |assertion_status| +-----------+-----+---+-------------------------+---------------+----------------+ |1 |95 |106|heart murmur |Heart_Disease |Past | |1 |113 |126|echocardiogram |Test |Past | |2 |185 |198|echocardiogram |Test |Present | |2 |220 |225|normal |Test_Result |Present | |2 |227 |251|left ventricular function|Test |Present | |2 |258 |280|left atrial enlargement |Heart_Disease |Present | |3 |346 |359|ACE inhibitors |Drug_Ingredient|Planned | |4 |398 |407|Furosemide |Drug_Ingredient|Planned | +-----------+-----+---+-------------------------+---------------+----------------+ # relation +-----------+-------------------------+---------------------+-------------------------+---------------------+-------------------------+--------------------------+----------------------------------+---------------------------------+----------------------------------+---------------------------------+-------------------------+--------------------------+-------------------------+--------------------------+-------------------------+ |sentence_id|all_relations |all_relations_entity1|all_relations_chunk1 |all_relations_entity2|all_relations_chunk2 |test_result_date_relations|test_result_date_relations_entity1|test_result_date_relations_chunk1|test_result_date_relations_entity2|test_result_date_relations_chunk2|posology_relations |posology_relations_entity1|posology_relations_chunk1|posology_relations_entity2|posology_relations_chunk2| +-----------+-------------------------+---------------------+-------------------------+---------------------+-------------------------+--------------------------+----------------------------------+---------------------------------+----------------------------------+---------------------------------+-------------------------+--------------------------+-------------------------+--------------------------+-------------------------+ |1 |is_finding_of |Heart_Disease |heart murmur |Test |echocardiogram |is_finding_of |Heart_Disease |heart murmur |Test |echocardiogram |Drug_Ingredient-Strength |Drug_Ingredient |ACE inhibitors |Strength |10 mg | |1 |is_date_of |Heart_Disease |heart murmur |Date |March 1998 |is_date_of |Heart_Disease |heart murmur |Date |March 1998 |Drug_Ingredient-Route |Drug_Ingredient |ACE inhibitors |Route |p.o | |1 |is_date_of |Test |echocardiogram |Date |March 1998 |is_date_of |Test |echocardiogram |Date |March 1998 |Drug_Ingredient-Frequency|Drug_Ingredient |ACE inhibitors |Frequency |daily | |2 |is_finding_of |Test |echocardiogram |Heart_Disease |left atrial enlargement |is_finding_of |Test |echocardiogram |Heart_Disease |left atrial enlargement |Drug_Ingredient-Route |Drug_Ingredient |Furosemide |Route |p.o | |2 |is_result_of |Test_Result |normal |Test |left ventricular function|is_result_of |Test_Result |normal |Test |left ventricular function |null |null |null |null |null | |2 |is_finding_of |Test |left ventricular function|Heart_Disease |left atrial enlargement |is_finding_of |Test |left ventricular function |Heart_Disease |left atrial enlargement |null |null |null |null |null | |3 |Drug_Ingredient-Strength |Drug_Ingredient |ACE inhibitors |Strength |10 mg |null |null |null |null |null |null |null |null |null |null | |3 |Drug_Ingredient-Route |Drug_Ingredient |ACE inhibitors |Route |p.o |null |null |null |null |null |null |null |null |null |null | |3 |Drug_Ingredient-Frequency|Drug_Ingredient |ACE inhibitors |Frequency |daily |null |null |null |null |null |null |null |null |null |null | |4 |Drug_Ingredient-Strength |Drug_Ingredient |Furosemide |Strength |40 mg |null |null |null |null |null |null |null |null |null |null | |4 |Drug_Ingredient-Route |Drug_Ingredient |Furosemide |Route |p.o |null |null |null |null |null |null |null |null |null |null | +-----------+-------------------------+---------------------+-------------------------+---------------------+-------------------------+--------------------------+----------------------------------+---------------------------------+----------------------------------+---------------------------------+-------------------------+--------------------------+-------------------------+--------------------------+-------------------------+ Model Information Model Name: explain_clinical_doc_granular Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 1.7 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel NerConverterInternalModel AssertionDLModel PerceptronModel DependencyParserModel RelationExtractionModel PosologyREModel AnnotationMerger</summary></entry><entry><title type="html">Explain Clinical Document - Oncology</title><link href="/2024/05/06/explain_clinical_doc_oncology_en.html" rel="alternate" type="text/html" title="Explain Clinical Document - Oncology" /><published>2024-05-06T00:00:00+00:00</published><updated>2024-05-06T00:00:00+00:00</updated><id>/2024/05/06/explain_clinical_doc_oncology_en</id><content type="html" xml:base="/2024/05/06/explain_clinical_doc_oncology_en.html">## Description
-
-This specialized oncology pipeline can;
-
-- extract oncological entities,
-
-- assign assertion status to the extracted entities,
-
-- establish relations between the extracted entities from the clinical documents.
-
-In this pipeline, seven NER, one assertion and two relation extraction model were used to achieve those tasks.
-
-- Clinical Entity Labels: `Adenopathy`, `Age`, `Biomarker`,`Biomarker_Result`, `Cancer_Dx`, `Cancer_Score` ,`Cancer_Surgery`, `Chemotherapy`, `Cycle_Count` ,`Cycle_Day`, `Cycle_Number`, `Date` ,`Death_Entity`, `Direction`, `Dosage` ,`Duration`, `Frequency`, `Gender` ,`Grade`, `Histological_Type`, `Hormonal_Therapy` ,`Imaging_Test`, `Immunotherapy`, `Invasion` ,`Line_Of_Therapy`, `Metastasis`, `Oncogene` ,`PROBLEM`, `Pathology_Result`, `Pathology_Test` ,`PROBLEM`, `Performance_Status`, `Race_Ethnicity` ,`Radiotherapy`, `Response_To_Treatment`, `Relative_Date` ,`Route`, `Site_Bone`, `Site_Brain` ,`Site_Breast`, `Site_Liver`, `Site_Lung` ,`Site_Lymph_Node`, `Site_Other_Body_Part`, `Smoking_Status` ,`Staging`, `Targeted_Therapy`, `Tumor_Finding` ,`Tumor_Size`, `Unspecific_Therapy`, `Radiation_Dose` ,`Anatomical_Site`, `Cancer_Therapy`, `Size_Trend` ,`Lymph_Node`, `Tumor_Description`,`Lymph_Node_Modifier`, `Posology_Information`, `Oncological`,`Weight`,`Alcohol`,`Communicable_Disease`,`BMI`,`Obesity`,`Diabetes`
-
-- Assertion Status Labels: `Present`, `Absent`, `Possible`, `Past`, `Family`, `Hypotetical`
-
-- Relation Extraction Labels: `is_size_of`, `is_finding_of`, `is_date_of`, `is_location_of`,
-`Chemotherapy-Dosage`,`Chemotherapy-Cycle_Count`,`Chemotherapy-Cycle_Day`,`Chemotherapy-Cycle_Number`, `Chemotherapy-Route`,
-`Cancer_Therapy-Dosage`, `Cancer_Therapy-Duration`, `Cancer_Therapy-Frequency`,`Cancer_Therapy-Route`,
-`Hormonal_Therapy-Dosage`, `Hormonal_Therapy-Duration`, `Hormonal_Therapy-Frequency`, `Hormonal_Therapy-Route`,
-`Immunotherapy-Dosage`, `Immunotherapy-Duration`, `Immunotherapy-Frequency`, `Immunotherapy-Route`,
-`Radiotherapy-Radiation_Dose`, `Radiotherapy-Duration`, `Radiotherapy-Frequency`,
-`Posology_Information-Dosage`, `Posology_Information-Duration`, `Posology_Information-Frequency`, `Posology_Information-Route`,
-`Unspecific_Therapy-Dosage`, `Unspecific_Therapy-Duration`, `Unspecific_Therapy-Frequency`, `Unspecific_Therapy-Route`
-
-{:.btn-box}
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
-[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.2.1_3.4_1715032980749.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
-[Copy S3 URI](s3://auxdata.johnsnowlabs.com/clinical/models/explain_clinical_doc_oncology_en_5.2.1_3.4_1715032980749.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
-
-## How to use
-
-
-
-&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
-{% include programmingLanguageSelectScalaPythonNLU.html %}
-  
-```python
-
-from sparknlp.pretrained import PretrainedPipeline
-
-ner_oncology_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-result = ner_oncology_pipeline.annotate(&quot;&quot;&quot;The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.Neoadjuvant chemotherapy with the regimens of Cyclophosphamide (500 mg/m2) is being given for 6 cycles with poor response&quot;&quot;&quot;)
-
-```
-```scala
-
-import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
-
-val ner_oncology_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;)
-
-val result = ner_oncology_pipeline.annotate(&quot;&quot;&quot;The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.Neoadjuvant chemotherapy with the regimens of Cyclophosphamide (500 mg/m2) is being given for 6 cycles with poor response&quot;&quot;&quot;)
-
-```
-&lt;/div&gt;
-
-## Results
-
-```bash
-
-# NER Result
-
-|    |   sentence_id | chunks                                  |   begin |   end | entities              |
-|---:|--------------:|:----------------------------------------|--------:|------:|:----------------------|
-|  0 |             0 | computed tomography                     |      24 |    42 | Imaging_Test          |
-|  1 |             0 | CT                                      |      45 |    46 | Imaging_Test          |
-|  2 |             0 | abdomen                                 |      61 |    67 | Site_Other_Body_Part  |
-|  3 |             0 | pelvis                                  |      73 |    78 | Site_Other_Body_Part  |
-|  4 |             0 | ovarian                                 |     104 |   110 | Site_Other_Body_Part  |
-|  5 |             0 | mass                                    |     112 |   115 | Tumor_Finding         |
-|  6 |             1 | Pap smear                               |     120 |   128 | Pathology_Test        |
-|  7 |             1 | one month later                         |     140 |   154 | Relative_Date         |
-|  8 |             1 | atypical glandular cells                |     173 |   196 | Pathology_Result      |
-|  9 |             1 | adenocarcinoma                          |     213 |   226 | Cancer_Dx             |
-| 10 |             2 | pathologic specimen                     |     233 |   251 | Pathology_Test        |
-| 11 |             2 | extension                               |     260 |   268 | Invasion              |
-| 12 |             2 | tumor                                   |     277 |   281 | Tumor_Finding         |
-| 13 |             2 | fallopian tubes                         |     298 |   312 | Site_Other_Body_Part  |
-| 14 |             2 | appendix                                |     315 |   322 | Site_Other_Body_Part  |
-| 15 |             2 | omentum                                 |     325 |   331 | Site_Other_Body_Part  |
-| 16 |             2 | enlarged                                |     349 |   356 | Lymph_Node_Modifier   |
-| 17 |             2 | lymph nodes                             |     358 |   368 | Site_Lymph_Node       |
-| 18 |             3 | tumor                                   |     409 |   413 | Tumor_Finding         |
-| 19 |             3 | stage IIIC                              |     419 |   428 | Staging               |
-| 20 |             3 | papillary serous ovarian adenocarcinoma |     430 |   468 | Oncological           |
-| 21 |             4 | Two months later                        |     471 |   486 | Relative_Date         |
-| 22 |             4 | lung metastases                         |     520 |   534 | Oncological           |
-| 23 |             5 | Neoadjuvant chemotherapy                |     536 |   559 | Chemotherapy          |
-| 24 |             5 | Cyclophosphamide                        |     582 |   597 | Chemotherapy          |
-| 25 |             5 | 500 mg/m2                               |     600 |   608 | Dosage                |
-| 26 |             5 | 6 cycles                                |     630 |   637 | Cycle_Count           |
-| 27 |             5 | poor response                           |     644 |   656 | Response_To_Treatment |
-
-# Assertion Result
-
-|    |   sentence_id | chunks                                  |   begin |   end | entities            | assertion   |
-|---:|--------------:|:----------------------------------------|--------:|------:|:--------------------|:------------|
-|  0 |             0 | computed tomography                     |      24 |    42 | Imaging_Test        | Past        |
-|  1 |             0 | CT                                      |      45 |    46 | Imaging_Test        | Past        |
-|  2 |             0 | mass                                    |     112 |   115 | Tumor_Finding       | Present     |
-|  3 |             1 | Pap smear                               |     120 |   128 | Pathology_Test      | Past        |
-|  4 |             1 | atypical glandular cells                |     173 |   196 | Pathology_Result    | Present     |
-|  5 |             1 | adenocarcinoma                          |     213 |   226 | Cancer_Dx           | Possible    |
-|  6 |             2 | pathologic specimen                     |     233 |   251 | Pathology_Test      | Past        |
-|  7 |             2 | extension                               |     260 |   268 | Invasion            | Present     |
-|  8 |             2 | tumor                                   |     277 |   281 | Tumor_Finding       | Present     |
-|  9 |             2 | enlarged                                |     349 |   356 | Lymph_Node_Modifier | Present     |
-| 10 |             3 | tumor                                   |     409 |   413 | Tumor_Finding       | Present     |
-| 11 |             3 | papillary serous ovarian adenocarcinoma |     430 |   468 | Oncological         | Present     |
-| 12 |             4 | lung metastases                         |     520 |   534 | Oncological         | Present     |
-| 13 |             5 | Neoadjuvant chemotherapy                |     536 |   559 | Chemotherapy        | Present     |
-| 14 |             5 | Cyclophosphamide                        |     582 |   597 | Chemotherapy        | Present     |
-| 15 |             5 | 6 cycles                                |     630 |   637 | Cycle_Count         | Present     |
-
-
-# Relation Extraction Result
-
-|    |   sentence |   entity1_begin |   entity1_end | chunk1                   | entity1              |   entity2_begin |   entity2_end | chunk2          | entity2              | relation                 |
-|---:|-----------:|----------------:|--------------:|:-------------------------|:---------------------|----------------:|--------------:|:----------------|:---------------------|:-------------------------|
-|  2 |          0 |             104 |           110 | ovarian                  | Site_Other_Body_Part |             112 |           115 | mass            | Tumor_Finding        | is_location_of           |
-|  3 |          1 |             120 |           128 | Pap smear                | Pathology_Test       |             213 |           226 | adenocarcinoma  | Cancer_Dx            | is_finding_of            |
-|  4 |          2 |             277 |           281 | tumor                    | Tumor_Finding        |             298 |           312 | fallopian tubes | Site_Other_Body_Part | is_location_of           |
-|  5 |          2 |             277 |           281 | tumor                    | Tumor_Finding        |             315 |           322 | appendix        | Site_Other_Body_Part | is_location_of           |
-|  7 |          5 |             536 |           559 | Neoadjuvant chemotherapy | Chemotherapy         |             600 |           608 | 500 mg/m2       | Dosage               | Chemotherapy-Dosage      |
-|  8 |          5 |             536 |           559 | Neoadjuvant chemotherapy | Chemotherapy         |             630 |           637 | 6 cycles        | Cycle_Count          | Chemotherapy-Cycle_Count |
-|  9 |          5 |             582 |           597 | Cyclophosphamide         | Chemotherapy         |             600 |           608 | 500 mg/m2       | Dosage               | Chemotherapy-Dosage      |
-| 10 |          5 |             582 |           597 | Cyclophosphamide         | Chemotherapy         |             630 |           637 | 6 cycles        | Cycle_Count          | Chemotherapy-Cycle_Count |
-
-```
-
-{:.model-param}
-## Model Information
-
-{:.table-model}
-|---|---|
-|Model Name:|explain_clinical_doc_oncology|
-|Type:|pipeline|
-|Compatibility:|Healthcare NLP 5.2.1+|
-|License:|Licensed|
-|Edition:|Official|
-|Language:|en|
-|Size:|1.9 GB|
-
-## Included Models
-
-- DocumentAssembler
-- SentenceDetectorDLModel
-- TokenizerModel
-- WordEmbeddingsModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- MedicalNerModel
-- NerConverterInternalModel
-- ChunkMergeModel
-- ChunkMergeModel
-- AssertionDLModel
-- PerceptronModel
-- DependencyParserModel
-- RelationExtractionModel
-- PosologyREModel
-- AnnotationMerger</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="oncology" /><category term="pipeline" /><category term="ner" /><category term="assertion" /><category term="relation_extraction" /><summary type="html">Description This specialized oncology pipeline can; extract oncological entities, assign assertion status to the extracted entities, establish relations between the extracted entities from the clinical documents. In this pipeline, seven NER, one assertion and two relation extraction model were used to achieve those tasks. Clinical Entity Labels: Adenopathy, Age, Biomarker,Biomarker_Result, Cancer_Dx, Cancer_Score ,Cancer_Surgery, Chemotherapy, Cycle_Count ,Cycle_Day, Cycle_Number, Date ,Death_Entity, Direction, Dosage ,Duration, Frequency, Gender ,Grade, Histological_Type, Hormonal_Therapy ,Imaging_Test, Immunotherapy, Invasion ,Line_Of_Therapy, Metastasis, Oncogene ,PROBLEM, Pathology_Result, Pathology_Test ,PROBLEM, Performance_Status, Race_Ethnicity ,Radiotherapy, Response_To_Treatment, Relative_Date ,Route, Site_Bone, Site_Brain ,Site_Breast, Site_Liver, Site_Lung ,Site_Lymph_Node, Site_Other_Body_Part, Smoking_Status ,Staging, Targeted_Therapy, Tumor_Finding ,Tumor_Size, Unspecific_Therapy, Radiation_Dose ,Anatomical_Site, Cancer_Therapy, Size_Trend ,Lymph_Node, Tumor_Description,Lymph_Node_Modifier, Posology_Information, Oncological,Weight,Alcohol,Communicable_Disease,BMI,Obesity,Diabetes Assertion Status Labels: Present, Absent, Possible, Past, Family, Hypotetical Relation Extraction Labels: is_size_of, is_finding_of, is_date_of, is_location_of, Chemotherapy-Dosage,Chemotherapy-Cycle_Count,Chemotherapy-Cycle_Day,Chemotherapy-Cycle_Number, Chemotherapy-Route, Cancer_Therapy-Dosage, Cancer_Therapy-Duration, Cancer_Therapy-Frequency,Cancer_Therapy-Route, Hormonal_Therapy-Dosage, Hormonal_Therapy-Duration, Hormonal_Therapy-Frequency, Hormonal_Therapy-Route, Immunotherapy-Dosage, Immunotherapy-Duration, Immunotherapy-Frequency, Immunotherapy-Route, Radiotherapy-Radiation_Dose, Radiotherapy-Duration, Radiotherapy-Frequency, Posology_Information-Dosage, Posology_Information-Duration, Posology_Information-Frequency, Posology_Information-Route, Unspecific_Therapy-Dosage, Unspecific_Therapy-Duration, Unspecific_Therapy-Frequency, Unspecific_Therapy-Route Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU from sparknlp.pretrained import PretrainedPipeline ner_oncology_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) result = ner_oncology_pipeline.annotate(&quot;&quot;&quot;The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.Neoadjuvant chemotherapy with the regimens of Cyclophosphamide (500 mg/m2) is being given for 6 cycles with poor response&quot;&quot;&quot;) import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline val ner_oncology_pipeline = PretrainedPipeline(&quot;explain_clinical_doc_oncology&quot;, &quot;en&quot;, &quot;clinical/models&quot;) val result = ner_oncology_pipeline.annotate(&quot;&quot;&quot;The Patient underwent a computed tomography (CT) scan of the abdomen and pelvis, which showed a complex ovarian mass. A Pap smear performed one month later was positive for atypical glandular cells suspicious for adenocarcinoma. The pathologic specimen showed extension of the tumor throughout the fallopian tubes, appendix, omentum, and 5 out of 5 enlarged lymph nodes. The final pathologic diagnosis of the tumor was stage IIIC papillary serous ovarian adenocarcinoma. Two months later, the patient was diagnosed with lung metastases.Neoadjuvant chemotherapy with the regimens of Cyclophosphamide (500 mg/m2) is being given for 6 cycles with poor response&quot;&quot;&quot;) Results # NER Result | | sentence_id | chunks | begin | end | entities | |---:|--------------:|:----------------------------------------|--------:|------:|:----------------------| | 0 | 0 | computed tomography | 24 | 42 | Imaging_Test | | 1 | 0 | CT | 45 | 46 | Imaging_Test | | 2 | 0 | abdomen | 61 | 67 | Site_Other_Body_Part | | 3 | 0 | pelvis | 73 | 78 | Site_Other_Body_Part | | 4 | 0 | ovarian | 104 | 110 | Site_Other_Body_Part | | 5 | 0 | mass | 112 | 115 | Tumor_Finding | | 6 | 1 | Pap smear | 120 | 128 | Pathology_Test | | 7 | 1 | one month later | 140 | 154 | Relative_Date | | 8 | 1 | atypical glandular cells | 173 | 196 | Pathology_Result | | 9 | 1 | adenocarcinoma | 213 | 226 | Cancer_Dx | | 10 | 2 | pathologic specimen | 233 | 251 | Pathology_Test | | 11 | 2 | extension | 260 | 268 | Invasion | | 12 | 2 | tumor | 277 | 281 | Tumor_Finding | | 13 | 2 | fallopian tubes | 298 | 312 | Site_Other_Body_Part | | 14 | 2 | appendix | 315 | 322 | Site_Other_Body_Part | | 15 | 2 | omentum | 325 | 331 | Site_Other_Body_Part | | 16 | 2 | enlarged | 349 | 356 | Lymph_Node_Modifier | | 17 | 2 | lymph nodes | 358 | 368 | Site_Lymph_Node | | 18 | 3 | tumor | 409 | 413 | Tumor_Finding | | 19 | 3 | stage IIIC | 419 | 428 | Staging | | 20 | 3 | papillary serous ovarian adenocarcinoma | 430 | 468 | Oncological | | 21 | 4 | Two months later | 471 | 486 | Relative_Date | | 22 | 4 | lung metastases | 520 | 534 | Oncological | | 23 | 5 | Neoadjuvant chemotherapy | 536 | 559 | Chemotherapy | | 24 | 5 | Cyclophosphamide | 582 | 597 | Chemotherapy | | 25 | 5 | 500 mg/m2 | 600 | 608 | Dosage | | 26 | 5 | 6 cycles | 630 | 637 | Cycle_Count | | 27 | 5 | poor response | 644 | 656 | Response_To_Treatment | # Assertion Result | | sentence_id | chunks | begin | end | entities | assertion | |---:|--------------:|:----------------------------------------|--------:|------:|:--------------------|:------------| | 0 | 0 | computed tomography | 24 | 42 | Imaging_Test | Past | | 1 | 0 | CT | 45 | 46 | Imaging_Test | Past | | 2 | 0 | mass | 112 | 115 | Tumor_Finding | Present | | 3 | 1 | Pap smear | 120 | 128 | Pathology_Test | Past | | 4 | 1 | atypical glandular cells | 173 | 196 | Pathology_Result | Present | | 5 | 1 | adenocarcinoma | 213 | 226 | Cancer_Dx | Possible | | 6 | 2 | pathologic specimen | 233 | 251 | Pathology_Test | Past | | 7 | 2 | extension | 260 | 268 | Invasion | Present | | 8 | 2 | tumor | 277 | 281 | Tumor_Finding | Present | | 9 | 2 | enlarged | 349 | 356 | Lymph_Node_Modifier | Present | | 10 | 3 | tumor | 409 | 413 | Tumor_Finding | Present | | 11 | 3 | papillary serous ovarian adenocarcinoma | 430 | 468 | Oncological | Present | | 12 | 4 | lung metastases | 520 | 534 | Oncological | Present | | 13 | 5 | Neoadjuvant chemotherapy | 536 | 559 | Chemotherapy | Present | | 14 | 5 | Cyclophosphamide | 582 | 597 | Chemotherapy | Present | | 15 | 5 | 6 cycles | 630 | 637 | Cycle_Count | Present | # Relation Extraction Result | | sentence | entity1_begin | entity1_end | chunk1 | entity1 | entity2_begin | entity2_end | chunk2 | entity2 | relation | |---:|-----------:|----------------:|--------------:|:-------------------------|:---------------------|----------------:|--------------:|:----------------|:---------------------|:-------------------------| | 2 | 0 | 104 | 110 | ovarian | Site_Other_Body_Part | 112 | 115 | mass | Tumor_Finding | is_location_of | | 3 | 1 | 120 | 128 | Pap smear | Pathology_Test | 213 | 226 | adenocarcinoma | Cancer_Dx | is_finding_of | | 4 | 2 | 277 | 281 | tumor | Tumor_Finding | 298 | 312 | fallopian tubes | Site_Other_Body_Part | is_location_of | | 5 | 2 | 277 | 281 | tumor | Tumor_Finding | 315 | 322 | appendix | Site_Other_Body_Part | is_location_of | | 7 | 5 | 536 | 559 | Neoadjuvant chemotherapy | Chemotherapy | 600 | 608 | 500 mg/m2 | Dosage | Chemotherapy-Dosage | | 8 | 5 | 536 | 559 | Neoadjuvant chemotherapy | Chemotherapy | 630 | 637 | 6 cycles | Cycle_Count | Chemotherapy-Cycle_Count | | 9 | 5 | 582 | 597 | Cyclophosphamide | Chemotherapy | 600 | 608 | 500 mg/m2 | Dosage | Chemotherapy-Dosage | | 10 | 5 | 582 | 597 | Cyclophosphamide | Chemotherapy | 630 | 637 | 6 cycles | Cycle_Count | Chemotherapy-Cycle_Count | Model Information Model Name: explain_clinical_doc_oncology Type: pipeline Compatibility: Healthcare NLP 5.2.1+ License: Licensed Edition: Official Language: en Size: 1.9 GB Included Models DocumentAssembler SentenceDetectorDLModel TokenizerModel WordEmbeddingsModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel MedicalNerModel NerConverterInternalModel ChunkMergeModel ChunkMergeModel AssertionDLModel PerceptronModel DependencyParserModel RelationExtractionModel PosologyREModel AnnotationMerger</summary></entry></feed>
+This model can be used with spark v3.4.0 and above versions.</content><author><name>John Snow Labs</name></author><category term="licensed" /><category term="en" /><category term="biolord" /><category term="umls" /><category term="entity_resolution" /><category term="general" /><category term="clinical" /><summary type="html">Description This model maps clinical entities and concepts to the following 4 UMLS CUI code categories using ´mpnet_embeddings_biolord_2023_c´ Sentence Embeddings: Disease: Unique Identifier: T047 Tree Number: B2.2.1.2.1 Symptom: Unique Identifier: T184 Tree Number: A2.2.2 Medication: Unique Identifier: T074 Tree Number: A1.3.1 Procedure: Unique Identifier: T061 Tree Number: B1.3.1.3 Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU documentAssembler = DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = SentenceDetectorDLModel.pretrained(&quot;sentence_detector_dl_healthcare&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = Tokenizer()\ .setInputCols([&quot;sentence&quot;])\ .setOutputCol(&quot;token&quot;) word_embeddings = WordEmbeddingsModel.pretrained(&quot;embeddings_clinical&quot;,&quot;en&quot;,&quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;])\ .setOutputCol(&quot;embeddings&quot;) ner_model = MedicalNerModel.pretrained(&quot;ner_jsl&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;])\ .setOutputCol(&quot;ner_jsl&quot;) ner_model_converter = NerConverterInternal()\ .setInputCols([&quot;sentence&quot;, &quot;token&quot;, &quot;ner_jsl&quot;])\ .setOutputCol(&quot;ner_chunk&quot;)\ .setWhiteList([&quot;Injury_or_Poisoning&quot;,&quot;Hyperlipidemia&quot;,&quot;Kidney_Disease&quot;,&quot;Oncological&quot;,&quot;Cerebrovascular_Disease&quot;, &quot;Oxygen_Therapy&quot;,&quot;Heart_Disease&quot;,&quot;Obesity&quot;,&quot;Disease_Syndrome_Disorder&quot;,&quot;Symptom&quot;,&quot;Treatment&quot;,&quot;Diabetes&quot;,&quot;Injury_or_Poisoning&quot;, &quot;Procedure&quot;,&quot;Symptom&quot;,&quot;Treatment&quot;,&quot;Drug_Ingredient&quot;,&quot;VS_Finding&quot;,&quot;Communicable_Disease&quot;, &quot;Drug_BrandName&quot;,&quot;Hypertension&quot;]) chunk2doc = Chunk2Doc()\ .setInputCols(&quot;ner_chunk&quot;)\ .setOutputCol(&quot;ner_chunk_doc&quot;) embeddings =MPNetEmbeddings.pretrained(&quot;mpnet_embeddings_biolord_2023_c&quot;,&quot;en&quot;)\ .setInputCols([&quot;ner_chunk_doc&quot;])\ .setOutputCol(&quot;mpnet_embeddings&quot;)\ .setCaseSensitive(False) umls_resolver = SentenceEntityResolverModel.pretrained(&quot;biolordresolve_umls_general_concepts&quot;, &quot;en&quot;, &quot;clinical/models&quot;)\ .setInputCols([&quot;mpnet_embeddings&quot;])\ .setOutputCol(&quot;resolution&quot;)\ .setDistanceFunction(&quot;EUCLIDEAN&quot;)\ .setCaseSensitive(False) resolver_pipeline = Pipeline(stages=[ documentAssembler, sentenceDetector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, embeddings, umls_resolver ]) data = spark.createDataFrame([[&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.&quot;&quot;&quot;]]).toDF(&quot;text&quot;) result = resolver_pipeline.fit(data).transform(data) val document_assembler = new DocumentAssembler() .setInputCol(&quot;text&quot;) .setOutputCol(&quot;document&quot;) val sentence_detector = new SentenceDetector() .setInputCols(Array(&quot;document&quot;)) .setOutputCol(&quot;sentence&quot;) val tokenizer = new Tokenizer() .setInputCols(&quot;sentence&quot;) .setOutputCol(&quot;token&quot;) val word_embeddings = WordEmbeddingsModel .pretrained(&quot;embeddings_clinical&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;)) .setOutputCol(&quot;embeddings&quot;) val ner_model = MedicalNerModel .pretrained(&quot;ner_jsl&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;embeddings&quot;)) .setOutputCol(&quot;ner_jsl&quot;) val ner_model_converter = new NerConverterInternal() .setInputCols(Array(&quot;sentence&quot;, &quot;token&quot;, &quot;ner_jsl&quot;)) .setOutputCol(&quot;ner_chunk&quot;) .setWhiteList([&quot;Injury_or_Poisoning&quot;,&quot;Hyperlipidemia&quot;,&quot;Kidney_Disease&quot;,&quot;Oncological&quot;,&quot;Cerebrovascular_Disease&quot;, &quot;Oxygen_Therapy&quot;, &quot;Heart_Disease&quot;,&quot;Obesity&quot;,&quot;Disease_Syndrome_Disorder&quot;,&quot;Symptom&quot;,&quot;Treatment&quot;,&quot;Diabetes&quot;,&quot;Injury_or_Poisoning&quot;, &quot;Procedure&quot;,&quot;Symptom&quot;,&quot;Treatment&quot;,&quot;Drug_Ingredient&quot;,&quot;VS_Finding&quot;,&quot;Communicable_Disease&quot;, &quot;Drug_BrandName&quot;,&quot;Hypertension&quot;,&quot;Imaging_Technique&quot; ]) val chunk2doc = new Chunk2Doc() .setInputCols(&quot;ner_chunk&quot;) .setOutputCol(&quot;ner_chunk_doc&quot;) val sbert_embedder = BertSentenceEmbeddings .pretrained(&quot;sbiobert_base_cased_mli&quot;, &quot;en&quot;,&quot;clinical/models&quot;) .setInputCols(Array(&quot;ner_chunk_doc&quot;)) .setOutputCol(&quot;sbert_embeddings&quot;) .setCaseSensitive(False) val resolver = SentenceEntityResolverModel .pretrained(&quot;sbiobertresolve_umls_findings&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols(Array(&quot;ner_chunk_doc&quot;, &quot;sbert_embeddings&quot;)) .setOutputCol(&quot;resolution&quot;) .setDistanceFunction(&quot;EUCLIDEAN&quot;) val embeddings =MPNetEmbeddings.pretrained(&quot;mpnet_embeddings_biolord_2023_c&quot;,&quot;en&quot;) .setInputCols(Array(&quot;ner_chunk_doc&quot;)) .setOutputCol(&quot;mpnet_embeddings&quot;) .setCaseSensitive(False) val umls_resolver = SentenceEntityResolverModel.pretrained(&quot;biolordresolve_umls_general_concepts&quot;, &quot;en&quot;, &quot;clinical/models&quot;) .setInputCols([&quot;mpnet_embeddings&quot;]) .setOutputCol(&quot;resolution&quot;) .setDistanceFunction(&quot;EUCLIDEAN&quot;) .setCaseSensitive(False) val resolver_pipeline = new Pipeline().setStages(Array( document_assembler, sentence_detector, tokenizer, word_embeddings, ner_model, ner_model_converter, chunk2doc, embeddings, umls_resolver)) val data = Seq([[&quot;&quot;&quot;A 28-year-old female with a history of gestational diabetes mellitus diagnosed eight years prior to presentation and subsequent type two diabetes mellitus (T2DM), one prior episode of pancreatitis three years prior to presentation, associated with an acute hepatitis, and obesity with a BMI of 33.5 kg/m2, presented with a one-week history of polyuria, polydipsia, poor appetite, and vomiting.&quot;&quot;&quot;]]).toDF(&quot;text&quot;) val result = resolver_pipeline.fit(data).transform(data) Results +-----------------------------+-----+---+-------------------------+---------+---------------------------------+------------------------------------------------------------+------------------------------------------------------------+ | ner_chunk|begin|end| entity|umls_code| description| all_k_results| all_k_resolutions| +-----------------------------+-----+---+-------------------------+---------+---------------------------------+------------------------------------------------------------+------------------------------------------------------------+ |gestational diabetes mellitus| 39| 67| Diabetes| C0085207|Gestational diabetes mellitus NOS|C0085207:::C0032969:::C0341893:::C0341898:::C1391475:::C2...|Gestational diabetes mellitus NOS:::Unspecified diabetes ...| | type two diabetes mellitus| 128|153| Diabetes| C0011860| Type 2 Diabetes Mellitus|C0011860:::C1719939:::C0877302:::C1832544:::C0342262:::C1...|Type 2 Diabetes Mellitus:::Disorder associated with type ...| | T2DM| 156|159| Diabetes| C0011860| T2D|C0011860:::C1832387:::C1835887:::C4015183:::C1832544:::C1...|T2D:::T2D2:::TNDM2:::T2D5:::T2D1:::T2D4:::TPMTD:::T2D3:::...| | pancreatitis| 184|195|Disease_Syndrome_Disorder| C0030305| pancreatitis|C0030305:::C0856100:::C0267948:::C0267946:::C0001339:::C1...|pancreatitis:::Pancreatitis aggravated:::Metabolic pancre...| | hepatitis| 257|265|Disease_Syndrome_Disorder| C0019158| Hepatitis|C0019158:::C0019159:::C0040860:::C0744855:::C0854496:::C0...|Hepatitis:::a hepatitis:::Portal hepatitis:::hepatitis im...| | obesity| 272|278| Obesity| C0028754| OBESITY|C0028754:::C0451819:::C1561826:::C0149974:::C0028756:::C2...|OBESITY:::Simple obesity:::Overweight and obesity:::PRIMA...| | polyuria| 343|350| Symptom| C0032617| Polyuria|C0032617:::C2830339:::C3888890:::C0016708:::C0848232:::C3...|Polyuria:::Other polyuria:::Polyuria-polydipsia syndrome:...| | polydipsia| 353|362| Symptom| C0085602| Polydipsia NOS|C0085602:::C3888890:::C1540939:::C0857397:::C0241379:::C1...|Polydipsia NOS:::Polyuria-polydipsia syndrome:::(Excessiv...| | poor appetite| 365|377| Symptom| C0232462| Decreased food appetite| C0232462:::C0003123:::C1971623:::C0426583:::C0426579|Decreased food appetite:::APPETITE IMPAIRED:::Appetite lo...| | vomiting| 384|391| Symptom| C0042963| Vomiting, NOS|C0042963:::C0027498:::C3825500:::C3874311:::C0474496:::C0...|Vomiting, NOS:::nausea with vomiting:::Vomiting in childr...| +-----------------------------+-----+---+-------------------------+---------+---------------------------------+------------------------------------------------------------+------------------------------------------------------------+ Model Information Model Name: biolordresolve_umls_general_concepts Compatibility: Healthcare NLP 5.3.1+ License: Licensed Edition: Official Input Labels: [mpnet_embeddings] Output Labels: [umls_code] Language: en Size: 3.9 GB Case sensitive: false Dependency This model can be used with spark v3.4.0 and above versions.</summary></entry></feed>
