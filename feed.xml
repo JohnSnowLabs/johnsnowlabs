@@ -1,85 +1,86 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-05-15T18:44:00+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
-</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Brazilian Portuguese NER for Laws (Bert, Base)</title><link href="/2024/05/15/legner_lener_base_pt.html" rel="alternate" type="text/html" title="Brazilian Portuguese NER for Laws (Bert, Base)" /><published>2024-05-15T00:00:00+00:00</published><updated>2024-05-15T00:00:00+00:00</updated><id>/2024/05/15/legner_lener_base_pt</id><content type="html" xml:base="/2024/05/15/legner_lener_base_pt.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2024-05-16T15:31:00+00:00</updated><id>/feed.xml</id><title type="html">Spark NLP</title><subtitle>High Performance NLP with Apache Spark
+</subtitle><author><name>{&quot;type&quot;=&gt;nil, &quot;name&quot;=&gt;nil, &quot;url&quot;=&gt;nil, &quot;avatar&quot;=&gt;nil, &quot;bio&quot;=&gt;nil, &quot;email&quot;=&gt;nil, &quot;facebook&quot;=&gt;nil, &quot;twitter&quot;=&gt;nil, &quot;weibo&quot;=&gt;nil, &quot;googleplus&quot;=&gt;nil, &quot;telegram&quot;=&gt;nil, &quot;medium&quot;=&gt;nil, &quot;zhihu&quot;=&gt;nil, &quot;douban&quot;=&gt;nil, &quot;linkedin&quot;=&gt;nil, &quot;github&quot;=&gt;nil, &quot;npm&quot;=&gt;nil}</name></author><entry><title type="html">Brazilian Portuguese NER for Laws (Bert, Base)</title><link href="/2024/05/15/legner_lener_base_pt.html" rel="alternate" type="text/html" title="Brazilian Portuguese NER for Laws (Bert, Base)" /><published>2024-05-15T00:00:00+00:00</published><updated>2024-05-15T00:00:00+00:00</updated><id>/2024/05/15/legner_lener_base_pt</id><content type="html" xml:base="/2024/05/15/legner_lener_base_pt.html">## Description
 
-&lt;p&gt;This model is a Deep Learning Portuguese Named Entity Recognition model for the legal domain, trained using Base Bert Embeddings, and is able to predict the following entities:&lt;/p&gt;
+This model is a Deep Learning Portuguese Named Entity Recognition model for the legal domain, trained using Base Bert Embeddings, and is able to predict the following entities:
 
-&lt;ul&gt;
-  &lt;li&gt;ORGANIZACAO (Organizations)&lt;/li&gt;
-  &lt;li&gt;JURISPRUDENCIA (Jurisprudence)&lt;/li&gt;
-  &lt;li&gt;PESSOA (Person)&lt;/li&gt;
-  &lt;li&gt;TEMPO (Time)&lt;/li&gt;
-  &lt;li&gt;LOCAL (Location)&lt;/li&gt;
-  &lt;li&gt;LEGISLACAO (Laws)&lt;/li&gt;
-  &lt;li&gt;O (Other)&lt;/li&gt;
-&lt;/ul&gt;
+- ORGANIZACAO (Organizations)
+- JURISPRUDENCIA (Jurisprudence)
+- PESSOA (Person)
+- TEMPO (Time)
+- LOCAL (Location)
+- LEGISLACAO (Laws)
+- O (Other)
 
-&lt;p&gt;You can find different versions of this model in Models Hub:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;With a Deep Learning architecture (non-transformer) and Base Embeddings;&lt;/li&gt;
-  &lt;li&gt;With a Deep Learning architecture (non-transformer) and Large Embeddings;&lt;/li&gt;
-  &lt;li&gt;With a Transformers Architecture and Base Embeddings;&lt;/li&gt;
-  &lt;li&gt;With a Transformers Architecture and Large Embeddings;&lt;/li&gt;
-&lt;/ul&gt;
+You can find different versions of this model in Models Hub:
+- With a Deep Learning architecture (non-transformer) and Base Embeddings;
+- With a Deep Learning architecture (non-transformer) and Large Embeddings;
+- With a Transformers Architecture and Base Embeddings;
+- With a Transformers Architecture and Large Embeddings;
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PESSOA&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORGANIZACAO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LEGISLACAO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JURISPRUDENCIA&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TEMPO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOCAL&lt;/code&gt;&lt;/p&gt;
+`PESSOA`, `ORGANIZACAO`, `LEGISLACAO`, `JURISPRUDENCIA`, `TEMPO`, `LOCAL`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legner_lener_base_pt_1.0.0_3.0_1715772909273.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legner_lener_base_pt_1.0.0_3.0_1715772909273.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legner_lener_base_pt_1.0.0_3.0_1715772909273.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legner_lener_base_pt_1.0.0_3.0_1715772909273.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
-
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;sentenceDetector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SentenceDetectorDLModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;legal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForTokenClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legner_lener_base&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCaseSensitive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+## How to use
 
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;sentenceDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Mediante do exposto , com fundamento nos artigos 32 , i , e 33 , da lei 8.443/1992 , submetem-se os autos à consideração superior , com posterior encaminhamento ao ministério público junto ao tcu e ao gabinete do relator , propondo : a ) conhecer do recurso e , no mérito , negar-lhe provimento ; b ) comunicar ao recorrente , ao superior tribunal militar e ao tribunal regional federal da 2ª região , a fim de fornecer subsídios para os processos judiciais 2001.34.00.024796-9 e 2003.34.00.044227-3 ; e aos demais interessados a deliberação que vier a ser proferida por esta corte ” .&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}))&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+documentAssembler = nlp.DocumentAssembler()\
+  .setInputCol(&quot;text&quot;)\
+  .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+sentenceDetector = nlp.SentenceDetectorDLModel.pretrained()\
+  .setInputCols([&quot;document&quot;])\
+  .setOutputCol(&quot;sentence&quot;)
+
+tokenizer = nlp.Tokenizer()\
+  .setInputCols(&quot;sentence&quot;)\
+  .setOutputCol(&quot;token&quot;)
+
+tokenClassifier = legal.BertForTokenClassification.load(&quot;legner_lener_base&quot;,&quot;pt&quot;, &quot;legal/models&quot;)\
+  .setInputCols(&quot;token&quot;, &quot;sentence&quot;)\
+  .setOutputCol(&quot;label&quot;)\
+  .setCaseSensitive(True)
+
+ner_converter = nlp.NerConverter()\
+  .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;label&quot;])\
+  .setOutputCol(&quot;ner_chunk&quot;)
+
+
+pipeline =  nlp.Pipeline(
+    stages=[
+  documentAssembler,
+  sentenceDetector,
+  tokenizer,
+  tokenClassifier,
+  ner_converter
+    ]
+)
+
+example = spark.createDataFrame(pd.DataFrame({'text': [&quot;&quot;&quot;Mediante do exposto , com fundamento nos artigos 32 , i , e 33 , da lei 8.443/1992 , submetem-se os autos à consideração superior , com posterior encaminhamento ao ministério público junto ao tcu e ao gabinete do relator , propondo : a ) conhecer do recurso e , no mérito , negar-lhe provimento ; b ) comunicar ao recorrente , ao superior tribunal militar e ao tribunal regional federal da 2ª região , a fim de fornecer subsídios para os processos judiciais 2001.34.00.024796-9 e 2003.34.00.044227-3 ; e aos demais interessados a deliberação que vier a ser proferida por esta corte ” .&quot;&quot;&quot;]}))
+
+result = pipeline.fit(example).transform(example)
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------------+---------+----------+
+```bash
++--------------+---------+----------+
 |         token|ner_label|confidence|
 +--------------+---------+----------+
 |      Mediante|        O|0.99998605|
-|            &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;|        O| 0.9999868|
+|            do|        O| 0.9999868|
 |       exposto|        O|0.99998623|
 |             ,|        O|  0.999987|
 |           com|        O|0.99998677|
@@ -116,15 +117,15 @@
 |             e|        O|0.99998665|
 |            ao|        O|0.99998677|
 |      gabinete|        O| 0.9999856|
-|            &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;|        O| 0.9999865|
+|            do|        O| 0.9999865|
 |       relator|        O|0.99998575|
 |             ,|        O| 0.9999872|
 |      propondo|        O|0.99998724|
 |             :|        O|0.99998707|
 |             a|        O| 0.9999873|
-|             &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;|        O| 0.9999873|
+|             )|        O| 0.9999873|
 |      conhecer|        O|0.99998724|
-|            &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;|        O| 0.9999872|
+|            do|        O| 0.9999872|
 |       recurso|        O| 0.9999867|
 |             e|        O| 0.9999872|
 |             ,|        O| 0.9999869|
@@ -133,9 +134,9 @@
 |             ,|        O| 0.9999873|
 |     negar-lhe|        O| 0.9999875|
 |    provimento|        O|0.99998724|
-|             &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;|        O| 0.9999865|
+|             ;|        O| 0.9999865|
 |             b|        O|0.99998635|
-|             &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;|        O| 0.9999871|
+|             )|        O| 0.9999871|
 |     comunicar|        O| 0.9999869|
 |            ao|        O| 0.9999872|
 |    recorrente|        O| 0.9999854|
@@ -169,7 +170,7 @@
 |          2003|        O| 0.9908976|
 |             .|        O|0.99998164|
 |34.00.044227-3|        O| 0.9999851|
-|             &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;|        O| 0.9999866|
+|             ;|        O| 0.9999866|
 |             e|        O|0.99998695|
 |           aos|        O| 0.9999869|
 |        demais|        O|0.99998677|
@@ -187,138 +188,108 @@
 |             ”|        O| 0.9999714|
 |             .|        O|0.99998647|
 +--------------+---------+----------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;legner_lener_base&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[sentence, token]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[ner]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;pt&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;403.3 MB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Case sensitive:&lt;/td&gt;
-      &lt;td&gt;true&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Max sentence length:&lt;/td&gt;
-      &lt;td&gt;128&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|legner_lener_base|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence, token]|
+|Output Labels:|[ner]|
+|Language:|pt|
+|Size:|403.3 MB|
+|Case sensitive:|true|
+|Max sentence length:|128|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;Original texts available in https://paperswithcode.com/sota?task=Token+Classification&amp;amp;dataset=lener_br and in-house data augmentation with weak labelling&lt;/p&gt;</content><author><name>John Snow Labs</name></author><category term="lener" /><category term="laws" /><category term="legal" /><category term="licensed" /><category term="ner" /><category term="pt" /><category term="tensorflow" /><summary type="html">Description This model is a Deep Learning Portuguese Named Entity Recognition model for the legal domain, trained using Base Bert Embeddings, and is able to predict the following entities: ORGANIZACAO (Organizations) JURISPRUDENCIA (Jurisprudence) PESSOA (Person) TEMPO (Time) LOCAL (Location) LEGISLACAO (Laws) O (Other) You can find different versions of this model in Models Hub: With a Deep Learning architecture (non-transformer) and Base Embeddings; With a Deep Learning architecture (non-transformer) and Large Embeddings; With a Transformers Architecture and Base Embeddings; With a Transformers Architecture and Large Embeddings; Predicted Entities PESSOA, ORGANIZACAO, LEGISLACAO, JURISPRUDENCIA, TEMPO, LOCAL Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU documentAssembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = nlp.SentenceDetectorDLModel.pretrained()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols(&quot;sentence&quot;)\ .setOutputCol(&quot;token&quot;) tokenClassifier = legal.BertForTokenClassification.load(&quot;legner_lener_base&quot;,&quot;pt&quot;, &quot;legal/models&quot;)\ .setInputCols(&quot;token&quot;, &quot;sentence&quot;)\ .setOutputCol(&quot;label&quot;)\ .setCaseSensitive(True) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;label&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline( stages=[ documentAssembler, sentenceDetector, tokenizer, tokenClassifier, ner_converter ] ) example = spark.createDataFrame(pd.DataFrame({'text': [&quot;&quot;&quot;Mediante do exposto , com fundamento nos artigos 32 , i , e 33 , da lei 8.443/1992 , submetem-se os autos à consideração superior , com posterior encaminhamento ao ministério público junto ao tcu e ao gabinete do relator , propondo : a ) conhecer do recurso e , no mérito , negar-lhe provimento ; b ) comunicar ao recorrente , ao superior tribunal militar e ao tribunal regional federal da 2ª região , a fim de fornecer subsídios para os processos judiciais 2001.34.00.024796-9 e 2003.34.00.044227-3 ; e aos demais interessados a deliberação que vier a ser proferida por esta corte ” .&quot;&quot;&quot;]})) result = pipeline.fit(example).transform(example) Results +--------------+---------+----------+ | token|ner_label|confidence| +--------------+---------+----------+ | Mediante| O|0.99998605| | do| O| 0.9999868| | exposto| O|0.99998623| | ,| O| 0.999987| | com| O|0.99998677| | fundamento| O| 0.9999863| | nos| O|0.99998486| | artigos| I-TEMPO| 0.9995784| | 32| B-LOCAL| 0.9998317| | ,| B-LOCAL|0.99983853| | i| B-LOCAL| 0.9998391| | ,| B-LOCAL| 0.999842| | e| B-LOCAL| 0.9998447| | 33| B-LOCAL| 0.9998419| | ,| B-LOCAL| 0.9998423| | da| B-LOCAL| 0.9998431| | lei| B-LOCAL| 0.9998434| | 8.443/1992| B-LOCAL|0.99982893| | ,| O| 0.9999863| | submetem-se| O|0.99998677| | os| O| 0.9999873| | autos| O|0.99998647| | à| O|0.99998707| | consideração| O| 0.9999871| | superior| O| 0.9999868| | ,| O|0.99998736| | com| O| 0.9999876| | posterior| O|0.99998707| |encaminhamento| O|0.99998724| | ao| O|0.99998707| | ministério| O| 0.9999853| | público| O| 0.9999854| | junto| O|0.99998665| | ao| O|0.99998516| | tcu| O| 0.9993648| | e| O|0.99998665| | ao| O|0.99998677| | gabinete| O| 0.9999856| | do| O| 0.9999865| | relator| O|0.99998575| | ,| O| 0.9999872| | propondo| O|0.99998724| | :| O|0.99998707| | a| O| 0.9999873| | )| O| 0.9999873| | conhecer| O|0.99998724| | do| O| 0.9999872| | recurso| O| 0.9999867| | e| O| 0.9999872| | ,| O| 0.9999869| | no| O|0.99998695| | mérito| O| 0.9999872| | ,| O| 0.9999873| | negar-lhe| O| 0.9999875| | provimento| O|0.99998724| | ;| O| 0.9999865| | b| O|0.99998635| | )| O| 0.9999871| | comunicar| O| 0.9999869| | ao| O| 0.9999872| | recorrente| O| 0.9999854| | ,| O| 0.999987| | ao| O| 0.999987| | superior| O| 0.9999805| | tribunal| O|0.99998057| | militar| O| 0.9999655| | e| O|0.99998677| | ao| O|0.99998665| | tribunal| O|0.99996954| | regional| O| 0.9999731| | federal| O| 0.9999361| | da| O| 0.9999758| | 2ª| O| 0.9999704| | região| O|0.99994576| | ,| O| 0.999987| | a| O| 0.9999872| | fim| O|0.99998724| | de| O| 0.999987| | fornecer| O|0.99998724| | subsídios| O| 0.9999871| | para| O| 0.9999867| | os| O| 0.9999863| | processos| O| 0.9999849| | judiciais| O| 0.9999815| | 2001| O|0.99994475| | .| O|0.99998444| |34.00.024796-9| O| 0.9999273| | e| O| 0.9999757| | 2003| O| 0.9908976| | .| O|0.99998164| |34.00.044227-3| O| 0.9999851| | ;| O| 0.9999866| | e| O|0.99998695| | aos| O| 0.9999869| | demais| O|0.99998677| | interessados| O| 0.9999867| | a| O|0.99998707| | deliberação| O|0.99998724| | que| O| 0.9999871| | vier| O| 0.9999868| | a| O| 0.9999867| | ser| O| 0.9999872| | proferida| O| 0.9999871| | por| O|0.99998695| | esta| O|0.99998677| | corte| O|0.99998224| | ”| O| 0.9999714| | .| O|0.99998647| +--------------+---------+----------+ Model Information Model Name: legner_lener_base Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token] Output Labels: [ner] Language: pt Size: 403.3 MB Case sensitive: true Max sentence length: 128 References Original texts available in https://paperswithcode.com/sota?task=Token+Classification&amp;amp;dataset=lener_br and in-house data augmentation with weak labelling</summary></entry><entry><title type="html">Brazilian Portuguese NER for Laws (Bert, Large)</title><link href="/2024/05/15/legner_lener_large_pt.html" rel="alternate" type="text/html" title="Brazilian Portuguese NER for Laws (Bert, Large)" /><published>2024-05-15T00:00:00+00:00</published><updated>2024-05-15T00:00:00+00:00</updated><id>/2024/05/15/legner_lener_large_pt</id><content type="html" xml:base="/2024/05/15/legner_lener_large_pt.html">&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+Original texts available in https://paperswithcode.com/sota?task=Token+Classification&amp;dataset=lener_br and in-house data augmentation with weak labelling</content><author><name>John Snow Labs</name></author><category term="lener" /><category term="laws" /><category term="legal" /><category term="licensed" /><category term="ner" /><category term="pt" /><category term="tensorflow" /><summary type="html">Description This model is a Deep Learning Portuguese Named Entity Recognition model for the legal domain, trained using Base Bert Embeddings, and is able to predict the following entities: ORGANIZACAO (Organizations) JURISPRUDENCIA (Jurisprudence) PESSOA (Person) TEMPO (Time) LOCAL (Location) LEGISLACAO (Laws) O (Other) You can find different versions of this model in Models Hub: With a Deep Learning architecture (non-transformer) and Base Embeddings; With a Deep Learning architecture (non-transformer) and Large Embeddings; With a Transformers Architecture and Base Embeddings; With a Transformers Architecture and Large Embeddings; Predicted Entities PESSOA, ORGANIZACAO, LEGISLACAO, JURISPRUDENCIA, TEMPO, LOCAL Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU documentAssembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = nlp.SentenceDetectorDLModel.pretrained()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols(&quot;sentence&quot;)\ .setOutputCol(&quot;token&quot;) tokenClassifier = legal.BertForTokenClassification.load(&quot;legner_lener_base&quot;,&quot;pt&quot;, &quot;legal/models&quot;)\ .setInputCols(&quot;token&quot;, &quot;sentence&quot;)\ .setOutputCol(&quot;label&quot;)\ .setCaseSensitive(True) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;label&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline( stages=[ documentAssembler, sentenceDetector, tokenizer, tokenClassifier, ner_converter ] ) example = spark.createDataFrame(pd.DataFrame({'text': [&quot;&quot;&quot;Mediante do exposto , com fundamento nos artigos 32 , i , e 33 , da lei 8.443/1992 , submetem-se os autos à consideração superior , com posterior encaminhamento ao ministério público junto ao tcu e ao gabinete do relator , propondo : a ) conhecer do recurso e , no mérito , negar-lhe provimento ; b ) comunicar ao recorrente , ao superior tribunal militar e ao tribunal regional federal da 2ª região , a fim de fornecer subsídios para os processos judiciais 2001.34.00.024796-9 e 2003.34.00.044227-3 ; e aos demais interessados a deliberação que vier a ser proferida por esta corte ” .&quot;&quot;&quot;]})) result = pipeline.fit(example).transform(example) Results +--------------+---------+----------+ | token|ner_label|confidence| +--------------+---------+----------+ | Mediante| O|0.99998605| | do| O| 0.9999868| | exposto| O|0.99998623| | ,| O| 0.999987| | com| O|0.99998677| | fundamento| O| 0.9999863| | nos| O|0.99998486| | artigos| I-TEMPO| 0.9995784| | 32| B-LOCAL| 0.9998317| | ,| B-LOCAL|0.99983853| | i| B-LOCAL| 0.9998391| | ,| B-LOCAL| 0.999842| | e| B-LOCAL| 0.9998447| | 33| B-LOCAL| 0.9998419| | ,| B-LOCAL| 0.9998423| | da| B-LOCAL| 0.9998431| | lei| B-LOCAL| 0.9998434| | 8.443/1992| B-LOCAL|0.99982893| | ,| O| 0.9999863| | submetem-se| O|0.99998677| | os| O| 0.9999873| | autos| O|0.99998647| | à| O|0.99998707| | consideração| O| 0.9999871| | superior| O| 0.9999868| | ,| O|0.99998736| | com| O| 0.9999876| | posterior| O|0.99998707| |encaminhamento| O|0.99998724| | ao| O|0.99998707| | ministério| O| 0.9999853| | público| O| 0.9999854| | junto| O|0.99998665| | ao| O|0.99998516| | tcu| O| 0.9993648| | e| O|0.99998665| | ao| O|0.99998677| | gabinete| O| 0.9999856| | do| O| 0.9999865| | relator| O|0.99998575| | ,| O| 0.9999872| | propondo| O|0.99998724| | :| O|0.99998707| | a| O| 0.9999873| | )| O| 0.9999873| | conhecer| O|0.99998724| | do| O| 0.9999872| | recurso| O| 0.9999867| | e| O| 0.9999872| | ,| O| 0.9999869| | no| O|0.99998695| | mérito| O| 0.9999872| | ,| O| 0.9999873| | negar-lhe| O| 0.9999875| | provimento| O|0.99998724| | ;| O| 0.9999865| | b| O|0.99998635| | )| O| 0.9999871| | comunicar| O| 0.9999869| | ao| O| 0.9999872| | recorrente| O| 0.9999854| | ,| O| 0.999987| | ao| O| 0.999987| | superior| O| 0.9999805| | tribunal| O|0.99998057| | militar| O| 0.9999655| | e| O|0.99998677| | ao| O|0.99998665| | tribunal| O|0.99996954| | regional| O| 0.9999731| | federal| O| 0.9999361| | da| O| 0.9999758| | 2ª| O| 0.9999704| | região| O|0.99994576| | ,| O| 0.999987| | a| O| 0.9999872| | fim| O|0.99998724| | de| O| 0.999987| | fornecer| O|0.99998724| | subsídios| O| 0.9999871| | para| O| 0.9999867| | os| O| 0.9999863| | processos| O| 0.9999849| | judiciais| O| 0.9999815| | 2001| O|0.99994475| | .| O|0.99998444| |34.00.024796-9| O| 0.9999273| | e| O| 0.9999757| | 2003| O| 0.9908976| | .| O|0.99998164| |34.00.044227-3| O| 0.9999851| | ;| O| 0.9999866| | e| O|0.99998695| | aos| O| 0.9999869| | demais| O|0.99998677| | interessados| O| 0.9999867| | a| O|0.99998707| | deliberação| O|0.99998724| | que| O| 0.9999871| | vier| O| 0.9999868| | a| O| 0.9999867| | ser| O| 0.9999872| | proferida| O| 0.9999871| | por| O|0.99998695| | esta| O|0.99998677| | corte| O|0.99998224| | ”| O| 0.9999714| | .| O|0.99998647| +--------------+---------+----------+ Model Information Model Name: legner_lener_base Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token] Output Labels: [ner] Language: pt Size: 403.3 MB Case sensitive: true Max sentence length: 128 References Original texts available in https://paperswithcode.com/sota?task=Token+Classification&amp;amp;dataset=lener_br and in-house data augmentation with weak labelling</summary></entry><entry><title type="html">Brazilian Portuguese NER for Laws (Bert, Large)</title><link href="/2024/05/15/legner_lener_large_pt.html" rel="alternate" type="text/html" title="Brazilian Portuguese NER for Laws (Bert, Large)" /><published>2024-05-15T00:00:00+00:00</published><updated>2024-05-15T00:00:00+00:00</updated><id>/2024/05/15/legner_lener_large_pt</id><content type="html" xml:base="/2024/05/15/legner_lener_large_pt.html">## Description
 
-&lt;p&gt;This model is a Deep Learning Portuguese Named Entity Recognition model for the legal domain, trained using Base Bert Embeddings, and is able to predict the following entities:&lt;/p&gt;
+This model is a Deep Learning Portuguese Named Entity Recognition model for the legal domain, trained using Base Bert Embeddings, and is able to predict the following entities:
 
-&lt;ul&gt;
-  &lt;li&gt;ORGANIZACAO (Organizations)&lt;/li&gt;
-  &lt;li&gt;JURISPRUDENCIA (Jurisprudence)&lt;/li&gt;
-  &lt;li&gt;PESSOA (Person)&lt;/li&gt;
-  &lt;li&gt;TEMPO (Time)&lt;/li&gt;
-  &lt;li&gt;LOCAL (Location)&lt;/li&gt;
-  &lt;li&gt;LEGISLACAO (Laws)&lt;/li&gt;
-  &lt;li&gt;O (Other)&lt;/li&gt;
-&lt;/ul&gt;
+- ORGANIZACAO (Organizations)
+- JURISPRUDENCIA (Jurisprudence)
+- PESSOA (Person)
+- TEMPO (Time)
+- LOCAL (Location)
+- LEGISLACAO (Laws)
+- O (Other)
 
-&lt;p&gt;You can find different versions of this model in Models Hub:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;With a Deep Learning architecture (non-transformer) and Base Embeddings;&lt;/li&gt;
-  &lt;li&gt;With a Deep Learning architecture (non-transformer) and Large Embeddings;&lt;/li&gt;
-  &lt;li&gt;With a Transformers Architecture and Base Embeddings;&lt;/li&gt;
-  &lt;li&gt;With a Transformers Architecture and Large Embeddings;&lt;/li&gt;
-&lt;/ul&gt;
+You can find different versions of this model in Models Hub:
+- With a Deep Learning architecture (non-transformer) and Base Embeddings;
+- With a Deep Learning architecture (non-transformer) and Large Embeddings;
+- With a Transformers Architecture and Base Embeddings;
+- With a Transformers Architecture and Large Embeddings;
 
-&lt;h2 id=&quot;predicted-entities&quot;&gt;Predicted Entities&lt;/h2&gt;
+## Predicted Entities
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;PESSOA&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ORGANIZACAO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LEGISLACAO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;JURISPRUDENCIA&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TEMPO&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;LOCAL&lt;/code&gt;&lt;/p&gt;
+`PESSOA`, `ORGANIZACAO`, `LEGISLACAO`, `JURISPRUDENCIA`, `TEMPO`, `LOCAL`
 
-&lt;p class=&quot;btn-box&quot;&gt;&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Live Demo&lt;/button&gt;
-&lt;button class=&quot;button button-orange&quot; disabled=&quot;&quot;&gt;Open in Colab&lt;/button&gt;
-&lt;a href=&quot;https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legner_lener_large_pt_1.0.0_3.0_1715772900343.zip&quot; class=&quot;button button-orange button-orange-trans arr button-icon hidden&quot;&gt;Download&lt;/a&gt;
-&lt;a href=&quot;s3://auxdata.johnsnowlabs.com/legal/models/legner_lener_large_pt_1.0.0_3.0_1715772900343.zip&quot; class=&quot;button button-orange button-orange-trans button-icon button-copy-s3&quot;&gt;Copy S3 URI&lt;/a&gt;&lt;/p&gt;
+{:.btn-box}
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Live Demo&lt;/button&gt;
+&lt;button class=&quot;button button-orange&quot; disabled&gt;Open in Colab&lt;/button&gt;
+[Download](https://s3.amazonaws.com/auxdata.johnsnowlabs.com/legal/models/legner_lener_large_pt_1.0.0_3.0_1715772900343.zip){:.button.button-orange.button-orange-trans.arr.button-icon.hidden}
+[Copy S3 URI](s3://auxdata.johnsnowlabs.com/legal/models/legner_lener_large_pt_1.0.0_3.0_1715772900343.zip){:.button.button-orange.button-orange-trans.button-icon.button-copy-s3}
 
-&lt;h2 id=&quot;how-to-use&quot;&gt;How to use&lt;/h2&gt;
-
-&lt;div class=&quot;tabs-box&quot;&gt;
-  &lt;div class=&quot;tabs-model-aproach-head&quot;&gt;&lt;button class=&quot;tab-li-model-aproach tabheader_active&quot;&gt;Python&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-jsl&quot;&gt;JSL&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach&quot;&gt;Scala&lt;/button&gt;&lt;button class=&quot;tab-li-model-aproach tab-li-nlu&quot;&gt;NLU&lt;/button&gt;&lt;/div&gt;
-  &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DocumentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;sentenceDetector&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SentenceDetectorDLModel&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pretrained&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;document&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;legal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;BertForTokenClassification&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;legner_lener_large&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;legal/models&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setCaseSensitive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NerConverter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInputCols&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sentence&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;token&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;\
-  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setOutputCol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ner_chunk&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+## How to use
 
 
-&lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;nlp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;stages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;documentAssembler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;sentenceDetector&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;tokenClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;ner_converter&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spark&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createDataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;DataFrame&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'text'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;Mediante do exposto , com fundamento nos artigos 32 , i , e 33 , da lei 8.443/1992 , submetem-se os autos à consideração superior , com posterior encaminhamento ao ministério público junto ao tcu e ao gabinete do relator , propondo : a ) conhecer do recurso e , no mérito , negar-lhe provimento ; b ) comunicar ao recorrente , ao superior tribunal militar e ao tribunal regional federal da 2ª região , a fim de fornecer subsídios para os processos judiciais 2001.34.00.024796-9 e 2003.34.00.044227-3 ; e aos demais interessados a deliberação que vier a ser proferida por esta corte ” .&quot;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}))&lt;/span&gt;
+&lt;div class=&quot;tabs-box&quot; markdown=&quot;1&quot;&gt;
+{% include programmingLanguageSelectScalaPythonNLU.html %}
+```python
+documentAssembler = nlp.DocumentAssembler()\
+  .setInputCol(&quot;text&quot;)\
+  .setOutputCol(&quot;document&quot;)
 
-&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;  &lt;/div&gt;
+sentenceDetector = nlp.SentenceDetectorDLModel.pretrained()\
+  .setInputCols([&quot;document&quot;])\
+  .setOutputCol(&quot;sentence&quot;)
+
+tokenizer = nlp.Tokenizer()\
+  .setInputCols(&quot;sentence&quot;)\
+  .setOutputCol(&quot;token&quot;)
+
+tokenClassifier = legal.BertForTokenClassification.load(&quot;legner_lener_large&quot;,&quot;pt&quot;, &quot;legal/models&quot;)\
+  .setInputCols(&quot;token&quot;, &quot;sentence&quot;)\
+  .setOutputCol(&quot;label&quot;)\
+  .setCaseSensitive(True)
+
+ner_converter = nlp.NerConverter()\
+  .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;label&quot;])\
+  .setOutputCol(&quot;ner_chunk&quot;)
+
+
+pipeline =  nlp.Pipeline(
+    stages=[
+  documentAssembler,
+  sentenceDetector,
+  tokenizer,
+  tokenClassifier,
+  ner_converter
+    ]
+)
+
+example = spark.createDataFrame(pd.DataFrame({'text': [&quot;&quot;&quot;Mediante do exposto , com fundamento nos artigos 32 , i , e 33 , da lei 8.443/1992 , submetem-se os autos à consideração superior , com posterior encaminhamento ao ministério público junto ao tcu e ao gabinete do relator , propondo : a ) conhecer do recurso e , no mérito , negar-lhe provimento ; b ) comunicar ao recorrente , ao superior tribunal militar e ao tribunal regional federal da 2ª região , a fim de fornecer subsídios para os processos judiciais 2001.34.00.024796-9 e 2003.34.00.044227-3 ; e aos demais interessados a deliberação que vier a ser proferida por esta corte ” .&quot;&quot;&quot;]}))
+
+result = pipeline.fit(example).transform(example)
+```
 
 &lt;/div&gt;
 
-&lt;h2 id=&quot;results&quot;&gt;Results&lt;/h2&gt;
+## Results
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;+--------------+-------------+----------+
+```bash
++--------------+-------------+----------+
 |         token|    ner_label|confidence|
 +--------------+-------------+----------+
 |      Mediante|            O|0.99998903|
-|            &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;|            O|0.99999386|
+|            do|            O|0.99999386|
 |       exposto|            O|0.99999356|
 |             ,|            O|0.99998516|
 |           com|            O| 0.9999937|
@@ -355,15 +326,15 @@
 |             e|            O| 0.9999804|
 |            ao|            O|0.99999124|
 |      gabinete|            O| 0.9999747|
-|            &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;|            O| 0.9999911|
+|            do|            O| 0.9999911|
 |       relator|            O|0.99999297|
 |             ,|            O|0.99998975|
 |      propondo|            O| 0.9999942|
 |             :|            O|0.99999416|
 |             a|            O| 0.9999926|
-|             &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;|            O|  0.999994|
+|             )|            O|  0.999994|
 |      conhecer|            O|0.99999493|
-|            &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;|            O|0.99999475|
+|            do|            O|0.99999475|
 |       recurso|            O|0.99999416|
 |             e|            O|  0.999994|
 |             ,|            O| 0.9999923|
@@ -372,9 +343,9 @@
 |             ,|            O| 0.9999926|
 |     negar-lhe|            O|0.99999475|
 |    provimento|            O|0.99999505|
-|             &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;|            O| 0.9999914|
+|             ;|            O| 0.9999914|
 |             b|            O| 0.9999917|
-|             &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;|            O| 0.9999943|
+|             )|            O| 0.9999943|
 |     comunicar|            O|0.99999446|
 |            ao|            O| 0.9999935|
 |    recorrente|            O| 0.9999941|
@@ -408,7 +379,7 @@
 |          2003|I-ORGANIZACAO|0.51847184|
 |             .|            O|   0.99998|
 |34.00.044227-3|            O| 0.9999412|
-|             &lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;|            O| 0.9999937|
+|             ;|            O| 0.9999937|
 |             e|            O| 0.9999936|
 |           aos|            O| 0.9999932|
 |        demais|            O| 0.9999952|
@@ -426,58 +397,27 @@
 |             ”|            O| 0.9994554|
 |             .|            O| 0.9993955|
 +--------------+-------------+----------+
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+```
 
-&lt;h2 class=&quot;model-param&quot; id=&quot;model-information&quot;&gt;Model Information&lt;/h2&gt;
+{:.model-param}
+## Model Information
 
-&lt;table class=&quot;table-model&quot;&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Model Name:&lt;/td&gt;
-      &lt;td&gt;legner_lener_large&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Compatibility:&lt;/td&gt;
-      &lt;td&gt;Legal NLP 1.0.0+&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;License:&lt;/td&gt;
-      &lt;td&gt;Licensed&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Edition:&lt;/td&gt;
-      &lt;td&gt;Official&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Input Labels:&lt;/td&gt;
-      &lt;td&gt;[sentence, token]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Output Labels:&lt;/td&gt;
-      &lt;td&gt;[ner]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Language:&lt;/td&gt;
-      &lt;td&gt;pt&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Size:&lt;/td&gt;
-      &lt;td&gt;1.2 GB&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Case sensitive:&lt;/td&gt;
-      &lt;td&gt;true&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;Max sentence length:&lt;/td&gt;
-      &lt;td&gt;128&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
+{:.table-model}
+|---|---|
+|Model Name:|legner_lener_large|
+|Compatibility:|Legal NLP 1.0.0+|
+|License:|Licensed|
+|Edition:|Official|
+|Input Labels:|[sentence, token]|
+|Output Labels:|[ner]|
+|Language:|pt|
+|Size:|1.2 GB|
+|Case sensitive:|true|
+|Max sentence length:|128|
 
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+## References
 
-&lt;p&gt;Original texts available in https://paperswithcode.com/sota?task=Token+Classification&amp;amp;dataset=lener_br and in-house data augmentation with weak labelling&lt;/p&gt;</content><author><name>John Snow Labs</name></author><category term="laws" /><category term="ner" /><category term="licensed" /><category term="legal" /><category term="tensorflow" /><category term="lener" /><category term="pt" /><summary type="html">Description This model is a Deep Learning Portuguese Named Entity Recognition model for the legal domain, trained using Base Bert Embeddings, and is able to predict the following entities: ORGANIZACAO (Organizations) JURISPRUDENCIA (Jurisprudence) PESSOA (Person) TEMPO (Time) LOCAL (Location) LEGISLACAO (Laws) O (Other) You can find different versions of this model in Models Hub: With a Deep Learning architecture (non-transformer) and Base Embeddings; With a Deep Learning architecture (non-transformer) and Large Embeddings; With a Transformers Architecture and Base Embeddings; With a Transformers Architecture and Large Embeddings; Predicted Entities PESSOA, ORGANIZACAO, LEGISLACAO, JURISPRUDENCIA, TEMPO, LOCAL Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU documentAssembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = nlp.SentenceDetectorDLModel.pretrained()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols(&quot;sentence&quot;)\ .setOutputCol(&quot;token&quot;) tokenClassifier = legal.BertForTokenClassification.load(&quot;legner_lener_large&quot;,&quot;pt&quot;, &quot;legal/models&quot;)\ .setInputCols(&quot;token&quot;, &quot;sentence&quot;)\ .setOutputCol(&quot;label&quot;)\ .setCaseSensitive(True) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;label&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline( stages=[ documentAssembler, sentenceDetector, tokenizer, tokenClassifier, ner_converter ] ) example = spark.createDataFrame(pd.DataFrame({'text': [&quot;&quot;&quot;Mediante do exposto , com fundamento nos artigos 32 , i , e 33 , da lei 8.443/1992 , submetem-se os autos à consideração superior , com posterior encaminhamento ao ministério público junto ao tcu e ao gabinete do relator , propondo : a ) conhecer do recurso e , no mérito , negar-lhe provimento ; b ) comunicar ao recorrente , ao superior tribunal militar e ao tribunal regional federal da 2ª região , a fim de fornecer subsídios para os processos judiciais 2001.34.00.024796-9 e 2003.34.00.044227-3 ; e aos demais interessados a deliberação que vier a ser proferida por esta corte ” .&quot;&quot;&quot;]})) result = pipeline.fit(example).transform(example) Results +--------------+-------------+----------+ | token| ner_label|confidence| +--------------+-------------+----------+ | Mediante| O|0.99998903| | do| O|0.99999386| | exposto| O|0.99999356| | ,| O|0.99998516| | com| O| 0.9999937| | fundamento| O|0.99998814| | nos| O|0.99998933| | artigos| I-TEMPO| 0.9768946| | 32| B-LOCAL| 0.9833129| | ,| B-LOCAL| 0.9897361| | i| B-LOCAL| 0.9860687| | ,| B-LOCAL|0.99019605| | e| B-LOCAL| 0.988641| | 33| B-LOCAL|0.98958844| | ,| B-LOCAL| 0.989682| | da| B-LOCAL|0.97983617| | lei| B-LOCAL| 0.9777896| | 8.443/1992| B-LOCAL|0.94548935| | ,| O| 0.9997625| | submetem-se| O|0.99999225| | os| O|0.99999356| | autos| O|0.99999285| | à| O| 0.9999936| | consideração| O| 0.9999945| | superior| O| 0.9999938| | ,| O|0.99999297| | com| O| 0.9999949| | posterior| O|0.99999535| |encaminhamento| O|0.99999404| | ao| O| 0.9999939| | ministério| O|0.99998385| | público| O|0.99997985| | junto| O| 0.9999902| | ao| O| 0.9999913| | tcu| O| 0.9961068| | e| O| 0.9999804| | ao| O|0.99999124| | gabinete| O| 0.9999747| | do| O| 0.9999911| | relator| O|0.99999297| | ,| O|0.99998975| | propondo| O| 0.9999942| | :| O|0.99999416| | a| O| 0.9999926| | )| O| 0.999994| | conhecer| O|0.99999493| | do| O|0.99999475| | recurso| O|0.99999416| | e| O| 0.999994| | ,| O| 0.9999923| | no| O| 0.9999945| | mérito| O|0.99999404| | ,| O| 0.9999926| | negar-lhe| O|0.99999475| | provimento| O|0.99999505| | ;| O| 0.9999914| | b| O| 0.9999917| | )| O| 0.9999943| | comunicar| O|0.99999446| | ao| O| 0.9999935| | recorrente| O| 0.9999941| | ,| O| 0.9999869| | ao| O|0.99999243| | superior| O| 0.9933063| | tribunal| O|0.83631223| | militar| O|0.76226306| | e| O| 0.9988131| | ao| O| 0.9999895| | tribunal|B-ORGANIZACAO|0.94998056| | regional| I-LEGISLACAO|0.91478646| | federal| I-LEGISLACAO| 0.9775761| | da| I-LEGISLACAO| 0.9674108| | 2ª| I-LEGISLACAO| 0.9871655| | região| I-LEGISLACAO|0.99471426| | ,| O| 0.9999918| | a| O|0.99999434| | fim| O|0.99999356| | de| O| 0.9999942| | fornecer| O| 0.9999948| | subsídios| O|0.99999213| | para| O| 0.9999924| | os| O| 0.9999925| | processos| O|0.99998784| | judiciais| O| 0.999987| | 2001| O|0.99967766| | .| O| 0.998813| |34.00.024796-9| O| 0.9933802| | e| O| 0.999508| | 2003|I-ORGANIZACAO|0.51847184| | .| O| 0.99998| |34.00.044227-3| O| 0.9999412| | ;| O| 0.9999937| | e| O| 0.9999936| | aos| O| 0.9999932| | demais| O| 0.9999952| | interessados| O|0.99999493| | a| O| 0.999994| | deliberação| O| 0.9999939| | que| O| 0.9999942| | vier| O| 0.9999944| | a| O| 0.9999935| | ser| O| 0.9999951| | proferida| O| 0.9999954| | por| O| 0.9999936| | esta| O|0.99999356| | corte| O|0.99992704| | ”| O| 0.9994554| | .| O| 0.9993955| +--------------+-------------+----------+ Model Information Model Name: legner_lener_large Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token] Output Labels: [ner] Language: pt Size: 1.2 GB Case sensitive: true Max sentence length: 128 References Original texts available in https://paperswithcode.com/sota?task=Token+Classification&amp;amp;dataset=lener_br and in-house data augmentation with weak labelling</summary></entry><entry><title type="html">Sentence Entity Resolver for RxNorm (mpnet_embeddings_biolord_2023 embeddings)</title><link href="/2024/05/07/biolordresolve_avg_rxnorm_augmented_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for RxNorm (mpnet_embeddings_biolord_2023 embeddings)" /><published>2024-05-07T00:00:00+00:00</published><updated>2024-05-07T00:00:00+00:00</updated><id>/2024/05/07/biolordresolve_avg_rxnorm_augmented_en</id><content type="html" xml:base="/2024/05/07/biolordresolve_avg_rxnorm_augmented_en.html">## Description
+Original texts available in https://paperswithcode.com/sota?task=Token+Classification&amp;dataset=lener_br and in-house data augmentation with weak labelling</content><author><name>John Snow Labs</name></author><category term="laws" /><category term="ner" /><category term="licensed" /><category term="legal" /><category term="tensorflow" /><category term="lener" /><category term="pt" /><summary type="html">Description This model is a Deep Learning Portuguese Named Entity Recognition model for the legal domain, trained using Base Bert Embeddings, and is able to predict the following entities: ORGANIZACAO (Organizations) JURISPRUDENCIA (Jurisprudence) PESSOA (Person) TEMPO (Time) LOCAL (Location) LEGISLACAO (Laws) O (Other) You can find different versions of this model in Models Hub: With a Deep Learning architecture (non-transformer) and Base Embeddings; With a Deep Learning architecture (non-transformer) and Large Embeddings; With a Transformers Architecture and Base Embeddings; With a Transformers Architecture and Large Embeddings; Predicted Entities PESSOA, ORGANIZACAO, LEGISLACAO, JURISPRUDENCIA, TEMPO, LOCAL Live Demo Open in Colab Download Copy S3 URI How to use PythonJSLScalaNLU documentAssembler = nlp.DocumentAssembler()\ .setInputCol(&quot;text&quot;)\ .setOutputCol(&quot;document&quot;) sentenceDetector = nlp.SentenceDetectorDLModel.pretrained()\ .setInputCols([&quot;document&quot;])\ .setOutputCol(&quot;sentence&quot;) tokenizer = nlp.Tokenizer()\ .setInputCols(&quot;sentence&quot;)\ .setOutputCol(&quot;token&quot;) tokenClassifier = legal.BertForTokenClassification.load(&quot;legner_lener_large&quot;,&quot;pt&quot;, &quot;legal/models&quot;)\ .setInputCols(&quot;token&quot;, &quot;sentence&quot;)\ .setOutputCol(&quot;label&quot;)\ .setCaseSensitive(True) ner_converter = nlp.NerConverter()\ .setInputCols([&quot;sentence&quot;,&quot;token&quot;,&quot;label&quot;])\ .setOutputCol(&quot;ner_chunk&quot;) pipeline = nlp.Pipeline( stages=[ documentAssembler, sentenceDetector, tokenizer, tokenClassifier, ner_converter ] ) example = spark.createDataFrame(pd.DataFrame({'text': [&quot;&quot;&quot;Mediante do exposto , com fundamento nos artigos 32 , i , e 33 , da lei 8.443/1992 , submetem-se os autos à consideração superior , com posterior encaminhamento ao ministério público junto ao tcu e ao gabinete do relator , propondo : a ) conhecer do recurso e , no mérito , negar-lhe provimento ; b ) comunicar ao recorrente , ao superior tribunal militar e ao tribunal regional federal da 2ª região , a fim de fornecer subsídios para os processos judiciais 2001.34.00.024796-9 e 2003.34.00.044227-3 ; e aos demais interessados a deliberação que vier a ser proferida por esta corte ” .&quot;&quot;&quot;]})) result = pipeline.fit(example).transform(example) Results +--------------+-------------+----------+ | token| ner_label|confidence| +--------------+-------------+----------+ | Mediante| O|0.99998903| | do| O|0.99999386| | exposto| O|0.99999356| | ,| O|0.99998516| | com| O| 0.9999937| | fundamento| O|0.99998814| | nos| O|0.99998933| | artigos| I-TEMPO| 0.9768946| | 32| B-LOCAL| 0.9833129| | ,| B-LOCAL| 0.9897361| | i| B-LOCAL| 0.9860687| | ,| B-LOCAL|0.99019605| | e| B-LOCAL| 0.988641| | 33| B-LOCAL|0.98958844| | ,| B-LOCAL| 0.989682| | da| B-LOCAL|0.97983617| | lei| B-LOCAL| 0.9777896| | 8.443/1992| B-LOCAL|0.94548935| | ,| O| 0.9997625| | submetem-se| O|0.99999225| | os| O|0.99999356| | autos| O|0.99999285| | à| O| 0.9999936| | consideração| O| 0.9999945| | superior| O| 0.9999938| | ,| O|0.99999297| | com| O| 0.9999949| | posterior| O|0.99999535| |encaminhamento| O|0.99999404| | ao| O| 0.9999939| | ministério| O|0.99998385| | público| O|0.99997985| | junto| O| 0.9999902| | ao| O| 0.9999913| | tcu| O| 0.9961068| | e| O| 0.9999804| | ao| O|0.99999124| | gabinete| O| 0.9999747| | do| O| 0.9999911| | relator| O|0.99999297| | ,| O|0.99998975| | propondo| O| 0.9999942| | :| O|0.99999416| | a| O| 0.9999926| | )| O| 0.999994| | conhecer| O|0.99999493| | do| O|0.99999475| | recurso| O|0.99999416| | e| O| 0.999994| | ,| O| 0.9999923| | no| O| 0.9999945| | mérito| O|0.99999404| | ,| O| 0.9999926| | negar-lhe| O|0.99999475| | provimento| O|0.99999505| | ;| O| 0.9999914| | b| O| 0.9999917| | )| O| 0.9999943| | comunicar| O|0.99999446| | ao| O| 0.9999935| | recorrente| O| 0.9999941| | ,| O| 0.9999869| | ao| O|0.99999243| | superior| O| 0.9933063| | tribunal| O|0.83631223| | militar| O|0.76226306| | e| O| 0.9988131| | ao| O| 0.9999895| | tribunal|B-ORGANIZACAO|0.94998056| | regional| I-LEGISLACAO|0.91478646| | federal| I-LEGISLACAO| 0.9775761| | da| I-LEGISLACAO| 0.9674108| | 2ª| I-LEGISLACAO| 0.9871655| | região| I-LEGISLACAO|0.99471426| | ,| O| 0.9999918| | a| O|0.99999434| | fim| O|0.99999356| | de| O| 0.9999942| | fornecer| O| 0.9999948| | subsídios| O|0.99999213| | para| O| 0.9999924| | os| O| 0.9999925| | processos| O|0.99998784| | judiciais| O| 0.999987| | 2001| O|0.99967766| | .| O| 0.998813| |34.00.024796-9| O| 0.9933802| | e| O| 0.999508| | 2003|I-ORGANIZACAO|0.51847184| | .| O| 0.99998| |34.00.044227-3| O| 0.9999412| | ;| O| 0.9999937| | e| O| 0.9999936| | aos| O| 0.9999932| | demais| O| 0.9999952| | interessados| O|0.99999493| | a| O| 0.999994| | deliberação| O| 0.9999939| | que| O| 0.9999942| | vier| O| 0.9999944| | a| O| 0.9999935| | ser| O| 0.9999951| | proferida| O| 0.9999954| | por| O| 0.9999936| | esta| O|0.99999356| | corte| O|0.99992704| | ”| O| 0.9994554| | .| O| 0.9993955| +--------------+-------------+----------+ Model Information Model Name: legner_lener_large Compatibility: Legal NLP 1.0.0+ License: Licensed Edition: Official Input Labels: [sentence, token] Output Labels: [ner] Language: pt Size: 1.2 GB Case sensitive: true Max sentence length: 128 References Original texts available in https://paperswithcode.com/sota?task=Token+Classification&amp;amp;dataset=lener_br and in-house data augmentation with weak labelling</summary></entry><entry><title type="html">Sentence Entity Resolver for RxNorm (mpnet_embeddings_biolord_2023 embeddings)</title><link href="/2024/05/07/biolordresolve_avg_rxnorm_augmented_en.html" rel="alternate" type="text/html" title="Sentence Entity Resolver for RxNorm (mpnet_embeddings_biolord_2023 embeddings)" /><published>2024-05-07T00:00:00+00:00</published><updated>2024-05-07T00:00:00+00:00</updated><id>/2024/05/07/biolordresolve_avg_rxnorm_augmented_en</id><content type="html" xml:base="/2024/05/07/biolordresolve_avg_rxnorm_augmented_en.html">## Description
 
 This model maps clinical entities and concepts (like drugs/ingredients) to RxNorm codes using `mpnet_embeddings_biolord_2023` embeddings. It trained on the augmented version of the dataset used in previous RxNorm resolver models. Additionally, this model returns concept classes of the drugs in the `all_k_aux_labels` column.
 
