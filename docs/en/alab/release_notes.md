@@ -202,6 +202,7 @@ This enhancement ensures a smoother and more efficient experience for users when
 </div>
 
 <ul class="pagination owl-carousel pagination_big">
+    <li><a href="annotation_labs_releases/release_notes_6_1_1">6.1.1</a></li>
     <li class="active"><a href="annotation_labs_releases/release_notes_6_1_0">6.1.0</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_0_2">6.0.2</a></li>
     <li><a href="annotation_labs_releases/release_notes_6_0_0">6.0.0</a></li>
