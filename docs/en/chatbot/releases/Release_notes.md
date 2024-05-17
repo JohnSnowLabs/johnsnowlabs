@@ -5,12 +5,126 @@ seotitle: Medical Chatbot | John Snow Labs
 title: Release Notes
 permalink: /docs/en/chatbot/releases/release_notes
 key: docs-healthcare-gpt
-modify_date: "2024-03-13"
+modify_date: "2024-04-24"
 show_nav: true
 sidebar:
     nav: healthcare-gpt
 ---
 <div class="h3-box" markdown="1">
+
+## 05-17-2024 - Introducing Document Q&A and NLP Tools
+
+We are excited to announce two significant enhancements to the Medical Chatbot: the Document Q&A (DocQA) feature and the NLP Tools feature. These additions are designed to streamline your interactions and deepen your engagement with medical texts. The DocQA feature enables seamless management and querying of up to 10 text or PDF documents, providing a focused, session-based interaction. NLP Tools feature introduces a suite of specialized tools for the extraction and analysis of medical information, tailored to your needs. Whether you are interested in extracting entities from your medical text, to de-identify or summarize them, NLP Tools get you covered. These enhancements are part of our continuous effort to provide powerful, user-friendly tools that support and enhance your daily medical information handling and decision-making processes.
+
+## Introducing Document Q&A (DocQA) Feature
+
+### Overview
+The DocQA feature enhances the Medical Chatbot by allowing users to upload and interact with up to 10 text (.txt) or PDF (.pdf) documents. This feature is designed to provide tailored answers based on the content of the uploaded documents.
+
+<iframe width="800" height="450" src="https://www.youtube.com/embed/BJ4cXJl7ZyY?si=P1GBmRtTBTmPeRJ0&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+
+### Key Features
+1. **Document Upload and Session Initiation**
+   - Users can upload one or several documents directly into the chat interface.
+   - Upon uploading documents, a DocQA session is automatically initiated.
+   - Each user is limited to one active DocQA session at any given time.
+
+![Start_DocQA_Session](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/17f402c1-e3ff-4533-b135-fcf47791444a)
+
+2. **Session Management and Visibility**
+   - The active DocQA session appears as "Document Q&A" in the Conversation History.
+   - This session is pinned to the top of the list and remains there until the session is closed or the conversation is removed.
+
+<img width="2944" alt="Session_Visibility" src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/db5b6fd6-867d-4157-9240-c472e23e5719">
+
+3. **Document Management within Sessions**
+   - If a document is uploaded in a regular chat while a DocQA session is active, it will be automatically added to the existing session's Target Documents.
+   - Uploading more than 10 documents triggers an error message, prompting the user to remove documents before adding new ones.
+
+![Upload_to_existing_session](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/3ad7581f-2c52-4232-a4a9-d2a00b28c37a)
+
+4. **Session Interaction**
+   - Users can start a new chat by clicking the "New Chat" button, which opens an empty chat window.
+   - Users can seamlessly transition to a new chat at any point to address queries beyond the scope of the DocQA Session.
+   - Users can easily navigate back to an active DocQA session via the Conversation History.
+
+![DocQA_Switch_to_Normal_Chat](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/c1acce8b-d8d9-4805-8246-c99ef72d3100)
+
+5. **Session Termination**
+   - Removing a DocQA session from the Chat History will end the session and delete the associated files.
+   - Removing all the files from the DocQA Session's Target Documents will also end the session.
+   - Once a DocQA chat session is ended, it transitions into a read-only mode, providing users with a comprehensive overview of the conversation. 
+
+![Terminate_DocQA_Session](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/1ba5e643-fda4-44f2-ae0a-3ba1d3a7fb70)
+
+6. **Query Handling and Document Interaction**
+   - Questions asked within the DocQA session are answered using information from the target documents.
+   - Responses include references to the document content. Clicking on a reference will display the document and highlight the relevant paragraph.
+
+![Reference_highlighting](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/91c5dfe2-f77d-463a-af5b-287831d87b41)
+
+### User Benefits
+
+- **Focused Answers:** Provides precise information derived directly from uploaded documents.
+- **Efficient Navigation:** Seamlessly switch between general chat and document-specific queries.
+- **Resource Management:** Control over the documents within the session ensures relevance and efficiency in information retrieval.
+- **Accelerated Learning**: Efficiently reads and analyzes the given documents which helps aid in quick content summarization and analysis for learning.
+
+This feature is part of our ongoing commitment to enhance user interaction and improve the informational value of the Medical Chatbot. We look forward to your feedback and continual engagement with this new functionality.
+
+## Introducing the NLP Tools 
+
+### Overview
+The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access five distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis.
+
+### Key Features
+1. **Tools Overview**
+   - **Deidentification/Obfuscation of PHI**: Automatically detects and masks or obfuscates protected health information (PHI) from medical text to ensure privacy and compliance with data protection regulations. Users can specify to de-identify or obfuscate the medical text based on their requirements. 
+   
+   <iframe width="800" height="450" src="https://www.youtube.com/embed/odSyX3uKjwg?si=XZZO8aY3t82Iqslu&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+   - **General Medical Entity Extraction**: Identifies and extracts general medical entities from text, facilitating quick access to relevant medical terms and concepts.
+
+   <iframe width="800" height="450" src="https://www.youtube.com/embed/FjAzlImC0zQ?si=N415bCn2AU2h6i6U&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+   - **Oncological Entity Extraction**: Specialized for recognizing and extracting terms related to oncology, aiding in the analysis of cancer-related medical texts.
+
+   <iframe width="800" height="450" src="https://www.youtube.com/embed/qTbH57SI6R0?si=HO8riHFw-cXYeIvK&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+   - **Posology Entity Extraction**: Focuses on extracting dosage and medication instructions from medical documents, crucial for understanding treatment protocols.
+
+   <iframe width="800" height="450" src="https://www.youtube.com/embed/5M5nLUdTb4I?si=7uCei72nxBSpvwMe&hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+2. **Customizable Accessibility**
+   - Users can enable or disable NLP tools based on their specific needs or preferences, allowing for a personalized experience and control over the processing features used.
+3. **Accessing Tools**
+   - NLP tools can be invoked in two ways: via regular queries in natural language or by using the '@' operator for direct tool activation.
+   - Typing '@' at the beginning of the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.
+   - The @ operator also allows direct access to `MedResearch` and `Wikipedia` tools for targeted questions. For instance, when using `@medical_research` at the beginning of your question, the chatbot will directly engage the `MedResearch` tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
+   - Similarly, for Wikipedia and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
+       - `@search_wikipedia`: Query Wikipedia Pages
+       - `@deidentification`: De-identification of Medical Text
+       - `@obfuscation`: Obfuscation of Medical Text
+       - `@ner_medical`: General Medical Entity Extraction
+       - `@ner_medical_oncology `: Oncological Entity Extraction
+       - `@ner_medical_posology `: Posology Entity Extraction
+   - When interacting with the chatbot, the generated answer prominently displays the tool used for response generation right above the answer itself. This clarification ensures users know which tool was utilized.
+   - Similarly, when selecting a specific tool using the '@' Selector in your query, the chosen tool is labeled at the top of the query, making it clear which tool was requested for the response generation.
+   - Hence, users can better understand the specialties of these tools and experiment to obtain the best possible responses according to their needs.    
+![Risk_Factors](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/e70788ea-77bc-48ca-9583-4e3586605241)
+
+4. **Export results in CSV format**
+   - All the Entity Extraction results computed using the NLP tools can be exported in CSV format. For each detected entity, the export also contains confidence information, ensuring transparency and reliability in data analysis.
+
+![CSV_Download](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/18526211-0ebc-43bb-beba-2c2439d479b7)
+
+### User Benefits
+- **Enhanced Privacy and Compliance**: Safeguards sensitive information by efficiently deidentifying PHI from medical texts.
+- **Focused Content Extraction**: Enables precise extraction of medical entities tailored to general, oncological, and posology contexts, enhancing the utility and accuracy of information retrieval.
+- **User-Controlled Flexibility**: Offers the flexibility to tailor tool engagement to individual preferences and requirements.
+- **Efficient Tool Access**: Simplifies the process of accessing specific NLP tools through intuitive user interface mechanisms.
 
 
 ## 03-13-2024
