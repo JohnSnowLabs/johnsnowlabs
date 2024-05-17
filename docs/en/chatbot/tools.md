@@ -5,7 +5,7 @@ seotitle: Medical Chatbot | John Snow Labs
 title: Tools
 permalink: /docs/en/chatbot/tools
 key: docs-healthcare-gpt
-modify_date: "2024-01-19"
+modify_date: "2024-05-17"
 show_nav: true
 sidebar:
     nav: healthcare-gpt
@@ -93,4 +93,21 @@ John's Memory is a versatile feature within the Medical Chatbot, dedicated to su
 
 Typing '@' in the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.
 
-The @ operator also allows direct access to `MedResearch` and `Wikipedia` tools for targeted questions. For instance when using `@MedResearch` at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
+![Risk_Factors](https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/e70788ea-77bc-48ca-9583-4e3586605241)
+
+
+For instance, the @ operator also allows direct access to `MedResearch` tool for targeted questions to all active knowledgebases (see [MedResearch](/docs/en/chatbot/tools)). When using `@MedResearch` at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring user to select from multiple options, ensuring a streamlined interaction for focused research tasks.
+
+Similarly, for Wikipedia and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
+ - `@search_wikipedia`: Query Wikipedia Pages
+ - `@deidentification`: De-identification of Medical Text
+ - `@obfuscation`: Obfuscation of Medical Text
+ - `@ner_medical`: General Medical Entity Extraction
+ - `@ner_medical_oncology `: Oncological Entity Extraction
+ - `@ner_medical_posology `: Posology Entity Extraction
+
+When interacting with the chatbot, the generated answer prominently displays the tool used for response generation right above the answer itself. This clarification ensures users know which tool was utilized.
+
+Similarly, when selecting a specific tool using the '@' Selector in your query, the chosen tool is labeled at the top of the query, making it clear which tool was requested for the response generation.
+Hence, users can better understand the specialties of these tools and experiment to obtain the best possible responses according to their needs.    
+
