@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`, `CITY`, `COUNTRY`, `DOCTOR`, `HOSPITAL`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PATIENT`, `PHONE`, `STREET`, `USERNAME`, `ZIP`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE` entities.
+This pipeline can be used to extract PHI information such as AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`,  `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PHONE`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE` entities.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
@@ -32,8 +32,8 @@ This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("ner_deid_generic_context_augmented_pipeline", "en", "clinical/models")
@@ -45,11 +45,8 @@ Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A33445
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
 
 result = deid_pipeline.fullAnnotate(text)
-
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("ner_deid_generic_context_augmented_pipeline", "en", "clinical/models")
@@ -61,7 +58,6 @@ Patient's VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's license no: A33445
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
 
 val result = deid_pipeline.fullAnnotate(text)
-
 ```
 </div>
 
