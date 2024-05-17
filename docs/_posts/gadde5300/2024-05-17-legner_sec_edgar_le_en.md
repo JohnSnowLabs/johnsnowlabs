@@ -53,7 +53,7 @@ embeddings = nlp.WordEmbeddingsModel.pretrained("legal_word_embeddings", "en", "
             .setInputCols(["sentence","token"])\
             .setOutputCol("embeddings")
 
-ner_model = legal.NerModel.pretrained("legner_sec_edgar", "en", "legal/models")\
+ner_model = legal.NerModel.pretrained("legner_sec_edgar_le", "en", "legal/models")\
         .setInputCols(["sentence", "token", "embeddings"])\
         .setOutputCol("ner")
 
