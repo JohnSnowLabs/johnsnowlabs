@@ -260,13 +260,13 @@ running
 
 Either create a conda env for python 3.6, install *pyspark==3.1.2 spark-nlp numpy* and use Jupyter/python console, or in the same conda env you can go to spark bin for *pyspark --packages com.johnsnowlabs.nlp:spark-nlp_2.12:3.4.4*.
 
-<img class="image image--xl" src="/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Requisites for PySpark](/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg "lit_shadow")
 
-<img class="image image--xl" src="/assets/images/installation/90127225-21662880-dd65-11ea-8b98-3a2c26cfa534.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Requisites for PySpark](/assets/images/installation/90127225-21662880-dd65-11ea-8b98-3a2c26cfa534.jpg "lit_shadow")
 
-<img class="image image--xl" src="/assets/images/installation/90127243-2925cd00-dd65-11ea-9b20-ba3353473a98.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Requisites for PySpark](/assets/images/installation/90127243-2925cd00-dd65-11ea-9b20-ba3353473a98.jpg "lit_shadow")
 
-<img class="image image--xl" src="/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Requisites for PySpark](/assets/images/installation/90126972-c03e5500-dd64-11ea-8285-e4f76aa9e543.jpg "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
@@ -353,6 +353,77 @@ conda activate sparknlp
 jupyter notebook
 ```
 
+</div><div class="h3-box" markdown="1">
+
+## Apple Silicon Support
+
+**Installation for Apple Silicon (M1, M2, M3)**: Starting from version 4.0.0, Spark NLP has experimental support for apple silicon.
+
+Make sure the following prerequisites are set:
+
+1. **Installing SDKMAN**, you can also follow the official documentation at [https://sdkman.io/install](https://sdkman.io/install)
+    - `$ curl -s "https://get.sdkman.io" | bash`
+    - `source "$HOME/.sdkman/bin/sdkman-init.sh"`
+    - `sdk list java`  
+    list available java libraries:
+
+    ![image](https://github.com/JohnSnowLabs/spark-nlp-workshop/assets/64752006/9d05bd11-14c5-454e-bbab-fea4e91da905)
+
+
+2. **Installing Java**
+    - `sdk install java 8.0.402-amzn` 
+    - `whereis java`
+    - `java -version`
+
+3. **Installing MiniConda**, you can also follow the official documentation at https://docs.anaconda.com/free/miniconda/#quick-command-line-install  
+    - `mkdir -p ~/miniconda3`
+    - `curl https://repo.anaconda.com/miniconda/Miniconda3-py39_23.11.0-2-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh` PS: you can change python version to 3.10 or 3.11
+    - `bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3`
+    - `~/miniconda3/bin/conda init bash`
+    - `~/miniconda3/bin/conda init zsh`
+    - `source miniconda3/bin/activate`
+
+4. Installing `jupyter environments` or you can install it via `VSCode`
+
+    ```bash
+    # use base environment
+    conda --version
+    java -version
+    conda activate
+    pip install pyspark==3.4.0
+    pip install jupyter
+    conda env config vars set PYSPARK_PYTHON=python
+    conda activate 
+    conda env config vars set PYSPARK_DRIVER_PYTHON=jupyter
+    conda activate 
+    conda env config vars set PYSPARK_DRIVER_python_OPTS=notebook
+    conda activate 
+    jupyter notebook
+    ```
+
+    ```bash
+    # or create new sparknlp environment
+    conda --version
+    java -version
+    conda create -n sparknlp python=3.9 -y
+    conda activate sparknlp
+    pip install pyspark==3.4.0
+    pip install jupyter
+    conda env config vars set PYSPARK_PYTHON=python
+    conda activate sparknlp
+    conda env config vars set PYSPARK_DRIVER_PYTHON=jupyter
+    conda activate sparknlp
+    conda env config vars set PYSPARK_DRIVER_python_OPTS=notebook
+    conda activate sparknlp
+    jupyter notebook
+    ```
+
+5. **Installing Spark NLP Healthcare** 
+
+    please see the [Spark NLP Healthcare Installation Notebook](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/apple-silicon/installation.ipynb)
+
+
+</div><div class="h3-box" markdown="1">
 
 ## Non-johnsnowlabs Clinical NLP on Ubuntu 
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
@@ -852,21 +923,21 @@ In this page we explain how to setup Spark-NLP + Spark-NLP Healthcare in AWS EMR
   - select required applications
 
 
-![alt text](image.png)
+![Non-johnsnowlabs Clinical NLP on AWS EMR](/assets/images/emr/image.png "lit_shadow")
 
  - Specify EC2  instances for the cluster, as primary/master node  and cores/workers
  - Specify the storage/ EBS volume
  
- ![alt text](image-1.png)
+ ![Non-johnsnowlabs Clinical NLP on AWS EMR](/assets/images/emr/image-1.png "lit_shadow")
 
  - Choose Cluster scaling and provisioning 
  - Choose Networking / VPC
  
- ![alt text](image-2.png)
+ ![Non-johnsnowlabs Clinical NLP on AWS EMR](/assets/images/emr/image-2.png "lit_shadow")
 
 - Choose Security Groups/Firewall for primary/master node and cores/workers/slaves
 
-![alt text](image-3.png)
+![Non-johnsnowlabs Clinical NLP on AWS EMR](/assets/images/emr/image-3.png "lit_shadow")
 
 - If you have add steps , that will be executed after cluster is provisioned
 - Specify the S3 location for logs
@@ -875,12 +946,12 @@ In this page we explain how to setup Spark-NLP + Spark-NLP Healthcare in AWS EMR
 **Important**
 - Specify the Bootstrap Action
 
-[jsl_emr_bootstrap.sh](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/emr/jsl_emr_bootstrap.sh)
+[jsl_emr_bootstrap.sh](https://github.com/JohnSnowLabs/spark-nlp-workshop/blob/master/platforms/emr/jsl_emr_bootstrap.sh "lit_shadow")
 
 Put this sample shell script in a S3 location and specify it in the form:
 You will have spark-nlp and spark-nlp-jsl and spark-ocr installed by bootstrap action, this file is executed during the cluster provisioning. Version of Libraries and other credentials provided by Johnsnowlabs will be in this file.
 
-![add bootstrap action](image-5.png)
+![add bootstrap action](/assets/images/emr/image-5.png "lit_shadow")
 
 
 **Important** 
@@ -972,7 +1043,7 @@ You can pick the index number (I am using java-8 as default - index 2):
 
 </div><div class="h3-box" markdown="1">
 
-<img class="image image--xl" src="/assets/images/installation/amazon-linux.png" style="width:100%; align:center; box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);"/>
+![Non-johnsnowlabs Clinical NLP on Amazon Linux 2](/assets/images/installation/amazon-linux.png "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
@@ -1026,15 +1097,15 @@ This guide will walk you through the deployment of a Spark NLP Healthcare applic
 Installing Necessary Tools:
 
 1. **Docker**: 
-   * Install from Docker Desktop(https://www.docker.com/products/docker-desktop/).
+   * Install from Docker Desktop([https://www.docker.com/products/docker-desktop/](https://www.docker.com/products/docker-desktop/)).
    * Ensure Kubernetes is enabled in Docker Desktop settings. 
 2. **kubectl**: 
-   * Install using the instructions from Kubernetes official documentation(https://kubernetes.io/docs/tasks/tools/).
+   * Install using the instructions from Kubernetes official documentation([https://kubernetes.io/docs/tasks/tools/](https://kubernetes.io/docs/tasks/tools/)).
 3. **kind**: 
-   * Install using the instructions from Kubernetes official documentation(https://kubernetes.io/docs/tasks/tools/).
+   * Install using the instructions from Kubernetes official documentation([https://kubernetes.io/docs/tasks/tools/](https://kubernetes.io/docs/tasks/tools/)).
 4. **Docker Hub Account**: 
-   * If you don't have one, create your account at Docker Hub(https://hub.docker.com/signup).
-5. Install JohnSnow Labs **licence key file** to the project directory(https://my.johnsnowlabs.com/subscriptions).
+   * If you don't have one, create your account at Docker Hub([https://hub.docker.com/signup](https://hub.docker.com/signup)).
+5. Install JohnSnow Labs **licence key file** to the project directory([https://my.johnsnowlabs.com/subscriptions](https://my.johnsnowlabs.com/subscriptions)).
 
 </div><div class="h3-box" markdown="1">
 
@@ -1344,7 +1415,7 @@ If you have asked for a trial license, but you cannot access your account on [my
 - Under the "Workspace settings" section, find and select "Workspace Packages".
 - Click "Upload" to upload the necessary JAR and wheel files.
   
-![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/c0117820-7e27-4f1b-a8c8-a99ee69c8857)
+![Azure Synapse Analytics Support](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/c0117820-7e27-4f1b-a8c8-a99ee69c8857 "lit_shadow")
 
 - For running licensed models, navigate to the "Apache Spark configurations" under the "Manage" section.
 - Click on "New" to add a new configuration.
@@ -1353,7 +1424,7 @@ If you have asked for a trial license, but you cannot access your account on [my
   - `spark.hadoop.fs.s3a.secret.key` : <AWS_SECRET_ACCESS_KEY> 
   - `spark.yarn.appMasterEnv.SPARK_NLP_LICENSE` : <SPARK_NLP_LICENSE>
 
-![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/08968952-efd3-43cd-9bca-587532bb519c)
+![Azure Synapse Analytics Support](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/08968952-efd3-43cd-9bca-587532bb519c "lit_shadow")
 
   
 After adding these properties, the Apache Spark configuration is ready.
@@ -1365,7 +1436,7 @@ After adding these properties, the Apache Spark configuration is ready.
 Now, all the necessary licenses and JARs are ready to be used. You can proceed to run your notebook.
 
 For running OCR models, upload the following JAR and wheel files to the Workspace packages.
-![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/1c3eadc7-2b12-4624-99b0-64a77966b6e2)
+![Azure Synapse Analytics Support](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/1c3eadc7-2b12-4624-99b0-64a77966b6e2 "lit_shadow")
 
 - For licensed OCR models, Add the following properties:
   - `spark.hadoop.fs.s3a.access.key` : <AWS_ACCESS_KEY_ID> 
@@ -1375,7 +1446,7 @@ For running OCR models, upload the following JAR and wheel files to the Workspac
   - `spark.executor.extraJavaOptions` : -Dorg.fluentd.logger.sender.NullSender=org.fluentd.logger.sender.NullSender
   - `spark.sql.legacy.allowUntypedScalaUDF` : True
 
- ![image](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/a8caf1fd-5c76-47ed-94fd-bf3237f7417d)
+ ![Azure Synapse Analytics Support](https://github.com/JohnSnowLabs/johnsnowlabs/assets/71844877/a8caf1fd-5c76-47ed-94fd-bf3237f7417d "lit_shadow")
 
  Now, you can proceed to run your OCR models and notebooks.
 
@@ -1424,40 +1495,40 @@ To create a project in Azure AI Studio, adhere to the following structured appro
 12. Finalize Project Creation
 - After reviewing all the details for accuracy, click on **Create a project** to complete the setup process.
 
-![image](/assets/images/azure/azure_1.png)
+![Azure AI Studio instructions](/assets/images/azure/azure_1.png)
 
 13 Then go to All Azure AI dropdown and choose **Azure Machine Learning Studio**.
 
-![image](/assets/images/azure/azure_2.png)
+![Azure AI Studio instructions](/assets/images/azure/azure_2.png)
 
 14 Such a window will Appear. Go to Add compute.
 
-![image](/assets/images/azure/azure_3.png)
+![Azure AI Studio instructions](/assets/images/azure/azure_3.png)
 
 15 Choose the compute type and enable auto-shutdown as well.
 
-![image](/assets/images/azure/azure_10.png)
+![Azure AI Studio instructions](/assets/images/azure/azure_10.png)
 
-![image](/assets/images/azure/azure_8.png)
+![Azure AI Studio instructions](/assets/images/azure/azure_8.png)
 
-![image](/assets/images/azure/azure_9.png)
+![Azure AI Studio instructions](/assets/images/azure/azure_9.png)
 
 16 Then go to the Notebooks Section.
 
-![image](/assets/images/azure/azure_4.png)
+![Azure AI Studio instructions](/assets/images/azure/azure_4.png)
 
 In NB section, you can create your own NB or load existing NBs.
 
 17 Here I uploaded a NB and attached the compute we created above, with Python 3.8 Azure ML as kernel.
 
-![image](/assets/images/azure/azure_5.png)
+![Azure AI Studio instructions](/assets/images/azure/azure_5.png)
 
 18 Once the session starts, you just need to install the johnsnowlabs library and update the environment with license keys in this way. Then using `nlp.install()` and `nlp.start()` you can install the required jars and wheels and start the spark session.
 
-![image](/assets/images/azure/azure_6.png)
+![Azure AI Studio instructions](/assets/images/azure/azure_6.png)
 
 19 Once spark session is created. Then you can run the johnsnowlabs models and pipelines there (licensed as well as open source).
 
-![image](/assets/images/azure/azure_7.png)
+![Azure AI Studio instructions](/assets/images/azure/azure_7.png)
 
 </div>

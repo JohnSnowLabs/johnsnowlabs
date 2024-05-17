@@ -160,7 +160,7 @@ Number of partitions should be equal to number of cores/executors.
 | binarizationParams | Array[String] | null | Array of Binarization params in key=value format. |
 | splitNumBatch | int | 0 | Number of partitions or size of partitions, related to the splitting strategy. |
 | partitionNumAfterSplit | int| 0 | Number of Spark RDD partitions after splitting pdf document (0 value - without repartition).|
-| splittingStategy | [SplittingStrategy](ocr_structures#splittingstrategy)| SplittingStrategy.FIXED_SIZE_OF_PARTITION | Splitting strategy. |
+| splittingStategy | [SplittingStrategy](ocr_structures#splittingstrategy)| `SplittingStrategy.FIXED_SIZE_OF_PARTITION `|Controls how a single document is split into a number of partitions each containing a number of pages from the original document. This is useful to process documents with high page count. It can be one of {FIXED_SIZE_OF_PARTITION, FIXED_NUMBER_OF_PARTITIONS}, when `FIXED_SIZE_OF_PARTITION` is used, `splitNumBatch` represents the size of each partition, and when `FIXED_NUMBER_OF_PARTITIONS` is used, `splitNumBatch` represents the number of partitions. |
 
 </div><div class="h3-box" markdown="1">
 
@@ -745,7 +745,7 @@ println(tmpFile)
 
 Results:
 
-![Result with regions](/assets/images/ocr/with_regions.png)
+![Result with regions](/assets/images/ocr/with_regions.png "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 

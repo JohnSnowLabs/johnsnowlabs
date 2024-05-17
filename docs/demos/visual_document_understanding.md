@@ -117,4 +117,16 @@ data:
           - text: Colab
             type: blue_btn
             url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/master/jupyter/Cards/SparkOcrChartToTextLLM.ipynb
+        - title: Infographic Visual Question Answering
+          id: infographic_visual_question_answering
+          image: 
+              src: /assets/images/Infographic_Visual_Question_Answering.svg
+          excerpt: Infer the answer from a given infographic related image and a text-based question by using our pre-trained Spark OCR model.
+          actions:
+          - text: Live Demo
+            type: normal
+            url: https://demo.johnsnowlabs.com/ocr/INFOGRAPHIC_VISUAL_QUESTION_ANSWERING/
+          - text: Colab
+            type: blue_btn
+            url: https://github.com/JohnSnowLabs/spark-ocr-workshop/blob/208cebd1353c5b194baadbcea6e32c292eb46a08/jupyter/Cards/SparkOCRInfographicsVisualQuestionAnswering.ipynb
 ---

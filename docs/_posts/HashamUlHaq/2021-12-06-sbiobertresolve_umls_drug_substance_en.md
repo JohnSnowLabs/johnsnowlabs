@@ -38,103 +38,114 @@ This model maps clinical entities to UMLS CUI codes. It is trained on `2021AB` U
 
 ```python
 documentAssembler = DocumentAssembler()\
-    .setInputCol('text')\
-    .setOutputCol('document')
-
-sentenceDetector = SentenceDetector() \
-    .setInputCols(["document"]) \
-    .setOutputCol("sentence")
-
-tokenizer = Tokenizer() \
-    .setInputCols(["sentence"]) \
-    .setOutputCol("token")
-
-stopwords = StopWordsCleaner.pretrained()\
-    .setInputCols("token")\
-    .setOutputCol("cleanTokens")\
-    .setCaseSensitive(False)
-
-word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")\
-    .setInputCols(["sentence", "cleanTokens"])\
-    .setOutputCol("embeddings")
-
-
-clinical_ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models") \
-    .setInputCols(["sentence", "token", "embeddings"]) \
-    .setOutputCol("ner")
-
-ner_converter = NerConverter() \
-    .setInputCols(["sentence", "cleanTokens", "ner"]) \
-    .setOutputCol("ner_chunk")
-
-chunk2doc = Chunk2Doc()\
-    .setInputCols("ner_chunk")\
-    .setOutputCol("ner_chunk_doc")
-
-sbert_embedder = BertSentenceEmbeddings\
-    .pretrained("sbiobert_base_cased_mli",'en','clinical/models')\
-    .setInputCols(["ner_chunk_doc"])\
-    .setOutputCol("sbert_embeddings").setCaseSensitive(False)
-
-resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_drug_substance","en", "clinical/models") \
-    .setInputCols(["sbert_embeddings"]) \
-    .setOutputCol("resolution")\
-    .setDistanceFunction("EUCLIDEAN")
-
-pipeline = Pipeline(stages = [documentAssembler, sentenceDetector, tokenizer, stopwords, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, resolver])
-
-data = spark.createDataFrame([[""]]).toDF("text")
-
-model = LightPipeline(pipeline.fit(data))
-
-results = model.fullAnnotate(['Dilaudid', 'Hydromorphone', 'Exalgo', 'Palladone', 'Hydrogen peroxide 30 mg', 'Neosporin Cream', 'Magnesium hydroxide 100mg/1ml', 'Metformin 1000 mg'])
-```
-```scala
-val documentAssembler = new DocumentAssembler()
-    .setInputCol("text")
+    .setInputCol("text")\
     .setOutputCol("document")
 
-val sentenceDetector = new SentenceDetector()
-    .setInputCols("document")
+sentenceDetector = SentenceDetectorDLModel.pretrained("sentence_detector_dl_healthcare","en","clinical/models")\
+    .setInputCols(["document"])\
     .setOutputCol("sentence")
 
-val tokenizer = new Tokenizer()
-    .setInputCols("sentence")
+tokenizer = Tokenizer()\
+    .setInputCols(["sentence"])\
     .setOutputCol("token")
 
-val stopwords = StopWordsCleaner.pretrained()
-    .setInputCols("token")
-    .setOutputCol("cleanTokens")
-    .setCaseSensitive(False)
-
-val word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical", "en", "clinical/models")
-    .setInputCols(Array("sentence", "cleanTokens"))
+word_embeddings = WordEmbeddingsModel.pretrained("embeddings_clinical","en","clinical/models")\
+    .setInputCols(["sentence","token"])\
     .setOutputCol("embeddings")
 
-val clinical_ner = MedicalNerModel.pretrained("ner_clinical", "en", "clinical/models")
-    .setInputCols(Array("sentence", "token", "embeddings"))
-    .setOutputCol("ner")
+ner_model = MedicalNerModel.pretrained("ner_posology_greedy","en","clinical/models")\
+    .setInputCols(["sentence","token","embeddings"])\
+    .setOutputCol("posology_ner")
 
-val ner_converter = new NerConverter()
-    .setInputCols(Array("sentence", "cleanTokens", "ner"))
-    .setOutputCol("ner_chunk")
+ner_model_converter = NerConverterInternal()\
+    .setInputCols(["sentence","token","posology_ner"])\
+    .setOutputCol("posology_ner_chunk")\
+    .setWhiteList(["DRUG"])
 
-val chunk2doc = new Chunk2Doc()
-    .setInputCols("ner_chunk")
+chunk2doc = Chunk2Doc()\
+    .setInputCols("posology_ner_chunk")\
     .setOutputCol("ner_chunk_doc")
 
+sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli",'en','clinical/models')\
+    .setInputCols(["ner_chunk_doc"])\
+    .setOutputCol("sbert_embeddings")\
+    .setCaseSensitive(False)
+
+resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_drug_substance","en", "clinical/models") \
+     .setInputCols(["sbert_embeddings"]) \
+     .setOutputCol("resolution")\
+     .setDistanceFunction("EUCLIDEAN")
+
+pipeline = Pipeline(stages=[
+    documentAssembler,
+    sentenceDetector,
+    tokenizer,
+    word_embeddings,
+    ner_model,
+    ner_model_converter,
+    chunk2doc,
+    sbert_embedder,
+    resolver
+])
+
+
+data = spark.createDataFrame([["She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg."]]).toDF("text")
+
+result = pipeline.fit(data).transform(data)
+```
+```scala
+val document_assembler = new DocumentAssembler()
+      .setInputCol("text")
+      .setOutputCol("document")
+
+val sentence_detector = new SentenceDetector()
+      .setInputCols(Array("document"))
+      .setOutputCol("sentence")
+
+val tokenizer = new Tokenizer()
+      .setInputCols("sentence")
+      .setOutputCol("token")
+
+val word_embeddings = WordEmbeddingsModel
+      .pretrained("embeddings_clinical", "en", "clinical/models")
+      .setInputCols(Array("sentence", "token"))
+      .setOutputCol("embeddings")
+
+val ner_model = MedicalNerModel.pretrained("ner_posology_greedy", "en", "clinical/models")
+      .setInputCols(Array("sentence", "token", "embeddings"))
+      .setOutputCol("posology_ner")
+
+val ner_model_converter = new NerConverterInternal()
+      .setInputCols(Array("sentence", "token", "posology_ner"))
+      .setOutputCol("posology_ner_chunk")
+      .setWhiteList(["DRUG"])
+
+val chunk2doc = new Chunk2Doc()
+      .setInputCols("posology_ner_chunk")
+      .setOutputCol("ner_chunk_doc")
+
 val sbert_embedder = BertSentenceEmbeddings.pretrained("sbiobert_base_cased_mli", "en","clinical/models")
-    .setInputCols("ner_chunk_doc")
-    .setOutputCol("sbert_embeddings")
-
+      .setInputCols(Array("ner_chunk_doc"))
+      .setOutputCol("sbert_embeddings")
+      .setCaseSensitive(False)
+    
 val resolver = SentenceEntityResolverModel.pretrained("sbiobertresolve_umls_drug_substance", "en", "clinical/models")
-    .setInputCols(Array("sbert_embeddings"))
-    .setOutputCol("resolution")
-    .setDistanceFunction("EUCLIDEAN")
+      .setInputCols(Array("sbert_embeddings"))
+      .setOutputCol("resolution")
+      .setDistanceFunction("EUCLIDEAN")
 
-val p_model = new PipelineModel().setStages(Array(documentAssembler, sentenceDetector, tokenizer, stopwords, word_embeddings, clinical_ner, ner_converter, chunk2doc, sbert_embedder, resolver))
-
-val data = Seq("""'Dilaudid', 'Hydromorphone', 'Exalgo', 'Palladone', 'Hydrogen peroxide 30 mg', 'Neosporin Cream', 'Magnesium hydroxide 100mg/1ml', 'Metformin 1000 mg'""").toDS().toDF("text") 
+val p_model = new Pipeline().setStages(Array(
+    document_assembler,
+    sentence_detector,
+    tokenizer,
+    word_embeddings,
+    ner_model,
+    ner_model_converter,
+    chunk2doc,
+    sbert_embedder,
+    resolver))
+    
+val data = Seq("She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg.").toDF("text")  
 
 val res = p_model.fit(data).transform(data)
 ```
@@ -143,7 +154,7 @@ val res = p_model.fit(data).transform(data)
 {:.nlu-block}
 ```python
 import nlu
-nlu.load("en.resolve.umls_drug_substance").predict("""Magnesium hydroxide 100mg/1ml""")
+nlu.load("en.resolve.umls_drug_substance").predict("She was immediately given hydrogen peroxide 30 mg to treat the infection on her leg, and has been advised Neosporin Cream for 5 days. She has a history of taking magnesium hydroxide 100mg/1ml and metformin 1000 mg.")
 ```
 
 </div>
@@ -151,17 +162,14 @@ nlu.load("en.resolve.umls_drug_substance").predict("""Magnesium hydroxide 100mg/
 ## Results
 
 ```bash
-|    | chunk                         | code     | code_description           | all_k_code_desc                                              | all_k_codes                                                                                                                                                                             |
-|---:|:------------------------------|:---------|:---------------------------|:-------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|  0 | Dilaudid                      | C0728755 | dilaudid                   | ['C0728755', 'C0719907', 'C1448344', 'C0305924', 'C1569295'] | ['dilaudid', 'Dilaudid HP', 'Disthelm', 'Dilaudid Injection', 'Distaph']                                                                                                                |
-|  1 | Hydromorphone                 | C0012306 | HYDROMORPHONE              | ['C0012306', 'C0700533', 'C1646274', 'C1170495', 'C0498841'] | ['HYDROMORPHONE', 'Hydromorphone HCl', 'Phl-HYDROmorphone', 'PMS HYDROmorphone', 'Hydromorphone injection']                                                                             |
-|  2 | Exalgo                        | C2746500 | Exalgo                     | ['C2746500', 'C0604734', 'C1707065', 'C0070591', 'C3660437'] | ['Exalgo', 'exaltolide', 'Exelgyn', 'Extacol', 'exserohilone']                                                                                                                          |
-|  3 | Palladone                     | C0730726 | palladone                  | ['C0730726', 'C0594402', 'C1655349', 'C0069952', 'C2742475'] | ['palladone', 'Palladone-SR', 'Palladone IR', 'palladiazo', 'palladia']                                                                                                                 |
-|  4 | Hydrogen peroxide 30 mg       | C1126248 | hydrogen peroxide 30 MG/ML | ['C1126248', 'C0304655', 'C1605252', 'C0304656', 'C1154260'] | ['hydrogen peroxide 30 MG/ML', 'Hydrogen peroxide solution 30%', 'hydrogen peroxide 30 MG/ML [Proxacol]', 'Hydrogen peroxide 30 mg/mL cutaneous solution', 'benzoyl peroxide 30 MG/ML'] |
-|  5 | Neosporin Cream               | C0132149 | Neosporin Cream            | ['C0132149', 'C0306959', 'C4722788', 'C0704071', 'C0698988'] | ['Neosporin Cream', 'Neosporin Ointment', 'Neomycin Sulfate Cream', 'Neosporin Topical Ointment', 'Naseptin cream']                                                                     |
-|  6 | Magnesium hydroxide 100mg/1ml | C1134402 | magnesium hydroxide 100 MG | ['C1134402', 'C1126785', 'C4317023', 'C4051486', 'C4047137'] | ['magnesium hydroxide 100 MG', 'magnesium hydroxide 100 MG/ML', 'Magnesium sulphate 100mg/mL injection', 'magnesium sulfate 100 MG', 'magnesium sulfate 100 MG/ML']                     |
-|  7 | Metformin 1000 mg             | C0987664 | metformin 1000 MG          | ['C0987664', 'C2719784', 'C0978482', 'C2719786', 'C4282269'] | ['metformin 1000 MG', 'metFORMIN hydrochloride 1000 MG', 'METFORMIN HCL 1000MG TAB', 'metFORMIN hydrochloride 1000 MG [Fortamet]', 'METFORMIN HCL 1000MG SA TAB']                       |
-
++-----------------------------+-----+---+------+---------+--------------------------+------------------------------------------------------------+------------------------------------------------------------+
+|                    ner_chunk|begin|end|entity|umls_code|               description|                                               all_k_results|                                           all_k_resolutions|
++-----------------------------+-----+---+------+---------+--------------------------+------------------------------------------------------------+------------------------------------------------------------+
+|      hydrogen peroxide 30 mg|   26| 48|  DRUG| C1126248|hydrogen peroxide 30 MG/ML|C1126248:::C0304655:::C1605252:::C0304656:::C1154260:::C2...|hydrogen peroxide 30 MG/ML:::Hydrogen peroxide solution 3...|
+|              Neosporin Cream|  106|120|  DRUG| C0132149|           Neosporin Cream|C0132149:::C0306959:::C4722788:::C0704071:::C0698988:::C1...|Neosporin Cream:::Neosporin Ointment:::Neomycin Sulfate C...|
+|magnesium hydroxide 100mg/1ml|  162|190|  DRUG| C1134402|magnesium hydroxide 100 MG|C1134402:::C1126785:::C4317023:::C4051486:::C4047137:::C1...|magnesium hydroxide 100 MG:::magnesium hydroxide 100 MG/M...|
+|            metformin 1000 mg|  196|212|  DRUG| C0987664|         metformin 1000 MG|C0987664:::C2719784:::C0978482:::C2719786:::C4282269:::C2...|metformin 1000 MG:::metFORMIN hydrochloride 1000 MG:::MET...|
++-----------------------------+-----+---+------+---------+--------------------------+------------------------------------------------------------+------------------------------------------------------------+
 ```
 
 {:.model-param}

@@ -85,7 +85,4 @@ If you need more detailed information about how to install Spark NLP you can che
 Detailed information about Spark NLP concepts, annotators and more may
 be found [HERE](annotators)
 
-</div>
-
-
-</div>
+</div></div>

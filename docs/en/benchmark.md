@@ -345,8 +345,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 - DataBricks Config: 8 CPU Core, 32GiB RAM (2 worker, Standard_DS3_v2)
 - AWS Config: 8 CPU Cores, 14GiB RAM (c6a.2xlarge)
 
-
-| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+{:.table-model-big.db}
+| Partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
 | --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
 | 4         | 23 sec        | 11 sec        | 4.36 mins       | 3.02 mins       |  2.40 mins                 | 1.58 mins                  |
 | 8         | 15 sec        | 9 sec         | 3.21 mins       | 2.27 mins       |  1.48 mins                 | 1.35 mins                  |
@@ -362,7 +362,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 - DataBricks Config: 16 CPU Core,64GiB RAM (4 worker, Standard_DS3_v2)
 - AWS Config: 16 CPU Cores, 27GiB RAM (c6a.4xlarge)
 
-| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+{:.table-model-big.db}
+| Partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
 | --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
 | 4         | 32.5 sec      | 11 sec        | 4.19 mins       | 2.53 mins       |  2.58 mins                 | 1.48 mins                  |
 | 8         | 15.1 sec      | 7 sec         | 2.25 mins       | 1.43 mins       |  1.38 mins                 | 1.04 mins                  |
@@ -376,8 +377,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 - DataBricks Config: 32 CPU Core, 128GiB RAM (8 worker, Standard_DS3_v2)
 - AWS Config: 32 CPU Cores, 58GiB RAM (c6a.8xlarge)
 
-
-| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+{:.table-model-big.db}
+| Partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
 | --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
 | 4         | 37.3 sec      | 12 sec        | 4.46 mins       | 2.37 mins       |  2.52 mins                 | 1.47 mins                  |
 | 8         | 26.7 sec      | 7 sec         | 2.46 mins       | 1.39 mins       |  1.37 mins                 | 1.04 mins                  |
@@ -427,7 +428,8 @@ resolver_pipeline = PipelineModel(
 
 ***Results Table***
 
-|partition|preprocessing|embeddings| resolver    |onnx_embeddings|resolver_with_onnx_embeddings|
+{:.table-model-big.db}
+|Partition|preprocessing|embeddings| resolver    |onnx_embeddings|resolver_with_onnx_embeddings|
 |--------:|------------:|---------:|------------:|--------------:|------------:|
 | 4       |      25 sec | 25 sec   |7 min 46 sec |   9 sec       |8 min 29 sec |
 | 8       |      21 sec | 25 sec   |5 min 12 sec |   9 sec       |4 min 53 sec |
@@ -439,14 +441,11 @@ resolver_pipeline = PipelineModel(
 | 512     |      24 sec | 27 sec   |4 min 46 sec |   12 sec      |4 min 22 sec |
 | 1024    |      29 sec | 30 sec   |4 min 24 sec |   14 sec      |4 min 29 sec |
 
-</div>
+</div><div class="h3-box" markdown="1">
 
+## Deidentification Benchmarks
 
-
-
-<div class="h3-box" markdown="1">
-
-### Deidentification Benchmark Experiment
+### Deidentification Comparison Experiment on Clusters
  
 - **Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 6 chunks per text.
  
@@ -499,7 +498,8 @@ deid_pipeline = Pipeline().setStages([
 
 **Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 21 chunks per text.
 
-| partition | AWS <br> result timing | DataBricks <br> result timing | Colab <br> result timing |
+{:.table-model-big.db}
+| Partition | AWS <br> result timing | DataBricks <br> result timing | Colab <br> result timing |
 |----------:|-------------:|-------------:|-------------:|
 | 1024      | 1 min 3 sec  | 1 min 55 sec | 5 min 45 sec |
 | 512       |  56 sec      | 1 min 26 sec | 5 min 15 sec |
@@ -513,69 +513,44 @@ deid_pipeline = Pipeline().setStages([
 
 </div>
 
+
 <div class="h3-box" markdown="1">
 
-## AWS EMR Cluster Benchmark
+### Deidentification Pipelines Speed Comparison
 
-- **Dataset:** 340 Custom Clinical Texts, approx. 235 tokens per text
+- **Dataset:** 10K Custom Clinical Texts with 1024 partitions, approx. 500 tokens and 14 chunks per text. 
 - **Versions:**
-    - **EMR Version:** ERM.6.15.0
-    - **spark-nlp Version:** v5.2.2
-    - **spark-nlp-jsl Version :** v5.2.1
-    - **Spark Version :** v3.4.1
+    - **spark-nlp Version:** v5.3.1
+    - **spark-nlp-jsl Version:** v5.3.1
+    - **Spark Version:** v3.4.0
 - **Instance Type:** 
-    -  **Primary**: m4.4xlarge, 16 vCore, 64 GiB memory
-    - **Worker :**  m4.4xlarge, 16 vCore, 64 GiB memory
+    -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
 
-**Spark NLP Pipeline:**
+{:.table-model-big.db}
+|Deidentification Pipeline Name                   | Elapsed Time     | Stages           |
+|:------------------------------------------------|-----------------:|:-----------------| 
+|[clinical_deidentification_subentity_optimized](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html)| 67 min 44 seconds| 1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification_generic_optimized](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_generic_optimized_en.html)    | 68 min 31 seconds| 1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification_generic](https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_generic_en.html)                        | 86 min 24 seconds| 1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification_subentity](https://nlp.johnsnowlabs.com/2024/02/21/clinical_deidentification_subentity_en.html)                    | 99 min 41 seconds| 1 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
+|[clinical_deidentification](https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_en.html)                                        |117 min 44 seconds| 2 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_nameAugmented](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_nameAugmented_en.html)  |134 min 27 seconds| 2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_glove](https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_glove_en.html)                            |146 min 51 seconds| 2 NER, 4 Deidentification,  8 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_obfuscation_small](https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_small_en.html)    |147 min 06 seconds| 1 NER, 1 Deidentification,  2 Rule-based NER, 1 clinical embedding, 1 chunk merger  |
+|[clinical_deidentification_slim](https://nlp.johnsnowlabs.com/2023/06/17/clinical_deidentification_slim_en.html)                              |154 min 37 seconds| 2 NER, 4 Deidentification, 15 Rule-based NER, 1 glove embedding,    3 chunk merger  |
+|[clinical_deidentification_multi_mode_output](https://nlp.johnsnowlabs.com/2024/03/27/clinical_deidentification_multi_mode_output_en.html)    |154 min 50 seconds| 2 NER, 4 Deidentification, 13 Rule-based NER, 1 clinical embedding, 3 chunk merger  |
+|[clinical_deidentification_obfuscation_medium](https://nlp.johnsnowlabs.com/2024/02/09/clinical_deidentification_obfuscation_medium_en.html)  |205 min 40 seconds| 2 NER, 1 Deidentification,  2 Rule-based NER, 1 clinical embedding, 1 chunk merger  |
 
-```python
-ner_pipeline = Pipeline(stages = [
-        document_assembler,
-        sentence_detector,
-        tokenizer,
-        word_embeddings,
-        ner_jsl,
-        ner_jsl_converter])
-
-resolver_pipeline = Pipeline(stages = [
-        document_assembler,
-        sentence_detector,
-        tokenizer,
-        word_embeddings,
-        ner_jsl,
-        ner_jsl_converter,
-        chunk2doc,
-        sbert_embeddings,
-        snomed_resolver]) 
-```
-
-**NOTES:**
-`ner_jsl` model is used as ner model.The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results in `parquet` format.
-
-The `sbiobertresolve_snomed_findings` model is used as the resolver model. The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results (snomed_code and snomed_code_definition) in `parquet` format and 722 entities saved.
-
-***Results Table***
-
-| partition | NER Timing     |NER and Resolver Timing | 
-| ---------:|:-------------- |:---------------------| 
-|4          |  24.7 seconds  |1 minutes 8.5  seconds|
-|8          |  23.6 seconds  |1 minutes 7.4  seconds|
-|16         |  22.6 seconds  |1 minutes 6.9  seconds|
-|32         |  23.2 seconds  |1 minutes 5.7  seconds|
-|64         |  22.8 seconds  |1 minutes 6.7  seconds|
-|128        |  23.7 seconds  |1 minutes 7.4  seconds|
-|256        |  23.9 seconds  |1 minutes 6.1  seconds|
-|512        |  23.8 seconds  |1 minutes 8.4  seconds|
-|1024       |  25.9 seconds  |1 minutes 10.2 seconds|
+PS: The reason why pipelines with the same stages have different costs is due to the layers of the NER model and the hardcoded regexes in Deidentification.
 
 </div>
 
+
 <div class="h3-box" markdown="1">
 
-## Deidentification  Pipelines Cost Benchmarks [March-2024]
+### Deidentification Pipelines Cost Benchmarks 
 
-- **Versions:**
+- **Versions:** [March-2024]
     - **spark-nlp Version:** v5.2.2
     - **spark-nlp-jsl Version :** v5.2.1
     - **Spark Version :** v3.4.1
@@ -673,10 +648,10 @@ pipeline_base = Pipeline().setStages([
 
 <div class="h3-box" markdown="1">
 
-
+{:.table-model-big.db}
 | Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline | Databricks <br> Base Pipeline | Databricks <br>  Optimized Pipeline |
 |-----------|--------------------|------------------------|----------------------------|---------------------------------|---------------|--------------------|
-| 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                | **10 min 10 sec** | **6 min 2 sec**       |
+| 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                | **10 min 10 sec** | **6 min 2 sec** |
 | 512       | 4 min 52 sec       | 2 min 30 sec           | **6 min 56 sec**           | 3 min 41 sec                    | 10 min 16 sec | 6 min 11 sec       |
 | 256       | **4 min 50 sec**   | **2 min 30 sec**       | 9 min 10 sec               | 5 min 18 sec                    | 10 min 22 sec | 6 min 14 sec       |
 | 128       | 4 min 55 sec       | 2 min 30 sec           | 14 min 30 sec              | 7 min 51 sec                    | 10 min 21 sec | 5 min 53 sec       |
@@ -692,6 +667,68 @@ Estimated Minimum Costs:
 - EC2 Instance  Optimized Pipeline: partition number: 1024, 10K cost:**$0.18**, 1M cost:**$17.85** 
 - DataBricks Base Pipeline: partition number: 1024, 10K cost:**$0.46**, 1M cost:**$45.76** 
 - DataBricks  Optimized Pipeline: partition number: 1024, 10K cost:**$0.27**, 1M cost:**$27.13** 
+
+<div class="h3-box" markdown="1">
+
+## AWS EMR Cluster Benchmark
+
+- **Dataset:** 340 Custom Clinical Texts, approx. 235 tokens per text
+- **Versions:**
+    - **EMR Version:** ERM.6.15.0
+    - **spark-nlp Version:** v5.2.2
+    - **spark-nlp-jsl Version :** v5.2.1
+    - **Spark Version :** v3.4.1
+- **Instance Type:** 
+    -  **Primary**: m4.4xlarge, 16 vCore, 64 GiB memory
+    - **Worker :**  m4.4xlarge, 16 vCore, 64 GiB memory
+
+**Spark NLP Pipeline:**
+
+```python
+ner_pipeline = Pipeline(stages = [
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        word_embeddings,
+        ner_jsl,
+        ner_jsl_converter])
+
+resolver_pipeline = Pipeline(stages = [
+        document_assembler,
+        sentence_detector,
+        tokenizer,
+        word_embeddings,
+        ner_jsl,
+        ner_jsl_converter,
+        chunk2doc,
+        sbert_embeddings,
+        snomed_resolver]) 
+```
+
+**NOTES:**
+
+`ner_jsl` model is used as ner model.The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results in `parquet` format.
+
+The `sbiobertresolve_snomed_findings` model is used as the resolver model. The inference time was calculated. The timer started with `model.transform(df)`  and ended with writing results (snomed_code and snomed_code_definition) in `parquet` format and 722 entities saved.
+
+***Results Table***
+
+{:.table-model-big.db}
+| Partition | NER Timing     |NER and Resolver Timing| 
+|----------:|:---------------|:----------------------| 
+|4          |  24.7 seconds  |1 minutes 8.5  seconds|
+|8          |  23.6 seconds  |1 minutes 7.4  seconds|
+|16         |  22.6 seconds  |1 minutes 6.9  seconds|
+|32         |  23.2 seconds  |1 minutes 5.7  seconds|
+|64         |  22.8 seconds  |1 minutes 6.7  seconds|
+|128        |  23.7 seconds  |1 minutes 7.4  seconds|
+|256        |  23.9 seconds  |1 minutes 6.1  seconds|
+|512        |  23.8 seconds  |1 minutes 8.4  seconds|
+|1024       |  25.9 seconds  |1 minutes 10.2 seconds|
+
+</div>
+
+
 
 ## CPU NER Benchmarks
 
@@ -821,7 +858,7 @@ This experiment consisted of training a Name Entity Recognition model (token-lev
 We used the Spark NLP class `MedicalNer` and it's method `Approach()` as described in the [documentation](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#medicalner).
 
 The pipeline looks as follows:
-![](/assets/images/CPUvsGPUbenchmarkpic4.png)
+![Benchmark on MedicalNerDLApproach](/assets/images/CPUvsGPUbenchmarkpic4.png)
 
 </div>
 <div class="h3-box" markdown="1">
@@ -886,7 +923,7 @@ CPU times: `~29 min`
 | 1024 | 2.5 |
 | 2048 | 2.5 |
 
-![](/assets/images/CPUvsGPUbenchmarkpic7.png)
+![Inference times](/assets/images/CPUvsGPUbenchmarkpic7.png)
 
 </div>
 <div class="h3-box" markdown="1">
@@ -894,7 +931,7 @@ CPU times: `~29 min`
 #### Performance metrics
 A macro F1-score of about `0.92` (`0.90` in micro) was achieved, with the following charts extracted from the `MedicalNerApproach()` logs:
 
-![](/assets/images/CPUvsGPUbenchmarkpic8.png)
+![Inference times](/assets/images/CPUvsGPUbenchmarkpic8.png)
 
 </div>
 <div class="h3-box" markdown="1">
@@ -911,11 +948,11 @@ You will experiment big GPU improvements in the following cases:
 
 ### MultiGPU Inference on Databricks
 In this part, we will give you an idea on how to choose appropriate hardware specifications for Databricks. Here is a few different hardwares, their prices, as well as their performance:
-![image](https://user-images.githubusercontent.com/25952802/158796429-78ec52b1-c036-4a9c-89c2-d3d1f395f71d.png)
+![MultiGPU Inference on Databricks](https://user-images.githubusercontent.com/25952802/158796429-78ec52b1-c036-4a9c-89c2-d3d1f395f71d.png)
 
 Apparently, GPU hardware is the cheapest among them although it performs the best. Let's see how overall performance looks like:
 
-![image](https://user-images.githubusercontent.com/25952802/158799106-8ee03a8b-8590-49ae-9657-b9663b915324.png)
+![MultiGPU Inference on Databricks](https://user-images.githubusercontent.com/25952802/158799106-8ee03a8b-8590-49ae-9657-b9663b915324.png)
 
 Figure above clearly shows us that GPU should be the first option of ours. 
 
