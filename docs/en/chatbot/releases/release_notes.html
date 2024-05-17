@@ -392,7 +392,7 @@
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Medical Chatbot</li><li class="toc-h2"><a href="/docs/en/chatbot/healthcare_gpt">Home</a></li><li class="toc-h2"><a href="/docs/en/chatbot/getting_started">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/chatbot/features">Features</a></li><li class="toc-h2"><a href="/docs/en/chatbot/tools">Tools</a></li><li class="toc-h2"><a href="/docs/en/chatbot/usage_guides">User Guide</a></li><li class="toc-h2"><a href="/docs/en/chatbot/support">Support</a></li><li class="toc-h2 active"><a href="/docs/en/chatbot/releases/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Medical Chatbot</li><li class="toc-h2"><a href="/docs/en/chatbot/healthcare_gpt">Home</a></li><li class="toc-h2"><a href="/docs/en/chatbot/getting_started">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/chatbot/features">Features</a></li><li class="toc-h2"><a href="/docs/en/chatbot/tools">Tools</a></li><li class="toc-h2"><a href="/docs/en/chatbot/docqa">DocQA</a></li><li class="toc-h2"><a href="/docs/en/chatbot/usage_guides">User Guide</a></li><li class="toc-h2"><a href="/docs/en/chatbot/support">Support</a></li><li class="toc-h2 active"><a href="/docs/en/chatbot/releases/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -622,6 +622,173 @@ function wrapWordInSpan(data, wordToWrap) {
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><div class="h3-box">
 
+  <h2 id="introducing-document-qa-and-nlp-tools">05-17-2024 - Introducing Document Q&amp;A and NLP Tools</h2>
+
+  <p>We are excited to announce two significant enhancements to the Medical Chatbot: the Document Q&amp;A (DocQA) feature and the NLP Tools feature. These additions are designed to streamline your interactions and deepen your engagement with medical texts. The DocQA feature enables seamless management and querying of up to 10 text or PDF documents, providing a focused, session-based interaction. NLP Tools feature introduces a suite of specialized tools for the extraction and analysis of medical information, tailored to your needs. Whether you are interested in extracting entities from your medical text, to de-identify or summarize them, NLP Tools get you covered. These enhancements are part of our continuous effort to provide powerful, user-friendly tools that support and enhance your daily medical information handling and decision-making processes.</p>
+
+  <h2 id="introducing-document-qa-docqa-feature">Introducing Document Q&amp;A (DocQA) Feature</h2>
+
+  <h3 id="overview">Overview</h3>
+  <p>The DocQA feature enhances the Medical Chatbot by allowing users to upload and interact with up to 10 text (.txt) or PDF (.pdf) documents. This feature is designed to provide tailored answers based on the content of the uploaded documents.</p>
+
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/BJ4cXJl7ZyY?si=P1GBmRtTBTmPeRJ0&amp;hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+  <h3 id="key-features">Key Features</h3>
+  <ol>
+    <li><strong>Document Upload and Session Initiation</strong>
+      <ul>
+        <li>Users can upload one or several documents directly into the chat interface.</li>
+        <li>Upon uploading documents, a DocQA session is automatically initiated.</li>
+        <li>Each user is limited to one active DocQA session at any given time.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/17f402c1-e3ff-4533-b135-fcf47791444a" alt="Start_DocQA_Session" /></p>
+
+  <ol>
+    <li><strong>Session Management and Visibility</strong>
+      <ul>
+        <li>The active DocQA session appears as “Document Q&amp;A” in the Conversation History.</li>
+        <li>This session is pinned to the top of the list and remains there until the session is closed or the conversation is removed.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p><img width="2944" alt="Session_Visibility" src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/db5b6fd6-867d-4157-9240-c472e23e5719" /></p>
+
+  <ol>
+    <li><strong>Document Management within Sessions</strong>
+      <ul>
+        <li>If a document is uploaded in a regular chat while a DocQA session is active, it will be automatically added to the existing session’s Target Documents.</li>
+        <li>Uploading more than 10 documents triggers an error message, prompting the user to remove documents before adding new ones.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/3ad7581f-2c52-4232-a4a9-d2a00b28c37a" alt="Upload_to_existing_session" /></p>
+
+  <ol>
+    <li><strong>Session Interaction</strong>
+      <ul>
+        <li>Users can start a new chat by clicking the “New Chat” button, which opens an empty chat window.</li>
+        <li>Users can seamlessly transition to a new chat at any point to address queries beyond the scope of the DocQA Session.</li>
+        <li>Users can easily navigate back to an active DocQA session via the Conversation History.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/c1acce8b-d8d9-4805-8246-c99ef72d3100" alt="DocQA_Switch_to_Normal_Chat" /></p>
+
+  <ol>
+    <li><strong>Session Termination</strong>
+      <ul>
+        <li>Removing a DocQA session from the Chat History will end the session and delete the associated files.</li>
+        <li>Removing all the files from the DocQA Session’s Target Documents will also end the session.</li>
+        <li>Once a DocQA chat session is ended, it transitions into a read-only mode, providing users with a comprehensive overview of the conversation.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/1ba5e643-fda4-44f2-ae0a-3ba1d3a7fb70" alt="Terminate_DocQA_Session" /></p>
+
+  <ol>
+    <li><strong>Query Handling and Document Interaction</strong>
+      <ul>
+        <li>Questions asked within the DocQA session are answered using information from the target documents.</li>
+        <li>Responses include references to the document content. Clicking on a reference will display the document and highlight the relevant paragraph.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/91c5dfe2-f77d-463a-af5b-287831d87b41" alt="Reference_highlighting" /></p>
+
+  <h3 id="user-benefits">User Benefits</h3>
+
+  <ul>
+    <li><strong>Focused Answers:</strong> Provides precise information derived directly from uploaded documents.</li>
+    <li><strong>Efficient Navigation:</strong> Seamlessly switch between general chat and document-specific queries.</li>
+    <li><strong>Resource Management:</strong> Control over the documents within the session ensures relevance and efficiency in information retrieval.</li>
+    <li><strong>Accelerated Learning</strong>: Efficiently reads and analyzes the given documents which helps aid in quick content summarization and analysis for learning.</li>
+  </ul>
+
+  <p>This feature is part of our ongoing commitment to enhance user interaction and improve the informational value of the Medical Chatbot. We look forward to your feedback and continual engagement with this new functionality.</p>
+
+  <h2 id="introducing-the-nlp-tools">Introducing the NLP Tools</h2>
+
+  <h3 id="overview-1">Overview</h3>
+  <p>The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access five distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis.</p>
+
+  <h3 id="key-features-1">Key Features</h3>
+  <ol>
+    <li><strong>Tools Overview</strong>
+      <ul>
+        <li><strong>Deidentification/Obfuscation of PHI</strong>: Automatically detects and masks or obfuscates protected health information (PHI) from medical text to ensure privacy and compliance with data protection regulations. Users can specify to de-identify or obfuscate the medical text based on their requirements.</li>
+      </ul>
+
+      <iframe width="800" height="450" src="https://www.youtube.com/embed/odSyX3uKjwg?si=XZZO8aY3t82Iqslu&amp;hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+      <ul>
+        <li><strong>General Medical Entity Extraction</strong>: Identifies and extracts general medical entities from text, facilitating quick access to relevant medical terms and concepts.</li>
+      </ul>
+
+      <iframe width="800" height="450" src="https://www.youtube.com/embed/FjAzlImC0zQ?si=N415bCn2AU2h6i6U&amp;hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+      <ul>
+        <li><strong>Oncological Entity Extraction</strong>: Specialized for recognizing and extracting terms related to oncology, aiding in the analysis of cancer-related medical texts.</li>
+      </ul>
+
+      <iframe width="800" height="450" src="https://www.youtube.com/embed/qTbH57SI6R0?si=HO8riHFw-cXYeIvK&amp;hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+      <ul>
+        <li><strong>Posology Entity Extraction</strong>: Focuses on extracting dosage and medication instructions from medical documents, crucial for understanding treatment protocols.</li>
+      </ul>
+
+      <iframe width="800" height="450" src="https://www.youtube.com/embed/5M5nLUdTb4I?si=7uCei72nxBSpvwMe&amp;hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+    </li>
+    <li><strong>Customizable Accessibility</strong>
+      <ul>
+        <li>Users can enable or disable NLP tools based on their specific needs or preferences, allowing for a personalized experience and control over the processing features used.</li>
+      </ul>
+    </li>
+    <li><strong>Accessing Tools</strong>
+      <ul>
+        <li>NLP tools can be invoked in two ways: via regular queries in natural language or by using the ‘@’ operator for direct tool activation.</li>
+        <li>Typing ‘@’ at the beginning of the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.</li>
+        <li>The @ operator also allows direct access to <code class="language-plaintext highlighter-rouge">MedResearch</code> and <code class="language-plaintext highlighter-rouge">Wikipedia</code> tools for targeted questions. For instance, when using <code class="language-plaintext highlighter-rouge">@medical_research</code> at the beginning of your question, the chatbot will directly engage the <code class="language-plaintext highlighter-rouge">MedResearch</code> tool without requiring the user to select from multiple options, ensuring a streamlined interaction for focused research tasks.</li>
+        <li>Similarly, for Wikipedia and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:
+          <ul>
+            <li><code class="language-plaintext highlighter-rouge">@search_wikipedia</code>: Query Wikipedia Pages</li>
+            <li><code class="language-plaintext highlighter-rouge">@deidentification</code>: De-identification of Medical Text</li>
+            <li><code class="language-plaintext highlighter-rouge">@obfuscation</code>: Obfuscation of Medical Text</li>
+            <li><code class="language-plaintext highlighter-rouge">@ner_medical</code>: General Medical Entity Extraction</li>
+            <li><code class="language-plaintext highlighter-rouge">@ner_medical_oncology </code>: Oncological Entity Extraction</li>
+            <li><code class="language-plaintext highlighter-rouge">@ner_medical_posology </code>: Posology Entity Extraction</li>
+          </ul>
+        </li>
+        <li>When interacting with the chatbot, the generated answer prominently displays the tool used for response generation right above the answer itself. This clarification ensures users know which tool was utilized.</li>
+        <li>Similarly, when selecting a specific tool using the ‘@’ Selector in your query, the chosen tool is labeled at the top of the query, making it clear which tool was requested for the response generation.</li>
+        <li>Hence, users can better understand the specialties of these tools and experiment to obtain the best possible responses according to their needs.  <br />
+<img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/e70788ea-77bc-48ca-9583-4e3586605241" alt="Risk_Factors" /></li>
+      </ul>
+    </li>
+    <li><strong>Export results in CSV format</strong>
+      <ul>
+        <li>All the Entity Extraction results computed using the NLP tools can be exported in CSV format. For each detected entity, the export also contains confidence information, ensuring transparency and reliability in data analysis.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/18526211-0ebc-43bb-beba-2c2439d479b7" alt="CSV_Download" /></p>
+
+  <h3 id="user-benefits-1">User Benefits</h3>
+  <ul>
+    <li><strong>Enhanced Privacy and Compliance</strong>: Safeguards sensitive information by efficiently deidentifying PHI from medical texts.</li>
+    <li><strong>Focused Content Extraction</strong>: Enables precise extraction of medical entities tailored to general, oncological, and posology contexts, enhancing the utility and accuracy of information retrieval.</li>
+    <li><strong>User-Controlled Flexibility</strong>: Offers the flexibility to tailor tool engagement to individual preferences and requirements.</li>
+    <li><strong>Efficient Tool Access</strong>: Simplifies the process of accessing specific NLP tools through intuitive user interface mechanisms.</li>
+  </ul>
+
   <h2 id="section">03-13-2024</h2>
 
   <p>We are delighted to announce a new update for the Medical Chatbot, bringing significant improvements across the board to enhance user experience and interaction. Here are some highlights:</p>
@@ -772,7 +939,7 @@ When all tools are turned off, John will respond from its memory. See next secti
 
 </div>
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2024-03-13T00:00:00+00:00">Mar 13, 2024</time>
+      <time itemprop="dateModified" datetime="2024-04-24T00:00:00+00:00">Apr 24, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>

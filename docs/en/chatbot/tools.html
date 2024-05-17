@@ -392,7 +392,7 @@
 <path d="M20.2658 26.412H8.38867V26.5781H20.2658V26.412Z" fill="#9EDEFA"/>
 </svg>
 -->
-</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Medical Chatbot</li><li class="toc-h2"><a href="/docs/en/chatbot/healthcare_gpt">Home</a></li><li class="toc-h2"><a href="/docs/en/chatbot/getting_started">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/chatbot/features">Features</a></li><li class="toc-h2 active"><a href="/docs/en/chatbot/tools">Tools</a></li><li class="toc-h2"><a href="/docs/en/chatbot/usage_guides">User Guide</a></li><li class="toc-h2"><a href="/docs/en/chatbot/support">Support</a></li><li class="toc-h2"><a href="/docs/en/chatbot/releases/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
+</a><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Medical Chatbot</li><li class="toc-h2"><a href="/docs/en/chatbot/healthcare_gpt">Home</a></li><li class="toc-h2"><a href="/docs/en/chatbot/getting_started">Getting Started</a></li><li class="toc-h2"><a href="/docs/en/chatbot/features">Features</a></li><li class="toc-h2 active"><a href="/docs/en/chatbot/tools">Tools</a></li><li class="toc-h2"><a href="/docs/en/chatbot/docqa">DocQA</a></li><li class="toc-h2"><a href="/docs/en/chatbot/usage_guides">User Guide</a></li><li class="toc-h2"><a href="/docs/en/chatbot/support">Support</a></li><li class="toc-h2"><a href="/docs/en/chatbot/releases/release_notes">Release Notes</a></li></ul></div></div><div class="page__main js-page-main has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-59JLR64"
@@ -652,12 +652,50 @@ function wrapWordInSpan(data, wordToWrap) {
 </div>
 <div class="h3-box">
 
+  <h2 id="nlp-tools">NLP Tools</h2>
+  <p>The NLP Tools feature is a new addition to the Medical Chatbot, providing specialized capabilities for processing medical texts through Natural Language Processing (NLP). This feature allows users to access five distinct state-of-the-art accuracy tools, each designed for specific tasks related to medical data handling and analysis.</p>
+
+  <h3 id="deidentificationobfuscation-of-phi">Deidentification/Obfuscation of PHI</h3>
+
+  <p>Automatically detects and masks or obfuscates personally identifiable information (PHI) from medical text to ensure privacy and compliance with data protection regulations.</p>
+
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/odSyX3uKjwg?si=XZZO8aY3t82Iqslu&amp;hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+  <h3 id="general-medical-entity-extraction">General Medical Entity Extraction</h3>
+  <p>Identifies and extracts general medical entities from text, facilitating quick access to relevant medical terms and concepts.</p>
+
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/FjAzlImC0zQ?si=N415bCn2AU2h6i6U&amp;hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+  <h3 id="oncological-entity-extraction">Oncological Entity Extraction</h3>
+  <p>Specialized for recognizing and extracting terms related to oncology, aiding in the analysis of cancer-related medical texts.</p>
+
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/qTbH57SI6R0?si=HO8riHFw-cXYeIvK&amp;hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+  <h3 id="posology-entity-extraction">Posology Entity Extraction</h3>
+  <p>Focuses on extracting dosage and medication instructions from medical documents, crucial for understanding treatment protocols.</p>
+
+  <iframe width="800" height="450" src="https://www.youtube.com/embed/5M5nLUdTb4I?si=7uCei72nxBSpvwMe&amp;hd=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+
+  <p><strong>Export results in csv format-</strong> All results computed using the NLP tools can be exported in csv format. For each detected entity the export also contains confidence information.</p>
+
+  <p><strong>NLP Tools activation-</strong> Users can enable or disable NLP tools based on their specific needs or preferences, allowing for a personalized experience and control over the processing features used.</p>
+
+  <p><strong>Accessing NLP Tools-</strong> NLP tools can be invoked in two ways: via regular queries in natural language or by using the ‘@’ operator for direct tool activation.</p>
+
+  <p><strong>User Benefits</strong></p>
+  <ul>
+    <li><strong>Enhanced Privacy and Compliance</strong>: Safeguards sensitive information by efficiently deidentifying PHI from medical texts.</li>
+    <li><strong>Focused Content Extraction</strong>: Enables precise extraction of medical entities tailored to general, oncological, and posology contexts, enhancing the utility and accuracy of information retrieval.</li>
+    <li><strong>User-Controlled Flexibility</strong>: Offers the flexibility to tailor tool engagement to individual preferences and requirements.</li>
+    <li><strong>Efficient Tool Access</strong>: Simplifies the process of accessing specific NLP tools through intuitive user interface mechanisms.</li>
+  </ul>
+
   <h2 id="wikipedia-answering-short-or-generic-questions">Wikipedia: Answering Short or Generic Questions</h2>
 
   <p>For users seeking quick answers to short or generic questions, the Medical Chatbot integrates seamlessly with Wikipedia. This feature is designed to fetch concise and reliable information from the vast expanse of Wikipedia’s medical content. Whether it’s a brief overview of a medical condition, historical context, or general health information, this tool ensures users can obtain quick answers efficiently. It’s an excellent resource for those in need of rapid, accessible, and accurate information without the need for deep research.</p>
 
   <blockquote>
-    <p><strong><em>NOTE:</em></strong>  To enforce the use of this tool add the following sentence at the end of your query: <strong>Ask Wikipedia.</strong></p>
+    <p><strong><em>NOTE:</em></strong>  To enforce the use of this tool add the following sentence at the end of your query: <strong>Ask Wikipedia.</strong> or use the @ operator.</p>
   </blockquote>
 
 </div>
@@ -668,8 +706,32 @@ function wrapWordInSpan(data, wordToWrap) {
   <p>John’s Memory is a versatile feature within the Medical Chatbot, dedicated to summarization tasks and answering general questions. This tool is particularly useful when users need a succinct summary of extensive information or when they have broad questions that do not require deep, research-level detail. John’s Memory employs advanced NLP (Natural Language Processing) techniques to comprehend, interpret, and condense information, making it an invaluable asset for users who need quick insights or overviews.</p>
 
 </div>
+
+<h2 id="-operator-for-accessibility">@ Operator for Accessibility</h2>
+
+<p>Typing ‘@’ in the query box triggers a contextual menu displaying all available tools, similar to tagging functionality in Microsoft Teams.</p>
+
+<p><img src="https://github.com/JohnSnowLabs/johnsnowlabs/assets/85957146/e70788ea-77bc-48ca-9583-4e3586605241" alt="Risk_Factors" /></p>
+
+<p>For instance, the @ operator also allows direct access to <code class="language-plaintext highlighter-rouge">MedResearch</code> tool for targeted questions to all active knowledgebases (see <a href="/docs/en/chatbot/tools">MedResearch</a>). When using <code class="language-plaintext highlighter-rouge">@MedResearch</code> at the beginning of your question, the chatbot will directly engage the MedResearch tool without requiring user to select from multiple options, ensuring a streamlined interaction for focused research tasks.</p>
+
+<p>Similarly, for Wikipedia and NLP Tools, each tool can be easily selected and utilized with the @ operator as follows:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">@search_wikipedia</code>: Query Wikipedia Pages</li>
+  <li><code class="language-plaintext highlighter-rouge">@deidentification</code>: De-identification of Medical Text</li>
+  <li><code class="language-plaintext highlighter-rouge">@obfuscation</code>: Obfuscation of Medical Text</li>
+  <li><code class="language-plaintext highlighter-rouge">@ner_medical</code>: General Medical Entity Extraction</li>
+  <li><code class="language-plaintext highlighter-rouge">@ner_medical_oncology </code>: Oncological Entity Extraction</li>
+  <li><code class="language-plaintext highlighter-rouge">@ner_medical_posology </code>: Posology Entity Extraction</li>
+</ul>
+
+<p>When interacting with the chatbot, the generated answer prominently displays the tool used for response generation right above the answer itself. This clarification ensures users know which tool was utilized.</p>
+
+<p>Similarly, when selecting a specific tool using the ‘@’ Selector in your query, the chosen tool is labeled at the top of the query, making it clear which tool was requested for the response generation.
+Hence, users can better understand the specialties of these tools and experiment to obtain the best possible responses according to their needs.</p>
+
 </div><div class="d-print-none"><footer class="article__footer"><span class="footer_date">Last updated
-      <time itemprop="dateModified" datetime="2024-01-19T00:00:00+00:00">Jan 19, 2024</time>
+      <time itemprop="dateModified" datetime="2024-05-17T00:00:00+00:00">May 17, 2024</time>
     </span><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
@@ -855,7 +917,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/chatbot/features">Features</a></div><div class="next nav_link"><span>NEXT</span><a href="/docs/en/chatbot/usage_guides">User Guide</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/docs/en/chatbot/features">Features</a></div><div class="next nav_link"><span>NEXT</span><a href="/docs/en/chatbot/docqa">DocQA</a></div></div></div>
 
 </div>
 </div>
