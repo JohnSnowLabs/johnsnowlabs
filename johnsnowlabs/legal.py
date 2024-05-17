@@ -8,9 +8,6 @@ try:
     if try_import_lib("sparknlp_jsl") and try_import_lib("sparknlp"):
         from sparknlp_jsl.functions import *
         from sparknlp_jsl.training import *
-        from sparknlp_jsl.annotator.windowed.windowed_sentence import (
-            WindowedSentenceModel,
-        )
         from sparknlp_jsl.legal.token_classification.ner.zero_shot_ner import ZeroShotNerModel
         from sparknlp_jsl.training_log_parser import ner_log_parser
 
@@ -110,6 +107,11 @@ try:
             TextMatcherInternalModel as TextMatcherModel,
             RegexMatcherInternal as RegexMatcher,
             RegexMatcherInternalModel as RegexMatcherModel,
+            AssertionMerger,
+            LightDeIdentification,
+            WindowedSentenceModel,
+            MultiChunk2Doc,
+            FewShotAssertionClassifierModel
         )
         from sparknlp_jsl.modelTracer import ModelTracer
 
