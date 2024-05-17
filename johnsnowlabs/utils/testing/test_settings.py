@@ -13,11 +13,10 @@ Lines are derived by splitting on \n are not always valid python code, since act
 
 # Print content of cells before running them or not
 
-from johnsnowlabs.utils.testing.nb_nodes import Nodes
+# from johnsnowlabs.utils.testing.nb_nodes import Nodes
+# inject_header_nodes = [Nodes.imports]
 
 print_cell_before_executing = False
-
-inject_header_nodes = [Nodes.imports]
 
 # Applied to entire Cell. Handy when Code appears in Multi-Line Formats (Like Pipeline Definitions)
 # Only first Match is applied if multiple keys are matches
@@ -74,7 +73,7 @@ regex_cell_content_drop_matcher = [
 
 #### General Testing Configs and Folders
 # testing_dir = f'{settings.root_dir}/tmp_tests'
-success_worker_print = "$$JSL_TESTING_WORKER_SUC$$"
+success_worker_print = "$$JSL_TESTINGto_WORKER_SUC$$"
 workshop_git = "https://github.com/JohnSnowLabs/spark-nlp-workshop.git"
 testing_dir = (
     "/home/ckl/Documents/freelance/jsl/johnsnowlabs-4-real/tests/test_notebooks/workdir"
