@@ -203,8 +203,6 @@ sparknlp-healthcare:
     children:
       - title: Getting Started
         url: /docs/en/license_getting_started
-      - title: Installation
-        url: /docs/en/licensed_install
       - title: Annotators
         url: /docs/en/licensed_annotators
       - title: Training
@@ -231,6 +229,8 @@ sparknlp-healthcare:
         url: /docs/en/best_practices_pretrained_models
   - title: Healthcare NLP
     children:
+      - title: Installation
+        url: /docs/en/licensed_install
       - title: Release Notes
         url: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
       - title: Healthcare Models
