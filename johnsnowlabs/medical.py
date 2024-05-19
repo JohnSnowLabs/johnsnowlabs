@@ -12,9 +12,6 @@ try:
     if try_import_lib("sparknlp_jsl") and try_import_lib("sparknlp"):
         from sparknlp_jsl.functions import *
         from sparknlp_jsl.training import *
-        from sparknlp_jsl.annotator.windowed.windowed_sentence import (
-            WindowedSentenceModel,
-        )
         from sparknlp_jsl.annotator.ner.zero_shot_ner import ZeroShotNerModel
         from sparknlp_jsl.annotator import (
             GenericSVMClassifierApproach,
@@ -87,11 +84,18 @@ try:
             IOBTagger,
             DocumentFiltererByClassifier,
             Flattener,
+            AssertionMerger,
+            LightDeIdentification,
+            WindowedSentenceModel,
+            MultiChunk2Doc,
+            FewShotAssertionClassifierModel
         )
         from sparknlp_jsl.structured_deidentification import StructuredDeidentification
         from sparknlp_jsl.modelTracer import ModelTracer
         from sparknlp_jsl import training_log_parser, Deid
         from sparknlp_jsl.training_log_parser import ner_log_parser
+        from sparknlp_jsl.pipeline_output_parser import PipelineOutputParser
+        from sparknlp_jsl.updateModels import UpdateModels
 
         from sparknlp_jsl.base import FeaturesAssembler
 
