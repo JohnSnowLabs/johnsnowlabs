@@ -42,7 +42,7 @@ The first step you need to carry out is installing johnsnowlabs library. This is
 
 </div><div class="h3-box" markdown="1">
 
-#### 2. Installing Enterprise NLP (Finance, Legal, Clinical)
+#### 2. Installing Enterprise NLP (Finance, Legal, Helathcare)
 
 Import `johnsnowlabs` and use our one-liner `nlp.install()` to install all the dependencies, downloading the jars (yes, Spark NLP runs on top of the Java Virtual Machine!), preparing the cluster environment variables, licenses, etc!
 
@@ -425,7 +425,7 @@ Make sure the following prerequisites are set:
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on Ubuntu 
+## Non-johnsnowlabs Helathcare NLP on Ubuntu 
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 For installing John Snow Labs NLP libraries on an Ubuntu machine/VM please run the following command:
@@ -463,7 +463,7 @@ The install script downloads a couple of example notebooks that you can use to s
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP via Docker
+## Non-johnsnowlabs Helathcare NLP via Docker
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 A docker image that contains all the required libraries for installing and running Enterprise Spark NLP libraries is also available. However, it does not contain the library itself, as it is licensed, and requires installation credentials.
@@ -528,10 +528,10 @@ curl -o sparknlp_keys.txt https://raw.githubusercontent.com/JohnSnowLabs/spark-n
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on python
+## Non-johnsnowlabs Helathcare NLP on python
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
-You can install the Clinical NLP by using:
+You can install the Helathcare NLP by using:
 
 ```bash
 pip install -q spark-nlp-jsl==${version} --extra-index-url https://pypi.johnsnowlabs.com/${secret.code} --upgrade
@@ -626,7 +626,7 @@ spark-submit --packages com.johnsnowlabs.nlp:spark-nlp_2.12:${public_version} --
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP for Scala
+## Non-johnsnowlabs Helathcare NLP for Scala
 > These instructions use non-johnsnowlabs installation syntax, since `johnsnowlabs` is a Python library. 
 
 #### Use Spark NLP in Spark shell
@@ -653,7 +653,7 @@ spark-shell --packages com.johnsnowlabs.nlp:spark-nlp_2.12:${public-version} --j
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP in Sbt project
+## Non-johnsnowlabs Helathcare NLP in Sbt project
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 1.Download the fat jar for Enterprise Spark NLP.
@@ -685,7 +685,7 @@ unmanagedJars in Compile += file("lib/sparknlp-jsl.jar")
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on Colab
+## Non-johnsnowlabs Helathcare NLP on Colab
 
 This is the way to run Clinical NLP in Google Colab if you don't use `johnsnowlabs` library.
 
@@ -744,7 +744,7 @@ os.environ.update(license_keys)
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on GCP Dataproc
+## Non-johnsnowlabs Helathcare NLP on GCP Dataproc
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 - You can follow the steps here for [installation via IU](https://github.com/JohnSnowLabs/spark-nlp-workshop/tree/master/platforms/dataproc)
@@ -834,7 +834,7 @@ Or you can set `.master('yarn')`.
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on AWS SageMaker
+## Non-johnsnowlabs Helathcare NLP on AWS SageMaker
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 1. Access AWS Sagemaker in AWS.
@@ -875,7 +875,7 @@ spark = sparknlp_jsl.start(license_keys['SECRET'])
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP with Poetry
+## Non-johnsnowlabs Helathcare NLP with Poetry
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 This is a sample `project.toml` file which you can use with `poetry install` to setup spark NLP + the Healthcare python library `spark-nlp-jsl`
@@ -906,7 +906,7 @@ build-backend = "poetry.core.masonry.api"
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on AWS EMR
+## Non-johnsnowlabs Helathcare NLP on AWS EMR
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 In this page we explain how to setup Spark-NLP + Spark-NLP Healthcare in AWS EMR, using the AWS console.
@@ -923,21 +923,21 @@ In this page we explain how to setup Spark-NLP + Spark-NLP Healthcare in AWS EMR
   - select required applications
 
 
-![Non-johnsnowlabs Clinical NLP on AWS EMR](/assets/images/emr/image.png "lit_shadow")
+![Non-johnsnowlabs Helathcare NLP on AWS EMR](/assets/images/emr/image.png "lit_shadow")
 
  - Specify EC2  instances for the cluster, as primary/master node  and cores/workers
  - Specify the storage/ EBS volume
  
- ![Non-johnsnowlabs Clinical NLP on AWS EMR](/assets/images/emr/image-1.png "lit_shadow")
+ ![Non-johnsnowlabs Helathcare NLP on AWS EMR](/assets/images/emr/image-1.png "lit_shadow")
 
  - Choose Cluster scaling and provisioning 
  - Choose Networking / VPC
  
- ![Non-johnsnowlabs Clinical NLP on AWS EMR](/assets/images/emr/image-2.png "lit_shadow")
+ ![Non-johnsnowlabs Helathcare NLP on AWS EMR](/assets/images/emr/image-2.png "lit_shadow")
 
 - Choose Security Groups/Firewall for primary/master node and cores/workers/slaves
 
-![Non-johnsnowlabs Clinical NLP on AWS EMR](/assets/images/emr/image-3.png "lit_shadow")
+![Non-johnsnowlabs Helathcare NLP on AWS EMR](/assets/images/emr/image-3.png "lit_shadow")
 
 - If you have add steps , that will be executed after cluster is provisioned
 - Specify the S3 location for logs
@@ -1016,7 +1016,7 @@ You can change spark configuration according to your needs.
 
 </div><div class="h3-box" markdown="1">
 
-## Non-johnsnowlabs Clinical NLP on Amazon Linux 2
+## Non-johnsnowlabs Helathcare NLP on Amazon Linux 2
 > These instructions use non-johnsnowlabs installation syntax. For simplified installation with `johnsnowlabs` library, check first section.
 
 ```bash
@@ -1043,7 +1043,7 @@ You can pick the index number (I am using java-8 as default - index 2):
 
 </div><div class="h3-box" markdown="1">
 
-![Non-johnsnowlabs Clinical NLP on Amazon Linux 2](/assets/images/installation/amazon-linux.png "lit_shadow")
+![Non-johnsnowlabs Helathcare NLP on Amazon Linux 2](/assets/images/installation/amazon-linux.png "lit_shadow")
 
 </div><div class="h3-box" markdown="1">
 
