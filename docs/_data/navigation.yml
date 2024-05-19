@@ -201,42 +201,42 @@ annotation-lab:
 sparknlp-healthcare:
   - title: All Enterprise libraries
     children:
-      - title: Getting Started
-        url: /docs/en/license_getting_started
-      - title: Annotators
-        url: /docs/en/licensed_annotators
-      - title: Training
-        url: /docs/en/licensed_training
-      - title: Evaluation
-        url: /docs/en/evaluation
-      - title: Risk Adjustments Score Calculation
-        url: /docs/en/healthcare_risk_adjustments_score_calculation
-      - title: Utility & Helper Modules
-        url: /docs/en/utility_helper_modules
-      - title: Serving Spark NLP&#58 SynapseML
-        url: /docs/en/licensed_serving_spark_nlp_via_api_synapseml
-      - title: Serving Spark NLP&#58 FastAPI
-        url: /docs/en/licensed_serving_spark_nlp_via_api_fastapi
-      - title: Scala API (Scaladoc)
-        url: /licensed/api/
-      - title: Python API (Sphinx)
-        url: /licensed/api/python
-      - title: Wiki
-        url: /docs/en/wiki
-      - title: Speed Benchmarks
-        url: /docs/en/benchmark      
-      - title: Best Practices Using Pretrained Models Together
-        url: /docs/en/best_practices_pretrained_models
-  - title: Healthcare NLP
-    children:
-      - title: Installation
-        url: /docs/en/licensed_install
-      - title: Release Notes
-        url: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
-      - title: Healthcare Models
-        url: /models?edition=Spark+NLP+for+Healthcare
-      - title: Version Compatibility
-        url: /docs/en/licensed_version_compatibility
+      - title: Healthcare NLP
+        children:
+          - title: Getting Started
+            url: /docs/en/license_getting_started
+          - title: Installation
+            url: /docs/en/licensed_install
+          - title: Annotators
+            url: /docs/en/licensed_annotators
+          - title: Training
+            url: /docs/en/licensed_training
+          - title: Evaluation
+            url: /docs/en/evaluation
+          - title: Risk Adjustments Score Calculation
+            url: /docs/en/healthcare_risk_adjustments_score_calculation
+          - title: Utility & Helper Modules
+            url: /docs/en/utility_helper_modules
+          - title: Serving Spark NLP&#58 SynapseML
+            url: /docs/en/licensed_serving_spark_nlp_via_api_synapseml
+          - title: Serving Spark NLP&#58 FastAPI
+            url: /docs/en/licensed_serving_spark_nlp_via_api_fastapi
+          - title: Scala API (Scaladoc)
+            url: /licensed/api/
+          - title: Python API (Sphinx)
+            url: /licensed/api/python
+          - title: Wiki
+            url: /docs/en/wiki
+          - title: Speed Benchmarks
+            url: /docs/en/benchmark      
+          - title: Best Practices Using Pretrained Models Together
+            url: /docs/en/best_practices_pretrained_models
+          - title: Release Notes
+            url: /docs/en/spark_nlp_healthcare_versions/licensed_release_notes
+          - title: Healthcare Models
+            url: /models?edition=Spark+NLP+for+Healthcare
+          - title: Version Compatibility
+            url: /docs/en/licensed_version_compatibility
   - title: Visual NLP
     children:
       - title: Getting Started
