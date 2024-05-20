@@ -31,6 +31,8 @@ Parameters:
 
 - `DoExceptionHandling`: If it is set as True, the annotator tries to process as usual and ff exception-causing data (e.g. corrupted record/ document) is passed to the annotator, an exception warning is emitted which has the exception message.
 
+- `datasetInfo` *(Str)*: Descriptive information about the dataset being used.
+
 For pretrained models please see the
 [Models Hub](https://nlp.johnsnowlabs.com/models?task=Assertion+Status) for available models.
 {%- endcapture -%}
@@ -453,6 +455,8 @@ Parameters:
 - `ScopeWindow`: Sets the scope of the window of the assertion expression.
 
 - `StartCol`: Set a column that contains the token number for the start of the target.
+
+- `datasetInfo` *(Str)*: Descriptive information about the dataset being used.
 
 {%- endcapture -%}
 
