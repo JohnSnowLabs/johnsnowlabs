@@ -32,8 +32,8 @@ This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
-
 from sparknlp.pretrained import PretrainedPipeline
 
 deid_pipeline = PretrainedPipeline("ner_deid_generic_context_augmented_pipeline", "en", "clinical/models")
@@ -45,11 +45,8 @@ Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's licens
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
 
 result = deid_pipeline.fullAnnotate(text)
-
-
 ```
 ```scala
-
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
 val deid_pipeline = PretrainedPipeline("ner_deid_generic_context_augmented_pipeline", "en", "clinical/models")
@@ -61,14 +58,12 @@ Patient's ID: 764543, VIN : 1HGBH41JXMN109286, SSN #333-44-6666, Driver's licens
 Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com."""
 
 val result = deid_pipeline.fullAnnotate(text)
-
 ```
 </div>
 
 ## Results
 
 ```bash
-
 |    | chunk             |   begin |   end | entity        |
 |---:|:------------------|--------:|------:|:--------------|
 |  0 | Hendrickson, Ora  |       7 |    22 | NAME          |
@@ -87,7 +82,6 @@ val result = deid_pipeline.fullAnnotate(text)
 | 13 | 0295 Keats Street |     301 |   317 | LOCATION      |
 | 14 | San Francisco     |     320 |   332 | LOCATION      |
 | 15 | smith@gmail.com   |     343 |   357 | EMAIL         |
-
 ```
 
 {:.model-param}
