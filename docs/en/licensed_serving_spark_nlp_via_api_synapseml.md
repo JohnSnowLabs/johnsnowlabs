@@ -236,7 +236,7 @@ To do so, go to **Compute →Clusters** in Databricks and create a new cluster (
 
 In your environment variables, as always, add the keys from your license in a *key=value* format
 
-![](https://cdn-images-1.medium.com/max/2000/1*kpurIakeiyDiSmdpCVxtOw.png)
+![SynapseML on Databricks](https://cdn-images-1.medium.com/max/2000/1*kpurIakeiyDiSmdpCVxtOw.png)
 
 Then, in **Cluster → Libraries**, you need to install:
 
@@ -261,6 +261,6 @@ And the rest of the code from the **Importing all the libraries** section and on
 
 * Follow us on Medium: [Spark NLP](https://medium.com/spark-nlp) and [Veysel Kocaman](https://vkocaman.medium.com/)
 
-* Write to support@johnsnowlabs.com for any additional request you may have
+* Write to [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com) for any additional request you may have
 
 </div>

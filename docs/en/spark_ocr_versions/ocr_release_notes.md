@@ -18,7 +18,7 @@ sidebar:
 Release date: 11-04-2024
 
 
- ## Visual NLP 5.3.1 Release Notes 🕶️
+## Visual NLP 5.3.1 Release Notes 🕶️
 
 
 **we're glad to announce that Visual NLP 5.3.1 has been released. New models, notebooks, bug fixes and more!!! 📢📢📢**
