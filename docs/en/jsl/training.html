@@ -703,7 +703,7 @@ If your dataset is using a different label seperator, you must configure the <co
     <p>Your dataset must be in the form of <a href="https://universaldependencies.org/">Universal Dependencies</a>.
 You must configure the dataset_path in the <code class="language-plaintext highlighter-rouge">fit()</code> method to point to the universal dependencies you wish to train on.     <br />
 You can configure the delimiter via the <code class="language-plaintext highlighter-rouge">label_seperator</code> parameter    <br />
-[POS training demo]](https://colab.research.google.com/drive/1CZqHQmrxkDf7y3rQHVjO-97tCnpUXu_3?usp=sharing)</p>
+<a href="https://colab.research.google.com/drive/1CZqHQmrxkDf7y3rQHVjO-97tCnpUXu_3?usp=sharing">POS training demo</a></p>
 
     <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fitted_pipe</span> <span class="o">=</span> <span class="n">nlp</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'train.pos'</span><span class="p">).</span><span class="n">fit</span><span class="p">(</span><span class="n">dataset_path</span><span class="o">=</span><span class="n">train_path</span><span class="p">,</span> <span class="n">label_seperator</span><span class="o">=</span><span class="s">'_'</span><span class="p">)</span>
 <span class="n">preds</span> <span class="o">=</span> <span class="n">fitted_pipe</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
@@ -1249,7 +1249,8 @@ $(document).ready(function () {
                 items:3
             },
             400:{
-                items:4
+                items:4,
+                margin:10
             },
             500:{
                 items:6

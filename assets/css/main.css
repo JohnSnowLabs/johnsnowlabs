@@ -7654,7 +7654,7 @@ code {
     .pagination.pagination_big .owl-stage-outer {
       text-align: center; }
       .pagination.pagination_big .owl-stage-outer .owl-stage {
-        display: inline-block; }
+        display: flex; }
     .pagination.pagination_big .owl-stage-outer {
       position: relative;
       z-index: 5; }
