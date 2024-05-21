@@ -3,7 +3,7 @@ from os.path import expanduser
 
 from johnsnowlabs.utils.env_utils import (
     env_required_license,
-    is_running_in_databricks,
+    is_running_in_databricks_runtime,
     is_running_in_emr,
     set_py4j_logger_to_error_on_databricks,
 )
@@ -37,7 +37,7 @@ enforce_secret_on_version = False
 enforce_versions = True
 
 # Environment
-on_databricks = is_running_in_databricks()
+on_databricks = is_running_in_databricks_runtime()
 on_emr = is_running_in_emr()
 license_required = env_required_license()
 

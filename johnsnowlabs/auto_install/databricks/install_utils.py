@@ -12,7 +12,7 @@ from johnsnowlabs.py_models.install_info import (
     RootInfo,
 )
 from johnsnowlabs.py_models.lib_version import LibVersion
-from johnsnowlabs.utils.env_utils import is_running_in_databricks
+from johnsnowlabs.utils.env_utils import is_running_in_databricks_runtime
 from .dbfs import *
 
 # https://pypi.org/project/databricks-api/
@@ -357,7 +357,7 @@ def install_jsl_suite_to_cluster(
         )
 
     # On databricks environment should restart current cluster to apply uninstalls and installations
-    if is_running_in_databricks():
+    if is_running_in_databricks_runtime():
         try:
             restart_cluster(db, cluster_id)
         except:
