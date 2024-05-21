@@ -32,6 +32,7 @@ This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+  
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
