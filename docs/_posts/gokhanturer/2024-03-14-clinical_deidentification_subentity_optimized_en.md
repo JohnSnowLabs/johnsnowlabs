@@ -44,10 +44,8 @@ Phone (302) 786-5227, 0295 Keats Street, San Francisco, E-MAIL: smith@gmail.com.
 
 deid_result = deid_pipeline.fullAnnotate(text)
 
-print('
-'.join([i.metadata['masked'] for i in deid_result[0]['obfuscated']]))
-print('
-'.join([i.result for i in deid_result[0]['obfuscated']]))
+print('\n'.join([i.metadata['masked'] for i in deid_result[0]['obfuscated']]))
+print('\n'.join([i.result for i in deid_result[0]['obfuscated']]))
 ```
 ```scala
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline

@@ -35,7 +35,6 @@ This model maps clinical entities and concepts to SNOMED codes using `mpnet_embe
 {% include programmingLanguageSelectScalaPythonNLU.html %}
   
 ```python
-
 documentAssembler = DocumentAssembler()\
       .setInputCol("text")\
       .setOutputCol("document")
@@ -95,10 +94,8 @@ resolver_pipeline= Pipeline(stages=[
 data = spark.createDataFrame([["""This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, COPD, gastritis, and TIA. He initially presented to Braintree with a nonspecific ST-T abnormality and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of occlusion of the mid left anterior descending coronary artery lesion, which was complicated by hypotension and bradycardia. He required atropine, IV fluids, and dopamine, possibly secondary to a vagal reaction. He was subsequently transferred to the CCU for close monitoring. He was hemodynamically stable at the time of admission to the CCU."""]]).toDF("text")
 
 result = resolver_pipeline.fit(data).transform(data)
-
 ```
 ```scala
-
 val documentAssembler = new DocumentAssembler()
       .setInputCol("text")
       .setOutputCol("document")

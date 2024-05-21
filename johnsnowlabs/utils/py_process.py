@@ -10,13 +10,13 @@ import johnsnowlabs.utils.testing.test_settings
 from johnsnowlabs.utils.file_utils import str_to_file
 
 def run_cmd_and_check_succ(
-    args: List[str],
-    log=True,
-    suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
-    return_pipes=False,
-    shell=False,
-    raise_on_fail=False,
-    use_code=False,
+        args: List[str],
+        log=True,
+        suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
+        return_pipes=False,
+        shell=False,
+        raise_on_fail=False,
+        use_code=False,
 ) -> bool:
     if log:
         if len(args) == 1:
@@ -50,9 +50,9 @@ def run_cmd_and_check_succ(
 
 
 def process_was_suc(
-    result: subprocess.CompletedProcess,
-    suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
-    use_code=False,
+        result: subprocess.CompletedProcess,
+        suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
+        use_code=False,
 ) -> bool:
     if use_code and result.returncode != 0:
         return False
@@ -69,33 +69,15 @@ def log_process(result: subprocess.CompletedProcess):
     print(result.stderr.decode())
 
 
-# def execute_slave_test(py_cmd):
-#     prefix = 'from johnsnowlabs import * \n'
-#     postfix = f"\neval_class('{py_cmd}') \n"
-#     script_file_name = 'test_script.py'
-#     script = inspect.getsource(eval_class)
-#     script = f'{prefix}{script}{postfix}'
-#     print(script)
-#     str_to_file(script, script_file_name)
-#     return run_cmd_and_check_succ(['python', script_file_name])
-#
-
-
-def execute_function_as_new_proc(
-    function: Callable,
-    suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
-):
-    pass
-
 
 def execute_py_script_string_as_new_proc(
-    py_script,
-    suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
-    py_exec_path=sys.executable,
-    log=True,
-    file_name=None,  # Optional metadata
-    use_i_py=False,
-    add_prefix=True,
+        py_script,
+        suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
+        py_exec_path=sys.executable,
+        log=True,
+        file_name=None,  # Optional metadata
+        use_i_py=False,
+        add_prefix=True,
 ):
     Path(johnsnowlabs.utils.testing.test_settings.tmp_markdown_dir).mkdir(
         exist_ok=True, parents=True
@@ -126,11 +108,11 @@ print('{suc_print}')
 
 
 def execute_py_script_as_new_proc(
-    py_script_path: str,
-    suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
-    py_exec_path=sys.executable,
-    log=True,
-    use_i_py=True,
+        py_script_path: str,
+        suc_print=johnsnowlabs.utils.testing.test_settings.success_worker_print,
+        py_exec_path=sys.executable,
+        log=True,
+        use_i_py=True,
 ):
     # requires ipython installed
     if use_i_py:

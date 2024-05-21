@@ -135,7 +135,8 @@ val resolver_pipeline = new PipelineModel().setStages(Array(
           ner_converter,
           c2doc,
           biolord_embedding,
-          rxnorm_resolver])
+          rxnorm_resolver))
+
 
 
 val data = Seq([["""The patient was prescribed aspirin and and Albuterol inhaler, two puffs every 4 hours as needed for asthma. She was seen by the endocrinology service and was discharged on avandia 4 mg at night , Coumadin 5 mg with meals , and metformin 1000 mg two times a day and Lisinopril 10 mg daily."""]]).toDF("text")

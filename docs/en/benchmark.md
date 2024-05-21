@@ -345,8 +345,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 - DataBricks Config: 8 CPU Core, 32GiB RAM (2 worker, Standard_DS3_v2)
 - AWS Config: 8 CPU Cores, 14GiB RAM (c6a.2xlarge)
 
-
-| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+{:.table-model-big.db}
+| Partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
 | --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
 | 4         | 23 sec        | 11 sec        | 4.36 mins       | 3.02 mins       |  2.40 mins                 | 1.58 mins                  |
 | 8         | 15 sec        | 9 sec         | 3.21 mins       | 2.27 mins       |  1.48 mins                 | 1.35 mins                  |
@@ -362,7 +362,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 - DataBricks Config: 16 CPU Core,64GiB RAM (4 worker, Standard_DS3_v2)
 - AWS Config: 16 CPU Cores, 27GiB RAM (c6a.4xlarge)
 
-| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+{:.table-model-big.db}
+| Partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
 | --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
 | 4         | 32.5 sec      | 11 sec        | 4.19 mins       | 2.53 mins       |  2.58 mins                 | 1.48 mins                  |
 | 8         | 15.1 sec      | 7 sec         | 2.25 mins       | 1.43 mins       |  1.38 mins                 | 1.04 mins                  |
@@ -376,8 +377,8 @@ In that case, try playing with various parameters in mapper or retrain/ augment 
 - DataBricks Config: 32 CPU Core, 128GiB RAM (8 worker, Standard_DS3_v2)
 - AWS Config: 32 CPU Cores, 58GiB RAM (c6a.8xlarge)
 
-
-| partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
+{:.table-model-big.db}
+| Partition | DataBricks <br> mapper timing | AWS <br> mapper timing | DataBricks <br> resolver timing | AWS <br> resolver timing | DataBricks <br> mapper and resolver timing | AWS <br> mapper and resolver timing |
 | --------- | ------------- | ------------- | --------------- | --------------- | -------------------------- | -------------------------- |
 | 4         | 37.3 sec      | 12 sec        | 4.46 mins       | 2.37 mins       |  2.52 mins                 | 1.47 mins                  |
 | 8         | 26.7 sec      | 7 sec         | 2.46 mins       | 1.39 mins       |  1.37 mins                 | 1.04 mins                  |
@@ -427,7 +428,8 @@ resolver_pipeline = PipelineModel(
 
 ***Results Table***
 
-|partition|preprocessing|embeddings| resolver    |onnx_embeddings|resolver_with_onnx_embeddings|
+{:.table-model-big.db}
+|Partition|preprocessing|embeddings| resolver    |onnx_embeddings|resolver_with_onnx_embeddings|
 |--------:|------------:|---------:|------------:|--------------:|------------:|
 | 4       |      25 sec | 25 sec   |7 min 46 sec |   9 sec       |8 min 29 sec |
 | 8       |      21 sec | 25 sec   |5 min 12 sec |   9 sec       |4 min 53 sec |
@@ -439,15 +441,9 @@ resolver_pipeline = PipelineModel(
 | 512     |      24 sec | 27 sec   |4 min 46 sec |   12 sec      |4 min 22 sec |
 | 1024    |      29 sec | 30 sec   |4 min 24 sec |   14 sec      |4 min 29 sec |
 
-</div>
-
-
-
-
+</div><div class="h3-box" markdown="1">
 
 ## Deidentification Benchmarks
-
-<div class="h3-box" markdown="1">
 
 ### Deidentification Comparison Experiment on Clusters
  
@@ -502,7 +498,8 @@ deid_pipeline = Pipeline().setStages([
 
 **Dataset:** 1000 Clinical Texts from MTSamples, approx. 503 tokens and 21 chunks per text.
 
-| partition | AWS <br> result timing | DataBricks <br> result timing | Colab <br> result timing |
+{:.table-model-big.db}
+| Partition | AWS <br> result timing | DataBricks <br> result timing | Colab <br> result timing |
 |----------:|-------------:|-------------:|-------------:|
 | 1024      | 1 min 3 sec  | 1 min 55 sec | 5 min 45 sec |
 | 512       |  56 sec      | 1 min 26 sec | 5 min 15 sec |
@@ -529,7 +526,7 @@ deid_pipeline = Pipeline().setStages([
 - **Instance Type:** 
     -  8 CPU Cores 52GiB RAM (Colab Pro - High RAM)
 
-
+{:.table-model-big.db}
 |Deidentification Pipeline Name                   | Elapsed Time     | Stages           |
 |:------------------------------------------------|-----------------:|:-----------------| 
 |[clinical_deidentification_subentity_optimized](https://nlp.johnsnowlabs.com/2024/03/14/clinical_deidentification_subentity_optimized_en.html)| 67 min 44 seconds| 1 NER, 1 Deidentification, 13 Rule-based NER, 1 clinical embedding, 2 chunk merger  |
@@ -651,7 +648,7 @@ pipeline_base = Pipeline().setStages([
 
 <div class="h3-box" markdown="1">
 
-
+{:.table-model-big.db}
 | Partition | EMR <br> Base Pipeline | EMR <br> Optimized Pipeline | EC2 Instance <br> Base Pipeline | EC2 Instance <br> Optimized Pipeline | Databricks <br> Base Pipeline | Databricks <br>  Optimized Pipeline |
 |-----------|--------------------|------------------------|----------------------------|---------------------------------|---------------|--------------------|
 | 1024      | 5 min 1 sec        | 2 min 45 sec           | 7 min 6 sec                | **3 min 26 sec**                | **10 min 10 sec** | **6 min 2 sec** |
@@ -716,7 +713,8 @@ The `sbiobertresolve_snomed_findings` model is used as the resolver model. The i
 
 ***Results Table***
 
-| partition | NER Timing     |NER and Resolver Timing| 
+{:.table-model-big.db}
+| Partition | NER Timing     |NER and Resolver Timing| 
 |----------:|:---------------|:----------------------| 
 |4          |  24.7 seconds  |1 minutes 8.5  seconds|
 |8          |  23.6 seconds  |1 minutes 7.4  seconds|
@@ -860,7 +858,7 @@ This experiment consisted of training a Name Entity Recognition model (token-lev
 We used the Spark NLP class `MedicalNer` and it's method `Approach()` as described in the [documentation](https://nlp.johnsnowlabs.com/docs/en/licensed_annotators#medicalner).
 
 The pipeline looks as follows:
-![](/assets/images/CPUvsGPUbenchmarkpic4.png)
+![Benchmark on MedicalNerDLApproach](/assets/images/CPUvsGPUbenchmarkpic4.png)
 
 </div>
 <div class="h3-box" markdown="1">
@@ -925,7 +923,7 @@ CPU times: `~29 min`
 | 1024 | 2.5 |
 | 2048 | 2.5 |
 
-![](/assets/images/CPUvsGPUbenchmarkpic7.png)
+![Inference times](/assets/images/CPUvsGPUbenchmarkpic7.png)
 
 </div>
 <div class="h3-box" markdown="1">
@@ -933,7 +931,7 @@ CPU times: `~29 min`
 #### Performance metrics
 A macro F1-score of about `0.92` (`0.90` in micro) was achieved, with the following charts extracted from the `MedicalNerApproach()` logs:
 
-![](/assets/images/CPUvsGPUbenchmarkpic8.png)
+![Inference times](/assets/images/CPUvsGPUbenchmarkpic8.png)
 
 </div>
 <div class="h3-box" markdown="1">
@@ -950,11 +948,11 @@ You will experiment big GPU improvements in the following cases:
 
 ### MultiGPU Inference on Databricks
 In this part, we will give you an idea on how to choose appropriate hardware specifications for Databricks. Here is a few different hardwares, their prices, as well as their performance:
-![image](https://user-images.githubusercontent.com/25952802/158796429-78ec52b1-c036-4a9c-89c2-d3d1f395f71d.png)
+![MultiGPU Inference on Databricks](https://user-images.githubusercontent.com/25952802/158796429-78ec52b1-c036-4a9c-89c2-d3d1f395f71d.png)
 
 Apparently, GPU hardware is the cheapest among them although it performs the best. Let's see how overall performance looks like:
 
-![image](https://user-images.githubusercontent.com/25952802/158799106-8ee03a8b-8590-49ae-9657-b9663b915324.png)
+![MultiGPU Inference on Databricks](https://user-images.githubusercontent.com/25952802/158799106-8ee03a8b-8590-49ae-9657-b9663b915324.png)
 
 Figure above clearly shows us that GPU should be the first option of ours. 
 

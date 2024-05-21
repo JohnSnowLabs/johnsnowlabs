@@ -37,11 +37,12 @@ It is augmented with `ner_deid_name_multilingual_clinical` model.
 
 <div class="tabs-box" markdown="1">
 {% include programmingLanguageSelectScalaPythonNLU.html %}
+
 ```python
 
 from sparknlp.pretrained import PretrainedPipeline
 
-deid_pipeline = PretrainedPipeline("clinical_deidentification_nameAugmented", "en", "clinical/models")
+deid_pipeline = PretrainedPipeline("clinical_deidentification_subentity_nameAugmented", "en", "clinical/models")
 
 text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.
@@ -57,7 +58,7 @@ result = deid_pipeline.annotate(text)
 
 import com.johnsnowlabs.nlp.pretrained.PretrainedPipeline
 
-val deid_pipeline = PretrainedPipeline("clinical_deidentification_nameAugmented", "en", "clinical/models")
+val deid_pipeline = PretrainedPipeline("clinical_deidentification_subentity_nameAugmented", "en", "clinical/models")
 
 val text = """Name : Hendrickson, Ora, Record date: 2093-01-13, MR #719435.
 Dr. John Green, ID: 1231511863, IP 203.120.223.13.

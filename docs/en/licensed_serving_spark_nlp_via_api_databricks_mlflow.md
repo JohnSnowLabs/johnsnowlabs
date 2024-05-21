@@ -69,7 +69,7 @@ Spark NLP is a proud partner of Databricks and we offer a seamless integration w
 
 ### About MLFlow
 
-[MLFlow ](https://mlflow.com)is a serialization and Experiment Tracking platform, which also natively supports Spark NLP. We have a documentation entry about MLFlow in the “Experiment Tracking” section. It’s highly recommended that you take a look before moving forward in this document, since we will use some of the concepts explained there.
+[MLFlow](https://mlflow.com) is a serialization and Experiment Tracking platform, which also natively supports Spark NLP. We have a documentation entry about MLFlow in the “Experiment Tracking” section. It’s highly recommended that you take a look before moving forward in this document, since we will use some of the concepts explained there.
 
 We will use MLFlow serialization to serve our Spark NLP models.
 
@@ -460,6 +460,6 @@ Check the Jobs [API](https://docs.databricks.com/dev-tools/api/latest/jobs.html)
 
 * Follow us on Medium: [Spark NLP](https://medium.com/spark-nlp) and [Veysel Kocaman](https://vkocaman.medium.com/)
 
-* Write to support@johnsnowlabs.com for any additional request you may have
+* Write to [support@johnsnowlabs.com](mailto:support@johnsnowlabs.com) for any additional request you may have
 
 </div>
