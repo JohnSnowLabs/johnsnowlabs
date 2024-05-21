@@ -1,6 +1,6 @@
 ---
 layout: model
-title: Generic Deidentification NER (SEC Bert Embeddings)
+title: Generic Deidentification NER (Finance)
 author: John Snow Labs
 name: finner_deid_sec_fe
 date: 2024-05-17
