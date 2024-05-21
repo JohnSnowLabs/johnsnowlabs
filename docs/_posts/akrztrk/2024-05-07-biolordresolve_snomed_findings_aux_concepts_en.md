@@ -155,6 +155,7 @@ val resolver_pipeline= new PipelineModel().setStages(Array(
 val data = Seq([["""This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, COPD, gastritis, and TIA. He initially presented to Braintree with a nonspecific ST-T abnormality and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of occlusion of the mid left anterior descending coronary artery lesion, which was complicated by hypotension and bradycardia. He required atropine, IV fluids, and dopamine, possibly secondary to a vagal reaction. He was subsequently transferred to the CCU for close monitoring. He was hemodynamically stable at the time of admission to the CCU."""]]).toDF("text")
 
 val result = resolver_pipeline.fit(data).transform(data)
+
 ```
 </div>
 
