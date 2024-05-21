@@ -104,7 +104,7 @@ def is_running_in_emr():
 
 
 def is_running_in_databricks_runtime():
-    """ Check if the currently running Python Process is running in Databricks or not
+    """ Check if the currently running Python Process is running in Databricks runtime or not
     """
     return "DATABRICKS_RUNTIME_VERSION" in os.environ
 
