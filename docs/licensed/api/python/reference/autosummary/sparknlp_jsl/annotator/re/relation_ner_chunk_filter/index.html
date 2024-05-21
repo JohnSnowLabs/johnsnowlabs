@@ -85,8 +85,8 @@
          class="form-control"
          name="q"
          id="search-input"
-         placeholder="Search the docs ..."
-         aria-label="Search the docs ..."
+         placeholder="Search the annotators, functions, and more..."
+         aria-label="Search the annotators, functions, and more..."
          autocomplete="off"
          autocorrect="off"
          autocapitalize="off"
@@ -514,6 +514,8 @@ If not set, all relations between the entities will be considered.</p></li>
 Increase this value if you want to consider relations between entities that are far
 away, but be careful as it may add false positives (Default: 0).</p></li>
 <li><p><strong>docLevelRelations</strong> – Whether to include relations between entities from different sentences (Default: False).</p></li>
+<li><p><strong>directionSensitive</strong> – Specify direction sensitivity in processing relation pairs Default is ‘false’.</p></li>
+<li><p><strong>filterByTokenDistance</strong> – Filtering criterion based on number of token between entities (Default: 0).</p></li>
 </ul>
 </dd>
 </dl>
@@ -597,8 +599,18 @@ away, but be careful as it may add false positives (Default: 0).</p></li>
 </pre></div>
 </div>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.directionSensitive">
+<span class="sig-name descname"><span class="pre">directionSensitive</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.directionSensitive" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.docLevelRelations">
 <span class="sig-name descname"><span class="pre">docLevelRelations</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.docLevelRelations" title="Permalink to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.filterByTokenDistance">
+<span class="sig-name descname"><span class="pre">filterByTokenDistance</span></span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.filterByTokenDistance" title="Permalink to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
@@ -817,12 +829,40 @@ a default value.</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.setDirectionSensitive">
+<span class="sig-name descname"><span class="pre">setDirectionSensitive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.setDirectionSensitive" title="Permalink to this definition">#</a></dt>
+<dd><p>Sets whether to sensitive for direction in processing relation pairs.
+If it is <cite>true</cite>, only relations in the form of “ENTITY1-ENTITY2” will be considered,
+If it is <cite>false</cite>, both “ENTITY1-ENTITY2” and “ENTITY2-ENTITY1” relations will be considered,</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>bool</em>) – Whether to sensitive for direction in processing relation pairs.
+Default is ‘False’</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.setDocLevelRelations">
 <span class="sig-name descname"><span class="pre">setDocLevelRelations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">docLevelRelations</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.setDocLevelRelations" title="Permalink to this definition">#</a></dt>
 <dd><p>Sets whether to include relations between entities from different sentences.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>docLevelRelations</strong> (<em>bool</em>) – Whether to include relations between entities from different sentences.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.setFilterByTokenDistance">
+<span class="sig-name descname"><span class="pre">setFilterByTokenDistance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.setFilterByTokenDistance" title="Permalink to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>Sets number of tokens between entities. (Default: 0)</dt><dd><p>Model only finds relations that have fewer than the specified number of tokens between them.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>distance</strong> (<em>int</em>) – filtering criterion based on number of token between entities. (Default: 0)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -975,7 +1015,9 @@ RecursivePipeline</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-contents">Module Contents</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.directionSensitive"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.directionSensitive</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.docLevelRelations"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.docLevelRelations</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.filterByTokenDistance"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.filterByTokenDistance</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.getter_attrs"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.getter_attrs</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.inputAnnotatorTypes"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.inputAnnotatorTypes</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.inputCols"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.inputCols</span></code></a></li>
@@ -1007,7 +1049,9 @@ RecursivePipeline</p>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.read"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.read()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.save"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.save()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.set"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.set()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.setDirectionSensitive"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.setDirectionSensitive()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.setDocLevelRelations"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.setDocLevelRelations()</span></code></a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.setFilterByTokenDistance"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.setFilterByTokenDistance()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.setInputCols"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.setInputCols()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.setLazyAnnotator"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.setLazyAnnotator()</span></code></a></li>
 <li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#sparknlp_jsl.annotator.re.relation_ner_chunk_filter.RENerChunksFilter.setMaxSyntacticDistance"><code class="docutils literal notranslate"><span class="pre">RENerChunksFilter.setMaxSyntacticDistance()</span></code></a></li>
