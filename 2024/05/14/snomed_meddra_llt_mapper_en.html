@@ -9,11 +9,11 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-59JLR64');</script>
-<!-- End Google Tag Manager --><title>Sentence Entity Resolver for SNOMED Concepts (mpnet_embeddings_biolord_2023_c embeddings) | biolordresolve_snomed_findings_aux_concepts | Healthcare NLP 5.3.1</title><meta property="og:title" content=""/>
+<!-- End Google Tag Manager --><title>Mapping SNOMED Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes | snomed_meddra_llt_mapper | Healthcare NLP 5.3.2</title><meta property="og:title" content=""/>
 
-<meta name="description" content="DescriptionThis model maps clinical entities and concepts to SNOMED codes using mpnet_embeddings_biolord_2023_c Sentence Embeddings. This is also capable of extracting Clinical Findings , Morph Abnormality, Clinical Drug, Clinical Drug Form, Procedure, Substance, Physical Object, and Body Structure concepts of SNOME...">
-<!-- <link rel="canonical" href="/2024/05/07/biolordresolve_snomed_findings_aux_concepts_en.html"> -->
-<link rel="canonical" href="/2024/05/07/biolordresolve_snomed_findings_aux_concepts_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
+<meta name="description" content="DescriptionThis pretrained model maps SNOMED codes to corresponding MedDRA LLT (Lowest Level Term) codes. Some of the SNOMED codes map to more than one MedDRA LLT codes. You can find all the mapped MedDRA LLT codes in the all_k_resolutions column in the metadata.Predicted EntitiesLive DemoOpen in ColabDownloadCopy S...">
+<!-- <link rel="canonical" href="/2024/05/14/snomed_meddra_llt_mapper_en.html"> -->
+<link rel="canonical" href="/2024/05/14/snomed_meddra_llt_mapper_en.html"><link rel="alternate" type="application/rss+xml" title="Spark NLP" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ -->
 <!---->
 <!-- <link rel="apple-touch-icon" sizes="180x180" href="/fav.ico"> -->
 
@@ -497,23 +497,25 @@ function wrapWordInSpan(data, wordToWrap) {
 
 </script><div class="article__header"><div class="header-author"><div class="article__info clearfix"><div class="left-col">
             <a class="edit-on-github-btn" target="_blank" rel="alternate"
-               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/akrztrk/2024-05-07-biolordresolve_snomed_findings_aux_concepts_en.md">
+               href="https://github.com/johnsnowlabs/johnsnowlabs/tree/master/docs/_posts/ahmet-mesut/2024-05-14-snomed_meddra_llt_mapper_en.md">
               <span class="fab fa-github"></span>
               <span class="edit-on-github-label">Edit on GitHub</span>
             </a>
-        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>May 07, 2024</span>
-            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-05-07T00:00:00+00:00"></div><header class="main-docs have_subtitle">
-          <h1>Sentence Entity Resolver for SNOMED Concepts (mpnet_embeddings_biolord_2023_c embeddings)</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Sentence Entity Resolver for SNOMED Concepts (mpnet_embeddings_biolord_2023_c embeddings)"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>licensed</li><li>en</li><li>biolord</li><li>auxconcepts</li><li>entity_resolution</li><li>clinical</li><li>findings</li><li>snomed</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-05-07T00:00:00+00:00">
-    <meta itemprop="keywords" content="licensed,en,biolord,auxconcepts,entity_resolution,clinical,findings,snomed"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
+        </div><ul class="right-col menu"><li><i class="far fa-user"></i> <span>John Snow Labs</span></li><li><i class="far fa-calendar-alt"></i> <span>May 14, 2024</span>
+            </li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-05-14T00:00:00+00:00"></div><header class="main-docs have_subtitle">
+          <h1>Mapping SNOMED Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes</h1><div class="top-subtitle mont"></div></header></div><meta itemprop="headline" content="Mapping SNOMED Codes with Their Corresponding MedDRA LLT (Lowest Level Term) Codes"><div class="article__info tags_box clearfix"><ul class="left-col menu"><li>en</li><li>licensed</li><li>snomed</li><li>meddra_llt</li><li>mapping</li></ul></div><meta itemprop="author" content=""/><meta itemprop="datePublished" content="2024-05-14T00:00:00+00:00">
+    <meta itemprop="keywords" content="en,licensed,snomed,meddra_llt,mapping"><div class="js-article-content"><div class="model-wrap"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet --><div class="article__content" itemprop="articleBody"><h2 id="description">Description</h2>
 
-<p>This model maps clinical entities and concepts to SNOMED codes using <code class="language-plaintext highlighter-rouge">mpnet_embeddings_biolord_2023_c</code> Sentence Embeddings. This is also capable of extracting <code class="language-plaintext highlighter-rouge">Clinical Findings </code>, <code class="language-plaintext highlighter-rouge">Morph Abnormality</code>, <code class="language-plaintext highlighter-rouge">Clinical Drug</code>, <code class="language-plaintext highlighter-rouge">Clinical Drug Form</code>, <code class="language-plaintext highlighter-rouge">Procedure</code>, <code class="language-plaintext highlighter-rouge">Substance</code>, <code class="language-plaintext highlighter-rouge">Physical Object</code>, and <code class="language-plaintext highlighter-rouge">Body Structure</code> concepts of SNOMED codes.</p>
+<p>This pretrained model maps SNOMED codes to corresponding MedDRA LLT (Lowest Level Term) codes. Some of the SNOMED codes map to more than one MedDRA LLT codes. You can find all the mapped MedDRA LLT codes in the <code class="language-plaintext highlighter-rouge">all_k_resolutions</code> column in the metadata.</p>
+
+<h2 id="predicted-entities">Predicted Entities</h2>
 
 <p class="btn-box"><button class="button button-orange" disabled="">Live Demo</button>
 <button class="button button-orange" disabled="">Open in Colab</button>
-<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/biolordresolve_snomed_findings_aux_concepts_en_5.3.1_3.4_1715097558209.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
-<a href="s3://auxdata.johnsnowlabs.com/clinical/models/biolordresolve_snomed_findings_aux_concepts_en_5.3.1_3.4_1715097558209.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
+<a href="https://s3.amazonaws.com/auxdata.johnsnowlabs.com/clinical/models/snomed_meddra_llt_mapper_en_5.3.2_3.0_1715705980408.zip" class="button button-orange button-orange-trans arr button-icon hidden">Download</a>
+<a href="s3://auxdata.johnsnowlabs.com/clinical/models/snomed_meddra_llt_mapper_en_5.3.2_3.0_1715705980408.zip" class="button button-orange button-orange-trans button-icon button-copy-s3">Copy S3 URI</a></p>
 
 <h2 id="how-to-use">How to use</h2>
 
@@ -521,152 +523,86 @@ function wrapWordInSpan(data, wordToWrap) {
   <div class="tabs-model-aproach-head"><button class="tab-li-model-aproach tabheader_active">Python</button><button class="tab-li-model-aproach tab-li-jsl">JSL</button><button class="tab-li-model-aproach">Scala</button><button class="tab-li-model-aproach tab-li-nlu">NLU</button></div>
 
   <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">documentAssembler</span> <span class="o">=</span> <span class="n">DocumentAssembler</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"document"</span><span class="p">)</span>
+    <span class="p">.</span><span class="n">setInputCol</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk"</span><span class="p">)</span>
 
-<span class="n">sentenceDetector</span> <span class="o">=</span> <span class="n">SentenceDetectorDLModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span><span class="s">"clinical/models"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"document"</span><span class="p">])</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sentence"</span><span class="p">)</span>
-
-<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">])</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"token"</span><span class="p">)</span>
-
-<span class="n">word_embeddings</span> <span class="o">=</span> <span class="n">WordEmbeddingsModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"embeddings_clinical"</span><span class="p">,</span><span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">])</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"embeddings"</span><span class="p">)</span>
-
-<span class="n">ner_jsl</span> <span class="o">=</span> <span class="n">MedicalNerModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"ner_jsl"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"embeddings"</span><span class="p">])</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_jsl"</span><span class="p">)</span>
-
-<span class="n">ner_jsl_converter</span> <span class="o">=</span> <span class="n">NerConverter</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sentence"</span><span class="p">,</span> <span class="s">"token"</span><span class="p">,</span> <span class="s">"ner_jsl"</span><span class="p">])</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_jsl_chunk"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setWhiteList</span><span class="p">([</span><span class="s">"Procedure"</span><span class="p">,</span><span class="s">"Kidney_Disease"</span><span class="p">,</span><span class="s">"Cerebrovascular_Disease"</span><span class="p">,</span><span class="s">"Heart_Disease"</span><span class="p">,</span>
-                     <span class="s">"Disease_Syndrome_Disorder"</span><span class="p">,</span> <span class="s">"ImagingFindings"</span><span class="p">,</span> <span class="s">"Symptom"</span><span class="p">,</span> <span class="s">"VS_Finding"</span><span class="p">,</span>
-                     <span class="s">"EKG_Findings"</span><span class="p">,</span> <span class="s">"Communicable_Disease"</span><span class="p">,</span><span class="s">"Substance"</span><span class="p">,</span><span class="s">"Drug_Ingredient"</span><span class="p">,</span>
-                     <span class="s">"Internal_organ_or_component"</span><span class="p">,</span><span class="s">"External_body_part_or_region"</span><span class="p">,</span><span class="s">"Modifier"</span><span class="p">,</span>
-                     <span class="s">"Triglycerides"</span><span class="p">,</span><span class="s">"Alcohol"</span><span class="p">,</span><span class="s">"Smoking"</span><span class="p">,</span><span class="s">"Pregnancy"</span><span class="p">,</span><span class="s">"Hypertension"</span><span class="p">,</span><span class="s">"Obesity"</span><span class="p">,</span>
-                     <span class="s">"Injury_or_Poisoning"</span><span class="p">,</span><span class="s">"Test"</span><span class="p">,</span><span class="s">"Hyperlipidemia"</span><span class="p">,</span><span class="s">"BMI"</span><span class="p">,</span><span class="s">"Oncological"</span><span class="p">,</span><span class="s">"Psychological_Condition"</span><span class="p">,</span><span class="s">"LDL"</span><span class="p">,</span><span class="s">"Diabetes"</span><span class="p">])</span>
-
-<span class="n">chunk2doc</span> <span class="o">=</span> <span class="n">Chunk2Doc</span><span class="p">()</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">(</span><span class="s">"ner_jsl_chunk"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"ner_chunk_doc"</span><span class="p">)</span>
-
-<span class="n">embeddings</span> <span class="o">=</span> <span class="n">MPNetEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"mpnet_embeddings_biolord_2023_c"</span><span class="p">,</span><span class="s">"en"</span><span class="p">)</span>\
-    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk_doc"</span><span class="p">])</span>\
-    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mpnet_embeddings"</span><span class="p">)</span>\
+<span class="n">sbert_embedder</span> <span class="o">=</span> <span class="n">BertSentenceEmbeddings</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"ner_chunk"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"sbert_embeddings"</span><span class="p">)</span>\
     <span class="p">.</span><span class="n">setCaseSensitive</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
 
-<span class="n">snomed_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"biolordresolve_snomed_findings_aux_concepts"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
-      <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"mpnet_embeddings"</span><span class="p">])</span>\
-     <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"snomed_code"</span><span class="p">)</span>\
-     <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
+<span class="n">snomed_resolver</span> <span class="o">=</span> <span class="n">SentenceEntityResolverModel</span><span class="p">.</span><span class="n">pretrained</span><span class="p">(</span><span class="s">"sbiobertresolve_snomed_conditions"</span><span class="p">,</span> <span class="s">"en"</span><span class="p">,</span> <span class="s">"clinical/models"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"sbert_embeddings"</span><span class="p">])</span> \
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"snomed_code"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setDistanceFunction</span><span class="p">(</span><span class="s">"EUCLIDEAN"</span><span class="p">)</span>
 
-<span class="n">resolver_pipeline</span><span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span><span class="o">=</span><span class="p">[</span>
-                              <span class="n">documentAssembler</span><span class="p">,</span>
-                              <span class="n">sentenceDetector</span><span class="p">,</span>
-                              <span class="n">tokenizer</span><span class="p">,</span>
-                              <span class="n">word_embeddings</span><span class="p">,</span>
-                              <span class="n">ner_jsl</span><span class="p">,</span>
-                              <span class="n">ner_jsl_converter</span><span class="p">,</span>
-                              <span class="n">chunk2doc</span><span class="p">,</span>
-                              <span class="n">embeddings</span><span class="p">,</span>
-                              <span class="n">snomed_resolver</span>
-<span class="p">])</span>
+<span class="n">resolver2chunk</span> <span class="o">=</span> <span class="n">Resolution2Chunk</span><span class="p">()</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"snomed_code"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"snomed2chunk"</span><span class="p">)</span>
 
-<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"""This is an 82-year-old male with a history of prior tobacco use, hypertension, chronic renal insufficiency, COPD, gastritis, and TIA. He initially presented to Braintree with a nonspecific ST-T abnormality and was transferred to St. Margaret’s Center. He underwent cardiac catheterization because of occlusion of the mid left anterior descending coronary artery lesion, which was complicated by hypotension and bradycardia. He required atropine, IV fluids, and dopamine, possibly secondary to a vagal reaction. He was subsequently transferred to the CCU for close monitoring. He was hemodynamically stable at the time of admission to the CCU."""</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+<span class="n">chunkMapper</span> <span class="o">=</span> <span class="n">ChunkMapperModel</span><span class="p">.</span><span class="n">load</span><span class="p">(</span><span class="s">'snomed_meddra_llt_mapper'</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setInputCols</span><span class="p">([</span><span class="s">"snomed2chunk"</span><span class="p">])</span>\
+    <span class="p">.</span><span class="n">setOutputCol</span><span class="p">(</span><span class="s">"mappings"</span><span class="p">)</span>\
+    <span class="p">.</span><span class="n">setRels</span><span class="p">([</span><span class="s">"meddra_code"</span><span class="p">])</span>
 
-<span class="n">result</span> <span class="o">=</span> <span class="n">resolver_pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">(</span><span class="n">stages</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">documentAssembler</span><span class="p">,</span>
+    <span class="n">sbert_embedder</span><span class="p">,</span>
+    <span class="n">snomed_resolver</span><span class="p">,</span>
+    <span class="n">resolver2chunk</span><span class="p">,</span>
+    <span class="n">chunkMapper</span><span class="p">])</span>
+
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">spark</span><span class="p">.</span><span class="n">createDataFrame</span><span class="p">([[</span><span class="s">"Fungal infection of lung"</span><span class="p">],</span> <span class="p">[</span><span class="s">"Abdominal pain"</span><span class="p">],</span> <span class="p">[</span><span class="s">"wheezing"</span><span class="p">]]).</span><span class="n">toDF</span><span class="p">(</span><span class="s">"text"</span><span class="p">)</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">).</span><span class="n">transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </code></pre></div>  </div>
   <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="nv">documentAssembler</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">DocumentAssembler</span><span class="o">()</span>
-      <span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"document"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">sentenceDetector</span> <span class="k">=</span> <span class="nv">SentenceDetectorDLModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sentence_detector_dl_healthcare"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">document</span><span class="err">"</span><span class="o">])</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">tokenizer</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Tokenizer</span><span class="o">()</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">sentence</span><span class="err">"</span><span class="o">])</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"token"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">word_embeddings</span> <span class="k">=</span> <span class="nv">WordEmbeddingsModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"embeddings_clinical"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">))</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"embeddings"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">ner_jsl</span> <span class="k">=</span> <span class="nv">MedicalNerModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"ner_jsl"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"embeddings"</span><span class="o">))</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_jsl"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">ner_jsl_converter</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">NerConverter</span><span class="o">()</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sentence"</span><span class="o">,</span> <span class="s">"token"</span><span class="o">,</span> <span class="s">"ner_jsl"</span><span class="o">))</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_jsl_chunk"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setWhiteList</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"Procedure"</span><span class="o">,</span><span class="s">"Kidney_Disease"</span><span class="o">,</span><span class="s">"Cerebrovascular_Disease"</span><span class="o">,</span><span class="s">"Heart_Disease"</span><span class="o">,</span>
-                     <span class="s">"Disease_Syndrome_Disorder"</span><span class="o">,</span> <span class="s">"ImagingFindings"</span><span class="o">,</span> <span class="s">"Symptom"</span><span class="o">,</span> <span class="s">"VS_Finding"</span><span class="o">,</span>
-                     <span class="s">"EKG_Findings"</span><span class="o">,</span> <span class="s">"Communicable_Disease"</span><span class="o">,</span><span class="s">"Substance"</span><span class="o">,</span><span class="s">"Drug_Ingredient"</span><span class="o">,</span>
-                     <span class="s">"Internal_organ_or_component"</span><span class="o">,</span><span class="s">"External_body_part_or_region"</span><span class="o">,</span><span class="s">"Modifier"</span><span class="o">,</span>
-                     <span class="s">"Triglycerides"</span><span class="o">,</span><span class="s">"Alcohol"</span><span class="o">,</span><span class="s">"Smoking"</span><span class="o">,</span><span class="s">"Pregnancy"</span><span class="o">,</span><span class="s">"Hypertension"</span><span class="o">,</span><span class="s">"Obesity"</span><span class="o">,</span>
-                     <span class="s">"Injury_or_Poisoning"</span><span class="o">,</span><span class="s">"Test"</span><span class="o">,</span><span class="s">"Hyperlipidemia"</span><span class="o">,</span><span class="s">"BMI"</span><span class="o">,</span><span class="s">"Oncological"</span><span class="o">,</span><span class="s">"Psychological_Condition"</span><span class="o">,</span><span class="s">"LDL"</span><span class="o">,</span><span class="s">"Diabetes"</span><span class="o">))</span>
-
-<span class="k">val</span> <span class="nv">chunk2doc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Chunk2Doc</span><span class="o">()</span>
-      <span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="s">"ner_jsl_chunk"</span><span class="o">)</span>
-      <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk_doc"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">embeddings</span> <span class="k">=</span> <span class="nv">MPNetEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"mpnet_embeddings_biolord_2023_c"</span><span class="o">,</span><span class="s">"en"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">ner_chunk_doc</span><span class="err">"</span><span class="o">])\</span>
-    <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mpnet_embeddings"</span><span class="o">)\</span>
-    <span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="nc">False</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">snomed_resolver</span> <span class="k">=</span> <span class="nv">SentenceEntityResolverModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"biolordresolve_snomed_findings_aux_concepts"</span><span class="o">,</span> <span class="s">"en"</span><span class="o">,</span> <span class="s">"clinical/models"</span><span class="o">)\</span>
-     <span class="o">.</span><span class="py">setInputCols</span><span class="o">([</span><span class="err">"</span><span class="kt">mpnet_embeddings</span><span class="err">"</span><span class="o">])\</span>
-     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"snomed_code"</span><span class="o">)\</span>
-     <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">resolver_pipeline</span><span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
-                              <span class="n">documentAssembler</span><span class="o">,</span>
-                              <span class="n">sentenceDetector</span><span class="o">,</span>
-                              <span class="n">tokenizer</span><span class="o">,</span>
-                              <span class="n">word_embeddings</span><span class="o">,</span>
-                              <span class="n">ner_jsl</span><span class="o">,</span>
-                              <span class="n">ner_jsl_converter</span><span class="o">,</span>
-                              <span class="n">chunk2doc</span><span class="o">,</span>
-                              <span class="n">embeddings</span><span class="o">,</span>
-                              <span class="n">snomed_resolver</span>
-<span class="err">]</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">([[</span><span class="err">"""</span><span class="kt">This</span> <span class="kt">is</span> <span class="kt">an</span> <span class="err">82</span><span class="kt">-year-old</span> <span class="kt">male</span> <span class="kt">with</span> <span class="kt">a</span> <span class="kt">history</span> <span class="kt">of</span> <span class="kt">prior</span> <span class="kt">tobacco</span> <span class="kt">use</span>, <span class="kt">hypertension</span>, <span class="kt">chronic</span> <span class="kt">renal</span> <span class="kt">insufficiency</span>, <span class="kt">COPD</span>, <span class="kt">gastritis</span>, <span class="kt">and</span> <span class="kt">TIA.</span> <span class="kt">He</span> <span class="kt">initially</span> <span class="kt">presented</span> <span class="kt">to</span> <span class="kt">Braintree</span> <span class="kt">with</span> <span class="kt">a</span> <span class="kt">nonspecific</span> <span class="kt">ST-T</span> <span class="kt">abnormality</span> <span class="kt">and</span> <span class="kt">was</span> <span class="kt">transferred</span> <span class="kt">to</span> <span class="kt">St.</span> <span class="kt">Margaret</span><span class="err">’</span><span class="kt">s</span> <span class="kt">Center.</span> <span class="kt">He</span> <span class="kt">underwent</span> <span class="kt">cardiac</span> <span class="kt">catheterization</span> <span class="kt">because</span> <span class="kt">of</span> <span class="kt">occlusion</span> <span class="kt">of</span> <span class="kt">the</span> <span class="kt">mid</span> <span class="kt">left</span> <span class="kt">anterior</span> <span class="kt">descending</span> <span class="kt">coronary</span> <span class="kt">artery</span> <span class="kt">lesion</span>, <span class="kt">which</span> <span class="kt">was</span> <span class="kt">complicated</span> <span class="kt">by</span> <span class="kt">hypotension</span> <span class="kt">and</span> <span class="kt">bradycardia.</span> <span class="kt">He</span> <span class="kt">required</span> <span class="kt">atropine</span>, <span class="kt">IV</span> <span class="kt">fluids</span>, <span class="kt">and</span> <span class="kt">dopamine</span>, <span class="kt">possibly</span> <span class="kt">secondary</span> <span class="kt">to</span> <span class="kt">a</span> <span class="kt">vagal</span> <span class="kt">reaction.</span> <span class="kt">He</span> <span class="kt">was</span> <span class="kt">subsequently</span> <span class="kt">transferred</span> <span class="kt">to</span> <span class="kt">the</span> <span class="kt">CCU</span> <span class="kt">for</span> <span class="kt">close</span> <span class="kt">monitoring.</span> <span class="kt">He</span> <span class="kt">was</span> <span class="kt">hemodynamically</span> <span class="kt">stable</span> <span class="kt">at</span> <span class="kt">the</span> <span class="kt">time</span> <span class="kt">of</span> <span class="kt">admission</span> <span class="kt">to</span> <span class="kt">the</span> <span class="kt">CCU.</span><span class="err">"""</span><span class="o">]]).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
-
-<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">resolver_pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCol</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">sbert_embedder</span> <span class="k">=</span> <span class="nv">BertSentenceEmbeddings</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobert_base_cased_mli"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"ner_chunk"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setCaseSensitive</span><span class="o">(</span><span class="kc">false</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">snomed_resolver</span> <span class="k">=</span> <span class="nv">SentenceEntityResolverModel</span><span class="o">.</span><span class="py">pretrained</span><span class="o">(</span><span class="s">"sbiobertresolve_snomed_conditions"</span><span class="o">,</span><span class="s">"en"</span><span class="o">,</span><span class="s">"clinical/models"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"sbert_embeddings"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"snomed_code"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">resolver2chunk</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Resolution2Chunk</span><span class="o">()</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"snomed_code"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"snomed2chunk"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">chunkMapper</span> <span class="k">=</span> <span class="k">new</span> <span class="nv">ChunkMapperModel</span><span class="o">.</span><span class="py">load</span><span class="o">(</span><span class="s">"snomed_meddra_llt_mapper"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setInputCols</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"snomed2chunk"</span><span class="o">))</span>
+	<span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"mappings"</span><span class="o">)</span>
+	<span class="o">.</span><span class="py">setRels</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span><span class="s">"meddra_code"</span><span class="o">))</span>
+	
+<span class="k">val</span> <span class="nv">newPipeline</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+     <span class="n">documentAssembler</span><span class="o">,</span>
+     <span class="n">sbert_embedder</span><span class="o">,</span>
+     <span class="n">snomed_resolver</span><span class="o">,</span>
+     <span class="n">resolver2chunk</span><span class="o">,</span>
+     <span class="n">chunkMapper</span><span class="o">))</span>
+	
+<span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">(</span><span class="s">"Fungal infection of lung"</span><span class="o">,</span> <span class="s">"Abdominal pain"</span><span class="o">,</span> <span class="s">"wheezing"</span><span class="o">)</span> <span class="o">.</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
+	
+<span class="k">val</span> <span class="nv">result</span> <span class="k">=</span> <span class="nv">pipeline</span><span class="o">.</span><span class="py">fit</span><span class="o">(</span><span class="n">data</span><span class="o">).</span><span class="py">transform</span><span class="o">(</span><span class="n">data</span><span class="o">)</span>
 
 </code></pre></div>  </div>
 </div>
 
 <h2 id="results">Results</h2>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-+--------------------------------------------------------------------+-------------------------+-----------+---------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-|                                                           ner_chunk|                   entity|snomed_code|                                               resolution|                                                                   all_k_results|                                                                 all_k_distances|                                                          all_k_cosine_distances|                                                              all_k_resolutions |                                                                all_k_aux_labels|
-+--------------------------------------------------------------------+-------------------------+-----------+---------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-|                                                             tobacco|                  Smoking|   57264008|                                                  tobacco|57264008:::159882006:::39953003:::110483000:::102407002:::89765005:::26663004...|0.1070:::0.2268:::0.3980:::0.4179:::0.4232:::0.4947:::0.4970:::0.5265:::0.533...|0.0057:::0.0257:::0.0792:::0.0873:::0.0895:::0.1224:::0.1235:::0.1386:::0.142...|tobacco:::tobacco processor:::tobacco - substance:::tobacco use:::tobacco smo...|Organism:::Social Context:::Substance:::Clinical Finding:::Substance:::Clinic...|
-|                                                        hypertension|             Hypertension|   38341003|                                             hypertension|38341003:::64715009:::59621000:::10725009:::31992008:::24184005:::50490005:::...|  0.3600:::0.4373:::0.4850:::0.5022:::0.5474:::0.5538:::0.5594:::0.5792:::0.5838|  0.0648:::0.0956:::0.1176:::0.1261:::0.1498:::0.1533:::0.1565:::0.1677:::0.1704|hypertension:::hypertensive cardiovascular disease:::primary hypertension:::b...|Clinical Finding:::Clinical Finding:::Clinical Finding:::Clinical Finding:::C...|
-|                                         chronic renal insufficiency|           Kidney_Disease|   90688005|                                    chronic renal failure|90688005:::425369003:::723190009:::709044004:::431856006:::472953006:::236542...|0.4124:::0.4157:::0.4386:::0.5075:::0.6407:::0.6532:::0.6707:::0.6785:::0.692...|0.0851:::0.0864:::0.0962:::0.1288:::0.2053:::0.2134:::0.2249:::0.2302:::0.239...|chronic renal failure:::chronic progressive renal insufficiency:::chronic ren...|Clinical Finding:::Clinical Finding:::Clinical Finding:::Clinical Finding:::C...|
-|                                                                COPD|Disease_Syndrome_Disorder|   13645005|                                                     copd|13645005:::195951007:::79688008:::68372009:::270473001:::473223004:::42728600...|0.3151:::0.7223:::0.7460:::0.7629:::0.7712:::0.7751:::0.7840:::0.7862:::0.786...|0.0496:::0.2609:::0.2783:::0.2910:::0.2974:::0.3004:::0.3074:::0.3090:::0.309...|copd:::acute exacerbation of copd:::airway obstruction:::airway obstruction, ...|Clinical Finding:::Clinical Finding:::Clinical Finding:::Clinical Finding:::C...|
-|                                                           gastritis|Disease_Syndrome_Disorder|    4556007|                                                gastritis|4556007:::196731005:::50874004:::235656001:::235655002:::723096000:::39633700...|0.0942:::0.4291:::0.4426:::0.4761:::0.5037:::0.5288:::0.5290:::0.5368:::0.536...|0.0044:::0.0921:::0.0979:::0.1133:::0.1269:::0.1398:::0.1399:::0.1441:::0.144...|gastritis:::gastroduodenitis:::nonerosive nonspecific gastritis:::chemical ga...|Clinical Finding:::Clinical Finding:::Clinical Finding:::Clinical Finding:::C...|
-|                                                                 TIA|  Cerebrovascular_Disease|  266257000|                                                      tia|266257000:::161511000:::463921000124102:::257976002:::417963007:::160363004::...|0.6973:::0.7551:::0.8816:::0.8968:::0.9031:::0.9240:::0.9344:::0.9349:::0.937...|0.2431:::0.2851:::0.3886:::0.4022:::0.4078:::0.4269:::0.4365:::0.4370:::0.439...|tia:::h/o: tia:::tiamastus:::t:::tta:::fh: tia:::t.a.o.:::tiadenol:::titr:::t...|Clinical Finding:::Context-dependent:::Organism:::Qualifier Value:::Clinical ...|
-|                                                         nonspecific|                 Modifier|   10003008|                                             non-specific|10003008:::1491000:::278001007:::225413008:::1186687002:::261992003:::2776400...|0.8149:::0.8580:::0.8607:::0.8675:::0.8749:::0.8814:::0.8877:::0.8878:::0.894...|0.3320:::0.3681:::0.3704:::0.3763:::0.3827:::0.3884:::0.3940:::0.3941:::0.399...|non-specific:::unclassified:::nonspecific site:::nominal observation:::unfami...|Qualifier Value:::Qualifier Value:::Body Structure:::Procedure:::Clinical Fin...|
-|                                                    ST-T abnormality|             EKG_Findings|  428549008|          secondary st-t abnormality on electrocardiogram|428549008:::428750005:::164930006:::164934002:::55930002:::428418001:::164861...|0.4570:::0.5346:::0.6139:::0.6302:::0.7367:::0.7480:::0.7769:::0.7989:::0.803...|0.1044:::0.1429:::0.1885:::0.1985:::0.2714:::0.2798:::0.3018:::0.3191:::0.323...|secondary st-t abnormality on electrocardiogram:::nonspecific st-t abnormalit...|Clinical Finding:::Clinical Finding:::Clinical Finding:::Clinical Finding:::C...|
-|                                             cardiac catheterization|                Procedure|   41976001|                                  cardiac catheterization|41976001:::721968000:::129085009:::40403005:::67629009:::705923009:::12895900...|  0.1410:::0.2253:::0.4484:::0.4516:::0.4814:::0.5182:::0.5197:::0.5268:::0.5268|  0.0099:::0.0254:::0.1005:::0.1020:::0.1159:::0.1343:::0.1350:::0.1387:::0.1388|cardiac catheterization:::cardiac catheterization report:::cardiac catheteriz...|Procedure:::Record Artifact:::Qualifier Value:::Procedure:::Procedure:::Physi...|
-|occlusion of the mid left anterior descending coronary artery lesion|                  Symptom|  840313007|occlusion of mid left anterior descending coronary artery|840313007:::44771000087108:::1255266003:::868219001:::44781000087105:::840608...|0.2971:::0.4492:::0.6153:::0.6680:::0.6837:::0.6896:::0.6930:::0.6983:::0.702...|0.0441:::0.1009:::0.1893:::0.2231:::0.2337:::0.2378:::0.2401:::0.2438:::0.246...|occlusion of mid left anterior descending coronary artery:::occlusion of mid ...|Clinical Finding:::Clinical Finding:::No_Concept_Class:::Clinical Finding:::C...|
-|                                                         hypotension|               VS_Finding|   45007003|                                              hypotension|45007003:::67763001:::12763006:::94501000119106:::255329004:::429561008:::271...|0.1618:::0.4915:::0.5522:::0.5797:::0.5918:::0.5982:::0.6189:::0.6334:::0.663...|0.0131:::0.1208:::0.1525:::0.1681:::0.1751:::0.1789:::0.1915:::0.2006:::0.220...|hypotension:::hypotensive episode:::finding of decreased blood pressure:::tra...|Clinical Finding:::Clinical Finding:::Clinical Finding:::Clinical Finding:::Q...|
-|                                                         bradycardia|               VS_Finding|   48867003|                                              bradycardia|48867003:::42177007:::421869004:::74615001:::690461000119106:::426627000:::11...|0.0356:::0.4672:::0.5074:::0.5581:::0.5716:::0.5737:::0.6261:::0.6418:::0.650...|0.0006:::0.1092:::0.1287:::0.1557:::0.1633:::0.1646:::0.1960:::0.2059:::0.211...|bradycardia:::bradycardia - pulse:::bradyarrhythmia:::bradycardia-tachycardia...|Clinical Finding:::Clinical Finding:::Clinical Finding:::Clinical Finding:::C...|
-|                                                            atropine|          Drug_Ingredient|   73949004|                                                 atropine|73949004:::74237004:::34013000:::349945006:::391795000:::1268950007:::3499460...|0.0901:::0.4836:::0.5341:::0.5451:::0.5642:::0.5842:::0.6645:::0.6656:::0.666...|0.0041:::0.1169:::0.1426:::0.1485:::0.1592:::0.1707:::0.2208:::0.2215:::0.222...|atropine:::atropine sulfate:::atropa:::oral atropine:::atropine methonitrate:...|Pharma/Biol Product:::Substance:::Organism:::Clinical Drug Form:::Substance::...|
-|                                                              fluids|          Drug_Ingredient|  255765007|                                                    fluid|255765007:::789022006:::264312008:::441841000124109:::161844003:::33463005:::...|0.2773:::0.3752:::0.4071:::0.4141:::0.4539:::0.4892:::0.5327:::0.5578:::0.566...|0.0384:::0.0704:::0.0829:::0.0857:::0.1030:::0.1196:::0.1419:::0.1556:::0.160...|fluid:::refusing fluids:::liquid:::watery fluid:::taking some fluids:::liquid...|Qualifier Value:::Clinical Finding:::Clinical Finding:::Substance:::Clinical ...|
-|                                                            dopamine|          Drug_Ingredient|   59187003|                                                 dopamine|59187003:::412383006:::16257000:::30581005:::418222008:::384952006:::41284500...|0.0449:::0.2705:::0.4550:::0.4795:::0.5036:::0.5395:::0.5464:::0.5606:::0.568...|0.0010:::0.0366:::0.1035:::0.1150:::0.1268:::0.1455:::0.1493:::0.1571:::0.161...|dopamine:::dopamine agent:::dopamine hydrochloride:::urine dopamine:::dopamin...|Pharma/Biol Product:::Substance:::Substance:::Procedure:::Substance:::Pharma/...|
-|                                                      vagal reaction|                  Symptom|  128968000|                                        vagal stimulation|128968000:::271137009:::29894000:::83544006:::167195007:::7524009:::417343009...|0.6265:::0.7792:::0.8089:::0.8155:::0.8668:::0.8682:::0.8689:::0.8724:::0.880...|0.1962:::0.3036:::0.3272:::0.3325:::0.3757:::0.3769:::0.3775:::0.3805:::0.387...|vagal stimulation:::vasomotor reaction:::vagal bradycardia:::vagal gastric fu...|Procedure:::Clinical Finding:::Clinical Finding:::Observable Entity:::Procedu...|
-+--------------------------------------------------------------------+-------------------------+-----------+---------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+--------------------------------------------------------------------------------+
-
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>+------------------------+-----------+-------------------------------+------------------------------------------------------------+
+|                   chunk|snomed_code|                    meddra_code|                                           all_k_resolutions|
++------------------------+-----------+-------------------------------+------------------------------------------------------------+
+|Fungal infection of lung|   63741006|     10037422:Pulmonary mycosis| 10037422:Pulmonary mycosis:::10085440:Lung infection fungal|
+|          Abdominal pain|   21522001|10000058:Abdominal crampy pains|10000058:Abdominal crampy pains:::10000081:Abdominal pain...|
+|                wheezing|   56018004|                10047921:Wheeze|       10047921:Wheeze:::10047924:Wheezing:::10047927:Wheezy|
++------------------------+-----------+-------------------------------+------------------------------------------------------------+
 </code></pre></div></div>
 
 <h2 class="model-param" id="model-information">Model Information</h2>
@@ -675,11 +611,11 @@ function wrapWordInSpan(data, wordToWrap) {
   <tbody>
     <tr>
       <td>Model Name:</td>
-      <td>biolordresolve_snomed_findings_aux_concepts</td>
+      <td>snomed_meddra_llt_mapper</td>
     </tr>
     <tr>
       <td>Compatibility:</td>
-      <td>Healthcare NLP 5.3.1+</td>
+      <td>Healthcare NLP 5.3.2+</td>
     </tr>
     <tr>
       <td>License:</td>
@@ -691,11 +627,11 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
     <tr>
       <td>Input Labels:</td>
-      <td>[mpnet_embeddings]</td>
+      <td>[ner_chunk]</td>
     </tr>
     <tr>
       <td>Output Labels:</td>
-      <td>[snomed_code]</td>
+      <td>[mappings]</td>
     </tr>
     <tr>
       <td>Language:</td>
@@ -703,23 +639,11 @@ function wrapWordInSpan(data, wordToWrap) {
     </tr>
     <tr>
       <td>Size:</td>
-      <td>2.2 GB</td>
-    </tr>
-    <tr>
-      <td>Case sensitive:</td>
-      <td>false</td>
+      <td>136.2 KB</td>
     </tr>
   </tbody>
 </table>
-
-<h2 id="dependency">Dependency</h2>
-
-<p>This model can be used with spark v3.4.0 and above versions.</p>
-
-<h2 id="references">References</h2>
-
-<p>This model is trained with the augmented version of NIH September 2023 SNOMED CT United States (US) Edition.</p>
-</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-05-07T00:00:00+00:00"><!-- start custom article footer snippet -->
+</div><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2024-05-14T00:00:00+00:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet --></footer>
 
@@ -904,7 +828,7 @@ hr.code-selector-underlie {
 
 }
 
-</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/05/07/biolordresolve_avg_rxnorm_augmented_en.html">Sentence Entity Resolver for RxNorm (mpnet_embeddings_biolord_2023 embeddings)</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/05/07/explain_clinical_doc_granular_en.html">Explain Clinical Document - Granular</a></div></div></div>
+</style><div class="article__section-navigator clearfix"><div class="previous nav_link"><span>PREVIOUS</span><a href="/2024/05/14/meddra_llt_snomed_mapper_en.html">Mapping MedDRA LLT (Lowest Level Term) Codes with Their Corresponding SNOMED Codes</a></div><div class="next nav_link"><span>NEXT</span><a href="/2024/05/15/legner_lener_base_pt.html">Brazilian Portuguese NER for Laws (Bert, Base)</a></div></div></div>
 
 </div>
 </div>

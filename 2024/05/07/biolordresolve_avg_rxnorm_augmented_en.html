@@ -613,15 +613,17 @@ function wrapWordInSpan(data, wordToWrap) {
     <span class="o">.</span><span class="py">setOutputCol</span><span class="o">(</span><span class="s">"rxnorm_code"</span><span class="o">)</span>
     <span class="o">.</span><span class="py">setDistanceFunction</span><span class="o">(</span><span class="s">"EUCLIDEAN"</span><span class="o">)</span>
 
-<span class="k">val</span> <span class="nv">resolver_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">Pipeline</span><span class="o">(</span><span class="n">stages</span> <span class="k">=</span> <span class="o">[</span><span class="kt">document_assembler</span>,
-                                       <span class="kt">sentenceDetectorDL</span>,
-                                       <span class="kt">tokenizer</span>,
-                                       <span class="kt">word_embeddings</span>,
-                                       <span class="kt">ner</span>,
-                                       <span class="kt">ner_converter</span>,
-                                       <span class="kt">c2doc</span>,
-                                       <span class="kt">biolord_embedding</span>,
-                                       <span class="kt">rxnorm_resolver</span><span class="o">])</span>
+<span class="k">val</span> <span class="nv">resolver_pipeline</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">PipelineModel</span><span class="o">().</span><span class="py">setStages</span><span class="o">(</span><span class="nc">Array</span><span class="o">(</span>
+          <span class="n">document_assembler</span><span class="o">,</span>
+          <span class="n">sentenceDetectorDL</span><span class="o">,</span>
+          <span class="n">tokenizer</span><span class="o">,</span>
+          <span class="n">word_embeddings</span><span class="o">,</span>
+          <span class="n">ner</span><span class="o">,</span>
+          <span class="n">ner_converter</span><span class="o">,</span>
+          <span class="n">c2doc</span><span class="o">,</span>
+          <span class="n">biolord_embedding</span><span class="o">,</span>
+          <span class="n">rxnorm_resolver</span><span class="o">))</span>
+
 
 
 <span class="k">val</span> <span class="nv">data</span> <span class="k">=</span> <span class="nc">Seq</span><span class="o">([[</span><span class="err">"""</span><span class="kt">The</span> <span class="kt">patient</span> <span class="kt">was</span> <span class="kt">prescribed</span> <span class="kt">aspirin</span> <span class="kt">and</span> <span class="kt">and</span> <span class="kt">Albuterol</span> <span class="kt">inhaler</span>, <span class="kt">two</span> <span class="kt">puffs</span> <span class="kt">every</span> <span class="err">4</span> <span class="kt">hours</span> <span class="kt">as</span> <span class="kt">needed</span> <span class="kt">for</span> <span class="kt">asthma.</span> <span class="kt">She</span> <span class="kt">was</span> <span class="kt">seen</span> <span class="kt">by</span> <span class="kt">the</span> <span class="kt">endocrinology</span> <span class="kt">service</span> <span class="kt">and</span> <span class="kt">was</span> <span class="kt">discharged</span> <span class="kt">on</span> <span class="kt">avandia</span> <span class="err">4</span> <span class="kt">mg</span> <span class="kt">at</span> <span class="kt">night</span> , <span class="kt">Coumadin</span> <span class="err">5</span> <span class="kt">mg</span> <span class="kt">with</span> <span class="kt">meals</span> , <span class="kt">and</span> <span class="kt">metformin</span> <span class="err">1000</span> <span class="kt">mg</span> <span class="kt">two</span> <span class="kt">times</span> <span class="kt">a</span> <span class="kt">day</span> <span class="kt">and</span> <span class="kt">Lisinopril</span> <span class="err">10</span> <span class="kt">mg</span> <span class="kt">daily.</span><span class="err">"""</span><span class="o">]]).</span><span class="py">toDF</span><span class="o">(</span><span class="s">"text"</span><span class="o">)</span>
