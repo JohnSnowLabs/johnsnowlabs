@@ -12,12 +12,12 @@ from johnsnowlabs.utils.env_utils import (
 
 
 
-raw_version_jsl_lib = "5.3.5"
+raw_version_jsl_lib = "5.3.6"
 
 
 raw_version_nlp = "5.3.2"
 
-raw_version_nlu = "5.3.1"
+raw_version_nlu = "5.3.2"
 
 
 raw_version_pyspark = "3.4.0"
