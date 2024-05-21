@@ -18,7 +18,7 @@ use_language_switcher: "Python-Scala-Java"
 
 ## Description
 
-This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PHONE`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities.
+This pipeline can be used to extract PHI information such as `AGE`, `CONTACT`, `DATE`, `LOCATION`, `NAME`, `PROFESSION`, `IDNUM`, `MEDICALRECORD`, `ORGANIZATION`, `PHONE`, `EMAIL`, `ACCOUNT`, `LICENSE`, `VIN`, `SSN`, `DLN`, `PLATE`, `IPADDR` entities.
 
 {:.btn-box}
 <button class="button button-orange" disabled>Live Demo</button>
